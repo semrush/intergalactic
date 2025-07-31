@@ -4,9 +4,11 @@ import MailSent from '@semcore/illustration/MailSent';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import React from 'react';
 
+type SpecialEventsNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
+
 const manager = new NoticeBubbleManager();
 
-const Demo = () => {
+const Demo = (props: SpecialEventsNoticeBubbleProps) => {
   const handleClick = () => {
     manager.add({
       children: (
@@ -15,8 +17,10 @@ const Demo = () => {
           Your post is on its way, and we will take great care of it!
         </Flex>
       ),
-      initialAnimation: true,
-      duration: 10000,
+      initialAnimation: props.initialAnimation,
+      duration: props.duration,
+      type: props.type,
+      focusLock: props.focusLock,
     });
   };
 
@@ -27,5 +31,14 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: SpecialEventsNoticeBubbleProps = {
+  initialAnimation: true,
+  duration: 10000,
+  type: 'info',
+  focusLock: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

@@ -12,6 +12,7 @@ import Spin from '@semcore/spin';
 import type { ITooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
+import type { InlineInputComponent } from './index.type';
 import style from './style/inline-input.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -440,6 +441,6 @@ const InlineInput = createComponent(InlineInputBase, {
   CancelControl,
   NumberValue,
   NumberControls,
-}) as any;
+}) as InlineInputComponent;
 
 export default InlineInput;

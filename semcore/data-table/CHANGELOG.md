@@ -2,11 +2,39 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.7] - 2025-07-14
+## [16.0.8] - 2025-08-07
+
+### Added
+
+- Ability to render multiple columns under one single-level column header.
+- RawData to `CellRenderProps`.
+- `line-height` for `Head.Column` items.
+- `overflow=hidden` for `CellWrapper`.
+
+### Fixed
+
+- Usage of `changeSortSize` property with multiple columns.
+- Accordion content expands with visual issues when clicking on a merged cell.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
+- Hover styles aren't applied to themed cells.
 
 ### Changed
 
+- `overflow` for `Body.Cell` to default.
 - Type description for `DataTableProps`/`CellRenderProps`.
+
+## [16.0.7] - 2025-07-23
+
+### Added
+
+- Transition for the table header's `top` attribute.
+- New header prop `animationDuration`.
+
+### Fixed
+
+- Row hover effect for empty state.
+- Incorrect 'Select all' checkbox behavior with pagination.
+- Header glitches in loading state with sticky header.
 
 ## [16.0.6] - 2025-07-04
 

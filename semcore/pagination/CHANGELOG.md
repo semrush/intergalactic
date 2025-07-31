@@ -2,11 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.5] - 2025-07-14
+## [16.1.6] - 2025-08-07
+
+### Fixed
+
+- Focus loss in Safari when navigating to first/last page with pagination buttons.
 
 ### Changed
 
 - Type description for `PaginationProps`.
+
+## [16.1.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [16.0.4 ~> 16.0.5], `@semcore/button` [16.0.4 ~> 16.0.5], `@semcore/icon` [16.2.3 ~> 16.4.0], `@semcore/input-number` [16.0.4 ~> 16.0.5], `@semcore/input` [16.0.4 ~> 16.0.5], `@semcore/link` [16.0.4 ~> 16.0.5], `@semcore/tooltip` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
 
 ## [16.1.4] - 2025-07-04
 

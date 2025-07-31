@@ -5,10 +5,10 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Text
 
-It's a main component for text in our interfaces. By default, this is a `span` tag.
+The main component for handling typography in our interfaces. Renders as a `span` tag by default.
 
 ```jsx
-import { Text } from '@semcore/ui/typography';
+import { Text } from '@semcore/typography';
 <Text />;
 ```
 
@@ -16,22 +16,25 @@ import { Text } from '@semcore/ui/typography';
 
 ## List
 
-A list tagged with ʻul`. It's possible to set a custom marker for all items.
+A list rendered with the `ul` tag. You can set a custom marker for all list items.
 
 ```jsx
-import { List } from '@semcore/ui/typography';
+import { List } from '@semcore/typography';
 <List />;
 ```
+
+::: info
+The `size` property of this component only accepts the values `100`, `200`, and `300`.
+:::
 
 <TypesView type="ListProps" :types={...types} />
 
 ## List.Item
 
-A list item tagged with `li`. It's possible to set a custom marker.
-Also, it is possible to customise content with `<List.Item.Content />`;
+A list item rendered with the `li` tag. You can set a custom marker and customize the content using `<List.Item.Content />`.
 
 ```jsx
-import { List } from '@semcore/ui/typography';
+import { List } from '@semcore/typography';
 <List.Item />;
 <List.Item.Content />;
 ```
@@ -41,10 +44,10 @@ import { List } from '@semcore/ui/typography';
 
 ## Blockquote
 
-Quotes from great people 🙊
+A component for displaying quoted text.
 
 ```jsx
-import { Blockquote } from '@semcore/ui/typography';
+import { Blockquote } from '@semcore/typography';
 <Blockquote />;
 ```
 
@@ -52,17 +55,8 @@ import { Blockquote } from '@semcore/ui/typography';
 
 ## FormatText
 
-A wrapper component required to add styles to native tags.
-
-::: tip
-Note that the component is in another package `intergalactic/format-text`.
+::: warning
+`FormatText` is deprecated. To style native tags, wrap them in `Text`. Refer to the [Native typography tags example](./typography-code#native-typography-tags)
 :::
-
-```jsx
-import FormatText from '@semcore/ui/format-text';
-<FormatText />;
-```
-
-<TypesView type="FormatTextProps" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

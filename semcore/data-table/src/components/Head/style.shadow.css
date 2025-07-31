@@ -2,6 +2,10 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead[animationDuration] > SColumn {
+  transition: top var(--animationDuration) ease-out;
+}
+
 SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
@@ -27,6 +31,7 @@ SGroup, SColumn {
   position: relative;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   overflow: hidden;
+  line-height: var(--intergalactic-lh-100, 133%);
 }
 
 SGroup {

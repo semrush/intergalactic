@@ -160,12 +160,11 @@ test.describe('Slider', () => {
     await expect(input).toHaveValue('medium');
     await expect(slider).toHaveAttribute('aria-valuenow', '2');
 
-    // BUG - thpse actions dont work
-    // await page.keyboard.press('Home');
-    // await expect(slider).toHaveAttribute('aria-valuenow', '1');
+    await page.keyboard.press('Home');
+    await expect(slider).toHaveAttribute('aria-valuenow', '1');
 
-    // await page.keyboard.press('End');
-    // await expect(slider).toHaveAttribute('aria-valuenow', '3');
+    await page.keyboard.press('End');
+    await expect(slider).toHaveAttribute('aria-valuenow', '3');
   });
 
   test('Verify slider with input by mouse', async ({ page }) => {

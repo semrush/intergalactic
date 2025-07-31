@@ -1,20 +1,8 @@
+import { ScreenReaderOnly } from '@semcore/base-components';
+import Button from '@semcore/button';
 import { DataTable } from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
-import { ScreenReaderOnly } from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
 import React from 'react';
-
-function getSkeleton() {
-  return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
-    cssVar: `--${c}_width`,
-    name: c,
-    data: (
-      <Skeleton height={17}>
-        <Skeleton.Text y='5' width='60%' />
-      </Skeleton>
-    ),
-  }));
-}
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);

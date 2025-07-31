@@ -2,11 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.8] - 2025-07-14
+## [16.1.1] - 2025-08-07
 
 ### Changed
 
 - Type description for `PlotProps`/`ReferenceLineProps`/`AreaChartProps`/`BarChartProps`/`BubbleChartProps`/`CigaretteChartProps`/`DonutChartProps`/`HistogramChartProps`/`LineChartProps`/`RadialTreeProps`/`ScatterPlotChartProps`/`VennChartProps`/`CompactHorizontalBarChartProps`.
+
+## [16.1.0] - 2025-07-23
+
+### Added
+
+- `onClickArea` handler for `Chart.Area`.
+- `onClickBubble` handler for `Chart.Bubble`.
+- `onClickPie` handler for `Chart.Donut`.
+- `onClickLine` handler for `Chart.Line`.
+- `onClickRadar` handler for `Chart.Radar`.
+- `onClickScatterItem` handler for `Chart.ScatterPlot`.
+- `onClickVennItem` handler for `Chart.Venn`.
+- `onClick` handlers for `Area`, `Bubble`, `Donut`, `Dots`, `Line`, `Radar`, `ScatterPlot`, `Venn`.
+
+## [16.0.8] - 2025-07-23
+
+### Fixed
+
+- Tooltip in Compact Horizontal Bar always shows data from the first bar.
 
 ## [16.0.7] - 2025-07-03
 

@@ -24,6 +24,8 @@ export type BubbleChartProps = BaseChartProps<BubbleChartData> & {
   xScale?: ScaleLinear<any, any>;
   /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
+  /** Callback triggered when a user clicks on a bubble */
+  onClickBubble?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 export type BubbleChartType = Intergalactic.Component<typeof Flex, BubbleChartProps>;

@@ -27,13 +27,19 @@ export type ErrorsContext = {
 export interface IProjectNotFoundProps extends ProjectNotFoundProps, UnknownProperties {}
 export type ProjectNotFoundProps = WithI18nEnhanceProps & {
   /**
-   * Link to the projects
+   * URL for the "Go to Projects" button
    * @default /projects
    */
   projectsLink?: string;
-  /** Link to contact support */
+  /**
+   * URL for the "Contact us" button
+   * @default /company/contacts
+   */
   contactsLink?: string;
-  /** Link to support team */
+  /**
+   * URL for the "Support Team" link
+   * @default /company/contacts
+   */
   supportTeamLink?: string;
   /**
    * HTML tag of the error title

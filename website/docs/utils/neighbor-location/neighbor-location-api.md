@@ -15,7 +15,7 @@ Use the `neighborLocation` component property instead.
 Root wrapper-component doesn't create a node but provides a context for defining neighbors.
 
 ```jsx
-import NeighborLocation from '@semcore/ui/base-components';
+import NeighborLocation from '@semcore/base-components';
 
 <NeighborLocation />;
 ```
@@ -27,7 +27,7 @@ import NeighborLocation from '@semcore/ui/base-components';
 Component for detect neighbors.
 
 ```jsx
-import NeighborLocation from '@semcore/ui/base-components';
+import NeighborLocation from '@semcore/base-components';
 
 <NeighborLocation.Detect />;
 ```

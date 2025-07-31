@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.2] - 2025-07-14
+## [16.1.3] - 2025-08-07
 
 ### Changed
 
 - Type description for `PopperPopperProps`/`PopperProps`/`ScrollAreaProps`/`ScrollBarProps`/`BoxProps`.
+
+## [16.1.2] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.0.3 ~> 16.0.4]).
 
 ## [16.1.1] - 2025-07-04
 

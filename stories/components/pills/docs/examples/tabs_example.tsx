@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/base-components';
 import Pills from '@semcore/pills';
+import type { PillsProps, PillProps } from '@semcore/pills';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -9,12 +10,13 @@ const contentBLocks = [
   'Since hamsters are nocturnal, they naturally sleep more during the day and are more active at twilight. Don\'t wake them up to play.',
 ];
 
-const Demo = () => {
+type PillExampleProps = PillsProps & PillProps;
+const Demo = (props: PillExampleProps) => {
   const [tab, setTab] = React.useState(0);
 
   return (
     <Flex gap={2} direction='column' alignItems='start'>
-      <Pills behavior='manual' value={tab} onChange={setTab}>
+      <Pills value={tab} onChange={setTab} size={props.size} disabled={props.disabled} behavior={props.behavior}>
         <Pills.Item value={0} id='pills-tab-0'>
           Cats
         </Pills.Item>
@@ -31,5 +33,13 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: PillExampleProps = {
+  size: 'm',
+  disabled: undefined,
+  behavior: 'manual',
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

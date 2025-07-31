@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.5] - 2025-07-14
+## [16.1.6] - 2025-08-07
 
 ### Changed
 
 - Type description for `SelectProps`/`SelectOptionCheckboxProps`.
+
+## [16.1.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [16.2.3 ~> 16.2.4], `@semcore/button` [16.0.4 ~> 16.0.5], `@semcore/checkbox` [16.0.4 ~> 16.0.5], `@semcore/divider` [16.0.4 ~> 16.0.5], `@semcore/dropdown` [16.0.4 ~> 16.0.5], `@semcore/dropdown-menu` [16.1.5 ~> 16.1.6], `@semcore/flex-box` [16.0.4 ~> 16.0.5], `@semcore/icon` [16.2.3 ~> 16.4.0], `@semcore/input` [16.0.4 ~> 16.0.5], `@semcore/popper` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
 
 ## [16.1.4] - 2025-07-04
 

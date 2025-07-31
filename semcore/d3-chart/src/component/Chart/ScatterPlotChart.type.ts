@@ -16,6 +16,8 @@ export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
   yScale?: ScaleLinear<any, any>;
   /**  Optional field name for additional value data */
   valueKey?: string;
+  /** Callback triggered when a user clicks on a scatter item */
+  onClickScatterItem?: (index: number, event: React.SyntheticEvent) => void;
 };
 
 export type ScatterPlotChartType = Intergalactic.Component<typeof Flex, ScatterPlotChartProps>;

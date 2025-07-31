@@ -4,7 +4,9 @@ import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
 
-export type VennChartData = Record<string, number>;
+export type DataKey = string;
+
+export type VennChartData = Record<DataKey, number>;
 
 export type VennChartProps = BaseChartProps<VennChartData> & {
   /** Internal */
@@ -13,6 +15,8 @@ export type VennChartProps = BaseChartProps<VennChartData> & {
   xScale?: ScaleLinear<any, any>;
   /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
+  /** Callback triggered when a user clicks on a circle */
+  onClickVennItem?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
 export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

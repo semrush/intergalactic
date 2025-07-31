@@ -1,9 +1,9 @@
 import Pills from '@semcore/pills';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/basic_example';
-import CustomPillsExample from './examples/custom_pills_example';
-import TabsExample from './examples/tabs_example';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/basic_example';
+import CustomPillsExample, { defaultProps as CustomPillsProps } from './examples/custom_pills_example';
+import TabsExample, { defaultProps as TabExampleProps } from './examples/tabs_example';
 
 const meta: Meta<typeof Pills> = {
   title: 'Components/Pills/Documentation',
@@ -11,16 +11,57 @@ const meta: Meta<typeof Pills> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Pills>;
 
-export const BasicUsage: Story = {
+export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    behavior: {
+      control: { type: 'select' },
+      options: ['manual', 'auto'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: BasicUsageProps,
 };
 
-export const Tabs: Story = {
+export const Tabs: StoryObj<typeof TabExampleProps> = {
   render: TabsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    behavior: {
+      control: { type: 'select' },
+      options: ['manual', 'auto'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: TabExampleProps,
 };
 
-export const CustomPills: Story = {
+export const CustomPills: StoryObj<typeof CustomPillsProps> = {
   render: CustomPillsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    behavior: {
+      control: { type: 'select' },
+      options: ['manual', 'auto'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: CustomPillsProps,
 };

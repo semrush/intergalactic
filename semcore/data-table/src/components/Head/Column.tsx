@@ -36,13 +36,17 @@ type State = {
   sortVisible: boolean;
 };
 
-export class Column<D extends DataTableData> extends Component<
-  DataTableColumnProps,
-  {},
-  {},
-  [],
-  ColumnPropsInner<D>
-> {
+export class Column<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> extends Component<
+    DataTableColumnProps,
+    {},
+    {},
+    [],
+    ColumnPropsInner<Data, UniqKey, UniqKeyType>
+  > {
   static displayName = 'Column';
   static style = style;
 
@@ -74,7 +78,7 @@ export class Column<D extends DataTableData> extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<D>): void {
+  componentDidUpdate(prevProps: DataTableColumnProps & ColumnPropsInner<Data, UniqKey, UniqKeyType>): void {
     if (
       this.asProps.changeSortSize &&
       canUseDOM() &&
@@ -108,10 +112,21 @@ export class Column<D extends DataTableData> extends Component<
     } else if (sort?.[0] !== name) {
       setTimeout(() => {
         if (tableRef.current) {
-          tableRef.current.style.setProperty(
-            'grid-template-columns',
-            gridTemplateColumns.join(' '),
-          );
+          const currentGridTemplateColumns = tableRef.current.style.getPropertyValue('grid-template-columns');
+
+          if (currentGridTemplateColumns) {
+            tableRef.current.style.setProperty(
+              'grid-template-columns',
+              currentGridTemplateColumns.split(' ')
+                .map((gtcWidth, index) => {
+                  if (index === columnIndex) {
+                    return gridTemplateColumns[index];
+                  }
+                  return gtcWidth;
+                })
+                .join(' '),
+            );
+          }
         }
       });
     }
