@@ -54,19 +54,34 @@ describe('DataTable', () => {
         />,
       );
     });
-    test('selectedRows typing', () => {
+    test('selectedRows/onSelectedRowsChange typing', () => {
+      const onSelectedRowsChange = (rows: string) => {};
+
       assertType<JSX.Element>(
         <DataTable
-          data={[{ id: 1, [UNIQ_ROW_KEY]: 'key' }]}
+          data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
-          selectedRows={['key']}
+          selectedRows={[1]}
+          uniqueRowKey='id'
           onSelectedRowsChange={(rows, e, opts) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            rows; // string[]
+            rows; // number[]
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             opts?.row.id; // should be number
           }}
+        />,
+      );
+      assertType<JSX.Element>(
+        <DataTable
+          data={[{ id: 1 }]}
+          aria-label='label'
+          columns={[]}
+          // @ts-expect-error
+          selectedRows={['1']}
+          uniqueRowKey='id'
+          // @ts-expect-error
+          onSelectedRowsChange={onSelectedRowsChange}
         />,
       );
     });
@@ -90,7 +105,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], 'id', number>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -144,7 +159,7 @@ describe('DataTable.Cell', () => {
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
     const RawDataTest = () => {
-      const customCellRender = (props: CellRenderProps) => {
+      const customCellRender = (props: CellRenderProps<string | null>) => {
         checkRowData(props.rawData);
 
         return props.defaultRender();
