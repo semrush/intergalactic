@@ -48,7 +48,7 @@ const Demo = (props: CheckboxExampleProps) => {
         <Collapse
           visible={!!selectedRows.length}
           duration={props.animationDuration}
-          style={{ position: 'sticky', top: 0, zIndex: 6 }}
+          style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
           <Flex
             role='region'

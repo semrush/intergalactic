@@ -256,10 +256,10 @@ SSpinContainer {
   align-items: center;
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
-  z-index: 50;
+  z-index: 15;
 }
 SSpinContainer:focus-visible {
-  z-index: 50;
+  z-index: 15;
 }
 
 SSpinContainer[headerHeight] {
