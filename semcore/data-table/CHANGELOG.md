@@ -10,6 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `onAccordionToggle` to listen for open/close accordion events.
 - Ability to set columns into one grouped column.
 - RawData to `CellRenderProps`.
+- `line-height` for `Head.Column` items.
 
 ### Fixed
 

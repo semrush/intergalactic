@@ -1,9 +1,10 @@
 import Card from '@semcore/card';
+import type { EllipsisProps } from '@semcore/ellipsis';
 import Ellipsis from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: EllipsisProps) => {
   return (
     <Card w={220}>
       <Card.Header>
@@ -11,7 +12,14 @@ const Demo = () => {
           Card heading
         </Card.Title>
         <Card.Description tag='div' size={200}>
-          <Ellipsis maxLine={1}>Additional long card description</Ellipsis>
+          <Ellipsis
+            tag={Ellipsis}
+            trim={props.trim}
+            tooltip={props.tooltip}
+            maxLine={props.maxLine}
+          >
+            Additional long card description with a lot of details about the widget
+          </Ellipsis>
         </Card.Description>
       </Card.Header>
       <Card.Body>
@@ -20,5 +28,13 @@ const Demo = () => {
     </Card>
   );
 };
+
+export const defaultProps: EllipsisProps = {
+  trim: undefined,
+  tooltip: undefined,
+  maxLine: 2,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
