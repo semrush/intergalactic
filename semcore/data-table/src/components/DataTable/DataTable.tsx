@@ -447,8 +447,6 @@ class DataTableRoot<
       }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
     );
 
-    console.log(row, cell);
-
     if (cell instanceof HTMLElement && currentCell !== cell) {
       this.focusedCell = [newRow, newCol];
 
@@ -465,7 +463,7 @@ class DataTableRoot<
       if (headerCell !== cell && describedBy) {
         cell.setAttribute('aria-describedby', describedBy);
       }
-      console.log(cell);
+
       cell?.focus();
 
       if (newRow !== 0) {
