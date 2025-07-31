@@ -28,7 +28,7 @@ It's possible to truncate the middle of the text string.
 
 ## Multiline
 
-It's possible to specify after what text line apply truncating
+It's possible to specify after which line apply truncating.
 
 ::: sandbox
 
@@ -40,7 +40,7 @@ It's possible to specify after what text line apply truncating
 
 ## Multiple use
 
-in case of multiple use of a component for optimization you can use one observer for all components
+In case of multiple use of a component for optimization you can use one observer for all components.
 
 ::: sandbox
 
