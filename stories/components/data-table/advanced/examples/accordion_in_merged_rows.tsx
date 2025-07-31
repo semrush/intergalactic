@@ -52,7 +52,6 @@ const Demo = (props: accordionMergedProps) => {
   return (
     <DataTable
       data={data}
-      h={100}
       loading={props.loading}
       aria-label='Rows grouping'
       columns={[
