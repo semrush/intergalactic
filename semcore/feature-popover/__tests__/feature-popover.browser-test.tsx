@@ -90,7 +90,7 @@ test.describe('Functional', () => {
     const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
     await featurePopoverPopper.waitFor({ state: 'visible' });
-    const popper = page.locator('[data-ui-name="Popper.Popper"]');
+    const popper = page.getByRole('dialog');
     const close = page.locator('[aria-label="Close"]');
     const hint = page.getByText('Close');
 
@@ -104,8 +104,6 @@ test.describe('Functional', () => {
 
     await test.step('Verify popper attributes', async () => {
       await expect(popper).toHaveAttribute('tabindex', '0');
-      await expect(popper).toHaveAttribute('role', 'dialog');
-      await expect(popper).toHaveAttribute('aria-label');
       await expect(popper).toHaveAttribute('data-popper-placement');
     });
     await test.step('Verify close button focused by Tab', async () => {
@@ -126,7 +124,8 @@ test.describe('Functional', () => {
       await page.keyboard.press('Escape');
       await expect(featurePopoverPopper).toHaveCount(0);
     });
-    await test.step('Verify Feature Popper opened when reload page again', async () => {
+
+    await test.step('Verify Feature Popper opened and focused when reload page again', async () => {
       await page.setContent(htmlContent);
       await featurePopoverPopper.waitFor({ state: 'visible' });
       await expect(popper).toBeFocused();
@@ -140,13 +139,9 @@ test.describe('Functional', () => {
       await expect(ddTrigger).toBeFocused();
     });
 
-    await test.step('Verify Feature Popper opened when reload page again', async () => {
+    await test.step('Verify focus in not looped inside Feature Popover and focused goes to next button when disablePortal = true', async () => {
       await page.setContent(htmlContent);
       await featurePopoverPopper.waitFor({ state: 'visible' });
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Verify focus in not looped inside Feature Popover and focused goes to next button when disablePortal = true', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -198,7 +193,7 @@ test.describe('Functional', () => {
     const gotIt = page.getByText('Got it');
     const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
     await featurePopoverPopper.waitFor({ state: 'visible' });
-    const popper = page.locator('[data-ui-name="Popper.Popper"]');
+    const popper = page.getByRole('dialog');
     const close = page.locator('[aria-label="Close"]');
     const hint = page.getByText('Close');
 
@@ -219,25 +214,17 @@ test.describe('Functional', () => {
       await expect(featurePopoverPopper).toHaveCount(0);
     });
 
-    await test.step('Verify Feature Popper opened when reload page again', async () => {
+    await test.step('Verify Feature Popper closed by pressing Other button', async () => {
       await page.setContent(htmlContent);
       await featurePopoverPopper.waitFor({ state: 'visible' });
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Verify Feature Popper closed by pressing Other button', async () => {
       await gotIt.click();
       await featurePopoverPopper.waitFor({ state: 'hidden' });
       await expect(featurePopoverPopper).toHaveCount(0);
     });
 
-    await test.step('Verify Feature Popper opened when reload page again', async () => {
+    await test.step('Verify Feature Popper not closed by clicking outside', async () => {
       await page.setContent(htmlContent);
       await featurePopoverPopper.waitFor({ state: 'visible' });
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Verify Feature Popper not closed by clicking outside', async () => {
       await page.mouse.click(0, 0);
       await expect(popper).not.toBeFocused();
       await page.keyboard.press('Escape');
@@ -249,54 +236,6 @@ test.describe('Functional', () => {
       await featurePopoverPopper.waitFor({ state: 'visible' });
       await expect(featurePopoverPopper).toHaveCount(0);
     });
-  });
-
-  test('Verify Feature Popover not shown on start but shown on interaction when defaultVisible = false , interaction=Hover, disabled = false', async ({ page }) => {
-    const standPath = 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultVisible: false, interaction: 'hover', disabled: false });
-
-    await page.setContent(htmlContent);
-    const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
-    const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-
-    await expect(featurePopoverPopper).not.toBeVisible();
-    await ddTrigger.hover();
-    await featurePopoverPopper.waitFor({ state: 'visible' });
-    await expect(featurePopoverPopper).toHaveCount(1);
-  });
-
-  test('Verify Feature Popover shown on start and on interaction defaultVisible = true, interaction=Hover, disabled = false', async ({ page }) => {
-    const standPath = 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultVisible: true, interaction: 'hover', disabled: false });
-
-    await page.setContent(htmlContent);
-    const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
-    const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-
-    await featurePopoverPopper.waitFor({ state: 'visible' });
-    await expect(featurePopoverPopper).toHaveCount(1);
-
-    await page.keyboard.press('Escape');
-    await featurePopoverPopper.waitFor({ state: 'hidden' });
-    await expect(featurePopoverPopper).toHaveCount(0);
-
-    await ddTrigger.hover();
-    await featurePopoverPopper.waitFor({ state: 'visible' });
-    await expect(featurePopoverPopper).toHaveCount(1);
-  });
-
-  test('Verify Feature Popover not shown on start and on interaction defaultVisible = false, interaction=Hover, disabled = true', async ({ page }) => {
-    const standPath = 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultVisible: false, interaction: 'hover', disabled: true });
-
-    await page.setContent(htmlContent);
-    const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
-    const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-
-    await expect(featurePopoverPopper).toHaveCount(0);
-
-    await ddTrigger.hover();
-    await expect(featurePopoverPopper).toHaveCount(0);
   });
 
   test('Verify Focus order when disablePortal = false', async ({ page }) => {

@@ -19,16 +19,13 @@ const Demo = (props: ExampleProps) => {
         onVisibleChange={setVisible}
         disablePortal
         placement={props.placement}
-        interaction={props.interaction}
         timeout={props.timeout}
-        defaultVisible={props.defaultVisible}
-        disabled={props.disabled}
-        disableEnforceFocus={props.disableEnforceFocus}
-        focusLoop={props.focusLoop}
         explicitTriggerSet={props.explicitTriggerSet}
         cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
-
+        closeIcon={props.closeIcon}
+        duration={props.duration}
+        visible={props.visible}
       >
         <FeaturePopover.Trigger disableEnforceFocus={props.disableEnforceFocus}>
           <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
@@ -80,12 +77,8 @@ const Demo = (props: ExampleProps) => {
 
 export const defaultProps: ExampleProps = {
   placement: undefined,
-  interaction: undefined,
+  visible: true,
   timeout: undefined,
-  defaultVisible: true,
-  disabled: false,
-  disableEnforceFocus: false,
-  focusLoop: false,
   explicitTriggerSet: false,
   cursorAnchoring: false,
   popperMargin: undefined,

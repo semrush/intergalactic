@@ -20,15 +20,12 @@ const Demo = (props: ExampleProps) => {
         visible={visible}
         disablePortal={props.disablePortal}
         placement={props.placement}
-        interaction={props.interaction}
         timeout={props.timeout}
-        disabled={props.disabled}
-        disableEnforceFocus={props.disableEnforceFocus}
-        focusLoop={props.focusLoop}
         explicitTriggerSet={props.explicitTriggerSet}
         cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
-
+        closeIcon={props.closeIcon}
+        duration={props.duration}
       >
         <FeaturePopover.Trigger>
           <DropdownMenu>
@@ -80,18 +77,13 @@ const Demo = (props: ExampleProps) => {
 
 export const defaultProps: ExampleProps = {
   placement: undefined,
-  interaction: undefined,
   timeout: undefined,
-  disabled: false,
-  disableEnforceFocus: false,
   disablePortal: true,
-  focusLoop: false,
   explicitTriggerSet: false,
   cursorAnchoring: false,
   popperMargin: undefined,
   closeIcon: true,
   duration: undefined,
-  autoFocus: true,
 };
 
 Demo.defaultProps = defaultProps;

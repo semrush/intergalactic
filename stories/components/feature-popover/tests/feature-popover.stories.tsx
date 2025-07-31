@@ -16,7 +16,6 @@ const meta: Meta<typeof FeaturePopover> = {
 export default meta;
 
 const baseArgTypes = {
-  disabled: { control: { type: 'boolean' } },
   placement: {
     control: { type: 'select' },
     options: [
@@ -37,13 +36,7 @@ const baseArgTypes = {
       'left-start',
     ],
   },
-  interaction: {
-    control: { type: 'select' },
-    options: ['none', 'hover', 'focus', 'click'],
-  },
   timeout: { control: { type: 'number' } },
-  disableEnforceFocus: { control: { type: 'boolean' } },
-  focusLoop: { control: { type: 'boolean' } },
   explicitTriggerSet: { control: { type: 'boolean' } },
   cursorAnchoring: { control: { type: 'boolean' } },
   popperMargin: { control: { type: 'number' } },
@@ -55,10 +48,6 @@ export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
   render: FeaturePopoverExample,
   argTypes: {
     ...baseArgTypes,
-    autoFocus: {
-      control: { type: 'select' },
-      options: [true, false, 'enforced'] as (boolean | 'enforced')[],
-    },
   },
   args: ExampleProps,
 };
@@ -67,7 +56,12 @@ export const FeaturePopoverMediumIllustration: StoryObj<typeof Example2Props> = 
   render: FeaturePopoverMediumIllustrationExample,
   argTypes: {
     ...baseArgTypes,
-    defaultVisible: { control: { type: 'boolean' } },
+
+    visible: {
+      control: { type: 'boolean' },
+    },
+
   },
+
   args: Example2Props,
 };
