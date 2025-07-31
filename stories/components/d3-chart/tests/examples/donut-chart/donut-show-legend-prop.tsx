@@ -11,12 +11,12 @@ const Demo = (props: ExampleDonutShowLegendProps) => {
 
   return (
     <div style={{ width: '450px' }}>
+      {/* @ts-ignore: the value is not statically known, but it's valid at runtime */}
       <Chart.Donut
         plotWidth={300}
         plotHeight={300}
         data={data}
         aria-label='Donut chart'
-        // @ts-ignore: the value is not statically known, but it's valid at runtime
         showLegend={showLegend}
       />
     </div>
