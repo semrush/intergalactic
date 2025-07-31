@@ -8,11 +8,15 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Ability to set columns into one grouped column.
 - RawData to `CellRenderProps`.
+- `line-height` for `Head.Column` items.
 - `overflow=hidden` for `CellWrapper`.
 
 ### Fixed
 
 - Usage of `changeSortSize` property with multiple columns.
+- Accordion content expands with visual issues when clicking on a merged cell.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
+- Hover styles aren't applied to themed cells.
 
 ### Changed
 

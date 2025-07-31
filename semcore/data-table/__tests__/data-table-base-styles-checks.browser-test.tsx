@@ -27,7 +27,7 @@ test.describe('Base styles Primary Table', () => {
     await test.step('Verify hovered header cell styles', async () => {
       await checkStyles(keywordHeader, {
         'font-size': '12px',
-        'line-height': 'normal',
+        'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
         'color': 'rgb(25, 27, 35)',
         'padding': '12px',
         'background-color': 'rgb(244, 245, 249)',
@@ -181,7 +181,7 @@ test.describe('Base styles Primary Table', () => {
     }
   });
 
-  test('Verify styles of Compact table', async ({ page }) => {
+  test('Verify styles of Compact table', async ({ page, browserName }) => {
     const standPath = 'stories/components/data-table/docs/examples/compact.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -194,7 +194,7 @@ test.describe('Base styles Primary Table', () => {
 
     await checkStyles(keywordHeader, {
       'font-size': '12px',
-      'line-height': 'normal',
+      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': 'rgb(25, 27, 35)',
       'padding': '12px 8px',
       'background-color': 'rgb(244, 245, 249)',
@@ -310,7 +310,7 @@ test.describe('Base styles Secondary Table', () => {
 
     await checkStyles(keywordHeader, {
       'font-size': '12px',
-      'line-height': 'normal',
+      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': 'rgb(25, 27, 35)',
       'padding': '8px',
       'background-color': 'rgb(255, 255, 255)',
