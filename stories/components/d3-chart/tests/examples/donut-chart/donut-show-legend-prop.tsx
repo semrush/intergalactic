@@ -16,6 +16,7 @@ const Demo = (props: ExampleDonutShowLegendProps) => {
         plotHeight={300}
         data={data}
         aria-label='Donut chart'
+        // @ts-ignore: the value is not statically known, but it's valid at runtime
         showLegend={showLegend}
       />
     </div>
