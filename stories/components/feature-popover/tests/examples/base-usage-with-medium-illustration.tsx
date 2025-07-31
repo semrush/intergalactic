@@ -23,11 +23,9 @@ const Demo = (props: ExampleProps) => {
         explicitTriggerSet={props.explicitTriggerSet}
         cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
-        closeIcon={props.closeIcon}
-        duration={props.duration}
         visible={props.visible}
       >
-        <FeaturePopover.Trigger disableEnforceFocus={props.disableEnforceFocus}>
+        <FeaturePopover.Trigger>
           <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
             <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
               Export

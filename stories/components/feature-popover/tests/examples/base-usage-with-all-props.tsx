@@ -24,12 +24,10 @@ const Demo = (props: ExampleProps) => {
         explicitTriggerSet={props.explicitTriggerSet}
         cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
-        closeIcon={props.closeIcon}
-        duration={props.duration}
       >
         <FeaturePopover.Trigger>
           <DropdownMenu>
-            <DropdownMenu.Trigger tag={Button} addonLeft={FileExport} disableEnforceFocus={props.disableEnforceFocus}>
+            <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
               Export
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu>
