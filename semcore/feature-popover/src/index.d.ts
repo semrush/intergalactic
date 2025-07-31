@@ -5,7 +5,7 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/types';
-import type { AnimationProps, OutsideClickProps, PortalProps } from '@semcore/base-components';
+import type { AnimationProps, BoxProps, OutsideClickProps, PortalProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import type { Box } from '@semcore/flex-box';
 import type { PopperContext, PopperPopperProps } from '@semcore/popper';
@@ -126,8 +126,10 @@ export type FeaturePopoverProps = FPPopperProps & {
   onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
 };
 
+export type FeaturePopoverTriggerProps = BoxProps;
+
 declare const FeaturePopover: Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
-  Trigger: typeof Popper.Trigger;
+  Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
   Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
   Spot: typeof Box;
 };

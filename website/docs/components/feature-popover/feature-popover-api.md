@@ -24,7 +24,7 @@ import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-<TypesView type="PopperTriggerProps" :types={...types} />
+<TypesView type="FeaturePopoverTriggerProps" :types={...types} />
 
 ## FeaturePopover.Popper
 
