@@ -47,10 +47,13 @@ const data = [
   },
 ];
 
-export default function App() {
+type accordionMergedProps = { loading: boolean };
+const Demo = (props: accordionMergedProps) => {
   return (
     <DataTable
       data={data}
+      h={100}
+      loading={props.loading}
       aria-label='Rows grouping'
       columns={[
         { name: 'keyword', children: 'Keyword' },
@@ -60,4 +63,12 @@ export default function App() {
       ]}
     />
   );
-}
+};
+
+export const accordionMergedProps = {
+  loading: false,
+};
+
+Demo.defaultMergedProps = accordionMergedProps;
+
+export default Demo;
