@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Ability to set columns into one grouped column.
+- Ability to render multiple columns under one single-level column header.
 - RawData to `CellRenderProps`.
 - `overflow=hidden` for `CellWrapper`.
 
