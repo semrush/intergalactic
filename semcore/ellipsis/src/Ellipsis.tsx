@@ -1,4 +1,4 @@
-import { isTextOverflowing, useResizeObserver } from '@semcore/base-components';
+import { isTextOverflowing, useResizeObserver, setFontSettings } from '@semcore/base-components';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -223,26 +223,22 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   } = props;
 
   const resizeElement = React.useRef<HTMLDivElement>(null);
-  const [dimension, setDimension] = React.useState<{ fontSize: string; symbolWidth: number }>({
-    fontSize: '14',
-    symbolWidth: 0,
-  });
+  const [symbolWidth, setSymbolWidth] = React.useState(0);
   const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
   useEnhancedEffect(() => {
     const node = containerRef?.current || resizeElement?.current;
     if (!node) return;
 
+    const styleElement = window.getComputedStyle(node);
     const dateSpan = document.createElement('temporary-block');
-    dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
+
+    setFontSettings(dateSpan, styleElement);
     dateSpan.innerHTML = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
 
-    setDimension({
-      fontSize: window.getComputedStyle(node, null).getPropertyValue('font-size'),
-      symbolWidth: rect.width,
-    });
+    setSymbolWidth(rect.width);
     document.body.removeChild(dateSpan);
   }, []);
 
@@ -251,8 +247,12 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const SContainerMiddle = Tooltip;
   const SAdvancedModeContainerMiddle = Tooltip;
   const displayedSymbols = React.useMemo(
-    () => Math.round(blockWidth / dimension.symbolWidth),
-    [blockWidth, dimension.symbolWidth],
+    () => {
+      const displayedSymbols = Math.round(blockWidth / symbolWidth);
+
+      return displayedSymbols % 2 === 0 ? displayedSymbols : displayedSymbols - 1;
+    },
+    [blockWidth, symbolWidth],
   );
 
   const interaction = text.length > displayedSymbols ? 'hover' : 'none';

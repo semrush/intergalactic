@@ -2365,6 +2365,7 @@
     "components": [
       "button",
       "d3-chart",
+      "data-table",
       "format-text",
       "fullscreen-modal",
       "switch",

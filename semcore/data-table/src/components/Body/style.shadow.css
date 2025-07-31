@@ -31,8 +31,6 @@ SCollapseRow SCell {
 
 /* DEFAULT THEME */
 SRow[active] > SCellWrapper > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
@@ -55,19 +53,17 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* MUTED THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
-  SRow[theme='muted']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='muted']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted'],
   SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    /* The color is hardcoded because need hex(in figma rgba) */
-    /* disable-tokens-validator */
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
   /* INFO THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
-  SRow[theme='info']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='info']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info'],
@@ -77,17 +73,17 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* SUCCESS THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
-  SRow[theme='success']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='success']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success'],
-  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
   }
 
   /* WARNING THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRow[theme='warning']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='warning']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
@@ -97,7 +93,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* DANGER THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
-  SRow[theme='danger']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='danger']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger'],
@@ -112,8 +108,6 @@ SRow[theme='muted'] SCell:not([theme]) {
 }
 
 SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 

@@ -12,7 +12,14 @@ const Demo = (props: EllipsisProps) => {
           Card heading
         </Card.Title>
         <Card.Description tag='div' size={200}>
-          <Ellipsis tag={Ellipsis} trim={props.trim} tooltip={props.tooltip} maxLine={props.maxLine}>Additional long card description</Ellipsis>
+          <Ellipsis
+            tag={Ellipsis}
+            trim={props.trim}
+            tooltip={props.tooltip}
+            maxLine={props.maxLine}
+          >
+            Additional long card description with a lot of details about the widget
+          </Ellipsis>
         </Card.Description>
       </Card.Header>
       <Card.Body>
@@ -23,9 +30,9 @@ const Demo = (props: EllipsisProps) => {
 };
 
 export const defaultProps: EllipsisProps = {
-  trim: 'end',
-  tooltip: true,
-  maxLine: 1,
+  trim: undefined,
+  tooltip: undefined,
+  maxLine: 2,
 };
 
 Demo.defaultProps = defaultProps;

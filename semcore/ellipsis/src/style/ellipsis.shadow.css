@@ -1,16 +1,16 @@
-SContainer,
-SNoTooltipContainer,
-SContainerMiddle {
-  display: flex;
-  overflow: hidden;
-}
-
 SBeginning,
 SEllipsis {
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;
   white-space: pre;
+}
+
+SContainer,
+SNoTooltipContainer,
+SContainerMiddle {
+  display: flex;
+  overflow: hidden;
 }
 
 SEllipsis[maxLine] {

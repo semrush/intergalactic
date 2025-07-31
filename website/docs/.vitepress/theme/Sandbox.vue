@@ -75,7 +75,9 @@ const codesandboxUrl = computed(() => {
             react: '18',
             'react-dom': '18',
             '@types/react': '18',
-            '@fontsource/inter': '5'
+            '@fontsource/inter': '5',
+            '@semcore/base-components': 'latest',
+            '@semcore/core': 'latest'
           },
         },
       },

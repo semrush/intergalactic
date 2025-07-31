@@ -16,6 +16,16 @@ export type EllipsisSettings = {
   maxLine?: number;
 };
 
+export const setFontSettings = (element: HTMLElement, styleElement: CSSStyleDeclaration): void => {
+  element.style.fontFamily = styleElement.getPropertyValue('font-family');
+  element.style.fontSize = styleElement.getPropertyValue('font-size');
+  element.style.fontWeight = styleElement.getPropertyValue('font-weight');
+  element.style.lineHeight = styleElement.getPropertyValue('line-height');
+  element.style.fontFeatureSettings =
+    styleElement.getPropertyValue('font-feature-settings');
+  element.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
+};
+
 function createMeasurerElement(element: HTMLElement, text?: string) {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
@@ -25,16 +35,10 @@ function createMeasurerElement(element: HTMLElement, text?: string) {
   temporaryElement.style.right = '0%';
   temporaryElement.style.bottom = '0%';
   temporaryElement.style.visibility = 'hidden';
-  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
-  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
-  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
-  temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
   temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
   temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
 
-  temporaryElement.style.fontFeatureSettings =
-    styleElement.getPropertyValue('font-feature-settings');
-  temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
+  setFontSettings(temporaryElement, styleElement);
 
   temporaryElement.innerHTML = text ?? element.innerHTML;
   return temporaryElement;
