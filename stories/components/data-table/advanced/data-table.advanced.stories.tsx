@@ -2,7 +2,6 @@ import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample from './examples/accordion_in_merged_rows';
-import CheckboxInTableWithNoDataExample from './examples/checkbox-in-table-with-no-data';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
@@ -20,10 +19,6 @@ type Story = StoryObj<typeof DataTable>;
 
 export const AccordionInMergedRows: Story = {
   render: AccordionInMergedRowsExample,
-};
-
-export const CheckboxInTableWithNoData: Story = {
-  render: CheckboxInTableWithNoDataExample,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {
