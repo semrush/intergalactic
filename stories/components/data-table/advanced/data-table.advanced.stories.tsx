@@ -1,7 +1,7 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AccordionInMergedRowsExample from './examples/accordion_in_merged_rows';
+import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
@@ -18,8 +18,12 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const AccordionInMergedRows: Story = {
+export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   render: AccordionInMergedRowsExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: accordionMergedProps,
 };
 
 export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
