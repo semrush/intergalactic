@@ -409,8 +409,6 @@ class DataTableRoot<
   ) => {
     const hasFocusable = this.hasFocusableInHeader();
 
-    console.log(hasFocusable, rowIndex, colIndex, colIndex);
-
     const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows || 1;
 
