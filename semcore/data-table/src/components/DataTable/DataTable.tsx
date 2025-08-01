@@ -386,11 +386,11 @@ class DataTableRoot<
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
       this.handlers.expandedRows(new Set([...expandedRows]));
-      onAccordionToggle?.('close', expandedRow[ROW_INDEX], expandedRow[UNIQ_ROW_KEY]);
+      onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
-      onAccordionToggle?.('open', expandedRow[ROW_INDEX], expandedRow[UNIQ_ROW_KEY]);
+      onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
         const rowIndex = expandedRow[ROW_INDEX];
@@ -911,6 +911,7 @@ class DataTableRoot<
         alignItems: columnElement.props.alignItems,
         alignContent: columnElement.props.alignContent,
         justifyContent: columnElement.props.justifyContent,
+        textAlign: columnElement.props.textAlign,
         children: '',
       };
 

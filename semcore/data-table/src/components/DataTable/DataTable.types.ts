@@ -135,7 +135,7 @@ export type DataTableProps<
     accordionDuration?: number | [number, number];
 
     /**
-     * Describe accordion mode.
+     * Whether multiple accordion items can be open at a time, or only one.
      * @default 'independent'
      */
     accordionMode?: 'toggle' | 'independent';
@@ -144,7 +144,7 @@ export type DataTableProps<
      * Handle open/close accordion.
      * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
      */
-    onAccordionToggle?: (type: 'open' | 'close', rowIndex: number, uniqRowKey: UniqKeyType) => void;
+    onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

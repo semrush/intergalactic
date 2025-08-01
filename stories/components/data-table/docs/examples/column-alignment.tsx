@@ -8,9 +8,24 @@ const Demo = () => {
       aria-label='Column alignment'
       columns={[
         { name: 'keyword', children: 'Keyword' },
-        { name: 'kd', children: 'KD %', justifyContent: 'flex-end' },
-        { name: 'cpc', children: 'CPC', justifyContent: 'flex-end' },
-        { name: 'vol', children: 'Vol.', justifyContent: 'flex-end' },
+        {
+          name: 'kd',
+          children: 'KD %',
+          justifyContent: 'flex-end',
+          textAlign: 'end',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+          justifyContent: 'flex-end',
+          textAlign: 'end',
+        },
+        {
+          name: 'vol',
+          children: 'Vol.',
+          justifyContent: 'flex-end',
+          textAlign: 'end',
+        },
       ]}
     />
   );
