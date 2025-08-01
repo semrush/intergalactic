@@ -8,8 +8,8 @@ import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/
 import type { AnimationProps, BoxProps, OutsideClickProps, PortalProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import type { Box } from '@semcore/flex-box';
-import type { PopperContext, PopperPopperProps } from '@semcore/popper';
-import type Popper, { Placement } from '@semcore/popper';
+import type { PopperContext, PopperPopperProps, Placement } from '@semcore/popper';
+import type Popper from '@semcore/popper';
 
 /**
  * Popper must have an accessible names (aria-group-name).
