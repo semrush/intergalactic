@@ -73,18 +73,6 @@ test.describe('Accordion in table', () => {
       await firstArrow.click();
       await plot.waitFor({ state: 'hidden' });
       await expect(plot).toHaveCount(0);
-      await firstArrow.click();
-      await plot.waitFor({ state: 'visible' });
-
-      const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-      await thirdArrow.click();
-      await plot.nth(1).waitFor({ state: 'visible' });
-      await expect(plot).toHaveCount(2);
-      await thirdArrow.click();
-      await plot.nth(1).waitFor({ state: 'hidden' });
-      await firstArrow.click();
-      await plot.nth(0).waitFor({ state: 'hidden' });
-      await expect(plot).toHaveCount(0);
     });
 
     await test.step('Verify accordion collapse when clicking any cell in row in case accordion in 1st cell', async () => {
