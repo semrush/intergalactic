@@ -12,6 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - RawData to `CellRenderProps`.
 - `line-height` for `Head.Column` items.
 - `overflow=hidden` for `CellWrapper`.
+- `textAlign` property to all column cells.
 
 ### Fixed
 

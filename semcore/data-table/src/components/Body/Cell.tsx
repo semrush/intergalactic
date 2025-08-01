@@ -202,6 +202,7 @@ class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {
           alignItems={column.alignItems}
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
+          textAlign={column.textAlign}
         >
           <Children />
         </SCell>
