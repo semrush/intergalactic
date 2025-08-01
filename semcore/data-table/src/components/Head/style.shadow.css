@@ -9,12 +9,12 @@ SHead[animationDuration] > SColumn {
 SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 12;
 }
 
 SHead[sticky] SGroupContainer > SColumn {
   position: sticky;
-  z-index: 2;
+  z-index: 12;
 }
 
 SHead[compact] SColumn {
@@ -130,7 +130,7 @@ SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
 SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
   position: sticky;
   /* because up resizable */
-  z-index: 3;
+  z-index: 13;
 }
 
 SColumn[sortable]:hover {

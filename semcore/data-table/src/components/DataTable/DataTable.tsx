@@ -217,6 +217,7 @@ class DataTableRoot<
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     return {
+      ...headerProps,
       columns: this.columns,
       treeColumns: this.treeColumns,
       use,
@@ -226,7 +227,7 @@ class DataTableRoot<
       onSortChange,
       getI18nText,
       uid,
-      ref: this.headerRef,
+      ref: headerProps?.ref ? forkRef(this.headerRef, headerProps.ref) : this.headerRef,
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
@@ -248,7 +249,6 @@ class DataTableRoot<
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
-      ...headerProps,
     };
   }
 
@@ -268,11 +268,13 @@ class DataTableRoot<
       sideIndents,
       selectedRows,
       accordionDuration,
+      accordionMode,
       data: rawData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
       accordionDuration,
+      accordionMode,
       columns: this.columns,
       rows: this.rows,
       flatRows: this.flatRows,
@@ -379,16 +381,24 @@ class DataTableRoot<
   };
 
   onExpandRow = (expandedRow: DTRow<UniqKeyType>) => {
-    const { expandedRows } = this.asProps;
+    const { expandedRows, onAccordionToggle, accordionMode } = this.asProps;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
       setTimeout(() => {
         this.handlers.expandedRows(new Set([...expandedRows]));
       }, 300);
+      onAccordionToggle?.('close', expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
+      onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
+
+      if (accordionMode === 'toggle') {
+        const rowIndex = expandedRow[ROW_INDEX];
+        const colIndex = this.focusedCell[1];
+        this.initFocusableCell([this.hasFocusableInHeader() ? rowIndex + 1 : rowIndex, colIndex]);
+      }
     }
   };
 
@@ -752,14 +762,14 @@ class DataTableRoot<
           <ScrollArea.Bar
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
-            zIndex={10}
+            zIndex={20}
           />
         )}
 
         {!loading && (
           <>
-            <ScrollArea.Bar orientation='horizontal' zIndex={10} />
-            <ScrollArea.Bar orientation='vertical' zIndex={10} />
+            <ScrollArea.Bar orientation='horizontal' zIndex={20} />
+            <ScrollArea.Bar orientation='vertical' zIndex={20} />
           </>
         )}
 

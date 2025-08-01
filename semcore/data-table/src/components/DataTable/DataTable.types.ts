@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import type { DataTableBodyProps } from '../Body/Body.types';
+import type { DataTableBodyProps, BodyPropsInner } from '../Body/Body.types';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 import type { DataTableHeadProps } from '../Head/Head.types';
@@ -133,6 +133,18 @@ export type DataTableProps<
      * @default 200
      */
     accordionDuration?: number | [number, number];
+
+    /**
+     * Whether multiple accordion items can be open at a time, or only one.
+     * @default 'independent'
+     */
+    accordionMode?: 'toggle' | 'independent';
+
+    /**
+     * Handle open/close accordion.
+     * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
+     */
+    onAccordionToggle?: (type: 'open' | 'close', rowIndex: number) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

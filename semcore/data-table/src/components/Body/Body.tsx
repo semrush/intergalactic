@@ -45,7 +45,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
   };
 
   handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
-    const { accordionDuration } = this.asProps;
+    const { accordionDuration, accordionMode, expandedRows, onExpandRow } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
       : accordionDuration ??
@@ -62,26 +62,41 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       }
     }, openDuration + 100); // we need to calculate after expanding animation
 
-    if (this.asProps.expandedRows.has(row[UNIQ_ROW_KEY])) {
+    if (expandedRows.has(row[UNIQ_ROW_KEY])) {
+      this.closeAccordion(row, closeDuration);
+    } else {
+      if (accordionMode === 'toggle' && expandedRows.size === 1) {
+        const previousRowKey = expandedRows.values().next().value;
+        if (previousRowKey) {
+          const previousRow = this.asProps.flatRows.find((r) => r[UNIQ_ROW_KEY] === previousRowKey);
+          if (previousRow) {
+            this.closeAccordion(previousRow, closeDuration);
+          }
+        }
+      }
+      onExpandRow(row);
+    }
+  };
+
+  closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
+    const { onExpandRow } = this.asProps;
+
+    this.setState((prevState) => {
+      prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+      return {
+        expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+      };
+    });
+    setTimeout(() => {
+      onExpandRow(row);
+
       this.setState((prevState) => {
-        prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+        prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
         return {
           expandedForAnimation: new Set([...prevState.expandedForAnimation]),
         };
       });
-      setTimeout(() => {
-        this.asProps.onExpandRow(row);
-
-        this.setState((prevState) => {
-          prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
-          return {
-            expandedForAnimation: new Set([...prevState.expandedForAnimation]),
-          };
-        });
-      }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
-    } else {
-      this.asProps.onExpandRow(row);
-    }
+    }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
   };
 
   handleClickRow = (row: DTRow<UniqKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
