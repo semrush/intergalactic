@@ -12,6 +12,18 @@ SHintPopper {
   max-width: 340px;
   word-break: break-all;
   visibility: hidden;
+
+  animation-fill-mode: both;
+  animation-timing-function: var(--timingFunction);
+  animation-duration: var(--durationFinalize);
+  animation-delay: var(--delayFinalize);
+  animation-name: var(--keyframesFinalize);
+
+  &[visible] {
+    animation-duration: var(--durationInitialize);
+    animation-delay: var(--delayInitialize);
+    animation-name: var(--keyframesInitialize);
+  }
 }
 
 SHintArrow {
@@ -20,4 +32,15 @@ SHintArrow {
   width: 8px;
   height: 8px;
   transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion) {
+  SHintPopper {
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
+  }
+  SHintPopper[visible] {
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
+  }
 }

@@ -1,11 +1,15 @@
 import { computePosition, flip, offset, shift, arrow, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component, type Intergalactic } from '@semcore/core';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
+import type { DataType } from 'csstype';
 import React from 'react';
 
 import { Box } from '../flex-box';
 import { Portal } from '../portal';
 import styles from './style/hint.shadow.css';
+import style from '../animation/style/keyframes.shadow.css';
+import keyframes from '../animation/style/keyframes.shadow.css';
 
 type Handlers = {
   visible: (visible: boolean) => void;
@@ -23,7 +27,7 @@ export type SimpleHintPopperProps = {
    * Timer to show and hide the popper
    * @default [100, 50]
    */
-  timeout?: number | [number, number];
+  timeout?: DefaultProps['delay'];
   /**
    * Hint content.
    * Better to use here some short text.
@@ -41,22 +45,50 @@ export type SimpleHintPopperProps = {
 
 type HintComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 
+type DefaultProps = {
+  defaultVisible?: boolean;
+  timeout: number | [number, number];
+  delay: number | [number, number];
+  timingFunction: DataType.EasingFunction;
+};
+
+type State = {
+  innerVisible: boolean;
+  calculatedPlacement?: Placement;
+};
+
 const enhances = [
   zIndexStackingEnhance('z-index-tooltip'),
+  cssVariableEnhance({
+    variable: '--intergalactic-duration-popper',
+    fallback: '200',
+    map: (v: string) => Number.parseInt(v, 10).toString(),
+    prop: 'duration',
+  }),
 ] as const;
 
-class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enhances, { timeout: [number, number] }, Handlers> {
+function propToArray(prop: number | [number, number]): [number, number] {
+  return Array.isArray(prop) ? prop : [prop, prop];
+}
+
+const keyframesMap = new Map<Placement, string>();
+
+class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof enhances, DefaultProps, Handlers> {
   public readonly hintRef = React.createRef<HTMLElement>();
   private readonly arrowRef = React.createRef<HTMLDivElement>();
+
+  static style = Object.assign(keyframes, styles);
 
   private showTimer?: number;
   private hideTimer?: number;
 
   static enhance = enhances;
 
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     defaultVisible: false,
     timeout: [100, 50],
+    delay: 0,
+    timingFunction: 'ease-out',
   };
 
   constructor(props: SimpleHintPopperProps) {
@@ -66,6 +98,11 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enh
     this.handleBlur = this.handleBlur.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+
+    this.state = {
+      innerVisible: props.visible ?? false,
+      calculatedPlacement: undefined,
+    };
   }
 
   uncontrolledProps() {
@@ -136,6 +173,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enh
             });
             popperElement.style.visibility = 'visible';
 
+            this.setState({ innerVisible: true, calculatedPlacement: placement });
+
             const arrow = middlewareData.arrow;
 
             if (arrow) {
@@ -169,7 +208,9 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enh
       clearTimeout(this.showTimer);
     }
 
-    window.setTimeout(() => {
+    this.setState({ innerVisible: false });
+
+    this.hideTimer = window.setTimeout(() => {
       this.hintRef.current?.style.setProperty('visibility', 'hidden');
       this.handlers.visible(false);
     }, hideTimeout);
@@ -199,24 +240,63 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enh
     }
   }
 
+  private keyframesKey(placement?: Placement) {
+    if (!placement) {
+      return 'opacity';
+    }
+
+    if (keyframesMap.has(placement)) {
+      return keyframesMap.get(placement)!;
+    }
+
+    let keyframe: string = 'opacity';
+
+    if (placement.startsWith('left')) keyframe = 'scale-left';
+    if (placement.startsWith('right')) keyframe = 'scale-right';
+    if (placement.startsWith('bottom')) keyframe = 'scale-bottom';
+    if (placement.startsWith('top')) keyframe = 'scale-top';
+
+    keyframesMap.set(placement, keyframe);
+
+    return keyframe;
+  }
+
   render() {
     const SHintPopper = Root;
     const SHintArrow = Box;
-    const { visible, Children, triggerRef, parentZIndexStacking } = this.asProps;
+    const { visible, Children, triggerRef, parentZIndexStacking, styles, timingFunction } = this.asProps;
+    const { innerVisible, calculatedPlacement } = this.state;
 
     if (!visible) {
       return null;
     }
 
     requestAnimationFrame(() => {
-      if (!triggerRef.current?.textContent) {
+      if (!triggerRef.current?.textContent && visible) {
         triggerRef.current?.setAttribute('aria-label', this.hintRef.current?.textContent ?? '');
       }
     });
 
+    const duration = propToArray(Number(this.asProps.duration));
+    const delay = propToArray(this.asProps.delay);
+
     return sstyled(styles)(
       <Portal>
-        <SHintPopper render={Box} ref={this.hintRef} aria-hidden={true} role={undefined} zIndex={parentZIndexStacking}>
+        <SHintPopper
+          render={Box}
+          ref={this.hintRef}
+          aria-hidden={true}
+          role={undefined}
+          zIndex={parentZIndexStacking}
+          use:visible={innerVisible}
+          durationInitialize={`${duration[0]}ms`}
+          durationFinalize={`${duration[1]}ms`}
+          delayInitialize={`${delay[0]}ms`}
+          delayFinalize={`${delay[1]}ms`}
+          timingFunction={timingFunction}
+          keyframesInitialize={style[`@${this.keyframesKey(calculatedPlacement)}-in`]}
+          keyframesFinalize={style[`@${this.keyframesKey(calculatedPlacement)}-out`]}
+        >
           <Children />
           <SHintArrow ref={this.arrowRef} />
         </SHintPopper>
