@@ -9,6 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
+    "compress": "pnpm svgo -f svg/${ICON} --config ./svgo.config.mjs",
     "transform": "pnpm icon-transform-svg",
     "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg.config.js && pnpm vite build",
     "clean": "node clean.js"
@@ -28,8 +29,9 @@
   "devDependencies": {
     "@semcore/base-components": "workspace:*",
     "@semcore/icon-transform-svg": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "workspace:*"
+    "svgo": "^4.0.0"
   },
   "exports": {
     ".": {
