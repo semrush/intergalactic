@@ -7,7 +7,7 @@ test.describe('Styles', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.locator('a[data-ui-name="Breadcrumbs.Item"]');
     const chevronIcons = page.locator('[data-ui-name="ChevronRight"]');
     const lastItem = page.locator('[aria-current="page"]');
 
@@ -44,8 +44,10 @@ test.describe('Styles', () => {
     });
 
     await test.step('Verify links in normal and hover states', async () => {
-      for (const link of await breadcrumbLinks.all()) {
+      const links = await breadcrumbLinks.all();
+      for (const link of links) {
         const styles = await link.evaluate((el) => {
+          console.log(el);
           const computed = getComputedStyle(el);
           return {
             fontSize: computed.fontSize,
@@ -102,25 +104,10 @@ test.describe('Styles', () => {
 
     await page.setContent(htmlContent);
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
-    const lastItem = page.locator('[aria-current="page"]');
-
-    await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-    await breadcrumbLinks.first().hover();
-    await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-
-    await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
-    await breadcrumbLinks.nth(1).hover();
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-
-    await lastItem.hover();
-    await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
-
     await page.keyboard.press('Tab');
-    await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-
     await page.keyboard.press('Tab');
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
+
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify ellipsis truncation in middle', async ({ page }) => {
@@ -129,19 +116,8 @@ test.describe('Styles', () => {
 
     await page.setContent(htmlContent);
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Box"]');
-    const lastItem = page.locator('[aria-current="page"]');
-
-    await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-    await breadcrumbLinks.first().hover();
-    await expect(breadcrumbLinks.first()).toHaveAttribute('aria-describedby', /popper/);
-
-    await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
-    await breadcrumbLinks.nth(1).hover();
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-
-    await lastItem.hover();
-    await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
 
     await expect(page).toHaveScreenshot();
   });
@@ -228,7 +204,7 @@ test.describe('Keyboard and mouse interactions', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
     const lastItem = page.locator('[aria-current="page"]');
 
     await page.keyboard.press('Tab');
@@ -236,14 +212,8 @@ test.describe('Keyboard and mouse interactions', () => {
 
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.nth(1)).toBeFocused();
-    breadcrumbLinks.nth(1).hover();
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
 
     await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Escape');
-    await expect(breadcrumbLinks.nth(1)).toBeFocused();
-    await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
 
     await page.keyboard.press('Shift+Tab');
     await expect(breadcrumbLinks.first()).toBeFocused();

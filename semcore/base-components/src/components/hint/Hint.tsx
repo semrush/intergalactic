@@ -23,7 +23,10 @@ export type SimpleHintPopperProps = {
    * @default [100, 50]
    */
   timeout?: number | [number, number];
-  /** Hint content */
+  /**
+   * Hint content.
+   * Better to use here some short text.
+   * */
   children: React.ReactNode;
 
   /** Popper visibility value */
@@ -192,15 +195,21 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, [], { time
   render() {
     const SHintPopper = Root;
     const SHintArrow = Box;
-    const { visible, Children } = this.asProps;
+    const { visible, Children, triggerRef } = this.asProps;
 
     if (!visible) {
       return null;
     }
 
+    requestAnimationFrame(() => {
+      if (!triggerRef.current?.textContent) {
+        triggerRef.current?.setAttribute('aria-label', this.hintRef.current?.textContent ?? '');
+      }
+    });
+
     return sstyled(styles)(
       <Portal>
-        <SHintPopper render={Box} ref={this.hintRef}>
+        <SHintPopper render={Box} ref={this.hintRef} aria-hidden={true} role={undefined}>
           <Children />
           <SHintArrow ref={this.arrowRef} />
         </SHintPopper>
