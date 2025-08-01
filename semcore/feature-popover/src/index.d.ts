@@ -55,11 +55,6 @@ export type FPPopperProps = OutsideClickProps &
      * Modifiers for popper.js
      */
     modifiers?: Array<Partial<Modifier<any, any>>>;
-    /**
-     * The position of the popper relative to the trigger that called it.
-     * @default auto
-     */
-    placement?: Placement;
     /** Timer to show and hide the popper */
     timeout?: number | [number, number];
     /** PopperJS modifier settings for popper indent */
@@ -87,6 +82,7 @@ export type FPPopperProps = OutsideClickProps &
     explicitTriggerSet?: boolean;
     /**
      * If set, popper will be placed near the place mouse cursor entered the trigger
+     * @deprecated
      */
     cursorAnchoring?: boolean;
 
@@ -124,6 +120,11 @@ export type FeaturePopoverProps = FPPopperProps & {
   visible?: boolean;
   /** Function called when visibility changes */
   onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+  /**
+   * The position of the popper relative to the trigger that called it.
+   * @default auto
+   */
+  placement?: Placement;
 };
 
 export type FeaturePopoverTriggerProps = BoxProps;
