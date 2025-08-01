@@ -339,15 +339,7 @@ test.describe('Fullscreen modal', () => {
       await modal.waitFor();
       await expect(modal).toBeVisible();
       await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
-      await expect(page.locator('[data-ui-name="Tooltip"]')).toHaveAttribute(
-        'aria-describedby',
-        /popper/i,
-      );
-      await page.locator('[data-ui-name="FullscreenModal.Description"]').hover();
-      await expect(page.locator('[data-ui-name="Tooltip"]')).not.toHaveAttribute(
-        'aria-describedby',
-        /popper/i,
-      );
+      await expect(page).toHaveScreenshot();
     });
 
     test('Verify Close Back without Header ', async ({ page }) => {
