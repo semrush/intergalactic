@@ -13,6 +13,7 @@ const Demo = (props: AccordionWithButtonProps) => {
     <DataTable
       data={data}
       aria-label='Accordion inside table'
+      accordionMode={props.accordionMode}
       onAccordionToggle={(type, i) => {
         console.log('called', type, i);
       }}
