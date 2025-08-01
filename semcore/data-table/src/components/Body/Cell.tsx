@@ -7,10 +7,11 @@ import * as React from 'react';
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import style from './style.shadow.css';
+import { ROW_INDEX } from '../DataTable/DataTable';
 
 const DEFAULT_ROW_DURATION = 50;
 
-class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner> {
+class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<UniqKeyType>> {
   static displayName = 'Cell';
   static style = style;
 
@@ -116,9 +117,19 @@ class CellRoot extends Component<DataTableCellProps, {}, {}, [], CellPropsInner>
   }
 
   handleClickCell = (e: React.SyntheticEvent) => {
-    const { rowIndex, columnIndex, onClick, row } = this.asProps;
+    const { rowIndex, columnIndex, onClick, row, column, flatRows } = this.asProps;
 
-    onClick(e, { rowIndex, colIndex: columnIndex, row });
+    const cell = row[column.name];
+    if (cell instanceof MergedRowsCell) {
+      const rIndex = rowIndex + cell.rowsCount - 1;
+      const row = flatRows[rIndex];
+
+      if (!row) return;
+
+      onClick(e, { rowIndex: rIndex, colIndex: columnIndex, row });
+    } else {
+      onClick(e, { rowIndex, colIndex: columnIndex, row });
+    }
   };
 
   render() {

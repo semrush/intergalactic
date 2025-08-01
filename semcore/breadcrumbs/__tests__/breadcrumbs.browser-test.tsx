@@ -129,7 +129,7 @@ test.describe('Styles', () => {
 
     await page.setContent(htmlContent);
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Box"]');
+    const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
     const lastItem = page.locator('[aria-current="page"]');
 
     await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);

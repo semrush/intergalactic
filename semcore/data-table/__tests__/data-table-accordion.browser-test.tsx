@@ -758,4 +758,24 @@ test.describe('Accordion in table', () => {
       await expect(datatableChild).not.toBeVisible();
     });
   });
+
+  test('Verify mouse interaction on a cell with merged rows', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const collapse = page.locator('[data-ui-name="Collapse"]');
+    const spannedCell = page.locator('[data-ui-name="Body.Row"] div[aria-rowspan="3"]');
+    const showDetails = page.locator('[aria-label="Show details"]').first();
+
+    await expect(collapse).toBeHidden();
+
+    await spannedCell.click();
+    await expect(collapse).toBeVisible();
+
+    await showDetails.click();
+    await expect(collapse).toBeHidden();
+  });
 });
