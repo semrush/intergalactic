@@ -70,7 +70,9 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
         if (previousRowKey) {
           const previousRow = this.asProps.flatRows.find((r) => r[UNIQ_ROW_KEY] === previousRowKey);
           if (previousRow) {
-            this.closeAccordion(previousRow, closeDuration);
+            setTimeout(() => {
+              this.closeAccordion(previousRow, closeDuration);
+            }, openDuration / 2);
           }
         }
       }

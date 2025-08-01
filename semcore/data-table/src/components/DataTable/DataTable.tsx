@@ -385,14 +385,12 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      setTimeout(() => {
-        this.handlers.expandedRows(new Set([...expandedRows]));
-      }, 300);
-      onAccordionToggle?.('close', expandedRow[ROW_INDEX]);
+      this.handlers.expandedRows(new Set([...expandedRows]));
+      onAccordionToggle?.('close', expandedRow[ROW_INDEX], expandedRow[UNIQ_ROW_KEY]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
-      onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
+      onAccordionToggle?.('open', expandedRow[ROW_INDEX], expandedRow[UNIQ_ROW_KEY]);
 
       if (accordionMode === 'toggle') {
         const rowIndex = expandedRow[ROW_INDEX];

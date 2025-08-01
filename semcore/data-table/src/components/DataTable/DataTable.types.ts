@@ -144,7 +144,7 @@ export type DataTableProps<
      * Handle open/close accordion.
      * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
      */
-    onAccordionToggle?: (type: 'open' | 'close', rowIndex: number) => void;
+    onAccordionToggle?: (type: 'open' | 'close', rowIndex: number, uniqRowKey: UniqKeyType) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
