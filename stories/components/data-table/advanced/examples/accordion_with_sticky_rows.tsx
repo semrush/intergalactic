@@ -3,8 +3,8 @@ import type { DataTableData } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
-
-const Demo = () => {
+type accordionStickyProps = { loading: boolean };
+const Demo = (props: accordionStickyProps) => {
   const [openedRow, setOpenedRow] = React.useState(new Set<number>());
   const headerRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -28,6 +28,7 @@ const Demo = () => {
   return (
     <DataTable
       data={data}
+      loading={props.loading}
       aria-label='Accordion inside table'
       headerProps={{ sticky: true, ref: headerRef }}
       defaultGridTemplateColumnWidth='1fr'
@@ -53,7 +54,7 @@ const Demo = () => {
             style: {
               position: 'sticky',
               top: `${headerHeight}px`,
-              zIndex: '20',
+              zIndex: '10',
             },
           };
         }
@@ -63,6 +64,12 @@ const Demo = () => {
     />
   );
 };
+
+export const accordionStickyProps = {
+  loading: false,
+};
+
+Demo.defaultProps = accordionStickyProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);

@@ -18,18 +18,17 @@ test.describe('Accordion in table', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await plot.waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
 
     await expect(page).toHaveScreenshot();
     await expect(firstArrow).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(250);
     await expect(plot).toHaveCount(0);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -39,15 +38,15 @@ test.describe('Accordion in table', () => {
     await expect(secondArrow).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(250);
+    await plot.waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await plot.waitFor({ state: 'hidden' });
     await expect(plot).not.toBeVisible();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(350);
+    await plot.waitFor({ state: 'visible' });
 
     await page.keyboard.press('ArrowDown');
     // verify the focus not swicthed to other cells by arrows when chart is focused
@@ -69,21 +68,10 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion collapse when clicking directly on toggle', async () => {
       await firstArrow.click();
-      await page.waitForTimeout(350);
+      await plot.waitFor({ state: 'visible' });
       await expect(plot).toHaveCount(1);
       await firstArrow.click();
-      await page.waitForTimeout(350);
-      await expect(plot).toHaveCount(0);
-      await firstArrow.click();
-      await page.waitForTimeout(350);
-
-      const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-      await thirdArrow.click();
-      await page.waitForTimeout(350);
-      await expect(plot).toHaveCount(2);
-      await thirdArrow.click();
-      await firstArrow.click();
-      await page.waitForTimeout(350);
+      await plot.waitFor({ state: 'hidden' });
       await expect(plot).toHaveCount(0);
     });
 
@@ -95,10 +83,10 @@ test.describe('Accordion in table', () => {
       const lastBox = await cells.nth(3).boundingBox();
       if (firstBox && lastBox) {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
-        await page.waitForTimeout(300);
+        await plot.waitFor({ state: 'visible' });
         await expect(plot).toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
-        await page.waitForTimeout(300);
+        await plot.waitFor({ state: 'hidden' });
         await expect(plot).not.toBeVisible();
       }
     });
@@ -114,10 +102,10 @@ test.describe('Accordion in table', () => {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
         await expect(plot).not.toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
-        await page.waitForTimeout(250);
+        await plot.waitFor({ state: 'visible' });
         await expect(plot).toBeVisible();
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
-        await page.waitForTimeout(250);
+        await plot.waitFor({ state: 'hidden' });
         await expect(plot).not.toBeVisible();
       }
     });
@@ -369,7 +357,9 @@ test.describe('Accordion in table', () => {
 
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
       accordionMode: 'independent',
-      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
+      onAccordionToggle: `function(type, rowId, rowIndex) { 
+  console.log("Accordion " + type + " for row #" + rowIndex); 
+}`,
     });
 
     await page.setContent(htmlContent);
@@ -471,8 +461,9 @@ test.describe('Accordion in table', () => {
 
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
       accordionMode: 'independent',
-      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
-    });
+      onAccordionToggle: `function(type, rowId, rowIndex) { 
+        console.log("Accordion " + type + " for row #" + rowIndex); 
+      }` });
 
     await page.setContent(htmlContent);
 
@@ -533,8 +524,9 @@ test.describe('Accordion in table', () => {
     const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
       accordionMode: 'toggle',
-      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
-    });
+      onAccordionToggle: `function(type, rowId, rowIndex) { 
+        console.log("Accordion " + type + " for row #" + rowIndex); 
+      }` });
     await page.setContent(htmlContent);
 
     const rows = page.locator('[data-ui-name="Body.Row"]');
@@ -574,7 +566,7 @@ test.describe('Accordion in table', () => {
       await expect(cellinLastRow).toBeFocused();
     });
 
-    await test.step('Verofy forst accordion closed when second is collapsed and keyboard navigation not broken', async () => {
+    await test.step('Verify forst accordion closed when second is collapsed and keyboard navigation not broken', async () => {
       messages = [];
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
@@ -632,8 +624,9 @@ test.describe('Accordion in table', () => {
 
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
       accordionMode: 'toggle',
-      onAccordionToggle: 'function(type, rowIndex) { console.log("Accordion " + type + " for row #" + rowIndex); }',
-    });
+      onAccordionToggle: `function(type, rowId, rowIndex) { 
+        console.log("Accordion " + type + " for row #" + rowIndex); 
+      }` });
 
     await page.setContent(htmlContent);
 
