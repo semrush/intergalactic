@@ -12,7 +12,8 @@ export const BasicUsage: StoryObj<typeof ShowLegendPropExampleProps> = {
   render: BasicUsageExample,
   argTypes: {
     showLegend: {
-      control: 'boolean',
+      control: 'select',
+      options: [true, false, undefined],
     },
   },
   args: ShowLegendPropExampleProps,

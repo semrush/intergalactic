@@ -14,7 +14,6 @@ const Demo = (props: BaseExampleProps) => {
         direction='column'
         groupKey='x'
         showLegend={showLegend}
-        patterns={false}
         plotHeight={200}
         plotWidth={300}
         showTooltip={true}

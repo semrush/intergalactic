@@ -9,7 +9,7 @@ const Demo = (props: ExampleVennShowLegendProps) => {
   const { showLegend } = props;
   return (
     <div style={{ width: '500px' }}>
-
+      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */ }
       <Chart.Venn
         data={data}
         plotWidth={300}
