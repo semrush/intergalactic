@@ -43,6 +43,10 @@ export type CommonColumnType = {
    * CSS `justify-content` property
    */
   justifyContent?: Property.JustifyContent;
+  /**
+   * CSS `text-align` property
+   */
+  textAlign?: Property.TextAlign;
 };
 
 export type DTColumn = ColumnItemConfig &
@@ -72,11 +76,15 @@ export type DataTableColumnProps = CommonColumnType & {
   changeSortSize?: boolean;
 };
 
-export type ColumnPropsInner<D extends DataTableData> = {
+export type ColumnPropsInner<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> = {
   use: DTUse;
   borders?: 'both' | 'left' | 'right';
-  sort?: DataTableProps<D>['sort'];
-  onSortChange?: DataTableProps<D>['onSortChange'];
+  sort?: DataTableProps<Data, UniqKey, UniqKeyType>['sort'];
+  onSortChange?: DataTableProps<Data, UniqKey, UniqKeyType>['onSortChange'];
   uid: string;
   parent?: DTColumn;
   sortableColumnDescribeId: string;
@@ -85,5 +93,5 @@ export type ColumnPropsInner<D extends DataTableData> = {
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
-  onClick: CellPropsInner['onClick'];
+  onClick: CellPropsInner<UniqKeyType>['onClick'];
 };

@@ -2,15 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.8] - 2025-07-28
+## [16.1.0] - 2025-08-08
 
 ### Added
 
-- Ability to set columns into one grouped column.
+- `accordionMode` property to only one accordion is open at a time.
+- `onAccordionToggle` to listen for open/close accordion events.
+- Ability to render multiple columns under one single-level column header.
+- RawData to `CellRenderProps`.
+- `line-height` for `Head.Column` items.
+- `overflow=hidden` for `CellWrapper`.
+- `textAlign` property to all column cells.
 
 ### Fixed
 
+- `z-index` of expanded accordions and spinner container.
 - Usage of `changeSortSize` property with multiple columns.
+- Accordion content expands with visual issues when clicking on a merged cell.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
+- Hover styles aren't applied to themed cells.
+
+### Changed
+
+- `overflow` for `Body.Cell` to default.
 
 ## [16.0.7] - 2025-07-23
 

@@ -132,7 +132,7 @@ Control the column width with the `gtcWidth` prop.
 
 ### Column alignment
 
-Columns and cells inherit properties from the `Flex` component, so you can use `justifyContent` and `alignItems` to align columns and cells. Table cells automatically inherit the same properties as the column.
+You can use `justifyContent`, `alignItems`, `alignContent`, and `textAlign` props to align content in columns.
 
 ::: sandbox
 

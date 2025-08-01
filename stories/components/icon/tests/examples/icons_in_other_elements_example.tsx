@@ -2,8 +2,8 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Gift/l';
-import IconM from '@semcore/icon/Gift/m';
+import IconL from '@semcore/icon/BracketsCode/l';
+import IconM from '@semcore/icon/TextItalic/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Switch from '@semcore/switch';
