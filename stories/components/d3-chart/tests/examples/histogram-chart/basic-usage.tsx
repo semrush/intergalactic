@@ -1,37 +1,34 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
-
 type BaseExampleProps = {
   showLegend?: boolean;
 };
 const Demo = (props: BaseExampleProps) => {
   const { showLegend } = props;
-  const onClickHandler = () => {
-    console.log('Clicked radar chart');
-  };
   return (
     <>
-      {' '}
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-
-      <Chart.Radar
+      <Chart.Histogram
         data={data}
+        alignItems='flex-start'
+        direction='column'
+        groupKey='x'
         showLegend={showLegend}
-        groupKey='categories'
-        plotWidth={400}
-        plotHeight={400}
-        aria-label='Radar chart'
-        onClickRadar={onClickHandler}
+        plotHeight={200}
+        plotWidth={300}
+        showTooltip={true}
+        showTotalInTooltip={false}
+        showXAxis={true}
+        showYAxis={true}
       />
+
     </>
   );
 };
 
-const data = {
-  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-  data_1: [1, 3, 5, 5, 9, 2],
-  data_2: [5, 2, 1, 2, 7, 6],
-};
+const data = [
+  { category: 2, bar: 2.5 },
+];
 
 export const defaultProps: BaseExampleProps = {
   showLegend: undefined,

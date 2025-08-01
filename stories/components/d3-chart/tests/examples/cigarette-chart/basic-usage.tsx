@@ -1,5 +1,6 @@
-import { Chart } from '@semcore/d3-chart';
+import { Chart, interpolateValue } from '@semcore/d3-chart';
 import React from 'react';
+
 type BaseExampleProps = {
   showLegend?: boolean;
 };
@@ -8,26 +9,25 @@ const Demo = (props: BaseExampleProps) => {
   return (
     <>
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-
-      <Chart.Bar
-        groupKey='category'
+      <Chart.Cigarette
         data={data}
-        plotWidth={500}
-        plotHeight={300}
-        aria-label='Bar chart'
+        plotWidth={400}
+        plotHeight={28}
+        aria-label='Cigarette chart'
         showLegend={showLegend}
       />
     </>
   );
 };
 
-const data = [
-  { category: 'Category 0', bar: 2 },
-  { category: 'Category 1', bar: 5 },
-  { category: 'Category 2', bar: 7 },
-  { category: 'Category 3', bar: 4 },
-  { category: 'Category 4', bar: 8 },
-];
+const data: Record<string, number | typeof interpolateValue> = {
+  Cats: 3524,
+  Dogs: interpolateValue,
+  Capybaras: 6135,
+  // @ts-ignore
+  Hamsters: null,
+  Birds: 1823,
+};
 
 export const defaultProps: BaseExampleProps = {
   showLegend: undefined,
