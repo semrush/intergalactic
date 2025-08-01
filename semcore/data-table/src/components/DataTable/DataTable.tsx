@@ -388,11 +388,11 @@ class DataTableRoot<
       setTimeout(() => {
         this.handlers.expandedRows(new Set([...expandedRows]));
       }, 300);
-      onAccordionToggle?.('close', expandedRow[ROW_INDEX]);
+      onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
       this.handlers.expandedRows(new Set([...expandedRows]));
-      onAccordionToggle?.('open', expandedRow[ROW_INDEX]);
+      onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
         const rowIndex = expandedRow[ROW_INDEX];
