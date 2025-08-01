@@ -135,7 +135,7 @@ export type DataTableProps<
     accordionDuration?: number | [number, number];
 
     /**
-     * Describe accordion mode.
+     * Whether multiple accordion items can be open at a time, or only one.
      * @default 'independent'
      */
     accordionMode?: 'toggle' | 'independent';
