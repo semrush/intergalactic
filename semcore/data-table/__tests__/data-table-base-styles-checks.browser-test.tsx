@@ -158,9 +158,8 @@ test.describe('Base styles Primary Table', () => {
 
     await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
 
-    await page.locator('[data-ui-name="Ellipsis"]').hover();
-    await page.waitForTimeout(100);
-    await expect(page.getByRole('tooltip', { name: 'Difficulty Difficulty' })).toHaveCount(1);
+    await page.getByRole('columnheader', { name: 'cpc' }).hover();
+    await expect(page).toHaveScreenshot();
 
     const elements = page.locator('[data-ui-name="Head.Column"]');
     for (const element of await elements.all()) {
@@ -372,8 +371,8 @@ test.describe('Base styles Secondary Table', () => {
 
     await expect(page.getByText('WhatsApp icon')).toHaveCount(1);
 
-    await page.locator('[data-ui-name="Ellipsis"]').hover();
-    await expect(page.getByRole('tooltip', { name: 'Difficulty' })).toHaveCount(1);
+    await page.getByRole('columnheader', { name: 'cpc' }).hover();
+    await expect(page).toHaveScreenshot();
 
     const elements = page.locator('[data-ui-name="Head.Column"]');
     for (const element of await elements.all()) {

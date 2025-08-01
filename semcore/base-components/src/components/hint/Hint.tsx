@@ -1,5 +1,6 @@
 import { computePosition, flip, offset, shift, arrow, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component, type Intergalactic } from '@semcore/core';
+import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
 import React from 'react';
 
 import { Box } from '../flex-box';
@@ -40,12 +41,18 @@ export type SimpleHintPopperProps = {
 
 type HintComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 
-class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, [], { timeout: [number, number] }, Handlers> {
+const enhances = [
+  zIndexStackingEnhance('z-index-tooltip'),
+] as const;
+
+class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, typeof enhances, { timeout: [number, number] }, Handlers> {
   public readonly hintRef = React.createRef<HTMLElement>();
   private readonly arrowRef = React.createRef<HTMLDivElement>();
 
   private showTimer?: number;
   private hideTimer?: number;
+
+  static enhance = enhances;
 
   static defaultProps = {
     defaultVisible: false,
@@ -195,7 +202,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, [], { time
   render() {
     const SHintPopper = Root;
     const SHintArrow = Box;
-    const { visible, Children, triggerRef } = this.asProps;
+    const { visible, Children, triggerRef, parentZIndexStacking } = this.asProps;
 
     if (!visible) {
       return null;
@@ -209,7 +216,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, {}, [], { time
 
     return sstyled(styles)(
       <Portal>
-        <SHintPopper render={Box} ref={this.hintRef} aria-hidden={true} role={undefined}>
+        <SHintPopper render={Box} ref={this.hintRef} aria-hidden={true} role={undefined} zIndex={parentZIndexStacking}>
           <Children />
           <SHintArrow ref={this.arrowRef} />
         </SHintPopper>
