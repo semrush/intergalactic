@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/line-chart/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/line-chart/basic-usage';
 import CurveExample from './examples/line-chart/curve';
 import HiddenHoverPropExample from './examples/line-chart/disable-hover-line';
 import DotsDisplayFunctionExample from './examples/line-chart/dots-display-function';
@@ -29,8 +29,15 @@ export const Line: StoryObj = {
   render: LineExample,
 };
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+  },
+  args: BasicUsageProps,
 };
 
 export const Curve: StoryObj = {

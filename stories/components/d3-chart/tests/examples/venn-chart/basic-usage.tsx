@@ -1,19 +1,22 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-const Demo = () => {
-  const onClickHandler = () => {
-    console.log('Clicked venn chart');
-  };
+type ExampleVennShowLegendProps = {
+  showLegend?: boolean;
+};
+
+const Demo = (props: ExampleVennShowLegendProps) => {
+  const { showLegend } = props;
   return (
     <div style={{ width: '500px' }}>
+
       <Chart.Venn
         data={data}
         plotWidth={300}
         plotHeight={300}
         legendProps={legendProps}
         aria-label='Venn chart'
-        onClickVennItem={onClickHandler}
+        showLegend={showLegend}
       />
     </div>
   );
@@ -31,12 +34,17 @@ const data = {
 };
 
 const legendProps = {
+
   legendMap: {
     G: { label: 'Good' },
     F: { label: 'Fast' },
     C: { label: 'Clean' },
     U: { label: 'Uniq' },
   },
+};
+
+export const defaultProps: ExampleVennShowLegendProps = {
+  showLegend: false,
 };
 
 export default Demo;

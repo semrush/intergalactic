@@ -23,7 +23,7 @@ export const LegendAndPatternFill: StoryObj = {
   render: LegendAndPatternFillExample,
 };
 
-export const ShowLegendProp: StoryObj<typeof ShowLegendPropExample> = {
+export const ShowLegendProp: StoryObj<typeof ShowLegendPropExampleProps> = {
   render: ShowLegendPropExample,
   argTypes: {
     showLegend: {

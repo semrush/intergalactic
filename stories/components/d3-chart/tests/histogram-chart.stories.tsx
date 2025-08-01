@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/radar-chart/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/histogram-chart/basic-usage';
+
 const meta: Meta = {
-  title: 'Components/d3Charts/Tests/Radar-Chart',
+  title: 'Components/d3Charts/Tests/Histogram-Chart',
 };
-
 export default meta;
-
 export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
   argTypes: {
