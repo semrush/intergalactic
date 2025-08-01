@@ -43,6 +43,10 @@ export type CommonColumnType = {
    * CSS `justify-content` property
    */
   justifyContent?: Property.JustifyContent;
+  /**
+   * CSS `text-align` property
+   */
+  textAlign?: Property.TextAlign;
 };
 
 export type DTColumn = ColumnItemConfig &

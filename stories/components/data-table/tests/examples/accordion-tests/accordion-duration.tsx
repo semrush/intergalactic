@@ -1,7 +1,11 @@
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
+import type { DataTableProps } from '@semcore/data-table';
 import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
+export type TableInTableProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+};
 
 const ChartExample1 = () => {
   return (
@@ -9,13 +13,14 @@ const ChartExample1 = () => {
     </NoData>
   );
 };
-const Demo = () => {
+const Demo = (props: TableInTableProps) => {
   return (
     <DataTable
       aria-label='Parent'
       h='100%'
       data={data}
-      accordionDuration={900}
+      accordionDuration={400}
+      accordionMode={props.accordionMode}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -37,7 +42,7 @@ const ChartExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px' },
       ]}
-      expandedRows={new Set()}
+      expandedRows={new Set<string>()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
@@ -57,6 +62,11 @@ const ChartExample = () => {
     />
   );
 };
+export const tableInTableDefaultProps: TableInTableProps = {
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = tableInTableDefaultProps;
 
 const data1 = [
   {

@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `useEllipsis` hook.
 - `Hint` component.
+- `text-align` CSS property to `Box` component.
 
 ## [16.1.2] - 2025-07-23
 

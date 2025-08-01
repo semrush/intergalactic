@@ -3532,6 +3532,16 @@
       "import": "./Comics/l/index.mjs",
       "types": "./Comics/l/index.d.ts"
     },
+    "./CollapseList/m": {
+      "require": "./CollapseList/m/index.js",
+      "import": "./CollapseList/m/index.mjs",
+      "types": "./CollapseList/m/index.d.ts"
+    },
+    "./CollapseList/l": {
+      "require": "./CollapseList/l/index.js",
+      "import": "./CollapseList/l/index.mjs",
+      "types": "./CollapseList/l/index.d.ts"
+    },
     "./CollapseAlt/m": {
       "require": "./CollapseAlt/m/index.js",
       "import": "./CollapseAlt/m/index.mjs",

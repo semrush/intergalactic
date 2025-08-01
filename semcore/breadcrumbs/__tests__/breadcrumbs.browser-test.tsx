@@ -47,7 +47,6 @@ test.describe('Styles', () => {
       const links = await breadcrumbLinks.all();
       for (const link of links) {
         const styles = await link.evaluate((el) => {
-          console.log(el);
           const computed = getComputedStyle(el);
           return {
             fontSize: computed.fontSize,
