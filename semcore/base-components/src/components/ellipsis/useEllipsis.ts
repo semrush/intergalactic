@@ -76,6 +76,7 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
 
   const maxLine = props === false ? undefined : (props.maxLine ?? 1);
   const trim = props === false ? undefined : (props.trim ?? 'end');
+  const blockWidth = useResizeObserver(ref).width;
 
   React.useEffect(() => {
     if (!ref.current) return;
@@ -89,9 +90,7 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
 
     const isEllipsized = isTextOverflowing(ref.current, maxLine > 1);
     setIsEllipsized(isEllipsized);
-  }, [ref.current, trim, maxLine]);
-
-  const blockWidth = useResizeObserver(ref, isEllipsized ? undefined : { width: 0 }).width;
+  }, [ref.current, trim, maxLine, blockWidth]);
 
   React.useEffect(() => {
     if (!ref.current || !isEllipsized) return;
