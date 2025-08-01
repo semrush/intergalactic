@@ -21,6 +21,11 @@ SCellWrapper {
   overflow: hidden;
 }
 
+SCollapseRow[gridArea] > SCellWrapper {
+  height: auto;
+  overflow: auto;
+}
+
 SCollapseRow[gridArea] > SCellWrapper > SCell,
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
