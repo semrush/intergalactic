@@ -4,18 +4,29 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import FeaturePopover from '@semcore/feature-popover';
 import type { FeaturePopoverPopperProps } from '@semcore/feature-popover';
 import FileExport from '@semcore/icon/FileExport/m';
+import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/popper';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = (props: FeaturePopoverPopperProps) => {
+type ExampleProps = FeaturePopoverPopperProps & PopperProps & PopperTriggerProps & PopperPopperProps;
+const Demo = (props: ExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
   return (
-    <Flex gap={2}>
-      <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal>
+    <Flex gap={2} pt={100} pl={100}>
+      <FeaturePopover
+        onVisibleChange={setVisible}
+        visible={visible}
+        disablePortal={props.disablePortal}
+        placement={props.placement}
+        timeout={props.timeout}
+        explicitTriggerSet={props.explicitTriggerSet}
+        cursorAnchoring={props.cursorAnchoring}
+        popperMargin={props.popperMargin}
+      >
         <FeaturePopover.Trigger>
-          <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
+          <DropdownMenu>
             <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
               Export
             </DropdownMenu.Trigger>
@@ -26,7 +37,7 @@ const Demo = (props: FeaturePopoverPopperProps) => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={350} aria-label='New feature: Export'>
+        <FeaturePopover.Popper closeIcon={props.closeIcon} duration={props.duration} wMax={350} aria-label='New feature: Export' disableEnforceFocus={props.disableEnforceFocus} autoFocus={props.autoFocus}>
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -62,8 +73,15 @@ const Demo = (props: FeaturePopoverPopperProps) => {
   );
 };
 
-export const defaultProps: FeaturePopoverPopperProps = {
+export const defaultProps: ExampleProps = {
+  placement: undefined,
+  timeout: undefined,
+  disablePortal: true,
+  explicitTriggerSet: false,
+  cursorAnchoring: false,
+  popperMargin: undefined,
   closeIcon: true,
+  duration: undefined,
 };
 
 Demo.defaultProps = defaultProps;

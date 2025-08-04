@@ -1,7 +1,7 @@
 import FeaturePopover from '@semcore/feature-popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import FeaturePopoverExample from './examples/Basic';
+import FeaturePopoverExample, { defaultProps as ExampleProps } from './examples/Basic';
 
 const meta: Meta<typeof FeaturePopover> = {
   title: 'Components/FeaturePopover/Documentation',
@@ -9,8 +9,13 @@ const meta: Meta<typeof FeaturePopover> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof FeaturePopover>;
 
-export const AnimationExample: Story = {
+export const AnimationExample: StoryObj<typeof ExampleProps> = {
   render: FeaturePopoverExample,
+  argTypes: {
+    closeIcon: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: ExampleProps,
 };
