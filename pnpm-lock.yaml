@@ -1188,6 +1188,9 @@ importers:
         specifier: 16.0.5
         version: link:../popper
     devDependencies:
+      '@popperjs/core':
+        specifier: 2.11.5
+        version: 2.11.5
       '@semcore/core':
         specifier: workspace:*
         version: link:../core

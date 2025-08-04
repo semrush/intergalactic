@@ -1,12 +1,16 @@
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import type { DataTableData, DataTableProps } from '@semcore/data-table';
 import React from 'react';
-
-const Demo = () => {
+export type AccordionInTableProps = {
+  loading: boolean;
+};
+const Demo = (props: AccordionInTableProps) => {
   return (
     <DataTable
       data={data}
       aria-label='Parent with fixed column'
       h='100%'
+      loading={props.loading}
       wMax={600}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '400px', fixed: 'left' },
@@ -17,7 +21,11 @@ const Demo = () => {
     />
   );
 };
+export const accordionTableDefaultProps = {
+  loading: false,
+};
 
+Demo.defaultProps = accordionTableDefaultProps;
 const data = [
   {
     keyword: 'ebay buy',

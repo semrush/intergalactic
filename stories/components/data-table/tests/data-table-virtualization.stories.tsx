@@ -1,7 +1,8 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AccordionWithChartExample from './examples/virtualization/accordion-inside-table';
+import AccordionWithChartExample, { accordionVirtualDefaultProps } from './examples/virtualization/accordion-inside-table';
+import type { accordionVirtualProps } from './examples/virtualization/accordion-inside-table';
 import DDSelectInCellExample from './examples/virtualization/dd-select-in-cell';
 import FixedColumnDiffWidthExample from './examples/virtualization/fixed-column-with-d-ff-width';
 import HeaderContentExample from './examples/virtualization/header-content';
@@ -27,8 +28,11 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const AccordionWithChart: Story = {
+export const AccordionWithChart: StoryObj<accordionVirtualProps> = {
   render: AccordionWithChartExample,
+  args: {
+    ...accordionVirtualDefaultProps,
+  },
 };
 
 export const TableInTable: Story = {

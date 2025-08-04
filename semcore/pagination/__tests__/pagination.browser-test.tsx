@@ -233,23 +233,14 @@ test.describe('Interactions', () => {
       await page.keyboard.press('Enter');
       await expect(input).toHaveAttribute('value', '1');
 
-      if (browserName === 'webkit') {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Enter');
-      } else {
-        await expect(nextPage).toBeFocused();
-        await page.keyboard.press('Enter');
-      }
+      await expect(nextPage).toBeFocused();
+      await page.keyboard.press('Enter');
       await page.keyboard.press('Shift+Tab');
       await page.waitForTimeout(50);
       await page.keyboard.press('Shift+Tab');
-      if (browserName === 'webkit') return; // disabled for webkit because it fails on cd, in debug mode works well
       await expect(firstPage).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(input).toHaveAttribute('value', '1');
-      //   if (browserName === 'webkit') {
-      //     await page.keyboard.press('Shift+Tab');
-      //   }
       await page.keyboard.press('Tab');
       await page.waitForTimeout(50);
       await page.keyboard.press('Tab');

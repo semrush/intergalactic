@@ -18,6 +18,7 @@ SRow[gridArea], SCellWrapper[gridArea], SCollapseRow[gridArea] {
 
 SCellWrapper {
   height: 100%;
+  overflow: hidden;
 }
 
 SCollapseRow[gridArea] > SCellWrapper > SCell,
@@ -30,9 +31,8 @@ SCollapseRow SCell {
 }
 
 /* DEFAULT THEME */
+
 SRow[active] > SCellWrapper > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
@@ -55,19 +55,17 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* MUTED THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
-  SRow[theme='muted']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='muted']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted'],
   SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    /* The color is hardcoded because need hex(in figma rgba) */
-    /* disable-tokens-validator */
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
   /* INFO THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
-  SRow[theme='info']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='info']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info'],
@@ -77,17 +75,17 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* SUCCESS THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
-  SRow[theme='success']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='success']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success'],
-  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
   }
 
   /* WARNING THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRow[theme='warning']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='warning']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
@@ -97,7 +95,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* DANGER THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
-  SRow[theme='danger']:hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
+  SRow[theme='danger']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger'],
@@ -107,17 +105,17 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 }
 
 /* MUTED THEME */
+
 SRow[theme='muted'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
 }
 
 SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
-  /* The color is hardcoded because need hex(in figma rgba) */
-  /* disable-tokens-validator */
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
 /* INFO THEME */
+
 SRow[theme='info'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
 }
@@ -127,6 +125,7 @@ SRow[theme='info'][active] > SCellWrapper > SCell:not([theme]) {
 }
 
 /* SUCCESS THEME */
+
 SRow[theme='success'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
 }
@@ -136,6 +135,7 @@ SRow[theme='success'][active] > SCellWrapper > SCell:not([theme]) {
 }
 
 /* WARNING THEME */
+
 SRow[theme='warning'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
 }
@@ -145,6 +145,7 @@ SRow[theme='warning'][active] > SCellWrapper > SCell:not([theme]) {
 }
 
 /* DANGER THEME */
+
 SRow[theme='danger'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
 }
@@ -161,7 +162,6 @@ SCell {
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  overflow: hidden;
   white-space: pre-wrap;
   word-break: break-word;
   font-variant-numeric: tabular-nums;
@@ -250,7 +250,12 @@ SSpinContainer {
   align-items: center;
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
+  z-index: 15;
 }
+SSpinContainer:focus-visible {
+  z-index: 15;
+}
+
 SSpinContainer[headerHeight] {
   top: var(--headerHeight);
 }
@@ -263,7 +268,9 @@ SRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
   }
+
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
 }
+

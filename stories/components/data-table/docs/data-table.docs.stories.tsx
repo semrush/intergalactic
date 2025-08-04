@@ -1,9 +1,11 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
 import AccessToCellsExample from './examples/access-to-cells';
 import AccessToSetOfCellsExample from './examples/access-to-set-of-cells';
-import AccordionInsideTableExample from './examples/accordion-inside-table';
+import type { AccordionInTableProps } from './examples/accordion-inside-table';
+import AccordionInsideTableExample, { accordionInsideTableDefaultProps } from './examples/accordion-inside-table';
 import BaseExample from './examples/base';
 import BordersExample from './examples/borders';
 import CheckboxInTableExample, { defaultProps as CheckboxInTableProps } from './examples/checkbox-in-table';
@@ -27,8 +29,9 @@ import SkeletonInTableExample from './examples/skeleton-in-table';
 import SortingExample from './examples/sorting';
 import SortingChangingSizeExample from './examples/sorting-changing-size';
 import SpinContainerInTableExample from './examples/spin-container-in-table';
-import TableInTableExample from './examples/table-in-table';
-import TableInTableWithFixedColumnExample from './examples/table-in-table-with-fixed-column';
+import type { TableInTableProps } from './examples/table-in-table';
+import TableInTableExample, { tableInTableDefaultProps } from './examples/table-in-table';
+import TableInTableWithFixedColumnExample, { accordionTableDefaultProps } from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
 import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
@@ -52,8 +55,9 @@ export const AccessToSetOfCells: Story = {
   render: AccessToSetOfCellsExample,
 };
 
-export const AccordionInsideTable: Story = {
+export const AccordionInsideTable: StoryObj<AccordionInTableProps> = {
   render: AccordionInsideTableExample,
+  args: accordionInsideTableDefaultProps,
 };
 
 export const Borders: Story = {
@@ -151,12 +155,17 @@ export const SortingChangingSize: Story = {
   render: SortingChangingSizeExample,
 };
 
-export const TableInTable: Story = {
+export const TableInTable: StoryObj<TableInTableProps> = {
   render: TableInTableExample,
+  args: {
+    ...tableInTableDefaultProps,
+    onAccordionToggle: fn(),
+  },
 };
 
-export const TableInTableWithFixedColumn: Story = {
+export const TableInTableWithFixedColumn: StoryObj<AccordionInTableProps> = {
   render: TableInTableWithFixedColumnExample,
+  args: accordionTableDefaultProps,
 };
 
 export const VirtualScrollInTable: Story = {
