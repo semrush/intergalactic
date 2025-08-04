@@ -1,5 +1,6 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Property } from 'csstype';
 
 async function getColumnWidth(page: any, colIndex: any) {
   const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
@@ -13,40 +14,52 @@ const COLUMN_SORT_TO_ARIA: Record<string, string> = {
 };
 
 test.describe('Columns', () => {
-  test('Verify alingnment props', async ({ page }) => {
+  test('Verify alignment props', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const checkAlignment = async (columnIndex: any, justifyContent: any, alignItems: any) => {
+    const checkProperty = async (columnIndex: number, check: {
+      justifyContent?: Property.JustifyContent;
+      alignItems?: Property.AlignItems;
+      textAlign?: Property.TextAlign;
+    }) => {
       const headerCell = page.locator(
         `[data-ui-name="Head.Column"][aria-colindex="${columnIndex}"]`,
       );
 
-      if (justifyContent) {
+      if (check.justifyContent) {
         const justify = await headerCell.evaluate(
           (el) => window.getComputedStyle(el).justifyContent,
         );
-        expect(justify).toBe(justifyContent);
+        expect(justify).toBe(check.justifyContent);
       }
 
-      if (alignItems) {
+      if (check.alignItems) {
         const align = await headerCell.evaluate((el) => window.getComputedStyle(el).alignItems);
-        expect(align).toBe(alignItems);
+        expect(align).toBe(check.alignItems);
+      }
+
+      if (check.textAlign) {
+        const align = await headerCell.evaluate((el) => window.getComputedStyle(el).textAlign);
+        expect(align).toBe(check.textAlign);
       }
     };
 
-    await checkAlignment(2, 'center', null);
-    await checkAlignment(3, 'flex-start', null);
-    await checkAlignment(4, 'flex-end', null);
+    await checkProperty(2, { justifyContent: 'center' });
+    await checkProperty(3, { justifyContent: 'flex-start' });
+    await checkProperty(4, { justifyContent: 'flex-end' });
 
-    await checkAlignment(5, null, 'center');
-    await checkAlignment(6, null, 'flex-end');
-    await checkAlignment(7, null, 'flex-start');
+    await checkProperty(5, { alignItems: 'center' });
+    await checkProperty(6, { alignItems: 'flex-end' });
+    await checkProperty(7, { alignItems: 'flex-start' });
 
-    await expect(page).toHaveScreenshot();
+    await checkProperty(11, { textAlign: 'end' });
+    await checkProperty(12, { textAlign: 'start' });
+    await checkProperty(13, { textAlign: 'center' });
+
     await expect(page).toHaveScreenshot();
   });
 

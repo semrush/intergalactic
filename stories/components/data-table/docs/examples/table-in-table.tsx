@@ -1,7 +1,13 @@
+import type { DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import React from 'react';
 
-const Demo = () => {
+export type TableInTableProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  onAccordionToggle?: DataTableProps<typeof data, any, any>['onAccordionToggle'];
+};
+
+const Demo = (props: TableInTableProps) => {
   return (
     <DataTable
       data={data}
@@ -12,9 +18,17 @@ const Demo = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.' },
       ]}
+      accordionMode={props.accordionMode}
+      onAccordionToggle={props.onAccordionToggle}
     />
   );
 };
+
+export const tableInTableDefaultProps: TableInTableProps = {
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = tableInTableDefaultProps;
 
 const data = [
   {

@@ -7,7 +7,11 @@ import {
 } from '@semcore/esbuild-plugin-semcore';
 import esbuild from 'esbuild';
 
-export const e2eStandToHtml = async (standFilePath: string, locale: string, props?: Record<string, unknown>) => {
+export const e2eStandToHtml = async (
+  standFilePath: string,
+  locale: string,
+  props?: Record<string, unknown>,
+) => {
   const standBundle = await esbuild.build({
     entryPoints: ['@test-entrypoint'],
     plugins: [
@@ -19,21 +23,36 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string, prop
             namespace: 'test-entrypoint',
           }));
           build.onLoad({ filter: /^@test-entrypoint$/, namespace: 'test-entrypoint' }, () => {
+            const propsCode = Object.entries(props || {})
+              .map(([key, value]) => {
+                if (typeof value === 'string' && value.trim().startsWith('function')) {
+                  return `${key}: ${value}`;
+                }
+                return `${key}: ${JSON.stringify(value)}`;
+              })
+              .join(',\n');
+
             const contents = `
               import React from 'react';
               import ReactDOM from 'react-dom';
               import App from '${resolvePath(standFilePath)}';
               import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
+              const props = { ${propsCode} };
+
               ReactDOM.render(
                 <I18nProvider value='${locale}'>
-                <App ${props ? Object.entries(props).map(([key, value]) => `${key}={${JSON.stringify(value)}}`).join(' ') : ''} />
+                  <App {...props} />
                 </I18nProvider>,
                 document.querySelector('#root')
               );
             `;
 
-            return { contents, loader: 'tsx', resolveDir: resolveDirname(standFilePath) };
+            return {
+              contents,
+              loader: 'tsx',
+              resolveDir: resolveDirname(standFilePath),
+            };
           });
         },
       },
@@ -66,17 +85,17 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string, prop
     .map((file) => file.text);
 
   const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="${locale}">
-        <head>
-          <style>${cssFiles.join('\n')}</style>
-        </head>
-        <body>
-          <div id="root"></div>
-          <script>${jsFiles.join('\n')}</script>
-        </body>
-      </html>
-    `;
+    <!DOCTYPE html>
+    <html lang="${locale}">
+      <head>
+        <style>${cssFiles.join('\n')}</style>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script>${jsFiles.join('\n')}</script>
+      </body>
+    </html>
+  `;
 
   return htmlContent;
 };

@@ -10,6 +10,16 @@ test.describe('Cells', () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test('Verify overflow=hidden visual finctionality', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/overflow_in_cells.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify multiple access to cells with spin', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -265,6 +275,14 @@ test.describe('Cells', () => {
     if (box) {
       await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     }
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify empty data with selectable rows', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
     await expect(page).toHaveScreenshot();
   });
 });

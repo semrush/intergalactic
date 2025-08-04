@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimatedDotsExample from './examples/area-chart/animated-dots';
 import AreaExample from './examples/area-chart/area';
-import BasicUsageExample from './examples/area-chart/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/area-chart/basic-usage';
 import CustomLineExample from './examples/area-chart/custom-line';
 import DifferentPropsExample from './examples/area-chart/different-props';
 import InterpolationExample from './examples/area-chart/interpolation';
@@ -38,6 +38,13 @@ export const Area: StoryObj = {
   render: AreaExample,
 };
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+  },
+  args: BasicUsageProps,
 };
