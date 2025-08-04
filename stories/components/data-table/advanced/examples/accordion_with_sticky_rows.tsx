@@ -8,7 +8,7 @@ const Demo = (props: accordionStickyProps) => {
   const [openedRow, setOpenedRow] = React.useState(new Set<number>());
   const headerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const handleAccordionToggle = (type: 'close' | 'open', rowIndex: number) => {
+  const handleAccordionToggle = (type: 'close' | 'open', uniqKey: string, rowIndex: number) => {
     if (type === 'open') {
       setOpenedRow((prevState) => {
         prevState.add(rowIndex);
