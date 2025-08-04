@@ -21,7 +21,7 @@ SCellWrapper {
   overflow: hidden;
 }
 
-SCollapseRow[gridArea] > SCellWrapper {
+SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
   height: auto;
   overflow: auto;
 }
@@ -172,6 +172,7 @@ SCell {
   font-variant-numeric: tabular-nums;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   outline: none;
+  overflow: hidden;
 
   SAccordionToggle {
     margin-right: var(--intergalactic-spacing-3x, 12px);
