@@ -156,7 +156,7 @@ test.describe('Visual', () => {
 });
 
 test.describe('Functional', () => {
-  test('Verify Side panel with header and footer, Back button and Closable=false keyboard interactions', async ({ page }) => {
+  test('Verify Side panel with Header, Footer, Back and Close keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/side-panel/docs/examples/advanced_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -217,7 +217,7 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify Side panel with Access to internal elements mouse interactions', async ({ page }) => {
+  test('Verify Closable Side panel  with Access to internal elements mouse interactions', async ({ page }) => {
     const standPath = 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
