@@ -112,9 +112,9 @@ class HeadRoot<
   };
 
   get areAllRowsSelected() {
-    const { selectedRows, flatRows } = this.asProps;
+    const { selectedRows = [], flatRows } = this.asProps;
 
-    return flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    return selectedRows.length > 0 && flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
   }
 
   get isIndeterminate() {

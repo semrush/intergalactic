@@ -2,12 +2,13 @@ import type { Intergalactic } from '@semcore/core';
 
 import type { DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 export type DTRow<UniqKeyType> = {
   [UNIQ_ROW_KEY]: UniqKeyType;
+  [IS_EMPTY_DATA_ROW]?: boolean;
   [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
   [ACCORDION]?: React.ReactNode | DataTableData | undefined;

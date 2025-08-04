@@ -277,4 +277,12 @@ test.describe('Cells', () => {
     }
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify empty data with selectable rows', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
 });

@@ -7,7 +7,7 @@ import { Body } from './Body';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
 
 class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {}, {}, [], RowPropsInner<UniqKeyType>> {
@@ -105,7 +105,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
           use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
-            if (selectedRows && i === 0) {
+            if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
               return sstyled(styles)(
                 <SCheckboxCell

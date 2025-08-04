@@ -14,7 +14,7 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
@@ -459,6 +459,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
     if (rowsToRender.length === 0) {
       emptyRow = {
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,

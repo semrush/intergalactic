@@ -3,6 +3,7 @@ import type * as React from 'react';
 
 import type { CellPropsInner, Theme } from './Cell.types';
 import type { DTRow } from './Row.types';
+import type { ACCORDION } from '../DataTable/DataTable';
 import type { DataRowItem, DTUse, VirtualScroll, DataTableProps } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
@@ -12,7 +13,7 @@ export type CellRenderProps<UniqKeyType> = {
   column: DTColumn;
   rowIndex: number;
   columnIndex: number;
-  columnName: string;
+  columnName: string | typeof ACCORDION;
   value: string | React.ReactElement;
   defaultRender: () => React.ReactNode;
   isMergedRows: boolean;
