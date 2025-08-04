@@ -8,11 +8,8 @@ export type ShadowTheme = 'dark' | 'light';
 /** @deprecated */
 export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}
 export type ScrollAreaProps = BoxProps & {
-  /**
-   * Shadow display on container.
-   * `vertical` or `horisontal` describes the direction of shadow line, not the scroll direction.
-   */
-  shadow?: boolean | 'vertical' | 'horizontal';
+  /** Shadow display on container */
+  shadow?: boolean;
   /** Scroll direction */
   orientation?: 'horizontal' | 'vertical';
   /** Link to the dom element, which will be a container with overflow */

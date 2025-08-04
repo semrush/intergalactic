@@ -7,7 +7,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `text-align` CSS property to `Box` component.
-- `horisotal | vertical` values to `shadow` property in ScrollArea to show shadows only on one direction.
 
 ## [16.1.2] - 2025-07-23
 

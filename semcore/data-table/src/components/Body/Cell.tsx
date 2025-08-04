@@ -146,6 +146,8 @@ class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {
       animationExpand,
       style,
       shadowVertical,
+      lastLeftFixedIndex,
+      firstRightFixedIndex,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -181,7 +183,7 @@ class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {
         defaultHeight='100%'
         style={style}
         fixed={column.fixed}
-        shadowVertical={shadowVertical}
+        shadowVertical={columnIndex === lastLeftFixedIndex || columnIndex === firstRightFixedIndex ? shadowVertical : undefined}
       >
         <SCell
           ref={this.cellRef}

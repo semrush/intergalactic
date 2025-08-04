@@ -191,8 +191,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
-              position='sticky'
-              left={0}
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
             >

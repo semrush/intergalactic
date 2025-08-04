@@ -38,18 +38,12 @@ SScrollArea {
     }
   }
 
-  SShadowVertical {
-    &:before {
-      display: none;
-    }
-    &:after {
-      z-index: 20;
-    }
+  SShadowVertical::before,
+  SShadowHorizontal[leftOffset]::before,
+  SShadowHorizontal[rightOffset]::after {
+    display: none;
   }
-  SShadowHorizontal {
-    &:before,
-    &:after {
-      z-index: 20;
-    }
+  SSHadowVertical::after {
+    z-index: 20;
   }
 }

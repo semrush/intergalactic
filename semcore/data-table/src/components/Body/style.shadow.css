@@ -295,20 +295,30 @@ SCellWrapper[fixed][shadowVertical] {
 
 SCellWrapper[fixed='left'][shadowVertical='median'],
 SCellWrapper[fixed='left'][shadowVertical='start'] {
-  &:after {
+    margin-right: -5px;
+
+    &:after {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
     linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
+    SCell {
+        margin-right: 5px;
+    }
 }
 SCellWrapper[fixed='right'][shadowVertical='median'],
 SCellWrapper[fixed='right'][shadowVertical='end'] {
+    margin-left: -5px;
   &:after {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
     linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
+
+    SCell {
+        margin-left: 5px;
+    }
 }
 

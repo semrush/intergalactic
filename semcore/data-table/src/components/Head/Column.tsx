@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/base-components';
+import { Box, Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';

@@ -36,6 +36,8 @@ export type CellPropsInner<UniqKeyType> = {
   onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
   flatRows: DTRow<UniqKeyType>[];
   shadowVertical?: BodyPropsInner<UniqKeyType>;
+  lastLeftFixedIndex: number;
+  firstRightFixedIndex: number;
 };
 
 export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

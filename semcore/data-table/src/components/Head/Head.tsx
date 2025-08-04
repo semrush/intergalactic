@@ -58,6 +58,9 @@ class HeadRoot<
       h,
       getFixedStyle,
       onCellClick,
+      shadowVertical,
+      lastLeftFixedIndex,
+      firstRightFixedIndex,
     } = this.asProps;
     const column = columns[index];
 
@@ -94,6 +97,7 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
+      'shadowVertical': index === firstRightFixedIndex || index === lastLeftFixedIndex ? shadowVertical : undefined,
     };
   }
 

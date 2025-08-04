@@ -206,6 +206,8 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       onCellClick,
       rawData,
       shadowVertical,
+      lastLeftFixedIndex,
+      firstRightFixedIndex,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -238,6 +240,8 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
       shadowVertical,
+      lastLeftFixedIndex,
+      firstRightFixedIndex,
     };
 
     if (renderCell) {

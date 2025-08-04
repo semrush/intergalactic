@@ -44,13 +44,14 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
       ]}
       onAccordionToggle={handleAccordionToggle}
       renderCell={(props) => {
-        if (openedRow.has(props.rowIndex)) {
+        if (openedRow.has(props.rowIndex) && props.columnName !== ACCORDION) {
           const headerHeight = headerRef.current?.children.item(0)?.getBoundingClientRect().height;
 
           return {
             style: {
               position: 'sticky',
               top: `${headerHeight}px`,
+              zIndex: props.column.fixed ? 12 : 10,
             },
           };
         }

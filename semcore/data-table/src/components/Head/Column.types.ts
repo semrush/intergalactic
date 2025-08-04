@@ -1,5 +1,6 @@
 import type { Property } from 'csstype';
 
+import type { BodyPropsInner } from '../Body/Body.types';
 import type { CellPropsInner } from '../Body/Cell.types';
 import type {
   ColumnGroupConfig,
@@ -94,4 +95,5 @@ export type ColumnPropsInner<
   gridTemplateAreas: string[];
   sticky: boolean;
   onClick: CellPropsInner<UniqKeyType>['onClick'];
+  shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
 };

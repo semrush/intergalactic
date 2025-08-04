@@ -81,6 +81,8 @@ class DataTableRoot<
   private treeColumns: DTColumn[] = [];
   private hasGroups = false;
   private hasFixedColumn = false;
+  private lastLeftFixedColumnIndex = -1;
+  private firstRightFixedColumnIndex = -1;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -112,7 +114,7 @@ class DataTableRoot<
       this.treeColumns = cols[1];
     }
 
-    this.hasFixedColumn = this.columns.some((c) => c.fixed);
+    this.calculateFixedFlags();
 
     this.rows = this.calculateRows();
     this.flatRows = this.rows.flat();
@@ -147,7 +149,7 @@ class DataTableRoot<
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
       this.treeColumns = cols[1];
-      this.hasFixedColumn = this.columns.some((c) => c.fixed);
+      this.calculateFixedFlags();
     }
     if (prevProps.data !== data || prevProps.columns !== columns) {
       this.rows = this.calculateRows();
@@ -230,6 +232,7 @@ class DataTableRoot<
       sideIndents,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
+    const { shadowVertical } = this.state;
 
     return {
       ...headerProps,
@@ -264,6 +267,9 @@ class DataTableRoot<
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
+      shadowVertical,
+      lastLeftFixedIndex: this.lastLeftFixedColumnIndex,
+      firstRightFixedIndex: this.firstRightFixedColumnIndex,
     };
   }
 
@@ -324,6 +330,8 @@ class DataTableRoot<
       onCellClick: this.handleCellClick,
       rawData,
       shadowVertical,
+      lastLeftFixedIndex: this.lastLeftFixedColumnIndex,
+      firstRightFixedIndex: this.firstRightFixedColumnIndex,
     };
   }
 
@@ -752,7 +760,7 @@ class DataTableRoot<
         h={h}
         hMax={hMax}
         hMin={hMin}
-        shadow='horizontal'
+        shadow={true}
         ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
@@ -1288,6 +1296,19 @@ class DataTableRoot<
     }
 
     return height;
+  }
+
+  private calculateFixedFlags() {
+    this.columns.forEach((column, index) => {
+      if (column.fixed === 'left' && !this.columns[index + 1].fixed) {
+        this.lastLeftFixedColumnIndex = index;
+      }
+      if (column.fixed === 'right' && !this.columns[index - 1].fixed) {
+        this.firstRightFixedColumnIndex = index;
+      }
+    });
+
+    this.hasFixedColumn = this.lastLeftFixedColumnIndex !== -1 || this.firstRightFixedColumnIndex !== -1;
   }
 }
 
