@@ -60,6 +60,18 @@ test.describe('Base styles Primary Table', () => {
       if (browserName !== 'firefox')
         await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
     });
+
+    await test.step('Verify overflow=hidden on the CellWrapper', async () => {
+      const cellWrapper = page.locator('[class*="CellWrapper"]');
+      const count = await cellWrapper.count();
+      for (let i = 0; i < count; i++) {
+        const overflow = await cellWrapper.nth(i).evaluate((el) => {
+          return window.getComputedStyle(el).overflow;
+        });
+
+        await expect(overflow).toBe('hidden');
+      }
+    });
   });
 
   test('Verify data table attributes', async ({ page, browserName }) => {

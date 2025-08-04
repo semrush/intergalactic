@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/donut-chart/donut-props';
+import ShowLegendPropExample, { defaultProps as ShowLegendPropExampleProps } from './examples/donut-chart/donut-show-legend-prop';
 import LegendAndPatternFillExample from './examples/donut-chart/legend-and-pattern-fill';
 import SemiDonutExample from './examples/donut-chart/semi-donut';
 
@@ -20,4 +21,18 @@ export const SemiDonutWithOneActive: StoryObj = {
 
 export const LegendAndPatternFill: StoryObj = {
   render: LegendAndPatternFillExample,
+};
+
+export const ShowLegendProp: StoryObj<typeof ShowLegendPropExampleProps> = {
+  render: ShowLegendPropExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+    data: {
+      control: 'object',
+    },
+  },
+  args: ShowLegendPropExampleProps,
 };

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.1] - 2025-08-08
+
+### Fixed
+
+- Legend hides for single item even when `showLegend=true`.
+
 ## [16.1.0] - 2025-07-23
 
 ### Added

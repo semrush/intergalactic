@@ -1,11 +1,27 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-const Demo = () => {
+type BaseExampleProps = {
+  showLegend?: boolean;
+};
+const Demo = (props: BaseExampleProps) => {
+  const { showLegend } = props;
   const onClickHandler = () => {
     console.log('Clicked bubble chart');
   };
-  return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} onClickBubble={onClickHandler} aria-label='Bubble chart' />;
+  return (
+    <>
+      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
+      <Chart.Bubble
+        data={data}
+        plotWidth={500}
+        plotHeight={200}
+        onClickBubble={onClickHandler}
+        aria-label='Bubble chart'
+        showLegend={showLegend}
+      />
+    </>
+  );
 };
 
 const data = [
@@ -15,5 +31,9 @@ const data = [
   { x: 4, y: 7, value: 245, label: 'label 4' },
   { x: 9, y: 5, value: 7462, label: 'label 5' },
 ];
+
+export const defaultProps: BaseExampleProps = {
+  showLegend: false,
+};
 
 export default Demo;
