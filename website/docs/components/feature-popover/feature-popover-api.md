@@ -6,29 +6,27 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ## FeaturePopover
 
-This is a wrap component, which is completely inherited from `<Popper/>`.
+This is a wrap component, which is inherited from `<Popper/>`.
 
 ```jsx
 import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover />;
 ```
 
-<TypesView type="PopperProps" :types={...types} />
+<TypesView type="FeaturePopoverProps" :types={...types} />
 
 ## FeaturePopover.Trigger
 
-This is the element, to which `<FeaturePopover.Popper/>` will be attached. It's fully inherited from `<Popper.Trigger/>`.
+The element to which `<FeaturePopover.Popper/>` will be attached. Inherits all [`Box`](../../layout/box-system/box-system-api#box) properies.
 
 ```jsx
 import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-<TypesView type="PopperTriggerProps" :types={...types} />
-
 ## FeaturePopover.Popper
 
-This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It's fully inherited from `<Popper.Popper/>`.
+The element with the `FeaturePopover` content. It's inherited from `<Popper.Popper/>`.
 
 ```jsx
 import FeaturePopover from '@semcore/feature-popover';
@@ -39,7 +37,7 @@ import FeaturePopover from '@semcore/feature-popover';
 
 ## FeaturePopover.Spot
 
-This blinking circle is inherited from `<Box>`.
+This blinking circle is inherited from [`Box`](../../layout/box-system/box-system-api#box).
 
 ```jsx
 import FeaturePopover from '@semcore/feature-popover';
