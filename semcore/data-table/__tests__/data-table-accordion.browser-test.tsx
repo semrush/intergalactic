@@ -870,20 +870,38 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify accordion with fixed column', async ({ page }) => {
+  test('Verify accordion with custom component and fixed column', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    const Widget = page.getByRole('status');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(250);
+    await Widget.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify accordion with table in table and fixed column', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-fixed-column.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const tableInTableRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await tableInTableRow.waitFor({ state: 'visible' });
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {
