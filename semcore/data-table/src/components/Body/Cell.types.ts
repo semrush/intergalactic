@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
+import type { BodyPropsInner } from './Body.types';
 import type { DTRow, DTRows } from './Row.types';
 import type { DTUse } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
@@ -34,6 +35,7 @@ export type CellPropsInner<UniqKeyType> = {
   accordionDuration?: number | [number, number];
   onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
   flatRows: DTRow<UniqKeyType>[];
+  shadowVertical?: BodyPropsInner<UniqKeyType>;
 };
 
 export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

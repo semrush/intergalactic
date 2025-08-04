@@ -41,10 +41,15 @@ export const ROW_INDEX = Symbol('ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
-type State = {
+type State<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
+  shadowVertical: BodyPropsInner<UniqKeyType>['shadowVertical'];
 };
 
 class DataTableRoot<
@@ -75,6 +80,7 @@ class DataTableRoot<
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
   private hasGroups = false;
+  private hasFixedColumn = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -106,14 +112,17 @@ class DataTableRoot<
       this.treeColumns = cols[1];
     }
 
+    this.hasFixedColumn = this.columns.some((c) => c.fixed);
+
     this.rows = this.calculateRows();
     this.flatRows = this.rows.flat();
   }
 
-  state: State = {
+  state: State<Data, UniqKey, UniqKeyType> = {
     scrollTop: 0,
     scrollDirection: 'down',
     selectAllMessage: '',
+    shadowVertical: '',
   };
 
   uncontrolledProps() {
@@ -123,10 +132,11 @@ class DataTableRoot<
   }
 
   componentDidMount() {
-    const { headerProps, loading, selectedRows } = this.asProps;
-    if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
+    const { headerProps, loading } = this.asProps;
+    if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
       requestAnimationFrame(() => {
         this.forceUpdate();
+        this.calculateVerticalShadow();
       });
     }
   }
@@ -137,12 +147,17 @@ class DataTableRoot<
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
       this.treeColumns = cols[1];
+      this.hasFixedColumn = this.columns.some((c) => c.fixed);
     }
     if (prevProps.data !== data || prevProps.columns !== columns) {
       this.rows = this.calculateRows();
       this.flatRows = this.rows.flat();
 
       this.forceUpdate();
+
+      if (this.hasFixedColumn) {
+        this.calculateVerticalShadow();
+      }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
       if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
@@ -272,6 +287,7 @@ class DataTableRoot<
       data: rawData,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
+    const { shadowVertical } = this.state;
     return {
       accordionDuration,
       accordionMode,
@@ -307,6 +323,7 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
+      shadowVertical,
     };
   }
 
@@ -561,10 +578,42 @@ class DataTableRoot<
   };
 
   handleScroll = trottle((e) => {
-    const scrollTop = e.target.scrollTop;
-    const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
-    this.setState({ scrollTop, scrollDirection });
+    if (this.asProps.virtualScroll) {
+      const scrollTop = e.target.scrollTop;
+      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+      this.setState({ scrollTop, scrollDirection });
+    }
+
+    if (this.hasFixedColumn) {
+      this.calculateVerticalShadow();
+    }
   });
+
+  calculateVerticalShadow = () => {
+    if (!this.tableContainerRef.current) return;
+
+    const { scrollWidth, clientWidth, scrollLeft } =
+            this.tableContainerRef.current;
+    const maxScrollRight = scrollWidth - clientWidth;
+
+    const roundedScroll = Math.round(scrollLeft);
+    const roundedMaxScroll = Math.round(maxScrollRight);
+    let shadow: BodyPropsInner<UniqKeyType>['shadowVertical'] = '';
+    // not scroll
+    if (roundedMaxScroll <= 0) {
+      // start scroll
+    } else if (roundedScroll <= 0) {
+      shadow = 'end';
+      // end scroll
+    } else if (roundedScroll >= roundedMaxScroll) {
+      shadow = 'start';
+      // median scroll
+    } else if (roundedScroll > 0) {
+      shadow = 'median';
+    }
+
+    this.setState({ shadowVertical: shadow });
+  };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (this.asProps.loading) {
@@ -703,11 +752,11 @@ class DataTableRoot<
         h={h}
         hMax={hMax}
         hMin={hMin}
-        shadow={true}
+        shadow='horizontal'
         ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
-        onScroll={virtualScroll ? this.handleScroll : undefined}
+        onScroll={this.handleScroll}
         disableAutofocusToContent={true}
       >
         <ScrollArea.Container

@@ -145,6 +145,7 @@ class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {
       isAccordionRow,
       animationExpand,
       style,
+      shadowVertical,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -180,6 +181,7 @@ class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {
         defaultHeight='100%'
         style={style}
         fixed={column.fixed}
+        shadowVertical={shadowVertical}
       >
         <SCell
           ref={this.cellRef}

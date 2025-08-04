@@ -262,15 +262,23 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   };
 
   setShadowContainer = () => {
-    if (!this.asProps.shadow || !this.$container || !this.$wrapper) return;
+    const shadow = this.asProps.shadow;
+    if (!shadow || !this.$container || !this.$wrapper) return;
 
     const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
       this.$container;
     const maxScrollRight = scrollWidth - clientWidth;
     const maxScrollBottom = scrollHeight - clientHeight;
 
-    this.toggleShadow(scrollLeft, maxScrollRight, 'shadowHorizontal');
-    this.toggleShadow(scrollTop, maxScrollBottom, 'shadowVertical');
+    /**
+     * Shadow prop and orientation are different because shadow describes the direction of shadow and orientation describes the scroll direction and they are opposite.
+     */
+    if (shadow === true || shadow === 'vertical') {
+      this.toggleShadow(scrollLeft, maxScrollRight, 'shadowHorizontal');
+    }
+    if (shadow === true || shadow === 'horizontal') {
+      this.toggleShadow(scrollTop, maxScrollBottom, 'shadowVertical');
+    }
   };
 
   getContainerProps() {

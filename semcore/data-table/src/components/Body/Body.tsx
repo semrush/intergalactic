@@ -205,6 +205,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onCellClick,
       rawData,
+      shadowVertical,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -236,6 +237,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
+      shadowVertical,
     };
 
     if (renderCell) {

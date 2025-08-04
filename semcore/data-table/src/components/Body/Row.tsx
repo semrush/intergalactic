@@ -180,7 +180,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
-            zIndex={5}
           >
             <SCell
               aria-colindex={1}

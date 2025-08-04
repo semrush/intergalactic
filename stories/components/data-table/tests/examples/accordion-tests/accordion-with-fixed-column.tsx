@@ -3,23 +3,69 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 
-const Demo = () => {
+export type AccordionWithFixedColumnProps = {
+  loading: boolean;
+};
+
+const Demo = (props: AccordionWithFixedColumnProps) => {
+  const [openedRow, setOpenedRow] = React.useState(new Set<number>());
+  const headerRef = React.useRef<HTMLDivElement | null>(null);
+
+  const handleAccordionToggle = (type: 'close' | 'open', uniqKey: string, rowIndex: number) => {
+    if (type === 'open') {
+      setOpenedRow((prevState) => {
+        prevState.add(rowIndex);
+
+        return new Set([...prevState]);
+      });
+    }
+    if (type === 'close') {
+      setOpenedRow((prevState) => {
+        prevState.delete(rowIndex);
+
+        return new Set([...prevState]);
+      });
+    }
+  };
+
   return (
     <DataTable
+      loading={props.loading}
       data={data}
       aria-label='Accordion inside table'
-      h='100%'
-      w={400}
+      headerProps={{ sticky: true, ref: headerRef }}
+      hMax={500}
+      wMax={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
         { name: 'cpc', children: 'CPC', gtcWidth: '150px' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', fixed: 'right' },
       ]}
+      onAccordionToggle={handleAccordionToggle}
+      renderCell={(props) => {
+        if (openedRow.has(props.rowIndex)) {
+          const headerHeight = headerRef.current?.children.item(0)?.getBoundingClientRect().height;
 
+          return {
+            style: {
+              position: 'sticky',
+              top: `${headerHeight}px`,
+            },
+          };
+        }
+
+        return {};
+      }}
     />
   );
 };
+
+export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
+  loading: false,
+};
+
+Demo.defaultProps = accordionWithFixedColumnDefaultProps;
 
 const ChartExample = () => {
   return (<NoData type='nothing-found' my={7} mx='auto' />);
