@@ -46,7 +46,7 @@ SHighlightedRadio:not([state="invalid"]) {
     margin: -5px;
     opacity: 1;
     transform: scale(1);
-    border-width: 3px;
+    border-width: 2px;
     background: linear-gradient(white, white) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
