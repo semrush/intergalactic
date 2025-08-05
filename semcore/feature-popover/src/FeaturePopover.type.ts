@@ -159,15 +159,8 @@ export type FeaturePopoverSpotProps = {
   theme?: FeaturePopoverProps['theme'];
 };
 
-export type FeaturePopoverStepCounterProps = {
-  currentStep: number;
-  totalSteps: number;
-  theme?: FeaturePopoverProps['theme'];
-};
-
 export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
   Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
   Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
   Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
-  StepCounter: Intergalactic.Component<typeof Flex, FeaturePopoverStepCounterProps>;
 };

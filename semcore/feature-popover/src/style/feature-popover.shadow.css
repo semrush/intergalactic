@@ -110,15 +110,6 @@ SSpot {
   }
 }
 
-SStepCounter {
-  &[theme='accent'] {
-    color: var(--intergalactic-text-primary, #191b23);
-  }
-  &[theme='neutral'] {
-    color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
-  }
-}
-
 @media (prefers-reduced-motion) {
   SSpot {
     animation-name: none;

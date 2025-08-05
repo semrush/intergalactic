@@ -1,4 +1,4 @@
-import { Flex, Box } from '@semcore/base-components';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import FeaturePopover from '@semcore/feature-popover';
@@ -57,7 +57,15 @@ const Demo = (props: FeaturePopoverExampleProps) => {
                 <Button theme={props.theme === 'accent' ? 'muted' : 'invert'} use='tertiary' ml={2} onClick={handleVisibleChange(false)}>
                   Remind me later
                 </Button>
-                <FeaturePopover.StepCounter currentStep={1} totalSteps={5} />
+
+                <Flex inline aria-live='polite' alignItems='center'>
+                  Step
+                  {' '}
+                  1
+                  <span aria-hidden='true'>/</span>
+                  <ScreenReaderOnly>of</ScreenReaderOnly>
+                  5
+                </Flex>
               </Flex>
             </div>
           </Flex>

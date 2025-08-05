@@ -95,11 +95,6 @@ class FeaturePopover extends Component<FeaturePopoverProps, {}, {}, typeof enhan
     return { visible, theme };
   }
 
-  getStepCounterProps() {
-    const { theme } = this.asProps;
-    return { theme };
-  }
-
   render() {
     const { styles, forwardRef, onVisibleChange, modifiers = [], ...other } = this.asProps;
 
@@ -201,30 +196,12 @@ const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
   return sstyled(styles)(<SSpot render={Box} />);
 };
 
-const StepCounter = (props: IRootComponentProps & FeaturePopoverStepsProps) => {
-  const SStepCounter = Root;
-
-  const { styles, currentStep, totalSteps } = props;
-
-  return sstyled(styles)(
-    <SStepCounter render={Flex} inline aria-live='polite' alignItems='center'>
-      Step
-      {' '}
-      {currentStep}
-      <span aria-hidden='true'>/</span>
-      <ScreenReaderOnly>of</ScreenReaderOnly>
-      {totalSteps}
-    </SStepCounter>,
-  );
-};
-
 export default createComponent(
   FeaturePopover,
   {
     Trigger: Trigger,
     Popper: FeaturePopoverPopper,
     Spot,
-    StepCounter,
   },
   // @ts-ignore
   { parent: Popper },

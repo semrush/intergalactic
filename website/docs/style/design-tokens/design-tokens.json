@@ -517,9 +517,7 @@
     "rawValue": "{gray.white}, 0.8",
     "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Inverted version of the secondary text.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-text-link",
