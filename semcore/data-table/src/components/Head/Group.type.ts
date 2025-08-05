@@ -23,5 +23,5 @@ export type GroupPropsInner = {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  shadowVertical?: BodyPropsInner<any>['shadowVertical'];
 };
