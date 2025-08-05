@@ -156,6 +156,57 @@ test.describe('Donut chart', () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify donut showLegend prop logic', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/donut-chart/donut-show-legend-prop.tsx';
+    const props: {
+      showLegend?: boolean;
+      data: { [key: string]: number };
+    } = {
+      showLegend: undefined,
+      data: {
+        a: 1,
+        b: 2,
+      },
+    };
+
+    await test.step('Verify legend shown when showLegend: undefined and >=2 items in legend', async () => {
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeVisible();
+    });
+
+    await test.step('Verify legend hidden when showLegend: false and >=2 items in legend', async () => {
+      props.showLegend = false;
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeHidden();
+    });
+    await test.step('Verify legend hidden when showLegend: undefined and < 2 items in legend', async () => {
+      props.showLegend = undefined;
+      props.data = {
+        a: 1,
+      };
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeHidden();
+    });
+
+    await test.step('Verify legend hidden when showLegend: true and < 2 items in legend', async () => {
+      props.showLegend = true;
+      props.data = {
+        a: 1,
+      };
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeVisible();
+    });
+  });
 });
 
 test.describe('Semi donut chart', () => {
