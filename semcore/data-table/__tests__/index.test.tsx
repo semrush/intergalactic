@@ -182,4 +182,29 @@ describe('DataTable.Cell', () => {
     render(<RawDataTest />);
     expect(checkRowData).toBeCalledWith({ ...dataItem });
   });
+
+  test('Should not call renderCell and rowProps functions on the data is empty', ({ expect }) => {
+    const renderCell = vi.fn();
+    const rowProps = vi.fn();
+
+    const CbTest = () => {
+      return (
+        <DataTable
+          data={[]}
+          aria-label='table'
+          columns={[
+            { name: 'keyword', children: 'Keyword' },
+            { name: 'kd', children: 'KD' },
+            { name: 'vol', children: 'Vol.' },
+          ]}
+          renderCell={renderCell}
+          rowProps={rowProps}
+        />
+      );
+    };
+
+    render(<CbTest />);
+    expect(renderCell).not.toBeCalled();
+    expect(rowProps).not.toBeCalled();
+  });
 });
