@@ -8,10 +8,11 @@ const Demo = (props: ExmapleProps) => (
   <>
     <div style={{ width: 200 }}>
       <Text
+
         size={props.size}
         noWrap={props.noWrap}
         display={props.display}
-
+        formatTags={props.formatTags}
         bold={props.bold}
         semibold={props.semibold}
         medium={props.medium}
@@ -40,7 +41,7 @@ const Demo = (props: ExmapleProps) => (
 );
 
 export const defaultProps: TextProps = {
-  size: 100,
+  size: undefined,
   noWrap: false,
   bold: false,
   semibold: false,
@@ -62,6 +63,7 @@ export const defaultProps: TextProps = {
   disabled: false,
   display: undefined,
   w: undefined,
+  formatTags: true,
 
 };
 

@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `ellipsis` property to crop the text out of the box.
+- `formatTags` property for the Text component for enable tags formatting's inside a Text component.
 
 ## [16.1.5] - 2025-07-23
 

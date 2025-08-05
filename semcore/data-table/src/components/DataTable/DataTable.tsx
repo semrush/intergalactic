@@ -36,6 +36,7 @@ import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
+export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
 export const SELECT_ALL = Symbol('SELECT_ALL');
 export const ROW_INDEX = Symbol('ROW_INDEX');
 
@@ -298,8 +299,8 @@ class DataTableRoot<
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
-      rowProps,
-      renderCell,
+      rowProps: this.rows.length > 0 ? rowProps : undefined,
+      renderCell: this.rows.length > 0 ? renderCell : undefined,
       renderEmptyData,
       sideIndents,
       selectedRows,

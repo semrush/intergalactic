@@ -36,6 +36,9 @@ Icon[
 
 # Env variable
 .env
+
+# Temp vitepress files
 docs/.vitepress/cache
 docs/.vitepress/.temp
 docs/.vitepress/dist
+docs/.vitepress/config.ts.timestamp*

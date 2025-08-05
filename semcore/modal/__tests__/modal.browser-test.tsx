@@ -150,6 +150,7 @@ test.describe('Modal interactions', () => {
 
     await test.step('Verify only one modal closed by activating Close', async () => {
       await page.keyboard.press('Enter');
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
     });
@@ -159,12 +160,14 @@ test.describe('Modal interactions', () => {
       await page.waitForSelector('text=Save changes');
 
       await page.keyboard.press('Escape');
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
     });
 
     await test.step('Verify last one modal closed by ESC', async () => {
       await page.keyboard.press('Escape');
+      await modal.nth(0).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(0);
       await expect(trigger).toBeFocused();
     });
@@ -264,6 +267,7 @@ test.describe('Modal interactions', () => {
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       // await expect(trigger).toBeFocused();
     });

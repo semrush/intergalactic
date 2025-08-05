@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
 import CheckBoxExample from './examples/cells-tests/checkbox';
+import CheckboxInTableWithNoDataExample from './examples/cells-tests/checkbox-in-table-with-no-data';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -24,6 +25,10 @@ export const CardFlagInCell: Story = {
 
 export const CheckBox: Story = {
   render: CheckBoxExample,
+};
+
+export const CheckboxInTableWithNoData: Story = {
+  render: CheckboxInTableWithNoDataExample,
 };
 
 export const MiniChartsInCells: Story = {
