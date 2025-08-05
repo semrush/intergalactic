@@ -76,6 +76,11 @@ export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
       options: [undefined, 'wide'],
       defaultValue: undefined,
     },
+    compact: {
+      control: 'radio',
+      options: [undefined, true, false],
+      defaultValue: undefined,
+    },
   },
   args: CheckboxInTableProps,
 };
