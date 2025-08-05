@@ -262,8 +262,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   };
 
   setShadowContainer = () => {
-    const shadow = this.asProps.shadow;
-    if (!shadow || !this.$container || !this.$wrapper) return;
+    if (!this.asProps.shadow || !this.$container || !this.$wrapper) return;
 
     const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
       this.$container;
