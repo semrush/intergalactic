@@ -347,7 +347,6 @@ test.describe('Horizontal Scroll', () => {
     const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue2 = await checkAriaMaxValue(scrollBar2);
 
-    await page.keyboard.press('Tab');
     for (let i = 0; i < 15; i++) {
       await page.keyboard.press('ArrowDown');
     }
