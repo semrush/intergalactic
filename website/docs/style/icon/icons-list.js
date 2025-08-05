@@ -4267,7 +4267,7 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Brand',
       tags: [
-        'canva', 'presentation', 'slides', 'канва', 'презентация', 'слайды',
+        'canva', 'presentation', 'slides', 'logo', 'канва', 'презентация', 'слайды', 'лого',
       ],
     },
     {
