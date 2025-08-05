@@ -72,7 +72,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
           if (previousRow) {
             setTimeout(() => {
               this.closeAccordion(previousRow, closeDuration);
-            }, openDuration / 2);
+            }, openDuration / 3);
           }
         }
       }
