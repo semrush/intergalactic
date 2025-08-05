@@ -62,6 +62,4 @@ export type HeadPropsInner<
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   onCellClick: CellPropsInner<UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
-  lastLeftFixedIndex: number;
-  firstRightFixedIndex: number;
 };

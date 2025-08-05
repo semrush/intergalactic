@@ -82,8 +82,6 @@ class DataTableRoot<
   private treeColumns: DTColumn[] = [];
   private hasGroups = false;
   private hasFixedColumn = false;
-  private lastLeftFixedColumnIndex = -1;
-  private firstRightFixedColumnIndex = -1;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -114,8 +112,6 @@ class DataTableRoot<
       this.columns = cols[0];
       this.treeColumns = cols[1];
     }
-
-    this.calculateFixedFlags();
 
     this.rows = this.calculateRows();
     this.flatRows = this.rows.flat();
@@ -150,7 +146,6 @@ class DataTableRoot<
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
       this.treeColumns = cols[1];
-      this.calculateFixedFlags();
     }
     if (prevProps.data !== data || prevProps.columns !== columns) {
       this.rows = this.calculateRows();
@@ -269,8 +264,6 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
-      lastLeftFixedIndex: this.lastLeftFixedColumnIndex,
-      firstRightFixedIndex: this.firstRightFixedColumnIndex,
     };
   }
 
@@ -331,8 +324,6 @@ class DataTableRoot<
       onCellClick: this.handleCellClick,
       rawData,
       shadowVertical,
-      lastLeftFixedIndex: this.lastLeftFixedColumnIndex,
-      firstRightFixedIndex: this.firstRightFixedColumnIndex,
     };
   }
 
@@ -1084,6 +1075,10 @@ class DataTableRoot<
         parent,
       } as DTColumn;
 
+      if (column.fixed) {
+        this.hasFixedColumn = true;
+      }
+
       return column;
     };
 
@@ -1098,6 +1093,19 @@ class DataTableRoot<
       return 'columns' in child;
     };
 
+    const setShowShadows = (col: DTColumn, i: number): void => {
+      let prevCol = treeColumns[i - 1];
+      if ('columns' in prevCol && prevCol.columns) {
+        prevCol = prevCol.columns[prevCol.columns.length - 1];
+      }
+
+      if (prevCol.fixed && !col.fixed) {
+        prevCol.showShadowVertical = true;
+      } else if (!prevCol.fixed && col.fixed) {
+        col.showShadowVertical = true;
+      }
+    };
+
     columns.forEach((child, i) => {
       if (childIsColumn(child)) {
         const col = makeColumn(child);
@@ -1110,6 +1118,10 @@ class DataTableRoot<
 
         calculatedColumns.push(col);
         treeColumns.push(col);
+
+        if (i > 0) {
+          setShowShadows(col, i);
+        }
       } else if (childIsGroup(child)) {
         const Group = makeColumn(child);
         const childCount = child.columns.length;
@@ -1137,6 +1149,10 @@ class DataTableRoot<
 
           calculatedColumns.push(col);
 
+          if (isFirst && i > 0) {
+            setShowShadows(col, i);
+          }
+
           Group.columns?.push(col);
         });
 
@@ -1146,6 +1162,8 @@ class DataTableRoot<
         groupIndex++;
       }
     });
+
+    console.log(calculatedColumns, treeColumns);
 
     return [calculatedColumns, treeColumns];
   }
@@ -1297,19 +1315,6 @@ class DataTableRoot<
     }
 
     return height;
-  }
-
-  private calculateFixedFlags() {
-    this.columns.forEach((column, index) => {
-      if (column.fixed === 'left' && !this.columns[index + 1].fixed) {
-        this.lastLeftFixedColumnIndex = index;
-      }
-      if (column.fixed === 'right' && !this.columns[index - 1].fixed) {
-        this.firstRightFixedColumnIndex = index;
-      }
-    });
-
-    this.hasFixedColumn = this.lastLeftFixedColumnIndex !== -1 || this.firstRightFixedColumnIndex !== -1;
   }
 }
 
