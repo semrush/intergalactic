@@ -44,6 +44,8 @@ export type TextProps = BoxProps & {
   use?: 'primary' | 'secondary';
   /** Makes text semi-transparent to indicate disabled state */
   disabled?: boolean;
+  /** Enable formatting/styling for all nested HTML tags with our default styles for them */
+  formatTags?: boolean;
 };
 
 /** @deprecated */
