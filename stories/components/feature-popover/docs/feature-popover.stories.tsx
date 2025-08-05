@@ -16,6 +16,11 @@ export const AnimationExample: StoryObj<typeof ExampleProps> = {
     closeIcon: {
       control: { type: 'boolean' },
     },
+    theme: {
+      control: { type: 'select' },
+      options: ['accent', 'neutral'],
+      defaultValue: 'accent',
+    },
   },
   args: ExampleProps,
 };

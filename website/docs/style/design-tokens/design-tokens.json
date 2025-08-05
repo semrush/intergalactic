@@ -503,6 +503,7 @@
       "date-picker",
       "dot",
       "feature-highlight",
+      "feature-popover",
       "notice-bubble",
       "notice-global",
       "tag",
@@ -516,7 +517,9 @@
     "rawValue": "{gray.white}, 0.8",
     "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Inverted version of the secondary text.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-text-link",
@@ -1682,7 +1685,9 @@
     "rawValue": "{violet.dusty.800}",
     "computedValue": "#1D113E",
     "description": "Color of the FeaturePopover background with neutral theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral",
@@ -1690,7 +1695,9 @@
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
     "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
@@ -1698,7 +1705,9 @@
     "rawValue": "{feature-popover.dot-neutral}",
     "computedValue": "#00c192",
     "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
