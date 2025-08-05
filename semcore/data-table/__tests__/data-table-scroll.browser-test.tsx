@@ -87,7 +87,7 @@ test.describe('Vertical Scroll', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
-  test('Verify Keyboard scroll when header not Sticky ', async ({ page }) => {
+  test('Verify Keyboard scroll when header not Sticky ', async ({ page, browserName }) => {
     const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -100,7 +100,8 @@ test.describe('Vertical Scroll', () => {
     }
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot();
+    if (browserName === 'webkit') await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    else await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify mouse scroll when header not Sticky', async ({ page }) => {

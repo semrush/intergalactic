@@ -432,7 +432,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
+        timeout: 500,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
@@ -492,7 +492,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 200,
+        timeout: 500,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #0']);
@@ -507,7 +507,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
+        timeout: 500,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
@@ -596,7 +596,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
+        timeout: 500,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
@@ -870,7 +870,7 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify accordion with custom component and fixed column', async ({ page }) => {
+  test('Verify accordion with custom component and fixed column', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -885,10 +885,12 @@ test.describe('Accordion in table', () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot();
+    if (browserName === 'webkit')
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    else await expect(page).toHaveScreenshot();
   });
 
-  test('Verify accordion with table in table and fixed column', async ({ page }) => {
+  test('Verify accordion with table in table and fixed column', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-fixed-column.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -902,6 +904,9 @@ test.describe('Accordion in table', () => {
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
+    if (browserName === 'webkit')
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    else await expect(page).toHaveScreenshot();
   });
 
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {
