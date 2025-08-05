@@ -71,6 +71,11 @@ export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
       control: { type: 'number' },
     },
     loading: { control: 'boolean' },
+    sideIndents: {
+      control: 'select',
+      options: [undefined, 'wide'],
+      defaultValue: undefined,
+    },
   },
   args: CheckboxInTableProps,
 };

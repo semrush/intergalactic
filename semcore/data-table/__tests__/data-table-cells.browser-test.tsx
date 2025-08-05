@@ -285,4 +285,14 @@ test.describe('Cells', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify wide indents with selectable rows', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      sideIndents: 'wide',
+    });
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
 });
