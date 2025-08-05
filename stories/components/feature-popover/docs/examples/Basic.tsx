@@ -7,7 +7,12 @@ import FileExport from '@semcore/icon/FileExport/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = (props: FeaturePopoverProps) => {
+export type FeaturePopoverExampleProps = {
+  closeIcon: boolean;
+  theme: FeaturePopoverProps['theme'];
+};
+
+const Demo = (props: FeaturePopoverExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
@@ -65,7 +70,7 @@ const Demo = (props: FeaturePopoverProps) => {
   );
 };
 
-export const defaultProps: FeaturePopoverProps = {
+export const defaultProps: FeaturePopoverExampleProps = {
   closeIcon: true,
   theme: 'accent',
 };
