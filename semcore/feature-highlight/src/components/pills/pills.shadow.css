@@ -7,7 +7,7 @@ SHighlightedPill {
   background-clip: padding-box, border-box;
   z-index: 1;
   position: relative;
-  /*isolation: isolate;*/
+  isolation: isolate;
 
   &::before {
     content: "";
@@ -70,5 +70,19 @@ SHighlightedPill:focus-visible {
     margin: -6px;
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedPill:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
+  }
+
+  SHighlightedPill:focus-visible::before {
+    display: none;
   }
 }

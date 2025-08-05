@@ -141,9 +141,12 @@ SInputField[size='l']>div {
 
 SInputField[state='normal']:not([disabled])>div:focus {
   &:focus {
-    border-color: var(--intergalactic-border-info-active, #006dca);
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
   }
 }
 
@@ -151,8 +154,12 @@ SInputField[state='valid']>div {
   border-color: var(--intergalactic-border-success-active, #007c65);
 
   &:focus {
-    outline: 2px solid var(--intergalactic-keyboard-focus-valid-outline, #009f81);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
   }
 }
 
@@ -160,8 +167,12 @@ SInputField[state='invalid']>div {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &:focus {
-    outline: 2px solid var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
   }
 
   background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%));

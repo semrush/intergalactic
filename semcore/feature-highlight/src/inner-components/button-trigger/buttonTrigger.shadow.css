@@ -59,6 +59,20 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
     }
   }
 
+  /* Firefox fallback */
+  @supports not (-webkit-mask-composite: xor) {
+    SHighlightedButtonTrigger:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px #ffffff,
+        0 0 0 4px #7078FC;
+    }
+
+    SHighlightedButtonTrigger:focus-visible::before {
+      display: none;
+    }
+  }
+
   &[neighborLocation='left']::before {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;

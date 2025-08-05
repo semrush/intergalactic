@@ -71,9 +71,12 @@ SCalendarUnit {
   }
 
   &:focus-visible {
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-width: 2px;
     outline-offset: 2px;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -242,15 +245,23 @@ SCalendarUnit[disabled] {
 SCalendar:focus {
   & SCalendarUnit[highlighted] {
     z-index: 1;
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: 2px;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: 4px;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
     border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }

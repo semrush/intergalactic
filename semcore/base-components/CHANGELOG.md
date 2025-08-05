@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Styles for `:focus-visible` in Box and ScrollArea.
+- Border-radius for invalid pattern in InvalidStateBox.
 
 ## [16.2.0] - 2025-08-08
 

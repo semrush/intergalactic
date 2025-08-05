@@ -36,10 +36,13 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus-visible {
-    border-color: var(--intergalactic-border-info-active, #006dca);
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
+    border-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: 0;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -47,9 +50,12 @@ STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 
   &:focus-visible {
-    outline: 2px solid var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: 0;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -57,15 +63,18 @@ STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &:focus-visible {
-    outline: 2px solid var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-style: solid;
+    outline-width: 2px;
     outline-offset: 0;
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
   background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%));
   background-size: 6px 6px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-bottom-left-radius: calc(var(--intergalactic-control-rounded, 6px) - 2px);
+  border-top-left-radius: calc(var(--intergalactic-control-rounded, 6px) - 2px);
   background-repeat: repeat-y;
 }

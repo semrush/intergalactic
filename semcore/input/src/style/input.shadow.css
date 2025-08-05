@@ -135,9 +135,12 @@ SInput[state='normal'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    border-color: var(--intergalactic-border-info-active, #006dca);
-    outline: 2px solid var(--intergalactic-keyboard-focus-outline, #008ff8);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -147,9 +150,12 @@ SInput[state='valid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    border-color: var(--intergalactic-border-success-active, #007c65);
-    outline: 2px solid var(--intergalactic-keyboard-focus-valid-outline, #009f81);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
@@ -159,9 +165,12 @@ SInput[state='invalid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    border-color: var(--intergalactic-border-critical-active, #d1002f);
-    outline: 2px solid var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
-    transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+    border-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-style: solid;
+    outline-width: 2px;
+    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 

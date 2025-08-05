@@ -43,7 +43,7 @@ SHighlightedButton[theme='secondary-highlighted'] {
 
 SHighlightedButton {
   position: relative;
-  /*isolation: isolate;*/
+  isolation: isolate;
 
   &::before {
     content: "";
@@ -55,10 +55,9 @@ SHighlightedButton {
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
     background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
+
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
 
     opacity: 0;
     transform: scale(0.96);
@@ -92,5 +91,19 @@ SHighlightedButton:focus-visible {
     margin: -6px;
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedButton:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
+  }
+
+  SHighlightedButton:focus-visible::before {
+    display: none;
   }
 }
