@@ -1,4 +1,4 @@
-import { Box, Flex, Popper, Animation, ScreenReaderOnly } from '@semcore/base-components';
+import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
@@ -9,8 +9,10 @@ import React from 'react';
 
 import type {
   FeaturePopoverProps,
-  FeaturePopoverComponent, FeaturePopoverSpotProps, FeaturePopoverPopperProps, FeaturePopoverPopperInnerProps,
-  FeaturePopoverStepsProps,
+  FeaturePopoverComponent,
+  FeaturePopoverSpotProps,
+  FeaturePopoverPopperProps,
+  FeaturePopoverPopperInnerProps,
 } from './FeaturePopover.type';
 import style from './style/feature-popover.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -138,7 +140,7 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
       getI18nText,
       zIndex,
       'aria-label': ariaLabel,
-      'aria-describedBy': ariaDescribedBy,
+      'aria-describedby': ariaDescribedBy,
       'aria-labelledby': ariaLabelledby,
       title,
       theme,
