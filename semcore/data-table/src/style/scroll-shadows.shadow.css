@@ -43,7 +43,7 @@ SScrollArea {
   SShadowHorizontal[rightOffset]::after {
     display: none;
   }
-  SSHadowVertical::after {
+  SShadowVertical::after {
     z-index: 20;
   }
 }
