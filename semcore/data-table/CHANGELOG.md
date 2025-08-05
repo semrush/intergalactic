@@ -13,6 +13,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `line-height` for `Head.Column` items.
 - `overflow=hidden` for `CellWrapper`.
 - `textAlign` property to all column cells.
+- `renderCellOverlay` method for render some card over table cells.
 
 ### Fixed
 

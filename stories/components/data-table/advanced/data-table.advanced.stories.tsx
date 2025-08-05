@@ -7,6 +7,7 @@ import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
+import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
@@ -53,6 +54,10 @@ export const SideIndents: Story = {
 
 export const OverflowInCells: Story = {
   render: OverflowInCellsExample,
+};
+
+export const OverlapCells: Story = {
+  render: OverlapCellsExample,
 };
 
 export const FakeMultiLineHeader: Story = {

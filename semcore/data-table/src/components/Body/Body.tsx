@@ -347,6 +347,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       columns,
       uid,
       rows,
+      renderCellOverlay,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -492,6 +493,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
             />
           );
         })}
+        {renderCellOverlay?.()}
         {loading && (
           <SSpinContainer
             innerOutline

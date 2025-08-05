@@ -271,6 +271,7 @@ class DataTableRoot<
       accordionDuration,
       accordionMode,
       data: rawData,
+      renderCellOverlay,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     return {
@@ -308,6 +309,7 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
+      renderCellOverlay,
     };
   }
 
