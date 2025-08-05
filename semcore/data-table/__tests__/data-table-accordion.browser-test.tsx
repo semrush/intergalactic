@@ -432,7 +432,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 500,
+        timeout: 200,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
@@ -492,7 +492,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 500,
+        timeout: 200,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #0']);
@@ -507,7 +507,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 500,
+        timeout: 200,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
@@ -596,7 +596,7 @@ test.describe('Accordion in table', () => {
       await accordionRow.waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 500,
+        timeout: 200,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
