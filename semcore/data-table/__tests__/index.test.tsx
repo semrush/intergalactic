@@ -1,7 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
+import { test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { DataTable, UNIQ_ROW_KEY } from '../src';
@@ -123,6 +123,12 @@ describe('DataTable', () => {
 });
 
 describe('DataTable.Cell', () => {
+  beforeEach(() => {
+    cleanup();
+  });
+  afterEach(() => {
+    cleanup();
+  });
   test('Should support ref via renderCell', ({ expect }) => {
     const spy = vi.fn();
 
@@ -153,8 +159,7 @@ describe('DataTable.Cell', () => {
     expect(spy).toBeCalled();
   });
 
-  // we have some error with rendering this example
-  test.skip('Should support rawData in custom renderCell function', ({ expect }) => {
+  test('Should support rawData in custom renderCell function', ({ expect }) => {
     const checkRowData = vi.fn();
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
