@@ -26,8 +26,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- `overflow` for `Body.Cell` to default.
 - Width for column with checkboxes to use `min-content` value.
+- `rowProps` and `renderCell` will not be called when rendering an empty table.
 
 ## [16.0.7] - 2025-07-23
 
