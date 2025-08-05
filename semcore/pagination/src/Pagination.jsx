@@ -51,19 +51,10 @@ class PaginationRoot extends Component {
     }
   }
 
-  returnLostFocus = () => {
-    setTimeout(() => {
-      if (document.activeElement !== document.body) return;
-
-      const prevPageButton = this.prevPageButtonRef.current;
-      const nextPageButton = this.nextPageButtonRef.current;
-
-      if (prevPageButton && !prevPageButton.disabled) {
-        prevPageButton.focus();
-      } else if (nextPageButton && !nextPageButton.disabled) {
-        nextPageButton.focus();
-      }
-    }, 0);
+  returnLostFocusTo = (ref) => {
+    requestAnimationFrame(() => {
+      ref.current?.focus();
+    });
   };
 
   handlePageChange = (currentPage) => {
@@ -73,7 +64,6 @@ class PaginationRoot extends Component {
     }
     this.handlers.currentPage(currentPage);
     this.setState({ dirtyCurrentPage: undefined });
-    this.returnLostFocus();
   };
 
   handlePageValueChange = (value) => {
@@ -117,7 +107,10 @@ class PaginationRoot extends Component {
     const disabled = currentPage <= 1;
     return {
       disabled,
-      onClick: () => this.handlePageChange(1),
+      onClick: () => {
+        this.handlePageChange(1);
+        this.returnLostFocusTo(this.nextPageButtonRef);
+      },
       getI18nText,
       size,
     };
@@ -129,22 +122,38 @@ class PaginationRoot extends Component {
     return {
       currentPage,
       disabled,
-      onClick: () => this.handlePageChange(currentPage - 1),
+      onClick: () => {
+        const followingPage = currentPage - 1;
+
+        this.handlePageChange(followingPage);
+
+        if (followingPage <= 1) {
+          this.returnLostFocusTo(this.nextPageButtonRef);
+        }
+      },
       getI18nText,
-      ref: this.nextPageButtonRef,
+      ref: this.prevPageButtonRef,
       size,
     };
   };
 
   getNextPageProps = () => {
     const { currentPage, totalPages, getI18nText, size } = this.asProps;
-    const disabled = !(currentPage < totalPages);
+    const disabled = currentPage >= totalPages;
     return {
       currentPage,
       disabled,
-      onClick: () => this.handlePageChange(currentPage + 1),
+      onClick: () => {
+        const followingPage = currentPage + 1;
+
+        this.handlePageChange(followingPage);
+
+        if (followingPage >= totalPages) {
+          this.returnLostFocusTo(this.prevPageButtonRef);
+        }
+      },
       getI18nText,
-      ref: this.prevPageButtonRef,
+      ref: this.nextPageButtonRef,
       size,
     };
   };
@@ -190,7 +199,10 @@ class PaginationRoot extends Component {
       totalPages,
       children: formatter.format(totalPages),
       isLastOrSingle: currentPage === totalPages,
-      onClick: () => this.handlePageChange(totalPages),
+      onClick: () => {
+        this.handlePageChange(totalPages);
+        this.returnLostFocusTo(this.prevPageButtonRef);
+      },
       getI18nText,
       size,
     };

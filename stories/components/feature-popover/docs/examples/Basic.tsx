@@ -2,11 +2,12 @@ import { Flex, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import FeaturePopover from '@semcore/feature-popover';
+import type { FeaturePopoverPopperProps } from '@semcore/feature-popover';
 import FileExport from '@semcore/icon/FileExport/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: FeaturePopoverPopperProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
@@ -25,7 +26,7 @@ const Demo = () => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon w={400} aria-label='New feature: Export'>
+        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={400} aria-label='New feature: Export'>
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -60,5 +61,11 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: FeaturePopoverPopperProps = {
+  closeIcon: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

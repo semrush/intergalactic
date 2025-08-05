@@ -91,6 +91,16 @@ const defaultTooltipProps = [
   'cursorAnchoring',
 ];
 
+const setFontSettings = (element: HTMLElement, styleElement: CSSStyleDeclaration): void => {
+  element.style.fontFamily = styleElement.getPropertyValue('font-family');
+  element.style.fontSize = styleElement.getPropertyValue('font-size');
+  element.style.fontWeight = styleElement.getPropertyValue('font-weight');
+  element.style.lineHeight = styleElement.getPropertyValue('line-height');
+  element.style.fontFeatureSettings =
+          styleElement.getPropertyValue('font-feature-settings');
+  element.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
+};
+
 const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
@@ -100,16 +110,10 @@ const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   temporaryElement.style.right = '0%';
   temporaryElement.style.bottom = '0%';
   temporaryElement.style.visibility = 'hidden';
-  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
-  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
-  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
-  temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
   temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
   temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
 
-  temporaryElement.style.fontFeatureSettings =
-    styleElement.getPropertyValue('font-feature-settings');
-  temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
+  setFontSettings(temporaryElement, styleElement);
 
   temporaryElement.innerHTML = text ?? element.innerHTML;
   return temporaryElement;
@@ -188,7 +192,6 @@ class RootEllipsis extends Component<AsProps> {
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
-    const SNoTooltipContainer = Box;
     const {
       styles,
       Children,
@@ -232,28 +235,14 @@ class RootEllipsis extends Component<AsProps> {
         </EllipsisMiddle>,
       );
     }
-    if (tooltip) {
-      return sstyled(styles)(
-        <SContainer
-          interaction='hover'
-          title={!advanceMode ? text : undefined}
-          {...tooltipProps}
-          {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
-        >
-          {advanceMode
-            ? (
-                <Children />
-              )
-            : (
-                <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
-                  <Children />
-                </SEllipsis>
-              )}
-        </SContainer>,
-      );
-    }
+
     return sstyled(styles)(
-      <SNoTooltipContainer>
+      <SContainer
+        interaction={tooltip ? 'hover' : 'none'}
+        title={!advanceMode ? text : undefined}
+        {...tooltipProps}
+        {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
+      >
         {advanceMode
           ? (
               <Children />
@@ -263,7 +252,7 @@ class RootEllipsis extends Component<AsProps> {
                 <Children />
               </SEllipsis>
             )}
-      </SNoTooltipContainer>,
+      </SContainer>,
     );
   }
 }
@@ -285,39 +274,40 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     tooltipProps,
     children,
     advanceMode,
-    ...otherProps
+    tag,
   } = props;
+
   const resizeElement = React.useRef<HTMLDivElement>(null);
-  const [dimension, setDimension] = React.useState<{ fontSize: string; symbolWidth: number }>({
-    fontSize: '14',
-    symbolWidth: 0,
-  });
+  const [symbolWidth, setSymbolWidth] = React.useState(0);
   const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
   useEnhancedEffect(() => {
     const node = containerRef?.current || resizeElement?.current;
     if (!node) return;
 
+    const styleElement = window.getComputedStyle(node);
     const dateSpan = document.createElement('temporary-block');
-    dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
+
+    setFontSettings(dateSpan, styleElement);
     dateSpan.innerHTML = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
 
-    setDimension({
-      fontSize: window.getComputedStyle(node, null).getPropertyValue('font-size'),
-      symbolWidth: rect.width,
-    });
+    setSymbolWidth(rect.width);
     document.body.removeChild(dateSpan);
   }, []);
 
   const STail = 'span';
   const SBeginning = 'span';
-  const SContainerMiddle = props.tag || Box;
+  const SContainerMiddle = Tooltip;
   const SAdvancedModeContainerMiddle = Tooltip;
   const displayedSymbols = React.useMemo(
-    () => Math.round(blockWidth / dimension.symbolWidth),
-    [blockWidth, dimension.symbolWidth],
+    () => {
+      const displayedSymbols = Math.round(blockWidth / symbolWidth);
+
+      return displayedSymbols % 2 === 0 ? displayedSymbols : displayedSymbols - 1;
+    },
+    [blockWidth, symbolWidth],
   );
 
   const interaction = text.length > displayedSymbols ? 'hover' : 'none';
@@ -334,7 +324,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   if (advanceMode) {
     return sstyled(styles)(
       <SAdvancedModeContainerMiddle
-        interaction={interaction}
+        interaction={tooltip ? interaction : 'none'}
         {...tooltipProps}
         {...forcedAdvancedMode}
       >
@@ -342,29 +332,20 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
           {children}
         </EllipsisMiddleContext.Provider>
       </SAdvancedModeContainerMiddle>,
-    ) as any;
-  }
-  if (tooltip) {
-    return sstyled(styles)(
-      <SContainerMiddle
-        interaction={interaction}
-        title={text as any}
-        ref={forkRef(ref, textRef)}
-        tag={Tooltip}
-        __excludeProps={['title']}
-        {...tooltipProps}
-      >
-        <SBeginning>{contextValue.begining}</SBeginning>
-        <STail>{contextValue.tail}</STail>
-      </SContainerMiddle>,
-    ) as any;
+    );
   }
   return sstyled(styles)(
-    <SContainerMiddle {...otherProps} ref={containerRef ?? resizeElement}>
+    <SContainerMiddle
+      interaction={tooltip ? interaction : 'none'}
+      title={text}
+      ref={forkRef(ref, textRef)}
+      tag={tag}
+      {...tooltipProps}
+    >
       <SBeginning>{contextValue.begining}</SBeginning>
       <STail>{contextValue.tail}</STail>
     </SContainerMiddle>,
-  ) as any;
+  );
 };
 
 type EllipsisContentAsProps = {

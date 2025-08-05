@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/venn-chart/basic-usage';
+import BasicUsageExample, { defaultProps as ShowLegendPropExampleProps } from './examples/venn-chart/basic-usage';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Venn-Chart',
@@ -8,6 +8,13 @@ const meta: Meta = {
 
 export default meta;
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof ShowLegendPropExampleProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+  },
+  args: ShowLegendPropExampleProps,
 };

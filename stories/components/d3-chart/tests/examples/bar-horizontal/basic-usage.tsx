@@ -1,16 +1,24 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
-
-const Demo = () => {
+type BaseExampleProps = {
+  showLegend?: boolean;
+};
+const Demo = (props: BaseExampleProps) => {
+  const { showLegend } = props;
   return (
-    <Chart.Bar
-      groupKey='category'
-      data={data}
-      plotWidth={500}
-      plotHeight={300}
-      invertAxis={true}
-      aria-label='CompactHorizontalBar chart'
-    />
+    <>
+      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
+
+      <Chart.Bar
+        groupKey='category'
+        data={data}
+        plotWidth={500}
+        plotHeight={300}
+        invertAxis={true}
+        aria-label='CompactHorizontalBar chart'
+        showLegend={showLegend}
+      />
+    </>
   );
 };
 
@@ -21,5 +29,10 @@ const data = [
   { category: 'Category 3', bar: 6.9 },
   { category: 'Category 4', bar: 3.3 },
 ];
+
+export const defaultProps: BaseExampleProps = {
+  showLegend: undefined,
+
+};
 
 export default Demo;

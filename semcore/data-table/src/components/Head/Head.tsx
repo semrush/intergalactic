@@ -13,13 +13,17 @@ import style from './style.shadow.css';
 import { DataTableInternal, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-class HeadRoot<D extends DataTableData> extends Component<
-  DataTableHeadProps,
-  {},
-  {},
-  [],
-  HeadPropsInner<D>
-> {
+class HeadRoot<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> extends Component<
+    DataTableHeadProps,
+    {},
+    {},
+    [],
+    HeadPropsInner<Data, UniqKey, UniqKeyType>
+  > {
   static displayName = 'Head';
   static style = style;
 
@@ -104,9 +108,9 @@ class HeadRoot<D extends DataTableData> extends Component<
   };
 
   get areAllRowsSelected() {
-    const { selectedRows, flatRows } = this.asProps;
+    const { selectedRows = [], flatRows } = this.asProps;
 
-    return flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    return selectedRows.length > 0 && flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
   }
 
   get isIndeterminate() {

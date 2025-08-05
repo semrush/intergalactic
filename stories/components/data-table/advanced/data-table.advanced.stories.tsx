@@ -1,10 +1,13 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AccordionInMergedRowsExample from './examples/accordion_in_merged_rows';
+import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
+import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
+import OverflowInCellsExample from './examples/overflow_in_cells';
+import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
 
@@ -16,8 +19,20 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const AccordionInMergedRows: Story = {
+export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   render: AccordionInMergedRowsExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: accordionMergedProps,
+};
+
+export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
+  render: AccordionWithStickyRowsExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: accordionStickyProps,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {
@@ -36,6 +51,14 @@ export const SideIndents: Story = {
   render: SideIndentsExample,
 };
 
+export const OverflowInCells: Story = {
+  render: OverflowInCellsExample,
+};
+
 export const FakeMultiLineHeader: Story = {
   render: FakeMultiLineHeaderExample,
+};
+
+export const RenderCellRawValue: Story = {
+  render: RenderCellRawValueExample,
 };

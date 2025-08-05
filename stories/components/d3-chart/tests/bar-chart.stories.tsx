@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BarExample from './examples/bar-chart/bar';
 import BarHoverExample from './examples/bar-chart/bar-hover';
 import BarPropsExample from './examples/bar-chart/bars-props';
-import BasicUsageExample from './examples/bar-chart/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bar-chart/basic-usage';
 import DateFormatExample from './examples/bar-chart/date-format-with-tooltip';
 import GroupedBarsExample from './examples/bar-chart/grouped-bars';
 import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern-fill';
@@ -29,8 +29,15 @@ export const Bar: StoryObj = {
   render: BarExample,
 };
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+  },
+  args: BasicUsageProps,
 };
 
 export const DateFormat: StoryObj = {
