@@ -559,7 +559,7 @@ test.describe('Modal outside click interaction', () => {
     const y = overlayBox!.y + overlayBox!.height / 2;
     await page.mouse.click(x, y);
 
-    expect(modal).not.toBeVisible();
+    await expect(modal).toBeHidden();
   });
 
   test('Edge case', async ({ page }) => {
@@ -586,6 +586,6 @@ test.describe('Modal outside click interaction', () => {
     const y = overlayBox!.y + overlayBox!.height / 2;
     await page.mouse.click(x, y);
 
-    expect(modal).toBeVisible();
+    await expect(modal).toBeVisible();
   });
 });

@@ -159,14 +159,9 @@ function Window(props) {
   );
 }
 
-function OverlayContentWrapper(props) {
-  const SOverlayContentWrapper = Root;
-  const { children, styles } = props;
-  return sstyled(styles)(<SOverlayContentWrapper render={Flex}>{children}</SOverlayContentWrapper>);
-}
-
 function Overlay(props) {
   const SOverlay = Root;
+  const SOverlayContentWrapper = Flex;
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayContentWrapperRef = React.useRef(null);
   usePreventScroll(visible, props.disablePreventScroll);
@@ -175,11 +170,12 @@ function Overlay(props) {
 
   return sstyled(styles)(
     <SOverlay render={FadeInOut} zIndex={zIndex}>
-      <Modal.Overlay.ContentWrapper ref={overlayContentWrapperRef}>
+      {/* This child component is intended to be private. Since true encapsulation isn't possible in this context, we’re applying the data-ui-name attribute directly as a workaround. */}
+      <SOverlayContentWrapper data-ui-name='Modal.Overlay.ContentWrapper' ref={overlayContentWrapperRef}>
         <OutsideClick root={overlayContentWrapperRef} onOutsideClick={onOutsideClick}>
           <Children />
         </OutsideClick>
-      </Modal.Overlay.ContentWrapper>
+      </SOverlayContentWrapper>
     </SOverlay>,
   );
 }
@@ -220,12 +216,7 @@ function Title(props) {
 
 const Modal = createComponent(ModalRoot, {
   Window,
-  Overlay: [
-    Overlay,
-    {
-      ContentWrapper: OverlayContentWrapper,
-    },
-  ],
+  Overlay,
   Close,
   Title,
 });
