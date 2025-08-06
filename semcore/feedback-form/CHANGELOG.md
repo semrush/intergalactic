@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.6] - 2025-08-06
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [16.0.5 ~> 16.1.0], `@semcore/typography` [16.1.5 ~> 16.2.0], `@semcore/modal` [16.1.5 ~> 16.1.6], `@semcore/icon` [16.4.0 ~> 16.5.0], `@semcore/button` [16.0.5 ~> 16.0.6], `@semcore/base-components` [16.1.2 ~> 16.2.0]).
+
 ## [16.1.5] - 2025-07-23
 
 ### Changed
