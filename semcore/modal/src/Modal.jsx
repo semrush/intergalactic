@@ -159,9 +159,14 @@ function Window(props) {
   );
 }
 
+function OverlayContentWrapper(props) {
+  const SOverlayContentWrapper = Root;
+  const { children, styles } = props;
+  return sstyled(styles)(<SOverlayContentWrapper render={Flex}>{children}</SOverlayContentWrapper>);
+}
+
 function Overlay(props) {
   const SOverlay = Root;
-  const SOverlayContentWrapper = Flex;
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayContentWrapperRef = React.useRef(null);
   usePreventScroll(visible, props.disablePreventScroll);
@@ -170,11 +175,11 @@ function Overlay(props) {
 
   return sstyled(styles)(
     <SOverlay render={FadeInOut} zIndex={zIndex}>
-      <SOverlayContentWrapper ref={overlayContentWrapperRef}>
+      <Modal.Overlay.ContentWrapper ref={overlayContentWrapperRef}>
         <OutsideClick root={overlayContentWrapperRef} onOutsideClick={onOutsideClick}>
           <Children />
         </OutsideClick>
-      </SOverlayContentWrapper>
+      </Modal.Overlay.ContentWrapper>
     </SOverlay>,
   );
 }
@@ -215,7 +220,12 @@ function Title(props) {
 
 const Modal = createComponent(ModalRoot, {
   Window,
-  Overlay,
+  Overlay: [
+    Overlay,
+    {
+      ContentWrapper: OverlayContentWrapper,
+    },
+  ],
   Close,
   Title,
 });

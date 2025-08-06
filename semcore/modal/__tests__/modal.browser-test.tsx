@@ -358,7 +358,7 @@ test.describe('Modal positioning ans styles', () => {
 
     await page.setContent(htmlContent);
 
-    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay"] > div');
+    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
@@ -384,7 +384,7 @@ test.describe('Modal positioning ans styles', () => {
 
     await page.setContent(htmlContent);
 
-    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay"] > div');
+    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
@@ -559,7 +559,7 @@ test.describe('Modal outside click interaction', () => {
     const y = overlayBox!.y + overlayBox!.height / 2;
     await page.mouse.click(x, y);
 
-    await modal.waitFor({ state: 'hidden' });
+    expect(modal).not.toBeVisible();
   });
 
   test('Edge case', async ({ page }) => {
@@ -586,6 +586,6 @@ test.describe('Modal outside click interaction', () => {
     const y = overlayBox!.y + overlayBox!.height / 2;
     await page.mouse.click(x, y);
 
-    await modal.waitFor({ state: 'visible' });
+    expect(modal).toBeVisible();
   });
 });
