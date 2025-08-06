@@ -130,7 +130,7 @@ export type DataTableProps<
     renderEmptyData?: () => React.ReactNode;
 
     /**
-     * For add some overlay over table cells.
+     * For adding an overlay over table cells.
      */
     renderCellOverlay?: () => React.ReactNode;
 
