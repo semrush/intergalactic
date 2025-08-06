@@ -1,10 +1,8 @@
-import { Box, Flex } from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
 import Card from '@semcore/card';
 import type { DataTableData } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
-import Skeleton from '@semcore/skeleton';
 import React from 'react';
-import { Grid } from 'react-virtualized';
 
 const Demo = () => {
   return (
@@ -39,18 +37,10 @@ const Demo = () => {
         },
       ]}
 
-      renderCell={(props) => {
-        if (props.rowIndex > 1 && props.columnIndex > 0) {
-          return <Skeleton h={20} duration={-1}><Skeleton.Text amount={1} /></Skeleton>;
-        }
-
-        return props.defaultRender();
-      }}
-
       renderCellOverlay={() => {
         return (
-          <Flex alignItems='center' justifyContent='center' h='100%' style={{ background: 'rgba(255, 255, 255, 0.6)', gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={16}>
-            <Card style={{ background: '#fff', width: '260px', height: '240px' }}>
+          <Flex alignItems='center' justifyContent='center' h='100%' style={{ backdropFilter: 'brightness(5) blur(4px)', gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={16}>
+            <Card w={280} h={200} style={{ boxShadow: 'var(--intergalactic-box-shadow-modal)' }}>
               <Card.Body>
                 Some overlay text
               </Card.Body>
