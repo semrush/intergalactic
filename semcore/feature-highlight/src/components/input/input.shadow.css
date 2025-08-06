@@ -14,7 +14,7 @@ SHighlightedInput[state='normal'] {
       inset: 0;
       margin: 0;
       padding: 3px;
-      border-radius: var(--intergalactic-control-rounded, 6px);
+      border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
       background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
       mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
@@ -51,8 +51,23 @@ SHighlightedInput[state='normal'] {
     border-color: transparent;
 
     &::before {
-      margin: -2px;
+      margin: -3px;
       opacity: 1;
     }
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline {
+    outline: none;
+    border-color: #7078FC;
+    box-shadow:
+      0 0 0 0 #ffffff,
+      0 0 0 2px #7078FC;
+  }
+
+  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline::before {
+    display: none;
   }
 }

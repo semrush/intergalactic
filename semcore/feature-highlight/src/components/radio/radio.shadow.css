@@ -68,3 +68,21 @@ SHighlightedRadio:not([state="invalid"]) {
     transition: inherit;
   }
 }
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"] {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
+  }
+
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
+    display: none;
+  }
+
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:checked:focus-visible + [data-ui-name="Value.RadioMark"]::before {
+    display: none;
+  }
+}

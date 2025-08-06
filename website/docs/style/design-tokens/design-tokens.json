@@ -749,14 +749,17 @@
     "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "checkbox",
       "color-picker",
       "feedback-form",
       "inline-input",
+      "input",
       "input-tags",
       "pills",
       "radio",
-      "tab-line"
+      "tab-line",
+      "textarea"
     ]
   },
   {

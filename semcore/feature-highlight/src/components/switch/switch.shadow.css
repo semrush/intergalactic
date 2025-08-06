@@ -37,8 +37,22 @@ SToggle:has(SInput:focus-visible) {
   outline: none;
 
   &::before {
-    margin: -5px;
+    margin: -4px;
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SToggle:has(SInput:focus-visible) {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
+  }
+
+  SToggle:has(SInput:focus-visible)::before {
+    display: none;
   }
 }
