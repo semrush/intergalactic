@@ -121,7 +121,6 @@ test.describe('Styles', () => {
     await page.keyboard.press('Tab');
 
     await page.waitForSelector('text="This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!"');
-
     await expect(page).toHaveScreenshot();
   });
 });
