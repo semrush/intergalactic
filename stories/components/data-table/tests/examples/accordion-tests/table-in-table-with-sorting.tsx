@@ -68,7 +68,7 @@ const ChartExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      expandedRows={new Set()}
+      expandedRows={new Set<string>()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
