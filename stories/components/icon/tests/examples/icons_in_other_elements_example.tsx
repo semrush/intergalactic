@@ -2,8 +2,18 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Canva/l';
-import IconM from '@semcore/icon/Canva/m';
+import IconL from '@semcore/icon/Claude/l';
+import IconM from '@semcore/icon/Claude/m';
+import ClaudeColoredL from '@semcore/icon/color/ClaudeColored/l';
+import ClaudeColoredM from '@semcore/icon/color/ClaudeColored/m';
+import GeminiColoredL from '@semcore/icon/color/GoogleGenerativeAIColored/l';
+import GeminiColoredM from '@semcore/icon/color/GoogleGenerativeAIColored/m';
+import PerplexityColoredL from '@semcore/icon/color/PerplexityColored/l';
+import PerplexityColoredM from '@semcore/icon/color/PerplexityColored/m';
+import GeminiL from '@semcore/icon/GoogleGenerativeAI/l';
+import GeminiM from '@semcore/icon/GoogleGenerativeAI/m';
+import PerplexityL from '@semcore/icon/Perplexity/l';
+import PerplexityM from '@semcore/icon/Perplexity/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Pills from '@semcore/pills';
@@ -16,6 +26,46 @@ import React from 'react';
 const Demo = () => {
   return (
     <>
+      <List size={200} mb={6}>
+        <List.Item marker={<IconM color='blue-300' />}>
+          Claude
+        </List.Item>
+        <List.Item marker={<ClaudeColoredM color='blue-300' />}>
+          Claude
+        </List.Item>
+        <List.Item marker={<PerplexityM color='blue-300' />}>
+          Perplexity
+        </List.Item>
+        <List.Item marker={<PerplexityColoredM color='blue-300' />}>
+          Perplexity
+        </List.Item>
+        <List.Item marker={<GeminiM color='blue-300' />}>
+          Gemini
+        </List.Item>
+        <List.Item marker={<GeminiColoredM color='blue-300' />}>
+          Gemini
+        </List.Item>
+      </List>
+      <List size={300} mb={6}>
+        <List.Item marker={<IconL color='blue-300' />}>
+          Claude
+        </List.Item>
+        <List.Item marker={<ClaudeColoredL color='blue-300' />}>
+          Claude
+        </List.Item>
+        <List.Item marker={<PerplexityL color='blue-300' />}>
+          Perplexity
+        </List.Item>
+        <List.Item marker={<PerplexityColoredL color='blue-300' />}>
+          Perplexity
+        </List.Item>
+        <List.Item marker={<GeminiL color='blue-300' />}>
+          Gemini
+        </List.Item>
+        <List.Item marker={<GeminiColoredL color='blue-300' />}>
+          Gemini
+        </List.Item>
+      </List>
       <Flex columnGap={2} mb={4}>
         <Hint
           title='Hinticon M'
@@ -273,14 +323,14 @@ const Demo = () => {
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='m' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='l' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
