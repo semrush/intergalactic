@@ -36,7 +36,7 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus-visible {
-    border-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    border-color: var(--intergalactic-border-info-active, #006dca);
     outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
     outline-style: solid;
     outline-width: 2px;
