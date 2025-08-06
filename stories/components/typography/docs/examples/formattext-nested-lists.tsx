@@ -1,8 +1,9 @@
 import { Text } from '@semcore/typography';
+import type { TextProps } from '@semcore/typography';
 import React from 'react';
 
-const Demo = () => (
-  <Text>
+const Demo = (props: TextProps) => (
+  <Text formatTags={props.formatTags}>
     <ol start={1}>
       <li>List item one</li>
       <li>
@@ -16,5 +17,11 @@ const Demo = () => (
     </ol>
   </Text>
 );
+
+export const defaultProps: TextProps = {
+  formatTags: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

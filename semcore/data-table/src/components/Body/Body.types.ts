@@ -74,6 +74,7 @@ export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
   onCellClick: CellPropsInner<UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
+  shadowVertical?: '' | 'end' | 'start' | 'median';
   renderCellOverlay?: () => React.ReactNode;
 };
 

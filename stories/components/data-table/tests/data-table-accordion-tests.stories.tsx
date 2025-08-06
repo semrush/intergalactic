@@ -6,7 +6,10 @@ import AnimationDurationTestExample, { tableInTableDefaultProps } from './exampl
 import type { TableInTableProps } from './examples/accordion-tests/accordion-duration';
 import AccordionWithChartAndButtonExample, { accordionWithDefaultProps } from './examples/accordion-tests/accordion-inside-table';
 import type { AccordionWithButtonProps } from './examples/accordion-tests/accordion-inside-table';
-import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
+import type {
+  AccordionWithFixedColumnProps,
+} from './examples/accordion-tests/accordion-with-fixed-column';
+import AccordionWithFixedColumnExample, { accordionWithFixedColumnDefaultProps } from './examples/accordion-tests/accordion-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
 import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
@@ -73,8 +76,9 @@ export const AccordionWithRenderCell: Story = {
   render: AccordionWithRenderCellExample,
 };
 
-export const AccordionWithFixedColumn: Story = {
+export const AccordionWithFixedColumn: StoryObj<AccordionWithFixedColumnProps> = {
   render: AccordionWithFixedColumnExample,
+  args: accordionWithFixedColumnDefaultProps,
 };
 
 export const TabeInTableFixedColumn: StoryObj<TableInTableFixedColumnProps> = {
