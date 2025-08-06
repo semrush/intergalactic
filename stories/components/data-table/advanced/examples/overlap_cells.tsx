@@ -37,9 +37,17 @@ const Demo = () => {
         },
       ]}
 
+      renderCell={(props) => {
+        if (props.rowIndex > 1 && props.columnIndex > 0) {
+          return <div style={{ filter: 'blur(4px)', opacity: 0.5 }}>{props.value}</div>;
+        }
+
+        return props.defaultRender();
+      }}
+
       renderCellOverlay={() => {
         return (
-          <Flex alignItems='center' justifyContent='center' h='100%' style={{ backdropFilter: 'brightness(5) blur(4px)', gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={16}>
+          <Flex alignItems='center' justifyContent='center' h='100%' style={{ gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={16}>
             <Card w={280} h={200} style={{ boxShadow: 'var(--intergalactic-box-shadow-modal)' }}>
               <Card.Body>
                 Some overlay text
