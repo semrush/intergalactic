@@ -926,7 +926,7 @@ class DataTableRoot<
     if (selectedRows) {
       const column: DTColumn = {
         name: SELECT_ALL.toString(),
-        gtcWidth: '40px',
+        gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
       };
@@ -1045,7 +1045,7 @@ class DataTableRoot<
     if (selectedRows) {
       const column: DTColumn = {
         name: SELECT_ALL.toString(),
-        gtcWidth: '40px',
+        gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
       };

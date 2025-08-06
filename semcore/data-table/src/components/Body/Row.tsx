@@ -122,7 +122,9 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
                     checked={checked}
                     aria-labelledby={`${uid}_${ariaRowIndex}_1`}
                     onChange={this.handleSelectRow}
-                  />
+                  >
+                    <Checkbox.Value />
+                  </Checkbox>
                 </SCheckboxCell>,
               );
             }
