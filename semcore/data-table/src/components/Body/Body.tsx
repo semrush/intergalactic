@@ -68,11 +68,13 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       if (accordionMode === 'toggle' && expandedRows.size > 0) {
         const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
         if (previousRows.length > 0) {
-          setTimeout(() => {
-            previousRows.forEach((previousRow) => {
-              this.closeAccordion(previousRow, closeDuration);
-            });
-          }, openDuration / 3);
+          previousRows.forEach((previousRow) => {
+            if (!this.state.expandedForAnimation.has(previousRow[UNIQ_ROW_KEY])) {
+              setTimeout(() => {
+                this.closeAccordion(previousRow, closeDuration);
+              }, openDuration / 3);
+            }
+          });
         }
       }
       onExpandRow(row);
