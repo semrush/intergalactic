@@ -6,7 +6,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- New `AISEOToolkit`, `CollapseList`, and `Canva` icons.
+- New `AISEOToolkit`, `CollapseList`, `Canva`, `Claude`, `ClaudeColored`, `GoogleGenerativeAIColored`, `Perplexity`, `PerplexityColored` icons.
+
+### Changed
+
+- Updated `GoogleGenerativeAI` icon.
 
 ### Fixed
 
