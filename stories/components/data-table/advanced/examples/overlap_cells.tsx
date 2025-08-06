@@ -49,7 +49,7 @@ const Demo = () => {
 
       renderCellOverlay={() => {
         return (
-          <Flex alignItems='center' justifyContent='center' h='100%' style={{ background: 'rgba(255, 255, 255, 0.6)', gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={20}>
+          <Flex alignItems='center' justifyContent='center' h='100%' style={{ background: 'rgba(255, 255, 255, 0.6)', gridArea: `4 / 2 / ${data.length + 2} / -1` }} zIndex={16}>
             <Card style={{ background: '#fff', width: '260px', height: '240px' }}>
               <Card.Body>
                 Some overlay text
