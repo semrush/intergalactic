@@ -13,7 +13,7 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
     position: absolute;
     z-index: -1;
     inset: 0;
-    margin: 0;
+    margin: -5px;
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
     background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
@@ -53,7 +53,6 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
     border-color: transparent;
 
     &::before {
-      margin: -6px;
       opacity: 1;
       transform: scale(1);
     }

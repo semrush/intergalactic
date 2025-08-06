@@ -50,7 +50,7 @@ SHighlightedButton {
     position: absolute;
     z-index: -1;
     inset: 0;
-    margin: 0;
+    margin: -5px;
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
@@ -88,7 +88,6 @@ SHighlightedButton:focus-visible {
   outline: none;
 
   &::before {
-    margin: -6px;
     opacity: 1;
     transform: scale(1);
   }

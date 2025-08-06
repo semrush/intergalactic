@@ -37,7 +37,7 @@ SToggle:has(SInput:focus-visible) {
   outline: none;
 
   &::before {
-    margin: -6px;
+    margin: -5px;
     opacity: 1;
     transform: scale(1);
   }
