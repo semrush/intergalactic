@@ -180,7 +180,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
-            zIndex={5}
           >
             <SCell
               aria-colindex={1}
@@ -192,8 +191,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
-              position='sticky'
-              left={0}
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
             >

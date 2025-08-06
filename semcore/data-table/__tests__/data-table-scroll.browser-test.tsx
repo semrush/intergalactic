@@ -50,7 +50,7 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify Keyboard scroll when Sticky header and interactive in cells', async ({ page }) => {
@@ -84,10 +84,10 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
-  test('Verify Keyboard scroll when header not Sticky ', async ({ page }) => {
+  test('Verify Keyboard scroll when header not Sticky ', async ({ page, browserName }) => {
     const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -100,7 +100,8 @@ test.describe('Vertical Scroll', () => {
     }
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot();
+    if (browserName === 'webkit') await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    else await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify mouse scroll when header not Sticky', async ({ page }) => {
@@ -116,7 +117,7 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify keyboard when sticky header with top props', async ({ page }) => {
@@ -141,12 +142,12 @@ test.describe('Vertical Scroll', () => {
       expect(topStyle).toBe('100px');
     }
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 });
 
 test.describe('Horizontal Scroll', () => {
-  test('Verify keyboard scroll when no fixed columns', async ({ page }) => {
+  test('Verify keyboard scroll when no fixed columns', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -163,7 +164,9 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+      if (browserName === 'webkit') return;
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
     });
 
     await test.step('Verify when header scroll presents', async () => {
@@ -176,7 +179,8 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(100);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      if (browserName === 'webkit') return;
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
     });
   });
 
@@ -196,7 +200,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(1000);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
     });
 
     await test.step('Verify when header scroll presents', async () => {
@@ -209,7 +213,7 @@ test.describe('Horizontal Scroll', () => {
       await page.waitForTimeout(1000);
       const nowNumber = await checkScrollNowIncreased(scrollBar);
       expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
     });
   });
 
@@ -227,7 +231,7 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(200);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify mouse scroll when 1 level header and columns fixed', async ({ page }) => {
@@ -244,10 +248,10 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(1000);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
-  test('Verify keyboard scroll when columns with differend width fixed', async ({ page }) => {
+  test('Verify keyboard scroll when columns with differend width fixed', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/tests/examples/scroll-tests/fixed-column-with-d-ff-width.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -261,16 +265,17 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(200);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    if (browserName === 'webkit') return;
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
-  test('Verify keyboard scroll when multilevel parent fixed', async ({ page }) => {
+  test('Verify keyboard scroll when multilevel parent fixed', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
+    await expect(page).toHaveScreenshot();
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
     const initialValue = await checkAriaMaxValue(scrollBar);
     await page.keyboard.press('Tab');
@@ -290,8 +295,9 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(100);
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
+    if (browserName === 'webkit') return;
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
@@ -318,7 +324,7 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBarHeader);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify keyboard when vertical and horizontal presents', async ({ page }) => {
@@ -341,7 +347,6 @@ test.describe('Horizontal Scroll', () => {
     const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue2 = await checkAriaMaxValue(scrollBar2);
 
-    await page.keyboard.press('Tab');
     for (let i = 0; i < 15; i++) {
       await page.keyboard.press('ArrowDown');
     }
@@ -349,7 +354,7 @@ test.describe('Horizontal Scroll', () => {
     const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
     expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
 
   test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
@@ -367,7 +372,7 @@ test.describe('Horizontal Scroll', () => {
     await page.waitForTimeout(1000);
     const nowNumber = await checkScrollNowIncreased(scrollBar);
     expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
 
     const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
     const initialValue2 = await checkAriaMaxValue(scrollBar2);

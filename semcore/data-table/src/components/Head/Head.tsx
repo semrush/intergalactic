@@ -33,13 +33,14 @@ class HeadRoot<
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children, getFixedStyle } = this.asProps;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
+      shadowVertical,
     };
   }
 
@@ -58,6 +59,7 @@ class HeadRoot<
       h,
       getFixedStyle,
       onCellClick,
+      shadowVertical,
     } = this.asProps;
     const column = columns[index];
 
@@ -94,6 +96,7 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
+      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
     };
   }
 
