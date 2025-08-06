@@ -3982,6 +3982,16 @@
       "import": "./BracketsCurly/l/index.mjs",
       "types": "./BracketsCurly/l/index.d.ts"
     },
+    "./Canva/m": {
+      "require": "./Canva/m/index.js",
+      "import": "./Canva/m/index.mjs",
+      "types": "./Canva/m/index.d.ts"
+    },
+    "./Canva/l": {
+      "require": "./Canva/l/index.js",
+      "import": "./Canva/l/index.mjs",
+      "types": "./Canva/l/index.d.ts"
+    },
     "./BracketsAngle/m": {
       "require": "./BracketsAngle/m/index.js",
       "import": "./BracketsAngle/m/index.mjs",

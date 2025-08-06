@@ -4263,6 +4263,14 @@ const iconsList = {
       ],
     },
     {
+      name: 'Canva',
+      size: ['l', 'm'],
+      group: 'Brand',
+      tags: [
+        'canva', 'presentation', 'slides', 'logo', 'канва', 'презентация', 'слайды', 'лого',
+      ],
+    },
+    {
       name: 'ChatGPT',
       size: ['l', 'm'],
       group: 'Brand',
