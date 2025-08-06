@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.6] - 2025-08-12
+
+### Fixed
+
+- Part of invalid area is not disabled.
+
 ## [16.0.5] - 2025-07-23
 
 ### Changed
