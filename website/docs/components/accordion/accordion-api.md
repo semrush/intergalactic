@@ -41,7 +41,7 @@ import { Accordion } from '@semcore/accordion';
 <Accordion.Item.Collapse />;
 ```
 
-<TypesView type="CollapseProps" :types={...types} />
+<TypesView type="AccordionCollapseProps" :types={...types} />
 
 Has all properties as [BoxProps](/layout/box-system/box-system-api) prop does.
 

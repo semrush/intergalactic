@@ -1,4 +1,3 @@
-import type { CollapseProps } from '@semcore/animation';
 import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import type { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import type { Text } from '@semcore/typography';
@@ -80,6 +79,42 @@ export type ChevronItemProps = BoxProps & {
   size?: 'm' | 'l';
 };
 
+export type CollapseAnimationProps = {
+  /**
+   * The property is responsible for the visibility of the element
+   * @deprecated Internal animation props, get this value from Accordion root component.
+   */
+  visible?: boolean;
+  /** Animation delay in ms
+   * @deprecated You shouldn't use delay in Accordion.
+   * @default 0
+   */
+  delay?: number | [number, number];
+  /** Animation titles */
+  keyframes?: [string, string];
+  /** Enables animation on first rendering
+   * @default false
+   */
+  initialAnimation?: boolean;
+  /**
+   * @default ease-out
+   */
+  timingFunction?: CssTimingFunction;
+  /**
+   * @default false
+   */
+  animationsDisabled?: boolean;
+};
+
+export type AccordionCollapseProps = BoxProps & CollapseAnimationProps & {
+  /** Animation duration in ms
+   * @default 0
+   */
+  duration?: number | [number, number];
+  /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
+  preserveNode?: boolean;
+};
+
 type IntergalacticAccordionComponent<PropsExtending = {}> = (<
   Value extends AccordionValue,
   Tag extends Intergalactic.Tag = 'div',
@@ -105,7 +140,7 @@ declare const Accordion: IntergalacticAccordionComponent & {
     Toggle: Intergalactic.Component<typeof Text, AccordionItemToggleProps>;
     ToggleButton: Intergalactic.Component<typeof Flex, {}>;
     Chevron: Intergalactic.Component<'div', ChevronItemProps>;
-    Collapse: Intergalactic.Component<'div', CollapseProps>;
+    Collapse: Intergalactic.Component<'div', AccordionCollapseProps>;
   };
 };
 
