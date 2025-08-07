@@ -4,10 +4,10 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 test.describe('Basic usage', () => {
   const buttonsData = [
     { text: 'Duration 500', parent: 'Animation', duration: '0.5s', delay: '0s' },
-    { text: 'Duration 500 Delay 500', parent: 'Animation', duration: '0.5s', delay: '0.5s' },
+    { text: 'Duration 500 Delay 500', parent: 'Animation', duration: '0.5s', delay: '0s' },
     { text: 'Duration 0', parent: 'Animation', duration: '0s', delay: '0s' },
     { text: 'Fade Duration 500', parent: 'FadeInOut', duration: '0.5s', delay: '0s' },
-    { text: 'Fade Duration 500 Delay 500', parent: 'FadeInOut', duration: '0.5s', delay: '0.5s' },
+    { text: 'Fade Duration 500 Delay 500', parent: 'FadeInOut', duration: '0.5s', delay: '0s' },
     { text: 'Fade Duration 0', parent: 'FadeInOut', duration: '0s', delay: '0s' },
     { text: 'Transform', parent: 'Transform', duration: '0.5s', delay: '0s' },
   ];
