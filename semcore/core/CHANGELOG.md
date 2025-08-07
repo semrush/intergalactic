@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Values for `keyboard-focus` tokens.
 - Inverted outline token moved from keyboard-focus group to keyboard-focus-invert group: `keyboard-focus-outline-invert` changed to `keyboard-focus-invert-outline` for consistency.
+- Grouping for `keyboard-focus` tokens in the design json files.
 
 ## [16.0.4] - 2025-07-07
 

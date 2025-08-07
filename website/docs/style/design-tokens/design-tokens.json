@@ -2146,18 +2146,6 @@
     ]
   },
   {
-    "name": "--intergalactic-keyboard-focus",
-    "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
-    "description": "Default keyboard focus box-shadow styles.",
-    "components": [
-      "fullscreen-modal",
-      "input-tags",
-      "tag"
-    ]
-  },
-  {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
     "type": "color",
     "rawValue": "{red.400}",
@@ -2176,7 +2164,7 @@
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-invalid.outline}, 0.5)",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
     "components": []
@@ -2197,7 +2185,7 @@
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus-valid.outline}, 0.5)",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
     "components": []
@@ -2207,7 +2195,7 @@
     "type": "color",
     "rawValue": "rgba({gray.white}, 0.8)",
     "computedValue": "rgba(255, 255, 255, 0.8)",
-    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
+    "description": "Color for keyboard focus outline styles to use on the dark and color background.",
     "components": [
       "wizard"
     ]
@@ -2215,10 +2203,22 @@
   {
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-invert.outline}",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
     "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
-    "description": "Default keyboard focus styles for using with dark background.",
+    "description": "Keyboard focus styles for use on dark backgrounds.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
+    "description": "Default keyboard focus box-shadow styles.",
+    "components": [
+      "fullscreen-modal",
+      "input-tags",
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-base",
