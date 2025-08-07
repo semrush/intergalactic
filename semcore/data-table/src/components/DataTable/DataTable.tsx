@@ -140,7 +140,7 @@ class DataTableRoot<
       });
     }
 
-    if (headerProps?.sticky && canUseDOM()) {
+    if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
       document.addEventListener('scroll', this.handleDocumentScroll);
     }
   }
@@ -225,6 +225,24 @@ class DataTableRoot<
     };
   }
 
+  get scrollDirection() {
+    const { w, wMax, h, hMax } = this.asProps;
+
+    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
+    const hasWidthSettings = Boolean(w) || Boolean(wMax);
+    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
+
+    if (hasWidthSettings && !hasHeightSettings) {
+      scrollDirection = 'horizontal';
+    } else if (hasHeightSettings && !hasWidthSettings) {
+      scrollDirection = 'vertical';
+    } else if (hasWidthSettings && hasHeightSettings) {
+      scrollDirection = 'both';
+    }
+
+    return scrollDirection;
+  }
+
   getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
@@ -275,6 +293,7 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
+      scrollDirection: this.scrollDirection,
     };
   }
 
@@ -779,17 +798,17 @@ class DataTableRoot<
       gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
-    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = Boolean(w) || Boolean(wMax);
-    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
-
-    if (hasWidthSettings && !hasHeightSettings) {
-      scrollDirection = 'horizontal';
-    } else if (hasHeightSettings && !hasWidthSettings) {
-      scrollDirection = 'vertical';
-    } else if (hasWidthSettings && hasHeightSettings) {
-      scrollDirection = 'both';
-    }
+    // let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
+    // const hasWidthSettings = Boolean(w) || Boolean(wMax);
+    // const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
+    //
+    // if (hasWidthSettings && !hasHeightSettings) {
+    //   scrollDirection = 'horizontal';
+    // } else if (hasHeightSettings && !hasWidthSettings) {
+    //   scrollDirection = 'vertical';
+    // } else if (hasWidthSettings && hasHeightSettings) {
+    //   scrollDirection = 'both';
+    // }
 
     return sstyled(styles)(
       <ScrollArea
@@ -812,7 +831,7 @@ class DataTableRoot<
         <ScrollArea.Container
           tabIndex={-1}
           // @ts-ignore
-          scrollDirection={scrollDirection}
+          scrollDirection={this.scrollDirection}
           // @ts-ignore
           loading={loading}
           headerHeight={`${headerHeight}px`}

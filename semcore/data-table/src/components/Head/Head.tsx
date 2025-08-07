@@ -54,11 +54,13 @@ class HeadRoot<
       gridTemplateColumns,
       gridTemplateAreas,
       sticky,
+      top,
       selectedRows,
       h,
       getFixedStyle,
       onCellClick,
       shadowVertical,
+      scrollDirection,
     } = this.asProps;
     const column = columns[index];
 
@@ -68,6 +70,10 @@ class HeadRoot<
 
     const [name, value] = getFixedStyle(column);
     const style: any = {};
+
+    if (top && scrollDirection !== 'horizontal') {
+      style.top = `${top}px`;
+    }
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
@@ -92,6 +98,7 @@ class HeadRoot<
       h,
       'onClick': onCellClick,
       'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
+      scrollDirection,
     };
   }
 

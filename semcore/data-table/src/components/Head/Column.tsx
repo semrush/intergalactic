@@ -60,7 +60,18 @@ export class Column<
   };
 
   componentDidMount() {
-    const { changeSortSize, name, sort } = this.asProps;
+    const { parent, sticky, changeSortSize, name, sort, scrollDirection } = this.asProps;
+
+    if (parent && sticky && scrollDirection !== 'horizontal') {
+      const columnElement = this.columnRef.current;
+      const groupElement = columnElement?.parentElement?.children.item(0);
+
+      const groupHeight = groupElement?.getBoundingClientRect().height;
+
+      if (groupHeight) {
+        columnElement?.style.setProperty('top', `${groupHeight}px`);
+      }
+    }
 
     if (canUseDOM() && changeSortSize && sort?.[0] === name) {
       this.changeTemplateColumnBySort();
