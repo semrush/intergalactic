@@ -349,6 +349,9 @@ class DataTableRoot<
     const headerContainer = this.headerRef.current;
     const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
     const top = tableContainerTop - (headerProps?.top ?? 0);
+    const headerScrollBar = headerProps?.withScrollBar
+      ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
+      : undefined;
 
     if (top && top < 0) {
       const translate = `translateY(${Math.abs(top)}px)`;
@@ -357,12 +360,20 @@ class DataTableRoot<
           column.style.setProperty('transform', translate);
         }
       });
+
+      if (headerScrollBar instanceof HTMLElement) {
+        headerScrollBar.style.setProperty('transform', translate);
+      }
     } else {
       elements?.forEach((column) => {
         if (column instanceof HTMLElement) {
           column.style.removeProperty('transform');
         }
       });
+
+      if (headerScrollBar instanceof HTMLElement) {
+        headerScrollBar.style.removeProperty('transform');
+      }
     }
   });
 

@@ -21,6 +21,7 @@ const Demo = () => {
         headerProps={{
           sticky: true,
           top: 20,
+          withScrollBar: true,
         }}
         w='100%'
         columns={[
