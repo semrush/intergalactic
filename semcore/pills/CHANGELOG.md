@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.6] - 2025-08-12
+
+### Fixed
+
+- The focus outline on the left pill is not visible when hovering over the next pill.
+
 ## [16.0.5] - 2025-07-23
 
 ### Changed
