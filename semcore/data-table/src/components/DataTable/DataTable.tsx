@@ -798,18 +798,6 @@ class DataTableRoot<
       gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
-    // let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    // const hasWidthSettings = Boolean(w) || Boolean(wMax);
-    // const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
-    //
-    // if (hasWidthSettings && !hasHeightSettings) {
-    //   scrollDirection = 'horizontal';
-    // } else if (hasHeightSettings && !hasWidthSettings) {
-    //   scrollDirection = 'vertical';
-    // } else if (hasWidthSettings && hasHeightSettings) {
-    //   scrollDirection = 'both';
-    // }
-
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
