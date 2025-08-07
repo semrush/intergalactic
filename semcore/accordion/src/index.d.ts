@@ -113,6 +113,16 @@ export type AccordionCollapseProps = BoxProps & CollapseAnimationProps & {
   duration?: number | [number, number];
   /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
   preserveNode?: boolean;
+  /**
+   * Add overflow=clip when passing animation
+   * @default true
+   * */
+  overflowHidden?: boolean;
+  /**
+   * Value for height after animation
+   * @default auto
+   */
+  defaultHeight?: 'auto' | '100%';
 };
 
 type IntergalacticAccordionComponent<PropsExtending = {}> = (<
