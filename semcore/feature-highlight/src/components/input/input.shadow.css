@@ -26,7 +26,6 @@ SHighlightedInput[state='normal'] {
       pointer-events: none;
 
       transition:
-        margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
         opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
     }
   }
