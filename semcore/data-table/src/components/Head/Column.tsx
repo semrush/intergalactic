@@ -60,18 +60,7 @@ export class Column<
   };
 
   componentDidMount() {
-    const { parent, sticky, changeSortSize, name, sort } = this.asProps;
-
-    if (parent && sticky) {
-      const columnElement = this.columnRef.current;
-      const groupElement = columnElement?.parentElement?.children.item(0);
-
-      const groupHeight = groupElement?.getBoundingClientRect().height;
-
-      if (groupHeight) {
-        columnElement?.style.setProperty('top', `${groupHeight}px`);
-      }
-    }
+    const { changeSortSize, name, sort } = this.asProps;
 
     if (canUseDOM() && changeSortSize && sort?.[0] === name) {
       this.changeTemplateColumnBySort();

@@ -1,5 +1,6 @@
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -138,6 +139,10 @@ class DataTableRoot<
         this.calculateVerticalShadow();
       });
     }
+
+    if (headerProps?.sticky && canUseDOM()) {
+      document.addEventListener('scroll', this.handleDocumentScroll);
+    }
   }
 
   componentDidUpdate(prevProps: any) {
@@ -163,6 +168,12 @@ class DataTableRoot<
       } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    if (canUseDOM()) {
+      document.removeEventListener('scroll', this.handleDocumentScroll);
     }
   }
 
@@ -328,6 +339,32 @@ class DataTableRoot<
       renderCellOverlay,
     };
   }
+
+  handleDocumentScroll = trottle(() => {
+    const tableContainer = this.tableContainerRef.current;
+    if (!tableContainer) return;
+
+    const tableContainerTop = tableContainer.getBoundingClientRect().top;
+    const { headerProps } = this.asProps;
+    const headerContainer = this.headerRef.current;
+    const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
+    const top = tableContainerTop - (headerProps?.top ?? 0);
+
+    if (top && top < 0) {
+      const translate = `translateY(${Math.abs(top)}px)`;
+      elements?.forEach((column) => {
+        if (column instanceof HTMLElement) {
+          column.style.setProperty('transform', translate);
+        }
+      });
+    } else {
+      elements?.forEach((column) => {
+        if (column instanceof HTMLElement) {
+          column.style.removeProperty('transform');
+        }
+      });
+    }
+  });
 
   handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {

@@ -7,13 +7,6 @@ SHead[animationDuration] > SColumn {
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {
-  position: sticky;
-  top: 0;
-  z-index: 18;
-}
-
-SHead[sticky] SGroupContainer > SColumn {
-  position: sticky;
   z-index: 18;
 }
 
@@ -127,7 +120,7 @@ SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
   grid-area: var(--gridArea);
 }
 
-SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
+SHead SColumn[fixed], SHead SGroup[fixed] {
   position: sticky;
   /* because up resizable */
   z-index: 19;

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
+import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
@@ -34,6 +35,10 @@ export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
     loading: { control: 'boolean' },
   },
   args: accordionStickyProps,
+};
+
+export const BigTableWithStickyHeader: Story = {
+  render: BigTableWithStickyHeaderExample,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {

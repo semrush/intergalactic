@@ -54,7 +54,6 @@ class HeadRoot<
       gridTemplateColumns,
       gridTemplateAreas,
       sticky,
-      top,
       selectedRows,
       h,
       getFixedStyle,
@@ -69,10 +68,6 @@ class HeadRoot<
 
     const [name, value] = getFixedStyle(column);
     const style: any = {};
-
-    if (top) {
-      style.top = `${top}px`;
-    }
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
