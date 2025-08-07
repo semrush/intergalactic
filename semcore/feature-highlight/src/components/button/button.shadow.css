@@ -43,7 +43,7 @@ SHighlightedButton[theme='secondary-highlighted'] {
 
 SHighlightedButton {
   position: relative;
-  isolation: isolate;
+  /* isolation: isolate; */
 
   &::before {
     content: "";

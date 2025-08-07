@@ -7,7 +7,7 @@ SHighlightedPill {
   background-clip: padding-box, border-box;
   z-index: 1;
   position: relative;
-  isolation: isolate;
+  /* isolation: isolate; */
 
   &::before {
     content: "";
