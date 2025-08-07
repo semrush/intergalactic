@@ -2365,6 +2365,7 @@
     "components": [
       "button",
       "d3-chart",
+      "data-table",
       "format-text",
       "fullscreen-modal",
       "switch",
@@ -3322,7 +3323,8 @@
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
     "components": [
-      "base-components"
+      "base-components",
+      "data-table"
     ]
   },
   {
@@ -3332,7 +3334,8 @@
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
     "components": [
-      "base-components"
+      "base-components",
+      "data-table"
     ]
   },
   {

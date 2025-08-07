@@ -7,10 +7,10 @@ import { Body } from './Body';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DTValue } from '../DataTable/DataTable.types';
 
-class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
+class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {}, {}, [], RowPropsInner<UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 
@@ -105,7 +105,7 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
           use:expanded={expanded && !mergedRow}
         >
           {columns.map((column, i) => {
-            if (selectedRows && i === 0) {
+            if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
               return sstyled(styles)(
                 <SCheckboxCell
@@ -122,7 +122,9 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
                     checked={checked}
                     aria-labelledby={`${uid}_${ariaRowIndex}_1`}
                     onChange={this.handleSelectRow}
-                  />
+                  >
+                    <Checkbox.Value />
+                  </Checkbox>
                 </SCheckboxCell>,
               );
             }
@@ -180,7 +182,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
-            zIndex={5}
           >
             <SCell
               aria-colindex={1}
@@ -192,8 +193,6 @@ class RowRoot extends Component<DataTableRowProps, {}, {}, [], RowPropsInner> {
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
-              position='sticky'
-              left={0}
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
             >

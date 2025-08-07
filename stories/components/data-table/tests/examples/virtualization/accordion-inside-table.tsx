@@ -1,17 +1,24 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import type { DataTableData } from '@semcore/data-table';
+import type { DataTableData, DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
+export type accordionVirtualProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  loading: boolean;
 
-const Demo = () => {
+};
+
+const Demo = (props: accordionVirtualProps) => {
   return (
     <DataTable
       data={data}
       aria-label='Accordion inside table'
+      accordionMode={props.accordionMode}
       h='100%'
       defaultGridTemplateColumnWidth='1fr'
       virtualScroll
+      loading={props.loading}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(60%, 80%)' },
         {
@@ -27,6 +34,13 @@ const Demo = () => {
     />
   );
 };
+
+export const accordionVirtualDefaultProps: accordionVirtualProps = {
+  accordionMode: 'independent',
+  loading: false,
+};
+
+Demo.defaultProps = accordionVirtualDefaultProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([0, 0]);

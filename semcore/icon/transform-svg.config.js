@@ -1,6 +1,6 @@
 const getConfig = () => {
   return {
-    tasks: ({ generateIcons, getDescriptionIcons, getDescriptionExternalIcons, getDescriptionPlatformIcons }) => {
+    tasks: ({ generateIcons, getDescriptionIcons, getDescriptionPlatformIcons }) => {
       return [
         generateIcons('svg/color', './color', getDescriptionIcons),
         generateIcons('svg/pay', './pay', getDescriptionIcons),

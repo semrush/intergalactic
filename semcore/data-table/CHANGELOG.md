@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-08-08
+
+### Added
+
+- `accordionMode` property to only one accordion is open at a time.
+- `onAccordionToggle` to listen for open/close accordion events.
+- Ability to render multiple columns under one single-level column header.
+- RawData to `CellRenderProps`.
+- `line-height` for `Head.Column` items.
+- `overflow=hidden` for `CellWrapper`.
+- `textAlign` property to all column cells.
+- `renderCellOverlay` method for rendering an overlay over table cells.
+
+### Fixed
+
+- Rendering table with selectedRows without data.
+- `z-index` of expanded accordions and spinner container.
+- Usage of `changeSortSize` property with multiple columns.
+- Accordion content expands with visual issues when clicking on a merged cell.
+- Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
+- Hover styles aren't applied to themed cells.
+- Types for `CellRenderProps` - added ability to compare props.columnName with `ACCORDION` symbol.
+- Sticky header with `width` property doesn't work.
+
+### Changed
+
+- Width for column with checkboxes to use `min-content` value.
+- `rowProps` and `renderCell` will not be called when rendering an empty table.
+
+## [16.0.7] - 2025-07-23
+
+### Added
+
+- Transition for the table header's `top` attribute.
+- New header prop `animationDuration`.
+
+### Fixed
+
+- Row hover effect for empty state.
+- Incorrect 'Select all' checkbox behavior with pagination.
+- Header glitches in loading state with sticky header.
+
 ## [16.0.6] - 2025-07-04
 
 ### Changed

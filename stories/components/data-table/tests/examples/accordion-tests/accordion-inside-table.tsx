@@ -1,15 +1,22 @@
 import Button from '@semcore/button';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import type { DataTableData } from '@semcore/data-table';
+import type { DataTableData, DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
+export type AccordionWithButtonProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+};
 
-const Demo = () => {
+const Demo = (props: AccordionWithButtonProps) => {
   return (
     <DataTable
       data={data}
       aria-label='Accordion inside table'
+      accordionMode={props.accordionMode}
+      onAccordionToggle={(type, i) => {
+        console.log('called', type, i);
+      }}
       h='300px'
       defaultGridTemplateColumnWidth='1fr'
       columns={[
@@ -27,6 +34,11 @@ const Demo = () => {
     />
   );
 };
+export const accordionWithDefaultProps: AccordionWithButtonProps = {
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = accordionWithDefaultProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);

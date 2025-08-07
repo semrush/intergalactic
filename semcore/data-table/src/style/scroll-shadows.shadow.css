@@ -6,19 +6,27 @@ SScrollArea {
 
     &[scrollDirection='both'] {
       overflow: auto;
+
+      &[loading] {
+        overflow: hidden;
+      }
     }
     &[scrollDirection='horizontal'] {
       overflow-x: auto;
       overflow-y: unset;
+
+      &[loading] {
+        overflow: hidden;
+      }
     }
     &[scrollDirection='vertical'] {
       overflow-x: unset;
       overflow-y: auto;
-    }
-    &[loading] {
-      overflow: hidden;
-    }
 
+      &[loading] {
+        overflow: hidden;
+      }
+    }
     &[headerHeight] {
       scroll-padding-top: var(--headerHeight);
     }
@@ -30,18 +38,13 @@ SScrollArea {
     }
   }
 
-  SShadowVertical {
-    &:before {
-      display: none;
-    }
-    &:after {
-      z-index: 2;
-    }
+  SShadowVertical::after, SShadowHorizontal::before, SShadowHorizontal:after {
+    z-index: 20;
   }
-  SShadowHorizontal {
-    &:before,
-    &:after {
-      z-index: 2;
-    }
+
+  SShadowVertical::before,
+  SShadowHorizontal[leftOffset]::before,
+  SShadowHorizontal[rightOffset]::after {
+    display: none;
   }
 }

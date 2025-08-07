@@ -126,6 +126,7 @@ class DonutRoot extends Component {
       d3ArcOut,
       duration: 500,
       paddingAngle,
+      innerRadius,
     };
   };
 
@@ -220,6 +221,18 @@ class DonutRoot extends Component {
     }, 0);
   };
 
+  handlerOnClick(key) {
+    return (e) => {
+      e.stopPropagation();
+
+      const { onClick } = this.asProps;
+
+      if (!onClick) return;
+
+      onClick(key, e);
+    };
+  }
+
   getPieProps(props, index) {
     const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor, uid, patterns } =
       this.asProps;
@@ -272,6 +285,7 @@ class DonutRoot extends Component {
           });
         }
       },
+      onClick: this.handlerOnClick.bind(this),
     };
   }
 
@@ -331,6 +345,7 @@ function Pie({
   halfsize,
   uid,
   patterns,
+  onClick,
   ...other
 }) {
   const [isMount, setIsMount] = React.useState(false);
@@ -374,6 +389,7 @@ function Pie({
           pattern={patterns ? `url(#${uid}-pattern)` : undefined}
           d={active ? d3ArcOut(data) : d3Arc(data)}
           transparent={transparent}
+          onClick={onClick(dataKey)}
         />,
       )}
       {patterns && (

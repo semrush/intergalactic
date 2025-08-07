@@ -53,15 +53,33 @@ test.describe('Donut chart', () => {
       }
     });
 
-    await test.step('Verify pie with tooltip hihlights on hover', async () => {
-      await pies.nth(5).hover();
-      await page.waitForTimeout(500);
+    await test.step('Verify pie on hover when no innerRadius with paddingAngle', async () => {
+      await pies.nth(1).hover();
+      await page.waitForSelector('text="Pie 2"');
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify pie with without animation not changes size by hover', async () => {
+    await test.step('Verify pie on hover when innerRadius and paddingAngle', async () => {
+      await pies.nth(5).hover();
+      await page.waitForSelector('text="Pie 3"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when innerRadius', async () => {
+      await pies.nth(7).hover();
+      await page.waitForSelector('text="Pie 2"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when outerRadius no animation', async () => {
       await pies.nth(10).hover();
-      await page.waitForTimeout(500);
+      await page.waitForSelector('text="Pie 2"');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify pie on hover when outerRadius', async () => {
+      await pies.nth(13).hover();
+      await page.waitForSelector('text="Pie 2"');
       await expect(page).toHaveScreenshot();
     });
   });
@@ -136,6 +154,57 @@ test.describe('Donut chart', () => {
       await page.keyboard.press('Space');
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify donut showLegend prop logic', async ({ page }) => {
+    const standPath =
+      'stories/components/d3-chart/tests/examples/donut-chart/donut-show-legend-prop.tsx';
+    const props: {
+      showLegend?: boolean;
+      data: { [key: string]: number };
+    } = {
+      showLegend: undefined,
+      data: {
+        a: 1,
+        b: 2,
+      },
+    };
+
+    await test.step('Verify legend shown when showLegend: undefined and >=2 items in legend', async () => {
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeVisible();
+    });
+
+    await test.step('Verify legend hidden when showLegend: false and >=2 items in legend', async () => {
+      props.showLegend = false;
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeHidden();
+    });
+    await test.step('Verify legend hidden when showLegend: undefined and < 2 items in legend', async () => {
+      props.showLegend = undefined;
+      props.data = {
+        a: 1,
+      };
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeHidden();
+    });
+
+    await test.step('Verify legend hidden when showLegend: true and < 2 items in legend', async () => {
+      props.showLegend = true;
+      props.data = {
+        a: 1,
+      };
+      const htmlContent = await e2eStandToHtml(standPath, 'en', props);
+      await page.setContent(htmlContent);
+      const legend = page.getByLabel('Chart legend');
+      await expect(legend).toBeVisible();
     });
   });
 });

@@ -7,8 +7,8 @@ import HorizontalScrollWithoutFixedExample from './examples/scroll-tests/horizon
 import FixedGroupExample from './examples/scroll-tests/horizontal-scroll-fixed-group';
 import MultiLevelHorizontalScrollExample from './examples/scroll-tests/milti-level-horizontal-scroll';
 import MultipleScrollsExample from './examples/scroll-tests/multiple-scrolls';
-import ScrollAndStickyExample from './examples/scroll-tests/scroll-in-table-sticky';
-import ScrollTopHeaderExample from './examples/scroll-tests/scroll-in-top-header';
+import ScrollAndStickyExample, { defaultProps as ScrollStickyProps } from './examples/scroll-tests/scroll-in-table-sticky';
+import ScrollTopHeaderExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-in-top-header';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 
 const meta: Meta<typeof DataTable> = {
@@ -27,12 +27,20 @@ export const MultiLevelHorizontalScroll: Story = {
   render: MultiLevelHorizontalScrollExample,
 };
 
-export const ScrollWithTopStickyProps: Story = {
+export const ScrollWithTopStickyProps: StoryObj<typeof ScrollTopHeaderProps> = {
   render: ScrollTopHeaderExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: ScrollTopHeaderProps,
 };
 
-export const ScrollWithStickyProps: Story = {
+export const ScrollSticky: StoryObj<typeof ScrollStickyProps> = {
   render: ScrollAndStickyExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: ScrollStickyProps,
 };
 
 export const ThreeScrolls: Story = {

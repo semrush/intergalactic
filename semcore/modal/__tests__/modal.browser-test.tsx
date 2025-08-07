@@ -150,6 +150,7 @@ test.describe('Modal interactions', () => {
 
     await test.step('Verify only one modal closed by activating Close', async () => {
       await page.keyboard.press('Enter');
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
     });
@@ -159,12 +160,14 @@ test.describe('Modal interactions', () => {
       await page.waitForSelector('text=Save changes');
 
       await page.keyboard.press('Escape');
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
     });
 
     await test.step('Verify last one modal closed by ESC', async () => {
       await page.keyboard.press('Escape');
+      await modal.nth(0).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(0);
       await expect(trigger).toBeFocused();
     });
@@ -264,6 +267,7 @@ test.describe('Modal interactions', () => {
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
+      await modal.nth(1).waitFor({ state: 'hidden' });
       await expect(modal).toHaveCount(1);
       // await expect(trigger).toBeFocused();
     });
@@ -358,21 +362,21 @@ test.describe('Modal positioning ans styles', () => {
 
     await page.setContent(htmlContent);
 
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
     await page.waitForSelector('text=Got it!');
 
-    await expect(overlay).toHaveCSS('padding', '40px');
+    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
 
     await page.setViewportSize({ width: 1280, height: 320 });
 
-    await expect(overlay).toHaveCSS('padding', '40px');
+    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
 
     await page.setViewportSize({ width: 320, height: 320 });
 
-    await expect(overlay).toHaveCSS('padding', '12px');
+    await expect(overlayContentWrapper).toHaveCSS('padding', '12px');
 
     await expect(page).toHaveScreenshot();
   });
@@ -384,13 +388,13 @@ test.describe('Modal positioning ans styles', () => {
 
     await page.setContent(htmlContent);
 
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
     await page.waitForSelector('text=Got it!');
 
-    await expect(overlay).toHaveCSS('padding', '40px');
+    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
 
     await page.mouse.wheel(0, 600);
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -531,5 +535,61 @@ test.describe('Confirmation modal dialog pattern', () => {
       await page.keyboard.press('Shift+Tab');
       await expect(bths.nth(1)).toBeFocused();
     });
+  });
+});
+
+test.describe('Modal outside click interaction', () => {
+  test('Basic case', async ({ page }) => {
+    const standPath = 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.getByRole('button', { name: 'Open modal' });
+    const modal = page.locator('[data-ui-name="Modal"]');
+    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+
+    await trigger.click();
+    await modal.waitFor();
+
+    const overlayBox = await overlay.boundingBox();
+
+    expect(overlayBox).toBeTruthy();
+
+    /*
+      16px - approximate scrollbar width
+    */
+    const x = overlayBox!.x + overlayBox!.width - 20;
+    const y = overlayBox!.y + overlayBox!.height / 2;
+    await page.mouse.click(x, y);
+
+    await expect(modal).toBeHidden();
+  });
+
+  test('Edge case', async ({ page }) => {
+    const standPath = 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.getByRole('button', { name: 'Open modal' });
+    const modal = page.locator('[data-ui-name="Modal"]');
+    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+
+    await trigger.click();
+    await modal.waitFor();
+
+    const overlayBox = await overlay.boundingBox();
+
+    expect(overlayBox).toBeTruthy();
+
+    /*
+      16px - approximate scrollbar width
+    */
+    const x = overlayBox!.x + overlayBox!.width - 8;
+    const y = overlayBox!.y + overlayBox!.height / 2;
+    await page.mouse.click(x, y);
+
+    await expect(modal).toBeVisible();
   });
 });

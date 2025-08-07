@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.6] - 2025-08-07
+
+### Fixed
+
+- `Modal` hides after scrollbar interaction.
+
+## [16.1.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.4 ~> 16.0.5], `@semcore/icon` [16.2.3 ~> 16.4.0], `@semcore/flex-box` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
+
 ## [16.1.4] - 2025-06-24
 
 ### Fixed
 
-- Modal doesn't close on ESC key press when no element inside is focused.
+- `Modal` doesn't close on ESC key press when no element inside is focused.
 
 ## [16.1.3] - 2025-06-23
 

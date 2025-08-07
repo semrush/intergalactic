@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.4] - 2025-07-07
+
+### Added
+
+- `featureHighlight` tokens to dark.json.
+- `newInstance` method for create new component instances from the existing.
+
 ## [16.0.3] - 2025-07-02
 
 ### Added
@@ -19,7 +26,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Tokens form basic palette to themed .css files.
+- Tokens from basic palette to themed .css files.
 
 ### Changed
 

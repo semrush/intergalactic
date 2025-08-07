@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.6] - 2025-08-07
+
+### Changed
+
+- Updated styles to reflect internal `Modal` changes preventing unexpected closing during scrollbar interaction.
+
+## [16.1.5] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [16.2.3 ~> 16.4.0], `@semcore/button` [16.0.4 ~> 16.0.5], `@semcore/flex-box` [16.0.4 ~> 16.0.5], `@semcore/base-components` [16.1.1 ~> 16.1.2]).
+
 ## [16.1.4] - 2025-06-24
 
 ### Fixed

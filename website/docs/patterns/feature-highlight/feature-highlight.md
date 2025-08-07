@@ -1,5 +1,6 @@
 ---
 title: Feature highlight
+tabs: Design('feature-highlight'), Changelog('feature-highlight-changelog')
 ---
 
 ## Description
@@ -57,6 +58,10 @@ You can add more accent by displaying the `SummaryAI` icon with the `--intergala
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
+::: tip
+When using the `feature-highlight` tokens in the `color` property of icons and other components, the `--intergalactic` prefix is required.
+:::
+
 ::: sandbox
 
 <script lang="tsx">
@@ -70,6 +75,10 @@ If the control's label doesn't mention the promotion, add an accessible descript
 To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color in the column header.
 
 If the column title doesn't mention the promotion, add a `ScreenReaderOnly` text to the column header.
+
+::: tip
+When using the `feature-highlight` tokens in the `color` property of icons and other components, the `--intergalactic` prefix is required.
+:::
 
 ::: sandbox
 
@@ -135,6 +144,10 @@ You can add more accent by displaying the `SummaryAI` icon with the `--intergala
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
+::: tip
+When using the `feature-highlight` tokens in the `color` property of icons and other components, the `--intergalactic` prefix is required.
+:::
+
 ::: sandbox
 
 <script lang="tsx">
@@ -168,6 +181,10 @@ You can enable animation on click (`AnimatedSparkles` component). It's possible 
 You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
+
+::: tip
+When using the `feature-highlight` tokens in the `color` property of icons and other components, the `--intergalactic` prefix is required.
+:::
 
 ::: sandbox
 

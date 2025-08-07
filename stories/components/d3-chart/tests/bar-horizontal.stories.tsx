@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BackgroundExample from './examples/bar-horizontal/background';
 import BarLabelsExample from './examples/bar-horizontal/bar-labels';
-import BasicUsageExample from './examples/bar-horizontal/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bar-horizontal/basic-usage';
 import GroupedHorizontalExample from './examples/bar-horizontal/grouped-horizontal-bars';
 import HorizontalBarExample from './examples/bar-horizontal/horizontal-bar';
 import LegendAndPatternFillExample from './examples/bar-horizontal/legend-and-pattern-fill';
 
 const meta: Meta = {
-  title: 'Components/d3Charts/Documentation/Bar-Horizontal-Chart',
+  title: 'Components/d3Charts/Tests/Bar-Horizontal-Chart',
 };
 
 export default meta;
@@ -21,8 +21,15 @@ export const BarLabels: StoryObj = {
   render: BarLabelsExample,
 };
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
   render: BasicUsageExample,
+  argTypes: {
+    showLegend: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+  },
+  args: BasicUsageProps,
 };
 
 export const GroupedHorizontal: StoryObj = {

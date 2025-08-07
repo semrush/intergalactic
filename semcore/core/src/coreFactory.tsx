@@ -371,6 +371,13 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   ) {
     return createComponent(_OriginComponent, _childComponents, _options);
   };
+  Component.newInstance = function (
+          _OriginComponent = OriginComponent,
+          _childComponents = childComponents,
+          _options = options,
+  ) {
+    return createComponent(_OriginComponent, _childComponents, _options);
+  };
   Component[CORE_COMPONENT] = true;
   return Component;
 }

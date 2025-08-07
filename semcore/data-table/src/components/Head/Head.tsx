@@ -10,16 +10,20 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTableInternal, SELECT_ALL } from '../DataTable/DataTable';
+import { DataTableInternal, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-class HeadRoot<D extends DataTableData> extends Component<
-  DataTableHeadProps,
-  {},
-  {},
-  [],
-  HeadPropsInner<D>
-> {
+class HeadRoot<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> extends Component<
+    DataTableHeadProps,
+    {},
+    {},
+    [],
+    HeadPropsInner<Data, UniqKey, UniqKeyType>
+  > {
   static displayName = 'Head';
   static style = style;
 
@@ -29,13 +33,14 @@ class HeadRoot<D extends DataTableData> extends Component<
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children, getFixedStyle } = this.asProps;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
+      shadowVertical,
     };
   }
 
@@ -54,6 +59,8 @@ class HeadRoot<D extends DataTableData> extends Component<
       h,
       getFixedStyle,
       onCellClick,
+      shadowVertical,
+      scrollDirection,
     } = this.asProps;
     const column = columns[index];
 
@@ -64,7 +71,7 @@ class HeadRoot<D extends DataTableData> extends Component<
     const [name, value] = getFixedStyle(column);
     const style: any = {};
 
-    if (top) {
+    if (top && scrollDirection !== 'horizontal') {
       style.top = `${top}px`;
     }
 
@@ -90,6 +97,8 @@ class HeadRoot<D extends DataTableData> extends Component<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
+      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
+      scrollDirection,
     };
   }
 
@@ -103,25 +112,42 @@ class HeadRoot<D extends DataTableData> extends Component<
     this.asProps.onChangeSelectAll?.(value, event);
   };
 
+  get areAllRowsSelected() {
+    const { selectedRows = [], flatRows } = this.asProps;
+
+    return selectedRows.length > 0 && flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+  }
+
+  get isIndeterminate() {
+    const { flatRows, selectedRows } = this.asProps;
+
+    return flatRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+  }
+
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
-    const { Children, styles, getI18nText, children, treeColumns, selectedRows, totalRows } =
-      this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration } = this.asProps;
 
-    const checked = selectedRows && selectedRows.length === totalRows && totalRows > 0;
-    const indeterminate = selectedRows && selectedRows.length > 0 && !checked;
+    const areAllRowsSelected = this.areAllRowsSelected;
+    const indeterminate = this.isIndeterminate && !areAllRowsSelected;
 
     return sstyled(styles)(
       <>
-        <SHead render={Box} role='row' aria-rowindex={1}>
+        <SHead
+          render={Box}
+          role='row'
+          aria-rowindex={1}
+          sticky={sticky}
+          use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+        >
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL.toString()}
-              onClick={this.handleClickSelectAll(!checked)}
+              onClick={this.handleClickSelectAll(!areAllRowsSelected)}
             >
               <Checkbox
-                checked={checked}
+                checked={areAllRowsSelected}
                 indeterminate={indeterminate}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
                 onChange={this.handleSelectAll}

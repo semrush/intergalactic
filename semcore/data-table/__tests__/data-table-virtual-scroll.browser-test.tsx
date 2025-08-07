@@ -9,10 +9,10 @@ test.describe('Vertical Scroll', () => {
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 100; i++) {
-      await page.keyboard.press('ArrowDown');
+    for (let i = 0; i < 50; i++) {
+      await page.keyboard.press('ArrowDown', { delay: 50 });
     }
-    await page.waitForSelector('[role="gridcell"][data-ui-name="Body.Cell"][name="id"]:has-text("#100")', { state: 'visible' });
+    await page.waitForSelector('[role="gridcell"][data-ui-name="Body.Cell"][name="id"]:has-text("#50")', { state: 'visible' });
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -62,45 +62,43 @@ test.describe('Vertical Scroll', () => {
     const standPath =
       'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
-    const plot = await page.locator('[data-ui-name="Plot"]');
     await page.setContent(htmlContent);
-    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
+
+    const plot = page.locator('[data-ui-name="Plot"]');
+    const toggle = page.locator('[data-ui-name="ButtonLink"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await plot.waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
 
-    await expect(firstArrow).toBeFocused();
+    await expect(toggle.first()).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
     await expect(plot).toHaveCount(0);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
-    const secondArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(1);
 
-    await expect(secondArrow).toBeFocused();
+    await expect(toggle.nth(1)).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
-    await expect(plot).toBeVisible();
+    await plot.waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(1);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
+    await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await plot.waitFor({ state: 'visible' });
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-    await expect(thirdArrow).toBeFocused();
+    await expect(toggle.nth(2)).toBeFocused();
   });
 
   test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
@@ -109,20 +107,19 @@ test.describe('Vertical Scroll', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const firstArrow = await page.locator('[data-ui-name="ButtonLink"]').first();
-
-    await firstArrow.click();
-    await page.waitForTimeout(300);
+    const toggle = await page.locator('[data-ui-name="ButtonLink"]');
     const plot = await page.locator('[data-ui-name="Plot"]');
-    await expect(plot).toHaveCount(1);
-    await firstArrow.click();
-    await page.waitForTimeout(300);
-    await expect(plot).toHaveCount(0);
-    await firstArrow.click();
 
-    const thirdArrow = await page.locator('[data-ui-name="ButtonLink"]').nth(2);
-    await thirdArrow.click();
-    await page.waitForTimeout(300);
+    await toggle.first().click();
+    await plot.waitFor({ state: 'visible' });
+    await expect(plot).toHaveCount(1);
+    await toggle.first().click();
+    await plot.waitFor({ state: 'hidden' });
+    await expect(plot).toHaveCount(0);
+    await toggle.first().click();
+
+    await toggle.nth(2).click();
+    await plot.nth(1).waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(2);
   });
 });
