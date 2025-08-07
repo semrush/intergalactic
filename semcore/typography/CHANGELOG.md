@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-07-24
+## [16.3.0] - 2025-07-24
 
 ### Changed
 
 - Styles for `:focus` of the `a` element.
+
+## [16.2.0] - 2025-07-22
+
+### Added
+
+- `formatTags` property for the Text component for enable tags formatting's inside a Text component.
 
 ## [16.1.5] - 2025-07-23
 

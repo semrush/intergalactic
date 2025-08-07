@@ -1,6 +1,7 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
+import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps, BodyPropsInner } from '../Body/Body.types';
@@ -127,6 +128,11 @@ export type DataTableProps<
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
+
+    /**
+     * For adding an overlay over table cells.
+     */
+    renderCellOverlay?: () => React.ReactNode;
 
     /**
      * Duration for collapse/expand accordion rows in tables in ms.

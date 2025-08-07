@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.6] - 2025-08-07
+
+### Fixed
+
+- `Modal` hides after scrollbar interaction.
+
 ## [16.1.5] - 2025-07-23
 
 ### Changed
@@ -12,7 +18,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Modal doesn't close on ESC key press when no element inside is focused.
+- `Modal` doesn't close on ESC key press when no element inside is focused.
 
 ## [16.1.3] - 2025-06-23
 

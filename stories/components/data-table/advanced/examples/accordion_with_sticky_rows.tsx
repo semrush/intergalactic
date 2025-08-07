@@ -8,7 +8,7 @@ const Demo = (props: accordionStickyProps) => {
   const [openedRow, setOpenedRow] = React.useState(new Set<number>());
   const headerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const handleAccordionToggle = (type: 'close' | 'open', rowIndex: number) => {
+  const handleAccordionToggle = (type: 'close' | 'open', uniqKey: string, rowIndex: number) => {
     if (type === 'open') {
       setOpenedRow((prevState) => {
         prevState.add(rowIndex);
@@ -32,6 +32,7 @@ const Demo = (props: accordionStickyProps) => {
       aria-label='Accordion inside table'
       headerProps={{ sticky: true, ref: headerRef }}
       defaultGridTemplateColumnWidth='1fr'
+      hMax={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {
@@ -47,7 +48,7 @@ const Demo = (props: accordionStickyProps) => {
       ]}
       onAccordionToggle={handleAccordionToggle}
       renderCell={(props) => {
-        if (openedRow.has(props.rowIndex)) {
+        if (openedRow.has(props.rowIndex) && props.columnName !== ACCORDION) {
           const headerHeight = headerRef.current?.children.item(0)?.getBoundingClientRect().height;
 
           return {
