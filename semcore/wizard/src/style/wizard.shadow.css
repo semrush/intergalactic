@@ -105,6 +105,12 @@ SContent {
   border-radius: 0 var(--intergalactic-modal-rounded, 12px) var(--intergalactic-modal-rounded, 12px)
     0;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  overflow: hidden;
+}
+
+SStep {
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 SSidebarMenu {

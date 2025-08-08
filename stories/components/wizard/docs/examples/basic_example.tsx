@@ -4,7 +4,7 @@ import { Text } from '@semcore/typography';
 import Wizard from '@semcore/wizard';
 import React from 'react';
 
-const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
+const steps = [{ title: 'SiteAuditSettingsSiteAuditSettings' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
 type WizardStep = { title: string };
 
