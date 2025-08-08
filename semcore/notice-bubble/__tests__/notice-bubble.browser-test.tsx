@@ -356,8 +356,7 @@ test.describe('Visual', () => {
 
     await buttonTrigger.click();
     await buttonTrigger.click();
-    await buttonTrigger.click();
-    await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+    await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });

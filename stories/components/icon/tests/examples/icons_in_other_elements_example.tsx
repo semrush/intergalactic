@@ -2,8 +2,8 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Canva/l';
-import IconM from '@semcore/icon/Canva/m';
+import IconL from '@semcore/icon/Claude/l';
+import IconM from '@semcore/icon/Claude/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Pills from '@semcore/pills';
@@ -16,6 +16,7 @@ import React from 'react';
 const Demo = () => {
   return (
     <>
+
       <Flex columnGap={2} mb={4}>
         <Hint
           title='Hinticon M'
@@ -273,14 +274,14 @@ const Demo = () => {
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='m' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='l' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>

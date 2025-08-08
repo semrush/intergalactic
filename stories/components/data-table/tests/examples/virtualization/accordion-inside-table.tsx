@@ -4,7 +4,7 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 export type accordionVirtualProps = {
-  accordionMode: DataTableProps<typeof data>['accordionMode'];
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   loading: boolean;
 
 };
