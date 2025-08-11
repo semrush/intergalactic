@@ -32,6 +32,7 @@ const App = PlaygroundGeneration((preview) => {
     key: 'maxLine',
     defaultValue: 1,
     label: 'Number of lines',
+    disabled: trim === 'middle',
   });
 
   const ellipsisProps = {
@@ -41,11 +42,7 @@ const App = PlaygroundGeneration((preview) => {
 
   return (
     <Text w={200} display="inline-block" ellipsis={ellipsisProps}>
-      Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
-      intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
-      planetary, intergalactic Another dimension, another dimension Another dimension, another
-      dimension Another dimension, another dimension Another dimension, another dimension
-      Another dimension, another dimension Another dimension
+      Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.
     </Text>
   );
 });

@@ -13,8 +13,8 @@ export type EllipsisSettings = {
    */
   trim?: 'end' | 'middle';
   /**
-   * Rows count in multiline Ellipsis
-   * Acceptable only for `trim = end`
+   * Lines count in multiline Ellipsis.
+   * Applies only for `trim = end`
    * @default 1
    */
   maxLine?: number;

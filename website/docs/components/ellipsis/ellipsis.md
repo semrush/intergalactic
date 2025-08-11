@@ -7,7 +7,7 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 ::: warning
 `Ellipsis` is deprecated and will be removed in the next major release.
 
-Check out the [new approach](/utils/ellipsis/ellipsis) to text cropping.
+Check out the [new approach](/utils/ellipsis/ellipsis) to text clipping.
 :::
 
 ::: react-view
@@ -75,15 +75,6 @@ const App = PlaygroundGeneration((preview) => {
 - Truncating an error or validation message, or other notifications.
 - Hiding content when there is enough space for it.
 - Using the ellipsis component as a punctuation mark at the end of a sentence.
-
-## Appearance
-
-To include an ellipsis, use `…` (HTML symbol `&hellip;`).
-
-**Shortcuts:**
-
-- OS X: `Opt + ;`
-- Win: `alt + 0133`
 
 ## Types
 

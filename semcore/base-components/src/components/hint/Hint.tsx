@@ -25,7 +25,7 @@ export type SimpleHintPopperProps = {
   placement?: Placement;
   /**
    * Timer to show and hide the popper
-   * @default [100, 50]
+   * @default [500, 500]
    */
   timeout?: DefaultProps['delay'];
   /**
@@ -86,7 +86,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
 
   static defaultProps: DefaultProps = {
     defaultVisible: false,
-    timeout: [100, 50],
+    timeout: [500, 500],
     delay: 0,
     timingFunction: 'ease-out',
   };
@@ -165,7 +165,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
         if (popperElement && arrowElement) {
           computePosition(node, popperElement, {
             placement: placement,
-            middleware: [offset(6), flip(), shift({ padding: 4 }), arrow({ element: arrowElement })],
+            middleware: [offset(10), flip(), shift({ padding: 4 }), arrow({ element: arrowElement })],
           }).then(({ x, y, placement, middlewareData }) => {
             Object.assign(popperElement.style, {
               left: `${x}px`,

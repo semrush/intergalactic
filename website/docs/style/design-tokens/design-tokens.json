@@ -720,6 +720,7 @@
     "computedValue": "#e0e1e9",
     "description": "Subtle secondary border.",
     "components": [
+      "base-components",
       "card",
       "color-picker",
       "d3-chart",
@@ -2113,6 +2114,7 @@
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
     "description": "Default shadow of all Poppers, Dropdowns and Tooltips.",
     "components": [
+      "base-components",
       "d3-chart",
       "dropdown",
       "feature-popover",
@@ -2328,6 +2330,7 @@
     "computedValue": "142%",
     "description": "Use with font-size-200.",
     "components": [
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "bulk-textarea",
@@ -2474,6 +2477,7 @@
     "computedValue": "14px",
     "components": [
       "badge",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "bulk-textarea",
@@ -2773,6 +2777,7 @@
     "description": "12px",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -3277,6 +3282,7 @@
     "computedValue": "#ffffff",
     "description": "Default Tooltip background.",
     "components": [
+      "base-components",
       "tooltip"
     ]
   },

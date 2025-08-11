@@ -3,15 +3,18 @@ SHintPopper {
   position: absolute;
   top: 0;
   left: 0;
-  background: #222;
-  color: white;
-  font-weight: bold;
-  padding: 5px;
-  border-radius: 4px;
-  font-size: 90%;
-  max-width: 340px;
-  word-break: break-all;
+  max-width: 250px;
+  overflow-wrap: break-word;
   visibility: hidden;
+
+  background: var(--intergalactic-tooltip-default, #ffffff);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  color: var(--intergalactic-text-primary, #191b23);
+  padding: var(--intergalactic-spacing-3x, 12px);
+  border-radius: var(--intergalactic-popper-rounded, 6px);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 
   animation-fill-mode: both;
   animation-timing-function: var(--timingFunction);
@@ -28,7 +31,9 @@ SHintPopper {
 
 SHintArrow {
   position: absolute;
-  background: #222;
+  background: var(--intergalactic-tooltip-default, #ffffff);
+  border-top: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   width: 8px;
   height: 8px;
   transform: rotate(45deg);
