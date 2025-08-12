@@ -202,7 +202,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
   private hideHint(): void {
     const { timeout } = this.asProps;
 
-    const hideTimeout = Array.isArray(timeout) ? timeout[0] : timeout;
+    const hideTimeout = Array.isArray(timeout) ? timeout[1] : timeout;
 
     if (this.showTimer) {
       clearTimeout(this.showTimer);
