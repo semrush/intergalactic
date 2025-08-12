@@ -1,7 +1,7 @@
 {
   "name": "@semcore/bulk-textarea",
   "description": "Semrush BulkTextarea Component",
-  "version": "16.2.4",
+  "version": "16.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,13 +17,13 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.5",
-    "@semcore/button": "16.0.5",
-    "@semcore/typography": "16.1.5",
-    "@semcore/counter": "16.0.5",
-    "@semcore/icon": "16.4.0",
-    "@semcore/popper": "16.0.5",
-    "@semcore/tooltip": "16.0.5",
+    "@semcore/flex-box": "16.0.6",
+    "@semcore/button": "16.0.6",
+    "@semcore/typography": "16.2.0",
+    "@semcore/counter": "16.0.6",
+    "@semcore/icon": "16.5.0",
+    "@semcore/popper": "16.0.6",
+    "@semcore/tooltip": "16.0.6",
     "dompurify": "3.2.3"
   },
   "peerDependencies": {
