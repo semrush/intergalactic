@@ -32,7 +32,7 @@ If you have too much data inside an accordion, consider moving it to a separate 
 
 If the data inside an accordion is relevant only to a certain cell in a row, this single cell can function as the accordion trigger, instead of the entire row.
 
-![](static/accordion-3.png)
+![](static/accordion-2.png)
 
 ## Checkboxes
 
