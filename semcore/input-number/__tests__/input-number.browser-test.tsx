@@ -24,14 +24,14 @@ test.describe('Visual', () => {
   });
 
   const variablesInputNumberAddon = [
-    { size: 'm', state: 'normal', locale: 'en', disabled: false, showControls: true, value: 1234.56, placeholder: undefined },
-    { size: 'l', state: 'invalid', locale: 'pl', disabled: true, showControls: false, value: 9876.54, placeholder: undefined },
-    { size: 'l', state: 'valid', locale: 'de', disabled: false, showControls: true, value: undefined, placeholder: 'Enter a value' },
-    { size: 'm', state: 'normal', locale: 'en', disabled: true, showControls: true, value: 1234.56, placeholder: undefined },
+    { size: 'm', state: 'normal', locale: 'en', disabledValue: false, showControls: true, value: 1234.56, placeholder: undefined },
+    { size: 'l', state: 'invalid', locale: 'pl', disabledValue: true, showControls: false, value: 9876.54, placeholder: undefined },
+    { size: 'l', state: 'valid', locale: 'de', disabledValue: false, showControls: true, value: undefined, placeholder: 'Enter a value' },
+    { size: 'm', state: 'normal', locale: 'en', disabledValue: true, showControls: true, value: 1234.56, placeholder: undefined },
 
   ];
   variablesInputNumberAddon.forEach((item) => {
-    test(`Verify Input Number with Addon state= ${item.state} size=${item.size} disabled:${item.disabled} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
+    test(`Verify Input Number with Addon state= ${item.state} size=${item.size} disabledValue:${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
       const standPath = 'stories/components/input-number/tests/examples/basic_example_addon.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -41,21 +41,20 @@ test.describe('Visual', () => {
     });
   });
 
-  const variablesInputDisabledStates = [
-    { size: 'm', state: 'normal', disabled: true, readOnly: undefined, showControls: true, value: undefined, placeholder: 'Enter a value' },
-    { size: 'l', state: 'invalid', disabled: true, readOnly: undefined, value: 9876.54, placeholder: undefined },
-    { size: 'l', state: 'valid', disabled: true, readOnly: undefined, value: 1000, placeholder: undefined },
-    { size: 'm', state: 'valid', disabled: undefined, readOnly: true, showControls: true, value: undefined, placeholder: 'Enter a value' },
-    { size: 'l', state: 'invalid', disabled: undefined, readOnly: true, value: undefined, placeholder: 'Type something' },
-    { size: 'm', state: 'normal', disabled: undefined, readOnly: true, value: 2500, placeholder: undefined },
+  const variablesInputdisabledValueStates = [
+    { size: 'm', state: 'normal', disabledValue: true, readOnly: undefined, showControls: true, value: undefined, placeholder: 'Enter a value' },
+    { size: 'l', state: 'invalid', disabledValue: true, readOnly: undefined, value: 9876.54, placeholder: undefined },
+    { size: 'l', state: 'valid', disabledValue: true, readOnly: undefined, value: 1000, placeholder: undefined },
+    { size: 'm', state: 'valid', disabledValue: undefined, readOnly: true, showControls: true, value: undefined, placeholder: 'Enter a value' },
+    { size: 'l', state: 'invalid', disabledValue: undefined, readOnly: true, value: undefined, placeholder: 'Type something' },
+    { size: 'm', state: 'normal', disabledValue: undefined, readOnly: true, value: 2500, placeholder: undefined },
   ];
-  variablesInputDisabledStates.forEach((item) => {
-    test(`Verify not active Input Number state= ${item.state} size=${item.size} disabled=${item.disabled} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
+  variablesInputdisabledValueStates.forEach((item) => {
+    test(`Verify not active Input Number state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
       const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
-      await page.locator('label').click();
       await expect(page).toHaveScreenshot();
     });
   });
