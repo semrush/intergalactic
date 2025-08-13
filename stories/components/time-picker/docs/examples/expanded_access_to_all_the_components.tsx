@@ -1,12 +1,9 @@
 import { Box } from '@semcore/base-components';
 import TimePicker from '@semcore/time-picker';
-import type { TimePickerProps, TimePickerItemProps } from '@semcore/time-picker';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type baseExampleProps = TimePickerProps & TimePickerItemProps;
-
-const Demo = (props: baseExampleProps) => {
+const Demo = () => {
   return (
     <>
       <Text tag='label' htmlFor='time-picker' size={200}>
