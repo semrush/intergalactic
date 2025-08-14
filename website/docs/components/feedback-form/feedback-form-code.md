@@ -14,7 +14,7 @@ The information on the GDPR should be obligatorily shown to the users from Europ
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/feedback/docs/examples/default_feedback_form.tsx';
+  export Demo from 'stories/components/feedback-form/docs/examples/default_feedback_form.tsx';
 </script>
 
 :::
