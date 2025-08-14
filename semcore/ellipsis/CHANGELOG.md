@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.6] - 2025-08-08
+## [16.1.0] - 2025-08-08
 
 ### Deprecated
 
-- ??? discuss the text.
+- This component is now deprecated. Use the new `ellipsis` prop that's built into various components, and the `useEllipsis` hook from the `base-components` package for all other cases.
 
 ### Fixed
 
