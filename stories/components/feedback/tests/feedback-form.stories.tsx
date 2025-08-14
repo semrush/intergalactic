@@ -1,7 +1,7 @@
 import FeedbackForm from '@semcore/feedback-form';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicExample from './examples/feedback_form_theme_loading.tsx';
+import BasicExample from './examples/feedback_form_theme_loading';
 
 const meta: Meta<typeof FeedbackForm> = {
   title: 'Components/FeedbackForm/Tests',
