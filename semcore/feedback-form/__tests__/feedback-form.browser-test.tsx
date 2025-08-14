@@ -4,7 +4,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 test.describe('Visual', () => {
   test('Verify base feedback form styles', async ({ page }) => {
     const standPath =
-      'stories/components/feedback-form/docs/examples/default_feedback_form.tsx';
+      'stories/components/feedback/docs/examples/default_feedback_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -58,7 +58,7 @@ test.describe('Visual', () => {
 
   test('Verify base feedback form loading styles', async ({ page }) => {
     const standPath =
-      'stories/components/feedback-form/tests/examples/feedback_form_theme_loading.tsx';
+      'stories/components/feedback/tests/examples/feedback_form_theme_loading.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -85,7 +85,7 @@ test.describe('Visual', () => {
 test.describe('Functional', () => {
   test('Verify base feedback form keyboard interaction', async ({ page }) => {
     const standPath =
-      'stories/components/feedback-form/docs/examples/default_feedback_form.tsx';
+      'stories/components/feedback/docs/examples/default_feedback_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -177,7 +177,7 @@ test.describe('Functional', () => {
 
   test('Verify base feedback form mouse interaction', async ({ page }) => {
     const standPath =
-      'stories/components/feedback-form/docs/examples/default_feedback_form.tsx';
+      'stories/components/feedback/docs/examples/default_feedback_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
