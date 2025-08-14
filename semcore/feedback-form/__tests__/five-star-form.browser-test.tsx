@@ -1,8 +1,8 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('5-star Feedback form', () => {
-  test('Verify mouse interaction with base cases', async ({ page, browserName }) => {
+test.describe('Visual', () => {
+  test('Verify five stars form base example styles', async ({ page }) => {
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -11,115 +11,263 @@ test.describe('5-star Feedback form', () => {
 
     await expect(page).toHaveScreenshot();
 
-    const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-    const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
+    const sliderRating = page.getByRole('slider');
+    const starts = page.getByRole('none');
+    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
+    const checkboxInput = page.getByRole('checkbox');
+    const dialog = page.getByRole('dialog');
+    const buttons = dialog.getByRole('button');
+    const header = page.getByRole('heading');
+    const checkboxesGroup = page.getByRole('group');
+    const itemInput = page.getByRole('textbox');
+    await test.step('Verify stars hover state', async () => {
+      await starts.nth(1).hover();
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify stars focused state', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot();
+    });
 
-    await secondStar.hover();
-    await expect(page).toHaveScreenshot();
-    await secondStar.click();
+    await test.step('Verify form styles', async () => {
+      await page.keyboard.press('Enter');
+      await buttons.first().waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    const firstCheckbox = page.getByLabel('Score is more accurate');
-    await expect(firstCheckbox).toBeFocused();
+    await test.step('Verify email validation', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('t');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-    const closeBtn = page.locator('[data-ui-name="Modal.Close"]');
-    await closeBtn.click();
-    await page.waitForTimeout(600);
-    await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
+      await page.waitForSelector('text="Please enter valid email"');
 
-    await secondStar.hover();
-    await secondStar.click();
+      await expect(page).toHaveScreenshot();
+    });
 
-    const submit = await page.locator('[data-ui-name="FeedbackRatingForm.Submit"]');
-    await submit.click();
-    await page.waitForTimeout(1200);
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify loading styles', async () => {
+      await page.keyboard.type('test@test.test');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+
+      await page.keyboard.press('Enter');
+
+      await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
-  test('Verify keyboard interaction with base cases', async ({ page, browserName }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-    const feedbackForm = page.getByRole('dialog', { name: 'Great! What do you like the' });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await expect(feedbackForm).not.toBeVisible();
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Enter');
-    await expect(feedbackForm).toBeVisible();
-    const firstCheckbox = page.getByLabel('Score is more accurate');
-    await expect(firstCheckbox).toBeFocused();
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(600);
-    await expect(feedbackForm).not.toBeVisible();
-    await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
-    await page.keyboard.press('Enter');
-    await expect(feedbackForm).not.toBeVisible();
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Enter');
-    await page.waitForTimeout(600);
-    await page.keyboard.press('Shift+Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
-    await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Enter');
-    await expect(feedbackForm).toBeVisible();
-    for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForTimeout(600);
-    await expect(page.locator('[data-ui-name="Notice"]')).not.toBeVisible();
-  });
-
-  test('Verify default validation', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-
-    const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
-
-    await secondStar.click();
-    await page.waitForTimeout(50);
-    const description = await page.getByLabel('If there anything we could improve?');
-    await description.fill('some short');
-
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.type('Invalid email');
-
-    await page.keyboard.press('Tab'); // link in email description
-    await page.keyboard.press('Tab'); // submit button
-
-    await page.keyboard.press('Enter');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify feedback rating with error notice on submit', async ({ page, browserName }) => {
+  test('Verify feedback rating with error notice on submit', async ({ page }) => {
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-    const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
 
-    await secondStar.hover();
-    await secondStar.click();
+    const sliderRating = page.getByRole('slider');
+    const starts = page.getByRole('none');
+    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
+    const checkboxInput = page.getByRole('checkbox');
+    const dialog = page.getByRole('dialog');
+    const buttons = dialog.getByRole('button');
+    const header = page.getByRole('heading');
+    const checkboxesGroup = page.getByRole('group');
+    const itemInput = page.getByRole('textbox');
 
-    const submit = await page.locator('[data-ui-name="FeedbackRatingForm.Submit"]');
-    await submit.click();
-    await page.waitForTimeout(1200);
+    await starts.nth(1).click();
+    await buttons.first().waitFor({ state: 'visible' });
+    await buttons.nth(1).click();
+    await page.waitForSelector('text="Something went wrong. Please try again or contact us at"');
     await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify feedback rating notice with title and subtitle', async ({ page }) => {
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-title-and-subtitle.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('Functional', () => {
+  test('Verify five stars base example styles keyboard interactions', async ({ page }) => {
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const sliderRating = page.getByRole('slider');
+    const stars = page.getByRole('none');
+    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
+    const checkboxInput = page.getByRole('checkbox');
+    const dialog = page.getByRole('dialog');
+    const buttons = dialog.getByRole('button');
+    const header = page.getByRole('heading');
+    const checkboxesGroup = page.getByRole('group');
+    const itemInput = page.getByRole('textbox');
+
+    await test.step('Verify stars can be focused and their attributes ', async () => {
+      await page.keyboard.press('Tab');
+      await expect(sliderRating).toBeFocused();
+      await expect(sliderRating).toHaveAttribute('aria-valuemin', '1');
+      await expect(sliderRating).toHaveAttribute('aria-valuemax', '5');
+      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
+      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+
+      await expect(sliderRating).toHaveAttribute('value', '0');
+      await expect(sliderRating).toHaveAttribute('aria-orientation', 'horizontal');
+
+      const count = await stars.count();
+      for (let i = 0; i < count; i++) {
+        await expect(stars.nth(i)).toHaveAttribute('fill', 'none');
+        await expect(stars.nth(i)).toHaveAttribute('width', '24');
+        await expect(stars.nth(i)).toHaveAttribute('height', '24');
+      }
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(sliderRating).toHaveAttribute('aria-valuenow', '2');
+      await expect(sliderRating).toHaveAttribute('value', '0');
+
+      await expect(sliderRating).toHaveAttribute('aria-valuetext', '2 out of 5. Press Enter to select the rating.');
+    });
+
+    await test.step('Verify form opened and first checkbox focused by deault', async () => {
+      await page.keyboard.press('Enter');
+      await buttons.first().waitFor({ state: 'visible' });
+      await expect(sliderRating).toHaveAttribute('value', '2');
+      await expect(checkboxInput.first()).toBeFocused();
+      await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
+      await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
+    });
+
+    await test.step('Verify form closed by ESC and selected starts skipped', async () => {
+      await page.keyboard.press('Escape');
+      await buttons.first().waitFor({ state: 'hidden' });
+      await expect(sliderRating).toBeFocused();
+      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
+      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+
+      await expect(sliderRating).toHaveAttribute('value', '0');
+    });
+
+    await test.step('Verify Form not opened when no starts selected', async () => {
+      await page.keyboard.press('Enter');
+      await expect(buttons.first()).not.toBeVisible();
+    });
+
+    await test.step('Verify Form focus order', async () => {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Great! What do you like the most?"');
+      await expect(checkboxInput.first()).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(itemInput.first()).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(itemInput.nth(1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Shift+Tab');
+      await expect(itemInput.nth(1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(buttons.nth(1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(buttons.nth(0)).toBeFocused();
+    });
+
+    await test.step('Verify form closed by activate Close button', async () => {
+      await page.keyboard.press('Enter');
+      await buttons.first().waitFor({ state: 'hidden' });
+      await expect(sliderRating).toBeFocused();
+    });
+
+    await test.step('Verify form closed by activate Send request', async () => {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('text="Great! What do you like the most?"');
+      await expect(checkboxInput.first()).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Enter');
+      await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });
+      await expect(page.getByRole('button', { name: 'Reload page' })).toBeFocused();
+    });
+  });
+
+  test('Verify five stars base example styles mouse interactions', async ({ page }) => {
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const sliderRating = page.getByRole('slider');
+    const stars = page.getByRole('none');
+    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
+    const checkboxInput = page.getByRole('checkbox');
+    const dialog = page.getByRole('dialog');
+    const buttons = dialog.getByRole('button');
+    const header = page.getByRole('heading');
+    const checkboxesGroup = page.getByRole('group');
+    const itemInput = page.getByRole('textbox');
+
+    await test.step('Verify stars hover interaction', async () => {
+      await stars.nth(3).hover();
+      await expect(sliderRating).toHaveAttribute('aria-valuenow', '4');
+      await expect(sliderRating).toHaveAttribute('value', '0');
+
+      await expect(sliderRating).toHaveAttribute('aria-valuetext', '4 out of 5. Press Enter to select the rating.');
+    });
+
+    await test.step('Verify form opened and first checkbox focused by deault by click on stars', async () => {
+      await stars.nth(3).click();
+      await buttons.first().waitFor({ state: 'visible' });
+      await expect(sliderRating).toHaveAttribute('value', '2');
+      await expect(checkboxInput.first()).toBeFocused();
+    });
+
+    await test.step('Verify form closed by click outside the form and selected starts skipped', async () => {
+      await page.mouse.click(0, 0);
+      await buttons.first().waitFor({ state: 'hidden' });
+      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
+      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+
+      await expect(sliderRating).toHaveAttribute('value', '0');
+    });
+
+    await test.step('Verify form closed by click Close button', async () => {
+      await stars.nth(3).click();
+      await page.waitForSelector('text="Great! What do you like the most?"');
+      await expect(checkboxInput.first()).toBeFocused();
+      await buttons.first().click();
+      await expect(dialog).toBeHidden();
+    });
+
+    await test.step('Verify form closed by click Send request', async () => {
+      await stars.nth(3).click();
+      await page.waitForSelector('text="Great! What do you like the most?"');
+      await expect(checkboxInput.first()).toBeFocused();
+      await buttons.nth(1).click();
+
+      await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });
+      await expect(dialog).toBeHidden();
+
+      await expect(page.getByRole('button', { name: 'Reload page' })).toBeVisible();
+    });
   });
 });
