@@ -1,4 +1,4 @@
-import type { DTColumn } from './Column.types';
+import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { BodyPropsInner } from '../Body/Body.types';
 import type { CellPropsInner } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
@@ -62,4 +62,6 @@ export type HeadPropsInner<
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   onCellClick: CellPropsInner<UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
+
 };

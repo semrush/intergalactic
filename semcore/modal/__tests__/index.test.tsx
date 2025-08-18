@@ -1,6 +1,6 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, queryByAttribute } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -85,12 +85,16 @@ describe('Modal', () => {
 
   test.concurrent('Verify supports onClose for OutsideClick', async ({ expect }) => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { baseElement } = render(
       <Modal onClose={spy} visible>
-        <Modal.Overlay data-testid='outside' />
+        <Modal.Overlay />
       </Modal>,
     );
-    fireEvent.mouseUp(getByTestId('outside'));
+
+    const overlayContentWrapper = queryByAttribute('data-ui-name', baseElement, 'Modal.Overlay.ContentWrapper');
+    expect(overlayContentWrapper).not.toBeNull();
+
+    fireEvent.mouseUp(overlayContentWrapper!);
     expect(spy).toBeCalledWith('onOutsideClick', expect.anything());
   });
 
