@@ -4,6 +4,8 @@ fileSource: counter
 tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
+<Playground for="Counter" />
+
 ::: react-view
 
 <script lang="tsx">

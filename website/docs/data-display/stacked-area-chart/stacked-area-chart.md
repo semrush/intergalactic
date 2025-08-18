@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-code'), Changelog('stacked-area-chart-changelog')
 ---
 
+<Playground for="Chart.StackedArea" />
+
 ::: react-view
 
 <script lang="tsx">

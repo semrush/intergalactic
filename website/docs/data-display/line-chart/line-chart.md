@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-code'), Changelog('line-chart-changelog')
 ---
 
+<Playground for="Chart.Line" />
+
 ::: react-view
 
 <script lang="tsx">

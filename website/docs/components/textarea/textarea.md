@@ -4,6 +4,8 @@ fileSource: textarea
 tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('textarea-code'), Changelog('textarea-changelog')
 ---
 
+<Playground for="Textarea" />
+
 ::: react-view
 
 <script lang="tsx">

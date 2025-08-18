@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-code'), Changelog('bar-horizontal-changelog')
 ---
 
+<Playground for="Chart.BarHorizontal" />
+
 ::: react-view
 
 <script lang="tsx">

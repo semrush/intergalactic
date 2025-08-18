@@ -4,6 +4,8 @@ fileSource: dropdown
 tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
+<Playground for="Dropdown" />
+
 ::: react-view
 
 <script lang="tsx">

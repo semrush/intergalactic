@@ -8,6 +8,8 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 `InputMask` is deprecated and will be removed in the next major release.
 :::
 
+<Playground for="InputMask" />
+
 ::: react-view
 
 <script lang="tsx">

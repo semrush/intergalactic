@@ -4,6 +4,8 @@ fileSource: tag
 tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
+<Playground for="Tag" />
+
 ::: react-view
 
 <script lang="tsx">

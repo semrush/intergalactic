@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('bar-chart'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-code'), Changelog('bar-chart-changelog')
 ---
 
+<Playground for="Chart.Bar" />
+
 ::: react-view
 
 <script lang="tsx">

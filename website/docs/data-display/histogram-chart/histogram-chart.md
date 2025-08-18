@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('histogram-chart-changelog')
 ---
 
+<Playground for="Chart.Histogram" />
+
 ::: react-view
 
 <script lang="tsx">

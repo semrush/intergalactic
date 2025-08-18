@@ -4,6 +4,8 @@ fileSource: button
 tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
+<Playground for="Button" />
+
 ::: react-view
 
 <script lang="tsx">

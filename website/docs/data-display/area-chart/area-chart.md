@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-code'), Changelog('area-chart-changelog')
 ---
 
+<Playground for="Chart.Area" />
+
 ::: react-view
 
 <script lang="tsx">

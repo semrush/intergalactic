@@ -26,7 +26,7 @@
     }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
-  "include": ["semcore", "tools", "stories"],
+  "include": ["semcore", "tools", "stories", "playground"],
   "exclude": [
     "node_modules",
     "tools/icon-transform-svg/__tests__",

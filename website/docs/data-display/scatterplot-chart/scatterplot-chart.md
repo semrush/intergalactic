@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-code'), Changelog('scatterplot-chart-changelog')
 ---
 
+<Playground for="Chart.ScatterPlot" />
+
 ::: react-view
 
 <script lang="tsx">

@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-code'), Changelog('stacked-horizontal-bar-changelog')
 ---
 
+<Playground for="Chart.StackedHorizontalBar" />
+
 ::: react-view
 
 <script lang="tsx">

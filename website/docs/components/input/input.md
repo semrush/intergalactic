@@ -4,6 +4,8 @@ fileSource: input
 tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
+<Playground for="Input" />
+
 ::: react-view
 
 <script lang="tsx">

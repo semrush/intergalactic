@@ -4,6 +4,8 @@ fileSource: inline-input
 tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-code'), Changelog('inline-input-changelog')
 ---
 
+<Playground for="InlineInput" />
+
 ::: react-view
 
 <script lang="tsx">

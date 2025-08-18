@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
+<Playground for="Chart.Radar" />
+
 ::: react-view
 
 <script lang="tsx">

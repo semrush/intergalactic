@@ -4,6 +4,8 @@ fileSource: notice
 tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
+<Playground for="Notice" />
+
 ::: react-view
 
 <script lang="tsx">

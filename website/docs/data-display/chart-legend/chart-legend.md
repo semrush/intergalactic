@@ -5,6 +5,8 @@ docs: true
 tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('chart-legend-changelog')
 ---
 
+<Playground for="ChartLegend" />
+
 ::: react-view
 
 <script lang="tsx">

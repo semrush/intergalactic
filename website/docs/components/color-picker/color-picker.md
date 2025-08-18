@@ -4,6 +4,8 @@ fileSource: color-picker
 tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
+<Playground for="ColorPicker" />
+
 ::: react-view
 
 <script lang="tsx">
