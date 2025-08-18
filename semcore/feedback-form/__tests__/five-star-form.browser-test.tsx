@@ -11,19 +11,14 @@ test.describe('Visual', () => {
 
     await expect(page).toHaveScreenshot();
 
-    const sliderRating = page.getByRole('slider');
     const starts = page.getByRole('none');
-    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
-    const checkboxInput = page.getByRole('checkbox');
     const dialog = page.getByRole('dialog');
     const buttons = dialog.getByRole('button');
-    const header = page.getByRole('heading');
-    const checkboxesGroup = page.getByRole('group');
-    const itemInput = page.getByRole('textbox');
     await test.step('Verify stars hover state', async () => {
       await starts.nth(1).hover();
       await expect(page).toHaveScreenshot();
     });
+
     await test.step('Verify stars focused state', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
@@ -71,15 +66,9 @@ test.describe('Visual', () => {
 
     await page.setContent(htmlContent);
 
-    const sliderRating = page.getByRole('slider');
     const starts = page.getByRole('none');
-    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
-    const checkboxInput = page.getByRole('checkbox');
     const dialog = page.getByRole('dialog');
     const buttons = dialog.getByRole('button');
-    const header = page.getByRole('heading');
-    const checkboxesGroup = page.getByRole('group');
-    const itemInput = page.getByRole('textbox');
 
     await starts.nth(1).click();
     await buttons.first().waitFor({ state: 'visible' });
@@ -108,12 +97,9 @@ test.describe('Functional', () => {
 
     const sliderRating = page.getByRole('slider');
     const stars = page.getByRole('none');
-    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
     const checkboxInput = page.getByRole('checkbox');
     const dialog = page.getByRole('dialog');
     const buttons = dialog.getByRole('button');
-    const header = page.getByRole('heading');
-    const checkboxesGroup = page.getByRole('group');
     const itemInput = page.getByRole('textbox');
 
     await test.step('Verify stars can be focused and their attributes ', async () => {
@@ -161,7 +147,7 @@ test.describe('Functional', () => {
       await expect(sliderRating).toHaveAttribute('value', '0');
     });
 
-    await test.step('Verify Form not opened when no starts selected', async () => {
+    await test.step('Verify Form not opened by Enter  when no starts selected', async () => {
       await page.keyboard.press('Enter');
       await expect(buttons.first()).not.toBeVisible();
     });
@@ -218,13 +204,9 @@ test.describe('Functional', () => {
 
     const sliderRating = page.getByRole('slider');
     const stars = page.getByRole('none');
-    const checkboxes = page.locator('[data-ui-name="FeedbackRatingForm.Checkbox"]');
     const checkboxInput = page.getByRole('checkbox');
     const dialog = page.getByRole('dialog');
     const buttons = dialog.getByRole('button');
-    const header = page.getByRole('heading');
-    const checkboxesGroup = page.getByRole('group');
-    const itemInput = page.getByRole('textbox');
 
     await test.step('Verify stars hover interaction', async () => {
       await stars.nth(3).hover();
@@ -234,7 +216,7 @@ test.describe('Functional', () => {
       await expect(sliderRating).toHaveAttribute('aria-valuetext', '4 out of 5. Press Enter to select the rating.');
     });
 
-    await test.step('Verify form opened and first checkbox focused by deault by click on stars', async () => {
+    await test.step('Verify form opened by click on stars', async () => {
       await stars.nth(3).click();
       await buttons.first().waitFor({ state: 'visible' });
       await expect(sliderRating).toHaveAttribute('value', '4');

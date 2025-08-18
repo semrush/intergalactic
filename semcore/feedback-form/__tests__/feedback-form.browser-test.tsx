@@ -94,7 +94,7 @@ test.describe('Functional', () => {
     const inputs = page.getByRole('textbox');
     const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
 
-    await test.step('Verify feedback form items focus interactions', async () => {
+    await test.step('Verify feedback form items opened by Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await feedbackForm.waitFor({ state: 'visible' });
@@ -102,7 +102,7 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await expect(inputs.nth(1)).toBeFocused();
     });
-    await test.step('Verify feedback items attributes', async () => {
+    await test.step('Verify feedback form items attributes', async () => {
       await expect(feedbackForm).toHaveAttribute('novalidate');
       await expect(feedbackForm).toHaveAttribute('method', 'POST');
 
@@ -133,7 +133,7 @@ test.describe('Functional', () => {
       await expect(trigger).toBeFocused();
     });
 
-    await test.step('Verify feedback form validation and form not closed by Send Feedback', async () => {
+    await test.step('Verify feedback form validation starts and form not closed by activate Send Feedback', async () => {
       await page.keyboard.press('Space');
       await feedbackForm.waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
@@ -194,14 +194,14 @@ test.describe('Functional', () => {
       await expect(inputs.first()).toBeFocused();
     });
 
-    await test.step('Verify feedback form closed by Cancel', async () => {
+    await test.step('Verify feedback form closed by Cancel click ', async () => {
       await expect(cancel).toHaveAttribute('type', 'reset');
       await cancel.click();
       await feedbackForm.waitFor({ state: 'hidden' });
       await expect(feedbackForm).not.toBeVisible();
     });
 
-    await test.step('Verify feedback form closed click outside the form', async () => {
+    await test.step('Verify feedback form closed by click outside the form', async () => {
       await trigger.click();
       await feedbackForm.waitFor({ state: 'visible' });
       await page.mouse.click(0, 0);
@@ -209,7 +209,7 @@ test.describe('Functional', () => {
       await expect(feedbackForm).not.toBeVisible();
     });
 
-    await test.step('Verify feedback form validation and form not closed by click  Send Feedback', async () => {
+    await test.step('Verify feedback form validation starts  and form not closed by click  Send Feedback', async () => {
       await trigger.click();
       await feedbackForm.waitFor({ state: 'visible' });
       await expect(submit).toHaveAttribute('type', 'submit');
@@ -238,6 +238,7 @@ test.describe('Functional', () => {
       await success.waitFor({ state: 'hidden' });
       await expect(success).not.toBeVisible();
     });
+
     await test.step('Verify success closed by click on trigger', async () => {
       await trigger.click();
       await success.waitFor({ state: 'visible' });
