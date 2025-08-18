@@ -11,7 +11,7 @@ test.describe('Visual', () => {
     { size: 'm', state: 'normal', locale: 'de', showControls: false, value: 2500, placeholder: undefined },
   ];
   variablesInputNumber.forEach((item) => {
-    test(`Verify active Input Number state= ${item.state} size=${item.size} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
+    test(`Verify active Input Number with state= ${item.state} size=${item.size} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
       const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -31,7 +31,7 @@ test.describe('Visual', () => {
 
   ];
   variablesInputNumberAddon.forEach((item) => {
-    test(`Verify Input Number with Addon state= ${item.state} size=${item.size} disabledValue:${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
+    test(`Verify Input Number with Addon and state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
       const standPath = 'stories/components/input-number/tests/examples/basic_example_addon.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -50,7 +50,7 @@ test.describe('Visual', () => {
     { size: 'm', state: 'normal', disabledValue: undefined, readOnly: true, value: 2500, placeholder: undefined },
   ];
   variablesInputdisabledValueStates.forEach((item) => {
-    test(`Verify not active Input Number state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
+    test(`Verify not active Input Number with state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
       const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -73,7 +73,7 @@ test.describe('Visual', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify Focus in the input and changed value by keyboard', async () => {
+    await test.step('Verify Focus in the input and changes value by keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -103,7 +103,7 @@ test.describe('Visual', () => {
   });
 });
 
-test.describe('Functional tests', () => {
+test.describe('Functional', () => {
   const variablesInputNumber = [
     { min: undefined, max: undefined, step: undefined },
     { min: undefined, max: undefined, step: 5 },
@@ -226,8 +226,7 @@ test.describe('Functional tests', () => {
 
       await test.step('Verify zero value', async () => {
         await page.fill('input[data-ui-name="InputNumber.Value"]', '0');
-        await input.fill('');
-
+        await input.fill('0');
         await input.fill('9');
         await expect(input).toHaveAttribute('value', '9');
       });
