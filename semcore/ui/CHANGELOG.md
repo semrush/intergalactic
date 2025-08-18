@@ -1,3 +1,9 @@
+## [16.7.0] - 2025-08-18
+
+### @semcore/data-table
+
+- **Added** `Data` type to `cellRender` function.
+
 ## [16.6.0] - 2025-08-07
 
 ### @semcore/base-components
