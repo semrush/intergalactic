@@ -7,11 +7,11 @@ import * as React from 'react';
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import style from './style.shadow.css';
-import { ROW_INDEX } from '../DataTable/DataTable';
+import type { DataTableData } from '../DataTable/DataTable.types';
 
 const DEFAULT_ROW_DURATION = 50;
 
-class CellRoot<UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<UniqKeyType>> {
+class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> {
   static displayName = 'Cell';
   static style = style;
 
