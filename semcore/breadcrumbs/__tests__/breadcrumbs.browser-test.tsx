@@ -71,6 +71,7 @@ test.describe('Styles', () => {
       }
 
       await breadcrumbLinks.first().hover();
+
       await expect(page).toHaveScreenshot();
     });
     await test.step('Verify separator styles', async () => {
@@ -102,12 +103,11 @@ test.describe('Styles', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
 
-    await page.waitForSelector('text="This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!"');
-
+    await page
+      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!').nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -120,7 +120,9 @@ test.describe('Styles', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
 
-    await page.waitForSelector('text="This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!"');
+    await page
+      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!')
+      .waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -214,7 +216,8 @@ test.describe('Keyboard and mouse interactions', () => {
 
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.nth(1)).toBeFocused();
-
+    await page
+      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!').nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Shift+Tab');
