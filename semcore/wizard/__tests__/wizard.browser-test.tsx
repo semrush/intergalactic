@@ -3,7 +3,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 
 const locators = {
   trigger: (page: any, name = 'Open wizard') => page.getByRole('button', { name }),
-  modal: (page: any) => page.locator('div[data-ui-name=\'Wizard\']'),
+  modal: (page: any) => page.getByRole('dialog'),
   sidebar: (page: any) => page.locator('[data-ui-name=\'Wizard.Sidebar\']'),
   stepperTabs: (page: any) => page.locator('[data-ui-name=\'Wizard.Stepper\']'),
   contentPanel: (page: any) => page.locator('[data-ui-name=\'Wizard.Content\']'),
@@ -26,7 +26,7 @@ test.describe('Base example', () => {
 
     await test.step('Open modal and verify modal attributes', async () => {
       await trigger(page).click();
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(modal(page)).toBeVisible();
       await expect(modal(page)).toHaveAttribute('aria-modal', 'true');
       await expect(modal(page)).toHaveAttribute('role', 'dialog');
@@ -101,9 +101,13 @@ test.describe('Base example', () => {
 
     await test.step('Verify selected step saved when Close and reopen modal', async () => {
       await nextButton(page, 'Close').click();
+      await modal(page).waitFor({ state: 'hidden' });
+
       await expect(modal(page)).toBeHidden();
 
       await trigger(page).click();
+      await modal(page).waitFor({ state: 'visible' });
+
       await expect(modal(page)).toBeVisible();
     });
 
@@ -137,29 +141,30 @@ test.describe('Base example', () => {
     await test.step('Open modal using keyboard and verify focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(modal(page)).toBeVisible();
       await expect(nextButton(page, 'Close')).toBeFocused();
     });
 
     await test.step('Close modal using keyboard', async () => {
       await page.keyboard.press('Enter');
-      await expect(modal(page)).toBeHidden();
+      await modal(page).waitFor({ state: 'hidden' });
       await expect(trigger(page)).toBeFocused();
     });
 
     await test.step('Reopen and close modal with Escape key', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(modal(page)).toBeVisible();
       await page.keyboard.press('Escape');
+      await modal(page).waitFor({ state: 'hidden' });
       await expect(modal(page)).toBeHidden();
       await expect(trigger(page)).toBeFocused();
     });
 
     await test.step('Verify keyboard navigation on 1st page by TAB after modal just opened', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(nextButton(page, 'Close')).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(firstStep).toBeFocused();
@@ -279,20 +284,21 @@ test.describe('Custom step example', () => {
     await test.step('Open modal using keyboard and verify focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(modal(page)).toBeVisible();
       await expect(nextButton(page, 'Close')).toBeFocused();
     });
 
     await test.step('Close modal with Escape key', async () => {
       await page.keyboard.press('Escape');
+      await modal(page).waitFor({ state: 'hidden' });
       await expect(modal(page)).toBeHidden();
       await expect(trigger(page)).toBeFocused();
     });
 
     await test.step('Verify keyboard navigation on 1st page with inputs by TAB after modal just opened', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(nextButton(page, 'Close')).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(firstStep).toBeFocused();
@@ -398,7 +404,7 @@ test.describe('Custom stepper example', () => {
 
     await test.step('Open modal using mouse', async () => {
       await trigger(page).click();
-      await page.waitForTimeout(50);
+      await modal(page).waitFor({ state: 'visible' });
       await expect(modal(page)).toBeVisible();
     });
 
@@ -464,7 +470,7 @@ test.describe('Custom stepper example', () => {
     await test.step('Open modal using keyboard and verify focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(150);
+      await modal(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -516,8 +522,7 @@ test.describe('Steps and buttons states', () => {
 
     await test.step('Hover active', async () => {
       await trigger(page).click();
-      await page.waitForTimeout(50);
-      await expect(modal(page)).toBeVisible();
+      await modal(page).waitFor({ state: 'visible' });
       await checkedStep.hover();
       await expect(page).toHaveScreenshot();
     });
