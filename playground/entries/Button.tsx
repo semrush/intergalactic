@@ -61,7 +61,7 @@ const entry: PlaygroundEntry<ButtonJSXProps> = {
     },
     use: {
       type: 'select',
-      value: 'primary',
+      value: 'secondary',
       displayName: 'Use',
       options: ({ component }) => {
         switch (component) {
@@ -76,7 +76,7 @@ const entry: PlaygroundEntry<ButtonJSXProps> = {
     },
     theme: {
       type: 'select',
-      value: 'info',
+      value: 'muted',
       displayName: 'Theme',
       options: ({ use }) => {
         switch (use) {
