@@ -107,14 +107,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-highlight-secondary",
-    "type": "color",
-    "rawValue": "{violet.dusty.800}",
-    "computedValue": "#1D113E",
-    "description": "Subtle background of the information you want to highlight.",
-    "components": []
-  },
-  {
     "name": "--intergalactic-bg-primary-advertising",
     "type": "color",
     "rawValue": "{violet.700}",

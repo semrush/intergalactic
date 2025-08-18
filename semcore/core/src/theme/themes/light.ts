@@ -98,7 +98,6 @@ export default {
   '--intergalactic-bg-primary-critical': '#ff4953',
   '--intergalactic-bg-primary-warning': '#ff642d',
   '--intergalactic-bg-primary-highlight': '#fce081',
-  '--intergalactic-bg-primary-highlight-secondary': '#1D113E',
   '--intergalactic-bg-primary-advertising': '#421983',
   '--intergalactic-bg-primary-muted': '#6c6e79',
   '--intergalactic-bg-primary-invert': '#191b23',

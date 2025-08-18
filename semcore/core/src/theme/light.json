@@ -448,11 +448,6 @@
           "type": "color",
           "description": "Accent background of the information you want to highlight."
         },
-        "highlight-secondary": {
-          "value": "{violet.dusty.800}",
-          "type": "color",
-          "description": "Subtle background of the information you want to highlight."
-        },
         "advertising": {
           "value": "{violet.700}",
           "type": "color",
