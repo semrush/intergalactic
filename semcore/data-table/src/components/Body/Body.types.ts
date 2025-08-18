@@ -4,7 +4,7 @@ import type * as React from 'react';
 import type { CellPropsInner, Theme } from './Cell.types';
 import type { DTRow } from './Row.types';
 import type { ACCORDION } from '../DataTable/DataTable';
-import type { DataRowItem, DTUse, VirtualScroll, DataTableProps } from '../DataTable/DataTable.types';
+import type { DataRowItem, DTUse, VirtualScroll, DataTableProps, DataTableData } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 export type CellRenderProps<Data extends DataRowItem, UniqKeyType> = {
@@ -21,9 +21,9 @@ export type CellRenderProps<Data extends DataRowItem, UniqKeyType> = {
   rawData: Data;
 };
 
-export type DataTableBodyProps<Data extends DataRowItem, UniqKeyType> = {
+export type DataTableBodyProps<Data extends DataTableData, UniqKeyType> = {
   renderCell?: (
-    props: CellRenderProps<Data, UniqKeyType>,
+    props: CellRenderProps<Data[number], UniqKeyType>,
   ) => React.ReactNode | (Record<string, any> & { theme?: Theme });
 
   rowProps?: (
@@ -32,7 +32,7 @@ export type DataTableBodyProps<Data extends DataRowItem, UniqKeyType> = {
   ) => (Record<string, any> & { theme?: Theme }) | undefined;
 };
 
-export type BodyPropsInner<Data extends DataRowItem, UniqKeyType> = DataTableBodyProps<Data, UniqKeyType> & {
+export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableBodyProps<Data, UniqKeyType> & {
   rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   flatRows: DTRow<UniqKeyType>[];
   columns: DTColumn[];
@@ -55,7 +55,7 @@ export type BodyPropsInner<Data extends DataRowItem, UniqKeyType> = DataTableBod
   hasGroups: boolean;
   uid: string;
   rowProps?: (row: DTRow<UniqKeyType>, rowIndex: number) => Record<string, any> | undefined;
-  renderCell?: (props: CellRenderProps<Data, UniqKeyType>) => React.ReactNode | Record<string, any>;
+  renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
   selectedRows?: UniqKeyType[];
@@ -71,7 +71,7 @@ export type BodyPropsInner<Data extends DataRowItem, UniqKeyType> = DataTableBod
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration?: DataTableProps<any, any, any>['accordionDuration'];
-  onCellClick: CellPropsInner<UniqKeyType>['onClick'];
+  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   shadowVertical?: '' | 'end' | 'start' | 'median';
@@ -79,7 +79,7 @@ export type BodyPropsInner<Data extends DataRowItem, UniqKeyType> = DataTableBod
 };
 
 export type DataTableBodyType = (<
-  Data extends DataRowItem,
+  Data extends DataTableData,
   UniqKeyType,
   Tag extends Intergalactic.Tag = 'div',
 >(

@@ -51,7 +51,7 @@ type State<
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
-  shadowVertical: BodyPropsInner<Data[number], UniqKeyType>['shadowVertical'];
+  shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
 };
 
 class DataTableRoot<
@@ -297,7 +297,7 @@ class DataTableRoot<
     };
   }
 
-  getBodyProps(): BodyPropsInner<Data[number], UniqKeyType> {
+  getBodyProps(): BodyPropsInner<Data, UniqKeyType> {
     const {
       use,
       compact,
@@ -667,7 +667,7 @@ class DataTableRoot<
 
     const roundedScroll = Math.round(scrollLeft);
     const roundedMaxScroll = Math.round(maxScrollRight);
-    let shadow: BodyPropsInner<Data[number], UniqKeyType>['shadowVertical'] = '';
+    let shadow: BodyPropsInner<Data, UniqKeyType>['shadowVertical'] = '';
     // not scroll
     if (roundedMaxScroll <= 0) {
       // start scroll

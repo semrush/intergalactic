@@ -15,7 +15,7 @@ import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DTValue } from '../DataTable/DataTable.types';
+import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -24,7 +24,7 @@ type State<UniqKeyType> = {
   expandedForAnimation: Set<UniqKeyType>;
 };
 
-class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
