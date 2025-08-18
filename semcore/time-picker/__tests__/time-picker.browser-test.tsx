@@ -12,7 +12,7 @@ test.describe('Visual ', () => {
   ];
 
   variablesStatesAndSizes.forEach((item) => {
-    test(`Verify TimePicker is12Hour=${item.is12Hour} state= ${item.state} size= ${item.size}`, async ({ page }) => {
+    test(`Verify TimePicker with is12Hour=${item.is12Hour} state= ${item.state} size= ${item.size}`, async ({ page }) => {
       const standPath = 'stories/components/time-picker/tests/examples/different_cases.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -73,7 +73,7 @@ test.describe('Visual ', () => {
     { disabled: undefined, readOnly: true, state: 'invalid', size: 'l', is12Hour: false },
   ];
   variablesDisabledStatesSizes.forEach((item) => {
-    test(`Verify disabled TimePicker state= ${item.state} size= ${item.size} is12Hour=${item.is12Hour}`, async ({ page }) => {
+    test(`Verify disabled TimePicker with state= ${item.state} size= ${item.size} is12Hour=${item.is12Hour}`, async ({ page }) => {
       const standPath = 'stories/components/time-picker/tests/examples/different_cases.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -98,7 +98,7 @@ test.describe('Visual ', () => {
     });
   });
 
-  test('Verify Hours and Minutes listboxed with and without step ', async ({ page }) => {
+  test('Verify hours and M]minutes listboxes with and without step ', async ({ page }) => {
     const standPath = 'stories/components/time-picker/tests/examples/different_cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -107,7 +107,7 @@ test.describe('Visual ', () => {
     const timeBoxes = page.getByRole('combobox');
     const option = page.getByRole('option');
 
-    await test.step('Verify hours and nimutes without step', async () => {
+    await test.step('Verify hours and minutes without step', async () => {
       await timeBoxes.nth(0).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
@@ -123,7 +123,7 @@ test.describe('Visual ', () => {
       await option.first().waitFor({ state: 'hidden' });
     });
 
-    await test.step('Verify hours and nimutes with step', async () => {
+    await test.step('Verify hours and minutes with step', async () => {
       await timeBoxes.nth(4).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
@@ -142,7 +142,7 @@ test.describe('Visual ', () => {
 });
 
 test.describe('Functional', () => {
-  test('Verify expanded with format keyboard navigation', async ({ page }) => {
+  test('Verify expanded Time Picker with format keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -153,6 +153,7 @@ test.describe('Functional', () => {
     const format = page.getByRole('button');
     const option = page.getByRole('option');
     const separator = page.locator('[data-ui-name="TimePicker.Separator"]');
+
     await test.step('Verify attributes in empty state', async () => {
       const count = await inputs.count();
       for (let i = 0; i < count; i++) {
@@ -167,7 +168,7 @@ test.describe('Functional', () => {
       await expect(separator).toHaveAttribute('aria-hidden', 'true');
     });
 
-    await test.step('Verify focus on the input with Hours and options expanded by Tap', async () => {
+    await test.step('Verify focus on the input with Hours and options expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inputs.nth(0)).toBeFocused();
       await option.first().waitFor({ state: 'visible' });
@@ -175,7 +176,7 @@ test.describe('Functional', () => {
       await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
     });
 
-    await test.step('Verify Arrows switch between options and select the option', async () => {
+    await test.step('Verify Arrows switch between options and it is possible select the option', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await option.first().waitFor({ state: 'hidden' });
@@ -197,7 +198,7 @@ test.describe('Functional', () => {
       await expect(inputs.nth(0)).toHaveValue('12');
     });
 
-    await test.step('Verify Focus on the input with Minutes and options expanded by Tap', async () => {
+    await test.step('Verify Focus on the input with Minutes and options expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inputs.nth(1)).toBeFocused();
       await option.first().waitFor({ state: 'visible' });
@@ -248,17 +249,15 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify expanded with format mouse navigation', async ({ page }) => {
+  test('Verify Time Picker expanded with format mouse interactions', async ({ page }) => {
     const standPath = 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const timePicker = page.getByRole('group');
     const inputs = page.getByRole('combobox');
     const format = page.getByRole('button');
     const option = page.getByRole('option');
-    const separator = page.locator('[data-ui-name="TimePicker.Separator"]');
 
     await test.step('Verify Hours expanded by Click on the input', async () => {
       await inputs.nth(0).click();
@@ -289,13 +288,13 @@ test.describe('Functional', () => {
       await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
     });
 
-    await test.step('Verify Arrows switch between options and it is possible to select the option', async () => {
+    await test.step('Verify clicking on the options selects it', async () => {
       await option.nth(1).click();
       await option.first().waitFor({ state: 'hidden' });
       await expect(inputs.nth(1)).toHaveValue('01');
     });
 
-    await test.step('Verify Format can be changed by keyboard', async () => {
+    await test.step('Verify format can be changed by clcik on it', async () => {
       await inputs.nth(1).click();
       await option.first().waitFor({ state: 'visible' });
       await format.click();
@@ -306,7 +305,7 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify base with format keyboard navigation', async ({ page }) => {
+  test('Verify Time Picker base with format keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/time-picker/tests/examples/different_cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', { is12Hour: true });
     await page.setContent(htmlContent);
@@ -315,21 +314,8 @@ test.describe('Functional', () => {
     const inputs = box.getByRole('combobox');
     const format = box.getByRole('button');
     const separator = box.locator('[data-ui-name="TimePicker.Separator"]');
-    await test.step('Verify attributes in empty state', async () => {
-      const count = await inputs.count();
-      for (let i = 0; i < count; i++) {
-        await expect(inputs.nth(i)).toHaveAttribute('aria-invalid', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('placeholder', '00');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-haspopup', 'listbox');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-expanded', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-autocomplete', 'list');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-disabled', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('inputmode', 'numeric');
-      }
-      await expect(separator).toHaveAttribute('aria-hidden', 'true');
-    });
 
-    await test.step('Verify Focus on the input with Hours expanded by Tap', async () => {
+    await test.step('Verify Focus on the input and list with Hours expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -362,14 +348,14 @@ test.describe('Functional', () => {
       await expect(inputs.nth(0)).toHaveValue('12');
     });
 
-    await test.step('Verify Focus on the input with Minutes and list options expanded by Tap', async () => {
+    await test.step('Verify Focus on the input with Minutes and list options expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inputs.nth(1)).toBeFocused();
       await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
       await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
     });
 
-    await test.step('Verify Arrows switch between options and select the option', async () => {
+    await test.step('Verify Arrows switch between options and it is possible select the option', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await page.keyboard.press('Enter');
@@ -404,30 +390,15 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify base without format keyboard navigation', async ({ page }) => {
+  test('Verify Time Picker base without format keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/time-picker/tests/examples/different_cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', { is12Hour: false });
     await page.setContent(htmlContent);
 
     const box = page.locator('[data-testid="regular"]');
     const inputs = box.getByRole('combobox');
-    const format = box.getByRole('button');
-    const separator = box.locator('[data-ui-name="TimePicker.Separator"]');
-    await test.step('Verify attributes in empty state', async () => {
-      const count = await inputs.count();
-      for (let i = 0; i < count; i++) {
-        await expect(inputs.nth(i)).toHaveAttribute('aria-invalid', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('placeholder', '00');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-haspopup', 'listbox');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-expanded', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-autocomplete', 'list');
-        await expect(inputs.nth(i)).toHaveAttribute('aria-disabled', 'false');
-        await expect(inputs.nth(i)).toHaveAttribute('inputmode', 'numeric');
-      }
-      await expect(separator).toHaveAttribute('aria-hidden', 'true');
-    });
 
-    await test.step('Verify Focus on the input with Hours and options list expanded by Tap', async () => {
+    await test.step('Verify Focus on the input with Hours and options list expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -460,7 +431,7 @@ test.describe('Functional', () => {
       await expect(inputs.nth(0)).toHaveValue('23');
     });
 
-    await test.step('Verify Focus on the input with Minutes and options list expanded by Tap', async () => {
+    await test.step('Verify Focus on the input with Minutes and options list expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inputs.nth(1)).toBeFocused();
       await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
