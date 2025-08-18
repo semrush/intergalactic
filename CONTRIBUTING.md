@@ -55,7 +55,7 @@ We rely on [eslint](https://eslint.org/) for formatting and linting. It is integ
 
 ## Website
 
-To preview the website locally, run `pnpm website`. The site will be accessible at `http://localhost:3000`. Keep in mind that you may need to reload the page to see any changes made to the documentation.
+To preview the website locally, run `pnpm website`. The site will be accessible at `http://localhost:5173/intergalactic/`. Keep in mind that you may need to reload the page to see any changes made to the documentation.
 
 ## Screen reader tests
 
@@ -71,10 +71,6 @@ Ensuring the accessibility of our components is a priority. We conduct automated
 
 For rapid rebuilding of the playground and website, we use `esbuild` to efficiently transform components on-the-fly. However, the build process for `icon` and `illustration` components is time-consuming and cannot be performed on-the-fly. Therefore, before running the playground or website, it's essential to pre-build icons and illustrations. You can accomplish this using the command `pnpm build` (or `pnpm build:icons` and `pnpm build:illustration`).
 
-### Unstable screenshot service
-
-To facilitate screenshot tests for components, we use our own screenshot service in the cloud. Occasionally, this service might yield slight pixel variations for the same code submitted to it. In such cases, you may need to restart CI/CD workflows several times until the tests pass. We acknowledge this issue and intend to address it in the future.
-
 ### Text translation
 
 Certain components have text translations in multiple languages. When adding or modifying text, focus on English only. Following the pull request review, core maintainers will handle translations for other languages using [Crowdin](https://crowdin.com).
@@ -85,17 +81,11 @@ Our documentation website's foundation has undergone several iterations and may 
 
 ### Publishing process
 
-The main way to deliver components is `intergalactic` npm package.
-
-Also each component is published as a distinct npm package, while a special `@semcore/ui` package re-exports them collectively. The complex publishing process is fully automated through our CI/CD pipeline.
+Each component is published as a distinct npm package with `@semcore` scope, while a special `@semcore/ui` package re-exports them collectively. The complex publishing process is fully automated through our CI/CD pipeline.
 
 ### Default theme
 
-We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/utils/src/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
-
-### Performance considerations
-
-Current components have performance issues, primarily tied to a 5000-character regular expression in `semcore/utils/src/propsForElement.ts` and the declaration of class-based components.
+We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/core/src/theme/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
 
 ### Implicit code transformations
 

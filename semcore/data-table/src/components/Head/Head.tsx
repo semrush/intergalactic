@@ -60,6 +60,7 @@ class HeadRoot<
       getFixedStyle,
       onCellClick,
       shadowVertical,
+      scrollDirection,
     } = this.asProps;
     const column = columns[index];
 
@@ -70,7 +71,7 @@ class HeadRoot<
     const [name, value] = getFixedStyle(column);
     const style: any = {};
 
-    if (top) {
+    if (top && scrollDirection !== 'horizontal') {
       style.top = `${top}px`;
     }
 
@@ -97,6 +98,7 @@ class HeadRoot<
       h,
       'onClick': onCellClick,
       'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
+      scrollDirection,
     };
   }
 

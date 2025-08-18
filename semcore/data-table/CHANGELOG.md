@@ -24,6 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
 - Hover styles aren't applied to themed cells.
 - Types for `CellRenderProps` - added ability to compare props.columnName with `ACCORDION` symbol.
+- Sticky header with `width` property doesn't work.
 
 ### Changed
 
