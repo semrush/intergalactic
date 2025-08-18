@@ -81,6 +81,7 @@ function getJSX(props: ChartLegendJSXProps) {
   }, [additionLabel, count, withIcon]);
 
   return (
+    // @ts-ignore withTrend will have true in runtime. TS is slightly weirdo about it, idk.
     <ChartLegend
       direction={direction}
       shape={shape}
