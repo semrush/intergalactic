@@ -1,5 +1,9 @@
 SFullscreenOverlay {
-  padding: 0;
+  > div {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 SFullscreenModal {

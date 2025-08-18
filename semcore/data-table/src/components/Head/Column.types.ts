@@ -98,4 +98,5 @@ export type ColumnPropsInner<
   sticky: boolean;
   onClick: CellPropsInner<UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  scrollDirection?: 'horizontal' | 'vertical' | 'both';
 };

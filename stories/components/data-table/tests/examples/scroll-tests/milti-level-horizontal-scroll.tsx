@@ -25,7 +25,7 @@ const Demo = () => {
   );
 };
 
-const columns: DataTableProps<typeof data>['columns'] = [
+const columns: DataTableProps<typeof data, any, any>['columns'] = [
   {
     name: '1',
     children: 'Group1',

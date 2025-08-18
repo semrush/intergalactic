@@ -29,7 +29,6 @@
   "include": ["semcore", "tools", "stories", "playground"],
   "exclude": [
     "node_modules",
-    "tools/icon-transform-svg/__tests__",
-    "stories/components/data-table/tests"
+    "tools/icon-transform-svg/__tests__"
   ]
 }
