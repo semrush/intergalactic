@@ -39,12 +39,12 @@ figma.connect(
       // labelAddon: figma.textContent('↳ textAddon'),
 
       // addonLeft: figma.boolean('← addon', {
-      //   true: figma.instance('{ ↳ Addon L }'),
+      //   true: figma.instance('← - - - addon'),
       //   false: undefined,
       // }),
 
       // addonRight: figma.boolean('addon →', {
-      //   true: figma.instance('{ ↳ Addon R }'),
+      //   true: figma.instance('addon type - - →'),
       //   false: undefined,
       // }),
 

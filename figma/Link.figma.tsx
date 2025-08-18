@@ -15,11 +15,11 @@ figma.connect(
         disabled: true,
       }),
       addonLeft: figma.boolean('← addon', {
-        true: figma.instance('{ ↳ Addon L }'),
+        true: figma.instance('← - - - addon type'),
         false: undefined,
       }),
       addonRight: figma.boolean('addon →', {
-        true: figma.instance('{ ↳ Addon R }'),
+        true: figma.instance('addon type - - →'),
         false: undefined,
       }),
     },
