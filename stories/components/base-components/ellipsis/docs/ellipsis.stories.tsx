@@ -1,7 +1,7 @@
 import type Breadcrumbs from '@semcore/breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import TrimMiddleExample from './examples/trim_middle';
+import MultipleUseExample from './examples/multiple_use';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Base-Components/Ellipsis/Docs',
@@ -10,6 +10,6 @@ const meta: Meta<typeof Breadcrumbs> = {
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
-export const TrimMiddle1: Story = {
-  render: TrimMiddleExample,
+export const MultipleUse: Story = {
+  render: MultipleUseExample,
 };

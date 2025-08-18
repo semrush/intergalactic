@@ -46,6 +46,10 @@ It's possible to specify after which line apply truncating.
 
 ## Multiple use
 
+::: tip
+Find the [new version of this example in Utils/Ellipsis](../../utils/ellipsis/ellipsis-code#multiple-use).
+:::
+
 In case of multiple use of a component for optimization you can use one observer for all components.
 
 ::: sandbox
