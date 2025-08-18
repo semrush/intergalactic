@@ -131,7 +131,7 @@ test.describe('Visual', () => {
 });
 
 test.describe('Functional', () => {
-  test('Verify keyboard interactions with Carousel with  indicators and zoom', async ({ page }) => {
+  test('Verify keyboard interactions with indicators and zoom', async ({ page }) => {
     const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -196,7 +196,7 @@ test.describe('Functional', () => {
       await expect(page.locator('[data-ui-name="Carousel.Next"]')).toHaveAttribute('aria-controls');
     });
 
-    await test.step('Verify Activating Next switch between tabs', async () => {
+    await test.step('Verify Next switches between tabs', async () => {
       await page.keyboard.press('Space');
       await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
       await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
@@ -235,7 +235,7 @@ test.describe('Functional', () => {
       await expect(page.locator('[data-ui-name="Modal.Close"]')).toBeFocused();
     });
 
-    await test.step('Verify Zoom mode closed by Espace', async () => {
+    await test.step('Verify Zoom mode closed by Escape', async () => {
       await page.keyboard.press('Escape');
 
       await expect(modal).not.toBeVisible();
@@ -256,7 +256,7 @@ test.describe('Functional', () => {
       await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify Prev Button in zoom mode focused  by Tab and switch tabs by Enter', async () => {
+    await test.step('Verify Prev Button in zoom mode focused by Tab and switch tabs by Enter', async () => {
       await page.keyboard.press('Tab');
 
       await expect(prev.nth(1)).toBeFocused();
@@ -289,7 +289,7 @@ test.describe('Functional', () => {
       await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify Next Button in zoom mode focused  by Tab and switch tabs by Enter', async () => {
+    await test.step('Verify Next Button in zoom mode focused by Tab and switch tabs by Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
@@ -342,7 +342,6 @@ test.describe('Functional', () => {
     const carousel = page.getByRole('region');
     const prev = page.getByLabel('Previous slide');
     const next = page.getByLabel('Next slide');
-    const indicators = page.getByRole('tablist');
     const tabpanel = page.getByRole('tabpanel');
     const tab = page.getByRole('tab');
     const modal = page.getByRole('dialog');
@@ -359,7 +358,7 @@ test.describe('Functional', () => {
       await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify next  button activating switch tabs', async () => {
+    await test.step('Verify next button activating switch tabs', async () => {
       await next.click();
 
       await expect(carousel).toHaveAttribute('aria-roledescription', 'carousel');
@@ -400,12 +399,12 @@ test.describe('Functional', () => {
       await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify Zoom mode closed by click anywhere om the screen', async () => {
+    await test.step('Verify Zoom mode closed by click anywhere on the screen', async () => {
       await page.mouse.click(0, 0);
       await expect(modal).not.toBeVisible();
     });
 
-    await test.step('Verify tabs swotch by click on Prev button im zoom mode', async () => {
+    await test.step('Verify tabs switch by click on Prev button im zoom mode', async () => {
       await tabpanel.nth(2).click();
       await modal.waitFor({ state: 'visible' });
 
@@ -434,13 +433,13 @@ test.describe('Functional', () => {
       await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify tabpanel closed by click on Close', async () => {
+    await test.step('Verify Zoom mode closed by click on Close', async () => {
       await page.locator('[data-ui-name="Modal.Close"]').click();
 
       await expect(modal).not.toBeVisible();
     });
 
-    await test.step('Verify tabpanel closed by click on tabpanel', async () => {
+    await test.step('Verify Zoom mode closed by click on tabpanel', async () => {
       await tabpanel.nth(2).click();
       await modal.waitFor({ state: 'visible' });
 
@@ -480,7 +479,7 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify Carousel with indicators only interactions', async ({ page }) => {
+  test('Verify interactions when Carousel with indicators only', async ({ page }) => {
     const standPath = 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
