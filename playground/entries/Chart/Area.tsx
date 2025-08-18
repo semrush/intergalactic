@@ -43,6 +43,7 @@ function getJSX(props: AreaChartJSXProps) {
       plotHeight={200}
       groupKey='x'
       data={data}
+      aria-label='Area chart'
       {...props.commonChartProps}
       {...restLinearChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}

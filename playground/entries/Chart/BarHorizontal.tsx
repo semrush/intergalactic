@@ -27,6 +27,7 @@ function getJSX(props: BarChartJSXProps) {
       groupKey='x'
       data={data}
       invertAxis
+      aria-label='Horizontal bar chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}

@@ -39,6 +39,7 @@ function getJSX(props: VennChartJSXProps) {
       plotWidth={200}
       plotHeight={200}
       data={data}
+      aria-label='Venn chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}

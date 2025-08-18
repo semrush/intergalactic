@@ -43,6 +43,7 @@ function getJSX(props: LineChartJSXProps) {
       plotHeight={200}
       groupKey='x'
       data={data}
+      aria-label='Line chart'
       {...props.commonChartProps}
       {...restLinearChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}

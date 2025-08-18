@@ -38,6 +38,7 @@ function getJSX(props: DonutChartJSXProps) {
       plotWidth={300}
       plotHeight={200}
       data={data}
+      aria-label='Donut chart'
       {...props.donutProps}
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps })}

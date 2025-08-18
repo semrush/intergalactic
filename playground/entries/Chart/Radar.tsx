@@ -31,6 +31,7 @@ function getJSX(props: RadarChartJSXProps) {
       plotHeight={300}
       groupKey='categories'
       data={data}
+      aria-label='Radar chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
@@ -62,7 +63,7 @@ const entry: PlaygroundEntry<RadarChartJSXProps> = {
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
-  displayName: 'Chart.Radar',
+  JSXDisplayName: 'Chart.Radar',
 };
 
 export default entry;

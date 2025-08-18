@@ -1,7 +1,9 @@
+import type { Intergalactic } from '@semcore/core';
 // TODO: Why @semcore/d3-chart doesn't import those types?
 // @ts-ignore
 import type { LegendFlexProps, LegendItem } from '@semcore/d3-chart';
 import { ChartLegend } from '@semcore/d3-chart';
+import type { IconProps } from '@semcore/icon';
 import DesktopIcon from '@semcore/icon/Desktop/m';
 import React from 'react';
 
@@ -70,7 +72,7 @@ function getJSX(props: ChartLegendJSXProps) {
         }
 
         if (withIcon) {
-          line.icon = <DesktopIcon />;
+          line.icon = <DesktopIcon /> as unknown as Intergalactic.Component<'svg', IconProps>;
         } else {
           line.icon = undefined;
         }
@@ -91,6 +93,7 @@ function getJSX(props: ChartLegendJSXProps) {
       trendIsVisible={trendIsVisible}
       onChangeVisibleItem={onChangeDisplayLine}
       onTrendIsVisibleChange={setTrendIsVisible}
+      aria-label='Chart legend'
     />
   );
 }

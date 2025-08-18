@@ -31,6 +31,7 @@ function getJSX(props: ScatterPlotChartJSXProps) {
       xTicksCount={10}
       yTicksCount={6}
       data={data}
+      aria-label='Scatterplot chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}

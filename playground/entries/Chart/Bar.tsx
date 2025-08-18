@@ -42,6 +42,7 @@ function getJSX(props: BarChartJSXProps) {
       plotHeight={200}
       groupKey='x'
       data={data}
+      aria-label='Bar chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}

@@ -28,6 +28,7 @@ function getJSX(props: BarChartJSXProps) {
       groupKey='x'
       data={data}
       type='stack'
+      aria-label='Stacked bar chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}

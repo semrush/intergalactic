@@ -29,6 +29,7 @@ function getJSX(props: BarChartJSXProps) {
       data={data}
       type='stack'
       invertAxis
+      aria-label='Horizontal stacked bar chart'
       {...props.commonChartProps}
       {...(props.legendProps && { legendProps: props.legendProps })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
