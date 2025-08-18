@@ -100,9 +100,9 @@ export type DataTableProps<
 
     headerProps?: DataTableHeadProps;
 
-    rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
+    rowProps?: DataTableBodyProps<Data[number], UniqKeyType>['rowProps'];
 
-    renderCell?: DataTableBodyProps<UniqKeyType>['renderCell'];
+    renderCell?: DataTableBodyProps<Data[number], UniqKeyType>['renderCell'];
 
     /**
    * Name of a unique key for each row data item

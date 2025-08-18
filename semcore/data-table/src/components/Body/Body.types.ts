@@ -7,7 +7,7 @@ import type { ACCORDION } from '../DataTable/DataTable';
 import type { DataRowItem, DTUse, VirtualScroll, DataTableProps } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
-export type CellRenderProps<UniqKeyType> = {
+export type CellRenderProps<Data extends DataRowItem, UniqKeyType> = {
   dataKey: string;
   row: DTRow<UniqKeyType>;
   column: DTColumn;
@@ -18,12 +18,12 @@ export type CellRenderProps<UniqKeyType> = {
   defaultRender: () => React.ReactNode;
   isMergedRows: boolean;
   isMergedColumns: boolean;
-  rawData: DataRowItem;
+  rawData: Data;
 };
 
-export type DataTableBodyProps<UniqKeyType> = {
+export type DataTableBodyProps<Data extends DataRowItem, UniqKeyType> = {
   renderCell?: (
-    props: CellRenderProps<UniqKeyType>,
+    props: CellRenderProps<Data, UniqKeyType>,
   ) => React.ReactNode | (Record<string, any> & { theme?: Theme });
 
   rowProps?: (
@@ -32,7 +32,7 @@ export type DataTableBodyProps<UniqKeyType> = {
   ) => (Record<string, any> & { theme?: Theme }) | undefined;
 };
 
-export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
+export type BodyPropsInner<Data extends DataRowItem, UniqKeyType> = DataTableBodyProps<Data, UniqKeyType> & {
   rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   flatRows: DTRow<UniqKeyType>[];
   columns: DTColumn[];
@@ -55,7 +55,7 @@ export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
   hasGroups: boolean;
   uid: string;
   rowProps?: (row: DTRow<UniqKeyType>, rowIndex: number) => Record<string, any> | undefined;
-  renderCell?: (props: CellRenderProps<UniqKeyType>) => React.ReactNode | Record<string, any>;
+  renderCell?: (props: CellRenderProps<Data, UniqKeyType>) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colIndex: number) => void;
   stickyHeader?: boolean;
   selectedRows?: UniqKeyType[];
@@ -79,9 +79,10 @@ export type BodyPropsInner<UniqKeyType> = DataTableBodyProps<UniqKeyType> & {
 };
 
 export type DataTableBodyType = (<
+  Data extends DataRowItem,
   UniqKeyType,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableBodyProps<UniqKeyType>>
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableBodyProps<Data, UniqKeyType>>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableBodyProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableBodyProps<any, any>>;
