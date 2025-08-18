@@ -46,7 +46,10 @@ function getJSX(props: LineChartJSXProps) {
       aria-label='Line chart'
       {...props.commonChartProps}
       {...restLinearChartProps}
-      {...(props.legendProps && { legendProps: props.legendProps })}
+      {...(props.legendProps && {
+        legendProps: props.legendProps,
+        showLegend: props.commonChartProps.showLegend as true,
+      })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
       {...(CurveMap[curve] && { curve: CurveMap[curve] })}
     />

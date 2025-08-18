@@ -1,6 +1,4 @@
 import type { Intergalactic } from '@semcore/core';
-// TODO: Why @semcore/d3-chart doesn't import those types?
-// @ts-ignore
 import type { LegendFlexProps, LegendItem } from '@semcore/d3-chart';
 import { ChartLegend } from '@semcore/d3-chart';
 import type { IconProps } from '@semcore/icon';
@@ -84,8 +82,6 @@ function getJSX(props: ChartLegendJSXProps) {
 
   return (
     <ChartLegend
-      withTrend={withTrend}
-      {...(withTrend && { trendLabel: 'Trend' })}
       direction={direction}
       shape={shape}
       size={size}
@@ -94,6 +90,7 @@ function getJSX(props: ChartLegendJSXProps) {
       onChangeVisibleItem={onChangeDisplayLine}
       onTrendIsVisibleChange={setTrendIsVisible}
       aria-label='Chart legend'
+      {...(withTrend && { trendLabel: 'Trend', withTrend })}
     />
   );
 }

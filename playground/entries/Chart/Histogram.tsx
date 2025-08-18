@@ -28,7 +28,10 @@ function getJSX(props: HistogramChartJSXProps) {
       data={data}
       aria-label='Histogram chart'
       {...props.commonChartProps}
-      {...(props.legendProps && { legendProps: props.legendProps })}
+      {...(props.legendProps && {
+        legendProps: props.legendProps,
+        showLegend: props.commonChartProps.showLegend as true,
+      })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
     />
   );

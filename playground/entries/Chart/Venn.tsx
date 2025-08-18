@@ -41,7 +41,10 @@ function getJSX(props: VennChartJSXProps) {
       data={data}
       aria-label='Venn chart'
       {...props.commonChartProps}
-      {...(props.legendProps && { legendProps })}
+      {...(props.legendProps && {
+        legendProps: props.legendProps,
+        showLegend: props.commonChartProps.showLegend as true,
+      })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
     />
   );

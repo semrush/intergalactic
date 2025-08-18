@@ -41,7 +41,10 @@ function getJSX(props: DonutChartJSXProps) {
       aria-label='Donut chart'
       {...props.donutProps}
       {...props.commonChartProps}
-      {...(props.legendProps && { legendProps })}
+      {...(props.legendProps && {
+        legendProps,
+        showLegend: props.commonChartProps.showLegend as true,
+      })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
     />
   );
