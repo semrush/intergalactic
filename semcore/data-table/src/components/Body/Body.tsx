@@ -194,6 +194,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   getCellProps(props: DataTableCellProps<UniqKeyType>) {
+    // console.log('get cell props', this.asProps.flatRows.length);
     const {
       use,
       renderCell,
@@ -354,6 +355,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rows,
       renderCellOverlay,
     } = this.asProps;
+
+    console.log('render body', [...this.asProps.flatRows]);
 
     let rowsToRender = rows;
     let startIndex = -1;
