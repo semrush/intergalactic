@@ -54,12 +54,23 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
+const theme = select({
+    key: 'theme',
+    defaultValue: 'accent',
+    label: 'Theme',
+    options: ['accent', 'neutral'].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
   return (
     <FeaturePopover
       visible={visible}
       placement={placement}
       onVisibleChange={(v) => onChange('visible', v)}
       disablePortal
+      theme={theme}
     >
       <FeaturePopover.Trigger>
         <Button>
@@ -67,7 +78,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
           {visible && <FeaturePopover.Spot />}
         </Button>
       </FeaturePopover.Trigger>
-      <FeaturePopover.Popper closeIcon={closeIcon} wMax={250} aria-label="New feature">
+      <FeaturePopover.Popper
+        closeIcon={closeIcon}
+        wMax={250}
+        aria-label="New feature"
+      >
         <Text size={200}>
           Use this popover to highlight new product features and guide users through them.
         </Text>
@@ -180,7 +195,7 @@ You can use `wMax` property to set the maximum width of the FeaturePopover's pop
 - The invert `primary` & `tertiary` muted buttons have M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
 - Illustration's margin-right is 16px (`--spacing-4x` token).
 
-## Displaying and hiding 
+## Displaying and hiding
 
 Component appears according to the timings you set through the `timeout` property.
 
