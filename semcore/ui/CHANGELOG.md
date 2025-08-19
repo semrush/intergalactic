@@ -266,7 +266,8 @@
 - The table with interactive elements inside the cell does not re-render on hover-actions.
 - Improved the data table performance: our tests on the basic tables with 50/100 rows and tooltips inside show 2-4 times faster speed [depends on browser].
 
-### Switch from custom keyboardFocus logic to :focus-visible for all component packages
+### Focus
+- Switch from custom keyboardFocus logic to :focus-visible for all component packages
 
 ### Tooltip
 - Changed Tooltip.Popper initialization process - the popper container is not added to the DOM before the tooltip is shown the first time.
