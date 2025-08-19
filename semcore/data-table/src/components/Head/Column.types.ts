@@ -96,6 +96,7 @@ export type ColumnPropsInner<
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
-  onClick: CellPropsInner<UniqKeyType>['onClick'];
-  shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  onClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
+  scrollDirection?: 'horizontal' | 'vertical' | 'both';
 };
