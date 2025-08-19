@@ -1657,13 +1657,13 @@ const iconsList = {
       name: 'Twitter',
       size: ['l', 'm'],
       group: 'Social',
-      tags: ['twitter', 'logo', 'лого', 'social', 'твиттер'],
+      tags: ['x', 'twitter', 'logo', 'лого', 'social', 'твиттер'],
     },
     {
       name: 'TwitterCarousel',
       size: ['l', 'm'],
       group: 'Social',
-      tags: ['twitter', 'logo', 'лого', 'social', 'твиттер', 'carousel', 'serp'],
+      tags: ['x', 'twitter', 'logo', 'лого', 'social', 'твиттер', 'carousel', 'serp'],
     },
     {
       name: 'Vk',
