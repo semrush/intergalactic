@@ -49,7 +49,7 @@ const entry: PlaygroundEntry<NoticeGlobalJSXProps> = {
       displayName: 'Closable',
     },
     message: {
-      type: 'text',
+      type: 'text-area',
       value: 'You can place your message here.',
       displayName: 'Text',
     },

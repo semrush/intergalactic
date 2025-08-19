@@ -28,7 +28,7 @@ const entry: PlaygroundEntry<CounterJSXProps> = {
       displayName: 'Theme',
     },
     children: {
-      type: 'text',
+      type: 'text-number',
       value: '42',
       displayName: 'Value',
     },

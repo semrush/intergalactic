@@ -80,12 +80,12 @@ const entry: PlaygroundEntry<NoticeJSXProps> = {
       displayName: 'Close button',
     },
     title: {
-      type: 'text',
+      type: 'text-area',
       value: 'Look at this notice!',
       displayName: 'Title',
     },
     message: {
-      type: 'text',
+      type: 'text-area',
       value: 'You can place your message here.',
       displayName: 'Text',
     },

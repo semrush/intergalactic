@@ -26,12 +26,12 @@
 
 .control-panel {
   display: grid;
-  grid-template-columns: 80px auto;
+  grid-template-columns: 96px auto;
   grid-auto-rows: min-content;
   grid-area: control-panel;
   justify-items: start;
-  align-items: center;
-  padding: var(--intergalactic-spacing-4x) var(--intergalactic-spacing-4x) var(--intergalactic-spacing-4x) var(--intergalactic-spacing-2x);
+  align-items: start;
+  padding: var(--intergalactic-spacing-4x);
   border-left: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
@@ -40,15 +40,20 @@
     font-size: var(--intergalactic-fs-200);
     line-height: var(--intergalactic-lh-200);
     word-break: break-word;
+    margin-top: var(--intergalactic-spacing-1x);
   }
 
   .control-panel {
-    padding: var(--intergalactic-spacing-3x) 0 0 var(--intergalactic-spacing-6x);
+    padding: 0 0 var(--intergalactic-spacing-3x) var(--intergalactic-spacing-6x);
     border: none;
   }
 
   .full-width-item {
     grid-column: 1 / -1;
+  }
+
+  [data-ui-name="Item.Collapse"] [data-ui-name="Box"] {
+    grid-template-columns: 72px auto;
   }
 }
 
@@ -126,7 +131,7 @@
 
 @media (min-width: 601px) {
   .playground {
-    grid-template-columns: 1fr minmax(auto, 260px);
+    grid-template-columns: 1fr minmax(auto, 280px);
     grid-template-areas:
       "canvas control-panel"
       "code control-panel";

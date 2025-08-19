@@ -52,7 +52,7 @@ const entry: PlaygroundEntry<DotJSXProps> = {
       displayName: 'Hidden',
     },
     value: {
-      type: 'text',
+      type: 'text-number',
       value: '',
       displayName: 'Value',
     },

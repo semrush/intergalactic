@@ -12,6 +12,7 @@ function TextNumberControl({ value, onChange, displayName }: ITextNumberControlP
   return (
     <InputNumber w='100%'>
       <InputNumber.Value aria-label={displayName} value={`${value}`} onChange={onChange} />
+      <InputNumber.Controls showControls />
     </InputNumber>
   );
 }

@@ -9,7 +9,7 @@ interface IBooleanControlProps extends BooleanControlType {
 }
 
 function BooleanControl({ value, onChange, displayName }: IBooleanControlProps) {
-  return <Checkbox aria-label={displayName} checked={value} onChange={onChange} />;
+  return <Checkbox mt={1} aria-label={displayName} checked={value} onChange={onChange} />;
 }
 
 export default BooleanControl;

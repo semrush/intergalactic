@@ -17,19 +17,19 @@ const entry: PlaygroundEntry<DividerJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
     use: {
-      type: 'inline-radio',
+      type: 'select',
       value: 'primary',
       options: ['primary', 'secondary'],
       displayName: 'Use',
     },
     theme: {
-      type: 'inline-radio',
+      type: 'select',
       value: 'default',
       options: ['default', 'invert'],
       displayName: 'Theme',
     },
     orientation: {
-      type: 'inline-radio',
+      type: 'select',
       value: 'horizontal',
       options: ['horizontal', 'vertical'],
       displayName: 'Orientation',

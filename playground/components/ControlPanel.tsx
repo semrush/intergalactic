@@ -57,8 +57,8 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange }: I
       <Accordion.Item value={0}>
         <Accordion.Item.Toggle className={styles['full-width-item']}>
           <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} />
-            <Text fontWeight={500}>{groupName}</Text>
+            <Accordion.Item.Chevron mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
+            <Text size={200} fontWeight={500}>{groupName}</Text>
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse w='100%' className={styles['full-width-item']} role='group' aria-label={groupName}>
