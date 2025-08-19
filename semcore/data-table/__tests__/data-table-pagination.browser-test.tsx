@@ -17,7 +17,7 @@ test.describe('Pagination', () => {
     expect(marginTop).toBe('16px');
 
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('gridcell', { name: 'ebay buy' })).toBeFocused();
+    await expect(page.getByRole('gridcell', { name: '1 ebay buy' })).toBeFocused();
     await page.keyboard.press('ArrowDown');
 
     await page.keyboard.press('Tab');
@@ -25,9 +25,11 @@ test.describe('Pagination', () => {
 
     await page.keyboard.press('Space');
     await page.keyboard.press('Space');
+    await page.keyboard.press('Space');
+    await page.keyboard.press('Space');
     await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Shift+Tab');
-    await expect(page.getByRole('gridcell', { name: 'ebay buy last' })).toBeFocused();
+    await expect(page.getByRole('gridcell', { name: '42 www.ebay.com' })).toBeFocused();
   });
 });

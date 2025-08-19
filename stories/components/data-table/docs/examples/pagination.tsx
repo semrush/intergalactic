@@ -5,7 +5,7 @@ import Select from '@semcore/select';
 import React from 'react';
 
 const Demo = () => {
-  const [limit, setLimit] = React.useState(3);
+  const [limit, setLimit] = React.useState(10);
   const [currentPage, setCurrentPage] = React.useState(0);
   const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
   const currencyFormat = React.useMemo(
@@ -16,8 +16,17 @@ const Demo = () => {
   const numLim = Number(limit);
   const tableData: typeof data = [];
 
+  let index = 0;
+
   for (let i = 0; i < 10; i++) {
-    tableData.push(...data);
+    tableData.push(...data.map((item) => {
+      index++;
+
+      return {
+        ...item,
+        keyword: `${index} ${item.keyword}`,
+      };
+    }));
   }
 
   return (
