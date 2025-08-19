@@ -63,6 +63,8 @@ class InputField<T extends string | string[]> extends Component<
 
   linesCountTimeout = 0;
 
+  observer: MutationObserver;
+
   state = {
     visibleErrorPopper: false,
     keyboardLineIndex: -1,
@@ -84,6 +86,15 @@ class InputField<T extends string | string[]> extends Component<
     this.handleSelectAll = this.handleSelectAll.bind(this);
 
     this.textarea = this.createContentEditableElement(props);
+
+    this.observer = new MutationObserver((mutationsList, observer) => {
+      for (const mutation of mutationsList) {
+        console.log(mutation.type);
+        if (mutation.type === 'characterData' || mutation.type === 'childList') {
+          this.props.onImmediatelyChange?.(this.getValues(), this.textarea.textContent ?? '');
+        }
+      }
+    });
   }
 
   uncontrolledProps() {
@@ -98,6 +109,16 @@ class InputField<T extends string | string[]> extends Component<
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
+
+    const config = {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    };
+
+    if (this.props.onImmediatelyChange) {
+      this.observer.observe(this.textarea, config);
+    }
   }
 
   componentDidUpdate(prevProps: InputFieldProps<T>, prevState: State): void {
@@ -124,7 +145,27 @@ class InputField<T extends string | string[]> extends Component<
       }
     }
 
-    if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
+    if (prevProps.showErrors !== showErrors || prevProps.errors !== errors) {
+      if (showErrors) {
+        const errorsMap = new Map<number, ErrorItem>();
+        errors.forEach((error: ErrorItem) => {
+          errorsMap.set(error.lineIndex, error);
+        });
+
+        this.textarea.childNodes.forEach((node, index) => {
+          if (node instanceof HTMLParagraphElement) {
+            const errorItem = errorsMap.get(index);
+            if (errorItem) {
+              node.setAttribute('aria-invalid', 'true');
+              node.dataset.errormessage = errorItem.errorMessage;
+            } else {
+              node.removeAttribute('aria-invalid');
+              node.dataset.errormessage = undefined;
+            }
+          }
+        });
+      }
+
       this.toggleAriaInvalid(showErrors, errors.length);
 
       if (showErrors === false) {
@@ -189,6 +230,8 @@ class InputField<T extends string | string[]> extends Component<
 
   componentWillUnmount() {
     this.removeEventListeners(this.textarea);
+
+    this.observer.disconnect();
   }
 
   get isDisabled(): boolean {
@@ -519,7 +562,7 @@ class InputField<T extends string | string[]> extends Component<
             ? rowNode
             : this.textarea;
 
-        if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
+        if (showErrors && this.popper?.current?.state.elements.reference !== trigger) {
           if (this.shouldChangePopperTrigger(trigger)) {
             this.setPopperTrigger?.(trigger);
           } else {

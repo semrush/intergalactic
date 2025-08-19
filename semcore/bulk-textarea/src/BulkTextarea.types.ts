@@ -31,6 +31,8 @@ export type BulkTextareaProps<T extends string | string[]> = {
 
   onErrorsChange?: InputFieldProps<T>['onErrorsChange'];
   onShowErrorsChange?: InputFieldProps<T>['onShowErrorsChange'];
+
+  onImmediatelyChange?: InputFieldProps<T>['onImmediatelyChange'];
 };
 
 type BulkTextareaComponent = (<T extends string | string[]>(

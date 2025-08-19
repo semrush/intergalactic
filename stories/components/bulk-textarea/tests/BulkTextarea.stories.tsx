@@ -1,6 +1,7 @@
 import BulkTextarea from '@semcore/bulk-textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import ControlledErrorsExample from './examples/controlled-errors';
 import NoCommonErrorBlurLineExample from './examples/no-common-error-blur-line';
 import SizesAndStatesExample from './examples/sizes-states';
 import EmptyLineInPastePropsExample from './examples/test-empty-value-in-paste';
@@ -16,6 +17,10 @@ const meta: Meta<typeof BulkTextarea> = {
 };
 
 export default meta;
+
+export const ControlledErrors: StoryObj<typeof BulkTextarea> = {
+  render: ControlledErrorsExample,
+};
 
 export const NoCommonErrorBlur: StoryObj<typeof BulkTextarea> = {
   render: NoCommonErrorBlurLineExample,
