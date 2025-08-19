@@ -105,4 +105,10 @@ export default defineConfig([
       'no-prototype-builtins': 'off',
     },
   },
+  {
+    files: ['tools/**/*', 'website/**/*', 'stories/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
 ]);
