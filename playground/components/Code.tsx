@@ -93,7 +93,7 @@ function Code({ sourceCode, link }: ICodeProps) {
         <Accordion.Item value={0}>
           <Accordion.Item.Toggle my={3} mx={4}>
             <Accordion.Item.ToggleButton>
-              <ExpandAlt mr={2} />
+              <ExpandAlt mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
               <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
