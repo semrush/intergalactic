@@ -11,6 +11,7 @@ export type CellRenderProps<UniqKeyType> = {
   dataKey: string;
   /** The complete row data object */
   row: DTRow<UniqKeyType>;
+  /** The column configuration object */
   column: DTColumn;
   /** Zero-based row index in the table */
   rowIndex: number;
@@ -26,6 +27,7 @@ export type CellRenderProps<UniqKeyType> = {
   isMergedRows: boolean;
   /** Indicates if this cell spans multiple columns */
   isMergedColumns: boolean;
+  /** The original unprocessed row data */
   rawData: DataRowItem;
 };
 
