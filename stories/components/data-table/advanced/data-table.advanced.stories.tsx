@@ -5,6 +5,7 @@ import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/a
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
+import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
@@ -71,4 +72,8 @@ export const FakeMultiLineHeader: Story = {
 
 export const RenderCellRawValue: Story = {
   render: RenderCellRawValueExample,
+};
+
+export const FixedColumnsWidthWithShadows: Story = {
+  render: FixedColumnsWidthWithShadowsExample,
 };

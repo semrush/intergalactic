@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Data` type to `cellRender` function.
 
+### Fixed
+
+- Shadows remain after resizing table width.
+
 ## [16.1.0] - 2025-08-08
 
 ### Added
