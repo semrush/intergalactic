@@ -73,7 +73,7 @@ const Demo = () => {
           return numberFormat.format(value);
         }}
       />
-      <Flex justifyContent='space-between'>
+      <Flex gap={4}>
         <Pagination
           mt={4}
           totalPages={Math.ceil(tableData.length / numLim)}
