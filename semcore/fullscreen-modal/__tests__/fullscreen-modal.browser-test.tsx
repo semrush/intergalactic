@@ -337,6 +337,9 @@ test.describe('Fullscreen modal', () => {
       await modal.waitFor();
       await expect(modal).toBeVisible();
       await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
+      await page
+        .getByText('Go To Tool Name Go To Tool Name').nth(1).waitFor({ state: 'visible' });
+
       await expect(page).toHaveScreenshot();
     });
 
