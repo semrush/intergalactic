@@ -50,7 +50,11 @@ SPill[selected] {
   border-color: var(--intergalactic-border-info-active, #006dca);
   z-index: 3;
 }
-SPill:focus-visible, SPill:hover, SPill:active {
+SPill:focus-visible, SPill[selected] {
+  z-index: 3;
+}
+
+SPill:hover, SPill:active {
   z-index: 2;
 }
 

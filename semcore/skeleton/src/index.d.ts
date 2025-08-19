@@ -20,9 +20,8 @@ export type SkeletonProps = BoxProps &
      * @default invert
      */
     theme?: 'dark' | 'invert';
-
+    /** Specifies the locale for i18n support */
     locale?: string;
-
     /**
      * Enable ResizeObserver for parent Element to recalculate skeleton size.
      * @default false
@@ -47,18 +46,22 @@ export type SkeletonTextProps = BoxProps & {
 };
 
 export type AreaChartSkeletonProps = SkeletonProps & {
+  /** Controls the area curve interpolation style for the skeleton pattern */
   type?: 'linear' | 'monotone';
 };
 
 export type BarChartSkeletonProps = SkeletonProps & {
+  /** Controls the orientation of the bar chart skeleton */
   layout?: 'horizontal' | 'vertical';
 };
 
 export type HistogramChartSkeletonProps = SkeletonProps & {
+  /** Controls the orientation of the histogram chart skeleton */
   layout?: 'horizontal' | 'vertical';
 };
 
 export type LineChartSkeletonProps = SkeletonProps & {
+  /** Controls the line interpolation style for the skeleton pattern */
   type?: 'linear' | 'monotone';
 };
 

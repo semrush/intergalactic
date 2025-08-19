@@ -34,6 +34,7 @@ export type DragAndDropProps = BoxProps & {
    * When provided, drag and drop listens to whole page keyboard events. Doesn't provide `onCustomFocusChange` callback.
    */
   customFocus?: number | string;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

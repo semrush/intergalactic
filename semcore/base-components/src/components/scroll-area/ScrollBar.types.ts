@@ -39,9 +39,13 @@ export type ScrollAreaProps = BoxProps & {
    */
   disableAutofocusToContent?: boolean;
 
+  /** Top offset for scroll positioning */
   topOffset?: number;
+  /** Right offset for scroll positioning */
   rightOffset?: number;
+  /** Bottom offset for scroll positioning */
   bottomOffset?: number;
+  /** Left offset for scroll positioning */
   leftOffset?: number;
 
   /**
@@ -68,7 +72,7 @@ export interface IScrollBarProps extends ScrollBarProps, UnknownProperties {}
 export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
-
+  /** Reference to the scrollable container element */
   container?: React.RefObject<HTMLElement>;
 };
 

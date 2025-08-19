@@ -4,7 +4,7 @@ import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 export type TableInTableProps = {
-  accordionMode: DataTableProps<typeof data>['accordionMode'];
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
 };
 
 const ChartExample1 = () => {
@@ -45,7 +45,7 @@ const ChartExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      expandedRows={new Set()}
+      expandedRows={new Set<string>()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
