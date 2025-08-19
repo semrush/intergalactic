@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Type description for `CarouselProps`.
+- Type description for `CarouselProps`.
 
 ## [16.1.6] - 2025-08-07
 
