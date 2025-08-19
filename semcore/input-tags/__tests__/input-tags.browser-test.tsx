@@ -171,7 +171,8 @@ test.describe('Visual tests', () => {
         await expect(page).toHaveScreenshot();
         await inputText.nth(4).hover();
 
-        await page.waitForSelector('text="Social media with a very long name"');
+        await page
+          .getByText('Social media with a very long name').nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await tagClose.first().hover();
         await expect(page).toHaveScreenshot();
