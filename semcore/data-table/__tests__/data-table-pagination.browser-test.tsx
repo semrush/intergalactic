@@ -18,7 +18,7 @@ test.describe('Pagination', () => {
 
     await page.getByRole('combobox').click();
 
-    // select amount of items for first and last option will have different amount
+    // select amount of items for first and last page will have different amount
     await page.getByRole('option', { name: '8' }).waitFor({ state: 'visible' });
     await page.getByRole('option', { name: '8' }).click();
 
