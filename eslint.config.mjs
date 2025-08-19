@@ -92,6 +92,8 @@ export default defineConfig([
       'import/named': 'off',
       'import/no-named-as-default': 'off',
 
+      'no-console': 'error',
+
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-unused-vars': 'off',

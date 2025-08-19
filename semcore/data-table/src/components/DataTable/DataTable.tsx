@@ -797,8 +797,6 @@ class DataTableRoot<
       gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
-    console.log('rerender table', this.getFlatRows().length);
-
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -1220,8 +1218,6 @@ class DataTableRoot<
         groupIndex++;
       }
     });
-
-    console.log(calculatedColumns, treeColumns);
 
     return [calculatedColumns, treeColumns];
   }
