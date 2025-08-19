@@ -29,7 +29,7 @@ const entry: PlaygroundEntry<CounterJSXProps> = {
     },
     children: {
       type: 'text-number',
-      value: '42',
+      value: 42,
       displayName: 'Value',
     },
   },
