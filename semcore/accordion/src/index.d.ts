@@ -1,6 +1,7 @@
 import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import type { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import type { Text } from '@semcore/typography';
+import type { Property } from 'csstype';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
 
@@ -99,7 +100,7 @@ export type CollapseAnimationProps = {
   /**
    * @default ease-out
    */
-  timingFunction?: CssTimingFunction;
+  timingFunction?: Property.AnimationTimingFunction;
   /**
    * @default false
    */
