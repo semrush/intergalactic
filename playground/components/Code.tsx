@@ -19,6 +19,7 @@ interface ICodeProps {
 const CHANGE_ICON_TIMEOUT = 2000;
 
 function Code({ sourceCode, link }: ICodeProps) {
+  const [isOpened, setIsOpened] = useState(false);
   const [html, setHTML] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -88,12 +89,12 @@ function Code({ sourceCode, link }: ICodeProps) {
 
   return (
     <Box className={styles.code}>
-      <Accordion>
+      <Accordion onChange={() => setIsOpened(!isOpened)}>
         <Accordion.Item value={0}>
           <Accordion.Item.Toggle my={3} mx={4}>
             <Accordion.Item.ToggleButton>
               <ExpandAlt mr={2} />
-              <Text fontWeight={500}>Hide code</Text>
+              <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>
