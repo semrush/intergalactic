@@ -1,11 +1,18 @@
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import type { DataTableProps } from '@semcore/data-table';
 import React from 'react';
-
-const Demo = () => {
+export type TableInTableFixedColumnProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+};
+const Demo = (props: TableInTableFixedColumnProps) => {
   return (
     <DataTable
       data={data}
       aria-label='Parent'
+      accordionMode={props.accordionMode}
+      onAccordionToggle={(type, rowIndex) => {
+        console.log(`Accordion ${type} for row #${rowIndex}`);
+      }}
       h='100%'
       w={400}
       columns={[
@@ -17,6 +24,12 @@ const Demo = () => {
     />
   );
 };
+
+export const tableInTableFixedColumnDefaultProps: TableInTableFixedColumnProps = {
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = tableInTableFixedColumnDefaultProps;
 
 const data = [
   {

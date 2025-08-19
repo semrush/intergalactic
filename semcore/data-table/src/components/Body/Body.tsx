@@ -14,8 +14,8 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DTValue } from '../DataTable/DataTable.types';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -24,7 +24,7 @@ type State<UniqKeyType> = {
   expandedForAnimation: Set<UniqKeyType>;
 };
 
-class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -45,7 +45,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
   };
 
   handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
-    const { accordionDuration } = this.asProps;
+    const { accordionDuration, accordionMode, expandedRows, onExpandRow } = this.asProps;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
       : accordionDuration ??
@@ -62,26 +62,44 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       }
     }, openDuration + 100); // we need to calculate after expanding animation
 
-    if (this.asProps.expandedRows.has(row[UNIQ_ROW_KEY])) {
+    if (expandedRows.has(row[UNIQ_ROW_KEY])) {
+      this.closeAccordion(row, closeDuration);
+    } else {
+      if (accordionMode === 'toggle' && expandedRows.size > 0) {
+        const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
+        if (previousRows.length > 0) {
+          previousRows.forEach((previousRow) => {
+            if (!this.state.expandedForAnimation.has(previousRow[UNIQ_ROW_KEY])) {
+              setTimeout(() => {
+                this.closeAccordion(previousRow, closeDuration);
+              }, openDuration / 3);
+            }
+          });
+        }
+      }
+      onExpandRow(row);
+    }
+  };
+
+  closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
+    const { onExpandRow } = this.asProps;
+
+    this.setState((prevState) => {
+      prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+      return {
+        expandedForAnimation: new Set([...prevState.expandedForAnimation]),
+      };
+    });
+    setTimeout(() => {
+      onExpandRow(row);
+
       this.setState((prevState) => {
-        prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
+        prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
         return {
           expandedForAnimation: new Set([...prevState.expandedForAnimation]),
         };
       });
-      setTimeout(() => {
-        this.asProps.onExpandRow(row);
-
-        this.setState((prevState) => {
-          prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
-          return {
-            expandedForAnimation: new Set([...prevState.expandedForAnimation]),
-          };
-        });
-      }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
-    } else {
-      this.asProps.onExpandRow(row);
-    }
+    }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
   };
 
   handleClickRow = (row: DTRow<UniqKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
@@ -188,6 +206,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onCellClick,
       rawData,
+      shadowVertical,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -219,6 +238,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
+      shadowVertical,
     };
 
     if (renderCell) {
@@ -332,6 +352,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       columns,
       uid,
       rows,
+      renderCellOverlay,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -436,6 +457,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
     if (rowsToRender.length === 0) {
       emptyRow = {
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,
@@ -476,6 +498,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
             />
           );
         })}
+        {renderCellOverlay?.()}
         {loading && (
           <SSpinContainer
             innerOutline

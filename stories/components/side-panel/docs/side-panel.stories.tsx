@@ -1,10 +1,10 @@
 import SidePanel from '@semcore/side-panel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AccessToInternalComponentsExample from './examples/access_to_internal_components';
-import AdvancedExampleExample from './examples/advanced_example';
-import BasicExampleExample from './examples/basic_example';
-import DisablingOverlayExample from './examples/disabling_overlay';
+import AccessToInternalComponentsExample, { defaultProps as AccessToInternalComponentsProps } from './examples/access_to_internal_components';
+import AdvancedExampleExample, { defaultProps as AdvancedExampleProps } from './examples/advanced_example';
+import BasicExampleExample, { defaultProps as BasicExampleProps } from './examples/basic_example';
+import DisablingOverlayExample, { defaultProps as DisablingOverlayProps } from './examples/disabling_overlay';
 import PlacementExample from './examples/placement';
 import PortalsExample from './examples/portals';
 
@@ -14,22 +14,44 @@ const meta: Meta<typeof SidePanel> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof SidePanel>;
 
-export const AccessToInternalComponents: Story = {
+const commonArgTypes = {
+  placement: {
+    control: { type: 'select' },
+    options: ['top', 'bottom', 'left', 'right'],
+  },
+  closable: {
+    control: { type: 'boolean' },
+  },
+  disablePreventScroll: {
+    control: { type: 'boolean' },
+  },
+} as const;
+
+export const AccessToInternalComponents: StoryObj<typeof AccessToInternalComponentsProps> = {
   render: AccessToInternalComponentsExample,
+  argTypes: commonArgTypes,
+  args: AccessToInternalComponentsProps,
 };
 
-export const AdvancedExample: Story = {
+export const AdvancedExample: StoryObj<typeof AdvancedExampleProps> = {
   render: AdvancedExampleExample,
+  argTypes: commonArgTypes,
+  args: AdvancedExampleProps,
 };
 
-export const BasicExample: Story = {
+export const BasicExample: StoryObj<typeof BasicExampleProps> = {
   render: BasicExampleExample,
+  argTypes: commonArgTypes,
+  args: BasicExampleProps,
 };
 
-export const DisablingOverlay: Story = {
+export const DisablingOverlay: StoryObj<typeof DisablingOverlayProps> = {
   render: DisablingOverlayExample,
+  argTypes: commonArgTypes,
+  args: DisablingOverlayProps,
 };
 
 export const Placement: Story = {

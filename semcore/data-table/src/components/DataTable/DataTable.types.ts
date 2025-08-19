@@ -1,9 +1,10 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
+import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import type { DataTableBodyProps } from '../Body/Body.types';
+import type { DataTableBodyProps, BodyPropsInner } from '../Body/Body.types';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 import type { DataTableHeadProps } from '../Head/Head.types';
@@ -101,15 +102,16 @@ export type DataTableProps<
 
     /** Configuration for sticky headers, height, scroll bars, etc. */
     headerProps?: DataTableHeadProps;
+
     /** Function to add custom props to rows */
-    rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
+    rowProps?: DataTableBodyProps<Data, UniqKeyType>['rowProps'];
 
     /** Custom cell renderer function */
-    renderCell?: DataTableBodyProps<UniqKeyType>['renderCell'];
+    renderCell?: DataTableBodyProps<Data, UniqKeyType>['renderCell'];
 
     /**
-   * Name of a unique key for each row data item
-   */
+     * Name of a unique key for each row data item
+     */
     uniqueRowKey?: UniqKey;
 
     /**
@@ -134,10 +136,27 @@ export type DataTableProps<
     renderEmptyData?: () => React.ReactNode;
 
     /**
+     * For adding an overlay over table cells.
+     */
+    renderCellOverlay?: () => React.ReactNode;
+
+    /**
      * Duration for collapse/expand accordion rows in tables in ms.
      * @default 200
      */
     accordionDuration?: number | [number, number];
+
+    /**
+     * Whether multiple accordion items can be open at a time, or only one.
+     * @default 'independent'
+     */
+    accordionMode?: 'toggle' | 'independent';
+
+    /**
+     * Handle open/close accordion.
+     * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
+     */
+    onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

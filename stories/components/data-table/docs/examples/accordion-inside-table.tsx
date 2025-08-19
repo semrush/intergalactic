@@ -4,9 +4,14 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-const Demo = () => {
+export type AccordionInTableProps = {
+  loading: boolean;
+};
+
+const Demo = (props: AccordionInTableProps) => {
   return (
     <DataTable
+      loading={props.loading}
       data={data}
       aria-label='Accordion inside table'
       h='100%'
@@ -24,9 +29,27 @@ const Demo = () => {
           ],
         },
       ]}
+      renderCell={(props) => {
+        const parentRowIndex = props.rowIndex - 1;
+
+        if (parentRowIndex === 0 && props.columnName === ACCORDION) {
+          return {
+            p: 0, // set empty paddings for the first accordion
+            children: props.defaultRender(),
+          };
+        }
+
+        return props.defaultRender();
+      }}
     />
   );
 };
+
+export const accordionInsideTableDefaultProps = {
+  loading: false,
+};
+
+Demo.defaultProps = accordionInsideTableDefaultProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);

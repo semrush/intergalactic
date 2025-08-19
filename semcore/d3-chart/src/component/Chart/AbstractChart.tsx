@@ -33,7 +33,6 @@ export abstract class AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
-    showLegend: true,
   };
 
   /**
@@ -347,9 +346,9 @@ export abstract class AbstractChart<
     const { legendProps, direction, showLegend, patterns } = this.asProps;
 
     if (
-      !showLegend ||
       // we hide Legend for one item on chart except not manually set to show.
-      (this.dataKeys.length === 1 && showLegend === true)
+      showLegend === undefined && this.dataKeys.length === 1 ||
+      showLegend === false
     ) {
       return null;
     }

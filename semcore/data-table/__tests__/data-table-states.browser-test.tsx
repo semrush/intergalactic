@@ -26,6 +26,7 @@ test.describe('Loading states', () => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', { loading: true });
 
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.setContent(htmlContent);
 
     await expect(page).toHaveScreenshot();

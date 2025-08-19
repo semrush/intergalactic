@@ -1,9 +1,15 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
-import AnimationDurationTestExample from './examples/accordion-tests/accordion-duration';
-import AccordionWithChartAndButtonExample from './examples/accordion-tests/accordion-inside-table';
-import AccordionWithFixedColumnExample from './examples/accordion-tests/accordion-with-fixed-column';
+import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/accordion-tests/accordion-duration';
+import type { TableInTableProps } from './examples/accordion-tests/accordion-duration';
+import AccordionWithChartAndButtonExample, { accordionWithDefaultProps } from './examples/accordion-tests/accordion-inside-table';
+import type { AccordionWithButtonProps } from './examples/accordion-tests/accordion-inside-table';
+import type {
+  AccordionWithFixedColumnProps,
+} from './examples/accordion-tests/accordion-with-fixed-column';
+import AccordionWithFixedColumnExample, { accordionWithFixedColumnDefaultProps } from './examples/accordion-tests/accordion-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
 import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
@@ -12,7 +18,8 @@ import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-
 import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
 import TabeInTableAnimationTestExample from './examples/accordion-tests/table-in-table-animation-test';
-import TabeInTableFixedColumnExample from './examples/accordion-tests/table-in-table-with-fixed-column';
+import TabeInTableFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
+import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
 
 const meta: Meta<typeof DataTable> = {
@@ -23,12 +30,18 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const AccordionWithChartAndButton: Story = {
+export const AccordionWithChartAndButton: StoryObj<AccordionWithButtonProps> = {
   render: AccordionWithChartAndButtonExample,
+  args: {
+    ...accordionWithDefaultProps,
+  },
 };
 
-export const AnimationDurationTest: Story = {
+export const AnimationDurationTest: StoryObj<TableInTableProps> = {
   render: AnimationDurationTestExample,
+  args: {
+    ...tableInTableDefaultProps,
+  },
 };
 
 export const TabeInTableAnimationTest: Story = {
@@ -63,12 +76,16 @@ export const AccordionWithRenderCell: Story = {
   render: AccordionWithRenderCellExample,
 };
 
-export const AccordionWithFixedColumn: Story = {
+export const AccordionWithFixedColumn: StoryObj<AccordionWithFixedColumnProps> = {
   render: AccordionWithFixedColumnExample,
+  args: accordionWithFixedColumnDefaultProps,
 };
 
-export const TabeInTableFixedColumn: Story = {
+export const TabeInTableFixedColumn: StoryObj<TableInTableFixedColumnProps> = {
   render: TabeInTableFixedColumnExample,
+  args: {
+    ...tableInTableFixedColumnDefaultProps,
+  },
 };
 
 export const ColoredAccordion: Story = {

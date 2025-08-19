@@ -1,4 +1,5 @@
 import { FadeInOut, Slide } from '@semcore/animation';
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -160,17 +161,21 @@ function Window(props) {
 
 function Overlay(props) {
   const SOverlay = Root;
+  const SOverlayContentWrapper = Flex;
   const { Children, styles, onOutsideClick, visible } = props;
-  const overlayRef = React.useRef(null);
+  const overlayContentWrapperRef = React.useRef(null);
   usePreventScroll(visible, props.disablePreventScroll);
-  useContextTheme(overlayRef, visible);
+  useContextTheme(overlayContentWrapperRef, visible);
   const zIndex = useZIndexStacking('z-index-modal');
 
   return sstyled(styles)(
-    <SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex}>
-      <OutsideClick root={overlayRef} onOutsideClick={onOutsideClick}>
-        <Children />
-      </OutsideClick>
+    <SOverlay render={FadeInOut} zIndex={zIndex}>
+      {/* This child component is intended to be private. Since true encapsulation isn't possible in this context, we’re applying the data-ui-name attribute directly as a workaround. */}
+      <SOverlayContentWrapper data-ui-name='Modal.Overlay.ContentWrapper' ref={overlayContentWrapperRef}>
+        <OutsideClick root={overlayContentWrapperRef} onOutsideClick={onOutsideClick}>
+          <Children />
+        </OutsideClick>
+      </SOverlayContentWrapper>
     </SOverlay>,
   );
 }

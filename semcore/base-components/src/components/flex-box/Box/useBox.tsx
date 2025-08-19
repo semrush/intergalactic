@@ -154,8 +154,10 @@ export type BoxProps = StyledProps & {
   bottom?: number | string;
   /** CSS `right` property */
   right?: number | string;
-  /** CSS `zIndex` property */
+  /** CSS `z-index` property */
   zIndex?: number;
+  /** CSS `text-align` property */
+  textAlign?: Property.TextAlign;
   /** Box content */
   children?: React.ReactNode;
 };
@@ -185,6 +187,7 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
     right: getSize(props['right']),
     flex: props.flex,
     zIndex: props.zIndex,
+    textAlign: props.textAlign,
 
     margin: getAutoOrScaleIndent(props['m'], scaleIndent),
     marginTop:

@@ -5,7 +5,7 @@ import Pagination from '@semcore/pagination';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type CheckboxExampleProps = { animationDuration: number; loading: boolean };
+type CheckboxExampleProps = { animationDuration: number; loading: boolean; sideIndents?: 'wide'; compact?: boolean };
 
 const Demo = (props: CheckboxExampleProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
@@ -48,7 +48,7 @@ const Demo = (props: CheckboxExampleProps) => {
         <Collapse
           visible={!!selectedRows.length}
           duration={props.animationDuration}
-          style={{ position: 'sticky', top: 0, zIndex: 2 }}
+          style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
           <Flex
             role='region'
@@ -78,7 +78,9 @@ const Demo = (props: CheckboxExampleProps) => {
           selectedRows={selectedRows}
           onSelectedRowsChange={handleChangeSelectedRows}
           ref={tableRef}
+          sideIndents={props.sideIndents}
           loading={props.loading}
+          compact={props.compact}
           headerProps={{
             sticky: true,
             top: selectedRows.length ? 44 : 0,
@@ -132,6 +134,8 @@ const data = [
 export const defaultProps: CheckboxExampleProps = {
   animationDuration: 200,
   loading: false,
+  sideIndents: undefined,
+  compact: undefined,
 };
 
 Demo.defaultProps = defaultProps;
