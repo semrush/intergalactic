@@ -55,6 +55,7 @@ export type SidePanelOverlayProps = FadeInOutProps & BoxProps & {};
 export interface ISidePanelPanelProps extends SidePanelPanelProps, UnknownProperties {}
 export type SidePanelPanelProps = SlideProps &
   BoxProps & {
+    /** Callback that is triggered when click outside is occured */
     onOutsideClick?: (e?: React.SyntheticEvent) => void;
   };
 

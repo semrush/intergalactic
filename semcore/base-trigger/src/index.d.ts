@@ -68,6 +68,7 @@ export interface IFilterTriggerProps extends FilterTriggerProps, UnknownProperti
 export type FilterTriggerProps = BaseTriggerProps & {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;
+  /** Specifies the locale for i18n support */
   locale?: string;
   /** List of props that will be added to the select inside of filter */
   includeInputProps?: string[];

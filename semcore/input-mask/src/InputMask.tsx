@@ -49,9 +49,7 @@ export type InputMaskValueProps = InputValueProps & {
       rawValue: string;
     },
   ) => string | false | { value: string; indexesOfPipedChars: number[] };
-  /**
-   * @ignore
-   */
+  /** Internal */
   keepCharPositions?: boolean;
   /**
    * The aliases object for the mask values. The key is the symbol used in the mask,
@@ -68,6 +66,7 @@ export type InputMaskValueProps = InputValueProps & {
    * */
   title?: string;
 
+  /** Specifies which props to pass to input element */
   includeInputProps?: string[];
 
   /**

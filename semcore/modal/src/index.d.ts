@@ -31,9 +31,8 @@ export type ModalProps = PortalProps &
      * @default false
      */
     disablePreventScroll?: boolean;
-
+    /** Specifies the locale for i18n support */
     locale?: string;
-
     /**
      * Props for render modal without background and paddings. Useful in carousel for example
      */
