@@ -25,6 +25,7 @@ export type NoticeGlobalProps = FadeInOutProps & {
    * Callback on a click on the close button
    */
   onClose?: (event: React.SyntheticEvent) => void;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

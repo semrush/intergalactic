@@ -119,7 +119,6 @@ const Demo = () => {
               placement='right'
               interaction='none'
               theme='warning'
-              animationsDisabled={true}
             >
               <Tooltip.Popper visible={showErrorTooltip()} id='form-project-error'>
                 {errors[fieldName]?.message}

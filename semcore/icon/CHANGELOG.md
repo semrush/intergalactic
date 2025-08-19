@@ -2,22 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.6.0] - 2025-07-31
+## [16.5.1] - 2025-08-29
+
+### Changed
+
+- Type description for `IconProps`.
+
+## [16.5.0] - 2025-08-05
 
 ### Added
 
-- New `CollapseList` icon.
+- New `AISEOToolkit`, `CollapseList`, `Canva`, `Claude`, `ClaudeColored`, `GoogleGenerativeAIColored`, `Perplexity`, `PerplexityColored` icons.
+
+### Changed
+
+- Updated `GoogleGenerativeAI` icon.
 
 ### Fixed
 
 - Removed fill from `TextItalic` size M icon.
 - Minified and removed fill from `BracketsCode` size L icon.
-
-## [16.5.0] - 2025-07-24
-
-### Added
-
-- New `AISEOToolkit` icon.
 
 ## [16.4.0] - 2025-07-21
 

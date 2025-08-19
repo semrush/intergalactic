@@ -2,7 +2,7 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import type { DataTableProps } from '@semcore/data-table';
 import React from 'react';
 export type TableInTableFixedColumnProps = {
-  accordionMode: DataTableProps<typeof data>['accordionMode'];
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
 };
 const Demo = (props: TableInTableFixedColumnProps) => {
   return (

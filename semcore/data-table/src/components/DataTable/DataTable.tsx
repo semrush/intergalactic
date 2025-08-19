@@ -1,5 +1,6 @@
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -42,10 +43,15 @@ export const ROW_INDEX = Symbol('ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
-type State = {
+type State<
+  Data extends DataTableData,
+  UniqKey extends keyof Data[number],
+  UniqKeyType extends Data[number][UniqKey],
+> = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
+  shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
 };
 
 class DataTableRoot<
@@ -76,6 +82,7 @@ class DataTableRoot<
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
   private hasGroups = false;
+  private hasFixedColumn = false;
 
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
@@ -111,10 +118,11 @@ class DataTableRoot<
     this.flatRows = this.rows.flat();
   }
 
-  state: State = {
+  state: State<Data, UniqKey, UniqKeyType> = {
     scrollTop: 0,
     scrollDirection: 'down',
     selectAllMessage: '',
+    shadowVertical: '',
   };
 
   uncontrolledProps() {
@@ -124,11 +132,16 @@ class DataTableRoot<
   }
 
   componentDidMount() {
-    const { headerProps, loading, selectedRows } = this.asProps;
-    if ((headerProps?.sticky && !headerProps.h) || loading || this.columns.some((c) => c.fixed)) {
+    const { headerProps, loading } = this.asProps;
+    if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
       requestAnimationFrame(() => {
         this.forceUpdate();
+        this.calculateVerticalShadow();
       });
+    }
+
+    if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
+      document.addEventListener('scroll', this.handleDocumentScroll);
     }
   }
 
@@ -144,6 +157,10 @@ class DataTableRoot<
       this.flatRows = this.rows.flat();
 
       this.forceUpdate();
+
+      if (this.hasFixedColumn) {
+        this.calculateVerticalShadow();
+      }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
       if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
@@ -151,6 +168,12 @@ class DataTableRoot<
       } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    if (canUseDOM()) {
+      document.removeEventListener('scroll', this.handleDocumentScroll);
     }
   }
 
@@ -202,6 +225,24 @@ class DataTableRoot<
     };
   }
 
+  get scrollDirection() {
+    const { w, wMax, h, hMax } = this.asProps;
+
+    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
+    const hasWidthSettings = Boolean(w) || Boolean(wMax);
+    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
+
+    if (hasWidthSettings && !hasHeightSettings) {
+      scrollDirection = 'horizontal';
+    } else if (hasHeightSettings && !hasWidthSettings) {
+      scrollDirection = 'vertical';
+    } else if (hasWidthSettings && hasHeightSettings) {
+      scrollDirection = 'both';
+    }
+
+    return scrollDirection;
+  }
+
   getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
@@ -216,6 +257,7 @@ class DataTableRoot<
       sideIndents,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
+    const { shadowVertical } = this.state;
 
     return {
       ...headerProps,
@@ -250,10 +292,12 @@ class DataTableRoot<
       },
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
+      shadowVertical,
+      scrollDirection: this.scrollDirection,
     };
   }
 
-  getBodyProps(): BodyPropsInner<UniqKeyType> {
+  getBodyProps(): BodyPropsInner<Data, UniqKeyType> {
     const {
       use,
       compact,
@@ -271,8 +315,10 @@ class DataTableRoot<
       accordionDuration,
       accordionMode,
       data: rawData,
+      renderCellOverlay,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
+    const { shadowVertical } = this.state;
     return {
       accordionDuration,
       accordionMode,
@@ -299,8 +345,8 @@ class DataTableRoot<
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
-      rowProps,
-      renderCell,
+      rowProps: this.rows.length > 0 ? rowProps : undefined,
+      renderCell: this.rows.length > 0 ? renderCell : undefined,
       renderEmptyData,
       sideIndents,
       selectedRows,
@@ -308,8 +354,47 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
+      shadowVertical,
+      renderCellOverlay,
     };
   }
+
+  handleDocumentScroll = trottle(() => {
+    const tableContainer = this.tableContainerRef.current;
+    if (!tableContainer) return;
+
+    const tableContainerTop = tableContainer.getBoundingClientRect().top;
+    const { headerProps } = this.asProps;
+    const headerContainer = this.headerRef.current;
+    const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
+    const top = tableContainerTop - (headerProps?.top ?? 0);
+    const headerScrollBar = headerProps?.withScrollBar
+      ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
+      : undefined;
+
+    if (top && top < 0) {
+      const translate = `translateY(${Math.abs(top)}px)`;
+      elements?.forEach((column) => {
+        if (column instanceof HTMLElement) {
+          column.style.setProperty('transform', translate);
+        }
+      });
+
+      if (headerScrollBar instanceof HTMLElement) {
+        headerScrollBar.style.setProperty('transform', translate);
+      }
+    } else {
+      elements?.forEach((column) => {
+        if (column instanceof HTMLElement) {
+          column.style.removeProperty('transform');
+        }
+      });
+
+      if (headerScrollBar instanceof HTMLElement) {
+        headerScrollBar.style.removeProperty('transform');
+      }
+    }
+  });
 
   handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
@@ -386,9 +471,7 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      setTimeout(() => {
-        this.handlers.expandedRows(new Set([...expandedRows]));
-      }, 300);
+      this.handlers.expandedRows(new Set([...expandedRows]));
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
@@ -564,10 +647,42 @@ class DataTableRoot<
   };
 
   handleScroll = trottle((e) => {
-    const scrollTop = e.target.scrollTop;
-    const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
-    this.setState({ scrollTop, scrollDirection });
+    if (this.asProps.virtualScroll) {
+      const scrollTop = e.target.scrollTop;
+      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+      this.setState({ scrollTop, scrollDirection });
+    }
+
+    if (this.hasFixedColumn) {
+      this.calculateVerticalShadow();
+    }
   });
+
+  calculateVerticalShadow = () => {
+    if (!this.tableContainerRef.current) return;
+
+    const { scrollWidth, clientWidth, scrollLeft } =
+            this.tableContainerRef.current;
+    const maxScrollRight = scrollWidth - clientWidth;
+
+    const roundedScroll = Math.round(scrollLeft);
+    const roundedMaxScroll = Math.round(maxScrollRight);
+    let shadow: BodyPropsInner<Data, UniqKeyType>['shadowVertical'] = '';
+    // not scroll
+    if (roundedMaxScroll <= 0) {
+      // start scroll
+    } else if (roundedScroll <= 0) {
+      shadow = 'end';
+      // end scroll
+    } else if (roundedScroll >= roundedMaxScroll) {
+      shadow = 'start';
+      // median scroll
+    } else if (roundedScroll > 0) {
+      shadow = 'median';
+    }
+
+    this.setState({ shadowVertical: shadow });
+  };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (this.asProps.loading) {
@@ -683,18 +798,6 @@ class DataTableRoot<
       gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
     }
 
-    let scrollDirection: 'both' | 'horizontal' | 'vertical' | undefined = undefined;
-    const hasWidthSettings = Boolean(w) || Boolean(wMax);
-    const hasHeightSettings = (Boolean(h) && h !== 'fit-content') || Boolean(hMax);
-
-    if (hasWidthSettings && !hasHeightSettings) {
-      scrollDirection = 'horizontal';
-    } else if (hasHeightSettings && !hasWidthSettings) {
-      scrollDirection = 'vertical';
-    } else if (hasWidthSettings && hasHeightSettings) {
-      scrollDirection = 'both';
-    }
-
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -710,13 +813,13 @@ class DataTableRoot<
         ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
-        onScroll={virtualScroll ? this.handleScroll : undefined}
+        onScroll={this.handleScroll}
         disableAutofocusToContent={true}
       >
         <ScrollArea.Container
           tabIndex={-1}
           // @ts-ignore
-          scrollDirection={scrollDirection}
+          scrollDirection={this.scrollDirection}
           // @ts-ignore
           loading={loading}
           headerHeight={`${headerHeight}px`}
@@ -880,7 +983,7 @@ class DataTableRoot<
     if (selectedRows) {
       const column: DTColumn = {
         name: SELECT_ALL.toString(),
-        gtcWidth: '40px',
+        gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
       };
@@ -999,7 +1102,7 @@ class DataTableRoot<
     if (selectedRows) {
       const column: DTColumn = {
         name: SELECT_ALL.toString(),
-        gtcWidth: '40px',
+        gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
       };
@@ -1029,6 +1132,10 @@ class DataTableRoot<
         parent,
       } as DTColumn;
 
+      if (column.fixed) {
+        this.hasFixedColumn = true;
+      }
+
       return column;
     };
 
@@ -1043,6 +1150,19 @@ class DataTableRoot<
       return 'columns' in child;
     };
 
+    const setShowShadows = (col: DTColumn, i: number): void => {
+      let prevCol = treeColumns[i - 1];
+      if ('columns' in prevCol && prevCol.columns) {
+        prevCol = prevCol.columns[prevCol.columns.length - 1];
+      }
+
+      if (prevCol.fixed && !col.fixed) {
+        prevCol.showShadowVertical = true;
+      } else if (!prevCol.fixed && col.fixed) {
+        col.showShadowVertical = true;
+      }
+    };
+
     columns.forEach((child, i) => {
       if (childIsColumn(child)) {
         const col = makeColumn(child);
@@ -1055,6 +1175,10 @@ class DataTableRoot<
 
         calculatedColumns.push(col);
         treeColumns.push(col);
+
+        if (i > 0) {
+          setShowShadows(col, i);
+        }
       } else if (childIsGroup(child)) {
         const Group = makeColumn(child);
         const childCount = child.columns.length;
@@ -1082,6 +1206,10 @@ class DataTableRoot<
 
           calculatedColumns.push(col);
 
+          if (isFirst && i > 0) {
+            setShowShadows(col, i);
+          }
+
           Group.columns?.push(col);
         });
 
@@ -1091,6 +1219,8 @@ class DataTableRoot<
         groupIndex++;
       }
     });
+
+    console.log(calculatedColumns, treeColumns);
 
     return [calculatedColumns, treeColumns];
   }

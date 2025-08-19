@@ -1,6 +1,7 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
+import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps, BodyPropsInner } from '../Body/Body.types';
@@ -93,19 +94,24 @@ export type DataTableProps<
      */
     expandedRows?: Set<UniqKeyType>;
 
+    /** Configuration for virtual scroll */
     virtualScroll?: VirtualScroll;
 
+    /** Configuration for table columns including headers, sorting, and layout */
     columns: ColumnsConfig;
 
+    /** Configuration for sticky headers, height, scroll bars, etc. */
     headerProps?: DataTableHeadProps;
 
-    rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
+    /** Function to add custom props to rows */
+    rowProps?: DataTableBodyProps<Data, UniqKeyType>['rowProps'];
 
-    renderCell?: DataTableBodyProps<UniqKeyType>['renderCell'];
+    /** Custom cell renderer function */
+    renderCell?: DataTableBodyProps<Data, UniqKeyType>['renderCell'];
 
     /**
-   * Name of a unique key for each row data item
-   */
+     * Name of a unique key for each row data item
+     */
     uniqueRowKey?: UniqKey;
 
     /**
@@ -113,6 +119,7 @@ export type DataTableProps<
      */
     selectedRows?: UniqKeyType[];
 
+    /** Callback when row selection changes */
     onSelectedRowsChange?: (
       selectedRows: UniqKeyType[],
       event?: React.SyntheticEvent<HTMLElement>,
@@ -127,6 +134,11 @@ export type DataTableProps<
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
+
+    /**
+     * For adding an overlay over table cells.
+     */
+    renderCellOverlay?: () => React.ReactNode;
 
     /**
      * Duration for collapse/expand accordion rows in tables in ms.

@@ -1,5 +1,6 @@
 import type { Property } from 'csstype';
 
+import type { BodyPropsInner } from '../Body/Body.types';
 import type { CellPropsInner } from '../Body/Cell.types';
 import type {
   ColumnGroupConfig,
@@ -62,6 +63,8 @@ export type DTColumn = ColumnItemConfig &
     children?: React.ReactNode | React.FC;
 
     gridArea?: string;
+
+    showShadowVertical?: boolean;
   };
 
 export type DataTableColumnProps = CommonColumnType & {
@@ -93,5 +96,7 @@ export type ColumnPropsInner<
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
-  onClick: CellPropsInner<UniqKeyType>['onClick'];
+  onClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
+  scrollDirection?: 'horizontal' | 'vertical' | 'both';
 };

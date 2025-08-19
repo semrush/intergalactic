@@ -15,6 +15,7 @@ import style from './style/info.shadow.css';
 /** @deprecated */
 export interface IInfoItemProps extends InfoItemProps, UnknownProperties {}
 export type InfoItemProps = BoxProps & {
+  /** A label content that appears before the main item content */
   label?: React.ReactNode;
 };
 

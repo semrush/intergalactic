@@ -25,9 +25,13 @@ export type ProgressBarProps = BoxProps & {
 /** @deprecated */
 export interface IValueProps extends ValueProps, UnknownProperties {}
 export type ValueProps = BoxProps & {
+  /** Controls the size of the value bar */
   size?: 's' | 'm' | 'l';
+  /** Progress value */
   value?: number;
+  /** Animation diration in milliseconds for transitions */
   duration?: number;
+  /** Color theme */
   theme?: string;
 };
 

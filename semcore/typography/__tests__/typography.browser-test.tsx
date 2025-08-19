@@ -37,11 +37,19 @@ test.describe('List- Visual', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify format text nested lists', async ({ page }) => {
-    const standPath = 'stories/components/typography/docs/examples/formattext-nested-lists.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+  const formatTags = [
+    { formatTags: true },
+    { formatTags: false },
+  ];
+
+  formatTags.forEach((item) => {
+    test(`Verify format text nested lists with formatTags = ${item.formatTags} `, async ({ page }) => {
+      const standPath = 'stories/components/typography/docs/examples/formattext-nested-lists.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify List with custom bullets ', async ({ page }) => {
@@ -96,13 +104,19 @@ test.describe('Text - Visual', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Native typography tags', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/typography/docs/examples/native-typography-tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+  const formatTags = [
+    { formatTags: true },
+    { formatTags: false },
+  ];
+
+  formatTags.forEach((item) => {
+    test(`Verify Native typography tags with formatTags=${item.formatTags} `, async ({ page }) => {
+      const standPath = 'stories/components/typography/docs/examples/native-typography-tags.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   const cases = [
