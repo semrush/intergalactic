@@ -9,6 +9,9 @@ import Button from '@semcore/ui/button';
 import React, { useEffect, useRef, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
+import dispatchCopyCodeButtonClickEvent from '../events/copy_code_btn_click';
+import dispatchShowHideCodeButtonClickEvent from '../events/show_hide_code_btn_click';
+import dispatchViewSourceButtonClickEvent from '../events/view_source_btn_click';
 import styles from '../styles/styles.module.css';
 
 interface ICodeProps {
@@ -24,10 +27,22 @@ function Code({ sourceCode, link }: ICodeProps) {
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const handleAccordionChange = () => {
+    setIsOpened(!isOpened);
+
+    dispatchShowHideCodeButtonClickEvent(isOpened);
+  };
+
+  const handleViewSource = () => {
+    dispatchViewSourceButtonClickEvent();
+  };
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(sourceCode);
       setIsCopied(true);
+
+      dispatchCopyCodeButtonClickEvent();
 
       if (copyTimeoutRef.current) {
         clearTimeout(copyTimeoutRef.current);
@@ -89,7 +104,7 @@ function Code({ sourceCode, link }: ICodeProps) {
 
   return (
     <Box className={styles.code}>
-      <Accordion onChange={() => setIsOpened(!isOpened)}>
+      <Accordion onChange={handleAccordionChange}>
         <Accordion.Item value={0}>
           <Accordion.Item.Toggle my={3} mx={4}>
             <Accordion.Item.ToggleButton>
@@ -108,6 +123,7 @@ function Code({ sourceCode, link }: ICodeProps) {
                   w={40}
                   h={40}
                   aria-label='View source on GitHub'
+                  onClick={handleViewSource}
                 >
                   <GitHubInvertM />
                 </Button>
