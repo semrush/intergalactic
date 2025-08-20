@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Type description for `WizardProps`/`WizardStepperProps`/`WizardStepBackProps`/`WizardStepNextProps`.
 
+### Fixed
+
+- Left borders of Wizard.Content component are not rounded if the Wizard doesn't have Sidebar
+
 ## [16.1.6] - 2025-08-07
 
 ### Changed
