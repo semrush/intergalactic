@@ -10,6 +10,7 @@ export type NoticeBubbleContainerProps = BoxProps &
   PortalProps & {
     /** Manager copy */
     manager?: NoticeBubbleManagerClass;
+    /** Specifies the locale for i18n support */
     locale?: string;
   };
 

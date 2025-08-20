@@ -37,6 +37,7 @@ export function isValidSchedule(pattern) {
   function validate(pattern, validateFn, msg) {
     if (validateFn(pattern)) return true;
 
+    // eslint-disable-next-line no-console
     console.warn(`DatePicker disabledSchedule: ${msg} format is invalid`);
     return false;
   }

@@ -1195,10 +1195,30 @@
       }
     },
     "feature-popover": {
-      "dot-outer-border": {
+      "bg": {
         "value": "{bg.primary.highlight}",
         "type": "color",
-        "description": "Color of the outer border of the FeaturePopover.Spot."
+        "description": "Color of the FeaturePopover background with accent theme."
+      },
+      "dot-outer-border": {
+        "value": "{feature-popover.bg}",
+        "type": "color",
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme."
+      },
+      "bg-neutral": {
+        "value": "{violet.dusty.800}",
+        "type": "color",
+        "description": "Color of the FeaturePopover background with neutral theme."
+      },
+      "dot-neutral": {
+        "value": "{green.300}",
+        "type": "color",
+        "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme."
+      },
+      "dot-neutral-outer-border": {
+        "value": "{feature-popover.dot-neutral}",
+        "type": "color",
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme."
       }
     },
     "progress-bar": {

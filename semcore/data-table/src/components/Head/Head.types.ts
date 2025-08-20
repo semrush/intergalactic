@@ -60,8 +60,8 @@ export type HeadPropsInner<
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  onCellClick: CellPropsInner<UniqKeyType>['onClick'];
-  shadowVertical?: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
 
 };

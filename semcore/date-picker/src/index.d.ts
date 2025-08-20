@@ -37,13 +37,9 @@ export type CalendarProps = BoxProps & {
    * Array of dates blocked for selection
    */
   disabled?: DisabledDates;
-  /**
-   * @ignore
-   * */
+  /** Internal */
   highlighted?: DateConstructorParams[];
-  /**
-   * @ignore
-   * */
+  /** Internal */
   onHighlightedChange?: (date: Date[]) => void;
   /**
    * The selected date, accepts everything which is accepted by `new Date()`
@@ -58,7 +54,7 @@ export type CalendarProps = BoxProps & {
    * @default new Date()
    * */
   displayedPeriod?: Date;
-
+  /** Controls whether to render dates from previous/next months */
   renderOutdated?: boolean;
 };
 
@@ -77,16 +73,27 @@ export type CalendarMonthsContext = {
 /** @deprecated */
 export interface ICalendarUnitProps extends CalendarUnitProps, UnknownProperties {}
 export type CalendarUnitProps = BoxProps & {
+  /** Indicates if the calendar unit is part of a selected date range */
   selected?: boolean;
+  /** Marks units from previous/next months that appear in the current month view */
   outdated?: boolean;
+  /** Prevents interaction with the unit */
   disabled?: boolean;
+  /** Highlights the current date */
   today?: boolean;
+  /** Marks the beginning of a selected date range */
   startSelected?: boolean;
+  /** Marks the end of a selected date range */
   endSelected?: boolean;
+  /** Shows preview highlighting during range selection */
   highlighted?: boolean;
+  /** Marks the start of a highlighted range */
   startHighlighted?: boolean;
+  /** Marks the end of a highlighted range */
   endHighlighted?: boolean;
+  /** The actual Date object this unit represents */
   date?: Date;
+  /** Content to display within the unit (typically the day number) */
   children?: React.ReactNode;
 };
 
