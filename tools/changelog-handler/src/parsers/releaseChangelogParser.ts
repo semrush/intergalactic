@@ -94,10 +94,14 @@ export const releaseChangelogParser = (
           );
         }
 
+        if (changelogFilePath.includes('semcore/ui/CHANGELOG.md')) {
+          continue;
+        }
+
         const prefix = item.text[0];
         const restText = item.text.slice(1);
 
-        if ((typeof prefix === 'string' || prefix.type !== 'strong') && !changelogFilePath.includes('semcore/ui/CHANGELOG.md')) {
+        if ((typeof prefix === 'string' || prefix.type !== 'strong')) {
           throw new Error(
             `Invalid prefix for changelog change. Expected strong text, got ${JSON.stringify(
               prefix,
