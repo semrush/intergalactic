@@ -210,6 +210,7 @@ async function patchExports(illustrations: string[]) {
 
   await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 
+  // eslint-disable-next-line no-console
   console.log('Patched exports in package.json.');
 }
 

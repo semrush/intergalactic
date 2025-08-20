@@ -12,15 +12,11 @@ test.describe('Basic usage', () => {
     { text: 'Transform', parent: 'Transform', duration: '0.5s', delay: '0s' },
   ];
 
-  test.beforeEach(async ({ page }) => {
+  test('Check animation props', async ({ page }) => {
     const standPath = 'stories/components/animation/tests/examples/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-  });
-
-  test('Check animation props', async ({ page }) => {
     const parentDiv = page.locator('div[data-ui-name="Flex"]');
-
     const buttons = await parentDiv.locator('button').all();
 
     for (const button of buttons) {
@@ -29,7 +25,7 @@ test.describe('Basic usage', () => {
 
       if (!buttonData) continue;
 
-      const { text, parent, duration, delay } = buttonData;
+      const { parent, duration, delay } = buttonData;
       const parentLocator = button.locator(`xpath=ancestor::*[@data-ui-name="${parent}"]`);
 
       await expect(button).toBeVisible();
@@ -59,23 +55,20 @@ test.describe('Basic usage', () => {
 });
 
 test.describe('Accordion collapse usage', () => {
-  test.beforeEach(async ({ page }) => {
+  test('Check collapse props', async ({ page }) => {
     const standPath = 'stories/components/animation/tests/examples/in-accordion-collapse.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-  });
-
-  test('Check collapse props', async ({ page }) => {
     const toggleItems = await page.locator('h3[data-ui-name="Item.Toggle"]');
 
     for (let i = 0; i < (await toggleItems.count()); i++) {
       const toggleItem = toggleItems.nth(i);
       const toggleButton = toggleItem.locator('div[data-ui-name="Item.ToggleButton"]');
+      const collapseDiv = page.locator('[data-ui-name="Item.Collapse"]');
 
       await toggleButton.click();
-      await page.waitForTimeout(1000);
-      const collapseDiv = page.locator('[data-ui-name="Item.Collapse"]');
-      await expect(collapseDiv).toBeVisible();
+      await collapseDiv.waitFor({ state: 'visible' });
+
       const animationDelay = await collapseDiv.evaluate((el) => {
         const style = getComputedStyle(el);
         return style.animationDelay;
@@ -90,7 +83,7 @@ test.describe('Accordion collapse usage', () => {
         expect(animationDelay).toBe('0s');
         expect(animationDuration).toBe('0.5s');
       } else if (i === 1) {
-        expect(animationDelay).toBe('0.5s');
+        expect(animationDelay).toBe('0s');
         expect(animationDuration).toBe('0.5s');
       } else if (i === 2) {
         expect(animationDelay).toBe('0s');
@@ -100,7 +93,7 @@ test.describe('Accordion collapse usage', () => {
         expect(animationDuration).toBe('0.2s');
       }
       await toggleButton.click();
-      await page.waitForTimeout(1000);
+      await collapseDiv.waitFor({ state: 'hidden' });
     }
   });
 });

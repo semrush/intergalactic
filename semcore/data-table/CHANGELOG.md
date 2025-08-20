@@ -10,7 +10,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Unnecessary re-render when data was updated but old values were still used.
 - Shadows remain after resizing table width.
+
+### Changed
+
+- Type description for `DataTableProps`/`CellRenderProps`.
+
 
 ## [16.1.0] - 2025-08-08
 

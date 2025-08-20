@@ -19,7 +19,9 @@ export interface IFullscreenModalHeaderProps
   extends FullscreenModalHeaderProps,
   UnknownProperties {}
 export type FullscreenModalHeaderProps = BoxProps & {
+  /** Title content displayed in the modal header */
   title?: React.ReactNode;
+  /** Description text that appears alongside the title */
   description?: React.ReactNode;
 };
 
