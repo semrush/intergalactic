@@ -16,6 +16,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Type description for `DataTableProps`/`CellRenderProps`.
+- `AccordionToggle`'s `margin-left`.
 
 ## [16.1.0] - 2025-08-08
 
