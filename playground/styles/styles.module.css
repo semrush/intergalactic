@@ -36,7 +36,7 @@
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
 
-  > span {
+  > label {
     font-size: var(--intergalactic-fs-200);
     line-height: var(--intergalactic-lh-200);
     word-break: break-word;
