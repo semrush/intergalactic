@@ -49,6 +49,7 @@ const entry: PlaygroundEntry<RadarChartJSXProps> = {
     radarChartProps: {
       type: 'group',
       groupName: 'Radar chart props',
+      isOpenedByDefault: true,
       controls: {
         showDots: {
           type: 'boolean',

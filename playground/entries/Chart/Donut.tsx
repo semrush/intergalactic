@@ -56,6 +56,7 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
     donutProps: {
       type: 'group',
       groupName: 'Donut props',
+      isOpenedByDefault: true,
       controls: {
         halfsize: {
           type: 'boolean',

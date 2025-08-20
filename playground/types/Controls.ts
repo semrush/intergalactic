@@ -45,6 +45,7 @@ export type GroupControlType<Props extends Record<string, unknown>, K extends ke
   type: 'group';
   groupName: string;
   visibleIf?: ControlVisibilityCondition[];
+  isOpenedByDefault?: boolean;
   controls: {
     [P in keyof Props[K]]:
       | InlineRadioControlType
