@@ -5,11 +5,19 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/types';
-import type { AnimationProps, BoxProps, OutsideClickProps, PortalProps } from '@semcore/base-components';
+import type {
+  AnimationProps,
+  BoxProps,
+  eventInteraction, Flex,
+  OutsideClickProps,
+  PortalProps,
+} from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type { Box } from '@semcore/flex-box';
 import type { PopperContext, PopperPopperProps, Placement } from '@semcore/popper';
 import type Popper from '@semcore/popper';
+import type React from 'react';
 
 /**
  * Popper must have an accessible names (aria-group-name).
@@ -34,6 +42,16 @@ export type FeaturePopoverPopperProps = PopperPopperProps & {
   duration?: number;
   /** Specifies the locale for i18n support */
   locale?: string;
+};
+
+export type FeaturePopoverPopperInnerProps = {
+  theme: FeaturePopoverProps['theme'];
+
+  visible: boolean;
+
+  $onCloseClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
+  animationsDisabled: boolean;
+  getI18nText: (message: string, opts?: Record<string, unknown>) => string;
 };
 
 /** @deprecated */
@@ -125,14 +143,24 @@ export type FeaturePopoverProps = FPPopperProps & {
    * @default auto
    */
   placement?: Placement;
+  /**
+   * The theme of FeaturePopover
+   * @default accent
+   */
+  theme?: 'accent' | 'neutral';
 };
 
-export type FeaturePopoverTriggerProps = BoxProps;
+export type FeaturePopoverTriggerProps = BoxProps & {
+  theme?: FeaturePopoverProps['theme'];
+};
 
-declare const FeaturePopover: Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
+export type FeaturePopoverSpotProps = {
+  visible?: boolean;
+  theme?: FeaturePopoverProps['theme'];
+};
+
+export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
   Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
   Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
-  Spot: typeof Box;
+  Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
 };
-
-export default FeaturePopover;
