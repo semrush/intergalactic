@@ -10,8 +10,8 @@ interface ISelectControlProps extends SelectControlType {
 }
 
 interface ISelectColorAddonProps {
-  options: SelectControlType['colorOptions'];
-  color?: string;
+  options: Required<SelectControlType['colorOptions']>;
+  color: string;
 }
 
 function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
@@ -31,21 +31,17 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   );
 }
 
-function SelectControl({
-  options,
-  value,
-  colorOptions,
-  onChange,
-  displayName,
-}: ISelectControlProps) {
+function SelectControl({ options, value, colorOptions, onChange, displayName }: ISelectControlProps) {
   if (!Array.isArray(options)) return null;
 
   return (
     <Select value={value} w='100%' onChange={onChange}>
       <Select.Trigger aria-label={displayName} w='100%'>
-        <Select.Trigger.Addon>
-          <SelectColorAddon options={colorOptions} color={`${value}`} />
-        </Select.Trigger.Addon>
+        {colorOptions && (
+          <Select.Trigger.Addon>
+            <SelectColorAddon options={colorOptions} color={`${value}`} />
+          </Select.Trigger.Addon>
+        )}
         <Select.Trigger.Text>{value}</Select.Trigger.Text>
       </Select.Trigger>
       <Select.Menu>

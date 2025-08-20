@@ -41,10 +41,10 @@ interface IControlPanelProps {
 function ControlWrapper({ displayName, children }: IControlWrapperProps) {
   return displayName
     ? (
-        <>
+        <label style={{ display: 'contents' }}>
           <Text>{displayName}</Text>
           {children}
-        </>
+        </label>
       )
     : (
         children
