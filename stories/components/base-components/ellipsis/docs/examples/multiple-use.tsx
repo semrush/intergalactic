@@ -13,7 +13,11 @@ const Demo = () => {
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
+        {
+          name: 'vol',
+          children: 'Vol.',
+          gtcWidth: '100px',
+          ref: containerRef },
       ]}
       renderCell={(props) => {
         if (props.columnName === 'vol') {

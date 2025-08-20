@@ -1,15 +1,23 @@
-import type Breadcrumbs from '@semcore/breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import MultipleUseExample from './examples/multiple_use';
+import BasicUsageExample from './examples/basic-usage';
+import MultipleUseExample from './examples/multiple-use';
+import UseEllipsisHookExample from './examples/use-ellipsis-hook';
 
-const meta: Meta<typeof Breadcrumbs> = {
+const meta: Meta = {
   title: 'Components/Base-Components/Ellipsis/Docs',
 };
 
-export default meta;
-type Story = StoryObj<typeof Breadcrumbs>;
+export const BasicUsage: StoryObj = {
+  render: BasicUsageExample,
+};
 
-export const MultipleUse: Story = {
+export const MultipleUse: StoryObj = {
   render: MultipleUseExample,
 };
+
+export const UseEllipsisHook: StoryObj = {
+  render: UseEllipsisHookExample,
+};
+
+export default meta;

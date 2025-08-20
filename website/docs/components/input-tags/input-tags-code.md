@@ -6,6 +6,10 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 ## Entering and editing tags
 
+::: info
+The [old example with the deprecated Ellipsis component](../ellipsis/ellipsis-code#with-inputtags) was moved.
+:::
+
 Here's an example where tags have a limited width and can be edited by clicking on them.
 
 ::: sandbox

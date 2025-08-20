@@ -236,6 +236,10 @@ If the returned object includes a children property, it will override the defaul
 
 ## Sorting
 
+::: info
+The [old example with the deprecated Ellipsis component](../../components/ellipsis/ellipsis-code#with-datatable) was moved.
+:::
+
 To enable column sorting:
 
 1. Set the `sortable` property on the column.

@@ -36,6 +36,10 @@ When displaying a table in a card, set `Card.Body` paddings to `0 0 var(--interg
 
 ## Truncating text with ellipsis
 
+::: info
+The [old example with the deprecated Ellipsis component](../ellipsis/ellipsis-code#with-card) was moved.
+:::
+
 ::: sandbox
 
 <script lang="tsx">

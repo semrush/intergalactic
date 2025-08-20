@@ -5,7 +5,11 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 ## Breadcrumbs item truncation
 
-Try resizing the page to see how the links adjust. If the text in a link is too long, it will be truncated with an ellipsis. You can also place the `<Breadcrumbs.Item />` within other components.
+::: info
+The [old example with the deprecated Ellipsis component](../ellipsis/ellipsis-code#with-breadcrumbs) was moved.
+:::
+
+Try resizing the page to see how the links adjust. If the text in a link is too long, it will be truncated with an ellipsis.
 
 ::: sandbox
 
