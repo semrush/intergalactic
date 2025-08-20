@@ -2,6 +2,7 @@ import type Breadcrumbs from '@semcore/breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import LinkExample from './examples/link_in_box_ellipsis';
+import TextExample from './examples/text_cases';
 import TrimWithTextSizeExample from './examples/trim_with_special_text_size';
 
 const meta: Meta<typeof Breadcrumbs> = {
@@ -17,4 +18,8 @@ export const Link: Story = {
 
 export const TrimWithTextSize: Story = {
   render: TrimWithTextSizeExample,
+};
+
+export const Text: Story = {
+  render: TextExample,
 };
