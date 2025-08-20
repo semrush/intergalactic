@@ -32,7 +32,7 @@ export type FeaturePopoverPopperProps = PopperPopperProps & {
    * @default 200
    */
   duration?: number;
-
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 
