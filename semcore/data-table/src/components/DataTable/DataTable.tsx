@@ -92,6 +92,7 @@ class DataTableRoot<
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
   private spinnerRef = React.createRef<HTMLDivElement>();
+  private containerResizeEndTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   private gridAreaGroupMap = new Map<number, string>();
 
@@ -758,6 +759,14 @@ class DataTableRoot<
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
+  handleContainerResizeEnd = () => {
+    if (this.containerResizeEndTimeoutId) {
+      clearTimeout(this.containerResizeEndTimeoutId);
+    }
+
+    this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
+  };
+
   render() {
     const SDataTable = Root;
     const {
@@ -814,6 +823,7 @@ class DataTableRoot<
         styles={scrollStyles}
         onScroll={this.handleScroll}
         disableAutofocusToContent={true}
+        onResize={this.handleContainerResizeEnd}
       >
         <ScrollArea.Container
           tabIndex={-1}
