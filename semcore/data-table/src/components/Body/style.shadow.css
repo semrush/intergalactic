@@ -2,6 +2,11 @@ SBody, SRow, SRowGroup, SAccordionRows {
   display: contents;
 }
 
+SBody[isHeaderLayoutDifferent][gridTemplateColumns] {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+}
+
 SBody[compact] {
   SCell {
     padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);

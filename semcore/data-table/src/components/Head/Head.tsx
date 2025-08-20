@@ -140,6 +140,7 @@ class HeadRoot<
           aria-rowindex={1}
           sticky={sticky}
           use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+          use:headerGridTemplateColumnsWidth={this.asProps.headerGridTemplateColumnsWidth?.join(' ')}
         >
           {selectedRows && (
             <SHeadCheckboxCol

@@ -353,6 +353,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       uid,
       rows,
       renderCellOverlay,
+      isHeaderLayoutDifferent,
+      gridTemplateColumns,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -467,7 +469,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
 
     return sstyled(styles)(
-      <SBody render={Box} __excludeProps={['data']}>
+      <SBody render={Box} isHeaderLayoutDifferent={isHeaderLayoutDifferent} use:gridTemplateColumns={gridTemplateColumns.join(' ')} __excludeProps={['data']}>
         {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {

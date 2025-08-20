@@ -29,6 +29,9 @@ export type DataTableHeadProps = {
 
   /** Outer ref for the header */
   ref?: React.Ref<HTMLDivElement>;
+
+  /** Configuration for header columns layout.  */
+  headerGridTemplateColumnsWidth?: string[];
 };
 
 export type HeadPropsInner<

@@ -242,6 +242,12 @@ class DataTableRoot<
     return scrollDirection;
   }
 
+  get isHeaderLayoutDifferent() {
+    const { headerProps } = this.asProps;
+
+    return !!headerProps?.headerGridTemplateColumnsWidth && headerProps.headerGridTemplateColumnsWidth.length > 0;
+  }
+
   getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
@@ -328,6 +334,7 @@ class DataTableRoot<
       compact: Boolean(compact),
       gridTemplateColumns,
       gridTemplateAreas,
+      isHeaderLayoutDifferent: this.isHeaderLayoutDifferent,
       loading,
       headerHeight: this.getHeaderHeight(),
       stickyHeader: headerProps?.sticky,
@@ -839,6 +846,7 @@ class DataTableRoot<
             gridTemplateColumns={gridTemplateColumns.join(' ')}
             gridTemplateAreas={gridTemplateAreas.join(' ')}
             gridTemplateRows={gridTemplateRows}
+            isHeaderLayoutDifferent={this.isHeaderLayoutDifferent}
             w='100%'
             use:data={undefined}
             use:w={undefined}
