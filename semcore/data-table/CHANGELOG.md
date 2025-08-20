@@ -17,7 +17,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Type description for `DataTableProps`/`CellRenderProps`.
 
-
 ## [16.1.0] - 2025-08-08
 
 ### Added
