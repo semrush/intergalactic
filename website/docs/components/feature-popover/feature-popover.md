@@ -32,6 +32,16 @@ const PLACEMENT = [
 const App = PlaygroundGeneration((createGroupWidgets) => {
   const { bool, select, onChange } = createGroupWidgets('FeaturePopover');
 
+const theme = select({
+    key: 'theme',
+    defaultValue: 'accent',
+    label: 'Theme',
+    options: ['accent', 'neutral'].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
   const closeIcon = bool({
     key: 'icon',
     defaultValue: true,
@@ -49,16 +59,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     defaultValue: 'bottom-start',
     label: 'Placement',
     options: PLACEMENT.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
-
-const theme = select({
-    key: 'theme',
-    defaultValue: 'accent',
-    label: 'Theme',
-    options: ['accent', 'neutral'].map((value) => ({
       name: value,
       value,
     })),
@@ -84,7 +84,7 @@ const theme = select({
         aria-label="New feature"
       >
         <Text size={200}>
-          Use this popover to highlight new product features and guide users through them.
+          Use the accent theme to highlight new features, and the neutral theme for changes and onboarding in global navigation.
         </Text>
       </FeaturePopover.Popper>
     </FeaturePopover>
