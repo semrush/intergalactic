@@ -73,16 +73,14 @@ const Demo = () => {
           return numberFormat.format(value);
         }}
       />
-      <Flex gap={4}>
+      <Flex gap={4} mt={4}>
         <Pagination
-          mt={4}
           totalPages={Math.ceil(tableData.length / numLim)}
           currentPage={currentPage + 1}
           onCurrentPageChange={(page) => setCurrentPage(page - 1)}
         />
         <Select
           aria-label='Table rows on the page'
-          mt={4}
           value={numLim}
           onChange={setLimit}
           options={[{ value: 3, children: 3 }, { value: 5, children: 5 }, { value: 8, children: 8 }, { value: 10, children: 10 }]}
