@@ -81,7 +81,7 @@ const Demo = () => {
           onCurrentPageChange={(page) => setCurrentPage(page - 1)}
         />
         <Select
-          aria-label='Number of table rows on the page'
+          aria-label='Table rows on the page'
           mt={4}
           value={numLim}
           onChange={setLimit}
