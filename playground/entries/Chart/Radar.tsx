@@ -46,7 +46,6 @@ function getJSX(props: RadarChartJSXProps) {
 const entry: PlaygroundEntry<RadarChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    ...ChartControls,
     radarChartProps: {
       type: 'group',
       groupName: 'Radar chart props',
@@ -63,6 +62,7 @@ const entry: PlaygroundEntry<RadarChartJSXProps> = {
         },
       },
     },
+    ...ChartControls,
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],

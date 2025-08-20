@@ -24,6 +24,46 @@ export type LegendChartProps = {
 };
 
 export default {
+  legendProps: {
+    type: 'group' as const,
+    groupName: 'Legend props',
+    visibleIf: [{ dependsOn: 'showLegend.commonChartProps', equals: true }],
+    controls: {
+      direction: {
+        type: 'inline-radio' as const,
+        value: 'row',
+        options: [...LegendDirection],
+        displayName: 'Direction',
+      },
+      size: {
+        type: 'inline-radio' as const,
+        value: 'm',
+        options: [...Size],
+        displayName: 'Size',
+      },
+      shape: {
+        type: 'select' as const,
+        value: 'Checkbox',
+        options: [...Shape],
+        displayName: 'Shape',
+      },
+      disableSelectItems: {
+        type: 'boolean' as const,
+        value: false,
+        displayName: 'Disable select',
+      },
+      disableHoverItems: {
+        type: 'boolean' as const,
+        value: false,
+        displayName: 'Disable hover',
+      },
+      patterns: {
+        type: 'boolean' as const,
+        value: false,
+        displayName: 'Patterns',
+      },
+    },
+  },
   commonChartProps: {
     type: 'group' as const,
     groupName: 'Common chart props',
@@ -64,46 +104,6 @@ export default {
         type: 'boolean' as const,
         value: true,
         displayName: 'Legend',
-      },
-    },
-  },
-  legendProps: {
-    type: 'group' as const,
-    groupName: 'Legend props',
-    visibleIf: [{ dependsOn: 'showLegend.commonChartProps', equals: true }],
-    controls: {
-      direction: {
-        type: 'inline-radio' as const,
-        value: 'row',
-        options: [...LegendDirection],
-        displayName: 'Direction',
-      },
-      size: {
-        type: 'inline-radio' as const,
-        value: 'm',
-        options: [...Size],
-        displayName: 'Size',
-      },
-      shape: {
-        type: 'select' as const,
-        value: 'Checkbox',
-        options: [...Shape],
-        displayName: 'Shape',
-      },
-      disableSelectItems: {
-        type: 'boolean' as const,
-        value: false,
-        displayName: 'Disable select',
-      },
-      disableHoverItems: {
-        type: 'boolean' as const,
-        value: false,
-        displayName: 'Disable hover',
-      },
-      patterns: {
-        type: 'boolean' as const,
-        value: false,
-        displayName: 'Patterns',
       },
     },
   },

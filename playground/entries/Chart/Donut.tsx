@@ -53,7 +53,6 @@ function getJSX(props: DonutChartJSXProps) {
 const entry: PlaygroundEntry<DonutChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    ...ChartControls,
     donutProps: {
       type: 'group',
       groupName: 'Donut props',
@@ -75,6 +74,7 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
         },
       },
     },
+    ...ChartControls,
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],

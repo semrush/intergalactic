@@ -59,7 +59,6 @@ function getJSX(props: AreaChartJSXProps) {
 const entry: PlaygroundEntry<AreaChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    ...ChartControls,
     linearChartProps: {
       type: 'group',
       groupName: 'Linear chart props',
@@ -82,6 +81,7 @@ const entry: PlaygroundEntry<AreaChartJSXProps> = {
         },
       },
     },
+    ...ChartControls,
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
