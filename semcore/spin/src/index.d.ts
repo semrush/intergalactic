@@ -19,7 +19,7 @@ export type SpinProps = BoxProps & {
    * otherwise only horizontal alignment will occur.
    * */
   centered?: boolean;
-
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

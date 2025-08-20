@@ -94,19 +94,24 @@ export type DataTableProps<
      */
     expandedRows?: Set<UniqKeyType>;
 
+    /** Configuration for virtual scroll */
     virtualScroll?: VirtualScroll;
 
+    /** Configuration for table columns including headers, sorting, and layout */
     columns: ColumnsConfig;
 
+    /** Configuration for sticky headers, height, scroll bars, etc. */
     headerProps?: DataTableHeadProps;
 
-    rowProps?: DataTableBodyProps<UniqKeyType>['rowProps'];
+    /** Function to add custom props to rows */
+    rowProps?: DataTableBodyProps<Data, UniqKeyType>['rowProps'];
 
-    renderCell?: DataTableBodyProps<UniqKeyType>['renderCell'];
+    /** Custom cell renderer function */
+    renderCell?: DataTableBodyProps<Data, UniqKeyType>['renderCell'];
 
     /**
-   * Name of a unique key for each row data item
-   */
+     * Name of a unique key for each row data item
+     */
     uniqueRowKey?: UniqKey;
 
     /**
@@ -114,6 +119,7 @@ export type DataTableProps<
      */
     selectedRows?: UniqKeyType[];
 
+    /** Callback when row selection changes */
     onSelectedRowsChange?: (
       selectedRows: UniqKeyType[],
       event?: React.SyntheticEvent<HTMLElement>,

@@ -6,7 +6,7 @@ import AccordionCollapseExample from './examples/in-accordion-collapse';
 import ModalExample from './examples/in-modal-fadeinout-slide';
 
 const meta: Meta = {
-  title: 'Components/Animation/Documentation',
+  title: 'Components/Animation/Tests',
 };
 
 export const AnimationBase: StoryObj = {

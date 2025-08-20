@@ -2,6 +2,7 @@ import Wizard from '@semcore/wizard';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SteppersAndButtonsStatesExample from './examples/steps_and_buttons_states';
+import WizardContentExample from './examples/wizard-content';
 
 const meta: Meta<typeof Wizard> = {
   title: 'Components/Wizard/Tests',
@@ -13,4 +14,8 @@ type Story = StoryObj<typeof Wizard>;
 
 export const SteppersAndButtonsStates: Story = {
   render: SteppersAndButtonsStatesExample,
+};
+
+export const WizardContent: Story = {
+  render: WizardContentExample,
 };

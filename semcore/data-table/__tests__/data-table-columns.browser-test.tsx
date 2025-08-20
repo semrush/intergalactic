@@ -189,4 +189,28 @@ test.describe('Columns', () => {
       expect(column).toHaveAttribute('aria-describedby');
     }
   });
+
+  test('Verify head column shadow for fixed columns with different screen sizes', async ({ page }) => {
+    const standPath = 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'end');
+
+    page.setContent(htmlContent);
+
+    const lastColumn = await page.locator('[data-ui-name="Head.Column"]').last();
+
+    let isShadowExist = await lastColumn.evaluate((node) => {
+      // default `left` value is `auto`
+      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
+    });
+
+    expect(isShadowExist).toBe(false);
+
+    await page.setViewportSize({ width: 400, height: 700 });
+
+    isShadowExist = await lastColumn.evaluate((node) => {
+      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
+    });
+
+    expect(isShadowExist).toBe(true);
+  });
 });
