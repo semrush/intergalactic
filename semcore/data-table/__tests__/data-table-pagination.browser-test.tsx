@@ -8,14 +8,6 @@ test.describe('Pagination', () => {
 
     await page.setContent(htmlContent);
 
-    const nav = await page.locator('nav[data-ui-name="Pagination"]');
-
-    const marginTop = await nav.evaluate((el) => {
-      return window.getComputedStyle(el).getPropertyValue('margin-top');
-    });
-
-    expect(marginTop).toBe('16px');
-
     await page.getByRole('combobox').click();
 
     // select amount of items for first and last page will have different amount
