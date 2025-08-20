@@ -70,7 +70,7 @@ function Code({ sourceCode, link }: ICodeProps) {
 
               return [
                 {
-                  content: `${lineNumber}`.padEnd(padding),
+                  content: `${lineNumber}`.padStart(padding),
                   htmlStyle: {
                     'color': '#6D7DA7',
                     'margin-right': 'var(--intergalactic-spacing-3x)',

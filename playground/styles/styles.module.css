@@ -86,7 +86,7 @@
 
 .source-code {
   background-color: #0C0E13;
-  padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-5x);
+  padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-4x);
   overflow: auto;
   max-height: 260px;
 
@@ -98,7 +98,7 @@
   }
 
   code {
-    font-family: 'Inter';
+    font-family: var(--vp-font-family-mono);
   }
 }
 

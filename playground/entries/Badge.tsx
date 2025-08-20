@@ -19,7 +19,7 @@ const entry: PlaygroundEntry<BadgeJSXProps> = {
       type: 'select',
       displayName: 'Color',
       options: ['text-primary', 'text-primary-invert'],
-      value: 'text-primary',
+      value: 'text-primary-invert',
       colorOptions: {
         withIntergalacticPrefix: true,
       },
