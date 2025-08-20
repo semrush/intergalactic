@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Data` type to `cellRender` function.
 
+### Fixed
+
+- Unnecessary re-render when data was updated but old values were still used.
+
 ### Changed
 
 - Type description for `DataTableProps`/`CellRenderProps`.
