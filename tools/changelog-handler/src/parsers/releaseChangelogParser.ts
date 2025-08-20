@@ -79,6 +79,8 @@ export const releaseChangelogParser = (
         );
       }
       traversingComponent = component;
+    } else if (token.type === 'heading' && token.level === 4) {
+      // just skip changelogs for major
     } else if (
       traversingVersion &&
       traversingDate &&
