@@ -1,4 +1,5 @@
 import BulkTextarea from '@semcore/bulk-textarea';
+import type { BulkTextareaProps } from '@semcore/bulk-textarea';
 import Button from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -26,7 +27,7 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-const Demo = () => {
+const Demo = (props: BulkTextareaProps) => {
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<any[]>([]);
 
@@ -55,15 +56,15 @@ const Demo = () => {
         lineValidation={validateRow}
         errors={errors}
         onErrorsChange={setErrors}
-        showErrors={true}
-        maxLines={10}
-        size='l'
+        showErrors={props.showErrors}
+        maxLines={props.maxLines}
+        size={props.size}
         linesDelimiters={[',']}
-        readonly={false}
-        disabled={false}
+        readonly={props.readonly}
+        disabled={props.disabled}
         placeholder='Enter or paste a list using comma or Enter'
-        minRows={2}
-        maxRows={10}
+        minRows={props.minRows}
+        maxRows={props.maxRows}
         validateOn={['blur']}
         pasteProps={{
           delimiter: '\n',
@@ -95,5 +96,18 @@ const Demo = () => {
     </Box>
   );
 };
+
+export const defaultProps: BulkTextareaProps = {
+
+  showErrors: true,
+  readOnly: false,
+  disabled: false,
+  size: 'm',
+  maxLines: 10,
+  minRows: 2,
+  maxRows: 10,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
