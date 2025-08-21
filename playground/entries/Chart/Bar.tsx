@@ -9,8 +9,7 @@ import createGithubLink from '../../utils/createGHLink';
 
 type BarChartProps = {
   commonChartProps: CommonChartProps;
-  legendProps: LegendChartProps;
-  withTrend: boolean;
+  legendProps: LegendChartProps & { withTrend: boolean };
 };
 export type BarChartJSXProps = JSXProps<BarChartProps>;
 
@@ -36,6 +35,7 @@ const trendData = {
 };
 
 function getJSX(props: BarChartJSXProps) {
+  const { withTrend, ...legendProps } = props.legendProps;
   return (
     <Chart.Bar
       plotWidth={300}
@@ -45,11 +45,11 @@ function getJSX(props: BarChartJSXProps) {
       aria-label='Bar chart'
       {...props.commonChartProps}
       {...(props.legendProps && {
-        legendProps: props.legendProps,
+        legendProps,
         showLegend: props.commonChartProps.showLegend as true,
       })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
-      {...(props.withTrend && { trend: trendData })}
+      {...(withTrend && { trend: trendData })}
     />
   );
 }
@@ -57,12 +57,19 @@ function getJSX(props: BarChartJSXProps) {
 const entry: PlaygroundEntry<BarChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    withTrend: {
-      type: 'boolean',
-      value: false,
-      displayName: 'Trend',
-    },
+
     ...ChartControls,
+    legendProps: {
+      ...ChartControls.legendProps,
+      controls: {
+        ...ChartControls.legendProps.controls,
+        withTrend: {
+          type: 'boolean',
+          value: false,
+          displayName: 'Trend',
+        },
+      },
+    },
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
