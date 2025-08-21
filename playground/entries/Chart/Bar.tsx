@@ -57,7 +57,6 @@ function getJSX(props: BarChartJSXProps) {
 const entry: PlaygroundEntry<BarChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-
     ...ChartControls,
     legendProps: {
       ...ChartControls.legendProps,
