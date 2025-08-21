@@ -2,6 +2,12 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead[isDataEmpty][gridTemplateColumns] {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+  overflow: auto;
+}
+
 SHead[animationDuration] > SColumn {
   transition: top var(--animationDuration) ease-out;
 }

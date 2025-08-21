@@ -106,6 +106,24 @@ test.describe('Loading states', () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify empty table scroll\'s state when column width is defined', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/table-states-tests/nothing-found.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const head = page.locator('[data-ui-name="DataTable.Head"]');
+    let hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
+
+    expect(hasScroll).toBe(false);
+
+    page.setViewportSize({ width: 500, height: 700 });
+
+    hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
+
+    expect(hasScroll).toBe(true);
+  });
 });
 
 test.describe('Additional states', () => {
