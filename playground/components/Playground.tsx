@@ -112,8 +112,9 @@ function processControls<Props extends PlaygroundComponentProps>(
       continue;
     }
 
-    if ('options' in control && typeof control.options === 'function') {
-      const options = control.options(componentProps);
+    if ('options' in control) {
+      const options = typeof control.options === 'function' ? control.options(componentProps) : [...control.options];
+
       const currentValue = String(componentProps[prop]);
       const isValueIncludedInOptions = options.includes(currentValue);
 
