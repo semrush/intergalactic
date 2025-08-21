@@ -299,17 +299,19 @@
 
 ## [16.0.0] - 2025-05-20
 
-### Components structure changes (new packages)
+### Global
+
+#### Components structure changes (new packages)
 - New `semcore/base-components` package combines packages: `animation` ,`breakpoints` , `flex-box` , `grid` , `neighbor-location` , `outside-click` , `popper` , `portal` , `scroll-area`.
 - `semcore/core` package combines: `semcore/core` and `semcore/utils` packages.
 
-### Deprecations and removals
+#### Deprecations and removals
 - Marked as deprecate (we’ll delete those packages in Major v17) `format-text` , `sticky` , `InputMask`.
 - Replaced FormatText with Text from semcore/typography.
 - Delete the email package and documentation → use Dionysus (Quazar docs, recording of the presentation, Figma library). You can direct all questions about emails and their templates to the #wire-team channel.
 - Removed ‘External’ pack of icons (like FacebookClick, linkedinLike, PinterestSend, etc.) that are not used.
 
-### New Data-table
+#### New Data-table
 - Data-tables are based on Grid.
 - API is changed.
 - No elements except table header and table rows can be direct children of the table, all custom elements should be placed in cells or outside of the table (except when `aria-busy` is enabled).
@@ -321,17 +323,17 @@
 - built-in empty state based on `WidgetEmtpy`, which displays automatically when the data is empty. Use the `renderEmptyData` prop to render your own empty state.
 - built-in loading state based on `SpinContainer` (`loading` prop).
 
-### Table performance
+#### Table performance
 - The table with interactive elements inside the cell does not re-render on hover-actions.
 - Improved the data table performance: our tests on the basic tables with 50/100 rows and tooltips inside show 2-4 times faster speed [depends on browser].
 
-### Focus
+#### Focus
 - Switch from custom keyboardFocus logic to :focus-visible for all component packages
 
-### Tooltip
+#### Tooltip
 - Changed Tooltip.Popper initialization process - the popper container is not added to the DOM before the tooltip is shown the first time.
 
-### Minor (but major) changes
+#### Minor (but major) changes
 - Fixed wrong paddings in Wizard.Stepper.
 - Updated Addon and Circle styles in Tag, so that Circle and Addon can be displayed together with correct indents.
 - Moved outline keyboard-focus tokens inside their "parent" tokens. Removed `keyboard-focus-invert-outline` , added `keyboard-focus-invert`.
