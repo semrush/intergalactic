@@ -44,7 +44,7 @@ const Demo = () => {
     });
 
     setErrors(newErrors);
-  }, [value]);
+  }, [value, setErrors]);
 
   return (
     <Box>
@@ -55,6 +55,7 @@ const Demo = () => {
         lineValidation={validateRow}
         errors={errors}
         onErrorsChange={setErrors}
+        showErrors={true}
         maxLines={10}
         size='l'
         linesDelimiters={[',']}
