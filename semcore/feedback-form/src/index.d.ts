@@ -9,7 +9,7 @@ import { default as FeedbackRating } from './component/feedback-rating/FeedbackR
 /** @deprecated */
 export type IFeedbackForm = FeedbackFormProps;
 export type FeedbackFormProps = FormProps & {
-  /* The event is called when the form is submitted */
+  /** The event is called when the form is submitted */
   onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;
   /**
    * The property is in charge of the spinner showing

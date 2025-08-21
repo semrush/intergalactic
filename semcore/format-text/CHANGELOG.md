@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.8] - 2025-08-29
+
+### Changed
+
+- Type description for `FormatTextProps`.
+
 ## [16.0.7] - 2025-08-07
 
 ### Changed

@@ -16,12 +16,19 @@ type AreaItem = {
 export type LineChartData = Array<Record<string, string | number | typeof interpolateValue | Date>>;
 
 export type LineChartProps = BaseChartProps<LineChartData> & {
+  /**  Field name that groups the data points */
   groupKey: string;
+  /** Optional area data for rendering filled areas under lines */
   area?: Record<LegendItemKey, AreaItem[]>;
+  /** Custom x-axis scale */
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
+  /** Controls whether to display dots on the line chart */
   showDots?: boolean;
+  /** D3 curve factory for line interpolation */
   curve?: CurveFactory;
+  /** Curve factory specifically for area rendering */
   areaCurve?: CurveFactory;
   /** Callback triggered when a user clicks on a line */
   onClickLine?: (index: number, event: React.SyntheticEvent) => void;

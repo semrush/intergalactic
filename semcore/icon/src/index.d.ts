@@ -6,8 +6,11 @@ import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFoc
 export interface IIconProps extends IconProps, UnknownProperties {}
 export type IconProps = BoxProps &
   KeyboardFocusProps & {
+    /** Icon width */
     width?: string | number;
+    /** Icon height */
     height?: string | number;
+    /** SVG viewBox attribute */
     viewBox?: string;
     /** Make an icon interactive */
     interactive?: boolean;

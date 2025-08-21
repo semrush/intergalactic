@@ -92,6 +92,8 @@ export default defineConfig([
       'import/named': 'off',
       'import/no-named-as-default': 'off',
 
+      'no-console': 'error',
+
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
@@ -101,6 +103,12 @@ export default defineConfig([
       '@stylistic/no-mixed-operators': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       'no-prototype-builtins': 'off',
+    },
+  },
+  {
+    files: ['tools/**/*', 'website/**/*', 'stories/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
+    rules: {
+      'no-console': 'off',
     },
   },
 ]);
