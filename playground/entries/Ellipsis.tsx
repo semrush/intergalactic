@@ -43,6 +43,7 @@ const entry: PlaygroundEntry<EllipsisJSXProps> = {
       type: 'text-number',
       value: 1,
       displayName: 'Number of lines',
+      visibleIf: [{ dependsOn: 'trim', equals: 'end' }],
     },
   },
   link: createGithubLink('ellipsis'),

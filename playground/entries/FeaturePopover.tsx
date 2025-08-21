@@ -1,4 +1,4 @@
-import type { FeaturePopoverProps } from '@semcore/feature-popover';
+import type { FeaturePopoverProps as FeaturePopoverComponentProps } from '@semcore/feature-popover';
 import FeaturePopover from '@semcore/feature-popover';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/ui/button';
@@ -8,9 +8,11 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
+type FeaturePopoverProps = FeaturePopoverComponentProps & {
+  closeIcon: boolean;
+};
 export type FeaturePopoverJSXProps = JSXProps<FeaturePopoverProps>;
 
-// FeaturePopoverJSXProps resolves to any cuz of UniqueIDProps.
 function getJSX({ handleControlChange, closeIcon, ...restProps }: FeaturePopoverJSXProps) {
   return (
     <FeaturePopover {...restProps}>
@@ -32,6 +34,12 @@ function getJSX({ handleControlChange, closeIcon, ...restProps }: FeaturePopover
 const entry: PlaygroundEntry<FeaturePopoverJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
+    theme: {
+      type: 'select',
+      displayName: 'Theme',
+      value: 'accent',
+      options: ['accent', 'neutral'],
+    },
     closeIcon: {
       type: 'boolean',
       value: true,
