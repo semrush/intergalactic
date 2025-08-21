@@ -139,7 +139,7 @@ function Playground<
   if (!config) return null;
 
   const { JSX, link, filterProps, JSXDisplayName } = config as PlaygroundEntry<Props>;
-  const controls = deepCopy(config.controls);
+  const controls = deepCopy(config.controls as ControlsType<Props>);
 
   const initialProcessedControls = useMemo(() => {
     const initialComponentProps = mapControlsStateToProps(controls);
