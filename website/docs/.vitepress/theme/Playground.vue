@@ -13,10 +13,10 @@ const props = defineProps<{
 }>()
 
 const events = [
-  'playground_view-source-btn-click',
-  'playground_copy-code-btn-click',
-  'playground_show-code-btn-click',
-  'playground_hide-code-btn-click'
+  'playground:view-source-btn-click',
+  'playground:copy-code-btn-click',
+  'playground:show-code-btn-click',
+  'playground:hide-code-btn-click'
 ]
 
 const root = ref<HTMLElement | null>(null)
@@ -28,7 +28,7 @@ const mountReact = () => {
 
   events.forEach(event => {
     root.value!.addEventListener(event, () => {
-      logEvent(event);
+      logEvent(event, { pathname: window.location.pathname });
     }, { signal: eventsAbortController.signal })
   })
 
