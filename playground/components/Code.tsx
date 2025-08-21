@@ -106,7 +106,7 @@ function Code({ sourceCode, link }: ICodeProps) {
     <Box className={styles.code}>
       <Accordion onChange={handleAccordionChange}>
         <Accordion.Item value={0}>
-          <Accordion.Item.Toggle my={3} mx={4}>
+          <Accordion.Item.Toggle py={3} px={4}>
             <Accordion.Item.ToggleButton>
               <ExpandAlt mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
               <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
