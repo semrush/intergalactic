@@ -21,6 +21,10 @@ import Tooltip from '@semcore/tooltip';
 
 ## Hint
 
+::: tip
+Try the [new, more lightweight and performant implementation of Hint](../../utils/hint/hint-api).
+:::
+
 ```jsx
 import { Hint } from '@semcore/tooltip';
 <Hint />;

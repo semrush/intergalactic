@@ -1,5 +1,5 @@
 ---
-title: Ellipsis
+title: ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
@@ -11,7 +11,7 @@ import { Text } from '@semcore/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration((preview) => {
-  const { radio, text } = preview('Dropdown');
+  const { radio, text } = preview();
 
   const trim = radio({
     key: 'trim',
@@ -33,7 +33,7 @@ const App = PlaygroundGeneration((preview) => {
   };
 
   return (
-    <Text w={200} size={200} display="inline-block" ellipsis={ellipsisProps}>
+    <Text w={200} size={300} display="inline-block" ellipsis={ellipsisProps}>
       Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.
     </Text>
   );

@@ -1,15 +1,8 @@
 ---
 title: Hint
 fileSource: hint
-tabs: Design('hint'), API('hint-api')
+tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Changelog('hint-changelog')
 ---
-
-The Hint component provides contextual help or guidance to users by displaying a brief message when they interact with an element.
-It can be triggered on hover or focus.
-Use it to clarify UI behavior, explain form fields, or provide inline tips.
-The component supports customizable placement, and show/hide timeouts.
-
-**Example**:
 
 ::: react-view
 
@@ -18,38 +11,71 @@ import React from 'react';
 import { Hint } from '@semcore/base-components';
 import Button from '@semcore/button';
 import FileExportM from '@semcore/icon/FileExport/m';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const App = () => {
+const App = PlaygroundGeneration((preview) => {
+  const { select } = preview();
+
+  const trim = select({
+    key: 'trim',
+    defaultValue: 'end',
+    label: 'Trimming type',
+    options: ['end', 'middle'],
+  });
+    
   const ref = React.useRef();
-
-    return (
-        <>
-            <Button ref={ref}>
-              <Button.Addon tag={FileExportM}/>
-            </Button>
-            <Hint triggerRef={ref} placement="right">Export to PDF</Hint> {/* <=== will be shown when the button is hovered of focused */}
-        </>
-    );
-};
+ 
+  return (
+    <>
+      <Button ref={ref}>
+          <Button.Addon><FileExportM /></Button.Addon>
+      </Button>
+      <Hint triggerRef={ref} placement="right">Export to PDF</Hint>
+    </>
+  );
+});
 </script>
 
 :::
 
-```javascript
-import { Hint } from '@semcore/base-components';
-import Button from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
+::: tip
+`Hint` from `@semcore/base-components` is a new, more lightweight and performant implementation of `Hint` from `@semcore/tooltip`, with identical design and behavior.
+:::
 
-export default () => {
-    const ref = React.useRef();
+Use `Hint` to provide labels for elements without visible text or with truncated text.
 
-    return (
-        <>
-            <Button ref={ref}>
-                <Button.Addon tag={FileExportM}/>
-            </Button>
-            <Hint triggerRef={ref}>Export to PDF</Hint> {/* <=== will be shown when the button is hovered of focused */}
-        </>
-    );
-}
-```
+`Hint` is triggered on mouse hover or keyboard focus.
+
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/basic-usage.tsx';
+</script>
+
+:::
+
+## Placement
+
+You can set your own placement of the `Hint`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/placement.tsx';
+</script>
+
+:::
+
+## Timeout
+
+You can customize timeouts for showing and hiding the `Hint`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/timeout.tsx';
+</script>
+
+:::

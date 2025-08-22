@@ -778,7 +778,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/utils/ellipsis/ellipsis',
             activeMatch: '/utils/ellipsis/',
-            text: 'Ellipsis',
+            text: 'ellipsis',
           },
           {
             link: '/utils/hint/hint',
