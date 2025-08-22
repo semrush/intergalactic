@@ -92,6 +92,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
         setError(null);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
         setError(error);
       });

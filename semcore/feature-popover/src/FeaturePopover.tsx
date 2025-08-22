@@ -1,13 +1,19 @@
-import { Animation } from '@semcore/animation';
+import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
+import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
-import Popper from '@semcore/popper';
 import React from 'react';
 
+import type {
+  FeaturePopoverProps,
+  FeaturePopoverComponent,
+  FeaturePopoverSpotProps,
+  FeaturePopoverPopperProps,
+  FeaturePopoverPopperInnerProps,
+} from './FeaturePopover.type';
 import style from './style/feature-popover.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -35,7 +41,11 @@ const stylePopper = sstyled.css`
   }
 `;
 
-class FeaturePopover extends Component {
+const enhance = [
+  i18nEnhance(localizedMessages),
+] as const;
+
+class FeaturePopover extends Component<FeaturePopoverProps, {}, {}, typeof enhance> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -46,9 +56,10 @@ class FeaturePopover extends Component {
     interaction: 'none',
     i18n: localizedMessages,
     locale: 'en',
+    theme: 'accent',
   };
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = enhance;
 
   defaultModifiers = [
     {
@@ -63,26 +74,27 @@ class FeaturePopover extends Component {
     };
   }
 
-  handleVisibleChange = (visible) => {
+  handleVisibleChange = (visible: boolean) => {
     this.handlers.visible(visible);
   };
 
-  handleCloseClick = (e) => {
+  handleCloseClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     this.handlers.visible(false, e);
   };
 
   getPopperProps() {
-    const { visible, getI18nText } = this.asProps;
+    const { visible, getI18nText, theme } = this.asProps;
     return {
       visible,
       $onCloseClick: this.handleCloseClick,
       getI18nText,
+      theme,
     };
   }
 
   getSpotProps() {
-    const { visible } = this.asProps;
-    return { visible };
+    const { visible, theme } = this.asProps;
+    return { visible, theme };
   }
 
   render() {
@@ -99,7 +111,7 @@ class FeaturePopover extends Component {
   }
 }
 
-function Trigger({ Children, styles }) {
+function Trigger({ Children, styles }: IRootComponentProps) {
   const STrigger = Root;
   return sstyled(styles)(
     <STrigger render={Popper.Trigger} tag={Box} aria-haspopup={false}>
@@ -108,7 +120,7 @@ function Trigger({ Children, styles }) {
   );
 }
 
-class FeaturePopoverPopper extends Component {
+class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, [], FeaturePopoverPopperInnerProps> {
   static defaultProps = {
     closeIcon: false,
     duration: 200,
@@ -128,9 +140,10 @@ class FeaturePopoverPopper extends Component {
       getI18nText,
       zIndex,
       'aria-label': ariaLabel,
-      'aria-describedBy': ariaDescribedBy,
+      'aria-describedby': ariaDescribedBy,
       'aria-labelledby': ariaLabelledby,
       title,
+      theme,
     } = this.asProps;
 
     return sstyled(styles)(
@@ -161,7 +174,7 @@ class FeaturePopoverPopper extends Component {
                 aria-label={getI18nText('close')}
                 onClick={$onCloseClick}
                 use='tertiary'
-                theme='muted'
+                theme={theme === 'accent' ? 'muted' : 'invert'}
                 size='m'
                 addonLeft={CloseIcon}
                 type='button'
@@ -175,7 +188,7 @@ class FeaturePopoverPopper extends Component {
   }
 }
 
-const Spot = (props) => {
+const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
   const SSpot = Root;
 
   const { styles, visible } = props;
@@ -192,5 +205,6 @@ export default createComponent(
     Popper: FeaturePopoverPopper,
     Spot,
   },
+  // @ts-ignore
   { parent: Popper },
-);
+) as FeaturePopoverComponent;

@@ -8,9 +8,16 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `Data` type to `cellRender` function.
 
+### Fixed
+
+- Unnecessary re-render when data was updated but old values were still used.
+- Shadows remain after resizing table width.
+- `onSortChange` is called twice when click is on a sort icon.
+
 ### Changed
 
 - Type description for `DataTableProps`/`CellRenderProps`.
+- `AccordionToggle`'s `margin-left`.
 
 ## [16.1.0] - 2025-08-08
 

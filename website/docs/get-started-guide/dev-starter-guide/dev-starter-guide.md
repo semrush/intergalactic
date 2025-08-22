@@ -25,6 +25,20 @@ npm install @semcore/ui
 
 After the installation, you can access each component at `@semcore/{component_name}`.
 
+It's also possible to install just the required packages:
+
+::: code-group
+
+```sh [pnpm]
+pnpm add @semcore/core @semcore/base-components @semcore/data-table
+```
+
+```sh [npm]
+npm install @semcore/core @semcore/base-components @semcore/data-table
+```
+
+:::
+
 ## Key features
 
 We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
