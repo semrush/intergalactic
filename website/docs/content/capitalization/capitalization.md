@@ -84,19 +84,21 @@ With this type of case, most words in a titles or headings are in lowercase. You
 
 <DosDonts>
     <template #dont>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+      <img src="./static/modal_dont.png" style="margin: auto" alt="A modal window with a capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
+      <img src="./static/notice_dont.png" style="margin: auto" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/button_dont.png" style="margin: auto" alt="A button with capitalized text 'Your Bad Button'" />
+      <img src="./static/label_dont.png" style="margin: auto" alt="A field label element with capitailized text 'Email Address'" />
+      <img src="./static/menu_dont.png" style="margin: auto" alt="A menu list with capitalized text 'My profile, Subscription info, Log out'" />
+      <img src="./static/tag_dont.png" style="margin: auto" alt="A tag element with capitalized text 'Add tag'" />
       <p><span style="color: var(--intergalactic-text-link)">Contact Us</span></p>
     </template>
     <template #do>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+      <img src="./static/modal_do.png" style="margin: auto" alt="A modal window with a non-capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
+      <img src="./static/notice_do.png" style="margin: auto" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/button_do.png" style="margin: auto" alt="A button with non-capitalized text 'Good button'" />
+      <img src="./static/label_do.png" style="margin: auto" alt="A field label element with non-capitailized text 'Email Address'" />
+      <img src="./static/menu_do.png" style="margin: auto" alt="A menu list with non-capitalized text 'My profile, Subscription info, Log out'" />
+      <img src="./static/tag_do.png" style="margin: auto" alt="A tag element with non-capitalized text 'Add tag'" />
       <p><span style="color: var(--intergalactic-text-link)">Contact us</span></p>
     </template>
 </DosDonts>
