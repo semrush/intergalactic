@@ -15,7 +15,7 @@ export type FeaturePopoverJSXProps = JSXProps<FeaturePopoverProps>;
 
 function getJSX({ handleControlChange, closeIcon, ...restProps }: FeaturePopoverJSXProps) {
   return (
-    <FeaturePopover {...restProps}>
+    <FeaturePopover {...restProps} onVisibleChange={((value) => handleControlChange?.('visible', value))}>
       <FeaturePopover.Trigger>
         <Button>
           Feature

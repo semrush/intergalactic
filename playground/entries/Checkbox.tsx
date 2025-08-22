@@ -9,7 +9,7 @@ import createGithubLink from '../utils/createGHLink';
 export type CheckboxJSXProps = JSXProps<CheckboxProps>;
 
 function getJSX({ handleControlChange, ...checkboxProps }: CheckboxJSXProps) {
-  return <Checkbox {...checkboxProps} />;
+  return <Checkbox {...checkboxProps} onChange={((value) => handleControlChange?.('checked', value))} />;
 }
 
 const entry: PlaygroundEntry<CheckboxJSXProps> = {
@@ -49,6 +49,7 @@ const entry: PlaygroundEntry<CheckboxJSXProps> = {
     },
   },
   link: createGithubLink('checkbox'),
+  filterProps: ['onChange'],
 };
 
 export default entry;
