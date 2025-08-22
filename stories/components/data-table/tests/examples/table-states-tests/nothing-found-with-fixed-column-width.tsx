@@ -4,12 +4,6 @@ import { Box } from '@semcore/ui/base-components';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 
-const data = [
-  {
-    'keyword/kd/cpc/vol': '',
-  },
-];
-
 const Demo = () => {
   return (
     <Box w='100%' position='absolute' left={0}>

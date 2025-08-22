@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
@@ -132,8 +132,10 @@ class HeadRoot<
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
 
+    const Wrapper = isDataEmpty ? ScrollArea : React.Fragment;
+
     return sstyled(styles)(
-      <>
+      <Wrapper disableAutofocusToContent tabIndex={-1}>
         <SHead
           render={Box}
           role='row'
@@ -189,7 +191,7 @@ class HeadRoot<
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
           {getI18nText('sortableColumn')}
         </ScreenReaderOnly>
-      </>,
+      </Wrapper>,
     );
   }
 }
