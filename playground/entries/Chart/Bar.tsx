@@ -35,7 +35,7 @@ const trendData = {
 };
 
 function getJSX(props: BarChartJSXProps) {
-  const { withTrend, ...legendProps } = props.legendProps;
+  const { withTrend, ...legendProps } = props.legendProps ?? {};
   return (
     <Chart.Bar
       plotWidth={300}

@@ -112,19 +112,18 @@ function processControls<Props extends PlaygroundComponentProps>(
       continue;
     }
 
+    const currentValue = componentProps?.[prop];
+
     if ('options' in control) {
       const options = typeof control.options === 'function' ? control.options(componentProps) : [...control.options];
-
-      const currentValue = String(componentProps[prop]);
-      const isValueIncludedInOptions = options.includes(currentValue);
 
       result[prop] = {
         ...control,
         options,
-        value: isValueIncludedInOptions ? currentValue : options[0],
+        value: options.includes(currentValue) ? currentValue : options[0],
       };
     } else {
-      result[prop] = { ...control, value: componentProps?.[prop] || control.value };
+      result[prop] = { ...control, value: currentValue === undefined ? control.value : componentProps[prop] };
     }
   }
 
