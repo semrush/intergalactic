@@ -124,7 +124,7 @@ function processControls<Props extends PlaygroundComponentProps>(
         value: isValueIncludedInOptions ? currentValue : options[0],
       };
     } else {
-      result[prop] = { ...control, value: componentProps ? componentProps[prop] : control.value };
+      result[prop] = { ...control, value: componentProps?.[prop] || control.value };
     }
   }
 
