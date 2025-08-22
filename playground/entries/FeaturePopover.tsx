@@ -71,6 +71,7 @@ const entry: PlaygroundEntry<FeaturePopoverJSXProps> = {
     },
   },
   link: createGithubLink('feature-popover'),
+  filterProps: ['onVisibleChange'],
 };
 
 export default entry;
