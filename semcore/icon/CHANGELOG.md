@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.5.1] - 2025-08-29
+## [16.6.0] - 2025-08-29
+
+### Added
+
+- New `LinkExternalAlt` icon.
 
 ### Changed
 

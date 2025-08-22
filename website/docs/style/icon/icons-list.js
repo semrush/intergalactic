@@ -1292,6 +1292,20 @@ const iconsList = {
       ],
     },
     {
+      name: 'LinkExternalAlt',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'link',
+        'external',
+        'arrow',
+        'up',
+        'right',
+        'share',
+        'outside',
+      ],
+    },
+    {
       name: 'LinkInternal',
       size: ['l', 'm'],
       group: 'Status',

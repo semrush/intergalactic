@@ -2552,6 +2552,16 @@
       "import": "./LinkedIn/l/index.mjs",
       "types": "./LinkedIn/l/index.d.ts"
     },
+    "./LinkExternalAlt/m": {
+      "require": "./LinkExternalAlt/m/index.js",
+      "import": "./LinkExternalAlt/m/index.mjs",
+      "types": "./LinkExternalAlt/m/index.d.ts"
+    },
+    "./LinkExternalAlt/l": {
+      "require": "./LinkExternalAlt/l/index.js",
+      "import": "./LinkExternalAlt/l/index.mjs",
+      "types": "./LinkExternalAlt/l/index.d.ts"
+    },
     "./LinkInternal/m": {
       "require": "./LinkInternal/m/index.js",
       "import": "./LinkInternal/m/index.mjs",
