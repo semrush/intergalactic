@@ -4,40 +4,6 @@ fileSource: hint
 tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Changelog('hint-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import { Hint } from '@semcore/base-components';
-import Button from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const App = PlaygroundGeneration((preview) => {
-  const { select } = preview();
-
-  const trim = select({
-    key: 'trim',
-    defaultValue: 'end',
-    label: 'Trimming type',
-    options: ['end', 'middle'],
-  });
-    
-  const ref = React.useRef();
- 
-  return (
-    <>
-      <Button ref={ref}>
-          <Button.Addon><FileExportM /></Button.Addon>
-      </Button>
-      <Hint triggerRef={ref} placement="right">Export to PDF</Hint>
-    </>
-  );
-});
-</script>
-
-:::
-
 ::: tip
 `Hint` from `@semcore/base-components` is a new, more lightweight and performant implementation of `Hint` from `@semcore/tooltip`, with identical design and behavior.
 :::
