@@ -27,7 +27,7 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-const Demo = (props: BulkTextareaProps) => {
+const Demo = (props: BulkTextareaProps<string>) => {
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<any[]>([]);
 
@@ -97,10 +97,9 @@ const Demo = (props: BulkTextareaProps) => {
   );
 };
 
-export const defaultProps: BulkTextareaProps = {
-
+export const defaultProps: BulkTextareaProps<string> = {
   showErrors: true,
-  readOnly: false,
+  readonly: false,
   disabled: false,
   size: 'm',
   maxLines: 10,
