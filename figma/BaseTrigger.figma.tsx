@@ -1,10 +1,11 @@
 import figma from '@figma/code-connect';
+import { LinkTrigger } from '@semcore/base-trigger';
 import Select from '@semcore/select';
 import React from 'react';
 
 figma.connect(
-  Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  LinkTrigger,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10733-114376&t=TXEgCxM6iJO0FYiJ-11',
   {
     variant: { '← addon': 'false', 'addon →': 'false', 'icon only': 'false' },
     props: {
@@ -23,13 +24,13 @@ figma.connect(
       }),
       loading: figma.boolean('loading'),
     },
-    example: (props) => <Select options={/* options */} {...props} />,
+    example: (props) => <Select tag={LinkTrigger} options={/* options */} {...props} />,
   },
 );
 
 figma.connect(
-  Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  LinkTrigger,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10733-114376&t=TXEgCxM6iJO0FYiJ-11',
   {
     variant: { 'icon only': 'false' },
     props: {
@@ -69,7 +70,7 @@ figma.connect(
       loading: figma.boolean('loading'),
     },
     example: ({ size, addonLeft, addonRight, content, state, loading, disabled }) => {
-      <Select options={/* options */} size={size} state={state} loading={loading} disabled={disabled} placeholder={/* placeholder */}>
+      <Select tag={LinkTrigger} options={/* options */} size={size} state={state} loading={loading} disabled={disabled}>
         <Select.Trigger>
           {addonLeft}
           {content}
@@ -86,8 +87,8 @@ figma.connect(
 );
 
 figma.connect(
-  Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  LinkTrigger,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10733-114376&t=TXEgCxM6iJO0FYiJ-11',
   {
     variant: { 'icon only': 'true' },
     props: {
@@ -108,7 +109,7 @@ figma.connect(
       title: figma.textContent('↳ title'),
     },
     example: ({ size, addonLeft, state, loading, disabled, title }) => (
-      <Select options={/* options */} size={size} state={state} loading={loading} disabled={disabled} aria-label={title}>
+      <Select tag={LinkTrigger} options={/* options */} size={size} state={state} loading={loading} disabled={disabled} aria-label={title}>
         <Select.Trigger>
           <Select.Trigger.Addon>{addonLeft}</Select.Trigger.Addon>
         </Select.Trigger>
