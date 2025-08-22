@@ -12,7 +12,7 @@ const data = [
 
 const Demo = () => {
   return (
-    <Box w='100vw' position='absolute' left={0} top={0}>
+    <Box w='100%' position='absolute' left={0}>
       <DataTable
         data={[]}
         aria-label='Empty table example'
