@@ -3,11 +3,13 @@ import Button from '@semcore/button';
 import Text from '@semcore/text';
 import React from 'react';
 
+// Need to add a variant for cases when dot is enabled
+
 figma.connect(
   Button,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10043-43724&t=nVbIFrY5EvgteOqk-11',
   {
-    variant: { iconOnly: 'false' },
+    variant: { 'icon only': 'false' },
     props: {
       size: figma.enum('size', {
         L: 'l',
@@ -44,7 +46,7 @@ figma.connect(
       // }),
 
       // addonRight: figma.boolean('addon →', {
-      //   true: figma.instance('addon type - - →'),
+      //   true: figma.instance('addon properties - - →'),
       //   false: undefined,
       // }),
 
@@ -56,18 +58,18 @@ figma.connect(
       //   true: <Button.Addon>{/* addon */}</Button.Addon>,
       // }),
 
-      addonLeft: figma.enum('iconOnly', {
+      addonLeft: figma.enum('icon only', {
         false: figma.boolean('← addon', {
           true: <Button.Addon>{/* addon */}</Button.Addon>,
         }),
       }),
-      addonRight: figma.enum('iconOnly', {
+      addonRight: figma.enum('icon only', {
         false: figma.boolean('addon →', {
           true: <Button.Addon>{/* addon */}</Button.Addon>,
         }),
       }),
 
-      content: figma.enum('iconOnly', {
+      content: figma.enum('icon only', {
         false: figma.boolean('← addon', {
           true: <Button.Text>{/* button label */}</Button.Text>,
           false: figma.boolean('addon →', {
@@ -100,3 +102,46 @@ figma.connect(
     ),
   },
 );
+
+figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10043-43724&t=nVbIFrY5EvgteOqk-11', {
+  variant: { 'icon only': 'true' },
+  props: {
+    size: figma.enum('size', {
+      L: 'l',
+      M: 'm',
+    }),
+    use: figma.enum('use', {
+      primary: 'primary',
+      secondary: 'secondary',
+      tertiary: 'tertiary',
+    }),
+    theme: figma.enum('theme', {
+      '🔵 info': 'info',
+      '�� success': 'success',
+      '🔴 danger': 'danger',
+      '⚫️ muted': 'muted',
+      '⚪️ invert': 'invert',
+    }),
+    active: figma.enum('state', {
+      active: true,
+    }),
+    loading: figma.boolean('loading'),
+    disabled: figma.enum('state', {
+      disabled: true,
+    }),
+    addonLeft: figma.children('*'),
+    title: figma.textContent('↳ title'),
+  },
+  example: ({ size, use, theme, disabled, active, loading, addonLeft, title }) => (
+    <Button
+      size={size}
+      use={use}
+      theme={theme}
+      disabled={disabled}
+      active={active}
+      loading={loading}
+      tag={addonLeft}
+      aria-label={title}
+    />
+  ),
+});

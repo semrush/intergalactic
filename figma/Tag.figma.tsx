@@ -33,7 +33,7 @@ figma.connect(
 
       // These mappings show instances, but they are not working with conditional rendering for now. So I'm leaving them for possible future updates from Code Connect.
       // addonLeft: figma.boolean('← addon', {
-      //   true: figma.instance('← - - - addon type'),
+      //   true: figma.instance('← - - addon properties'),
       //   false: undefined,
       // }),
       // circle: figma.boolean('← circle addon', {
