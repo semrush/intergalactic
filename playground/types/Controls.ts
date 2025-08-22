@@ -35,6 +35,8 @@ export type TextControlType = ControlType<string> & {
 
 export type TextNumberControlType = ControlType<number> & {
   type: 'text-number';
+  min?: number;
+  max?: number;
 };
 
 export type TextAreaControlType = ControlType<string> & {

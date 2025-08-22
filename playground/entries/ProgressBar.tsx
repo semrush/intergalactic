@@ -30,11 +30,13 @@ const entry: PlaygroundEntry<ProgressBarProps> = {
     duration: {
       type: 'text-number',
       value: 1000,
+      min: 0,
       displayName: 'Duration',
     },
     value: {
       type: 'text-number',
       value: 50,
+      min: 0,
       displayName: 'Value',
     },
   },

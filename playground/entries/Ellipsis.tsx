@@ -42,6 +42,7 @@ const entry: PlaygroundEntry<EllipsisJSXProps> = {
     maxLine: {
       type: 'text-number',
       value: 1,
+      min: 1,
       displayName: 'Number of lines',
       visibleIf: [{ dependsOn: 'trim', equals: 'end' }],
     },

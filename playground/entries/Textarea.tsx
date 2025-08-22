@@ -48,11 +48,13 @@ const entry: PlaygroundEntry<TextareaJSXProps> = {
     min: {
       type: 'text-number',
       value: 2,
+      min: 1,
       displayName: 'Min rows',
     },
     max: {
       type: 'text-number',
       value: 10,
+      min: 1,
       displayName: 'Max rows',
     },
     resize: {

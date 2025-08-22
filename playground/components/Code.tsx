@@ -95,7 +95,7 @@ function Code({ sourceCode, link }: ICodeProps) {
           },
           code(token) {
             token.properties = {
-              'aria-label': 'JSX',
+              'aria-label': 'TSX',
             };
           },
         },

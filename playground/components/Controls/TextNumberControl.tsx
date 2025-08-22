@@ -8,10 +8,16 @@ interface ITextNumberControlProps extends TextNumberControlType {
   onChange: (value: string) => void;
 }
 
-function TextNumberControl({ value, onChange, displayName }: ITextNumberControlProps) {
+function TextNumberControl({ value, onChange, displayName, min, max }: ITextNumberControlProps) {
   return (
     <InputNumber w='100%'>
-      <InputNumber.Value aria-label={displayName} value={`${value}`} onChange={onChange} />
+      <InputNumber.Value
+        aria-label={displayName}
+        value={`${value}`}
+        onChange={onChange}
+        min={min}
+        max={max}
+      />
       <InputNumber.Controls showControls />
     </InputNumber>
   );

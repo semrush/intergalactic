@@ -24,11 +24,13 @@ const entry: PlaygroundEntry<PaginationJSXProps> = {
     currentPage: {
       type: 'text-number',
       value: 1,
+      min: 1,
       displayName: 'Current page',
     },
     totalPages: {
       type: 'text-number',
       value: 122360,
+      min: 1,
       displayName: 'Total pages',
     },
   },
