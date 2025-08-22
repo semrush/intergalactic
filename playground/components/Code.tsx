@@ -93,6 +93,11 @@ function Code({ sourceCode, link }: ICodeProps) {
 
             return updatedTokens;
           },
+          code(token) {
+            token.properties = {
+              'aria-label': 'JSX',
+            };
+          },
         },
       ],
     })
@@ -112,8 +117,8 @@ function Code({ sourceCode, link }: ICodeProps) {
               <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
-          <Accordion.Item.Collapse>
-            <Box className={styles['source-code-wrapper']} aria-label='JSX'>
+          <Accordion.Item.Collapse aria-labelledby=''>
+            <Box className={styles['source-code-wrapper']}>
               <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
               <Flex gap={2} className={styles['source-code-controls']}>
                 <Button
