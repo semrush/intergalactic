@@ -141,7 +141,7 @@ const useFocusLockHook = (
       Promise.resolve().then(() => {
         if (!trapRef.current) return;
         const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
-        if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
+        if (currentFocusMaster !== trapRef.current) return;
         const trapNodes = currentFocusMaster
           ? [trapRef.current]
           : [trapRef.current, ...focusLockAllTraps];
