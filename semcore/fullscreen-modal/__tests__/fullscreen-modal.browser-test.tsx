@@ -174,24 +174,22 @@ test.describe('Fullscreen modal', () => {
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await modal.waitFor();
+      await modal.waitFor({ state: 'visible' });
       await expect(modal).toBeVisible();
 
       await page.keyboard.press('Escape');
-      await page.waitForTimeout(100);
-      await expect(modal).not.toBeVisible();
+      await modal.waitFor({ state: 'hidden' });
       await expect(trigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await modal.waitFor();
+      await modal.waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       const backButton = page.locator('[data-ui-name="FullscreenModal.Back"]');
       await backButton.hover();
       await expect(backButton).toBeFocused();
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-      await expect(modal).not.toBeVisible();
+      await modal.waitFor({ state: 'hidden' });
       await expect(trigger).toBeFocused();
     });
 

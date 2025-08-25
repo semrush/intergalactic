@@ -520,6 +520,16 @@ test.describe('One level header - Sorting', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        const text = msg.text();
+        if (text === 'Sorted') {
+          messages.push(text);
+        }
+      }
+    });
+
     const columns = page.locator('[data-ui-name="Head.Column"]');
     const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
 
@@ -529,10 +539,13 @@ test.describe('One level header - Sorting', () => {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
     await expect(columns.first()).not.toHaveAttribute('aria-sort');
-
+    expect(messages.length).toBe(0);
     await buttonLink1.click();
     await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
     await expect(columns.first()).toHaveAttribute('aria-sort', 'descending');
+
+    expect(messages.length).toBe(1);
+    expect(messages).toEqual(['Sorted']);
 
     await buttonLink1.click();
     await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
@@ -540,12 +553,22 @@ test.describe('One level header - Sorting', () => {
     for (let i = 1; i < count; i++) {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
+    expect(messages.length).toBe(2);
   });
 
   test('Verify sorting with undefined as default value by keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        const text = msg.text();
+        if (text === 'Sorted') {
+          messages.push(text);
+        }
+      }
+    });
 
     const columns = page.locator('[data-ui-name="Head.Column"]');
     const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
@@ -558,6 +581,7 @@ test.describe('One level header - Sorting', () => {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
     await expect(columns.first()).not.toHaveAttribute('aria-sort');
+    expect(messages.length).toBe(0);
 
     await page.keyboard.press('ArrowDown');
     await expect(page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first()).toBeFocused();
@@ -570,10 +594,13 @@ test.describe('One level header - Sorting', () => {
     await page.keyboard.press('Enter');
     await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
     await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'descending');
+    expect(messages.length).toBe(1);
+    expect(messages).toEqual(['Sorted']);
 
     await buttonLink2.click();
     await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
     await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'ascending');
+    expect(messages.length).toBe(2);
   });
 });
 
@@ -686,10 +713,6 @@ test.describe('Multi level Header', () => {
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await expect(checkbox).toBeFocused();
-
-      // but
-      // await page.keyboard.press('Tab');  - moves to the next focusable element outside table
-      // await page.keyboard.press('Shift+Tab');
     });
 
     await test.step('Verify interaction with Select', async () => {

@@ -73,7 +73,7 @@ export type PopperProps = OutsideClickProps &
     computeStyles?: Partial<OptionsComputeStyles>;
     /** PopperJS modifier settings responsible for subscribing to global events */
     eventListeners?: Partial<OptionsEventListeners>;
-    /** @ignore */
+    /** Internal */
     onFirstUpdate?: Options['onFirstUpdate'];
     /**
      * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
@@ -83,11 +83,12 @@ export type PopperProps = OutsideClickProps &
     /**
      * Disabled focus trap, autofocus and focus return
      */
-    disableEnforceFocus?: boolean /**
+    disableEnforceFocus?: boolean;
+    /**
      * If enabled, after reaching the end of popper the browser focus goes to the start of popper and vice versa.
      * If disabled, after reading the end of popper the browser focus returns to trigger and popper is being closed.
      * @default `true` (`false` in Tooltip)
-     */;
+    */
     focusLoop?: boolean;
     /**
      * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
@@ -97,7 +98,7 @@ export type PopperProps = OutsideClickProps &
      * If set, popper will be placed near the place mouse cursor entered the trigger
      */
     cursorAnchoring?: boolean;
-
+    /** Sets a margin that reduces the maximum size of the popper  */
     popperMargin?: number;
   };
 
@@ -134,7 +135,7 @@ export type PopperPopperProps = BoxProps &
    * @deprecated
    */
     keyboardFocused?: boolean;
-
+    /** Automatically focus a popper when it opens */
     autoFocus?: boolean | 'enforced';
   };
 

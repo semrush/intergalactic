@@ -21,6 +21,11 @@ SCellWrapper {
   overflow: hidden;
 }
 
+SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
+  height: auto;
+  overflow: auto;
+}
+
 SCollapseRow[gridArea] > SCellWrapper > SCell,
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
@@ -167,10 +172,12 @@ SCell {
   font-variant-numeric: tabular-nums;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   outline: none;
+  overflow: hidden;
 
   SAccordionToggle {
-    margin-right: var(--intergalactic-spacing-3x, 12px);
     margin-top: var(--intergalactic-spacing-05x, 2px);
+    margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-left: calc(var(--intergalactic-spacing-05x, 2px) * -1);
     height: fit-content;
 
     svg {
@@ -271,6 +278,48 @@ SRow[sideIndents='wide'] {
 
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
+  }
+}
+
+SCellWrapper[fixed][shadowVertical] {
+  &:after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    display: none;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    z-index: 5;
+  }
+}
+
+SCellWrapper[fixed='left'][shadowVertical='median'],
+SCellWrapper[fixed='left'][shadowVertical='start'] {
+  margin-right: -5px;
+
+  &:after {
+    display: block;
+    right: 0;
+    background: var(--intergalactic-scroll-area-shadow-left,
+    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+  }
+  SCell {
+    margin-right: 5px;
+  }
+}
+SCellWrapper[fixed='right'][shadowVertical='median'],
+SCellWrapper[fixed='right'][shadowVertical='end'] {
+  margin-left: -5px;
+  &:after {
+    display: block;
+    left: 0;
+    background: var(--intergalactic-scroll-area-shadow-right,
+    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+  }
+
+  SCell {
+    margin-left: 5px;
   }
 }
 

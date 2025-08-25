@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.7] - 2025-08-29
+
+### Changed
+
+- Type description for `DragAndDropProps`.
+
+## [16.1.6] - 2025-08-07
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [16.1.5 ~> 16.1.6], `@semcore/base-components` [16.1.2 ~> 16.2.0]).
+
 ## [16.1.5] - 2025-07-23
 
 ### Changed

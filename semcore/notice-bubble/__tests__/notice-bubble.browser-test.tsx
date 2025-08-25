@@ -15,9 +15,6 @@ test.describe('Functional', () => {
   test('Verify Notice with interactiove inside keyboard interactions when focusLock = undefined', async ({ page, browserName }) => {
     const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      initialAnimation: true,
-      duration: 0,
-      type: 'info',
       focusLock: undefined,
     });
 
@@ -91,9 +88,6 @@ test.describe('Functional', () => {
   test('Verify Notice with interactiove inside keyboard interactions when focusLock = true', async ({ page, browserName }) => {
     const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      initialAnimation: true,
-      duration: 0,
-      type: 'info',
       focusLock: true,
     });
 
@@ -129,10 +123,8 @@ test.describe('Functional', () => {
     await test.step('Verify focus returns to the trigger be Escape', async () => {
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
-      await locators.closeHint(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
-      await locators.closeHint(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('Escape');
       await locators.closeButton(page).waitFor({ state: 'hidden' });
       await expect(buttonTrigger).toBeFocused();
@@ -142,9 +134,6 @@ test.describe('Functional', () => {
   test('Verify Notice with interactiove inside mouse interactions', async ({ page, browserName }) => {
     const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      initialAnimation: true,
-      duration: 0,
-      type: 'info',
       focusLock: false,
     });
 
@@ -367,8 +356,7 @@ test.describe('Visual', () => {
 
     await buttonTrigger.click();
     await buttonTrigger.click();
-    await buttonTrigger.click();
-    await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+    await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });

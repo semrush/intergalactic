@@ -48,7 +48,15 @@ export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
   render: FeaturePopoverExample,
   argTypes: {
     ...baseArgTypes,
+    theme: {
+      control: { type: 'select' },
+      options: [
+        'accent',
+        'neutral',
+      ],
+    },
   },
+
   args: ExampleProps,
 };
 

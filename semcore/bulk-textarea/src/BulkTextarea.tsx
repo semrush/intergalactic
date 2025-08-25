@@ -84,6 +84,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       lineProcessing,
       errors = [],
       showErrors,
+      onImmediatelyChange,
     } = this.asProps;
     const { errorIndex, prevError, linesCount, highlightErrorIndex } = this.state;
 
@@ -160,6 +161,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       linesDelimiters,
       ref: this.inputFieldRef,
       ['aria-describedby']: this.counterId,
+      onImmediatelyChange,
     };
   }
 

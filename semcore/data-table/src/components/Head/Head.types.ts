@@ -1,4 +1,5 @@
-import type { DTColumn } from './Column.types';
+import type { ColumnPropsInner, DTColumn } from './Column.types';
+import type { BodyPropsInner } from '../Body/Body.types';
 import type { CellPropsInner } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
@@ -59,5 +60,8 @@ export type HeadPropsInner<
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-  onCellClick: CellPropsInner<UniqKeyType>['onClick'];
+  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
+  scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
+  isDataEmpty: boolean;
 };

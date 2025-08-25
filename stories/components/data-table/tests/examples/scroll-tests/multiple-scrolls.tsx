@@ -20,6 +20,7 @@ const Demo = () => {
           { name: 'cpc', children: 'CPC' },
           { name: 'vol', children: 'Vol.' },
         ]}
+        defaultGridTemplateColumnWidth='min-content'
       />
 
     </>

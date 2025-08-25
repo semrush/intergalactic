@@ -65,6 +65,7 @@ function uncontrolledUniversal(props: any, config: any, uncontrolledProp: any) {
     } = result;
 
     if (propDefaultValue === undefined) {
+      // eslint-disable-next-line no-console
       console.warn(defaultPropName, 'must be installed in "defaultProps"');
     }
 
