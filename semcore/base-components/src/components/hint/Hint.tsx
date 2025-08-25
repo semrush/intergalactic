@@ -190,8 +190,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
                 top: arrow.y !== undefined ? `${arrow.y}px` : '',
                 right: '',
                 bottom: '',
-                [staticSide]: '-4px',
               });
+              arrowElement.dataset.side = staticSide;
             }
           });
         }

@@ -66,8 +66,6 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
     }
 
     if (trim === 'middle') {
-      ref.current.style.setProperty('display', 'flex');
-
       const styleElement = window.getComputedStyle(ref.current);
       const font = `${styleElement.fontWeight} ${styleElement.fontSize} ${styleElement.fontFamily}`;
 

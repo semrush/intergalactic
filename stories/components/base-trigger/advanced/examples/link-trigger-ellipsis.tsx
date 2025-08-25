@@ -8,7 +8,7 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} tag={Text} size={400} ellipsis={{ trim: 'middle' }}>
+          <LinkTrigger.Text w={150} tag={Text} size={400} display='inline-flex' ellipsis={{ trim: 'middle' }}>
             Dat First List
           </LinkTrigger.Text>
         </DropdownMenu.Trigger>

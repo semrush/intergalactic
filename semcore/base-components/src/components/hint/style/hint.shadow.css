@@ -32,11 +32,27 @@ SHintPopper {
 SHintArrow {
   position: absolute;
   background: var(--intergalactic-tooltip-default, #ffffff);
-  border-top: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   width: 8px;
   height: 8px;
-  transform: rotate(45deg);
+  border-top: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+
+  &[data-side="top"] {
+    top: -5px;
+    transform: rotate(45deg);
+  }
+  &[data-side="bottom"] {
+    bottom: -5px;
+    transform: rotate(225deg);
+  }
+  &[data-side="left"] {
+    left: -5px;
+    transform: rotate(315deg);
+  }
+  &[data-side="right"] {
+    right: -5px;
+    transform: rotate(135deg);
+  }
 }
 
 @media (prefers-reduced-motion) {
