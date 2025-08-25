@@ -193,12 +193,12 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
   {
     // Playground in design
     const widgetBar = findParent(node, (node) => {
-      return node.classList.contains('playground-widgets-bar');
+      return node.classList.contains('playground-widgets-bar') || [...node.classList].findIndex((node) => node.includes('control-panel')) !== -1;
     });
 
     if (widgetBar) {
       const playground = findParent(widgetBar, (node) => {
-        return node.classList.contains('documentation-sandbox');
+        return node.classList.contains('documentation-sandbox') || node.id === 'playground-container';
       });
 
       // we store only first click on the playground, that's why skip if already clicked
