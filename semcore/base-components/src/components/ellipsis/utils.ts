@@ -80,6 +80,6 @@ function createMeasurerElement(element: HTMLElement, text?: string) {
 
   setFontSettings(temporaryElement, styleElement);
 
-  temporaryElement.innerHTML = text ?? element.innerHTML;
+  temporaryElement.textContent = text ?? element.textContent;
   return temporaryElement;
 }

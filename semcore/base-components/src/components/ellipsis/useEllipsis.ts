@@ -42,6 +42,14 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
     ref.current.style.setProperty('text-overflow', 'hidden');
     ref.current.style.setProperty('white-space', 'pre');
 
+    if (trim === 'end' && maxLine > 1) {
+      ref.current.style.setProperty('display', '-webkit-box');
+      ref.current.style.setProperty('-webkit-line-clamp', maxLine.toString());
+      ref.current.style.setProperty('-webkit-box-orient', 'vertical');
+      ref.current.style.setProperty('white-space', 'normal');
+      ref.current.style.setProperty('overflow-wrap', 'break-word');
+    }
+
     const isEllipsized = isTextOverflowing(ref.current, maxLine > 1, textContent);
     setIsEllipsized(isEllipsized);
   }, [ref.current, trim, maxLine, blockWidth, textContent]);
@@ -55,14 +63,6 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
     if (trim === 'end') {
       ref.current.style.setProperty('text-overflow', 'ellipsis');
       ref.current.textContent = textContent;
-
-      if (maxLine > 1) {
-        ref.current.style.setProperty('display', '-webkit-box');
-        ref.current.style.setProperty('-webkit-line-clamp', maxLine.toString());
-        ref.current.style.setProperty('-webkit-box-orient', 'vertical');
-        ref.current.style.setProperty('white-space', 'normal');
-        ref.current.style.setProperty('overflow-wrap', 'break-word');
-      }
     }
 
     if (trim === 'middle') {
