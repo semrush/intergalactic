@@ -1,6 +1,6 @@
 import figma from '@figma/code-connect/react';
 import Button from '@semcore/button';
-import Text from '@semcore/text';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 // Need to add a variant for cases when dot is enabled
