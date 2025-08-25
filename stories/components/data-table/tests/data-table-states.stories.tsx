@@ -5,7 +5,7 @@ import EmptyStateSortableExample from './examples/table-states-tests/empty-sorta
 import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
 import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
 import LoadingWithScrollAndButtonExample from './examples/table-states-tests/loading-with-button-and-scroll';
-import NothingFoundExample from './examples/table-states-tests/nothing-found';
+import NothingFoundWithFixedColumnWidthExample from './examples/table-states-tests/nothing-found-with-fixed-column-width';
 import WidgetEmptyInCellExample from './examples/table-states-tests/widget-empty-in-cell';
 
 const meta: Meta<typeof DataTable> = {
@@ -20,8 +20,8 @@ export const WidgetEmptyInCell: Story = {
   render: WidgetEmptyInCellExample,
 };
 
-export const NothingFound: Story = {
-  render: NothingFoundExample,
+export const NothingFoundWithFixedColumnWidth: Story = {
+  render: NothingFoundWithFixedColumnWidthExample,
 };
 
 export const EmptyStateSortable: Story = {
