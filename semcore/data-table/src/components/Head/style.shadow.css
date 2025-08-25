@@ -5,6 +5,8 @@ SHead, SGroupContainer {
 SHead[isDataEmpty][gridTemplateColumns] {
   display: grid;
   grid-template-columns: var(--gridTemplateColumns);
+  overflow: auto;
+  scrollbar-width: thin;
 }
 
 SHead[animationDuration] > SColumn {

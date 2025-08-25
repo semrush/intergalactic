@@ -132,10 +132,8 @@ class HeadRoot<
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
 
-    const Wrapper = isDataEmpty ? ScrollArea : React.Fragment;
-
     return sstyled(styles)(
-      <Wrapper disableAutofocusToContent tabIndex={-1}>
+      <>
         <SHead
           render={Box}
           role='row'
@@ -144,6 +142,7 @@ class HeadRoot<
           use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
           isDataEmpty={isDataEmpty}
           use:gridTemplateColumns={gridTemplateColumns.join(' ')}
+          tabIndex={0}
         >
           {selectedRows && (
             <SHeadCheckboxCol
@@ -191,7 +190,7 @@ class HeadRoot<
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
           {getI18nText('sortableColumn')}
         </ScreenReaderOnly>
-      </Wrapper>,
+      </>,
     );
   }
 }

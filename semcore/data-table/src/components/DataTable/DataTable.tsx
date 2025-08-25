@@ -693,6 +693,7 @@ class DataTableRoot<
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
       e.currentTarget.setAttribute('tabIndex', '-1');
+      this.headerRef.current?.setAttribute('tabIndex', '-1');
     } else if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       lastInteraction.isKeyboard()
@@ -737,6 +738,7 @@ class DataTableRoot<
         }
       }
 
+      this.headerRef.current?.setAttribute('tabIndex', '-1');
       e.currentTarget.setAttribute('tabIndex', '-1');
     }
   };
@@ -753,6 +755,7 @@ class DataTableRoot<
     ) {
       this.setInert(false);
       tableElement.setAttribute('tabIndex', '0');
+      this.headerRef.current?.setAttribute('tabIndex', '0');
     }
   };
 
