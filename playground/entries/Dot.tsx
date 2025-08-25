@@ -53,7 +53,6 @@ const entry: PlaygroundEntry<DotJSXProps> = {
     },
     value: {
       type: 'text-number',
-      value: '',
       min: 0,
       displayName: 'Value',
     },

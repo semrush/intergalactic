@@ -4,7 +4,6 @@ import React from 'react';
 import type { BooleanControlType } from '../../types/Controls';
 
 interface IBooleanControlProps extends BooleanControlType {
-  value: boolean;
   onChange: (value: boolean) => void;
 }
 

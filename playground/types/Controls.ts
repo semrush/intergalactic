@@ -7,7 +7,7 @@ type ControlVisibilityCondition = {
 };
 
 type ControlType<V> = {
-  value: V;
+  value?: V;
   displayName?: string;
   visibleIf?: ControlVisibilityCondition[];
 };

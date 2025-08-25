@@ -5,7 +5,6 @@ import React from 'react';
 import type { SelectControlType } from '../../types/Controls';
 
 interface ISelectControlProps extends SelectControlType {
-  value: string;
   onChange: (value: string) => void;
 }
 

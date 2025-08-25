@@ -4,7 +4,6 @@ import React from 'react';
 import type { InlineRadioControlType } from '../../types/Controls';
 
 interface InlineRadioControlProps extends InlineRadioControlType {
-  value: string;
   onChange: (value: string) => void;
 }
 

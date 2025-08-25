@@ -4,7 +4,6 @@ import React from 'react';
 import type { TextControlType } from '../../types/Controls';
 
 interface ITextControlProps extends TextControlType {
-  value: string;
   onChange: (value: string) => void;
 }
 

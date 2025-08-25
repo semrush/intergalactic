@@ -4,7 +4,6 @@ import React from 'react';
 import type { TextNumberControlType } from '../../types/Controls';
 
 interface ITextNumberControlProps extends TextNumberControlType {
-  value: number;
   onChange: (value: string) => void;
 }
 
@@ -13,7 +12,7 @@ function TextNumberControl({ value, onChange, displayName, min, max }: ITextNumb
     <InputNumber w='100%'>
       <InputNumber.Value
         aria-label={displayName}
-        value={`${value}`}
+        value={value?.toString()}
         onChange={onChange}
         min={min}
         max={max}
