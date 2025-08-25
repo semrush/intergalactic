@@ -4,14 +4,13 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Box w={220}>
+    <Box w={120}>
       <Link
-        inline
         href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
+        ellipsis={true}
+        w={120}
       >
-        <Link.Text
-          ellipsis={true}
-        >
+        <Link.Text>
           https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
         </Link.Text>
       </Link>
