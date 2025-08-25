@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
