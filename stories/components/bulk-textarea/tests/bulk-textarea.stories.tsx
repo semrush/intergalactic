@@ -41,7 +41,7 @@ export const ControlledAndNotControlledErrors: StoryObj<typeof defaultProps> = {
     showErrors: {
       control: { type: 'boolean' },
     },
-    readOnly: {
+    readonly: {
       control: { type: 'boolean' },
     },
     disabled: {

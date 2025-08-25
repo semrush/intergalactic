@@ -89,7 +89,6 @@ class InputField<T extends string | string[]> extends Component<
 
     this.observer = new MutationObserver((mutationsList, observer) => {
       for (const mutation of mutationsList) {
-        console.log(mutation.type);
         if (mutation.type === 'characterData' || mutation.type === 'childList') {
           this.props.onImmediatelyChange?.(this.getValues(), this.textarea.textContent ?? '');
         }
