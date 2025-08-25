@@ -9,6 +9,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Controlled mode for errors.
 - `onImmediatelyChange` internal property.
 
+### Fixed
+
+- Incorrect paddings for line numbers starting from 1000 lines.
+
 ## [16.3.1] - 2025-08-29
 
 ### Changed
