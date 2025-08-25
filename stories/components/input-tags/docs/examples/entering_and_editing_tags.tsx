@@ -72,7 +72,7 @@ const Demo = (props: ExampleInputTagsProps) => {
       <InputTags mt={2} size={props.size} state={props.state} delimiters={props.delimiters} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
           <InputTags.Tag
-            key={idx}
+            key={tag}
             tag={InputTags.Tag}
             theme='primary'
             editable={!props.disabled}
