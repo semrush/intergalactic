@@ -1,14 +1,10 @@
-@import '../vars.css';
-
 SHeaderButton[size='m'] {
-  /* disable-tokens-validator */
-  height: var(--intergalactic-header-control-m, 32px);
-  /* disable-tokens-validator */
-  min-width: var(--intergalactic-header-control-m, 32px);
-  /* we should have min-width in the default button styles, instead of the only-child margin calculations */
+  height: var(--intergalactic-spacing-8x, 32px);
+  min-width: var(--intergalactic-spacing-8x, 32px);
+  /* we should have min-width in the default button styles */
 }
 
-SAddon {
+SAddon[size='m'] {
   &:not(:only-child):first-child {
     margin-left: var(--intergalactic-spacing-3x, 12px);
   }
@@ -33,39 +29,40 @@ SText {
 SHeaderButton[neighborLocation='both'],
 SHeaderButton[neighborLocation='left'] {
   &:after {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-border-primary-header);
+    background-color: var(--intergalactic-header-border-primary, transparent);
   }
 }
 
 SHeaderButton[theme='secondary-invert'] {
-  /* disable-tokens-validator */
-  background-color: var(--intergalactic-control-secondary-header);
-  /* disable-tokens-validator */
-  border-color: var(--intergalactic-border-primary-header);
+  background-color: var(--intergalactic-header-control-secondary, #4D407E);
+  border-color: var(--intergalactic-header-border-primary, transparent);
+
+  &:not(:hover, :active) {
+    color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
+  }
+
+  & SText {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+  }
   
   &:hover {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-control-secondary-header-hover);
+    background-color: var(--intergalactic-header-control-secondary-hover, #6D619F);
   }
   
   &:active {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-control-secondary-header-active);
+    background-color: var(--intergalactic-header-control-secondary-active, #8379ad);
   }
 
   &[neighborLocation='both'],
   &[neighborLocation='left'] {
     &:after {
-      /* disable-tokens-validator */
-      background-color: var(--intergalactic-border-secondary-header);
+      background-color: var(--intergalactic-header-border-secondary, rgba(255, 255, 255, 0.15));
     }
   }
 
   :not(SButton) + &[neighborLocation='left'],
   :not(SButton) + &[neighborLocation='both'] {
-    /* disable-tokens-validator */
-    border-left-color: var(--intergalactic-border-secondary-header);
+    border-left-color: var(--intergalactic-header-border-secondary, rgba(255, 255, 255, 0.15));
   }
 }
 
@@ -74,11 +71,9 @@ SHeaderButton[theme='tertiary-invert'] {
     color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
   }
   &:hover {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-control-tertiary-header-hover);
+    background-color: var(--intergalactic-header-control-tertiary-hover, #4D407E);
   }
   &:active {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-control-tertiary-header-active);
+    background-color: var(--intergalactic-header-control-tertiary-active, #6D619F);
   }
 }

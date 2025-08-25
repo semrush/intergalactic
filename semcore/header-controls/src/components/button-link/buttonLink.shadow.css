@@ -1,0 +1,14 @@
+SButton:not([data-group-focused="true"]) {
+  color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
+
+  &[active],
+  &:hover,
+  &:active,
+  &[enableVisited]:visited:hover {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+  }
+
+  &[enableVisited]:visited {
+    color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
+  }
+}

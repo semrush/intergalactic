@@ -1,12 +1,16 @@
 import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { HeaderButton, HeaderInput, HeaderButtonTrigger } from '@semcore/header-controls';
+import Button, { ButtonLink } from '@semcore/button';
+import { HeaderButton, HeaderInput, HeaderButtonTrigger, HeaderButtonLink } from '@semcore/header-controls';
 import Chevron from '@semcore/icon/ChevronDown/m';
+import Close from '@semcore/icon/Close/m';
+import Plus from '@semcore/icon/MathPlus/m';
 import Search from '@semcore/icon/Search/m';
 import Input from '@semcore/input';
 import React from 'react';
 
 const Demo = () => {
+  const [focused, setFocused] = React.useState(false);
+
   return (
     <Flex
       p={4}
@@ -29,21 +33,87 @@ const Demo = () => {
         Sign up
       </HeaderButton>
 
+      <HeaderButton>
+        <Button.Addon color='icon-primary-invert' tag={Plus} />
+        <Button.Text>Create project</Button.Text>
+      </HeaderButton>
+
       <div>
-        <HeaderButton neighborLocation='right'>Search</HeaderButton>
-        <HeaderButton use='primary' theme='brand' addonLeft={Search} title='Search' neighborLocation='left' />
+        <HeaderButton neighborLocation='right'>Menu</HeaderButton>
+        <HeaderButton
+          use='primary'
+          theme='brand'
+          addonLeft={Search}
+          title='Search'
+          neighborLocation='left'
+        />
       </div>
       <div>
-        <HeaderButton neighborLocation='right'>Search</HeaderButton>
-        <HeaderButton addonLeft={Search} title='Search' neighborLocation='left' />
+        <HeaderButton neighborLocation='right'>Menu</HeaderButton>
+        <HeaderButton
+          addonLeft={Search}
+          title='Search'
+          neighborLocation='left'
+        />
       </div>
       <HeaderButton use='tertiary' addonRight={Chevron}>More</HeaderButton>
-      <HeaderButton use='tertiary' tag='a' href='https://www.semrush.com/pricing/'>Pricing</HeaderButton>
+      <HeaderButton use='tertiary' tag='a' href='https://www.semrush.com/pricing/'>
+        Pricing
+      </HeaderButton>
       <div>
-        <HeaderInput w={200} neighborLocation='right'><Input.Value placeholder='Search' /></HeaderInput>
-        <HeaderButton addonLeft={Search} title='Search' neighborLocation='left' />
+        <HeaderInput w={200} neighborLocation='right'>
+          <Input.Value placeholder='Search' />
+        </HeaderInput>
+        <HeaderButton
+          addonLeft={Search}
+          title='Search'
+          neighborLocation='left'
+        />
       </div>
-      <HeaderButtonTrigger>asdf</HeaderButtonTrigger>
+      <HeaderButtonTrigger>Root domain</HeaderButtonTrigger>
+      <div>
+        <HeaderInput w={200} neighborLocation='right'>
+          <Input.Value
+            value='abc.com'
+            placeholder='Search'
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+          />
+          <Input.Addon>
+            <HeaderButtonLink
+              addonLeft={Close}
+              use='secondary'
+              title='Clear'
+              onClick={() => alert('asdf')}
+              data-group-focused={focused}
+            />
+          </Input.Addon>
+        </HeaderInput>
+        <HeaderButtonTrigger neighborLocation='both'>
+          Root domain
+        </HeaderButtonTrigger>
+        <HeaderButton
+          addonLeft={Search}
+          title='Search'
+          neighborLocation='left'
+        />
+      </div>
+      <div>
+        <HeaderInput w={200} neighborLocation='right' state='invalid'>
+          <Input.Value value='abc.com' placeholder='Search' />
+          <Input.Addon tag={ButtonLink} addonLeft={Close} title='Clear' />
+        </HeaderInput>
+        <HeaderButtonTrigger neighborLocation='both'>
+          Root domain
+        </HeaderButtonTrigger>
+        <HeaderButton
+          addonLeft={Search}
+          title='Search'
+          neighborLocation='left'
+        />
+      </div>
+      <HeaderButtonLink addonLeft={Close}>Clear</HeaderButtonLink>
+      <HeaderButton size='l' use='tertiary' addonRight={Chevron}>Large</HeaderButton>
     </Flex>
   );
 };

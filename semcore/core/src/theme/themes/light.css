@@ -828,8 +828,13 @@
   /* Background color for the "Start tracking" date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(0, 159, 129, 0.2);
   --intergalactic-header-bg: #382E5E;
-  --intergalactic-header-border-primary: #382E5E;
-  --intergalactic-header-border-secondary: rgba(255,255,255, 0.15);
+  --intergalactic-header-border-primary: transparent;
+  --intergalactic-header-border-secondary: rgba(255, 255, 255, 0.15);
+  --intergalactic-header-control-secondary: #4D407E;
+  --intergalactic-header-control-secondary-hover: #6D619F;
+  --intergalactic-header-control-secondary-active: #8379ad;
+  --intergalactic-header-control-tertiary-hover: #4D407E;
+  --intergalactic-header-control-tertiary-active: #6D619F;
   --intergalactic-sidebar-nav-control-hover: rgba(224, 225, 233, 0.7);
   --intergalactic-sidebar-nav-control-active: #E2DDFF;
   --intergalactic-sidebar-nav-control-text-normal: #6D619F;

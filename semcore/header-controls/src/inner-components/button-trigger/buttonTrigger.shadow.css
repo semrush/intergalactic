@@ -1,19 +1,31 @@
-@import '../../components/vars.css';
-
 SHeaderButtonTrigger {
-
-  /* disable-tokens-validator */
-  background-color: var(--intergalactic-control-secondary-header);
-  /* disable-tokens-validator */
-  border-color: var(--intergalactic-border-primary-header);
+  background-color: var(--intergalactic-header-control-secondary, #4D407E);
+  border-color: var(--intergalactic-header-border-primary, transparent);
   color: var(--intergalactic-text-primary-invert, #ffffff);
   &:hover {
-    /* disable-tokens-validator */
-    background-color: var(--intergalactic-control-secondary-header-hover);
+    background-color: var(--intergalactic-header-control-secondary-hover, #6D619F);
+  }
+  &:active {
+    /* but we have two versions: one that stays purple when active, and another that turns white */
+    background-color: var(--intergalactic-header-control-secondary-active, #8379ad);
+    border-color: var(--intergalactic-header-border-primary, transparent);
   }
 }
 
 SHeaderButtonTrigger[size='m'] {
-  /* disable-tokens-validator */
-  height: var(--intergalactic-header-control-m);
+  height: var(--intergalactic-spacing-8x, 32px);
+  min-width: var(--intergalactic-spacing-8x, 32px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+}
+
+SHeaderButtonTrigger[neighborLocation='both'],
+SHeaderButtonTrigger[neighborLocation='left'] {
+  border-left-color: var(--intergalactic-header-border-secondary, rgba(255, 255, 255, 0.15));
+}
+
+SAddon {
+  color: var(--intergalactic-text-secondary-invert, rgba(255, 255, 255, 0.8));
+  SHeaderButtonTrigger:hover &, SHeaderButtonTrigger:active & {
+    color: var(--intergalactic-icon-primary-invert, #ffffff);
+  }
 }

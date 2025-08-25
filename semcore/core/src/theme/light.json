@@ -2462,11 +2462,42 @@
       },
       "border": {
         "primary": {
-          "value": "{violet.dusty.700}",
+          "value": "transparent",
           "type": "color"
         },
         "secondary": {
-          "value": "rgba(255,255,255,0.15)",
+          "value": "rgba({gray.white}, 0.15)",
+          "type": "color"
+        }
+      },
+      "control": {
+        "secondary": {
+          "value": "{violet.dusty.600}",
+          "type": "color"
+        },
+        "secondary-hover": {
+          "value": "{violet.dusty.500}",
+          "type": "color"
+        },
+        "secondary-active": {
+          "value": "{violet.dusty.500}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "tertiary-hover": {
+          "value": "{violet.dusty.600}",
+          "type": "color"
+        },
+        "tertiary-active": {
+          "value": "{violet.dusty.500}",
           "type": "color"
         }
       }

@@ -1395,7 +1395,8 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary icon.",
     "components": [
-      "carousel"
+      "carousel",
+      "header-controls"
     ]
   },
   {
@@ -2743,6 +2744,7 @@
       "feature-popover",
       "format-text",
       "fullscreen-modal",
+      "header-controls",
       "inline-input",
       "input-tags",
       "link",
@@ -2920,6 +2922,7 @@
       "errors",
       "format-text",
       "fullscreen-modal",
+      "header-controls",
       "notice-bubble",
       "notice-global",
       "typography"
@@ -4038,16 +4041,65 @@
   {
     "name": "--intergalactic-header-border-primary",
     "type": "color",
-    "rawValue": "{violet.dusty.700}",
-    "computedValue": "#382E5E",
-    "components": []
+    "rawValue": "transparent",
+    "computedValue": "transparent",
+    "components": [
+      "header-controls"
+    ]
   },
   {
     "name": "--intergalactic-header-border-secondary",
     "type": "color",
-    "rawValue": "rgba(255,255,255,0.15)",
-    "computedValue": "rgba(255,255,255, 0.15)",
-    "components": []
+    "rawValue": "rgba({gray.white}, 0.15)",
+    "computedValue": "rgba(255, 255, 255, 0.15)",
+    "components": [
+      "header-controls"
+    ]
+  },
+  {
+    "name": "--intergalactic-header-control-secondary",
+    "type": "color",
+    "rawValue": "{violet.dusty.600}",
+    "computedValue": "#4D407E",
+    "components": [
+      "header-controls"
+    ]
+  },
+  {
+    "name": "--intergalactic-header-control-secondary-hover",
+    "type": "color",
+    "rawValue": "{violet.dusty.500}",
+    "computedValue": "#6D619F",
+    "components": [
+      "header-controls"
+    ]
+  },
+  {
+    "name": "--intergalactic-header-control-secondary-active",
+    "type": "color",
+    "rawValue": "{violet.dusty.500} / lighten(0.15) / hsl",
+    "computedValue": "#8379ad",
+    "components": [
+      "header-controls"
+    ]
+  },
+  {
+    "name": "--intergalactic-header-control-tertiary-hover",
+    "type": "color",
+    "rawValue": "{violet.dusty.600}",
+    "computedValue": "#4D407E",
+    "components": [
+      "header-controls"
+    ]
+  },
+  {
+    "name": "--intergalactic-header-control-tertiary-active",
+    "type": "color",
+    "rawValue": "{violet.dusty.500}",
+    "computedValue": "#6D619F",
+    "components": [
+      "header-controls"
+    ]
   },
   {
     "name": "--intergalactic-sidebar-nav-control-hover",

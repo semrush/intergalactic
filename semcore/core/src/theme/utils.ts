@@ -168,7 +168,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       }
       return resolvedColor;
     }
-    if (color.startsWith('#')) {
+    if (color.startsWith('#') || color === 'transparent') {
       return color;
     }
     throw new Error(`Unable to process color ${color}`);
