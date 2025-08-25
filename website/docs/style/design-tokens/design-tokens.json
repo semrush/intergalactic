@@ -2927,6 +2927,7 @@
     "computedValue": "40px",
     "description": "40px",
     "components": [
+      "bulk-textarea",
       "errors",
       "feature-popover",
       "feedback-form",
