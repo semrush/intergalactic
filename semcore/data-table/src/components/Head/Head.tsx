@@ -142,7 +142,7 @@ class HeadRoot<
           use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
           isDataEmpty={isDataEmpty}
           use:gridTemplateColumns={gridTemplateColumns.join(' ')}
-          tabIndex={0}
+          tabIndex={isDataEmpty ? 0 : undefined}
         >
           {selectedRows && (
             <SHeadCheckboxCol
