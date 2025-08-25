@@ -53,7 +53,6 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
     }
 
     if (trim === 'end') {
-      ref.current.style.setProperty('display', 'inline-block');
       ref.current.style.setProperty('text-overflow', 'ellipsis');
       ref.current.textContent = textContent;
 
