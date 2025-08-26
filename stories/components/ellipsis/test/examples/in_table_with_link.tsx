@@ -1,8 +1,8 @@
 import { useResizeObserver } from '@semcore/base-components';
 import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/link';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
@@ -37,15 +37,15 @@ const Demo = () => {
               wMin={0}
               style={{ display: 'inline-flex', alignItems: 'center' }}
             >
-              <Link.Text wMin={0}>
-                <Ellipsis
-                  trim='middle'
-                  // onVisibleChange={() => alert('Hi!')}
-                  containerRect={containerRect}
-                  containerRef={containerRef}
-                >
-                  {removeProtocol(pageUrl)}
-                </Ellipsis>
+              <Link.Text wMin={0} tag={Text} ellipsis={{ trim: 'middle' }}>
+                {/* <Ellipsis */}
+                {/*  trim='middle' */}
+                {/*  // onVisibleChange={() => alert('Hi!')} */}
+                {/*  containerRect={containerRect} */}
+                {/*  containerRef={containerRef} */}
+                {/* > */}
+                {removeProtocol(pageUrl)}
+                {/* </Ellipsis> */}
               </Link.Text>
               <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
             </Link>
