@@ -1326,6 +1326,19 @@ const iconsList = {
       ],
     },
     {
+      name: 'Note',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'note',
+        'notes',
+        'info',
+        'details',
+        'information',
+        'notice',
+      ],
+    },
+    {
       name: 'Notification',
       size: ['l', 'm'],
       group: 'Status',
