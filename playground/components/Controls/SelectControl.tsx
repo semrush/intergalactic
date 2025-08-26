@@ -30,12 +30,12 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   );
 }
 
-function SelectControl({ options, value, colorOptions, onChange, displayName }: ISelectControlProps) {
+function SelectControl({ options, value, colorOptions, onChange }: ISelectControlProps) {
   if (!Array.isArray(options)) return null;
 
   return (
     <Select value={value} w='100%' onChange={onChange}>
-      <Select.Trigger aria-label={displayName} w='100%'>
+      <Select.Trigger w='100%'>
         {colorOptions && (
           <Select.Trigger.Addon>
             <SelectColorAddon options={colorOptions} color={`${value}`} />

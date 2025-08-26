@@ -7,8 +7,8 @@ interface ITextAreaControlProps extends TextAreaControlType {
   onChange: (value: string) => void;
 }
 
-function TextAreaControl({ value, onChange, displayName }: ITextAreaControlProps) {
-  return <Textarea aria-label={displayName} w='100%' value={value} onChange={onChange} />;
+function TextAreaControl({ value, onChange }: ITextAreaControlProps) {
+  return <Textarea w='100%' value={value} onChange={onChange} />;
 }
 
 export default TextAreaControl;

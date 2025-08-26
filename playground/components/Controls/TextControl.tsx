@@ -7,10 +7,10 @@ interface ITextControlProps extends TextControlType {
   onChange: (value: string) => void;
 }
 
-function TextControl({ value, onChange, displayName }: ITextControlProps) {
+function TextControl({ value, onChange }: ITextControlProps) {
   return (
     <Input w='100%'>
-      <Input.Value aria-label={displayName} value={value} onChange={onChange} />
+      <Input.Value value={value} onChange={onChange} />
     </Input>
   );
 }

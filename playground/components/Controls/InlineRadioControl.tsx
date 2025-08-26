@@ -11,12 +11,11 @@ function InlineRadioControl({
   value,
   onChange,
   options,
-  displayName,
 }: InlineRadioControlProps) {
   if (!Array.isArray(options)) return null;
 
   return (
-    <Pills aria-label={displayName} value={value} onChange={onChange}>
+    <Pills value={value} onChange={onChange}>
       {options.map((option) => (
         <Pills.Item key={option} value={option}>
           {option}
