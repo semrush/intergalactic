@@ -84,7 +84,7 @@ const entry: PlaygroundEntry<ButtonJSXProps> = {
             return ['info', 'success', 'brand', 'danger', 'invert'];
           case 'secondary':
           case 'tertiary':
-            return ['info', 'muted', 'invert'];
+            return ['muted', 'invert'];
           default:
             return [];
         }
