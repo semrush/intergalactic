@@ -1,16 +1,12 @@
-import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/base-components';
 import Check from '@semcore/icon/Check/m';
 import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
 import Copy from '@semcore/icon/Copy/m';
-import ExpandAlt from '@semcore/icon/ExpandAlt/m';
-import { Text } from '@semcore/typography';
 import Button from '@semcore/ui/button';
 import React, { useEffect, useRef, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
 import dispatchCopyCodeButtonClickEvent from '../events/copy_code_btn_click';
-import dispatchShowHideCodeButtonClickEvent from '../events/show_hide_code_btn_click';
 import dispatchViewSourceButtonClickEvent from '../events/view_source_btn_click';
 import styles from '../styles/styles.module.css';
 
@@ -22,16 +18,9 @@ interface ICodeProps {
 const CHANGE_ICON_TIMEOUT = 2000;
 
 function Code({ sourceCode, link }: ICodeProps) {
-  const [isOpened, setIsOpened] = useState(false);
   const [html, setHTML] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleAccordionChange = () => {
-    setIsOpened(!isOpened);
-
-    dispatchShowHideCodeButtonClickEvent(isOpened);
-  };
 
   const handleViewSource = () => {
     dispatchViewSourceButtonClickEvent();
@@ -109,42 +98,30 @@ function Code({ sourceCode, link }: ICodeProps) {
 
   return (
     <Box className={styles.code}>
-      <Accordion onChange={handleAccordionChange}>
-        <Accordion.Item value={0}>
-          <Accordion.Item.Toggle py={3} px={4}>
-            <Accordion.Item.ToggleButton>
-              <ExpandAlt mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
-              <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
-            </Accordion.Item.ToggleButton>
-          </Accordion.Item.Toggle>
-          <Accordion.Item.Collapse overflowHidden={false} aria-labelledby={undefined}>
-            <Box className={styles['source-code-wrapper']}>
-              <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
-              <Flex gap={2} className={styles['source-code-controls']}>
-                <Button
-                  tag='a'
-                  href={link}
-                  target='_blank'
-                  w={40}
-                  h={40}
-                  aria-label='View source on GitHub'
-                  onClick={handleViewSource}
-                >
-                  <GitHubInvertM />
-                </Button>
-                <Button
-                  onClick={handleCopy}
-                  w={40}
-                  h={40}
-                  aria-label='Copy code'
-                >
-                  {isCopied ? <Check /> : <Copy />}
-                </Button>
-              </Flex>
-            </Box>
-          </Accordion.Item.Collapse>
-        </Accordion.Item>
-      </Accordion>
+      <Box className={styles['source-code-wrapper']}>
+        <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
+        <Flex gap={2} className={styles['source-code-controls']}>
+          <Button
+            tag='a'
+            href={link}
+            target='_blank'
+            w={40}
+            h={40}
+            aria-label='View source on GitHub'
+            onClick={handleViewSource}
+          >
+            <GitHubInvertM />
+          </Button>
+          <Button
+            onClick={handleCopy}
+            w={40}
+            h={40}
+            aria-label='Copy code'
+          >
+            {isCopied ? <Check /> : <Copy />}
+          </Button>
+        </Flex>
+      </Box>
     </Box>
   );
 }

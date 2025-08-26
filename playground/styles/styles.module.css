@@ -1,23 +1,23 @@
 .playground {
   display: grid;
-  grid-template-rows: min-content minmax(0, min-content);
+  grid-template-rows: 1fr auto;
   border-radius: var(--intergalactic-surface-rounded);
   border: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
+  overflow: clip;
   margin-top: var(--intergalactic-spacing-8x);
 }
 
 .canvas {
   grid-area: canvas;
   display: flex;
-  align-items: center;
-  padding: var(--intergalactic-spacing-8x) var(--intergalactic-spacing-4x);
-  justify-self: center;
-  align-self: center;
-  max-width: 100%;
-  overflow-x: auto;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--intergalactic-spacing-14x) var(--intergalactic-spacing-4x);
+  border-right: 1px solid var(--vp-c-divider, #E0E1E9);
+  width: 100%;
   height: 100%;
-  border-top-left-radius: var(--intergalactic-surface-rounded);
+  overflow-x: auto;
   
   > :first-child {
     width: fit-content
@@ -32,11 +32,10 @@
   justify-items: start;
   align-items: start;
   padding: var(--intergalactic-spacing-4x);
-  border-left: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
-  border-top-right-radius: var(--intergalactic-surface-rounded);
-  border-bottom-right-radius: var(--intergalactic-surface-rounded);
+  max-height: fit-content;
+  overflow: auto;
 
   > label {
     font-size: var(--intergalactic-fs-200);
@@ -62,12 +61,18 @@
 .code {
   grid-area: code;
   border-top: 1px solid var(--vp-c-divider, #E0E1E9);
-  background: var(--vp-c-bg-alt, #F4F5F9);
-  border-bottom-left-radius: var(--intergalactic-surface-rounded);
+  background: #0C0E13;
+  overflow: auto;
+  min-height: 0;
 }
 
 .source-code-wrapper {
   position: relative;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  background-color: #0C0E13;
+  max-height: 280px;
 
   button, a {
     border-radius: 4px !important;
@@ -90,8 +95,7 @@
   background-color: #0C0E13;
   padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-4x);
   overflow: auto;
-  max-height: 260px;
-  border-bottom-left-radius: var(--intergalactic-surface-rounded);
+  flex: 1;
 
   pre {
     background-color: #0C0E13 !important;
@@ -119,7 +123,7 @@
 
 @media (max-width: 600px) {
   .playground {
-    grid-template-rows: auto auto minmax(0, min-content);
+    grid-template-rows: 1fr auto auto;
     grid-template-areas:
       "canvas"
       "control-panel"
@@ -134,7 +138,7 @@
 
 @media (min-width: 601px) {
   .playground {
-    grid-template-columns: minmax(0, 1fr) minmax(auto, 280px);
+    grid-template-columns: 1fr minmax(auto, 280px);
     grid-template-areas:
       "canvas control-panel"
       "code control-panel";
