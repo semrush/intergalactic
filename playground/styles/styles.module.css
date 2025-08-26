@@ -134,7 +134,7 @@
 
 @media (min-width: 601px) {
   .playground {
-    grid-template-columns: 1fr minmax(auto, 280px);
+    grid-template-columns: minmax(0, 1fr) minmax(auto, 280px);
     grid-template-areas:
       "canvas control-panel"
       "code control-panel";
