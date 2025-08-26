@@ -53,7 +53,7 @@ function updateControlValue<Props extends PlaygroundComponentProps>(
     };
   }
 
-  const isNumberControl = prevState[propKey].type.includes('-number');
+  const isNumberControl = prevState[propKey].type.includes('-number') && value !== '';
 
   return {
     ...prevState,
@@ -123,7 +123,7 @@ function processControls<Props extends PlaygroundComponentProps>(
         value: options.includes(currentValue) ? currentValue : options[0],
       };
     } else {
-      result[prop] = { ...control, value: currentValue === undefined ? control.value : componentProps[prop] };
+      result[prop] = { ...control, value: currentValue ?? control.value };
     }
   }
 
@@ -138,12 +138,12 @@ function Playground<
 
   if (!config) return null;
 
-  const { JSX, link, filterProps, JSXDisplayName } = config as PlaygroundEntry<Props>;
-  const controls = deepCopy(config.controls as ControlsType<Props>);
+  const { controls, JSX, link, filterProps, JSXDisplayName } = config as PlaygroundEntry<Props>;
 
   const initialProcessedControls = useMemo(() => {
-    const initialComponentProps = mapControlsStateToProps(controls);
-    return processControls(controls, initialComponentProps);
+    const deepCopiedControls = deepCopy(controls);
+    const initialComponentProps = mapControlsStateToProps(deepCopiedControls);
+    return processControls(deepCopiedControls, initialComponentProps);
   }, [controls]);
 
   const [controlsState, setControlsState] = useState(initialProcessedControls);
