@@ -8,6 +8,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Type description for `ProjectNotFoundProps`.
 
+### Fixed
+- Support link is rendered incorrectly.
+
 ## [16.1.1] - 2025-08-07
 
 ### Changed
