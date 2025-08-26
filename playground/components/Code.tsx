@@ -117,7 +117,7 @@ function Code({ sourceCode, link }: ICodeProps) {
               <Text fontWeight={500}>{isOpened ? 'Hide code' : 'Show code'}</Text>
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
-          <Accordion.Item.Collapse aria-labelledby=''>
+          <Accordion.Item.Collapse overflowHidden={false} aria-labelledby={undefined}>
             <Box className={styles['source-code-wrapper']}>
               <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
               <Flex gap={2} className={styles['source-code-controls']}>

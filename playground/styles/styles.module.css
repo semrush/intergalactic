@@ -4,7 +4,6 @@
   border-radius: var(--intergalactic-surface-rounded);
   border: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
-  overflow: clip;
   margin-top: var(--intergalactic-spacing-8x);
 }
 
@@ -18,6 +17,7 @@
   max-width: 100%;
   overflow-x: auto;
   height: 100%;
+  border-top-left-radius: var(--intergalactic-surface-rounded);
   
   > :first-child {
     width: fit-content
@@ -35,6 +35,8 @@
   border-left: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
+  border-top-right-radius: var(--intergalactic-surface-rounded);
+  border-bottom-right-radius: var(--intergalactic-surface-rounded);
 
   > label {
     font-size: var(--intergalactic-fs-200);
@@ -61,7 +63,7 @@
   grid-area: code;
   border-top: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg-alt, #F4F5F9);
-  overflow: auto;
+  border-bottom-left-radius: var(--intergalactic-surface-rounded);
 }
 
 .source-code-wrapper {
@@ -89,6 +91,7 @@
   padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-4x);
   overflow: auto;
   max-height: 260px;
+  border-bottom-left-radius: var(--intergalactic-surface-rounded);
 
   pre {
     background-color: #0C0E13 !important;
