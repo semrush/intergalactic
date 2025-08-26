@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.4] - 2025-08-29
+
+### Fixed
+
+- React forward ref error for Sparkle component.
+
 ## [16.0.3] - 2025-08-07
 
 ### Changed
