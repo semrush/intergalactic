@@ -9,6 +9,7 @@ export type BreadcrumbsProps = BoxProps & {
    * Links divider
    * */
   separator?: React.ReactNode;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 
@@ -17,6 +18,7 @@ export interface IBreadcrumbsItemProps extends BreadcrumbsItemProps, UnknownProp
 export type BreadcrumbsItemProps = BoxProps & {
   /** The property is responsible for the activity of the element */
   active?: boolean;
+  /** Specifies the locale for i18n support */
   locale?: string;
   /**
    * Ellipsis settings

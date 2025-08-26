@@ -82,7 +82,10 @@ export const useAsyncI18nMessages = (
           }));
         })
 
-        .catch(console.error);
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.error(err);
+        });
     }
   }, [container, locale]);
 

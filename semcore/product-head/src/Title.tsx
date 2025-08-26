@@ -15,6 +15,7 @@ import style from './style/title.shadow.css';
 /** @deprecated */
 export interface IHeaderTitleProps extends HeaderTitleProps, UnknownProperties {}
 export type HeaderTitleProps = BoxProps & {
+  /** A tool name that appears as part of the header title */
   toolName?: React.ReactNode;
 };
 

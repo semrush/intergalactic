@@ -49,6 +49,7 @@ export type TagProps = BoxProps & {
   addonLeft?: React.ElementType;
   /** Right addon tag */
   addonRight?: React.ElementType;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

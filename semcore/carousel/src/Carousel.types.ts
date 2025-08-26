@@ -19,8 +19,9 @@ export type CarouselProps = BoxProps & {
   /** Disables infinite items change in the carousel
    * @default false */
   bounded?: boolean;
-  /** @ignore  */
+  /** Internal */
   step?: number;
+  /** Specifies the locale for i18n support */
   locale?: string;
   /** Enable zoom feature for carousel items */
   zoom?: boolean;

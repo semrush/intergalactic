@@ -33,13 +33,14 @@ class HeadRoot<
   }
 
   getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children, getFixedStyle } = this.asProps;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
+      shadowVertical,
     };
   }
 
@@ -58,6 +59,8 @@ class HeadRoot<
       h,
       getFixedStyle,
       onCellClick,
+      shadowVertical,
+      scrollDirection,
     } = this.asProps;
     const column = columns[index];
 
@@ -68,7 +71,7 @@ class HeadRoot<
     const [name, value] = getFixedStyle(column);
     const style: any = {};
 
-    if (top) {
+    if (top && scrollDirection !== 'horizontal') {
       style.top = `${top}px`;
     }
 
@@ -94,6 +97,8 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
+      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
+      scrollDirection,
     };
   }
 
@@ -122,7 +127,7 @@ class HeadRoot<
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
-    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration } = this.asProps;
+    const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration, isDataEmpty, gridTemplateColumns } = this.asProps;
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
@@ -135,6 +140,9 @@ class HeadRoot<
           aria-rowindex={1}
           sticky={sticky}
           use:animationDuration={animationDuration ? `${animationDuration}ms` : undefined}
+          isDataEmpty={isDataEmpty}
+          use:gridTemplateColumns={gridTemplateColumns.join(' ')}
+          tabIndex={isDataEmpty ? 0 : undefined}
         >
           {selectedRows && (
             <SHeadCheckboxCol

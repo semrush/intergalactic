@@ -1,14 +1,22 @@
 import Button from '@semcore/button';
 import SidePanel from '@semcore/side-panel';
+import type { SidePanelProps } from '@semcore/side-panel';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: SidePanelProps) => {
   const [visible, setVisible] = React.useState(false);
 
   return (
     <>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)} aria-label='My side panel'>
+      <SidePanel
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-label='My side panel'
+        placement={props.placement}
+        closable={props.closable}
+        disablePreventScroll={props.disablePreventScroll}
+      >
         <SidePanel.Header>
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
           <SidePanel.Title>Heading 6, 16px</SidePanel.Title>
@@ -22,5 +30,13 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultProps: SidePanelProps = {
+  placement: undefined,
+  closable: undefined,
+  disablePreventScroll: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

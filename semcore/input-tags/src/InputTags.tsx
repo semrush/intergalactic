@@ -51,6 +51,7 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
      * @default [',', ';', '|', 'Enter', 'Tab']
      * */
     delimiters?: string[];
+    /** Specifies the locale for i18n support */
     locale?: string;
   };
 

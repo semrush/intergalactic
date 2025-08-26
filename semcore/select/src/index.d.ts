@@ -70,6 +70,7 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      * If provided, adds a hidden <input /> tag with the given name for enhancing accessibility.
      */
     name?: string;
+    /** Specifies the locale for i18n support */
     locale?: string;
     /**
      * If enabled, after opening select popper view will be scrolled to selected option or, if there are multiple selected options, to the first selected option.
@@ -99,7 +100,7 @@ export type SelectOptionCheckboxProps = BoxProps & {
   theme?: string;
   /** Visual indeterminate state */
   indeterminate?: boolean;
-
+  /** Controls the selected state */
   selected?: boolean;
 };
 

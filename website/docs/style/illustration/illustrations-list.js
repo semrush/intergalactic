@@ -113,10 +113,6 @@ const illustartionsList = {
       group: 'Chart types',
     },
     {
-      name: 'Table',
-      group: 'Data types',
-    },
-    {
       name: 'DeletedPage',
       group: 'Data types',
     },
@@ -138,6 +134,14 @@ const illustartionsList = {
     },
     {
       name: 'Suggestions',
+      group: 'Data types',
+    },
+    {
+      name: 'Table',
+      group: 'Data types',
+    },
+    {
+      name: 'TextLinksEtc',
       group: 'Data types',
     },
     {

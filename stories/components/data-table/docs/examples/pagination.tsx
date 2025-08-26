@@ -1,8 +1,11 @@
+import { Flex } from '@semcore/base-components';
 import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
+import Select from '@semcore/select';
 import React from 'react';
 
 const Demo = () => {
+  const [limit, setLimit] = React.useState(10);
   const [currentPage, setCurrentPage] = React.useState(0);
   const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
   const currencyFormat = React.useMemo(
@@ -10,13 +13,26 @@ const Demo = () => {
     [],
   );
 
-  const limit = 2;
-  const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
+  const numLim = Number(limit);
+  const tableData: typeof data = [];
+
+  let index = 0;
+
+  for (let i = 0; i < 10; i++) {
+    tableData.push(...data.map((item) => {
+      index++;
+
+      return {
+        ...item,
+        keyword: `${index} ${item.keyword}`,
+      };
+    }));
+  }
 
   return (
     <>
       <DataTable
-        data={tableData}
+        data={tableData.slice(currentPage * numLim, currentPage * numLim + numLim)}
         aria-label='Pagination'
         h='auto'
         columns={[
@@ -57,12 +73,19 @@ const Demo = () => {
           return numberFormat.format(value);
         }}
       />
-      <Pagination
-        mt={4}
-        totalPages={Math.ceil(data.length / limit)}
-        currentPage={currentPage + 1}
-        onCurrentPageChange={(page) => setCurrentPage(page - 1)}
-      />
+      <Flex gap={4} mt={4}>
+        <Pagination
+          totalPages={Math.ceil(tableData.length / numLim)}
+          currentPage={currentPage + 1}
+          onCurrentPageChange={(page) => setCurrentPage(page - 1)}
+        />
+        <Select
+          aria-label='Table rows on the page'
+          value={numLim}
+          onChange={setLimit}
+          options={[{ value: 3, children: 3 }, { value: 5, children: 5 }, { value: 8, children: 8 }, { value: 10, children: 10 }]}
+        />
+      </Flex>
     </>
   );
 };

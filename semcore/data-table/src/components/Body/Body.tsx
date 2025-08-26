@@ -15,7 +15,7 @@ import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DTValue } from '../DataTable/DataTable.types';
+import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
@@ -24,7 +24,7 @@ type State<UniqKeyType> = {
   expandedForAnimation: Set<UniqKeyType>;
 };
 
-class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -65,13 +65,16 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
     if (expandedRows.has(row[UNIQ_ROW_KEY])) {
       this.closeAccordion(row, closeDuration);
     } else {
-      if (accordionMode === 'toggle' && expandedRows.size === 1) {
-        const previousRowKey = expandedRows.values().next().value;
-        if (previousRowKey) {
-          const previousRow = this.asProps.flatRows.find((r) => r[UNIQ_ROW_KEY] === previousRowKey);
-          if (previousRow) {
-            this.closeAccordion(previousRow, closeDuration);
-          }
+      if (accordionMode === 'toggle' && expandedRows.size > 0) {
+        const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
+        if (previousRows.length > 0) {
+          previousRows.forEach((previousRow) => {
+            if (!this.state.expandedForAnimation.has(previousRow[UNIQ_ROW_KEY])) {
+              setTimeout(() => {
+                this.closeAccordion(previousRow, closeDuration);
+              }, openDuration / 3);
+            }
+          });
         }
       }
       onExpandRow(row);
@@ -203,6 +206,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onCellClick,
       rawData,
+      shadowVertical,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -234,6 +238,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       accordionDuration,
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
+      shadowVertical,
     };
 
     if (renderCell) {
@@ -347,6 +352,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
       columns,
       uid,
       rows,
+      renderCellOverlay,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -492,6 +498,7 @@ class BodyRoot<UniqKeyType> extends Component<DataTableBodyProps<UniqKeyType>, {
             />
           );
         })}
+        {renderCellOverlay?.()}
         {loading && (
           <SSpinContainer
             innerOutline

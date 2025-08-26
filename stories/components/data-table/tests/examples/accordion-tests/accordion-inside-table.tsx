@@ -5,7 +5,7 @@ import { DataTable, ACCORDION } from '@semcore/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 export type AccordionWithButtonProps = {
-  accordionMode: DataTableProps<typeof data>['accordionMode'];
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
 };
 
 const Demo = (props: AccordionWithButtonProps) => {
@@ -13,6 +13,7 @@ const Demo = (props: AccordionWithButtonProps) => {
     <DataTable
       data={data}
       aria-label='Accordion inside table'
+      accordionMode={props.accordionMode}
       onAccordionToggle={(type, i) => {
         console.log('called', type, i);
       }}

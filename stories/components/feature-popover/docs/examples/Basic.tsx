@@ -1,19 +1,24 @@
-import { Flex, Box } from '@semcore/base-components';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import FeaturePopover from '@semcore/feature-popover';
-import type { FeaturePopoverPopperProps } from '@semcore/feature-popover';
+import type { FeaturePopoverProps } from '@semcore/feature-popover';
 import FileExport from '@semcore/icon/FileExport/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = (props: FeaturePopoverPopperProps) => {
+export type FeaturePopoverExampleProps = {
+  closeIcon: boolean;
+  theme: FeaturePopoverProps['theme'];
+};
+
+const Demo = (props: FeaturePopoverExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
   return (
     <Flex gap={2}>
-      <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal>
+      <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal theme={props.theme}>
         <FeaturePopover.Trigger>
           <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
             <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
@@ -26,7 +31,7 @@ const Demo = (props: FeaturePopoverPopperProps) => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={350} aria-label='New feature: Export'>
+        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={400} aria-label='New feature: Export'>
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -40,17 +45,28 @@ const Demo = (props: FeaturePopoverPopperProps) => {
             />
             <div>
               <Text size={300} bold tag='h3' mb={1} mt={0}>
-                Export your data
+                Export your data {props.theme}
               </Text>
               <Text mb={4} size={200} tag='p'>
                 With this new feature, you can now export your data to CSV or PDF files.
               </Text>
-              <Button theme='invert' use='primary' onClick={handleVisibleChange(false)}>
-                Got it
-              </Button>
-              <Button theme='muted' use='tertiary' ml={2} onClick={handleVisibleChange(false)}>
-                Remind me later
-              </Button>
+              <Flex justifyContent='space-between'>
+                <Button theme='invert' use='primary' onClick={handleVisibleChange(false)}>
+                  Got it
+                </Button>
+                <Button theme={props.theme === 'accent' ? 'muted' : 'invert'} use='tertiary' ml={2} onClick={handleVisibleChange(false)}>
+                  Remind me later
+                </Button>
+
+                <Flex inline aria-live='polite' alignItems='center'>
+                  Step
+                  {' '}
+                  1
+                  <span aria-hidden='true'>/</span>
+                  <ScreenReaderOnly>of</ScreenReaderOnly>
+                  5
+                </Flex>
+              </Flex>
             </div>
           </Flex>
         </FeaturePopover.Popper>
@@ -62,8 +78,9 @@ const Demo = (props: FeaturePopoverPopperProps) => {
   );
 };
 
-export const defaultProps: FeaturePopoverPopperProps = {
+export const defaultProps: FeaturePopoverExampleProps = {
   closeIcon: true,
+  theme: 'accent',
 };
 
 Demo.defaultProps = defaultProps;

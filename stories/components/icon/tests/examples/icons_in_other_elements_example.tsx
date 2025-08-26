@@ -2,10 +2,11 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/BracketsCode/l';
-import IconM from '@semcore/icon/TextItalic/m';
+import IconL from '@semcore/icon/LinkExternalAlt/l';
+import IconM from '@semcore/icon/LinkExternalAlt/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
+import Pills from '@semcore/pills';
 import Switch from '@semcore/switch';
 import { TagContainer } from '@semcore/tag';
 import { Hint, DescriptionTooltip } from '@semcore/tooltip';
@@ -15,6 +16,7 @@ import React from 'react';
 const Demo = () => {
   return (
     <>
+
       <Flex columnGap={2} mb={4}>
         <Hint
           title='Hinticon M'
@@ -272,14 +274,14 @@ const Demo = () => {
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='m' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
           <TagContainer.Close />
         </TagContainer>
         <TagContainer theme='primary' color='green-500' size='l' mr={1}>
-          <TagContainer.Tag>
+          <TagContainer.Tag interactive>
             <TagContainer.Tag.Addon><IconM /></TagContainer.Tag.Addon>
             <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
           </TagContainer.Tag>
@@ -300,6 +302,18 @@ const Demo = () => {
           <TagContainer.Close />
         </TagContainer>
       </Flex>
+
+      <Pills defaultValue={1} mr={4} mt={4}>
+        <Pills.Item value={1} addonLeft={IconM}>A</Pills.Item>
+        <Pills.Item value={2} addonLeft={IconM}>B</Pills.Item>
+        <Pills.Item value={3} addonLeft={IconM}>C</Pills.Item>
+      </Pills>
+
+      <Pills size='l' defaultValue={1}>
+        <Pills.Item value={1} addonLeft={IconM}>A</Pills.Item>
+        <Pills.Item value={2} addonLeft={IconM}>B</Pills.Item>
+        <Pills.Item value={3} addonLeft={IconM}>C</Pills.Item>
+      </Pills>
     </>
   );
 };
