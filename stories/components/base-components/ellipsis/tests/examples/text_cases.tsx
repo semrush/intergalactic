@@ -6,24 +6,24 @@ const Demo = () => {
   return (
     <div>
       <p>
-        <Box w={50}>
-          <Text ellipsis={true}>Segment 2sfdsf</Text>
-        </Box>
+
+        <Text w={50} display='block' ellipsis={true}>Segment 2sfdsf</Text>
+
       </p>
       <p>
-        <Box w={111}>
-          <Text ellipsis={{ trim: 'middle' }}>Segment 2sfdsf</Text>
-        </Box>
+
+        <Text w={111} display='block' ellipsis={{ trim: 'middle' }}>Segment 2sfdsf</Text>
+
       </p>
       <p>
-        <Box w={120}>
-          <Text ellipsis={true}>Lorem bbjips</Text>
-        </Box>
+
+        <Text w={120} display='block' ellipsis={true}>Lorem bbjips</Text>
+
       </p>
       <p>
-        <Box w={120}>
-          <Text ellipsis={{ trim: 'middle' }}>Lorem bbjips</Text>
-        </Box>
+
+        <Text w={50} display='block' ellipsis={{ trim: 'middle' }}>Lorem bbjips</Text>
+
       </p>
       <p>
         <Box w={220}>
@@ -49,7 +49,6 @@ const Demo = () => {
         <Text
           display='block'
           w={150}
-          h={150}
           mb={3}
           size={700}
           tag='p'

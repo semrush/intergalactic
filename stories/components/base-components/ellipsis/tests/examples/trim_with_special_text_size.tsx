@@ -8,7 +8,7 @@ const Demo = (props: EllipsisProps) => {
     <Text
       display='block'
       w={100}
-      h={200}
+
       mb={3}
       size={400}
       tag='p'
