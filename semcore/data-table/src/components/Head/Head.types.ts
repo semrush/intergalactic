@@ -63,5 +63,5 @@ export type HeadPropsInner<
   onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
-
+  isDataEmpty: boolean;
 };
