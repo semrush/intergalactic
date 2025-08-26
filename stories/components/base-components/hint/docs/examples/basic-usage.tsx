@@ -8,7 +8,9 @@ const Demo = () => {
 
   return (
     <>
-      <Button ref={ref} addonLeft={FileExportM} />
+      <Button ref={ref}>
+        <Button.Addon tag={FileExportM} />
+      </Button>
       <Hint triggerRef={ref}>Export to PDF</Hint>
     </>
   );
