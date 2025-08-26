@@ -16,16 +16,10 @@ With this type of case, all words are capitalized, except for minor words that a
 
 <DosDonts>
     <template #dont>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+        <img src="./static/tab_dont.png" style="margin: auto" alt="A line of tool tabs with non-capitalized titles 'Audience pverview', 'Traffic journey', and 'Top pages'." />
     </template>
     <template #do>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+        <img src="./static/tab_do.png" style="margin: auto" alt="A line of tool tabs with capitalized titles 'Audience Overview', 'Traffic Journey', and 'Top Pages'." />
     </template>
 </DosDonts>
 
@@ -71,6 +65,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
 ### Elements using “Sentence case”
 * Modal window titles
 * Notice titles
+* Card titles
 * Buttons
 * Field labels
 * Checkboxes
