@@ -141,7 +141,7 @@ const useFocusLockHook = (
       Promise.resolve().then(() => {
         if (!trapRef.current) return;
         const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
-        if (currentFocusMaster !== trapRef.current) return;
+        if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
         const trapNodes = currentFocusMaster
           ? [trapRef.current]
           : [trapRef.current, ...focusLockAllTraps];
@@ -209,8 +209,8 @@ const useFocusLockHook = (
     );
     if (focusableChildren.length === 0 && autoFocus !== 'enforced') return;
 
-    document.body.addEventListener('focusout', handleFocusOut as any);
-    document.body.addEventListener(syntheticEvents.blur, handleFocusOut as any);
+    trapRef.current.addEventListener('focusout', handleFocusOut as any);
+    trapRef.current.addEventListener(syntheticEvents.blur, handleFocusOut as any);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
@@ -230,8 +230,8 @@ const useFocusLockHook = (
       }, 0);
     }
     return () => {
-      document.body.removeEventListener('focusout', handleFocusOut as any);
-      document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
+      trapRef.current?.removeEventListener('focusout', handleFocusOut as any);
+      trapRef.current?.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);
