@@ -11,19 +11,22 @@ type AdditionalJSXProps = { value: string };
 export type DotJSXProps = JSXProps<DotProps> & AdditionalJSXProps;
 
 function getJSX(props: DotJSXProps) {
-  const { value, handleControlChange, ...dotProps } = props;
+  const { handleControlChange, ...dotProps } = props;
+
+  const value = Number.isInteger(props.value) ? props.value : null;
+
   return (
     <Button aria-describedby={dotProps.hidden ? undefined : 'dot'}>
       <Button.Text textAlign='center'>Notifications</Button.Text>
       {dotProps.up
         ? (
-            <Dot {...dotProps} aria-label={value !== undefined ? undefined : 'New'} id='dot'>
+            <Dot {...dotProps} aria-label={Number.isInteger(value) ? undefined : 'New'} id='dot'>
               {value}
             </Dot>
           )
         : (
             <Button.Addon>
-              <Dot {...dotProps} aria-label={value !== undefined ? undefined : 'New'} id='dot'>
+              <Dot {...dotProps} aria-label={Number.isInteger(value) ? undefined : 'New'} id='dot'>
                 {value}
               </Dot>
             </Button.Addon>

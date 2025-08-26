@@ -53,11 +53,18 @@ function updateControlValue<Props extends PlaygroundComponentProps>(
     };
   }
 
-  const isNumberControl = prevState[propKey].type.includes('-number') && value !== '';
+  const isNumberControl = prevState[propKey].type.includes('-number');
+  const isValueEmpty = value === '';
+
+  let newValue = value;
+
+  if (isNumberControl && !isValueEmpty) {
+    newValue = +value;
+  }
 
   return {
     ...prevState,
-    [propKey]: { ...prevState[propKey], value: isNumberControl ? +value : value },
+    [propKey]: { ...prevState[propKey], value: newValue },
   };
 }
 
