@@ -17,14 +17,14 @@ function getJSX(props: DotJSXProps) {
       <Button.Text textAlign='center'>Notifications</Button.Text>
       {dotProps.up
         ? (
-            <Dot {...dotProps} aria-label={value ? undefined : 'New'} id='dot'>
-              {value ? value : null}
+            <Dot {...dotProps} aria-label={value !== undefined ? undefined : 'New'} id='dot'>
+              {value}
             </Dot>
           )
         : (
             <Button.Addon>
-              <Dot {...dotProps} aria-label={value ? undefined : 'New'} id='dot'>
-                {value ? value : null}
+              <Dot {...dotProps} aria-label={value !== undefined ? undefined : 'New'} id='dot'>
+                {value}
               </Dot>
             </Button.Addon>
           )}
