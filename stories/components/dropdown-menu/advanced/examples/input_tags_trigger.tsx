@@ -21,8 +21,17 @@ const SAMPLE_SUGGESTIONS = [
   'ppc',
 ];
 
-const TagsList = ({ tags, onRemoveTag, validateTag }) => {
-  const handleCloseClick = (event) => {
+type TagListProps = {
+  tags: string[];
+  onRemoveTag: (tag: string) => void;
+  validateTag: (tag: string) => {
+    isValid: boolean;
+    error: string | null;
+  };
+};
+
+const TagsList = ({ tags, onRemoveTag, validateTag }: TagListProps) => {
+  const handleCloseClick = (event: React.SyntheticEvent<HTMLElement>) => {
     const tagIndex = Number(event.currentTarget.dataset.index);
     const tagToRemove = tags[tagIndex];
     onRemoveTag(tagToRemove);
@@ -56,14 +65,13 @@ const TagsList = ({ tags, onRemoveTag, validateTag }) => {
 const Demo = () => {
   // State definitions
   const [tags, setTags] = useState(['existing', 'tags']);
-  const [newTag, setNewTag] = useState(''); // ✅ Now properly defined
-  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [newTag, setNewTag] = useState('');
 
   const dropdownHighlightedIndex = useRef(null);
   const inputRef = useRef(null);
 
   // Simple validation function
-  const validateTag = (tag) => {
+  const validateTag = (tag: string) => {
     const isValid = tag.length > 0 && tag.length <= 20 && !tag.includes(' ');
     return {
       isValid,
@@ -81,17 +89,17 @@ const Demo = () => {
   const isTagsLengthReached = tags.length >= TAGS_MAX_COUNT;
   const isDisabled = !tagSuggestions.length || isTagsLengthReached;
 
-  const handleNewTagChange = (value) => {
+  const handleNewTagChange = (value: string) => {
     setNewTag(value);
   };
 
-  const handleAppend = (newTags) => {
+  const handleAppend = (newTags: string[]) => {
     if (dropdownHighlightedIndex.current === null) {
       addTags(newTags);
     }
   };
 
-  const addTags = (newTags) => {
+  const addTags = (newTags: string[]) => {
     const validTags = newTags.filter(
       (tag) =>
         tag.trim() &&
@@ -111,11 +119,11 @@ const Demo = () => {
     }
   };
 
-  const removeTag = (tagToRemove) => {
+  const removeTag = (tagToRemove: string) => {
     setTags((prev) => prev.filter((tag) => tag !== tagToRemove));
   };
 
-  const handleTagClick = (tag) => {
+  const handleTagClick = (tag: string) => {
     addTags([tag]);
   };
 
@@ -135,14 +143,9 @@ const Demo = () => {
       <DropdownMenu
         disabled={isDisabled}
         visible={isDisabled ? false : undefined}
-        // onHighlightedIndexChange={(index) => {
-        //   dropdownHighlightedIndex.current = index;
-        // }}
-        onChange={handleTagClick}
         interaction='focus'
         size='m'
         stretch='fixed'
-        // multiselect
       >
         <DropdownMenu.Trigger
           w='100%'
@@ -164,8 +167,6 @@ const Demo = () => {
             value={newTag}
             onChange={handleNewTagChange}
             ref={inputRef}
-            onFocus={() => setIsInputFocused(true)}
-            onBlur={() => setIsInputFocused(false)}
             placeholder={tags.length === 0 ? 'Enter tags...' : ''}
           />
         </DropdownMenu.Trigger>
