@@ -15,7 +15,7 @@ export const Hint: StoryObj<typeof defaultProps> = {
   argTypes: {
     placement: {
       control: { type: 'select' },
-      options: ['top', 'left', 'right', 'bottom'],
+      options: ['top-start', 'top', 'top-end', 'left-start', 'left', 'left-end', 'right-start', 'right', 'right-end', 'bottom-start', 'bottom', 'bottom-end'],
     },
     timeout: {
       control: { type: 'number' },
