@@ -1952,7 +1952,7 @@ importers:
         version: link:../popper
       '@semcore/typography':
         specifier: 16.1.5
-        version: link:../typography
+        version: 16.1.5(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -3020,7 +3020,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))
 
   website:
     dependencies:
@@ -5669,6 +5669,16 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
+  '@semcore/flex-box@16.0.5':
+    resolution: {integrity: sha512-7TJ6y2j/H5qFvDGFxTt+yTVbpoOiRDxnlFUbXANPjmXdPzF10QRRvMVYdHJ0jFNzZWwO10xnUnzSl93IVoeeqQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/flex-box@16.0.6':
+    resolution: {integrity: sha512-wUMy71h5OLFNyHFueS0caCHpsYINnLyB10Q6Yi39OlFwqgN+mG6kdBhIg2kSMKdtZXlHXi13e/zYSf4nhjcaNA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
   '@semcore/format-text@16.0.0':
     resolution: {integrity: sha512-cEXFxv6BQzjxKqdw8I40cRWqBOE2tgsmeLF1wXalrirTACI62brSC2CkA4eVXFyCd4Mr0Bsd7DleLl8SCsPVRw==}
     peerDependencies:
@@ -5693,6 +5703,16 @@ packages:
 
   '@semcore/icon@16.0.0':
     resolution: {integrity: sha512-Ua2V8zxItGmPxgESB2/gNha75keUvKgcVsocXRnN8wAg6P9wcT0PYZ2XMjR/Jxvbwfv/Qgb0NRKMI5b/lLCGUQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/icon@16.4.0':
+    resolution: {integrity: sha512-QNyPCFJxBwkrQgUWesn+lbVxJPU9pJGcCaHznC14xEQUrPHrn9i7eArkrJi8J+KI6/q2tNkpHiosPSgNJqSvQw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/icon@16.5.0':
+    resolution: {integrity: sha512-OrbtyAkONnkFwReJeoRc95e1oV0C09zokXU5D0Bagd0FQRKP1qLBZEEmcyI4CnpjsYRKG8r1+72VbE+WlZyn5A==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -5887,6 +5907,16 @@ packages:
 
   '@semcore/typography@16.0.0':
     resolution: {integrity: sha512-+DhcuQZuxR9DGlf8HCHk5kGJ59ZxYaB3hjOaUtu/gCJEAzzo+XQoTRMGHS0gP3qeA7Go3910Cx84mo9ZGknDYQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/typography@16.1.5':
+    resolution: {integrity: sha512-yYo50zW3okPWjXErkoZkO7P+Fm6x/kW/GAzcvL2kyBUwK8oi0lwQactnbo3nQNRWPV2jdicTBDQMWQEmysjobw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/typography@16.2.0':
+    resolution: {integrity: sha512-gUDtGcbyrXMxx18Qw0tfIj2yvz9xJf1Gn3IeLiKkSGhl2nck7o27qY6gsYavqp+vMMh33ZcvBcLa5UJKmqEQRQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -18017,7 +18047,7 @@ snapshots:
       '@semcore/select': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/switch': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
       '@semcore/tab-line': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
-      '@semcore/typography': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
+      '@semcore/typography': 16.2.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
     transitivePeerDependencies:
       - react
       - react-dom
@@ -18073,6 +18103,14 @@ snapshots:
     dependencies:
       '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
 
+  '@semcore/flex-box@16.0.5(@semcore/base-components@16.0.0(@semcore/core@semcore+core))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+
+  '@semcore/flex-box@16.0.6(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))
+
   '@semcore/format-text@16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@semcore/base-components': 16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))
@@ -18107,6 +18145,18 @@ snapshots:
     dependencies:
       '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
       '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
+      classnames: 2.2.6
+
+  '@semcore/icon@16.4.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.5(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
+      classnames: 2.2.6
+
+  '@semcore/icon@16.5.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))
+      '@semcore/flex-box': 16.0.6(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
       classnames: 2.2.6
 
   '@semcore/illustration@16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))':
@@ -18383,6 +18433,18 @@ snapshots:
       '@semcore/flex-box': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
       '@semcore/icon': 16.0.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
       csstype: 3.0.8
+
+  '@semcore/typography@16.1.5(@semcore/base-components@16.0.0(@semcore/core@semcore+core))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@semcore+core)
+      '@semcore/flex-box': 16.0.5(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
+      '@semcore/icon': 16.4.0(@semcore/base-components@16.0.0(@semcore/core@semcore+core))
+
+  '@semcore/typography@16.2.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))':
+    dependencies:
+      '@semcore/base-components': 16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))
+      '@semcore/flex-box': 16.0.6(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
+      '@semcore/icon': 16.5.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))
 
   '@semcore/widget-empty@16.0.0(@semcore/base-components@16.0.0(@semcore/core@16.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)))':
     dependencies:
@@ -28868,7 +28930,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -28876,7 +28938,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.12)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
     dependencies:
@@ -28921,7 +28983,7 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4

@@ -17,7 +17,7 @@ const Demo = () => {
   return (
     <Box>
       {tags.map((tag, idx) => (
-        <TagContainer theme='primary' size='l' data-id={idx} key={idx} mr={1}>
+        <TagContainer theme='primary' size='l' data-id={idx} key={tag} mr={1}>
           <TagContainer.Tag>
             <TagContainer.Tag.Text>{tag}</TagContainer.Tag.Text>
           </TagContainer.Tag>
