@@ -367,7 +367,7 @@ test.describe('One level header - Sorting', () => {
 
     await test.step('Verify sorting icon do not move the text content by hover', async () => {
       await columnHeaders.nth(1).hover();
-      await page.getByRole('tooltip', { name: 'KD % and some another text' }).waitFor({ state: 'visible' });
+      await page.getByText('KD % and some another text').nth(1).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
