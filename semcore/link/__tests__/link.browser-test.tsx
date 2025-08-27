@@ -135,6 +135,8 @@ test.describe('Link', () => {
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
+    await page
+      .getByText('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed! Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam. Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?').nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
