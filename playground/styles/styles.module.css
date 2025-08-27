@@ -4,7 +4,6 @@
   border-radius: var(--intergalactic-surface-rounded);
   border: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
-  overflow: clip;
   margin-top: var(--intergalactic-spacing-8x);
 }
 
@@ -15,9 +14,7 @@
   justify-content: center;
   padding: var(--intergalactic-spacing-14x) var(--intergalactic-spacing-4x);
   border-right: 1px solid var(--vp-c-divider, #E0E1E9);
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
+  border-top-left-radius: var(--intergalactic-surface-rounded);
   
   > :first-child {
     width: fit-content
@@ -34,8 +31,8 @@
   padding: var(--intergalactic-spacing-4x);
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
-  max-height: fit-content;
-  overflow: auto;
+  border-top-right-radius: var(--intergalactic-surface-rounded);
+  border-bottom-right-radius: var(--intergalactic-surface-rounded);
 
   > label {
     font-size: var(--intergalactic-fs-200);
@@ -63,16 +60,12 @@
   border-top: 1px solid var(--vp-c-divider, #E0E1E9);
   background: #0C0E13;
   overflow: auto;
-  min-height: 0;
+  border-bottom-left-radius: var(--intergalactic-surface-rounded);
+  max-height: 280px;
 }
 
 .source-code-wrapper {
   position: relative;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  background-color: #0C0E13;
-  max-height: 280px;
 
   button, a {
     border-radius: 4px !important;
@@ -92,10 +85,7 @@
 }
 
 .source-code {
-  background-color: #0C0E13;
   padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-4x);
-  overflow: auto;
-  flex: 1;
 
   pre {
     background-color: #0C0E13 !important;

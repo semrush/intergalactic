@@ -97,9 +97,9 @@ function Code({ sourceCode, link }: ICodeProps) {
   if (!html) return;
 
   return (
-    <Box className={styles.code}>
+    <Box tabIndex={0} className={styles.code}>
       <Box className={styles['source-code-wrapper']}>
-        <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
+        <Box tabIndex={-1} className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
         <Flex gap={2} className={styles['source-code-controls']}>
           <Button
             tag='a'
