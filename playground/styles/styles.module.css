@@ -1,6 +1,6 @@
 .playground {
   display: grid;
-  grid-template-rows: min-content minmax(0, min-content);
+  grid-template-rows: 1fr auto;
   border-radius: var(--intergalactic-surface-rounded);
   border: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
@@ -10,14 +10,12 @@
 .canvas {
   grid-area: canvas;
   display: flex;
-  align-items: center;
-  padding: var(--intergalactic-spacing-8x) var(--intergalactic-spacing-4x);
-  justify-self: center;
-  align-self: center;
-  max-width: 100%;
-  overflow-x: auto;
-  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--intergalactic-spacing-14x) var(--intergalactic-spacing-4x);
+  border-right: 1px solid var(--vp-c-divider, #E0E1E9);
   border-top-left-radius: var(--intergalactic-surface-rounded);
+  overflow: auto;
   
   > :first-child {
     width: fit-content
@@ -32,7 +30,6 @@
   justify-items: start;
   align-items: start;
   padding: var(--intergalactic-spacing-4x);
-  border-left: 1px solid var(--vp-c-divider, #E0E1E9);
   background: var(--vp-c-bg, #FFF);
   gap: var(--intergalactic-spacing-3x);
   border-top-right-radius: var(--intergalactic-surface-rounded);
@@ -62,8 +59,10 @@
 .code {
   grid-area: code;
   border-top: 1px solid var(--vp-c-divider, #E0E1E9);
-  background: var(--vp-c-bg-alt, #F4F5F9);
+  background: #0C0E13;
+  overflow: auto;
   border-bottom-left-radius: var(--intergalactic-surface-rounded);
+  max-height: 280px;
 }
 
 .source-code-wrapper {
@@ -87,11 +86,7 @@
 }
 
 .source-code {
-  background-color: #0C0E13;
   padding: var(--intergalactic-spacing-5x) var(--intergalactic-spacing-5x) 0 var(--intergalactic-spacing-4x);
-  overflow: auto;
-  max-height: 260px;
-  border-bottom-left-radius: var(--intergalactic-surface-rounded);
 
   pre {
     background-color: #0C0E13 !important;
@@ -119,7 +114,7 @@
 
 @media (max-width: 600px) {
   .playground {
-    grid-template-rows: auto auto minmax(0, min-content);
+    grid-template-rows: 1fr auto auto;
     grid-template-areas:
       "canvas"
       "control-panel"
@@ -134,7 +129,7 @@
 
 @media (min-width: 601px) {
   .playground {
-    grid-template-columns: minmax(0, 1fr) minmax(auto, 280px);
+    grid-template-columns: 1fr minmax(auto, 280px);
     grid-template-areas:
       "canvas control-panel"
       "code control-panel";
