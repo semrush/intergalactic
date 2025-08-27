@@ -15,6 +15,7 @@
   padding: var(--intergalactic-spacing-14x) var(--intergalactic-spacing-4x);
   border-right: 1px solid var(--vp-c-divider, #E0E1E9);
   border-top-left-radius: var(--intergalactic-surface-rounded);
+  overflow: auto;
   
   > :first-child {
     width: fit-content
