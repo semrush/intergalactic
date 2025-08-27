@@ -19,12 +19,10 @@ SHintPopper {
   animation-fill-mode: both;
   animation-timing-function: var(--timingFunction);
   animation-duration: var(--durationFinalize);
-  animation-delay: var(--delayFinalize);
   animation-name: var(--keyframesFinalize);
 
   &[visible] {
     animation-duration: var(--durationInitialize);
-    animation-delay: var(--delayInitialize);
     animation-name: var(--keyframesInitialize);
   }
 }

@@ -1,9 +1,12 @@
 import { DataTable } from '@semcore/data-table';
+import { useResizeObserver } from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 const Demo = () => {
   const containerRef = React.useRef(null);
+
+  const containerRect = useResizeObserver(containerRef);
 
   return (
     <DataTable
@@ -17,14 +20,16 @@ const Demo = () => {
           name: 'vol',
           children: 'Vol.',
           gtcWidth: '100px',
-          ref: containerRef },
+          ref: containerRef,
+        },
       ]}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
-          return {
-            tag: Text,
-            ellipsis: { trim: 'middle' },
-          };
+          return (
+            <Text ellipsis={{ trim: 'middle', containerRect }} flex={1}>
+              {props.value}
+            </Text>
+          );
         }
 
         return props.defaultRender();

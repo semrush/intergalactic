@@ -2,7 +2,7 @@ import { useEllipsis, Box, Hint } from '@semcore/base-components';
 import React from 'react';
 
 const Demo = () => {
-  const ref: React.RefObject<HTMLElement> = React.useRef();
+  const ref = React.useRef<HTMLDivElement | null>(null);
   // useEllipsis returns a boolean that indicates
   // whether the text is cropped
   const showHint = useEllipsis(ref, { trim: 'middle', maxLine: 1 });

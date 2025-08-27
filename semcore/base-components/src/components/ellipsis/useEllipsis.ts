@@ -18,6 +18,10 @@ export type EllipsisSettings = {
    * @default 1
    */
   maxLine?: number;
+  /**
+   * Explicit sizes of container text should be trimmed in
+   **/
+  containerRect?: { width: number };
 };
 
 export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSettings | false): boolean {
@@ -26,7 +30,8 @@ export function useEllipsis(ref: React.RefObject<HTMLElement>, props: EllipsisSe
 
   const maxLine = props === false ? undefined : (props.maxLine ?? 1);
   const trim = props === false ? undefined : (props.trim ?? 'end');
-  const blockWidth = useResizeObserver(ref).width;
+  const containerRect = props === false ? undefined : props.containerRect;
+  const blockWidth = useResizeObserver(ref, containerRect).width;
 
   React.useEffect(() => {
     setTextContent(ref.current?.textContent ?? '');

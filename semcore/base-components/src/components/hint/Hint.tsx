@@ -27,7 +27,7 @@ export type SimpleHintPopperProps = {
    * Timer to show and hide the popper
    * @default [500, 500]
    */
-  timeout?: DefaultProps['delay'];
+  timeout?: DefaultProps['timeout'];
   /**
    * Hint content.
    * Better to use here some short text.
@@ -48,7 +48,6 @@ type HintComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 type DefaultProps = {
   defaultVisible?: boolean;
   timeout: number | [number, number];
-  delay: number | [number, number];
   timingFunction: DataType.EasingFunction;
 };
 
@@ -87,7 +86,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
   static defaultProps: DefaultProps = {
     defaultVisible: false,
     timeout: [500, 500],
-    delay: 0,
     timingFunction: 'ease-out',
   };
 
@@ -278,7 +276,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
     });
 
     const duration = propToArray(Number(this.asProps.duration));
-    const delay = propToArray(this.asProps.delay);
 
     return sstyled(styles)(
       <Portal>
@@ -291,8 +288,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof 
           use:visible={innerVisible}
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
-          delayInitialize={`${delay[0]}ms`}
-          delayFinalize={`${delay[1]}ms`}
           timingFunction={timingFunction}
           keyframesInitialize={style[`@${this.keyframesKey(calculatedPlacement)}-in`]}
           keyframesFinalize={style[`@${this.keyframesKey(calculatedPlacement)}-out`]}
