@@ -53,7 +53,7 @@ function ControlWrapper({ displayName, children }: IControlWrapperProps) {
 
 function GroupControl({ groupName, controls, groupPropName, onControlChange, isOpenedByDefault }: IGroupControlProps) {
   return (
-    <Accordion {...(isOpenedByDefault && { defaultValue: 0 })}>
+    <Accordion defaultValue={isOpenedByDefault ? 0 : undefined}>
       <Accordion.Item value={0}>
         <Accordion.Item.Toggle className={styles.fullWidthItem}>
           <Accordion.Item.ToggleButton>
