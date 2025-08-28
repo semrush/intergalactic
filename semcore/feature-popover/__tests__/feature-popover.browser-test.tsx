@@ -33,12 +33,14 @@ test.describe('Visual', () => {
   });
 
   const closeIcon = [
-    { closeIcon: true },
-    { closeIcon: false },
+    { closeIcon: true, theme: 'accent' },
+    { closeIcon: false, theme: 'accent' },
+    { closeIcon: true, theme: 'neutral' },
+    { closeIcon: false, theme: 'neutral' },
 
   ];
   closeIcon.forEach((item) => {
-    test(`Verify Feature popover styles with closeIcon = ${item.closeIcon}`, async ({ page }) => {
+    test(`Verify Feature popover styles with closeIcon = ${item.closeIcon} and theme = ${item.theme}`, async ({ page }) => {
       const standPath = 'stories/components/feature-popover/docs/examples/Basic.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 

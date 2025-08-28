@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["styles", "deps"]
+  "include": ["styles", "deps", "vite"]
 }

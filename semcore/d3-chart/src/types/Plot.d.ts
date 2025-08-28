@@ -33,6 +33,7 @@ export type PlotProps = Context &
     /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
 
+    /** Event emitter for chart interactions */
     eventEmitter?: InstanceType<typeof PlotEventEmitter>;
   };
 

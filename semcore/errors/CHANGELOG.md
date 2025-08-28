@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.2] - 2025-08-29
+
+### Changed
+
+- Type description for `ProjectNotFoundProps`.
+
+### Fixed
+
+- Support link is rendered incorrectly.
+
 ## [16.1.1] - 2025-08-07
 
 ### Changed

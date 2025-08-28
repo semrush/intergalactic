@@ -11,6 +11,7 @@ import DosDonts from './DosDonts.vue';
 import LegacyEmailsView from './LegacyEmailsView.vue';
 import Page404 from './Page404.vue';
 import PageTopTabs from './PageTopTabs.vue';
+import Playground from './Playground.vue';
 import Sandbox from './Sandbox.vue';
 import TypesView from './TypesView.vue';
 
@@ -30,6 +31,7 @@ export default {
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
     app.component('DosDonts', DosDonts);
+    app.component('Playground', Playground);
   },
   setup() {
     const route = useRoute();

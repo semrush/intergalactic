@@ -6,8 +6,11 @@ function App() {
   const [numRows, setNumRows] = useState(1);
   const [numColumns, setNumColumns] = useState(5);
 
-  const variableColumns = arr(numColumns, (i) => ({
-    key: `variable_${i}`, // Comment out to see React complaining about dupe empty keys
+  const safeNumColumns = Math.max(numColumns, 1);
+  const safeNumRows = Math.max(numRows, 1);
+
+  const variableColumns = arr(safeNumColumns, (i) => ({
+    key: `variable_${i}`,
     children: `Variable Column ${i}`,
     name: `group${i}`,
     columns: [
@@ -32,10 +35,10 @@ function App() {
     },
   ];
 
-  const data = arr(numRows, (i) => ({
+  const data = arr(safeNumRows, (i) => ({
     first: `Contents of the first column, row ${i}`,
-    ...obj(numColumns, (j) => [`variable_${j}_a`, `A${i}${j}`]),
-    ...obj(numColumns, (j) => [`variable_${j}_b`, `B${i}${j}`]),
+    ...obj(safeNumColumns, (j) => [`variable_${j}_a`, `A${i}${j}`]),
+    ...obj(safeNumColumns, (j) => [`variable_${j}_b`, `B${i}${j}`]),
     last: 'Last column',
     [ACCORDION]: <>Disclosed row content.</>,
   }));
@@ -43,19 +46,22 @@ function App() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <div>
-        <button onClick={() => setNumColumns((c) => c - 1)}>-</button>
+        <button onClick={() => setNumColumns((c) => Math.max(c - 1, 1))}>-</button>
         <button onClick={() => setNumColumns((c) => c + 1)}>+</button>
-        Columns
+        Columns (
+        {safeNumColumns}
+        )
       </div>
       <div>
-        <button onClick={() => setNumRows((c) => Math.max(c / 2, 1))}>-</button>
+        <button onClick={() => setNumRows((c) => Math.max(Math.floor(c / 2), 1))}>-</button>
         <button onClick={() => setNumRows((c) => c * 2)}>+</button>
-        Rows
+        Rows (
+        {safeNumRows}
+        )
       </div>
       <div>
-        <select onChange={(e) => setWidth(e.target.value)}>
+        <select value={width} onChange={(e) => setWidth(e.target.value)}>
           <option value='100%'>🚫 w="100%"</option>
-          {/* Other values like '100.0%', work fine as well, just not the literal '100%' */}
           <option value='calc(100%)'>✅ w="calc(100%)"</option>
         </select>
       </div>
@@ -76,9 +82,7 @@ function App() {
 }
 
 function arr<A>(n: number, fn: (i: number) => A): Array<A> {
-  return Array(n)
-    .fill(0)
-    .map((_, i) => fn(i));
+  return Array.from({ length: n }, (_, i) => fn(i));
 }
 
 function obj<A>(n: number, fn: (i: number) => [string, A]): Record<string, A> {

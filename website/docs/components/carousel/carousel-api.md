@@ -14,11 +14,20 @@ import Carousel from '@semcore/carousel';
 
 ## Carousel.Container
 
-`Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
+`Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Container` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
 import Carousel from '@semcore/carousel';
 <Carousel.Container />;
+```
+
+## Carousel.ContentBox
+
+`Carousel.ContentBox` is a wrap over `Carousel.Container`. `Carousel.ContentBox` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
+
+```jsx
+import Carousel from '@semcore/carousel';
+<Carousel.ContentBox />;
 ```
 
 ## Carousel.Item

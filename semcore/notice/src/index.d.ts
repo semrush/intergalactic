@@ -27,6 +27,7 @@ export type NoticeProps = BoxProps &
      * @default 250
      */
     duration?: number;
+    /** Specifies the locale for i18n support */
     locale?: string;
   };
 
