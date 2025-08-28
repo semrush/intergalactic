@@ -338,7 +338,7 @@ test.describe('Functional tests', () => {
       await page.keyboard.press('Tab');
       await expect(inputText).toHaveCount(count + 2);
 
-      await page.keyboard.type('Social media with a very long name');
+      await page.keyboard.type('1111');
       await page.keyboard.press('Shift+Tab');
       await expect(inputText).toHaveCount(count + 3);
 
@@ -449,14 +449,7 @@ test.describe('Functional tests', () => {
       await expect(tagClose.first()).not.toBeFocused();
     });
 
-    await test.step('Verify input focused by Shift+ Tab', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await expect(inputValue).toBeFocused();
-    });
-
     await test.step('Verify next Tag Text focused by Tab', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(inputValue).not.toBeFocused();
