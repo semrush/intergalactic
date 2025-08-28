@@ -4,8 +4,8 @@ import Button from '@semcore/button';
 import FileExportM from '@semcore/icon/FileExport/m';
 import React from 'react';
 
-const Demo = (props: SimpleHintPopperProps) => {
-  const ref = React.useRef();
+const Demo = (props: Partial<SimpleHintPopperProps>) => {
+  const ref = React.useRef<HTMLButtonElement | null>(null);
 
   return (
     <>
@@ -19,7 +19,6 @@ const Demo = (props: SimpleHintPopperProps) => {
         defaultVisible={props.defaultVisible}
         triggerRef={ref}
         onVisibleChange={(visible) => console.log('Hint visibility changed:', visible)}
-        includeTooltipProps={['onVisibleChange']}
       >
         Export to PDF
       </Hint>
@@ -29,8 +28,7 @@ const Demo = (props: SimpleHintPopperProps) => {
   );
 };
 
-export const defaultProps: SimpleHintPopperProps = {
-
+export const defaultProps: Partial<SimpleHintPopperProps> = {
   placement: undefined,
   timeout: undefined,
   visible: undefined,

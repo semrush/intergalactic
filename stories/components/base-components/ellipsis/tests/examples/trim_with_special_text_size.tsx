@@ -1,9 +1,7 @@
-import Ellipsis from '@semcore/ellipsis';
-import type { EllipsisProps } from '@semcore/ellipsis';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-const Demo = (props: EllipsisProps) => {
+const Demo = () => {
   return (
     <Text
       display='block'

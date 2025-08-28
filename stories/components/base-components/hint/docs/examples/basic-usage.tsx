@@ -4,7 +4,7 @@ import FileExportM from '@semcore/icon/FileExport/m';
 import React from 'react';
 
 const Demo = () => {
-  const ref = React.useRef();
+  const ref = React.useRef<HTMLButtonElement | null>(null);
 
   return (
     <>
