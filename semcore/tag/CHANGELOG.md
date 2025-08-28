@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Type description for `TagProps`.
 
+### Fixed
+
+- Focus disappeared when deleting a tag from the list with correct react keys.
+
 ## [16.1.6] - 2025-08-07
 
 ### Changed
