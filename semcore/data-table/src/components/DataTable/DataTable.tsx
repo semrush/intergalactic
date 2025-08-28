@@ -243,6 +243,10 @@ class DataTableRoot<
     return scrollDirection;
   }
 
+  get isDataEmpty() {
+    return this.asProps.data.length === 0;
+  }
+
   getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
@@ -294,6 +298,7 @@ class DataTableRoot<
       onCellClick: this.handleCellClick,
       shadowVertical,
       scrollDirection: this.scrollDirection,
+      isDataEmpty: this.isDataEmpty,
     };
   }
 
@@ -688,6 +693,10 @@ class DataTableRoot<
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
       e.currentTarget.setAttribute('tabIndex', '-1');
+
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '-1');
+      }
     } else if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       lastInteraction.isKeyboard()
@@ -732,6 +741,10 @@ class DataTableRoot<
         }
       }
 
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '-1');
+      }
+
       e.currentTarget.setAttribute('tabIndex', '-1');
     }
   };
@@ -748,6 +761,10 @@ class DataTableRoot<
     ) {
       this.setInert(false);
       tableElement.setAttribute('tabIndex', '0');
+
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '0');
+      }
     }
   };
 
@@ -844,6 +861,7 @@ class DataTableRoot<
             tabIndex={0}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
+            isDataEmpty={this.isDataEmpty}
             aria-rowcount={this.totalRows}
             aria-colcount={this.columns.length}
             gridTemplateColumns={gridTemplateColumns.join(' ')}

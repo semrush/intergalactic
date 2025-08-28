@@ -217,6 +217,8 @@ export class Column<
   };
 
   handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    e.stopPropagation();
+
     const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (
