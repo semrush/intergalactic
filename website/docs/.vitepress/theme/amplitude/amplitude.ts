@@ -193,7 +193,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
   {
     // Playground in design
     const widgetBar = findParent(node, (node) => {
-      return node.classList.contains('playground-widgets-bar') || [...node.classList].findIndex((node) => node.includes('control-panel')) !== -1;
+      return node.classList.contains('playground-widgets-bar') || [...node.classList].findIndex((node) => node.includes('controlPanel')) !== -1;
     });
 
     if (widgetBar) {
