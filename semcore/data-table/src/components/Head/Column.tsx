@@ -60,9 +60,9 @@ export class Column<
   };
 
   componentDidMount() {
-    const { parent, sticky, changeSortSize, name, sort } = this.asProps;
+    const { parent, sticky, changeSortSize, name, sort, scrollDirection } = this.asProps;
 
-    if (parent && sticky) {
+    if (parent && sticky && scrollDirection !== 'horizontal') {
       const columnElement = this.columnRef.current;
       const groupElement = columnElement?.parentElement?.children.item(0);
 
@@ -217,6 +217,8 @@ export class Column<
   };
 
   handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    e.stopPropagation();
+
     const { sort, onSortChange, name, sortable } = this.asProps;
 
     if (

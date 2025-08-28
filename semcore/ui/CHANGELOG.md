@@ -1,3 +1,62 @@
+## [16.6.0] - 2025-08-07
+
+### @semcore/base-components
+
+- **Added** `text-align` CSS property to `Box` component.
+
+### @semcore/d3-chart
+
+- **Fixed** Legend hides for single item even when `showLegend=true`.
+
+### @semcore/data-table
+
+- **Added** `accordionMode` property to only one accordion is open at a time.
+- **Added** `onAccordionToggle` to listen for open/close accordion events.
+- **Added** Ability to render multiple columns under one single-level column header.
+- **Added** RawData to `CellRenderProps`.
+- **Added** `line-height` for `Head.Column` items.
+- **Added** `overflow=hidden` for `CellWrapper`.
+- **Added** `textAlign` property to all column cells.
+- **Added** `renderCellOverlay` method for rendering an overlay over table cells.
+- **Fixed** Rendering table with selectedRows without data.
+- **Fixed** `z-index` of expanded accordions and spinner container.
+- **Fixed** Usage of `changeSortSize` property with multiple columns.
+- **Fixed** Accordion content expands with visual issues when clicking on a merged cell.
+- **Fixed** Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
+- **Fixed** Hover styles aren't applied to themed cells.
+- **Fixed** Types for `CellRenderProps` - added ability to compare props.columnName with `ACCORDION` symbol.
+- **Fixed** Sticky header with `width` property doesn't work.
+- **Changed** Width for column with checkboxes to use `min-content` value.
+- **Changed** `rowProps` and `renderCell` will not be called when rendering an empty table.
+
+### @semcore/ellipsis
+
+- **Fixed** Ellipsis with `trim=middle` cut off text at the end.
+- **Fixed** Incorrect cropping with different font-size.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Updated styles to reflect internal `Modal` changes preventing unexpected closing during scrollbar interaction.
+
+### @semcore/icon
+
+- **Added** New `AISEOToolkit`, `CollapseList`, `Canva`, `Claude`, `ClaudeColored`, `GoogleGenerativeAIColored`, `Perplexity`, `PerplexityColored` icons.
+- **Changed** Updated `GoogleGenerativeAI` icon.
+- **Fixed** Removed fill from `TextItalic` size M icon.
+- **Fixed** Minified and removed fill from `BracketsCode` size L icon.
+
+### @semcore/modal
+
+- **Fixed** `Modal` hides after scrollbar interaction.
+
+### @semcore/pagination
+
+- **Fixed** Focus loss in Safari when navigating to first/last page with pagination buttons.
+
+### @semcore/typography
+
+- **Added** `formatTags` property for the Text component for enable tags formatting's inside a Text component.
+
 ## [16.5.0] - 2025-07-23
 
 ### @semcore/base-trigger
@@ -230,13 +289,59 @@
 
 - **Added** New `PRToolkit` icon.
 
-## [16.0.1] - 2025-05-19
+## [16.0.1] - 2025-05-21
 
 ### @semcore/data-table
 
 - **Fixed** Property `sideIndents`.
 - **Fixed** Calculation of sorted columns width on the first render.
 - **Added** Support for using `Accordion` on merged rows.
+
+## [16.0.0] - 2025-05-20
+
+### Components structure changes (new packages)
+
+- New `semcore/base-components` package combines packages: `animation` ,`breakpoints` , `flex-box` , `grid` , `neighbor-location` , `outside-click` , `popper` , `portal` , `scroll-area`.
+- `semcore/core` package combines: `semcore/core` and `semcore/utils` packages.
+
+### Deprecations and removals
+
+- Marked as deprecate (we’ll delete those packages in Major v17) `format-text` , `sticky` , `InputMask`.
+- Replaced FormatText with Text from semcore/typography.
+- Delete the email package and documentation → use Dionysus (Quazar docs, recording of the presentation, Figma library). You can direct all questions about emails and their templates to the #wire-team channel.
+- Removed ‘External’ pack of icons (like FacebookClick, linkedinLike, PinterestSend, etc.) that are not used.
+
+### Focus
+
+- Switch from custom keyboardFocus logic to :focus-visible for all component packages
+
+### Minor (but major) changes
+
+- Fixed wrong paddings in Wizard.Stepper.
+- Updated Addon and Circle styles in Tag, so that Circle and Addon can be displayed together with correct indents.
+- Moved outline keyboard-focus tokens inside their "parent" tokens. Removed `keyboard-focus-invert-outline` , added `keyboard-focus-invert`.
+
+### New Data-table
+
+- Data-tables are based on Grid.
+- API is changed.
+- No elements except table header and table rows can be direct children of the table, all custom elements should be placed in cells or outside of the table (except when `aria-busy` is enabled).
+- Basic tables (without multi-level header, interactive elements as buttons, checkboxes) now work in SSR out of the box.
+- Virtualization works out of the box (also for the rows with unknown height).
+- Accordion is now built-in (without the `accordion` package) (use `[ACCORDION]` key in data).
+- displaying checkboxes and selecting rows (`selectedRows` and `onSelectRow`).
+- enlarged 20px left/right paddings (`sideIndents="wide"`).
+- built-in empty state based on `WidgetEmtpy`, which displays automatically when the data is empty. Use the `renderEmptyData` prop to render your own empty state.
+- built-in loading state based on `SpinContainer` (`loading` prop).
+
+### Table performance
+
+- The table with interactive elements inside the cell does not re-render on hover-actions.
+- Improved the data table performance: our tests on the basic tables with 50/100 rows and tooltips inside show 2-4 times faster speed [depends on browser].
+
+### Tooltip
+
+- Changed Tooltip.Popper initialization process - the popper container is not added to the DOM before the tooltip is shown the first time.
 
 ## [15.131.0] - 2025-05-13
 

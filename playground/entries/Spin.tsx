@@ -1,0 +1,91 @@
+import type { FlexProps } from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
+import type { SpinProps } from '@semcore/spin';
+import Spin from '@semcore/spin';
+import type { TextProps } from '@semcore/typography';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
+import type { JSXProps } from '../types/JSXProps';
+import type { PlaygroundEntry } from '../types/Playground';
+import createGithubLink from '../utils/createGHLink';
+
+const Sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+const TextPlacement = ['right', 'bottom'] as const;
+
+type AdditionalJSXProps = {
+  text: string;
+  size: (typeof Sizes)[number];
+  textPlacement: (typeof TextPlacement)[number];
+};
+export type SpinJSXProps = JSXProps<SpinProps> & AdditionalJSXProps;
+
+const margins = {
+  xs: 1,
+  s: 1,
+  m: 2,
+  l: 2,
+  xl: 4,
+  xxl: 4,
+};
+
+const textSize: { [key in SpinJSXProps['size']]: TextProps['size'] } = {
+  xs: 200,
+  s: 200,
+  m: 300,
+  l: 300,
+  xl: 200,
+  xxl: 200,
+};
+
+const textPlacement: { [key in SpinJSXProps['textPlacement']]: FlexProps['direction'] } = {
+  right: 'row',
+  bottom: 'column',
+};
+
+function getJSX(props: SpinJSXProps) {
+  return props.text.length
+    ? (
+        <Flex alignItems='center' gap={margins[props.size]} direction={textPlacement[props.textPlacement]}>
+          <Spin size={props.size} theme={props.theme} />
+          <Text size={textSize[props.size]} color='text-secondary'>
+            {props.text}
+          </Text>
+        </Flex>
+      )
+    : (
+        <Spin size={props.size} theme={props.theme} />
+      );
+}
+
+const entry: PlaygroundEntry<SpinJSXProps> = {
+  JSX: (props) => getJSX(props),
+  controls: {
+    size: {
+      type: 'select',
+      value: 'm',
+      options: [...Sizes],
+      displayName: 'Size',
+    },
+    theme: {
+      type: 'inline-radio',
+      value: 'dark',
+      options: ['dark', 'invert'],
+      displayName: 'Theme',
+    },
+    text: {
+      type: 'text',
+      value: '',
+      displayName: 'Text',
+    },
+    textPlacement: {
+      type: 'inline-radio',
+      value: 'right',
+      options: [...TextPlacement],
+      displayName: 'Text placement',
+    },
+  },
+  link: createGithubLink('spin'),
+};
+
+export default entry;

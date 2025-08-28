@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-08-29
+
+### Added
+
+- `Data` type to `cellRender` function.
+
+### Fixed
+
+- Unnecessary re-render when data was updated but old values were still used.
+- Shadows remain after resizing table width.
+- `onSortChange` is called twice when click is on a sort icon.
+- Hover behaviour for sort icon in case the content is justified to the right.
+
+### Changed
+
+- Type description for `DataTableProps`/`CellRenderProps`.
+- `AccordionToggle`'s `margin-left`.
+- `DataTable` display to `block` & `DataTable.Header` display to `grid` when `data` is empty.
+
 ## [16.1.0] - 2025-08-08
 
 ### Added
@@ -24,6 +43,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Incorrect type for `selectedRows/onSelectedRowsChange` when `uniqueRowKey` type is not a string.
 - Hover styles aren't applied to themed cells.
 - Types for `CellRenderProps` - added ability to compare props.columnName with `ACCORDION` symbol.
+- Sticky header with `width` property doesn't work.
 
 ### Changed
 

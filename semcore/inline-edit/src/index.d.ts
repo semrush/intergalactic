@@ -9,7 +9,7 @@ export type InlineEditProps = BoxProps & {
    * Determines which children should be displayed
    */
   editable?: boolean;
-
+  /** Callback for editable states changes */
   onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
   /**
    * Default value if `editable` property is not provided
@@ -21,6 +21,7 @@ export type InlineEditProps = BoxProps & {
    * Note: there not pair callback that expects switch to edit mode, you should be handled by yourself
    */
   onEdit?: () => void;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

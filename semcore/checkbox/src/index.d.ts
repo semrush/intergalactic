@@ -9,7 +9,9 @@ export type CheckboxState = 'normal' | 'invalid';
 /** @deprecated */
 export interface ICheckboxProps extends CheckboxProps, UnknownProperties {}
 export type CheckboxProps = BoxProps & {
+  /** Callback when the value changes */
   onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+  /** Controls the checked state of the checkbox (controlled mode) */
   checked?: boolean;
   /** Default state of uncontrolled checkbox */
   defaultChecked?: boolean;

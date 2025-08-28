@@ -8,78 +8,7 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 `InputMask` is deprecated and will be removed in the next major release.
 :::
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-import InputMask from '@semcore/ui/input-mask';
-
-const SIZES = ['m', 'l'];
-const STATES = ['normal', 'invalid', 'valid'];
-
-const Preview = (preview) => {
-  const { bool, text, select, radio } = preview('InputMask');
-
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
-  });
-
-  const state = select({
-    key: 'state',
-    defaultValue: 'normal',
-    label: 'State',
-    options: STATES.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
-
-  const disabled = bool({
-    key: 'disabled',
-    defaultValue: false,
-    label: 'Disabled',
-  });
-
-  const hideMask = bool({
-    key: 'hideMask',
-    defaultValue: false,
-    label: 'Hide mask',
-  });
-
-  const mask = text({
-    key: 'mask',
-    defaultValue: '9999 9999 9999 9999',
-    label: 'Mask',
-  });
-
-  const placeholder = text({
-    key: 'placeholder',
-    defaultValue: '____ ____ ____ ____',
-    label: 'Placeholder',
-  });
-
-  return (
-    <InputMask size={size} state={state} w={300}>
-      <InputMask.Value
-        disabled={disabled}
-        mask={mask}
-        placeholder={placeholder}
-        hideMask={hideMask}
-        aria-label='InputMask example'
-      />
-    </InputMask>
-  );
-};
-
-const App = PlaygroundGeneration(Preview);
-</script>
-
-:::
+<Playground for="InputMask" />
 
 ## Description
 

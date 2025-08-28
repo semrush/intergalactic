@@ -3,7 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
+import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
+import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
@@ -36,6 +38,10 @@ export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
   args: accordionStickyProps,
 };
 
+export const BigTableWithStickyHeader: Story = {
+  render: BigTableWithStickyHeaderExample,
+};
+
 export const FixedColumnsWithDiffWidths: Story = {
   render: FixedColumnsWithDiffWidthsExample,
 };
@@ -66,4 +72,8 @@ export const FakeMultiLineHeader: Story = {
 
 export const RenderCellRawValue: Story = {
   render: RenderCellRawValueExample,
+};
+
+export const FixedColumnsWidthWithShadows: Story = {
+  render: FixedColumnsWidthWithShadowsExample,
 };

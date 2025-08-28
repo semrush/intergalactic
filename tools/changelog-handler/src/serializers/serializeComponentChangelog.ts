@@ -39,12 +39,15 @@ export const serializeComponentChangelog = (changelogs: (Changelog | string)[]):
         },
       ],
     };
-    const byLabel = changelog.changes.reduce(
-      (acc, change) => ({
-        ...acc,
-        [change.label]: [...(acc[change.label] || []), change],
-      }),
-      {} as Partial<{ [changeLabel in ChangelogChangeLabel]: ChangelogChange[] }>,
+    const byLabel = changelog.changes.reduce<Partial<{ [changeLabel in NonNullable<ChangelogChangeLabel>]: ChangelogChange[] }>>(
+      (acc, change) => {
+        if (change.label) {
+          acc[change.label] = [...(acc[change.label] || []), change];
+        }
+
+        return acc;
+      },
+      {},
     );
     const changes = Object.values(byLabel);
 
@@ -57,7 +60,7 @@ export const serializeComponentChangelog = (changelogs: (Changelog | string)[]):
     });
 
     const changesList = sorted.flatMap((changes): Token[] => {
-      const label = changes[0].label;
+      const label = changes[0].label ?? '';
 
       return [
         {

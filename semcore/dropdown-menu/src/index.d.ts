@@ -43,6 +43,7 @@ export type DropdownMenuProps = DropdownProps & {
    * highlightedIndex -  Index of the selected item
    */
   onHighlightedIndexChange?: (highlightedIndex: number | null) => void;
+  /** Specifies the locale for i18n support */
   locale?: string;
   /**
    * Flag for menu that using as actions on DropdownMenu.Item
@@ -127,10 +128,25 @@ export type DropdownMenuItemTitleProps = FlexProps & {
 /** @deprecated */
 export interface IDropdownMenuContext extends DropdownMenuContext, UnknownProperties {}
 export type DropdownMenuContext = DropdownContext & {
+  /**
+    * Tracks which menu item is currently highlighted/focused for keyboard navigation
+  **/
   highlightedIndex?: number;
+  /**
+    * Returns props for the menu list container
+  **/
   getListProps: PropGetterFn;
+  /**
+    * Returns props for individual menu items
+  **/
   getItemProps: PropGetterFn;
+  /**
+    * Returns props for item hint/description elements
+  **/
   getItemHintProps: PropGetterFn;
+  /**
+    *  Returns props for item title elements
+  **/
   getItemTitleProps: PropGetterFn;
 };
 

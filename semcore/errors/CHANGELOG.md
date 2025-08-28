@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.2] - 2025-08-29
+
+### Changed
+
+- Type description for `ProjectNotFoundProps`.
+
+### Fixed
+
+- Support link is rendered incorrectly.
+
+## [16.1.1] - 2025-08-07
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.5 ~> 16.0.6], `@semcore/typography` [16.1.5 ~> 16.2.0], `@semcore/base-components` [16.1.2 ~> 16.2.0]).
+
 ## [16.1.0] - 2025-07-14
 
 ### Changed

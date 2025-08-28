@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "version": "0.0.1",
+  "keywords": [],
+  "author": "",
+  "private": true,
+  "dependencies": {
+    "d3-shape": "3.1.0",
+    "react-element-to-jsx-string": "15.0.0",
+    "shiki": "^1.29.2"
+  },
+  "devDependencies": {
+    "@types/d3-shape": "^3.1.7"
+  }
+}

@@ -1,6 +1,6 @@
 import type { Token } from 'marked-ast';
 
-export type ChangelogChangeLabel = 'Added' | 'Changed' | 'Fixed' | 'BREAK';
+export type ChangelogChangeLabel = 'Added' | 'Changed' | 'Fixed' | 'BREAK' | null;
 
 export type ChangelogChange = {
   component: string;
