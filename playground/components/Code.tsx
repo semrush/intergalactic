@@ -1,8 +1,8 @@
 import { Box, Flex } from '@semcore/base-components';
+import Button from '@semcore/button';
 import Check from '@semcore/icon/Check/m';
 import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
 import Copy from '@semcore/icon/Copy/m';
-import Button from '@semcore/ui/button';
 import React, { useEffect, useRef, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
@@ -43,7 +43,10 @@ function Code({ sourceCode, link }: ICodeProps) {
         setIsCopied(false);
         copyTimeoutRef.current = null;
       }, CHANGE_ICON_TIMEOUT);
-    } catch (err) {}
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -93,16 +96,17 @@ function Code({ sourceCode, link }: ICodeProps) {
       ],
     })
       .then(setHTML)
-      .catch();
+      // eslint-disable-next-line no-console
+      .catch(console.error);
   }, [sourceCode]);
 
   if (!html) return;
 
   return (
     <Box ref={scrollableContainerRef} className={styles.code}>
-      <Box className={styles['source-code-wrapper']}>
-        <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
-        <Flex gap={2} className={styles['source-code-controls']}>
+      <Box className={styles.sourceCodeWrapper}>
+        <Box className={styles.sourceCode} dangerouslySetInnerHTML={{ __html: html }}></Box>
+        <Flex gap={2} className={styles.sourceCodeControls}>
           <Button
             tag='a'
             href={link}

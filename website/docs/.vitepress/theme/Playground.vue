@@ -6,18 +6,14 @@
 import * as ReactDOM from 'react-dom/client'
 import { ref, onMounted, onBeforeUnmount, defineProps, onUnmounted } from 'vue'
 import Playground from '../../../../playground/components/Playground';
+import PlaygroundEvents from '../../../../playground/events/events';
 import { logEvent } from './amplitude/amplitude';
 
 const props = defineProps<{
   for: React.ComponentProps<typeof Playground>['componentName'];
 }>()
 
-const events = [
-  'playground:view-source-btn-click',
-  'playground:copy-code-btn-click',
-  'playground:show-code-btn-click',
-  'playground:hide-code-btn-click'
-]
+const events = Object.values(PlaygroundEvents);
 
 const root = ref<HTMLElement | null>(null)
 let reactRoot: ReactDOM.Root | null = null

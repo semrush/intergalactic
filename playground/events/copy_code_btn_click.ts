@@ -1,5 +1,7 @@
+import Events from './events';
+
 function DispatchCopyCodeButtonClickEvent() {
-  const event = new CustomEvent('playground:copy-code-btn-click');
+  const event = new CustomEvent(Events.CopyCodeBtnClick);
 
   document.getElementById('playground-container')?.dispatchEvent(event);
 }

@@ -55,7 +55,7 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange, isO
   return (
     <Accordion {...(isOpenedByDefault && { defaultValue: 0 })}>
       <Accordion.Item value={0}>
-        <Accordion.Item.Toggle className={styles['full-width-item']}>
+        <Accordion.Item.Toggle className={styles.fullWidthItem}>
           <Accordion.Item.ToggleButton>
             <Accordion.Item.Chevron mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
             <Text size={200} fontWeight={500}>
@@ -65,12 +65,12 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange, isO
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse
           w='100%'
-          className={styles['full-width-item']}
+          className={styles.fullWidthItem}
           role='group'
           aria-label={groupName}
           overflowHidden={false}
         >
-          <Box className={styles['control-panel']}>
+          <Box className={styles.controlPanel}>
             {Object.entries(controls).map(([propName, controlProps]) => {
               const onChange = onControlChange.bind(null, `${propName}.${groupPropName}`);
               return <BasicControl key={propName} {...controlProps} onChange={onChange} />;
@@ -112,7 +112,7 @@ function ControlPanel(props: IControlPanelProps) {
   const { controls, onControlChange } = props;
 
   return (
-    <Box className={styles['control-panel']} role='group' aria-label='Component properties'>
+    <Box className={styles.controlPanel} role='group' aria-label='Component properties'>
       {Object.entries(controls).map(([propName, propControl]) => {
         return isGroupControl(propControl)
           ? (
