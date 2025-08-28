@@ -1,28 +1,26 @@
-import { Box } from '@semcore/base-components';
 import type { EllipsisSettings } from '@semcore/base-components';
 import Link from '@semcore/link';
 import React from 'react';
 
 type DemoProps = {
-  ellipsis?: boolean | EllipsisSettings;
+  ellipsis?: true | EllipsisSettings;
 };
 
 const Demo = (props: DemoProps) => {
   return (
-    <Box w={120}>
-      <Link
-        href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
-        ellipsis={props.ellipsis}
-      >
-        <Link.Text>
-          https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
-        </Link.Text>
-      </Link>
-    </Box>
+    <Link
+      href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
+      ellipsis={props.ellipsis}
+      w={120}
+    >
+      <Link.Text>
+        https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
+      </Link.Text>
+    </Link>
   );
 };
 
-export const defaultProps: EllipsisSettings = {
+export const defaultProps: DemoProps = {
   ellipsis: true,
 };
 
