@@ -51,7 +51,7 @@ export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps & {
    * Disable element
    */
   disabled?: boolean;
-
+  /** Predefined slider options */
   options?: SliderOption<Value>[];
 };
 

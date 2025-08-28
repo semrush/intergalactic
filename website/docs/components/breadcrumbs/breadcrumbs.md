@@ -4,25 +4,7 @@ fileSource: breadcrumbs
 tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Breadcrumbs from '@semcore/ui/breadcrumbs';
-
-const App = PlaygroundGeneration(() => {
-  return (
-    <Breadcrumbs>
-      <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
-      <Breadcrumbs.Item href='#'>semrush.com</Breadcrumbs.Item>
-      <Breadcrumbs.Item active>Position Tracking</Breadcrumbs.Item>
-    </Breadcrumbs>
-  );
-});
-</script>
-
-:::
+<Playground for="Breadcrumbs" />
 
 ## Description
 

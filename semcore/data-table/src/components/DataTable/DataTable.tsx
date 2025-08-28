@@ -51,7 +51,7 @@ type State<
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
-  shadowVertical: BodyPropsInner<UniqKeyType>['shadowVertical'];
+  shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
 };
 
 class DataTableRoot<
@@ -92,12 +92,14 @@ class DataTableRoot<
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
   private spinnerRef = React.createRef<HTMLDivElement>();
+  private containerResizeEndTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   private gridAreaGroupMap = new Map<number, string>();
 
   private columnsSplitter = '/';
-  private rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]> = [];
-  private flatRows: DTRow<UniqKeyType>[] = [];
+  private tmpData: Data;
+  private calculatedRows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
+  private flatRows: DTRow<UniqKeyType>[];
 
   private selectAllMessageTimer = 0;
 
@@ -114,8 +116,9 @@ class DataTableRoot<
       this.treeColumns = cols[1];
     }
 
-    this.rows = this.calculateRows();
-    this.flatRows = this.rows.flat();
+    this.calculatedRows = this.getRows();
+    this.flatRows = this.calculatedRows.flat();
+    this.tmpData = props.data;
   }
 
   state: State<Data, UniqKey, UniqKeyType> = {
@@ -151,13 +154,10 @@ class DataTableRoot<
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
       this.treeColumns = cols[1];
-    }
-    if (prevProps.data !== data || prevProps.columns !== columns) {
-      this.rows = this.calculateRows();
-      this.flatRows = this.rows.flat();
 
       this.forceUpdate();
-
+    }
+    if (prevProps.data !== data || prevProps.columns !== columns) {
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
       }
@@ -179,7 +179,7 @@ class DataTableRoot<
 
   get totalRows() {
     const { totalRows, expandedRows } = this.asProps;
-    const flatRows = this.rows.flat();
+    const flatRows = this.getFlatRows();
 
     const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
@@ -200,7 +200,7 @@ class DataTableRoot<
       return totalRows + expandedRowsCount;
     }
 
-    const rows = this.rows.reduce((acc, item) => {
+    const rows = this.getRows().reduce((acc, item) => {
       acc = acc + 1;
 
       if (Array.isArray(item)) {
@@ -243,6 +243,10 @@ class DataTableRoot<
     return scrollDirection;
   }
 
+  get isDataEmpty() {
+    return this.asProps.data.length === 0;
+  }
+
   getHeadProps(): HeadPropsInner<Data, UniqKey, UniqKeyType> {
     const {
       use,
@@ -277,9 +281,9 @@ class DataTableRoot<
       sideIndents,
       totalRows: this.totalRows,
       selectedRows,
-      flatRows: this.flatRows,
+      flatRows: this.getFlatRows(),
       onChangeSelectAll: (value, e) => {
-        const mappedFlatRows = this.flatRows.map((r) => r[UNIQ_ROW_KEY]);
+        const mappedFlatRows = this.getFlatRows().map((r) => r[UNIQ_ROW_KEY]);
         const selectedRowsSet = new Set(selectedRows);
 
         if (value) {
@@ -294,10 +298,11 @@ class DataTableRoot<
       onCellClick: this.handleCellClick,
       shadowVertical,
       scrollDirection: this.scrollDirection,
+      isDataEmpty: this.isDataEmpty,
     };
   }
 
-  getBodyProps(): BodyPropsInner<UniqKeyType> {
+  getBodyProps(): BodyPropsInner<Data, UniqKeyType> {
     const {
       use,
       compact,
@@ -323,8 +328,8 @@ class DataTableRoot<
       accordionDuration,
       accordionMode,
       columns: this.columns,
-      rows: this.rows,
-      flatRows: this.flatRows,
+      rows: this.getRows(),
+      flatRows: this.getFlatRows(),
       use,
       compact: Boolean(compact),
       gridTemplateColumns,
@@ -345,8 +350,8 @@ class DataTableRoot<
       virtualScroll,
       hasGroups: this.hasGroups,
       uid,
-      rowProps: this.rows.length > 0 ? rowProps : undefined,
-      renderCell: this.rows.length > 0 ? renderCell : undefined,
+      rowProps: this.getRows().length > 0 ? rowProps : undefined,
+      renderCell: this.getRows().length > 0 ? renderCell : undefined,
       renderEmptyData,
       sideIndents,
       selectedRows,
@@ -667,7 +672,7 @@ class DataTableRoot<
 
     const roundedScroll = Math.round(scrollLeft);
     const roundedMaxScroll = Math.round(maxScrollRight);
-    let shadow: BodyPropsInner<UniqKeyType>['shadowVertical'] = '';
+    let shadow: BodyPropsInner<Data, UniqKeyType>['shadowVertical'] = '';
     // not scroll
     if (roundedMaxScroll <= 0) {
       // start scroll
@@ -688,6 +693,10 @@ class DataTableRoot<
     if (this.asProps.loading) {
       this.spinnerRef.current?.focus();
       e.currentTarget.setAttribute('tabIndex', '-1');
+
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '-1');
+      }
     } else if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       lastInteraction.isKeyboard()
@@ -732,6 +741,10 @@ class DataTableRoot<
         }
       }
 
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '-1');
+      }
+
       e.currentTarget.setAttribute('tabIndex', '-1');
     }
   };
@@ -748,6 +761,10 @@ class DataTableRoot<
     ) {
       this.setInert(false);
       tableElement.setAttribute('tabIndex', '0');
+
+      if (this.isDataEmpty) {
+        this.headerRef.current?.setAttribute('tabIndex', '0');
+      }
     }
   };
 
@@ -757,6 +774,14 @@ class DataTableRoot<
 
   handleBackFromAccordion = (cellIndex: number) => {
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
+  };
+
+  handleContainerResizeEnd = () => {
+    if (this.containerResizeEndTimeoutId) {
+      clearTimeout(this.containerResizeEndTimeoutId);
+    }
+
+    this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
   };
 
   render() {
@@ -815,6 +840,7 @@ class DataTableRoot<
         styles={scrollStyles}
         onScroll={this.handleScroll}
         disableAutofocusToContent={true}
+        onResize={this.handleContainerResizeEnd}
       >
         <ScrollArea.Container
           tabIndex={-1}
@@ -835,6 +861,7 @@ class DataTableRoot<
             tabIndex={0}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
+            isDataEmpty={this.isDataEmpty}
             aria-rowcount={this.totalRows}
             aria-colcount={this.columns.length}
             gridTemplateColumns={gridTemplateColumns.join(' ')}
@@ -1220,15 +1247,31 @@ class DataTableRoot<
       }
     });
 
-    console.log(calculatedColumns, treeColumns);
-
     return [calculatedColumns, treeColumns];
   }
 
-  private calculateRows(): Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> {
+  private getFlatRows(): DTRow<UniqKeyType>[] {
+    const { data } = this.props;
+
+    if (this.tmpData === data && this.flatRows) {
+      return this.flatRows;
+    }
+
+    this.flatRows = this.getRows().flat();
+
+    return this.flatRows;
+  }
+
+  private getRows(): Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> {
     const columns = this.columns;
     // @ts-ignore
     const { data, uid, uniqueRowKey } = this.props;
+
+    if (this.tmpData === data) {
+      return this.calculatedRows;
+    }
+
+    this.tmpData = data;
 
     const rows: Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1337,6 +1380,7 @@ class DataTableRoot<
       }
     });
 
+    this.calculatedRows = rows;
     return rows;
   }
 

@@ -19,6 +19,7 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
   size?: 'm' | 'l';
   /** 12-hour time format */
   is12Hour?: boolean;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

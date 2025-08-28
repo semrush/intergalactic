@@ -73,7 +73,7 @@ export const componentChangelogParser = (
       }
     } else if (traversingVersion && traversingChangeLabel && token.type === 'list') {
       for (const listItem of token.body) {
-        const version = traversingVersion as ChangelogChangeLabel;
+        const version = traversingVersion;
         const label = traversingChangeLabel as ChangelogChangeLabel;
         const descriptionFormatted = (Array.isArray(listItem) ? listItem[0] : listItem).text;
         const description = toMarkdown(descriptionFormatted);

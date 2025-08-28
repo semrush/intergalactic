@@ -56,17 +56,22 @@ export const serializeReleaseChangelog = (changelogs: Changelog[]): Token[] =>
         if (!change.description) {
           throw new Error(`Got empty change description ${JSON.stringify(change)}`);
         }
+
+        const text: (Token | string)[] = change.label
+          ? [
+              {
+                type: 'strong',
+                text: [change.label],
+                tokens: [{ type: 'text', text: [change.label] }],
+              },
+              ' ',
+              ...change.descriptionFormatted,
+            ]
+          : change.descriptionFormatted;
+
         return {
           type: 'listitem',
-          text: [
-            {
-              type: 'strong',
-              text: [change.label],
-              tokens: [{ type: 'text', text: [change.label] }],
-            },
-            ' ',
-            ...change.descriptionFormatted,
-          ],
+          text,
         };
       });
       const componentChangesList: Token = {

@@ -28,7 +28,7 @@ export type WidgetNoDataProps = WidgetEmptyProps &
   WithI18nEnhanceProps & {
     /** Error description. If it is absent, use the local default one */
     description?: React.ReactNode;
-    /* Data types */
+    /** Data types */
     type?: iconNamesWidgetEmpty;
   };
 

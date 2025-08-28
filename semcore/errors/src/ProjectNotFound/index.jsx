@@ -21,13 +21,19 @@ class RootProjectNotFound extends Component {
   };
 
   render() {
-    const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } =
-      this.asProps;
-    const text = getI18nText('text', { url: supportTeamLink });
+    const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } = this.asProps;
+    const text = getI18nText('text', {
+      p: (chunk) => <p>{chunk}</p>,
+      ul: (chunk) => <ul>{chunk}</ul>,
+      li: (chunk) => <li>{chunk}</li>,
+      supportLink: (chunk) => <a href={supportTeamLink}>{chunk}</a>,
+    });
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description tag={FormatText} size='l' dangerouslySetInnerHTML={{ __html: text }} />
+        <Error.Description tag={FormatText} size='l'>
+          {text}
+        </Error.Description>
         <Children />
         <Error.Controls>
           <Button tag='a' type='none' size='l' use='primary' theme='info' href={projectsLink}>
