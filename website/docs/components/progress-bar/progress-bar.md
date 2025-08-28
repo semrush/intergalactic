@@ -6,61 +6,6 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 <Playground for="ProgressBar" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import ProgressBar from '@semcore/ui/progress-bar';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const SIZES = ['s', 'm', 'l'];
-
-const Preview = (preview) => {
-  const { radio, text, select } = preview('ProgressBar');
-
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
-  });
-
-  const theme = select({
-    key: 'theme',
-    defaultValue: 'invert',
-    label: 'Theme',
-    options: [
-      {
-        name: 'invert',
-        value: 'invert',
-      },
-      {
-        name: 'dark',
-        value: 'dark',
-      },
-    ],
-  });
-
-  const duration = text({
-    key: 'duration',
-    defaultValue: 1000,
-    label: 'Duration',
-  });
-
-  const value = text({
-    key: 'value',
-    defaultValue: 50,
-    label: 'Value',
-  });
-
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} aria-label="Progress bar" />;
-};
-
-const App = PlaygroundGeneration(Preview, {filterProps: ['w']});
-</script>
-
-:::
-
 ## Description
 
 **ProgressBar** is a component used to display the loading status of a long process, typically taking more than 5 seconds, such as collecting keywords or updating mentions.

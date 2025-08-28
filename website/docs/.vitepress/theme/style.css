@@ -704,7 +704,6 @@ h6[class] {
   margin: 24px 0 16px 0;
 }
 
-/* TODO: remove .playground-runtime when the old playground will be deleted. */
 .vp-doc a[class]:not(.playground-runtime a):not(.canvas-runtime a),
 .vp-doc a[class]:hover:not(.playground-runtime a):hover:not(.canvas-runtime a),
 .vp-doc a[class]:active:not(.playground-runtime a):active:not(.canvas-runtime a),

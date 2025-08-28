@@ -6,34 +6,6 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 
 <Playground for="ColorPicker" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import ColorPicker from '@semcore/ui/color-picker';
-
-const Preview = (preview) => {
-  const { bool } = preview('ColorPicker');
-
-  const displayLabel = bool({
-    key: 'displayLabel',
-    defaultValue: false,
-    label: 'Display label',
-  });
-
-  return (
-    <React.Fragment>
-      <ColorPicker displayLabel={displayLabel} />
-    </React.Fragment>
-  );
-};
-
-const App = PlaygroundGeneration(Preview);
-</script>
-
-:::
-
 ## Description
 
 **ColorPicker** is a component that allows the user selecting a color from a given list or input a custom color using its HEX code.

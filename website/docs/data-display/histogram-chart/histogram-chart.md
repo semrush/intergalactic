@@ -6,62 +6,6 @@ tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-ch
 
 <Playground for="Chart.Histogram" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
-import { HistogramChartProps } from '@semcore/d3-chart/src/component/Chart/HistogramChart.type';
-
-const data = [...Array(5).keys()].map((d, i) => ({
-  x: i,
-  Category1: Math.random() * 10,
-  Category2: Math.random() * 10,
-}));
-
-const App = PlaygroundGeneration((preview) => {
-  const { select, radio, label, bool } = preview('Chart.Histogram');
-
-  const {
-    direction,
-    alignItems,
-    showTotalInTooltip,
-    showXAxis,
-    showYAxis,
-    showTooltip,
-    showLegend,
-    legendProps,
-    patterns,
-  } = chartPlayground({ select, radio, label, bool });
-
-  const chartProps: HistogramChartProps = {
-    data,
-    groupKey: 'x',
-    plotWidth: 300,
-    plotHeight: 200,
-    showTotalInTooltip,
-    direction,
-    showTooltip,
-    showXAxis,
-    showYAxis,
-    alignItems,
-    patterns,
-  };
-
-  if (showLegend) {
-    chartProps.legendProps = legendProps;
-  } else {
-    chartProps.showLegend = false;
-  }
-
-  return <Chart.Histogram {...chartProps} />;
-}, {filterProps: ['data']});
-</script>
-
-:::
-
 ::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::

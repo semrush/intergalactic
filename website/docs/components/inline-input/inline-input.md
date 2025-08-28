@@ -6,48 +6,6 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 
 <Playground for="InlineInput" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import InlineInput from '@semcore/ui/inline-input';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const STATES = ['normal', 'invalid', 'valid'];
-
-const Preview = (preview) => {
-  const { bool, select, radio } = preview('Input');
-
-  const state = select({
-    key: 'state',
-    defaultValue: 'normal',
-    label: 'State',
-    options: STATES.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
-
-  const disabled = bool({
-    key: 'disabled',
-    defaultValue: false,
-    label: 'Disabled',
-  });
-
-  return (
-    <InlineInput state={state} disabled={disabled}>
-      <InlineInput.Value placeholder='Placeholder' aria-label='InlineInput example' />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
-    </InlineInput>
-  );
-};
-
-const App = PlaygroundGeneration(Preview);
-</script>
-
-:::
-
 ## Description
 
 **InlineInput** is a single-line text field for input and edit. In edit mode, it always has buttons to save or cancel entered value.

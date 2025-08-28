@@ -6,56 +6,6 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 <Playground for="Ellipsis" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Box } from '@semcore/ui/base-components';
-import { Text } from '@semcore/typography';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const App = PlaygroundGeneration((preview) => {
-  const { radio, text } = preview('Dropdown');
-
-  const trim = radio({
-    key: 'trim',
-    defaultValue: 'end',
-    label: 'Trimming type',
-    options: ['end', 'middle'],
-  });
-
-  const tooltip = radio({
-    key: 'tooltip',
-    defaultValue: true,
-    label: 'Show tooltip',
-    options: [true, false],
-  });
-
-  const maxLine = text({
-    key: 'maxLine',
-    defaultValue: 1,
-    label: 'Number of lines',
-  });
-
-  return (
-    <Box w={200}>
-      <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
-        <Text>
-          Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
-          intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
-          planetary, intergalactic Another dimension, another dimension Another dimension, another
-          dimension Another dimension, another dimension Another dimension, another dimension
-          Another dimension, another dimension Another dimension
-        </Text>
-      </Ellipsis>
-    </Box>
-  );
-});
-</script>
-
-:::
-
 ## Description
 
 **Ellipsis** is a component that truncates a single line of text or paragraph with an ellipsis (…).

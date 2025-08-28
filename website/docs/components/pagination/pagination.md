@@ -6,55 +6,6 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 <Playground for="Pagination" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import Pagination from '@semcore/ui/pagination';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const SIZES = ['m', 'l'];
-
-const App = PlaygroundGeneration(
-  (createGroupWidgets) => {
-    const { onChange, radio, text } = createGroupWidgets('Pagination');
-
-    const size = radio({
-      key: 'size',
-      defaultValue: 'm',
-      label: 'Size',
-      options: SIZES,
-    });
-
-    const currentPage = text({
-      key: 'currentPage',
-      defaultValue: 1,
-      label: 'CurrentPage',
-    });
-
-    const totalPages = text({
-      key: 'totalPages',
-      defaultValue: 122360,
-      label: 'TotalPages',
-    });
-
-    return (
-      <Pagination
-        size={size}
-        currentPage={currentPage}
-        onCurrentPageChange={(value) => onChange('currentPage', value)}
-        totalPages={Number(totalPages)}
-      />
-    );
-  },
-  {
-    filterProps: ['onChange'],
-  },
-);
-</script>
-
-:::
-
 ## Description
 
 **Pagination** is a component that provides a set of controls to navigate through long lists of data.

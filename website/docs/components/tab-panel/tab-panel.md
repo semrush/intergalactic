@@ -6,68 +6,6 @@ tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example
 
 <Playground for="TabPanel" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import TabPanel from '@semcore/ui/tab-panel';
-import Badge from '@semcore/ui/badge';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const App = PlaygroundGeneration(
-  (createGroupWidgets) => {
-    const { bool, select } = createGroupWidgets('TabPanel');
-
-    const behavior = select({
-      key: 'behavior',
-      defaultValue: 'manual',
-      label: 'Behavior',
-      options: [
-        {name: 'auto', value: 'auto'},
-        {name: 'manual', value: 'manual'}
-      ]
-    });
-
-    const disabled = bool({
-      key: 'disabled',
-      defaultValue: false,
-      label: 'Disabled',
-    });
-
-    const addon = bool({
-      key: 'addon',
-      defaultValue: false,
-      label: 'Addon',
-    });
-
-    return (
-      <TabPanel defaultValue={1} behavior={behavior}>
-        <TabPanel.Item value={1}>Overview</TabPanel.Item>
-        <TabPanel.Item value={2}>Issues</TabPanel.Item>
-        <TabPanel.Item disabled={disabled} value={3}>
-          Progress
-        </TabPanel.Item>
-        <TabPanel.Item value={4}>
-          {addon
-            ? [
-                <TabPanel.Item.Text key={1}>Analytics</TabPanel.Item.Text>,
-                <TabPanel.Item.Addon key={2}>
-                  <Badge bg='bg-primary-success'>new</Badge>
-                </TabPanel.Item.Addon>,
-              ]
-            : 'Analytics'}
-        </TabPanel.Item>
-      </TabPanel>
-    );
-  },
-  {
-    filterProps: ['defaultValue'],
-  },
-);
-</script>
-
-:::
-
 ## Description
 
 **TabPanel** is a component designed for grouping heterogeneous content.

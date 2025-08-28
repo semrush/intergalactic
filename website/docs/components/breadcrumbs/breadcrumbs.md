@@ -6,26 +6,6 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 <Playground for="Breadcrumbs" />
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Breadcrumbs from '@semcore/ui/breadcrumbs';
-
-const App = PlaygroundGeneration(() => {
-  return (
-    <Breadcrumbs>
-      <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
-      <Breadcrumbs.Item href='#'>semrush.com</Breadcrumbs.Item>
-      <Breadcrumbs.Item active>Position Tracking</Breadcrumbs.Item>
-    </Breadcrumbs>
-  );
-});
-</script>
-
-:::
-
 ## Description
 
 **Breadcrumbs** is a component for displaying the "user's path" on the website. It's usually used as an additional navigation element.
