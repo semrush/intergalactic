@@ -5,6 +5,7 @@ import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders'
 import { getFocusableIn } from '../focus-lock/getFocusableIn';
 import { isFocusInside } from '../focus-lock/isFocusInside';
 import { setFocus } from '../focus-lock/setFocus';
+import { hasParent } from '../hasParent';
 
 export { isFocusInside, setFocus };
 
@@ -149,7 +150,7 @@ const useFocusLockHook = (
         if (
           typeof returnFocusTo === 'object' &&
           returnFocusTo?.current &&
-          isFocusInside(returnFocusTo.current)
+          hasParent(focusMovedTo, returnFocusTo.current)
         )
           return;
 
@@ -209,8 +210,8 @@ const useFocusLockHook = (
     );
     if (focusableChildren.length === 0 && autoFocus !== 'enforced') return;
 
-    trapRef.current.addEventListener('focusout', handleFocusOut as any);
-    trapRef.current.addEventListener(syntheticEvents.blur, handleFocusOut as any);
+    document.body.addEventListener('focusout', handleFocusOut as any);
+    document.body.addEventListener(syntheticEvents.blur, handleFocusOut as any);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
@@ -230,8 +231,8 @@ const useFocusLockHook = (
       }, 0);
     }
     return () => {
-      trapRef.current?.removeEventListener('focusout', handleFocusOut as any);
-      trapRef.current?.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
+      document.body.removeEventListener('focusout', handleFocusOut as any);
+      document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);
