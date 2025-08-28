@@ -4,6 +4,12 @@ SDataTable {
   min-width: fit-content;
 }
 
+SDataTable[isDataEmpty] {
+  display: block;
+  align-items: unset;
+  min-width: unset;
+}
+
 SDataTable[gridTemplateColumns] {
   grid-template-columns: var(--gridTemplateColumns);
 }

@@ -165,6 +165,13 @@ export type InputFieldProps<T extends string | string[]> = {
    * Internal
    */
   onErrorIndexChange: (errorIndex: number) => void;
+
+  /**
+   * Return lines from textarea immediately they changed (uses mutation observer on textarea node under the hood)
+   * Throttling may be required during processing this cb
+   * Internal
+   */
+  onImmediatelyChange?: (lines: string[], value: string) => void;
 } & {
   /**
    * Internal
