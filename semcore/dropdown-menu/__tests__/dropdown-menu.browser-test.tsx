@@ -1151,3 +1151,39 @@ test.describe('Sticky groups', () => {
     await expect(items.nth(0)).not.toBeVisible();
   });
 });
+
+test.describe('DD menu with input tags as trigger', () => {
+  test('Verify focus order', async ({ page, browserName }) => {
+    const standPath = 'stories/components/dropdown-menu/advanced/examples/input_tags_trigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
+    const ddMenuPopper = page.locator('[data-ui-name="DropdownMenu.Popper"]');
+    const input = page.getByRole('combobox');
+    await page.keyboard.press('Tab');
+    await expect(tagClose.first()).toBeFocused();
+
+    await ddMenuPopper.waitFor({ state: 'visible' });
+
+    await page.keyboard.press('Tab');
+    await expect(tagClose.nth(1)).toBeFocused();
+    await expect(ddMenuPopper).toBeVisible();
+
+    await page.keyboard.press('Tab');
+    await expect(input).toBeFocused();
+    await expect(ddMenuPopper).toBeVisible();
+
+    await page.keyboard.press('Shift+Tab');
+    await expect(tagClose.nth(1)).toBeFocused();
+    await expect(ddMenuPopper).toBeVisible();
+    await page.keyboard.press('Enter');
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Escape');
+
+    await ddMenuPopper.waitFor({ state: 'hidden' });
+    await expect(tagClose.first()).toBeFocused();
+  });
+});
