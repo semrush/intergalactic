@@ -32,6 +32,7 @@ type TagListProps = {
 
 const TagsList = ({ tags, onRemoveTag, validateTag }: TagListProps) => {
   const handleCloseClick = (event: React.SyntheticEvent<HTMLElement>) => {
+    event.stopPropagation();
     const tagIndex = Number(event.currentTarget.dataset.index);
     const tagToRemove = tags[tagIndex];
     onRemoveTag(tagToRemove);
