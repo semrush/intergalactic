@@ -8,6 +8,7 @@ import { codeToHtml } from 'shiki';
 
 import dispatchCopyCodeButtonClickEvent from '../events/copy_code_btn_click';
 import dispatchViewSourceButtonClickEvent from '../events/view_source_btn_click';
+import useFocusableScrollRef from '../hooks/useFocusableScrollRef';
 import styles from '../styles/styles.module.css';
 
 interface ICodeProps {
@@ -21,6 +22,7 @@ function Code({ sourceCode, link }: ICodeProps) {
   const [html, setHTML] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollableContainerRef = useFocusableScrollRef<HTMLDivElement>();
 
   const handleViewSource = () => {
     dispatchViewSourceButtonClickEvent();
@@ -97,9 +99,9 @@ function Code({ sourceCode, link }: ICodeProps) {
   if (!html) return;
 
   return (
-    <Box tabIndex={0} className={styles.code}>
+    <Box ref={scrollableContainerRef} className={styles.code}>
       <Box className={styles['source-code-wrapper']}>
-        <Box tabIndex={-1} className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
+        <Box className={styles['source-code']} dangerouslySetInnerHTML={{ __html: html }}></Box>
         <Flex gap={2} className={styles['source-code-controls']}>
           <Button
             tag='a'
