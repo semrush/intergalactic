@@ -2,6 +2,13 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead[isDataEmpty][gridTemplateColumns] {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
 SHead[animationDuration] > SColumn {
   transition: top var(--animationDuration) ease-out;
 }
@@ -88,6 +95,18 @@ SColumn[use='primary'] {
     SSortButton {
       display: flex;
       opacity: 1;
+    }
+  }
+
+  &[justifyContent='right'] {
+    SSortWrapper {
+      position: absolute;
+    }
+
+    &[changeSortSize][isSorted] {
+      SSortWrapper {
+        position: relative;
+      }
     }
   }
 }

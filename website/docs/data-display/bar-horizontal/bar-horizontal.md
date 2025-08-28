@@ -4,60 +4,7 @@ fileSource: d3-chart
 tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-code'), Changelog('bar-horizontal-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import { chartPlayground } from '@components/ChartPlayground';
-import { Chart, BarChartProps } from '@semcore/d3-chart';
-
-const data = [...Array(5).keys()].map((d, i) => ({
-  x: i,
-  Category1: Math.random() * 10,
-  Category2: Math.random() * 10,
-}));
-
-const App = PlaygroundGeneration((preview) => {
-  const { select, radio, label, bool } = preview('Chart.Bar');
-
-  const {
-    direction,
-    alignItems,
-    showTotalInTooltip,
-    showXAxis,
-    showYAxis,
-    showTooltip,
-    showLegend,
-    legendProps,
-    patterns,
-  } = chartPlayground({ select, radio, label, bool }, { invertAxis: true });
-
-  const chartProps: BarChartProps = {
-    data,
-    groupKey: 'x',
-    plotWidth: 300,
-    plotHeight: 300,
-    showTotalInTooltip,
-    direction,
-    showTooltip,
-    showXAxis,
-    showYAxis,
-    alignItems,
-    patterns,
-  };
-
-  if (showLegend) {
-    chartProps.legendProps = legendProps;
-  } else {
-    chartProps.showLegend = false;
-  }
-
-  return <Chart.Bar {...chartProps} invertAxis={true} />;
-}, {filterProps: ['data']});
-</script>
-
-:::
+<Playground for="Chart.BarHorizontal" />
 
 ::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).

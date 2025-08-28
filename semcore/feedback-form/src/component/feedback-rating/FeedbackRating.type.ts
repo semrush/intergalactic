@@ -20,40 +20,41 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   FeedbackFormProps,
   'initialValues' | 'loading'
 > & {
-  /** status of form */
+  /** Status of form */
   status: 'default' | 'success' | 'error' | 'loading';
 
-  /** flag for show/hide notification */
+  /** Flag for show/hide notification */
   notificationVisible: boolean;
-  /** */
+  /** Notification close callback */
   onNotificationClose: () => void;
-  /** text in notification panel */
+  /** Text in notification panel */
   notificationText: string;
-  /** title in notification panel */
+  /** Title in notification panel */
   notificationTitle?: string;
-  /** optional link in notification panel */
+  /** Optional link in notification panel */
   learnMoreLink?: string;
-  /** rating value */
+  /** Rating value */
   rating: number;
-  /** visible modal form flag */
+  /** Visible modal form flag */
   visible: boolean;
-
+  /** Visibility changes callback */
   onVisibleChange: (visible: boolean, rating: number) => void;
 
-  /** width for modal with form */
+  /** Width for modal with form */
   modalWidth?: number | string;
 
-  /** header of modal with form */
+  /** Header of modal with form */
   header: React.ReactNode;
-  /** text for submit button of form */
+  /** Text for submit button of form */
   submitText?: string;
-  /** config for form fields */
+  /** Config for form fields */
   formConfig: FormConfigItem[];
 
+  /** Initial form values including rating */
   initialValues: Record<string, any> & { rating: number };
-
+  /** Email address shown in error messages */
   errorFeedbackEmail: string;
-
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

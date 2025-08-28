@@ -58,6 +58,7 @@ export type InlineInputProps = BoxProps & {
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
   onBlurBehavior?: 'cancel' | 'confirm' | 'none';
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

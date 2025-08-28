@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-07-24
+
+### Changed
+
+- Tokens for default `FeaturePopover` theme.
+
+## [16.1.7] - 2025-08-29
+
+### Changed
+
+- Type description for `FeaturePopoverPopperProps`.
+
 ## [16.1.6] - 2025-08-07
 
 ### Changed

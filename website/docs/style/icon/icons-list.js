@@ -1292,6 +1292,20 @@ const iconsList = {
       ],
     },
     {
+      name: 'LinkExternalAlt',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'link',
+        'external',
+        'arrow',
+        'up',
+        'right',
+        'share',
+        'outside',
+      ],
+    },
+    {
       name: 'LinkInternal',
       size: ['l', 'm'],
       group: 'Status',
@@ -1309,6 +1323,19 @@ const iconsList = {
         'налево',
         'inside',
         'внутрь',
+      ],
+    },
+    {
+      name: 'Note',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'note',
+        'notes',
+        'info',
+        'details',
+        'information',
+        'notice',
       ],
     },
     {

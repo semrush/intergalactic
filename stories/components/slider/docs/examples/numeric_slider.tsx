@@ -54,13 +54,12 @@ const Demo = () => {
         Numeric value representation
       </Text>
       <Tooltip
-        title={`Please enter a valid value within ${min} and ${max}.`}
         visible={!!error}
         interaction='click'
         theme='warning'
         placement='right'
       >
-        <InputNumber mt={2} w={80} size='m' state={error ? 'invalid' : 'normal'}>
+        <InputNumber tag={Tooltip.Trigger} mt={2} w={80} size='m' state={error ? 'invalid' : 'normal'}>
           <InputNumber.Value
             id='numeric-value-represantation'
             step={1}
@@ -69,6 +68,9 @@ const Demo = () => {
           />
           <InputNumber.Controls showControls />
         </InputNumber>
+        <Tooltip.Popper>
+          Please enter a valid value within {min} and {max}.
+        </Tooltip.Popper>
       </Tooltip>
     </Flex>
   );

@@ -28,6 +28,7 @@ const Demo = () => {
     newSort,
   ) => {
     setSort(newSort as DataTableSort<SortableColumn>);
+    console.log('Sorted');
   };
 
   return (

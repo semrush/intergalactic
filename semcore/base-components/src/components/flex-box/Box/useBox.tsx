@@ -158,7 +158,7 @@ export type BoxProps = StyledProps & {
   zIndex?: number;
   /** CSS `text-align` property */
   textAlign?: Property.TextAlign;
-
+  /** Box content */
   children?: React.ReactNode;
 };
 

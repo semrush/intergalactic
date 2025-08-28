@@ -21,6 +21,7 @@ export type DropdownProps = PopperProps & {
    * @default 'min'
    * */
   stretch?: 'min' | 'fixed' | false;
+  /** Specifies the locale for i18n support */
   locale?: string;
 };
 

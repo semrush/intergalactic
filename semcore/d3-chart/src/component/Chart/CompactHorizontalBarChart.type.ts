@@ -10,9 +10,13 @@ type BarKey = string;
 export type CompactHorizontalBarChartData = Array<Record<BarKey, number | string>>;
 
 export type CompactHorizontalBarChartProps = BaseChartProps<CompactHorizontalBarChartData> & {
+  /** Field name from data array for the x-axis values */
   x: string;
+  /** Field name from data array for the y-axis values */
   y: string;
+  /** Custom x-axis scale */
   xScale?: ScaleBand<any> | ScaleTime<any, any>;
+  /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
 
   /** Handle click by `HoverRect`. `index` is an index of the data array. */

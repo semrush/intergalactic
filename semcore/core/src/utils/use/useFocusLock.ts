@@ -5,6 +5,7 @@ import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders'
 import { getFocusableIn } from '../focus-lock/getFocusableIn';
 import { isFocusInside } from '../focus-lock/isFocusInside';
 import { setFocus } from '../focus-lock/setFocus';
+import { hasParent } from '../hasParent';
 
 export { isFocusInside, setFocus };
 
@@ -149,7 +150,7 @@ const useFocusLockHook = (
         if (
           typeof returnFocusTo === 'object' &&
           returnFocusTo?.current &&
-          isFocusInside(returnFocusTo.current)
+          hasParent(focusMovedTo, returnFocusTo.current)
         )
           return;
 
