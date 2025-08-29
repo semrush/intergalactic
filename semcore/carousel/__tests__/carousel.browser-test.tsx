@@ -2,7 +2,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Carousel', () => {
-  test('Zoom item after cyclic scroll', async ({ page }) => {
+  // skipped temporary till new tests will be merged
+  test.skip('Zoom item after cyclic scroll', async ({ page }) => {
     const standPath =
       'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

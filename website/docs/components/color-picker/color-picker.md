@@ -4,33 +4,7 @@ fileSource: color-picker
 tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import ColorPicker from '@semcore/ui/color-picker';
-
-const Preview = (preview) => {
-  const { bool } = preview('ColorPicker');
-
-  const displayLabel = bool({
-    key: 'displayLabel',
-    defaultValue: false,
-    label: 'Display label',
-  });
-
-  return (
-    <React.Fragment>
-      <ColorPicker displayLabel={displayLabel} />
-    </React.Fragment>
-  );
-};
-
-const App = PlaygroundGeneration(Preview);
-</script>
-
-:::
+<Playground for="ColorPicker" />
 
 ## Description
 

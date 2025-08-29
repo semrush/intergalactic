@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.1] - 2025-08-29
+
+### Changed
+
+- Type description for `CheckboxProps`.
+
 ## [16.1.0] - 2025-08-07
 
 ### Changed
 
 - Version minor update due to children dependencies update (`@semcore/typography` [16.1.5 ~> 16.2.0], `@semcore/base-components` [16.1.2 ~> 16.2.0]).
+
+## [16.0.6] - 2025-08-12
+
+### Fixed
+
+- Part of invalid area is not disabled.
 
 ## [16.0.5] - 2025-07-23
 

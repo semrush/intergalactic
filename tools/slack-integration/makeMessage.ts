@@ -14,7 +14,7 @@ type Changelog = {
   changes: {
     component: string;
     version: string;
-    label: 'Added' | 'Changed' | 'Fixed' | 'BREAK';
+    label: ChangelogChangeLabel;
     description: string;
   }[];
 };
@@ -34,10 +34,12 @@ const bodyTemplate = (changes: Changelog['changes'], withVersions: boolean) => {
 
   return Object.values(components).map((changes) => {
     const { component, version } = changes![0];
-    const sections: Partial<{ [label in ChangelogChangeLabel]: string[] }> = {};
+    const sections: Partial<{ [label in NonNullable<ChangelogChangeLabel>]: string[] }> = {};
     for (const change of changes!) {
-      sections[change.label] = sections[change.label] || [];
-      sections[change.label]?.push(change.description);
+      if (change.label) {
+        sections[change.label] = sections[change.label] || [];
+        sections[change.label]?.push(change.description);
+      }
     }
 
     return (

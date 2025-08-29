@@ -11,7 +11,7 @@ export type ReferenceLineProps = Context & {
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value?: any;
-
+  /** Reference line title */
   title?: string;
 };
 

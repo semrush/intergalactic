@@ -5,6 +5,7 @@ packages:
   - 'website'
   - 'stories'
   - vite-project
+  - 'playground'
 
 linkWorkspacePackages: true
 preferWorkspacePackages: true

@@ -8,16 +8,27 @@ import type { DataRowItem, DTUse, VirtualScroll, DataTableProps, DataTableData }
 import type { DTColumn } from '../Head/Column.types';
 
 export type CellRenderProps<Data extends DataRowItem, UniqKeyType> = {
+  /** The column key for the cell data */
   dataKey: string;
+  /** The complete row data object */
   row: DTRow<UniqKeyType>;
+  /** The column configuration object */
   column: DTColumn;
+  /** Zero-based row index in the table */
   rowIndex: number;
+  /** Zero-based column index in the table */
   columnIndex: number;
+  /** The name/key of the column */
   columnName: string | typeof ACCORDION;
+  /** Cell value */
   value: string | React.ReactElement;
+  /** Function that returns the default cell rendering */
   defaultRender: () => React.ReactNode;
+  /** Indicates if this cell spans multiple rows */
   isMergedRows: boolean;
+  /** Indicates if this cell spans multiple columns */
   isMergedColumns: boolean;
+  /** The original unprocessed row data */
   rawData: Data;
 };
 

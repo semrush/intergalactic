@@ -335,6 +335,9 @@ test.describe('One level header - Sorting', () => {
         await page.keyboard.press('ArrowRight');
         const button = getButton(getColumn(i));
         await expect(button).toBeFocused();
+        if (i === 2) {
+          await expect(page).toHaveScreenshot();
+        }
 
         if (i === 4) {
           await button.click();
@@ -347,6 +350,47 @@ test.describe('One level header - Sorting', () => {
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Enter');
 
+      const newWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+      expect(newWidths).toEqual(initialWidths);
+    });
+  });
+
+  test('Verify mouse sorting without changing size', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
+
+    const columnHeaders = page.getByRole('columnheader');
+    const buttonLink1 = columnHeaders.first().locator('button[data-ui-name="ButtonLink"]');
+    const buttonLink2 = columnHeaders.nth(2).locator('button[data-ui-name="ButtonLink"]');
+
+    await test.step('Verify sorting icon do not move the text content by hover', async () => {
+      await columnHeaders.nth(1).hover();
+      await page.getByRole('tooltip', { name: 'KD % and some another text' }).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify hover on column with not active sorting', async () => {
+      await columnHeaders.nth(0).hover();
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify 1st click on not sorted icon activates sorting', async () => {
+      await buttonLink1.click();
+      await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
+      await buttonLink1.click();
+      await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
+    });
+
+    await test.step('Verify click on the column activates sorting', async () => {
+      await columnHeaders.nth(2).click();
+      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
+      await columnHeaders.nth(2).click();
+      await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
+    });
+
+    await test.step('Verify columns width not changed', async () => {
       const newWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
       expect(newWidths).toEqual(initialWidths);
     });
@@ -376,7 +420,9 @@ test.describe('One level header - Sorting', () => {
 
     {
       await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
       await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot(); // verify sort icon move text content
 
       const kdWidth = await getColumnWidth(page, 2);
       const cpcWidth = await getColumnWidth(page, 3);
@@ -389,6 +435,7 @@ test.describe('One level header - Sorting', () => {
 
     {
       await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
       await page.keyboard.press('Space');
 
       const kdWidth = await getColumnWidth(page, 2);
@@ -401,14 +448,32 @@ test.describe('One level header - Sorting', () => {
     }
   });
 
-  test('Verify sorting  not activates interactive with interactive element in same cell', async ({ page }) => {
+  test('Verify sorting with changing size for secondary style', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { use: 'secondary' });
+    await page.setContent(htmlContent);
+
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+    }
+
+    {
+      await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
+      await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot(); // verify sort icon move text content
+    }
+  });
+
+  test('Verify sorting not activates interactive when interactive element in cell with sorting', async ({ page }) => {
     const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-with-interactive.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const popper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
     const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const column = page.locator('[data-ui-name="Head.Column"]');
+    const column = page.getByRole('columnheader');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
@@ -427,42 +492,6 @@ test.describe('One level header - Sorting', () => {
     await trigger.click();
     await expect(popper).toBeVisible();
     await expect(column.first()).not.toHaveAttribute('aria-sort');
-  });
-
-  test('Verify mouse sorting without changing size', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-
-    const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
-    const column2 = page.locator('[data-ui-name="Head.Column"][aria-colindex="2"]');
-    const buttonLink2 = column2.locator('button[data-ui-name="ButtonLink"]');
-
-    await test.step('Verify hover on column with not active sorting', async () => {
-      await column1.hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify 1st click on not sorted icon activates srrting', async () => {
-      await buttonLink1.click();
-      await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
-      await buttonLink1.click();
-      await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
-    });
-
-    await test.step('Verify click on the column activates sorting', async () => {
-      await column2.click();
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
-      await column2.click();
-      await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
-    });
-
-    await test.step('Verify columns width not changed', async () => {
-      const newWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-      expect(newWidths).toEqual(initialWidths);
-    });
   });
 
   test('Verify mouse sorting with changing widest column size', async ({ page }) => {
@@ -520,6 +549,16 @@ test.describe('One level header - Sorting', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        const text = msg.text();
+        if (text === 'Sorted') {
+          messages.push(text);
+        }
+      }
+    });
+
     const columns = page.locator('[data-ui-name="Head.Column"]');
     const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
 
@@ -529,10 +568,13 @@ test.describe('One level header - Sorting', () => {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
     await expect(columns.first()).not.toHaveAttribute('aria-sort');
-
+    expect(messages.length).toBe(0);
     await buttonLink1.click();
     await expect(buttonLink1).toHaveAttribute('aria-label', 'descending');
     await expect(columns.first()).toHaveAttribute('aria-sort', 'descending');
+
+    expect(messages.length).toBe(1);
+    expect(messages).toEqual(['Sorted']);
 
     await buttonLink1.click();
     await expect(buttonLink1).toHaveAttribute('aria-label', 'ascending');
@@ -540,12 +582,22 @@ test.describe('One level header - Sorting', () => {
     for (let i = 1; i < count; i++) {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
+    expect(messages.length).toBe(2);
   });
 
   test('Verify sorting with undefined as default value by keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-default-undefined.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        const text = msg.text();
+        if (text === 'Sorted') {
+          messages.push(text);
+        }
+      }
+    });
 
     const columns = page.locator('[data-ui-name="Head.Column"]');
     const buttonLink1 = columns.first().locator('button[data-ui-name="ButtonLink"]');
@@ -558,6 +610,7 @@ test.describe('One level header - Sorting', () => {
       await expect(columns.nth(i)).not.toHaveAttribute('aria-sort');
     }
     await expect(columns.first()).not.toHaveAttribute('aria-sort');
+    expect(messages.length).toBe(0);
 
     await page.keyboard.press('ArrowDown');
     await expect(page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first()).toBeFocused();
@@ -570,10 +623,13 @@ test.describe('One level header - Sorting', () => {
     await page.keyboard.press('Enter');
     await expect(buttonLink2).toHaveAttribute('aria-label', 'descending');
     await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'descending');
+    expect(messages.length).toBe(1);
+    expect(messages).toEqual(['Sorted']);
 
     await buttonLink2.click();
     await expect(buttonLink2).toHaveAttribute('aria-label', 'ascending');
     await expect(columns.nth(1)).toHaveAttribute('aria-sort', 'ascending');
+    expect(messages.length).toBe(2);
   });
 });
 
@@ -686,10 +742,6 @@ test.describe('Multi level Header', () => {
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await expect(checkbox).toBeFocused();
-
-      // but
-      // await page.keyboard.press('Tab');  - moves to the next focusable element outside table
-      // await page.keyboard.press('Shift+Tab');
     });
 
     await test.step('Verify interaction with Select', async () => {

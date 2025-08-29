@@ -25,6 +25,7 @@ export type PaginationProps = BoxProps &
      * @param pageNumber
      */
     onCurrentPageChange?: (pageNumber: number) => void;
+    /** Specifies the locale for i18n support */
     locale?: string;
     /**
      * Sizes for pagination panel
