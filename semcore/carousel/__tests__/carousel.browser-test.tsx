@@ -65,10 +65,11 @@ test.describe('Visual', () => {
         await page.keyboard.press('Tab');
 
         const tab = page.getByRole('tab');
-        if (await indicators.count() === 2)
-
+        if (await indicators.count() === 2) {
           await tab.nth(5).hover();
-        else await tab.nth(2).hover();
+        } else {
+          await tab.nth(2).hover();
+        }
 
         await expect(page).toHaveScreenshot();
       });
