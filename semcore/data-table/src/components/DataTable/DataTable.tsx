@@ -40,6 +40,7 @@ export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
 export const SELECT_ALL = Symbol('SELECT_ALL');
 export const ROW_INDEX = Symbol('ROW_INDEX');
+export const GRID_ROW_INDEX = Symbol('GRID_ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -1277,6 +1278,7 @@ class DataTableRoot<
     const columnNames = columns.map((column: DTColumn) => column.name);
 
     let rowIndex = 0;
+    let gridRowIndex = 0;
 
     const id = 100000000; // need this for gen keys by toString(36)
 
@@ -1299,10 +1301,6 @@ class DataTableRoot<
             });
           }
 
-          if (row[ACCORDION]) {
-            acc[ACCORDION] = row[ACCORDION];
-          }
-
           return acc;
         },
         {
@@ -1313,8 +1311,16 @@ class DataTableRoot<
           // @ts-ignore
           [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`),
           [ROW_INDEX]: rowIndex,
+          [GRID_ROW_INDEX]: gridRowIndex,
         },
       );
+
+      gridRowIndex++;
+
+      if (row[ACCORDION]) {
+        dtRow[ACCORDION] = row[ACCORDION];
+        gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+      }
 
       excludeColumns?.forEach((value) => {
         columns.delete(value);

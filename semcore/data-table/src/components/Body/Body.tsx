@@ -14,7 +14,14 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import {
+  ACCORDION,
+  GRID_ROW_INDEX,
+  IS_EMPTY_DATA_ROW,
+  ROW_GROUP,
+  ROW_INDEX,
+  UNIQ_ROW_KEY,
+} from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
@@ -139,7 +146,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const row = props.row;
     const index = row[ROW_INDEX];
 
-    const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
+    const ariaRowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
       const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
       if (rowIndex < index) {
         const expandedRow = flatRows[rowIndex]?.[ACCORDION];
@@ -151,10 +158,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       }
 
       return acc;
-    }, index);
+    }, index + 2); // 1 - for header, 1 - because start not from 0, but from 1
 
-    const gridRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
-    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
+    const gridRowIndex = row[GRID_ROW_INDEX] + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
 
     const accordionDataGridArea = Array.isArray(row[ACCORDION])
       ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
@@ -459,6 +465,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
         [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
+        [GRID_ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,
           size: columns.length,
