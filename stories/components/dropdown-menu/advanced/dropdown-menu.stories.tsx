@@ -2,6 +2,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ProjectSelectorTest } from './__tests__/project-selector.test';
+import InputTagsTriggerExample from './examples/input_tags_trigger';
 import LeftPlacementExample from './examples/left-placement';
 import ModalInItemExample from './examples/modal-in-dd-item';
 import ModalInDDNoticeExample from './examples/modal-in-dd-notice';
@@ -16,6 +17,10 @@ const meta: Meta<typeof DropdownMenu> = {
 export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
+
+export const InputTagsTrigger: Story = {
+  render: InputTagsTriggerExample,
+};
 
 export const ModalInItem: Story = {
   render: ModalInItemExample,

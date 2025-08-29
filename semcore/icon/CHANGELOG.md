@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - New `LinkExternalAlt` icon.
+- New `Note` icon.
 
 ### Changed
 
