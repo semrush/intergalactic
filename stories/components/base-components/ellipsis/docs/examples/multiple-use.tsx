@@ -26,7 +26,7 @@ const Demo = () => {
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Text ellipsis={{ trim: 'middle', containerRect }} flex={1}>
+            <Text ellipsis={{ trim: 'middle', containerRect }} hintProps={{ placement: 'right' }} flex={1}>
               {props.value}
             </Text>
           );
