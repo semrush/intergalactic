@@ -11,6 +11,8 @@ WORKDIR /app
 COPY ./ ./
 COPY .git/ ./.git/
 
+ENV ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY
+
 RUN apk add git
 RUN npm install --global pnpm@10.11.1
 RUN pnpm install --frozen-lockfile --ignore-scripts
