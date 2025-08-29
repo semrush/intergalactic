@@ -339,7 +339,7 @@ test.describe('Functional tests', () => {
       await page.keyboard.press('Tab');
       await expect(inputText).toHaveCount(count + 2);
 
-      await page.keyboard.type('Social media with a very long name');
+      await page.keyboard.type('1111');
       await page.keyboard.press('Shift+Tab');
       await expect(inputText).toHaveCount(count + 3);
 
@@ -432,25 +432,19 @@ test.describe('Functional tests', () => {
       expect(newCount).toBe(initialCount - 1);
 
       await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
+      await expect(tagClose.first()).not.toBeFocused();
+      await expect(inputText.first()).toBeFocused();
     });
 
     await test.step('Verify removing 1st tag by Space', async () => {
       const initialCount = await tag.count();
+      await page.keyboard.press('Tab');
 
       await page.keyboard.press('Space');
       const newCount = await tag.count();
 
       expect(newCount).toBe(initialCount - 1);
 
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
-    });
-
-    await test.step('Verify Tag Text focused by Shift+ Tab', async () => {
-      await page.keyboard.press('Shift+Tab');
       await expect(inputValue).not.toBeFocused();
       await expect(inputText.first()).toBeFocused();
       await expect(tagClose.first()).not.toBeFocused();
@@ -459,7 +453,6 @@ test.describe('Functional tests', () => {
     await test.step('Verify next Tag Text focused by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-
       await expect(inputValue).not.toBeFocused();
       await expect(inputText.nth(1)).toBeFocused();
       await expect(tagClose.nth(1)).not.toBeFocused();
@@ -541,11 +534,9 @@ test.describe('Functional tests', () => {
 
     await page.setContent(htmlContent);
 
-    const ul = page.locator('ul');
     const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
     const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
     const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const label = page.locator('[data-ui-name="Text"]');
     const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
 
     await test.step('Verify focused and cursor set by click on input value', async () => {

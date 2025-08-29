@@ -4,60 +4,7 @@ fileSource: d3-chart
 tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-code'), Changelog('scatterplot-chart-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import { chartPlayground } from '@components/ChartPlayground';
-import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
-
-const data = [...Array(25).keys()].map((d, i) => ({
-  x: i,
-  category1: Math.random() * 10,
-  category2: Math.random() * 10,
-  value: Math.round(Math.random() * 10),
-}));
-
-const App = PlaygroundGeneration((preview) => {
-  const { select, radio, label, bool } = preview('Chart.ScatterPlot');
-
-  const {
-    direction,
-    alignItems,
-    showXAxis,
-    showYAxis,
-    showTooltip,
-    showLegend,
-    legendProps,
-    patterns,
-  } = chartPlayground({ select, radio, label, bool }, { direction: 'column' });
-
-  const chartProps: ScatterPlotChartProps = {
-    data,
-    groupKey: 'x',
-    plotWidth: 300,
-    plotHeight: 300,
-    direction,
-    showTooltip,
-    showXAxis,
-    showYAxis,
-    alignItems,
-    patterns,
-  };
-
-  if (showLegend) {
-    chartProps.legendProps = legendProps;
-    chartProps.showLegend = true;
-  } else {
-    chartProps.showLegend = false;
-  }
-
-  return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
-}, {filterProps: ['data']});
-</script>
-
-:::
+<Playground for="Chart.ScatterPlot" />
 
 ::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).

@@ -3,44 +3,7 @@ title: ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/typography';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const App = PlaygroundGeneration((preview) => {
-  const { radio, text } = preview();
-
-  const trim = radio({
-    key: 'trim',
-    defaultValue: 'end',
-    label: 'Trimming type',
-    options: ['end', 'middle'],
-  });
-
-  const maxLine = text({
-    key: 'maxLine',
-    defaultValue: 1,
-    label: 'Number of lines',
-    disabled: trim === 'middle',
-  });
-
-  const ellipsisProps = {
-    trim,
-    maxLine,
-  };
-
-  return (
-    <Text w={200} size={300} display="inline-block" ellipsis={ellipsisProps}>
-      Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.
-    </Text>
-  );
-});
-</script>
-
-:::
+<Playground for="Ellipsis" />
 
 ## Description
 

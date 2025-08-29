@@ -4,6 +4,8 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box } from '@semcore/flex-box';
@@ -129,6 +131,21 @@ class RootTagContainer extends Component {
     theme: 'primary',
   };
 
+  tagRef = React.createRef();
+
+  componentWillUnmount() {
+    const tagElement = this.tagRef.current;
+
+    if (isFocusInside(tagElement)) {
+      const nextTagElement = tagElement.nextElementSibling;
+      if (nextTagElement) {
+        setFocus(nextTagElement);
+      } else {
+        setFocus(tagElement.parentElement?.nextElementSibling);
+      }
+    }
+  }
+
   getTagProps() {
     const {
       size,
@@ -210,7 +227,7 @@ class RootTagContainer extends Component {
       );
 
     return sstyled(styles)(
-      <STagContainer render={Box}>
+      <STagContainer render={Box} ref={this.tagRef}>
         {advancedMode
           ? (
               <Children />

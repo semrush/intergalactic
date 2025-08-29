@@ -4,60 +4,7 @@ fileSource: progress-bar
 tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import ProgressBar from '@semcore/ui/progress-bar';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-
-const SIZES = ['s', 'm', 'l'];
-
-const Preview = (preview) => {
-  const { radio, text, select } = preview('ProgressBar');
-
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
-  });
-
-  const theme = select({
-    key: 'theme',
-    defaultValue: 'invert',
-    label: 'Theme',
-    options: [
-      {
-        name: 'invert',
-        value: 'invert',
-      },
-      {
-        name: 'dark',
-        value: 'dark',
-      },
-    ],
-  });
-
-  const duration = text({
-    key: 'duration',
-    defaultValue: 1000,
-    label: 'Duration',
-  });
-
-  const value = text({
-    key: 'value',
-    defaultValue: 50,
-    label: 'Value',
-  });
-
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} aria-label="Progress bar" />;
-};
-
-const App = PlaygroundGeneration(Preview, {filterProps: ['w']});
-</script>
-
-:::
+<Playground for="ProgressBar" />
 
 ## Description
 

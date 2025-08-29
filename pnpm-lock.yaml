@@ -297,6 +297,22 @@ importers:
         specifier: 2.8.0
         version: 2.8.0
 
+  playground:
+    dependencies:
+      d3-shape:
+        specifier: 3.1.0
+        version: 3.1.0
+      react-element-to-jsx-string:
+        specifier: 15.0.0
+        version: 15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      shiki:
+        specifier: ^1.29.2
+        version: 1.29.2
+    devDependencies:
+      '@types/d3-shape':
+        specifier: ^3.1.7
+        version: 3.1.7
+
   semcore/accordion:
     dependencies:
       '@semcore/animation':
@@ -3051,9 +3067,6 @@ importers:
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
-      d3-shape:
-        specifier: 3.1.0
-        version: 3.1.0
       dayjs:
         specifier: 1.10.4
         version: 1.10.4
@@ -3120,9 +3133,6 @@ importers:
       prismjs:
         specifier: 1.27.0
         version: 1.27.0
-      react-element-to-jsx-string:
-        specifier: 15.0.0
-        version: 15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-final-form:
         specifier: 6.5.9
         version: 6.5.9(final-form@4.20.7)(react@18.3.1)

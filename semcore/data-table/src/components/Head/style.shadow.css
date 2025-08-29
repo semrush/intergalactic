@@ -140,6 +140,18 @@ SColumn[use='secondary'] {
       opacity: 1;
     }
   }
+
+  &[justifyContent='right'] {
+    SSortWrapper {
+      position: absolute;
+    }
+
+    &[changeSortSize][isSorted] {
+      SSortWrapper {
+        position: relative;
+      }
+    }
+  }
 }
 
 SColumn[gridArea], SGroup[gridArea], SGroupTitle[gridArea] {
