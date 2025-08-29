@@ -1124,7 +1124,7 @@
       }
     },
     "illustration": {
-      "salmon": {
+      "red": {
         "value": "#FF788F",
         "type": "color",
         "description": "⚠️ Use only for illustrations."
@@ -1139,12 +1139,12 @@
         "type": "color",
         "description": "⚠️ Use only for illustrations."
       },
-      "green": {
+      "salad": {
         "value": "#C7FA73",
         "type": "color",
         "description": "⚠️ Use only for illustrations."
       },
-      "emerald": {
+      "green": {
         "value": "#45E0A8",
         "type": "color",
         "description": "⚠️ Use only for illustrations."

@@ -1510,7 +1510,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-illustration-salmon",
+    "name": "--intergalactic-illustration-red",
     "type": "color",
     "rawValue": "#FF788F",
     "computedValue": "#FF788F",
@@ -1534,7 +1534,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-illustration-green",
+    "name": "--intergalactic-illustration-salad",
     "type": "color",
     "rawValue": "#C7FA73",
     "computedValue": "#C7FA73",
@@ -1542,7 +1542,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-illustration-emerald",
+    "name": "--intergalactic-illustration-green",
     "type": "color",
     "rawValue": "#45E0A8",
     "computedValue": "#45E0A8",
