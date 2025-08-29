@@ -11,9 +11,6 @@ WORKDIR /app
 COPY ./ ./
 COPY .git/ ./.git/
 
-ARG ALGOLIA_SECRET_KEY
-ENV ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY
-
 RUN apk add git
 RUN npm install --global pnpm@10.11.1
 RUN pnpm install --frozen-lockfile --ignore-scripts
@@ -21,7 +18,9 @@ RUN pnpm --filter utils run build
 RUN pnpm --filter core run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
-RUN echo "ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY" > .env
+RUN echo "ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY" > .env && \
+    echo "VITE_PLAYGROUND_MAIN_BRANCH=$VITE_PLAYGROUND_MAIN_BRANCH" >> .env && \
+    echo "VITE_AMPLITUDE_API_KEY=$VITE_AMPLITUDE_API_KEY" >> .env
 RUN NODE_OPTIONS=--max-old-space-size=32768 CI=true ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY pnpm --filter website run build
 
 FROM nginx:alpine
