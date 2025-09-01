@@ -16,10 +16,16 @@ SModalBox {
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
 
-  &:has(SItem:focus-visible) {
+  &:has(SItem:focus-visible)::after {
+    border-radius: inherit;
+    z-index: 2;
+    position: absolute;
+    inset: 0;
+    content: '';
     outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+    outline-style: solid;
     outline-width: 2px;
-    outline-offset: 2px;
+    outline-offset: -2px;
     transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
       outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
       outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
@@ -39,6 +45,10 @@ SItem {
   border-radius: var(--intergalactic-surface-rounded, 6px);
   overflow: hidden;
   outline: none;
+
+  > img {
+    display: block;
+  }
 }
 
 SItem[zoomIn] {
@@ -52,19 +62,9 @@ SItem[zoomOut] {
 SIndicators {
   display: flex;
   justify-content: center;
-  margin: var(--intergalactic-spacing-4x, 16px) 3px 3px 3px;
+  margin: var(--intergalactic-spacing-4x, 16px) 4px 4px 4px;
   outline: none;
   position: relative;
-
-  &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: 0px;
-    transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
 }
 
 SIndicator {

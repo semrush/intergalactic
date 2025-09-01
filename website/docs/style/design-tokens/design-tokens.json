@@ -2236,6 +2236,7 @@
     "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Color for keyboard focus outline styles to use on the dark and color background.",
     "components": [
+      "base-components",
       "wizard"
     ]
   },

@@ -157,7 +157,7 @@ SInputField[size='l']>div {
 }
 
 
-SInputField[state='normal']:not([disabled])>div:focus {
+SInputField[state='normal']:not([disabled])>div {
   &:focus {
     border-color: var(--intergalactic-border-info-active, #006dca);
     outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
