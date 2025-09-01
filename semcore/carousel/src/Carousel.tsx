@@ -720,7 +720,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box}>
+      <SIndicators render={Box} innerOffset>
         <Children />
       </SIndicators>,
     );

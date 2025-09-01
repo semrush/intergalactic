@@ -437,6 +437,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   return sstyled(styles)(
     <SContainer
       render={Box}
+      focusInAfter={true}
       tabIndex={0}
       focusRingTopOffset={focusRingTopOffset}
       focusRingRightOffset={focusRingRightOffset}
@@ -449,8 +450,6 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
     </SContainer>,
   );
 }
-
-ContainerRoot.enhance = [keyboardFocusEnhance()];
 
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
