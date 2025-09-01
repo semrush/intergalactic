@@ -8,7 +8,7 @@ test.describe('Visual', () => {
     await expect(page).toHaveScreenshot(`${name}.png`, { clip: box });
   }
 
-  test('Templates', async ({ page }) => {
+  test('Veriry error templates', async ({ page }) => {
     const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setViewportSize({ width: 1280, height: 2500 });
@@ -19,6 +19,20 @@ test.describe('Visual', () => {
     await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(1), 'PageNotFound');
     await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(2), 'ProjectNotFound');
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError');
+  });
+
+  test('Veriry custom error states', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/global-errors/tests/examples/custom-error-cases.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setViewportSize({ width: 1280, height: 2500 });
+    await page.setContent(htmlContent);
+
+    await expectScreenshotOf(page, page.locator('[data-testid="title-description"]'), 'title-description');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-controls"]'), 'icon-title-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="description-controls"]'), 'description-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description"]'), 'icon-title-description');
+    await expectScreenshotOf(page, page.locator('[data-testid="title-description-controls"]'), 'title-description-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description-controls"]'), 'icon-title-description-controls');
   });
 });
 

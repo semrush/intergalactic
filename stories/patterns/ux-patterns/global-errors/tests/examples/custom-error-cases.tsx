@@ -9,7 +9,7 @@ const Icon = () => (
 );
 const Demo = () => (
   <Flex direction='column' gap={2}>
-    <Error icon={getIconPath('confirmation')}>
+    <Error icon={getIconPath('confirmation')} data-testid='icon-title-description-controls'>
       <Error.Title>Confirm you are a real person</Error.Title>
       <Error.Description wMax={510}>
         We need to make sure you're not a robot. Please complete the security check, and we'll be out
@@ -22,7 +22,7 @@ const Demo = () => (
       </Error.Controls>
     </Error>
 
-    <Error>
+    <Error data-testid='title-description-controls'>
       <Error.Title>Horrible error</Error.Title>
       <Error.Description>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, dignissimos
@@ -35,7 +35,7 @@ const Demo = () => (
       </Error.Controls>
     </Error>
 
-    <Error icon={<Icon />}>
+    <Error icon={<Icon />} data-testid='icon-title-description'>
       <Error.Title>Horrible error</Error.Title>
       <Error.Description>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, dignissimos
@@ -44,7 +44,7 @@ const Demo = () => (
       </Error.Description>
     </Error>
 
-    <Error w={500}>
+    <Error w={500} data-testid='description-controls'>
       <Error.Description>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, dignissimos
         dolor error explicabo facilis illum in laboriosam maiores officia quia quibusdam quisquam,
@@ -56,7 +56,7 @@ const Demo = () => (
       </Error.Controls>
     </Error>
 
-    <Error icon={getIconPath('confirmation')}>
+    <Error icon={getIconPath('confirmation')} data-testid='icon-title-controls'>
       <Error.Title>Confirm you are a real person</Error.Title>
       <Error.Controls>
         <Button size='l' use='primary' theme='info'>
@@ -65,7 +65,7 @@ const Demo = () => (
       </Error.Controls>
     </Error>
 
-    <Error icon='https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg'>
+    <Error data-testid='title-description'>
       <Error.Title>Horrible error</Error.Title>
       <Error.Description>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
