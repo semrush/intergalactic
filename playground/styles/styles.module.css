@@ -42,6 +42,10 @@
     margin-top: var(--intergalactic-spacing-1x);
   }
 
+  > label span[data-ui-name="Text"] {
+    margin-top: 4px;
+  }
+
   .controlPanel {
     padding: 0 0 var(--intergalactic-spacing-3x) var(--intergalactic-spacing-6x);
     border: none;
