@@ -42,10 +42,6 @@
     margin-top: var(--intergalactic-spacing-1x);
   }
 
-  > label span[data-ui-name="Text"] {
-    margin-top: 4px;
-  }
-
   .controlPanel {
     padding: 0 0 var(--intergalactic-spacing-3x) var(--intergalactic-spacing-6x);
     border: none;
@@ -125,9 +121,18 @@
       "code";
   }
 
+  .canvas {
+    border-right: none;
+  }
+
   .controlPanel {
     border-left: none;
+    border-top-right-radius: 0;
     border-top: 1px solid var(--vp-c-divider, #E0E1E9);
+  }
+
+  .code {
+    border-bottom-right-radius: var(--intergalactic-surface-rounded);
   }
 }
 
