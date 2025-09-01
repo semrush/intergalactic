@@ -7,10 +7,20 @@ test.describe('Carousel', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    }
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
   });
   test('Indicators only', async ({ page }) => {
     const standPath = 'stories/components/carousel/docs/examples/carousel_with_indicators_only.tsx';
@@ -28,9 +38,20 @@ test.describe('Carousel', () => {
 
     await page.setContent(htmlContent);
 
-    const violations = await getAccessibilityViolations({ page });
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    expect(violations).toEqual([]);
+      expect(violations).toEqual([]);
+    }
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
   });
   test('Without modal', async ({ page }) => {
     const standPath = 'stories/components/carousel/docs/examples/carousel_without_modal_window.tsx';
