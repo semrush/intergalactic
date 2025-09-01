@@ -64,4 +64,42 @@ test.describe('Feedback form', () => {
       expect(violations).toEqual([]);
     });
   });
+
+  test('Feedback rating', async ({ page }) => {
+    const standPath =
+    'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify notice', async () => {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    });
+    await test.step('Verify empty form', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    });
+    await test.step('Verify form with errors', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('qwe');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    });
+  });
 });

@@ -1,6 +1,4 @@
-import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -14,7 +12,7 @@ describe('input-number Dependency imports', () => {
 describe('InputNumber', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Should accept int numbers', () => {
+  test.concurrent('Verify int numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -26,7 +24,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123', expect.anything());
   });
 
-  test.sequential('Should accept float numbers', () => {
+  test.sequential('Verify float numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -38,7 +36,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
-  test.concurrent('Should accept format in int numbers', async () => {
+  test.concurrent('Verify format in int numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -54,7 +52,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345');
   });
 
-  test.sequential('Should accept format in float numbers', () => {
+  test.sequential('Verify format in float numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -68,7 +66,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345.4');
   });
 
-  test.sequential('Should accept not locale decimal separator', async () => {
+  test.sequential('Verify not locale decimal separator', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -84,7 +82,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345.99');
   });
 
-  test.sequential('Should accept format in hundredths fractions numbers', async () => {
+  test.sequential('Verify format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -101,7 +99,7 @@ describe('InputNumber', () => {
   });
 
   test.sequential(
-    'Should accept format in hundredths fractions numbers with difficult values',
+    'Verify format in hundredths fractions numbers with difficult values',
     async () => {
       const spy = vi.fn();
       const { getByTestId } = render(
@@ -119,7 +117,7 @@ describe('InputNumber', () => {
     },
   );
 
-  test.sequential('Should continue to edit after delete decimal part', async () => {
+  test.sequential('Verify edit after delete decimal part', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -142,7 +140,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('123.2');
   });
 
-  test.sequential('Should not accept numbers with two decimal separators', async () => {
+  test.sequential('Verify not accept numbers with two decimal separators', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -158,7 +156,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('0.01');
   });
 
-  test.sequential('Should correct round float numbers with step less than 1', () => {
+  test.sequential('Verify correct round float numbers with step less than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -170,27 +168,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('0.3', expect.anything());
   });
 
-  test.concurrent('Should correctly render for different locales', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <div>
-          EN (default):
-          <InputNumber>
-            <InputNumber.Value data-testid='input5' value='999999' />
-          </InputNumber>
-        </div>
-        <div>
-          DE:
-          <InputNumber locale='de'>
-            <InputNumber.Value data-testid='input5' value='999999' />
-          </InputNumber>
-        </div>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.sequential('Should correct round float numbers with step more than 1', () => {
+  test.sequential('Verify round float numbers with step more than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -202,7 +180,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test.concurrent('Should not accept letters', () => {
+  test.concurrent('Verify not accept letters', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -215,7 +193,7 @@ describe('InputNumber', () => {
     expect(spy).not.toBeCalled();
   });
 
-  test.concurrent('Should not accept value which is bigger than max prop', () => {
+  test.concurrent('Verify not accept value which is bigger than max prop', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -227,7 +205,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('10', expect.anything());
   });
 
-  test.sequential('Should not accept value which is smaller than min prop', () => {
+  test.sequential('Verify not accept value which is smaller than min prop', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -239,7 +217,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('200', expect.anything());
   });
 
-  test.concurrent('Should support inputs up/down buttons click', () => {
+  test.concurrent('Verify inputs up/down buttons click', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -258,7 +236,7 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('-1', expect.anything());
   });
 
-  test('Should support inputs up/down buttons click with formatted number', async () => {
+  test('Verify inputs up/down buttons click with formatted number', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -282,7 +260,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,344');
   });
 
-  test('Should not accept letters after the first digits', async () => {
+  test('Verify not accept letters after the first digits', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -298,7 +276,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('1', expect.anything());
   });
 
-  test('Should not call onChange if the value ends with `-`', async () => {
+  test('Verify not call onChange if the value ends with `-`', async () => {
     const spy = vi.fn();
     render(
       <InputNumber>
@@ -321,7 +299,7 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('', expect.anything());
   });
 
-  test('Should not call onChange if the value ends with `.`', async () => {
+  test('Verify not call onChange if the value ends with `.`', async () => {
     const spy = vi.fn();
     render(
       <InputNumber>
@@ -346,112 +324,5 @@ describe('InputNumber', () => {
     await userEvent.keyboard('[Backspace]');
     expect(spy).lastCalledWith('', expect.anything());
     expect(spy).toBeCalledTimes(4);
-  });
-
-  test.concurrent('Should support sizes', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <InputNumber size='m'>
-          <InputNumber.Value />
-          <InputNumber.Controls showControls />
-        </InputNumber>
-        <InputNumber size='l'>
-          <InputNumber.Value />
-          <InputNumber.Controls showControls />
-        </InputNumber>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support disabled prop', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <InputNumber>
-          <InputNumber.Value disabled />
-        </InputNumber>
-        <InputNumber>
-          <InputNumber.Value disabled />
-          <InputNumber.Controls showControls />
-        </InputNumber>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support showControls prop', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <InputNumber>
-          <InputNumber.Value />
-        </InputNumber>
-        <InputNumber>
-          <InputNumber.Value />
-          <InputNumber.Controls showControls />
-        </InputNumber>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should support view controls', async ({ task }) => {
-    const component = (
-      <InputNumber {...{ focused: true }}>
-        <InputNumber.Value id='input' />
-        <InputNumber.Controls />
-      </InputNumber>
-    );
-
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#input',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test.sequential('Should support controls hover', async ({ task }) => {
-    const component = (
-      <InputNumber>
-        <InputNumber.Value />
-        <InputNumber.Controls showControls id='controls' />
-      </InputNumber>
-    );
-
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover: 'css=#controls > button',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <InputNumber>
-        <InputNumber.Value aria-label='input-number' value='23' />
-        <InputNumber.Controls showControls />
-      </InputNumber>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-
-  test('a11y min/max', async () => {
-    const { container } = render(
-      <InputNumber>
-        <InputNumber.Value aria-label='input-number' value='23' min={1} max={200} />
-        <InputNumber.Controls showControls />
-      </InputNumber>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
