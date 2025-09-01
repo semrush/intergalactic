@@ -32,13 +32,12 @@ test.describe('Functional', () => {
     { titleTag: 'p', homeLink: undefined },
   ];
   variables.forEach((item) => {
-    test(`Verify Errors with titleTag=${item.titleTag} homeLink= ${item.homeLink} toolName=${item.toolName} `, async ({ page }) => {
+    test(`Verify Errors with titleTag=${item.titleTag} homeLink= ${item.homeLink}`, async ({ page }) => {
       const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
 
-      // список всех блоков с ошибками, у которых есть Error.Title
       const errorBlocks = [
         page.locator('[data-ui-name="AccessDenied"]'),
         page.locator('[data-ui-name="Maintenance"]').nth(0),
@@ -53,13 +52,11 @@ test.describe('Functional', () => {
 
         await expect(title).toBeVisible();
 
-        // проверяем тег
         const tagName = await title.evaluate((el) => el.tagName.toLowerCase());
         expect(tagName).toBe(item.titleTag);
 
         if (/^h[1-6]$/.test(item.titleTag)) {
           const level = Number(item.titleTag[1]);
-          // проверяем heading внутри текущего блока
           await expect(block.getByRole('heading', { level })).toHaveText(
             await title.textContent(),
           );
@@ -69,8 +66,7 @@ test.describe('Functional', () => {
           expect(role).not.toBe('heading');
         }
 
-        // проверка ссылки "Go to homepage" только для нужных блоков
-        if (i <= 2) { // AccessDenied, Maintenance 0, Maintenance 1
+        if (i <= 2) {
           const homepageLink = block.getByRole('link', { name: 'Go to homepage' });
           if (item.homeLink) {
             await expect(homepageLink).toHaveAttribute('href', item.homeLink);
@@ -110,28 +106,40 @@ test.describe('Functional', () => {
   });
 
   const projectNotFound = [
-    { toolName: 'Test test test' },
-    { toolName: 'Tool1' },
-    { toolName: undefined },
+    { projectsLink: undefined, contactsLink: undefined, supportTeamLink: undefined },
+    { projectsLink: 'projectsLink', contactsLink: 'contactLink', supportTeamLink: 'supportTeamLink' },
   ];
   projectNotFound.forEach((item) => {
-    test(`Verify projectNotFound with toolName=${item.toolName}  `, async ({ page }) => {
+    test(`Verify projectNotFound with projectsLink=${item.projectsLink} contactLink=${item.contactsLink}  supportTeamLink=${item.supportTeamLink}`, async ({ page }) => {
       const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
 
-      const maintenance = page.locator('[data-ui-name="Maintenance"]').nth(0);
-      const title = maintenance.locator('[data-ui-name="Error.Title"]');
+      const projectNotFoundBlock = page.locator('[data-ui-name="Maintenance"]').nth(2);
+      const controls = projectNotFoundBlock.locator('[data-ui-name="Error.Controls"]');
+      const description = projectNotFoundBlock.locator('[data-ui-name="Error.Description"]');
 
-      await expect(title).toBeVisible();
+      const projects = controls.getByRole('link').nth(0);
+      const contact = controls.getByRole('link').nth(1);
+      const supportTeam = description.locator('a');
 
-      const text = await title.textContent();
-
-      if (item.toolName) {
-        expect(text).toContain(item.toolName);
+      if (item.projectsLink) {
+        await expect(projects).toHaveAttribute('href', item.projectsLink);
       } else {
-        expect(text).toContain('Intergalactic');
+        await expect(projects).toHaveAttribute('href', '/projects');
+      }
+
+      if (item.contactsLink) {
+        await expect(contact).toHaveAttribute('href', item.contactsLink);
+      } else {
+        await expect(contact).toHaveAttribute('href', '/company/contacts');
+      }
+
+      if (item.supportTeamLink) {
+        await expect(supportTeam).toHaveAttribute('href', item.supportTeamLink);
+      } else {
+        await expect(supportTeam).toHaveAttribute('href', '/company/contacts');
       }
     });
   });
