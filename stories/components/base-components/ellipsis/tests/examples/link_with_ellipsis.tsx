@@ -2,11 +2,11 @@ import type { EllipsisSettings } from '@semcore/base-components';
 import Link from '@semcore/link';
 import React from 'react';
 
-type DemoProps = {
+type Linkrops = {
   ellipsis?: true | EllipsisSettings;
 };
 
-const Demo = (props: DemoProps) => {
+const Demo = (props: Linkrops) => {
   return (
     <Link
       href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
@@ -20,7 +20,7 @@ const Demo = (props: DemoProps) => {
   );
 };
 
-export const defaultProps: DemoProps = {
+export const defaultProps: Linkrops = {
   ellipsis: true,
 };
 
