@@ -238,13 +238,16 @@ for (const theme of themes) {
 
     if (warning) {
       if (unusedVariables.length > 0) {
+        // eslint-disable-next-line no-console
         console.log('Unused design tokens:');
-
+        // eslint-disable-next-line no-console
         console.log(unusedVariables.join('\n'));
       }
       if (colorLiterals.length > 0) {
+        // eslint-disable-next-line no-console
         console.log('Unexpected color literals:');
         for (const literal of colorLiterals) {
+          // eslint-disable-next-line no-console
           console.log(`${literal.name} in ${literal.path}`);
         }
       }

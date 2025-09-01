@@ -6,6 +6,10 @@ import { toMarkdown } from 'marked-ast-markdown';
 import type { Changelog, ChangelogChangeLabel } from '../types';
 import { isValidSemver } from '../utils';
 
+function isMajor(version: string): boolean {
+  return /^\d+\.0\.0$/.test(version);
+}
+
 export const releaseChangelogParser = (
   changelogText: string,
   releasePackageName: string,
@@ -69,7 +73,7 @@ export const releaseChangelogParser = (
       handledVersions.set(version, true);
     } else if (token.type === 'heading' && token.level === 3 && traversingVersion !== null) {
       const component = token.text.join();
-      if (component !== 'Global' && !knownComponents.includes(component)) {
+      if (component !== 'Global' && !knownComponents.includes(component) && !isMajor(traversingVersion)) {
         const stringifiedKnownComponentsList = knownComponents
           .map((component) => `"${component}"`)
           .join(', ');
@@ -92,10 +96,32 @@ export const releaseChangelogParser = (
           );
         }
 
+        if (releasePackageName === '@semcore/ui' && isMajor(traversingVersion)) {
+          if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+            changelogs.push({
+              component: traversingComponent,
+              date: traversingDate,
+              version: traversingVersion,
+              changes: [],
+            });
+          }
+
+          changelogs[changelogs.length - 1].changes.push({
+            component: traversingComponent,
+            version: traversingVersion,
+            label: null,
+            description: toMarkdown(item.text as Token[]).trim(),
+            descriptionFormatted: item.text,
+            isAutomatic: false,
+          });
+
+          continue;
+        }
+
         const prefix = item.text[0];
         const restText = item.text.slice(1);
 
-        if (typeof prefix === 'string' || prefix.type !== 'strong') {
+        if ((typeof prefix === 'string' || prefix.type !== 'strong')) {
           throw new Error(
             `Invalid prefix for changelog change. Expected strong text, got ${JSON.stringify(
               prefix,

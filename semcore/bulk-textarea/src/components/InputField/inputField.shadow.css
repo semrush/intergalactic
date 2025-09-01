@@ -94,6 +94,24 @@ SInputField>div {
       padding-left: 0;
     }
   }
+
+  &:has(p:nth-child(n + 1000)) {
+    > p {
+      padding-left: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-1x, 4px));
+    }
+    > p:nth-child(-n + 9)::before {
+      padding-left: var(--intergalactic-spacing-6x, 24px);
+    }
+    > p:nth-child(n + 10)::before {
+      padding-left: var(--intergalactic-spacing-4x, 16px);
+    }
+    > p:nth-child(n + 100)::before {
+      padding-left: var(--intergalactic-spacing-2x, 8px);
+    }
+    > p:nth-child(n + 1000)::before {
+      padding-left: 0;
+    }
+  }
 }
 
 SInputField[showErrors]>div[aria-invalid]>p[aria-invalid]:after {

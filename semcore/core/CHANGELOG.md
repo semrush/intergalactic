@@ -2,13 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.0] - 2025-07-17
+## [16.2.0] - 2025-09-12
 
 ### Changed
 
 - Values for `keyboard-focus` tokens.
 - Inverted outline token moved from keyboard-focus group to keyboard-focus-invert group: `keyboard-focus-outline-invert` changed to `keyboard-focus-invert-outline` for consistency.
 - Grouping for `keyboard-focus` tokens in the design json files.
+
+## [16.1.1] - 2025-08-29
+
+### Changed
+
+- FocusLock work when popper opened without focus and trigger has few focusable elements.
+
+## [16.1.0] - 2025-07-24
+
+### Added
+
+- New tokens for FeaturePopover's new theme styles: `feature-popover-bg`, `feature-popover-bg-neutral`, `feature-popover-dot-neutral`, `feature-popover-dot-neutral-outer-border`.
 
 ## [16.0.4] - 2025-07-07
 

@@ -164,7 +164,7 @@ describe('DataTable.Cell', () => {
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
     const RawDataTest = () => {
-      const customCellRender = (props: CellRenderProps<string | null>) => {
+      const customCellRender = (props: CellRenderProps<typeof dataItem, string | null>) => {
         checkRowData(props.rawData);
 
         return props.defaultRender();

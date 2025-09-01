@@ -9,6 +9,7 @@ import OnVisible2ndExample from './examples/on-visible-2nd';
 import SizesExample from './examples/sizes';
 import SizesMultiselectExample from './examples/sizes-multiselect';
 import SizesSelectableExample from './examples/sizes-selectable';
+import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -21,6 +22,10 @@ type Story = StoryObj<typeof DropdownMenu>;
 
 export const WithDivider: Story = {
   render: WithDividerExample,
+};
+
+export const WithFocusableTrigger: Story = {
+  render: WithFocusableTriggerExample,
 };
 
 export const ListItemsType: Story = {

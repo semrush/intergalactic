@@ -1,20 +1,28 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent } from '@semcore/testing-utils/testing-library';
-import { describe, test, vi, assertType } from '@semcore/testing-utils/vitest';
+import { render, userEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import BulkTextarea from '../src';
 
 describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
+});
 
-  test('value&onChange relation', () => {
-    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string) => {}} />);
-    assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string[]) => {}} />);
+describe('BulkTextarea OnChange', () => {
+  beforeEach(() => {
+    cleanup();
+  });
+  afterEach(() => {
+    cleanup();
+  });
+  test('Verify value&onChange relation', () => {
+    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string) => { }} />);
+    assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string[]) => { }} />);
     // @ts-expect-error
-    assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string) => {}} />);
+    assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string) => { }} />);
     // @ts-expect-error
-    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string[]) => {}} />);
+    assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string[]) => { }} />);
   });
 
   test('Verify onChange return the same type as value', async ({ expect }) => {
@@ -50,5 +58,21 @@ describe('BulkTextarea Dependency imports', () => {
 
     expect(spy).toHaveBeenCalledWith(changedValue, expect.anything());
     expect(Array.isArray(valueInCb)).toBe(true);
+  });
+});
+
+describe('BulkTextarea onImmediatelyChange', () => {
+  test('Verify onImmediatelyChange calls when character entered', async () => {
+    const handleImmediatelyChange = vi.fn();
+    const { getByRole } = render(
+      <BulkTextarea value='' onImmediatelyChange={handleImmediatelyChange}>
+        <BulkTextarea.InputField commonErrorMessage='' />
+      </BulkTextarea>,
+    );
+
+    const inputField = getByRole('textbox');
+
+    await userEvent.type(inputField, 'O');
+    expect(handleImmediatelyChange).toHaveBeenLastCalledWith(['O'], 'O');
   });
 });

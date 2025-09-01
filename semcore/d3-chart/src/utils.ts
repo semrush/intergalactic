@@ -170,6 +170,7 @@ export const getIndexFromData = <
 
     return key;
   } else {
+    // eslint-disable-next-line no-console
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
   }

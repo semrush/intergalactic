@@ -141,7 +141,8 @@ SControl:focus-visible+SCheckbox[state='invalid']:before {
     outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
-SControl[disabled]~SCheckbox:before {
+SControl[disabled] ~ SCheckbox:before,
+SControl[disabled] ~ SCheckbox[state='invalid'] > SInvalidPattern {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
 }

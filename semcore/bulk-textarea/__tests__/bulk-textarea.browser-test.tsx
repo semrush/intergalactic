@@ -1056,3 +1056,37 @@ test.describe('lineProcessing cases', () => {
     await expect(paragraphs.nth(2)).toHaveText(/^#3\/3:/);
   });
 });
+
+test.describe('controlled errors', () => {
+  test('Verify error shows on manually errors set', async ({ page }) => {
+    const standPath =
+            'stories/components/bulk-textarea/tests/examples/controlled-errors.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    const locators = getLocators(page);
+
+    const firstTextArea = locators.textarea.first();
+    await firstTextArea.click();
+    const text = 'Zoom in[] \nSecond \n //[third';
+    await page.keyboard.type(text, { delay: 20 });
+
+    const paragraphs = locators.textarea.locator('p');
+    const tooltip = page.locator('div[data-ui-name="Tooltip.Popper"]');
+    const validateButton = page.getByRole('button', { name: 'validate' });
+    await validateButton.click();
+
+    await expect(paragraphs.first()).toHaveAttribute('aria-invalid', 'true');
+    await paragraphs.first().click();
+    await expect(tooltip).toHaveCount(1);
+    await expect(tooltip).toHaveText('some error in row');
+    await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
+
+    await validateButton.click();
+
+    await expect(paragraphs.nth(1)).toHaveAttribute('aria-invalid', 'true');
+    await paragraphs.nth(1).click();
+    await expect(tooltip).toHaveCount(1);
+    await expect(tooltip).toHaveText('some error in row');
+    await expect(locators.errorMessage).toHaveText('Error 1 out of 1');
+  });
+});

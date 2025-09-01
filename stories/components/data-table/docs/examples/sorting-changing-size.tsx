@@ -1,10 +1,14 @@
-import type { DataTableSort } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
+import type { DataTableSort, DataTableProps } from '@semcore/data-table';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
-const Demo = () => {
+export type SortTableProps = {
+  use: DataTableProps<typeof data, any, any>['use'];
+};
+
+const Demo = (props: SortTableProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
@@ -28,6 +32,7 @@ const Demo = () => {
     <DataTable
       data={sortedData}
       sort={sort}
+      use={props.use}
       onSortChange={setSort}
       aria-label='Expanding sortable column'
       columns={[
@@ -74,6 +79,11 @@ const Demo = () => {
     />
   );
 };
+export const defaultTableProps: SortTableProps = {
+  use: 'primary',
+};
+
+Demo.defaultProps = defaultTableProps;
 
 export default Demo;
 

@@ -27,7 +27,8 @@ import ScrollInTableExample from './examples/scroll-in-table';
 import SecondaryTableExample from './examples/secondary-table';
 import SkeletonInTableExample from './examples/skeleton-in-table';
 import SortingExample from './examples/sorting';
-import SortingChangingSizeExample from './examples/sorting-changing-size';
+import SortingChangingSizeExample, { defaultTableProps } from './examples/sorting-changing-size';
+import type { SortTableProps } from './examples/sorting-changing-size';
 import SpinContainerInTableExample from './examples/spin-container-in-table';
 import type { TableInTableProps } from './examples/table-in-table';
 import TableInTableExample, { tableInTableDefaultProps } from './examples/table-in-table';
@@ -161,8 +162,9 @@ export const Sorting: Story = {
   render: SortingExample,
 };
 
-export const SortingChangingSize: Story = {
+export const SortingChangingSize: StoryObj<SortTableProps> = {
   render: SortingChangingSizeExample,
+  args: defaultTableProps,
 };
 
 export const TableInTable: StoryObj<TableInTableProps> = {
