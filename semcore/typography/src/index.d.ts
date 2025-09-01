@@ -52,7 +52,7 @@ export type TextProps = BoxProps & {
   /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
   ellipsis?: true | EllipsisSettings;
   /** Settings for a hint with full text (cropped by ellipsis) */
-  hintProps?: Omit<SimpleHintPopperProps, 'children'>;
+  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>>;
 };
 
 /** @deprecated */
