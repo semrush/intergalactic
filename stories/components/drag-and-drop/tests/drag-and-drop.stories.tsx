@@ -1,6 +1,7 @@
 import DnD from '@semcore/drag-and-drop';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import type { DnDCardProps } from './examples/with-cards-all-props';
 import CardsExample from './examples/with-cards-all-props';
 import TabPanelExample from './examples/with_tabpanel';
 
@@ -16,7 +17,7 @@ export const TabPanel: Story = {
   render: TabPanelExample,
 };
 
-export const Cards: Story = {
+export const Cards: StoryObj<DnDCardProps> = {
   render: CardsExample,
   argTypes: {
     placement: {

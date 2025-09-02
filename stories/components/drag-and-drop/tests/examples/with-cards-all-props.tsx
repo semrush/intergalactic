@@ -150,4 +150,5 @@ const Demo = ({
   );
 };
 
+export type { DnDCardProps };
 export default Demo;
