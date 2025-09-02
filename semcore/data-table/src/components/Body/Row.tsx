@@ -1,16 +1,26 @@
 import { Box, Collapse } from '@semcore/base-components';
+import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import * as React from 'react';
 
-import { Body } from './Body';
+import { INDEX_OFFSET } from './Body';
+import { Cell } from './Cell';
+import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { DataTableRowProps, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, IS_EMPTY_DATA_ROW, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DTValue } from '../DataTable/DataTable.types';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
-class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {}, {}, [], RowPropsInner<UniqKeyType>> {
+type State = {
+  expandedForAnimation: boolean;
+};
+
+class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 
@@ -19,6 +29,16 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
   };
 
   private cellIndex = -1;
+
+  state: State = {
+    expandedForAnimation: false,
+  };
+
+  constructor(props: DataTableRowProps<Data, UniqKeyType>) {
+    super(props);
+
+    this.handleClickRow = this.handleClickRow.bind(this);
+  }
 
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
     return (
@@ -47,12 +67,225 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     }
   };
 
+  handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
+    const { accordionDuration, accordionMode, expandedRows, onExpandRow, setRowHeight, rowsHeightMap } = this.asProps;
+    const openDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[0]
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
+    const closeDuration = Array.isArray(accordionDuration)
+      ? accordionDuration[1]
+      : accordionDuration ??
+        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
+
+    setTimeout(() => {
+      setRowHeight(index, row);
+      for (let i = index; i < rowsHeightMap.size; i++) {
+        setRowHeight(i, row);
+      }
+    }, openDuration + 100); // we need to calculate after expanding animation
+
+    if (expandedRows.has(row[UNIQ_ROW_KEY])) {
+      this.closeAccordion(row, closeDuration);
+    } else {
+      if (accordionMode === 'toggle' && expandedRows.size > 0) {
+        // const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
+        // if (previousRows.length > 0) {
+        //   previousRows.forEach((previousRow) => {
+        if (!this.state.expandedForAnimation) {
+          setTimeout(() => {
+            this.closeAccordion(row, closeDuration);
+          }, openDuration / 3);
+        }
+        //   });
+        // }
+      }
+      onExpandRow(row);
+    }
+    this.forceUpdate();
+  };
+
+  closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
+    const { onExpandRow } = this.asProps;
+
+    this.setState({
+      expandedForAnimation: true,
+    });
+    setTimeout(() => {
+      onExpandRow(row);
+
+      this.setState({
+        expandedForAnimation: false,
+      });
+    }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
+  };
+
+  handleClickRow(e: React.SyntheticEvent) {
+    const ariaIndex = Number(e.currentTarget.getAttribute('aria-rowindex'));
+    if (Number.isNaN(ariaIndex) || ariaIndex < INDEX_OFFSET) return;
+
+    const index = ariaIndex - INDEX_OFFSET;
+    const row = this.asProps.flatRows[index];
+
+    if (!isInteractiveElement(e.target)) {
+      this.handleExpandRow(row, index);
+    }
+  }
+
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
+    if (!isInteractiveElement(e.target)) {
+      this.handleExpandRow(opt.row, opt.rowIndex);
+    }
+  };
+
+  getCellProps(props: DataTableCellProps<UniqKeyType>) {
+    const {
+      use,
+      renderCell,
+      expandedRows,
+      styles,
+      getI18nText,
+      virtualScroll,
+      tableRef,
+      flatRows,
+      accordionDuration,
+      onCellClick,
+      rawData,
+      shadowVertical,
+    } = this.asProps;
+    const SAccordionToggle = ButtonLink;
+
+    let dataKey = props.column.name;
+    const cellValue = props.row[dataKey];
+
+    let value: DTValue | undefined = undefined;
+    const isMergedRows = cellValue instanceof MergedRowsCell;
+    const isMergedColumns = cellValue instanceof MergedColumnsCell;
+
+    if (isMergedColumns || isMergedRows) {
+      value = cellValue.value;
+      if (isMergedColumns) {
+        dataKey = cellValue.dataKey;
+      }
+    } else {
+      value = cellValue;
+    }
+
+    const defaultRender = () => {
+      return React.isValidElement(value) ? value : value?.toString();
+    };
+
+    const extraProps: Record<string, any> = {
+      use,
+      virtualScroll: Boolean(virtualScroll),
+      tableRef,
+      children: props?.children ?? defaultRender(),
+      accordionDuration,
+      onClick: onCellClick,
+      flatRows: this.asProps.flatRows,
+      shadowVertical,
+    };
+
+    if (renderCell) {
+      let rowRawData = rawData[props.rowIndex];
+
+      if (props.accordionRowIndex && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
+        rowRawData = rowRawData[ACCORDION][props.accordionRowIndex];
+      }
+
+      const external = renderCell({
+        columnName: props.column.name,
+        row: props.row,
+        column: props.column,
+        rowIndex: props.rowIndex,
+        columnIndex: props.columnIndex,
+        dataKey,
+        defaultRender,
+        value: React.isValidElement(value) ? value : value?.toString() ?? '',
+        isMergedRows,
+        isMergedColumns,
+        rawData: rowRawData,
+      });
+
+      if (this.isReactNode(external) || Array.isArray(external)) {
+        extraProps.children = external;
+      } else {
+        for (const key in external) {
+          if (key === 'onClick') {
+            extraProps[key] = callAllEventHandlers(external[key], extraProps[key]);
+          } else {
+            extraProps[key] = external[key];
+          }
+        }
+      }
+    }
+
+    if (
+      (props.columnIndex === 0 && props.row[ACCORDION]) ||
+      value?.[ACCORDION] ||
+      (cellValue instanceof MergedRowsCell && cellValue.accordion)
+    ) {
+      let expanded =
+              expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
+              !this.state.expandedForAnimation;
+
+      if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
+        const mergedKeysSet = props.row[ROW_GROUP];
+
+        expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
+      }
+
+      extraProps.expanded = expanded;
+
+      let row = props.row;
+      let rowIndex = props.rowIndex;
+
+      if (cellValue instanceof MergedRowsCell && cellValue.accordion) {
+        row = flatRows[props.rowIndex + cellValue.rowsCount - 1];
+        rowIndex = props.rowIndex + cellValue.rowsCount - 1;
+      }
+
+      const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        onCellClick(e, { colIndex: props.columnIndex, rowIndex, row });
+        this.handleExpandRow(row, rowIndex);
+      };
+
+      if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
+        extraProps.onClick = callAllEventHandlers(
+          extraProps.onClick,
+          this.handleClickCell,
+        );
+      }
+
+      extraProps.children = sstyled(styles)(
+        <>
+          <SAccordionToggle
+            aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
+            // @ts-ignore
+            expanded={expanded}
+            onClick={handleClick}
+            color='--intergalactic-icon-primary-neutral'
+            aria-expanded={expanded}
+            aria-describedby={props.id}
+            aria-controls={expanded ? props.accordionId : undefined}
+          >
+            <SAccordionToggle.Addon tag={ChevronRightM} />
+          </SAccordionToggle>
+          {extraProps.children}
+        </>,
+      );
+    }
+
+    return extraProps;
+  }
+
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SAccordionRows = Box;
-    const SCell = Body.Cell;
-    const SCheckboxCell = Body.Cell;
+    const SCell = Row.Cell;
+    const SCheckboxCell = Row.Cell;
     const {
       columns,
       row,
@@ -61,11 +294,10 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       rowIndex,
       ariaRowIndex,
       gridRowIndex,
-      expanded,
       accordionDataGridArea,
       'aria-level': ariaLevel = 1,
-      scrollAreaRef,
       selectedRows,
+      expandedRows,
       uid,
       getFixedStyle,
       mergedRow,
@@ -74,6 +306,8 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       accordionRowIndex,
       accordionDuration,
     } = this.asProps;
+
+    const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
 
     let accordion = row[ACCORDION];
     const accordionType = accordion && !mergedRow ? 'row' : undefined;
@@ -103,6 +337,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
           accordionType={accordionType}
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
+          onClick={this.handleClickRow}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
@@ -148,7 +383,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
             }
 
             return (
-              <Body.Cell
+              <Row.Cell
                 key={index}
                 id={`${uid}_${ariaRowIndex}_${index}`}
                 accordionId={accordionId}
@@ -228,7 +463,21 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       </>,
     );
   }
+
+  private isReactNode(obj: React.ReactNode | Record<string, any>): obj is React.ReactNode {
+    return (
+      typeof obj === 'string' ||
+      typeof obj === 'number' ||
+      React.isValidElement(obj) ||
+      typeof obj === 'boolean' ||
+      obj === undefined ||
+      obj === null
+    );
+  }
 }
 
-// @ts-ignore
-export const Row = createComponent(RowRoot, {}, { parent: Body });
+export const Row = createComponent(RowRoot, {
+  Cell,
+}) as DataTableRowType & {
+  Cell: DataTableCellType;
+};

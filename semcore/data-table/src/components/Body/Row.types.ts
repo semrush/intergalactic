@@ -1,6 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
+import type * as React from 'react';
 
-import type { DataTableCellProps } from './Cell.types';
+import type { CellRenderProps } from './Body.types';
+import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type {
   ACCORDION,
@@ -10,7 +12,14 @@ import type {
   ROW_INDEX,
   UNIQ_ROW_KEY,
 } from '../DataTable/DataTable';
-import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
+import type {
+  DTValue,
+  DTUse,
+  DataTableData,
+  VirtualScroll,
+  DataRowItem,
+  DataTableProps,
+} from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 export type DTRow<UniqKeyType> = {
@@ -24,7 +33,7 @@ export type DTRow<UniqKeyType> = {
 };
 export type DTRows<UniqKeyType> = Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
 
-export type DataTableRowProps<UniqKeyType> = {
+export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   row: DTRow<UniqKeyType>;
   mergedRow?: boolean;
 
@@ -34,14 +43,8 @@ export type DataTableRowProps<UniqKeyType> = {
   isNonInteractive?: boolean;
 };
 
-export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
+export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {
   use: DTUse;
-  /**
-   * Expanded flag for rows with accordion
-   * @default false
-   */
-  expanded?: boolean;
-
   /**
    * Flag to show is row in a merged list or not.
    */
@@ -50,11 +53,11 @@ export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
   columns: DTColumn[];
   row: DTRow<UniqKeyType> | DTRow<UniqKeyType>[];
   rows: DTRows<UniqKeyType>;
+  flatRows: DTRow<UniqKeyType>[];
   rowIndex: number; // from 0
   ariaRowIndex: number; // from 1 + 1 header
   gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header
 
-  expandedRows: Set<UniqKeyType>;
   onExpandRow: (expandedRow: DTRow<UniqKeyType>) => void;
 
   gridTemplateAreas: string[];
@@ -80,9 +83,21 @@ export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
+
+  renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
+  getI18nText: (key: string) => string;
+  virtualScroll?: VirtualScroll;
+  tableRef: React.RefObject<HTMLDivElement>;
+  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  rawData: DataRowItem[];
+  shadowVertical?: '' | 'end' | 'start' | 'median';
+  expandedRows: Set<UniqKeyType>;
+  accordionMode?: DataTableProps<any, any, any>['accordionMode'];
+  rowsHeightMap: Map<number, [number, number, HTMLElement]>;
+  setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
 };
 
-export type DataTableRowType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<UniqKeyType>>
+export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<Data, UniqKeyType>>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps<any>>;
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps<any, any>>;

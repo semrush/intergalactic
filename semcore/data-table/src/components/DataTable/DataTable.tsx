@@ -101,6 +101,13 @@ class DataTableRoot<
   private tmpData: Data;
   private calculatedRows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   private flatRows: DTRow<UniqKeyType>[];
+  private gridSettings: {
+    gridTemplateColumns: string[];
+    gridTemplateAreas: string[];
+  } = {
+    gridTemplateColumns: [],
+    gridTemplateAreas: [],
+  };
 
   private selectAllMessageTimer = 0;
 
@@ -212,18 +219,6 @@ class DataTableRoot<
     }, 0);
 
     return rows + expandedRowsCount;
-  }
-
-  get gridSettings() {
-    const columns = this.columns;
-
-    const gridTemplateColumns = columns.map((c) => c.gtcWidth);
-    const gridTemplateAreas = columns.map((c) => c.name);
-
-    return {
-      gridTemplateColumns,
-      gridTemplateAreas,
-    };
   }
 
   get scrollDirection() {
@@ -477,11 +472,11 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      this.handlers.expandedRows(new Set([...expandedRows]));
+      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
-      this.handlers.expandedRows(new Set([...expandedRows]));
+      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
@@ -1247,6 +1242,14 @@ class DataTableRoot<
         groupIndex++;
       }
     });
+
+    const gridTemplateColumns = calculatedColumns.map((c) => c.gtcWidth);
+    const gridTemplateAreas = calculatedColumns.map((c) => c.name);
+
+    this.gridSettings = {
+      gridTemplateColumns,
+      gridTemplateAreas,
+    };
 
     return [calculatedColumns, treeColumns];
   }
