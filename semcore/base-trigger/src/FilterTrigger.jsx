@@ -59,7 +59,11 @@ class RootFilterTrigger extends Component {
     role: 'group',
   });
 
-  handleStopPropagation = (e) => e.stopPropagation();
+  handleStopPropagation = (e) => {
+    if (e.key === 'Escape') return;
+
+    e.stopPropagation();
+  };
 
   handleClear = () => {
     requestAnimationFrame(() => {
