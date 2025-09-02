@@ -8,7 +8,7 @@ import React from 'react';
 
 figma.connect(
   InputNumber.Value,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252&t=HtVigJYDbVC6HcLX-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52716-799&t=atOv2tCpAVZguKAs-11',
   {
     props: {
       value: figma.textContent('↳ text'),
