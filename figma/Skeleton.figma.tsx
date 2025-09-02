@@ -12,6 +12,8 @@ import Skeleton, {
 } from '@semcore/skeleton';
 import React from 'react';
 
+// Skeleton bone
+
 figma.connect(
   Skeleton,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147009&t=atOv2tCpAVZguKAs-11',
@@ -25,6 +27,8 @@ figma.connect(
     example: ({ theme }) => <Skeleton theme={theme} />,
   },
 );
+
+// Different skeleton shapes which are not components in the code
 
 figma.connect(
   Skeleton,
@@ -40,11 +44,73 @@ figma.connect(
   Skeleton,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
   {
-    variant: { 'chart type': 'mini chart', 'shape': 'true' },
+    variant: { 'chart type': 'mini chart', 'shape': 'false' },
 
     example: () => <Skeleton>{/* svg path */}</Skeleton>,
   },
 );
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'quadrant chart', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'chord chart', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'polar radar chart', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'radar chart', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'sankey chart', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+figma.connect(
+  Skeleton,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  {
+    variant: { 'chart type': 'tag cloud', 'shape': 'false' },
+
+    example: () => <Skeleton>{/* svg path */}</Skeleton>,
+  },
+);
+
+// Skeleton for hiding text
 
 figma.connect(
   Skeleton.Text,
@@ -61,6 +127,8 @@ figma.connect(
     example: ({ theme }) => <Skeleton theme={theme.theme}><Skeleton.Text amount={3} /></Skeleton>,
   },
 );
+
+// Chart skeletons
 
 figma.connect(
   LineChartSkeleton,
