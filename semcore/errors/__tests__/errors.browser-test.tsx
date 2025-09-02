@@ -21,18 +21,31 @@ test.describe('Visual', () => {
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError');
   });
 
+  test('Veriry error templates when screen width is 648px', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setViewportSize({ width: 648, height: 2700 });
+    await page.setContent(htmlContent);
+
+    await expectScreenshotOf(page, page.locator('[data-ui-name="AccessDenied"]'), 'AccessDenied648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(0), 'Maintenance648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(1), 'PageNotFound648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(2), 'ProjectNotFound648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError648px');
+  });
+
   test('Veriry custom error states', async ({ page }) => {
     const standPath = 'stories/patterns/ux-patterns/global-errors/tests/examples/custom-error-cases.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setViewportSize({ width: 1280, height: 2500 });
     await page.setContent(htmlContent);
 
-    await expectScreenshotOf(page, page.locator('[data-testid="title-description"]'), 'title-description');
-    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-controls"]'), 'icon-title-controls');
-    await expectScreenshotOf(page, page.locator('[data-testid="description-controls"]'), 'description-controls');
-    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description"]'), 'icon-title-description');
-    await expectScreenshotOf(page, page.locator('[data-testid="title-description-controls"]'), 'title-description-controls');
-    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description-controls"]'), 'icon-title-description-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="title-description"]'), 'Custom-title-description');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-controls"]'), 'Custom-icon-title-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="description-controls"]'), 'Custom-description-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description"]'), 'Custom-icon-title-description');
+    await expectScreenshotOf(page, page.locator('[data-testid="title-description-controls"]'), 'Custom-title-description-controls');
+    await expectScreenshotOf(page, page.locator('[data-testid="icon-title-description-controls"]'), 'Custom-icon-title-description-controls');
   });
 });
 
@@ -71,9 +84,8 @@ test.describe('Functional', () => {
 
         if (/^h[1-6]$/.test(item.titleTag)) {
           const level = Number(item.titleTag[1]);
-          await expect(block.getByRole('heading', { level })).toHaveText(
-            await title.textContent(),
-          );
+          const text = (await title.textContent()) ?? '';
+          await expect(block.getByRole('heading', { level })).toHaveText(text);
         } else if (item.titleTag === 'p') {
           expect(tagName).toBe('p');
           const role = await title.getAttribute('role');
