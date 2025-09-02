@@ -13,7 +13,6 @@ type DnDCardProps = {
   zoneName?: string;
   draggableCount?: number;
   dropZoneCount?: number;
-  customFocus?: string;
   noDrop?: boolean;
   isCustomFocus?: boolean;
 };
@@ -69,7 +68,6 @@ const Demo = ({
   zoneName,
   draggableCount = 2,
   dropZoneCount = 2,
-  customFocus,
   isCustomFocus,
   noDrop,
 }: DnDCardProps) => {
@@ -97,7 +95,7 @@ const Demo = ({
   );
 
   return (
-    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label='Draggable charts' customFocus={customFocus} mt={6} ml={6}>
+    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label='Draggable charts' mt={6} ml={6}>
       {items.map((item, index) => {
         if (!item) {
           return (

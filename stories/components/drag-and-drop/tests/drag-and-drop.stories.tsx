@@ -26,7 +26,6 @@ export const Cards: Story = {
     zoneName: { control: 'text' },
     draggableCount: { control: { type: 'number', min: 0, max: 10 } },
     dropZoneCount: { control: { type: 'number', min: 0, max: 10 } },
-    customFocus: { control: 'text' },
     isCustomFocus: { control: 'boolean' },
     noDrop: { control: 'boolean' },
   },
