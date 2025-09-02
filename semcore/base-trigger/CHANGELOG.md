@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - The Close `Hint` not closed by pressing `ESC` in `FilterTrigger.ClearButton`.
 
+### Added
+
+- `aria-label` property to `FilterTrigger.ClearButton` to change hint text.
+
 ## [16.3.1] - 2025-08-29
 
 ### Changed

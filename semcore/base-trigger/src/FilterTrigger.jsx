@@ -201,7 +201,14 @@ class ClearButton extends Component {
 
   render() {
     const SFilterTrigger = Root;
-    const { styles, empty, size, disabled, getI18nText } = this.asProps;
+    const {
+      styles,
+      empty,
+      size,
+      disabled,
+      getI18nText,
+      'aria-label': ariaLabel,
+    } = this.asProps;
 
     if (empty) return null;
 
@@ -214,12 +221,12 @@ class ClearButton extends Component {
             empty={empty}
             selected
             disabled={disabled}
-            aria-label={getI18nText('clear')}
+            aria-label={ariaLabel ?? getI18nText('clear')}
           >
             <FilterTrigger.Addon tag={Close} />
           </SFilterTrigger>
         </Hint.Trigger>
-        <Hint.Popper>{getI18nText('clear')}</Hint.Popper>
+        <Hint.Popper>{ariaLabel ?? getI18nText('clear')}</Hint.Popper>
       </Hint>,
     );
   }
