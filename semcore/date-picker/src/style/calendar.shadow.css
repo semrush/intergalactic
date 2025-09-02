@@ -240,8 +240,7 @@ SCalendar:focus {
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    @mixin focus-outline-mixin;
-    outline-offset: 4px;
+    @mixin focus-outline-mixin 4px;
     border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }

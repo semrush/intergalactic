@@ -56,8 +56,7 @@ SDropdownMenuNesting[size='m'] {
 
 SDropdownMenuNesting[highlighted] {
   z-index: 1;
-  @mixin focus-outline-mixin;
-  outline-offset: -2px;
+  @mixin focus-outline-mixin -2px;
 }
 
 SDropdownNestingItem[size='l'],

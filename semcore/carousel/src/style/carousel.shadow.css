@@ -22,8 +22,7 @@ SModalBox {
     position: absolute;
     inset: 0;
     content: '';
-    @mixin focus-outline-mixin;
-    outline-offset: -2px;
+    @mixin focus-outline-mixin -2px;
   }
 }
 
