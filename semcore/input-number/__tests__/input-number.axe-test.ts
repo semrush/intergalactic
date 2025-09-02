@@ -3,7 +3,7 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 
 test.describe('Input number', () => {
   test('Basic', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/basic_example.tsx';
+    const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
