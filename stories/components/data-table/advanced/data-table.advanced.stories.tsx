@@ -79,6 +79,10 @@ export const FixedColumnsWidthWithShadows: Story = {
   render: FixedColumnsWidthWithShadowsExample,
 };
 
-export const TablePerf: Story = {
+export const TablePerf: StoryObj<{ loading: boolean }> = {
   render: TablePerfExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: accordionMergedProps,
 };

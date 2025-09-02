@@ -442,6 +442,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
               return (
                 <Row
                   key={i}
+                  // @ts-ignore
                   row={subrow}
                   columns={columns}
                   rows={row[ACCORDION]}

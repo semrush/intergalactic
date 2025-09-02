@@ -1,7 +1,7 @@
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import CopyM from '@semcore/ui/icon/Copy/m';
-import Tooltip from '@semcore/ui/tooltip';
+import Ellipsis from '@semcore/ellipsis';
+import { Box, Flex } from '@semcore/flex-box';
+import CopyM from '@semcore/icon/Copy/m';
+import Tooltip from '@semcore/tooltip';
 import React from 'react';
 import {
   type FC,
@@ -82,15 +82,15 @@ const Copy: FC<CopyProps> = ({ value, trim = 'none', handle = true }) => {
   );
 };
 
-const CopyCell = ({ value }) => <Copy value={value} trim='middle' />;
+const CopyCell = ({ value }: any) => <Copy value={value} trim='middle' />;
 
-const StatusCell = ({ value }) => <PaymentStatus status={value} />;
+const StatusCell = ({ value }: any) => <PaymentStatus status={value} />;
 
-const OperationType = ({ value }) => (
+const OperationType = ({ value }: any) => (
   <PaymentOperationType operationType={value} />
 );
 
-const Money = ({ value, row }) => {
+const Money = ({ value, row }: any) => {
   const currency = row.currency as string | undefined;
 
   return (
@@ -102,15 +102,15 @@ const Money = ({ value, row }) => {
   );
 };
 
-const Currency = ({ value }) => value.toUpperCase();
+const Currency = ({ value }: any) => value.toUpperCase();
 
-const DateCell = ({ value }) => {
+const DateCell = ({ value }: any) => {
   return (
     <FormattedDate value={value} month='short' year='numeric' day='numeric' />
   );
 };
 
-const TimeCell = ({ value }) => {
+const TimeCell = ({ value }: any) => {
   return <FormattedTime value={value} />;
 };
 

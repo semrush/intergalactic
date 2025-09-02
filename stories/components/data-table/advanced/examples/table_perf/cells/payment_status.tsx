@@ -1,12 +1,12 @@
-import { Box } from '@semcore/ui/flex-box';
-import type { TagProps } from '@semcore/ui/tag';
-import Tag from '@semcore/ui/tag';
+import { Box } from '@semcore/flex-box';
+import type { TagProps } from '@semcore/tag';
+import Tag from '@semcore/tag';
 import React from 'react';
 import type { FC } from 'react';
 import { defineMessage, useIntl } from 'react-intl';
 
 type PaymentStatusProps = {
-  status: string;
+  status: 'success' | 'failed';
   short?: boolean;
   testIdPrefix?: string;
 } & Omit<TagProps, 'color'>;

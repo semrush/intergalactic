@@ -218,6 +218,7 @@ const Demo = (props: AccordionInTableProps) => {
             };
           }
 
+          // @ts-ignore
           const Component = componentsMap[props.columnName];
           if (Component) {
             return {
@@ -709,16 +710,7 @@ const data: DataTableData = [
     currency: 'usd',
     amount_base: '130.00',
     amount_tax: '19.50',
-    tax_details: {
-      federal_tax_percent: '15.00',
-      federal_tax_amount: '19.50',
-      federal_tax_included: true,
-      federal_tax_applicable: true,
-      regional_tax_percent: '0.00',
-      regional_tax_amount: '0.00',
-      regional_tax_included: false,
-      regional_tax_applicable: true,
-    },
+
     payment_description: 'Whatever',
     payment_status: 'success',
     card_digits: '4242',
