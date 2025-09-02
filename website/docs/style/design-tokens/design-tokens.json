@@ -4113,14 +4113,9 @@
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
     "components": [
-      "bulk-textarea",
-      "checkbox",
       "data-table",
       "drag-and-drop",
-      "feature-highlight",
-      "inline-input",
-      "radio",
-      "textarea"
+      "feature-highlight"
     ]
   },
   {
