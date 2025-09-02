@@ -4227,7 +4227,7 @@
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.300}, {blue.300})",
     "computedValue": "linear-gradient(90deg, #c695ff, #2bb3ff)",
-    "description": "Border for highlighted controls.",
+    "description": "Primary border for highlighted controls.",
     "components": [
       "feature-highlight"
     ]
@@ -4237,10 +4237,18 @@
     "type": "color",
     "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
     "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
-    "description": "Border for the active state of highlighted controls.",
+    "description": "Primary border for the active state of highlighted controls.",
     "components": [
       "feature-highlight"
     ]
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight-secondary",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.200}, {blue.200})",
+    "computedValue": "linear-gradient(90deg, #dcb8ff, #8ecdff)",
+    "description": "Secondary border for highlighted controls.",
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight",
@@ -4271,6 +4279,46 @@
     "components": [
       "feature-highlight"
     ]
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
+    "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
+    "description": "Background of the highlighted secondary control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-hover",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.100}, {blue.100}) / lighten(0.3) / hsl",
+    "computedValue": "linear-gradient(90deg, #f2e4ff, #d6edfe)",
+    "description": "Hover state of the highlighted secondary control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.100}, {blue.100})",
+    "computedValue": "linear-gradient(90deg, #edd9ff, #c4e5fe)",
+    "description": "Active (selected) state of the highlighted secondary control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
+    "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
+    "description": "Text for highlighted features.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight-hover-active",
+    "type": "color",
+    "rawValue": "linear-gradient(90deg, {violet.700}, {blue.700})",
+    "computedValue": "linear-gradient(90deg, #421983, #002b5f)",
+    "description": "Text for hover and active states of highlighted features.",
+    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-feature-highlight",
