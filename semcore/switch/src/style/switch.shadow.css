@@ -101,13 +101,7 @@ SToggle[checked][theme='custom'] {
 }
 
 SToggle:has(SInput:focus-visible) {
-  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
-  transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-    outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-    outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  @mixin focus-outline-mixin;
 }
 
 SToggle[neighborLocation='left'] {

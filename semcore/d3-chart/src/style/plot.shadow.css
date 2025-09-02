@@ -14,9 +14,6 @@ foreignObject[data-aria-only] {
 }
 
 SPlot[keyboardFocused] {
-  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
+  @mixin focus-outline-mixin;
   border-radius: var(--intergalactic-surface-rounded, 6px);
 }

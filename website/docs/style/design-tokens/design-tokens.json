@@ -2165,24 +2165,7 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Color for default keyboard focus outline styles.",
-    "components": [
-      "base-components",
-      "bulk-textarea",
-      "carousel",
-      "checkbox",
-      "d3-chart",
-      "date-picker",
-      "dropdown",
-      "dropdown-menu",
-      "format-text",
-      "inline-input",
-      "input",
-      "radio",
-      "slider",
-      "switch",
-      "textarea",
-      "typography"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
@@ -4130,24 +4113,14 @@
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
     "components": [
-      "base-components",
       "bulk-textarea",
-      "carousel",
       "checkbox",
       "data-table",
-      "date-picker",
       "drag-and-drop",
-      "dropdown",
-      "dropdown-menu",
       "feature-highlight",
-      "format-text",
       "inline-input",
-      "input",
       "radio",
-      "slider",
-      "switch",
-      "textarea",
-      "typography"
+      "textarea"
     ]
   },
   {

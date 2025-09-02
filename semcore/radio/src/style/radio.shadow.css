@@ -116,13 +116,7 @@ SControl:checked~SValue[size='l']::after {
 
 SControl:focus-visible+SValue[state='normal']::before {
   border-color: var(--intergalactic-border-info-active, #006dca);
-  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
-  transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-    outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-    outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  @mixin focus-outline-mixin;
 }
 
 SControl:checked~SValue::before,
