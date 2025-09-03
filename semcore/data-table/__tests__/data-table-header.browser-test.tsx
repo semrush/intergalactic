@@ -448,6 +448,24 @@ test.describe('One level header - Sorting', () => {
     }
   });
 
+  test('Verify sorting with changing size for secondary style', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { use: 'secondary' });
+    await page.setContent(htmlContent);
+
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+    }
+
+    {
+      await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
+      await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot(); // verify sort icon move text content
+    }
+  });
+
   test('Verify sorting not activates interactive when interactive element in cell with sorting', async ({ page }) => {
     const standPath = 'stories/components/data-table/tests/examples/header-tests/sorting-with-interactive.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

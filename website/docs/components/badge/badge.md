@@ -4,47 +4,7 @@ fileSource: badge
 tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code'), Changelog('badge-changelog')
 ---
 
-::: react-view
-
-<script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Badge from '@semcore/ui/badge';
-
-const Preview = (preview) => {
-  const { select, radio, text } = preview('Badge');
-
-  const color = select({
-    key: 'color',
-    defaultValue: 'text-primary-invert',
-    label: 'Color',
-    options: ['text-primary-invert', 'text-primary'],
-  });
-
-  const bg = select({
-    key: 'bg',
-    defaultValue: 'gray-400',
-    label: 'Background',
-    options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'violet-400', 'white'],
-  });
-
-  const child = text({
-    key: 'children',
-    defaultValue: 'soon',
-    label: 'Text',
-  });
-
-  return (
-    <Badge bg={bg} color={color}>
-      {child}
-    </Badge>
-  );
-};
-
-const App = PlaygroundGeneration(Preview);
-</script>
-
-:::
+<Playground for="Badge" />
 
 ## Description
 

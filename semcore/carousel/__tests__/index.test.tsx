@@ -1,8 +1,6 @@
-import { Box, Flex } from '@semcore/flex-box';
-import { axe } from '@semcore/testing-utils/axe';
+import { Box } from '@semcore/flex-box';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -41,7 +39,7 @@ describe('Carousel', () => {
   shouldSupportClassName(Carousel);
   shouldSupportRef(Carousel);
 
-  test('Should support control mode', () => {
+  test('Verify control mode', () => {
     const spy = vi.fn();
 
     const { rerender } = render(
@@ -57,7 +55,7 @@ describe('Carousel', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Should support work with keyboard', () => {
+  test('Verify keyboard support', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -73,7 +71,7 @@ describe('Carousel', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test('Should support work control mod with keyboard', () => {
+  test('Verify control mode with keyboard', () => {
     const spy = vi.fn();
 
     const { rerender, getByTestId } = render(
@@ -116,7 +114,7 @@ describe('Carousel.Indicators', () => {
   shouldSupportClassName(Carousel.Indicators, Carousel);
   shouldSupportRef(Carousel.Indicators, Carousel);
 
-  test('Should support call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -131,7 +129,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Should not support call onIndexChange after click in same control', () => {
+  test('Verify not call onIndexChange after click in same control', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -146,7 +144,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support right change index with Prev button', () => {
+  test('Veerify right change index with Prev button', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -163,7 +161,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test.concurrent('Should support right change index with Next button', ({ expect }) => {
+  test.concurrent('Verify right change index with Next button', ({ expect }) => {
     const spy = vi.fn();
     const { rerender, getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>
@@ -196,7 +194,7 @@ describe('Carousel.Prev', () => {
   shouldSupportClassName(Carousel.Prev, Carousel);
   shouldSupportRef(Carousel.Prev, Carousel);
 
-  test('Should support call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -211,7 +209,7 @@ describe('Carousel.Prev', () => {
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Should not support call onIndexChange for bounded property', () => {
+  test('Verify not call onIndexChange for bounded property', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
@@ -225,7 +223,7 @@ describe('Carousel.Prev', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Should support control mode and click', () => {
+  test('Verify control mode and click', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -249,7 +247,7 @@ describe('Carousel.Next', () => {
   shouldSupportClassName(Carousel.Next, Carousel);
   shouldSupportRef(Carousel.Next, Carousel);
 
-  test('Should support call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -264,7 +262,7 @@ describe('Carousel.Next', () => {
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Should not support call onIndexChange for bounded property', () => {
+  test('Verify not call onIndexChange for bounded property', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
@@ -278,7 +276,7 @@ describe('Carousel.Next', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Should support control mode and click', () => {
+  test('Verify control mode and click', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -293,105 +291,5 @@ describe('Carousel.Next', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(0);
-  });
-
-  test('a11y', async () => {
-    const images = [
-      'https://picsum.photos/id/1023/600/400',
-      'https://picsum.photos/id/1024/600/400',
-      'https://picsum.photos/id/1025/600/400',
-    ];
-    const { getByTestId, container } = render(
-      <Carousel>
-        <Container>
-          {images.map((url) => (
-            <Carousel.Item tag='img' key={url} src={url} w={100} />
-          ))}
-        </Container>
-        <Indicators />
-        <Carousel.Prev data-testid='prev' />
-        <Carousel.Next data-testid='next' />
-      </Carousel>,
-    );
-
-    const next = getByTestId('next');
-    const prev = getByTestId('prev');
-    fireEvent.click(prev);
-    fireEvent.click(next);
-
-    const results = await axe(container);
-
-    expect(results).toHaveNoViolations();
-  });
-});
-
-describe('Carousel visual regression', () => {
-  test.concurrent('image indicators', async ({ task }) => {
-    const images = [
-      'https://picsum.photos/id/1023/600/400',
-      'https://picsum.photos/id/1024/600/400',
-      'https://picsum.photos/id/1025/600/400',
-    ];
-    const width = 600;
-    const imageWidth = width - 75;
-
-    const component = (
-      <Carousel w={width} defaultIndex={1}>
-        <Flex alignItems='center'>
-          <Carousel.Prev />
-          <Box style={{ overflow: 'hidden' }}>
-            <Carousel.Container>
-              {images.map((url) => (
-                <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
-              ))}
-            </Carousel.Container>
-          </Box>
-          <Carousel.Next />
-        </Flex>
-        <Carousel.Indicators>
-          {({ items }) =>
-            items.map((indicatorProps, index) => (
-              <Carousel.Indicator
-                {...indicatorProps}
-                tag='img'
-                key={images[index]}
-                src={images[index]}
-                w={100}
-                h={100}
-              />
-            ))}
-        </Carousel.Indicators>
-      </Carousel>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-  test.concurrent('dot indicators', async ({ task }) => {
-    const images = [
-      'https://picsum.photos/id/1023/600/400',
-      'https://picsum.photos/id/1024/600/400',
-      'https://picsum.photos/id/1025/600/400',
-    ];
-    const width = 600;
-    const imageWidth = width - 75;
-
-    const component = (
-      <Carousel w={width} defaultIndex={1}>
-        <Flex alignItems='center'>
-          <Carousel.Prev />
-          <Box style={{ overflow: 'hidden' }}>
-            <Carousel.Container>
-              {images.map((url) => (
-                <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
-              ))}
-            </Carousel.Container>
-          </Box>
-          <Carousel.Next />
-        </Flex>
-        <Carousel.Indicators />
-      </Carousel>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

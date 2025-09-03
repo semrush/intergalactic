@@ -6,6 +6,10 @@ import { toMarkdown } from 'marked-ast-markdown';
 import type { Changelog, ChangelogChangeLabel } from '../types';
 import { isValidSemver } from '../utils';
 
+function isMajor(version: string): boolean {
+  return /^\d+\.0\.0$/.test(version);
+}
+
 export const releaseChangelogParser = (
   changelogText: string,
   releasePackageName: string,
@@ -69,7 +73,7 @@ export const releaseChangelogParser = (
       handledVersions.set(version, true);
     } else if (token.type === 'heading' && token.level === 3 && traversingVersion !== null) {
       const component = token.text.join();
-      if (component !== 'Global' && !knownComponents.includes(component)) {
+      if (component !== 'Global' && !knownComponents.includes(component) && !isMajor(traversingVersion)) {
         const stringifiedKnownComponentsList = knownComponents
           .map((component) => `"${component}"`)
           .join(', ');
@@ -79,8 +83,6 @@ export const releaseChangelogParser = (
         );
       }
       traversingComponent = component;
-    } else if (token.type === 'heading' && token.level === 4) {
-      // just skip changelogs for major
     } else if (
       traversingVersion &&
       traversingDate &&
@@ -94,7 +96,25 @@ export const releaseChangelogParser = (
           );
         }
 
-        if (changelogFilePath.includes('semcore/ui/CHANGELOG.md')) {
+        if (releasePackageName === '@semcore/ui' && isMajor(traversingVersion)) {
+          if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+            changelogs.push({
+              component: traversingComponent,
+              date: traversingDate,
+              version: traversingVersion,
+              changes: [],
+            });
+          }
+
+          changelogs[changelogs.length - 1].changes.push({
+            component: traversingComponent,
+            version: traversingVersion,
+            label: null,
+            description: toMarkdown(item.text as Token[]).trim(),
+            descriptionFormatted: item.text,
+            isAutomatic: false,
+          });
+
           continue;
         }
 
