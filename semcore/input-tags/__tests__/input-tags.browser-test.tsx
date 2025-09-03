@@ -917,7 +917,7 @@ test.describe('Functional tests', () => {
     });
   });
 
-  test('Verify entered text is preserved when paste action happened', async ({ page, context }) => {
+  test('Verify entered text is preserved when paste action happened', async ({ page }) => {
     const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -933,14 +933,12 @@ test.describe('Functional tests', () => {
 
     await page.keyboard.type(typedValue);
     await inputValue.evaluate((el, text) => {
-      const data = new DataTransfer();
-      data.setData('text/plain', text);
-
-      el.dispatchEvent(new ClipboardEvent('paste', {
-        bubbles: true,
-        cancelable: true,
-        clipboardData: data,
-      }));
+      const event = new Event('paste', { bubbles: true, cancelable: true });
+      (event as any).clipboardData = {
+        getData: (type: string) => (type === 'text/plain' ? text : ''),
+        types: ['text/plain'],
+      };
+      el.dispatchEvent(event);
     }, bufferedText);
 
     await expect(tag).toHaveCount(tagCount + 1);
