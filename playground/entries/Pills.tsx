@@ -32,6 +32,12 @@ function getJSX(props: PillsJSXProps) {
 const entry: PlaygroundEntry<PillsJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
+    behavior: {
+      type: 'select',
+      value: 'auto',
+      options: ['auto', 'manual'],
+      displayName: 'Behavior',
+    },
     size: {
       type: 'inline-radio',
       value: 'm',

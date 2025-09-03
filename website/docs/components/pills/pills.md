@@ -47,10 +47,10 @@ The Pills component can work in two modes: manual or automatic tab activation. W
 
 Table: Pills usage behavior
 
-| Behavior | Example of usage             | Description                                                                                        |
-|----------|------------------------------|----------------------------------------------------------------------------------------------------|
-| `auto`   | ![](static/pill-auto.png)    | Pills.Items are automatically activated when they receive focus, just like in the Radio component. |
-| `manual` | ![](static/pills-manual.png) | Pills.Items are activated by pressing **Space** or **Enter**.                                      |
+| Behavior | Example of usage             | Description                                                                                                                   |
+|----------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `auto`   | ![](static/pill-auto.png)    | Pills.Items are automatically activated when they receive focus, just like in the [Radio component](/components/radio/radio). |
+| `manual` | ![](static/pills-manual.png) | Pills.Items are activated by pressing **Space** or **Enter**.                                                                 |
 
 ## Usage cases
 
@@ -68,11 +68,10 @@ This type exists only in design, and the component doesn't cover this case yet.
 
 Table: States for adding new item case in Pills
 
-     | State  | Appearance                       |
------|--------|----------------------------------|----
-     | Normal | ![](static/pills-add-normal.png) |
-     | Hover  | ![](static/pills-add-hover.png)  |
-<!-- | Active | ![](static/pills-add-active.png) | -->
+| State  | Appearance                       |
+|--------|----------------------------------|
+| Normal | ![](static/pills-add-normal.png) |
+| Hover  | ![](static/pills-add-hover.png)  |
 
 ### Pills as summary
 
