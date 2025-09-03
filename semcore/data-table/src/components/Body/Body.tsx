@@ -135,6 +135,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      variant,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -162,6 +163,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       }`
       : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
 
+    const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
+
     return {
       onClick: row[ACCORDION] && !props.mergedRow ? this.handleClickRow(row, index) : undefined,
       ...rowProps?.(row, index),
@@ -186,7 +189,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
-      sideIndents,
+      sideIndents: sideIndentsValue,
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
@@ -207,6 +210,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onCellClick,
       rawData,
       shadowVertical,
+      variant,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -230,6 +234,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       return React.isValidElement(value) ? value : value?.toString();
     };
 
+    let withoutBorder = variant === 'card';
+    if (withoutBorder) {
+      withoutBorder = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : flatRows.length === props.rowIndex + 1;
+    }
+
     const extraProps: Record<string, any> = {
       use,
       virtualScroll: Boolean(virtualScroll),
@@ -237,8 +246,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       children: props?.children ?? defaultRender(),
       accordionDuration,
       onClick: onCellClick,
-      flatRows: this.asProps.flatRows,
+      flatRows,
       shadowVertical,
+      withoutBorder,
     };
 
     if (renderCell) {

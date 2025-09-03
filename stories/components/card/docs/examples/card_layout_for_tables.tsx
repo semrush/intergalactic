@@ -1,5 +1,5 @@
 import Card from '@semcore/card';
-import { DataTable } from '@semcore/data-table';
+import { ACCORDION, DataTable } from '@semcore/data-table';
 import React from 'react';
 
 const Demo = () => (
@@ -8,9 +8,6 @@ const Demo = () => (
       {`
       #card-with-table {
         padding: 0 0 var(--intergalactic-spacing-1x);
-      }
-      #card-with-table div[role="row"]:last-of-type div[role="gridcell"] {
-        border-bottom: none;
       }
     `}
     </style>
@@ -22,7 +19,7 @@ const Demo = () => (
         <DataTable
           data={data}
           aria-label='Table in card'
-          sideIndents='wide'
+          variant='card'
           columns={[
             { name: 'keyword', children: 'Keyword' },
             { name: 'kd', children: 'KD,%' },
@@ -41,12 +38,26 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
+    [ACCORDION]: [
+      {
+        keyword: 'www.ebay.com',
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        keyword: 'www.ebay.com',
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+    ],
   },
   {
     keyword: 'www.ebay.com',
@@ -65,6 +76,32 @@ const data = [
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '11.2',
+    cpc: '$3.4',
+    vol: '65,457,920',
+    [ACCORDION]: [
+      {
+        keyword: 'www.ebay.com',
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        keyword: 'www.ebay.com',
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+    ],
   },
 ];
 

@@ -188,6 +188,10 @@ SCell {
       transform: rotate(90deg);
     }
   }
+
+  &[withoutBorder] {
+    border-bottom: none !important;
+  }
 }
 
 SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCheckboxCell {

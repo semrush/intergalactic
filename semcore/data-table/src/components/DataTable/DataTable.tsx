@@ -77,6 +77,7 @@ class DataTableRoot<
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
+    variant: 'default',
   };
 
   private columns: DTColumn[] = [];
@@ -321,6 +322,7 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
+      variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -361,6 +363,7 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
+      variant,
     };
   }
 

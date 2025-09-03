@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.0] - 2025-09-12
+
+### Added
+
+- `variant` property. Defines visual variant that adapts the table styling to different usage contexts.
+
 ## [16.2.0] - 2025-08-29
 
 ### Added
