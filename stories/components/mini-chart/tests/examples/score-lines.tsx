@@ -1,50 +1,21 @@
 import { Flex, Box } from '@semcore/flex-box';
 import MiniChart from '@semcore/mini-chart';
 import React from 'react';
+type scoreLinesProps = { value: number; loading?: boolean; color?: string; baseBgColor?: string; animate?: boolean; segments?: boolean };
 
-const Demo = () => {
+const Demo = ({
+  value = 4,
+  loading,
+  segments,
+  color,
+  baseBgColor,
+  animate,
+}: scoreLinesProps) => {
   return (
     <Box w='700px'>
-      <Flex flexWrap={true} alignItems='flex-end'>
-        <MiniChart.ScoreLine value={0.5} w='80px' />
-      &nbsp;
-        <MiniChart.ScoreLine value={30} w='80px' />
-        &nbsp;
-        <MiniChart.ScoreLine value={99} w='80px' />
-        &nbsp;
-        <MiniChart.ScoreLine loading={true} value={30} w='80px' />
-        &nbsp;
-        <MiniChart.ScoreLine segments={5} value={2} w='80px' />
-        &nbsp;
-        <MiniChart.ScoreLine segments={5} value={0} w='80px' />
-        &nbsp;
-        <MiniChart.ScoreLine loading={true} segments={5} value={2} w='80px' />
-      </Flex>
-      <br />
-      <MiniChart.ScoreLine w='220px' animate={false}>
-        <MiniChart.ScoreLine.Segment value={20} color='chart-palette-order-3' />
-        <MiniChart.ScoreLine.Segment value={80} color='chart-palette-order-6' />
-        <MiniChart.ScoreLine.Segment value={90} color='chart-palette-order-4' />
-        <MiniChart.ScoreLine.Segment value={50} color='chart-palette-order-2' />
-      </MiniChart.ScoreLine>
-      <br />
-      {new Array(16).fill(null).map((_, index) => {
-        return (
-          <Flex key={index} m='4px'>
-            <MiniChart.ScoreLine value={30} w='80px' color={`chart-palette-order-${index + 2}`} />
-            &nbsp;
-            <MiniChart.ScoreLine
-              segments={3}
-              value={2}
-              w='80px'
-              color={`chart-palette-order-${index + 2}`}
-            />
-            <br />
-          </Flex>
-        );
-      })}
+      <MiniChart.ScoreLine value={value} w='250px' segments={segments} loading={loading} animate={animate} color={color} baseBgColor={baseBgColor} />
     </Box>
   );
 };
-
+export type { scoreLinesProps };
 export default Demo;
