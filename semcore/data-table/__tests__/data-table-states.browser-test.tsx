@@ -105,6 +105,10 @@ test.describe('Loading states', () => {
       expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background2);
       await expect(page).toHaveScreenshot();
     });
+
+    await test.step('Verify bottom border', async () => {
+      await expect(cells.first()).toHaveCSS('border-bottom-style', 'none');
+    });
   });
 
   test('Verify empty table scroll\'s state when column width is defined', async ({ page }) => {

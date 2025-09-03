@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.3.0] - 2025-09-12
 
+### Fixed
+
+- Bottom border for cell with empty data.
+
 ### Added
 
 - `variant` property. Defines visual variant that adapts the table styling to different usage contexts.
