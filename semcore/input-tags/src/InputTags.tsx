@@ -154,6 +154,15 @@ class InputTags extends Component<IInputTagsProps> {
         onAdd?.(tag, event);
       }
       onAppend?.(tagsToBeAdded, event);
+
+      const currentValue = this.inputRef.current?.value;
+      if (currentValue) {
+        setTimeout(() => {
+          if (this.inputRef.current) {
+            this.inputRef.current.value = currentValue;
+          }
+        }, 0);
+      }
     }
     if (typeof this.inputRef.current?.scrollIntoView === 'function') {
       setTimeout(() => {

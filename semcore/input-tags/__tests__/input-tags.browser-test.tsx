@@ -916,4 +916,36 @@ test.describe('Functional tests', () => {
       await expect(inputValue).toHaveAttribute('value', 'Test');
     });
   });
+
+  test('Verify entered text is preserved when paste action happened', async ({ page, context }) => {
+    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+
+    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
+    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+    const bufferedText = 'Buffer';
+    const typedValue = 'Test';
+    const tagCount = await tag.count();
+
+    await inputValue.click();
+
+    await page.keyboard.type(typedValue);
+    await inputValue.evaluate((el, text) => {
+      const data = new DataTransfer();
+      data.setData('text/plain', text);
+
+      el.dispatchEvent(new ClipboardEvent('paste', {
+        bubbles: true,
+        cancelable: true,
+        clipboardData: data,
+      }));
+    }, bufferedText);
+
+    await expect(tag).toHaveCount(tagCount + 1);
+    await expect(inputValue).toHaveValue(typedValue);
+  });
 });
