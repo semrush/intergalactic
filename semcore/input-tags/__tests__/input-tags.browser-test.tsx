@@ -923,8 +923,6 @@ test.describe('Functional tests', () => {
 
     await page.setContent(htmlContent);
 
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-
     const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
     const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
     const bufferedText = 'Buffer';
