@@ -17,6 +17,7 @@
       "data-table",
       "drag-and-drop",
       "dropdown",
+      "feature-highlight",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -385,7 +386,6 @@
       "dropdown",
       "dropdown-menu",
       "errors",
-      "feature-highlight",
       "feature-popover",
       "format-text",
       "fullscreen-modal",
@@ -424,7 +424,6 @@
       "date-picker",
       "dropdown",
       "dropdown-menu",
-      "feature-highlight",
       "flags",
       "format-text",
       "fullscreen-modal",
@@ -695,7 +694,6 @@
       "date-picker",
       "divider",
       "dropdown",
-      "feature-highlight",
       "feedback-form",
       "fullscreen-modal",
       "inline-input",
@@ -1098,8 +1096,7 @@
     "computedValue": "rgba(138, 142, 155, 0.1)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1109,8 +1106,7 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1120,8 +1116,7 @@
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -3477,7 +3472,7 @@
     "type": "color",
     "rawValue": "#B7E4FF",
     "computedValue": "#B7E4FF",
-    "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. ",
+    "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
@@ -4248,7 +4243,9 @@
     "rawValue": "linear-gradient(90deg, {violet.200}, {blue.200})",
     "computedValue": "linear-gradient(90deg, #dcb8ff, #8ecdff)",
     "description": "Secondary border for highlighted controls.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight",
@@ -4286,7 +4283,9 @@
     "rawValue": "linear-gradient(90deg, {violet.50}, {blue.50})",
     "computedValue": "linear-gradient(90deg, #f9f2ff, #e9f7ff)",
     "description": "Background of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-hover",
@@ -4294,7 +4293,9 @@
     "rawValue": "linear-gradient(90deg, {violet.100}, {blue.100}) / lighten(0.3) / hsl",
     "computedValue": "linear-gradient(90deg, #f2e4ff, #d6edfe)",
     "description": "Hover state of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-active",
@@ -4302,7 +4303,9 @@
     "rawValue": "linear-gradient(90deg, {violet.100}, {blue.100})",
     "computedValue": "linear-gradient(90deg, #edd9ff, #c4e5fe)",
     "description": "Active (selected) state of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-text-feature-highlight",
@@ -4310,7 +4313,9 @@
     "rawValue": "linear-gradient(90deg, {violet.500}, {blue.500})",
     "computedValue": "linear-gradient(90deg, #8649e1, #006dca)",
     "description": "Text for highlighted features.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-text-feature-highlight-hover-active",
@@ -4318,7 +4323,9 @@
     "rawValue": "linear-gradient(90deg, {violet.700}, {blue.700})",
     "computedValue": "linear-gradient(90deg, #421983, #002b5f)",
     "description": "Text for hover and active states of highlighted features.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-feature-highlight",
@@ -4336,7 +4343,9 @@
     "rawValue": "#6B3AB4",
     "computedValue": "#6B3AB4",
     "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
