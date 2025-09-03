@@ -2105,7 +2105,7 @@
         "blue-hover-active": {
           "value": "#B7E4FF",
           "type": "color",
-          "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. "
+          "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath."
         },
         "green-normal": {
           "value": "#CFF1EA",
