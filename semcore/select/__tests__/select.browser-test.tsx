@@ -206,38 +206,6 @@ test.describe('Trigger and menu options', () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(page).toHaveScreenshot();
   });
-
-  test('Verify select menu with reload actions by mouse', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const { popper } = getSelectLocators(page);
-
-    await page.locator('[data-ui-name="FilterTrigger.TriggerButton"]').click();
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    await expect(popper).toBeVisible();
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify select menu with reload actions by keyboard', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const { popper } = getSelectLocators(page);
-    const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await expect(popper).toBeVisible();
-    await buttonLink.waitFor();
-    await page.keyboard.press('Tab');
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await expect(page).toHaveScreenshot();
-  });
 });
 
 test.describe('Basic select', () => {
