@@ -3,14 +3,12 @@ import Flex from '@semcore/flex-box';
 import InputNumber from '@semcore/input-number';
 import React from 'react';
 
-// TODO: Update links to actual nodes
-
 // Need somehow to get the readOnly and disabled props from the Input component
 // and pass it to the Input.Value component
 
 figma.connect(
   InputNumber.Value,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-1153&t=CQtTqD9cubPV2oYP-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52716-799&t=Fgs2Jv2CPgCOdctF-11',
   {
     props: {
       value: figma.textContent('↳ text'),

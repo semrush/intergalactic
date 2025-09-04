@@ -2,11 +2,9 @@ import figma from '@figma/code-connect';
 import Counter from '@semcore/counter';
 import React from 'react';
 
-// TODO: Update links to actual nodes
-
 figma.connect(
   Counter,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-55&t=CQtTqD9cubPV2oYP-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10121-56141&t=Fgs2Jv2CPgCOdctF-11',
   {
     props: {
       size: figma.enum('size', {
@@ -24,5 +22,22 @@ figma.connect(
       value: figma.textContent('↳ value'),
     },
     example: ({ size, theme, value }) => <Counter size={size} theme={theme}>{value}</Counter>,
+  },
+);
+
+figma.connect(
+  Counter,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10121-56141&t=Fgs2Jv2CPgCOdctF-11',
+  {
+    variant: { theme: 'custom' },
+    props: {
+      size: figma.enum('size', {
+        M: 'm',
+        L: 'l',
+        XL: 'xl',
+      }),
+      value: figma.textContent('↳ value'),
+    },
+    example: ({ size, value }) => <Counter size={size} theme='bg-primary-neutral'>{value}</Counter>,
   },
 );

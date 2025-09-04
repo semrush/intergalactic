@@ -2,11 +2,9 @@ import figma from '@figma/code-connect';
 import SpinContainer from '@semcore/spin-container';
 import React from 'react';
 
-// TODO: Update links to actual nodes
-
 figma.connect(
   SpinContainer,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-593&t=CQtTqD9cubPV2oYP-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10966-127734&t=Fgs2Jv2CPgCOdctF-11',
   {
     props: {
       theme: figma.enum('theme', {
