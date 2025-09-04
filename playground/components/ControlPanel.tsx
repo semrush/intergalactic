@@ -42,7 +42,7 @@ function ControlWrapper({ displayName, children }: IControlWrapperProps) {
   return displayName
     ? (
         <label style={{ display: 'contents' }}>
-          <Text>{displayName}</Text>
+          <Text mt={1}>{displayName}</Text>
           {children}
         </label>
       )
