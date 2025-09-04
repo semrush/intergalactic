@@ -26,9 +26,8 @@ SHighlightedRadio:not([state="invalid"]) {
   }
 
   input[data-ui-name="RadioFH.Value"] + [data-ui-name="Value.RadioMark"]::before {
-    /*SValue[state='normal']::before {*/
     border-color: transparent;
-    background: linear-gradient(white, white) padding-box,
+    background: linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
       var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
     ) border-box;
     background-origin: border-box;

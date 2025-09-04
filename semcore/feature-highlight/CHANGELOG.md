@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-09-03
+
+### Changed
+
+- Secondary button styles: now secondary button has gradient background, border, and text.
+- Notice styles: `Notice.Label` now has `icon-primary-feature-highlight` color by default.
+
+### Fixed
+
+- Styles: replaced some hardcoded color values with variables.
+
 ## [16.0.4] - 2025-08-29
 
 ### Fixed
