@@ -2292,6 +2292,16 @@
       "import": "./MoveAlt/l/index.mjs",
       "types": "./MoveAlt/l/index.d.ts"
     },
+    "./Monitoring/m": {
+      "require": "./Monitoring/m/index.js",
+      "import": "./Monitoring/m/index.mjs",
+      "types": "./Monitoring/m/index.d.ts"
+    },
+    "./Monitoring/l": {
+      "require": "./Monitoring/l/index.js",
+      "import": "./Monitoring/l/index.mjs",
+      "types": "./Monitoring/l/index.d.ts"
+    },
     "./Note/m": {
       "require": "./Note/m/index.js",
       "import": "./Note/m/index.mjs",
