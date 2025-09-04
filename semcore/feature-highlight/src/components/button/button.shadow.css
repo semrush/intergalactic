@@ -61,7 +61,6 @@ SHighlightedButton {
 
     opacity: 0;
     transform: scale(0.96);
-    pointer-events: none;
 
     transition:
       opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,

@@ -27,7 +27,7 @@ SSlider {
     @mixin focus-outline-mixin;
   }
 
-  &:focus {
+  &:focus:has(SKnob) {
     outline: none;
   }
 }

@@ -58,6 +58,10 @@ SInputMask[animationsDisabled] {
 
 SInputMask SValue {
   letter-spacing: 0;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 SIndicator {
