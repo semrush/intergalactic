@@ -32,13 +32,14 @@ figma.connect(
 
 figma.connect(
   List,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52745-1484&t=7VQMR7GRRdaXHBer-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/TonMQkibPldoxcNAxeaDSi/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11735-135520&t=q1ra1HROjSmvJPyw-11',
   {
+    variant: { 'list type': 'unordered (ul)' },
     props: {
       size: figma.enum('font size', {
-        '12px (100)': 100,
-        '14px (200)': 200,
-        '16px (300)': 300,
+        '100 (12px)': 100,
+        '200 (14px)': 200,
+        '300 (16px)': 300,
       }),
       content: figma.children('List.Item'),
     },
@@ -54,13 +55,14 @@ figma.connect(
 
 figma.connect(
   List,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52745-1558&t=7VQMR7GRRdaXHBer-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/TonMQkibPldoxcNAxeaDSi/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11735-135520&t=q1ra1HROjSmvJPyw-11',
   {
+    variant: { 'list type': 'ordered (ol)' },
     props: {
       size: figma.enum('font size', {
-        '12px (100)': 100,
-        '14px (200)': 200,
-        '16px (300)': 300,
+        '100 (12px)': 100,
+        '200 (14px)': 200,
+        '300 (16px)': 300,
       }),
       content: figma.children('List.Item'),
     },
@@ -76,13 +78,14 @@ figma.connect(
 
 figma.connect(
   List,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52745-1632&t=7VQMR7GRRdaXHBer-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/TonMQkibPldoxcNAxeaDSi/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11735-135520&t=q1ra1HROjSmvJPyw-11',
   {
+    variant: { 'list type': 'unordered with custom bullets' },
     props: {
       size: figma.enum('font size', {
-        '12px (100)': 100,
-        '14px (200)': 200,
-        '16px (300)': 300,
+        '100 (12px)': 100,
+        '200 (14px)': 200,
+        '300 (16px)': 300,
       }),
       content: figma.children('List.Item'),
     },
