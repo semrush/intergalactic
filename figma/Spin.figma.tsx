@@ -4,9 +4,11 @@ import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+// TODO: Update links to actual nodes
+
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?m=auto&node-id=10328-146463&t=atOv2tCpAVZguKAs-1',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-375&t=CQtTqD9cubPV2oYP-11',
   {
     props: {
       size: figma.enum('size', {
@@ -28,7 +30,7 @@ figma.connect(
 
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52692-10212&t=atOv2tCpAVZguKAs-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-400&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'text placement': 'right' },
     props: {
@@ -57,7 +59,7 @@ figma.connect(
 
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?m=auto&node-id=10328-146463&t=atOv2tCpAVZguKAs-1',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-400&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'text placement': 'bottom' },
     props: {

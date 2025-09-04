@@ -12,11 +12,13 @@ import Skeleton, {
 } from '@semcore/skeleton';
 import React from 'react';
 
+// TODO: Update links to actual nodes
+
 // Skeleton bone
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147009&t=atOv2tCpAVZguKAs-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-124&t=CQtTqD9cubPV2oYP-11',
   {
     props: {
       theme: figma.enum('theme', {
@@ -32,7 +34,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'none', 'shape': 'true' },
 
@@ -42,7 +44,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'mini chart', 'shape': 'false' },
 
@@ -52,7 +54,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'quadrant chart', 'shape': 'false' },
 
@@ -62,7 +64,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'chord chart', 'shape': 'false' },
 
@@ -72,7 +74,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'polar radar chart', 'shape': 'false' },
 
@@ -82,7 +84,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'radar chart', 'shape': 'false' },
 
@@ -92,7 +94,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'sankey chart', 'shape': 'false' },
 
@@ -102,7 +104,7 @@ figma.connect(
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { 'chart type': 'tag cloud', 'shape': 'false' },
 
@@ -114,7 +116,7 @@ figma.connect(
 
 figma.connect(
   Skeleton.Text,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-146975&t=atOv2tCpAVZguKAs-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-270&t=CQtTqD9cubPV2oYP-11',
   {
     props: {
       theme: figma.nestedProps('Skeleton', {
@@ -172,9 +174,9 @@ figma.connect(
 
 figma.connect(
   BarChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
-    variant: { chart: '📊 bar chart', shape: 'false' },
+    variant: { chart type type: '📊 bar chart', shape: 'false' },
 
     example: () => <BarChartSkeleton />,
   },
@@ -182,7 +184,7 @@ figma.connect(
 
 figma.connect(
   BarChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '📊 bar chart (vertical)', shape: 'false' },
 
@@ -192,7 +194,7 @@ figma.connect(
 
 figma.connect(
   HistogramChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '📊 histogram', shape: 'false' },
 
@@ -202,7 +204,7 @@ figma.connect(
 
 figma.connect(
   HistogramChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '📊 histogram (vertical)', shape: 'false' },
 
@@ -212,7 +214,7 @@ figma.connect(
 
 figma.connect(
   DonutChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '🍩 donut chart', shape: 'false' },
 
@@ -222,7 +224,7 @@ figma.connect(
 
 figma.connect(
   DonutChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '🍩 donut chart (halfsize)', shape: 'false' },
 
@@ -232,7 +234,7 @@ figma.connect(
 
 figma.connect(
   ScatterPlotChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '🛁 scatter plot chart', shape: 'false' },
 
@@ -242,7 +244,7 @@ figma.connect(
 
 figma.connect(
   BubbleChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: '🛁 bubble chart', shape: 'false' },
 
@@ -252,7 +254,7 @@ figma.connect(
 
 figma.connect(
   VennChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: 'venn chart', shape: 'false' },
 
@@ -262,7 +264,7 @@ figma.connect(
 
 figma.connect(
   RadialTreeChartSkeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/branch/XJYTlbnEuQzYxXGo3m1RYu/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=flwnDcsdtgz9vS8Z-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52753-129&t=CQtTqD9cubPV2oYP-11',
   {
     variant: { chart: 'radial tree chart', shape: 'false' },
 
