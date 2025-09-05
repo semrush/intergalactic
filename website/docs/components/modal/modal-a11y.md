@@ -35,7 +35,7 @@ Table: Roles & attributes
 
 ### Attributes
 
-The list below will help you to keep in mind the necessary attributes to make our components fully accessible in the particular cases in your interfaces.
+The following list will help you to keep in mind the necessary attributes to make our components fully accessible in the particular cases in your interfaces.
 
 Table: Attributes
 

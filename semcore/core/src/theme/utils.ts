@@ -228,32 +228,43 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       values[token] = resolveToken(values[token]);
     }
     for (const modification of modifications[token] ?? []) {
-      // refer to https://docs.tokens.studio/tokens/color-modifiers and https://github.com/tokens-studio/figma-plugin/tree/main/src/utils/color if extention is needed
-      let color = new Color(values[token]);
+      // refer to https://docs.tokens.studio/tokens/color-modifiers and https://github.com/tokens-studio/figma-plugin/tree/main/src/utils/color if extension is needed
 
-      if (modification.space === 'hsl') {
-        if (modification.type === 'lighten') {
-          const lightness = color.hsl.l;
-          const difference = 100 - lightness;
-          color.set('hsl.l', Math.min(100, lightness + difference * modification.value));
-          rawValues[token] = `${rawValues[token]} / lighten(${modification.value}) / hsl`;
+      rawValues[token] = `${rawValues[token]} / ${modification.type}(${modification.value}) / ${modification.space}`;
+
+      // array + regex to process gradients with several colors
+      const colorRegex = /(#[0-9a-f]{6}|rgba\([0-9., ]+\))/gi;
+      const colors = values[token].match(colorRegex) ?? [];
+
+      for (const originalColor of colors) {
+        let color = new Color(originalColor);
+
+        if (modification.space === 'hsl') {
+          if (modification.type === 'lighten') {
+            const lightness = color.hsl.l;
+            const difference = 100 - lightness;
+            color.set('hsl.l', Math.min(100, lightness + difference * modification.value));
+          } else {
+            throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
+          }
         } else {
-          throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
+          throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
         }
-      } else {
-        throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
-      }
 
-      color = color.to('sRGB');
+        color = color.to('sRGB');
+        let modifiedColor = '';
 
-      if (color.alpha !== 1) {
-        const r = Math.round(color.r * 255);
-        const g = Math.round(color.g * 255);
-        const b = Math.round(color.b * 255);
-        const a = color.alpha;
-        values[token] = `rgba(${r}, ${g}, ${b}, ${a})`;
-      } else {
-        values[token] = color.toString({ format: 'hex' });
+        if (color.alpha !== 1) {
+          const r = Math.round(color.r * 255);
+          const g = Math.round(color.g * 255);
+          const b = Math.round(color.b * 255);
+          const a = color.alpha;
+          modifiedColor = `rgba(${r}, ${g}, ${b}, ${a})`;
+        } else {
+          modifiedColor = color.toString({ format: 'hex' });
+        }
+
+        values[token] = values[token].replace(originalColor, modifiedColor);
       }
     }
   }
