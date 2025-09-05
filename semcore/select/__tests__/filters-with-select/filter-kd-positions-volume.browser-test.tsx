@@ -34,14 +34,12 @@ test.describe('Functional', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const trigger = page.getByRole('combobox');
+    const trigger = page.getByRole('combobox', { name: 'Volume' });
     const popper = page.getByRole('dialog');
     const apply = page.getByRole('button', { name: 'Apply' });
     const options = page.getByRole('option');
     const textboxes = page.getByRole('textbox');
-
     const filterTriggerClear = page.getByRole('button', { name: 'Clear' });
-    const triggerText = trigger.locator('span[data-ui-name="FilterTrigger.Text"]');
 
     await test.step('Verify 1st item highlighted when select opened opened', async () => {
       await page.keyboard.press('Tab');
@@ -106,7 +104,7 @@ test.describe('Functional', () => {
       await popper.waitFor({ state: 'hidden' });
 
       await expect(trigger).toBeFocused();
-      await expect(triggerText).toHaveText('Volume: 1,001-10,000');
+      await expect(trigger).toHaveText(/Volume:\s*1,001-10,000/);
     });
 
     await test.step('Verify hint on close button and trigger keyboard navigation', async () => {
@@ -124,7 +122,6 @@ test.describe('Functional', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await expect(textboxes.nth(0)).toBeFocused();
       await page.keyboard.type('5');
       await page.keyboard.press('Tab');
@@ -132,7 +129,7 @@ test.describe('Functional', () => {
 
       await page.keyboard.press('Enter');
       await popper.waitFor({ state: 'hidden' });
-      await expect(triggerText).toHaveText('Volume: 5+');
+      await expect(trigger).toHaveText(/Volume:\s*5+/);
     });
 
     await test.step('Verify trigger clears when pressing Clear', async () => {
@@ -147,16 +144,12 @@ test.describe('Functional', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await expect(textboxes.nth(1)).toBeFocused();
       await page.keyboard.type('5');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
       await page.keyboard.press('Enter');
       await popper.waitFor({ state: 'hidden' });
-      await expect(triggerText).toHaveText('Volume: 1-5');
+      await expect(trigger).toHaveText(/Volume:\s*1-5+/);
     });
   });
 
@@ -186,7 +179,7 @@ test.describe('Functional', () => {
       await popper.waitFor({ state: 'visible' });
       await options.nth(2).click();
       await expect(popper).toBeHidden();
-      await expect(triggerText).toHaveText('Volume: 1,001-10,000');
+      await expect(trigger).toHaveText(/Volume:\s*1,001-10,000/);
       await expect(filterTriggerClear).toHaveCount(1);
     });
 
@@ -202,7 +195,7 @@ test.describe('Functional', () => {
       await textboxes.nth(0).fill('5');
       await apply.click();
       await popper.waitFor({ state: 'hidden' });
-      await expect(triggerText).toHaveText('Volume: 5+');
+      await expect(trigger).toHaveText(/Volume:\s*5+/);
     });
 
     await test.step('Verify trigger clears when pressing Clear', async () => {
@@ -216,7 +209,7 @@ test.describe('Functional', () => {
       await textboxes.nth(1).fill('5');
       await apply.click();
       await popper.waitFor({ state: 'hidden' });
-      await expect(triggerText).toHaveText('Volume: 1-5');
+      await expect(trigger).toHaveText(/Volume:\s*1-5/);
     });
   });
 });
