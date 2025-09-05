@@ -199,7 +199,7 @@
   /* Inverted version of the primary text. */
   --intergalactic-text-primary-invert: #ffffff;
   /* Inverted version of the secondary text. */
-  --intergalactic-text-secondary-Invert: rgba(255, 255, 255, 0.75);
+  --intergalactic-text-secondary-invert: rgba(255, 255, 255, 0.75);
   /* Link text. */
   --intergalactic-text-link: #8ecdff;
   /* Hover and active states for the link text. */
@@ -232,6 +232,7 @@
   --intergalactic-text-large-critical: #ff4953;
   /* Hover and active states of the text with font-size ≥20px associated with critical states and data. */
   --intergalactic-text-large-critical-hover-active: #d1002f;
+  /* Advertising text. */
   --intergalactic-text-advertising: #421983;
   /* Neutral primary border. */
   --intergalactic-border-primary: #484a54;
@@ -261,6 +262,8 @@
   --intergalactic-border-tooltip-invert: #6c6e79;
   /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
   --intergalactic-border-table-accent: #a9abb6;
+  /* Border color of the second period for the comparison mode in the DatePicker. */
+  --intergalactic-border-date-picker-range-comparison: #8649e1;
   /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #a9abb6;
   /* Background of the regular primary control. */
@@ -287,11 +290,11 @@
   --intergalactic-control-primary-brand-hover: #c33909;
   /* Active state of the primary brand colored control. */
   --intergalactic-control-primary-brand-active: #c33909;
-  /* Hover state of the advertising primary control. */
-  --intergalactic-control-primary-advertising: #5925ab;
-  /* Active (selected) state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-hover: #421983;
   /* Background of the advertising primary control. */
+  --intergalactic-control-primary-advertising: #5925ab;
+  /* Hover state of the advertising primary control. */
+  --intergalactic-control-primary-advertising-hover: #421983;
+  /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #8649e1;
   /* Inverted background of the primary control. */
   --intergalactic-control-primary-invert: rgba(30, 34, 49, 1);
@@ -343,7 +346,7 @@
   --intergalactic-icon-primary-info: #006dca;
   /* Hover and active (selected) states of the primary link-lookalike icon. */
   --intergalactic-icon-primary-info-hover-active: #044792;
-  /* Primary successful icon. */
+  /* Primary success icon. */
   --intergalactic-icon-primary-success: #009f81;
   /* Hover and active (selected) states of the primary successful icon. */
   --intergalactic-icon-primary-success-hover-active: #007c65;
@@ -367,7 +370,7 @@
   --intergalactic-icon-secondary-info: #2bb3ff;
   /* Hover and active (selected) states of the secondary link-lookalike icon. */
   --intergalactic-icon-secondary-info-hover-active: #008ff8;
-  /* Secondary successful icon. */
+  /* Secondary success icon. */
   --intergalactic-icon-secondary-success: #00c192;
   /* Hover and active (selected) states of the secondary successful icon. */
   --intergalactic-icon-secondary-success-hover-active: #009f81;
@@ -395,7 +398,12 @@
   --intergalactic-date-picker-cell-active: #2bb3ff;
   /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #008ff8;
-  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  /* Color for marking the active cell with the current date, month or year in the date-picker. */
+  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.5);
+  /* Active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active: #8649e1;
+  /* Hover for the active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active-hover: #5925ab;
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: rgba(54, 56, 67, 1);
   /* Hover state of the default background color for the list item in the dropdown-menu. */
@@ -440,6 +448,7 @@
   --intergalactic-table-th-primary-cell-active: rgba(108, 110, 121, 1);
   /* Background of the header cell in the secondary Table. */
   --intergalactic-table-th-secondary-cell: rgba(62, 64, 75, 1);
+  /* Background gradient for sorting icon that absolute positioned in the table head. */
   --intergalactic-table-th-gradient: linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%);
   /* Background of the default cell in the Table. */
   --intergalactic-table-td-cell: #191b23;
@@ -523,6 +532,7 @@
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.8);
   /* Default keyboard focus box-shadow styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.5);
+  /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
   --intergalactic-lh-800: 117%;
@@ -540,28 +550,26 @@
   --intergalactic-lh-200: 142%;
   /* Use with font-size-100. */
   --intergalactic-lh-100: 133%;
+  /* Semi-bold font weight. */
   --intergalactic-semi-bold: 600;
+  /* Bold font weight. */
   --intergalactic-bold: 700;
+  /* Regular font weight. */
   --intergalactic-regular: 400;
+  /* Medium font weight. */
   --intergalactic-medium: 500;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
-  /* Use with caution for text in additional messages. Always check its contrast and readability. */
+  /* Use this font-size with caution for text in some additional messages. Always check its contrast and readability. */
   --intergalactic-fs-100: 12px;
-  /* Use for text in regular messages. */
   --intergalactic-fs-200: 14px;
-  /* Use for H6 with bold font-weight, and for text in regular messages. */
   --intergalactic-fs-300: 16px;
-  /* Use for H5 and subtitles. */
   --intergalactic-fs-400: 20px;
-  /* Use for H4. */
   --intergalactic-fs-500: 24px;
-  /* Use for H3. */
   --intergalactic-fs-600: 32px;
-  /* Use for H2. */
   --intergalactic-fs-700: 36px;
-  /* Use for H1. */
   --intergalactic-fs-800: 48px;
+  /* Compact letter spacing. */
   --intergalactic-compact: 0.3;
   /* Base denominator of the design system. */
   --intergalactic-scale-indent: 4px;
@@ -597,6 +605,7 @@
   --intergalactic-spacing-24x: 96px;
   /* 120px */
   --intergalactic-spacing-30x: 120px;
+  --intergalactic-rounded-extra-small: 2px;
   --intergalactic-rounded-small: 4px;
   --intergalactic-rounded-medium: 6px;
   --intergalactic-rounded-large: 12px;
@@ -605,6 +614,8 @@
   --intergalactic-addon-rounded: 4px;
   /* Use for rounding Badge. */
   --intergalactic-badge-rounded: 6px;
+  /* Use for rounding big and small charts like bar, histogram and others. */
+  --intergalactic-chart-rounded: 2px;
   /* Use for rounding Counter. */
   --intergalactic-counter-rounded: 12px;
   /* Use for rounding Tag. */
@@ -674,33 +685,33 @@
   --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(to bottom, rgba(43, 46, 56, 1) 34.38%, rgba(54, 56, 67, 0) 100%);
   /* Background color for ScrollBar. */
   --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
-  /* Primary gray tag. */
+  /* Gray background color for the primary tag. */
   --intergalactic-tag-primary-gray-normal: rgba(69, 70, 81, 1);
-  /* Hover and active (selected) state of the primary gray tag. */
+  /* Gray background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-gray-hover-active: #e0e1e9;
-  /* Primary blue tag. */
+  /* Blue background color for primary tag. */
   --intergalactic-tag-primary-blue-normal: rgba(7, 77, 141, 1);
-  /* Hover and active (selected) state of the primary blue tag. */
+  /* Blue background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-blue-hover-active: #c4e5fe;
-  /* Primary green tag. */
+  /* Green background color for the primary tag. */
   --intergalactic-tag-primary-green-normal: rgba(9, 99, 82, 1);
-  /* Hover and active (selected) state of the primary green tag. */
+  /* Green background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-green-hover-active: #9ef2c9;
-  /* Primary orange tag. */
+  /* Orange background color for the primary tag. */
   --intergalactic-tag-primary-orange-normal: rgba(156, 49, 11, 1);
-  /* Hover and active (selected) state of the primary orange tag. */
+  /* Orange background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-orange-hover-active: #ffdca2;
-  /* Primary red tag. */
+  /* Red background color for the primary tag. */
   --intergalactic-tag-primary-red-normal: rgba(160, 13, 42, 1);
-  /* Hover and active (selected) state of the primary red tag. */
+  /* Red background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-red-hover-active: #ffd7df;
-  /* Primary violet tag. */
+  /* Violet background color for the primary tag. */
   --intergalactic-tag-primary-violet-normal: rgba(95, 62, 157, 1);
-  /* Hover and active (selected) state of the primary violet tag. */
+  /* Violet background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-violet-hover-active: #edd9ff;
-  /* Primary yellow tag. */
+  /* Yellow background color for the primary tag. */
   --intergalactic-tag-primary-yellow-normal: rgba(252, 224, 129, 0.5);
-  /* Hover and active (selected) state of the primary yellow tag. */
+  /* Yellow background color for the hover and active states of the primary tag. */
   --intergalactic-tag-primary-yellow-hover-active: #fce081;
   /* Primary white tag. */
   --intergalactic-tag-primary-white-normal: rgba(255, 255, 255, 0.15);
@@ -800,8 +811,10 @@
   --intergalactic-chart-grid-bar-chart-hover: rgba(196, 199, 207, 0.3);
   /* Default background color of a bar in the BarChart. */
   --intergalactic-chart-grid-bar-chart-base-bg: #e0e1e9;
-  /* Use for highlighting the period on the chart grid. */
+  /* Use for highlighting a period on the chart grid. */
   --intergalactic-chart-grid-period-bg: rgba(196, 199, 207, 0.2);
+  /* Stripe color for diagonal pattern background. */
+  --intergalactic-chart-grid-period-pattern: rgba(25, 27, 35, 0.15);
   /* Border for distinguishing data sets and chart dots on the chart grid. */
   --intergalactic-chart-grid-border: #191b23;
   /* Background color for the clickable date on the X-axis of the chart grid. */

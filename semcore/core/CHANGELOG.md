@@ -2,13 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-09-12
+## [16.3.0] - 2025-09-12
 
 ### Changed
 
 - Values for `keyboard-focus` tokens.
 - Inverted outline token moved from keyboard-focus group to keyboard-focus-invert group: `keyboard-focus-outline-invert` changed to `keyboard-focus-invert-outline` for consistency.
 - Grouping for `keyboard-focus` tokens in the design json files.
+
+## [16.2.0] - 2025-09-03
+
+### Added
+
+- New tokens for secondary button from the `feature-highlight` package.
+
+### Fixed
+
+- Some inconsistencies and missing tokens/descriptions in `dark.json`.
 
 ## [16.1.1] - 2025-08-29
 
