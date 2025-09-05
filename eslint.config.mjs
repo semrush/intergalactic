@@ -25,6 +25,7 @@ export default defineConfig([
     'semcore/icon/**/*.mjs',
     'semcore/icon/**/*.js',
     'semcore/icon/**/*.d.ts',
+    'figma',
   ]),
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
   pluginReact.configs.flat.recommended,
