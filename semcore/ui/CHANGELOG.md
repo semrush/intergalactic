@@ -1,3 +1,186 @@
+## [16.7.0] - 2025-08-29
+
+### @semcore/base-components
+
+- **Changed** Type description for `PopperPopperProps`/`PopperProps`/`ScrollAreaProps`/`ScrollBarProps`/`BoxProps`.
+
+### @semcore/base-trigger
+
+- **Changed** Type description for `FilterTriggerProps`.
+
+### @semcore/breadcrumbs
+
+- **Changed** Type description for `BreadcrumbsProps` & `BreadcrumbsItemProps`.
+
+### @semcore/bulk-textarea
+
+- **Added** Controlled mode for errors.
+- **Added** `onImmediatelyChange` internal property.
+- **Fixed** Incorrect paddings for line numbers starting from 1000 lines.
+- **Changed** Type description for `BulkTextareaProps`.
+
+### @semcore/carousel
+
+- **Changed** Type description for `CarouselProps`.
+
+### @semcore/checkbox
+
+- **Changed** Type description for `CheckboxProps`.
+
+### @semcore/core
+
+- **Changed** FocusLock work when popper opened without focus and trigger has few focusable elements.
+- **Added** New tokens for FeaturePopover's new theme styles: `feature-popover-bg`, `feature-popover-bg-neutral`, `feature-popover-dot-neutral`, `feature-popover-dot-neutral-outer-border`.
+
+### @semcore/d3-chart
+
+- **Changed** Type description for `PlotProps`/`ReferenceLineProps`/`AreaChartProps`/`BarChartProps`/`BubbleChartProps`/`CigaretteChartProps`/`DonutChartProps`/`HistogramChartProps`/`LineChartProps`/`RadialTreeProps`/`ScatterPlotChartProps`/`VennChartProps`/`CompactHorizontalBarChartProps`.
+
+### @semcore/data-table
+
+- **Added** `Data` type to `cellRender` function.
+- **Fixed** Unnecessary re-render when data was updated but old values were still used.
+- **Fixed** Shadows remain after resizing table width.
+- **Fixed** `onSortChange` is called twice when click is on a sort icon.
+- **Fixed** Hover behaviour for sort icon in case the content is justified to the right.
+- **Changed** Type description for `DataTableProps`/`CellRenderProps`.
+- **Changed** `AccordionToggle`'s `margin-left`.
+- **Changed** `DataTable` display to `block` & `DataTable.Header` display to `grid` when `data` is empty.
+
+### @semcore/date-picker
+
+- **Changed** Type description for `CalendarProps`.
+
+### @semcore/drag-and-drop
+
+- **Changed** Type description for `DragAndDropProps`.
+
+### @semcore/dropdown
+
+- **Changed** Type description for `DropdownProps`.
+
+### @semcore/dropdown-menu
+
+- **Changed** Type description for `DropdownMenuContext`/`DropdownMenuProps`.
+
+### @semcore/errors
+
+- **Changed** Type description for `ProjectNotFoundProps`.
+- **Fixed** Support link is rendered incorrectly.
+
+### @semcore/feature-highlight
+
+- **Fixed** React forward ref error for Sparkle component.
+
+### @semcore/feature-popover
+
+- **Changed** Tokens for default `FeaturePopover` theme.
+- **Changed** Type description for `FeaturePopoverPopperProps`.
+
+### @semcore/feedback-form
+
+- **Changed** Type description for `FeedbackFormProps`/`FeedbackRatingProps`.
+
+### @semcore/format-text
+
+- **Changed** Type description for `FormatTextProps`.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Type description for `FullscreenModalHeaderProps`.
+
+### @semcore/icon
+
+- **Added** New `LinkExternalAlt` icon.
+- **Added** New `Note` icon.
+- **Changed** Type description for `IconProps`.
+
+### @semcore/inline-edit
+
+- **Changed** Type description for `InlineEditProps`.
+
+### @semcore/inline-input
+
+- **Changed** Type description for `InlineInputProps`.
+
+### @semcore/input-mask
+
+- **Changed** Type description for `InputMaskValueProps`.
+
+### @semcore/input-tags
+
+- **Changed** Type description for `InputTagsProps`.
+
+### @semcore/modal
+
+- **Changed** Type description for `ModalProps`.
+
+### @semcore/notice
+
+- **Changed** Type description for `NoticeProps`.
+
+### @semcore/notice-bubble
+
+- **Changed** Type description for `NoticeBubbleContainerProps`.
+
+### @semcore/notice-global
+
+- **Changed** Type description for `NoticeGlobalProps`.
+
+### @semcore/pagination
+
+- **Changed** Type description for `PaginationProps`.
+
+### @semcore/pills
+
+- **Fixed** The focus outline on the left pill is not visible when hovering over the next pill.
+
+### @semcore/product-head
+
+- **Changed** Type description for `InfoItemProps`/`HeaderTitleProps`.
+
+### @semcore/progress-bar
+
+- **Changed** Type description for `ValueProps`.
+
+### @semcore/select
+
+- **Changed** Type description for `SelectProps`/`SelectOptionCheckboxProps`.
+
+### @semcore/side-panel
+
+- **Changed** Type description for `SidePanelPanelProps`.
+
+### @semcore/skeleton
+
+- **Changed** Type description for `SkeletonProps`/`LineChartSkeletonProps`/`AreaChartSkeletonProps`/`BarChartSkeletonProps`/`HistogramChartSkeleton`.
+
+### @semcore/slider
+
+- **Changed** Type description for `SliderProps`.
+
+### @semcore/spin
+
+- **Changed** Type description for `SpinProps`.
+
+### @semcore/tag
+
+- **Changed** Type description for `TagProps`.
+- **Fixed** Focus disappeared when deleting a tag from the list with correct react keys.
+
+### @semcore/time-picker
+
+- **Changed** Type description for `TimePickerProps`.
+
+### @semcore/widget-empty
+
+- **Changed** Type description for `WidgetNoDataProps`.
+
+### @semcore/wizard
+
+- **Changed** Type description for `WizardProps`/`WizardStepperProps`/`WizardStepBackProps`/`WizardStepNextProps`.
+- **Fixed** Left borders of Wizard.Content component are not rounded if the Wizard doesn't have Sidebar
+
 ## [16.6.0] - 2025-08-07
 
 ### @semcore/base-components
@@ -4441,29 +4624,6 @@
 
 - **Break** Strict, backward incompatible typings.
 
-### @semcore/icon
-
-- **BREAK** Removed all icons from `@semcore/icon/lib/*` path.
-- **BREAK** Removed `Stoller` icon.
-- **BREAK** Removed `YoutubeAlt` icon.
-- **BREAK** Removed `YoutubeRed` icon.
-- **BREAK** Removed `FeauturedImage` icon.
-- **BREAK** Removed `FeauturedVideo` icon.
-- **Added** Added `Diners` pay icon.
-
-### @semcore/skeleton
-
-- **BREAK** Changed all skeleton for chart from svg to HTMLDivElement with styled background.
-- **BREAK** Renamed `PieChartSkeleton` to `DonutChartSkeleton`.
-
-### @semcore/date-picker
-
-- **BREAK** `DatePicker.Trigger` now represents input trigger (previously available as `DatePicker.InputTrigger`). Old and deprecated trigger still available as `.ButtonTrigger`.
-
-### @semcore/radio
-
-- **BREAK** `RadioGroup` now wraps it's content into `Flex` container (previously it was wrapping content into `React.Fragment` by default).
-
 ### @semcore/core
 
 - **Break** Strict typings.
@@ -4477,13 +4637,36 @@
 - **Changed** On type level made `name` property of `Venn.Circle` obligatory.
 - **Added** Typed `HoverLine.Tooltip` , `HoverRect.Tooltip` , `Radar.Tooltip` , `Bubble.Tooltip` , `Donut.Tooltip` , `ScatterPlot.Tooltip` and `Venn.Tooltip` .
 
+### @semcore/date-picker
+
+- **BREAK** `DatePicker.Trigger` now represents input trigger (previously available as `DatePicker.InputTrigger`). Old and deprecated trigger still available as `.ButtonTrigger`.
+
 ### @semcore/flags
 
 - **Break** Removed unused flags without ISO code.
 
+### @semcore/icon
+
+- **BREAK** Removed all icons from `@semcore/icon/lib/*` path.
+- **BREAK** Removed `Stoller` icon.
+- **BREAK** Removed `YoutubeAlt` icon.
+- **BREAK** Removed `YoutubeRed` icon.
+- **BREAK** Removed `FeauturedImage` icon.
+- **BREAK** Removed `FeauturedVideo` icon.
+- **Added** Added `Diners` pay icon.
+
 ### @semcore/popper
 
 - **Break** Removed previously deprecated props `positionFixed`, `eventsDisabled`, `boundary`, `displayEvents`, `displayTimeout`, `popperZIndex`.
+
+### @semcore/radio
+
+- **BREAK** `RadioGroup` now wraps it's content into `Flex` container (previously it was wrapping content into `React.Fragment` by default).
+
+### @semcore/skeleton
+
+- **BREAK** Changed all skeleton for chart from svg to HTMLDivElement with styled background.
+- **BREAK** Renamed `PieChartSkeleton` to `DonutChartSkeleton`.
 
 ## [14.11.0] - 2023-07-14
 
@@ -6658,18 +6841,6 @@
 - **Added** Added support for React 18 🔥
 - **Fixed** Fixed problems in working with react strict mode.
 
-### @semcore/chart
-
-- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
-
-### @semcore/neighbor-location
-
-- **BREAK** The approach to determining neighbors has been changed.
-
-### @semcore/table
-
-- **BREAK** The component has been removed from the release system. Use `@semcore/data-table`.
-
 ### @semcore/accordion
 
 - **Fixed** Fixed elements id uniqueness.
@@ -6681,6 +6852,10 @@
 ### @semcore/button
 
 - **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/chart
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
 
 ### @semcore/checkbox
 
@@ -6741,6 +6916,10 @@
 - **Fixed** Fixed addon placed before input value may be overlayed by input value.
 - **Fixed** Fixed previously broken in previous version backward compatibility of piping API.
 
+### @semcore/neighbor-location
+
+- **BREAK** The approach to determining neighbors has been changed.
+
 ### @semcore/notice
 
 - **Changed** Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
@@ -6788,6 +6967,10 @@
 ### @semcore/tab-panel
 
 - **Added** Added styles for panel consisting only of an icon.
+
+### @semcore/table
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/data-table`.
 
 ### @semcore/utils
 
@@ -7244,33 +7427,6 @@
 
 - **BREAK** Updated styles according to the library redesign policy.
 
-### @semcore/select
-
-- **BREAK** Removed support to used `Select.InputSearch`
-- **BREAK** Removed support properties `selectedOptions, defaultSelectedOptions` for `Select`
-- **BREAK** Removed support `Select.OptionCheckbox`
-- **BREAK** `Select.Option.Checkbox` used only two sizes `l, m`
-
-### @semcore/dropdown-menu
-
-- **BREAK** Removed deprecated props `onSelect, optionCount, triggerType`.
-- **BREAK** Removed value "xl" for "size".
-
-### @semcore/fullscreen-modal
-
-- **BREAK** Removed support property `hidden` for `FullscreenModal`.
-- **BREAK** `Footer` now use inside component `Flex`
-
-### @semcore/progress-bar
-
-- **BREAK** Removed named import "Progress" and "Bar".
-- **BREAK** Removed "animation" props, use "value=0".
-
-### @semcore/tooltip
-
-- **BREAK** Removed ability to pass custom color to "theme" property.
-- **BREAK** Removed named import "Tooltip".
-
 ### @semcore/base-trigger
 
 - **BREAK** Removed value "xl" and "s" for "size".
@@ -7287,6 +7443,12 @@
 
 - **BREAK** Removed value "xl" for "size".
 
+### @semcore/data-table
+
+- **Fixed** Fixed collapsing of header grouped cells.
+- **Fixed** Fixed columns width was usually not controlled by `w`, `wMin` and `wMax` props
+- **Fixed** Fixed package lost typings.
+
 ### @semcore/date-picker
 
 - **BREAK** Removed value "xl" for "size".
@@ -7294,6 +7456,11 @@
 ### @semcore/dropdown
 
 - **BREAK** Removed deprecated prop `popperStretch`.
+
+### @semcore/dropdown-menu
+
+- **BREAK** Removed deprecated props `onSelect, optionCount, triggerType`.
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/flags
 
@@ -7303,6 +7470,11 @@
 
 - **BREAK** Changed sizes from m/l/xl to s/m/l
 
+### @semcore/fullscreen-modal
+
+- **BREAK** Removed support property `hidden` for `FullscreenModal`.
+- **BREAK** `Footer` now use inside component `Flex`
+
 ### @semcore/icon
 
 - **BREAK** Removed icons `UserGroupNo, UserShared`.
@@ -7311,6 +7483,10 @@
 - **Changed** Update pay icons `Visa, JCB`.
 - **Added** Added icons `IndentedResult, UserSharedFirst`.
 - **Changed** Changed icon `UserGroup`.
+
+### @semcore/inline-input
+
+- **Changed** Moved all color definitions to themable styles.
 
 ### @semcore/input
 
@@ -7324,6 +7500,11 @@
 
 - **BREAK** Removed value "xl"/"s"" for "size".
 
+### @semcore/progress-bar
+
+- **BREAK** Removed named import "Progress" and "Bar".
+- **BREAK** Removed "animation" props, use "value=0".
+
 ### @semcore/radio
 
 - **BREAK** Removed value "xl" for "size".
@@ -7331,6 +7512,21 @@
 ### @semcore/scroll-area
 
 - **BREAK** Removed named imports.
+
+### @semcore/select
+
+- **BREAK** Removed support to used `Select.InputSearch`
+- **BREAK** Removed support properties `selectedOptions, defaultSelectedOptions` for `Select`
+- **BREAK** Removed support `Select.OptionCheckbox`
+- **BREAK** `Select.Option.Checkbox` used only two sizes `l, m`
+
+### @semcore/side-panel
+
+- **Added** Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
+
+### @semcore/skeleton
+
+- **Added** Added skeleton for Radial Tree chart.
 
 ### @semcore/spin
 
@@ -7349,23 +7545,10 @@
 
 - **BREAK** Removed value "xl" for "size".
 
-### @semcore/data-table
+### @semcore/tooltip
 
-- **Fixed** Fixed collapsing of header grouped cells.
-- **Fixed** Fixed columns width was usually not controlled by `w`, `wMin` and `wMax` props
-- **Fixed** Fixed package lost typings.
-
-### @semcore/inline-input
-
-- **Changed** Moved all color definitions to themable styles.
-
-### @semcore/side-panel
-
-- **Added** Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
-
-### @semcore/skeleton
-
-- **Added** Added skeleton for Radial Tree chart.
+- **BREAK** Removed ability to pass custom color to "theme" property.
+- **BREAK** Removed named import "Tooltip".
 
 ### @semcore/utils
 
@@ -7524,23 +7707,14 @@
 
 - **Added** Added repository field to package.json file.
 
-### @semcore/slider
+### @semcore/base-trigger
 
-- **BREAK** Remove props background/color/interaction, use theme instead.
-- **BREAK** Refactored component to handle extreme values.
+- **Fixed** Fixed LinkTrigger hovered text color.
 
 ### @semcore/card
 
 - **BREAK** Card was divided into Header and Body
 - **Added** Background was added
-
-### @semcore/spin-container
-
-- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
-
-### @semcore/base-trigger
-
-- **Fixed** Fixed LinkTrigger hovered text color.
 
 ### @semcore/d3-chart
 
@@ -7568,6 +7742,15 @@
 ### @semcore/skeleton
 
 - **Fixed** Added export type for Bubble, ScatterPlot, Venn charts
+
+### @semcore/slider
+
+- **BREAK** Remove props background/color/interaction, use theme instead.
+- **BREAK** Refactored component to handle extreme values.
+
+### @semcore/spin-container
+
+- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
 
 ### @semcore/switch
 
@@ -7901,13 +8084,6 @@
 
 ## [9.0.0] - 2021-11-12
 
-### @semcore/skeleton
-
-- **BREAK** change default height for Skeleton from 100px to 100%.
-- **BREAK** remove support props visible, speed for Skeleton.
-- **Fixed** Fixed typo in ts.
-- **Changed** Rewrite code from ts to js.
-
 ### @semcore/d3-chart
 
 - **Added** Added prop outerRadius for Donut chart.
@@ -7945,6 +8121,13 @@
 - **Changed** Changed interception event of mouse for cursor in ScrollBar.
 - **Changed** Call calculate position scroll when change size container
 
+### @semcore/skeleton
+
+- **BREAK** change default height for Skeleton from 100px to 100%.
+- **BREAK** remove support props visible, speed for Skeleton.
+- **Fixed** Fixed typo in ts.
+- **Changed** Rewrite code from ts to js.
+
 ### @semcore/slider
 
 - **Fixed** Fixed default color
@@ -7960,11 +8143,6 @@
 - **Changed** Rewrite from TS to JS code.
 
 ## [8.0.0] - 2021-10-04
-
-### @semcore/dot
-
-- **BREAK** removed deprecated property invisible.
-- **BREAK** Changed animation Dot to @semcore/animation.
 
 ### @semcore/badge
 
@@ -7987,6 +8165,11 @@
 
 - **Fixed** Fixed change displayedPeriod after change value for family pickers.
 - **Changed** Changed WeekDay styles from uppercase to capital case
+
+### @semcore/dot
+
+- **BREAK** removed deprecated property invisible.
+- **BREAK** Changed animation Dot to @semcore/animation.
 
 ### @semcore/drag-and-drop
 
@@ -8162,26 +8345,6 @@
 
 ## [7.0.0] - 2021-07-12
 
-### @semcore/notice-bubble
-
-- **BREAK** Replace animation package from react-transition-group to @semcore/animation
-- **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
-- **Changed** The style processing system has been changed.
-- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [TS] rewrite code from TS to JS.
-- **Changed** [A11Y] added role for Alert and aria-label for Close.
-
-### @semcore/spin-container
-
-- **BREAK** Replace animation from package react-transition-group to @semcore/animation.
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
-- **Changed** The style processing system has been changed.
-- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [TS] rewrite code from TS to JS.
-
 ### @semcore/accordion
 
 - **Fixed** Add default type for generic value
@@ -8260,6 +8423,17 @@
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 - **Changed** [A11Y] added role for Alert and aria-label for Close.
 
+### @semcore/notice-bubble
+
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
+- **Changed** [A11Y] added role for Alert and aria-label for Close.
+
 ### @semcore/pills
 
 - **Fixed** Add default type for generic value
@@ -8293,6 +8467,15 @@
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
+### @semcore/spin-container
+
+- **BREAK** Replace animation from package react-transition-group to @semcore/animation.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
+
 ### @semcore/tab-line
 
 - **Fixed** Add default type for generic value
@@ -8318,13 +8501,6 @@
 - **Fixed** [TS] fixed types.
 
 ## [6.0.0] - 2021-06-21
-
-### @semcore/input-number
-
-- **BREAK** Replaced internal representation with native input(type=number).
-- **BREAK** Changed type for value to string.
-- **Fixed** Fixed the js problem with the remainder of division.
-- **Added** [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ### @semcore/accordion
 
@@ -8376,6 +8552,13 @@
 
 - **Fixed** Fix TS type
 - **Changed** Moved logic for checking interactive trigger to Dropdown.
+
+### @semcore/input-number
+
+- **BREAK** Replaced internal representation with native input(type=number).
+- **BREAK** Changed type for value to string.
+- **Fixed** Fixed the js problem with the remainder of division.
+- **Added** [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ### @semcore/pagination
 
@@ -8596,15 +8779,6 @@
 
 ## [4.0.0] - 2021-04-05
 
-### @semcore/notice
-
-- **BREAK** Removed global styles
-- **BREAK** Removed styles for media queries.
-- **BREAK** Replace animation package from react-transition-group to @semcore/animation
-- **BREAK** Update property theme, now this property can get any themes
-- **BREAK** Added property use
-- **BREAK** Update icon for Notice. IconClose
-
 ### @semcore/breadcrumbs
 
 - **Fixed** Added aria-label for Breadcrumbs.
@@ -8637,6 +8811,15 @@
 ### @semcore/icon
 
 - **Changed** Update icons Semrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush.
+
+### @semcore/notice
+
+- **BREAK** Removed global styles
+- **BREAK** Removed styles for media queries.
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Update property theme, now this property can get any themes
+- **BREAK** Added property use
+- **BREAK** Update icon for Notice. IconClose
 
 ### @semcore/outside-click
 
@@ -8676,12 +8859,6 @@
 - **Added** Added support two languages Korean, Vietnamese.
 
 ## [3.0.0] - 2021-02-16
-
-### @semcore/grid
-
-- **BREAK** Change the responsive breakpoint from 992px to 1184px.
-- **Added** Added alternative API for span and offset.
-- **Added** Added breakpoint xs.
 
 ### @semcore/accordion
 
@@ -8727,6 +8904,12 @@
 ### @semcore/errors
 
 - **Added** Added supported react@17.
+
+### @semcore/grid
+
+- **BREAK** Change the responsive breakpoint from 992px to 1184px.
+- **Added** Added alternative API for span and offset.
+- **Added** Added breakpoint xs.
 
 ### @semcore/icon
 
@@ -8946,13 +9129,6 @@
 - **Fixed** Bubbling event from interaction components inside Accordion. Item. Content for listener onChange in Accordion
 - **Changed** Update @semcore/core version to ^1.8
 
-### @semcore/input-mask
-
-- **BREAK** Property placeholderChar, it is everything have to use `\_`, because mask show in value to input
-- **Added** Manage cursor position for InputMask. Value with show mask
-- **Added** Export function getAfterPositionValue. It use when need to know where last symbol of value.
-- **Fixed** Show mask for InputMask. Value when size input less than size mask
-
 ### @semcore/animation
 
 - **Added** Add Collapse animation.
@@ -9010,6 +9186,13 @@
 ### @semcore/icon
 
 - **Added** Added new icon color/WhatsApp.
+
+### @semcore/input-mask
+
+- **BREAK** Property placeholderChar, it is everything have to use `\_`, because mask show in value to input
+- **Added** Manage cursor position for InputMask. Value with show mask
+- **Added** Export function getAfterPositionValue. It use when need to know where last symbol of value.
+- **Fixed** Show mask for InputMask. Value when size input less than size mask
 
 ### @semcore/link
 

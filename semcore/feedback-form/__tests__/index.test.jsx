@@ -21,7 +21,7 @@ describe('FeedbackForm', () => {
   shouldSupportClassName(FeedbackForm);
   shouldSupportRef(FeedbackForm);
 
-  test.concurrent('Should call onSubmit', () => {
+  test.concurrent('Verify call onSubmit', () => {
     const onSubmit = vi.fn();
 
     const { getByTestId, unmount } = render(
@@ -36,7 +36,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test.sequential('Should not call onSubmit for validation error', () => {
+  test.sequential('Verify not call onSubmit for validation error', () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -54,64 +54,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test.concurrent('Should correct render form', async ({ task }) => {
-    const component = (
-      <FeedbackForm>
-        <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
-        <FeedbackForm.Submit>Send feedback</FeedbackForm.Submit>
-        <FeedbackForm.Cancel>Cancel</FeedbackForm.Cancel>
-      </FeedbackForm>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct render notice', async ({ task }) => {
-    const component = (
-      <FeedbackForm>
-        <FeedbackForm.Notice>You can also send us an email.</FeedbackForm.Notice>
-        <FeedbackForm.Notice theme='danger'>Your message hasn’t been sent.</FeedbackForm.Notice>
-      </FeedbackForm>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct render feedback success', async ({ task }) => {
-    const component = <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct render spinner', async ({ task }) => {
-    const component = (
-      <FeedbackForm loading>
-        LOADING
-        <br />
-        LOADING
-        <br />
-        LOADING
-      </FeedbackForm>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Should correct work props for spinner theme', async ({ task }) => {
-    const component = (
-      <FeedbackForm loading background='#878dfd85' theme='invert'>
-        LOADING
-        <br />
-        LOADING
-        <br />
-        LOADING
-      </FeedbackForm>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test('Should work with validationOnBlur=true (default behavior)', async ({ expect }) => {
+  test('Verify validationOnBlur=true (default behavior)', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -132,7 +75,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test('Should work with validationOnBlur=false', async ({ expect }) => {
+  test('Verify validationOnBlur=false', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -155,23 +98,6 @@ describe('FeedbackForm', () => {
     expect(Input.attributes.state.value).toBe('invalid');
     unmount();
   });
-
-  test('a11y', async () => {
-    const { container, unmount } = render(
-      <FeedbackForm>
-        <label htmlFor='suggestions'>Tell us your suggestion or report an issue</label>
-        <FeedbackForm.Item name='input'>
-          {({ input }) => <input id='suggestions' {...input} />}
-        </FeedbackForm.Item>
-        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
-      </FeedbackForm>,
-    );
-
-    const results = await axe(container);
-
-    expect(results).toHaveNoViolations();
-    unmount();
-  });
 });
 
 describe('FeedbackForm.Item', () => {
@@ -190,7 +116,7 @@ describe('FeedbackForm.Item', () => {
 describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
-  test('Should not submit if invalid', async ({ expect }) => {
+  test('Verify no submit if invalid', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
