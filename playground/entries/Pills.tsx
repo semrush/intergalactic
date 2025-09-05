@@ -15,7 +15,7 @@ export type PillsJSXProps = JSXProps<PillsProps> & AdditionalJSXProps;
 
 function getJSX(props: PillsJSXProps) {
   return (
-    <Pills size={props.size} aria-label='Pills example' defaultValue={1}>
+    <Pills size={props.size} aria-label='Pills example' defaultValue={1} behavior={props.behavior}>
       <Pills.Item value={1}>
         {props.before && <Pills.Item.Addon>{renderIcon('before', props.size)}</Pills.Item.Addon>}
         <Pills.Item.Text>Pill 1</Pills.Item.Text>
