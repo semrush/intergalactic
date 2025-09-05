@@ -87,7 +87,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   shadowVertical?: '' | 'end' | 'start' | 'median';
   renderCellOverlay?: () => React.ReactNode;
-  variant?: 'default' | 'card';
+  variant?: DataTableProps<any, any, any>['variant'];
 };
 
 export type DataTableBodyType = (<

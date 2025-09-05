@@ -31,6 +31,11 @@ SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
+SCollapseRow[gridArea] > SCellWrapper > SCell[withoutBorder],
+SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell[withoutBorder] {
+  border-bottom: none;
+}
+
 SCollapseRow SCell {
   display: block;
 }
@@ -190,7 +195,7 @@ SCell {
   }
 
   &[withoutBorder] {
-    border-bottom: none !important;
+    border-bottom: none;
   }
 }
 
