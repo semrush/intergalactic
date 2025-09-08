@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <>
       <Button onClick={() => setWide(!wide)}>
-        {wide ? 'Сузить' : 'Расширить'}
+        {wide ? 'Narrow' : 'Expand'}
       </Button>
 
       <div
