@@ -68,6 +68,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       tableRef,
       onCellClick,
       rawData,
+      shadowVertical,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -126,6 +127,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       expandedRows,
       rowsHeightMap: this.rowsHeightMap,
       setRowHeight: this.setRowHeight,
+      shadowVertical,
     };
   }
 
