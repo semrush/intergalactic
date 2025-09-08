@@ -19,7 +19,7 @@ The following list describes roles and attributes that the component already has
 
 ### Recommended roles and attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+The following list will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
 | Attribute                         | Usage                                                        |
 | --------------------------------- | ------------------------------------------------------------ |

@@ -30,7 +30,7 @@ Component consists of the following:
 Table: Pills sizes and margins
 
 | Size (height in px) | Margins                          |
-| ------------------- | -------------------------------- |
+|---------------------|----------------------------------|
 | M (28px)            | ![](static/pills-paddings-M.png) |
 | L (40px)            | ![](static/pills-paddings-L.png) |
 
@@ -40,6 +40,17 @@ Addons (icons, flags, badges, counters) have the same margin as the addons insid
 
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
+
+## Behaviour
+
+The Pills component can work in two modes: manual or automatic tab activation. We recommend using `auto` behavior in forms, while `manual` behavior is better for navigation and layout changes.
+
+Table: Pills usage behavior
+
+| Behavior | Example of usage             | Description                                                                                                                   |
+|----------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `auto`   | ![](static/pill-auto.png)    | Pills.Items are automatically activated when they receive focus, just like in the [Radio component](/components/radio/radio). |
+| `manual` | ![](static/pills-manual.png) | Pills.Items are activated by pressing **Space** or **Enter**.                                                                 |
 
 ## Usage cases
 
@@ -57,11 +68,10 @@ This type exists only in design, and the component doesn't cover this case yet.
 
 Table: States for adding new item case in Pills
 
-| State  | Appearance                          |
-| ------ | ----------------------------------- |
-| Normal | ![](static/pills-add-normal.png)    |
-| Hover  | ![](static/pills-add-hover.png)     |
-<!-- | Active | ![](static/pills-add-active.png)    | -->
+| State  | Appearance                       |
+|--------|----------------------------------|
+| Normal | ![](static/pills-add-normal.png) |
+| Hover  | ![](static/pills-add-hover.png)  |
 
 ### Pills as summary
 
@@ -73,19 +83,6 @@ In some products, pills can act as a block with shared metrics. Their difference
 ![](static/pills-summary.png)
 
 For a live example, refer to the [Custom pills](/components/pills/pills-code#custom-pills).
-
-## Interaction
-
-Table: States for Pills
-
-| State                                  | Appearance example             |
-| -------------------------------------- | ------------------------------ |
-| Skeleton (initial loading of the page) | ![](static/pills-skeleton.png) |
-| Normal/Active                          | ![](static/normal_active.png)  |
-| Hover                                  | ![](static/hover.png)          |
-| Disabled                               | ![](static/disabled.png)       |
-| Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
-| Loading                                | ![](static/loading.png)        |
 
 ## Usage in UX/UI
 
@@ -129,4 +126,3 @@ If words are too long, you can shorten them into abbreviations that users can un
 Don’t use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
-
