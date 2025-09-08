@@ -7,6 +7,7 @@ import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveEleme
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import * as React from 'react';
 
+import { INDEX_OFFSET } from './Body';
 import { Cell } from './Cell';
 import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
@@ -19,7 +20,7 @@ type State = {
   expandedForAnimation: boolean;
 };
 
-class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
+export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 
@@ -37,6 +38,14 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
     super(props);
 
     this.handleClickRow = this.handleClickRow.bind(this);
+  }
+
+  componentDidMount() {
+    this.asProps.componentRef?.(this);
+  }
+
+  componentWillUnmount() {
+    this.asProps.componentRef?.(null);
   }
 
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
@@ -88,10 +97,22 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
       this.closeAccordion(row, closeDuration);
     } else {
       if (accordionMode === 'toggle' && expandedRows.size > 0) {
-        if (!this.state.expandedForAnimation) {
-          setTimeout(() => {
-            this.closeAccordion(row, closeDuration);
-          }, openDuration / 3);
+        const previousRows = new Map<number, DTRow<UniqKeyType>>();
+
+        this.asProps.flatRows.forEach((row, index) => {
+          if (expandedRows.has(row[UNIQ_ROW_KEY])) {
+            previousRows.set(index, row);
+          }
+        });
+
+        if (previousRows.size > 0) {
+          [...previousRows.entries()].forEach(([index, previousRow]) => {
+            if (!this.state.expandedForAnimation) {
+              setTimeout(() => {
+                this.asProps.componentsMap.get(index)?.closeAccordion(previousRow, closeDuration);
+              }, openDuration / 3);
+            }
+          });
         }
       }
       onExpandRow(row);

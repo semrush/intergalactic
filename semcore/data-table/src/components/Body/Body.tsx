@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
 import { MergedColumnsCell } from './MergedCells';
+import type { RowRoot } from './Row';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
@@ -26,6 +27,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   static style = style;
 
   rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
+  rowsComponentsMap = new Map<number, RowRoot<Data, UniqKeyType>>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
@@ -69,6 +71,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onCellClick,
       rawData,
       shadowVertical,
+      accordionMode,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -128,6 +131,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rowsHeightMap: this.rowsHeightMap,
       setRowHeight: this.setRowHeight,
       shadowVertical,
+      accordionMode,
+      componentsMap: this.rowsComponentsMap,
     };
   }
 
@@ -281,6 +286,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
+                      componentRef={i === 0
+                        ? (component: RowRoot<Data, UniqKeyType> | null) => {
+                            if (component) {
+                              this.rowsComponentsMap.set(startIndex + index, component);
+                            } else {
+                              this.rowsComponentsMap.delete(startIndex + index);
+                            }
+                          }
+                        : undefined}
                     />
                   );
                 })}
@@ -292,6 +306,13 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
               ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
+              componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
+                if (component) {
+                  this.rowsComponentsMap.set(startIndex + index, component);
+                } else {
+                  this.rowsComponentsMap.delete(startIndex + index);
+                }
+              }}
             />
           );
         })}

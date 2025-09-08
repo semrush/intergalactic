@@ -1,9 +1,11 @@
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
+import type { Body } from './Body';
 import type { CellRenderProps } from './Body.types';
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import type { RowRoot } from './Row';
 import type {
   ACCORDION,
   GRID_ROW_INDEX,
@@ -41,6 +43,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   animationExpand?: DataTableCellProps<UniqKeyType>['animationExpand'];
   accordionRowIndex?: DataTableCellProps<UniqKeyType>['accordionRowIndex'];
   isNonInteractive?: boolean;
+
+  componentRef?: (component: RowRoot<Data, UniqKeyType> | null) => void;
 };
 
 export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {
@@ -95,6 +99,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   rowsHeightMap: Map<number, [number, number, HTMLElement]>;
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
+  componentsMap: Map<number, RowRoot<Data, UniqKeyType>>;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
