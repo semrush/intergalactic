@@ -16,6 +16,10 @@ SHighlightedNotice {
   ) border-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box;
   }
 
+  & SLabel {
+    color: var(--intergalactic-icon-primary-feature-highlight, #8649e1);
+  }
+
   & SCloseIcon {
     color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 

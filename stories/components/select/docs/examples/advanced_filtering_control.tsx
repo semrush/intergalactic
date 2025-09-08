@@ -26,6 +26,7 @@ const Demo = () => {
             <InputSearch.Value aria-describedby={filter ? 'search-result-advanced' : undefined} />
             <InputSearch.Clear
               onClick={() => {
+                alert('Clicked on the Clear button');
                 return false;
               }}
             />

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-tags",
   "description": "Semrush InputTags Component",
-  "version": "16.0.7",
+  "version": "16.0.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.7",
-    "@semcore/input": "16.0.7",
-    "@semcore/portal": "16.0.7",
-    "@semcore/scroll-area": "16.0.7",
-    "@semcore/tag": "16.1.7"
+    "@semcore/flex-box": "16.0.8",
+    "@semcore/input": "16.0.8",
+    "@semcore/portal": "16.0.8",
+    "@semcore/scroll-area": "16.0.8",
+    "@semcore/tag": "16.1.8"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

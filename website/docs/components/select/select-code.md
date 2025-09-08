@@ -130,7 +130,7 @@ This example shows one of the ways to implement filtering.
 
 To get more control over the parts of `InputSearch` component, you can use the children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
 
-In this example the **Clear** button handler is disabled.
+In this example, the **Clear** button has a custom handler.
 
 ::: sandbox
 
