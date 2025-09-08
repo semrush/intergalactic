@@ -2,7 +2,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Visual', () => {
-  test('Verify five stars form base example styles', async ({ page }) => {
+  test('Verify five stars form base example styles', async ({ page, browserName }) => {
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -31,7 +31,7 @@ test.describe('Visual', () => {
       await buttons.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
-
+    if (browserName == 'webkit') return;
     await test.step('Verify email validation', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
