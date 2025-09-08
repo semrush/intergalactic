@@ -7,13 +7,12 @@ import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveEleme
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import * as React from 'react';
 
-import { INDEX_OFFSET } from './Body';
 import { Cell } from './Cell';
 import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 type State = {
@@ -89,16 +88,11 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
       this.closeAccordion(row, closeDuration);
     } else {
       if (accordionMode === 'toggle' && expandedRows.size > 0) {
-        // const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
-        // if (previousRows.length > 0) {
-        //   previousRows.forEach((previousRow) => {
         if (!this.state.expandedForAnimation) {
           setTimeout(() => {
             this.closeAccordion(row, closeDuration);
           }, openDuration / 3);
         }
-        //   });
-        // }
       }
       onExpandRow(row);
     }
@@ -120,16 +114,13 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
     }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
   };
 
-  handleClickRow(e: React.SyntheticEvent) {
-    const ariaIndex = Number(e.currentTarget.getAttribute('aria-rowindex'));
-    if (Number.isNaN(ariaIndex) || ariaIndex < INDEX_OFFSET) return;
-
-    const index = ariaIndex - INDEX_OFFSET;
-    const row = this.asProps.flatRows[index];
-
-    if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(row, index);
-    }
+  handleClickRow(row: DTRow<UniqKeyType>) {
+    return (e: React.SyntheticEvent) => {
+      const index = row[ROW_INDEX];
+      if (!isInteractiveElement(e.target)) {
+        this.handleExpandRow(row, index);
+      }
+    };
   }
 
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
@@ -337,7 +328,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTab
           accordionType={accordionType}
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
-          onClick={this.handleClickRow}
+          onClick={this.handleClickRow(row)}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
