@@ -525,6 +525,25 @@ test.describe('Functional tests', () => {
       await page.keyboard.press('|');
       await expect(inputText.nth(count1 - 1)).toHaveText('Test');
     });
+
+    await test.step('Verify entered text is preserved when paste action happened', async () => {
+      const bufferedText = 'Buffer';
+      const typedValue = 'Test';
+      const tagCount = await tag.count();
+
+      await page.keyboard.type(typedValue);
+      await inputValue.evaluate((el, text) => {
+        const event = new Event('paste', { bubbles: true, cancelable: true });
+        (event as any).clipboardData = {
+          getData: (type: string) => (type === 'text/plain' ? text : ''),
+          types: ['text/plain'],
+        };
+        el.dispatchEvent(event);
+      }, bufferedText);
+
+      await expect(tag).toHaveCount(tagCount + 1);
+      await expect(inputValue).toHaveValue(typedValue);
+    });
   });
 
   test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', async ({ page }) => {
@@ -915,33 +934,5 @@ test.describe('Functional tests', () => {
       await expect(tag).toHaveCount(count);
       await expect(inputValue).toHaveAttribute('value', 'Test');
     });
-  });
-
-  test('Verify entered text is preserved when paste action happened', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-    const bufferedText = 'Buffer';
-    const typedValue = 'Test';
-    const tagCount = await tag.count();
-
-    await inputValue.click();
-
-    await page.keyboard.type(typedValue);
-    await inputValue.evaluate((el, text) => {
-      const event = new Event('paste', { bubbles: true, cancelable: true });
-      (event as any).clipboardData = {
-        getData: (type: string) => (type === 'text/plain' ? text : ''),
-        types: ['text/plain'],
-      };
-      el.dispatchEvent(event);
-    }, bufferedText);
-
-    await expect(tag).toHaveCount(tagCount + 1);
-    await expect(inputValue).toHaveValue(typedValue);
   });
 });
