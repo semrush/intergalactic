@@ -125,6 +125,11 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
+            link: '/content/capitalization/capitalization',
+            activeMatch: '/content/capitalization/',
+            text: 'Capitalization',
+          },
+          {
             link: '/content/date-format/date-format',
             activeMatch: '/content/date-format/',
             text: 'Date format',

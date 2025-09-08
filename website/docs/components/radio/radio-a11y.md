@@ -44,16 +44,6 @@ Table: Attributes
 
 You can also group `Radio` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of radio buttons.
 
-<!-- ### Roles & attributes
-
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
-
-Table: Roles and attributes
-
-| Component | Attribute                   |  Usage             |
-| --------- | --------------------------- | ---------------------------------------------------- |
-| `RadioGroup` | `aria-labelledby="IDREF"` | Refers to the element that contains the label of the radio group.  | -->
-
 ## Resources
 
 - [W3 radio group examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/radio/radio-1/radio-1.html) has detailed information about the radio group accessible behavior.
