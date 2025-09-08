@@ -35,7 +35,7 @@ Table: Roles and attributes
 
 ### Roles & attributes
 
-The list below will help you to keep in mind the necessary roles and attributes you need to set to `tabpanel` with your content to make TabLine and content it operates fully accessible. [Check our code examples](/components/tab-line/tab-line-code).
+The following list will help you to keep in mind the necessary roles and attributes you need to set to `tabpanel` with your content to make TabLine and content it operates fully accessible. [Check our code examples](/components/tab-line/tab-line-code).
 
 Table: Roles and attributes
 
