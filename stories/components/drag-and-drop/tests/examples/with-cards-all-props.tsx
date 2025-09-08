@@ -17,24 +17,14 @@ type DnDCardProps = {
   isCustomFocus?: boolean;
 };
 
-const stableRandom = (seed: number) => {
-  let randomIndex = seed;
-  return () => {
-    if (randomIndex > 20) randomIndex = 1;
-    return Math.abs(Math.sin(Math.PI * randomIndex * Math.cos(100 - randomIndex++)));
-  };
-};
-
 const WidgetCard: React.FC<{ title: string }> = ({ title }) => {
   const data = React.useMemo(() => {
-    const random = stableRandom(title.length);
     const dateFormatter = new Intl.DateTimeFormat('en', { month: 'numeric', day: 'numeric' });
-    return Array(3)
-      .fill(0)
-      .map((_, i) => ({
-        date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 3 * i)),
-        value: Math.round(random() * 10),
-      }));
+    return [
+      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 3)), value: 4 },
+      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 6)), value: 7 },
+      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 9)), value: 2 },
+    ];
   }, [title]);
 
   return (
