@@ -13,6 +13,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Styles: replaced some hardcoded color values with variables.
 
+## [16.0.5] - 2025-09-12
+
+### Fixed
+
+- `PillsFH.HighlightedItem.Addon` didn't pass attributes to DOM node.
+
 ## [16.0.4] - 2025-08-29
 
 ### Fixed
