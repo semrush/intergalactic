@@ -39,7 +39,7 @@ class Demo extends React.PureComponent {
               />
             ))}
           </ScrollArea.Container>
-          <ScrollArea.Bar w='40px'>
+          <ScrollArea.Bar w='40px' orientation='vertical'>
             <ScrollArea.Bar.Slider />
           </ScrollArea.Bar>
         </ScrollArea>
