@@ -2,14 +2,14 @@ import { render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import React, { createRef } from 'react';
 
-import { BadgeFH } from '../src/components/badge/badge';
+import { BadgeFH } from '../src/components/badge/Badge';
 import { ButtonFH } from '../src/components/button/Button';
-import { CheckboxFH } from '../src/components/checkbox/checkbox';
-import { InputFH } from '../src/components/input/input';
-import { NoticeFH } from '../src/components/notice/notice';
+import { CheckboxFH } from '../src/components/checkbox/Checkbox';
+import { InputFH } from '../src/components/input/Input';
+import { NoticeFH } from '../src/components/notice/Notice';
 import { PillsFH } from '../src/components/pills/Pills';
-import { RadioFH } from '../src/components/radio/radio';
-import { SwitchFH } from '../src/components/switch/switch';
+import { RadioFH } from '../src/components/radio/Radio';
+import { SwitchFH } from '../src/components/switch/Switch';
 import { TabLineFH } from '../src/components/tab-line/TabLine';
 import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
 
