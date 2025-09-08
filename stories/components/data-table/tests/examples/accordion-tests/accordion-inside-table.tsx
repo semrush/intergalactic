@@ -14,8 +14,8 @@ const Demo = (props: AccordionWithButtonProps) => {
       data={data}
       aria-label='Accordion inside table'
       accordionMode={props.accordionMode}
-      onAccordionToggle={(type, i) => {
-        console.log('called', type, i);
+      onAccordionToggle={(type, key, i) => {
+        console.log('called', type, key, i);
       }}
       h='300px'
       defaultGridTemplateColumnWidth='1fr'

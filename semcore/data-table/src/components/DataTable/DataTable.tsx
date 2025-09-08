@@ -21,7 +21,7 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem,
+  DataRowItem, DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -1287,6 +1287,9 @@ class DataTableRoot<
 
     const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
       const columns = new Set(columnNames);
+
+      let accordionInCell: null | React.ReactNode | DataTableData = null;
+
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
@@ -1302,6 +1305,10 @@ class DataTableRoot<
             columnsToRow.forEach((value) => {
               columns.delete(value);
             });
+          }
+
+          if (value?.[ACCORDION]) {
+            accordionInCell = value[ACCORDION];
           }
 
           return acc;
@@ -1323,6 +1330,8 @@ class DataTableRoot<
       if (row[ACCORDION]) {
         dtRow[ACCORDION] = row[ACCORDION];
         gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+      } else if (accordionInCell) {
+        gridRowIndex = Array.isArray(accordionInCell) ? gridRowIndex + accordionInCell.length : gridRowIndex + 1;
       }
 
       excludeColumns?.forEach((value) => {
