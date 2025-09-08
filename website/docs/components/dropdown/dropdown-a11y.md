@@ -37,7 +37,7 @@ Table: Default roles and attributes
 
 ## Considerations for developers
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The following list will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
 Table: Recommended roles and attributes
 
