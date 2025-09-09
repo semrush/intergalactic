@@ -27,6 +27,10 @@ SDropdownMenuList {
       border-radius: var(--intergalactic-control-rounded, 6px);
     }
   }
+
+  SItemContent:focus-visible {
+    outline: none;
+  }
 }
 
 SDropdownMenuItemContainer[nesting-trigger] {
@@ -70,10 +74,6 @@ SDropdownNestingItem SDropdownMenuItemContainer {
   padding-bottom: 0;
   padding-left: 0;
   min-height: auto;
-}
-
-SItemContent:focus {
-  outline: none;
 }
 
 SItemHint {
