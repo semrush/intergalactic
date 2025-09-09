@@ -73,7 +73,7 @@ export type DataTableProps<
     defaultGridTemplateColumnWidth?: string;
 
     /**
-     * Flag for compact view (fewer paddings)
+     * Flag for compact view (smaller horizontal paddings)
      */
     compact?: boolean;
 

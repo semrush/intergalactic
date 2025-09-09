@@ -24,7 +24,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 ## Card layout for tables
 
-When displaying a table in a card, set `Card.Body` paddings to `0 0 var(--intergalactic-spacing-1x)`, and `variant="card"` for the table.
+When displaying a table in a card, set paddings to `0 0 --intergalactic-spacing-1x` for `Card.Body`, and `variant="card"` for the table.
 
 ::: sandbox
 
