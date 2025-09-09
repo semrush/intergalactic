@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.0] - 2025-09-08
+
+### Added
+
+- New group of tokens for our `Illustration` component.
+
 ## [16.2.0] - 2025-09-03
 
 ### Added
