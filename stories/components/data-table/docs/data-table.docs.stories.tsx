@@ -19,6 +19,7 @@ import EmptyTableExample from './examples/empty-table';
 import ExportInImageExample from './examples/export-in-image';
 import FixedColumnsExample from './examples/fixed-columns';
 import FixedHeaderExample from './examples/fixed-header';
+import LimitedModeTableExample from './examples/limited-mode';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
 import RowThemesExample from './examples/row-themes';
@@ -186,4 +187,8 @@ export const VirtualScrollInTable: Story = {
 
 export const VirtualScrollInTableDifferentHeight: Story = {
   render: VirtualScrollInTableDifferentHeightExample,
+};
+
+export const LimitedMode: Story = {
+  render: LimitedModeTableExample,
 };
