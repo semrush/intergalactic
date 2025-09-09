@@ -2,8 +2,8 @@ import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger
 import Button, { ButtonLink } from '@semcore/button';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Note/l';
-import IconM from '@semcore/icon/Note/m';
+import IconL from '@semcore/icon/Monitoring/l';
+import IconM from '@semcore/icon/Monitoring/m';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Pills from '@semcore/pills';

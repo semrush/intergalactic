@@ -661,6 +661,12 @@ const iconsList = {
       tags: ['math', 'plus', 'плюс', 'добавить', 'add', 'alt'],
     },
     {
+      name: 'Monitoring',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['observe', 'magnifying glass', 'zoom', 'chart', 'bars'],
+    },
+    {
       name: 'Pause',
       size: ['l', 'm'],
       group: 'Action',

@@ -31,9 +31,6 @@ const themes = ['light', 'dark'];
 const warning = !process.argv.includes('--no-warning');
 
 const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
-const excludeTokens = JSON.parse(
-  await fs.readFile(resolvePath(dirname, './exclude-tokens.json'), 'utf-8'),
-);
 
 const autoTheme: Record<string, { name: string; value: string; description: string }[]> = {};
 
@@ -49,28 +46,7 @@ for (const theme of themes) {
     prefix,
   );
   const { values, types, rawValues, descriptions, basicTokens, highlightsTokens } = processed;
-  let { processedTokens } = processed;
-
-  for (const excludeToPath in excludeTokens) {
-    const excludeList: string[] = excludeTokens[excludeToPath];
-    const excludedTokens: typeof processedTokens = [];
-    processedTokens = processedTokens.filter((token) => {
-      const exclude = excludeList.includes(token.name);
-      if (exclude) excludedTokens.push(token);
-      return !exclude;
-    });
-
-    if (excludedTokens.length > 0) {
-      const path = excludeToPath.replace('{theme}', theme);
-      await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
-      await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
-      if (theme === defaultTheme) {
-        const path = excludeToPath.replace('{theme}', 'default');
-        await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
-        await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
-      }
-    }
-  }
+  const { processedTokens } = processed;
 
   await writeIfChanged(
     `./semcore/core/src/theme/themes/${theme}.css`,
