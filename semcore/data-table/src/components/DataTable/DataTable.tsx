@@ -609,9 +609,12 @@ class DataTableRoot<
           Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
-        } else if (newRow > (limit?.rows ?? 0) + 1) {
-          return;
         } else {
+          const areLimitsDefined = limit?.rows !== undefined || limit?.columns !== undefined;
+          if (areLimitsDefined && newRow > (limit?.rows ?? 0) + 1) {
+            return;
+          }
+
           colI = colI - 1;
         }
       }
