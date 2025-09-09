@@ -344,6 +344,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           render={Box}
           role='row'
           aria-rowindex={ariaRowIndex}
+          data-rowindex={gridRowIndex}
           accordionType={accordionType}
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
@@ -422,6 +423,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             key={rowIndex}
             role='row'
             aria-rowindex={ariaRowIndex + 1}
+            data-rowindex={gridRowIndex + 1}
             id={accordionId}
             visible={expanded}
             interactive
@@ -460,8 +462,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   aria-hidden={!expanded}
                   aria-posinset={i + 1}
                   aria-level={ariaLevel + 1}
-                  ariaRowIndex={ariaRowIndex + 1 + i}
+                  aria-rowindex={ariaRowIndex + 1 + i}
                   gridRowIndex={gridRowIndex + 1 + i}
+                  data-rowindex={gridRowIndex + 1 + i}
                   isAccordionRow={true}
                   getFixedStyle={getFixedStyle}
                   animationExpand={expanded}
