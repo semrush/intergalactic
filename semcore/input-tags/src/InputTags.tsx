@@ -139,6 +139,7 @@ class InputTags extends Component<IInputTagsProps> {
   };
 
   handlePaste = (event: React.ClipboardEvent) => {
+    const currentEnteredValue = this.inputRef.current?.value;
     const value = event.clipboardData.getData('text/plain');
     const { delimiters, onAdd, onAppend } = this.asProps;
     const reg = new RegExp(
@@ -148,21 +149,17 @@ class InputTags extends Component<IInputTagsProps> {
         .join('|'),
     );
     const tagsToBeAdded = value.split(reg).filter(Boolean);
+
+    if (currentEnteredValue) {
+      tagsToBeAdded.push(currentEnteredValue);
+    }
+
     if (tagsToBeAdded.length > 0) {
       event.preventDefault();
       for (const tag of tagsToBeAdded) {
         onAdd?.(tag, event);
       }
       onAppend?.(tagsToBeAdded, event);
-
-      const currentValue = this.inputRef.current?.value;
-      if (currentValue) {
-        setTimeout(() => {
-          if (this.inputRef.current) {
-            this.inputRef.current.value = currentValue;
-          }
-        }, 0);
-      }
     }
     if (typeof this.inputRef.current?.scrollIntoView === 'function') {
       setTimeout(() => {

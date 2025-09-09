@@ -526,7 +526,7 @@ test.describe('Functional tests', () => {
       await expect(inputText.nth(count1 - 1)).toHaveText('Test');
     });
 
-    await test.step('Verify entered text is preserved when paste action happened', async () => {
+    await test.step('Verify entered text is pasted when paste action happened', async () => {
       const bufferedText = 'Buffer';
       const typedValue = 'Test';
       const tagCount = await tag.count();
@@ -541,8 +541,8 @@ test.describe('Functional tests', () => {
         el.dispatchEvent(event);
       }, bufferedText);
 
-      await expect(tag).toHaveCount(tagCount + 1);
-      await expect(inputValue).toHaveValue(typedValue);
+      await expect(tag).toHaveCount(tagCount + 2);
+      await expect(inputValue).toBeEmpty();
     });
   });
 
