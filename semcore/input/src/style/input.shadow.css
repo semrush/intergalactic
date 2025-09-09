@@ -17,6 +17,16 @@ SInput {
       background-color: rgb(250, 255, 189);
     }
   }
+
+  SValue {
+    &:focus, &:focus-visible {
+      outline: none;
+
+      &::after {
+        outline: none;
+      }
+    }
+  }
 }
 
 SValue {
@@ -32,10 +42,6 @@ SValue {
   text-overflow: ellipsis;
   font-family: inherit;
   background: transparent;
-
-  &:focus {
-    outline: none;
-  }
 
   &::placeholder {
     color: var(--intergalactic-text-placeholder, #8a8e9b);
