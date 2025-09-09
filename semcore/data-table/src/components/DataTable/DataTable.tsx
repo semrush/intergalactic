@@ -321,6 +321,7 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
+      limit,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -361,6 +362,7 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
+      limit,
     };
   }
 
@@ -496,6 +498,7 @@ class DataTableRoot<
     colIndex: ColIndex,
     direction?: 'up' | 'down' | 'left' | 'right',
   ) => {
+    const { limit } = this.asProps;
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -531,9 +534,11 @@ class DataTableRoot<
     const cell = row?.querySelector(
       `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > [role=columnheader][aria-colindex="${
+      }"]:not([aria-hidden="true"]), :scope > [role=columnheader][aria-colindex="${
         newCol + 1
-      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
+      }"]:not([aria-hidden="true"]), :scope > div > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"]:not([aria-hidden="true"])`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -570,7 +575,10 @@ class DataTableRoot<
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
-
+        // skipping x-axis movement of the focus within limit overlay and there is only limit by rows
+        if (limit?.rows !== undefined && limit.columns === undefined && newCol === limit.rows) {
+          return;
+        }
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
@@ -578,7 +586,13 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          colI = direction === 'left' ? colI - 1 : colI + 1;
+          if (direction === 'right' && limit?.columns !== undefined) {
+            if (newCol > limit.columns) return;
+
+            rowI = direction === 'right' ? rowI - 1 : rowI;
+          } else {
+            colI = direction === 'left' ? colI - 1 : colI + 1;
+          }
         } else {
           rowI = rowI - 1;
         }
@@ -589,6 +603,8 @@ class DataTableRoot<
           Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
+        } else if (newRow > (limit?.rows ?? 0) + 1) {
+          return;
         } else {
           colI = colI - 1;
         }
@@ -726,9 +742,8 @@ class DataTableRoot<
           row = firstAvailableRow;
         }
       }
-
       const cell = row
-        ?.querySelectorAll('[role=gridcell], [role=columnheader]')
+        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
         .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');

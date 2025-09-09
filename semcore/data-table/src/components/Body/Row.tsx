@@ -1,4 +1,4 @@
-import { Box, Collapse } from '@semcore/base-components';
+import { Box, Collapse, Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import * as React from 'react';
@@ -47,6 +47,96 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     }
   };
 
+  private createLimitConfig<T>(value: T | undefined):
+    | { isDefined: true; value: T }
+    | { isDefined: false; value: undefined } {
+    return value !== undefined
+      ? { isDefined: true, value }
+      : { isDefined: false, value: undefined };
+  }
+
+  get limitConfiguration() {
+    const { rows, columns, renderOverlay } = this.asProps.limit ?? {};
+
+    return {
+      rows: this.createLimitConfig(rows),
+      columns: this.createLimitConfig(columns),
+      renderOverlay,
+    };
+  }
+
+  get isRowLimited() {
+    const { rowIndex } = this.asProps;
+    const { rows } = this.limitConfiguration;
+
+    if (!rows.isDefined) return false;
+
+    return rowIndex > rows.value;
+  }
+
+  get isRowHidden() {
+    const limitConfig = this.limitConfiguration;
+    return limitConfig.rows.isDefined && !limitConfig.columns.isDefined && this.isRowLimited ? true : undefined;
+  }
+
+  get limitOverlayGridArea() {
+    const {
+      columns,
+      selectedRows,
+      hasGroups,
+      currentMaxGridIndex,
+      currentRowLimitOffset,
+    } = this.asProps;
+
+    const { rows: rowsLimitConfig, columns: columnsLimitConfig } = this.limitConfiguration;
+
+    const rowOffset = hasGroups ? 3 : 2;
+    const columnOffset = selectedRows ? 1 : 0;
+
+    const rowStart = rowsLimitConfig.isDefined
+      ? rowsLimitConfig.value + rowOffset + currentRowLimitOffset
+      : rowOffset;
+    const columnStart = columnsLimitConfig.isDefined ? columnsLimitConfig.value + columnOffset + 1 : columnOffset + 1;
+    const rowEnd = currentMaxGridIndex + rowOffset;
+    const columnEnd = columns.length + 1;
+
+    return `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
+  }
+
+  renderLimitOverlay() {
+    const SLimitOverlayCellWrapper = Flex;
+    const { rowIndex, columns, rows, styles } = this.asProps;
+
+    const { rows: rowsLimit, columns: columnsLimit, renderOverlay } = this.limitConfiguration;
+    if (!rowsLimit.isDefined && !columnsLimit.isDefined && !renderOverlay) return null;
+    if ((rowsLimit.value ?? 0) !== rowIndex) return null;
+
+    const colIndex = columnsLimit.isDefined ? columnsLimit.value + 1 : 1;
+    const colSpan = columns.length - (columnsLimit.value ?? 0);
+    const rowsSpan = rows.length - (rowsLimit.value ?? 0);
+
+    return sstyled(styles)(
+      <SLimitOverlayCellWrapper
+        // @ts-ignore
+        gridArea={this.limitOverlayGridArea}
+      >
+        <Box
+          role='gridcell'
+          aria-colindex={colIndex}
+          aria-colspan={colSpan}
+          aria-rowspan={rowsSpan}
+          tabIndex={-1}
+        >
+          {renderOverlay?.()}
+        </Box>
+      </SLimitOverlayCellWrapper>,
+    );
+  }
+
+  renderLimitOverlayIf(condition: boolean) {
+    return condition && this.renderLimitOverlay();
+  }
+
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
@@ -64,7 +154,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       expanded,
       accordionDataGridArea,
       'aria-level': ariaLevel = 1,
-      scrollAreaRef,
       selectedRows,
       uid,
       getFixedStyle,
@@ -73,6 +162,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       animationExpand,
       accordionRowIndex,
       accordionDuration,
+      limit,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -94,6 +184,12 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     const accordionId = `${uid}_${ariaRowIndex + 1}`;
     const rowUniqKey = row[UNIQ_ROW_KEY];
 
+    const { rows: rowsLimit, columns: columnsLimit } = this.limitConfiguration;
+    const shouldRenderLimitOverlayAsFirstCell =
+      (rowsLimit.value === 0 && columnsLimit.value === 0) ||
+      (rowsLimit.value === 0 && !columnsLimit.isDefined) ||
+      (columnsLimit.value === 0 && !rowsLimit.isDefined);
+
     return sstyled(styles)(
       <>
         <SRow
@@ -103,8 +199,22 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
           accordionType={accordionType}
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
+          aria-hidden={this.isRowHidden}
         >
+          {this.renderLimitOverlayIf(shouldRenderLimitOverlayAsFirstCell)}
           {columns.map((column, i) => {
+            let isCellHidden: true | undefined = undefined;
+
+            if (limit) {
+              if (rowsLimit.isDefined && columnsLimit.isDefined) {
+                isCellHidden = rowIndex >= rowsLimit.value && i >= columnsLimit.value ? true : undefined;
+              } else if (!rowsLimit.isDefined && columnsLimit.isDefined) {
+                isCellHidden = rowIndex >= 0 && i >= columnsLimit.value ? true : undefined;
+              } else if (rowsLimit.isDefined && !columnsLimit.isDefined) {
+                isCellHidden = rowIndex >= rowsLimit.value ? true : undefined;
+              }
+            }
+
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
               return sstyled(styles)(
@@ -117,6 +227,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
                   onClick={this.handleClickCheckbox(!checked)}
+                  aria-hidden={isCellHidden}
                 >
                   <Checkbox
                     checked={checked}
@@ -130,8 +241,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
             }
 
             const index = i;
-            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
-              row[column.name];
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined = row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -167,9 +277,11 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
                 animationExpand={animationExpand}
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
+                aria-hidden={isCellHidden}
               />
             );
           })}
+          {this.renderLimitOverlayIf(!shouldRenderLimitOverlayAsFirstCell)}
         </SRow>
 
         {React.isValidElement(accordion) && (

@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DTValue, DTUse, DataTableData } from '../DataTable/DataTable.types';
+import type { DTValue, DTUse, DataTableData, DataTableProps } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 export type DTRow<UniqKeyType> = {
@@ -72,6 +72,11 @@ export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
+  limit?: DataTableProps<any, any, any>['limit'];
+  currentMaxGridIndex: number;
+  currentRowLimitOffset: number;
+  flatRows: DTRow<UniqKeyType>[];
+  hasGroups: boolean;
 };
 
 export type DataTableRowType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

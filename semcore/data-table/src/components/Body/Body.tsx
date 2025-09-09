@@ -103,6 +103,12 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleClickRow = (row: DTRow<UniqKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
+    const { limit } = this.asProps;
+
+    if (limit?.rows !== undefined) {
+      if (index >= limit.rows) return;
+    }
+
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(row, index);
     }
@@ -113,6 +119,33 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       this.handleExpandRow(opt.row, opt.rowIndex);
     }
   };
+
+  _getExpandedRowsCount() {
+    const { flatRows, expandedRows } = this.asProps;
+
+    if (!expandedRows?.size) {
+      return 0;
+    }
+
+    let expandedCount = 0;
+
+    for (const expandedRowKey of expandedRows) {
+      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === expandedRowKey);
+      const expandedRow = flatRows[rowIndex]?.[ACCORDION];
+      expandedCount += Array.isArray(expandedRow) ? expandedRow.length : 1;
+    }
+
+    return expandedCount;
+  }
+
+  get currentMaxGridIndex() {
+    const { flatRows } = this.asProps;
+    return flatRows.length + this._getExpandedRowsCount();
+  }
+
+  get currentRowLimitOffset() {
+    return this._getExpandedRowsCount();
+  }
 
   getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<UniqKeyType> {
     const {
@@ -135,6 +168,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      limit,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -190,6 +224,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
+      limit,
+      flatRows,
+      hasGroups,
+      currentMaxGridIndex: this.currentMaxGridIndex,
+      currentRowLimitOffset: this.currentRowLimitOffset,
     };
   }
 

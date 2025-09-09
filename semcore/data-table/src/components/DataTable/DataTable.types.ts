@@ -127,7 +127,7 @@ export type DataTableProps<
         selectedRowIndex: number;
         isSelected: boolean;
         row: DTRow<UniqKeyType>;
-      },
+      }
     ) => void;
 
     /**
@@ -157,6 +157,16 @@ export type DataTableProps<
      * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
      */
     onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
+
+    /** Defines a limit configuration */
+    limit?: {
+      /** Rows limit */
+      rows?: number;
+      /** Columns limit */
+      columns?: number;
+      /** Limit overlay */
+      renderOverlay: () => React.ReactNode;
+    };
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
