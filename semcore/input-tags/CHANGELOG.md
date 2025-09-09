@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.0.8] - 2025-09-12
+## [16.0.9] - 2025-09-12
 
 ### Fixed
 
-- Entered text is cleared when a new text is pasted afterwards.
+* Entered text is pasted when a new text is pasted afterwards.
+
+## [16.0.8] - 2025-09-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [16.0.7 ~> 16.0.8], `@semcore/input` [16.0.7 ~> 16.0.8], `@semcore/base-components` [16.2.1 ~> 16.2.2]).
 
 ## [16.0.7] - 2025-08-29
 
