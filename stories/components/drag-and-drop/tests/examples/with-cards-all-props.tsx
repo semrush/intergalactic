@@ -20,10 +20,12 @@ type DnDCardProps = {
 const WidgetCard: React.FC<{ title: string }> = ({ title }) => {
   const data = React.useMemo(() => {
     const dateFormatter = new Intl.DateTimeFormat('en', { month: 'numeric', day: 'numeric' });
+    const baseDate = new Date('2024-01-01');
+
     return [
-      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 3)), value: 4 },
-      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 6)), value: 7 },
-      { date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 9)), value: 2 },
+      { date: dateFormatter.format(new Date(baseDate.getTime() - 1000 * 60 * 60 * 24 * 3)), value: 4 },
+      { date: dateFormatter.format(new Date(baseDate.getTime() - 1000 * 60 * 60 * 24 * 6)), value: 7 },
+      { date: dateFormatter.format(new Date(baseDate.getTime() - 1000 * 60 * 60 * 24 * 9)), value: 2 },
     ];
   }, [title]);
 
