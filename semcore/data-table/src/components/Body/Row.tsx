@@ -30,6 +30,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   private cellName: string = '';
 
+  rowElementRef = React.createRef<HTMLDivElement>();
+
   state: State = {
     expandedForAnimation: false,
   };
@@ -97,19 +99,19 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       this.closeAccordion(row, closeDuration);
     } else {
       if (accordionMode === 'toggle' && expandedRows.size > 0) {
-        const previousRows = new Map<number, DTRow<UniqKeyType>>();
+        const previousRows = new Map<UniqKeyType, DTRow<UniqKeyType>>();
 
         this.asProps.flatRows.forEach((row, index) => {
           if (expandedRows.has(row[UNIQ_ROW_KEY])) {
-            previousRows.set(index, row);
+            previousRows.set(row[UNIQ_ROW_KEY], row);
           }
         });
 
         if (previousRows.size > 0) {
-          [...previousRows.entries()].forEach(([index, previousRow]) => {
+          [...previousRows.entries()].forEach(([uniqKey, previousRow]) => {
             if (!this.state.expandedForAnimation) {
               setTimeout(() => {
-                this.asProps.componentsMap.get(index)?.closeAccordion(previousRow, closeDuration);
+                this.asProps.componentsMap.get(uniqKey)?.closeAccordion(previousRow, closeDuration);
               }, openDuration / 3);
             }
           });
@@ -118,6 +120,25 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onExpandRow(row);
     }
     this.forceUpdate();
+
+    setTimeout(() => {
+      const { componentsMap, expandedRows } = this.asProps;
+      const skip = new Set<UniqKeyType>();
+
+      componentsMap.forEach((component, index) => {
+        if (expandedRows.has(component.props.row[UNIQ_ROW_KEY]) && component.props.row[ROW_GROUP]) {
+          component.props.row[ROW_GROUP].forEach((item) => {
+            skip.add(item);
+          });
+        }
+
+        if (skip.has(component.props.row[UNIQ_ROW_KEY])) {
+          return;
+        }
+
+        component.recalculateAriaRowIndex();
+      });
+    }, closeDuration + 100);
   };
 
   closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
@@ -147,6 +168,45 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
       this.handleExpandRow(opt.row, opt.rowIndex);
+    }
+  };
+
+  recalculateAriaRowIndex = () => {
+    const {
+      expandedRows,
+      flatRows,
+      row,
+    } = this.asProps;
+
+    const index = row[ROW_INDEX];
+
+    const ariaRowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
+      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
+
+      if (rowIndex < index) {
+        const expandedRow = flatRows[rowIndex] instanceof MergedRowsCell ? flatRows[rowIndex].accordion : flatRows[rowIndex]?.[ACCORDION];
+        if (Array.isArray(expandedRow)) {
+          acc = acc + expandedRow.length;
+        } else {
+          acc = acc + 1;
+        }
+      }
+
+      return acc;
+    }, index + INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
+
+    const rowElement = this.rowElementRef.current;
+
+    rowElement?.setAttribute('aria-rowindex', ariaRowIndex.toString());
+
+    if (rowElement?.nextSibling instanceof HTMLElement && rowElement.nextSibling.dataset.uiName === 'Collapse') {
+      let increment = 1;
+      const value = row[this.cellName];
+
+      if (value instanceof MergedRowsCell) {
+        increment = value.rowsCount;
+      }
+      rowElement.nextSibling.setAttribute('aria-rowindex', (ariaRowIndex + increment).toString());
     }
   };
 
@@ -304,6 +364,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       animationExpand,
       accordionRowIndex,
       accordionDuration,
+      use,
     } = this.asProps;
 
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
@@ -319,12 +380,20 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
       if (foundCell) {
         this.cellName = foundCell[0];
+        const value = foundCell[1];
 
-        accordion = foundCell[1] instanceof MergedRowsCell ? foundCell[1].accordion : foundCell[1][ACCORDION];
+        accordion = value instanceof MergedRowsCell
+          ? value.accordion
+          : this.cellHasAccordion(value)
+            ? value[ACCORDION]
+            : null;
       }
     }
 
     let accordionDataGridArea = '';
+
+    const value = row[this.cellName];
+    const accordionAriaIndex = value instanceof MergedRowsCell ? ariaRowIndex + value.rowsCount : ariaRowIndex + 1;
 
     if (accordion) {
       const rowIncrement = row[ROW_GROUP]?.size ? row[ROW_GROUP].size + 1 : 1;
@@ -341,10 +410,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     return sstyled(styles)(
       <>
         <SRow
+          ref={this.rowElementRef}
           render={Box}
           role='row'
           aria-rowindex={ariaRowIndex}
-          data-rowindex={gridRowIndex}
           accordionType={accordionType}
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
@@ -422,8 +491,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           <SCollapseRow
             key={rowIndex}
             role='row'
-            aria-rowindex={ariaRowIndex + 1}
-            data-rowindex={gridRowIndex + 1}
+            aria-rowindex={accordionAriaIndex}
             id={accordionId}
             visible={expanded}
             interactive
@@ -462,13 +530,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   aria-hidden={!expanded}
                   aria-posinset={i + 1}
                   aria-level={ariaLevel + 1}
-                  aria-rowindex={ariaRowIndex + 1 + i}
+                  ariaRowIndex={accordionAriaIndex + i}
                   gridRowIndex={gridRowIndex + 1 + i}
-                  data-rowindex={gridRowIndex + 1 + i}
                   isAccordionRow={true}
                   getFixedStyle={getFixedStyle}
                   animationExpand={expanded}
                   accordionRowIndex={i}
+                  use={use}
                 />
               );
             })}

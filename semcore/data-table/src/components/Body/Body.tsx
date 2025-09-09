@@ -27,7 +27,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   static style = style;
 
   rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
-  rowsComponentsMap = new Map<number, RowRoot<Data, UniqKeyType>>();
+  rowsComponentsMap = new Map<UniqKeyType, RowRoot<Data, UniqKeyType>>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
@@ -279,15 +279,13 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
-                      componentRef={i === 0
-                        ? (component: RowRoot<Data, UniqKeyType> | null) => {
-                            if (component) {
-                              this.rowsComponentsMap.set(startIndex + index, component);
-                            } else {
-                              this.rowsComponentsMap.delete(startIndex + index);
-                            }
-                          }
-                        : undefined}
+                      componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
+                        if (component) {
+                          this.rowsComponentsMap.set(item[UNIQ_ROW_KEY], component);
+                        } else {
+                          this.rowsComponentsMap.delete(item[UNIQ_ROW_KEY]);
+                        }
+                      }}
                     />
                   );
                 })}
@@ -301,9 +299,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
               componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
                 if (component) {
-                  this.rowsComponentsMap.set(startIndex + index, component);
+                  this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
                 } else {
-                  this.rowsComponentsMap.delete(startIndex + index);
+                  this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
                 }
               }}
             />

@@ -458,7 +458,7 @@ class DataTableRoot<
 
   getRow = (index: number) => {
     return this.tableRef.current?.querySelector(
-      `[data-rowindex="${index + 2}"]:not([aria-hidden="true"])`,
+      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
     );
   };
 
@@ -495,11 +495,10 @@ class DataTableRoot<
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
-    const flatRows = this.getFlatRows();
-    const maxRow = flatRows[flatRows.length - 1][GRID_ROW_INDEX] + 1;
+    const maxRow = this.totalRows || 1;
 
     const currentRow = this.tableRef.current?.querySelector(
-      `[data-rowindex="${this.focusedCell[0] + 2}"]`,
+      `[aria-rowindex="${this.focusedCell[0] + 1}"]`,
     );
 
     const headerCells = this.tableRef.current?.querySelectorAll('[role=columnheader]');
@@ -571,7 +570,7 @@ class DataTableRoot<
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.parentElement?.getAttribute('data-rowindex')) === 3 ||
+          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
@@ -596,11 +595,11 @@ class DataTableRoot<
       this.changeFocusCell(rowIndex, colI, direction);
     } else if (
       row === null &&
-      (direction === 'down' || direction === 'up')
+      this.focusedCell[0] === 0 &&
+      direction === 'down' &&
+      this.asProps.virtualScroll
     ) {
-      const rowI = direction === 'up' ? rowIndex - 1 : rowIndex + 1;
-
-      this.changeFocusCell(rowI, colIndex, direction);
+      this.changeFocusCell(rowIndex + 1, colIndex, direction);
     }
   };
 
@@ -716,7 +715,7 @@ class DataTableRoot<
         const firstAvailableRow = firstAvailableCell?.parentElement?.parentElement;
         if (firstAvailableCell && firstAvailableRow) {
           const colIndex = Number(firstAvailableCell.getAttribute('aria-colindex') ?? 1) - 1;
-          const rowIndex = Number(firstAvailableRow.getAttribute('data-rowindex') ?? 2) - 1;
+          const rowIndex = Number(firstAvailableRow.getAttribute('aria-rowindex') ?? 1) - 1;
 
           this.focusedCell[0] = rowIndex;
           this.focusedCell[1] = colIndex;
@@ -770,7 +769,7 @@ class DataTableRoot<
   };
 
   handleBackFromAccordion = (key: string) => {
-    const cellIndex = this.columns.flat((c) => c.name === key);
+    const cellIndex = this.columns.findIndex((c) => c.name === key);
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 

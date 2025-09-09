@@ -98,7 +98,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   rowsHeightMap: Map<number, [number, number, HTMLElement]>;
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
-  componentsMap: Map<number, RowRoot<Data, UniqKeyType>>;
+  componentsMap: Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
