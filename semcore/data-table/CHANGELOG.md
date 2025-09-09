@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.2] - 2025-09-12
+
+### Added
+
+- Limited mode support.
+
 ## [16.2.1] - 2025-09-05
 
 ### Changed
