@@ -126,6 +126,50 @@ test.describe('Loading states', () => {
   });
 });
 
+test.describe('Limited state', () => {
+  test('Verify limited state of table', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
+    const rowsCount = 10;
+    const columnsCount = 5;
+    const limitedRows = 3;
+    const limitedColumns = undefined;
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      limitedRows,
+      limitedColumns,
+    });
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify aria attributes', async () => {
+      const rows = await page.locator('[data-ui-name="Body.Row"][role="row"]').all();
+
+      for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        const row = rows[rowIndex];
+
+        const rowAriaHiddenValue = await row.getAttribute('aria-hidden');
+        expect(rowAriaHiddenValue).toBe(rowIndex > limitedRows ? 'true' : null);
+
+        const cells = await row.locator('[data-ui-name="Body.Cell"]').all();
+        for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+          const cell = cells[cellIndex];
+
+          const cellAriaHiddenValue = await cell.getAttribute('aria-hidden');
+          expect(cellAriaHiddenValue).toBe(rowIndex >= limitedRows ? 'true' : null);
+        }
+      }
+
+      const colIndex = limitedColumns === undefined ? 1 : limitedColumns + 1;
+      const colSpan = limitedColumns === undefined ? columnsCount : columnsCount - limitedColumns;
+      const rowSpan = limitedRows === undefined ? rowsCount : rowsCount - limitedRows;
+
+      const limitOverlayCell = page.locator(`[data-ui-name="Box"][role="gridcell"][aria-colindex="${colIndex}"][aria-colspan="${colSpan}"][aria-rowspan="${rowSpan}"]`);
+      await expect(limitOverlayCell).toBeVisible();
+    });
+
+    // TODO: Verify focus behaviour
+  });
+});
+
 test.describe('Additional states', () => {
   test('Verify table with checkbox attributes and mouse interaction', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';

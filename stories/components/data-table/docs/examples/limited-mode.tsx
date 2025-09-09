@@ -5,16 +5,23 @@ import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import React from 'react';
 
-const Demo = () => {
+export type LimitedModeExampleProps = {
+  limitedRows?: number;
+  limitedColumns?: number;
+};
+
+const Demo = (props: LimitedModeExampleProps) => {
+  const { limitedRows, limitedColumns } = props;
+
   return (
     <DataTable
       data={data}
-      aria-label='Basic table example'
+      aria-label='Limited table example'
       defaultGridTemplateColumnWidth='auto'
       wMax='800px'
       limit={{
-        rows: 3,
-        // columns: 1,
+        rows: limitedRows,
+        columns: limitedColumns,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -123,5 +130,12 @@ const data: DataTableData = [
     vol: '21,644,290',
   },
 ];
+
+export const limitedModeDefaultProps: LimitedModeExampleProps = {
+  limitedRows: 3,
+  limitedColumns: undefined,
+};
+
+Demo.defaultProps = limitedModeDefaultProps;
 
 export default Demo;

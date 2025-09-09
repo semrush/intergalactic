@@ -108,7 +108,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     const { rowIndex, columns, rows, styles } = this.asProps;
 
     const { rows: rowsLimit, columns: columnsLimit, renderOverlay } = this.limitConfiguration;
-    if (!rowsLimit.isDefined && !columnsLimit.isDefined && !renderOverlay) return null;
+    if (!rowsLimit.isDefined && !columnsLimit.isDefined) return null;
     if ((rowsLimit.value ?? 0) !== rowIndex) return null;
 
     const colIndex = columnsLimit.isDefined ? columnsLimit.value + 1 : 1;
