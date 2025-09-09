@@ -15,6 +15,20 @@ SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
+}
+
+SContentBox:has(SItem:focus-visible)::after {
+  border-radius: inherit;
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  content: '';
+  @mixin focus-outline-mixin -2px;
+}
+
+SImageBoxContainer {
+  position: relative;
+  border-radius: var(--intergalactic-surface-rounded, 6px);
 
   &:has(SItem:focus-visible)::after {
     border-radius: inherit;
@@ -22,7 +36,12 @@ SModalBox {
     position: absolute;
     inset: 0;
     content: '';
-    @mixin focus-outline-mixin -2px;
+    @mixin focus-outline-mixin;
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+  }
+
+  SItem:focus-visible {
+    outline: none;
   }
 }
 

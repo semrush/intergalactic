@@ -466,6 +466,7 @@ class CarouselRoot extends Component<
   renderModal(isSmall: boolean, ComponentItems: any[]) {
     const SModalContainer = Root;
     const SModalBox = Box;
+    const SImageBoxContainer = Box;
     const { styles, uid, duration, zoomWidth } = this.asProps;
     const { isOpenZoom } = this.state;
 
@@ -478,32 +479,34 @@ class CarouselRoot extends Component<
       >
         <Flex direction={isSmall ? 'column' : 'row'}>
           {!isSmall && <Carousel.Prev inverted={true} />}
-          <SModalBox>
-            <SModalContainer
-              render={Box}
-              aria-live='polite'
-              use:duration={`${duration}ms`}
-              ref={this.refModalContainer}
-              use:w={undefined}
-              wMax={zoomWidth}
-            >
-              {ComponentItems.map((item, i) => {
-                return (
-                  <Carousel.Item
-                    {...item.props}
-                    key={item.key}
-                    uid={uid}
-                    index={i}
-                    current={this.isSelected(i)}
-                    toggleItem={undefined}
-                    zoom={true}
-                    zoomOut={true}
-                    transform={this.isSelected(i) ? this.getTransform() : undefined}
-                  />
-                );
-              })}
-            </SModalContainer>
-          </SModalBox>
+          <SImageBoxContainer>
+            <SModalBox>
+              <SModalContainer
+                render={Box}
+                aria-live='polite'
+                use:duration={`${duration}ms`}
+                ref={this.refModalContainer}
+                use:w={undefined}
+                wMax={zoomWidth}
+              >
+                {ComponentItems.map((item, i) => {
+                  return (
+                    <Carousel.Item
+                      {...item.props}
+                      key={item.key}
+                      uid={uid}
+                      index={i}
+                      current={this.isSelected(i)}
+                      toggleItem={undefined}
+                      zoom={true}
+                      zoomOut={true}
+                      transform={this.isSelected(i) ? this.getTransform() : undefined}
+                    />
+                  );
+                })}
+              </SModalContainer>
+            </SModalBox>
+          </SImageBoxContainer>
           {isSmall
             ? (
                 <Flex justifyContent='center' mt={2}>
@@ -726,7 +729,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box}>
+    <SIndicators render={Box} invertOutline={inverted}>
       {items?.map((item: CarouselItem, index: number) => (
         <Carousel.Indicator key={index} {...item} inverted={inverted} />
       ))}
@@ -734,7 +737,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   );
 };
 
-const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
+const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>

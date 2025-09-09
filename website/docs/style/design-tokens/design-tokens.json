@@ -2214,6 +2214,7 @@
     "description": "Color for keyboard focus outline styles to use on the dark and color background.",
     "components": [
       "base-components",
+      "carousel",
       "wizard"
     ]
   },
