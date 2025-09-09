@@ -768,7 +768,8 @@ class DataTableRoot<
     this.setInert(false);
   };
 
-  handleBackFromAccordion = (cellIndex: number) => {
+  handleBackFromAccordion = (key: string) => {
+    const cellIndex = this.columns.flat((c) => c.name === key);
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
@@ -1376,16 +1377,17 @@ class DataTableRoot<
             dtRow = makeDtRow(rowData);
             dtRow[ROW_GROUP] = new Set();
           } else {
-            if (index === groupedRows.length - 1 && row[ACCORDION]) {
-              childRow[ACCORDION] = row[ACCORDION];
-            }
-
             dtRow = makeDtRow(childRow, groupedKeys);
 
             innerRows[0]?.[ROW_GROUP]?.add(dtRow[UNIQ_ROW_KEY]);
           }
 
           innerRows.push(dtRow);
+
+          if (index === groupedRows.length - 1 && row[ACCORDION]) {
+            gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+          }
+
           rowIndex++;
         });
 

@@ -28,7 +28,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     'aria-level': undefined,
   };
 
-  private cellIndex = -1;
+  private cellName: string = '';
 
   state: State = {
     expandedForAnimation: false,
@@ -71,7 +71,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   handleBackFromAccordion = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
-      this.asProps.onBackFromAccordion(this.cellIndex);
+      this.asProps.onBackFromAccordion(this.cellName);
     }
   };
 
@@ -159,7 +159,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       getI18nText,
       virtualScroll,
       tableRef,
-      flatRows,
       accordionDuration,
       onCellClick,
       rawData,
@@ -237,25 +236,14 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
-      let expanded =
+      const expanded =
               expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
               !this.state.expandedForAnimation;
 
-      if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
-        const mergedKeysSet = props.row[ROW_GROUP];
-
-        expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
-      }
-
       extraProps.expanded = expanded;
 
-      let row = props.row;
-      let rowIndex = props.rowIndex;
-
-      if (cellValue instanceof MergedRowsCell && cellValue.accordion) {
-        row = flatRows[props.rowIndex + cellValue.rowsCount - 1];
-        rowIndex = props.rowIndex + cellValue.rowsCount - 1;
-      }
+      const row = props.row;
+      const rowIndex = props.rowIndex;
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -306,7 +294,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       rowIndex,
       ariaRowIndex,
       gridRowIndex,
-      accordionDataGridArea,
       'aria-level': ariaLevel = 1,
       selectedRows,
       expandedRows,
@@ -325,16 +312,27 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const accordionType = accordion && !mergedRow ? 'row' : undefined;
 
     if (!accordion) {
-      const cells = Object.values(row);
-      const cellWithAccordionIndex = cells.findIndex((value) => {
-        return this.cellHasAccordion(value);
+      const cells = Object.entries(row);
+      const foundCell = cells.find(([key, value]) => {
+        return this.cellHasAccordion(value) || (value instanceof MergedRowsCell && value.accordion);
       });
 
-      this.cellIndex = cellWithAccordionIndex;
+      if (foundCell) {
+        this.cellName = foundCell[0];
 
-      const cellWithAccordion = cells[cellWithAccordionIndex] as DTValue | undefined;
+        accordion = foundCell[1] instanceof MergedRowsCell ? foundCell[1].accordion : foundCell[1][ACCORDION];
+      }
+    }
 
-      accordion = cellWithAccordion?.[ACCORDION];
+    let accordionDataGridArea = '';
+
+    if (accordion) {
+      const rowIncrement = row[ROW_GROUP]?.size ? row[ROW_GROUP].size + 1 : 1;
+      accordionDataGridArea = Array.isArray(accordion)
+        ? `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement + accordion.length} / ${
+          columns.length + 1
+        }`
+        : `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement} / ${columns.length + 1}`;
     }
 
     const accordionId = `${uid}_${ariaRowIndex + 1}`;

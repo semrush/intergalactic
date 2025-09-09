@@ -66,7 +66,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
 
   gridTemplateAreas: string[];
   gridTemplateColumns: string[];
-  accordionDataGridArea: string;
 
   selectedRows?: UniqKeyType[];
   onSelectRow?: (
@@ -79,7 +78,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   inert?: '';
 
   accordionDuration?: number | [number, number];
-  onBackFromAccordion: (colIndex: number) => void;
+  onBackFromAccordion: (colName: string) => void;
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;

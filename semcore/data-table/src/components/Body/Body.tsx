@@ -92,19 +92,12 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     const gridRowIndex = row[GRID_ROW_INDEX] + (hasGroups ? INDEX_OFFSET + 1 : INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
 
-    const accordionDataGridArea = Array.isArray(row[ACCORDION])
-      ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
-        columns.length + 1
-      }`
-      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
-
     return {
       ...rowProps?.(row, index),
       use,
       uid,
       gridTemplateAreas,
       gridTemplateColumns,
-      accordionDataGridArea,
       columns,
       rowIndex: index,
       ariaRowIndex,
