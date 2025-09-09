@@ -1,3 +1,13 @@
+## [16.9.0] - 2025-09-09
+
+### @semcore/base-trigger
+
+- **Fixed** The Close `Hint` not closed by pressing `ESC` in `FilterTrigger.ClearButton`.
+
+### @semcore/core
+
+- **Added** New group of tokens for our `Illustration` component.
+
 ## [16.8.0] - 2025-09-05
 
 ### @semcore/core
