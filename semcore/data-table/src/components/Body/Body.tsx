@@ -225,7 +225,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       mergedRow: props.mergedRow,
       accordionDuration,
       limit,
-      flatRows,
       hasGroups,
       currentMaxGridIndex: this.currentMaxGridIndex,
       currentRowLimitOffset: this.currentRowLimitOffset,

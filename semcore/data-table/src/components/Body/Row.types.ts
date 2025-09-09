@@ -75,7 +75,6 @@ export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
   limit?: DataTableProps<any, any, any>['limit'];
   currentMaxGridIndex: number;
   currentRowLimitOffset: number;
-  flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
 };
 
