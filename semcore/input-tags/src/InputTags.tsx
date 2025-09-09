@@ -148,10 +148,10 @@ class InputTags extends Component<IInputTagsProps> {
         .map((s) => s.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'))
         .join('|'),
     );
-    const tagsToBeAdded = value.split(reg).filter(Boolean);
+    let tagsToBeAdded = value.split(reg).filter(Boolean);
 
     if (currentEnteredValue) {
-      tagsToBeAdded.push(currentEnteredValue);
+      tagsToBeAdded = [currentEnteredValue, ...tagsToBeAdded];
     }
 
     if (tagsToBeAdded.length > 0) {
