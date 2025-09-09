@@ -2232,7 +2232,6 @@
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
     "description": "Default keyboard focus box-shadow styles.",
     "components": [
-      "fullscreen-modal",
       "input-tags",
       "tag"
     ]

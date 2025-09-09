@@ -437,7 +437,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   return sstyled(styles)(
     <SContainer
       render={Box}
-      focusInAfter={true}
+      inAfterOutline={true}
       tabIndex={0}
       focusRingTopOffset={focusRingTopOffset}
       focusRingRightOffset={focusRingRightOffset}
