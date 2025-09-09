@@ -29,8 +29,10 @@ const Demo = (props: ExampleInputTagsProps) => {
     setValue(`${tags.slice(-1)[0]} ${value}`);
   };
 
-  const handleCloseTag = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleCloseTag = (idx: number) => (e: React.SyntheticEvent) => {
+    e.stopPropagation();
+
+    setTags((tags) => tags.filter((_, tagIdx) => idx !== tagIdx));
   };
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -85,7 +87,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             <InputTags.Tag.Text>
               <Ellipsis wMax={100}>{tag}</Ellipsis>
             </InputTags.Tag.Text>
-            {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag} />}
+            {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag(idx)} />}
           </InputTags.Tag>
         ))}
         <InputTags.Value
