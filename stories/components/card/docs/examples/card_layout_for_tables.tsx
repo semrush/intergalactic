@@ -1,8 +1,16 @@
 import Card from '@semcore/card';
+import type { DataTableProps } from '@semcore/data-table';
 import { ACCORDION, DataTable } from '@semcore/data-table';
 import React from 'react';
 
-const Demo = () => (
+export type TableInTableProps = {
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+
+};
+
+const Demo = (props: TableInTableProps) => (
   <>
     <style>
       {`
@@ -19,7 +27,9 @@ const Demo = () => (
         <DataTable
           data={data}
           aria-label='Table in card'
-          variant='card'
+          variant={props.variant}
+          use={props.use}
+          compact={props.compact}
           columns={[
             { name: 'keyword', children: 'Keyword' },
             { name: 'kd', children: 'KD,%' },
@@ -31,6 +41,14 @@ const Demo = () => (
     </Card>
   </>
 );
+
+export const tableInTableDefaultProps: TableInTableProps = {
+  variant: 'card',
+  use: undefined,
+  compact: undefined,
+};
+
+Demo.defaultProps = tableInTableDefaultProps;
 
 const data = [
   {
