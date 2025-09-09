@@ -593,6 +593,12 @@ class DataTableRoot<
           } else {
             colI = direction === 'left' ? colI - 1 : colI + 1;
           }
+        } else if (direction === 'right' && limit?.columns !== undefined) {
+          if (newCol === limit.columns) {
+            rowI = rowI - 1;
+          } else {
+            return;
+          }
         } else {
           rowI = rowI - 1;
         }
