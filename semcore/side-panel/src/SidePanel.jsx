@@ -14,7 +14,6 @@ import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { lastInteraction } from '@semcore/core/src';
 import { Flex, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import CloseIcon from '@semcore/icon/Close/l';
@@ -159,7 +158,7 @@ function Panel(props) {
 
   const sidebarRef = React.useRef(null);
 
-  useFocusLock(sidebarRef, lastInteraction.isKeyboard(), 'auto', !visible, true);
+  useFocusLock(sidebarRef, true, 'auto', !visible, true);
 
   const hasLabel = Boolean(props['aria-label'] || props['aria-labelledby']);
 

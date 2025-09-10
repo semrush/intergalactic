@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.9] - 2025-09-12
-
-### Fixed
-
-- Display a hint on the close button after mouse interaction to open panel.
-
 ## [16.1.8] - 2025-09-05
 
 ### Changed

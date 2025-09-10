@@ -14,7 +14,6 @@ import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { lastInteraction } from '@semcore/core/src';
 import { Flex, Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
 import Portal from '@semcore/portal';
@@ -139,7 +138,7 @@ class ViewInfo extends Component {
 
     const noticeElement = this.ref.current;
 
-    if (noticeElement && lastInteraction.isKeyboard()) {
+    if (noticeElement) {
       const focusableNodes = getFocusableIn(noticeElement).filter(
         (node) => node !== this.closeButtonRef.current,
       );
