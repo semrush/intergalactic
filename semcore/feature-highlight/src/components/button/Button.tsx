@@ -54,7 +54,7 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
         ? (<Children />)
         : (
             <>
-              <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+              <SummaryAI />
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}

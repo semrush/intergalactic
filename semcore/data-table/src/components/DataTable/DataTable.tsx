@@ -260,9 +260,12 @@ class DataTableRoot<
       onSelectedRowsChange,
       selectedRows,
       sideIndents,
+      variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
+    const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     return {
       ...headerProps,
@@ -279,7 +282,7 @@ class DataTableRoot<
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
-      sideIndents,
+      sideIndents: sideIndentsValue,
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),

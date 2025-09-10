@@ -1,36 +1,44 @@
 import Card from '@semcore/card';
+import type { DataTableProps } from '@semcore/data-table';
 import { ACCORDION, DataTable } from '@semcore/data-table';
 import React from 'react';
 
-const Demo = () => (
-  <>
-    <style>
-      {`
-      #card-with-table {
-        padding: 0 0 var(--intergalactic-spacing-1x);
-      }
-    `}
-    </style>
-    <Card>
-      <Card.Header>
-        <Card.Title tag='h3'>Card Title</Card.Title>
-      </Card.Header>
-      <Card.Body id='card-with-table'>
-        <DataTable
-          data={data}
-          aria-label='Table in card'
-          variant='card'
-          columns={[
-            { name: 'keyword', children: 'Keyword' },
-            { name: 'kd', children: 'KD,%' },
-            { name: 'cpc', children: 'CPC' },
-            { name: 'vol', children: 'Vol.' },
-          ]}
-        />
-      </Card.Body>
-    </Card>
-  </>
+export const tableInTableDefaultProps: TableInTableProps = {
+  variant: 'card',
+  use: undefined,
+  compact: undefined,
+};
+
+const Demo = (props: TableInTableProps) => (
+  <Card>
+    <Card.Header>
+      <Card.Title tag='h3'>Card Title</Card.Title>
+    </Card.Header>
+    <Card.Body pt={0} px={0} pb={1}>
+      <DataTable
+        data={data}
+        aria-label='Table in card'
+        variant={props.variant}
+        use={props.use}
+        compact={props.compact}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD,%' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+      />
+    </Card.Body>
+  </Card>
 );
+
+export type TableInTableProps = {
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+};
+
+Demo.defaultProps = tableInTableDefaultProps;
 
 const data = [
   {
