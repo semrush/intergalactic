@@ -246,7 +246,7 @@ jobs:
         if: steps.test.outcome != 'success'
         run: exit 1
   a11y-tests:
-    runs-on: macos-14
+    runs-on: macos-15
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
@@ -289,14 +289,7 @@ jobs:
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
-        uses: guidepup/setup-action@0.17.3
-        with:
-          record: true
-      - name: Upload VoiceOver Automation setup recordings
-        uses: actions/upload-artifact@v4
-        with:
-          name: recordings
-          path: ./recordings/
+        uses: guidepup/setup-action@0.15.3
       - name: Voice Over testing
         id: a11y-testing
         uses: nick-fields/retry@v2.8.3
