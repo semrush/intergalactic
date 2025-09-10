@@ -9,7 +9,7 @@ import type {
 
 /**
  *  Button link size
- * @default m
+ * @default 200
  */
 export type ButtonLinkSize = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
 /**
