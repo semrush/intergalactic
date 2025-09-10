@@ -86,10 +86,6 @@ const Demo = () => {
     if (!e.key.startsWith('Array')) {
       setHighlightedIndex(-1);
     }
-
-    if (e.key === 'Enter' && suggestions.length === 1 && suggestions[0].value === query) {
-      handleSelect(query);
-    }
   };
 
   const handleHighlightedIndexChange = (index: number | null) => {

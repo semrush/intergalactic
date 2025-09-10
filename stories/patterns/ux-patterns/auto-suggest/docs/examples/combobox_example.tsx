@@ -12,7 +12,20 @@ const options = Array(12)
   }));
 
 const Demo = () => {
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
   const [value, setValue] = React.useState('');
+
+  React.useEffect(() => {
+    const exactValueIndex = options.findIndex((option) => option.value === value);
+
+    if (exactValueIndex > -1) {
+      setHighlightedIndex(exactValueIndex);
+    }
+  }, [value]);
+
+  const handleHighlightedIndexChange = (index: number | null) => {
+    setHighlightedIndex(index);
+  };
 
   return (
     <>
@@ -20,7 +33,13 @@ const Demo = () => {
         Release time
       </Text>
       <Box mt={2}>
-        <Select interaction='focus' onChange={setValue} value={value}>
+        <Select
+          interaction='focus'
+          onChange={setValue}
+          value={value}
+          highlightedIndex={highlightedIndex}
+          onHighlightedIndexChange={handleHighlightedIndexChange}
+        >
           <Select.Trigger tag={Input} w={150}>
             {() => <Input.Value value={value} onChange={setValue} id='release-time-picker' />}
           </Select.Trigger>
