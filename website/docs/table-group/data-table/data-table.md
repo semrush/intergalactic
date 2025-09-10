@@ -19,13 +19,17 @@ Our design system has two table types:
 2. **Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card). These tables usually have a limited set of features, such as non-interactive sort indicators.
 ![](static/secondary-table.png)
 
-### Paddings
+### Variants
+
+#### Compact
 
 You can make a primary table more compact by using the `compact` property, which reduces left and right cell paddings to `--spacing-2x`.
 
 ![](static/primary-compact-paddings.png)
 
-When displaying a table in a card, increase left and right cell paddings to `--spacing-5x`. In code, this can be enabled with the `sideIndents="wide"` property: find more details in the [Card layout for table example](../../components/card/card-code#card-layout-for-tables).
+#### Table in Card
+
+When displaying a primary and secondary table in a card, use the `variant="card"` property. It increases the left and right table paddings to `--spacing-5x` and remove the bottom border of the last row. Find more details in the [Card layout for table example](../../components/card/card-code#card-layout-for-tables).
 
 ![](static/table-in-card.png)
 
