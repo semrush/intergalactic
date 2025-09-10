@@ -150,8 +150,6 @@ class DataTableRoot<
     if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
       document.addEventListener('scroll', this.handleDocumentScroll);
     }
-
-    this.calculateAriaRowIndex();
   }
 
   componentDidUpdate(prevProps: any) {
@@ -167,7 +165,6 @@ class DataTableRoot<
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
       }
-      this.calculateAriaRowIndex();
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
       if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
@@ -356,19 +353,8 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
-      calculateAriaRowIndex: this.calculateAriaRowIndex,
     };
   }
-
-  calculateAriaRowIndex = () => {
-    const visibleRows = this.tableRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
-
-    visibleRows?.forEach((row, index) => {
-      if (row instanceof HTMLElement) {
-        row.setAttribute('aria-rowindex', (index + 1).toString());
-      }
-    });
-  };
 
   handleDocumentScroll = trottle(() => {
     const tableContainer = this.tableContainerRef.current;

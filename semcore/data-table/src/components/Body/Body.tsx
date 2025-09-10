@@ -31,10 +31,29 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   indexForDownIterate = 0;
   indexForUpIterate = 0;
 
+  startIndex = -1;
+  lastIndex = -1;
+
+  bodyRef = React.createRef<HTMLDivElement>();
+
   constructor(props: DataTableBodyProps<Data, UniqKeyType>) {
     super(props);
     this.setRowHeight = this.setRowHeight.bind(this);
   }
+
+  componentDidMount() {
+    this.calculateAriaRowIndex();
+  }
+
+  calculateAriaRowIndex = () => {
+    const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+
+    visibleRows?.forEach((row, index) => {
+      if (row instanceof HTMLElement) {
+        row.setAttribute('aria-rowindex', (index + 2 + this.startIndex).toString());
+      }
+    });
+  };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
     if (!this.rowsHeightMap.has(index) && node) {
@@ -71,7 +90,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rawData,
       shadowVertical,
       accordionMode,
-      calculateAriaRowIndex,
+      virtualScroll,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -110,7 +129,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       shadowVertical,
       accordionMode,
       componentsMap: this.rowsComponentsMap,
-      calculateAriaRowIndex,
+      calculateAriaRowIndex: this.calculateAriaRowIndex,
+      virtualScroll,
     };
   }
 
@@ -135,8 +155,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     } = this.asProps;
 
     let rowsToRender = rows;
-    let startIndex = -1;
-    let lastIndex = -1;
+    // let startIndex = -1;
+    // let lastIndex = -1;
 
     if (virtualScroll) {
       const rowsBuffer =
@@ -160,21 +180,21 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
 
-            if (startIndex === -1 && scrollTop < valueFromToCompare) {
-              startIndex = Math.max(key - prevPrepared, 0);
+            if (this.startIndex === -1 && scrollTop < valueFromToCompare) {
+              this.startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (this.startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
+              this.lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (startIndex !== -1 && lastIndex !== -1) {
+            if (this.startIndex !== -1 && this.lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
-            lastIndex = lastIndex + aproxRowsOnPage;
+          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(this.lastIndex ?? 0)?.[1] ?? 0)) {
+            this.lastIndex = this.lastIndex + aproxRowsOnPage;
           }
         } else if (scrollDirection === 'up') {
           for (let i = this.indexForUpIterate; i >= 0; i--) {
@@ -184,52 +204,52 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
 
-            if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (this.lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
+              this.lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
-              startIndex = Math.max(key - prevPrepared, 0);
+            if (this.lastIndex !== -1 && scrollTop < valueFromToCompare) {
+              this.startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (startIndex !== -1 && lastIndex !== -1) {
+            if (this.startIndex !== -1 && this.lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
-            startIndex = Math.max(startIndex - aproxRowsOnPage, 0);
+          if (scrollTop < (this.rowsHeightMap.get(this.startIndex ?? 0)?.[0] ?? 0)) {
+            this.startIndex = Math.max(this.startIndex - aproxRowsOnPage, 0);
           }
         }
 
-        if (startIndex === -1) {
-          startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
+        if (this.startIndex === -1) {
+          this.startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
         }
 
-        if (lastIndex === -1) {
-          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
+        if (this.lastIndex === -1) {
+          this.lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
         }
 
-        this.indexForDownIterate = startIndex;
-        this.indexForUpIterate = lastIndex;
+        this.indexForDownIterate = this.startIndex;
+        this.indexForUpIterate = this.lastIndex;
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(this.startIndex, this.lastIndex);
       } else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
-        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
+        this.startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
         const lastIndex = Math.min(
           Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
           rows.length,
         );
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(this.startIndex, lastIndex);
       }
     }
 
-    startIndex = startIndex === -1 ? 0 : startIndex;
-    const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
+    this.startIndex = this.startIndex === -1 ? 0 : this.startIndex;
+    const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
 
     let emptyRow: DTRow<string> | null = null;
 
@@ -246,8 +266,10 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       };
     }
 
+    this.calculateAriaRowIndex();
+
     return sstyled(styles)(
-      <SBody render={Box} __excludeProps={['data']}>
+      <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
         {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
@@ -256,7 +278,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               <SRowGroup
                 role='rowgroup'
                 key={`gg_${row[0][UNIQ_ROW_KEY]}`}
-                ref={this.handleRef(startIndex + index, row[0])}
+                ref={this.handleRef(this.startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
                   return (
@@ -281,7 +303,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             <Body.Row
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
-              ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
+              ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
                 if (component) {
                   this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
