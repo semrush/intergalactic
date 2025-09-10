@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Entered text is pasted when a new text is pasted afterwards.
+- Typed text is lost when new text is pasted afterwards.
 
 ## [16.0.8] - 2025-09-05
 
