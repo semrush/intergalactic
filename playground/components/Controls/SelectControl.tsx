@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/base-components';
 import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import type { SelectControlType } from '../../types/Controls';
@@ -30,30 +31,33 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   );
 }
 
-function SelectControl({ options, value, colorOptions, onChange }: ISelectControlProps) {
+function SelectControl({ options, value, colorOptions, onChange, displayName }: ISelectControlProps) {
   if (!Array.isArray(options)) return null;
 
   return (
-    <Select value={value} w='100%' onChange={onChange}>
-      <Select.Trigger w='100%'>
-        {colorOptions && (
-          <Select.Trigger.Addon>
-            <SelectColorAddon options={colorOptions} color={`${value}`} />
-          </Select.Trigger.Addon>
-        )}
-        <Select.Trigger.Text>{value}</Select.Trigger.Text>
-      </Select.Trigger>
-      <Select.Menu>
-        {options.map((option) => (
-          <Select.Option key={option} value={option}>
-            <Flex alignItems='center' gap={2}>
-              <SelectColorAddon options={colorOptions} color={`${option}`} />
-              {option}
-            </Flex>
-          </Select.Option>
-        ))}
-      </Select.Menu>
-    </Select>
+    <label style={{ display: 'contents' }}>
+      <Text mt={1}>{displayName}</Text>
+      <Select value={value} w='100%' onChange={onChange}>
+        <Select.Trigger w='100%'>
+          {colorOptions && (
+            <Select.Trigger.Addon>
+              <SelectColorAddon options={colorOptions} color={`${value}`} />
+            </Select.Trigger.Addon>
+          )}
+          <Select.Trigger.Text>{value}</Select.Trigger.Text>
+        </Select.Trigger>
+        <Select.Menu>
+          {options.map((option) => (
+            <Select.Option key={option} value={option}>
+              <Flex alignItems='center' gap={2}>
+                <SelectColorAddon options={colorOptions} color={`${option}`} />
+                {option}
+              </Flex>
+            </Select.Option>
+          ))}
+        </Select.Menu>
+      </Select>
+    </label>
   );
 }
 

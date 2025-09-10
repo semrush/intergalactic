@@ -35,7 +35,7 @@
   border-top-right-radius: var(--intergalactic-surface-rounded);
   border-bottom-right-radius: var(--intergalactic-surface-rounded);
 
-  > label {
+  > span, label {
     font-size: var(--intergalactic-fs-200);
     line-height: var(--intergalactic-lh-200);
     word-break: break-word;
