@@ -59,7 +59,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   rows: DTRows<UniqKeyType>;
   flatRows: DTRow<UniqKeyType>[];
   rowIndex: number; // from 0
-  ariaRowIndex: number; // from 1 + 1 header
   gridRowIndex: number; // from 1 + 1 (or 2 if it has group) header
 
   onExpandRow: (expandedRow: DTRow<UniqKeyType>) => void;
@@ -99,6 +98,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   rowsHeightMap: Map<number, [number, number, HTMLElement]>;
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
   componentsMap: Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
+  calculateAriaRowIndex: () => void;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

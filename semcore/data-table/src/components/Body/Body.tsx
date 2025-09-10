@@ -10,7 +10,6 @@ import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import {
-  ACCORDION,
   GRID_ROW_INDEX,
   IS_EMPTY_DATA_ROW,
   ROW_INDEX,
@@ -72,24 +71,10 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rawData,
       shadowVertical,
       accordionMode,
+      calculateAriaRowIndex,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
-
-    const ariaRowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
-      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
-      if (rowIndex < index) {
-        const expandedRow = flatRows[rowIndex]?.[ACCORDION];
-        if (Array.isArray(expandedRow)) {
-          acc = acc + expandedRow.length;
-        } else {
-          acc = acc + 1;
-        }
-      }
-
-      return acc;
-    }, index + INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
-
     const gridRowIndex = row[GRID_ROW_INDEX] + (hasGroups ? INDEX_OFFSET + 1 : INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
 
     return {
@@ -100,7 +85,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       gridTemplateColumns,
       columns,
       rowIndex: index,
-      ariaRowIndex,
       gridRowIndex,
       rows,
       onBackFromAccordion,
@@ -126,6 +110,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       shadowVertical,
       accordionMode,
       componentsMap: this.rowsComponentsMap,
+      calculateAriaRowIndex,
     };
   }
 
