@@ -289,7 +289,7 @@ jobs:
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
-        uses: guidepup/setup-action@0.15.3
+        uses: guidepup/setup-action@0.17.3
         with:
           record: true
       - name: Upload VoiceOver Automation setup recordings
