@@ -3,13 +3,13 @@ import type { DataTableProps } from '@semcore/data-table';
 import { ACCORDION, DataTable } from '@semcore/data-table';
 import React from 'react';
 
-export const tableInTableDefaultProps: TableInTableProps = {
+export const tableInCardDefaultProps: TableInCardProps = {
   variant: 'card',
   use: undefined,
   compact: undefined,
 };
 
-const Demo = (props: TableInTableProps) => (
+const Demo = (props: TableInCardProps) => (
   <Card>
     <Card.Header>
       <Card.Title tag='h3'>Card Title</Card.Title>
@@ -32,13 +32,13 @@ const Demo = (props: TableInTableProps) => (
   </Card>
 );
 
-export type TableInTableProps = {
+export type TableInCardProps = {
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
 };
 
-Demo.defaultProps = tableInTableDefaultProps;
+Demo.defaultProps = tableInCardDefaultProps;
 
 const data = [
   {

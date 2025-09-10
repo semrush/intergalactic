@@ -2,8 +2,8 @@ import Card from '@semcore/card';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/basic_example';
-import type { TableInTableProps } from './examples/card_layout_for_tables';
-import CardLayoutForTablesExample, { tableInTableDefaultProps } from './examples/card_layout_for_tables';
+import type { TableInCardProps } from './examples/card_layout_for_tables';
+import CardLayoutForTablesExample, { tableInCardDefaultProps } from './examples/card_layout_for_tables';
 import ComplexExample from './examples/complex_example';
 import EllipsisExample from './examples/ellipsis';
 
@@ -26,11 +26,10 @@ export const Complex: Story = {
 export const Ellipsis: Story = {
   render: EllipsisExample,
 };
-export const CardLayoutForTables: StoryObj<TableInTableProps> = {
+export const CardLayoutForTables: StoryObj<TableInCardProps> = {
   render: CardLayoutForTablesExample,
   args: {
-    ...tableInTableDefaultProps,
-
+    ...tableInCardDefaultProps,
   },
   argTypes: {
     use: {

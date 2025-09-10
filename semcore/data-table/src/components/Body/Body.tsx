@@ -234,8 +234,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       return React.isValidElement(value) ? value : value?.toString();
     };
 
-    let withoutBorder = variant === 'card';
-    if (withoutBorder) {
+    let withoutBorder = props.row[IS_EMPTY_DATA_ROW];
+
+    if (variant === 'card') {
       withoutBorder = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : flatRows.length === props.rowIndex + 1;
     }
 
