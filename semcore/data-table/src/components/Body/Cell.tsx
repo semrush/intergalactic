@@ -117,19 +117,9 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   handleClickCell = (e: React.SyntheticEvent) => {
-    const { rowIndex, columnIndex, onClick, row, column, flatRows } = this.asProps;
+    const { rowIndex, columnIndex, onClick, row } = this.asProps;
 
-    const cell = row[column.name];
-    if (cell instanceof MergedRowsCell) {
-      const rIndex = rowIndex + cell.rowsCount - 1;
-      const row = flatRows[rIndex];
-
-      if (!row) return;
-
-      onClick(e, { rowIndex: rIndex, colIndex: columnIndex, row });
-    } else {
-      onClick(e, { rowIndex, colIndex: columnIndex, row });
-    }
+    onClick(e, { rowIndex, colIndex: columnIndex, row });
   };
 
   render() {
