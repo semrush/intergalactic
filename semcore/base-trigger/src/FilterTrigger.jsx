@@ -208,6 +208,7 @@ class ClearButton extends Component {
       disabled,
       getI18nText,
       'aria-label': ariaLabel,
+      title,
     } = this.asProps;
 
     if (empty) return null;
@@ -221,7 +222,7 @@ class ClearButton extends Component {
             empty={empty}
             selected
             disabled={disabled}
-            aria-label={ariaLabel ?? getI18nText('clear')}
+            aria-label={title ?? ariaLabel ?? getI18nText('clear')}
           >
             <FilterTrigger.Addon tag={Close} />
           </SFilterTrigger>
