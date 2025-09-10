@@ -15,6 +15,8 @@ const locators = {
     page.locator(`[aria-rowindex="${index}"]`),
   rowTableInTable: (page: Page, level: number, index: number) =>
     page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
+  dataTable: (page: Page) => page.getByRole('grid'),
+
 };
 
 test.describe('Accordion in table', () => {
@@ -723,7 +725,6 @@ test.describe('Accordion in table', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
 
-    const table = page.locator('[data-ui-name="DataTable"]');
     const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
     const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
     const firstrowCell = row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
@@ -742,7 +743,7 @@ test.describe('Accordion in table', () => {
     });
 
     await test.step('Verify rowcount when accordion not expanded', async () => {
-      await expect(table).toHaveAttribute('aria-rowcount', '7');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '7');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'false',
@@ -753,7 +754,7 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('Enter');
       await page.waitForTimeout(250);
       await expect(elementsIncell.first()).toBeFocused();
-      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -762,11 +763,10 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify focus table in table cell and back by arrows', async () => {
       await page.keyboard.press('ArrowDown');
-      const row = page.locator('[role="row"][aria-rowindex="3"][aria-level="2"]');
-      const cell = row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
+      const cell = locators.rowTableInTable(page, 2, 3).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       await expect(cell).toBeFocused();
       await page.keyboard.press('ArrowUp');
-      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -779,24 +779,23 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
-      const row = page.locator('[role="row"][aria-rowindex="6"]');
-      const cell2 = row.locator('[data-ui-name="Row.Cell"][aria-colindex="2"]');
+      const cell2 = locators.row(page, 6).locator('[data-ui-name="Row.Cell"][aria-colindex="2"]');
       await expect(cell2).toBeFocused();
-      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
       );
       await page.keyboard.press('Enter');
       await page.waitForTimeout(250);
-      await expect(table).toHaveAttribute('aria-rowcount', '10');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await page.keyboard.press('ArrowLeft');
       const elementsIncell = await row.locator('[data-ui-name="ButtonLink"]');
       await expect(elementsIncell).toBeFocused();
       await page.keyboard.press('Enter');
       await page.waitForTimeout(250);
       const cell1 = row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
-      await expect(table).toHaveAttribute('aria-rowcount', '13');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '13');
       await expect(firstrowCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -818,17 +817,15 @@ test.describe('Accordion in table', () => {
       await expect(sortIconKd).toBeFocused();
       await page.keyboard.press('Enter');
       await page.waitForTimeout(250);
-      await expect(table).toHaveAttribute('aria-rowcount', '13');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '13');
 
-      const newRow1 = page.locator('[role="row"][aria-rowindex="7"]');
-      const newCell = newRow1.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
+      const newCell = locators.row(page, 7).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       await expect(newCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
       );
 
-      const newRow2 = page.locator('[role="row"][aria-rowindex="11"]');
-      const newCell2 = newRow2.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
+      const newCell2 = locators.row(page, 11).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       await expect(newCell2.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -885,8 +882,7 @@ test.describe('Accordion in table', () => {
     await page.setContent(htmlContent);
 
     const table = page.locator('[data-ui-name="DataTable"]');
-    const rowWithAcc = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
-    const rowCellWithAcc = rowWithAcc.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]');
+    const rowCellWithAcc = locators.row(page, 4).locator('[data-ui-name="Row.Cell"][aria-colindex="4"]');
     const sortIconKeywordAcc = rowCellWithAcc.locator('[data-ui-name="ButtonLink"]');
 
     await test.step('Verify table component expands by activating the toggle', async () => {
