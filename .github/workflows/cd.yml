@@ -290,6 +290,8 @@ jobs:
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.15.3
+        with:
+          record: true
       - name: Voice Over testing
         id: a11y-testing
         uses: nick-fields/retry@v2.8.3

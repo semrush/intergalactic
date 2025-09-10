@@ -21,6 +21,7 @@ test('Users can interact with Button with only addon props', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
+  console.log('test');
   const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
