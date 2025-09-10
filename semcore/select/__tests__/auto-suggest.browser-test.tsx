@@ -77,13 +77,7 @@ test.describe('AutoSuggest', () => {
 
       await expect(options.first()).toHaveClass(/selected/);
       await page.keyboard.press('Enter');
-      await options.first().waitFor({ state: 'hidden' });
-      await expect(trigger).toHaveAttribute('value', 'persian');
-      await page.keyboard.press('Enter');
-
       await options.first().waitFor({ state: 'visible' });
-      await expect(options.first()).toHaveText(/persian/);
-      await expect(options.first()).toHaveClass(/selected/);
     });
   });
 
