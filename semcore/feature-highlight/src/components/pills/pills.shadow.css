@@ -1,7 +1,7 @@
 SHighlightedPill {
   border: 1px solid transparent;
   background:
-    linear-gradient(white, white) padding-box,
+    linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
     var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
   ) border-box;
   background-origin: border-box;
@@ -26,7 +26,6 @@ SHighlightedPill {
 SHighlightedPill:focus-visible {
   outline: none;
   position: relative;
-  /*isolation: isolate;*/
 
   &::before {
     content: "";

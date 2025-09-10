@@ -1,7 +1,7 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
   border: 1px solid transparent;
   background:
-    linear-gradient(white, white) padding-box,
+    linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
     var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
   ) border-box; /* border */
   background-origin: border-box;
@@ -16,7 +16,7 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
   &:active,
   &[active] {
     background:
-      linear-gradient(white, white) padding-box,
+      linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
       var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
