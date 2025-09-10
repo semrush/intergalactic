@@ -476,6 +476,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   accordionRowIndex={i}
                   use={use}
                   shadowVertical={shadowVertical}
+                  accordionDuration={accordionDuration}
                 />
               );
             })}
