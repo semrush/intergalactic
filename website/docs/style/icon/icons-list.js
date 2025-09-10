@@ -150,7 +150,7 @@ const iconsList = {
       name: 'Hamburger',
       size: ['l', 'm'],
       group: 'Navigation',
-      tags: ['hamburger', 'menu', 'more', 'kebab', 'меню', 'гамбургер', 'еда', 'кушоть', 'list'],
+      tags: ['burger', 'menu', 'more', 'kebab', 'list', 'меню', 'бургер', 'еда', 'кушоть'],
     },
     {
       name: 'Home',

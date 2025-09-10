@@ -1,4 +1,4 @@
-import { DataTable } from '@semcore/data-table';
+import type { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
@@ -38,9 +38,8 @@ import TableInTableWithFixedColumnExample, { accordionTableDefaultProps } from '
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
 import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
 
-const meta: Meta<typeof DataTable> = {
+const meta = {
   title: 'Components/DataTable/Documentation',
-  component: DataTable,
 };
 
 export default meta;
@@ -173,7 +172,14 @@ export const TableInTable: StoryObj<TableInTableProps> = {
   render: TableInTableExample,
   args: {
     ...tableInTableDefaultProps,
-    onAccordionToggle: fn(),
+  },
+  argTypes: {
+    accordionMode: {
+      control: {
+        type: 'select',
+      },
+      options: ['toggle', 'independed', undefined],
+    },
   },
 };
 

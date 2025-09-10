@@ -73,7 +73,7 @@ export type DataTableProps<
     defaultGridTemplateColumnWidth?: string;
 
     /**
-     * Flag for compact view (fewer paddings)
+     * Flag for compact view (smaller horizontal paddings)
      */
     compact?: boolean;
 
@@ -167,6 +167,12 @@ export type DataTableProps<
       /** Limit overlay */
       renderOverlay: () => React.ReactNode;
     };
+
+    /**
+     * Visual variant that adapts the table styling to different usage contexts
+     * @default 'default'
+     */
+    variant?: 'default' | 'card';
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
