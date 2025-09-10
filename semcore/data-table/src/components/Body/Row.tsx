@@ -456,7 +456,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         )}
 
         {row[ACCORDION] && Array.isArray(row[ACCORDION]) && (
-          <SAccordionRows id={accordionId} role='rowgroup'>
+          <SAccordionRows id={accordionId} role='rowgroup' aria-hidden={!expanded}>
             {row[ACCORDION].map((subrow, i) => {
               return (
                 <Row
@@ -466,7 +466,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   columns={columns}
                   rows={row[ACCORDION]}
                   rowIndex={rowIndex}
-                  aria-hidden={!expanded || this.state.expandedForAnimation}
+                  aria-hidden={!expanded}
                   aria-posinset={i + 1}
                   aria-level={ariaLevel + 1}
                   gridRowIndex={gridRowIndex + 1 + i}
