@@ -51,7 +51,7 @@ class HighlightedItemRoot extends Component {
 function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: boolean } & IRootComponentProps) {
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
   return (
-    <Pills.Item.Addon>
+    <Root render={Pills.Item.Addon}>
       {hasChildren
         ? (<Children />)
         : (
@@ -60,7 +60,7 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
-    </Pills.Item.Addon>
+    </Root>
   );
 }
 

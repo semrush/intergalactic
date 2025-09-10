@@ -1,3 +1,20 @@
+## [16.8.0] - 2025-09-05
+
+### @semcore/core
+
+- **Added** New tokens for secondary button from the `feature-highlight` package.
+- **Fixed** Some inconsistencies and missing tokens/descriptions in `dark.json`.
+
+### @semcore/feature-highlight
+
+- **Changed** Secondary button styles: now secondary button has gradient background, border, and text.
+- **Changed** Notice styles: `Notice.Label` now has `icon-primary-feature-highlight` color by default.
+- **Fixed** Styles: replaced some hardcoded color values with variables.
+
+### @semcore/icon
+
+- **Added** New `Monitoring` icon.
+
 ## [16.7.0] - 2025-08-29
 
 ### @semcore/base-components
