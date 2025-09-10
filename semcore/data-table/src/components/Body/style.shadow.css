@@ -199,7 +199,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCheckboxCell {
+SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='Symbol(SELECT_ALL)'] {
   cursor: pointer;
 }
 

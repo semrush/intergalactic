@@ -361,7 +361,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
-              return sstyled(styles)(
+              return (
                 <SCheckboxCell
                   key={i}
                   row={row}
@@ -379,7 +379,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   >
                     <Checkbox.Value />
                   </Checkbox>
-                </SCheckboxCell>,
+                </SCheckboxCell>
               );
             }
 
