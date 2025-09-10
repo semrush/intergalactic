@@ -27,7 +27,9 @@ SDropdownMenuList {
       border-radius: var(--intergalactic-control-rounded, 6px);
     }
   }
+}
 
+SDropdownMenuItemContainer {
   SItemContent:focus-visible {
     outline: none;
   }
