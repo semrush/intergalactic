@@ -292,6 +292,11 @@ jobs:
         uses: guidepup/setup-action@0.15.3
         with:
           record: true
+      - name: Upload VoiceOver Automation setup recordings
+        uses: actions/upload-artifact@v4
+        with:
+          name: recordings
+          path: ./recordings/
       - name: Voice Over testing
         id: a11y-testing
         uses: nick-fields/retry@v2.8.3
