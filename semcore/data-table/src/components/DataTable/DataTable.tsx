@@ -167,6 +167,7 @@ class DataTableRoot<
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
       }
+      this.calculateAriaRowIndex();
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
       if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
