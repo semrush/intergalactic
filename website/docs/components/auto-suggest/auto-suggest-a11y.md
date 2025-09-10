@@ -14,9 +14,9 @@ Table: Keyboard support
 | ------------------------------ | -------------------------------------------------------------- |
 | `Tab` | Moves focus to the next focusable element.                                             |
 | `Shift + Tab` | Moves focus to the previous focusable element.                                 |
-| `Enter` | **When the dropdown is closed:** opens the dropdown. <br>**When the dropdown is open:** closes the dropdown. If an option was selected, applies its value to the input.  |
-| `Up Arrow` , <nobr>`Down Arrow`</nobr> | **When the dropdown is closed:** opens the dropdown. <br>**When the dropdown is open:** moves selection between the options in the list. If the last/first option is selected, moves selection to the first/last option respectively. |
-| `Esc` | Closes the dropdown. |
+| `Enter` | **When the menu is closed:** opens the menu. <br>**When the menu is open:** closes the menu. If an option has been highlighted, applies its value to the input.  |
+| `Up Arrow`, <nobr>`Down Arrow`</nobr> | **When the menu is closed:** opens the menu. <br>**When the menu is open:** moves the highlight between the list options. The highlight cycles from the last to the first option and from the first to the last option. |
+| `Esc` | Closes the menu. |
 
 ### Roles and attributes
 
