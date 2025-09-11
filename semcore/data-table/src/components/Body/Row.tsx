@@ -47,36 +47,14 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     }
   };
 
-  private createLimitConfig<T>(value: T | undefined):
-    | { isDefined: true; value: T }
-    | { isDefined: false; value: undefined } {
-    return value !== undefined
-      ? { isDefined: true, value }
-      : { isDefined: false, value: undefined };
-  }
-
-  get limitConfiguration() {
-    const { rows, columns, renderOverlay } = this.asProps.limit ?? {};
-
-    return {
-      rows: this.createLimitConfig(rows),
-      columns: this.createLimitConfig(columns),
-      renderOverlay,
-    };
-  }
-
-  get isRowLimited() {
-    const { rowIndex } = this.asProps;
-    const { rows } = this.limitConfiguration;
-
-    if (!rows.isDefined) return false;
-
-    return rowIndex > rows.value;
-  }
-
   get isRowHidden() {
-    const limitConfig = this.limitConfiguration;
-    return limitConfig.rows.isDefined && !limitConfig.columns.isDefined && this.isRowLimited ? true : undefined;
+    const { rowIndex, limit } = this.asProps;
+    const rowsLimit = limit?.rows;
+    const columnsLimit = limit?.columns;
+
+    return rowsLimit !== undefined && columnsLimit === undefined && rowIndex > rowsLimit
+      ? true
+      : undefined;
   }
 
   get limitOverlayGridArea() {
@@ -84,19 +62,23 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       columns,
       selectedRows,
       hasGroups,
-      currentMaxGridIndex,
-      currentRowLimitOffset,
+      totalRows,
+      flatRows,
+      limit,
     } = this.asProps;
 
-    const { rows: rowsLimitConfig, columns: columnsLimitConfig } = this.limitConfiguration;
+    const currentMaxGridIndex = totalRows;
+    const currentRowLimitOffset = totalRows - flatRows.length;
+
+    const { rows: rowsLimit, columns: columnsLimit } = limit ?? {};
 
     const rowOffset = hasGroups ? 3 : 2;
     const columnOffset = selectedRows ? 1 : 0;
 
-    const rowStart = rowsLimitConfig.isDefined
-      ? rowsLimitConfig.value + rowOffset + currentRowLimitOffset
+    const rowStart = rowsLimit !== undefined
+      ? rowsLimit + rowOffset + currentRowLimitOffset
       : rowOffset;
-    const columnStart = columnsLimitConfig.isDefined ? columnsLimitConfig.value + columnOffset + 1 : columnOffset + 1;
+    const columnStart = columnsLimit !== undefined ? columnsLimit + columnOffset + 1 : columnOffset + 1;
     const rowEnd = currentMaxGridIndex + rowOffset;
     const columnEnd = columns.length + 1;
 
@@ -105,15 +87,18 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
 
   renderLimitOverlay() {
     const SLimitOverlayCellWrapper = Flex;
-    const { rowIndex, columns, rows, styles } = this.asProps;
+    const { rowIndex, columns, rows, styles, limit } = this.asProps;
 
-    const { rows: rowsLimit, columns: columnsLimit, renderOverlay } = this.limitConfiguration;
-    if (!rowsLimit.isDefined && !columnsLimit.isDefined) return null;
-    if ((rowsLimit.value ?? 0) !== rowIndex) return null;
+    const rowsLimit = limit?.rows;
+    const columnsLimit = limit?.columns;
+    const renderOverlay = limit?.renderOverlay;
 
-    const colIndex = columnsLimit.isDefined ? columnsLimit.value + 1 : 1;
-    const colSpan = columns.length - (columnsLimit.value ?? 0);
-    const rowsSpan = rows.length - (rowsLimit.value ?? 0);
+    if (rowsLimit === undefined && columnsLimit === undefined) return null;
+    if ((rowsLimit ?? 0) !== rowIndex) return null;
+
+    const colIndex = columnsLimit ? columnsLimit + 1 : 1;
+    const colSpan = columns.length - (columnsLimit ?? 0);
+    const rowsSpan = rows.length - (rowsLimit ?? 0);
 
     return sstyled(styles)(
       <SLimitOverlayCellWrapper
@@ -131,10 +116,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
         </Box>
       </SLimitOverlayCellWrapper>,
     );
-  }
-
-  renderLimitOverlayIf(condition: boolean) {
-    return condition && this.renderLimitOverlay();
   }
 
   render() {
@@ -184,11 +165,8 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
     const accordionId = `${uid}_${ariaRowIndex + 1}`;
     const rowUniqKey = row[UNIQ_ROW_KEY];
 
-    const { rows: rowsLimit, columns: columnsLimit } = this.limitConfiguration;
-    const shouldRenderLimitOverlayAsFirstCell =
-      (rowsLimit.value === 0 && columnsLimit.value === 0) ||
-      (rowsLimit.value === 0 && !columnsLimit.isDefined) ||
-      (columnsLimit.value === 0 && !rowsLimit.isDefined);
+    const rowsLimit = limit?.rows;
+    const columnsLimit = limit?.columns;
 
     return sstyled(styles)(
       <>
@@ -201,17 +179,16 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
           use:expanded={expanded && !mergedRow}
           aria-hidden={this.isRowHidden}
         >
-          {this.renderLimitOverlayIf(shouldRenderLimitOverlayAsFirstCell)}
           {columns.map((column, i) => {
             let isCellHidden: true | undefined = undefined;
 
             if (limit) {
-              if (rowsLimit.isDefined && columnsLimit.isDefined) {
-                isCellHidden = rowIndex >= rowsLimit.value && i >= columnsLimit.value ? true : undefined;
-              } else if (!rowsLimit.isDefined && columnsLimit.isDefined) {
-                isCellHidden = rowIndex >= 0 && i >= columnsLimit.value ? true : undefined;
-              } else if (rowsLimit.isDefined && !columnsLimit.isDefined) {
-                isCellHidden = rowIndex >= rowsLimit.value ? true : undefined;
+              if (rowsLimit !== undefined && columnsLimit !== undefined) {
+                isCellHidden = rowIndex >= rowsLimit && i >= columnsLimit ? true : undefined;
+              } else if (rowsLimit === undefined && columnsLimit !== undefined) {
+                isCellHidden = rowIndex >= 0 && i >= columnsLimit ? true : undefined;
+              } else if (rowsLimit !== undefined && columnsLimit === undefined) {
+                isCellHidden = rowIndex >= rowsLimit ? true : undefined;
               }
             }
 
@@ -281,7 +258,7 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
               />
             );
           })}
-          {this.renderLimitOverlayIf(!shouldRenderLimitOverlayAsFirstCell)}
+          {this.renderLimitOverlay()}
         </SRow>
 
         {React.isValidElement(accordion) && (

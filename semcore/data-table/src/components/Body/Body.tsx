@@ -120,33 +120,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   };
 
-  _getExpandedRowsCount() {
-    const { flatRows, expandedRows } = this.asProps;
-
-    if (!expandedRows?.size) {
-      return 0;
-    }
-
-    let expandedCount = 0;
-
-    for (const expandedRowKey of expandedRows) {
-      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === expandedRowKey);
-      const expandedRow = flatRows[rowIndex]?.[ACCORDION];
-      expandedCount += Array.isArray(expandedRow) ? expandedRow.length : 1;
-    }
-
-    return expandedCount;
-  }
-
-  get currentMaxGridIndex() {
-    const { flatRows } = this.asProps;
-    return flatRows.length + this._getExpandedRowsCount();
-  }
-
-  get currentRowLimitOffset() {
-    return this._getExpandedRowsCount();
-  }
-
   getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<UniqKeyType> {
     const {
       use,
@@ -170,6 +143,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       accordionDuration,
       limit,
       variant,
+      totalRows,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -229,8 +203,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       accordionDuration,
       limit,
       hasGroups,
-      currentMaxGridIndex: this.currentMaxGridIndex,
-      currentRowLimitOffset: this.currentRowLimitOffset,
+      totalRows,
+      flatRows,
     };
   }
 

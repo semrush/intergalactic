@@ -369,6 +369,7 @@ class DataTableRoot<
       renderCellOverlay,
       limit,
       variant,
+      totalRows: this.totalRows,
     };
   }
 

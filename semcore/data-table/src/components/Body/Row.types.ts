@@ -73,8 +73,8 @@ export type RowPropsInner<UniqKeyType> = JSX.IntrinsicElements['div'] & {
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   limit?: DataTableProps<any, any, any>['limit'];
-  currentMaxGridIndex: number;
-  currentRowLimitOffset: number;
+  totalRows: number;
+  flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
 };
 
