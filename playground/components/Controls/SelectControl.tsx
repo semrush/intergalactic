@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/base-components';
+import { Box, Flex } from '@semcore/base-components';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -35,7 +35,7 @@ function SelectControl({ options, value, colorOptions, onChange, displayName }: 
   if (!Array.isArray(options)) return null;
 
   return (
-    <label style={{ display: 'contents' }}>
+    <Box tag='label' display='contents'>
       <Text mt={1}>{displayName}</Text>
       <Select value={value} w='100%' onChange={onChange}>
         <Select.Trigger w='100%'>
@@ -57,7 +57,7 @@ function SelectControl({ options, value, colorOptions, onChange, displayName }: 
           ))}
         </Select.Menu>
       </Select>
-    </label>
+    </Box>
   );
 }
 
