@@ -53,6 +53,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         row.setAttribute('aria-rowindex', (index + 2 + this.startIndex).toString());
       }
     });
+
+    this.asProps.tableRef.current?.setAttribute('aria-rowcount', ((visibleRows?.length ?? 0) + 1).toString());
   };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
