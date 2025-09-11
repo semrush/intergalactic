@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
 
 ### Fixed
 
