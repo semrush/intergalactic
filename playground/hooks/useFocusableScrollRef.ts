@@ -15,10 +15,8 @@ function useFocusableScrollRef<T extends HTMLElement>() {
 
       if (hasScroll) {
         node.setAttribute('tabindex', '0');
-        node.setAttribute('role', 'group');
       } else {
         node.removeAttribute('tabindex');
-        node.removeAttribute('role');
       }
     };
 
