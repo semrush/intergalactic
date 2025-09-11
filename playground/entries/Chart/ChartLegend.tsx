@@ -26,7 +26,7 @@ const data = [...Array(5).keys()].map((_, i) => ({
 }));
 
 function getJSX(props: ChartLegendJSXProps) {
-  const { withTrend, direction, shape, size, additionLabel, count, withIcon } = props;
+  const { withTrend, shape, size, additionLabel, count, withIcon } = props;
   const [lines, setLines] = React.useState<LegendItem[]>(Object.keys(data[0])
     .filter((name) => name !== 'x')
     .map((item, index) => ({
@@ -83,7 +83,6 @@ function getJSX(props: ChartLegendJSXProps) {
   return (
     // @ts-ignore withTrend will have true in runtime. TS is slightly weirdo about it, idk.
     <ChartLegend
-      direction={direction}
       shape={shape}
       size={size}
       items={lines}
@@ -99,12 +98,6 @@ function getJSX(props: ChartLegendJSXProps) {
 const entry: PlaygroundEntry<ChartLegendJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    direction: {
-      type: 'inline-radio',
-      value: 'row',
-      options: ['row', 'column'],
-      displayName: 'Direction',
-    },
     size: {
       type: 'inline-radio',
       value: 'm',

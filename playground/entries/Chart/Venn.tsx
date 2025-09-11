@@ -1,14 +1,14 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
 import createGithubLink from '../../utils/createGHLink';
 
 type VennChartProps = {
-  commonChartProps: CommonChartProps;
+  commonChartProps: Omit<CommonChartProps, 'showXAxis' | 'showYAxis' | 'showTotalInTooltip'>;
   legendProps: LegendChartProps;
 };
 export type VennChartJSXProps = JSXProps<VennChartProps>;
@@ -42,7 +42,7 @@ function getJSX(props: VennChartJSXProps) {
       aria-label='Venn chart'
       {...props.commonChartProps}
       {...(props.legendProps && {
-        legendProps: props.legendProps,
+        legendProps: legendProps,
         showLegend: props.commonChartProps.showLegend as true,
       })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
@@ -53,7 +53,11 @@ function getJSX(props: VennChartJSXProps) {
 const entry: PlaygroundEntry<VennChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    ...ChartControls,
+    ...getDefaultChartControls({
+      skip: {
+        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip'],
+      },
+    }),
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
