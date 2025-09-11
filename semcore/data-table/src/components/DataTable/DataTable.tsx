@@ -313,6 +313,7 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
+      totalRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -353,6 +354,7 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
+      totalRows,
     };
   }
 

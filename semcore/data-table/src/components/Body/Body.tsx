@@ -46,15 +46,19 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   calculateAriaRowIndex = () => {
-    const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+    requestAnimationFrame(() => {
+      const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
 
-    visibleRows?.forEach((row, index) => {
-      if (row instanceof HTMLElement) {
-        row.setAttribute('aria-rowindex', (index + 2 + this.startIndex).toString());
+      visibleRows?.forEach((row, index) => {
+        if (row instanceof HTMLElement) {
+          row.setAttribute('aria-rowindex', (index + 2 + this.startIndex).toString());
+        }
+      });
+
+      if (!this.asProps.totalRows) {
+        this.asProps.tableRef.current?.setAttribute('aria-rowcount', ((visibleRows?.length ?? 0) + 1).toString());
       }
     });
-
-    this.asProps.tableRef.current?.setAttribute('aria-rowcount', ((visibleRows?.length ?? 0) + 1).toString());
   };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
