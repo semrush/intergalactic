@@ -223,11 +223,12 @@ class ClearButton extends Component {
             selected
             disabled={disabled}
             aria-label={title ?? ariaLabel ?? getI18nText('clear')}
+            __excludeProps={['title']}
           >
             <FilterTrigger.Addon tag={Close} />
           </SFilterTrigger>
         </Hint.Trigger>
-        <Hint.Popper>{ariaLabel ?? getI18nText('clear')}</Hint.Popper>
+        <Hint.Popper>{title ?? ariaLabel ?? getI18nText('clear')}</Hint.Popper>
       </Hint>,
     );
   }
