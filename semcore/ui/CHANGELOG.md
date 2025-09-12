@@ -1,3 +1,23 @@
+## [16.9.0] - 2025-09-12
+
+### @semcore/base-trigger
+
+- **Fixed** The Close `Hint` not closed by pressing `ESC` in `FilterTrigger.ClearButton`.
+
+### @semcore/button
+
+- **Fixed** Typo in `ButtonLink` size defaults.
+
+### @semcore/core
+
+- **Added** New group of tokens for our `Illustration` component.
+
+### @semcore/data-table
+
+- **Added** `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- **Added** Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
+- **Fixed** Bottom border for cell with empty data.
+
 ## [16.8.0] - 2025-09-05
 
 ### @semcore/core
