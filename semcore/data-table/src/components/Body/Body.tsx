@@ -97,10 +97,13 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       shadowVertical,
       accordionMode,
       virtualScroll,
+      variant,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
     const gridRowIndex = row[GRID_ROW_INDEX] + (hasGroups ? INDEX_OFFSET + 1 : INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
+
+    const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     return {
       ...rowProps?.(row, index),
@@ -119,7 +122,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
-      sideIndents,
+      sideIndents: sideIndentsValue,
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
@@ -137,6 +140,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       componentsMap: this.rowsComponentsMap,
       calculateAriaRowIndex: this.calculateAriaRowIndex,
       virtualScroll,
+      variant,
     };
   }
 

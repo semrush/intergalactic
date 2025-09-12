@@ -166,6 +166,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onCellClick,
       rawData,
       shadowVertical,
+      flatRows,
+      variant,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -189,6 +191,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       return React.isValidElement(value) ? value : value?.toString();
     };
 
+    let withoutBorder = props.row[IS_EMPTY_DATA_ROW];
+
+    if (variant === 'card') {
+      withoutBorder = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : flatRows.length === props.rowIndex + 1;
+    }
+
     const extraProps: Record<string, any> = {
       use,
       virtualScroll: Boolean(virtualScroll),
@@ -198,6 +206,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
       shadowVertical,
+      withoutBorder,
     };
 
     if (renderCell) {

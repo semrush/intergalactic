@@ -9,6 +9,8 @@ import type {
   DataTableData,
   DataTableProps,
   DataTableChangeSort,
+  ColumnGroupConfig,
+  ColumnItemConfig,
 } from './components/DataTable/DataTable.types';
 
 const wrapDataTable = <PropsExtending extends {}>(
@@ -37,4 +39,6 @@ export type {
   DataTableData,
   DataTableProps,
   DataTableChangeSort,
+  ColumnGroupConfig,
+  ColumnItemConfig,
 };

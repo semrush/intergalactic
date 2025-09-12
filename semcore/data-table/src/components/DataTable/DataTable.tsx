@@ -78,6 +78,7 @@ class DataTableRoot<
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
+    variant: 'default',
   };
 
   private columns: DTColumn[] = [];
@@ -251,9 +252,12 @@ class DataTableRoot<
       onSelectedRowsChange,
       selectedRows,
       sideIndents,
+      variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
+    const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     return {
       ...headerProps,
@@ -270,7 +274,7 @@ class DataTableRoot<
       gridAreaGroupMap: this.gridAreaGroupMap,
       gridTemplateColumns,
       gridTemplateAreas,
-      sideIndents,
+      sideIndents: sideIndentsValue,
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),
@@ -314,6 +318,7 @@ class DataTableRoot<
       data: rawData,
       renderCellOverlay,
       totalRows,
+      variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -355,6 +360,7 @@ class DataTableRoot<
       shadowVertical,
       renderCellOverlay,
       totalRows,
+      variant,
     };
   }
 
