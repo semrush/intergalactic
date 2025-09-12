@@ -44,7 +44,6 @@ function getJSX(props: AreaChartJSXProps) {
       groupKey='x'
       data={data}
       aria-label='Area chart'
-      aria-labelledby='Test'
       {...props.commonChartProps}
       {...restLinearChartProps}
       {...(props.legendProps && {
