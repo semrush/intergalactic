@@ -9,7 +9,7 @@ import createGithubLink from '../../utils/createGHLink';
 
 type DonutChartProps = {
   commonChartProps: Omit<CommonChartProps, 'showTotalInTooltip'>;
-  legendProps: LegendChartProps;
+  legendProps: Omit<LegendChartProps, 'direction'>;
   donutProps: {
     halfsize: boolean;
     innerRadius: number;
@@ -78,6 +78,7 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
     ...getDefaultChartControls({
       skip: {
         commonChartProps: ['showTotalInTooltip'],
+        legendProps: ['direction'],
       },
     }),
   },

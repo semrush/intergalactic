@@ -9,7 +9,7 @@ import createGithubLink from '../../utils/createGHLink';
 
 type VennChartProps = {
   commonChartProps: Omit<CommonChartProps, 'showXAxis' | 'showYAxis' | 'showTotalInTooltip'>;
-  legendProps: LegendChartProps;
+  legendProps: Omit<LegendChartProps, 'direction'>;
 };
 export type VennChartJSXProps = JSXProps<VennChartProps>;
 
@@ -56,6 +56,7 @@ const entry: PlaygroundEntry<VennChartJSXProps> = {
     ...getDefaultChartControls({
       skip: {
         commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip'],
+        legendProps: ['direction'],
       },
     }),
   },
