@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import InputNumber from '@semcore/input-number';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -10,7 +11,7 @@ interface ITextNumberControlProps extends TextNumberControlType {
 
 function TextNumberControl({ value, onChange, min, max, displayName }: ITextNumberControlProps) {
   return (
-    <label style={{ display: 'contents' }}>
+    <Box tag='label' display='contents'>
       <Text mt={1}>{displayName}</Text>
       <InputNumber w='100%'>
         <InputNumber.Value
@@ -21,7 +22,7 @@ function TextNumberControl({ value, onChange, min, max, displayName }: ITextNumb
         />
         <InputNumber.Controls showControls />
       </InputNumber>
-    </label>
+    </Box>
   );
 }
 

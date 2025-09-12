@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -10,10 +11,10 @@ interface ITextAreaControlProps extends TextAreaControlType {
 
 function TextAreaControl({ value, onChange, displayName }: ITextAreaControlProps) {
   return (
-    <label style={{ display: 'contents' }}>
+    <Box tag='label' display='contents'>
       <Text mt={1}>{displayName}</Text>
       <Textarea w='100%' value={value} onChange={onChange} />
-    </label>
+    </Box>
   );
 }
 

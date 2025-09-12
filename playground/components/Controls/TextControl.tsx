@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -10,12 +11,12 @@ interface ITextControlProps extends TextControlType {
 
 function TextControl({ value, onChange, displayName }: ITextControlProps) {
   return (
-    <label style={{ display: 'contents' }}>
+    <Box tag='label' display='contents'>
       <Text mt={1}>{displayName}</Text>
       <Input w='100%'>
         <Input.Value value={value} onChange={onChange} />
       </Input>
-    </label>
+    </Box>
   );
 }
 
