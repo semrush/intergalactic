@@ -1120,6 +1120,48 @@
         "description": "Color for the default non-interactive icon."
       }
     },
+    "illustration": {
+      "red": {
+        "value": "#FF788F",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "orange": {
+        "value": "#FFB26E",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "yellow": {
+        "value": "#FFE84D",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "salad": {
+        "value": "#C7FA73",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "green": {
+        "value": "#45E0A8",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "blue": {
+        "value": "#6EDBFF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "violet": {
+        "value": "#B880FF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "pink": {
+        "value": "#FF7AD1",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      }
+    },
     "date-picker": {
       "cell": {
         "value": "{gray.white}",

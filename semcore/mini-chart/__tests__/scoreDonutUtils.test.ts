@@ -4,15 +4,7 @@ import { ScoreDonutUtils } from '../src/utils/ScoreDonutUtils';
 
 describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
-    it('returns correct value for divider when value is 50', () => {
-      const scoreDonut = new ScoreDonutUtils(50, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = true;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('returns correct value for divider when value is 100', () => {
+    it('Verify returns correct value for divider when value is 100', () => {
       const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
       const actualResult = scoreDonut.hasDivider;
       const expectedResult = false;
@@ -20,7 +12,15 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('returns correct value for divider when value is 0', () => {
+    it('Verify returns correct value for divider when value is 33.5', () => {
+      const scoreDonut = new ScoreDonutUtils(33.5, isSemiDonut);
+      const actualResult = scoreDonut.hasDivider;
+      const expectedResult = true;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify returns correct value for divider when value is 0', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.hasDivider;
       const expectedResult = false;
@@ -28,7 +28,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('returns correct viewBox', () => {
+    it('Verify returns correct viewBox', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.viewBox;
       const expectedResult = isSemiDonut ? '0 0 24 12' : '0 0 24 24';
@@ -36,7 +36,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('returns correct strokeWidth', () => {
+    it('Verify returns correct strokeWidth', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.strokeWidth;
       const expectedResult = isSemiDonut ? 6 : 4;
@@ -44,7 +44,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('returns correct radius', () => {
+    it('Verify returns correct radius', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.radius;
       const expectedResult = isSemiDonut ? 9 : 10;
@@ -52,7 +52,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('calculates base stroke dash array correctly', () => {
+    it('Verify calculates base stroke dash array correctly', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.baseStrokeDashArray;
       const expectedResult = isSemiDonut ? Math.PI * scoreDonut.radius : 2 * Math.PI * scoreDonut.radius;
@@ -60,7 +60,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBeCloseTo(expectedResult);
     });
 
-    it('calculates ofset point correctly', () => {
+    it('Verify calculates ofset point correctly', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const baseStroke = scoreDonut.baseStrokeDashArray;
 
@@ -70,7 +70,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('calculates value stroke dash array correctly', () => {
+    it('Verify calculates value stroke dash array correctly', () => {
       const value = 30;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
       const baseStroke = scoreDonut.baseStrokeDashArray;
@@ -81,7 +81,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBeCloseTo(expectedResult);
     });
 
-    it('calculates grey stroke dash array correctly', () => {
+    it('Verify calculates grey stroke dash array correctly', () => {
       const value = 30;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
       const baseStroke = scoreDonut.baseStrokeDashArray;
@@ -93,7 +93,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('returns correct strokeDashArrayParts for normal case', () => {
+    it('Verify returns correct strokeDashArrayParts for normal case', () => {
       const value = 30;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -109,7 +109,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('returns correct strokeDashArrayParts for edge case where greyStrokeDash would be negative', () => {
+    it('Verify returns correct strokeDashArrayParts for edge case where greyStrokeDash would be negative', () => {
       const value = 98.5;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -123,7 +123,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('calculates stroke dash offset base correctly', () => {
+    it('Verify calculates stroke dash offset base correctly', () => {
       const value = 50;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -137,7 +137,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('calculates stroke dash offset base correctly for 0 value', () => {
+    it('Verify calculates stroke dash offset base correctly for 0 value', () => {
       const value = 0;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -146,6 +146,19 @@ describe('Score Donut Functions', () => {
       const expectedResultSemiDonut = 0;
 
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
+    });
+
+    it('Verify calculates stroke dash offset base correctly for given value', () => {
+      const value = 10;
+      const isSemiDonut = false;
+      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+
+      const hasDivider = scoreDonut.hasDivider;
+      const valueStroke = scoreDonut.valueStrokeDashArray;
+      const offsetPoint = scoreDonut.offsetPoint;
+      const expectedResult = hasDivider ? -1 * (valueStroke + (isSemiDonut ? offsetPoint : 0)) : 0;
+      const actualResult = scoreDonut.strokeDashOffsetBase;
+      expect(actualResult).toBe(expectedResult);
     });
   });
 });
