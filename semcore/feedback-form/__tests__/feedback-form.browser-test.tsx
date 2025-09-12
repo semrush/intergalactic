@@ -92,7 +92,7 @@ test.describe('Functional', () => {
     const trigger = page.getByRole('button');
     const feedbackForm = page.locator('[data-ui-name="FeedbackForm"]');
     const inputs = page.getByRole('textbox');
-    const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
+    const success = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await test.step('Verify feedback form items opened by Enter', async () => {
       await page.keyboard.press('Tab');
@@ -184,7 +184,7 @@ test.describe('Functional', () => {
     const trigger = page.getByRole('button');
     const feedbackForm = page.locator('[data-ui-name="FeedbackForm"]');
     const inputs = page.getByRole('textbox');
-    const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
+    const success = page.locator('[data-ui-name="Dropdown.Popper"]');
     const submit = page.locator('[data-ui-name="FeedbackForm.Submit"]');
     const cancel = page.locator('[data-ui-name="FeedbackForm.Cancel"]');
 
