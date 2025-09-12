@@ -12,7 +12,7 @@ test.describe('Vertical Scroll', () => {
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('ArrowDown', { delay: 50 });
     }
-    await page.waitForSelector('[role="gridcell"][data-ui-name="Body.Cell"][name="id"]:has-text("#50")', { state: 'visible' });
+    await page.waitForSelector('[role="gridcell"][data-ui-name="Row.Cell"][name="id"]:has-text("#50")', { state: 'visible' });
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -116,6 +116,8 @@ test.describe('Vertical Scroll', () => {
     await toggle.first().click();
     await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
+    await page.waitForTimeout(500);
+
     await toggle.first().click();
 
     await toggle.nth(2).click();

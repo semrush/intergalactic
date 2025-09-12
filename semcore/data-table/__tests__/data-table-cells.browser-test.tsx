@@ -242,7 +242,7 @@ test.describe('Cells', () => {
       'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const cell = page.locator('[data-ui-name="Body.Cell"]');
+    const cell = page.locator('[data-ui-name="Row.Cell"]');
     await expect(cell).toHaveAttribute('data-grouped-by', 'colgroup');
     await expect(cell).toHaveAttribute('scope', 'colgroup');
     await expect(cell).toHaveAttribute('aria-colspan', '4');
@@ -254,7 +254,7 @@ test.describe('Cells', () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowDown');
-    await expect(page.locator('[data-ui-name="Body.Cell"]')).toBeFocused();
+    await expect(page.locator('[data-ui-name="Row.Cell"]')).toBeFocused();
   });
 
   test('Verify colored cells', async ({ page, browserName }) => {

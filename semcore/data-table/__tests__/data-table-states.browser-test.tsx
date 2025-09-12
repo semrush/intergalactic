@@ -46,7 +46,7 @@ test.describe('Loading states', () => {
     await page.setContent(htmlContent);
     const row = await page.locator('div[data-ui-name="Body.Row"][aria-rowindex="2"]');
 
-    const rowCells = row.locator('div[data-ui-name="Body.Cell"]');
+    const rowCells = row.locator('div[data-ui-name="Row.Cell"]');
 
     const cellsCount = await rowCells.count();
     for (let i = 0; i < cellsCount; i++) {
@@ -81,7 +81,7 @@ test.describe('Loading states', () => {
 
     await page.setContent(htmlContent);
 
-    const cells = page.locator('div[data-ui-name="Body.Cell"]');
+    const cells = page.locator('div[data-ui-name="Row.Cell"]');
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
 
@@ -134,7 +134,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const region = page.locator('[aria-label="Table action bar"]');
     const collapse = page.locator('[data-ui-name="Collapse"]');
@@ -251,7 +251,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const collapse = page.locator('[data-ui-name="Collapse"]');
     const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
