@@ -8,8 +8,6 @@ SScrollArea {
     right: var(--focusRingRightOffset);
     bottom: var(--focusRingBottomOffset);
     left: var(--focusRingLeftOffset);
-
-    outline-offset: -2px;
   }
 }
 
