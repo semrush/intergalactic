@@ -149,14 +149,11 @@ test.describe('Functional', () => {
     await test.step('Verify secong notice shown when click on th trigger', async () => {
       await buttonTrigger.click();
       await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
-      await locators.closeHint(page).waitFor({ state: 'visible' });
-      await expect(locators.closeHint(page)).toBeVisible(); // bug UIK-3926
+      await expect(locators.closeHint(page)).toBeHidden();
       await expect(locators.closeButton(page)).toHaveCount(2);
     });
 
     await test.step('Verify focus returns to the trigger be Escape', async () => {
-      await page.keyboard.press('Escape');
-      await locators.closeHint(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('Escape');
       await locators.closeButton(page).nth(1).waitFor({ state: 'hidden' });
       await expect(buttonTrigger).toBeFocused();
