@@ -29,6 +29,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   };
 
   private cellName: string = '';
+  private closeAccordionTimeout = 0;
 
   rowElementRef = React.createRef<HTMLDivElement>();
 
@@ -78,7 +79,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   };
 
   handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
-    const { accordionDuration, accordionMode, expandedRows, onExpandRow, setRowHeight, rowsHeightMap } = this.asProps;
+    const { accordionDuration, accordionMode, expandedRows, onExpandRow, setRowHeight, rowsHeightMap, calculateAriaRowIndex } = this.asProps;
+    const { expandedForAnimation } = this.state;
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
       : accordionDuration ??
@@ -95,9 +97,18 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       }
     }, openDuration + 100); // we need to calculate after expanding animation
 
-    if (expandedRows.has(row[UNIQ_ROW_KEY])) {
+    if (expandedRows.has(row[UNIQ_ROW_KEY]) && expandedForAnimation === false) {
       this.closeAccordion(row, closeDuration);
     } else {
+      if (expandedForAnimation === true && this.closeAccordionTimeout) {
+        clearTimeout(this.closeAccordionTimeout);
+        onExpandRow(row);
+
+        this.setState({
+          expandedForAnimation: false,
+        }, calculateAriaRowIndex);
+      }
+
       if (accordionMode === 'toggle' && expandedRows.size > 0) {
         const previousRows = new Map<UniqKeyType, DTRow<UniqKeyType>>();
 
@@ -129,7 +140,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     this.setState({
       expandedForAnimation: true,
     }, calculateAriaRowIndex);
-    setTimeout(() => {
+    this.closeAccordionTimeout = window.setTimeout(() => {
       onExpandRow(row);
 
       this.setState({
