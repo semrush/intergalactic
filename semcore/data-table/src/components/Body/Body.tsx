@@ -56,7 +56,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       });
 
       if (!this.asProps.totalRows) {
-        this.asProps.tableRef.current?.setAttribute('aria-rowcount', ((visibleRows?.length ?? 0) + 1).toString());
+        this.asProps.tableRef.current?.setAttribute('aria-rowcount', (visibleRows?.length ?? 0).toString());
       }
     });
   };
