@@ -15,7 +15,7 @@
   "dependencies": {
     "@semcore/changelog-handler": "workspace:*",
     "@semcore/slack-integration": "workspace:*",
-    "axios": "1.9.0",
+    "axios": "1.12.0",
     "compressing": "^1.10.3",
     "dayjs": "1.8.36",
     "marked-ast": "0.3.0",
