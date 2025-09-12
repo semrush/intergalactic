@@ -1,12 +1,11 @@
 import { Portal, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import type { NoticeGlobalTheme } from '@semcore/notice-global';
+import type { NoticeGlobalProps } from '@semcore/notice-global';
 import NoticeGlobal from '@semcore/notice-global';
-import { Text } from '@semcore/typography';
 import React from 'react';
 
-type noticeGlobalExampleProps = NoticeGlobalTheme;
-const Demo = (props: noticeGlobalExampleProps) => {
+type NoticeGlobalExampleProps = NoticeGlobalProps;
+const Demo = (props: NoticeGlobalExampleProps) => {
   const [visible, setVisible] = React.useState(false);
 
   return (
@@ -40,7 +39,7 @@ const Demo = (props: noticeGlobalExampleProps) => {
     </Flex>
   );
 };
-export const defaultProps: noticeGlobalExampleProps = {
+export const defaultProps: NoticeGlobalExampleProps = {
   theme: 'neutral',
   duration: 0,
   closable: true,
