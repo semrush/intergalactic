@@ -31,7 +31,7 @@ test.describe('Visual', () => {
       await buttons.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
-    if (browserName == 'webkit') return;
+
     await test.step('Verify email validation', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
