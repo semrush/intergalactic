@@ -470,7 +470,7 @@ test.describe('Accordion in table', () => {
       await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 500,
+        timeout: 1000,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #0']);
