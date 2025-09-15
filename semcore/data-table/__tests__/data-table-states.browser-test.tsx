@@ -135,7 +135,7 @@ test.describe('Additional states', () => {
       const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
       const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
       const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
-      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
+      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]');
 
       for (const lastRowCell of lastTableRowCells) {
         await expect(lastRowCell).toHaveCSS('border-bottom-style', 'none');
@@ -150,8 +150,13 @@ test.describe('Additional states', () => {
       }
       await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
 
-      for (const accordionLastRowCell of accordionLastRowCells) {
-        await expect(accordionLastRowCell).toHaveCSS('border-bottom-style', 'none');
+      const count = await accordionLastRowCells.count();
+
+      for (let i = 0; i < count / 2; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'solid');
+      }
+      for (let i = count / 2; i < count; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'none');
       }
       await expect(page).toHaveScreenshot();
     });
