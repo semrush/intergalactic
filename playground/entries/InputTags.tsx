@@ -22,7 +22,7 @@ export type InputTagsJSXProps = JSXProps<InputTagsProps & InputValueProps> & Add
 function getJSX(props: InputTagsJSXProps) {
   return (
     <InputTags size={props.size} state={props.state}>
-      <InputTags.Tag tabIndex={0} editable={props.tagProps.editable}>
+      <InputTags.Tag editable={props.tagProps.editable}>
         <InputTags.Tag.Text>
           {props.tagProps.circle && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
           {props.tagProps.before && <InputTags.Tag.Addon>{renderIcon('before', props.size)}</InputTags.Tag.Addon>}
