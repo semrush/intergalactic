@@ -29,7 +29,7 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
     const resolvedColor = computedStyle.getPropertyValue('background-color');
 
     if (isColorWhite(resolvedColor)) {
-      ref.current.style.border = '1px solid var(--intergalactic-border-secondary)';
+      ref.current.style.border = '1px solid var(--intergalactic-border-primary)';
     }
   }, []);
 
