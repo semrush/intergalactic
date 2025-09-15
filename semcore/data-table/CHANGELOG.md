@@ -12,6 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Bottom border for cell with empty data.
+- Render grouped header in some cases.
 
 ## [16.2.1] - 2025-09-05
 
