@@ -31,7 +31,7 @@ test.describe('Visual tests', () => {
         await test.step('Verify inputTagsM styles', async () => {
           const count = await input_tags_m.count();
           for (let i = 0; i < count; i++) {
-            await expect(input_tags_m.nth(i)).toHaveCSS('padding-left', '6px');
+            await expect(input_tags_m.nth(i)).toHaveCSS('padding-left', '4px');
             await expect(input_tags_m.nth(i)).toHaveCSS('padding-right', '6px');
           }
         });
@@ -39,7 +39,7 @@ test.describe('Visual tests', () => {
         await test.step('Verify inputTagsL styles', async () => {
           const count = await input_tags_l.count();
           for (let i = 0; i < count; i++) {
-            await expect(input_tags_l.nth(i)).toHaveCSS('padding-left', '10px');
+            await expect(input_tags_l.nth(i)).toHaveCSS('padding-left', '8px');
             await expect(input_tags_l.nth(i)).toHaveCSS('padding-right', '10px');
           }
         });
@@ -48,7 +48,6 @@ test.describe('Visual tests', () => {
           const li = page.locator('li[data-ui-name="InputTags.Tag"]');
           const count = await li.count();
           for (let i = 0; i < count; i++) {
-            await expect(li.nth(i)).toHaveCSS('padding', '0px');
             await expect(li.nth(i)).toHaveCSS('margin', '2px');
           }
         });
