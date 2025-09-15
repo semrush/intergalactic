@@ -286,7 +286,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           <SAccordionToggle
             aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
             // @ts-ignore
-            expanded={expanded}
+            expanded={expanded && !this.state.expandedForAnimation}
             onClick={handleClick}
             color='--intergalactic-icon-primary-neutral'
             aria-expanded={expanded}
