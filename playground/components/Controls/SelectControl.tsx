@@ -17,15 +17,30 @@ interface ISelectColorAddonProps {
 function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   if (!options) return null;
 
+  const ref = React.useRef(null);
   const { withIntergalacticPrefix } = options;
+  const bgColor = withIntergalacticPrefix ? `var(--intergalactic-${color})` : `var(--${color})`;
+
+  React.useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const computedStyle = window.getComputedStyle(element);
+    const resolvedColor = computedStyle.getPropertyValue('background-color');
+
+    if (isColorWhite(resolvedColor)) {
+      ref.current.style.border = '1px solid var(--intergalactic-border-secondary)';
+    }
+  }, []);
 
   return (
     <div
+      ref={ref}
       style={{
         width: '12px',
         height: '12px',
         borderRadius: '50%',
-        backgroundColor: withIntergalacticPrefix ? `var(--intergalactic-${color})` : `var(--${color})`,
+        backgroundColor: bgColor,
       }}
     />
   );
@@ -62,3 +77,24 @@ function SelectControl({ options, value, colorOptions, onChange, displayName }: 
 }
 
 export default SelectControl;
+
+function isColorWhite(color: string) {
+  const lowerCaseColor = color.toLowerCase();
+
+  if (lowerCaseColor === '#ffffff' || lowerCaseColor === '#fff') {
+    return true;
+  }
+
+  const rgbRegex = /rgba?\((\s*\d+\s*,\s*\d+\s*,\s*\d+\s*)(,\s*1\s*)?\)/;
+  const rgbMatch = lowerCaseColor.match(rgbRegex);
+  if (rgbMatch) {
+    const [r, g, b] = rgbMatch[1].split(',').map(Number);
+    return r === 255 && g === 255 && b === 255;
+  }
+
+  if (lowerCaseColor === 'white') {
+    return true;
+  }
+
+  return false;
+}
