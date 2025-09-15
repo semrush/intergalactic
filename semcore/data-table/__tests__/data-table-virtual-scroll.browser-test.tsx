@@ -116,7 +116,6 @@ test.describe('Vertical Scroll', () => {
     await toggle.first().click();
     await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
-    await page.waitForTimeout(500);
 
     await toggle.first().click();
 

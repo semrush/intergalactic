@@ -88,7 +88,7 @@ test.describe('Base styles Primary Table', () => {
 
     await test.step('Verify data table attributes', async () => {
       await expect(table).toHaveAttribute('role', 'grid');
-      await expect(table).toHaveAttribute('aria-rowcount', '11');
+      await expect(table).toHaveAttribute('aria-rowcount', '10');
       await expect(table).toHaveAttribute('aria-colcount', '5');
       await expect(table).toHaveAttribute('tabindex', '0');
     });

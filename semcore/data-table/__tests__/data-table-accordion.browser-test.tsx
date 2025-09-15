@@ -81,7 +81,6 @@ test.describe('Accordion in table', () => {
       await locators.toggle(page).nth(0).click();
       await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
       await expect(locators.chart(page, 'Chart')).toHaveCount(0);
-      await page.waitForTimeout(500);
     });
 
     await test.step('Verify accordion collapse when clicking any cell in row in case accordion in 1st cell', async () => {
@@ -92,12 +91,12 @@ test.describe('Accordion in table', () => {
       if (firstBox && lastBox) {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-        await expect(locators.chart(page, 'Chart')).toBeVisible();
+        await expect(locators.chart(page, 'Chart')).toHaveCount(1);
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
-        await expect(locators.chart(page, 'Chart')).not.toBeVisible();
+        await expect(locators.chart(page, 'Chart')).toHaveCount(0);
+        await page.waitForTimeout(250);
       }
-      await page.waitForTimeout(500); // this doesnt work without timeouts
     });
 
     await test.step('Verify accordion collapse logic when clicking cell in case accordion not in 1st cell', async () => {
@@ -108,7 +107,7 @@ test.describe('Accordion in table', () => {
 
       if (firstBox && lastBox) {
         await page.mouse.click(firstBox.x + firstBox.width / 2, firstBox.y + firstBox.height / 2);
-        await expect(locators.chart(page, 'Chart')).not.toBeVisible();
+        await expect(locators.chart(page, 'Chart')).toHaveCount(0);
         await page.mouse.click(lastBox.x + lastBox.width / 2, lastBox.y + lastBox.height / 2);
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
         await expect(locators.chart(page, 'Chart')).toBeVisible();
@@ -116,7 +115,6 @@ test.describe('Accordion in table', () => {
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
         await expect(locators.chart(page, 'Chart')).not.toBeVisible();
       }
-      await page.waitForTimeout(500);
     });
 
     await test.step('Verify accordion not expands when clicking interactive element in any cell when accordion on 1st', async () => {
@@ -202,7 +200,6 @@ test.describe('Accordion in table', () => {
     });
 
     await locators.toggle(page).first().click();
-    await page.waitForTimeout(250);
     if (browserName !== 'firefox')
       for (let i = 0; i < cellCount; i++) {
         const cell = cells.nth(i);
@@ -248,7 +245,7 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify accordion table in table styles', async ({ page }) => {
+  test('Verify table in table styles', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -625,7 +622,7 @@ test.describe('Accordion in table', () => {
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'visible' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 500,
+        timeout: 200,
       });
       expect(messages.length).toBe(2);
       expect(messages).toEqual(['Accordion open for row #1', 'Accordion close for row #0']);
@@ -750,7 +747,7 @@ test.describe('Accordion in table', () => {
     });
 
     await test.step('Verify rowcount when accordion not expanded', async () => {
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '8');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '7');
       await expect(row.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'false',
@@ -761,7 +758,7 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('Enter');
       await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
       await expect(row.locator('[data-ui-name="ButtonLink"]').first()).toBeFocused();
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '11');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(row.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -773,7 +770,7 @@ test.describe('Accordion in table', () => {
       const cell = locators.rowTableInTable(page, 2, 3).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       await expect(cell).toBeFocused();
       await page.keyboard.press('ArrowUp');
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '11');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(row.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -788,18 +785,18 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowDown');
       const cell2 = locators.row(page, 6).locator('[data-ui-name="Row.Cell"][aria-colindex="2"]');
       await expect(cell2).toBeFocused();
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '11');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await expect(row.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
       );
       await page.keyboard.press('Enter');
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '11');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '10');
       await page.keyboard.press('ArrowLeft');
       await expect(locators.row(page, 6).locator('[data-ui-name="ButtonLink"]')).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.rowTableInTable(page, 2, 9).waitFor({ state: 'visible' });
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '14');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '13');
       await expect(row.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
         'aria-expanded',
         'true',
@@ -821,7 +818,7 @@ test.describe('Accordion in table', () => {
       await expect(sortIconKd).toBeFocused();
       await page.keyboard.press('Enter');
       await page.waitForTimeout(250);
-      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '14');
+      await expect(locators.dataTable(page)).toHaveAttribute('aria-rowcount', '13');
 
       const newCell = locators.row(page, 7).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       await expect(newCell.locator('[data-ui-name="ButtonLink"]')).toHaveAttribute(
@@ -903,7 +900,7 @@ test.describe('Accordion in table', () => {
     });
 
     await test.step('Verify rowcount when accordion expanded', async () => {
-      await expect(table.first()).toHaveAttribute('aria-rowcount', '9');
+      await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
     });
 
@@ -982,7 +979,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify table component expands by click on toggle', async () => {
       await sortIconKeywordAcc.click();
       await locators.dataTable(page).nth(1).waitFor({ state: 'visible' });
-      await expect(table.first()).toHaveAttribute('aria-rowcount', '9');
+      await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
       await expect(locators.dataTable(page).nth(1)).toHaveCount(1);
     });
@@ -990,7 +987,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify table component collpases by click on toggle', async () => {
       await sortIconKeywordAcc.click();
       await locators.dataTable(page).nth(1).waitFor({ state: 'hidden' });
-      await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
+      await expect(table.first()).toHaveAttribute('aria-rowcount', '7');
       await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
       await expect(locators.dataTable(page).nth(1)).toHaveCount(0);
     });

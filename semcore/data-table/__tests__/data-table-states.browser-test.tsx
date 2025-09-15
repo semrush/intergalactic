@@ -133,7 +133,7 @@ test.describe('Additional states', () => {
       await page.setContent(htmlContent);
 
       const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Body.Cell"]').all();
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
       const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
       const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
 
@@ -170,7 +170,7 @@ test.describe('Additional states', () => {
       await page.setContent(htmlContent);
 
       const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Body.Cell"]').all();
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
       const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
       const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
 
