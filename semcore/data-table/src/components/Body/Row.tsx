@@ -205,7 +205,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     let withoutBorder = props.row[IS_EMPTY_DATA_ROW];
 
     if (variant === 'card') {
-      withoutBorder = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : flatRows.length === props.rowIndex + 1;
+      const isLastRow = flatRows.length === props.rowIndex + 1;
+      const isLastAccordionRow = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : true;
+
+      withoutBorder = isLastRow && isLastAccordionRow;
     }
 
     const extraProps: Record<string, any> = {
@@ -264,6 +267,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               !this.state.expandedForAnimation;
 
       extraProps.expanded = expanded;
+
+      if (expanded) {
+        extraProps.withoutBorder = false;
+      }
 
       const row = props.row;
       const rowIndex = props.rowIndex;
@@ -329,6 +336,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       use,
       shadowVertical,
       variant,
+      flatRows,
     } = this.asProps;
 
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
@@ -499,6 +507,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   shadowVertical={shadowVertical}
                   accordionDuration={accordionDuration}
                   variant={variant}
+                  flatRows={flatRows}
                 />
               );
             })}
