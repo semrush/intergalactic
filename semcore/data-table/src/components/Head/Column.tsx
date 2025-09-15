@@ -1,8 +1,7 @@
-import { Box, Flex } from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
@@ -11,6 +10,8 @@ import * as React from 'react';
 
 import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import style from './style.shadow.css';
+import type { IFocusableCell } from '../../decorators/focusableCell';
+import { FocusableCell } from '../../decorators/focusableCell';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
 const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
@@ -36,6 +37,7 @@ type State = {
   sortVisible: boolean;
 };
 
+@FocusableCell
 export class Column<
   Data extends DataTableData,
   UniqKey extends keyof Data[number],
@@ -46,11 +48,11 @@ export class Column<
     {},
     [],
     ColumnPropsInner<Data, UniqKey, UniqKeyType>
-  > {
+  > implements IFocusableCell {
+  handleFocusableCellKeyDown!: (e: React.KeyboardEvent) => void;
+  handleFocusableCellFocus!: (target: HTMLElement, currentTarget: HTMLElement, e: React.FocusEvent<HTMLElement, HTMLElement>) => void;
   static displayName = 'Column';
   static style = style;
-
-  lockedCell: [HTMLElement | null, boolean] = [null, false];
 
   columnRef = React.createRef<HTMLDivElement>();
   sortWrapperRef = React.createRef<HTMLDivElement>();
@@ -235,39 +237,7 @@ export class Column<
   };
 
   handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.currentTarget === this.lockedCell[0]) {
-      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
-        getFocusableIn(node as HTMLElement),
-      );
-
-      if (this.lockedCell[1]) {
-        if (e.key === 'Escape') {
-          this.lockedCell[0]?.focus();
-          this.lockedCell[1] = false;
-        }
-        if (e.key.startsWith('Arrow')) {
-          e.stopPropagation();
-        }
-        if (e.key === 'Tab') {
-          if (e.target === focusableChildren[0] && e.shiftKey) {
-            focusableChildren[focusableChildren.length - 1]?.focus();
-            e.preventDefault();
-          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
-            focusableChildren[0]?.focus();
-            e.preventDefault();
-          }
-
-          e.stopPropagation();
-        }
-      } else if (e.key === 'Enter') {
-        this.lockedCell[1] = true;
-        focusableChildren[0]?.focus();
-        e.preventDefault();
-        e.stopPropagation();
-      } else if (e.key === 'Tab') {
-        this.lockedCell[0]?.setAttribute('inert', '');
-      }
-    }
+    this.handleFocusableCellKeyDown(e);
   };
 
   handleFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -276,17 +246,7 @@ export class Column<
 
     if (lastInteraction.isKeyboard()) {
       this.setState({ sortVisible: true }, () => {
-        if (target === cellElement) {
-          const focusableChildren = Array.from(cellElement.children).flatMap((node) =>
-            getFocusableIn(node as HTMLElement),
-          );
-
-          if (focusableChildren.length === 1) {
-            focusableChildren[0].focus();
-          } else if (focusableChildren.length > 1) {
-            this.lockedCell = [cellElement, false];
-          }
-        }
+        this.handleFocusableCellFocus(target, cellElement, e);
       });
     }
   };

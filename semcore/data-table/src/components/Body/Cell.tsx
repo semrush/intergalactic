@@ -1,23 +1,26 @@
 import { Box, Collapse, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import * as React from 'react';
 
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import style from './style.shadow.css';
+import type { IFocusableCell } from '../../decorators/focusableCell';
+import { FocusableCell } from '../../decorators/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 const DEFAULT_ROW_DURATION = 50;
 
-class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> {
+@FocusableCell
+class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> implements IFocusableCell {
+  handleFocusableCellKeyDown!: (e: React.KeyboardEvent) => void;
+  handleFocusableCellFocus!: (target: HTMLElement, currentTarget: HTMLElement, e: React.FocusEvent<HTMLElement, HTMLElement>) => void;
+
   static displayName = 'Cell';
   static style = style;
 
   cellRef = React.createRef<HTMLDivElement>();
-
-  lockedCell: [HTMLElement | null, boolean] = [null, false];
 
   componentWillUnmount() {
     const { virtualScroll, tableRef } = this.asProps;
@@ -27,57 +30,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.currentTarget === this.lockedCell[0]) {
-      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
-        getFocusableIn(node as HTMLElement),
-      );
-
-      if (this.lockedCell[1]) {
-        if (e.key === 'Escape') {
-          this.lockedCell[0]?.focus();
-          this.lockedCell[1] = false;
-        }
-        if (e.key.startsWith('Arrow')) {
-          e.stopPropagation();
-          e.preventDefault();
-        }
-        if (e.key === 'Tab') {
-          if (e.target === focusableChildren[0] && e.shiftKey) {
-            focusableChildren[focusableChildren.length - 1]?.focus();
-            e.preventDefault();
-          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
-            focusableChildren[0]?.focus();
-            e.preventDefault();
-          }
-          e.stopPropagation();
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        e.stopPropagation();
-        this.lockedCell[1] = true;
-        focusableChildren[0]?.focus();
-      }
-    }
+    this.handleFocusableCellKeyDown(e);
   };
 
   onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
-      e.target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
-
-      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
-        getFocusableIn(node as HTMLElement),
-      );
-
-      if (focusableChildren.length === 1) {
-        focusableChildren[0].focus();
-      } else if (focusableChildren.length > 1) {
-        this.lockedCell = [e.currentTarget, false];
-      }
-    }
+    this.handleFocusableCellFocus(e.target, e.currentTarget, e);
   };
 
   calculateAnimationSettings() {

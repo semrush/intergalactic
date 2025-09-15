@@ -11,7 +11,7 @@
     "react-hook-form": "7.54.0",
     "react-virtualized": "9.22.3",
     "react-window": "1.8.11",
-    "@storybook/react-vite": "9.0.5"
+    "@storybook/react-vite": "9.1.6"
   },
   "devDependencies": {
     "@types/d3-scale": "3.3.0",
