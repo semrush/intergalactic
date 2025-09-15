@@ -2,13 +2,19 @@ import Button from '@semcore/button';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
 import type { DataTableData, DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 export type AccordionWithButtonProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  limitedRows?: number;
+  limitedColumns?: number;
 };
 
 const Demo = (props: AccordionWithButtonProps) => {
+  const { limitedRows, limitedColumns } = props;
+
   return (
     <DataTable
       data={data}
@@ -19,6 +25,27 @@ const Demo = (props: AccordionWithButtonProps) => {
       }}
       h='300px'
       defaultGridTemplateColumnWidth='1fr'
+      limit={{
+        rows: limitedRows,
+        columns: limitedColumns,
+        renderOverlay() {
+          return (
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+              <Text size={300} fontWeight='bold' textAlign='center'>You've reached your report limit for today</Text>
+              <Text size={200} textAlign='center'>
+                To increase your daily report limit,upgrade to a Guru plan.
+              </Text>
+              <Button
+                theme='success'
+                use='primary'
+              >
+                Upgrade to Guru
+              </Button>
+
+            </Flex>
+          );
+        },
+      }}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {
@@ -29,13 +56,16 @@ const Demo = (props: AccordionWithButtonProps) => {
             { name: 'kd', children: 'KD,%' },
             { name: 'cpc', children: 'CPC' },
             { name: 'vol', children: 'Vol.' },
-          ] },
+          ],
+        },
       ]}
     />
   );
 };
 export const accordionWithDefaultProps: AccordionWithButtonProps = {
   accordionMode: 'independent',
+  limitedRows: undefined,
+  limitedColumns: undefined,
 };
 
 Demo.defaultProps = accordionWithDefaultProps;

@@ -1,10 +1,16 @@
+import Button from '@semcore/button';
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
 import type { DataTableProps } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
+
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  limitedRows?: number;
+  limitedColumns?: number;
 };
 
 const ChartExample1 = () => {
@@ -13,7 +19,10 @@ const ChartExample1 = () => {
     </NoData>
   );
 };
+
 const Demo = (props: TableInTableProps) => {
+  const { limitedRows, limitedColumns } = props;
+
   return (
     <DataTable
       aria-label='Parent'
@@ -21,6 +30,27 @@ const Demo = (props: TableInTableProps) => {
       data={data}
       accordionDuration={400}
       accordionMode={props.accordionMode}
+      limit={{
+        rows: limitedRows,
+        columns: limitedColumns,
+        renderOverlay() {
+          return (
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+              <Text size={300} fontWeight='bold' textAlign='center'>You've reached your report limit for today</Text>
+              <Text size={200} textAlign='center'>
+                To increase your daily report limit,upgrade to a Guru plan.
+              </Text>
+              <Button
+                theme='success'
+                use='primary'
+              >
+                Upgrade to Guru
+              </Button>
+
+            </Flex>
+          );
+        },
+      }}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -67,6 +97,8 @@ const ChartExample = () => {
 };
 export const tableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
+  limitedRows: undefined,
+  limitedColumns: undefined,
 };
 
 Demo.defaultProps = tableInTableDefaultProps;
