@@ -2,6 +2,10 @@ SCalendar {
   display: flex;
   flex-direction: column;
   border-radius: var(--intergalactic-surface-rounded, 6px);
+
+  SCalendarUnit:focus-visible {
+    outline: none;
+  }
 }
 
 SGridDays {
@@ -236,11 +240,9 @@ SCalendarUnit[disabled] {
 SCalendar:focus {
   & SCalendarUnit[highlighted] {
     z-index: 1;
-    @mixin focus-outline-mixin;
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    @mixin focus-outline-mixin 4px;
     border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }
