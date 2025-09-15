@@ -430,7 +430,7 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify table in table mouse navigation when accordionMode=independent', async ({ page }) => {
+  test('Verify table in table mouse navigation when accordionMode=independent', async ({ page, browserName }) => {
     let messages: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
@@ -450,6 +450,8 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion expands by toggle click', async () => {
       await locators.toggle(page).first().click();
+      await page.waitForTimeout(100);
+
       await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion open for row #0']);
@@ -459,6 +461,7 @@ test.describe('Accordion in table', () => {
       messages = [];
       const row = page.locator('[aria-rowindex="6"]');
       await row.locator('[data-ui-name="Row.Cell"][aria-colindex="2"]').first().click();
+      await page.waitForTimeout(100);
       await locators.rowTableInTable(page, 2, 9).waitFor({ state: 'visible' });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion open for row #1']);
@@ -466,11 +469,12 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion collapses by toggle click', async () => {
       messages = [];
-      await page.locator('[data-ui-name="ButtonLink"]').first().click();
+      await locators.toggle(page).first().click();
+      await page.waitForTimeout(100);// Timeouts in this test are mainly for WebKit, as it runs slower
       await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 1000,
+        timeout: 500,
       });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #0']);
@@ -478,9 +482,9 @@ test.describe('Accordion in table', () => {
 
     await test.step('Verify accordion collapses cell click', async () => {
       messages = [];
-      const row = page.locator('[aria-rowindex="3"]');
+      const row = locators.row(page, 3);
       await row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first().click();
-
+      await page.waitForTimeout(100);
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
@@ -529,7 +533,7 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
-
+      await page.waitForTimeout(100);
       await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion open for row #0']);
@@ -548,6 +552,7 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(100);
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'visible' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
