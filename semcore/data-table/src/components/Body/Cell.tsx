@@ -136,7 +136,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       animationExpand,
       style,
       shadowVertical,
-      withoutBorder,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -196,7 +195,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
           textAlign={column.textAlign}
-          withoutBorder={withoutBorder}
         >
           <Children />
         </SCell>

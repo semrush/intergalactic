@@ -328,6 +328,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       accordionDuration,
       use,
       shadowVertical,
+      variant,
     } = this.asProps;
 
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
@@ -497,6 +498,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   use={use}
                   shadowVertical={shadowVertical}
                   accordionDuration={accordionDuration}
+                  variant={variant}
                 />
               );
             })}
