@@ -166,6 +166,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         visible={animationExpand}
         duration={duration}
         delay={delay}
+        defaultHeight='100%'
         timingFunction='linear'
         style={style}
         fixed={column.fixed}
