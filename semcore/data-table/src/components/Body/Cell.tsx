@@ -6,16 +6,14 @@ import * as React from 'react';
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import style from './style.shadow.css';
-import type { IFocusableCell } from '../../decorators/focusableCell';
-import { FocusableCell } from '../../decorators/focusableCell';
+import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
+import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 const DEFAULT_ROW_DURATION = 50;
 
-@FocusableCell
 class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> implements IFocusableCell {
-  handleFocusableCellKeyDown!: (e: React.KeyboardEvent) => void;
-  handleFocusableCellFocus!: (target: HTMLElement, currentTarget: HTMLElement, e: React.FocusEvent<HTMLElement, HTMLElement>) => void;
+  lockedCell: LockedCell = [null, false];
 
   static displayName = 'Cell';
   static style = style;
@@ -29,12 +27,12 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   }
 
-  handleKeyDown = (e: React.KeyboardEvent) => {
-    this.handleFocusableCellKeyDown(e);
+  handleFocusableCellKeyDown = (e: React.KeyboardEvent) => {
+    handleKeydownFocusCell(this.lockedCell, e);
   };
 
-  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    this.handleFocusableCellFocus(e.target, e.currentTarget, e);
+  handleFocusableCellFocus = (e: React.FocusEvent) => {
+    handleFocusCell(this.lockedCell, e.target, e.currentTarget);
   };
 
   calculateAnimationSettings() {
@@ -146,8 +144,8 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           render={Flex}
           innerOutline
           tabIndex={-1}
-          onKeyDown={this.handleKeyDown}
-          onFocus={this.onFocusCell}
+          onKeyDown={this.handleFocusableCellKeyDown}
+          onFocus={this.handleFocusableCellFocus}
           use:onClick={this.handleClickCell}
           name={cellName.toString()}
           role='gridcell'

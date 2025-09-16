@@ -10,8 +10,8 @@ import * as React from 'react';
 
 import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import style from './style.shadow.css';
-import type { IFocusableCell } from '../../decorators/focusableCell';
-import { FocusableCell } from '../../decorators/focusableCell';
+import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
+import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
 const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
@@ -37,7 +37,6 @@ type State = {
   sortVisible: boolean;
 };
 
-@FocusableCell
 export class Column<
   Data extends DataTableData,
   UniqKey extends keyof Data[number],
@@ -49,8 +48,8 @@ export class Column<
     [],
     ColumnPropsInner<Data, UniqKey, UniqKeyType>
   > implements IFocusableCell {
-  handleFocusableCellKeyDown!: (e: React.KeyboardEvent) => void;
-  handleFocusableCellFocus!: (target: HTMLElement, currentTarget: HTMLElement, e: React.FocusEvent<HTMLElement, HTMLElement>) => void;
+  lockedCell: LockedCell = [null, false];
+
   static displayName = 'Column';
   static style = style;
 
@@ -236,17 +235,17 @@ export class Column<
     }
   };
 
-  handleKeyDown = (e: React.KeyboardEvent) => {
-    this.handleFocusableCellKeyDown(e);
+  handleFocusableCellKeyDown = (e: React.KeyboardEvent) => {
+    handleKeydownFocusCell(this.lockedCell, e);
   };
 
-  handleFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+  handleFocusableCellFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     const cellElement = e.currentTarget;
     const target = e.target;
 
     if (lastInteraction.isKeyboard()) {
       this.setState({ sortVisible: true }, () => {
-        this.handleFocusableCellFocus(target, cellElement, e);
+        handleFocusCell(this.lockedCell, target, cellElement);
       });
     }
   };
@@ -292,9 +291,9 @@ export class Column<
         tabIndex={-1}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        onFocus={this.handleFocusCell}
+        onFocus={this.handleFocusableCellFocus}
         onBlur={this.handleBlur}
-        onKeyDown={this.handleKeyDown}
+        onKeyDown={this.handleFocusableCellKeyDown}
         visibleSort={visibleSort}
         isSorted={isSorted}
         innerOutline

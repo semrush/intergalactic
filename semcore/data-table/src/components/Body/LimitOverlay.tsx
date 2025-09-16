@@ -5,8 +5,8 @@ import * as React from 'react';
 
 import type { DTRow, DTRows } from './Row.types';
 import style from './style.shadow.css';
-import type { IFocusableCell } from '../../decorators/focusableCell';
-import { FocusableCell } from '../../decorators/focusableCell';
+import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
+import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DTColumn } from '../Head/Column.types';
 
 type LimitOverlayProps<UniqKeyType> = {
@@ -20,10 +20,8 @@ type LimitOverlayProps<UniqKeyType> = {
   hasGroups: boolean;
 };
 
-@FocusableCell
 class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyType>> implements IFocusableCell {
-  handleFocusableCellKeyDown!: (e: React.KeyboardEvent) => void;
-  handleFocusableCellFocus!: (target: HTMLElement, currentTarget: HTMLElement, e: React.FocusEvent<HTMLElement, HTMLElement>) => void;
+  lockedCell: LockedCell = [null, false];
 
   static displayName = 'LimitOverlay';
   static style = style;
@@ -56,12 +54,12 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
     return `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
   }
 
-  handleKeyDown = (e: React.KeyboardEvent) => {
-    this.handleFocusableCellKeyDown(e);
+  handleFocusableCellKeyDown = (e: React.KeyboardEvent) => {
+    handleKeydownFocusCell(this.lockedCell, e);
   };
 
-  handleFocus = (e: React.FocusEvent<HTMLDivElement, HTMLDivElement>) => {
-    this.handleFocusableCellFocus(e.target, e.currentTarget, e);
+  handleFocusableCellFocus = (e: React.FocusEvent) => {
+    handleFocusCell(this.lockedCell, e.target, e.currentTarget);
   };
 
   render() {
@@ -90,8 +88,8 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
           aria-colspan={colSpan}
           aria-rowspan={rowsSpan}
           tabIndex={-1}
-          onFocus={this.handleFocus}
-          onKeyDown={this.handleKeyDown}
+          onFocus={this.handleFocusableCellFocus}
+          onKeyDown={this.handleFocusableCellKeyDown}
         >
           {renderOverlay?.()}
         </Box>
