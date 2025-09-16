@@ -29,7 +29,20 @@ const Accordion = () => {
 const Demo = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [expanded] = React.useState(() => {
+    const map = new Map<number, Set<string>>();
+    map.set(1, new Set());
+
+    return map;
+  });
+
   const changePage = (page: number) => {
+    if (expanded.has(page)) {
+      expanded.set(page, new Set([...expanded.get(page)]));
+    } else {
+      expanded.set(page, new Set());
+    }
+
     setCurrentPage(page);
   };
 
@@ -53,6 +66,7 @@ const Demo = () => {
         renderCell={renderCell}
         columns={columns}
         uniqueRowKey='id'
+        expandedRows={expanded.get(currentPage)}
       />
       <Pagination
         currentPage={currentPage}
