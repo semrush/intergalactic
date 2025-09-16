@@ -10,7 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `aria-label` property to `FilterTrigger.ClearButton` to change hint text.
+- `aria-label` and `title` properties to `FilterTrigger.ClearButton` to change hint text.
 
 ## [16.4.0] - 2025-09-05
 
