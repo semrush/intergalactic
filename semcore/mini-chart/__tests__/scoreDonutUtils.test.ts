@@ -4,30 +4,6 @@ import { ScoreDonutUtils } from '../src/utils/ScoreDonutUtils';
 
 describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
-    it('Verify returns correct value for divider when value is 100', () => {
-      const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = false;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('Verify returns correct value for divider when value is 33.5', () => {
-      const scoreDonut = new ScoreDonutUtils(33.5, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = true;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('Verify returns correct value for divider when value is 0', () => {
-      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = false;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
     it('Verify returns correct viewBox', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.viewBox;
@@ -93,7 +69,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify returns correct strokeDashArrayParts for normal case', () => {
+    it('Verify returns correct separatorDash for normal case', () => {
       const value = 30;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -102,23 +78,23 @@ describe('Score Donut Functions', () => {
       const greyStroke = scoreDonut.greyStrokeDashArray;
       const greyStrokeDash = greyStroke - 2 * offsetPoint;
 
-      const actualResult = scoreDonut.strokeDashArrayParts;
+      const actualResult = scoreDonut.separatorDash;
       const expectedResult = `${offsetPoint} ${greyStrokeDash} ${offsetPoint} ${baseStroke}`;
       const expectedResultSemiDonut = `${offsetPoint} ${greyStrokeDash} ${offsetPoint} ${baseStroke}`;
 
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('Verify returns correct strokeDashArrayParts for edge case where greyStrokeDash would be negative', () => {
+    it('Verify returns correct separatorDash for edge case where greyStrokeDash would be negative', () => {
       const value = 98.5;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
       const baseStroke = scoreDonut.baseStrokeDashArray;
       const offsetPoint = scoreDonut.offsetPoint;
 
-      const actualResult = scoreDonut.strokeDashArrayParts;
-      const expectedResult = `${offsetPoint}  ${baseStroke}`;
-      const expectedResultSemiDonut = `${offsetPoint}  ${baseStroke}`;
+      const actualResult = scoreDonut.separatorDash;
+      const expectedResult = `${offsetPoint} 0 ${offsetPoint} ${baseStroke}`;
+      const expectedResultSemiDonut = `${offsetPoint} 0 ${offsetPoint} ${baseStroke}`;
 
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
@@ -153,10 +129,9 @@ describe('Score Donut Functions', () => {
       const isSemiDonut = false;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
-      const hasDivider = scoreDonut.hasDivider;
       const valueStroke = scoreDonut.valueStrokeDashArray;
       const offsetPoint = scoreDonut.offsetPoint;
-      const expectedResult = hasDivider ? -1 * (valueStroke + (isSemiDonut ? offsetPoint : 0)) : 0;
+      const expectedResult = -1 * (valueStroke + (isSemiDonut ? offsetPoint : 0));
       const actualResult = scoreDonut.strokeDashOffsetBase;
       expect(actualResult).toBe(expectedResult);
     });
