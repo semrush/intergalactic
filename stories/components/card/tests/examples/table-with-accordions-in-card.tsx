@@ -1,6 +1,6 @@
 import Card from '@semcore/card';
 import type { DataTableProps } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
+import { ACCORDION, DataTable } from '@semcore/data-table';
 import React from 'react';
 
 export const tableInCardDefaultProps: TableInCardProps = {
@@ -46,12 +46,26 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
+    [ACCORDION]: [
+      {
+        keyword: 'www.ebay.com',
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        keyword: 'www.ebay.com',
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+    ],
   },
   {
     keyword: 'www.ebay.com',
@@ -70,6 +84,32 @@ const data = [
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '11.2',
+    cpc: '$3.4',
+    vol: '65,457,920',
+    [ACCORDION]: [
+      {
+        keyword: 'www.ebay.com',
+        kd: '11.2',
+        cpc: '$3.4',
+        vol: '65,457,920',
+      },
+      {
+        keyword: 'www.ebay.com',
+        kd: '10',
+        cpc: '$0.65',
+        vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay buy',
+        kd: '-',
+        cpc: '$0',
+        vol: 'n/a',
+      },
+    ],
   },
 ];
 
