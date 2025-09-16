@@ -54,7 +54,7 @@ function Collapse(
 
     setTimeout(() => {
       if (!element) return;
-      if (visibleRef.current) element.style.height = defaultHeight;
+      if (visibleRef.current) element.style.height = 'auto';
       if (!visibleRef.current) element.style.height = `${0}px`;
       if (overflowHidden) {
         element.style.overflow = overflowRef.current;

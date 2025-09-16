@@ -164,11 +164,9 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         gridArea={gridArea}
         tag={isAccordionRow ? Collapse : undefined}
         visible={animationExpand}
-        interactive
         duration={duration}
         delay={delay}
         timingFunction='linear'
-        defaultHeight='100%'
         style={style}
         fixed={column.fixed}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
