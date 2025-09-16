@@ -471,8 +471,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               aria-level={ariaLevel + 1}
               aria-setsize={1}
               aria-posinset={1}
+              accordionRowIndex={0}
+              rowIndex={rowIndex}
+              rows={[row]}
               row={row}
-              rowIndex={rowIndex + 1}
               columnIndex={1}
               // @ts-ignore
               column={{ name: ACCORDION }}
