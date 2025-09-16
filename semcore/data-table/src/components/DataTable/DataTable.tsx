@@ -765,11 +765,7 @@ class DataTableRoot<
       cell?.removeAttribute('inert');
 
       if (cell instanceof HTMLElement) {
-        if (hasParent(e.target, cell)) {
-          e.target.focus();
-        } else {
-          cell.focus();
-        }
+        cell.focus();
       }
 
       if (this.isDataEmpty) {
