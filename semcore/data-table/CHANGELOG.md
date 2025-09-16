@@ -2,13 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.1] - 2025-09-20
+
+### Added
+
+- Reset expanded accordions if data has changed.
+
 ## [16.3.0] - 2025-09-12
 
 ### Added
 
 - `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
 - Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
-- Reset expanded accordions if data has changed.
 
 ### Fixed
 
