@@ -35,12 +35,6 @@ const Demo = (props: LimitedModeExampleProps) => {
               >
                 Upgrade to Guru
               </Button>
-              <Button
-                theme='success'
-                use='primary'
-              >
-                Upgrade to Guru
-              </Button>
             </Flex>
           );
         },
