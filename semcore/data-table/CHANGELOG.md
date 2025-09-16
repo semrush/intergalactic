@@ -13,6 +13,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Bottom border for cell with empty data.
 
+## [16.2.2] - 2025-09-12
+
+### Fixed
+
+- Table performance with accordions.
+
 ## [16.2.1] - 2025-09-05
 
 ### Changed
