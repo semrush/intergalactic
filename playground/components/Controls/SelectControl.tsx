@@ -17,7 +17,7 @@ interface ISelectColorAddonProps {
 function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   if (!options) return null;
 
-  const ref = React.useRef(null);
+  const ref = React.useRef<null | HTMLDivElement>(null);
   const { withIntergalacticPrefix } = options;
   const bgColor = withIntergalacticPrefix ? `var(--intergalactic-${color})` : `var(--${color})`;
 
@@ -29,7 +29,7 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
     const resolvedColor = computedStyle.getPropertyValue('background-color');
 
     if (isColorWhite(resolvedColor)) {
-      ref.current.style.border = '1px solid var(--intergalactic-border-primary)';
+      element.style.border = '1px solid var(--intergalactic-border-primary)';
     }
   }, []);
 
