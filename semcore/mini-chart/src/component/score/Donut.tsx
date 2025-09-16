@@ -2,6 +2,7 @@ import { createComponent, Component, Root, sstyled, type ComponentType } from '@
 import { assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
@@ -13,11 +14,20 @@ export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
 type Enhances = {
   resolveColor: ReturnType<typeof resolveColorEnhance>;
+  duration: ReturnType<typeof cssVariableEnhance>;
   isSemiDonut?: true;
 };
 
 class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-extra-slow',
+      fallback: '500',
+      map: (v: string) => Number.parseInt(v, 10).toString(),
+      prop: 'duration',
+    }),
+    resolveColorEnhance(),
+  ] as const;
 
   static style = style;
 
@@ -35,6 +45,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
       resolveColor,
       isSemiDonut,
       loading,
+      animate,
+      duration,
     } = this.asProps;
 
     const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
@@ -61,7 +73,22 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                 loading ? undefined : `${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`
               }
               strokeDashoffset={scoreDonut.strokeDashOffsetBase}
-            />
+            >
+              {animate && (
+                <>
+                  <animate
+                    attributeName='stroke-dasharray'
+                    values={`${scoreDonut.baseStrokeDashArray} ${scoreDonut.baseStrokeDashArray};${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                    dur={duration + 'ms'}
+                  />
+                  <animate
+                    attributeName='stroke-dashoffset'
+                    values={`${-1 * scoreDonut.offsetPoint};${scoreDonut.strokeDashOffsetBase}`}
+                    dur={duration + 'ms'}
+                  />
+                </>
+              )}
+            </circle>
             {!loading && (
               <>
                 <circle
@@ -71,23 +98,40 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   strokeWidth={scoreDonut.strokeWidth}
                   stroke={resolveColor(color)}
                   strokeDasharray={`${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
-                  strokeDashoffset={scoreDonut.valueStrokeDashArray}
                 >
-                  <animate
-                    attributeName='stroke-dashoffset'
-                    values={`0;${scoreDonut.valueStrokeDashArray}`}
-                  />
+                  {animate && (
+                    <animate
+                      attributeName='stroke-dasharray'
+                      values={`0 ${scoreDonut.baseStrokeDashArray};${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                      dur={duration + 'ms'}
+                    />
+                  )}
                 </circle>
-                {scoreDonut.hasDivider && !isSemiDonut && (
+                {value > 0 && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'
                     r={scoreDonut.radius}
                     strokeWidth={scoreDonut.strokeWidth}
                     stroke={resolveColor('chart-grid-border')}
-                    strokeDasharray={scoreDonut.strokeDashArrayParts}
+                    strokeDasharray={scoreDonut.separatorDash}
                     strokeDashoffset={-1 * scoreDonut.valueStrokeDashArray}
-                  />
+                  >
+                    {animate && (
+                      <>
+                        <animate
+                          attributeName='stroke-dasharray'
+                          values={`${scoreDonut.animatedSeparatorDash};${scoreDonut.separatorDash}`}
+                          dur={duration + 'ms'}
+                        />
+                        <animate
+                          attributeName='stroke-dashoffset'
+                          values={`0;${scoreDonut.animatedSeparatorOffset}`}
+                          dur={duration + 'ms'}
+                        />
+                      </>
+                    )}
+                  </circle>
                 )}
               </>
             )}

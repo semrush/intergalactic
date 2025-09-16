@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-09-16
+
+### Added
+
+- Initial animation for `ScoreDonut` and `ScoreSemiDonut`.
+
 ## [16.0.8] - 2025-09-05
 
 ### Changed
