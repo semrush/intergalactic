@@ -209,7 +209,7 @@ const Demo = (props: AccordionInTableProps) => {
         defaultGridTemplateColumnWidth='1fr'
         columns={cols}
         renderCell={(props) => {
-          const parentRowIndex = props.rowIndex - 1;
+          const parentRowIndex = props.rowIndex;
 
           if (parentRowIndex === 0 && props.columnName === ACCORDION) {
             return {

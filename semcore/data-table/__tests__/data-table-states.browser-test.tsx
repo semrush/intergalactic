@@ -127,7 +127,7 @@ test.describe('Additional states', () => {
   ];
   variantCard.forEach((item) => {
     test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
-      const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
@@ -169,7 +169,7 @@ test.describe('Additional states', () => {
   ];
   variantDefault.forEach((item) => {
     test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
-      const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
