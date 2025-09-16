@@ -126,7 +126,7 @@ test.describe('Additional states', () => {
     { variant: 'card', use: undefined, compact: true },
   ];
   variantCard.forEach((item) => {
-    test(`Verify table in card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
       const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -168,7 +168,7 @@ test.describe('Additional states', () => {
     { variant: 'default', use: undefined, compact: true },
   ];
   variantDefault.forEach((item) => {
-    test(`Verify table in card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
       const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
@@ -194,6 +194,24 @@ test.describe('Additional states', () => {
       }
 
       await expect(page).toHaveScreenshot();
+    });
+  });
+
+  variantCard.forEach((item) => {
+    test(`Verify accordion in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
+      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]');
+
+      await accordionToggles.first().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' })).toHaveCSS('border-bottom-style', 'solid');
+
+      await accordionToggles.last().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' }).nth(1)).toHaveCSS('border-bottom-style', 'none');
     });
   });
 
