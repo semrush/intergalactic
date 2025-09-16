@@ -4,6 +4,7 @@ import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import * as React from 'react';
 
 import { Body } from './Body';
+import { LimitOverlay } from './LimitOverlay';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
@@ -57,67 +58,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       : undefined;
   }
 
-  get limitOverlayGridArea() {
-    const {
-      columns,
-      selectedRows,
-      hasGroups,
-      totalRows,
-      flatRows,
-      limit,
-    } = this.asProps;
-
-    const currentMaxGridIndex = totalRows;
-    const currentRowLimitOffset = totalRows - flatRows.length;
-
-    const { rows: rowsLimit, columns: columnsLimit } = limit ?? {};
-
-    const rowOffset = hasGroups ? 3 : 2;
-    const columnOffset = selectedRows ? 1 : 0;
-
-    const rowStart = rowsLimit !== undefined
-      ? rowsLimit + rowOffset + currentRowLimitOffset
-      : rowOffset;
-    const columnStart = columnsLimit !== undefined ? columnsLimit + columnOffset + 1 : columnOffset + 1;
-    const rowEnd = currentMaxGridIndex + rowOffset;
-    const columnEnd = columns.length + 1;
-
-    return `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
-  }
-
-  renderLimitOverlay() {
-    const SLimitOverlayCellWrapper = Flex;
-    const { rowIndex, columns, rows, styles, limit } = this.asProps;
-
-    const rowsLimit = limit?.rows;
-    const columnsLimit = limit?.columns;
-    const renderOverlay = limit?.renderOverlay;
-
-    if (rowsLimit === undefined && columnsLimit === undefined) return null;
-    if ((rowsLimit ?? 0) !== rowIndex) return null;
-
-    const colIndex = columnsLimit ? columnsLimit + 1 : 1;
-    const colSpan = columns.length - (columnsLimit ?? 0);
-    const rowsSpan = rows.length - (rowsLimit ?? 0);
-
-    return sstyled(styles)(
-      <SLimitOverlayCellWrapper
-        // @ts-ignore
-        gridArea={this.limitOverlayGridArea}
-      >
-        <Box
-          role='gridcell'
-          aria-colindex={colIndex}
-          aria-colspan={colSpan}
-          aria-rowspan={rowsSpan}
-          tabIndex={-1}
-        >
-          {renderOverlay?.()}
-        </Box>
-      </SLimitOverlayCellWrapper>,
-    );
-  }
-
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
@@ -144,6 +84,9 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
       accordionRowIndex,
       accordionDuration,
       limit,
+      totalRows,
+      flatRows,
+      hasGroups,
     } = this.asProps;
 
     let accordion = row[ACCORDION];
@@ -258,7 +201,16 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
               />
             );
           })}
-          {this.renderLimitOverlay()}
+          <LimitOverlay
+            rowIndex={rowIndex}
+            columns={columns}
+            rows={rows}
+            limit={limit}
+            totalRows={totalRows}
+            flatRows={flatRows}
+            hasGroups={hasGroups}
+            selectedRows={selectedRows}
+          />
         </SRow>
 
         {React.isValidElement(accordion) && (
@@ -320,4 +272,6 @@ class RowRoot<UniqKeyType> extends Component<DataTableRowProps<UniqKeyType>, {},
 }
 
 // @ts-ignore
-export const Row = createComponent(RowRoot, {}, { parent: Body });
+export const Row = createComponent(RowRoot, {
+  LimitOverlay,
+}, { parent: Body });
