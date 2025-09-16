@@ -22,7 +22,7 @@ export type AbstractButtonProps<S, U, T> = BoxProps &
      */
     hintPlacement?: TooltipHintProps['placement'];
 
-    /** Button type. Defined in Button.type or ButtonLink.type */
+    /** Button size. Defined in Button.type or ButtonLink.type */
     size?: S;
     /** Button usage. Defined in Button.type or ButtonLink.type */
     use?: U;

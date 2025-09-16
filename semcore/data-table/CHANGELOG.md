@@ -2,21 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.0] - 2025-09-20
+
+### Added
+
+- Limited mode support.
+
 ## [16.3.0] - 2025-09-12
 
 ### Added
 
 - `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
 
 ### Fixed
 
 - Bottom border for cell with empty data.
-
-## [16.2.2] - 2025-09-12
-
-### Added
-
-- Limited mode support.
+- Table performance with accordions.
 
 ## [16.2.1] - 2025-09-05
 

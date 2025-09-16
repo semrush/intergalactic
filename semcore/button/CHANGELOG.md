@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.9] - 2025-09-12
+
+### Fixed
+
+- Typo in `ButtonLink` size defaults.
+
 ## [16.0.8] - 2025-09-05
 
 ### Changed

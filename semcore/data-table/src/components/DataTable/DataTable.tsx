@@ -21,7 +21,7 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem,
+  DataRowItem, DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -40,6 +40,7 @@ export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
 export const SELECT_ALL = Symbol('SELECT_ALL');
 export const ROW_INDEX = Symbol('ROW_INDEX');
+export const GRID_ROW_INDEX = Symbol('GRID_ROW_INDEX');
 
 const SCROLL_BAR_HEIGHT = 12;
 
@@ -101,6 +102,13 @@ class DataTableRoot<
   private tmpData: Data;
   private calculatedRows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   private flatRows: DTRow<UniqKeyType>[];
+  private gridSettings: {
+    gridTemplateColumns: string[];
+    gridTemplateAreas: string[];
+  } = {
+    gridTemplateColumns: [],
+    gridTemplateAreas: [],
+  };
 
   private selectAllMessageTimer = 0;
 
@@ -109,13 +117,9 @@ class DataTableRoot<
   constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
     super(props);
 
-    if (props.children) {
-      this.columns = this.calculateColumns();
-    } else {
-      const cols = this.calculateColumnsFromConfig();
-      this.columns = cols[0];
-      this.treeColumns = cols[1];
-    }
+    const cols = this.calculateColumnsFromConfig();
+    this.columns = cols[0];
+    this.treeColumns = cols[1];
 
     this.calculatedRows = this.getRows();
     this.flatRows = this.calculatedRows.flat();
@@ -212,18 +216,6 @@ class DataTableRoot<
     }, 0);
 
     return rows + expandedRowsCount;
-  }
-
-  get gridSettings() {
-    const columns = this.columns;
-
-    const gridTemplateColumns = columns.map((c) => c.gtcWidth);
-    const gridTemplateAreas = columns.map((c) => c.name);
-
-    return {
-      gridTemplateColumns,
-      gridTemplateAreas,
-    };
   }
 
   get scrollDirection() {
@@ -471,7 +463,7 @@ class DataTableRoot<
 
   getRow = (index: number) => {
     return this.tableRef.current?.querySelector(
-      `[aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+      `:scope [aria-rowindex="${index + 1}"]:not([aria-hidden="true"]):not(:scope [data-ui-name="DataTable"] [aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
     );
   };
 
@@ -485,11 +477,11 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      this.handlers.expandedRows(new Set([...expandedRows]));
+      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
-      this.handlers.expandedRows(new Set([...expandedRows]));
+      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
@@ -758,6 +750,7 @@ class DataTableRoot<
           row = firstAvailableRow;
         }
       }
+
       const cell = row
         ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
         .item(this.focusedCell[1]);
@@ -799,7 +792,8 @@ class DataTableRoot<
     this.setInert(false);
   };
 
-  handleBackFromAccordion = (cellIndex: number) => {
+  handleBackFromAccordion = (key: string) => {
+    const cellIndex = this.columns.findIndex((c) => c.name === key);
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
@@ -909,8 +903,8 @@ class DataTableRoot<
                 )
               : (
                   <>
-                    <DataTableInternal.Head />
-                    <DataTableInternal.Body />
+                    <DataTable.Head />
+                    <DataTable.Body />
                   </>
                 )}
           </SDataTable>
@@ -1015,126 +1009,6 @@ class DataTableRoot<
     );
     return [side, `${sum}px`];
   };
-
-  private calculateColumns(): DTColumn[] {
-    const { children, data, selectedRows } = this.props;
-
-    const HeadComponent = findComponent(children, ['Head']) as ReactElement<DataTableHeadProps> & {
-      props: {
-        children: Array<ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>>;
-      };
-    };
-
-    this.hasGroups = findComponent(HeadComponent.props.children, ['Head.Group']) !== undefined;
-
-    let groupIndex = 0;
-    let gridColumnIndex = selectedRows ? 2 : 1;
-
-    const calculateGridTemplateColumn = this.calculateGridTemplateColumn.bind(this);
-
-    const columns: DTColumn[] = [];
-
-    if (selectedRows) {
-      const column: DTColumn = {
-        name: SELECT_ALL.toString(),
-        gtcWidth: 'min-content',
-        alignItems: 'flex-start',
-        children: '',
-      };
-
-      columns.push(column);
-    }
-
-    const makeColumn = (
-      columnElement: ReactElement<DataTableColumnProps>,
-      parent?: any,
-      isFirst?: boolean,
-      isLast?: boolean,
-    ): DTColumn => {
-      const leftBordersFromParent =
-        isFirst && (parent?.props.borders === 'both' || parent?.props.borders === 'left')
-          ? 'left'
-          : undefined;
-      const rightBordersFromParent =
-        isLast && (parent?.props.borders === 'both' || parent?.props.borders === 'right')
-          ? 'right'
-          : undefined;
-
-      const column: DTColumn = {
-        name: columnElement.props.name,
-        gtcWidth: calculateGridTemplateColumn(columnElement),
-        fixed: columnElement.props.fixed ?? parent?.props.fixed,
-        borders: columnElement.props.borders ?? leftBordersFromParent ?? rightBordersFromParent,
-        parent,
-
-        flexWrap: columnElement.props.flexWrap,
-        alignItems: columnElement.props.alignItems,
-        alignContent: columnElement.props.alignContent,
-        justifyContent: columnElement.props.justifyContent,
-        textAlign: columnElement.props.textAlign,
-        children: '',
-      };
-
-      return column;
-    };
-
-    const childIsColumn = (
-      child: ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>,
-    ): child is ReactElement<DataTableColumnProps> => {
-      return child.type === Head.Column;
-    };
-    const childIsGroup = (
-      child: ReactElement<DataTableColumnProps> | ReactElement<DataTableGroupProps>,
-    ): child is ReactElement<DataTableGroupProps> => {
-      return child.type === Head.Group;
-    };
-
-    React.Children.forEach(HeadComponent.props.children, (child, i) => {
-      if (!React.isValidElement(child)) return;
-
-      if (childIsColumn(child)) {
-        const col = makeColumn(child);
-
-        col.gridArea = `1 / ${gridColumnIndex} / ${this.hasGroups ? '3' : '2'} / ${
-          gridColumnIndex + 1
-        }`;
-
-        gridColumnIndex++;
-
-        columns.push(col);
-      } else if (childIsGroup(child)) {
-        const Group = child;
-        const childCount = React.Children.count(child.props.children);
-
-        const initGridColumn = gridColumnIndex;
-
-        React.Children.forEach(child.props.children, (child, j) => {
-          if (child?.type === Head.Column) {
-            const isFirst = j === 0;
-            const isLast = j === childCount - 1;
-            const col = makeColumn(child, Group, isFirst, isLast);
-
-            if (i === 0 && j === 0 && data.some((d) => d[ACCORDION])) {
-              gridColumnIndex++;
-              col.gridArea = `2 / ${gridColumnIndex - 1} / 3 / ${gridColumnIndex + 1}`;
-            } else {
-              col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-            }
-
-            col.gridArea = `2 / ${gridColumnIndex} / 3 / ${gridColumnIndex + 1}`;
-            gridColumnIndex++;
-
-            columns.push(col);
-          }
-        });
-
-        this.gridAreaGroupMap.set(groupIndex, `1 / ${initGridColumn} / 2 / ${gridColumnIndex}`);
-        groupIndex++;
-      }
-    });
-
-    return columns.filter(Boolean);
-  }
 
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
     const { columns, data, selectedRows } = this.props;
@@ -1274,6 +1148,14 @@ class DataTableRoot<
       }
     });
 
+    const gridTemplateColumns = calculatedColumns.map((c) => c.gtcWidth);
+    const gridTemplateAreas = calculatedColumns.map((c) => c.name);
+
+    this.gridSettings = {
+      gridTemplateColumns,
+      gridTemplateAreas,
+    };
+
     return [calculatedColumns, treeColumns];
   }
 
@@ -1304,11 +1186,15 @@ class DataTableRoot<
     const columnNames = columns.map((column: DTColumn) => column.name);
 
     let rowIndex = 0;
+    let gridRowIndex = 0;
 
     const id = 100000000; // need this for gen keys by toString(36)
 
     const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
       const columns = new Set(columnNames);
+
+      let accordionInCell = null as null | React.ReactNode | DataTableData;
+
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
@@ -1326,8 +1212,8 @@ class DataTableRoot<
             });
           }
 
-          if (row[ACCORDION]) {
-            acc[ACCORDION] = row[ACCORDION];
+          if (value?.[ACCORDION]) {
+            accordionInCell = value[ACCORDION];
           }
 
           return acc;
@@ -1340,8 +1226,18 @@ class DataTableRoot<
           // @ts-ignore
           [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`),
           [ROW_INDEX]: rowIndex,
+          [GRID_ROW_INDEX]: gridRowIndex,
         },
       );
+
+      gridRowIndex++;
+
+      if (row[ACCORDION]) {
+        dtRow[ACCORDION] = row[ACCORDION];
+        gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+      } else if (accordionInCell) {
+        gridRowIndex = Array.isArray(accordionInCell) ? gridRowIndex + accordionInCell.length : gridRowIndex + 1;
+      }
 
       excludeColumns?.forEach((value) => {
         columns.delete(value);
@@ -1385,16 +1281,17 @@ class DataTableRoot<
             dtRow = makeDtRow(rowData);
             dtRow[ROW_GROUP] = new Set();
           } else {
-            if (index === groupedRows.length - 1 && row[ACCORDION]) {
-              childRow[ACCORDION] = row[ACCORDION];
-            }
-
             dtRow = makeDtRow(childRow, groupedKeys);
 
             innerRows[0]?.[ROW_GROUP]?.add(dtRow[UNIQ_ROW_KEY]);
           }
 
           innerRows.push(dtRow);
+
+          if (index === groupedRows.length - 1 && row[ACCORDION]) {
+            gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+          }
+
           rowIndex++;
         });
 
@@ -1449,9 +1346,7 @@ class DataTableRoot<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType;
-
-export const DataTableInternal = DataTable as DataTableType & {
+}) as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

@@ -46,7 +46,7 @@ test.describe('Loading states', () => {
     await page.setContent(htmlContent);
     const row = await page.locator('div[data-ui-name="Body.Row"][aria-rowindex="2"]');
 
-    const rowCells = row.locator('div[data-ui-name="Body.Cell"]');
+    const rowCells = row.locator('div[data-ui-name="Row.Cell"]');
 
     const cellsCount = await rowCells.count();
     for (let i = 0; i < cellsCount; i++) {
@@ -70,7 +70,7 @@ test.describe('Loading states', () => {
 
     await page.setContent(htmlContent);
 
-    const cells = page.locator('div[data-ui-name="Body.Cell"]');
+    const cells = page.locator('div[data-ui-name="Row.Cell"]');
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
 
@@ -170,16 +170,16 @@ test.describe('Additional states', () => {
     { variant: 'card', use: undefined, compact: true },
   ];
   variantCard.forEach((item) => {
-    test(`Verify table in card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
-      const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
 
       const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Body.Cell"]').all();
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
       const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
-      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
+      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]');
 
       for (const lastRowCell of lastTableRowCells) {
         await expect(lastRowCell).toHaveCSS('border-bottom-style', 'none');
@@ -194,8 +194,13 @@ test.describe('Additional states', () => {
       }
       await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
 
-      for (const accordionLastRowCell of accordionLastRowCells) {
-        await expect(accordionLastRowCell).toHaveCSS('border-bottom-style', 'none');
+      const count = await accordionLastRowCells.count();
+
+      for (let i = 0; i < count / 2; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'solid');
+      }
+      for (let i = count / 2; i < count; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'none');
       }
       await expect(page).toHaveScreenshot();
     });
@@ -207,14 +212,14 @@ test.describe('Additional states', () => {
     { variant: 'default', use: undefined, compact: true },
   ];
   variantDefault.forEach((item) => {
-    test(`Verify table in card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
-      const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
 
       const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Body.Cell"]').all();
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
       const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
       const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
 
@@ -236,6 +241,24 @@ test.describe('Additional states', () => {
     });
   });
 
+  variantCard.forEach((item) => {
+    test(`Verify accordion in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
+      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]');
+
+      await accordionToggles.first().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' })).toHaveCSS('border-bottom-style', 'solid');
+
+      await accordionToggles.last().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' }).nth(1)).toHaveCSS('border-bottom-style', 'none');
+    });
+  });
+
   test('Verify table with checkbox attributes and mouse interaction', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -243,7 +266,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const region = page.locator('[aria-label="Table action bar"]');
     const collapse = page.locator('[data-ui-name="Collapse"]');
@@ -360,7 +383,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const collapse = page.locator('[data-ui-name="Collapse"]');
     const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);

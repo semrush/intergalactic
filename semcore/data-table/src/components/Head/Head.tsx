@@ -10,7 +10,7 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTableInternal, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { DataTable, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
@@ -172,7 +172,7 @@ class HeadRoot<
                   {treeColumns.map((column, _i) => {
                     if ('columns' in column) {
                       return (
-                        <DataTableInternal.Head.Group
+                        <DataTable.Head.Group
                           key={column.name}
                           {...column}
                           name={column.columns?.map((c) => c.name).join('/')}
@@ -181,7 +181,7 @@ class HeadRoot<
                       );
                     }
 
-                    return <DataTableInternal.Head.Column key={column.name} {...column} />;
+                    return <DataTable.Head.Column key={column.name} {...column} />;
                   })}
                 </>
               )}
