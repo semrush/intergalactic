@@ -1,0 +1,47 @@
+import { DataTable } from '@semcore/data-table';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
+import type { CheckboxExampleProps } from './examples/limited-mode/checkboxes';
+import CheckboxExample, { checkboxExampleProps } from './examples/limited-mode/checkboxes';
+import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
+import RowsColumnsMergingExample, { rowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
+import type { FixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
+import ScrollWithFixedColumnExample, { fixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
+import type { SortTableProps } from './examples/limited-mode/sortable-table';
+import SortableTableExample, { sortTableProps } from './examples/limited-mode/sortable-table';
+
+const meta: Meta<typeof DataTable> = {
+  title: 'Components/DataTable/Tests/Limited Mode',
+  component: DataTable,
+};
+
+export default meta;
+type Story = StoryObj<typeof DataTable>;
+
+export const ScrollWithFixedColumn: StoryObj<FixedColumnDiffWidthProps> = {
+  render: ScrollWithFixedColumnExample,
+  args: {
+    ...fixedColumnDiffWidthProps,
+  },
+};
+
+export const Checkbox: StoryObj<CheckboxExampleProps> = {
+  render: CheckboxExample,
+  args: {
+    ...checkboxExampleProps,
+  },
+};
+
+export const SortableTable: StoryObj<SortTableProps> = {
+  render: SortableTableExample,
+  args: {
+    ...sortTableProps,
+  },
+};
+
+export const RowsColumnsMerging: StoryObj<RowsColumnsMergingProps> = {
+  render: RowsColumnsMergingExample,
+  args: {
+    ...rowsColumnsMergingProps,
+  },
+};

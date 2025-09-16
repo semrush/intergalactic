@@ -1,15 +1,20 @@
 import type { DataTableData } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 
 export type AccordionWithFixedColumnProps = {
   loading: boolean;
+  limitedRows?: number;
+  limitedColumns?: number;
 };
 
 const Demo = (props: AccordionWithFixedColumnProps) => {
   const [openedRow, setOpenedRow] = React.useState(new Set<number>());
   const headerRef = React.useRef<HTMLDivElement | null>(null);
+  const { limitedRows, limitedColumns } = props;
 
   const handleAccordionToggle = (type: 'close' | 'open', uniqKey: string, rowIndex: number) => {
     if (type === 'open') {
@@ -36,6 +41,20 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
       headerProps={{ sticky: true, ref: headerRef }}
       hMax={500}
       wMax={400}
+      limit={{
+        rows: limitedRows,
+        columns: limitedColumns,
+        renderOverlay() {
+          return (
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+              <Text size={300} fontWeight='bold' textAlign='center'>You've reached your report limit for today</Text>
+              <Text size={200} textAlign='center'>
+                To increase your daily report limit,upgrade to a Guru plan.
+              </Text>
+            </Flex>
+          );
+        },
+      }}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -64,6 +83,8 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
 export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
   loading: false,
+  limitedRows: undefined,
+  limitedColumns: undefined,
 };
 
 Demo.defaultProps = accordionWithFixedColumnDefaultProps;
