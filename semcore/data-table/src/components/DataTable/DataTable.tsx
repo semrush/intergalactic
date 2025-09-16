@@ -318,6 +318,7 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
+      totalRows,
       variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
@@ -359,6 +360,7 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
+      totalRows,
       variant,
     };
   }
@@ -1172,7 +1174,7 @@ class DataTableRoot<
     const makeDtRow = (row: DataRowItem, excludeColumns?: string[]) => {
       const columns = new Set(columnNames);
 
-      let accordionInCell: null | React.ReactNode | DataTableData = null;
+      let accordionInCell = null as null | React.ReactNode | DataTableData;
 
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {

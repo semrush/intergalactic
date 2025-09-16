@@ -22,7 +22,7 @@ test.describe('Base styles Primary Table', () => {
     await expect(table).toBeVisible();
 
     const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
     await test.step('Verify hovered header cell styles', async () => {
       await checkStyles(keywordHeader, {
@@ -83,7 +83,7 @@ test.describe('Base styles Primary Table', () => {
 
     const head = page.locator('[data-ui-name="DataTable.Head"]');
     const row = page.locator('[data-ui-name="Body.Row"]');
-    const cells = page.locator('[data-ui-name="Body.Cell"]');
+    const cells = page.locator('[data-ui-name="Row.Cell"]');
     const headColumn = page.locator('[data-ui-name="Head.Column"]');
 
     await test.step('Verify data table attributes', async () => {
@@ -275,7 +275,7 @@ test.describe('Base styles Secondary Table', () => {
 
     await page.keyboard.press('Tab');
 
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
     await expect(firstCell).toBeFocused();
     await expect(page).toHaveScreenshot();
@@ -306,7 +306,7 @@ test.describe('Base styles Secondary Table', () => {
     await expect(table).toBeVisible();
 
     const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
     await checkStyles(keywordHeader, {
       'font-size': '12px',

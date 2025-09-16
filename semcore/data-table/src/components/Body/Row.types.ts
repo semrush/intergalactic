@@ -99,6 +99,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
   componentsMap: Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
   calculateAriaRowIndex: () => void;
+  variant?: DataTableProps<any, any, any>['variant'];
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
