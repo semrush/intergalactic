@@ -38,19 +38,6 @@ interface IControlPanelProps {
   onControlChange: (key: string, value: ControlValue) => void;
 }
 
-function ControlWrapper({ displayName, children }: IControlWrapperProps) {
-  return displayName
-    ? (
-        <label style={{ display: 'contents' }}>
-          <Text mt={1}>{displayName}</Text>
-          {children}
-        </label>
-      )
-    : (
-        children
-      );
-}
-
 function GroupControl({ groupName, controls, groupPropName, onControlChange, isOpenedByDefault }: IGroupControlProps) {
   return (
     <Accordion defaultValue={isOpenedByDefault ? 0 : undefined}>
@@ -83,29 +70,23 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange, isO
 }
 
 function BasicControl(props: IBasicControlProps) {
-  const { type, displayName } = props;
-  return (
-    <ControlWrapper displayName={displayName}>
-      {(() => {
-        switch (type) {
-          case 'inline-radio':
-            return <InlineRadioControl {...props} />;
-          case 'select':
-            return <SelectControl {...props} />;
-          case 'boolean':
-            return <BooleanControl {...props} />;
-          case 'text':
-            return <TextControl {...props} />;
-          case 'text-number':
-            return <TextNumberControl {...props} />;
-          case 'text-area':
-            return <TextAreaControl {...props} />;
-          default:
-            return null;
-        }
-      })()}
-    </ControlWrapper>
-  );
+  const { type } = props;
+  switch (type) {
+    case 'inline-radio':
+      return <InlineRadioControl {...props} />;
+    case 'select':
+      return <SelectControl {...props} />;
+    case 'boolean':
+      return <BooleanControl {...props} />;
+    case 'text':
+      return <TextControl {...props} />;
+    case 'text-number':
+      return <TextNumberControl {...props} />;
+    case 'text-area':
+      return <TextAreaControl {...props} />;
+    default:
+      return null;
+  }
 }
 
 function ControlPanel(props: IControlPanelProps) {

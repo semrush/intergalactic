@@ -27,16 +27,16 @@ test.describe('Feature highlight', () => {
         screenshotsClip.width += 8;
         screenshotsClip.height += 8;
 
-        const button = page.locator('[data-ui-name="ButtonFH"]').first();
-        const ariaLabel = await button.getAttribute('aria-label');
-        const isDisabled = await button.getAttribute('disabled');
+        const button = page.locator('[data-ui-name="ButtonFH"]');
+        const ariaBusy = await button.first().getAttribute('aria-busy');
+        const isDisabled = await button.first().getAttribute('disabled');
 
         if (isDisabled !== null) {
           await expect(page).toHaveScreenshot({ clip: screenshotsClip });
           return;
         }
 
-        if (ariaLabel === 'Loading…') {
+        if (ariaBusy === 'true') {
           await expect(page).toHaveScreenshot({ clip: screenshotsClip });
           return;
         } else {
@@ -44,6 +44,14 @@ test.describe('Feature highlight', () => {
           await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
           await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+
+          await button.first().hover();
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+
+          await page.keyboard.press('Tab');
+
+          await button.nth(1).hover();
           await expect(page).toHaveScreenshot({ clip: screenshotsClip });
         }
       });

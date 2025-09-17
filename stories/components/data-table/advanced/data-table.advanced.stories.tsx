@@ -13,6 +13,7 @@ import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
+import TablePerfExample from './examples/table_perf/table_perf';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
@@ -76,4 +77,12 @@ export const RenderCellRawValue: Story = {
 
 export const FixedColumnsWidthWithShadows: Story = {
   render: FixedColumnsWidthWithShadowsExample,
+};
+
+export const TablePerf: StoryObj<{ loading: boolean }> = {
+  render: TablePerfExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: accordionMergedProps,
 };

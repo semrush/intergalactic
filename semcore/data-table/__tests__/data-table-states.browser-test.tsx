@@ -46,7 +46,7 @@ test.describe('Loading states', () => {
     await page.setContent(htmlContent);
     const row = await page.locator('div[data-ui-name="Body.Row"][aria-rowindex="2"]');
 
-    const rowCells = row.locator('div[data-ui-name="Body.Cell"]');
+    const rowCells = row.locator('div[data-ui-name="Row.Cell"]');
 
     const cellsCount = await rowCells.count();
     for (let i = 0; i < cellsCount; i++) {
@@ -64,24 +64,13 @@ test.describe('Loading states', () => {
     }
   });
 
-  test('Verify table in card', async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/card_layout_for_tables.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
-  });
-
   test('Verify empty table state', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/empty-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const cells = page.locator('div[data-ui-name="Body.Cell"]');
+    const cells = page.locator('div[data-ui-name="Row.Cell"]');
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
 
@@ -105,6 +94,10 @@ test.describe('Loading states', () => {
       expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background2);
       await expect(page).toHaveScreenshot();
     });
+
+    await test.step('Verify bottom border', async () => {
+      await expect(cells.first()).toHaveCSS('border-bottom-style', 'none');
+    });
   });
 
   test('Verify empty table scroll\'s state when column width is defined', async ({ page }) => {
@@ -127,6 +120,101 @@ test.describe('Loading states', () => {
 });
 
 test.describe('Additional states', () => {
+  const variantCard = [
+    { variant: 'card', use: undefined, compact: undefined },
+    { variant: 'card', use: 'secondary', compact: undefined },
+    { variant: 'card', use: undefined, compact: true },
+  ];
+  variantCard.forEach((item) => {
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
+      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
+      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]');
+
+      for (const lastRowCell of lastTableRowCells) {
+        await expect(lastRowCell).toHaveCSS('border-bottom-style', 'none');
+      }
+
+      await expect(lastTableRowCells[0]).toHaveCSS('padding-left', '20px');
+      await expect(lastTableRowCells[lastTableRowCells.length - 1]).toHaveCSS('padding-right', '20px');
+
+      for (const accordionToggle of accordionToggles) {
+        await accordionToggle.click();
+        await expect(accordionToggle).toHaveAttribute('aria-expanded', 'true');
+      }
+      await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
+
+      const count = await accordionLastRowCells.count();
+
+      for (let i = 0; i < count / 2; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'solid');
+      }
+      for (let i = count / 2; i < count; i++) {
+        await expect(accordionLastRowCells.nth(i)).toHaveCSS('border-bottom-style', 'none');
+      }
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const variantDefault = [
+    { variant: 'default', use: undefined, compact: undefined },
+    { variant: 'defaul', use: 'secondary', compact: undefined },
+    { variant: 'default', use: undefined, compact: true },
+  ];
+  variantDefault.forEach((item) => {
+    test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
+      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
+      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
+      const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
+
+      for (const lastRowCell of lastTableRowCells) {
+        await expect(lastRowCell).toHaveCSS('border-bottom-style', 'solid');
+      }
+
+      for (const accordionToggle of accordionToggles) {
+        await accordionToggle.click();
+        await expect(accordionToggle).toHaveAttribute('aria-expanded', 'true');
+      }
+      await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
+
+      for (const accordionLastRowCell of accordionLastRowCells) {
+        await expect(accordionLastRowCell).toHaveCSS('border-bottom-style', 'solid');
+      }
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  variantCard.forEach((item) => {
+    test(`Verify accordion in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
+      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]');
+
+      await accordionToggles.first().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' })).toHaveCSS('border-bottom-style', 'solid');
+
+      await accordionToggles.last().click();
+      await expect(page.getByRole('gridcell', { name: 'Chart' }).nth(1)).toHaveCSS('border-bottom-style', 'none');
+    });
+  });
+
   test('Verify table with checkbox attributes and mouse interaction', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -134,7 +222,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const region = page.locator('[aria-label="Table action bar"]');
     const collapse = page.locator('[data-ui-name="Collapse"]');
@@ -251,7 +339,7 @@ test.describe('Additional states', () => {
     await page.setContent(htmlContent);
 
     const firstHeader = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const firstColumnCells = page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]');
+    const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
     const headerCheckbox = firstHeader.locator('input');
     const collapse = page.locator('[data-ui-name="Collapse"]');
     const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);

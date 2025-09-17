@@ -26,8 +26,8 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
   overflow: auto;
 }
 
-SCollapseRow[gridArea] > SCellWrapper > SCell,
-SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
+SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
+SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
@@ -187,6 +187,10 @@ SCell {
     &[expanded] svg {
       transform: rotate(90deg);
     }
+  }
+
+  &[withoutBorder] {
+    border-bottom: none;
   }
 }
 

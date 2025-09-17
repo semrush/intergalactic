@@ -805,7 +805,8 @@ test.describe('Options filtering', () => {
       await page.waitForSelector('input');
 
       await hint.hover();
-      await page.getByText('Clear search field').waitFor({ state: 'visible' });
+      await page.getByText('Clear').waitFor({ state: 'visible' });
+
       await expect(page).toHaveScreenshot();
     });
 

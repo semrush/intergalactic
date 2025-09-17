@@ -150,7 +150,7 @@ const iconsList = {
       name: 'Hamburger',
       size: ['l', 'm'],
       group: 'Navigation',
-      tags: ['hamburger', 'menu', 'more', 'kebab', 'меню', 'гамбургер', 'еда', 'кушоть', 'list'],
+      tags: ['burger', 'menu', 'more', 'kebab', 'list', 'меню', 'бургер', 'еда', 'кушоть'],
     },
     {
       name: 'Home',
@@ -659,6 +659,12 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Action',
       tags: ['math', 'plus', 'плюс', 'добавить', 'add', 'alt'],
+    },
+    {
+      name: 'Monitoring',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['observe', 'magnifying glass', 'zoom', 'chart', 'bars'],
     },
     {
       name: 'Pause',

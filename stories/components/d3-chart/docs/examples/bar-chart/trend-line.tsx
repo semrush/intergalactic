@@ -9,7 +9,7 @@ const Demo = () => {
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => String(d.category)))
+    .domain(data.map((d) => d.category))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -44,7 +44,7 @@ const Demo = () => {
 const data = Array(10)
   .fill({})
   .map((d, i) => ({
-    category: i,
+    category: i.toString(),
     bar: Math.random() * i,
   }));
 
