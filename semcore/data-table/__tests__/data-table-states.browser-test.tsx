@@ -150,16 +150,13 @@ test.describe('Limited state', () => {
       const limitedContent = page.locator('div[class*="LimitOverlay"]');
       const cell = limitedContent.locator('[role="gridcell"]');
 
-      // получаем атрибуты
       const colspanStr = await cell.getAttribute('aria-colspan');
       const rowspanStr = await cell.getAttribute('aria-rowspan');
 
-      // приводим к числу
       const limitedColumns = parseInt(colspanStr || '0', 10);
       const limitedRows = parseInt(rowspanStr || '0', 10);
 
-      // можно использовать в тесте
-      console.log(`colspan = ${limitedColumns}, rowspan = ${limitedRows}, rowsCount = ${rowsCount}, columnsCount = ${columnsCount}`);
+      // console.log(`colspan = ${limitedColumns}, rowspan = ${limitedRows}, rowsCount = ${rowsCount}, columnsCount = ${columnsCount}`);
 
       await test.step('Verify aria attributes', async () => {
         const rows = await page.getByRole('row').all();
