@@ -319,6 +319,7 @@ class DataTableRoot<
       renderCellOverlay,
       limit,
       variant,
+      totalRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -361,7 +362,7 @@ class DataTableRoot<
       renderCellOverlay,
       limit,
       variant,
-      totalRows: this.totalRows,
+      totalRows,
     };
   }
 
