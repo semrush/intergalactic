@@ -220,7 +220,7 @@ const Demo = () => {
           )}
         </FilterTrigger.TriggerButton>
         {!!savedFilters.length && (
-          <Hint tag={FilterTrigger.ClearButton} title='Clear advanced filters' />
+          <FilterTrigger.ClearButton title='Clear advanced filters' />
         )}
       </Dropdown.Trigger>
       <Dropdown.Popper aria-label='Advanced filters' tabIndex={-1}>

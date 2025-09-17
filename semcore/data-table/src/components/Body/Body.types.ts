@@ -67,7 +67,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   uid: string;
   rowProps?: (row: DTRow<UniqKeyType>, rowIndex: number) => Record<string, any> | undefined;
   renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
-  onBackFromAccordion: (colIndex: number) => void;
+  onBackFromAccordion: (colName: string) => void;
   stickyHeader?: boolean;
   selectedRows?: UniqKeyType[];
   onSelectRow?: (
@@ -87,6 +87,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   shadowVertical?: '' | 'end' | 'start' | 'median';
   renderCellOverlay?: () => React.ReactNode;
+  totalRows?: number;
   variant?: DataTableProps<any, any, any>['variant'];
 };
 
