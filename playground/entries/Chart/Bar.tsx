@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
@@ -56,12 +56,9 @@ function getJSX(props: BarChartJSXProps) {
 
 const entry: PlaygroundEntry<BarChartJSXProps> = {
   JSX: (props) => getJSX(props),
-  controls: {
-    ...ChartControls,
-    legendProps: {
-      ...ChartControls.legendProps,
-      controls: {
-        ...ChartControls.legendProps.controls,
+  controls: getDefaultChartControls({
+    add: {
+      legendProps: {
         withTrend: {
           type: 'boolean',
           value: false,
@@ -69,7 +66,7 @@ const entry: PlaygroundEntry<BarChartJSXProps> = {
         },
       },
     },
-  },
+  }),
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
 };

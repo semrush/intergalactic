@@ -1,15 +1,15 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
 import createGithubLink from '../../utils/createGHLink';
 
 type DonutChartProps = {
-  commonChartProps: CommonChartProps;
-  legendProps: LegendChartProps;
+  commonChartProps: Omit<CommonChartProps, 'showTotalInTooltip'>;
+  legendProps: Omit<LegendChartProps, 'direction'>;
   donutProps: {
     halfsize: boolean;
     innerRadius: number;
@@ -75,7 +75,12 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
         },
       },
     },
-    ...ChartControls,
+    ...getDefaultChartControls({
+      skip: {
+        commonChartProps: ['showTotalInTooltip'],
+        legendProps: ['direction'],
+      },
+    }),
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],

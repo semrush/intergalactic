@@ -6,6 +6,9 @@ import { scaleLinear } from 'd3-scale';
 import React from 'react';
 export type AccordionWithButtonProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
 };
 
 const Demo = (props: AccordionWithButtonProps) => {
@@ -14,8 +17,11 @@ const Demo = (props: AccordionWithButtonProps) => {
       data={data}
       aria-label='Accordion inside table'
       accordionMode={props.accordionMode}
-      onAccordionToggle={(type, i) => {
-        console.log('called', type, i);
+      variant={props.variant}
+      use={props.use}
+      compact={props.compact}
+      onAccordionToggle={(type, key, i) => {
+        console.log('called', type, key, i);
       }}
       h='300px'
       defaultGridTemplateColumnWidth='1fr'
@@ -36,6 +42,9 @@ const Demo = (props: AccordionWithButtonProps) => {
 };
 export const accordionWithDefaultProps: AccordionWithButtonProps = {
   accordionMode: 'independent',
+  variant: undefined,
+  use: undefined,
+  compact: undefined,
 };
 
 Demo.defaultProps = accordionWithDefaultProps;
