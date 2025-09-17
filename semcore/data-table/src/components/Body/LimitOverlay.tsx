@@ -14,7 +14,6 @@ type LimitOverlayProps<UniqKeyType> = {
   columns: DTColumn[];
   rows: DTRows<UniqKeyType>;
   limit: DataTableProps<any, any, any>['limit'];
-  selectedRows?: UniqKeyType[];
   totalRows: number;
   flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
@@ -29,7 +28,6 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
   get limitOverlayGridArea() {
     const {
       columns,
-      selectedRows,
       hasGroups,
       totalRows,
       flatRows,
@@ -42,12 +40,11 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
     const { rows: rowsLimit, columns: columnsLimit } = limit ?? {};
 
     const rowOffset = hasGroups ? 3 : 2;
-    const columnOffset = selectedRows ? 1 : 0;
 
     const rowStart = rowsLimit !== undefined
       ? rowsLimit + rowOffset + currentRowLimitOffset
       : rowOffset;
-    const columnStart = columnsLimit !== undefined ? columnsLimit + columnOffset + 1 : columnOffset + 1;
+    const columnStart = columnsLimit !== undefined ? columnsLimit + 1 : 1;
     const rowEnd = currentMaxGridIndex + rowOffset;
     const columnEnd = columns.length + 1;
 
