@@ -206,10 +206,10 @@ class DataTableRoot<
     }
 
     const rows = this.getRows().reduce((acc, item) => {
-      acc = acc + 1;
-
       if (Array.isArray(item)) {
         acc = acc + item.length;
+      } else {
+        acc = acc + 1;
       }
 
       return acc;
