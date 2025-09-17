@@ -1,9 +1,10 @@
 import { Box, Flex } from '@semcore/base-components';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import type { SelectControlType } from '../../types/Controls';
+import { ThemeContext } from '../ThemeContext';
 
 interface ISelectControlProps extends SelectControlType {
   onChange: (value: string) => void;
@@ -17,6 +18,7 @@ interface ISelectColorAddonProps {
 function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
   if (!options) return null;
 
+  const theme = useContext(ThemeContext);
   const ref = React.useRef<null | HTMLDivElement>(null);
   const { withIntergalacticPrefix } = options;
   const bgColor = withIntergalacticPrefix ? `var(--intergalactic-${color})` : `var(--${color})`;
@@ -28,10 +30,10 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
     const computedStyle = window.getComputedStyle(element);
     const resolvedColor = computedStyle.getPropertyValue('background-color');
 
-    if (isColorWhite(resolvedColor)) {
+    if (isColorWhite(resolvedColor) && theme === 'light') {
       element.style.border = '1px solid var(--intergalactic-border-primary)';
     }
-  }, []);
+  }, [theme]);
 
   return (
     <div
