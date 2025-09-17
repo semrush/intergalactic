@@ -52,14 +52,14 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
   /* MUTED THEME */
-  SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='muted']:not([aria-hidden]),
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='muted']:not([aria-hidden]),
   SRow[theme='muted']:hover:not([expanded][isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='muted']:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
@@ -69,7 +69,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   }
 
   /* INFO THEME */
-  SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
   SRow[theme='info']:hover:not([expanded][isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
@@ -79,7 +79,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   }
 
   /* SUCCESS THEME */
-  SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='success']:not([aria-hidden]),
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='success']:not([aria-hidden]),
   SRow[theme='success']:hover:not([expanded][isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='success']:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
@@ -89,7 +89,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   }
 
   /* WARNING THEME */
-  SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='warning']:not([aria-hidden]),
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='warning']:not([aria-hidden]),
   SRow[theme='warning']:hover:not([expanded][isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='warning']:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
@@ -99,7 +99,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   }
 
   /* DANGER THEME */
-  SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='danger']:not([aria-hidden]),
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='danger']:not([aria-hidden]),
   SRow[theme='danger']:hover:not([expanded][isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='danger']:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
