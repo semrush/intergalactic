@@ -33,8 +33,8 @@ class HeadRoot<
   }
 
   getGroupProps(props: any, index: number) {
-    const { fixed } = props;
-    const { use, gridAreaGroupMap, children, columns, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
+    const { fixed, columns } = props;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
     const groupColumns = columns ?? [];
 
     const firstColumn = groupColumns[0];
@@ -63,7 +63,7 @@ class HeadRoot<
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical,
+      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
       style,
       scrollDirection,
     };

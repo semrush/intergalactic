@@ -33,11 +33,8 @@ export class Group extends Component<
   render() {
     const SGroupContainer = Box;
     const SGroup = Root;
-    const { styles, Children, title, columns, withConfig, shadowVertical } = this.asProps;
+    const { styles, Children, title, columns, withConfig } = this.asProps;
     const groupColumns = columns ?? [];
-
-    const firstColumn = groupColumns[0];
-    const lastColumn = groupColumns[groupColumns.length - 1];
 
     return sstyled(styles)(
       <SGroupContainer data-group-container>
@@ -46,7 +43,6 @@ export class Group extends Component<
           style={style}
           __excludeProps={['title']}
           id={this.groupId}
-          use:shadowVertical={(firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined}
         >
           {withConfig ? <Children /> : title}
         </SGroup>
