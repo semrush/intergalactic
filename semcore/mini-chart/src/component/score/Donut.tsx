@@ -107,7 +107,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                     />
                   )}
                 </circle>
-                {value > 0 && !isSemiDonut && (
+                {!isSemiDonut && value > 0 && (animate || value < 100) && (
                   <circle
                     cx='12'
                     cy='12'

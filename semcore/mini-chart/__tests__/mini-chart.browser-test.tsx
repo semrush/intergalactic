@@ -53,7 +53,7 @@ test.describe('Visual-Score Donuts', () => {
           expect(await semiDonutCircle.getAttribute('stroke-dashoffset')).not.toBeNull();
         }
       } else if (item.value === 100) {
-        expect(donutCircles.length).toEqual(3);
+        expect(donutCircles.length).toEqual(2);
         expect(semiDonutCircles.length).toEqual(2);
 
         for (const donutCircle of donutCircles) {
