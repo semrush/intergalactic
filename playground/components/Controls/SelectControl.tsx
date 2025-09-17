@@ -32,8 +32,10 @@ function SelectColorAddon({ options, color }: ISelectColorAddonProps) {
 
     if (isColorWhite(resolvedColor) && theme === 'light') {
       element.style.border = '1px solid var(--intergalactic-border-primary)';
+    } else {
+      element.style.border = 'none';
     }
-  }, [theme]);
+  }, [theme, color]);
 
   return (
     <div
