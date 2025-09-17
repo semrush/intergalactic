@@ -99,7 +99,7 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('Verify calculates stroke dash offset base correctly', () => {
+    it('Verify calculates strokeDashOffsetBase correctly', () => {
       const value = 50;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
@@ -113,18 +113,17 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
     });
 
-    it('Verify calculates stroke dash offset base correctly for 0 value', () => {
+    it('Verify calculates strokeDashOffsetBase correctly for 0 value', () => {
       const value = 0;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
 
       const actualResult = scoreDonut.strokeDashOffsetBase;
-      const expectedResult = 0;
-      const expectedResultSemiDonut = 0;
+      const expectedResult = -0;
 
-      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
+      expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify calculates stroke dash offset base correctly for given value', () => {
+    it('Verify calculates strokeDashOffsetBase correctly for given value', () => {
       const value = 10;
       const isSemiDonut = false;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
@@ -133,6 +132,82 @@ describe('Score Donut Functions', () => {
       const offsetPoint = scoreDonut.offsetPoint;
       const expectedResult = -1 * (valueStroke + (isSemiDonut ? offsetPoint : 0));
       const actualResult = scoreDonut.strokeDashOffsetBase;
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    // animatedSeparatorDash should be always the same for same Donut radius
+    const animatedSeparatorDashExpected = '0.6283185307179586 61.575216010359945 0.6283185307179586 62.83185307179586';
+
+    it('Verify calculates animatedSeparatorDash correctly for 0 value', () => {
+      const value = 0;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorDash;
+      const expectedResult = animatedSeparatorDashExpected;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedSeparatorDash correctly for 50 value', () => {
+      const value = 50;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorDash;
+      const expectedResult = animatedSeparatorDashExpected;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedSeparatorDash correctly for 100 value', () => {
+      const value = 100;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorDash;
+      const expectedResult = animatedSeparatorDashExpected;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedSeparatorOffset correctly for 0 value', () => {
+      const value = 0;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorOffset;
+      const expectedResult = -0;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedSeparatorOffset correctly for 50 value', () => {
+      const value = 50;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorOffset;
+      const expectedResult = -31.41592653589793;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    // animatedSeparatorOffset should be the same for 98-100 values
+    const animatedSeparatorOffsetExpectedMax = -61.575216010359945;
+
+    it('Verify calculates animatedSeparatorOffset correctly for 98 value', () => {
+      const value = 98;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorOffset;
+      const expectedResult = animatedSeparatorOffsetExpectedMax;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedSeparatorOffset correctly for 100 value', () => {
+      const value = 100;
+      const scoreDonut = new ScoreDonutUtils(value, false);
+
+      const actualResult = scoreDonut.animatedSeparatorOffset;
+      const expectedResult = animatedSeparatorOffsetExpectedMax;
+
       expect(actualResult).toBe(expectedResult);
     });
   });

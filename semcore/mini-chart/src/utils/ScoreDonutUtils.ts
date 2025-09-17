@@ -52,6 +52,6 @@ export class ScoreDonutUtils {
 
   public get strokeDashOffsetBase() {
     const { valueStrokeDashArray, offsetPoint, isSemiDonut } = this;
-    return -1 * (valueStrokeDashArray + (isSemiDonut ? offsetPoint : 0));
+    return -1 * (valueStrokeDashArray + (isSemiDonut && valueStrokeDashArray > 0 ? offsetPoint : 0));
   };
 }
