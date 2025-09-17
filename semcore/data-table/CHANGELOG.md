@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.1] - 2025-09-20
+
+### Fixed
+
+- Render grouped header in some cases.
+
 ## [16.3.0] - 2025-09-12
 
 ### Added
@@ -12,11 +18,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Bottom border for cell with empty data.
-
-## [16.2.2] - 2025-09-12
-
-### Fixed
-
 - Table performance with accordions.
 
 ## [16.2.1] - 2025-09-05

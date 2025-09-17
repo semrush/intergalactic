@@ -103,7 +103,7 @@ function Code({ sourceCode, link }: ICodeProps) {
   if (!html) return;
 
   return (
-    <Box ref={scrollableContainerRef} className={styles.code}>
+    <Box ref={scrollableContainerRef} className={styles.code} role='group' aria-label='Source code and actions'>
       <Box className={styles.sourceCodeWrapper}>
         <Box className={styles.sourceCode} dangerouslySetInnerHTML={{ __html: html }}></Box>
         <Flex gap={2} className={styles.sourceCodeControls}>
