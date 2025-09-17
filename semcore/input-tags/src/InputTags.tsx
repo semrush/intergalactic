@@ -139,6 +139,7 @@ class InputTags extends Component<IInputTagsProps> {
   };
 
   handlePaste = (event: React.ClipboardEvent) => {
+    const currentEnteredValue = this.inputRef.current?.value;
     const value = event.clipboardData.getData('text/plain');
     const { delimiters, onAdd, onAppend } = this.asProps;
     const reg = new RegExp(
@@ -147,7 +148,12 @@ class InputTags extends Component<IInputTagsProps> {
         .map((s) => s.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'))
         .join('|'),
     );
-    const tagsToBeAdded = value.split(reg).filter(Boolean);
+    let tagsToBeAdded = value.split(reg).filter(Boolean);
+
+    if (currentEnteredValue) {
+      tagsToBeAdded = [currentEnteredValue, ...tagsToBeAdded];
+    }
+
     if (tagsToBeAdded.length > 0) {
       event.preventDefault();
       for (const tag of tagsToBeAdded) {
