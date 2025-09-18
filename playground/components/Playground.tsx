@@ -176,7 +176,6 @@ function Playground<
           sourceCode={reactElementToJSXString(element, {
             showDefaultProps: false,
             filterProps,
-            maxInlineAttributesLineLength: 20,
             ...(JSXDisplayName && { displayName: () => JSXDisplayName }),
           })}
         />
