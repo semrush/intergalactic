@@ -4,10 +4,13 @@
 
 <script setup lang="tsx">
 import * as ReactDOM from 'react-dom/client'
-import { ref, onMounted, onBeforeUnmount, defineProps, onUnmounted } from 'vue'
+import { useData } from 'vitepress';
+import { ref, onMounted, onBeforeUnmount, defineProps, onUnmounted, watchPostEffect, watch } from 'vue';
 import Playground from '../../../../playground/components/Playground';
 import PlaygroundEvents from '../../../../playground/events/events';
 import { logEvent } from './amplitude/amplitude';
+
+const { isDark } = useData();
 
 const props = defineProps<{
   for: React.ComponentProps<typeof Playground>['componentName'];
@@ -29,7 +32,7 @@ const mountReact = () => {
   })
 
   reactRoot = ReactDOM.createRoot(root.value)
-  reactRoot.render(<Playground componentName={props.for} />)
+  reactRoot.render(<Playground componentName={props.for} theme={isDark.value ? 'dark' : 'light'} />)
 }
 
 onMounted(mountReact)
@@ -39,6 +42,13 @@ onUnmounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (reactRoot) reactRoot.unmount()
+  if (reactRoot) reactRoot.unmount();
 })
+
+watch(() => isDark.value, () => {
+  eventsAbortController.abort();
+  if (reactRoot) reactRoot.unmount();
+
+  mountReact();
+});
 </script>
