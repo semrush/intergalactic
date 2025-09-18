@@ -317,7 +317,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
 
-    return rowsLimit !== undefined && columnsLimit === undefined && rowIndex > rowsLimit
+    return rowsLimit !== undefined && !columnsLimit && rowIndex > rowsLimit
       ? true
       : undefined;
   }
