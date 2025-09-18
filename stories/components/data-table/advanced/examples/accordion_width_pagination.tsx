@@ -151,34 +151,10 @@ const data = [
     { id: '5', keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
     {
       id: '6',
-
       keyword: 'www.ebay.com',
       kd: '11.2',
       cpc: '$3.4',
       vol: '65,457,920',
-      [ACCORDION]: [
-        {
-          id: '6.1',
-          keyword: 'www.ebay.com',
-          kd: '11.2',
-          cpc: '$3.4',
-          vol: '65,457,920',
-        },
-        {
-          id: '6.1',
-          keyword: 'www.ebay.com',
-          kd: '10',
-          cpc: '$0.65',
-          vol: '47,354,640',
-        },
-        {
-          id: '6.1',
-          keyword: 'ebay buy',
-          kd: '-',
-          cpc: '$0',
-          vol: 'n/a',
-        },
-      ],
     },
   ],
   [
@@ -196,7 +172,6 @@ const data = [
   [
     { id: '10', keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: { [ACCORDION]: <Accordion key='3' /> } },
     { id: '11', keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
-
   ],
 ];
 
