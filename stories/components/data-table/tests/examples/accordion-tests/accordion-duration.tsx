@@ -9,8 +9,8 @@ import React from 'react';
 
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const ChartExample1 = () => {
@@ -21,7 +21,7 @@ const ChartExample1 = () => {
 };
 
 const Demo = (props: TableInTableProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
 
   return (
     <DataTable
@@ -31,8 +31,8 @@ const Demo = (props: TableInTableProps) => {
       accordionDuration={400}
       accordionMode={props.accordionMode}
       limit={{
-        fromRow: limitedRows,
-        fromColumn: limitedColumns,
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -97,8 +97,8 @@ const ChartExample = () => {
 };
 export const tableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
 };
 
 Demo.defaultProps = tableInTableDefaultProps;

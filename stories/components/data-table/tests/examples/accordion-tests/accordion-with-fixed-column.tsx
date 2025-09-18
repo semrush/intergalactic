@@ -7,14 +7,14 @@ import React from 'react';
 
 export type AccordionWithFixedColumnProps = {
   loading: boolean;
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const Demo = (props: AccordionWithFixedColumnProps) => {
   const [openedRow, setOpenedRow] = React.useState(new Set<number>());
   const headerRef = React.useRef<HTMLDivElement | null>(null);
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
 
   const handleAccordionToggle = (type: 'close' | 'open', uniqKey: string, rowIndex: number) => {
     if (type === 'open') {
@@ -42,8 +42,8 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
       hMax={500}
       wMax={400}
       limit={{
-        rows: limitedRows,
-        columns: limitedColumns,
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -83,8 +83,8 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
 export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
   loading: false,
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
 };
 
 Demo.defaultProps = accordionWithFixedColumnDefaultProps;

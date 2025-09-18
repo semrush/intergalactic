@@ -6,8 +6,8 @@ import React from 'react';
 
 type RowsColumnsMergingProps = {
 
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const data = [
@@ -140,14 +140,14 @@ const data = [
 ];
 
 const Demo = (props: RowsColumnsMergingProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
 
   return (
     <DataTable
       data={data}
       limit={{
-        rows: limitedRows,
-        columns: limitedColumns,
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -192,8 +192,8 @@ const Demo = (props: RowsColumnsMergingProps) => {
 };
 
 export const rowsColumnsMergingProps: RowsColumnsMergingProps = {
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
 };
 
 Demo.defaultProps = rowsColumnsMergingProps;

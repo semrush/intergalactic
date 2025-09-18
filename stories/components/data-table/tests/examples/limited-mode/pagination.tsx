@@ -7,12 +7,12 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 type PaginationProps = {
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const Demo = (props: PaginationProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
   const [limit, setLimit] = React.useState(10);
   const [currentPage, setCurrentPage] = React.useState(0);
   const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
@@ -44,8 +44,8 @@ const Demo = (props: PaginationProps) => {
         aria-label='Pagination'
         h='auto'
         limit={{
-          rows: limitedRows,
-          columns: limitedColumns,
+          fromRow: rowsLimit,
+          fromColumn: columnsLimit,
           renderOverlay() {
             return (
               <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -124,8 +124,8 @@ export const defaultProps: PaginationProps = {
   loading: false,
   sideIndents: undefined,
   compact: undefined,
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
 };
 
 Demo.defaultProps = defaultProps;

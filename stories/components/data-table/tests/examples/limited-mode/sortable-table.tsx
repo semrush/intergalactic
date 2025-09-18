@@ -9,13 +9,13 @@ type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 export type SortTableProps = {
   use: DataTableProps<typeof data, any, any>['use'];
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
   changeSortSize?: boolean;
 };
 
 const Demo = (props: SortTableProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
 
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
@@ -39,8 +39,8 @@ const Demo = (props: SortTableProps) => {
   return (
     <DataTable
       limit={{
-        rows: limitedRows,
-        columns: limitedColumns,
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -110,8 +110,8 @@ const Demo = (props: SortTableProps) => {
 };
 export const sortTableProps: SortTableProps = {
   use: 'primary',
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
   changeSortSize: true,
 };
 

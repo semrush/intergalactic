@@ -10,12 +10,12 @@ type CheckboxExampleProps = {
   loading: boolean;
   sideIndents?: 'wide';
   compact?: boolean;
-  limitedRows?: number;
-  limitedColumns?: number;
+  columnsLimit?: number;
+  rowsLimit?: number;
 };
 
 const Demo = (props: CheckboxExampleProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { columnsLimit, rowsLimit } = props;
 
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
@@ -82,8 +82,8 @@ const Demo = (props: CheckboxExampleProps) => {
         </Collapse>
         <DataTable
           limit={{
-            rows: limitedRows,
-            columns: limitedColumns,
+            fromRow: columnsLimit,
+            fromColumn: rowsLimit,
             renderOverlay() {
               return (
                 <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -166,8 +166,8 @@ export const checkboxExampleProps: CheckboxExampleProps = {
   loading: false,
   sideIndents: undefined,
   compact: undefined,
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  columnsLimit: undefined,
+  rowsLimit: undefined,
 };
 
 Demo.defaultProps = checkboxExampleProps;

@@ -4,11 +4,11 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 export type FixedColumnDiffWidthProps = {
-  limitedRows?: number;
-  limitedColumns?: number;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 const Demo = (props: FixedColumnDiffWidthProps) => {
-  const { limitedRows, limitedColumns } = props;
+  const { rowsLimit, columnsLimit } = props;
 
   return (
     <>
@@ -19,8 +19,8 @@ const Demo = (props: FixedColumnDiffWidthProps) => {
         wMax={700}
         h={300}
         limit={{
-          rows: limitedRows,
-          columns: limitedColumns,
+          fromRow: rowsLimit,
+          fromColumn: columnsLimit,
           renderOverlay() {
             return (
               <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
@@ -49,8 +49,8 @@ const Demo = (props: FixedColumnDiffWidthProps) => {
 };
 
 export const fixedColumnDiffWidthProps: FixedColumnDiffWidthProps = {
-  limitedRows: undefined,
-  limitedColumns: undefined,
+  rowsLimit: undefined,
+  columnsLimit: undefined,
 };
 
 Demo.defaultProps = fixedColumnDiffWidthProps;
