@@ -110,8 +110,8 @@ const Demo = (props: SortTableProps) => {
 };
 export const sortTableProps: SortTableProps = {
   use: 'primary',
-  columnsLimit: -1,
-  rowsLimit: -1,
+  columnsLimit: 0,
+  rowsLimit: 1,
   changeSortSize: true,
 };
 

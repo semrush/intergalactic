@@ -120,8 +120,8 @@ const Demo = (props: PaginationProps) => {
 };
 
 export const defaultProps: PaginationProps = {
-  columnsLimit: -1,
-  rowsLimit: -1,
+  columnsLimit: 0,
+  rowsLimit: 1,
 };
 
 Demo.defaultProps = defaultProps;
