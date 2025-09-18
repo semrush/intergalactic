@@ -166,8 +166,8 @@ export const checkboxExampleProps: CheckboxExampleProps = {
   loading: false,
   sideIndents: undefined,
   compact: undefined,
-  columnsLimit: undefined,
-  rowsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = checkboxExampleProps;

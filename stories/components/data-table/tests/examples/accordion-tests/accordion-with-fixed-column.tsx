@@ -83,8 +83,8 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
 export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
   loading: false,
-  rowsLimit: undefined,
-  columnsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = accordionWithFixedColumnDefaultProps;

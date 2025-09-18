@@ -97,8 +97,8 @@ const ChartExample = () => {
 };
 export const tableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
-  rowsLimit: undefined,
-  columnsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = tableInTableDefaultProps;
@@ -209,11 +209,11 @@ const data = [
     kd: '-',
     cpc: '$0',
     vol: '21,644',
-    [ACCORDION]: [
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-    ],
+    // [ACCORDION]: [
+    //   { keyword: 'www.ebay.com', kd: '10', cpc: '$3.4', vol: '65,457,920' },
+    //   { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
+    //   { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    // ],
   },
 ];
 

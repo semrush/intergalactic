@@ -49,8 +49,8 @@ const Demo = (props: FixedColumnDiffWidthProps) => {
 };
 
 export const fixedColumnDiffWidthProps: FixedColumnDiffWidthProps = {
-  rowsLimit: undefined,
-  columnsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = fixedColumnDiffWidthProps;

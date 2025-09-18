@@ -192,8 +192,8 @@ const Demo = (props: RowsColumnsMergingProps) => {
 };
 
 export const rowsColumnsMergingProps: RowsColumnsMergingProps = {
-  rowsLimit: undefined,
-  columnsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = rowsColumnsMergingProps;

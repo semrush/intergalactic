@@ -120,12 +120,8 @@ const Demo = (props: PaginationProps) => {
 };
 
 export const defaultProps: PaginationProps = {
-  animationDuration: 200,
-  loading: false,
-  sideIndents: undefined,
-  compact: undefined,
-  rowsLimit: undefined,
-  columnsLimit: undefined,
+  columnsLimit: -1,
+  rowsLimit: -1,
 };
 
 Demo.defaultProps = defaultProps;
