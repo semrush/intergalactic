@@ -6,6 +6,11 @@ import Pagination from '@semcore/pagination';
 import { Text } from '@semcore/typography';
 import React, { useState, useRef, useEffect } from 'react';
 
+export type TableInTableProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  onAccordionToggle?: DataTableProps<typeof data, any, any>['onAccordionToggle'];
+};
+
 const Accordion = () => {
   const [firstArray, setFirstArray] = useState(['1']);
 
@@ -24,7 +29,7 @@ const Accordion = () => {
     : null;
 };
 
-const Demo = () => {
+const Demo = (props: TableInTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
@@ -109,6 +114,8 @@ const Demo = () => {
         </Collapse>
 
         <DataTable
+          accordionMode={props.accordionMode}
+          onAccordionToggle={props.onAccordionToggle}
           data={data[currentPage - 1]}
           aria-label='Parent table with accordion and checkboxes'
           selectedRows={selectedRows}
@@ -174,5 +181,11 @@ const data = [
     { id: '11', keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
   ],
 ];
+
+export const tableInTableDefaultProps: TableInTableProps = {
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = tableInTableDefaultProps;
 
 export default Demo;
