@@ -1,7 +1,10 @@
+import { Flex, Box, Collapse, ScreenReaderOnly } from '@semcore/base-components';
+import Button from '@semcore/button';
 import type { DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
-import React, { useState } from 'react';
+import { Text } from '@semcore/typography';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Accordion = () => {
   const [firstArray, setFirstArray] = useState(['1']);
@@ -12,14 +15,9 @@ const Accordion = () => {
           {firstArray.map((text) => (
             <p key={text}>
               <span>{text}</span>
-              <button
-                onClick={() => {
-                  setFirstArray([]);
-                }}
-              >
-                remove
-              </button>
+              <button onClick={() => setFirstArray([])}>remove</button>
             </p>
+
           ))}
         </div>
       )
@@ -29,10 +27,30 @@ const Accordion = () => {
 const Demo = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [selectedRows, setSelectedRows] = useState<string[]>([]);
+  const [selectedRowsDisplay, setSelectedRowsDisplay] = useState(0);
+  const [ariaMessage, setAriaMessage] = useState('');
+  const tableRef = useRef<HTMLDivElement>(null);
+
+  const handleChangeSelectedRows = (value: string[]) => {
+    setSelectedRows(value);
+    if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
+    if (value.length) setSelectedRowsDisplay(value.length);
+  };
+
+  const handleDeselectAll = () => {
+    setSelectedRows([]);
+    tableRef.current?.focus();
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAriaMessage(''), 300);
+    return () => clearTimeout(timer);
+  }, [ariaMessage]);
+
   const [expanded] = React.useState(() => {
     const map = new Map<number, Set<string>>();
     map.set(1, new Set());
-
     return map;
   });
 
@@ -42,13 +60,11 @@ const Demo = () => {
     } else {
       expanded.set(page, new Set());
     }
-
     setCurrentPage(page);
   };
 
   const renderCell: DataTableProps<typeof data[number], 'id', string>['renderCell'] = ({
     columnName,
-    rowIndex,
     defaultRender,
   }) => {
     if (columnName === 'vol') {
@@ -59,18 +75,60 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable
-        data={data[currentPage - 1]}
-        aria-label='Parent'
-        selectedRows={[]}
-        renderCell={renderCell}
-        columns={columns}
-        uniqueRowKey='id'
-        expandedRows={expanded.get(currentPage)}
-      />
+      <Box
+        tabIndex={-1}
+        wMax={800}
+        h={300}
+        style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
+      >
+        <ScreenReaderOnly role='status' aria-live='polite'>
+          {ariaMessage}
+        </ScreenReaderOnly>
+
+        <Collapse
+          visible={!!selectedRows.length}
+          duration={200}
+          style={{ position: 'sticky', top: 0, zIndex: 50 }}
+        >
+          <Flex
+            role='region'
+            aria-label='Table action bar'
+            alignItems='center'
+            gap={6}
+            py={2}
+            px={3}
+            style={{ backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)' }}
+          >
+            <Text size={200}>
+              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+            </Text>
+            <Button use='tertiary' onClick={handleDeselectAll}>
+              Deselect all
+            </Button>
+          </Flex>
+        </Collapse>
+
+        <DataTable
+          data={data[currentPage - 1]}
+          aria-label='Parent table with accordion and checkboxes'
+          selectedRows={selectedRows}
+          onSelectedRowsChange={handleChangeSelectedRows}
+          ref={tableRef}
+          renderCell={renderCell}
+          columns={columns}
+          uniqueRowKey='id'
+          expandedRows={expanded.get(currentPage)}
+          headerProps={{
+            sticky: true,
+            top: selectedRows.length ? 44 : 0,
+            animationDuration: 200,
+          }}
+        />
+      </Box>
+
       <Pagination
         currentPage={currentPage}
-        totalPages={2}
+        totalPages={3}
         onCurrentPageChange={changePage}
       />
     </>
@@ -86,77 +144,59 @@ const columns = [
 
 const data = [
   [
-    {
-      id: '1',
-      keyword: 'www.ebay.com',
-      kd: '10',
-      cpc: '$0.65',
-      vol: {
-        [ACCORDION]: <Accordion key='1' />,
-      },
-    },
-    {
-      id: '2',
-
-      keyword: 'ebay buy',
-      kd: '-',
-      cpc: '$0',
-      vol: 'n/a',
-    },
-    {
-      id: '3',
-
-      keyword: 'ebay buy',
-      kd: '75.89',
-      cpc: '$0',
-      vol: {
-        [ACCORDION]: <Accordion key='2' />,
-      },
-    },
-    {
-      id: '4',
-
-      keyword: 'ebay buy',
-      kd: '77.8',
-      cpc: '$1.25',
-      vol: '32,500,000',
-    },
-    {
-      id: '5',
-
-      keyword: 'www.ebay.com',
-      kd: '11.2',
-      cpc: '$3.4',
-      vol: '65,457,920',
-    },
-  ],
-  [
+    { id: '1', keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: { [ACCORDION]: <Accordion key='1' /> } },
+    { id: '2', keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+    { id: '3', keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: { [ACCORDION]: <Accordion key='2' /> } },
+    { id: '4', keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
+    { id: '5', keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
     {
       id: '6',
 
-      keyword: 'ebay buy',
-      kd: '75.89',
-      cpc: '$0',
-      vol: {
-        [ACCORDION]: <Accordion key='3' />,
-      },
-    },
-    {
-      id: '7',
-
-      keyword: 'ebay buy',
-      kd: '77.8',
-      cpc: '$1.25',
-      vol: '32,500,000',
-    },
-    {
-      id: '8',
-
       keyword: 'www.ebay.com',
       kd: '11.2',
       cpc: '$3.4',
       vol: '65,457,920',
+      [ACCORDION]: [
+        {
+          id: '6.1',
+          keyword: 'www.ebay.com',
+          kd: '11.2',
+          cpc: '$3.4',
+          vol: '65,457,920',
+        },
+        {
+          id: '6.1',
+          keyword: 'www.ebay.com',
+          kd: '10',
+          cpc: '$0.65',
+          vol: '47,354,640',
+        },
+        {
+          id: '6.1',
+          keyword: 'ebay buy',
+          kd: '-',
+          cpc: '$0',
+          vol: 'n/a',
+        },
+      ],
     },
+  ],
+  [
+    { id: '7', keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: { [ACCORDION]: <Accordion key='3' /> } },
+    { id: '8', keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
+    {
+      id: '9',
+      keyword: {
+        toString: () => 'Accordion',
+        [ACCORDION]: <Accordion key='4' />,
+      },
+      kd: '11.2', cpc: '$3.4', vol: '65,457,920',
+    },
+  ],
+  [
+    { id: '10', keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: { [ACCORDION]: <Accordion key='3' /> } },
+    { id: '11', keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
+
   ],
 ];
 
