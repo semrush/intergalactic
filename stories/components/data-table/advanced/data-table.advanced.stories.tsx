@@ -2,8 +2,8 @@ import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
-import AccordionWidthPaginationExample, { tableInTableDefaultProps } from './examples/accordion_width_pagination';
-import type { TableInTableProps } from './examples/accordion_width_pagination';
+import AccordionWithPaginationExample, { tableInTableDefaultProps } from './examples/accordion_with_pagination';
+import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
@@ -33,8 +33,8 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   args: accordionMergedProps,
 };
 
-export const AccordionWidthPagination: StoryObj<TableInTableProps> = {
-  render: AccordionWidthPaginationExample,
+export const AccordionWithPagination: StoryObj<TableInTableProps> = {
+  render: AccordionWithPaginationExample,
   args: {
     ...tableInTableDefaultProps,
   },

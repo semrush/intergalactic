@@ -80,60 +80,26 @@ const Demo = (props: TableInTableProps) => {
 
   return (
     <>
-      <Box
-        tabIndex={-1}
-        wMax={800}
-        h={300}
-        style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
-      >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
 
-        <Collapse
-          visible={!!selectedRows.length}
-          duration={200}
-          style={{ position: 'sticky', top: 0, zIndex: 50 }}
-        >
-          <Flex
-            role='region'
-            aria-label='Table action bar'
-            alignItems='center'
-            gap={6}
-            py={2}
-            px={3}
-            style={{ backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)' }}
-          >
-            <Text size={200}>
-              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
-            </Text>
-            <Button use='tertiary' onClick={handleDeselectAll}>
-              Deselect all
-            </Button>
-          </Flex>
-        </Collapse>
-
-        <DataTable
-          accordionMode={props.accordionMode}
-          onAccordionToggle={props.onAccordionToggle}
-          data={data[currentPage - 1]}
-          aria-label='Parent table with accordion and checkboxes'
-          selectedRows={selectedRows}
-          onSelectedRowsChange={handleChangeSelectedRows}
-          ref={tableRef}
-          renderCell={renderCell}
-          columns={columns}
-          uniqueRowKey='id'
-          expandedRows={expanded.get(currentPage)}
-          headerProps={{
-            sticky: true,
-            top: selectedRows.length ? 44 : 0,
-            animationDuration: 200,
-          }}
-        />
-      </Box>
+      <DataTable
+        accordionMode={props.accordionMode}
+        onAccordionToggle={props.onAccordionToggle}
+        data={data[currentPage - 1]}
+        aria-label='Parent table with accordion and checkboxes'
+        selectedRows={selectedRows}
+        onSelectedRowsChange={handleChangeSelectedRows}
+        ref={tableRef}
+        renderCell={renderCell}
+        columns={columns}
+        uniqueRowKey='id'
+        expandedRows={expanded.get(currentPage)}
+        headerProps={{
+          sticky: true,
+        }}
+      />
 
       <Pagination
+        mt={2}
         currentPage={currentPage}
         totalPages={3}
         onCurrentPageChange={changePage}

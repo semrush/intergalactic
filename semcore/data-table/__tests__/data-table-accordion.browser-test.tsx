@@ -16,7 +16,8 @@ const locators = {
   rowTableInTable: (page: Page, level: number, index: number) =>
     page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
   dataTable: (page: Page) => page.getByRole('grid'),
-
+  collapse: (page: Page) => page.locator('[data-ui-name="Collapse"]'),
+  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
 };
 
 test.describe('Accordion in table', () => {
@@ -1012,5 +1013,32 @@ test.describe('Accordion in table', () => {
 
     await showDetails.click();
     await expect(collapse).toBeHidden();
+  });
+
+  test('Verify accordion with pagination', async ({ page }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await locators.toggle(page).first().click();
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await locators.toggle(page).nth(1).click();
+    await locators.collapse(page).nth(1).waitFor({ state: 'visible' });
+
+    await locators.button(page, 'Next').click();
+
+    await expect(locators.collapse(page)).toHaveCount(0);
+
+    await locators.toggle(page).first().click();
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await expect(locators.collapse(page)).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    await locators.button(page, 'Prev').click();
+    await expect(locators.collapse(page)).toHaveCount(2);
+    await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+    await expect(page).toHaveScreenshot();
   });
 });
