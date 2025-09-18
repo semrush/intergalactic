@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Render grouped header in some cases.
+- Styles for cells in accordion in different variants.
 
 ## [16.3.0] - 2025-09-12
 
