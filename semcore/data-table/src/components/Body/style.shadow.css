@@ -52,7 +52,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
@@ -60,7 +60,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* MUTED THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
-  SRow[theme='muted']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow[theme='muted']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted'],
@@ -70,7 +70,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* INFO THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
-  SRow[theme='info']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow[theme='info']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info'],
@@ -80,7 +80,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* SUCCESS THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
-  SRow[theme='success']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow[theme='success']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success'],
@@ -90,7 +90,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* WARNING THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRow[theme='warning']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow[theme='warning']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
@@ -100,7 +100,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* DANGER THEME */
   SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
-  SRow[theme='danger']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
+  SRow[theme='danger']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger'],
@@ -122,7 +122,12 @@ SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
 /* INFO THEME */
 
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+  }
 }
 
 SRow[theme='info'][active] > SCellWrapper > SCell:not([theme]) {
@@ -132,7 +137,12 @@ SRow[theme='info'][active] > SCellWrapper > SCell:not([theme]) {
 /* SUCCESS THEME */
 
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
+  }
 }
 
 SRow[theme='success'][active] > SCellWrapper > SCell:not([theme]) {
@@ -142,7 +152,12 @@ SRow[theme='success'][active] > SCellWrapper > SCell:not([theme]) {
 /* WARNING THEME */
 
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
+  }
 }
 
 SRow[theme='warning'][active] > SCellWrapper > SCell:not([theme]) {
@@ -152,7 +167,12 @@ SRow[theme='warning'][active] > SCellWrapper > SCell:not([theme]) {
 /* DANGER THEME */
 
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
+  }
 }
 
 SRow[theme='danger'][active] > SCellWrapper > SCell:not([theme]) {
