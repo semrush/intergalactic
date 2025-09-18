@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Render grouped header in some cases.
 - Styles for cells in accordion in different variants.
 
 ## [16.3.0] - 2025-09-12
@@ -18,11 +19,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Bottom border for cell with empty data.
-
-## [16.2.2] - 2025-09-12
-
-### Fixed
-
 - Table performance with accordions.
 
 ## [16.2.1] - 2025-09-05

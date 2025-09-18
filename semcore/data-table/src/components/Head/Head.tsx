@@ -32,15 +32,40 @@ class HeadRoot<
     return `${uid}-column-sortable-describer`;
   }
 
-  getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical } = this.asProps;
+  getGroupProps(props: any, index: number) {
+    const { fixed, columns } = props;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
+    const groupColumns = columns ?? [];
+
+    const firstColumn = groupColumns[0];
+    const lastColumn = groupColumns[groupColumns.length - 1];
+
+    const style: any = {};
+
+    if (fixed === 'left' && firstColumn) {
+      const [name, value] = getFixedStyle({ name: firstColumn.name, fixed: 'left' });
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
+    }
+    if (fixed === 'right' && lastColumn) {
+      const [name, value] = getFixedStyle({ name: lastColumn.name, fixed: 'right' });
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
+    }
+    if (top && scrollDirection !== 'horizontal') {
+      style.top = `${top}px`;
+    }
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical,
+      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
+      style,
+      scrollDirection,
     };
   }
 
