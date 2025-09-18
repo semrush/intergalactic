@@ -314,8 +314,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   get isRowHidden() {
     const { rowIndex, limit } = this.asProps;
-    const rowsLimit = limit?.rows;
-    const columnsLimit = limit?.columns;
+    const rowsLimit = limit?.fromRow;
+    const columnsLimit = limit?.fromColumn;
 
     return rowsLimit !== undefined && columnsLimit === undefined && rowIndex > rowsLimit
       ? true
@@ -350,7 +350,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       variant,
       flatRows,
       limit,
-      totalRows,
       hasGroups,
     } = this.asProps;
 
@@ -391,8 +390,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowUniqKey = row[UNIQ_ROW_KEY];
     const accordionId = `${uid}_${rowUniqKey}`;
 
-    const rowsLimit = limit?.rows;
-    const columnsLimit = limit?.columns;
+    const rowsLimit = limit?.fromRow;
+    const columnsLimit = limit?.fromColumn;
 
     return sstyled(styles)(
       <>
@@ -485,15 +484,15 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               />
             );
           })}
-          <LimitOverlay
-            rowIndex={rowIndex}
-            columns={columns}
-            rows={rows}
-            limit={limit}
-            totalRows={totalRows}
-            flatRows={flatRows}
-            hasGroups={hasGroups}
-          />
+          {limit && (limit.fromRow ?? 0) === rowIndex && (
+            <LimitOverlay
+              columns={columns}
+              rows={rows}
+              limit={limit}
+              flatRows={flatRows}
+              hasGroups={hasGroups}
+            />
+          )}
         </SRow>
 
         {React.isValidElement(accordion) && (

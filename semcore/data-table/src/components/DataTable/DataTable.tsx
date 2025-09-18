@@ -576,7 +576,7 @@ class DataTableRoot<
           return;
         }
         // skipping x-axis movement of the focus within limit overlay and there is only limit by rows
-        if (limit?.rows !== undefined && limit.columns === undefined && newCol === limit.rows) {
+        if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
           return;
         }
         // left/right
@@ -586,15 +586,15 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          if (direction === 'right' && limit?.columns !== undefined) {
-            if (newCol > limit.columns) return;
+          if (direction === 'right' && limit?.fromColumn !== undefined) {
+            if (newCol > limit.fromColumn) return;
 
             rowI = direction === 'right' ? rowI - 1 : rowI;
           } else {
             colI = direction === 'left' ? colI - 1 : colI + 1;
           }
-        } else if (direction === 'right' && (limit?.columns !== undefined || limit?.rows !== undefined)) {
-          if (newCol === limit.columns) {
+        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
+          if (newCol === limit.fromColumn) {
             rowI = rowI - 1;
           } else {
             return;
@@ -610,8 +610,8 @@ class DataTableRoot<
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
-          const areLimitsDefined = limit?.rows !== undefined || limit?.columns !== undefined;
-          if (areLimitsDefined && newRow > (limit?.rows ?? 0) + 1) {
+          const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
+          if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
             return;
           }
 

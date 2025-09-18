@@ -101,8 +101,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   calculateAriaRowIndex: () => void;
   variant?: DataTableProps<any, any, any>['variant'];
   limit?: DataTableProps<any, any, any>['limit'];
-  totalRows: number;
-  flatRows: DTRow<UniqKeyType>[];
+  totalRows?: number;
   hasGroups: boolean;
 };
 

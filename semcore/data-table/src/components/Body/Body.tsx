@@ -99,7 +99,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       virtualScroll,
       limit,
       variant,
-      totalRows,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
@@ -145,7 +144,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       variant,
       limit,
       hasGroups,
-      totalRows,
     };
   }
 

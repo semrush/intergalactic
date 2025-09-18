@@ -175,7 +175,7 @@ class HeadRoot<
                         <DataTable.Head.Group
                           key={column.name}
                           {...column}
-                          name={column.columns?.map((c) => c.name).join('/')}
+                          name={column.fromColumn?.map((c) => c.name).join('/')}
                           title=''
                         />
                       );

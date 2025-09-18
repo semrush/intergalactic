@@ -160,10 +160,16 @@ export type DataTableProps<
 
     /** Defines a limit configuration */
     limit?: {
-      /** Rows limit */
-      rows?: number;
-      /** Columns limit */
-      columns?: number;
+      /**
+       * Start limit from this row
+       * @default 0
+       */
+      fromRow?: number;
+      /**
+       * Start limit from this column
+       * @default 0
+       */
+      fromColumn?: number;
       /** Limit overlay */
       renderOverlay: () => React.ReactNode;
     };

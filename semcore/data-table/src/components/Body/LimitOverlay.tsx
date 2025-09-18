@@ -1,20 +1,20 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, createComponent, type Intergalactic, sstyled } from '@semcore/core';
 import type { DataTableProps } from '@semcore/data-table';
+import { ACCORDION } from '@semcore/data-table';
 import * as React from 'react';
 
 import type { DTRow, DTRows } from './Row.types';
 import style from './style.shadow.css';
 import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
+import { GRID_ROW_INDEX } from '../DataTable/DataTable';
 import type { DTColumn } from '../Head/Column.types';
 
 type LimitOverlayProps<UniqKeyType> = {
-  rowIndex: number;
   columns: DTColumn[];
   rows: DTRows<UniqKeyType>;
-  limit: DataTableProps<any, any, any>['limit'];
-  totalRows: number;
+  limit: Exclude<DataTableProps<any, any, any>['limit'], undefined>;
   flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
 };
@@ -29,23 +29,27 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
     const {
       columns,
       hasGroups,
-      totalRows,
       flatRows,
       limit,
     } = this.asProps;
 
-    const currentMaxGridIndex = totalRows;
-    const currentRowLimitOffset = totalRows - flatRows.length;
-
-    const { rows: rowsLimit, columns: columnsLimit } = limit ?? {};
+    const { fromRow, fromColumn } = limit;
 
     const rowOffset = hasGroups ? 3 : 2;
 
-    const rowStart = rowsLimit !== undefined
-      ? rowsLimit + rowOffset + currentRowLimitOffset
+    const rowStart = fromRow !== undefined
+      ? rowOffset + flatRows[fromRow][GRID_ROW_INDEX]
       : rowOffset;
-    const columnStart = columnsLimit !== undefined ? columnsLimit + 1 : 1;
-    const rowEnd = currentMaxGridIndex + rowOffset;
+    let rowEnd = rowOffset;
+
+    const lastRow = flatRows[flatRows.length - 1];
+    if (lastRow[ACCORDION]) {
+      rowEnd = rowEnd + lastRow[GRID_ROW_INDEX] + 1 + (Array.isArray(lastRow[ACCORDION]) ? lastRow[ACCORDION].length : 1);
+    } else {
+      rowEnd = rowEnd + lastRow[GRID_ROW_INDEX] + 1;
+    }
+
+    const columnStart = fromColumn !== undefined ? fromColumn + 1 : 1;
     const columnEnd = columns.length + 1;
 
     return `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
@@ -61,14 +65,11 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
 
   render() {
     const SLimitOverlayCellWrapper = Flex;
-    const { rowIndex, columns, rows, styles, limit } = this.asProps;
+    const { columns, rows, styles, limit } = this.asProps;
 
-    const rowsLimit = limit?.rows;
-    const columnsLimit = limit?.columns;
-    const renderOverlay = limit?.renderOverlay;
-
-    if (rowsLimit === undefined && columnsLimit === undefined) return null;
-    if ((rowsLimit ?? 0) !== rowIndex) return null;
+    const rowsLimit = limit.fromRow;
+    const columnsLimit = limit.fromColumn;
+    const renderOverlay = limit.renderOverlay;
 
     const colIndex = columnsLimit ? columnsLimit + 1 : 1;
     const colSpan = columns.length - (columnsLimit ?? 0);

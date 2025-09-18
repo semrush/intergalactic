@@ -31,8 +31,8 @@ const Demo = (props: TableInTableProps) => {
       accordionDuration={400}
       accordionMode={props.accordionMode}
       limit={{
-        rows: limitedRows,
-        columns: limitedColumns,
+        fromRow: limitedRows,
+        fromColumn: limitedColumns,
         renderOverlay() {
           return (
             <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
