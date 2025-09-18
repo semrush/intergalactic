@@ -1,5 +1,18 @@
+import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+
+const locators = {
+  toggle: (page: Page) => page.getByRole('row').getByLabel('Show details'),
+  chart: (page: Page, text: string) => page.getByRole('gridcell', { name: text }),
+  row: (page: Page, index: number) =>
+    page.locator(`[aria-rowindex="${index}"]`),
+  rowTableInTable: (page: Page, level: number, index: number) =>
+    page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
+  dataTable: (page: Page) => page.getByRole('grid'),
+  columnHeader: (page: Page) => page.getByRole('columnheader'),
+
+};
 
 test.describe('Loading states', () => {
   test('Verify loading state of table', async ({ page }) => {
@@ -44,9 +57,8 @@ test.describe('Loading states', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const row = await page.locator('div[data-ui-name="Body.Row"][aria-rowindex="2"]');
 
-    const rowCells = row.locator('div[data-ui-name="Row.Cell"]');
+    const rowCells = locators.row(page, 2).locator('div[data-ui-name="Row.Cell"]');
 
     const cellsCount = await rowCells.count();
     for (let i = 0; i < cellsCount; i++) {
@@ -71,7 +83,7 @@ test.describe('Loading states', () => {
     await page.setContent(htmlContent);
 
     const cells = page.locator('div[data-ui-name="Row.Cell"]');
-    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
+    const firstRow = locators.row(page, 2);
     const noData = page.locator('[data-ui-name="WidgetNoData"]');
 
     await test.step('Verify empty state attributes', async () => {
@@ -106,7 +118,7 @@ test.describe('Loading states', () => {
 
     await page.setContent(htmlContent);
 
-    const head = page.locator('[data-ui-name="DataTable.Head"]');
+    const head = locators.row(page, 1);
     let hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
 
     expect(hasScroll).toBe(false);
@@ -120,46 +132,76 @@ test.describe('Loading states', () => {
 });
 
 test.describe('Limited state', () => {
-  test('Verify limited state of table', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
-    const rowsCount = 10;
-    const columnsCount = 5;
-    const limitedRows = 3;
-    const limitedColumns = undefined;
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      limitedRows,
-      limitedColumns,
-    });
+  const variantState = [
+    { limitedRows: 3, limitedColumns: undefined },
+    { limitedRows: undefined, limitedColumns: 3 },
+    { limitedRows: 4, limitedColumns: 4 },
+    { limitedRows: undefined, limitedColumns: undefined },
+  ];
+  variantState.forEach((item) => {
+    test(`Verify limited state for base table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
 
-    await page.setContent(htmlContent);
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setContent(htmlContent);
 
-    await test.step('Verify aria attributes', async () => {
-      const rows = await page.locator('[data-ui-name="Body.Row"][role="row"]').all();
+      const rowsCount = await locators.columnHeader(page).count();
+      const columnsCount = await page.locator('[data-ui-name="DataTable.Body"]').getByRole('row').count();
+      const limitedContent = page.locator('div[class*="LimitOverlay"]');
+      const cell = limitedContent.locator('[role="gridcell"]');
 
-      for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-        const row = rows[rowIndex];
+      const colspanStr = await cell.getAttribute('aria-colspan');
+      const rowspanStr = await cell.getAttribute('aria-rowspan');
 
-        const rowAriaHiddenValue = await row.getAttribute('aria-hidden');
-        expect(rowAriaHiddenValue).toBe(rowIndex > limitedRows ? 'true' : null);
+      const limitedColumns = parseInt(colspanStr || '0', 10);
+      const limitedRows = parseInt(rowspanStr || '0', 10);
 
-        const cells = await row.locator('[data-ui-name="Body.Cell"]').all();
-        for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
-          const cell = cells[cellIndex];
+      // console.log(`colspan = ${limitedColumns}, rowspan = ${limitedRows}, rowsCount = ${rowsCount}, columnsCount = ${columnsCount}`);
 
-          const cellAriaHiddenValue = await cell.getAttribute('aria-hidden');
-          expect(cellAriaHiddenValue).toBe(rowIndex >= limitedRows ? 'true' : null);
+      await test.step('Verify aria attributes', async () => {
+        const rows = await page.getByRole('row').all();
+
+        for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+          const row = rows[rowIndex];
+
+          const rowAriaHiddenValue = await row.getAttribute('aria-hidden');
+          expect(rowAriaHiddenValue).toBe(rowIndex > limitedRows ? 'true' : null);
+
+          const cells = await row.locator('[data-ui-name="Body.Cell"]').all();
+          for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+            const cell = cells[cellIndex];
+
+            const cellAriaHiddenValue = await cell.getAttribute('aria-hidden');
+            expect(cellAriaHiddenValue).toBe(rowIndex >= limitedRows ? 'true' : null);
+          }
         }
-      }
 
-      const colIndex = limitedColumns === undefined ? 1 : limitedColumns + 1;
-      const colSpan = limitedColumns === undefined ? columnsCount : columnsCount - limitedColumns;
-      const rowSpan = limitedRows === undefined ? rowsCount : rowsCount - limitedRows;
+        const colIndex = limitedColumns === undefined ? 1 : limitedColumns + 1;
+        const colSpan = limitedColumns === undefined ? columnsCount : columnsCount - limitedColumns;
+        const rowSpan = limitedRows === undefined ? rowsCount : rowsCount - limitedRows;
 
-      const limitOverlayCell = page.locator(`[data-ui-name="Box"][role="gridcell"][aria-colindex="${colIndex}"][aria-colspan="${colSpan}"][aria-rowspan="${rowSpan}"]`);
-      await expect(limitOverlayCell).toBeVisible();
+        const limitOverlayCell = page.locator(`[data-ui-name="Box"][role="gridcell"][aria-colindex="${colIndex}"][aria-colspan="${colSpan}"][aria-rowspan="${rowSpan}"]`);
+        await expect(limitOverlayCell).toBeVisible();
+      });
+
+      // TODO: Verify focus behaviour
     });
 
-    // TODO: Verify focus behaviour
+    test(`Verify limited state for accordion inside table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-duration.tsx';
+
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setContent(htmlContent);
+      // todo
+    });
+
+    test(`Verify limited state for checkbox inside table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/checkbox.tsx';
+
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setContent(htmlContent);
+      // todo
+    });
   });
 });
 
@@ -176,9 +218,8 @@ test.describe('Additional states', () => {
 
       await page.setContent(htmlContent);
 
-      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
-      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
+      const lastTableRowCells = await locators.row(page, 6).locator('[data-ui-name="Row.Cell"]').all();
+      const accordionToggles = await locators.toggle(page).all();
       const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]');
 
       for (const lastRowCell of lastTableRowCells) {
@@ -192,7 +233,7 @@ test.describe('Additional states', () => {
         await accordionToggle.click();
         await expect(accordionToggle).toHaveAttribute('aria-expanded', 'true');
       }
-      await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
+      await locators.rowTableInTable(page, 2, 12).waitFor({ state: 'visible' });
 
       const count = await accordionLastRowCells.count();
 
@@ -218,9 +259,8 @@ test.describe('Additional states', () => {
 
       await page.setContent(htmlContent);
 
-      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="6"]');
-      const lastTableRowCells = await lastTableRow.locator('[data-ui-name="Row.Cell"]').all();
-      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]').all();
+      const lastTableRowCells = await locators.row(page, 6).locator('[data-ui-name="Row.Cell"]').all();
+      const accordionToggles = await locators.toggle(page).all();
       const accordionLastRowCells = await page.locator('div[role="rowgroup"] div[role="row"]:last-of-type div[role="gridcell"]').all();
 
       for (const lastRowCell of lastTableRowCells) {
@@ -231,7 +271,7 @@ test.describe('Additional states', () => {
         await accordionToggle.click();
         await expect(accordionToggle).toHaveAttribute('aria-expanded', 'true');
       }
-      await page.locator('[aria-rowindex="12"][aria-level="2"]').waitFor({ state: 'visible' });
+      await locators.rowTableInTable(page, 2, 12).waitFor({ state: 'visible' });
 
       for (const accordionLastRowCell of accordionLastRowCells) {
         await expect(accordionLastRowCell).toHaveCSS('border-bottom-style', 'solid');
@@ -248,8 +288,7 @@ test.describe('Additional states', () => {
 
       await page.setContent(htmlContent);
 
-      const lastTableRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
-      const accordionToggles = await page.locator('[data-ui-name="ButtonLink"]');
+      const accordionToggles = await locators.toggle(page);
 
       await accordionToggles.first().click();
       await expect(page.getByRole('gridcell', { name: 'Chart' })).toHaveCSS('border-bottom-style', 'solid');
