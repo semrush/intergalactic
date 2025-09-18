@@ -35,12 +35,11 @@ const Demo = (props: ExampleInputTagsProps) => {
             interactive={props.interactive}
 
             color={props.color}
+            addonLeft={Edit}
+            active
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Addon>
-                <Edit />
-              </InputTags.Tag.Addon>
-              <InputTags.Tag.Text.Content>Addon text and close</InputTags.Tag.Text.Content>
+              Addon text and close
             </InputTags.Tag.Text>
             <InputTags.Tag.Close />
           </InputTags.Tag>
