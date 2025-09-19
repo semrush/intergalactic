@@ -204,7 +204,7 @@ SCell[use='primary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -214,7 +214,7 @@ SCell[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
