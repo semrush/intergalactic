@@ -191,6 +191,17 @@ test.describe('Visual tests', () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
   });
+
+  test('Verify description tooltip trigger has not unnecessary margins', async ({ page }) => {
+    const standPath = 'stories/components/card/tests/examples/card_with_description_tooltip_in_body.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]').first();
+
+    await expect(descriptionTooltipTrigger).toHaveCSS('margin', '0px');
+  });
 });
 
 test.describe('Functional', () => {
