@@ -30,9 +30,7 @@ const Demo = (props: AccordionInTableProps) => {
         },
       ]}
       renderCell={(props) => {
-        const parentRowIndex = props.rowIndex - 1;
-
-        if (parentRowIndex === 0 && props.columnName === ACCORDION) {
+        if (props.rowIndex === 0 && props.columnName === ACCORDION) {
           return {
             p: 0, // set empty paddings for the first accordion
             children: props.defaultRender(),

@@ -1,15 +1,15 @@
 import Card from '@semcore/card';
 import type { DataTableProps } from '@semcore/data-table';
-import { ACCORDION, DataTable } from '@semcore/data-table';
+import { DataTable } from '@semcore/data-table';
 import React from 'react';
 
-export const tableInTableDefaultProps: TableInTableProps = {
+export const tableInCardDefaultProps: TableInCardProps = {
   variant: 'card',
   use: undefined,
   compact: undefined,
 };
 
-const Demo = (props: TableInTableProps) => (
+const Demo = (props: TableInCardProps) => (
   <Card>
     <Card.Header>
       <Card.Title tag='h3'>Card Title</Card.Title>
@@ -32,13 +32,13 @@ const Demo = (props: TableInTableProps) => (
   </Card>
 );
 
-export type TableInTableProps = {
+export type TableInCardProps = {
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
 };
 
-Demo.defaultProps = tableInTableDefaultProps;
+Demo.defaultProps = tableInCardDefaultProps;
 
 const data = [
   {
@@ -46,26 +46,12 @@ const data = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: [
-      {
-        keyword: 'www.ebay.com',
-        kd: '11.2',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-      {
-        keyword: 'ebay buy',
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-    ],
+  },
+  {
+    keyword: 'www.ebay.com',
+    kd: '11.2',
+    cpc: '$3.4',
+    vol: '65,457,920',
   },
   {
     keyword: 'www.ebay.com',
@@ -84,32 +70,6 @@ const data = [
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-    [ACCORDION]: [
-      {
-        keyword: 'www.ebay.com',
-        kd: '11.2',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-      {
-        keyword: 'ebay buy',
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-    ],
   },
 ];
 

@@ -811,7 +811,7 @@ test.describe('Options filtering', () => {
       await page.waitForSelector('input');
 
       await hint.hover();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.getByText('Clear').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 

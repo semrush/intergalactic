@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.3] - 2025-09-12
+## [16.2.4] - 2025-09-12
 
 ### Changed
 
 - Don't open popper `onFocus` if last interaction was with mouse.
+
+## [16.2.3] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.2.0 ~> 16.3.0]).
 
 ## [16.2.2] - 2025-09-05
 

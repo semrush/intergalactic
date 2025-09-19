@@ -10,7 +10,7 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTableInternal, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { DataTable, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
@@ -32,15 +32,40 @@ class HeadRoot<
     return `${uid}-column-sortable-describer`;
   }
 
-  getGroupProps(_: any, index: number) {
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical } = this.asProps;
+  getGroupProps(props: any, index: number) {
+    const { fixed, columns } = props;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
+    const groupColumns = columns ?? [];
+
+    const firstColumn = groupColumns[0];
+    const lastColumn = groupColumns[groupColumns.length - 1];
+
+    const style: any = {};
+
+    if (fixed === 'left' && firstColumn) {
+      const [name, value] = getFixedStyle({ name: firstColumn.name, fixed: 'left' });
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
+    }
+    if (fixed === 'right' && lastColumn) {
+      const [name, value] = getFixedStyle({ name: lastColumn.name, fixed: 'right' });
+      if (name !== undefined && value !== undefined) {
+        style[name] = value;
+      }
+    }
+    if (top && scrollDirection !== 'horizontal') {
+      style.top = `${top}px`;
+    }
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical,
+      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
+      style,
+      scrollDirection,
     };
   }
 
@@ -172,7 +197,7 @@ class HeadRoot<
                   {treeColumns.map((column, _i) => {
                     if ('columns' in column) {
                       return (
-                        <DataTableInternal.Head.Group
+                        <DataTable.Head.Group
                           key={column.name}
                           {...column}
                           name={column.columns?.map((c) => c.name).join('/')}
@@ -181,7 +206,7 @@ class HeadRoot<
                       );
                     }
 
-                    return <DataTableInternal.Head.Column key={column.name} {...column} />;
+                    return <DataTable.Head.Column key={column.name} {...column} />;
                   })}
                 </>
               )}
