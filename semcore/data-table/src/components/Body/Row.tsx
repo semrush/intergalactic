@@ -484,7 +484,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               />
             );
           })}
-          {limit && (limit.fromRow ?? 0) === rowIndex && (
+          {limit && (limit.fromRow ?? 0) === rowIndex && !isAccordionRow && (
             <LimitOverlay
               columns={columns}
               rows={rows}
