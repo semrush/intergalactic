@@ -531,6 +531,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const { a11yHint } = this.state;
     const context = { attach, detach };
     const { getI18nText, uid } = this.asProps;
+    const SDnDContainer = Root;
 
     return sstyled(this.asProps.styles)(
       <DragAndDropContext.Provider value={context}>
@@ -539,7 +540,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             {a11yHint}
           </SA11yHint>
         )}
-        <Root render={Box} role='group' ref={this.containerRef} />
+        <SDnDContainer render={Box} role='group' ref={this.containerRef} />
         <ScreenReaderOnly id={`describe-draggable-${uid}`} aria-hidden='true'>
           {getI18nText('describe', { control: 'Space' })}
         </ScreenReaderOnly>

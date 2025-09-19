@@ -82,14 +82,12 @@ SDropZone {
   position: relative;
 }
 
-SDropZone[dropPreview],
-SDraggable[dropPreview] {
+SDropZone[dropPreview] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
 
 
-SDropZone[dark][dropPreview],
-SDraggable[dark][dropPreview] {
+SDropZone[dark][dropPreview] {
   background-color: var(--intergalactic-bg-primary-invert-active, #484a54);
 }
 
@@ -117,6 +115,9 @@ SDraggable[animatedScaling] {
   transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
+SDnDContainer SDraggable[reversedScaling]:hover {
+    background-color: initial;
+}
 
 SA11yHint {
   position: absolute;
