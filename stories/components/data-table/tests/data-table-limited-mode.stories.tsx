@@ -1,6 +1,8 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/limited-mode/accordion';
+import type { TableInTableProps } from './examples/limited-mode/accordion';
 import type { CheckboxExampleProps } from './examples/limited-mode/checkboxes';
 import CheckboxExample, { checkboxExampleProps } from './examples/limited-mode/checkboxes';
 import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
@@ -43,5 +45,12 @@ export const RowsColumnsMerging: StoryObj<RowsColumnsMergingProps> = {
   render: RowsColumnsMergingExample,
   args: {
     ...rowsColumnsMergingProps,
+  },
+};
+
+export const AnimationDurationTest: StoryObj<TableInTableProps> = {
+  render: AnimationDurationTestExample,
+  args: {
+    ...tableInTableDefaultProps,
   },
 };

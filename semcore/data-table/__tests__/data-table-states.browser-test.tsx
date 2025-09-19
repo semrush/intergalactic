@@ -1,6 +1,7 @@
 import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { LimitOverlay } from 'data-table/src/components/Body/LimitOverlay';
 
 const locators = {
   toggle: (page: Page) => page.getByRole('row').getByLabel('Show details'),
@@ -11,7 +12,7 @@ const locators = {
     page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
   dataTable: (page: Page) => page.getByRole('grid'),
   columnHeader: (page: Page) => page.getByRole('columnheader'),
-
+  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
 };
 
 test.describe('Loading states', () => {
@@ -133,74 +134,552 @@ test.describe('Loading states', () => {
 
 test.describe('Limited state', () => {
   const variantState = [
-    { limitedRows: 3, limitedColumns: undefined },
-    { limitedRows: undefined, limitedColumns: 3 },
-    { limitedRows: 4, limitedColumns: 4 },
-    { limitedRows: undefined, limitedColumns: undefined },
+    { rowsLimit: 3, columnsLimit: 0 },
+    { rowsLimit: 0, columnsLimit: 3 },
+    { rowsLimit: 3, columnsLimit: 2 },
+    { rowsLimit: 0, columnsLimit: 0 },
   ];
   variantState.forEach((item) => {
-    test(`Verify limited state for base table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
+    test(`Verify limited state for base table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, async ({ page, browserName }) => {
       const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
 
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
       await page.setContent(htmlContent);
 
-      const rowsCount = await locators.columnHeader(page).count();
-      const columnsCount = await page.locator('[data-ui-name="DataTable.Body"]').getByRole('row').count();
-      const limitedContent = page.locator('div[class*="LimitOverlay"]');
-      const cell = limitedContent.locator('[role="gridcell"]');
+      const columnsCount = await locators.columnHeader(page).count();
+      const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+      const rowsCount = await rows.count();
+      const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
-      const colspanStr = await cell.getAttribute('aria-colspan');
-      const rowspanStr = await cell.getAttribute('aria-rowspan');
+      await expect(limitedContent).toBeVisible();
+
+      const limitedCell = limitedContent.locator('[role="gridcell"]');
+
+      const colspanStr = await limitedCell.getAttribute('aria-colspan');
+      const rowspanStr = await limitedCell.getAttribute('aria-rowspan');
 
       const limitedColumns = parseInt(colspanStr || '0', 10);
       const limitedRows = parseInt(rowspanStr || '0', 10);
 
-      // console.log(`colspan = ${limitedColumns}, rowspan = ${limitedRows}, rowsCount = ${rowsCount}, columnsCount = ${columnsCount}`);
+      const hiddenRows = Number.isFinite(limitedRows) && limitedRows > 0 ? limitedRows : 0;
+      const hiddenStartIndex = Math.max(0, rowsCount - hiddenRows);
 
       await test.step('Verify aria attributes', async () => {
-        const rows = await page.getByRole('row').all();
+        await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-        for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-          const row = rows[rowIndex];
+        const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+        if (limitedRows === rowsCount && limitedColumns < columnsCount) {
+          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rowCount = await rows.count();
 
-          const rowAriaHiddenValue = await row.getAttribute('aria-hidden');
-          expect(rowAriaHiddenValue).toBe(rowIndex > limitedRows ? 'true' : null);
+          for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
 
-          const cells = await row.locator('[data-ui-name="Body.Cell"]').all();
-          for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
-            const cell = cells[cellIndex];
+            await expect(row).not.toHaveAttribute('aria-hidden', 'true');
 
-            const cellAriaHiddenValue = await cell.getAttribute('aria-hidden');
-            expect(cellAriaHiddenValue).toBe(rowIndex >= limitedRows ? 'true' : null);
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              await expect(cell).toHaveAttribute('aria-hidden', 'true');
+            }
+          }
+        } else if (limitedRows < rowsCount && limitedColumns === columnsCount) {
+          await expect(visibleRowsLocator).toHaveCount(Math.max(0, rowsCount - hiddenRows + 1));
+
+          for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            if (rowIndex > hiddenStartIndex) {
+              await expect(row).toHaveAttribute('aria-hidden', 'true');
+            } else {
+              await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+            }
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              if (rowIndex >= hiddenStartIndex) {
+                await expect(cell).toHaveAttribute('aria-hidden', 'true');
+              } else {
+                await expect(cell).not.toHaveAttribute('aria-hidden', 'true');
+              }
+            }
           }
         }
-
-        const colIndex = limitedColumns === undefined ? 1 : limitedColumns + 1;
-        const colSpan = limitedColumns === undefined ? columnsCount : columnsCount - limitedColumns;
-        const rowSpan = limitedRows === undefined ? rowsCount : rowsCount - limitedRows;
-
-        const limitOverlayCell = page.locator(`[data-ui-name="Box"][role="gridcell"][aria-colindex="${colIndex}"][aria-colspan="${colSpan}"][aria-rowspan="${rowSpan}"]`);
-        await expect(limitOverlayCell).toBeVisible();
       });
 
-      // TODO: Verify focus behaviour
+      await test.step('Verify overlay style', async () => {
+        if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        const cssValue = await limitedContent.evaluate((el) =>
+          window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
+        );
+
+        expect(cssValue).toContain('blur(3px)');
+      });
     });
 
-    test(`Verify limited state for accordion inside table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
-      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-duration.tsx';
+    test(`Verify limited state for checkbox in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, async ({ page, browserName }) => {
+      const standPath = 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx';
 
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
       await page.setContent(htmlContent);
-      // todo
+
+      const columnsCount = await locators.columnHeader(page).count();
+      const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+      const rowsCount = await rows.count();
+      const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
+
+      const limitedCell = limitedContent.locator('[role="gridcell"]');
+
+      const colspanStr = await limitedCell.getAttribute('aria-colspan');
+      const rowspanStr = await limitedCell.getAttribute('aria-rowspan');
+
+      const limitedColumns = parseInt(colspanStr || '0', 10);
+      const limitedRows = parseInt(rowspanStr || '0', 10);
+
+      const hiddenRows = Number.isFinite(limitedRows) && limitedRows > 0 ? limitedRows : 0;
+      const hiddenStartIndex = Math.max(0, rowsCount - hiddenRows);
+
+      await test.step('Verify overlay shown and aria attributes on the first page', async () => {
+        await expect(limitedContent).toBeVisible();
+
+        await expect(limitedCell).toHaveAttribute('tabindex', '-1');
+
+        const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+        if (limitedRows === rowsCount && limitedColumns < columnsCount) {
+          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rowCount = await rows.count();
+
+          for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              await expect(cell).toHaveAttribute('aria-hidden', 'true');
+            }
+          }
+        } else if (limitedRows < rowsCount && limitedColumns === columnsCount) {
+          await expect(visibleRowsLocator).toHaveCount(Math.max(0, rowsCount - hiddenRows + 1));
+
+          for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            if (rowIndex > hiddenStartIndex) {
+              await expect(row).toHaveAttribute('aria-hidden', 'true');
+            } else {
+              await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+            }
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              if (rowIndex >= hiddenStartIndex) {
+                await expect(cell).toHaveAttribute('aria-hidden', 'true');
+              } else {
+                await expect(cell).not.toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+          }
+        }
+      });
+
+      await test.step('Verify overlay shown and aria attributes on the second page', async () => {
+        await locators.button(page, 'Next').click();
+        await expect(limitedContent).toBeVisible();
+
+        await expect(limitedCell).toHaveAttribute('tabindex', '-1');
+
+        const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+        if (limitedRows === rowsCount && limitedColumns < columnsCount) {
+          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rowCount = await rows.count();
+
+          for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              await expect(cell).toHaveAttribute('aria-hidden', 'true');
+            }
+          }
+        } else if (limitedRows < rowsCount && limitedColumns === columnsCount) {
+          await expect(visibleRowsLocator).toHaveCount(Math.max(0, rowsCount - hiddenRows + 1));
+
+          for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            if (rowIndex > hiddenStartIndex) {
+              await expect(row).toHaveAttribute('aria-hidden', 'true');
+            } else {
+              await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+            }
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              if (rowIndex >= hiddenStartIndex) {
+                await expect(cell).toHaveAttribute('aria-hidden', 'true');
+              } else {
+                await expect(cell).not.toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+          }
+        }
+      });
+
+      await test.step('Verify overlay style', async () => {
+        if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        const cssValue = await limitedContent.evaluate((el) =>
+          window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
+        );
+
+        expect(cssValue).toContain('blur(3px)');
+      });
+
+      await test.step('Verify overlay shown and aria attributes on the last page', async () => {
+        await locators.button(page, 'Last page #').click();
+        const columnsCount = await locators.columnHeader(page).count();
+        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rowsCount = await rows.count();
+        const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
+
+        if (rowsCount <= item.rowsLimit) {
+          await expect(limitedContent).not.toBeVisible();
+        } else {
+          await expect(limitedContent).toBeVisible();
+
+          await expect(limitedCell).toHaveAttribute('tabindex', '-1');
+
+          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          if (limitedRows === rowsCount && limitedColumns < columnsCount) {
+            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rowCount = await rows.count();
+
+            for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+              const row = rows.nth(rowIndex);
+
+              await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+
+              const cells = row.locator('[data-ui-name="Body.Cell"]');
+              const cellCount = await cells.count();
+
+              for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+                const cell = cells.nth(cellIndex);
+                await expect(cell).toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+          } else if (limitedRows < rowsCount && limitedColumns === columnsCount) {
+            await expect(visibleRowsLocator).toHaveCount(Math.max(0, rowsCount - hiddenRows + 1));
+
+            for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+              const row = rows.nth(rowIndex);
+
+              if (rowIndex > hiddenStartIndex) {
+                await expect(row).toHaveAttribute('aria-hidden', 'true');
+              } else {
+                await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+              }
+
+              const cells = row.locator('[data-ui-name="Body.Cell"]');
+              const cellCount = await cells.count();
+              for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+                const cell = cells.nth(cellIndex);
+                if (rowIndex >= hiddenStartIndex) {
+                  await expect(cell).toHaveAttribute('aria-hidden', 'true');
+                } else {
+                  await expect(cell).not.toHaveAttribute('aria-hidden', 'true');
+                }
+              }
+            }
+          }
+        }
+      });
+
+      await test.step('Verify table with overlay snapshot', async () => {
+        await locators.button(page, 'Prev').click();
+        await page.locator('[data-ui-name="Checkbox"]').first().click();
+        const box = await rows.nth(3).boundingBox();
+        if (box) {
+          await page.mouse.move(box.x + 10, box.y + 5);
+        }
+        await expect(page).toHaveScreenshot();
+      });
     });
 
-    test(`Verify limited state for checkbox inside table when limitedRows=${item.limitedRows} limitedColumns=${item.limitedColumns}`, async ({ page }) => {
-      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/checkbox.tsx';
+    test(`Verify limited state for accordion in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, async ({ page, browserName }) => {
+      const standPath = 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx';
 
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
       await page.setContent(htmlContent);
-      // todo
+
+      const columnsCount = await locators.columnHeader(page).count();
+      const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+      const rowsCount = await rows.count();
+      const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
+
+      await expect(limitedContent).toBeVisible();
+
+      const limitedCell = limitedContent.locator('[role="gridcell"]');
+
+      const colspanStr = await limitedCell.getAttribute('aria-colspan');
+      const rowspanStr = await limitedCell.getAttribute('aria-rowspan');
+
+      const limitedColumns = parseInt(colspanStr || '0', 10);
+      const limitedRows = parseInt(rowspanStr || '0', 10);
+
+      const hiddenRows = Number.isFinite(limitedRows) && limitedRows > 0 ? limitedRows : 0;
+      const hiddenStartIndex = Math.max(0, rowsCount - hiddenRows);
+
+      await test.step('Verify aria attributes', async () => {
+        await expect(limitedCell).toHaveAttribute('tabindex', '-1');
+
+        const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+        if (limitedRows === rowsCount && limitedColumns < columnsCount) {
+          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rowCount = await rows.count();
+
+          for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              await expect(cell).toHaveAttribute('aria-hidden', 'true');
+            }
+          }
+        } else if (limitedRows < rowsCount && limitedColumns === columnsCount) {
+          await expect(visibleRowsLocator).toHaveCount(Math.max(0, rowsCount - hiddenRows + 1));
+
+          for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+            const row = rows.nth(rowIndex);
+
+            if (rowIndex > hiddenStartIndex) {
+              await expect(row).toHaveAttribute('aria-hidden', 'true');
+            } else {
+              await expect(row).not.toHaveAttribute('aria-hidden', 'true');
+            }
+
+            const cells = row.locator('[data-ui-name="Body.Cell"]');
+            const cellCount = await cells.count();
+            for (let cellIndex = 0; cellIndex < cellCount; cellIndex++) {
+              const cell = cells.nth(cellIndex);
+              if (rowIndex >= hiddenStartIndex) {
+                await expect(cell).toHaveAttribute('aria-hidden', 'true');
+              } else {
+                await expect(cell).not.toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+          }
+        }
+      });
+
+      await test.step('Verify overlay style', async () => {
+        if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        const cssValue = await limitedContent.evaluate((el) =>
+          window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
+        );
+
+        expect(cssValue).toContain('blur(3px)');
+      });
+    });
+  });
+
+  test(`Verify limited state for base table keyboard interactions when overlay has one interactive element`, async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { rowsLimit: 2, columnsLimit: 1 });
+    await page.setContent(htmlContent);
+
+    await test.step('Verify focus on onteractive element on overlay and back from rows ', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+
+      await expect(locators.row(page, 2).getByRole('gridcell').nth(1)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(locators.button(page, 'Upgrade to Guru')).toBeFocused();
+
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.button(page, 'Upgrade to Guru')).toBeFocused();
+
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
+    });
+
+    await test.step('Verify focus on onteractive element on overlay and back from column ', async () => {
+      await page.keyboard.press('ArrowLeft');
+
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(0)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.button(page, 'Upgrade to Guru')).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.row(page, 4).getByRole('gridcell').nth(0)).toBeFocused();
+    });
+  });
+
+  test(`Verify limited state for base table keyboard interactions when overlay has few interactive element`, async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/limited-mode/sortable-table.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { rowsLimit: 2, columnsLimit: 1 });
+    await page.setContent(htmlContent);
+    const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
+    const limitedCell = limitedContent.locator('[role="gridcell"]');
+
+    await test.step('Verify focus on the overlay cell', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(limitedCell).toBeFocused();
+    });
+    await test.step('Verify navigation inside overlay', async () => {
+      await page.keyboard.press('Enter');
+      await expect(locators.button(page, 'Upgrade to Guru').first()).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Upgrade to Guru').nth(1)).toBeFocused();
+
+      await page.keyboard.press('Escape');
+      await expect(limitedCell).toBeFocused();
+    });
+    await test.step('Verify focus on table call', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
+    });
+  });
+
+  test(`Verify limited state for table with rows and columns merging keyboard interactions when overlay without interactive element`, async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/tests/examples/limited-mode/row-and-column-merging.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { rowsLimit: 1, columnsLimit: 2 });
+    await page.setContent(htmlContent);
+    const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
+    const limitedCell = limitedContent.locator('[role="gridcell"]');
+
+    await test.step('Verify focus on the overlay cell and navigation between merger rows', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.row(page, 2).getByRole('gridcell').nth(1)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
+      await page.keyboard.press('ArrowRight');
+      await expect(limitedCell).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(limitedCell).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(limitedCell).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
+
+      for (let i = 0; i < 6; i++)
+        await page.keyboard.press('ArrowDown');
+    });
+  });
+
+  test(`Verify limited state for table with accordion keyboard and mouse interactions`, async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx';
+
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { rowsLimit: 1, columnsLimit: 2 });
+    await page.setContent(htmlContent);
+
+    await test.step('Verify availabe accordion expands and visible ', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'visible' });
+    });
+    await test.step('Verify partly available accordion expands by keyboard', async () => {
+      for (let i = 0; i < 6; i++)
+        await page.keyboard.press('ArrowDown');
+      await expect(locators.toggle(page).nth(2)).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      await page.getByRole('status').waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.toggle(page).nth(3)).toBeFocused();
+    });
+    await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
+      await page.keyboard.press('Enter');
+
+      await locators.rowTableInTable(page, 2, 11).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.rowTableInTable(page, 2, 11).getByRole('gridcell').first()).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await expect(locators.button(page, 'Upgrade to Guru')).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.row(page, 7).getByRole('gridcell').nth(1)).toBeFocused();
+
+      const box = await locators.row(page, 7).getByRole('gridcell').nth(1).boundingBox();
+      if (box) {
+        await page.mouse.move(box.x + 10, box.y + 5);
+      }
+
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify accordion toggle works by mouse', async () => {
+      await locators.toggle(page).nth(0).click();
+
+      await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'hidden' });
+    });
+    await test.step('Verify  clicking on  cell with accordion activated it when row partly overlayed', async () => {
+      const box1 = await locators.row(page, 4).getByRole('gridcell').first().boundingBox();
+      if (box1) {
+        await page.mouse.click(box1.x + 10, box1.y + 5);
+      }
+      await page.getByRole('status').waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify clicking on row with accordion activated it when row partly overlayed', async () => {
+      const box2 = await locators.row(page, 5).getByRole('gridcell').nth(1).boundingBox();
+      if (box2) {
+        await page.mouse.click(box2.x + 10, box2.y + 5);
+      }
+      await expect(locators.rowTableInTable(page, 2, 5).getByRole('gridcell').first()).not.toBeVisible();
     });
   });
 });

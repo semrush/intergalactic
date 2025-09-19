@@ -54,6 +54,12 @@ const Demo = (props: SortTableProps) => {
               >
                 Upgrade to Guru
               </Button>
+              <Button
+                theme='success'
+                use='primary'
+              >
+                Upgrade to Guru
+              </Button>
 
             </Flex>
           );

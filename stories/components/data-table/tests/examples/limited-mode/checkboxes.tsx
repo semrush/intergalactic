@@ -6,8 +6,6 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 type CheckboxExampleProps = {
-  animationDuration: number;
-  loading: boolean;
   sideIndents?: 'wide';
   compact?: boolean;
   columnsLimit?: number;
@@ -51,12 +49,8 @@ const Demo = (props: CheckboxExampleProps) => {
         h={250}
         style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
       >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
         <Collapse
           visible={!!selectedRows.length}
-          duration={props.animationDuration}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
           <Flex
@@ -82,8 +76,8 @@ const Demo = (props: CheckboxExampleProps) => {
         </Collapse>
         <DataTable
           limit={{
-            fromRow: columnsLimit,
-            fromColumn: rowsLimit,
+            fromRow: rowsLimit,
+            fromColumn: columnsLimit,
             renderOverlay() {
               return (
                 <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>

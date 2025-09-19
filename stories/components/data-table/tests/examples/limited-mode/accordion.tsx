@@ -9,6 +9,8 @@ import React from 'react';
 
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const ChartExample1 = () => {
@@ -19,13 +21,35 @@ const ChartExample1 = () => {
 };
 
 const Demo = (props: TableInTableProps) => {
+  const { rowsLimit, columnsLimit } = props;
+
   return (
     <DataTable
       aria-label='Parent'
       h='100%'
       data={data}
-      accordionDuration={400}
       accordionMode={props.accordionMode}
+      limit={{
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
+        renderOverlay() {
+          return (
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+              <Text size={300} fontWeight='bold' textAlign='center'>You've reached your report limit for today</Text>
+              <Text size={200} textAlign='center'>
+                To increase your daily report limit,upgrade to a Guru plan.
+              </Text>
+              <Button
+                theme='success'
+                use='primary'
+              >
+                Upgrade to Guru
+              </Button>
+
+            </Flex>
+          );
+        },
+      }}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -72,6 +96,8 @@ const ChartExample = () => {
 };
 export const tableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
+  columnsLimit: 1,
+  rowsLimit: 1,
 };
 
 Demo.defaultProps = tableInTableDefaultProps;
@@ -105,7 +131,7 @@ const data1 = [
 
 const data = [
   {
-    [UNIQ_ROW_KEY]: '1',
+
     keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
@@ -115,27 +141,10 @@ const data = [
       { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
       { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '2',
+
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -145,7 +154,7 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '4',
+
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
@@ -153,19 +162,17 @@ const data = [
     [ACCORDION]: (<ChartExample1 />),
   },
   {
-    [UNIQ_ROW_KEY]: '5',
     keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
     [ACCORDION]: [
-      { keyword: 'www.ebay.com www.ebay.com www.ebay.com www.ebay.com мv www.ebay.comм м м мwww.ebay.comvwww.ebay.com мм м м www.ebay.comwww.ebay.comwww.ebay.comwww.ebay.comwww.ebay.com  www.ebay.comм мwww.ebay.comvм www.ebay.comvwww.ebay.comмv www.ebay.comwww.ebay.com www.ebay.comм', kd: '10', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.comww.ebbay.comww.eb bay.comww.eby.comм', kd: '10', cpc: '$3.4', vol: '65,457,920' },
       { keyword: 'www.ebay.com', kd: '11', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '6',
     keyword: 'ebay buy3',
     kd: '100',
     cpc: '$0',
@@ -177,7 +184,6 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '7',
     keyword: 'ebay buy4',
     kd: '-',
     cpc: '$0',

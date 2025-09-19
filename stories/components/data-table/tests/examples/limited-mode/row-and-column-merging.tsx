@@ -155,13 +155,6 @@ const Demo = (props: RowsColumnsMergingProps) => {
               <Text size={200} textAlign='center'>
                 To increase your daily report limit,upgrade to a Guru plan.
               </Text>
-              <Button
-                theme='success'
-                use='primary'
-              >
-                Upgrade to Guru
-              </Button>
-
             </Flex>
           );
         },
@@ -172,18 +165,22 @@ const Demo = (props: RowsColumnsMergingProps) => {
         {
           name: 'keyword',
           children: 'keyword',
+          gtcWidth: '200px',
         },
         {
           name: 'kd',
           children: 'KD,%',
+          gtcWidth: '200px',
         },
         {
           name: 'cpc',
           children: 'CPC',
+          gtcWidth: '200px',
         },
         {
           name: 'vol',
           children: 'Vol.',
+          gtcWidth: '200px',
         },
       ]}
     />
