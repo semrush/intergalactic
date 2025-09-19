@@ -382,7 +382,15 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
         }
       }
 
-      if (visible && component === 'trigger' && action === 'onFocus' && this.asProps.interaction === 'hover' && !lastInteraction.isKeyboard()) {
+      if (
+        visible &&
+        component === 'trigger' &&
+        action === 'onFocus' &&
+        this.asProps.interaction === 'hover' &&
+        !lastInteraction.isKeyboard() &&
+        e.target instanceof HTMLElement &&
+        e.target.dataset.hideFocusHoverPopper === 'true'
+      ) {
         return;
       }
 
