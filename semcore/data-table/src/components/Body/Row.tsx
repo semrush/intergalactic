@@ -550,6 +550,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   accordionDuration={accordionDuration}
                   variant={variant}
                   flatRows={flatRows}
+                  limit={limit}
                 />
               );
             })}
