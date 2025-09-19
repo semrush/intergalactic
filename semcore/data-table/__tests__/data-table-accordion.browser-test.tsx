@@ -1015,7 +1015,7 @@ test.describe('Accordion in table', () => {
     await expect(collapse).toBeHidden();
   });
 
-  test('Verify accordion with pagination', async ({ page }) => {
+  test('Verify accordion with pagination', async ({ page, browserName }) => {
     const standPath =
       'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -1038,7 +1038,37 @@ test.describe('Accordion in table', () => {
 
     await locators.button(page, 'Prev').click();
     await expect(locators.collapse(page)).toHaveCount(2);
-    await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+    await page.locator('[data-ui-name="Checkbox"]').nth(0).click();
+    await page.waitForTimeout(50);
+
+    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const cellCount = await cells.count();
+
+    for (let i = 0; i < cellCount - 2; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(233, 247, 255)',
+      });
+    }
+
+    await checkStyles(cells.nth(cellCount - 1), {
+      'background-color': 'rgb(196, 229, 254)',
+    });
+
+    const box = await locators.row(page, 2).getByRole('gridcell').nth(1).boundingBox();
+    if (box) {
+      await page.mouse.move(box.x + 10, box.y + 5);
+    }
+
+    if (browserName !== 'firefox') {
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+    }
+
     await expect(page).toHaveScreenshot();
   });
 });
