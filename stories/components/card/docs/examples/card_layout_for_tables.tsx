@@ -1,39 +1,44 @@
 import Card from '@semcore/card';
+import type { DataTableProps } from '@semcore/data-table';
 import { DataTable } from '@semcore/data-table';
 import React from 'react';
 
-const Demo = () => (
-  <>
-    <style>
-      {`
-      #card-with-table {
-        padding: 0 0 var(--intergalactic-spacing-1x);
-      }
-      #card-with-table div[role="row"]:last-of-type div[role="gridcell"] {
-        border-bottom: none;
-      }
-    `}
-    </style>
-    <Card>
-      <Card.Header>
-        <Card.Title tag='h3'>Card Title</Card.Title>
-      </Card.Header>
-      <Card.Body id='card-with-table'>
-        <DataTable
-          data={data}
-          aria-label='Table in card'
-          sideIndents='wide'
-          columns={[
-            { name: 'keyword', children: 'Keyword' },
-            { name: 'kd', children: 'KD,%' },
-            { name: 'cpc', children: 'CPC' },
-            { name: 'vol', children: 'Vol.' },
-          ]}
-        />
-      </Card.Body>
-    </Card>
-  </>
+export const tableInCardDefaultProps: TableInCardProps = {
+  variant: 'card',
+  use: undefined,
+  compact: undefined,
+};
+
+const Demo = (props: TableInCardProps) => (
+  <Card>
+    <Card.Header>
+      <Card.Title tag='h3'>Card Title</Card.Title>
+    </Card.Header>
+    <Card.Body pt={0} px={0} pb={1}>
+      <DataTable
+        data={data}
+        aria-label='Table in card'
+        variant={props.variant}
+        use={props.use}
+        compact={props.compact}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD,%' },
+          { name: 'cpc', children: 'CPC' },
+          { name: 'vol', children: 'Vol.' },
+        ]}
+      />
+    </Card.Body>
+  </Card>
 );
+
+export type TableInCardProps = {
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+};
+
+Demo.defaultProps = tableInCardDefaultProps;
 
 const data = [
   {

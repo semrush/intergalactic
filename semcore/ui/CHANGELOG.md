@@ -1,3 +1,47 @@
+## [16.9.0] - 2025-09-17
+
+### @semcore/base-trigger
+
+- **Fixed** The Close `Hint` not closed by pressing `ESC` in `FilterTrigger.ClearButton`.
+- **Added** `aria-label` and `title` properties to `FilterTrigger.ClearButton` to change hint text.
+
+### @semcore/button
+
+- **Fixed** Typo in `ButtonLink` size defaults.
+
+### @semcore/core
+
+- **Added** New group of tokens for our `Illustration` component.
+
+### @semcore/data-table
+
+- **Fixed** Render grouped header in some cases.
+- **Added** `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- **Added** Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
+- **Fixed** Bottom border for cell with empty data.
+- **Fixed** Table performance with accordions.
+
+### @semcore/input-tags
+
+- **Fixed** Typed text is lost when new text is pasted afterwards.
+
+## [16.8.0] - 2025-09-05
+
+### @semcore/core
+
+- **Added** New tokens for secondary button from the `feature-highlight` package.
+- **Fixed** Some inconsistencies and missing tokens/descriptions in `dark.json`.
+
+### @semcore/feature-highlight
+
+- **Changed** Secondary button styles: now secondary button has gradient background, border, and text.
+- **Changed** Notice styles: `Notice.Label` now has `icon-primary-feature-highlight` color by default.
+- **Fixed** Styles: replaced some hardcoded color values with variables.
+
+### @semcore/icon
+
+- **Added** New `Monitoring` icon.
+
 ## [16.7.0] - 2025-08-29
 
 ### @semcore/base-components

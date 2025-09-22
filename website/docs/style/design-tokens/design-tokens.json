@@ -1505,6 +1505,70 @@
     "components": []
   },
   {
+    "name": "--intergalactic-illustration-red",
+    "type": "color",
+    "rawValue": "#FF788F",
+    "computedValue": "#FF788F",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-orange",
+    "type": "color",
+    "rawValue": "#FFB26E",
+    "computedValue": "#FFB26E",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-yellow",
+    "type": "color",
+    "rawValue": "#FFE84D",
+    "computedValue": "#FFE84D",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-salad",
+    "type": "color",
+    "rawValue": "#C7FA73",
+    "computedValue": "#C7FA73",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-green",
+    "type": "color",
+    "rawValue": "#45E0A8",
+    "computedValue": "#45E0A8",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-blue",
+    "type": "color",
+    "rawValue": "#6EDBFF",
+    "computedValue": "#6EDBFF",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-violet",
+    "type": "color",
+    "rawValue": "#B880FF",
+    "computedValue": "#B880FF",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-pink",
+    "type": "color",
+    "rawValue": "#FF7AD1",
+    "computedValue": "#FF7AD1",
+    "description": "⚠️ Use only for illustrations.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-date-picker-cell",
     "type": "color",
     "rawValue": "{gray.white}",

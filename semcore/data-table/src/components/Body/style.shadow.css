@@ -8,7 +8,7 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -26,8 +26,8 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
   overflow: auto;
 }
 
-SCollapseRow[gridArea] > SCellWrapper > SCell,
-SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
+SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
+SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
@@ -188,6 +188,10 @@ SCell {
       transform: rotate(90deg);
     }
   }
+
+  &[withoutBorder] {
+    border-bottom: none;
+  }
 }
 
 SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCheckboxCell {
@@ -274,11 +278,29 @@ SEmptyData {
 SRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
+
+    &[data-aria-level] {
+      &[use='primary'] {
+        padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+      }
+
+      &[use='secondary'] {
+        padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+      }
+    }
   }
 
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
+}
+
+SRow[isAccordionRow] > SCellWrapper {
+  transition-property: height;
+  transition-delay: var(--delay);
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  overflow: clip;
 }
 
 SCellWrapper[fixed][shadowVertical] {

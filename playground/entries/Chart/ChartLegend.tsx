@@ -26,7 +26,7 @@ const data = [...Array(5).keys()].map((_, i) => ({
 }));
 
 function getJSX(props: ChartLegendJSXProps) {
-  const { withTrend, direction, shape, size, additionLabel, count, withIcon } = props;
+  const { withTrend, shape, size, additionLabel, count, withIcon, direction } = props;
   const [lines, setLines] = React.useState<LegendItem[]>(Object.keys(data[0])
     .filter((name) => name !== 'x')
     .map((item, index) => ({
