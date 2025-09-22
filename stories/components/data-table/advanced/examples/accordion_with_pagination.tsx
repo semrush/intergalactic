@@ -33,25 +33,12 @@ const Demo = (props: TableInTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = useState(0);
-  const [ariaMessage, setAriaMessage] = useState('');
+
   const tableRef = useRef<HTMLDivElement>(null);
 
   const handleChangeSelectedRows = (value: string[]) => {
     setSelectedRows(value);
-    if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
-    if (value.length) setSelectedRowsDisplay(value.length);
   };
-
-  const handleDeselectAll = () => {
-    setSelectedRows([]);
-    tableRef.current?.focus();
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   const [expanded] = React.useState(() => {
     const map = new Map<number, Set<string>>();
