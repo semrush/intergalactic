@@ -112,7 +112,12 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 /* MUTED THEME */
 
 SRow[theme='muted'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+  }
 }
 
 SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
