@@ -1,14 +1,11 @@
-import { Flex, Box, Collapse, ScreenReaderOnly } from '@semcore/base-components';
-import Button from '@semcore/button';
 import type { DataTableProps } from '@semcore/data-table';
 import { DataTable, ACCORDION } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
-import { Text } from '@semcore/typography';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 export type TableInTableProps = {
-  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
-  onAccordionToggle?: DataTableProps<typeof data, any, any>['onAccordionToggle'];
+  accordionMode: DataTableProps<any, any, any>['accordionMode'];
+  onAccordionToggle?: DataTableProps<any, any, any>['onAccordionToggle'];
 };
 
 const Accordion = () => {
@@ -48,6 +45,7 @@ const Demo = (props: TableInTableProps) => {
 
   const changePage = (page: number) => {
     if (expanded.has(page)) {
+      // @ts-ignore
       expanded.set(page, new Set([...expanded.get(page)]));
     } else {
       expanded.set(page, new Set());
