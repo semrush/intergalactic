@@ -126,7 +126,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     if (event.type === 'dragstart') {
       placeholder = document.createElement('div');
-      placeholder.style.backgroundColor = 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)';
+      placeholder.style.backgroundColor = 'var(--intergalactic-bg-primary-neutral-hover, #f4f5f9)';
       placeholder.style.width = event.target.offsetWidth + 'px';
       placeholder.style.height = event.target.offsetHeight + 'px';
 
