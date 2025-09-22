@@ -10,7 +10,7 @@
   <dialog ref="dialog" @click="handleDialogClick">
     <TypesView :type="subTypeModal.referenceTo" :types="types" v-if="subTypeModal && types[subTypeModal.referenceTo]" />
     <div v-if="subTypeModal && !types[subTypeModal.referenceTo]">
-      <h3 class="types-viewer-name">External type</h3>
+      <h3>External type</h3>
       <div>
         Type <code>{{ subTypeModal.displayText }}</code> is external and not available in the documentation preview.
       </div>

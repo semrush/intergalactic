@@ -1,5 +1,5 @@
 <template>
-  <h3 class="types-viewer-name">{{ types[type].declaration.name }}</h3>
+  <h3>{{ types[type].declaration.name }}</h3>
   <FormattedTypeString :type="types[type].declaration.type" :types="types" />
   <table v-if="filteredTypes.length > 0">
     <tr>
