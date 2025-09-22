@@ -27,4 +27,24 @@ export const TableWithAccordionsInCard: StoryObj<TableInCardProps> = {
   args: {
     ...tableInCardDefaultProps,
   },
+  argTypes: {
+    use: {
+      control: {
+        type: 'select',
+      },
+      options: ['primary', 'secondary', undefined],
+    },
+    variant: {
+      control: {
+        type: 'select',
+      },
+      options: ['card', 'default'],
+    },
+    compact: {
+      control: {
+        type: 'select',
+      },
+      options: [true, undefined],
+    },
+  },
 };
