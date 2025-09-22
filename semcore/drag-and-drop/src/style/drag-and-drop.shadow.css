@@ -116,7 +116,11 @@ SDraggable[animatedScaling] {
 }
 
 SDnDContainer SDraggable[reversedScaling]:hover {
-    background-color: initial;
+  background-color: initial;
+}
+
+SDnDContainer {
+  position: relative;
 }
 
 SA11yHint {

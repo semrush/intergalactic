@@ -13,6 +13,16 @@ const defeaultColumns = [
   { id: 'entranceSources', label: 'Entrance Sources' },
   { id: 'desktop', label: 'Desktop' },
   { id: 'mobile', label: 'Mobile' },
+  { id: 'mobile1', label: 'Mobile1' },
+  { id: 'mobile2', label: 'Mobile2' },
+  { id: 'mobile3', label: 'Mobile3' },
+  { id: 'mobile4', label: 'Mobile4' },
+  { id: 'mobile5', label: 'Mobile5' },
+  { id: 'mobile6', label: 'Mobile6' },
+  { id: 'mobile7', label: 'Mobile7' },
+  { id: 'mobile8', label: 'Mobile8' },
+  { id: 'mobile9', label: 'Mobile9' },
+  { id: 'mobile10', label: 'Mobile10' },
 ];
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
@@ -81,7 +91,7 @@ const Demo = () => {
             all
           </ButtonLink>
         </Flex>
-        <DropdownMenu.List hMax={800}>
+        <DropdownMenu.List hMax={300}>
           <DnD onDnD={handleDnD} aria-label='drag-and-drop container'>
             {columns.map((column, index) => (
               <DropdownMenu.Item
