@@ -480,7 +480,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify accordion collapses cell click', async () => {
       messages = [];
       const row = locators.row(page, 3);
-      await row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first().click();
+      await row.getByRole('gridcell').first().click();
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',

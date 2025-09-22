@@ -31,7 +31,7 @@ SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([wit
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
-SCollapseRow SCell {
+SCollapseRow > SCellWrapper > SCell {
   display: block;
 }
 
@@ -293,6 +293,14 @@ SRow[sideIndents='wide'] {
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
+}
+
+SRow[isAccordionRow] > SCellWrapper {
+  transition-property: height;
+  transition-delay: var(--delay);
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  overflow: clip;
 }
 
 SCellWrapper[fixed][shadowVertical] {
