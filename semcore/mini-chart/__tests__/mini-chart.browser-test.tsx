@@ -3,15 +3,15 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Visual-Score Donuts', () => {
   const ScoreDonut = [
-    { value: 0, color: undefined, baseBgColor: undefined },
-    { value: 0.5, color: 'chart-palette-order-2', baseBgColor: 'chart-palette-order-10' },
-    { value: 1, color: 'chart-palette-order-3', baseBgColor: 'chart-palette-order-11' },
-    { value: 33, color: 'chart-palette-order-4', baseBgColor: undefined },
-    { value: 69.5, color: undefined, baseBgColor: 'chart-palette-order-12' },
-    { value: 99, color: 'chart-palette-order-6', baseBgColor: 'chart-palette-order-13' },
-    { value: 99.6, color: 'chart-palette-order-7', baseBgColor: 'chart-palette-order-14' },
-    { value: 100, color: undefined, baseBgColor: undefined },
-    { value: 120, color: undefined, baseBgColor: undefined },
+    { value: 0, color: undefined, baseBgColor: undefined, animate: false },
+    { value: 0.5, color: 'chart-palette-order-2', baseBgColor: 'chart-palette-order-10', animate: false },
+    { value: 1, color: 'chart-palette-order-3', baseBgColor: 'chart-palette-order-11', animate: false },
+    { value: 33, color: 'chart-palette-order-4', baseBgColor: undefined, animate: false },
+    { value: 69.5, color: undefined, baseBgColor: 'chart-palette-order-12', animate: false },
+    { value: 99, color: 'chart-palette-order-6', baseBgColor: 'chart-palette-order-13', animate: false },
+    { value: 99.6, color: 'chart-palette-order-7', baseBgColor: 'chart-palette-order-14', animate: false },
+    { value: 100, color: undefined, baseBgColor: undefined, animate: false },
+    { value: 120, color: undefined, baseBgColor: undefined, animate: false },
 
   ];
   ScoreDonut.forEach((item) => {
@@ -27,42 +27,87 @@ test.describe('Visual-Score Donuts', () => {
       expect(donut).toHaveAttribute('value', String(item.value));
       expect(semiDonut).toHaveAttribute('value', String(item.value));
 
-      const donutCircles = await donut.locator('circle').all();
-      const semiDonutCircles = await semiDonut.locator('circle').all();
+      const donutCircles = await donut.locator('circle');
+      const semiDonutCircles = await semiDonut.locator('circle');
+      const donutCirclesCount = await donutCircles.count();
+      const semiDonutCirclesCount = await semiDonutCircles.count();
 
       if (item.value === 0) {
-        expect(donutCircles.length).toEqual(2);
-        expect(semiDonutCircles.length).toEqual(2);
+        await test.step('Verify Donut', async () => {
+          expect(donutCirclesCount).toEqual(2);
 
-        for (const donutCircle of donutCircles) {
-          expect(donutCircle).toHaveAttribute('stroke-dashoffset', '0');
-        }
+          expect(donutCircles.first()).toHaveAttribute('stroke-dashoffset', '0');
+          expect(donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
 
-        for (const semiDonutCircle of semiDonutCircles) {
-          expect(semiDonutCircle).toHaveAttribute('stroke-dashoffset', '0');
-        }
+          const firstAttr = await donutCircles.nth(0).getAttribute('stroke-dasharray');
+          const secondAttr = await donutCircles.nth(1).getAttribute('stroke-dasharray');
+
+          const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
+          const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
+
+          expect(secondValues[0]).toBe(0);
+
+          expect(firstValues[0]).toBe(secondValues[1]);
+        });
+
+        await test.step('Verify SemiDonut', async () => {
+          expect(semiDonutCirclesCount).toEqual(2);
+
+          const firstAttr = await semiDonutCircles.nth(0).getAttribute('stroke-dasharray');
+          const secondAttr = await semiDonutCircles.nth(1).getAttribute('stroke-dasharray');
+
+          const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
+          const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
+
+          expect(secondValues[0]).toBe(0);
+
+          expect(firstValues[0]).toBe(secondValues[1]);
+          expect(semiDonutCircles.first()).toHaveAttribute('stroke-dashoffset', '0');
+          expect(semiDonutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
+        });
       } else if (item.value > 0 && item.value < 100) {
-        expect(donutCircles.length).toEqual(3);
-        expect(semiDonutCircles.length).toEqual(2);
+        expect(donutCirclesCount).toEqual(3);
+        expect(semiDonutCirclesCount).toEqual(2);
 
-        for (const donutCircle of donutCircles) {
-          expect(await donutCircle.getAttribute('stroke-dashoffset')).not.toBeNull();
-        }
+        expect(await donutCircles.nth(0).getAttribute('stroke-dashoffset')).not.toBeNull();
+        expect(await donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset');
+        expect(await donutCircles.nth(2).getAttribute('stroke-dashoffset')).not.toBeNull();
 
-        for (const semiDonutCircle of semiDonutCircles) {
-          expect(await semiDonutCircle.getAttribute('stroke-dashoffset')).not.toBeNull();
-        }
+        expect(await semiDonutCircles.nth(0).getAttribute('stroke-dashoffset')).not.toBeNull();
+        expect(await semiDonutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset');
       } else if (item.value === 100) {
-        expect(donutCircles.length).toEqual(2);
-        expect(semiDonutCircles.length).toEqual(2);
+        await test.step('Verify Donut', async () => {
+          expect(donutCirclesCount).toEqual(2);
 
-        for (const donutCircle of donutCircles) {
-          expect(await donutCircle.getAttribute('stroke-dashoffset')).not.toBeNull();
-        }
+          expect(donutCircles.first()).toHaveAttribute('stroke-dashoffset');
+          expect(donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
 
-        for (const semiDonutCircle of semiDonutCircles) {
-          expect(await semiDonutCircle.getAttribute('stroke-dashoffset')).not.toBeNull();
-        }
+          const firstAttr = await donutCircles.nth(0).getAttribute('stroke-dasharray');
+          const secondAttr = await donutCircles.nth(1).getAttribute('stroke-dasharray');
+
+          const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
+          const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
+
+          expect(firstValues[0]).toBe(0);
+
+          expect(firstValues[1]).toBe(secondValues[1]);
+        });
+
+        await test.step('Verify SemiDonut', async () => {
+          expect(semiDonutCirclesCount).toEqual(2);
+
+          const firstAttr = await semiDonutCircles.nth(0).getAttribute('stroke-dasharray');
+          const secondAttr = await semiDonutCircles.nth(1).getAttribute('stroke-dasharray');
+
+          const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
+          const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
+
+          expect(firstValues[0]).toBe(0);
+
+          expect(firstValues[1]).toBe(secondValues[1]);
+          expect(semiDonutCircles.first()).toHaveAttribute('stroke-dashoffset');
+          expect(semiDonutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
+        });
       }
 
       await expect(page).toHaveScreenshot();
