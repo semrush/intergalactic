@@ -7,7 +7,7 @@ export class ScoreDonutUtils {
   constructor(value: number, isSemiDonut: boolean) {
     this.isSemiDonut = isSemiDonut;
     this.radius = isSemiDonut ? 9 : 10;
-    this.value = value;
+    this.value = Math.min(value, 100);
   }
 
   public get viewBox() {

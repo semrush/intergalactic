@@ -57,6 +57,17 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBeCloseTo(expectedResult);
     });
 
+    it('Verify calculates value stroke dash array correctly with value > 100', () => {
+      const value = 110;
+      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+      const maxScoreDonut = new ScoreDonutUtils(100, isSemiDonut);
+
+      const actualResult = scoreDonut.valueStrokeDashArray;
+      const expectedResult = maxScoreDonut.valueStrokeDashArray;
+
+      expect(actualResult).toBeCloseTo(expectedResult);
+    });
+
     it('Verify calculates grey stroke dash array correctly', () => {
       const value = 30;
       const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
