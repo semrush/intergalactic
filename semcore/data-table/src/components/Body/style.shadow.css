@@ -11,9 +11,14 @@ SBody[compact] {
     padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 
-  SRow[sideIndents='wide'] {
+  SRow {
     SCellWrapper:first-child SCell[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+  SRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
