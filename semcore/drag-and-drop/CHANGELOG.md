@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Unnecessary background-color on hovered draggable elements.
+- Non-working dragging in scrollable containers.
 
 ## [16.1.9] - 2025-09-17
 

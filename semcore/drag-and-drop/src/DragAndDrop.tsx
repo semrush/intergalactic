@@ -7,35 +7,9 @@ import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import React from 'react';
 
-import type { DropZoneProps } from './index';
+import type { DragAndDropProps, DropZoneProps } from './index';
 import style from './style/drag-and-drop.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-type AsProps = {
-  /**
-   * @deprecated don't use this prop
-   */
-  theme?: 'dark' | 'default';
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onSwapDraggable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onInsertDroppable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-  /**
-   * Contolled drag and drop handler
-   */
-  onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
-  /**
-   * Index of id that indicates item that is currently under the user focus in case of real browser focus cannot be used.
-   * When provided, drag and drop listens to whole page keyboard events. Doesn't provide `onCustomFocusChange` callback.
-   */
-  customFocus?: number | string;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-  uid: string;
-};
 
 type AttachDetails = {
   index: number;
@@ -75,9 +49,9 @@ type State = {
 
 type A11yHintKeys = keyof typeof localizedMessages.en;
 
-class DragAndDropRoot extends Component<AsProps, {}, State> {
+class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
   static displayName = 'DragAndDrop';
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {
     theme: 'default',
     i18n: localizedMessages,
@@ -172,13 +146,17 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     event.preventDefault();
     const { items, dragging, dragOver } = this.state;
     if (!dragging) return;
+
+    const yOffset = this.asProps.scrollableContainerRef?.current?.scrollTop ?? 0;
+    const xOffset = this.asProps.scrollableContainerRef?.current?.scrollLeft ?? 0;
+
     const itemIndex = dragging.initialItemsRects.findIndex(
       (rect) =>
         rect &&
-        event.clientX > rect.x &&
-        event.clientX < rect.x + rect.width &&
-        event.clientY > rect.y &&
-        event.clientY < rect.y + rect.height,
+        event.clientX > rect.x - xOffset &&
+        event.clientX < rect.x - xOffset + rect.width &&
+        event.clientY > rect.y - yOffset &&
+        event.clientY < rect.y - yOffset + rect.height,
     );
     const currentItem = items[itemIndex];
     const draggingItem = dragging.placeholder;
@@ -563,7 +541,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     document.removeEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
-  componentDidUpdate(prevProps: AsProps) {
+  componentDidUpdate(prevProps: DragAndDropProps) {
     if (prevProps.customFocus !== this.asProps.customFocus) {
       const itemIndex = this.getCustomFocusItemIndex(this.asProps.customFocus);
       if (this.state.items[itemIndex!]) this.handleItemFocus();
