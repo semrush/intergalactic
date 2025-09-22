@@ -63,7 +63,7 @@ type State = {
   dragging: null | {
     index: number;
     initialItemsRects: Array<{ x: number; y: number; width: number; height: number } | undefined>;
-    placeholder: HTMLElement;
+    placeholder: HTMLElement | null;
   };
   dragOver: number | null;
   hideHoverEffect: boolean;
@@ -122,12 +122,19 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
-    const placeholder = document.createElement('div');
-    placeholder.style.backgroundColor = 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)';
-    placeholder.style.width = event.target.offsetWidth + 'px';
-    placeholder.style.height = event.target.offsetHeight + 'px';
-    // placeholder.style.position = 'relative';
-    // placeholder.style.zIndex = '9999';
+    let placeholder: HTMLDivElement | null = null;
+
+    if (event.type === 'dragstart') {
+      placeholder = document.createElement('div');
+      placeholder.style.backgroundColor = 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)';
+      placeholder.style.width = event.target.offsetWidth + 'px';
+      placeholder.style.height = event.target.offsetHeight + 'px';
+
+      event.target.parentNode?.insertBefore(placeholder, event.target.nextSibling);
+
+      event.target.style.opacity = '0.01'; // we need this to hide the content in place of the placeholder but leave it visible when dragging in preview mode
+      event.target.style.position = 'absolute';
+    }
 
     this.setState((prevState: State) => ({
       dragging: {
@@ -136,30 +143,22 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         placeholder,
       },
     }));
-
-    event.target.appendChild(placeholder);
-
-    event.target.parentNode?.insertBefore(placeholder, event.target.nextSibling);
-
-    event.target.style.opacity = '0.01';
-    event.target.style.position = 'absolute';
   };
 
   handleItemDragEnd = (event: DragEvent) => {
     event.preventDefault();
 
     const { items, dragging } = this.state;
-    if (!dragging) return;
+    const draggingItem = dragging ? items[dragging.index] : undefined;
+    const placeholder = dragging?.placeholder;
 
-    const draggingItem = items[dragging.index];
+    if (!draggingItem || !placeholder) return;
 
-    if (!draggingItem) return;
-
-    this.containerRef.current?.insertBefore(draggingItem.node, dragging.placeholder);
+    this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
     draggingItem.node.style.opacity = '1.0';
     draggingItem.node.style.position = 'relative';
 
-    dragging.placeholder.remove();
+    placeholder.remove();
 
     this.setState({
       dragging: null,
@@ -211,7 +210,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({ dragOver: itemIndex }, this.swapElements);
   };
 
-  handleItemDrop = () => {
+  handleItemDrop = (event: Event) => {
     const { onDnD } = this.asProps;
     if (!onDnD) return;
 
@@ -252,14 +251,17 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       hideHoverEffect: true,
       reversedScaling: false,
     });
-
-    this.containerRef.current?.insertBefore(draggingItem.node, dragging.placeholder);
-    draggingItem.node.style.opacity = '1.0';
-    draggingItem.node.style.position = 'relative';
-
-    dragging.placeholder.remove();
-
     if (dragging && items[dragging.index]) {
+      const placeholder = dragging.placeholder;
+
+      if (placeholder) {
+        this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
+        draggingItem.node.style.opacity = '1.0';
+        draggingItem.node.style.position = 'relative';
+
+        placeholder.remove();
+      }
+
       const fromNode = items[dragging.index];
       if (fromNode) {
         onDnD({
@@ -331,7 +333,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     if (draggingIndex === null || dragOver === null) return;
 
-    const node = dragging?.placeholder;
+    const node = dragging?.placeholder ?? items[draggingIndex]?.node;
     const dragNode = items[dragOver]?.node;
 
     if (!node || !dragNode) return;
@@ -347,7 +349,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     node.focus();
 
-    this.containerRef.current?.insertBefore(items[draggingIndex].node, node);
+    if (dragging?.placeholder && items[draggingIndex]?.node) {
+      this.containerRef.current?.insertBefore(items[draggingIndex].node, node);
+    }
   };
 
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
@@ -364,7 +368,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
-        this.handleItemDrop();
+        this.handleItemDrop(event);
         this.setState({
           dragging: null,
           dragOver: null,
@@ -483,7 +487,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       dark: this.asProps.theme === 'dark',
       hideHoverEffect: this.state.hideHoverEffect,
       animatedScaling: index === this.state.animatedScaling,
-      active: index === this.state.dragging?.index,
+      active: index === this.state.dragging?.index ? 'true' : 'false',
+      isDragging: this.state.dragging !== null,
     };
   }
 

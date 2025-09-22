@@ -28,6 +28,10 @@ SDraggable[draggable] {
   &:not([role="menuitemcheckbox"])[hideHoverEffect]::before {
     display: none;
   }
+
+  &:hover[active='false'][isDragging] {
+    background-color: inherit;
+  }
 }
 
 SDraggable[placement='top']::before {
