@@ -295,6 +295,14 @@ SRow[sideIndents='wide'] {
   }
 }
 
+SRow[isAccordionRow] > SCellWrapper {
+  transition-property: height;
+  transition-delay: var(--delay);
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  overflow: clip;
+}
+
 SCellWrapper[fixed][shadowVertical] {
   &:after {
     content: '';
