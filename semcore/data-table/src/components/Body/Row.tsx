@@ -7,7 +7,6 @@ import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveEleme
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import * as React from 'react';
 
-import { INDEX_OFFSET } from './Body';
 import { Cell } from './Cell';
 import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
@@ -18,6 +17,7 @@ import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 type State = {
   expandedForAnimation: boolean;
+  calculatedHeight: number;
 };
 
 export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
@@ -35,6 +35,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   state: State = {
     expandedForAnimation: false,
+    calculatedHeight: 0,
   };
 
   constructor(props: DataTableRowProps<Data, UniqKeyType>) {
@@ -45,6 +46,16 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentDidMount() {
     this.asProps.componentRef?.(this);
+  }
+
+  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>, prevState: State) {
+    const { animationExpand } = this.asProps;
+
+    if (animationExpand && this.rowElementRef.current && prevState.calculatedHeight === 0) {
+      const height = this.calculateRowHeight(this.rowElementRef.current);
+
+      this.setState({ calculatedHeight: height });
+    }
   }
 
   componentWillUnmount() {
@@ -221,6 +232,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      calculatedHeight: this.state.calculatedHeight,
     };
 
     if (renderCell) {
@@ -337,6 +349,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       shadowVertical,
       variant,
       flatRows,
+      sideIndents,
     } = this.asProps;
 
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
@@ -510,6 +523,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   accordionDuration={accordionDuration}
                   variant={variant}
                   flatRows={flatRows}
+                  sideIndents={sideIndents}
                 />
               );
             })}
@@ -528,6 +542,40 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       obj === undefined ||
       obj === null
     );
+  }
+
+  private calculateRowHeight(rowElement: HTMLElement): number {
+    const accordionFull = rowElement.cloneNode(true);
+
+    if (!(accordionFull instanceof HTMLElement)) {
+      return 0;
+    }
+
+    const columnsWidth: number[] = [];
+
+    const columns = Array.from(rowElement.children);
+    columns.forEach((column) => {
+      columnsWidth.push(column.getBoundingClientRect().width);
+    });
+
+    accordionFull.style.display = 'grid';
+    accordionFull.style.position = 'absolute';
+    accordionFull.style.visibility = 'hidden';
+    accordionFull.style.gridTemplateColumns = columnsWidth.join('px ') + 'px';
+
+    Array.from(accordionFull.children).forEach((child) => {
+      if (child instanceof HTMLElement) {
+        child.style.height = '100%';
+      }
+    });
+
+    document.body.appendChild(accordionFull);
+
+    const height = accordionFull.getBoundingClientRect().height;
+
+    document.body.removeChild(accordionFull);
+
+    return height;
   }
 }
 

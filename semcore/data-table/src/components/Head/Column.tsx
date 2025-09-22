@@ -1,7 +1,8 @@
-import { Box, Flex } from '@semcore/base-components';
+import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import type Icon from '@semcore/icon';
@@ -66,11 +67,10 @@ export class Column<
       const columnElement = this.columnRef.current;
       const groupElement = columnElement?.parentElement?.children.item(0);
 
-      const groupHeight = groupElement?.getBoundingClientRect().height;
+      const groupRectHeight = groupElement?.getBoundingClientRect().height ?? 0;
+      const topOffset = (groupElement instanceof HTMLElement) ? cssToIntDefault(groupElement.style.top) : 0;
 
-      if (groupHeight) {
-        columnElement?.style.setProperty('top', `${groupHeight}px`);
-      }
+      columnElement?.style.setProperty('top', `${groupRectHeight + topOffset}px`);
     }
 
     if (canUseDOM() && changeSortSize && sort?.[0] === name) {
