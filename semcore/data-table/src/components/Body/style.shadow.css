@@ -31,7 +31,7 @@ SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([wit
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
-SCollapseRow SCell {
+SCollapseRow > SCellWrapper > SCell {
   display: block;
 }
 
