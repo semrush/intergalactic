@@ -442,6 +442,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
       focusRingRightOffset={focusRingRightOffset}
       focusRingBottomOffset={focusRingBottomOffset}
       focusRingLeftOffset={focusRingLeftOffset}
+      role='group'
     >
       <div ref={$refInner}>
         <Children />
