@@ -45,7 +45,7 @@ const Demo = () => {
       sort={sort}
       onSortChange={handleSortChange}
       columns={[
-        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true },
+        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true, justifyContent: 'flex-end' },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
         { name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true },
         { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true },
