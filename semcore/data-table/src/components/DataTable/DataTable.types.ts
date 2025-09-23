@@ -91,6 +91,7 @@ export type DataTableProps<
 
     /**
      * Set of expanded rows (uniq id from them)
+     * This is mutable! variable because of table performance. Don't change the link on it.
      */
     expandedRows?: Set<UniqKeyType>;
 
