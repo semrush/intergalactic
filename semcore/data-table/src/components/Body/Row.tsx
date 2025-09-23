@@ -242,7 +242,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       expanded,
     };
 
-    if (renderCell) {
+    if (renderCell && (!isAccordionRow || animationExpand || this.state.expandedForAnimation)) {
       let rowRawData = rawData[props.rowIndex];
 
       if (props.accordionRowIndex !== undefined && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
