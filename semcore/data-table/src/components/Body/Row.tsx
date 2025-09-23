@@ -359,12 +359,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
 
-    let accordionRows = row[ACCORDION];
-    let accordionComponent: React.ReactNode = undefined;
+    let accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : undefined;
+    let accordionComponent: React.ReactNode = React.isValidElement(row[ACCORDION]) ? row[ACCORDION] : undefined;
 
     const accordionType = accordionRows && !mergedRow ? 'row' : undefined;
 
-    if (!accordionRows) {
+    if (!accordionRows && !accordionComponent) {
       const cells = Object.entries(row);
       const foundCell = cells.find(([key, value]) => {
         return this.cellHasAccordion(value) || (value instanceof MergedRowsCell && value.accordion);
@@ -390,7 +390,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
     if (accordionRows || accordionComponent) {
       const rowIncrement = row[ROW_GROUP]?.size ? row[ROW_GROUP].size + 1 : 1;
-      accordionDataGridArea = Array.isArray(accordionRows)
+      accordionDataGridArea = accordionRows
         ? `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement + accordionRows.length} / ${
           columns.length + 1
         }`

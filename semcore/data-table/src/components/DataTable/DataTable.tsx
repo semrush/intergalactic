@@ -1218,6 +1218,7 @@ class DataTableRoot<
           // gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
         } else if (React.isValidElement(row[ACCORDION])) {
           dtRow[ACCORDION] = row[ACCORDION];
+          gridRowIndex++;
         }
       } else if (accordionInCell) {
         gridRowIndex++;
