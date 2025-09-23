@@ -11,7 +11,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Styles for cells in accordion in different variants.
 - Laggy animation in accordions.
 - `renderCell` not working for accordion's cells.
-- Expanded accordion's cells height after table sorting.
 
 ## [16.3.0] - 2025-09-12
 
