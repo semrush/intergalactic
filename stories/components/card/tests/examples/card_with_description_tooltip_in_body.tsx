@@ -1,7 +1,6 @@
-import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
-import Tooltip, { DescriptionTooltip, Hint } from '@semcore/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
 import React from 'react';
 
 const Demo = () => (
@@ -19,7 +18,22 @@ const Demo = () => (
       </DescriptionTooltip.Trigger>
       <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
     </DescriptionTooltip>
+    <Card.Title hintAfter='Test'>
+      <Tooltip>
+        <Tooltip.Trigger>
+          <Button>TooltipTitle</Button>
+        </Tooltip.Trigger>
+        <Tooltip.Popper>Hello, stranger!</Tooltip.Popper>
+      </Tooltip>
 
+      <DescriptionTooltip>
+        <DescriptionTooltip.Trigger tag={Button}>
+          DescriptionTooltipTitle
+        </DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+      Market Traffic
+    </Card.Title>
   </Card>
 );
 
