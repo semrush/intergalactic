@@ -20,7 +20,7 @@ const Demo = () => (
       <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
     </DescriptionTooltip>
 
-    <Card.Title hintAfter='Test'>
+    <Card.Title>
       <Tooltip>
         <Tooltip.Trigger>
           <Button>TooltipTitle</Button>

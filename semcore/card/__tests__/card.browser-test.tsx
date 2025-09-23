@@ -198,9 +198,10 @@ test.describe('Visual tests', () => {
 
     await page.setContent(htmlContent);
 
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]').first();
-
-    await expect(descriptionTooltipTrigger).toHaveCSS('margin', '0px');
+    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const descriptionTooltipTriggerCount = await descriptionTooltipTrigger.count();
+    for (let i = 0; i < descriptionTooltipTriggerCount; i++)
+      await expect(descriptionTooltipTrigger.nth(i)).toHaveCSS('margin', '0px');
   });
 });
 
