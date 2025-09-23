@@ -362,7 +362,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     let accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : undefined;
     let accordionComponent: React.ReactNode = React.isValidElement(row[ACCORDION]) ? row[ACCORDION] : undefined;
 
-    const accordionType = accordionRows && !mergedRow ? 'row' : undefined;
+    const accordionType = (accordionRows || accordionComponent) && !mergedRow ? 'row' : undefined;
 
     if (!accordionRows && !accordionComponent) {
       const cells = Object.entries(row);
