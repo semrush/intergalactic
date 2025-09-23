@@ -20,7 +20,7 @@ function InlineRadioControl({
   const labelId = displayName ? `${displayName.toLocaleLowerCase().replace(/\s/g, '_')}_control_label_${useId().replace(/:/g, '_')}` : undefined;
 
   return (
-    <Box tag='label' display='contents'>
+    <>
       <Text id={labelId} mt={1}>{displayName}</Text>
       <Pills aria-labelledby={labelId} value={value} onChange={onChange}>
         {options.map((option) => (
@@ -29,8 +29,7 @@ function InlineRadioControl({
           </Pills.Item>
         ))}
       </Pills>
-    </Box>
-
+    </>
   );
 }
 
