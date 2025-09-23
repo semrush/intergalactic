@@ -5,6 +5,7 @@ import React from 'react';
 
 const Demo = () => (
   <Card>
+
     <Tooltip>
       <Tooltip.Trigger>
         <Button>Tooltip</Button>
@@ -18,6 +19,7 @@ const Demo = () => (
       </DescriptionTooltip.Trigger>
       <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
     </DescriptionTooltip>
+
     <Card.Title hintAfter='Test'>
       <Tooltip>
         <Tooltip.Trigger>
@@ -34,6 +36,25 @@ const Demo = () => (
       </DescriptionTooltip>
       Market Traffic
     </Card.Title>
+
+    <Card.Description>
+      {' '}
+      <Tooltip>
+        <Tooltip.Trigger>
+          <Button>TooltipTitleDescription</Button>
+        </Tooltip.Trigger>
+        <Tooltip.Popper>Hello, stranger!</Tooltip.Popper>
+      </Tooltip>
+
+      <DescriptionTooltip>
+        <DescriptionTooltip.Trigger tag={Button}>
+          DescriptionTooltipDescription
+        </DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+      Info about data (optional)
+    </Card.Description>
+
   </Card>
 );
 
