@@ -1071,4 +1071,130 @@ test.describe('Accordion in table', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify accordion with themed rows', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/colored-accordion.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify success theme', async () => {
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(219, 254, 232)',
+        });
+      }
+
+      await locators.toggle(page).first().click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(158, 242, 201)',
+        });
+      }
+      await locators.toggle(page).first().click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify info theme', async () => {
+      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(233, 247, 255)',
+        });
+      }
+
+      await locators.toggle(page).nth(1).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+      await locators.toggle(page).nth(1).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify muted theme', async () => {
+      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+      }
+
+      await locators.toggle(page).nth(2).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+      await locators.toggle(page).nth(2).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify warning theme', async () => {
+      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 243, 217)',
+        });
+      }
+
+      await locators.toggle(page).nth(3).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 220, 162)',
+        });
+      }
+      await locators.toggle(page).nth(3).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify danger theme', async () => {
+      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 240, 247)',
+        });
+      }
+
+      await locators.toggle(page).nth(4).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 215, 223)',
+        });
+      }
+    });
+  });
 });
