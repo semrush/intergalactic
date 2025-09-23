@@ -305,7 +305,7 @@ SRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow] > SCellWrapper {
+SRow[isAccordionRow][withAnimation] > SCellWrapper {
   transition-property: height;
   transition-delay: var(--delay);
   transition-duration: var(--duration);

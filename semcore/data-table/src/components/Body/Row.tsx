@@ -18,6 +18,7 @@ import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 type State = {
   expandedForAnimation: boolean;
   calculatedHeight: number;
+  withAnimation: boolean;
 };
 
 export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
@@ -36,6 +37,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   state: State = {
     expandedForAnimation: false,
     calculatedHeight: 0,
+    withAnimation: true,
   };
 
   constructor(props: DataTableRowProps<Data, UniqKeyType>) {
@@ -53,6 +55,18 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       const height = this.calculateRowHeight(this.rowElementRef.current);
 
       this.setState({ calculatedHeight: height });
+    }
+  }
+
+  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
+    const { animationExpand, row } = this.asProps;
+    if (animationExpand && prevProps.row !== row && this.rowElementRef.current) {
+      const height = this.calculateRowHeight(this.rowElementRef.current);
+
+      this.setState({ calculatedHeight: height, withAnimation: false });
+    }
+    if (prevProps.animationExpand !== animationExpand && animationExpand === false) {
+      this.setState({ withAnimation: true });
     }
   }
 
@@ -190,12 +204,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       variant,
       isAccordionRow,
       accordionRowIndex,
-      animationExpand,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
-    const expanded =
-            expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
-            !this.state.expandedForAnimation;
 
     let dataKey = props.column.name;
     const cellValue = props.row[dataKey];
@@ -360,7 +370,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       rawData,
     } = this.asProps;
 
-    const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
+    const { expandedForAnimation, withAnimation } = this.state;
+
+    const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !expandedForAnimation;
 
     let accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : undefined;
     let accordionComponent: React.ReactNode = React.isValidElement(row[ACCORDION]) ? row[ACCORDION] : undefined;
@@ -413,6 +425,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
           onClick={this.handleClickRow(row)}
+          withAnimation={withAnimation}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
@@ -515,7 +528,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
         {Array.isArray(accordionRows) && (
           <SAccordionRows id={accordionId} role='rowgroup' aria-hidden={!expanded}>
-            {(expanded || this.state.expandedForAnimation) && accordionRows.map((subrow, i) => {
+            {(expanded || expandedForAnimation) && accordionRows.map((subrow, i) => {
               return (
                 <Row
                   key={i}
