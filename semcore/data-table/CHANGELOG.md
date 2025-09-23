@@ -4,12 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.3.1] - 2025-09-20
 
-### Added
-
-- Reset expanded accordions if data has changed.
-
 ### Fixed
 
+- Render table with expanded rows after changing page.
 - Render grouped header in some cases.
 - Styles for cells in accordion in different variants.
 - Laggy animation in accordions.

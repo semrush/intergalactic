@@ -443,6 +443,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               }
             }
 
+            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+              this.cellHasAccordion(cellValue) || accordionType === 'row';
+
             return (
               <Row.Cell
                 key={index}
@@ -455,10 +458,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 columnIndex={index}
                 style={style}
                 column={column}
-                withAccordion={
-                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
-                  this.cellHasAccordion(cellValue)
-                }
+                expanded={expanded}
+                withAccordion={withAccordion}
                 isAccordionRow={isAccordionRow}
                 animationExpand={animationExpand}
                 accordionRowIndex={accordionRowIndex}
