@@ -100,6 +100,7 @@ const Demo = (props: CheckboxExampleProps) => {
         totalPages={Math.ceil(data.length / limit)}
         currentPage={currentPage + 1}
         onCurrentPageChange={(page) => setCurrentPage(page - 1)}
+        aria-label='Pagination in checbox example'
       />
     </>
   );
