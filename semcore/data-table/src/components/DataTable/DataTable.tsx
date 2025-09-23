@@ -72,17 +72,12 @@ class DataTableRoot<
   static enhance = [
     uniqueIDEnhancement(),
     i18nEnhance(localizedMessages),
-    (props: DataTableProps<any, any, any>) => {
-      return {
-        ...props,
-        expandedRows: props.expandedRows ? props.expandedRows : new Set(),
-      };
-    },
   ] as const;
 
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
+    expandedRows: new Set(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
@@ -182,6 +177,8 @@ class DataTableRoot<
     if (canUseDOM()) {
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
+
+    this.asProps.expandedRows?.clear();
   }
 
   get totalRows() {
