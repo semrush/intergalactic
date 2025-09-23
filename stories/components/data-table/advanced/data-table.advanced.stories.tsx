@@ -12,6 +12,7 @@ import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_dif
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
 import OverlapCellsExample from './examples/overlap_cells';
+import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
@@ -82,6 +83,10 @@ export const FakeMultiLineHeader: Story = {
 
 export const RenderCellRawValue: Story = {
   render: RenderCellRawValueExample,
+};
+
+export const RenderCellInAccordion: Story = {
+  render: RenderCellInAccordionExample,
 };
 
 export const FixedColumnsWidthWithShadows: Story = {
