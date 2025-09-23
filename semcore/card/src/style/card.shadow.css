@@ -15,13 +15,13 @@ SCard {
     line-height: var(--intergalactic-lh-300, 150%);
     font-weight: var(--intergalactic-bold, 700);
     margin-right: var(--intergalactic-spacing-1x, 4px);
+  }
 
-    [data-ui-name='DescriptionTooltip.Trigger'] {
-      margin-right: var(--intergalactic-spacing-1x, 4px);
-      line-height: normal;
-      vertical-align: top;
-      margin-top: calc(var(--intergalactic-spacing-1x, 4px) / 2);
-    }
+  SInfoTrigger {
+    margin-right: var(--intergalactic-spacing-1x, 4px);
+    line-height: normal;
+    vertical-align: top;
+    margin-top: var(--intergalactic-spacing-05x, 2px);
   }
 }
 
