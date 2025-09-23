@@ -69,12 +69,15 @@ class DataTableRoot<
   static displayName = 'DataTable';
   static style = style;
 
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
+  static enhance = [
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    defaultExpandedRows: new Set<string>(),
+    expandedRows: new Set(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
@@ -133,12 +136,6 @@ class DataTableRoot<
     shadowVertical: '',
   };
 
-  uncontrolledProps() {
-    return {
-      expandedRows: new Set<string>(),
-    };
-  }
-
   componentDidMount() {
     const { headerProps, loading } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
@@ -180,6 +177,8 @@ class DataTableRoot<
     if (canUseDOM()) {
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
+
+    this.asProps.expandedRows?.clear();
   }
 
   get totalRows() {
@@ -322,6 +321,7 @@ class DataTableRoot<
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
     return {
       accordionDuration,
       accordionMode,
@@ -476,11 +476,10 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
-      this.handlers.expandedRows(expandedRows);
+
       onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
