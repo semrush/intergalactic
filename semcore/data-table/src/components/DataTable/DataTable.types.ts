@@ -35,7 +35,7 @@ export type DataRowItem = {
 };
 export interface DTValue {
   toString(): string;
-  [ACCORDION]?: React.ReactNode | DataTableData;
+  [ACCORDION]?: React.ReactNode;
 }
 export type DataTableData = DataRowItem[];
 
