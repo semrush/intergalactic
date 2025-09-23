@@ -35,7 +35,6 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           fetch-depth: 0
-          persist-credentials: false
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
