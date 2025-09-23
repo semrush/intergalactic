@@ -1,3 +1,9 @@
+## [16.9.1] - 2025-09-23
+
+### @semcore/tag
+
+- **Fixed** The following `InputTags.Tag` properties: `addonLeft`, `addonRight` and `active`.
+
 ## [16.9.0] - 2025-09-17
 
 ### @semcore/base-trigger
