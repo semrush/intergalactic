@@ -46,12 +46,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentDidMount() {
     this.asProps.componentRef?.(this);
-  }
 
-  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>, prevState: State) {
     const { animationExpand } = this.asProps;
 
-    if (animationExpand && this.rowElementRef.current && prevState.calculatedHeight === 0) {
+    if (animationExpand && this.rowElementRef.current) {
       const height = this.calculateRowHeight(this.rowElementRef.current);
 
       this.setState({ calculatedHeight: height });
@@ -239,10 +237,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       shadowVertical,
       withoutBorder,
       calculatedHeight: this.state.calculatedHeight,
-      expanded,
     };
 
-    if (renderCell && (!isAccordionRow || animationExpand || this.state.expandedForAnimation)) {
+    if (renderCell) {
       let rowRawData = rawData[props.rowIndex];
 
       if (props.accordionRowIndex !== undefined && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
@@ -283,6 +280,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
+      const expanded =
+              expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
+              !this.state.expandedForAnimation;
+
+      extraProps.expanded = expanded;
+
       if (expanded) {
         extraProps.withoutBorder = false;
       }
@@ -512,7 +515,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
         {Array.isArray(accordionRows) && (
           <SAccordionRows id={accordionId} role='rowgroup' aria-hidden={!expanded}>
-            {accordionRows.map((subrow, i) => {
+            {(expanded || this.state.expandedForAnimation) && accordionRows.map((subrow, i) => {
               return (
                 <Row
                   key={i}
