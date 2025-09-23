@@ -49,9 +49,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>, prevState: State) {
-    const { animationExpand } = this.asProps;
+    const { animationExpand, row } = this.asProps;
 
-    if (animationExpand && this.rowElementRef.current && prevState.calculatedHeight === 0) {
+    if (animationExpand && this.rowElementRef.current && (prevState.calculatedHeight === 0 || prevProps.row !== row)) {
       const height = this.calculateRowHeight(this.rowElementRef.current);
 
       this.setState({ calculatedHeight: height });

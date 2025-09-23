@@ -10,6 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Render grouped header in some cases.
 - Styles for cells in accordion in different variants.
 - Laggy animation in accordions.
+- Expanded accordion's cells height after table sorting.
 
 ## [16.3.0] - 2025-09-12
 
