@@ -284,11 +284,11 @@ test.describe('Accordion in table', () => {
       });
     }
 
-    const peddingLeft = await cells3.first().evaluate((el) => {
+    const paddingLeft = await cells3.first().evaluate((el) => {
       return window.getComputedStyle(el).paddingLeft;
     });
 
-    expect(peddingLeft).toBe('40px');
+    expect(paddingLeft).toBe('38px');
   });
 
   test('Verify table in table attributes', async ({ page }) => {
