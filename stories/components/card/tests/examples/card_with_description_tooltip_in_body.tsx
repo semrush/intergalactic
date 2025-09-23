@@ -1,7 +1,7 @@
-import { Box, Flex } from '@semcore/base-components';
+import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
-import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
+import Tooltip, { DescriptionTooltip, Hint } from '@semcore/tooltip';
 import React from 'react';
 
 const Demo = () => (
@@ -17,8 +17,9 @@ const Demo = () => (
       <DescriptionTooltip.Trigger tag={Button}>
         DescriptionTooltip
       </DescriptionTooltip.Trigger>
-      <DescriptionTooltip.Popper>Hello, stranger!</DescriptionTooltip.Popper>
+      <DescriptionTooltip.Popper aria-label='Hello'>Hello, stranger!</DescriptionTooltip.Popper>
     </DescriptionTooltip>
+
   </Card>
 );
 
