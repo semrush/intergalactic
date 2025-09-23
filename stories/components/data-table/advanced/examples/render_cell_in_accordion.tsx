@@ -1,11 +1,8 @@
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
-import type { DataTableProps } from '@semcore/data-table';
+import type { DataTableProps, DataTableSort } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
-export type TableInTableProps = {
-  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
-};
 
 const ChartExample1 = () => {
   return (
@@ -14,12 +11,21 @@ const ChartExample1 = () => {
   );
 };
 
-const renderCell: DataTableProps<typeof data, any, any>['renderCell'] = (props) => {
-  if (props.isAccordionRow) {
-    console.log('render accordion cell');
+export function renderCell(cellProps: any) {
+  const { column, rawData, defaultRender, isAccordionRow } = cellProps;
+
+  if (isAccordionRow) {
+    console.log('render accordion cell', rawData);
   }
-  return props.defaultRender();
-};
+
+  const rawValue = rawData[column.name];
+
+  if (rawValue === null || rawValue === undefined) {
+    return '—';
+  }
+
+  return defaultRender();
+}
 
 const Demo = () => {
   return (
@@ -73,11 +79,6 @@ const ChartExample = () => {
     />
   );
 };
-export const tableInTableDefaultProps: TableInTableProps = {
-  accordionMode: 'independent',
-};
-
-Demo.defaultProps = tableInTableDefaultProps;
 
 const data1 = [
   {
@@ -114,16 +115,16 @@ const data = [
     cpc: '$1.25',
     vol: '32,500,000',
     [ACCORDION]: [
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
+      { keyword: null, kd: '10', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
+      { keyword: null, kd: '10', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
       { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '11.2', cpc: undefined, vol: '65,457,920' },
       { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
       { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
