@@ -1213,10 +1213,14 @@ class DataTableRoot<
       gridRowIndex++;
 
       if (row[ACCORDION]) {
-        dtRow[ACCORDION] = row[ACCORDION];
-        gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+        if (Array.isArray(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION].map((item) => makeDtRow(item));
+          // gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+        } else if (React.isValidElement(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION];
+        }
       } else if (accordionInCell) {
-        gridRowIndex = Array.isArray(accordionInCell) ? gridRowIndex + accordionInCell.length : gridRowIndex + 1;
+        gridRowIndex++;
       }
 
       excludeColumns?.forEach((value) => {
@@ -1241,7 +1245,11 @@ class DataTableRoot<
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<Omit<DTRow<UniqKeyType>, symbol>>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, groupedRows.length, row[ACCORDION]);
+            const accordion = Array.isArray(row[ACCORDION])
+              ? row[ACCORDION].map((item) => makeDtRow(item))
+              : row[ACCORDION];
+
+            acc[key] = new MergedRowsCell(value, groupedRows.length, accordion);
             groupedKeys.push(key);
             return acc;
           },
