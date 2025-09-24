@@ -7,9 +7,7 @@ import type { VersionPatch } from '../makeVersionPatches';
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 
-const token = String(process.env.GITHUB_SECRET);
 const git = Git();
-git.addRemote('origin', `https://${token}@github.com/semrush/intergalactic.git`);
 
 export const gitUtils = {
   initNewPrerelease: async (versionPatches: VersionPatch[]) => {

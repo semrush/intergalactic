@@ -121,7 +121,7 @@ jobs:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
           INTERGALACTIC_BOT_CLOSE_TASKS_URL: ${{ secrets.INTERGALACTIC_BOT_CLOSE_TASKS_URL }}
           INTERGALACTIC_BOT_SECRET: ${{ secrets.INTERGALACTIC_BOT_SECRET }}
-        run: pnpm --filter intergalactic-migrate run build && pnpm publish-release
+        run: pnpm publish-release
   create-pr:
     runs-on: ubuntu-latest
     needs: publish-unlocked-release
