@@ -1,13 +1,17 @@
 import { execSync } from 'child_process';
+import process from 'process';
 
 import Git from 'simple-git';
 
 import type { VersionPatch } from '../makeVersionPatches';
 import { log, prerelaseSuffix } from '../utils';
-import { allowedScopes } from './allowedScopes';
 import { NpmUtils } from './npmUtils';
 
+const token = String(process.env.GITHUB_SECRET);
+
 const git = Git();
+git.removeRemote('origin');
+git.addRemote('origin', `https://${token}@github.com/semrush/intergalactic.git`);
 
 export const gitUtils = {
   initNewPrerelease: async (versionPatches: VersionPatch[]) => {
