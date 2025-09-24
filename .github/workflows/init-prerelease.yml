@@ -69,7 +69,7 @@ jobs:
         run: pnpm whoami
       - name: Init prerelease
         env:
-          GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          GITHUB_SECRET: semrush-ci-whale:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
         run: |
           pnpm --filter intergalactic-migrate run build
           pnpm init-prerelease
