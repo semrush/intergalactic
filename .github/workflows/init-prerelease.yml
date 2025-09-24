@@ -73,5 +73,5 @@ jobs:
         run: |
           git config user.name "semrush-ci-whale"
           git config user.email "semrush-ci-whale@users.noreply.github.com"
-          git remote add origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
+          git remote set-url "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
           pnpm init-prerelease
