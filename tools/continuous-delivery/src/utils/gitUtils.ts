@@ -10,7 +10,6 @@ import { NpmUtils } from './npmUtils';
 const token = String(process.env.GITHUB_SECRET);
 
 const git = Git();
-git.removeRemote('origin');
 git.addRemote('origin', `https://${token}@github.com/semrush/intergalactic.git`);
 
 export const gitUtils = {
