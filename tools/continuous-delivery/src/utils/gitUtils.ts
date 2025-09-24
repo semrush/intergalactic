@@ -8,16 +8,7 @@ import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 
 const token = String(process.env.GITHUB_SECRET);
-const userName = process.env.GITHUB_USER_NAME;
-const userEmail = process.env.GITHUB_USER_EMAIL;
-
 const git = Git();
-if (userName) {
-  git.addConfig('user.name', userName);
-}
-if (userEmail) {
-  git.addConfig('user.email', userEmail);
-}
 git.addRemote('origin', `https://${token}@github.com/semrush/intergalactic.git`);
 
 export const gitUtils = {

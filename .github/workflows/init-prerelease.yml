@@ -70,8 +70,7 @@ jobs:
       - name: Init prerelease
         env:
           GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-          GITHUB_USER_NAME: semrush-ci-whale
-          GITHUB_USER_EMAIL: semrush-ci-whale@users.noreply.github.com
         run: |
-          pnpm --filter intergalactic-migrate run build
+          git config user.name "semrush-ci-whale"
+          git config user.email "semrush-ci-whale@users.noreply.github.com"
           pnpm init-prerelease
