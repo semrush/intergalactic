@@ -1,65 +1,45 @@
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
-import type { DataTableSort, DataTableProps } from '@semcore/data-table';
+import type { DataTableProps, DataTableSort } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 
-type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
-export type AccordionWithTablenProps = {
-  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
-  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
-  use?: DataTableProps<typeof data, any, any>['use'];
-  compact?: DataTableProps<typeof data, any, any>['compact'];
-  justifyContent?: string;
+const ChartExample1 = () => {
+  return (
+    <NoData type='nothing-found' my={7} mx='auto'>
+    </NoData>
+  );
 };
 
-const Demo = (props: AccordionWithTablenProps) => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
-  const sortedData = React.useMemo(
-    () =>
-      [...data].sort((aRow, bRow) => {
-        const [prop, sortDirection] = sort;
-        const a = aRow[prop as SortableColumn]!;
-        const b = bRow[prop as SortableColumn]!;
-        if (a === b) return 0;
-        if (sortDirection === 'asc') return a > b ? 1 : -1;
-        else return a > b ? -1 : 1;
-      }).map((row) => {
-        return {
-          ...row,
-          [ACCORDION]: row[ACCORDION]?.sort((aRow, bRow) => {
-            const [prop, sortDirection] = sort;
-            // @ts-ignore
-            const a = aRow[prop];
-            // @ts-ignore
-            const b = bRow[prop];
-            if (a === b) return 0;
-            if (sortDirection === 'asc') return a > b ? 1 : -1;
-            else return a > b ? -1 : 1;
-          }),
-        };
-      }),
-    [sort],
-  );
-  const handleSortChange: (sort: DataTableSort<keyof typeof sortedData[0]>, e?: React.SyntheticEvent) => void = (newSort) => {
-    setSort(newSort as DataTableSort<SortableColumn>);
-  };
+export function renderCell(cellProps: any) {
+  const { column, rawData, defaultRender, isAccordionRow } = cellProps;
 
+  if (isAccordionRow) {
+    console.log('render accordion cell', rawData);
+  }
+
+  const rawValue = rawData[column.name];
+
+  if (rawValue === null || rawValue === undefined) {
+    return '—';
+  }
+
+  return defaultRender();
+}
+
+const Demo = () => {
   return (
     <DataTable
       aria-label='Parent'
       h='100%'
-      data={sortedData}
-      sort={sort}
-      accordionMode={props.accordionMode}
-      sideIndents={props.sideIndents}
-      use={props.use}
-      compact={props.compact}
-      onSortChange={handleSortChange}
+      data={data}
+      accordionDuration={400}
+      renderCell={renderCell}
       columns={[
-        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true, justifyContent: props.justifyContent },
-        { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
-        { name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true },
-        { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true },
+        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
+        { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
+        { name: 'cpc', children: 'CPC', gtcWidth: '200px' },
+        { name: 'vol', children: 'Vol.', gtcWidth: '200px' },
       ]}
     />
   );
@@ -100,16 +80,6 @@ const ChartExample = () => {
   );
 };
 
-export const accordionWithTablenProps: AccordionWithTablenProps = {
-  accordionMode: 'independent',
-  sideIndents: undefined,
-  use: undefined,
-  compact: undefined,
-  justifyContent: undefined,
-};
-
-Demo.defaultProps = accordionWithTablenProps;
-
 const data1 = [
   {
     keyword: 'ebay buy',
@@ -145,16 +115,16 @@ const data = [
     cpc: '$1.25',
     vol: '32,500,000',
     [ACCORDION]: [
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
+      { keyword: null, kd: '10', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
+      { keyword: null, kd: '10', cpc: '$0.65', vol: '47,354,640' },
+      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
+      { keyword: null, kd: '11.2', cpc: undefined, vol: '65,457,920' },
       { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
-      { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
-      { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
-      { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
+      { keyword: 'www.ebay.com', kd: '11.2', cpc: undefined, vol: '65,457,920' },
       { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
       { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
       { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.4', vol: '65,457,920' },
@@ -179,18 +149,12 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '3',
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
     [UNIQ_ROW_KEY]: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
+    [ACCORDION]: (<ChartExample1 />),
   },
   {
     [UNIQ_ROW_KEY]: '5',

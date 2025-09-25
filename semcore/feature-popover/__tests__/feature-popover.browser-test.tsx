@@ -169,7 +169,7 @@ test.describe('Functional', () => {
 
     await test.step('Verify next focusable element focused by Tab pressing ', async () => {
       await page.keyboard.press('Tab');
-      await expect(page.getByRole('button', { name: 'Got it' })).toBeFocused();
+      await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
     });
 
     await test.step('Verify Feature Popper closed by Escape', async () => {
@@ -192,7 +192,7 @@ test.describe('Functional', () => {
 
     await page.setContent(htmlContent);
     const ddTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-    const gotIt = page.getByText('Got it');
+    const gotIt = page.getByText('Next');
     const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
     await featurePopoverPopper.waitFor({ state: 'visible' });
     const popper = page.getByRole('dialog');
