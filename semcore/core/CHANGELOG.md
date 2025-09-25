@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.1] - 2025-09-12
+
+### Changed
+
+- Prevent scroll on focus by mouse interaction.
+
 ## [16.3.0] - 2025-09-08
 
 ### Added
