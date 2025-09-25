@@ -16,7 +16,8 @@ const locators = {
   rowTableInTable: (page: Page, level: number, index: number) =>
     page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
   dataTable: (page: Page) => page.getByRole('grid'),
-
+  collapse: (page: Page) => page.locator('[data-ui-name="Collapse"]'),
+  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
 };
 
 test.describe('Accordion in table', () => {
@@ -284,11 +285,11 @@ test.describe('Accordion in table', () => {
       });
     }
 
-    const peddingLeft = await cells3.first().evaluate((el) => {
+    const paddingLeft = await cells3.first().evaluate((el) => {
       return window.getComputedStyle(el).paddingLeft;
     });
 
-    expect(peddingLeft).toBe('40px');
+    expect(paddingLeft).toBe('38px');
   });
 
   test('Verify table in table attributes', async ({ page }) => {
@@ -480,7 +481,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify accordion collapses cell click', async () => {
       messages = [];
       const row = locators.row(page, 3);
-      await row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first().click();
+      await row.getByRole('gridcell').first().click();
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
@@ -1012,5 +1013,188 @@ test.describe('Accordion in table', () => {
 
     await showDetails.click();
     await expect(collapse).toBeHidden();
+  });
+
+  test('Verify accordion with pagination', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await locators.toggle(page).first().click();
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await locators.toggle(page).nth(1).click();
+    await locators.collapse(page).nth(1).waitFor({ state: 'visible' });
+
+    await locators.button(page, 'Next').click();
+
+    await expect(locators.collapse(page)).toHaveCount(0);
+
+    await locators.toggle(page).first().click();
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await expect(locators.collapse(page)).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    await locators.button(page, 'Prev').click();
+    await expect(locators.collapse(page)).toHaveCount(2);
+    await page.locator('[data-ui-name="Checkbox"]').nth(0).click();
+    await page.waitForTimeout(50);
+
+    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const cellCount = await cells.count();
+
+    for (let i = 0; i < cellCount - 2; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(233, 247, 255)',
+      });
+    }
+
+    await checkStyles(cells.nth(cellCount - 1), {
+      'background-color': 'rgb(196, 229, 254)',
+    });
+
+    const box = await locators.row(page, 2).getByRole('gridcell').nth(1).boundingBox();
+    if (box) {
+      await page.mouse.move(box.x + 10, box.y + 5);
+    }
+
+    if (browserName !== 'firefox') {
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+    }
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify accordion with themed rows', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/tests/examples/accordion-tests/colored-accordion.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify success theme', async () => {
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(219, 254, 232)',
+        });
+      }
+
+      await locators.toggle(page).first().click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(158, 242, 201)',
+        });
+      }
+      await locators.toggle(page).first().click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify info theme', async () => {
+      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(233, 247, 255)',
+        });
+      }
+
+      await locators.toggle(page).nth(1).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+      await locators.toggle(page).nth(1).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify muted theme', async () => {
+      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+      }
+
+      await locators.toggle(page).nth(2).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+      await locators.toggle(page).nth(2).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify warning theme', async () => {
+      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 243, 217)',
+        });
+      }
+
+      await locators.toggle(page).nth(3).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 220, 162)',
+        });
+      }
+      await locators.toggle(page).nth(3).click();
+      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify danger theme', async () => {
+      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 240, 247)',
+        });
+      }
+
+      await locators.toggle(page).nth(4).click();
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(255, 215, 223)',
+        });
+      }
+    });
   });
 });
