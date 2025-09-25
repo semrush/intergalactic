@@ -21,7 +21,7 @@ function InlineRadioControl({
 
   return (
     <>
-      <Text id={labelId} mt={1}>{displayName}</Text>
+      <Text id={labelId} size={200} mt={1}>{displayName}</Text>
       <Pills aria-labelledby={labelId} value={value} onChange={onChange}>
         {options.map((option) => (
           <Pills.Item key={option} value={option}>
