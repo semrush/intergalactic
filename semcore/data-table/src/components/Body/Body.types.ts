@@ -93,6 +93,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   renderCellOverlay?: () => React.ReactNode;
   limit?: DataTableProps<any, any, any>['limit'];
   variant?: DataTableProps<any, any, any>['variant'];
+  totalRows?: number;
 };
 
 export type DataTableBodyType = (<

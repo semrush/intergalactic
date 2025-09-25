@@ -10,6 +10,8 @@ type CheckboxExampleProps = {
   compact?: boolean;
   columnsLimit?: number;
   rowsLimit?: number;
+  animationDuration?: number;
+  loading?: boolean;
 };
 
 const Demo = (props: CheckboxExampleProps) => {

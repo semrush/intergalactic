@@ -1,14 +1,13 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, createComponent, type Intergalactic, sstyled } from '@semcore/core';
-import type { DataTableProps } from '@semcore/data-table';
-import { ACCORDION } from '@semcore/data-table';
 import * as React from 'react';
 
 import type { DTRow, DTRows } from './Row.types';
 import style from './style.shadow.css';
 import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
-import { GRID_ROW_INDEX } from '../DataTable/DataTable';
+import { ACCORDION, GRID_ROW_INDEX } from '../DataTable/DataTable';
+import type { DataTableProps } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
 type LimitOverlayProps<UniqKeyType> = {
