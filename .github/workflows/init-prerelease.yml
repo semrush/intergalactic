@@ -26,8 +26,6 @@ jobs:
           fi
   init-prerelease:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
     needs:
       - check-exist-pr
     steps:
@@ -35,6 +33,7 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           fetch-depth: 0
+          persist-credentials: false
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
@@ -69,6 +68,10 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Init prerelease
+        env:
+          GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
         run: |
-          pnpm --filter intergalactic-migrate run build
+          git config user.name "semrush-ci-whale"
+          git config user.email "semrush-ci-whale@users.noreply.github.com"
+          git remote set-url origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
           pnpm init-prerelease

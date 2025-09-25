@@ -175,7 +175,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
       - name: Lint
-        run: pnpm --filter intergalactic-migrate run build && pnpm lint
+        run: pnpm lint
   docs-lint:
     runs-on: ubuntu-latest
     steps:
