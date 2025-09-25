@@ -1,5 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
@@ -279,7 +280,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       };
     }
 
-    this.calculateAriaRowIndex();
+    if (canUseDOM()) {
+      this.calculateAriaRowIndex();
+    }
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>

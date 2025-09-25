@@ -2,6 +2,8 @@ import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
+import AccordionWithPaginationExample, { tableInTableDefaultProps } from './examples/accordion_with_pagination';
+import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
@@ -10,6 +12,7 @@ import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_dif
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
 import OverlapCellsExample from './examples/overlap_cells';
+import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
@@ -29,6 +32,13 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
     loading: { control: 'boolean' },
   },
   args: accordionMergedProps,
+};
+
+export const AccordionWithPagination: StoryObj<TableInTableProps> = {
+  render: AccordionWithPaginationExample,
+  args: {
+    ...tableInTableDefaultProps,
+  },
 };
 
 export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
@@ -73,6 +83,10 @@ export const FakeMultiLineHeader: Story = {
 
 export const RenderCellRawValue: Story = {
   render: RenderCellRawValueExample,
+};
+
+export const RenderCellInAccordion: Story = {
+  render: RenderCellInAccordionExample,
 };
 
 export const FixedColumnsWidthWithShadows: Story = {

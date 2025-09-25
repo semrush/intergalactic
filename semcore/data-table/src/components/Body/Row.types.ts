@@ -30,7 +30,7 @@ export type DTRow<UniqKeyType> = {
   [GRID_ROW_INDEX]: number;
   [ROW_INDEX]: number;
   [key: string]: DTValue | MergedRowsCell | MergedColumnsCell;
-  [ACCORDION]?: React.ReactNode | DataTableData | undefined;
+  [ACCORDION]?: React.ReactNode | DTRows<UniqKeyType>;
   [ROW_GROUP]?: Set<UniqKeyType>;
 };
 export type DTRows<UniqKeyType> = Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
@@ -45,6 +45,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   isNonInteractive?: boolean;
 
   componentRef?: (component: RowRoot<Data, UniqKeyType> | null) => void;
+
+  accordionIndex?: number;
 };
 
 export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {

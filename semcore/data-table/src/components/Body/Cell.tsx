@@ -1,4 +1,4 @@
-import { Box, Collapse, Flex } from '@semcore/base-components';
+import { Box, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import * as React from 'react';
@@ -91,6 +91,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       animationExpand,
       style,
       shadowVertical,
+      calculatedHeight,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -116,13 +117,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SCellWrapper
+        // @ts-ignore
         gridArea={gridArea}
-        tag={isAccordionRow ? Collapse : undefined}
-        visible={animationExpand}
-        duration={duration}
-        delay={delay}
-        defaultHeight='100%'
-        timingFunction='linear'
+        duration={`${duration}ms`}
+        delay={`${delay}ms`}
+        h={isAccordionRow ? (animationExpand ? `${calculatedHeight}px` : `0px`) : undefined}
         style={style}
         fixed={column.fixed}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
