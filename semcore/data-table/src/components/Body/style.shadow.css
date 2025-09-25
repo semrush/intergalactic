@@ -8,7 +8,22 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+  }
+
+  SRow {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+  SRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+
+  SCell SAccordionToggle {
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 }
 
@@ -31,7 +46,7 @@ SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([wit
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
-SCollapseRow SCell {
+SCollapseRow > SCellWrapper > SCell {
   display: block;
 }
 
@@ -204,7 +219,7 @@ SCell[use='primary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -214,7 +229,7 @@ SCell[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -280,19 +295,22 @@ SRow[sideIndents='wide'] {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
-      &[use='primary'] {
-        padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
-      }
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
 
-      &[use='secondary'] {
-        padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
-      }
     }
   }
 
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
+}
+
+SRow[isAccordionRow][withAnimation] > SCellWrapper {
+  transition-property: height;
+  transition-delay: var(--delay);
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  overflow: clip;
 }
 
 SCellWrapper[fixed][shadowVertical] {

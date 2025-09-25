@@ -69,12 +69,15 @@ class DataTableRoot<
   static displayName = 'DataTable';
   static style = style;
 
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
+  static enhance = [
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    defaultExpandedRows: new Set<string>(),
+    expandedRows: new Set(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
@@ -133,12 +136,6 @@ class DataTableRoot<
     shadowVertical: '',
   };
 
-  uncontrolledProps() {
-    return {
-      expandedRows: new Set<string>(),
-    };
-  }
-
   componentDidMount() {
     const { headerProps, loading } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
@@ -180,6 +177,8 @@ class DataTableRoot<
     if (canUseDOM()) {
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
+
+    this.asProps.expandedRows?.clear();
   }
 
   get totalRows() {
@@ -322,6 +321,7 @@ class DataTableRoot<
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
     return {
       accordionDuration,
       accordionMode,
@@ -476,11 +476,10 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
-      this.handlers.expandedRows(expandedRows);
+
       onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
@@ -1213,10 +1212,14 @@ class DataTableRoot<
       gridRowIndex++;
 
       if (row[ACCORDION]) {
-        dtRow[ACCORDION] = row[ACCORDION];
-        gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+        if (Array.isArray(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION].map((item) => makeDtRow(item));
+        } else if (React.isValidElement(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION];
+          gridRowIndex++;
+        }
       } else if (accordionInCell) {
-        gridRowIndex = Array.isArray(accordionInCell) ? gridRowIndex + accordionInCell.length : gridRowIndex + 1;
+        gridRowIndex++;
       }
 
       excludeColumns?.forEach((value) => {
@@ -1241,7 +1244,11 @@ class DataTableRoot<
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<Omit<DTRow<UniqKeyType>, symbol>>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, groupedRows.length, row[ACCORDION]);
+            const accordion = Array.isArray(row[ACCORDION])
+              ? row[ACCORDION].map((item) => makeDtRow(item))
+              : row[ACCORDION];
+
+            acc[key] = new MergedRowsCell(value, groupedRows.length, accordion);
             groupedKeys.push(key);
             return acc;
           },

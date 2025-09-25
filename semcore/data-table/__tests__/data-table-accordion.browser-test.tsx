@@ -284,11 +284,11 @@ test.describe('Accordion in table', () => {
       });
     }
 
-    const peddingLeft = await cells3.first().evaluate((el) => {
+    const paddingLeft = await cells3.first().evaluate((el) => {
       return window.getComputedStyle(el).paddingLeft;
     });
 
-    expect(peddingLeft).toBe('40px');
+    expect(paddingLeft).toBe('38px');
   });
 
   test('Verify table in table attributes', async ({ page }) => {
@@ -480,7 +480,7 @@ test.describe('Accordion in table', () => {
     await test.step('Verify accordion collapses cell click', async () => {
       messages = [];
       const row = locators.row(page, 3);
-      await row.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first().click();
+      await row.getByRole('gridcell').first().click();
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
       await page.waitForEvent('console', {
         predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',

@@ -7,17 +7,18 @@ import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveEleme
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import * as React from 'react';
 
-import { INDEX_OFFSET } from './Body';
 import { Cell } from './Cell';
 import type { DataTableCellProps, DataTableCellType } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
 
 type State = {
   expandedForAnimation: boolean;
+  calculatedHeight: number;
+  withAnimation: boolean;
 };
 
 export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State, [], RowPropsInner<Data, UniqKeyType>> {
@@ -35,6 +36,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   state: State = {
     expandedForAnimation: false,
+    calculatedHeight: 0,
+    withAnimation: true,
   };
 
   constructor(props: DataTableRowProps<Data, UniqKeyType>) {
@@ -45,6 +48,26 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentDidMount() {
     this.asProps.componentRef?.(this);
+
+    const { animationExpand } = this.asProps;
+
+    if (animationExpand && this.rowElementRef.current) {
+      const height = this.calculateRowHeight(this.rowElementRef.current);
+
+      this.setState({ calculatedHeight: height });
+    }
+  }
+
+  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
+    const { animationExpand, row } = this.asProps;
+    if (animationExpand && prevProps.row !== row && this.rowElementRef.current) {
+      const height = this.calculateRowHeight(this.rowElementRef.current);
+
+      this.setState({ calculatedHeight: height, withAnimation: false });
+    }
+    if (prevProps.animationExpand !== animationExpand && animationExpand === false) {
+      this.setState({ withAnimation: true });
+    }
   }
 
   componentWillUnmount() {
@@ -179,6 +202,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       shadowVertical,
       flatRows,
       variant,
+      isAccordionRow,
+      accordionRowIndex,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -221,12 +246,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      calculatedHeight: this.state.calculatedHeight,
     };
 
     if (renderCell) {
       let rowRawData = rawData[props.rowIndex];
 
-      if (props.accordionRowIndex && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
+      if (props.accordionRowIndex !== undefined && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
         rowRawData = rowRawData[ACCORDION][props.accordionRowIndex];
       }
 
@@ -242,6 +268,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         isMergedRows,
         isMergedColumns,
         rawData: rowRawData,
+        isAccordionRow: Boolean(isAccordionRow),
+        accordionRowIndex,
       });
 
       if (this.isReactNode(external) || Array.isArray(external)) {
@@ -338,14 +366,20 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       variant,
       flatRows,
       sideIndents,
+      renderCell,
+      rawData,
     } = this.asProps;
 
-    const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !this.state.expandedForAnimation;
+    const { expandedForAnimation, withAnimation } = this.state;
 
-    let accordion = row[ACCORDION];
-    const accordionType = accordion && !mergedRow ? 'row' : undefined;
+    const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !expandedForAnimation;
 
-    if (!accordion) {
+    let accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : undefined;
+    let accordionComponent: React.ReactNode = React.isValidElement(row[ACCORDION]) ? row[ACCORDION] : undefined;
+
+    const accordionType = (accordionRows || accordionComponent) && !mergedRow ? 'row' : undefined;
+
+    if (!accordionRows && !accordionComponent) {
       const cells = Object.entries(row);
       const foundCell = cells.find(([key, value]) => {
         return this.cellHasAccordion(value) || (value instanceof MergedRowsCell && value.accordion);
@@ -355,20 +389,24 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         this.cellName = foundCell[0];
         const value = foundCell[1];
 
-        accordion = value instanceof MergedRowsCell
-          ? value.accordion
-          : this.cellHasAccordion(value)
-            ? value[ACCORDION]
-            : null;
+        if (value instanceof MergedRowsCell && value.accordion) {
+          if (Array.isArray(value.accordion)) {
+            accordionRows = value.accordion;
+          } else {
+            accordionComponent = value.accordion;
+          }
+        } else if (this.cellHasAccordion(value)) {
+          accordionComponent = value[ACCORDION];
+        }
       }
     }
 
     let accordionDataGridArea = '';
 
-    if (accordion) {
+    if (accordionRows || accordionComponent) {
       const rowIncrement = row[ROW_GROUP]?.size ? row[ROW_GROUP].size + 1 : 1;
-      accordionDataGridArea = Array.isArray(accordion)
-        ? `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement + accordion.length} / ${
+      accordionDataGridArea = accordionRows
+        ? `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement + accordionRows.length} / ${
           columns.length + 1
         }`
         : `${gridRowIndex + rowIncrement} / 1 / ${gridRowIndex + rowIncrement} / ${columns.length + 1}`;
@@ -387,6 +425,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
           onClick={this.handleClickRow(row)}
+          withAnimation={withAnimation}
         >
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
@@ -456,7 +495,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           })}
         </SRow>
 
-        {React.isValidElement(accordion) && (
+        {React.isValidElement(accordionComponent) && (
           <SCollapseRow
             key={rowIndex}
             role='row'
@@ -482,27 +521,28 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
             >
-              {accordion}
+              {accordionComponent}
             </SCell>
           </SCollapseRow>
         )}
 
-        {row[ACCORDION] && Array.isArray(row[ACCORDION]) && (
+        {Array.isArray(accordionRows) && (
           <SAccordionRows id={accordionId} role='rowgroup' aria-hidden={!expanded}>
-            {row[ACCORDION].map((subrow, i) => {
+            {(expanded || expandedForAnimation) && accordionRows.map((subrow, i) => {
               return (
                 <Row
                   key={i}
                   // @ts-ignore
                   row={subrow}
                   columns={columns}
-                  rows={row[ACCORDION]}
+                  rows={accordionRows}
                   rowIndex={rowIndex}
                   aria-hidden={!expanded}
                   aria-posinset={i + 1}
                   aria-level={ariaLevel + 1}
                   gridRowIndex={gridRowIndex + 1 + i}
                   isAccordionRow={true}
+                  accordionIndex={i}
                   getFixedStyle={getFixedStyle}
                   animationExpand={expanded}
                   accordionRowIndex={i}
@@ -512,6 +552,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   variant={variant}
                   flatRows={flatRows}
                   sideIndents={sideIndents}
+                  renderCell={renderCell}
+                  rawData={rawData}
                 />
               );
             })}
@@ -530,6 +572,40 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       obj === undefined ||
       obj === null
     );
+  }
+
+  private calculateRowHeight(rowElement: HTMLElement): number {
+    const accordionFull = rowElement.cloneNode(true);
+
+    if (!(accordionFull instanceof HTMLElement)) {
+      return 0;
+    }
+
+    const columnsWidth: number[] = [];
+
+    const columns = Array.from(rowElement.children);
+    columns.forEach((column) => {
+      columnsWidth.push(column.getBoundingClientRect().width);
+    });
+
+    accordionFull.style.display = 'grid';
+    accordionFull.style.position = 'absolute';
+    accordionFull.style.visibility = 'hidden';
+    accordionFull.style.gridTemplateColumns = columnsWidth.join('px ') + 'px';
+
+    Array.from(accordionFull.children).forEach((child) => {
+      if (child instanceof HTMLElement) {
+        child.style.height = '100%';
+      }
+    });
+
+    document.body.appendChild(accordionFull);
+
+    const height = accordionFull.getBoundingClientRect().height;
+
+    document.body.removeChild(accordionFull);
+
+    return height;
   }
 }
 
