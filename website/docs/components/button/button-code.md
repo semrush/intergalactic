@@ -34,6 +34,11 @@ To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`
 
 In case you need to render a Button that looks like a Link, use the `ButtonLink` component.
 
+::: tip Known issue
+`ButtonLink` underline style in Figma is different from the implementation due to Figma limitations.
+![](static/buttonlink-figma-limitation.png){style="margin-top: 8px"}
+:::
+
 ::: sandbox
 
 <script lang="tsx">
