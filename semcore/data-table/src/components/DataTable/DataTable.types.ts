@@ -164,6 +164,11 @@ export type DataTableProps<
      * @default 'default'
      */
     variant?: 'default' | 'card';
+
+    /**
+     * Handle change expanded rows
+     */
+    onExpandedRowsChange?: (expandedRows: Set<UniqKeyType>) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
