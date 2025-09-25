@@ -118,7 +118,7 @@ function Dots(props) {
             cx={d3.x()(d)}
             cy={d3.y()(d)}
             r={radius}
-            __excludeProps={['display']}
+            __excludeProps={['display', 'data', 'scale']}
           />,
         ),
       );
@@ -137,7 +137,7 @@ function Dots(props) {
             visible={visible}
             active={active}
             hide={hide}
-            __excludeProps={['display']}
+            __excludeProps={['display', 'data', 'scale']}
           />,
         ),
       );
