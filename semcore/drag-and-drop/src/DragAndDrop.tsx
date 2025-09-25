@@ -133,6 +133,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       event.target.parentNode?.insertBefore(placeholder, event.target.nextSibling);
 
       event.target.style.opacity = '0.01'; // we need this to hide the content in place of the placeholder but leave it visible when dragging in preview mode
+      event.target.style.left = `${event.target.offsetLeft}px`;
+      event.target.style.top = `${event.target.offsetTop}px`;
       event.target.style.position = 'absolute';
     }
 
@@ -154,11 +156,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     if (!draggingItem || !placeholder) return;
 
-    this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
-    draggingItem.node.style.opacity = '1.0';
-    draggingItem.node.style.position = 'relative';
-
-    placeholder.remove();
+    this.clearPlaceholder(draggingItem.node, placeholder);
 
     this.setState({
       dragging: null,
@@ -255,11 +253,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       const placeholder = dragging.placeholder;
 
       if (placeholder) {
-        this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
-        draggingItem.node.style.opacity = '1.0';
-        draggingItem.node.style.position = 'relative';
-
-        placeholder.remove();
+        this.clearPlaceholder(draggingItem.node, placeholder);
       }
 
       const fromNode = items[dragging.index];
@@ -327,6 +321,16 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     }
   };
 
+  clearPlaceholder(node: HTMLElement, placeholder: HTMLElement) {
+    this.containerRef.current?.insertBefore(node, placeholder);
+    node.style.left = '0';
+    node.style.top = '0';
+    node.style.opacity = '1.0';
+    node.style.position = 'relative';
+
+    placeholder.remove();
+  }
+
   swapElements = () => {
     const { items, dragging, dragOver } = this.state;
     const draggingIndex = dragging?.index ?? null;
@@ -350,7 +354,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     node.focus();
 
     if (dragging?.placeholder && items[draggingIndex]?.node) {
-      this.containerRef.current?.insertBefore(items[draggingIndex].node, node);
+      items[draggingIndex].node.style.left = `${node.offsetLeft}px`;
+      items[draggingIndex].node.style.top = `${node.offsetTop}px`;
     }
   };
 
