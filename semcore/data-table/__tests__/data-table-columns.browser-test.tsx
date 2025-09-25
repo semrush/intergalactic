@@ -107,12 +107,12 @@ test.describe('Columns', () => {
     await page.setContent(htmlContent);
 
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-    const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
-    const secondCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(1);
+    const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
+    const secondCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(1);
 
     const secondRow = page.locator('[data-ui-name="Body.Row"]').nth(1);
-    const secondCell2 = secondRow.locator('[data-ui-name="Body.Cell"]').nth(1);
-    const fourthCell2 = secondRow.locator('[data-ui-name="Body.Cell"]').nth(2);
+    const secondCell2 = secondRow.locator('[data-ui-name="Row.Cell"]').nth(1);
+    const fourthCell2 = secondRow.locator('[data-ui-name="Row.Cell"]').nth(2);
 
     await page.keyboard.press('Tab');
     await expect(firstCell).toBeFocused();
@@ -147,13 +147,13 @@ test.describe('Columns', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
+    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').nth(1)).toBeFocused();
+    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').nth(1)).toBeFocused();
 
     await page.keyboard.press('ArrowLeft');
-    await expect(lastRow.locator('[data-ui-name="Body.Cell"]').first()).toBeFocused();
+    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
   });
 
   test('Verify data table renders when refs in columns', async ({ page }) => {
@@ -165,7 +165,7 @@ test.describe('Columns', () => {
     await expect(table).toBeVisible();
     await page.keyboard.press('Tab');
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-    const firstCell = firstRow.locator('[data-ui-name="Body.Cell"]').nth(0);
+    const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
     await expect(firstCell).toBeFocused();
   });
 

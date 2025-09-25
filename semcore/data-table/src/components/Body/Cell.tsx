@@ -1,4 +1,4 @@
-import { Box, Collapse, Flex } from '@semcore/base-components';
+import { Box, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
@@ -117,19 +117,9 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   handleClickCell = (e: React.SyntheticEvent) => {
-    const { rowIndex, columnIndex, onClick, row, column, flatRows } = this.asProps;
+    const { rowIndex, columnIndex, onClick, row } = this.asProps;
 
-    const cell = row[column.name];
-    if (cell instanceof MergedRowsCell) {
-      const rIndex = rowIndex + cell.rowsCount - 1;
-      const row = flatRows[rIndex];
-
-      if (!row) return;
-
-      onClick(e, { rowIndex: rIndex, colIndex: columnIndex, row });
-    } else {
-      onClick(e, { rowIndex, colIndex: columnIndex, row });
-    }
+    onClick(e, { rowIndex, colIndex: columnIndex, row });
   };
 
   render() {
@@ -146,7 +136,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       animationExpand,
       style,
       shadowVertical,
-      withoutBorder,
+      calculatedHeight,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -172,14 +162,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SCellWrapper
+        // @ts-ignore
         gridArea={gridArea}
-        tag={isAccordionRow ? Collapse : undefined}
-        visible={animationExpand}
-        interactive
-        duration={duration}
-        delay={delay}
-        timingFunction='linear'
-        defaultHeight='100%'
+        duration={`${duration}ms`}
+        delay={`${delay}ms`}
+        h={isAccordionRow ? (animationExpand ? `${calculatedHeight}px` : `0px`) : undefined}
         style={style}
         fixed={column.fixed}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
@@ -206,7 +193,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
           textAlign={column.textAlign}
-          withoutBorder={withoutBorder}
         >
           <Children />
         </SCell>

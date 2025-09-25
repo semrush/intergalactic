@@ -1,3 +1,43 @@
+## [16.9.1] - 2025-09-24
+
+### @semcore/data-table
+
+- **Fixed** Cell display in the accordion was changed to `block`.
+- **Fixed** Styles for cells in accordion in different variants.
+- **Fixed** Laggy animation in accordions.
+- **Fixed** `renderCell` not working for accordion's cells.
+
+### @semcore/tag
+
+- **Fixed** The following `InputTags.Tag` properties: `addonLeft`, `addonRight` and `active`.
+
+## [16.9.0] - 2025-09-17
+
+### @semcore/base-trigger
+
+- **Fixed** The Close `Hint` not closed by pressing `ESC` in `FilterTrigger.ClearButton`.
+- **Added** `aria-label` and `title` properties to `FilterTrigger.ClearButton` to change hint text.
+
+### @semcore/button
+
+- **Fixed** Typo in `ButtonLink` size defaults.
+
+### @semcore/core
+
+- **Added** New group of tokens for our `Illustration` component.
+
+### @semcore/data-table
+
+- **Fixed** Render grouped header in some cases.
+- **Added** `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- **Added** Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
+- **Fixed** Bottom border for cell with empty data.
+- **Fixed** Table performance with accordions.
+
+### @semcore/input-tags
+
+- **Fixed** Typed text is lost when new text is pasted afterwards.
+
 ## [16.8.0] - 2025-09-05
 
 ### @semcore/core

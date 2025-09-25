@@ -99,6 +99,11 @@ Table: Button with Link styles
 | `primary`   | ![](static/button-link-primary.png)   |
 | `secondary` | ![](static/button-link-secondary.png) |
 
+::: tip Known issue
+`ButtonLink` underline style in Figma is different from the implementation due to Figma limitations.
+![](static/buttonlink-figma-limitation.png){style="margin-top: 8px"}
+:::
+
 The following table shows in which cases you should use `primary` or `secondary` `ButtonLink`.
 
 Table: How to choose what type of ButtonLink you should use

@@ -1,14 +1,14 @@
 import { Chart } from '@semcore/d3-chart';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
 import createGithubLink from '../../utils/createGHLink';
 
 type RadarChartProps = {
-  commonChartProps: CommonChartProps;
+  commonChartProps: Omit<CommonChartProps, 'showXAxis' | 'showYAxis' | 'showTotalInTooltip'>;
   legendProps: LegendChartProps;
   radarChartProps: {
     showDots: boolean;
@@ -63,7 +63,11 @@ const entry: PlaygroundEntry<RadarChartJSXProps> = {
         },
       },
     },
-    ...ChartControls,
+    ...getDefaultChartControls({
+      skip: {
+        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip'],
+      },
+    }),
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
