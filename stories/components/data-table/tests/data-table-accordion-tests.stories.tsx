@@ -1,9 +1,10 @@
 import { DataTable } from '@semcore/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
 
 import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/accordion-tests/accordion-duration';
 import type { TableInTableProps } from './examples/accordion-tests/accordion-duration';
+import AccordionInTableInTableExample, { tableInTableInTableProps } from './examples/accordion-tests/accordion-in-table-in-table';
+import type { TableInTableInTableProps } from './examples/accordion-tests/accordion-in-table-in-table';
 import AccordionWithChartAndButtonExample, { accordionWithDefaultProps } from './examples/accordion-tests/accordion-inside-table';
 import type { AccordionWithButtonProps } from './examples/accordion-tests/accordion-inside-table';
 import type {
@@ -102,4 +103,11 @@ export const TabeInTableFixedColumn: StoryObj<TableInTableFixedColumnProps> = {
 
 export const ColoredAccordion: Story = {
   render: ColoredAccordionExample,
+};
+
+export const AccordionInTableInTable: StoryObj<TableInTableInTableProps> = {
+  render: AccordionInTableInTableExample,
+  args: {
+    ...tableInTableInTableProps,
+  },
 };

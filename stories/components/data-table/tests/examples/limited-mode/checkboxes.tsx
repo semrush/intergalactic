@@ -5,7 +5,7 @@ import Pagination from '@semcore/pagination';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type CheckboxExampleProps = {
+export type CheckboxExampleProps = {
   sideIndents?: 'wide';
   compact?: boolean;
   columnsLimit?: number;

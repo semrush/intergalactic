@@ -1,9 +1,6 @@
-import Button from '@semcore/button';
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
 import type { DataTableProps } from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import React from 'react';
 

@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/limited-mode/accordion';
 import type { TableInTableProps } from './examples/limited-mode/accordion';
+import CheckboxExample, { checkboxExampleDefaultProps } from './examples/limited-mode/checkboxes';
 import type { CheckboxExampleProps } from './examples/limited-mode/checkboxes';
-import CheckboxExample, { checkboxExampleProps } from './examples/limited-mode/checkboxes';
-import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
 import RowsColumnsMergingExample, { rowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
+import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
 import type { FixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
 import ScrollWithFixedColumnExample, { fixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
 import type { SortTableProps } from './examples/limited-mode/sortable-table';
@@ -30,7 +30,7 @@ export const ScrollWithFixedColumn: StoryObj<FixedColumnDiffWidthProps> = {
 export const Checkbox: StoryObj<CheckboxExampleProps> = {
   render: CheckboxExample,
   args: {
-    ...checkboxExampleProps,
+    ...checkboxExampleDefaultProps,
   },
 };
 

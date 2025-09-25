@@ -4,7 +4,7 @@ import { DataTable, ROW_GROUP } from '@semcore/data-table';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-type RowsColumnsMergingProps = {
+export type RowsColumnsMergingProps = {
 
   rowsLimit?: number;
   columnsLimit?: number;
