@@ -430,7 +430,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           {columns.map((column, i) => {
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
-              return sstyled(styles)(
+              return (
                 <SCheckboxCell
                   key={i}
                   row={row}
@@ -448,7 +448,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   >
                     <Checkbox.Value />
                   </Checkbox>
-                </SCheckboxCell>,
+                </SCheckboxCell>
               );
             }
 
@@ -470,6 +470,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               }
             }
 
+            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+              this.cellHasAccordion(cellValue) || accordionType === 'row';
+
             return (
               <Row.Cell
                 key={index}
@@ -482,10 +485,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 columnIndex={index}
                 style={style}
                 column={column}
-                withAccordion={
-                  Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
-                  this.cellHasAccordion(cellValue)
-                }
+                expanded={expanded}
+                withAccordion={withAccordion}
                 isAccordionRow={isAccordionRow}
                 animationExpand={animationExpand}
                 accordionRowIndex={accordionRowIndex}
