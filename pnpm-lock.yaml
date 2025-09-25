@@ -1601,7 +1601,7 @@ importers:
         specifier: 16.0.9
         version: link:../scroll-area
       '@semcore/tag':
-        specifier: 16.1.9
+        specifier: 16.1.10
         version: link:../tag
     devDependencies:
       '@semcore/button':
