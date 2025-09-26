@@ -62,14 +62,16 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
 
   handleFocusableCellFocus = (e: React.FocusEvent) => {
     const tableElement = this.asProps.tableRef.current;
+    if (tableElement && !hasParent(e.relatedTarget, tableElement)) {
+      if (e.target instanceof HTMLElement) {
+        e.target.dataset.skipTargetFocus = 'true';
+      }
+    } else {
+      if (e.target instanceof HTMLElement) {
+        e.target.dataset.skipTargetFocus = undefined;
+      }
 
-    if (tableElement) {
-      handleFocusCell(this.lockedCell, {
-        target: e.target,
-        currentTarget: e.currentTarget,
-        relatedTarget: e.relatedTarget,
-        table: tableElement,
-      });
+      handleFocusCell(this.lockedCell, e.target, e.currentTarget);
     }
   };
 

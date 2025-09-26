@@ -243,20 +243,10 @@ export class Column<
   handleFocusableCellFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     const cellElement = e.currentTarget;
     const target = e.target;
-    const relatedTarget = e.relatedTarget;
 
     if (lastInteraction.isKeyboard()) {
       this.setState({ sortVisible: true }, () => {
-        const tableElement = this.asProps.tableRef.current;
-
-        if (tableElement) {
-          handleFocusCell(this.lockedCell, {
-            target,
-            currentTarget: cellElement,
-            relatedTarget,
-            table: tableElement,
-          });
-        }
+        handleFocusCell(this.lockedCell, target, cellElement);
       });
     }
   };
