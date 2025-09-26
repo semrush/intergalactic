@@ -130,12 +130,16 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       placeholder.style.width = event.target.offsetWidth + 'px';
       placeholder.style.height = event.target.offsetHeight + 'px';
 
-      event.target.parentNode?.insertBefore(placeholder, event.target.nextSibling);
+      const target = event.target;
 
-      event.target.style.opacity = '0.01'; // we need this to hide the content in place of the placeholder but leave it visible when dragging in preview mode
-      event.target.style.left = `${event.target.offsetLeft}px`;
-      event.target.style.top = `${event.target.offsetTop}px`;
-      event.target.style.position = 'absolute';
+      event.target.parentNode?.insertBefore(placeholder, target.nextSibling);
+      target.style.left = `${target.offsetLeft}px`;
+      target.style.top = `${target.offsetTop}px`;
+      target.style.position = 'absolute';
+
+      setTimeout(() => { // because FF and safari can't create visible draggableImage without timeout
+        target.style.opacity = '0';
+      });
     }
 
     this.setState((prevState: State) => ({
