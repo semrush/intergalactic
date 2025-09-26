@@ -1,6 +1,7 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import * as React from 'react';
 
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
@@ -32,7 +33,16 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleFocusableCellFocus = (e: React.FocusEvent) => {
-    handleFocusCell(this.lockedCell, e.target, e.currentTarget);
+    const tableElement = this.asProps.tableRef.current;
+
+    if (tableElement) {
+      handleFocusCell(this.lockedCell, {
+        target: e.target,
+        currentTarget: e.currentTarget,
+        relatedTarget: e.relatedTarget,
+        table: tableElement,
+      });
+    }
   };
 
   calculateAnimationSettings() {

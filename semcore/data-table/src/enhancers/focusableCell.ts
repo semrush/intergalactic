@@ -1,10 +1,23 @@
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import type * as React from 'react';
 
 export type LockedCell = [HTMLElement | null, boolean];
 
-export function handleFocusCell(lockedCell: LockedCell, target: Element, currentTarget: Element) {
-  if (target instanceof HTMLElement && currentTarget instanceof HTMLElement && target === currentTarget && target.matches(':focus-visible')) {
+export function handleFocusCell(lockedCell: LockedCell, elements: { target: Element; currentTarget: Element; relatedTarget: Element | null; table: HTMLElement }) {
+  const { target, currentTarget, table, relatedTarget } = elements;
+
+  if (!(target instanceof HTMLElement) || !(currentTarget instanceof HTMLElement)) return;
+
+  if (!hasParent(relatedTarget, table)) {
+    target.dataset.skipTargetFocus = 'true';
+
+    return;
+  } else {
+    target.dataset.skipTargetFocus = undefined;
+  }
+
+  if (target === currentTarget && target.matches(':focus-visible')) {
     target.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
