@@ -71,5 +71,7 @@ jobs:
         env:
           GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
         run: |
-          pnpm --filter intergalactic-migrate run build
+          git config user.name "semrush-ci-whale"
+          git config user.email "semrush-ci-whale@users.noreply.github.com"
+          git remote set-url origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
           pnpm init-prerelease
