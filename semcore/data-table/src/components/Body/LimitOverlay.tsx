@@ -1,5 +1,6 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, createComponent, type Intergalactic, sstyled } from '@semcore/core';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import * as React from 'react';
 
 import type { DTRow, DTRows } from './Row.types';
@@ -16,6 +17,7 @@ type LimitOverlayProps<UniqKeyType> = {
   limit: Exclude<DataTableProps<any, any, any>['limit'], undefined>;
   flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
+  tableRef: React.RefObject<HTMLDivElement>;
 };
 
 class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyType>> implements IFocusableCell {
@@ -59,7 +61,18 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
   };
 
   handleFocusableCellFocus = (e: React.FocusEvent) => {
-    handleFocusCell(this.lockedCell, e.target, e.currentTarget);
+    const tableElement = this.asProps.tableRef.current;
+    if (tableElement && !hasParent(e.relatedTarget, tableElement)) {
+      if (e.target instanceof HTMLElement) {
+        e.target.dataset.skipTargetFocus = 'true';
+      }
+    } else {
+      if (e.target instanceof HTMLElement) {
+        e.target.dataset.skipTargetFocus = undefined;
+      }
+
+      handleFocusCell(this.lockedCell, e.target, e.currentTarget);
+    }
   };
 
   render() {

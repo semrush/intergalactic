@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/limited-mode/accordion';
 import type { TableInTableProps } from './examples/limited-mode/accordion';
-import CheckboxExample, { checkboxExampleDefaultProps } from './examples/limited-mode/checkboxes';
+import CheckboxExample, { checkboxExampleProps } from './examples/limited-mode/checkboxes';
 import type { CheckboxExampleProps } from './examples/limited-mode/checkboxes';
 import RowsColumnsMergingExample, { rowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
 import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
@@ -18,7 +18,6 @@ const meta: Meta<typeof DataTable> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof DataTable>;
 
 export const ScrollWithFixedColumn: StoryObj<FixedColumnDiffWidthProps> = {
   render: ScrollWithFixedColumnExample,
@@ -30,7 +29,7 @@ export const ScrollWithFixedColumn: StoryObj<FixedColumnDiffWidthProps> = {
 export const Checkbox: StoryObj<CheckboxExampleProps> = {
   render: CheckboxExample,
   args: {
-    ...checkboxExampleDefaultProps,
+    ...checkboxExampleProps,
   },
 };
 

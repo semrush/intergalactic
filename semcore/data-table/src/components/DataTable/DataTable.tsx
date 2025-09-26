@@ -758,7 +758,7 @@ class DataTableRoot<
       cell?.removeAttribute('inert');
 
       if (cell instanceof HTMLElement) {
-        if (hasParent(e.target, cell) && e.relatedTarget?.role === 'dialog') {
+        if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus();
         } else {
           cell.focus();
