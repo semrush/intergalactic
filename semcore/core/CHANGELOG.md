@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
 
+## [16.3.1] - 2025-09-12
+
+### Changed
+
+- Prevent scroll on focus by mouse interaction.
+
 ## [16.3.0] - 2025-09-08
 
 ### Added
