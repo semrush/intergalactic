@@ -110,10 +110,24 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
       event.target.style.position = 'absolute';
     }
 
+    const yOffset = this.asProps.scrollableContainerRef?.current?.scrollTop ?? 0;
+    const xOffset = this.asProps.scrollableContainerRef?.current?.scrollLeft ?? 0;
+
     this.setState((prevState: State) => ({
       dragging: {
         index,
-        initialItemsRects: prevState.items.map((item) => item?.node.getBoundingClientRect()),
+        initialItemsRects: prevState.items.map((item) => {
+          if (!item) return;
+
+          const rect = item.node.getBoundingClientRect();
+
+          return {
+            width: rect.width,
+            height: rect.height,
+            x: rect.x + xOffset,
+            y: rect.y + yOffset,
+          };
+        }),
         placeholder,
       },
     }));
@@ -153,10 +167,10 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
     const itemIndex = dragging.initialItemsRects.findIndex(
       (rect) =>
         rect &&
-        event.clientX > rect.x - xOffset &&
-        event.clientX < rect.x - xOffset + rect.width &&
-        event.clientY > rect.y - yOffset &&
-        event.clientY < rect.y - yOffset + rect.height,
+        event.clientX + xOffset > rect.x &&
+        event.clientX + xOffset < rect.x + rect.width &&
+        event.clientY + yOffset > rect.y &&
+        event.clientY + yOffset < rect.y + rect.height,
     );
     const currentItem = items[itemIndex];
     const draggingItem = dragging.placeholder;
