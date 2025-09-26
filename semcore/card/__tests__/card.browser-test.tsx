@@ -38,7 +38,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify description tooltip trigger margins', async () => {
-      await expect(descriptionTooltipTrigger).toHaveCSS('margin-top', '2px');
+      await expect(descriptionTooltipTrigger).toHaveCSS('margin-top', '4px');
       await expect(descriptionTooltipTrigger).toHaveCSS('margin-left', '4px');
       await expect(descriptionTooltipTrigger).toHaveCSS('margin-right', '4px');
     });
