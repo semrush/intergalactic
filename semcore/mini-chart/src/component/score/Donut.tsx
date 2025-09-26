@@ -70,26 +70,30 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               strokeWidth={scoreDonut.strokeWidth}
               stroke={resolveColor(baseBgColor)}
               strokeDasharray={
-                loading ? undefined : `${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`
+                loading
+                  ? undefined
+                  : `${scoreDonut.baseLength} ${scoreDonut.fullLength}`
               }
-              strokeDashoffset={scoreDonut.strokeDashOffsetBase}
+              strokeDashoffset={scoreDonut.baseOffset}
             >
-              {animate && (
+              {animate && value > 0 && (
                 <>
                   <animate
                     attributeName='stroke-dasharray'
-                    values={`${scoreDonut.baseStrokeDashArray} ${scoreDonut.baseStrokeDashArray};${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                    from={`${scoreDonut.animatedBaseLengthFrom} ${scoreDonut.fullLength}`}
+                    to={`${scoreDonut.animatedBaseLengthTo} ${scoreDonut.fullLength}`}
                     dur={duration + 'ms'}
                   />
                   <animate
                     attributeName='stroke-dashoffset'
-                    values={`${-1 * scoreDonut.offsetPoint};${scoreDonut.strokeDashOffsetBase}`}
+                    from={-1 * scoreDonut.startMargin}
+                    to={scoreDonut.baseOffset}
                     dur={duration + 'ms'}
                   />
                 </>
               )}
             </circle>
-            {!loading && (
+            {!loading && value > 0 && (
               <>
                 <circle
                   cx='12'
@@ -97,42 +101,17 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   r={scoreDonut.radius}
                   strokeWidth={scoreDonut.strokeWidth}
                   stroke={resolveColor(color)}
-                  strokeDasharray={`${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                  strokeDasharray={`${scoreDonut.valueLength} ${scoreDonut.fullLength}`}
                 >
                   {animate && (
                     <animate
                       attributeName='stroke-dasharray'
-                      values={`0 ${scoreDonut.baseStrokeDashArray};${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
+                      from={`0 ${scoreDonut.fullLength}`}
+                      to={`${scoreDonut.valueLength} ${scoreDonut.fullLength}`}
                       dur={duration + 'ms'}
                     />
                   )}
                 </circle>
-                {!isSemiDonut && value > 0 && (animate || value < 100) && (
-                  <circle
-                    cx='12'
-                    cy='12'
-                    r={scoreDonut.radius}
-                    strokeWidth={scoreDonut.strokeWidth}
-                    stroke={resolveColor('chart-grid-border')}
-                    strokeDasharray={scoreDonut.separatorDash}
-                    strokeDashoffset={-1 * scoreDonut.valueStrokeDashArray}
-                  >
-                    {animate && (
-                      <>
-                        <animate
-                          attributeName='stroke-dasharray'
-                          values={`${scoreDonut.animatedSeparatorDash};${scoreDonut.separatorDash}`}
-                          dur={duration + 'ms'}
-                        />
-                        <animate
-                          attributeName='stroke-dashoffset'
-                          values={`0;${scoreDonut.animatedSeparatorOffset}`}
-                          dur={duration + 'ms'}
-                        />
-                      </>
-                    )}
-                  </circle>
-                )}
               </>
             )}
           </g>

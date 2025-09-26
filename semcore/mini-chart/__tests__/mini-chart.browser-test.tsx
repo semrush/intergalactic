@@ -34,24 +34,25 @@ test.describe('Visual-Score Donuts', () => {
 
       if (item.value === 0) {
         await test.step('Verify Donut', async () => {
-          expect(donutCirclesCount).toEqual(2);
+          expect(donutCirclesCount).toEqual(1);
 
           expect(donutCircles.first()).toHaveAttribute('stroke-dashoffset', '0');
-          expect(donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
+          // there's no more nth(1) circle when value = 0
+          // expect(donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
 
-          const firstAttr = await donutCircles.nth(0).getAttribute('stroke-dasharray');
-          const secondAttr = await donutCircles.nth(1).getAttribute('stroke-dasharray');
+          // const firstAttr = await donutCircles.nth(0).getAttribute('stroke-dasharray');
+          // const secondAttr = await donutCircles.nth(1).getAttribute('stroke-dasharray');
 
-          const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
-          const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
+          // const firstValues = firstAttr?.split(' ').map(parseFloat) || [];
+          // const secondValues = secondAttr?.split(' ').map(parseFloat) || [];
 
-          expect(secondValues[0]).toBe(0);
+          // expect(secondValues[0]).toBe(0);
 
-          expect(firstValues[0]).toBe(secondValues[1]);
+          // expect(firstValues[0]).toBe(secondValues[1]);
         });
 
         await test.step('Verify SemiDonut', async () => {
-          expect(semiDonutCirclesCount).toEqual(2);
+          expect(semiDonutCirclesCount).toEqual(1);
 
           const firstAttr = await semiDonutCircles.nth(0).getAttribute('stroke-dasharray');
           const secondAttr = await semiDonutCircles.nth(1).getAttribute('stroke-dasharray');
@@ -66,12 +67,11 @@ test.describe('Visual-Score Donuts', () => {
           expect(semiDonutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset', '0');
         });
       } else if (item.value > 0 && item.value < 100) {
-        expect(donutCirclesCount).toEqual(3);
+        expect(donutCirclesCount).toEqual(2);
         expect(semiDonutCirclesCount).toEqual(2);
 
         expect(await donutCircles.nth(0).getAttribute('stroke-dashoffset')).not.toBeNull();
         expect(await donutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset');
-        expect(await donutCircles.nth(2).getAttribute('stroke-dashoffset')).not.toBeNull();
 
         expect(await semiDonutCircles.nth(0).getAttribute('stroke-dashoffset')).not.toBeNull();
         expect(await semiDonutCircles.nth(1)).not.toHaveAttribute('stroke-dashoffset');

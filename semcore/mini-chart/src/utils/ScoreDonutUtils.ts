@@ -7,7 +7,7 @@ export class ScoreDonutUtils {
   constructor(value: number, isSemiDonut: boolean) {
     this.isSemiDonut = isSemiDonut;
     this.radius = isSemiDonut ? 9 : 10;
-    this.value = Math.min(value, 100);
+    this.value = Math.max(Math.min(value, 100), 0);
   }
 
   public get viewBox() {
@@ -18,40 +18,49 @@ export class ScoreDonutUtils {
     return this.isSemiDonut ? 6 : 4;
   }
 
-  public get baseStrokeDashArray() {
+  public get fullLength() {
     return this.isSemiDonut ? Math.PI * this.radius : 2 * Math.PI * this.radius;
   }
 
-  public get valueStrokeDashArray() {
-    return this.baseStrokeDashArray * (this.value / 100);
+  public get point() {
+    return this.isSemiDonut
+      ? this.fullLength / (100 / 3)
+      : this.fullLength / 100;
   }
 
-  public get greyStrokeDashArray() {
-    return this.baseStrokeDashArray - this.valueStrokeDashArray;
+  public get valueLength() {
+    return this.fullLength * (this.value / 100);
   }
 
-  public get offsetPoint() {
-    return this.isSemiDonut ? this.baseStrokeDashArray / (100 / 3) : this.baseStrokeDashArray / 100;
+  public get animatedValueLength() {
+    return Math.min(this.valueLength, this.fullLength - this.startMargin - this.endMargin);
   }
 
-  public get separatorDash() {
-    const { greyStrokeDashArray, offsetPoint, baseStrokeDashArray } = this;
-    const greyStrokeDash = greyStrokeDashArray - 2 * offsetPoint;
-    return `${offsetPoint} ${greyStrokeDash >= 0 ? greyStrokeDash : 0} ${offsetPoint} ${baseStrokeDashArray}`;
+  public get startMargin() {
+    let margin = 0;
+    if (this.value > 0) margin = this.point;
+    return margin;
   }
 
-  public get animatedSeparatorDash() {
-    const { offsetPoint, baseStrokeDashArray } = this;
-    return `${offsetPoint} ${baseStrokeDashArray - 2 * offsetPoint} ${offsetPoint} ${baseStrokeDashArray}`;
+  public get endMargin() {
+    let margin = 0;
+    if (!this.isSemiDonut && this.value > 0) margin = this.point;
+    return margin;
   }
 
-  public get animatedSeparatorOffset() {
-    const { valueStrokeDashArray, offsetPoint, baseStrokeDashArray } = this;
-    return -1 * (Math.min(valueStrokeDashArray, baseStrokeDashArray - 2 * offsetPoint));
+  public get baseOffset() {
+    return -1 * (this.valueLength + this.startMargin);
   };
 
-  public get strokeDashOffsetBase() {
-    const { valueStrokeDashArray, offsetPoint, isSemiDonut } = this;
-    return -1 * (valueStrokeDashArray + (isSemiDonut && valueStrokeDashArray > 0 ? offsetPoint : 0));
-  };
+  public get baseLength() {
+    return Math.max(this.fullLength - this.valueLength - this.startMargin - this.endMargin, 0);
+  }
+
+  public get animatedBaseLengthFrom() {
+    return this.fullLength - this.startMargin - this.endMargin;
+  }
+
+  public get animatedBaseLengthTo() {
+    return this.fullLength - this.valueLength - this.startMargin - this.endMargin;
+  }
 }
