@@ -1,5 +1,5 @@
-import type { ColorPickerProps } from '@semcore/color-picker';
-import ColorPicker from '@semcore/color-picker';
+import type { ColorPickerProps } from '@semcore/ui/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

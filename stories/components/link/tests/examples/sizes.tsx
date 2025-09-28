@@ -1,6 +1,6 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import { List } from '@semcore/typography';
+import Link from '@semcore/ui/link';
+import { List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

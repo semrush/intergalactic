@@ -1,5 +1,5 @@
-import TabLine from '@semcore/tab-line';
-import Tooltip from '@semcore/tooltip';
+import TabLine from '@semcore/ui/tab-line';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

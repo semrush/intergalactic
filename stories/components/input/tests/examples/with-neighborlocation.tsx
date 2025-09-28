@@ -1,10 +1,10 @@
-import { ButtonLink } from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import ShowYesL from '@semcore/icon/ShowYes/l';
 import ShowYesM from '@semcore/icon/ShowYes/m';
-import Input from '@semcore/input';
-import NeighborLocation from '@semcore/neighbor-location';
-import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import Input from '@semcore/ui/input';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

@@ -1,4 +1,4 @@
-import Checkbox from '@semcore/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import React from 'react';
 
 import type { BooleanControlType } from '../../types/Controls';

@@ -1,5 +1,5 @@
-import { Text } from '@semcore/typography';
-import type { TextProps } from '@semcore/typography';
+import { Text } from '@semcore/ui/typography';
+import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: TextProps) => (

@@ -1,6 +1,6 @@
-import type { BoxProps } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import type { TextProps } from '@semcore/typography';
+import type { BoxProps } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExmapleProps = TextProps & BoxProps;

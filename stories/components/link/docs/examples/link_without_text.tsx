@@ -1,7 +1,7 @@
 import HomeM from '@semcore/icon/Home/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import { Hint } from '@semcore/tooltip';
+import Link from '@semcore/ui/link';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

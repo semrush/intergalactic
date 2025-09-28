@@ -1,5 +1,3 @@
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
 import {
   Plot,
   StackBar,
@@ -8,6 +6,8 @@ import {
   ChartLegend,
   makeDataHintsContainer,
 } from '@semcore/d3-chart';
+import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

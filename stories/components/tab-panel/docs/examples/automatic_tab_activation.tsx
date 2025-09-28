@@ -1,4 +1,4 @@
-import TabPanel from '@semcore/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 import React from 'react';
 
 const Demo = () => {

@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 const items = ['save', 'rename', 'delete'];

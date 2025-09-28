@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
 import { Plot, RadialTree } from '@semcore/d3-chart';
 import LikeM from '@semcore/icon/Like/m';
-import Select from '@semcore/select';
+import { Flex } from '@semcore/ui/base-components';
+import Select from '@semcore/ui/select';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

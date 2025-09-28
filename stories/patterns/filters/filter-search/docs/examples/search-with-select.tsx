@@ -1,10 +1,10 @@
-import { Flex, Box } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
 import Search from '@semcore/icon/Search/m';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,6 @@
-import { ScreenReaderOnly } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
+import { ScreenReaderOnly } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = (): any => {

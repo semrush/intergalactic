@@ -1,9 +1,9 @@
-import BaseTrigger from '@semcore/base-trigger';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import NeighborLocation from '@semcore/neighbor-location';
-import Select from '@semcore/select';
+import BaseTrigger from '@semcore/ui/base-trigger';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => (

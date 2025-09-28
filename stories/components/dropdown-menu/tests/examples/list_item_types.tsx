@@ -1,11 +1,11 @@
-import Badge from '@semcore/badge';
-import Button from '@semcore/button';
-import Counter, { AnimatedNumber } from '@semcore/counter';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
 import DesktopIconM from '@semcore/icon/Desktop/m';
-import Switch from '@semcore/switch';
-import Tooltip from '@semcore/tooltip';
+import Badge from '@semcore/ui/badge';
+import Button from '@semcore/ui/button';
+import Counter, { AnimatedNumber } from '@semcore/ui/counter';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
+import Switch from '@semcore/ui/switch';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const TooltipContent = () => {

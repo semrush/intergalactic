@@ -1,5 +1,5 @@
 import CheckM from '@semcore/icon/Check/m';
-import { List } from '@semcore/typography';
+import { List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

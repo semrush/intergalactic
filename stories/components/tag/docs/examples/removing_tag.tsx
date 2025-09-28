@@ -1,5 +1,5 @@
-import { Box } from '@semcore/base-components';
-import { TagContainer } from '@semcore/tag';
+import { Box } from '@semcore/ui/base-components';
+import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
 
 const Demo = () => {

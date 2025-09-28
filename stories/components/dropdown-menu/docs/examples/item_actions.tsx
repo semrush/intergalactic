@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import TrashM from '@semcore/icon/Trash/m';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 const Demo = () => {

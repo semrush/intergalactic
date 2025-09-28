@@ -1,5 +1,5 @@
 import SerpM from '@semcore/icon/Serp/m';
-import InlineInput from '@semcore/inline-input';
+import InlineInput from '@semcore/ui/inline-input';
 import React from 'react';
 
 const Demo = () => {

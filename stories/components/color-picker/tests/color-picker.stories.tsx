@@ -1,4 +1,4 @@
-import ColorPicker from '@semcore/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 

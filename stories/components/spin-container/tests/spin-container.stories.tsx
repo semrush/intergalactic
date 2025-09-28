@@ -1,4 +1,4 @@
-import SpinContainer from '@semcore/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomBackgroundExample from './examples/custom-background';

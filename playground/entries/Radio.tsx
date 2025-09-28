@@ -1,5 +1,5 @@
-import type { RadioGroupProps, RadioProps } from '@semcore/radio';
-import Radio, { RadioGroup } from '@semcore/radio';
+import type { RadioGroupProps, RadioProps } from '@semcore/ui/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

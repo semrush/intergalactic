@@ -1,7 +1,7 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => (

@@ -1,8 +1,8 @@
-import { Box, Flex } from '@semcore/base-components';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import Switch from '@semcore/switch';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Switch from '@semcore/ui/switch';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

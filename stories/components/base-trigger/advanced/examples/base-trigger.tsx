@@ -1,12 +1,12 @@
-import BaseTrigger from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Divider from '@semcore/divider';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import Radio from '@semcore/radio';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import BaseTrigger from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import Radio from '@semcore/ui/radio';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

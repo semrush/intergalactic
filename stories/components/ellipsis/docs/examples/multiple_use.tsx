@@ -1,6 +1,6 @@
-import { DataTable } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
-import type { EllipsisProps } from '@semcore/ellipsis';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
 import React from 'react';
 
 const Demo = (propsEllipsis: EllipsisProps) => {

@@ -1,4 +1,4 @@
-import { DataTable } from '@semcore/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import PerformanceBaseTestExample from './examples/additional-tests/base-huge';

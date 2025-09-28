@@ -1,12 +1,12 @@
-import { Box } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import ReloadM from '@semcore/icon/Reload/m';
-import Link from '@semcore/link';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
-import { Error } from '@semcore/widget-empty';
+import { Box } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import Link from '@semcore/ui/link';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
+import { Error } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const options = [

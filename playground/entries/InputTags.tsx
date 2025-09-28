@@ -1,6 +1,6 @@
 import CheckM from '@semcore/icon/Check/m';
-import type { InputValueProps } from '@semcore/input';
-import InputTags from '@semcore/input-tags';
+import type { InputValueProps } from '@semcore/ui/input';
+import InputTags from '@semcore/ui/input-tags';
 import type { InputTagsProps } from 'input-tags/src/InputTags';
 import React from 'react';
 

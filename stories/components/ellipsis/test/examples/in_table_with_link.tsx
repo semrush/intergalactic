@@ -1,7 +1,7 @@
-import { DataTable } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');

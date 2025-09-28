@@ -1,7 +1,7 @@
-import type { FeaturePopoverProps as FeaturePopoverComponentProps } from '@semcore/feature-popover';
-import FeaturePopover from '@semcore/feature-popover';
-import { Text } from '@semcore/typography';
 import Button from '@semcore/ui/button';
+import type { FeaturePopoverProps as FeaturePopoverComponentProps } from '@semcore/ui/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

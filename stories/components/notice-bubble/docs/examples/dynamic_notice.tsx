@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
 import ReloadM from '@semcore/icon/Reload/m';
 import WarningM from '@semcore/icon/Warning/m';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
-import Spin from '@semcore/spin';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
+import Spin from '@semcore/ui/spin';
 import React from 'react';
 type DynamicNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 

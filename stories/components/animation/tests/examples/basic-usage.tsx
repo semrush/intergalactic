@@ -1,7 +1,7 @@
-import { Animation, Collapse, FadeInOut, Transform, Slide } from '@semcore/animation';
-import Button from '@semcore/button';
-import { sstyled } from '@semcore/core';
-import { Flex } from '@semcore/flex-box';
+import { Animation, Collapse, FadeInOut, Transform, Slide } from '@semcore/ui/animation';
+import Button from '@semcore/ui/button';
+import { sstyled } from '@semcore/ui/core';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const stylePopper = sstyled.css`

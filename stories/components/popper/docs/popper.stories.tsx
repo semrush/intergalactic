@@ -1,4 +1,4 @@
-import Popper from '@semcore/popper';
+import Popper from '@semcore/ui/popper';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ClickOutsideExample from './examples/click-outside';

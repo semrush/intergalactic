@@ -1,8 +1,8 @@
-import { Box, Flex } from '@semcore/flex-box';
 import Check from '@semcore/icon/Check/m';
 import Edit from '@semcore/icon/Edit/m';
-import InputTags from '@semcore/input-tags';
-import type { InputTagsTagProps } from '@semcore/input-tags';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import InputTags from '@semcore/ui/input-tags';
+import type { InputTagsTagProps } from '@semcore/ui/input-tags';
 import React from 'react';
 
 type ExampleInputTagsProps = InputTagsTagProps;

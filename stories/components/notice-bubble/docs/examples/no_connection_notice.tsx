@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
-import Spin from '@semcore/spin';
+import Button from '@semcore/ui/button';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
+import Spin from '@semcore/ui/spin';
 import React from 'react';
 type NoConnectionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
 

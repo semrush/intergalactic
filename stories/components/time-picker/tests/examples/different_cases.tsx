@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import TimePicker from '@semcore/time-picker';
-import type { TimePickerProps, TimePickerItemProps } from '@semcore/time-picker';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import TimePicker from '@semcore/ui/time-picker';
+import type { TimePickerProps, TimePickerItemProps } from '@semcore/ui/time-picker';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type baseExampleProps = TimePickerProps & TimePickerItemProps;

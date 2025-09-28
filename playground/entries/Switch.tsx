@@ -1,7 +1,7 @@
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import type { SwitchProps, SwitchValueProps } from '@semcore/switch';
-import Switch from '@semcore/switch';
+import type { SwitchProps, SwitchValueProps } from '@semcore/ui/switch';
+import Switch from '@semcore/ui/switch';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

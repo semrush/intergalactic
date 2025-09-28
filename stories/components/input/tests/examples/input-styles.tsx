@@ -1,9 +1,9 @@
-import Badge from '@semcore/badge';
-import Button from '@semcore/button';
-import { Flex, Box } from '@semcore/flex-box';
 import Search from '@semcore/icon/Search/m';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
+import Badge from '@semcore/ui/badge';
+import Button from '@semcore/ui/button';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 
 const Demo = () => {

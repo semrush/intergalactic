@@ -1,8 +1,8 @@
-import { ButtonTrigger } from '@semcore/base-trigger';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Ellipsis from '@semcore/ellipsis';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Ellipsis from '@semcore/ui/ellipsis';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

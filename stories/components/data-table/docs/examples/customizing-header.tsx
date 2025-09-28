@@ -1,8 +1,8 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import { DataTable } from '@semcore/data-table';
-import Select from '@semcore/select';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import { DataTable } from '@semcore/ui/data-table';
+import Select from '@semcore/ui/select';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

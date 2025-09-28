@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
-import Flag, { iso2Name } from '@semcore/flags';
 import CloseM from '@semcore/icon/Close/m';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Flag, { iso2Name } from '@semcore/ui/flags';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

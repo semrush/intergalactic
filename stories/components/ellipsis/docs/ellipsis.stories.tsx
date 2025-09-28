@@ -1,4 +1,4 @@
-import Ellipsis, { type EllipsisProps } from '@semcore/ellipsis';
+import Ellipsis, { type EllipsisProps } from '@semcore/ui/ellipsis';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 export type ExampleEllipsisProps = EllipsisProps;
 

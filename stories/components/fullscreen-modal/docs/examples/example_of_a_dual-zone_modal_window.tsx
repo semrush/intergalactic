@@ -1,9 +1,9 @@
-import Button from '@semcore/button';
-import Divider from '@semcore/divider';
-import FullscreenModal from '@semcore/fullscreen-modal';
 import ArrowLeftM from '@semcore/icon/ArrowLeft/m';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

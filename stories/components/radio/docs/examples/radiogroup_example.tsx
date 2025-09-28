@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import Radio, { RadioGroup } from '@semcore/radio';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

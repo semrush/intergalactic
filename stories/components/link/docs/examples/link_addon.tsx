@@ -1,6 +1,6 @@
 import CheckM from '@semcore/icon/Check/m';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import Link from '@semcore/link';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {

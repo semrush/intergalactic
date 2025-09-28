@@ -1,8 +1,8 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { RadioFH, BadgeFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import Radio, { RadioGroup } from '@semcore/radio';
-import { Text } from '@semcore/typography';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { RadioFH, BadgeFH } from '@semcore/ui/feature-highlight';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

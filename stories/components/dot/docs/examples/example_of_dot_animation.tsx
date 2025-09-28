@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import Dot from '@semcore/dot';
 import NotificationM from '@semcore/icon/Notification/m';
+import Button from '@semcore/ui/button';
+import Dot from '@semcore/ui/dot';
 import React from 'react';
 
 const Demo = () => {

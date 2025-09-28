@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/flex-box';
-import InlineInput from '@semcore/inline-input';
+import { Flex } from '@semcore/ui/flex-box';
+import InlineInput from '@semcore/ui/inline-input';
 import React from 'react';
 
 const Example = () => {

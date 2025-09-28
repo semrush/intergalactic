@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
 import TrashIcon from '@semcore/icon/Trash/m';
-import Modal from '@semcore/modal';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

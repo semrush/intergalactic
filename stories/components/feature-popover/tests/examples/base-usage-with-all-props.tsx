@@ -1,11 +1,11 @@
-import { Flex, Box } from '@semcore/base-components';
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import FeaturePopover from '@semcore/feature-popover';
-import type { FeaturePopoverPopperProps, FeaturePopoverProps } from '@semcore/feature-popover';
 import FileExport from '@semcore/icon/FileExport/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/popper';
-import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import type { FeaturePopoverPopperProps, FeaturePopoverProps } from '@semcore/ui/feature-popover';
+import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/popper';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleProps = FeaturePopoverProps & FeaturePopoverPopperProps & PopperProps & PopperTriggerProps & PopperPopperProps;

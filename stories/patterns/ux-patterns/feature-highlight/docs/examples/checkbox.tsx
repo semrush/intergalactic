@@ -1,8 +1,8 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import Checkbox from '@semcore/checkbox';
-import { CheckboxFH, BadgeFH } from '@semcore/feature-highlight';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import { Text, List } from '@semcore/typography';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Checkbox from '@semcore/ui/checkbox';
+import { CheckboxFH, BadgeFH } from '@semcore/ui/feature-highlight';
+import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

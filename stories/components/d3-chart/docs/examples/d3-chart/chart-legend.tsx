@@ -1,5 +1,5 @@
-import { Box } from '@semcore/base-components';
 import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/d3-chart';
+import { Box } from '@semcore/ui/base-components';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

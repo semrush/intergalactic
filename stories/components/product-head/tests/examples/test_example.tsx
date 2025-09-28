@@ -1,16 +1,16 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import Breadcrumbs from '@semcore/breadcrumbs';
-import Button, { ButtonLink } from '@semcore/button';
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
 import InfoM from '@semcore/icon/Info/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import SettingsM from '@semcore/icon/Settings/m';
-import Link from '@semcore/link';
-import Header, { Info, Title } from '@semcore/product-head';
-import Select from '@semcore/select';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Link from '@semcore/ui/link';
+import Header, { Info, Title } from '@semcore/ui/product-head';
+import Select from '@semcore/ui/select';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

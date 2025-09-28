@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
 import { Chart } from '@semcore/d3-chart';
-import DnD from '@semcore/drag-and-drop';
 import MathPlusL from '@semcore/icon/MathPlus/l';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
+import DnD from '@semcore/ui/drag-and-drop';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const stableRandom = (seed: number) => {

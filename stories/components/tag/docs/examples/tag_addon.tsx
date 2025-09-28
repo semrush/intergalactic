@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
 import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import SmileSadM from '@semcore/icon/SmileSad/m';
-import Tag from '@semcore/tag';
+import { Flex } from '@semcore/ui/base-components';
+import Tag from '@semcore/ui/tag';
 import React from 'react';
 
 const Demo = () => {

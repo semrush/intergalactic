@@ -1,8 +1,8 @@
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import VideoListL from '@semcore/icon/VideoList/l';
-import Link from '@semcore/link';
-import { Hint } from '@semcore/tooltip';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

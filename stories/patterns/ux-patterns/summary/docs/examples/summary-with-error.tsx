@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
-import Divider from '@semcore/divider';
 import Info from '@semcore/icon/Info/m';
 import Warning from '@semcore/icon/Warning/m';
-import { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

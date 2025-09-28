@@ -23,7 +23,7 @@ npm install @semcore/ui
 
 :::
 
-After the installation, you can access each component at `@semcore/{component_name}`.
+After the installation, you can access each component at `@semcore/ui/{component_name}`.
 
 It's also possible to install just the required packages:
 

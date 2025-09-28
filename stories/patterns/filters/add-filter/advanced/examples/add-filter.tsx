@@ -1,14 +1,14 @@
-import AddFilter from '@semcore/add-filter';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import SearchM from '@semcore/icon/Search/m';
-import Input from '@semcore/input';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Select from '@semcore/select';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import AddFilter from '@semcore/ui/add-filter';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import Input from '@semcore/ui/input';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Select from '@semcore/ui/select';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const selectOptions = [

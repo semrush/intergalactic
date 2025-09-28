@@ -1,5 +1,5 @@
-import { DataTable } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
+import { DataTable } from '@semcore/ui/data-table';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => {

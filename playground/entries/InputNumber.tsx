@@ -1,5 +1,5 @@
-import type { InputNumberProps, InputNumberValueProps, InputNumberControlsProps } from '@semcore/input-number';
-import InputNumber from '@semcore/input-number';
+import type { InputNumberProps, InputNumberValueProps, InputNumberControlsProps } from '@semcore/ui/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

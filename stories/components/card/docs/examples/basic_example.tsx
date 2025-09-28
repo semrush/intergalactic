@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
 import SettingsM from '@semcore/icon/Settings/m';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const tooltipContent =

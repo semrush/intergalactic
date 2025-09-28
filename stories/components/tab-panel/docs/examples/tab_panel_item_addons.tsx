@@ -1,8 +1,8 @@
-import Badge from '@semcore/badge';
 import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
-import TabPanel from '@semcore/tab-panel';
+import Badge from '@semcore/ui/badge';
+import TabPanel from '@semcore/ui/tab-panel';
 import React from 'react';
 
 const Demo = () => {

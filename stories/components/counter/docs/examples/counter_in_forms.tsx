@@ -1,7 +1,7 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import Counter from '@semcore/counter';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Counter from '@semcore/ui/counter';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const maxSymbols = 150;

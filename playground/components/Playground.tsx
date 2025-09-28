@@ -1,4 +1,4 @@
-import { Box } from '@semcore/base-components';
+import { Box } from '@semcore/ui/base-components';
 import React, { useMemo, useState } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 

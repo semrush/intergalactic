@@ -1,9 +1,9 @@
-import type { FlexProps } from '@semcore/base-components';
-import { Flex } from '@semcore/base-components';
-import type { SpinProps } from '@semcore/spin';
-import Spin from '@semcore/spin';
-import type { TextProps } from '@semcore/typography';
-import { Text } from '@semcore/typography';
+import type { FlexProps } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
+import type { SpinProps } from '@semcore/ui/spin';
+import Spin from '@semcore/ui/spin';
+import type { TextProps } from '@semcore/ui/typography';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

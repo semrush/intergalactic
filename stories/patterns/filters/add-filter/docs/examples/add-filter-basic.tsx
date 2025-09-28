@@ -1,10 +1,10 @@
-import AddFilter from '@semcore/add-filter';
-import { FilterTrigger } from '@semcore/base-trigger';
-import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
 import SearchM from '@semcore/icon/Search/m';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
+import AddFilter from '@semcore/ui/add-filter';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { ButtonLink } from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 type FilterData = Record<string, any>;

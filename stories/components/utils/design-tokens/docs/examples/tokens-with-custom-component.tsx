@@ -1,6 +1,6 @@
-import { Box, Flex } from '@semcore/base-components';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
-import Switch from '@semcore/switch';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Switch from '@semcore/ui/switch';
 import React from 'react';
 
 const styles = `

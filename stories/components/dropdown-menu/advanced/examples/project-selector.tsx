@@ -1,14 +1,14 @@
-import { ButtonTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import { lastInteraction } from '@semcore/core';
-import Divider from '@semcore/divider';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex } from '@semcore/flex-box';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Pin from '@semcore/icon/Pin/m';
 import Settings from '@semcore/icon/Settings/m';
-import { InputSearch } from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import { lastInteraction } from '@semcore/ui/core';
+import Divider from '@semcore/ui/divider';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { Flex } from '@semcore/ui/flex-box';
+import { InputSearch } from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { FixedSizeList } from 'react-window';
 

@@ -1,5 +1,5 @@
-import Badge from '@semcore/badge';
-import { Flex } from '@semcore/base-components';
+import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {

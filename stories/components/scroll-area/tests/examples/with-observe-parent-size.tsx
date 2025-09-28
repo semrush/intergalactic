@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import Button from '@semcore/ui/button';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 import React, { Component, createRef } from 'react';
 
 interface State {

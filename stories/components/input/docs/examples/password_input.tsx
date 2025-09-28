@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
 import ShowNoM from '@semcore/icon/ShowNo/m';
 import ShowYesM from '@semcore/icon/ShowYes/m';
-import Input from '@semcore/input';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import { Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

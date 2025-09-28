@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/base-components';
 import { Chart } from '@semcore/d3-chart';
+import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
 function Demo() {

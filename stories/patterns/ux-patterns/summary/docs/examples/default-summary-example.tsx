@@ -1,11 +1,11 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Divider from '@semcore/divider';
 import Info from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import Skeleton from '@semcore/skeleton';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import Link from '@semcore/ui/link';
+import Skeleton from '@semcore/ui/skeleton';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React, { useEffect, useState } from 'react';
 
 const Demo = () => {

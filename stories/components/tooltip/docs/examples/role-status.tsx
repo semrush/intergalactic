@@ -1,6 +1,6 @@
 import CheckAltM from '@semcore/icon/CheckAlt/m';
-import Input from '@semcore/input';
-import Tooltip from '@semcore/tooltip';
+import Input from '@semcore/ui/input';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

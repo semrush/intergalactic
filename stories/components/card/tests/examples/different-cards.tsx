@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
 import SettingsM from '@semcore/icon/Settings/m';
 import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Pills from '@semcore/pills';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import Pills from '@semcore/ui/pills';
 import React from 'react';
 
 const Demo = () => (

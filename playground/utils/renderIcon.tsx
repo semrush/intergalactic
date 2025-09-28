@@ -2,8 +2,8 @@ import ArrowRightL from '@semcore/icon/ArrowRight/l';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import CheckL from '@semcore/icon/Check/l';
 import CheckM from '@semcore/icon/Check/m';
-import type { TextProps } from '@semcore/typography';
 import type { ButtonProps } from '@semcore/ui/button';
+import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 const SizeToIconMap = {

@@ -1,12 +1,12 @@
-import Badge from '@semcore/badge';
-import Counter from '@semcore/counter';
-import type { BoxProps } from '@semcore/flex-box';
 import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
-import TabLine from '@semcore/tab-line';
-import type { TabLineProps, TabLineItemProps } from '@semcore/tab-line';
-import { Text } from '@semcore/typography';
+import Badge from '@semcore/ui/badge';
+import Counter from '@semcore/ui/counter';
+import type { BoxProps } from '@semcore/ui/flex-box';
+import TabLine from '@semcore/ui/tab-line';
+import type { TabLineProps, TabLineItemProps } from '@semcore/ui/tab-line';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps;

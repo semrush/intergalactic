@@ -1,5 +1,5 @@
-import { DataTable } from '@semcore/data-table';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
 import { Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';

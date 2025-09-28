@@ -1,7 +1,7 @@
-import type { DataTableProps } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
 import AmazonM from '@semcore/icon/color/Amazon/m';
-import { Hint } from '@semcore/tooltip';
+import type { DataTableProps } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import Counter from '@semcore/counter';
 import SettingsM from '@semcore/icon/Settings/m';
+import Button from '@semcore/ui/button';
+import Counter from '@semcore/ui/counter';
 import React from 'react';
 
 const Demo = () => (

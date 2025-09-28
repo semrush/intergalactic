@@ -1,11 +1,11 @@
-import { Box, Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
-import Flag from '@semcore/flags';
 import CloseM from '@semcore/icon/Close/m';
-import Input from '@semcore/input';
-import InputMask from '@semcore/input-mask';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Flag from '@semcore/ui/flags';
+import Input from '@semcore/ui/input';
+import InputMask from '@semcore/ui/input-mask';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,6 @@
 import { Chart, Area, Plot, YAxis, XAxis } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import { scaleTime, scaleLinear } from 'd3-scale';
 import { curveBasis, curveStep, curveCardinal } from 'd3-shape';
 import React from 'react';

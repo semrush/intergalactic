@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
 import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import { DescriptionTooltip } from '@semcore/tooltip';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import React from 'react';
 
 function noop(e: React.SyntheticEvent) {

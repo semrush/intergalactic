@@ -1,6 +1,6 @@
 import EditM from '@semcore/icon/Edit/m';
-import type { TagProps } from '@semcore/tag';
-import { TagContainer } from '@semcore/tag';
+import type { TagProps } from '@semcore/ui/tag';
+import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

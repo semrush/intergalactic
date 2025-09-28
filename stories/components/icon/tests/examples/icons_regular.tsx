@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/flex-box';
 import ArrowsL from '@semcore/icon/Arrows/l';
 import ArrowsM from '@semcore/icon/Arrows/m';
 import MailFilledL from '@semcore/icon/MailFilled/l';
 import MailFilledM from '@semcore/icon/MailFilled/m';
-import { Hint } from '@semcore/tooltip';
+import { Flex } from '@semcore/ui/flex-box';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

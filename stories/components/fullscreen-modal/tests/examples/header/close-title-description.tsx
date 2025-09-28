@@ -1,9 +1,9 @@
-import Button, { ButtonLink } from '@semcore/button';
-import FullscreenModal from '@semcore/fullscreen-modal';
 import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import Link from '@semcore/ui/link';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

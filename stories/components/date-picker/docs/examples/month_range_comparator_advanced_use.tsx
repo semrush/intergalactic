@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import { MonthDateRangeComparator } from '@semcore/date-picker';
 import WarningIcon from '@semcore/icon/Warning/m';
-import Notice from '@semcore/notice';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { MonthDateRangeComparator } from '@semcore/ui/date-picker';
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

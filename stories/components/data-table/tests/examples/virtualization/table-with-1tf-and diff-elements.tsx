@@ -1,12 +1,12 @@
-import { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
-import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { ButtonLink } from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import Link from '@semcore/ui/link';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -150,7 +150,7 @@ const Demo = () => {
               <Checkbox label='Option 1' />
               <ButtonLink
                 onClick={() => {
-                  alert(`Click row 
+                  alert(`Click row
                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
                  row: ${JSON.stringify(props.row, null, '  ')};
                  index: ${props.rowIndex};`);

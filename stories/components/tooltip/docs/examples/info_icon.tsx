@@ -1,5 +1,5 @@
 import IconInfo from '@semcore/icon/Info/m';
-import Tooltip from '@semcore/tooltip';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

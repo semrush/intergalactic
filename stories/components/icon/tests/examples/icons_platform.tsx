@@ -1,4 +1,3 @@
-import { Flex } from '@semcore/flex-box';
 import AdsToolkit from '@semcore/icon/platform/AdsToolkit';
 import AISEOToolkit from '@semcore/icon/platform/AISEOToolkit';
 import AIToolkit from '@semcore/icon/platform/AIToolkit';
@@ -12,7 +11,8 @@ import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
 import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
 import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
 import TrafficMarketToolkit from '@semcore/icon/platform/TrafficMarketToolkit';
-import { Hint } from '@semcore/tooltip';
+import { Flex } from '@semcore/ui/flex-box';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

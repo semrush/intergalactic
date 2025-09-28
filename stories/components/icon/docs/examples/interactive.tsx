@@ -1,5 +1,5 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import { Hint } from '@semcore/tooltip';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => (
