@@ -1,9 +1,9 @@
-import IconL from '@semcore/icon/Monitoring/l';
-import IconM from '@semcore/icon/Monitoring/m';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { Flex, Box } from '@semcore/ui/flex-box';
+import IconL from '@semcore/ui/icon/Monitoring/l';
+import IconM from '@semcore/ui/icon/Monitoring/m';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';

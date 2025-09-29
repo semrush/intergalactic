@@ -1,6 +1,6 @@
-import SmileHappyL from '@semcore/icon/SmileHappy/l';
-import SmileHappyM from '@semcore/icon/SmileHappy/m';
 import { Flex, Box } from '@semcore/ui/flex-box';
+import SmileHappyL from '@semcore/ui/icon/SmileHappy/l';
+import SmileHappyM from '@semcore/ui/icon/SmileHappy/m';
 import Tag, { TagContainer } from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

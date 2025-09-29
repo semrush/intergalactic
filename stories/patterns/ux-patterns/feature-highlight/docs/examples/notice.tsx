@@ -1,5 +1,5 @@
-import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { NoticeFH } from '@semcore/ui/feature-highlight';
+import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import React from 'react';
 
 const Demo = () => (

@@ -1,8 +1,8 @@
-import QuestionAltM from '@semcore/icon/Question/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import WarningM from '@semcore/ui/icon/Warning/m';
 import { NoticeSmart } from '@semcore/ui/notice';
 import React from 'react';
 

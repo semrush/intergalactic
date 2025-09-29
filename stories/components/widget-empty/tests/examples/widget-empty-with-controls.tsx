@@ -1,6 +1,6 @@
-import FileExportM from '@semcore/icon/FileExport/m';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { Box, Flex } from '@semcore/ui/flex-box';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 import { Hint } from '@semcore/ui/tooltip';
 import WidgetEmpty, { NoData, getIconPath } from '@semcore/ui/widget-empty';
 import React from 'react';

@@ -1,10 +1,10 @@
-import ChargebackLoss from '@semcore/icon/ChargebackLoss/m';
-import ChargebackWinM from '@semcore/icon/ChargebackWin/m';
-import MoneyCoinsM from '@semcore/icon/MoneyCoins/m';
-import PopupM from '@semcore/icon/Popup/m';
-import ReloadM from '@semcore/icon/Reload/m';
-import ReturnM from '@semcore/icon/Return/m';
 import { Flex } from '@semcore/ui/flex-box';
+import ChargebackLoss from '@semcore/ui/icon/ChargebackLoss/m';
+import ChargebackWinM from '@semcore/ui/icon/ChargebackWin/m';
+import MoneyCoinsM from '@semcore/ui/icon/MoneyCoins/m';
+import PopupM from '@semcore/ui/icon/Popup/m';
+import ReloadM from '@semcore/ui/icon/Reload/m';
+import ReturnM from '@semcore/ui/icon/Return/m';
 import { Text, type TextProps } from '@semcore/ui/typography';
 import React from 'react';
 import type { FC } from 'react';

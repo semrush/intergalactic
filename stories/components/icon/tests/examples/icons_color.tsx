@@ -1,8 +1,8 @@
-import AmazonL from '@semcore/icon/color/Amazon/l';
-import AmazonM from '@semcore/icon/color/Amazon/m';
-import WhatsAppL from '@semcore/icon/color/WhatsApp/l';
-import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Flex } from '@semcore/ui/flex-box';
+import AmazonL from '@semcore/ui/icon/color/Amazon/l';
+import AmazonM from '@semcore/ui/icon/color/Amazon/m';
+import WhatsAppL from '@semcore/ui/icon/color/WhatsApp/l';
+import WhatsAppM from '@semcore/ui/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 

@@ -1,5 +1,5 @@
-import ReloadM from '@semcore/icon/Reload/m';
 import Button from '@semcore/ui/button';
+import ReloadM from '@semcore/ui/icon/Reload/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 type NoConnectionActionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };

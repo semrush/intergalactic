@@ -1,8 +1,8 @@
-import ArrowLeftM from '@semcore/icon/ArrowLeft/m';
-import ArrowRightM from '@semcore/icon/ArrowRight/m';
-import InfoM from '@semcore/icon/Info/m';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

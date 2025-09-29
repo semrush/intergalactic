@@ -1,7 +1,7 @@
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import BaseTrigger from '@semcore/ui/base-trigger';
 import Dropdown from '@semcore/ui/dropdown';
 import { Flex } from '@semcore/ui/flex-box';
+import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import Select from '@semcore/ui/select';
 import React from 'react';

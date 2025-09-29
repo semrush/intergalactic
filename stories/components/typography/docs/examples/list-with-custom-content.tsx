@@ -1,4 +1,4 @@
-import CheckM from '@semcore/icon/Check/m';
+import CheckM from '@semcore/ui/icon/Check/m';
 import { List } from '@semcore/ui/typography';
 import React from 'react';
 

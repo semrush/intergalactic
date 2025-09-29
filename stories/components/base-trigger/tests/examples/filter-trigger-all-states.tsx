@@ -1,7 +1,7 @@
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Dropdown from '@semcore/ui/dropdown';
 import { Flex } from '@semcore/ui/flex-box';
+import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
 import Select from '@semcore/ui/select';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';

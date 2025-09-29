@@ -1,7 +1,7 @@
-import ShowYesL from '@semcore/icon/ShowYes/l';
-import ShowYesM from '@semcore/icon/ShowYes/m';
 import { ButtonLink } from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
+import ShowYesL from '@semcore/ui/icon/ShowYes/l';
+import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import Input from '@semcore/ui/input';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Hint } from '@semcore/ui/tooltip';

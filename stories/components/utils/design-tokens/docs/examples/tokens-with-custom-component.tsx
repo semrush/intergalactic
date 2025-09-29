@@ -1,5 +1,5 @@
-import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import { Box, Flex } from '@semcore/ui/base-components';
+import { ThemeProvider } from '@semcore/ui/core/lib/utils/ThemeProvider';
 import Switch from '@semcore/ui/switch';
 import React from 'react';
 

@@ -1,8 +1,8 @@
-import ArrowLeftM from '@semcore/icon/ArrowLeft/m';
-import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

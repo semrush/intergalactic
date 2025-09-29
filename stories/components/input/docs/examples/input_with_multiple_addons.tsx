@@ -1,8 +1,8 @@
-import CloseM from '@semcore/icon/Close/m';
-import ShowNoM from '@semcore/icon/ShowNo/m';
-import ShowYesM from '@semcore/icon/ShowYes/m';
 import { Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
+import CloseM from '@semcore/ui/icon/Close/m';
+import ShowNoM from '@semcore/ui/icon/ShowNo/m';
+import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import { Hint } from '@semcore/ui/tooltip';

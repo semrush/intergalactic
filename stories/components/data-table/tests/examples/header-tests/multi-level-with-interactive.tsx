@@ -1,8 +1,8 @@
-import InfoM from '@semcore/icon/Info/m';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
+import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Select from '@semcore/ui/select';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';

@@ -1,8 +1,8 @@
-import AmazonM from '@semcore/icon/color/Amazon/m';
-import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
+import AmazonM from '@semcore/ui/icon/color/Amazon/m';
+import WhatsAppM from '@semcore/ui/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

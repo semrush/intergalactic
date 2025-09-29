@@ -1,7 +1,7 @@
-import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
+import { I18nProvider } from '@semcore/ui/core/lib/utils/enhances/WithI18n';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';

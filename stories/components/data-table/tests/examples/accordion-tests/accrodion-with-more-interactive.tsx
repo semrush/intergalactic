@@ -1,9 +1,9 @@
-import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { Flex } from '@semcore/ui/flex-box';
+import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

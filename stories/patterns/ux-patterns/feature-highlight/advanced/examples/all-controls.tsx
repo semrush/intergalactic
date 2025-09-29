@@ -1,9 +1,9 @@
-import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { ButtonFH, PillsFH, SelectFH, InputFH, SwitchFH, TabLineFH, NoticeFH, BadgeFH, RadioFH, CheckboxFH } from '@semcore/ui/feature-highlight';
+import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import { Text, List } from '@semcore/ui/typography';
 import React from 'react';

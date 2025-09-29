@@ -1,8 +1,8 @@
-import Info from '@semcore/icon/Info/m';
-import Warning from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
+import Info from '@semcore/ui/icon/Info/m';
+import Warning from '@semcore/ui/icon/Warning/m';
 import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
