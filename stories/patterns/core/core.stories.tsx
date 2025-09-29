@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
-import FocusStylesInAllInputs from './tests/focus-styles-in-all-inputs';
+import FocusInAllComponentsStory from './tests/focus-in-all-components';
+import FocusStylesInAllInputsStory from './tests/focus-styles-in-all-inputs';
 
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
@@ -10,6 +11,10 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const FocusStylesInAllInputsStory: Story = {
-  render: () => <FocusStylesInAllInputs />,
+export const FocusStylesInAllInputs: Story = {
+  render: () => <FocusStylesInAllInputsStory />,
+};
+
+export const FocusInAllComponents: Story = {
+  render: () => <FocusInAllComponentsStory />,
 };
