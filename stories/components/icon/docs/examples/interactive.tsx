@@ -1,4 +1,4 @@
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
