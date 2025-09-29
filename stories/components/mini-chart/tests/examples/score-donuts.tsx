@@ -13,7 +13,7 @@ const Demo = ({
 }: scoreDonutsProps) => {
   return (
 
-    <Flex flexWrap={true} alignItems='flex-end' gap='2'>
+    <Flex flexWrap={true} alignItems='flex-end'>
       <MiniChart.ScoreDonut value={value} loading={loading} color={color} baseBgColor={baseBgColor} animate={animate} w='50px' aria-label='test' />
       <MiniChart.ScoreSemiDonut value={value} loading={loading} color={color} baseBgColor={baseBgColor} animate={animate} w='50px' aria-labelledby='mylabel' aria-hidden />
     </Flex>
