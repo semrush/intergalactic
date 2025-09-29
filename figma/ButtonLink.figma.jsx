@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import { ButtonLink } from '@semcore/button';
+import { ButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
 figma.connect(

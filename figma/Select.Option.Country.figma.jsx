@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect';
-import type { iso2Name } from '@semcore/flags';
-import Flags from '@semcore/flags';
-import Select from '@semcore/select';
+import type { iso2Name } from '@semcore/ui/flags';
+import Flags from '@semcore/ui/flags';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 // TODO: Add addons

@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import Skeleton from '@semcore/skeleton';
+import Skeleton from '@semcore/ui/skeleton';
 import React from 'react';
 
 figma.connect(

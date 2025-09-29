@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect';
-import Flex from '@semcore/flex-box';
-import Spin from '@semcore/spin';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Spin from '@semcore/ui/spin';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 figma.connect(

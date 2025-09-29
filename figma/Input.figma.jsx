@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect/react';
-import Flex from '@semcore/flex-box';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 // Need somehow to get the readOnly and disabled props from the Input component

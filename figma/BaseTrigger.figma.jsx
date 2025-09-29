@@ -1,6 +1,6 @@
 import figma from '@figma/code-connect';
-import { LinkTrigger } from '@semcore/base-trigger';
-import Select from '@semcore/select';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 figma.connect(

@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect';
-import { Flex } from '@semcore/base-components';
-import Notice from '@semcore/notice';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 // "Loading" message

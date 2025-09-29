@@ -33,7 +33,7 @@ for (const set of sets.data.meta.component_sets) {
 
   for (const size of sizes) {
     str += `
-import ${set.name}${size} from '@semcore/${folder}/${set.name}/${size.toLowerCase()}';
+import ${set.name}${size} from '@semcore/ui/${folder}/${set.name}/${size.toLowerCase()}';
 figma.connect(${set.name}${size}, 'https://www.figma.com/design/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons?node-id=${set.node_id}', {
   variant: { ${folder === 'icon/pay' ? 'size' : 'Size'}: '${folder === 'icon/pay' ? size.toLowerCase() : size}' },
   example: () => <${set.name}${size} />,
@@ -45,7 +45,7 @@ figma.connect(${set.name}${size}, 'https://www.figma.com/design/lVX2dKnVFtcSTQV7
 for (const component of components.data.meta.components) {
   if (component.containing_frame.nodeId !== '7776:24') continue;
   str += `
-import ${component.name} from '@semcore/icon/platform/${component.name}';
+import ${component.name} from '@semcore/ui/icon/platform/${component.name}';
 figma.connect(${component.name}, 'https://www.figma.com/design/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons?node-id=${component.node_id}');
 `;
 }

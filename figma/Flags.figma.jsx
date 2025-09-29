@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import Flags from '@semcore/flags';
+import Flags from '@semcore/ui/flags';
 import React from 'react';
 
 figma.connect(

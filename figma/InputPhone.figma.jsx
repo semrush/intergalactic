@@ -1,8 +1,8 @@
 import figma from '@figma/code-connect/react';
-import { ButtonLink } from '@semcore/button';
-import Flag, { iso2Name } from '@semcore/flags';
-import Box from '@semcore/flex-box';
-import Input from '@semcore/input';
+import { ButtonLink } from '@semcore/ui/button';
+import Flag, { iso2Name } from '@semcore/ui/flags';
+import { Box } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
 import React from 'react';
 
 // Need somehow to get the readOnly and disabled props from the Input component

@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import { List } from '@semcore/typography';
+import { List } from '@semcore/ui/typography';
 
 figma.connect(
   List.Item,

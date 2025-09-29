@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect/react';
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 import React from 'react';
 
 figma.connect(

@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 // TODO: Add addons
