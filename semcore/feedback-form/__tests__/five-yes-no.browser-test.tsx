@@ -1,5 +1,10 @@
+import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+
+const locators = {
+  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
+};
 
 test.describe('Visual', () => {
   test('Verify yes-no form base example styles', async ({ page }) => {
@@ -29,7 +34,7 @@ test.describe('Visual', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify form styles', async () => {
+    await test.step('Verify success state', async () => {
       await page.keyboard.type('test test test');
       await page.keyboard.press('Tab');
       await page.keyboard.type('test@test.test');
@@ -40,7 +45,7 @@ test.describe('Visual', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify email validation', async () => {
+    await test.step('Verify close notification hint', async () => {
       await page.keyboard.press('Escape');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -51,19 +56,19 @@ test.describe('Visual', () => {
 });
 
 test.describe('Functional', () => {
-  test('Verify five stars base example styles keyboard interactions', async ({ page }) => {
+  test('Verify yes-no form keyboard interactions', async ({ page }) => {
     const standPath =
       'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const sliderRating = page.getByRole('slider');
-    const stars = page.getByRole('none');
     const checkboxInput = page.getByRole('checkbox');
     const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
     const itemInput = page.getByRole('textbox');
+    const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
+    const feedbackForm = page.locator('[data-ui-name="FeedbackForm"]');
+    const feedbackFormItem = page.locator('[data-ui-name="FeedbackForm.Item"]');
 
     await test.step('Verify stars can be focused and their attributes ', async () => {
       await page.keyboard.press('Tab');
