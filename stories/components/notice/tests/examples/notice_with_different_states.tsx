@@ -1,9 +1,9 @@
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import AlertM from '@semcore/icon/Book/m';
-import InfoM from '@semcore/icon/Info/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Notice from '@semcore/notice';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import AlertM from '@semcore/ui/icon/Book/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import Notice from '@semcore/ui/notice';
 import React from 'react';
 
 const NoticeSmokeDemo = () => {

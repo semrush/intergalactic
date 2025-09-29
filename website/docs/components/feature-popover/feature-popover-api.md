@@ -9,7 +9,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 This is a wrap component, which is inherited from `<Popper/>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
@@ -20,7 +20,7 @@ import FeaturePopover from '@semcore/feature-popover';
 The element to which `<FeaturePopover.Popper/>` will be attached. Inherits all [`Box`](../../layout/box-system/box-system-api#box) properies.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
@@ -29,7 +29,7 @@ import FeaturePopover from '@semcore/feature-popover';
 The element with the `FeaturePopover` content. It's inherited from `<Popper.Popper/>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
@@ -40,7 +40,7 @@ import FeaturePopover from '@semcore/feature-popover';
 This blinking circle is inherited from [`Box`](../../layout/box-system/box-system-api#box).
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Spot />;
 ```
 

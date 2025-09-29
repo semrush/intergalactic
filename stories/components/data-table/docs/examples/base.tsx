@@ -1,5 +1,5 @@
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = () => {

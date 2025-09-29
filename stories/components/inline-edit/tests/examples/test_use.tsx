@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/flex-box';
-import InlineEdit from '@semcore/inline-edit';
+import { Flex } from '@semcore/ui/flex-box';
+import InlineEdit from '@semcore/ui/inline-edit';
 import React from 'react';
 
 const Example = () => {

@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import Button, { ButtonLink } from '@semcore/button';
-import Counter from '@semcore/counter';
-import DnD from '@semcore/drag-and-drop';
-import DropdownMenu from '@semcore/dropdown-menu';
-import SettingsM from '@semcore/icon/Settings/m';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Counter from '@semcore/ui/counter';
+import DnD from '@semcore/ui/drag-and-drop';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import SettingsM from '@semcore/ui/icon/Settings/m';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const defeaultColumns = [

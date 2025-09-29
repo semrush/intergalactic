@@ -1,6 +1,6 @@
-import { Box } from '@semcore/base-components';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { NoData } from '@semcore/widget-empty';
+import { Box } from '@semcore/ui/base-components';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const styles = ['success', 'info', 'muted', 'warning', 'danger'];

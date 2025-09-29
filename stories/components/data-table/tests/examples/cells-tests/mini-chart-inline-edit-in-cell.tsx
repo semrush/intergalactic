@@ -1,10 +1,10 @@
-import { DataTable } from '@semcore/data-table';
-import { Box, Flex } from '@semcore/flex-box';
-import EditM from '@semcore/icon/Edit/m';
-import InlineEdit from '@semcore/inline-edit';
-import InlineInput from '@semcore/inline-input';
-import MiniChart from '@semcore/mini-chart';
-import { Text } from '@semcore/typography';
+import { DataTable } from '@semcore/ui/data-table';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import EditM from '@semcore/ui/icon/Edit/m';
+import InlineEdit from '@semcore/ui/inline-edit';
+import InlineInput from '@semcore/ui/inline-input';
+import MiniChart from '@semcore/ui/mini-chart';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Vol = (props: { value: string | React.ReactElement }) => {

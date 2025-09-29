@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import type { SidePanelProps } from '@semcore/side-panel';
-import SidePanel from '@semcore/side-panel';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import type { SidePanelProps } from '@semcore/ui/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: SidePanelProps) => {

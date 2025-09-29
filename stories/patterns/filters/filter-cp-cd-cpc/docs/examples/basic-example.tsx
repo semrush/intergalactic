@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Dropdown from '@semcore/dropdown';
-import InputNumber from '@semcore/input-number';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Dropdown from '@semcore/ui/dropdown';
+import InputNumber from '@semcore/ui/input-number';
+import { Text } from '@semcore/ui/typography';
 import React, { useState, useRef } from 'react';
 
 interface ValueState {

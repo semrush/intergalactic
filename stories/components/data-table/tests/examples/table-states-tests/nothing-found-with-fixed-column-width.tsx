@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
 import { Box } from '@semcore/ui/base-components';
-import { NoData } from '@semcore/widget-empty';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

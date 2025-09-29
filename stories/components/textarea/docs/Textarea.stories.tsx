@@ -1,4 +1,4 @@
-import Textarea from '@semcore/textarea';
+import Textarea from '@semcore/ui/textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TextareaWithAutoHeightExample, { defaultProps } from './examples/textarea_with_auto_height';

@@ -5,8 +5,8 @@ import {
   HorizontalBar,
   YAxis,
   XAxis,
-} from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
+} from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 

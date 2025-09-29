@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/flex-box';
-import MiniChart from '@semcore/mini-chart';
+import { Flex } from '@semcore/ui/flex-box';
+import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
 type trendBarsProps = { loading?: boolean; animate?: boolean };

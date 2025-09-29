@@ -1,5 +1,5 @@
-import { Plot, Radar } from '@semcore/d3-chart';
-import Slider from '@semcore/slider';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
+import Slider from '@semcore/ui/slider';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 import React from 'react';

@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import SidePanel from '@semcore/side-panel';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import SidePanel from '@semcore/ui/side-panel';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

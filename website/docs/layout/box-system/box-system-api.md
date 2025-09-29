@@ -9,7 +9,7 @@ tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-
 Component responsible for spacings and sizes 📐
 
 ```jsx
-import { Box } from '@semcore/base-components';
+import { Box } from '@semcore/ui/base-components';
 <Box />;
 ```
 
@@ -20,7 +20,7 @@ import { Box } from '@semcore/base-components';
 The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box`.
 
 ```jsx
-import { Flex } from '@semcore/base-components';
+import { Flex } from '@semcore/ui/base-components';
 <Flex />;
 ```
 

@@ -1,4 +1,4 @@
-import FullscreenModal from '@semcore/fullscreen-modal';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import React from 'react';
 
 const Demo = () => {

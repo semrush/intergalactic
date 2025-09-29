@@ -1,4 +1,4 @@
-import Checkbox from '@semcore/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import GroupsExample from './examples/groups';

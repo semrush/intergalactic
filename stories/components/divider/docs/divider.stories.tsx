@@ -1,4 +1,4 @@
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomColorExample from './examples/custom_color';

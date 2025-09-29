@@ -1,5 +1,5 @@
-import { DataTable, ROW_GROUP } from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
+import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
+import { Box } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const stylesMap = {

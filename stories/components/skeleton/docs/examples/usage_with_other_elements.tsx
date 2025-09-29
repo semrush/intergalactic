@@ -1,4 +1,4 @@
-import Skeleton from '@semcore/skeleton';
+import Skeleton from '@semcore/ui/skeleton';
 import React from 'react';
 
 const Demo = () => {

@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import Error, { getIconPath } from '@semcore/errors';
+import Button from '@semcore/ui/button';
+import Error, { getIconPath } from '@semcore/ui/errors';
 import React from 'react';
 
 const Demo = () => (

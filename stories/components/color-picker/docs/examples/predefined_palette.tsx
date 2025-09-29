@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

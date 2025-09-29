@@ -1,7 +1,7 @@
-import Ellipsis from '@semcore/ellipsis';
-import { Box, Flex } from '@semcore/flex-box';
-import CopyM from '@semcore/icon/Copy/m';
-import Tooltip from '@semcore/tooltip';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import CopyM from '@semcore/ui/icon/Copy/m';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 import {
   type FC,

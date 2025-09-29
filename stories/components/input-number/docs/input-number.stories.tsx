@@ -1,4 +1,4 @@
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AppearanceCustomizationExample from './examples/appearance_customization';
