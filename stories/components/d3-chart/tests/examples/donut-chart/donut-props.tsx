@@ -1,4 +1,4 @@
-import { Chart, Donut, Plot } from '@semcore/d3-chart';
+import { Chart, Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

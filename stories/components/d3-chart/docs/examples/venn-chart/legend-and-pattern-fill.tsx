@@ -1,4 +1,4 @@
-import { Plot, Venn, ChartLegend } from '@semcore/d3-chart';
+import { Plot, Venn, ChartLegend } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

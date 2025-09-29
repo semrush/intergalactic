@@ -1,3 +1,4 @@
+import { Flex, Box } from '@semcore/ui/base-components';
 import {
   Plot,
   XAxis,
@@ -7,8 +8,7 @@ import {
   HoverLine,
   makeDataHintsContainer,
   ChartLegend,
-} from '@semcore/d3-chart';
-import { Flex, Box } from '@semcore/ui/base-components';
+} from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';

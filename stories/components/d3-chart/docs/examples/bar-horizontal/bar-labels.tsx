@@ -1,5 +1,5 @@
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { Plot, HorizontalBar, YAxis } from '@semcore/d3-chart';
+import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

@@ -1,3 +1,4 @@
+import { Flex } from '@semcore/ui/base-components';
 import {
   Line,
   minMax,
@@ -6,8 +7,7 @@ import {
   YAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/d3-chart';
-import { Flex } from '@semcore/ui/base-components';
+} from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

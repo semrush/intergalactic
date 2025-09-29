@@ -1,4 +1,4 @@
-import { ChartLegend, Donut, makeDataHintsContainer, Plot, Chart } from '@semcore/d3-chart';
+import { ChartLegend, Donut, makeDataHintsContainer, Plot, Chart } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 

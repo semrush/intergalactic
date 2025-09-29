@@ -1,7 +1,7 @@
-import { Chart } from '@semcore/d3-chart';
 import AddFilter from '@semcore/ui/add-filter';
 import { Box } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { Chart } from '@semcore/ui/d3-chart';
 import type { SelectValue } from '@semcore/ui/select';
 import Select from '@semcore/ui/select';
 import React from 'react';

@@ -1,5 +1,5 @@
-import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/d3-chart';
 import { Flex } from '@semcore/ui/base-components';
+import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';

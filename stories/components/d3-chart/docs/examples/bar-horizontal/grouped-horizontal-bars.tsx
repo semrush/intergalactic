@@ -1,5 +1,5 @@
-import { Plot, GroupBar, YAxis, XAxis, HoverRect } from '@semcore/d3-chart';
 import { Flex } from '@semcore/ui/base-components';
+import { Plot, GroupBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';

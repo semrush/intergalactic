@@ -1,5 +1,5 @@
-import FileExportM from '@semcore/icon/FileExport/m';
 import Button from '@semcore/ui/button';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { DescriptionTooltip, Hint, type DescriptionTooltipProps, type HintProps, type TooltipProps } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

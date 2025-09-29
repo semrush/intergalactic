@@ -1,5 +1,5 @@
-import { Plot, Radar, getLabelOffsetPosition } from '@semcore/d3-chart';
 import { Flex } from '@semcore/ui/base-components';
+import { Plot, Radar, getLabelOffsetPosition } from '@semcore/ui/d3-chart';
 import Tag from '@semcore/ui/tag';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';

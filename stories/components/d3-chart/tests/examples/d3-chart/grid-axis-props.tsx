@@ -1,4 +1,4 @@
-import { Plot, Line, XAxis, YAxis, minMax, Bar } from '@semcore/d3-chart';
+import { Plot, Line, XAxis, YAxis, minMax, Bar } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';

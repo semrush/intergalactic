@@ -1,4 +1,4 @@
-import { Plot, YAxis, XAxis, StackBar } from '@semcore/d3-chart';
+import { Plot, YAxis, XAxis, StackBar } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

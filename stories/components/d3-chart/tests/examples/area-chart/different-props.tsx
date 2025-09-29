@@ -1,4 +1,4 @@
-import { Chart, Area, Plot, YAxis, XAxis } from '@semcore/d3-chart';
+import { Chart, Area, Plot, YAxis, XAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { scaleTime, scaleLinear } from 'd3-scale';
