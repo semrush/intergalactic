@@ -1,8 +1,13 @@
 import fs from 'fs/promises';
 
+import dotenv from 'dotenv';
 import * as Figma from 'figma-js';
 
-const accessToken = 'your token here';
+// create .env file in the root of the project and put this line there:
+// FIGMA_TOKEN=yourFigmaToken
+dotenv.config({ path: './.env' });
+
+const accessToken = process.env.FIGMA_TOKEN;
 
 const figma = Figma.Client({ personalAccessToken: accessToken });
 // const axiosOptions = { headers: { "X-FIGMA-TOKEN": accessToken } };
