@@ -21,6 +21,7 @@
       "@semcore/ui/illustration/*": ["illustration/*"],
       "@semcore/ui/icon/*": ["icon/*"],
       "@semcore/ui/d3-chart": ["d3-chart"],
+      "@semcore/ui/core/lib/*": ["core/src/*"],
       "@semcore/ui/*": ["*/src"],
       "@tools/*": ["../tools/*"]
     }
