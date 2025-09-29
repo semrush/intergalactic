@@ -2,7 +2,6 @@ import InputNumber from '@semcore/ui/input-number';
 import type { InputNumberProps, InputNumberValueProps, InputNumberControlsProps } from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
-import { P } from 'storybook/internal/components';
 
 type baseExampleAddonType = InputNumberProps & InputNumberValueProps & InputNumberControlsProps & { disabledValue?: boolean };
 const Demo = (props: baseExampleAddonType) => {
