@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import type { TextareaProps } from '@semcore/textarea';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import type { TextareaProps } from '@semcore/ui/textarea';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleTextareaProps = TextareaProps & { placeholder: string; disabled: boolean; readOnly: boolean; autoFocus: boolean };

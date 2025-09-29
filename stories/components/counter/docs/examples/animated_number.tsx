@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import { AnimatedNumber } from '@semcore/counter';
+import Button from '@semcore/ui/button';
+import { AnimatedNumber } from '@semcore/ui/counter';
 import React from 'react';
 
 type AnimatedNumberBaseProps = { duration?: number; delay?: number };

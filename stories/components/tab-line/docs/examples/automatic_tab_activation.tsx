@@ -1,4 +1,4 @@
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
 const Demo = () => {

@@ -1,4 +1,4 @@
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
 const Demo = () => {

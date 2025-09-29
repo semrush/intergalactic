@@ -1,7 +1,7 @@
-import Counter from '@semcore/counter';
-import DnD from '@semcore/drag-and-drop';
-import Flag from '@semcore/flags';
-import TabPanel from '@semcore/tab-panel';
+import Counter from '@semcore/ui/counter';
+import DnD from '@semcore/ui/drag-and-drop';
+import Flag from '@semcore/ui/flags';
+import TabPanel from '@semcore/ui/tab-panel';
 import React from 'react';
 
 const renderTab = (tab: string) => {

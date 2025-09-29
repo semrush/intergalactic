@@ -1,6 +1,6 @@
-import { Box } from '@semcore/flex-box';
-import Slider from '@semcore/slider';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Slider from '@semcore/ui/slider';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

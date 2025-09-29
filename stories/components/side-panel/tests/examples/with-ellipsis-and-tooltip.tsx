@@ -1,8 +1,8 @@
-import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
-import FileExportM from '@semcore/icon/FileExport/m';
-import SidePanel from '@semcore/side-panel';
-import Tooltip from '@semcore/tooltip';
+import Button from '@semcore/ui/button';
+import Ellipsis from '@semcore/ui/ellipsis';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+import SidePanel from '@semcore/ui/side-panel';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

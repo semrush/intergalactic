@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Input from '@semcore/input';
-import Radio, { RadioGroup } from '@semcore/radio';
-import { Text } from '@semcore/typography';
-import Wizard from '@semcore/wizard';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import { Text } from '@semcore/ui/typography';
+import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {

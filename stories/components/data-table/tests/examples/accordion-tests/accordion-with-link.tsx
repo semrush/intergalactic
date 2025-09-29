@@ -1,7 +1,7 @@
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import Link from '@semcore/link';
-import { NoData } from '@semcore/widget-empty';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import Link from '@semcore/ui/link';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

@@ -6,7 +6,7 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Exam
 ## MiniChart
 
 ```jsx
-import MiniChart from '@semcore/mini-chart';
+import MiniChart from '@semcore/ui/mini-chart';
 ```
 
 <TypesView type="CommonScoreProps" :types={...types} />

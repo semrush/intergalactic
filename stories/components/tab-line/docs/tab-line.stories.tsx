@@ -1,4 +1,4 @@
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AutomaticTabActivationExample from './examples/automatic_tab_activation';

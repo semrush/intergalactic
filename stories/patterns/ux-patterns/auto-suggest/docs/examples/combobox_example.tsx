@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const options = Array(12)

@@ -1,5 +1,5 @@
-import Card from '@semcore/card';
-import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import Card from '@semcore/ui/card';
+import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

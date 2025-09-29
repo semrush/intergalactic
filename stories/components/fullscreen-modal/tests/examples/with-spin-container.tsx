@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import SpinContainer from '@semcore/spin-container';
+import Button from '@semcore/ui/button';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import SpinContainer from '@semcore/ui/spin-container';
 import React from 'react';
 
 const Demo = () => {

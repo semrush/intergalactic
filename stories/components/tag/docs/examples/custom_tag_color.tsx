@@ -1,5 +1,5 @@
-import SmileHappyM from '@semcore/icon/SmileHappy/m';
-import Tag from '@semcore/tag';
+import SmileHappyM from '@semcore/ui/icon/SmileHappy/m';
+import Tag from '@semcore/ui/tag';
 import React from 'react';
 
 const Demo = () => {

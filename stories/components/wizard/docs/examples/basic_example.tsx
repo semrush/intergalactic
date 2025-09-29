@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import Wizard from '@semcore/wizard';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];

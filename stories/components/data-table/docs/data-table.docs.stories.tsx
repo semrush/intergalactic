@@ -1,4 +1,4 @@
-import type { DataTable } from '@semcore/data-table';
+import type { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 

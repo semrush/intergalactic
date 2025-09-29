@@ -1,13 +1,13 @@
-import AddFilter from '@semcore/add-filter';
-import Button, { ButtonLink } from '@semcore/button';
-import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
-import CloseM from '@semcore/icon/Close/m';
-import SearchM from '@semcore/icon/Search/m';
-import Input from '@semcore/input';
-import InputNumber from '@semcore/input-number';
-import NeighborLocation from '@semcore/neighbor-location';
-import { Text } from '@semcore/typography';
+import AddFilter from '@semcore/ui/add-filter';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import { Flex } from '@semcore/ui/flex-box';
+import CloseM from '@semcore/ui/icon/Close/m';
+import SearchM from '@semcore/ui/icon/Search/m';
+import Input from '@semcore/ui/input';
+import InputNumber from '@semcore/ui/input-number';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type RangeValue = {

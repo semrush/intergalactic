@@ -1,4 +1,4 @@
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';

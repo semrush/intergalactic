@@ -9,7 +9,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 A component used to simplify working with multiple radio buttons.
 
 ```jsx
-import { RadioGroup } from '@semcore/radio';
+import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
@@ -20,7 +20,7 @@ import { RadioGroup } from '@semcore/radio';
 This is an independent radio component.
 
 ```jsx
-import Radio from '@semcore/radio';
+import Radio from '@semcore/ui/radio';
 <Radio />;
 ```
 
@@ -29,7 +29,7 @@ import Radio from '@semcore/radio';
 ## Radio.Value
 
 ```jsx
-import Radio from '@semcore/radio';
+import Radio from '@semcore/ui/radio';
 <Radio.Value />;
 ```
 
@@ -38,7 +38,7 @@ import Radio from '@semcore/radio';
 ## Radio.Text
 
 ```jsx
-import Radio from '@semcore/radio';
+import Radio from '@semcore/ui/radio';
 <Radio.Text />;
 ```
 

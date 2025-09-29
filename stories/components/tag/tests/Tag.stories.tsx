@@ -1,4 +1,4 @@
-import Tag from '@semcore/tag';
+import Tag from '@semcore/ui/tag';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import StylesThemeSizesExample from './examples/styles-themes-sizes';

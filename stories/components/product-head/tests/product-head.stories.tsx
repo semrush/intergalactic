@@ -1,4 +1,4 @@
-import ProductHead from '@semcore/product-head';
+import ProductHead from '@semcore/ui/product-head';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ExtendedExample from './examples/test_example';

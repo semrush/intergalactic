@@ -1,4 +1,4 @@
-import { BadgeFH } from '@semcore/feature-highlight';
+import { BadgeFH } from '@semcore/ui/feature-highlight';
 import React from 'react';
 
 const Demo = () => (

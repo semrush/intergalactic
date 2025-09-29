@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import type { Placement } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
+import { Box } from '@semcore/ui/base-components';
+import type { Placement } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const styleBox = {
