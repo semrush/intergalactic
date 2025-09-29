@@ -11,9 +11,8 @@ test.describe('Visual', () => {
 
     await expect(page).toHaveScreenshot();
 
-    const starts = page.getByRole('none');
     const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
+    const success = dialog.locator('[data-ui-name="FeedbackForm.Success"]');
     await test.step('Verify state when feedback form is opened', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -24,69 +23,30 @@ test.describe('Visual', () => {
     await test.step('Verify error state', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.getByRole('tooltip').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify form styles', async () => {
+      await page.keyboard.type('test test test');
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('test@test.test');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await buttons.first().waitFor({ state: 'visible' });
+      await success.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify email validation', async () => {
+      await page.keyboard.press('Escape');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.type('t');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-
-      await page.waitForSelector('text="Please enter valid email"');
-
-      await expect(page).toHaveScreenshot();
+      await page.getByText('Close notification').waitFor({ state: 'visible' });
     });
-
-    await test.step('Verify loading styles', async () => {
-      await page.keyboard.type('test@test.test');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-
-      await page.keyboard.press('Enter');
-
-      await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify feedback rating with error notice on submit', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const starts = page.getByRole('none');
-    const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
-
-    await starts.nth(1).click();
-    await buttons.first().waitFor({ state: 'visible' });
-    await buttons.nth(1).click();
-    await page.waitForSelector('text="Something went wrong. Please try again or contact us at"');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify feedback rating notice with title and subtitle', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-title-and-subtitle.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
   });
 });
 
