@@ -17,13 +17,7 @@ function findScrollableParentFor(element: HTMLElement): HTMLElement | null {
   return findScrollableParentFor(element.parentElement);
 }
 
-function getParentScrollableElement(ref: React.RefObject<HTMLElement>) {
-  if (!ref || !ref.current) return null;
-
-  return findScrollableParentFor(ref.current);
-}
-
-export function useScrollBarWidth(ref: React.RefObject<HTMLElement>, callback: (width: number) => void = () => {}, vertical = true) {
+export function useScrollBarWidth(ref: React.RefObject<HTMLElement>, callback: (width: number) => void, vertical = true) {
   const af = useRef<number | null>(null);
 
   useEffect(() => {
@@ -33,7 +27,9 @@ export function useScrollBarWidth(ref: React.RefObject<HTMLElement>, callback: (
       let width = vertical ? window.innerWidth - window.visualViewport.width : window.innerHeight - window.visualViewport.height;
 
       if (!width) {
-        const scrollableParenElement = getParentScrollableElement(ref);
+        if (!ref.current) return;
+
+        const scrollableParenElement = findScrollableParentFor(ref.current);
 
         if (!scrollableParenElement) return;
 
