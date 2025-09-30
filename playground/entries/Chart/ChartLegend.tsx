@@ -1,8 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
-import type { LegendFlexProps, LegendItem } from '@semcore/d3-chart';
-import { ChartLegend } from '@semcore/d3-chart';
-import type { IconProps } from '@semcore/icon';
-import DesktopIcon from '@semcore/icon/Desktop/m';
+import type { LegendFlexProps, LegendItem } from '@semcore/ui/d3-chart';
+import { ChartLegend } from '@semcore/ui/d3-chart';
+import type { IconProps } from '@semcore/ui/icon';
+import DesktopIcon from '@semcore/ui/icon/Desktop/m';
 import React from 'react';
 
 import type { JSXProps } from '../../types/JSXProps';
@@ -26,7 +26,7 @@ const data = [...Array(5).keys()].map((_, i) => ({
 }));
 
 function getJSX(props: ChartLegendJSXProps) {
-  const { withTrend, direction, shape, size, additionLabel, count, withIcon } = props;
+  const { withTrend, shape, size, additionLabel, count, withIcon, direction } = props;
   const [lines, setLines] = React.useState<LegendItem[]>(Object.keys(data[0])
     .filter((name) => name !== 'x')
     .map((item, index) => ({

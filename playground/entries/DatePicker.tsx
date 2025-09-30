@@ -1,4 +1,4 @@
-import { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker } from '@semcore/date-picker';
+import { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker } from '@semcore/ui/date-picker';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

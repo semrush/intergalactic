@@ -1,5 +1,5 @@
-import Accordion from '@semcore/accordion';
-import { Box } from '@semcore/base-components';
+import Accordion from '@semcore/ui/accordion';
+import { Box } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {

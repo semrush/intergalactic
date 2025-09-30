@@ -13,6 +13,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Ellipsis with `trim=middle` cut off text at the end.
 - Incorrect cropping with different font-size.
 
+## [16.0.9] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.2.2 ~> 16.2.3]).
+
+## [16.0.8] - 2025-09-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.2.1 ~> 16.2.2]).
+
 ## [16.0.7] - 2025-08-29
 
 ### Changed

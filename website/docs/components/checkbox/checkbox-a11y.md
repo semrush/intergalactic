@@ -42,7 +42,7 @@ If you use `group` role to group checkbox buttons, add a common label and connec
 
 #### Roles and attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The following list will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
 Table: Roles and attributes
 

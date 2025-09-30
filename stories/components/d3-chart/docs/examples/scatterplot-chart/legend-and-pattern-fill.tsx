@@ -1,4 +1,4 @@
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

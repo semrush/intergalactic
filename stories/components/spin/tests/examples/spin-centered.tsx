@@ -1,4 +1,4 @@
-import Spin from '@semcore/spin';
+import Spin from '@semcore/ui/spin';
 import React from 'react';
 
 const Demo = () => {

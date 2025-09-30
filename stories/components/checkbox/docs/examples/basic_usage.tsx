@@ -1,5 +1,5 @@
-import Checkbox from '@semcore/checkbox';
-import { Text } from '@semcore/typography';
+import Checkbox from '@semcore/ui/checkbox';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const fieldsetStyle = { border: 'none' };

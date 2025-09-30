@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.3] - 2025-10-03
+
+### Fixed
+
+- Render table with expanded rows after changing page.
+- Render grouped header in some cases.
+
+## [16.3.2] - 2025-09-20
+
+### Fixed
+
+- Cell display in the accordion was changed to `block`.
+- Styles for cells in accordion in different variants.
+- Laggy animation in accordions.
+- `renderCell` not working for accordion's cells.
+
+## [16.3.1] - 2025-09-20
+
+### Fixed
+
+- Render grouped header in some cases.
+
+## [16.3.0] - 2025-09-12
+
+### Added
+
+- `variant` property. Adapts the table styling to different usage contexts, such as in a `Card`.
+- Export for `ColumnGroupConfig` and `ColumnItemConfig` types.
+
+### Fixed
+
+- Bottom border for cell with empty data.
+- Table performance with accordions.
+
+## [16.2.1] - 2025-09-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [16.6.0 ~> 16.7.0], `@semcore/button` [16.0.7 ~> 16.0.8], `@semcore/checkbox` [16.1.1 ~> 16.1.2], `@semcore/base-components` [16.2.1 ~> 16.2.2]).
+
 ## [16.2.0] - 2025-08-29
 
 ### Added

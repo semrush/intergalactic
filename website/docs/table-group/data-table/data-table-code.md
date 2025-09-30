@@ -46,7 +46,7 @@ Cell paddings can be reduced by adding the `compact` property.
 
 ### Table in card
 
-Use `sideIndents="wide"` when displaying a table in a card. Refer to the [Card layout for tables example](../../components/card/card-code#card-layout-for-tables).
+Use `variant="card"` when displaying a table in a card. Refer to the [Card layout for tables example](../../components/card/card-code#card-layout-for-tables).
 
 ### Borders
 

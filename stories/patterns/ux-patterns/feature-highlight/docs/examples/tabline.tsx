@@ -1,5 +1,5 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { TabLineFH, BadgeFH } from '@semcore/feature-highlight';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { TabLineFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import React from 'react';
 
 const Demo = () => (

@@ -1,6 +1,6 @@
-import { Box } from '@semcore/flex-box';
-import InputTags from '@semcore/input-tags';
-import Notice from '@semcore/notice';
+import { Box } from '@semcore/ui/flex-box';
+import InputTags from '@semcore/ui/input-tags';
+import Notice from '@semcore/ui/notice';
 import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 

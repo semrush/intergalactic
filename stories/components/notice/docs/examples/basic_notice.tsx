@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Question from '@semcore/icon/Question/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Warning from '@semcore/icon/Warning/m';
-import Notice from '@semcore/notice';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Question from '@semcore/ui/icon/Question/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import Warning from '@semcore/ui/icon/Warning/m';
+import Notice from '@semcore/ui/notice';
 import React from 'react';
 
 const Demo = () => (

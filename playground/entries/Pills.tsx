@@ -1,5 +1,5 @@
-import type { PillsProps } from '@semcore/pills';
-import Pills from '@semcore/pills';
+import type { PillsProps } from '@semcore/ui/pills';
+import Pills from '@semcore/ui/pills';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';
@@ -15,7 +15,7 @@ export type PillsJSXProps = JSXProps<PillsProps> & AdditionalJSXProps;
 
 function getJSX(props: PillsJSXProps) {
   return (
-    <Pills size={props.size} aria-label='Pills example' defaultValue={1}>
+    <Pills size={props.size} aria-label='Pills example' defaultValue={1} behavior={props.behavior}>
       <Pills.Item value={1}>
         {props.before && <Pills.Item.Addon>{renderIcon('before', props.size)}</Pills.Item.Addon>}
         <Pills.Item.Text>Pill 1</Pills.Item.Text>
@@ -32,6 +32,12 @@ function getJSX(props: PillsJSXProps) {
 const entry: PlaygroundEntry<PillsJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
+    behavior: {
+      type: 'select',
+      value: 'auto',
+      options: ['auto', 'manual'],
+      displayName: 'Behavior',
+    },
     size: {
       type: 'inline-radio',
       value: 'm',

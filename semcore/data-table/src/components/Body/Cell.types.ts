@@ -38,6 +38,8 @@ export type CellPropsInner<Data extends DataTableData, UniqKeyType> = {
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>;
   lastLeftFixedIndex: number;
   firstRightFixedIndex: number;
+  withoutBorder?: boolean;
+  calculatedHeight: number;
 };
 
 export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

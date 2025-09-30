@@ -1,5 +1,5 @@
-import type { CheckboxProps } from '@semcore/checkbox';
-import Checkbox from '@semcore/checkbox';
+import type { CheckboxProps } from '@semcore/ui/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

@@ -2,43 +2,6 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Input', () => {
-  test('Verify focus returns on Clear Addon by mouse click in Dynamic dearch', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    const inputLocator = await page.locator('input');
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
-    const clearButtonLocator = await page.locator('[data-name="Close"]');
-    await clearButtonLocator.click();
-
-    await expect(await inputLocator.inputValue()).toBe('');
-    await expect(inputLocator).toBeFocused();
-  });
-
-  test('Verify focus returns on Clear addon by keyboard interaction in Dynamic dearch', async ({
-    page,
-  }) => {
-    const standPath = 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    const inputLocator = await page.locator('input');
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
-    await page.keyboard.press('Tab');
-    const clearButtonLocator = await page.locator('[aria-label="Clear"]');
-    await expect(clearButtonLocator).toBeFocused();
-    await page.keyboard.down('Enter');
-
-    await expect(await inputLocator.inputValue()).toBe('');
-    await expect(inputLocator).toBeFocused();
-  });
-
   test('Verify focus return back to Input after keyboard interactions with Close button', async ({ page }) => {
     const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

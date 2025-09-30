@@ -7,7 +7,7 @@ import {
   interpolateValue,
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/d3-chart';
+} from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { Box } from '@semcore/base-components';
+import { Box } from '@semcore/ui/base-components';
 import React, { useMemo, useState } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
@@ -7,6 +7,7 @@ import PlaygroundRegistry from '../registry';
 import Canvas from './Canvas';
 import Code from './Code';
 import ControlPanel from './ControlPanel';
+import { ThemeContext } from './ThemeContext';
 import styles from '../styles/styles.module.css';
 import isGroupControl from '../typeguards/isGroupControl';
 import type { ControlsType, ControlValue } from '../types/Controls';
@@ -17,6 +18,7 @@ import toArray from '../utils/toArray';
 
 interface PlaygroundProps<C extends PlaygroundComponentName> {
   componentName: C;
+  theme: 'dark' | 'light';
 }
 
 function mapControlsStateToProps<Props extends PlaygroundComponentProps>(controlsState: ControlsType<Props>) {
@@ -140,7 +142,7 @@ function processControls<Props extends PlaygroundComponentProps>(
 function Playground<
   C extends PlaygroundComponentName,
   Props extends PlaygroundComponentProps = GetPropsForComponent<C>,
->({ componentName }: PlaygroundProps<C>) {
+>({ componentName, theme }: PlaygroundProps<C>) {
   const config = PlaygroundRegistry[componentName];
 
   if (!config) return null;
@@ -165,19 +167,20 @@ function Playground<
   const element = JSX({ ...mapControlsStateToProps(controlsState), handleControlChange } as unknown as Props);
 
   return (
-    <Box className={styles.playground} role='region' aria-label='Playground'>
-      <Canvas>{element}</Canvas>
-      <ControlPanel controls={controlsState} onControlChange={handleControlChange} />
-      <Code
-        link={link}
-        sourceCode={reactElementToJSXString(element, {
-          showDefaultProps: false,
-          filterProps,
-          maxInlineAttributesLineLength: 20,
-          ...(JSXDisplayName && { displayName: () => JSXDisplayName }),
-        })}
-      />
-    </Box>
+    <ThemeContext.Provider value={theme}>
+      <Box className={styles.playground} role='region' aria-label='Playground'>
+        <Canvas>{element}</Canvas>
+        <ControlPanel controls={controlsState} onControlChange={handleControlChange} />
+        <Code
+          link={link}
+          sourceCode={reactElementToJSXString(element, {
+            showDefaultProps: false,
+            filterProps,
+            ...(JSXDisplayName && { displayName: () => JSXDisplayName }),
+          })}
+        />
+      </Box>
+    </ThemeContext.Provider>
   );
 }
 

@@ -1,4 +1,4 @@
-import TabPanel from '@semcore/tab-line';
+import TabPanel from '@semcore/ui/tab-line';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabPanelItemAddonsExample, { defaultProps as TabPanelItemAddonsProps } from './examples/tab_panel_item_addons_and_props';

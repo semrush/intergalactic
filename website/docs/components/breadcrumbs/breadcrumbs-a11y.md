@@ -11,7 +11,7 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 Table: Keyboard support
 
 | Key              | Function                                         |
-| ---------------- | ------------------------------------------------ |
+|------------------|--------------------------------------------------|
 | `Tab`            | Moves focus to the next focusable element.       |
 | `Shift + Tab`    | Moves focus to the previous focusable element.   |
 | `Enter`, `Space` | When focus is on the breadcrumb, opens the link. |
@@ -22,8 +22,8 @@ The following list describes roles and attributes that the component already has
 
 Table: Roles and attributes
 
-| Element            | Roles & attributes         | Usage                                                                                                                                  |
-| ------------------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Component          | Roles & attributes         | Usage                                                                                                                                  |
+|--------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `Breadcrumbs`      | `nav`                      | Represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents. |
 | `Breadcrumbs`      | `aria-label="Breadcrumbs"` | Provides a label for the group of links that describes the type of navigation provided.                                                |
 | `Breadcrumbs.Item` | `aria-current="page"`      | Applied to the last link in the set to indicate that it represents the current page.                                                   |

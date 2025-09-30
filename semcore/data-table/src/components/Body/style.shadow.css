@@ -8,7 +8,22 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + (var(--intergalactic-spacing-5x, 20px) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+  }
+
+  SRow {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+  SRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+
+  SCell SAccordionToggle {
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 }
 
@@ -26,12 +41,12 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
   overflow: auto;
 }
 
-SCollapseRow[gridArea] > SCellWrapper > SCell,
-SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell {
+SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
+SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
 }
 
-SCollapseRow SCell {
+SCollapseRow > SCellWrapper > SCell {
   display: block;
 }
 
@@ -112,7 +127,12 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 /* MUTED THEME */
 
 SRow[theme='muted'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+  }
 }
 
 SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
@@ -122,7 +142,12 @@ SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
 /* INFO THEME */
 
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+  }
 }
 
 SRow[theme='info'][active] > SCellWrapper > SCell:not([theme]) {
@@ -132,7 +157,12 @@ SRow[theme='info'][active] > SCellWrapper > SCell:not([theme]) {
 /* SUCCESS THEME */
 
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
+  }
 }
 
 SRow[theme='success'][active] > SCellWrapper > SCell:not([theme]) {
@@ -142,7 +172,12 @@ SRow[theme='success'][active] > SCellWrapper > SCell:not([theme]) {
 /* WARNING THEME */
 
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
+  }
 }
 
 SRow[theme='warning'][active] > SCellWrapper > SCell:not([theme]) {
@@ -152,7 +187,12 @@ SRow[theme='warning'][active] > SCellWrapper > SCell:not([theme]) {
 /* DANGER THEME */
 
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+  &:not([expanded][withAccordion]) {
+    background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+  }
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
+  }
 }
 
 SRow[theme='danger'][active] > SCellWrapper > SCell:not([theme]) {
@@ -188,9 +228,13 @@ SCell {
       transform: rotate(90deg);
     }
   }
+
+  &[withoutBorder] {
+    border-bottom: none;
+  }
 }
 
-SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCheckboxCell {
+SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='Symbol(SELECT_ALL)'] {
   cursor: pointer;
 }
 
@@ -200,7 +244,7 @@ SCell[use='primary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -210,7 +254,7 @@ SCell[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-2x, 8px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
   }
 }
 
@@ -274,11 +318,24 @@ SEmptyData {
 SRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
+
+    &[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+
+    }
   }
 
   SCellWrapper:last-child SCell {
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }
+}
+
+SRow[isAccordionRow][withAnimation] > SCellWrapper {
+  transition-property: height;
+  transition-delay: var(--delay);
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  overflow: clip;
 }
 
 SCellWrapper[fixed][shadowVertical] {

@@ -1,6 +1,6 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { Text } from '@semcore/typography';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

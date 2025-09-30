@@ -1,8 +1,8 @@
-import { Box, Flex, Collapse, ScreenReaderOnly } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
-import Pagination from '@semcore/pagination';
-import { Text } from '@semcore/typography';
+import { Box, Flex, Collapse, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
+import Pagination from '@semcore/ui/pagination';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type CheckboxExampleProps = { animationDuration: number; loading: boolean; sideIndents?: 'wide'; compact?: boolean };
@@ -100,6 +100,7 @@ const Demo = (props: CheckboxExampleProps) => {
         totalPages={Math.ceil(data.length / limit)}
         currentPage={currentPage + 1}
         onCurrentPageChange={(page) => setCurrentPage(page - 1)}
+        aria-label='Table with selectable rows pagination'
       />
     </>
   );

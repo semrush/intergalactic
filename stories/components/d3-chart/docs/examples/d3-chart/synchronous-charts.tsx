@@ -7,7 +7,7 @@ import {
   Plot,
   YAxis,
   PlotEventEmitter,
-} from '@semcore/d3-chart';
+} from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

@@ -1,14 +1,14 @@
-import { ButtonTrigger } from '@semcore/base-trigger';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { Text } from '@semcore/typography';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} tag={Text} size={400} ellipsis={{ trim: 'middle' }}>
+        <DropdownMenu.Trigger tag={[ButtonTrigger, 'h1']}>
+          <ButtonTrigger.Text w={150} tag={[Text, 'h2']} size={400} ellipsis={{ trim: 'middle' }}>
             Dat First List
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
@@ -16,9 +16,7 @@ const Demo = () => {
         <br />
         <DropdownMenu.Trigger tag={ButtonTrigger}>
           <ButtonTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle' ellipsis={{ trim: 'middle' }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-            tempore voluptas. Aliquam eos expedita illo quasi unde!
+            This is first trigger with a very very long text!
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
@@ -26,9 +24,7 @@ const Demo = () => {
         <DropdownMenu.Trigger tag={ButtonTrigger}>
           <ButtonTrigger.Text w={150} tag={Text} size={400} ellipsis={true}>
 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-            tempore voluptas. Aliquam eos expedita illo quasi unde!
+            This is second trigger with a very very long text!
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -43,9 +39,7 @@ const Demo = () => {
       <br />
       <ButtonTrigger w={100} data-test-id='active-trigger'>
         <ButtonTrigger.Text ellipsis={true}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-          commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-          tempore voluptas. Aliquam eos expedita illo quasi unde!
+          This is third trigger with a very very long text!
         </ButtonTrigger.Text>
       </ButtonTrigger>
 

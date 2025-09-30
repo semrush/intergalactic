@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Divider from '@semcore/divider';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Divider from '@semcore/ui/divider';
+import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,6 @@
-import { Box, Flex, ScrollArea } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
+import { Box, Flex, ScrollArea } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { List } from 'react-virtualized';
 

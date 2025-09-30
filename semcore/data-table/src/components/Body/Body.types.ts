@@ -30,6 +30,10 @@ export type CellRenderProps<Data extends DataRowItem, UniqKeyType> = {
   isMergedColumns: boolean;
   /** The original unprocessed row data */
   rawData: Data;
+  /** Flag to show is the cell is in the accordion row */
+  isAccordionRow: boolean;
+  /** Zero-based accordion row index */
+  accordionRowIndex?: number;
 };
 
 export type DataTableBodyProps<Data extends DataTableData, UniqKeyType> = {
@@ -67,7 +71,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   uid: string;
   rowProps?: (row: DTRow<UniqKeyType>, rowIndex: number) => Record<string, any> | undefined;
   renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
-  onBackFromAccordion: (colIndex: number) => void;
+  onBackFromAccordion: (colName: string) => void;
   stickyHeader?: boolean;
   selectedRows?: UniqKeyType[];
   onSelectRow?: (
@@ -87,6 +91,8 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   shadowVertical?: '' | 'end' | 'start' | 'median';
   renderCellOverlay?: () => React.ReactNode;
+  totalRows?: number;
+  variant?: DataTableProps<any, any, any>['variant'];
 };
 
 export type DataTableBodyType = (<

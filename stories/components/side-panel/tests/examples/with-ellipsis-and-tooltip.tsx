@@ -1,8 +1,8 @@
-import Button from '@semcore/button';
-import FileExportM from '@semcore/icon/FileExport/m';
-import SidePanel from '@semcore/side-panel';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+import SidePanel from '@semcore/ui/side-panel';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

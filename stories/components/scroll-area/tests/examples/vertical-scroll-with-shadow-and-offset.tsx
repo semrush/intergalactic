@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 import React from 'react';
 
 let randomIndex = 1;
@@ -39,7 +39,7 @@ class Demo extends React.PureComponent {
               />
             ))}
           </ScrollArea.Container>
-          <ScrollArea.Bar w='40px'>
+          <ScrollArea.Bar w='40px' orientation='vertical'>
             <ScrollArea.Bar.Slider />
           </ScrollArea.Bar>
         </ScrollArea>

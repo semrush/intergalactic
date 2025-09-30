@@ -1,4 +1,4 @@
-import { Chart, interpolateValue } from '@semcore/d3-chart';
+import { Chart, interpolateValue } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 type BaseExampleProps = {

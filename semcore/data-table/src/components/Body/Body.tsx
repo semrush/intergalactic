@@ -1,40 +1,65 @@
 import { Box } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
-import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
 import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
-import { Cell } from './Cell';
-import type { DataTableCellProps, DataTableCellType } from './Cell.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { MergedColumnsCell } from './MergedCells';
+import type { RowRoot } from './Row';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
-import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
+import {
+  GRID_ROW_INDEX,
+  IS_EMPTY_DATA_ROW,
+  ROW_INDEX,
+  UNIQ_ROW_KEY,
+} from '../DataTable/DataTable';
+import type { DataTableData } from '../DataTable/DataTable.types';
 
 const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
+export const INDEX_OFFSET = 2; // 1 - for header, 1 - because start not from 0, but from 1
 
-type State<UniqKeyType> = {
-  expandedForAnimation: Set<UniqKeyType>;
-};
-
-class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], BodyPropsInner<Data, UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, {}, [], BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
   rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
+  rowsComponentsMap = new Map<UniqKeyType, RowRoot<Data, UniqKeyType>>();
 
   indexForDownIterate = 0;
   indexForUpIterate = 0;
 
-  state: State<UniqKeyType> = {
-    expandedForAnimation: new Set(),
+  startIndex = -1;
+  lastIndex = -1;
+
+  bodyRef = React.createRef<HTMLDivElement>();
+
+  constructor(props: DataTableBodyProps<Data, UniqKeyType>) {
+    super(props);
+    this.setRowHeight = this.setRowHeight.bind(this);
+  }
+
+  componentDidMount() {
+    this.calculateAriaRowIndex();
+  }
+
+  calculateAriaRowIndex = () => {
+    requestAnimationFrame(() => {
+      const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+
+      visibleRows?.forEach((row, index) => {
+        if (row instanceof HTMLElement) {
+          row.setAttribute('aria-rowindex', (index + 2 + this.startIndex).toString());
+        }
+      });
+
+      if (!this.asProps.totalRows) {
+        this.asProps.tableRef.current?.setAttribute('aria-rowcount', (visibleRows?.length ?? 0).toString());
+      }
+    });
   };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
@@ -44,77 +69,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   };
 
-  handleExpandRow = (row: DTRow<UniqKeyType>, index: number) => {
-    const { accordionDuration, accordionMode, expandedRows, onExpandRow } = this.asProps;
-    const openDuration = Array.isArray(accordionDuration)
-      ? accordionDuration[0]
-      : accordionDuration ??
-        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
-    const closeDuration = Array.isArray(accordionDuration)
-      ? accordionDuration[1]
-      : accordionDuration ??
-        (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
-
-    setTimeout(() => {
-      this.setRowHeight(index, row);
-      for (let i = index; i < this.rowsHeightMap.size; i++) {
-        this.setRowHeight(i, row);
-      }
-    }, openDuration + 100); // we need to calculate after expanding animation
-
-    if (expandedRows.has(row[UNIQ_ROW_KEY])) {
-      this.closeAccordion(row, closeDuration);
-    } else {
-      if (accordionMode === 'toggle' && expandedRows.size > 0) {
-        const previousRows = this.asProps.flatRows.filter((r) => expandedRows.has(r[UNIQ_ROW_KEY]));
-        if (previousRows.length > 0) {
-          previousRows.forEach((previousRow) => {
-            if (!this.state.expandedForAnimation.has(previousRow[UNIQ_ROW_KEY])) {
-              setTimeout(() => {
-                this.closeAccordion(previousRow, closeDuration);
-              }, openDuration / 3);
-            }
-          });
-        }
-      }
-      onExpandRow(row);
-    }
-  };
-
-  closeAccordion = (row: DTRow<UniqKeyType>, closeDuration: number) => {
-    const { onExpandRow } = this.asProps;
-
-    this.setState((prevState) => {
-      prevState.expandedForAnimation.add(row[UNIQ_ROW_KEY]);
-      return {
-        expandedForAnimation: new Set([...prevState.expandedForAnimation]),
-      };
-    });
-    setTimeout(() => {
-      onExpandRow(row);
-
-      this.setState((prevState) => {
-        prevState.expandedForAnimation.delete(row[UNIQ_ROW_KEY]);
-        return {
-          expandedForAnimation: new Set([...prevState.expandedForAnimation]),
-        };
-      });
-    }, closeDuration + 100); // we need to remove it from list of grid calculations after expanding animation
-  };
-
-  handleClickRow = (row: DTRow<UniqKeyType>, index: number) => (e: React.SyntheticEvent<HTMLElement>) => {
-    if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(row, index);
-    }
-  };
-
-  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
-    if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(opt.row, opt.rowIndex);
-    }
-  };
-
-  getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<UniqKeyType> {
+  getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
     const {
       use,
       gridTemplateAreas,
@@ -135,204 +90,59 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      getI18nText,
+      renderCell,
+      tableRef,
+      onCellClick,
+      rawData,
+      shadowVertical,
+      accordionMode,
+      virtualScroll,
+      variant,
     } = this.asProps;
     const row = props.row;
     const index = row[ROW_INDEX];
+    const gridRowIndex = row[GRID_ROW_INDEX] + (hasGroups ? INDEX_OFFSET + 1 : INDEX_OFFSET); // 1 - for header, 1 - because start not from 0, but from 1
 
-    const rowIndex = Array.from(expandedRows ?? []).reduce((acc, item) => {
-      const rowIndex = flatRows.findIndex((row) => row[UNIQ_ROW_KEY] === item);
-      if (rowIndex < index) {
-        const expandedRow = flatRows[rowIndex]?.[ACCORDION];
-        if (Array.isArray(expandedRow)) {
-          acc = acc + expandedRow.length;
-        } else {
-          acc = acc + 1;
-        }
-      }
-
-      return acc;
-    }, index);
-
-    const gridRowIndex = rowIndex + (hasGroups ? 3 : 2); // 1 - for header, 1 - because start not from 0, but from 1
-    const ariaRowIndex = rowIndex + 2; // 1 - for header, 1 - because start not from 0, but from 1
-
-    const accordionDataGridArea = Array.isArray(row[ACCORDION])
-      ? `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1 + row[ACCORDION].length} / ${
-        columns.length + 1
-      }`
-      : `${gridRowIndex + 1} / 1 / ${gridRowIndex + 1} / ${columns.length + 1}`;
+    const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     return {
-      onClick: row[ACCORDION] && !props.mergedRow ? this.handleClickRow(row, index) : undefined,
       ...rowProps?.(row, index),
       use,
       uid,
       gridTemplateAreas,
       gridTemplateColumns,
-      expanded:
-        expandedRows?.has(row[UNIQ_ROW_KEY]) &&
-        !this.state.expandedForAnimation.has(row[UNIQ_ROW_KEY]),
-      accordionDataGridArea,
       columns,
       rowIndex: index,
-      ariaRowIndex,
       gridRowIndex,
       rows,
       onBackFromAccordion,
       row,
-      expandedRows,
       onExpandRow,
       selectedRows,
       onSelectRow,
       inert: loading ? '' : undefined,
       scrollAreaRef,
-      sideIndents,
+      sideIndents: sideIndentsValue,
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
-    };
-  }
-
-  getCellProps(props: DataTableCellProps<UniqKeyType>) {
-    const {
-      use,
-      renderCell,
-      expandedRows,
-      styles,
-      getI18nText,
-      virtualScroll,
-      tableRef,
       flatRows,
-      accordionDuration,
+      getI18nText,
+      renderCell,
+      tableRef,
       onCellClick,
       rawData,
+      expandedRows,
+      rowsHeightMap: this.rowsHeightMap,
+      setRowHeight: this.setRowHeight,
       shadowVertical,
-    } = this.asProps;
-    const SAccordionToggle = ButtonLink;
-
-    let dataKey = props.column.name;
-    const cellValue = props.row[dataKey];
-
-    let value: DTValue | undefined = undefined;
-    const isMergedRows = cellValue instanceof MergedRowsCell;
-    const isMergedColumns = cellValue instanceof MergedColumnsCell;
-
-    if (isMergedColumns || isMergedRows) {
-      value = cellValue.value;
-      if (isMergedColumns) {
-        dataKey = cellValue.dataKey;
-      }
-    } else {
-      value = cellValue;
-    }
-
-    const defaultRender = () => {
-      return React.isValidElement(value) ? value : value?.toString();
+      accordionMode,
+      componentsMap: this.rowsComponentsMap,
+      calculateAriaRowIndex: this.calculateAriaRowIndex,
+      virtualScroll,
+      variant,
     };
-
-    const extraProps: Record<string, any> = {
-      use,
-      virtualScroll: Boolean(virtualScroll),
-      tableRef,
-      children: props?.children ?? defaultRender(),
-      accordionDuration,
-      onClick: onCellClick,
-      flatRows: this.asProps.flatRows,
-      shadowVertical,
-    };
-
-    if (renderCell) {
-      let rowRawData = rawData[props.rowIndex];
-
-      if (props.accordionRowIndex && rowRawData[ACCORDION] && Array.isArray(rowRawData[ACCORDION])) {
-        rowRawData = rowRawData[ACCORDION][props.accordionRowIndex];
-      }
-
-      const external = renderCell({
-        columnName: props.column.name,
-        row: props.row,
-        column: props.column,
-        rowIndex: props.rowIndex,
-        columnIndex: props.columnIndex,
-        dataKey,
-        defaultRender,
-        value: React.isValidElement(value) ? value : value?.toString() ?? '',
-        isMergedRows,
-        isMergedColumns,
-        rawData: rowRawData,
-      });
-
-      if (this.isReactNode(external) || Array.isArray(external)) {
-        extraProps.children = external;
-      } else {
-        for (const key in external) {
-          if (key === 'onClick') {
-            extraProps[key] = callAllEventHandlers(external[key], extraProps[key]);
-          } else {
-            extraProps[key] = external[key];
-          }
-        }
-      }
-    }
-
-    if (
-      (props.columnIndex === 0 && props.row[ACCORDION]) ||
-      value?.[ACCORDION] ||
-      (cellValue instanceof MergedRowsCell && cellValue.accordion)
-    ) {
-      let expanded =
-        expandedRows?.has(props.row[UNIQ_ROW_KEY]) &&
-        !this.state.expandedForAnimation.has(props.row[UNIQ_ROW_KEY]);
-
-      if (cellValue instanceof MergedRowsCell && cellValue.accordion && props.row[ROW_GROUP]) {
-        const mergedKeysSet = props.row[ROW_GROUP];
-
-        expanded = [...mergedKeysSet].some((key) => expandedRows?.has(key));
-      }
-
-      extraProps.expanded = expanded;
-
-      let row = props.row;
-      let rowIndex = props.rowIndex;
-
-      if (cellValue instanceof MergedRowsCell && cellValue.accordion) {
-        row = flatRows[props.rowIndex + cellValue.rowsCount - 1];
-        rowIndex = props.rowIndex + cellValue.rowsCount - 1;
-      }
-
-      const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        onCellClick(e, { colIndex: props.columnIndex, rowIndex, row });
-        this.handleExpandRow(row, rowIndex);
-      };
-
-      if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
-        extraProps.onClick = callAllEventHandlers(
-          extraProps.onClick,
-          this.handleClickCell,
-        );
-      }
-
-      extraProps.children = sstyled(styles)(
-        <>
-          <SAccordionToggle
-            aria-label={getI18nText('DataTable.Cell.AccordionToggle.expand:aria-label')}
-            // @ts-ignore
-            expanded={expanded}
-            onClick={handleClick}
-            color='--intergalactic-icon-primary-neutral'
-            aria-expanded={expanded}
-            aria-describedby={props.id}
-            aria-controls={expanded ? props.accordionId : undefined}
-          >
-            <SAccordionToggle.Addon tag={ChevronRightM} />
-          </SAccordionToggle>
-          {extraProps.children}
-        </>,
-      );
-    }
-
-    return extraProps;
   }
 
   render() {
@@ -356,8 +166,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     } = this.asProps;
 
     let rowsToRender = rows;
-    let startIndex = -1;
-    let lastIndex = -1;
+    // let startIndex = -1;
+    // let lastIndex = -1;
 
     if (virtualScroll) {
       const rowsBuffer =
@@ -381,21 +191,21 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
 
-            if (startIndex === -1 && scrollTop < valueFromToCompare) {
-              startIndex = Math.max(key - prevPrepared, 0);
+            if (this.startIndex === -1 && scrollTop < valueFromToCompare) {
+              this.startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (this.startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
+              this.lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (startIndex !== -1 && lastIndex !== -1) {
+            if (this.startIndex !== -1 && this.lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
-            lastIndex = lastIndex + aproxRowsOnPage;
+          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(this.lastIndex ?? 0)?.[1] ?? 0)) {
+            this.lastIndex = this.lastIndex + aproxRowsOnPage;
           }
         } else if (scrollDirection === 'up') {
           for (let i = this.indexForUpIterate; i >= 0; i--) {
@@ -405,52 +215,52 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
 
-            if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
-              lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (this.lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
+              this.lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
-              startIndex = Math.max(key - prevPrepared, 0);
+            if (this.lastIndex !== -1 && scrollTop < valueFromToCompare) {
+              this.startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (startIndex !== -1 && lastIndex !== -1) {
+            if (this.startIndex !== -1 && this.lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
-            startIndex = Math.max(startIndex - aproxRowsOnPage, 0);
+          if (scrollTop < (this.rowsHeightMap.get(this.startIndex ?? 0)?.[0] ?? 0)) {
+            this.startIndex = Math.max(this.startIndex - aproxRowsOnPage, 0);
           }
         }
 
-        if (startIndex === -1) {
-          startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
+        if (this.startIndex === -1) {
+          this.startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
         }
 
-        if (lastIndex === -1) {
-          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
+        if (this.lastIndex === -1) {
+          this.lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
         }
 
-        this.indexForDownIterate = startIndex;
-        this.indexForUpIterate = lastIndex;
+        this.indexForDownIterate = this.startIndex;
+        this.indexForUpIterate = this.lastIndex;
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(this.startIndex, this.lastIndex);
       } else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
-        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
+        this.startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
         const lastIndex = Math.min(
           Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
           rows.length,
         );
 
-        rowsToRender = rows.slice(startIndex, lastIndex);
+        rowsToRender = rows.slice(this.startIndex, lastIndex);
       }
     }
 
-    startIndex = startIndex === -1 ? 0 : startIndex;
-    const rowMarginTop = this.rowsHeightMap.get(startIndex - 1)?.[1];
+    this.startIndex = this.startIndex === -1 ? 0 : this.startIndex;
+    const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
 
     let emptyRow: DTRow<string> | null = null;
 
@@ -459,6 +269,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         [UNIQ_ROW_KEY]: `${uid}_empty_data`,
         [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
+        [GRID_ROW_INDEX]: 0,
         [columns[0].name]: new MergedColumnsCell(renderEmptyData(), {
           dataKey: columns[0].name,
           size: columns.length,
@@ -466,8 +277,12 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       };
     }
 
+    if (canUseDOM()) {
+      this.calculateAriaRowIndex();
+    }
+
     return sstyled(styles)(
-      <SBody render={Box} __excludeProps={['data']}>
+      <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
         {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
@@ -476,7 +291,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               <SRowGroup
                 role='rowgroup'
                 key={`gg_${row[0][UNIQ_ROW_KEY]}`}
-                ref={this.handleRef(startIndex + index, row[0])}
+                ref={this.handleRef(this.startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
                   return (
@@ -484,6 +299,13 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
+                      componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
+                        if (component) {
+                          this.rowsComponentsMap.set(item[UNIQ_ROW_KEY], component);
+                        } else {
+                          this.rowsComponentsMap.delete(item[UNIQ_ROW_KEY]);
+                        }
+                      }}
                     />
                   );
                 })}
@@ -494,7 +316,14 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             <Body.Row
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
-              ref={virtualScroll ? this.handleRef(startIndex + index, row) : undefined}
+              ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
+              componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
+                if (component) {
+                  this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
+                } else {
+                  this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
+                }
+              }}
             />
           );
         })}
@@ -512,17 +341,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           </SSpinContainer>
         )}
       </SBody>,
-    );
-  }
-
-  private isReactNode(obj: React.ReactNode | Record<string, any>): obj is React.ReactNode {
-    return (
-      typeof obj === 'string' ||
-      typeof obj === 'number' ||
-      React.isValidElement(obj) ||
-      typeof obj === 'boolean' ||
-      obj === undefined ||
-      obj === null
     );
   }
 
@@ -546,8 +364,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
 export const Body = createComponent(BodyRoot, {
   Row,
-  Cell,
 }) as DataTableBodyType & {
   Row: DataTableRowType;
-  Cell: DataTableCellType;
 };

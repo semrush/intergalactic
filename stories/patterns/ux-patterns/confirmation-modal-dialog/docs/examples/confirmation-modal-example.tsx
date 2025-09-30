@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Input from '@semcore/input';
-import Modal from '@semcore/modal';
-import Tooltip from '@semcore/tooltip';
-import { Text, List } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Modal from '@semcore/ui/modal';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';

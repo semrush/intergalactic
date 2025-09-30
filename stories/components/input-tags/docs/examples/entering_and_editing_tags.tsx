@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import type { InputTagsProps, InputTagsValueProps } from '@semcore/input-tags';
-import InputTags from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
+import InputTags from '@semcore/ui/input-tags';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps;
@@ -28,8 +28,10 @@ const Demo = (props: ExampleInputTagsProps) => {
     setValue(`${tags.slice(-1)[0]} ${value}`);
   };
 
-  const handleCloseTag = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleCloseTag = (idx: number) => (e: React.SyntheticEvent) => {
+    e.stopPropagation();
+
+    setTags((tags) => tags.filter((_, tagIdx) => idx !== tagIdx));
   };
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -84,7 +86,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             <InputTags.Tag.Text wMax={100}>
               {tag}
             </InputTags.Tag.Text>
-            {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag} />}
+            {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag(idx)} />}
           </InputTags.Tag>
         ))}
         <InputTags.Value

@@ -33,11 +33,6 @@ export type BaseTriggerProps = BoxProps &
      */
     placeholder?: React.ReactNode;
     /**
-     * Display the dropdowns chevron icon
-     * @default true
-     */
-    chevron?: boolean;
-    /**
      * Sets disabled state to trigger
      */
     disabled?: boolean;
@@ -53,6 +48,11 @@ export interface IButtonTriggerProps extends ButtonTriggerProps, UnknownProperti
 export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
+  /**
+   * Display the dropdowns chevron icon
+   * @default true
+   */
+  chevron?: boolean;
 };
 
 /** @deprecated */

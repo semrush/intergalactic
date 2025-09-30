@@ -1,6 +1,6 @@
-import { ScreenReaderOnly, Flex } from '@semcore/base-components';
-import Select, { InputSearch } from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import Select, { InputSearch } from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -26,6 +26,7 @@ const Demo = () => {
             <InputSearch.Value aria-describedby={filter ? 'search-result-advanced' : undefined} />
             <InputSearch.Clear
               onClick={() => {
+                alert('Clicked on the Clear button');
                 return false;
               }}
             />

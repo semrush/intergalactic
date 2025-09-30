@@ -68,7 +68,7 @@ Leading and trailing spaces are trimmed when creating tags.
 
 ### Pasting text
 
-After pasting copied data, the text is split into tags based on punctuation separators like commas, semicolons and vertical bars ("|").
+After pasting copied data, the text is converted into tags and split based on punctuation separators like commas, semicolons and vertical bars ("|").
 
 ### Editing and deleting tags
 

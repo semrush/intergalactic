@@ -1,4 +1,4 @@
-import TimePicker from '@semcore/time-picker';
+import TimePicker from '@semcore/ui/time-picker';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DifferentCasesExample, { defaultProps as baseExampleProps2 } from './examples/different_cases';

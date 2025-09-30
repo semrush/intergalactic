@@ -1,6 +1,6 @@
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { NoData } from '@semcore/widget-empty';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 export type AccordionWithFixedColumnProps = {

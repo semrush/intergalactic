@@ -1,8 +1,8 @@
-import { useResizeObserver } from '@semcore/base-components';
-import { DataTable } from '@semcore/data-table';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
+import { useResizeObserver } from '@semcore/ui/base-components';
+import { DataTable } from '@semcore/ui/data-table';
+import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');

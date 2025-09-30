@@ -1,8 +1,8 @@
-import { Chart } from '@semcore/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
@@ -44,7 +44,6 @@ function getJSX(props: AreaChartJSXProps) {
       groupKey='x'
       data={data}
       aria-label='Area chart'
-      aria-labelledby='Test'
       {...props.commonChartProps}
       {...restLinearChartProps}
       {...(props.legendProps && {
@@ -83,7 +82,7 @@ const entry: PlaygroundEntry<AreaChartJSXProps> = {
         },
       },
     },
-    ...ChartControls,
+    ...getDefaultChartControls(),
   },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],

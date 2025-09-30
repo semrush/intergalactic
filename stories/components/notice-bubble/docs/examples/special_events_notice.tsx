@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import MailSent from '@semcore/illustration/MailSent';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import MailSent from '@semcore/ui/illustration/MailSent';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 
 type SpecialEventsNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };

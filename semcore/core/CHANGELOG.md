@@ -2,6 +2,34 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.0] - 2025-09-20
+
+### Added
+
+- Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+
+## [16.3.1] - 2025-09-12
+
+### Changed
+
+- Prevent scroll on focus by mouse interaction.
+
+## [16.3.0] - 2025-09-08
+
+### Added
+
+- New group of tokens for our `Illustration` component.
+
+## [16.2.0] - 2025-09-03
+
+### Added
+
+- New tokens for secondary button from the `feature-highlight` package.
+
+### Fixed
+
+- Some inconsistencies and missing tokens/descriptions in `dark.json`.
+
 ## [16.1.1] - 2025-08-29
 
 ### Changed
@@ -13,10 +41,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - New tokens for FeaturePopover's new theme styles: `feature-popover-bg`, `feature-popover-bg-neutral`, `feature-popover-dot-neutral`, `feature-popover-dot-neutral-outer-border`.
-
-### Fixed
-
-- Internal types.
 
 ## [16.0.4] - 2025-07-07
 

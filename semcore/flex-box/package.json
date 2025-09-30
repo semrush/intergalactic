@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flex-box",
   "description": "Semrush FlexBox Component",
-  "version": "16.0.7",
+  "version": "16.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -15,6 +15,9 @@
     "require": "./lib/cjs/index.js",
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
+  },
+  "devDependencies": {
+    "@semcore/base-components": "workspace:*"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

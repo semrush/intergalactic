@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
+import { MergedRowsCell, MergedColumnsCell } from './components/Body/MergedCells';
 import { DataTable, ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './components/DataTable/DataTable';
 import type {
   DataTableSort,
@@ -8,6 +9,8 @@ import type {
   DataTableData,
   DataTableProps,
   DataTableChangeSort,
+  ColumnGroupConfig,
+  ColumnItemConfig,
 } from './components/DataTable/DataTable.types';
 
 const wrapDataTable = <PropsExtending extends {}>(
@@ -20,6 +23,8 @@ const wrapDataTable = <PropsExtending extends {}>(
 ): DataTableType => wrapper as any;
 
 export {
+  MergedRowsCell,
+  MergedColumnsCell,
   DataTable,
   ACCORDION,
   ROW_GROUP,
@@ -34,4 +39,6 @@ export type {
   DataTableData,
   DataTableProps,
   DataTableChangeSort,
+  ColumnGroupConfig,
+  ColumnItemConfig,
 };

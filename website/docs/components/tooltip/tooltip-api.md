@@ -13,7 +13,7 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ## Tooltip
 
 ```jsx
-import Tooltip from '@semcore/tooltip';
+import Tooltip from '@semcore/ui/tooltip';
 <Tooltip />;
 ```
 
@@ -26,7 +26,7 @@ Try the [new, more lightweight and performant implementation of Hint](../../util
 :::
 
 ```jsx
-import { Hint } from '@semcore/tooltip';
+import { Hint } from '@semcore/ui/tooltip';
 <Hint />;
 ```
 
@@ -35,7 +35,7 @@ import { Hint } from '@semcore/tooltip';
 ## DescriptionTooltip
 
 ```jsx
-import { DescriptionTooltip } from '@semcore/tooltip';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 <DescriptionTooltip />;
 ```
 

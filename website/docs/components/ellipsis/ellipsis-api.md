@@ -13,7 +13,7 @@ Use the new [**ellipsis** prop and **useEllipsis** hook](/utils/ellipsis/ellipsi
 ## Ellipsis
 
 ```jsx
-import Ellipsis from '@semcore/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
 <Ellipsis />;
 ```
 

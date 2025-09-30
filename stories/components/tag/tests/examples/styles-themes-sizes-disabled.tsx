@@ -1,6 +1,6 @@
-import { Flex, Box } from '@semcore/flex-box';
-import Tag from '@semcore/tag';
-import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import Tag from '@semcore/ui/tag';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

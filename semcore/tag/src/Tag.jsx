@@ -156,6 +156,9 @@ class RootTagContainer extends Component {
       id: outerId,
       interactive,
       resolveColor,
+      addonLeft,
+      addonRight,
+      active,
     } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
@@ -168,6 +171,9 @@ class RootTagContainer extends Component {
       tag: interactive ? 'button' : undefined,
       interactive,
       resolveColor,
+      addonLeft,
+      addonRight,
+      active,
     };
   }
 

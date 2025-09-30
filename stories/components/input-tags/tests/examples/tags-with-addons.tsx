@@ -1,8 +1,8 @@
-import { Box, Flex } from '@semcore/flex-box';
-import Check from '@semcore/icon/Check/m';
-import Edit from '@semcore/icon/Edit/m';
-import InputTags from '@semcore/input-tags';
-import type { InputTagsTagProps } from '@semcore/input-tags';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Check from '@semcore/ui/icon/Check/m';
+import Edit from '@semcore/ui/icon/Edit/m';
+import InputTags from '@semcore/ui/input-tags';
+import type { InputTagsTagProps } from '@semcore/ui/input-tags';
 import React from 'react';
 
 type ExampleInputTagsProps = InputTagsTagProps;
@@ -18,6 +18,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             disabled={props.disabled}
             interactive={props.interactive}
             color={props.color}
+            addonRight={Edit}
           >
             <InputTags.Tag.Text>
               <InputTags.Tag.Addon>
@@ -25,6 +26,7 @@ const Demo = (props: ExampleInputTagsProps) => {
               </InputTags.Tag.Addon>
               <InputTags.Tag.Text.Content>Text and addon</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
+
           </InputTags.Tag>
 
           <InputTags.Tag
@@ -35,12 +37,11 @@ const Demo = (props: ExampleInputTagsProps) => {
             interactive={props.interactive}
 
             color={props.color}
+            addonLeft={Edit}
+            active
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Addon>
-                <Edit />
-              </InputTags.Tag.Addon>
-              <InputTags.Tag.Text.Content>Addon text and close</InputTags.Tag.Text.Content>
+              Addon text and close
             </InputTags.Tag.Text>
             <InputTags.Tag.Close />
           </InputTags.Tag>

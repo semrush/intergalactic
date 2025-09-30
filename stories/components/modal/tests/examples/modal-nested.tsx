@@ -1,4 +1,4 @@
-import Modal from '@semcore/modal';
+import Modal from '@semcore/ui/modal';
 import React, { useState } from 'react';
 
 const loremString = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus

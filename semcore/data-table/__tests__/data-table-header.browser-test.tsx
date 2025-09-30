@@ -22,7 +22,7 @@ test.describe('One level Header', () => {
 
     await page.keyboard.press('Tab');
 
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
     await expect(firstCell).toBeFocused();
     await expect(page).toHaveScreenshot();
@@ -55,7 +55,7 @@ test.describe('One level Header', () => {
 
     const getTooltip = (testId: string) => page.locator(`[data-test-id="${testId}"]`);
     const getTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-    const getCell = (index: number) => page.locator('[data-ui-name="Body.Cell"]').nth(index);
+    const getCell = (index: number) => page.locator('[data-ui-name="Row.Cell"]').nth(index);
     const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
     const columnKD = page.locator(
       '[data-ui-name="Head.Column"][name="keyword"][aria-colindex="6"]',
@@ -180,7 +180,7 @@ test.describe('One level Header', () => {
 
     const getTooltip = (testId: string) => page.locator(`[data-test-id="${testId}"]`);
     const tooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
     const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
 
     await test.step('Verify interaction with tooltip without interactive elements', async () => {
@@ -613,7 +613,7 @@ test.describe('One level header - Sorting', () => {
     expect(messages.length).toBe(0);
 
     await page.keyboard.press('ArrowDown');
-    await expect(page.locator('[data-ui-name="Body.Cell"][aria-colindex="1"]').first()).toBeFocused();
+    await expect(page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first()).toBeFocused();
 
     await page.keyboard.press('ArrowUp');
     await expect(buttonLink1).toBeFocused();
@@ -774,7 +774,7 @@ test.describe('Multi level Header', () => {
       'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const firstCell = page.locator('[data-ui-name="Body.Cell"]').first();
+    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
     await test.step('Verify tooltip without interactive elements', async () => {
       const tooltipTrigger = page.locator('[data-test-id="tooltip-without-interactive-el"]');

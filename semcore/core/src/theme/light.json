@@ -1120,6 +1120,48 @@
         "description": "Color for the default non-interactive icon."
       }
     },
+    "illustration": {
+      "red": {
+        "value": "#FF788F",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "orange": {
+        "value": "#FFB26E",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "yellow": {
+        "value": "#FFE84D",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "salad": {
+        "value": "#C7FA73",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "green": {
+        "value": "#45E0A8",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "blue": {
+        "value": "#6EDBFF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "violet": {
+        "value": "#B880FF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "pink": {
+        "value": "#FF7AD1",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      }
+    },
     "date-picker": {
       "cell": {
         "value": "{gray.white}",
@@ -2105,7 +2147,7 @@
         "blue-hover-active": {
           "value": "#B7E4FF",
           "type": "color",
-          "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. "
+          "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath."
         },
         "green-normal": {
           "value": "#CFF1EA",
@@ -2587,12 +2629,17 @@
       "feature-highlight": {
         "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
         "type": "color",
-        "description": "Border for highlighted controls."
+        "description": "Primary border for highlighted controls."
       },
       "feature-highlight-active": {
         "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
         "type": "color",
-        "description": "Border for the active state of highlighted controls."
+        "description": "Primary border for the active state of highlighted controls."
+      },
+      "feature-highlight-secondary": {
+        "value": "linear-gradient(90deg, {violet.200}, {blue.200})",
+        "type": "color",
+        "description": "Secondary border for highlighted controls."
       }
     },
     "control": {
@@ -2612,6 +2659,44 @@
           "type": "color",
           "description": "Active (selected) state of the highlighted primary control."
         }
+      },
+      "secondary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Background of the highlighted secondary control."
+        },
+        "feature-highlight-hover": {
+          "value": "linear-gradient(90deg, {violet.100}, {blue.100})",
+          "type": "color",
+          "description": "Hover state of the highlighted secondary control.",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.3",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "feature-highlight-active": {
+          "value": "linear-gradient(90deg, {violet.100}, {blue.100})",
+          "type": "color",
+          "description": "Active (selected) state of the highlighted secondary control."
+        }
+      }
+    },
+    "text": {
+      "feature-highlight": {
+        "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
+        "type": "color",
+        "description": "Text for highlighted features."
+      },
+      "feature-highlight-hover-active": {
+        "value": "linear-gradient(90deg, {violet.700}, {blue.700})",
+        "type": "color",
+        "description": "Text for hover and active states of highlighted features."
       }
     },
     "icon": {

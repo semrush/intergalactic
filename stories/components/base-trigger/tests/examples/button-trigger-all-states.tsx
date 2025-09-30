@@ -1,9 +1,9 @@
-import { ButtonTrigger } from '@semcore/base-trigger';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import NeighborLocation from '@semcore/neighbor-location';
-import Select from '@semcore/select';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => (
@@ -18,16 +18,16 @@ const Demo = () => (
       <ButtonTrigger state='invalid' data-test-id='invalid-state-trigger'>Invalid state</ButtonTrigger>
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
-      <ButtonTrigger size='m' data-test-id='m-size-trigger'>ButtonM</ButtonTrigger>
+      <ButtonTrigger size='m' data-test-id='m-size-trigger' chevron={false}>ButtonM</ButtonTrigger>
       <ButtonTrigger size='l' data-test-id='l-size-trigger'>ButtonL</ButtonTrigger>
       <NeighborLocation>
         <ButtonTrigger data-test-id='left-location-trigger'>Left</ButtonTrigger>
-        <ButtonTrigger data-test-id='center-location-trigger'>Center</ButtonTrigger>
+        <ButtonTrigger data-test-id='center-location-trigger' chevron={false}>Center</ButtonTrigger>
         <ButtonTrigger data-test-id='right-location-trigger'>Right</ButtonTrigger>
       </NeighborLocation>
     </Flex>
     <Flex gap={2} justifyContent='flex-start'>
-      <ButtonTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled'>Button with placeholder</ButtonTrigger>
+      <ButtonTrigger empty disabled placeholder='Placeholder' data-test-id='placeholder-trigger-disabled' chevron={false}>Button with placeholder</ButtonTrigger>
       <ButtonTrigger empty state='valid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-valid'>Button with placeholder</ButtonTrigger>
       <ButtonTrigger empty state='invalid' placeholder='Placeholder' data-test-id='placeholder-trigger-state-invalid'>Button with placeholder</ButtonTrigger>
     </Flex>

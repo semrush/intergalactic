@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-09-22
+
+### Added
+
+- Initial animation for `ScoreDonut` and `ScoreSemiDonut`.
+
+### Changed
+
+- `ScoreDonut` and `ScoreSemiDonut` visual value can't be greater than 100.
+
+## [16.0.9] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.2.2 ~> 16.2.3], `@semcore/flex-box` [16.0.8 ~> 16.0.9]).
+
+## [16.0.8] - 2025-09-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.2.1 ~> 16.2.2], `@semcore/flex-box` [16.0.7 ~> 16.0.8]).
+
 ## [16.0.7] - 2025-08-29
 
 ### Changed

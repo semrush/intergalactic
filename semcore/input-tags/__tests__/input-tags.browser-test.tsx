@@ -526,6 +526,25 @@ test.describe('Functional tests', () => {
       await page.keyboard.press('|');
       await expect(inputText.nth(count1 - 1)).toHaveText('Test');
     });
+
+    await test.step('Verify entered text is pasted when paste action happened', async () => {
+      const bufferedText = 'Buffer';
+      const typedValue = 'Test';
+      const tagCount = await tag.count();
+
+      await page.keyboard.type(typedValue);
+      await inputValue.evaluate((el, text) => {
+        const event = new Event('paste', { bubbles: true, cancelable: true });
+        (event as any).clipboardData = {
+          getData: (type: string) => (type === 'text/plain' ? text : ''),
+          types: ['text/plain'],
+        };
+        el.dispatchEvent(event);
+      }, bufferedText);
+
+      await expect(tag).toHaveCount(tagCount + 2);
+      await expect(inputValue).toBeEmpty();
+    });
   });
 
   test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', async ({ page }) => {
