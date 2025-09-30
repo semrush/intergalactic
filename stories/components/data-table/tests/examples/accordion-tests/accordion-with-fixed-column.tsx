@@ -1,5 +1,3 @@
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { NoData } from '@semcore/ui/widget-empty';

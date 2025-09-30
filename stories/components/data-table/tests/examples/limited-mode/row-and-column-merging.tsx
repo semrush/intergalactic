@@ -1,5 +1,4 @@
 import { Flex } from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
 import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

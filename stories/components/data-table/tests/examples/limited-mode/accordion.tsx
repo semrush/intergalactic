@@ -1,5 +1,5 @@
 import Button from '@semcore/ui/button';
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { Flex } from '@semcore/ui/flex-box';

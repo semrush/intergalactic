@@ -7,6 +7,8 @@ import CheckboxExample, { checkboxExampleProps } from './examples/limited-mode/c
 import type { CheckboxExampleProps } from './examples/limited-mode/checkboxes';
 import RowsColumnsMergingExample, { rowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
 import type { RowsColumnsMergingProps } from './examples/limited-mode/row-and-column-merging';
+import type { ScrollInTableProps } from './examples/limited-mode/scroll-in-table-sticky';
+import ScrollInTableExample, { scrollInTableProps } from './examples/limited-mode/scroll-in-table-sticky';
 import type { FixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
 import ScrollWithFixedColumnExample, { fixedColumnDiffWidthProps } from './examples/limited-mode/scroll-with-fixed-columns';
 import type { SortTableProps } from './examples/limited-mode/sortable-table';
@@ -23,6 +25,13 @@ export const ScrollWithFixedColumn: StoryObj<FixedColumnDiffWidthProps> = {
   render: ScrollWithFixedColumnExample,
   args: {
     ...fixedColumnDiffWidthProps,
+  },
+};
+
+export const ScrollInTable: StoryObj<ScrollInTableProps> = {
+  render: ScrollInTableExample,
+  args: {
+    ...scrollInTableProps,
   },
 };
 
