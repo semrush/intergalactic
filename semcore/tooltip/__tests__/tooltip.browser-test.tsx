@@ -137,7 +137,7 @@ test.describe('Tooltip - Functional', () => {
       await expect(tooltip).toHaveCount(1);
     });
 
-    await test.step('Verify not hide on 2nd mouse click', async () => {
+    await test.step('Verify not closed on 2nd mouse click', async () => {
       await trigger.nth(1).click();
       await tooltip.waitFor({ state: 'visible' });
       await expect(tooltip).toHaveCount(1);
@@ -158,13 +158,13 @@ test.describe('Tooltip - Functional', () => {
       await expect(tooltip).toHaveCount(1);
     });
 
-    await test.step('Verify tooltip hide on escape', async () => {
+    await test.step('Verify tooltip closed on Escape', async () => {
       await page.keyboard.press('Escape');
       await tooltip.waitFor({ state: 'hidden' });
       await expect(tooltip).toHaveCount(0);
     });
 
-    await test.step('Verify tooltip shown on next focus and not closed by space', async () => {
+    await test.step('Verify tooltip shown on next focus and not closed by Space', async () => {
       await page.keyboard.press('Tab');
       await tooltip.waitFor({ state: 'visible' });
       await expect(tooltip).toHaveCount(1);
@@ -192,7 +192,7 @@ test.describe('Tooltip - Functional', () => {
       await expect(tooltip).toHaveCount(1);
     });
 
-    await test.step('Verify tooltip hide on escape', async () => {
+    await test.step('Verify tooltip closed on Escape', async () => {
       await page.keyboard.press('Escape');
       await tooltip.waitFor({ state: 'hidden' });
       await expect(tooltip).toHaveCount(0);
@@ -316,7 +316,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(popper).toHaveCount(0);
     });
 
-    await test.step('Verify enter expandes popper', async () => {
+    await test.step('Verify Enter expands popper', async () => {
       await page.keyboard.press('Enter');
       await linkPopper.waitFor({ state: 'visible' });
 
@@ -328,7 +328,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(linkPopper).not.toBeFocused();
     });
 
-    await test.step('Verify escape closes popper', async () => {
+    await test.step('Verify Escape closes popper', async () => {
       await page.keyboard.press('Escape');
       await linkPopper.waitFor({ state: 'hidden' });
 
@@ -337,7 +337,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify space expands popper', async () => {
+    await test.step('Verify Space expands popper', async () => {
       await page.keyboard.press('Space');
       await linkPopper.waitFor({ state: 'visible' });
 
@@ -349,13 +349,13 @@ test.describe('Description tooltip - Functional', () => {
       await expect(linkPopper).not.toBeFocused();
     });
 
-    await test.step('Verify tab switches focus indide the popper', async () => {
+    await test.step('Verify Tab switches focus indide the popper', async () => {
       await page.keyboard.press('Tab');
       await expect(popper).not.toBeFocused();
       await expect(linkPopper).toBeFocused();
     });
 
-    await test.step('Verify escape closes popper when link focused', async () => {
+    await test.step('Verify Escape closes popper when link focused', async () => {
       await page.keyboard.press('Escape');
       await linkPopper.waitFor({ state: 'hidden' });
 
@@ -364,7 +364,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify tabs close popper', async () => {
+    await test.step('Verify Tab closes popper', async () => {
       await page.keyboard.press('Enter');
       await linkPopper.waitFor({ state: 'visible' });
 
@@ -376,7 +376,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify tabs switch focus to next trigger popper', async () => {
+    await test.step('Verify Tab switch focus to next trigger', async () => {
       await page.keyboard.press('Tab');
 
       await expect(trigger.nth(1)).toBeFocused();
@@ -416,7 +416,7 @@ test.describe('Description tooltip - Functional', () => {
       await expect(popper).toHaveCount(1);
     });
 
-    await test.step('Verify tooltip close on 2nd click', async () => {
+    await test.step('Verify tooltip closed on 2nd click', async () => {
       await trigger.nth(0).click();
       await expect(popper).not.toBeVisible();
     });
@@ -432,7 +432,7 @@ test.describe('Hint - Visual', () => {
     const trigger = page.locator('[data-ui-name="Hint"]');
     const popper = page.locator('[data-ui-name="Hint.Popper"]');
 
-    await test.step('Verify tooltip shown on hover of interactive element', async () => {
+    await test.step('Verify tooltip shown on hover interactive element', async () => {
       const triggerRect = (await trigger.nth(0).boundingBox())!;
 
       await page.mouse.move(
@@ -445,7 +445,7 @@ test.describe('Hint - Visual', () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify tooltip shown on hover of non-interactive element', async () => {
+    await test.step('Verify tooltip shown on hover non-interactive element', async () => {
       const triggerRect = (await trigger.nth(1).boundingBox())!;
 
       await page.mouse.move(
@@ -479,7 +479,7 @@ test.describe('Hint - Functional', () => {
       await expect(popper).toHaveAttribute('aria-hidden', 'true');
     });
 
-    await test.step('Verify tooltip on non interactive not shown by Tab ', async () => {
+    await test.step('Verify non interactive not focused by Tab', async () => {
       await page.keyboard.press('Escape');
       await expect(popper).toHaveCount(0);
 
