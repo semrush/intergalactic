@@ -1,4 +1,4 @@
-import { DataTable, ROW_GROUP } from '@semcore/data-table';
+import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
 import React from 'react';
 
 const data = [

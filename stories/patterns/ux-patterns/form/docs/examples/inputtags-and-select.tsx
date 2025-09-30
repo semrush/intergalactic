@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Counter from '@semcore/counter';
-import InputTags from '@semcore/input-tags/';
-import Select from '@semcore/select';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Counter from '@semcore/ui/counter';
+import InputTags from '@semcore/ui/input-tags/';
+import Select from '@semcore/ui/select';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 

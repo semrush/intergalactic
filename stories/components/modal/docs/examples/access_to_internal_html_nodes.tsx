@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
 import React, { useState } from 'react';
 
 const overlayStyles = { background: 'rgba(255, 147, 253, .75)' };

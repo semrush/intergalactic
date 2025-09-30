@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Ellipsis from '@semcore/ellipsis';
-import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/input-tags';
-import InputTags from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Ellipsis from '@semcore/ui/ellipsis';
+import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
+import InputTags from '@semcore/ui/input-tags';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps;

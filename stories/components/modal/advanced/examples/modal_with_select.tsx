@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import type { SelectProps } from '@semcore/select';
-import Select from '@semcore/select';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
+import type { SelectProps } from '@semcore/ui/select';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const options: SelectProps['options'] = [

@@ -1,4 +1,4 @@
-import Badge from '@semcore/badge';
+import Badge from '@semcore/ui/badge';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BadgeMainTypesExample from './examples/badge_main_types';

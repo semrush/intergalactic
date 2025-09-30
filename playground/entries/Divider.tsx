@@ -1,5 +1,5 @@
-import type { DividerProps } from '@semcore/divider';
-import Divider from '@semcore/divider';
+import type { DividerProps } from '@semcore/ui/divider';
+import Divider from '@semcore/ui/divider';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

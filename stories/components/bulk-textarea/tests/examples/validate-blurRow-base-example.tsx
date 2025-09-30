@@ -1,8 +1,8 @@
-import type { BulkTextareaProps, ErrorItem } from '@semcore/bulk-textarea';
-import BulkTextarea from '@semcore/bulk-textarea';
-import Button from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
+import Button from '@semcore/ui/button';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const validateRow = (row: string, rows: string[]) => {

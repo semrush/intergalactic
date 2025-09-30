@@ -1,4 +1,4 @@
-import ProgressBar from '@semcore/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ComplexUsageExample from './examples/complex_usage_example';

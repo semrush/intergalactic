@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import {
   Plot,
   GroupBar,
@@ -7,8 +7,8 @@ import {
   HoverRect,
   makeDataHintsContainer,
   ChartLegend,
-} from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
+} from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

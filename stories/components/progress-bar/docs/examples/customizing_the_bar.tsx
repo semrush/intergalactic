@@ -1,5 +1,5 @@
-import ProgressBar from '@semcore/progress-bar';
-import type { ProgressBarProps } from '@semcore/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
+import type { ProgressBarProps } from '@semcore/ui/progress-bar';
 import React from 'react';
 
 type ProgressBarExampleProps = ProgressBarProps;

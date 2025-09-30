@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
+import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
 import {
   Plot,
   StackBar,
@@ -7,7 +7,7 @@ import {
   XAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/d3-chart';
+} from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

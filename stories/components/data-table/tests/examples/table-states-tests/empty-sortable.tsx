@@ -1,5 +1,5 @@
-import type { DataTableSort } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
+import type { DataTableSort } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 type DataRow = {

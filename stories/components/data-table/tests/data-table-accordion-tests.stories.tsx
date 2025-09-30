@@ -1,4 +1,4 @@
-import { DataTable } from '@semcore/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimationDurationTestExample, { tableInTableDefaultProps } from './examples/accordion-tests/accordion-duration';

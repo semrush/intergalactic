@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/base-components';
-import Carousel from '@semcore/carousel';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Carousel from '@semcore/ui/carousel';
 import React from 'react';
 
 const images = [

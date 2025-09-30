@@ -1,9 +1,9 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
-import { DatePicker } from '@semcore/date-picker';
-import TimePicker from '@semcore/time-picker';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import { DatePicker } from '@semcore/ui/date-picker';
+import TimePicker from '@semcore/ui/time-picker';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 

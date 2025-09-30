@@ -1,4 +1,4 @@
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample, { defaultProps as baseExampleProps } from './examples/basic_example';

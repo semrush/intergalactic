@@ -1,11 +1,10 @@
-import Accordion from '@semcore/accordion';
-import type { AccordionProps } from '@semcore/accordion';
-import type { CollapseProps } from '@semcore/animation';
-import { Box } from '@semcore/base-components';
-import type { BoxProps } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import type { AccordionProps, AccordionCollapseProps } from '@semcore/ui/accordion';
+import { Box } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/flex-box';
 import React from 'react';
 
-type ExampleAccordionProps = AccordionProps & { duration?: number } & CollapseProps & BoxProps;
+type ExampleAccordionProps = AccordionProps & { duration?: number } & AccordionCollapseProps & BoxProps;
 
 const Demo = (props: ExampleAccordionProps) => {
   const [value, onChange] = React.useState([0]);

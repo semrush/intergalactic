@@ -396,6 +396,6 @@ SLimitOverlayCellWrapper[gridArea] {
 }
 
 SLimitOverlayCellWrapper[left] {
-    position: sticky;
-    left: var(---left);
+  position: sticky;
+  left: var(---left);
 }

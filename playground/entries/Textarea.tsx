@@ -1,5 +1,5 @@
-import type { TextareaProps } from '@semcore/textarea';
-import Textarea from '@semcore/textarea';
+import type { TextareaProps } from '@semcore/ui/textarea';
+import Textarea from '@semcore/ui/textarea';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

@@ -1,4 +1,4 @@
-import BulkTextarea from '@semcore/bulk-textarea';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ControlledAndNotControlledErrorsExample, { defaultProps } from './examples/controlled-and-not-controlled-errors';

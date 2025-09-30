@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import InputMask from '@semcore/input-mask';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import InputMask from '@semcore/ui/input-mask';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

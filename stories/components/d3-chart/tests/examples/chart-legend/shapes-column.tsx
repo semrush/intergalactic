@@ -1,9 +1,9 @@
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 import {
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
+} from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const dataHints = makeDataHintsContainer();

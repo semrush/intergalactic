@@ -1,4 +1,4 @@
-import { Plot, Radar, colors } from '@semcore/d3-chart';
+import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

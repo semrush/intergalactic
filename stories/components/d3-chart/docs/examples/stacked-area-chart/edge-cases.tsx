@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

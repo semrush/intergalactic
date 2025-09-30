@@ -1,4 +1,4 @@
-import { PatternFill, PatternSymbol, getPatternSymbolSize } from '@semcore/d3-chart';
+import { PatternFill, PatternSymbol, getPatternSymbolSize } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 const Demo = () => {

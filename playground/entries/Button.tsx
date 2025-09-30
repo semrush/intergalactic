@@ -1,5 +1,5 @@
-import type { ButtonLinkProps, ButtonProps } from '@semcore/button';
-import Button, { ButtonLink } from '@semcore/button';
+import type { ButtonLinkProps, ButtonProps } from '@semcore/ui/button';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

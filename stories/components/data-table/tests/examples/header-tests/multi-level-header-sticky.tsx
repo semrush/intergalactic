@@ -1,6 +1,6 @@
-import { DataTable } from '@semcore/data-table';
-import AmazonM from '@semcore/icon/color/Amazon/m';
-import { Hint } from '@semcore/tooltip';
+import { DataTable } from '@semcore/ui/data-table';
+import AmazonM from '@semcore/ui/icon/color/Amazon/m';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

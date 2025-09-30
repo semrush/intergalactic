@@ -1,15 +1,15 @@
-import { Flex, Box, ScreenReaderOnly } from '@semcore/base-components';
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import FeaturePopover from '@semcore/feature-popover';
-import type { FeaturePopoverProps } from '@semcore/feature-popover';
-import FileExport from '@semcore/icon/FileExport/m';
-import { Text } from '@semcore/typography';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import type { FeaturePopoverProps } from '@semcore/ui/feature-popover';
+import FileExport from '@semcore/ui/icon/FileExport/m';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-export type FeaturePopoverExampleProps = {
-  closeIcon: boolean;
-  theme: FeaturePopoverProps['theme'];
+export const defaultProps: FeaturePopoverExampleProps = {
+  closeIcon: true,
+  theme: 'accent',
 };
 
 const Demo = (props: FeaturePopoverExampleProps) => {
@@ -18,10 +18,20 @@ const Demo = (props: FeaturePopoverExampleProps) => {
 
   return (
     <Flex gap={2}>
-      <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal theme={props.theme}>
+      <FeaturePopover
+        visible={visible}
+        onVisibleChange={setVisible}
+        disablePortal
+        theme={props.theme}
+      >
         <FeaturePopover.Trigger>
-          <DropdownMenu onVisibleChange={handleVisibleChange(false)}>
-            <DropdownMenu.Trigger tag={Button} addonLeft={FileExport}>
+          <DropdownMenu
+            onVisibleChange={handleVisibleChange(false)}
+          >
+            <DropdownMenu.Trigger
+              tag={Button}
+              addonLeft={FileExport}
+            >
               Export
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu>
@@ -31,7 +41,11 @@ const Demo = (props: FeaturePopoverExampleProps) => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon={props.closeIcon} wMax={400} aria-label='New feature: Export'>
+        <FeaturePopover.Popper
+          closeIcon={props.closeIcon}
+          wMax={400}
+          aria-label='New feature: Export'
+        >
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -45,44 +59,55 @@ const Demo = (props: FeaturePopoverExampleProps) => {
             />
             <div>
               <Text size={300} bold tag='h3' mb={1} mt={0}>
-                Export your data {props.theme}
+                Export your data
               </Text>
               <Text mb={4} size={200} tag='p'>
                 With this new feature, you can now export your data to CSV or PDF files.
               </Text>
-              <Flex justifyContent='space-between'>
-                <Button theme='invert' use='primary' onClick={handleVisibleChange(false)}>
-                  Got it
+              <Flex gap={2} alignItems='center'>
+                <Button
+                  theme='invert'
+                  use='primary'
+                  onClick={handleVisibleChange(false)}
+                >
+                  Next
                 </Button>
-                <Button theme={props.theme === 'accent' ? 'muted' : 'invert'} use='tertiary' ml={2} onClick={handleVisibleChange(false)}>
+                <Button
+                  theme={
+                    props.theme === 'accent' ? 'muted' : 'invert'
+                  }
+                  use='tertiary'
+                  onClick={handleVisibleChange(false)}
+                >
                   Remind me later
                 </Button>
 
-                <Flex inline aria-live='polite' alignItems='center'>
-                  Step
-                  {' '}
-                  1
+                <Text size={200} aria-live='polite' ml='auto'>
+                  Step 1
                   <span aria-hidden='true'>/</span>
                   <ScreenReaderOnly>of</ScreenReaderOnly>
                   5
-                </Flex>
+                </Text>
               </Flex>
             </div>
           </Flex>
         </FeaturePopover.Popper>
       </FeaturePopover>
-      <Button use='tertiary' onClick={() => window.location.reload()}>
+      <Button
+        use='tertiary'
+        onClick={() => window.location.reload()}
+      >
         Reload page
       </Button>
     </Flex>
   );
 };
 
-export const defaultProps: FeaturePopoverExampleProps = {
-  closeIcon: true,
-  theme: 'accent',
-};
-
 Demo.defaultProps = defaultProps;
+
+export type FeaturePopoverExampleProps = {
+  closeIcon: boolean;
+  theme: FeaturePopoverProps['theme'];
+};
 
 export default Demo;

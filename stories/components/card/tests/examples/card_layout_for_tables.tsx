@@ -1,6 +1,6 @@
-import Card from '@semcore/card';
-import type { DataTableSort } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
+import Card from '@semcore/ui/card';
+import type { DataTableSort } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const tooltipContent =

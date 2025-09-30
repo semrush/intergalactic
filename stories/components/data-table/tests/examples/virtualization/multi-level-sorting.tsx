@@ -1,9 +1,9 @@
-import type { DataTableSort } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
-import AmazonM from '@semcore/icon/color/Amazon/m';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import type { DataTableSort } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import AmazonM from '@semcore/ui/icon/color/Amazon/m';
+import { Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;

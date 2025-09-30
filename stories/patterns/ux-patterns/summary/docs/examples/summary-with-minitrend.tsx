@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import Divider from '@semcore/divider';
-import Info from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import MiniChart from '@semcore/mini-chart';
-import { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Divider from '@semcore/ui/divider';
+import Info from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import MiniChart from '@semcore/ui/mini-chart';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

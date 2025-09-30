@@ -1,5 +1,5 @@
 import Table from '@semcore/table';
-import { NoData } from '@semcore/widget-empty';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

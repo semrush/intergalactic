@@ -1,5 +1,5 @@
-import type { BadgeProps } from '@semcore/badge';
-import Badge from '@semcore/badge';
+import type { BadgeProps } from '@semcore/ui/badge';
+import Badge from '@semcore/ui/badge';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

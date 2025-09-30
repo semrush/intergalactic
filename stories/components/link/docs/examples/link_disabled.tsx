@@ -1,5 +1,5 @@
-import ChevronRightM from '@semcore/icon/ChevronRight/m';
-import Link from '@semcore/link';
+import ChevronRightM from '@semcore/ui/icon/ChevronRight/m';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {

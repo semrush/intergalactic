@@ -1,12 +1,12 @@
-import Button from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
-import { DataTable } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
-import InfoM from '@semcore/icon/Info/m';
-import Select from '@semcore/select';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import { DataTable } from '@semcore/ui/data-table';
 import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Select from '@semcore/ui/select';
+import { Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];

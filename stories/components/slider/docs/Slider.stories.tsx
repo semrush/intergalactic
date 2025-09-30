@@ -1,4 +1,4 @@
-import Slider from '@semcore/slider';
+import Slider from '@semcore/ui/slider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomizesOptionsViewExample from './examples/customized_options_view';
