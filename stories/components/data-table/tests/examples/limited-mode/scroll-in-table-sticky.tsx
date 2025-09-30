@@ -113,10 +113,4 @@ const data = [
   },
 ];
 
-export const defaultProps: ExampleDataTableProps = {
-  loading: false,
-};
-
-Demo.defaultProps = defaultProps;
-
 export default Demo;

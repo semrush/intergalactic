@@ -194,7 +194,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('limited rows', async ({ page }) => {
+  test('limited mode', async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/limited-mode.tsx';
     const violations = await checkAxe(page, standPath);
 
