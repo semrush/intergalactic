@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import BulkTextarea from '@semcore/bulk-textarea';
-import Input from '@semcore/input';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
+import Input from '@semcore/ui/input';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const FocusStylesInAllInputs = () => {
