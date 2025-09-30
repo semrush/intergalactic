@@ -1,5 +1,4 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import dayjs from 'dayjs';
@@ -269,7 +268,6 @@ function CalendarUnit({ styles, date, long, outdated, disabled, highlighted }) {
     />,
   );
 }
-CalendarUnit.enhance = [keyboardFocusEnhance()];
 
 class CalendarDaysRoot extends CalendarAbstract {
   static displayName = 'CalendarDays';

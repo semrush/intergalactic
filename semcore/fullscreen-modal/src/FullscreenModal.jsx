@@ -1,7 +1,6 @@
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Flex, Box } from '@semcore/flex-box';
@@ -160,7 +159,6 @@ function Back(props) {
     </SBack>,
   );
 }
-Back.enhance = [keyboardFocusEnhance()];
 
 const FullscreenModal = createComponent(
   FullscreenModalRoot,

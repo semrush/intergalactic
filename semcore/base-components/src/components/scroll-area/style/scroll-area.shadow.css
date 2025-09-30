@@ -195,7 +195,7 @@ SContainer {
   }
 }
 
-SContainer[keyboardFocused]:focus::after {
+SContainer:focus-visible::after {
   position: absolute;
   display: block;
   content: '';

@@ -9,7 +9,6 @@ import {
 } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import logger from '@semcore/core/lib/utils/logger';
 import pick from '@semcore/core/lib/utils/pick';
@@ -764,8 +763,6 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
     </Portal>,
   );
 }
-
-PopperPopper.enhance = [keyboardFocusEnhance(false)];
 
 export const Popper = createComponent(PopperRoot, {
   Trigger,

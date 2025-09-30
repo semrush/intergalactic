@@ -1,6 +1,5 @@
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
@@ -18,7 +17,7 @@ class RootLink extends Component {
   };
 
   static style = style;
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
   containerRef = React.createRef();
 
   state = {

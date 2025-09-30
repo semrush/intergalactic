@@ -1,7 +1,7 @@
 import type { FadeInOutProps } from '@semcore/animation';
+import type Button from '@semcore/button';
 import type { Intergalactic, UnknownProperties } from '@semcore/core';
 import type { Flex } from '@semcore/flex-box';
-import type { IconProps } from '@semcore/icon';
 
 export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral';
 
@@ -31,7 +31,7 @@ export type NoticeGlobalProps = FadeInOutProps & {
 
 declare const NoticeGlobal: Intergalactic.Component<'div', NoticeGlobalProps> & {
   Content: typeof Flex;
-  CloseIcon: Intergalactic.Component<'div', IconProps>;
+  CloseIcon: typeof Button;
 };
 
 export default NoticeGlobal;

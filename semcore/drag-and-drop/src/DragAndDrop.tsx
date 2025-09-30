@@ -1,7 +1,6 @@
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { Box, ScreenReaderOnly } from '@semcore/flex-box';
@@ -593,12 +592,12 @@ const Draggable = (props: any) => {
       role='group'
       aria-describedby={`describe-draggable-${uid}`}
       use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
+      tabIndex={0}
     >
       <Children />
     </SDraggable>,
   );
 };
-Draggable.enhance = [keyboardFocusEnhance()];
 
 type DirectionArrows = 'ArrowRight' | 'ArrowLeft' | 'ArrowUp' | 'ArrowDown';
 const findNextRectangleIndex = <

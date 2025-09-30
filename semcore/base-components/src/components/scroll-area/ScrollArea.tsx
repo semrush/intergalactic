@@ -1,11 +1,11 @@
 import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { lastInteraction } from '@semcore/ui/core';
 import React, { type ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
@@ -48,7 +48,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()] as const;
+  static enhance = [uniqueIDEnhancement()] as const;
 
   static defaultProps: () => DefaultProps = () => ({
     container: React.createRef(),
@@ -205,7 +205,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
 
   handleFocusIn = (e: FocusEvent) => {
     setTimeout(() => {
-      const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
+      const { leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
       if (
         e.target instanceof HTMLElement &&
@@ -229,7 +229,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
             Math.floor(element.left) >= viewPort.right - offset.right ||
             Math.floor(element.right) <= viewPort.left + offset.left;
 
-          if (outOfViewport && keyboardFocused) {
+          if (outOfViewport && lastInteraction.isKeyboard()) {
             this.$container.scrollTo({
               top: element.top + this.$container.scrollTop - offset.top - viewPort.top,
               left: element.left + this.$container.scrollLeft - offset.left - viewPort.left,
@@ -449,8 +449,6 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
     </SContainer>,
   );
 }
-
-ContainerRoot.enhance = [keyboardFocusEnhance()];
 
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,

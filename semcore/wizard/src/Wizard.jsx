@@ -1,7 +1,6 @@
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
@@ -221,6 +220,7 @@ function Stepper(props) {
     <SStepper
       render={Box}
       role='tab'
+      tabIndex={disabled ? undefined : 0}
       id={`${uid}-stepper-${step}`}
       aria-controls={active ? `${uid}-content-${step}` : undefined}
       aria-disabled={disabled}
@@ -236,8 +236,6 @@ function Stepper(props) {
     </SStepper>,
   );
 }
-
-Stepper.enhance = [keyboardFocusEnhance()];
 
 function Content(props) {
   const { Children, children: hasChildren, styles, uid, step } = props;
