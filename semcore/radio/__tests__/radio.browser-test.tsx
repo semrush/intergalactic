@@ -1,5 +1,16 @@
+import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+
+const locators = {
+  radios: (page: Page) => page.getByRole('radio'),
+  textLabel: (page: Page, text: string) => page.locator('label', { hasText: text }),
+  status: (page: Page) => page.getByRole('status'),
+  radioGroup: (page: Page) => page.getByRole('group'),
+  radioText: (page: Page, text: string) => page.locator('label[data-ui-name="Radio.Text"]', { hasText: text }),
+  options: (page: Page) => page.getByRole('option'),
+
+};
 
 test.describe('Radio with group', () => {
   test('Verify roles and attributes for radio with group', async ({ page }) => {
@@ -486,5 +497,37 @@ test.describe('Radio with Additional input props', () => {
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
       await expect(radios.nth(2).locator('[data-ui-name="Radio.Value"]')).not.toBeChecked();
     });
+  });
+});
+
+test.describe('Vusual - pattern', () => {
+  test('Verify Radio and Select Ux pattern', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await locators.options(page).first().waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('Functional - pattern', () => {
+  test('Verify Radio and Select Ux pattern keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await page.getByRole('option').first().waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
 });
