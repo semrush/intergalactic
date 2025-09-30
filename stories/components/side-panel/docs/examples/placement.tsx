@@ -1,8 +1,8 @@
-import Button from '@semcore/button';
-import Select from '@semcore/select';
-import type { SidePanelPlacement } from '@semcore/side-panel';
-import SidePanel from '@semcore/side-panel';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Select from '@semcore/ui/select';
+import type { SidePanelPlacement } from '@semcore/ui/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];

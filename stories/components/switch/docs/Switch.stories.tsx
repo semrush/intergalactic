@@ -1,4 +1,4 @@
-import Switch from '@semcore/switch';
+import Switch from '@semcore/ui/switch';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample, { defaultProps as BasicProps } from './examples/basic_example';

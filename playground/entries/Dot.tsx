@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import type { DotProps } from '@semcore/dot';
-import Dot from '@semcore/dot';
+import Button from '@semcore/ui/button';
+import type { DotProps } from '@semcore/ui/dot';
+import Dot from '@semcore/ui/dot';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

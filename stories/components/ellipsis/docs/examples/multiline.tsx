@@ -1,7 +1,7 @@
-import Card from '@semcore/card';
-import type { EllipsisProps } from '@semcore/ellipsis';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import Card from '@semcore/ui/card';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: EllipsisProps) => {

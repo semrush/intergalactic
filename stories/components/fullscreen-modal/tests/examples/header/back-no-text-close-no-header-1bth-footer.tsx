@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

@@ -1,16 +1,16 @@
-import BaseTrigger from '@semcore/base-trigger';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import BaseTrigger from '@semcore/ui/base-trigger';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis trim='middle'>Dat First List</Ellipsis>
+        <DropdownMenu.Trigger tag={[BaseTrigger, 'h1']}>
+          <BaseTrigger.Text w={150} tag={[Text, 'h2']} size={400}>
+            <Ellipsis trim='middle'>Few tags tags</Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
@@ -18,9 +18,7 @@ const Demo = () => {
         <DropdownMenu.Trigger tag={BaseTrigger}>
           <BaseTrigger.Text w={150} tag={Text} size={400}>
             <Ellipsis trim='middle' data-test-id='ellipsis-middle'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
+              This is first trigger with a very very long text!
             </Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
@@ -29,9 +27,7 @@ const Demo = () => {
         <DropdownMenu.Trigger tag={BaseTrigger}>
           <BaseTrigger.Text w={150} tag={Text} size={400}>
             <Ellipsis>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
+              This is second trigger with a very very long text!
             </Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
@@ -47,9 +43,7 @@ const Demo = () => {
       <br />
       <BaseTrigger w={100} data-test-id='active-trigger'>
         <Ellipsis>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-          commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-          tempore voluptas. Aliquam eos expedita illo quasi unde!
+          This is third trigger with a very very long text!
         </Ellipsis>
       </BaseTrigger>
     </>

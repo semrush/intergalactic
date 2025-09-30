@@ -1,9 +1,9 @@
-import { Portal, Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import type { NoticeGlobalTheme } from '@semcore/notice-global';
-import NoticeGlobal from '@semcore/notice-global';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Portal, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import type { NoticeGlobalTheme } from '@semcore/ui/notice-global';
+import NoticeGlobal from '@semcore/ui/notice-global';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const themes = ['neutral', 'info', 'success', 'warning', 'danger'] as const;

@@ -1,9 +1,9 @@
-import BaseTrigger from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import { Box, Flex } from '@semcore/flex-box';
-import Popper from '@semcore/popper';
-import Tooltip from '@semcore/tooltip';
+import BaseTrigger from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Popper from '@semcore/ui/popper';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

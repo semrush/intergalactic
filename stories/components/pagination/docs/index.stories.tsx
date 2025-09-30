@@ -1,4 +1,4 @@
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/basic_usage';

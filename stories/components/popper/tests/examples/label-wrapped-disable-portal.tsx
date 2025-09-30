@@ -1,4 +1,4 @@
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const options = Array(5)

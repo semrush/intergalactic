@@ -540,9 +540,6 @@ importers:
 
   semcore/button:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: 16.0.0(@semcore/core@semcore+core)
       '@semcore/flex-box':
         specifier: 16.0.9
         version: link:../flex-box
@@ -556,6 +553,9 @@ importers:
         specifier: 16.0.9
         version: link:../tooltip
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -748,9 +748,6 @@ importers:
       '@semcore/animation':
         specifier: 16.0.5
         version: link:../animation
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: 16.0.0(@semcore/core@semcore+core)
       '@semcore/checkbox':
         specifier: 16.1.3
         version: link:../checkbox
@@ -806,6 +803,9 @@ importers:
       '@semcore/babel-plugin-react-semcore':
         specifier: ^4.9.0
         version: 4.9.0(@babel/core@7.19.1)
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/button':
         specifier: workspace:*
         version: link:../button
@@ -1322,10 +1322,10 @@ importers:
         version: 7.0.0
 
   semcore/flex-box:
-    dependencies:
+    devDependencies:
       '@semcore/base-components':
-        specifier: ^16.0.0
-        version: 16.0.0(@semcore/core@semcore+core)
+        specifier: workspace:*
+        version: link:../base-components
 
   semcore/format-text:
     dependencies:
@@ -1410,9 +1410,6 @@ importers:
 
   semcore/icon:
     dependencies:
-      '@semcore/flex-box':
-        specifier: 16.0.9
-        version: link:../flex-box
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -1420,6 +1417,9 @@ importers:
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
       '@semcore/icon-transform-svg':
         specifier: workspace:*
         version: link:../../tools/icon-transform-svg
@@ -1601,7 +1601,7 @@ importers:
         specifier: 16.0.9
         version: link:../scroll-area
       '@semcore/tag':
-        specifier: 16.1.9
+        specifier: 16.1.10
         version: link:../tag
     devDependencies:
       '@semcore/button':
@@ -1923,10 +1923,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/scroll-area:
-    dependencies:
+    devDependencies:
       '@semcore/base-components':
-        specifier: ^16.0.0
-        version: 16.0.0(@semcore/core@semcore+core)
+        specifier: workspace:*
+        version: link:../base-components
 
   semcore/select:
     dependencies:
@@ -3036,7 +3036,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))
 
   website:
     dependencies:
@@ -28959,7 +28959,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -28967,7 +28967,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.12)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
     dependencies:
@@ -29012,7 +29012,7 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.15.30)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(sass@1.89.1)(terser@5.41.0)(yaml@2.8.0):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4

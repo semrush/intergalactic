@@ -1,12 +1,12 @@
-import Badge from '@semcore/badge';
-import { Flex } from '@semcore/base-components';
-import Globe from '@semcore/icon/Globe/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Pills from '@semcore/pills';
-import type { PillsProps, PillProps } from '@semcore/pills';
-import Spin from '@semcore/spin';
-import { Text } from '@semcore/typography';
+import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/base-components';
+import Globe from '@semcore/ui/icon/Globe/m';
+import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import Pills from '@semcore/ui/pills';
+import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import Spin from '@semcore/ui/spin';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type PillExampleProps = PillsProps & PillProps;

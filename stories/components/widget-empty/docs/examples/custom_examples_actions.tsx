@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import { Box } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

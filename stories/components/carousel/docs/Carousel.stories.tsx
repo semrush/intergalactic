@@ -1,4 +1,4 @@
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/carousel_with_default_indicators';

@@ -1,4 +1,4 @@
-import { ACCORDION, DataTable } from '@semcore/data-table';
+import { ACCORDION, DataTable } from '@semcore/ui/data-table';
 import React, { useState } from 'react';
 
 function App() {

@@ -6,7 +6,7 @@ tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Exam
 ## DataTable
 
 ```jsx
-import DataTable from '@semcore/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 

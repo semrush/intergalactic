@@ -29,6 +29,7 @@ const unsafeSetFocus = (
   target?.focus({
     // @ts-ignore. set focus-visible in FF and Safari
     focusVisible: lastInteraction.isKeyboard(),
+    preventScroll: lastInteraction.isMouse(),
     ...focusOptions,
   });
 };

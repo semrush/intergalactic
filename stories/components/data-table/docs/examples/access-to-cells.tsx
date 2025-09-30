@@ -1,5 +1,5 @@
-import { ButtonLink } from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
+import { ButtonLink } from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = () => {
@@ -18,7 +18,7 @@ const Demo = () => {
           return (
             <ButtonLink
               onClick={() => {
-                alert(`Click row 
+                alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(props.row, null, '  ')};
                   index: ${props.rowIndex};`);

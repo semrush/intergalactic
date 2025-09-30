@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;

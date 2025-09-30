@@ -1,10 +1,10 @@
-import Button, { ButtonLink } from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import FileExportM from '@semcore/icon/FileExport/m';
-import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (
@@ -13,11 +13,11 @@ const Demo = () => (
       Tooltip:
       <Tooltip
         interaction='hover'
-        tag={Link}
+        tag={[Link, 'h1']}
         href='https://google.com'
         title='Default tooltip contains short text explaining something about the trigger.'
       >
-        Hover
+        Hover and few tags
       </Tooltip>
       <Tooltip
         title='Default tooltip contains short text explaining something about the trigger.'
@@ -46,8 +46,8 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip interaction='hover'>
-        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
-          Hover
+        <DescriptionTooltip.Trigger tag={[ButtonLink, 'h2']} use='secondary'>
+          Hover and few tags
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>

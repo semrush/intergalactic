@@ -1,10 +1,10 @@
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import ColorPicker from '@semcore/color-picker';
-import { Flex, Box } from '@semcore/flex-box';
-import Input from '@semcore/input';
-import Tag from '@semcore/tag';
-import { Text } from '@semcore/typography';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import ColorPicker from '@semcore/ui/color-picker';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import Input from '@semcore/ui/input';
+import Tag from '@semcore/ui/tag';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

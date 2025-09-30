@@ -1,8 +1,8 @@
-import { Box, Flex } from '@semcore/base-components';
-import InputNumber from '@semcore/input-number';
-import Slider from '@semcore/slider';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import InputNumber from '@semcore/ui/input-number';
+import Slider from '@semcore/ui/slider';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

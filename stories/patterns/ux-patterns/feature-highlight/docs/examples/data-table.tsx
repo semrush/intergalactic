@@ -1,7 +1,7 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { DataTable } from '@semcore/data-table';
-import type { DataTableSort } from '@semcore/data-table';
-import SummaryAI from '@semcore/icon/SummaryAI/m';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { DataTable } from '@semcore/ui/data-table';
+import type { DataTableSort } from '@semcore/ui/data-table';
+import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import React from 'react';
 
 const Demo = () => {

@@ -1,4 +1,4 @@
-import Icon from '@semcore/icon';
+import Icon from '@semcore/ui/icon';
 import React from 'react';
 
 const Demo = () => {

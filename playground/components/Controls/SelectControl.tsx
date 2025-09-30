@@ -1,6 +1,6 @@
-import { Box, Flex } from '@semcore/base-components';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React, { useContext } from 'react';
 
 import type { SelectControlType } from '../../types/Controls';

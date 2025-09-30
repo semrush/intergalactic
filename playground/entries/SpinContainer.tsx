@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Input from '@semcore/input';
-import type { SpinContainerProps } from '@semcore/spin-container';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
+import type { SpinContainerProps } from '@semcore/ui/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

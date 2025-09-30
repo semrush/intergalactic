@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
 import React, { useState } from 'react';
 
 const loremString = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
