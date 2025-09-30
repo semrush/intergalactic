@@ -1,8 +1,8 @@
 import { Box, Flex, Collapse, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
 import Pagination from '@semcore/pagination';
 import { Text } from '@semcore/typography';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type CheckboxExampleProps = {

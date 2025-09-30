@@ -1,6 +1,6 @@
-import { DataTable } from '@semcore/data-table';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type FixedColumnDiffWidthProps = {

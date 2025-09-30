@@ -1,8 +1,8 @@
 import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
-import type { DataTableSort, DataTableProps } from '@semcore/data-table';
 import { Text } from '@semcore/typography';
+import { DataTable } from '@semcore/ui/data-table';
+import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;

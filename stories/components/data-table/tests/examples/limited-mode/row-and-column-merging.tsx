@@ -1,7 +1,7 @@
 import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { DataTable, ROW_GROUP } from '@semcore/data-table';
 import { Text } from '@semcore/typography';
+import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type RowsColumnsMergingProps = {
