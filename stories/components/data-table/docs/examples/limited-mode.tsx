@@ -24,14 +24,15 @@ const Demo = (props: LimitedModeExampleProps) => {
         fromColumn: columnsLimit,
         renderOverlay() {
           return (
-            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
-              <Text size={300} fontWeight='bold' textAlign='center'>You've reached your report limit for today</Text>
-              <Text size={200} textAlign='center'>
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320} style={{ textWrap: 'balance' }}>
+              <Text size={300} fontWeight='bold' textAlign='center' id='limited_rows_title'>You've reached your report limit for today</Text>
+              <Text size={200} textAlign='center' id='limited_rows_description'>
                 To increase your daily report limit,upgrade to a Guru plan.
               </Text>
               <Button
                 theme='success'
                 use='primary'
+                aria-describedby='limited_rows_title limited_rows_description'
               >
                 Upgrade to Guru
               </Button>

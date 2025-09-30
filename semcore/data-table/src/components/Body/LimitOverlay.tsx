@@ -18,10 +18,13 @@ type LimitOverlayProps<UniqKeyType> = {
   flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
+  scrollAreaRef: React.RefObject<HTMLDivElement>;
 };
 
 class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyType>> implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
+
+  limitWrapperRef = React.createRef<HTMLDivElement>();
 
   static displayName = 'LimitOverlay';
   static style = style;
@@ -56,6 +59,28 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
     return `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
   }
 
+  get sizes() {
+    const { scrollAreaRef, columns } = this.asProps;
+
+    if (columns.some((c) => c.fixed) && this.limitWrapperRef.current && scrollAreaRef.current) {
+      const scrollAreaRect = scrollAreaRef.current.getBoundingClientRect();
+      const limitWrapperRect = this.limitWrapperRef.current.getBoundingClientRect();
+
+      const left = limitWrapperRect.x - scrollAreaRect.x;
+      const width = scrollAreaRect.width - limitWrapperRect.x + scrollAreaRect.x;
+
+      return {
+        left,
+        width,
+      };
+    }
+
+    return {
+      left: 0,
+      width: 0,
+    };
+  }
+
   handleFocusableCellKeyDown = (e: React.KeyboardEvent) => {
     handleKeydownFocusCell(this.lockedCell, e);
   };
@@ -86,11 +111,15 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
     const colIndex = columnsLimit ? columnsLimit + 1 : 1;
     const colSpan = columns.length - (columnsLimit ?? 0);
     const rowsSpan = rows.length - (rowsLimit ?? 0);
+    const { width, left } = this.sizes;
 
     return sstyled(styles)(
       <SLimitOverlayCellWrapper
+        ref={this.limitWrapperRef}
         // @ts-ignore
         gridArea={this.limitOverlayGridArea}
+        w={width}
+        left={left}
       >
         <Box
           role='gridcell'

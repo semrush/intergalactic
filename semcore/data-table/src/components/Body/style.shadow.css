@@ -395,3 +395,7 @@ SLimitOverlayCellWrapper[gridArea] {
   backdrop-filter: blur(3px);
 }
 
+SLimitOverlayCellWrapper[left] {
+    position: sticky;
+    left: var(---left);
+}

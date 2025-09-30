@@ -383,6 +383,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       limit,
       hasGroups,
       tableRef,
+      scrollAreaRef,
     } = this.asProps;
 
     const { expandedForAnimation, withAnimation } = this.state;
@@ -534,6 +535,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               flatRows={flatRows}
               hasGroups={hasGroups}
               tableRef={tableRef}
+              scrollAreaRef={scrollAreaRef}
             />
           )}
         </SRow>

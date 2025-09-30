@@ -17,8 +17,14 @@ const Demo = () => {
           { name: 'cpc', children: 'CPC', gtcWidth: '300px' },
           { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
           { name: 'vol', children: 'Vol.', gtcWidth: '80px', fixed: 'right' },
-
         ]}
+        limit={{
+          fromRow: 1,
+          fromColumn: 1,
+          renderOverlay: () => {
+            return (<div>text</div>);
+          },
+        }}
       />
 
     </>
