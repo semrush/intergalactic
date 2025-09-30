@@ -204,6 +204,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       variant,
       isAccordionRow,
       accordionRowIndex,
+      selectedRows,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -285,8 +286,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       }
     }
 
+    const firstColumnIndex = selectedRows ? 1 : 0;
+
     if (
-      (props.columnIndex === 0 && props.row[ACCORDION]) ||
+      (props.columnIndex === firstColumnIndex && props.row[ACCORDION]) ||
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
@@ -428,6 +431,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           withAnimation={withAnimation}
         >
           {columns.map((column, i) => {
+            const index = i;
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
+                    row[column.name];
+
+            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+              this.cellHasAccordion(cellValue) || accordionType === 'row';
+
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
               return (
@@ -440,6 +450,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
                   onClick={this.handleClickCheckbox(!checked)}
+                  expanded={expanded}
+                  withAccordion={withAccordion}
+                  isAccordionRow={isAccordionRow}
                 >
                   <Checkbox
                     checked={checked}
@@ -451,10 +464,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 </SCheckboxCell>
               );
             }
-
-            const index = i;
-            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
-              row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -469,9 +478,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 style[name] = value;
               }
             }
-
-            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
-              this.cellHasAccordion(cellValue) || accordionType === 'row';
 
             return (
               <Row.Cell
