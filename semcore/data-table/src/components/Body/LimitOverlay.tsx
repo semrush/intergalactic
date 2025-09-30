@@ -118,8 +118,8 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
         ref={this.limitWrapperRef}
         // @ts-ignore
         gridArea={this.limitOverlayGridArea}
-        w={width}
-        left={left}
+        w={width ? width : undefined}
+        left={left ? left : undefined}
       >
         <Box
           role='gridcell'
