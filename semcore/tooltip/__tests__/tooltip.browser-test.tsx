@@ -2,24 +2,18 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Tooltip - Visual', () => {
-  test('Verify Tooltip Hint and DescriptionTooltip styles', async ({ page }) => {
+  test('Verify Tooltip, Hint and DescriptionTooltip styles', async ({ page }) => {
     const standPath = 'stories/components/tooltip/tests/examples/tooltip-styles.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
     const hintPopper = page.locator('[data-ui-name="Hint.Popper"]');
-
     const tooltipPopper = page.locator('[data-ui-name="Tooltip.Popper"]');
     await tooltipPopper.nth(3).waitFor({ state: 'visible' });
-
-    await expect(page).toHaveScreenshot();
-
     const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-
-    await hintPopper.first().waitFor();
+    await hintPopper.first().waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
-
     await test.step('Verify hint popper styles', async () => {
       const count1 = await hintPopper.count();
       for (let i = 0; i < count1; i++) {
@@ -55,7 +49,6 @@ test.describe('Tooltip - Visual', () => {
     await page.setContent(htmlContent);
 
     const trigger = page.locator('[data-ui-name="Tooltip"]');
-
     const triggerRect = (await trigger.first().boundingBox())!;
 
     await page.keyboard.press('Tab');
@@ -67,9 +60,7 @@ test.describe('Tooltip - Visual', () => {
         steps: 5,
       },
     );
-    await page.getByText(
-      'Default tooltip contains short text explaining something about the trigger.',
-    ).waitFor({ state: 'visible' });
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -79,7 +70,7 @@ test.describe('Tooltip - Visual', () => {
 
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
-    await page.getByText('Hello, stranger!').waitFor({ state: 'visible' });
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -93,7 +84,7 @@ test.describe('Tooltip - Visual', () => {
     const button = page.locator('[data-ui-name="Button"]');
 
     await button.click();
-    await page.getByText('Tooltip with ignoring portals stacking.').first().waitFor({ state: 'visible' });
+    await page.getByRole('tooltip').first().waitFor({ state: 'visible' });
     await expect(popper).toHaveCount(2);
     await expect(page).toHaveScreenshot();
 
@@ -110,7 +101,7 @@ test.describe('Tooltip - Visual', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
-    await page.getByText('Option 1 description').waitFor({ state: 'visible' });
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -123,8 +114,8 @@ test.describe('Tooltip - Functional', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="Tooltip"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="Tooltip"]');
+    const tooltip = page.getByRole('tooltip');
 
     await test.step('Verify tooltip shown on hover', async () => {
       const triggerRect = (await trigger.first().boundingBox())!;
@@ -136,28 +127,20 @@ test.describe('Tooltip - Functional', () => {
           steps: 5,
         },
       );
-      await page.getByText(
-        'Default tooltip contains short text explaining something about the trigger.',
-      ).waitFor({ state: 'visible' });
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
     });
 
     await test.step('Verify tooltip shown on mouse click', async () => {
       await trigger.nth(1).click();
-      await page.getByText(
-        'Default tooltip contains short text explaining something about the trigger.',
-      ).waitFor({ state: 'visible' });
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
     });
 
     await test.step('Verify not hide on 2nd mouse click', async () => {
       await trigger.nth(1).click();
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
     });
   });
 
@@ -167,38 +150,27 @@ test.describe('Tooltip - Functional', () => {
 
     await page.setContent(htmlContent);
 
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
+    const tooltip = page.getByRole('tooltip');
 
     await test.step('Verify tooltip shown on focus', async () => {
       await page.keyboard.press('Tab');
-
-      await page.getByText(
-        'Default tooltip contains short text explaining something about the trigger.',
-      ).waitFor({ state: 'visible' });
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
     });
 
     await test.step('Verify tooltip hide on escape', async () => {
       await page.keyboard.press('Escape');
-      await expect(popper).not.toBeVisible();
-      await expect(popper).toHaveCount(0);
+      await tooltip.waitFor({ state: 'hidden' });
+      await expect(tooltip).toHaveCount(0);
     });
 
     await test.step('Verify tooltip shown on next focus and not closed by space', async () => {
       await page.keyboard.press('Tab');
-      await page.getByText(
-        'Default tooltip contains short text explaining something about the trigger.',
-      ).waitFor({ state: 'visible' });
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
       await page.keyboard.press('Space');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await expect(tooltip).toBeVisible();
+      await expect(tooltip).toHaveCount(1);
     });
   });
 
@@ -209,23 +181,21 @@ test.describe('Tooltip - Functional', () => {
     await page.setContent(htmlContent);
 
     const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
+    const tooltip = page.getByRole('tooltip');
 
     await test.step('Verify tooltip shown on focus', async () => {
       await expect(buttonLink).not.toHaveAttribute('aria-describedby');
       await page.keyboard.press('Tab');
 
-      await page.getByText('Hello, stranger!').waitFor({ state: 'visible' });
+      await tooltip.waitFor({ state: 'visible' });
       await expect(buttonLink).toHaveAttribute('aria-describedby');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
+      await expect(tooltip).toHaveCount(1);
     });
 
     await test.step('Verify tooltip hide on escape', async () => {
       await page.keyboard.press('Escape');
-      await page.getByText('Hello, stranger!').waitFor({ state: 'hidden' });
-      await expect(popper).toHaveCount(0);
+      await tooltip.waitFor({ state: 'hidden' });
+      await expect(tooltip).toHaveCount(0);
       await expect(buttonLink).not.toHaveAttribute('aria-describedby');
     });
   });
@@ -267,19 +237,21 @@ test.describe('Tooltip - Functional', () => {
     await page.setContent(htmlContent);
     const options = page.getByRole('option');
     const optionsCount = await options.count();
+    const tooltip = page.getByRole('tooltip');
+
     await page.locator('[data-ui-name="Select.Trigger"]').click();
     await options.first().waitFor({ state: 'visible' });
     for (let i = 0; i < optionsCount; i++) {
       await expect(options.nth(i)).not.toHaveAttribute('aria-labelledby');
     }
 
-    await page.locator('[data-ui-name="Select.Option"]').nth(2).hover();
-    await page.getByText('Option 2 description').waitFor({ state: 'visible' });
+    await options.nth(2).hover();
+    await tooltip.waitFor({ state: 'visible' });
 
     for (let i = 0; i < optionsCount; i++) {
       await expect(options.nth(i)).toHaveAttribute('aria-labelledby');
     }
-    await expect(page.getByRole('tooltip')).toHaveCount(1);
+    await expect(tooltip).toHaveCount(1);
   });
 });
 
@@ -331,8 +303,8 @@ test.describe('Description tooltip - Functional', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const popper = await page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const popper = page.getByRole('dialog');
     const linkPopper = page.locator('[data-ui-name="Link"]');
 
     await test.step('Verify tab focuses trigger but tooltip not shown', async () => {
@@ -418,8 +390,8 @@ test.describe('Description tooltip - Functional', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const popper = await page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const popper = page.getByRole('dialog');
 
     const linkPopper = page.locator('[data-ui-name="Link"]');
 
@@ -457,7 +429,8 @@ test.describe('Hint - Visual', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const trigger = await page.locator('[data-ui-name="Hint"]');
+    const trigger = page.locator('[data-ui-name="Hint"]');
+    const popper = page.locator('[data-ui-name="Hint.Popper"]');
 
     await test.step('Verify tooltip shown on hover of interactive element', async () => {
       const triggerRect = (await trigger.nth(0).boundingBox())!;
@@ -468,7 +441,7 @@ test.describe('Hint - Visual', () => {
         { steps: 5 },
       );
 
-      await page.getByText('Export to PDF').waitFor({ state: 'visible' });
+      await popper.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -481,7 +454,8 @@ test.describe('Hint - Visual', () => {
         { steps: 5 },
       );
 
-      await page.getByText('You confirmed your email').waitFor({ state: 'visible' });
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveAttribute('aria-hidden', 'true');
       await expect(page).toHaveScreenshot();
     });
   });
@@ -493,23 +467,25 @@ test.describe('Hint - Functional', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const trigger = await page.locator('[data-ui-name="Hint"]');
+    const trigger = page.locator('[data-ui-name="Hint"]');
+    const popper = page.locator('[data-ui-name="Hint.Popper"]');
 
     await test.step('Verify tooltip shown on Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(trigger.nth(0)).toBeFocused();
-      await expect(page.getByText('Export to PDF')).toHaveCount(1);
+      await expect(popper).toHaveCount(1);
+      await expect(popper).toHaveAttribute('aria-hidden', 'true');
     });
 
     await test.step('Verify tooltip on non interactive not shown by Tab ', async () => {
       await page.keyboard.press('Escape');
-      await expect(page.getByText('Export to PDF')).toHaveCount(0);
+      await expect(popper).toHaveCount(0);
 
       await page.keyboard.press('Tab');
       await expect(trigger.nth(1)).not.toBeFocused();
-      await expect(page.getByText('You confirmed your email')).toHaveCount(0);
+      await expect(popper).toHaveCount(0);
     });
   });
 });
