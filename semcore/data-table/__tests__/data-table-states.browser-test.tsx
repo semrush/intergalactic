@@ -217,7 +217,7 @@ test.describe('Limited state', () => {
           window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
         );
 
-        expect(cssValue).toContain('blur(3px)');
+        expect(cssValue).toContain('blur(6px)');
       });
     });
 
@@ -348,7 +348,7 @@ test.describe('Limited state', () => {
           window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
         );
 
-        expect(cssValue).toContain('blur(3px)');
+        expect(cssValue).toContain('blur(6px)');
       });
 
       await test.step('Verify overlay shown and aria attributes on the last page', async () => {
@@ -413,9 +413,11 @@ test.describe('Limited state', () => {
       await test.step('Verify table with overlay snapshot', async () => {
         await locators.button(page, 'Prev').click();
         await page.locator('[data-ui-name="Checkbox"]').first().click();
-        const box = await rows.nth(3).boundingBox();
-        if (box) {
-          await page.mouse.move(box.x + 10, box.y + 5);
+        if (item.rowsLimit > 2) {
+          const box = await rows.nth(1).getByRole('gridcell').nth(1).boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + 10, box.y + 2);
+          }
         }
         await expect(page).toHaveScreenshot();
       });
@@ -498,7 +500,7 @@ test.describe('Limited state', () => {
           window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
         );
 
-        expect(cssValue).toContain('blur(3px)');
+        expect(cssValue).toContain('blur(6px)');
       });
     });
   });
