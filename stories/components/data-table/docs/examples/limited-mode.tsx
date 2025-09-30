@@ -1,8 +1,8 @@
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 export type LimitedModeExampleProps = {
