@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import Button from '@semcore/ui/button';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 
 type ReplaceLastNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };

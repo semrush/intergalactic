@@ -5,6 +5,11 @@ import useBox, { type BoxProps } from './useBox';
 
 function Box(props: any, ref: any) {
   const [Tag, boxProps] = useBox(props, ref);
+  if (Array.isArray(Tag)) {
+    const [FirstTag, htmlTag] = Tag;
+    return <FirstTag {...boxProps} tag={htmlTag} />;
+  }
+
   return <Tag {...boxProps} />;
 }
 

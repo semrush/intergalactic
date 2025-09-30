@@ -1,5 +1,5 @@
-import { Plot, Donut } from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
+import { Plot, Donut } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const data = {

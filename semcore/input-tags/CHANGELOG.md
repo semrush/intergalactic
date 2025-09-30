@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.10] - 2025-09-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tag` [16.1.9 ~> 16.1.10]).
+
+## [16.0.9] - 2025-09-12
+
+### Fixed
+
+- Typed text is lost when new text is pasted afterwards.
+
 ## [16.0.8] - 2025-09-05
 
 ### Changed

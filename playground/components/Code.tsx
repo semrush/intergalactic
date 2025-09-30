@@ -1,8 +1,8 @@
-import { Box, Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Check from '@semcore/icon/Check/m';
-import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
-import Copy from '@semcore/icon/Copy/m';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Check from '@semcore/ui/icon/Check/m';
+import GitHubInvertM from '@semcore/ui/icon/color/GitHubInvert/m';
+import Copy from '@semcore/ui/icon/Copy/m';
 import React, { useEffect, useRef, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
@@ -103,7 +103,7 @@ function Code({ sourceCode, link }: ICodeProps) {
   if (!html) return;
 
   return (
-    <Box ref={scrollableContainerRef} className={styles.code}>
+    <Box ref={scrollableContainerRef} className={styles.code} role='group' aria-label='Source code and actions'>
       <Box className={styles.sourceCodeWrapper}>
         <Box className={styles.sourceCode} dangerouslySetInnerHTML={{ __html: html }}></Box>
         <Flex gap={2} className={styles.sourceCodeControls}>

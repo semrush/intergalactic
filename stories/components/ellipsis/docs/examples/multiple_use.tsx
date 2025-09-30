@@ -1,8 +1,9 @@
-import { DataTable } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (propsEllipsis: EllipsisProps) => {
   const containerRef = React.useRef(null);
 
   const containerRect = useResizeObserver(containerRef);
@@ -20,7 +21,7 @@ const Demo = () => {
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+            <Ellipsis trim={propsEllipsis.trim} containerRect={containerRect} containerRef={containerRef}>
               {props.value}
             </Ellipsis>
           );
@@ -31,6 +32,12 @@ const Demo = () => {
     />
   );
 };
+
+export const defaultProps: EllipsisProps = {
+  trim: 'middle',
+};
+
+Demo.defaultProps = defaultProps;
 
 const data = [
   {

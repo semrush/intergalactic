@@ -4,7 +4,7 @@ import type Tooltip from '@semcore/tooltip';
 import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
-import type { DataTableBodyProps, BodyPropsInner } from '../Body/Body.types';
+import type { DataTableBodyProps } from '../Body/Body.types';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 import type { DataTableHeadProps } from '../Head/Head.types';
@@ -35,7 +35,7 @@ export type DataRowItem = {
 };
 export interface DTValue {
   toString(): string;
-  [ACCORDION]?: React.ReactNode | DataTableData;
+  [ACCORDION]?: React.ReactNode;
 }
 export type DataTableData = DataRowItem[];
 
@@ -91,6 +91,7 @@ export type DataTableProps<
 
     /**
      * Set of expanded rows (uniq id from them)
+     * This is mutable! variable because of table performance. Don't change the link on it.
      */
     expandedRows?: Set<UniqKeyType>;
 
@@ -163,6 +164,11 @@ export type DataTableProps<
      * @default 'default'
      */
     variant?: 'default' | 'card';
+
+    /**
+     * Handle change expanded rows
+     */
+    onExpandedRowsChange?: (expandedRows: Set<UniqKeyType>) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

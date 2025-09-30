@@ -572,6 +572,12 @@ video {
   margin-top: 24px;
 }
 
+/* First heading in modals on API pages */
+
+.vp-doc dialog :is(h1, h2, h3, h4, h5, h6):not(* ~ :is(h1, h2, h3, h4, h5, h6)):not([class]) {
+  margin-top: unset;
+}
+
 /* Styles for changelogs */
 .vp-doc .custom-block.details {
   margin: 0;
@@ -595,8 +601,6 @@ video {
 .vp-doc .collapsed-versions h2 {
   margin: 0 0 12px;
 }
-
-/* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
 h1[class],
 h2[class],
@@ -641,6 +645,8 @@ h6[class] {
 .vp-doc a:not([class]):visited {
   color: var(--vp-c-indigo-2);
 }
+
+/* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
 .vp-doc a:not([class]):hover {
   color: var(--vp-c-indigo-1);

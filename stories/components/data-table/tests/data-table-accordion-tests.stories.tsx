@@ -1,4 +1,4 @@
-import { DataTable } from '@semcore/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
@@ -17,7 +17,8 @@ import AccordionWithRenderCellExample from './examples/accordion-tests/accordion
 import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
 import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
-import TabeInTableAnimationTestExample from './examples/accordion-tests/table-in-table-animation-test';
+import TabeInTableAnimationTestExample, { accordionWithTablenProps } from './examples/accordion-tests/table-in-table-animation-test';
+import type { AccordionWithTablenProps } from './examples/accordion-tests/table-in-table-animation-test';
 import TabeInTableFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
@@ -44,8 +45,19 @@ export const AnimationDurationTest: StoryObj<TableInTableProps> = {
   },
 };
 
-export const TabeInTableAnimationTest: Story = {
+export const TabeInTableAnimationTest: StoryObj<AccordionWithTablenProps> = {
   render: TabeInTableAnimationTestExample,
+  argTypes: {
+    justifyContent: {
+      control: {
+        type: 'select',
+      },
+      options: ['flex-start', 'flex-end', 'center'],
+    },
+  },
+  args: {
+    ...accordionWithTablenProps,
+  },
 };
 
 export const HorizontalScroll: Story = {

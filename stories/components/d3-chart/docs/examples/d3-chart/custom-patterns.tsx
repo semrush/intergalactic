@@ -1,5 +1,5 @@
-import type { Pattern } from '@semcore/d3-chart';
-import { Plot, Venn } from '@semcore/d3-chart';
+import type { Pattern } from '@semcore/ui/d3-chart';
+import { Plot, Venn } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 const data = {

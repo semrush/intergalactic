@@ -1,6 +1,6 @@
-import { Box } from '@semcore/flex-box';
-import ProgressBar from '@semcore/progress-bar';
-import type { ValueProps } from '@semcore/progress-bar';
+import { Box } from '@semcore/ui/flex-box';
+import ProgressBar from '@semcore/ui/progress-bar';
+import type { ValueProps } from '@semcore/ui/progress-bar';
 import React from 'react';
 
 type ProgressBarExampleProps = ValueProps;

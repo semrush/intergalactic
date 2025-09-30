@@ -1,4 +1,4 @@
-import { ScatterPlotChartSkeleton } from '@semcore/skeleton';
+import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
 import React from 'react';
 
 const Demo = () => (

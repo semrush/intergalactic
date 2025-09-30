@@ -1,13 +1,13 @@
-import Button, { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
-import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
-import CheckM from '@semcore/icon/Check/m';
-import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import { DescriptionTooltip, Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Flex } from '@semcore/ui/flex-box';
+import CheckM from '@semcore/ui/icon/Check/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

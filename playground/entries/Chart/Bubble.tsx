@@ -1,14 +1,14 @@
-import { Chart } from '@semcore/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import ChartControls from './common/controls';
+import { getDefaultChartControls } from './common/controls';
 import type { CommonChartProps, LegendChartProps } from './common/controls';
 import type { JSXProps } from '../../types/JSXProps';
 import type { PlaygroundEntry } from '../../types/Playground';
 import createGithubLink from '../../utils/createGHLink';
 
 type BubbleChartProps = {
-  commonChartProps: CommonChartProps;
+  commonChartProps: Omit<CommonChartProps, 'showTotalInTooltip'>;
   legendProps: LegendChartProps;
 };
 export type BubbleChartJSXProps = JSXProps<BubbleChartProps>;
@@ -40,9 +40,11 @@ function getJSX(props: BubbleChartJSXProps) {
 
 const entry: PlaygroundEntry<BubbleChartJSXProps> = {
   JSX: (props) => getJSX(props),
-  controls: {
-    ...ChartControls,
-  },
+  controls: getDefaultChartControls({
+    skip: {
+      commonChartProps: ['showTotalInTooltip'],
+    },
+  }),
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
 };

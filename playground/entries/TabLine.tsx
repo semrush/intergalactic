@@ -1,6 +1,6 @@
-import Badge from '@semcore/badge';
-import type { TabLineItemProps, TabLineProps } from '@semcore/tab-line';
-import TabLine from '@semcore/tab-line';
+import Badge from '@semcore/ui/badge';
+import type { TabLineItemProps, TabLineProps } from '@semcore/ui/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

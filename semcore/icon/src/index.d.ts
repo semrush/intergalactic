@@ -1,4 +1,4 @@
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps } from '@semcore/base-components';
 import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 

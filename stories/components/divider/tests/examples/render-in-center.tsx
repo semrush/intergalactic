@@ -1,4 +1,4 @@
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 import React from 'react';
 
 const Demo = () => {

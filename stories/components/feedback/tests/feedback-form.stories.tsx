@@ -1,4 +1,4 @@
-import FeedbackForm from '@semcore/feedback-form';
+import FeedbackForm from '@semcore/ui/feedback-form';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/feedback_form_theme_loading';

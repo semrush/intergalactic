@@ -7,7 +7,7 @@ tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), E
 ## ScrollArea
 
 ```jsx
-import { ScrollArea } from '@semcore/base-components';
+import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea />;
 ```
 
@@ -18,14 +18,14 @@ import { ScrollArea } from '@semcore/base-components';
 This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
 ```jsx
-import { ScrollArea } from '@semcore/base-components';
+import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea.Container />;
 ```
 
 ## ScrollArea.Bar
 
 ```jsx
-import { ScrollArea } from '@semcore/base-components';
+import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea.Bar />;
 ```
 
@@ -36,7 +36,7 @@ import { ScrollArea } from '@semcore/base-components';
 Stylized div. It takes all properties of `Box`.
 
 ```jsx
-import { ScrollArea } from '@semcore/base-components';
+import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea.Bar.Slider />;
 ```
 

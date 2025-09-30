@@ -8,6 +8,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Focus styles for `Plot`.
 
+## [16.1.5] - 2025-10-03
+
+### Fixed
+
+- Error with `display` property on html element in the `Dots` component.
+
+## [16.1.4] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [16.1.2 ~> 16.1.3], `@semcore/base-components` [16.2.2 ~> 16.2.3]).
+
 ## [16.1.3] - 2025-09-05
 
 ### Changed

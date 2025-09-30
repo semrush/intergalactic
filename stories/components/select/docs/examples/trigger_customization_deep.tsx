@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import type { FlagsIso2 } from '@semcore/flags';
-import Flags, { iso2Name } from '@semcore/flags';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import type { FlagsIso2 } from '@semcore/ui/flags';
+import Flags, { iso2Name } from '@semcore/ui/flags';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const formatName = (name?: string) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');

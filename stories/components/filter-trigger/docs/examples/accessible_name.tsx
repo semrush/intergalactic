@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Select from '@semcore/select';
+import { Flex } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => {

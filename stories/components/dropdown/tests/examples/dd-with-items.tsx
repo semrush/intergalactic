@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import Dropdown from '@semcore/dropdown';
-import Link from '@semcore/link';
+import Button from '@semcore/ui/button';
+import Dropdown from '@semcore/ui/dropdown';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const items = ['set up first', 'set up second', 'set up third'];

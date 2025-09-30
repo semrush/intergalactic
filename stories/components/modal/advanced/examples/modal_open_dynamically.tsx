@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const FAKE_DELAY = 600;

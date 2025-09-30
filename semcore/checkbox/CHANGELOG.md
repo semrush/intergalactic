@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Styles for `:focus-visible`.
 
+## [16.1.3] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.2.2 ~> 16.2.3]).
+
 ## [16.1.2] - 2025-09-05
 
 ### Changed

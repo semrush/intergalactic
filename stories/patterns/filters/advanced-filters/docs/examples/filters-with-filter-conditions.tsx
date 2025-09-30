@@ -1,14 +1,14 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Divider from '@semcore/divider';
-import Dropdown from '@semcore/dropdown';
-import CloseM from '@semcore/icon/Close/m';
-import MathPlusM from '@semcore/icon/MathPlus/m';
-import TrashM from '@semcore/icon/Trash/m';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { Hint } from '@semcore/tooltip';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import Dropdown from '@semcore/ui/dropdown';
+import CloseM from '@semcore/ui/icon/Close/m';
+import MathPlusM from '@semcore/ui/icon/MathPlus/m';
+import TrashM from '@semcore/ui/icon/Trash/m';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import { Hint } from '@semcore/ui/tooltip';
 import React, { useEffect, useRef, useState } from 'react';
 
 const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));
@@ -220,7 +220,7 @@ const Demo = () => {
           )}
         </FilterTrigger.TriggerButton>
         {!!savedFilters.length && (
-          <Hint tag={FilterTrigger.ClearButton} title='Clear advanced filters' />
+          <FilterTrigger.ClearButton title='Clear advanced filters' />
         )}
       </Dropdown.Trigger>
       <Dropdown.Popper aria-label='Advanced filters' tabIndex={-1}>

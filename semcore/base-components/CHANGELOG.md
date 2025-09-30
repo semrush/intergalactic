@@ -2,12 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.3.0] - 2025-08-09
+## [16.4.0] - 2025-10-03
 
 ### Changed
 
 - Styles for `:focus-visible` in Box and ScrollArea.
 - Border-radius for invalid pattern in InvalidStateBox.
+
+## [16.3.0] - 2025-09-20
+
+### Added
+
+- Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+
+## [16.2.3] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.2.0 ~> 16.3.0]).
 
 ## [16.2.2] - 2025-09-05
 

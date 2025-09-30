@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

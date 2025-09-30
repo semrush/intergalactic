@@ -1,11 +1,18 @@
-import type { DataTableSort } from '@semcore/data-table';
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
+import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
+export type AccordionWithTablenProps = {
+  accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+  justifyContent?: string;
+};
 
-const Demo = () => {
+const Demo = (props: AccordionWithTablenProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
@@ -43,9 +50,13 @@ const Demo = () => {
       h='100%'
       data={sortedData}
       sort={sort}
+      accordionMode={props.accordionMode}
+      sideIndents={props.sideIndents}
+      use={props.use}
+      compact={props.compact}
       onSortChange={handleSortChange}
       columns={[
-        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true },
+        { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left', sortable: true, justifyContent: props.justifyContent },
         { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
         { name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true },
         { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true },
@@ -88,6 +99,16 @@ const ChartExample = () => {
     />
   );
 };
+
+export const accordionWithTablenProps: AccordionWithTablenProps = {
+  accordionMode: 'independent',
+  sideIndents: undefined,
+  use: undefined,
+  compact: undefined,
+  justifyContent: undefined,
+};
+
+Demo.defaultProps = accordionWithTablenProps;
 
 const data1 = [
   {
