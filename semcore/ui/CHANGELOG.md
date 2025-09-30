@@ -1,3 +1,28 @@
+## [16.10.0] - 2025-09-30
+
+### @semcore/base-components
+
+- **Added** Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+
+### @semcore/core
+
+- **Added** Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+- **Changed** Prevent scroll on focus by mouse interaction.
+
+### @semcore/d3-chart
+
+- **Fixed** Error with `display` property on html element in the `Dots` component.
+
+### @semcore/data-table
+
+- **Fixed** Render table with expanded rows after changing page.
+- **Fixed** Render grouped header in some cases.
+
+### @semcore/mini-chart
+
+- **Added** Initial animation for `ScoreDonut` and `ScoreSemiDonut`.
+- **Changed** `ScoreDonut` and `ScoreSemiDonut` visual value can't be greater than 100.
+
 ## [16.9.1] - 2025-09-24
 
 ### @semcore/data-table
