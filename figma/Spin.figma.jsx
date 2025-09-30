@@ -6,7 +6,7 @@ import React from 'react';
 
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10041-43274&t=Fgs2Jv2CPgCOdctF-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10041-43274&t=zWV92Vho57lBOgpd-11',
   {
     props: {
       size: figma.enum('size', {
@@ -28,7 +28,7 @@ figma.connect(
 
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52692-10212&t=Fgs2Jv2CPgCOdctF-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52845-162&t=zWV92Vho57lBOgpd-11',
   {
     variant: { 'text placement': 'right' },
     props: {
@@ -57,7 +57,7 @@ figma.connect(
 
 figma.connect(
   Spin,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52692-10212&t=Fgs2Jv2CPgCOdctF-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52845-162&t=zWV92Vho57lBOgpd-11',
   {
     variant: { 'text placement': 'bottom' },
     props: {
