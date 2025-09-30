@@ -429,3 +429,26 @@ test.describe('Hint', () => {
     });
   });
 });
+
+test.describe('Scrollbar', () => {
+  test('Verify bottom scroll bar isn\'t triggered in overflow modals', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/tests/examples/tooltips_in_modal.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const modal = page.locator('[data-ui-name="Modal.Overlay"]');
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]').first();
+    const popper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+
+    const modalHeightInitial = await modal.evaluate((el) => window.getComputedStyle(el).height);
+
+    await trigger.click();
+
+    await popper.waitFor();
+
+    const modalHeightAfterClick = await modal.evaluate((el) => window.getComputedStyle(el).height);
+
+    expect(modalHeightAfterClick).toEqual(modalHeightInitial);
+  });
+});

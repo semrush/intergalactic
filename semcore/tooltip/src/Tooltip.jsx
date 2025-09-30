@@ -11,7 +11,7 @@ import {
 import { Box } from '@semcore/flex-box';
 import PopperOrigin from '@semcore/popper';
 import Portal from '@semcore/portal';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import style from './style/tooltip.shadow.css';
 
@@ -35,7 +35,7 @@ class TooltipRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = { ...defaultProps };
-  state = { popperChildren: null };
+  state = { popperChildren: null, scrollBarWidth: 0 };
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
@@ -65,6 +65,9 @@ class TooltipRoot extends Component {
       'aria-haspopup': undefined,
       'aria-describedby': popperId,
       popperId,
+      'updateScrollBarWidth': (scrollBarWidth) => {
+        this.setState({ ...this.state, scrollBarWidth });
+      },
     };
   }
 
@@ -97,6 +100,7 @@ class TooltipRoot extends Component {
       'aria-live': ariaLive,
       visible,
       timeout,
+      'scrollBarWidth': this.state.scrollBarWidth,
     };
   }
 
@@ -120,11 +124,14 @@ class TooltipRoot extends Component {
 }
 
 function TooltipTrigger(props) {
-  const { Children, styles } = props;
+  const { Children, styles, updateScrollBarWidth } = props;
   const STrigger = Root;
+  const ref = useRef();
+
+  useScrollBarWidth(ref, updateScrollBarWidth);
 
   return sstyled(styles)(
-    <STrigger render={Popper.Trigger}>
+    <STrigger ref={ref} render={Popper.Trigger}>
       <Children />
     </STrigger>,
   );
@@ -143,6 +150,7 @@ function TooltipPopper(props) {
     arrowShadowColor,
     visible,
     timeout,
+    scrollBarWidth,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
@@ -173,8 +181,6 @@ function TooltipPopper(props) {
       clearTimeout(timer);
     };
   }, [visible]);
-
-  const scrollBarWidth = useScrollBarWidth();
 
   if (!visible && !isVisible) {
     return null;

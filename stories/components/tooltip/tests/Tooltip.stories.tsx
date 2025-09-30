@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import TooltipInteractionsExample from './examples/basic_usage';
 import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
 import TooltipStatesExample from './examples/tooltip-styles';
+import TooltipsInModalExample from './examples/tooltips_in_modal';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip/Tests',
@@ -23,4 +24,8 @@ export const TooltipStates: Story = {
 
 export const TooltipInteractions: Story = {
   render: TooltipInteractionsExample,
+};
+
+export const TooltipsInModal: Story = {
+  render: TooltipsInModalExample,
 };

@@ -1,19 +1,46 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-export function useScrollBarWidth(vertical = true): number {
-  const [scrollBarWidth, setScrollBarWidth] = useState(0);
+function findScrollableParentFor(element: HTMLElement): HTMLElement | null {
+  if (element.parentElement === null) {
+    return null;
+  }
+
+  const styles = window.getComputedStyle(element);
+  const hasScroll = (element.offsetWidth - element.clientWidth) > 0 || (element.offsetHeight - element.clientHeight) > 0;
+
+  const isOverflowed = styles.overflow !== 'visible' && styles.overflow !== 'hidden';
+
+  if (isOverflowed && hasScroll) {
+    return element;
+  }
+
+  return findScrollableParentFor(element.parentElement);
+}
+
+function getParentScrollableElement(ref: React.RefObject<HTMLElement>) {
+  if (!ref || !ref.current) return null;
+
+  return findScrollableParentFor(ref.current);
+}
+
+export function useScrollBarWidth(ref: React.RefObject<HTMLElement>, callback: (width: number) => void = () => {}, vertical = true) {
   const af = useRef<number | null>(null);
 
   useEffect(() => {
     const calculateScrollBar = () => {
       if (!window.visualViewport) return;
 
-      if (!vertical) {
-        setScrollBarWidth(window.innerHeight - window.visualViewport.height);
-        return;
+      let width = vertical ? window.innerWidth - window.visualViewport.width : window.innerHeight - window.visualViewport.height;
+
+      if (!width) {
+        const scrollableParenElement = getParentScrollableElement(ref);
+
+        if (!scrollableParenElement) return;
+
+        width = vertical ? scrollableParenElement.offsetWidth - scrollableParenElement.clientWidth : scrollableParenElement.offsetHeight - scrollableParenElement.clientHeight;
       }
 
-      setScrollBarWidth(window.innerWidth - window.visualViewport.width);
+      callback(width);
     };
 
     const handleResize = () => {
@@ -33,7 +60,5 @@ export function useScrollBarWidth(vertical = true): number {
       window.removeEventListener('resize', handleResize);
       if (af.current !== null) cancelAnimationFrame(af.current);
     };
-  }, []);
-
-  return scrollBarWidth;
+  }, [ref.current]);
 }

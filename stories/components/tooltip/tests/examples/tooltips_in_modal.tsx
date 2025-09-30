@@ -1,0 +1,104 @@
+import Button, { ButtonLink } from '@semcore/ui/button';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import CheckAltM from '@semcore/ui/icon/CheckAlt/m';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import Modal from '@semcore/ui/modal';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
+import React, { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(true);
+  return (
+    <>
+      <button onClick={() => setVisible((p) => !p)}>open</button>
+      <Modal visible={visible} onClose={() => setVisible(false)}>
+        <Box
+          style={{
+            // need to have vertical scroll
+            minHeight: 9999,
+          }}
+        >
+          <Flex gap={4} alignItems='center'>
+            Tooltip:
+            <Tooltip title='Default tooltip contains short text explaining something about the trigger.'>
+              Keywords
+            </Tooltip>
+            <Tooltip
+              title='Default tooltip contains short text explaining something about the trigger.'
+              tag={Button}
+              aria-label='Export to PDF'
+              addonLeft={FileExportM}
+            />
+          </Flex>
+          <Flex gap={4} alignItems='center'>
+            Hint:
+            <Hint title='Export to PDF' tag={Button} addonLeft={FileExportM} />
+            <Hint
+              title='You confirmed your email'
+              aria-hidden={false}
+              tag={CheckAltM}
+              color='var(--intergalactic-icon-primary-success)'
+            />
+          </Flex>
+          <Flex gap={4} alignItems='center'>
+            DescriptionTooltip:
+            <DescriptionTooltip>
+              <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
+                About fastest animals
+              </DescriptionTooltip.Trigger>
+              <DescriptionTooltip.Popper aria-label='About fastest animals'>
+                <Text tag='p' mb={3}>
+                  The
+                  {' '}
+                  <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>
+                    peregrine falcon
+                  </Link>
+                  {' '}
+                  is the fastest bird, and the fastest member of the animal
+                  kingdom, with a diving speed of over 300 km/h (190 mph).
+                </Text>
+                <Text tag='p'>
+                  The fastest land animal is the cheetah. Among the fastest
+                  animals in the sea is the black marlin, with uncertain and
+                  conflicting reports of recorded speeds.
+                </Text>
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
+            <DescriptionTooltip>
+              <DescriptionTooltip.Trigger
+                tag={ButtonLink}
+                addonLeft={InfoM}
+                color='icon-secondary-neutral'
+                aria-label='About peregrine falcon'
+              />
+              <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
+                <Text tag='p' mb={3}>
+                  The peregrine falcon is the fastest aerial animal, fastest
+                  animal in flight, fastest bird, and the overall fastest member
+                  of the
+                  {' '}
+                  <Link href='https://en.wikipedia.org/wiki/Animal'>
+                    animal kingdom
+                  </Link>
+                  .
+                </Text>
+                <Text tag='p'>
+                  The peregrine achieves its highest velocity not in horizontal
+                  level flight, but during its characteristic hunting stoop
+                  (vertical flight). While stooping, the peregrine falcon soars
+                  to a great height, then dives steeply at speed of over 320
+                  km/h (200 mph).
+                </Text>
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
+          </Flex>
+        </Box>
+      </Modal>
+    </>
+  );
+};
+
+export default Demo;
