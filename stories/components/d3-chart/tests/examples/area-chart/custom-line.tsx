@@ -1,4 +1,4 @@
-import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
+import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';

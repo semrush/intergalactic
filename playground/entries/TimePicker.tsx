@@ -1,5 +1,5 @@
-import type { TimePickerProps } from '@semcore/time-picker';
-import Timepicker from '@semcore/time-picker';
+import type { TimePickerProps } from '@semcore/ui/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 import React, { useState } from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

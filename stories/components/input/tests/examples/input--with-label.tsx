@@ -1,9 +1,9 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import Counter from '@semcore/counter';
-import { Flex, Box } from '@semcore/flex-box';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Counter from '@semcore/ui/counter';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 
 const options = Array(6)

@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Wizard from '@semcore/wizard';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
 const steps = [

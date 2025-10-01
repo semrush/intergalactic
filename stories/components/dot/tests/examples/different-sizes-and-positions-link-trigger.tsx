@@ -1,6 +1,6 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import Dot from '@semcore/dot';
-import { Flex } from '@semcore/flex-box';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Dot from '@semcore/ui/dot';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,6 @@
-import { Box } from '@semcore/base-components';
-import Pills from '@semcore/pills';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Pills from '@semcore/ui/pills';
+import { Text } from '@semcore/ui/typography';
 import React, { useId } from 'react';
 
 import type { InlineRadioControlType } from '../../types/Controls';

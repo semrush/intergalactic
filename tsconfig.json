@@ -14,14 +14,16 @@
     "noEmitHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "paths": {
-      "@semcore/illustration/*": ["illustration/*"],
+      "@semcore/ui/illustration/*": ["illustration/*"],
+      "@semcore/ui/icon/*": ["icon/*"],
+      "@semcore/ui/d3-chart": ["d3-chart"],
+      "@semcore/ui/core/lib/*": ["core/src/*"],
       "@semcore/ui/*": ["*/src"],
-      "intergalactic/*": ["*/src"],
-      "@semcore/*": ["*/src"],
       "@tools/*": ["../tools/*"]
     }
   },

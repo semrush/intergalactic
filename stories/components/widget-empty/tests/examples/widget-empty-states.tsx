@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/flex-box';
-import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const Demo = () => {

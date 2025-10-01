@@ -1,8 +1,8 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 

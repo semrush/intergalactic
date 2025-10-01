@@ -1,4 +1,4 @@
-import type Breadcrumbs from '@semcore/breadcrumbs';
+import type Breadcrumbs from '@semcore/ui/breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TrimMiddleExample from './examples/trim_middle';

@@ -1,5 +1,5 @@
-import type { LinkProps } from '@semcore/link';
-import Link from '@semcore/link';
+import type { LinkProps } from '@semcore/ui/link';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

@@ -1,4 +1,4 @@
-import DnD from '@semcore/drag-and-drop';
+import DnD from '@semcore/ui/drag-and-drop';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { WithDropdownMenuTest } from './__tests__/with_dropdownmenu.test';

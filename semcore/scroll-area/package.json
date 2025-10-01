@@ -16,6 +16,9 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
+  "devDependencies": {
+    "@semcore/base-components": "workspace:*"
+  },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
   },

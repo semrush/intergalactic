@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 class Demo extends React.PureComponent {

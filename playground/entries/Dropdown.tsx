@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import type { DropdownProps } from '@semcore/dropdown';
-import Dropdown from '@semcore/dropdown';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import type { DropdownProps } from '@semcore/ui/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

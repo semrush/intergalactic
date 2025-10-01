@@ -1,5 +1,5 @@
-import type { BreadcrumbsItemProps } from '@semcore/breadcrumbs';
-import Breadcrumbs from '@semcore/breadcrumbs';
+import type { BreadcrumbsItemProps } from '@semcore/ui/breadcrumbs';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

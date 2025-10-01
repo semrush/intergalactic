@@ -1,8 +1,8 @@
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import Coffee from '@semcore/illustration/Coffee';
-import MailSent from '@semcore/illustration/MailSent';
-import Notice from '@semcore/notice';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import Coffee from '@semcore/ui/illustration/Coffee';
+import MailSent from '@semcore/ui/illustration/MailSent';
+import Notice from '@semcore/ui/notice';
 import React from 'react';
 
 const Demo = () => (

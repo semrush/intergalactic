@@ -1,4 +1,4 @@
-import Spin from '@semcore/spin';
+import Spin from '@semcore/ui/spin';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/basic_example';

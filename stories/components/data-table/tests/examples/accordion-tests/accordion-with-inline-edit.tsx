@@ -1,11 +1,11 @@
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
-import EditM from '@semcore/icon/Edit/m';
-import InlineEdit from '@semcore/inline-edit';
-import InlineInput from '@semcore/inline-input';
-import { Text } from '@semcore/typography';
-import { NoData } from '@semcore/widget-empty';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { Flex } from '@semcore/ui/flex-box';
+import EditM from '@semcore/ui/icon/Edit/m';
+import InlineEdit from '@semcore/ui/inline-edit';
+import InlineInput from '@semcore/ui/inline-input';
+import { Text } from '@semcore/ui/typography';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const stopPropagation = (event: React.SyntheticEvent) => {

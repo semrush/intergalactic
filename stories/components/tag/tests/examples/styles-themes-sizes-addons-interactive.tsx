@@ -1,8 +1,8 @@
-import { Flex, Box } from '@semcore/flex-box';
-import VideoListL from '@semcore/icon/VideoList/l';
-import VideoListM from '@semcore/icon/VideoList/m';
-import Tag, { TagContainer } from '@semcore/tag';
-import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import VideoListL from '@semcore/ui/icon/VideoList/l';
+import VideoListM from '@semcore/ui/icon/VideoList/m';
+import Tag, { TagContainer } from '@semcore/ui/tag';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

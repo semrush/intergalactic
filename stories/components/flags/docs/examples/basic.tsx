@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/flags';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

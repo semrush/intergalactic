@@ -1,10 +1,10 @@
-import Checkbox from '@semcore/checkbox';
-import Link from '@semcore/link';
-import ScrollArea from '@semcore/scroll-area';
-import Spin from '@semcore/spin';
 import Table from '@semcore/table';
-import { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
+import ScrollArea from '@semcore/ui/scroll-area';
+import Spin from '@semcore/ui/spin';
+import { Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 function shuffle(a) {

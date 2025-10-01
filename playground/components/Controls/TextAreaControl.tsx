@@ -1,6 +1,6 @@
-import { Box } from '@semcore/base-components';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { TextAreaControlType } from '../../types/Controls';

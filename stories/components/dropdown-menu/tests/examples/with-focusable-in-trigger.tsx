@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import { Hint } from '@semcore/tooltip';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

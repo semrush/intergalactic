@@ -1,5 +1,5 @@
-import { DataTable } from '@semcore/data-table';
-import Pagination from '@semcore/pagination';
+import { DataTable } from '@semcore/ui/data-table';
+import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
 const Demo = () => {

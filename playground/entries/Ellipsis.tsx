@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import type { EllipsisProps } from '@semcore/ellipsis';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

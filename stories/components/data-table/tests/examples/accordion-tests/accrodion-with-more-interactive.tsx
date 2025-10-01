@@ -1,13 +1,13 @@
-import { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { Flex } from '@semcore/flex-box';
-import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import { DescriptionTooltip, Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
-import { NoData } from '@semcore/widget-empty';
+import { ButtonLink } from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { Flex } from '@semcore/ui/flex-box';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 const stopPropagation = (event: React.SyntheticEvent) => {

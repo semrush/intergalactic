@@ -1,5 +1,5 @@
-import { ButtonTrigger } from '@semcore/base-trigger';
-import { Flex, Box } from '@semcore/flex-box';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import { Flex, Box } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => (
