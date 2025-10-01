@@ -17,15 +17,15 @@ const Demo = () => (
       <Card.Description>Info about data (optional) </Card.Description>
     </Card>
 
-    <Card mb={2} data-testid='card-title-hintAfter'>
+    <Card mb={2} data-testid='card-title'>
       <Card.Header>
-        <Card.Title tag={Ellipsis} hintAfter='Test'>Market Traffic</Card.Title>
+        <Card.Title>Market Traffic</Card.Title>
       </Card.Header>
     </Card>
 
-    <Card mb={2} data-testid='card-title-description-hintAfter'>
+    <Card mb={2} data-testid='card-title-description'>
       <Card.Header>
-        <Card.Title hintAfter='test' hintAfterAriaLabel='test-aria-label' tag={Ellipsis}>Market Traffic hintAfter</Card.Title>
+        <Card.Title>Market Traffic</Card.Title>
         <Card.Description uppercase>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
@@ -38,9 +38,9 @@ const Demo = () => (
       </Card.Header>
     </Card>
 
-    <Card mb={2} data-testid='card-title-content-hintAfter-innerHint'>
+    <Card mb={2} data-testid='card-title-content-innerHint'>
       <Card.Header>
-        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label' hintAfterAriaLabel='test-aria-label' hintAfter=' hintAfter test' tag={Ellipsis}>Market Traffic innerHint hintAfter </Card.Title>
+        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint </Card.Title>
         <Card.Description>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
