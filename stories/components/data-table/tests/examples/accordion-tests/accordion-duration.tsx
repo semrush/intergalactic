@@ -3,6 +3,7 @@ import type { DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
+
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
 };
@@ -13,6 +14,7 @@ const ChartExample1 = () => {
     </NoData>
   );
 };
+
 const Demo = (props: TableInTableProps) => {
   return (
     <DataTable

@@ -46,7 +46,6 @@ test.describe('One level Header', () => {
 
   test('Verify keyboard interactions when in header hint, checkbox, description tooltip', async ({
     page,
-    browserName,
   }) => {
     const standPath =
       'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
@@ -64,7 +63,6 @@ test.describe('One level Header', () => {
     await test.step('Verify interaction with tooltip without interactive elements', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
-      await new Promise((resolve) => setTimeout(resolve, 250));
       const tooltipTrigger = getTooltip('tooltip-without-interactive-el');
       await expect(tooltipTrigger).toBeFocused();
       await expect(getTooltipPopper).toBeHidden();
@@ -76,16 +74,16 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      await expect(getTooltipPopper).toBeVisible();
+      await page.getByLabel('Additional info about item').waitFor({ state: 'visible' });
+      await expect(getTooltipPopper).toHaveCount(1);
       await expect(getTooltipPopper).toBeFocused();
       await page.keyboard.press('Escape');
+      await page.getByLabel('Additional info about item').waitFor({ state: 'hidden' });
 
-      await expect(getTooltipPopper).toBeHidden();
+      await expect(getTooltipPopper).toHaveCount(0);
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
-      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(getTooltip('tooltip-with-interactive-el')).toBeFocused();
     });
 
@@ -97,57 +95,64 @@ test.describe('One level Header', () => {
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      await expect(getTooltipPopper).toBeVisible();
+      await page.getByLabel('Additional info about item').waitFor({ state: 'visible' });
+      await expect(getTooltipPopper).toHaveCount(1);
       await expect(getTooltipPopper).toBeFocused();
 
       await page.keyboard.press('Escape');
-      await page.waitForTimeout(100);
-      await expect(getTooltipPopper).toBeHidden();
+      await page.getByLabel('Additional info about item').waitFor({ state: 'hidden' });
+      await expect(getTooltipPopper).toHaveCount(0);
       await expect(tooltipTrigger).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await new Promise((resolve) => setTimeout(resolve, 250));
+      await page.getByLabel('Additional info about item').waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
 
       await page.keyboard.press('Escape');
-      await expect(getTooltipPopper).toBeHidden();
+      await page.getByLabel('Additional info about item').waitFor({ state: 'hidden' });
+      await expect(getTooltipPopper).toHaveCount(0);
       await expect(tooltipTrigger).toBeFocused();
     });
 
     await test.step('Verify interaction with inline tooltip', async () => {
       await page.keyboard.press('ArrowRight');
-      await new Promise((resolve) => setTimeout(resolve, 250));
       const linkTrigger = getTooltip('tooltip-with-tag-link');
       await expect(linkTrigger).toBeFocused();
-      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
+      await page.getByRole('tooltip', { name: 'Default tooltip contains' }).waitFor({ state: 'visible' });
+      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toHaveCount(1);
 
       await page.keyboard.press('ArrowDown');
-      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeHidden();
+      await page.getByRole('tooltip', { name: 'Default tooltip contains' }).waitFor({ state: 'hidden' });
+      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toHaveCount(0);
 
       await page.keyboard.press('ArrowUp');
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeVisible();
+      await page.getByRole('tooltip', { name: 'Default tooltip contains' }).waitFor({ state: 'visible' });
+      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toHaveCount(1);
 
       await page.keyboard.press('Escape');
-      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toBeHidden();
+      await page.getByRole('tooltip', { name: 'Default tooltip contains' }).waitFor({ state: 'hidden' });
+      await expect(page.getByRole('tooltip', { name: 'Default tooltip contains' })).toHaveCount(0);
 
       const icon = page.locator('[data-test-id="interactive-icon"]');
       await page.keyboard.press('ArrowRight');
+
       await page.keyboard.press('Enter');
-      await new Promise((resolve) => setTimeout(resolve, 250));
       await expect(icon).toBeFocused();
-      await expect(page.getByText('Go to our awesome article')).toBeVisible();
+      await page.getByText('Go to our awesome article').waitFor({ state: 'visible' });
+
+      await expect(page.getByText('Go to our awesome article')).toHaveCount(1);
 
       await page.keyboard.press('Escape');
 
-      await expect(page.getByText('Go to our awesome article')).toBeHidden();
-      await page.keyboard.press('Escape');
-      await page.keyboard.press('ArrowRight');
+      await page.getByText('Go to our awesome article').waitFor({ state: 'hidden' });
+
+      await expect(page.getByText('Go to our awesome article')).toHaveCount(0);
     });
 
     await test.step('Verify interaction with checkbox and tooltip in header', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('ArrowRight');
       await expect(columnKD).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
