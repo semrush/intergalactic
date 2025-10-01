@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import Spin from '@semcore/spin';
+import Button from '@semcore/ui/button';
+import Spin from '@semcore/ui/spin';
 import React from 'react';
 
 const Demo = () => {

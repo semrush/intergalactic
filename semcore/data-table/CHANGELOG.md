@@ -2,13 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.0] - 2025-10-03
+
+### Added
+
+- Limited mode support.
+
+### Fixed
+
+- Render accordion and checkbox in one row together.
+
 ## [16.3.3] - 2025-10-03
 
 ### Fixed
 
 - Render table with expanded rows after changing page.
 - Render grouped header in some cases.
-- Render accordion and checkbox in one row together.
 
 ## [16.3.2] - 2025-09-20
 

@@ -1,4 +1,4 @@
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicExample from './examples/basic_example';

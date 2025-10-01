@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import Input from '@semcore/input';
-import Select from '@semcore/select';
+import { Flex } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => {

@@ -1,7 +1,7 @@
-import { Portal, Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import type { NoticeGlobalProps } from '@semcore/notice-global';
-import NoticeGlobal from '@semcore/notice-global';
+import { Portal, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import type { NoticeGlobalProps } from '@semcore/ui/notice-global';
+import NoticeGlobal from '@semcore/ui/notice-global';
 import React from 'react';
 
 type NoticeGlobalExampleProps = NoticeGlobalProps;

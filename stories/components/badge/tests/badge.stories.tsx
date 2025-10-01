@@ -1,4 +1,4 @@
-import Badge from '@semcore/badge';
+import Badge from '@semcore/ui/badge';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BadgeBgExample from './examples/badge-bg-colors';

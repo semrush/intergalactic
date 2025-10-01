@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/base-components';
-import InputNumber from '@semcore/input-number';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import InputNumber from '@semcore/ui/input-number';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const min = 1;

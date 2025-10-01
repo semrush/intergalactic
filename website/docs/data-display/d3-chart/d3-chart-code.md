@@ -134,7 +134,6 @@ By default, the title is set to the right for the Oy axis, and at the top for th
 ::: sandbox
 
 <script lang="tsx">
-import { Bar, XAxis, Plot, YAxis } from '@semcore/d3-chart';
   export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/axes-titles.tsx';
 </script>
 
@@ -315,7 +314,7 @@ The fill data is used for rendering charts like an `Area` while symbol data is n
 
 <script  lang="tsx">
 import React from 'react';
-import { Chart, Pattern } from '@semcore/d3-chart';
+import { Chart, Pattern } from '@semcore/ui/d3-chart';
 
 const customPattern: Pattern = {
   fill: {

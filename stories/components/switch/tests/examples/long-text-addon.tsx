@@ -1,5 +1,5 @@
-import Switch from '@semcore/switch';
-import type { SwitchProps, SwitchValueProps } from '@semcore/switch';
+import Switch from '@semcore/ui/switch';
+import type { SwitchProps, SwitchValueProps } from '@semcore/ui/switch';
 import React from 'react';
 
 type SwitchExampleProps = SwitchProps & SwitchValueProps;

@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
-import Spin from '@semcore/spin';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
+import Spin from '@semcore/ui/spin';
 import React from 'react';
 
 const Demo = () => {

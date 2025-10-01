@@ -1,4 +1,4 @@
-import Tooltip from '@semcore/tooltip';
+import Tooltip from '@semcore/ui/tooltip';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TooltipInteractionsExample from './examples/basic_usage';

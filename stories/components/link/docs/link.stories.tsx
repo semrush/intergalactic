@@ -1,4 +1,4 @@
-import Link from '@semcore/link';
+import Link from '@semcore/ui/link';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ColorLinksExample from './examples/color_links';

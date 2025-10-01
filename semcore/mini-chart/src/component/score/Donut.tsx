@@ -2,6 +2,7 @@ import { createComponent, Component, Root, sstyled, type ComponentType } from '@
 import { assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
@@ -13,11 +14,20 @@ export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
 type Enhances = {
   resolveColor: ReturnType<typeof resolveColorEnhance>;
+  duration: ReturnType<typeof cssVariableEnhance>;
   isSemiDonut?: true;
 };
 
 class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-extra-slow',
+      fallback: '500',
+      map: (v: string) => Number.parseInt(v, 10).toString(),
+      prop: 'duration',
+    }),
+    resolveColorEnhance(),
+  ] as const;
 
   static style = style;
 
@@ -35,6 +45,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
       resolveColor,
       isSemiDonut,
       loading,
+      animate,
+      duration,
     } = this.asProps;
 
     const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
@@ -58,11 +70,30 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               strokeWidth={scoreDonut.strokeWidth}
               stroke={resolveColor(baseBgColor)}
               strokeDasharray={
-                loading ? undefined : `${scoreDonut.greyStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`
+                loading
+                  ? undefined
+                  : `${scoreDonut.baseLength} ${scoreDonut.fullLength}`
               }
-              strokeDashoffset={scoreDonut.strokeDashOffsetBase}
-            />
-            {!loading && (
+              strokeDashoffset={scoreDonut.baseOffset}
+            >
+              {animate && value > 0 && (
+                <>
+                  <animate
+                    attributeName='stroke-dasharray'
+                    from={`${scoreDonut.animatedBaseLengthFrom} ${scoreDonut.fullLength}`}
+                    to={`${scoreDonut.animatedBaseLengthTo} ${scoreDonut.fullLength}`}
+                    dur={duration + 'ms'}
+                  />
+                  <animate
+                    attributeName='stroke-dashoffset'
+                    from={-1 * scoreDonut.startMargin}
+                    to={scoreDonut.baseOffset}
+                    dur={duration + 'ms'}
+                  />
+                </>
+              )}
+            </circle>
+            {!loading && value > 0 && (
               <>
                 <circle
                   cx='12'
@@ -70,25 +101,17 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                   r={scoreDonut.radius}
                   strokeWidth={scoreDonut.strokeWidth}
                   stroke={resolveColor(color)}
-                  strokeDasharray={`${scoreDonut.valueStrokeDashArray} ${scoreDonut.baseStrokeDashArray}`}
-                  strokeDashoffset={scoreDonut.valueStrokeDashArray}
+                  strokeDasharray={`${scoreDonut.valueLength} ${scoreDonut.fullLength}`}
                 >
-                  <animate
-                    attributeName='stroke-dashoffset'
-                    values={`0;${scoreDonut.valueStrokeDashArray}`}
-                  />
+                  {animate && (
+                    <animate
+                      attributeName='stroke-dasharray'
+                      from={`0 ${scoreDonut.fullLength}`}
+                      to={`${scoreDonut.valueLength} ${scoreDonut.fullLength}`}
+                      dur={duration + 'ms'}
+                    />
+                  )}
                 </circle>
-                {scoreDonut.hasDivider && !isSemiDonut && (
-                  <circle
-                    cx='12'
-                    cy='12'
-                    r={scoreDonut.radius}
-                    strokeWidth={scoreDonut.strokeWidth}
-                    stroke={resolveColor('chart-grid-border')}
-                    strokeDasharray={scoreDonut.strokeDashArrayParts}
-                    strokeDashoffset={-1 * scoreDonut.valueStrokeDashArray}
-                  />
-                )}
               </>
             )}
           </g>

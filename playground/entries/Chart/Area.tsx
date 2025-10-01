@@ -1,4 +1,4 @@
-import { Chart } from '@semcore/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 import React from 'react';
 

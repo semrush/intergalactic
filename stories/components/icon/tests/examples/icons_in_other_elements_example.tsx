@@ -1,15 +1,15 @@
-import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex, Box } from '@semcore/flex-box';
-import IconL from '@semcore/icon/Monitoring/l';
-import IconM from '@semcore/icon/Monitoring/m';
-import Input from '@semcore/input';
-import Link from '@semcore/link';
-import Pills from '@semcore/pills';
-import Switch from '@semcore/switch';
-import { TagContainer } from '@semcore/tag';
-import { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/ui/base-trigger';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import IconL from '@semcore/ui/icon/Monitoring/l';
+import IconM from '@semcore/ui/icon/Monitoring/m';
+import Input from '@semcore/ui/input';
+import Link from '@semcore/ui/link';
+import Pills from '@semcore/ui/pills';
+import Switch from '@semcore/ui/switch';
+import { TagContainer } from '@semcore/ui/tag';
+import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { List } from '@semcore/ui/typography';
 import React from 'react';
 

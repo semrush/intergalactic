@@ -1,7 +1,7 @@
-import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import Input from '@semcore/input';
-import Spin from '@semcore/spin';
-import { Text } from '@semcore/typography';
+import { Box, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Input from '@semcore/ui/input';
+import Spin from '@semcore/ui/spin';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

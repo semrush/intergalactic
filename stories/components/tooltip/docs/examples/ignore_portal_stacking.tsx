@@ -1,9 +1,9 @@
-import { Box } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Input from '@semcore/input';
-import Modal from '@semcore/modal';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Modal from '@semcore/ui/modal';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

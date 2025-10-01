@@ -1,5 +1,5 @@
-import { Blockquote } from '@semcore/typography';
-import type { BlockquoteProps } from '@semcore/typography';
+import { Blockquote } from '@semcore/ui/typography';
+import type { BlockquoteProps } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: BlockquoteProps) => (

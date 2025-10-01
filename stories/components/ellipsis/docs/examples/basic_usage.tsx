@@ -1,7 +1,7 @@
-import { Box } from '@semcore/base-components';
-import type { EllipsisProps } from '@semcore/ellipsis';
-import Ellipsis from '@semcore/ellipsis';
-import Link from '@semcore/link';
+import { Box } from '@semcore/ui/base-components';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = (props: EllipsisProps) => {

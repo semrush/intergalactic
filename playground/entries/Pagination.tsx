@@ -1,5 +1,5 @@
-import type { PaginationProps } from '@semcore/pagination';
-import Pagination from '@semcore/pagination';
+import type { PaginationProps } from '@semcore/ui/pagination';
+import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

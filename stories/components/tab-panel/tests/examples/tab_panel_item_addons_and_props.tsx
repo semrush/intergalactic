@@ -1,12 +1,12 @@
-import Badge from '@semcore/badge';
-import Counter from '@semcore/counter';
-import type { BoxProps } from '@semcore/flex-box';
-import FacebookM from '@semcore/icon/Facebook/m';
-import InstagramM from '@semcore/icon/Instagram/m';
-import TwitterM from '@semcore/icon/Twitter/m';
-import TabPanel from '@semcore/tab-panel';
-import type { TabPanelProps, TabPanelItemProps } from '@semcore/tab-panel';
-import { Text } from '@semcore/typography';
+import Badge from '@semcore/ui/badge';
+import Counter from '@semcore/ui/counter';
+import type { BoxProps } from '@semcore/ui/flex-box';
+import FacebookM from '@semcore/ui/icon/Facebook/m';
+import InstagramM from '@semcore/ui/icon/Instagram/m';
+import TwitterM from '@semcore/ui/icon/Twitter/m';
+import TabPanel from '@semcore/ui/tab-panel';
+import type { TabPanelProps, TabPanelItemProps } from '@semcore/ui/tab-panel';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps;

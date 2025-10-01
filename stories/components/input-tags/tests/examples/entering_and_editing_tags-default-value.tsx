@@ -1,7 +1,7 @@
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
-import InputTags from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Flex } from '@semcore/ui/flex-box';
+import InputTags from '@semcore/ui/input-tags';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

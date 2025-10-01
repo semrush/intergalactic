@@ -1,6 +1,6 @@
-import AddFilter from '@semcore/add-filter';
-import { Box, Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
+import AddFilter from '@semcore/ui/add-filter';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import React from 'react';
 
 const defaultFilterData = {
