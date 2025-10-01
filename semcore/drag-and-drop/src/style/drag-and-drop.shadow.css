@@ -6,6 +6,13 @@ SDraggable[draggable] {
   -webkit-user-select: none;
   user-select: none;
 
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
 
   &::before {
     content: '';
