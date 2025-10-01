@@ -1197,4 +1197,61 @@ test.describe('Accordion in table', () => {
       }
     });
   });
+
+  test('Verify checkbox and accordion in first cell mouse interactions', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+
+    await locators.toggle(page).first().click();
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const cellCount = await cells.count();
+
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(196, 229, 254)',
+      });
+    }
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify checkbox and accordion in first cell keyboard interactions', async ({ page, browserName }) => {
+    const standPath =
+      'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const cellCount = await cells.count();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Space');
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(233, 247, 255)',
+      });
+    }
+
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Space');
+    await locators.collapse(page).waitFor({ state: 'visible' });
+    await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': 'rgb(196, 229, 254)',
+      });
+    }
+  });
 });
