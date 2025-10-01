@@ -514,18 +514,18 @@ test.describe('Date range with standart ranges', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await apply.waitFor({ state: 'visible' });
-
     await expect(popper).toHaveCount(1);
+
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
 
     await page.keyboard.press('Escape');
     await apply.waitFor({ state: 'hidden' });
-
-    await expect(popper).not.toBeVisible();
+    await expect(popper).toHaveCount(0);
 
     await page.keyboard.press('Space');
-    await expect(popper).toBeVisible();
+    await apply.waitFor({ state: 'visible' });
+    await expect(popper).toHaveCount(1);
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
 
@@ -582,6 +582,8 @@ test.describe('Date range with standart ranges', () => {
     ]);
 
     await page.keyboard.press('Escape');
+    await apply.waitFor({ state: 'hidden' });
+    await expect(popper).toHaveCount(0);
     const [value1_1, value2_1] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
@@ -590,6 +592,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_1).toBe(initialValue2);
 
     await page.keyboard.press('Space');
+    await apply.waitFor({ state: 'visible' });
+    await expect(popper).toHaveCount(1);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Space');
     const [value1_2, value2_2] = await Promise.all([
@@ -608,6 +612,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_3).not.toBe(value2_2);
 
     await page.keyboard.press('Escape');
+    await apply.waitFor({ state: 'hidden' });
+    await expect(popper).toHaveCount(0);
     const [value1_4, value2_4] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
@@ -616,6 +622,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_4).toBe(initialValue2);
 
     await page.keyboard.press('Space');
+    await apply.waitFor({ state: 'visible' });
+    await expect(popper).toHaveCount(1);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -624,6 +632,8 @@ test.describe('Date range with standart ranges', () => {
 
     for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await apply.waitFor({ state: 'hidden' });
+    await expect(popper).toHaveCount(0);
 
     const [value1_6, value2_6] = await Promise.all([
       input.nth(2).inputValue(),
@@ -633,25 +643,29 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_6).not.toBe(value2_4);
 
     await page.keyboard.press('Space');
+    await apply.waitFor({ state: 'visible' });
+    await expect(popper).toHaveCount(1);
 
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await expect(popper).not.toBeVisible();
+    await apply.waitFor({ state: 'hidden' });
+    await expect(popper).toHaveCount(0);
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await apply.waitFor({ state: 'visible' });
+    await expect(popper).toHaveCount(1);
     for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
     await expect(reset).toBeFocused();
 
     await page.keyboard.press('Space');
-    await page.waitForTimeout(300);
+    await apply.waitFor({ state: 'hidden' });
+    await expect(popper).toHaveCount(0);
     const [value1_5, value2_5] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
     ]);
     expect(value1_5).toBe(initialValue1);
     expect(value2_5).toBe(initialValue2);
-    await expect(popper).not.toBeVisible();
   });
 });
 
