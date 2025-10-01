@@ -336,8 +336,7 @@ test.describe('Date range with standart ranges', () => {
     ];
 
     for (const { locator, expectedStyles } of dateStyles) {
-      await test.step(`Verify style of ${
-        locator === cells.first() ? 'disabled' : 'available'
+      await test.step(`Verify style of ${locator === cells.first() ? 'disabled' : 'available'
       } date`, async () => {
         await checkStyle(locator, expectedStyles);
       });
@@ -379,7 +378,7 @@ test.describe('Date range with standart ranges', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
+    const datePicker = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
     const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
     const headTitle = page.locator('[data-ui-name="DateRangePicker.Title"]');
@@ -392,14 +391,16 @@ test.describe('Date range with standart ranges', () => {
 
     await test.step('Click on date picker to open popper', async () => {
       await datePicker.nth(2).click();
-      await expect(popper).toBeVisible();
+      await apply.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
       await datePicker.nth(3).click();
-      await expect(popper).not.toBeVisible();
+      await apply.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
     });
 
     await test.step('Open date picker and check titles', async () => {
       await datePicker.first().click();
-      await page.waitForTimeout(300);
+      await apply.waitFor({ state: 'visible' });
 
       const initialTitle1 = await headTitle.first().textContent();
       const initialTitle2 = await headTitle.nth(1).textContent();
@@ -453,15 +454,17 @@ test.describe('Date range with standart ranges', () => {
     await test.step('Click on apply and check input values', async () => {
       await cells.nth(20).click();
       await cells.nth(25).click();
-      await apply.click();
 
       const inputValue20 = await input.nth(0).inputValue();
       const calendarAriaLabel20 = await cells.nth(20).getAttribute('aria-label');
       const expectedInputValue20 = formatAriaLabelToInputValue(calendarAriaLabel20);
-      await expect(inputValue20).toBe(expectedInputValue20);
 
       const inputValue25 = await input.nth(1).inputValue();
       const calendarAriaLabel25 = await cells.nth(25).getAttribute('aria-label');
+      await apply.click();
+      await apply.waitFor({ state: 'hidden' });
+      await expect(inputValue20).toBe(expectedInputValue20);
+
       const expectedInputValue25 = formatAriaLabelToInputValue(calendarAriaLabel25);
       await expect(inputValue25).toBe(expectedInputValue25);
     });
@@ -469,6 +472,8 @@ test.describe('Date range with standart ranges', () => {
     await test.step('Reset date selection and validate input', async () => {
       await datePicker.nth(2).click();
       await reset.click();
+      await apply.waitFor({ state: 'hidden' });
+
       const inputValueReset1 = await input.nth(0).inputValue();
       const inputValueReset2 = await input.nth(1).inputValue();
       await expect(inputValueReset1).toBe('');
@@ -478,6 +483,8 @@ test.describe('Date range with standart ranges', () => {
 
     await test.step('Click on buttons and check input values', async () => {
       await datePicker.nth(2).click();
+      await apply.waitFor({ state: 'visible' });
+
       await buttons.nth(3).click();
       const inputValueDate1 = await input.nth(0).inputValue();
       const inputValueDate2 = await input.nth(1).inputValue();
@@ -506,11 +513,15 @@ test.describe('Date range with standart ranges', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await expect(popper).toBeVisible();
+    await apply.waitFor({ state: 'visible' });
+
+    await expect(popper).toHaveCount(1);
     await expect(datePicker.nth(4)).not.toBeFocused();
     await expect(popper).toBeFocused();
 
     await page.keyboard.press('Escape');
+    await apply.waitFor({ state: 'hidden' });
+
     await expect(popper).not.toBeVisible();
 
     await page.keyboard.press('Space');
