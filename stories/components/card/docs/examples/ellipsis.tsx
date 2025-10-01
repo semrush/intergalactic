@@ -9,7 +9,7 @@ const tooltipContent = `Hey! Don't forget to place some useful information here.
 const Demo = () => (
   <Card w='50%'>
     <Card.Header>
-      <Flex alignItems='center' tag='h3'>
+      <Flex alignItems='center' tag='h3' m={0}>
         <Card.Title
           tag={Ellipsis}
           hintAfter={tooltipContent}
