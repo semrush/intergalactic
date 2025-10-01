@@ -34,10 +34,11 @@ const ChartExample = () => {
       .fill({})
       .map((d, i) => ({
         x: i,
-        y: Math.random() * 10,
+        y: (i % 10) + 1,
       }));
     setDataChart(dataChart);
   }, []);
+
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
     .domain(minMax(dataChart, 'x'));
