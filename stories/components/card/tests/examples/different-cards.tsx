@@ -1,6 +1,7 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
+import Ellipsis from '@semcore/ui/ellipsis';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
@@ -18,13 +19,13 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-hintAfter'>
       <Card.Header>
-        <Card.Title hintAfter='Test'>Market Traffic</Card.Title>
+        <Card.Title tag={Ellipsis} hintAfter='Test'>Market Traffic</Card.Title>
       </Card.Header>
     </Card>
 
     <Card mb={2} data-testid='card-title-description-hintAfter'>
       <Card.Header>
-        <Card.Title hintAfter='test' hintAfterAriaLabel='test-aria-label'>Market Traffic hintAfter</Card.Title>
+        <Card.Title hintAfter='test' hintAfterAriaLabel='test-aria-label' tag={Ellipsis}>Market Traffic hintAfter</Card.Title>
         <Card.Description uppercase>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
@@ -39,7 +40,8 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-content-hintAfter-innerHint'>
       <Card.Header>
-        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label' hintAfterAriaLabel='test-aria-label' hintAfter=' hintAfter test'>Market Traffic hintAfter and innerHint</Card.Title>
+        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label' hintAfterAriaLabel='test-aria-label' hintAfter=' hintAfter test' tag={Ellipsis}>Market Traffic innerHint hintAfter </Card.Title>
+        <Card.Description>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
     </Card>
