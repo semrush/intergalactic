@@ -1,6 +1,6 @@
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => (
