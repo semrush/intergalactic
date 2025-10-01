@@ -9,7 +9,8 @@ const locators = {
   radioGroup: (page: Page) => page.getByRole('group'),
   radioText: (page: Page, text: string) => page.locator('label[data-ui-name="Radio.Text"]', { hasText: text }),
   options: (page: Page) => page.getByRole('option'),
-
+  selectTrigger: (page: Page) => page.getByRole('combobox'),
+  button: (page: Page, text: string) => page.locator('button', { hasText: text }),
 };
 
 test.describe('Radio with group', () => {
@@ -522,12 +523,27 @@ test.describe('Functional - pattern', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
+    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'all');
     await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+    await expect(locators.radios(page).first()).toBeFocused();
+    await expect(locators.radios(page).first()).toHaveAttribute('checked');
 
     await page.keyboard.press('Tab');
+    await expect(locators.selectTrigger(page)).toBeFocused();
     await page.keyboard.press('Space');
     await page.getByRole('option').first().waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Space');
+    await page.getByRole('option').first().waitFor({ state: 'hidden' });
+    await expect(locators.selectTrigger(page)).toHaveAttribute('value', '500');
+    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'First');
+    await expect(locators.radios(page).nth(2)).toHaveAttribute('checked');
+    await page.keyboard.press('Shift+Tab');
+    await expect(locators.radios(page).nth(2)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await expect(locators.button(page, 'Export')).toBeFocused();
   });
 });
