@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import { DescriptionTooltip } from '@semcore/tooltip';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import React from 'react';
 
 figma.connect(

@@ -39,7 +39,6 @@ figma.connect(
     },
     example: ({ children, size }) => (
       <List size={size}>
-        {/* you can remove size from children */}
         {children}
       </List>
     ),

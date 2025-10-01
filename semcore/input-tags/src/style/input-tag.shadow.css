@@ -44,6 +44,10 @@ SInputTags[size='l'] {
   padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
 }
 
+SInputTags STag:focus-visible {
+  @mixin focus-outline-mixin-no-offset;
+}
+
 STagContainer {
   margin: var(--intergalactic-spacing-05x, 2px);
 }

@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect';
-import { LineChartSkeleton,
+import Skeleton, { LineChartSkeleton,
   AreaChartSkeleton,
   BarChartSkeleton,
   VennChartSkeleton,
@@ -8,7 +8,7 @@ import { LineChartSkeleton,
   RadialTreeChartSkeleton,
   HistogramChartSkeleton,
   DonutChartSkeleton,
-} from '@semcore/skeleton';
+} from '@semcore/ui/skeleton';
 import React from 'react';
 
 // Different skeleton shapes which are not components in the code

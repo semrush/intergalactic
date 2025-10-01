@@ -4,7 +4,7 @@ import React from 'react';
 
 figma.connect(
   Skeleton,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52772-1911&t=Fgs2Jv2CPgCOdctF-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52851-1247&t=KO1tOJU4Y49Pygq3-11',
   {
     example: () => <Skeleton>{/* svg path */}</Skeleton>,
   },
