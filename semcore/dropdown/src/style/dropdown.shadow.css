@@ -69,11 +69,13 @@ SDropdownPopper {
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]),
   SDropdownItem[highlighted][isMenuItemCheckbox] {
     @mixin focus-outline-mixin;
+    transition: none;
   }
 
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]):not(button),
   SDropdownItem[highlighted][isMenuItemCheckbox]:not(button) {
     @mixin focus-outline-mixin -2px;
+    transition: none;
   }
 
   SDropdownItem[disabled] {

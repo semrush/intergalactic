@@ -37,7 +37,7 @@ STextarea[size='l'] {
 STextarea[state='normal'] {
   &:focus-visible {
     border-color: var(--intergalactic-border-info-active, #006dca);
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
   }
 }
 
@@ -45,7 +45,7 @@ STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 
   &:focus-visible {
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
     outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
   }
 }
@@ -54,7 +54,7 @@ STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &:focus-visible {
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
   }
 

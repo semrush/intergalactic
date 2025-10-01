@@ -7,3 +7,12 @@
     outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
     outline-offset calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
+
+@define-mixin focus-outline-mixin-no-offset {
+  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 0;
+  transition: outline-color calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+    outline-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}

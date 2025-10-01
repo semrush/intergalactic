@@ -141,7 +141,7 @@ SInput[state='normal'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
     border-color: var(--intergalactic-border-info-active, #006dca);
   }
 }
@@ -152,7 +152,7 @@ SInput[state='valid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
     border-color: var(--intergalactic-border-success-active, #007c65);
     outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
   }
@@ -164,7 +164,7 @@ SInput[state='invalid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-    @mixin focus-outline-mixin 0;
+    @mixin focus-outline-mixin-no-offset;
     border-color: var(--intergalactic-border-critical-active, #d1002f);
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
   }
