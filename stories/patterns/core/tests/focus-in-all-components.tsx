@@ -514,7 +514,7 @@ const FocusInAllComponents = () => {
                   tag={InputTags.Tag}
                   theme='primary'
                   editable
-                  // active={false}
+                // active={false}
                 >
                   <InputTags.Tag.Text>
                     {tag}
