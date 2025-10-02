@@ -132,10 +132,6 @@ SInput[state='normal'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-<<<<<<< Updated upstream
-=======
-    @mixin focus-outline-mixin-no-offset;
->>>>>>> Stashed changes
     border-color: var(--intergalactic-border-info-active, #006dca);
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
@@ -146,10 +142,6 @@ SInput[state='valid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-<<<<<<< Updated upstream
-=======
-    @mixin focus-outline-mixin-no-offset;
->>>>>>> Stashed changes
     border-color: var(--intergalactic-border-success-active, #007c65);
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
@@ -160,10 +152,6 @@ SInput[state='invalid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-<<<<<<< Updated upstream
-=======
-    @mixin focus-outline-mixin-no-offset;
->>>>>>> Stashed changes
     border-color: var(--intergalactic-border-critical-active, #d1002f);
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }
