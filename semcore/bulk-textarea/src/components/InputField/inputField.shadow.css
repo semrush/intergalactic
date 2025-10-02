@@ -160,7 +160,10 @@ SInputField[size='l']>div {
 SInputField[state='normal']:not([disabled])>div {
   &:focus {
     border-color: var(--intergalactic-border-info-active, #006dca);
-    @mixin focus-outline-mixin-no-offset;
+      @mixin focus-outline-mixin {
+          outline-offset: 0;
+          transition-property: outline-color, outline-width;
+      }
   }
 }
 
@@ -169,7 +172,10 @@ SInputField[state='valid']>div {
 
   &:focus {
     border-color: var(--intergalactic-border-success-active, #007c65);
-    @mixin focus-outline-mixin-no-offset;
+      @mixin focus-outline-mixin {
+          outline-offset: 0;
+          transition-property: outline-color, outline-width;
+      }
     outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
   }
 }
@@ -179,7 +185,10 @@ SInputField[state='invalid']>div {
 
   &:focus {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
-    @mixin focus-outline-mixin-no-offset;
+      @mixin focus-outline-mixin {
+          outline-offset: 0;
+          transition-property: outline-color, outline-width;
+      }
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
   }
 
