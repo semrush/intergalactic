@@ -24,7 +24,9 @@ SSlider {
 
   &:active SKnob,
   &:focus-visible SKnob {
-    @mixin focus-outline-mixin;
+    @mixin focus-outline-mixin {
+      transition-property: outline-color, outline-width, outline-offset, left;
+    }
   }
 
   &:focus:has(SKnob) {
