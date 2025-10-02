@@ -4,6 +4,10 @@ SPlot {
   overflow: hidden;
 }
 
+SPlot:focus {
+  outline: none;
+}
+
 SPlot:active {
   outline: 0;
   text-decoration: none;
