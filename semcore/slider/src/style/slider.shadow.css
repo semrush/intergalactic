@@ -26,6 +26,7 @@ SSlider {
   &:focus-visible SKnob {
     @mixin focus-outline-mixin {
       transition-property: outline-color, outline-width, outline-offset, left;
+      transition-duration: calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-control, 200) * 1ms);
     }
   }
 
