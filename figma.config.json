@@ -1,15 +1,10 @@
 {
   "codeConnect": {
-    "include": ["figma/**/*.{tsx,jsx}"],
-    "parser": "react",
+    "include": ["figma/*.figma.jsx"],
     "label": "React",
     "paths": {
-      "@semcore/illustration/*": ["illustration/*"],
-      "@semcore/ui/*": ["*/src"],
-      "intergalactic/*": ["*/src"],
-      "@semcore/*": ["*/src"],
-      "@tools/*": ["../tools/*"]
+      "@semcore/ui/*": ["semcore/*/src"]
     },
-    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?m=auto&node-id=10355-260538&t=fvHZdzdrBaexbYww-1"
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components"
   }
 }
