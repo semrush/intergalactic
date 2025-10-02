@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.0] - 2025-09-22
+
+### Added
+
+- Initial animation for `ScoreDonut` and `ScoreSemiDonut`.
+
+### Changed
+
+- `ScoreDonut` and `ScoreSemiDonut` visual value can't be greater than 100.
+
 ## [16.0.9] - 2025-09-17
 
 ### Changed

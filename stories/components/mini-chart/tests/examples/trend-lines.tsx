@@ -1,5 +1,5 @@
-import { Flex, Box } from '@semcore/flex-box';
-import MiniChart from '@semcore/mini-chart';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 type trendLinesProps = { lastPointRadius: number; loading?: boolean; color?: string; lastPointColor?: string; animate?: boolean };
 

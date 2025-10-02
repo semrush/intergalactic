@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import { Plot, CompactHorizontalBar } from '@semcore/d3-chart';
-import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { Plot, CompactHorizontalBar } from '@semcore/ui/d3-chart';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

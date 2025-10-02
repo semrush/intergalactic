@@ -1,6 +1,6 @@
-import Badge from '@semcore/badge';
-import TabPanel from '@semcore/tab-panel';
-import type { TabPanelItemProps, TabPanelProps } from '@semcore/tab-panel';
+import Badge from '@semcore/ui/badge';
+import TabPanel from '@semcore/ui/tab-panel';
+import type { TabPanelItemProps, TabPanelProps } from '@semcore/ui/tab-panel';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

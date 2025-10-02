@@ -1,10 +1,11 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import SettingsM from '@semcore/icon/Settings/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import Pills from '@semcore/pills';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import Ellipsis from '@semcore/ui/ellipsis';
+import SettingsM from '@semcore/ui/icon/Settings/m';
+import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import Pills from '@semcore/ui/pills';
 import React from 'react';
 
 const Demo = () => (
@@ -16,32 +17,43 @@ const Demo = () => (
       <Card.Description>Info about data (optional) </Card.Description>
     </Card>
 
-    <Card mb={2} data-testid='card-title-hintAfter'>
-      <Card.Title hintAfter='Test'>Market Traffic</Card.Title>
+    <Card mb={2} data-testid='card-title'>
+      <Card.Header>
+        <Card.Title>Market Traffic</Card.Title>
+      </Card.Header>
     </Card>
 
-    <Card mb={2} data-testid='card-title-description-hintAfter'>
-      <Card.Title hintAfter='test' hintAfterAriaLabel='test-aria-label'>Market Traffic hintAfter</Card.Title>
-      <Card.Description uppercase>Info about data (optional)</Card.Description>
+    <Card mb={2} data-testid='card-title-description'>
+      <Card.Header>
+        <Card.Title>Market Traffic</Card.Title>
+        <Card.Description uppercase>Info about data (optional)</Card.Description>
+      </Card.Header>
       Content
     </Card>
 
     <Card mb={2} data-testid='card-title-description-innterHint'>
-      <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint</Card.Title>
-      <Card.Description>Info about data (optional)</Card.Description>
+      <Card.Header>
+        <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint</Card.Title>
+        <Card.Description>Info about data (optional)</Card.Description>
+      </Card.Header>
     </Card>
 
-    <Card mb={2} data-testid='card-title-content-hintAfter-innerHint'>
-      <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label' hintAfterAriaLabel='test-aria-label' hintAfter=' hintAfter test'>Market Traffic hintAfter and innerHint</Card.Title>
+    <Card mb={2} data-testid='card-title-content-innerHint'>
+      <Card.Header>
+        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint </Card.Title>
+        <Card.Description>Info about data (optional)</Card.Description>
+      </Card.Header>
       Content
     </Card>
 
     <Card mb={2} data-testid='card-title-description-content-innerHint-tag-text-styles'>
-      <Flex justifyContent='space-between' w={300}>
-        <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label' tag='h1'>Market Traffic h1</Card.Title>
-        <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />
-      </Flex>
-      <Card.Description>Info about data (optional)</Card.Description>
+      <Card.Header>
+        <Flex justifyContent='space-between' w={300}>
+          <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label' tag='h1'>Market Traffic h1</Card.Title>
+          <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />
+        </Flex>
+        <Card.Description>Info about data (optional)</Card.Description>
+      </Card.Header>
       Content
     </Card>
 

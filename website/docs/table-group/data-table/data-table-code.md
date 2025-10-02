@@ -341,6 +341,18 @@ Add a skeleton to the table by directly substituting the cell content.
 
 :::
 
+### Limited data
+
+You can hide the limited data with a blurred overlay by using the `limit` prop, and add your own message for this table state.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/limited-mode.tsx';
+</script>
+
+:::
+
 ### Empty state
 
 `DataTable` has a default empty state based on [WidgetEmpty](../../components/widget-empty/widget-empty) which is rendered automatically if the data is empty. You can customize the empty state using the `renderEmptyData` prop.

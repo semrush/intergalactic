@@ -1,6 +1,6 @@
-import { Box } from '@semcore/flex-box';
-import Edit from '@semcore/icon/Edit/m';
-import { TagContainer } from '@semcore/tag';
+import { Box } from '@semcore/ui/flex-box';
+import Edit from '@semcore/ui/icon/Edit/m';
+import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
 
 const Demo = () => {

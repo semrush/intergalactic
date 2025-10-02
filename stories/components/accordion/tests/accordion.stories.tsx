@@ -1,4 +1,4 @@
-import Accrordion from '@semcore/accordion';
+import Accrordion from '@semcore/ui/accordion';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ButtonsOnToggleExample from './examples/button-on-toggle';

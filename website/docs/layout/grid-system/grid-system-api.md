@@ -7,7 +7,7 @@ tabs: Page layout('grid-system-layout'), API('grid-system-api'), Example('grid-s
 ## Row
 
 ```jsx
-import { Row } from '@semcore/base-components';
+import { Row } from '@semcore/ui/base-components';
 <Row />;
 ```
 
@@ -16,7 +16,7 @@ import { Row } from '@semcore/base-components';
 ## Col
 
 ```jsx
-import { Col } from '@semcore/base-components';
+import { Col } from '@semcore/ui/base-components';
 <Col />;
 ```
 

@@ -1,11 +1,10 @@
-import { ScreenReaderOnly } from '@semcore/base-components';
-import { Flex } from 'intergalactic/base-components';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Button from 'intergalactic/button';
-import Dropdown from 'intergalactic/dropdown';
-import Radio, { RadioGroup } from 'intergalactic/radio';
-import Textarea from 'intergalactic/textarea';
-import { Text } from 'intergalactic/typography';
+import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Dropdown from '@semcore/ui/dropdown';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React, { useState, useEffect } from 'react';
 
 const Demo = () => {

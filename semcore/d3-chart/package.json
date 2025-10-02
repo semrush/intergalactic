@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/babel-plugin-react-semcore": "^4.9.0",
     "@semcore/button": "workspace:*",
     "@semcore/checkbox": "workspace:*",

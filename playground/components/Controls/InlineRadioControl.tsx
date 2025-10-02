@@ -1,5 +1,6 @@
-import Pills from '@semcore/pills';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Pills from '@semcore/ui/pills';
+import { Text } from '@semcore/ui/typography';
 import React, { useId } from 'react';
 
 import type { InlineRadioControlType } from '../../types/Controls';
@@ -16,11 +17,11 @@ function InlineRadioControl({
 }: InlineRadioControlProps) {
   if (!Array.isArray(options)) return null;
 
-  const labelId = displayName ? `${displayName.toLocaleLowerCase()}_control_label_${useId()}` : undefined;
+  const labelId = displayName ? `${displayName.toLocaleLowerCase().replace(/\s/g, '_')}_control_label_${useId().replace(/:/g, '_')}` : undefined;
 
   return (
     <>
-      <Text tag='label' id={labelId} mt={1}>{displayName}</Text>
+      <Text id={labelId} size={200} mt={1}>{displayName}</Text>
       <Pills aria-labelledby={labelId} value={value} onChange={onChange}>
         {options.map((option) => (
           <Pills.Item key={option} value={option}>
@@ -29,7 +30,6 @@ function InlineRadioControl({
         ))}
       </Pills>
     </>
-
   );
 }
 

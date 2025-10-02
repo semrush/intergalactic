@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/flex-box';
-import Pagination from '@semcore/pagination';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
 const Demo = () => {

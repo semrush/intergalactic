@@ -1,6 +1,6 @@
-import Accordion from '@semcore/accordion';
-import { Box } from '@semcore/base-components';
-import { Text } from '@semcore/typography';
+import Accordion from '@semcore/ui/accordion';
+import { Box } from '@semcore/ui/base-components';
+import { Text } from '@semcore/ui/typography';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 

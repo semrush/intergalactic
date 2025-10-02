@@ -19,7 +19,6 @@
     "esbuild": "*"
   },
   "dependencies": {
-    "@babel/core": "7.19.1",
     "@semcore/babel-plugin-react-semcore": "workspace:*",
     "@semcore/babel-preset-ui": "workspace:*"
   }

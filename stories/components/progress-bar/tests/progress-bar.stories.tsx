@@ -1,4 +1,4 @@
-import ProgressBar from '@semcore/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomizingTheBarExample1, { defaultProps as CustomizingTheBarProps } from './examples/customizing_the_bar1';

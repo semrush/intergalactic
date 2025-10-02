@@ -1,3 +1,16 @@
+## [16.9.1] - 2025-09-24
+
+### @semcore/data-table
+
+- **Fixed** Cell display in the accordion was changed to `block`.
+- **Fixed** Styles for cells in accordion in different variants.
+- **Fixed** Laggy animation in accordions.
+- **Fixed** `renderCell` not working for accordion's cells.
+
+### @semcore/tag
+
+- **Fixed** The following `InputTags.Tag` properties: `addonLeft`, `addonRight` and `active`.
+
 ## [16.9.0] - 2025-09-17
 
 ### @semcore/base-trigger

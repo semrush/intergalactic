@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Input from '@semcore/input';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Input from '@semcore/ui/input';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import type { RegisterOptions } from 'react-hook-form';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';

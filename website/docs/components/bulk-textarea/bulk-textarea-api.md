@@ -6,7 +6,7 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 ## BulkTextarea
 
 ```jsx
-import BulkTextarea from '@semcore/bulk-textarea';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
 <BulkTextarea>
   <BulkTextarea.InputField/>
 </BulkTextarea>;

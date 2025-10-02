@@ -1,4 +1,4 @@
-import { FilterTrigger } from '@semcore/base-trigger';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessibleNameExample from './examples/accessible_name';

@@ -1,5 +1,5 @@
-import { Box } from '@semcore/base-components';
-import Button from '@semcore/button';
+import { Box } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import React from 'react';
 
 const Demo = () => (

@@ -1,5 +1,5 @@
-import type { NoticeGlobalProps } from '@semcore/notice-global';
-import NoticeGlobal from '@semcore/notice-global';
+import type { NoticeGlobalProps } from '@semcore/ui/notice-global';
+import NoticeGlobal from '@semcore/ui/notice-global';
 import React, { useState } from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

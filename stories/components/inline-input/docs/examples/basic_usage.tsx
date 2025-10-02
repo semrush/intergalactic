@@ -1,5 +1,5 @@
-import InlineInput from '@semcore/inline-input';
-import type { InlineInputProps } from '@semcore/inline-input';
+import InlineInput from '@semcore/ui/inline-input';
+import type { InlineInputProps } from '@semcore/ui/inline-input';
 import React from 'react';
 
 const BasicUsage = (props: InlineInputProps) => {

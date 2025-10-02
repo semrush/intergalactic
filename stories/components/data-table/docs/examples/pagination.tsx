@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import { DataTable } from '@semcore/data-table';
-import Pagination from '@semcore/pagination';
-import Select from '@semcore/select';
+import { Flex } from '@semcore/ui/base-components';
+import { DataTable } from '@semcore/ui/data-table';
+import Pagination from '@semcore/ui/pagination';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => {

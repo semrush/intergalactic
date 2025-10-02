@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Notice from '@semcore/notice';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Notice from '@semcore/ui/notice';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const options = Array(12)

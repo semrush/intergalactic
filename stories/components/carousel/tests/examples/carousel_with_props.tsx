@@ -1,6 +1,6 @@
-import { Box } from '@semcore/base-components';
-import Carousel from '@semcore/carousel';
-import type { CarouselProps } from '@semcore/carousel';
+import { Box } from '@semcore/ui/base-components';
+import Carousel from '@semcore/ui/carousel';
+import type { CarouselProps } from '@semcore/ui/carousel';
 import React from 'react';
 
 const images = [

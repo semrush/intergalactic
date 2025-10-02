@@ -1,8 +1,9 @@
-import type { EllipsisProps } from '@semcore/ellipsis';
-import Ellipsis from '@semcore/ellipsis';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TableWithLinksExample from './examples/in_table_with_link';
+import MultipleTagsInOneComponentsExample from './examples/multiple_tags_in_one_components';
 import OnChangePropsExample from './examples/on_change_props';
 import TextCasesExample from './examples/text_cases';
 import TrimWithTextSizeExample, { defaultProps as sizeEllipsisProps } from './examples/trim_with_special_text_size';
@@ -41,4 +42,8 @@ export const OnChangeProps: StoryObj<EllipsisProps> = {
 export const TrimWithTextSize: StoryObj<EllipsisProps> = {
   render: TrimWithTextSizeExample,
   args: sizeEllipsisProps,
+};
+
+export const MultipleTagsInOneComponents: StoryObj<EllipsisProps> = {
+  render: MultipleTagsInOneComponentsExample,
 };

@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
 import React from 'react';
 
 const DEFAULT_TEXT =
