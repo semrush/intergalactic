@@ -1,10 +1,10 @@
-import Badge from '@semcore/badge';
-import Button from '@semcore/button';
-import { Flex, Box } from '@semcore/flex-box';
-import VideoListL from '@semcore/icon/VideoList/l';
-import VideoListM from '@semcore/icon/VideoList/m';
-import Tooltip, { Hint } from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
+import Badge from '@semcore/ui/badge';
+import Button from '@semcore/ui/button';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import VideoListL from '@semcore/ui/icon/VideoList/l';
+import VideoListM from '@semcore/ui/icon/VideoList/m';
+import Tooltip, { Hint } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

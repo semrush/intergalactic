@@ -269,6 +269,14 @@ const group = {
     disabled: false,
     type: 'table',
 
+  },
+    limitedData: {
+
+    title: 'Limited data',
+    route: '/intergalactic/table-group/table-states/table-states#limited-data',
+    disabled: false,
+    type: 'table',
+
   }, 
   noData: {
 

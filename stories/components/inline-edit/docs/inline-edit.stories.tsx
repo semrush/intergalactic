@@ -1,4 +1,4 @@
-import InlineEdit from '@semcore/inline-edit';
+import InlineEdit from '@semcore/ui/inline-edit';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EditableTagExample from './examples/editable_tag';

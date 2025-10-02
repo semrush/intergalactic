@@ -1,7 +1,7 @@
-import Button from '@semcore/button';
-import QuestionAltM from '@semcore/icon/Question/m';
-import type { NoticeProps } from '@semcore/notice';
-import Notice from '@semcore/notice';
+import Button from '@semcore/ui/button';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
+import type { NoticeProps } from '@semcore/ui/notice';
+import Notice from '@semcore/ui/notice';
 import React, { useState } from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

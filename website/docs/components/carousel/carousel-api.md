@@ -6,7 +6,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ## Carousel
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
@@ -17,7 +17,7 @@ import Carousel from '@semcore/carousel';
 `Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Container` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Container />;
 ```
 
@@ -26,7 +26,7 @@ import Carousel from '@semcore/carousel';
 `Carousel.ContentBox` is a wrap over `Carousel.Container`. `Carousel.ContentBox` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.ContentBox />;
 ```
 
@@ -35,7 +35,7 @@ import Carousel from '@semcore/carousel';
 `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Item />;
 ```
 
@@ -44,7 +44,7 @@ import Carousel from '@semcore/carousel';
 Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Indicators />;
 ```
 
@@ -53,7 +53,7 @@ import Carousel from '@semcore/carousel';
 Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-system-api#box).
 
 ```jsx
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Prev />
 <Carousel.Next />
 ```

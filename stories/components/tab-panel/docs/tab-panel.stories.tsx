@@ -1,4 +1,4 @@
-import TabPanel from '@semcore/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AutomaticTabActivationExample from './examples/automatic_tab_activation';

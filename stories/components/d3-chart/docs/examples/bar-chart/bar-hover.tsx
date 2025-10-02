@@ -1,4 +1,4 @@
-import { Plot, XAxis, YAxis, HoverRect, minMax } from '@semcore/d3-chart';
+import { Plot, XAxis, YAxis, HoverRect, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { createBreakpoints } from '@semcore/base-components';
+import { createBreakpoints } from '@semcore/ui/base-components';
 import React from 'react';
 
 const MEDIA = [

@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Pills from '@semcore/pills';
-import type { PillsProps, PillProps } from '@semcore/pills';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Pills from '@semcore/ui/pills';
+import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const contentBLocks = [

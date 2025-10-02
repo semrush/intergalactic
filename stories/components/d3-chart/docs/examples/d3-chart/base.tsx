@@ -1,4 +1,4 @@
-import { Plot, Line, minMax } from '@semcore/d3-chart';
+import { Plot, Line, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

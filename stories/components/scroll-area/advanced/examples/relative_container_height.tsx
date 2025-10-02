@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/flex-box';
-import Scroll from '@semcore/scroll-area';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Scroll from '@semcore/ui/scroll-area';
 import React from 'react';
 
 class Demo extends React.PureComponent {

@@ -1,6 +1,6 @@
-import type { InputProps } from '@semcore/input';
-import type { InputMaskValueProps } from '@semcore/input-mask';
-import InputMask from '@semcore/input-mask';
+import type { InputProps } from '@semcore/ui/input';
+import type { InputMaskValueProps } from '@semcore/ui/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

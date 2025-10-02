@@ -1,4 +1,4 @@
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccessToInternalComponentsExample, { defaultProps as AccessToInternalComponentsProps } from './examples/access_to_internal_components';

@@ -1,6 +1,6 @@
-import Card from '@semcore/card';
-import type { DataTableProps } from '@semcore/data-table';
-import { ACCORDION, DataTable } from '@semcore/data-table';
+import Card from '@semcore/ui/card';
+import type { DataTableProps } from '@semcore/ui/data-table';
+import { ACCORDION, DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 export const tableInCardDefaultProps: TableInCardProps = {

@@ -1,3 +1,4 @@
+import { useBox } from '@semcore/base-components';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
@@ -5,7 +6,6 @@ import logger from '@semcore/core/lib/utils/logger';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { useBox } from '@semcore/flex-box';
 import cn from 'classnames';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { BubbleChartSkeleton } from '@semcore/skeleton';
+import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
 import React from 'react';
 
 const Demo = () => (

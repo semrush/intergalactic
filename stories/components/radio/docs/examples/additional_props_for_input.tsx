@@ -1,4 +1,4 @@
-import Radio, { RadioGroup } from '@semcore/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import React from 'react';
 
 const Demo = () => {

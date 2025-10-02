@@ -1,104 +1,50 @@
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
-import { NoData } from '@semcore/widget-empty';
+import { Box } from '@semcore/ui/base-components';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-const stylesMap = {
-  5: 'success',
-  6: 'info',
-  7: 'muted',
-  8: 'warning',
-  9: 'danger',
-};
+const styles = ['success', 'info', 'muted', 'warning', 'danger'];
 
 const ChartExample = () => {
   return (
-
-    <NoData type='nothing-found' my={7} mx='auto'>
-
-    </NoData>
-
+    <NoData type='nothing-found' my={7} mx='auto' />
   );
 };
 
-export default function App() {
+const Demo = () => {
+  const [data] = React.useState(generateData);
+
   return (
-    <Box w={800}>
+    <Box wMax={800}>
       <DataTable
         data={data}
-        aria-label='Table with fixed columns'
-        h='600px'
+        aria-label='Example with themed rows and accordion'
         columns={[
-          { name: 'keyword', children: 'Column 4', borders: 'both', gtcWidth: '100px' },
-          { name: 'kd', children: 'Column 5', borders: 'both', gtcWidth: '100px' },
-          { name: 'cpc', children: 'Column 6', borders: 'both', gtcWidth: '100px' },
-          { name: 'vol', children: 'Column 7', borders: 'both', gtcWidth: '100px' },
+          { name: 'col_1', children: 'Theme', gtcWidth: '100px' },
+          { name: 'col_2', children: 'Column 2', gtcWidth: '100px' },
+          { name: 'col_3', children: 'Column 3', gtcWidth: '100px' },
+          { name: 'col_4', children: 'Column 4', gtcWidth: '100px' },
+          { name: 'col_5', children: 'Column 5', gtcWidth: '100px' },
         ]}
+        // @ts-ignore
         rowProps={(_, index) => {
           return {
-            // @ts-ignore
-            theme: stylesMap[index],
+            theme: styles[index],
           };
-        }}
-        renderCell={(props) => {
-          if (props.columnIndex < 5) {
-            return {
-              // @ts-ignore
-              theme: stylesMap[props.columnIndex + 5],
-            };
-          }
-
-          if (props.rowIndex < 5) {
-            return {
-              // @ts-ignore
-              theme: stylesMap[props.rowIndex + 5],
-            };
-          }
-
-          return props.defaultRender();
         }}
       />
     </Box>
   );
-}
+};
 
-const data: DataTableData = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-    [ACCORDION]: (<ChartExample />),
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: {
-      toString: () => '65,457,920',
-      [ACCORDION]: (<ChartExample />),
-    },
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-    [ACCORDION]: (<ChartExample />),
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-    [ACCORDION]: (<ChartExample />),
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-    [ACCORDION]: (<ChartExample />),
-  },
-];
+const generateData = () =>
+  Array.from({ length: 5 }, (_, i) => ({
+    col_1: styles[i],
+    col_2: i,
+    col_3: i,
+    col_4: i,
+    col_5: i,
+    [ACCORDION]: <ChartExample />,
+  }));
+
+export default Demo;

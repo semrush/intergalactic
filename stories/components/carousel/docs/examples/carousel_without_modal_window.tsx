@@ -1,4 +1,4 @@
-import Carousel from '@semcore/carousel';
+import Carousel from '@semcore/ui/carousel';
 import React from 'react';
 
 const images = [

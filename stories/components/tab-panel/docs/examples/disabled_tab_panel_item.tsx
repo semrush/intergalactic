@@ -1,5 +1,5 @@
-import TabPanel from '@semcore/tab-panel';
-import Tooltip from '@semcore/tooltip';
+import TabPanel from '@semcore/ui/tab-panel';
+import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

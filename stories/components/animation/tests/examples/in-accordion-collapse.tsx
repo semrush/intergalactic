@@ -1,5 +1,5 @@
-import Accordion from '@semcore/accordion';
-import { Box, Flex } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => {

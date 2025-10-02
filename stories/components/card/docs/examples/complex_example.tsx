@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import { LinkTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import Close from '@semcore/icon/Close/m';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import Close from '@semcore/ui/icon/Close/m';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;

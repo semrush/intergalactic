@@ -1,4 +1,4 @@
-import Breadcrumbs from '@semcore/breadcrumbs';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
 const Demo = () => (

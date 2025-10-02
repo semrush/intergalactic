@@ -2,6 +2,7 @@ SDataTable {
   display: grid;
   align-items: start;
   min-width: fit-content;
+  grid-auto-rows: min-content;
 }
 
 SDataTable[isDataEmpty] {

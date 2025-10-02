@@ -8,7 +8,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 The main component for handling typography in our interfaces. Renders as a `span` tag by default.
 
 ```jsx
-import { Text } from '@semcore/typography';
+import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
@@ -19,7 +19,7 @@ import { Text } from '@semcore/typography';
 A list rendered with the `ul` tag. You can set a custom marker for all list items.
 
 ```jsx
-import { List } from '@semcore/typography';
+import { List } from '@semcore/ui/typography';
 <List />;
 ```
 
@@ -34,7 +34,7 @@ The `size` property of this component only accepts the values `100`, `200`, and 
 A list item rendered with the `li` tag. You can set a custom marker and customize the content using `<List.Item.Content />`.
 
 ```jsx
-import { List } from '@semcore/typography';
+import { List } from '@semcore/ui/typography';
 <List.Item />;
 <List.Item.Content />;
 ```
@@ -47,7 +47,7 @@ import { List } from '@semcore/typography';
 A component for displaying quoted text.
 
 ```jsx
-import { Blockquote } from '@semcore/typography';
+import { Blockquote } from '@semcore/ui/typography';
 <Blockquote />;
 ```
 

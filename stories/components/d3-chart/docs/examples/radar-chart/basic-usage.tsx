@@ -1,4 +1,4 @@
-import { Chart, colors } from '@semcore/d3-chart';
+import { Chart, colors } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 const Demo = () => {

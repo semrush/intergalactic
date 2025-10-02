@@ -35,7 +35,7 @@ export type DataRowItem = {
 };
 export interface DTValue {
   toString(): string;
-  [ACCORDION]?: React.ReactNode | DataTableData;
+  [ACCORDION]?: React.ReactNode;
 }
 export type DataTableData = DataRowItem[];
 
@@ -91,6 +91,7 @@ export type DataTableProps<
 
     /**
      * Set of expanded rows (uniq id from them)
+     * This is mutable! variable because of table performance. Don't change the link on it.
      */
     expandedRows?: Set<UniqKeyType>;
 
@@ -127,7 +128,7 @@ export type DataTableProps<
         selectedRowIndex: number;
         isSelected: boolean;
         row: DTRow<UniqKeyType>;
-      },
+      }
     ) => void;
 
     /**
@@ -158,11 +159,32 @@ export type DataTableProps<
      */
     onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
 
+    /** Defines a limit configuration */
+    limit?: {
+      /**
+       * Start limit from this row
+       * @default 0
+       */
+      fromRow?: number;
+      /**
+       * Start limit from this column
+       * @default 0
+       */
+      fromColumn?: number;
+      /** Limit overlay */
+      renderOverlay: () => React.ReactNode;
+    };
+
     /**
      * Visual variant that adapts the table styling to different usage contexts
      * @default 'default'
      */
     variant?: 'default' | 'card';
+
+    /**
+     * Handle change expanded rows
+     */
+    onExpandedRowsChange?: (expandedRows: Set<UniqKeyType>) => void;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

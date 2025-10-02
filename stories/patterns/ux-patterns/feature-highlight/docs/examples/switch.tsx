@@ -1,6 +1,6 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { SwitchFH, BadgeFH } from '@semcore/feature-highlight';
-import SummaryAI from '@semcore/icon/SummaryAI/m';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { SwitchFH, BadgeFH } from '@semcore/ui/feature-highlight';
+import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import React from 'react';
 
 const Demo = () => (

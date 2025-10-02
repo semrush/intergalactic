@@ -69,12 +69,15 @@ class DataTableRoot<
   static displayName = 'DataTable';
   static style = style;
 
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
+  static enhance = [
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    defaultExpandedRows: new Set<string>(),
+    expandedRows: new Set(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
@@ -133,12 +136,6 @@ class DataTableRoot<
     shadowVertical: '',
   };
 
-  uncontrolledProps() {
-    return {
-      expandedRows: new Set<string>(),
-    };
-  }
-
   componentDidMount() {
     const { headerProps, loading } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
@@ -180,6 +177,8 @@ class DataTableRoot<
     if (canUseDOM()) {
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
+
+    this.asProps.expandedRows?.clear();
   }
 
   get totalRows() {
@@ -206,10 +205,10 @@ class DataTableRoot<
     }
 
     const rows = this.getRows().reduce((acc, item) => {
-      acc = acc + 1;
-
       if (Array.isArray(item)) {
         acc = acc + item.length;
+      } else {
+        acc = acc + 1;
       }
 
       return acc;
@@ -317,11 +316,13 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
     return {
       accordionDuration,
       accordionMode,
@@ -359,8 +360,9 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
     };
   }
 
@@ -476,11 +478,10 @@ class DataTableRoot<
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
-      this.handlers.expandedRows(expandedRows);
       onAccordionToggle?.('close', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
     } else {
       expandedRows.add(expandedRow[UNIQ_ROW_KEY]);
-      this.handlers.expandedRows(expandedRows);
+
       onAccordionToggle?.('open', expandedRow[UNIQ_ROW_KEY], expandedRow[ROW_INDEX]);
 
       if (accordionMode === 'toggle') {
@@ -496,6 +497,7 @@ class DataTableRoot<
     colIndex: ColIndex,
     direction?: 'up' | 'down' | 'left' | 'right',
   ) => {
+    const { limit } = this.asProps;
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -531,9 +533,11 @@ class DataTableRoot<
     const cell = row?.querySelector(
       `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > [role=columnheader][aria-colindex="${
+      }"]:not([aria-hidden="true"]), :scope > [role=columnheader][aria-colindex="${
         newCol + 1
-      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
+      }"]:not([aria-hidden="true"]), :scope > div > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"]:not([aria-hidden="true"])`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -570,7 +574,10 @@ class DataTableRoot<
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
-
+        // skipping x-axis movement of the focus within limit overlay and there is only limit by rows
+        if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
+          return;
+        }
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
@@ -578,7 +585,19 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          colI = direction === 'left' ? colI - 1 : colI + 1;
+          if (direction === 'right' && limit?.fromColumn !== undefined) {
+            if (newCol > limit.fromColumn) return;
+
+            rowI = direction === 'right' ? rowI - 1 : rowI;
+          } else {
+            colI = direction === 'left' ? colI - 1 : colI + 1;
+          }
+        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
+          if (newCol === limit.fromColumn) {
+            rowI = rowI - 1;
+          } else {
+            return;
+          }
         } else {
           rowI = rowI - 1;
         }
@@ -590,6 +609,11 @@ class DataTableRoot<
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
+          const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
+          if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
+            return;
+          }
+
           colI = colI - 1;
         }
       }
@@ -728,13 +752,13 @@ class DataTableRoot<
       }
 
       const cell = row
-        ?.querySelectorAll('[role=gridcell], [role=columnheader]')
+        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
         .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');
 
       if (cell instanceof HTMLElement) {
-        if (hasParent(e.target, cell)) {
+        if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus();
         } else {
           cell.focus();
@@ -1213,10 +1237,14 @@ class DataTableRoot<
       gridRowIndex++;
 
       if (row[ACCORDION]) {
-        dtRow[ACCORDION] = row[ACCORDION];
-        gridRowIndex = Array.isArray(row[ACCORDION]) ? gridRowIndex + row[ACCORDION].length : gridRowIndex + 1;
+        if (Array.isArray(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION].map((item) => makeDtRow(item));
+        } else if (React.isValidElement(row[ACCORDION])) {
+          dtRow[ACCORDION] = row[ACCORDION];
+          gridRowIndex++;
+        }
       } else if (accordionInCell) {
-        gridRowIndex = Array.isArray(accordionInCell) ? gridRowIndex + accordionInCell.length : gridRowIndex + 1;
+        gridRowIndex++;
       }
 
       excludeColumns?.forEach((value) => {
@@ -1241,7 +1269,11 @@ class DataTableRoot<
         const groupedKeys: string[] = [];
         const groupedRowData = Object.entries(row).reduce<Omit<DTRow<UniqKeyType>, symbol>>(
           (acc, [key, value]) => {
-            acc[key] = new MergedRowsCell(value, groupedRows.length, row[ACCORDION]);
+            const accordion = Array.isArray(row[ACCORDION])
+              ? row[ACCORDION].map((item) => makeDtRow(item))
+              : row[ACCORDION];
+
+            acc[key] = new MergedRowsCell(value, groupedRows.length, accordion);
             groupedKeys.push(key);
             return acc;
           },

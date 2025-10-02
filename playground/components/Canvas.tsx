@@ -1,4 +1,4 @@
-import { Box } from '@semcore/base-components';
+import { Box } from '@semcore/ui/base-components';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 

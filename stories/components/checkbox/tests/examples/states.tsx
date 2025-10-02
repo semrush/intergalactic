@@ -1,6 +1,6 @@
-import Checkbox from '@semcore/checkbox';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Checkbox from '@semcore/ui/checkbox';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

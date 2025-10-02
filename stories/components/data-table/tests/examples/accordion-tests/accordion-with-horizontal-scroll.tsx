@@ -1,6 +1,6 @@
-import type { DataTableData, DataTableSort } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import { NoData } from '@semcore/widget-empty';
+import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;

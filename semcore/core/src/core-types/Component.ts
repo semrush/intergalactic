@@ -238,7 +238,7 @@ export namespace Intergalactic {
       | React.FC
       | ReactFCLike;
     export type ComponentProps<
-      Tag extends ComponentTag,
+      Tag extends ComponentTag | [ComponentTag, keyof JSX.IntrinsicElements],
       BaseTag extends ComponentTag | never,
       Props,
       Context = never,
@@ -251,10 +251,10 @@ export namespace Intergalactic {
         ReturnResult,
         AdditionalContext
       >;
-    } & ComponentBasicProps<Tag> &
+    } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag> &
     MergeProps<
       EfficientOmit<Props, 'tag' | 'children'>,
-      MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
+      MergeProps<ComponentPropsNesting<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag>, ComponentPropsNesting<BaseTag>>
     >;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
@@ -319,7 +319,7 @@ export namespace Intergalactic {
     BaseProps = {},
     Context = {},
     AdditionalContext extends any[] = never[],
-  > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
+  > = (<Tag extends InternalTypings.ComponentTag | [InternalTypings.ComponentTag, keyof JSX.IntrinsicElements] = BaseTag, Props extends BaseProps = BaseProps>(
     props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
   InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;

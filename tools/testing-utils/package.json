@@ -8,7 +8,6 @@
   "private": true,
   "dependencies": {
     "@axe-core/playwright": "4.9.1",
-    "@babel/core": "7.19.1",
     "@playwright/test": "1.48.0",
     "@previewjs/plugin-react": "17.1.0",
     "@previewjs/screenshot": "0.3.2",

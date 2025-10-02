@@ -54,6 +54,12 @@ The loading message should be `sticky` and centered relative to the scrolling sc
 
 ![](static/sticky-loading-1.png)
 
+## Limited data
+
+To hide the limited data, use a blurred overlay. On top of it, make sure to add a message explaining why the data is hidden and what needs to be done to remove the limit.
+
+![](static/limited-data.png)
+
 ## Empty table
 
 The table can be empty due to deleted or unavailable data. Use the empty state when:
