@@ -155,10 +155,10 @@ SInput[state='valid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-      @mixin focus-outline-mixin {
-          outline-offset: 0;
-          transition-property: outline-color, outline-width;
-      }
+    @mixin focus-outline-mixin {
+      outline-offset: 0;
+      transition-property: outline-color, outline-width;
+    }
     border-color: var(--intergalactic-border-success-active, #007c65);
     outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
   }
@@ -170,10 +170,10 @@ SInput[state='invalid'] {
   }
 
   &:has(SValue:focus-visible) SOutline {
-      @mixin focus-outline-mixin {
-          outline-offset: 0;
-          transition-property: outline-color, outline-width;
-      }
+    @mixin focus-outline-mixin {
+      outline-offset: 0;
+      transition-property: outline-color, outline-width;
+    }
     border-color: var(--intergalactic-border-critical-active, #d1002f);
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
   }
