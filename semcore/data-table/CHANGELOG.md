@@ -7,9 +7,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Limited mode support.
-
-### Fixed
-
 - Render accordion and checkbox in one row together.
 
 ## [16.3.3] - 2025-10-03
