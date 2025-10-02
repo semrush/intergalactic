@@ -1,5 +1,15 @@
+import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+
+const locators = {
+  timeBoxes: (page: Page) => page.getByRole('combobox'),
+  timePickerGroup: (page: Page) => page.getByRole('group'),
+  options: (page: Page) => page.getByRole('option'),
+  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
+  label: (page: Page, text: string) => page.locator('label', { hasText: text }),
+
+};
 
 test.describe('Visual ', () => {
   const variablesStatesAndSizes = [
@@ -17,23 +27,21 @@ test.describe('Visual ', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
       await page.setContent(htmlContent);
-      const timeBoxes = page.getByRole('combobox');
       const optionH = page.getByRole('option');
-      const timePicker = page.getByRole('group');
 
       await test.step('Verify boxes margins', async () => {
-        const classAttr = await timePicker.first().getAttribute('class');
+        const classAttr = await locators.timePickerGroup(page).first().getAttribute('class');
 
         if (classAttr?.includes('_size_m_')) {
           for (let i = 0; i < 2; i++) {
-            await expect(timeBoxes.nth(i)).toHaveCSS('margin-left', '8px');
-            await expect(timeBoxes.nth(i)).toHaveCSS('margin-right', '8px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '8px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '8px');
           }
         } else if (classAttr?.includes('_size_l_')) {
-          await expect(timeBoxes.nth(0)).toHaveCSS('margin-left', '12px');
-          await expect(timeBoxes.nth(0)).toHaveCSS('margin-right', '8px');
-          await expect(timeBoxes.nth(1)).toHaveCSS('margin-left', '8px');
-          await expect(timeBoxes.nth(1)).toHaveCSS('margin-right', '12px');
+          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-left', '12px');
+          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '8px');
+          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '8px');
+          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-right', '12px');
         }
       },
       );
@@ -104,18 +112,17 @@ test.describe('Visual ', () => {
 
     await page.setContent(htmlContent);
 
-    const timeBoxes = page.getByRole('combobox');
     const option = page.getByRole('option');
 
     await test.step('Verify hours and minutes without step', async () => {
-      await timeBoxes.nth(0).click();
+      await locators.timeBoxes(page).nth(0).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Escape');
       await option.first().waitFor({ state: 'hidden' });
 
-      await timeBoxes.nth(1).click();
+      await locators.timeBoxes(page).nth(1).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
@@ -124,14 +131,14 @@ test.describe('Visual ', () => {
     });
 
     await test.step('Verify hours and minutes with step', async () => {
-      await timeBoxes.nth(4).click();
+      await locators.timeBoxes(page).nth(4).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Escape');
       await option.first().waitFor({ state: 'hidden' });
 
-      await timeBoxes.nth(5).click();
+      await locators.timeBoxes(page).nth(5).click();
       await option.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
@@ -255,47 +262,46 @@ test.describe('Functional', () => {
 
     await page.setContent(htmlContent);
 
-    const inputs = page.getByRole('combobox');
     const format = page.getByRole('button');
     const option = page.getByRole('option');
 
     await test.step('Verify Hours expanded by Click on the input', async () => {
-      await inputs.nth(0).click();
-      await expect(inputs.nth(0)).toBeFocused();
+      await locators.timeBoxes(page).nth(0).click();
+      await expect(locators.timeBoxes(page).nth(0)).toBeFocused();
       await option.first().waitFor({ state: 'visible' });
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(0)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(0)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify it is possible to select the option', async () => {
       await option.nth(1).click();
       await option.first().waitFor({ state: 'hidden' });
-      await expect(inputs.nth(0)).toHaveValue('02');
+      await expect(locators.timeBoxes(page).nth(0)).toHaveValue('02');
     });
 
     await test.step('Verify Hours expanded again by second Click on the input', async () => {
-      await inputs.nth(0).click();
-      await expect(inputs.nth(0)).toBeFocused();
+      await locators.timeBoxes(page).nth(0).click();
+      await expect(locators.timeBoxes(page).nth(0)).toBeFocused();
       await option.first().waitFor({ state: 'visible' });
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(0)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(0)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Minues list opened and Hours closed by click on Minutes', async () => {
-      await inputs.nth(1).click();
+      await locators.timeBoxes(page).nth(1).click();
       await page.getByRole('option', { name: '00' }).nth(0).waitFor({ state: 'visible' });
-      await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(1)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(1)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify clicking on the options selects it', async () => {
       await option.nth(1).click();
       await option.first().waitFor({ state: 'hidden' });
-      await expect(inputs.nth(1)).toHaveValue('01');
+      await expect(locators.timeBoxes(page).nth(1)).toHaveValue('01');
     });
 
     await test.step('Verify format can be changed by clcik on it', async () => {
-      await inputs.nth(1).click();
+      await locators.timeBoxes(page).nth(1).click();
       await option.first().waitFor({ state: 'visible' });
       await format.click();
       const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
@@ -311,9 +317,7 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
 
     const box = page.locator('[data-testid="regular"]');
-    const inputs = box.getByRole('combobox');
     const format = box.getByRole('button');
-    const separator = box.locator('[data-ui-name="TimePicker.Separator"]');
 
     await test.step('Verify Focus on the input and list with Hours expanded by Tab', async () => {
       await page.keyboard.press('Tab');
@@ -322,51 +326,51 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
 
-      await expect(inputs.nth(0)).toBeFocused();
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible to select the option', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
 
-      await expect(inputs.nth(0)).toHaveValue('12');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
     });
 
     await test.step('Verify Arrows expand option list again', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '12' }).nth(0).waitFor({ state: 'visible' });
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Escape closes list', async () => {
       await page.keyboard.press('Escape');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'false');
-      await expect(inputs.nth(0)).not.toHaveAttribute('aria-controls');
-      await expect(inputs.nth(0)).toHaveValue('12');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(2)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
     });
 
     await test.step('Verify Focus on the input with Minutes and list options expanded by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputs.nth(1)).toBeFocused();
-      await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible select the option', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await page.keyboard.press('Enter');
-      await expect(inputs.nth(1)).toHaveValue('01');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
     });
 
     await test.step('Verify Enter expand option list again', async () => {
       await page.keyboard.press('Enter');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
-      await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Tab moves focus to the Format', async () => {
@@ -386,7 +390,7 @@ test.describe('Functional', () => {
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
       await page.keyboard.press('Shift+Tab');
-      await expect(inputs.nth(1)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(3)).toBeFocused();
     });
   });
 
@@ -395,9 +399,6 @@ test.describe('Functional', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en', { is12Hour: false });
     await page.setContent(htmlContent);
 
-    const box = page.locator('[data-testid="regular"]');
-    const inputs = box.getByRole('combobox');
-
     await test.step('Verify Focus on the input with Hours and options list expanded by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -405,56 +406,120 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
 
-      await expect(inputs.nth(0)).toBeFocused();
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible to select the option', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
 
-      await expect(inputs.nth(0)).toHaveValue('23');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('23');
     });
 
     await test.step('Verify Arrows expand option list again', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '23' }).nth(0).waitFor({ state: 'visible' });
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Escape closes list', async () => {
       await page.keyboard.press('Escape');
-      await expect(inputs.nth(0)).toHaveAttribute('aria-expanded', 'false');
-      await expect(inputs.nth(0)).not.toHaveAttribute('aria-controls');
-      await expect(inputs.nth(0)).toHaveValue('23');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(2)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('23');
     });
 
     await test.step('Verify Focus on the input with Minutes and options list expanded by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputs.nth(1)).toBeFocused();
-      await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible to select the option', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await page.keyboard.press('Enter');
-      await expect(inputs.nth(1)).toHaveValue('01');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
     });
 
     await test.step('Verify Enter expand option list again', async () => {
       await page.keyboard.press('Enter');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
-      await expect(inputs.nth(1)).toHaveAttribute('aria-expanded', 'true');
-      await expect(inputs.nth(1)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
       await page.keyboard.press('Shift+Tab');
-      await expect(inputs.nth(0)).toBeFocused();
+      await expect(locators.timeBoxes(page).nth(2)).toBeFocused();
     });
+  });
+});
+
+test.describe('Visual - UX pattern', () => {
+  test('Verify pattern with Time Picker and Date pciker', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('12122024');
+    await page.keyboard.press('Escape');
+
+    await locators.timeBoxes(page).nth(1).click();
+    await locators.options(page).first().waitFor({ state: 'visible' });
+    await locators.options(page).first().click();
+    await locators.options(page).first().waitFor({ state: 'hidden' });
+
+    await expect(page).toHaveScreenshot();
+
+    await page.locator('[data-ui-name="Checkbox.Text"]').click();
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('Functional - UX pattern', () => {
+  test('Verify pattern with Time Picker and Date pciker keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const datePickerTrigger = page.locator('[data-ui-name="DatePicker.Trigger"]');
+    await expect(datePickerTrigger).toHaveCount(3);
+    await expect(locators.timePickerGroup(page)).toHaveCount(1);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.button(page, 'Today').waitFor({ state: 'visible' });
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await locators.button(page, 'Today').waitFor({ state: 'hidden' });
+
+    await expect(datePickerTrigger.nth(2)).toHaveAttribute('value');
+    await page.keyboard.press('Tab');
+    await locators.options(page).first().waitFor({ state: 'visible' });
+    await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+    await page.keyboard.press('Enter');
+    await locators.options(page).first().waitFor({ state: 'hidden' });
+    await page.keyboard.press('Tab');
+    await locators.options(page).first().waitFor({ state: 'visible' });
+    await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+    await page.keyboard.press('Enter');
+    await locators.options(page).first().waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Tab');
+    await expect(locators.button(page, 'AM')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(locators.button(page, 'PM')).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await expect(datePickerTrigger).toHaveCount(6);
+    await expect(locators.timePickerGroup(page)).toHaveCount(2);
   });
 });
