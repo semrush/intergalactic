@@ -83,7 +83,7 @@ const ChartExample = () => {
   );
 };
 
-const data: DataTableData = [
+const data: DataTableProps = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
