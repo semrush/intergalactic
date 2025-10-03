@@ -21,11 +21,11 @@ SHighlightedCheckbox:not([state="invalid"]) {
     inset: 0;
     margin: -5px;
     padding: 1px;
+    border-width: 2px;
     border-radius: calc(var(--intergalactic-addon-rounded, 4px) + 3px);
     border-color: transparent;
     pointer-events: none;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
-
+    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
 
@@ -45,5 +45,10 @@ SHighlightedCheckbox:not([state="invalid"]) {
   input[data-ui-name="CheckboxFH.Value"]:focus-visible+[data-ui-name="Value.CheckMark"]::before {
     opacity: 1;
     transform: scale(1);
+  }
+
+  input[data-ui-name="CheckboxFH.Value"]:checked:focus-visible+[data-ui-name="Value.CheckMark"]::before {
+    border-color: transparent;
+    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
   }
 }

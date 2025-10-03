@@ -18,6 +18,7 @@ SHighlightedItem {
   }
 
   &::before {
+    opacity: 0;
     content: "";
     position: absolute;
     z-index: 0;
@@ -26,7 +27,7 @@ SHighlightedItem {
     width: calc(100% + 4px);
     margin: -4px;
     padding: 2px;
-
+    box-sizing: content-box;
     background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
