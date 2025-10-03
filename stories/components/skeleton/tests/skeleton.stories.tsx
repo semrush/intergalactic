@@ -1,4 +1,4 @@
-import Skeleton from '@semcore/skeleton';
+import Skeleton from '@semcore/ui/skeleton';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ObserveParentSizeExample from './examples/observe-parent-size';

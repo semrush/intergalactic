@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable } from '@semcore/data-table';
+import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = () => {

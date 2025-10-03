@@ -1,4 +1,4 @@
-import { Box, Col, Row } from '@semcore/base-components';
+import { Box, Col, Row } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {

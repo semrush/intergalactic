@@ -1,4 +1,4 @@
-import Wizard from '@semcore/wizard';
+import Wizard from '@semcore/ui/wizard';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicExampleTest } from './__tests__/basic_example_test.test';

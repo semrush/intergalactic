@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 import React from 'react';
 
 let randomIndex = 1;

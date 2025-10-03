@@ -1,5 +1,5 @@
-import Pills from '@semcore/pills';
-import { Text } from '@semcore/typography';
+import Pills from '@semcore/ui/pills';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (

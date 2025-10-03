@@ -1,11 +1,11 @@
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
-import CheckM from '@semcore/icon/Check/m';
-import InfoM from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Flex } from '@semcore/ui/flex-box';
+import CheckM from '@semcore/ui/icon/Check/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

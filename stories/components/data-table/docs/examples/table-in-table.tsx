@@ -1,5 +1,5 @@
-import type { DataTableProps } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
+import type { DataTableProps } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type TableInTableProps = {

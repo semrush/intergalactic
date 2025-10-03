@@ -1,7 +1,7 @@
-import { DatePicker } from '@semcore/date-picker';
-import { Flex } from '@semcore/flex-box';
-import ProgressBar from '@semcore/progress-bar';
-import { Text } from '@semcore/typography';
+import { DatePicker } from '@semcore/ui/date-picker';
+import { Flex } from '@semcore/ui/flex-box';
+import ProgressBar from '@semcore/ui/progress-bar';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const stableRandom = (randomIndex: number) => {

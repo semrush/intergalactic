@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import Skeleton from '@semcore/skeleton';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Skeleton from '@semcore/ui/skeleton';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

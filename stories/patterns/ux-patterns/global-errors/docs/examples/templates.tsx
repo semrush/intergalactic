@@ -4,8 +4,8 @@ import {
   PageError,
   PageNotFound,
   ProjectNotFound,
-} from '@semcore/errors';
-import type { AccessDeniedProps, MaintenanceProps, PageErrorProps, PageNotFoundProps, ProjectNotFoundProps } from '@semcore/errors';
+} from '@semcore/ui/errors';
+import type { AccessDeniedProps, MaintenanceProps, PageErrorProps, PageNotFoundProps, ProjectNotFoundProps } from '@semcore/ui/errors';
 import React from 'react';
 
 type errorProps = AccessDeniedProps & MaintenanceProps & PageErrorProps & PageNotFoundProps & ProjectNotFoundProps;

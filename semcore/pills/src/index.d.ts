@@ -5,6 +5,17 @@ import type React from 'react';
 
 export type PillsValue = string | number | boolean | null;
 
+/**
+ * @deprecated
+ * use `manual`
+ */
+export type DeprecatedBehaviorTabs = 'tabs';
+/**
+ * @deprecated
+ * use `auto`
+ */
+export type DeprecatedBehaviorRadio = 'radio';
+
 /** @deprecated */
 export interface IPillsProps<T extends PillsValue = PillsValue>
   extends PillsProps<T>,
@@ -31,10 +42,8 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
      * while `manual` behavior for navigation and layout.
      * @default tabs
      */
-    behavior?: /** @deprecated use `manual` */
-      | 'tabs'
-      /** @deprecated use `auto` */
-      | 'radio'
+    behavior?:
+      DeprecatedBehaviorTabs | DeprecatedBehaviorRadio
       | 'auto'
       | 'manual';
   };

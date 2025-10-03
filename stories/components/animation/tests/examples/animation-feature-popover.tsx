@@ -1,9 +1,9 @@
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import FeaturePopover from '@semcore/feature-popover';
-import { Flex, Box } from '@semcore/flex-box';
-import FileExport from '@semcore/icon/FileExport/m';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import FileExport from '@semcore/ui/icon/FileExport/m';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

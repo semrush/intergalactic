@@ -1,6 +1,6 @@
-import Dot from '@semcore/dot';
-import { Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
+import Dot from '@semcore/ui/dot';
+import { Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
 import React from 'react';
 

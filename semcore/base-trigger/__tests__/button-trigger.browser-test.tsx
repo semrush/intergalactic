@@ -114,12 +114,23 @@ test.describe('Button-trigger', () => {
       await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
     });
 
-    test('Verify ellipsis', async ({ page }) => {
+    test('Verify ellipsis in trigger and few tags', async ({ page }) => {
       const standPath =
         'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
       await expect(page).toHaveScreenshot();
+
+      const button = page.getByRole('button');
+      const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
+      const tagNameButton = await button.first().evaluate((el) => el.tagName.toLowerCase());
+      expect(tagNameButton).toBe('h1');
+      const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
+      expect(tagNameText).toBe('h2');
+
+      await button.nth(1).hover();
+      await page.getByRole('tooltip').waitFor({ state: 'visible' });
+      await expect(page.getByRole('tooltip')).toHaveCount(1);
     });
   });
 

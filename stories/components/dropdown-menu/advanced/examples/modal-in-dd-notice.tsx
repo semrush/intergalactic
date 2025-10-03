@@ -1,10 +1,10 @@
-import Button from '@semcore/button';
-import DropdownMenu from '@semcore/dropdown-menu';
-import FileExportM from '@semcore/icon/FileExport/m';
-import Modal from '@semcore/modal';
-import Notice from '@semcore/notice';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+import Modal from '@semcore/ui/modal';
+import Notice from '@semcore/ui/notice';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

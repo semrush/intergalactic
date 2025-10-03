@@ -1,6 +1,6 @@
-import InlineEdit from '@semcore/inline-edit';
-import InlineInput from '@semcore/inline-input';
-import Tag from '@semcore/tag';
+import InlineEdit from '@semcore/ui/inline-edit';
+import InlineInput from '@semcore/ui/inline-input';
+import Tag from '@semcore/ui/tag';
 import React from 'react';
 
 const Demo = () => {

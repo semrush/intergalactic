@@ -1,4 +1,4 @@
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 import {
   LineChartSkeleton,
   AreaChartSkeleton,
@@ -10,7 +10,7 @@ import {
   RadialTreeChartSkeleton,
   HistogramChartSkeleton,
   DonutChartSkeleton,
-} from '@semcore/skeleton';
+} from '@semcore/ui/skeleton';
 import React from 'react';
 
 const Demo = () => {

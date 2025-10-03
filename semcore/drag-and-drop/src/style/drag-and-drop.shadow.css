@@ -1,11 +1,17 @@
 SDraggable[draggable] {
   position: relative;
-  cursor: grab;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active, &[active][isDragging]:hover {
+    cursor: grabbing;
+  }
 
   &::before {
     content: '';

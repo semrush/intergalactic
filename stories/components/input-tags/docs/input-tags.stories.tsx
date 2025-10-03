@@ -1,4 +1,4 @@
-import InputTags from '@semcore/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EnteringAndEditingTagsExample, { defaultProps } from './examples/entering_and_editing_tags';

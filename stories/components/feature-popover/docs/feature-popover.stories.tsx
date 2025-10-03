@@ -1,4 +1,4 @@
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import type { FeaturePopoverExampleProps } from './examples/Basic';

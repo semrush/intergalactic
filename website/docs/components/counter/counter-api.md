@@ -6,7 +6,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 ## Counter
 
 ```jsx
-import Counter from '@semcore/counter';
+import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 
@@ -17,7 +17,7 @@ import Counter from '@semcore/counter';
 The component which will render some value with animation from initValue (0 by default).
 
 ```jsx
-import { AnimatedNumber } from '@semcore/counter';
+import { AnimatedNumber } from '@semcore/ui/counter';
 <AnimatedNumber />;
 ```
 

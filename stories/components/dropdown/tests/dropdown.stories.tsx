@@ -1,4 +1,4 @@
-import Dropdown from '@semcore/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DDCasesExample from './examples/dd-cases';

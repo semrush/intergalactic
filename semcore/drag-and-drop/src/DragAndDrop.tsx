@@ -100,14 +100,20 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
 
     if (event.type === 'dragstart') {
       placeholder = document.createElement('div');
-      placeholder.style.backgroundColor = 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)';
+      placeholder.style.backgroundColor = 'var(--intergalactic-bg-primary-neutral-hover, #f4f5f9)';
       placeholder.style.width = event.target.offsetWidth + 'px';
       placeholder.style.height = event.target.offsetHeight + 'px';
 
-      event.target.parentNode?.insertBefore(placeholder, event.target.nextSibling);
+      const target = event.target;
 
-      event.target.style.opacity = '0.01'; // we need this to hide the content in place of the placeholder but leave it visible when dragging in preview mode
-      event.target.style.position = 'absolute';
+      event.target.parentNode?.insertBefore(placeholder, target.nextSibling);
+      target.style.left = `${target.offsetLeft}px`;
+      target.style.top = `${target.offsetTop}px`;
+      target.style.position = 'absolute';
+
+      setTimeout(() => { // because FF and safari can't create visible draggableImage without timeout
+        target.style.opacity = '0';
+      });
     }
 
     const yOffset = this.asProps.scrollableContainerRef?.current?.scrollTop ?? 0;
@@ -142,11 +148,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
 
     if (!draggingItem || !placeholder) return;
 
-    this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
-    draggingItem.node.style.opacity = '1.0';
-    draggingItem.node.style.position = 'relative';
-
-    placeholder.remove();
+    this.clearPlaceholder(draggingItem.node, placeholder);
 
     this.setState({
       dragging: null,
@@ -247,11 +249,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
       const placeholder = dragging.placeholder;
 
       if (placeholder) {
-        this.containerRef.current?.insertBefore(draggingItem.node, placeholder);
-        draggingItem.node.style.opacity = '1.0';
-        draggingItem.node.style.position = 'relative';
-
-        placeholder.remove();
+        this.clearPlaceholder(draggingItem.node, placeholder);
       }
 
       const fromNode = items[dragging.index];
@@ -319,6 +317,16 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
     }
   };
 
+  clearPlaceholder(node: HTMLElement, placeholder: HTMLElement) {
+    this.containerRef.current?.insertBefore(node, placeholder);
+    node.style.left = '0';
+    node.style.top = '0';
+    node.style.opacity = '1.0';
+    node.style.position = 'relative';
+
+    placeholder.remove();
+  }
+
   swapElements = () => {
     const { items, dragging, dragOver } = this.state;
     const draggingIndex = dragging?.index ?? null;
@@ -342,7 +350,8 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
     node.focus();
 
     if (dragging?.placeholder && items[draggingIndex]?.node) {
-      this.containerRef.current?.insertBefore(items[draggingIndex].node, node);
+      items[draggingIndex].node.style.left = `${node.offsetLeft}px`;
+      items[draggingIndex].node.style.top = `${node.offsetTop}px`;
     }
   };
 

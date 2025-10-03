@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import InputTags from '@semcore/input-tags';
-import type { InputTagsTagProps } from '@semcore/input-tags';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import InputTags from '@semcore/ui/input-tags';
+import type { InputTagsTagProps } from '@semcore/ui/input-tags';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());

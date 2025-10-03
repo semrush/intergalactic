@@ -1,4 +1,4 @@
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabLineItemAddonsExample, { defaultProps as TabLineItemAddonsProps } from './examples/tab_line_item_addons_and_props';

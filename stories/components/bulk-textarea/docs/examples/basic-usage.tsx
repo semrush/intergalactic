@@ -1,6 +1,6 @@
-import { Box, Flex } from '@semcore/base-components';
-import BulkTextarea from '@semcore/bulk-textarea';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const validateRow = (line: string, lines: string[]) => {

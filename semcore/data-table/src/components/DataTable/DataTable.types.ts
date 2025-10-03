@@ -128,7 +128,7 @@ export type DataTableProps<
         selectedRowIndex: number;
         isSelected: boolean;
         row: DTRow<UniqKeyType>;
-      },
+      }
     ) => void;
 
     /**
@@ -158,6 +158,22 @@ export type DataTableProps<
      * Work only with table-in-table accordions. In accordions with custom components use mount/unmount hooks in components.
      */
     onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
+
+    /** Defines a limit configuration */
+    limit?: {
+      /**
+       * Start limit from this row
+       * @default 0
+       */
+      fromRow?: number;
+      /**
+       * Start limit from this column
+       * @default 0
+       */
+      fromColumn?: number;
+      /** Limit overlay */
+      renderOverlay: () => React.ReactNode;
+    };
 
     /**
      * Visual variant that adapts the table styling to different usage contexts

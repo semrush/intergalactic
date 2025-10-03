@@ -1,4 +1,4 @@
-import MiniChart from '@semcore/mini-chart';
+import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 type ScoreLineColor =
   | 'chart-palette-order-2'
