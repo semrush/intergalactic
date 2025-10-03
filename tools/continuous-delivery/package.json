@@ -4,6 +4,7 @@
   "main": "index.ts",
   "bin": {
     "init-prerelease": "bin/init-prerelease.ts",
+    "init-icon-prerelease": "bin/init-icon-prerelease.ts",
     "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
     "upload-static": "bin/upload-static.ts",

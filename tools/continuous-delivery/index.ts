@@ -78,6 +78,33 @@ export const initPrerelease = async () => {
   }
 };
 
+export const initIconPrerelease = async () => {
+  const npmData = await fetchFromNpm(['@semcore/icon']);
+
+  const packages = await collectPackages(npmData);
+  const iconPackage = packages.find((pkg) => pkg.name === '@semcore/icon');
+
+  if (!iconPackage) {
+    console.log('No icon package found.');
+    process.exit();
+  }
+
+  const versionPatches = await makeVersionPatches([iconPackage]);
+
+  if (versionPatches.length === 1) {
+    await updateVersions(
+      versionPatches.map((patch) => {
+        return {
+          name: patch.package.name,
+          version: patch.to,
+        };
+      }),
+    );
+
+    await gitUtils.initNewPrerelease(versionPatches);
+  }
+};
+
 export const uploadStatic = async () => {
   const updatedPackages = await gitUtils.getUpdatedPackages();
   const prerelease = await gitUtils.getPrerelease();

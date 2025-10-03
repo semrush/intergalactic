@@ -21,6 +21,14 @@ export const gitUtils = {
       await gitUtils.commitNewPrerelease(versionPatches);
       const tag = await gitUtils.createPrereleaseTag(semcoreUiPatch);
       await gitUtils.push(tag);
+    } else if (versionPatches.length === 1 && versionPatches[0].package.name === '@semcore/icon') {
+      const newPrereleaseBranch = `prerelease/icon${versionPatches[0].to}`;
+      await git.checkout(['-b', newPrereleaseBranch]);
+
+      await NpmUtils.updateLockFile();
+      await gitUtils.commitNewPrerelease(versionPatches);
+      const tag = await gitUtils.createPrereleaseTag(versionPatches[0]);
+      await gitUtils.push(tag);
     }
   },
 
@@ -88,7 +96,11 @@ export const gitUtils = {
   },
 
   createPrereleaseTag: async (patch: VersionPatch) => {
-    const tagNamePrefix = `v${patch.to}-${prerelaseSuffix}.`;
+    let tagPrefix = 'v';
+    if (patch.package.name === '@semcore/icon') {
+      tagPrefix = 'icon';
+    }
+    const tagNamePrefix = `${tagPrefix}${patch.to}-${prerelaseSuffix}.`;
 
     const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
