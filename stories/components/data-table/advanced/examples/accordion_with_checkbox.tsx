@@ -27,6 +27,16 @@ const Demo = (props: AccordionWithCheckboxProps) => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.' },
       ]}
+      renderCell={(props) => {
+        if (props.rowIndex === 4 && props.columnName === ACCORDION) {
+          return {
+            p: 0, // set empty paddings for the last accordion
+            children: props.defaultRender(),
+          };
+        }
+
+        return props.defaultRender();
+      }}
     />
   );
 };
