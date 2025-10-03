@@ -562,6 +562,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             <SCell
               aria-colindex={1}
               aria-level={ariaLevel + 1}
+              data-aria-level={1}
               aria-setsize={1}
               aria-posinset={1}
               accordionRowIndex={0}
