@@ -1,3 +1,104 @@
+## [16.10.0] - 2025-10-03
+
+### @semcore/base-components
+
+- **Changed** Styles for `:focus-visible` in Box and ScrollArea.
+- **Changed** Border-radius for invalid pattern in InvalidStateBox.
+- **Added** Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+- **Changed** Don't open popper `onFocus` if last interaction was with mouse.
+
+### @semcore/bulk-textarea
+
+- **Changed** Styles for `:focus`.
+
+### @semcore/card
+
+- **Fixed** Info icon vertical align in Card Title.
+
+### @semcore/checkbox
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/core
+
+- **Changed** Values for `keyboard-focus` tokens.
+- **Changed** Inverted outline token moved from keyboard-focus group to keyboard-focus-invert group: `keyboard-focus-outline-invert` changed to `keyboard-focus-invert-outline` for consistency.
+- **Changed** Grouping for `keyboard-focus` tokens in the design json files.
+- **Added** Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+- **Changed** Prevent scroll on focus by mouse interaction.
+
+### @semcore/d3-chart
+
+- **Changed** Focus styles for `Plot`.
+- **Fixed** Error with `display` property on html element in the `Dots` component.
+
+### @semcore/data-table
+
+- **Added** Limited mode support.
+- **Added** Render accordion and checkbox in one row together.
+- **Fixed** Render table with expanded rows after changing page.
+- **Fixed** Render grouped header in some cases.
+
+### @semcore/date-picker
+
+- **Changed** Styles for `:focus` and `:focus-visible`.
+- **Changed** Styles for highlighted `CalendarUnit`.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Unnecessary background-color on hovered draggable elements.
+- **Fixed** Non-working dragging in scrollable containers.
+
+### @semcore/dropdown
+
+- **Changed** Styles for `:focus`.
+
+### @semcore/feature-highlight
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/format-text
+
+- **Changed** Styles for `:focus` of the `a` element.
+
+### @semcore/inline-input
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/input
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/mini-chart
+
+- **Added** Initial animation for `ScoreDonut` and `ScoreSemiDonut`.
+- **Changed** `ScoreDonut` and `ScoreSemiDonut` visual value can't be greater than 100.
+
+### @semcore/notice-bubble
+
+- **Fixed** Display a hint on the close button after mouse interaction to open bubble.
+
+### @semcore/radio
+
+- **Changed** Styles for `:focus-visible`.
+- **Changed** Border color for checked Checkbox in `focus` state.
+
+### @semcore/side-panel
+
+- **Fixed** Display a hint on the close button after mouse interaction to open panel.
+
+### @semcore/slider
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/switch
+
+- **Changed** Styles for `:focus-visible`.
+
+### @semcore/typography
+
+- **Changed** Styles for `:focus` of the `a` element.
+
 ## [16.9.1] - 2025-09-24
 
 ### @semcore/data-table
