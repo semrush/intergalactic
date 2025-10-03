@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.6.0] - 2025-10-03
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [16.0.9 ~> 16.1.0], `@semcore/input` [16.0.9 ~> 16.1.0], `@semcore/base-components` [16.2.3 ~> 16.4.0]).
+
 ## [16.5.1] - 2025-09-17
 
 ### Changed
