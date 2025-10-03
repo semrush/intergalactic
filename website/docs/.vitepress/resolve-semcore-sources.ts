@@ -98,6 +98,8 @@ export const resolveSemcoreSources = async (path: string) => {
     } else if (!subPath.startsWith('src/')) {
       modifiedSubPath = `src/${subPath}`;
     }
+  } else if (componentName === 'icon') {
+    modifiedSubPath = `lib/${subPath}`;
   }
 
   for (const absolutePath of [
