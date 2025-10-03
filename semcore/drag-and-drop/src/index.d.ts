@@ -36,6 +36,10 @@ export type DragAndDropProps = BoxProps & {
   customFocus?: number | string;
   /** Specifies the locale for i18n support */
   locale?: string;
+  /**
+   * Ref to a scrollable container, if exists
+   */
+  scrollableContainerRef?: React.MutableRefObject<HTMLElement | null>;
 };
 
 /** @deprecated */
