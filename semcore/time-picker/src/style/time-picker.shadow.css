@@ -2,6 +2,21 @@ STimePicker {
   position: relative;
   width: auto;
   outline: none;
+
+  SPickerInput {
+    box-sizing: content-box;
+    text-align: center;
+    z-index: 1;
+    height: 1.5em;
+
+    &[placeholder] {
+      text-overflow: initial;
+    }
+    &:focus {
+      outline: none;
+      background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
+    }
+  }
 }
 
 /*STimePicker[keyboardFocused]:focus {*/
@@ -11,20 +26,6 @@ STimePicker {
 STimePicker[disabled] {
   color: var(--intergalactic-text-secondary, #6c6e79);
   cursor: default;
-}
-
-SPickerInput {
-  box-sizing: content-box;
-  text-align: center;
-  z-index: 1;
-  height: 1.5em;
-
-  &[placeholder] {
-    text-overflow: initial;
-  }
-  &:focus {
-    background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
-  }
 }
 
 SPickerInput[size='m'] {

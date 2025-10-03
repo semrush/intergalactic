@@ -18,7 +18,6 @@ test.describe('Visual', () => {
 
       const button = page.getByRole('button');
       await button.click();
-      await page.waitForSelector('text="Close"'); // actually this is bug UIK-3926 but added for test
 
       await expect(page).toHaveScreenshot();
     });

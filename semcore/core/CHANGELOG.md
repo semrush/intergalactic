@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2025-10-03
+
+### Changed
+
+- Values for `keyboard-focus` tokens.
+- Inverted outline token moved from keyboard-focus group to keyboard-focus-invert group: `keyboard-focus-outline-invert` changed to `keyboard-focus-invert-outline` for consistency.
+- Grouping for `keyboard-focus` tokens in the design json files.
+
 ## [16.4.0] - 2025-09-20
 
 ### Added

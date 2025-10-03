@@ -140,6 +140,18 @@ export type BoxProps = StyledProps & {
    */
   innerOutline?: boolean;
 
+  /**
+   * Flag for render inverted outline
+   * @default false
+   */
+  invertOutline?: boolean;
+
+  /**
+   * Flag for render outline in the ::after element
+   * @default false
+   */
+  inAfterOutline?: boolean;
+
   /** Property for specifying css properties in js
    * @deprecated v4.0.0 */
   css?: React.CSSProperties;
@@ -232,6 +244,8 @@ export default function useBox<T extends BoxProps>(
     boxSizing,
     inline,
     innerOutline,
+    invertOutline,
+    inAfterOutline,
     flex,
     w,
     h,
@@ -317,6 +331,8 @@ export default function useBox<T extends BoxProps>(
             SBoxSizing: boxSizing,
             SBoxInline: inline,
             SBoxInnerOutline: innerOutline,
+            inAfterOutline: inAfterOutline === true ? 'true' : 'false',
+            invertOutline,
           }).className,
           className,
         ) || undefined,

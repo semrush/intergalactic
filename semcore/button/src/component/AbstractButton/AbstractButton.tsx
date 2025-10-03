@@ -71,22 +71,22 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
   }
 
   renderButton({ buttonProps, children }: any) {
-    const { styles } = this.asProps;
+    const { styles, theme } = this.asProps;
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Box} {...buttonProps}>
+      <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
         {children}
       </SButton>,
     );
   }
 
   renderButtonWithHint({ buttonProps, children, hintProps }: any) {
-    const { styles } = this.asProps;
+    const { styles, theme } = this.asProps;
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Hint} {...buttonProps} {...hintProps} ignorePortalsStacking>
+      <SButton render={Hint} invertOutline={theme === 'invert'} {...buttonProps} {...hintProps} ignorePortalsStacking>
         {children}
       </SButton>,
     );

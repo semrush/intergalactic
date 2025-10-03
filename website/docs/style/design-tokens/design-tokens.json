@@ -2221,104 +2221,86 @@
   {
     "name": "--intergalactic-keyboard-focus-outline",
     "type": "color",
-    "rawValue": "rgba({blue.400}, 0.5)",
-    "computedValue": "rgba(0, 143, 248, 0.5)",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "description": "Color for default keyboard focus outline styles.",
-    "components": [
-      "base-components",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-keyboard-focus-outline-invert",
-    "type": "color",
-    "rawValue": "rgba({gray.white}, 0.7)",
-    "computedValue": "rgba(255, 255, 255, 0.7)",
-    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
-    "components": [
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-keyboard-focus",
-    "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
-    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
-    "description": "Default keyboard focus box-shadow styles.",
-    "components": [
-      "base-components",
-      "bulk-textarea",
-      "carousel",
-      "checkbox",
-      "d3-chart",
-      "date-picker",
-      "dropdown",
-      "dropdown-menu",
-      "fullscreen-modal",
-      "inline-input",
-      "input",
-      "input-tags",
-      "radio",
-      "slider",
-      "switch",
-      "tag"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
     "type": "color",
-    "rawValue": "rgba({red.400}, 0.5)",
-    "computedValue": "rgba(255, 73, 83, 0.5)",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
+      "checkbox",
+      "inline-input",
+      "input",
+      "radio",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": [
-      "bulk-textarea",
-      "checkbox",
-      "inline-input",
-      "input",
-      "radio"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-valid-outline",
     "type": "color",
-    "rawValue": "rgba({green.400}, 0.5)",
-    "computedValue": "rgba(0, 159, 129, 0.5)",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": [
+      "bulk-textarea",
+      "inline-input",
+      "input",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-invert-outline",
+    "type": "color",
+    "rawValue": "rgba({gray.white}, 0.8)",
+    "computedValue": "rgba(255, 255, 255, 0.8)",
+    "description": "Color for keyboard focus outline styles to use on the dark and color background.",
     "components": [
-      "bulk-textarea",
-      "inline-input",
-      "input"
+      "base-components",
+      "carousel",
+      "wizard"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
-    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
-    "description": "Default keyboard focus styles for using with dark background.",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
+    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
+    "description": "Keyboard focus styles for use on dark backgrounds.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
+    "description": "Default keyboard focus box-shadow styles.",
+    "components": [
+      "input-tags",
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-base",
@@ -3182,6 +3164,8 @@
     "components": [
       "card",
       "carousel",
+      "d3-chart",
+      "date-picker",
       "feedback-form",
       "notice"
     ]
@@ -4180,7 +4164,9 @@
     "rawValue": "200",
     "computedValue": "200",
     "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-duration-extra-fast",
@@ -4190,7 +4176,8 @@
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
     "components": [
       "data-table",
-      "drag-and-drop"
+      "drag-and-drop",
+      "feature-highlight"
     ]
   },
   {
@@ -4415,8 +4402,8 @@
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
     "type": "color",
-    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
-    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"

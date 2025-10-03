@@ -33,9 +33,7 @@ SFormatText {
     }
 
     &:focus {
-      outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
-      outline-style: solid;
-      outline-width: 3px;
+      @mixin focus-outline-mixin;
     }
   }
 

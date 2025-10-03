@@ -235,6 +235,7 @@ class ViewInfo extends Component {
           active={false}
           title={getI18nText('close')}
           ref={this.closeButtonRef}
+          data-hide-focus-hover-popper='true'
         >
           <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
         </SDismiss>
