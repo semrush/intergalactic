@@ -384,6 +384,11 @@ function TagContainerTextContent(props: IRootComponentProps) {
   return sstyled(props.styles)(<Root render={Tag.Text} />);
 }
 
+function TagCloseButton(props: IRootComponentProps) {
+  const STagContainerClose = Root;
+  return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
+}
+
 export default createComponent(InputTags, {
   Value,
   TagsContainer: InputTagsContainer,
@@ -391,7 +396,7 @@ export default createComponent(InputTags, {
     InputTagContainer,
     {
       Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
-      Close: TagContainer.Close,
+      Close: TagCloseButton,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
     },

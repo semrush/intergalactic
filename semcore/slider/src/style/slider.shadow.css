@@ -22,10 +22,15 @@ SSlider {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &:active SKnob, &:focus-visible SKnob {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  &:active SKnob,
+  &:focus-visible SKnob {
+    @mixin focus-outline-mixin {
+      transition-property: outline-color, outline-width, outline-offset, left;
+      transition-duration: calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-fast, 200) * 1ms), calc(var(--intergalactic-duration-control, 200) * 1ms);
+    }
   }
-  &:focus {
+
+  &:focus:has(SKnob) {
     outline: none;
   }
 }

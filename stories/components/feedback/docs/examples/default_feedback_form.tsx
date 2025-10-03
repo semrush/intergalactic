@@ -50,7 +50,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
 
   componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
     if (prevProps.status !== 'success' && this.props.status === 'success') {
-      this.ref.current?.focus();
+      this.ref.current?.parentElement?.focus();
     }
   }
 

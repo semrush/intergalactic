@@ -356,4 +356,22 @@ test.describe('Feature highlight', () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip2 });
     });
   });
+
+  test.describe('Tabline', () => {
+    test(`Verify Tabline styles`, async ({ page }) => {
+      const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/tabline.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('ArrowRight');
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });

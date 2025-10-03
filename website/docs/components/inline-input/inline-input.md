@@ -28,22 +28,11 @@ InlineInput itself doesn't have a set sizes. You can set its height and font siz
 
 ### Styles
 
-![](static/normal.png)
-
-![](static/focus.png)
-
-```
-align-items: center;
-vertical-align: middle;
-line-height: 1.1;
-padding: 0 var(--spacing-1x);
-border-bottom: 1px solid var(--border-primary);
-background-color: var(--bg-primary-neutral);
-```
+The color of the placeholder is the same as a regular input has - `--text-placeholder`.
 
 ![](static/normal-placeholder.png)
 
-The color of the placeholder is the same as a regular input has - `--text-placeholder`.
+![](static/focus.png)
 
 ### Paddings
 

@@ -171,7 +171,7 @@ SBaseTrigger[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
   &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, rgba(255, 73, 83, 0.5));
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
   }
 }
 

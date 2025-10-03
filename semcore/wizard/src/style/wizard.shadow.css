@@ -21,6 +21,53 @@ SSidebar {
   @media (max-width: 1060px) {
     width: 56px;
   }
+
+  SStepper {
+    display: flex;
+    gap: var(--intergalactic-spacing-1x, 4px);
+    font-size: var(--intergalactic-fs-200, 14px);
+    border-radius: var(--intergalactic-control-rounded, 6px);
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+    cursor: pointer;
+    position: relative;
+    overflow: auto;
+    line-height: var(--intergalactic-lh-200, 142%);
+
+    &:focus-visible {
+      outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+    }
+
+    &:hover {
+      background: var(--intergalactic-control-primary-advertising-hover, #421983);
+      z-index: 1;
+    }
+    &[active] {
+      background: var(--intergalactic-control-primary-advertising-active, #8649e1);
+    }
+    &:disabled,
+    &[disabled] {
+      opacity: var(--intergalactic-disabled-opacity, 0.3);
+      cursor: default;
+      pointer-events: none; /* Disable interactions */
+    }
+
+    @media (max-width: 1060px) {
+      padding: var(--intergalactic-spacing-2x, 8px);
+      &:hover {
+        width: fit-content;
+        max-width: 220px;
+      }
+      &:hover SStepDescription {
+        display: block;
+        border-radius: var(--intergalactic-control-rounded, 6px);
+        white-space: nowrap;
+        overflow: auto;
+      }
+      &[active]:hover SStepDescription {
+        background: var(--intergalactic-control-primary-advertising-active, #8649e1);
+      }
+    }
+  }
 }
 
 SSidebarHeader {
@@ -28,53 +75,6 @@ SSidebarHeader {
   margin: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
   @media (max-width: 1060px) {
     display: none;
-  }
-}
-
-SStepper {
-  display: flex;
-  gap: var(--intergalactic-spacing-1x, 4px);
-  font-size: var(--intergalactic-fs-200, 14px);
-  border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
-  cursor: pointer;
-  position: relative;
-  overflow: auto;
-  line-height: var(--intergalactic-lh-200, 142%);
-
-  &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-outline-invert, rgba(255, 255, 255, 0.7));
-  }
-
-  &:hover {
-    background: var(--intergalactic-control-primary-advertising-hover, #421983);
-    z-index: 1;
-  }
-  &[active] {
-    background: var(--intergalactic-control-primary-advertising-active, #8649e1);
-  }
-  &:disabled,
-  &[disabled] {
-    opacity: var(--intergalactic-disabled-opacity, 0.3);
-    cursor: default;
-    pointer-events: none; /* Disable interactions */
-  }
-
-  @media (max-width: 1060px) {
-    padding: var(--intergalactic-spacing-2x, 8px);
-    &:hover {
-      width: fit-content;
-      max-width: 220px;
-    }
-    &:hover SStepDescription {
-      display: block;
-      border-radius: var(--intergalactic-control-rounded, 6px);
-      white-space: nowrap;
-      overflow: auto;
-    }
-    &[active]:hover SStepDescription {
-      background: var(--intergalactic-control-primary-advertising-active, #8649e1);
-    }
   }
 }
 

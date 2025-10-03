@@ -27,8 +27,17 @@ test.describe('Visual', () => {
 
       await page.setContent(htmlContent);
       const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
+      const close = page.locator('[aria-label="Close"]');
+      const hint = page.getByText('Close');
       await featurePopoverPopper.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
+
+      await test.step('Verify visual regression when focus inside feature popover', async () => {
+        await page.keyboard.press('Tab');
+        await expect(close).toBeFocused();
+        await hint.waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
@@ -46,6 +55,7 @@ test.describe('Visual', () => {
 
       await page.setContent(htmlContent);
       const spot = page.locator('[data-ui-name="FeaturePopover.Spot"]');
+
       const featurePopoverPopper = page.locator('[data-ui-name="FeaturePopover.Popper"]');
       await featurePopoverPopper.waitFor({ state: 'visible' });
 
