@@ -1198,29 +1198,49 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify checkbox and accordion in first cell mouse interactions', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variantCard = [
+    { variant: 'card', sideIndents: undefined },
+    { variant: 'default', sideIndents: 'wide' },
+    { variant: undefined, sideIndents: undefined },
+  ];
+  variantCard.forEach((item) => {
+    test(`Verify checkbox and accordion in first cell mouse interactions when variant=${item.variant} and sedeIndents=${item.sideIndents}`, async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
-    await page.setContent(htmlContent);
-    await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+      await page.setContent(htmlContent);
+      await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+      const accordion = page.locator('[role="gridcell"][aria-level="2"]');
 
-    await locators.toggle(page).first().click();
-    await locators.collapse(page).waitFor({ state: 'visible' });
-    await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+      await locators.toggle(page).first().click();
+      await locators.collapse(page).waitFor({ state: 'visible' });
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
 
-    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-    const cellCount = await cells.count();
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
 
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(196, 229, 254)',
-      });
-    }
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
 
-    await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
+
+      if (item.variant == 'card' || item.sideIndents == 'wide') {
+        const paddingRight = await accordion.evaluate((el) => {
+          return window.getComputedStyle(el).paddingRight;
+        });
+        const paddingLeft = await accordion.evaluate((el) => {
+          return window.getComputedStyle(el).paddingLeft;
+        });
+
+        expect(paddingRight).toBe('20px');
+        expect(paddingLeft).toBe('20px');
+      }
+    });
   });
 
   test('Verify checkbox and accordion in first cell keyboard interactions', async ({ page, browserName }) => {
