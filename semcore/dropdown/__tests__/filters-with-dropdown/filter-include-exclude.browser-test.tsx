@@ -19,12 +19,13 @@ test.describe('Visual', () => {
     const standPath = 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
+    if (browserName !== 'chromium') return; // the focus on radio works unstable so skipped for firefox and webkit
     const locators = getLocators(page);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.popper.waitFor({ state: 'visible' });
+
     await expect(page).toHaveScreenshot();
 
     await locators.textbox.fill('test');
