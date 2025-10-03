@@ -861,7 +861,7 @@ test.describe('Focus interaction', () => {
     await setFocusButton.click();
 
     const errorTooltip = page.getByText('Some error message');
-    await errorTooltip.waitFor();
+    await errorTooltip.waitFor({ state: 'visible' });
 
     await expect(errorTooltip).toBeVisible();
   });

@@ -634,8 +634,7 @@ test.describe('Limited state', () => {
         await page.keyboard.press('ArrowDown');
       await expect(locators.toggle(page).nth(2)).toBeFocused();
       await page.keyboard.press('Enter');
-
-      await page.getByRole('status').waitFor({ state: 'visible' });
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');

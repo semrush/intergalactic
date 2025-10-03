@@ -1,11 +1,17 @@
 SDraggable[draggable] {
   position: relative;
-  cursor: grab;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active, &[active][isDragging]:hover {
+    cursor: grabbing;
+  }
 
   &::before {
     content: '';
@@ -27,6 +33,10 @@ SDraggable[draggable] {
   /* todo removed role after refactoring dnd with some separate control for drag */
   &:not([role="menuitemcheckbox"])[hideHoverEffect]::before {
     display: none;
+  }
+
+  &:hover[active='false'][isDragging] {
+    background-color: inherit;
   }
 }
 
@@ -82,14 +92,12 @@ SDropZone {
   position: relative;
 }
 
-SDropZone[dropPreview],
-SDraggable[dropPreview] {
+SDropZone[dropPreview] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
 
 
-SDropZone[dark][dropPreview],
-SDraggable[dark][dropPreview] {
+SDropZone[dark][dropPreview] {
   background-color: var(--intergalactic-bg-primary-invert-active, #484a54);
 }
 
@@ -117,6 +125,13 @@ SDraggable[animatedScaling] {
   transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
+SDnDContainer SDraggable[reversedScaling]:hover {
+  background-color: initial;
+}
+
+SDnDContainer {
+  position: relative;
+}
 
 SA11yHint {
   position: absolute;

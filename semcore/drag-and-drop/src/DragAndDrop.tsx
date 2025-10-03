@@ -63,6 +63,7 @@ type State = {
   dragging: null | {
     index: number;
     initialItemsRects: Array<{ x: number; y: number; width: number; height: number } | undefined>;
+    placeholder: HTMLElement | null;
   };
   dragOver: number | null;
   hideHoverEffect: boolean;
@@ -99,10 +100,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   containerRef = React.createRef<HTMLDivElement>();
   clearA11yHintTimeout = 0;
 
-  handleItemDragStart = (index: number) => {
+  handleItemDragStart = (index: number, event: Event) => {
     const { items } = this.state;
     const currentItem = items[index];
-    if (!currentItem) return;
+    if (!currentItem || !(event.target instanceof HTMLElement)) return;
 
     const itemText =
       currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
@@ -121,16 +122,46 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
+    let placeholder: HTMLDivElement | null = null;
+
+    if (event.type === 'dragstart') {
+      placeholder = document.createElement('div');
+      placeholder.style.backgroundColor = 'var(--intergalactic-bg-primary-neutral-hover, #f4f5f9)';
+      placeholder.style.width = event.target.offsetWidth + 'px';
+      placeholder.style.height = event.target.offsetHeight + 'px';
+
+      const target = event.target;
+
+      event.target.parentNode?.insertBefore(placeholder, target.nextSibling);
+      target.style.left = `${target.offsetLeft}px`;
+      target.style.top = `${target.offsetTop}px`;
+      target.style.position = 'absolute';
+
+      setTimeout(() => { // because FF and safari can't create visible draggableImage without timeout
+        target.style.opacity = '0';
+      });
+    }
+
     this.setState((prevState: State) => ({
       dragging: {
         index,
         initialItemsRects: prevState.items.map((item) => item?.node.getBoundingClientRect()),
+        placeholder,
       },
     }));
   };
 
   handleItemDragEnd = (event: DragEvent) => {
     event.preventDefault();
+
+    const { items, dragging } = this.state;
+    const draggingItem = dragging ? items[dragging.index] : undefined;
+    const placeholder = dragging?.placeholder;
+
+    if (!draggingItem || !placeholder) return;
+
+    this.clearPlaceholder(draggingItem.node, placeholder);
+
     this.setState({
       dragging: null,
       dragOver: null,
@@ -152,10 +183,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         event.clientY < rect.y + rect.height,
     );
     const currentItem = items[itemIndex];
-    const draggingItem = items[dragging.index];
+    const draggingItem = dragging.placeholder;
     if (!currentItem || !draggingItem || itemIndex === dragOver) return;
 
-    const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
+    const node = currentItem.isDropZone ? draggingItem : currentItem.node;
 
     const itemText = node.getAttribute('aria-label') || node.textContent || `${itemIndex + 1}`;
     const zoneName = currentItem.zoneName;
@@ -181,7 +212,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({ dragOver: itemIndex }, this.swapElements);
   };
 
-  handleItemDrop = () => {
+  handleItemDrop = (event: Event) => {
     const { onDnD } = this.asProps;
     if (!onDnD) return;
 
@@ -223,6 +254,12 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       reversedScaling: false,
     });
     if (dragging && items[dragging.index]) {
+      const placeholder = dragging.placeholder;
+
+      if (placeholder) {
+        this.clearPlaceholder(draggingItem.node, placeholder);
+      }
+
       const fromNode = items[dragging.index];
       if (fromNode) {
         onDnD({
@@ -288,13 +325,23 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     }
   };
 
+  clearPlaceholder(node: HTMLElement, placeholder: HTMLElement) {
+    this.containerRef.current?.insertBefore(node, placeholder);
+    node.style.left = '0';
+    node.style.top = '0';
+    node.style.opacity = '1.0';
+    node.style.position = 'relative';
+
+    placeholder.remove();
+  }
+
   swapElements = () => {
     const { items, dragging, dragOver } = this.state;
     const draggingIndex = dragging?.index ?? null;
 
     if (draggingIndex === null || dragOver === null) return;
 
-    const node = items[draggingIndex]?.node;
+    const node = dragging?.placeholder ?? items[draggingIndex]?.node;
     const dragNode = items[dragOver]?.node;
 
     if (!node || !dragNode) return;
@@ -309,6 +356,11 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     }
 
     node.focus();
+
+    if (dragging?.placeholder && items[draggingIndex]?.node) {
+      items[draggingIndex].node.style.left = `${node.offsetLeft}px`;
+      items[draggingIndex].node.style.top = `${node.offsetTop}px`;
+    }
   };
 
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
@@ -325,7 +377,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
-        this.handleItemDrop();
+        this.handleItemDrop(event);
         this.setState({
           dragging: null,
           dragOver: null,
@@ -334,7 +386,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           hideHoverEffect: true,
         });
       } else if (this.state.items[index]?.draggingAllowed) {
-        this.handleItemDragStart(index);
+        this.handleItemDragStart(index, event);
         this.setState({ keyboardDraggingIndex: index, animatedScaling: index });
         this.updateItemScaling();
       }
@@ -421,7 +473,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.updateItemScaling();
   };
 
-  makeItemDragStartHandler = (index: number) => () => this.handleItemDragStart(index);
+  makeItemDragStartHandler = (index: number) => (e: DragEvent) => this.handleItemDragStart(index, e);
   makeItemKeyDownHandler = (index: number) => (event: KeyboardEvent) =>
     this.handleItemKeyDown(event, index);
 
@@ -444,6 +496,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       dark: this.asProps.theme === 'dark',
       hideHoverEffect: this.state.hideHoverEffect,
       animatedScaling: index === this.state.animatedScaling,
+      active: index === this.state.dragging?.index ? 'true' : 'false',
+      isDragging: this.state.dragging !== null,
     };
   }
 
@@ -531,6 +585,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const { a11yHint } = this.state;
     const context = { attach, detach };
     const { getI18nText, uid } = this.asProps;
+    const SDnDContainer = Root;
 
     return sstyled(this.asProps.styles)(
       <DragAndDropContext.Provider value={context}>
@@ -539,7 +594,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             {a11yHint}
           </SA11yHint>
         )}
-        <Root render={Box} role='group' ref={this.containerRef} />
+        <SDnDContainer render={Box} role='group' ref={this.containerRef} />
         <ScreenReaderOnly id={`describe-draggable-${uid}`} aria-hidden='true'>
           {getI18nText('describe', { control: 'Space' })}
         </ScreenReaderOnly>

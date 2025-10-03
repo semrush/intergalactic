@@ -1,15 +1,9 @@
 SHighlightedInput[state='normal'] {
-  & SOutline {
-    background:
-      linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
+  SOutline {
+    background: linear-gradient(white, white) padding-box,
       var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    border-color: transparent;
-  }
-
-  &:has(SValue:focus-visible) SOutline {
-    box-shadow: none;
     border-color: transparent;
 
     &::before {
@@ -17,25 +11,54 @@ SHighlightedInput[state='normal'] {
       position: absolute;
       z-index: -1;
       inset: 0;
-      margin: -4px;
-      padding: 4px;
+      margin: -3px;
+      padding: 3px;
       border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
+      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
       mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
       mask-composite: exclude;
+
+      opacity: 0;
+
+      transition: opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
     }
   }
 
-  &[neighborLocation='left']:has(SValue:focus-visible) SOutline::before {
+  &:has(SValue:focus-visible) SOutline {
+    outline: none;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &[neighborLocation='left'] SOutline::before {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  &[neighborLocation='right']:has(SValue:focus-visible) SOutline::before {
+
+  &[neighborLocation='right'] SOutline::before {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  &[neighborLocation='both']:has(SValue:focus-visible) SOutline::before {
+
+  &[neighborLocation='both'] SOutline::before {
     border-radius: 0;
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline {
+    outline: none;
+    border-color: #7078FC;
+    box-shadow:
+      0 0 0 0 #ffffff,
+      0 0 0 2px #7078FC;
+  }
+
+  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline::before {
+    display: none;
   }
 }

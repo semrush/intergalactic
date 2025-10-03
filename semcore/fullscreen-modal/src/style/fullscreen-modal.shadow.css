@@ -44,10 +44,6 @@ SBack {
   }
 }
 
-SBack[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-}
-
 SBackText {
   margin-left: var(--intergalactic-spacing-1x, 4px);
   font-size: var(--intergalactic-fs-200, 14px);

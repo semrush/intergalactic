@@ -10,22 +10,38 @@ SContainer {
   transition: transform var(--duration) ease-in-out;
 }
 
-SContentBox, SModalBox {
+SContentBox,
+SModalBox {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
-  &:has(SItem:focus-visible) {
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-      z-index: 1;
-      width: calc(100% - 3px * 2);
-      height: calc(100% - 3px * 2);
-      top: 3px;
-      left: 3px;
-    }
+}
+
+SContentBox:has(SItem:focus-visible)::after {
+  border-radius: inherit;
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  content: '';
+  @mixin focus-outline-mixin -2px;
+}
+
+SImageBoxContainer {
+  position: relative;
+  border-radius: var(--intergalactic-surface-rounded, 6px);
+
+  &:has(SItem:focus-visible)::after {
+    border-radius: inherit;
+    z-index: 2;
+    position: absolute;
+    inset: 0;
+    content: '';
+    @mixin focus-outline-mixin;
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+  }
+
+  SItem:focus-visible {
+    outline: none;
   }
 }
 
@@ -42,11 +58,16 @@ SItem {
   border-radius: var(--intergalactic-surface-rounded, 6px);
   overflow: hidden;
   outline: none;
+
+  > img {
+    display: block;
+  }
 }
 
 SItem[zoomIn] {
   cursor: zoom-in;
 }
+
 SItem[zoomOut] {
   cursor: zoom-out;
 }
@@ -54,7 +75,7 @@ SItem[zoomOut] {
 SIndicators {
   display: flex;
   justify-content: center;
-  margin: var(--intergalactic-spacing-4x, 16px) 3px 3px 3px;
+  margin: var(--intergalactic-spacing-4x, 16px) 4px 4px 4px;
   outline: none;
   position: relative;
 }
@@ -92,7 +113,8 @@ SNext {
   cursor: pointer;
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
-  SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
+  SPrevButton span:has(> svg:only-child),
+  SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
@@ -101,6 +123,7 @@ SNext {
 SPrev {
   margin-right: var(--intergalactic-spacing-2x, 8px);
 }
+
 SNext {
   margin-left: var(--intergalactic-spacing-2x, 8px);
 }

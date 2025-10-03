@@ -3,40 +3,75 @@ SHighlightedRadio {
 }
 
 SHighlightedRadio:not([state="invalid"]) {
-  input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    box-shadow: none;
-    border-color: transparent;
+  [data-ui-name="Value.RadioMark"] {
+    border-radius: 50%;
+    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff));
+  }
+
+  [data-ui-name="Value.RadioMark"]::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset: 0;
-    margin: -3px;
-    padding: 1px;
-    opacity: 1;
-    border-width: 3px;
+    margin: 0;
+    padding: 2px;
+    border-radius: 50%;
+    border-width: 0;
+    pointer-events: none;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
 
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
+
+    opacity: 0;
+    transform: scale(0.9);
+
+    transition:
+      margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  input[data-ui-name="RadioFH.Value"]:checked:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    mask: none;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box, var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))) border-box;
+  [data-ui-name="Value.RadioMark"]::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: var(--intergalactic-bg-primary-neutral, #ffffff);
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+
+    transition:
+      width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  input[data-ui-name="RadioFH.Value"] + [data-ui-name="Value.RadioMark"]::before {
-    border-color: transparent;
-    background: linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+  input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
+    margin: -4px;
+    opacity: 1;
+    transform: scale(1);
+    transition: inherit;
+  }
+}
+
+
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"] {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
   }
 
-  input[data-ui-name="RadioFH.Value"]:checked:not(:focus-visible) + [data-ui-name="Value.RadioMark"]::before {
-    border-color: transparent;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-      var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
+    display: none;
+  }
+
+  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:checked:focus-visible + [data-ui-name="Value.RadioMark"]::before {
+    display: none;
   }
 }

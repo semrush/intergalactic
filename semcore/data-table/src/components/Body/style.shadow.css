@@ -403,3 +403,7 @@ SLimitOverlayCellWrapper[left] {
   position: sticky;
   left: var(---left);
 }
+
+SCell[innerOutline]:focus-visible {
+  transition: none;
+}

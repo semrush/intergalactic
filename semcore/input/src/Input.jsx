@@ -131,6 +131,7 @@ class Value extends Component {
           sstyled(styles)(
             <SValue
               render={Box}
+              inAfterOutline
               neighborLocation={neighborLocation}
               tag='input'
               type='text'

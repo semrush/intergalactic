@@ -29,7 +29,9 @@ SDropdownPopper {
   }
 
   SDropdownItem[isMenuItemCheckbox] {
-    &::before, &[selected]::after {
+
+    &::before,
+    &[selected]::after {
       content: '';
       position: absolute;
       border: 1px solid;
@@ -66,14 +68,14 @@ SDropdownPopper {
 
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]),
   SDropdownItem[highlighted][isMenuItemCheckbox] {
-    z-index: 1;
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-    outline: none;
+    @mixin focus-outline-mixin;
+    transition: none;
   }
 
   SDropdownItem[highlighted]:not(SDropdownItem[isMenuItemCheckbox]):not(button),
   SDropdownItem[highlighted][isMenuItemCheckbox]:not(button) {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
+    @mixin focus-outline-mixin -2px;
+    transition: none;
   }
 
   SDropdownItem[disabled] {
@@ -91,7 +93,8 @@ SDropdownPopper {
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
-      &::before, &::after {
+      &::before,
+      &::after {
         width: 20px;
         height: 20px;
         top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
@@ -109,7 +112,8 @@ SDropdownPopper {
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
 
-      &::before, &::after {
+      &::before,
+      &::after {
         width: 16px;
         height: 16px;
         top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);

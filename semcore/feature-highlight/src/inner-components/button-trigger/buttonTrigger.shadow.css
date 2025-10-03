@@ -1,57 +1,86 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
   border: 1px solid transparent;
   background:
-    linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
-    var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box; /* border */
+    linear-gradient(white, white) padding-box,
+    var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-
-  &:hover {
-    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-    ) border-box;
-  }
-
-  &:active,
-  &[active] {
-    background:
-      linear-gradient(var(--intergalactic-bg-primary-neutral, #ffffff), var(--intergalactic-bg-primary-neutral, #ffffff)) padding-box,
-      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-color: transparent;
-  }
-}
-
-SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible {
-  outline: none;
   position: relative;
-  border-color: transparent;
+  z-index: 1;
 
   &::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset: 0;
-    margin: -4px;
-    padding: 4px;
+    margin: -5px;
+    padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
 
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
+
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+
+    transition:
+      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
+      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  }
+
+  &:hover {
+    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+  }
+
+  &:active,
+  &[active] {
+    background:
+      linear-gradient(white, white) padding-box,
+      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg, #8649e1, #006dca)) border-box;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-color: transparent;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: transparent;
+
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   &[neighborLocation='left']::before {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   &[neighborLocation='right']::before {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   &[neighborLocation='both']::before {
     border-radius: 0;
+  }
+}
+
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+
+  SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #7078FC;
+  }
+
+  SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible::before {
+    display: none;
   }
 }

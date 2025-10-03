@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.10] - 2025-10-03
+
+### Fixed
+
+- Info icon vertical align in Card Title.
+
 ## [16.1.9] - 2025-09-17
 
 ### Changed

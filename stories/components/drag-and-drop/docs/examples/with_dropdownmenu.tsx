@@ -81,7 +81,7 @@ const Demo = () => {
             all
           </ButtonLink>
         </Flex>
-        <DropdownMenu.List hMax={800}>
+        <DropdownMenu.List hMax={300}>
           <DnD onDnD={handleDnD} aria-label='drag-and-drop container'>
             {columns.map((column, index) => (
               <DropdownMenu.Item
