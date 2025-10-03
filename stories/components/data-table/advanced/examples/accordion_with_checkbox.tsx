@@ -1,5 +1,5 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
-import type { DataTableProps } from '@semcore/ui/data-table';
+import type { DataTableProps, DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
@@ -83,7 +83,7 @@ const ChartExample = () => {
   );
 };
 
-const data: DataTableProps = [
+const data: DataTableData = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
