@@ -21,6 +21,11 @@ SBody[compact] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
+  SCollapseRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
 
   SCell SAccordionToggle {
     margin-right: var(--intergalactic-spacing-2x, 8px);
@@ -320,13 +325,12 @@ SEmptyData {
   grid-column: 1 / -1;
 }
 
-SRow[sideIndents='wide'] {
+SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
-
     }
   }
 

@@ -1,43 +1,52 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableProps, DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-export type AccordionInTableProps = {
-  loading: boolean;
+export const accordionWithCheckboxProps: AccordionWithCheckboxProps = {
+  variant: 'default',
+  sideIndents: undefined,
 };
 
-const Demo = (props: AccordionInTableProps) => {
+const Demo = (props: AccordionWithCheckboxProps) => {
+  const [selectedRows, setSelectedRows] = React.useState([]);
   return (
     <DataTable
-      loading={props.loading}
       data={data}
-      aria-label='Accordion inside table'
-      h='100%'
+      variant={props.variant}
+      sideIndents={props.sideIndents}
+      aria-label='Accordion with checkboxes'
       defaultGridTemplateColumnWidth='1fr'
+      selectedRows={selectedRows}
+      onSelectedRowsChange={setSelectedRows}
+      hMax={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
-        {
-          name: 'group',
-          children: 'Organic Sessions',
-          borders: 'both',
-          columns: [
-            { name: 'kd', children: 'KD %' },
-            { name: 'cpc', children: 'CPC' },
-            { name: 'vol', children: 'Vol.' },
-          ],
-        },
+        { name: 'kd', children: 'KD %' },
+        { name: 'cpc', children: 'CPC' },
+        { name: 'vol', children: 'Vol.' },
       ]}
+      renderCell={(props) => {
+        if (props.rowIndex === 4 && props.columnName === ACCORDION) {
+          return {
+            p: 0, // set empty paddings for the last accordion
+            children: props.defaultRender(),
+          };
+        }
+
+        return props.defaultRender();
+      }}
     />
   );
 };
 
-export const accordionInsideTableDefaultProps = {
-  loading: false,
+export type AccordionWithCheckboxProps = {
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
 };
 
-Demo.defaultProps = accordionInsideTableDefaultProps;
+Demo.defaultProps = accordionWithCheckboxProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);
@@ -49,10 +58,11 @@ const ChartExample = () => {
       .fill({})
       .map((d, i) => ({
         x: i,
-        y: Math.random() * 10,
+        y: (i % 10) + 1,
       }));
     setDataChart(dataChart);
   }, []);
+
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
     .domain(minMax(dataChart, 'x'));

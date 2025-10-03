@@ -206,6 +206,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       variant,
       isAccordionRow,
       accordionRowIndex,
+      selectedRows,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -287,8 +288,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       }
     }
 
+    const firstColumnIndex = selectedRows ? 1 : 0;
+
     if (
-      (props.columnIndex === 0 && props.row[ACCORDION]) ||
+      (props.columnIndex === firstColumnIndex && props.row[ACCORDION]) ||
       value?.[ACCORDION] ||
       (cellValue instanceof MergedRowsCell && cellValue.accordion)
     ) {
@@ -448,6 +451,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           aria-hidden={this.isRowHidden}
         >
           {columns.map((column, i) => {
+            const index = i;
+            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined =
+                    row[column.name];
+
+            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
+              this.cellHasAccordion(cellValue) || accordionType === 'row';
+
             let isCellHidden: true | undefined = undefined;
 
             if (limit) {
@@ -472,6 +482,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   columnIndex={0}
                   gridRowIndex={gridRowIndex}
                   onClick={this.handleClickCheckbox(!checked)}
+                  expanded={expanded}
+                  withAccordion={withAccordion}
+                  isAccordionRow={isAccordionRow}
                   aria-hidden={isCellHidden}
                 >
                   <Checkbox
@@ -484,9 +497,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 </SCheckboxCell>
               );
             }
-
-            const index = i;
-            const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined = row[column.name];
 
             if (cellValue === undefined) {
               return null;
@@ -501,9 +511,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 style[name] = value;
               }
             }
-
-            const withAccordion = Boolean(cellValue instanceof MergedRowsCell && cellValue.accordion) ||
-              this.cellHasAccordion(cellValue) || accordionType === 'row';
 
             return (
               <Row.Cell
@@ -550,10 +557,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
+            sideIndents={sideIndents}
           >
             <SCell
               aria-colindex={1}
               aria-level={ariaLevel + 1}
+              data-aria-level={1}
               aria-setsize={1}
               aria-posinset={1}
               accordionRowIndex={0}
