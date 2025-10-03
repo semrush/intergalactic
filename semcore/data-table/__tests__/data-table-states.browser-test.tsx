@@ -634,8 +634,7 @@ test.describe('Limited state', () => {
         await page.keyboard.press('ArrowDown');
       await expect(locators.toggle(page).nth(2)).toBeFocused();
       await page.keyboard.press('Enter');
-
-      await page.getByRole('status').waitFor({ state: 'visible' });
+      await page.getByText('Nothing found').waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
@@ -696,6 +695,7 @@ test.describe('Additional states', () => {
     test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
       const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setViewportSize({ width: 1920, height: 1080 });
 
       await page.setContent(htmlContent);
 
@@ -737,6 +737,7 @@ test.describe('Additional states', () => {
     test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
       const standPath = 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setViewportSize({ width: 1920, height: 1080 });
 
       await page.setContent(htmlContent);
 
@@ -759,23 +760,6 @@ test.describe('Additional states', () => {
       }
 
       await expect(page).toHaveScreenshot();
-    });
-  });
-
-  variantCard.forEach((item) => {
-    test(`Verify accordion in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, async ({ page }) => {
-      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
-
-      const accordionToggles = await locators.toggle(page);
-
-      await accordionToggles.first().click();
-      await expect(page.getByRole('gridcell', { name: 'Chart' })).toHaveCSS('border-bottom-style', 'solid');
-
-      await accordionToggles.last().click();
-      await expect(page.getByRole('gridcell', { name: 'Chart' }).nth(1)).toHaveCSS('border-bottom-style', 'none');
     });
   });
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.3.0] - 2025-08-13
+
+### Changed
+
+- Styles for `:focus` of the `a` element.
+
 ## [16.2.3] - 2025-09-17
 
 ### Changed

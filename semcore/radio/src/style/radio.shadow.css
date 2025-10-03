@@ -104,11 +104,6 @@ SControl {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-SControl:checked~SValue::before {
-  border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
-}
-
 SControl:checked~SValue[size='m']::after {
   width: 6px;
   height: 6px;
@@ -119,13 +114,21 @@ SControl:checked~SValue[size='l']::after {
   height: 8px;
 }
 
-SControl:focus-visible + SValue[state='normal']::before {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+SControl:focus-visible+SValue[state='normal']::before {
   border-color: var(--intergalactic-border-info-active, #006dca);
+  @mixin focus-outline-mixin;
 }
 
-SControl:focus-visible + SValue[state='invalid']::before {
-  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+SControl:checked~SValue::before,
+SControl:checked:focus-visible~SValue::before {
+  border-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
+}
+
+SControl:focus-visible+SValue[state='invalid']::before {
+  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  @mixin focus-outline-mixin;
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
 }
 
 SControl:checked~SValue[theme]::before {

@@ -121,11 +121,13 @@ SControl[checked]~SCheckbox[state='invalid'] {
   }
 }
 
-SControl:focus-visible + SCheckbox[state='normal']:before {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+SControl:focus-visible+SCheckbox[state='normal']:before {
+  @mixin focus-outline-mixin;
 }
-SControl:focus-visible + SCheckbox[state='invalid']:before {
-  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+
+SControl:focus-visible+SCheckbox[state='invalid']:before {
+  @mixin focus-outline-mixin;
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
 }
 
 SControl[disabled] ~ SCheckbox:before,
