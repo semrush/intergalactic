@@ -1,14 +1,21 @@
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-const Demo = () => {
+export const accordionWithCheckboxProps: AccordionWithCheckboxProps = {
+  variant: 'default',
+  sideIndents: undefined,
+};
+
+const Demo = (props: AccordionWithCheckboxProps) => {
   const [selectedRows, setSelectedRows] = React.useState([]);
   return (
     <DataTable
       data={data}
+      variant={props.variant}
+      sideIndents={props.sideIndents}
       aria-label='Accordion with checkboxes'
       defaultGridTemplateColumnWidth='1fr'
       selectedRows={selectedRows}
@@ -23,6 +30,13 @@ const Demo = () => {
     />
   );
 };
+
+export type AccordionWithCheckboxProps = {
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
+};
+
+Demo.defaultProps = accordionWithCheckboxProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);
