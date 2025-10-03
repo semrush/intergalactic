@@ -372,7 +372,6 @@ test.describe('Feature highlight', () => {
 
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
-      await expect(page).toHaveScreenshot();
     });
   });
 });
