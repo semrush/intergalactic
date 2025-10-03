@@ -1,6 +1,7 @@
 import figma from '@figma/code-connect';
 import { Flex } from '@semcore/ui/base-components';
 import InputNumber from '@semcore/ui/input-number';
+import React from 'react';
 
 figma.connect(
   InputNumber,
