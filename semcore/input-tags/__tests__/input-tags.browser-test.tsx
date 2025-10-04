@@ -936,3 +936,86 @@ test.describe('Functional tests', () => {
     });
   });
 });
+
+test.describe('Visual - UX pattern', () => {
+  test('Verify Input tags and select', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.getByRole('combobox');
+    const options = page.getByRole('option');
+    const emailLabel = page.locator('label:text("Emails")');
+    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
+    await expect(trigger).toHaveCount(2);
+    await expect(page).toHaveScreenshot();
+
+    await trigger.first().click();
+    await options.first().waitFor({ state: 'visible' });
+    await options.first().click();
+    await options.first().waitFor({ state: 'hidden' });
+
+    await expect(trigger).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    await emailLabel.click();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.type('.test');
+    await tooltip.waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('Functional - UX pattern', () => {
+  test('Verify Input tags and select keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.getByRole('combobox');
+    const options = page.getByRole('option');
+    const emailLabel = page.locator('label:text("Emails")');
+    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
+    await expect(trigger).toHaveCount(2);
+
+    await page.keyboard.press('Tab');
+    await expect(trigger.first()).toBeFocused();
+    await trigger.first().click();
+    await options.first().waitFor({ state: 'visible' });
+    await options.first().click();
+    await options.first().waitFor({ state: 'hidden' });
+
+    await expect(trigger).toHaveCount(1);
+
+    await emailLabel.click();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await page.keyboard.type('.test');
+    await tooltip.waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+  });
+});
