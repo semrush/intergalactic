@@ -78,6 +78,26 @@ class BarChartComponent extends AbstractChart<
     const { groupKey, type = 'group', invertAxis } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
+    if (dataDefinitions.length === 1) {
+      const item = dataDefinitions[0];
+      const BarComponent = invertAxis ? GroupBar.HorizontalBar : GroupBar.Bar;
+
+      return (
+        item.checked && (
+          <>
+            <BarComponent
+              x={invertAxis ? item.id : groupKey}
+              y={invertAxis ? groupKey : item.id}
+              key={item.id}
+              color={item.color}
+              onClick={this.handleClickBar}
+            />
+            {this.renderTrend(item.id)}
+          </>
+        )
+      );
+    }
+
     if (type === 'group') {
       return (
         <>
