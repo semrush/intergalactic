@@ -500,7 +500,7 @@ test.describe('UX pattern - Visual', () => {
 });
 
 test.describe('UX pattern - Functional', () => {
-  test('Verify login form', async ({ page }) => {
+  test('Verify login form keyboard interactions', async ({ page }) => {
     const standPath = 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -514,7 +514,7 @@ test.describe('UX pattern - Functional', () => {
     await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'false');
     await expect(textboxes.first()).toHaveAttribute('name', 'email');
     await expect(textboxes.first()).toHaveAttribute('id', 'email');
-    await expect(textboxes.first()).toHaveAttribute('autocomplite', 'email');
+    await expect(textboxes.first()).toHaveAttribute('autocomplete', 'email');
 
     await page.keyboard.press('Tab');
 
@@ -522,7 +522,7 @@ test.describe('UX pattern - Functional', () => {
     await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'false');
     await expect(textboxes.last()).toHaveAttribute('name', 'password');
     await expect(textboxes.last()).toHaveAttribute('id', 'password');
-    await expect(textboxes.last()).toHaveAttribute('autocomplite', 'current-password');
+    await expect(textboxes.last()).toHaveAttribute('autocomplete', 'current-password');
 
     await page.keyboard.press('Tab');
     await expect(submit).toBeFocused();
@@ -530,12 +530,12 @@ test.describe('UX pattern - Functional', () => {
     await page.keyboard.press('Enter');
     await tooltip.waitFor({ state: 'visible' });
     await expect(textboxes.first()).toBeFocused();
-    await expect(tooltip).toHaveValue('Email is required');
+    await expect(tooltip).toHaveText('Email is required');
     await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('tes');
     await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveValue('Email is not valid');
+    await expect(tooltip).toHaveText('Email is not valid');
     await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('t@test.test');
@@ -544,18 +544,18 @@ test.describe('UX pattern - Functional', () => {
 
     await page.keyboard.press('Tab');
     await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveValue('Password is required');
+    await expect(tooltip).toHaveText('Password is required');
     await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwe');
-    await expect(tooltip).toHaveValue('Password must have at least 8 characters');
+    await expect(tooltip).toHaveText('Password must have at least 8 characters');
     await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwerty');
     await tooltip.waitFor({ state: 'hidden' });
     await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'false');
 
-    await page.keyboard.press('Shift+ab');
+    await page.keyboard.press('Shift+Tab');
     await expect(tooltip).toHaveCount(0);
   });
 });
