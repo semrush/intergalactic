@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "Semrush Errors Component",
-  "version": "16.1.4",
+  "version": "16.1.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "16.0.9",
-    "@semcore/format-text": "16.0.10",
-    "@semcore/illustration": "16.0.10",
-    "@semcore/typography": "16.2.3",
-    "@semcore/flex-box": "16.0.9"
+    "@semcore/button": "16.0.10",
+    "@semcore/format-text": "16.1.0",
+    "@semcore/illustration": "16.0.11",
+    "@semcore/typography": "16.3.0",
+    "@semcore/flex-box": "16.0.10"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
