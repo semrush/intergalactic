@@ -8,11 +8,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
 
+
 ## [16.2.0] - 2025-10-03
 
 ### Changed
 
 - Focus styles for `Plot`.
+
+### Fixed
+
+- Error with `display` property on html element in the `Dots` component.
+
 
 ## [16.1.5] - 2025-10-03
 

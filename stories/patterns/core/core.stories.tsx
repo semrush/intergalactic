@@ -12,9 +12,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const FocusStylesInSomeInputs: Story = {
-  render: () => <FocusStylesInSomeInputsStory />,
+  render: FocusStylesInSomeInputsStory,
 };
 
 export const FocusInAllComponents: Story = {
-  render: () => <FocusInAllComponentsStory />,
+  render: FocusInAllComponentsStory,
 };
