@@ -16,10 +16,14 @@ test.describe('Basic usage', () => {
     const standPath = 'stories/components/animation/tests/examples/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const parentDiv = page.locator('div[data-ui-name="Flex"]');
-    const buttons = await parentDiv.locator('button').all();
+    const buttons = page.getByRole('button');
 
-    for (const button of buttons) {
+    const count = await buttons.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let i = 0; i < count; i++) {
+      const button = buttons.nth(i);
+
       const buttonText = await button.locator('span[data-ui-name="Button.Text"]').textContent();
       const buttonData = buttonsData.find((data) => data.text === buttonText);
 
@@ -31,7 +35,6 @@ test.describe('Basic usage', () => {
       await expect(button).toBeVisible();
       await expect(parentLocator).toBeVisible();
 
-      // Retrieve the animation styles of the animation type
       const animationStyles = await parentLocator.evaluate((el) => {
         const style = getComputedStyle(el);
         return {
@@ -43,9 +46,9 @@ test.describe('Basic usage', () => {
         };
       });
 
-      expect(animationStyles.animationDuration).toBe(duration);
-      expect(animationStyles.animationDelay).toBe(delay);
-      expect(animationStyles.animationTimingFunction).toBe('ease-out');
+      await expect(animationStyles.animationDuration).toBe(duration);
+      await expect(animationStyles.animationDelay).toBe(delay);
+      await expect(animationStyles.animationTimingFunction).toBe('ease-out');
       expect(animationStyles.display).toBe('block');
 
       await button.click();
@@ -59,7 +62,7 @@ test.describe('Accordion collapse usage', () => {
     const standPath = 'stories/components/animation/tests/examples/in-accordion-collapse.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const toggleItems = await page.locator('h3[data-ui-name="Item.Toggle"]');
+    const toggleItems = page.locator('h3[data-ui-name="Item.Toggle"]');
 
     for (let i = 0; i < (await toggleItems.count()); i++) {
       const toggleItem = toggleItems.nth(i);
