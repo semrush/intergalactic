@@ -37,5 +37,6 @@ export default {
   ${items} ${result}
 </Card.Header>
   `,
-  id: 'card-header', // I didn't really understand why this id is needed, but it's required
+  id: 'card-header',
 };
+// the id property is required, it can be used to find children using findConnectedInstance('component-id') instead of findInstance('layerName') - it helps if layer has been renamed
