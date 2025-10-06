@@ -2,7 +2,6 @@ import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
 import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
@@ -67,8 +66,7 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
     return getNodeByRef(this.asProps.container!)!;
   }
 
-  refBar = (node: HTMLElement) => {
-    const domNode = findDOMNode(node) as HTMLElement;
+  refBar = (domNode: HTMLElement | null) => {
     this.$bar = domNode;
     const orientation = this.getOrientation();
     const { horizontalBarRef, verticalBarRef } = this.asProps;
@@ -78,8 +76,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
     setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
   };
 
-  refSlider = (node: HTMLElement) => {
-    this.$slider = findDOMNode(node) as HTMLElement;
+  refSlider = (node: HTMLElement | null) => {
+    this.$slider = node;
   };
 
   calculateVisibleScroll() {

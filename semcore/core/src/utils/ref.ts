@@ -72,10 +72,7 @@ export function getNodeByRef(ref: NodeByRef): Element | null {
   if (!ref) return null;
 
   const node = getRef(ref);
-  if (!node) return null;
-  if ('nodeType' in node && node.nodeType === 1) return node;
-  if (Object.keys(node).length === 1 && 'getBoundingClientRect' in node) return null;
-  if (!React.isValidElement(node) && !(node instanceof React.Component)) return null;
+  if (node && 'nodeType' in node && node.nodeType === 1) return node;
 
-  return findDOMNode(node) as Element;
+  return null;
 }

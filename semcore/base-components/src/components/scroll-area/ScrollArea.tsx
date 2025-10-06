@@ -7,7 +7,6 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React, { type ForwardedRef } from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
 import { setAreaValue, ScrollBar } from './ScrollBar';
@@ -92,8 +91,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     }
   }
 
-  refWrapper = (node: HTMLElement) => {
-    this.$wrapper = findDOMNode(node) as HTMLElement;
+  refWrapper = (node: HTMLElement | null) => {
+    this.$wrapper = node;
   };
 
   setStyleSizeProperty = (element: HTMLElement, propertyKey: string, value: string | number) => {

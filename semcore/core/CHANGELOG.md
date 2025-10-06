@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2025-12-12
+
+### BREAK
+
+- Removed `WithI18n`. Use `useI18n`. From v16.
+- Removed `WithCSS`. Use `useCss`. From v16.
+- Removed `WithAutoFocus`. Use `autoFocusEnhance`. From v16.
+- Removed `WithKeyboardFocus`. Just don't use. From v16.
+- Removed `WithRef`. Use `useForkRef`. From v16.
+
 ## [16.5.0] - 2025-10-03
 
 ### Changed

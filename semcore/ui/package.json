@@ -90,8 +90,8 @@
     "@semcore/wizard": "16.0.0"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",
