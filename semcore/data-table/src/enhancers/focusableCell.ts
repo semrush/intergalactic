@@ -17,6 +17,11 @@ export function handleFocusCell(lockedCell: LockedCell, target: Element, current
 
     if (focusableChildren.length === 1) {
       focusableChildren[0].focus();
+      focusableChildren[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
     } else if (focusableChildren.length > 1) {
       lockedCell[0] = currentTarget;
       lockedCell[1] = false;
