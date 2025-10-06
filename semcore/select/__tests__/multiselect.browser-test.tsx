@@ -34,7 +34,7 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option selected when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await options.first().waitFor();
+      await options.first().waitFor({ state: 'visible' });
       await expect(select).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
@@ -61,6 +61,8 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify Escape closes menu', async () => {
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(select).toBeFocused();
       await expect(menu).not.toBeVisible();
       await expect(triggerText).toHaveText('Option 0, Option 19');
@@ -68,7 +70,8 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify first selected highlights when menu expanded', async () => {
       await page.keyboard.press('Enter');
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await options.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
       await page.keyboard.press('Space');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
@@ -76,8 +79,6 @@ test.describe('Options filtering', () => {
       await page.keyboard.press('Escape');
       await expect(triggerText).toHaveText(' Option 19, Option 18');
       await page.keyboard.press('Space');
-      await new Promise((resolve) => setTimeout(resolve, 300));
-
       await expect(options.nth(18)).toHaveClass(/highlighted/);
     });
   });
@@ -92,16 +93,17 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify menu opened and closed by label and trigger click', async () => {
       await select.click();
-      await options.first().waitFor();
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await label.click();
-      await expect(options.first()).not.toBeVisible();
+      await options.first().waitFor({ state: 'hidden' });
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify options selected and menu not closed by clicking on options', async () => {
       await label.click();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await options.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
 
       await options.nth(1).click();
       await options.nth(5).click();
@@ -110,22 +112,23 @@ test.describe('Options filtering', () => {
       await expect(triggerText).toHaveText('Option 1, Option 5, Option 3');
 
       await expect(menu).toBeVisible();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify closed and selection saved', async () => {
       await label.click();
+      await options.first().waitFor({ state: 'hidden' });
       await expect(triggerText).toHaveText('Option 1, Option 5, Option 3');
     });
 
     await test.step('Verify menu opened and selected option highlighted', async () => {
       await label.click();
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.waitForTimeout(200);
+      await options.first().waitFor({ state: 'visible' });
       await options.nth(5).click();
-      await new Promise((resolve) => setTimeout(resolve, 100));
       await expect(options.nth(1)).toHaveClass(/selected/);
       await expect(options.nth(3)).toHaveClass(/selected/);
       await expect(options.nth(5)).not.toHaveClass(/selected/);
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -139,15 +142,14 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option selected when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(selectTrigger).toBeFocused();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify options selected by click', async () => {
-      if (browserName === 'firefox') {
-        await new Promise((resolve) => setTimeout(resolve, 200));
-      }
+      await page.waitForTimeout(300);
+
       await options.nth(5).click();
       await options.nth(1).click();
       await options.nth(3).click();
@@ -157,9 +159,9 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify items sorted and divider whoen on 2nd expand', async () => {
       await page.keyboard.press('Escape');
-      await menu.waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -177,7 +179,7 @@ test.describe('Options filtering', () => {
     await test.step('Verify first option with checkbox focused when expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await options.first().waitFor();
+      await options.first().waitFor({ state: 'visible' });
       await expect(selectTrigger).toBeFocused();
       await expect(options.nth(1)).toHaveClass(/highlighted/);
     });
@@ -232,13 +234,15 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify selecting one item changes Select all to Deselect all', async () => {
       await selectTrigger.click();
+      await options.first().waitFor({ state: 'visible' });
+
       await options.nth(3).click();
       await expect(menu).toBeVisible();
       await expect(options.nth(3)).toHaveClass(/selected/);
       await expect(text).toHaveText('Deselect all');
     });
 
-    await test.step('Verify clicking Deselect all dropd selection', async () => {
+    await test.step('Verify clicking Deselect all removes selection', async () => {
       await option.click();
       await expect(options.nth(3)).not.toHaveClass(/selected/);
       await expect(text).toHaveText('Select all');
@@ -260,11 +264,11 @@ test.describe('Options filtering', () => {
 
     await page.setContent(htmlContent);
     const { select, label, menu, options, triggerText, list, selectTrigger } =
-            getSelectLocators(page);
+      getSelectLocators(page);
 
     await test.step('Verify menu opened by trigger click', async () => {
       await select.click();
-      await options.first().waitFor();
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
     });
 

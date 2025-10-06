@@ -55,6 +55,7 @@ test.describe('Functional', () => {
     });
 
     await test.step('Verify keyboard navigation inside dialog', async () => {
+      await page.waitForTimeout(200);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -103,6 +104,7 @@ test.describe('Functional', () => {
     await test.step('Verify value applies on trigger when selecting item from select list', async () => {
       await page.keyboard.press('ArrowDown');
       await locators.apply.waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
@@ -116,14 +118,15 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await expect(locators.filterTriggerClear).toBeFocused();
       await page.getByText('Clear').waitFor({ state: 'visible' });
-      // await page.keyboard.press('Escape');  --will be uncomments after bug fix
-      // await page.getByText('Clear').waitFor({ state: 'hidden' });
+      await page.keyboard.press('Escape');
+      await page.getByText('Clear').waitFor({ state: 'hidden' });
       await page.keyboard.press('Shift+Tab');
     });
 
     await test.step('Verify Case when entering min value only', async () => {
       await page.keyboard.press('Space');
       await locators.popper.waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -139,14 +142,15 @@ test.describe('Functional', () => {
 
     await test.step('Verify trigger clears when pressing Clear', async () => {
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Escape');
       await page.keyboard.press('Enter');
       await expect(locators.filterTriggerClear).not.toBeVisible();
     });
 
     await test.step('Verify Case when entering max value only', async () => {
+      await page.waitForTimeout(100);
       await page.keyboard.press('Space');
-      await locators.popper.waitFor({ state: 'visible' });
-
+      await locators.options.first().waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(locators.textboxes.nth(1)).toBeFocused();
@@ -176,6 +180,8 @@ test.describe('Functional', () => {
       await locators.trigger.click();
       await locators.popper.waitFor({ state: 'visible' });
       await locators.options.nth(2).click();
+      await locators.popper.waitFor({ state: 'hidden' });
+
       await expect(locators.popper).toBeHidden();
       await expect(locators.trigger).toHaveText(/Volume:\s*1,001-10,000/);
       await expect(locators.filterTriggerClear).toHaveCount(1);
