@@ -311,7 +311,8 @@
     "@formatjs/intl": "3.0.4",
     "@phytonmk/nano-css": "5.3.7",
     "classnames": "2.2.6",
-    "hoist-non-react-statics": "3.3.2"
+    "hoist-non-react-statics": "3.3.2",
+    "@babel/runtime": "7.27.6"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
