@@ -1,6 +1,6 @@
-import type { DataTableSort } from '@semcore/data-table';
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
+import type { DataTableSort } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;

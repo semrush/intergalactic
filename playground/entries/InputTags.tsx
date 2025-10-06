@@ -1,6 +1,6 @@
-import CheckM from '@semcore/icon/Check/m';
-import type { InputValueProps } from '@semcore/input';
-import InputTags from '@semcore/input-tags';
+import CheckM from '@semcore/ui/icon/Check/m';
+import type { InputValueProps } from '@semcore/ui/input';
+import InputTags from '@semcore/ui/input-tags';
 import type { InputTagsProps } from 'input-tags/src/InputTags';
 import React from 'react';
 
@@ -22,7 +22,7 @@ export type InputTagsJSXProps = JSXProps<InputTagsProps & InputValueProps> & Add
 function getJSX(props: InputTagsJSXProps) {
   return (
     <InputTags size={props.size} state={props.state}>
-      <InputTags.Tag tabIndex={0} editable={props.tagProps.editable}>
+      <InputTags.Tag editable={props.tagProps.editable}>
         <InputTags.Tag.Text>
           {props.tagProps.circle && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
           {props.tagProps.before && <InputTags.Tag.Addon>{renderIcon('before', props.size)}</InputTags.Tag.Addon>}

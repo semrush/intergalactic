@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/base-components';
-import Divider from '@semcore/divider';
+import { Flex } from '@semcore/ui/base-components';
+import Divider from '@semcore/ui/divider';
 import React from 'react';
 
 const Demo = () => {

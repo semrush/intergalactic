@@ -1,6 +1,6 @@
-import { Flex } from '@semcore/flex-box';
-import Return from '@semcore/icon/Return/m';
-import Pagination from '@semcore/pagination';
+import { Flex } from '@semcore/ui/flex-box';
+import Return from '@semcore/ui/icon/Return/m';
+import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
 const Demo = () => {

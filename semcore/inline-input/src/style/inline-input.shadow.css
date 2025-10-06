@@ -29,52 +29,52 @@ SInlineInput {
   SCancelIcon:hover {
     color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   }
+
+  SValue {
+    /* hack for firefox */
+    min-width: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 0 var(--intergalactic-spacing-1x, 4px);
+    border: none;
+    box-sizing: border-box;
+    color: var(--intergalactic-text-primary, #191b23);
+    font-size: inherit;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    font-family: inherit;
+    background: transparent;
+    min-height: 1em;
+
+    &:focus, &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--intergalactic-text-placeholder, #8a8e9b);
+    }
+
+    &[disabled] {
+      user-select: none;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
 }
 
 SInlineInput[disabled] {
   cursor: default;
   pointer-events: none;
   opacity: var(--intergalactic-disabled-opacity, 0.3);
-}
-
-SValue {
-  /* hack for firefox */
-  min-width: 0;
-
-  width: 100%;
-  height: 100%;
-  padding: 0 var(--intergalactic-spacing-1x, 4px);
-  border: none;
-  box-sizing: border-box;
-  color: var(--intergalactic-text-primary, #191b23);
-  font-size: inherit;
-  line-height: 1.2;
-  text-overflow: ellipsis;
-  font-family: inherit;
-  background: transparent;
-  min-height: 1em;
-
-  &:focus {
-    outline: none;
-  }
-
-  &::placeholder {
-    color: var(--intergalactic-text-placeholder, #8a8e9b);
-  }
-
-  &[disabled] {
-    user-select: none;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  &[type='number'] {
-    -moz-appearance: textfield;
-  }
 }
 
 SUnderline {
@@ -107,7 +107,7 @@ SAddon[disabled] {
 
 SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-info-active, #006dca);
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  @mixin focus-outline-mixin;
 }
 
 SInlineInput[state='valid'] SUnderline {
@@ -116,7 +116,8 @@ SInlineInput[state='valid'] SUnderline {
 
 SInlineInput[state='valid'] SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-success-active, #007c65);
-  box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
+  @mixin focus-outline-mixin;
+  outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
 }
 
 SInlineInput[state='invalid'] SUnderline {
@@ -125,13 +126,13 @@ SInlineInput[state='invalid'] SUnderline {
 
 SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
   border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
-  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+  @mixin focus-outline-mixin;
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
 }
 
 SValue:focus~SControls {
   display: flex;
 }
-
 
 SInvalidPattern {
   margin-left: -1px;

@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/base-components';
-import Button, { ButtonLink } from '@semcore/button';
-import Counter from '@semcore/counter';
-import DnD from '@semcore/drag-and-drop';
-import DropdownMenu from '@semcore/dropdown-menu';
-import SettingsM from '@semcore/icon/Settings/m';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Counter from '@semcore/ui/counter';
+import DnD from '@semcore/ui/drag-and-drop';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import SettingsM from '@semcore/ui/icon/Settings/m';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const defeaultColumns = [
@@ -17,6 +17,7 @@ const defeaultColumns = [
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
 const Demo = () => {
+  const menuListRef = React.useRef<HTMLElement | null>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
   const [columns, setColumns] = React.useState(defeaultColumns);
   const handleDnD = React.useCallback(
@@ -48,6 +49,14 @@ const Demo = () => {
       setSelectedColumns(allColumns);
     }
   }, [selectedColumns, columns]);
+
+  const handleMenuListRef = (node: HTMLElement | null) => {
+    const scrollableContainer = node?.children.item(0);
+
+    if (scrollableContainer instanceof HTMLElement) {
+      menuListRef.current = scrollableContainer;
+    }
+  };
 
   return (
     <DropdownMenu
@@ -81,8 +90,8 @@ const Demo = () => {
             all
           </ButtonLink>
         </Flex>
-        <DropdownMenu.List hMax={800}>
-          <DnD onDnD={handleDnD} aria-label='drag-and-drop container'>
+        <DropdownMenu.List hMax={300} ref={handleMenuListRef}>
+          <DnD onDnD={handleDnD} aria-label='drag-and-drop container' scrollableContainerRef={menuListRef}>
             {columns.map((column, index) => (
               <DropdownMenu.Item
                 tag={DnD.Draggable}

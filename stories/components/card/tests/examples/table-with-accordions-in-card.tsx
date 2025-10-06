@@ -1,6 +1,8 @@
-import Card from '@semcore/card';
-import type { DataTableProps } from '@semcore/data-table';
-import { ACCORDION, DataTable } from '@semcore/data-table';
+import Card from '@semcore/ui/card';
+import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
+import type { DataTableProps } from '@semcore/ui/data-table';
+import { ACCORDION, DataTable } from '@semcore/ui/data-table';
+import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 export const tableInCardDefaultProps: TableInCardProps = {
@@ -32,6 +34,51 @@ const Demo = (props: TableInCardProps) => (
   </Card>
 );
 
+const ChartExample = () => {
+  const [[width, height], setSize] = React.useState([600, 300]);
+  const MARGIN = 40;
+  const [dataChart, setDataChart] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    const dataChart = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: (i % 10) + 1,
+      }));
+    setDataChart(dataChart);
+  }, []);
+
+  const xScale = scaleLinear()
+    .range([MARGIN, width - MARGIN])
+    .domain(minMax(dataChart, 'x'));
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 10]);
+  return (
+    <ResponsiveContainer onResize={setSize} h={200} w='100%' style={{ background: '#fff' }}>
+      <Plot
+        data={dataChart}
+        scale={[xScale, yScale]}
+        width={width}
+        height={height}
+        style={{ background: '#fff' }}
+      >
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Line x='x' y='y'>
+          <Line.Dots display />
+        </Line>
+      </Plot>
+    </ResponsiveContainer>
+  );
+};
+
 export type TableInCardProps = {
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
@@ -58,6 +105,7 @@ const data = [
         kd: '10',
         cpc: '$0.65',
         vol: '47,354,640',
+
       },
       {
         keyword: 'ebay buy',
@@ -72,6 +120,7 @@ const data = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
+    [ACCORDION]: <ChartExample />,
   },
   {
     keyword: 'ebay buy',

@@ -1,7 +1,9 @@
-import { DataTable } from '@semcore/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
+import type { AccordionWithCheckboxProps } from './examples/accordion_with_checkbox';
+import AccordionWithCheckboxExample, { accordionWithCheckboxProps } from './examples/accordion_with_checkbox';
 import AccordionWithPaginationExample, { tableInTableDefaultProps } from './examples/accordion_with_pagination';
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
@@ -32,6 +34,13 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
     loading: { control: 'boolean' },
   },
   args: accordionMergedProps,
+};
+
+export const AccordionWithCheckbox: StoryObj<AccordionWithCheckboxProps> = {
+  render: AccordionWithCheckboxExample,
+  args: {
+    ...accordionWithCheckboxProps,
+  },
 };
 
 export const AccordionWithPagination: StoryObj<TableInTableProps> = {

@@ -1,6 +1,6 @@
-import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/d3-chart';
-import type { DataTableData } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
+import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
+import type { DataTableData } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -29,16 +29,6 @@ const Demo = (props: AccordionInTableProps) => {
           ],
         },
       ]}
-      renderCell={(props) => {
-        if (props.rowIndex === 0 && props.columnName === ACCORDION) {
-          return {
-            p: 0, // set empty paddings for the first accordion
-            children: props.defaultRender(),
-          };
-        }
-
-        return props.defaultRender();
-      }}
     />
   );
 };

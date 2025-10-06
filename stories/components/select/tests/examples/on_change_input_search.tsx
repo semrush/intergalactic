@@ -1,6 +1,6 @@
-import { ScreenReaderOnly, Flex } from '@semcore/flex-box';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { ScreenReaderOnly, Flex } from '@semcore/ui/flex-box';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

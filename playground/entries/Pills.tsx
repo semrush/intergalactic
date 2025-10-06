@@ -1,5 +1,5 @@
-import type { PillsProps } from '@semcore/pills';
-import Pills from '@semcore/pills';
+import type { PillsProps } from '@semcore/ui/pills';
+import Pills from '@semcore/ui/pills';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';

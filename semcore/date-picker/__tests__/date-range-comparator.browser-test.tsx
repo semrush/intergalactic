@@ -680,21 +680,21 @@ test.describe('Date Range comparator with advanced use', () => {
 });
 
 test.describe('Date range comparator props', () => {
-  test('Verify all date range comparator props work good', async ({ page, browserName }) => {
+  test('Verify all date range comparator props work', async ({ page, browserName }) => {
     if (browserName === 'webkit') return; // skipped for webkit because of unstable focus outline on the dialog
     const standPath =
       'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
+    const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await apply.waitFor({ state: 'visible' });
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(100);
+    await apply.waitFor({ state: 'hidden' });
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await apply.waitFor({ state: 'visible' });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');

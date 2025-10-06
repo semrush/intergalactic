@@ -1,4 +1,4 @@
-import Checkbox from '@semcore/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdditionalPropsForInputExample from './examples/additional_props_for_input';

@@ -1,8 +1,9 @@
-import DnD from '@semcore/drag-and-drop';
+import DnD from '@semcore/ui/drag-and-drop';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import type { DnDCardProps } from './examples/with-cards-all-props';
 import CardsExample from './examples/with-cards-all-props';
+import WithDropdownMenuAndScrollExample from './examples/with_dropdownmenu_and_scroll';
 import TabPanelExample from './examples/with_tabpanel';
 
 const meta: Meta<typeof DnD> = {
@@ -15,6 +16,10 @@ type Story = StoryObj<typeof DnD>;
 
 export const TabPanel: Story = {
   render: TabPanelExample,
+};
+
+export const WithDropdownMenuAndScroll: Story = {
+  render: WithDropdownMenuAndScrollExample,
 };
 
 export const Cards: StoryObj<DnDCardProps> = {

@@ -1,4 +1,4 @@
-import Pills from '@semcore/pills';
+import Pills from '@semcore/ui/pills';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/basic_example';

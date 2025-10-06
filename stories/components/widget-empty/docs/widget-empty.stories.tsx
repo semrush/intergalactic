@@ -1,4 +1,4 @@
-import WidgetEmpty from '@semcore/widget-empty';
+import WidgetEmpty from '@semcore/ui/widget-empty';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { CustomExampleTest } from './__tests__/custom_example-test.test';

@@ -1,7 +1,7 @@
-import { LinkTrigger } from '@semcore/base-trigger';
-import { Box } from '@semcore/flex-box';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
+import { Box } from '@semcore/ui/flex-box';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const options = Array(6)

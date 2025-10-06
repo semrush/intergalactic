@@ -1,5 +1,5 @@
-import { Flex, ScreenReaderOnly } from '@semcore/base-components';
-import { PillsFH, BadgeFH } from '@semcore/feature-highlight';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { PillsFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import React from 'react';
 
 const Demo = () => (

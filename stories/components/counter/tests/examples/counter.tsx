@@ -1,5 +1,5 @@
-import Counter from '@semcore/counter';
-import type { CounterProps } from '@semcore/counter';
+import Counter from '@semcore/ui/counter';
+import type { CounterProps } from '@semcore/ui/counter';
 import React from 'react';
 
 const Demo = (props: CounterProps) => {

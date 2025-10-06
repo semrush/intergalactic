@@ -1,5 +1,5 @@
-import { Box } from '@semcore/base-components';
-import { DataTable } from '@semcore/data-table';
+import { Box } from '@semcore/ui/base-components';
+import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = () => {

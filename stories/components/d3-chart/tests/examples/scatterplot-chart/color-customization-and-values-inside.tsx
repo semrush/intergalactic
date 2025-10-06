@@ -1,5 +1,5 @@
-import { Plot, ScatterPlot, XAxis, YAxis } from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
+import { Plot, ScatterPlot, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

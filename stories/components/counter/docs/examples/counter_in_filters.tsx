@@ -1,7 +1,7 @@
-import { ScreenReaderOnly } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Counter, { AnimatedNumber } from '@semcore/counter';
-import Dropdown from '@semcore/dropdown';
+import { ScreenReaderOnly } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Counter, { AnimatedNumber } from '@semcore/ui/counter';
+import Dropdown from '@semcore/ui/dropdown';
 import React from 'react';
 
 const Demo = () => (

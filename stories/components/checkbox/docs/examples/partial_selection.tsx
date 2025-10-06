@@ -1,5 +1,5 @@
-import { Flex } from '@semcore/base-components';
-import Checkbox from '@semcore/checkbox';
+import { Flex } from '@semcore/ui/base-components';
+import Checkbox from '@semcore/ui/checkbox';
 import React from 'react';
 
 const Demo = () => {

@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import Skeleton from '@semcore/skeleton';
+import Button from '@semcore/ui/button';
+import Skeleton from '@semcore/ui/skeleton';
 import React from 'react';
 
 const Demo = () => {
@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <>
       <Button onClick={() => setWide(!wide)}>
-        {wide ? 'Сузить' : 'Расширить'}
+        {wide ? 'Narrow' : 'Expand'}
       </Button>
 
       <div

@@ -1,4 +1,4 @@
-import { DataTable, type DataTableSort } from '@semcore/data-table';
+import { DataTable, type DataTableSort } from '@semcore/ui/data-table';
 import React from 'react';
 
 const data = Array.from({ length: 50 }).map((_, index) => ({

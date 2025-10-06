@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import { DataTable } from '@semcore/data-table';
-import DropdownMenu from '@semcore/dropdown-menu';
-import FileExportM from '@semcore/icon/FileExport/m';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import { DataTable } from '@semcore/ui/data-table';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 import React from 'react';
 
 const extensions = ['png', 'jpeg', 'webp'];

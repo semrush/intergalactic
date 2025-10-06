@@ -1,4 +1,4 @@
-import Dot from '@semcore/dot';
+import Dot from '@semcore/ui/dot';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DotAnimationExample from './examples/example_of_dot_animation';

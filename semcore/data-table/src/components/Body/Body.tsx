@@ -98,6 +98,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       shadowVertical,
       accordionMode,
       virtualScroll,
+      limit,
       variant,
     } = this.asProps;
     const row = props.row;
@@ -142,6 +143,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       calculateAriaRowIndex: this.calculateAriaRowIndex,
       virtualScroll,
       variant,
+      limit,
+      hasGroups,
     };
   }
 

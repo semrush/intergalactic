@@ -439,6 +439,7 @@ test.describe('Color-picker', () => {
     await page.keyboard.press('Tab');
     await colorItems.first().hover();
     await expect(colorItems.first()).toBeFocused();
+    await page.getByText('Clear color').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
 

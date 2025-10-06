@@ -1,5 +1,5 @@
-import Button from '@semcore/button';
-import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
+import Button from '@semcore/ui/button';
+import { ThemeProvider } from '@semcore/ui/core/lib/utils/ThemeProvider';
 import React from 'react';
 
 const violetPrimaryControlTheme = {

@@ -1,5 +1,5 @@
-import Breadcrumbs from '@semcore/breadcrumbs';
-import Ellipsis from '@semcore/ellipsis';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+import Ellipsis from '@semcore/ui/ellipsis';
 import React from 'react';
 
 const Demo = () => (

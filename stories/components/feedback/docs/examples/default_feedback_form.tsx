@@ -1,12 +1,12 @@
-import { Box, Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
-import Dropdown from '@semcore/dropdown';
-import FeedbackForm from '@semcore/feedback-form';
-import ChatM from '@semcore/icon/Chat/m';
-import Input from '@semcore/input';
-import Link from '@semcore/link';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import Dropdown from '@semcore/ui/dropdown';
+import FeedbackForm from '@semcore/ui/feedback-form';
+import ChatM from '@semcore/ui/icon/Chat/m';
+import Input from '@semcore/ui/input';
+import Link from '@semcore/ui/link';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const validate = {
@@ -50,7 +50,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
 
   componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
     if (prevProps.status !== 'success' && this.props.status === 'success') {
-      this.ref.current?.focus();
+      this.ref.current?.parentElement?.focus();
     }
   }
 

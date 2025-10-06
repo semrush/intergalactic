@@ -1,10 +1,10 @@
-import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
-import ReloadIcon from '@semcore/icon/Reload/m';
-import Select, { InputSearch } from '@semcore/select';
-import { Text } from '@semcore/typography';
+import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/ui/base-components';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import Ellipsis from '@semcore/ui/ellipsis';
+import ReloadIcon from '@semcore/ui/icon/Reload/m';
+import Select, { InputSearch } from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const serpFeatures = [

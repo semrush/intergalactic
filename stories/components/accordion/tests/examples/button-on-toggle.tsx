@@ -1,5 +1,5 @@
-import Accordion from '@semcore/accordion';
-import Button from '@semcore/button';
+import Accordion from '@semcore/ui/accordion';
+import Button from '@semcore/ui/button';
 import React from 'react';
 
 const Demo = () => {

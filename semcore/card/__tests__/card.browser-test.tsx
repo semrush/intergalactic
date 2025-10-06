@@ -38,7 +38,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify description tooltip trigger margins', async () => {
-      await expect(descriptionTooltipTrigger).toHaveCSS('margin-top', '2px');
+      await expect(descriptionTooltipTrigger).toHaveCSS('margin-top', '4px');
       await expect(descriptionTooltipTrigger).toHaveCSS('margin-left', '4px');
       await expect(descriptionTooltipTrigger).toHaveCSS('margin-right', '4px');
     });
@@ -66,7 +66,7 @@ test.describe('Visual tests', () => {
     const standPath = 'stories/components/card/docs/examples/ellipsis.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
+    await expect(page).toHaveScreenshot();
     await page.setViewportSize({ width: 768, height: 800 });
     await expect(page).toHaveScreenshot();
   });
@@ -115,7 +115,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title hintAfter component', async () => {
-      const card = await page.locator('[data-testid="card-title-hintAfter"]');
+      const card = await page.locator('[data-testid="card-title"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -126,7 +126,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title  description content hintAfter component', async () => {
-      const card = await page.locator('[data-testid="card-title-description-hintAfter"]');
+      const card = await page.locator('[data-testid="card-title-description"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -148,7 +148,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title  description content hintAfter innterHint component', async () => {
-      const card = await page.locator('[data-testid="card-title-content-hintAfter-innerHint"]');
+      const card = await page.locator('[data-testid="card-title-content-innerHint"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -190,6 +190,18 @@ test.describe('Visual tests', () => {
 
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
+  });
+
+  test('Verify description tooltip trigger has not unnecessary margins', async ({ page }) => {
+    const standPath = 'stories/components/card/tests/examples/card_with_description_tooltip_in_body.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const descriptionTooltipTriggerCount = await descriptionTooltipTrigger.count();
+    for (let i = 0; i < descriptionTooltipTriggerCount; i++)
+      await expect(descriptionTooltipTrigger.nth(i)).toHaveCSS('margin', '0px');
   });
 });
 

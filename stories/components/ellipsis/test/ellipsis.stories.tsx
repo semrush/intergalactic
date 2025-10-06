@@ -1,5 +1,5 @@
-import type { EllipsisProps } from '@semcore/ellipsis';
-import Ellipsis from '@semcore/ellipsis';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TableWithLinksExample from './examples/in_table_with_link';

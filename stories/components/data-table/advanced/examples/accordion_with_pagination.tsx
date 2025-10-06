@@ -1,6 +1,6 @@
-import type { DataTableProps } from '@semcore/data-table';
-import { DataTable, ACCORDION } from '@semcore/data-table';
-import Pagination from '@semcore/pagination';
+import type { DataTableProps } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import Pagination from '@semcore/ui/pagination';
 import React, { useState, useRef } from 'react';
 
 export type TableInTableProps = {

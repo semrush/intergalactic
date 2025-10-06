@@ -1,6 +1,6 @@
-import { Box } from '@semcore/base-components';
-import Ellipsis from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import { Box } from '@semcore/ui/base-components';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

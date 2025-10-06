@@ -4,30 +4,6 @@ import { ScoreDonutUtils } from '../src/utils/ScoreDonutUtils';
 
 describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
-    it('Verify returns correct value for divider when value is 100', () => {
-      const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = false;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('Verify returns correct value for divider when value is 33.5', () => {
-      const scoreDonut = new ScoreDonutUtils(33.5, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = true;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('Verify returns correct value for divider when value is 0', () => {
-      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
-      const actualResult = scoreDonut.hasDivider;
-      const expectedResult = false;
-
-      expect(actualResult).toBe(expectedResult);
-    });
-
     it('Verify returns correct viewBox', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
       const actualResult = scoreDonut.viewBox;
@@ -52,112 +28,129 @@ describe('Score Donut Functions', () => {
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify calculates base stroke dash array correctly', () => {
+    const fullLength = isSemiDonut
+      ? Math.PI * 9
+      : 2 * Math.PI * 10;
+
+    const point = isSemiDonut
+      ? fullLength / (100 / 3)
+      : fullLength / 100;
+
+    it('Verify calculates fullLength correctly', () => {
       const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
-      const actualResult = scoreDonut.baseStrokeDashArray;
-      const expectedResult = isSemiDonut ? Math.PI * scoreDonut.radius : 2 * Math.PI * scoreDonut.radius;
-
-      expect(actualResult).toBeCloseTo(expectedResult);
-    });
-
-    it('Verify calculates ofset point correctly', () => {
-      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
-      const baseStroke = scoreDonut.baseStrokeDashArray;
-
-      const actualResult = scoreDonut.offsetPoint;
-      const expectedResult = isSemiDonut ? baseStroke / (100 / 3) : baseStroke / 100;
+      const actualResult = scoreDonut.fullLength;
+      const expectedResult = fullLength;
 
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify calculates value stroke dash array correctly', () => {
-      const value = 30;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
-      const baseStroke = scoreDonut.baseStrokeDashArray;
-
-      const actualResult = scoreDonut.valueStrokeDashArray;
-      const expectedResult = baseStroke * (value / 100);
-
-      expect(actualResult).toBeCloseTo(expectedResult);
-    });
-
-    it('Verify calculates grey stroke dash array correctly', () => {
-      const value = 30;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
-      const baseStroke = scoreDonut.baseStrokeDashArray;
-      const valueStroke = scoreDonut.valueStrokeDashArray;
-
-      const actualResult = scoreDonut.greyStrokeDashArray;
-      const expectedResult = baseStroke - valueStroke;
+    it('Verify calculates point correctly', () => {
+      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
+      const actualResult = scoreDonut.point;
+      const expectedResult = point;
 
       expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify returns correct strokeDashArrayParts for normal case', () => {
+    it('Verify calculates valueLength correctly for value = 30', () => {
       const value = 30;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+      const scoreDonut = new ScoreDonutUtils(30, isSemiDonut);
+      const actualResult = scoreDonut.valueLength;
+      const expectedResult = fullLength * (value / 100);
 
-      const baseStroke = scoreDonut.baseStrokeDashArray;
-      const offsetPoint = scoreDonut.offsetPoint;
-      const greyStroke = scoreDonut.greyStrokeDashArray;
-      const greyStrokeDash = greyStroke - 2 * offsetPoint;
-
-      const actualResult = scoreDonut.strokeDashArrayParts;
-      const expectedResult = `${offsetPoint} ${greyStrokeDash} ${offsetPoint} ${baseStroke}`;
-      const expectedResultSemiDonut = `${offsetPoint} ${greyStrokeDash} ${offsetPoint} ${baseStroke}`;
-
-      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
+      expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify returns correct strokeDashArrayParts for edge case where greyStrokeDash would be negative', () => {
-      const value = 98.5;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
-
-      const baseStroke = scoreDonut.baseStrokeDashArray;
-      const offsetPoint = scoreDonut.offsetPoint;
-
-      const actualResult = scoreDonut.strokeDashArrayParts;
-      const expectedResult = `${offsetPoint}  ${baseStroke}`;
-      const expectedResultSemiDonut = `${offsetPoint}  ${baseStroke}`;
-
-      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
-    });
-
-    it('Verify calculates stroke dash offset base correctly', () => {
-      const value = 50;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
-
-      const valueStroke = scoreDonut.valueStrokeDashArray;
-      const offsetPoint = scoreDonut.offsetPoint;
-
-      const actualResult = scoreDonut.strokeDashOffsetBase;
-      const expectedResult = -valueStroke;
-      const expectedResultSemiDonut = -1 * (valueStroke + offsetPoint);
-
-      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
-    });
-
-    it('Verify calculates stroke dash offset base correctly for 0 value', () => {
-      const value = 0;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
-
-      const actualResult = scoreDonut.strokeDashOffsetBase;
+    it('Verify calculates valueLength correctly for value = -1', () => {
+      const scoreDonut = new ScoreDonutUtils(-1, isSemiDonut);
+      const actualResult = scoreDonut.valueLength;
       const expectedResult = 0;
-      const expectedResultSemiDonut = 0;
 
-      expect(actualResult).toBe(isSemiDonut ? expectedResultSemiDonut : expectedResult);
+      expect(actualResult).toBe(expectedResult);
     });
 
-    it('Verify calculates stroke dash offset base correctly for given value', () => {
-      const value = 10;
-      const isSemiDonut = false;
-      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+    it('Verify calculates valueLength correctly for value = 101', () => {
+      const scoreDonut = new ScoreDonutUtils(101, isSemiDonut);
+      const actualResult = scoreDonut.valueLength;
+      const expectedResult = fullLength;
 
-      const hasDivider = scoreDonut.hasDivider;
-      const valueStroke = scoreDonut.valueStrokeDashArray;
-      const offsetPoint = scoreDonut.offsetPoint;
-      const expectedResult = hasDivider ? -1 * (valueStroke + (isSemiDonut ? offsetPoint : 0)) : 0;
-      const actualResult = scoreDonut.strokeDashOffsetBase;
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedValueLength correctly for value = 30', () => {
+      const value = 30;
+      const scoreDonut = new ScoreDonutUtils(value, isSemiDonut);
+      const actualResult = scoreDonut.animatedValueLength;
+      const expectedResult = fullLength * (value / 100);
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedValueLength correctly for value = 100', () => {
+      const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
+      const actualResult = scoreDonut.animatedValueLength;
+      const expectedResult = isSemiDonut
+        ? fullLength - point
+        : fullLength - 2 * point;
+
+      expect(actualResult).toBeCloseTo(expectedResult);
+    });
+
+    it('Verify calculates baseOffset correctly for value = 0', () => {
+      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
+      const actualResult = scoreDonut.baseOffset;
+      const expectedResult = -0;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates baseOffset correctly for value = 30', () => {
+      const scoreDonut = new ScoreDonutUtils(30, isSemiDonut);
+      const actualResult = scoreDonut.baseOffset;
+      const expectedResult = -1 * (fullLength * (30 / 100) + point);
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates baseLength correctly for value = 0', () => {
+      const scoreDonut = new ScoreDonutUtils(0, isSemiDonut);
+      const actualResult = scoreDonut.baseLength;
+      const expectedResult = fullLength;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates baseLength correctly for value = 30', () => {
+      const scoreDonut = new ScoreDonutUtils(30, isSemiDonut);
+      const actualResult = scoreDonut.baseLength;
+      const expectedResult = isSemiDonut
+        ? fullLength * 0.7 - point
+        : fullLength * 0.7 - 2 * point;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates baseLength correctly for value = 100', () => {
+      const scoreDonut = new ScoreDonutUtils(100, isSemiDonut);
+      const actualResult = scoreDonut.baseLength;
+      const expectedResult = 0;
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedBaseLengthFrom correctly for value = 30', () => {
+      const scoreDonut = new ScoreDonutUtils(30, isSemiDonut);
+      const actualResult = scoreDonut.animatedBaseLengthFrom;
+      const expectedResult = fullLength - point - (isSemiDonut ? 0 : point);
+
+      expect(actualResult).toBe(expectedResult);
+    });
+
+    it('Verify calculates animatedBaseLengthTo correctly for value = 30', () => {
+      const scoreDonut = new ScoreDonutUtils(30, isSemiDonut);
+      const actualResult = scoreDonut.animatedBaseLengthTo;
+      const expectedResult = fullLength * 0.7 - point - (isSemiDonut ? 0 : point);
+
       expect(actualResult).toBe(expectedResult);
     });
   });
