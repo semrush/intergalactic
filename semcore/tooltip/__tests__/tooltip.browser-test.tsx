@@ -441,7 +441,7 @@ test.describe('Hint - Visual', () => {
         { steps: 5 },
       );
 
-      await popper.waitFor({ state: 'visible' });
+      await page.getByText('Export to PDF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -454,7 +454,7 @@ test.describe('Hint - Visual', () => {
         { steps: 5 },
       );
 
-      await popper.waitFor({ state: 'visible' });
+      await page.getByText('You confirmed your email').waitFor({ state: 'visible' });
       await expect(popper).toHaveAttribute('aria-hidden', 'true');
       await expect(page).toHaveScreenshot();
     });
