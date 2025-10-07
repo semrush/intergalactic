@@ -18,6 +18,7 @@ test.describe('Visual', () => {
 
       const button = page.getByRole('button');
       await button.click();
+      await page.locator('[data-ui-name="SidePanel.Close"]').waitFor({ state: 'visible' });
 
       await expect(page).toHaveScreenshot();
     });
@@ -32,7 +33,7 @@ test.describe('Visual', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Close"');
+      await page.getByText('Close').waitFor({ state: 'visible' });
 
       const header = page.locator('[data-ui-name="SidePanel.Header"]');
       const body = page.locator('[data-ui-name="SidePanel.Body"]');
@@ -80,7 +81,7 @@ test.describe('Visual', () => {
       const close = page.getByLabel('Close');
       await button.click();
       await close.hover();
-      await page.waitForSelector('text="Close"');
+      await page.getByText('Close').waitFor({ state: 'visible' });
 
       await expect(page).toHaveScreenshot();
     });
@@ -95,7 +96,7 @@ test.describe('Visual', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Close"');
+      await page.getByText('Close').waitFor({ state: 'visible' });
 
       await expect(page).toHaveScreenshot();
     });
@@ -108,7 +109,7 @@ test.describe('Visual', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForSelector('text="Features"');
+    await page.getByText('Features').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -119,7 +120,7 @@ test.describe('Visual', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForSelector('text="Close"');
+    await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -130,7 +131,7 @@ test.describe('Visual', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForSelector('text="Close"');
+    await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -141,7 +142,7 @@ test.describe('Visual', () => {
     await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForSelector('text="Close"');
+    await page.getByText('Close').waitFor({ state: 'visible' });
 
     const title = page.locator('h6[data-ui-name="SidePanel.Title"]');
     const box = await title.boundingBox();
@@ -168,7 +169,7 @@ test.describe('Functional', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForSelector('text="Close"');
+    await page.getByText('Close').waitFor({ state: 'visible' });
 
     await test.step('Verify panel attributes', async () => {
       await expect(dialog).toHaveAttribute('aria-modal', 'true');
@@ -223,7 +224,6 @@ test.describe('Functional', () => {
     await page.setContent(htmlContent);
     const dialog = page.getByRole('dialog');
     const close = page.getByLabel('Close');
-    const footer = page.locator('[data-ui-name="SidePanel.Footer"]');
 
     await test.step('Verify modal can be closed by Close click', async () => {
       await page.getByRole('button').click();
@@ -259,7 +259,6 @@ test.describe('Functional', () => {
 
     await page.setContent(htmlContent);
     const dialog = page.getByRole('dialog');
-    const close = page.getByLabel('Close');
 
     await test.step('Verify modal can be closed by click outside', async () => {
       await page.getByRole('button').click();
@@ -286,7 +285,6 @@ test.describe('Functional', () => {
 
     await page.setContent(htmlContent);
     const dialog = page.getByRole('dialog');
-    const close = page.getByLabel('Close');
     const readMore = page.getByRole('button', { name: 'Read more' });
 
     await test.step('Verify modal can be closed by Escape', async () => {
