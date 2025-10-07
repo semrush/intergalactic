@@ -135,12 +135,14 @@ class HistogramChartComponent extends AbstractChart<
     const item = dataDefinitions[0];
 
     return (
-      <Bar
-        x={invertAxis ? item.id : groupKey}
-        y={invertAxis ? groupKey : item.id}
-        key={item.id}
-        color={item.color}
-      />
+      item.checked && (
+        <Bar
+          x={invertAxis ? item.id : groupKey}
+          y={invertAxis ? groupKey : item.id}
+          key={item.id}
+          color={item.color}
+        />
+      )
     );
   }
 
