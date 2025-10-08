@@ -58,49 +58,49 @@ test.describe('Feature highlight', () => {
     });
   });
 
-  test.describe('Pills', () => {
-    test('Verify Pills styles', ({ page }) => {
-      const variables = [
-        { disabled: false, size: 'm', animatedSparkleCount: 0 },
-        { disabled: false, size: 'l', animatedSparkleCount: 0 },
-        { disabled: true, size: 'm', animatedSparkleCount: 0 },
-        { disabled: true, size: 'l', animatedSparkleCount: 0 },
-      ];
+  test.describe('Pills styles', () => {
+    const variables = [
+      { disabled: false, size: 'm', animatedSparkleCount: 0 },
+      { disabled: false, size: 'l', animatedSparkleCount: 0 },
+      { disabled: true, size: 'm', animatedSparkleCount: 0 },
+      { disabled: true, size: 'l', animatedSparkleCount: 0 },
+    ];
 
-      variables.forEach((item) => {
-        test.step(`Verify Pills ${item.disabled} ${item.size}`, async () => {
-          const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-          const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    variables.forEach((item) => {
+      test(`Verify Pills ${item.disabled} ${item.size}`, async ({ page }) => {
+        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
+        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
-          await page.setContent(htmlContent);
+        await page.setContent(htmlContent);
 
-          const flex = page.locator('[data-testid="pills"]');
-          const screenshotsClip = (await flex.first().boundingBox())!;
-          screenshotsClip.x -= 4;
-          screenshotsClip.y -= 4;
-          screenshotsClip.width += 8;
-          screenshotsClip.height += 8;
+        const flex = page.locator('[data-testid="pills"]');
+        const screenshotsClip = (await flex.first().boundingBox())!;
+        screenshotsClip.x -= 4;
+        screenshotsClip.y -= 4;
+        screenshotsClip.width += 8;
+        screenshotsClip.height += 8;
 
-          const pills = page.locator('[data-ui-name="PillsFH.Item"]');
-          const isDisabled = await pills.first().getAttribute('disabled');
+        const pills = page.locator('[data-ui-name="PillsFH.Item"]');
+        const isDisabled = await pills.first().getAttribute('disabled');
 
-          if (isDisabled !== null) {
-            await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-            return;
-          } else {
-            await page.keyboard.press('Tab');
-            await page.keyboard.press('Tab');
-            await page.keyboard.press('Tab');
-            await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        if (isDisabled !== null) {
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          return;
+        } else {
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-            await page.keyboard.press('ArrowRight');
-            await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          }
-        });
+          await page.keyboard.press('ArrowRight');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        }
       });
     });
+  });
 
-    test('Verify Pills Addon logic', async ({ page }) => {
+  test.describe('Pills', () => {
+    test('Verify addon logic', async ({ page }) => {
       const standPath = 'stories/patterns/ux-patterns/feature-highlight/tests/examples/pills/pills-addon-logic.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
