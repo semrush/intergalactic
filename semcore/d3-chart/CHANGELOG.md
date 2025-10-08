@@ -7,7 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
-
+- Clicking on pattern icons in legend items with checkboxes has no effect despite interactive cursor.
 
 ## [16.2.0] - 2025-10-03
 

@@ -164,7 +164,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
-          <Box mt='2px' mr={1}>
+          <Box mt='2px' mr={1} onClick={() => onChange(!checked)}>
             <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}

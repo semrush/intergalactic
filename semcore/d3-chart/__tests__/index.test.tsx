@@ -13,6 +13,7 @@ import {
   XAxis,
   makeDataHintsContainer,
   Chart,
+  ChartLegend,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -265,6 +266,36 @@ describe('XAxis', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     },
   );
+});
+
+describe('ChartLegend', () => {
+  test.concurrent('should support pattern interactivity for shape=\'checkbox\'', () => {
+    const onChangeHandler = vi.fn();
+
+    const legendItems = [{
+      id: 'id1',
+      label: `Line 1`,
+      checked: true,
+      color: `chart-palette-order`,
+    }];
+
+    const { container } = render(
+      <ChartLegend
+        items={legendItems}
+        onChangeVisibleItem={onChangeHandler}
+        patterns
+        aria-label='Area chart legend'
+      />,
+    );
+
+    const svg = container.querySelector('svg');
+
+    expect(svg).not.toBe(null);
+
+    fireEvent.click(svg!);
+
+    expect(onChangeHandler).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('utils', () => {
