@@ -1,6 +1,5 @@
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
-import isNode from '@semcore/core/lib/utils/isNode';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Pills from '@semcore/pills';
 import React from 'react';
