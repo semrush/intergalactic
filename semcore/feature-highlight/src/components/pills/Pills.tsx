@@ -1,5 +1,6 @@
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
+import isNode from '@semcore/core/lib/utils/isNode';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Pills from '@semcore/pills';
 import React from 'react';
@@ -49,10 +50,10 @@ class HighlightedItemRoot extends Component {
 }
 
 function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: boolean } & IRootComponentProps) {
-  const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
+  const { clicked, animatedSparkleCount, Children, children } = props;
   return (
     <Root render={Pills.Item.Addon}>
-      {hasChildren
+      {isNode(children)
         ? (<Children />)
         : (
             <>
