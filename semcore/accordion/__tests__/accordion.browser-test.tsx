@@ -104,7 +104,7 @@ test.describe('@visual-extended @accordion', () => {
 
 /* =====================================================
  Functional Core — @functional-core
- Mouse and keyboard interactions with base examples, base props fucntionality, aria attributes
+ Mouse and keyboard interactions with base examples, base props functionality, aria attributes
 ===================================================== */
 
 test.describe('@functional-core @accordion', () => {
