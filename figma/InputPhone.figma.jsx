@@ -12,15 +12,10 @@ figma.connect(
   Input.Value,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252&t=HtVigJYDbVC6HcLX-11',
   {
-    example: () => (
-      <Input.Value
-        value='/* value */'
-        defaultValue='/* string */'
-        type='tel'
-        autoComplete='tel'
-        id='/* id */'
-      />
-    ),
+    props: {
+      value: figma.textContent('↳ text'),
+    },
+    example: ({ value }) => <Input.Value placeholder={value} id='/* id */' />,
   },
 );
 
@@ -42,7 +37,7 @@ figma.connect(
         invalid: 'invalid',
         valid: 'valid',
       }),
-      inputValue: figma.children('Input.Value'),
+      value: figma.children('Input.Value'),
       clearButton: figma.boolean('clear button', {
         true: (
           <Input.Addon>
@@ -56,9 +51,9 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: ({ size, state, inputValue, clearButton }) => (
+    example: ({ size, state, value, clearButton }) => (
       <Input w='/* width */' size={size} state={state}>
-        {inputValue}
+        {value}
         {clearButton}
       </Input>
     ),

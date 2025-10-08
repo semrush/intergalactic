@@ -9,12 +9,12 @@ import React from 'react';
 
 figma.connect(
   Input.Value,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252&t=HtVigJYDbVC6HcLX-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252&t=Q0bSsRErIQ7IEZAU-11',
   {
     props: {
       value: figma.textContent('↳ text'),
     },
-    example: ({ value }) => <Input.Value defaultValue='/* string */' placeholder={value} id='/* id */' />,
+    example: ({ value }) => <Input.Value placeholder={value} id='/* id */' />,
   },
 );
 
@@ -42,9 +42,7 @@ figma.connect(
       textAddon: figma.boolean('↳ textAddon', {
         true: <Input.Addon>{/* text addon */}</Input.Addon>,
       }),
-      placeholder: figma.nestedProps('Input.Value', {
-        value: figma.textContent('↳ text'),
-      }),
+      value: figma.children('Input.Value'),
       clearButton: figma.boolean('clear button', {
         true: (
           <Input.Addon>
@@ -58,10 +56,10 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: ({ size, state, addonLeft, addonRight, textAddon, placeholder, clearButton }) => (
-      <Input w='/* width */' size={size} state={state}>
+    example: ({ size, state, addonLeft, addonRight, textAddon, value, clearButton }) => (
+      <Input size={size} state={state}>
         {addonLeft}
-        <Input.Value defaultValue='/* string */' placeholder={placeholder} id='/* id */' />
+        {value}
         {textAddon}
         {addonRight}
         {clearButton}
@@ -71,7 +69,7 @@ figma.connect(
 );
 
 // Input with label
-// TODO: Move these complex examples to the separate file for mappings of all the inputs
+// TODO: Move these complex examples to the separate file for mappings of all the inputs?
 
 figma.connect(
   Input,
@@ -84,9 +82,14 @@ figma.connect(
     },
     example: ({ label, input }) => (
       <Flex direction='column' gap={2}>
-        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-          {label}
-        </Text>
+        <Flex direction='row' justifyContent='space-between'>
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        </Flex>
         {input}
       </Flex>
     ),
@@ -104,10 +107,15 @@ figma.connect(
     },
     example: ({ label, input }) => (
       <Flex direction='row' gap={6}>
-        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-          {label}
-        </Text>
-        {input}
+        <Flex direction='column' mt={/* value */}>
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        </Flex>
+          {input}
       </Flex>
     ),
   },
