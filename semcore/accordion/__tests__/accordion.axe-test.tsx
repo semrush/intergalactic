@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+
+import { loadPage } from './helper';
 
 test.describe('Accordion', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,10 +12,7 @@ test.describe('Accordion', () => {
   });
 
   test('Custom styles', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/custom_styles.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/accordion/docs/examples/custom_styles.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -25,10 +20,7 @@ test.describe('Accordion', () => {
   });
 
   test('Heading tag', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/heading_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -36,10 +28,7 @@ test.describe('Accordion', () => {
   });
 
   test('Non compact', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/non_compact.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/accordion/docs/examples/non_compact.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -47,10 +36,7 @@ test.describe('Accordion', () => {
   });
 
   test('One section opening', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/one_section_opening.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
     {
       const violations = await getAccessibilityViolations({ page });
@@ -67,11 +53,7 @@ test.describe('Accordion', () => {
   });
 
   test('SEO - with preserveNode', async ({ page }) => {
-    const standPath = 'stories/components/accordion/docs/examples/seo.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
+    await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
     {
       const violations = await getAccessibilityViolations({ page });
 
