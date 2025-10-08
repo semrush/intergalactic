@@ -59,7 +59,7 @@ test.describe('Feature highlight', () => {
   });
 
   test.describe('Pills', () => {
-    test('Verify Pills styles', () => {
+    test('Verify Pills styles', ({ page }) => {
       const variables = [
         { disabled: false, size: 'm', animatedSparkleCount: 0 },
         { disabled: false, size: 'l', animatedSparkleCount: 0 },
@@ -68,7 +68,7 @@ test.describe('Feature highlight', () => {
       ];
 
       variables.forEach((item) => {
-        test(`Verify Pills ${item.disabled} ${item.size}`, async ({ page }) => {
+        test.step(`Verify Pills ${item.disabled} ${item.size}`, async () => {
           const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
           const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 

@@ -53,7 +53,7 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
   const { clicked, animatedSparkleCount, Children, children } = props;
   return (
     <Root render={Pills.Item.Addon}>
-      {isNode(children)
+      {!isNaN(Number(children))
         ? (<Children />)
         : (
             <>
