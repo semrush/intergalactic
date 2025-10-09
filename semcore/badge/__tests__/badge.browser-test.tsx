@@ -1,12 +1,11 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
 /* =====================================================
- Visual Core — @visual-core
- Basic visual states and styles
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual-core @badge', () => {
+test.describe('@visual @badge', () => {
   const variables = [
     { bg: undefined, color: undefined },
     { bg: 'cyan', color: undefined },
@@ -19,26 +18,20 @@ test.describe('@visual-core @badge', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify bg=${item.bg} and color=${item.color}`, async ({ page }) => {
+    test(`Verify bg=${item.bg} and color=${item.color} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
   });
-});
 
-/* =====================================================
- Visual Extended — @visual-extended
- Custom styles, special examples
-===================================================== */
-test.describe('@visual-extended @badge', () => {
-  const variables = [
+  const variableswithBox = [
     { bg: undefined, color: undefined, w: 100, h: 20 },
-    { bg: 'cyan', color: undefined, m: 4 },
-    { bg: undefined, color: 'text-primary', h: 30, pt: 3 },
+    { bg: undefined, color: 'text-primary', h: 30 },
+    { bg: 'green', color: 'white', w: 200 },
   ];
 
-  variables.forEach((item) => {
-    test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h} m=${item.m} pt =${item.p}`, async ({ page }) => {
+  variableswithBox.forEach((item) => {
+    test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h} @priority-medium`, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
@@ -46,15 +39,13 @@ test.describe('@visual-extended @badge', () => {
 });
 
 /* =====================================================
- Functional Core — @functional-core
- Mouse and keyboard interactions with base/common examples, base props functionality, aria attributes
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@fucntional-core @badge', () => {
-  test('Verify no aria-hidden and not focused by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/badge/docs/examples/badge_main_types.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+test.describe('@fucntional @badge', () => {
+  test('Verify no aria-hidden and not focused @priority-high', async ({ page }) => {
+    await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
 
     const badges = page.locator('[data-ui-name="Badge"]');
     const count = await badges.count();

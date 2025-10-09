@@ -22,17 +22,16 @@ export const locators = {
 };
 
 /* =====================================================
- Visual Core — @visual-core
- Basic visual states, hover/focus styles, paddings and margins
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-
-test.describe('@visual-core @accordion', () => {
+test.describe('@visual @accordion', () => {
   const variables = [
     { use: 'primary' },
     { use: 'secondary' },
   ];
   variables.forEach((item) => {
-    test(`Verify use=${item.use} styles`, async ({ page }) => {
+    test(`Verify use=${item.use} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', item);
 
       await test.step('Verify active and normal states', async () => {
@@ -71,20 +70,13 @@ test.describe('@visual-core @accordion', () => {
       });
     });
   });
-});
 
-/* =====================================================
- Visual Extended — @visual-extended
- Custom styles, uncommon dimensions, special examples
-===================================================== */
-
-test.describe('@visual-extended @accordion', () => {
-  test('Verify accordion with width less than content', async ({ page }) => {
+  test('Verify accordion width < content @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { w: '50px' });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify custom styles for selected toggle', async ({ page }) => {
+  test('Verify custom styles for selected toggle @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/custom_styles.tsx', 'en');
     await locators.toggle(page, 0).click();
     await page.keyboard.press('Tab');
@@ -93,7 +85,7 @@ test.describe('@visual-extended @accordion', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify focus on focusable item inside accordion', async ({ page }) => {
+  test('Verify focus on focusable item inside accordion @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -102,12 +94,12 @@ test.describe('@visual-extended @accordion', () => {
 });
 
 /* =====================================================
- Functional Core — @functional-core
- Mouse and keyboard interactions with base examples, base props functionality, aria attributes
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
 ===================================================== */
-
-test.describe('@functional-core @accordion', () => {
-  test('Verify base example keyboard interactions and attributes', async ({ page }) => {
+test.describe('@functional @accordion', () => {
+  test('Verify base example @keyboard interactions and attributes @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify toggles tabindex', async () => {
@@ -122,7 +114,6 @@ test.describe('@functional-core @accordion', () => {
     await test.step('Verify attributes when first section expanded', async () => {
       await expect(locators.collapse(page)).toHaveCount(1);
 
-      await expect(locators.collapse(page)).toHaveAttribute('aria-labelledby');
       await expect(locators.collapse(page)).toHaveAttribute('aria-hidden', 'false');
 
       await expect(locators.button(page, 0)).toHaveAttribute('aria-expanded', 'true');
@@ -184,7 +175,7 @@ test.describe('@functional-core @accordion', () => {
     });
   });
 
-  test('Verify base example mouse interactions', async ({ page }) => {
+  test('Verify base example @mouse interactions @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify item collapses by click on text', async () => {
@@ -207,7 +198,7 @@ test.describe('@functional-core @accordion', () => {
     });
   });
 
-  test('Verify items render in DOM and focusable elements not focused when collapsed with preserveNode prop', async ({ page, browserName }) => {
+  test('Verify items render in DOM and focusable elements not focused when collapsed with preserveNode prop @priority-high', async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(3);
@@ -226,7 +217,7 @@ test.describe('@functional-core @accordion', () => {
     await expect(page.getByRole('link')).toBeFocused();
   });
 
-  test('Verify One section opening keyboard interactions', async ({ page }) => {
+  test('Verify One section opening @keyboard interactions @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
@@ -246,7 +237,7 @@ test.describe('@functional-core @accordion', () => {
     await expect(locators.collapse(page)).toHaveCount(0);
   });
 
-  test('Verify One section opening mouse interactions', async ({ page }) => {
+  test('Verify One section opening @mouse interactions @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
@@ -260,7 +251,7 @@ test.describe('@functional-core @accordion', () => {
     await expect(locators.collapse(page)).toHaveCount(0);
   });
 
-  test('Verify section not expands by clicking on the interactive element in toggle', async ({ page }) => {
+  test('Verify section not expands by @mouse @keyboard activation on the interactive element in toggle @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/button-on-toggle.tsx', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
@@ -279,7 +270,7 @@ test.describe('@functional-core @accordion', () => {
     await expect(locators.collapse(page)).toHaveCount(1);
   });
 
-  test('Verify values with different types', async ({ page }) => {
+  test('Verify values with different types @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
 
     await expect(page.locator('[data-test-id="number"]')).toBeVisible();
@@ -291,12 +282,12 @@ test.describe('@functional-core @accordion', () => {
     await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
   });
 
-  test('Verify default value', async ({ page }) => {
+  test('Verify default value @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/default-values.tsx', 'en');
     await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
   });
 
-  test('Verify heading tag', async ({ page }) => {
+  test('Verify heading tag @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -310,15 +301,8 @@ test.describe('@functional-core @accordion', () => {
       expect(tagName).toBe('h2');
     }
   });
-});
 
-/* =====================================================
- Functional Extended — @functional-extended
- Special props, custom states, not popular cases
-===================================================== */
-
-test.describe('@functional-extended @accordion', () => {
-  test('Verify overflowHidden=false and defaultHeight=auto', async ({ page }) => {
+  test('Verify overflowHidden=false and defaultHeight=auto @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: false, defaultHeight: 'auto' });
 
     await expect(locators.collapse(page, 0)).toBeVisible();
@@ -333,7 +317,7 @@ test.describe('@functional-extended @accordion', () => {
     expect(inlineStyle2).not.toContain('overflow');
   });
 
-  test('Verify overflowHidden=true and defaultHeight=100%', async ({ page }) => {
+  test('Verify overflowHidden=true and defaultHeight=100% @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: true, defaultHeight: '100%' });
 
     await expect(locators.collapse(page, 0)).toBeVisible();

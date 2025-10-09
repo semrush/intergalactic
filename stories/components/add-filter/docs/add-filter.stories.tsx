@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicUsageTest } from './__tests__/add_filter_basic.test';
-import { playWrapper } from '../../../../utils/playWrapper';
-import AddFilterBasicPatternExample from '../docs/examples/add-filter-basic';
+import AddFilterBasicPatternExample from './examples/add-filter-basic';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {
   title: 'Patterns/Filters/AddFilter/Documentation',

@@ -5,9 +5,18 @@ test.describe('@accordion', () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
-    const violations = await getAccessibilityViolations({ page });
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    expect(violations).toEqual([]);
+      expect(violations).toEqual([]);
+    }
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
   });
 
   test('Custom styles', async ({ page }) => {
@@ -38,6 +47,13 @@ test.describe('@accordion', () => {
     await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
     {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
