@@ -7,7 +7,7 @@ import MockingExample from './examples/mocking';
 import SimpleUseExample from './examples/simple-use';
 
 const meta: Meta<typeof Breakpoints> = {
-  title: 'Components/Breakpoints/Documentation',
+  title: 'Components/Base Components/Breakpoints/Documentation',
   component: Breakpoints,
 };
 

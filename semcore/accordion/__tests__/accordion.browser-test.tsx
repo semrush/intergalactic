@@ -330,4 +330,40 @@ test.describe('@functional @accordion', () => {
     const inlineStyle2 = await (locators.collapse(page, 0)).getAttribute('style');
     expect(inlineStyle2).toContain('overflow: clip');
   });
+
+  test('Verify accordion animation collapse props @priority-medium', async ({ page }) => {
+    await loadPage(page, 'stories/components/accordion/tests/examples/accordion-collapse-duration.tsx', 'en');
+
+    const count = await locators.toggle(page).count();
+    for (let i = 0; i < count; i++) {
+      await locators.button(page, i).click();
+      await locators.collapse(page).waitFor({ state: 'visible' });
+
+      const animationDelay = await locators.collapse(page).evaluate((el) => {
+        const style = getComputedStyle(el);
+        return style.animationDelay;
+      });
+
+      const animationDuration = await locators.collapse(page).evaluate((el) => {
+        const style = getComputedStyle(el);
+        return style.animationDuration;
+      });
+
+      if (i === 0) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0.5s');
+      } else if (i === 1) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0.5s');
+      } else if (i === 2) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0s');
+      } else if (i === 3) {
+        expect(animationDelay).toBe('0s');
+        expect(animationDuration).toBe('0.2s');
+      }
+      await locators.button(page, i).click();
+      await locators.collapse(page).waitFor({ state: 'hidden' });
+    }
+  });
 });
