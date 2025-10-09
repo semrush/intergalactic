@@ -23,7 +23,7 @@ describe('Flex', () => {
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
 
-  test.concurrent('Should support css property', async () => {
+  test.concurrent('Verify supports css property', async () => {
     const MAP_CSS = {
       reverse: {
         css: 'flex-direction',
@@ -93,7 +93,7 @@ describe('Box', () => {
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
 
-  test('Should support Box \'tag\' prop', () => {
+  test('Verify \'tag\' prop', () => {
     const { getByTestId } = render(
       <Box tag='span' data-testid='box'>
         tag
@@ -102,7 +102,7 @@ describe('Box', () => {
     expect(getByTestId('box').tagName).toBe('SPAN');
   });
 
-  test('Should support Box \'tag\' prop component', () => {
+  test('Verify \'tag\' prop component', () => {
     const Span = function (props) {
       return <span {...props} />;
     };
@@ -114,27 +114,27 @@ describe('Box', () => {
     expect(getByTestId('box').tagName).toBe('SPAN');
   });
 
-  test('Should support clear non html props', () => {
+  test('Verify clear non html props', () => {
     const { getByTestId } = render(<Box custom={true} data-testid='box' />);
     expect(getByTestId('box').getAttribute('custom')).toBeFalsy();
   });
 
-  test('Should support html props', () => {
+  test('Verify html props', () => {
     const { getByTestId } = render(<Box aria-label='Box' data-testid='box' />);
     expect(getByTestId('box').getAttribute('aria-label')).toBe('Box');
   });
 
-  test('Should support scaleIndent for calculate offset', () => {
+  test('Verify scaleIndent for calculate offset', () => {
     const { getByTestId } = render(<Box scaleIndent={10} mt={2} data-testid='box' />);
     expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
-  test('Should support display property', () => {
+  test('Verify display property', () => {
     const { getByTestId } = render(<Box display='grid' data-testid='box' />);
     expect(getByTestId('box').style.display).toBe('grid');
   });
 
-  test('Should support css property', async () => {
+  test('Verify css property', async () => {
     const MAP_CSS = {
       inline: { css: 'display', values: ['inline-block'] },
       boxSizing: { css: 'box-sizing', values: ['border-box'] },

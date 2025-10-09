@@ -4,7 +4,7 @@ import BoxExample from './examples/box';
 import FlexExample from './examples/flex';
 
 const meta: Meta = {
-  title: 'Components/FlexBox/Documentation',
+  title: 'Components/Base Components/Flex-Box/Documentation',
 };
 
 export const Flex: StoryObj = {

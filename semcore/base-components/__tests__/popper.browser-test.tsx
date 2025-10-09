@@ -3,7 +3,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Popper', () => {
   test.describe('Focus Lock', () => {
-    test('Verify Focus lock without disablePortal', async ({ page }) => {
+    test('Verify Focus lock without disablePortal @priority-high', async ({ page }) => {
       const standPath = 'stories/components/popper/tests/examples/dropdown-no-disable-portal.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -21,8 +21,8 @@ test.describe('Popper', () => {
       }
     });
 
-    test('Verify Focus lock with disablePortal', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/dropdown-disable-portal.tsx';
+    test('Verify Focus lock with disablePortal @priority-high', async ({ page }) => {
+      const standPath = 'stories/components//base-componentspopper/tests/examples/dropdown-disable-portal.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);

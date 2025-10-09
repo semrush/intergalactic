@@ -6,7 +6,7 @@ import VerticalScrollWithShadowAndOffseExample from './examples/vertical-scroll-
 import WithObserveParentSizeExample from './examples/with-observe-parent-size';
 
 const meta: Meta<typeof ScrollArea> = {
-  title: 'Components/ScrollArea/Tests',
+  title: 'Components/Base Components/ScrollArea/Tests',
   component: ScrollArea,
 };
 

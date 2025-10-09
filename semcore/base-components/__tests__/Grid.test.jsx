@@ -28,7 +28,7 @@ describe('Grid', () => {
   shouldSupportClassName(Col, Row);
   shouldSupportRef(Col, Row);
 
-  test.concurrent('Should support auto span', async ({ task }) => {
+  test.concurrent('Verify auto span', async ({ task }) => {
     const component = (
       <Row w={300}>
         <Col span>
@@ -49,7 +49,7 @@ describe('Grid', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support span number', async ({ task }) => {
+  test.concurrent('Verify span number', async ({ task }) => {
     const ColSpan = ({ span }) => (
       <Col span={span}>
         <div style={styleBox}>{span}</div>

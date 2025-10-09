@@ -7,7 +7,7 @@ import SynchronizedReverseScrollOnTwoDifferentScreensExample from './examples/sy
 import SynchronizedScrollOnTwoDifferentScreensExample from './examples/synchronized_scroll_on_two_different_screens';
 
 const meta: Meta<typeof ScrollArea> = {
-  title: 'Components/ScrollArea/Documentation',
+  title: 'Components/Base Components/ScrollArea/Documentation',
   component: ScrollArea,
 };
 

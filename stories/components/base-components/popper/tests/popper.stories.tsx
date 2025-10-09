@@ -17,7 +17,7 @@ import PageResizingExample from './examples/page-resizing';
 import SomeMorePropsExample from './examples/some-more-props-test';
 
 const meta: Meta = {
-  title: 'Components/Popper/Tests',
+  title: 'Components/Base Components/Popper/Tests',
 };
 export default meta;
 

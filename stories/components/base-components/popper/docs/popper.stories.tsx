@@ -10,7 +10,7 @@ import RenderFunctionsExample from './examples/render-functions';
 import ShowHideExample from './examples/show-hide';
 
 const meta: Meta<typeof Popper> = {
-  title: 'Components/Popper/Documentation',
+  title: 'Components/Base Components/Popper/Documentation',
   component: Popper,
 };
 

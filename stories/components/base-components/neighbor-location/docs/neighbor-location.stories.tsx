@@ -8,7 +8,7 @@ import InputAndSelectExample from './examples/grouped-input-and-select';
 import CustomComponentExample from './examples/using-a-custom-component';
 
 const meta: Meta = {
-  title: 'Components/NeighborLocation/Documentation',
+  title: 'Components/Base Components/NeighborLocation/Documentation',
 };
 
 export default meta;

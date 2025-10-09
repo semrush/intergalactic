@@ -5,7 +5,7 @@ import BoxWigthHeightExamples from './examples/flex-box-width-height-test';
 import FlexGapsExample from './examples/flex-gaps-test';
 
 const meta: Meta = {
-  title: 'Components/FlexBox/Tests',
+  title: 'Components/Base Components/Flex-Box/Tests',
 };
 
 export const FlexGaps: StoryObj = {

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import WrappingTestExample from './examples/wraping-test-combination';
 
 const meta: Meta = {
-  title: 'Components/NeighborLocation/Tests',
+  title: 'Components/Base Components/NeighborLocation/Tests',
 };
 
 export default meta;
