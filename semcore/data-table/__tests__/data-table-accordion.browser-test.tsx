@@ -1198,6 +1198,30 @@ test.describe('Accordion in table', () => {
     });
   });
 
+  test('Verify accordion with themed cells in expanded state', async ({ page }) => {
+    const standPath = 'stories/components/data-table/tests/examples/accordion-tests/colored-cells-in-accordion.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const styles = [
+      'rgb(158, 242, 201)', // success
+      'rgb(196, 229, 254)', // info
+      'rgb(230, 231, 237)', // muted
+      'rgb(255, 220, 162)', // warning
+      'rgb(255, 215, 223)', // danger
+    ];
+
+    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const cellCount = await cells.count();
+
+    for (let i = 0; i < cellCount; i++) {
+      const cell = cells.nth(i);
+      await checkStyles(cell, {
+        'background-color': styles[i],
+      });
+    }
+  });
+
   const variantCard = [
     { variant: 'card', sideIndents: undefined },
     { variant: 'default', sideIndents: 'wide' },
