@@ -1,15 +1,14 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
-test.describe('Add Filter', () => {
+test.describe('@add-filter', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/add-filter/docs/examples/add-filter-basic.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/patterns/filters/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
+      expect(violations).toEqual([]);
+    }
   });
 });

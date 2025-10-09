@@ -1,8 +1,7 @@
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
-import { loadPage } from './helper';
-
-test.describe('Accordion', () => {
+test.describe('@accordion', () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 

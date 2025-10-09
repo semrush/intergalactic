@@ -1,7 +1,6 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from '@semcore/testing-utils/playwright';
-
-import { loadPage } from './helper';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
 export const locators = {
   collapse: (page: Page, index?: number) => {
