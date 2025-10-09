@@ -10,7 +10,7 @@ figma.connect(
       value: figma.textContent('↳ text'),
     },
     example: ({ value }) => <InputTags.Value placeholder={value} id='/* id */' />,
-);
+});
 
 figma.connect(
   InputTags,
