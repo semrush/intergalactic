@@ -9,26 +9,30 @@ const messages: ParserExecutableMessages = [];
 const readFile = (filePath: string) => {
   messages.push({ level: 'INFO', message: `\n-> Parsing ${filePath}` });
 
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const templateLines = fileContent.split('\n');
+  const template = fs.readFileSync(filePath, 'utf-8');
+  const templateStrings = template.split('\n');
 
   let figmaNode = '';
   let component = '';
   const imports: string[] = [];
   let i = 0;
+  while (!templateStrings[i].includes('require(\'figma\')')) {
+    let line = templateStrings[i];
 
-  while (!templateLines[i].includes('require(\'figma\')')) {
-    const line = templateLines[i];
+    if (line.startsWith('//')) {
+      line = line.substring(2).trim();
 
-    if (line.match(/^\/\/\s*url|^\/\/\s*https/))
-      figmaNode = line.replace(/\/\/\s*(url)?:?/, '').trim();
+      const url = line.match(/https:\/\/.+/);
+      if (url)
+        figmaNode = url[0];
 
-    if (line.match(/^\/\/\s*component/))
-      component = line.replace(/\/\/\s*component:?/, '').trim();
+      const componentMatch = line.match(/^component:*\s*(.+)/);
+      if (componentMatch)
+        component = componentMatch[1];
 
-    if (line.match(/^\/\/\s*import/))
-      imports.push(line.replace(/^\/\//, '').trim());
-
+      if (line.startsWith('import'))
+        imports.push(line);
+    }
     i++;
   }
 
@@ -39,8 +43,6 @@ const readFile = (filePath: string) => {
     });
     return;
   }
-
-  const template = templateLines.slice(i).join('\n');
 
   return {
     figmaNode,
