@@ -5,11 +5,22 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 figma.connect(
+  Textarea.Value,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=53577-8724&t=I48qqNRyVr8Tdi87-11',
+  {
+    props: {
+      value: figma.textContent('↳ text'),
+    }
+  },
+);
+
+
+figma.connect(
   Textarea,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10217-100589&t=Q0bSsRErIQ7IEZAU-11',
   {
     props: {
-    placeholder: figma.nestedProps('Input.Value', {
+    placeholder: figma.nestedProps('Textarea.Value', {
         value: figma.textContent('↳ text'),
           }),
       size: figma.enum('size', {
@@ -25,7 +36,7 @@ figma.connect(
       readOnly: figma.boolean('read-only'),
       resize: figma.boolean('resize'),
     },
-    example: ({ placeholder, size, state, disabled, readOnly, resize }) => <Textarea placeholder={placeholder} size={size} state={state} disabled={disabled} readOnly={readOnly} resize={resize} />,
+    example: ({ placeholder, size, state, disabled, readOnly, resize }) => <Textarea placeholder={placeholder.value} size={size} state={state} disabled={disabled} readOnly={readOnly} resize={resize} />,
   },
 );
 

@@ -30,8 +30,10 @@ figma.connect(
       state: figma.enum('state', {
         invalid: 'invalid',
         valid: 'valid',
-        // disabled: 'disabled',
       }),
+      // disabled: figma.enum('state', {
+      //   disabled: true,
+      // }),
       // readOnly: figma.boolean('read-only'),
       addonLeft: figma.boolean('← addon', {
         true: <Input.Addon>{/* addon */}</Input.Addon>,
@@ -56,7 +58,7 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: ({ size, state, addonLeft, addonRight, textAddon, value, clearButton }) => (
+    example: ({ size, state, addonLeft, addonRight, textAddon, value, clearButton, disabled, readOnly }) => (
       <Input size={size} state={state}>
         {addonLeft}
         {value}
