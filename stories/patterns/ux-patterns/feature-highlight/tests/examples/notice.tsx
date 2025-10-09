@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/ui/base-components';
-import { ButtonFH, NoticeFH, BadgeFH } from '@semcore/ui/feature-highlight';
+import { ButtonFH, NoticeFH } from '@semcore/ui/feature-highlight';
 import MailSent from '@semcore/ui/illustration/MailSent';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
