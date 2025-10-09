@@ -65,7 +65,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
         </Flex>
         <SwitchFH size={props.size}>
           <SwitchFH.Value ml={0} disabled={props.disabled} checked={props.checked} />
-          <SwitchFH.AnimatedSparkles count={5} />
+          <SwitchFH.AnimatedSparkles count={props.animatedSparkleCount} />
           <SwitchFH.Addon>Receive updates</SwitchFH.Addon>
         </SwitchFH>
 
@@ -89,7 +89,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
                 First option
                 <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
               </RadioFH.Text>
-              <RadioFH.AnimatedSparkles count={5} />
+              <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
             </RadioFH>
             <Radio value='2' label='Second option' state={props.state} />
           </Flex>
@@ -101,7 +101,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
             First option
             <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
           </RadioFH.Text>
-          <RadioFH.AnimatedSparkles count={5} />
+          <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
         </RadioFH>
 
         <fieldset style={{ border: 'none' }}>
@@ -116,7 +116,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
                   First option
                   <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
                 </CheckboxFH.Text>
-                <CheckboxFH.AnimatedSparkles count={5} />
+                <CheckboxFH.AnimatedSparkles count={props.animatedSparkleCount} />
               </CheckboxFH>
             </List.Item>
             <List.Item p={0} size={props.size}>

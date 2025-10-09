@@ -1,25 +1,19 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('Styles', () => {
-  test('Verify Tooltip Hint and DescriptionTooltip styles', async ({ page }) => {
+test.describe('Tooltip - Visual', () => {
+  test('Verify Tooltip, Hint and DescriptionTooltip styles', async ({ page }) => {
     const standPath = 'stories/components/tooltip/tests/examples/tooltip-styles.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
     const hintPopper = page.locator('[data-ui-name="Hint.Popper"]');
-
     const tooltipPopper = page.locator('[data-ui-name="Tooltip.Popper"]');
     await tooltipPopper.nth(3).waitFor({ state: 'visible' });
-
-    await expect(page).toHaveScreenshot();
-
     const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-
-    await hintPopper.first().waitFor();
+    await hintPopper.first().waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
-
     await test.step('Verify hint popper styles', async () => {
       const count1 = await hintPopper.count();
       for (let i = 0; i < count1; i++) {
@@ -47,155 +41,37 @@ test.describe('Styles', () => {
       }
     });
   });
-});
 
-test.describe('Tooltip interactions', () => {
-  test('Verify mouse interactions with Base example', async ({ page }) => {
+  test('Verify Base example', async ({ page }) => {
     const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="Tooltip"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="Tooltip"]');
+    const triggerRect = (await trigger.first().boundingBox())!;
 
-    await test.step('Verify tooltip shown on hover', async () => {
-      const triggerRect = (await trigger.first().boundingBox())!;
+    await page.keyboard.press('Tab');
 
-      await page.mouse.move(
-        triggerRect.x + triggerRect.width / 2,
-        triggerRect.y + triggerRect.height / 2,
-        {
-          steps: 5,
-        },
-      );
-      await page.waitForSelector(
-        'text="Default tooltip contains short text explaining something about the trigger."',
-      );
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tooltip shown on mouse click', async () => {
-      await trigger.nth(1).click();
-      await page.waitForSelector(
-        'text="Default tooltip contains short text explaining something about the trigger."',
-      );
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-    });
-
-    await test.step('Verify not hide on 2nd mouse click', async () => {
-      await trigger.nth(1).click();
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-    });
+    await page.mouse.move(
+      triggerRect.x + triggerRect.width / 2,
+      triggerRect.y + triggerRect.height / 2,
+      {
+        steps: 5,
+      },
+    );
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
 
-  test('Verify keyboard interactions with Base example', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = await page.locator('[data-ui-name="Tooltip"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
-
-    await test.step('Verify tooltip shown on focus', async () => {
-      await page.keyboard.press('Tab');
-
-      await page.waitForSelector(
-        'text="Default tooltip contains short text explaining something about the trigger."',
-      );
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tooltip hide on escape', async () => {
-      await page.keyboard.press('Escape');
-      await expect(popper).not.toBeVisible();
-      await expect(popper).toHaveCount(0);
-    });
-
-    await test.step('Verify tooltip shown on next focus and not closed by space', async () => {
-      await page.keyboard.press('Tab');
-      await page.waitForSelector(
-        'text="Default tooltip contains short text explaining something about the trigger."',
-      );
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-
-      await page.keyboard.press('Space');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-    });
-  });
-
-  test('Verify keyboard interactions with Nested trigger accessibility', async ({ page }) => {
+  test('Verify Nested trigger', async ({ page }) => {
     const standPath = 'stories/components/tooltip/docs/examples/nested.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-
-    const trigger = await page.locator('[data-ui-name="Tooltip.Trigger"]');
-    const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
-
-    await test.step('Verify tooltip shown on focus', async () => {
-      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
-      await page.keyboard.press('Tab');
-
-      await page.waitForSelector('text="Hello, stranger!"');
-      await expect(buttonLink).toHaveAttribute('aria-describedby');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tooltip hide on escape', async () => {
-      await page.keyboard.press('Escape');
-      await expect(popper).not.toBeVisible();
-      await expect(popper).toHaveCount(0);
-      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
-    });
-  });
-
-  test('Verify mouse interactions with Nested trigger accessibility', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/nested.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = await page.locator('[data-ui-name="Tooltip.Trigger"]');
-    const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
-    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
-
-    await test.step('Verify tooltip shown on mouse hover', async () => {
-      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
-      await trigger.hover();
-      await page.waitForSelector('text="Hello, stranger!"');
-      await expect(buttonLink).toHaveAttribute('aria-describedby');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-    });
-
-    await test.step('Verify tooltip not close on mouse hover', async () => {
-      await trigger.click();
-      await page.waitForSelector('text="Hello, stranger!"');
-      await expect(buttonLink).toHaveAttribute('aria-describedby');
-
-      await expect(popper).toBeVisible();
-      await expect(popper).toHaveCount(1);
-    });
+    await page.keyboard.press('Tab');
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify ignore portal stacking', async ({ page }) => {
@@ -204,12 +80,11 @@ test.describe('Tooltip interactions', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="Tooltip"]');
     const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
     const button = page.locator('[data-ui-name="Button"]');
 
     await button.click();
-    await page.waitForSelector('text="Tooltip with ignoring portals stacking."');
+    await page.getByRole('tooltip').first().waitFor({ state: 'visible' });
     await expect(popper).toHaveCount(2);
     await expect(page).toHaveScreenshot();
 
@@ -226,9 +101,133 @@ test.describe('Tooltip interactions', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
-    await page.waitForSelector('text="Option 1 description"');
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+  });
+});
+
+test.describe('Tooltip - Functional', () => {
+  test('Verify mouse interactions with Base example', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.locator('[data-ui-name="Tooltip"]');
+    const tooltip = page.getByRole('tooltip');
+
+    await test.step('Verify tooltip shown on hover', async () => {
+      const triggerRect = (await trigger.first().boundingBox())!;
+
+      await page.mouse.move(
+        triggerRect.x + triggerRect.width / 2,
+        triggerRect.y + triggerRect.height / 2,
+        {
+          steps: 5,
+        },
+      );
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
+    });
+
+    await test.step('Verify tooltip shown on mouse click', async () => {
+      await trigger.nth(1).click();
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
+    });
+
+    await test.step('Verify not closed on 2nd mouse click', async () => {
+      await trigger.nth(1).click();
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
+    });
+  });
+
+  test('Verify keyboard interactions with Base example', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const tooltip = page.getByRole('tooltip');
+
+    await test.step('Verify tooltip shown on focus', async () => {
+      await page.keyboard.press('Tab');
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
+    });
+
+    await test.step('Verify tooltip closed on Escape', async () => {
+      await page.keyboard.press('Escape');
+      await tooltip.waitFor({ state: 'hidden' });
+      await expect(tooltip).toHaveCount(0);
+    });
+
+    await test.step('Verify tooltip shown on next focus and not closed by Space', async () => {
+      await page.keyboard.press('Tab');
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(tooltip).toHaveCount(1);
+      await page.keyboard.press('Space');
+      await expect(tooltip).toBeVisible();
+      await expect(tooltip).toHaveCount(1);
+    });
+  });
+
+  test('Verify keyboard interactions with Nested trigger', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/docs/examples/nested.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
+    const tooltip = page.getByRole('tooltip');
+
+    await test.step('Verify tooltip shown on focus', async () => {
+      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
+      await page.keyboard.press('Tab');
+
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(buttonLink).toHaveAttribute('aria-describedby');
+      await expect(tooltip).toHaveCount(1);
+    });
+
+    await test.step('Verify tooltip closed on Escape', async () => {
+      await page.keyboard.press('Escape');
+      await tooltip.waitFor({ state: 'hidden' });
+      await expect(tooltip).toHaveCount(0);
+      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
+    });
+  });
+
+  test('Verify mouse interactions with Nested trigger', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/docs/examples/nested.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = await page.locator('[data-ui-name="Tooltip.Trigger"]');
+    const buttonLink = page.locator('[data-ui-name="ButtonLink"]');
+    const popper = await page.locator('[data-ui-name="Tooltip.Popper"]');
+
+    await test.step('Verify tooltip shown on mouse hover', async () => {
+      await expect(buttonLink).not.toHaveAttribute('aria-describedby');
+      await trigger.hover();
+      await page.getByText('Hello, stranger!').waitFor({ state: 'visible' });
+      await expect(buttonLink).toHaveAttribute('aria-describedby');
+
+      await expect(popper).toBeVisible();
+      await expect(popper).toHaveCount(1);
+    });
+
+    await test.step('Verify tooltip not close on mouse click', async () => {
+      await trigger.click();
+      await page.getByText('Hello, stranger!').waitFor({ state: 'visible' });
+      await expect(buttonLink).toHaveAttribute('aria-describedby');
+
+      await expect(popper).toBeVisible();
+      await expect(popper).toHaveCount(1);
+    });
   });
 
   test('Verify Singleton tooltip shown by mouse interactions', async ({ page, browserName }) => {
@@ -236,27 +235,76 @@ test.describe('Tooltip interactions', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    const options = page.getByRole('option');
+    const optionsCount = await options.count();
+    const tooltip = page.getByRole('tooltip');
 
     await page.locator('[data-ui-name="Select.Trigger"]').click();
-    await page.waitForSelector('text="Option 1"');
+    await options.first().waitFor({ state: 'visible' });
+    for (let i = 0; i < optionsCount; i++) {
+      await expect(options.nth(i)).not.toHaveAttribute('aria-labelledby');
+    }
 
-    await page.locator('[data-ui-name="Select.Option"]').nth(2).hover();
-    await page.waitForSelector('text="Option 2 description"');
+    await options.nth(2).hover();
+    await tooltip.waitFor({ state: 'visible' });
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    for (let i = 0; i < optionsCount; i++) {
+      await expect(options.nth(i)).toHaveAttribute('aria-labelledby');
+    }
+    await expect(tooltip).toHaveCount(1);
   });
 });
 
-test.describe('Description tooltip', () => {
+test.describe('Description tooltip - Visual', () => {
+  test('Verify Informer ', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const linkPopper = page.locator('[data-ui-name="Link"]');
+
+    await test.step('Verify expanded popper', async () => {
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('Enter');
+      await linkPopper.waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify focus inside popper', async () => {
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Base example', async ({ page }) => {
+    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = await page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const linkPopper = page.locator('[data-ui-name="Link"]');
+
+    await test.step('Verify tooltip shown on mouse click', async () => {
+      await trigger.nth(0).click();
+      await linkPopper.waitFor({ state: 'visible' });
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+test.describe('Description tooltip - Functional', () => {
   test('Verify keyboard interactions with Informer Example', async ({ page }) => {
     const standPath = 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const popper = await page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const popper = page.getByRole('dialog');
     const linkPopper = page.locator('[data-ui-name="Link"]');
 
     await test.step('Verify tab focuses trigger but tooltip not shown', async () => {
@@ -268,8 +316,9 @@ test.describe('Description tooltip', () => {
       await expect(popper).toHaveCount(0);
     });
 
-    await test.step('Verify enter expandes popper', async () => {
+    await test.step('Verify Enter expands popper', async () => {
       await page.keyboard.press('Enter');
+      await linkPopper.waitFor({ state: 'visible' });
 
       await expect(trigger.nth(0)).not.toBeFocused();
 
@@ -279,16 +328,18 @@ test.describe('Description tooltip', () => {
       await expect(linkPopper).not.toBeFocused();
     });
 
-    await test.step('Verify escape h0des popper', async () => {
+    await test.step('Verify Escape closes popper', async () => {
       await page.keyboard.press('Escape');
+      await linkPopper.waitFor({ state: 'hidden' });
 
       await expect(trigger.nth(0)).toBeFocused();
 
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify space expands popper', async () => {
+    await test.step('Verify Space expands popper', async () => {
       await page.keyboard.press('Space');
+      await linkPopper.waitFor({ state: 'visible' });
 
       await expect(trigger.nth(0)).not.toBeFocused();
 
@@ -298,33 +349,34 @@ test.describe('Description tooltip', () => {
       await expect(linkPopper).not.toBeFocused();
     });
 
-    await test.step('Verify tab switches focus indide the popper', async () => {
+    await test.step('Verify Tab switches focus indide the popper', async () => {
       await page.keyboard.press('Tab');
       await expect(popper).not.toBeFocused();
       await expect(linkPopper).toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify escape closes popper when link focused', async () => {
+    await test.step('Verify Escape closes popper when link focused', async () => {
       await page.keyboard.press('Escape');
+      await linkPopper.waitFor({ state: 'hidden' });
+
       await expect(trigger.nth(0)).toBeFocused();
 
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify tabs close popper', async () => {
+    await test.step('Verify Tab closes popper', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="peregrine falcon"');
+      await linkPopper.waitFor({ state: 'visible' });
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await linkPopper.waitFor({ state: 'hidden' });
 
       await expect(trigger.nth(0)).toBeFocused();
-
       await expect(popper).not.toBeVisible();
     });
 
-    await test.step('Verify tabs switch focus to next trigger popper', async () => {
+    await test.step('Verify Tab switch focus to next trigger', async () => {
       await page.keyboard.press('Tab');
 
       await expect(trigger.nth(1)).toBeFocused();
@@ -332,14 +384,14 @@ test.describe('Description tooltip', () => {
     });
   });
 
-  test('Verify mouse interactions with Description tooltip Base example', async ({ page }) => {
+  test('Verify mouse interactions with Base example', async ({ page }) => {
     const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const popper = await page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
+    const trigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    const popper = page.getByRole('dialog');
 
     const linkPopper = page.locator('[data-ui-name="Link"]');
 
@@ -358,28 +410,29 @@ test.describe('Description tooltip', () => {
 
     await test.step('Verify tooltip shown on mouse click', async () => {
       await trigger.nth(0).click();
-      await page.waitForSelector('text="peregrine falcon"');
+      await linkPopper.waitFor({ state: 'visible' });
 
       await expect(popper).toBeVisible();
       await expect(popper).toHaveCount(1);
     });
 
-    await test.step('Verify tooltip close on 2nd click', async () => {
+    await test.step('Verify tooltip closed on 2nd click', async () => {
       await trigger.nth(0).click();
       await expect(popper).not.toBeVisible();
     });
   });
 });
 
-test.describe('Hint', () => {
-  test('Verify mouse interactions with Hint Base example', async ({ page }) => {
+test.describe('Hint - Visual', () => {
+  test('Verify mouse interactions with Base example', async ({ page }) => {
     const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const trigger = await page.locator('[data-ui-name="Hint"]');
+    const trigger = page.locator('[data-ui-name="Hint"]');
+    const popper = page.locator('[data-ui-name="Hint.Popper"]');
 
-    await test.step('Verify tooltip shown on hover of interactive element', async () => {
+    await test.step('Verify tooltip shown on hover interactive element', async () => {
       const triggerRect = (await trigger.nth(0).boundingBox())!;
 
       await page.mouse.move(
@@ -388,11 +441,11 @@ test.describe('Hint', () => {
         { steps: 5 },
       );
 
-      await page.waitForSelector('text="Export to PDF"');
+      await page.getByText('Export to PDF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify tooltip shown on hover of non-interactive element', async () => {
+    await test.step('Verify tooltip shown on hover non-interactive element', async () => {
       const triggerRect = (await trigger.nth(1).boundingBox())!;
 
       await page.mouse.move(
@@ -401,31 +454,38 @@ test.describe('Hint', () => {
         { steps: 5 },
       );
 
-      await page.waitForSelector('text="You confirmed your email"');
+      await page.getByText('You confirmed your email').waitFor({ state: 'visible' });
+      await expect(popper).toHaveAttribute('aria-hidden', 'true');
       await expect(page).toHaveScreenshot();
     });
   });
+});
 
-  test('Verify keyboard interactions with Hint Base example', async ({ page }) => {
+test.describe('Hint - Functional', () => {
+  test('Verify keyboard interactions with Base example', async ({ page }) => {
     const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const trigger = await page.locator('[data-ui-name="Hint"]');
+    const trigger = page.locator('[data-ui-name="Hint"]');
+    const popper = page.locator('[data-ui-name="Hint.Popper"]');
 
     await test.step('Verify tooltip shown on Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(trigger.nth(0)).toBeFocused();
-      await page.waitForSelector('text="Export to PDF"');
-      await expect(page).toHaveScreenshot();
+      await expect(popper).toHaveCount(1);
+      await expect(popper).toHaveAttribute('aria-hidden', 'true');
     });
 
-    await test.step('Verify tooltip shown after Escape and Tab again', async () => {
+    await test.step('Verify non interactive not focused by Tab', async () => {
       await page.keyboard.press('Escape');
+      await expect(popper).toHaveCount(0);
+
       await page.keyboard.press('Tab');
       await expect(trigger.nth(1)).not.toBeFocused();
+      await expect(popper).toHaveCount(0);
     });
   });
 });

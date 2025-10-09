@@ -1,7 +1,7 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('Checkbox states and styles', () => {
+test.describe('Visual', () => {
   test('Verify all checkbox states', async ({ page }) => {
     const standPath = 'stories/components/checkbox/tests/examples/states.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -114,9 +114,71 @@ test.describe('Checkbox states and styles', () => {
       );
     });
   });
+
+  test('Verify Partial selection mouse interactions', async ({ page }) => {
+    const standPath = 'stories/components/checkbox/docs/examples/partial_selection.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const checkboxText = page.locator('[data-ui-name="Checkbox.Text"]');
+    const valueCheckmark = page.locator('[data-ui-name="Value.CheckMark"]');
+
+    await test.step('Verify indeterminate state', async () => {
+      await valueCheckmark.first().click();
+      await checkboxText.nth(2).click();
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Partial selection keyboard interactions', async ({ page }) => {
+    const standPath = 'stories/components/checkbox/docs/examples/partial_selection.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await test.step('Verify group gets indeterminate when one item checked', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Checkbox with onther elements keyboard interactions', async ({ page }) => {
+    const standPath =
+      'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await test.step('Verify Focusable element focused after checkbox', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+    });
+
+    await test.step('Verify interactions with Focusable element not check checkbox', async () => {
+      await page.keyboard.press('Space');
+
+      await page.keyboard.press('Escape');
+    });
+
+    await test.step('Verify focus on 2nd checkbox by tab', async () => {
+      await page.keyboard.press('Tab');
+    });
+
+    await test.step('Verify focus on prev by shift+tab', async () => {
+      await page.keyboard.press('Shift+Tab');
+    });
+
+    await test.step('Verify focus on element after 2nd checkbox', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
-test.describe('Checkbox interactions', () => {
+test.describe('Fucntional', () => {
   test('Verify Checkbox group mouse interactions', async ({ page }) => {
     const standPath = 'stories/components/checkbox/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -287,8 +349,6 @@ test.describe('Checkbox interactions', () => {
       await expect(checkbox.nth(2)).not.toHaveClass(/checked/);
       await expect(checkboxValue.nth(2)).not.toHaveClass(/checked/);
       await expect(valueCheckmark.nth(2)).not.toHaveClass(/checked/);
-
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -336,7 +396,6 @@ test.describe('Checkbox interactions', () => {
       await expect(checkbox.nth(2)).toHaveClass(/checked/);
       await expect(checkboxValue.nth(2)).toHaveClass(/checked/);
       await expect(valueCheckmark.nth(2)).toHaveClass(/checked/);
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
@@ -364,8 +423,6 @@ test.describe('Checkbox interactions', () => {
       await expect(checkbox.nth(1)).not.toHaveClass(/checked/);
       await expect(checkboxValue.nth(1)).not.toHaveClass(/checked/);
       await expect(valueCheckmark.nth(1)).not.toHaveClass(/checked/);
-
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -378,8 +435,6 @@ test.describe('Checkbox interactions', () => {
     const checkboxValue = page.locator('[data-ui-name="Checkbox.Value"]');
     const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
     const link = page.locator('[data-ui-name="Link"]');
-
-    const checkbox = page.locator('[data-ui-name="Checkbox"]');
 
     await test.step('Verify Focusable element focused after checkbox', async () => {
       await page.keyboard.press('Tab');
@@ -415,8 +470,6 @@ test.describe('Checkbox interactions', () => {
       await page.keyboard.press('Tab');
       await expect(checkboxValue.nth(1)).not.toBeFocused();
       await expect(link).toBeFocused();
-
-      await expect(page).toHaveScreenshot();
     });
   });
 
