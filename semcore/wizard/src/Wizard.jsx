@@ -2,7 +2,7 @@ import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import findComponent from '@semcore/core/lib/utils/findComponent';
+import findComponent, { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { ScreenReaderOnly, Box } from '@semcore/flex-box';
@@ -47,7 +47,7 @@ class WizardRoot extends Component {
   getContentProps() {
     const { Children } = this.asProps;
 
-    const Sidebar = findComponent(Children, ['Wizard.Sidebar']);
+    const Sidebar = findAllComponents(Children, ['Wizard.Sidebar']);
 
     return {
       uid: this.asProps.uid,
