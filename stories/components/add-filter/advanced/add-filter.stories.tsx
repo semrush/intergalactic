@@ -5,7 +5,7 @@ import AddFilterComplexSelectsExample from './examples/add-filter-complex-select
 import ControlledAddFilterExample from './examples/controlled_add_filter';
 
 const meta: Meta = {
-  title: 'Patterns/Filters/AddFilter/Advanced',
+  title: 'Components/AddFilter/Advanced',
 };
 
 export default meta;

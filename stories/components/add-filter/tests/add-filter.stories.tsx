@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import ControlledByButtonExample from './examples/controlled-by-button';
 
 const meta: Meta = {
-  title: 'Patterns/Filters/AddFilter/Tests',
+  title: 'Components/AddFilter/Tests',
 };
 
 export default meta;

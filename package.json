@@ -17,7 +17,7 @@
     "browser-test": "pnpm playwright test --config playwright.browser.config.ts",
     "browser-test:docker": "pnpm run-in-docker pnpm install-n-browser-test",
     "browser-visual-test:docker": "TEST_TAG=@visual pnpm run-in-docker pnpm install-n-browser-test",
-    "browser-fucntional-test:docker": "TEST_TAG=@fucntional pnpm run-in-docker pnpm install-n-browser-test",
+    "browser-functional-test:docker": "TEST_TAG=@functional pnpm run-in-docker pnpm install-n-browser-test",
     "axe-test": "pnpm playwright test --config playwright.axe.config.ts",
     "axe-test:docker": "pnpm run-in-docker pnpm install-n-axe-test",
     "test:types": "vitest typecheck",

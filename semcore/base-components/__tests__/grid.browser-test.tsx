@@ -1,6 +1,10 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
+/* =====================================================
+@visual
+Visual states, paddings, margins, and snapshots.
+===================================================== */
 test.describe('@visual @grid', () => {
   const sizes = [{ width: 320 }, { width: 768 }, { width: 1200 }];
 

@@ -8,7 +8,7 @@ import ResponsiveExample from './examples/responsive';
 import ResponsiveAlternativeApiExample from './examples/responsive-alternative-api';
 
 const meta: Meta = {
-  title: 'Components/Grid/Documentation',
+  title: 'Components/Base Components/Grid/Documentation',
 };
 
 export const AutomaticColumnSizeDetection: StoryObj = {

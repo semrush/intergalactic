@@ -14,6 +14,7 @@ import LabelWrappedDisablePortalExample from './examples/label-wrapped-disable-p
 import MultipleFocusabledInTriggerExample from './examples/multiple-focusables-in-trigger';
 import offSetExample from './examples/offSet';
 import PageResizingExample from './examples/page-resizing';
+import PlacementExample from './examples/placement';
 import SomeMorePropsExample from './examples/some-more-props-test';
 
 const meta: Meta = {
@@ -27,6 +28,10 @@ export const offSet: StoryObj = {
 
 export const disableEnforceFocus: StoryObj = {
   render: disableEnforceFocusExample,
+};
+
+export const Placement: StoryObj = {
+  render: PlacementExample,
 };
 
 export const SomeMoreProps: StoryObj = {

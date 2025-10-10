@@ -5,7 +5,7 @@ import AddFilterBasicPatternExample from './examples/add-filter-basic';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {
-  title: 'Patterns/Filters/AddFilter/Documentation',
+  title: 'Components/AddFilter/Documentation',
 };
 
 export default meta;

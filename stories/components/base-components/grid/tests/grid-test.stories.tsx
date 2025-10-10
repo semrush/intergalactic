@@ -4,7 +4,7 @@ import AutoSpanExample from './examples/auto-span';
 import SpanNumberExample from './examples/span-number';
 
 const meta: Meta = {
-  title: 'Components/Grid/Tests',
+  title: 'Components/Base Components/Grid/Tests',
 };
 
 export const SpanNumber: StoryObj = {

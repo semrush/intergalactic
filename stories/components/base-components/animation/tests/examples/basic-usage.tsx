@@ -24,7 +24,7 @@ const Demo = (props: AnimationProps) => {
       </Flex>
 
       <Flex columnGap={2} scaleIndent={10} pb={4}>
-        <div>Fade In out cases</div>
+        <div>FadeInOut cases</div>
         <FadeInOut
           visible={props.visible}
           duration={props.duration}
@@ -33,7 +33,7 @@ const Demo = (props: AnimationProps) => {
           timingFunction={props.timingFunction}
           keyframes={[stylePopper.enter, stylePopper.exit]}
         >
-          <Button>Fade In Out</Button>
+          <Button>FadeInOut</Button>
         </FadeInOut>
       </Flex>
 
