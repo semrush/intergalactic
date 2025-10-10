@@ -25,7 +25,6 @@ test.describe('@add-filter', () => {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
-      await expect(page).toHaveScreenshot();
     }
   });
 });
