@@ -292,7 +292,7 @@ describe('ChartLegend', () => {
 
     expect(svg).not.toBe(null);
 
-    fireEvent.click(svg!);
+    userEvent.click(svg!);
 
     expect(onChangeHandler).toHaveBeenCalledTimes(1);
   });
