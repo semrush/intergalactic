@@ -1,5 +1,6 @@
-import { Hint } from '@semcore/base-components';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { expect, test } from '@semcore/testing-utils/vitest';
+import { Hint } from '@semcore/ui/base-components';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import React, { useRef } from 'react';
 
