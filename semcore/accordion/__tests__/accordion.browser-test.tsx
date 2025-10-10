@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@playwright/test';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
 export const locators = {
