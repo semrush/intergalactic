@@ -5,7 +5,7 @@ import MultipleUseExample from './examples/multiple-use';
 import UseEllipsisHookExample from './examples/use-ellipsis-hook';
 
 const meta: Meta = {
-  title: 'Components/Base-Components/Ellipsis/Docs',
+  title: 'Components/Base Components/Ellipsis/Docs',
 };
 
 export const BasicUsage: StoryObj = {

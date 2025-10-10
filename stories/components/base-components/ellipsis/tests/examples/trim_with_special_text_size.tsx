@@ -1,7 +1,7 @@
-import type { EllipsisSettings } from '@semcore/base-components';
-import type BoxProps from '@semcore/flex-box';
-import type TextProps from '@semcore/typography';
-import { Text } from '@semcore/typography';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/flex-box';
+import type { TextProps } from '@semcore/ui/typography';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TextExampleProps = {

@@ -1,7 +1,7 @@
 import { Flex } from '@semcore/ui/flex-box';
 import VideoListL from '@semcore/ui/icon/VideoList/l';
 import Link from '@semcore/ui/link';
-import { Text } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

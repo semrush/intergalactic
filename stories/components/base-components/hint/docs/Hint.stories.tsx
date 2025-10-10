@@ -5,7 +5,7 @@ import PlacementExample from './examples/placement';
 import TimeoutExample from './examples/timeout';
 
 const meta: Meta = {
-  title: 'Components/Base-Components/Hint/Docs',
+  title: 'Components/Base Components/Hint/Docs',
 };
 
 export const BasicUsage: StoryObj = {

@@ -9,7 +9,7 @@ const Demo = () => {
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[ButtonTrigger, 'h1']}>
           <ButtonTrigger.Text w={150} tag={[Text, 'h2']} size={400} ellipsis={{ trim: 'middle' }}>
-            Dat First List
+            Few Tags Tags Tags
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />

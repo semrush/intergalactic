@@ -1,5 +1,5 @@
-import type { EllipsisSettings } from '@semcore/base-components';
-import Link from '@semcore/link';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 type Linkrops = {

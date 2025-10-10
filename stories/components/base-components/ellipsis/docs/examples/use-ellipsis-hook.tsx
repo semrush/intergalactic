@@ -1,4 +1,4 @@
-import { useEllipsis, Box, Hint } from '@semcore/base-components';
+import { useEllipsis, Box, Hint } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {

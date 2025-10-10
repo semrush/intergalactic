@@ -93,8 +93,9 @@ test.describe('Base-trigger', () => {
       expect(tagNameText).toBe('h2');
 
       await button.nth(1).hover();
-      await page.getByRole('tooltip').waitFor({ state: 'visible' });
-      await expect(page.getByRole('tooltip')).toHaveCount(1);
+      await page.locator('div[class*="HintPopper"]').waitFor({ state: 'visible' });
+      await expect(page.locator('div[class*="HintPopper"]')).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
     });
   });
 

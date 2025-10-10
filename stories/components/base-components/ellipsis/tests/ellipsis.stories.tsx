@@ -1,14 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import TableLinkExample from './examples/in_table_with_link';
 import LinkExample, { defaultProps as LinkExampleProps } from './examples/link_with_ellipsis';
 import TextExample from './examples/text_cases';
 import TrimWithTextSizeExample, { defaultProps as TextSizeExampleProps } from './examples/trim_with_special_text_size';
 
 const meta: Meta = {
-  title: 'Components/Base-Components/Ellipsis/Tests',
+  title: 'Components/Base Components/Ellipsis/Tests',
 };
 
 export default meta;
+
+export const TableLink: StoryObj = {
+  render: TableLinkExample,
+};
 
 export const Link: StoryObj<typeof LinkExampleProps> = {
   render: LinkExample,

@@ -108,6 +108,11 @@ test.describe('Link-trigger', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en');
       await page.setContent(htmlContent);
       await expect(page).toHaveScreenshot();
+
+      const button = page.getByRole('button');
+      await button.nth(1).hover();
+      await page.locator('div[class*="HintPopper"]').waitFor({ state: 'visible' });
+      await expect(page.locator('div[class*="HintPopper"]')).toHaveCount(1);
     });
   });
 

@@ -1,6 +1,6 @@
-import { DataTable } from '@semcore/data-table';
-import { useResizeObserver } from '@semcore/ellipsis';
-import { Text } from '@semcore/typography';
+import { DataTable } from '@semcore/ui/data-table';
+import { useResizeObserver } from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

@@ -1,6 +1,5 @@
 import { useResizeObserver } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
@@ -38,15 +37,15 @@ const Demo = () => {
               wMin={0}
               style={{ display: 'inline-flex', alignItems: 'center' }}
             >
-              <Link.Text wMin={0} tag={Text}>
-                <Ellipsis
-                  trim='middle'
-                  onVisibleChange={() => alert('Hi!')}
-                  containerRect={containerRect}
-                  containerRef={containerRef}
-                >
-                  {removeProtocol(pageUrl)}
-                </Ellipsis>
+              <Link.Text wMin={0} tag={Text} ellipsis={{ trim: 'middle' }}>
+                {/* <Ellipsis */}
+                {/*  trim='middle' */}
+                {/*  // onVisibleChange={() => alert('Hi!')} */}
+                {/*  containerRect={containerRect} */}
+                {/*  containerRef={containerRef} */}
+                {/* > */}
+                {removeProtocol(pageUrl)}
+                {/* </Ellipsis> */}
               </Link.Text>
               <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
             </Link>

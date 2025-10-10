@@ -19,7 +19,7 @@ test.describe('Button-trigger', () => {
           'rgb(255, 255, 255)',
         );
       });
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
+      const button = page.locator('[data-test-id="normal-state-trigger"]');
       await button.hover();
       await expect(page).toHaveScreenshot();
 
@@ -129,8 +129,9 @@ test.describe('Button-trigger', () => {
       expect(tagNameText).toBe('h2');
 
       await button.nth(1).hover();
-      await page.getByRole('tooltip').waitFor({ state: 'visible' });
-      await expect(page.getByRole('tooltip')).toHaveCount(1);
+      await page.locator('div[class*="HintPopper"]').waitFor({ state: 'visible' });
+      await expect(page.locator('div[class*="HintPopper"]')).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
     });
   });
 
