@@ -1,8 +1,9 @@
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import type { IRootComponentProps, Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import findComponent, { findAllComponents } from '@semcore/core/lib/utils/findComponent';
+import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { ScreenReaderOnly, Box } from '@semcore/flex-box';
@@ -14,11 +15,21 @@ import React from 'react';
 
 import style from './style/wizard.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import type {
+  WizardStep,
+  WizardProps,
+  WizardStepProps,
+  WizardStepperProps,
+  WizardSidebarProps,
+  WizardContentProps,
+  IntergalacticWizardStepperComponent,
+  WizardType, WizardStepBackProps, WizardStepNextProps,
+} from './Wizard.types';
 
-class WizardRoot extends Component {
+class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhance> {
   static displayName = 'Wizard';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
   static defaultProps = {
     step: null,
     i18n: localizedMessages,
@@ -26,34 +37,56 @@ class WizardRoot extends Component {
   };
 
   _steps = new Map();
-  modalRef = React.createRef();
-  contentRef = React.createRef();
+  modalRef = React.createRef<HTMLElement>();
+  contentRef = React.createRef<HTMLElement>();
   state = { highlighted: null };
 
-  getStepProps(props) {
+  stepperRefs: Array<HTMLElement | null> = [];
+
+  getStepId(step: WizardStep): string {
+    return `${this.asProps.uid}-step-${step}`;
+  }
+
+  getId(): string {
+    return `${this.asProps.uid}-title`;
+  }
+
+  getStepperId(step: WizardStep): string {
+    const { uid } = this.asProps;
+
+    return `${uid}-stepper-${step}`;
+  }
+
+  getContentId(step: WizardStep): string {
+    const { uid } = this.asProps;
+
+    return `${uid}-content-${step}`;
+  }
+
+  getStepProps(props: WizardStepProps) {
     return {
       steps: this._steps,
       active: props.step === this.asProps.step,
-      id: `${this.asProps.uid}-step-${props.step}`,
+      id: this.getStepId(props.step),
     };
   }
 
   getSidebarProps() {
     return {
-      uid: this.asProps.uid,
+      id: this.getId(),
     };
   }
 
   getContentProps() {
-    const { Children } = this.asProps;
+    const { Children, step } = this.asProps;
 
-    const Sidebar = findAllComponents(Children, ['Wizard.Sidebar']);
+    const Sidebar = findComponent(Children, ['Wizard.Sidebar'], true);
 
     return {
-      uid: this.asProps.uid,
-      step: this.asProps.step,
       ref: this.contentRef,
       noSidebar: !Sidebar,
+      ['aria-labelledby']: this.getStepperId(step),
+      id: this.getContentId(step),
     };
   }
 
@@ -71,8 +104,7 @@ class WizardRoot extends Component {
     };
   }
 
-  stepperRefs = [];
-  stepperFocusPrev = (i) => () => {
+  stepperFocusPrev = (i: number) => () => {
     const prevStep = this._steps.get(i);
     if (!prevStep) return;
     this.setState({ highlighted: prevStep?.step });
@@ -81,7 +113,7 @@ class WizardRoot extends Component {
     }, 0);
   };
 
-  stepperFocusNext = (i) => () => {
+  stepperFocusNext = (i: number) => () => {
     const nextStep = this._steps.get(i + 2);
     if (!nextStep) return;
     this.setState({ highlighted: nextStep?.step });
@@ -90,7 +122,7 @@ class WizardRoot extends Component {
     }, 0);
   };
 
-  getStepperProps(props, i) {
+  getStepperProps(props: WizardStepperProps, i: number) {
     let number = i + 1;
     if (this._steps.has(props.step)) {
       const step = this._steps.get(props.step);
@@ -101,32 +133,40 @@ class WizardRoot extends Component {
     const active = props.step === this.asProps.step;
     const highlighted =
       this.state.highlighted === props.step || (this.state.highlighted === null && i === 0);
+
     return {
       active,
-      tabIndex: highlighted ? 0 : -1,
+      'tabIndex': highlighted ? 0 : -1,
       number,
-      getI18nText: this.asProps.getI18nText,
-      uid: this.asProps.uid,
-      ref: (node) => {
+      'getI18nText': this.asProps.getI18nText,
+      'uid': this.asProps.uid,
+      'ref': (node: HTMLElement | null) => {
         this.stepperRefs[i] = node;
       },
-      focusNext: this.stepperFocusNext(i),
-      focusPrev: this.stepperFocusPrev(i),
+      'focusNext': this.stepperFocusNext(i),
+      'focusPrev': this.stepperFocusPrev(i),
+
+      'id': this.getStepperId(props.step),
+      'aria-controls': active ? this.getContentId(props.step) : undefined,
+      'aria-disabled': props.disabled,
+      'aria-selected': active,
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: WizardProps) {
     if (prevProps.step === this.asProps.step) return;
     this.setState({ highlighted: this.asProps.step || null });
     setTimeout(() => {
       if (prevProps.step === this.asProps.step) return;
-      setFocus(this.contentRef.current);
+      if (this.contentRef.current) {
+        setFocus(this.contentRef.current);
+      }
     }, 1);
   }
 
   render() {
     const SWizard = this.Root;
-    const { Children, styles, uid } = this.asProps;
+    const { Children, styles } = this.asProps;
 
     this._steps.clear();
 
@@ -135,7 +175,7 @@ class WizardRoot extends Component {
         render={Modal}
         aria-label={undefined}
         ref={this.modalRef}
-        aria-labelledby={`${uid}-title`}
+        aria-labelledby={this.getId()}
       >
         <Children />
       </SWizard>,
@@ -143,15 +183,15 @@ class WizardRoot extends Component {
   }
 }
 
-function Sidebar(props) {
-  const { Children, styles, title, uid } = props;
+function Sidebar(props: WizardSidebarProps & IRootComponentProps) {
+  const { Children, styles, title, id } = props;
   const SSidebar = Root;
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
 
   return sstyled(styles)(
-    <SSidebar render={Box} __excludeProps={['title']}>
-      {title && <SSidebarHeader id={`${uid}-title`}>{title}</SSidebarHeader>}
+    <SSidebar render={Box} __excludeProps={['title', 'id']}>
+      {title && <SSidebarHeader id={id}>{title}</SSidebarHeader>}
       <SSidebarMenu role='tablist' aria-orientation='vertical'>
         <Children />
       </SSidebarMenu>
@@ -159,7 +199,7 @@ function Sidebar(props) {
   );
 }
 
-function Step(props) {
+function Step(props: IRootComponentProps & WizardStepProps) {
   const SStep = Root;
   const { Children, styles, active } = props;
   if (active) {
@@ -172,18 +212,15 @@ function Step(props) {
   return null;
 }
 
-function Stepper(props) {
+function Stepper(props: WizardStepperProps & IRootComponentProps) {
   const {
     Children,
     styles,
     step,
-    active,
     onActive,
     completed,
-    disabled,
     number,
     getI18nText,
-    uid,
     focusNext,
     focusPrev,
   } = props;
@@ -193,14 +230,14 @@ function Stepper(props) {
   const SCompleted = CheckM;
 
   const handlerClick = React.useCallback(
-    (e) => {
+    (e: React.SyntheticEvent<HTMLElement>) => {
       if (onActive) onActive(step, e);
     },
     [step, onActive],
   );
 
   const handlerKeyDown = React.useCallback(
-    (e) => {
+    (e: React.KeyboardEvent) => {
       if (onActive && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         onActive(step, e);
@@ -221,10 +258,6 @@ function Stepper(props) {
     <SStepper
       render={Box}
       role='tab'
-      id={`${uid}-stepper-${step}`}
-      aria-controls={active ? `${uid}-content-${step}` : undefined}
-      aria-disabled={disabled}
-      aria-selected={active}
       onClick={handlerClick}
       onKeyDown={handlerKeyDown}
     >
@@ -239,22 +272,20 @@ function Stepper(props) {
 
 Stepper.enhance = [keyboardFocusEnhance()];
 
-function Content(props) {
-  const { Children, children: hasChildren, styles, uid, step } = props;
+function Content(props: WizardContentProps & IRootComponentProps) {
+  const { Children, styles } = props;
   const SContent = Root;
   return sstyled(styles)(
     <SContent
       render={Box}
       role='tabpanel'
-      aria-labelledby={`${uid}-stepper-${step}`}
-      id={`${uid}-content-${step}`}
     >
-      {hasChildren ? <Children /> : stepName}
+      <Children />
     </SContent>,
   );
 }
 
-function StepBack(props) {
+function StepBack(props: WizardStepBackProps & IRootComponentProps) {
   const SStepBack = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
@@ -275,7 +306,7 @@ function StepBack(props) {
     </SStepBack>,
   );
 }
-function StepNext(props) {
+function StepNext(props: WizardStepNextProps & IRootComponentProps) {
   const SStepNext = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
@@ -304,8 +335,15 @@ const Wizard = createComponent(WizardRoot, {
   Stepper,
   StepBack,
   StepNext,
-});
+}) as WizardType;
 
-export const wrapWizardStepper = (wrapper) => wrapper;
+export const wrapWizardStepper = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
+    > &
+    PropsExtending,
+  ) => React.ReactNode,
+) => wrapper as IntergalacticWizardStepperComponent<PropsExtending>;
 
 export default Wizard;

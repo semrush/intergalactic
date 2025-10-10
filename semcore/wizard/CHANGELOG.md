@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-10-17
+
+### Changed
+
+- Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in typescript.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

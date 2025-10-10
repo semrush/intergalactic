@@ -1,6 +1,7 @@
 import type { ButtonProps } from '@semcore/button';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import type { BoxProps } from '@semcore/flex-box';
 import type { ModalProps } from '@semcore/modal';
 import type React from 'react';
 
@@ -24,6 +25,11 @@ export type WizardSidebarProps = BoxProps & {
    * Sidebar title
    */
   title?: React.ReactNode;
+
+  /**
+   * @internal html id attribute
+   */
+  id: string;
 };
 
 /** @deprecated */
@@ -37,6 +43,11 @@ export type WizardStepProps = BoxProps & {
    * Disabled step
    */
   disabled?: boolean;
+  /**
+   * Active flag
+   * @internal
+   */
+  active?: boolean;
 };
 
 /** @deprecated */
@@ -50,7 +61,7 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
    * Is invoked when active the step
    */
   onActive?:
-    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | ((step: T, e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent) => void)
     | React.Dispatch<React.SetStateAction<T>>;
   /**
    * Stepper number
@@ -63,26 +74,69 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   completed?: boolean;
   /** Disables interaction with the stepper */
   disabled?: boolean;
+
+  /**
+   * Translation function
+   * @internal
+   */
+  getI18nText: ReturnType<typeof useI18n>;
+
+  /**
+   * Go to nest step
+   * @internal
+   */
+  focusNext: () => void;
+  /**
+   * Go to prev step
+   * @internal
+   */
+  focusPrev: () => void;
+};
+
+export type WizardContentProps = BoxProps & {
+  noSidebar?: boolean;
 };
 
 export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps & {
   /** Callback invoked when navigating to the previous step */
   onActive?:
-    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | ((step: T, e?: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
   /** Step name being navigated to */
   stepName?: string;
+
+  /**
+   * CurrentStep
+   * @internal
+   */
+  step: number;
+  /**
+   * Translation function
+   * @internal
+   */
+  getI18nText: ReturnType<typeof useI18n>;
 };
 export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
   /** Callback invoked when navigating to the next step */
   onActive?:
-    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | ((step: T, e?: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
   /** Step name being navigated to */
   stepName?: string;
+
+  /**
+   * CurrentStep
+   * @internal
+   */
+  step: number;
+  /**
+   * Translation function
+   * @internal
+   */
+  getI18nText: ReturnType<typeof useI18n>;
 };
 
-type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
+export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   Value extends WizardStep,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -91,23 +145,11 @@ type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
 
-declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
+export type WizardType = Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
   Step: Intergalactic.Component<'div', WizardStepProps>;
   Stepper: IntergalacticWizardStepperComponent;
-  Content: typeof Box;
+  Content: Intergalactic.Component<'div', WizardContentProps>;
   StepBack: Intergalactic.Component<'button', WizardStepBackProps>;
   StepNext: Intergalactic.Component<'button', WizardStepNextProps>;
 };
-
-declare const wrapWizardStepper: <PropsExtending extends {}>(
-  wrapper: (
-    props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
-    > &
-    PropsExtending,
-  ) => React.ReactNode,
-) => IntergalacticWizardStepperComponent<PropsExtending>;
-export { wrapWizardStepper };
-
-export default Wizard;
