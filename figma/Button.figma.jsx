@@ -108,11 +108,9 @@ figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refa
   props: {
     size: figma.enum('size', {
       L: 'l',
-      M: 'm',
     }),
     use: figma.enum('use', {
       primary: 'primary',
-      secondary: 'secondary',
       tertiary: 'tertiary',
     }),
     theme: figma.enum('theme', {
@@ -129,19 +127,9 @@ figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refa
     disabled: figma.enum('state', {
       disabled: true,
     }),
-    addonLeft: figma.children('*'),
     title: figma.textContent('↳ title'),
   },
-  example: ({ size, use, theme, disabled, active, loading, addonLeft, title }) => (
-    <Button
-      size={size}
-      use={use}
-      theme={theme}
-      disabled={disabled}
-      active={active}
-      loading={loading}
-      tag={addonLeft}
-      aria-label={title}
-    />
+  example: (props) => (
+    <Button {...props} addonLeft={/* icon name */} />
   ),
 });
