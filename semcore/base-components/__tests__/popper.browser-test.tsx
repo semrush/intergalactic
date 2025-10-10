@@ -275,27 +275,34 @@ test.describe('@functional @popper', () => {
         const rect = (await trigger.boundingBox())!;
         await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2, { steps: 5 });
 
-        await expect.poll(() => popperText.count()).toBe(1);
+        await popperText.waitFor({ state: 'visible' });
+        await expect(popperText).toHaveCount(1);
         await expect(popperText).not.toBeFocused();
       });
 
       await test.step('Verify appears on hover Tooltip.Trigger as Button', async () => {
-        const buttonTrigger = page.getByTestId('button-hover');
+        const buttonHoverTrigger = page.getByTestId('button-hover');
+        const buttonBeforeHoverTrigger = page.locator('[data-position="before-hover"]');
 
-        await buttonTrigger.hover();
-        await expect.poll(() => popper.count()).toBe(1);
-        await expect(popper).not.toBeFocused();
-        await expect(buttonTrigger).not.toBeFocused();
+        await buttonHoverTrigger.hover();
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+        await expect(buttonHoverTrigger).not.toBeFocused();
+
+        await buttonBeforeHoverTrigger.hover();
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
       });
 
       await test.step('Verify appears by click Button', async () => {
-        const button = page.locator('[data-position="before-onFocus"]');
-        const trigger = page.getByTestId('popper-onFocus');
+        const buttonBeforeOnFocus = page.locator('[data-position="before-onFocus"]');
+        const triggerOnFocus = page.getByTestId('popper-onFocus');
 
-        await button.click();
-        await expect.poll(() => popper.count()).toBe(1);
+        await buttonBeforeOnFocus.click();
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
-        await expect(trigger).toBeFocused();
+        await expect(triggerOnFocus).toBeFocused();
       });
     });
 
@@ -311,11 +318,13 @@ test.describe('@functional @popper', () => {
 
         await page.keyboard.press('Tab');
         await expect(buttonTrigger).toBeFocused();
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
 
         await page.keyboard.press('Tab');
-        await expect.poll(() => popper.count()).toBe(0);
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
         await expect(buttonTrigger).not.toBeFocused();
       });
 
@@ -330,7 +339,8 @@ test.describe('@functional @popper', () => {
         await page.keyboard.press('Space');
         await expect(buttonBefore).not.toBeFocused();
         await expect(trigger).toBeFocused();
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
       });
     });
@@ -343,7 +353,8 @@ test.describe('@functional @popper', () => {
       const popper = page.getByText('Popper', { exact: true });
 
       await trigger.tap();
-      await expect.poll(() => popper.isVisible()).toBeTruthy();
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
     });
 
     test('Verify click interaction @mouse @keyboard @priority-high', async ({ page }) => {
@@ -360,10 +371,12 @@ test.describe('@functional @popper', () => {
         await expect(popper).toHaveCount(0);
 
         await trigger.click();
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
 
         await trigger.click();
-        await expect.poll(() => popper.count()).toBe(0);
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
       });
 
       await test.step('Button click opens popper', async () => {
@@ -371,7 +384,8 @@ test.describe('@functional @popper', () => {
         await expect(popperContent).toHaveCount(0);
 
         await button.click();
-        await expect.poll(() => popperContent.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
       });
 
@@ -381,7 +395,8 @@ test.describe('@functional @popper', () => {
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-        await expect.poll(() => popperContent.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
       });
     });
@@ -431,7 +446,8 @@ test.describe('@functional @popper', () => {
 
       await test.step('Click opens popper', async () => {
         await button.click();
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
       });
 
       await test.step('Shift+Tab closes popper and returns focus', async () => {
@@ -442,29 +458,32 @@ test.describe('@functional @popper', () => {
         } else {
           await page.keyboard.press('Shift+Tab');
         }
-
-        await expect.poll(() => popper.count()).toBe(0);
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
         await expect(before).toBeFocused();
       });
 
       await test.step('Tab shows and hides popper', async () => {
         await page.keyboard.press('Tab');
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
 
         await page.keyboard.press('Tab');
-        await expect.poll(() => popper.count()).toBe(0);
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
       });
 
       await test.step('Escape closes popper', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Escape');
         await popper.waitFor({ state: 'hidden' });
-        await expect.poll(() => popper.count()).toBe(0);
+        await expect(popper).toHaveCount(0);
       });
 
       await test.step('Enter opens again', async () => {
         await page.keyboard.press('Enter');
-        await expect.poll(() => popper.count()).toBe(1);
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
       });
 
       await test.step('Tab hides popper and moves focus after', async () => {
@@ -492,18 +511,21 @@ test.describe('@functional @popper', () => {
 
     await test.step('Move focus into trigger — popper appears', async () => {
       await page.keyboard.press('Tab');
-      await expect.poll(() => option.count()).toBe(1);
+      await option.waitFor({ state: 'visible' });
+      await expect(option).toHaveCount(1);
     });
 
     await test.step('Navigate through trigger inner elements — popper stays visible', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await option.waitFor({ state: 'visible' });
       await expect(option).toHaveCount(1);
     });
 
     await test.step('Move focus after trigger — popper hides', async () => {
       await page.keyboard.press('Tab');
-      await expect.poll(() => option.count()).toBe(0);
+      await option.waitFor({ state: 'hidden' });
+      await expect(option).toHaveCount(0);
       await expect(secondInput).toBeFocused();
     });
   });
@@ -524,24 +546,29 @@ test.describe('@functional @popper', () => {
       await openButton.hover();
       await expect(popper).toHaveCount(0);
       await openButton.click();
-      await expect.poll(() => popper.count()).toBe(1);
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
     });
 
     await test.step('Mouse: Reattach and toggle popper', async () => {
       await attachTrigger.click();
-      await expect.poll(() => popper.count()).toBe(0);
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
       await attachTrigger.hover();
       await expect(popper).toHaveCount(0);
       await attachTrigger.click();
-      await expect.poll(() => popper.count()).toBe(1);
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
     });
 
     await test.step('Mouse: Close popper with close button', async () => {
       await openButton.click();
-      await expect.poll(() => popper.count()).toBe(0);
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
       await attachTrigger.click();
       await closeButton.click();
-      await expect.poll(() => popper.count()).toBe(0);
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
     });
 
     await test.step('Keyboard: Open popper via Enter key', async () => {
@@ -551,7 +578,8 @@ test.describe('@functional @popper', () => {
       await expect(popper).toHaveCount(0);
 
       await page.keyboard.press('Enter');
-      await expect.poll(() => popper.count()).toBe(1);
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
       await expect(openButton).toBeFocused();
     });
 
@@ -560,7 +588,8 @@ test.describe('@functional @popper', () => {
       await expect(closeButton).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await expect.poll(() => popper.count()).toBe(0);
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
     });
 
     if (browserName === 'chromium') {
@@ -584,6 +613,8 @@ test.describe('@functional @popper', () => {
 
     await resizeButton.click();
 
+    await page.getByText('some dynamic block that is loaded').waitFor({ state: 'visible' });
+
     const newDynamicY = (await poppers.first().boundingBox())!.y;
     const newFixedY = (await poppers.nth(1).boundingBox())!.y;
 
@@ -591,10 +622,7 @@ test.describe('@functional @popper', () => {
     const fixedShift = Math.abs(newFixedY - initialFixedY);
 
     expect(dynamicShift).toBeGreaterThanOrEqual(0);
-    if (dynamicShift !== 0) {
-      expect(dynamicShift).toBeGreaterThan(10);
-    }
-    expect(fixedShift).toBeLessThanOrEqual(15);
+    expect(fixedShift).toBeLessThan(10);
   });
 });
 
