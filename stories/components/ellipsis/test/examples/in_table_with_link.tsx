@@ -1,6 +1,7 @@
 import { useResizeObserver } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
+import type { EllipsisProps } from '@semcore/ui/ellipsis';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
@@ -8,7 +9,7 @@ import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
-const Demo = () => {
+const Demo = (propsEllipsis: EllipsisProps) => {
   const containerRef = React.useRef(null);
 
   const containerRect = useResizeObserver(containerRef);
@@ -40,8 +41,8 @@ const Demo = () => {
             >
               <Link.Text wMin={0} tag={Text}>
                 <Ellipsis
-                  trim='middle'
-                  onVisibleChange={() => alert('Hi!')}
+                  trim={propsEllipsis.trim}
+                  // onVisibleChange={() => alert('Hi!')}
                   containerRect={containerRect}
                   containerRef={containerRef}
                 >
@@ -58,7 +59,11 @@ const Demo = () => {
     />
   );
 };
+export const defaultProps: EllipsisProps = {
+  trim: 'middle',
+};
 
+Demo.defaultProps = defaultProps;
 const data = [
   {
     keyword: 'ebay buy',
