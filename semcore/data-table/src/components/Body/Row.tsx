@@ -175,9 +175,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   handleClickRow(row: DTRow<UniqKeyType>) {
     return (e: React.SyntheticEvent) => {
+      const { limit } = this.asProps;
       const index = row[ROW_INDEX];
 
-      if (!isInteractiveElement(e.target) && row[ACCORDION] && !this.asProps.mergedRow) {
+      const isLimitedRow = limit?.fromRow !== undefined && !limit.fromColumn ? index >= limit.fromRow : false;
+
+      if (!isInteractiveElement(e.target) && row[ACCORDION] && !this.asProps.mergedRow && !isLimitedRow) {
         this.handleExpandRow(row, index);
       }
     };
