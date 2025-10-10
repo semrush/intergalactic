@@ -1,5 +1,5 @@
-import type { Page, Locator } from '@playwright/test';
-import { test, expect } from '@playwright/test';
+import type { Page, Locator } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 export const locators = {
   addFilterBtn: (page: Page, index?: number): Locator => {
