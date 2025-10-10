@@ -710,4 +710,32 @@ test.describe('Functional tests', () => {
     await input.click({ force: true });
     await expect(input).not.toBeFocused();
   });
+
+  test('Verify onConfirm behaviour', async ({ page }) => {
+    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultValue: 'DefaultValue' });
+    await page.setContent(htmlContent);
+
+    let lastLog: string | null = null;
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        lastLog = msg.text().split(' ')[0];
+      }
+    });
+
+    const confirmButton = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
+    const input = page.locator('[data-ui-name="InlineInput"] input');
+
+    expect(await input.inputValue()).toBe('DefaultValue');
+    await confirmButton.click();
+    expect(lastLog).toBe('DefaultValue');
+
+    lastLog = null;
+
+    await input.fill('DefaultValueUpdated');
+
+    expect(await input.inputValue()).toBe('DefaultValueUpdated');
+    await confirmButton.click();
+    expect(lastLog).toBe('DefaultValueUpdated');
+  });
 });
