@@ -16,6 +16,7 @@
       }
     ],
     "font-family-no-missing-generic-family-keyword": null,
-    "indentation": 2
+    "indentation": 2,
+    "at-rule-no-unknown": [true, { "ignoreAtRules": ["mixin", "define-mixin"] }]
   }
 }

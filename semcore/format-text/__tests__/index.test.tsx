@@ -224,11 +224,6 @@ describe('FormatText', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(component, {
-        actions: { active: '#element' },
-      }),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(component, {
         actions: { focus: '#element' },
       }),
     ).toMatchImageSnapshot(task);

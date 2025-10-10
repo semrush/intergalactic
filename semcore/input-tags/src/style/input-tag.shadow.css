@@ -4,6 +4,10 @@ SInputTags {
   align-items: flex-start;
   /* reset for ScrollArea because cut box-shadow */
   overflow: initial;
+
+  li:first-of-type {
+    padding-left: var(--intergalactic-spacing-05x, 2px);
+  }
 }
 
 SInputTags SContainer:focus SOutline {
@@ -35,13 +39,20 @@ SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: var(--intergalactic-form-control-m, 28px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SInputTags[size='l'] {
   min-height: var(--intergalactic-form-control-l, 40px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
+  padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-2x, 8px);
+}
+
+SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
+  @mixin focus-outline-mixin {
+    outline-offset: 0;
+    transition-property: outline-color, outline-width;
+  }
 }
 
 STagContainer {

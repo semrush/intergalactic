@@ -48,3 +48,16 @@ test.describe('Input tag', () => {
     expect(violations).toEqual([]);
   });
 });
+
+test.describe('UX pattern - Input tags and Select', () => {
+  test('Input tags and select', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+});

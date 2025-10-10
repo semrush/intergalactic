@@ -2,18 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.4.0] - 2025-12-12
+## [16.5.0] - 2025-12-12
 
 ### Added
 
 - `useEllipsis` hook.
 - `Hint` component.
 
+## [16.4.0] - 2025-10-03
+
+### Changed
+
+- Styles for `:focus-visible` in Box and ScrollArea.
+- Border-radius for invalid pattern in InvalidStateBox.
+
 ## [16.3.0] - 2025-09-20
 
 ### Added
 
 - Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+
+## [16.2.4] - 2025-09-12
+
+### Changed
+
+- Don't open popper `onFocus` if last interaction was with mouse.
 
 ## [16.2.3] - 2025-09-17
 

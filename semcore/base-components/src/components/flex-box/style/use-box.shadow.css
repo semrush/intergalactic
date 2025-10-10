@@ -1,14 +1,35 @@
-
-SBox:focus-visible {
-  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
-  outline-style: solid;
-  outline-width: 3px;
-  outline-offset: 0;
+SBox[inAfterOutline='false']:focus-visible {
   z-index: 1;
+  @mixin focus-outline-mixin;
+
+  &[invertOutline] {
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+  }
 }
 
-SBoxInnerOutline:focus-visible {
-  outline-offset: -3px;
+SBox[inAfterOutline='true']:focus-visible {
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    inset: 0;
+    top: var(--focusRingTopOffset, 0);
+    right: var(--focusRingRightOffset, 0);
+    bottom: var(--focusRingBottomOffset, 0);
+    left: var(--focusRingLeftOffset, 0);
+    z-index: 1;
+
+    @mixin focus-outline-mixin;
+  }
+  &[invertOutline]::after {
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+  }
+}
+SBoxInnerOutline[inAfterOutline='false']:focus-visible {
+  outline-offset: -2px;
+}
+SBoxInnerOutline[inAfterOutline='true']:focus-visible::after {
+  outline-offset: -2px;
 }
 
 SBoxSizing {

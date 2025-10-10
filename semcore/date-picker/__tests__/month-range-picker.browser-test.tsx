@@ -502,20 +502,21 @@ test.describe('Month range', () => {
     await test.step('Open popper using Enter key', async () => {
       await pressTab(3);
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
-      await expect(popper).toBeVisible();
+      await apply.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
       await expect(popper).toBeFocused();
     });
 
     await test.step('Close popper using Escape key', async () => {
       await page.keyboard.press('Escape');
-      await expect(popper).not.toBeVisible();
+      await apply.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
     });
 
     await test.step('Reopen popper using Space key', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
-      await expect(popper).toBeVisible();
+      await apply.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
       await expect(popper).toBeFocused();
     });
 
@@ -575,9 +576,10 @@ test.describe('Month range', () => {
 
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Escape');
+      await apply.waitFor({ state: 'hidden' });
 
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
+      await apply.waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Space');
       await page.waitForTimeout(50);
@@ -604,6 +606,7 @@ test.describe('Month range', () => {
         expect(confirmedEnd).not.toBe(middle);
       }
       await page.keyboard.press('Escape');
+      await apply.waitFor({ state: 'hidden' });
 
       const [resetStart, resetEnd] = await Promise.all([
         input.nth(0).inputValue(),
@@ -616,7 +619,8 @@ test.describe('Month range', () => {
 
     await test.step('Apply range via keyboard interaction', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
+      await apply.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
       await page.keyboard.press('ArrowRight');
@@ -624,9 +628,11 @@ test.describe('Month range', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
 
-      await pressTab(6);
+      await pressTab(5);
+      await expect(apply).toBeFocused();
+
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
+      await apply.waitFor({ state: 'hidden' });
 
       const [left, right] = await Promise.all([
         input.nth(0).inputValue(),
@@ -639,10 +645,15 @@ test.describe('Month range', () => {
 
     await test.step('Reset range using keyboard', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(300);
+      await apply.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
 
-      await pressTab(8); // Focus Reset
+      await pressTab(9); // Focus Reset
+      await expect(reset).toBeFocused();
+
       await page.keyboard.press('Enter');
+      await apply.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
 
       const [left, right] = await Promise.all([
         input.nth(0).inputValue(),
@@ -651,7 +662,6 @@ test.describe('Month range', () => {
 
       expect(left).toBe('');
       expect(right).toBe('');
-      await expect(popper).not.toBeVisible();
     });
   });
 });

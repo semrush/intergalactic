@@ -9,6 +9,10 @@ module.exports = function (babel, opts = {}) {
       ['@semcore/babel-plugin-root', opts.root],
       '@semcore/babel-plugin-styles',
       '@babel/plugin-proposal-export-default-from',
+      [
+        '@babel/plugin-proposal-decorators',
+        { version: '2023-11' },
+      ],
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-import-assertions',
       'babel-plugin-preval',

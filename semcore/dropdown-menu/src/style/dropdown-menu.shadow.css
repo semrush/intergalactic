@@ -13,6 +13,7 @@ SDropdownMenuList {
   }
 
   SShadowHorizontal {
+
     &:before,
     &:after {
       border-radius: var(--intergalactic-control-rounded, 6px);
@@ -20,6 +21,7 @@ SDropdownMenuList {
   }
 
   SShadowVertical {
+
     &:before,
     &:after {
       border-radius: var(--intergalactic-control-rounded, 6px);
@@ -27,11 +29,18 @@ SDropdownMenuList {
   }
 }
 
+SDropdownMenuItemContainer {
+  SItemContent:focus-visible {
+    outline: none;
+  }
+}
+
 SDropdownMenuItemContainer[nesting-trigger] {
   justify-content: space-between;
 }
 
-SDropdownMenuItemAddon, SItemContentText {
+SDropdownMenuItemAddon,
+SItemContentText {
   display: inline-flex; /* todo: Brauer Ilia - why? should be changed to inline/inline-block for SItemContentText */
   margin-left: var(--intergalactic-spacing-1x, 4px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
@@ -53,7 +62,7 @@ SDropdownMenuNesting[size='m'] {
 
 SDropdownMenuNesting[highlighted] {
   z-index: 1;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
+  @mixin focus-outline-mixin -2px;
 }
 
 SDropdownNestingItem[size='l'],
@@ -67,10 +76,6 @@ SDropdownNestingItem SDropdownMenuItemContainer {
   padding-bottom: 0;
   padding-left: 0;
   min-height: auto;
-}
-
-SItemContent:focus {
-  outline: none;
 }
 
 SItemHint {

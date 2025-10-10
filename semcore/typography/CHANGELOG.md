@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.3.0] - 2025-12-12
+## [16.4.0] - 2025-12-12
 
 ### Added
 
 - `ellipsis` property to crop the text out of the box.
+
+## [16.3.0] - 2025-10-03
+
+### Changed
+
+- Styles for `:focus` of the `a` element.
 
 ## [16.2.3] - 2025-09-17
 

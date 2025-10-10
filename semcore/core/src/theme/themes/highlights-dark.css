@@ -32,5 +32,5 @@
   /* Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color. */
   --intergalactic-icon-primary-feature-highlight-hover-active: #6B3AB4;
   /* Color for keyboard focus outline styles for highlighted controls. */
-  --intergalactic-keyboard-focus-feature-highlight-outline: linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5));
+  --intergalactic-keyboard-focus-feature-highlight-outline: linear-gradient(90deg, #ab6cfe, #008ff8);
 }

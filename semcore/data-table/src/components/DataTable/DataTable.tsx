@@ -205,10 +205,10 @@ class DataTableRoot<
     }
 
     const rows = this.getRows().reduce((acc, item) => {
-      acc = acc + 1;
-
       if (Array.isArray(item)) {
         acc = acc + item.length;
+      } else {
+        acc = acc + 1;
       }
 
       return acc;
@@ -316,8 +316,9 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
@@ -359,8 +360,9 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
     };
   }
 
@@ -495,6 +497,7 @@ class DataTableRoot<
     colIndex: ColIndex,
     direction?: 'up' | 'down' | 'left' | 'right',
   ) => {
+    const { limit } = this.asProps;
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -530,9 +533,11 @@ class DataTableRoot<
     const cell = row?.querySelector(
       `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > [role=columnheader][aria-colindex="${
+      }"]:not([aria-hidden="true"]), :scope > [role=columnheader][aria-colindex="${
         newCol + 1
-      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
+      }"]:not([aria-hidden="true"]), :scope > div > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"]:not([aria-hidden="true"])`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -569,7 +574,10 @@ class DataTableRoot<
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
-
+        // skipping x-axis movement of the focus within limit overlay and there is only limit by rows
+        if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
+          return;
+        }
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
@@ -577,7 +585,19 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          colI = direction === 'left' ? colI - 1 : colI + 1;
+          if (direction === 'right' && limit?.fromColumn !== undefined) {
+            if (newCol > limit.fromColumn) return;
+
+            rowI = direction === 'right' ? rowI - 1 : rowI;
+          } else {
+            colI = direction === 'left' ? colI - 1 : colI + 1;
+          }
+        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
+          if (newCol === limit.fromColumn) {
+            rowI = rowI - 1;
+          } else {
+            return;
+          }
         } else {
           rowI = rowI - 1;
         }
@@ -589,6 +609,11 @@ class DataTableRoot<
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
+          const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
+          if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
+            return;
+          }
+
           colI = colI - 1;
         }
       }
@@ -727,13 +752,13 @@ class DataTableRoot<
       }
 
       const cell = row
-        ?.querySelectorAll('[role=gridcell], [role=columnheader]')
+        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
         .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');
 
       if (cell instanceof HTMLElement) {
-        if (hasParent(e.target, cell)) {
+        if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus();
         } else {
           cell.focus();

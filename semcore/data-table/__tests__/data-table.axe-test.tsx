@@ -194,4 +194,10 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
+  test('limited mode', async ({ page }) => {
+    const standPath = 'stories/components/data-table/docs/examples/limited-mode.tsx';
+    const violations = await checkAxe(page, standPath);
+
+    expect(violations).toEqual([]);
+  });
 });

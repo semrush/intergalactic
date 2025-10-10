@@ -120,7 +120,7 @@ test.describe('Cells', () => {
     await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
+    await page.getByLabel('About fastest animals').waitFor({ state: 'visible' });
     await expect(page.getByLabel('About fastest animals')).toBeFocused();
     await page.keyboard.press('Escape');
 

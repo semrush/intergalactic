@@ -31,7 +31,7 @@ test.describe('Visual tests', () => {
         await test.step('Verify inputTagsM styles', async () => {
           const count = await input_tags_m.count();
           for (let i = 0; i < count; i++) {
-            await expect(input_tags_m.nth(i)).toHaveCSS('padding-left', '6px');
+            await expect(input_tags_m.nth(i)).toHaveCSS('padding-left', '4px');
             await expect(input_tags_m.nth(i)).toHaveCSS('padding-right', '6px');
           }
         });
@@ -39,7 +39,7 @@ test.describe('Visual tests', () => {
         await test.step('Verify inputTagsL styles', async () => {
           const count = await input_tags_l.count();
           for (let i = 0; i < count; i++) {
-            await expect(input_tags_l.nth(i)).toHaveCSS('padding-left', '10px');
+            await expect(input_tags_l.nth(i)).toHaveCSS('padding-left', '8px');
             await expect(input_tags_l.nth(i)).toHaveCSS('padding-right', '10px');
           }
         });
@@ -48,7 +48,6 @@ test.describe('Visual tests', () => {
           const li = page.locator('li[data-ui-name="InputTags.Tag"]');
           const count = await li.count();
           for (let i = 0; i < count; i++) {
-            await expect(li.nth(i)).toHaveCSS('padding', '0px');
             await expect(li.nth(i)).toHaveCSS('margin', '2px');
           }
         });
@@ -935,5 +934,138 @@ test.describe('Functional tests', () => {
       await expect(tag).toHaveCount(count);
       await expect(inputValue).toHaveAttribute('value', 'Test');
     });
+  });
+});
+
+test.describe('Visual - UX pattern', () => {
+  test('Verify Input tags and select', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = page.getByRole('combobox');
+    const options = page.getByRole('option');
+    const emailLabel = page.locator('label:text("Emails")');
+    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
+    await expect(trigger).toHaveCount(2);
+    await expect(page).toHaveScreenshot();
+
+    await trigger.first().click();
+    await options.first().waitFor({ state: 'visible' });
+    await options.first().click();
+    await options.first().waitFor({ state: 'hidden' });
+
+    await expect(trigger).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    await emailLabel.click();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.type('.test');
+    await tooltip.waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+test.describe('Functional - UX pattern', () => {
+  test('Verify Input tags and select keyboard interactions', async ({ page, browserName }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    if (browserName === 'webkit') return;
+    const trigger = page.getByRole('combobox');
+    const options = page.getByRole('option');
+    const input = page.getByRole('textbox');
+    const counter = page.locator('[data-ui-name="Counter"]');
+    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
+    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
+    await expect(trigger).toHaveCount(2);
+
+    await page.keyboard.press('Tab');
+    await expect(trigger.first()).toBeFocused();
+    await page.keyboard.press('Enter');
+    await options.first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(200);
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await options.first().waitFor({ state: 'hidden' });
+    await expect(trigger).toHaveCount(1);
+
+    await page.keyboard.press('Tab');
+    await expect(tagClose.first()).toBeFocused();
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('Tab');
+
+    await expect(input).toBeFocused();
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    {
+      const counterText = await counter.locator('span').textContent();
+      await expect(counterText).toBe('3/5');
+    }
+
+    await page.keyboard.type('test@tets');
+    {
+      const counterText = await counter.locator('span').textContent();
+      await expect(counterText).toBe('3/5');
+    }
+    await page.keyboard.press('Enter');
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(tooltip).toHaveText(`Email isn't valid`);
+
+    await page.keyboard.type('.test');
+    await tooltip.waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Enter');
+    {
+      const counterText = await counter.locator('span').textContent();
+      await expect(counterText).toBe('4/5');
+    }
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    {
+      const counterText = await counter.locator('span').textContent();
+      await expect(counterText).toBe('5/5');
+    } await expect(counter).toHaveClass(/warning/);
+
+    await page.keyboard.type('test@tets.test');
+    await page.keyboard.press('Enter');
+    {
+      const counterText = await counter.locator('span').textContent();
+      await expect(counterText).toBe('5/5');
+    }
+    await tooltip.waitFor({ state: 'visible' });
+    await expect(tooltip).toHaveText(`Max emails is 5`);
+
+    await page.keyboard.press('Enter');
+    await expect(input).toBeFocused();
+
+    const value = await input.inputValue();
+    const length = value.length;
+
+    for (let i = 0; i < length; i++) {
+      await page.keyboard.press('Backspace');
+    }
+    await tooltip.waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Shift+Tab');
+    await expect(tagClose.last()).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(counter).not.toHaveClass(/warning/);
   });
 });
