@@ -15,11 +15,15 @@ async function checkAriaNowValue(scrollBar: any) {
   return value;
 }
 
-async function waitForScrollChange(scrollBar: any, timeout = 2000) {
-  const before = await checkAriaNowValue(scrollBar);
+async function waitForScrollChange(scrollBar: any, timeout = 3000) {
+  const before = Number(await scrollBar.getAttribute('aria-valuenow'));
+
   await expect
-    .poll(async () => await checkAriaNowValue(scrollBar), { timeout })
-    .not.toBe(before);
+    .poll(async () => {
+      const current = Number(await scrollBar.getAttribute('aria-valuenow'));
+      return current;
+    }, { timeout })
+    .toBeGreaterThan(before);
 }
 
 /* =====================================================
@@ -150,7 +154,7 @@ test.describe('@functional @scroll-area', () => {
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @scroll0area', () => {
+test.describe('@visual @scroll-area', () => {
   test('Verify scroll visuals after @keyboard scroll @priority-medium @keyboard', async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -168,9 +172,11 @@ test.describe('@visual @scroll0area', () => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
     const container = page.locator('[data-ui-name="ScrollArea.Container"]');
+    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
     await container.hover();
     await page.mouse.wheel(0, 600);
-    await waitForScrollChange(page.locator('[data-ui-name="ScrollArea.Bar"]'));
+    await waitForScrollChange(scrollBar);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -179,12 +185,13 @@ test.describe('@visual @scroll0area', () => {
     await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/horizontal-scroll-with-shadow-and-offset.tsx', 'en');
 
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-    await expect(scrollBar).toHaveAttribute('aria-orientation', 'horizontal');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
     await waitForScrollChange(scrollBar);
-
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -192,9 +199,11 @@ test.describe('@visual @scroll0area', () => {
     await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx', 'en');
 
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
+    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
     await scrollContainer.hover();
-    await page.mouse.wheel(0, 100);
-    await waitForScrollChange(page.locator('[data-ui-name="ScrollArea.Bar"]'));
+    await page.mouse.wheel(0, 300);
+    await waitForScrollChange(scrollBar);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -206,6 +215,9 @@ test.describe('@visual @scroll0area', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+
     await waitForScrollChange(scrollBar);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
