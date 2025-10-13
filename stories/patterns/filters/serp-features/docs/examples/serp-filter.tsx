@@ -24,7 +24,7 @@ const serpFeatures = [
   'Hotel Pack',
   'Job Listings',
   'Google Ads',
-  'Shopping Ads (Product Listing Ads)',
+  'Shopping Ads (Product Listing Ads Block)',
   'Rich Snippets',
 ];
 
@@ -244,7 +244,7 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Select.Option.Text flex={1} ellipsis={{ trim: 'middle' }}>{option.label}</Select.Option.Text>
+                            <Select.Option.Text flex={1} ellipsis={{ trim: 'end' }}>{option.label}</Select.Option.Text>
                           </Select.Option>
                         );
                       })}

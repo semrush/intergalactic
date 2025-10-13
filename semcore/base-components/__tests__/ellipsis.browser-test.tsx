@@ -11,13 +11,25 @@ test.describe('Visual - link', () => {
   ];
 
   withEllipsis.forEach((item) => {
-    test(`Verify ellipsis on Link when ${JSON.stringify(item.ellipsis)}`, async ({ page }) => {
+    test(`Verify ellipsis by @keyboard focus and @mouse hover Link on link when ${JSON.stringify(item.ellipsis)}`, async ({ page }) => {
       const standPath =
         'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', item);
       await page.setContent(htmlContent);
 
       await page.keyboard.press('Tab');
+      await page.getByRole('link').hover();
+      await page.locator('[class*="HintPopper"]').waitFor({ state: 'visible' });
+      await expect(page.locator('[class*="HintPopper"]')).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
+    });
+
+    test(`Verify ellipsis by @mouse hover on Link when ${JSON.stringify(item.ellipsis)}`, async ({ page }) => {
+      const standPath =
+        'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setContent(htmlContent);
+
       await page.getByRole('link').hover();
       await page.locator('[class*="HintPopper"]').waitFor({ state: 'visible' });
       await expect(page.locator('[class*="HintPopper"]')).toHaveCount(1);
@@ -79,6 +91,22 @@ test.describe('Visual - text', () => {
       await page.locator('[class*="HintPopper"]').waitFor({ state: 'visible' });
       await expect(page.locator('[class*="HintPopper"]')).toHaveCount(1);
       await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const withoutEllipsis = [
+    { ellipsis: false },
+    { ellipsis: { trim: 'end', maxLine: 6 } },
+  ];
+
+  withoutEllipsis.forEach((item) => {
+    test(`Verify no ellipsis on Text when ellipsis  ${JSON.stringify(item.ellipsis)} `, async ({ page }) => {
+      const standPath =
+        'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await page.setContent(htmlContent);
+      await page.locator('[data-ui-name="Text"]').hover();
+      await expect(page.locator('[class*="HintPopper"]')).toHaveCount(0);
     });
   });
 });

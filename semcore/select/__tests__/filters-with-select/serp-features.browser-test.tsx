@@ -36,7 +36,7 @@ test.describe('Visual', () => {
 
     await textbox.fill('Ads');
     await page.getByRole('option', { name: 'Shopping Ads (Product Listing' }).hover();
-    await page.getByText('Shopping Ads (Product Listing').nth(1).waitFor({ state: 'visible' });
+    await page.locator('[class*="HintPopper"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
 
     await options.first().click();
@@ -70,6 +70,7 @@ test.describe('Visual', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
+    await page.locator('[class*="HintPopper"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Space');

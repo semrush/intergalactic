@@ -8,8 +8,7 @@ import React from 'react';
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
 const Demo = () => {
-  const containerRef = React.useRef(null);
-
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const containerRect = useResizeObserver(containerRef);
 
   return (
@@ -18,14 +17,29 @@ const Demo = () => {
       aria-label='Table title'
       columns={[
         { name: 'keyword', children: 'Keyword' },
-        { name: 'kd', children: 'KD,%', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end' },
-        { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, auto)', justifyContent: 'flex-end' },
-        { name: 'url', children: 'URL', gtcWidth: 'minmax(auto, 200px)', ref: containerRef },
+        {
+          name: 'kd',
+          children: 'KD, %',
+          gtcWidth: 'minmax(70px, auto)',
+          justifyContent: 'flex-end',
+        },
+        {
+          name: 'cpc',
+          children: 'CPC',
+          gtcWidth: 'minmax(70px, auto)',
+          justifyContent: 'flex-end',
+        },
+        {
+          name: 'url',
+          children: 'URL',
+          gtcWidth: 'minmax(auto, 200px)',
+        },
       ]}
-
       renderCell={(props) => {
+        const triggerRef = React.useRef<HTMLAnchorElement | null>(null);
+
         if (props.columnName === 'url') {
-          const pageUrl = props.value.toString();
+          const pageUrl = props.value?.toString?.() || '';
 
           return (
             <Link
@@ -36,16 +50,15 @@ const Demo = () => {
               w='100%'
               wMin={0}
               style={{ display: 'inline-flex', alignItems: 'center' }}
+              ref={triggerRef}
             >
-              <Link.Text wMin={0} tag={Text} ellipsis={{ trim: 'middle' }}>
-                {/* <Ellipsis */}
-                {/*  trim='middle' */}
-                {/*  // onVisibleChange={() => alert('Hi!')} */}
-                {/*  containerRect={containerRect} */}
-                {/*  containerRef={containerRef} */}
-                {/* > */}
+              <Link.Text
+                wMin={0}
+                tag={Text}
+                ellipsis={{ trim: 'middle' }}
+                hintProps={{ triggerRef }}
+              >
                 {removeProtocol(pageUrl)}
-                {/* </Ellipsis> */}
               </Link.Text>
               <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
             </Link>

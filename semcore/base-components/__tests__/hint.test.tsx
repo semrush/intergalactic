@@ -1,13 +1,8 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 import { Hint } from '../src';
-
-// describe('hint Dependency imports', () => {
-//   runDependencyCheckTests('hint');
-// });
 
 describe('Hint', () => {
   test('Verify content is rendered into body', async () => {
