@@ -269,7 +269,7 @@ describe('XAxis', () => {
 });
 
 describe('ChartLegend', () => {
-  test.concurrent('should support pattern interactivity for shape=\'checkbox\'', () => {
+  test.concurrent('should support pattern interactivity for shape=\'checkbox\'', async () => {
     const onChangeHandler = vi.fn();
 
     const legendItems = [{
@@ -292,7 +292,7 @@ describe('ChartLegend', () => {
 
     expect(svg).not.toBe(null);
 
-    userEvent.click(svg!);
+    await userEvent.click(svg!);
 
     expect(onChangeHandler).toHaveBeenCalledTimes(1);
   });
