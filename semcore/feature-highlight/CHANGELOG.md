@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Сhanged
 
+- Types for `NoticeFH`.
 - Pills addon logic to determine whether to display stars or numeric value/
 
 ## [16.2.0] - 2025-10-03
