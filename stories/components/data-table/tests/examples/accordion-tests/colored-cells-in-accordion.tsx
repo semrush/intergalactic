@@ -3,7 +3,7 @@ import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-const styles = ['success', 'info', 'muted', 'warning', 'danger'];
+const styles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
 
 const ChartExample = () => {
   return (
@@ -26,7 +26,6 @@ const Demo = () => {
           { name: 'col_4', children: 'Column 4', gtcWidth: '100px' },
           { name: 'col_5', children: 'Column 5', gtcWidth: '100px' },
         ]}
-        // @ts-ignore
         renderCell={({ columnIndex }) => {
           return {
             theme: styles[columnIndex],
