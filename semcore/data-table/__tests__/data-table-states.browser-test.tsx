@@ -687,9 +687,9 @@ test.describe('Limited state', () => {
       const htmlContent = await e2eStandToHtml(standPath, 'en', { rowsLimit: 0, columnsLimit: 0 });
       await page.setContent(htmlContent);
 
-      const accordionToggle = page.locator('[data-ui-name="ButtonLink"]').first();
-      await accordionToggle.click({ force: true });
+      await locators.toggle(page).first().click({ force: true });
       await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'detached' });
+      await expect(locators.rowTableInTable(page, 2, 5).getByRole('gridcell').first()).not.toBeVisible();
     });
   });
 });
