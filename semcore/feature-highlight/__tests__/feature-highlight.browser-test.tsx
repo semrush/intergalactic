@@ -166,14 +166,31 @@ test.describe('Pills', () => {
 
     await page.setContent(htmlContent);
 
-    const highlightedItem = page.locator('[data-ui-name="PillsFH.HighlightedItem"]');
-    const addons = highlightedItem.locator('[data-ui-name="HighlightedItem.Addon"][data-ui-name="HighlightedItem.Addon"]');
-    const firstAddon = addons.first();
-    const secondAddon = addons.nth(1);
+    const pill = page.getByRole('radio');
+    await test.step('Stars in addont', async () => {
+      const addons = pill.first().locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
 
-    expect(firstAddon.locator('[data-ui-name="SummaryAI"]')).toBeVisible();
-    expect(secondAddon.locator('[data-ui-name="SummaryAI"]')).not.toBeVisible();
-    expect(await secondAddon.textContent()).toBe('0');
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(1);
+      }
+    });
+    await test.step('Number in addons', async () => {
+      const addons = pill.nth(1).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('0');
+      }
+    });
+    // todo - i'll add for other types after bug fix
   });
 });
 
