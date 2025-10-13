@@ -181,46 +181,106 @@ test.describe('@visual @scroll-area', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify horizontal scroll with shadow and offsets @priority-high @keyboard', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/horizontal-scroll-with-shadow-and-offset.tsx', 'en');
+  const baseCombinations = [
+    {
+      shadow: true,
+      orientation: 'vertical',
+      shadowTheme: 'dark',
+      shadowSize: 20,
+      focusRingTopOffset: '0px',
+      focusRingBottomOffset: '0px',
+      focusRingLeftOffset: '0px',
+      focusRingRightOffset: '0px',
+      topOffset: 100,
+      bottomOffset: 100,
+      leftOffset: 100,
+      rightOffset: 100,
+    },
+    {
+      shadow: true,
+      orientation: 'horizontal',
+      shadowTheme: 'light',
+      shadowSize: 30,
+      focusRingTopOffset: '40px',
+      focusRingBottomOffset: '40px',
+      focusRingLeftOffset: '40px',
+      focusRingRightOffset: '40px',
+      topOffset: 100,
+      bottomOffset: 100,
+      leftOffset: 100,
+      rightOffset: 100,
+    },
+    {
+      shadow: false,
+      orientation: 'vertical',
+      shadowTheme: 'dark',
+      shadowSize: 15,
+      focusRingTopOffset: '0px',
+      focusRingBottomOffset: '0px',
+      focusRingLeftOffset: '0px',
+      focusRingRightOffset: '0px',
+      topOffset: 100,
+      bottomOffset: 100,
+      leftOffset: 100,
+      rightOffset: 100,
+    },
+    {
+      shadow: false,
+      orientation: 'horizontal',
+      shadowTheme: 'light',
+      shadowSize: 25,
+      focusRingTopOffset: '0px',
+      focusRingBottomOffset: '0px',
+      focusRingLeftOffset: '0px',
+      focusRingRightOffset: '0px',
+      topOffset: 0,
+      bottomOffset: 0,
+      leftOffset: 0,
+      rightOffset: 0,
+    },
+  ];
 
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+  baseCombinations.forEach((item) => {
+    test(`Verify @mouse Scroll Area with shadow=${item.shadow}
+        orientation=${item.orientation} shadowTheme=${item.shadowTheme}  
+        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset} @priority-high`, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await waitForScrollChange(scrollBar);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-  });
+      const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-  test('Verify vertical scroll with ring offsets @priority-high @mouse', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx', 'en');
+      await scrollContainer.hover();
+      if (item.orientation === 'vertical') {
+        await page.mouse.wheel(0, 300);
+      } else if (item.orientation === 'horizontal') {
+        await page.mouse.wheel(300, 0);
+      }
+      await waitForScrollChange(scrollBar);
 
-    const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    });
+    test(`Verify @keyboard Scroll Area with shadow=${item.shadow}
+        orientation=${item.orientation} shadowTheme=${item.shadowTheme}  
+        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset} @priority-high`, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
-    await scrollContainer.hover();
-    await page.mouse.wheel(0, 300);
-    await waitForScrollChange(scrollBar);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-  });
-
-  test('Verify vertical scroll with shadow and offsets @priority-high @keyboard', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/vertical-scroll-with-shadow-and-offset.tsx', 'en');
-
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-
-    await waitForScrollChange(scrollBar);
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await page.keyboard.press('Tab');
+      if (item.orientation === 'horizontal') {
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+      } else if (item.orientation === 'vertical') {
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+      }
+      await waitForScrollChange(scrollBar);
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    });
   });
 
   test('Verify scrollArea relative height visual @priority-medium @resize', async ({ page }) => {

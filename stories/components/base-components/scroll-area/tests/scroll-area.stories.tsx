@@ -1,8 +1,11 @@
 import ScrollArea from '@semcore/ui/scroll-area';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 
-import HorizontalScrollWithShadowAndOffsetExample from './examples/horizontal-scroll-with-shadow-and-offset';
-import VerticalScrollWithShadowAndOffseExample from './examples/vertical-scroll-with-shadow-and-offset';
+import type { ScrollAreaExampleProps } from './examples/scroll-props';
+import HorizontalScrollWithShadowAndOffsetExample, {
+  defaultProps as BasicExampleProps,
+} from './examples/scroll-props';
 import WithObserveParentSizeExample from './examples/with-observe-parent-size';
 
 const meta: Meta<typeof ScrollArea> = {
@@ -13,14 +16,33 @@ const meta: Meta<typeof ScrollArea> = {
 export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
-export const HorizontalScrollWithShadowAndOffset: Story = {
-  render: HorizontalScrollWithShadowAndOffsetExample,
+export const Basic: StoryObj<ScrollAreaExampleProps> = {
+  render: (args: any) => <HorizontalScrollWithShadowAndOffsetExample {...args} />,
+  argTypes: {
+    shadow: { control: { type: 'boolean' } },
+    orientation: {
+      control: { type: 'select' },
+      options: ['horizontal', 'vertical'],
+    },
+    topOffset: { control: { type: 'number' } },
+    bottomOffset: { control: { type: 'number' } },
+    leftOffset: { control: { type: 'number' } },
+    rightOffset: { control: { type: 'number' } },
+    shadowSize: { control: { type: 'number' } },
+    shadowTheme: {
+      control: { type: 'radio' },
+      options: ['dark', 'light'],
+    },
+    focusRingTopOffset: { control: { type: 'text' } },
+    focusRingRightOffset: { control: { type: 'text' } },
+    focusRingBottomOffset: { control: { type: 'text' } },
+    focusRingLeftOffset: { control: { type: 'text' } },
+  },
+  args: {
+    ...BasicExampleProps,
+  },
 };
 
 export const WithObserveParentSize: Story = {
   render: WithObserveParentSizeExample,
-};
-
-export const VerticalScrollWithShadowAndOffse: Story = {
-  render: VerticalScrollWithShadowAndOffseExample,
 };
