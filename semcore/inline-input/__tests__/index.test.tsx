@@ -102,6 +102,6 @@ describe('InlineInput', () => {
     await userEvent.keyboard('DEF');
 
     await userEvent.click(getByLabelText('Save'));
-    expect(spyConfirm.mock.calls[1][0]).toBe('ABCDEF');
+    expect(spyConfirm).toHaveBeenCalledWith('ABCDEF', expect.anything());
   });
 });
