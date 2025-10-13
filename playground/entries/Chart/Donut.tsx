@@ -1,4 +1,5 @@
 import { Chart } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { getDefaultChartControls } from './common/controls';
@@ -40,6 +41,15 @@ function getJSX(props: DonutChartJSXProps) {
       data={data}
       aria-label='Donut chart'
       {...props.donutProps}
+      innerLabel={(
+        props.donutProps.halfsize
+          ? (
+              <Text tag='tspan' dy='-1em'>
+                {props.donutProps.innerLabel}
+              </Text>
+            )
+          : props.donutProps.innerLabel
+      )}
       {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps,
