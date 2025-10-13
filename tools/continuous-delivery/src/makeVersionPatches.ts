@@ -4,7 +4,7 @@ import semver from 'semver';
 
 import type { Package } from './collectPackages';
 import { reversedTopologicalSort } from './reversedTolopologicalSort';
-import { log, normalizeSemver, prerelaseSuffix, prereleaseBaseIndex } from './utils';
+import { log, normalizeSemver } from './utils';
 
 export type VersionPatch = {
   package: Package;

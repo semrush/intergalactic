@@ -20,6 +20,7 @@ import { syncCheck } from './src/syncCheck';
 import { updateChangelogs } from './src/updateChangelogs';
 import { updateVersions } from './src/updateVersions';
 import { formatMarkdown, log } from './src/utils';
+import { Changelog } from './src/utils/changelog';
 import { getChangedFiles } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
@@ -27,55 +28,63 @@ import { NpmUtils } from './src/utils/npmUtils';
 dotenv.config();
 
 export const initPrerelease = async () => {
-  const npmData = await fetchFromNpm();
-  const packages = await collectPackages(npmData);
+  const prevReleaseTag = await gitUtils.getPrevReleaseTag();
 
-  if (process.argv.includes('--check')) {
-    await syncCheck(packages);
-    process.exit();
-  }
+  console.log(prevReleaseTag);
 
-  const versionPatches = await makeVersionPatches(packages);
+  const changelog = new Changelog(prevReleaseTag);
 
-  if (versionPatches.length > 0) {
-    await updateVersions(
-      versionPatches.map((patch) => {
-        return {
-          name: patch.package.name,
-          version: patch.to,
-        };
-      }),
-    );
-    await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
-    await updateReleaseChangelog();
+  await changelog.collectFromHistory();
 
-    if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
-      const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
-      const diffs = versionPatches.map((patch) => semver.diff(patch.from, patch.to));
-      if (diffs.includes('major') || diffs.includes('premajor')) {
-        throw new Error(
-          'Unexpected major release preventer is here. Comment this line if you sure that you really want to release major version.',
-        );
-      }
-      let releaseType = diffs.sort(
-        (a, b) => orderedReleaseType.indexOf(a!) - orderedReleaseType.indexOf(b!),
-      )[0];
-      if (!releaseType) releaseType = 'patch';
-      const versionTo = semver.inc(pkg.currentVersion, releaseType)!;
-      const patch = {
-        package: pkg,
-        from: pkg.currentVersion,
-        to: versionTo,
-        changes: [],
-        changelogUpdated: true,
-        needPublish: true,
-      };
-      await updateVersions([{ name: pkg.name, version: versionTo }]);
-      versionPatches.push(patch);
-    }
-
-    await gitUtils.initNewPrerelease(versionPatches);
-  }
+  // const npmData = await fetchFromNpm();
+  // const packages = await collectPackages(npmData);
+  //
+  // if (process.argv.includes('--check')) {
+  //   await syncCheck(packages);
+  //   process.exit();
+  // }
+  //
+  // const versionPatches = await makeVersionPatches(packages);
+  //
+  // if (versionPatches.length > 0) {
+  //   await updateVersions(
+  //     versionPatches.map((patch) => {
+  //       return {
+  //         name: patch.package.name,
+  //         version: patch.to,
+  //       };
+  //     }),
+  //   );
+  //   await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
+  //   await updateReleaseChangelog();
+  //
+  //   if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
+  //     const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
+  //     const diffs = versionPatches.map((patch) => semver.diff(patch.from, patch.to));
+  //     if (diffs.includes('major') || diffs.includes('premajor')) {
+  //       throw new Error(
+  //         'Unexpected major release preventer is here. Comment this line if you sure that you really want to release major version.',
+  //       );
+  //     }
+  //     let releaseType = diffs.sort(
+  //       (a, b) => orderedReleaseType.indexOf(a!) - orderedReleaseType.indexOf(b!),
+  //     )[0];
+  //     if (!releaseType) releaseType = 'patch';
+  //     const versionTo = semver.inc(pkg.currentVersion, releaseType)!;
+  //     const patch = {
+  //       package: pkg,
+  //       from: pkg.currentVersion,
+  //       to: versionTo,
+  //       changes: [],
+  //       changelogUpdated: true,
+  //       needPublish: true,
+  //     };
+  //     await updateVersions([{ name: pkg.name, version: versionTo }]);
+  //     versionPatches.push(patch);
+  //   }
+  //
+  //   await gitUtils.initNewPrerelease(versionPatches);
+  // }
 };
 
 export const uploadStatic = async () => {
@@ -176,6 +185,8 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
     await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
   }
 };
+
+initPrerelease();
 
 export {
   fetchFromNpm,

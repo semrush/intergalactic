@@ -142,4 +142,12 @@ export const gitUtils = {
       return null;
     }
   },
+
+  getPrevReleaseTag: async (): Promise<string> => {
+    const tags = await git.tags(['v*', '--sort', 'creatordate']);
+    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+
+    return currentReleaseTag;
+  },
 };
