@@ -52,4 +52,12 @@ export default defineConfig({
       },
     })).vite({}),
   ],
+  build: {
+    rollupOptions: {
+      external: [
+        '**/*.test.ts',
+        '**/*.test.tsx',
+      ],
+    },
+  },
 });

@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Cell background color in expanded state when a custom theme is applied.
+- Limited mode doesn't prevent interaction with accordion.
 
 ## [16.4.0] - 2025-10-03
 
