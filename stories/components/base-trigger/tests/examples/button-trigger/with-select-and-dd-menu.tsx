@@ -7,24 +7,38 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import Select from '@semcore/ui/select';
 import React from 'react';
 
-type ButtonTriggerExample = ButtonTriggerProps & BaseTriggerProps;
-const Demo = (props: ButtonTriggerExample) => (
+type ButtonTriggerSelectDDMenuExample = ButtonTriggerProps & BaseTriggerProps;
+const Demo = (props: ButtonTriggerSelectDDMenuExample) => (
   <Flex direction='column' gap={3}>
-
     <Flex gap={2} justifyContent='flex-start'>
-      <ButtonTrigger aria-label='base trigger' data-test-id='text-addon-trigger-1'>
-        <ButtonTrigger.Addon tag={ChevronDownM} />
-      </ButtonTrigger>
-      <ButtonTrigger aria-label='base trigger' disabled data-test-id='text-addon-trigger-2'>
-        <ButtonTrigger.Addon tag={ChevronDownM} />
-        <ButtonTrigger.Text>Base trigger.Text</ButtonTrigger.Text>
-      </ButtonTrigger>
-    </Flex>
-    <Flex gap={2} justifyContent='flex-start'>
-      <Select tag={ButtonTrigger} options={devices} data-test-id='base-trigger-as-tag-in-select' />
+      <Select
+        tag={ButtonTrigger}
+        options={devices}
+        data-test-id='base-trigger-as-tag-in-select'
+        aria-label='base addon'
+        size={props.size}
+        state={props.state}
+        active={props.active}
+        empty={props.empty}
+        placeholder={props.placeholder}
+        disabled={props.disabled}
+        loading={props.loading}
+        chevron={props.chevron}
+      />
       <Dropdown>
         <Dropdown.Trigger>
-          <ButtonTrigger aria-label='base trigger with dropdown' data-test-id='base-trigger-in-dropdown'>
+          <ButtonTrigger
+            aria-label='base trigger with dropdown'
+            data-test-id='base-trigger-in-dropdown'
+            size={props.size}
+            state={props.state}
+            active={props.active}
+            empty={props.empty}
+            placeholder={props.placeholder}
+            disabled={props.disabled}
+            loading={props.loading}
+            chevron={props.chevron}
+          >
             <ButtonTrigger.Text>ButtonTrigger with dropdown</ButtonTrigger.Text>
             <ButtonTrigger.Addon>
               <ChevronDownM />
@@ -42,7 +56,7 @@ const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
   children: item,
 }));
 
-export const buttonTriggerBaseExampleProps: ButtonTriggerBaseExample = {
+export const buttonTriggerSelectDDMenuExampleProps: ButtonTriggerSelectDDMenuExample = {
   size: 'm',
   state: undefined,
   active: undefined,
@@ -53,6 +67,6 @@ export const buttonTriggerBaseExampleProps: ButtonTriggerBaseExample = {
   chevron: undefined,
 };
 
-Demo.defaultProps = buttonTriggerBaseExampleProps;
+Demo.defaultProps = buttonTriggerSelectDDMenuExampleProps;
 
 export default Demo;

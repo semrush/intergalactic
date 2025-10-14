@@ -1,7 +1,7 @@
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import type { ButtonTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
 import { Flex } from '@semcore/ui/flex-box';
-import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import React from 'react';
 
 type ButtonTriggerWithAddonExample = ButtonTriggerProps & BaseTriggerProps;
@@ -19,7 +19,7 @@ const Demo = (props: ButtonTriggerWithAddonExample) => (
       loading={props.loading}
       chevron={props.chevron}
     >
-      <ButtonTrigger.Addon tag={ChevronDownM} />
+      <ButtonTrigger.Addon tag={ThumbUpM} />
     </ButtonTrigger>
     <ButtonTrigger
       aria-label='base trigger'
@@ -33,7 +33,7 @@ const Demo = (props: ButtonTriggerWithAddonExample) => (
       loading={props.loading}
       chevron={props.chevron}
     >
-      <ButtonTrigger.Addon>Addon</ButtonTrigger.Addon>
+      <ButtonTrigger.Addon><ThumbUpM /></ButtonTrigger.Addon>
       <ButtonTrigger.Text>Text</ButtonTrigger.Text>
     </ButtonTrigger>
   </Flex>
