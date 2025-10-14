@@ -25,7 +25,7 @@ export const Demo = () => {
           Step 1
         </Wizard.Stepper>
       </Wizard.Sidebar>
-      <Wizard.Content direction='column' justifyContent='space-between'>
+      <Wizard.Content>
         <Wizard.Step step={1}>
           <ScrollArea hMax={320} shadow observeParentSize>
             <Button onClick={() => alert('Button')}>Click me</Button>
