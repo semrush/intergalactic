@@ -2,10 +2,10 @@ import { execSync } from 'child_process';
 import process from 'process';
 
 import Git from 'simple-git';
-import type { PackageJson } from 'storybook/internal/types';
 
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
+import type { PackageJson } from './packages';
 
 const git = Git();
 

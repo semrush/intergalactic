@@ -2,12 +2,6 @@ import * as path from 'node:path';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
-import {
-  componentChangelogParser,
-  serializeComponentChangelog,
-  serializeReleaseChangelog,
-  releaseChangelogParser,
-} from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
 import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
@@ -15,6 +9,7 @@ import semver from 'semver';
 
 import { formatMarkdown } from '../utils';
 import type { ChangelogChange, CollectedChangelog, IncrementType } from './changelog';
+import { Changelog } from './changelog';
 
 export type PackageJson = {
   name: string;
@@ -36,22 +31,22 @@ const removedComponents = [
 ];
 
 export class Package {
-  private packagesMap = new Map<string, { path: string; data: PackageJson }>();
+  public readonly packagesMap = new Map<string, { path: string; data: PackageJson }>();
 
   public get list(): PackageJson[] {
     return Array.from(this.packagesMap.values()).map((pack) => pack.data);
   }
 
+  public get paths(): string[] {
+    return Array.from(this.packagesMap.values()).map((pack) => pack.path);
+  }
+
   public async collectPackages() {
     const semcorePath = resolvePath(dirname, '..', '..', '..', '..', 'semcore');
-    const toolsPath = resolvePath(dirname, '..', '..', '..', '..', 'tools');
 
     const packagePaths = [
       ...(await fs.readdir(semcorePath)).map((packageName) =>
         resolvePath(semcorePath, packageName),
-      ),
-      ...(await fs.readdir(toolsPath)).map((packageName) =>
-        resolvePath(toolsPath, packageName),
       ),
     ];
 
@@ -100,7 +95,7 @@ export class Package {
 
     const changelogPath = resolvePath(packageJson.path, 'CHANGELOG.md');
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const packageChangelog = componentChangelogParser(packageJson.data.name, packageChangelogString, changelogPath);
+    const packageChangelog = Changelog.componentParser(packageJson.data.name, packageChangelogString, changelogPath);
 
     packageChangelog.unshift({
       component: packageJson.data.name,
@@ -118,7 +113,7 @@ export class Package {
 
     await fs.writeFile(
       changelogPath,
-      formatMarkdown(toMarkdown(serializeComponentChangelog(packageChangelog))),
+      formatMarkdown(toMarkdown(Changelog.serializeComponent(packageChangelog))),
       'utf8',
     );
   }
@@ -143,37 +138,24 @@ export class Package {
 
     const changelogPath = resolvePath(releasePackageJson.path, 'CHANGELOG.md');
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const packageChangelog = releaseChangelogParser(
+    const packageChangelog = Changelog.releaseParser(
       packageChangelogString,
-      releasePackageJson.data.name,
-      packages.map((p) => p.data.name).concat(...removedComponents),
+      // packages.map((p) => p.data.name).concat(...removedComponents),
       changelogPath,
     );
 
-    const changes: Array<ChangelogChange & { component: string; version: string; date: string; isAutomatic: boolean }> = [];
-
     for (const [componentName, changelogComponent] of Object.entries(collectedChangelog.components)) {
-      changelogComponent.changelog.forEach((changelog) => {
-        changes.push({
-          ...changelog,
-          component: componentName,
-          date: dayjs().format('YYYY-MM-DD'),
-          isAutomatic: false,
-          version: '',
-        });
+      packageChangelog.unshift({
+        component: componentName,
+        version: collectedChangelog.version,
+        date: dayjs().format('YYYY-MM-DD'),
+        changes: changelogComponent.changelog,
       });
     }
 
-    packageChangelog.unshift({
-      component: releasePackageJson.data.name,
-      version: collectedChangelog.version,
-      date: dayjs().format('YYYY-MM-DD'),
-      changes,
-    });
-
     await fs.writeFile(
       changelogPath,
-      formatMarkdown(toMarkdown(serializeReleaseChangelog(packageChangelog))),
+      formatMarkdown(toMarkdown(Changelog.serializeRelease(packageChangelog))),
       'utf8',
     );
   }
