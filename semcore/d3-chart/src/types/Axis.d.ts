@@ -38,6 +38,8 @@ export type AxisTicksProps = Context & {
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
+  /** Enables multiline tick labels. */
+  multiline?: boolean;
 };
 
 /** @deprecated */

@@ -124,6 +124,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
      * Count of ticks for Y axis
      */
     yTicksCount?: number;
+    /** Enables multiline tick labels for X axis. */
+    multilineXTicks?: boolean;
+    /** Enables multiline tick labels for Y axis. */
+    multilineYTicks?: boolean;
     /**
      * Group key for all array-based charts (for get keys of items for legend except that group key)
      */

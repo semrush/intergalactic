@@ -4,10 +4,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.2.1] - 2025-10-17
 
+### Added
+
+- New `multiline` property for `XAxis.Ticks/YAxis.Ticks` and `multilineXTicks/multilineYTicks` for `Chart`.
+
 ### Fixed
 
 - Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
-
 
 ## [16.2.0] - 2025-10-03
 
