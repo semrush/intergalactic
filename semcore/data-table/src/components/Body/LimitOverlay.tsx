@@ -120,6 +120,7 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
         gridArea={this.limitOverlayGridArea}
         w={width ? width : undefined}
         left={left ? left : undefined}
+        onClick={(e) => e.stopPropagation()}
       >
         <Box
           role='gridcell'
