@@ -1,6 +1,7 @@
 import ScrollArea from '@semcore/ui/scroll-area';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import InteractiveElememntInsideScrollAreaExample from './examples/iteractive-element-inside-scroll-area';
 import RelativeContainerHeightExample from './examples/relative_container_height';
 import ScrollbarOutOfContainerExample from './examples/scrollbar_out_of_container';
 
@@ -18,4 +19,8 @@ export const ScrollbarOutOfContainer: Story = {
 
 export const RelativeContainerHeight: Story = {
   render: RelativeContainerHeightExample,
+};
+
+export const InteractiveElememntInsideScroll: Story = {
+  render: InteractiveElememntInsideScrollAreaExample,
 };
