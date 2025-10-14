@@ -24,17 +24,22 @@ import { Changelog } from './src/utils/changelog';
 import { getChangedFiles } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
+import { Package } from './src/utils/packages';
 
 dotenv.config();
 
 export const initPrerelease = async () => {
   const prevReleaseTag = await gitUtils.getPrevReleaseTag();
 
-  console.log(prevReleaseTag);
+  const packages = new Package();
+  await packages.collectPackages();
 
   const changelog = new Changelog(prevReleaseTag);
-
   await changelog.collectFromHistory();
+
+  await packages.updateVersions(changelog.data);
+
+  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 
   // const npmData = await fetchFromNpm();
   // const packages = await collectPackages(npmData);
@@ -185,8 +190,6 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
     await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
   }
 };
-
-initPrerelease();
 
 export {
   fetchFromNpm,
