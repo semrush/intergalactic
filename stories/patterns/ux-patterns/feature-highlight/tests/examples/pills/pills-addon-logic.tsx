@@ -18,7 +18,7 @@ const Demo = () => (
       </PillsFH.HighlightedItem>
 
       <PillsFH.HighlightedItem value={2}>
-        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5}></PillsFH.HighlightedItem.Addon>
+        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5}>{0}</PillsFH.HighlightedItem.Addon>
         <PillsFH.HighlightedItem.Text>Number</PillsFH.HighlightedItem.Text>
         <PillsFH.HighlightedItem.Addon>{0}</PillsFH.HighlightedItem.Addon>
       </PillsFH.HighlightedItem>
