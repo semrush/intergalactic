@@ -1,27 +1,36 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
+
 type BaseExampleProps = {
   showLegend?: boolean;
+  multilineXTicks?: boolean;
+  marginX?: number;
+  data?: Array<{
+    category: string;
+    bar: number;
+  }>;
 };
+
 const Demo = (props: BaseExampleProps) => {
-  const { showLegend } = props;
+  const { showLegend, multilineXTicks, data, marginX } = props;
   return (
     <>
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-
       <Chart.Bar
         groupKey='category'
-        data={data}
+        data={data ?? defaultData}
         plotWidth={500}
         plotHeight={300}
         aria-label='Bar chart'
         showLegend={showLegend}
+        multilineXTicks={multilineXTicks}
+        marginX={marginX}
       />
     </>
   );
 };
 
-const data = [
+const defaultData = [
   { category: 'Category 0', bar: 2 },
   { category: 'Category 1', bar: 5 },
   { category: 'Category 2', bar: 7 },
