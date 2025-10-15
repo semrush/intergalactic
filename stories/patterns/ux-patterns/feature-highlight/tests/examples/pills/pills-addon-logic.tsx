@@ -11,7 +11,7 @@ const Demo = () => (
     <PillsFH defaultValue={1}>
       <PillsFH.HighlightedItem value={1}>
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
-        <PillsFH.HighlightedItem.Text direction='column' m={0}>
+        <PillsFH.HighlightedItem.Text m={0}>
           Starts
         </PillsFH.HighlightedItem.Text>
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={5} />
