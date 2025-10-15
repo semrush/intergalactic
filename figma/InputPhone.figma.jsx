@@ -3,7 +3,6 @@ import { ButtonLink } from '@semcore/ui/button';
 import Flag, { iso2Name } from '@semcore/ui/flags';
 import { Box } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
-import React from 'react';
 
 // Need somehow to get the readOnly and disabled props from the Input component
 // and pass it to the Input.Value component

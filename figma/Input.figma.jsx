@@ -2,7 +2,6 @@ import figma from '@figma/code-connect/react';
 import { Flex } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
-import React from 'react';
 
 // Need somehow to get the readOnly and disabled props from the Input component
 // and pass it to the Input.Value component
@@ -81,16 +80,32 @@ figma.connect(
     props: {
       label: figma.textContent('↳ label'),
       input: figma.children('Input'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
     },
-    example: ({ label, input }) => (
+    example: ({ label, input, optional, counter, infoIcon }) => (
       <Flex direction='column' gap={2}>
         <Flex direction='row' justifyContent='space-between'>
           <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
             {label}
           </Text>
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
         </Flex>
         {input}
       </Flex>
@@ -106,16 +121,32 @@ figma.connect(
     props: {
       label: figma.textContent('↳ label'),
       input: figma.children('Input'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
     },
-    example: ({ label, input }) => (
+    example: ({ label, input, optional, counter, infoIcon }) => (
       <Flex direction='row' gap={6}>
         <Flex direction='column' mt={/* value */}>
           <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
             {label}
           </Text>
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
         </Flex>
           {input}
       </Flex>

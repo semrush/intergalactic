@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Counter from '@semcore/ui/counter';
-import React from 'react';
 
 figma.connect(
   Counter,

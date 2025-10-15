@@ -9,7 +9,6 @@ import Skeleton, { LineChartSkeleton,
   HistogramChartSkeleton,
   DonutChartSkeleton,
 } from '@semcore/ui/skeleton';
-import React from 'react';
 
 // Different skeleton shapes which are not components in the code
 

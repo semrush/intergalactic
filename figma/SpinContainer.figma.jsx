@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import SpinContainer from '@semcore/ui/spin-container';
-import React from 'react';
 
 figma.connect(
   SpinContainer,

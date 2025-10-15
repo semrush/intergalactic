@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect/react';
 import Dot from '@semcore/ui/dot';
-import React from 'react';
 
 figma.connect(
   Dot,

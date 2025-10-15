@@ -1,7 +1,6 @@
 import figma from '@figma/code-connect';
 import Notice from '@semcore/ui/notice';
 import Select from '@semcore/ui/select';
-import React from 'react';
 
 // TODO: When we add mappings for Notice, we can import Notice here, so I left import for Notice.
 

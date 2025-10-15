@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Skeleton from '@semcore/ui/skeleton';
-import React from 'react';
 
 // Skeleton for hiding text
 

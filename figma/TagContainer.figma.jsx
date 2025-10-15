@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Tag, { TagContainer } from '@semcore/ui/tag';
-import React from 'react';
 
 figma.connect(
   TagContainer,

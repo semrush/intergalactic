@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect/react';
 import Pills from '@semcore/ui/pills';
-import React from 'react';
 
 figma.connect(
   Pills.Item,

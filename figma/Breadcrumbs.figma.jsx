@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect/react';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
-import React from 'react';
 
 figma.connect(
   Breadcrumbs,

@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Switch from '@semcore/ui/switch';
-import React from 'react';
   
 figma.connect(
   Switch,

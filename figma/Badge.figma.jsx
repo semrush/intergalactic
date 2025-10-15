@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect/react';
 import Badge from '@semcore/ui/badge';
-import React from 'react';
 
 figma.connect(
   Badge,

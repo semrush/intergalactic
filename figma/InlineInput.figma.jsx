@@ -1,10 +1,9 @@
 import figma from '@figma/code-connect/react';
 import InlineInput from '@semcore/ui/inline-input';
-import React from 'react';
 
 figma.connect(
   InlineInput.Value,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=53383-2891&t=Q0bSsRErIQ7IEZAU-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=53372-292643&t=I48qqNRyVr8Tdi87-11',
   {
     props: {
       value: figma.textContent('↳ text'),
@@ -15,7 +14,7 @@ figma.connect(
 
 figma.connect(
   InlineInput,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=53383-2898&t=Q0bSsRErIQ7IEZAU-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=17000-123421&t=I48qqNRyVr8Tdi87-11',
   {
     props: {
       state: figma.enum('state', {

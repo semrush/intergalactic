@@ -2,7 +2,6 @@ import figma from '@figma/code-connect';
 import Textarea from '@semcore/ui/textarea';
 import { Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
-import React from 'react';
 
 figma.connect(
   Textarea.Value,

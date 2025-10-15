@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Select from '@semcore/ui/select';
-import React from 'react';
 
 figma.connect(
   Select.Menu,

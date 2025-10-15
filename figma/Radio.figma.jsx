@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Radio from '@semcore/ui/radio';
-import React from 'react';
 
 figma.connect(
   Radio,

@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import Link from '@semcore/ui/link';
-import React from 'react';
 
 figma.connect(
   Link,

@@ -15,7 +15,7 @@ figma.connect(
         'numbers (ol)': figma.textContent('number'),
         'custom marker (ul)': figma.instance('marker'),
       }),
-      text: figma.string('↳ text'),
+      text: figma.textContent('↳ text'),
     },
     example: ({ marker, text }) => (
       <List.Item marker={marker}>

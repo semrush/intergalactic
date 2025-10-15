@@ -1,7 +1,6 @@
 import figma from '@figma/code-connect';
 import { Flex } from '@semcore/ui/base-components';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
-import React from 'react';
 
 figma.connect(
   RadioGroup,

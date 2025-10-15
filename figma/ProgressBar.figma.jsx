@@ -1,6 +1,5 @@
 import figma from '@figma/code-connect';
 import ProgressBar from '@semcore/ui/progress-bar';
-import React from 'react';
 
 figma.connect(
   ProgressBar,

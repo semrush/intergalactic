@@ -1,7 +1,6 @@
 import figma from '@figma/code-connect';
 import Checkbox from '@semcore/ui/checkbox';
 import { Flex } from '@semcore/ui/base-components';
-import React from 'react';
 
 figma.connect(
   Checkbox,

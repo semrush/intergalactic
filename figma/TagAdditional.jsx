@@ -1,7 +1,6 @@
 import figma from '@figma/code-connect';
 import MathPlusM from '@semcore/ui/icon/Math/m';
 import Tag from '@semcore/ui/tag';
-import React from 'react';
 
 figma.connect(
   Tag,
