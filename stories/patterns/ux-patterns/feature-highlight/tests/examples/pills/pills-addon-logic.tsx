@@ -18,7 +18,7 @@ const Demo = () => (
       </PillsFH.HighlightedItem>
 
       <PillsFH.HighlightedItem value={2}>
-        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5}>{0}</PillsFH.HighlightedItem.Addon>
+        <PillsFH.HighlightedItem.Addon animatedSparkleCount={5}></PillsFH.HighlightedItem.Addon>
         <PillsFH.HighlightedItem.Text>Number</PillsFH.HighlightedItem.Text>
         <PillsFH.HighlightedItem.Addon>{0}</PillsFH.HighlightedItem.Addon>
       </PillsFH.HighlightedItem>
@@ -35,7 +35,7 @@ const Demo = () => (
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={0}><BadgeFH>AI-powered</BadgeFH></PillsFH.HighlightedItem.Addon>
       </PillsFH.HighlightedItem>
 
-      <PillsFH.HighlightedItem value={4}>
+      <PillsFH.HighlightedItem value={5}>
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={4}>Test</PillsFH.HighlightedItem.Addon>
         <PillsFH.HighlightedItem.Text>Text </PillsFH.HighlightedItem.Text>
         <PillsFH.HighlightedItem.Addon animatedSparkleCount={0}>Test</PillsFH.HighlightedItem.Addon>
