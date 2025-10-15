@@ -66,6 +66,26 @@ SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
+SCell[theme='muted'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCell[theme='info'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+}
+
+SCell[theme='success'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+}
+
+SCell[theme='warning'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+}
+
+SCell[theme='danger'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+}
+
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-accordion, #f4f5f9);
 }

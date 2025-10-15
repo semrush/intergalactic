@@ -18,6 +18,7 @@ import AccordionWithRenderCellExample from './examples/accordion-tests/accordion
 import AccordionWithMoreExample from './examples/accordion-tests/accrodion-with-more-interactive';
 import AccordionWithSelectExample from './examples/accordion-tests/accrodion-with-select';
 import ColoredAccordionExample from './examples/accordion-tests/colored-accordion';
+import ColorCellsInAccordionExample from './examples/accordion-tests/colored-cells-in-accordion';
 import TabeInTableAnimationTestExample, { accordionWithTablenProps } from './examples/accordion-tests/table-in-table-animation-test';
 import type { AccordionWithTablenProps } from './examples/accordion-tests/table-in-table-animation-test';
 import TabeInTableFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
@@ -103,6 +104,10 @@ export const TabeInTableFixedColumn: StoryObj<TableInTableFixedColumnProps> = {
 
 export const ColoredAccordion: Story = {
   render: ColoredAccordionExample,
+};
+
+export const ColorCellsInAccordion: Story = {
+  render: ColorCellsInAccordionExample,
 };
 
 export const AccordionInTableInTable: StoryObj<TableInTableInTableProps> = {
