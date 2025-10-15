@@ -190,7 +190,45 @@ test.describe('Pills', () => {
         expect(await addon.textContent()).toBe('0');
       }
     });
-    // todo - i'll add for other types after bug fix
+
+    await test.step('Icon in addons', async () => {
+      const addons = pill.nth(2).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+      }
+    });
+
+    await test.step('Badge in addons', async () => {
+      const addons = pill.nth(3).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        const badge = addon.locator('[data-ui-name="BadgeFH"]');
+        await expect(icons).toHaveCount(0);
+        await expect(badge).toHaveCount(1);
+      }
+    });
+
+    await test.step('Text in addons', async () => {
+      const addons = pill.nth(4).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('Test');
+      }
+    });
   });
 });
 
