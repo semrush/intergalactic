@@ -16,7 +16,7 @@ const Demo = () => {
 const data = Array(5)
   .fill({})
   .map((d, i) => ({
-    category: `Google AI Mode ${i} Tops`,
+    category: `Category ${i}`,
     bar: Math.random() * 10,
   }));
 
