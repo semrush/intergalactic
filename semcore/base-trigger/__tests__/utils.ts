@@ -1,5 +1,5 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import type { Page } from 'playwright';
+import type { Page, Locator } from 'playwright';
 
 export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('Tab');
@@ -11,15 +11,27 @@ export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('Enter');
 };
 
-export async function checkBackgroundColor(page: any, selector: any, expectedColor: any) {
-  const element = await page.locator(selector);
-  const backgroundColor = await element.evaluate((el: any) => getComputedStyle(el).backgroundColor);
+export async function checkBackgroundColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
+  const element = typeof selectorOrLocator === 'string'
+    ? page.locator(selectorOrLocator)
+    : selectorOrLocator;
+
+  const backgroundColor = await element.evaluate(
+    (el: HTMLElement) => getComputedStyle(el).backgroundColor,
+  );
+
   expect(backgroundColor).toBe(expectedColor);
 }
 
-export async function checkBorderColor(page: any, selector: any, expectedColor: any) {
-  const element = await page.locator(selector);
-  const borderColor = await element.evaluate((el: any) => getComputedStyle(el).borderColor);
+export async function checkBorderColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
+  const element = typeof selectorOrLocator === 'string'
+    ? page.locator(selectorOrLocator)
+    : selectorOrLocator;
+
+  const borderColor = await element.evaluate(
+    (el: HTMLElement) => getComputedStyle(el).borderColor,
+  );
+
   expect(borderColor).toBe(expectedColor);
 }
 
