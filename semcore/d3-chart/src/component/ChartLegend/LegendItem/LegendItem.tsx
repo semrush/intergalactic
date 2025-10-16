@@ -62,7 +62,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getIconProps(): LegendItem & IRootComponentProps {
+  getIconProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
     return {
@@ -72,7 +72,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps {
+  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
     const { id, checked, color: _color, onChangeLegendItem, shape: _shape, ...props } = this.asProps;
 
     return {
@@ -84,7 +84,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getAdditionalLabelProps(): LegendItem & IRootComponentProps {
+  getAdditionalLabelProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
     const { additionalInfo, onChangeLegendItem, id, checked } = props;
@@ -96,7 +96,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getCountProps(): LegendItem & IRootComponentProps {
+  getCountProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
     const { additionalInfo, onChangeLegendItem, id, checked } = props;
