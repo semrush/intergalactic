@@ -148,6 +148,21 @@ test.describe('@functional @scroll-area', () => {
       .poll(async () => await checkAriaMaxValue(scrollBar))
       .toBeGreaterThanOrEqual(max1);
   });
+
+  test('Verify interactive element clickable inside focused scroll area', async ({ page }) => {
+    const logs: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        logs.push(msg.text());
+      }
+    });
+
+    await loadPage(page, 'stories/components/base-components/scroll-area/advanced/examples/iteractive-element-inside-scroll-area.tsx', 'en');
+    await page.keyboard.press('Tab');
+    const button = page.getByRole('button', { name: 'Click me' });
+    await button.click();
+    await expect.poll(() => logs).toContain('Button clicked');
+  });
 });
 
 /* =====================================================
