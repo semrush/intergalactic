@@ -11,6 +11,11 @@ RefObject,
 import type { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
+// We need to add this option for working in FF and Safari
+interface FocusOptions {
+  focusVisible?: boolean;
+}
+
 /** @deprecated */
 type KnownKeys<T> = {
   [K in keyof T]: string extends K ? never : number extends K ? never : K;

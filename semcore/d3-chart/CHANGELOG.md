@@ -8,7 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
 
-
 ## [16.2.0] - 2025-10-03
 
 ### Changed

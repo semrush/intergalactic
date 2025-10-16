@@ -8,6 +8,7 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { isFocusInside, hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
+import { setFocus } from '@semcore/ui/core/lib/utils/focus-lock/setFocus';
 import { NoData } from '@semcore/widget-empty';
 import type { ReactElement } from 'react';
 import * as React from 'react';
@@ -557,7 +558,7 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus();
+      cell?.focus({ focusVisible: true });
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
@@ -759,9 +760,9 @@ class DataTableRoot<
 
       if (cell instanceof HTMLElement) {
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
-          e.target.focus();
+          e.target.focus({ focusVisible: true });
         } else {
-          cell.focus();
+          cell.focus({ focusVisible: true });
         }
       }
 
