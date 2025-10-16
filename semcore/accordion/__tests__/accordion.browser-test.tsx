@@ -25,7 +25,7 @@ export const locators = {
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @accordion', () => {
+test.describe('@visual', () => {
   const variables = [
     { use: 'primary' },
     { use: 'secondary' },
@@ -46,7 +46,6 @@ test.describe('@visual @accordion', () => {
 
       await test.step('Verify toggle margins', async () => {
         const count = await locators.chevron(page).count();
-        console.log(count);
         for (let i = 0; i < count; i++) {
           await expect(locators.chevron(page, i)).toHaveCSS('margin-right', '8px');
         }

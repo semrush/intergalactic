@@ -272,7 +272,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe('@functional @base-trigger', () => {
   test('Verify @keyboard navigation and changing values @priority-high', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger.tsx', 'en');
+    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(locators.trigger(page).first()).toBeFocused();
@@ -295,7 +295,7 @@ test.describe('@functional @base-trigger', () => {
   });
 
   test('Verify @mouse navigation and changing values @priority-high', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger.tsx', 'en');
+    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
 
     await locators.trigger(page).first().click();
     const initialWidth = await locators.trigger(page).first().boundingBox().then((b) => b?.width || 0);
@@ -314,7 +314,7 @@ test.describe('@functional @base-trigger', () => {
   });
 
   test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger.tsx', 'en');
+    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
 
     await locators.trigger(page).first().click();
     await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
@@ -331,5 +331,15 @@ test.describe('@functional @base-trigger', () => {
     await locators.options(page, 'Desktop').click();
     await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
     await expect(locators.options(page, 'Desktop')).toHaveAttribute('value', 'Desktop');
+  });
+
+  test('Verify ellipsis in Base trigger and few tags @priotity-high', async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
+
+    await locators.button(page).nth(1).hover();
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
 });

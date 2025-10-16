@@ -1,14 +1,11 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
-import { selectOption } from './utils';
+import { selectOption, locators } from './utils';
 
 test.describe('Filter-Trigger', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/filter-trigger/docs/examples/usage_with_select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
     // check empty filter trigger
     {
@@ -28,10 +25,7 @@ test.describe('Filter-Trigger', () => {
   });
 
   test('Accessible name with counter', async ({ page }) => {
-    const standPath = 'stories/components/filter-trigger/docs/examples/accessible_name.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/accessible_name.tsx', 'en');
 
     // check empty filter trigger
     {
@@ -42,13 +36,33 @@ test.describe('Filter-Trigger', () => {
 
     // check filter trigger with value
     {
-      const trigger = page.getByLabel('Material');
-      await trigger.click();
+      await locators.trigger(page).nth(1).click();
+      await locators.options(page).nth(1).waitFor({ state: 'visible' });
+      await locators.options(page).nth(0).click();
+      await locators.options(page).nth(1).click();
+      await locators.options(page).nth(2).click();
+      await locators.trigger(page).nth(1).click();
 
-      const options = page.getByRole('option');
-      await options.nth(0).click();
-      await options.nth(1).click();
-      await options.nth(2).click();
+      await locators.options(page).nth(1).waitFor({ state: 'hidden' });
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+  });
+
+  test('Programmatic focus', async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx', 'en');
+
+    // check empty filter trigger
+    {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // check filter trigger with value
+    {
+      await selectOption(page);
 
       const violations = await getAccessibilityViolations({ page });
 
@@ -59,10 +73,7 @@ test.describe('Filter-Trigger', () => {
 
 test.describe('Link-Trigger', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
     // check empty filter trigger
     {
@@ -84,10 +95,7 @@ test.describe('Link-Trigger', () => {
 
 test.describe('Button-Trigger', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
     // check empty filter trigger
     {

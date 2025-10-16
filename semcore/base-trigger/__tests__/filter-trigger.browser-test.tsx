@@ -179,8 +179,8 @@ test.describe('@functional @filter-trigger', () => {
       await expect(locators.trigger(page)).toBeFocused();
     });
 
-    test('Verify Filter Triger and select @mouse @keyboard interactions @priority-high', async ({ page, browserName }) => {
-      await loadPage(page, 'stories/components/filter-trigger//filter-trigger/examples/usage_with_select.tsx', 'en');
+    test('Verify Filter Triger and select @mouse @keyboard interactions @priority-high', async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
       locators.trigger(page).click();
       await locators.options(page, 'Blue').waitFor({ state: 'visible' });
@@ -336,8 +336,8 @@ test.describe('@functional @filter-trigger', () => {
       await locators.trigger(page).click();
 
       await expect(locators.trigger(page)).toBeVisible();
-      await expect(locators.trigger(page)).not.toBeFocused();
-      await locators.trigger(page).click();
+      await expect(locators.clearButton(page)).toBeVisible();
+      await locators.clearButton(page).click();
 
       await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).not.toBeVisible();
     });

@@ -9,6 +9,7 @@ export const selectOption = async (page: Page): Promise<void> => {
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Enter');
+  await locators.options(page).first().waitFor({ state: 'hidden' });
 };
 
 export const locators = {
