@@ -24,3 +24,16 @@ test.describe('Radio', () => {
     expect(violations).toEqual([]);
   });
 });
+
+test.describe('UX pattern', () => {
+  test('Radio and select', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+});

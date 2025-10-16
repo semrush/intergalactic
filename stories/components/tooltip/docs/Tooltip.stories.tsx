@@ -71,6 +71,6 @@ export const Singleton: Story = {
 
 export const Title: Story = {
   render: TitleExample,
-  play: playWrapper(SingletonTest),
+  play: playWrapper(TitleTest),
 
 };
