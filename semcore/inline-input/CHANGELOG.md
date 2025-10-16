@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.1] - 2025-10-17
+
+### Fixed
+
+- `onConfirm` behaviour to query latest input updates.
+
 ## [16.2.0] - 2025-10-03
 
 ### Changed

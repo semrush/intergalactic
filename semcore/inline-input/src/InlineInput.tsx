@@ -64,6 +64,7 @@ type ControlAsProps = {
 };
 type ConfirmControlAsProps = ControlAsProps & {
   onConfirm?: OnConfirm;
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
@@ -148,7 +149,7 @@ class InlineInputBase extends Component<RootAsProps> {
   getConfirmControlProps() {
     const { loading, getI18nText } = this.asProps;
     return {
-      value: this.inputRef.current?.value,
+      inputRef: this.inputRef,
       loading,
       onConfirm: this.handleConfirm,
       getI18nText,
@@ -318,14 +319,14 @@ const Addon: React.FC<AddonAsProps> = (props) => {
 
 const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   const SAddon = Root;
-  const { Children, children: hasChildren } = props;
+  const { Children, children: hasChildren, inputRef } = props;
   const title = props.title ?? props.getI18nText('confirm');
 
   const handleConfirm = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      props.onConfirm?.(props.value ?? '', event);
+      props.onConfirm?.(inputRef?.current?.value ?? '', event);
     },
-    [props.onConfirm, props.value],
+    [props.onConfirm, inputRef?.current],
   );
 
   const handleKeydown = React.useCallback(
