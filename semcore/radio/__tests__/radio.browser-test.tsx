@@ -368,6 +368,7 @@ test.describe('Functional - Radio with Additional input props', () => {
       const mark = page.locator('[data-ui-name="Value.RadioMark"]').nth(i);
 
       await expect(radio).toHaveAttribute('aria-invalid', 'false');
+      await expect(radio).toHaveAttribute('name', 'radio');
 
       await expect(radio).not.toBeChecked();
 
