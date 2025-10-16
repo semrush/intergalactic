@@ -5,8 +5,9 @@ import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {
-  return (
+  const [_, forceUpdate] = React.useState(0);
 
+  return (
     <>
       <Box h={50}>
         Some scrollable text before table
@@ -24,6 +25,10 @@ const Demo = () => {
           withScrollBar: true,
         }}
         w='100%'
+        onResize={() => {
+          console.log('handle resize');
+          forceUpdate((prev) => prev + 1);
+        }}
         columns={[
           {
             name: 'group1',
