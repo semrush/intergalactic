@@ -566,10 +566,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               aria-setsize={1}
               aria-posinset={1}
               accordionRowIndex={0}
-              rowIndex={rowIndex}
+              rowIndex={rowIndex + 1}
               rows={[row]}
               row={row}
-              columnIndex={1}
+              columnIndex={0}
               // @ts-ignore
               column={{ name: ACCORDION }}
               w='100%'

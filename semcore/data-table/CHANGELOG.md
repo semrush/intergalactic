@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Keyboard interaction after mouse clicking in Safari.
+- The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
 
 ## [16.4.1] - 2025-10-17
 
