@@ -7,6 +7,7 @@ type ButtonTriggerBaseExample = ButtonTriggerProps & BaseTriggerProps;
 const Demo = (props: ButtonTriggerBaseExample) => (
   <Flex direction='column' gap={3}>
     <ButtonTrigger
+      w={150}
       size={props.size}
       state={props.state}
       active={props.active}

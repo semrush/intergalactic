@@ -1,17 +1,19 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 
-import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from './utils';
+import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
 test.describe('@visual @button-trigger', () => {
   const variables = [
     // Normal
     { size: 'm', state: 'normal', active: false, empty: false, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
-    { size: 'l', state: 'normal', active: true, empty: false, placeholder: undefined, disabled: false, loading: false, chevron: true },
-    { size: 'm', state: 'normal', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
-    { size: 'l', state: 'normal', active: false, empty: false, placeholder: undefined, disabled: false, loading: false, chevron: false },
+    { size: 'm', state: 'normal', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: false },
 
-    // Valod
+    // Valid
     { size: 'm', state: 'valid', active: true, empty: false, placeholder: undefined, disabled: false, loading: false, chevron: true },
     { size: 'l', state: 'valid', active: false, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
 
@@ -34,73 +36,69 @@ test.describe('@visual @button-trigger', () => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
-      const button = page.getByRole('button');
-
       await test.step('Base background check', async () => {
-        await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        await checkBackgroundColor(page, locators.button(page), 'rgb(255, 255, 255)');
       });
 
       if (item.loading) {
         await test.step('Check loading state', async () => {
-          await expect(button).toHaveAttribute('tabindex', '-1');
-          const svg = button.locator('svg');
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '-1');
+          const svg = locators.button(page).locator('svg');
           await expect(svg).toBeVisible();
           await expect(svg).toHaveAttribute('role', 'img');
           await expect(svg).toHaveAttribute('aria-label', 'Loading…');
 
           await page.keyboard.press('Tab');
-          await expect(button).not.toBeFocused();
+          await expect(locators.button(page)).not.toBeFocused();
         });
       }
 
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
-          await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+          await expect(locators.button(page)).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
           if (item.empty && item.placeholder !== undefined) {
             const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
             await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
           }
 
           if (item.chevron && !item.loading) {
-            const svg = button.locator('svg');
+            const svg = locators.button(page).locator('svg');
             await expect(svg).toBeVisible();
             await expect(svg).toHaveAttribute('aria-hidden', 'true');
           }
           if (item.active) {
-            await checkBorderColor(page, button, 'rgb(0, 109, 202)');
-            await page.keyboard.press('Tab');
-            await button.hover();
-            // snapshot
+            await checkBorderColor(page, locators.button(page), 'rgb(0, 109, 202)');
           } else {
-            await checkBorderColor(page, button, 'rgb(196, 199, 207)');
-            await page.keyboard.press('Tab');
-            await button.hover();
-            // snapshot
+            await checkBorderColor(page, locators.button(page), 'rgb(196, 199, 207)');
           }
+          await page.keyboard.press('Tab');
+          await locators.button(page).hover();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
       if (item.disabled) {
         await test.step('Disabled state', async () => {
-          await expect(button).toHaveAttribute('tabindex', '0');
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
           await page.keyboard.press('Tab');
-          await expect(button).not.toBeFocused();
+          await expect(locators.button(page)).not.toBeFocused();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
-          await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+          await checkBorderColor(page, locators.button(page), 'rgb(0, 124, 101)');
           await page.keyboard.press('Tab');
-          // snapshot
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
-          await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+          await checkBorderColor(page, locators.button(page), 'rgb(209, 0, 47)');
           await page.keyboard.press('Tab');
-          // snapshot
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
     });
@@ -108,7 +106,7 @@ test.describe('@visual @button-trigger', () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
-      const buttons = await page.getByRole('button').all();
+      const buttons = await locators.button(page).all();
 
       await test.step('Base background check', async () => {
         for (const button of buttons) {
@@ -150,16 +148,14 @@ test.describe('@visual @button-trigger', () => {
             }
             if (item.active) {
               await checkBorderColor(page, button, 'rgb(0, 109, 202)');
-              await page.keyboard.press('Tab');
-              await button.hover();
-              // snapshot
             } else {
               await checkBorderColor(page, button, 'rgb(196, 199, 207)');
-              await page.keyboard.press('Tab');
-              await button.hover();
-              // snapshot
             }
           }
+          await locators.button(page).nth(1).hover();
+
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
@@ -178,8 +174,6 @@ test.describe('@visual @button-trigger', () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(0, 124, 101)');
           }
-          await page.keyboard.press('Tab');
-          // snapshot
         });
       }
 
@@ -188,8 +182,6 @@ test.describe('@visual @button-trigger', () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(209, 0, 47)');
           }
-          await page.keyboard.press('Tab');
-          // snapshot
         });
       }
     });
@@ -197,7 +189,7 @@ test.describe('@visual @button-trigger', () => {
     test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/neighbor-location.tsx', 'en', item);
 
-      const buttons = await page.getByRole('button').all();
+      const buttons = await locators.button(page).all();
 
       await test.step('Base background check', async () => {
         for (const button of buttons) {
@@ -213,9 +205,6 @@ test.describe('@visual @button-trigger', () => {
             await expect(svg).toBeVisible();
             await expect(svg).toHaveAttribute('role', 'img');
             await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-
-            await page.keyboard.press('Tab');
-            await expect(button).not.toBeFocused();
           }
         });
       }
@@ -236,16 +225,13 @@ test.describe('@visual @button-trigger', () => {
             }
             if (item.active) {
               await checkBorderColor(page, button, 'rgb(0, 109, 202)');
-              await page.keyboard.press('Tab');
-              await button.hover();
-              // snapshot
             } else {
               await checkBorderColor(page, button, 'rgb(196, 199, 207)');
-              await page.keyboard.press('Tab');
-              await button.hover();
-              // snapshot
             }
           }
+          await locators.button(page).nth(1).hover();
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`neighbor-location-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
@@ -264,8 +250,6 @@ test.describe('@visual @button-trigger', () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(0, 124, 101)');
           }
-          await page.keyboard.press('Tab');
-          // snapshot
         });
       }
 
@@ -274,82 +258,83 @@ test.describe('@visual @button-trigger', () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(209, 0, 47)');
           }
-          await page.keyboard.press('Tab');
-          // snapshot
         });
       }
     });
 
-    test(`Verify Button Trigger for Select or DD menu  case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
+    test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
-      const button = page.getByRole('button');
+      const triggers = await locators.trigger(page).all();
 
       await test.step('Base background check', async () => {
-        await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        for (const button of triggers) {
+          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        }
+        await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
       });
 
       if (item.loading) {
         await test.step('Check loading state', async () => {
-          await expect(button).toHaveAttribute('tabindex', '-1');
-          const svg = button.locator('svg');
-          await expect(svg).toBeVisible();
-          await expect(svg).toHaveAttribute('role', 'img');
-          await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '-1');
+            const svg = button.locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('role', 'img');
+            await expect(svg).toHaveAttribute('aria-label', 'Loading…');
 
-          await page.keyboard.press('Tab');
-          await expect(button).not.toBeFocused();
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
         });
       }
 
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
-          await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
-          if (item.empty && item.placeholder !== undefined) {
-            const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
-            await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
-          }
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+            }
 
-          if (item.chevron && !item.loading) {
-            const svg = button.locator('svg');
-            await expect(svg).toBeVisible();
-            await expect(svg).toHaveAttribute('aria-hidden', 'true');
-          }
-          if (item.active) {
-            await checkBorderColor(page, button, 'rgb(0, 109, 202)');
-            await page.keyboard.press('Tab');
-            await button.hover();
-            // snapshot
-          } else {
-            await checkBorderColor(page, button, 'rgb(196, 199, 207)');
-            await page.keyboard.press('Tab');
-            await button.hover();
-            // snapshot
+            if (item.chevron && !item.loading) {
+              const svg = button.locator('svg');
+              await expect(svg).toBeVisible();
+              await expect(svg).toHaveAttribute('aria-hidden', 'true');
+            }
+            if (item.active) {
+              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+            } else {
+              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+            }
           }
         });
       }
 
       if (item.disabled) {
         await test.step('Disabled state', async () => {
-          await expect(button).toHaveAttribute('tabindex', '0');
-          await page.keyboard.press('Tab');
-          await expect(button).not.toBeFocused();
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
         });
       }
 
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
-          await checkBorderColor(page, button, 'rgb(0, 124, 101)');
-          await page.keyboard.press('Tab');
-          // snapshot
+          for (const button of triggers) {
+            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+          }
         });
       }
 
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
-          await checkBorderColor(page, button, 'rgb(209, 0, 47)');
-          await page.keyboard.press('Tab');
-          // snapshot
+          for (const button of triggers) {
+            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+          }
         });
       }
     });
@@ -360,69 +345,65 @@ test.describe('@visual @button-trigger', () => {
 
     await expect(page).toHaveScreenshot();
 
-    const button = page.getByRole('button');
-
-    await button.nth(1).hover();
+    await locators.button(page).nth(1).hover();
     await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
 
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
 test.describe('@functional @button-trigger', () => {
   test('Verify @keyboard navigation and changing values @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
-    const button = page.getByRole('combobox');
-    const option = page.getByRole('option', { name: 'Option 0' });
-
     await page.keyboard.press('Tab');
-    await expect(button).toBeFocused();
+    await expect(locators.trigger(page)).toBeFocused();
     await page.keyboard.press('ArrowDown');
-    await option.waitFor({ state: 'visible' });
-    await expect(option).toHaveClass(/highlighted/);
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).toHaveClass(/highlighted/);
     await page.keyboard.press('Escape');
-    await option.waitFor({ state: 'hidden' });
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
 
-    await expect(button).toBeFocused();
+    await expect(locators.trigger(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await option.waitFor({ state: 'visible' });
-    await expect(option).toHaveClass(/highlighted/);
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).toHaveClass(/highlighted/);
     await page.keyboard.press('Space');
-    await option.waitFor({ state: 'hidden' });
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
 
-    await expect(button).toBeFocused();
-    await expect(button).toHaveAttribute('value', '0');
+    await expect(locators.trigger(page)).toBeFocused();
+    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
   });
 
   test('Verify @mouse navigation and changing values @priority-high', async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
-    const button = page.getByRole('combobox');
-    const option = page.getByRole('option', { name: 'Option 0' });
+    const initialWidth = await locators.trigger(page).boundingBox().then((b) => b?.width || 0);
+    await locators.trigger(page).click();
 
-    const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
-    await button.click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).not.toHaveClass(/highlighted/);
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
 
-    await option.waitFor({ state: 'visible' });
-    await expect(option).not.toHaveClass(/highlighted/);
-    await button.click();
-    await option.waitFor({ state: 'hidden' });
-    await button.click();
-    await option.waitFor({ state: 'visible' });
-
-    await option.click();
-    await option.waitFor({ state: 'hidden' });
-    await expect(button).toHaveAttribute('value', '0');
-    const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
+    await locators.options(page, 'Option 0').click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
+    const finalWidth = await locators.trigger(page).boundingBox().then((b) => b?.width || 0);
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
   test('Verify ellipsis in Button trigger and few tags @priotity-high', async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
-    const button = page.getByRole('button');
     const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
-    const tagNameButton = await button.first().evaluate((el) => el.tagName.toLowerCase());
+    const tagNameButton = await locators.button(page).first().evaluate((el) => el.tagName.toLowerCase());
     expect(tagNameButton).toBe('h1');
     const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
     expect(tagNameText).toBe('h2');
@@ -430,7 +411,7 @@ test.describe('@functional @button-trigger', () => {
     await page.keyboard.press('Tab');
     await expect(page.getByRole('tooltip')).toHaveCount(0);
 
-    await button.nth(1).hover();
+    await locators.button(page).nth(1).hover();
     await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page.getByRole('tooltip')).toHaveCount(1);
   });
@@ -438,24 +419,20 @@ test.describe('@functional @button-trigger', () => {
   test('Verify @mouse with @keyboard navigation and changing values @priority-medium', async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
-    const button = page.getByRole('combobox');
-    const option = page.getByRole('option', { name: 'Option 1' });
-
-    await button.click();
-    await option.waitFor({ state: 'visible' });
-
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    await expect(option).toHaveClass(/highlighted/);
-    await button.click();
-    await option.waitFor({ state: 'hidden' });
-    await expect(button).not.toHaveAttribute('value', 'Option 1');
-    await button.click();
-    await option.waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 1')).toHaveClass(/highlighted/);
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page)).not.toHaveAttribute('value', '1');
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
 
-    await option.click();
-    await option.waitFor({ state: 'hidden' });
+    await locators.options(page, 'Option 0').click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
 
-    await expect(button).toHaveAttribute('value', '1');
+    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
   });
 });

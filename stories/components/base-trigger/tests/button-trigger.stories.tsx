@@ -23,7 +23,7 @@ const sharedArgTypes = {
 } as const;
 
 const meta: Meta = {
-  title: 'Components/BaseTrigger/Test/ButtonTrigger',
+  title: 'Components/Base Trigger/Test/Button Trigger',
 };
 export default meta;
 
