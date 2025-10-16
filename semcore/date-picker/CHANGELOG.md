@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.1] - 2025-10-24
+
+### Fixed
+
+- Space key interactions in Date Picker (unable to switch months, apply Today, or keep selected date)
+
 ## [16.2.0] - 2025-10-03
 
 ### Changed

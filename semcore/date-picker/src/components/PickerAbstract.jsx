@@ -116,9 +116,11 @@ class PickerAbstract extends Component {
       return day.toDate();
     };
 
-    if (place === 'popper' && (e.key === ' ' || (e.key === 'Enter' && highlighted.length))) {
-      if (!this.isDisabled(highlighted[0])) {
-        this.handlers.value(highlighted[0]);
+    if (place === 'popper' && (e.key === ' ' || e.key === 'Enter')) {
+      if (highlighted.length) {
+        if (!this.isDisabled(highlighted[0])) {
+          this.handlers.value(highlighted[0]);
+        }
       }
       e.preventDefault();
     }
