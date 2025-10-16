@@ -535,7 +535,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/data-display/donut-chart/donut-chart',
             activeMatch: '/data-display/donut-chart/',
-            text: 'Donut / Pie chart',
+            text: 'Donut chart',
           },
           {
             link: '/data-display/histogram-chart/histogram-chart',
