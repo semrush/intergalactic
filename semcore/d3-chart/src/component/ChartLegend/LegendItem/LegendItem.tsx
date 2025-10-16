@@ -68,10 +68,11 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     return {
       ...props,
       children: props.icon,
+      onClick: () => props.onChangeLegendItem(props.id, !props.checked),
     };
   }
 
-  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
+  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps {
     const { id, checked, color: _color, onChangeLegendItem, shape: _shape, ...props } = this.asProps;
 
     return {
@@ -86,23 +87,25 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   getAdditionalLabelProps(): LegendItem & IRootComponentProps {
     const props = this.asProps;
 
-    const { additionalInfo } = props;
+    const { additionalInfo, onChangeLegendItem, id, checked } = props;
 
     return {
       ...props,
       children: additionalInfo && 'label' in additionalInfo ? `${additionalInfo.label}` : undefined,
+      onClick: () => onChangeLegendItem(id, !checked),
     };
   }
 
   getCountProps(): LegendItem & IRootComponentProps {
     const props = this.asProps;
 
-    const { additionalInfo } = props;
+    const { additionalInfo, onChangeLegendItem, id, checked } = props;
 
     return {
       ...props,
       children:
         additionalInfo && 'count' in additionalInfo ? `(${additionalInfo.count})` : undefined,
+      onClick: () => onChangeLegendItem(id, !checked),
     };
   }
 
@@ -111,7 +114,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     const { styles, Children, shape } = this.asProps;
 
     // @ts-ignore
-    const disabled = StaticShapes.includes(shape);
+    const disabled = StaticShapes.includes(shape) || shape === undefined;
 
     return sstyled(styles)(
       <SLegendItem render={Flex} disabled={disabled} __excludeProps={['id']}>

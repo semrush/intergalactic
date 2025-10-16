@@ -41,6 +41,9 @@ export type LegendItem = {
 
   /** Enables patterns symbols that enhances charts accessibility */
   patterns?: PatternsConfig;
+
+  /** @internal */
+  onClick: () => void;
 };
 
 export type LegendItemProps = LegendItem & {
