@@ -212,7 +212,7 @@ function Step(props: IRootComponentProps & WizardStepProps) {
   return null;
 }
 
-function Stepper(props: WizardStepperProps & IRootComponentProps) {
+function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
   const {
     Children,
     styles,
@@ -285,7 +285,7 @@ function Content(props: WizardContentProps & IRootComponentProps) {
   );
 }
 
-function StepBack(props: WizardStepBackProps & IRootComponentProps) {
+function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
   const SStepBack = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
@@ -306,7 +306,7 @@ function StepBack(props: WizardStepBackProps & IRootComponentProps) {
     </SStepBack>,
   );
 }
-function StepNext(props: WizardStepNextProps & IRootComponentProps) {
+function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
   const SStepNext = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {

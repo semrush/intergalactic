@@ -29,7 +29,7 @@ export type WizardSidebarProps = BoxProps & {
   /**
    * @internal html id attribute
    */
-  id: string;
+  id?: string;
 };
 
 /** @deprecated */
@@ -79,18 +79,18 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
    * Translation function
    * @internal
    */
-  getI18nText: ReturnType<typeof useI18n>;
+  getI18nText?: ReturnType<typeof useI18n>;
 
   /**
    * Go to nest step
    * @internal
    */
-  focusNext: () => void;
+  focusNext?: () => void;
   /**
    * Go to prev step
    * @internal
    */
-  focusPrev: () => void;
+  focusPrev?: () => void;
 };
 
 export type WizardContentProps = BoxProps & {
@@ -109,12 +109,12 @@ export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps
    * CurrentStep
    * @internal
    */
-  step: number;
+  step?: number;
   /**
    * Translation function
    * @internal
    */
-  getI18nText: ReturnType<typeof useI18n>;
+  getI18nText?: ReturnType<typeof useI18n>;
 };
 export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
   /** Callback invoked when navigating to the next step */
@@ -128,12 +128,12 @@ export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps
    * CurrentStep
    * @internal
    */
-  step: number;
+  step?: number;
   /**
    * Translation function
    * @internal
    */
-  getI18nText: ReturnType<typeof useI18n>;
+  getI18nText?: ReturnType<typeof useI18n>;
 };
 
 export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
