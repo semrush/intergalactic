@@ -117,10 +117,8 @@ class PickerAbstract extends Component {
     };
 
     if (place === 'popper' && (e.key === ' ' || e.key === 'Enter')) {
-      if (highlighted.length) {
-        if (!this.isDisabled(highlighted[0])) {
-          this.handlers.value(highlighted[0]);
-        }
+      if (highlighted.length && !this.isDisabled(highlighted[0])) {
+        this.handlers.value(highlighted[0]);
       }
       e.preventDefault();
     }
