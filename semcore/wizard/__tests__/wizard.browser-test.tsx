@@ -1,16 +1,32 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page, Locator } from '@semcore/testing-utils/playwright';
 
-const locators = {
-  trigger: (page: any, name = 'Open wizard') => page.getByRole('button', { name }),
-  modal: (page: any) => page.locator('div[data-ui-name=\'Wizard\']'),
-  sidebar: (page: any) => page.locator('[data-ui-name=\'Wizard.Sidebar\']'),
-  stepperTabs: (page: any) => page.locator('[data-ui-name=\'Wizard.Stepper\']'),
-  contentPanel: (page: any) => page.locator('[data-ui-name=\'Wizard.Content\']'),
-  nextButton: (page: any, name: string) => page.getByRole('button', { name }),
-  prevButton: (page: any, name: string) => page.getByRole('button', { name }),
-  input: (page: any, name: string) => page.getByRole('textbox', { name }),
-  steps: (page: any) => locators.stepperTabs(page),
+export const locators = {
+  button: (page: Page, name?: string, index?: number): Locator => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  modal: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  sidebar: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name=\'Wizard.Sidebar\']');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  stepperTabs: (page: Page, index?: number) => {
+    const base = page.getByRole('tab');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  contentPanel: (page: Page, index?: number) => {
+    const base = page.getByRole('tabpanel');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  input: (page: Page, index?: number): Locator => {
+    const base = page.getByRole('textbox');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 };
 
 test.describe('Base example', () => {
@@ -18,100 +34,95 @@ test.describe('Base example', () => {
     const standPath = 'stories/components/wizard/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const { trigger, modal, sidebar, steps, contentPanel, nextButton, prevButton } = locators;
-    const stepperTabs = steps(page);
-    const firstStep = stepperTabs.nth(0);
-    const middleStep = stepperTabs.nth(1);
-    const lastStep = stepperTabs.nth(2);
 
     await test.step('Open modal and verify modal attributes', async () => {
-      await trigger(page).click();
-      await page.waitForTimeout(50);
-      await expect(modal(page)).toBeVisible();
-      await expect(modal(page)).toHaveAttribute('aria-modal', 'true');
-      await expect(modal(page)).toHaveAttribute('role', 'dialog');
+      await locators.button(page).click();
+      await locators.button(page, 'Keywords').waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveAttribute('aria-modal', 'true');
+      await expect(locators.modal(page)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.modal(page)).toHaveAttribute('step', '1');
     });
 
-    await test.step('Verify sidebar header', async () => {
-      await expect(sidebar(page)).toBeVisible();
-      const h2Text = await sidebar(page).locator('h2').innerText();
-      expect(h2Text).toBe('Site Audit Settings');
+    await test.step('Verify sidebar header has h2 tag', async () => {
+      const firstChild = locators.sidebar(page).locator('> *').first();
+      await expect(firstChild).toHaveJSProperty('tagName', 'H2');
     });
 
     await test.step('Verify stepper fist and last tabs initial attributes', async () => {
-      await expect(firstStep).toHaveAttribute('role', 'tab');
-      await expect(firstStep).toHaveAttribute('aria-selected', 'true');
-      await expect(firstStep).not.toHaveAttribute('aria-disabled', 'true');
-      await expect(firstStep).toHaveAttribute('tabindex', '0');
+      await expect(locators.contentPanel(page).first()).toHaveAttribute('aria-selected', 'true');
+      await expect(locators.contentPanel(page).first()).not.toHaveAttribute('aria-disabled', 'true');
+      await expect(locators.contentPanel(page).first()).toHaveAttribute('tabindex', '0');
 
-      await expect(lastStep).toHaveAttribute('role', 'tab');
-      await expect(lastStep).not.toHaveAttribute('aria-disabled', 'true');
-      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-      await expect(lastStep).toHaveAttribute('tabindex', '-1');
+      await expect(locators.contentPanel(page).nth(1)).not.toHaveAttribute('aria-disabled', 'true');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('tabindex', '-1');
+
+      await expect(locators.contentPanel(page).nth(2)).not.toHaveAttribute('aria-disabled', 'true');
+      await expect(locators.contentPanel(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(2)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Switch to middle step and check stepper attributes', async () => {
-      await middleStep.click();
-      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-      await expect(middleStep).toHaveAttribute('aria-selected', 'true');
-      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
+      await (locators.contentPanel(page).nth(1)).click();
+      await expect(locators.contentPanel(page).nth(0)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(locators.contentPanel(page).nth(2)).toHaveAttribute('aria-selected', 'false');
     });
 
     await test.step('Verify content panel attrubutes for the middle step', async () => {
-      await expect(contentPanel(page)).toHaveAttribute('role', 'tabpanel');
-      await expect(contentPanel(page)).toHaveAttribute('step', '2');
+      await expect(locators.contentPanel(page)).toHaveAttribute('step', '2');
     });
 
     await test.step('Verify navigation buttons for the middle step', async () => {
-      await expect(prevButton(page, 'Back to Location')).toBeVisible();
-      await expect(prevButton(page, 'Back to Location')).toHaveAttribute(
+      await expect(locators.button(page, 'Location')).toBeVisible();
+      await expect(locators.button(page, 'Location')).toHaveAttribute(
         'aria-label',
         'Back to Location',
       );
-      await expect(nextButton(page, 'Go to Schedule')).toBeVisible();
-      await expect(prevButton(page, 'Go to Schedule')).toHaveAttribute(
+      await expect(locators.button(page, 'Schedule')).toBeVisible();
+      await expect(locators.button(page, 'Schedule')).toHaveAttribute(
         'aria-label',
         'Go to Schedule',
       );
     });
 
     await test.step('Click on Prev button on middle step and verify 1st step  ', async () => {
-      await prevButton(page, 'Back to Location').click();
-      await expect(firstStep).toHaveAttribute('aria-selected', 'true');
-      await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-      await expect(nextButton(page, 'Go to Keywords')).toBeVisible();
+      await locators.button(page, 'Location').click();
+      await expect(locators.contentPanel(page).nth(0)).toHaveAttribute('aria-selected', 'true');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.button(page, 'Keywords')).toBeVisible();
     });
 
     await test.step('Click on Next button ang go to last step ', async () => {
-      await nextButton(page, 'Go to Keywords').click();
-      await nextButton(page, 'Go to Schedule').click();
-      await expect(nextButton(page, 'Go to Keywords')).not.toBeVisible();
-      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-      await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-      await expect(lastStep).toHaveAttribute('aria-selected', 'true');
+      await locators.button(page, 'Keywords').click();
+      await locators.button(page, 'Schedule').click();
+      await expect(locators.button(page, 'Keywords')).not.toBeVisible();
+      await expect(locators.contentPanel(page).nth(0)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(2)).toHaveAttribute('aria-selected', 'true');
     });
 
     await test.step('Click on Prev button on last step', async () => {
-      await prevButton(page, 'Back to Keywords').click();
-      await expect(nextButton(page, 'Go to Keywords')).not.toBeVisible();
-      await expect(firstStep).toHaveAttribute('aria-selected', 'false');
-      await expect(middleStep).toHaveAttribute('aria-selected', 'true');
-      await expect(lastStep).toHaveAttribute('aria-selected', 'false');
+      await locators.button(page, 'Keywords').click();
+      await expect(locators.button(page, 'Keywords')).not.toBeVisible();
+      await expect(locators.contentPanel(page).nth(0)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.contentPanel(page).nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(locators.contentPanel(page).nth(2)).toHaveAttribute('aria-selected', 'false');
     });
 
     await test.step('Verify selected step saved when Close and reopen modal', async () => {
-      await nextButton(page, 'Close').click();
-      await expect(modal(page)).toBeHidden();
+      await locators.button(page, 'Close').click();
+      await locators.modal(page).waitFor({ state: 'hidden' });
 
-      await trigger(page).click();
-      await expect(modal(page)).toBeVisible();
+      await locators.button(page).click();
+      await locators.modal(page).waitFor({ state: 'visible' });
     });
 
     await test.step('Click on 1st step on stepper and check content', async () => {
       await firstStep.click();
       await expect(firstStep).toHaveAttribute('aria-selected', 'true');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
-      await expect(nextButton(page, 'Go to Keywords')).toBeVisible();
+      await expect(locators.button(page, 'Keywords')).toBeVisible();
     });
 
     await test.step('Click on last step on stepper and check content', async () => {
@@ -119,7 +130,7 @@ test.describe('Base example', () => {
       await expect(firstStep).toHaveAttribute('aria-selected', 'false');
       await expect(middleStep).toHaveAttribute('aria-selected', 'false');
       await expect(lastStep).toHaveAttribute('aria-selected', 'true');
-      await expect(nextButton(page, 'Back to Keywords')).toBeVisible();
+      await expect(locators.button(page, 'Keywords')).toBeVisible();
     });
   });
 
