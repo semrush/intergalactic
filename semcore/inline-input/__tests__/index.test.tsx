@@ -1,6 +1,6 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -74,5 +74,34 @@ describe('InlineInput', () => {
     });
     expect(spyUndefined).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
+  });
+
+  test.concurrent('Verify onConfirm behaviour', async () => {
+    const spyConfirm = vi.fn();
+
+    const { getByLabelText, getByTestId, debug } = render(
+      <>
+        <InlineInput onConfirm={spyConfirm}>
+          <InlineInput.Addon tag='label'>User name:</InlineInput.Addon>
+          <InlineInput.Value data-testid='input' />
+          <InlineInput.ConfirmControl />
+          <InlineInput.CancelControl />
+        </InlineInput>
+      </>,
+    );
+
+    expect(spyConfirm).toHaveBeenCalledTimes(0);
+
+    getByTestId('input').focus();
+    await userEvent.keyboard('ABC');
+
+    await userEvent.click(getByLabelText('Save'));
+    expect(spyConfirm).toHaveBeenCalledWith('ABC', expect.anything());
+
+    getByTestId('input').focus();
+    await userEvent.keyboard('DEF');
+
+    await userEvent.click(getByLabelText('Save'));
+    expect(spyConfirm).toHaveBeenCalledWith('ABCDEF', expect.anything());
   });
 });
