@@ -1,18 +1,17 @@
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Scroll from '@semcore/ui/scroll-area';
+import { ScrollArea, Box, Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <Flex direction='column' gap={2}>
-        <Scroll hMax='50vh' style={{ border: '1px solid red' }}>
+        <ScrollArea hMax='50vh' style={{ border: '1px solid red' }}>
           {[...new Array(100)].map((_, index) => (
             <Box key={index} p={1}>
               Line #{index}
             </Box>
           ))}
-        </Scroll>
+        </ScrollArea>
         <Box>Content after</Box>
       </Flex>
     );

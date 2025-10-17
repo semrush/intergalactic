@@ -1,12 +1,13 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 /* =====================================================
 @functional
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @breakpoints', () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Simple use', () => {
     const breakpoints = [
       { width: 320, expectedSize: 'L', expectedHeight: '40px' },
@@ -16,7 +17,11 @@ test.describe('@functional @breakpoints', () => {
     ];
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
-      test(`Verify button has size '${expectedSize}' when viewport width ${width}px @priority-high`, async ({ page }) => {
+      test(`Verify button has size '${expectedSize}' when viewport width ${width}px`, {
+        tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components,
+        @button`],
+      }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/simple-use.tsx', 'en');
 
         await page.setViewportSize({ width, height: 800 });
@@ -42,7 +47,11 @@ test.describe('@functional @breakpoints', () => {
     ];
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
-      test(`Should render button with size '${expectedSize}' at viewport width ${width}px @priority-high`, async ({ page }) => {
+      test(`Should render button with size '${expectedSize}' at viewport width ${width}px`, {
+        tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components,
+        @button`],
+      }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/manual-control.tsx', 'en');
 
         await page.setViewportSize({ width, height: 800 });
@@ -70,7 +79,10 @@ test.describe('@functional @breakpoints', () => {
     ];
 
     breakpoints.forEach(({ width, expectedText }) => {
-      test(`Verify '${expectedText}' shown at viewport width ${width}px @priority-high`, async ({ page }) => {
+      test(`Verify '${expectedText}' shown at viewport width ${width}px`, {
+        tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+      }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/mocking.tsx', 'en');
 
         await page.setViewportSize({ width, height: 800 });
@@ -95,7 +107,10 @@ test.describe('@functional @breakpoints', () => {
     ];
 
     breakpoints.forEach(({ width, expectedText }) => {
-      test(`Verify '${expectedText}' shown at viewport width ${width}px @priority-high`, async ({ page, browserName }) => {
+      test(`Verify '${expectedText}' shown at viewport width ${width}px`, {
+        tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/custom-media.tsx', 'en');
 
         if (browserName !== 'webkit') {

@@ -1,7 +1,6 @@
+import { Popper, Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Popper from '@semcore/ui/popper';
 import React from 'react';
 
 const Demo = () => {

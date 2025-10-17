@@ -1,5 +1,6 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 /* =====================================================
 @functional
@@ -8,7 +9,13 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe('@functional @popper', () => {
   test.describe('Focus Lock', () => {
-    test('Verify Focus lock without disablePortal @mouse @priority-high', async ({ page }) => {
+    test('Verify Focus lock without disablePortal', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+        @input,
+        @dropdown-menu`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-no-disable-portal.tsx', 'en');
 
       await page.mouse.click(1, 1);
@@ -24,7 +31,14 @@ test.describe('@functional @popper', () => {
       }
     });
 
-    test('Verify Focus lock with disablePortal @mouse @priority-high', async ({ page }) => {
+    test('Verify Focus lock with disablePortal', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD}, 
+      ${TAG.MOUSE},  
+        @base-components,
+        @base-trigger,
+        @dropdown-menu`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-disable-portal.tsx', 'en');
 
       await page.mouse.click(1, 1);
@@ -39,7 +53,12 @@ test.describe('@functional @popper', () => {
     });
   });
 
-  test('Verify popper position when cursor anchoring @mouse @priority-high', async ({ page, browserName }) => {
+  test('Verify popper position when cursor anchoring', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+        @tooltip`],
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/cursor-anchoring.tsx', 'en');
 
     const trigger = page.locator('[data-testid="trigger"]');
@@ -69,7 +88,12 @@ test.describe('@functional @popper', () => {
   });
 
   test.describe('Label', () => {
-    test('Verify Referenced label @mouse @priority-high', async ({ page }) => {
+    test('Verify Referenced label', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-referenced.tsx', 'en');
 
       const options = page.getByRole('option');
@@ -87,7 +111,12 @@ test.describe('@functional @popper', () => {
       await expect(selectText).toHaveText('Option 1');
     });
 
-    test('Verify Wrapped label @mouse @priority-high', async ({ page }) => {
+    test('Verify Wrapped label', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped.tsx', 'en');
 
       const options = page.getByRole('option');
@@ -105,7 +134,12 @@ test.describe('@functional @popper', () => {
       await expect(selectText).toHaveText('Option 1');
     });
 
-    test('Verify Wrapped label and disable portal @mouse @priority-high', async ({ page }) => {
+    test('Verify Wrapped label and disable portal', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped-disable-portal.tsx', 'en');
 
       const options = page.getByRole('option');
@@ -129,7 +163,13 @@ test.describe('@functional @popper', () => {
     });
   });
 
-  test('Verify popper display when OutsideClick @priority-high @mouse @keyboard', async ({ page }) => {
+  test('Verify popper display when OutsideClick', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD}, 
+      ${TAG.MOUSE},  
+        @base-components,
+        @button`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/click-outside', 'en');
 
     const trigger = page.getByRole('button');
@@ -160,7 +200,13 @@ test.describe('@functional @popper', () => {
     }
   });
 
-  test('Verify onVisibleChange prop @mouse @keyboard @priority-high', async ({ page }) => {
+  test('Verify onVisibleChange prop', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD}, 
+      ${TAG.MOUSE},  
+        @base-components,
+        @button`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/show-hide.tsx', 'en');
 
     const triggerControlled = page.getByRole('button', { name: 'Controlled', exact: true });
@@ -216,7 +262,14 @@ test.describe('@functional @popper', () => {
     await expect(popperControlled).toHaveCount(0);
   });
 
-  test('Verify focus when disableEnforceFocus prop enabled @keyboard @priority-high', async ({ page, browserName }) => {
+  test('Verify focus when disableEnforceFocus prop enabled', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+        @base-trigger,
+        @dropdown-menu,
+        @input`],
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/disableEnforceFocus.tsx', 'en');
     if (browserName === 'firefox') return; // skipped for ff because focus order is other
 
@@ -233,7 +286,16 @@ test.describe('@functional @popper', () => {
     ).not.toBeFocused();
   });
 
-  test('Verify popper when disabled and focusLoop @keyboard @priority-high', async ({ page, browserName }) => {
+  test('Verify popper when disabled and focusLoop', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD}, 
+        @base-components,
+        @base-trigger,
+        @dropdown-menu,
+        @button,
+        @input,
+        @icon`],
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/some-more-props-test.tsx', 'en');
     const popperTrigger = page.getByRole('button', { name: 'focusLoop' });
     const popperfocusLoop = page.getByRole('dialog');
@@ -264,7 +326,14 @@ test.describe('@functional @popper', () => {
 
   test.describe('Interaction', () => {
     test.use({ hasTouch: true });
-    test('Verify hover interaction @mouse @priority-high', async ({ page }) => {
+    test('Verify hover interaction appears by hover', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
       const popper = page.locator('[data-ui-name="Popper.Popper"]');
 
@@ -306,7 +375,14 @@ test.describe('@functional @popper', () => {
       });
     });
 
-    test('Verify hover interaction @keyboard @priority-high', async ({ page }) => {
+    test('Verify hover interaction appears by focus', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
       const popper = page.locator('[data-ui-name="Popper.Popper"]');
       const buttonTrigger = page.getByTestId('button-hover');
@@ -345,7 +421,13 @@ test.describe('@functional @popper', () => {
       });
     });
 
-    test('Verify hover interaction @touch @priority-medium', async ({ page, browserName }) => {
+    test('Verify hover interaction appears by touch', {
+      tag: [`${TAG.PRIORITY_MEDIUM},
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page, browserName }) => {
       if (browserName === 'chromium') test.skip(); // Chromium doesn’t simulate touch
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
 
@@ -357,7 +439,15 @@ test.describe('@functional @popper', () => {
       await expect(popper).toHaveCount(1);
     });
 
-    test('Verify click interaction @mouse @keyboard @priority-high', async ({ page }) => {
+    test('Verify click interaction by mouse and keyboard', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+       ${TAG.KEYBOARD}, 
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-click.tsx', 'en');
 
       const trigger = page.getByText('Trigger');
@@ -401,7 +491,15 @@ test.describe('@functional @popper', () => {
       });
     });
 
-    test('Verify none interaction @mouse @keyboard @priority-medium', async ({ page }) => {
+    test('Verify none interaction by mouse and keyboard', {
+      tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.MOUSE},  
+       ${TAG.KEYBOARD},  
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-none.tsx', 'en');
 
       const trigger = page.getByText('Trigger');
@@ -428,7 +526,15 @@ test.describe('@functional @popper', () => {
       await expect(popperContent).toHaveCount(0);
     });
 
-    test('Verify focus interaction by @mouse @keyboard @priority-high', async ({ page, browserName }) => {
+    test('Verify focus interaction by mouse and keyboard', {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        ${TAG.KEYBOARD},  
+        @base-components,
+        @tooltip,
+        @button,
+        @card`],
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-focus.tsx', 'en');
 
       const before = page.locator('button[data-position="before"]');
@@ -494,7 +600,14 @@ test.describe('@functional @popper', () => {
     });
   });
 
-  test('Verify popper visibility when focusable elements on trigger and after trigger @keyboard @priority-medium', async ({
+  test('Verify popper visibility when focusable elements on trigger and after trigger', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.KEYBOARD},  
+        @base-components,
+        @select,
+        @input,
+        @typography`],
+  }, async ({
     page,
   }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/multiple-focusables-in-trigger.tsx', 'en');
@@ -530,7 +643,13 @@ test.describe('@functional @popper', () => {
     });
   });
 
-  test('Verify popper controlled with render function @mouse @keyboard @priority-high', async ({
+  test('Verify popper controlled with render function', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+       ${TAG.KEYBOARD},  
+        @base-components,
+        @button,`],
+  }, async ({
     page,
     browserName,
   }) => {
@@ -599,7 +718,13 @@ test.describe('@functional @popper', () => {
     }
   });
 
-  test('Verify popper dynamic and fixed position on page resize @priority-medium', async ({ page }) => {
+  test('Verify popper dynamic and fixed position on page resize', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.MOUSE},  
+        @base-components,
+        @tooltip,
+        @button,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/page-resizing.tsx', 'en');
 
     const poppers = page.getByRole('dialog');
@@ -630,8 +755,12 @@ test.describe('@functional @popper', () => {
 @visual
 Visual states and snapshots.
 ===================================================== */
-test.describe('@visual @popper', () => {
-  test('Verify popper position with OffSet prop @priority-high', async ({ page }) => {
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify popper position with OffSet prop', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components,
+        @button`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/offSet.tsx', 'en');
 
     const trigger = page.getByRole('button');
@@ -640,7 +769,11 @@ test.describe('@visual @popper', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify popper placement positions @visual @priority-high', async ({ page }) => {
+  test('Verify popper placement positions', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components,
+        @button`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/placement.tsx', 'en');
 
     const placements = [

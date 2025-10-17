@@ -1,5 +1,5 @@
-import { Box, Flex } from '@semcore/ui/flex-box';
-import ScrollArea, { type ScrollAreaProps } from '@semcore/ui/scroll-area';
+import { ScrollArea, Box, Flex } from '@semcore/ui/base-components';
+import type { ScrollAreaProps } from '@semcore/ui/base-components';
 import React from 'react';
 
 export type ScrollAreaExampleProps = ScrollAreaProps & {

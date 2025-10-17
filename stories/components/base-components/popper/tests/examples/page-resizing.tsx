@@ -1,8 +1,6 @@
+import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Link from '@semcore/ui/link';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {

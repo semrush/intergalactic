@@ -1,11 +1,12 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @badge', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     { bg: undefined, color: undefined },
     { bg: 'cyan', color: undefined },
@@ -18,7 +19,11 @@ test.describe('@visual @badge', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify bg=${item.bg} and color=${item.color} @priority-high`, async ({ page }) => {
+    test(`Verify bg=${item.bg} and color=${item.color}`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @badge,
+        @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
@@ -31,7 +36,11 @@ test.describe('@visual @badge', () => {
   ];
 
   variableswithBox.forEach((item) => {
-    test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h} @priority-medium`, async ({ page }) => {
+    test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h}`, {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+        @badge,
+        @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
@@ -43,8 +52,13 @@ test.describe('@visual @badge', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@fucntional @badge', () => {
-  test('Verify no aria-hidden and not focused @priority-high', async ({ page }) => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify no aria-hidden and not focused', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        ${TAG.ACCESSIBILITY}, 
+        @badge,
+        @base-components,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
 
     const badges = page.locator('[data-ui-name="Badge"]');

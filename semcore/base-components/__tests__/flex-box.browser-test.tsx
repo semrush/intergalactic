@@ -1,13 +1,17 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 /* =====================================================
 @functional
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @box', () => {
-  test('Verify Box margins and paddings @priority-high', async ({ page }) => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify Box margins and paddings', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-margins-and-paddings.tsx', 'en');
 
     // Get all Box elements
@@ -106,7 +110,10 @@ test.describe('@functional @box', () => {
     ).toEqual({ padding: '40px 0px' });
   });
 
-  test('Verify Box dimensions @priority-high', async ({ page }) => {
+  test('Verify Box dimensions', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/flex-box-width-height-test.tsx', 'en');
 
     // Get all Box elements
@@ -182,13 +189,19 @@ test.describe('@functional @box', () => {
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @flex', () => {
-  test('Verify Flex gaps for all boxes @priority-high', async ({ page }) => {
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify Flex gaps for all boxes', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/flex-gaps-test.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Flex base example @priority-high', async ({ page }) => {
+  test('Verify Flex base example', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/docs/examples/flex.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });

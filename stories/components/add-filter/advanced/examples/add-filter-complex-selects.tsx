@@ -1,12 +1,11 @@
 import AddFilter from '@semcore/ui/add-filter';
+import { NeighborLocation, Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import { Flex } from '@semcore/ui/flex-box';
 import CloseM from '@semcore/ui/icon/Close/m';
 import SearchM from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';
 import InputNumber from '@semcore/ui/input-number';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

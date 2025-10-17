@@ -1,6 +1,8 @@
 import type { Page, Locator } from '@semcore/testing-utils/playwright';
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
+
 export const locators = {
   addFilterBtn: (page: Page, index?: number): Locator => {
     const base = page.getByRole('button', { name: 'Add filter' });
@@ -66,8 +68,17 @@ export const locators = {
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual-core @add-filter', () => {
-  test('Verify base example with selects after @mouse interactions @priority-high', async ({ page }) => {
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify base example with selects after mouse interactions', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
     await test.step('Verify initial state', async () => {
@@ -86,7 +97,16 @@ test.describe('@visual-core @add-filter', () => {
     });
   });
 
-  test('Verify base example with selects after @keyboard interactions @priority-high', async ({ page }) => {
+  test('Verify base example with selects after keyboard interactions', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
     await test.step('Verify filter list expanded by click on Add filter', async () => {
@@ -103,7 +123,20 @@ test.describe('@visual-core @add-filter', () => {
     });
   });
 
-  test('Verify Add filter without Add filter button @priority-high', async ({ page }) => {
+  test('Verify Add filter without Add filter button', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
     await test.step('Add Select filter and fill value', async () => {
@@ -131,7 +164,20 @@ test.describe('@visual-core @add-filter', () => {
     });
   });
 
-  test('Verify Add filter after activating Clear all by @keyboard @priority-high', async ({ page }) => {
+  test('Verify Add filter after activating Clear all by keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
     await locators.input(page, 'Filter by name').fill('Test');
@@ -143,7 +189,18 @@ test.describe('@visual-core @add-filter', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Select with range as filter after @mouse interactions @priority-medium', async ({ page }) => {
+  test('Verify Select with range as filter after mouse interactions ', {
+    tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
     await locators.addFilterBtn(page).click();
@@ -153,7 +210,18 @@ test.describe('@visual-core @add-filter', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Select with search as filter after @keyboard interactions @priority-medium', async ({ page }) => {
+  test('Verify Select with search as filter after keyboard interactions', {
+    tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -176,7 +244,20 @@ test.describe('@visual-core @add-filter', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Input as filter after @mouse interactions @priority-medium', async ({ page }) => {
+  test('Verify Input as filter after mouse interactions', {
+    tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
     await locators.addFilterInput(page, 'Filter by name').fill('Test');
@@ -189,7 +270,18 @@ test.describe('@visual-core @add-filter', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Multiselect as filter after @keyboard interactions @priority-medium', async ({ page }) => {
+  test('Verify Multiselect as filter after keyboard interactions', {
+    tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -216,9 +308,18 @@ test.describe('@visual-core @add-filter', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @add-filter', () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Add filter button', () => {
-    test('Verify cancel adding filter data when no data selected by @mouse @priority-high', async ({ page }) => {
+    test('Verify cancel adding filter data when no data selected by mouse', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
       await test.step('Verify filter list exapnded by click on Add filter', async () => {
@@ -253,7 +354,16 @@ test.describe('@functional @add-filter', () => {
       });
     });
 
-    test('Verify cancel adding filter data when no data selected by @keyboard @priority-high', async ({ page }) => {
+    test('Verify cancel adding filter data when no data selected by keyboard', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
       await test.step('Verify focus for filters list and filter', async () => {
@@ -276,7 +386,20 @@ test.describe('@functional @add-filter', () => {
       });
     });
 
-    test('Verify Add filter button appearing and disappearing by @mouse @priority-high', async ({ page }) => {
+    test('Verify Add filter button appearing and disappearing by mouse', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       await test.step('Add Select filter and fill value', async () => {
@@ -339,7 +462,20 @@ test.describe('@functional @add-filter', () => {
       });
     });
 
-    test('Verify Add filter button appearing and disappearing by @keyboard @priority-high', async ({ page }) => {
+    test('Verify Add filter button appearing and disappearing by keyboard', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       for (let i = 0; i < 6; i++) {
@@ -452,7 +588,20 @@ test.describe('@functional @add-filter', () => {
   });
 
   test.describe('Clear Filters button', () => {
-    test('Verify Clear all when some filters pre filled and added by @mouse @priority-high', async ({ page }) => {
+    test('Verify Clear all when some filters pre filled and added by mouse', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       await test.step('Verify Clear filters button shown and removed when interacting with filters before Add filter', async () => {
@@ -486,7 +635,20 @@ test.describe('@functional @add-filter', () => {
       });
     });
 
-    test('Verify Clear all when some filters pre filled and added by @keyboard @priority-high', async ({ page }) => {
+    test('Verify Clear all when some filters pre filled and added by keyboard', {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       await test.step('Verify Clear filters button shown and removed when interacting with filters before Add filter', async () => {
@@ -559,7 +721,20 @@ test.describe('@functional @add-filter', () => {
   });
 
   test.describe('Different filter types', () => {
-    test('Verify drodown as filter @keyboard interactions @priority-medium', async ({ page }) => {
+    test('Verify drodown as filter keyboard interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       for (let i = 0; i < 6; i++) {
@@ -595,7 +770,20 @@ test.describe('@functional @add-filter', () => {
       await expect(locators.addFilterBtn(page)).not.toBeFocused();
     });
 
-    test('Verify drodown as filter @mouse interactions @priority-medium', async ({ page }) => {
+    test('Verify drodown as filter mouse interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       await locators.addFilterBtn(page).click();
@@ -619,7 +807,18 @@ test.describe('@functional @add-filter', () => {
       await expect(locators.clearAllBtn(page)).toBeVisible();
     });
 
-    test('Verify Select with range as filter @keyboard interactions @priority-medium', async ({ page }) => {
+    test('Verify Select with range as filter keyboard interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -660,7 +859,18 @@ test.describe('@functional @add-filter', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Volume: 1-5');
     });
 
-    test('Verify Select with range as filter @mouse interactions @priority-medium', async ({ page }) => {
+    test('Verify Select with range as filter mouse interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await locators.addFilterBtn(page).click();
@@ -689,7 +899,18 @@ test.describe('@functional @add-filter', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Volume: 1-5');
     });
 
-    test('Verify Select with search as filter @keyboard interactions @priority-medium', async ({ page }) => {
+    test('Verify Select with search as filter keyboard interactions ', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -723,7 +944,18 @@ test.describe('@functional @add-filter', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.TriggerButton"]')).toBeFocused();
     });
 
-    test('Verify Select with search as filter @mouse interactions @priority-medium', async ({ page }) => {
+    test('Verify Select with search as filter mouse interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await locators.addFilterBtn(page).click();
@@ -744,7 +976,18 @@ test.describe('@functional @add-filter', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
     });
 
-    test('Verify Multiselect as filter @keyboard interactions @priority-medium', async ({ page }) => {
+    test('Verify Multiselect as filter keyboard interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -767,7 +1010,18 @@ test.describe('@functional @add-filter', () => {
       );
     });
 
-    test('Verify Multiselect as filter @mouse interactions @priority-medium', async ({ page }) => {
+    test('Verify Multiselect as filter mouse interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @button,
+        @icon,
+        @input,
+        @input-number,
+        @base-components,
+        @typography,
+        @divider`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
       await locators.addFilterBtn(page).click();
@@ -781,7 +1035,20 @@ test.describe('@functional @add-filter', () => {
       );
     });
 
-    test('Verify Input as filter @keyboard interactions @priority-medium', async ({ page }) => {
+    test('Verify Input as filter keyboard interactions', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.KEYBOARD},
+        @add-filter,
+        @base-trigger,
+        @button,
+        @icon,
+        @input,
+        @radio,
+        @textarea,
+        @base-components,
+        @typography,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -809,7 +1076,15 @@ test.describe('@functional @add-filter', () => {
   });
 
   test.describe('Controlled mode', () => {
-    test('Verify add filter by visibleFilters prop @priority-medium', async ({ page }) => {
+    test('Verify add filter by visibleFilters prop', {
+      tag: [`${TAG.PRIORITY_MEDIUM}, 
+      ${TAG.MOUSE},
+        @add-filter,
+        @base-trigger,
+        @base-components
+        @d3-chart,
+        @select`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/controlled_add_filter.tsx', 'en');
 
       await test.step('Add Color filter and fill value from addFilter button', async () => {

@@ -1,7 +1,7 @@
 import { Animation, FadeInOut, Transform } from '@semcore/ui/animation';
 import type { AnimationProps } from '@semcore/ui/animation';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 import stylePopper from './basic-usage.module.css';

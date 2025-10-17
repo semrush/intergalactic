@@ -1,5 +1,6 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 const variants = [
   { parent: 'Animation', duration: 500, delay: 0 },
@@ -16,9 +17,14 @@ const variants = [
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @animation', () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   variants.forEach(({ parent, duration, delay }) => {
-    test(`Check ${parent} duration=${duration}, delay=${delay} @priority-high`, async ({ page }) => {
+    test(`Check ${parent} duration=${duration}, delay=${delay}`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @badge,
+        @base-components,
+        @button`],
+    }, async ({ page }) => {
       await loadPage(
         page,
         'stories/components/base-components/animation/tests/examples/basic-usage.tsx',

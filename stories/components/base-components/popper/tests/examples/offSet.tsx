@@ -1,5 +1,5 @@
+import { Popper } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import Popper from '@semcore/ui/popper';
 import React from 'react';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };

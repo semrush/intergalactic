@@ -1,5 +1,6 @@
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 async function checkAriaMaxValue(scrollBar: any) {
   await expect(scrollBar).toHaveAttribute('aria-valuemax');
@@ -32,8 +33,13 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 
-test.describe('@functional @scroll-area', () => {
-  test('Verify @keyboard scroll and aria attributes @priority-high @keyboard', async ({ page }) => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify base example keyboard scroll and aria attributes', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -57,7 +63,12 @@ test.describe('@functional @scroll-area', () => {
     expect(now).toBeLessThanOrEqual(maxValue);
   });
 
-  test('Verify @mouse scroll behavior @priority-high @mouse', async ({ page }) => {
+  test('Verify base example mouse scroll behavior', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
     const container = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -72,7 +83,12 @@ test.describe('@functional @scroll-area', () => {
     expect(now).toBeLessThanOrEqual(maxValue);
   });
 
-  test('Verify synchronized reverse scrolls @priority-medium @keyboard', async ({ page }) => {
+  test('Verify synchronized reverse scrolls by keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(
       page,
       'stories/components/base-components/scroll-area/docs/examples/synchronized_reverse_scroll_on_two_different_screens.tsx',
@@ -107,7 +123,12 @@ test.describe('@functional @scroll-area', () => {
     expect(nowMain).toBeGreaterThan(mainInitial);
   });
 
-  test('Verify dynamic virtual list behavior @priority-medium', async ({ page }) => {
+  test('Verify dynamic virtual list', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/dynamic_virtual_list.tsx', 'en');
 
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -134,7 +155,12 @@ test.describe('@functional @scroll-area', () => {
     expect(now).toBeGreaterThan(0);
   });
 
-  test('Verify scrollArea reacts to parent resize @priority-high @resize', async ({ page }) => {
+  test('Verify scrollArea reacts to parent resize', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/with-observe-parent-size.tsx', 'en');
 
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -169,8 +195,13 @@ test.describe('@functional @scroll-area', () => {
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @scroll-area', () => {
-  test('Verify scroll visuals after @keyboard scroll @priority-medium @keyboard', async ({ page }) => {
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify base example keyboard scroll', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
 
@@ -183,7 +214,11 @@ test.describe('@visual @scroll-area', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify visual mouse scroll result @priority-medium @mouse', async ({ page }) => {
+  test('Verify base example mouse scroll', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+      ${TAG.MOUSE},  
+        @base-components,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
     const container = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -256,9 +291,14 @@ test.describe('@visual @scroll-area', () => {
   ];
 
   baseCombinations.forEach((item) => {
-    test(`Verify @mouse Scroll Area with shadow=${item.shadow}
+    test(`Verify mouse Scroll Area with shadow=${item.shadow}
         orientation=${item.orientation} shadowTheme=${item.shadowTheme}  
-        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset} @priority-high`, async ({ page }) => {
+        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset} `, {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-components,
+`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
       const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -274,9 +314,15 @@ test.describe('@visual @scroll-area', () => {
 
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
-    test(`Verify @keyboard Scroll Area with shadow=${item.shadow}
+
+    test(`Verify keyboard Scroll Area with shadow=${item.shadow}
         orientation=${item.orientation} shadowTheme=${item.shadowTheme}  
-        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset} @priority-high`, async ({ page }) => {
+        shadowSize=${item.shadowSize}  focusRingOffset=${item.focusRingTopOffset} Offset=${item.topOffset}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-components,
+`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -298,7 +344,11 @@ test.describe('@visual @scroll-area', () => {
     });
   });
 
-  test('Verify scrollArea relative height visual @priority-medium @resize', async ({ page }) => {
+  test('Verify scrollArea relative height after resize', {
+    tag: [`${TAG.PRIORITY_MEDIUM}, 
+        @base-components,
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/advanced/examples/relative_container_height.tsx', 'en');
 
     await page.setViewportSize({ width: 1600, height: 1200 });

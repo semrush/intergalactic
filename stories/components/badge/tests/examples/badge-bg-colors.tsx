@@ -1,7 +1,7 @@
 import Badge from '@semcore/ui/badge';
 import type { BadgeProps } from '@semcore/ui/badge';
 import type { BoxProps } from '@semcore/ui/base-components';
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 type ExampleBadgeProps = BadgeProps & BoxProps;
 

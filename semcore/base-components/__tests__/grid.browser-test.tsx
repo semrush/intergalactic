@@ -1,15 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 /* =====================================================
 @visual
 Visual states, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @grid', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const sizes = [{ width: 320 }, { width: 768 }, { width: 1200 }];
 
   sizes.forEach(({ width }) => {
-    test(`Verify Row gutter for each ${width}px @priority-high`, async ({ page }) => {
+    test(`Verify Row gutter for each ${width}px`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/example-use.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
@@ -39,7 +43,10 @@ test.describe('@visual @grid', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Col span and offset for each ${width}px @priority-high`, async ({ page }) => {
+    test(`Verify Col span and offset for each ${width}px`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/change-in-general-offset.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
@@ -83,7 +90,10 @@ test.describe('@visual @grid', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px @priority-high`, async ({ page }) => {
+    test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
@@ -92,7 +102,10 @@ test.describe('@visual @grid', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid is responsive with alternative API for each ${width}px @priority-high`, async ({ page }) => {
+    test(`Verify Grid is responsive with alternative API for each ${width}px`, {
+      tag: [`${TAG.PRIORITY_HIGH}, 
+        @base-components`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive-alternative-api.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
