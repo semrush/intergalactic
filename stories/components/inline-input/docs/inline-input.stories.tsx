@@ -21,16 +21,14 @@ export const BasicUsage: StoryObj<typeof basicUsageDefaultProps> = {
       control: { type: 'boolean' },
     },
     autoFocus: {
-      control: { type: 'boolean' },
+      control: { type: 'select' },
+      options: ['true', 'false', undefined],
     },
     state: {
       control: { type: 'select' },
       options: ['normal', 'valid', 'invalid'],
     },
     defaultValue: {
-      control: { type: 'text' },
-    },
-    placeholder: {
       control: { type: 'text' },
     },
   },
