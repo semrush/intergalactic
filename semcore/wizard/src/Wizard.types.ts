@@ -82,7 +82,7 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   getI18nText?: ReturnType<typeof useI18n>;
 
   /**
-   * Go to nest step
+   * Go to next step
    * @internal
    */
   focusNext?: () => void;
