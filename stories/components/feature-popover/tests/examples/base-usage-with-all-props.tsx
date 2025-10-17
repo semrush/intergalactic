@@ -43,6 +43,7 @@ const Demo = (props: ExampleProps) => {
           wMax={350}
           aria-label='New feature: Export'
           autoFocus={props.autoFocus}
+          disableEnforceFocus={props.disableEnforceFocus}
         >
           <Flex alignItems='start'>
             <Box
@@ -89,6 +90,8 @@ export const defaultProps: ExampleProps = {
   closeIcon: true,
   duration: undefined,
   theme: 'accent',
+  disableEnforceFocus: true,
+
 };
 
 Demo.defaultProps = defaultProps;

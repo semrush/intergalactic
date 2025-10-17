@@ -1,9 +1,9 @@
 import FeaturePopover from '@semcore/ui/feature-popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import FeaturePopoverExample, { defaultProps as ExampleProps } from './examples/base-usage-with-all-props';
+import FeaturePopoverExample, { defaultProps as FeaturePopoverExampleProps } from './examples/base-usage-with-all-props';
 import FeaturePopoverMediumIllustrationExample, {
-  defaultProps as Example2Props,
+  defaultProps as FeaturePopoverMediumIllustrationProps,
 } from './examples/base-usage-with-medium-illustration';
 
 const meta: Meta<typeof FeaturePopover> = {
@@ -41,7 +41,7 @@ const baseArgTypes = {
   duration: { control: { type: 'number' } },
 } as const;
 
-export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
+export const FeaturePopoverProps: StoryObj<typeof FeaturePopoverExampleProps> = {
   render: FeaturePopoverExample,
   argTypes: {
     ...baseArgTypes,
@@ -50,11 +50,12 @@ export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
       options: ['accent', 'neutral'],
     },
     autoFocus: { control: { type: 'boolean' } },
+    disableEnforceFocus: { control: { type: 'boolean' } },
   },
-  args: ExampleProps,
+  args: FeaturePopoverExampleProps,
 };
 
-export const FeaturePopoverMediumIllustration: StoryObj<typeof Example2Props> = {
+export const FeaturePopoverMediumIllustration: StoryObj<typeof FeaturePopoverMediumIllustrationProps> = {
   render: FeaturePopoverMediumIllustrationExample,
   argTypes: {
     ...baseArgTypes,
@@ -64,5 +65,5 @@ export const FeaturePopoverMediumIllustration: StoryObj<typeof Example2Props> = 
     },
   },
 
-  args: Example2Props,
+  args: FeaturePopoverMediumIllustrationProps,
 };
