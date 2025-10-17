@@ -49,13 +49,9 @@ export const FeaturePopoverProps: StoryObj<typeof ExampleProps> = {
       control: { type: 'select' },
       options: ['accent', 'neutral'],
     },
-    autoFocus: {
-      control: { type: 'select' },
-      options: [true, false, 'enforced', undefined],
-    },
+    autoFocus: { control: { type: 'boolean' } },
     disableEnforceFocus: { control: { type: 'boolean' } },
   },
-
   args: ExampleProps,
 };
 

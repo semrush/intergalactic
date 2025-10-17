@@ -74,8 +74,8 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
-  disableEnforceFocus: undefined,
-  autoFocus: undefined,
+  disableEnforceFocus: true,
+  autoFocus: true,
   placement: undefined,
   timeout: undefined,
   disablePortal: true,

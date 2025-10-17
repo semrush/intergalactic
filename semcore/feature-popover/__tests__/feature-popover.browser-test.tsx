@@ -267,7 +267,6 @@ test.describe('Functional', () => {
   });
 
   const autoFocus = [
-    { autoFocus: undefined },
     { autoFocus: true },
     { autoFocus: false },
     { autoFocus: 'enforced' },
