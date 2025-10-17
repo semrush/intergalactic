@@ -265,4 +265,29 @@ test.describe('Functional', () => {
     await expect(featurePopoverPopper).toBeVisible();
     await expect(page.getByRole('button', { name: 'Reload page' })).not.toBeFocused();
   });
+
+  const autoFocus = [
+    { autoFocus: undefined },
+    { autoFocus: true },
+    { autoFocus: false },
+    { autoFocus: 'enforced' },
+
+  ];
+  autoFocus.forEach((item) => {
+    test(`Verify Feature popover when autoFocus = ${item.autoFocus}`, async ({ page }) => {
+      const standPath = 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+
+      const featurePopoverPopper = page.getByRole('dialog');
+      await featurePopoverPopper.waitFor({ state: 'visible' });
+
+      if (!item.autoFocus) {
+        await expect(featurePopoverPopper).not.toBeFocused();
+      } else {
+        await expect(featurePopoverPopper).toBeFocused();
+      }
+    });
+  });
 });

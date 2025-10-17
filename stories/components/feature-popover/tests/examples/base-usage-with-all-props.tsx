@@ -22,7 +22,6 @@ const Demo = (props: ExampleProps) => {
         placement={props.placement}
         timeout={props.timeout}
         explicitTriggerSet={props.explicitTriggerSet}
-        cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
         theme={props.theme}
       >
@@ -75,11 +74,12 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
+  disableEnforceFocus: undefined,
+  autoFocus: undefined,
   placement: undefined,
   timeout: undefined,
   disablePortal: true,
   explicitTriggerSet: false,
-  cursorAnchoring: false,
   popperMargin: undefined,
   closeIcon: true,
   duration: undefined,
