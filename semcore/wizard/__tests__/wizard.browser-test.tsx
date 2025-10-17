@@ -569,3 +569,53 @@ test.describe('Steps and buttons states', () => {
     });
   });
 });
+
+test.describe('No SideBar', () => {
+  test('Verify WizardContent is not right rounded when noSidebar=false', async ({ page }) => {
+    const standPath = 'stories/components/wizard/tests/examples/sidebar-as-components.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await locators.button(page).click();
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    const {
+      topLeft,
+      bottomLeft,
+      topRight,
+      bottomRight,
+    } = await locators.contentPanel(page).evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        topLeft: style.borderTopLeftRadius,
+        bottomLeft: style.borderBottomLeftRadius,
+        topRight: style.borderTopRightRadius,
+        bottomRight: style.borderBottomRightRadius,
+      };
+    });
+
+    expect(topLeft).toBe('0px');
+    expect(bottomLeft).toBe('0px');
+
+    expect(topRight).toBe('12px');
+    expect(bottomRight).toBe('12px');
+  });
+});
+
+test.describe('Focus Next Prev', () => {
+  test('Verify keyboard interaction when Focus Next and Focus Prev are defined', async ({ page }) => {
+    const standPath = 'stories/components/wizard/tests/examples/focus-next-prev.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page, 'Location')).toBeFocused();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await expect(locators.button(page, 'Keywords')).toBeFocused();
+  });
+});
