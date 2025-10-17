@@ -557,7 +557,7 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus();
+      cell?.focus({ focusVisible: true });
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
@@ -759,9 +759,9 @@ class DataTableRoot<
 
       if (cell instanceof HTMLElement) {
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
-          e.target.focus();
+          e.target.focus({ focusVisible: true });
         } else {
-          cell.focus();
+          cell.focus({ focusVisible: true });
         }
       }
 
