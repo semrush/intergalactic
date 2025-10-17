@@ -5,6 +5,8 @@ type BaseExampleProps = {
   showLegend?: boolean;
   multilineXTicks?: boolean;
   marginX?: number;
+  multilineYTicks?: boolean;
+  marginY?: number;
   data?: Array<{
     category: string;
     bar: number;
@@ -12,7 +14,7 @@ type BaseExampleProps = {
 };
 
 const Demo = (props: BaseExampleProps) => {
-  const { showLegend, multilineXTicks, data, marginX } = props;
+  const { showLegend, multilineXTicks, data, marginX, multilineYTicks, marginY } = props;
   return (
     <>
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
@@ -25,6 +27,8 @@ const Demo = (props: BaseExampleProps) => {
         showLegend={showLegend}
         multilineXTicks={multilineXTicks}
         marginX={marginX}
+        multilineYTicks={multilineYTicks}
+        marginY={marginY}
       />
     </>
   );
@@ -40,7 +44,10 @@ const defaultData = [
 
 export const defaultProps: BaseExampleProps = {
   showLegend: undefined,
-
+  multilineXTicks: undefined,
+  marginX: undefined,
+  multilineYTicks: undefined,
+  marginY: undefined,
 };
 
 export default Demo;

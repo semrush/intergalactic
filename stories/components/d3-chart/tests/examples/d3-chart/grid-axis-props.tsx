@@ -3,7 +3,15 @@ import { Flex } from '@semcore/ui/flex-box';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-const Demo = () => {
+type BaseExampleProps = {
+  marginX?: number;
+  marginY?: number;
+  multiline?: boolean;
+};
+
+const Demo = (props: BaseExampleProps) => {
+  const { marginX, marginY } = props;
+
   const MARGIN = 40;
   const width = 250;
   const height = 200;
@@ -37,17 +45,29 @@ const Demo = () => {
   return (
     <Flex gap={4} direction='column'>
       <Flex gap={4}>
-        <Plot data={data} scale={[xScale1, yScale1]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale1, yScale1]}
+          width={width}
+          height={height}
+        >
           <YAxis position='right'>
             <YAxis.Ticks ticks={[0, 5, 10]} />
           </YAxis>
-          <XAxis position='top'>
+          <XAxis
+            position='top'
+          >
             <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
           </XAxis>
           <Line x='x' y='y' />
         </Plot>
 
-        <Plot data={data} scale={[xScale1, yScale1]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale1, yScale1]}
+          width={width}
+          height={height}
+        >
           <YAxis position='right'>
             <YAxis.Ticks ticks={[0, 5, 10]} />
           </YAxis>
@@ -57,7 +77,12 @@ const Demo = () => {
           <Line x='x' y='y' />
         </Plot>
 
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+        >
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks()} position='top' />
           </XAxis>
@@ -71,7 +96,12 @@ const Demo = () => {
           <Line x='x' y='y' />
         </Plot>
 
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+        >
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks()} position='top' />
           </XAxis>
@@ -84,44 +114,101 @@ const Demo = () => {
           </YAxis>
           <Line x='x' y='y' />
         </Plot>
+
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+        >
+          <XAxis>
+            <XAxis.Ticks ticks={xScale.ticks()} position='top' />
+          </XAxis>
+          <YAxis>
+            <YAxis.Ticks
+              ticks={yScale.ticks(5)}
+              position='left'
+              multiline={props.multiline}
+              marginY={marginY}
+            >
+              {({ value }) => ({
+                children: [
+                  yScale.tickFormat(5, '+%')(value / 10),
+                  'per 10 units',
+                ],
+              })}
+            </YAxis.Ticks>
+          </YAxis>
+          <Line x='x' y='y' />
+        </Plot>
       </Flex>
 
       <Flex gap={4}>
 
-        <Plot data={data2} scale={[xScale2, yScale2]} width={width} height={height}>
+        <Plot
+          data={data2}
+          scale={[xScale2, yScale2]}
+          width={width}
+          height={height}
+
+        >
           <YAxis>
-            <YAxis.Ticks />
+            <YAxis.Ticks
+              multiline={props.multiline}
+              marginY={marginY}
+            />
             <YAxis.Grid />
             <YAxis.Title verticalWritingMode={true}>YAxis title</YAxis.Title>
           </YAxis>
           <XAxis>
-            <XAxis.Ticks ticks={xScale2.domain()} />
+            <XAxis.Ticks
+              ticks={xScale2.domain()}
+              multiline={props.multiline}
+              marginX={marginX}
+            />
             <XAxis.Title>XAxis title</XAxis.Title>
           </XAxis>
           <Bar x='category' y='bar' />
         </Plot>
 
-        <Plot data={data2} scale={[xScale2, yScale2]} width={width} height={height}>
+        <Plot
+          data={data2}
+          scale={[xScale2, yScale2]}
+          width={width}
+          height={height}
+        >
           <YAxis>
-            <YAxis.Ticks />
+            <YAxis.Ticks
+              multiline={props.multiline}
+              marginY={marginY}
+            />
             <YAxis.Grid />
             <YAxis.Title>YAxis title</YAxis.Title>
           </YAxis>
           <XAxis>
-            <XAxis.Ticks ticks={xScale2.domain()} />
+            <XAxis.Ticks
+              ticks={xScale2.domain()}
+              multiline={props.multiline}
+              marginX={marginX}
+            />
             <XAxis.Title>XAxis title</XAxis.Title>
           </XAxis>
           <Bar x='category' y='bar' />
         </Plot>
 
-        <Plot data={data2} scale={[xScale2, yScale2]} width={width} height={height}>
+        <Plot
+          data={data2}
+          scale={[xScale2, yScale2]}
+          width={width}
+          height={height}
+        >
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Grid />
             <YAxis.Title position='bottom'>YAxis title</YAxis.Title>
           </YAxis>
           <XAxis>
-            <XAxis.Ticks ticks={xScale2.domain()} />
+            <XAxis.Ticks ticks={xScale2.domain()} multiline={props.multiline} marginX={marginX} />
             <XAxis.Title position='left'>XAxis title</XAxis.Title>
           </XAxis>
           <Bar x='category' y='bar' />
@@ -129,7 +216,12 @@ const Demo = () => {
       </Flex>
 
       <Flex gap={4}>
-        <Plot data={data2} scale={[xScale2, yScale2]} width={width} height={height}>
+        <Plot
+          data={data2}
+          scale={[xScale2, yScale2]}
+          width={width}
+          height={height}
+        >
           <YAxis>
             <YAxis.Ticks hide={true} />
             <YAxis.Grid />
@@ -142,7 +234,12 @@ const Demo = () => {
           <Bar x='category' y='bar' />
         </Plot>
 
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+        >
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks()} />
             <YAxis.Grid ticks={yScale.ticks()} />
@@ -154,7 +251,12 @@ const Demo = () => {
           <Line x='x' y='y' />
         </Plot>
 
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+        >
           <YAxis>
 
           </YAxis>
@@ -179,8 +281,14 @@ const data = Array(20)
 const data2 = Array(5)
   .fill({})
   .map((d, i) => ({
-    category: `Cat ${i}`,
+    category: `Cat Cat Cat ${i}`,
     bar: Math.sin(i / 2) * 5 + 5,
   }));
+
+export const defaultProps: BaseExampleProps = {
+  marginX: undefined,
+  marginY: undefined,
+  multiline: undefined,
+};
 
 export default Demo;

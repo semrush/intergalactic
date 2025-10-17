@@ -36,6 +36,20 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
       control: 'select',
       options: [true, false, undefined],
     },
+    multilineXTicks: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+    marginX: {
+      control: 'number',
+    },
+    multilineYTicks: {
+      control: 'select',
+      options: [true, false, undefined],
+    },
+    marginY: {
+      control: 'number',
+    },
   },
   args: BasicUsageProps,
 };
