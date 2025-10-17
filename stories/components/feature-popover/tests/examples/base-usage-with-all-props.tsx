@@ -37,7 +37,13 @@ const Demo = (props: ExampleProps) => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon={props.closeIcon} duration={props.duration} wMax={350} aria-label='New feature: Export' disableEnforceFocus={props.disableEnforceFocus} autoFocus={props.autoFocus}>
+        <FeaturePopover.Popper
+          closeIcon={props.closeIcon}
+          duration={props.duration}
+          wMax={350}
+          aria-label='New feature: Export'
+          autoFocus={props.autoFocus}
+        >
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -74,7 +80,6 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
-  disableEnforceFocus: true,
   autoFocus: true,
   placement: undefined,
   timeout: undefined,
