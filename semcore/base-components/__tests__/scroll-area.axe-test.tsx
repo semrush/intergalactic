@@ -1,6 +1,6 @@
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
-import { TAG } from '@semcore/testing-utils/tags';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@base-components @scroll-area ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {

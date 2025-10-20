@@ -1,6 +1,6 @@
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
-import { TAG } from '@semcore/testing-utils/tags';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
 import { selectOption, locators } from './utils';
 

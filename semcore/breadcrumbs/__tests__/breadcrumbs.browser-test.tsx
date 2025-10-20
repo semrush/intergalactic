@@ -1,6 +1,6 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { TAG } from '@semcore/testing-utils/tags';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify links and icons styles', {
