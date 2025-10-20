@@ -4,10 +4,7 @@
 const figma = require('figma');
 const instance = figma.selectedInstance;
 
-const is12Hour = instance.getBoolean('12 hours')
-  ? 'is12Hour'
-  : undefined;
-
+const is12Hour = instance.getBoolean('12 hours', { true: 'is12Hour' });
 const disabled = instance.getEnum('state', { disabled: 'disabled' });
 const state = instance.getEnum('state', { invalid: 'state="invalid"' });
 const size = instance.getEnum('size', { L: 'size="l"' });
