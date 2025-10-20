@@ -1,5 +1,8 @@
+import { Box, Flex } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
+import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -25,25 +28,57 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-const Demo = () => {
+type ExampleProps = BulkTextareaProps<string> & BoxProps;
+
+export const defaultBulkTextareaProps: ExampleProps = {
+  w: 400,
+  maxLines: 10,
+  size: 'l',
+  readonly: false,
+  disabled: false,
+  placeholder: 'Enter or paste a list using comma or Enter',
+  state: undefined,
+  minRows: 2,
+  maxRows: 10,
+  showErrors: undefined,
+  validateOn: ['blur'],
+};
+
+const Demo = (props: Partial<ExampleProps>) => {
+  const mergedProps = { ...defaultBulkTextareaProps, ...props };
+
   const [value, setValue] = React.useState('');
+  const [errors, setErrors] = React.useState<ErrorItem[]>([]);
+  const [showErrors, setShowErrors] = React.useState(false);
+
+  const handleSubmit = React.useCallback(() => {
+    const newErrors: ErrorItem[] = [];
+    const rows = value.split('\n');
+    rows.forEach((line, index) => {
+      const { isValid, errorMessage } = validateRow(line, rows);
+      if (!isValid) {
+        newErrors.push({ lineIndex: index, errorMessage });
+      }
+    });
+
+    setErrors(newErrors);
+    setShowErrors(true);
+  }, [value]);
 
   return (
     <Box>
+      <Button onClick={handleSubmit}>Validate</Button>
+
       <BulkTextarea
-        w={400}
+        {...mergedProps}
         value={value}
         onChange={setValue}
         lineValidation={validateRow}
-        maxLines={10}
-        size='l'
+        onErrorsChange={setErrors}
+        onShowErrorsChange={setShowErrors}
+        errors={errors}
         linesDelimiters={[',']}
-        readonly={false}
-        disabled={false}
-        placeholder='Enter or paste a list using comma or Enter'
-        minRows={2}
-        maxRows={10}
-        validateOn={['blurLine']}
+        showErrors={showErrors}
         pasteProps={{
           delimiter: '\n',
           skipEmptyLines: true,
@@ -57,11 +92,12 @@ const Demo = () => {
           </Text>
           <BulkTextarea.Counter />
         </Flex>
+
         <BulkTextarea.InputField
           aria-labelledby='keywords-label'
-          commonErrorMessage=''
-          state='normal'
+          commonErrorMessage='Please enter correct movie names.'
         />
+
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
           <BulkTextarea.ClearAll />

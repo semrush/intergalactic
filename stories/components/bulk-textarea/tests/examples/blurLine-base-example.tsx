@@ -20,7 +20,24 @@ const validateRow = (row: string, rows: string[]) => {
   };
 };
 
-const Demo = (props: BulkTextareaProps<any>) => {
+type ExampleProps = BulkTextareaProps<string>;
+
+export const defaultBulkTextareaProps: ExampleProps = {
+  maxLines: 15,
+  size: undefined,
+  readonly: false,
+  disabled: false,
+  placeholder: 'Placeholder',
+  state: undefined,
+  minRows: 5,
+  maxRows: 5,
+  showErrors: undefined,
+  validateOn: ['blurLine'],
+};
+
+const Demo = (props: Partial<ExampleProps>) => {
+  const mergedProps = { ...defaultBulkTextareaProps, ...props };
+
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
@@ -47,16 +64,11 @@ const Demo = (props: BulkTextareaProps<any>) => {
     <Box>
       <BulkTextarea
         w={400}
-        maxLines={15}
         value={value}
-        minRows={5}
-        maxRows={5}
+        {...mergedProps}
         onChange={setValue}
         lineValidation={validateRow}
         linesDelimiters={[',']}
-        placeholder='Placeholder'
-        validateOn={['blurLine']}
-        {...props}
         errors={errors}
         showErrors={showErrors}
         onErrorsChange={setErrors}

@@ -1,5 +1,5 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`${TAG.VISUAL}`, () => {
@@ -8,9 +8,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
     const chevronIcons = page.locator('[data-ui-name="ChevronRight"]');
@@ -99,10 +97,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [`${TAG.PRIORITY_HIGH},
         @breadcrumbs,`],
     }, async ({ page }) => {
-      const standPath = 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
       const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
 
       await page.keyboard.press('Tab');
@@ -121,10 +117,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
     }, async ({ page }) => {
-      const standPath = 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
       const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
       const status = page.getByRole('status');
@@ -142,10 +135,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
     const status = page.getByRole('status');
@@ -161,9 +151,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [`${TAG.PRIORITY_MEDIUM},
         @breadcrumbs,`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -181,10 +169,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
     const lastItem = page.locator('[aria-current="page"]');
@@ -236,10 +221,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
     }, async ({ page }) => {
-      const standPath = 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
       const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
       const lastItem = page.locator('[aria-current="page"]');
@@ -283,10 +265,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
     }, async ({ page }) => {
-      const standPath = 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en');
 
       const nav = page.locator('nav');
       await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
@@ -323,10 +302,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @breadcrumbs,
         @link`],
     }, async ({ page }) => {
-      const standPath = 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx', 'en');
 
       const nav = page.locator('nav');
       await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
@@ -364,13 +340,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @breadcrumbs,
         @ellipsis`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
     const lastItem = page.locator('[aria-current="page"]');
-    const status = page.getByRole('status');
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.first()).toBeFocused();
 
@@ -390,9 +363,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ${TAG.KEYBOARD},
         @breadcrumbs,`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { active: false });
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', { active: false });
 
     const breadcrumbItems = page.locator('[data-ui-name="Breadcrumbs.Item"]');
     await page.keyboard.press('Tab');
@@ -415,9 +386,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ${TAG.KEYBOARD},
         @breadcrumbs,`],
   }, async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-testid="one-active"]')).not.toBeFocused();
