@@ -21,7 +21,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   variants.forEach(({ parent, duration, delay }) => {
     test(`Check ${parent} duration=${duration}, delay=${delay}`, {
       tag: [`${TAG.PRIORITY_HIGH}, 
-        @badge,
+        @animation,
         @base-components,
         @button`],
     }, async ({ page }) => {

@@ -1,7 +1,6 @@
+import { NeighborLocation, Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import type { ButtonTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import { Flex } from '@semcore/ui/flex-box';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import React from 'react';
 
 type ButtonTriggerNeighborLocationExample = ButtonTriggerProps & BaseTriggerProps;

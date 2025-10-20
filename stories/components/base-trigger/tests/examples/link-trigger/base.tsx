@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 type LinkTriggerBaseExample = LinkTriggerProps & BaseTriggerProps;

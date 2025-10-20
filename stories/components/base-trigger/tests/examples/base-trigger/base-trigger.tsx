@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import BaseTrigger from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import Dropdown from '@semcore/ui/dropdown';
-import { Flex } from '@semcore/ui/flex-box';
 import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
 import Radio from '@semcore/ui/radio';
 import Select from '@semcore/ui/select';

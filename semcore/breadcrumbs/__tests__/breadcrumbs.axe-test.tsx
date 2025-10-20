@@ -1,7 +1,8 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { TAG } from '@semcore/testing-utils/tags';
 
-test.describe('Breadcrumbs', () => {
+test.describe(`@breadcrumbs ${TAG.ACCESSIBILITY}`, () => {
   test('Redefining a tag', async ({ page }) => {
     const standPath = 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');

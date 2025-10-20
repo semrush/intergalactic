@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import type { FilterTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import { Flex } from '@semcore/ui/flex-box';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 

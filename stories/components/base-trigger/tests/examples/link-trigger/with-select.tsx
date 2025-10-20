@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

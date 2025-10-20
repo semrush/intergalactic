@@ -2,7 +2,7 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/tags';
 
-test.describe(`${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@add-filter ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 

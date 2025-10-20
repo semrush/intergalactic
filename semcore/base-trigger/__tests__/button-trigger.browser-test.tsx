@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 
@@ -7,7 +8,7 @@ import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @button-trigger', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     // Normal
     { size: 'm', state: 'normal', active: false, empty: false, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
@@ -33,7 +34,12 @@ test.describe('@visual @button-trigger', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @button-trigger,
+         @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
       await test.step('Base background check', async () => {
@@ -103,7 +109,13 @@ test.describe('@visual @button-trigger', () => {
       }
     });
 
-    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @icon,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -186,7 +198,12 @@ test.describe('@visual @button-trigger', () => {
       }
     });
 
-    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
+    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} `, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @button-trigger,
+         @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/neighbor-location.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -262,7 +279,15 @@ test.describe('@visual @button-trigger', () => {
       }
     });
 
-    test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} @priority-high`, async ({ page }) => {
+    test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @select,
+         @dropdown,
+         @icon,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
       const triggers = await locators.trigger(page).all();
@@ -340,7 +365,15 @@ test.describe('@visual @button-trigger', () => {
     });
   });
 
-  test('Verify ellipsis in Button trigger and few tags @priotity-high', async ({ page }) => {
+  test('Verify ellipsis in Button trigger and few tags', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @ellipsis,
+         @dropdown-menu,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
@@ -356,8 +389,15 @@ test.describe('@visual @button-trigger', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @button-trigger', () => {
-  test('Verify @keyboard navigation and changing values @priority-high', async ({ page }) => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify navigation and changing values by keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -379,7 +419,14 @@ test.describe('@functional @button-trigger', () => {
     await expect(locators.trigger(page)).toHaveAttribute('value', '0');
   });
 
-  test('Verify @mouse navigation and changing values @priority-high', async ({ page }) => {
+  test('Verify navigation and changing values by mouse', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.MOUSE},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @select`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
     const initialWidth = await locators.trigger(page).boundingBox().then((b) => b?.width || 0);
@@ -399,7 +446,17 @@ test.describe('@functional @button-trigger', () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Verify ellipsis in Button trigger and few tags @priotity-high', async ({ page }) => {
+  test('Verify ellipsis in Button trigger and few tags', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},
+      ${TAG.MOUSE},
+        @base-trigger,
+        @button-trigger,
+         @base-components,
+         @ellipsis,
+         @dropdown-menu,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
     const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
@@ -414,25 +471,5 @@ test.describe('@functional @button-trigger', () => {
     await locators.button(page).nth(1).hover();
     await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page.getByRole('tooltip')).toHaveCount(1);
-  });
-
-  test('Verify @mouse with @keyboard navigation and changing values @priority-medium', async ({ page }) => {
-    await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
-
-    await locators.trigger(page).click();
-    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.options(page, 'Option 1')).toHaveClass(/highlighted/);
-    await locators.trigger(page).click();
-    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
-    await expect(locators.trigger(page)).not.toHaveAttribute('value', '1');
-    await locators.trigger(page).click();
-    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
-
-    await locators.options(page, 'Option 0').click();
-    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
-
-    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
   });
 });

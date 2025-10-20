@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 import { locators } from './utils';
 
@@ -7,7 +8,7 @@ import { locators } from './utils';
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @link-trigger', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     // Normal
     { size: 'm', active: false, empty: false, placeholder: 'Placeholder', disabled: false, loading: false, color: undefined },
@@ -23,7 +24,12 @@ test.describe('@visual @link-trigger', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color} @priority-high`, async ({ page }) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @link-trigger,
+         @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx', 'en', item);
 
       if (item.loading) {
@@ -67,7 +73,13 @@ test.describe('@visual @link-trigger', () => {
       }
     });
 
-    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color} @priority-high`, async ({ page }) => {
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @link-trigger,
+         @base-components,
+         @icon,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-addons.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -122,7 +134,14 @@ test.describe('@visual @link-trigger', () => {
       }
     });
 
-    test(`Verify Link Trigger for Select case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color} @priority-high`, async ({ page }) => {
+    test(`Verify Link Trigger for Select case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @link-trigger,
+         @base-components,
+         @select,
+         @typography`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx', 'en', item);
 
       const triggers = await locators.trigger(page).all();
@@ -174,7 +193,14 @@ test.describe('@visual @link-trigger', () => {
     });
   });
 
-  test('Verify ellipsis in Link trigger', async ({ page }) => {
+  test('Verify ellipsis in Link trigger', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @link-trigger,
+         @ellipsis,
+         @typography,
+         @dropdown-menu`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
@@ -190,8 +216,16 @@ test.describe('@visual @link-trigger', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @link-trigger', () => {
-  test('Verify @keyboard navigation and changing values @priority-high', async ({ page }) => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify navigation and changing values by keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH},
+       ${TAG.KEYBOARD},
+        @base-trigger,
+        @link-trigger,
+         @base-components,
+         @select,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
     await expect(locators.trigger(page).first()).toHaveAttribute('aria-haspopup', 'listbox');
@@ -214,7 +248,15 @@ test.describe('@functional @link-trigger', () => {
     await expect(locators.trigger(page).first()).toHaveAttribute('value', 'Desktop');
   });
 
-  test('Verify @mouse navigation and changing values @priority-high', async ({ page }) => {
+  test('Verify navigation and changing values by mouse', {
+    tag: [`${TAG.PRIORITY_HIGH},
+       ${TAG.MOUSE},
+        @base-trigger,
+        @link-trigger,
+         @base-components,
+         @select,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
     const initialWidth = await locators.trigger(page).first().boundingBox().then((b) => b?.width || 0);
@@ -237,7 +279,16 @@ test.describe('@functional @link-trigger', () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
+  test('Verify navigation and changing values by mouse AND keyboard', {
+    tag: [`${TAG.PRIORITY_MEDIUM},
+       ${TAG.KEYBOARD},
+        ${TAG.MOUSE},  
+        @base-trigger,
+        @link-trigger,
+         @base-components,
+         @select,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
     await locators.trigger(page).first().click();

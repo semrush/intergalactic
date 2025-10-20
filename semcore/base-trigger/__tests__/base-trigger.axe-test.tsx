@@ -1,9 +1,10 @@
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 import { selectOption, locators } from './utils';
 
-test.describe('Filter-Trigger', () => {
+test.describe(`@base-components @filter-trigger ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
@@ -71,7 +72,7 @@ test.describe('Filter-Trigger', () => {
   });
 });
 
-test.describe('Link-Trigger', () => {
+test.describe(`@base-components @link-trigger ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
@@ -93,7 +94,7 @@ test.describe('Link-Trigger', () => {
   });
 });
 
-test.describe('Button-Trigger', () => {
+test.describe(`@base-components @button-trigger ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 

@@ -1,13 +1,14 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
-import { checkBackgroundColor, checkBorderColor, locators } from './utils';
+import { checkBorderColor, locators } from './utils';
 
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @filter-trigger', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     { size: 'm', active: false, empty: false, placeholder: 'Placeholder', disabled: false },
     { size: 'l', active: true, empty: false, placeholder: undefined, disabled: false },
@@ -19,7 +20,13 @@ test.describe('@visual @filter-trigger', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify Base case size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}  @priority-high`, async ({ page }) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @tooltip,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -45,7 +52,14 @@ test.describe('@visual @filter-trigger', () => {
       }
     });
 
-    test(`Verify With addons case size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder} @priority-high`, async ({ page }) => {
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @tooltip,
+         @icon,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -71,7 +85,13 @@ test.describe('@visual @filter-trigger', () => {
       }
     });
 
-    test(`Verify Button Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder} @priority-high`, async ({ page }) => {
+    test(`Verify Button Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @select,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/select.tsx', 'en', item);
 
       const buttons = await locators.trigger(page).all();
@@ -98,7 +118,13 @@ test.describe('@visual @filter-trigger', () => {
     });
   });
 
-  test('Verify ellipsis in Filter trigger and few tags @priotity-high', async ({ page }) => {
+  test('Verify ellipsis in Filter trigger and few tags', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @filter-trigger,
+         @ellipsis,
+         @typography,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
@@ -108,7 +134,13 @@ test.describe('@visual @filter-trigger', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Counter on trigger @priority-high', async ({ page }) => {
+  test('Verify Counter on trigger', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+        @filter-trigger,
+         @button,
+         @dropdown,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -123,7 +155,14 @@ test.describe('@visual @filter-trigger', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Hint functionality @priority-high', async ({ page }) => {
+  test('Verify Hint on Close button', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @tooltip,`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -142,9 +181,17 @@ test.describe('@visual @filter-trigger', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @filter-trigger', () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Filter Trigger with select', () => {
-    test('Verify Filter Triger and select @keyboard ibteractions @priority-high', async ({ page, browserName }) => {
+    test('Verify Filter Triger for select by keyboard interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @select,
+         @typography,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -179,7 +226,16 @@ test.describe('@functional @filter-trigger', () => {
       await expect(locators.trigger(page)).toBeFocused();
     });
 
-    test('Verify Filter Triger and select @mouse @keyboard interactions @priority-high', async ({ page }) => {
+    test('Verify Filter Triger for select by mouse AND keyboards interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.MOUSE},
+         ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @select,
+         @typography,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
       locators.trigger(page).click();
@@ -201,7 +257,15 @@ test.describe('@functional @filter-trigger', () => {
       await expect(locators.clearButton(page)).toBeFocused();
     });
 
-    test('Verify Filter Triger and select @mouse interactions @priority-high', async ({ page, browserName }) => {
+    test('Verify Filter Triger for select by mouse interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.MOUSE},
+        @base-trigger,
+        @filter-trigger,
+         @base-components,
+         @select,
+         @typography,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
       locators.trigger(page).click();
 
@@ -228,7 +292,15 @@ test.describe('@functional @filter-trigger', () => {
   });
 
   test.describe('Controlled filter trigger (triggerRef)', () => {
-    test('Verify @keyboard interactions @priority-high', async ({ page }) => {
+    test('Verify keyboard interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @button,
+         @select,
+         @typography,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -260,7 +332,15 @@ test.describe('@functional @filter-trigger', () => {
       await expect(locators.trigger(page)).toBeFocused();
     });
 
-    test('Verify @mouse interactions @priority-high', async ({ page }) => {
+    test('Verify mouse interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.MOUSE},
+        @base-trigger,
+        @filter-trigger,
+         @button,
+         @select,
+         @typography,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx', 'en');
 
       const button = page.getByRole('button', { name: 'Focus the filter trigger' });
@@ -296,7 +376,14 @@ test.describe('@functional @filter-trigger', () => {
   });
 
   test.describe('Counter and On-Clear', () => {
-    test('Verify @keyboard interactions and focus @priority-high', async ({ page }) => {
+    test('Verify focus and keyboard interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @button,
+         @dropdown,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
       await page.keyboard.press('Tab');
@@ -322,7 +409,14 @@ test.describe('@functional @filter-trigger', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).not.toBeVisible();
     });
 
-    test('Verify @mouse interactions @priority-high', async ({ page }) => {
+    test('Verify mouse interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @button,
+         @dropdown,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
       const addFilter = page.getByRole('button', { name: 'Add a filter' });
@@ -342,7 +436,14 @@ test.describe('@functional @filter-trigger', () => {
       await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).not.toBeVisible();
     });
 
-    test('Verify Accessible name @keyboard interactions and focus @prioriry-high', async ({ page, browserName }) => {
+    test('Verify Accessible name focus and keyboard interactions', {
+      tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @base-trigger,
+        @filter-trigger,
+         @select,
+         @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/accessible_name.tsx', 'en');
 
       await locators.trigger(page).nth(1).click();

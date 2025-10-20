@@ -10,7 +10,9 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Box margins and paddings', {
     tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components`],
+        @base-components,
+        @flex-box,
+        @box`],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-margins-and-paddings.tsx', 'en');
 
@@ -112,7 +114,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify Box dimensions', {
     tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components`],
+        @base-components,
+        @flex-box,
+        @box`],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/flex-box-width-height-test.tsx', 'en');
 
@@ -192,7 +196,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Flex gaps for all boxes', {
     tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,`],
+        @base-components,
+        @flex-box,
+        @flex`],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/flex-gaps-test.tsx', 'en');
     await expect(page).toHaveScreenshot();
@@ -200,7 +206,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify Flex base example', {
     tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components`],
+        @base-components,
+        @flex-box,
+        @flex`],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/docs/examples/flex.tsx', 'en');
     await expect(page).toHaveScreenshot();

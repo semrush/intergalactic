@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/tags';
 
 import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 
@@ -7,7 +8,7 @@ import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
-test.describe('@visual @base-trigger', () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     // Normal
     { size: 'm', state: 'normal', active: false, empty: false, placeholder: 'Placeholder', disabled: false },
@@ -29,7 +30,12 @@ test.describe('@visual @base-trigger', () => {
   ];
 
   variables.forEach((item) => {
-    test(`Verify Base case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}  @priority-high`, async ({ page }) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+         @base-components,
+`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base.tsx', 'en', item);
 
       await test.step('Base background check', async () => {
@@ -80,7 +86,12 @@ test.describe('@visual @base-trigger', () => {
       }
     });
 
-    test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}  @priority-high`, async ({ page }) => {
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+         @base-components,
+`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-addons.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -139,7 +150,11 @@ test.describe('@visual @base-trigger', () => {
       }
     });
 
-    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}  @priority-high`, async ({ page }) => {
+    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+         @base-components,`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/neighbor-location.tsx', 'en', item);
 
       const buttons = await locators.button(page).all();
@@ -197,7 +212,14 @@ test.describe('@visual @base-trigger', () => {
       }
     });
 
-    test(`Verify Base Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} @priority-high`, async ({ page }) => {
+    test(`Verify Base Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+         @base-components,
+         @dropdown,
+         @select,
+         @icon`],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
       const triggers = await locators.trigger(page).all();
@@ -254,7 +276,13 @@ test.describe('@visual @base-trigger', () => {
     });
   });
 
-  test('Verify ellipsis in Base trigger and few tags @priotity-high', async ({ page }) => {
+  test('Verify ellipsis in Base trigger and few tags', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @base-trigger,
+         @dropdown-menu,
+         @ellipsis,
+         @typography`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
@@ -270,9 +298,18 @@ test.describe('@visual @base-trigger', () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @base-trigger', () => {
-  test('Verify @keyboard navigation and changing values @priority-high', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify navigation and changing values by keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+        @base-trigger,
+         @base-components,
+         @button,
+         @divider,
+         @dropdown,
+         @select`],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(locators.trigger(page).first()).toBeFocused();
@@ -294,8 +331,17 @@ test.describe('@functional @base-trigger', () => {
     await expect(locators.trigger(page).first()).toHaveAttribute('value', 'One');
   });
 
-  test('Verify @mouse navigation and changing values @priority-high', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
+  test('Verify navigation and changing values by mouse', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.MOUSE},  
+        @base-trigger,
+         @base-components,
+         @button,
+         @divider,
+         @dropdown,
+         @select`],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
     await locators.trigger(page).first().click();
     const initialWidth = await locators.trigger(page).first().boundingBox().then((b) => b?.width || 0);
@@ -313,8 +359,18 @@ test.describe('@functional @base-trigger', () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-trigger/tests/base-trigger/examples/base-trigger.tsx', 'en');
+  test('Verify navigation and changing values by mouse AND keyboard', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+       ${TAG.MOUSE},  
+        @base-trigger,
+         @base-components,
+         @button,
+         @divider,
+         @dropdown,
+         @select`],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
     await locators.trigger(page).first().click();
     await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
@@ -324,22 +380,38 @@ test.describe('@functional @base-trigger', () => {
 
     await locators.trigger(page).first().click();
     await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
-    await expect(locators.options(page, 'Desktop')).not.toHaveAttribute('value', 'Desktop');
+    await expect(locators.trigger(page).first()).not.toHaveAttribute('value', 'Desktop');
 
     await locators.trigger(page).first().click();
     await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
     await locators.options(page, 'Desktop').click();
     await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
-    await expect(locators.options(page, 'Desktop')).toHaveAttribute('value', 'Desktop');
+    await expect(locators.trigger(page).first()).toHaveAttribute('value', 'Desktop');
   });
 
-  test('Verify ellipsis in Base trigger and few tags @priotity-high', async ({ page }) => {
+  test('Verify ellipsis in Base trigger and few tags', {
+    tag: [`${TAG.PRIORITY_HIGH},
+      ${TAG.KEYBOARD},  
+      ${TAG.MOUSE},  
+        @base-trigger,
+         @ellipsis,
+         @dropdown-menu,
+         @typography
+`],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 
-    await expect(page).toHaveScreenshot();
+    const triggerText = page.locator('[data-ui-name="BaseTrigger.Text"]').first();
+    const tagNameButton = await locators.button(page).first().evaluate((el) => el.tagName.toLowerCase());
+    expect(tagNameButton).toBe('h1');
+    const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
+    expect(tagNameText).toBe('h2');
+
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('tooltip')).toHaveCount(0);
 
     await locators.button(page).nth(1).hover();
     await page.getByRole('tooltip').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await expect(page.getByRole('tooltip')).toHaveCount(1);
   });
 });
