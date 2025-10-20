@@ -116,7 +116,7 @@
     "jsdom": "22.1.0",
     "lint-staged": "10.2.9",
     "picocolors": "1.0.0",
-    "playwright": "1.48.0",
+    "playwright": "1.55.1",
     "playwright-core": "1.48.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
