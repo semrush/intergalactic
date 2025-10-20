@@ -12,7 +12,7 @@ const size = instance.getEnum('size', { L: 'size="l"' });
 export default {
   example: figma.tsx`
 <TimePicker
-  aria-label={/* text */}
+  aria-label={/* if there's no visible label */}
   ${is12Hour}
   ${size}
   ${disabled}
