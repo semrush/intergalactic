@@ -186,7 +186,7 @@ class DataTableRoot<
     const { totalRows, expandedRows } = this.asProps;
     const flatRows = this.getFlatRows();
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];

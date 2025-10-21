@@ -11,7 +11,7 @@ import { Cell } from './Cell';
 import type { DataTableCellProps } from './Cell.types';
 import { LimitOverlay } from './LimitOverlay';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
@@ -20,7 +20,7 @@ type State<UniqKeyType> = {
   expandedForAnimation: boolean;
   calculatedHeight: number;
   withAnimation: boolean;
-  accordionRows?: DTRow<UniqKeyType>[];
+  accordionRows?: DTRows<UniqKeyType>;
   accordionComponent?: React.ReactNode;
 };
 
@@ -667,6 +667,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               return (
                 <Row
                   key={i}
+                  // @ts-ignore
                   row={subrow}
                   columns={columns}
                   rows={accordionRows}
