@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.11] - 2025-10-30
+
+### Fixed
+
+- Unnecessary scroll in small mode with long text in sidebar step.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

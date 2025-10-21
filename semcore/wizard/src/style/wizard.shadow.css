@@ -54,13 +54,12 @@ SSidebar {
     @media (max-width: 1060px) {
       padding: var(--intergalactic-spacing-2x, 8px);
       &:hover {
-        width: fit-content;
+        width: max-content;
         max-width: 220px;
       }
       &:hover SStepDescription {
         display: block;
         border-radius: var(--intergalactic-control-rounded, 6px);
-        white-space: nowrap;
         overflow: auto;
       }
       &[active]:hover SStepDescription {
