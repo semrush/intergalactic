@@ -38,9 +38,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   itemProps: any[] = [];
   itemRefs: HTMLElement[] = [];
 
-  highlightedItemRef = React.createRef<HTMLElement>();
+  highlightedItemRef: HTMLElement | null = null;
 
   prevHighlightedIndex: number | null = null;
+
+  scrollTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+  scrollResolve: (() => void) | null = () => {};
+  scrollObserver: IntersectionObserver | null = null;
 
   uncontrolledProps() {
     return {
@@ -53,6 +57,15 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ],
       visible: null,
     };
+  }
+
+  componentDidMount() {
+    this.setupObserver();
+  }
+
+  componentWillUnmount() {
+    this.cleanupScroll();
+    this.scrollObserver?.disconnect();
   }
 
   get childRole() {
@@ -157,10 +170,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  scrollToNode(node: Element | null, withAnimation = false) {
+  scrollToNode(node: HTMLElement | null, withAnimation = false) {
     if (node) {
-      // @ts-ignore
-      this.highlightedItemRef.current = node;
+      this.highlightedItemRef = node;
     }
     setTimeout(() => {
       if (node?.scrollIntoView) {
@@ -176,6 +188,66 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     }, 0);
   }
 
+  setupObserver() {
+    this.scrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+            if (this.scrollResolve) {
+              this.scrollResolve();
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.1],
+      },
+    );
+  }
+
+  cleanupScroll() {
+    clearTimeout(this.scrollTimeoutId);
+    if (this.highlightedItemRef) {
+      this.scrollObserver?.unobserve(this.highlightedItemRef);
+    }
+    this.scrollResolve = null;
+  }
+
+  scrollToNodeAsync(node: HTMLElement | null, withAnimation = false) {
+    return new Promise<void>((resolve) => {
+      this.cleanupScroll();
+
+      if (!node) {
+        resolve();
+        return;
+      }
+
+      this.highlightedItemRef = node;
+
+      this.scrollTimeoutId = setTimeout(() => {
+        this.cleanupScroll();
+        resolve();
+      }, 3000);
+
+      this.scrollResolve = () => {
+        clearTimeout(this.scrollTimeoutId);
+        this.scrollObserver?.unobserve(node);
+        this.scrollResolve = null;
+        resolve();
+      };
+
+      this.scrollObserver?.observe(node);
+
+      requestAnimationFrame(() => {
+        node.scrollIntoView({
+          block: 'nearest',
+          inline: 'nearest',
+          behavior: withAnimation ? 'smooth' : 'instant',
+        });
+      });
+    });
+  }
+
   getHighlightedIndex(amount: number): number {
     const { highlightedIndex, itemsCount } = this.asProps;
     const itemsLastIndex = (itemsCount ?? this.itemProps.length) - 1;
@@ -188,7 +260,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
-      } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
+      } else if (this.highlightedItemRef && this.prevHighlightedIndex !== null) {
         innerHighlightedIndex =
           this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
@@ -221,8 +293,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (visibilityChanged && !visible) {
       this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
-      // @ts-ignore
-      this.highlightedItemRef.current = null;
+      this.highlightedItemRef = null;
       this.itemProps = [];
       this.itemRefs = [];
       if (
@@ -321,13 +392,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       case ' ':
       case 'Enter':
         if (
-          this.highlightedItemRef.current &&
+          this.highlightedItemRef &&
           highlightedIndex !== null &&
           !this.itemProps[highlightedIndex].disabled
         ) {
           e.stopPropagation();
           e.preventDefault();
-          this.highlightedItemRef.current.click();
+          this.highlightedItemRef.click();
         }
 
         break;

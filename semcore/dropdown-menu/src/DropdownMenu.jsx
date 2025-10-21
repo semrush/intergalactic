@@ -66,7 +66,11 @@ class DropdownMenuRoot extends AbstractDropdown {
               const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
 
               if (selected && options && this.asProps.itemsCount === undefined) {
-                this.scrollToNode(selected, true);
+                this.scrollToNodeAsync(selected, true).then(() => {
+                  if (lastInteraction.isKeyboard) {
+                    selected.focus();
+                  }
+                });
 
                 for (let i = 0; i < options.length; i++) {
                   if (options[i] === selected) {
@@ -74,7 +78,11 @@ class DropdownMenuRoot extends AbstractDropdown {
                     break;
                   }
                 }
+
+                return;
               }
+
+              super.afterOpenPopper();
               // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
               // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
             }, 30);
@@ -83,6 +91,8 @@ class DropdownMenuRoot extends AbstractDropdown {
       ],
     };
   }
+
+  afterOpenPopper() {}
 
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
