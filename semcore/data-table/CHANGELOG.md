@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Keyboard interaction after mouse clicking in Safari.
+- Keyboard interaction after mouse clicking in cell with few interactive elements.
 
 ## [16.4.1] - 2025-10-17
 

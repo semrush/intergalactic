@@ -1,6 +1,7 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { isInteractiveElement } from '@semcore/ui/core/lib/utils/isInteractiveElement';
 import * as React from 'react';
 
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
@@ -73,6 +74,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   handleClickCell = (e: React.SyntheticEvent) => {
     const { rowIndex, columnIndex, onClick, row } = this.asProps;
+
+    if (isInteractiveElement(e.target) && this.cellRef.current) {
+      this.lockedCell[0] = this.cellRef.current;
+      this.lockedCell[1] = true;
+    }
 
     onClick(e, { rowIndex, colIndex: columnIndex, row });
   };
