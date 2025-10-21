@@ -1,5 +1,5 @@
 import Accrordion from '@semcore/ui/accordion';
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { BasicUsageTest } from './__tests__/basic-usage.test';
 import BasicExample, { defaultProps as BasicExampleProps } from './examples/basic_usage';

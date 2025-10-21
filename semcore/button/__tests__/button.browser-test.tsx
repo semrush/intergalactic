@@ -1,503 +1,674 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Button', () => {
-  test('Verify uses themes sizes and addons styles', async ({ page }) => {
-    const standPath = 'stories/components/button/tests/examples/icon_uses_and_themes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
 
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 1600, height: 800 });
+  button: (page: Page, index?: number) => {
+    const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  buttonText: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Button.Text"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  buttonAddon: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Button.Addon"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 
-    await page.keyboard.press('Tab');
+};
 
-    await test.step('Verify secondary muted ', async () => {
-      const flex = await page.locator('[data-testid="Secondary-muted"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  const variablesPrimary = [
+    // primary
+    { size: 'm', use: 'primary', theme: 'info', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'primary', theme: 'success', active: false, disabled: false, loading: false, hintPlacement: 'bottom' },
+    { size: 'm', use: 'primary', theme: 'brand', active: false, disabled: false, loading: false, hintPlacement: 'left' },
+    { size: 'm', use: 'primary', theme: 'danger', active: false, disabled: false, loading: false, hintPlacement: 'right' },
+    { size: 'm', use: 'primary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
+    { size: 'l', use: 'primary', theme: 'info', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'primary', theme: 'success', active: false, disabled: false, loading: false, hintPlacement: 'bottom' },
+    { size: 'l', use: 'primary', theme: 'brand', active: false, disabled: false, loading: false, hintPlacement: 'left' },
+    { size: 'l', use: 'primary', theme: 'danger', active: false, disabled: false, loading: false, hintPlacement: 'right' },
+    { size: 'l', use: 'primary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // active
+    { size: 'm', use: 'primary', theme: 'info', active: true, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'primary', theme: 'success', active: true, disabled: false, loading: false, hintPlacement: 'bottom' },
+    { size: 'm', use: 'primary', theme: 'brand', active: true, disabled: false, loading: false, hintPlacement: 'left' },
+    { size: 'm', use: 'primary', theme: 'danger', active: true, disabled: false, loading: false, hintPlacement: 'right' },
+    { size: 'm', use: 'primary', theme: 'invert', active: true, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // Disabled
+    { size: 'l', use: 'primary', theme: 'info', active: false, disabled: true, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'primary', theme: 'success', active: false, disabled: true, loading: false, hintPlacement: 'bottom' },
+    { size: 'l', use: 'primary', theme: 'brand', active: false, disabled: true, loading: false, hintPlacement: 'left' },
+    { size: 'l', use: 'primary', theme: 'danger', active: false, disabled: true, loading: false, hintPlacement: 'right' },
+    { size: 'l', use: 'primary', theme: 'invert', active: false, disabled: true, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // loading
+    { size: 'l', use: 'primary', theme: 'info', active: false, disabled: false, loading: true, hintPlacement: 'top' },
+    { size: 'l', use: 'primary', theme: 'success', active: false, disabled: false, loading: true, hintPlacement: 'bottom' },
+    { size: 'l', use: 'primary', theme: 'brand', active: false, disabled: false, loading: true, hintPlacement: 'left' },
+    { size: 'm', use: 'primary', theme: 'brand', active: false, disabled: false, loading: true, hintPlacement: 'left' },
+    { size: 'm', use: 'primary', theme: 'danger', active: false, disabled: false, loading: true, hintPlacement: 'right' },
+    { size: 'm', use: 'primary', theme: 'invert', active: false, disabled: false, loading: true, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+  ];
+
+  variablesPrimary.forEach((item) => {
+    test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+
       await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
+      const count = await locators.button(page).count();
 
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
 
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
 
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(4).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
     });
 
-    await test.step('Verify secondary invert ', async () => {
-      const flex = await page.locator('[data-testid="Secondary-invert"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
+    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+
       await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
+      const count = await locators.button(page).count();
 
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
 
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
 
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(0).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
     });
 
-    await test.step('Verify primary info', async () => {
-      const flex = await page.locator('[data-testid="Primary-info"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
+    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon,
+         @tooltip`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      const count = await locators.button(page).count();
 
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
 
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await locators.button(page).nth(1).hover();
+          await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
 
-    await test.step('Verify primary success', async () => {
-      const flex = await page.locator('[data-testid="Primary-success"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
 
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify primary brand', async () => {
-      const flex = await page.locator('[data-testid="Primary-brand"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify primary danger', async () => {
-      const flex = await page.locator('[data-testid="Primary-danger"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify primary invert', async () => {
-      const flex = await page.locator('[data-testid="Primary-invert"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify Tertiary muted', async () => {
-      const flex = await page.locator('[data-testid="Tertiary-muted"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify Tertiary info', async () => {
-      const flex = await page.locator('[data-testid="Tertiary-info"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-    });
-
-    await test.step('Verify Tertiary invert', async () => {
-      const flex = await page.locator('[data-testid="Tertiary-invert"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await flex.locator('[data-ui-name="Button"]').nth(0).click();
-      await page.keyboard.press('Tab');
-
-      await flex.locator('[data-ui-name="Button"]').nth(6).hover();
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      const lWithAddons = flex.locator('[data-ui-name="Button"]').nth(8);
-      await expect(lWithAddons).toHaveCSS('height', '40px');
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '16px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-left',
-        '8px',
-      );
-      await expect(lWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
-
-      const mWithAddons = flex.locator('[data-ui-name="Button"]').nth(10);
-      await expect(mWithAddons).toHaveCSS('height', '28px');
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'font-size',
-        '14px',
-      );
-      await expect(mWithAddons.locator('[data-ui-name="Button.Text"]')).toHaveCSS(
-        'margin-right',
-        '8px',
-      );
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
     });
   });
 
-  test('Verify buttons without text interactions', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variablesSeconsary = [
+    // primary
+    { size: 'm', use: 'secondary', theme: 'muted', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'secondary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-    await page.setContent(htmlContent);
-    const buttons = page.locator('[data-ui-name="Button"]');
-    await page.keyboard.press('Tab');
-    await page.waitForSelector('text="Confirm action"');
-    await expect(page).toHaveScreenshot();
+    { size: 'l', use: 'secondary', theme: 'muted', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'secondary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-    await buttons.nth(1).hover();
-    await page.waitForSelector('text="Close notification"');
-    await expect(page).toHaveScreenshot();
+    // active
+    { size: 'm', use: 'secondary', theme: 'muted', active: true, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'secondary', theme: 'invert', active: true, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-    await buttons.nth(0).hover();
-    await page.waitForSelector('text="Confirm action"');
-    await expect(page.locator('text="Confirm action"')).toBeVisible();
-    await expect(page.locator('text="Close notification"')).not.toBeVisible();
+    // Disabled
+    { size: 'l', use: 'secondary', theme: 'muted', active: false, disabled: true, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'secondary', theme: 'invert', active: false, disabled: true, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // loading
+    { size: 'l', use: 'secondary', theme: 'muted', active: false, disabled: false, loading: true, hintPlacement: 'top' },
+    { size: 'm', use: 'secondary', theme: 'invert', active: false, disabled: false, loading: true, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+  ];
+
+  variablesSeconsary.forEach((item) => {
+    test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+
+      await page.keyboard.press('Tab');
+      const count = await locators.button(page).count();
+
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
+
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
+
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(4).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
+
+    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+
+      await page.keyboard.press('Tab');
+      const count = await locators.button(page).count();
+
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
+
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
+
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(0).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
+
+    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon,
+         @tooltip`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
+
+      const count = await locators.button(page).count();
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await locators.button(page).nth(1).hover();
+          await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
   });
 
-  test('Verify disabled buttons interactions', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_with_loading.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variablesTertiary = [
+    // primary
+    { size: 'm', use: 'tertiary', theme: 'muted', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'tertiary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-    await page.setContent(htmlContent);
-    const buttons = page.locator('[data-ui-name="Button"]');
-    await page.keyboard.press('Tab');
-    await expect(buttons.nth(0)).not.toBeFocused();
+    { size: 'l', use: 'tertiary', theme: 'muted', active: false, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'tertiary', theme: 'invert', active: false, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
 
-    await page.keyboard.press('Tab');
-    await expect(buttons.nth(1)).not.toBeFocused();
+    // active
+    { size: 'm', use: 'tertiary', theme: 'muted', active: true, disabled: false, loading: false, hintPlacement: 'top' },
+    { size: 'm', use: 'tertiary', theme: 'invert', active: true, disabled: false, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // Disabled
+    { size: 'l', use: 'tertiary', theme: 'muted', active: false, disabled: true, loading: false, hintPlacement: 'top' },
+    { size: 'l', use: 'tertiary', theme: 'invert', active: false, disabled: true, loading: false, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+    // loading
+    { size: 'l', use: 'tertiary', theme: 'muted', active: false, disabled: false, loading: true, hintPlacement: 'top' },
+    { size: 'm', use: 'tertiary', theme: 'invert', active: false, disabled: false, loading: true, hintPlacement: 'top', style: { backgroundColor: '#191B23' } },
+
+  ];
+
+  variablesTertiary.forEach((item) => {
+    test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+
+      await page.keyboard.press('Tab');
+      const count = await locators.button(page).count();
+
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
+
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
+
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(4).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
+
+    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+
+      await page.keyboard.press('Tab');
+      const count = await locators.button(page).count();
+
+      if (!item.loading) {
+        await test.step('Verify text paddings and spacing based on content', async () => {
+          for (let i = 0; i < count; i++) {
+            const button = locators.button(page).nth(i);
+            const text = button.locator('[data-ui-name="Button.Text"]');
+            const addon = button.locator('[data-ui-name="Button.Addon"]');
+
+            const hasText = await text.count();
+            const hasAddon = await addon.count();
+
+            if (hasText && !hasAddon) {
+              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
+            }
+          }
+        });
+      }
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await locators.button(page).nth(0).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.loading) {
+        await test.step(`Verify attributes for loading`, async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
+
+    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+      tag: [`${TAG.PRIORITY_HIGH},
+        @button,
+         @base-components,
+         @icon,
+         @tooltip`],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
+
+      const count = await locators.button(page).count();
+
+      if (!item.active && !item.disabled) {
+        await test.step(`Verify focus styles for not active button styles`, async () => {
+          await page.keyboard.press('Tab');
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.active && !item.disabled) {
+        await test.step(`Verify focus styles for active button styles`, async () => {
+          await locators.button(page).nth(1).hover();
+          await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify attributes for disabled`, async () => {
+          await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
+        });
+      }
+    });
   });
 });
 
-test.describe('Button Link', () => {
-  test('Verify Button Link styles and states', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_link.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test(`Verify Addon only Hint appearing by keyboard`, {
+    tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.KEYBOARD},
+        @button,
+         @base-components,
+         @icon,
+         @tooltip`],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await expect(page.getByText('Addon only')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.getByText('Addon only')).toHaveCount(0);
 
-    const button = page.locator('[data-ui-name="ButtonLink"]');
+    await page.keyboard.press('Tab');
+    await expect(page.getByText('Hint Button Addon')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.getByText('Hint Button Addon')).toHaveCount(0);
 
-    await test.step('Verify primary styles', async () => {
-      await expect(page).toHaveScreenshot();
-      await button.first().hover();
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
+    await page.keyboard.press('Tab');
+    await expect(page.getByText('Tooltip Button Addon')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.getByText('Tooltip Button Addon')).toHaveCount(0);
+  });
 
-    await test.step('Verify colored styles', async () => {
-      await button.nth(1).hover();
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
+  test(`Verify Addon only Hint appearing by mouse`, {
+    tag: [`${TAG.PRIORITY_HIGH},
+        ${TAG.MOUSE},
+        @button,
+         @base-components,
+         @icon,
+         @tooltip`],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');
 
-    await test.step('Verify secondary styles', async () => {
-      await button.nth(2).hover();
+    await locators.button(page).nth(0).hover();
+    await expect(page.getByText('Addon only')).toHaveCount(1);
 
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
+    await locators.button(page).nth(1).hover();
+    await expect(page.getByText('Addon only')).toHaveCount(0);
+    await expect(page.getByText('Hint Button Addon')).toHaveCount(1);
 
-    await test.step('Verify icon only styles', async () => {
-      await button.nth(4).hover();
-      await page.waitForSelector('text="Icon-only button"');
-      await expect(page).toHaveScreenshot();
-      await button.nth(5).hover();
-
-      await page.keyboard.press('Tab');
-      await page.waitForSelector('text="Icon-only button"');
-      await expect(page).toHaveScreenshot();
-    });
+    await locators.button(page).nth(2).hover();
+    await expect(page.getByText('Hint Button Addon')).toHaveCount(0);
+    await expect(page.getByText('Tooltip Button Addon')).toHaveCount(1);
   });
 });

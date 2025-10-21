@@ -26,6 +26,10 @@ export const locators = {
 
 };
 
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     // active
@@ -81,6 +85,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 });
 
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Counter and Clear all', () => {
     test('Verify counter fucntionality', {
@@ -89,7 +98,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         @bulk-textarea, 
        @base-components
        @typography`],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15, validateOn: ['blur'] });
 
       await test.step('Verify counter is zero on initial load', async () => {

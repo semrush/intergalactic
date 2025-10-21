@@ -2,6 +2,10 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify links and icons styles', {
     tag: [`${TAG.PRIORITY_HIGH},
@@ -161,6 +165,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 });
 
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify ellipsis in the end', {
     tag: [`${TAG.PRIORITY_HIGH},
