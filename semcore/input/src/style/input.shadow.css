@@ -131,6 +131,10 @@ SInput[size='l'] {
   height: var(--intergalactic-form-control-l, 40px);
 }
 
+SInput:has(SValue:focus-visible) {
+  z-index: 1;
+}
+
 SInput[state='normal'] {
   & SOutline {
     border-color: var(--intergalactic-border-primary, #c4c7cf);
