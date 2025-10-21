@@ -199,30 +199,30 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       }
       onExpandRow(row);
 
-      const accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : [];
+      if (this.state.accordionRows !== undefined) {
+        const accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : [];
 
-      let i = 0;
+        let i = 0;
 
-      const changeAccordionRows = () => {
-        const chunk = i === 0 ? accordionAnimationRows : 100;
+        const changeAccordionRows = () => {
+          const chunk = i === 0 ? accordionAnimationRows : 100;
 
-        this.setState((prevState) => {
-          return {
-            accordionRows: prevState.accordionRows?.concat(accordionRows.slice(i, i + chunk)),
-          };
-        }, () => {
-          i = i + chunk;
-          if (i < accordionRows.length) {
-            setTimeout(() => {
-              changeAccordionRows();
-            }, openDuration);
-          } else {
-            this.asProps.calculateAriaRowIndex();
-          }
-        });
-      };
+          this.setState({ accordionRows: accordionRows.slice(0, i + chunk) }, () => {
+            i = i + chunk;
+            if (i < accordionRows.length) {
+              setTimeout(() => {
+                changeAccordionRows();
+              }, openDuration);
+            } else {
+              this.asProps.calculateAriaRowIndex();
+            }
+          });
+        };
 
-      changeAccordionRows();
+        changeAccordionRows();
+      } else {
+        this.forceUpdate(this.asProps.calculateAriaRowIndex);
+      }
     }
   };
 
