@@ -1,12 +1,11 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Carousel', () => {
+test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
   test('Default indicators', async ({ page }) => {
-    const standPath = 'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_default_indicators.tsx', 'en');
 
-    await page.setContent(htmlContent);
     {
       const violations = await getAccessibilityViolations({ page });
 
@@ -23,20 +22,14 @@ test.describe('Carousel', () => {
     }
   });
   test('Indicators only', async ({ page }) => {
-    const standPath = 'stories/components/carousel/docs/examples/carousel_with_indicators_only.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
   test('Preview indicators', async ({ page }) => {
-    const standPath = 'stories/components/carousel/docs/examples/carousel_with_preview_indicators.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_preview_indicators.tsx', 'en');
 
     {
       const violations = await getAccessibilityViolations({ page });
@@ -54,10 +47,7 @@ test.describe('Carousel', () => {
     }
   });
   test('Without modal', async ({ page }) => {
-    const standPath = 'stories/components/carousel/docs/examples/carousel_without_modal_window.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_without_modal_window.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
