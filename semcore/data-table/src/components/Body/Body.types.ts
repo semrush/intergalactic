@@ -1,8 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
-import type { CellPropsInner, Theme } from './Cell.types';
-import type { DTRow } from './Row.types';
+import type { DataTableCellProps, Theme } from './Cell.types';
+import type { DTRow, RowPropsInner } from './Row.types';
 import type { ACCORDION } from '../DataTable/DataTable';
 import type { DataRowItem, DTUse, VirtualScroll, DataTableProps, DataTableData } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
@@ -86,7 +86,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration?: DataTableProps<any, any, any>['accordionDuration'];
-  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
   shadowVertical?: '' | 'end' | 'start' | 'median';
@@ -94,6 +94,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   limit?: DataTableProps<any, any, any>['limit'];
   variant?: DataTableProps<any, any, any>['variant'];
   totalRows?: number;
+  accordionAnimationRows: RowPropsInner<Data, UniqKeyType>['accordionAnimationRows'];
 };
 
 export type DataTableBodyType = (<

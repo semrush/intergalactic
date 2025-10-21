@@ -69,6 +69,16 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   };
 
+  handleComponentRef = (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => {
+    requestAnimationFrame(() => {
+      if (component) {
+        this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
+      } else {
+        this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
+      }
+    });
+  };
+
   getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
     const {
       use,
@@ -90,6 +100,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      accordionAnimationRows,
       getI18nText,
       renderCell,
       tableRef,
@@ -127,7 +138,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       sideIndents: sideIndentsValue,
       getFixedStyle,
       mergedRow: props.mergedRow,
-      accordionDuration,
+      accordionDuration: accordionDuration ?? 50,
+      accordionAnimationRows,
       flatRows,
       getI18nText,
       renderCell,
@@ -302,13 +314,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
-                      componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                        if (component) {
-                          this.rowsComponentsMap.set(item[UNIQ_ROW_KEY], component);
-                        } else {
-                          this.rowsComponentsMap.delete(item[UNIQ_ROW_KEY]);
-                        }
-                      }}
+                      componentRef={this.handleComponentRef(item)}
                     />
                   );
                 })}
@@ -320,13 +326,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
-              componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                if (component) {
-                  this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
-                } else {
-                  this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
-                }
-              }}
+              componentRef={this.handleComponentRef(row)}
             />
           );
         })}

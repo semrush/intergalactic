@@ -1,5 +1,6 @@
-import type { Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/ui/core';
 import type * as React from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 
 import type { BodyPropsInner } from './Body.types';
 import type { DTRow, DTRows } from './Row.types';
@@ -8,7 +9,7 @@ import type { DTColumn } from '../Head/Column.types';
 
 export type Theme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 
-export type DataTableCellProps<UniqKeyType> = {
+export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Intergalactic.InternalTypings.EfficientOmit<HTMLAttributes<HTMLDivElement>, 'onClick'> & {
   id: string;
   accordionId: string;
   row: DTRow<UniqKeyType>;
@@ -25,24 +26,21 @@ export type DataTableCellProps<UniqKeyType> = {
   animationExpand?: boolean;
   accordionRowIndex?: number;
   rows: DTRows<UniqKeyType>;
-};
-
-export type CellPropsInner<Data extends DataTableData, UniqKeyType> = {
   use: DTUse;
+
+  style?: CSSProperties;
+
+  duration?: number;
+  delay?: number;
 
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
-  onClick: (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
+  onClick: (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
   flatRows: DTRow<UniqKeyType>[];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>;
-  lastLeftFixedIndex: number;
-  firstRightFixedIndex: number;
   withoutBorder?: boolean;
   calculatedHeight: number;
+} & {
+  'data-aria-level'?: number;
 };
-
-export type DataTableCellType = (<UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableCellProps<UniqKeyType>>
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableCellProps<any>>;
