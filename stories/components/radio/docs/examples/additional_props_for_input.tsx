@@ -3,7 +3,7 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <RadioGroup aria-label='radiogroup with custom properties'>
+    <RadioGroup name='radio' aria-label='radiogroup with custom properties'>
       <Radio mb={3} value='1'>
         <Radio.Value>
           <Radio.Value.Control data-test-id='TEST_ID' />

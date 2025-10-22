@@ -1,204 +1,475 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { checkBackgroundColor, checkBorderColor, checkKeyboardNavigation } from './utils';
+import { checkBackgroundColor, checkBorderColor, locators } from './utils';
 
-test.describe('Button-trigger', () => {
-  test.describe('Styles and a11y checks', () => {
-    test('Verify main styles and props', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variables = [
+    // Normal
+    { size: 'm', state: 'normal', active: false, empty: false, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
+    { size: 'm', state: 'normal', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: false },
 
-      await page.setContent(htmlContent);
+    // Valid
+    { size: 'm', state: 'valid', active: true, empty: false, placeholder: undefined, disabled: false, loading: false, chevron: true },
+    { size: 'l', state: 'valid', active: false, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
 
-      await test.step('Normal state styles', async () => {
-        await checkBackgroundColor(
-          page,
-          '[data-test-id="normal-state-trigger"]',
-          'rgb(255, 255, 255)',
-        );
-      });
-      const button = await page.locator('[data-test-id="normal-state-trigger"]');
-      await button.hover();
-      await expect(page).toHaveScreenshot();
+    // Invalid
+    { size: 'm', state: 'invalid', active: false, empty: false, placeholder: undefined, disabled: false, loading: false, chevron: true },
+    { size: 'l', state: 'invalid', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, chevron: true },
 
-      await test.step('Disabled state styles', async () => {
-        await checkBackgroundColor(page, '[data-test-id="disabled-trigger"]', 'rgb(255, 255, 255)');
-      });
+    // Disabled
+    { size: 'm', state: 'normal', active: false, empty: false, placeholder: undefined, disabled: true, loading: false, chevron: true },
+    { size: 'l', state: 'valid', active: true, empty: true, placeholder: 'Placeholder', disabled: true, loading: false, chevron: true },
+    { size: 'm', state: 'invalid', active: true, empty: false, placeholder: undefined, disabled: true, loading: false, chevron: false },
 
-      await test.step('Valid state styles', async () => {
-        await checkBorderColor(page, '[data-test-id="valid-state-trigger"]', 'rgb(0, 124, 101)');
-      });
+    // Loading
+    { size: 'l', state: 'normal', active: false, empty: false, placeholder: undefined, disabled: false, loading: true, chevron: true },
+    { size: 'm', state: 'valid', active: false, empty: false, placeholder: undefined, disabled: false, loading: true, chevron: true },
+    { size: 'l', state: 'invalid', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: true, chevron: false },
+  ];
 
-      await test.step('Invalid state styles', async () => {
-        await checkBorderColor(page, '[data-test-id="invalid-state-trigger"]', 'rgb(209, 0, 47)');
-      });
+  variables.forEach((item) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
-      await test.step('Focus styles', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-
-        const button = await page.locator('[data-test-id="normal-state-trigger"]');
-        await button.hover();
-        await expect(page).toHaveScreenshot();
-
-        await page.keyboard.press('Tab');
-
-        await page.locator('[data-test-id="valid-state-trigger"]').hover();
-        await expect(page).toHaveScreenshot();
-
-        await page.keyboard.press('Tab');
-
-        await page.locator('[data-test-id="invalid-state-trigger"]').hover();
-        await expect(page).toHaveScreenshot();
+      await test.step('Base background check', async () => {
+        await checkBackgroundColor(page, locators.button(page), 'rgb(255, 255, 255)');
       });
 
-      await test.step('Active state styles', async () => {
-        await checkBackgroundColor(page, '[data-test-id="active-trigger"]', 'rgb(255, 255, 255)');
-        await checkBorderColor(page, '[data-test-id="active-trigger"]', 'rgb(0, 109, 202)');
-      });
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '-1');
+          const svg = locators.button(page).locator('svg');
+          await expect(svg).toBeVisible();
+          await expect(svg).toHaveAttribute('role', 'img');
+          await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+
+          await page.keyboard.press('Tab');
+          await expect(locators.button(page)).not.toBeFocused();
+        });
+      }
+
+      if (item.state === 'normal' && !item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+          if (item.empty && item.placeholder !== undefined) {
+            const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+            await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+          }
+
+          if (item.chevron && !item.loading) {
+            const svg = locators.button(page).locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('aria-hidden', 'true');
+          }
+          if (item.active) {
+            await checkBorderColor(page, locators.button(page), 'rgb(0, 109, 202)');
+          } else {
+            await checkBorderColor(page, locators.button(page), 'rgb(196, 199, 207)');
+          }
+          await page.keyboard.press('Tab');
+          await locators.button(page).hover();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
+
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
+          await page.keyboard.press('Tab');
+          await expect(locators.button(page)).not.toBeFocused();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
+
+      if (item.state === 'valid' && !item.disabled) {
+        await test.step('Valid state styles', async () => {
+          await checkBorderColor(page, locators.button(page), 'rgb(0, 124, 101)');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
+
+      if (item.state === 'invalid' && !item.disabled) {
+        await test.step('Invalid state styles', async () => {
+          await checkBorderColor(page, locators.button(page), 'rgb(209, 0, 47)');
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
     });
 
-    test('Verify main styles a11y attributes and focus', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/button-trigger-all-states.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components',
+        '@icon'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
+      const buttons = await locators.button(page).all();
 
-      await test.step('Verify focus on Active and Disabled', async () => {
-        await checkKeyboardNavigation(page, '[data-test-id]');
+      await test.step('Base background check', async () => {
+        for (const button of buttons) {
+          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        }
       });
 
-      await test.step('Verify roles and attributes', async () => {
-        const button = await page.locator('[data-test-id="active-trigger"]');
-        await expect(button).toHaveAttribute('type', 'button');
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          for (const button of buttons) {
+            const svg = button.locator('svg');
 
-        const placeholderElement = await page
-          .locator('[data-ui-name="ButtonTrigger.Text"][placeholder]')
-          .first();
-        await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+            await expect(button).toHaveAttribute('tabindex', '-1');
 
-        const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
-        await expect(button1).toHaveAttribute('tabindex', '0');
+            await expect(svg.nth(1)).toHaveAttribute('role', 'img');
+            await expect(svg.nth(1)).toHaveAttribute('aria-label', 'Loading…');
 
-        const svg = button1.locator('svg');
-        await expect(svg).toBeVisible();
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
 
-        await expect(svg).toHaveAttribute('aria-hidden', 'true');
-        const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
-        await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
+      if (item.state === 'normal' && !item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+            }
+
+            if (item.chevron && !item.loading) {
+              const svgs = await button.locator('svg').all();
+              for (const svg of svgs) {
+                await expect(svg).toBeVisible();
+                await expect(svg).toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+            if (item.active) {
+              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+            } else {
+              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+            }
+          }
+          await locators.button(page).nth(1).hover();
+
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
+
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
+
+      if (item.state === 'valid' && !item.disabled) {
+        await test.step('Valid state styles', async () => {
+          for (const button of buttons) {
+            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+          }
+        });
+      }
+
+      if (item.state === 'invalid' && !item.disabled) {
+        await test.step('Invalid state styles', async () => {
+          for (const button of buttons) {
+            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+          }
+        });
+      }
+    });
+
+    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/neighbor-location.tsx', 'en', item);
+
+      const buttons = await locators.button(page).all();
+
+      await test.step('Base background check', async () => {
+        for (const button of buttons) {
+          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        }
       });
+
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', '-1');
+            const svg = button.locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('role', 'img');
+            await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+          }
+        });
+      }
+
+      if (item.state === 'normal' && !item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = button.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+            }
+
+            if (item.chevron && !item.loading) {
+              const svg = button.locator('svg');
+              await expect(svg).toBeVisible();
+              await expect(svg).toHaveAttribute('aria-hidden', 'true');
+            }
+            if (item.active) {
+              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+            } else {
+              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+            }
+          }
+          await locators.button(page).nth(1).hover();
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`neighbor-location-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
+
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
+
+      if (item.state === 'valid' && !item.disabled) {
+        await test.step('Valid state styles', async () => {
+          for (const button of buttons) {
+            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+          }
+        });
+      }
+
+      if (item.state === 'invalid' && !item.disabled) {
+        await test.step('Invalid state styles', async () => {
+          for (const button of buttons) {
+            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+          }
+        });
+      }
     });
 
-    test('Verify loading props a11y and focus', async ({ page }) => {
-      const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
+    test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components',
+        '@select',
+        '@dropdown',
+        '@icon'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      const triggers = await locators.trigger(page).all();
 
-      await page.setContent(htmlContent);
+      await test.step('Base background check', async () => {
+        for (const button of triggers) {
+          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+        }
+        await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+      });
 
-      const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
-      await expect(button1).toHaveAttribute('tabindex', '-1');
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '-1');
+            const svg = button.locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('role', 'img');
+            await expect(svg).toHaveAttribute('aria-label', 'Loading…');
 
-      const svg = button1.locator('svg');
-      await expect(svg).toBeVisible();
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
 
-      await expect(svg).toHaveAttribute('role', 'img');
-      await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-      const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
-      await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
+      if (item.state === 'normal' && !item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
+            }
 
-      await page.keyboard.press('Tab');
-      await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
-    });
+            if (item.chevron && !item.loading) {
+              const svg = button.locator('svg');
+              await expect(svg).toBeVisible();
+              await expect(svg).toHaveAttribute('aria-hidden', 'true');
+            }
+            if (item.active) {
+              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+            } else {
+              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+            }
+          }
+        });
+      }
 
-    test('Verify ellipsis in trigger and few tags', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
 
-      const button = page.getByRole('button');
-      const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
-      const tagNameButton = await button.first().evaluate((el) => el.tagName.toLowerCase());
-      expect(tagNameButton).toBe('h1');
-      const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
-      expect(tagNameText).toBe('h2');
+      if (item.state === 'valid' && !item.disabled) {
+        await test.step('Valid state styles', async () => {
+          for (const button of triggers) {
+            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+          }
+        });
+      }
 
-      await button.nth(1).hover();
-      await page.getByRole('tooltip').waitFor({ state: 'visible' });
-      await expect(page.getByRole('tooltip')).toHaveCount(1);
+      if (item.state === 'invalid' && !item.disabled) {
+        await test.step('Invalid state styles', async () => {
+          for (const button of triggers) {
+            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+          }
+        });
+      }
     });
   });
 
-  test.describe('Interactions', () => {
-    test('Verify keyboard navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify ellipsis in Button trigger and few tags', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@ellipsis',
+      '@dropdown-menu',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox');
-      await page.keyboard.press('Tab');
-      await expect(button).toBeFocused();
-      await page.keyboard.press('ArrowDown');
-      const option = page.getByRole('option', { name: 'Option 0' });
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await page.keyboard.press('Escape');
-      await expect(option).not.toBeVisible();
+    await expect(page).toHaveScreenshot();
 
-      await expect(button).toBeFocused();
-      await page.keyboard.press('Enter');
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await page.keyboard.press('Space');
-      await expect(button).toBeFocused();
-      await expect(button).toHaveAttribute('value', '0');
-    });
+    await locators.button(page).nth(1).hover();
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
 
-    test('Verify mouse navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify navigation and changing values by keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox');
-      const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
-      await button.click();
+    await page.keyboard.press('Tab');
+    await expect(locators.trigger(page)).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).toHaveClass(/highlighted/);
+    await page.keyboard.press('Escape');
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
 
-      const option = page.getByRole('option', { name: 'Option 0' });
-      await expect(option).toBeVisible();
-      await expect(option).not.toHaveClass(/highlighted/);
-      await button.click();
-      await expect(option).not.toBeVisible();
-      await button.click();
-      await option.click();
-      await page.waitForTimeout(50);
-      await expect(button).toHaveAttribute('value', '0');
-      const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
-      expect(finalWidth).toBeLessThan(initialWidth);
-    });
+    await expect(locators.trigger(page)).toBeFocused();
+    await page.keyboard.press('Enter');
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).toHaveClass(/highlighted/);
+    await page.keyboard.press('Space');
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
 
-    test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await expect(locators.trigger(page)).toBeFocused();
+    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
+  });
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox');
-      await button.click();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      const option = page.getByRole('option', { name: 'Option 1' });
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await button.click();
-      await expect(option).not.toBeVisible();
-      await expect(button).not.toHaveAttribute('value', 'Option 1');
-      await button.click();
-      await option.click();
-      await expect(button).toHaveAttribute('value', '1');
-    });
+  test('Verify navigation and changing values by mouse', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
+
+    const initialWidth = await locators.trigger(page).boundingBox().then((b) => b?.width || 0);
+    await locators.trigger(page).click();
+
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Option 0')).not.toHaveClass(/highlighted/);
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
+    await locators.trigger(page).click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'visible' });
+
+    await locators.options(page, 'Option 0').click();
+    await locators.options(page, 'Option 0').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page)).toHaveAttribute('value', '0');
+    const finalWidth = await locators.trigger(page).boundingBox().then((b) => b?.width || 0);
+    expect(finalWidth).toBeLessThan(initialWidth);
+  });
+
+  test('Verify ellipsis in Button trigger and few tags', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@ellipsis',
+      '@dropdown-menu',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
+
+    const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
+    const tagNameButton = await locators.button(page).first().evaluate((el) => el.tagName.toLowerCase());
+    expect(tagNameButton).toBe('h1');
+    const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
+    expect(tagNameText).toBe('h2');
+
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('tooltip')).toHaveCount(0);
+
+    await locators.button(page).nth(1).hover();
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page.getByRole('tooltip')).toHaveCount(1);
   });
 });

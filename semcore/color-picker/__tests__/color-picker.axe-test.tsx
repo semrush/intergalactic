@@ -1,14 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Color-Picker', () => {
+test.describe(`@color-picker ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/color-picker/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    // check volor picker trigger
+    await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en'); // check volor picker trigger
     {
       const violations = await getAccessibilityViolations({ page });
 
@@ -26,14 +22,9 @@ test.describe('Color-Picker', () => {
   });
 
   test('Custom trigger without input on popper', async ({ page }) => {
-    const standPath = 'stories/components/color-picker/docs/examples/custom_trigger.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
+    await loadPage(page, 'stories/components/color-picker/docs/examples/custom_trigger.tsx', 'en');
     {
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
     }
 
@@ -47,14 +38,10 @@ test.describe('Color-Picker', () => {
   });
 
   test('Input validation', async ({ page }) => {
-    const standPath = 'stories/components/color-picker/docs/examples/input_validation.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/color-picker/docs/examples/input_validation.tsx', 'en');
 
     await page.locator('[data-ui-name="ColorPicker.Trigger"]').click();
     const input = page.locator('input[data-ui-name="PaletteManager.InputColor"]');
-
     await input.fill('fffffff');
     const violations = await getAccessibilityViolations({ page });
 

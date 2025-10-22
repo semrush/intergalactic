@@ -358,13 +358,13 @@ test.describe('Tag interactions', () => {
     await inlineEditView.click();
     await page.keyboard.type('Test');
     await save.click();
-    await expect(tag).toHaveText('Default tag'); // bug in example
+    await expect(tag).toHaveText('Default tagTest');
 
     await inlineEditView.click();
     await page.keyboard.type('Test');
     await page.keyboard.press('Enter');
 
-    await expect(tag).toHaveText('Default tagTest');
+    await expect(tag).toHaveText('Default tagTestTest');
   });
 
   test('Verify Editing tag when tag by keyboard inside inline-edit', async ({ page }) => {
