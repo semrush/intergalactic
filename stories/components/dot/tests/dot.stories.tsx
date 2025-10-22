@@ -1,10 +1,8 @@
 import Dot from '@semcore/ui/dot';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import DotAnimationExample from './examples/different-sizes-and-positions';
-import DotLinkExample from './examples/different-sizes-and-positions-link';
-import LinkTriggerExample from './examples/different-sizes-and-positions-link-trigger';
-import DotPillExample from './examples/different-sizes-and-positions-pill';
+import SizesAndPositionsExample, { defaultDotProps } from './examples/sizes-and-positions';
+import WithCounterSizesAndPositionsExample, { defaultCounterDotProps } from './examples/with-counter-sizes-and-positions';
 
 const meta: Meta<typeof Dot> = {
   title: 'Components/Dot/Tests',
@@ -12,20 +10,24 @@ const meta: Meta<typeof Dot> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Dot>;
+const commonArgTypes = {
+  size: {
+    control: { type: 'select' },
+    options: ['m', 'l'],
+  },
+  up: {
+    control: { type: 'boolean' },
+  },
+} as const;
 
-export const DotAnimation: Story = {
-  render: DotAnimationExample,
+export const SizesAndPositions: StoryObj<typeof defaultDotProps> = {
+  render: SizesAndPositionsExample,
+  argTypes: commonArgTypes,
+  args: defaultDotProps,
 };
 
-export const DotLink: Story = {
-  render: DotLinkExample,
-};
-
-export const DotPill: Story = {
-  render: DotPillExample,
-};
-
-export const LinkTrigger: Story = {
-  render: LinkTriggerExample,
+export const WithCounterSizesAndPositions: StoryObj<typeof defaultCounterDotProps> = {
+  render: WithCounterSizesAndPositionsExample,
+  argTypes: commonArgTypes,
+  args: defaultCounterDotProps,
 };
