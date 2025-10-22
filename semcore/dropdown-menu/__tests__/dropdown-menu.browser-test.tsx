@@ -1092,6 +1092,7 @@ test.describe('Sticky groups', () => {
     await expect(items.nth(30)).not.toBeVisible();
 
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(400);
     await items.nth(30).waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });

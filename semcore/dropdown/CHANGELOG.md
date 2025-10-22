@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.1.1] - 2025-10-24
 
-### Fixed
+### Added
 
-- `DropdownMenu.Menu` animation for keyboard interaction.
+- Foundation to handle scroll ending.
 
 ## [16.1.0] - 2025-10-03
 

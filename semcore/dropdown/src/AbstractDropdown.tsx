@@ -38,7 +38,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   itemProps: any[] = [];
   itemRefs: HTMLElement[] = [];
 
-  highlightedItemRef: HTMLElement | null = null;
+  highlightedItem: HTMLElement | null = null;
 
   prevHighlightedIndex: number | null = null;
 
@@ -172,7 +172,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   scrollToNode(node: HTMLElement | null, withAnimation = false) {
     if (node) {
-      this.highlightedItemRef = node;
+      this.highlightedItem = node;
     }
     setTimeout(() => {
       if (node?.scrollIntoView) {
@@ -207,8 +207,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   cleanupScroll() {
     clearTimeout(this.scrollTimeoutId);
-    if (this.highlightedItemRef) {
-      this.scrollObserver?.unobserve(this.highlightedItemRef);
+    if (this.highlightedItem) {
+      this.scrollObserver?.unobserve(this.highlightedItem);
     }
     this.scrollResolve = null;
   }
@@ -222,7 +222,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         return;
       }
 
-      this.highlightedItemRef = node;
+      this.highlightedItem = node;
 
       this.scrollTimeoutId = setTimeout(() => {
         this.cleanupScroll();
@@ -260,7 +260,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
-      } else if (this.highlightedItemRef && this.prevHighlightedIndex !== null) {
+      } else if (this.highlightedItem && this.prevHighlightedIndex !== null) {
         innerHighlightedIndex =
           this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
@@ -293,7 +293,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (visibilityChanged && !visible) {
       this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
-      this.highlightedItemRef = null;
+      this.highlightedItem = null;
       this.itemProps = [];
       this.itemRefs = [];
       if (
@@ -392,13 +392,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       case ' ':
       case 'Enter':
         if (
-          this.highlightedItemRef &&
+          this.highlightedItem &&
           highlightedIndex !== null &&
           !this.itemProps[highlightedIndex].disabled
         ) {
           e.stopPropagation();
           e.preventDefault();
-          this.highlightedItemRef.click();
+          this.highlightedItem.click();
         }
 
         break;

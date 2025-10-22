@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.12] - 2025-10-24
+
+### Fixed
+
+- "scroll to element" animation for keyboard interactions.
+
 ## [16.1.11] - 2025-10-06
 
 ### Changed

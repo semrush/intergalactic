@@ -527,7 +527,6 @@ test.describe('Functional - Clear Filters button', () => {
       await locators.input.fill('Test');
       for (let i = 0; i < 6; i++) {
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(50);
       }
       await page.keyboard.press('Enter');
       await locators.addFilterMenuItem('Keywords').waitFor({ state: 'visible' });
