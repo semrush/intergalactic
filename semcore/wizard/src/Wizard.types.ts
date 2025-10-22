@@ -94,6 +94,9 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
 };
 
 export type WizardContentProps = BoxProps & {
+  /**
+   * Render wizard content container with border-radius on the left side.
+   */
   noSidebar?: boolean;
 };
 
