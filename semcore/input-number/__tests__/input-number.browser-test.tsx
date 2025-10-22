@@ -242,7 +242,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify zero value', async () => {
-        await locators.input(page).fill('input[data-ui-name="InputNumber.Value"]', '0');
+        await locators.input(page).fill('0');
         await locators.input(page).fill('0');
         await locators.input(page).fill('9');
         await expect(locators.input(page)).toHaveAttribute('value', '9');

@@ -193,7 +193,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
       await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
       await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
-      await expect(locators.tabLine(page)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page)).toHaveAttribute('tabindex', '-1');
     });
   });
 
