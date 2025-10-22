@@ -38,8 +38,7 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   row: DTRow<UniqKeyType>;
   mergedRow?: boolean;
 
-  isAccordionRow?: DataTableCellProps<Data, UniqKeyType>['isAccordionRow'];
-  animationExpand?: DataTableCellProps<Data, UniqKeyType>['animationExpand'];
+  isAccordionRow?: boolean;
   accordionRowIndex?: DataTableCellProps<Data, UniqKeyType>['accordionRowIndex'];
   isNonInteractive?: boolean;
 
@@ -101,8 +100,8 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
   componentsMap: Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
   calculateAriaRowIndex: () => void;
-  variant?: DataTableProps<any, any, any>['variant'];
-  limit?: DataTableProps<any, any, any>['limit'];
+  variant: DataTableProps<any, any, any>['variant'];
+  limit: DataTableProps<any, any, any>['limit'];
   totalRows?: number;
   hasGroups: boolean;
 };

@@ -138,7 +138,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       sideIndents: sideIndentsValue,
       getFixedStyle,
       mergedRow: props.mergedRow,
-      accordionDuration: accordionDuration ?? 50,
+      accordionDuration,
       accordionAnimationRows,
       flatRows,
       getI18nText,

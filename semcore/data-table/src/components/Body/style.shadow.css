@@ -359,13 +359,6 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow][withAnimation] > SCellWrapper {
-  transition-property: height;
-  transition-delay: var(--delay);
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
-  overflow: clip;
-}
 
 SCellWrapper[fixed][shadowVertical] {
   &:after {

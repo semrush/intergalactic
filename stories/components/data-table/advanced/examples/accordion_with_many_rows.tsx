@@ -35,9 +35,6 @@ const Demo = (props: TableInTableProps) => {
         { name: 'cpc4', children: 'CPC' },
         { name: 'vol4', children: 'Vol.' },
       ]}
-      // accordionMode={props.accordionMode}
-      // onAccordionToggle={props.onAccordionToggle}
-      // accordionDuration={500}
     />
   );
 };

@@ -1,4 +1,5 @@
-import { Root, sstyled } from '@semcore/core';
+import { Box, Flex } from '@semcore/base-components';
+import { Root, sstyled, createComponent, Component } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import * as React from 'react';
 
@@ -9,7 +10,7 @@ import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureComponent<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
+class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 
   static displayName = 'Cell';
@@ -17,7 +18,7 @@ export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureCom
   cellRef = React.createRef<HTMLDivElement>();
 
   componentWillUnmount() {
-    const { virtualScroll, tableRef } = this.props;
+    const { virtualScroll, tableRef } = this.asProps;
     if (virtualScroll && this.cellRef.current && isFocusInside(this.cellRef.current)) {
       tableRef.current?.setAttribute('tabIndex', '0');
     }
@@ -32,13 +33,13 @@ export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureCom
   };
 
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
-    const { rowIndex, columnIndex, onClick, row } = this.props;
+    const { rowIndex, columnIndex, onClick, row } = this.asProps;
 
     onClick?.(e, { rowIndex, colIndex: columnIndex, row });
   };
 
   render() {
-    const SCellWrapper = 'div';
+    const SCellWrapper = Box;
     const SCell = Root;
     const {
       children,
@@ -46,15 +47,9 @@ export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureCom
       column,
       columnIndex,
       gridRowIndex,
-      isAccordionRow,
-      animationExpand,
-      style = {},
       shadowVertical,
-      calculatedHeight,
       use,
-      duration,
-      delay,
-    } = this.props;
+    } = this.asProps;
 
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
@@ -75,21 +70,16 @@ export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureCom
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
-    style.height = isAccordionRow ? (animationExpand ? `${calculatedHeight}px` : `0px`) : undefined;
-
     return sstyled(styles)(
       <SCellWrapper
         // @ts-ignore
         gridArea={gridArea}
-        duration={`${duration}ms`}
-        delay={`${delay}ms`}
-        style={style}
         fixed={column.fixed}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
       >
         <SCell
           ref={this.cellRef}
-          render='div'
+          render={Flex}
           innerOutline
           tabIndex={-1}
           onKeyDown={this.handleFocusableCellKeyDown}
@@ -117,3 +107,5 @@ export class Cell<Data extends DataTableData, UniqKeyType> extends React.PureCom
     );
   }
 }
+
+export const Cell = createComponent(CellRoot);

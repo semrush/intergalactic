@@ -82,7 +82,8 @@ class DataTableRoot<
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
     variant: 'default',
-    accordionAnimationRows: 20,
+    accordionAnimationRows: 40,
+    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];

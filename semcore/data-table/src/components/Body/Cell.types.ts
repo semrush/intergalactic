@@ -22,16 +22,13 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   expanded?: boolean;
   withAccordion?: boolean;
 
-  isAccordionRow?: boolean;
-  animationExpand?: boolean;
+  // isAccordionRow?: boolean;
+  // animationExpand?: boolean;
   accordionRowIndex?: number;
   rows: DTRows<UniqKeyType>;
   use: DTUse;
 
   style?: CSSProperties;
-
-  duration?: number;
-  delay?: number;
 
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
@@ -40,7 +37,6 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   flatRows: DTRow<UniqKeyType>[];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>;
   withoutBorder?: boolean;
-  calculatedHeight: number;
 } & {
   'data-aria-level'?: number;
 };
