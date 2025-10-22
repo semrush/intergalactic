@@ -1198,6 +1198,67 @@ test.describe('Accordion in table', () => {
     });
   });
 
+  test('Verify accordion with themed cells', async ({ page, browserName }) => {
+    const standPath = 'stories/components/data-table/tests/examples/accordion-tests/colored-cells-in-accordion.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const stylesActiveHovered = [
+      'rgb(158, 242, 201)', // success
+      'rgb(196, 229, 254)', // info
+      'rgb(230, 231, 237)', // muted
+      'rgb(255, 220, 162)', // warning
+      'rgb(255, 215, 223)', // danger
+    ];
+
+    const stylesNotActive = [
+      'rgb(219, 254, 232)', // success
+      'rgb(233, 247, 255)', // info
+      'rgb(244, 245, 249)', // muted
+      'rgb(255, 243, 217)', // warning
+      'rgb(255, 240, 247)', // danger
+    ];
+
+    const cells = locators.row(page, 2).getByRole('gridcell');
+    const cellCount = await cells.count();
+
+    await test.step('Verify expanded state', async () => {
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': stylesActiveHovered[i],
+        });
+      }
+    });
+    await test.step('Verify hovered state', async () => {
+      if (browserName === 'firefox') test.skip();
+      await locators.toggle(page).click();
+      await locators.toggle(page).hover();
+      await locators.collapse(page).waitFor({ state: 'hidden' });
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': stylesActiveHovered[i],
+        });
+      }
+    });
+
+    await test.step('Verify initial state', async () => {
+      const box = await page.getByRole('columnheader').first().boundingBox();
+
+      if (box) {
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      }
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': stylesNotActive[i],
+        });
+      }
+    });
+  });
+
   const variantCard = [
     { variant: 'card', sideIndents: undefined },
     { variant: 'default', sideIndents: 'wide' },

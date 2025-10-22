@@ -159,6 +159,79 @@ test.describe('Pills styles', () => {
   });
 });
 
+test.describe('Pills', () => {
+  test('Verify addon logic', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/feature-highlight/tests/examples/pills/pills-addon-logic.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const pill = page.getByRole('radio');
+    await test.step('Stars in addont', async () => {
+      const addons = pill.first().locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(1);
+      }
+    });
+    await test.step('Number in addons', async () => {
+      const addons = pill.nth(1).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('0');
+      }
+    });
+
+    await test.step('Icon in addons', async () => {
+      const addons = pill.nth(2).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+      }
+    });
+
+    await test.step('Badge in addons', async () => {
+      const addons = pill.nth(3).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        const badge = addon.locator('[data-ui-name="BadgeFH"]');
+        await expect(icons).toHaveCount(0);
+        await expect(badge).toHaveCount(1);
+      }
+    });
+
+    await test.step('Text in addons', async () => {
+      const addons = pill.nth(4).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('Test');
+      }
+    });
+  });
+});
+
 test.describe('Select styles', () => {
   const variables = [
     { disabled: false, size: 'm', state: 'normal' },

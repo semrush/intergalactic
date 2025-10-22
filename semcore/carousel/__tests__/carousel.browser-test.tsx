@@ -1,7 +1,42 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  modal: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tabpanel: (page: Page, index?: number) => {
+    const base = page.getByRole('tabpanel');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tab: (page: Page, index?: number) => {
+    const base = page.getByRole('tab');
+    return typeof index === 'number' ? base.nth(index) : base;
+  }, region: (page: Page, index?: number) => {
+    const base = page.getByRole('region');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tablist: (page: Page, index?: number) => {
+    const base = page.getByRole('tablist');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  img: (page: Page, index?: number) =>
+    page.locator('div[role="tabpanel"] img[role="button"]'),
+};
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   const indicators = [
     { indicators: 'default', zoomWidth: 300, defaultIndex: undefined, index: undefined },
     { indicators: 'hide', zoomWidth: 300, defaultIndex: undefined, index: 1 },
@@ -9,23 +44,20 @@ test.describe('Visual', () => {
 
   ];
   indicators.forEach((item) => {
-    test(`Verify Carousel with indicators= ${item.indicators}, zoomiWidth= ${item.zoomWidth} and defaultIndex=${item.defaultIndex} or index = =${item.index}`, async ({ page }) => {
-      const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify Carousel with indicators= ${item.indicators}, zoomiWidth= ${item.zoomWidth} and defaultIndex=${item.defaultIndex} or index = =${item.index}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@carousel',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-      const img = page.locator('div[role="tabpanel"] img[role="button"]');
-      await img.nth(0).waitFor({ state: 'visible' });
-
-      const next = page.locator('[data-ui-name="Carousel.Next"]');
-      const indicators = page.getByRole('tablist');
-      const modal = page.getByRole('dialog');
+      await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
       await test.step('Verify Prev and Next buttons Focus and Hover styles', async () => {
         await page.keyboard.press('Tab');
-        await page.waitForSelector('text="Previous slide"');
-        await next.hover();
-        await page.waitForSelector('text="Next slide"');
+        await page.getByText('Previous slide').waitFor({ state: 'visible' });
+        await locators.button(page, 'Next slide').hover();
+        await page.getByText('Next slide').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
@@ -34,7 +66,7 @@ test.describe('Visual', () => {
         await expect(page).toHaveScreenshot();
       });
 
-      if (await indicators.isVisible()) {
+      if (await locators.tablist(page).isVisible()) {
         await test.step('Verify Tabs hover and focus styles', async () => {
           await page.keyboard.press('Tab');
           await page.keyboard.press('Tab');
@@ -49,13 +81,13 @@ test.describe('Visual', () => {
 
       await test.step('Verify zoom prev and next hover styles', async () => {
         await page.keyboard.press('Space');
-        await modal.waitFor({ state: 'visible' });
-        await img.nth(4).waitFor({ state: 'visible' });
+        await locators.modal(page).waitFor({ state: 'visible' });
+        await locators.img(page).nth(4).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('Tab');
-        await page.waitForSelector('text="Previous slide"');
-        await next.nth(1).hover();
-        await page.waitForSelector('text="Next slide"');
+        await page.getByText('Previous slide').waitFor({ state: 'visible' });
+        await locators.button(page, 'Next slide').nth(1).hover();
+        await page.getByText('Next slide').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
@@ -65,7 +97,7 @@ test.describe('Visual', () => {
         await page.keyboard.press('Tab');
 
         const tab = page.getByRole('tab');
-        if (await indicators.count() === 2) {
+        if (await locators.tablist(page).count() === 2) {
           await tab.nth(5).hover();
         } else {
           await tab.nth(2).hover();
@@ -82,15 +114,14 @@ test.describe('Visual', () => {
 
   ];
   bounded.forEach((item) => {
-    test(`Verify Carousel prev and next buttons when indicators= ${item.indicators}, bounded= ${item.bounded}`, async ({ page }) => {
-      const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify Carousel prev and next buttons when indicators= ${item.indicators}, bounded= ${item.bounded}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@carousel',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-      const img = page.locator('div[role="tabpanel"] img[role="button"]');
-      await img.nth(0).waitFor({ state: 'visible' });
-
-      const modal = page.getByRole('dialog');
+      await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
       await test.step('Verify Prev and Next buttons when one is disabled', async () => {
         await expect(page).toHaveScreenshot();
@@ -100,131 +131,130 @@ test.describe('Visual', () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
-        await modal.waitFor({ state: 'visible' });
-        await img.nth(4).waitFor({ state: 'visible' });
+        await locators.img(page).nth(4).waitFor({ state: 'visible' });
 
         await expect(page).toHaveScreenshot();
       });
     });
   });
 
-  test('Verify carousel with indicators only', async ({ page }) => {
-    const standPath =
-      'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify carousel with indicators only', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify carousel with custom Prev and Next', async ({ page }) => {
-    const standPath =
-      'stories/components/carousel/tests/examples/carousel_with_prev_next.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify carousel with custom Prev and Next', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_prev_next.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify keyboard interactions with indicators and zoom', async ({ page }) => {
-    const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify keyboard interactions with indicators and zoom', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
-
-    const carousel = page.getByRole('region');
-    const prev = page.getByLabel('Previous slide');
-    const next = page.getByLabel('Next slide');
-    const indicators = page.getByRole('tablist');
-    const tabpanel = page.getByRole('tabpanel');
-    const modal = page.getByRole('dialog');
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
     await test.step('Verify prev button focused first', async () => {
       await page.keyboard.press('Tab');
-      await expect(prev).toBeFocused();
+      await expect(locators.button(page, 'Previous slide')).toBeFocused();
       await expect(page.locator('[data-ui-name="Carousel.Prev"]')).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify carousel focused after prev button', async () => {
       await page.keyboard.press('Tab');
-      await expect(tabpanel.first()).toBeFocused();
-      await expect(carousel).toHaveAttribute('aria-roledescription', 'carousel');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 0)).toBeFocused();
+      await expect(locators.region(page)).toHaveAttribute('aria-roledescription', 'carousel');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify Arrow Left switch between tabs', async () => {
       await page.keyboard.press('ArrowLeft');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Arrow Right switch between tabs', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify next button focused by tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(next).toBeFocused();
+      await expect(locators.button(page, 'Next slide')).toBeFocused();
       await expect(page.locator('[data-ui-name="Carousel.Next"]')).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Next switches between tabs', async () => {
       await page.keyboard.press('Space');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify indicators focused by tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(indicators).toBeFocused();
-      await expect(indicators).toHaveAttribute('tabindex', '0');
+      await expect(locators.tablist(page)).toBeFocused();
+      await expect(locators.tablist(page)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Arrow Right switch between tabs when indicators focused', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Zoom mode opened by Space', async () => {
@@ -232,95 +262,94 @@ test.describe('Functional', () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
 
-      await modal.waitFor({ state: 'visible' });
+      await locators.modal(page).waitFor({ state: 'visible' });
       await expect(page.locator('[data-ui-name="Modal.Close"]')).toBeFocused();
     });
 
     await test.step('Verify Zoom mode closed by Escape', async () => {
       await page.keyboard.press('Escape');
-
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
 
     await test.step('Verify Zoom mode opened by Enter', async () => {
       await page.keyboard.press('Enter');
 
-      await modal.waitFor({ state: 'visible' });
-      await expect(page.locator('[data-ui-name="Modal.Close"]')).toBeFocused();
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await expect(locators.button(page, 'Close')).toBeFocused();
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Prev Button in zoom mode focused by Tab and switch tabs by Enter', async () => {
       await page.keyboard.press('Tab');
 
-      await expect(prev.nth(1)).toBeFocused();
+      await expect(locators.button(page, 'Previous slide').nth(1)).toBeFocused();
       await page.keyboard.press('Enter');
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify tabpanel focused and Right Arrow switch the tab', async () => {
       await page.keyboard.press('Tab');
 
-      await expect(tabpanel.nth(4)).toBeFocused();
+      await expect(locators.tabpanel(page, 4)).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Next Button in zoom mode focused by Tab and switch tabs by Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
-      await expect(next.nth(1)).toBeFocused();
+      await expect(locators.button(page, 'Next slide').nth(1)).toBeFocused();
       await page.keyboard.press('Enter');
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify indicators in zoom mode focused by Tab and switch tabs by Arrows', async () => {
       await page.keyboard.press('Tab');
 
-      await expect(indicators.nth(1)).toBeFocused();
+      await expect(locators.tablist(page, 1)).toBeFocused();
       await page.keyboard.press('ArrowLeft');
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify indicators in zoom mode focused by Tab and switch tabs by Arrows', async () => {
@@ -328,196 +357,189 @@ test.describe('Functional', () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');
 
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
   });
 
-  test('Verify mouse interactions with Carousel with  indicators and zoom', async ({ page }) => {
-    const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify mouse interactions with Carousel with  indicators and zoom', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
-
-    const carousel = page.getByRole('region');
-    const prev = page.getByLabel('Previous slide');
-    const next = page.getByLabel('Next slide');
-    const tabpanel = page.getByRole('tabpanel');
-    const tab = page.getByRole('tab');
-    const modal = page.getByRole('dialog');
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
     await test.step('Verify prev button activating switch tabs', async () => {
-      await prev.click();
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await locators.button(page, 'Previous slide').click();
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify next button activating switch tabs', async () => {
-      await next.click();
+      await locators.button(page, 'Next slide').click();
 
-      await expect(carousel).toHaveAttribute('aria-roledescription', 'carousel');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '0');
+      await expect(locators.region(page)).toHaveAttribute('aria-roledescription', 'carousel');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify clicking on tab switch tabs', async () => {
-      await tab.nth(2).click();
-      await expect(carousel).toHaveAttribute('aria-roledescription', 'carousel');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await locators.tab(page, 2).click();
+      await expect(locators.region(page)).toHaveAttribute('aria-roledescription', 'carousel');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Zoom mode opened by click on tab panel', async () => {
-      await tabpanel.nth(2).click();
+      await locators.tabpanel(page, 2).click();
 
-      await modal.waitFor({ state: 'visible' });
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Zoom mode closed by click anywhere on the screen', async () => {
       await page.mouse.click(0, 0);
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
 
     await test.step('Verify tabs switch by click on Prev button im zoom mode', async () => {
-      await tabpanel.nth(2).click();
-      await modal.waitFor({ state: 'visible' });
+      await locators.tabpanel(page, 2).click();
+      await locators.modal(page).waitFor({ state: 'visible' });
 
-      await prev.nth(1).click();
+      await locators.button(page, 'Previous slide').nth(1).click();
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify tabs switch by click on Next button im zoom mode', async () => {
-      await next.nth(1).click();
+      await locators.button(page, 'Next slide').nth(1).click();
 
-      await expect(tabpanel.nth(3)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(3)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 3)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(4)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(4)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 4)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(5)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(5)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify Zoom mode closed by click on Close', async () => {
       await page.locator('[data-ui-name="Modal.Close"]').click();
 
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
 
     await test.step('Verify Zoom mode closed by click on tabpanel', async () => {
-      await tabpanel.nth(2).click();
-      await modal.waitFor({ state: 'visible' });
+      await locators.tabpanel(page, 2).click();
+      await locators.modal(page).waitFor({ state: 'visible' });
 
-      await tabpanel.nth(5).click();
+      await locators.tabpanel(page, 5).click();
 
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
   });
 
-  test('Verify modal not opened by mouse and keyboard when zoom:false', async ({ page }) => {
-    const standPath = 'stories/components/carousel/tests/examples/carousel_with_props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { zoom: false });
+  test('Verify mouse and keyboard interactions when zoom:false (modal not opened)', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD, TAG.MOUSE,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', { zoom: false });
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
-
-    const tabpanel = page.getByRole('tabpanel');
-    const modal = page.getByRole('dialog');
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
     await test.step('Verify Modal not opened by keyboard', async () => {
       await page.keyboard.press('Tab');
 
       await page.keyboard.press('Tab');
-      await expect(tabpanel.first()).toBeFocused();
+      await expect(locators.tabpanel(page, 0)).toBeFocused();
       await page.keyboard.press('Enter');
 
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
 
     await test.step('Verify Modal not opened by mouse click', async () => {
-      const box = await tabpanel.first().boundingBox();
+      const box = await locators.tabpanel(page, 0).boundingBox();
       if (box) {
         await page.mouse.click(box.x + 10, box.y + 10);
       }
-      await expect(modal).not.toBeVisible();
+      await expect(locators.modal(page)).not.toBeVisible();
     });
   });
 
-  test('Verify interactions when Carousel with indicators only', async ({ page }) => {
-    const standPath = 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify keyboard interactions when Carousel with indicators only', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@carousel',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const img = page.locator('div[role="tabpanel"] img[role="button"]');
-    await img.nth(0).waitFor({ state: 'visible' });
-
-    const tabpanel = page.getByRole('tabpanel');
-    const tab = page.getByRole('tab');
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
 
     await test.step('Verify tabpanel focused by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(tabpanel.first()).toBeFocused();
+      await expect(locators.tabpanel(page, 0)).toBeFocused();
     });
 
     await test.step('Verify tabs switch by Arrow', async () => {
       await page.keyboard.press('ArrowLeft');
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '0');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify tab switch by clicking on indicators', async () => {
-      await tab.nth(0).click();
-      await expect(tabpanel.nth(0)).toHaveAttribute('aria-current', 'true');
-      await expect(tabpanel.nth(0)).toHaveAttribute('tabindex', '0');
+      await locators.tab(page, 0).click();
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('aria-current', 'true');
+      await expect(locators.tabpanel(page, 0)).toHaveAttribute('tabindex', '0');
 
-      await expect(tabpanel.nth(1)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(1)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 1)).toHaveAttribute('tabindex', '-1');
 
-      await expect(tabpanel.nth(2)).toHaveAttribute('aria-current', 'false');
-      await expect(tabpanel.nth(2)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('aria-current', 'false');
+      await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
   });
 });

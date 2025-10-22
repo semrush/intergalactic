@@ -1,38 +1,64 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Styles', () => {
-  test('Verify render when backgrounds set', async ({ page }) => {
-    const standPath = 'stories/components/badge/docs/examples/badge_main_types.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variables = [
+    { bg: undefined, color: undefined },
+    { bg: 'cyan', color: undefined },
+    { bg: undefined, color: 'text-primary' },
+    { bg: 'mist', color: 'gray20' },
+    { bg: 'red', color: 'text-primary-invert' },
+    { bg: 'orange', color: 'green' },
+    { bg: 'green', color: 'white' },
+    { bg: 'white', color: 'text-primary' },
+  ];
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+  variables.forEach((item) => {
+    test(`Verify bg=${item.bg} and color=${item.color}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@badge',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
+      await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
+    });
   });
 
-  test('Verify render when colors set', async ({ page }) => {
-    const standPath = 'stories/components/badge/tests/examples/badge-colors.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variableswithBox = [
+    { bg: undefined, color: undefined, w: 100, h: 20 },
+    { bg: undefined, color: 'text-primary', h: 30 },
+    { bg: 'green', color: 'white', w: 200 },
+  ];
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify render when colors and backgrounds set', async ({ page }) => {
-    const standPath = 'stories/components/badge/tests/examples/badge-bg-colors.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+  variableswithBox.forEach((item) => {
+    test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h}`, {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@badge',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
+      await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
+    });
   });
 });
 
-test.describe('Attributes and interactions', () => {
-  test('Verify no aria-hidden and not focused by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/badge/docs/examples/badge_main_types.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify no aria-hidden and not focused', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@badge',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
 
     const badges = page.locator('[data-ui-name="Badge"]');
     const count = await badges.count();

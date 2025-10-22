@@ -3,7 +3,7 @@ import type { InlineInputProps } from '@semcore/ui/inline-input';
 import React from 'react';
 
 const BasicUsage = (props: InlineInputProps) => {
-  const { disabled, loading, state, autoFocus, defaultValue, placeholder } = props;
+  const { disabled, loading, state, autoFocus, defaultValue } = props;
 
   return (
     <InlineInput
