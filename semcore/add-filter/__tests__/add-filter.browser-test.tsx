@@ -71,10 +71,10 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base example with selects after mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      ' @add-filter',
+      '@add-filter',
       '@base-trigger',
       '@button',
-      ' @icon',
+      '@icon',
       '@input',
       '@select'],
   }, async ({ page }) => {
@@ -99,10 +99,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base example with selects after keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      ' @add-filter',
+      '@add-filter',
       '@base-trigger',
       '@button',
-      ' @icon',
+      '@icon',
       '@input',
       '@select'],
   }, async ({ page }) => {

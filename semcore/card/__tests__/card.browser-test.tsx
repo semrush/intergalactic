@@ -242,7 +242,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
-      'tooltip'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body', 'en');
 
