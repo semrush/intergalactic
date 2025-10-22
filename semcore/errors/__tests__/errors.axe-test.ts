@@ -5,7 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@errors ${TAG.ACCESSIBILITY} `, () => {
   test('Custom error', async ({ page }) => {
-    await loadPage(page, 'stories/components/errors/docs/examples/custom-errors.tsx', 'en');
+    await loadPage(page, 'stories/components/errors/docs/examples/custom-error.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
