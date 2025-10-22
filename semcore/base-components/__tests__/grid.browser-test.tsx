@@ -11,9 +11,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   sizes.forEach(({ width }) => {
     test(`Verify Row gutter for each ${width}px`, {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @grid`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/example-use.tsx', 'en');
 
@@ -45,9 +45,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   sizes.forEach(({ width }) => {
     test(`Verify Col span and offset for each ${width}px`, {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @grid`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/change-in-general-offset.tsx', 'en');
 
@@ -93,9 +93,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   sizes.forEach(({ width }) => {
     test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px`, {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @grid`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive.tsx', 'en');
 
@@ -106,9 +106,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   sizes.forEach(({ width }) => {
     test(`Verify Grid is responsive with alternative API for each ${width}px`, {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @grid`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive-alternative-api.tsx', 'en');
 

@@ -18,10 +18,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
       test(`Verify button has size '${expectedSize}' when viewport width ${width}px`, {
-        tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @breakpoints,
-        @button`],
+        tag: [TAG.PRIORITY_HIGH,
+          '@base-components',
+          '@breakpoints',
+          '@button'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/simple-use.tsx', 'en');
 
@@ -49,10 +49,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
       test(`Verify renders button with size '${expectedSize}' at viewport width ${width}px`, {
-        tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-            @breakpoints,
-        @button`],
+        tag: [TAG.PRIORITY_HIGH,
+          '@base-components',
+          '@breakpoints',
+          '@button'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/manual-control.tsx', 'en');
 
@@ -82,9 +82,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     breakpoints.forEach(({ width, expectedText }) => {
       test(`Verify '${expectedText}' shown at viewport width ${width}px`, {
-        tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @breakpoints,`],
+        tag: [TAG.PRIORITY_HIGH,
+          '@base-components',
+          '@breakpoints'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/mocking.tsx', 'en');
 
@@ -111,9 +111,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     breakpoints.forEach(({ width, expectedText }) => {
       test(`Verify '${expectedText}' shown at viewport width ${width}px`, {
-        tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @breakpoints,`],
+        tag: [TAG.PRIORITY_HIGH,
+          '@base-components',
+          '@breakpoints'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/custom-media.tsx', 'en');
 

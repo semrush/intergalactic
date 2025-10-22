@@ -10,12 +10,12 @@ We verify states, visibility, and attributes.
 test.describe('@functional @popper', () => {
   test.describe('Focus Lock', () => {
     test('Verify Focus lock without disablePortal', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @input,
-        @dropdown-menu`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@input',
+        '@dropdown-menu'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-no-disable-portal.tsx', 'en');
 
@@ -33,14 +33,13 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify Focus lock with disablePortal', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD}, 
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @popper,
-        @base-trigger,
-        @dropdown-menu`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@input',
+        '@dropdown-menu'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-disable-portal.tsx', 'en');
 
@@ -57,11 +56,11 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper position when cursor anchoring', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-      @popper,
-        @base-components,
-        @tooltip`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-components',
+      '@popper',
+      '@tooltip'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/cursor-anchoring.tsx', 'en');
 
@@ -93,11 +92,11 @@ test.describe('@functional @popper', () => {
 
   test.describe('Label', () => {
     test('Verify Referenced label', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-referenced.tsx', 'en');
 
@@ -117,11 +116,11 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify Wrapped label', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped.tsx', 'en');
 
@@ -141,11 +140,11 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify Wrapped label and disable portal', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped-disable-portal.tsx', 'en');
 
@@ -171,12 +170,12 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper display when OutsideClick', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD}, 
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @button`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/click-outside', 'en');
 
@@ -209,12 +208,12 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify onVisibleChange prop', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD}, 
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @button`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/show-hide.tsx', 'en');
 
@@ -272,13 +271,13 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify focus when disableEnforceFocus prop enabled', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @base-trigger,
-        @dropdown-menu,
-        @input`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@base-trigger',
+      '@dropdown-menu',
+      '@input'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/disableEnforceFocus.tsx', 'en');
     if (browserName === 'firefox') return; // skipped for ff because focus order is other
@@ -297,16 +296,15 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper when disabled and focusLoop', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD}, 
-        @base-components,
-        @popper,
-        @base-trigger,
-        @dropdown-menu,
-        @button,
-        @input,
-        @icon`],
-  }, async ({ page, browserName }) => {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@base-trigger',
+      '@dropdown-menu',
+      '@input',
+      '@icon'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/some-more-props-test.tsx', 'en');
     const popperTrigger = page.getByRole('button', { name: 'focusLoop' });
     const popperfocusLoop = page.getByRole('dialog');
@@ -338,13 +336,13 @@ test.describe('@functional @popper', () => {
   test.describe('Interaction', () => {
     test.use({ hasTouch: true });
     test('Verify hover interaction appears by hover', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
       const popper = page.locator('[data-ui-name="Popper.Popper"]');
@@ -388,13 +386,13 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify hover interaction appears by focus', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
       const popper = page.locator('[data-ui-name="Popper.Popper"]');
@@ -435,12 +433,12 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify hover interaction appears by touch', {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page, browserName }) => {
       if (browserName === 'chromium') test.skip(); // Chromium doesn’t simulate touch
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
@@ -454,14 +452,14 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify click interaction by mouse and keyboard', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-       ${TAG.KEYBOARD}, 
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-click.tsx', 'en');
 
@@ -507,14 +505,14 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify none interaction by mouse and keyboard', {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.MOUSE},  
-       ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-none.tsx', 'en');
 
@@ -543,14 +541,14 @@ test.describe('@functional @popper', () => {
     });
 
     test('Verify focus interaction by mouse and keyboard', {
-      tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-        ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,
-        @card`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-focus.tsx', 'en');
 
@@ -618,13 +616,13 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper visibility when focusable elements on trigger and after trigger', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @select,
-        @input,
-        @typography`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@select',
+      '@input',
+      '@typography'],
   }, async ({
     page,
   }) => {
@@ -662,12 +660,12 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper controlled with render function', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-       ${TAG.KEYBOARD},  
-        @base-components,
-        @popper,
-        @button,`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({
     page,
     browserName,
@@ -738,12 +736,11 @@ test.describe('@functional @popper', () => {
   });
 
   test('Verify popper dynamic and fixed position on page resize', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.MOUSE},  
-        @base-components,
-        @popper,
-        @tooltip,
-        @button,`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.MOUSE,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/page-resizing.tsx', 'en');
 
@@ -777,10 +774,10 @@ Visual states and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify popper position with OffSet prop', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @popper,
-        @button`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/offSet.tsx', 'en');
 
@@ -791,10 +788,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify popper placement positions', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-        @base-components,
-        @popper,
-        @button`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@popper',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/placement.tsx', 'en');
 

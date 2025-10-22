@@ -21,11 +21,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @tooltip,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en', item);
 
@@ -53,12 +53,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @tooltip,
-         @icon,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@tooltip',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
@@ -86,11 +86,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Button Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @select,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/select.tsx', 'en', item);
 
@@ -119,11 +119,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify ellipsis in Filter trigger and few tags', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @filter-trigger,
-         @ellipsis,
-         @typography,`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@filter-trigger',
+      '@base-components',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
 
@@ -135,11 +135,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Counter on trigger', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @filter-trigger,
-         @button,
-         @dropdown,`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@filter-trigger',
+      '@dropdown',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
@@ -156,12 +156,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Hint on Close button', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @tooltip,`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@filter-trigger',
+      '@base-components',
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en');
 
@@ -184,13 +183,13 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Filter Trigger with select', () => {
     test('Verify Filter Triger for select by keyboard interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @select,
-         @typography,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
@@ -227,14 +226,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Filter Triger for select by mouse AND keyboards interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.MOUSE},
-         ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @select,
-         @typography,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        TAG.MOUSE,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
@@ -258,13 +257,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Filter Triger for select by mouse interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.MOUSE},
-        @base-trigger,
-        @filter-trigger,
-         @base-components,
-         @select,
-         @typography,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
       locators.trigger(page).click();
@@ -293,13 +292,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Controlled filter trigger (triggerRef)', () => {
     test('Verify keyboard interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @button,
-         @select,
-         @typography,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx', 'en');
 
@@ -333,13 +332,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify mouse interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.MOUSE},
-        @base-trigger,
-        @filter-trigger,
-         @button,
-         @select,
-         @typography,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-trigger',
+        '@filter-trigger',
+        '@base-components',
+        '@select',
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx', 'en');
 
@@ -377,12 +377,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Counter and On-Clear', () => {
     test('Verify focus and keyboard interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @button,
-         @dropdown,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-trigger',
+        '@filter-trigger',
+        '@button',
+        '@dropdown'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
@@ -410,12 +410,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify mouse interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @button,
-         @dropdown,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-trigger',
+        '@filter-trigger',
+        '@button',
+        '@dropdown'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger_with_counter.tsx', 'en');
 
@@ -437,12 +437,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Accessible name focus and keyboard interactions', {
-      tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @filter-trigger,
-         @select,
-         @base-components,`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-trigger',
+        '@filter-trigger',
+        '@select',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/accessible_name.tsx', 'en');
 

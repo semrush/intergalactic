@@ -25,10 +25,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @link-trigger,
-         @base-components,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx', 'en', item);
 
@@ -74,11 +74,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @link-trigger,
-         @base-components,
-         @icon,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger',
+        '@base-components',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-addons.tsx', 'en', item);
 
@@ -135,12 +135,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Link Trigger for Select case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @link-trigger,
-         @base-components,
-         @select,
-         @typography`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger',
+        '@base-components',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx', 'en', item);
 
@@ -194,12 +193,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify ellipsis in Link trigger', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @link-trigger,
-         @ellipsis,
-         @typography,
-         @dropdown-menu`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@link-trigger',
+      '@base-components',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx', 'en');
 
@@ -218,13 +216,12 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify navigation and changing values by keyboard', {
-    tag: [`${TAG.PRIORITY_HIGH},
-       ${TAG.KEYBOARD},
-        @base-trigger,
-        @link-trigger,
-         @base-components,
-         @select,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@link-trigger',
+      '@base-components',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
@@ -249,13 +246,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify navigation and changing values by mouse', {
-    tag: [`${TAG.PRIORITY_HIGH},
-       ${TAG.MOUSE},
-        @base-trigger,
-        @link-trigger,
-         @base-components,
-         @select,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@link-trigger',
+      '@base-components',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
@@ -280,14 +276,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify navigation and changing values by mouse AND keyboard', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-       ${TAG.KEYBOARD},
-        ${TAG.MOUSE},  
-        @base-trigger,
-        @link-trigger,
-         @base-components,
-         @select,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@link-trigger',
+      '@base-components',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 

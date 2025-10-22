@@ -31,10 +31,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-         @base-components,
-`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base.tsx', 'en', item);
 
@@ -87,10 +86,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-         @base-components,
-`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@base-components',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-addons.tsx', 'en', item);
 
@@ -151,9 +150,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-         @base-components,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/neighbor-location.tsx', 'en', item);
 
@@ -213,12 +212,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Base Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-         @base-components,
-         @dropdown,
-         @select,
-         @icon`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@base-components',
+        '@dropdown',
+        '@select',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
@@ -277,11 +276,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify ellipsis in Base trigger and few tags', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-         @dropdown-menu,
-         @ellipsis,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@base-components',
+      '@dropdown-menu',
+      '@ellipsis',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 
@@ -300,14 +300,14 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify navigation and changing values by keyboard', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-        @base-trigger,
-         @base-components,
-         @button,
-         @divider,
-         @dropdown,
-         @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@base-components',
+      '@dropdown',
+      '@select',
+      '@divider',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
@@ -332,14 +332,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify navigation and changing values by mouse', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},  
-        @base-trigger,
-         @base-components,
-         @button,
-         @divider,
-         @dropdown,
-         @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@base-components',
+      '@dropdown',
+      '@select',
+      '@divider',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
@@ -360,15 +360,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify navigation and changing values by mouse AND keyboard', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-       ${TAG.MOUSE},  
-        @base-trigger,
-         @base-components,
-         @button,
-         @divider,
-         @dropdown,
-         @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@base-components',
+      '@dropdown',
+      '@select',
+      '@divider',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
@@ -390,14 +390,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify ellipsis in Base trigger and few tags', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},  
-      ${TAG.MOUSE},  
-        @base-trigger,
-         @ellipsis,
-         @dropdown-menu,
-         @typography
-`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@base-components',
+      '@dropdown-menu',
+      '@ellipsis',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 

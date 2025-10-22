@@ -35,10 +35,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @button-trigger,
-         @base-components,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
@@ -110,11 +110,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @icon,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
@@ -199,10 +199,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} `, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @button-trigger,
-         @base-components,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/neighbor-location.tsx', 'en', item);
 
@@ -280,13 +280,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @select,
-         @dropdown,
-         @icon,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@button-trigger',
+        '@base-components',
+        '@select',
+        '@dropdown',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
@@ -366,13 +366,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify ellipsis in Button trigger and few tags', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @ellipsis,
-         @dropdown-menu,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@ellipsis',
+      '@dropdown-menu',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
@@ -391,12 +391,12 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify navigation and changing values by keyboard', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.KEYBOARD},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
@@ -420,12 +420,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify navigation and changing values by mouse', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        ${TAG.MOUSE},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
@@ -447,15 +447,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify ellipsis in Button trigger and few tags', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},
-      ${TAG.MOUSE},
-        @base-trigger,
-        @button-trigger,
-         @base-components,
-         @ellipsis,
-         @dropdown-menu,
-         @typography`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@button-trigger',
+      '@base-components',
+      '@ellipsis',
+      '@dropdown-menu',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 

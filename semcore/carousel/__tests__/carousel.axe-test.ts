@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
   test('Default indicators', async ({ page }) => {
-    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_default_indicators.tsx', 'en');
+    await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx', 'en');
 
     {
       const violations = await getAccessibilityViolations({ page });
@@ -22,14 +22,14 @@ test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
     }
   });
   test('Indicators only', async ({ page }) => {
-    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
+    await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_indicators_only.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
   test('Preview indicators', async ({ page }) => {
-    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_preview_indicators.tsx', 'en');
+    await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_preview_indicators.tsx', 'en');
 
     {
       const violations = await getAccessibilityViolations({ page });
@@ -47,7 +47,7 @@ test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
     }
   });
   test('Without modal', async ({ page }) => {
-    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_without_modal_window.tsx', 'en');
+    await loadPage(page, 'stories/components/carousel/docs/examples/carousel_without_modal_window.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

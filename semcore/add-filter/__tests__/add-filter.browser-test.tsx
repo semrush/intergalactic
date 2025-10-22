@@ -70,14 +70,13 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base example with selects after mouse interactions', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      ' @add-filter',
+      '@base-trigger',
+      '@button',
+      ' @icon',
+      '@input',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -98,14 +97,14 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify base example with selects after keyboard interactions', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      ' @add-filter',
+      '@base-trigger',
+      '@button',
+      ' @icon',
+      '@input',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -124,18 +123,18 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Add filter without Add filter button', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@add-filter',
+      '@base-trigger',
+      '@button',
+      '@icon',
+      '@input',
+      '@radio',
+      '@textarea',
+      '@base-components',
+      '@typography',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -165,18 +164,17 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Add filter after activating Clear all by keyboard', {
-    tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@add-filter',
+      '@base-trigger',
+      '@button',
+      '@icon',
+      '@input',
+      '@radio',
+      '@textarea',
+      '@base-components',
+      '@typography',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -190,16 +188,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Select with range as filter after mouse interactions ', {
-    tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.MOUSE,
+      '@add-filter',
+      '@button',
+      '@icon',
+      '@input',
+      '@input-number',
+      '@base-components',
+      '@typography',
+      '@divider'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -211,16 +209,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Select with search as filter after keyboard interactions', {
-    tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@add-filter',
+      '@button',
+      '@icon',
+      '@input',
+      '@input-number',
+      '@base-components',
+      '@typography',
+      '@divider'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -245,18 +243,18 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Input as filter after mouse interactions', {
-    tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.MOUSE,
+      '@add-filter',
+      '@base-trigger',
+      '@button',
+      '@icon',
+      '@input',
+      '@radio',
+      '@textarea',
+      '@base-components',
+      '@typography',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -271,16 +269,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Multiselect as filter after keyboard interactions', {
-    tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@add-filter',
+      '@button',
+      '@icon',
+      '@input',
+      '@input-number',
+      '@base-components',
+      '@typography',
+      '@divider'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -311,14 +309,14 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Add filter button', () => {
     test('Verify cancel adding filter data when no data selected by mouse', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -355,14 +353,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify cancel adding filter data when no data selected by keyboard', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -387,18 +385,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Add filter button appearing and disappearing by mouse', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -463,18 +461,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Add filter button appearing and disappearing by keyboard', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.FUNCTIONAL,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -589,18 +587,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Clear Filters button', () => {
     test('Verify Clear all when some filters pre filled and added by mouse', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -636,18 +634,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Clear all when some filters pre filled and added by keyboard', {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -722,18 +720,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Different filter types', () => {
     test('Verify drodown as filter keyboard interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -771,18 +769,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify drodown as filter mouse interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -808,16 +806,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Select with range as filter keyboard interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -860,16 +858,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Select with range as filter mouse interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -900,16 +898,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Select with search as filter keyboard interactions ', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -945,16 +943,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Select with search as filter mouse interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -977,16 +975,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Multiselect as filter keyboard interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -1011,16 +1009,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Multiselect as filter mouse interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @button,
-        @icon,
-        @input,
-        @input-number,
-        @base-components,
-        @typography,
-        @divider`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@add-filter',
+        '@button',
+        '@icon',
+        '@input',
+        '@input-number',
+        '@base-components',
+        '@typography',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -1036,18 +1034,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Input as filter keyboard interactions', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.KEYBOARD},
-        @add-filter,
-        @base-trigger,
-        @button,
-        @icon,
-        @input,
-        @radio,
-        @textarea,
-        @base-components,
-        @typography,
-        @select`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.KEYBOARD,
+        '@add-filter',
+        '@base-trigger',
+        '@button',
+        '@icon',
+        '@input',
+        '@radio',
+        '@textarea',
+        '@base-components',
+        '@typography',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -1077,13 +1075,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Controlled mode', () => {
     test('Verify add filter by visibleFilters prop', {
-      tag: [`${TAG.PRIORITY_MEDIUM}, 
-      ${TAG.MOUSE},
-        @add-filter,
-        @base-trigger,
-        @base-components
-        @d3-chart,
-        @select`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@add-filter',
+        '@base-trigger',
+        '@base-components',
+        '@d3-chart',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/controlled_add_filter.tsx', 'en');
 

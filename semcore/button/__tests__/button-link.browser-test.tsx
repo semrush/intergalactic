@@ -45,11 +45,11 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   variablesPrimary.forEach((item) => {
     test(`Verify Base example size=${item.size} use=${item.use} color=${item.color} disabled=${item.disabled} active=${item.active}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @button,
-        @button-link,
-         @base-components,
-         @icon`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@button',
+        '@button-link',
+        '@base-components',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-base.tsx', 'en', item);
 
@@ -83,11 +83,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     test(`Verify Addon only example size=${item.size} use=${item.use} color=${item.color} disabled=${item.disabled} active=${item.active} hintPlacement=${item.hintPlacement}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @button,
-         @button-link,
-         @base-components,
-         @icon`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@button',
+        '@button-link',
+        '@base-components',
+        '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-icon-only.tsx', 'en', item);
 

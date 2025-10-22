@@ -27,12 +27,12 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Base example margins and paddings', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @card,
-        @button,
-        @typography,
-         @base-components,
-         @icon`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@typography',
+      '@base-components',
+      '@icon'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/basic_example.tsx', 'en');
 
@@ -91,11 +91,11 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify card with ellipsis width:768, height: 800', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @card,
-        @ellipsis,
-        @typography,
-         @base-components,`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@ellipsis',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/ellipsis.tsx', 'en');
 
@@ -105,14 +105,14 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify complex card styles', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @card,
-        @button,
-        @typography,
-         @base-trigger,
-         @link-trigger,
-         @select,
-         @icon`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@typography',
+      '@base-trigger',
+      '@link-trigger',
+      '@select',
+      '@icon'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 
@@ -127,12 +127,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify card with different card componens styles', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-        @card,
-        @button,
-        @typography,
-         @base-components,
-         @pills`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@typography',
+      '@base-components',
+      '@pills'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/different-cards.tsx', 'en');
 
@@ -239,10 +239,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify description tooltip trigger has not unnecessary margins', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @card,
-        @button,
-        @tooltip`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      'tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body', 'en');
 
@@ -260,13 +260,13 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify base example keyboard interactions', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},
-        @card,
-        @button,
-        @typography,
-         @base-components,
-         @icon`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@card',
+      '@button',
+      '@typography',
+      '@base-components',
+      '@icon'],
   }, async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -312,13 +312,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify complex example keyboard interactions', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},
-        @card,
-        @button,
-        @typography,
-         @base-components,
-         @icon`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@card',
+      '@button',
+      '@typography',
+      '@base-components',
+      '@icon'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 

@@ -20,10 +20,10 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   variants.forEach(({ parent, duration, delay }) => {
     test(`Check ${parent} duration=${duration}, delay=${delay}`, {
-      tag: [`${TAG.PRIORITY_HIGH}, 
-        @animation,
-        @base-components,
-        @button`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@animation',
+        '@base-components',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(
         page,

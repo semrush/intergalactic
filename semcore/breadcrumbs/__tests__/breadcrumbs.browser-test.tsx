@@ -98,8 +98,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variables.forEach((item) => {
     test(`Verify base truncation and last item is active=${item.active}`, {
-      tag: [`${TAG.PRIORITY_HIGH},
-        @breadcrumbs,`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@breadcrumbs'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 
@@ -117,9 +117,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-        @breadcrumbs,
-        @ellipsis`],
+      tag: [TAG.PRIORITY_HIGH,
+        '@breadcrumbs',
+        '@ellipis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
@@ -135,9 +135,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify ellipsis in the end', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @breadcrumbs,
-        @ellipsis`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@breadcrumbs',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
@@ -152,8 +152,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify custom styles and separator', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-        @breadcrumbs,`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@breadcrumbs'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
 
@@ -172,11 +172,11 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify ellipsis in the end', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.MOUSE},
-      ${TAG.KEYBOARD},
-        @breadcrumbs,
-        @ellipsis`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@breadcrumbs',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
@@ -225,10 +225,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   ];
   variables.forEach((item) => {
     test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.MOUSE},
-        @breadcrumbs,
-        @ellipsis`],
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@breadcrumbs',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
@@ -270,9 +270,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Attributes', () => {
     test('Verify Default attributes', {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-        @breadcrumbs,
-        @ellipsis`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@breadcrumbs',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en');
 
@@ -306,10 +306,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify attributes when custom aria-label and items are links', {
-      tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.MOUSE},
-        @breadcrumbs,
-        @link`],
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@breadcrumbs',
+        '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx', 'en');
 
@@ -344,10 +344,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify focus by keyboard when last item is active', {
-    tag: [`${TAG.PRIORITY_HIGH},
-      ${TAG.KEYBOARD},
-        @breadcrumbs,
-        @ellipsis`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@breadcrumbs',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
@@ -368,9 +368,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify focus by keyboard when last item is not active', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.KEYBOARD},
-        @breadcrumbs,`],
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@breadcrumbs'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', { active: false });
 
@@ -391,9 +391,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify keyboard navigation when few active elements and custom separator', {
-    tag: [`${TAG.PRIORITY_MEDIUM},
-      ${TAG.KEYBOARD},
-        @breadcrumbs,`],
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@breadcrumbs'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
 
