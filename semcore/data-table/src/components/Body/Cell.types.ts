@@ -1,5 +1,4 @@
 import type { Intergalactic } from '@semcore/core';
-import type * as React from 'react';
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 import type { BodyPropsInner } from './Body.types';
@@ -22,8 +21,6 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   expanded?: boolean;
   withAccordion?: boolean;
 
-  // isAccordionRow?: boolean;
-  // animationExpand?: boolean;
   accordionRowIndex?: number;
   rows: DTRows<UniqKeyType>;
   use: DTUse;
