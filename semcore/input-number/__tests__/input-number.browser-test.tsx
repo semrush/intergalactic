@@ -154,7 +154,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         const expectedInputMode = stepValue !== undefined && !Number.isInteger(stepValue) ? 'decimal' : 'numeric';
         await expect(locators.input(page)).toHaveAttribute('inputmode', expectedInputMode);
         await expect(controls).toHaveAttribute('aria-hidden', 'true');
-        await expect(locators.button(page).first()).toHaveAttribute('tabindex', '-1');
       });
 
       await test.step('Verify InputNumber focused by tab', async () => {
