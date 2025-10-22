@@ -19,10 +19,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   variables.forEach((item) => {
     test(`Verify dot size=${item.size} up=${item.up} `, {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.MOUSE,
         '@dot',
         '@button',
-        '@icon'],
+        '@icon',
+        '@base-trigger',
+        '@link-trigger',
+        '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/sizes-and-positions.tsx', 'en', item);
 
@@ -48,15 +50,17 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify doc with counter size=${item.size} up=${item.up} `, {
+    test(`Verify dot with counter size=${item.size} up=${item.up} `, {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.MOUSE,
         '@dot',
         '@button',
-        '@icon'],
+        '@icon',
+        '@base-trigger',
+        '@link-trigger',
+        '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/with-counter-sizes-and-positions.tsx', 'en', item);
-
+      if (item.size == 'l') test.skip();// the size L is not actual for dot with counter
       await expect(page).toHaveScreenshot();
       const dotCounter = page.locator('span[aria-label="Value"][data-ui-name="Dot"]');
 

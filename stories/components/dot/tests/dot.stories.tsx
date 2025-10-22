@@ -2,7 +2,9 @@ import Dot from '@semcore/ui/dot';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SizesAndPositionsExample, { defaultDotProps } from './examples/sizes-and-positions';
-import WithCounterSizesAndPositionsExample, { defaultCounterDotProps } from './examples/with-counter-sizes-and-positions';
+import WithCounterSizesAndPositionsExample, {
+  defaultCounterDotProps,
+} from './examples/with-counter-sizes-and-positions';
 
 const meta: Meta<typeof Dot> = {
   title: 'Components/Dot/Tests',
