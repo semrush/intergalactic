@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.11] - 2025-10-30
+
+### Fixed
+
+- `size` property didn't apply for the `PaletteManager.InputColor`.
+- Incorrect types for `PaletteManager`.
+- Validation issues in `PaletteManager.InputColor`.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

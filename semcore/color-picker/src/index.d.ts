@@ -110,7 +110,7 @@ export type ColorPickerProps = DropdownProps & {
 
 /** @deprecated */
 export interface IPaletteManagerProps extends PaletteManagerProps, UnknownProperties {}
-export type PaletteManagerProps = BoxProps & {
+export type PaletteManagerProps = {
   /**
    * Array of color items. Should be used with `onColorsChange` property together
    * @default []
