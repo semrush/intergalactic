@@ -54,11 +54,6 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
     maxHeight: 0,
   };
 
-  // static getDerivedStateFromProps(props: AccordionRowsProps<any, any>, state: State) {
-  //
-  //
-  // }
-
   constructor(props: AccordionRowsProps<Data, UniqKeyType>) {
     super(props);
 
@@ -68,7 +63,7 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
   componentDidMount(): void {
     setTimeout(() => {
       this.calculateGridSettings();
-    }, 500);
+    }, 500); // need this for calculate widths after Header render.
 
     if (this.props.tableRef.current) {
       this.tableWidth = this.props.tableRef.current.getBoundingClientRect().width;
@@ -81,11 +76,11 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
   }
 
   componentDidUpdate(prevProps: Readonly<AccordionRowsProps<Data, UniqKeyType>>): void {
-    const { expanded, rows, expandedForAnimation, accordionDuration } = this.props;
+    const { expanded, rows, expandedForAnimation } = this.props;
 
     if (prevProps.expanded !== expanded && expanded) {
       this.setState({
-        maxHeight: 2000,
+        maxHeight: 2000, // some value, more than real window height
       });
     }
     if (prevProps.rows !== rows && this.accordionRowsRef.current) {
