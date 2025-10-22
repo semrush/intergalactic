@@ -1,7 +1,21 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  input: (page: Page) => page.getByRole('textbox'),
+};
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   const variablesInputNumber = [
     { size: 'm', state: 'normal', locale: 'en', showControls: true, value: 1234.56, placeholder: undefined },
     { size: 'l', state: 'invalid', locale: 'pl', showControls: false, value: 9876.54, placeholder: undefined },
@@ -11,11 +25,11 @@ test.describe('Visual', () => {
     { size: 'm', state: 'normal', locale: 'de', showControls: false, value: 2500, placeholder: undefined },
   ];
   variablesInputNumber.forEach((item) => {
-    test(`Verify active Input Number with state= ${item.state} size=${item.size} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
-      const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify active Input Number with state= ${item.state} size=${item.size} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input-number'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
 
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Tab');
@@ -31,11 +45,11 @@ test.describe('Visual', () => {
 
   ];
   variablesInputNumberAddon.forEach((item) => {
-    test(`Verify Input Number with Addon and state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
-      const standPath = 'stories/components/input-number/tests/examples/basic_example_addon.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify Input Number with Addon and state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input-number'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-number/tests/examples/basic_example_addon.tsx', 'en', item);
 
       await expect(page).toHaveScreenshot();
     });
@@ -50,20 +64,20 @@ test.describe('Visual', () => {
     { size: 'm', state: 'normal', disabledValue: undefined, readOnly: true, value: 2500, placeholder: undefined },
   ];
   variablesInputdisabledValueStates.forEach((item) => {
-    test(`Verify not active Input Number with state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, async ({ page }) => {
-      const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify not active Input Number with state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input-number'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify custom appearance', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/appearance_customization.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify custom appearance', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
     await test.step('Verify increase and descrease buttons focus and hover', async () => {
       await page.keyboard.press('Tab');
@@ -87,11 +101,12 @@ test.describe('Visual', () => {
     });
   });
 
-  test('Verify range of values appearance', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/range_of_values.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify range of values appearance', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input-number',
+      '@base-components'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/docs/examples/range_of_values.tsx', 'en');
 
     await page.locator('label').first().click();
     await page.keyboard.type('7');
@@ -103,7 +118,12 @@ test.describe('Visual', () => {
   });
 });
 
-test.describe('Functional', () => {
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
   const variablesInputNumber = [
     { min: undefined, max: undefined, step: undefined },
     { min: undefined, max: undefined, step: 5 },
@@ -112,37 +132,35 @@ test.describe('Functional', () => {
     { min: -3, max: 3, step: 1.5 },
   ];
   variablesInputNumber.forEach((item) => {
-    test(`Verify Base example interactions with min= ${item.min} max=${item.max} step=${item.step} `, async ({ page }) => {
-      const standPath = 'stories/components/input-number/tests/examples/basic_example.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify Base example interactions with min= ${item.min} max=${item.max} step=${item.step} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input-number'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      const input = page.getByRole('textbox');
       const controls = page.locator('[data-ui-name="InputNumber.Controls"]');
 
-      const minAttr = await input.getAttribute('min');
-      const maxAttr = await input.getAttribute('max');
-      const stepAttr = await input.getAttribute('step');
+      const minAttr = await locators.input(page).getAttribute('min');
+      const maxAttr = await locators.input(page).getAttribute('max');
+      const stepAttr = await locators.input(page).getAttribute('step');
 
       const minValue = minAttr !== null ? Number(minAttr) : undefined;
       const maxValue = maxAttr !== null ? Number(maxAttr) : undefined;
       const stepValue = stepAttr !== null ? Number(stepAttr) : undefined;
 
       await test.step('Verify InputNumber attributes', async () => {
-        await expect(input).toHaveAttribute('aria-invalid', 'false');
-        await expect(input).toHaveAttribute('autocomplete', 'off');
+        await expect(locators.input(page)).toHaveAttribute('aria-invalid', 'false');
+        await expect(locators.input(page)).toHaveAttribute('autocomplete', 'off');
         const expectedInputMode = stepValue !== undefined && !Number.isInteger(stepValue) ? 'decimal' : 'numeric';
-        await expect(input).toHaveAttribute('inputmode', expectedInputMode);
+        await expect(locators.input(page)).toHaveAttribute('inputmode', expectedInputMode);
         await expect(controls).toHaveAttribute('aria-hidden', 'true');
-        const buttons = controls.locator('button');
-        await expect(buttons.first()).toHaveAttribute('tabindex', '-1');
+        await expect(locators.button(page).first()).toHaveAttribute('tabindex', '-1');
       });
 
       await test.step('Verify InputNumber focused by tab', async () => {
         await page.keyboard.press('Tab');
-        await input.fill('');
-        await expect(input).toBeFocused();
+        await locators.input(page).fill('');
+        await expect(locators.input(page)).toBeFocused();
       });
 
       await test.step('Verify value increases to step by ArrowUp and respects max', async () => {
@@ -160,14 +178,14 @@ test.describe('Functional', () => {
           expectedValue = (minValue ?? 0) + increment;
         }
 
-        await expect(input).toHaveValue(String(expectedValue));
-        await expect(input).toBeFocused();
+        await expect(locators.input(page)).toHaveValue(String(expectedValue));
+        await expect(locators.input(page)).toBeFocused();
       });
 
       await test.step('Verify value increases entering value and respects max', async () => {
-        await input.fill('90000');
+        await locators.input(page).fill('90000');
 
-        const currentValueAttr = await input.inputValue();
+        const currentValueAttr = await locators.input(page).inputValue();
         const numericValue = Number(currentValueAttr.replace(/,/g, ''));
 
         let expectedValue;
@@ -178,8 +196,8 @@ test.describe('Functional', () => {
           expectedValue = numericValue;
         }
         await page.locator('label').click();
-        await expect(input).toHaveValue((expectedValue).toLocaleString());
-        await expect(input).toBeFocused();
+        await expect(locators.input(page)).toHaveValue((expectedValue).toLocaleString());
+        await expect(locators.input(page)).toBeFocused();
       });
 
       await test.step('Verify value decreases to step by ArrowDown and respects min', async () => {
@@ -201,14 +219,14 @@ test.describe('Functional', () => {
           expectedValue = 0 - decrement;
         }
 
-        await expect(input).toHaveValue(String(expectedValue));
-        await expect(input).toBeFocused();
+        await expect(locators.input(page)).toHaveValue(String(expectedValue));
+        await expect(locators.input(page)).toBeFocused();
       });
 
       await test.step('Verify value decreases by entering value and respects min', async () => {
-        await input.fill('-90000');
+        await locators.input(page).fill('-90000');
 
-        const currentValueAttr = await input.inputValue();
+        const currentValueAttr = await locators.input(page).inputValue();
         const numericValue = Number(currentValueAttr.replace(/,/g, ''));
 
         let expectedValue;
@@ -220,108 +238,105 @@ test.describe('Functional', () => {
         }
 
         await page.locator('label').click();
-        await expect(input).toHaveValue(expectedValue.toLocaleString());
-        await expect(input).toBeFocused();
+        await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
+        await expect(locators.input(page)).toBeFocused();
       });
 
       await test.step('Verify zero value', async () => {
-        await page.fill('input[data-ui-name="InputNumber.Value"]', '0');
-        await input.fill('0');
-        await input.fill('9');
-        await expect(input).toHaveAttribute('value', '9');
+        await locators.input(page).fill('input[data-ui-name="InputNumber.Value"]', '0');
+        await locators.input(page).fill('0');
+        await locators.input(page).fill('9');
+        await expect(locators.input(page)).toHaveAttribute('value', '9');
       });
     });
   });
 
-  test('Verify keyboard interactions with custom appearance', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/appearance_customization.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const buttons = page.getByRole('button');
-    const input = page.getByRole('textbox');
+  test('Verify keyboard interactions with custom appearance', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
     await test.step('Verify descrease values by min button activation', async () => {
       await page.keyboard.press('Tab');
-      await expect(buttons.first()).toBeFocused();
+      await expect(locators.button(page).first()).toBeFocused();
       await page.keyboard.press('Space');
-      await expect(input).toHaveValue('-10');
+      await expect(locators.input(page)).toHaveValue('-10');
       await page.keyboard.press('Enter');
-      await expect(input).toHaveValue('-20');
+      await expect(locators.input(page)).toHaveValue('-20');
     });
 
     await test.step('Verify change values by keyboard arrows when input is focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(input).toBeFocused();
+      await expect(locators.input(page)).toBeFocused();
       await page.keyboard.press('ArrowDown');
-      await expect(input).toHaveValue('-30');
+      await expect(locators.input(page)).toHaveValue('-30');
       await page.keyboard.press('ArrowUp');
-      await expect(input).toHaveValue('-20');
+      await expect(locators.input(page)).toHaveValue('-20');
     });
 
     await test.step('Verify increase values by max button activation', async () => {
       await page.keyboard.press('Tab');
-      await expect(buttons.nth(1)).toBeFocused();
+      await expect(locators.button(page).nth(1)).toBeFocused();
       await page.keyboard.press('Space');
-      await expect(input).toHaveValue('-10');
+      await expect(locators.input(page)).toHaveValue('-10');
       await page.keyboard.press('Enter');
-      await expect(input).toHaveValue('0');
+      await expect(locators.input(page)).toHaveValue('0');
     });
 
     await test.step('Verify Shift+Tab navigation', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
-      await expect(buttons.nth(0)).toBeFocused();
+      await expect(locators.button(page).nth(0)).toBeFocused();
     });
   });
 
-  test('Verify mouse interactions with custom appearance', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/appearance_customization.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const buttons = page.getByRole('button');
-    const input = page.getByRole('textbox');
+  test('Verify mouse interactions with custom appearance', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
     await test.step('Verify descrease values by min button activation', async () => {
-      await buttons.first().click();
-      await expect(input).toHaveValue('-10');
+      await locators.button(page).first().click();
+      await expect(locators.input(page)).toHaveValue('-10');
     });
 
     await test.step('Verify increase values by max button activation', async () => {
-      await buttons.nth(1).click();
-      await expect(input).toHaveValue('0');
+      await locators.button(page).nth(1).click();
+      await expect(locators.input(page)).toHaveValue('0');
     });
 
     await test.step('Verify focus on input by click on it', async () => {
-      await input.click();
-      await expect(input).toBeFocused();
+      await locators.input(page).click();
+      await expect(locators.input(page)).toBeFocused();
       await page.keyboard.type('890');
-      await expect(input).toHaveValue('890');
+      await expect(locators.input(page)).toHaveValue('890');
     });
   });
 
-  test('Verify input range interactions', async ({ page }) => {
-    const standPath = 'stories/components/input-number/docs/examples/range_of_values.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const buttons = page.getByRole('button');
-    const input = page.getByRole('textbox');
+  test('Verify input range keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/docs/examples/range_of_values.tsx', 'en');
 
     await test.step('Verify descrease values by min button activation', async () => {
       await page.keyboard.press('Tab');
-      await expect(input.first()).toBeFocused();
+      await expect(locators.input(page).first()).toBeFocused();
       await page.keyboard.press('ArrowDown');
-      await expect(input.first()).toHaveValue('7');
+      await expect(locators.input(page).first()).toHaveValue('7');
       await page.keyboard.type('9');
     });
 
     await test.step('Verify change values by keyboard arrows when input is focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(input.nth(1)).toBeFocused();
-      await expect(input.first()).toHaveValue('8');
-      await expect(input.nth(1)).toHaveValue('79');
+      await expect(locators.input(page).nth(1)).toBeFocused();
+      await expect(locators.input(page).first()).toHaveValue('8');
+      await expect(locators.input(page).nth(1)).toHaveValue('79');
     });
   });
 });
