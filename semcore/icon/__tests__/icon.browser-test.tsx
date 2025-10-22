@@ -1,11 +1,18 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Icons size rendering and attributes', () => {
-  test('Verify Pay icons type - view and attributes', async ({ page }) => {
-    const standPath = 'stories/components/icon/tests/examples/icons_pay.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify Pay icons type', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/icon/tests/examples/icons_pay.tsx', 'en');
     const expectedAttributes = [
       {
         'aria-label': 'PayM interactive',
@@ -45,7 +52,7 @@ test.describe('Icons size rendering and attributes', () => {
       },
     ];
 
-    const svgs = await page.locator('svg');
+    const svgs = page.locator('svg');
     const count = await svgs.count();
 
     expect(count).toBe(expectedAttributes.length);
@@ -63,10 +70,12 @@ test.describe('Icons size rendering and attributes', () => {
     }
   });
 
-  test('Verify Regular icons type - view and attributes', async ({ page }) => {
-    const standPath = 'stories/components/icon/tests/examples/icons_regular.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Regular icons type', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/icon/tests/examples/icons_regular.tsx', 'en');
+
     const expectedAttributes = [
       {
         'aria-label': 'Icon RegularM Interactive',
@@ -126,10 +135,12 @@ test.describe('Icons size rendering and attributes', () => {
     }
   });
 
-  test('Verify Colored icons type - view and attributes', async ({ page }) => {
-    const standPath = 'stories/components/icon/tests/examples/icons_color.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Colored icons type', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/icon/tests/examples/icons_color.tsx', 'en');
+
     const expectedAttributes = [
       {
         'aria-label': 'ColorM interactive',
@@ -187,12 +198,13 @@ test.describe('Icons size rendering and attributes', () => {
     }
   });
 
-  test('Verify Platform icons type - view and attributes', async ({ page }) => {
-    const standPath = 'stories/components/icon/tests/examples/icons_platform.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Platform icons type', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/icon/tests/examples/icons_platform.tsx', 'en');
 
-    const svgs = await page.locator('svg');
+    const svgs = page.locator('svg');
     const count = await svgs.count();
 
     for (let i = 0; i < count; i++) {
@@ -209,10 +221,12 @@ test.describe('Icons size rendering and attributes', () => {
     }
   });
 
-  test('Verify Custom icons type - view and attributes', async ({ page }) => {
-    const standPath = 'stories/components/icon/tests/examples/icon_with_custom_size_color.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Custom icons type', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/icon/tests/examples/icon_with_custom_size_color.tsx', 'en');
+
     const expectedAttributes = [
       {
         'aria-label': 'icon with size 22',

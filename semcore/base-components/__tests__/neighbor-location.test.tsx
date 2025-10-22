@@ -1,3 +1,4 @@
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, renderHook } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -16,6 +17,10 @@ const CustomComponent: any = function ({ neighborLocation, ...other }: any) {
   return <div {...other} data-neighborlocation={neighborLocation} />;
 };
 
+describe('neighbor-location Dependency imports', () => {
+  runDependencyCheckTests('neighbor-location');
+});
+
 describe('neighbor-location', () => {
   beforeEach(cleanup);
 
@@ -32,7 +37,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.sequential('Verify workds with components inside', () => {
+  test.sequential('Verify components inside', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocation.Detect>
@@ -52,7 +57,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.sequential('Verify props "controlsLength" fucntionality', () => {
+  test.sequential('Verify props "controlsLength"', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
@@ -67,12 +72,12 @@ describe('neighbor-location', () => {
     expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
-  test.concurrent('Verify without NeighborLocation all works correctly', () => {
+  test.concurrent('Verify without NeighborLocation', () => {
     const { getByTestId } = render(<NeighborLocationItem data-testid='test' />);
     expect((getByTestId('test').attributes as any)['data-neighborlocation']).toBe(undefined);
   });
 
-  test.sequential('Verify works with other empty childrens', () => {
+  test.sequential('Verify with empty childrens', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         {[]}
@@ -86,7 +91,7 @@ describe('neighbor-location', () => {
     expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
   });
 
-  test.concurrent('Verify works correctly with React.Fragment', () => {
+  test.concurrent('Verify works React.Fragment', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <React.Fragment>
@@ -102,7 +107,7 @@ describe('neighbor-location', () => {
     expect(getByTestId('3').getAttribute('data-neighborlocation')).toBe('left');
   });
 
-  test.concurrent('Verify useNeighborLocationDetect works correctly', () => {
+  test.concurrent('Verify useNeighborLocationDetect', () => {
     const wrapper = ({ children }: any) => (
       <NeighborLocation>
         <div />
@@ -116,7 +121,7 @@ describe('neighbor-location', () => {
     expect(result.current).toBe('both');
   });
 
-  test.concurrent('Verify neighborLocation caching works correctly', () => {
+  test.concurrent('Verify neighborLocation caching', () => {
     const neighborLocation = new NeighborLocationRoot({});
 
     expect(neighborLocation.cacheChild.size).toEqual(0);
