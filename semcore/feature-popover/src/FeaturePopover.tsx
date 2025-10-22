@@ -144,6 +144,7 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
       'aria-labelledby': ariaLabelledby,
       title,
       theme,
+      autoFocus = true,
     } = this.asProps;
 
     return sstyled(styles)(
@@ -151,7 +152,7 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
         disableEnforceFocus
         zIndex={zIndex}
         tabIndex={0}
-        autoFocus
+        autoFocus={autoFocus}
         role='dialog'
         aria-describedby={ariaDescribedBy}
         aria-label={ariaLabel}

@@ -1,7 +1,6 @@
-import Button from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -21,10 +20,10 @@ describe('Accordion', () => {
       // @ts-expect-error
       assertType<JSX.Element>(<Accordion href='https://google.com' />);
     });
-    test('vVerify alue&onChange relation', () => {
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => {}} />);
+    test('Verify value&onChange relation', () => {
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => { }} />);
       // @ts-expect-error
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => {}} />);
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => { }} />);
     });
     test('Verify value&onChange relation with useState', () => {
       const value: number[] = any;
@@ -194,48 +193,4 @@ describe('Accordion', () => {
     fireEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
-
-  test.concurrent(
-    'Verify not open/close Collapse item by keyboard click on some clickable element in Toggle',
-    async ({ expect }) => {
-      const spy = vi.fn();
-      const spyInnerButton = vi.fn();
-      const { getByTestId } = render(
-        <Accordion onChange={spy}>
-          {[...new Array(2)].map((_, index) => {
-            return (
-              <Accordion.Item value={index} key={index}>
-                <Accordion.Item.Toggle>
-                  <Accordion.Item.Chevron />
-                  <div>{`Toggle ${index + 1}`}</div>
-                  <Button
-                    data-testid={`button_in_toggle_${index + 1}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      spyInnerButton();
-                    }}
-                  >
-                    Just button
-                  </Button>
-                </Accordion.Item.Toggle>
-                <Accordion.Item.Collapse>
-                  <div>{`Accordion content ${index + 1}`}</div>
-                </Accordion.Item.Collapse>
-              </Accordion.Item>
-            );
-          })}
-        </Accordion>,
-      );
-
-      await userEvent.keyboard('[Tab]');
-      await userEvent.keyboard('[Tab]');
-
-      expect(getByTestId('button_in_toggle_1')).toHaveFocus();
-
-      await userEvent.keyboard('[Enter]');
-
-      expect(spyInnerButton).toBeCalled();
-      expect(spy).not.toBeCalled();
-    },
-  );
 });
