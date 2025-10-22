@@ -1,7 +1,7 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
-import { isInteractiveElement } from '@semcore/ui/core/lib/utils/isInteractiveElement';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import * as React from 'react';
 
 import type { CellPropsInner, DataTableCellProps } from './Cell.types';
