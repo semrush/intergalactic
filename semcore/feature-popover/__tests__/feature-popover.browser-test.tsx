@@ -12,10 +12,6 @@ export const locators = {
   featurePopoverPopper: (page: Page) => page.getByRole('dialog'),
   hint: (page: Page) => page.getByText('Close'),
   featurePopover: (page: Page) => page.locator('[data-ui-name="FeaturePopover.Popper"]'),
-
-  dragAndDropContainer: (page: Page) => page.locator('[data-ui-name="DragAndDrop"]'),
-  dropZone: (page: Page) => page.locator('[data-ui-name="DragAndDrop.DropZone"]'),
-  draggable: (page: Page) => page.locator('div[data-ui-name="DragAndDrop.Draggable"]'),
 };
 /* =====================================================
   @visual
@@ -41,7 +37,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   ];
   placement.forEach((item) => {
-    test(`Verify Feature popover when placement = ${item.placement}`, async ({ page }) => {
+    test(`Verify Feature popover when placement = ${item.placement}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@feature-popover'],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', item);
 
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
@@ -64,7 +63,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   ];
   closeIcon.forEach((item) => {
-    test(`Verify Feature popover styles with closeIcon = ${item.closeIcon} and theme = ${item.theme}`, async ({ page }) => {
+    test(`Verify Feature popover styles with closeIcon = ${item.closeIcon} and theme = ${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@feature-popover'],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en', item);
 
       const spot = page.locator('[data-ui-name="FeaturePopover.Spot"]');
@@ -89,7 +91,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test(`Verify Feature popover styles with medium illustration`, async ({ page }) => {
+  test(`Verify Feature popover styles with medium illustration`, {
+    tag: [TAG.PRIORITY_HIGH,
+      '@feature-popover'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx', 'en', { disablePortal: false });
 
     await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
@@ -99,8 +104,17 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify Base example with Close keyboard interactions', async ({ page }) => {
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify Base example with Close keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feature-popover'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
     await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
@@ -133,7 +147,8 @@ test.describe('Functional', () => {
     });
 
     await test.step('Verify Feature Popper opened and focused when reload page again', async () => {
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
+
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
       await expect(locators.featurePopoverPopper(page)).toBeFocused();
     });
@@ -147,7 +162,7 @@ test.describe('Functional', () => {
     });
 
     await test.step('Verify focus in not looped inside Feature Popover and focused goes to next button when disablePortal = true', async () => {
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -158,7 +173,11 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify Base example without Close keyboard interactions', async ({ page }) => {
+  test('Verify Base example without Close keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feature-popover'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en', { closeIcon: false });
 
     await locators.featurePopover(page).waitFor({ state: 'visible' });
@@ -186,7 +205,11 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify Base example with Close mouse interactions', async ({ page }) => {
+  test('Verify Base example with Close mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@feature-popover'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
     const gotIt = page.getByText('Next');
@@ -210,7 +233,7 @@ test.describe('Functional', () => {
     });
 
     await test.step('Verify Feature Popper closed by pressing Other button', async () => {
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
       await gotIt.click();
       await locators.featurePopoverPopper(page).waitFor({ state: 'hidden' });
@@ -218,7 +241,7 @@ test.describe('Functional', () => {
     });
 
     await test.step('Verify Feature Popper not closed by clicking outside', async () => {
-      await page.setContent(htmlContent);
+      await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
       await page.mouse.click(0, 0);
       await expect(locators.featurePopoverPopper(page)).not.toBeFocused();
@@ -233,7 +256,11 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify Focus order when disablePortal = false', async ({ page }) => {
+  test('Verify Focus order when disablePortal = false', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feature-popover'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', { disablePortal: false });
 
     await locators.featurePopover(page).waitFor({ state: 'visible' });
@@ -253,7 +280,10 @@ test.describe('Functional', () => {
 
   ];
   autoFocus.forEach((item) => {
-    test(`Verify Feature popover when autoFocus = ${item.autoFocus}`, async ({ page }) => {
+    test(`Verify Feature popover when autoFocus = ${item.autoFocus}`, {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@feature-popover'],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', item);
 
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });

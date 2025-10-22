@@ -18,6 +18,8 @@ export const locators = {
   inlineInput: (page: Page) => page.locator('[data-ui-name="InlineInput"]'),
   addon: (page: Page) => page.locator('[data-ui-name="InlineInput.Addon"]'),
   value: (page: Page) => page.locator('[data-ui-name="InlineInput.Value"]'),
+  valueNumber: (page: Page) => page.locator('[data-ui-name="InlineInput.NumberValue"]'),
+
 };
 /* =====================================================
   @visual
@@ -612,19 +614,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const decrement = page.locator('[aria-label="decrement"]');
 
     await test.step('Verify input focues when clicking on addon', async () => {
-      await expect(locators.value(page)).toHaveAttribute('value', '100');
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
       await locators.addon(page).click();
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toBeFocused();
     });
 
     await test.step('Verify focus moved when clicking on button', async () => {
       await save.click();
-      await expect(locators.value(page)).not.toBeFocused();
+      await expect(locators.valueNumber(page)).not.toBeFocused();
     });
 
     await test.step('Verify focused when clicking on value and impossible to enter text', async () => {
-      await locators.value(page).click();
-      await expect(locators.value(page)).toBeFocused();
+      await locators.valueNumber(page).click();
+      await expect(locators.valueNumber(page)).toBeFocused();
 
       if (platform() === 'darwin') {
         await page.keyboard.press('Meta+A');
@@ -633,28 +635,28 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       }
 
       await page.keyboard.type('Test');
-      await expect(locators.value(page)).toHaveAttribute('value', '100');
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
     });
 
     await test.step('Verify input number attributes', async () => {
-      await expect(locators.value(page)).toHaveAttribute('type', 'text');
-      await expect(locators.value(page)).toHaveAttribute('autocomplete', 'off');
-      await expect(locators.value(page)).toHaveAttribute('inputmode', 'numeric');
-      await expect(locators.value(page)).toHaveAttribute('step', '1');
+      await expect(locators.valueNumber(page)).toHaveAttribute('type', 'text');
+      await expect(locators.valueNumber(page)).toHaveAttribute('autocomplete', 'off');
+      await expect(locators.valueNumber(page)).toHaveAttribute('inputmode', 'numeric');
+      await expect(locators.valueNumber(page)).toHaveAttribute('step', '1');
     });
 
     await test.step('Verify value changes when clicking on controls', async () => {
       await save.click();
 
       await increment.click();
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toBeFocused();
 
       await increment.click();
       await increment.click();
-      await expect(locators.value(page)).toHaveAttribute('value', '103');
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '103');
 
       await decrement.click();
-      await expect(locators.value(page)).toHaveAttribute('value', '102');
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '102');
     });
   });
 
@@ -669,42 +671,42 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const save = locators.inlineInput(page).getByLabel('Save');
 
     await test.step('Verify input focues when pressing Tab', async () => {
-      await expect(locators.value(page)).toHaveAttribute('value', '100');
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
 
       await page.keyboard.press('Tab');
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toBeFocused();
     });
 
     await test.step('Verify focused when clicking on Escape', async () => {
       await page.keyboard.press('Escape');
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toBeFocused();
     });
 
     await test.step('Verify value and focus when clicking on Arrows', async () => {
       await page.keyboard.press('ArrowRight');
-      await expect(locators.value(page)).toHaveAttribute('value', '100');
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
+      await expect(locators.valueNumber(page)).toBeFocused();
       await page.keyboard.press('ArrowLeft');
-      await expect(locators.value(page)).toHaveAttribute('value', '100');
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
+      await expect(locators.valueNumber(page)).toBeFocused();
 
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
-      await expect(locators.value(page)).toBeFocused();
-      await expect(locators.value(page)).toHaveAttribute('value', '103');
+      await expect(locators.valueNumber(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '103');
       await page.keyboard.press('ArrowDown');
-      await expect(locators.value(page)).toBeFocused();
-      await expect(locators.value(page)).toHaveAttribute('value', '102');
+      await expect(locators.valueNumber(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toHaveAttribute('value', '102');
     });
 
     await test.step('Verify addons focused when pressing Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.value(page)).not.toBeFocused();
+      await expect(locators.valueNumber(page)).not.toBeFocused();
       await expect(save).toBeFocused();
       await page.waitForSelector('text="Save"');
       await page.keyboard.press('Shift+Tab');
-      await expect(locators.value(page)).toBeFocused();
+      await expect(locators.valueNumber(page)).toBeFocused();
     });
   });
 
