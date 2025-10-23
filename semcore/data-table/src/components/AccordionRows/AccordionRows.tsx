@@ -65,7 +65,7 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
       if (this.props.tableRef.current) {
         this.tableObserver.observe(this.props.tableRef.current);
       }
-    }, 500);
+    }, 500); // need this for wait until all columns width will be calculated
   }
 
   componentWillUnmount(): void {

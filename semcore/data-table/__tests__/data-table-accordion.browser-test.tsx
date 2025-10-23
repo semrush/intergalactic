@@ -849,6 +849,7 @@ test.describe('Accordion in table', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
     const tableInTableRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
