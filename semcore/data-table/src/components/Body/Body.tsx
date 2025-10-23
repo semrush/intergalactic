@@ -148,6 +148,26 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     };
   }
 
+  getSpinnerTopOffset = () => {
+    const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
+
+    let headerHeight = propsHeaderHeight;
+
+    if (stickyHeader) {
+      return headerHeight;
+    }
+
+    if (tableContainerRef.current) {
+      if (tableContainerRef.current.scrollTop > headerHeight) {
+        headerHeight = 0;
+      } else {
+        headerHeight = headerHeight - tableContainerRef.current.scrollTop;
+      }
+    }
+
+    return headerHeight;
+  };
+
   render() {
     const SBody = Root;
     const SRowGroup = Box;
@@ -155,7 +175,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       styles,
       loading,
-      headerHeight,
       spinnerRef,
       virtualScroll,
       scrollDirection,
@@ -169,8 +188,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     } = this.asProps;
 
     let rowsToRender = rows;
-    // let startIndex = -1;
-    // let lastIndex = -1;
 
     if (virtualScroll) {
       const rowsBuffer =
@@ -335,7 +352,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           <SSpinContainer
             innerOutline
             // @ts-ignore
-            headerHeight={`${headerHeight}px`}
+            headerHeight={`${this.getSpinnerTopOffset()}px`}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'
