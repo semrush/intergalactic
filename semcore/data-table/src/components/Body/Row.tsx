@@ -85,6 +85,16 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     });
   }
 
+  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
+    const { row } = this.asProps;
+
+    if (Array.isArray(row[ACCORDION]) && prevProps.row[ACCORDION] !== row[ACCORDION]) {
+      this.setState({
+        accordionRows: row[ACCORDION],
+      });
+    }
+  }
+
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
   }
