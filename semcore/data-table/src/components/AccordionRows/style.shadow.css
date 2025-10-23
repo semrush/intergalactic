@@ -1,9 +1,0 @@
-SAccordionRows {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-row: var(--gridRow);
-  overflow: clip;
-  transition-property: max-height;
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
-}

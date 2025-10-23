@@ -14,6 +14,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   lockedCell: LockedCell = [null, false];
 
   static displayName = 'Cell';
+  static style = styles;
 
   cellRef = React.createRef<HTMLDivElement>();
 
@@ -42,13 +43,13 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const SCellWrapper = Box;
     const SCell = Root;
     const {
-      children,
+      Children,
+      styles,
       row,
       column,
       columnIndex,
       gridRowIndex,
       shadowVertical,
-      use,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -99,9 +100,8 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           alignContent={column.alignContent}
           justifyContent={column.justifyContent}
           textAlign={column.textAlign}
-          use={use}
         >
-          {children}
+          <Children />
         </SCell>
       </SCellWrapper>,
     );

@@ -403,8 +403,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
-    const SCell = Cell;
-    const SCheckboxCell = Cell;
+    const SCell = Row.Cell;
+    const SCheckboxCell = Row.Cell;
     const {
       columns,
       row,
@@ -434,6 +434,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       virtualScroll,
       onCellClick,
       accordionAnimationRows,
+      styles,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -457,7 +458,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
 
-    return sstyled(style)(
+    return sstyled(styles)(
       <>
         <SRow
           ref={this.rowElementRef}
@@ -489,40 +490,22 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               }
             }
 
-            const commonProps: DataTableCellProps<Data, UniqKeyType> = {
-              'id': `${uid}_${rowUniqKey}_${index}`,
-              accordionId,
-              row,
-              rowIndex,
-              gridRowIndex,
-              'columnIndex': index,
-              column,
-              expanded,
-              withAccordion,
-              accordionRowIndex,
-              rows,
-              'aria-hidden': isCellHidden,
-              'data-aria-level': index === 0 ? ariaLevel : undefined,
-              use,
-              'virtualScroll': Boolean(virtualScroll),
-              tableRef,
-              'onClick': onCellClick,
-              flatRows,
-            };
-
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
 
-              // @ts-ignore
-              commonProps.column = { name: SELECT_ALL.toString() };
-              commonProps.onClick = this.handleClickCheckbox(!checked);
-              commonProps.columnIndex = 0;
-
               return (
                 <SCheckboxCell
-                  key={commonProps.id}
-                  {...commonProps}
-                  {...this.getCellProps(commonProps)}
+                  key={i}
+                  row={row}
+                  rowIndex={rowIndex}
+                  // @ts-ignore
+                  column={{ name: SELECT_ALL.toString() }}
+                  columnIndex={0}
+                  gridRowIndex={gridRowIndex}
+                  onClick={this.handleClickCheckbox(!checked)}
+                  expanded={expanded}
+                  isAccordionRow={isAccordionRow}
+                  aria-hidden={isCellHidden}
                 >
                   <Checkbox
                     checked={checked}
@@ -549,13 +532,27 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               }
             }
 
-            commonProps.style = style;
-
             return (
-              <Cell
-                key={commonProps.id}
-                {...commonProps}
-                {... this.getCellProps(commonProps)}
+              <Row.Cell
+                key={`${uid}_${rowUniqKey}_${index}`}
+                id={`${uid}_${rowUniqKey}_${index}`}
+                accordionId={accordionId}
+                row={row}
+                rowIndex={rowIndex}
+                gridRowIndex={gridRowIndex}
+                columnIndex={index}
+                column={column}
+                expanded={expanded}
+                withAccordion={withAccordion}
+                accordionRowIndex={accordionRowIndex}
+                rows={rows}
+                aria-hidden={isCellHidden}
+                data-aria-level={index === 0 ? ariaLevel : undefined}
+                use={use}
+                virtualScroll={Boolean(virtualScroll)}
+                tableRef={tableRef}
+                onClick={onCellClick}
+                flatRows={flatRows}
               />
             );
           })}
@@ -646,4 +643,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 }
 
-export const Row = createComponent(RowRoot) as DataTableRowType;
+export const Row = createComponent(RowRoot, {
+  Cell,
+}) as DataTableRowType & {
+  Cell: any;
+};

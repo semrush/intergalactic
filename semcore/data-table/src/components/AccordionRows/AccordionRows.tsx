@@ -3,10 +3,10 @@ import { sstyled } from '@semcore/core';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
-import styles from './style.shadow.css';
 import type { CellRenderProps } from '../Body/Body.types';
 import { Row } from '../Body/Row';
 import type { DTRow, DTRows } from '../Body/Row.types';
+import styles from '../Body/style.shadow.css';
 import type { DataTableData, DataTableProps, DataRowItem, DTUse } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
 
