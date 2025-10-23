@@ -1,9 +1,20 @@
 import { platform } from 'os';
 
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+export const locators = {
+  textarea: (page: Page) => page.locator('[data-ui-name="Textarea"]'),
+  label: (page: Page) => page.locator('label'),
+};
+
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   const variables = [
     { size: 'm', state: 'normal', autoFocus: false, readOnly: false, resize: undefined, disabled: false, minRows: 1, maxRows: 5, value: undefined, defaultValue: undefined, placeholder: 'Type something...' },
     { size: 'l', state: 'normal', autoFocus: false, readOnly: false, resize: 'none', disabled: false, minRows: 2, maxRows: 2, value: undefined, defaultValue: 'Default Value', placeholder: undefined },
@@ -22,26 +33,28 @@ test.describe('Visual', () => {
 
   ];
   variables.forEach((item) => {
-    test(`Verify Textarea with size = ${item.size}  state = ${item.state} autoFocus = ${item.autoFocus}  readOnly = ${item.readOnly} resize = ${item.resize} disabled = ${item.disabled} minRows = ${item.minRows} maxRows = ${item.maxRows} value = ${item.value} defaultValue = ${item.defaultValue} and placeholder = ${item.placeholder}`, async ({ page }) => {
-      const standPath = 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify Textarea with size = ${item.size}  state = ${item.state} autoFocus = ${item.autoFocus}  readOnly = ${item.readOnly} resize = ${item.resize} disabled = ${item.disabled} minRows = ${item.minRows} maxRows = ${item.maxRows} value = ${item.value} defaultValue = ${item.defaultValue} and placeholder = ${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@textarea',
+        '@base-components',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
       await expect(page).toHaveScreenshot();
 
-      const textarea = page.locator('[data-ui-name="Textarea"]');
-      const isDisabled = await textarea.getAttribute('disabled');
-      const isReadOnly = await textarea.getAttribute('readOnly');
+      const isDisabled = await locators.textarea(page).getAttribute('disabled');
+      const isReadOnly = await locators.textarea(page).getAttribute('readOnly');
 
       if (isDisabled !== null) {
         return;
       }
       if (isReadOnly !== null) {
-        await textarea.click();
+        await locators.textarea(page).click();
         await expect(page).toHaveScreenshot();
         return;
       } else {
-        await textarea.click();
+        await locators.textarea(page).click();
         const text =
           'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
         await page.keyboard.type(text, { delay: 10 });
@@ -51,37 +64,46 @@ test.describe('Visual', () => {
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify textarea mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify textarea mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@textarea',
+      '@base-components',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const textarea = await page.locator('[data-ui-name="Textarea"]');
-    const label = page.locator('label');
-    await expect(textarea).not.toBeFocused();
+    await expect(locators.textarea(page)).not.toBeFocused();
 
-    await label.click();
-    await expect(textarea).toBeFocused();
+    await locators.label(page).click();
+    await expect(locators.textarea(page)).toBeFocused();
 
-    const forValue = await label.getAttribute('for');
-    const idValue = await textarea.getAttribute('id');
+    const forValue = await locators.label(page).getAttribute('for');
+    const idValue = await locators.textarea(page).getAttribute('id');
 
     expect(forValue).not.toBeNull();
     expect(idValue).not.toBeNull();
     expect(forValue).toBe(idValue);
   });
 
-  test('Verify textarea keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify textarea keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@textarea',
+      '@base-components',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const textarea = await page.locator('[data-ui-name="Textarea"]');
-    const label = page.locator('label');
     await test.step('Verify textarea focused when perssing TAB', async () => {
       await page.keyboard.press('Tab');
-      await expect(textarea).toBeFocused();
+      await expect(locators.textarea(page)).toBeFocused();
     });
 
     await test.step('Verify ampunf of lines update when enetring text', async () => {
@@ -89,7 +111,7 @@ test.describe('Functional', () => {
         'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
       await page.keyboard.type(text, { delay: 10 });
 
-      const { scrollHeight, lineHeight } = await textarea.evaluate((el) => {
+      const { scrollHeight, lineHeight } = await locators.textarea(page).evaluate((el) => {
         const computed = window.getComputedStyle(el);
         const lh = parseFloat(computed.lineHeight);
         return {
@@ -111,7 +133,7 @@ test.describe('Functional', () => {
       }
       await page.keyboard.press('Backspace');
 
-      const { scrollHeight, lineHeight } = await textarea.evaluate((el) => {
+      const { scrollHeight, lineHeight } = await locators.textarea(page).evaluate((el) => {
         const computed = window.getComputedStyle(el);
         const lh = parseFloat(computed.lineHeight);
         return {

@@ -1,7 +1,18 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+export const locators = {
+  textarea: (page: Page) => page.locator('[data-ui-name="Textarea"]'),
+  label: (page: Page) => page.locator('label'),
+};
+
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   const breakpoints = [
     { width: 320 },
     { width: 768 },
@@ -10,36 +21,74 @@ test.describe('Visual', () => {
   ];
 
   breakpoints.forEach(({ width }) => {
-    test(`Verify base example looks good on screen width ${width}px`, async ({ page }) => {
-      const standPath = 'stories/components/product-head/docs/examples/extended_example.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test(`Verify base example looks good on screen width ${width}px`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@product-head',
+        '@button',
+        '@tooltip',
+        '@base-triggger',
+        '@link-trigger',
+        '@icon',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
+
       await page.setViewportSize({ width, height: 800 });
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify looks good when long long title', async ({ page }) => {
-    const standPath = 'stories/components/product-head/advanced/examples/long-long-title.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify looks good when long long title', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@product-head',
+      '@button',
+      '@tooltip',
+      '@base-triggger',
+      '@link-trigger',
+      '@icon',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/product-head/advanced/examples/long-long-title.tsx', 'en');
+
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify renders when single items used', async ({ page }) => {
-    const standPath = 'stories/components/product-head/tests/examples/test_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify renders when single items used', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@product-head',
+      '@button',
+      '@tooltip',
+      '@breadcrumbs',
+      '@base-triggger',
+      '@link-trigger',
+      '@icon',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/product-head/tests/examples/test_example.tsx', 'en');
+
     await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify focus by keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/product-head/docs/examples/extended_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify focus by keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@product-head',
+      '@button',
+      '@tooltip',
+      '@base-triggger',
+      '@link-trigger',
+      '@icon',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-ui-name="Breadcrumbs.Item"]').first()).toBeFocused();
