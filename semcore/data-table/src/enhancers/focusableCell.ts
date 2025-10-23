@@ -16,7 +16,12 @@ export function handleFocusCell(lockedCell: LockedCell, target: Element, current
     );
 
     if (focusableChildren.length === 1) {
-      focusableChildren[0].focus();
+      focusableChildren[0].focus({ focusVisible: true });
+      focusableChildren[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
     } else if (focusableChildren.length > 1) {
       lockedCell[0] = currentTarget;
       lockedCell[1] = false;
@@ -31,7 +36,7 @@ export function handleKeydownFocusCell(lockedCell: LockedCell, e: React.Keyboard
 
     if (lockedCell[1]) {
       if (e.key === 'Escape') {
-        lockedCell[0]?.focus();
+        lockedCell[0]?.focus({ focusVisible: true });
         lockedCell[1] = false;
       }
       if (e.key.startsWith('Arrow')) {
@@ -40,10 +45,10 @@ export function handleKeydownFocusCell(lockedCell: LockedCell, e: React.Keyboard
       }
       if (e.key === 'Tab') {
         if (e.target === focusableChildren[0] && e.shiftKey) {
-          focusableChildren[focusableChildren.length - 1]?.focus();
+          focusableChildren[focusableChildren.length - 1]?.focus({ focusVisible: true });
           e.preventDefault();
         } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
-          focusableChildren[0]?.focus();
+          focusableChildren[0]?.focus({ focusVisible: true });
           e.preventDefault();
         }
         e.stopPropagation();
@@ -52,7 +57,7 @@ export function handleKeydownFocusCell(lockedCell: LockedCell, e: React.Keyboard
       e.preventDefault();
       e.stopPropagation();
       lockedCell[1] = true;
-      focusableChildren[0]?.focus();
+      focusableChildren[0]?.focus({ focusVisible: true });
     }
   }
 }

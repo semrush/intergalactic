@@ -40,7 +40,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/checkbox-and-radio.tsx';
+  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
 </script>
 
 :::

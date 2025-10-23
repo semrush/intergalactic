@@ -156,3 +156,16 @@ test.describe('Input', () => {
     }
   });
 });
+
+test.describe('UX pattern - Form', () => {
+  test('Login', async ({ page }) => {
+    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+});

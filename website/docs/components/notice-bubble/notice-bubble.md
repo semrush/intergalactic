@@ -27,7 +27,7 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 **It cannot contain:**
 
-- Images (holiday alerts are an exception).
+- Images (messages for special events are an exception).
 - More than two buttons.
 
 ## Usage recommendations
@@ -68,29 +68,14 @@ Table: Use cases for NoticeBubble types
 | **Failure**                    | This type of notification is suitable for conveying the failure of user actions within the interface.                                                                                                                                                                                                                                         | ![](static/warning-notice.png)  |
 | **No connection**              | For systems capable of monitoring the network connection on their own, use a notice without a button.                                                                                                                                                                                                                                         | ![](static/notice.png)          |
 | **No connection with action**  | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button.                                                                                                                                                                                                     | ![](static/reload.png)          |
-| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement.                                                                                                                                                        | ![](static/event-alert.png)     |
+| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement.                                                                                                                                                        | ![](static/event-notice.png)     |
 
 ## Appearance
 
-- The notice appears in the upper-right corner of the report, below the main website menu, with 12px margins at the top and right.
-- When scrolling, it remains fixed in the upper-right corner with the same 12px margins.
+- The notice appears in the upper-right corner of the report, below the main website menu, with `var(--intergalactic-spacing-3x)` margins at the top and right.
+- When scrolling, it remains fixed in the upper-right corner with the same `var(--intergalactic-spacing-3x)` margins.
 
 ![](static/noticeBubble1.png)
-
-![](static/noticeBubble2.png)
-
-- The alert has a fixed width of 300px.
-- Container has `12px 36px 12px 12px` paddings.
-- The **Close** button has absolute position with 8px top and right margins.
-- The gap between the text and any action buttons below it is 8px.
-- If there is a spinner preceding the text, then the margin between the spinner and the text is 4px (use [Spin](/components/spin/spin) with XS size).
-- In the loading and success states, the margin between the spinner/icon and the text is also 4px.
-- For the loading state, use [Spin](/components/spin/spin) with XS size.
-- For the success state, use an icon with M size.
-
-![](static/paddings-1.png)
-
-![](static/paddings-2.png)
 
 ## Animation
 

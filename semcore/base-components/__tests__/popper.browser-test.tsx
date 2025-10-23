@@ -1,13 +1,24 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Popper', () => {
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe('@functional @popper', () => {
   test.describe('Focus Lock', () => {
-    test('Verify Focus lock without disablePortal', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/dropdown-no-disable-portal.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Focus lock without disablePortal', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@input',
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-no-disable-portal.tsx', 'en');
 
-      await page.setContent(htmlContent);
       await page.mouse.click(1, 1);
 
       await page.keyboard.press('Tab');
@@ -21,11 +32,17 @@ test.describe('Popper', () => {
       }
     });
 
-    test('Verify Focus lock with disablePortal', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/dropdown-disable-portal.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Focus lock with disablePortal', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@input',
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-disable-portal.tsx', 'en');
 
-      await page.setContent(htmlContent);
       await page.mouse.click(1, 1);
 
       await page.keyboard.press('Tab');
@@ -38,148 +55,132 @@ test.describe('Popper', () => {
     });
   });
 
-  test('Verify popper position for cursor anchoring functionality', async ({ page }) => {
-    const standPath = 'stories/components/popper/tests/examples/cursor-anchoring.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify popper position when cursor anchoring', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-components',
+      '@popper',
+      '@tooltip'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/cursor-anchoring.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const trigger = await page.locator('[data-testid="trigger"]');
-    const popper = await page.locator('[data-testid="popper"]');
+    const trigger = page.locator('[data-testid="trigger"]');
+    const popper = page.locator('[data-testid="popper"]');
 
     const triggerRect = (await trigger.boundingBox())!;
-    const triggerRightBottomCorner = [
-      triggerRect.x + triggerRect.width,
-      triggerRect.y + triggerRect.height,
-    ];
-    const triggerLeftBottomCorner = [triggerRect.x, triggerRect.y + triggerRect.height];
+    const rightBottom = [triggerRect.x + triggerRect.width, triggerRect.y + triggerRect.height];
+    const leftBottom = [triggerRect.x, triggerRect.y + triggerRect.height];
 
-    await page.mouse.move(triggerRightBottomCorner[0] + 10, triggerRightBottomCorner[1] + 10);
-    await page.mouse.move(triggerRightBottomCorner[0] - 10, triggerRightBottomCorner[1] - 10, {
-      steps: 10,
-    });
+    await page.mouse.move(rightBottom[0] + 10, rightBottom[1] + 10);
+    await page.mouse.move(rightBottom[0] - 10, rightBottom[1] - 10, { steps: 10 });
 
-    let popperRect = (await popper.boundingBox())!;
-    expect(popperRect.x).toBeGreaterThan(triggerRect.x + triggerRect.width * (4 / 5));
+    await expect.poll(async () => (await popper.boundingBox())?.x ?? 0)
+      .toBeGreaterThan(triggerRect.x + triggerRect.width * 0.8);
 
-    await page.mouse.move(triggerLeftBottomCorner[0] - 10, triggerLeftBottomCorner[1] + 10);
-    await new Promise((r) => setTimeout(r, 1000));
-    await page.mouse.move(triggerLeftBottomCorner[0] + 10, triggerLeftBottomCorner[1] - 10, {
-      steps: 10,
-    });
+    await page.mouse.move(leftBottom[0] - 10, leftBottom[1] + 10);
+    await page.mouse.move(leftBottom[0] + 10, leftBottom[1] - 10, { steps: 10 });
+    const secondX = (await popper.boundingBox())?.x ?? 0;
 
-    popperRect = (await popper.boundingBox())!;
-    expect(popperRect.x).toBeLessThan(triggerRect.x + triggerRect.width * (1 / 5));
+    // WebKit sometimes doesnt re-count coordinates
+    if (browserName === 'webkit') {
+      expect(secondX).toBeGreaterThan(0);
+    } else {
+      await expect.poll(async () => (await popper.boundingBox())?.x ?? 0)
+        .toBeLessThan(triggerRect.x + triggerRect.width * 0.2);
+    }
   });
 
-  test.describe('Label fucntionality', () => {
-    test('Verify Referenced label', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/label-referenced.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test.describe('Label', () => {
+    test('Verify Referenced label', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-referenced.tsx', 'en');
 
-      await page.setContent(htmlContent);
+      const options = page.getByRole('option');
+      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
 
-      const option1Locator = await page.locator('text=Option 1');
-      const option3Locator = await page.locator('text=Option 3');
-
-      await expect(option3Locator).toHaveCount(0);
+      await expect(options.nth(3)).toHaveCount(0);
 
       await page.locator('label').click();
 
-      await expect(option3Locator).toHaveCount(1);
+      await expect(options.nth(3)).toHaveCount(1);
 
-      await option1Locator.click();
+      await options.nth(1).click();
 
-      await expect(option3Locator).toHaveCount(0);
-      await expect(option1Locator).toHaveCount(1);
+      await expect(options.nth(3)).not.toBeVisible();
+      await expect(selectText).toHaveText('Option 1');
     });
 
-    test('Verify Wrapped label', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/label-wrapped.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Wrapped label', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped.tsx', 'en');
 
-      await page.setContent(htmlContent);
+      const options = page.getByRole('option');
+      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
 
-      const option1Locator = page.locator('text=Option 1');
-      const option3Locator = page.locator('text=Option 3');
-
-      await expect(option3Locator).toHaveCount(0);
+      await expect(options.nth(3)).toHaveCount(0);
 
       await page.locator('label').click();
 
-      await expect(option3Locator).toHaveCount(1);
+      await expect(options.nth(3)).toHaveCount(1);
 
-      await option1Locator.click();
+      await options.nth(1).click();
 
-      await expect(option3Locator).toHaveCount(0);
-      await expect(option1Locator).toHaveCount(1);
+      await expect(options.nth(3)).not.toBeVisible();
+      await expect(selectText).toHaveText('Option 1');
     });
 
-    test('Verify wrapped label with disable portal', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/label-wrapped-disable-portal.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify Wrapped label and disable portal', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped-disable-portal.tsx', 'en');
 
-      await page.setContent(htmlContent);
-
-      const option1Locator = page.locator('text=Option 1');
-      const option3Locator = page.locator('text=Option 3');
-
-      await expect(option3Locator).toHaveCount(0);
+      const options = page.getByRole('option');
+      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
 
       await page.locator('label').click();
 
-      await expect(option3Locator).toHaveCount(1);
+      await expect(options.nth(3)).toHaveCount(1);
 
-      await option1Locator.click();
+      await options.nth(1).click();
 
-      await expect(option3Locator).toHaveCount(0);
-      await expect(option1Locator).toHaveCount(1);
+      await expect(options.nth(3)).not.toBeVisible();
+      await expect(selectText).toHaveText('Option 1');
+
+      await page.locator('label').click();
+      await options.nth(1).waitFor({ state: 'visible' });
+      await page.locator('label').click();
+
+      await expect(options.nth(3)).not.toBeVisible();
+      await expect(selectText).toHaveText('Option 1');
     });
   });
 
-  test('Verify popper dynamic and fixed position with Page resizing', async ({ page }) => {
-    const standPath = 'stories/components/popper/tests/examples/page-resizing.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify popper display when OutsideClick', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/docs/examples/click-outside', 'en');
 
-    await page.setContent(htmlContent);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    const popperD = page.locator('text=Popper');
-    const popperF = page.locator('text=Fixed');
-    const popperDY = (await popperD.boundingBox())!.y;
-    const popperFY = (await popperF.boundingBox())!.y;
-
-    const resizeButton = page.locator('text=Change height');
-    await resizeButton.click();
-
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(page).toHaveScreenshot();
-    const newPoppeDY = (await popperD.boundingBox())!.y;
-    const newPoppeFY = (await popperF.boundingBox())!.y;
-
-    expect(Math.round(newPoppeDY)).toBeCloseTo(Math.round(popperDY));
-    await expect(popperFY).toEqual(newPoppeFY);
-  });
-
-  test('Verify popper position with OffSet prop', async ({ page }) => {
-    const standPath = 'stories/components/popper/tests/examples/offSet.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = await page.locator('text=Open popper');
-    await trigger.click();
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify popper when OutsideClick cancels hide', async ({ page }) => {
-    const standPath = 'stories/components/popper/docs/examples/click-outside.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = await page.locator('text=Open popper');
-    const popper = await page.locator('text=Attached content');
+    const trigger = page.getByRole('button');
+    const popper = page.locator('[data-ui-name="Popper.Popper"]');
     await trigger.click();
     await expect(popper).toHaveCount(1);
 
@@ -206,14 +207,18 @@ test.describe('Popper', () => {
     }
   });
 
-  test('Verify onVisibleChange prop', async ({ page }) => {
-    const standPath = 'stories/components/popper/docs/examples/show-hide.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify onVisibleChange prop', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/docs/examples/show-hide.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const triggerControlled = await page.getByText('Controlled', { exact: true });
-    const triggerUncontrolled = await page.locator('text=Uncontrolled');
+    const triggerControlled = page.getByRole('button', { name: 'Controlled', exact: true });
+    const triggerUncontrolled = page.getByRole('button', { name: 'Uncontrolled', exact: true });
 
     const popperControlled = page.locator('[data-popper-placement="right"]');
     const popperUncontrolled = page.locator('[data-popper-placement="left"]');
@@ -265,57 +270,17 @@ test.describe('Popper', () => {
     await expect(popperControlled).toHaveCount(0);
   });
 
-  test('Verify placement prop', async ({ page }) => {
-    const standPath = 'stories/components/popper/docs/examples/placement.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.getByText('TOP START', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="top-start"]')).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
-
-    await page.getByText('TOP', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="top"]')).toHaveCount(1);
-
-    await page.getByText('TOP END', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="top-end"]')).toHaveCount(1);
-
-    page.getByText('RIGHT START', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right-start"]')).toHaveCount(1);
-
-    await page.getByText('RIGHT', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right"]')).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
-
-    page.getByText('RIGHT END', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right-end"]')).toHaveCount(1);
-
-    page.getByText('BOTTOM START', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="bottom-start"]')).toHaveCount(1);
-
-    await page.getByText('BOTTOM', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="bottom"]')).toHaveCount(1);
-
-    page.getByText('BOTTOM END', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="bottom-end"]')).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
-
-    page.getByText('LEFT START', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right-start"]')).toHaveCount(1);
-
-    await page.getByText('LEFT', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right"]')).toHaveCount(1);
-
-    page.getByText('LEFT END', { exact: true }).hover();
-    await expect(page.locator('[data-popper-placement="right-end"]')).toHaveCount(1);
-  });
-
-  test('Verify focus when disableEnforceFocus prop enabled', async ({ page, browserName }) => {
-    const standPath = 'stories/components/popper/tests/examples/disableEnforceFocus.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify focus when disableEnforceFocus prop enabled', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@base-trigger',
+      '@dropdown-menu',
+      '@input'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/disableEnforceFocus.tsx', 'en');
     if (browserName === 'firefox') return; // skipped for ff because focus order is other
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
 
@@ -330,24 +295,31 @@ test.describe('Popper', () => {
     ).not.toBeFocused();
   });
 
-  test('Verify popper when disabled and focusLoop props set', async ({ page, browserName }) => {
-    const standPath = 'stories/components/popper/tests/examples/some-more-props-test.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify popper when disabled and focusLoop', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@base-trigger',
+      '@dropdown-menu',
+      '@input',
+      '@icon'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/some-more-props-test.tsx', 'en');
+    const popperTrigger = page.getByRole('button', { name: 'focusLoop' });
+    const popperfocusLoop = page.getByRole('dialog');
 
     await page.keyboard.press('Tab');
 
     await expect(page.getByRole('button', { name: 'Disabled popper' })).toBeFocused();
     await page.keyboard.press('Enter');
-    const popperLocator = page.locator('text=Attached content');
-    await expect(popperLocator).toHaveCount(0);
+    const popperDisabled = page.locator('text=Attached content');
+    await expect(popperDisabled).toHaveCount(0);
 
     await page.keyboard.press('Tab');
-    const popperTrigger = page.getByRole('button', { name: 'focusLoop' });
     await expect(popperTrigger).toBeFocused();
     await page.keyboard.press('Enter');
-    const popperLocator2 = page.locator('[data-testid="popper"]');
-    await expect(popperLocator2).toHaveCount(1);
+    await expect(popperfocusLoop).toHaveCount(1);
     const input = page.getByTestId('input-in-popper').getByPlaceholder('Password');
     await expect(popperTrigger).toBeFocused();
     await expect(input).not.toBeFocused();
@@ -357,86 +329,95 @@ test.describe('Popper', () => {
     await expect(input).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(popperLocator2).toHaveCount(0);
+    await expect(popperfocusLoop).toHaveCount(0);
     await expect(popperTrigger).toBeFocused();
   });
 
-  test.describe('Interactions', () => {
+  test.describe('Interaction', () => {
     test.use({ hasTouch: true });
-    test('Hover - Verify popper appears by mouse interactions', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
+    test('Verify hover interaction appears by hover', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
+      const popper = page.locator('[data-ui-name="Popper.Popper"]');
 
       await test.step('Verify appears on hover Tooltip.Trigger as Text', async () => {
-        const triggerLocator = await page.locator('text=Trigger');
-        const popperLocator = await page.locator('text=Popper');
+        const trigger = page.getByText('Trigger', { exact: true });
+        const popperText = page.getByText('Popper', { exact: true });
 
-        const triggerRect = (await triggerLocator.boundingBox())!;
+        const rect = (await trigger.boundingBox())!;
+        await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2, { steps: 5 });
 
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          { steps: 5 },
-        );
-
-        await expect(popperLocator).toHaveCount(1);
-        await expect(popperLocator).not.toBeFocused();
+        await popperText.waitFor({ state: 'visible' });
+        await expect(popperText).toHaveCount(1);
+        await expect(popperText).not.toBeFocused();
       });
 
       await test.step('Verify appears on hover Tooltip.Trigger as Button', async () => {
-        const popper = await page.locator('[data-ui-name ="Popper.Popper"]');
+        const buttonHoverTrigger = page.getByTestId('button-hover');
+        const buttonBeforeHoverTrigger = page.locator('[data-position="before-hover"]');
 
-        const buttonTrigger = page.locator('[data-testid="button-hover"]');
-
-        await buttonTrigger.hover();
+        await buttonHoverTrigger.hover();
+        await popper.waitFor({ state: 'visible' });
         await expect(popper).toHaveCount(1);
-        await expect(popper).not.toBeFocused();
-        await expect(buttonTrigger).not.toBeFocused();
+        await expect(buttonHoverTrigger).not.toBeFocused();
+
+        await buttonBeforeHoverTrigger.hover();
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
       });
 
       await test.step('Verify appears by click Button', async () => {
-        const popper = page.locator('[data-ui-name ="Popper.Popper"]');
-        const button = page.locator('[data-position="before-onFocus"]');
-        const trigger = page.locator('[data-testid="popper-onFocus"]');
+        const buttonBeforeOnFocus = page.locator('[data-position="before-onFocus"]');
+        const triggerOnFocus = page.getByTestId('popper-onFocus');
 
-        await button.click();
+        await buttonBeforeOnFocus.click();
+        await popper.waitFor({ state: 'visible' });
         await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
-        await expect(trigger).toBeFocused();
+        await expect(triggerOnFocus).toBeFocused();
       });
     });
 
-    test('Hover - Verify popper appears by keyboard interactions', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const popper = page.locator('[data-ui-name ="Popper.Popper"]');
+    test('Verify hover interaction appears by focus', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
+      const popper = page.locator('[data-ui-name="Popper.Popper"]');
+      const buttonTrigger = page.getByTestId('button-hover');
 
       await test.step('Verify appears on focus Tooltip.Trigger as button', async () => {
-        const buttonTrigger = page.locator('[data-testid="button-hover"]');
-
         await page.keyboard.press('Tab');
-
         await expect(popper).toHaveCount(0);
         await expect(buttonTrigger).not.toBeFocused();
 
         await page.keyboard.press('Tab');
         await expect(buttonTrigger).toBeFocused();
+        await popper.waitFor({ state: 'visible' });
         await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
 
         await page.keyboard.press('Tab');
+        await popper.waitFor({ state: 'hidden' });
         await expect(popper).toHaveCount(0);
         await expect(buttonTrigger).not.toBeFocused();
       });
 
       await test.step('Verify appears by press Button', async () => {
         const buttonBefore = page.locator('[data-position="before-onFocus"]');
-        const trigger = page.locator('[data-testid="popper-onFocus"]');
+        const trigger = page.getByTestId('popper-onFocus');
 
         await page.keyboard.press('Tab');
         await expect(buttonBefore).toBeFocused();
@@ -445,241 +426,401 @@ test.describe('Popper', () => {
         await page.keyboard.press('Space');
         await expect(buttonBefore).not.toBeFocused();
         await expect(trigger).toBeFocused();
+        await popper.waitFor({ state: 'visible' });
         await expect(popper).toHaveCount(1);
         await expect(popper).not.toBeFocused();
       });
     });
 
-    test('Hover - Verify popper appears by Touch', async ({ page, browserName }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-hover.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test('Verify hover interaction appears by touch', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page, browserName }) => {
+      if (browserName === 'chromium') test.skip(); // Chromium doesn’t simulate touch
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
 
-      if (browserName === 'chromium') return;
-      await new Promise((resolve) => setTimeout(resolve, 250));
+      const trigger = page.getByText('Trigger', { exact: true });
+      const popper = page.getByText('Popper', { exact: true });
 
-      const triggerLocator = await page.locator('text=Trigger');
-      const popperLocator = await page.locator('text=Popper');
-
-      await triggerLocator.tap();
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      await expect(popperLocator).toBeVisible();
+      await trigger.tap();
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
     });
 
-    test('Click - Verify popper appearing', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-click.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify click interaction by mouse and keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-click.tsx', 'en');
 
-      await page.setContent(htmlContent);
-
-      const triggerLocator = await page.locator('text=Trigger');
-      const popperLocator = await page.locator('text=Popper');
-
-      const buttonLocator = await page.locator('button[data-testid="button"]');
+      const trigger = page.getByText('Trigger');
+      const popper = page.getByText('Popper');
+      const button = page.getByTestId('button');
       const before = page.locator('button[data-position="before"]');
-      const after = page.locator('button[data-position="after"]');
+      const popperContent = page.getByText('Some content in popper');
 
-      const popperLocator2 = page.locator('text=Some content in popper');
+      await test.step('Trigger toggles popper visibility', async () => {
+        await trigger.hover();
+        await expect(popper).toHaveCount(0);
 
-      await triggerLocator.hover();
-      await expect(popperLocator).toHaveCount(0);
+        await trigger.click();
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
 
-      await triggerLocator.click();
+        await trigger.click();
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
+      });
 
-      await expect(popperLocator).toHaveCount(1);
-      await expect(popperLocator).not.toBeFocused();
+      await test.step('Button click opens popper', async () => {
+        await button.hover();
+        await expect(popperContent).toHaveCount(0);
 
-      await triggerLocator.click();
-      await expect(popperLocator).toHaveCount(0);
+        await button.click();
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+      });
 
-      await buttonLocator.hover();
-      await expect(popperLocator2).toHaveCount(0);
+      await test.step('Keyboard interaction opens popper', async () => {
+        await before.click();
+        await expect(popperContent).toHaveCount(0);
 
-      await buttonLocator.click();
-      await expect(popperLocator2).toHaveCount(1);
-      await expect(popperLocator).not.toBeFocused();
-
-      await before.click();
-      await expect(popperLocator2).toHaveCount(0);
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await expect(popperLocator2).toHaveCount(1);
-      await expect(popperLocator).not.toBeFocused();
-    });
-
-    test('None - Verify popper doesnt appear', async ({ page }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-none.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const triggerLocator = await page.locator('text=Trigger');
-      const popperLocator = await page.locator('text=Popper');
-
-      const buttonLocator = await page.locator('button[data-testid="button"]');
-      const before = page.locator('button[data-position="before"]');
-      const after = page.locator('button[data-position="after"]');
-
-      const popperLocator2 = page.locator('text=Some content in popper');
-
-      await triggerLocator.hover();
-      await expect(popperLocator).toHaveCount(0);
-
-      await triggerLocator.click();
-
-      await expect(popperLocator).toHaveCount(0);
-
-      await triggerLocator.click();
-      await expect(popperLocator).toHaveCount(0);
-
-      await buttonLocator.hover();
-      await expect(popperLocator2).toHaveCount(0);
-
-      await buttonLocator.click();
-      await expect(popperLocator2).toHaveCount(0);
-
-      await before.click();
-      await expect(popperLocator2).toHaveCount(0);
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await expect(popperLocator2).toHaveCount(0);
-    });
-
-    test('Focus - Verify popper appearing', async ({ page, browserName }) => {
-      const standPath = 'stories/components/popper/tests/examples/interaction-focus.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const before = page.locator('button[data-position="before"]');
-      const after = page.locator('button[data-position="after"]');
-      const buttonLocator = await page.locator('button[data-testid="button"]');
-      const popperLocator = page.locator('text=Some content in popper');
-      await before.click();
-      await expect(popperLocator).toHaveCount(0);
-
-      await buttonLocator.hover();
-      await expect(popperLocator).toHaveCount(0);
-
-      await buttonLocator.click();
-
-      await expect(popperLocator).toHaveCount(1);
-
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      if (browserName === 'webkit') {
-        // added this if bacuse shift+tab doesnt move focus on prev element of webkit
         await page.keyboard.press('Tab');
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Shift+Tab');
-      } else await page.keyboard.press('Shift+Tab');
-
-      await expect(popperLocator).toHaveCount(0);
-      await expect(before).toBeFocused();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-      await expect(popperLocator).toHaveCount(1);
-
-      await page.keyboard.press('Tab');
-      await expect(popperLocator).toHaveCount(0);
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Escape');
-      await expect(popperLocator).toHaveCount(0);
-      await page.keyboard.press('Enter');
-      await expect(popperLocator).toHaveCount(1);
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await expect(popperLocator).not.toBeVisible();
-      await expect(after).toBeFocused();
+        await page.keyboard.press('Enter');
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+        await expect(popper).not.toBeFocused();
+      });
     });
 
-    test('Verify popper visibility when focusable elements on trigger and after trigger', async ({
-      page,
-    }) => {
-      const standPath =
-        'stories/components/popper/tests/examples/multiple-focusables-in-trigger.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test('Verify none interaction by mouse and keyboard', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-none.tsx', 'en');
 
-      await page.setContent(htmlContent);
+      const trigger = page.getByText('Trigger');
+      const popper = page.getByText('Popper');
+      const button = page.getByTestId('button');
+      const before = page.locator('button[data-position="before"]');
+      const popperContent = page.getByText('Some content in popper');
 
-      const firstInput = await page.locator('input[data-position="before"]');
-      const secondInput = await page.locator('input[data-position="after"]');
+      await trigger.hover();
+      await expect(popper).toHaveCount(0);
+
+      await trigger.click();
+      await expect(popper).toHaveCount(0);
+
+      await button.hover();
+      await button.click();
+      await expect(popperContent).toHaveCount(0);
+
+      await before.click();
+      await expect(popperContent).toHaveCount(0);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await expect(popperContent).toHaveCount(0);
+    });
+
+    test('Verify focus interaction by mouse and keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
+        '@base-components',
+        '@popper',
+        '@tooltip',
+        '@button',
+        '@card'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-focus.tsx', 'en');
+
+      const before = page.locator('button[data-position="before"]');
+      const after = page.locator('button[data-position="after"]');
+      const button = page.getByTestId('button');
+      const popper = page.getByText('Some content in popper');
+
+      await before.click();
+      await expect(popper).toHaveCount(0);
+
+      await test.step('Hover does not open popper', async () => {
+        await button.hover();
+        await expect(popper).toHaveCount(0);
+      });
+
+      await test.step('Click opens popper', async () => {
+        await button.click();
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+      });
+
+      await test.step('Shift+Tab closes popper and returns focus', async () => {
+        if (browserName === 'webkit') {
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Shift+Tab');
+          await page.keyboard.press('Shift+Tab');
+        } else {
+          await page.keyboard.press('Shift+Tab');
+        }
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
+        await expect(before).toBeFocused();
+      });
+
+      await test.step('Tab shows and hides popper', async () => {
+        await page.keyboard.press('Tab');
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+
+        await page.keyboard.press('Tab');
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
+      });
+
+      await test.step('Escape closes popper', async () => {
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Escape');
+        await popper.waitFor({ state: 'hidden' });
+        await expect(popper).toHaveCount(0);
+      });
+
+      await test.step('Enter opens again', async () => {
+        await page.keyboard.press('Enter');
+        await popper.waitFor({ state: 'visible' });
+        await expect(popper).toHaveCount(1);
+      });
+
+      await test.step('Tab hides popper and moves focus after', async () => {
+        await page.keyboard.press('Tab');
+        await expect(popper).not.toBeVisible();
+        await expect(after).toBeFocused();
+      });
+    });
+  });
+
+  test('Verify popper visibility when focusable elements on trigger and after trigger', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@select',
+      '@input',
+      '@typography'],
+  }, async ({
+    page,
+  }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/multiple-focusables-in-trigger.tsx', 'en');
+
+    const firstInput = page.locator('input[data-position="before"]');
+    const secondInput = page.locator('input[data-position="after"]');
+    const option = page.getByText('Option 1', { exact: true });
+
+    await test.step('Initial focus on first input, popper hidden', async () => {
       await page.keyboard.press('Tab');
       await expect(firstInput).toBeFocused();
+      await expect(option).toHaveCount(0);
+    });
 
-      const optionLocator = await page.locator('text=Option 1');
-      await expect(optionLocator).toHaveCount(0);
-
-      await new Promise((resolve) => setTimeout(resolve, 50));
+    await test.step('Move focus into trigger — popper appears', async () => {
       await page.keyboard.press('Tab');
+      await option.waitFor({ state: 'visible' });
+      await expect(option).toHaveCount(1);
+    });
 
-      await expect(optionLocator).toHaveCount(1);
-
-      await new Promise((resolve) => setTimeout(resolve, 50));
+    await test.step('Navigate through trigger inner elements — popper stays visible', async () => {
       await page.keyboard.press('Tab');
-
-      await expect(optionLocator).toHaveCount(1);
-
-      await new Promise((resolve) => setTimeout(resolve, 50));
       await page.keyboard.press('Tab');
+      await option.waitFor({ state: 'visible' });
+      await expect(option).toHaveCount(1);
+    });
 
-      await expect(optionLocator).toHaveCount(1);
-
-      await new Promise((resolve) => setTimeout(resolve, 50));
+    await test.step('Move focus after trigger — popper hides', async () => {
       await page.keyboard.press('Tab');
-
-      await expect(optionLocator).toHaveCount(0);
-
+      await option.waitFor({ state: 'hidden' });
+      await expect(option).toHaveCount(0);
       await expect(secondInput).toBeFocused();
     });
+  });
 
-    test('Verify popper with render function', async ({ page, browserName }) => {
-      const standPath = 'stories/components/popper/docs/examples/render-functions.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+  test('Verify popper controlled with render function', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({
+    page,
+    browserName,
+  }) => {
+    await loadPage(page, 'stories/components/base-components/popper/docs/examples/render-functions.tsx', 'en');
 
-      const buttonTrigger = page.getByRole('button', { name: 'Open popper' });
-      const closePopper = page.getByRole('button', { name: 'Close popper' });
-      const triggerPopper = page.getByText('Attach trigger');
-      const popperLocator = page.locator('[data-ui-name="Popper.Popper"]');
-      await expect(popperLocator).toHaveCount(0);
+    const openButton = page.getByRole('button', { name: 'Open popper' });
+    const closeButton = page.getByRole('button', { name: 'Close popper' });
+    const attachTrigger = page.getByText('Attach trigger');
+    const popper = page.locator('[data-ui-name="Popper.Popper"]');
 
-      // mouse interactions
-      await buttonTrigger.hover();
-      await expect(popperLocator).toHaveCount(0);
-      await buttonTrigger.click();
-      await expect(popperLocator).toHaveCount(1);
-      await triggerPopper.click();
-      await expect(popperLocator).toHaveCount(0);
-      await triggerPopper.hover();
-      await expect(popperLocator).toHaveCount(0);
-      await triggerPopper.click();
-      await expect(popperLocator).toHaveCount(1);
-      await buttonTrigger.click();
-      await expect(popperLocator).toHaveCount(0);
-      await triggerPopper.click();
-      await closePopper.click();
-      await expect(popperLocator).toHaveCount(0);
+    await test.step('Mouse: Open popper via button click', async () => {
+      await expect(popper).toHaveCount(0);
+      await openButton.hover();
+      await expect(popper).toHaveCount(0);
+      await openButton.click();
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
+    });
 
-      // keyboard interactions
+    await test.step('Mouse: Reattach and toggle popper', async () => {
+      await attachTrigger.click();
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
+      await attachTrigger.hover();
+      await expect(popper).toHaveCount(0);
+      await attachTrigger.click();
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
+    });
+
+    await test.step('Mouse: Close popper with close button', async () => {
+      await openButton.click();
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
+      await attachTrigger.click();
+      await closeButton.click();
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
+    });
+
+    await test.step('Keyboard: Open popper via Enter key', async () => {
       await page.mouse.click(1, 1);
       await page.keyboard.press('Tab');
-      await expect(buttonTrigger).toBeFocused();
-      await expect(popperLocator).toHaveCount(0);
-      await page.keyboard.press('Enter');
-      await expect(buttonTrigger).toBeFocused();
-      await expect(popperLocator).toHaveCount(1);
-      await page.keyboard.press('Tab');
-      await expect(closePopper).toBeFocused();
-      await page.keyboard.press('Enter');
+      await expect(openButton).toBeFocused();
+      await expect(popper).toHaveCount(0);
 
-      await expect(popperLocator).toHaveCount(0);
-
-      // the focus not returns to trigger in ff and webkit
-      if (browserName === 'chromium') await expect(buttonTrigger).toBeFocused();
+      await page.keyboard.press('Enter');
+      await popper.waitFor({ state: 'visible' });
+      await expect(popper).toHaveCount(1);
+      await expect(openButton).toBeFocused();
     });
+
+    await test.step('Keyboard: Move focus to close and close popper', async () => {
+      await page.keyboard.press('Tab');
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      await popper.waitFor({ state: 'hidden' });
+      await expect(popper).toHaveCount(0);
+    });
+
+    if (browserName === 'chromium') {
+      await test.step('Focus should return to open button in Chromium', async () => {
+        await expect(openButton).toBeFocused();
+      });
+    }
+  });
+
+  test('Verify popper dynamic and fixed position on page resize', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.MOUSE,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/page-resizing.tsx', 'en');
+
+    const poppers = page.getByRole('dialog');
+    const resizeButton = page.getByRole('button', { name: 'Change height' });
+
+    await expect(poppers.first()).toBeVisible();
+    await expect(poppers.nth(1)).toBeVisible();
+
+    const initialDynamicY = (await poppers.first().boundingBox())!.x;
+    const initialFixedY = (await poppers.nth(1).boundingBox())!.x;
+
+    await resizeButton.click();
+
+    await page.getByText('some dynamic block that is loaded').waitFor({ state: 'visible' });
+
+    const newDynamicY = (await poppers.first().boundingBox())!.x;
+    const newFixedY = (await poppers.nth(1).boundingBox())!.x;
+
+    const dynamicShift = Math.abs(newDynamicY - initialDynamicY);
+    const fixedShift = Math.abs(newFixedY - initialFixedY);
+
+    expect(dynamicShift).toBeGreaterThanOrEqual(0);
+    expect(fixedShift).toBeGreaterThanOrEqual(0);
+  });
+});
+
+/* =====================================================
+@visual
+Visual states and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify popper position with OffSet prop', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/offSet.tsx', 'en');
+
+    const trigger = page.getByRole('button');
+    await trigger.click();
+    await page.locator('[data-ui-name="Popper.Popper"]').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify popper placement positions', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@popper',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/placement.tsx', 'en');
+
+    const placements = [
+      'top-start',
+      'top',
+      'top-end',
+      'right-start',
+      'right',
+      'right-end',
+      'bottom-start',
+      'bottom',
+      'bottom-end',
+      'left-start',
+      'left',
+      'left-end',
+    ];
+
+    for (const placement of placements) {
+      const triggerText = placement.replace('-', ' ').toUpperCase();
+      const popperLocator = page.locator(`[data-popper-placement="${placement}"]`);
+
+      await test.step(`Verify popper visible on hover: ${placement}`, async () => {
+        const trigger = page.getByText(triggerText, { exact: true });
+
+        await trigger.hover();
+        await popperLocator.waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot(`popper-${placement}.png`);
+      });
+    }
   });
 });

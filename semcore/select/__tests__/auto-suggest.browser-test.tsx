@@ -21,7 +21,8 @@ test.describe('AutoSuggest', () => {
     });
     await test.step('Verify menu appears when character entered but nothing is selected', async () => {
       await page.keyboard.type('a');
-      await page.waitForSelector('text=persian');
+      await options.first().waitFor({ state: 'visible' });
+
       const count = await options.count();
       for (let i = 1; i < count; i++) {
         await expect(options.nth(i)).not.toHaveClass(/selected/);
@@ -43,7 +44,7 @@ test.describe('AutoSuggest', () => {
       await expect(trigger).toHaveAttribute('value', 'a');
 
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=persian');
+      await options.first().waitFor({ state: 'visible' });
       const count = await options.count();
       for (let i = 1; i < count; i++) {
         await expect(options.nth(i)).not.toHaveClass(/selected/);
@@ -55,29 +56,29 @@ test.describe('AutoSuggest', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'hidden' });
       await expect(trigger).toHaveAttribute('value', 'ragdoll');
-
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify selected item shown and highlighted but not focused', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=ragdoll');
+      await options.first().waitFor({ state: 'visible' });
       await expect(options.first()).toHaveClass(/selected/);
-      await expect(options.first()).not.toHaveClass(/highlighted/);
+      await expect(options.first()).toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify item is selected and menu closed by Enter when exact match opened', async () => {
+    await test.step('Verify item is selected and menu not closed by Enter when exact match opened', async () => {
       for (let i = 0; i < 'ragdoll'.length; i++) {
         await page.keyboard.press('Backspace');
       };
       await page.keyboard.type('persian');
       await options.first().waitFor({ state: 'visible' });
       await expect(options.first()).toHaveText(/persian/);
-
       await expect(options.first()).toHaveClass(/selected/);
       await page.keyboard.press('Enter');
-      await options.first().waitFor({ state: 'visible' });
+      await expect(options.first()).toHaveText(/persian/);
+      await expect(options.first()).toHaveClass(/selected/);
     });
   });
 
@@ -92,7 +93,7 @@ test.describe('AutoSuggest', () => {
     const options = page.locator('[data-ui-name="Select.Option"]');
     const trigger = page.locator('[data-ui-name="Select.Trigger"]');
 
-    const input = await page.locator('input');
+    const input = page.locator('input');
     const inputRect = (await input.boundingBox())!;
     const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
 
@@ -102,7 +103,8 @@ test.describe('AutoSuggest', () => {
 
     await test.step('Verify menu expanded when character entered', async () => {
       await page.keyboard.type('a');
-      await page.waitForSelector('text=persian');
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       const count = await options.count();
       for (let i = 1; i < count; i++) {
@@ -111,7 +113,7 @@ test.describe('AutoSuggest', () => {
     });
 
     await test.step('Verify menu closed when option clicked', async () => {
-      const persianOption = await page.locator('text=persian');
+      const persianOption = page.locator('text=persian');
       await expect(page).toHaveScreenshot();
       const persianOptionRect = (await persianOption.boundingBox())!;
       const persianOptionCoords = [
@@ -120,6 +122,7 @@ test.describe('AutoSuggest', () => {
       ];
 
       await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
+      await options.first().waitFor({ state: 'hidden' });
 
       await expect(persianOption).toHaveCount(0);
       await expect(trigger).toHaveAttribute('value', 'persian');
@@ -127,7 +130,7 @@ test.describe('AutoSuggest', () => {
 
     await test.step('Verify menu opened and selected option highlighted', async () => {
       await page.mouse.click(inputCoords[0], inputCoords[1]);
-      await page.waitForSelector('text=persian');
+      await options.first().waitFor({ state: 'visible' });
       await expect(trigger).toHaveAttribute('value', 'persian');
 
       await expect(options.first()).toHaveClass(/selected/);

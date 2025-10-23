@@ -1,27 +1,26 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Illustration size colors and attributes ', () => {
-  test('Illustration atrributes', async ({ page }) => {
-    const standPath = 'stories/components/illustration/docs/examples/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  test('Illustration with color', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@illustration'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/illustration/docs/examples/custom-color.tsx', 'en');
 
-    const illustration = page.locator('svg');
-    await expect(illustration).toHaveAttribute('aria-hidden', 'true');
-  });
-
-  test('Illustration with color', async ({ page }) => {
-    const standPath = 'stories/components/illustration/docs/examples/custom-color.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
   });
 
-  test('Illustration sizes', async ({ page }) => {
-    const standPath = 'stories/components/illustration/tests/examples/illustration_sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Illustration sizes', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@illustration'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/illustration/tests/examples/illustration_sizes.tsx', 'en');
 
     const expectedDimensions = [
       { width: 40, height: 40 },

@@ -13,7 +13,7 @@ tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/flex-box/docs/examples/box.tsx';
+  export Demo from 'stories/components/base-components/flex-box/docs/examples/box.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/flex-box/docs/examples/flex.tsx';
+  export Demo from 'stories/components/base-components/flex-box/docs/examples/flex.tsx';
 </script>
 
 :::

@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Button', () => {
+test.describe(`@button ${TAG.ACCESSIBILITY}`, () => {
   test('Addons', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/addons.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/button/docs/examples/addons.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,10 +12,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons accessibility', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/button/docs/examples/button_accessibility.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -25,10 +20,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons with icon', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/button/docs/examples/button_with_icon.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -36,10 +28,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons with loading', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_with_loading.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/button/docs/examples/button_with_loading.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -47,12 +36,9 @@ test.describe('Button', () => {
   });
 });
 
-test.describe('Button Link', () => {
-  test('ButtonLink', async ({ page }) => {
-    const standPath = 'stories/components/button/docs/examples/button_link.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+test.describe(`@button @button-link ${TAG.ACCESSIBILITY}`, () => {
+  test('Base example', async ({ page }) => {
+    await loadPage(page, 'stories/components/button/docs/examples/button_link.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

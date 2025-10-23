@@ -59,7 +59,7 @@ test.describe('Trigger and menu options', () => {
       await expect(selectTrigger).toHaveAttribute('aria-haspopup', 'listbox');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(selectTrigger).toHaveAttribute('aria-expanded', 'true');
       await expect(selectTrigger).toHaveAttribute('aria-controls');
       await expect(selectTrigger).toHaveAttribute('aria-activedescendant');
@@ -121,16 +121,22 @@ test.describe('Trigger and menu options', () => {
 
     await test.step('Verify menu opens and hides by click on label or button trigger', async () => {
       await label.first().click();
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await select.first().click();
+      await options.first().waitFor({ state: 'hidden' });
       await expect(select.first()).toHaveAttribute('id', 'button-trigger-select');
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify option selected and shown on button trigger', async () => {
       await label.first().click();
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await options.first().click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '0');
       await expect(triggerText.first()).toHaveText(/Option 0/);
@@ -138,16 +144,24 @@ test.describe('Trigger and menu options', () => {
 
     await test.step('Verify menu opens and hides by click on link trigger or label', async () => {
       await label.nth(1).click();
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await select.nth(1).click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(select.nth(1)).toHaveAttribute('id', 'link-trigger-select');
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify option selected and shown on link trigger', async () => {
       await label.nth(1).click();
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await options.nth(3).click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select.nth(1)).toHaveAttribute('value', '3');
       await expect(page.locator('[data-ui-name="LinkTrigger.Text"]')).toHaveText(/Option 3/);
@@ -161,17 +175,19 @@ test.describe('Trigger and menu options', () => {
 
     await page.setContent(htmlContent);
 
-    const { select, menu, triggerText } = getSelectLocators(page);
+    const { select, menu, triggerText, options } = getSelectLocators(page);
 
     await test.step('Verify button trigger keyboard interactions', async () => {
       await page.keyboard.press('Tab');
       await expect(select.first()).toBeFocused();
       await page.keyboard.press('ArrowDown');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '2');
       await expect(triggerText.first()).toHaveText(/Option 2/);
@@ -181,13 +197,14 @@ test.describe('Trigger and menu options', () => {
       await page.keyboard.press('Tab');
       await expect(select.nth(1)).toBeFocused();
       await page.keyboard.press('ArrowUp');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await select.nth(1).hover();
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
+      await options.first().waitFor({ state: 'hidden' });
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '2');
       await expect(page.locator('[data-ui-name="LinkTrigger.Text"]')).toHaveText(/Option 2/);
@@ -204,7 +221,7 @@ test.describe('Trigger and menu options', () => {
 
     await label.click();
     await expect(list).toBeVisible();
-    await page.getByRole('option').first().waitFor({ state: 'visible' });
+    await options.first().waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -280,47 +297,55 @@ test.describe('Basic select', () => {
       await page.keyboard.press('Tab');
       await expect(select).toBeFocused();
       await page.keyboard.press('Space');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify 1st item highlighted when interacting by mouse and the by keyboard', async () => {
       await select.click();
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await page.keyboard.press('ArrowDown');
       await expect(options.first()).toHaveClass(/highlighted/);
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by Enter', async () => {
       await page.keyboard.press('Enter');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by ArrowDown', async () => {
       await page.keyboard.press('ArrowDown');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
-      await menu.waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
@@ -342,6 +367,8 @@ test.describe('Basic select', () => {
 
     await test.step('Verify space selects item and closes menu', async () => {
       await page.keyboard.press('Space');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select).toHaveAttribute('value', '1');
       await expect(triggerText).toHaveText(/Option 1/);
@@ -350,11 +377,11 @@ test.describe('Basic select', () => {
 
     await test.step('Verify enter selects item and closes menu', async () => {
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await new Promise((resolve) => setTimeout(resolve, 150));
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await expect(select).toHaveAttribute('value', '2');
       await expect(triggerText).toHaveText(/Option 2/);
       await expect(select).toBeFocused();
@@ -362,9 +389,9 @@ test.describe('Basic select', () => {
 
     await test.step('Verify escape closes menu and not changes value', async () => {
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await expect(select).toHaveAttribute('value', '2');
       await expect(triggerText).toHaveText(/Option 2/);
       await expect(select).toBeFocused();
@@ -381,32 +408,32 @@ test.describe('Basic select', () => {
 
     await test.step('Verify menu opens and hides by label click', async () => {
       await label.click();
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
 
       await expect(menu).toBeVisible();
 
       await label.click();
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
 
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify menu opens and hides by trigger click', async () => {
       await select.click();
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
 
       await expect(menu).toBeVisible();
       await select.click();
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify menu opens and hides by option click', async () => {
       await select.click();
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await options.nth(2).click();
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await expect(menu).not.toBeVisible();
       await expect(select).toHaveAttribute('value', '2');
       await expect(triggerText).toHaveText(/Label 2/);
@@ -414,11 +441,13 @@ test.describe('Basic select', () => {
 
     await test.step('Verify menu when option was selected by mouse and keyboard interactions', async () => {
       await select.click();
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
       await new Promise((resolve) => setTimeout(resolve, 150));
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select).toHaveAttribute('value', '3');
       await expect(triggerText).toHaveText(/Label 3/);
@@ -437,33 +466,47 @@ test.describe('Basic select', () => {
       await page.keyboard.press('Tab');
       await expect(select).toBeFocused();
       await page.keyboard.press('Space');
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by Enter', async () => {
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by ArrowDown', async () => {
       await page.keyboard.press('ArrowDown');
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
     });
 
     await test.step('Verify opens by ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await expect(options.first()).toHaveClass(/highlighted/);
     });
@@ -485,6 +528,8 @@ test.describe('Basic select', () => {
 
     await test.step('Verify space selects item and closes menu', async () => {
       await page.keyboard.press('Space');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select).toHaveAttribute('value', '1');
       await expect(triggerText).toHaveText(/Label 1/);
@@ -493,10 +538,12 @@ test.describe('Basic select', () => {
 
     await test.step('Verify enter selects item and closes menu', async () => {
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await new Promise((resolve) => setTimeout(resolve, 150));
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select).toHaveAttribute('value', '2');
       await expect(triggerText).toHaveText(/Label 2/);
@@ -515,8 +562,12 @@ test.describe('Basic select', () => {
 
     await test.step('Verify Uncontrolled not changes when selecting Controlled option', async () => {
       await label.first().click();
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await options.nth(2).click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '2');
       await expect(triggerText.first()).toHaveText(/Option 2/);
@@ -526,8 +577,12 @@ test.describe('Basic select', () => {
 
     await test.step('Verify Controlled  changes when selecting Uncontrolled option', async () => {
       await select.nth(1).click();
+      await options.first().waitFor({ state: 'visible' });
+
       await expect(menu).toBeVisible();
       await options.nth(5).click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '5');
       await expect(triggerText.first()).toHaveText(/Option 5/);
@@ -549,12 +604,12 @@ test.describe('Basic select', () => {
       await page.keyboard.press('Tab');
       await expect(select.first()).toBeFocused();
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
-      await expect(menu).toBeVisible();
+      await options.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '2');
       await expect(triggerText.first()).toHaveText(/Option 2/);
@@ -566,14 +621,15 @@ test.describe('Basic select', () => {
       await page.keyboard.press('Tab');
       await expect(select.nth(1)).toBeFocused();
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(menu).toBeVisible();
+      await page.waitForTimeout(200);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await options.first().waitFor({ state: 'hidden' });
 
       await expect(menu).not.toBeVisible();
       await expect(select.first()).toHaveAttribute('value', '4');
@@ -597,7 +653,7 @@ test.describe('Options filtering', () => {
     await test.step('Verify input focused when menu expanded', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
 
       await expect(inputLocaltor).toBeFocused();
 
@@ -613,20 +669,22 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify escape closes menu', async () => {
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
       await expect(inputLocaltor).toHaveCount(0);
     });
 
     await test.step('Verify Arrow Down opens menu and input Focused', async () => {
       await page.keyboard.press('ArrowDown');
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
       await expect(inputLocaltor).toBeFocused();
       await page.keyboard.press('Escape');
+      await options.first().waitFor({ state: 'hidden' });
       await expect(inputLocaltor).toHaveCount(0);
     });
 
     await test.step('Verify Arrow Up opens menu and input Focused', async () => {
       await page.keyboard.press('ArrowUp');
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
       await expect(inputLocaltor).toBeFocused();
     });
 
@@ -640,6 +698,7 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify tab switch focus to input', async () => {
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(200);
       await expect(inputLocaltor).toBeFocused();
       await expect(selectTrigger).not.toBeFocused();
       await page.keyboard.press('ArrowUp');
@@ -648,7 +707,9 @@ test.describe('Options filtering', () => {
     await test.step('Verify option selected and menu closed', async () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
+      await page.waitForTimeout(100);
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'hidden' });
       await expect(selectTrigger).toBeFocused();
       await expect(inputLocaltor).toHaveCount(0);
       await expect(selectTrigger).toHaveAttribute('value', 'Peach');
@@ -657,7 +718,7 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify nothing found state', async () => {
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await page.keyboard.type('test');
       await expect(page).toHaveScreenshot();
     });
@@ -692,6 +753,8 @@ test.describe('Options filtering', () => {
 
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('Enter');
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(selectTrigger).toHaveAttribute('value', 'Apple');
       await expect(triggerText).toHaveText(/Apple/);
     });
@@ -707,20 +770,24 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify input focused when menu expanded', async () => {
       await selectTrigger.click();
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
       await expect(inputLocaltor).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify closed by click on label', async () => {
       await label.click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(inputLocaltor).toHaveCount(0);
     });
 
     await test.step('Verify option selected by mouse click', async () => {
       await label.click();
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
       await options.nth(2).click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(inputLocaltor).toHaveCount(0);
       await expect(selectTrigger).toHaveAttribute('value', 'Blueberry');
       await expect(triggerText).toHaveText(/Blueberry/);
@@ -728,7 +795,7 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify menu opened and selected option highlighted', async () => {
       await label.click();
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await options.first().waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
       await expect(popper).toHaveAttribute('role', 'dialog');
       await expect(popper).toHaveAttribute('tabindex', '-1');
@@ -764,6 +831,8 @@ test.describe('Options filtering', () => {
     await test.step('Verify searched items can be selected', async () => {
       await page.keyboard.type('appl');
       await options.first().click();
+      await options.first().waitFor({ state: 'hidden' });
+
       await expect(selectTrigger).toHaveAttribute('value', 'Apple');
       await expect(triggerText).toHaveText(/Apple/);
     });
@@ -779,20 +848,23 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify input focused when menu expanded', async () => {
       await selectTrigger.click();
+      await options.first().waitFor({ state: 'visible' });
       await page.waitForSelector('input');
       await expect(inputLocaltor).toBeFocused();
     });
 
     await test.step('Verify closed by click on label', async () => {
       await label.click();
+      await options.first().waitFor({ state: 'hidden' });
       await expect(inputLocaltor).toHaveCount(0);
     });
 
     await test.step('Verify searched items can be selected', async () => {
       await label.click();
-      await page.waitForSelector('input');
+      await options.first().waitFor({ state: 'visible' });
       await page.keyboard.type('appl');
       await options.first().click();
+      await options.first().waitFor({ state: 'hidden' });
 
       await expect(selectTrigger).toHaveAttribute('value', 'Apple');
       await expect(triggerText).toHaveText(/Apple/);
@@ -802,6 +874,7 @@ test.describe('Options filtering', () => {
 
     await test.step('Verify hint on hover X', async () => {
       await label.click();
+      await options.first().waitFor({ state: 'visible' });
       await page.waitForSelector('input');
 
       await hint.hover();
@@ -873,7 +946,7 @@ test.describe('Sticky groups', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const { select, menu, options } = getSelectLocators(page);
+    const { options } = getSelectLocators(page);
 
     await page.locator('[data-ui-name="Select.Trigger"]').click();
     await options.first().waitFor({ state: 'visible' });
@@ -893,10 +966,10 @@ test.describe('Sticky groups', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await options.first().waitFor({ state: 'visible' });
 
     await expect(page.locator('[data-ui-name="Select.InputSearch"]')).toBeFocused();
     await page.keyboard.press('ArrowDown');
-    await page.getByRole('option').first().waitFor({ state: 'visible' });
     await expect(options.nth(1)).not.toHaveClass(/highlighted/);
 
     for (let i = 0; i < 14; i++) {

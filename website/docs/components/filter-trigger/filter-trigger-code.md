@@ -13,7 +13,7 @@ Use `FilterTrigger` as a `tag` for `Select.Trigger`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/filter-trigger/docs/examples/usage_with_select.tsx';
+  export Demo from 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ If the filter name is included in the trigger alongside the value, hide it from 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/filter-trigger/docs/examples/accessible_name.tsx';
+  export Demo from 'stories/components/base-trigger/docs/filter-trigger/examples/accessible_name.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ For an example of using `FilterTrigger` with [Dropdown](/components/dropdown/dro
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/filter-trigger/docs/examples/programmatic_focus.tsx';
+  export Demo from 'stories/components/base-trigger/docs/filter-trigger/examples/programmatic_focus.tsx';
 </script>
 
 :::
