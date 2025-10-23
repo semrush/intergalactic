@@ -62,13 +62,10 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
 
   componentDidMount(): void {
     setTimeout(() => {
-      this.calculateGridSettings();
-    }, 500); // need this for calculate widths after Header render.
-
-    if (this.props.tableRef.current) {
-      this.tableWidth = this.props.tableRef.current.getBoundingClientRect().width;
-      this.tableObserver.observe(this.props.tableRef.current);
-    }
+      if (this.props.tableRef.current) {
+        this.tableObserver.observe(this.props.tableRef.current);
+      }
+    }, 500);
   }
 
   componentWillUnmount(): void {
@@ -177,35 +174,34 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
       return;
     }
 
-    this.tableWidth = currentWidth ?? 0;
-    const tableStyles = tableElement?.style;
-    const header = tableElement?.querySelector('[data-ui-name="DataTable.Head"]');
-    const accordionRows = this.accordionRowsRef.current;
+    requestAnimationFrame(() => {
+      this.tableWidth = currentWidth ?? 0;
+      const tableStyles = tableElement?.style;
+      const header = tableElement?.querySelector('[data-ui-name="DataTable.Head"]');
+      const accordionRows = this.accordionRowsRef.current;
 
-    if (tableStyles && header && accordionRows) {
-      let gridTemplateAreas = '';
+      if (tableStyles && header && accordionRows) {
+        let gridTemplateAreas = '';
 
-      for (let i = 0; i < tableStyles.length; i++) {
-        const key = tableStyles[i];
-        if (key.startsWith('--gridTemplateAreas')) {
-          gridTemplateAreas = tableStyles.getPropertyValue(key);
-          accordionRows.style.setProperty(key, gridTemplateAreas);
+        for (let i = 0; i < tableStyles.length; i++) {
+          const key = tableStyles[i];
+          if (key.startsWith('--gridTemplateAreas')) {
+            gridTemplateAreas = tableStyles.getPropertyValue(key);
+            accordionRows.style.setProperty(key, gridTemplateAreas);
+          }
         }
+        const gridTemplateColumns: string[] = [];
+        gridTemplateAreas.split(' ').forEach((templateArea) => {
+          const headerCell = header.querySelector(`[role="columnheader"][name="${templateArea}"]`);
+          const width = headerCell?.getBoundingClientRect().width;
+          if (width === undefined) {
+            gridTemplateColumns.push('auto');
+          } else {
+            gridTemplateColumns.push(`${width}px`);
+          }
+        });
+        accordionRows.style.setProperty('grid-template-columns', gridTemplateColumns.join(' '));
       }
-
-      const gridTemplateColumns: string[] = [];
-      gridTemplateAreas.split(' ').forEach((templateArea) => {
-        const headerCell = header.querySelector(`[role="columnheader"][name="${templateArea}"]`);
-        const width = headerCell?.getBoundingClientRect().width;
-
-        if (width === undefined) {
-          gridTemplateColumns.push('auto');
-        } else {
-          gridTemplateColumns.push(`${width}px`);
-        }
-      });
-
-      accordionRows.style.setProperty('grid-template-columns', gridTemplateColumns.join(' '));
-    }
+    });
   }
 }
