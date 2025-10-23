@@ -2,13 +2,15 @@ import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
+import type { WizardContentProps } from '@semcore/ui/wizard';
 import React from 'react';
+import { findAllByTestId } from 'storybook/internal/test';
 
 import { WizardSidebar } from './components/WizardSidebar';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
-const Demo = () => {
+const Demo = (props: WizardContentProps) => {
   const [step, setStep] = React.useState<number>(1);
   const [visible, setVisible] = React.useState(false);
 
@@ -21,7 +23,7 @@ const Demo = () => {
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <WizardSidebar step={step} setStep={setStep} />
 
-        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between' noSidebar={false}>
+        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between' noSidebar={props.noSidebar}>
           {steps.map((s, i) => (
             <Wizard.Step key={s.title} step={i + 1}>
               <Text size={500} tag='h3'>
@@ -50,5 +52,11 @@ const Demo = () => {
     </>
   );
 };
+
+export const defaultExampleNoSideBarProps: WizardContentProps = {
+  noSidebar: false,
+};
+
+Demo.defaultProps = defaultExampleNoSideBarProps;
 
 export default Demo;
