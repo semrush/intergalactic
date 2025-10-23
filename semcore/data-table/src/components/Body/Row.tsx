@@ -248,10 +248,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   getCellProps(props: DataTableCellProps<Data, UniqKeyType>) {
     const {
+      use,
       renderCell,
       expandedRows,
       styles,
       getI18nText,
+      virtualScroll,
+      tableRef,
       onCellClick,
       rawData,
       shadowVertical,
@@ -293,8 +296,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     }
 
     const extraProps: Record<string, any> = {
-      ...props,
+      use,
+      virtualScroll: Boolean(virtualScroll),
+      tableRef,
       children: props?.children ?? defaultRender(),
+      onClick: onCellClick,
+      flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
     };
@@ -409,6 +416,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       columns,
       row,
       rows,
+      styles,
       rowIndex,
       gridRowIndex,
       'aria-level': ariaLevel = 1,
@@ -431,15 +439,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       hasGroups,
       tableRef,
       scrollAreaRef,
-      virtualScroll,
-      onCellClick,
       accordionAnimationRows,
-      styles,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
     const expanded = expandedRows?.has(row[UNIQ_ROW_KEY]) && !expandedForAnimation;
-    const accordionType = (accordionRows || accordionComponent) && !mergedRow ? 'row' : undefined;
+    const accordionType = row[ACCORDION] && !mergedRow ? 'row' : undefined;
 
     let accordionDataGridArea = '';
 
@@ -548,11 +553,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 rows={rows}
                 aria-hidden={isCellHidden}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
-                use={use}
-                virtualScroll={Boolean(virtualScroll)}
-                tableRef={tableRef}
-                onClick={onCellClick}
-                flatRows={flatRows}
               />
             );
           })}
