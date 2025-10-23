@@ -4,7 +4,6 @@ import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
 import type { WizardContentProps } from '@semcore/ui/wizard';
 import React from 'react';
-import { findAllByTestId } from 'storybook/internal/test';
 
 import { WizardSidebar } from './components/WizardSidebar';
 
