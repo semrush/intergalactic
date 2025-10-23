@@ -84,7 +84,7 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   focusAndScrollToSelected() {
-    const { selected, options } = this.getMenuElements;
+    const { selected, options } = this.menuElements;
 
     if (!selected || !options || this.asProps.itemsCount !== undefined) return;
 
@@ -102,7 +102,7 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   afterOpenPopper() {
-    const { selected, options } = this.getMenuElements;
+    const { selected, options } = this.menuElements;
 
     // this case is handled slightly differently on line 63.
     if (selected && options && this.asProps.itemsCount === undefined) return;
