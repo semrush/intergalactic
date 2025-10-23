@@ -23,7 +23,9 @@ import type {
   WizardSidebarProps,
   WizardContentProps,
   IntergalacticWizardStepperComponent,
-  WizardType, WizardStepBackProps, WizardStepNextProps,
+  WizardType,
+  WizardStepBackProps,
+  WizardStepNextProps,
 } from './Wizard.types';
 
 class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhance> {
