@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in TypeScript.
 
+## [16.1.11] - 2025-10-24
+
+### Changed
+
+- `z-index` value for `Stepper` in `hover` state.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

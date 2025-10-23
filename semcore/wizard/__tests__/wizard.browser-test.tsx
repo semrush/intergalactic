@@ -619,3 +619,23 @@ test.describe('Focus Next Prev', () => {
     await expect(locators.button(page, 'Keywords')).toBeFocused();
   });
 });
+
+test.describe('z-index', () => {
+  test('Verify tabs hover elements in content ', async ({ page, browserName }) => {
+    if (browserName == 'firefox') test.skip();
+    const standPath = 'stories/components/wizard/docs/examples/custom_stepper.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.setViewportSize({ width: 800, height: 600 });
+
+    const { trigger, modal, steps, nextButton, prevButton, input } = locators;
+    const stepperTabs = steps(page);
+    const firstStep = stepperTabs.nth(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await nextButton(page, 'Close').waitFor({ state: 'visible' });
+    await firstStep.hover();
+    await expect(page).toHaveScreenshot();
+  });
+});
