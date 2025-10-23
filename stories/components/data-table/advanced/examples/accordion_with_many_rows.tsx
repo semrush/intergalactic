@@ -5,10 +5,12 @@ import React from 'react';
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   onAccordionToggle?: DataTableProps<
-          typeof data,
+    typeof data,
     any,
     any
   >['onAccordionToggle'];
+  accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
+  accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
 };
 
 const Demo = (props: TableInTableProps) => {
@@ -17,6 +19,9 @@ const Demo = (props: TableInTableProps) => {
       data={data}
       aria-label='Parent'
       uniqueRowKey='keyword'
+      accordionDuration={props.accordionDuration}
+      accordionAnimationRows={props.accordionAnimationRows}
+      accordionMode={props.accordionMode}
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD %' },
@@ -41,6 +46,8 @@ const Demo = (props: TableInTableProps) => {
 
 export const accordionTableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
+  accordionAnimationRows: undefined,
+  accordionDuration: undefined,
 };
 
 Demo.defaultProps = accordionTableInTableDefaultProps;
