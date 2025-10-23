@@ -511,6 +511,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   expanded={expanded}
                   isAccordionRow={isAccordionRow}
                   aria-hidden={isCellHidden}
+                  withAccordion={withAccordion}
                 >
                   <Checkbox
                     checked={checked}
