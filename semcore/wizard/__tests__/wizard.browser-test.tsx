@@ -572,7 +572,7 @@ test.describe('Steps and buttons states', () => {
 
 test.describe('No SideBar', () => {
   test('Verify WizardContent is not right rounded when noSidebar=false', async ({ page }) => {
-    const standPath = 'stories/components/wizard/tests/examples/sidebar-as-components.tsx';
+    const standPath = 'stories/components/wizard/tests/examples/sidebar-as-component.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     await locators.button(page).click();
