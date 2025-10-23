@@ -45,6 +45,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       Children,
       styles,
+      style,
       row,
       column,
       columnIndex,
@@ -76,6 +77,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         // @ts-ignore
         gridArea={gridArea}
         fixed={column.fixed}
+        style={style}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
       >
         <SCell

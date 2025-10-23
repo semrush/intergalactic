@@ -552,6 +552,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
                 aria-hidden={isCellHidden}
+                style={style}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
               />
             );
