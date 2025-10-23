@@ -628,14 +628,10 @@ test.describe('z-index', () => {
     await page.setContent(htmlContent);
     await page.setViewportSize({ width: 800, height: 600 });
 
-    const { trigger, modal, steps, nextButton, prevButton, input } = locators;
-    const stepperTabs = steps(page);
-    const firstStep = stepperTabs.nth(0);
-
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await nextButton(page, 'Close').waitFor({ state: 'visible' });
-    await firstStep.hover();
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await locators.stepperTabs(page).nth(0).hover();
     await expect(page).toHaveScreenshot();
   });
 });
