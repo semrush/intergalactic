@@ -23,12 +23,6 @@ export const GridAxisProps: StoryObj<typeof BasicUsageProps> = {
       control: 'select',
       options: [true, false, undefined],
     },
-    marginX: {
-      control: 'number',
-    },
-    marginY: {
-      control: 'number',
-    },
   },
   args: BasicUsageProps,
 };

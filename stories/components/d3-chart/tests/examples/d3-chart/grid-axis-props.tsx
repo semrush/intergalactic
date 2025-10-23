@@ -4,14 +4,10 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
 type BaseExampleProps = {
-  marginX?: number;
-  marginY?: number;
   multiline?: boolean;
 };
 
 const Demo = (props: BaseExampleProps) => {
-  const { marginX, marginY } = props;
-
   const MARGIN = 40;
   const width = 250;
   const height = 200;
@@ -114,33 +110,6 @@ const Demo = (props: BaseExampleProps) => {
           </YAxis>
           <Line x='x' y='y' />
         </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-        >
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks()} position='top' />
-          </XAxis>
-          <YAxis>
-            <YAxis.Ticks
-              ticks={yScale.ticks(5)}
-              position='left'
-              multiline={props.multiline}
-              marginY={marginY}
-            >
-              {({ value }) => ({
-                children: [
-                  yScale.tickFormat(5, '+%')(value / 10),
-                  'per 10 units',
-                ],
-              })}
-            </YAxis.Ticks>
-          </YAxis>
-          <Line x='x' y='y' />
-        </Plot>
       </Flex>
 
       <Flex gap={4}>
@@ -155,7 +124,7 @@ const Demo = (props: BaseExampleProps) => {
           <YAxis>
             <YAxis.Ticks
               multiline={props.multiline}
-              marginY={marginY}
+
             />
             <YAxis.Grid />
             <YAxis.Title verticalWritingMode={true}>YAxis title</YAxis.Title>
@@ -164,7 +133,7 @@ const Demo = (props: BaseExampleProps) => {
             <XAxis.Ticks
               ticks={xScale2.domain()}
               multiline={props.multiline}
-              marginX={marginX}
+
             />
             <XAxis.Title>XAxis title</XAxis.Title>
           </XAxis>
@@ -180,7 +149,7 @@ const Demo = (props: BaseExampleProps) => {
           <YAxis>
             <YAxis.Ticks
               multiline={props.multiline}
-              marginY={marginY}
+
             />
             <YAxis.Grid />
             <YAxis.Title>YAxis title</YAxis.Title>
@@ -189,7 +158,7 @@ const Demo = (props: BaseExampleProps) => {
             <XAxis.Ticks
               ticks={xScale2.domain()}
               multiline={props.multiline}
-              marginX={marginX}
+
             />
             <XAxis.Title>XAxis title</XAxis.Title>
           </XAxis>
@@ -208,7 +177,10 @@ const Demo = (props: BaseExampleProps) => {
             <YAxis.Title position='bottom'>YAxis title</YAxis.Title>
           </YAxis>
           <XAxis>
-            <XAxis.Ticks ticks={xScale2.domain()} multiline={props.multiline} marginX={marginX} />
+            <XAxis.Ticks
+              ticks={xScale2.domain()}
+              multiline={props.multiline}
+            />
             <XAxis.Title position='left'>XAxis title</XAxis.Title>
           </XAxis>
           <Bar x='category' y='bar' />
@@ -286,8 +258,7 @@ const data2 = Array(5)
   }));
 
 export const defaultProps: BaseExampleProps = {
-  marginX: undefined,
-  marginY: undefined,
+
   multiline: undefined,
 };
 
