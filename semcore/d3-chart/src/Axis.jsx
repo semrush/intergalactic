@@ -196,13 +196,16 @@ function splitTextByWidth(root, text, maxWidth) {
   let currentLine = words[0];
 
   for (let i = 1; i < words.length; i++) {
-    const testLine = `${currentLine} ${words[i]}`;
+    const testLine = `${currentLine} ${words[i]}`.trim();
     const testWidth = measureTextWidth(root, testLine);
 
     if (testWidth <= maxWidth) {
       currentLine = testLine;
     } else {
-      lines.push(currentLine);
+      if (currentLine) {
+        lines.push(currentLine);
+      }
+
       currentLine = words[i];
 
       if (measureTextWidth(root, currentLine) > maxWidth) {
