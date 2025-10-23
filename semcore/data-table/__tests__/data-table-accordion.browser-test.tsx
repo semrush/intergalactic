@@ -868,10 +868,10 @@ test.describe('Accordion in table', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await tableInTableRow.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot();
     if (browserName === 'webkit')
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     else await expect(page).toHaveScreenshot();
