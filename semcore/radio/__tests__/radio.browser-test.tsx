@@ -368,6 +368,7 @@ test.describe('Functional - Radio with Additional input props', () => {
       const mark = page.locator('[data-ui-name="Value.RadioMark"]').nth(i);
 
       await expect(radio).toHaveAttribute('aria-invalid', 'false');
+      await expect(radio).toHaveAttribute('name', 'radio');
 
       await expect(radio).not.toBeChecked();
 
@@ -398,11 +399,7 @@ test.describe('Functional - Radio with Additional input props', () => {
     });
 
     await test.step('Verify keyboard interactions work after mouse', async () => {
-      if (browserName === 'firefox') {
-        // BUG!
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-      } else await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
 

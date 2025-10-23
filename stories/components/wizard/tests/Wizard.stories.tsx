@@ -2,7 +2,7 @@ import Wizard from '@semcore/ui/wizard';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import FocusNextPrevExample from './examples/focus-next-prev';
-import SidebarAsComponentExample from './examples/sidebar-as-components';
+import SidebarAsComponentExample, { defaultExampleNoSideBarProps } from './examples/sidebar-as-components';
 import SteppersAndButtonsStatesExample from './examples/steps_and_buttons_states';
 import WithScrollAreaExample from './examples/with-scroll-area';
 import WizardContentExample from './examples/wizard-content';
@@ -27,8 +27,14 @@ export const WithScrollArea: Story = {
   render: WithScrollAreaExample,
 };
 
-export const SidebarAsComponent: Story = {
+export const SidebarAsComponent: StoryObj<typeof defaultExampleNoSideBarProps> = {
   render: SidebarAsComponentExample,
+  argTypes: {
+    noSidebar: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultExampleNoSideBarProps,
 };
 
 export const FocusNextPrev: Story = {
