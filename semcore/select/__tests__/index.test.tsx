@@ -14,20 +14,20 @@ describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-beforeEach(() => {
-  const mockIntersectionObserver = vi.fn();
-  mockIntersectionObserver.mockReturnValue({
-    observe: () => null,
-    unobserve: () => null,
-    disconnect: () => null,
-  });
-  window.IntersectionObserver = mockIntersectionObserver;
-});
-
 HTMLElement.prototype.scrollIntoView = () => {};
 
 describe('Select Trigger', () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
 
   test.concurrent(
     'Verify popper not opened by keyboard if interaction is none',
