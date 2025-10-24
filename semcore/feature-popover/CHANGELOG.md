@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.4] - 2025-10-26
+
+### Fixed
+
+- `autoFocus` property on Popper didn't work.
+
 ## [16.2.3] - 2025-10-06
 
 ### Changed

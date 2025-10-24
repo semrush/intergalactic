@@ -25,12 +25,12 @@ class StickyRoot extends Component<IStickyProps> {
     const SSticky = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<SSticky render={Box} />);
+    return sstyled(styles)(<SSticky render={Box}><Box position='sticky' top='200'></Box></SSticky>);
   }
 }
 
 const Sticky = createComponent(StickyRoot) as <T>(props: IStickyProps & T) => React.ReactElement;
 /**
- * @deprecated Use `@semcore/base-components` instead. Package `@semcore/sticky` will be removed in the next major release
+ * @deprecated Use Box from `@semcore/base-components` with `position='sticky' top='VALUE'`. Package `@semcore/sticky` will be removed in the next major release
  */
 export default Sticky;

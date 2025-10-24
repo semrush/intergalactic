@@ -2,10 +2,10 @@ import ColorPicker from '@semcore/ui/color-picker';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
-import BasicWithouPaletterManagerExample from './examples/base-no-palette-manager';
+import BaseNoPaletteManagerExample from './examples/base-no-palette-manager';
 import ColorPickerPropsExample from './examples/color-picker-props';
 import ColorsAndPaletterManagerPropsExample from './examples/colors-and-palette-manager-colors-props';
-import PropsExample from './examples/input-color-and-items-props';
+import InputColorAndItemsPropsExample from './examples/input-color-and-items-props';
 import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import TriggersExample from './examples/triggers';
 
@@ -18,12 +18,12 @@ export default meta;
 
 type Story = StoryObj<typeof ColorPicker>;
 
-export const BasicWithouPaletterManager: Story = {
-  render: BasicWithouPaletterManagerExample,
+export const BaseNoPaletteManager: Story = {
+  render: BaseNoPaletteManagerExample,
 };
 
-export const Props: Story = {
-  render: PropsExample,
+export const InputColorAndItemsProps: Story = {
+  render: InputColorAndItemsPropsExample,
 };
 
 export const Triggers: Story = {

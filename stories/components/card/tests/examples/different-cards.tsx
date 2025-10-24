@@ -1,7 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import Ellipsis from '@semcore/ui/ellipsis';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
 import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';

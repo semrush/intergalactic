@@ -252,7 +252,7 @@ test.describe('InlineEdit', () => {
       await expect(tagContainer).toBeFocused();
     });
 
-    await test.step('Verify tag closefocused by tab', async () => {
+    await test.step('Verify tag close focused by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(inlineEditView).not.toBeFocused();
       await expect(inlineEditEdit).toHaveCount(0);
@@ -291,7 +291,7 @@ test.describe('InlineEdit', () => {
       } else {
         await page.keyboard.press('Control+A');
       }
-      await page.keyboard.type(randomText);
+      await page.keyboard.type('randomText');
       await page.keyboard.press('Escape');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
@@ -319,13 +319,13 @@ test.describe('InlineEdit', () => {
       } else {
         await page.keyboard.press('Control+A');
       }
-      await page.keyboard.type('Test Test Test');
+      await page.keyboard.type(randomText);
       await page.keyboard.press('Tab');
       await page.waitForSelector('text="Save"');
       await page.keyboard.press('Enter');
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
+      await expect(inlineEditView).toHaveAttribute('aria-label', `Edit: ${randomText}`);
       await expect(tagContainer).toBeFocused();
     });
 
@@ -411,7 +411,7 @@ test.describe('InlineEdit', () => {
       await check.click();
       await expect(inlineEditView).not.toHaveAttribute('aria-hidden', 'true');
       await expect(inlineEditEdit).toHaveCount(0);
-      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Default tag');
+      await expect(inlineEditView).toHaveAttribute('aria-label', 'Edit: Test Test Test');
     });
   });
 
