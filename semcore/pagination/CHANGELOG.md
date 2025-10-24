@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `id` property wasn't pass to `Pagination.PageInput.Value` in advanced mode.
+- The `id` property wasn't passed to `Pagination.PageInput.Value` in advanced mode.
 
 ## [16.1.10] - 2025-10-06
 
