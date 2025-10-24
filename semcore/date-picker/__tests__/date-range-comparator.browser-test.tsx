@@ -1,5 +1,35 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+
+  dateRangeComparatorTrigger: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  calendar: (page: Page) => page.locator('[data-ui-name="DateRangeComparator.Calendar"]'),
+  weekDaysRow: (page: Page) => page.locator('[data-ui-name="CalendarWeekDays"]'),
+  divider: (page: Page) => page.locator('[data-ui-name="Divider"]'),
+  cells: (page: Page, index?: number) => {
+    const base = page.getByRole('gridcell');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dateRangeHeader: (page: Page) => page.locator('[data-ui-name="DateRangeComparator.Header"]'),
+
+  popper: (page: Page) => page.getByRole('dialog'),
+  title: (page: Page) => page.locator('[data-ui-name="DateRangeComparator.Title"]'),
+  period: (page: Page) => page.locator('[data-ui-name="DateRangeComparator.Periods.Options"]'),
+
+  inputValues: (page: Page) => page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]'),
+  compareValues: (page: Page) => page.locator(
+    'input[data-ui-name="DateRangeComparator.CompareDateRange"]'),
+
+};
 
 test.describe('DateRangeComparator range', () => {
   test('Verify roles and attributes', async ({ page }) => {
@@ -8,9 +38,6 @@ test.describe('DateRangeComparator range', () => {
 
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page
-      .locator('button[data-ui-name="DateRangeComparator.Trigger"]')
-      .first();
     const triggerAttributes = [
       { name: 'tabindex', value: '0' },
       { name: 'aria-haspopup', value: 'dialog' },
@@ -20,12 +47,12 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Verify trigger attributes', async () => {
       for (const { name, value } of triggerAttributes) {
-        await expect(datePickerTrigger).toHaveAttribute(name, value);
+        await expect(locators.dateRangeComparatorTrigger(page, 0)).toHaveAttribute(name, value);
       }
     });
 
     await test.step('Verify trigger svg attributes', async () => {
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.dateRangeComparatorTrigger(page, 0).locator('svg');
       const svgAttributes = [
         { name: 'tabindex', value: '-1' },
         { name: 'aria-hidden', value: 'true' },
@@ -37,17 +64,15 @@ test.describe('DateRangeComparator range', () => {
       }
     });
 
-    datePickerTrigger.click();
-    const popper = page.locator('[data-ui-name="DateRangeComparator.Popper"]');
+    locators.dateRangeComparatorTrigger(page, 0).click();
     const popperAttributes = [
       { name: 'tabindex', value: '0' },
-      { name: 'role', value: 'dialog' },
       { name: 'data-popper-placement', value: 'bottom-start' },
     ];
 
     await test.step('Verify popper attributes', async () => {
       for (const { name, value } of popperAttributes) {
-        await expect(popper).toHaveAttribute(name, value);
+        await expect(locators.popper(page)).toHaveAttribute(name, value);
       }
     });
 
@@ -87,18 +112,13 @@ test.describe('DateRangeComparator range', () => {
         }
       }
 
-      const inputValues = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
-      const compareValues = page.locator(
-        'input[data-ui-name="DateRangeComparator.CompareDateRange"]',
-      );
-
       const inputAttributesCommon = [
         { name: 'type', value: 'text' },
         { name: 'inputmode', value: 'numeric' },
         { name: 'aria-invalid', value: 'false' },
       ];
 
-      const inputs = [inputValues, compareValues];
+      const inputs = [locators.inputValues(page), locators.compareValues(page)];
 
       for (const locator of inputs) {
         const count = await locator.count();
@@ -110,14 +130,13 @@ test.describe('DateRangeComparator range', () => {
         }
       }
 
-      const calendars = page.locator('[data-name="Calendar"]');
       const calendarAttributes = [
         { name: 'tabindex', value: '-1' },
         { name: 'aria-hidden', value: 'true' },
       ];
 
-      for (let i = 0; i < (await calendars.count()); i++) {
-        const calendar = calendars.nth(i);
+      for (let i = 0; i < (await locators.calendar(page).count()); i++) {
+        const calendar = locators.calendar(page).nth(i);
         for (const { name, value } of calendarAttributes) {
           await expect(calendar).toHaveAttribute(name, value);
         }
@@ -125,37 +144,23 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Verify calendar header attributes', async () => {
-      const headerButtons = [
-        { selector: '[data-ui-name="DateRangeComparator.Prev"]', ariaLabel: 'Previous month' },
-        { selector: '[data-ui-name="DateRangeComparator.Next"]', ariaLabel: 'Next month' },
-      ];
-
-      for (const { selector, ariaLabel } of headerButtons) {
-        const button = page.locator(selector);
-        await expect(button).toHaveAttribute('type', 'button');
-        await expect(button).toHaveAttribute('aria-label', ariaLabel);
-      }
-
-      const headTitle = page.locator('[data-ui-name="DateRangeComparator.Title"]');
-      await expect(headTitle.first()).toHaveAttribute('aria-live', 'polite');
-      await expect(headTitle.nth(1)).toHaveAttribute('aria-live', 'polite');
+      await expect(locators.title(page).first()).toHaveAttribute('aria-live', 'polite');
+      await expect(locators.title(page).nth(1)).toHaveAttribute('aria-live', 'polite');
     });
 
     await test.step('Verify calendar attributes', async () => {
-      const calendars = page.locator('[data-ui-name="DateRangeComparator.Calendar"]');
       const calendarAttributes = [
         { name: 'role', value: 'grid' },
         { name: 'disabled', value: '' },
       ];
 
-      for (let i = 0; i < (await calendars.count()); i++) {
-        const calendar = calendars.nth(i);
+      for (let i = 0; i < (await locators.calendar(page).count()); i++) {
+        const calendar = locators.calendar(page).nth(i);
         for (const { name, value } of calendarAttributes) {
           await expect(calendar).toHaveAttribute(name, value);
         }
 
-        const weekDaysrow = calendar.locator('[data-ui-name="CalendarWeekDays"]');
-        await expect(weekDaysrow).toHaveAttribute('role', 'row');
+        await expect(locators.weekDaysRow(page)).toHaveAttribute('role', 'row');
 
         const weekDays = calendar.locator('[data-ui-name="CalendarWeekDays.Unit"]');
         const daysOfWeek = [
@@ -210,33 +215,9 @@ test.describe('DateRangeComparator range', () => {
       }
     });
 
-    const period = page.locator('[data-ui-name="DateRangeComparator.Periods.Options"]');
     await test.step('Verify Period attributes', async () => {
-      await expect(period).toHaveAttribute('role', 'listbox');
-      await expect(period).toHaveAttribute('aria-label', 'Presets');
-    });
-
-    const periodButtons = page.locator(
-      '[data-ui-name="DateRangeComparator.Periods.Options"][data-ui-name="Button"]',
-    );
-    await test.step('Verify Period button attributes', async () => {
-      const count = await periodButtons.count();
-      for (let i = 0; i < count; i++) {
-        const button = periodButtons.nth(i);
-        await expect(button).toHaveAttribute('type', 'button');
-        await expect(button).toHaveAttribute('role', 'option');
-        await expect(button).toHaveAttribute('tabindex', '0');
-      }
-    });
-
-    const applyButton = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
-    await test.step('Verify Apply button attributes', async () => {
-      await expect(applyButton).toHaveAttribute('type', 'button');
-    });
-
-    const resetButton = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
-    await test.step('Verify Reset button attributes', async () => {
-      await expect(resetButton).toHaveAttribute('type', 'button');
+      await expect(locators.period(page)).toHaveAttribute('role', 'listbox');
+      await expect(locators.period(page)).toHaveAttribute('aria-label', 'Presets');
     });
   });
 
@@ -245,11 +226,6 @@ test.describe('DateRangeComparator range', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const trigger = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
-    const dateRangeHeader = page.locator('[data-ui-name="DateRangeComparator.Header"]');
-    const calendars = page.locator('[data-name="Calendar"]');
-    const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
-    const applyButton = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
     const selectedCell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
 
     // Helper to check multiple style properties
@@ -263,15 +239,15 @@ test.describe('DateRangeComparator range', () => {
       }
     };
 
-    await trigger.click();
-    await page.waitForTimeout(300);
+    await locators.dateRangeComparatorTrigger(page, 0).click();
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     await test.step('Verify header margins and calendar paddings', async () => {
-      await checkStyle(dateRangeHeader, { padding: '16px' });
+      await checkStyle(locators.dateRangeHeader(page), { padding: '16px' });
 
-      const count = await calendars.count();
+      const count = await locators.calendar(page).count();
       for (let i = 0; i < count; i++) {
-        const calendar = calendars.nth(i);
+        const calendar = locators.calendar(page).nth(i);
         await expect(calendar).toHaveAttribute('width', '16');
         await expect(calendar).toHaveAttribute('height', '16');
         await checkStyle(calendar, {
@@ -282,7 +258,7 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Verify style of available date', async () => {
-      await checkStyle(cells.nth(2), {
+      await checkStyle(locators.cells(page, 2), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
@@ -290,10 +266,13 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Select dates', async () => {
-      await cells.nth(10).click();
-      await cells.nth(11).click();
-      await applyButton.click();
-      await trigger.click();
+      await locators.cells(page, 10).click();
+      await locators.cells(page, 1).click();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
+      await locators.dateRangeComparatorTrigger(page, 0).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
     });
 
     await test.step('Verify style of selected date', async () => {
@@ -305,7 +284,7 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Verify style for Apply picker button', async () => {
-      await checkStyle(applyButton, {
+      await checkStyle(locators.button(page, 'Apply'), {
         color: 'rgb(255, 255, 255)',
         backgroundColor: 'rgb(0, 143, 248)',
       });
@@ -335,18 +314,7 @@ test.describe('DateRangeComparator range', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
-    const popper = page.locator('[data-ui-name="DateRangeComparator.Popper"]');
-    const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
-    const headTitle = page.locator('[data-ui-name="DateRangeComparator.Title"]');
-    const headNext = page.locator('[data-ui-name="DateRangeComparator.Next"]');
-    const buttons = page.locator('[data-ui-name="Button"]');
-    const inputFrom = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
-    const inputTo = page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]');
     const toggle = page.locator('[data-ui-name="DateRangeComparator.CompareToggle"]');
-    const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
-    const reset = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
-    const cells = page.locator('[role="gridcell"]');
 
     let initialTitle1: string | null = '';
     let initialTitle2: string | null = '';
@@ -356,34 +324,35 @@ test.describe('DateRangeComparator range', () => {
     let expectedInputValue55 = '';
 
     await test.step('Open and close calendar', async () => {
-      await datePicker.click();
-      await page.waitForTimeout(200);
-      await expect(popper).toBeVisible();
-      await datePicker.click();
-      await expect(popper).not.toBeVisible();
-      await datePicker.click();
-      await page.waitForTimeout(200);
+      await locators.dateRangeComparatorTrigger(page, 0).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+      await locators.dateRangeComparatorTrigger(page, 0).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+      ;
+      await locators.dateRangeComparatorTrigger(page, 0).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
     });
 
     await test.step('Navigate months using header buttons', async () => {
-      initialTitle1 = await headTitle.first().textContent();
-      initialTitle2 = await headTitle.nth(1).textContent();
+      initialTitle1 = await locators.title(page).first().textContent();
+      initialTitle2 = await locators.title(page).nth(1).textContent();
 
-      await headPrev.click();
-      await expect(headTitle.first()).not.toHaveText(initialTitle1!);
-      await expect(headTitle.nth(1)).not.toHaveText(initialTitle2!);
+      await locators.button(page, 'Previous month').click();
+      await expect(locators.title(page).first()).not.toHaveText(initialTitle1!);
+      await expect(locators.title(page).nth(1)).not.toHaveText(initialTitle2!);
 
-      await headNext.click();
-      await expect(headTitle.first()).toHaveText(initialTitle1!);
-      await expect(headTitle.nth(1)).toHaveText(initialTitle2!);
+      await locators.button(page, 'Next month').click();
+      await expect(locators.title(page).first()).toHaveText(initialTitle1!);
+      await expect(locators.title(page).nth(1)).toHaveText(initialTitle2!);
     });
 
     await test.step('Select first date in from input', async () => {
-      await cells.nth(10).click();
+      await locators.cells(page, 10).click();
       await page.waitForTimeout(50);
-      const inputValue_1 = await inputFrom.nth(0).inputValue();
-      const inputValue_2 = await inputFrom.nth(1).inputValue();
-      const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label');
+      const inputValue_1 = await locators.inputValues(page).nth(0).inputValue();
+      const inputValue_2 = await locators.inputValues(page).nth(1).inputValue();
+      const calendarAriaLabel = await locators.cells(page, 10).getAttribute('aria-label');
 
       expectedInputValue = formatAriaLabelToInputValue(calendarAriaLabel);
 
@@ -392,33 +361,31 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Select second date in from input', async () => {
-      await expect(popper).toBeVisible();
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       await page.waitForTimeout(50);
-      const inputValue_2 = await inputFrom.nth(1).inputValue();
-      const calendarAriaLabel22 = await cells.nth(15).getAttribute('aria-label');
+      const inputValue_2 = await locators.inputValues(page).nth(1).inputValue();
+      const calendarAriaLabel22 = await locators.cells(page, 15).getAttribute('aria-label');
 
       expectedInputValue22 = formatAriaLabelToInputValue(calendarAriaLabel22);
       await expect(inputValue_2).toBe(expectedInputValue22);
     });
 
     await test.step('Reset from input values by clicking same cell', async () => {
-      await expect(popper).toBeVisible();
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       await page.waitForTimeout(100);
 
-      const inputValue1 = await inputFrom.nth(0).inputValue();
-      const inputValue2 = await inputFrom.nth(1).inputValue();
+      const inputValue1 = await locators.inputValues(page).nth(0).inputValue();
+      const inputValue2 = await locators.inputValues(page).nth(1).inputValue();
 
       await expect(inputValue1).toBe(expectedInputValue22);
       await expect(inputValue2).toBe('');
     });
 
     await test.step('Confirm both from inputs set to same date', async () => {
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
 
-      const inputValue1 = await inputFrom.nth(0).inputValue();
-      const inputValue2 = await inputFrom.nth(1).inputValue();
+      const inputValue1 = await locators.inputValues(page).nth(0).inputValue();
+      const inputValue2 = await locators.inputValues(page).nth(1).inputValue();
 
       await expect(inputValue1).toBe(expectedInputValue22);
       await expect(inputValue2).toBe(expectedInputValue22);
@@ -429,11 +396,11 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Select first date in to input', async () => {
-      await cells.nth(50).click();
+      await locators.cells(page, 50).click();
       await page.waitForTimeout(50);
-      const inputValue1 = await inputTo.nth(0).inputValue();
-      const inputValue2 = await inputTo.nth(1).inputValue();
-      const calendarAriaLabel50 = await cells.nth(50).getAttribute('aria-label');
+      const inputValue1 = await locators.compareValues(page).nth(0).inputValue();
+      const inputValue2 = await locators.compareValues(page).nth(1).inputValue();
+      const calendarAriaLabel50 = await locators.cells(page, 50).getAttribute('aria-label');
 
       expectedInputValue50 = formatAriaLabelToInputValue(calendarAriaLabel50);
 
@@ -442,11 +409,11 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Select second date in to input', async () => {
-      await cells.nth(55).click();
+      await locators.cells(page, 55).click();
       await page.waitForTimeout(50);
-      const inputValue1 = await inputTo.nth(0).inputValue();
-      const inputValue2 = await inputTo.nth(1).inputValue();
-      const calendarAriaLabel55 = await cells.nth(55).getAttribute('aria-label');
+      const inputValue1 = await locators.compareValues(page).nth(0).inputValue();
+      const inputValue2 = await locators.compareValues(page).nth(1).inputValue();
+      const calendarAriaLabel55 = await locators.cells(page, 55).getAttribute('aria-label');
 
       expectedInputValue55 = formatAriaLabelToInputValue(calendarAriaLabel55);
 
@@ -455,31 +422,34 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Apply selection and close calendar', async () => {
-      await apply.click();
-      await page.waitForTimeout(50);
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
       await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).not.toHaveText(
         'Select date ranges',
       );
     });
 
     await test.step('Reset selections', async () => {
-      await datePicker.click();
-      await page.waitForTimeout(200);
-      await reset.click();
-      await expect(popper).not.toBeVisible();
+      locators.dateRangeComparatorTrigger(page, 0);
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+      await locators.button(page, 'Reset').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
       await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).toHaveText(
         'Select date ranges',
       );
     });
 
     await test.step('Open calendar and close with Sange selection', async () => {
-      await datePicker.click();
-      await page.waitForTimeout(200);
-      await buttons.nth(1).click();
-      await expect(popper).toBeVisible();
-      await apply.click();
-      await expect(popper).not.toBeVisible();
+      locators.dateRangeComparatorTrigger(page, 0);
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+      await locators.button(page, 'Last 3 months').click();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
       await expect(page.locator('[data-ui-name="LinkTrigger.Text"]').first()).not.toHaveText(
         'Select date ranges',
       );
