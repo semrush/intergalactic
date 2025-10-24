@@ -465,14 +465,6 @@ test.describe('DateRangeComparator range', () => {
       to: await locator.nth(1).inputValue(),
     });
 
-    const headTitle = page.locator('[data-ui-name="DateRangeComparator.Title"]');
-    const inputFrom = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
-    const inputTo = page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]');
-    const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
-    const reset = page.locator('[data-ui-name="DateRangeComparator.Reset"]');
-    const headPrev = page.locator('[data-ui-name="DateRangeComparator.Prev"]');
-    const headNext = page.locator('[data-ui-name="DateRangeComparator.Next"]');
-
     if (browserName === 'webkit') return;
 
     await test.step('Open and close calendar using keyboard', async () => {
@@ -493,7 +485,7 @@ test.describe('DateRangeComparator range', () => {
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
       await expect(locators.dateRangeComparatorTrigger(page, 0)).not.toBeFocused();
-      await expect(popper).toBeFocused();
+      await expect(locators.popper(page)).toBeFocused();
 
       await page.keyboard.press('Escape');
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
@@ -504,20 +496,20 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Navigate months backwards and forwards', async () => {
       const initial = {
-        from: await headTitle.first().textContent(),
-        to: await headTitle.nth(1).textContent(),
+        from: await locators.title(page).first().textContent(),
+        to: await locators.title(page).nth(1).textContent(),
       };
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(headPrev).toBeFocused();
+      await expect(locators.button(page, 'Previous month')).toBeFocused();
       await page.keyboard.press('Enter');
 
       const changed = {
-        from: await headTitle.first().textContent(),
-        to: await headTitle.nth(1).textContent(),
+        from: await locators.title(page).first().textContent(),
+        to: await locators.title(page).nth(1).textContent(),
       };
 
       expect(changed.from).not.toBe(initial.from);
@@ -525,12 +517,12 @@ test.describe('DateRangeComparator range', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(headNext).toBeFocused();
+      await expect(locators.button(page, 'Previous month')).toBeFocused();
       await page.keyboard.press('Enter');
 
       const reverted = {
-        from: await headTitle.first().textContent(),
-        to: await headTitle.nth(1).textContent(),
+        from: await locators.title(page).first().textContent(),
+        to: await locators.title(page).nth(1).textContent(),
       };
 
       expect(reverted.from).toBe(initial.from);
@@ -538,25 +530,25 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Select From dates with keyboard', async () => {
-      const initial = await getInputValues(inputFrom);
+      const initial = await getInputValues(locators.inputValues(page));
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      const unchanged = await getInputValues(inputFrom);
+      const unchanged = await getInputValues(locators.inputValues(page));
       expect(unchanged).toEqual(initial);
 
       await page.keyboard.press('Space');
       await page.waitForTimeout(50);
 
-      const changed = await getInputValues(inputFrom);
+      const changed = await getInputValues(locators.inputValues(page));
       expect(changed.from).not.toBe(initial.from);
       expect(changed.to).not.toBe(initial.to);
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
 
-      const final = await getInputValues(inputFrom);
+      const final = await getInputValues(locators.inputValues(page));
       expect(final.from).toBe(changed.from);
       expect(final.to).not.toBe(initial.to);
     });
@@ -569,12 +561,12 @@ test.describe('DateRangeComparator range', () => {
       for (let i = 0; i < 3; i++) await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
-      const initial = await getInputValues(inputTo);
+      const initial = await getInputValues(locators.compareValues(page));
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Space');
 
-      const mid = await getInputValues(inputTo);
+      const mid = await getInputValues(locators.compareValues(page));
       expect(mid.from).not.toBe(initial.from);
       expect(mid.to).toBe(initial.to);
 
@@ -582,21 +574,21 @@ test.describe('DateRangeComparator range', () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
 
-      const final = await getInputValues(inputTo);
+      const final = await getInputValues(locators.compareValues(page));
       expect(final.from).toBe(mid.from);
       expect(final.to).not.toBe(mid.to);
     });
 
     await test.step('Apply and reset selected dates', async () => {
       for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
-      await expect(apply).toBeFocused();
+      await expect(locators.button(page, 'Apply')).toBeFocused();
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
       for (let i = 0; i < 14; i++) await page.keyboard.press('Tab');
-      await expect(reset).toBeFocused();
+      await expect(locators.button(page, 'Reset')).toBeFocused();
       await page.keyboard.press('Space');
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
@@ -615,31 +607,29 @@ test.describe('Date Range comparator with advanced use', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
     const from = page.locator('[data-ui-name="DateRangeComparator.ValueDateRange"]').first();
-    const inputFrom = page.locator('input[data-ui-name="DateRangeComparator.ValueDateRange"]');
     const to = page.locator('[data-ui-name="DateRangeComparator.CompareDateRange"]').first();
-    const inputTo = page.locator('input[data-ui-name="DateRangeComparator.CompareDateRange"]');
     const toggle = page.locator('[data-ui-name="DateRangeComparator.CompareToggle"]');
-    const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     await from.click();
-    await inputFrom.first().fill('05052023');
-    await inputFrom.nth(1).fill('05202023');
+    await locators.inputValues(page).first().fill('05052023');
+    await locators.inputValues(page).nth(1).fill('05202023');
 
     await toggle.click();
     await to.click();
-    await inputTo.first().fill('05012023');
-    await inputTo.nth(1).fill('05182023');
+    await locators.compareValues(page).first().fill('05012023');
+    await locators.compareValues(page).nth(1).fill('05182023');
 
-    await apply.click();
+    await locators.button(page, 'Apply').click();
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-    await datePicker.click();
-    await page.waitForTimeout(300);
+    await locators.dateRangeComparatorTrigger(page, 0).click();
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     await expect(page).toHaveScreenshot();
   });
 });
@@ -652,23 +642,23 @@ test.describe('Date range comparator props', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const apply = page.locator('[data-ui-name="DateRangeComparator.Apply"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'visible' });
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     await page.keyboard.press('Escape');
-    await apply.waitFor({ state: 'hidden' });
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'visible' });
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
 
-    const cells = page.locator('[role="gridcell"]');
-
-    await cells.nth(20).hover();
+    await locators.cells(page, 20).hover();
     await expect(page).toHaveScreenshot();
   });
 });

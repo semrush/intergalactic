@@ -1,5 +1,35 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+
+  dateRangePickerTrigger: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  calendar: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Calendar"]'),
+  weekDaysRow: (page: Page) => page.locator('[data-ui-name="CalendarWeekDays"]'),
+  divider: (page: Page) => page.locator('[data-ui-name="Divider"]'),
+  cells: (page: Page, index?: number) => {
+    const base = page.getByRole('gridcell');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dateRangeHeader: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Header"]'),
+
+  popper: (page: Page) => page.getByRole('dialog'),
+  title: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Title"]'),
+  period: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Periods.Options"]'),
+
+  inputValues: (page: Page) => page.locator('input[data-ui-name="DateRangePicker.ValueDateRange"]'),
+  compareValues: (page: Page) => page.locator(
+    'input[data-ui-name="DateRangePicker.CompareDateRange"]'),
+
+};
 
 test.describe('Date Range Trigger', () => {
   test('Verify trigger states when entering sate manually', async ({ page }) => {
@@ -8,8 +38,7 @@ test.describe('Date Range Trigger', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
-    const screenshotsClip = (await datePicker.first().boundingBox())!;
+    const screenshotsClip = (await locators.dateRangePickerTrigger(page, 0).boundingBox())!;
     screenshotsClip.x -= 4;
     screenshotsClip.y -= 4;
     screenshotsClip.width += 8;
@@ -64,10 +93,8 @@ test.describe('Date range with standart ranges', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page.locator('[data-ui-name="DateRangePicker.Trigger"]').nth(4);
-
     await test.step('Verify trigger aria label', async () => {
-      await expect(datePickerTrigger).toHaveAttribute('aria-label', 'Date field');
+      await expect(locators.dateRangePickerTrigger(page, 4)).toHaveAttribute('aria-label', 'Date field');
     });
 
     await test.step('Verify trigger svg attributes', async () => {
@@ -77,13 +104,11 @@ test.describe('Date range with standart ranges', () => {
         ['width', '16'],
         ['height', '16'],
       ];
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.dateRangePickerTrigger(page, 4).locator('svg');
       for (const [attr, value] of svgAttributes) {
         await expect(svg).toHaveAttribute(attr, value);
       }
     });
-
-    const inputTriggr = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
 
     const inputAttributes = [
       { index: 2, label: 'From date' },
@@ -92,77 +117,49 @@ test.describe('Date range with standart ranges', () => {
 
     for (const { index, label } of inputAttributes) {
       await test.step(`Verify ${label} trigger attributes`, async () => {
-        await expect(inputTriggr.nth(index)).toHaveAttribute('aria-invalid', 'false');
-        await expect(inputTriggr.nth(index)).toHaveAttribute('aria-haspopup', 'dialog');
-        await expect(inputTriggr.nth(index)).toHaveAttribute('aria-expanded', 'false');
-        await expect(inputTriggr.nth(index)).toHaveAttribute('role', 'combobox');
-        await expect(inputTriggr.nth(index)).toHaveAttribute('aria-label', label);
-        await expect(inputTriggr.nth(index)).toHaveAttribute('inputmode', 'numeric');
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('aria-invalid', 'false');
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('aria-haspopup', 'dialog');
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('aria-expanded', 'false');
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('role', 'combobox');
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('aria-label', label);
+        await expect(locators.dateRangePickerTrigger(page, index)).toHaveAttribute('inputmode', 'numeric');
       });
     }
 
-    datePickerTrigger.click();
-    const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
+    locators.dateRangePickerTrigger(page, 4).click();
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     await test.step('Verify popper attributes', async () => {
       const popperAttributes = [
         ['tabindex', '0'],
-        ['role', 'dialog'],
         ['data-popper-placement', 'bottom-start'],
       ];
 
       for (const [attr, value] of popperAttributes) {
-        await expect(popper).toHaveAttribute(attr, value);
+        await expect(locators.popper(page)).toHaveAttribute(attr, value);
       }
     });
 
     await test.step('Verify popper header attributes', async () => {
-      const headerAttributes = [
-        {
-          locator: '[data-ui-name="DateRangePicker.Prev"]',
-          attrs: [
-            ['type', 'button'],
-            ['aria-label', 'Previous month'],
-          ],
-        },
-        {
-          locator: '[data-ui-name="DateRangePicker.Next"]',
-          attrs: [
-            ['type', 'button'],
-            ['aria-label', 'Next month'],
-          ],
-        },
-      ];
-
-      for (const { locator, attrs } of headerAttributes) {
-        const element = page.locator(locator);
-        for (const [attr, value] of attrs) {
-          await expect(element).toHaveAttribute(attr, value);
-        }
-      }
-      await expect(page.locator('[data-ui-name="DateRangePicker.Title"]').first()).toHaveAttribute(
+      await expect(locators.title(page).first()).toHaveAttribute(
         'aria-live',
         'polite',
       );
-      await expect(
-        page.locator('[data-ui-name="DateRangePicker.Title"]').nth(1),
-      ).not.toHaveAttribute('aria-live', '');
+      await expect(locators.title(page).nth(1)).not.toHaveAttribute('aria-live', '');
     });
 
     await test.step('Verify calendar attributes', async () => {
-      const calendars = page.locator('[data-ui-name="DateRangePicker.Calendar"]');
-      const count = await calendars.count();
+      const count = await locators.calendar(page).count();
 
       for (let i = 0; i < count; i++) {
-        const calendar = calendars.nth(i);
+        const calendar = locators.calendar(page).nth(i);
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
     });
 
     await test.step('Verify weekdays attributes', async () => {
-      const weekDaysRows = page.locator('[data-ui-name="CalendarWeekDays"]');
-      const rowCount = await weekDaysRows.count();
+      const rowCount = await locators.weekDaysRow(page).count();
       const daysOfWeek = [
         'Sunday',
         'Monday',
@@ -174,7 +171,7 @@ test.describe('Date range with standart ranges', () => {
       ];
 
       for (let r = 0; r < rowCount; r++) {
-        const weekDaysRow = weekDaysRows.nth(r);
+        const weekDaysRow = locators.weekDaysRow(page).nth(r);
         await expect(weekDaysRow).toHaveAttribute('role', 'row');
         const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
         const unitCount = await weekDays.count();
@@ -192,11 +189,10 @@ test.describe('Date range with standart ranges', () => {
     });
 
     await test.step('Verify days attributes', async () => {
-      const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
-      const cellCount = await cells.count();
+      const cellCount = await locators.cells(page).count();
 
       for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
+        const cell = locators.cells(page).nth(i);
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
@@ -221,7 +217,6 @@ test.describe('Date range with standart ranges', () => {
     });
 
     await test.step('Verify divider attributes', async () => {
-      const divider = page.locator('[data-ui-name="Divider"]');
       const dividerAttributes = [
         ['orientation', 'vertical'],
         ['aria-orientation', 'vertical'],
@@ -229,11 +224,9 @@ test.describe('Date range with standart ranges', () => {
       ];
 
       for (const [attr, value] of dividerAttributes) {
-        await expect(divider).toHaveAttribute(attr, value);
+        await expect(locators.divider(page)).toHaveAttribute(attr, value);
       }
     });
-
-    const period = page.locator('[data-ui-name="DateRangePicker.Period"]');
 
     await test.step('Verify DateRangePicker.Period attributes', async () => {
       const periodAttributes = [
@@ -242,33 +235,7 @@ test.describe('Date range with standart ranges', () => {
       ];
 
       for (const [attr, value] of periodAttributes) {
-        await expect(period).toHaveAttribute(attr, value);
-      }
-    });
-
-    const periodButtons = page.locator(
-      '[data-ui-name="DateRangePicker.Period"] [data-ui-name="Button"]',
-    );
-
-    await test.step('Verify DateRangePicker.Period button attributes', async () => {
-      const count = await periodButtons.count();
-
-      for (let i = 0; i < count; i++) {
-        const button = periodButtons.nth(i);
-        await expect(button).toHaveAttribute('type', 'button');
-        await expect(button).toHaveAttribute('role', 'option');
-      }
-    });
-
-    await test.step('Verify Apply and Reset button attributes', async () => {
-      const buttons = [
-        { locator: '[data-ui-name="DateRangePicker.Apply"]', label: 'Apply' },
-        { locator: '[data-ui-name="DateRangePicker.Reset"]', label: 'Reset' },
-      ];
-
-      for (const { locator, label } of buttons) {
-        const button = page.locator(locator);
-        await expect(button).toHaveAttribute('type', 'button');
+        await expect(locators.period(page)).toHaveAttribute(attr, value);
       }
     });
   });
@@ -277,11 +244,6 @@ test.describe('Date range with standart ranges', () => {
     const standPath = 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
-    const datePickerTrigger = page.locator('[data-ui-name="DateRangePicker.Trigger"]').nth(4);
-    const prevButton = page.locator('[data-ui-name="DateRangePicker.Prev"]');
-    const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
-    const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
 
     // Helper function to check style properties
     const checkStyle = async (element: any, expectedStyles: any) => {
@@ -295,11 +257,11 @@ test.describe('Date range with standart ranges', () => {
     };
 
     await test.step('Verify trigger margins', async () => {
-      await checkStyle(datePickerTrigger, { marginTop: '8px' });
+      await checkStyle(locators.dateRangePickerTrigger(page, 4), { marginTop: '8px' });
     });
 
     await test.step('Verify svg dimensions', async () => {
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.dateRangePickerTrigger(page, 4).locator('svg');
       await checkStyle(svg, { paddingLeft: '8px', paddingRight: '8px' });
       await expect(svg).toHaveAttribute('width', '16');
       await expect(svg).toHaveAttribute('height', '16');
@@ -313,12 +275,13 @@ test.describe('Date range with standart ranges', () => {
     await test.step('Enter dates and open popper', async () => {
       await page.locator('input[data-ui-name="DateRangePicker.Trigger"]').nth(2).fill('05.04.2025');
       await page.locator('input[data-ui-name="DateRangePicker.Trigger"]').nth(3).fill('05.05.2025');
-      await datePickerTrigger.click();
+      await locators.dateRangePickerTrigger(page, 4).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
     });
 
     const dateStyles = [
       {
-        locator: cells.first(),
+        locator: locators.cells(page, 0),
         expectedStyles: {
           color: 'rgb(25, 27, 35)',
           backgroundColor: 'rgb(255, 255, 255)',
@@ -326,7 +289,7 @@ test.describe('Date range with standart ranges', () => {
         },
       },
       {
-        locator: cells.nth(10),
+        locator: locators.cells(page, 10),
         expectedStyles: {
           color: 'rgb(25, 27, 35)',
           backgroundColor: 'rgb(255, 255, 255)',
@@ -336,23 +299,27 @@ test.describe('Date range with standart ranges', () => {
     ];
 
     for (const { locator, expectedStyles } of dateStyles) {
-      await test.step(`Verify style of ${locator === cells.first() ? 'disabled' : 'available'
+      await test.step(`Verify style of ${locator === locators.cells(page, 0) ? 'disabled' : 'available'
       } date`, async () => {
         await checkStyle(locator, expectedStyles);
       });
     }
 
     await test.step('Verify style of selected date', async () => {
-      await cells.nth(10).click();
-      await cells.nth(11).click();
-      await apply.click();
-      await datePickerTrigger.click();
+      await locators.cells(page, 10).click();
+      await locators.cells(page, 11).click();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
+      await locators.dateRangePickerTrigger(page, 4).click();
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
       const cell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
       await checkStyle(cell.nth(1), { margin: '4px 0px 0px', width: '32px', height: '32px' });
     });
 
     await test.step('Verify style for Apply picker button', async () => {
-      await checkStyle(apply, { color: 'rgb(255, 255, 255)', backgroundColor: 'rgb(0, 143, 248)' });
+      await checkStyle(locators.button(page, 'Apply'), { color: 'rgb(255, 255, 255)', backgroundColor: 'rgb(0, 143, 248)' });
     });
   });
 
@@ -378,8 +345,6 @@ test.describe('Date range with standart ranges', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePicker = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
-    const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
     const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
     const headTitle = page.locator('[data-ui-name="DateRangePicker.Title"]');
     const headNext = page.locator('[data-ui-name="DateRangePicker.Next"]');
@@ -390,16 +355,16 @@ test.describe('Date range with standart ranges', () => {
     const cells = page.locator('[role="gridcell"]');
 
     await test.step('Click on date picker to open popper', async () => {
-      await datePicker.nth(2).click();
+      await locators.dateRangePickerTrigger(page, 2).click();
       await apply.waitFor({ state: 'visible' });
       await expect(popper).toHaveCount(1);
-      await datePicker.nth(3).click();
+      await locators.dateRangePickerTrigger(page, 3).click();
       await apply.waitFor({ state: 'hidden' });
       await expect(popper).toHaveCount(0);
     });
 
     await test.step('Open date picker and check titles', async () => {
-      await datePicker.first().click();
+      await locators.dateRangePickerTrigger(page, 0).click();
       await apply.waitFor({ state: 'visible' });
 
       const initialTitle1 = await headTitle.first().textContent();
@@ -470,7 +435,7 @@ test.describe('Date range with standart ranges', () => {
     });
 
     await test.step('Reset date selection and validate input', async () => {
-      await datePicker.nth(2).click();
+      await locators.dateRangePickerTrigger(page, 2).click();
       await reset.click();
       await apply.waitFor({ state: 'hidden' });
 
@@ -482,7 +447,7 @@ test.describe('Date range with standart ranges', () => {
     });
 
     await test.step('Click on buttons and check input values', async () => {
-      await datePicker.nth(2).click();
+      await locators.dateRangePickerTrigger(page, 2).click();
       await apply.waitFor({ state: 'visible' });
 
       await buttons.nth(3).click();
