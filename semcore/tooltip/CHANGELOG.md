@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Tooltip popper content are not announced by SR in chrome.
+- The tooltip popper content is not announced by screen readers in Chrome.
 
 ## [16.0.10] - 2025-10-06
 
