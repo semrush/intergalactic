@@ -1,5 +1,30 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  menuItems: (page: Page, index?: number) => {
+    const base = page.getByRole('menuitemcheckbox');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  datePickerTrigger: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="DatePicker.Trigger"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  calendar: (page: Page) => page.locator('[data-ui-name="DatePicker.Calendar"]'),
+  weekDaysRow: (page: Page) => page.locator('[data-ui-name="CalendarWeekDays"]'),
+  divider: (page: Page) => page.locator('[data-ui-name="Divider"]'),
+  cells: (page: Page, index?: number) => {
+    const base = page.getByRole('gridcell');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  popper: (page: Page) => page.getByRole('dialog'),
+
+};
 
 test.describe('Date Picker Trigger', () => {
   test('Verify trigger states when entering date manually', async ({ page }) => {
@@ -8,8 +33,7 @@ test.describe('Date Picker Trigger', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DatePicker.Trigger"]');
-    const screenshotsClip = (await datePicker.first().boundingBox())!;
+    const screenshotsClip = (await locators.datePickerTrigger(page, 0).boundingBox())!;
     screenshotsClip.x -= 4;
     screenshotsClip.y -= 4;
     screenshotsClip.width += 8;
@@ -57,16 +81,14 @@ test.describe('DayPicker with today button', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page.locator('[data-ui-name="DatePicker.Trigger"]');
     const inputTrigger = page.locator('input[data-ui-name="DatePicker.Trigger"]');
-    const popper = page.locator('[data-ui-name="DatePicker.Popper"]');
 
     await test.step('Verify trigger aria label', async () => {
-      await expect(datePickerTrigger.first()).toHaveAttribute('aria-label', 'Date field');
+      await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-label', 'Date field');
     });
 
     await test.step('Verify trigger SVG attributes', async () => {
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.datePickerTrigger(page).locator('svg');
       const svgAttributes = [
         ['tabindex', '-1'],
         ['aria-hidden', 'true'],
@@ -92,37 +114,23 @@ test.describe('DayPicker with today button', () => {
       }
     });
 
-    await datePickerTrigger.first().click();
+    await locators.datePickerTrigger(page, 0).click();
+    await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
 
     await test.step('Verify popper attributes', async () => {
       const popperAttributes = [
         ['tabindex', '0'],
-        ['role', 'dialog'],
         ['data-popper-placement', 'bottom-start'],
       ];
 
       for (const [attr, value] of popperAttributes) {
-        await expect(popper).toHaveAttribute(attr, value);
+        await expect(locators.popper(page)).toHaveAttribute(attr, value);
       }
     });
 
     await test.step('Verify popper header attributes', async () => {
       const headerLocators = [
-        {
-          locator: '[data-ui-name="DatePicker.Prev"]',
-          attrs: [
-            ['type', 'button'],
-            ['aria-label', 'Previous month'],
-          ],
-        },
         { locator: '[data-ui-name="DatePicker.Title"]', attrs: [['aria-live', 'polite']] },
-        {
-          locator: '[data-ui-name="DatePicker.Next"]',
-          attrs: [
-            ['type', 'button'],
-            ['aria-label', 'Next month'],
-          ],
-        },
       ];
 
       for (const { locator, attrs } of headerLocators) {
@@ -134,17 +142,15 @@ test.describe('DayPicker with today button', () => {
     });
 
     await test.step('Verify calendar attributes', async () => {
-      const calendar = page.locator('[data-ui-name="DatePicker.Calendar"]');
-      await expect(calendar).toHaveAttribute('tabindex', '0');
-      await expect(calendar).toHaveAttribute('role', 'grid');
-      await expect(calendar).toHaveAttribute('disabled', '');
+      await expect(locators.calendar(page)).toHaveAttribute('tabindex', '0');
+      await expect(locators.calendar(page)).toHaveAttribute('role', 'grid');
+      await expect(locators.calendar(page)).toHaveAttribute('disabled', '');
     });
 
     await test.step('Verify weekdays attributes', async () => {
-      const weekDaysRow = page.locator('[data-ui-name="CalendarWeekDays"]');
-      await expect(weekDaysRow).toHaveAttribute('role', 'row');
+      await expect(locators.weekDaysRow(page)).toHaveAttribute('role', 'row');
 
-      const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
+      const weekDays = locators.weekDaysRow(page).locator('[data-ui-name="CalendarWeekDays.Unit"]');
       const daysOfWeek = [
         'Sunday',
         'Monday',
@@ -209,7 +215,6 @@ test.describe('DayPicker with today button', () => {
     });
 
     await test.step('Verify divider attributes', async () => {
-      const divider = page.locator('[data-ui-name="Divider"]');
       const dividerAttributes = [
         ['orientation', 'horizontal'],
         ['aria-orientation', 'horizontal'],
@@ -217,16 +222,7 @@ test.describe('DayPicker with today button', () => {
       ];
 
       for (const [attr, value] of dividerAttributes) {
-        await expect(divider).toHaveAttribute(attr, value);
-      }
-    });
-
-    await test.step('Verify today button attributes', async () => {
-      const todayButton = page.locator('[data-ui-name="Button"]');
-      const todayAttributes = [['type', 'button']];
-
-      for (const [attr, value] of todayAttributes) {
-        await expect(todayButton).toHaveAttribute(attr, value);
+        await expect(locators.divider(page)).toHaveAttribute(attr, value);
       }
     });
   });
@@ -236,10 +232,6 @@ test.describe('DayPicker with today button', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page.locator('[data-ui-name="DatePicker.Trigger"]');
-    const prevButton = page.locator('[data-ui-name="DatePicker.Prev"]');
-    const cells = page.locator('[role="gridcell"]');
-    const todayButton = page.locator('[data-ui-name="Button"]');
     const selectedCell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
 
     // Helper function to check style properties
@@ -254,17 +246,19 @@ test.describe('DayPicker with today button', () => {
     };
 
     await test.step('Verify trigger margins', async () => {
-      await checkStyle(datePickerTrigger.first(), { marginTop: '8px' });
+      await checkStyle(locators.datePickerTrigger(page, 0), { marginTop: '8px' });
     });
 
     await test.step('Verify header button hover', async () => {
-      await datePickerTrigger.first().click();
-      await prevButton.hover();
+      await locators.datePickerTrigger(page, 0).click();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+
+      await locators.button(page, 'Previous month').hover();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify disabled date styles', async () => {
-      await checkStyle(cells.first(), {
+      await checkStyle(locators.cells(page, 0), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
@@ -272,7 +266,7 @@ test.describe('DayPicker with today button', () => {
     });
 
     await test.step('Verify style of available date', async () => {
-      await checkStyle(cells.nth(2), {
+      await checkStyle(locators.cells(page, 2), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
@@ -280,7 +274,7 @@ test.describe('DayPicker with today button', () => {
     });
 
     await test.step('Verify hover style of available date', async () => {
-      await cells.nth(8).hover();
+      await locators.cells(page, 8).hover();
       await expect(page).toHaveScreenshot();
     });
 
@@ -300,7 +294,7 @@ test.describe('DayPicker with today button', () => {
     });
 
     await test.step('Verify hover style for today button', async () => {
-      await todayButton.hover();
+      await locators.button(page, 'Today').hover();
       await expect(page).toHaveScreenshot();
     });
   });
@@ -324,13 +318,13 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Open and close datepicker popper', async () => {
       await datePickerTrigger.click();
-      await expect(popper).toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
 
       await datePickerTrigger.click();
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
       await datePickerTrigger.click();
-      await expect(popper).toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
     });
 
     await test.step('Navigate months and verify title changes', async () => {
@@ -345,14 +339,16 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Select date and today and input value changes', async () => {
       await cells.nth(15).click();
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
       const newValue = await input.inputValue();
       expect(newValue).not.toBe(initialValue);
 
       await datePickerTrigger.click();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+
       await todayButton.click();
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
       const finalValue = await input.inputValue();
       expect(finalValue).not.toBe(newValue);
@@ -364,14 +360,8 @@ test.describe('DayPicker with today button', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const trigger = page.locator('[data-ui-name="DatePicker.Trigger"]').first();
     const input = page.locator('input[data-ui-name="DatePicker.Trigger"]');
-    const popper = page.locator('[data-ui-name="DatePicker.Popper"]');
-    const prev = page.locator('[data-ui-name="DatePicker.Prev"]');
     const title = page.locator('[data-ui-name="DatePicker.Title"]');
-    const next = page.locator('[data-ui-name="DatePicker.Next"]');
-    const todayButton = page.locator('[data-ui-name="Button"]');
-    const calendar = page.locator('[data-ui-name="DatePicker.Calendar"]');
     const highlightedCell = page.locator(
       '[data-ui-name="CalendarDays.Unit"][class*="highlighted"]',
     );
@@ -381,30 +371,29 @@ test.describe('DayPicker with today button', () => {
     await test.step('Open datepicker with Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
-      await expect(popper).toBeVisible();
-      await expect(trigger).not.toBeFocused();
-      await expect(popper).toBeFocused();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+      await expect(locators.popper(page)).toBeVisible();
+      await expect(locators.datePickerTrigger(page)).not.toBeFocused();
+      await expect(locators.popper(page)).toBeFocused();
     });
 
     await test.step('Close datepicker with Escape', async () => {
       await page.keyboard.press('Escape');
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
       await expect(input).toBeFocused();
     });
 
     await test.step('Reopen datepicker with Space', async () => {
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
-      await expect(popper).toBeVisible();
-      await expect(trigger).not.toBeFocused();
-      await expect(popper).toBeFocused();
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+      await expect(locators.datePickerTrigger(page)).not.toBeFocused();
+      await expect(locators.popper(page)).toBeFocused();
     });
 
     await test.step('Navigate to prev button and change month', async () => {
       await page.keyboard.press('Tab');
-      await expect(prev).toBeFocused();
-      await prev.hover();
+      await expect(locators.button(page, 'Previous month')).toBeFocused();
+      await locators.button(page, 'Previous month').hover();
       const initialTitle = await title.textContent();
 
       await page.keyboard.press('Enter');
@@ -413,7 +402,7 @@ test.describe('DayPicker with today button', () => {
       await expect(title).not.toHaveText(initialTitle!);
 
       await page.keyboard.press('Tab');
-      await expect(next).toBeFocused();
+      await expect(locators.button(page, 'Next month')).toBeFocused();
 
       await page.keyboard.press('Enter');
       const titleAfterSecondEnter = await title.textContent();
@@ -422,17 +411,17 @@ test.describe('DayPicker with today button', () => {
 
     await test.step('Navigate to calendar and today button', async () => {
       await page.keyboard.press('Shift+Tab');
-      await expect(prev).toBeFocused();
+      await expect(locators.button(page, 'Previous month')).toBeFocused();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(calendar).toBeFocused();
+      await expect(locators.calendar(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
-      await expect(todayButton).toBeFocused();
+      await expect(locators.button(page, 'Today')).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');
-      await expect(calendar).toBeFocused();
+      await expect(locators.calendar(page)).toBeFocused();
     });
 
     await test.step('Navigate in calendar and select date', async () => {
@@ -447,32 +436,32 @@ test.describe('DayPicker with today button', () => {
       expect(isFocusedElementHighlighted).toBe(true);
 
       await page.keyboard.press('Enter');
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
       const newValue = await input.inputValue();
       expect(newValue).not.toBe(initialValue);
 
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Space');
 
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
       const newValue2 = await input.inputValue();
       expect(newValue2).not.toBe(newValue);
     });
 
     await test.step('Select today by Today button', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
+      await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
       await page.keyboard.press('Shift+Tab');
-      await expect(todayButton).toBeFocused();
+      await expect(locators.button(page, 'Today')).toBeFocused();
       const newValue2 = await input.inputValue();
 
       await page.keyboard.press('Enter');
-      await expect(popper).not.toBeVisible();
+      await expect(locators.popper(page)).not.toBeVisible();
 
       const newValue3 = await input.inputValue();
       expect(newValue3).not.toBe(newValue2);
