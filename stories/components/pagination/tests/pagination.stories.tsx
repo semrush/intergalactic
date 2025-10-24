@@ -1,6 +1,7 @@
 import Pagination from '@semcore/ui/pagination';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AdvancedPageInputExample from './examples/advanced_page_input';
 import SizesExample from './examples/current-page-props';
 import IntearctiveIconInInputExample from './examples/interactive-icon-in-input';
 import CustomStylesExample from './examples/pages-and-input-custom-styles';
@@ -13,6 +14,10 @@ const meta: Meta<typeof Pagination> = {
 
 export default meta;
 type Story = StoryObj<typeof Pagination>;
+
+export const AdvancedPageInput: Story = {
+  render: AdvancedPageInputExample,
+};
 
 export const Page1AndLocalesCases: Story = {
   render: TotalPageIs1Example,
