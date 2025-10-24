@@ -47,30 +47,9 @@ type State = {
 export class AccordionRows<Data extends DataTableData, UniqKeyType> extends React.PureComponent<AccordionRowsProps<Data, UniqKeyType>, State> {
   accordionRowsRef = React.createRef<HTMLDivElement>();
 
-  tableObserver: ResizeObserver;
-  tableWidth: number = 0;
-
   state: State = {
     maxHeight: 0,
   };
-
-  constructor(props: AccordionRowsProps<Data, UniqKeyType>) {
-    super(props);
-
-    this.tableObserver = new ResizeObserver(this.handleTableResize);
-  }
-
-  componentDidMount(): void {
-    setTimeout(() => {
-      if (this.props.tableRef.current) {
-        this.tableObserver.observe(this.props.tableRef.current);
-      }
-    }, 500); // need this for wait until all columns width will be calculated
-  }
-
-  componentWillUnmount(): void {
-    this.tableObserver.disconnect();
-  }
 
   componentDidUpdate(prevProps: Readonly<AccordionRowsProps<Data, UniqKeyType>>): void {
     const { expanded, rows, expandedForAnimation } = this.props;
@@ -159,49 +138,5 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
         })}
       </SAccordionRows>,
     );
-  }
-
-  private handleTableResize = trottle(() => {
-    this.calculateGridSettings();
-  });
-
-  private calculateGridSettings() {
-    const { tableRef } = this.props;
-    const tableElement = tableRef.current;
-    const currentWidth = tableElement?.getBoundingClientRect().width;
-
-    if (currentWidth === this.tableWidth) {
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      this.tableWidth = currentWidth ?? 0;
-      const tableStyles = tableElement?.style;
-      const header = tableElement?.querySelector('[data-ui-name="DataTable.Head"]');
-      const accordionRows = this.accordionRowsRef.current;
-
-      if (tableStyles && header && accordionRows) {
-        let gridTemplateAreas = '';
-
-        for (let i = 0; i < tableStyles.length; i++) {
-          const key = tableStyles[i];
-          if (key.startsWith('--gridTemplateAreas')) {
-            gridTemplateAreas = tableStyles.getPropertyValue(key);
-            accordionRows.style.setProperty(key, gridTemplateAreas);
-          }
-        }
-        const gridTemplateColumns: string[] = [];
-        gridTemplateAreas.split(' ').forEach((templateArea) => {
-          const headerCell = header.querySelector(`[role="columnheader"][name="${templateArea}"]`);
-          const width = headerCell?.getBoundingClientRect().width;
-          if (width === undefined) {
-            gridTemplateColumns.push('auto');
-          } else {
-            gridTemplateColumns.push(`min-max(0, ${width}px)`);
-          }
-        });
-        accordionRows.style.setProperty('grid-template-columns', gridTemplateColumns.join(' '));
-      }
-    });
   }
 }

@@ -10,6 +10,7 @@ SAccordionRows {
   transition-property: max-height;
   transition-duration: var(--duration);
   transition-timing-function: linear;
+  grid-template-columns: subgrid;
 }
 
 SBody[compact] {
