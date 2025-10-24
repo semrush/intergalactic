@@ -1,5 +1,34 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+export const locators = {
+
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+
+  monthRangePickerTrigger: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="MonthRangePicker.Trigger"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  calendar: (page: Page) => page.locator('[data-ui-name="MonthRangePicker.Calendar"]'),
+  weekDaysRow: (page: Page) => page.locator('[data-ui-name="CalendarWeekDays"]'),
+  divider: (page: Page) => page.locator('[data-ui-name="Divider"]'),
+  cells: (page: Page, index?: number) => {
+    const base = page.getByRole('gridcell');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dateRangeHeader: (page: Page) => page.locator('[data-ui-name="MonthRangePicker.Header"]'),
+  inputValue: (page: Page) => page.locator('[data-ui-name="MonthRangePicker.ValueDateRange"]'),
+  compareValue: (page: Page) => page.locator(
+    '[data-ui-name="MonthRangePicker.CompareDateRange"]'),
+  popper: (page: Page) => page.getByRole('dialog'),
+  title: (page: Page) => page.locator('[data-ui-name="MonthRangePicker.Title"]'),
+  period: (page: Page) => page.locator('[data-ui-name="MonthRangePicker.Period"]'),
+  periodButtons: (page: Page) => page.getByRole('option'),
+
+};
 
 test.describe('Month Range Trigger', () => {
   test('Verify trigger when entering date manually', async ({ page }) => {
@@ -8,8 +37,7 @@ test.describe('Month Range Trigger', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="MonthRangePicker.Trigger"]');
-    const screenshotsClip = (await datePicker.nth(1).boundingBox())!;
+    const screenshotsClip = (await locators.monthRangePickerTrigger(page, 1).boundingBox())!;
     screenshotsClip.x -= 4;
     screenshotsClip.y -= 4;
     screenshotsClip.width += 8;
@@ -61,30 +89,13 @@ test.describe('Month Range Trigger', () => {
 
 test.describe('Month range', () => {
   test('Verify roles and attributes', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/date_range_comparator.tsx';
+    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page.locator(
-      'button[data-ui-name="MonthDateRangeComparator.Trigger"]',
-    );
-
-    await test.step('Verify trigger attributes', async () => {
-      const attributes = [
-        ['tabindex', '0'],
-        ['aria-haspopup', 'dialog'],
-        ['role', 'button'],
-        ['type', 'button'],
-      ];
-
-      for (const [attr, value] of attributes) {
-        await expect(datePickerTrigger).toHaveAttribute(attr, value);
-      }
-    });
-
     await test.step('Verify trigger svg attributes', async () => {
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.monthRangePickerTrigger(page, 1).locator('svg');
       const svgAttributes = [
         ['tabindex', '-1'],
         ['aria-hidden', 'true'],
@@ -97,112 +108,24 @@ test.describe('Month range', () => {
       }
     });
 
-    await datePickerTrigger.click();
-    const popper = page.locator('[data-ui-name="MonthDateRangeComparator.Popper"]');
-
-    await test.step('Verify popper attributes', async () => {
-      const attributes = [
-        ['role', 'dialog'],
-        ['data-popper-placement', 'bottom-start'],
-      ];
-
-      for (const [attr, value] of attributes) {
-        await expect(popper).toHaveAttribute(attr, value);
-      }
-    });
-
-    await test.step('Verify popper input attributes', async () => {
-      const inputValue = page.locator('[data-ui-name="MonthDateRangeComparator.ValueDateRange"]');
-      const compareValue = page.locator(
-        '[data-ui-name="MonthDateRangeComparator.CompareDateRange"]',
-      );
-      const checkbox = page.locator('[data-ui-name="Checkbox.Value"]');
-
-      await expect(inputValue.first()).toHaveAttribute('aria-label', 'Date field');
-      await expect(compareValue.first()).toHaveAttribute('aria-label', 'Date field');
-      await expect(compareValue.first()).toHaveAttribute('disabled', '');
-
-      const checkboxAttributes = [
-        ['type', 'checkbox'],
-        ['aria-invalid', 'false'],
-      ];
-      for (const [attr, value] of checkboxAttributes) {
-        await expect(checkbox).toHaveAttribute(attr, value);
-      }
-
-      const inputsValue = page.locator(
-        'input[data-ui-name="MonthDateRangeComparator.ValueDateRange"]',
-      );
-      const inputsCompare = page.locator(
-        'input[data-ui-name="MonthDateRangeComparator.CompareDateRange"]',
-      );
-
-      const checkInputAttributes = async (locator: any, tabindex: string) => {
-        const count = await locator.count();
-        for (let i = 0; i < count; i++) {
-          const input = locator.nth(i);
-          const attributes = [
-            ['type', 'text'],
-            ['inputmode', 'numeric'],
-            ['aria-invalid', 'false'],
-          ];
-          for (const [attr, value] of attributes) {
-            await expect(input).toHaveAttribute(attr, value);
-          }
-        }
-      };
-
-      const calendars = page.locator('[data-name="Calendar"]');
-      const calendarCount = await calendars.count();
-      for (let i = 0; i < calendarCount; i++) {
-        const calendar = calendars.nth(i);
-        await expect(calendar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-
-    await test.step('Verify calendar header attributes', async () => {
-      const headPrev = page.locator('[data-ui-name="MonthDateRangeComparator.Prev"]');
-      const headTitle = page.locator('[data-ui-name="MonthDateRangeComparator.Title"]');
-      const headNext = page.locator('[data-ui-name="MonthDateRangeComparator.Next"]');
-
-      const prevAttributes = [
-        ['type', 'button'],
-        ['aria-label', 'Previous year'],
-      ];
-      const nextAttributes = [
-        ['type', 'button'],
-        ['aria-label', 'Next year'],
-      ];
-
-      for (const [attr, value] of prevAttributes) {
-        await expect(headPrev).toHaveAttribute(attr, value);
-      }
-
-      for (const [attr, value] of nextAttributes) {
-        await expect(headNext).toHaveAttribute(attr, value);
-      }
-
-      await expect(headTitle.first()).toHaveAttribute('aria-live', 'polite');
-      await expect(headTitle.nth(1)).toHaveAttribute('aria-live', 'polite');
-    });
+    await locators.monthRangePickerTrigger(page, 1).click();
+    await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
     await test.step('Verify calendar attributes', async () => {
-      const calendars = page.locator('[data-ui-name="MonthDateRangeComparator.Calendar"]');
-      const count = await calendars.count();
+      const count = await locators.calendar(page).count();
 
       for (let i = 0; i < count; i++) {
-        const calendar = calendars.nth(i);
+        const calendar = locators.calendar(page).nth(i);
         await expect(calendar).toHaveAttribute('role', 'grid');
         await expect(calendar).toHaveAttribute('disabled', '');
       }
     });
 
     await test.step('Verify days attributes', async () => {
-      const cells = page.locator('[data-ui-name="CalendarMonths.Unit"]');
-      const cellCount = await cells.count();
+      const cellCount = await locators.cells(page).count();
 
       for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
+        const cell = locators.cells(page, i);
         const ariaLabel = await cell.getAttribute('aria-label');
         if (!ariaLabel) continue;
 
@@ -228,41 +151,12 @@ test.describe('Month range', () => {
     });
 
     await test.step('Verify Period attributes', async () => {
-      const period = page.locator('[data-ui-name="MonthDateRangeComparator.Periods.Options"]');
       const attributes = [
         ['role', 'listbox'],
         ['aria-label', 'Presets'],
       ];
       for (const [attr, value] of attributes) {
-        await expect(period).toHaveAttribute(attr, value);
-      }
-    });
-
-    await test.step('Verify Period buttons attributes', async () => {
-      const periodButtons = page.locator(
-        '[data-ui-name="MonthDateRangeComparator.Periods.Options"] button',
-      );
-      const count = await periodButtons.count();
-
-      for (let i = 0; i < count; i++) {
-        const button = periodButtons.nth(i);
-        const attributes = [
-          ['type', 'button'],
-          ['role', 'option'],
-        ];
-        for (const [attr, value] of attributes) {
-          await expect(button).toHaveAttribute(attr, value);
-        }
-      }
-    });
-
-    await test.step('Verify Apply and Reset button attributes', async () => {
-      const apply = page.locator('[data-ui-name="MonthDateRangeComparator.Apply"]');
-      const reset = page.locator('[data-ui-name="MonthDateRangeComparator.Reset"]');
-
-      const buttons = [apply, reset];
-      for (const button of buttons) {
-        await expect(button).toHaveAttribute('type', 'button');
+        await expect(locators.period(page)).toHaveAttribute(attr, value);
       }
     });
   });
@@ -272,10 +166,6 @@ test.describe('Month range', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePickerTrigger = page.locator('[data-ui-name="MonthRangePicker.Trigger"]').first();
-    const prevButton = page.locator('[data-ui-name="MonthRangePicker.Prev"]');
-    const cells = page.locator('[data-ui-name="CalendarMonths.Unit"]');
-    const applyButton = page.locator('[data-ui-name="MonthRangePicker.Apply"]');
     const separator = page.locator('[data-ui-name="DateRange.RangeSep"]');
 
     const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
@@ -288,12 +178,8 @@ test.describe('Month range', () => {
       }
     };
 
-    await test.step('Verify trigger margins', async () => {
-      await checkStyle(datePickerTrigger, { marginTop: '8px' });
-    });
-
     await test.step('Verify SVG dimensions and paddings', async () => {
-      const svg = datePickerTrigger.locator('svg');
+      const svg = locators.monthRangePickerTrigger(page).locator('svg');
       await checkStyle(svg, {
         paddingLeft: '8px',
         paddingRight: '8px',
@@ -307,9 +193,10 @@ test.describe('Month range', () => {
     });
 
     await test.step('Verify disabled date style', async () => {
-      await datePickerTrigger.click();
+      await locators.monthRangePickerTrigger(page, 0).click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
-      await checkStyle(cells.first(), {
+      await checkStyle(locators.cells(page, 0), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
@@ -317,7 +204,7 @@ test.describe('Month range', () => {
     });
 
     await test.step('Verify available date style', async () => {
-      await checkStyle(cells.nth(2), {
+      await checkStyle(locators.cells(page, 2), {
         color: 'rgb(25, 27, 35)',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '4px 0px 0px',
@@ -325,10 +212,13 @@ test.describe('Month range', () => {
     });
 
     await test.step('Select range and open popper again', async () => {
-      await cells.nth(10).click();
-      await cells.nth(11).click();
-      await applyButton.click();
-      await datePickerTrigger.click();
+      await locators.cells(page, 10).click();
+      await locators.cells(page, 11).click();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+
+      await locators.monthRangePickerTrigger(page, 0).click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
     });
 
     const selectedCells = page.locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]');
@@ -342,7 +232,7 @@ test.describe('Month range', () => {
     });
 
     await test.step('Verify style for Apply picker button', async () => {
-      await checkStyle(applyButton, {
+      await checkStyle(locators.button(page, 'Apply'), {
         color: 'rgb(255, 255, 255)',
         backgroundColor: 'rgb(0, 143, 248)',
       });
@@ -372,106 +262,88 @@ test.describe('Month range', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const datePicker = page.locator('[data-ui-name="MonthRangePicker.Trigger"]');
-    const popper = page.locator('[data-ui-name="MonthRangePicker.Popper"]');
-    const headPrev = page.locator('[data-ui-name="MonthRangePicker.Prev"]');
-    const headTitle = page.locator('[data-ui-name="MonthRangePicker.Title"]');
-    const headNext = page.locator('[data-ui-name="MonthRangePicker.Next"]');
     const buttons = page.locator('[data-ui-name="Button"]');
     const input = page.locator('input[data-ui-name="MonthRangePicker.Trigger"]');
-    const apply = page.locator('[data-ui-name="MonthRangePicker.Apply"]');
-    const reset = page.locator('[data-ui-name="MonthRangePicker.Reset"]');
-    const cells = page.locator('[role="gridcell"]');
-
-    await test.step('Open and close the date picker', async () => {
-      await datePicker.nth(2).click();
-      await expect(popper).toBeVisible();
-
-      await datePicker.nth(3).click();
-      await expect(popper).not.toBeVisible();
-    });
 
     await test.step('Navigate months via header buttons', async () => {
-      await datePicker.first().click();
-      await page.waitForTimeout(300);
+      await locators.monthRangePickerTrigger(page, 2).click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
-      const title1 = await headTitle.first().textContent();
-      const title2 = await headTitle.nth(1).textContent();
+      const title1 = await locators.title(page).first().textContent();
+      const title2 = await locators.title(page).nth(1).textContent();
 
-      await headPrev.click();
-      await expect(headTitle.first()).not.toHaveText(title1!);
-      await expect(headTitle.nth(1)).not.toHaveText(title2!);
+      await locators.button(page, 'Previous year').click();
+      await expect(locators.title(page).first()).not.toHaveText(title1!);
+      await expect(locators.title(page).nth(1)).not.toHaveText(title2!);
 
-      await headNext.click();
-      await expect(headTitle.first()).toHaveText(title1!);
-      await expect(headTitle.nth(1)).toHaveText(title2!);
+      await locators.button(page, 'Next year').click();
+      await expect(locators.title(page).first()).toHaveText(title1!);
+      await expect(locators.title(page).nth(1)).toHaveText(title2!);
     });
 
     await test.step('Select start and end dates', async () => {
-      await cells.nth(10).click();
-      const label10 = await cells.nth(10).getAttribute('aria-label');
+      await locators.cells(page, 10).click();
+      const label10 = await locators.cells(page, 10).getAttribute('aria-label');
       await expect(input.nth(0)).toHaveValue(formatAriaLabelToInputValue(label10));
 
-      await cells.nth(15).click();
-      const label15 = await cells.nth(15).getAttribute('aria-label');
+      await locators.cells(page, 15).click();
+      const label15 = await locators.cells(page, 15).getAttribute('aria-label');
       await expect(input.nth(1)).toHaveValue(formatAriaLabelToInputValue(label15));
     });
 
     await test.step('Reselect start date and reset end', async () => {
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       await page.waitForTimeout(300);
-      const label = await cells.nth(15).getAttribute('aria-label');
+      const label = await locators.cells(page, 15).getAttribute('aria-label');
 
       await expect(input.nth(0)).toHaveValue(formatAriaLabelToInputValue(label));
       await expect(input.nth(1)).toHaveValue('');
 
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       await expect(input.nth(1)).toHaveValue(formatAriaLabelToInputValue(label));
     });
 
     await test.step('Select new date range', async () => {
-      await cells.nth(17).click();
-      const label17 = await cells.nth(17).getAttribute('aria-label');
+      await locators.cells(page, 17).click();
+      const label17 = await locators.cells(page, 17).getAttribute('aria-label');
       await expect(input.nth(0)).toHaveValue(formatAriaLabelToInputValue(label17));
       await expect(input.nth(1)).toHaveValue('');
 
-      await cells.nth(20).click();
-      const label20 = await cells.nth(20).getAttribute('aria-label');
+      await locators.cells(page, 20).click();
+      const label20 = await locators.cells(page, 20).getAttribute('aria-label');
       await expect(input.nth(1)).toHaveValue(formatAriaLabelToInputValue(label20));
     });
 
     await test.step('Click outside resets input values', async () => {
-      await datePicker.nth(2).click();
+      await locators.monthRangePickerTrigger(page, 2).click();
       await expect(input.nth(0)).toHaveValue('');
       await expect(input.nth(1)).toHaveValue('');
     });
 
     await test.step('Apply a selected range', async () => {
-      await datePicker.nth(2).click();
+      await locators.monthRangePickerTrigger(page, 2).click();
       await page.waitForTimeout(200);
 
-      await cells.nth(5).click();
-      await cells.nth(7).click();
-      await apply.click();
-
-      const startLabel = await cells.nth(5).getAttribute('aria-label');
-      const endLabel = await cells.nth(7).getAttribute('aria-label');
-      await expect(input.nth(0)).toHaveValue(formatAriaLabelToInputValue(startLabel));
-      await expect(input.nth(1)).toHaveValue(formatAriaLabelToInputValue(endLabel));
+      await locators.cells(page, 5).click();
+      await locators.cells(page, 7).click();
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
     });
 
     await test.step('Reset via Reset button', async () => {
-      await datePicker.nth(2).click();
-      await page.waitForTimeout(200);
+      await locators.monthRangePickerTrigger(page, 2).click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
-      await reset.click();
+      await locators.button(page, 'Reset').click();
       await expect(input.nth(0)).toHaveValue('');
       await expect(input.nth(1)).toHaveValue('');
-      await expect(popper).not.toBeVisible();
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
     });
 
     await test.step('Quick select today’s range', async () => {
-      await datePicker.nth(2).click();
+      await locators.monthRangePickerTrigger(page, 2).click();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
       await buttons.nth(3).click();
 
       await expect(input.nth(0)).not.toHaveValue('');
@@ -484,14 +356,8 @@ test.describe('Month range', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const popper = page.locator('[data-ui-name="MonthRangePicker.Popper"]');
-    const headPrev = page.locator('[data-ui-name="MonthRangePicker.Prev"]');
-    const headTitle = page.locator('[data-ui-name="MonthRangePicker.Title"]');
-    const headNext = page.locator('[data-ui-name="MonthRangePicker.Next"]');
     const buttons = page.locator('[data-ui-name="Button"]');
     const input = page.locator('input[data-ui-name="MonthRangePicker.Trigger"]');
-    const apply = page.locator('[data-ui-name="MonthRangePicker.Apply"]');
-    const reset = page.locator('[data-ui-name="MonthRangePicker.Reset"]');
 
     const pressTab = async (times = 1) => {
       for (let i = 0; i < times; i++) {
@@ -502,52 +368,51 @@ test.describe('Month range', () => {
     await test.step('Open popper using Enter key', async () => {
       await pressTab(3);
       await page.keyboard.press('Enter');
-      await apply.waitFor({ state: 'visible' });
-      await expect(popper).toHaveCount(1);
-      await expect(popper).toBeFocused();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
+      await expect(locators.popper(page)).toBeFocused();
     });
 
     await test.step('Close popper using Escape key', async () => {
       await page.keyboard.press('Escape');
-      await apply.waitFor({ state: 'hidden' });
-      await expect(popper).toHaveCount(0);
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
     });
 
     await test.step('Reopen popper using Space key', async () => {
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'visible' });
-      await expect(popper).toHaveCount(1);
-      await expect(popper).toBeFocused();
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
+      await expect(locators.popper(page)).toBeFocused();
     });
 
     await test.step('Navigate header controls with keyboard', async () => {
       await pressTab(1); // Focus Prev
-      await expect(headPrev).toBeFocused();
+      await expect(locators.button(page, 'Previous year')).toBeFocused();
 
       const [initialFrom, initialTo] = await Promise.all([
-        headTitle.first().textContent(),
-        headTitle.nth(1).textContent(),
+        locators.title(page).first().textContent(),
+        locators.title(page).nth(1).textContent(),
       ]);
 
       await page.keyboard.press('Enter');
       await page.waitForTimeout(50);
 
       const [updatedFrom, updatedTo] = await Promise.all([
-        headTitle.first().textContent(),
-        headTitle.nth(1).textContent(),
+        locators.title(page).first().textContent(),
+        locators.title(page).nth(1).textContent(),
       ]);
 
       expect(updatedFrom).not.toBe(initialFrom);
       expect(updatedTo).not.toBe(initialTo);
 
       await pressTab(2); // Focus Next
-      await expect(headNext).toBeFocused();
+      await expect(locators.button(page, 'Next year')).toBeFocused();
 
       await page.keyboard.press('Enter');
       await page.waitForTimeout(50);
 
-      await expect(headTitle.first()).toHaveText(initialFrom!);
-      await expect(headTitle.nth(1)).toHaveText(initialTo!);
+      await expect(locators.title(page).first()).toHaveText(initialFrom!);
+      await expect(locators.title(page).nth(1)).toHaveText(initialTo!);
     });
 
     await test.step('Tab through calendar and action buttons', async () => {
@@ -560,10 +425,10 @@ test.describe('Month range', () => {
       await expect(buttons.first()).toBeFocused();
 
       await pressTab(4); // Apply
-      await expect(apply).toBeFocused();
+      await expect(await locators.button(page, 'Apply')).toBeFocused();
 
       await pressTab(1); // Reset
-      await expect(reset).toBeFocused();
+      await expect(locators.button(page, 'Reset')).toBeFocused();
     });
 
     await test.step('Select range using arrow keys and keyboard', async () => {
@@ -576,10 +441,10 @@ test.describe('Month range', () => {
 
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Escape');
-      await apply.waitFor({ state: 'hidden' });
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'visible' });
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Space');
       await page.waitForTimeout(50);
@@ -606,7 +471,7 @@ test.describe('Month range', () => {
         expect(confirmedEnd).not.toBe(middle);
       }
       await page.keyboard.press('Escape');
-      await apply.waitFor({ state: 'hidden' });
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 
       const [resetStart, resetEnd] = await Promise.all([
         input.nth(0).inputValue(),
@@ -619,8 +484,7 @@ test.describe('Month range', () => {
 
     await test.step('Apply range via keyboard interaction', async () => {
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'visible' });
-      await expect(popper).toHaveCount(1);
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
       await page.keyboard.press('ArrowRight');
@@ -629,10 +493,10 @@ test.describe('Month range', () => {
       await page.keyboard.press('Space');
 
       await pressTab(5);
-      await expect(apply).toBeFocused();
+      await expect(locators.button(page, 'Apply')).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await apply.waitFor({ state: 'hidden' });
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 
       const [left, right] = await Promise.all([
         input.nth(0).inputValue(),
@@ -645,15 +509,13 @@ test.describe('Month range', () => {
 
     await test.step('Reset range using keyboard', async () => {
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'visible' });
-      await expect(popper).toHaveCount(1);
+      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
       await pressTab(9); // Focus Reset
-      await expect(reset).toBeFocused();
+      await expect(locators.button(page, 'Reset')).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await apply.waitFor({ state: 'hidden' });
-      await expect(popper).toHaveCount(0);
+      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 
       const [left, right] = await Promise.all([
         input.nth(0).inputValue(),

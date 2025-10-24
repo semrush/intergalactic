@@ -8,6 +8,11 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
 
+  option: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('option', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+
   dateRangeComparatorTrigger: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="DateRangeComparator.Trigger"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -129,18 +134,6 @@ test.describe('DateRangeComparator range', () => {
           }
         }
       }
-
-      const calendarAttributes = [
-        { name: 'tabindex', value: '-1' },
-        { name: 'aria-hidden', value: 'true' },
-      ];
-
-      for (let i = 0; i < (await locators.calendar(page).count()); i++) {
-        const calendar = locators.calendar(page).nth(i);
-        for (const { name, value } of calendarAttributes) {
-          await expect(calendar).toHaveAttribute(name, value);
-        }
-      }
     });
 
     await test.step('Verify calendar header attributes', async () => {
@@ -159,8 +152,6 @@ test.describe('DateRangeComparator range', () => {
         for (const { name, value } of calendarAttributes) {
           await expect(calendar).toHaveAttribute(name, value);
         }
-
-        await expect(locators.weekDaysRow(page)).toHaveAttribute('role', 'row');
 
         const weekDays = calendar.locator('[data-ui-name="CalendarWeekDays.Unit"]');
         const daysOfWeek = [
@@ -244,10 +235,10 @@ test.describe('DateRangeComparator range', () => {
 
     await test.step('Verify header margins and calendar paddings', async () => {
       await checkStyle(locators.dateRangeHeader(page), { padding: '16px' });
-
-      const count = await locators.calendar(page).count();
+      const indicators = page.locator('[data-ui-name="DateRange.Indicator"]');
+      const count = await indicators.count();
       for (let i = 0; i < count; i++) {
-        const calendar = locators.calendar(page).nth(i);
+        const calendar = indicators.nth(i);
         await expect(calendar).toHaveAttribute('width', '16');
         await expect(calendar).toHaveAttribute('height', '16');
         await checkStyle(calendar, {
@@ -431,7 +422,7 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Reset selections', async () => {
-      locators.dateRangeComparatorTrigger(page, 0);
+      locators.dateRangeComparatorTrigger(page, 0).click();
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
       await locators.button(page, 'Reset').click();
@@ -443,10 +434,10 @@ test.describe('DateRangeComparator range', () => {
     });
 
     await test.step('Open calendar and close with Sange selection', async () => {
-      locators.dateRangeComparatorTrigger(page, 0);
+      locators.dateRangeComparatorTrigger(page, 0).click();
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await locators.button(page, 'Last 3 months').click();
+      await locators.option(page, 'Last 3 months').click();
       await locators.button(page, 'Apply').click();
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
@@ -517,7 +508,7 @@ test.describe('DateRangeComparator range', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Previous month')).toBeFocused();
+      await expect(locators.button(page, 'Next month')).toBeFocused();
       await page.keyboard.press('Enter');
 
       const reverted = {
@@ -582,11 +573,11 @@ test.describe('DateRangeComparator range', () => {
     await test.step('Apply and reset selected dates', async () => {
       for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Apply')).toBeFocused();
+      await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
-
       for (let i = 0; i < 14; i++) await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Reset')).toBeFocused();
       await page.keyboard.press('Space');

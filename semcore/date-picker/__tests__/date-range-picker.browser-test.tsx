@@ -7,7 +7,10 @@ export const locators = {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
   },
-
+  option: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('option', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   dateRangePickerTrigger: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -23,12 +26,7 @@ export const locators = {
 
   popper: (page: Page) => page.getByRole('dialog'),
   title: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Title"]'),
-  period: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Periods.Options"]'),
-
-  inputValues: (page: Page) => page.locator('input[data-ui-name="DateRangePicker.ValueDateRange"]'),
-  compareValues: (page: Page) => page.locator(
-    'input[data-ui-name="DateRangePicker.CompareDateRange"]'),
-
+  period: (page: Page) => page.locator('[data-ui-name="DateRangePicker.Period"]'),
 };
 
 test.describe('Date Range Trigger', () => {
@@ -345,62 +343,54 @@ test.describe('Date range with standart ranges', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
-    const headTitle = page.locator('[data-ui-name="DateRangePicker.Title"]');
-    const headNext = page.locator('[data-ui-name="DateRangePicker.Next"]');
     const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
-    const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
-    const reset = page.locator('[data-ui-name="DateRangePicker.Reset"]');
-    const buttons = page.locator('[data-ui-name="Button"]');
-    const cells = page.locator('[role="gridcell"]');
 
     await test.step('Click on date picker to open popper', async () => {
       await locators.dateRangePickerTrigger(page, 2).click();
-      await apply.waitFor({ state: 'visible' });
-      await expect(popper).toHaveCount(1);
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+      await expect(locators.popper(page)).toHaveCount(1);
       await locators.dateRangePickerTrigger(page, 3).click();
-      await apply.waitFor({ state: 'hidden' });
-      await expect(popper).toHaveCount(0);
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
     });
 
     await test.step('Open date picker and check titles', async () => {
       await locators.dateRangePickerTrigger(page, 0).click();
-      await apply.waitFor({ state: 'visible' });
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      const initialTitle1 = await headTitle.first().textContent();
-      const initialTitle2 = await headTitle.nth(1).textContent();
+      const initialTitle1 = await locators.title(page).first().textContent();
+      const initialTitle2 = await locators.title(page).nth(1).textContent();
 
       await test.step('Click on "Previous month" button', async () => {
-        await headPrev.click();
-        await expect(headTitle.first()).not.toHaveText(initialTitle1!);
-        await expect(headTitle.nth(1)).not.toHaveText(initialTitle2!);
+        await locators.button(page, 'Previous month').click();
+        await expect(locators.title(page).first()).not.toHaveText(initialTitle1!);
+        await expect(locators.title(page).nth(1)).not.toHaveText(initialTitle2!);
       });
 
       await test.step('Click on "Next month" button', async () => {
-        await headNext.click();
-        await expect(headTitle.first()).toHaveText(initialTitle1!);
-        await expect(headTitle.nth(1)).toHaveText(initialTitle2!);
+        await locators.button(page, 'Next month').click();
+        await expect(locators.title(page).first()).toHaveText(initialTitle1!);
+        await expect(locators.title(page).nth(1)).toHaveText(initialTitle2!);
       });
     });
     let expectedInputValue15 = '';
     await test.step('Select date cells and validate input values', async () => {
-      await cells.nth(10).click();
+      await locators.cells(page, 10).click();
       const inputValue = await input.nth(0).inputValue();
-      const calendarAriaLabel = await cells.nth(10).getAttribute('aria-label');
+      const calendarAriaLabel = await locators.cells(page, 10).getAttribute('aria-label');
       const expectedInputValue = formatAriaLabelToInputValue(calendarAriaLabel);
 
       await expect(inputValue).toBe(expectedInputValue);
-      await expect(popper).toBeVisible();
 
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       const inputValue15 = await input.nth(1).inputValue();
-      const calendarAriaLabel15 = await cells.nth(15).getAttribute('aria-label');
+      const calendarAriaLabel15 = await locators.cells(page, 15).getAttribute('aria-label');
       expectedInputValue15 = formatAriaLabelToInputValue(calendarAriaLabel15);
       await expect(inputValue15).toBe(expectedInputValue15);
     });
 
     await test.step('Reset the selected dates', async () => {
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       await page.waitForTimeout(300);
 
       const inputValue1 = await input.nth(0).inputValue();
@@ -409,7 +399,7 @@ test.describe('Date range with standart ranges', () => {
       await expect(inputValue1).toBe(expectedInputValue15);
       await expect(inputValue15_1).toBe('');
 
-      await cells.nth(15).click();
+      await locators.cells(page, 15).click();
       const inputValue2 = await input.nth(0).inputValue();
       const inputValue15_2 = await input.nth(1).inputValue();
       await expect(inputValue15_2).toBe(expectedInputValue15);
@@ -417,17 +407,18 @@ test.describe('Date range with standart ranges', () => {
     });
 
     await test.step('Click on apply and check input values', async () => {
-      await cells.nth(20).click();
-      await cells.nth(25).click();
+      await locators.cells(page, 20).click();
+      await locators.cells(page, 25).click();
 
       const inputValue20 = await input.nth(0).inputValue();
-      const calendarAriaLabel20 = await cells.nth(20).getAttribute('aria-label');
+      const calendarAriaLabel20 = await locators.cells(page, 20).getAttribute('aria-label');
       const expectedInputValue20 = formatAriaLabelToInputValue(calendarAriaLabel20);
 
       const inputValue25 = await input.nth(1).inputValue();
-      const calendarAriaLabel25 = await cells.nth(25).getAttribute('aria-label');
-      await apply.click();
-      await apply.waitFor({ state: 'hidden' });
+      const calendarAriaLabel25 = await locators.cells(page, 25).getAttribute('aria-label');
+      await locators.button(page, 'Apply').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
       await expect(inputValue20).toBe(expectedInputValue20);
 
       const expectedInputValue25 = formatAriaLabelToInputValue(calendarAriaLabel25);
@@ -436,21 +427,22 @@ test.describe('Date range with standart ranges', () => {
 
     await test.step('Reset date selection and validate input', async () => {
       await locators.dateRangePickerTrigger(page, 2).click();
-      await reset.click();
-      await apply.waitFor({ state: 'hidden' });
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+      await locators.button(page, 'Reset').click();
+      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
       const inputValueReset1 = await input.nth(0).inputValue();
       const inputValueReset2 = await input.nth(1).inputValue();
       await expect(inputValueReset1).toBe('');
       await expect(inputValueReset2).toBe('');
-      await expect(popper).not.toBeVisible();
     });
 
     await test.step('Click on buttons and check input values', async () => {
       await locators.dateRangePickerTrigger(page, 2).click();
-      await apply.waitFor({ state: 'visible' });
+      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await buttons.nth(3).click();
+      await locators.option(page, 'Last month').click();
       const inputValueDate1 = await input.nth(0).inputValue();
       const inputValueDate2 = await input.nth(1).inputValue();
       await expect(inputValueDate1).not.toBe('');
@@ -464,62 +456,53 @@ test.describe('Date range with standart ranges', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = page.locator('[data-ui-name="DateRangePicker.Trigger"]');
-    const popper = page.locator('[data-ui-name="DateRangePicker.Popper"]');
-    const headPrev = page.locator('[data-ui-name="DateRangePicker.Prev"]');
-    const headTitle = page.locator('[data-ui-name="DateRangePicker.Title"]');
-    const headNext = page.locator('[data-ui-name="DateRangePicker.Next"]');
     const buttons = page.locator('[data-ui-name="Button"]');
     const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
-    const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
-    const reset = page.locator('[data-ui-name="DateRangePicker.Reset"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-    await expect(datePicker.nth(4)).not.toBeFocused();
-    await expect(popper).toBeFocused();
+    await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
 
     await page.keyboard.press('Escape');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
     await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
-    await expect(datePicker.nth(4)).not.toBeFocused();
-    await expect(popper).toBeFocused();
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
+    await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
 
     if (browserName === 'webkit') return;
 
     await page.keyboard.press('Tab');
-    await expect(headPrev).toBeFocused();
-    await headPrev.hover();
+    await expect(locators.button(page, 'Previous month')).toBeFocused();
+    await locators.button(page, 'Previous month').hover();
     const [initialTitleFrom, initialTitleTo] = await Promise.all([
-      headTitle.first().textContent(),
-      headTitle.nth(1).textContent(),
+      locators.title(page).first().textContent(),
+      locators.title(page).nth(1).textContent(),
     ]);
 
     await page.keyboard.press('Enter');
     const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
-      headTitle.first().textContent(),
-      headTitle.nth(1).textContent(),
+      locators.title(page).first().textContent(),
+      locators.title(page).nth(1).textContent(),
     ]);
     expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
     expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await expect(headNext).toBeFocused();
+    await expect(locators.button(page, 'Next month')).toBeFocused();
 
     await page.keyboard.press('Enter');
     const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
-      headTitle.first().textContent(),
-      headTitle.nth(1).textContent(),
+      locators.title(page).first().textContent(),
+      locators.title(page).nth(1).textContent(),
     ]);
     expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
     expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
@@ -532,13 +515,13 @@ test.describe('Date range with standart ranges', () => {
     await expect(buttons.first()).toBeFocused();
 
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
-    await expect(apply).toBeFocused();
+    await expect(locators.button(page, 'Apply')).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(reset).toBeFocused();
+    await expect(locators.button(page, 'Reset')).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(popper).toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
 
     await page.keyboard.press('ArrowLeft');
     const [initialValue1, initialValue2] = await Promise.all([
@@ -547,8 +530,9 @@ test.describe('Date range with standart ranges', () => {
     ]);
 
     await page.keyboard.press('Escape');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
+    await expect(locators.popper(page)).toHaveCount(0);
     const [value1_1, value2_1] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
@@ -557,8 +541,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_1).toBe(initialValue2);
 
     await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Space');
     const [value1_2, value2_2] = await Promise.all([
@@ -577,8 +561,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_3).not.toBe(value2_2);
 
     await page.keyboard.press('Escape');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
     const [value1_4, value2_4] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
@@ -587,8 +571,8 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_4).toBe(initialValue2);
 
     await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
@@ -597,8 +581,7 @@ test.describe('Date range with standart ranges', () => {
 
     for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
     const [value1_6, value2_6] = await Promise.all([
       input.nth(2).inputValue(),
@@ -608,23 +591,21 @@ test.describe('Date range with standart ranges', () => {
     expect(value2_6).not.toBe(value2_4);
 
     await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
     await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'visible' });
-    await expect(popper).toHaveCount(1);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+
     for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
-    await expect(reset).toBeFocused();
+    await expect(locators.button(page, 'Reset')).toBeFocused();
 
     await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(popper).toHaveCount(0);
+    await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+
     const [value1_5, value2_5] = await Promise.all([
       input.nth(2).inputValue(),
       input.nth(3).inputValue(),
@@ -642,10 +623,9 @@ test.describe('Date Range picker with custom ranges', () => {
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
-
     await page.keyboard.type('0505202310052023');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -659,17 +639,14 @@ test.describe('Date range picker props', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
 
-    const cells = page.locator('[role="gridcell"]');
-
-    await cells.nth(3).hover();
+    await locators.cells(page, 3).hover();
     await expect(page).toHaveScreenshot();
 
-    const apply = page.locator('[data-ui-name="DateRangePicker.Apply"]');
-
-    await apply.hover();
+    await locators.button(page, 'Apply').hover();
     await expect(page).toHaveScreenshot();
   });
 
@@ -682,6 +659,7 @@ test.describe('Date range picker props', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
   });
@@ -694,8 +672,7 @@ test.describe('Week picker', () => {
 
     await page.setContent(htmlContent);
 
-    const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
-    const screenshotsClip = (await datePicker.first().boundingBox())!;
+    const screenshotsClip = (await locators.dateRangePickerTrigger(page, 0).boundingBox())!;
     screenshotsClip.x -= 4;
     screenshotsClip.y -= 4;
     screenshotsClip.width += 8;
@@ -709,36 +686,33 @@ test.describe('Week picker', () => {
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
   });
 
-  const setupDatePicker = async (page: any) => {
+  test('Verify week picker interacting by mouse', async ({ page }) => {
     const standPath = 'stories/components/date-picker/docs/examples/week_picker.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-
-    const datePicker = await page.locator('[data-ui-name="DateRangePicker.Trigger"]');
-    const popper = await page.locator('[data-ui-name="DateRangePicker.Popper"]');
-
     await page.keyboard.press('Tab');
     await page.keyboard.type('05012020');
 
-    await datePicker.first().click();
-    return { datePicker, popper };
-  };
-
-  test('Verify week picker interacting by mouse', async ({ page }) => {
-    const { datePicker, popper } = await setupDatePicker(page);
+    await locators.dateRangePickerTrigger(page, 0).click();
+    await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
 
-    const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
-    await cells.nth(15).click(); // Select a day
-    await expect(popper).not.toBeVisible();
+    await locators.cells(page, 15).click(); // Select a day
+    await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
+
+    await expect(locators.popper(page)).not.toBeVisible();
   });
 
   test('Verify week picker interacting by keyboard', async ({ page }) => {
-    const { datePicker, popper } = await setupDatePicker(page);
+    const standPath = 'stories/components/date-picker/docs/examples/week_picker.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('05012020');
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
+    await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowRight');

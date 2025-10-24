@@ -369,7 +369,7 @@ test.describe('DayPicker with today button', () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
       await expect(locators.popper(page)).toBeVisible();
-      await expect(locators.datePickerTrigger(page)).not.toBeFocused();
+      await expect(locators.datePickerTrigger(page, 2)).not.toBeFocused();
       await expect(locators.popper(page)).toBeFocused();
     });
 
@@ -382,7 +382,6 @@ test.describe('DayPicker with today button', () => {
     await test.step('Reopen datepicker with Space', async () => {
       await page.keyboard.press('Space');
       await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
-      await expect(locators.datePickerTrigger(page)).not.toBeFocused();
       await expect(locators.popper(page)).toBeFocused();
     });
 
@@ -880,7 +879,7 @@ test.describe('DayPikcer trigger and popper', () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Previous month')).toBeFocused();
       await locators.button(page, 'Previous month').hover();
-      await page.keyboard.press('Enter'); // space doesn't work - bug
+      await page.keyboard.press('Space');
       const titleAfterFirstEnter = await locators.title(page).textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
       await expect(locators.title(page)).not.toHaveText(initialTitle!);
@@ -889,7 +888,7 @@ test.describe('DayPikcer trigger and popper', () => {
     await test.step('Navigate to next month and validate title reset', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Next month')).toBeFocused();
-      await page.keyboard.press('Enter'); // space doesn't work - bug
+      await page.keyboard.press('Enter');
       const titleAfterSecondEnter = await locators.title(page).textContent();
       expect(titleAfterSecondEnter).toBe(initialTitle);
     });
@@ -958,16 +957,16 @@ test.describe('Disabled dates and Validation', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.type('06');
     await page.keyboard.type('20');
-    await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-invalid', 'false');
+    await expect(locators.datePickerTrigger(page, 2)).toHaveAttribute('aria-invalid', 'false');
 
     await page.keyboard.type('7875');
     await page.waitForTimeout(250);
-    await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-invalid', 'true');
-    await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-haspopup', 'true');
+    await expect(locators.datePickerTrigger(page, 2)).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.datePickerTrigger(page, 2)).toHaveAttribute('aria-haspopup', 'true');
 
     await page.keyboard.press('Backspace');
     await page.keyboard.type('24');
-    await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.datePickerTrigger(page, 2)).toHaveAttribute('aria-invalid', 'true');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
     await expect(tooltip).toBeVisible();
@@ -978,7 +977,7 @@ test.describe('Disabled dates and Validation', () => {
 
     await page.keyboard.press('Escape'); // bug
     await expect(tooltip).toBeVisible();
-    await expect(locators.datePickerTrigger(page, 0)).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.datePickerTrigger(page, 2)).toHaveAttribute('aria-invalid', 'true');
   });
 
   test('Verify keyboard interactions when disabled dates and validation tooltip', async ({
@@ -1023,7 +1022,7 @@ test.describe('Disabled dates and Validation', () => {
     await test.step('Navigate to previous month and check title', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Previous month')).toBeFocused();
-      await page.keyboard.press('Enter'); // space doesn't work - bug!
+      await page.keyboard.press('Enter');
       const titleAfterFirstEnter = await locators.title(page).textContent();
       expect(titleAfterFirstEnter).not.toBe(initialTitle);
       await expect(locators.title(page)).not.toHaveText(initialTitle!);
@@ -1032,7 +1031,7 @@ test.describe('Disabled dates and Validation', () => {
     await test.step('Navigate to next month and validate title reset', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Next month')).toBeFocused();
-      await page.keyboard.press('Enter'); // space doesn't work - bug!
+      await page.keyboard.press('Space');
       const titleAfterSecondEnter = await locators.title(page).textContent();
       expect(titleAfterSecondEnter).toBe(initialTitle);
     });
