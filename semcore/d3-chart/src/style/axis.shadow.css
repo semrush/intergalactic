@@ -75,6 +75,14 @@ STick[position='right'] {
   tspan {
     dominant-baseline: middle;
   }
+
+  &[multiline] {
+    dominant-baseline: auto;
+
+    tspan {
+      dominant-baseline: auto;
+    }
+  }
 }
 
 STick[position='left'] {
@@ -84,6 +92,14 @@ STick[position='left'] {
 
   tspan {
     dominant-baseline: middle;
+  }
+
+  &[multiline] {
+    dominant-baseline: auto;
+
+    tspan {
+      dominant-baseline: auto;
+    }
   }
 }
 

@@ -348,6 +348,7 @@ function Ticks(props) {
         index={i}
         position={positionClass}
         hide={hide}
+        multiline={multiline}
         {...pos(scale, value, position)}
       >
         { lines.length > 1
