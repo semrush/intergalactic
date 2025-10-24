@@ -187,6 +187,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       }
       onExpandRow(row);
 
+      this.forceUpdate(this.asProps.calculateAriaRowIndex);
+
       if (this.state.accordionRows !== undefined) {
         const accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : [];
 
@@ -212,8 +214,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         };
 
         changeAccordionRows();
-      } else {
-        this.forceUpdate(this.asProps.calculateAriaRowIndex);
       }
     }
   };
