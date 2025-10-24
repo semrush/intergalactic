@@ -197,7 +197,7 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
           if (width === undefined) {
             gridTemplateColumns.push('auto');
           } else {
-            gridTemplateColumns.push(`${width}px`);
+            gridTemplateColumns.push(`min-max(0, ${width}px)`);
           }
         });
         accordionRows.style.setProperty('grid-template-columns', gridTemplateColumns.join(' '));
