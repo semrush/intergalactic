@@ -830,7 +830,7 @@ test.describe('DayPikcer trigger and popper', () => {
     });
 
     await test.step('Select a date and validate input value change', async () => {
-      await locators.cells(page10).click();
+      await locators.cells(page, 10).click();
       await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
       const newValue = await input.inputValue();
