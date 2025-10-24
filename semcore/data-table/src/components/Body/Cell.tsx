@@ -1,22 +1,20 @@
 import { Box, Flex } from '@semcore/base-components';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import { Root, sstyled, createComponent, Component } from '@semcore/core';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import * as React from 'react';
 
-import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import style from './style.shadow.css';
+import styles from './style.shadow.css';
 import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-const DEFAULT_ROW_DURATION = 50;
-
-class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> implements IFocusableCell {
+class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 
   static displayName = 'Cell';
-  static style = style;
+  static style = styles;
 
   cellRef = React.createRef<HTMLDivElement>();
 
@@ -35,46 +33,10 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     handleFocusCell(this.lockedCell, e.target, e.currentTarget);
   };
 
-  calculateAnimationSettings() {
-    const {
-      accordionRowIndex = 0,
-      isAccordionRow,
-      animationExpand,
-      accordionDuration,
-      rows,
-    } = this.asProps;
-
-    if (!isAccordionRow) {
-      return {};
-    }
-
-    const rowsLength = rows.length;
-    const durationPerRow = (duration: number) => duration / rowsLength;
-
-    const duration = Array.isArray(accordionDuration)
-      ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
-      : accordionDuration !== undefined
-        ? durationPerRow(accordionDuration)
-        : rowsLength > 4
-          ? durationPerRow(200)
-          : DEFAULT_ROW_DURATION;
-
-    let delay;
-    const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
-
-    if (Array.isArray(duration)) {
-      delay = [duration[0] * delayIndex, duration[1] * delayIndex];
-    } else if (duration !== undefined) {
-      delay = duration * delayIndex;
-    }
-
-    return { duration, delay };
-  }
-
-  handleClickCell = (e: React.SyntheticEvent) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
     const { rowIndex, columnIndex, onClick, row } = this.asProps;
 
-    onClick(e, { rowIndex, colIndex: columnIndex, row });
+    onClick?.(e, { rowIndex, colIndex: columnIndex, row });
   };
 
   render() {
@@ -83,15 +45,12 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       Children,
       styles,
+      style,
       row,
       column,
       columnIndex,
       gridRowIndex,
-      isAccordionRow,
-      animationExpand,
-      style,
       shadowVertical,
-      calculatedHeight,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -113,17 +72,12 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
-    const { duration, delay } = this.calculateAnimationSettings();
-
     return sstyled(styles)(
       <SCellWrapper
         // @ts-ignore
         gridArea={gridArea}
-        duration={`${duration}ms`}
-        delay={`${delay}ms`}
-        h={isAccordionRow ? (animationExpand ? `${calculatedHeight}px` : `0px`) : undefined}
-        style={style}
         fixed={column.fixed}
+        style={style}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
       >
         <SCell
