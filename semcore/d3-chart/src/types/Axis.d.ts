@@ -38,7 +38,7 @@ export type AxisTicksProps = Context & {
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
-  /** Enables multiline tick labels. Applies only for band scales  */
+  /** Enables multiline tick labels, applicable only for band scales  */
   multiline?: boolean;
 };
 
