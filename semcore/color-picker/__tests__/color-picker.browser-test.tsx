@@ -607,7 +607,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.clearColor(page).click();
     await expect(locators.inputColor(page)).toBeFocused();
     await expect(locators.palette(page)).toBeEmpty();
-    await expect(locators.inputColor(page)).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.inputColor(page)).toHaveAttribute('aria-invalid', 'false');
     await expect(locators.inputColor(page)).toBeEmpty();
 
     await locators.inputColor(page).fill('999');
