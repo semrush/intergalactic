@@ -32,7 +32,6 @@ const baseArgTypes = {
 } as const;
 
 export default meta;
-type Story = StoryObj;
 
 export const Base: StoryObj<typeof baseExampleProps> = {
   render: BaseExample,

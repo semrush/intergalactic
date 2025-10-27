@@ -21,22 +21,22 @@ export const locators = {
 test.describe(`${TAG.VISUAL} `, () => {
   const variablesActive = [
     // active
-    { size: 'm', state: 'normal', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: 120 },
-    { size: 'm', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 120 },
-    { size: 'm', state: 'invalid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
+    { size: 'm', state: 'normal', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
+    { size: 'm', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 200 },
+    { size: 'm', state: 'invalid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 150 },
 
-    { size: 'l', state: 'normal', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 120 },
+    { size: 'l', state: 'normal', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 200 },
     { size: 'l', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
-    { size: 'l', state: 'invalid', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: 120 },
+    { size: 'l', state: 'invalid', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
 
     // disabled
-    { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
-    { size: 'l', state: 'valid', disabled: true, autoFocus: true, readOnly: false, placeholder: undefined, w: 120 },
+    { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 200 },
+    { size: 'l', state: 'valid', disabled: true, autoFocus: true, readOnly: false, placeholder: undefined, w: undefined },
     { size: 'm', state: 'invalid', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
 
     // readOnly
-    { size: 'm', state: 'normal', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
-    { size: 'l', state: 'valid', disabled: false, autoFocus: true, readOnly: true, placeholder: undefined, w: 120 },
+    { size: 'm', state: 'normal', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 200 },
+    { size: 'l', state: 'valid', disabled: false, autoFocus: true, readOnly: true, placeholder: undefined, w: undefined },
     { size: 'l', state: 'invalid', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
 
     // readOnly + disabled
@@ -52,7 +52,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@typography',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/input/tests/examples/input-base-example', 'en', item);
+      await loadPage(page, 'stories/components/input/tests/examples/input-base-example.tsx', 'en', item);
 
       const flex = page.locator('[data-testid="wrap"]');
       const screenshotsClip = (await flex.first().boundingBox())!;
@@ -105,7 +105,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@typography',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation', 'en', item);
+      await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation.tsx', 'en', item);
 
       const flex = page.locator('[data-testid="wrap"]');
       const screenshotsClip = (await flex.first().boundingBox())!;
