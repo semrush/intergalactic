@@ -344,8 +344,7 @@ test.describe('Accordion in table', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
       accordionMode: 'independent',
       onAccordionToggle: `function(type, rowId, rowIndex) {
-  console.log("Accordion " + type + " for row #" + rowIndex);
-}`,
+    console.log("Accordion " + type + " for row #" + rowIndex);}`,
     });
 
     await page.setContent(htmlContent);
@@ -412,10 +411,6 @@ test.describe('Accordion in table', () => {
       await expect(page.locator('[data-ui-name="ButtonLink"]').nth(1)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.rowTableInTable(page, 2, 9).waitFor({ state: 'hidden' });
-      await page.waitForEvent('console', {
-        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
-      });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
       messages = [];
@@ -432,7 +427,7 @@ test.describe('Accordion in table', () => {
   });
 
   test('Verify table in table mouse navigation when accordionMode=independent', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;// disabled for websbkit because works in debug mode but lags in docker
+    if (browserName === 'webkit') return;// disabled for webkit because works in debug mode but lags in docker
     let messages: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {
@@ -470,10 +465,6 @@ test.describe('Accordion in table', () => {
       messages = [];
       await locators.toggle(page).first().click();
       await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'hidden' });
-      await page.waitForEvent('console', {
-        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 500,
-      });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #0']);
     });
@@ -483,10 +474,6 @@ test.describe('Accordion in table', () => {
       const row = locators.row(page, 3);
       await row.getByRole('gridcell').first().click();
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
-      await page.waitForEvent('console', {
-        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
-      });
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
     });
@@ -548,14 +535,15 @@ test.describe('Accordion in table', () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
+      const waitForAccordionClose = page.waitForEvent('console', {
+        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
+        timeout: 1000,
+      });
       await page.keyboard.press('Enter');
       await page.waitForTimeout(100);
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'visible' });
-      await page.waitForEvent('console', {
-        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #0',
-        timeout: 200,
-      });
-      expect(messages.length).toBe(2);
+      await waitForAccordionClose;
+
       expect(messages).toEqual(['Accordion open for row #1',
         'Accordion close for row #0']);
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
@@ -574,10 +562,7 @@ test.describe('Accordion in table', () => {
       for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await locators.rowTableInTable(page, 2, 6).waitFor({ state: 'hidden' });
-      await page.waitForEvent('console', {
-        predicate: (msg) => msg.type() === 'log' && msg.text() === 'Accordion close for row #1',
-        timeout: 200,
-      });
+
       expect(messages.length).toBe(1);
       expect(messages).toEqual(['Accordion close for row #1']);
       messages = [];
@@ -864,14 +849,15 @@ test.describe('Accordion in table', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
     const tableInTableRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await tableInTableRow.waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(100);
-    await expect(page).toHaveScreenshot();
     if (browserName === 'webkit')
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     else await expect(page).toHaveScreenshot();

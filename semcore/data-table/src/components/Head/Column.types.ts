@@ -1,7 +1,7 @@
 import type { Property } from 'csstype';
 
 import type { BodyPropsInner } from '../Body/Body.types';
-import type { CellPropsInner } from '../Body/Cell.types';
+import type { DataTableCellProps } from '../Body/Cell.types';
 import type {
   ColumnGroupConfig,
   ColumnItemConfig,
@@ -96,7 +96,7 @@ export type ColumnPropsInner<
   gridTemplateColumns: string[];
   gridTemplateAreas: string[];
   sticky: boolean;
-  onClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  onClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: 'horizontal' | 'vertical' | 'both';
 };

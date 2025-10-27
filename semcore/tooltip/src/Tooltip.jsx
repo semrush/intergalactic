@@ -162,11 +162,11 @@ function TooltipPopper(props) {
     if (visible) {
       timer = setTimeout(() => {
         setIsVisible(true);
-      }, timeoutConfig[0] + 50);
+      }, timeoutConfig[0] + 150);
     } else {
       timer = setTimeout(() => {
         setIsVisible(false);
-      }, timeoutConfig[1] + 50);
+      }, timeoutConfig[1] + 150);
     }
 
     return () => {
