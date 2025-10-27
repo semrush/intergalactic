@@ -40,6 +40,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await locators.button(page).click();
       await locators.button(page, 'Close').waitFor({ state: 'visible', timeout: 500 });
+      await page.waitForTimeout(200); // for finish animation
 
       await expect(page).toHaveScreenshot();
     });

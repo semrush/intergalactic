@@ -38,7 +38,7 @@ const Demo = (props: WithLabelExampleProps) => {
           </Flex>
           <Input
             size={props.size}
-            w={props.BoxProps}
+            w={props.w}
             state={props.state}
             disabled={props.disabled}
           >
@@ -69,7 +69,7 @@ const Demo = (props: WithLabelExampleProps) => {
           </Flex>
           <Input
             size={props.size}
-            w={props.BoxProps}
+            w={props.w}
             state={props.state}
             disabled={props.disabled}
           >

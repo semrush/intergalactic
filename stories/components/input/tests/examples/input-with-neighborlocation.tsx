@@ -17,7 +17,7 @@ const Demo = (props: WithNeighborLocationExampleProps) => {
         <NeighborLocation tag={Flex} role='group' aria-label='wrapped-input'>
           <Input
             size={props.size}
-            w={props.BoxProps}
+            w={props.w}
             state={props.state}
             disabled={props.disabled}
           >
@@ -33,7 +33,7 @@ const Demo = (props: WithNeighborLocationExampleProps) => {
           </Input>
           <Input
             size={props.size}
-            w={props.BoxProps}
+            w={props.w}
             state={props.state}
             disabled={props.disabled}
           >
@@ -47,7 +47,7 @@ const Demo = (props: WithNeighborLocationExampleProps) => {
           </Input>
           <Input
             size={props.size}
-            w={props.BoxProps}
+            w={props.w}
             state={props.state}
             disabled={props.disabled}
           >

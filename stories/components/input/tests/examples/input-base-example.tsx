@@ -15,7 +15,7 @@ const Demo = (props: BaseExampleProps) => {
         <Text size={100}>Default input</Text>
         <Input
           size={props.size}
-          w={props.BoxProps}
+          w={props.w}
           state={props.state}
           disabled={props.disabled}
         >
@@ -32,7 +32,7 @@ const Demo = (props: BaseExampleProps) => {
         <Text size={100}>Left addon</Text>
         <Input
           size={props.size}
-          w={props.BoxProps}
+          w={props.w}
           state={props.state}
           disabled={props.disabled}
         >
@@ -54,7 +54,7 @@ const Demo = (props: BaseExampleProps) => {
         <Text size={100}>Left Right addon</Text>
         <Input
           size={props.size}
-          w={props.BoxProps}
+          w={props.w}
           state={props.state}
           disabled={props.disabled}
         >
@@ -79,7 +79,7 @@ const Demo = (props: BaseExampleProps) => {
         <Text size={100}>Right addon</Text>
         <Input
           size={props.size}
-          w={props.BoxProps}
+          w={props.w}
           state={props.state}
           disabled={props.disabled}
         >
