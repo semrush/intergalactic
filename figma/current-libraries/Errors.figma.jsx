@@ -1,5 +1,5 @@
 import figma from '@figma/code-connect/react';
-import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound, getIconPath } from '@semcore/errors';
+import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound, getIconPath } from '@semcore/ui/errors';
 
 figma.connect(
   PageNotFound,

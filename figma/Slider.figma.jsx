@@ -1,7 +1,5 @@
 import figma from '@figma/code-connect/react';
 import Slider from '@semcore/ui/slider';
-import { Box, Flex } from '@semcore/ui/base-components';
-import InputNumber from '@semcore/ui/input-number';
 
 figma.connect(
   Slider.Knob,
