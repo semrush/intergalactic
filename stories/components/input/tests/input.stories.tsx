@@ -1,24 +1,53 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import WithLabelExample from './examples/input--with-label';
-import WithSubmitExample from './examples/input-styles';
-import WithLNeighborLocationExample from './examples/with-neighborlocation';
+import BaseExample, { baseExampleProps } from './examples/input-base-example';
+import WithLabelExample, { withLabelExampleProps } from './examples/input-with-label';
+import WithLNeighborLocationExample, { withNeighborLocationExampleProps } from './examples/input-with-neighborlocation';
 
 const meta: Meta = {
   title: 'Components/Input/Tests',
 };
 
+const baseArgTypes = {
+  size: {
+    control: { type: 'select' },
+    options: [
+      'm',
+      'l',
+    ],
+  },
+  state: {
+    control: { type: 'select' },
+    options: [
+      'valid',
+      'invalid',
+      'normal',
+    ],
+  },
+  w: { control: { type: 'number' } },
+  autoFocus: { control: { type: 'boolean' } },
+  placeholder: { control: { type: 'text' } },
+  disabled: { control: { type: 'boolean' } },
+  readOnly: { control: { type: 'boolean' } },
+} as const;
+
 export default meta;
 type Story = StoryObj;
 
-export const WithSubmit: Story = {
-  render: WithSubmitExample,
+export const Base: StoryObj<typeof baseExampleProps> = {
+  render: BaseExample,
+  argTypes: baseArgTypes,
+  args: baseExampleProps,
 };
 
-export const WithLabel: Story = {
+export const WithLabel: StoryObj<typeof withLabelExampleProps> = {
   render: WithLabelExample,
+  argTypes: baseArgTypes,
+  args: withLabelExampleProps,
 };
 
-export const WithLNeighborLocation: Story = {
+export const WithLNeighborLocation: StoryObj<typeof withNeighborLocationExampleProps> = {
   render: WithLNeighborLocationExample,
+  argTypes: baseArgTypes,
+  args: withNeighborLocationExampleProps,
 };

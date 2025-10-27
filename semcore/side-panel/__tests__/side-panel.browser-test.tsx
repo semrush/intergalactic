@@ -39,7 +39,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', item);
 
       await locators.button(page).click();
-      await locators.button(page, 'Close').waitFor({ state: 'visible' });
+      await locators.button(page, 'Close').waitFor({ state: 'visible', timeout: 500 });
 
       await expect(page).toHaveScreenshot();
     });
