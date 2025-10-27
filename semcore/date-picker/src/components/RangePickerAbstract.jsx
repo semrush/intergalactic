@@ -52,6 +52,8 @@ class RangePickerAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  prevButtonRef = React.createRef();
+  nextButtonRef = React.createRef();
   popperRef = React.createRef();
   unitRefs = {};
 
@@ -109,7 +111,9 @@ class RangePickerAbstract extends Component {
 
   handlerKeyDown = (place) => (e) => {
     const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
-    const key = e.key;
+    const { key, target } = e;
+
+    if (target === this.prevButtonRef.current || target === this.nextButtonRef.current) return;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
@@ -331,6 +335,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
+      'ref': this.nextButtonRef,
       'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
@@ -342,6 +347,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
+      'ref': this.prevButtonRef,
       'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
