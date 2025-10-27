@@ -1,6 +1,5 @@
 import ScrollArea from '@semcore/ui/scroll-area';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
 import type { ScrollAreaExampleProps } from './examples/scroll-props';
 import HorizontalScrollWithShadowAndOffsetExample, {
@@ -17,7 +16,7 @@ export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const Basic: StoryObj<ScrollAreaExampleProps> = {
-  render: (args: any) => <HorizontalScrollWithShadowAndOffsetExample {...args} />,
+  render: HorizontalScrollWithShadowAndOffsetExample,
   argTypes: {
     shadow: { control: { type: 'boolean' } },
     orientation: {
