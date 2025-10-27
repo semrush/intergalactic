@@ -113,7 +113,7 @@ class RangePickerAbstract extends Component {
     const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
     const { key, target } = e;
 
-    if (target === this.prevButtonRef.current || target === this.nextButtonRef.current) return;
+    if ([' ', 'Enter'].includes(key) && [this.prevButtonRef.current, this.nextButtonRef.current].includes(target)) return;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
