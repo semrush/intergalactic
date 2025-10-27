@@ -263,13 +263,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.dialog(page).waitFor({ state: 'visible' });
 
       await page.mouse.click(0, 0);
-      await locators.dialog(page).waitFor({ state: 'hidden' });
+      await locators.button(page, 'Close').waitFor({ state: 'hidden' });
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
     await test.step('Verify Side panel closed by Escape', async () => {
       await page.getByRole('button').click();
-      await locators.dialog(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Close').waitFor({ state: 'visible' });
 
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
