@@ -125,21 +125,6 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 - If the text label contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
 - When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
 
-<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF STATES IS A BAD PRACTICE
-### States
-
-Table: Checkbox states
-
-| State                 | Appearance example                            |
-| --------------------- | --------------------------------------------- |
-| Normal                | ![](static/state-unchecked.png)               |
-| Checked               | ![](static/state-checked.png)                 |
-| Indeterminate         | ![](static/state-indetermenate.png)           |
-| Invalid               | ![](static/state-invalid.png)                 |
-| Checked invalid       | ![](static/state-checked-invalid.png)         |
-| Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
-| Disabled              | ![](static/state-disabled.png)                | -->
-
 ## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
