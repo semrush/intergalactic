@@ -1,51 +1,60 @@
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import type { RefObject } from 'react';
 import React from 'react';
+
+import type {
+  NoticeBubbleManagerClass,
+  NoticeBubbleInfoProps,
+  NoticeBubbleWarningProps,
+  AddReturnObj,
+} from './NoticeBubble.type';
 
 const EVENT_NAME = 'CHANGE';
 
-class NoticeBubbleManager {
-  items = [];
-  emitter = null;
-  counter = 0;
+export type NoticeItem = (NoticeBubbleInfoProps | NoticeBubbleWarningProps) & {
+  uid: number;
+  visible?: boolean;
+  forwardRef: RefObject<HTMLElement>;
+  onClose: () => void;
+};
 
-  replaceTimer = 0;
+class NoticeBubbleManager implements NoticeBubbleManagerClass {
+  private items: NoticeItem[] = [];
+  private emitter = new EventEmitter();
+  private counter = 0;
 
-  constructor() {
-    this.emitter = new EventEmitter();
-  }
+  private replaceTimer: ReturnType<typeof setTimeout> | null = null;
 
-  addListener(fn) {
+  public addListener(fn: (items: NoticeItem[]) => void): () => void {
     return this.emitter.subscribe(EVENT_NAME, fn);
   }
 
-  createItem(props) {
-    const manager = this;
-
-    return {
-      type: 'info',
-      ...props,
-      onClose: callAllEventHandlers(props.onClose, () => {
-        manager.remove(props.uid);
-      }),
-    };
-  }
-
-  emit() {
+  private emit() {
     this.emitter.emit(EVENT_NAME, this.items);
   }
 
-  add(props) {
+  public add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): AddReturnObj {
     const uid = this.counter++;
-    const ref = React.createRef();
-    const focus = () => setTimeout(() => setFocus(ref.current), 0);
-    const item = this.createItem({
+    const ref = React.createRef<HTMLElement>();
+    const focus = () => {
+      setTimeout(() => {
+        if (ref.current) {
+          setFocus(ref.current);
+        }
+      }, 0);
+    };
+    const item = {
+      type: 'info',
       uid,
       visible: props.initialAnimation ? true : undefined,
       forwardRef: ref,
       ...props,
-    });
+      onClose: callAllEventHandlers(props.onClose, () => {
+        this.remove(uid);
+      }),
+    } as const;
     this.items.push(item);
     this.emit();
     return {
@@ -58,20 +67,20 @@ class NoticeBubbleManager {
     };
   }
 
-  update(uid, props) {
+  public update(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): boolean {
     const index = this.items.findIndex((item) => item.uid === uid);
     if (index !== -1) {
-      this.items[index] = this.createItem({
+      this.items[index] = {
         ...this.items[index],
         ...props,
-      });
+      };
       this.emit();
       return true;
     }
     return false;
   }
 
-  replaceLast(props) {
+  public replaceLast(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {
     if (this.replaceTimer) {
       clearTimeout(this.replaceTimer);
     }
@@ -87,7 +96,7 @@ class NoticeBubbleManager {
     }, 300);
   }
 
-  remove(uid) {
+  public remove(uid: number): boolean {
     const item = this.items.find((item) => item.uid === uid);
     if (item) {
       item.visible = false;

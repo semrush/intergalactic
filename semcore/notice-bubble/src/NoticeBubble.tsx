@@ -19,18 +19,28 @@ import CloseIcon from '@semcore/icon/Close/m';
 import Portal from '@semcore/portal';
 import React from 'react';
 
+import type { NoticeBubbleContainerProps } from './NoticeBubble.type';
+import type { NoticeItem } from './NoticeBubbleManager';
 import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { Timer } from './utils';
 
-const Notices = (props) => {
-  const { styles, data = [], tag: SView = ViewInfo } = props;
+type NoticesProps = {
+  styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
+  data: NoticeItem[];
+  getI18nText: ReturnType<ReturnType<typeof i18nEnhance>>['getI18nText'];
+};
+
+const Notices = (props: NoticesProps) => {
+  const { styles, data } = props;
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-popper', '200', ref);
   const duration = React.useMemo(() => Number.parseInt(durationStr, 10), [durationStr]);
 
   return data.map((notice) => {
+    const SView = notice.type === 'warning' ? ViewWarning : ViewInfo;
+
     return sstyled(styles)(
       <Animation
         key={notice.uid}
@@ -46,26 +56,29 @@ const Notices = (props) => {
   });
 };
 
-class NoticeBubbleContainerRoot extends Component {
+type State = {
+  notices: NoticeItem[];
+};
+
+class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
   static displayName = 'NoticeBubbleContainer';
-  static style = style;
+  static styles = style;
   static enhance = [
     i18nEnhance(localizedMessages),
     contextThemeEnhance(),
     zIndexStackingEnhance('z-index-notice-bubble'),
-  ];
+  ] as const;
 
   static defaultProps = {
     manager,
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
-  _unsubscribe = null;
+  _unsubscribe: (() => void) | null = null;
 
-  state = {
+  state: State = {
     notices: [],
-    warnings: [],
   };
 
   componentDidMount() {
@@ -78,11 +91,8 @@ class NoticeBubbleContainerRoot extends Component {
     }
   };
 
-  handleChange = (notices) => {
-    const info = notices.filter((notice) => notice.type === 'info');
-    const warning = notices.filter((notice) => notice.type === 'warning');
-
-    this.setState({ notices: info, warnings: warning });
+  handleChange = (notices: NoticeItem[]) => {
+    this.setState({ notices });
   };
 
   render() {
@@ -90,7 +100,7 @@ class NoticeBubbleContainerRoot extends Component {
     const SNoticeAriaLiveWrapper = 'div';
     const { Children, styles, disablePortal, getI18nText, ref, parentZIndexStacking } =
       this.asProps;
-    const { notices, warnings } = this.state;
+    const { notices } = this.state;
 
     return sstyled(styles)(
       <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
@@ -104,10 +114,10 @@ class NoticeBubbleContainerRoot extends Component {
             zIndex={parentZIndexStacking}
           >
             <Children />
-            <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
-            <SNoticeAriaLiveWrapper aria-live='polite'>
-              <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
-            </SNoticeAriaLiveWrapper>
+            {/* <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} /> */}
+            {/* <SNoticeAriaLiveWrapper aria-live='polite'> */}
+            <Notices styles={styles} data={notices} getI18nText={getI18nText} />
+            {/* </SNoticeAriaLiveWrapper> */}
           </SNoticeBubble>
         </Portal>
       </ZIndexStackingContextProvider>,
@@ -117,7 +127,7 @@ class NoticeBubbleContainerRoot extends Component {
 
 const FocusLock = React.forwardRef((props, outerRef) => {
   const { focusLock, ...other } = props;
-  const innerRef = React.useRef();
+  const innerRef = React.useRef<HTMLElement | null>(null);
   useFocusLock(innerRef, false, 'auto', !focusLock, true);
   const ref = useForkRef(outerRef, innerRef);
 
