@@ -91,7 +91,7 @@ To save the user's time, use the "Select all" and "Deselect all" options for che
 
 - "Select all" selects all checkboxes, and "Select all" changes to "Deselect all".
 - "Deselect all" deselects all checkboxes at all levels.
-- If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked at any level, "Deselect all" changes to "Select all".
 
 ![](static/checkbox-group.png)
 
@@ -111,8 +111,8 @@ If you use a combination of the checkbox tree and "Select all" and "Deselect all
 
 - "Select all" selects all checkboxes in the tree at all levels. "Select all" changes to "Deselect all".
 - "Deselect all" deselects all checkboxes at all levels.
-- If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
-- If at least one checkbox is checked on the sub-level, the root checkbox changes its state to `indeterminate`, and "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked at any level, "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked on the sub-level, the root checkbox changes its state to `indeterminate`, and "Deselect all" changes to "Select all".
 
 When user clicks on a checkbox with the `indeterminate` state, all sub-level checkboxes get `checked` state.
 
