@@ -11,7 +11,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
-- Default `onClick` handlers passed to child components called on mount.
+- `onClick` handler in child components overrides root `onClick` and called on mount.
 
 ## [16.2.1] - 2025-10-17
 
