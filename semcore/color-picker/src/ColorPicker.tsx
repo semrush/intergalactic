@@ -182,16 +182,16 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
       <STriggerCircle data-value={value}>
         {!value && (
           <STriggerCircleLine
-            width='10'
-            height='10'
-            viewBox='0 0 10 10'
+            width='13'
+            height='13'
+            viewBox='0 0 13 13'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
           >
             <rect
               width='1'
-              height='14'
-              transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 10 1)'
+              height='16'
+              transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 12.0195 0.707108)'
               fill='#E0E1E9'
             />
           </STriggerCircleLine>
