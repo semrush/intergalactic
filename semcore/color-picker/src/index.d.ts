@@ -74,6 +74,10 @@ export type InputColorProps = InputProps & {
    * Fired with entered value when user clicks on the check icon or hits `Enter` or `Space`
    */
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
+  /**
+   * Handle changes of state
+   */
+  onStateChange?: (state: 'normal' | 'valid' | 'invalid') => void;
 };
 
 /** @deprecated */
