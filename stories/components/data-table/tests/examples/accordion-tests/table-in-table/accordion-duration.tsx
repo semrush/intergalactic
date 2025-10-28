@@ -1,17 +1,17 @@
-import type { BoxProps } from '@semcore/ui/base-componentse';
+import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type TableProps = {
+type TableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
   accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
 };
 
-type AccordionDurationProps = TableProps & BoxProps;
+export type AccordionDurationProps = TableProps & BoxProps;
 
 const WidgetEmpty = () => {
   return (
@@ -74,7 +74,7 @@ const ChartExample = () => {
     />
   );
 };
-export const tableInTableDefaultProps: AccordionDurationProps = {
+export const accordionDurationDefaultProps: AccordionDurationProps = {
   accordionMode: 'independent',
   h: '100%',
   w: undefined,
@@ -82,7 +82,7 @@ export const tableInTableDefaultProps: AccordionDurationProps = {
   accordionDuration: 500,
 };
 
-Demo.defaultProps = tableInTableDefaultProps;
+Demo.defaultProps = accordionDurationDefaultProps;
 
 const data1 = [
   {

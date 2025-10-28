@@ -36,8 +36,8 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
       loading={props.loading}
       data={data}
-      aria-label='Accordion inside table'
-      headerProps={{ sticky: props.sticky, ref: headerRef, withScrollBar: props.withScrollBar, top: props.top }}
+      aria-label='Accordion with fixed column'
+      headerProps={{ sticky: props.sticky, withScrollBar: props.withScrollBar, top: props.top }}
       hMax={500}
       wMax={400}
       columns={[
@@ -69,7 +69,7 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
   loading: false,
   withScrollBar: false,
-  sticky: false,
+  sticky: true,
   top: undefined,
 };
 

@@ -1,11 +1,20 @@
-import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
+import type { BoxProps } from '@semcore/ui/base-components';
+import type { DataTableData, DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
+type AccordionWithHorizontalScrollProps = {
+  loading?: DataTableProps<typeof data, any, any>['loading'];
+  sticky: boolean;
+  withScrollBar: boolean;
+  defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
+};
 
-const Demo = () => {
+export type AccordionWithHorizontalScrollExampleProps = AccordionWithHorizontalScrollProps & BoxProps;
+
+const Demo = (props: AccordionWithHorizontalScrollExampleProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
@@ -30,9 +39,12 @@ const Demo = () => {
 
   return (
     <DataTable
-      aria-label='Accordion inside table'
-      h='100%'
-      w={400}
+      aria-label='Accordion with horizontal scroll'
+      h={props.h}
+      w={props.w}
+      defaultGridTemplateColumnWidth={props.defaultGridTemplateColumnWidth}
+      headerProps={{ sticky: props.sticky, withScrollBar: props.withScrollBar }}
+
       data={sortedData}
       sort={sort}
       onSortChange={handleSortChange}
@@ -47,7 +59,20 @@ const Demo = () => {
   );
 };
 
-const ChartExample = () => {
+export const accordionWithHorizontalScrollExampleProps: AccordionWithHorizontalScrollExampleProps = {
+
+  h: '100%',
+  w: '300px',
+  defaultGridTemplateColumnWidth: '1fr',
+  loading: undefined,
+  withScrollBar: false,
+  sticky: true,
+
+};
+
+Demo.defaultProps = accordionWithHorizontalScrollExampleProps;
+
+const WidgetExample = () => {
   return (
 
     <NoData type='nothing-found' my={7} mx='auto'>
@@ -63,7 +88,7 @@ const data: DataTableData = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'www.ebay.com',
@@ -71,7 +96,7 @@ const data: DataTableData = [
     cpc: '$3.4',
     vol: {
       toString: () => '65,457,920',
-      [ACCORDION]: (<ChartExample />),
+      [ACCORDION]: (<WidgetExample />),
     },
   },
   {
@@ -79,21 +104,21 @@ const data: DataTableData = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
 ];
 

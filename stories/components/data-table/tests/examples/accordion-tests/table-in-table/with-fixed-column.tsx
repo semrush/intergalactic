@@ -1,8 +1,16 @@
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
+
 export type TableInTableFixedColumnProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  variant?: DataTableProps<typeof data, any, any>['variant'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+  loading?: DataTableProps<typeof data, any, any>['loading'];
+  defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
+  sticky: boolean;
+  withScrollBar: boolean;
 };
 const Demo = (props: TableInTableFixedColumnProps) => {
   return (
@@ -10,10 +18,16 @@ const Demo = (props: TableInTableFixedColumnProps) => {
       data={data}
       aria-label='Parent'
       accordionMode={props.accordionMode}
+      headerProps={{ sticky: props.sticky, withScrollBar: props.withScrollBar }}
+
+      variant={props.variant}
+      loading={props.loading}
+      use={props.use}
+      compact={props.compact}
       onAccordionToggle={(type, rowIndex) => {
         console.log(`Accordion ${type} for row #${rowIndex}`);
       }}
-      h='100%'
+      h={200}
       w={400}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
@@ -27,6 +41,13 @@ const Demo = (props: TableInTableFixedColumnProps) => {
 
 export const tableInTableFixedColumnDefaultProps: TableInTableFixedColumnProps = {
   accordionMode: 'independent',
+  variant: undefined,
+  use: undefined,
+  compact: undefined,
+  defaultGridTemplateColumnWidth: '1fr',
+  loading: undefined,
+  withScrollBar: false,
+  sticky: false,
 };
 
 Demo.defaultProps = tableInTableFixedColumnDefaultProps;

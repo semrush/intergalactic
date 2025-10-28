@@ -1,11 +1,24 @@
-import type { DataTableSort } from '@semcore/ui/data-table';
+import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import type { DataTableSort, DataTableData, DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
-const Demo = () => {
+type BaseExampleProps = {
+  use?: DataTableProps<typeof data, any, any>['use'];
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+  loading?: DataTableProps<typeof data, any, any>['loading'];
+  defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
+  sticky: boolean;
+  withScrollBar?: boolean;
+  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
+  top?: number;
+};
+
+export type OneLevelHeaderSortingProps = BaseExampleProps & BoxProps;
+
+const Demo = (props: OneLevelHeaderSortingProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
   const sortedData = React.useMemo(
     () =>
@@ -31,6 +44,17 @@ const Demo = () => {
       sort={sort}
       onSortChange={setSort}
       aria-label='Sorting with change sortable column size'
+      defaultGridTemplateColumnWidth={props.defaultGridTemplateColumnWidth}
+      use={props.use}
+      compact={props.compact}
+      sideIndents={props.sideIndents}
+      loading={props.loading}
+      wMax={props.wMax}
+      h={props.h}
+      headerProps={{
+        sticky: props.sticky,
+        withScrollBar: props.withScrollBar,
+      }}
       columns={[
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {
@@ -71,6 +95,20 @@ const Demo = () => {
     />
   );
 };
+
+export const oneLevelHeaderSortingProps: OneLevelHeaderSortingProps = {
+  sideIndents: undefined,
+  use: undefined,
+  compact: undefined,
+  h: undefined,
+  wMax: '600px',
+  defaultGridTemplateColumnWidth: '1fr',
+  loading: undefined,
+  sticky: true,
+  withScrollBar: undefined,
+};
+
+Demo.defaultProps = oneLevelHeaderSortingProps;
 
 export default Demo;
 

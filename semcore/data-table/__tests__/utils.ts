@@ -11,14 +11,26 @@ export const locators = {
   dataTable: (page: Page) => page.getByRole('grid'),
   collapse: (page: Page) => page.locator('[data-ui-name="Collapse"]'),
   button: (page: Page, text: string) => page.getByRole('button', { name: text }),
+  getCell: (page: Page, row: number, col: number) =>
+    page.locator(
+      `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
+    ),
 
+  descriptionTooltipTrigger: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('[data-ui-name="DescriptionTooltip.Trigger"]'),
+  selectButton: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('button[data-ui-name="Select"]'),
+  dropdownButton: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('button[data-ui-name="Dropdown.Trigger"]'),
+  buttonInCell: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('[data-ui-name="Button"]').first(),
 };
 
-// export const checkStyles = async (element: any, styles: Record<string, string>) => {
-//   for (const [property, value] of Object.entries(styles) as [string, string][]) {
-//     await expect(element).toHaveCSS(property, value);
-//   }
-// };
+export async function getColumnWidth(page: any, colIndex: any) {
+  const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
+  const box = await column.boundingBox();
+  return box ? box.width : 0;
+}
 
 export const stylesActiveHovered = [
   'rgb(158, 242, 201)', // success
