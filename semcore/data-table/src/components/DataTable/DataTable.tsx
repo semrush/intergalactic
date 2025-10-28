@@ -153,7 +153,7 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns } = this.asProps;
+    const { data, selectedRows, columns, loading } = this.asProps;
     if (prevProps.columns !== columns) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -172,6 +172,9 @@ class DataTableRoot<
       } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
         this.setSelectAllMessage(false);
       }
+    }
+    if (prevProps.loading === true && loading === false) {
+      this.tableRef.current?.focus();
     }
   }
 
