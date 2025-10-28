@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.1.11] - 2025-10-28
 
-### Fixed issue with [object Object] in [object Object].
+### Fixed
 
-- Display
+- Issue with `svg` in `ColorPicker.Trigger` and `ColorPicker.Item`.
 
 ## [16.1.10] - 2025-10-06
 
