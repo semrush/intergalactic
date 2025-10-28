@@ -1,15 +1,81 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, getColumnWidth } from './utils';
+import { locators } from './utils';
 
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify long text in cells and wrap and ellipsis', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify overflow=hidden visual finctionality', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/overflow_in_cells.tsx', 'en');
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify colored cells', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/row_cell_states.tsx', 'en');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
+
+    if (browserName !== 'chromium') test.skip();
+    const cell = locators.row(page, 4).locator('[aria-colindex="1"]');
+    const box = await cell.boundingBox();
+
+    if (box) {
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    }
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify empty data with selectable rows', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify wide indents with selectable rows non compact and compact', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
+      sideIndents: 'wide',
+    });
+
+    await test.step('Verify wide for non compact data-tablet', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify wide for compact data-tablet', async () => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
+        sideIndents: 'wide', compact: true,
+      });
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
@@ -206,8 +272,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const standPath =
       'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
     const cell = page.locator('[data-ui-name="Row.Cell"]');
     await expect(cell).toHaveAttribute('data-grouped-by', 'colgroup');
     await expect(cell).toHaveAttribute('scope', 'colgroup');
@@ -224,91 +289,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 });
 
-test.describe('Cells', () => {
-  test('Verify long text in cells - default and wrap and ellipsis', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
+test('Verify multiple access to cells with spin', {
+  tag: [TAG.PRIORITY_HIGH,
+    '@dropdown',
+    '@spin'],
+}, async ({ page }) => {
+  await loadPage(page, 'stories/components/data-table/docs/examples/cells-tests/access-to-set-of-cells.tsx', 'en');
 
-  test('Verify overflow=hidden visual finctionality', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/advanced/examples/overflow_in_cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
 
-    await page.setViewportSize({ width: 768, height: 1024 });
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
+  const svgInSecondCell = page.getByLabel('Loading…').first();
 
-  test('Verify multiple access to cells with spin', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowRight');
-    await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
-
-    const svgInSecondCell = page.getByLabel('Loading…').first();
-
-    await expect(svgInSecondCell).toHaveCount(1);
-    await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
-    await expect(svgInSecondCell).toHaveAttribute('role', 'img');
-  });
-
-  test('Verify colored cells', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/advanced/examples/row_cell_states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
-
-    if (browserName !== 'chromium') return;
-    const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
-    const cell = row.locator('[aria-colindex="1"]');
-    const box = await cell.boundingBox();
-
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify empty data with selectable rows', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify wide indents with selectable rows non compact and compact', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      sideIndents: 'wide',
-    });
-    await page.setContent(htmlContent);
-
-    await test.step('Verify wide for non compact data-tablet', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify wide for compact data-tablet', async () => {
-      const htmlContent = await e2eStandToHtml(standPath, 'en', {
-        sideIndents: 'wide',
-        compact: true,
-      });
-      await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
-    });
-  });
+  await expect(svgInSecondCell).toHaveCount(1);
+  await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
+  await expect(svgInSecondCell).toHaveAttribute('role', 'img');
 });

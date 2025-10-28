@@ -1,7 +1,15 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Vertical Scroll', () => {
+import { locators } from './utils';
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Keyboard scroll', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -57,7 +65,14 @@ test.describe('Vertical Scroll', () => {
     await page.waitForTimeout(1000);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
+});
 
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
