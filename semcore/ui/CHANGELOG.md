@@ -32,13 +32,6 @@
 
 - **Fixed** `autoFocus` property on Popper didn't work.
 
-### @semcore/icon
-
-- **Added** New `Monitoring` icon.
-- **Added** New `LinkExternalAlt` icon.
-- **Added** New `Note` icon.
-- **Changed** Type description for `IconProps`.
-
 ### @semcore/inline-input
 
 - **Fixed** `onConfirm` behaviour to query latest input updates.
