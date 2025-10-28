@@ -1,5 +1,4 @@
-// https://www.figma.com/design/kCYNeNYB7h2p5U3ZAWkMiI/Card-for-table?node-id=55480-2824
-// update URL and republish when branch merged in Figma
+// https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55480-2824
 // import Card from '@semcore/ui/card'
 const figma = require('figma');
 const instance = figma.selectedInstance;
