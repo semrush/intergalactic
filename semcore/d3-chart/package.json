@@ -22,7 +22,7 @@
     "@semcore/checkbox": "16.2.0",
     "@semcore/divider": "16.0.10",
     "@semcore/flex-box": "16.0.10",
-    "@semcore/icon": "16.5.1",
+    "@semcore/icon": "16.7.1",
     "@semcore/popper": "16.0.10",
     "@semcore/typography": "16.3.0",
     "@types/d3-shape": "^3.1.7",
