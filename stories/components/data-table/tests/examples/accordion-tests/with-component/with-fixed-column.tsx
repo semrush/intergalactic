@@ -5,6 +5,9 @@ import React from 'react';
 
 export type AccordionWithFixedColumnProps = {
   loading: boolean;
+  sticky: boolean;
+  withScrollBar: boolean;
+  top?: number;
 };
 
 const Demo = (props: AccordionWithFixedColumnProps) => {
@@ -30,10 +33,11 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
   return (
     <DataTable
+
       loading={props.loading}
       data={data}
       aria-label='Accordion inside table'
-      headerProps={{ sticky: true, ref: headerRef }}
+      headerProps={{ sticky: props.sticky, ref: headerRef, withScrollBar: props.withScrollBar, top: props.top }}
       hMax={500}
       wMax={400}
       columns={[
@@ -64,11 +68,14 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
 
 export const accordionWithFixedColumnDefaultProps: AccordionWithFixedColumnProps = {
   loading: false,
+  withScrollBar: false,
+  sticky: false,
+  top: undefined,
 };
 
 Demo.defaultProps = accordionWithFixedColumnDefaultProps;
 
-const ChartExample = () => {
+const WidgetExample = () => {
   return (<NoData type='nothing-found' my={7} mx='auto' />);
 };
 
@@ -78,7 +85,7 @@ const data: DataTableData = [
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'www.ebay.com',
@@ -86,7 +93,7 @@ const data: DataTableData = [
     cpc: '$3.4',
     vol: {
       toString: () => '65,457,920',
-      [ACCORDION]: (<ChartExample />),
+      [ACCORDION]: (<WidgetExample />),
     },
   },
   {
@@ -94,21 +101,21 @@ const data: DataTableData = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
   {
     keyword: 'ebay buy',
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290',
-    [ACCORDION]: (<ChartExample />),
+    [ACCORDION]: (<WidgetExample />),
   },
 ];
 

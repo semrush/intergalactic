@@ -11,6 +11,8 @@ export type AccordionWithButtonProps = {
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
+  loading?: DataTableProps<typeof data, any, any>['loading'];
+
   defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
 };
 
@@ -23,6 +25,7 @@ const Demo = (props: AccordionWithButtonExampleProps) => {
       aria-label='Custom Accordion with button inside table'
       accordionMode={props.accordionMode}
       variant={props.variant}
+      loading={props.loading}
       use={props.use}
       compact={props.compact}
       onAccordionToggle={(type, key, i) => {
@@ -55,6 +58,7 @@ export const accordionWithButtonDefaultProps: AccordionWithButtonExampleProps = 
   h: '300px',
   w: undefined,
   defaultGridTemplateColumnWidth: '1fr',
+  loading: undefined,
 
 };
 

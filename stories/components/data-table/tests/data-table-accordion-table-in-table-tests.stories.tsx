@@ -5,10 +5,6 @@ import AnimationDurationTestExample, { tableInTableDefaultProps } from './exampl
 import type { TableInTableProps } from './examples/accordion-tests/accordion-duration';
 import AccordionInTableInTableExample, { tableInTableInTableProps } from './examples/accordion-tests/accordion-in-table-in-table';
 import type { TableInTableInTableProps } from './examples/accordion-tests/accordion-in-table-in-table';
-import type {
-  AccordionWithFixedColumnProps,
-} from './examples/accordion-tests/accordion-with-fixed-column';
-import AccordionWithFixedColumnExample, { accordionWithFixedColumnDefaultProps } from './examples/accordion-tests/accordion-with-fixed-column';
 import HorizontalScrollExample from './examples/accordion-tests/accordion-with-horizontal-scroll';
 import AccordionWithInlineEditExample from './examples/accordion-tests/accordion-with-inline-edit';
 import AccordionWithLinkExample from './examples/accordion-tests/accordion-with-link';
@@ -22,8 +18,6 @@ import type { AccordionWithTablenProps } from './examples/accordion-tests/table-
 import TabeInTableFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table-with-fixed-column';
 import TabeInTableSortableExample from './examples/accordion-tests/table-in-table-with-sorting';
-import type { AccordionWithButtonProps } from './examples/accordion-tests/with-component/button-not-in-cell-with-accordion';
-import ButtonNotInCellWithAccordionExample, { accordionWithButtonDefaultProps } from './examples/accordion-tests/with-component/button-not-in-cell-with-accordion';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/AccordionTests',
