@@ -23,7 +23,7 @@
     "@semcore/dropdown": "16.1.0",
     "@semcore/dropdown-menu": "16.1.11",
     "@semcore/flex-box": "16.0.10",
-    "@semcore/icon": "16.5.1",
+    "@semcore/icon": "16.7.1",
     "@semcore/input": "16.1.0",
     "@semcore/popper": "16.0.10",
     "classnames": "2.2.6"
