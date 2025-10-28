@@ -1,7 +1,7 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
 
@@ -174,29 +174,11 @@ export function Trigger(props: TriggerAsProps) {
 const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
-  const STriggerCircle = Box;
-  const STriggerCircleLine = 'svg';
+  const STriggerCircle = Flex;
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
-      <STriggerCircle data-value={value}>
-        {!value && (
-          <STriggerCircleLine
-            width='13'
-            height='13'
-            viewBox='0 0 13 13'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <rect
-              width='1'
-              height='16'
-              transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 12.0195 0.707108)'
-              fill='#E0E1E9'
-            />
-          </STriggerCircleLine>
-        )}
-      </STriggerCircle>
+      <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
       <ChevronDownM color='gray-800' />
     </SDefaultTrigger>,
   ) as React.ReactElement;

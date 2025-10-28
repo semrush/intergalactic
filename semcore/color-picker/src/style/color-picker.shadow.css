@@ -49,6 +49,18 @@ SItemContainer:not([value]) {
   &::after {
     border: 0.9px solid var(--intergalactic-border-secondary, #e0e1e9);
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 1px;
+    height: 22px;
+    background: #e0e1e9;
+    z-index: 0;
+  }
 }
 
 SColorsContainer, SColors {
@@ -109,12 +121,18 @@ STriggerCircle {
 
 STriggerCircle:not([data-value]) {
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-}
 
-STriggerCircleLine {
-  position: absolute;
-  top: 1px;
-  left: 1px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 1px;
+    height: 16px;
+    background: #E0E1E9;
+    z-index: 1;
+  }
 }
 
 SCloseIcon {
@@ -130,10 +148,6 @@ SCloseIcon {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   opacity: 0;
   z-index: 1;
-}
-
-SLine {
-  position: absolute;
 }
 
 SLabel {
