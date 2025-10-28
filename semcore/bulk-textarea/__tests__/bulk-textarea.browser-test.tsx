@@ -839,9 +839,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
         await page.keyboard.type(text, { delay: 20 });
         await page.waitForTimeout(200);
-
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
         await locators.textbox(page).click();
         await expect(locators.textbox(page)).toBeFocused();
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
@@ -854,6 +853,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         for (let i = 0; i < 6; i++)
           await page.keyboard.press('Backspace');
+        await page.waitForTimeout(200);
+
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(locators.errorMessage(page)).toHaveText('2 errors');
         await expect(locators.row(page, 10)).not.toHaveAttribute('data-errormessage', 'Please fix this value = another error');
@@ -861,7 +862,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Navigation between rows by clicking arrows', async () => {
         await page.keyboard.press('Tab');
+        await page.waitForTimeout(200);
+
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(200);
 
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 2');
@@ -873,8 +877,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.button(page, 'Next error').click();
 
-        await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
+        await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
 
         await locators.row(page, 4).click();
         for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
