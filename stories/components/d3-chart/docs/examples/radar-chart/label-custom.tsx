@@ -36,7 +36,7 @@ const Demo = () => {
                       width={width}
                       height={height}
                     >
-                      <Tag interactive>{props.children}</Tag>
+                      <Tag>{props.children}</Tag>
                     </foreignObject>
                   ),
                 };
