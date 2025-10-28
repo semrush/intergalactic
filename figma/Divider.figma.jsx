@@ -7,12 +7,13 @@ figma.connect(
   {
     props: {
       use: figma.enum('use', {
-        primary: 'primary',
         secondary: 'secondary',
       }),
       theme: figma.enum('theme', {
-        default: 'default',
         invert: 'invert',
+      }),
+      orientation: figma.enum('orientation', {
+        vertical: 'vertical',
       }),
     },
     example: (props) => <Divider {...props} />,
