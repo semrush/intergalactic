@@ -1,25 +1,631 @@
 import type { Page } from '@playwright/test';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-const checkStyles = async (element: any, styles: Record<string, string>) => {
-  for (const [property, value] of Object.entries(styles) as [string, string][]) {
-    await expect(element).toHaveCSS(property, value);
-  }
-};
+import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
 
-const locators = {
-  toggle: (page: Page) => page.getByRole('row').getByLabel('Show details'),
-  chart: (page: Page, text: string) => page.getByRole('gridcell', { name: text }),
-  row: (page: Page, index: number) =>
-    page.locator(`[aria-rowindex="${index}"]`),
-  rowTableInTable: (page: Page, level: number, index: number) =>
-    page.locator(`[role="row"][aria-level="${level}"][aria-rowindex="${index}"]`),
-  dataTable: (page: Page) => page.getByRole('grid'),
-  collapse: (page: Page) => page.locator('[data-ui-name="Collapse"]'),
-  button: (page: Page, text: string) => page.getByRole('button', { name: text }),
-};
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test.describe('Accordion in table', () => {
+    test('Verify accordion with chart styles', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
 
+      await page.setContent(htmlContent);
+
+      await test.step('Verify toggle styles', async () => {
+        const toggles = locators.toggle(page);
+        await checkStyles(toggles, { 'margin-right': '12px' });
+      });
+
+      await locators.toggle(page).first().click();
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+      await expect(locators.chart(page, 'Chart')).toHaveCount(1);
+
+      await test.step('Verify cells styles when accordion expanded in 1st cell', async () => {
+        const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+        await checkStyles(cells, { 'background-color': 'rgb(230, 231, 237)' });
+
+        await locators.toggle(page).first().hover();
+        await checkStyles(cells, { 'background-color': 'rgb(230, 231, 237)' });
+      });
+
+      await test.step('Verify cells styles when collapsed expanded in 1st cell', async () => {
+        await checkStyles(locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').first(), {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+
+        await checkStyles(locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').first(), {
+          padding: '12px',
+        });
+      });
+
+      await test.step('Verify styles of the cell with accordion', async () => {
+        await locators.toggle(page).first().click();
+        const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+        await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
+
+        await checkStyles(cells, {
+          'background-color': 'rgb(240, 240, 244)',
+        });
+      });
+
+      await test.step('Verify cells styles when accordion not in 1st cell', async () => {
+        await locators.toggle(page).nth(1).click();
+        await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+        await locators.toggle(page).first().hover();
+
+        const cells3 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+
+        const cellCount3 = await cells3.count();
+        for (let i = 0; i < cellCount3 - 1; i++) {
+          const cell = cells3.nth(i);
+          await checkStyles(cell, { 'background-color': 'rgb(255, 255, 255)' });
+        }
+        await checkStyles(cells3.nth(3), { 'background-color': 'rgb(230, 231, 237)' });
+
+        await locators.toggle(page).nth(1).hover();
+        await checkStyles(cells3.nth(3), { 'background-color': 'rgb(230, 231, 237)' });
+
+        if (browserName !== 'firefox')
+          for (let i = 0; i < cellCount3 - 1; i++) {
+            const cell = cells3.nth(i);
+            await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
+          }
+      });
+    });
+
+    test('Verify accordion and chart inside after keyboard interactions with ', async ({ page }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.setContent(htmlContent);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+      await page.keyboard.press('Enter');
+      await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
+
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify accordion with widget empty and interactive element inside parent cell', async ({
+      page,
+    }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/accordion-with-render-cell.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await page.setContent(htmlContent);
+
+      await test.step('Verify accordion expanded', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        await locators.collapse(page).waitFor({ state: 'visible' });
+        await page.keyboard.press('ArrowDown');
+        await expect(page).toHaveScreenshot();
+      });
+      await test.step('Verify accordion is responsive', async () => {
+        await page.keyboard.press('ArrowDown');
+        await page.setViewportSize({ width: 920, height: 1080 });
+        await page.waitForTimeout(100);
+        await expect(page).toHaveScreenshot();
+      });
+    });
+
+    test('Verify accordion with custom component and fixed column', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.collapse(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(100);
+      if (browserName === 'webkit')
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      else await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify accordion with checkbox ', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      await locators.toggle(page).first().click();
+      await page.locator('[data-ui-name="Checkbox"]').nth(0).click();
+      await page.waitForTimeout(50);
+
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      await test.step('Verify cells when expanded accordion not in 1st cell and checkbox is checked', async () => {
+        for (let i = 0; i < cellCount - 2; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': stylesNotActive[1],
+          });
+        }
+
+        await checkStyles(cells.nth(cellCount - 1), {
+          'background-color': stylesActiveHovered[1],
+        });
+      });
+      await test.step('Verify cells when expanded accordion not in 1st cell and checkbox is checked and row hovered', async () => {
+        const box = await locators.row(page, 2).getByRole('gridcell').nth(1).boundingBox();
+        if (box) {
+          await page.mouse.move(box.x + 10, box.y + 5);
+        }
+
+        if (browserName !== 'firefox') {
+          for (let i = 0; i < cellCount; i++) {
+            await checkStyles(cells, {
+              'background-color': stylesActiveHovered[1],
+            });
+          }
+        }
+      });
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify checkbox and accordion in first cell keyboard interactions', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Space');
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(233, 247, 255)',
+        });
+      }
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Space');
+      await locators.collapse(page).waitFor({ state: 'visible' });
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+    });
+
+    test('Verify accordion with themed rows', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/colored-accordion.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      await test.step('Verify success theme', async () => {
+        const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+
+        await checkStyles(cells, {
+          'background-color': stylesNotActive[0],
+        });
+
+        await locators.toggle(page).first().click();
+        await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[0],
+        });
+
+        await locators.toggle(page).first().click();
+        await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+      });
+
+      await test.step('Verify info theme', async () => {
+        const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+        const cellCount = await cells.count();
+
+        await checkStyles(cells, {
+          'background-color': stylesNotActive[1],
+        });
+
+        await locators.toggle(page).nth(1).click();
+        await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[1],
+        });
+        await locators.toggle(page).nth(1).click();
+        await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+      });
+
+      await test.step('Verify muted theme', async () => {
+        const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
+        const cellCount = await cells.count();
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(244, 245, 249)',
+          });
+        }
+
+        await locators.toggle(page).nth(2).click();
+        await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(230, 231, 237)',
+          });
+        }
+        await locators.toggle(page).nth(2).click();
+        await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+      });
+
+      await test.step('Verify warning theme', async () => {
+        const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
+        const cellCount = await cells.count();
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(255, 243, 217)',
+          });
+        }
+
+        await locators.toggle(page).nth(3).click();
+        await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(255, 220, 162)',
+          });
+        }
+        await locators.toggle(page).nth(3).click();
+        await page.getByText('Nothing found').waitFor({ state: 'hidden' });
+      });
+
+      await test.step('Verify danger theme', async () => {
+        const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
+        const cellCount = await cells.count();
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(255, 240, 247)',
+          });
+        }
+
+        await locators.toggle(page).nth(4).click();
+        await page.getByText('Nothing found').waitFor({ state: 'visible' });
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': 'rgb(255, 215, 223)',
+          });
+        }
+      });
+    });
+
+    test('Verify accordion with themed cells', async ({ page, browserName }) => {
+      const standPath = 'stories/components/data-table/tests/examples/accordion-tests/colored-cells-in-accordion.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const cells = locators.row(page, 2).getByRole('gridcell');
+      const cellCount = await cells.count();
+
+      await test.step('Verify expanded state', async () => {
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': stylesActiveHovered[i],
+          });
+        }
+      });
+      await test.step('Verify hovered state', async () => {
+        if (browserName === 'firefox') test.skip();
+        await locators.toggle(page).click();
+        await locators.toggle(page).hover();
+        await locators.collapse(page).waitFor({ state: 'hidden' });
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': stylesActiveHovered[i],
+          });
+        }
+      });
+
+      await test.step('Verify initial state', async () => {
+        const box = await page.getByRole('columnheader').first().boundingBox();
+
+        if (box) {
+          await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        }
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = cells.nth(i);
+          await checkStyles(cell, {
+            'background-color': stylesNotActive[i],
+          });
+        }
+      });
+    });
+  });
+
+  test.describe('Table in table', () => {
+    test('Verify table in table styles', async ({ page }) => {
+      const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      const marginRight1 = await locators.toggle(page).first().evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight1).toBe('12px');
+      await locators.toggle(page).first().click();
+      await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
+      const marginRight = await locators.toggle(page).first().evaluate((el) => {
+        return window.getComputedStyle(el).marginRight;
+      });
+
+      expect(marginRight).toBe('12px');
+
+      const cells2 = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+
+      const cellCount = await cells2.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells2.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(230, 231, 237)',
+        });
+      }
+
+      const cells3 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+      const cellCount3 = await cells3.count();
+
+      for (let i = 0; i < cellCount3; i++) {
+        const cell = cells3.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(244, 245, 249)',
+        });
+      }
+
+      const paddingLeft = await cells3.first().evaluate((el) => {
+        return window.getComputedStyle(el).paddingLeft;
+      });
+
+      expect(paddingLeft).toBe('38px');
+    });
+
+    test('Verify table in table with sorting', async ({ page }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      await page.keyboard.press('Tab');
+
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('Enter');
+      await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
+
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('ArrowUp');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Enter');
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+
+      await page.keyboard.press('Enter');
+      await page.waitForTimeout(250);
+
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify accordion with table in table and fixed column', async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-fixed-column.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
+      const tableInTableRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await tableInTableRow.waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(100);
+      if (browserName === 'webkit')
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      else await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify keyboard navigation when table component inside table', async ({ page }) => {
+      const standPath =
+        'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-sorting.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const table = locators.dataTable(page);
+      const sortIconKeywordAcc = locators.row(page, 4).locator('[data-ui-name="ButtonLink"]');
+
+      await test.step('Verify table component expands by activating the toggle', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+
+        await expect(sortIconKeywordAcc).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.dataTable(page).nth(1).waitFor({ state: 'visible' });
+      });
+
+      await test.step('Verify rowcount when accordion expanded', async () => {
+        await expect(table.first()).toHaveAttribute('aria-rowcount', '8');
+        await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'true');
+      });
+
+      const collapse = page.locator('[data-ui-name="Collapse"]');
+      const cell = collapse.locator('[data-ui-name="Row.Cell"][aria-level="2"]');
+
+      await test.step('Verify child attributes', async () => {
+        await expect(collapse).toHaveAttribute('aria-rowindex', '5');
+        await expect(collapse).toHaveAttribute('role', 'row');
+        await expect(cell).toHaveAttribute('tabindex', '-1');
+        await expect(cell).toHaveAttribute('role', 'gridcell');
+        await expect(cell).toHaveAttribute('aria-colindex', '1');
+        await expect(cell).toHaveAttribute('aria-setsize', '1');
+        await expect(cell).toHaveAttribute('aria-posinset', '1');
+        await expect(locators.dataTable(page).nth(1)).toBeVisible();
+      });
+
+      await test.step('Verify child table keyboard navigation when child expanded', async () => {
+        await page.keyboard.press('ArrowDown');
+        const childFirstRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+        const childFirstCell = childFirstRow.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
+        await expect(childFirstCell).toBeFocused();
+
+        await page.keyboard.press('ArrowUp');
+        await expect(childFirstCell).toBeFocused();
+
+        await page.keyboard.press('Escape');
+        await expect(sortIconKeywordAcc).toBeFocused();
+
+        await page.keyboard.press('ArrowDown');
+        await expect(childFirstCell).toBeFocused();
+        await expect(page).toHaveScreenshot();
+
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        const childFLastRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const childlastCell = childFLastRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]');
+        await expect(childlastCell).toBeFocused();
+
+        await page.keyboard.press('Escape');
+        await expect(sortIconKeywordAcc).toBeFocused();
+
+        await page.keyboard.press('ArrowDown');
+        await expect(childlastCell).toBeFocused();
+
+        await page.keyboard.press('Escape');
+      });
+
+      await test.step('Verify keyboard navigation when child table collapsed', async () => {
+        await page.keyboard.press('Enter');
+        await locators.dataTable(page).nth(1).waitFor({ state: 'hidden' });
+        await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
+        await page.keyboard.press('ArrowDown');
+        const nextRow = table.first().locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const nextCell = nextRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]').first();
+        await expect(nextCell).toBeFocused();
+      });
+    });
+  });
+
+  const variantCard = [
+    { variant: 'card', sideIndents: undefined },
+    { variant: 'default', sideIndents: 'wide' },
+    { variant: undefined, sideIndents: undefined },
+  ];
+  variantCard.forEach((item) => {
+    test(`Verify checkbox and accordion in first cell mouse interactions when variant=${item.variant} and sedeIndents=${item.sideIndents}`, async ({ page, browserName }) => {
+      const standPath =
+        'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+
+      await page.setContent(htmlContent);
+      await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
+      const accordion = page.locator('[role="gridcell"][aria-level="2"]');
+
+      await locators.toggle(page).first().click();
+      await locators.collapse(page).waitFor({ state: 'visible' });
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+      const cellCount = await cells.count();
+
+      for (let i = 0; i < cellCount; i++) {
+        const cell = cells.nth(i);
+        await checkStyles(cell, {
+          'background-color': 'rgb(196, 229, 254)',
+        });
+      }
+
+      await expect(page).toHaveScreenshot();
+
+      if (item.variant == 'card' || item.sideIndents == 'wide') {
+        const paddingRight = await accordion.evaluate((el) => {
+          return window.getComputedStyle(el).paddingRight;
+        });
+        const paddingLeft = await accordion.evaluate((el) => {
+          return window.getComputedStyle(el).paddingLeft;
+        });
+
+        expect(paddingRight).toBe('20px');
+        expect(paddingLeft).toBe('20px');
+      }
+    });
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+});
 test.describe('Accordion in table', () => {
   test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
     const standPath =
@@ -36,7 +642,6 @@ test.describe('Accordion in table', () => {
     await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
     await expect(locators.chart(page, 'Chart')).toHaveCount(0);
 
-    await expect(page).toHaveScreenshot();
     await expect(locators.toggle(page).first()).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
@@ -125,91 +730,6 @@ test.describe('Accordion in table', () => {
     });
   });
 
-  test('Verify accordion with chart styles', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const marginRight1 = await locators.toggle(page).first().evaluate((el) => {
-      return window.getComputedStyle(el).marginRight;
-    });
-
-    expect(marginRight1).toBe('12px');
-    await locators.toggle(page).first().click();
-    await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-    await expect(locators.chart(page, 'Chart')).toHaveCount(1);
-
-    const marginRight = await locators.toggle(page).first().evaluate((el) => {
-      return window.getComputedStyle(el).marginRight;
-    });
-
-    expect(marginRight).toBe('12px');
-
-    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-    const cellCount = await cells.count();
-
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(230, 231, 237)',
-      });
-    }
-
-    await checkStyles(locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').first(), {
-      'background-color': 'rgb(244, 245, 249)',
-    });
-
-    await locators.toggle(page).first().hover();
-
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(230, 231, 237)',
-      });
-    }
-
-    await locators.toggle(page).nth(1).click();
-    await locators.chart(page, 'Chart').nth(1).waitFor({ state: 'visible' });
-    await locators.toggle(page).first().hover();
-    await expect(locators.chart(page, 'Chart')).toHaveCount(2);
-    const cells5 = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
-
-    const cellCount5 = await cells5.count();
-    for (let i = 0; i < cellCount5 - 1; i++) {
-      const cell = cells5.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(255, 255, 255)',
-      });
-    }
-
-    await checkStyles(cells5.nth(3), {
-      'background-color': 'rgb(230, 231, 237)',
-    });
-
-    await locators.toggle(page).nth(1).hover();
-    if (browserName !== 'firefox')
-      for (let i = 0; i < cellCount5 - 1; i++) {
-        const cell = cells5.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(240, 240, 244)',
-        });
-      }
-
-    await checkStyles(cells5.nth(3), {
-      'background-color': 'rgb(230, 231, 237)',
-    });
-
-    await locators.toggle(page).first().click();
-    if (browserName !== 'firefox')
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(240, 240, 244)',
-        });
-      }
-  });
-
   test('Verify accordion with with chart attributes', async ({ page }) => {
     const standPath =
       'stories/components/data-table/tests/examples/accordion-tests/accordion-inside-table.tsx';
@@ -244,52 +764,6 @@ test.describe('Accordion in table', () => {
       await expect(accordionCell).toHaveAttribute('aria-setsize', '1');
       await expect(accordionCell).toHaveAttribute('aria-posinset', '1');
     });
-  });
-
-  test('Verify table in table styles', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const marginRight1 = await locators.toggle(page).first().evaluate((el) => {
-      return window.getComputedStyle(el).marginRight;
-    });
-
-    expect(marginRight1).toBe('12px');
-    await locators.toggle(page).first().click();
-    await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
-    const marginRight = await locators.toggle(page).first().evaluate((el) => {
-      return window.getComputedStyle(el).marginRight;
-    });
-
-    expect(marginRight).toBe('12px');
-
-    const cells2 = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-
-    const cellCount = await cells2.count();
-
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells2.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(230, 231, 237)',
-      });
-    }
-
-    const cells3 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
-    const cellCount3 = await cells3.count();
-
-    for (let i = 0; i < cellCount3; i++) {
-      const cell = cells3.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(244, 245, 249)',
-      });
-    }
-
-    const paddingLeft = await cells3.first().evaluate((el) => {
-      return window.getComputedStyle(el).paddingLeft;
-    });
-
-    expect(paddingLeft).toBe('38px');
   });
 
   test('Verify table in table attributes', async ({ page }) => {
@@ -674,14 +1148,6 @@ test.describe('Accordion in table', () => {
       await expect(widget).toBeVisible();
       await page.keyboard.press('ArrowDown');
       await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify accordion is responsive', async () => {
-      await page.keyboard.press('ArrowDown');
-      await page.setViewportSize({ width: 920, height: 1080 });
-      await page.waitForTimeout(100);
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -818,49 +1284,7 @@ test.describe('Accordion in table', () => {
         'aria-expanded',
         'true',
       );
-
-      await expect(page).toHaveScreenshot();
     });
-  });
-
-  test('Verify accordion with custom component and fixed column', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/accordion-tests/accordion-with-fixed-column.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const Widget = page.getByRole('status');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await Widget.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
-    if (browserName === 'webkit')
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-    else await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify accordion with table in table and fixed column', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/accordion-tests/table-in-table-with-fixed-column.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
-    const tableInTableRow = page.locator('[aria-rowindex="5"][aria-level="2"]');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await tableInTableRow.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
-    if (browserName === 'webkit')
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-    else await expect(page).toHaveScreenshot();
   });
 
   test('Verify keyboard navigation when table component inside table', async ({ page }) => {
@@ -920,7 +1344,6 @@ test.describe('Accordion in table', () => {
 
       await page.keyboard.press('ArrowDown');
       await expect(childFirstCell).toBeFocused();
-      await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -1020,305 +1443,8 @@ test.describe('Accordion in table', () => {
     await locators.toggle(page).first().click();
     await locators.collapse(page).waitFor({ state: 'visible' });
     await expect(locators.collapse(page)).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
 
     await locators.button(page, 'Prev').click();
     await expect(locators.collapse(page)).toHaveCount(2);
-    await page.locator('[data-ui-name="Checkbox"]').nth(0).click();
-    await page.waitForTimeout(50);
-
-    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-    const cellCount = await cells.count();
-
-    for (let i = 0; i < cellCount - 2; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(233, 247, 255)',
-      });
-    }
-
-    await checkStyles(cells.nth(cellCount - 1), {
-      'background-color': 'rgb(196, 229, 254)',
-    });
-
-    const box = await locators.row(page, 2).getByRole('gridcell').nth(1).boundingBox();
-    if (box) {
-      await page.mouse.move(box.x + 10, box.y + 5);
-    }
-
-    if (browserName !== 'firefox') {
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(196, 229, 254)',
-        });
-      }
-    }
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify accordion with themed rows', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/accordion-tests/colored-accordion.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await test.step('Verify success theme', async () => {
-      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(219, 254, 232)',
-        });
-      }
-
-      await locators.toggle(page).first().click();
-      await page.getByText('Nothing found').waitFor({ state: 'visible' });
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(158, 242, 201)',
-        });
-      }
-      await locators.toggle(page).first().click();
-      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
-    });
-
-    await test.step('Verify info theme', async () => {
-      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(233, 247, 255)',
-        });
-      }
-
-      await locators.toggle(page).nth(1).click();
-      await page.getByText('Nothing found').waitFor({ state: 'visible' });
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(196, 229, 254)',
-        });
-      }
-      await locators.toggle(page).nth(1).click();
-      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
-    });
-
-    await test.step('Verify muted theme', async () => {
-      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(244, 245, 249)',
-        });
-      }
-
-      await locators.toggle(page).nth(2).click();
-      await page.getByText('Nothing found').waitFor({ state: 'visible' });
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(230, 231, 237)',
-        });
-      }
-      await locators.toggle(page).nth(2).click();
-      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
-    });
-
-    await test.step('Verify warning theme', async () => {
-      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(255, 243, 217)',
-        });
-      }
-
-      await locators.toggle(page).nth(3).click();
-      await page.getByText('Nothing found').waitFor({ state: 'visible' });
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(255, 220, 162)',
-        });
-      }
-      await locators.toggle(page).nth(3).click();
-      await page.getByText('Nothing found').waitFor({ state: 'hidden' });
-    });
-
-    await test.step('Verify danger theme', async () => {
-      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(255, 240, 247)',
-        });
-      }
-
-      await locators.toggle(page).nth(4).click();
-      await page.getByText('Nothing found').waitFor({ state: 'visible' });
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(255, 215, 223)',
-        });
-      }
-    });
-  });
-
-  test('Verify accordion with themed cells', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/tests/examples/accordion-tests/colored-cells-in-accordion.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const stylesActiveHovered = [
-      'rgb(158, 242, 201)', // success
-      'rgb(196, 229, 254)', // info
-      'rgb(230, 231, 237)', // muted
-      'rgb(255, 220, 162)', // warning
-      'rgb(255, 215, 223)', // danger
-    ];
-
-    const stylesNotActive = [
-      'rgb(219, 254, 232)', // success
-      'rgb(233, 247, 255)', // info
-      'rgb(244, 245, 249)', // muted
-      'rgb(255, 243, 217)', // warning
-      'rgb(255, 240, 247)', // danger
-    ];
-
-    const cells = locators.row(page, 2).getByRole('gridcell');
-    const cellCount = await cells.count();
-
-    await test.step('Verify expanded state', async () => {
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': stylesActiveHovered[i],
-        });
-      }
-    });
-    await test.step('Verify hovered state', async () => {
-      if (browserName === 'firefox') test.skip();
-      await locators.toggle(page).click();
-      await locators.toggle(page).hover();
-      await locators.collapse(page).waitFor({ state: 'hidden' });
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': stylesActiveHovered[i],
-        });
-      }
-    });
-
-    await test.step('Verify initial state', async () => {
-      const box = await page.getByRole('columnheader').first().boundingBox();
-
-      if (box) {
-        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      }
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': stylesNotActive[i],
-        });
-      }
-    });
-  });
-
-  const variantCard = [
-    { variant: 'card', sideIndents: undefined },
-    { variant: 'default', sideIndents: 'wide' },
-    { variant: undefined, sideIndents: undefined },
-  ];
-  variantCard.forEach((item) => {
-    test(`Verify checkbox and accordion in first cell mouse interactions when variant=${item.variant} and sedeIndents=${item.sideIndents}`, async ({ page, browserName }) => {
-      const standPath =
-        'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
-      await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
-      const accordion = page.locator('[role="gridcell"][aria-level="2"]');
-
-      await locators.toggle(page).first().click();
-      await locators.collapse(page).waitFor({ state: 'visible' });
-      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-
-      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = cells.nth(i);
-        await checkStyles(cell, {
-          'background-color': 'rgb(196, 229, 254)',
-        });
-      }
-
-      await expect(page).toHaveScreenshot();
-
-      if (item.variant == 'card' || item.sideIndents == 'wide') {
-        const paddingRight = await accordion.evaluate((el) => {
-          return window.getComputedStyle(el).paddingRight;
-        });
-        const paddingLeft = await accordion.evaluate((el) => {
-          return window.getComputedStyle(el).paddingLeft;
-        });
-
-        expect(paddingRight).toBe('20px');
-        expect(paddingLeft).toBe('20px');
-      }
-    });
-  });
-
-  test('Verify checkbox and accordion in first cell keyboard interactions', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-    const cellCount = await cells.count();
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Space');
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(233, 247, 255)',
-      });
-    }
-
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Space');
-    await locators.collapse(page).waitFor({ state: 'visible' });
-    await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-
-    for (let i = 0; i < cellCount; i++) {
-      const cell = cells.nth(i);
-      await checkStyles(cell, {
-        'background-color': 'rgb(196, 229, 254)',
-      });
-    }
   });
 });

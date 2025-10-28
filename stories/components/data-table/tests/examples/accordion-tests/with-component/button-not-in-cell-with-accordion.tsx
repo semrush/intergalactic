@@ -1,21 +1,26 @@
+import type { BoxProps } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
 import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
+
 export type AccordionWithButtonProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
+  defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
 };
 
-const Demo = (props: AccordionWithButtonProps) => {
+type AccordionWithButtonExampleProps = AccordionWithButtonProps & BoxProps;
+
+const Demo = (props: AccordionWithButtonExampleProps) => {
   return (
     <DataTable
       data={data}
-      aria-label='Accordion inside table'
+      aria-label='Custom Accordion with button inside table'
       accordionMode={props.accordionMode}
       variant={props.variant}
       use={props.use}
@@ -23,8 +28,9 @@ const Demo = (props: AccordionWithButtonProps) => {
       onAccordionToggle={(type, key, i) => {
         console.log('called', type, key, i);
       }}
-      h='300px'
-      defaultGridTemplateColumnWidth='1fr'
+      h={props.h}
+      w={props.w}
+      defaultGridTemplateColumnWidth={props.defaultGridTemplateColumnWidth}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(20%, 50%)' },
         {
@@ -35,19 +41,24 @@ const Demo = (props: AccordionWithButtonProps) => {
             { name: 'kd', children: 'KD,%' },
             { name: 'cpc', children: 'CPC' },
             { name: 'vol', children: 'Vol.' },
-          ] },
+          ],
+        },
       ]}
     />
   );
 };
-export const accordionWithDefaultProps: AccordionWithButtonProps = {
+export const accordionWithButtonDefaultProps: AccordionWithButtonExampleProps = {
   accordionMode: 'independent',
   variant: undefined,
   use: undefined,
   compact: undefined,
+  h: '300px',
+  w: undefined,
+  defaultGridTemplateColumnWidth: '1fr',
+
 };
 
-Demo.defaultProps = accordionWithDefaultProps;
+Demo.defaultProps = accordionWithButtonDefaultProps;
 
 const ChartExample = () => {
   const [[width, height], setSize] = React.useState([600, 300]);
@@ -55,20 +66,22 @@ const ChartExample = () => {
   const [dataChart, setDataChart] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    const dataChart = Array(20)
+    const fixedData = Array(20)
       .fill({})
-      .map((d, i) => ({
+      .map((_, i) => ({
         x: i,
-        y: Math.random() * 10,
+        y: (i % 10) + 1,
       }));
-    setDataChart(dataChart);
+    setDataChart(fixedData);
   }, []);
+
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
     .domain(minMax(dataChart, 'x'));
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
+
   return (
     <ResponsiveContainer onResize={setSize} h={300} w='100%' style={{ background: '#fff' }}>
       <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height} style={{ background: '#fff' }}>

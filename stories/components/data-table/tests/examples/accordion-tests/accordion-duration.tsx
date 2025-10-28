@@ -1,27 +1,31 @@
+import type { BoxProps } from '@semcore/ui/base-componentse';
 import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type TableInTableProps = {
+export type TableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
   accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
 };
 
-const ChartExample1 = () => {
+type AccordionDurationProps = TableProps & BoxProps;
+
+const WidgetEmpty = () => {
   return (
     <NoData type='nothing-found' my={7} mx='auto'>
     </NoData>
   );
 };
 
-const Demo = (props: TableInTableProps) => {
+const Demo = (props: AccordionDurationProps) => {
   return (
     <DataTable
       aria-label='Parent'
-      h='100%'
+      h={props.h}
+      w={props.w}
       data={data}
       accordionDuration={props.accordionDuration}
       accordionAnimationRows={props.accordionAnimationRows}
@@ -70,8 +74,10 @@ const ChartExample = () => {
     />
   );
 };
-export const tableInTableDefaultProps: TableInTableProps = {
+export const tableInTableDefaultProps: AccordionDurationProps = {
   accordionMode: 'independent',
+  h: '100%',
+  w: undefined,
   accordionAnimationRows: 1,
   accordionDuration: 500,
 };
@@ -152,7 +158,7 @@ const data = [
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-    [ACCORDION]: (<ChartExample1 />),
+    [ACCORDION]: (<WidgetEmpty />),
   },
   {
     [UNIQ_ROW_KEY]: '5',
