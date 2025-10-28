@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.11] - 2025-11-07
+
+### Fixed
+
+- “Blocked aria-hidden on an element” accessibility error for `ChevronDownM`.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

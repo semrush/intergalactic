@@ -197,7 +197,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
           </STriggerCircleLine>
         )}
       </STriggerCircle>
-      <ChevronDownM color='gray-800' />
+      <ChevronDownM tabIndex={undefined} color='gray-800' />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 });
