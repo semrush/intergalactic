@@ -64,7 +64,7 @@ class DataTableRoot<
     {},
     {},
   typeof DataTableRoot.enhance,
-  { use: DTRow<UniqKeyType>; expandedRows: Set<UniqKeyType>; renderEmptyData: () => React.ReactNode }
+  typeof DataTableRoot.defaultProps
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -82,6 +82,8 @@ class DataTableRoot<
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
     variant: 'default',
+    accordionAnimationRows: 40,
+    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
@@ -185,7 +187,7 @@ class DataTableRoot<
     const { totalRows, expandedRows } = this.asProps;
     const flatRows = this.getFlatRows();
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];
@@ -319,12 +321,14 @@ class DataTableRoot<
       limit,
       variant,
       totalRows,
+      accordionAnimationRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
 
     return {
       accordionDuration,
+      accordionAnimationRows,
       accordionMode,
       columns: this.columns,
       rows: this.getRows(),
@@ -403,7 +407,7 @@ class DataTableRoot<
     }
   });
 
-  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
+  handleCellClick = (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }

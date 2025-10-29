@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Low performance when opening an accordion with a large number of rows.
 - Keyboard interaction after mouse clicking in Safari.
 
 ## [16.4.1] - 2025-10-17

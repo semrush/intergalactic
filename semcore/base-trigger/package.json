@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@semcore/dot": "16.0.10",
-    "@semcore/icon": "16.5.1",
+    "@semcore/icon": "16.7.1",
     "@semcore/spin": "16.0.10",
     "@semcore/flex-box": "16.0.10",
     "@semcore/neighbor-location": "16.0.10",

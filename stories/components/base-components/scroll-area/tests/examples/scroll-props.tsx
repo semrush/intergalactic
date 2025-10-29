@@ -34,7 +34,7 @@ export const defaultProps: ScrollAreaExampleProps = {
   focusRingLeftOffset: '40px',
 };
 
-const ScrollAreaDemo: React.FC<ScrollAreaExampleProps> = ({
+const ScrollAreaDemo = ({
   shadow = true,
   orientation,
   topOffset = 100,
@@ -49,7 +49,7 @@ const ScrollAreaDemo: React.FC<ScrollAreaExampleProps> = ({
   focusRingBottomOffset,
   focusRingLeftOffset,
   ...rest
-}) => {
+}: ScrollAreaExampleProps) => {
   return (
     <Flex p={4} style={{ backgroundColor: '#F5F6FA', minHeight: 360 }}>
       <ScrollArea

@@ -74,11 +74,17 @@ test.describe('@functional @popper', () => {
     await page.mouse.move(rightBottom[0] + 10, rightBottom[1] + 10);
     await page.mouse.move(rightBottom[0] - 10, rightBottom[1] - 10, { steps: 10 });
 
+    await popper.waitFor({ state: 'visible' });
     await expect.poll(async () => (await popper.boundingBox())?.x ?? 0)
       .toBeGreaterThan(triggerRect.x + triggerRect.width * 0.8);
 
+    await page.mouse.move(0, 0);
+    await popper.waitFor({ state: 'hidden' });
+
     await page.mouse.move(leftBottom[0] - 10, leftBottom[1] + 10);
     await page.mouse.move(leftBottom[0] + 10, leftBottom[1] - 10, { steps: 10 });
+    await popper.waitFor({ state: 'visible' });
+
     const secondX = (await popper.boundingBox())?.x ?? 0;
 
     // WebKit sometimes doesnt re-count coordinates

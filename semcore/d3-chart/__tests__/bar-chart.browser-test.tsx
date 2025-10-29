@@ -297,4 +297,23 @@ test.describe('Bar chart', () => {
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify multiline tick labels', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      data: [
+        { category: 'Google AI Mode 0 Top', bar: 2 },
+        { category: 'Google AI Mode 1 Top', bar: 5 },
+        { category: 'Google AI Mode 2 Top', bar: 7 },
+        { category: 'Google AI Mode 3 Top', bar: 4 },
+        { category: 'Google AI Mode 4 Top', bar: 8 },
+      ],
+      multilineXTicks: true,
+      marginX: 60,
+    });
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
 });

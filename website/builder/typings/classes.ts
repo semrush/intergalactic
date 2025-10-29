@@ -11,10 +11,25 @@ export const serializeClassDeclaration = (classDeclaration: ts.ClassDeclaration)
   const name = classDeclaration.name.escapedText as string;
   const genericsMap = {};
   const inheritance = [...(classDeclaration.heritageClauses ?? [])].flatMap((clause) =>
-    clause.types.map((type: any) => ({
-      referenceTo: type.expression.escapedText,
-      displayText: type.expression.escapedText,
-    })),
+    clause.types.map((type) => {
+      const expression = type.expression;
+
+      if (ts.isIdentifier(expression)) {
+        return {
+          referenceTo: expression.escapedText,
+          displayText: expression.escapedText,
+        };
+      }
+
+      if (ts.isPropertyAccessExpression(expression) && ts.isIdentifier(expression.expression)) {
+        return {
+          referenceTo: expression.expression.escapedText,
+          displayText: expression.expression.escapedText,
+        };
+      }
+
+      return [];
+    }),
   );
   const dependencies = extractDependenciesList(inheritance);
   const properties: ts.PropertySignature[] = [];

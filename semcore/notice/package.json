@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.10",
-    "@semcore/icon": "16.5.1",
+    "@semcore/icon": "16.7.1",
     "@semcore/notice-global": "16.1.10",
     "@semcore/animation": "16.0.6",
     "@semcore/flex-box": "16.0.10",
