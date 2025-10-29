@@ -6,7 +6,7 @@ import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-export type AccordionWithButtonProps = {
+export type AccordionWithButtonExampleProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   variant?: DataTableProps<typeof data, any, any>['variant'];
   use?: DataTableProps<typeof data, any, any>['use'];
@@ -14,9 +14,7 @@ export type AccordionWithButtonProps = {
   loading?: DataTableProps<typeof data, any, any>['loading'];
 
   defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
-};
-
-type AccordionWithButtonExampleProps = AccordionWithButtonProps & BoxProps;
+} & BoxProps;
 
 const Demo = (props: AccordionWithButtonExampleProps) => {
   return (

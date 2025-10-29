@@ -25,11 +25,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.getByRole('option', { name: '8' }).click();
 
     await test.step('Focus 3rd row cell on 1st page  ', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
+      for (let i = 0; i < 5; i++) await page.keyboard.press('Shift+Tab');
       await expect(page.getByRole('gridcell', { name: '1 ebay buy' })).toBeFocused();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -38,12 +34,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
 
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Space');
+
       await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');

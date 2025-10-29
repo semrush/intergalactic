@@ -3,7 +3,7 @@ import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
-type BaseExampleProps = {
+export type OneLevelHeaderBaseProps = {
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
   loading?: DataTableProps<typeof data, any, any>['loading'];
@@ -12,9 +12,7 @@ type BaseExampleProps = {
   withScrollBar?: boolean;
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
-};
-
-export type OneLevelHeaderBaseProps = BaseExampleProps & BoxProps;
+} & BoxProps;
 
 const Demo = (props: OneLevelHeaderBaseProps) => {
   return (
@@ -61,7 +59,7 @@ const Demo = (props: OneLevelHeaderBaseProps) => {
 export const baseDefaultProps: OneLevelHeaderBaseProps = {
   sideIndents: undefined,
   use: undefined,
-  compact: undefined,
+  compact: false,
   h: undefined,
   wMax: '600px',
   defaultGridTemplateColumnWidth: 'auto',

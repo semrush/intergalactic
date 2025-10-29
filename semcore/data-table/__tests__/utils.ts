@@ -15,6 +15,7 @@ export const locators = {
     page.locator(
       `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
     ),
+  getDataTestId: (page: Page, testId: string) => page.locator(`[data-test-id="${testId}"]`),
 
   descriptionTooltipTrigger: (page: Page, row: number, col: number) =>
     locators.getCell(page, row, col).locator('[data-ui-name="DescriptionTooltip.Trigger"]'),
@@ -24,6 +25,10 @@ export const locators = {
     locators.getCell(page, row, col).locator('button[data-ui-name="Dropdown.Trigger"]'),
   buttonInCell: (page: Page, row: number, col: number) =>
     locators.getCell(page, row, col).locator('[data-ui-name="Button"]').first(),
+  getHeadColumn: (page: Page, i?: any) =>
+    page.locator(`[data-ui-name="Head.Column"][aria-colindex="${i}"]`),
+  sortButton: (page: Page, col: any) => locators.getHeadColumn(page, col).locator('button[data-ui-name="ButtonLink"]'),
+
 };
 
 export async function getColumnWidth(page: any, colIndex: any) {

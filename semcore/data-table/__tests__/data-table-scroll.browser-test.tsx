@@ -1,5 +1,8 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
+
+import { locators } from './utils';
 
 async function checkAriaMaxValue(scrollBar: any) {
   await expect(scrollBar).toHaveAttribute('aria-valuemax');
@@ -16,116 +19,301 @@ async function checkScrollNowIncreased(scrollBar: any) {
   const nowNumber = Number(nowValue);
   return nowNumber;
 }
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variantFixedColumn = [
+    { sticky: false, withScrollBar: false, h: '300px' },
+    { sticky: true, withScrollBar: false, h: '300px' },
+    { sticky: true, withScrollBar: true, h: '300px' },
+    { sticky: false, withScrollBar: false, h: '100%' }, // without vertical scroll
+  ];
+  variantFixedColumn.forEach((item) => {
+    test(`Verify Mouse scroll One Level with Fixed column scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar} h=${item.h}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/one-level-with-fixed-column.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-test.describe('Vertical Scroll', () => {
-  test('Verify Keyboard scroll when Sticky header and no interactive in cells', async ({
-    page,
-  }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table-sticky.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
 
-    await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 8; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
+      await test.step('Verify horizontal scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(600, 0);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+    });
+
+    test(`Verify keyboard scroll One Level with Fixed column scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}  h=${item.h}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/one-level-with-fixed-column.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
+      await test.step('Verify horizontal scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 3; i++) {
+          await page.keyboard.press('ArrowRight');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+    });
+
+    test(`Verify Mouse scroll Multi Level with Fixed column scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}  h=${item.h}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/multi-level-with-fixed-column.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+
+      await test.step('Verify horizontal scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(600, 0);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+    });
+
+    test(`Verify keyboard scroll Multi Level with Fixed column scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}  h=${item.h}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/multi-level-with-fixed-column.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
+      await test.step('Verify horizontal scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 3; i++) {
+          await page.keyboard.press('ArrowRight');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar);
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+    });
   });
 
-  test('Verify Mouse scroll when Sticky header and no interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples//scroll-tests/scroll-in-table-sticky.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  const variantNoFixedColumn = [
+    { sticky: false, withScrollBar: false, h: '300px' },
+    { sticky: true, withScrollBar: false, h: '300px' },
+    { sticky: true, withScrollBar: true, h: '300px', wMax: '300px' },
+  ];
+  variantNoFixedColumn.forEach((item) => {
+    test(`Verify Mouse scroll One Level scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/one-level-scroll-in-table.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
-    await page.mouse.wheel(0, 600);
-    await page.waitForTimeout(1000);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar.first());
+        await locators.dataTable(page).first().hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar.first());
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await locators.dataTable(page).nth(1).hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
 
-  test('Verify Keyboard scroll when Sticky header and interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+      if (item.wMax === '200px') {
+        await test.step('Verify horizontal scroll', async () => {
+          const initialValue = await checkAriaMaxValue(scrollBar.nth(2));
+          await locators.dataTable(page).nth(1).hover();
+          await page.mouse.wheel(600, 0);
+          await page.waitForTimeout(1000);
+          const nowNumber = await checkScrollNowIncreased(scrollBar.nth(2));
+          expect(nowNumber).toBeLessThanOrEqual(initialValue);
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+        });
+      }
+    });
 
-    await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 5; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot();
-  });
+    test(`Verify keyboard scroll One Levelscroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/one-level-scroll-in-table.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-  test('Verify mouse scroll when Sticky header and interactive in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar.first());
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar.first());
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
 
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
-    await page.mouse.wheel(0, 600);
-    await page.waitForTimeout(1000);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
+      if (item.wMax == '200px') {
+        await test.step('Verify horizontal scroll', async () => {
+          const initialValue = await checkAriaMaxValue(scrollBar.nth(2));
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
 
-  test('Verify Keyboard scroll when header not Sticky ', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+          for (let i = 0; i < 3; i++) {
+            await page.keyboard.press('ArrowRight');
+          }
+          await page.waitForTimeout(200);
+          const nowNumber = await checkScrollNowIncreased(scrollBar.nth(2));
+          expect(nowNumber).toBeLessThanOrEqual(initialValue);
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+        });
+      }
+    });
 
-    await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 7; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    if (browserName === 'webkit') await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-    else await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
+    test(`Verify Mouse scroll Multi Level scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/multi-level-scroll-in-table.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-  test('Verify mouse scroll when header not Sticky', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar.first());
+        await locators.dataTable(page).first().hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        const nowNumber = await checkScrollNowIncreased(scrollBar.first());
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await locators.dataTable(page).nth(1).hover();
+        await page.mouse.wheel(0, 600);
+        await page.waitForTimeout(1000);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
 
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
-    await page.mouse.wheel(0, 600);
-    await page.waitForTimeout(1000);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      if (item.wMax == '200px') {
+        await test.step('Verify horizontal scroll', async () => {
+          const initialValue = await checkAriaMaxValue(scrollBar.nth(2));
+          await locators.dataTable(page).nth(1).hover();
+          await page.mouse.wheel(600, 0);
+          await page.waitForTimeout(1000);
+          const nowNumber = await checkScrollNowIncreased(scrollBar.nth(2));
+          expect(nowNumber).toBeLessThanOrEqual(initialValue);
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+        });
+      }
+    });
+
+    test(`Verify keyboard scroll Multi Level scroll sticky =${item.sticky} withScrollBar=${item.withScrollBar}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/multi-level-scroll-in-table.tsx', 'en', item);
+      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+
+      if (item.wMax == '200px') {
+        await test.step('Verify horizontal scroll', async () => {
+          const initialValue = await checkAriaMaxValue(scrollBar);
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+          for (let i = 0; i < 3; i++) {
+            await page.keyboard.press('ArrowRight');
+          }
+          await page.waitForTimeout(200);
+          const nowNumber = await checkScrollNowIncreased(scrollBar);
+          expect(nowNumber).toBeLessThanOrEqual(initialValue);
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+        });
+      }
+
+      await test.step('Verify vertical scroll', async () => {
+        const initialValue = await checkAriaMaxValue(scrollBar.first());
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await page.waitForTimeout(200);
+        const nowNumber = await checkScrollNowIncreased(scrollBar.first());
+        expect(nowNumber).toBeLessThanOrEqual(initialValue);
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+      });
+    });
   });
 
   test('Verify keyboard when sticky header with top props', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/scroll-in-top-header.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-with-sticky-and-top-props-header.tsx', 'en');
 
     await page.keyboard.press('Tab');
     for (let i = 0; i < 6; i++) {
@@ -144,244 +332,6 @@ test.describe('Vertical Scroll', () => {
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
-});
 
-test.describe('Horizontal Scroll', () => {
-  test('Verify keyboard scroll when no fixed columns', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await test.step('Verify regular horizontal scroll', async () => {
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-      const initialValue = await checkAriaMaxValue(scrollBar);
-      await page.keyboard.press('Tab');
-      for (let i = 0; i < 3; i++) {
-        await page.keyboard.press('ArrowRight');
-      }
-      await page.waitForTimeout(100);
-      const nowNumber = await checkScrollNowIncreased(scrollBar);
-      expect(nowNumber).toBeLessThanOrEqual(initialValue);
-
-      if (browserName === 'webkit') return;
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-    });
-
-    await test.step('Verify when header scroll presents', async () => {
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-      const initialValue = await checkAriaMaxValue(scrollBar);
-      await page.keyboard.press('Tab');
-      for (let i = 0; i < 3; i++) {
-        await page.keyboard.press('ArrowRight');
-      }
-      await page.waitForTimeout(100);
-      const nowNumber = await checkScrollNowIncreased(scrollBar);
-      expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      if (browserName === 'webkit') return;
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-    });
-  });
-
-  test('Verify mouse scroll when no fixed columns', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await test.step('Verify regular horizontal scroll', async () => {
-      const dataTable = await page.locator('[data-ui-name="DataTable"]').first();
-
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-      const initialValue = await checkAriaMaxValue(scrollBar);
-      await dataTable.hover();
-      await page.mouse.wheel(600, 0);
-      await page.waitForTimeout(1000);
-      const nowNumber = await checkScrollNowIncreased(scrollBar);
-      expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-    });
-
-    await test.step('Verify when header scroll presents', async () => {
-      const dataTable = await page.locator('[data-ui-name="DataTable"]').nth(1);
-
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-      const initialValue = await checkAriaMaxValue(scrollBar);
-      await dataTable.hover();
-      await page.mouse.wheel(600, 0);
-      await page.waitForTimeout(1000);
-      const nowNumber = await checkScrollNowIncreased(scrollBar);
-      expect(nowNumber).toBeLessThanOrEqual(initialValue);
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-    });
-  });
-
-  test('Verify keyboard scroll when 1 level header and columns fixed', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/fixed-columns.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(0);
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 3; i++) {
-      await page.keyboard.press('ArrowRight');
-    }
-    await page.waitForTimeout(200);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify mouse scroll when 1 level header and columns fixed', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/fixed-columns.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
-    await page.mouse.wheel(600, 0);
-    await page.waitForTimeout(1000);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify keyboard scroll when columns with differend width fixed', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/fixed-column-with-d-ff-width.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 3; i++) {
-      await page.keyboard.press('ArrowRight');
-    }
-    await page.waitForTimeout(200);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    if (browserName === 'webkit') return;
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify keyboard scroll when multilevel parent fixed', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 5; i++) {
-      await page.keyboard.press('ArrowRight');
-    }
-    await page.waitForTimeout(100);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-
-    const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(2);
-    const initialValue2 = await checkAriaMaxValue(scrollBar2);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 5; i++) {
-      await page.keyboard.press('ArrowRight');
-    }
-    await page.waitForTimeout(100);
-    const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
-    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
-    if (browserName === 'webkit') return;
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify mouse scroll when multilevel parent fixed', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/horizontal-scroll-fixed-group.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.first().hover();
-    await page.mouse.wheel(600, 0);
-    await page.waitForTimeout(200);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-
-    await dataTable.nth(1).hover();
-    const scrollBarHeader = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(2);
-    const initialValue2 = await checkAriaMaxValue(scrollBarHeader);
-    await page.mouse.wheel(600, 0);
-    await page.waitForTimeout(200);
-    const nowNumber2 = await checkScrollNowIncreased(scrollBarHeader);
-    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify keyboard when vertical and horizontal presents', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 5; i++) {
-      await page.keyboard.press('ArrowRight');
-    }
-    await page.waitForTimeout(100);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-
-    const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-    const initialValue2 = await checkAriaMaxValue(scrollBar2);
-
-    for (let i = 0; i < 15; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    await page.waitForTimeout(100);
-    const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
-    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-  });
-
-  test('Verify mouse when vertical and horizontal presents', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/scroll-tests/multiple-scrolls.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-
-    const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]').first();
-    const initialValue = await checkAriaMaxValue(scrollBar);
-    await dataTable.hover();
-    await page.mouse.wheel(600, 0);
-    await page.waitForTimeout(1000);
-    const nowNumber = await checkScrollNowIncreased(scrollBar);
-    expect(nowNumber).toBeLessThanOrEqual(initialValue);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-
-    const scrollBar2 = page.locator('[data-ui-name="ScrollArea.Bar"]').nth(1);
-    const initialValue2 = await checkAriaMaxValue(scrollBar2);
-
-    await dataTable.hover();
-    await page.mouse.wheel(0, 600);
-    await page.waitForTimeout(1000);
-    await page.waitForTimeout(100);
-    const nowNumber2 = await checkScrollNowIncreased(scrollBar2);
-    expect(nowNumber2).toBeLessThanOrEqual(initialValue2);
-  });
+  // add cases when hedader has interactive element
 });

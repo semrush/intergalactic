@@ -6,8 +6,9 @@ import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
-type BaseExampleProps = {
+export type MultiLevelNonInteractiveProps = {
   compact?: DataTableProps<typeof data, any, any>['compact'];
+  use?: DataTableProps<typeof data, any, any>['use'];
   loading?: DataTableProps<typeof data, any, any>['loading'];
   defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
   sticky: boolean;
@@ -15,9 +16,7 @@ type BaseExampleProps = {
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
 
-};
-
-export type MultiLevelNonInteractiveProps = BaseExampleProps & BoxProps;
+} & BoxProps;
 
 const columns = [
   { name: 'other', children: 'Other' },
@@ -49,13 +48,15 @@ const Demo = (props: MultiLevelNonInteractiveProps) => {
     <>
       <DataTable
         data={data}
-        aria-label='Multi level header noninteractive'
+        aria-label='Multi level header non interactive'
         defaultGridTemplateColumnWidth={props.defaultGridTemplateColumnWidth}
         compact={props.compact}
         sideIndents={props.sideIndents}
         loading={props.loading}
         wMax={props.wMax}
         h={props.h}
+        use={props.use}
+
         headerProps={{
           sticky: props.sticky,
           withScrollBar: props.withScrollBar,
@@ -74,6 +75,8 @@ export const multiLevelNonInteractiveProps: MultiLevelNonInteractiveProps = {
   loading: undefined,
   sticky: true,
   withScrollBar: undefined,
+  use: 'primary',
+
 };
 Demo.defaultProps = multiLevelNonInteractiveProps;
 
