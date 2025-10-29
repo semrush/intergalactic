@@ -1,8 +1,5 @@
 import Button from '@semcore/ui/button';
-import Divider from '@semcore/ui/divider';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
-import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -62,12 +59,11 @@ const Demo = () => {
           gap={3}
           py={3}
         >
-          <Button theme='muted' use='tertiary' addonLeft={ArrowLeftM}>
-            Previous content
+          <Button size='l' theme='success' use='primary'>
+            Submit
           </Button>
-          <Divider orientation='vertical' />
-          <Button theme='muted' use='tertiary' addonRight={ArrowRightM}>
-            Next content
+          <Button size='l'>
+            Cancel
           </Button>
         </FullscreenModal.Footer>
       </FullscreenModal>
