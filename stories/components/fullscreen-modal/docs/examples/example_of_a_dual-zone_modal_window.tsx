@@ -36,7 +36,7 @@ const Demo = () => {
             aria-labelledby='side-section-heading'
             role='complementary'
             style={{
-              background: 'var(--intergalactic-bg-secondary-neutral)',
+              background: 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)',
               overflow: 'auto',
             }}
             innerOutline
