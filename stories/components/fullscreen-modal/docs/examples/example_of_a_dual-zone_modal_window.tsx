@@ -3,7 +3,7 @@ import Divider from '@semcore/ui/divider';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
 import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
-import { Text } from '@semcore/ui/typography';
+import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -17,31 +17,57 @@ const Demo = () => {
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header>
           <FullscreenModal.Title>Modal Window Title</FullscreenModal.Title>
-          <FullscreenModal.Description>Additional information</FullscreenModal.Description>
+          <FullscreenModal.Description>
+            Additional information
+          </FullscreenModal.Description>
         </FullscreenModal.Header>
         <FullscreenModal.Body>
-          <FullscreenModal.Section>
-            <Text size={400}>Content Title</Text>
+          <FullscreenModal.Section aria-labelledby='main-section-heading'>
+            <Text
+              id='main-section-heading'
+              size={400}
+              tag='h3'
+              fontWeight={400}
+            >
+              Main section
+            </Text>
           </FullscreenModal.Section>
-          <FullscreenModal.Section style={{ background: 'var(--intergalactic-bg-secondary-neutral)', overflow: 'auto' }} innerOutline>
-            <div style={{ height: '1000px' }}>
-              <Text size={400}>Content Title</Text>
-            </div>
+          <FullscreenModal.Section
+            aria-labelledby='side-section-heading'
+            role='complementary'
+            style={{
+              background: 'var(--intergalactic-bg-secondary-neutral)',
+              overflow: 'auto',
+            }}
+            innerOutline
+          >
+            <Text
+              id='side-section-heading'
+              size={400}
+              tag='h3'
+              fontWeight={400}
+            >
+              Scrollable side section
+            </Text>
+            <List mt={4}>
+              {Array(50).fill(0).map((_, ind) => (
+                <List.Item key={ind}>Option {ind + 1}</List.Item>
+              ))}
+            </List>
           </FullscreenModal.Section>
         </FullscreenModal.Body>
-        <FullscreenModal.Footer justifyContent='center' alignItems='center'>
-          <Button size='m' theme='muted' use='tertiary'>
-            <Button.Addon>
-              <ArrowLeftM />
-            </Button.Addon>
-            <Button.Text ml={2}>Previous content</Button.Text>
+        <FullscreenModal.Footer
+          justifyContent='center'
+          alignItems='center'
+          gap={3}
+          py={3}
+        >
+          <Button theme='muted' use='tertiary' addonLeft={ArrowLeftM}>
+            Previous content
           </Button>
-          <Divider orientation='vertical' h={26} mx={6} />
-          <Button size='m' theme='muted' use='tertiary'>
-            <Button.Text mr={2}>Next content</Button.Text>
-            <Button.Addon>
-              <ArrowRightM />
-            </Button.Addon>
+          <Divider orientation='vertical' />
+          <Button theme='muted' use='tertiary' addonRight={ArrowRightM}>
+            Next content
           </Button>
         </FullscreenModal.Footer>
       </FullscreenModal>
