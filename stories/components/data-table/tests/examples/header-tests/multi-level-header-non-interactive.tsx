@@ -1,7 +1,7 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
@@ -14,15 +14,38 @@ type BaseExampleProps = {
   withScrollBar?: boolean;
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
-  borders: 'both' | 'left' | 'right' | undefined;
 
 };
 
 export type MultiLevelNonInteractiveProps = BaseExampleProps & BoxProps;
 
+const columns = [
+  { name: 'other', children: 'Other' },
+  {
+    name: 'group1',
+    children: 'Group',
+    columns: [
+      {
+        name: 'kd',
+        children: (
+          <Flex gap={2} alignItems='center'>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </Flex>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC' },
+      { name: 'vol', children: 'Vol.' },
+
+    ],
+  },
+
+  { name: 'keyword', children: 'Keyword' },
+];
+
 const Demo = (props: MultiLevelNonInteractiveProps) => {
   return (
-
     <>
       <DataTable
         data={data}
@@ -37,34 +60,8 @@ const Demo = (props: MultiLevelNonInteractiveProps) => {
           sticky: props.sticky,
           withScrollBar: props.withScrollBar,
         }}
-        columns={[
-          { name: 'other', children: 'Other' },
-          {
-            name: 'group1',
-            children: 'Group',
-            borders: props.borders,
-            columns: [
-              {
-                name: 'kd',
-                children: (
-                  <Flex gap={2} alignItems='center'>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </Flex>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-
-          { name: 'keyword', children: 'Keyword' },
-
-        ]}
+        columns={columns}
       />
-
     </>
   );
 };
@@ -77,7 +74,6 @@ export const multiLevelNonInteractiveProps: MultiLevelNonInteractiveProps = {
   loading: undefined,
   sticky: true,
   withScrollBar: undefined,
-  borders: undefined,
 };
 Demo.defaultProps = multiLevelNonInteractiveProps;
 

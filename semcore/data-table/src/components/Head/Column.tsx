@@ -3,7 +3,6 @@ import { ButtonLink } from '@semcore/button';
 import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
