@@ -58,7 +58,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: #e0e1e9;
+    background: var(--intergalactic-border-secondary);
     z-index: 0;
   }
 }
