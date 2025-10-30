@@ -205,6 +205,30 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify palette manager color styles', async () => {
+      const addButton = page.getByRole('button').first();
+
+      await addButton.hover();
+
+      const addButtonHoverStateStyles = await getComputedStyles(addButton, [
+        'backgroundColor',
+      ]);
+
+      expect(addButtonHoverStateStyles).toEqual({
+        backgroundColor: 'rgba(138, 142, 155, 0.2)',
+      });
+
+      await page.mouse.down();
+
+      const addButtonActiveStateStyles = await getComputedStyles(addButton, [
+        'backgroundColor',
+      ]);
+
+      expect(addButtonActiveStateStyles).toEqual({
+        backgroundColor: 'rgba(138, 142, 155, 0.3)',
+      });
+
+      await page.mouse.up();
+
       await locators.inputColor(page).fill('000');
       await locators.addColor(page).click();
 
