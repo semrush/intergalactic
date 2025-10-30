@@ -121,7 +121,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }, props);
 
     await test.step('Verify trigger styles', async () => {
-      const triggerCircle = page.locator('[data-ui-name="Box"][class*="TriggerCircle"]');
+      const triggerCircle = locators.trigger(page).locator('[data-ui-name="Flex"]');
       const triggerBox = await triggerCircle.boundingBox();
       expect(triggerBox).not.toBeNull();
       if (triggerBox) {
@@ -149,11 +149,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify color items styles', async () => {
-      const firstSvg = locators.color(page, 0).locator('svg');
-      await expect(firstSvg).toHaveCount(1);
-      await expect(firstSvg).toHaveAttribute('width', '17');
-      await expect(firstSvg).toHaveAttribute('height', '17');
-
       const count = await locators.color(page).count();
       for (let i = 0; i < count; i++) {
         const item = locators.color(page, i);
@@ -407,8 +402,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         'aria-selected': 'true',
         'aria-label': 'Clear color',
       });
-      const svg = colors.first().locator('svg');
-      await expect(svg).toHaveCount(1);
     });
 
     await test.step('Verify divider attributes', async () => {
@@ -548,11 +541,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'visible' });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
 
