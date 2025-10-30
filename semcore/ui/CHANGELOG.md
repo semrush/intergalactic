@@ -1,3 +1,54 @@
+## [16.11.0] - 2025-10-29
+
+### @semcore/base-components
+
+- **Fixed** Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
+
+### @semcore/core
+
+- **Fixed** Unnecessary calculations in `sstyled` wrapper.
+
+### @semcore/d3-chart
+
+- **Added** New `multiline` property for `XAxis.Ticks/YAxis.Ticks` and `multilineXTicks/multilineYTicks` for `Chart`.
+- **Fixed** Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+- **Fixed** Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+- **Fixed** Clicking on pattern icons in legend items with checkboxes has no effect despite interactive cursor.
+- **Fixed** Improve interaction handling for `Chart.Legend` items (custom shapes, child components, etc.)
+
+### @semcore/data-table
+
+- **Fixed** Low performance when opening an accordion with a large number of rows.
+- **Fixed** Keyboard interaction after mouse clicking in Safari.
+- **Fixed** Background color in expanded state when a theme is applied to a single cell.
+- **Fixed** Limited mode doesn't prevent interaction with accordion.
+
+### @semcore/feature-highlight
+
+- **Сhanged** Types for `NoticeFH`.
+- **Сhanged** Pills addon logic to determine whether to display stars or numeric value.
+
+### @semcore/feature-popover
+
+- **Fixed** `autoFocus` property on Popper didn't work.
+
+### @semcore/inline-input
+
+- **Fixed** `onConfirm` behaviour to query latest input updates.
+
+### @semcore/pagination
+
+- **Fixed** The `id` property wasn't passed to `Pagination.PageInput.Value` in advanced mode.
+
+### @semcore/tooltip
+
+- **Fixed** The tooltip popper content is not announced by screen readers in Chrome.
+
+### @semcore/wizard
+
+- **Changed** Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in TypeScript.
+- **Changed** `z-index` value for `Stepper` in `hover` state.
+
 ## [16.10.0] - 2025-10-06
 
 ### @semcore/base-components

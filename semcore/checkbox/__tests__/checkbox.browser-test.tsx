@@ -348,19 +348,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
       await locators.valueCheckmark(page).first().click();
 
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
-        await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.checkboxValue(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.valueCheckmark(page).nth(i)).not.toHaveClass(/checked/);
+        await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.checkboxValue(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.valueCheckmark(page).nth(i)).toHaveClass(/checked/);
       }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
-      await locators.valueCheckmark(page).first().click();
       await locators.checkboxText(page).nth(2).click();
 
       await expect(locators.checkbox(page).nth(0)).toHaveClass(/indeterminate/);
@@ -417,21 +416,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
 
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
-        await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.checkboxValue(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.valueCheckmark(page).nth(i)).not.toHaveClass(/checked/);
+        await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.checkboxValue(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.valueCheckmark(page).nth(i)).toHaveClass(/checked/);
       }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
-      await page.keyboard.press('Space');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 

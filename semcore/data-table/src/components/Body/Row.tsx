@@ -52,6 +52,22 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   componentDidMount() {
     this.asProps.componentRef?.(this);
 
+    this.setAccordion();
+  }
+
+  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
+    const { row } = this.asProps;
+
+    if (prevProps.row !== row) {
+      this.setAccordion();
+    }
+  }
+
+  componentWillUnmount() {
+    this.asProps.componentRef?.(null);
+  }
+
+  setAccordion() {
     const { row } = this.asProps;
 
     let accordionRows = Array.isArray(row[ACCORDION]) ? row[ACCORDION] : undefined;
@@ -83,20 +99,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       accordionRows,
       accordionComponent,
     });
-  }
-
-  componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
-    const { row } = this.asProps;
-
-    if (Array.isArray(row[ACCORDION]) && prevProps.row[ACCORDION] !== row[ACCORDION]) {
-      this.setState({
-        accordionRows: row[ACCORDION],
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    this.asProps.componentRef?.(null);
   }
 
   cellHasAccordion(cellValue?: DTValue | MergedColumnsCell | MergedRowsCell): cellValue is DTValue {
