@@ -17,6 +17,8 @@ class RadioGroupRoot extends Component {
     defaultValue: null,
   };
 
+  radios = new Set();
+
   uncontrolledProps() {
     return {
       value: null,
@@ -33,14 +35,46 @@ class RadioGroupRoot extends Component {
       size,
       name,
       disabled,
+      addRadioElement: (element) => {
+        if (element) {
+          this.radios.add(element);
+        }
+      },
     };
+  }
+
+  handleKeyDown(e) {
+    const { key } = e;
+
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) return;
+
+    e.preventDefault();
+
+    const elements = [...this.radios];
+    const currentIndex = elements.findIndex((el) => el.checked);
+    const isBackward = ['ArrowUp', 'ArrowLeft'].includes(key);
+
+    let nextIndex;
+
+    if (currentIndex === -1) {
+      nextIndex = isBackward
+        ? elements.length - 1
+        : (elements.length > 1 ? 1 : 0);
+    } else {
+      nextIndex = isBackward
+        ? (currentIndex - 1 + elements.length) % elements.length
+        : (currentIndex + 1) % elements.length;
+    }
+    this.handlers.value(elements[nextIndex].value);
+    elements[nextIndex].focus();
+    elements[nextIndex].checked = true;
   }
 
   render() {
     const { Children } = this.asProps;
 
     return (
-      <Root render={Flex} direction='column' role='group' __excludeProps={['onChange']}>
+      <Root render={Flex} onKeyDown={this.handleKeyDown.bind(this)} direction='column' role='group' __excludeProps={['onChange']}>
         <Children />
       </Root>
     );
@@ -105,6 +139,7 @@ class RadioRoot extends Component {
       name,
       hoistDisabled: this.hoistDisabled,
       rootDisabled: this.props.disabled,
+      ref: this.context.addRadioElement,
     };
   }
 

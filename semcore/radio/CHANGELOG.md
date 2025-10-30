@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-11-10
+
+### Added
+
+- Unified keyboard navigation within `RadioGroup`.
+
 ## [16.1.1] - 2025-10-29
 
 ### Changed

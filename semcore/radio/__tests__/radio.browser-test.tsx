@@ -174,65 +174,52 @@ test.describe('Functional - Radio with group', () => {
     await page.setContent(htmlContent);
 
     await test.step('Verify tab focuses 1st radio', async () => {
-      await page.keyboard.press('Tab');
+      if (browserName === 'webkit') {
+        await page.keyboard.press('Alt+Tab');
+      } else {
+        await page.keyboard.press('Tab');
+      }
+
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
       await expect(locators.radios(page).first()).toBeChecked();
       await expect(locators.radios(page).first()).toBeFocused();
     });
 
-    if (browserName !== 'webkit') {
-      await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
-        await page.keyboard.press('ArrowUp');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+    await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
+      await expect(locators.radios(page).nth(2)).toBeChecked();
+      await expect(locators.radios(page).nth(2)).toBeFocused();
 
-        await page.keyboard.press('ArrowUp');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
+      await expect(locators.radios(page).nth(1)).toBeChecked();
+      await expect(locators.radios(page).nth(1)).toBeFocused();
 
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
-      });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
+      await expect(locators.radios(page).first()).toBeChecked();
+      await expect(locators.radios(page).first()).toBeFocused();
+    });
 
-      await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
-        await page.keyboard.press('ArrowLeft');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+    await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
+      await expect(locators.radios(page).nth(2)).toBeChecked();
+      await expect(locators.radios(page).nth(2)).toBeFocused();
 
-        await page.keyboard.press('ArrowLeft');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
+      await expect(locators.radios(page).nth(1)).toBeChecked();
+      await expect(locators.radios(page).nth(1)).toBeFocused();
 
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('ArrowRight');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
-      });
-    } else {
-      await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
-      });
-
-      await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
-        await page.keyboard.press('ArrowLeft');
-        await page.keyboard.press('ArrowLeft');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
-      });
-    }
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
+      await expect(locators.radios(page).first()).toBeChecked();
+      await expect(locators.radios(page).first()).toBeFocused();
+    });
   });
 
   test('Verify actions when interactive element in text', async ({ page, browserName }) => {
