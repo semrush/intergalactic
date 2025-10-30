@@ -1,12 +1,17 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@tools/testing-utils/shared/helpers';
 
 test.describe('Pagination', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/pagination/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/pagination/docs/examples/basic_usage.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+
+  test('Verify id for input in advanced PageInput mode', async ({ page }) => {
+    await loadPage(page, 'stories/components/pagination/tests/examples/advanced_page_input.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

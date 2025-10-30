@@ -1,9 +1,12 @@
-import { platform } from 'os';
-
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   const variables = [
     { theme: 'warning', size: 'm' },
     { theme: 'danger', size: 'm' },
@@ -13,21 +16,21 @@ test.describe('Visual', () => {
     { theme: 'info', size: 'l' },
   ];
   variables.forEach((item) => {
-    test(`Verify Counter with size= ${item.size} and theme = ${item.theme}`, async ({ page }) => {
-      const standPath = 'stories/components/counter/tests/examples/counter.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
-
+    test(`Verify Counter with size= ${item.size} and theme = ${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@counter'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/counter/tests/examples/counter.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify counter in filters', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_in_filters.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify counter in filters', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@counter'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_in_filters.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.waitForSelector('text="500"');
     await expect(page).toHaveScreenshot();
 
@@ -36,30 +39,33 @@ test.describe('Visual', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify counter in dots', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_in_dot.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify counter in dots', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@counter', '@dot'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_in_dot.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.locator('[data-ui-name="Button"]').first().waitFor({ state: 'visible' });
     await page.waitForSelector('text="18"');
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify counter in buttons', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_in_button.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify counter in buttons', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@counter', '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_in_button.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.locator('[data-ui-name="Button"]').first().waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify counter in forms', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_in_forms.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify counter in forms', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@counter', '@textarea'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_in_forms.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.locator('[data-ui-name="Textarea"]').click();
     await expect(page).toHaveScreenshot();
 
