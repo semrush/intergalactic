@@ -41,6 +41,15 @@ import Wizard from '@semcore/ui/wizard';
 
 <TypesView type="WizardStepProps" :types={...types} />
 
+## Wizard.Content
+
+```jsx
+import Wizard from '@semcore/ui/wizard';
+<Wizard.Content />;
+```
+
+<TypesView type="WizardContentProps" :types={...types} />
+
 ## Wizard.StepBack
 
 ```jsx

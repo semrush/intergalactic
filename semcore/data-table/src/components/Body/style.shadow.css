@@ -1,5 +1,16 @@
-SBody, SRow, SRowGroup, SAccordionRows {
+SBody, SRow, SRowGroup {
   display: contents;
+}
+
+SAccordionRows {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: var(--gridRow);
+  overflow: clip;
+  transition-property: max-height;
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  grid-template-columns: subgrid;
 }
 
 SBody[compact] {
@@ -359,13 +370,6 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow][withAnimation] > SCellWrapper {
-  transition-property: height;
-  transition-delay: var(--delay);
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
-  overflow: clip;
-}
 
 SCellWrapper[fixed][shadowVertical] {
   &:after {

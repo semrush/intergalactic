@@ -69,6 +69,16 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   };
 
+  handleComponentRef = (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => {
+    requestAnimationFrame(() => {
+      if (component) {
+        this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
+      } else {
+        this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
+      }
+    });
+  };
+
   getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
     const {
       use,
@@ -90,6 +100,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      accordionAnimationRows,
       getI18nText,
       renderCell,
       tableRef,
@@ -128,6 +139,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
+      accordionAnimationRows,
       flatRows,
       getI18nText,
       renderCell,
@@ -148,6 +160,26 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     };
   }
 
+  getSpinnerTopOffset = () => {
+    const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
+
+    let headerHeight = propsHeaderHeight;
+
+    if (stickyHeader) {
+      return headerHeight;
+    }
+
+    if (tableContainerRef.current) {
+      if (tableContainerRef.current.scrollTop > headerHeight) {
+        headerHeight = 0;
+      } else {
+        headerHeight = headerHeight - tableContainerRef.current.scrollTop;
+      }
+    }
+
+    return headerHeight;
+  };
+
   render() {
     const SBody = Root;
     const SRowGroup = Box;
@@ -155,7 +187,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       styles,
       loading,
-      headerHeight,
       spinnerRef,
       virtualScroll,
       scrollDirection,
@@ -169,8 +200,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     } = this.asProps;
 
     let rowsToRender = rows;
-    // let startIndex = -1;
-    // let lastIndex = -1;
 
     if (virtualScroll) {
       const rowsBuffer =
@@ -302,13 +331,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
-                      componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                        if (component) {
-                          this.rowsComponentsMap.set(item[UNIQ_ROW_KEY], component);
-                        } else {
-                          this.rowsComponentsMap.delete(item[UNIQ_ROW_KEY]);
-                        }
-                      }}
+                      componentRef={this.handleComponentRef(item)}
                     />
                   );
                 })}
@@ -320,13 +343,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
-              componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                if (component) {
-                  this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
-                } else {
-                  this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
-                }
-              }}
+              componentRef={this.handleComponentRef(row)}
             />
           );
         })}
@@ -335,7 +352,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           <SSpinContainer
             innerOutline
             // @ts-ignore
-            headerHeight={`${headerHeight}px`}
+            headerHeight={`${this.getSpinnerTopOffset()}px`}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'

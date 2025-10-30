@@ -6,6 +6,8 @@ import React from 'react';
 
 export type TableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
+  accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
+  accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
 };
 
 const ChartExample1 = () => {
@@ -21,7 +23,8 @@ const Demo = (props: TableInTableProps) => {
       aria-label='Parent'
       h='100%'
       data={data}
-      accordionDuration={400}
+      accordionDuration={props.accordionDuration}
+      accordionAnimationRows={props.accordionAnimationRows}
       accordionMode={props.accordionMode}
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' },
@@ -69,6 +72,8 @@ const ChartExample = () => {
 };
 export const tableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
+  accordionAnimationRows: 1,
+  accordionDuration: 500,
 };
 
 Demo.defaultProps = tableInTableDefaultProps;

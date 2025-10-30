@@ -21,7 +21,6 @@ const Demo = (props: ExampleProps) => {
         placement={props.placement}
         timeout={props.timeout}
         explicitTriggerSet={props.explicitTriggerSet}
-        cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
         visible={props.visible}
       >
@@ -78,7 +77,6 @@ export const defaultProps: ExampleProps = {
   visible: true,
   timeout: undefined,
   explicitTriggerSet: false,
-  cursorAnchoring: false,
   popperMargin: undefined,
   closeIcon: true,
   duration: undefined,

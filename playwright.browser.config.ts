@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import { testPlanFilter } from 'allure-playwright/testplan';
-
+const TAG = process.env.TEST_TAG;
 const config: PlaywrightTestConfig = {
   testMatch: /\.browser-test.ts(x){0,1}$/,
 
@@ -13,7 +13,8 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : 4,
-  grep: testPlanFilter(),
+  grep: TAG ? new RegExp(TAG) : testPlanFilter(),
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['list'], ['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
