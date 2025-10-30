@@ -532,7 +532,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.color(page, 0).waitFor({ state: 'visible' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.color(page, 0).first()).toBeFocused();
+    await expect(locators.color(page, 0)).toBeFocused();
     await page.getByText('Clear color').waitFor({ state: 'visible' });
 
     await page.keyboard.press('Space');
@@ -541,7 +541,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'visible' });
-    for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
+    for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
 
