@@ -11,7 +11,8 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify long text in cells and wrap and ellipsis', {
     tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
+      '@data-table',
+      '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx', 'en');
 
@@ -19,7 +20,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify overflow=hidden visual finctionality', {
-    tag: [TAG.PRIORITY_MEDIUM,
+    tag: [TAG.PRIORITY_LOW,
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/overflow_in_cells.tsx', 'en');
@@ -51,16 +52,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify empty data with selectable rows', {
     tag: [TAG.PRIORITY_MEDIUM,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify wide indents with selectable rows non compact and compact', {
+  test('Verify sideIndents=wide with selectable rows non compact and compact', {
     tag: [TAG.PRIORITY_MEDIUM,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
       sideIndents: 'wide',
     });
@@ -89,6 +90,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@data-table',
       '@tooltip',
+      '@button',
+      '@link',
       '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx', 'en');
@@ -163,6 +166,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@dropdown',
       '@select',
+      '@tooltip',
+      '@base-components',
+      '@checkbox',
+      '@icon',
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
@@ -222,6 +229,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@dropdown',
       '@select',
+      '@tooltip',
+      '@base-components',
+      '@checkbox',
+      '@icon',
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
@@ -261,17 +272,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify keyoard navigation from header to merged cell', {
+  test('Verify keyboard navigation from header to merged cell', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.MOUSE,
-      '@dropdown',
-      '@select',
+      TAG.KEYBOARD,
       '@data-table'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
-
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx', 'en');
 
     const cell = page.locator('[data-ui-name="Row.Cell"]');
     await expect(cell).toHaveAttribute('data-grouped-by', 'colgroup');
@@ -291,10 +297,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
 test('Verify multiple access to cells with spin', {
   tag: [TAG.PRIORITY_HIGH,
+    TAG.KEYBOARD,
     '@dropdown',
     '@spin'],
 }, async ({ page }) => {
-  await loadPage(page, 'stories/components/data-table/docs/examples/cells-tests/access-to-set-of-cells.tsx', 'en');
+  await loadPage(page, 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx', 'en');
 
   await page.keyboard.press('Tab');
   await page.keyboard.press('ArrowDown');

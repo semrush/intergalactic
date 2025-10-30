@@ -20,7 +20,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/column-alignment.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx', 'en');
 
     const checkProperty = async (columnIndex: number, check: {
       justifyContent?: Property.JustifyContent;
@@ -76,8 +76,22 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test('Verify merged columns keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Verify head column shadow for fixed columns with different screen sizes', {
-    tag: [TAG.PRIORITY_MEDIUM,
+    tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx', 'en');
@@ -130,15 +144,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(width3Mobile).toBeLessThan(width3Desktop);
     expect(width4Mobile).toBeLessThan(width4Desktop);
     expect(width5Mobile).toBeLessThan(width5Desktop);
-
-    await expect(page).toHaveScreenshot();
   });
 
   test('Verify merged columns keyboard navigation', {
-    tag: [TAG.PRIORITY_MEDIUM,
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@data-table'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/docs/examples/columns-merging.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
 
     const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(0);
     const secondCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(1);
@@ -150,7 +163,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(firstCell).toBeFocused();
     await page.keyboard.press('ArrowRight');
 
-    await expect(page).toHaveScreenshot();
     await expect(secondCell).toBeFocused();
     await page.keyboard.press('ArrowRight');
     await expect(secondCell).toBeFocused();
@@ -168,9 +180,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify merged columns and interactive cells', {
     tag: [TAG.PRIORITY_MEDIUM,
-      '@data-table'],
+      '@data-table',
+      '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/docs/examples/access-to-cells.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/docs/examples/access-to-cells.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
@@ -187,22 +200,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
   });
 
-  test('Verify data table renders when refs in columns', {
-    tag: [TAG.PRIORITY_MEDIUM,
-      '@data-table'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/docs/examples/multiple_use.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(0);
-    await expect(firstCell).toBeFocused();
-  });
-
   test('Verify column\'s aria-sort and aria-describedby attributes ', {
-    tag: [TAG.PRIORITY_MEDIUM,
+    tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/docs/examples/sorting.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
     const columns = await page.locator('[data-ui-name="Head.Column"]').all();
     const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];

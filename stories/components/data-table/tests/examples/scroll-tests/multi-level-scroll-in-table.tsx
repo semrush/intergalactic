@@ -35,13 +35,13 @@ const Demo = (props: MultiLevelScrollIntableProps) => {
         }}
 
         columns={[
-          { name: 'keyword', children: 'Keyword' },
+          { name: 'keyword', children: 'Keyword', gtcWidth: '150px' },
           {
             name: 'group1',
             children: 'Organic Sessions',
             borders: 'both',
             columns: [
-              { name: 'kd', children: 'KD,%' },
+              { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
               { name: 'cpc', children: 'CPC' },
               { name: 'vol', children: 'Vol.' },
             ],

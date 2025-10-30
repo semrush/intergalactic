@@ -220,33 +220,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     { use: 'secondary' },
   ];
   variantUse.forEach((item) => {
-    test(`Verify defaultGridTemplateColumnWidth=auto use=${item.use} `, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', { item, defaultGridTemplateColumnWidth: 'auto' });
-
-      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
-
-      expect(widths[1]).toBeLessThan(widths[0]);
-      expect(widths[2]).toBeLessThan(widths[0]);
-      expect(widths[1]).toBeLessThan(widths[4]);
-      expect(widths[2]).toBeLessThan(widths[4]);
-    });
-
-    test(`Verify defaultGridTemplateColumnWidth=1ft use=${item.use} `, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', { item, defaultGridTemplateColumnWidth: '1fr' });
-
-      const widths = await Promise.all([1, 2, 3, 4, 5, 6].map((i) => getColumnWidth(page, i)));
-
-      expect(widths[1]).toBeLessThanOrEqual(widths[2]);
-      expect(widths[1]).toBeCloseTo(widths[3], 1);
-      expect(widths[2]).toBeCloseTo(widths[5], 1);
-    });
-
     test(`Verify keyboard interaction when use=${item.use} `, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
@@ -275,6 +248,43 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       if (browserName === 'firefox') test.skip();
       await page.keyboard.press('Shift+Tab');
       await expect(secondCellSecondRow).toBeFocused();
+    });
+  });
+
+  const variant1fr = [
+    { use: 'primary', defaultGridTemplateColumnWidth: '1fr' },
+    { use: 'secondary', defaultGridTemplateColumnWidth: '1fr' },
+  ];
+  variant1fr.forEach((item) => {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
+
+      expect(widths[1]).toBeLessThanOrEqual(widths[2]);
+      expect(widths[1]).toBeCloseTo(widths[3], 1);
+      expect(widths[3]).toBeCloseTo(widths[4], 1);
+    });
+  });
+
+  const variantAuto = [
+    { use: 'primary', defaultGridTemplateColumnWidth: 'auto' },
+    { use: 'secondary', defaultGridTemplateColumnWidth: 'auto' },
+  ];
+  variantAuto.forEach((item) => {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
+
+      expect(widths[1]).toBeLessThan(widths[0]);
+      expect(widths[2]).toBeLessThan(widths[0]);
+      expect(widths[1]).toBeLessThan(widths[4]);
+      expect(widths[2]).toBeLessThan(widths[4]);
     });
   });
 });

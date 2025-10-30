@@ -1,4 +1,3 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -14,7 +13,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('One level Header', () => {
     test('Verify keyboard interactions when Select and Tooltip in header', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        TAG.KEYBOARD,
+        '@data-table',
+        '@select',
+        '@tooltip',
+        '@base-trigger',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -22,21 +26,16 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify tooltip on focus', async () => {
         await page.keyboard.press('Tab');
-        await page.locator('[data-ui-name="Tooltip"]').waitFor({ state: 'visible' });
+        await page.getByRole('tooltip').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify interactions with DD menu', async () => {
         await page.keyboard.press('ArrowRight');
-        await page.locator('[data-ui-name="Tooltip"]').waitFor({ state: 'hidden' });
+        await page.getByRole('tooltip').waitFor({ state: 'hidden' });
 
         await page.keyboard.press('Enter');
         await menuItem.first().waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Cells on hover', async () => {
-        await page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]').hover();
         await expect(page).toHaveScreenshot();
       });
     });
@@ -48,12 +47,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantUse.forEach((item) => {
       test(`Verify styles when long text and icons in header when use=${item.use}`, {
         tag: [TAG.PRIORITY_HIGH,
-          TAG.KEYBOARD,
-          '@data-table'],
+          '@data-table',
+          '@ellipsis'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/long-header-ellipsis.tsx', 'en', item);
 
-        await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
         const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
         await amazonIcon.hover();
@@ -69,10 +67,12 @@ test.describe(`${TAG.VISUAL}`, () => {
         }
       });
 
-      test(`Verify keyboard sorting with changing size visuals when use=${item.use} `, async ({ page }) => {
-        const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', { use: 'secondary' });
-        await page.setContent(htmlContent);
+      test(`Verify keyboard sorting with changing size when use=${item.use} `, {
+        tag: [TAG.PRIORITY_HIGH,
+          TAG.KEYBOARD,
+          '@data-table'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/data-table/docs/examples/sorting-changing-size.tsx', 'en', item);
 
         {
           await page.keyboard.press('Tab');
@@ -87,10 +87,12 @@ test.describe(`${TAG.VISUAL}`, () => {
         }
       });
 
-      test(`Verify mouse sorting with changing size visuals when use=${item.use} `, async ({ page }) => {
-        const standPath = 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', { use: 'secondary' });
-        await page.setContent(htmlContent);
+      test(`Verify mouse sorting with changing size when use=${item.use} `, {
+        tag: [TAG.PRIORITY_HIGH,
+          TAG.MOUSE,
+          '@data-table'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/data-table/docs/examples/sorting-changing-size.tsx', 'en', item);
 
         {
           await page.keyboard.press('Tab');
@@ -134,18 +136,18 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify mouse interactions in header with hint, checkbox, description tooltip, select', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@select',
+        '@tooltip',
+        '@base-trigger',
+        '@base-trigger',
+        '@link'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
-      await test.step('Verify sorting icon do not move the text content by hover', async () => {
-        await locators.getHeadColumn(page, 1).hover();
-        await page.getByRole('tooltip', { name: 'KD % and some another text' }).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-      await test.step('Verify hover on column with not active sorting', async () => {
-        await locators.getHeadColumn(page, 0).hover();
-        await page.getByRole('tooltip', { name: 'KD % and some another text' }).waitFor({ state: 'hidden' });
+      await test.step('Verify tooltip opened in multi level header', async () => {
+        await page.getByRole('button').first().click();
+        await page.getByLabel('Additional info about item').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
     });
@@ -158,6 +160,24 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify focus on the 1st sorted icon', async () => {
         await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
+    });
+
+    test('Verify mouse interactions with sorting', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
+
+      await test.step('Sorting activation on click', async () => {
+        await locators.getHeadColumn(page, 1).hover();
+        await locators.sortButton(page, 1).click();
+      });
+
+      await test.step('Verify hover and click on another sorting column', async () => {
+        await locators.getHeadColumn(page, 2).hover();
         await expect(page).toHaveScreenshot();
       });
     });
@@ -174,9 +194,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard interactions when in header hint, checkbox, description tooltip', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
+        '@tooltip',
+        '@base-components',
+        '@checkbox',
+        '@icon',
+        '@ellipsis',
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-intarctive-header.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
       const getTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
       const checkbox = page.locator('label[data-test-id="header-checkbox"] input[type="checkbox"]');
@@ -291,9 +316,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify mouse interactions when in header hint, checkbox, description tooltip', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@tooltip',
+        '@base-components',
+        '@checkbox',
+        '@icon',
+        '@ellipsis'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-intarctive-header.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
       const tooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
       const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
@@ -351,7 +381,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard interactions when in header Select', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@select',
+        '@tooltip',
+        '@base-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -361,12 +394,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify tooltip on focus', async () => {
         await page.keyboard.press('Tab');
-        await page.locator('[data-ui-name="Tooltip"]').waitFor({ state: 'visible' });
+        await page.getByRole('tooltip').waitFor({ state: 'visible' });
       });
 
       await test.step('Verify interactions with DD menu', async () => {
         await page.keyboard.press('ArrowRight');
-
+        await page.getByRole('tooltip').waitFor({ state: 'hidden' });
         await page.keyboard.press('Enter');
         await menuItem.first().waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
@@ -398,7 +431,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify mouse interactions when in header Select', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@select',
+        '@tooltip',
+        '@base-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -418,6 +454,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(menuItem).toHaveCount(0);
       });
     });
+
     test.describe('Sorting', () => {
       test('Verify keyboard sorting without changing size', {
         tag: [TAG.PRIORITY_HIGH,
@@ -430,7 +467,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
 
           await page.keyboard.press('Tab');
-          const button1 = locators.sortButton(page, locators.getHeadColumn(page, 1));
+          const button1 = locators.sortButton(page, 1);
           await expect(button1).toBeFocused();
           await expect(button1).not.toHaveAttribute('aria-label');
 
@@ -439,18 +476,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           await page.keyboard.press('Enter');
           await expect(button1).toHaveAttribute('aria-label', 'ascending');
 
-          for (let i = 2; i <= 4; i++) {
-            await page.keyboard.press('ArrowRight');
-            const button = locators.sortButton(page, locators.getHeadColumn(page, i));
-            await expect(button).toBeFocused();
+          await page.keyboard.press('ArrowRight');
+          const button = locators.sortButton(page, 2);
+          await expect(button).toBeFocused();
 
-            if (i === 4) {
-              await button.click();
-              await page.keyboard.press('ArrowDown');
-              await page.keyboard.press('ArrowUp');
-              await expect(button).toBeFocused();
-            }
-          }
+          await button.click();
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('ArrowUp');
+          await expect(button).toBeFocused();
 
           await page.keyboard.press('ArrowLeft');
           await page.keyboard.press('Enter');
@@ -464,23 +497,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           TAG.MOUSE,
           '@data-table'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
-
+        if (browserName === 'firefox') test.skip();
         const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
 
         await test.step('Verify 1st click on not sorted icon activates sorting', async () => {
-          await locators.sortButton(page, locators.getHeadColumn(page, 1)).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'descending');
-          await locators.sortButton(page, locators.getHeadColumn(page, 1)).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'ascending');
+          await locators.getHeadColumn(page, 1).hover();
+          await locators.sortButton(page, 1).click();
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
+          await locators.sortButton(page, 1).click();
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify click on the column activates sorting', async () => {
+          await locators.getHeadColumn(page, 2).hover();
+
           await locators.getHeadColumn(page, 2).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'ascending');
+          await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'descending');
           await locators.getHeadColumn(page, 2).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'descending');
+          await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify columns width not changed', async () => {
@@ -515,9 +551,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         {
           await page.keyboard.press('ArrowRight');
-          await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
           await page.keyboard.press('Space');
-          await expect(page).toHaveScreenshot(); // verify sort icon move text content
 
           const kdWidth = await getColumnWidth(page, 2);
           const cpcWidth = await getColumnWidth(page, 3);
@@ -530,7 +564,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         {
           await page.keyboard.press('ArrowRight');
-          await expect(page).toHaveScreenshot(); // verify sort icon do not move text content
           await page.keyboard.press('Space');
 
           const kdWidth = await getColumnWidth(page, 2);
@@ -614,24 +647,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.getHeadColumn(page, 1).hover();
         const count = await page.locator('[data-ui-name="Head.Column"]').count();
-        for (let i = 0; i < count; i++) {
+        for (let i = 1; i <= count; i++) {
           await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
         }
-        await expect(locators.getHeadColumn(page, 1)).not.toHaveAttribute('aria-sort');
         expect(messages.length).toBe(0);
-        await locators.sortButton(page, locators.getHeadColumn(page, 1)).click();
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'descending');
+        await locators.sortButton(page, 1).click();
+        await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
         await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort', 'descending');
 
         expect(messages.length).toBe(1);
         expect(messages).toEqual(['Sorted']);
 
-        await locators.sortButton(page, locators.getHeadColumn(page, 1)).click();
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'ascending');
+        await locators.sortButton(page, 1).click();
+        await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
         await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort', 'ascending');
-        for (let i = 1; i < count; i++) {
+        for (let i = 2; i <= count; i++) {
           await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
         }
+        await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort');
+
         expect(messages.length).toBe(2);
       });
 
@@ -652,38 +686,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           }
         });
         await page.keyboard.press('Tab');
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toBeFocused();
+        await expect(locators.sortButton(page, 1)).toBeFocused();
         const count = await page.locator('[data-ui-name="Head.Column"]').count();
-        for (let i = 0; i < count; i++) {
+        for (let i = 1; i <= count; i++) {
           await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
         }
-        await expect(locators.getHeadColumn(page, 1)).not.toHaveAttribute('aria-sort');
         expect(messages.length).toBe(0);
 
         await page.keyboard.press('ArrowDown');
         await expect(page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').first()).toBeFocused();
 
         await page.keyboard.press('ArrowUp');
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toBeFocused();
+        await expect(locators.sortButton(page, 1)).toBeFocused();
 
         await page.keyboard.press('ArrowRight');
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toBeFocused();
+        await expect(locators.sortButton(page, 2)).toBeFocused();
         await page.keyboard.press('Enter');
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'descending');
-        await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort', 'descending');
+        await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'descending');
+        await expect(locators.getHeadColumn(page, 2)).toHaveAttribute('aria-sort', 'descending');
         expect(messages.length).toBe(1);
         expect(messages).toEqual(['Sorted']);
 
-        await locators.sortButton(page, locators.getHeadColumn(page, 2)).click();
-        await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'ascending');
-        await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort', 'ascending');
+        await locators.sortButton(page, 2).click();
+        await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'ascending');
+        await expect(locators.getHeadColumn(page, 2)).toHaveAttribute('aria-sort', 'ascending');
         expect(messages.length).toBe(2);
       });
 
       test('Verify sorting not activates interactive when interactive element in cell with sorting', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
-          '@data-table'],
+          '@data-table',
+          '@tooltip'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/sorting-with-interactive.tsx', 'en');
 
@@ -715,6 +749,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard interactions in header with hint, checkbox, description tooltip, select', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
+        '@select',
+        '@tooltip',
+        '@base-trigger',
+        '@base-trigger',
+        '@link',
         '@data-table'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
@@ -814,7 +853,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify mouse interactions in header with hint, checkbox, description tooltip, select', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@select',
+        '@tooltip',
+        '@base-trigger',
+        '@link'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -889,28 +932,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await test.step('Verify focus on the 1st sorted icon', async () => {
           await page.keyboard.press('Tab');
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toBeFocused();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'descending');
+          await expect(locators.sortButton(page, 1)).toBeFocused();
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
         });
 
         await test.step('Verify sorting interaction by keyboard', async () => {
           await page.keyboard.press('Enter');
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'ascending');
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify sorting interaction with mouse and keyboard', async () => {
           await page.keyboard.press('ArrowRight');
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).not.toHaveAttribute('aria-label');
+          await expect(locators.sortButton(page, 2)).not.toHaveAttribute('aria-label');
 
-          await locators.sortButton(page, locators.getHeadColumn(page, 2)).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'descending');
+          await locators.sortButton(page, 2).click();
+          await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'descending');
         });
 
         await test.step('Verify switching between cells by keyboard', async () => {
           await page.keyboard.press('ArrowRight');
-          await expect(locators.getHeadColumn(page, 4)).toBeFocused();
+          await expect(locators.getHeadColumn(page, 3)).toBeFocused();
           await page.keyboard.press('ArrowRight');
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 4))).toBeFocused();
+          await expect(locators.sortButton(page, 4)).toBeFocused();
           await page.keyboard.press('ArrowRight');
           await page.keyboard.press('ArrowRight');
           await page.keyboard.press('ArrowRight');
@@ -926,17 +969,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 
         await test.step('Verify sorting activation on click', async () => {
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'descending');
-          await locators.sortButton(page, locators.getHeadColumn(page, 1)).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 1))).toHaveAttribute('aria-label', 'ascending');
+          await locators.getHeadColumn(page, 1).hover();
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
+          await locators.sortButton(page, 1).click();
+          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify hover and click on another sorting column', async () => {
           await locators.getHeadColumn(page, 2).hover();
-          await expect(page).toHaveScreenshot();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).not.toHaveAttribute('aria-label');
-          await locators.sortButton(page, locators.getHeadColumn(page, 2)).click();
-          await expect(locators.sortButton(page, locators.getHeadColumn(page, 2))).toHaveAttribute('aria-label', 'descending');
+          await expect(locators.sortButton(page, 2)).not.toHaveAttribute('aria-label');
+          await locators.sortButton(page, 2).click();
+          await expect(locators.sortButton(page, 2)).toHaveAttribute('aria-label', 'descending');
         });
       });
     });

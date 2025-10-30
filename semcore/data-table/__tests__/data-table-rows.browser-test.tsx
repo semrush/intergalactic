@@ -1,9 +1,8 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators } from './utils';
+import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
 
 /* =====================================================
 @visual
@@ -17,24 +16,80 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/row-themes.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify success theme', async () => {
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
 
-    if (browserName === 'firefox') return;
-    const row = page.locator('[role="gridcell"][aria-colindex="1"]');
-    const rowsCount = await row.count();
-    for (let i = 0; i < rowsCount; i++) {
-      await row.nth(i).hover({ force: true });
-      await expect(page).toHaveScreenshot();
-    }
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[0],
+      });
+
+      await locators.getCell(page, 2, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[0],
+        });
+    });
+
+    await test.step('Verify info theme', async () => {
+      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[1],
+      });
+
+      await locators.getCell(page, 3, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[1],
+        });
+    });
+
+    await test.step('Verify muted theme', async () => {
+      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[2],
+      });
+
+      await locators.getCell(page, 4, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[2],
+        });
+    });
+
+    await test.step('Verify warning theme', async () => {
+      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[3],
+      });
+
+      await locators.getCell(page, 5, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[3],
+        });
+    });
+
+    await test.step('Verify danger theme', async () => {
+      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[4],
+      });
+
+      await locators.getCell(page, 6, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[4],
+        });
+    });
   });
 
   test('Verify merged cells on Hover', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@data-table'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');

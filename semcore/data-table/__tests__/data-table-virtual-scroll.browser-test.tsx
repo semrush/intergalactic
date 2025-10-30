@@ -1,4 +1,3 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -10,11 +9,12 @@ import { locators } from './utils';
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify Keyboard scroll', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Keyboard scroll', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx', 'en');
 
     await page.keyboard.press('Tab');
     for (let i = 0; i < 50; i++) {
@@ -24,26 +24,26 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify Mouse scroll', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Mouse scroll', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx', 'en');
 
-    const dataTable = await page.locator('[data-ui-name="DataTable"]');
-
-    await dataTable.hover();
+    await locators.dataTable(page).hover();
     await page.mouse.wheel(0, 1000);
     await page.waitForTimeout(500);
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify Keyboard scroll when cells have different height', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Keyboard scroll when cells have different height', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
 
     await page.keyboard.press('Tab');
     for (let i = 0; i < 10; i++) {
@@ -53,13 +53,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify Mouse scroll when cells have different height', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/header-content.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Mouse scroll when cells have different height', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
 
-    const dataTable = await page.locator('[data-ui-name="Body.Row"]');
+    const dataTable = page.locator('[data-ui-name="Body.Row"]');
     await dataTable.first().hover();
     await page.mouse.wheel(0, 600);
     await page.waitForTimeout(1000);
@@ -73,14 +74,14 @@ test.describe(`${TAG.VISUAL}`, () => {
   We verify states, visibility, and attributes.
   ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify keyboard interactions with accordion and chart inside', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify keyboard interactions with accordion and chart inside', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 
     const plot = page.locator('[data-ui-name="Plot"]');
-    const toggle = page.locator('[data-ui-name="ButtonLink"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -91,7 +92,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
 
-    await expect(toggle.first()).toBeFocused();
+    await expect(locators.toggle(page).first()).toBeFocused();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
     await expect(plot).toHaveCount(0);
@@ -99,7 +100,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
 
-    await expect(toggle.nth(1)).toBeFocused();
+    await expect(locators.toggle(page).nth(1)).toBeFocused();
 
     await page.keyboard.press('Enter');
     await plot.waitFor({ state: 'visible' });
@@ -113,28 +114,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await plot.waitFor({ state: 'visible' });
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    await expect(toggle.nth(2)).toBeFocused();
+    await expect(locators.toggle(page).nth(2)).toBeFocused();
   });
 
-  test('Verify mouse interactions with accordion and chart inside', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify mouse interactions with accordion and chart inside', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const toggle = await page.locator('[data-ui-name="ButtonLink"]');
-    const plot = await page.locator('[data-ui-name="Plot"]');
+    const plot = page.locator('[data-ui-name="Plot"]');
 
-    await toggle.first().click();
+    await locators.toggle(page).first().click();
     await plot.waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(1);
-    await toggle.first().click();
+    await locators.toggle(page).first().click();
     await plot.waitFor({ state: 'hidden' });
     await expect(plot).toHaveCount(0);
 
-    await toggle.first().click();
+    await locators.toggle(page).first().click();
 
-    await toggle.nth(2).click();
+    await locators.toggle(page).nth(2).click();
     await plot.nth(1).waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(2);
   });

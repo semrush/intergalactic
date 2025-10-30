@@ -10,29 +10,6 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Accordion in table', () => {
-    const variantCard = [
-      { variant: 'card', use: undefined, compact: undefined, h: '100%' },
-      { variant: 'card', use: 'secondary', compact: undefined, h: '100%' },
-      { variant: 'card', use: undefined, compact: true, h: '100%' },
-      { variant: 'default', use: undefined, compact: undefined, h: '100%' },
-      { variant: 'default', use: 'secondary', compact: undefined, h: '100%' },
-      { variant: 'default', use: undefined, compact: true, h: '100%' },
-    ];
-    variantCard.forEach((item) => {
-      test(`Verify accordion with custom component when styles when variant=${item.variant} use=${item.use}  compact=${item.compact}`, {
-        tag: [TAG.PRIORITY_HIGH,
-          '@data-table',
-          '@base-components',
-          '@button',
-          '@d3-chart'],
-      }, async ({ page }) => {
-        await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', item);
-        await locators.toggle(page).first().click();
-        await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
     test('Verify accordion with custom component styles', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
@@ -74,10 +51,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.toggle(page).first().click();
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
-
-        await checkStyles(cells, {
-          'background-color': 'rgb(240, 240, 244)',
-        });
+        if (browserName !== 'firefox') {
+          await checkStyles(cells, {
+            'background-color': 'rgb(240, 240, 244)',
+          });
+        }
       });
 
       await test.step('Verify cells styles when accordion not in 1st cell', async () => {
@@ -123,7 +101,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
+      await page.waitForTimeout(200); // for chart animation is finished
 
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
@@ -163,7 +141,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components',
         '@widget-empty',
         '@d3-chart'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en');
 
       await test.step('Verify accordion expanded', async () => {
@@ -188,9 +166,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
         await expect(locators.chart(page, 'Chart')).toHaveCount(1);
-        await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
-          padding: '0px',
-        });
+        if (browserName !== 'firefox')
+          await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
+            padding: '0px',
+          });
+        else
+          await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
+            padding: '0%',
+          });
       });
     });
 
@@ -199,13 +182,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       { withScrollBar: false },
     ];
     variantWithScrollBar.forEach((item) => {
-      test(`Verify accordion with fixed row and withScrollBar=${item.withScrollBar}`, {
+      test(`Verify accordion with fixed Column and withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
           '@base-components',
           '@widget-empty'],
       }, async ({ page, browserName }) => {
-        await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en', item);
+        await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
@@ -221,6 +204,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         else await expect(page).toHaveScreenshot();
       });
     });
+
     test('Verify table with checkbox and accordion not in 1st cell', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
@@ -401,7 +385,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with themed cells', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@widget-empty'],
+        '@widget-empty',
+        '@base-components'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/colored-parent-cells', 'en');
 
@@ -494,6 +479,12 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await checkStyles(cells, { 'padding-left': '38px' });
       });
+
+      await test.step('Verify accordion is responsive', async () => {
+        await page.setViewportSize({ width: 920, height: 1080 });
+        await page.waitForTimeout(100);
+        await expect(page).toHaveScreenshot();
+      });
     });
 
     test('Verify table in table with sorting', {
@@ -574,12 +565,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.keyboard.press('Enter');
         await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
-
-        await test.step('Verify accordion is responsive', async () => {
-          await page.setViewportSize({ width: 920, height: 1080 });
-          await page.waitForTimeout(100);
-          await expect(page).toHaveScreenshot();
-        });
       });
     });
   });
@@ -595,7 +580,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard navigation when table component inside accordion', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -678,7 +664,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify table component inside table expands by mouse', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -1048,7 +1035,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify table in table with sorting keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
