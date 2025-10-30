@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.3] - 2025-10-31
+
+### Fixed
+
+- Non-working `Accordion` for the cell with the skeleton when loading.
+
 ## [16.4.2] - 2025-10-30
 
 ### Fixed
