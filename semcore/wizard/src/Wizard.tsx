@@ -42,6 +42,7 @@ class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhanc
   modalRef = React.createRef<HTMLElement>();
   contentRef = React.createRef<HTMLElement>();
   state = { highlighted: null };
+  firstAvailableStepHighlighted = false;
 
   stepperRefs: Array<HTMLElement | null> = [];
 
@@ -141,8 +142,12 @@ class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhanc
       this._steps.set(props.step, { number, ...props });
     }
     const active = props.step === this.asProps.step;
-    const highlighted =
-      this.state.highlighted === props.step || (this.state.highlighted === null && i === 0);
+    const isInitHighlight = this.state.highlighted === null && !this.firstAvailableStepHighlighted && !props.disabled;
+    const highlighted = this.state.highlighted === props.step || isInitHighlight;
+
+    if (isInitHighlight) {
+      this.firstAvailableStepHighlighted = true;
+    }
 
     return {
       active,
