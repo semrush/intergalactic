@@ -2,12 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-
 ## [16.1.12] - 2025-11-10
 
 ### Fixed
 
 - Issue with `svg` in `ColorPicker.Trigger` and `ColorPicker.Item`.
+- `size` property didn't apply for the `PaletteManager.InputColor`.
+- Incorrect types for `PaletteManager`.
+- Validation issues in `PaletteManager.InputColor`.
 
 ## [16.1.11] - 2025-10-29
 
