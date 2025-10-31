@@ -34,7 +34,6 @@ export function Item(props: ItemAsProps) {
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;
-  const SLine = 'svg';
   const deleteDescriber = `delete_${value}_${uid}`;
 
   const handleKeydown = React.useCallback((event: React.KeyboardEvent) => {
@@ -58,22 +57,6 @@ export function Item(props: ItemAsProps) {
       __excludeProps={['title']}
       timeout={[250, 50]}
     >
-      {!value && (
-        <SLine
-          width='17'
-          height='17'
-          viewBox='0 0 17 17'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <rect
-            width='1'
-            height='22'
-            transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 16.4854 0.928925)'
-            fill='#e0e1e9'
-          />
-        </SLine>
-      )}
       {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
       <Children />
       {editable && (
