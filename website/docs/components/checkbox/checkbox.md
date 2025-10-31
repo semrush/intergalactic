@@ -91,7 +91,7 @@ To save the user's time, use the "Select all" and "Deselect all" options for che
 
 - "Select all" selects all checkboxes, and "Select all" changes to "Deselect all".
 - "Deselect all" deselects all checkboxes at all levels.
-- If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked at any level, "Deselect all" changes to "Select all".
 
 ![](static/checkbox-group.png)
 
@@ -111,8 +111,8 @@ If you use a combination of the checkbox tree and "Select all" and "Deselect all
 
 - "Select all" selects all checkboxes in the tree at all levels. "Select all" changes to "Deselect all".
 - "Deselect all" deselects all checkboxes at all levels.
-- If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
-- If at least one checkbox is checked on the sub-level, the root checkbox changes its state to `indeterminate`, and "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked at any level, "Deselect all" changes to "Select all".
+- If at least one checkbox is unchecked on the sub-level, the root checkbox changes its state to `indeterminate`, and "Deselect all" changes to "Select all".
 
 When user clicks on a checkbox with the `indeterminate` state, all sub-level checkboxes get `checked` state.
 
@@ -124,21 +124,6 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 - Clicking anywhere on the "Checkbox and text" area changes the state of the checkbox.
 - If the text label contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
 - When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
-
-<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF STATES IS A BAD PRACTICE
-### States
-
-Table: Checkbox states
-
-| State                 | Appearance example                            |
-| --------------------- | --------------------------------------------- |
-| Normal                | ![](static/state-unchecked.png)               |
-| Checked               | ![](static/state-checked.png)                 |
-| Indeterminate         | ![](static/state-indetermenate.png)           |
-| Invalid               | ![](static/state-invalid.png)                 |
-| Checked invalid       | ![](static/state-checked-invalid.png)         |
-| Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
-| Disabled              | ![](static/state-disabled.png)                | -->
 
 ## Usage in UX/UI
 
