@@ -1,6 +1,8 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
+
 export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
@@ -26,351 +28,363 @@ export const locators = {
   period: (page: Page) => page.locator('[data-ui-name="MonthPicker.Period"]'),
 };
 
-test.describe('Month Picker Trigger', () => {
-  test('Verify trigger entering date manually', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test.describe('Month Picker Trigger', () => {
+    test('Verify trigger entering date manually', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
-    const screenshotsClip = (await locators.monthPickerTrigger(page, 0).boundingBox())!;
-    screenshotsClip.x -= 4;
-    screenshotsClip.y -= 4;
-    screenshotsClip.width += 8;
-    screenshotsClip.height += 8;
+      const screenshotsClip = (await locators.monthPickerTrigger(page, 0).boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('052000');
-    await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('052000');
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
-    await page.keyboard.press('Shift+Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Backspace');
-    await page.keyboard.press('Backspace');
-    await page.keyboard.press('Backspace');
-    await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-  });
-
-  test('Verify trigger states and props', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/tests/examples/month-trigger.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Month picker', () => {
-  test('Verify roles and attributes', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await test.step('Verify trigger aria label', async () => {
-      await expect(locators.monthPickerTrigger(page, 0)).toHaveAttribute('aria-label', 'Date field');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    await test.step('Verify trigger svg attributes', async () => {
-      const svg = locators.monthPickerTrigger(page).locator('svg');
-      const svgAttributes = [
-        ['tabindex', '-1'],
-        ['aria-hidden', 'true'],
-        ['width', '16'],
-        ['height', '16'],
-      ];
+    test('Verify trigger states and props', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/tests/examples/month-trigger.tsx', 'en');
 
-      for (const [attr, value] of svgAttributes) {
-        await expect(svg).toHaveAttribute(attr, value);
-      }
-    });
+      await expect(page).toHaveScreenshot();
 
-    const inputTrigger = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
+      for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
 
-    await test.step('Verify input trigger attributes', async () => {
-      const inputAttributes = [
-        ['aria-invalid', 'false'],
-        ['role', 'combobox'],
-        ['aria-label', 'Date'],
-        ['inputmode', 'numeric'],
-      ];
-
-      for (const [attr, value] of inputAttributes) {
-        await expect(inputTrigger).toHaveAttribute(attr, value);
-      }
-    });
-
-    await locators.monthPickerTrigger(page, 0).click();
-
-    await test.step('Verify popper attributes', async () => {
-      const popperAttributes = [
-        ['tabindex', '0'],
-        ['data-popper-placement', 'bottom-start'],
-      ];
-
-      for (const [attr, value] of popperAttributes) {
-        await expect(locators.popper(page)).toHaveAttribute(attr, value);
-      }
-    });
-
-    await test.step('Verify calendar attributes', async () => {
-      const calendarAttributes = [
-        ['tabindex', '0'],
-        ['role', 'grid'],
-        ['disabled', ''],
-      ];
-
-      for (const [attr, value] of calendarAttributes) {
-        await expect(locators.calendar(page)).toHaveAttribute(attr, value);
-      }
-    });
-
-    await test.step('Verify days attributes', async () => {
-      const cellCount = await locators.cells(page).count();
-
-      for (let i = 0; i < cellCount; i++) {
-        const cell = locators.cells(page).nth(i);
-        const ariaLabel = await cell.getAttribute('aria-label');
-        if (!ariaLabel) continue;
-
-        const commonAttributes = [
-          ['aria-selected', 'false'],
-          ['aria-hidden', 'false'],
-        ];
-
-        for (const [attr, value] of commonAttributes) {
-          await expect(cell).toHaveAttribute(attr, value);
-        }
-
-        await expect(cell).toHaveAttribute('aria-colindex');
-        await expect(cell).toHaveAttribute('aria-rowindex');
-
-        const date = new Date(ariaLabel);
-        const month = date.getMonth();
-        const isCurrentMonth = month === 5;
-
-        const hasDisabledAttr = (await cell.getAttribute('disabled')) !== null;
-        const ariaDisabled = await cell.getAttribute('aria-disabled');
-
-        if (isCurrentMonth) {
-          expect(hasDisabledAttr).toBe(false);
-          expect(ariaDisabled).toBe('false');
-        }
-
-        // Text content check
-        const text = await cell.textContent();
-        expect(text?.trim()).not.toBe('');
-      }
-    });
-  });
-
-  test('Verify month with styles', async ({ page, browserName }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const selectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]');
-
-    const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
-      for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-        const actualValue = await element.evaluate(
-          (el: any, property: any) => getComputedStyle(el)[property],
-          property,
-        );
-        expect(actualValue).toBe(expectedValue);
-      }
-    };
-
-    await test.step('Verify trigger margins', async () => {
-      await checkStyle(locators.monthPickerTrigger(page, 0), {
-        marginTop: '8px',
-      });
-    });
-
-    await locators.monthPickerTrigger(page, 0).click();
-    await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-
-    await test.step('Verify style of month cell', async () => {
-      await checkStyle(locators.cells(page, 2), {
-        color: 'rgb(25, 27, 35)',
-        backgroundColor: 'rgb(255, 255, 255)',
-        margin: '4px 0px 0px',
-      });
-    });
-
-    await test.step('Verify style of selected date', async () => {
-      await checkStyle(selectedCell, {
-        color: 'rgb(255, 255, 255)',
-        backgroundColor: 'rgb(43, 179, 255)',
-        margin: '4px 0px 0px',
-        width: '60px',
-        height: '32px',
-      });
-    });
-  });
-
-  test('Verify month picker by mouse interaction', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const input = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
-    const initialValue = await input.inputValue();
-
-    input.fill('012024');
-
-    await test.step('Open and close popper with click', async () => {
-      await locators.monthPickerTrigger(page, 0).click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-
-      await locators.monthPickerTrigger(page, 0).click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
-
-      await locators.monthPickerTrigger(page, 0).click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-    });
-
-    const initialTitle = await locators.title(page).textContent();
-
-    await test.step('Navigate months with header buttons', async () => {
-      await locators.button(page, 'Previous year').click();
-      await expect(locators.title(page)).not.toHaveText(initialTitle!);
-
-      await locators.button(page, 'Next year').click();
-      await expect(locators.title(page)).toHaveText(initialTitle!);
-    });
-
-    await test.step('Select month and check popper visibility', async () => {
-      await locators.cells(page, 3).click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
-    });
-    const label = page.locator('label[for="simple-month-picker"]');
-
-    await test.step('Open calendar from label and select another month', async () => {
-      await label.click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-
-      await locators.cells(page, 4).click();
-
-      const newValue = await input.inputValue();
-      await expect(newValue).not.toBe(initialValue);
-    });
-
-    await test.step('Enter date manually and open popper', async () => {
-      await page.locator('input[data-ui-name="MonthPicker.Trigger"]').fill('05.2024');
-      await label.click();
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-
+      await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Month picker keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/date-picker/docs/examples/monthrangepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test.describe('Month picker', () => {
+    test('Verify month with styles', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
-    await page.setContent(htmlContent);
+      const selectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]');
 
-    const input = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
-    const initialValue = await input.inputValue();
+      const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
+        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
+          const actualValue = await element.evaluate(
+            (el: any, property: any) => getComputedStyle(el)[property],
+            property,
+          );
+          expect(actualValue).toBe(expectedValue);
+        }
+      };
 
-    await test.step('Open popper with Enter', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
+      await test.step('Verify trigger margins', async () => {
+        await checkStyle(locators.monthPickerTrigger(page, 0), {
+          marginTop: '8px',
+        });
+      });
+
+      await locators.monthPickerTrigger(page, 0).click();
       await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
-      await expect(locators.monthPickerTrigger(page, 0)).not.toBeFocused();
-      await expect(locators.popper(page)).toBeFocused();
+      await test.step('Verify style of month cell', async () => {
+        await checkStyle(locators.cells(page, 2), {
+          color: 'rgb(25, 27, 35)',
+          backgroundColor: 'rgb(255, 255, 255)',
+          margin: '4px 0px 0px',
+        });
+      });
+
+      await test.step('Verify style of selected date', async () => {
+        await checkStyle(selectedCell, {
+          color: 'rgb(255, 255, 255)',
+          backgroundColor: 'rgb(43, 179, 255)',
+          margin: '4px 0px 0px',
+          width: '60px',
+          height: '32px',
+        });
+      });
+    });
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test.describe('Month picker', () => {
+    test('Verify roles and attributes', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
+
+      await test.step('Verify trigger aria label', async () => {
+        await expect(locators.monthPickerTrigger(page, 0)).toHaveAttribute('aria-label', 'Date field');
+      });
+
+      await test.step('Verify trigger svg attributes', async () => {
+        const svg = locators.monthPickerTrigger(page).locator('svg');
+        const svgAttributes = [
+          ['tabindex', '-1'],
+          ['aria-hidden', 'true'],
+          ['width', '16'],
+          ['height', '16'],
+        ];
+
+        for (const [attr, value] of svgAttributes) {
+          await expect(svg).toHaveAttribute(attr, value);
+        }
+      });
+
+      const inputTrigger = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
+
+      await test.step('Verify input trigger attributes', async () => {
+        const inputAttributes = [
+          ['aria-invalid', 'false'],
+          ['role', 'combobox'],
+          ['aria-label', 'Date'],
+          ['inputmode', 'numeric'],
+        ];
+
+        for (const [attr, value] of inputAttributes) {
+          await expect(inputTrigger).toHaveAttribute(attr, value);
+        }
+      });
+
+      await locators.monthPickerTrigger(page, 0).click();
+
+      await test.step('Verify popper attributes', async () => {
+        const popperAttributes = [
+          ['tabindex', '0'],
+          ['data-popper-placement', 'bottom-start'],
+        ];
+
+        for (const [attr, value] of popperAttributes) {
+          await expect(locators.popper(page)).toHaveAttribute(attr, value);
+        }
+      });
+
+      await test.step('Verify calendar attributes', async () => {
+        const calendarAttributes = [
+          ['tabindex', '0'],
+          ['role', 'grid'],
+          ['disabled', ''],
+        ];
+
+        for (const [attr, value] of calendarAttributes) {
+          await expect(locators.calendar(page)).toHaveAttribute(attr, value);
+        }
+      });
+
+      await test.step('Verify days attributes', async () => {
+        const cellCount = await locators.cells(page).count();
+
+        for (let i = 0; i < cellCount; i++) {
+          const cell = locators.cells(page).nth(i);
+          const ariaLabel = await cell.getAttribute('aria-label');
+          if (!ariaLabel) continue;
+
+          const commonAttributes = [
+            ['aria-selected', 'false'],
+            ['aria-hidden', 'false'],
+          ];
+
+          for (const [attr, value] of commonAttributes) {
+            await expect(cell).toHaveAttribute(attr, value);
+          }
+
+          await expect(cell).toHaveAttribute('aria-colindex');
+          await expect(cell).toHaveAttribute('aria-rowindex');
+
+          const date = new Date(ariaLabel);
+          const month = date.getMonth();
+          const isCurrentMonth = month === 5;
+
+          const hasDisabledAttr = (await cell.getAttribute('disabled')) !== null;
+          const ariaDisabled = await cell.getAttribute('aria-disabled');
+
+          if (isCurrentMonth) {
+            expect(hasDisabledAttr).toBe(false);
+            expect(ariaDisabled).toBe('false');
+          }
+
+          // Text content check
+          const text = await cell.textContent();
+          expect(text?.trim()).not.toBe('');
+        }
+      });
     });
 
-    await test.step('Close popper with Escape', async () => {
-      await page.keyboard.press('Escape');
-      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+    test('Verify month picker by mouse interaction', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
-      await expect(input).toBeFocused();
+      const input = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
+      const initialValue = await input.inputValue();
+
+      input.fill('012024');
+
+      await test.step('Open and close popper with click', async () => {
+        await locators.monthPickerTrigger(page, 0).click();
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
+        await locators.monthPickerTrigger(page, 0).click();
+        await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+
+        await locators.monthPickerTrigger(page, 0).click();
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+      });
+
+      const initialTitle = await locators.title(page).textContent();
+
+      await test.step('Navigate months with header buttons', async () => {
+        await locators.button(page, 'Previous year').click();
+        await expect(locators.title(page)).not.toHaveText(initialTitle!);
+
+        await locators.button(page, 'Next year').click();
+        await expect(locators.title(page)).toHaveText(initialTitle!);
+      });
+
+      await test.step('Select month and check popper visibility', async () => {
+        await locators.cells(page, 3).click();
+        await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+      });
+      const label = page.locator('label[for="simple-month-picker"]');
+
+      await test.step('Open calendar from label and select another month', async () => {
+        await label.click();
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
+        await locators.cells(page, 4).click();
+
+        const newValue = await input.inputValue();
+        await expect(newValue).not.toBe(initialValue);
+      });
     });
 
-    await test.step('Open popper with Space', async () => {
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
-      await expect(locators.monthPickerTrigger(page, 0)).not.toBeFocused();
-    });
-    const initialTitle = await locators.title(page).textContent();
+    test('Month picker keyboard interactions', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@date-picker',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
-    await test.step('Navigate to Previous month and validate change', async () => {
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Previous year')).toBeFocused();
-      await locators.button(page, 'Previous year').hover();
-      await page.keyboard.press('Enter');
-      const titleAfterFirstEnter = await locators.title(page).textContent();
-      expect(titleAfterFirstEnter).not.toBe(initialTitle);
-      await expect(locators.title(page)).not.toHaveText(initialTitle!);
-    });
+      const input = page.locator('input[data-ui-name="MonthPicker.Trigger"]');
+      const initialValue = await input.inputValue();
 
-    await test.step('Navigate to Next month and validate restore', async () => {
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Next year')).toBeFocused();
+      await test.step('Open popper with Enter', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Enter');
-      const titleAfterSecondEnter = await locators.title(page).textContent();
-      expect(titleAfterSecondEnter).toBe(initialTitle);
-    });
+        await expect(locators.monthPickerTrigger(page, 0)).not.toBeFocused();
+        await expect(locators.popper(page)).toBeFocused();
+      });
 
-    await test.step('Navigate to calendar grid', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await expect(locators.button(page, 'Previous year')).toBeFocused();
+      await test.step('Close popper with Escape', async () => {
+        await page.keyboard.press('Escape');
+        await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page.locator('[data-ui-name="MonthPicker.Calendar"]')).toBeFocused();
-    });
+        await expect(input).toBeFocused();
+      });
 
-    await test.step('Navigate months and select via keyboard', async () => {
-      await page.keyboard.press('ArrowLeft');
+      await test.step('Open popper with Space', async () => {
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+        await expect(locators.monthPickerTrigger(page, 0)).not.toBeFocused();
+      });
+      const initialTitle = await locators.title(page).textContent();
 
-      const highlighted = page.locator(
-        '[data-ui-name="CalendarMonths.Unit"][class*="highlighted"]',
-      );
-      await expect(highlighted).toBeVisible();
+      await test.step('Navigate to Previous month and validate change', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Previous year')).toBeFocused();
+        await locators.button(page, 'Previous year').hover();
+        await page.keyboard.press('Enter');
+        const titleAfterFirstEnter = await locators.title(page).textContent();
+        expect(titleAfterFirstEnter).not.toBe(initialTitle);
+        await expect(locators.title(page)).not.toHaveText(initialTitle!);
+      });
 
-      const activeElementHandle = await page.evaluateHandle(() => document.activeElement);
-      const isFocusedElementHighlighted = await highlighted.evaluate(
-        (el, active) => el === active,
-        activeElementHandle,
-      );
-      expect(isFocusedElementHighlighted).toBe(true);
+      await test.step('Navigate to Next month and validate restore', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Next year')).toBeFocused();
 
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
-    });
+        await page.keyboard.press('Enter');
+        const titleAfterSecondEnter = await locators.title(page).textContent();
+        expect(titleAfterSecondEnter).toBe(initialTitle);
+      });
 
-    await test.step('Select another month with Space key', async () => {
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+      await test.step('Navigate to calendar grid', async () => {
+        await page.keyboard.press('Shift+Tab');
+        await expect(locators.button(page, 'Previous year')).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowLeft');
-      await page.keyboard.press('Space');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await expect(page.locator('[data-ui-name="MonthPicker.Calendar"]')).toBeFocused();
+      });
 
-      await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+      await test.step('Navigate months and select via keyboard', async () => {
+        await page.keyboard.press('ArrowLeft');
 
-      const newValue = await input.inputValue();
-      expect(newValue).not.toBe(initialValue);
+        const highlighted = page.locator(
+          '[data-ui-name="CalendarMonths.Unit"][class*="highlighted"]',
+        );
+        await expect(highlighted).toBeVisible();
+
+        const activeElementHandle = await page.evaluateHandle(() => document.activeElement);
+        const isFocusedElementHighlighted = await highlighted.evaluate(
+          (el, active) => el === active,
+          activeElementHandle,
+        );
+        expect(isFocusedElementHighlighted).toBe(true);
+
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+      });
+
+      await test.step('Select another month with Space key', async () => {
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowLeft');
+        await page.keyboard.press('Space');
+
+        await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+
+        const newValue = await input.inputValue();
+        expect(newValue).not.toBe(initialValue);
+      });
     });
   });
 });
