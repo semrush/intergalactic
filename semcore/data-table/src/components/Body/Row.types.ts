@@ -1,9 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
-import type { Body } from './Body';
 import type { CellRenderProps } from './Body.types';
-import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import type {
@@ -39,9 +38,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   row: DTRow<UniqKeyType>;
   mergedRow?: boolean;
 
-  isAccordionRow?: DataTableCellProps<UniqKeyType>['isAccordionRow'];
-  animationExpand?: DataTableCellProps<UniqKeyType>['animationExpand'];
-  accordionRowIndex?: DataTableCellProps<UniqKeyType>['accordionRowIndex'];
+  isAccordionRow?: boolean;
+  accordionRowIndex?: DataTableCellProps<Data, UniqKeyType>['accordionRowIndex'];
   isNonInteractive?: boolean;
 
   componentRef?: (component: RowRoot<Data, UniqKeyType> | null) => void;
@@ -78,7 +76,8 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
 
   inert?: '';
 
-  accordionDuration?: number | [number, number];
+  accordionDuration: number | [number, number];
+  accordionAnimationRows: number;
   onBackFromAccordion: (colName: string) => void;
 
   scrollAreaRef: React.RefObject<HTMLDivElement>;
@@ -92,7 +91,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   getI18nText: (key: string) => string;
   virtualScroll?: VirtualScroll;
   tableRef: React.RefObject<HTMLDivElement>;
-  onCellClick: CellPropsInner<Data, UniqKeyType>['onClick'];
+  onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   shadowVertical?: '' | 'end' | 'start' | 'median';
   expandedRows: Set<UniqKeyType>;
@@ -101,13 +100,13 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   setRowHeight: (index: number, row: DTRow<UniqKeyType>) => void;
   componentsMap: Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
   calculateAriaRowIndex: () => void;
-  variant?: DataTableProps<any, any, any>['variant'];
-  limit?: DataTableProps<any, any, any>['limit'];
+  variant: DataTableProps<any, any, any>['variant'];
+  limit: DataTableProps<any, any, any>['limit'];
   totalRows?: number;
   hasGroups: boolean;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<Data, UniqKeyType>>
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<Data, UniqKeyType> & Partial<RowPropsInner<Data, UniqKeyType>>>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps<any, any>>;

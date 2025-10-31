@@ -99,8 +99,14 @@ function getClassAndVars(styles: any, name: any, props: any) {
   );
 }
 
+const reshadowMap = new WeakMap();
+
 function reshadowToShadow(obj: any) {
-  return Object.entries(obj).reduce((style: any, [name, value]) => {
+  if (reshadowMap.has(obj)) {
+    return reshadowMap.get(obj);
+  }
+
+  const shadowStyle = Object.entries(obj).reduce((style: any, [name, value]) => {
     let n = name;
     if (name.startsWith('__')) {
       n = name.replace(/^__/, '');
@@ -110,6 +116,10 @@ function reshadowToShadow(obj: any) {
     style[n] = value;
     return style;
   }, {});
+
+  reshadowMap.set(obj, shadowStyle);
+
+  return shadowStyle;
 }
 
 function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
@@ -119,21 +129,16 @@ function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   return {
     cn(name, props) {
       const [classes, style] = getClassAndVars(reshadowToShadow(styles), name, props);
-      const extraProps = {};
 
       if (Object.keys(classes).length) {
-        // @ts-ignore
-        extraProps.className = cn(props.className, classes);
+        props.className = cn(props.className, classes);
       }
 
       if (Object.keys(style).length) {
-        // @ts-ignore
-        extraProps.style = Object.assign(style, props.style);
+        props.style = Object.assign(style, props.style);
       }
-      return {
-        ...props,
-        ...extraProps,
-      };
+
+      return props;
     },
   };
 }

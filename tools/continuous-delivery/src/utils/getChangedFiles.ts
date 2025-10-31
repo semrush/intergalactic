@@ -5,6 +5,13 @@ import { collectPackages } from '../collectPackages';
 
 const git = Git();
 
+const excludePackageNames = new Set([
+  '__tests__',
+  'tests',
+  'advanced',
+  'docs',
+]);
+
 export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> {
   const dependencyMap = new Map<string, Set<string>>();
   const packages = await collectPackages({});
@@ -29,9 +36,11 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
   diff.files.forEach((item) => {
     if (item.file.startsWith('semcore') && !item.file.startsWith('semcore/ui')) {
       const path = item.file.split('/');
-      const packageName = path[1];
+      const packageName = path[1].startsWith('{') ? path[2] : path[1];
 
-      components.add(`@semcore/${packageName}`);
+      if (!excludePackageNames.has(packageName)) {
+        components.add(`@semcore/${packageName}`);
+      }
 
       const dependentPackages = dependencyMap.get(`@semcore/${packageName}`) ?? new Set();
       const stack = [...dependentPackages];
@@ -47,9 +56,11 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
     }
     if (item.file.startsWith('stories/components')) {
       const path = item.file.split('/');
-      const packageName = path[2];
+      const packageName = path[2].startsWith('{') ? path[3] : path[2];
 
-      components.add(`@semcore/${packageName}`);
+      if (!excludePackageNames.has(packageName)) {
+        components.add(`@semcore/${packageName}`);
+      }
     }
   });
 

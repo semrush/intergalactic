@@ -26,7 +26,7 @@ class PaginationRoot extends Component {
   };
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
 
   nextPageButtonRef = React.createRef();
   prevPageButtonRef = React.createRef();
@@ -49,6 +49,12 @@ class PaginationRoot extends Component {
     if (prevProps.currentPage !== undefined && prevProps.currentPage !== this.asProps.currentPage) {
       this.setState({ dirtyCurrentPage: undefined });
     }
+  }
+
+  get paginationInputId() {
+    const { uid } = this.asProps;
+
+    return `pagination-input-${uid}`;
   }
 
   returnLostFocusTo = (ref) => {
@@ -164,6 +170,7 @@ class PaginationRoot extends Component {
       getI18nText,
       locale,
       size,
+      paginationInputId: this.paginationInputId,
     };
   };
 
@@ -189,6 +196,7 @@ class PaginationRoot extends Component {
       onKeyDown: this.handlePageInputKeyDown,
       getI18nText,
       size,
+      id: this.paginationInputId,
     };
   };
 
@@ -358,11 +366,11 @@ class PageInput extends Component {
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { Children, getI18nText, styles, uid, locale, size } = this.asProps;
+    const { Children, getI18nText, styles, locale, size, paginationInputId } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SLabel tag='label' htmlFor={`pagination-input-${uid}`} size={size}>
+        <SLabel tag='label' htmlFor={paginationInputId} size={size}>
           {getI18nText('pageInputLabel')}
         </SLabel>
         <SPageInput
@@ -375,7 +383,7 @@ class PageInput extends Component {
                 <Children />
               )
             : (
-                <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
+                <Pagination.PageInput.Value />
               )}
         </SPageInput>
       </>,
