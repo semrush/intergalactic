@@ -288,6 +288,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Clear all and check error visibility', async () => {
         await locators.button(page, 'Clear all').click();
+        await page.waitForTimeout(100);// tests can fail without some delays for this component
         await expect(locators.errorMessage(page, '1 error')).not.toBeVisible();
         await expect(locators.button(page, 'Next error')).not.toBeVisible();
         await expect(locators.button(page, 'Previous error')).not.toBeVisible();
@@ -296,6 +297,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify validation on clicking outside textbox', async () => {
         await locators.textbox(page).press('[');
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
@@ -528,7 +530,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await locators.textbox(page).press('[');
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
         await page.keyboard.press('Tab');
         await page.waitForTimeout(200);
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
@@ -542,7 +544,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify validation on clicking outside textbox', async () => {
         await locators.textbox(page).press('[');
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
 
         if (boxBoundingBox) {
@@ -718,6 +720,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const text =
           'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row';
         await page.keyboard.type(text, { delay: 20 });
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         await page.keyboard.press('Tab');
@@ -748,9 +751,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Navigation between rows by clicking arrows', async () => {
         await locators.button(page, 'Next error').click();
+        await locators.tooltip(page, 'Please remove one error value').waitFor({ state: 'visible' });
 
         await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 3');
-        await locators.tooltip(page, 'Please remove one error value').waitFor({ state: 'visible' });
 
         await locators.button(page, 'Previous error').click();
         await locators.tooltip(page, 'Please fix this value = another error').waitFor({ state: 'visible' });
@@ -764,6 +767,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.row(page, 9).click();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(100);
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
       });
@@ -839,9 +843,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
         await page.keyboard.type(text, { delay: 20 });
         await page.waitForTimeout(200);
-
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
         await locators.textbox(page).click();
         await expect(locators.textbox(page)).toBeFocused();
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
@@ -854,6 +857,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         for (let i = 0; i < 6; i++)
           await page.keyboard.press('Backspace');
+        await page.waitForTimeout(200);
+
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(locators.errorMessage(page)).toHaveText('2 errors');
         await expect(locators.row(page, 10)).not.toHaveAttribute('data-errormessage', 'Please fix this value = another error');
@@ -861,7 +866,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Navigation between rows by clicking arrows', async () => {
         await page.keyboard.press('Tab');
+        await page.waitForTimeout(200);
+
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(200);
 
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 2');
@@ -873,8 +881,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.button(page, 'Next error').click();
 
-        await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
+        await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
 
         await locators.row(page, 4).click();
         for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
