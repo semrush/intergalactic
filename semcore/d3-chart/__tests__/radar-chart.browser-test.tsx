@@ -129,8 +129,6 @@ test.describe('Radar chart', () => {
 
     await page.keyboard.press('Tab');
 
-    await page.keyboard.press('Tab');
-
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
   });
