@@ -4,14 +4,16 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const [state, setState] = React.useState<'normal' | 'invalid'>('normal');
+  const [state, setState] = React.useState<'normal' | 'invalid' | 'valid'>('normal');
 
   const onChange = (value: any) => {
     if (value.toLowerCase() === 'ffffff') {
       setState('invalid');
+      return false;
     }
-
-    return false;
+  };
+  const handleChangeState = (state: 'normal' | 'invalid' | 'valid') => {
+    setState(state);
   };
 
   return (
@@ -25,7 +27,7 @@ const Demo = () => {
           <ColorPicker.Colors />
           <PaletteManager>
             <PaletteManager.Colors />
-            <PaletteManager.InputColor state={state} onChange={onChange} />
+            <PaletteManager.InputColor state={state} onChange={onChange} onStateChange={handleChangeState} />
           </PaletteManager>
         </ColorPicker.Popper>
       </ColorPicker>

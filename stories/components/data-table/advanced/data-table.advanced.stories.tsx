@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import type { AccordionWithCheckboxProps } from './examples/accordion_with_checkbox';
 import AccordionWithCheckboxExample, { accordionWithCheckboxProps } from './examples/accordion_with_checkbox';
+import AccordionWithManyRowsExample, { accordionTableInTableDefaultProps } from './examples/accordion_with_many_rows';
 import AccordionWithPaginationExample, { tableInTableDefaultProps } from './examples/accordion_with_pagination';
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
@@ -40,6 +41,13 @@ export const AccordionWithCheckbox: StoryObj<AccordionWithCheckboxProps> = {
   render: AccordionWithCheckboxExample,
   args: {
     ...accordionWithCheckboxProps,
+  },
+};
+
+export const AccordionWithManyRows: StoryObj<typeof accordionTableInTableDefaultProps> = {
+  render: AccordionWithManyRowsExample,
+  args: {
+    ...accordionTableInTableDefaultProps,
   },
 };
 

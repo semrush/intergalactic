@@ -1,6 +1,5 @@
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
 import BasicPropsExample, { defaultBulkTextareaProps } from './examples/basic-props';
 import BlurLineExample from './examples/blurLine-base-example';
@@ -36,7 +35,7 @@ const sharedArgTypes = {
 } as const;
 
 export const BasicProps: StoryObj = {
-  render: (args: any) => <BasicPropsExample {...args} />,
+  render: BasicPropsExample,
   argTypes: sharedArgTypes,
   args: defaultBulkTextareaProps,
 };
