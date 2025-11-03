@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.3.0] - 2025-10-17
+## [16.3.1] - 2025-11-14
+
+### Fixed
+
+- `onClick` handler in child components overrides root `onClick` and called on mount.
+
+## [16.3.0] - 2025-10-31
 
 ### Added
 
