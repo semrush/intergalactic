@@ -67,6 +67,7 @@ class DateRangeComparatorAbstract extends Component {
   };
 
   popperRef = React.createRef();
+  periodRefs = [];
   unitRefs = {};
 
   getPeriodProps() {
@@ -100,6 +101,11 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       'role': 'listbox',
       'aria-label': getI18nText('periods'),
+      'periodRef': (index) => (element) => {
+        if (!element) return;
+
+        this.periodRefs[index] = element;
+      },
     };
   }
 
