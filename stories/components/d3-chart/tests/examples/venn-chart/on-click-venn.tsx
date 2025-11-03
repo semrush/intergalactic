@@ -1,55 +1,38 @@
-import { Chart, Venn } from '@semcore/ui/d3-chart';
+import { Plot, Venn } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 const Demo = () => {
-  const onClick = () => {
+  const onClickHandler = () => {
     console.log('I call on mount');
   };
   return (
-    <div style={{ width: '500px' }}>
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-      <Chart.Venn
-        data={data}
-        plotWidth={300}
-        plotHeight={300}
-        legendProps={legendProps}
-        aria-label='Venn chart'
-        showLegend={true}
-
-      >
-        {Object.entries(legendProps.legendMap).map(([key, { label }]) => (
-          <Venn.Circle
-            key={key}
-            dataKey={key}
-            name={label}
-            onClick={onClick}
-          />
-        ))}
-      </Chart.Venn>
-
-    </div>
+    <Plot height={300} width={400} data={data}>
+      <Venn>
+        <Venn.Circle dataKey='G' name='G' onClick={() => onClickHandler()} />
+        <Venn.Circle dataKey='F' name='F' />
+        <Venn.Circle dataKey='C' name='C' />
+        <Venn.Intersection dataKey='G/F' name='G/F' />
+        <Venn.Intersection dataKey='G/C' name='G/C' />
+        <Venn.Intersection dataKey='F/C' name='F/C' />
+        <Venn.Intersection
+          dataKey='G/F/C'
+          name='G/F/C'
+          style={{
+            stroke: 'rgba(221, 255, 0, 1)',
+            fill: 'rgba(89, 0, 255, 1)',
+            fillOpacity: 0.3,
+          }}
+        />
+      </Venn>
+    </Plot>
   );
 };
 
 const data = {
   'G': 200,
   'F': 200,
-  'C': 500,
-  'U': 1,
-  'G/F': 100,
-  'G/C': 100,
+  'C': 200,
   'F/C': 100,
-  'G/F/C': 100,
-};
-
-const legendProps = {
-
-  legendMap: {
-    G: { label: 'Good' },
-    F: { label: 'Fast' },
-    C: { label: 'Clean' },
-    U: { label: 'Uniq' },
-  },
 };
 
 export default Demo;
