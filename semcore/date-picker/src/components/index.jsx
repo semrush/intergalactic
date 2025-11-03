@@ -108,7 +108,7 @@ export class Period extends Component {
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
-            ref={periodRef(i)}
+            ref={periodRef?.(i)}
             key={i}
             use='tertiary'
             theme='muted'
