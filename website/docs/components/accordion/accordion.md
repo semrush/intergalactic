@@ -88,7 +88,7 @@ Table: Accordion states
 | Hover    | ![](static/hover-state.png) ![](static/hover-state-2.png)       | Cursor changes to `pointer`. If the accordion trigger has a background, it should change color to the next one in the palette.                                            |
 | Active   | ![](static/active-state.png) ![](static/active-state-2.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg)`. All other trigger styles remain the same as in the `hover` state.                              |
 | Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token.                                                                                                     |
-| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS. |
+<!-- | Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS. | -->
 
 ## Animation
 
