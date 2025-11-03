@@ -28,7 +28,11 @@ import type {
   WizardStepNextProps,
 } from './Wizard.types';
 
-class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhance> {
+type State = {
+  highlighted: number;
+};
+
+class WizardRoot extends Component<WizardProps, {}, State, typeof WizardRoot.enhance> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
@@ -41,10 +45,13 @@ class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhanc
   _steps = new Map();
   modalRef = React.createRef<HTMLElement>();
   contentRef = React.createRef<HTMLElement>();
-  state = { highlighted: null };
-  firstAvailableStepHighlighted = false;
 
   stepperRefs: Array<HTMLElement | null> = [];
+
+  state: State = {
+    // @ts-ignore
+    highlighted: this.props.step,
+  };
 
   getStepId(step: WizardStep): string {
     return `${this.asProps.uid}-step-${step}`;
@@ -142,12 +149,7 @@ class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhanc
       this._steps.set(props.step, { number, ...props });
     }
     const active = props.step === this.asProps.step;
-    const isInitHighlight = this.state.highlighted === null && !this.firstAvailableStepHighlighted && !props.disabled;
-    const highlighted = this.state.highlighted === props.step || isInitHighlight;
-
-    if (isInitHighlight) {
-      this.firstAvailableStepHighlighted = true;
-    }
+    const highlighted = this.state.highlighted === props.step;
 
     return {
       active,
@@ -170,7 +172,8 @@ class WizardRoot extends Component<WizardProps, {}, {}, typeof WizardRoot.enhanc
 
   componentDidUpdate(prevProps: WizardProps) {
     if (prevProps.step === this.asProps.step) return;
-    this.setState({ highlighted: this.asProps.step || null });
+    // @ts-ignore
+    this.setState({ highlighted: this.asProps.step });
     setTimeout(() => {
       if (prevProps.step === this.asProps.step) return;
       if (this.contentRef.current) {
