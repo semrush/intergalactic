@@ -179,7 +179,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   return sstyled(styles)(
     <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
       <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
-      <ChevronDownM color='gray-800' />
+      <ChevronDownM tabIndex={undefined} color='gray-800' />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 });

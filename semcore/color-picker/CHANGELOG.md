@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.12] - 2025-11-10
+## [16.1.12] - 2025-11-14
 
 ### Fixed
 
@@ -10,6 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `size` property didn't apply for the `PaletteManager.InputColor`.
 - Incorrect types for `PaletteManager`.
 - Validation issues in `PaletteManager.InputColor`.
+- "Blocked aria-hidden on an element" accessibility error for `ChevronDownM`.
 
 ## [16.1.11] - 2025-10-29
 
