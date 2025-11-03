@@ -98,7 +98,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@date-picker',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
+      await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
