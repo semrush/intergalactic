@@ -191,6 +191,11 @@ export type DataTableProps<
      * Handle change expanded rows
      */
     onExpandedRowsChange?: (expandedRows: Set<UniqKeyType>) => void;
+
+    /**
+   * Handling table container resizing.
+   */
+    onResize?: ResizeObserverCallback;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<

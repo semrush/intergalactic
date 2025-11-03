@@ -1,3 +1,9 @@
+## [16.11.1] - 2025-10-30
+
+### @semcore/data-table
+
+- **Fixed** Non-working `Accordion` for the cell with the skeleton when loading.
+
 ## [16.11.0] - 2025-10-29
 
 ### @semcore/base-components
