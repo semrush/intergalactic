@@ -1,4 +1,5 @@
 import { Component, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -285,7 +286,7 @@ class DonutRoot extends Component {
           });
         }
       },
-      onClick: this.handlerOnClick.bind(this),
+      onClickPieRoot: this.handlerOnClick(props.dataKey),
     };
   }
 
@@ -346,6 +347,7 @@ function Pie({
   uid,
   patterns,
   onClick,
+  onClickPieRoot,
   ...other
 }) {
   const [isMount, setIsMount] = React.useState(false);
@@ -389,7 +391,7 @@ function Pie({
           pattern={patterns ? `url(#${uid}-pattern)` : undefined}
           d={active ? d3ArcOut(data) : d3Arc(data)}
           transparent={transparent}
-          onClick={onClick(dataKey)}
+          use:onClick={callAllEventHandlers(onClickPieRoot, onClick)}
         />,
       )}
       {patterns && (
