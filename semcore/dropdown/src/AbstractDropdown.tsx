@@ -192,7 +192,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     this.scrollObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
             if (this.scrollResolve) {
               this.scrollResolve();
             }
@@ -200,7 +200,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         });
       },
       {
-        threshold: [0.1],
+        threshold: [0.5],
       },
     );
   }

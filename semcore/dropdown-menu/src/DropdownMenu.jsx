@@ -89,7 +89,7 @@ class DropdownMenuRoot extends AbstractDropdown {
 
     this.scrollToNodeAsync(selected, true).then(() => {
       if (lastInteraction.isKeyboard()) {
-        selected.focus();
+        selected.focus({ preventScroll: true });
       }
     });
 
