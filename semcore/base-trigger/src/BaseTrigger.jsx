@@ -64,7 +64,7 @@ class RootBaseTrigger extends Component {
               state={theme}
             >
               {state === 'invalid' && <SInvalidPattern size={size} />}
-              <SInner>
+              <SInner data-ui-name={`${this.asProps['data-ui-name']}.InnerTriggerWrapper`}>
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>
             </SBaseTrigger>,
