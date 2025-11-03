@@ -218,7 +218,7 @@ class DateRangeComparatorAbstract extends Component {
 
   handleKeydownDown = (place) => (e) => {
     const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
-    const key = e.key;
+    const { key, target } = e;
     const highlighted =
       focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
 
@@ -260,7 +260,9 @@ class DateRangeComparatorAbstract extends Component {
       return displayedPeriod;
     };
 
-    if (place === 'popper' && e.key === ' ' && highlighted.length) {
+    const isPeriodTarget = this.periodRefs.find((el) => el === target);
+
+    if (place === 'popper' && e.key === ' ' && highlighted.length && !isPeriodTarget) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
