@@ -101,13 +101,14 @@ export class Period extends Component {
 
   render() {
     const SPeriod = Root;
-    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange } =
+    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange, periodRef } =
       this.asProps;
 
     return sstyled(styles)(
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
+            ref={periodRef(i)}
             key={i}
             use='tertiary'
             theme='muted'

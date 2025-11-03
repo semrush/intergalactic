@@ -55,6 +55,7 @@ class RangePickerAbstract extends Component {
   prevButtonRef = React.createRef();
   nextButtonRef = React.createRef();
   popperRef = React.createRef();
+  periodRefs = [];
   unitRefs = {};
 
   navigateStep;
@@ -155,7 +156,10 @@ class RangePickerAbstract extends Component {
     if (place === 'popper' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       return this.handleApplyClick();
     }
-    if (place === 'popper' && e.key === ' ' && highlighted.length) {
+
+    const isPeriodTarget = this.periodRefs.find((el) => el === target);
+
+    if (place === 'popper' && e.key === ' ' && highlighted.length && !isPeriodTarget) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
@@ -403,6 +407,11 @@ class RangePickerAbstract extends Component {
       onDisplayedPeriodChange,
       'role': 'listbox',
       'aria-label': getI18nText('periods'),
+      'periodRef': (index) => (element) => {
+        if (!element) return;
+
+        this.periodRefs[index] = element;
+      },
     };
   }
 
