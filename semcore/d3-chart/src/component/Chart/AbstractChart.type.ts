@@ -1,4 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
+import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { FlexProps } from '@semcore/flex-box';
 import type Icon from '@semcore/icon';
 import type React from 'react';
@@ -141,6 +142,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
      * Function for format text for tooltip
      */
     tooltipValueFormatter?: (value?: unknown) => string;
+    /**
+     * Custom event emitter. Could be useful to handle event on few charts at the same time.
+     */
+    eventEmitter?: EventEmitter;
     /**
      * Config for a11y summary
      */

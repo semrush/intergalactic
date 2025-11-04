@@ -55,15 +55,15 @@ class TooltipRoot extends Component {
   virtualTriggerElement = null;
   unsubscribe = [];
   componentDidMount() {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, uniqId } = this.asProps;
     this.unsubscribe.push(
-      eventEmitter.subscribe('setTooltipRenderingProps', (anchorProps, tooltipProps) => {
+      eventEmitter.subscribe(`setTooltipRenderingProps_${uniqId}`, (anchorProps, tooltipProps) => {
         this.setState({ anchorProps, tooltipProps });
       }),
-      eventEmitter.subscribe('setTooltipVisible', (visible) =>
+      eventEmitter.subscribe(`setTooltipVisible_${uniqId}`, (visible) =>
         this.setState({ $visible: visible }),
       ),
-      eventEmitter.subscribe('setTooltipPosition', (x, y) => {
+      eventEmitter.subscribe(`setTooltipPosition_${uniqId}`, (x, y) => {
         this.virtualElementPosition.x = x;
         this.virtualElementPosition.y = y;
         if (this.virtualTriggerElement === null) {
@@ -95,7 +95,7 @@ class TooltipRoot extends Component {
   };
 
   render() {
-    const { Children, children, tag, forcedAdvancedMode, onClick: _, ...other } = this.asProps;
+    const { Children, children, tag, forcedAdvancedMode, uniqId, onClick: _, ...other } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode ||
@@ -126,7 +126,7 @@ class TooltipRoot extends Component {
                 )
               : (
                   <>
-                    {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
+                    {tag && <Tooltip.Trigger tag={tag} uniqId={uniqId} onClick={this.handleTriggerClick} />}
                     <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
                   </>
                 );
