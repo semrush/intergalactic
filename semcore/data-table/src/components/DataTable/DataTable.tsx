@@ -173,7 +173,7 @@ class DataTableRoot<
         this.setSelectAllMessage(false);
       }
     }
-    if (prevProps.loading === true && loading === false) {
+    if (prevProps.loading === true && loading === false && hasParent(document.activeElement, this.tableContainerRef.current!)) {
       this.tableRef.current?.focus();
     }
   }
