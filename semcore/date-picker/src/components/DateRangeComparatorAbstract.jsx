@@ -66,6 +66,8 @@ class DateRangeComparatorAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  prevButtonRef = React.createRef();
+  nextButtonRef = React.createRef();
   popperRef = React.createRef();
   resetButtonRef = React.createRef();
   applyButtonRef = React.createRef();
@@ -125,6 +127,7 @@ class DateRangeComparatorAbstract extends Component {
     const { navigateStep } = this;
     return {
       getI18nText,
+      'ref': this.prevButtonRef,
       'onClick': this.bindHandlerNavigateClick(-1),
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
@@ -135,6 +138,7 @@ class DateRangeComparatorAbstract extends Component {
     const { navigateStep } = this;
     return {
       getI18nText,
+      'ref': this.nextButtonRef,
       'onClick': this.bindHandlerNavigateClick(1),
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -225,6 +229,8 @@ class DateRangeComparatorAbstract extends Component {
     const { key, target } = e;
     const highlighted =
       focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
+
+    if ([' ', 'Enter'].includes(key) && [this.prevButtonRef.current, this.nextButtonRef.current].includes(target)) return;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.preventDefault();
