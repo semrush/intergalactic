@@ -52,6 +52,7 @@ class RangePickerAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  applyButtonRef = React.createRef();
   resetButtonRef = React.createRef();
   prevButtonRef = React.createRef();
   nextButtonRef = React.createRef();
@@ -160,12 +161,13 @@ class RangePickerAbstract extends Component {
 
     const isPeriodTarget = this.periodRefs.find((el) => el === target);
     const isResetButtonTarget = target === this.resetButtonRef.current;
+    const isApplyButtonTarget = target === this.applyButtonRef.current;
+    const areTargetedControls = isPeriodTarget || isResetButtonTarget || isApplyButtonTarget;
 
     if (place === 'popper' &&
       e.key === ' ' &&
       highlighted.length &&
-      !isPeriodTarget &&
-      !isResetButtonTarget
+      !areTargetedControls
     ) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
@@ -432,6 +434,7 @@ class RangePickerAbstract extends Component {
     return {
       getI18nText,
       onClick: this.handleApplyClick,
+      ref: this.applyButtonRef,
     };
   }
 
