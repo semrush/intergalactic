@@ -263,12 +263,13 @@ class DateRangeComparatorAbstract extends Component {
     };
 
     const isPeriodTarget = this.periodRefs.find((el) => el === target);
+    const isResetButtonTarget = target === this.resetButtonRef.current;
 
     if (place === 'popper' &&
       e.key === ' ' &&
       highlighted.length &&
       !isPeriodTarget &&
-      target !== this.resetButtonRef.current
+      !isResetButtonTarget
     ) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
