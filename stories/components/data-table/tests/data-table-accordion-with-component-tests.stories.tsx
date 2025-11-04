@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ColoredParentCellsExample from './examples/accordion-tests/with-component/colored-parent-cells';
 import ThemedParentRowsExample from './examples/accordion-tests/with-component/themed-parent-rows';
-import type { AccordionWithButtonProps } from './examples/accordion-tests/with-component/with-button-not-in-accordion-cell';
+import type { AccordionWithButtonExampleProps } from './examples/accordion-tests/with-component/with-button-not-in-accordion-cell';
 import ButtonNotInCellWithAccordionExample, { accordionWithButtonDefaultProps } from './examples/accordion-tests/with-component/with-button-not-in-accordion-cell';
 import type { AccordionWithFixedColumnProps } from './examples/accordion-tests/with-component/with-fixed-column';
 import WithFixedColumnExample, { accordionWithFixedColumnDefaultProps } from './examples/accordion-tests/with-component/with-fixed-column';
@@ -20,7 +20,7 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const ButtonNotInCellWithAccordion: StoryObj<AccordionWithButtonProps> = {
+export const ButtonNotInCellWithAccordion: StoryObj<AccordionWithButtonExampleProps> = {
   render: ButtonNotInCellWithAccordionExample,
   args: {
     ...accordionWithButtonDefaultProps,

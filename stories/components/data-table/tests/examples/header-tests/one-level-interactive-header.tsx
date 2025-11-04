@@ -25,7 +25,8 @@ export type OneLevelInteractiveExampleProps = {
 
 } & BoxProps;
 
-const columns = [
+const columns: DataTableProps<typeof data, any, any>['columns'] = [
+
   {
     name: 'cpc',
     children: (
@@ -170,6 +171,8 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
       wMax={props.wMax}
       h={props.h}
       use={props.use}
+      onSortChange={setSort}
+      sort={sort}
 
       headerProps={{
         sticky: props.sticky,

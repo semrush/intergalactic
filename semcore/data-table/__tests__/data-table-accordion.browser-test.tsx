@@ -182,17 +182,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       { withScrollBar: false },
     ];
     variantWithScrollBar.forEach((item) => {
-      test(`Verify accordion with fixed Column and withScrollBar=${item.withScrollBar}`, {
+      test(`Verify accordion with fixed Column withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
           '@base-components',
           '@widget-empty'],
       }, async ({ page, browserName }) => {
-        await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
+        await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-        await page.keyboard.press('Enter');
+        // await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowRight');
@@ -524,7 +524,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       { withScrollBar: false },
     ];
     variantWithScrollBar.forEach((item) => {
-      test(`Verify accordion with fixed row and withScrollBar=${item.withScrollBar}`, {
+      test(`Verify accordion with fixed column withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table'],
       }, async ({ page, browserName }) => {
