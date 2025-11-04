@@ -24,9 +24,8 @@ figma.connect(
     },
     example: ({ addonLeft, addonRight, active, disabled, label }) => (
       <Link
-        size='fontSize'
-        color='color-token'
-        href='#'
+        size={/* fontSize */}
+        href='/* Set URL */'
         active={active}
         disabled={disabled}
         addonLeft={addonLeft}
