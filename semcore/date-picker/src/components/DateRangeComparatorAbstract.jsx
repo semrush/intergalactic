@@ -67,6 +67,7 @@ class DateRangeComparatorAbstract extends Component {
   };
 
   popperRef = React.createRef();
+  resetButtonRef = React.createRef();
   periodRefs = [];
   unitRefs = {};
 
@@ -202,6 +203,7 @@ class DateRangeComparatorAbstract extends Component {
     return {
       getI18nText,
       onClick: () => this.handleApply(null, null),
+      ref: this.resetButtonRef,
     };
   }
 
@@ -262,7 +264,12 @@ class DateRangeComparatorAbstract extends Component {
 
     const isPeriodTarget = this.periodRefs.find((el) => el === target);
 
-    if (place === 'popper' && e.key === ' ' && highlighted.length && !isPeriodTarget) {
+    if (place === 'popper' &&
+      e.key === ' ' &&
+      highlighted.length &&
+      !isPeriodTarget &&
+      target !== this.resetButtonRef.current
+    ) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
