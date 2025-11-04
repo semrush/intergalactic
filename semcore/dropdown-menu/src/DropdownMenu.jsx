@@ -58,9 +58,11 @@ class DropdownMenuRoot extends AbstractDropdown {
         null,
         (visible) => {
           if (visible === true) {
-            requestAnimationFrame(() => {
+            setTimeout(() => {
               this.focusAndScrollToSelected();
-            });
+              // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
+              // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
+            }, 30);
           }
         },
       ],
