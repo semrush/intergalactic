@@ -12,10 +12,6 @@ const options = Array(6)
     children: `Option ${index}`,
   }));
 
-const stopPropagation = (event: React.SyntheticEvent) => {
-  event.stopPropagation();
-};
-
 const CustomSelect = () => {
   const [isVisible, setIsVisible] = React.useState(false);
   return (
@@ -35,7 +31,6 @@ const CustomSelect = () => {
           e.stopPropagation();
         }
       }}
-      onClick={stopPropagation}
     />
   );
 };
