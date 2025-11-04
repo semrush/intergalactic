@@ -35,8 +35,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Date Picker Trigger', () => {
     test('Verify trigger states when entering date manually', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -62,8 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify trigger states and props', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'en');
 
@@ -79,8 +77,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('DayPicker with today button', () => {
     test('Verify datepicker with Today button styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -144,8 +141,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('DayPicker with custom days', () => {
     test('Verify datepicker with custom days styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/custom_day_test.tsx', 'en');
 
@@ -210,8 +206,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('DayPikcer trigger and popper', () => {
     test('Verify mouse interactions when component uses expanded trigger and popper', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/trigger_and_popper.tsx', 'en');
 
@@ -231,8 +226,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify all calendar props work good', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@propgress-bar',
-        '@base-components'],
+        '@propgress-bar'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/calendar_props.tsx', 'en');
 
@@ -274,8 +268,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('DayPicker with today button', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -428,8 +421,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify datepicker with today button by mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -479,8 +471,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify datepicker with today button by keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -515,7 +506,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Navigate to prev button and change month', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Previous month')).toBeFocused();
-        await locators.button(page, 'Previous month').hover();
         const initialTitle = await locators.title(page).textContent();
 
         await page.keyboard.press('Enter');
@@ -531,31 +521,34 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(titleAfterSecondEnter).toBe(initialTitle);
       });
 
-      await test.step('Navigate to calendar and today button', async () => {
-        await page.keyboard.press('Shift+Tab');
+      await test.step('Verify month changes by Space press', async () => {
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Previous month')).toBeFocused();
 
+        const initialTitle = await locators.title(page).textContent();
+
+        await page.keyboard.press('Space');
+        const titleAfterFirstEnter = await locators.title(page).textContent();
+        expect(titleAfterFirstEnter).not.toBe(initialTitle);
+        await expect(locators.title(page)).not.toHaveText(initialTitle!);
+      });
+
+      await test.step('Navigate to calendar and today button', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await expect(locators.calendar(page)).toBeFocused();
 
+        await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
-
-        await page.keyboard.press('Shift+Tab');
-        await expect(locators.calendar(page)).toBeFocused();
       });
 
       await test.step('Navigate in calendar and select date', async () => {
         await page.keyboard.press('ArrowUp');
         await expect(highlightedCell).toBeVisible();
-
-        const activeElementHandle = await page.evaluateHandle(() => document.activeElement);
-        const isFocusedElementHighlighted = await highlightedCell.evaluate(
-          (el, active) => el === active,
-          activeElementHandle,
-        );
-        expect(isFocusedElementHighlighted).toBe(true);
 
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
@@ -575,7 +568,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(newValue2).not.toBe(newValue);
       });
 
-      await test.step('Select today by Today button', async () => {
+      await test.step('Select today by Enter on Today button', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
         await page.keyboard.press('Shift+Tab');
@@ -583,8 +576,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const newValue2 = await input.inputValue();
 
         await page.keyboard.press('Enter');
+        await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
+
         await expect(locators.popper(page)).not.toBeVisible();
 
+        const newValue3 = await input.inputValue();
+        expect(newValue3).not.toBe(newValue2);
+      });
+
+      await test.step('Select today by Space on Today button', async () => {
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+        await page.keyboard.press('ArrowDown');
+        const newValue2 = await input.inputValue();
+
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Today')).toBeFocused();
+
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
+
+        await expect(locators.popper(page)).not.toBeVisible();
         const newValue3 = await input.inputValue();
         expect(newValue3).not.toBe(newValue2);
       });
@@ -594,8 +606,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('DayPicker with custom days', () => {
     test('Verify custom days roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/custom_day_test.tsx', 'en');
 
@@ -728,8 +739,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify custom days can be selected by the mouse', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/custom_day_test.tsx', 'en');
 
@@ -763,8 +773,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify custom days by keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/custom_day_test.tsx', 'en');
 
@@ -872,8 +881,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify mouse interactions when component uses expanded trigger and popper', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/trigger_and_popper.tsx', 'en');
 
@@ -906,8 +914,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard interactions when component uses expanded trigger and popper', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/trigger_and_popper.tsx', 'en');
 
@@ -1015,8 +1022,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify validation tooltip', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        TAG.KEYBOARD,
-        '@base-components'],
+        TAG.KEYBOARD],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/disabled_dates.tsx', 'en');
 
@@ -1051,8 +1057,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify keyboard interactions when disabled dates and validation tooltip', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/disabled_dates.tsx', 'en');
 

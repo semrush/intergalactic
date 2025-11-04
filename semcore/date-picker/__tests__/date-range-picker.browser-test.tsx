@@ -544,160 +544,165 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       const buttons = page.locator('[data-ui-name="Button"]');
       const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
+      await test.step('Open date range picker by Enter', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
+        await expect(locators.popper(page)).toBeFocused();
+      });
 
-      await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
-      await expect(locators.popper(page)).toBeFocused();
+      await test.step('Close date range picker by Escape', async () => {
+        await page.keyboard.press('Escape');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+      });
+      await test.step('Open date range picker by Space', async () => {
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Escape');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
-
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
-
-      await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
-      await expect(locators.popper(page)).toBeFocused();
-
+        await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
+        await expect(locators.popper(page)).toBeFocused();
+      });
       // if (browserName === 'webkit') return;
+      await test.step('Verify month switched by Enter', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Previous month')).toBeFocused();
+        const [initialTitleFrom, initialTitleTo] = await Promise.all([
+          locators.title(page).first().textContent(),
+          locators.title(page).nth(1).textContent(),
+        ]);
 
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Previous month')).toBeFocused();
-      await locators.button(page, 'Previous month').hover();
-      const [initialTitleFrom, initialTitleTo] = await Promise.all([
-        locators.title(page).first().textContent(),
-        locators.title(page).nth(1).textContent(),
-      ]);
+        await page.keyboard.press('Enter');
+        const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
+          locators.title(page).first().textContent(),
+          locators.title(page).nth(1).textContent(),
+        ]);
+        expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
+        expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
 
-      await page.keyboard.press('Enter');
-      const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
-        locators.title(page).first().textContent(),
-        locators.title(page).nth(1).textContent(),
-      ]);
-      expect(titleAfterFirstEnterFrom).not.toBe(initialTitleFrom);
-      expect(titleAfterFirstEnterTo).not.toBe(initialTitleTo);
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Next month')).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Next month')).toBeFocused();
+        await page.keyboard.press('Space');
+        const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
+          locators.title(page).first().textContent(),
+          locators.title(page).nth(1).textContent(),
+        ]);
+        expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
+        expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
+      });
 
-      await page.keyboard.press('Enter');
-      const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
-        locators.title(page).first().textContent(),
-        locators.title(page).nth(1).textContent(),
-      ]);
-      expect(titleAfterSecondEnterFrom).toBe(initialTitleFrom);
-      expect(titleAfterSecondEnterTo).toBe(initialTitleTo);
+      await test.step('Verify navigation inside popper and date range selection', async () => {
+        await page.keyboard.press('Shift+Tab');
+        await expect(page.locator('[data-ui-name="DateRangePicker.Calendar"]').first()).toBeFocused();
 
-      await page.keyboard.press('Shift+Tab');
-      await expect(page.locator('[data-ui-name="DateRangePicker.Calendar"]').first()).toBeFocused();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await expect(buttons.first()).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(buttons.first()).toBeFocused();
+        for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Apply')).toBeFocused();
 
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Apply')).toBeFocused();
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Reset')).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Reset')).toBeFocused();
+        await page.keyboard.press('Tab');
+        await expect(locators.popper(page)).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await expect(locators.popper(page)).toBeFocused();
+        await page.keyboard.press('ArrowLeft');
+        const [initialValue1, initialValue2] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
 
-      await page.keyboard.press('ArrowLeft');
-      const [initialValue1, initialValue2] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
+        await page.keyboard.press('Escape');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Escape');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await expect(locators.popper(page)).toHaveCount(0);
+        const [value1_1, value2_1] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_1).toBe(initialValue1);
+        expect(value2_1).toBe(initialValue2);
 
-      await expect(locators.popper(page)).toHaveCount(0);
-      const [value1_1, value2_1] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_1).toBe(initialValue1);
-      expect(value2_1).toBe(initialValue2);
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Space');
+        const [value1_2, value2_2] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_2).not.toBe(value1_1);
+        expect(value2_2).toBe(value2_1);
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Space');
-      const [value1_2, value2_2] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_2).not.toBe(value1_1);
-      expect(value2_2).toBe(value2_1);
+        await page.keyboard.press('Space');
+        const [value1_3, value2_3] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_3).toBe(value1_2);
+        expect(value2_3).not.toBe(value2_2);
 
-      await page.keyboard.press('Space');
-      const [value1_3, value2_3] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_3).toBe(value1_2);
-      expect(value2_3).not.toBe(value2_2);
+        await page.keyboard.press('Escape');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Escape');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        const [value1_4, value2_4] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_4).toBe(initialValue1);
+        expect(value2_4).toBe(initialValue2);
 
-      const [value1_4, value2_4] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_4).toBe(initialValue1);
-      expect(value2_4).toBe(initialValue2);
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Space');
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('Space');
+        for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
-      for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        const [value1_6, value2_6] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_6).not.toBe(value1_4);
+        expect(value2_6).not.toBe(value2_4);
 
-      const [value1_6, value2_6] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_6).not.toBe(value1_4);
-      expect(value2_6).not.toBe(value2_4);
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await page.keyboard.press('Enter');
+        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Enter');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Reset')).toBeFocused();
 
-      for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Reset')).toBeFocused();
+        await page.keyboard.press('Space');
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
-
-      const [value1_5, value2_5] = await Promise.all([
-        input.nth(2).inputValue(),
-        input.nth(3).inputValue(),
-      ]);
-      expect(value1_5).toBe(initialValue1);
-      expect(value2_5).toBe(initialValue2);
+        const [value1_5, value2_5] = await Promise.all([
+          input.nth(2).inputValue(),
+          input.nth(3).inputValue(),
+        ]);
+        expect(value1_5).toBe(initialValue1);
+        expect(value2_5).toBe(initialValue2);
+      });
     });
   });
 

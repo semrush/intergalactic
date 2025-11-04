@@ -48,8 +48,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('DateRangeComparator range', () => {
     test('Verify date range comparator styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -123,8 +122,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify mouse intearctions and styles of advanced use', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx', 'en');
 
@@ -158,8 +156,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Date range comparator props', () => {
     test('Verify all date range comparator props work', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx', 'en');
       // if (browserName === 'webkit') test.skip(); // skipped for webkit because of unstable focus outline on the dialog
@@ -195,8 +192,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('DateRangeComparator range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -372,8 +368,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Date comparator range mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -522,8 +517,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Date range comparator keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 

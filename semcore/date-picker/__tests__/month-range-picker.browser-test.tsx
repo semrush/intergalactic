@@ -61,8 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month Range Trigger', () => {
     test('Verify trigger when entering date manually', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -95,8 +94,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify trigger states and props', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en');
 
@@ -119,8 +117,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month range', () => {
     test('Verify Month RangePicker styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -207,8 +204,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Month range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -282,8 +278,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -379,8 +374,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
       const buttons = page.locator('[data-ui-name="Button"]');

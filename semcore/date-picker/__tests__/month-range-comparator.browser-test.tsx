@@ -64,8 +64,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('MonthRangeComparator range', () => {
     test('Verify month range comparator styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -126,8 +125,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Month range comparator filled state', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -155,8 +153,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month Range comparator with advanced use', () => {
     test('Verify mouse intearctions and styles of advanced use', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx', 'en');
 
@@ -197,8 +194,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('MonthRangeComparator range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -299,8 +295,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Month range comparator mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -402,8 +397,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Month range comparator keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker',
-        '@base-components'],
+        '@date-picker'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
       const buttons = page.locator('[data-ui-name="Button"]');
@@ -427,8 +421,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(page.getByLabel('To Date field').first()).toBeFocused();
 
-      // if (browserName === 'webkit') return; // works not ctable in test browser
-
       await page.keyboard.press('Tab');
       await expect(page.locator('[data-ui-name="Checkbox.Value"]')).toBeFocused();
 
@@ -439,7 +431,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(50);
 
       const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
         locators.title(page).first().textContent(),
@@ -452,9 +443,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Next year')).toBeFocused();
-
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next year')).toBeFocused();
       await page.keyboard.press('Space');
-      await page.waitForTimeout(50);
 
       const [titleAfterSecondEnterFrom, titleAfterSecondEnterTo] = await Promise.all([
         locators.title(page).first().textContent(),
