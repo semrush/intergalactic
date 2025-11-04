@@ -25,7 +25,7 @@ const Demo = () => {
           label='Group of options'
           onChange={handleGroupChange}
           indeterminate={checked.includes(false) && checked.includes(true)}
-          checked={checked.includes(true)}
+          checked={!checked.includes(false)}
         />
       </Flex>
       {checked.map((value, index) => (
