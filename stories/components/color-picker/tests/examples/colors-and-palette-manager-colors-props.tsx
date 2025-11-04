@@ -24,8 +24,6 @@ const Demo = () => {
             ]}
           />
           <PaletteManager
-            w={200}
-            wMax={300}
             colors={customColors}
             defaultColors={['#00FF00', '#0000FF']}
             onColorsChange={(newColors, event) => {
@@ -59,8 +57,6 @@ const Demo = () => {
               ]}
             />
             <PaletteManager
-              w={500}
-              h={500}
               defaultColors={['#00FF00', '#0000FF']}
               onColorsChange={(newColors, event) => {
                 console.log('Updated palette:', newColors);

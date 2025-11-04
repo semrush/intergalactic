@@ -15,18 +15,6 @@ PaletteManager lets you add your own colors by typing in the hexadecimal code an
 
 :::
 
-## Input validation
-
-To prevent users from entering white as a color option, replace the default validation function in `PaletteManager.InputColor` with your own custom validation function using the `onChange` prop. Here is an example:
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/color-picker/docs/examples/input_validation.tsx';
-</script>
-
-:::
-
 ## Custom trigger
 
 You have complete control over the appearance of ColorPicker, including the trigger.

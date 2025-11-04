@@ -1,7 +1,7 @@
 import Accordion from '@semcore/ui/accordion';
 import type { AccordionProps, AccordionCollapseProps } from '@semcore/ui/accordion';
 import { Box } from '@semcore/ui/base-components';
-import type { BoxProps } from '@semcore/ui/flex-box';
+import type { BoxProps } from '@semcore/ui/base-components';
 import React from 'react';
 
 type ExampleAccordionProps = AccordionProps & { duration?: number } & AccordionCollapseProps & BoxProps;

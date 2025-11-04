@@ -6,10 +6,9 @@ import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, useBox } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
-import cn from 'classnames';
 import React from 'react';
 
 import style from './style/dropdown-menu.shadow.css';
@@ -390,14 +389,8 @@ function Item({
 }
 
 function Addon(props) {
-  const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
-  const styles = sstyled(props.styles);
-  return (
-    <SDropdownMenuItemAddon
-      className={cn(styles.cn('SDropdownMenuItemAddon', props).className, className) || undefined}
-      {...other}
-    />
-  );
+  const SDropdownMenuItemAddon = Root;
+  return sstyled(props.styles)(<SDropdownMenuItemAddon render={Box} />);
 }
 
 function Trigger() {
