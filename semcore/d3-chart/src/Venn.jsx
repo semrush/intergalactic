@@ -1,5 +1,6 @@
 import { FadeInOut } from '@semcore/animation';
 import { Component, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
@@ -75,7 +76,7 @@ class VennRoot extends Component {
       uid: `${this.asProps.uid}-${index}`,
       patterns: this.asProps.patterns,
       minRadius: this.asProps.minRadius,
-      onClick: this.handlerOnClick(props.dataKey).bind(this),
+      onClickCircleRoot: this.handlerOnClick(props.dataKey).bind(this),
     };
   }
 
@@ -99,7 +100,7 @@ class VennRoot extends Component {
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent,
       resolveColor: this.asProps.resolveColor,
-      onClick: this.handlerOnClick(props.dataKey).bind(this),
+      onClickIntersectionRoot: this.handlerOnClick(props.dataKey).bind(this),
     };
   }
 
@@ -149,6 +150,7 @@ function Circle({
   patterns,
   minRadius,
   onClick,
+  onClickCircleRoot,
 }) {
   dataHintsHandler.describeValueEntity(dataKey, name);
 
@@ -168,7 +170,7 @@ function Circle({
           r={radius}
           transparent={transparent}
           use:duration={`${duration}ms`}
-          onClickCapture={onClick}
+          onClickCapture={callAllEventHandlers(onClickCircleRoot, onClick)}
         />,
       )}
       {patterns && (
@@ -193,6 +195,7 @@ function Intersection(props) {
     dataHintsHandler,
     transparent,
     onClick,
+    onClickIntersectionRoot,
   } = props;
   dataHintsHandler.describeValueEntity(dataKey, name);
 
@@ -208,7 +211,7 @@ function Intersection(props) {
       render={renderIntersection}
       d={intersectionAreaPath(data)}
       transparent={transparent}
-      onClickCapture={onClick}
+      onClickCapture={callAllEventHandlers(onClickIntersectionRoot, onClick)}
     />,
   );
 }

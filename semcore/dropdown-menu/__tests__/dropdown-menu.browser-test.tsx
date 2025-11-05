@@ -257,6 +257,7 @@ test.describe('Dropdown menu base', () => {
 
     await page.setContent(htmlContent);
 
+    const trigger = page.getByRole('button');
     const menu = page.getByRole('menu');
     const items = page.getByRole('menuitem');
     const link = page.getByRole('link');
@@ -264,8 +265,7 @@ test.describe('Dropdown menu base', () => {
     await test.step('Verify opens by Enter and first item focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await menu.waitFor();
-      await expect(menu).toBeVisible();
+      await items.first().waitFor({ state: 'visible' });
       await expect(items.first()).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
@@ -286,7 +286,18 @@ test.describe('Dropdown menu base', () => {
     await test.step('Verify closed by escape when focus on notice', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
+      await items.first().waitFor({ state: 'hidden' });
+      await expect(trigger).toBeFocused();
       await expect(menu).not.toBeVisible();
+    });
+
+    await test.step('Verify closed by enterd on the item and trigger is focused', async () => {
+      await page.keyboard.press('Space');
+      await items.first().waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await items.first().waitFor({ state: 'hidden' });
+      await expect(trigger).toBeFocused();
     });
   });
 });

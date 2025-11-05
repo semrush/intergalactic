@@ -13,6 +13,17 @@ test.describe('radar-chart', () => {
     expect(violations).toEqual([]);
   });
 
+  test('label-custom', async ({ page }) => {
+    const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/label-custom.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+
   test('legend-and-pattern-fill', async ({ page }) => {
     const standPath =
       'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';

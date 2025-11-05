@@ -38,7 +38,7 @@ test.describe(`@color-picker ${TAG.ACCESSIBILITY}`, () => {
   });
 
   test('Input validation', async ({ page }) => {
-    await loadPage(page, 'stories/components/color-picker/docs/examples/input_validation.tsx', 'en');
+    await loadPage(page, 'stories/components/color-picker/tests/examples/input_validation.tsx', 'en');
 
     await page.locator('[data-ui-name="ColorPicker.Trigger"]').click();
     const input = page.locator('input[data-ui-name="PaletteManager.InputColor"]');

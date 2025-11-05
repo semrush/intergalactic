@@ -150,4 +150,31 @@ test.describe('Bubble chart', () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify onClick in bubble.circle', async ({ page }) => {
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log' && msg.text().startsWith('I call')) {
+        messages.push(msg.text());
+      }
+    });
+
+    const standPath =
+      'stories/components/d3-chart/tests/examples/bubble-chart/on-click-in-bubble.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await test.step('Verify not calls on render', async () => {
+      expect(messages.length).toBe(0);
+    });
+
+    await test.step('Verify calls on bubble click', async () => {
+      const box = await page.locator('[data-ui-name="Bubble.Circle"]').first().boundingBox();
+      if (box) {
+        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      }
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['I call on mount']);
+    });
+  });
 });
