@@ -102,7 +102,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify base styles', {
     tag: [TAG.PRIORITY_HIGH,
       '@color-picker'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
     const getComputedStyles = (locator: any, props: string[]) =>
