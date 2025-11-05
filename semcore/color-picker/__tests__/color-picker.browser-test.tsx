@@ -199,7 +199,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(clearIcon).toHaveAttribute('height', '16');
     });
 
-    if (browserName === 'firefox') test.skip(); //  hover doesn't work well in playwright browsers
+    if (browserName === 'firefox') return; //  hover doesn't work well in playwright browsers
     await test.step('Verify palette manager color styles', async () => {
       const addButton = page.getByRole('button').first();
 
