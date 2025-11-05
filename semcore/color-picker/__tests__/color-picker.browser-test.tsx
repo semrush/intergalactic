@@ -108,7 +108,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@color-picker',
       '@base-components',
       '@typography'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
     const getComputedStyles = (locator: any, props: string[]) =>
@@ -199,7 +199,32 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(clearIcon).toHaveAttribute('height', '16');
     });
 
+    if (browserName === 'firefox') return; //  hover doesn't work well in playwright browsers
     await test.step('Verify palette manager color styles', async () => {
+      const addButton = page.getByRole('button').first();
+
+      await addButton.hover();
+
+      const addButtonHoverStateStyles = await getComputedStyles(addButton, [
+        'backgroundColor',
+      ]);
+
+      expect(addButtonHoverStateStyles).toEqual({
+        backgroundColor: 'rgba(138, 142, 155, 0.2)',
+      });
+
+      await page.mouse.down();
+
+      const addButtonActiveStateStyles = await getComputedStyles(addButton, [
+        'backgroundColor',
+      ]);
+
+      expect(addButtonActiveStateStyles).toEqual({
+        backgroundColor: 'rgba(138, 142, 155, 0.3)',
+      });
+
+      await page.mouse.up();
+
       await locators.inputColor(page).fill('000');
       await locators.addColor(page).click();
 
