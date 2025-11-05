@@ -4,19 +4,35 @@ import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
+import dataTable from '../../../../../patterns/ux-patterns/feature-highlight/docs/examples/data-table';
+
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 export type TableInTableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];
   use?: DataTableProps<typeof data, any, any>['use'];
   compact?: DataTableProps<typeof data, any, any>['compact'];
   justifyContent?: string;
+  withSkeletonsAndAsyncDataLoading: boolean;
 };
 
+const initData = new Array(7).fill({
+  keyword: '-',
+  kd: '-',
+  cpc: '-',
+  vol: '-',
+}).map((item, index) => {
+  return {
+    [UNIQ_ROW_KEY]: (index + 1).toString(),
+    ...item,
+  };
+});
+
 const Demo = (props: TableInTableInTableProps) => {
+  const [tableData, setData] = React.useState<typeof data>(props.withSkeletonsAndAsyncDataLoading ? initData : data);
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
-      [...data].sort((aRow, bRow) => {
+      [...tableData].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
         const a = aRow[prop as SortableColumn]!;
         const b = bRow[prop as SortableColumn]!;
@@ -38,11 +54,19 @@ const Demo = (props: TableInTableInTableProps) => {
           }),
         };
       }),
-    [sort],
+    [sort, tableData],
   );
   const handleSortChange: (sort: DataTableSort<keyof typeof sortedData[0]>, e?: React.SyntheticEvent) => void = (newSort) => {
     setSort(newSort as DataTableSort<SortableColumn>);
   };
+
+  React.useEffect(() => {
+    if (props.withSkeletonsAndAsyncDataLoading) {
+      setTimeout(() => {
+        setData(data);
+      }, 400);
+    }
+  }, []);
 
   return (
     <DataTable
@@ -147,6 +171,7 @@ export const tableInTableInTableProps: TableInTableInTableProps = {
   use: undefined,
   compact: undefined,
   justifyContent: undefined,
+  withSkeletonsAndAsyncDataLoading: false,
 };
 
 Demo.defaultProps = tableInTableInTableProps;

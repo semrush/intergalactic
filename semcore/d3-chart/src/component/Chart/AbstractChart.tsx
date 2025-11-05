@@ -401,8 +401,16 @@ export abstract class AbstractChart<
   }
 
   protected renderAxis(): React.ReactNode {
-    const { invertAxis, showXAxis, showYAxis, data, axisXValueFormatter, axisYValueFormatter } =
-      this.asProps;
+    const {
+      invertAxis,
+      showXAxis,
+      showYAxis,
+      data,
+      axisXValueFormatter,
+      axisYValueFormatter,
+      multilineXTicks,
+      multilineYTicks,
+    } = this.asProps;
 
     if (!Array.isArray(data)) {
       return null;
@@ -424,10 +432,10 @@ export abstract class AbstractChart<
           <YAxis>
             {yTicks
               ? (
-                  <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
                 )
               : (
-                  <YAxis.Ticks>{childrenY}</YAxis.Ticks>
+                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
                 )}
             {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
           </YAxis>
@@ -437,10 +445,10 @@ export abstract class AbstractChart<
           <XAxis>
             {xTicks
               ? (
-                  <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
                 )
               : (
-                  <XAxis.Ticks>{childrenX}</XAxis.Ticks>
+                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
                 )}
             {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
           </XAxis>

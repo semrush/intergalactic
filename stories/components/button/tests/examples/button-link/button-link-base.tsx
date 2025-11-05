@@ -1,0 +1,104 @@
+import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import type { ButtonLinkProps } from '@semcore/ui/button';
+import VideoListM from '@semcore/ui/icon/VideoList/m';
+import React from 'react';
+
+type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };
+const Demo = (props: ExampleProps) => {
+  return (
+
+    <Flex direction='column' gap={2} mt={10} style={props.style}>
+      <ButtonLink
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+      >
+        ButtonLink
+      </ButtonLink>
+
+      <ButtonLink
+        addonRight={VideoListM}
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+
+      >
+        addonRight
+      </ButtonLink>
+
+      <ButtonLink
+        addonLeft={VideoListM}
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+
+      >
+        addonLeft
+      </ButtonLink>
+
+      <ButtonLink
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+
+      >
+        <ButtonLink.Text>ButtonLink.Addon</ButtonLink.Text>
+        <ButtonLink.Addon>
+          <VideoListM />
+        </ButtonLink.Addon>
+      </ButtonLink>
+
+      <ButtonLink
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+        addonLeft={VideoListM}
+        addonRight={VideoListM}
+
+      >
+        addonLeftRight
+      </ButtonLink>
+      <ButtonLink
+        addonLeft={VideoListM}
+        size={props.size}
+        active={props.active}
+        disabled={props.disabled}
+        use={props.use}
+        color={props.color}
+
+      >
+        <ButtonLink.Text>ButtonLink with Badge</ButtonLink.Text>
+        <ButtonLink.Addon>
+          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
+        </ButtonLink.Addon>
+      </ButtonLink>
+
+    </Flex>
+
+  );
+};
+
+export const defaultButtonLinkProps: ExampleProps = {
+  size: 100,
+  use: 'primary',
+  color: undefined,
+  active: undefined,
+  disabled: undefined,
+  hintPlacement: 'top',
+  style: undefined,
+};
+
+Demo.defaultProps = defaultButtonLinkProps;
+export default Demo;
