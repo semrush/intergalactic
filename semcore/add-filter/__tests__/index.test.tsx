@@ -1,6 +1,6 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import AddFilter from '../src';
@@ -10,7 +10,17 @@ describe('AddFilter Dependency imports', () => {
 });
 
 describe('AddFilter', () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
 
   test('should render two menuitems in dropdown with displayName as text', async () => {
     const { queryByText, getByText } = render(

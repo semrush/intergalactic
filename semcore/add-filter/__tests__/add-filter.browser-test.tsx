@@ -700,7 +700,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       for (let i = 0; i < 6; i++) {
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(50);
       }
       await page.keyboard.press('Enter');
       await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
