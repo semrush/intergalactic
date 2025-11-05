@@ -10,6 +10,7 @@ import LineAreWithEmptyExample from './examples/line-chart/line-area-with-empty'
 import LineWithAreaExample from './examples/line-chart/line-with-area';
 import TimeExample from './examples/line-chart/time';
 import TooltipExample from './examples/line-chart/tooltip';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Line-Chart',
@@ -29,14 +30,9 @@ export const Line: StoryObj = {
   render: LineExample,
 };
 
-export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
+export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-  },
+  argTypes: getChartArgTypes(),
   args: BasicUsageProps,
 };
 

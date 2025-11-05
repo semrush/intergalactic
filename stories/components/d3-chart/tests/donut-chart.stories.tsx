@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample from './examples/donut-chart/donut-props';
+import BasicUsageExample, { defaultProps as basicUsageProps } from './examples/donut-chart/basic-usage';
+import DonutPropsExample from './examples/donut-chart/donut-props';
 import ShowLegendPropExample, { defaultProps as ShowLegendPropExampleProps } from './examples/donut-chart/donut-show-legend-prop';
 import LegendAndPatternFillExample from './examples/donut-chart/legend-and-pattern-fill';
 import OnClickPieExample from './examples/donut-chart/on-click-pie';
 import SemiDonutExample from './examples/donut-chart/semi-donut';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Donut-Chart',
@@ -12,8 +14,14 @@ const meta: Meta = {
 
 export default meta;
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage = {
   render: BasicUsageExample,
+  argTypes: getChartArgTypes(),
+  args: basicUsageProps,
+};
+
+export const DonutProps: StoryObj = {
+  render: DonutPropsExample,
 };
 
 export const SemiDonutWithOneActive: StoryObj = {

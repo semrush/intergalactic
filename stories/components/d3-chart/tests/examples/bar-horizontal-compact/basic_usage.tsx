@@ -1,26 +1,15 @@
+import type { CompactHorizontalBarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type BaseExampleProps = {
-  showLegend?: boolean;
-};
-const Demo = (props: BaseExampleProps) => {
-  const { showLegend } = props;
-  return (
-    <>
-      {' '}
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
+import { getChartProps } from '../stories_props_helper';
 
-      <Chart.CompactHorizontalBar
-        y='category'
-        x='value'
-        data={data}
-        plotWidth={500}
-        plotHeight={450}
-        aria-label='CompactHorizontalBar chart'
-        showLegend={showLegend}
-      />
-    </>
+const Demo = (props: CompactHorizontalBarChartProps) => {
+  return (
+    <Chart.CompactHorizontalBar
+      {...props}
+      aria-label='CompactHorizontalBar chart'
+    />
   );
 };
 
@@ -47,9 +36,14 @@ const data = [
   },
 ];
 
-export const defaultProps: BaseExampleProps = {
-  showLegend: undefined,
-
-};
+export const defaultProps = getChartProps<CompactHorizontalBarChartProps>({
+  y: 'category',
+  x: 'value',
+  marginX: 0,
+  marginY: 0,
+  plotHeight: 350,
+  showXAxis: false,
+  data,
+});
 
 export default Demo;

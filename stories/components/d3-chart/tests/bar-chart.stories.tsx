@@ -1,3 +1,4 @@
+import type { BarChartProps } from '@semcore/ui/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BarExample from './examples/bar-chart/bar';
@@ -10,6 +11,7 @@ import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern
 import NegativeValuesExample from './examples/bar-chart/negative-values';
 import TooltipExample from './examples/bar-chart/tooltip';
 import TrendLineExample from './examples/bar-chart/trend-line';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bar-Chart',
@@ -29,28 +31,11 @@ export const Bar: StoryObj = {
   render: BarExample,
 };
 
-export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
+export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-    multilineXTicks: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-    marginX: {
-      control: 'number',
-    },
-    multilineYTicks: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-    marginY: {
-      control: 'number',
-    },
-  },
+  argTypes: getChartArgTypes({
+    type: { control: 'select', options: ['stack', 'group'] },
+  }),
   args: BasicUsageProps,
 };
 
