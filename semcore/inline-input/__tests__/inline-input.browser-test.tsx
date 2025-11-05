@@ -35,9 +35,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify active state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number',
-        '@icon',
-        '@base-components'],
+        '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -63,9 +61,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify disabled state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number',
-        '@icon',
-        '@base-components'],
+        '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -93,9 +89,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify loading state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number',
-        '@icon',
-        '@base-components'],
+        '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -115,8 +109,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify custom icon and text', {
     tag: [TAG.PRIORITY_MEDIUM,
-      '@inline-input',
-      '@icon'],
+      '@inline-input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/with-custom-text.tsx', 'en');
 
@@ -188,9 +181,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@inline-input',
-      '@input-number',
-      '@typography',
-      '@icon'],
+      '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx', 'en');
 

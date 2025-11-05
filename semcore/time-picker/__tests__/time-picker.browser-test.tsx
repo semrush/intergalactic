@@ -29,9 +29,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesStatesAndSizes.forEach((item) => {
     test(`Verify TimePicker with is12Hour=${item.is12Hour} state= ${item.state} size= ${item.size}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker',
-        '@base-components',
-        '@typography'],
+        '@time-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
 
@@ -91,9 +89,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesDisabledStatesSizes.forEach((item) => {
     test(`Verify disabled TimePicker with state= ${item.state} size= ${item.size} is12Hour=${item.is12Hour}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker',
-        '@base-components',
-        '@typography'],
+        '@time-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
@@ -109,9 +105,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesValueandDefaultValue.forEach((item) => {
     test(`Verify TimePicker with value= ${item.value} defaultValue= ${item.defaultValue} is12Hour=${item.is12Hour}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker',
-        '@base-components',
-        '@typography'],
+        '@time-picker'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
@@ -120,9 +114,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify hours and minutes listboxes with and without step ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@time-picker',
-      '@base-components',
-      '@typography'],
+      '@time-picker'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en');
 
@@ -171,9 +163,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify expanded Time Picker with format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker',
-      '@base-components',
-      '@typography'],
+      '@time-picker'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
 
@@ -277,9 +267,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker expanded with format mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@time-picker',
-      '@base-components',
-      '@typography'],
+      '@time-picker'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
 
@@ -332,9 +320,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker base with format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker',
-      '@base-components',
-      '@typography'],
+      '@time-picker'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { is12Hour: true });
 
@@ -419,9 +405,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker base without format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker',
-      '@base-components',
-      '@typography'],
+      '@time-picker'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { is12Hour: false });
 

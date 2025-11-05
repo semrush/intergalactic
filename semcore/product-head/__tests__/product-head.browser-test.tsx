@@ -26,10 +26,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@product-head',
         '@button',
         '@tooltip',
-        '@base-triggger',
-        '@link-trigger',
-        '@icon',
-        '@typography'],
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
 
@@ -44,10 +41,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@product-head',
       '@button',
       '@tooltip',
-      '@base-triggger',
-      '@link-trigger',
-      '@icon',
-      '@typography'],
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/advanced/examples/long-long-title.tsx', 'en');
 
@@ -60,10 +54,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button',
       '@tooltip',
       '@breadcrumbs',
-      '@base-triggger',
-      '@link-trigger',
-      '@icon',
-      '@typography'],
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/tests/examples/test_example.tsx', 'en');
 
@@ -83,10 +74,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@product-head',
       '@button',
       '@tooltip',
-      '@base-triggger',
-      '@link-trigger',
-      '@icon',
-      '@typography'],
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
 

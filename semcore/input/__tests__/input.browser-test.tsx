@@ -47,10 +47,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify input base state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@input',
-        '@badge',
-        '@icon',
-        '@typography',
-        '@base-components'],
+        '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input/tests/examples/input-base-example.tsx', 'en', item);
 
@@ -100,10 +97,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify input with neighbot-location state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@input',
-        '@badge',
-        '@icon',
-        '@typography',
-        '@base-components'],
+        '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation.tsx', 'en', item);
 
@@ -138,10 +132,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Input with submit button', {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
-      '@icon',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
@@ -156,10 +147,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@button',
-      '@icon',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
@@ -172,9 +160,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify input loading state ', {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
-      '@spin',
-      '@typography',
-      '@base-components'],
+      '@spin'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/loading_state_in_the_input.tsx', 'en');
 
@@ -191,9 +177,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Input Text with addon keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
-      '@spin',
-      '@typography',
-      '@base-components'],
+      '@spin'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
@@ -210,9 +194,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@tag',
-      '@badge',
-      '@typography',
-      '@base-components'],
+      '@badge'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
@@ -232,10 +214,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
-      '@button',
-      '@typography',
-      '@base-components'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx', 'en');
 
@@ -278,11 +257,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
       '@button',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
@@ -325,11 +301,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input',
-      '@icon',
       '@button',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
@@ -357,11 +330,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
       '@button',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
@@ -399,11 +369,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input',
-      '@icon',
       '@button',
-      '@tooltip',
-      '@typography',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
@@ -434,9 +401,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Input Text addon mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@input',
-      '@typography',
-      '@base-components'],
+      '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
@@ -457,11 +422,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input',
-      '@icon',
       '@tag',
-      '@badge',
-      '@typography',
-      '@base-components'],
+      '@badge'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
@@ -482,12 +444,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
       '@button',
       '@tooltip',
-      '@link',
-      '@typography',
-      '@base-components'],
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_multiple_addons.tsx', 'en');
 

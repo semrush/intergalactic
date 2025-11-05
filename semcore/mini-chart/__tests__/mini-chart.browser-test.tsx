@@ -23,8 +23,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreDonut.forEach((item) => {
       test(`Verify with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-donuts.tsx', 'en', item);
 
@@ -103,8 +102,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     LoadingScoreDonut.forEach((item) => {
       test(`Verify loading=${item.loading} with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-donuts.tsx', 'en', item);
         await expect(page).toHaveScreenshot();
@@ -128,8 +126,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreLineNoSegments.forEach((item) => {
       test(`Verify without segments with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-lines.tsx', 'en', item);
 
@@ -150,8 +147,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreLineNoSegmentsLoading.forEach((item) => {
       test(`Verify loading=${item.loading} without segments with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-lines.tsx', 'en', item);
         await expect(page).toHaveScreenshot();
@@ -171,8 +167,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreLineWithSegments.forEach((item) => {
       test(`Verify with ${item.segments} segments with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-lines.tsx', 'en', item);
 
@@ -190,8 +185,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreLineWithSegmentsLoading.forEach((item) => {
       test(`Verify loading=${item.loading} Score Lines with ${item.segments} segments with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-lines.tsx', 'en', item);
 
@@ -214,8 +208,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ScoreLineNoSegments.forEach((item) => {
       test(`Verify with value1=${item.value1} value2=${item.value2} color1=${item.color1} color2=${item.color2} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/score-line-segments.tsx', 'en', item);
         await expect(page).toHaveScreenshot();
@@ -224,8 +217,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     test('Verify Loading state', {
       tag: [TAG.PRIORITY_HIGH,
-        '@mini-chart',
-        '@base-components'],
+        '@mini-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/mini-chart/tests/examples/score-line-segments.tsx', 'en', { loading: true, animate: false });
       await expect(page).toHaveScreenshot();
@@ -241,8 +233,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     TrendBars.forEach((item) => {
       test(`Verify loading=${item.loading} `, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/trend-bars.tsx', 'en', item);
 
@@ -263,8 +254,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     TrendBars.forEach((item) => {
       test(`VerifylastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color} `, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/trend-lines.tsx', 'en', item);
         await expect(page).toHaveScreenshot();
@@ -279,8 +269,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     TrendBarsLoading.forEach((item) => {
       test(`Verify loading with lastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color} `, {
         tag: [TAG.PRIORITY_HIGH,
-          '@mini-chart',
-          '@base-components'],
+          '@mini-chart'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/mini-chart/tests/examples/trend-lines.tsx', 'en', item);
 

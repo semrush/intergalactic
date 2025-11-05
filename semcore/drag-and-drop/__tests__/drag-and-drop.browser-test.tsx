@@ -34,11 +34,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@drag-and-drop',
-        '@card',
-        '@icon',
-        '@base-components',
-        '@d3-chart',
-        '@typography'],
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
@@ -60,11 +56,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.MOUSE,
       '@drag-and-drop',
       '@button',
-      '@icon',
-      '@base-components',
       '@dropdown-menu',
-      '@counter',
-      '@typography'],
+      '@counter'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -84,11 +77,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.KEYBOARD,
       '@drag-and-drop',
       '@button',
-      '@icon',
-      '@base-components',
       '@dropdown-menu',
-      '@counter',
-      '@typography'],
+      '@counter'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -139,11 +129,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@drag-and-drop',
-        '@card',
-        '@icon',
-        '@base-components',
-        '@d3-chart',
-        '@typography'],
+        '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
@@ -177,15 +163,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@drag-and-drop',
-        '@card',
-        '@icon',
-        '@base-components',
-        '@d3-chart',
-        '@typography'],
+        '@card'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
-      if (browserName === 'webkit') return;
+      if (browserName === 'webkit') test.skip();
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
       await page.keyboard.press('Tab');
@@ -194,13 +176,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.draggable(page).first()).toBeFocused();
       await test.step('Verify graggable items can be moved to the drop zone', async () => {
         await page.keyboard.press('Space');
-        await page.waitForTimeout(100);
+        await expect.poll(async () => {
+          return await locators.draggable(page).first().getAttribute('class');
+        }).toMatch(/keyboardDragging/); // wait for class
         await expect(page.getByRole('alert')).toHaveCount(1);
         await page.keyboard.press('ArrowLeft');
-        await page.waitForTimeout(100);
         await page.keyboard.press('Space');
         await expect(locators.draggable(page).first()).toBeFocused();
-
+        await expect.poll(async () => {
+          return await locators.draggable(page).first().getAttribute('class');
+        }).not.toMatch(/keyboardDragging/);
         const firstItem = allItems.first();
         await expect(firstItem).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
       });
@@ -224,11 +209,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         TAG.MOUSE,
         '@drag-and-drop',
         '@button',
-        '@icon',
-        '@base-components',
         '@dropdown-menu',
-        '@counter',
-        '@typography'],
+        '@counter'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -278,11 +260,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         TAG.KEYBOARD,
         '@drag-and-drop',
         '@button',
-        '@icon',
-        '@base-components',
         '@dropdown-menu',
-        '@counter',
-        '@typography'],
+        '@counter'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -293,11 +272,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await test.step('Verify items can be moved by keyboard', async () => {
         await page.keyboard.press('Space');
-        await page.waitForTimeout(100);
+
+        await expect.poll(async () => {
+          return await locators.menuItems(page, 0).first().getAttribute('class');
+        }).toMatch(/keyboardDragging/);
 
         for (let i = 0; i < 4; i++) {
           await page.keyboard.press('ArrowDown');
-          await page.waitForTimeout(100);
+          await page.waitForTimeout(50);
         }
         await page.keyboard.press('Space');
 

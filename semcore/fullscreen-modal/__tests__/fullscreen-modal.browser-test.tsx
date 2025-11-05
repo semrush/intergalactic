@@ -24,8 +24,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
       '@button',
-      '@icon',
-      '@typography',
       '@divider'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
@@ -95,8 +93,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.MOUSE,
       '@fullscreen-modal',
       '@button',
-      '@icon',
-      '@typography',
       '@divider'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
@@ -120,8 +116,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
       '@button',
-      '@icon',
-      '@typography',
       '@divider'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
@@ -145,9 +139,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
       '@button',
-      '@icon',
       '@toooltip',
-      '@typography',
       '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx', 'en');
@@ -296,8 +288,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@fullscreen-modal',
       '@button',
-      '@icon',
-      '@typography',
       '@divider'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
@@ -350,9 +340,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@fullscreen-modal',
       '@button',
-      '@icon',
       '@toooltip',
-      '@typography',
       '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx', 'en');

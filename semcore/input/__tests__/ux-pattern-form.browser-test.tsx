@@ -25,11 +25,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
       '@tooltip',
-      '@button',
-      '@typography',
-      '@base-components'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx', 'en');
 
@@ -59,11 +56,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',
-      '@icon',
       '@tooltip',
-      '@button',
-      '@typography',
-      '@base-components'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx', 'en');
 

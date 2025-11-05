@@ -19,11 +19,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@time-picker',
-      '@base-components',
+
       '@checkbox',
       '@date-picker',
-      '@button',
-      '@typography'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 
@@ -54,11 +53,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@time-picker',
-      '@base-components',
+
       '@checkbox',
       '@date-picker',
-      '@button',
-      '@typography'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 

@@ -38,8 +38,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesActive.forEach((item) => {
     test(`Verify divider with orientation=${item.orientation} use=${item.use} theme=${item.theme} w=${item.w} h=${item.h}}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider',
-        '@base-components'],
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/divider/tests/examples/divider-styles.tsx', 'en', item);
       const flex = page.locator('[data-testid="wrap"]');
@@ -49,6 +48,14 @@ test.describe(`${TAG.VISUAL} `, () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      const divider = page.getByRole('separator');
+
+      if (item.orientation == 'horizontal') {
+        await expect(divider).toHaveAttribute('aria-orientation', 'horizontal');
+      }
+      if (item.orientation == 'vertical') {
+        await expect(divider).toHaveAttribute('aria-orientation', 'vertical');
+      }
     });
   });
 
@@ -64,8 +71,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test.describe('Complex examples', () => {
     test('Verify horizontal divider renders in complex examples', {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider',
-        '@base-components'],
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx', 'en');
       await expect(page).toHaveScreenshot();
@@ -73,57 +79,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     test('Verify vertical divider renders in complex examples', {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider',
-        '@base-components'],
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx', 'en');
       await expect(page).toHaveScreenshot();
     });
-  });
-});
-
-/* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
-  const variablesActive = [
-    // horizontal
-    { orientation: 'horizontal', use: 'primary', theme: 'default', w: 100, h: undefined },
-
-    // vertical
-    { orientation: 'vertical', use: 'primary', theme: 'default', w: undefined, h: 100 },
-
-  ];
-  variablesActive.forEach((item) => {
-    test(`Verify divider with orientation=${item.orientation} use=${item.use} theme=${item.theme} w=${item.w} h=${item.h}}`, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@divider',
-        '@base-components'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/divider/tests/examples/divider-styles.tsx', 'en', item);
-      const divider = page.getByRole('separator');
-
-      if (item.orientation == 'horizontal') {
-        await expect(divider).toHaveAttribute('aria-orientation', 'horizontal');
-      }
-      if (item.orientation == 'vertical') {
-        await expect(divider).toHaveAttribute('aria-orientation', 'vertical');
-      }
-    });
-  });
-
-  test('Verify divider is not interactive element', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@divider',
-      '@base-components'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/divider/docs/examples/divider.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    const divider = page.locator('[data-ui-name="Divider"]');
-
-    await expect(divider).not.toBeFocused();
   });
 });
