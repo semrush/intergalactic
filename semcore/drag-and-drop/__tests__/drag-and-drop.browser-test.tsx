@@ -176,18 +176,28 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.draggable(page).first()).toBeFocused();
       await test.step('Verify graggable items can be moved to the drop zone', async () => {
         await page.keyboard.press('Space');
-        await expect.poll(async () => {
-          return await locators.draggable(page).first().getAttribute('class');
-        }).toMatch(/keyboardDragging/); // wait for class
+        await expect.poll(
+          async () => {
+            return await locators.draggable(page).first().getAttribute('class');
+          },
+          {
+            timeout: 200,
+          },
+        ).toMatch(/keyboardDragging/);
         await expect(page.getByRole('alert')).toHaveCount(1);
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Space');
         await expect(locators.draggable(page).first()).toBeFocused();
-        await expect.poll(async () => {
-          return await locators.draggable(page).first().getAttribute('class');
-        }).not.toMatch(/keyboardDragging/);
-        const firstItem = allItems.first();
-        await expect(firstItem).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
+
+        await expect.poll(
+          async () => {
+            return await locators.draggable(page).first().getAttribute('class');
+          },
+          {
+            timeout: 200,
+          },
+        ).not.toMatch(/keyboardDragging/);
+        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
       });
 
       await test.step('Verify Escape cancels moving', async () => {
@@ -197,8 +207,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         await expect(page.getByRole('alert')).toHaveCount(0);
         await expect(locators.draggable(page).first()).toBeFocused();
         await page.keyboard.press('ArrowRight');
-        const firstItem = allItems.first();
-        await expect(firstItem).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
+        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
       });
     });
   });
@@ -273,9 +282,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await test.step('Verify items can be moved by keyboard', async () => {
         await page.keyboard.press('Space');
 
-        await expect.poll(async () => {
-          return await locators.menuItems(page, 0).first().getAttribute('class');
-        }).toMatch(/keyboardDragging/);
+        await expect.poll(
+          async () => {
+            return await locators.menuItems(page, 0).getAttribute('class');
+          },
+          {
+            timeout: 200,
+          },
+        ).toMatch(/keyboardDragging/);
 
         for (let i = 0; i < 4; i++) {
           await page.keyboard.press('ArrowDown');

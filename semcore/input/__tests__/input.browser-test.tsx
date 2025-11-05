@@ -94,10 +94,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify input with neighbot-location state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
+    test(`Verify input with neighbor-location state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@input',
-        '@badge'],
+        '@badge',
+        '@base-components',
+        '@neighbor-locatioon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation.tsx', 'en', item);
 
@@ -107,7 +109,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       screenshotsClip.y -= 4;
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
-      const count = await locators.input(page).count();
 
       await test.step('Verify Default ', async () => {
         await expect(page).toHaveScreenshot({ clip: screenshotsClip });

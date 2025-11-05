@@ -32,16 +32,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     await locators.modal(page).waitFor({ state: 'visible' });
 
     await test.step('Verify paddings for first section', async () => {
-      const paddingTop = await locators.sections(page).first().evaluate((el) => getComputedStyle(el).paddingTop);
-      const paddingRight = await locators.sections(page)
+      const {
+        paddingTop,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+      } = await locators.sections(page)
         .first()
-        .evaluate((el) => getComputedStyle(el).paddingRight);
-      const paddingBottom = await locators.sections(page)
-        .first()
-        .evaluate((el) => getComputedStyle(el).paddingBottom);
-      const paddingLeft = await locators.sections(page)
-        .first()
-        .evaluate((el) => getComputedStyle(el).paddingLeft);
+        .evaluate((el) => getComputedStyle(el));
 
       expect(paddingTop).toBe('24px');
       expect(paddingRight).toBe('32px');
@@ -50,16 +48,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify paddings for second section', async () => {
-      const paddingTop = await locators.sections(page).nth(1).evaluate((el) => getComputedStyle(el).paddingTop);
-      const paddingRight = await locators.sections(page)
-        .nth(1)
-        .evaluate((el) => getComputedStyle(el).paddingRight);
-      const paddingBottom = await locators.sections(page)
-        .nth(1)
-        .evaluate((el) => getComputedStyle(el).paddingBottom);
-      const paddingLeft = await locators.sections(page)
-        .nth(1)
-        .evaluate((el) => getComputedStyle(el).paddingLeft);
+      const {
+        paddingTop,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+      } = await locators.sections(page)
+        .first()
+        .evaluate((el) => getComputedStyle(el));
 
       expect(paddingTop).toBe('24px');
       expect(paddingRight).toBe('32px');
