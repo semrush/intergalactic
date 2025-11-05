@@ -1,8 +1,8 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Root, sstyled, createComponent, Component } from '@semcore/core';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
-import { getFocusableIn } from '@semcore/ui/core/lib/utils/focus-lock/getFocusableIn';
-import { isInteractiveElement } from '@semcore/ui/core/lib/utils/isInteractiveElement';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import * as React from 'react';
 
 import type { DataTableCellProps } from './Cell.types';
