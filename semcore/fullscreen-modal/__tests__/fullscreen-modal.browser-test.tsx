@@ -39,7 +39,15 @@ test.describe(`${TAG.VISUAL} `, () => {
         paddingRight,
       } = await locators.sections(page)
         .first()
-        .evaluate((el) => getComputedStyle(el));
+        .evaluate((el) => {
+          const styles = getComputedStyle(el);
+          return {
+            paddingTop: styles.paddingTop,
+            paddingBottom: styles.paddingBottom,
+            paddingLeft: styles.paddingLeft,
+            paddingRight: styles.paddingRight,
+          };
+        });
 
       expect(paddingTop).toBe('24px');
       expect(paddingRight).toBe('32px');
@@ -54,8 +62,16 @@ test.describe(`${TAG.VISUAL} `, () => {
         paddingLeft,
         paddingRight,
       } = await locators.sections(page)
-        .first()
-        .evaluate((el) => getComputedStyle(el));
+        .nth(1)
+        .evaluate((el) => {
+          const styles = getComputedStyle(el);
+          return {
+            paddingTop: styles.paddingTop,
+            paddingBottom: styles.paddingBottom,
+            paddingLeft: styles.paddingLeft,
+            paddingRight: styles.paddingRight,
+          };
+        });
 
       expect(paddingTop).toBe('24px');
       expect(paddingRight).toBe('32px');
