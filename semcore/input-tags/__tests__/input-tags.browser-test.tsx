@@ -6,20 +6,28 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 test.describe('Visual tests', () => {
   test.describe('Base states and styles', () => {
     const variables = [
-      { state: 'normal', size: 'm' },
-      { state: 'valid', size: 'm' },
-      { state: 'invalid', size: 'm' },
-      { state: 'normal', size: 'l' },
-      { state: 'valid', size: 'l' },
-      { state: 'invalid', size: 'l' },
+      { state: 'normal', size: 'm', disabled: false },
+      { state: 'valid', size: 'm', disabled: false },
+      { state: 'invalid', size: 'm', disabled: false },
+      { state: 'normal', size: 'm', disabled: true },
+      { state: 'valid', size: 'm', disabled: true },
+      { state: 'invalid', size: 'm', disabled: true },
+      { state: 'normal', size: 'l', disabled: true },
+      { state: 'valid', size: 'l', disabled: true },
+      { state: 'invalid', size: 'l', disabled: true },
+      { state: 'normal', size: 'l', disabled: false },
+      { state: 'valid', size: 'l', disabled: false },
+      { state: 'invalid', size: 'l', disabled: false },
     ];
     variables.forEach((item) => {
-      test(`Verify InputTags normal ${item.state} and ${item.size} size unfocused and focused`, async ({ page }) => {
-        const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+      test(`Verify InputTags state ${item.state}, size ${item.size}, disabled ${item.disabled}, unfocused and focused`, async ({ page }) => {
+        const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
         const htmlContent = await e2eStandToHtml(standPath, 'en', item);
 
         await page.setContent(htmlContent);
 
+        const inputTags = page.locator('[data-ui-name="InputTags"]');
+        const tags = page.locator('[data-ui-name="InputTags.Tag"]');
         const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
         await expect(page).toHaveScreenshot();
         await inputValue.click();
@@ -79,6 +87,15 @@ test.describe('Visual tests', () => {
           for (let i = 0; i < count; i++) {
             await expect(tagValue.nth(i)).toHaveCSS('margin-left', '2px');
             await expect(tagValue.nth(i)).toHaveCSS('margin-right', '2px');
+          }
+        });
+
+        await test.step('Verify InputTags and InputTags.Tag disabled state', async () => {
+          const isDisabled = item.disabled.toString();
+          await expect(inputTags).toHaveAttribute('disabled', isDisabled);
+
+          for await (const tag of await tags.all()) {
+            await expect(tag).toHaveAttribute('disabled', isDisabled);
           }
         });
       });
@@ -155,7 +172,7 @@ test.describe('Visual tests', () => {
 
   test.describe('Input-tags visual states after mouse and keyboard interactions in examples', () => {
     test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+      const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -282,7 +299,7 @@ test.describe('Visual tests', () => {
     });
 
     test('Verify input tag with default value', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+      const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultValue: 'default value add something', value: undefined });
 
       await page.setContent(htmlContent);
@@ -302,7 +319,7 @@ test.describe('Visual tests', () => {
 
 test.describe('Functional tests', () => {
   test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -397,7 +414,7 @@ test.describe('Functional tests', () => {
   });
 
   test('Verify tags can be added removed and edited by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -876,7 +893,7 @@ test.describe('Functional tests', () => {
   });
 
   test('Verify adding tags with custom delimiters', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
+    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', { delimiters: [']', '/', '['] });
 
     await page.setContent(htmlContent);

@@ -1,7 +1,7 @@
 import InputTags from '@semcore/ui/input-tags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import EnteringAndEditingTagsDefaultValueExample from './examples/entering_and_editing_tags-default-value';
+import EnteringAndEditingTagsExample, { defaultProps as enteringAndEditingTagsProps } from './examples/entering_and_editing_tags';
 import TagsWithAddonsExample, { defaultPropsEmail } from './examples/tags-with-addons';
 
 const meta: Meta<typeof InputTags> = {
@@ -11,8 +11,31 @@ const meta: Meta<typeof InputTags> = {
 
 export default meta;
 
-export const EnteringAndEditingTagsDefaultValue: StoryObj<typeof InputTags> = {
-  render: EnteringAndEditingTagsDefaultValueExample,
+export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps> = {
+  render: EnteringAndEditingTagsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    placeholder: {
+      control: { type: 'text' },
+    },
+    defaultValue: {
+      control: { type: 'text' },
+    },
+    delimiters: {
+      control: { type: 'text' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['normal', 'invalid', 'valid'],
+    },
+  },
+  args: enteringAndEditingTagsProps,
 };
 
 export const TagsWithAddons: StoryObj<typeof defaultPropsEmail> = {
