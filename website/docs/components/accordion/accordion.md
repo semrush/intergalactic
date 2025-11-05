@@ -45,10 +45,6 @@ Table: Accordion types
 | `primary`   | ![](static/default-bg.png) | Main accent accordion.        |
 | `secondary` | ![](static/default.png)    | Default non-accent accordion. |
 
-The `ChevronRight` icon always has `margin-right: 8px` with all font sizes.
-
-![](static/margins.png)
-
 You can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
@@ -61,22 +57,14 @@ Table: Accordion trigger styles
 
 | Type        | Appearance example         | Default styles                                                                                          |
 | ----------- | -------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `secondary` | ![](static/default.png)    | Icon uses the `--icon-primary-neutral` token for color; text uses the `--text-primary` token for color. |
 | `primary`   | ![](static/default-bg.png) | The default background color uses `--bg-secondary-neutral` token.                                       |
+| `secondary` | ![](static/default.png)    | Icon uses the `--icon-primary-neutral` token for color; text uses the `--text-primary` token for color. |
 
 ### Collapsed content styles
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
 **Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
-
-#### Margins and paddings
-
-![](static/item-margins1.png)
-
-![](static/item-margins2.png)
-
-![](static/item-paddings.png)
 
 ## Interaction
 
@@ -100,7 +88,7 @@ Table: Accordion states
 | Hover    | ![](static/hover-state.png) ![](static/hover-state-2.png)       | Cursor changes to `pointer`. If the accordion trigger has a background, it should change color to the next one in the palette.                                            |
 | Active   | ![](static/active-state.png) ![](static/active-state-2.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg)`. All other trigger styles remain the same as in the `hover` state.                              |
 | Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token.                                                                                                     |
-| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS. |
+<!-- | Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS. | -->
 
 ## Animation
 
