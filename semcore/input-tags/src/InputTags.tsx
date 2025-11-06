@@ -195,7 +195,7 @@ class InputTags extends Component<IInputTagsProps> {
     index: number,
   ) {
     const isDisabled = this.asProps.disabled || (disabled ?? false);
-    const isEditable = isDisabled && editable;
+    const isEditable = isDisabled ? false : editable;
 
     return {
       'size': this.asProps.size,

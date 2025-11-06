@@ -30,8 +30,11 @@ test.describe('Visual tests', () => {
         const tags = page.locator('[data-ui-name="InputTags.Tag"]');
         const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
         await expect(page).toHaveScreenshot();
-        await inputValue.click();
-        await expect(page).toHaveScreenshot();
+
+        if (!item.disabled) {
+          await inputValue.click();
+          await expect(page).toHaveScreenshot();
+        }
 
         const input_tags_m = page.locator('div[data-ui-name="InputTags"][class*="size_m"]');
         const input_tags_l = page.locator('div[data-ui-name="InputTags"][class*="size_l"]');
@@ -91,11 +94,24 @@ test.describe('Visual tests', () => {
         });
 
         await test.step('Verify InputTags and InputTags.Tag disabled state', async () => {
-          const isDisabled = item.disabled.toString();
-          await expect(inputTags).toHaveAttribute('disabled', isDisabled);
+          const inputTagsClasses = await inputTags.getAttribute('class');
+
+          if (item.disabled) {
+            expect(inputTagsClasses).toContain('disabled');
+            await expect(inputValue).toBeDisabled();
+          } else {
+            expect(inputTagsClasses).not.toContain('disabled');
+            await expect(inputValue).not.toBeDisabled();
+          }
 
           for await (const tag of await tags.all()) {
-            await expect(tag).toHaveAttribute('disabled', isDisabled);
+            const tagClasses = await tag.getAttribute('class');
+
+            if (item.disabled) {
+              expect(tagClasses).toContain('disabled');
+            } else {
+              expect(tagClasses).not.toContain('disabled');
+            }
           }
         });
       });
