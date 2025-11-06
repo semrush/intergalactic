@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.12] - 2025-11-17
+
+### Changed
+
+- `innerHTML` to `textContent` in the calculation of ellipsis size.
+
 ## [16.0.11] - 2025-10-29
 
 ### Changed
