@@ -5,6 +5,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
@@ -255,6 +256,15 @@ export class Column<
     const { sortable, onClick, columnIndex } = this.asProps;
     if (sortable) {
       this.handleSortClick(e);
+    }
+
+    const focusableChildren = Array.from(this.columnRef.current?.children ?? []).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
+
+    if (isInteractiveElement(e.target) && this.columnRef.current && focusableChildren.length > 1) {
+      this.lockedCell[0] = this.columnRef.current;
+      this.lockedCell[1] = true;
     }
 
     onClick?.(e, { rowIndex: -1, colIndex: columnIndex });
