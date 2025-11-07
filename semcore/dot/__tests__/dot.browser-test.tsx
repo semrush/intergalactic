@@ -21,9 +21,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@dot',
         '@button',
-        '@icon',
-        '@base-trigger',
-        '@link-trigger',
         '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/sizes-and-positions.tsx', 'en', item);
@@ -54,9 +51,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@dot',
         '@button',
-        '@icon',
-        '@base-trigger',
-        '@link-trigger',
         '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/with-counter-sizes-and-positions.tsx', 'en', item);
@@ -90,8 +84,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@dot',
-      '@button',
-      '@icon'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dot/docs/examples/example_of_dot_animation.tsx', 'en');
 
@@ -108,8 +101,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dot',
-      '@button',
-      '@icon'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dot/docs/examples/example_of_dot_animation.tsx', 'en');
 

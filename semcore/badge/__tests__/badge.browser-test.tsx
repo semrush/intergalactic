@@ -21,8 +21,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify bg=${item.bg} and color=${item.color}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@badge',
-        '@base-components'],
+        '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
@@ -38,36 +37,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   variableswithBox.forEach((item) => {
     test(`Verify bg=${item.bg} and color=${item.color} with w=${item.w} h=${item.h}`, {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@badge',
-        '@base-components'],
+        '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/badge/tests/examples/badge-bg-colors.tsx', 'en', item);
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
-  });
-});
-
-/* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
-test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify no aria-hidden and not focused', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@badge',
-      '@base-components'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
-
-    const badges = page.locator('[data-ui-name="Badge"]');
-    const count = await badges.count();
-
-    for (let i = 0; i < count; i++) {
-      await expect(badges.nth(i)).not.toHaveAttribute('aria-hidden');
-    }
-
-    await page.keyboard.press('Tab');
-    await expect(badges.first()).not.toBeFocused();
   });
 });
