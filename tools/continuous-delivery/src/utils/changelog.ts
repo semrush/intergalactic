@@ -78,7 +78,7 @@ export class Changelog {
       if (!log.body) return;
 
       const body = parseMarkdown(log.body);
-      const changelogIndex = body.findIndex((item) => item.type === 'heading' && item.level === 2 && item.raw === 'Changelog');
+      const changelogIndex = body.findIndex((item) => item.type === 'heading' && item.level === 2 && item.raw?.toLowerCase() === 'changelog');
 
       if (changelogIndex === -1) {
         logger(`No changelogs for ${log.message}`);
@@ -86,9 +86,9 @@ export class Changelog {
       }
 
       body.forEach((token: Token) => {
-        if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9))) {
-          traversingComponent = token.raw;
-          this.changelogs.components[token.raw] = { incrementType: 'patch', changelog: [] };
+        if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) {
+          traversingComponent = token.raw.toLowerCase();
+          this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
           traversingType = token.raw;
