@@ -1,13 +1,15 @@
 import type { BaseChartProps, BaseLegendProps } from '@semcore/ui/d3-chart';
 
-export const baseLegendProps: Partial<BaseLegendProps> = {
+export const baseLegendProps: BaseLegendProps = {
   size: 'm',
   shape: 'Checkbox',
   disableHoverItems: true,
   disableSelectItems: false,
   legendType: 'Flex',
-  // withTrend: true,
-  // trendIsVisible: false,
+  title: 'Legend',
+  withTrend: true,
+  trendIsVisible: false,
+  onTrendIsVisibleChange: () => {},
 };
 
 export const baseChartProps: BaseChartProps<any> = {
