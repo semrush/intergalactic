@@ -4,22 +4,26 @@ import { Flex } from '@semcore/ui/flex-box';
 
 figma.connect(
   Carousel,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55871-167&t=VrapxrPvWsgsOFY2-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10259-107911&t=onQIkzskH4lPCKHQ-11',
   {
     variant: { 'screen width': '>480px' },
     props: {
       zoom: figma.boolean('zoom'),
-      preview: figma.boolean('preview indicators'),
+      indicators: figma.enum('indicators', {
+        'default': 'default',
+        'hide': 'hide',
+        'preview': 'preview',
+      }),
     },
 
-    example: ( { zoom, preview } ) => (
+    example: ( { zoom, indicators } ) => (
         <Carousel
         w={/* Set width */}
         aria-roledescription='carousel'
         aria-label={/* Set aria-label for the Carousel */}
         zoom={zoom}
         zoomWidth={/* Set zoom width */}
-        indicators={preview}
+        indicators={indicators}
       >
           {/* Add items here */}
       </Carousel>
@@ -29,7 +33,7 @@ figma.connect(
 
 figma.connect(
     Carousel,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55871-167&t=VrapxrPvWsgsOFY2-11',
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10259-107911&t=onQIkzskH4lPCKHQ-11',
     {
       variant: { 'screen width': '≤480px' },
       props: {
