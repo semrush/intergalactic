@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-10-17
+## [16.2.1] - 2025-11-10
+
+### Fixed
+
+- Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
+## [16.2.0] - 2025-10-29
 
 ### Changed
 

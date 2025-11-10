@@ -178,7 +178,6 @@
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "accordion",
-      "color-picker",
       "time-picker"
     ]
   },
@@ -1200,7 +1199,8 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "color-picker"
     ]
   },
   {
@@ -1210,7 +1210,8 @@
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "color-picker"
     ]
   },
   {
@@ -2746,7 +2747,6 @@
       "counter",
       "data-table",
       "dropdown",
-      "feedback-form",
       "format-text",
       "input-tags",
       "link",
