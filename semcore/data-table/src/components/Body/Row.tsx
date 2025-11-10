@@ -375,8 +375,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       const rowIndex = props.rowIndex;
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        onCellClick(e, { colIndex: props.columnIndex, rowIndex, row });
         this.handleExpandRow(row, rowIndex);
       };
 

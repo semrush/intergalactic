@@ -249,6 +249,15 @@ export class Column<
       this.setState({ sortVisible: true }, () => {
         handleFocusCell(this.lockedCell, target, cellElement);
       });
+    } else {
+      const focusableChildren = Array.from(this.columnRef.current?.children ?? []).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (isInteractiveElement(e.target) && this.columnRef.current && focusableChildren.length > 1) {
+        this.lockedCell[0] = this.columnRef.current;
+        this.lockedCell[1] = true;
+      }
     }
   };
 
