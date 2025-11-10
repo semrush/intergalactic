@@ -1,5 +1,5 @@
 ---
-title: Feedback
+title: FeedbackForm
 fileSource: feedback-form
 tabs: Design('feedback-form'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
@@ -31,14 +31,6 @@ When the link that triggers the feedback form is placed in the [ProductHead](/co
 - Message about the alternative way to send feedback with the `mailto` link: "You can also send us an email at comand_name@semrush.com".
 
 ![](static/options.png)
-
-## Appearance
-
-- Dropdown has `padding: var(--spacing-4x)`.
-- All inputs in this form has one size – M.
-- For bottom message use secondary colored text (`--text-secondary`) with 14px font size (`--fs-200`, `--lh-200` tokens).
-
-![](static/send-feedback-sizes.png)
 
 ## Placement
 
