@@ -1,4 +1,5 @@
 export const RealDate = global.Date;
+import { expect, test } from '@semcore/testing-utils/playwright';
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 export function mockDate(isoDate: any) {
@@ -16,3 +17,37 @@ export function mockDate(isoDate: any) {
     }
   };
 }
+
+export function formatAriaLabelToInputValue(ariaLabel: string | null): string {
+  if (!ariaLabel) {
+    throw new Error('aria-label is null');
+  }
+
+  let parsedDate = new Date(ariaLabel);
+  let hasDay = true;
+
+  if (isNaN(parsedDate.getTime())) {
+    parsedDate = new Date(`${ariaLabel} 1`);
+    hasDay = false;
+  }
+
+  if (isNaN(parsedDate.getTime())) {
+    throw new Error(`Invalid aria-label date: ${ariaLabel}`);
+  }
+
+  const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = parsedDate.getDate().toString().padStart(2, '0');
+  const year = parsedDate.getFullYear().toString();
+
+  return hasDay ? `${month}/${day}/${year}` : `${month}/${year}`;
+}
+
+export const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
+  for (const [property, expectedValue] of Object.entries(expectedStyles)) {
+    const actualValue = await element.evaluate(
+      (el: any, property: any) => getComputedStyle(el)[property],
+      property,
+    );
+    expect(actualValue).toBe(expectedValue);
+  }
+};

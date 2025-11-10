@@ -1,11 +1,11 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Textarea', () => {
+test.describe(`${TAG.ACCESSIBILITY} @textarea`, () => {
   test('Textarea with auto height', async ({ page }) => {
-    const standPath = 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
+
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);

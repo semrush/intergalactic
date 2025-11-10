@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Feature popover', () => {
+test.describe(`${TAG.FUNCTIONAL} @feature-popover`, () => {
   test('Addons', async ({ page }) => {
-    const standPath = 'stories/components/feature-popover/docs/examples/Basic.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
