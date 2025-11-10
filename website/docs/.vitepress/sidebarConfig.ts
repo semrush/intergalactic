@@ -273,7 +273,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/feedback-form/feedback-form',
             activeMatch: '/components/feedback-form/',
-            text: 'Feedback',
+            text: 'FeedbackForm',
           },
           {
             link: '/components/filter-trigger/filter-trigger',

@@ -66,9 +66,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesPrimary.forEach((item) => {
     test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@button',
-        '@base-components',
-        '@icon'],
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
 
@@ -133,7 +131,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
-        '@icon'],
+        '@neighbor-location'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
 
@@ -197,8 +195,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@base-components',
-        '@icon',
         '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
@@ -258,9 +254,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesSeconsary.forEach((item) => {
     test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@button',
-        '@base-components',
-        '@icon'],
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
 
@@ -325,7 +319,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
-        '@icon'],
+        '@neighbor-location'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
 
@@ -389,8 +383,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@base-components',
-        '@icon',
         '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
@@ -450,9 +442,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesTertiary.forEach((item) => {
     test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@button',
-        '@base-components',
-        '@icon'],
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
 
@@ -517,7 +507,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
-        '@icon'],
+        '@neighbor-location'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
 
@@ -581,8 +571,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@base-components',
-        '@icon',
         '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
@@ -628,8 +616,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@button',
-      '@base-components',
-      '@icon',
       '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');
@@ -654,8 +640,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@button',
-      '@base-components',
-      '@icon',
       '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');

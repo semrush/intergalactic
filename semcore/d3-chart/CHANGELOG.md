@@ -8,7 +8,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - The ability to use multiple synchronized tooltips on multiple charts.
 
-## [16.3.0] - 2025-10-17
+### Fixed
+
+- `onClick` handler in child components overrides root `onClick` and called on mount.
+
+## [16.3.0] - 2025-10-31
 
 ### Added
 
