@@ -34,9 +34,17 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
-    const { rowIndex, columnIndex, onClick, row } = this.asProps;
+    const { rowIndex, columnIndex, onClick, row, accordionRowIndex } = this.asProps;
 
-    onClick?.(e, { rowIndex, colIndex: columnIndex, row });
+    const rowElement = e.currentTarget.parentElement?.parentElement;
+    const ariaRowindex = Number(rowElement?.getAttribute('aria-rowindex'));
+    let rowIndexValue = accordionRowIndex === undefined ? rowIndex : rowIndex + 1 + accordionRowIndex;
+
+    if (!isNaN(ariaRowindex)) {
+      rowIndexValue = ariaRowindex - 2;
+    }
+
+    onClick(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
   };
 
   render() {
