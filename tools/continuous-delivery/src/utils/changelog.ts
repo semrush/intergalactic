@@ -86,7 +86,7 @@ export class Changelog {
       }
 
       body.forEach((token: Token) => {
-        if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) {
+        if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
           this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
         }
@@ -454,7 +454,7 @@ export class Changelog {
     let currentComponent: string | null = null;
 
     changelogs
-      .toSorted((a, b) => a.date.localeCompare(b.date))
+      .toSorted((a, b) => b.date.localeCompare(a.date))
       .forEach((changelog) => {
         if (currentDate === null || currentDate !== changelog.date) {
           const versionHeading: Token = {

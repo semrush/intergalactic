@@ -84,7 +84,7 @@ export class Package {
 
   private async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
     const packageJson = this.packagesMap.get(componentName);
-    if (!packageJson) return;
+    if (!packageJson || changelog.length === 0) return;
 
     const newVersion = semver.inc(packageJson.data.version, incrementType);
 
