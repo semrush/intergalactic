@@ -28,11 +28,11 @@ class BubbleRoot extends Component {
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, uid } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
+    eventEmitter.emit(`setTooltipPosition_${uid}`, clientX, clientY);
+    eventEmitter.emit(`setTooltipRenderingProps_${uid}`, props, tooltipProps);
+    eventEmitter.emit(`setTooltipVisible_${uid}`, visible);
   };
 
   animationCircle() {
@@ -73,6 +73,12 @@ class BubbleRoot extends Component {
       const { onClick } = this.asProps;
 
       onClick?.(index, e);
+    };
+  }
+
+  getTooltipProps() {
+    return {
+      uniqId: this.asProps.uid,
     };
   }
 

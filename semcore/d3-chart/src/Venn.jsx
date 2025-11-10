@@ -32,11 +32,11 @@ class VennRoot extends Component {
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, uid } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
+    eventEmitter.emit(`setTooltipPosition_${uid}`, clientX, clientY);
+    eventEmitter.emit(`setTooltipRenderingProps_${uid}`, props, tooltipProps);
+    eventEmitter.emit(`setTooltipVisible_${uid}`, visible);
   };
 
   getVennData() {
@@ -52,6 +52,12 @@ class VennRoot extends Component {
       height,
       10,
     );
+  }
+
+  getTooltipProps() {
+    return {
+      uniqId: this.asProps.uid,
+    };
   }
 
   getCircleProps(props, index) {

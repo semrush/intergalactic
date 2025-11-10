@@ -11,7 +11,7 @@ import createElement from './createElement';
 import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
 import style from './style/radar.shadow.css';
 import Tooltip from './Tooltip';
-import { eventToPoint, getChartDefaultColorName, measureText } from './utils';
+import { eventToPoint, getChartDefaultColorName, measureText, uniqueId } from './utils';
 
 const clampAngle = (angle) => {
   angle = angle % (2 * Math.PI);
@@ -607,7 +607,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, size, rootRef, patterns, getIndex } = this.asProps;
+    const { eventEmitter, size, rootRef, patterns, getIndex, uniqId } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const diam = Math.min(size[0], size[1]);
     const centerX = point[0] - diam / 2;
@@ -617,15 +617,15 @@ class Hover extends Component {
     const index = getIndex([centerX, centerY]);
 
     this.setState({ index }, () => {
-      eventEmitter.emit('setTooltipPosition', clientX, clientY);
-      eventEmitter.emit('setTooltipRenderingProps', {}, { index, patterns });
-      eventEmitter.emit('setTooltipVisible', index !== null);
+      eventEmitter.emit(`setTooltipPosition_${uniqId}`, clientX, clientY);
+      eventEmitter.emit(`setTooltipRenderingProps_${uniqId}`, {}, { index, patterns });
+      eventEmitter.emit(`setTooltipVisible_${uniqId}`, index !== null);
     });
   });
 
   handlerMouseLeaveRoot = trottle(() => {
     this.setState({ index: null }, () => {
-      this.asProps.eventEmitter.emit('setTooltipVisible', false);
+      this.asProps.eventEmitter.emit(`setTooltipVisible_${this.asProps.uniqId}`, false);
     });
   });
 
@@ -697,8 +697,9 @@ const Polygon = createElement(PolygonRoot, {
 
 const RadarTooltip = (props) => {
   const SRadarTooltip = Root;
+  const [uniqId] = React.useState(uniqueId());
   return sstyled(props.styles)(
-    <SRadarTooltip render={Tooltip} tag={Radar.Hover} excludeAnchorProps />,
+    <SRadarTooltip render={Tooltip} tag={Radar.Hover} uniqId={uniqId} excludeAnchorProps />,
   );
 };
 
