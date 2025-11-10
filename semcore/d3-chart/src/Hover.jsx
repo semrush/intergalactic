@@ -191,14 +191,14 @@ class HoverRectRoot extends Hover {
 
 const HoverLineTooltip = (props) => {
   const SHoverLineTooltip = Root;
-  const uniqId = uniqueId();
+  const [uniqId] = React.useState(uniqueId());
   return sstyled(props.styles)(
     <SHoverLineTooltip render={Tooltip} tag={HoverLine} uniqId={uniqId} excludeAnchorProps />,
   );
 };
 const HoverRectTooltip = (props) => {
   const SHoverRectTooltip = Root;
-  const uniqId = uniqueId();
+  const [uniqId] = React.useState(uniqueId());
   return sstyled(props.styles)(
     <SHoverRectTooltip render={Tooltip} tag={HoverRect} uniqId={uniqId} excludeAnchorProps />,
   );
