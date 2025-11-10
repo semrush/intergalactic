@@ -542,7 +542,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.calendar(page)).toBeFocused();
 
         await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
       });
 
@@ -589,7 +588,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         const newValue2 = await input.inputValue();
-
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
 
