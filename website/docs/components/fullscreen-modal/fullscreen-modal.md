@@ -36,14 +36,6 @@ Table: Content styles for single-zone and dual-zone modal windows
 | ---------------------------------- | ---------------------------------- |
 | ![](static/fullscreen-modal-3.png) | ![](static/fullscreen-modal-2.png) |
 
-### Content paddings
-
-Table: Paddings for single-zone and dual-zone modal windows
-
-| Single-zone modal window | Dual-zone modal window     |
-| ------------------------ | -------------------------- |
-| ![](static/paddings.png) | ![](static/paddings-2.png) |
-
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
