@@ -104,20 +104,20 @@ const Demo = () => {
           {intersectionItems.map(({ id, label }) => (
             <Venn.Intersection key={id} dataKey={id} name={label} />
           ))}
-          <Venn.Tooltip>
-            {({ name, dataKey }) => {
-              return {
-                children: (
-                  <>
-                    <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
-                    {/* @ts-ignore */}
-                    <Text bold>{data[dataKey]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Venn.Tooltip>
         </Venn>
+        <Venn.Tooltip>
+          {({ name, dataKey }) => {
+            return {
+              children: (
+                <>
+                  <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
+                  {/* @ts-ignore */}
+                  <Text bold>{data[dataKey]}</Text>
+                </>
+              ),
+            };
+          }}
+        </Venn.Tooltip>
       </Plot>
     </>
   );

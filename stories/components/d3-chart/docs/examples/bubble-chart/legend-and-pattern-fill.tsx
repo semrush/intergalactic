@@ -72,33 +72,33 @@ const Demo = () => {
           {legendItems.map(({ checked, id }, index) => (
             <Bubble.Circle visible={checked} key={id} index={index} />
           ))}
-          <Bubble.Tooltip>
-            {({ index }) => {
-              return {
-                children: (
-                  <>
-                    <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                    <Text tag='div'>
-                      X axis
-                      {' '}
-                      {data[index].x}
-                    </Text>
-                    <Text tag='div'>
-                      Y axis
-                      {' '}
-                      {data[index].y}
-                    </Text>
-                    <Text tag='div'>
-                      Value
-                      {' '}
-                      {data[index].value}
-                    </Text>
-                  </>
-                ),
-              };
-            }}
-          </Bubble.Tooltip>
         </Bubble>
+        <Bubble.Tooltip>
+          {({ index }) => {
+            return {
+              children: (
+                <>
+                  <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
+                  <Text tag='div'>
+                    X axis
+                    {' '}
+                    {data[index].x}
+                  </Text>
+                  <Text tag='div'>
+                    Y axis
+                    {' '}
+                    {data[index].y}
+                  </Text>
+                  <Text tag='div'>
+                    Value
+                    {' '}
+                    {data[index].value}
+                  </Text>
+                </>
+              ),
+            };
+          }}
+        </Bubble.Tooltip>
       </Plot>
     </Flex>
   );

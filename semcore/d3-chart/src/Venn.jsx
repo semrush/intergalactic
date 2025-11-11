@@ -32,11 +32,11 @@ class VennRoot extends Component {
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter, uid } = this.asProps;
+    const { eventEmitter, plotId } = this.asProps;
 
-    eventEmitter.emit(`setTooltipPosition_${uid}`, clientX, clientY);
-    eventEmitter.emit(`setTooltipRenderingProps_${uid}`, props, tooltipProps);
-    eventEmitter.emit(`setTooltipVisible_${uid}`, visible);
+    eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+    eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
+    eventEmitter.emit(`setTooltipVisible_${plotId}`, visible);
   };
 
   getVennData() {

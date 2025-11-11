@@ -7,7 +7,7 @@ import React from 'react';
 import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand, uniqueId } from './utils';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 
 class Hover extends Component {
   static style = style;
@@ -20,7 +20,7 @@ class Hover extends Component {
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   handlerMouseMoveRoot = trottle((e, currentTarget) => {
-    const { eventEmitter, data, scale, x, y, rootRef, patterns, uniqId } = this.asProps;
+    const { eventEmitter, data, scale, x, y, rootRef, patterns, plotId } = this.asProps;
     const { clientX, clientY } = e;
     const [xScale, yScale] = scale;
     const [pX, pY] = eventToPoint(e, rootRef.current);
@@ -38,16 +38,16 @@ class Hover extends Component {
 
     this.setState(state, () => {
       if (isRootTooltip) {
-        eventEmitter.emit(`setTooltipPosition_${uniqId}`, clientX, clientY);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
       } else {
         const diff = clientY - yOriginal;
         const dimension = (diff / heightOriginal) * 100;
         const heightValue = height / 100 * dimension;
 
-        eventEmitter.emit(`setTooltipPosition_${uniqId}`, pX + xRect, yRect + heightValue);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, pX + xRect, yRect + heightValue);
       }
-      eventEmitter.emit(`setTooltipRenderingProps_${uniqId}`, {}, state);
-      eventEmitter.emit(`setTooltipVisible_${uniqId}`, xIndex !== null || yIndex !== null);
+      eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, {}, state);
+      eventEmitter.emit(`setTooltipVisible_${plotId}`, xIndex !== null || yIndex !== null);
     });
   });
 
@@ -58,7 +58,7 @@ class Hover extends Component {
       patterns: this.asProps.patterns,
     };
     this.setState(state, () => {
-      this.asProps.eventEmitter.emit(`setTooltipVisible_${this.asProps.uniqId}`, false);
+      this.asProps.eventEmitter.emit(`setTooltipVisible_${this.asProps.plotId}`, false);
     });
   });
 
@@ -191,16 +191,14 @@ class HoverRectRoot extends Hover {
 
 const HoverLineTooltip = (props) => {
   const SHoverLineTooltip = Root;
-  const [uniqId] = React.useState(uniqueId());
   return sstyled(props.styles)(
-    <SHoverLineTooltip render={Tooltip} tag={HoverLine} uniqId={uniqId} excludeAnchorProps />,
+    <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
   );
 };
 const HoverRectTooltip = (props) => {
   const SHoverRectTooltip = Root;
-  const [uniqId] = React.useState(uniqueId());
   return sstyled(props.styles)(
-    <SHoverRectTooltip render={Tooltip} tag={HoverRect} uniqId={uniqId} excludeAnchorProps />,
+    <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
   );
 };
 

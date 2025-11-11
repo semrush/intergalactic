@@ -81,6 +81,7 @@ class PlotRoot extends Component {
         resolveColor,
         patterns,
         duration,
+        plotId: this.plotId,
       },
     };
   }
