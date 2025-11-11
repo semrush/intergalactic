@@ -6,13 +6,13 @@ import React from 'react';
 
 const steps = [
   { title: 'Personal Info' },
-  { title: 'Import source' },
+  { title: 'anticonstitucionalmente' },
   { title: 'Sub step name' },
   { title: 'Sub step name 2' },
-  { title: 'Administrative Info' },
-  { title: 'Documents' },
-  { title: 'Photos' },
-  { title: 'Additional Info' },
+  { title: 'hipersegmentaciondemercado' },
+  { title: 'micromercadotécnicamente' },
+  { title: 'anticonstitucionalmente' },
+  { title: 'Additional Info Administrative Administrative Administrative ' },
   { title: 'Approval Info' },
   { title: 'Other Info' },
   { title: 'Something else' },

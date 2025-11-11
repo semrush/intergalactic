@@ -139,9 +139,6 @@ test.describe('Donut chart', () => {
       'stories/components/d3-chart/tests/examples/donut-chart/legend-and-pattern-fill.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
-    const label = page.getByText('Category 1');
-    const label2 = page.getByText('Category 2');
-    const label3 = page.getByText('Category 3');
 
     await test.step('Verify highlighted by focus', async () => {
       for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
@@ -205,6 +202,38 @@ test.describe('Donut chart', () => {
       await page.setContent(htmlContent);
       const legend = page.getByLabel('Chart legend');
       await expect(legend).toBeVisible();
+    });
+  });
+
+  test('Verify onClick in donut.pie', async ({ page }) => {
+    const messages: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'log' && msg.text().startsWith('I call')) {
+        messages.push(msg.text());
+      }
+    });
+
+    const standPath =
+      'stories/components/d3-chart/tests/examples/donut-chart/on-click-pie.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    await test.step('Verify not calls on render', async () => {
+      expect(messages.length).toBe(0);
+    });
+
+    await test.step('Verify Not calls on legend click', async () => {
+      await page.getByText('Option A').click();
+      expect(messages.length).toBe(0);
+    });
+
+    await test.step('Verify calls on pie click', async () => {
+      const box = await page.locator('[data-ui-name="Donut.Pie"]').first().boundingBox();
+      if (box) {
+        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      }
+      expect(messages.length).toBe(1);
+      expect(messages).toEqual(['I call on mount']);
     });
   });
 });

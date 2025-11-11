@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('DnD', () => {
+test.describe(`${TAG.ACCESSIBILITY} @drag-and-drop`, () => {
   test('With cards', async ({ page }) => {
-    const standPath = 'stories/components/drag-and-drop/docs/examples/with_cards.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,10 +12,7 @@ test.describe('DnD', () => {
   });
 
   test('With dropdown menu', async ({ page }) => {
-    const standPath = 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
