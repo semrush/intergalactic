@@ -9,7 +9,7 @@ Refer to [Form](/patterns/form/form) for general information about forms and oth
 
 ## Basic usage
 
-The information on the GDPR should be obligatorily shown to the users from Europe. Refer to the [component's guide](/components/feedback-form/feedback-form) for its styles and content.
+The information on the GDPR should be obligatorily shown to the users from Europe. Refer to the [component's guide](/components/feedback-form/feedback-form#component-composition) for its styles and content.
 
 ::: sandbox
 

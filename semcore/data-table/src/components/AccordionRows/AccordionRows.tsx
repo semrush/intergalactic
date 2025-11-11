@@ -4,6 +4,7 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
 import type { CellRenderProps } from '../Body/Body.types';
+import type { DataTableCellProps } from '../Body/Cell.types';
 import { Row } from '../Body/Row';
 import type { DTRow, DTRows } from '../Body/Row.types';
 import styles from '../Body/style.shadow.css';
@@ -31,6 +32,7 @@ type AccordionRowsProps<Data extends DataTableData, UniqKeyType> = {
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 
+  onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   renderCell: ((props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>) | undefined;
   rawData: DataRowItem[];
   shadowVertical: '' | 'end' | 'start' | 'median' | undefined;
@@ -92,6 +94,7 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
       renderCell,
       rawData,
       limit,
+      onCellClick,
     } = this.props;
 
     return sstyled(styles)(
@@ -133,6 +136,7 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
               renderCell={renderCell}
               rawData={rawData}
               limit={limit}
+              onCellClick={onCellClick}
             />
           );
         })}

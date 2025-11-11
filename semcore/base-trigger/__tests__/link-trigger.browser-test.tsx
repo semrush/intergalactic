@@ -27,8 +27,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@link-trigger',
-        '@base-components'],
+        '@link-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx', 'en', item);
 
@@ -77,7 +76,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@link-trigger',
-        '@base-components',
         '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-addons.tsx', 'en', item);
@@ -138,7 +136,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@link-trigger',
-        '@base-components',
         '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx', 'en', item);
@@ -196,7 +193,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@base-trigger',
       '@link-trigger',
-      '@base-components',
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx', 'en');
@@ -220,7 +216,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@base-trigger',
       '@link-trigger',
-      '@base-components',
       '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
@@ -250,7 +245,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-trigger',
       '@link-trigger',
-      '@base-components',
       '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
@@ -281,7 +275,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-trigger',
       '@link-trigger',
-      '@base-components',
       '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');

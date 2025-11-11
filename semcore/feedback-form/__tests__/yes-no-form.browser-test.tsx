@@ -1,25 +1,59 @@
 import type { Page } from '@playwright/test';
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
   button: (page: Page, text: string) => page.getByRole('button', { name: text }),
+
+  feedbackForm: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="FeedbackForm"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  notice: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="FeedbackForm.Notice"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dialog: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  stars: (page: Page, index?: number) => {
+    const base = page.getByRole('none');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  sliderRating: (page: Page, index?: number) => {
+    const base = page.getByRole('slider');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  inputs: (page: Page, index?: number) => {
+    const base = page.getByRole('textbox');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  success: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="FeedbackForm.Success"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 };
 
-test.describe('Visual', () => {
-  test('Verify yes-no form base example styles', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify yes-no form base example styles', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form',
+      '@dropdown',
+      '@notice'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const dialog = page.getByRole('dialog');
-    const success = dialog.locator('[data-ui-name="FeedbackForm.Success"]');
     await test.step('Verify state when feedback form is opened', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await dialog.waitFor({ state: 'visible' });
+      await locators.dialog(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -39,7 +73,7 @@ test.describe('Visual', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await success.waitFor({ state: 'visible' });
+      await locators.success(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -53,16 +87,22 @@ test.describe('Visual', () => {
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify yes-no form keyboard interactions', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify yes-no form keyboard interactions', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feedback-form',
+      '@dropdown',
+      '@notice'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const dialog = page.getByRole('dialog');
-    const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
     const feedbackFormItem = page.locator('[data-ui-name="FeedbackForm.Item"]');
 
     await test.step('Verify stars can be focused and their attributes ', async () => {
@@ -91,7 +131,7 @@ test.describe('Functional', () => {
 
     await test.step('Verify form opened and attributed', async () => {
       await page.keyboard.press('Enter');
-      await dialog.waitFor({ state: 'visible' });
+      await locators.dialog(page).waitFor({ state: 'visible' });
 
       await expect(feedbackFormItem.first()).toBeFocused();
       await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'false');
@@ -140,7 +180,7 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Cancel')).toBeFocused();
       await page.keyboard.press('Enter');
-      await dialog.waitFor({ state: 'hidden' });
+      await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(locators.button(page, 'No').first()).toBeFocused();
     });
 
@@ -148,15 +188,15 @@ test.describe('Functional', () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.button(page, 'Yes')).toBeFocused();
       await page.keyboard.press('Enter');
-      await dialog.waitFor({ state: 'visible' });
+      await locators.dialog(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
-      await dialog.waitFor({ state: 'hidden' });
+      await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(locators.button(page, 'Yes')).toBeFocused();
     });
 
     await test.step('Verify Success form appeard and closed by Escape', async () => {
       await page.keyboard.press('Enter');
-      await dialog.waitFor({ state: 'visible' });
+      await locators.dialog(page).waitFor({ state: 'visible' });
       await page.keyboard.type('test test test');
 
       await page.keyboard.press('Tab');
@@ -178,28 +218,29 @@ test.describe('Functional', () => {
       await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-describedby');
 
       await page.keyboard.press('Enter');
-      await success.waitFor({ state: 'visible' });
-      await expect(success).toBeFocused();
+      await locators.success(page).waitFor({ state: 'visible' });
+      await expect(locators.success(page)).toBeFocused();
       await page.keyboard.press('Escape');
-      await dialog.waitFor({ state: 'hidden' });
+      await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(locators.button(page, 'Yes')).toBeFocused();
     });
   });
 
-  test('Verify yes-no form mouse interactions', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify yes-no form mouse interactions', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@feedback-form',
+      '@dropdown',
+      '@notice'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const dialog = page.getByRole('dialog');
-    const success = page.locator('[data-ui-name="FeedbackForm.Success"]');
     const feedbackFormItem = page.locator('[data-ui-name="FeedbackForm.Item"]');
 
     await test.step('Verify form opened by click on button', async () => {
       await locators.button(page, 'Yes').click();
-      await expect(dialog).toBeVisible();
+      await locators.dialog(page).waitFor({ state: 'visible' });
       await expect(feedbackFormItem.first()).toBeFocused();
       await page.locator('label').nth(1).click();
       await expect(feedbackFormItem.nth(1)).toBeFocused();
@@ -229,30 +270,36 @@ test.describe('Functional', () => {
 
     await test.step('Verify form closed by click on Cancel', async () => {
       await locators.button(page, 'Cancel').click();
+      await locators.dialog(page).waitFor({ state: 'hidden' });
 
-      await expect(dialog).toHaveCount(0);
+      await expect(locators.dialog(page)).toHaveCount(0);
     });
 
     await test.step('Verify form closed by click on Trigger', async () => {
       await locators.button(page, 'Yes').click();
-      await expect(dialog).toHaveCount(1);
+      await locators.dialog(page).waitFor({ state: 'visible' });
+
+      await expect(locators.dialog(page)).toHaveCount(1);
 
       await locators.button(page, 'Yes').click();
-      await expect(dialog).toHaveCount(0);
+      await locators.dialog(page).waitFor({ state: 'hidden' });
+
+      await expect(locators.dialog(page)).toHaveCount(0);
     });
 
     await test.step('Verify Success form appears when data is filled and Send feedback clicked', async () => {
       await locators.button(page, 'Yes').click();
-      await dialog.waitFor({ state: 'visible' });
+      await locators.dialog(page).waitFor({ state: 'visible' });
+
       await page.keyboard.type('test test test');
 
       await page.locator('label').nth(1).click();
       await page.keyboard.type('test@test.test');
 
       await locators.button(page, 'Send feedback').click();
-      await expect(success).toHaveCount(1);
+      await expect(locators.success(page)).toHaveCount(1);
       await locators.button(page, 'Yes').click();
-      await expect(success).toHaveCount(0);
+      await expect(locators.success(page)).toHaveCount(0);
     });
   });
 });

@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.4] - 2025-11-14
+
+### Fixed
+
+- The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
+- SR didn't pronounce all items selecting/deselecting on table with pagination.
+
 ## [16.4.3] - 2025-10-31
 
 ### Fixed

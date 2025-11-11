@@ -58,7 +58,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: var(--intergalactic-border-secondary);
+    background: var(--intergalactic-border-secondary, #e0e1e9);
     z-index: 0;
   }
 }
@@ -94,7 +94,11 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, rgba(138, 142, 155, 0.2));
+  }
+
+  &:active {
+    background-color: var(--intergalactic-control-tertiary-neutral-active, rgba(138, 142, 155, 0.3));
   }
 }
 

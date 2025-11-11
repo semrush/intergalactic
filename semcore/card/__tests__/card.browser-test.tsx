@@ -29,10 +29,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Base example margins and paddings', {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
-      '@button',
-      '@typography',
-      '@base-components',
-      '@icon'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/basic_example.tsx', 'en');
 
@@ -94,7 +91,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@ellipsis',
-      '@typography',
     ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/ellipsis.tsx', 'en');
@@ -108,11 +104,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
-      '@typography',
       '@base-trigger',
       '@link-trigger',
-      '@select',
-      '@icon'],
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 
@@ -130,8 +124,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
-      '@typography',
-      '@base-components',
       '@pills'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/different-cards.tsx', 'en');
@@ -263,10 +255,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@card',
-      '@button',
-      '@typography',
-      '@base-components',
-      '@icon'],
+      '@button'],
   }, async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -315,10 +304,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@card',
-      '@button',
-      '@typography',
-      '@base-components',
-      '@icon'],
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 

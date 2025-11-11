@@ -115,7 +115,7 @@ const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
 
   setFontSettings(temporaryElement, styleElement);
 
-  temporaryElement.innerHTML = text ?? element.innerHTML;
+  temporaryElement.textContent = text ?? element.textContent;
   return temporaryElement;
 };
 
@@ -289,7 +289,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     const dateSpan = document.createElement('temporary-block');
 
     setFontSettings(dateSpan, styleElement);
-    dateSpan.innerHTML = 'a';
+    dateSpan.textContent = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
 
