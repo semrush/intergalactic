@@ -89,10 +89,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table',
-      '@tooltip',
-      '@button',
-      '@link',
-      '@base-components'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx', 'en');
 
@@ -167,9 +164,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@dropdown',
       '@select',
       '@tooltip',
-      '@base-components',
       '@checkbox',
-      '@icon',
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
@@ -230,9 +225,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@dropdown',
       '@select',
       '@tooltip',
-      '@base-components',
       '@checkbox',
-      '@icon',
       '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');

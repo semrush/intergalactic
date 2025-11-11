@@ -13,10 +13,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with custom component styles', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table',
-        '@base-components',
-        '@button',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -91,10 +88,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion and custom component inside after keyboard interactions ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table',
-        '@base-components',
-        '@button',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', { h: '100%' });
 
@@ -137,10 +131,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with renderCell function for parent', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table',
-        '@base-components',
-        '@widget-empty',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en');
 
@@ -184,9 +175,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantWithScrollBar.forEach((item) => {
       test(`Verify accordion with fixed Column withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table',
-          '@base-components',
-          '@widget-empty'],
+          '@data-table'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
@@ -294,8 +283,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify accordion with themed rows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table',
-        '@widget-empty'],
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/themed-parent-rows.tsx', 'en');
 
@@ -385,7 +373,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with themed cells', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@widget-empty',
         '@base-components'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/colored-parent-cells', 'en');
@@ -731,10 +718,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base keyboard interactions with accordion ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table',
-        '@base-components',
-        '@button',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -789,10 +773,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base mouse interactions with accordion', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table',
-        '@base-components',
-        '@button',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -847,10 +828,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify accordion attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table',
-        '@base-components',
-        '@button',
-        '@d3-chart'],
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -887,8 +865,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@data-table',
-        '@base-components',
-        '@button',
         '@select',
         '@link'],
     }, async ({ page }) => {
@@ -916,8 +892,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@data-table',
-        '@base-components',
-        '@button',
         '@select',
         '@link'],
     }, async ({ page, browserName }) => {

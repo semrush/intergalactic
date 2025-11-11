@@ -16,9 +16,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@tooltip',
-        '@base-trigger',
-        '@typography'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -139,8 +137,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table',
         '@select',
         '@tooltip',
-        '@base-trigger',
-        '@base-trigger',
         '@link'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
@@ -195,9 +191,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@tooltip',
-        '@base-components',
         '@checkbox',
-        '@icon',
         '@ellipsis',
         '@data-table'],
     }, async ({ page }) => {
@@ -318,9 +312,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table',
         '@tooltip',
-        '@base-components',
         '@checkbox',
-        '@icon',
         '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
@@ -383,8 +375,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@tooltip',
-        '@base-trigger'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -433,8 +424,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table',
         '@select',
-        '@tooltip',
-        '@base-trigger'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -751,8 +741,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@select',
         '@tooltip',
-        '@base-trigger',
-        '@base-trigger',
         '@link',
         '@data-table'],
     }, async ({ page, browserName }) => {
@@ -856,7 +844,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@select',
         '@tooltip',
-        '@base-trigger',
         '@link'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');

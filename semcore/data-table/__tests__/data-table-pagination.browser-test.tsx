@@ -14,7 +14,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@data-table',
       '@pagination',
-      '@base-components',
       '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/pagination.tsx', 'en');

@@ -119,8 +119,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card',
-          '@d3-chart'],
+          '@card'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
@@ -164,8 +163,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card',
-          '@d3-chart'],
+          '@card'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
