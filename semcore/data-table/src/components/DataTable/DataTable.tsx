@@ -166,9 +166,22 @@ class DataTableRoot<
       }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
-      if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
+      const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
+
+      const allChecked: UniqKeyType[] = [];
+      const allUnchecked: UniqKeyType[] = [];
+
+      this.flatRows.forEach((row) => {
+        if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+          allChecked.push(row[UNIQ_ROW_KEY]);
+        } else {
+          allUnchecked.push(row[UNIQ_ROW_KEY]);
+        }
+      });
+
+      if (allChecked.length === data.length) {
         this.setSelectAllMessage(true);
-      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+      } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
       }
     }
