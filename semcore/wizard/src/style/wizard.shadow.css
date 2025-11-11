@@ -89,6 +89,7 @@ SCompleted {
 }
 
 SStepDescription {
+  overflow-wrap: anywhere;
   @media (max-width: 1060px) {
     display: none;
   }
