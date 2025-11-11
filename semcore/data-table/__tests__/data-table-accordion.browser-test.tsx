@@ -1413,4 +1413,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
   });
+
+  test('Verify accordion after skeleton in table cell', async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/accordion-in-table-in-table.tsx', 'en', {
+      withSkeletonsAndAsyncDataLoading: true,
+    });
+
+    const row = locators.row(page, 4);
+    const cell = row.locator('[role="gridcell"][aria-colindex="4"]');
+    const accordionCellButton = cell.locator('button');
+    const collapse = locators.collapse(page);
+
+    await accordionCellButton.waitFor({ state: 'visible' });
+
+    await accordionCellButton.click();
+
+    await expect(collapse).toBeVisible({ timeout: 500 });
+  });
 });

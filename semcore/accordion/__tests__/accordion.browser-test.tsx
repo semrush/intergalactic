@@ -35,8 +35,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify use=${item.use}`, {
       tag: [
         TAG.PRIORITY_HIGH,
-        '@accordion',
-        '@base-components'],
+        '@accordion'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', item);
@@ -80,8 +79,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify accordion width < content', {
     tag: [
       TAG.PRIORITY_MEDIUM,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { w: '50px' });
     await expect(page).toHaveScreenshot();
@@ -89,8 +87,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify custom styles for selected toggle ', {
     tag: [TAG.PRIORITY_MEDIUM,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/custom_styles.tsx', 'en');
     await locators.toggle(page, 0).click();
@@ -103,8 +100,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify focus on focusable item inside accordion', {
     tag: [
       TAG.PRIORITY_MEDIUM,
-      '@accordion',
-      '@flex-box'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
     await page.keyboard.press('Tab');
@@ -122,8 +118,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify base example keyboard interactions and attributes', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
@@ -203,8 +198,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify base example mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
 
@@ -231,8 +225,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify items render in DOM and focusable elements not focused when collapsed with preserveNode prop', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
 
@@ -255,8 +248,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify One section opening by keyboard ', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
@@ -280,8 +272,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify One section opening by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
 
@@ -300,8 +291,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/button-on-toggle.tsx', 'en');
 
@@ -323,8 +313,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify values with different types', {
     tag: [TAG.PRIORITY_HIGH,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
 
@@ -340,8 +329,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify default value', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/default-values.tsx', 'en');
     await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
@@ -351,8 +339,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@accordion',
-        '@base-components'],
+        '@accordion'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
 
@@ -371,8 +358,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify overflowHidden=false and defaultHeight=auto', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: false, defaultHeight: 'auto' });
 
@@ -391,8 +377,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify overflowHidden=true and defaultHeight=100%', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
-      '@accordion',
-      '@base-components'],
+      '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: true, defaultHeight: '100%' });
 
@@ -411,8 +396,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@accordion',
-      '@animation',
-      '@base-components'],
+      '@base-components',
+      '@animation'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/accordion-collapse-duration.tsx', 'en');
 

@@ -9,15 +9,22 @@ import React from 'react';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+
+  const triggerRef = React.useRef<HTMLButtonElement | null>(null);
 
   const handleClick = () => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => {
+      setLoading(false);
+      setVisible(false);
+      triggerRef.current?.focus();
+    }, 1000);
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>
+    <DropdownMenu visible={visible} onVisibleChange={setVisible}>
+      <DropdownMenu.Trigger tag={Button} ref={triggerRef}>
         <Button.Addon>
           <FileExportM />
         </Button.Addon>

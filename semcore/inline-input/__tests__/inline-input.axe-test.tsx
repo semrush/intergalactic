@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('InlineInput', () => {
+test.describe(`${TAG.ACCESSIBILITY} @inline-input `, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/inline-input/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-input/docs/examples/basic_usage.tsx', 'en');
 
     // base check
     {
@@ -26,10 +24,7 @@ test.describe('InlineInput', () => {
   });
 
   test('Inheriting text size', async ({ page }) => {
-    const standPath = 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx', 'en');
 
     // base check
     {
@@ -58,10 +53,7 @@ test.describe('InlineInput', () => {
   });
 
   test('Number only input', async ({ page }) => {
-    const standPath = 'stories/components/inline-input/docs/examples/number-only_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-input/docs/examples/number-only_input.tsx', 'en');
 
     // base check
     {

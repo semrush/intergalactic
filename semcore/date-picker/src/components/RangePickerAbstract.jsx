@@ -52,7 +52,12 @@ class RangePickerAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  applyButtonRef = React.createRef();
+  resetButtonRef = React.createRef();
+  prevButtonRef = React.createRef();
+  nextButtonRef = React.createRef();
   popperRef = React.createRef();
+  periodRefs = [];
   unitRefs = {};
 
   navigateStep;
@@ -109,7 +114,9 @@ class RangePickerAbstract extends Component {
 
   handlerKeyDown = (place) => (e) => {
     const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
-    const key = e.key;
+    const { key, target } = e;
+
+    if ([' ', 'Enter'].includes(key) && [this.prevButtonRef.current, this.nextButtonRef.current].includes(target)) return;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
@@ -151,7 +158,17 @@ class RangePickerAbstract extends Component {
     if (place === 'popper' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       return this.handleApplyClick();
     }
-    if (place === 'popper' && e.key === ' ' && highlighted.length) {
+
+    const isPeriodTarget = this.periodRefs.find((el) => el === target);
+    const isResetButtonTarget = target === this.resetButtonRef.current;
+    const isApplyButtonTarget = target === this.applyButtonRef.current;
+    const areTargetedControls = isPeriodTarget || isResetButtonTarget || isApplyButtonTarget;
+
+    if (place === 'popper' &&
+      e.key === ' ' &&
+      highlighted.length &&
+      !areTargetedControls
+    ) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
@@ -331,6 +348,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
+      'ref': this.nextButtonRef,
       'onClick': this.bindHandlerNavigateClick(1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
@@ -342,6 +360,7 @@ class RangePickerAbstract extends Component {
     const { navigateStep } = this;
 
     return {
+      'ref': this.prevButtonRef,
       'onClick': this.bindHandlerNavigateClick(-1),
       getI18nText,
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
@@ -397,6 +416,11 @@ class RangePickerAbstract extends Component {
       onDisplayedPeriodChange,
       'role': 'listbox',
       'aria-label': getI18nText('periods'),
+      'periodRef': (index) => (element) => {
+        if (!element) return;
+
+        this.periodRefs[index] = element;
+      },
     };
   }
 
@@ -410,6 +434,7 @@ class RangePickerAbstract extends Component {
     return {
       getI18nText,
       onClick: this.handleApplyClick,
+      ref: this.applyButtonRef,
     };
   }
 
@@ -418,6 +443,7 @@ class RangePickerAbstract extends Component {
     return {
       getI18nText,
       onClick: () => this.handleApply([]),
+      ref: this.resetButtonRef,
     };
   }
 
