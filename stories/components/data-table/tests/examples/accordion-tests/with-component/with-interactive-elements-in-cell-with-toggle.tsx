@@ -3,7 +3,10 @@ import Checkbox from '@semcore/ui/checkbox';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { Flex } from '@semcore/ui/flex-box';
+import EditM from '@semcore/ui/icon/Edit/m';
 import InfoM from '@semcore/ui/icon/Info/m';
+import InlineEdit from '@semcore/ui/inline-edit';
+import InlineInput from '@semcore/ui/inline-input';
 import Link from '@semcore/ui/link';
 import Select from '@semcore/ui/select';
 import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
@@ -29,7 +32,7 @@ const CustomSelect = () => {
       options={options}
       placeholder='Select option'
       id='basic-select'
-      onKeyDown={(e) => {
+      onKeyDown={(e: any) => {
         if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
           return false;
         }
@@ -68,6 +71,16 @@ const data: DataTableData = [
     vol: '47,354,640',
     [ACCORDION]: (<ChartExample />),
   },
+
+  {
+    keyword: 'www.ebay.com',
+    kd: '11.2',
+    cpc: '$3.4',
+    vol: {
+      toString: () => '65,457,920',
+      [ACCORDION]: (<ChartExample />),
+    },
+  },
   {
     keyword: 'some query',
     kd: '-',
@@ -85,6 +98,10 @@ const data: DataTableData = [
 ];
 
 const Demo = () => {
+  const [text, setText] = React.useState('Martin Eden');
+  const [confirmedText, setConfirmedText] = React.useState(text);
+  const [editable, setEditable] = React.useState(false);
+
   return (
     <DataTable
       data={data}
@@ -131,14 +148,7 @@ const Demo = () => {
                   </DescriptionTooltip.Trigger>
                   <DescriptionTooltip.Popper aria-label='About fastest animals'>
                     <Text tag='p' mb={3}>
-                      The
-                      {' '}
-                      <Link href='#'>
-                        peregrine falcon
-                      </Link>
-                      {' '}
-                      is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
-                      of over 300 km/h (190 mph).
+                      The <Link href='#'>peregrine falcon</Link> is the fastest bird, and the fastest member of the animal kingdom, with a diving speed of over 300 km/h (190 mph).
                     </Text>
                   </DescriptionTooltip.Popper>
                 </DescriptionTooltip>
@@ -146,7 +156,43 @@ const Demo = () => {
             );
           }
 
-          if (rowIndex % 2 === 0) {
+          if (rowIndex === 2) {
+            return (
+              <Flex alignItems='center'>
+                <Text w={80}>{value}</Text>
+                <InlineEdit editable={editable} onEditableChange={setEditable} onClick={stopPropagation}>
+                  <InlineEdit.View style={{ display: 'flex', gap: 8, alignItems: 'center' }} pr={2}>
+                    {text}
+                    <EditM color='icon-secondary-neutral' />
+                  </InlineEdit.View>
+                  <InlineEdit.Edit>
+                    <InlineInput
+                      onConfirm={() => {
+                        setEditable(false);
+                        setConfirmedText(text);
+                      }}
+                      onCancel={() => {
+                        setText(confirmedText);
+                        setEditable(false);
+                      }}
+                      onBlurBehavior='confirm'
+                    >
+                      <InlineInput.Value
+                        autoFocus
+                        value={text}
+                        onChange={setText}
+                        aria-labelledby='author-label'
+                      />
+                      <InlineInput.ConfirmControl />
+                      <InlineInput.CancelControl />
+                    </InlineInput>
+                  </InlineEdit.Edit>
+                </InlineEdit>
+              </Flex>
+            );
+          }
+
+          if (rowIndex === 1) {
             return (
               <Link
                 href='#'
@@ -155,9 +201,9 @@ const Demo = () => {
                 {value}
               </Link>
             );
-          } else {
-            return <CustomSelect />;
           }
+
+          return <CustomSelect />;
         }
 
         return props.defaultRender();

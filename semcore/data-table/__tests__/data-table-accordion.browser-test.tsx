@@ -1414,7 +1414,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify accordion after skeleton in table cell', async ({ page }) => {
+  test('Verify accordion after skeleton in table cell', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/accordion-in-table-in-table.tsx', 'en', {
       withSkeletonsAndAsyncDataLoading: true,
     });
