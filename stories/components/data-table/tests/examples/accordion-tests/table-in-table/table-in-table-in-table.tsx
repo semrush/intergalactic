@@ -4,8 +4,6 @@ import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-import dataTable from '../../../../../patterns/ux-patterns/feature-highlight/docs/examples/data-table';
-
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 export type TableInTableInTableProps = {
   accordionMode: DataTableProps<typeof data, any, any>['accordionMode'];

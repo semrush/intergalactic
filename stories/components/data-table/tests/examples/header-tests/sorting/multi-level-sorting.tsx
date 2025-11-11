@@ -21,7 +21,7 @@ export type MultiLevelSortingProps = {
   top?: number;
 
 } & BoxProps;
-const columns = [
+const columns: DataTableProps<typeof data, any, any>['columns'] = [
   {
     name: 'group1',
     children: 'Organic Sessions',
@@ -33,19 +33,30 @@ const columns = [
         gtcWidth: '100px',
         children: (
           <Text>
-            Kd Organic Sessions Organic Sessions
+            Kd Organic Sessions
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Text>
         ),
       },
-      { name: 'cpc', children: 'CPC', sortable: true },
-      { name: 'vol', children: 'Vol.' },
+      {
+        name: 'cpc',
+        children: 'CPC',
+        sortable: true,
+      },
+      {
+        name: 'vol',
+        children: 'Vol.',
+      },
     ],
   },
-  { name: 'keyword', children: 'Keyword', sortable: true },
+  {
+    name: 'keyword',
+    children: 'Keyword',
+    sortable: true,
+  },
   {
     name: 'group2',
-    children: 'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions',
+    children: 'Extended Organic Sessions',
     borders: 'both',
     columns: [
       {
@@ -59,18 +70,28 @@ const columns = [
           </>
         ),
       },
-      { name: 'cpc2', children: 'CPC', sortable: true },
-      { name: 'vol', children: 'Vol.' },
+      {
+        name: 'cpc2',
+        children: 'CPC',
+        sortable: true,
+      },
+      {
+        name: 'vol2',
+        children: 'Vol.',
+      },
     ],
   },
-  { name: 'other', children: 'Other' },
+  {
+    name: 'other',
+    children: 'Other',
+  },
   {
     name: 'group3',
-    children: 'Organic Sessions',
+    children: 'Another Group',
     borders: 'right',
     columns: [
       {
-        name: 'kd',
+        name: 'kd3',
         children: (
           <>
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
@@ -78,12 +99,22 @@ const columns = [
           </>
         ),
       },
-      { name: 'cpc', children: 'CPC' },
-      { name: 'vol', children: 'Vol.' },
+      {
+        name: 'cpc3',
+        children: 'CPC',
+      },
+      {
+        name: 'vol3',
+        children: 'Vol.',
+      },
     ],
   },
-  { name: 'other2', children: 'Other' },
+  {
+    name: 'other2',
+    children: 'Other 2',
+  },
 ];
+
 const Demo = (props: MultiLevelSortingProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof RowData>>(['kd', 'desc']);
 
