@@ -33,7 +33,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         gtcWidth: '100px',
         children: (
           <Text>
-            Kd Organic Sessions
+            Kd Organic Sessions Organic Sessions
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Text>
         ),
@@ -56,7 +56,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
   },
   {
     name: 'group2',
-    children: 'Extended Organic Sessions',
+    children: 'Organic Sessions Organic Sessions Organic SessionsOrganic Sessions Organic Sessions Organic Sessions',
     borders: 'both',
     columns: [
       {
