@@ -9,13 +9,15 @@ const messages: ParserExecutableMessages = [];
 const readFile = (filePath: string) => {
   messages.push({ level: 'INFO', message: `\n-> Parsing ${filePath}` });
 
-  const template = fs.readFileSync(filePath, 'utf-8');
+  let template = fs.readFileSync(filePath, 'utf-8');
   const templateStrings = template.split('\n');
 
   let figmaNode = '';
   let component = '';
   const imports: string[] = [];
   let i = 0;
+
+  // parsing metadata
   while (!templateStrings[i].includes('require(\'figma\')')) {
     let line = templateStrings[i];
 
@@ -43,6 +45,31 @@ const readFile = (filePath: string) => {
     });
     return;
   }
+
+  // parsing custom functions
+  const replacements = [
+    {
+      // instance.instanceCode(layerName: string)
+      regex: /(?<objName>\w+)\.instanceCode\(('(?<layerName1>[^']*)'|"(?<layerName2>[^"]*)")\)/g,
+      replacer: (...args: any) => {
+        const { objName, layerName1, layerName2 } = args.at(-1) as { objName: string; layerName1?: string; layerName2?: string };
+        return `${objName}.findInstance('${layerName1 || layerName2}').type === 'INSTANCE' ? ${objName}.findInstance('${layerName1 || layerName2}').executeTemplate().example : undefined`;
+      },
+    },
+    {
+      // layerArrayCode(array: instance[], wrapperName?: string)
+      regex: /[\w.]*layerArrayCode\((?<arrayName>\w*)(,\s*(['"](?<wrapperName>[^'"]*)['"]))?\)/g,
+      replacer: (...args: any) => {
+        const { arrayName, wrapperName } = args.at(-1) as { arrayName: string; wrapperName?: string };
+        let result = `let code; ` + arrayName + '.forEach((child) => code = figma.tsx`${code}${child.type === "INSTANCE" ? child.executeTemplate().example : child.textContent}`);';
+        if (wrapperName) result += 'if (code) code = figma.tsx`<' + wrapperName + '>${code}</' + wrapperName + '>`;';
+        result = '(() => {' + result + ' return code; })()';
+        return result;
+      },
+    },
+  ];
+
+  replacements.forEach((r) => template = template.replace(r.regex, r.replacer));
 
   return {
     figmaNode,

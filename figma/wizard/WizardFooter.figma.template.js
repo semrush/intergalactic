@@ -4,9 +4,9 @@
 const figma = require('figma');
 const instance = figma.selectedInstance;
 
-const cta = instance.findInstance('CTA').executeTemplate().example;
+const cta = instance.instanceCode('CTA');
 const checkbox = instance.getBoolean('checkbox', {
-  true: instance.findInstance('Checkbox').executeTemplate().example,
+  true: instance.instanceCode('Checkbox'),
 });
 
 let wrapperStart, wrapperEnd;
@@ -30,9 +30,7 @@ export default {
 ${wrapperStart}
 ${checkbox}
 <Flex>
-  ${backStepCode}
-  ${cta}
-  ${nextStepCode}
+  ${backStepCode}${cta}${nextStepCode}
 </Flex>
 ${wrapperEnd}
   `,
