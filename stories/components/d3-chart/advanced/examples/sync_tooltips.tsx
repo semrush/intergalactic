@@ -1,10 +1,9 @@
 import { Box } from '@semcore/ui/base-components';
-import EventEmitter from '@semcore/ui/core/lib/utils/eventEmitter';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart, PlotEventEmitter } from '@semcore/ui/d3-chart';
 import { scaleBand } from 'd3-scale';
 import React from 'react';
 
-const ee = new EventEmitter();
+const ee = new PlotEventEmitter();
 
 const Demo = () => {
   const plotWidth = 500;
@@ -22,6 +21,7 @@ const Demo = () => {
         groupKey='x'
         aria-label='Line chart'
         eventEmitter={ee}
+        // @ts-ignore
         xScale={scaleBand(data1.map((item) => item.x), range)}
       />
 
@@ -42,6 +42,7 @@ const Demo = () => {
         plotHeight={180}
         aria-label='Area chart'
         eventEmitter={ee}
+        // @ts-ignore
         xScale={scaleBand(data3.map((item) => item.x), range)}
       />
     </Box>
