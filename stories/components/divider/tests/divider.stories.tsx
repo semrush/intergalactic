@@ -1,31 +1,40 @@
 import Divider from '@semcore/ui/divider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BoxPropsExample from './examples/box-props';
-import OrientationUseAndThemePairsExample from './examples/orientation-use-theme-variations';
+import DividerStylesExample, { baseExampleProps } from './examples/divider-styles';
 import RenderInCenterExample from './examples/render-in-center';
-import UseAndThemePairsExample from './examples/use-theme-variations';
 
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider/Tests',
   component: Divider,
 };
 
+const baseArgTypes = {
+  use: {
+    control: { type: 'select' },
+    options: ['primary', 'secondary'],
+  },
+  orientation: {
+    control: { type: 'select' },
+    options: ['horizontal', 'vertical'],
+  },
+  theme: {
+    control: { type: 'select' },
+    options: ['default', 'invert', 'border-warning-active'],
+  },
+  w: { control: { type: 'number' } },
+  h: { control: { type: 'number' } },
+} as const;
+
 export default meta;
 type Story = StoryObj<typeof Divider>;
 
-export const UseAndThemePairs: Story = {
-  render: UseAndThemePairsExample,
-};
-
-export const OrientationUseAndThemePairs: Story = {
-  render: OrientationUseAndThemePairsExample,
+export const DividerStyles: StoryObj<typeof baseExampleProps> = {
+  render: DividerStylesExample,
+  argTypes: baseArgTypes,
+  args: baseExampleProps,
 };
 
 export const RenderInCenter: Story = {
   render: RenderInCenterExample,
-};
-
-export const BoxProps: Story = {
-  render: BoxPropsExample,
 };

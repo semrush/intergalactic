@@ -2,11 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.4.4] - 2025-11-03
+## [16.4.4] - 2025-11-14
 
 ### Added
 
 - `data-ui-name` for Inner container.
+
+### Fixed
+
+- `font-family` style for the `LinkTrigger` wasn't inherited.
 
 ## [16.4.3] - 2025-10-29
 
