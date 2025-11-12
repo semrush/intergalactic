@@ -24,7 +24,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en', item);
@@ -56,7 +55,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@tooltip',
         '@icon'],
     }, async ({ page }) => {
@@ -89,7 +87,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/select.tsx', 'en', item);
@@ -122,7 +119,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@base-trigger',
       '@filter-trigger',
-      '@base-components',
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
@@ -159,7 +155,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@base-trigger',
       '@filter-trigger',
-      '@base-components',
       '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en');
@@ -187,7 +182,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select',
         '@typography'],
     }, async ({ page }) => {
@@ -231,7 +225,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select',
         '@typography'],
     }, async ({ page }) => {
@@ -261,7 +254,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select',
         '@typography'],
     }, async ({ page }) => {
@@ -296,7 +288,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select',
         '@typography'],
     }, async ({ page }) => {
@@ -336,7 +327,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@base-trigger',
         '@filter-trigger',
-        '@base-components',
         '@select',
         '@button',
         '@typography'],
@@ -441,8 +431,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
-        '@select',
-        '@base-components'],
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/accessible_name.tsx', 'en');
 

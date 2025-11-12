@@ -32,8 +32,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@base-trigger',
-        '@base-components'],
+        '@base-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base.tsx', 'en', item);
 
@@ -88,7 +87,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@base-components',
         '@icon'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-addons.tsx', 'en', item);
@@ -152,7 +150,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@base-components'],
+        '@base-components',
+        '@neighbor-location'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/neighbor-location.tsx', 'en', item);
 
@@ -214,7 +213,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify Base Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@base-components',
         '@dropdown',
         '@select',
         '@icon'],
@@ -278,7 +276,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify ellipsis in Base trigger and few tags', {
     tag: [TAG.PRIORITY_HIGH,
       '@base-trigger',
-      '@base-components',
       '@dropdown-menu',
       '@ellipsis',
       '@typography'],
@@ -303,7 +300,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@base-trigger',
-      '@base-components',
       '@dropdown',
       '@select',
       '@divider',
@@ -335,7 +331,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@base-trigger',
-      '@base-components',
       '@dropdown',
       '@select',
       '@divider',
@@ -364,7 +359,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       TAG.MOUSE,
       '@base-trigger',
-      '@base-components',
       '@dropdown',
       '@select',
       '@divider',
@@ -394,7 +388,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       TAG.MOUSE,
       '@base-trigger',
-      '@base-components',
       '@dropdown-menu',
       '@ellipsis',
       '@typography'],

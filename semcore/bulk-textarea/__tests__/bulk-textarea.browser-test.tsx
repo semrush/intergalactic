@@ -50,9 +50,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify size=${item.size} placeholder=${item.placeholder}  w=${item.w} disabled=${item.disabled} readOnly=${item.readOnly} minRows=${item.minRows} maxRows=${item.maxRows} maxLines=${item.maxLines}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', item);
@@ -95,9 +93,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify counter fucntionality', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15, validateOn: ['blur'] });
 
@@ -169,9 +165,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Clear all by mouse when no validation', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
@@ -206,16 +200,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Clear all by keyboard no validation', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx', 'en');
 
       await test.step('Type text into textarea and press clear all', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.type('Testhttp://,test2', { delay: 20 });
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
         await page.keyboard.press('Tab');
         await page.waitForTimeout(100);
         await expect(locators.button(page, 'Clear all')).toBeFocused();
@@ -231,9 +223,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Clear all by keyboard with validation', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx', 'en');
 
@@ -259,9 +249,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
@@ -269,7 +257,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await locators.textbox(page).press('[');
-        await page.waitForTimeout(100); // for firefox
+        await page.waitForTimeout(100);// it is nessesary for stability in GitLab in Firefox
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         await expect(locators.textbox(page)).not.toHaveAttribute('aria-invalid', 'true');
@@ -277,7 +265,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify validation on blur starts by TAB', async () => {
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(100); // needs for animation ending
 
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
@@ -297,7 +285,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify validation on clicking outside textbox', async () => {
         await locators.textbox(page).press('[');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
@@ -345,9 +333,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/blurLine-base-example.tsx', 'en');
 
@@ -355,7 +341,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.type('test[]]', { delay: 10 });
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(100);// for firefox
+        await page.waitForTimeout(100);// it is nessesary for stability in GitLab in Firefox
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
         await expect(locators.button(page, 'Next error')).toBeVisible();
@@ -390,7 +376,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await page.keyboard.type('text\n[]\nttext', { delay: 10 });
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
 
         if (boxBoundingBox) {
@@ -414,7 +400,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify focus order when validation starts ', async () => {
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Next error')).toBeFocused();
         await page.keyboard.press('Tab');
@@ -427,9 +413,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Validation on Submit', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/on-submit-example.tsx', 'en');
 
@@ -452,9 +436,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/blurLine-base-example.tsx', 'en', { maxLines: 15 });
 
@@ -519,9 +501,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Validation on Blur', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props', 'en', { maxLines: 15, showErrors: false });
 
@@ -579,9 +559,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/blurLine-base-example.tsx', 'en', { showErrors: false });
 
@@ -641,9 +619,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Delimiter and Rows Processing fucntionality', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx', 'en');
 
@@ -708,9 +684,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips by mouse hover and click', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
@@ -776,9 +750,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips by keyboard click and havigate by arrows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
@@ -828,9 +800,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips when fixing errors', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page, browserName }) => {
       if (browserName === 'webkit') test.skip();
 
@@ -894,9 +864,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips when adding errors ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
@@ -920,9 +888,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips by mouse hover and click', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx', 'en');
 
@@ -992,9 +958,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify tooltips by keyboard click and havigate by arrows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/no-common-error.tsx', 'en');
 
@@ -1031,9 +995,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Errors counter works when handleChange added rows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx', 'en');
       await page.waitForTimeout(100);
@@ -1050,9 +1012,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('lineProcessing cases', () => {
     test('Verify lineProcessing when paste empty rows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/empty-value-in-paste.tsx', 'en');
 
@@ -1067,9 +1027,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify lineProcessing when counts lines and index', {
       tag: [TAG.PRIORITY_HIGH,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/lines-and-index-in-paste.tsx', 'en');
 
@@ -1092,9 +1050,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify error shows on manually errors set', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea',
-        '@base-components',
-        '@typography'],
+        '@bulk-textarea'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/controlled-errors.tsx', 'en');
 

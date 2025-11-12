@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Time picker', () => {
+test.describe(`${TAG.ACCESSIBILITY} @time-picker`, () => {
   test('Datepicker and timepicker', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,12 +12,9 @@ test.describe('Time picker', () => {
   });
 });
 
-test.describe('UX pattern', () => {
+test.describe(`${TAG.ACCESSIBILITY} @time-picker @date-picker`, () => {
   test('Datepicker and timepicker', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
