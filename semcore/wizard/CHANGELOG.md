@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Unnecessary scroll in small mode with long text in sidebar step.
 - Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
 
 ## [16.2.0] - 2025-10-29
