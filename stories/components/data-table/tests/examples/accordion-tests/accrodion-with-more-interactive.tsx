@@ -10,10 +10,6 @@ import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-const stopPropagation = (event: React.SyntheticEvent) => {
-  event.stopPropagation();
-};
-
 const Demo = () => {
   return (
     <DataTable
@@ -38,7 +34,7 @@ const Demo = () => {
         if (props.dataKey === 'keyword') {
           return (
             <Flex alignItems='center'>
-              <Checkbox label='Option 1' onClick={stopPropagation} />
+              <Checkbox label='Option 1' />
               <Text noWrap>
                 Keyword
                 {' '}
@@ -51,9 +47,8 @@ const Demo = () => {
                 title='Go to our awesome article'
                 data-test-id='interactive-icon'
                 color='icon-secondary-neutral'
-                onClick={stopPropagation}
               />
-              <DescriptionTooltip onClick={stopPropagation}>
+              <DescriptionTooltip>
                 <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
                   About fastest animals
                 </DescriptionTooltip.Trigger>
