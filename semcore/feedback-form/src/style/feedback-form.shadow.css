@@ -28,7 +28,7 @@ SSuccess {
 
 SEmail {
   margin-bottom: calc(
-    var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)
+    var(--intergalactic-spacing-4x, 16px)
   );
   width: 80px;
   height: 80px;

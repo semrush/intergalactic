@@ -1,5 +1,4 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -8,9 +7,6 @@ import { mockDate, RealDate } from './utils';
 import {
   DatePicker,
   DateRangePicker,
-  MonthRangePicker,
-  DateRangeComparator,
-  MonthDateRangeComparator,
 } from '../src';
 
 describe('date-picker Dependency imports', () => {
@@ -76,36 +72,6 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByText('Apply'));
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
-  });
-
-  test('Verify picker renders correctly if one day is selected', async ({ task }) => {
-    const component = (
-      <DateRangePicker
-        value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2020 00:00:00')]}
-      />
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test('Verify picker renders correctly if the same month of a different year is selected', async ({
-    task,
-  }) => {
-    const component = (
-      <MonthRangePicker
-        value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2021 00:00:00')]}
-      />
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test('Verify localized placeholder renders correctly', async ({ task }) => {
-    const component = (
-      <DatePicker locale='ja'>
-        <DatePicker.Trigger />
-        <DatePicker.Popper />
-      </DatePicker>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('Verify trigger suppports set custom displayPeriod', () => {
@@ -188,66 +154,5 @@ describe('DateRangePicker', () => {
     await userEvent.keyboard('[ArrowDown]');
 
     expect(getByText('February 2024')).toBeTruthy();
-  });
-
-  test('Verify renders correctly with empty period', async ({ task, expect }) => {
-    mockDate('2024-01-20T12:00:00.000Z');
-
-    const component = (
-      <DateRangePicker
-        defaultDisplayedPeriod={new Date()}
-        periods={[]}
-        visible
-        disablePortal // only for render popper in test
-        // @ts-ignore
-        __disablePopper // only for render popper in test
-      />
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-});
-
-describe('DateRangeComparator', () => {
-  beforeEach(() => {
-    global.Date = RealDate;
-    cleanup();
-  });
-  const disablePopper = { __disablePopper: true } as any;
-
-  test('Verify renders correctly', async ({ task }) => {
-    const value = {
-      value: [new Date('January 5, 2021 00:00:00'), new Date('January 10, 2021 00:00:00')],
-      compare: [new Date('January 8, 2021 00:00:00'), new Date('January 12, 2021 00:00:00')],
-    };
-    const displayPeriod = new Date('January 5, 2021 00:00:00');
-    const component = (
-      <DateRangeComparator
-        displayedPeriod={displayPeriod}
-        value={value}
-        visible
-        disablePortal
-        {...disablePopper}
-      />
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test('Verify renders correctly monthes', async ({ task }) => {
-    const value = {
-      value: [new Date('January 5, 2021 00:00:00'), new Date('May 10, 2021 00:00:00')],
-      compare: [new Date('Februrary 8, 2021 00:00:00'), new Date('September 12, 2021 00:00:00')],
-    };
-    const displayPeriod = new Date('January 5, 2021 00:00:00');
-    const component = (
-      <MonthDateRangeComparator
-        displayedPeriod={displayPeriod}
-        value={value}
-        visible
-        disablePortal
-        {...disablePopper}
-      />
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

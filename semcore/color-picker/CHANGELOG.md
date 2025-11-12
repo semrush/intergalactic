@@ -11,6 +11,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Incorrect types for `PaletteManager`.
 - Validation issues in `PaletteManager.InputColor`.
 - "Blocked aria-hidden on an element" accessibility error for `ChevronDownM`.
+- `PaletteManager`'s add button active/hover states.
 
 ## [16.1.11] - 2025-10-29
 

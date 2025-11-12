@@ -46,8 +46,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   indicators.forEach((item) => {
     test(`Verify Carousel with indicators= ${item.indicators}, zoomiWidth= ${item.zoomWidth} and defaultIndex=${item.defaultIndex} or index = =${item.index}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@carousel',
-        '@base-components'],
+        '@carousel'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', item);
 
@@ -116,8 +115,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   bounded.forEach((item) => {
     test(`Verify Carousel prev and next buttons when indicators= ${item.indicators}, bounded= ${item.bounded}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@carousel',
-        '@base-components'],
+        '@carousel'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', item);
 
@@ -140,8 +138,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify carousel with indicators only', {
     tag: [TAG.PRIORITY_HIGH,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
 
@@ -151,8 +148,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify carousel with custom Prev and Next', {
     tag: [TAG.PRIORITY_MEDIUM,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_prev_next.tsx', 'en');
 
@@ -170,8 +166,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard interactions with indicators and zoom', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en');
 
@@ -364,8 +359,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interactions with Carousel with  indicators and zoom', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en');
 
@@ -477,8 +471,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse and keyboard interactions when zoom:false (modal not opened)', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD, TAG.MOUSE,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', { zoom: false });
 
@@ -506,8 +499,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard interactions when Carousel with indicators only', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@carousel',
-      '@base-components'],
+      '@carousel'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_indicators_only.tsx', 'en');
 

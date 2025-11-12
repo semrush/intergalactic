@@ -452,6 +452,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       tableRef,
       scrollAreaRef,
       accordionAnimationRows,
+      onCellClick,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -605,7 +606,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               rowIndex={rowIndex}
               rows={[row]}
               row={row}
-              columnIndex={1}
+              columnIndex={0}
               // @ts-ignore
               column={{ name: ACCORDION }}
               w='100%'
@@ -639,6 +640,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             limit={limit}
             renderCell={renderCell}
             sideIndents={sideIndents}
+            onCellClick={onCellClick}
           />
         )}
       </>,

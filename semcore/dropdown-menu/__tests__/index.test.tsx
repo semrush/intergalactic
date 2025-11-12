@@ -14,7 +14,17 @@ describe('dropdown-menu Dependency imports', () => {
 });
 
 describe('DropdownMenu', () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
 
   test.concurrent('Verify does not trigger visibility change on Space key in input', () => {
     const spy = vi.fn();
