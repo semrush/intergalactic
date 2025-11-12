@@ -10,6 +10,10 @@ import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
+const stopPropagation = (event: React.SyntheticEvent) => {
+  event.stopPropagation();
+};
+
 const Demo = () => {
   return (
     <DataTable
@@ -34,7 +38,7 @@ const Demo = () => {
         if (props.dataKey === 'keyword') {
           return (
             <Flex alignItems='center'>
-              <Checkbox label='Option 1' />
+              <Checkbox label='Option 1' onClick={stopPropagation} />
               <Text noWrap>
                 Keyword
                 {' '}
