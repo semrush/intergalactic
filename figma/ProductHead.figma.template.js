@@ -4,10 +4,10 @@ const figma = require('figma');
 const instance = figma.selectedInstance;
 
 const mobileFeedback = instance.getBoolean('mobile', {
-  true: instance.instanceCode('Send feedback'),
+  true: instanceCode(instance, 'Send feedback'),
 });
 
-const breadcrumbs = instance.instanceCode('Breadcrumbs');
+const breadcrumbs = instanceCode(instance, 'Breadcrumbs');
 
 const links = instance.findConnectedInstances(() => true, { path: ['ProductHead.Row', 'ProductHead.Links'] });
 const linksCode = layerArrayCode(links, 'ProductHead.Links');

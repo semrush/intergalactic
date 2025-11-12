@@ -34,7 +34,7 @@ const isDisabled = instance.getBoolean('PropertyName'); // also accepts boolean-
 // default findInstance() can be inconvenient (you have to check if the layer
 // is hidden and generate code by adding '.executeTemplate().example'),
 // so here's a much more convenient custom function:
-const someNestedInstanceCode = instance.instanceCode('LayerName');
+const someNestedInstanceCode = instanceCode(instance, 'LayerName');
 
 export default {
   example: figma.tsx`

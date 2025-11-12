@@ -4,9 +4,9 @@
 const figma = require('figma');
 const instance = figma.selectedInstance;
 
-const cta = instance.instanceCode('CTA');
+const cta = instanceCode(instance, 'CTA');
 const checkbox = instance.getBoolean('checkbox', {
-  true: instance.instanceCode('Checkbox'),
+  true: instanceCode(instance, 'Checkbox'),
 });
 
 let wrapperStart, wrapperEnd;
