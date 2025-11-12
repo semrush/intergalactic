@@ -1,24 +1,6 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
-
-async function checkAxe(page: Page, standPath: string) {
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-  await page.setContent(htmlContent);
-
-  await page.evaluate(() => {
-    document.querySelectorAll('[role=columnheader], [role=gridcell]').forEach((el) => {
-      el.removeAttribute('inert');
-    });
-  });
-
-  const violations = await getAccessibilityViolations({ page });
-
-  return violations;
-}
 
 test.describe(`@data-table  ${TAG.ACCESSIBILITY}`, () => {
   test('access to cells', async ({ page }) => {
