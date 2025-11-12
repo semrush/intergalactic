@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `onClick` handler in child components overrides root `onClick` and called on mount.
 
+### Changed
+
+- `LegendItem` checkbox theme behaviour, since it's been implemented within `Checkbox` component.
+
 ## [16.3.0] - 2025-10-31
 
 ### Added
