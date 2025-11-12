@@ -32,7 +32,7 @@ test.describe('Input tag', () => {
     });
   });
   test('Entering and editing tags', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx';
+    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
     const violations = await getAccessibilityViolations({ page });

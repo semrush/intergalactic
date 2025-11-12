@@ -35,17 +35,17 @@ const Demo = (props: ExampleInputTagsProps) => {
     setTags((tags) => tags.filter((_, tagIdx) => idx !== tagIdx));
   };
 
-  const handleTagKeyDown = (disabled: boolean) => (e: React.KeyboardEvent<HTMLElement>) => {
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') {
-      handleEditTag(disabled)(e);
+      handleEditTag(e);
     }
     return false;
   };
 
-  const handleEditTag = (disabled: boolean) => (
+  const handleEditTag = (
     e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ) => {
-    if (disabled) return;
+    if (props.disabled) return;
 
     const { dataset } = e.currentTarget;
     let allTags = [...tags];
@@ -82,8 +82,8 @@ const Demo = (props: ExampleInputTagsProps) => {
             tag={InputTags.Tag}
             theme='primary'
             data-id={idx}
-            onClick={handleEditTag(props.disabled ?? false)}
-            onKeyDown={handleTagKeyDown(props.disabled ?? false)}
+            onClick={handleEditTag}
+            onKeyDown={handleTagKeyDown}
             active={false}
           >
             <InputTags.Tag.Text>

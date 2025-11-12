@@ -194,7 +194,7 @@ class InputTags extends Component<IInputTagsProps> {
     { editable, disabled }: { editable: boolean; disabled: boolean },
     index: number,
   ) {
-    const isDisabled = this.asProps.disabled || (disabled ?? false);
+    const isDisabled = this.asProps.disabled ?? (disabled ?? false);
     const isEditable = isDisabled ? false : editable;
 
     return {
