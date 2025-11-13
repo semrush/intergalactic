@@ -56,8 +56,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify size=${item.size} state=${item.state} theme=${item.theme} color=${item.color} disabled=${item.disabled} checked=${item.checked} indeterminate=${item.indeterminate}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@checkbox',
-        '@base-components'],
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/checkbox/tests/examples/states.tsx', 'en', item);
 
@@ -104,8 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify checkbox group styles', {
     tag: [TAG.PRIORITY_HIGH,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/tests/examples/groups.tsx', 'en');
 
@@ -129,8 +127,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Partial selection mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -148,8 +145,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Partial selection keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -165,10 +161,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@checkbox',
-      '@base-components',
       '@link',
-      '@tooltip',
-      '@icon'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -208,8 +202,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Checkbox group mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
@@ -254,8 +247,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Checkbox group keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
@@ -309,8 +301,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Partial selection mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -348,19 +339,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
       await locators.valueCheckmark(page).first().click();
 
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
-        await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.checkboxValue(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.valueCheckmark(page).nth(i)).not.toHaveClass(/checked/);
+        await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.checkboxValue(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.valueCheckmark(page).nth(i)).toHaveClass(/checked/);
       }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
-      await locators.valueCheckmark(page).first().click();
       await locators.checkboxText(page).nth(2).click();
 
       await expect(locators.checkbox(page).nth(0)).toHaveClass(/indeterminate/);
@@ -376,8 +366,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Partial selection keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox',
-      '@base-components'],
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -417,21 +406,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes unchecked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
 
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
-        await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.checkboxValue(page).nth(i)).not.toHaveClass(/checked/);
-        await expect(locators.valueCheckmark(page).nth(i)).not.toHaveClass(/checked/);
+        await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.checkboxValue(page).nth(i)).toHaveClass(/checked/);
+        await expect(locators.valueCheckmark(page).nth(i)).toHaveClass(/checked/);
       }
     });
 
     await test.step('Verify group gets indeterminate when one item unchecked', async () => {
-      await page.keyboard.press('Space');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 
@@ -449,10 +437,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@checkbox',
-      '@base-components',
       '@link',
-      '@tooltip',
-      '@icon'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -500,10 +486,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@checkbox',
-      '@base-components',
       '@link',
-      '@tooltip',
-      '@icon'],
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 

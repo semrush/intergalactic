@@ -6,7 +6,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ## NoData state
 
-The template already includes a `title` and default `description`, you only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements, if you need.
+The component already includes a `title` and a default `description`. You only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements if needed.
 
 ::: tip
 The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `intergalactic/utils` package, as shown in the example below.
@@ -22,7 +22,7 @@ The locale can be passed directly to the component or wrap your application in `
 
 ## Error state
 
-The template already includes default `title`, `icon` and `description`. You can provide a custom `description` and additional elements if you need.
+The component already includes default `title`, `icon` and `description`. You can provide a custom `description` and additional elements if needed.
 
 ::: sandbox
 
@@ -46,7 +46,7 @@ To get the link to the [illustration](/style/illustration/illustration), use the
 
 :::
 
-You can find other examples of custom messages you can create with the WidgetEmpty component.
+Here are some other examples of custom messages you can create with the WidgetEmpty component.
 
 ::: sandbox
 

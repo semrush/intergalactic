@@ -6,8 +6,6 @@ import React from 'react';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
-type WizardStep = { title: string };
-
 const Demo = () => {
   const [step, setStep] = React.useState<number>(1);
   const [visible, setVisible] = React.useState(false);

@@ -59,21 +59,7 @@ class DropdownMenuRoot extends AbstractDropdown {
         (visible) => {
           if (visible === true) {
             setTimeout(() => {
-              const options = this.menuRef.current?.querySelectorAll(
-                '[role="menuitemcheckbox"], [role="menuitemradio"]',
-              );
-              const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
-
-              if (selected && options && this.asProps.itemsCount === undefined) {
-                this.scrollToNode(selected, true);
-
-                for (let i = 0; i < options.length; i++) {
-                  if (options[i] === selected) {
-                    this.handlers.highlightedIndex(i);
-                    break;
-                  }
-                }
-              }
+              this.focusAndScrollToSelected();
               // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
               // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
             }, 30);
@@ -81,6 +67,48 @@ class DropdownMenuRoot extends AbstractDropdown {
         },
       ],
     };
+  }
+
+  get menuElements() {
+    const menuElement = this.menuRef.current;
+
+    if (!menuElement) {
+      return { selected: null, options: null };
+    }
+
+    const options = menuElement.querySelectorAll(
+      '[role="menuitemcheckbox"], [role="menuitemradio"]',
+    );
+    const selected = menuElement.querySelector('[aria-checked="true"]');
+
+    return { selected, options };
+  }
+
+  focusAndScrollToSelected() {
+    const { selected, options } = this.menuElements;
+
+    if (!selected || !options || this.asProps.itemsCount !== undefined) return;
+
+    this.scrollToNodeAsync(selected, true).then(() => {
+      if (lastInteraction.isKeyboard() && this.asProps.visible) {
+        selected.focus({ preventScroll: true });
+      }
+    });
+
+    const selectedIndex = Array.from(options).indexOf(selected);
+
+    if (selectedIndex !== -1) {
+      this.handlers.highlightedIndex(selectedIndex);
+    }
+  }
+
+  afterOpenPopper() {
+    const { selected, options } = this.menuElements;
+
+    // this case is handled slightly differently on line 63.
+    if (selected && options && this.asProps.itemsCount === undefined) return;
+
+    super.afterOpenPopper();
   }
 
   itemRef(props, index, node) {
