@@ -19,29 +19,31 @@ const Demo = () => {
           <FullscreenModal.Title w={200}>Go to Tool Name Go to Tool Name</FullscreenModal.Title>
           <FullscreenModal.Description>
             Heading 6, 16px Heading 6, 16px
+
+            <DescriptionTooltip>
+              <DescriptionTooltip.Trigger
+                tag={ButtonLink}
+                addonLeft={InfoM}
+                color='icon-secondary-neutral'
+                aria-label='About peregrine falcon'
+                mr={1}
+              />
+              <DescriptionTooltip.Popper aria-label='About fastest animals'>
+                <Text tag='p' mb={3}>
+                  The
+                  {' '}
+                  <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
+                  {' '}
+                  is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
+                  of over 300 km/h (190 mph).
+                </Text>
+                <Text tag='p'>
+                  The fastest land animal is the cheetah. Among the fastest animals in the sea is the
+                  black marlin, with uncertain and conflicting reports of recorded speeds.
+                </Text>
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
           </FullscreenModal.Description>
-          <DescriptionTooltip>
-            <DescriptionTooltip.Trigger
-              tag={ButtonLink}
-              addonLeft={InfoM}
-              color='icon-secondary-neutral'
-              aria-label='About peregrine falcon'
-            />
-            <DescriptionTooltip.Popper aria-label='About fastest animals'>
-              <Text tag='p' mb={3}>
-                The
-                {' '}
-                <Link href='https://en.wikipedia.org/wiki/Peregrine_falcon'>peregrine falcon</Link>
-                {' '}
-                is the fastest bird, and the fastest member of the animal kingdom, with a diving speed
-                of over 300 km/h (190 mph).
-              </Text>
-              <Text tag='p'>
-                The fastest land animal is the cheetah. Among the fastest animals in the sea is the
-                black marlin, with uncertain and conflicting reports of recorded speeds.
-              </Text>
-            </DescriptionTooltip.Popper>
-          </DescriptionTooltip>
         </FullscreenModal.Header>
         <FullscreenModal.Body>
           <FullscreenModal.Section aria-label='Head content 1'>
