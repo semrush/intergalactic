@@ -46,7 +46,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rowIndexValue = ariaRowindex - 2;
     }
 
-    onClick(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
     const focusableChildren = Array.from(this.cellRef.current?.children ?? []).flatMap((node) =>
       getFocusableIn(node as HTMLElement),
     );
@@ -56,7 +55,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       this.lockedCell[1] = true;
     }
 
-    onClick?.(e, { rowIndex, colIndex: columnIndex, row });
+    onClick?.(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
   };
 
   render() {
