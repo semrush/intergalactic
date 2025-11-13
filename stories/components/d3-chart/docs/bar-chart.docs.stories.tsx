@@ -26,6 +26,7 @@ export const Bar: StoryObj = {
 
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
+  args: {},
 };
 
 export const DateFormat: StoryObj = {
