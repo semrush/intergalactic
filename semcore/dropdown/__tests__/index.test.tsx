@@ -18,6 +18,14 @@ describe('dropdown Dependency imports', () => {
 describe('Dropdown', () => {
   beforeEach(() => {
     cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
   });
 
   test('Verify not open popper by keyboard enter if interaction none', async ({ expect }) => {

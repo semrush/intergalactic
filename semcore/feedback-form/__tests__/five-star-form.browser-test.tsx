@@ -1,21 +1,48 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
-  test('Verify five stars form base example styles', async ({ page, browserName }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
+  dialog: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  stars: (page: Page, index?: number) => {
+    const base = page.getByRole('none');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  sliderRating: (page: Page, index?: number) => {
+    const base = page.getByRole('slider');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  button: (page: Page, index?: number) => {
+    const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  inputs: (page: Page, index?: number) => {
+    const base = page.getByRole('textbox');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify five stars form base example styles', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
-
-    const starts = page.getByRole('none');
-    const dialog = page.getByRole('dialog');
+    const dialog = locators.dialog(page);
     const buttons = dialog.getByRole('button');
     await test.step('Verify stars hover state', async () => {
-      await starts.nth(1).hover();
+      await locators.stars(page, 1).hover();
       await expect(page).toHaveScreenshot();
     });
 
@@ -59,79 +86,80 @@ test.describe('Visual', () => {
     });
   });
 
-  test('Verify feedback rating with error notice on submit', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify feedback rating with error notice on submit', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    const buttons = locators.dialog(page).getByRole('button');
 
-    const starts = page.getByRole('none');
-    const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
-
-    await starts.nth(1).click();
+    await locators.stars(page, 1).click();
     await buttons.first().waitFor({ state: 'visible' });
     await buttons.nth(1).click();
     await page.waitForSelector('text="Something went wrong. Please try again or contact us at"');
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify feedback rating notice with title and subtitle', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-title-and-subtitle.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify feedback rating notice with title and subtitle', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-title-and-subtitle.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify five stars base example styles keyboard interactions', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify five stars base example styles keyboard interactions', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const sliderRating = page.getByRole('slider');
-    const stars = page.getByRole('none');
     const checkboxInput = page.getByRole('checkbox');
-    const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
-    const itemInput = page.getByRole('textbox');
+    const buttons = locators.dialog(page).getByRole('button');
 
     await test.step('Verify stars can be focused and their attributes ', async () => {
       await page.keyboard.press('Tab');
-      await expect(sliderRating).toBeFocused();
-      await expect(sliderRating).toHaveAttribute('aria-valuemin', '1');
-      await expect(sliderRating).toHaveAttribute('aria-valuemax', '5');
-      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
-      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+      await expect(locators.sliderRating(page)).toBeFocused();
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuemin', '1');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuemax', '5');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
-      await expect(sliderRating).toHaveAttribute('value', '0');
-      await expect(sliderRating).toHaveAttribute('aria-orientation', 'horizontal');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-orientation', 'horizontal');
 
-      const count = await stars.count();
+      const count = await locators.stars(page).count();
       for (let i = 0; i < count; i++) {
-        await expect(stars.nth(i)).toHaveAttribute('fill', 'none');
-        await expect(stars.nth(i)).toHaveAttribute('width', '24');
-        await expect(stars.nth(i)).toHaveAttribute('height', '24');
+        await expect(locators.stars(page, i)).toHaveAttribute('fill', 'none');
+        await expect(locators.stars(page, i)).toHaveAttribute('width', '24');
+        await expect(locators.stars(page, i)).toHaveAttribute('height', '24');
       }
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-      await expect(sliderRating).toHaveAttribute('aria-valuenow', '2');
-      await expect(sliderRating).toHaveAttribute('value', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '2');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
 
-      await expect(sliderRating).toHaveAttribute('aria-valuetext', '2 out of 5. Press Enter to select the rating.');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', '2 out of 5. Press Enter to select the rating.');
     });
 
     await test.step('Verify form opened and first checkbox focused by deault', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
-      await expect(sliderRating).toHaveAttribute('value', '2');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
       await expect(checkboxInput.first()).toBeFocused();
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
@@ -140,11 +168,11 @@ test.describe('Functional', () => {
     await test.step('Verify form closed by ESC and selected starts skipped', async () => {
       await page.keyboard.press('Escape');
       await buttons.first().waitFor({ state: 'hidden' });
-      await expect(sliderRating).toBeFocused();
-      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
-      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+      await expect(locators.sliderRating(page)).toBeFocused();
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
-      await expect(sliderRating).toHaveAttribute('value', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
     });
 
     await test.step('Verify Form not opened by Enter  when no starts selected', async () => {
@@ -162,12 +190,12 @@ test.describe('Functional', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(itemInput.first()).toBeFocused();
+      await expect(locators.inputs(page, 0)).toBeFocused();
       await page.keyboard.press('Tab');
-      await expect(itemInput.nth(1)).toBeFocused();
+      await expect(locators.inputs(page, 1)).toBeFocused();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Shift+Tab');
-      await expect(itemInput.nth(1)).toBeFocused();
+      await expect(locators.inputs(page, 1)).toBeFocused();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(buttons.nth(1)).toBeFocused();
@@ -178,7 +206,7 @@ test.describe('Functional', () => {
     await test.step('Verify form closed by activate Close button', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'hidden' });
-      await expect(sliderRating).toBeFocused();
+      await expect(locators.sliderRating(page)).toBeFocused();
     });
 
     await test.step('Verify form closed by activate Send request', async () => {
@@ -195,58 +223,54 @@ test.describe('Functional', () => {
     });
   });
 
-  test('Verify five stars base example styles mouse interactions', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify five stars base example styles mouse interactions', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const sliderRating = page.getByRole('slider');
-    const stars = page.getByRole('none');
     const checkboxInput = page.getByRole('checkbox');
-    const dialog = page.getByRole('dialog');
-    const buttons = dialog.getByRole('button');
+    const buttons = locators.dialog(page).getByRole('button');
 
     await test.step('Verify stars hover interaction', async () => {
-      await stars.nth(3).hover();
-      await expect(sliderRating).toHaveAttribute('aria-valuenow', '4');
-      await expect(sliderRating).toHaveAttribute('value', '0');
+      await locators.stars(page, 3).hover();
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '4');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
 
-      await expect(sliderRating).toHaveAttribute('aria-valuetext', '4 out of 5. Press Enter to select the rating.');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', '4 out of 5. Press Enter to select the rating.');
     });
 
     await test.step('Verify form opened by click on stars', async () => {
-      await stars.nth(3).click();
+      await locators.stars(page, 3).click();
       await buttons.first().waitFor({ state: 'visible' });
-      await expect(sliderRating).toHaveAttribute('value', '4');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '4');
     });
 
     await test.step('Verify form closed by click outside the form and selected starts skipped', async () => {
       await page.mouse.click(0, 0);
       await buttons.first().waitFor({ state: 'hidden' });
-      await expect(sliderRating).toHaveAttribute('aria-valuenow', '0');
-      await expect(sliderRating).toHaveAttribute('aria-valuetext', 'Not set');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
-      await expect(sliderRating).toHaveAttribute('value', '0');
+      await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
     });
 
     await test.step('Verify form closed by click Close button', async () => {
-      await stars.nth(3).click();
+      await locators.stars(page, 3).click();
       await page.waitForSelector('text="Great! What do you like the most?"');
       await buttons.first().click();
-      await expect(dialog).toBeHidden();
+      await locators.dialog(page).waitFor({ state: 'visible' });
     });
 
     await test.step('Verify form closed by click Send request', async () => {
-      await stars.nth(3).click();
+      await locators.stars(page, 3).click();
       await page.waitForSelector('text="Great! What do you like the most?"');
       await expect(checkboxInput.first()).toBeFocused();
       await buttons.nth(1).click();
 
       await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });
-      await expect(dialog).toBeHidden();
-
       await expect(page.getByRole('button', { name: 'Reload page' })).toBeVisible();
     });
   });

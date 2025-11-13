@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.2] - 2025-11-14
+## [16.1.3] - 2025-11-14
 
 ### Changed
 
-- Canceled default behaviour for `Arrow Up` `Arrow Down` interaction.
+- Canceled default behaviour for `Arrow Up` `Arrow Down` keys.
+
+## [16.1.2] - 2025-11-10
+
+### Added
+
+- Foundation to handle scroll ending.
 
 ## [16.1.1] - 2025-10-29
 
