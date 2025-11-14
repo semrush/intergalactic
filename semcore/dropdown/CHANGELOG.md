@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Canceled default behaviour for `Arrow Up` `Arrow Down` keys.
+- Canceled default behavior for `Arrow Up` `Arrow Down` keys.
 
 ## [16.1.2] - 2025-11-10
 
