@@ -34,6 +34,15 @@ export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps
       control: { type: 'select' },
       options: ['normal', 'invalid', 'valid'],
     },
+    editable: {
+      control: { type: 'boolean' },
+    },
+    readOnly: {
+      control: { type: 'boolean' },
+    },
+    active: {
+      control: { type: 'boolean' },
+    },
   },
   args: enteringAndEditingTagsProps,
 };
