@@ -136,65 +136,78 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify sizes and styles of dd menu', async ({ page, browserName }) => {
-    const standPath = 'stories/components/dropdown-menu/tests/examples/sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variables = [
+    { size: 'm', disabled: false, selected: false, visible: true, stretch: 'min' },
+    { size: 'm', disabled: false, selected: false, visible: true, stretch: 'fixed' },
+    { size: 'm', disabled: false, selected: false, visible: true, stretch: false },
+    { size: 'm', disabled: true, selected: false, visible: true, stretch: undefined },
 
-    await page.setContent(htmlContent);
-    await page.waitForTimeout(100);
+    { size: 'l', disabled: false, selected: false, visible: true, stretch: 'min' },
+    { size: 'l', disabled: false, selected: false, visible: true, stretch: 'fixed' },
+    { size: 'l', disabled: false, selected: false, visible: true, stretch: false },
+    { size: 'l', disabled: true, selected: false, visible: true, stretch: undefined },
 
-    const ddM = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-size"]');
-    const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
+  ];
+  variables.forEach((item) => {
+    test(`Verify base dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@drag-and-drop',
+        '@card'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
 
-    const mItems = ddM.locator('[data-ui-name="DropdownMenu.Item"]');
-    const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]');
-
-    await test.step('Verify styles of M size', async () => {
-      const count1 = await mItems.count();
-
-      for (let i = 0; i < count1; i++) {
-        await checkStyles(mItems.nth(i), {
-          'font-size': '14px',
-          'min-height': '32px',
-          'padding': '6px 8px',
-          'background-color': 'rgba(0, 0, 0, 0)',
-        });
-      }
-    });
-
-    await test.step('Verify styles of L size', async () => {
-      const count1 = await mItems.count();
-
-      for (let i = 0; i < count1; i++) {
-        await checkStyles(lItems.nth(i), {
-          'font-size': '16px',
-          'min-height': '40px',
-          'padding': '8px 12px',
-          'background-color': 'rgba(0, 0, 0, 0)',
-        });
-      }
-    });
-
-    await test.step('Verify disabled styles', async () => {
-      await checkStyles(mItems.first(), {
-        opacity: '0.3',
-      });
-      await checkStyles(lItems.first(), {
-        opacity: '0.3',
-      });
-    });
-    if (browserName === 'firefox') return;
-    await test.step('Verify hover styles', async () => {
-      await mItems.nth(1).hover();
-      await checkStyles(mItems.nth(1), {
-        'background-color': 'rgb(244, 245, 249)',
-      });
-      await lItems.nth(1).hover();
-      await checkStyles(lItems.nth(1), {
-        'background-color': 'rgb(244, 245, 249)',
-      });
-      await page.waitForTimeout(100);
       await expect(page).toHaveScreenshot();
+
+      if (item.size == 'm') {
+        await test.step('Verify styles of M size', async () => {
+          const count1 = await locators.menuitem(page).count();
+
+          for (let i = 0; i < count1; i++) {
+            await checkStyles(locators.menuitem(page, i), {
+              'font-size': '14px',
+              'min-height': '32px',
+              'padding': '6px 8px',
+              'background-color': 'rgba(0, 0, 0, 0)',
+            });
+          }
+        });
+      }
+      if (item.size == 'l') {
+        await test.step('Verify styles of L size', async () => {
+          const count1 = await locators.menuitem(page).count();
+
+          for (let i = 0; i < count1; i++) {
+            await checkStyles(locators.menuitem(page, i), {
+              'font-size': '16px',
+              'min-height': '40px',
+              'padding': '8px 12px',
+              'background-color': 'rgba(0, 0, 0, 0)',
+            });
+          }
+        });
+      }
+      if (item.disabled) {
+        await test.step('Verify disabled styles', async () => {
+          const count1 = await locators.menuitem(page).count();
+
+          for (let i = 0; i < count1; i++) {
+            await checkStyles(locators.menuitem(page, i), {
+              opacity: '0.3',
+            });
+          }
+        });
+      }
+
+      if (browserName === 'firefox') return;
+      if (!item.disabled) {
+        await test.step('Verify hover styles', async () => {
+          await locators.menuitem(page, 1).hover();
+          await checkStyles(locators.menuitem(page, 1), {
+            'background-color': 'rgb(244, 245, 249)',
+          });
+        });
+      }
     });
   });
 
