@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import WidthExample from './examples/dd-width';
 import WithDividerExample from './examples/dd-with-divider';
+import DropdownBasePropsExample, { defaultDropDownPropsExample } from './examples/dropdown-base-props';
 import ListItemsTypeExample from './examples/list_item_types';
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
-import SizesExample from './examples/sizes';
 import SizesMultiselectExample from './examples/sizes-multiselect';
 import SizesSelectableExample from './examples/sizes-selectable';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
@@ -44,8 +44,37 @@ export const SizesMultiselect: Story = {
   render: SizesMultiselectExample,
 };
 
-export const Sizes: Story = {
-  render: SizesExample,
+export const DropdownBaseProps: StoryObj<typeof defaultDropDownPropsExample> = {
+  render: DropdownBasePropsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    selected: {
+      control: { type: 'boolean' },
+    },
+    visible: {
+      control: { type: 'boolean' },
+    },
+    stretch: {
+      control: { type: 'select' },
+      options: ['min', 'fixed', false],
+    },
+    disablePortal: {
+      control: { type: 'select' },
+      options: ['min', 'fixed', false],
+    },
+    locale: {
+      control: { type: 'select' },
+      options: ['ko', 'pl'],
+    },
+
+  },
+  args: defaultDropDownPropsExample,
 };
 
 export const Width: Story = {

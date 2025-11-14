@@ -28,8 +28,25 @@ export const locators = {
     const base = page.getByRole('group');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  menuitemradio: (page: Page, name?: string, index?: number) => {
-    const base = page.getByRole('menuitemradio', { name });
+  menuitemradio: (
+    page: Page,
+    arg1?: string | number,
+    arg2?: number,
+  ) => {
+    let name: string | undefined;
+    let index: number | undefined;
+
+    if (typeof arg1 === 'string') {
+      name = arg1;
+      index = arg2;
+    } else if (typeof arg1 === 'number') {
+      index = arg1;
+    }
+
+    const options: { name?: string } = {};
+    if (name) options.name = name;
+
+    const base = page.getByRole('menuitemradio', options);
     return typeof index === 'number' ? base.nth(index) : base;
   },
   menuitemcheckbox: (page: Page, index?: number) => {
