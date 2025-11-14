@@ -21,7 +21,9 @@ figma.connect(
         invalid: 'invalid',
         valid: 'valid',
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
       addonLeft: figma.boolean('← addon', {
         true: <InlineInput.Addon>{/* addon */}</InlineInput.Addon>,
       }),

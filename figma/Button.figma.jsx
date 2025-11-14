@@ -29,7 +29,9 @@ figma.connect(
       active: figma.enum('state', {
         active: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
       disabled: figma.enum('state', {
         disabled: true,
       }),
@@ -122,7 +124,9 @@ figma.connect(Button, 'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refa
     active: figma.enum('state', {
       active: true,
     }),
-    loading: figma.boolean('loading'),
+    loading: figma.enum('state', {
+      loading: true,
+    }),
     disabled: figma.enum('state', {
       disabled: true,
     }),

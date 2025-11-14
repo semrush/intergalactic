@@ -22,7 +22,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
     },
     example: (props) => <Select options={/* options */} {...props} />,
   },
@@ -67,7 +69,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
     },
     example: ({ size, addonLeft, addonRight, content, state, loading, disabled }) => {
       <Select options={/* options */} size={size} state={state} loading={loading} disabled={disabled} placeholder={/* placeholder */}>
@@ -105,7 +109,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
       title: figma.textContent('↳ title'),
     },
     example: ({ size, addonLeft, state, loading, disabled, title }) => (
