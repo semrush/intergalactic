@@ -1,3 +1,77 @@
+## [16.12.0] - 2025-11-14
+
+### @semcore/base-trigger
+
+- **Added** `data-ui-name` for Inner container.
+- **Fixed** `font-family` style for the `LinkTrigger` wasn't inherited.
+
+### @semcore/button
+
+- **Added** `data-ui-name` for Inner container.
+
+### @semcore/color-picker
+
+- **Fixed** Issue with `svg` in `ColorPicker.Trigger` and `ColorPicker.Item`.
+- **Fixed** `size` property didn't apply for the `PaletteManager.InputColor`.
+- **Fixed** Incorrect types for `PaletteManager`.
+- **Fixed** Validation issues in `PaletteManager.InputColor`.
+- **Fixed** "Blocked aria-hidden on an element" accessibility error for `ChevronDownM`.
+- **Fixed** `PaletteManager`'s add button active/hover states.
+
+### @semcore/d3-chart
+
+- **Added** The ability to use multiple synchronized tooltips on multiple charts.
+- **Fixed** `onClick` handler in child components overrides root `onClick` and called on mount.
+
+### @semcore/data-table
+
+- **Fixed** The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
+- **Fixed** SR didn't pronounce all items selecting/deselecting on table with pagination.
+- **Fixed** Keyboard interaction after mouse clicking in cell with few interactive elements.
+
+### @semcore/date-picker
+
+- **Fixed** Space key interactions in Date Picker (unable to switch months, apply Today, keep selected date, etc.)
+
+### @semcore/dropdown
+
+- **Changed** Canceled default behavior for `Arrow Up` `Arrow Down` keys.
+- **Added** Foundation to handle scroll ending.
+- **Added** `stopPropagation` when the `tab` key is pressed in an open dropdown with `click` interaction.
+
+### @semcore/dropdown-menu
+
+- **Fixed** "scroll to element" animation for keyboard interactions.
+
+### @semcore/ellipsis
+
+- **Changed** `innerHTML` to `textContent` in the calculation of ellipsis size.
+
+### @semcore/feature-highlight
+
+- **Fixed** Switching between highlighted Pills items left animation artifacts.
+
+### @semcore/feedback-form
+
+- **Fixed** `margin-bottom` of the `Email` illustration in the form success state.
+
+### @semcore/icon
+
+- **Changed** Set `pointer-events: none` for path's in interactive svg.
+
+### @semcore/input-tags
+
+- **Fixed** `disabled` state for `InputTags/InputTags.Tag`.
+
+### @semcore/tag
+
+- **Fixed** Font for tags in non-interactive state.
+
+### @semcore/wizard
+
+- **Fixed** Unnecessary scroll in small mode with long text in sidebar step.
+- **Fixed** Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
 ## [16.11.1] - 2025-10-30
 
 ### @semcore/data-table
