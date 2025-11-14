@@ -405,25 +405,25 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, rootRef, patterns, updateIndexToHover } = this.asProps;
+    const { eventEmitter, rootRef, patterns, updateIndexToHover, plotId } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const { clientX, clientY } = e;
 
     const index = this.getIndex(point);
 
     this.setState({ index }, () => {
-      eventEmitter.emit('setTooltipPosition', clientX, clientY);
-      eventEmitter.emit('setTooltipRenderingProps', {}, { index, patterns });
-      eventEmitter.emit('setTooltipVisible', index !== null);
+      eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+      eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, {}, { index, patterns });
+      eventEmitter.emit(`setTooltipVisible_${plotId}`, index !== null);
       updateIndexToHover(index);
     });
   });
 
   handlerMouseLeaveRoot = trottle(() => {
-    const { updateIndexToHover } = this.asProps;
+    const { updateIndexToHover, plotId } = this.asProps;
 
     this.setState({ index: null }, () => {
-      this.asProps.eventEmitter.emit('setTooltipVisible', false);
+      this.asProps.eventEmitter.emit(`setTooltipVisible_${plotId}`, false);
       updateIndexToHover(null);
     });
   });
