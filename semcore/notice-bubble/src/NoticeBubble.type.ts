@@ -1,22 +1,58 @@
 import type { PortalProps, BoxProps } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 import type { RefObject } from 'react';
 
 /** @deprecated */
 export interface INoticeBubbleContainerProps
   extends NoticeBubbleContainerProps,
   UnknownProperties {}
+
+/**
+ * @deprecated. Pass noticeBubbleContainer property from window.sm2.getNoticeBubbleContainer()
+ */
+export type NoticeBubbleContainerPortalProps = PortalProps;
+
 export type NoticeBubbleContainerProps = BoxProps &
-  PortalProps & {
-  /** Manager copy */
+  NoticeBubbleContainerPortalProps & {
+    /** Ref or element to mount bubbles in. You should element form window.sm2.getNoticeBubbleContainer() */
+    containerNode?: NodeByRef;
+    /** Manager copy */
     manager?: NoticeBubbleManagerClass;
     /** Specifies the locale for i18n support */
     locale?: string;
   };
 
+export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
+  containerNode?: NodeByRef;
+  // notice: NoticeBubbleInfoProps | NoticeBubbleWarningProps;
+  animationDuration: number;
+  getI18nText: ReturnType<typeof useI18n>;
+  styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | undefined;
+};
+
 /** @deprecated */
 export interface INoticeBubbleProps extends NoticeBubbleProps, UnknownProperties {}
 export type NoticeBubbleProps = BoxProps & {
+  /** Notice type */
+  type?: 'info' | 'warning';
+  /**
+   * Notice display duration. Set to 0 to disable auto-close.
+   */
+  duration?: number;
+  /**
+   * Enables animation on first rendering.
+   * @default false
+   */
+  initialAnimation?: boolean;
+  /**
+   * Use it for complex notices with important controls.
+   * If enabled, browser focus will be locked in the notice
+   * until it's closed. After close focus should return to the element
+   * where it was placed before notice appear.
+   */
+  focusLock?: boolean;
   /**
    * Notice visibility.
    */
@@ -40,50 +76,18 @@ export type NoticeBubbleProps = BoxProps & {
 export interface INoticeBubbleInfoProps extends NoticeBubbleInfoProps, UnknownProperties {}
 export type NoticeBubbleInfoProps = NoticeBubbleProps & {
   readonly type?: 'info';
-  /**
-   * Notice display duration. Set to 0 to disable auto-close.
-   */
-  duration?: number;
-  /**
-   * Enables animation on first rendering.
-   * @default false
-   */
-  initialAnimation?: boolean;
-  /**
-   * Use it for complex notices with important controls.
-   * If enabled, browser focus will be locked in the notice
-   * until it's closed. After close focus should return to the element
-   * where it was placed before notice appear.
-   */
-  focusLock?: boolean;
 };
 
 /** @deprecated */
 export interface INoticeBubbleWarningProps extends NoticeBubbleWarningProps, UnknownProperties {}
 export type NoticeBubbleWarningProps = NoticeBubbleProps & {
   readonly type?: 'warning';
-  /**
-   * Notice display duration.
-   */
-  duration?: number;
-  /**
-   * Enables animation on first rendering.
-   * @default false
-   */
-  initialAnimation?: boolean;
-  /**
-   * Use it for complex notices with important controls.
-   * If enabled, browser focus will be locked in the notice
-   * until it's closed. After close focus should return to the element
-   * where it was placed before notice appear.
-   */
-  focusLock?: boolean;
 };
 
 export type AddReturnObj = {
   uid: number;
   update: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => boolean;
-  remove: (uid: number) => boolean;
+  remove: () => boolean;
   ref: RefObject<HTMLElement>;
   focus: () => void;
 };
