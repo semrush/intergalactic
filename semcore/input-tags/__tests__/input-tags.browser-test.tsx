@@ -202,7 +202,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input-tags',
         '@ellipsis'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en');
+      await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
       const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
       const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
@@ -352,7 +352,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@input-tags',
       '@ellipsis'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en');
+    await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
     const ul = page.locator('ul');
     const label = page.locator('[data-ui-name="Text"]');
@@ -446,7 +446,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@input-tags',
       '@ellipsis'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en');
+    await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
     await test.step('Verify 1st Tag Text focused by Tab', async () => {
       await page.keyboard.press('Tab');

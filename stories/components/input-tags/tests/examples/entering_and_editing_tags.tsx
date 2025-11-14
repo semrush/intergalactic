@@ -84,7 +84,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             data-id={idx}
             onClick={handleEditTag}
             onKeyDown={handleTagKeyDown}
-            active={false}
+            active={props.active}
           >
             <InputTags.Tag.Text>
               <Ellipsis wMax={100}>{tag}</Ellipsis>
@@ -93,7 +93,7 @@ const Demo = (props: ExampleInputTagsProps) => {
           </InputTags.Tag>
         ))}
         <InputTags.Value
-          readOnly={props.disabled}
+          readOnly={props.readOnly}
           value={value}
           onChange={setValue}
           onKeyDown={handleInputKeyDown}
@@ -114,6 +114,9 @@ export const defaultProps: ExampleInputTagsProps = {
   state: undefined,
   disabled: false,
   delimiters: undefined,
+  editable: undefined,
+  readOnly: undefined,
+  active: false,
 };
 
 Demo.defaultProps = defaultProps;
