@@ -87,7 +87,12 @@ class DropdownMenuRoot extends AbstractDropdown {
   focusAndScrollToSelected() {
     const { selected, options } = this.menuElements;
 
-    if (!selected || !options || this.asProps.itemsCount !== undefined) return;
+    if (
+      !selected ||
+      !options ||
+      this.asProps.itemsCount !== undefined ||
+      this.asProps.preventDefaultFocusBehavior
+    ) return;
 
     this.scrollToNodeAsync(selected, true).then(() => {
       if (lastInteraction.isKeyboard() && this.asProps.visible) {

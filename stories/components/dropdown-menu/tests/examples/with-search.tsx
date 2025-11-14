@@ -18,8 +18,6 @@ const defeaultColumns = [
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
 const Demo = () => {
-  const searchRef = React.useRef<HTMLInputElement>(null);
-  const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null,
   );
@@ -42,14 +40,6 @@ const Demo = () => {
   const [selectedColumns, setSelectedColumns] = React.useState<string[]>(
     defaultSelectedColumns,
   );
-  const handleVisible = (visible: boolean) => {
-    setVisible(visible);
-    if (visible) {
-      setTimeout(() => {
-        searchRef.current?.focus();
-      }, 200);
-    }
-  };
   const resetToDefault = React.useCallback(() => {
     setSelectedColumns(defaultSelectedColumns);
   }, []);
@@ -67,10 +57,9 @@ const Demo = () => {
     <DropdownMenu
       selectable
       multiselect
-      visible={visible}
-      onVisibleChange={handleVisible}
       highlightedIndex={highlightedIndex}
       onHighlightedIndexChange={setHighlightedIndex}
+      preventDefaultFocusBehavior
     >
       <DropdownMenu.Trigger
         mt={2}
@@ -91,7 +80,7 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby='popper_id'>
-        <Select.InputSearch ref={searchRef} />
+        <Select.InputSearch />
         <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
           <Text bold id='popper_id'>
             Show table columns
