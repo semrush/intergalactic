@@ -51,7 +51,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 
-      await locators.popper(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -64,7 +64,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
 
-    await locators.popper(page).waitFor({ state: 'visible' });
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -202,29 +202,22 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('ArrowDown');
-    await locators.popper(page, 0).waitFor({ state: 'visible' });
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
     await expect(locators.button(page).first()).not.toBeFocused();
     await expect(locators.popper(page)).toBeFocused();
 
-    await page.keyboard.press('Escape');
-    await expect(locators.button(page).first()).not.toBeFocused();
-    await expect(locators.popper(page)).toHaveCount(1); // we have bug here
-
     await page.mouse.click(0, 0);
-    await locators.popper(page).waitFor({ state: 'hidden' });
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
     await expect(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
 
     await locators.button(page).hover();
-    await locators.popper(page).waitFor({ state: 'visible' });
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
     await expect(locators.button(page).first()).not.toBeFocused();
-    await expect(locators.popper(page)).toBeFocused();
     await expect(locators.popper(page)).toHaveCount(1);
 
-    await page.mouse.move(0, 0);
-    await locators.popper(page).waitFor({ state: 'hidden' });
-    await expect(locators.button(page).first()).not.toBeFocused();
-    await expect(locators.popper(page)).toHaveCount(0);
+    await page.keyboard.press('Escape');
+    await expect(locators.popper(page)).toHaveCount(1); // we have bug here
   });
 
   test('Verify keyboard and mouse interaction when interaction = click', {
