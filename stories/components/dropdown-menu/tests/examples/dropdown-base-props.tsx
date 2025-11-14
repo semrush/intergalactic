@@ -1,4 +1,5 @@
 import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
 import { Flex } from '@semcore/ui/flex-box';
@@ -12,6 +13,17 @@ const Demo = (props: DropDownPropsExample) => {
         <DropdownMenu.Trigger tag={Button}>M size</DropdownMenu.Trigger>
         <DropdownMenu.Menu data-testid='m-size'>
           <DropdownMenu.Item size={props.size} selected={props.selected} disabled={props.disabled}>Save disadled</DropdownMenu.Item>
+          <DropdownMenu.Item size={props.size} disabled={props.disabled}>Rename</DropdownMenu.Item>
+          <DropdownMenu.Item size={props.size} disabled={props.disabled}>Download</DropdownMenu.Item>
+          <DropdownMenu.Item size={props.size} disabled={props.disabled}>Delete</DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>
+
+      <DropdownMenu size={props.size} visible={props.visible} disablePortal={props.disablePortal} stretch={props.stretch}>
+        <DropdownMenu.Trigger tag={Button}>L size</DropdownMenu.Trigger>
+        <DropdownMenu.Menu data-testid='l-size'>
+          <DropdownMenu.Item size={props.size} selected={props.selected} disabled={props.disabled}>Save disabled</DropdownMenu.Item>
+          <Divider />
           <DropdownMenu.Item size={props.size} disabled={props.disabled}>Rename</DropdownMenu.Item>
           <DropdownMenu.Item size={props.size} disabled={props.disabled}>Download</DropdownMenu.Item>
           <DropdownMenu.Item size={props.size} disabled={props.disabled}>Delete</DropdownMenu.Item>
