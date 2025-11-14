@@ -11,7 +11,7 @@ const Demo = (props: ExampleInputTagsProps) => {
   return (
     <Flex direction='column' gap={2}>
       <Flex direction='column' gap={2} data-testid='normal-state' w={450}>
-        <InputTags size='m' state='normal' disabled>
+        <InputTags size='m' state='normal' disabled={props.disabled}>
           <InputTags.Tag
             size={props.size}
             theme={props.theme}

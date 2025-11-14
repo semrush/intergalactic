@@ -10,6 +10,10 @@ SInputTags {
   }
 }
 
+SInputTags[disabled] {
+  cursor: default;
+}
+
 SInputTags SContainer:focus SOutline {
   border-color: var(--intergalactic-border-info-active, #006dca);
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
