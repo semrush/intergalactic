@@ -1,11 +1,11 @@
 import { Flex } from '@semcore/ui/base-components';
 import Ellipsis from '@semcore/ui/ellipsis';
-import type { InputTagsProps, InputTagsValueProps } from '@semcore/ui/input-tags';
+import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps;
+type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps;
 
 const Demo = (props: ExampleInputTagsProps) => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
