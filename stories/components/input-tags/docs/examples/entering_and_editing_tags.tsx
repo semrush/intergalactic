@@ -79,6 +79,7 @@ const Demo = () => {
             onClick={handleEditTag}
             onKeyDown={handleTagKeyDown}
             active={false}
+            editable
           >
             <InputTags.Tag.Text>
               <Ellipsis wMax={100}>{tag}</Ellipsis>
