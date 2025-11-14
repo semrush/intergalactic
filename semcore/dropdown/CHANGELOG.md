@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Foundation to handle scroll ending.
+- `stopPropagation` when the `tab` key is pressed in an open dropdown with `click` interaction.
 
 ## [16.1.1] - 2025-10-29
 
