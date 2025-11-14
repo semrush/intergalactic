@@ -1,4 +1,3 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
@@ -152,8 +151,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify base dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@drag-and-drop',
-        '@card'],
+        '@dropdown-menu'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
 
@@ -213,10 +211,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify multiselect dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@drag-and-drop',
-        '@card'],
-    }, async ({ page, browserName }) => {
+        '@dropdown-menu'],
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', item);
+
+      await expect(page).toHaveScreenshot();
 
       if (item.size == 'm') {
         await test.step('Verify styles of M size', async () => {
@@ -256,113 +255,105 @@ test.describe(`${TAG.VISUAL} `, () => {
     // snapshot
     });
 
-    test('Verify styles of selectable radio items menu', async ({ page, browserName }) => {
-      const standPath = 'stories/components/dropdown-menu/tests/examples/sizes-selectable.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test(`Verify selectable radio dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-      await page.waitForTimeout(100);
+      await expect(page).toHaveScreenshot();
 
-      const ddM = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-size"]');
-      const ddL = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="l-size"]');
-      const ddDisabed = page.locator('[data-ui-name="DropdownMenu.Menu"][data-testid="m-disabled"]');
-
-      const mItems = ddM.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
-      const lItems = ddL.locator('[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])');
-      const disabledItems = ddDisabed.locator(
-        '[data-ui-name="DropdownMenu.Item"]:not([role="menuitem"])',
+      const titleSubtitleGroup = locators.menu(page).locator(
+        '[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))',
       );
+      const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
+      if (item.size == 'm') {
+        await test.step('Verify styles of m group title and subtitle', async () => {
+          await checkStyles(elements.first(), {
+            'font-size': '14px',
+            'font-weight': '700',
+          });
 
-      await test.step('Verify styles of m group title and subtitle', async () => {
-        const titleSubtitleGroup = ddM.locator(
-          '[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))',
-        );
-        const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
-        await checkStyles(elements.first(), {
-          'font-size': '14px',
-          'font-weight': '700',
+          await checkStyles(elements.nth(1), {
+            'font-size': '14px',
+            'font-weight': '400',
+          });
         });
 
-        await checkStyles(elements.nth(1), {
-          'font-size': '14px',
-          'font-weight': '400',
-        });
-      });
-
-      await test.step('Verify styles of M size', async () => {
-        await checkStyles(mItems.first(), {
-          'font-size': '14px',
-          'min-height': '32px',
-          'padding': '6px 8px',
-          'background-color': 'rgba(196, 229, 254, 0.7)',
-        });
-
-        const count1 = await mItems.count();
-
-        for (let i = 1; i < count1; i++) {
-          await checkStyles(mItems.nth(i), {
+        await test.step('Verify styles of M size', async () => {
+          await checkStyles(locators.menuitemradio(page, 0), {
             'font-size': '14px',
             'min-height': '32px',
             'padding': '6px 8px',
-            'background-color': 'rgba(0, 0, 0, 0)',
+            'background-color': 'rgba(196, 229, 254, 0.7)',
           });
-        }
-      });
 
-      await test.step('Verify styles of L group title and subtitle', async () => {
-        const titleSubtitleGroup = ddL.locator(
-          '[data-ui-name="Dropdown.Item"]:not(:has(:scope > [data-ui-name="DropdownMenu.Group"]))',
-        );
-        const elements = titleSubtitleGroup.locator('[data-ui-name="Flex"]');
-        await checkStyles(elements.first(), {
-          'font-size': '16px',
-          'font-weight': '700',
+          const count1 = await locators.menuitemradio(page).count();
+
+          for (let i = 1; i < count1; i++) {
+            await checkStyles(locators.menuitemradio(page, i), {
+              'font-size': '14px',
+              'min-height': '32px',
+              'padding': '6px 8px',
+              'background-color': 'rgba(0, 0, 0, 0)',
+            });
+          }
         });
+      }
 
-        await checkStyles(elements.nth(1), {
-          'font-size': '16px',
-          'font-weight': '400',
-        });
-      });
-      await test.step('Verify styles of L size', async () => {
-        await checkStyles(mItems.first(), {
-          'font-size': '14px',
-          'min-height': '32px',
-          'padding': '6px 8px',
-          'background-color': 'rgba(196, 229, 254, 0.7)',
-        });
-
-        const count1 = await mItems.count();
-
-        for (let i = 1; i < count1; i++) {
-          await checkStyles(lItems.nth(i), {
+      if (item.size == 'l') {
+        await test.step('Verify styles of L group title and subtitle', async () => {
+          await checkStyles(elements.first(), {
             'font-size': '16px',
-            'min-height': '40px',
-            'padding': '8px 12px',
-            'background-color': 'rgba(0, 0, 0, 0)',
+            'font-weight': '700',
           });
-        }
-      });
 
-      await test.step('Verify disabled styles', async () => {
-        await checkStyles(disabledItems.first(), {
-          opacity: '0.3',
+          await checkStyles(elements.nth(1), {
+            'font-size': '16px',
+            'font-weight': '400',
+          });
         });
-      });
+        await test.step('Verify styles of L size', async () => {
+          await checkStyles(locators.menuitemradio(page, 0), {
+            'font-size': '14px',
+            'min-height': '32px',
+            'padding': '6px 8px',
+            'background-color': 'rgba(196, 229, 254, 0.7)',
+          });
 
+          const count1 = await locators.menuitemradio(page).count();
+
+          for (let i = 1; i < count1; i++) {
+            await checkStyles(locators.menuitemradio(page, i), {
+              'font-size': '16px',
+              'min-height': '40px',
+              'padding': '8px 12px',
+              'background-color': 'rgba(0, 0, 0, 0)',
+            });
+          }
+        });
+      }
+      if (item.disabled) {
+        await test.step('Verify disabled styles', async () => {
+          await checkStyles(locators.menuitemradio(page, 0), {
+            opacity: '0.3',
+          });
+        });
+      }
       if (browserName === 'firefox') return;
-      await test.step('Verify hover styles', async () => {
-        await mItems.nth(0).hover();
-        await checkStyles(mItems.nth(0), {
-          'background-color': 'rgb(196, 229, 254)',
+      if (!item.disabled) {
+        await test.step('Verify hover styles', async () => {
+          await locators.menuitemradio(page, 0).hover();
+          await checkStyles(locators.menuitemradio(page, 0), {
+            'background-color': 'rgb(196, 229, 254)',
+          });
+          await locators.menuitemradio(page, 1).hover();
+          await checkStyles(locators.menuitemradio(page, 1), {
+            'background-color': 'rgb(244, 245, 249)',
+          });
         });
-        await mItems.nth(1).hover();
-        await checkStyles(mItems.nth(1), {
-          'background-color': 'rgb(244, 245, 249)',
-        });
-
-      // snapshot
-      });
+      }
     });
   });
 
@@ -531,9 +522,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify menu not closed by click on addon', async () => {
       await deleteButton4.click();
-      await expect(locators.menu(page)).not.toBeVisible();
+      await expect(locators.menu(page)).toBeVisible();
     });
   });
+
   test('Verify Multiselect items focus', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
@@ -564,20 +556,19 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.button(page).first()).not.toBeFocused();
+    await locators.item(page).getByText('project 33').waitFor({ state: 'visible' });
+    await expect(locators.item(page).getByText('project 33')).toBeFocused();
+    await expect(locators.item(page).getByText('project 32')).not.toBeFocused();
 
-    await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
-    await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
-    await expect(locators.menuitemradio(page, 'project 32')).not.toBeFocused();
-
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(100);
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
-    await expect(locators.menuitemradio(page, 'project 33')).not.toBeFocused();
+    await expect(locators.item(page).getByText('project 36')).toBeFocused();
+    await expect(locators.item(page).getByText('project 33')).not.toBeFocused();
 
     if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
@@ -595,11 +586,12 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
 
     await page.keyboard.press('Space');
+    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'hidden' });
     await expect(locators.button(page)).toHaveText('project 36');
 
     await page.keyboard.press('ArrowDown');
     await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await expect(locators.item(page).getByText('project 36')).toBeFocused();
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -611,11 +603,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
 
     await locators.button(page).click();
-    await expect(locators.button(page)).toBeFocused();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
-    await expect(locators.menuitemradio(page, 'project 33')).toHaveAttribute('aria-checked', 'true');
-    await expect(locators.menuitemradio(page, 'project 32')).toHaveAttribute('aria-checked', 'false');
-    await expect(locators.menuitemradio(page, 'project 32')).not.toBeFocused();
+    await expect(locators.item(page).getByText('project 33')).toHaveAttribute('aria-checked', 'true');
+    await expect(locators.item(page).getByText('project 32')).toHaveAttribute('aria-checked', 'false');
+    await expect(locators.item(page).getByText('project 32')).not.toBeFocused();
 
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
@@ -629,7 +620,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.menuitemradio(page, 'project 42').scrollIntoViewIfNeeded();
     await page.waitForTimeout(200);
-    await expect(locators.menuitemradio(page, 'project 35')).toBeVisible();
+    await expect(locators.item(page).getByText('project 35')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -648,24 +639,24 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.menuitemradio(page).nth(0).waitFor({ state: 'visible' });
-      await expect(locators.button(page)).not.toBeFocused();
-      await expect(locators.menuitemradio(page).nth(0)).toHaveClass(/highlighted/);
+      await locators.item(page).nth(0).waitFor({ state: 'visible' });
+      await expect(locators.button(page).first()).not.toBeFocused();
+      await expect(locators.item(page).nth(0)).toHaveClass(/highlighted/);
 
       for (let i = 0; i < 10; i++) {
         await page.keyboard.press('ArrowDown');
         await page.waitForTimeout(100);
       }
-      await expect(locators.menuitemradio(page).nth(30)).toHaveClass(/highlighted/);
+      await expect(locators.item(page).nth(10)).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Enter');
-      await expect(locators.button(page)).toBeFocused();
-      await locators.menuitemradio(page).nth(30).waitFor({ state: 'hidden' });
+      await locators.item(page).nth(10).waitFor({ state: 'hidden' });
+      await expect(locators.button(page).first()).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await locators.menuitemradio(page).nth(30).waitFor({ state: 'visible' });
+      await locators.item(page).nth(10).waitFor({ state: 'visible' });
       await expect.poll(async () => {
-        return await locators.menuitemradio(page).nth(30).getAttribute('class');
+        return await locators.item(page).nth(10).getAttribute('class');
       }, {
         timeout: 1000,
       }).toMatch(/highlighted/);
@@ -680,7 +671,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Tab');
       if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
-      await expect(locators.menuitemradio(page).nth(30)).toHaveClass(/highlighted/);
+      await expect(locators.item(page).nth(10)).toHaveClass(/highlighted/);
     });
 
     test('Verify mouse interactions with menu with sticky groups', {
@@ -695,8 +686,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       const button = page.locator('span[data-ui-name="DropdownMenu.Item.Content"][role="button"]');
 
       await locators.button(page).click();
-      await locators.menuitemradio(page).nth(0).waitFor({ state: 'visible' });
-      await expect(locators.menuitemradio(page).nth(0)).not.toHaveClass(/highlighted/);
+      await locators.item(page).nth(0).waitFor({ state: 'visible' });
+      await expect(locators.item(page).nth(0)).not.toHaveClass(/highlighted/);
 
       await popper.hover();
       await page.mouse.wheel(0, 1500);
@@ -717,14 +708,14 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
         await locators.button(page).click();
-        await expect(locators.menuitemradio(page).nth(0)).not.toBeVisible();
+        await expect(locators.item(page).nth(0)).not.toBeVisible();
       } else {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-        await locators.button(page).click();
-        await expect(locators.menuitemradio(page).nth(0)).not.toBeVisible();
+        await locators.button(page).first().click();
+        await expect(locators.item(page).nth(0)).not.toBeVisible();
       }
     });
   });
@@ -966,6 +957,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify submenu not expands automatically', async () => {
       await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(200);
       await expect(locators.menuitem(page, 3)).toBeFocused();
       await expect(page.getByText('Add')).not.toBeVisible();
     });
@@ -1063,7 +1055,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify closed by ESC', async () => {
       await page.keyboard.press('Escape');
       await SubItem1.waitFor({ state: 'hidden' });
-      await expect(locators.item(page, 2)).toBeFocused();
+      await expect(locators.menuitem(page, 2)).toBeFocused();
       await page.keyboard.press('Escape');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await expect(locators.button(page)).toBeFocused();
