@@ -87,7 +87,15 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   protected afterOpenPopper() {
-    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    let highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const elementProps = this.itemProps[highlightedIndex];
+
+    if (elementProps?.disabled) {
+      highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+    }
+
+    if (highlightedIndex === -1) return;
+
     const element = this.itemRefs[highlightedIndex];
     element?.focus();
     if (this.role === 'menu') {
