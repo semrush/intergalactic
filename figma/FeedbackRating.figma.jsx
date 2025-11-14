@@ -5,7 +5,7 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 
 // figma.connect(
 //     SliderRating.Star,
-//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55646-2220&t=VH03GkxOOasazgnM-11', {
+//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298578&t=7CEXrbu9XEfMUFlr-11', {
 //     example: () => (
 //         <SliderRating.Star />
 //     )
@@ -13,7 +13,7 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 
 // figma.connect(
 //     SliderRating,
-//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=42668-2138&t=wmeCZaspBw4PtpTZ-11', {
+//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298578&t=7CEXrbu9XEfMUFlr-11', {
 //     variant: { 'value': '1,2,3,4,5' },
 //     props: {
 //         value: figma.number('value'),
@@ -25,7 +25,7 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 
 // figma.connect(
 //     FeedbackRatingForm.Checkbox,
-//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=42668-2138&t=wmeCZaspBw4PtpTZ-11', {
+//     'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298578&t=7CEXrbu9XEfMUFlr-11', {
 //     props: {
 //         label: figma.textContent('↳ text'),
 //     },
@@ -36,21 +36,21 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 
 figma.connect(
     FeedbackRating,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55796-3861&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
         variant: { 'state': 'Notice' },
     props: {
-        notificationTitle: figma.boolean('notification title', {
-            true: figma.textContent('↳ title'),
-            false: undefined,
-        }),
-        notificationText: figma.textContent('↳ text'),
+        // notificationTitle: figma.boolean('notification title', {
+        //     true: figma.textContent('↳ title'),
+        //     false: undefined,
+        // }),
+        // notificationText: figma.textContent('↳ text'),
         learnMoreLink: figma.boolean('Learn more link', {
             true: figma.children('Link'),
             false: undefined,
         }),
     },
     example: ({ notificationTitle, notificationText, learnMoreLink }) => (
-        <FeedbackRating notificationTitle={notificationTitle} notificationText={notificationText} learnMoreLink={/*Set URL */} header={/* Add Modal title */} submitText={/* Add Modal submit button text */} formConfig={/* Add form config */}             description={
+        <FeedbackRating notificationTitle={/* notificationTitle */} notificationText={/* notificationText */} learnMoreLink={/*Set URL */} header={/* Add Modal title */} submitText={/* Add Modal submit button text */} formConfig={/* Add form config */}             description={
             <>
                 We will only use this email to respond to you on your feedback.
                 {' '}
@@ -63,15 +63,15 @@ figma.connect(
 
 figma.connect(
     FeedbackRating,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=55796-3861&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
     variant: { 'state': 'Form' },
     props: {
         header: figma.textContent('↳ title'),
     },
     example: ({ header }) => (
         <FeedbackRating 
-            notificationTitle={notificationTitle} 
-            notificationText={notificationText} 
+            notificationTitle={/* notificationTitle */} 
+            notificationText={/* notificationText */} 
             learnMoreLink={/* Set URL */} 
             header={header} 
             submitText={/* Add Modal submit button text */} 

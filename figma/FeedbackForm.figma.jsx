@@ -5,7 +5,7 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 
 figma.connect(
     FeedbackForm,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10267-96106&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298563&t=7CEXrbu9XEfMUFlr-11', {
 
     example: () => (
         <FeedbackForm loading={loading}>

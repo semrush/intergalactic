@@ -6,7 +6,7 @@ import { MathPlusL } from '@semcore/ui/icon';
 
 figma.connect(
     DnD,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10355-198972&t=ZzJR7SMXKxVeObuH-11',
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-292261&t=7CEXrbu9XEfMUFlr-11',
     {
         props: {
             title: figma.textContent('↳ title'),

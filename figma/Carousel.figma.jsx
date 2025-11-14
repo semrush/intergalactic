@@ -4,7 +4,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 figma.connect(
   Carousel,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10259-107911&t=onQIkzskH4lPCKHQ-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-292306&t=7CEXrbu9XEfMUFlr-11',
   {
     variant: { 'screen width': '>480px' },
     props: {
@@ -33,7 +33,7 @@ figma.connect(
 
 figma.connect(
     Carousel,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10259-107911&t=onQIkzskH4lPCKHQ-11',
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-292306&t=7CEXrbu9XEfMUFlr-11',
     {
       variant: { 'screen width': '≤480px' },
       props: {

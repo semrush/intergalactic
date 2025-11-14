@@ -6,7 +6,7 @@ import { Box } from '@semcore/ui/base-components';
 
 figma.connect(
     NoData,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10324-191512&t=axa0bYLOe9rBO9ps-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-302929&t=7CEXrbu9XEfMUFlr-11', {
     variant: { 'case': 'No data' },
 
     example: () => (
@@ -17,7 +17,7 @@ figma.connect(
 
 figma.connect(
     Error,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10324-191512&t=axa0bYLOe9rBO9ps-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-302929&t=7CEXrbu9XEfMUFlr-11', {
     variant: { 'case': 'Error (we know about)' },
     props: {
         actions: figma.children('Button'),
@@ -35,7 +35,7 @@ figma.connect(
 
 figma.connect(
     Error,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10324-191512&t=axa0bYLOe9rBO9ps-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-302929&t=7CEXrbu9XEfMUFlr-11', {
     variant: { 'case': 'Error (we do not know about)' },
     props: {
         actions: figma.children('Button'),
@@ -59,7 +59,7 @@ figma.connect(
 
 figma.connect(
     WidgetEmpty,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10324-191512&t=axa0bYLOe9rBO9ps-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-302929&t=7CEXrbu9XEfMUFlr-11', {
     variant: { 'case': 'Custom' },
     props: {
         title: figma.textContent('↳ title'),

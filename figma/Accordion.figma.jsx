@@ -4,7 +4,7 @@ import { Box } from '@semcore/ui/base-components';
 
 figma.connect(
     Accordion.Item.Toggle,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10085-55594&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10085-55594&t=7CEXrbu9XEfMUFlr-11', {
     props: {
         use: figma.enum('use', {
             'primary': 'primary',
@@ -16,7 +16,7 @@ figma.connect(
         <Accordion.Item.Toggle>
             <Accordion.Item.ToggleButton>
               <Accordion.Item.Chevron mr={2} />
-              /* Add text ${index + 1} */
+              /* Add text */
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
     )
@@ -24,18 +24,18 @@ figma.connect(
 
 figma.connect(
     Accordion.Item.Collapse,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111795&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111795&t=7CEXrbu9XEfMUFlr-11', {
     
     example: () => (
         <Accordion.Item.Collapse>
-            <Box p='/* Set paddings */'>{/* Add text ${index + 1} */}</Box>
+            <Box p='/* Set paddings */'>{/* Add text */}</Box>
           </Accordion.Item.Collapse>
     )
 });
 
 figma.connect(
     Accordion.Item,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111805&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111805&t=7CEXrbu9XEfMUFlr-11', {
     props: {
         toggle: figma.children('Accordion.Item.Toggle'),
         collapse: figma.children('Accordion.Item.Collapse'),
@@ -50,7 +50,7 @@ figma.connect(
 
 figma.connect(
     Accordion,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111971&t=wmeCZaspBw4PtpTZ-11', {
+    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111971&t=7CEXrbu9XEfMUFlr-11', {
     props: {
         children: figma.children('Accordion.Item'),
         use: figma.nestedProps('Accordion.Item.Toggle', {
