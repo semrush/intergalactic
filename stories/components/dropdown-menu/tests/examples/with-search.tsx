@@ -6,7 +6,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
-import React from 'react';
+import React, { useState } from 'react';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },
@@ -18,6 +18,7 @@ const defeaultColumns = [
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
 const Demo = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null,
   );
@@ -59,6 +60,7 @@ const Demo = () => {
       multiselect
       highlightedIndex={highlightedIndex}
       onHighlightedIndexChange={setHighlightedIndex}
+      onVisibleChange={setIsVisible}
     >
       <DropdownMenu.Trigger
         mt={2}
@@ -79,7 +81,7 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby='popper_id'>
-        <Select.InputSearch />
+        <Select.InputSearch autoFocus={isVisible} />
         <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
           <Text bold id='popper_id'>
             Show table columns
