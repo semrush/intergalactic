@@ -1,14 +1,10 @@
-import { platform } from 'os';
+import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
-
-test.describe('InlineEdit', () => {
+test.describe(`@inline-edit ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
     // base check
     {
@@ -37,10 +33,7 @@ test.describe('InlineEdit', () => {
   });
 
   test('Editable tag', async ({ page }) => {
-    const standPath = 'stories/components/inline-edit/docs/examples/editable_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-edit/docs/examples/editable_tag.tsx', 'en');
 
     // base check
     {
@@ -69,10 +62,7 @@ test.describe('InlineEdit', () => {
   });
 
   test('Preudo network interaction', async ({ page }) => {
-    const standPath = 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx', 'en');
 
     // base check
     {
