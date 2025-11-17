@@ -16,7 +16,7 @@ export type NoticeBubbleContainerPortalProps = PortalProps;
 
 export type NoticeBubbleContainerProps = BoxProps &
   NoticeBubbleContainerPortalProps & {
-    /** Ref or element to mount bubbles in. You should element form window.sm2.getNoticeBubbleContainer() */
+    /** Ref or element to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
     containerNode?: NodeByRef;
     /** Manager copy */
     manager?: NoticeBubbleManagerClass;
@@ -26,7 +26,6 @@ export type NoticeBubbleContainerProps = BoxProps &
 
 export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
   containerNode?: NodeByRef;
-  // notice: NoticeBubbleInfoProps | NoticeBubbleWarningProps;
   animationDuration: number;
   getI18nText: ReturnType<typeof useI18n>;
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | undefined;
@@ -84,7 +83,7 @@ export type NoticeBubbleWarningProps = NoticeBubbleProps & {
   readonly type?: 'warning';
 };
 
-export type AddReturnObj = {
+export type AddedNoticeMeta = {
   uid: number;
   update: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => boolean;
   remove: () => boolean;
@@ -98,18 +97,20 @@ export type NoticeBubbleManagerClass = {
   /**
    * Creates and shows a notice.
    * */
-  add: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => AddReturnObj;
+  add: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => AddedNoticeMeta;
   /**
    * Updates notice by uid.
-   * */
-  update: (
-    uid: number,
-    props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>,
-  ) => boolean;
+   * @deprecated use replace instead.
+   */
+  update: (uid: number, props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>) => boolean;
   /**
    * Removes notice by uid.
    * */
   remove: (uid: number) => boolean;
+  /**
+   * Replace notice by uid.
+   */
+  replace: (uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
   /**
    * Replace last notice (if it is existing)
    */
@@ -138,37 +139,3 @@ export declare const NoticeBubbleContainer: Intergalactic.Component<
    * */
   Warning: typeof NoticeBubbleWarning;
 };
-// export declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
-//   /**
-//    * Creates and shows a notice.
-//    * */
-//   add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): {
-//     uid: string;
-//     update: (props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>) => boolean;
-//     remove: () => boolean;
-//     ref: React.RefObject<HTMLDivElement>;
-//     focus: () => void;
-//   };
-//   /**
-//    * Updates notice by uid.
-//    * */
-//   update(
-//     uid: string,
-//     props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>,
-//   ): boolean;
-//   /**
-//    * Removes notice by uid.
-//    * */
-//   remove(uid: string): boolean;
-//   /**
-//    * Replace last notice (if it is existing)
-//    */
-//   replaceLast: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
-// }
-//
-// export declare const noticeBubbleDefaultManager: NoticeBubbleManager;
-//
-// /**
-//  * @deprecated Use `import { noticeBubbleDefaultManager } from ...` instead
-//  */
-// export default noticeBubbleDefaultManager;

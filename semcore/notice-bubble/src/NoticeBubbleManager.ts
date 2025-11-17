@@ -8,7 +8,7 @@ import type {
   NoticeBubbleManagerClass,
   NoticeBubbleInfoProps,
   NoticeBubbleWarningProps,
-  AddReturnObj,
+  AddedNoticeMeta,
 } from './NoticeBubble.type';
 
 const EVENT_NAME = 'CHANGE';
@@ -35,7 +35,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     this.emitter.emit(EVENT_NAME, this.items);
   }
 
-  public add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): AddReturnObj {
+  public add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): AddedNoticeMeta {
     const uid = this.counter++;
     const ref = React.createRef<HTMLElement>();
     const focus = () => {
@@ -78,6 +78,18 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
       return true;
     }
     return false;
+  }
+
+  public replace(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {
+    if (this.replaceTimer) {
+      clearTimeout(this.replaceTimer);
+    }
+
+    this.remove(uid);
+
+    this.replaceTimer = setTimeout(() => {
+      this.add(props);
+    }, 300);
   }
 
   public replaceLast(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {

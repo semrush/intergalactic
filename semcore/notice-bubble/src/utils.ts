@@ -3,7 +3,7 @@ class Timer {
   private readonly callback: Function;
 
   private remaining: number;
-  private timerId: ReturnType<typeof setTimeout> | null = null;
+  private timerId: number | null = null;
   private start: number = 0;
 
   public paused: boolean;
@@ -31,7 +31,7 @@ class Timer {
     if (this.timerId) {
       clearTimeout(this.timerId);
     }
-    this.timerId = setTimeout(this.callback, this.remaining);
+    this.timerId = window.setTimeout(this.callback, this.remaining);
   }
 
   reset() {
