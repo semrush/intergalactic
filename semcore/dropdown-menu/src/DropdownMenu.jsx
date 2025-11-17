@@ -93,7 +93,7 @@ class DropdownMenuRoot extends AbstractDropdown {
     if (!selected || !options || this.asProps.itemsCount !== undefined || isFocusAlreadyInPopper) return;
 
     this.scrollToNodeAsync(selected, true).then(() => {
-      if (lastInteraction.isKeyboard() && this.asProps.visible) {
+      if (this.asProps.visible) {
         selected.focus({ preventScroll: true });
       }
     });
