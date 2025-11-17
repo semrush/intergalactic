@@ -2,6 +2,7 @@ import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
@@ -87,7 +88,9 @@ class DropdownMenuRoot extends AbstractDropdown {
   focusAndScrollToSelected() {
     const { selected, options } = this.menuElements;
 
-    if (!selected || !options || this.asProps.itemsCount !== undefined) return;
+    const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
+
+    if (!selected || !options || this.asProps.itemsCount !== undefined || isFocusAlreadyInPopper) return;
 
     this.scrollToNodeAsync(selected, true).then(() => {
       if (lastInteraction.isKeyboard() && this.asProps.visible) {
