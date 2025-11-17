@@ -119,7 +119,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
-    const randomText = 'TestText123';
+    const text = 'TestText123';
 
     // Verify initial attributes and focus
     await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
@@ -140,7 +140,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     // Verify ESC does not save text
     await selectAllText(page);
-    await locators.inlineEditEdit(page).locator('input').fill(randomText);
+    await locators.inlineEditEdit(page).locator('input').fill(text);
     await page.keyboard.press('Escape');
     await assertEditModeClosed(page);
     await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
@@ -148,10 +148,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     // Verify Enter saves text
     await page.keyboard.press('Space');
     await selectAllText(page);
-    await locators.inlineEditEdit(page).locator('input').fill(randomText);
+    await locators.inlineEditEdit(page).locator('input').fill(text);
     await page.keyboard.press('Enter');
     await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', `Edit: ${randomText}`);
+    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', `Edit: ${text}`);
 
     // Verify confirm button saves and returns focus
     await page.keyboard.press('Space');
@@ -183,7 +183,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
-    const randomText = 'TestText123';
+    const text = 'TestText123';
 
     await test.step('Verify edit mode activated by mouse click', async () => {
       await locators.inlineEdit(page).click();
@@ -200,7 +200,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify click on Cancel not saves text updates', async () => {
       await selectAllText(page);
-      await page.keyboard.type(randomText);
+      await page.keyboard.type(text);
       await locators.button(page, 'Cancel').click();
       await assertEditModeClosed(page);
       await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
@@ -230,25 +230,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
-    await test.step('Verify cancel preserves initial text after scroll', async () => {
-      await page.evaluate(() => {
-        const newLines = Array(100).fill(0).map(() => '<br/>').join('');
-        document.body.innerHTML = newLines + document.body.innerHTML;
-      });
-
-      await page.mouse.wheel(0, 1000);
-
-      const randomText = Math.random().toString().substring(2);
-      const initialText = await locators.inlineEdit(page).textContent();
-
-      await locators.inlineEdit(page).click();
-      await locators.inlineEditEdit(page).locator('input').fill(randomText);
-      await locators.button(page, 'Cancel').click();
-      await assertEditModeClosed(page);
-
-      const textContent = await locators.inlineEdit(page).textContent();
-      expect(textContent?.replace(/\s+SaveCancel$/, '').trim()).toBe(initialText?.trim());
+    await page.evaluate(() => {
+      const spacer = document.createElement('div');
+      spacer.innerHTML = Array(100).fill(0).map(() => '<br/>').join('');
+      document.body.insertBefore(spacer, document.body.firstChild);
     });
+
+    await page.mouse.wheel(0, 1000);
+
+    const randomText = Math.random().toString().substring(2);
+    const initialText = await locators.inlineEdit(page).textContent();
+
+    await locators.inlineEdit(page).click();
+    await locators.inlineEditEdit(page).locator('input').fill(randomText);
+    await locators.button(page, 'Cancel').click();
+    await assertEditModeClosed(page);
+
+    const textContent = await locators.inlineEdit(page).textContent();
+    expect(textContent?.replace(/\s+SaveCancel$/, '').trim()).toBe(initialText?.trim());
   });
 
   test('Verify editable tag keyboard interactions', {
