@@ -1,4 +1,5 @@
 import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
 import Link from '@semcore/ui/link';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
@@ -32,15 +33,10 @@ const Demo = (props: BaseNoticeBubbleProps) => {
     });
   };
 
-  const handleClick2 = () => {
+  const handleClickSuccess = () => {
     manager2.add({
-      children: (
-        <>
-          Link2 was moved to
-          {' '}
-          <Link href='#'>Cats2 from outer space group</Link>
-        </>
-      ),
+      icon: <CheckM color='--intergalactic-icon-primary-success' />,
+      children: 'Keyword was successfully moved to Keyword Analyzer!',
       initialAnimation: props.initialAnimation,
       duration: props.duration,
       type: props.type,
@@ -53,7 +49,7 @@ const Demo = (props: BaseNoticeBubbleProps) => {
     });
   };
 
-  const handleClickReplace2 = () => {
+  const handleClickReplace = () => {
     manager2.replaceLast({
       children: (
         <>
@@ -82,11 +78,11 @@ const Demo = (props: BaseNoticeBubbleProps) => {
       </Button>
       <br />
       <br />
-      <Button onClick={handleClick2} ref={openButtonRef2}>
-        Show basic notice2
+      <Button onClick={handleClickSuccess} ref={openButtonRef2}>
+        Show success notice
       </Button>
-      <Button onClick={handleClickReplace2} ref={replaceButtonRef}>
-        replace last in 2
+      <Button onClick={handleClickReplace} ref={replaceButtonRef}>
+        replace last success
       </Button>
       <NoticeBubbleContainer manager={manager} containerNode={containerNode} />
       <NoticeBubbleContainer manager={manager2} containerNode={containerNode} />
@@ -103,6 +99,7 @@ noticeContainer.style.setProperty('position', 'fixed');
 noticeContainer.style.setProperty('right', '20px');
 noticeContainer.style.setProperty('top', '20px');
 noticeContainer.style.setProperty('width', '300px');
+noticeContainer.style.setProperty('z-index', '9999');
 
 document.body.appendChild(noticeContainer);
 

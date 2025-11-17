@@ -142,3 +142,15 @@ Use this API only if there's enough time between events, so that all notices hav
 </script>
 
 :::
+
+## Use in micro-frontends
+
+When using notifications on a page that contains multiple front-end applications, you should use a common container for notifications so that they do not overlap each other.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+</script>
+
+:::
