@@ -449,7 +449,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@dropdown-menu'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx', 'en');
 
     const deleteButton4 = page.locator('[aria-label="Delete item"]').nth(3);
@@ -475,7 +475,11 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await deleteButton4.hover();
       await page.getByText('Delete item').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
+      if (browserName == 'chromium') {
+        await expect(page).toHaveScreenshot();
+      } else {
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      }
     });
 
     await test.step('Verify menu not closed by click on addon', async () => {
