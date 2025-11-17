@@ -22,9 +22,7 @@ export const locators = {
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify body paddings', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button',
-      '@divider'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -82,8 +80,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -103,9 +100,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify dual zone render and styles', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@fullscreen-modal',
-      '@button',
-      '@divider'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -126,9 +121,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify header is fixed when scrolling body', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button',
-      '@divider'],
+      '@fullscreen-modal'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -167,7 +160,6 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Long Title with Ellipsis ', {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
-      '@button',
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx', 'en');
@@ -184,7 +176,6 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Close Back without Header ', {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
-      '@button',
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/back-no-text-close-no-header-1bth-footer.tsx', 'en');
@@ -199,7 +190,6 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Back and title with long text and with Header', {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal',
-      '@button',
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/back-and-title-bodyh400-2btn-footer.tsx', 'en');
@@ -220,8 +210,7 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify aria-describedby', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en');
 
@@ -234,8 +223,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -269,8 +257,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -298,9 +285,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard navigation footer and 2 zones in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal',
-      '@button',
-      '@divider'],
+      '@fullscreen-modal'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -318,9 +303,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.sections(page).nth(1)).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(locators.button(page, 'Previous content')).toBeFocused();
+    await expect(locators.button(page, 'Submit')).toBeFocused();
     await page.keyboard.press('Tab');
-    await expect(locators.button(page, 'Next content')).toBeFocused();
+    await expect(locators.button(page, 'Cancel')).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(locators.button(page, 'Close')).toBeFocused();
   });
@@ -328,8 +313,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify modal can be closed by ESC when no closable button', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en', { closable: false });
 
@@ -373,8 +357,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify there is only one closable element when closable = true and no Close button', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en');
 
@@ -394,8 +377,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify no closable elements when closable = false and no Close button', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button'],
+      '@fullscreen-modal'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en', { closable: false });
 

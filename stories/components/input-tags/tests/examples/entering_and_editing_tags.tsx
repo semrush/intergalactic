@@ -1,10 +1,13 @@
+import { Flex } from '@semcore/ui/base-components';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
+import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps;
+
+const Demo = (props: ExampleInputTagsProps) => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
   const [tags, setTags] = React.useState([
     'TikTok',
@@ -13,7 +16,7 @@ const Demo = () => {
     'Instagram',
     'Social media with a very long name',
   ]);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(props.value);
 
   const handleAppendTags = (newTags: string[]) => {
     setTags((tags) => [...tags, ...newTags]);
@@ -26,8 +29,10 @@ const Demo = () => {
     setValue(`${tags.slice(-1)[0]} ${value}`);
   };
 
-  const handleCloseTag = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleCloseTag = (idx: number) => (e: React.SyntheticEvent) => {
+    e.stopPropagation();
+
+    setTags((tags) => tags.filter((_, tagIdx) => idx !== tagIdx));
   };
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -40,6 +45,8 @@ const Demo = () => {
   const handleEditTag = (
     e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ) => {
+    if (props.disabled) return;
+
     const { dataset } = e.currentTarget;
     let allTags = [...tags];
     if (value) {
@@ -67,37 +74,51 @@ const Demo = () => {
       <Text tag='label' size={300} htmlFor='add-new-social-media'>
         Social media
       </Text>
-      <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+      <InputTags disabled={props.disabled} mt={2} size={props.size} state={props.state} delimiters={props.delimiters} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
           <InputTags.Tag
-            key={idx}
+            editable={!props.disabled}
+            key={tag}
             tag={InputTags.Tag}
             theme='primary'
-            editable
             data-id={idx}
             onClick={handleEditTag}
             onKeyDown={handleTagKeyDown}
-            active={false}
+            active={props.active}
           >
             <InputTags.Tag.Text>
               <Ellipsis wMax={100}>{tag}</Ellipsis>
             </InputTags.Tag.Text>
-            <InputTags.Tag.Close onClick={handleCloseTag} />
+            <InputTags.Tag.Close onClick={handleCloseTag(idx)} />
           </InputTags.Tag>
         ))}
         <InputTags.Value
-
-          // value={value}
+          readOnly={props.readOnly}
+          value={value}
           onChange={setValue}
           onKeyDown={handleInputKeyDown}
-          defaultValue='Add social media'
+          defaultValue={props.defaultValue}
           ref={inputValueRef}
           id='add-new-social-media'
-          placeholder='Placeholder'
+          placeholder={props.placeholder}
         />
       </InputTags>
     </Flex>
   );
 };
+
+export const defaultProps: ExampleInputTagsProps = {
+  size: 'l',
+  placeholder: 'Add social media',
+  defaultValue: undefined,
+  state: undefined,
+  disabled: false,
+  delimiters: undefined,
+  editable: undefined,
+  readOnly: undefined,
+  active: false,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

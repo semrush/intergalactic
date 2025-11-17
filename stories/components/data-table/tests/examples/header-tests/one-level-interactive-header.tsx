@@ -99,7 +99,6 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           title='Go to our awesome article'
           data-test-id='interactive-icon'
           color='icon-secondary-neutral'
-          onClick={(e: any) => e.stopPropagation()}
         />
       </>
     ),

@@ -332,13 +332,13 @@ export const calculateBubbleDomain = (
 };
 
 interface PlotEventEmitterEmit {
-  (event: 'setTooltipVisible', visible: boolean): void;
-  (event: 'setTooltipPosition', x: number, y: number): void;
+  (event: `setTooltipVisible_${string}`, visible: boolean): void;
+  (event: `setTooltipPosition_${string}`, x: number, y: number): void;
 }
 type Unsubscribe = () => void;
 interface PlotEventEmitterSubscribe {
-  (event: 'setTooltipVisible', callback: (visible: boolean) => void): Unsubscribe;
-  (event: 'setTooltipPosition', callback: (x: number, y: number) => void): Unsubscribe;
+  (event: `setTooltipVisible_${string}`, callback: (visible: boolean) => void): Unsubscribe;
+  (event: `setTooltipPosition_${string}`, callback: (x: number, y: number) => void): Unsubscribe;
 }
 export const PlotEventEmitter = EventEmitter as typeof EventEmitter<
   PlotEventEmitterEmit,

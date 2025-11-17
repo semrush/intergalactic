@@ -26,15 +26,19 @@ const Demo = () => {
     .domain([0, 10]);
 
   React.useEffect(() => {
-    const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
-      const plotRect = plotRef.current?.getBoundingClientRect();
-      if (!plotRect) return;
+    const plotElement = plotRef.current;
+
+    if (!plotElement) return;
+
+    const plotId = plotElement.dataset.plotId!;
+    const unsubscribe = eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
+      const plotRect = plotElement.getBoundingClientRect();
 
       if (x - plotRect.x < 150) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 150, y);
       }
       if (x - plotRect.x > 200) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 200, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 200, y);
       }
     });
     return () => unsubscribe();

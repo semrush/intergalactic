@@ -142,7 +142,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
           const children = sstyled(styles)(
             <>
               {/* @ts-ignore */}
-              <SInner tag='span' loading={loading}>
+              <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
                 {AddonLeft
                   ? (
                       <Button.Addon>

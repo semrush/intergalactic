@@ -12,6 +12,7 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   options: (page: Page) => page.getByRole('option'),
+  inputTags: (page: Page) => page.locator('[data-ui-name="InputTags"]'),
   inputValue: (page: Page) => page.locator('[data-ui-name="InputTags.Value"]'),
   tag: (page: Page) => page.locator('li[data-ui-name="InputTags.Tag"]'),
   inputText: (page: Page) => page.locator('[data-ui-name="InputTags.Tag.Text"]'),
@@ -24,24 +25,33 @@ export const locators = {
 test.describe(`${TAG.VISUAL} `, () => {
   test.describe('Base states and styles', () => {
     const variables = [
-      { state: 'normal', size: 'm' },
-      { state: 'valid', size: 'm' },
-      { state: 'invalid', size: 'm' },
-      { state: 'normal', size: 'l' },
-      { state: 'valid', size: 'l' },
-      { state: 'invalid', size: 'l' },
+      { state: 'normal', size: 'm', disabled: false },
+      { state: 'valid', size: 'm', disabled: false },
+      { state: 'invalid', size: 'm', disabled: false },
+      { state: 'normal', size: 'm', disabled: true },
+      { state: 'valid', size: 'm', disabled: true },
+      { state: 'invalid', size: 'm', disabled: true },
+      { state: 'normal', size: 'l', disabled: true },
+      { state: 'valid', size: 'l', disabled: true },
+      { state: 'invalid', size: 'l', disabled: true },
+      { state: 'normal', size: 'l', disabled: false },
+      { state: 'valid', size: 'l', disabled: false },
+      { state: 'invalid', size: 'l', disabled: false },
     ];
     variables.forEach((item) => {
-      test(`Verify InputTags normal ${item.state} and ${item.size} size unfocused and focused`, {
+      test(`Verify InputTags state ${item.state}, size ${item.size}, disabled ${item.disabled}, unfocused and focused`, {
         tag: [TAG.PRIORITY_HIGH,
           '@input-tags',
           '@ellipsis'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en', item);
+        await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', item);
 
         await expect(page).toHaveScreenshot();
-        await locators.inputValue(page).click();
-        await expect(page).toHaveScreenshot();
+
+        if (!item.disabled) {
+          await locators.inputValue(page).click();
+          await expect(page).toHaveScreenshot();
+        }
 
         const input_tags_m = page.locator('div[data-ui-name="InputTags"][class*="size_m"]');
         const input_tags_l = page.locator('div[data-ui-name="InputTags"][class*="size_l"]');
@@ -96,6 +106,28 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(tagValue.nth(i)).toHaveCSS('margin-left', '2px');
             await expect(tagValue.nth(i)).toHaveCSS('margin-right', '2px');
+          }
+        });
+
+        await test.step('Verify InputTags and InputTags.Tag disabled state', async () => {
+          const inputTagsClasses = await locators.inputTags(page).getAttribute('class');
+
+          if (item.disabled) {
+            expect(inputTagsClasses).toContain('disabled');
+            await expect(locators.inputValue(page)).toBeDisabled();
+          } else {
+            expect(inputTagsClasses).not.toContain('disabled');
+            await expect(locators.inputValue(page)).not.toBeDisabled();
+          }
+
+          for await (const tag of await locators.tag(page).all()) {
+            const tagClasses = await tag.getAttribute('class');
+
+            if (item.disabled) {
+              expect(tagClasses).toContain('disabled');
+            } else {
+              expect(tagClasses).not.toContain('disabled');
+            }
           }
         });
       });
@@ -294,7 +326,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input-tags',
         '@ellipsis'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en', { defaultValue: 'default value add something', value: undefined });
+      await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { defaultValue: 'default value add something', value: undefined });
 
       const label = page.locator('[data-ui-name="Text"]');
 
@@ -883,7 +915,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@input-tags',
       '@ellipsis'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en', { delimiters: [']', '/', '['] });
+    await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { delimiters: [']', '/', '['] });
 
     await test.step('Verify adding new tag by entering custom delimiters', async () => {
       await locators.inputValue(page).click();

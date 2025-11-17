@@ -20,10 +20,9 @@ The DropdownMenu has two sizes.
 
 Table: DropdownMenu sizes
 
-| Size | Appearance example and indents |
-| ---- | ------------------------------ |
-| M    | ![](static/dropdown-m.png)     |
-| L    | ![](static/dropdown-l.png)     |
+| Size               | M                          | L                          |
+|--------------------|----------------------------|----------------------------|
+| Appearance example | ![](static/dropdown-m.png) | ![](static/dropdown-l.png) |
 
 ### Width
 
@@ -52,11 +51,11 @@ There are three types of menu items:
 
 Table: Default menu item states
 
-| State         | Styles       |
-| ------------- | ------------------- | 
-| Default       | `background-color: var(--dropdown-menu-item)`<br>![](static/item-default.png)      |
-| Hover         | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-hover.png)  |
-| Disabled      | `opacity: var(--disabled-opacity)`<br>![](static/item-disabled.png)       |
+| State    | Styles                                                                            |
+|----------|-----------------------------------------------------------------------------------|
+| Default  | `background-color: var(--dropdown-menu-item)`<br>![](static/item-default.png)     |
+| Hover    | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-hover.png) |
+| Disabled | `opacity: var(--disabled-opacity)`<br>![](static/item-disabled.png)               |
 
 ### Selectable menu item states
 
@@ -64,10 +63,10 @@ Selectable menu items (`menuitemradio`) have the same states as default items, p
 
 Table: Selectable menu item states
 
-| State                | Styles       |
-| -------------------- | ------------------- | 
-| Selected             | `background-color: var(--dropdown-menu-item-selected)`<br>![](static/item-selected.png)      |
-| Selected + hover     | `background-color: var(--dropdown-menu-item-selected-hover)`<br>![](static/item-selected-hover.png)  |
+| State            | Styles                                                                                              |
+|------------------|-----------------------------------------------------------------------------------------------------|
+| Selected         | `background-color: var(--dropdown-menu-item-selected)`<br>![](static/item-selected.png)             |
+| Selected + hover | `background-color: var(--dropdown-menu-item-selected-hover)`<br>![](static/item-selected-hover.png) |
 
 ### Multiselect menu item states
 
@@ -75,12 +74,12 @@ Multiselect menu items (`menuitemcheckbox`) include a checkbox that shows whethe
 
 Table: Multiselect menu item states
 
-| State        | Styles       |
-| ------------ | ------------------- | 
-| Default      | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-default.png)      |
-| Hover        | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-checkbox-hover.png)  |
-| Selected     | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-selected.png)  |
-| Disabled     | `opacity: var(--disabled-opacity)`<br>![](static/item-checkbox-disabled.png)  |
+| State    | Styles                                                                                     |
+|----------|--------------------------------------------------------------------------------------------|
+| Default  | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-default.png)     |
+| Hover    | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-checkbox-hover.png) |
+| Selected | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-selected.png)    |
+| Disabled | `opacity: var(--disabled-opacity)`<br>![](static/item-checkbox-disabled.png)               |
 
 <!--
 ### Button
@@ -104,7 +103,7 @@ This item with a button adds a new item and has the following states:
 Table: DropdownMenu addition button states
 
 | State                  | Appearance example       | Description                                                                                                                                                                                                   |
-| ---------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Default trigger button | ![](static/button-1.png) | Trigger has the same styles as a regular item.                                                                                                                                                                |
 | Active input           | ![](static/button-2.png) | Clicking on the button opens an input in the `focus` state. The list item has no `hover` state in this case.                                                                                                  |
 | Entering value         | ![](static/button-3.png) | To add an item, click the submit icon. To close the input, click outside the input or press the `Esc` key. If user entered data but closed the input without submitting, their entered value should be saved. |
@@ -129,10 +128,10 @@ Menu items can be visually separated by inserting a [Divider](/components/divide
 
 Table: Divider margins
 
-| Menu size      | Margins                                     |
-| -------------- | ----------------------------------------------------------------------- |
-| M              | `margin-top: var(--spacing-1x, 4px)`<br>`margin-bottom: var(--spacing-1x, 4px)` ![](static/divider-m.png) |
-| L              | `margin-top: var(--spacing-2x, 8px)`<br>`margin-bottom: var(--spacing-2x, 8px)` ![](static/divider-l.png) |
+| Menu size | Appearance example        |
+|-----------|---------------------------|
+| M         | ![](static/divider-m.png) |
+| L         | ![](static/divider-l.png) |
 
 ### Titled group
 
@@ -159,7 +158,7 @@ Before the text you can place an icon, flag or image. In this case icon always h
 Table: Addon before the text examples
 
 | Addon        | Appearance example         |
-| ------------ | -------------------------- |
+|--------------|----------------------------|
 | Icon         | ![](static/icon-addon.png) |
 | Flag         | ![](static/flag-addon.png) |
 | Image/avatar | ![](static/pic-addon.png)  |
@@ -176,9 +175,9 @@ If an icon displays additional information about an item, we recommend placing i
 
 Table: Button inside the item cases of use
 
-| Case          | Appearance example                | Description                                                                                                                                                                                                                                                                                                       |
-| ------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Delete item   | ![](static/item-delete.png)       | If a list item can be deleted, use Button with `use="secondary"` and `tertiary` theme.                                                                                                                                                                                                                            |
+| Case          | Appearance example                | Description                                                                                                                                                                                                                                                                                                            |
+|---------------|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Delete item   | ![](static/item-delete.png)       | If a list item can be deleted, use Button with `use="secondary"` and `tertiary` theme.                                                                                                                                                                                                                                 |
 | Drag and drop | ![](static/dragging-dropdown.png) | To drag and drop list items, use the `MoveAlt` icon with the `--icon-secondary-neutral` color. The icon should appear when hovering over the item, and the cursor should change to `move`. For more information on dragging and dropping items, refer to the [Drag and drop](/components/drag-and-drop/drag-and-drop). |
 
 ### Info icon
@@ -204,7 +203,7 @@ You can display additional information in menu items using the `DropdownMenu.Ite
 Table: Hint text sizes
 
 | List size | Appearance example          | Tokens                 |
-| --------- | --------------------------- | ---------------------- |
+|-----------|-----------------------------|------------------------|
 | M         | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
 | L         | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
 

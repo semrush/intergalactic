@@ -855,6 +855,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
 
         await locators.row(page, 4).click();
+        await page.waitForTimeout(200); // wait for setting cursor, for forefox stability
         for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
         await expect(locators.contentDiv(page)).not.toHaveAttribute('aria-invalid', 'true');
         await expect(locators.tooltip(page)).toBeEmpty;
