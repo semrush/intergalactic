@@ -1,35 +1,29 @@
+import type { BoxProps } from '@semcore/ui/base-components';
 import Skeleton from '@semcore/ui/skeleton';
+import type { SkeletonProps, SkeletonTextProps } from '@semcore/ui/skeleton';
 import React from 'react';
 
-const Demo = () => {
-  const [loading, setLoading] = React.useState(true);
-
+type ExampleProps = SkeletonTextProps & SkeletonProps & BoxProps;
+const Demo = (props: ExampleProps) => {
   return (
     <>
-      <div style={{ background: 'black' }}>
-        <Skeleton h={100} theme='dark' duration={3000}>
-          <Skeleton.Text h={50} />
-        </Skeleton>
-      </div>
-      <Skeleton h={100} theme='invert'>
-        <Skeleton.Text h={50} />
-      </Skeleton>
-
-      <div style={{ background: 'black' }}>
-        <Skeleton height={48} theme='dark'>
-          <Skeleton.Text amount={2} />
-          <Skeleton.Text y='40' width='60%' />
-        </Skeleton>
-      </div>
-
       <div style={{ background: 'blue' }}>
-        <Skeleton height={48} theme='invert'>
-          <Skeleton.Text amount={2} />
-          <Skeleton.Text y='40' width='60%' />
+        <Skeleton h={100} theme={props.theme} duration={props.duration}>
+          <Skeleton.Text h={50} amount={props.amount} />
+          <Skeleton.Text w={props.width} />
         </Skeleton>
       </div>
     </>
   );
 };
+
+export const defaultProps: ExampleProps = {
+  theme: 'dark',
+  duration: 0,
+  amount: undefined,
+  width: '60%',
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
