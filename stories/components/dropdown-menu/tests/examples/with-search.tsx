@@ -59,7 +59,6 @@ const Demo = () => {
       multiselect
       highlightedIndex={highlightedIndex}
       onHighlightedIndexChange={setHighlightedIndex}
-      preventDefaultFocusBehavior
     >
       <DropdownMenu.Trigger
         mt={2}

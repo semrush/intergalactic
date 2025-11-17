@@ -54,11 +54,6 @@ export type DropdownMenuProps = DropdownProps & {
    * Count of menu items (for virtual lists only)
    */
   itemsCount?: number;
-
-  /**
-    * Prevents default focus behaviour
-  */
-  preventDefaultFocusBehavior?: boolean;
 };
 
 /** @deprecated */
