@@ -10,7 +10,7 @@ const Demo = (props: DropDownPropsExample) => {
   return (
     <Flex gap={16} direction='row'>
       <DropdownMenu size={props.size} visible={props.visible} disablePortal={props.disablePortal} stretch={props.stretch}>
-        <DropdownMenu.Trigger tag={Button}>M size</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger tag={Button}>Trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu data-testid='m-size'>
           <DropdownMenu.Item size={props.size} selected={props.selected} disabled={props.disabled}>Save disadled</DropdownMenu.Item>
           <DropdownMenu.Item size={props.size} disabled={props.disabled}>Rename</DropdownMenu.Item>
@@ -20,7 +20,7 @@ const Demo = (props: DropDownPropsExample) => {
       </DropdownMenu>
 
       <DropdownMenu size={props.size} visible={props.visible} disablePortal={props.disablePortal} stretch={props.stretch}>
-        <DropdownMenu.Trigger tag={Button}>L size</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger tag={Button}>Trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu data-testid='l-size'>
           <DropdownMenu.Item size={props.size} selected={props.selected} disabled={props.disabled}>Save disabled</DropdownMenu.Item>
           <Divider />

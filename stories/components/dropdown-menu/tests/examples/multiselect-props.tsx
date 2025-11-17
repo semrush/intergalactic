@@ -13,7 +13,7 @@ const Demo = (props: DropDownPropsExample) => {
     <Flex gap={16} direction='row'>
 
       <DropdownMenu selectable multiselect size={props.size} visible={props.visible} disablePortal={props.disablePortal} stretch={props.stretch}>
-        <DropdownMenu.Trigger tag={Button}>Explore menu items</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger tag={Button}>Multiselect</DropdownMenu.Trigger>
         <DropdownMenu.Menu hMax='180px' data-testid='l-size'>
           <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
             {menuItems.map((_, index) => (

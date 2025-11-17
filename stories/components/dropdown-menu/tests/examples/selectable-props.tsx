@@ -15,7 +15,7 @@ const Demo = (props: DropDownPropsExample) => {
     <Flex gap={16} direction='row'>
 
       <DropdownMenu selectable size={props.size} visible={props.visible} disablePortal={props.disablePortal} stretch={props.stretch}>
-        <DropdownMenu.Trigger tag={Button}>M size</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger tag={Button}>Selectable</DropdownMenu.Trigger>
         <DropdownMenu.Menu hMax='180px' data-testid='m-size'>
           <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
             {menuItems.map((_, index) => (

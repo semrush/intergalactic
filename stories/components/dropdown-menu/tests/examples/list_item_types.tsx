@@ -22,7 +22,7 @@ const TooltipContent = () => {
 const Demo = () => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>Explore menu item types</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger tag={Button}>Menu item types</DropdownMenu.Trigger>
       <DropdownMenu.Menu hMax='400px'>
         <Tooltip placement='right' timeout={[0, 50]}>
           <DropdownMenu.Group title='Menu title' subTitle='Subtitle'>

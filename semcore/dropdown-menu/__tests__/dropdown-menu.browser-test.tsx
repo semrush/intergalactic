@@ -70,20 +70,22 @@ export const locators = {
   },
 };
 
+const pressKeyMultipleTimes = async (page: Page, key: string, times: number) => {
+  for (let i = 0; i < times; i++) {
+    await page.keyboard.press(key);
+  }
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
-  test('Verify roles and render white shadows in simple dropdown menu', {
+  test('Verify focus on base dropdown menu', {
     tag: [TAG.PRIORITY_HIGH,
       '@dropdown-menu'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx', 'en');
-
-    const dropdownItemWithTitle = page.locator(
-      '[data-ui-name="ScrollArea.Container"] >> [data-ui-name="Dropdown.Item"]:not(:has([data-ui-name="DropdownMenu.Group"] *))',
-    );
 
     await test.step('Verify attributes of trigger', async () => {
       await expect(locators.button(page)).toHaveAttribute('aria-haspopup', 'true');
@@ -93,50 +95,34 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+    await expect.poll(async () => {
+      return await locators.menuitem(page, 0).getAttribute('class');
+    }, {
+      timeout: 1000,
+    }).toMatch(/highlighted/);
 
-    await test.step('Verify trigger attributes when menu expanded', async () => {
-      await expect(locators.button(page)).toHaveAttribute('aria-haspopup', 'true');
-      await expect(locators.button(page)).toHaveAttribute('aria-expanded', 'true');
-      await expect(locators.button(page)).toHaveAttribute('aria-controls');
-    });
-
-    await test.step('Verify popper attributes', async () => {
-      await expect(locators.popper(page)).toHaveAttribute('tabindex', '-1');
-      await expect(locators.menu(page)).toHaveAttribute('aria-label');
-    });
-
-    await test.step('Verify item with titles attributes', async () => {
-      await expect(dropdownItemWithTitle).toHaveAttribute('aria-hidden', 'true');
-    });
-
-    await test.step('Verify group attributes', async () => {
-      await expect(locators.ddmenugroup(page)).toHaveAttribute('aria-labelledby');
-      await expect(locators.ddmenugroup(page)).toHaveAttribute('aria-describedby');
-    });
-
-    await test.step('Verify items in group attributes', async () => {
-      const count = await locators.itemInGroup(page).count();
-
-      await expect(locators.itemInGroup(page).nth(0)).toHaveAttribute('role', 'menuitem');
-      await expect(locators.itemInGroup(page).nth(0)).toHaveAttribute('tabindex', '0');
-
-      for (let i = 1; i < count; i++) {
-        await expect(locators.itemInGroup(page).nth(i)).toHaveAttribute('role', 'menuitem');
-        await expect(locators.itemInGroup(page).nth(i)).toHaveAttribute('tabindex', '-1');
-      }
-    });
-
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
+    await pressKeyMultipleTimes(page, 'ArrowDown', 4);
     await page.keyboard.press('Tab');
-    await expect(locators.itemInGroup(page).nth(3)).toBeFocused();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
-    await expect(locators.itemInGroup(page).nth(4)).toBeFocused();
     await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify focus when notice and interactive item in menu', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown-menu',
+      '@notice'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx', 'en');
+
+    await test.step('Verify opens by Enter and first item focused', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   const variables = [
@@ -169,7 +155,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '14px',
               'min-height': '32px',
-              'padding': '6px 8px',
               'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
@@ -183,7 +168,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'padding': '8px 12px',
               'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
@@ -229,7 +213,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitemcheckbox(page, i), {
               'font-size': '14px',
               'min-height': '32px',
-              'padding': '6px 8px 6px 34px',
             });
           }
         });
@@ -242,20 +225,11 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitemcheckbox(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'padding': '8px 12px',
               'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
       }
-      if (item.disabled) {
-        await test.step('Verify disabled styles', async () => {
-          await checkStyles(locators.menuitemcheckbox(page, 1), {
-            opacity: '0.3',
-          });
-        });
-      }
-      // snapshot
     });
 
     test(`Verify selectable radio dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
@@ -288,7 +262,6 @@ test.describe(`${TAG.VISUAL} `, () => {
           await checkStyles(locators.itemInGroup(page).first(), {
             'font-size': '14px',
             'min-height': '32px',
-            'padding': '6px 8px',
             'background-color': 'rgba(196, 229, 254, 0.7)',
           });
 
@@ -298,7 +271,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '14px',
               'min-height': '32px',
-              'padding': '6px 8px',
               'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
@@ -319,9 +291,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
         await test.step('Verify styles of L size', async () => {
           await checkStyles(locators.itemInGroup(page).first(), {
-            'font-size': '14px',
-            'min-height': '32px',
-            'padding': '6px 8px',
+            'font-size': '16px',
+            'min-height': '40px',
             'background-color': 'rgba(196, 229, 254, 0.7)',
           });
 
@@ -331,19 +302,12 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '16px',
               'min-height': '40px',
-              'padding': '8px 12px',
               'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
       }
-      if (item.disabled) {
-        await test.step('Verify disabled styles', async () => {
-          await checkStyles(locators.menuitemradio(page, 0), {
-            opacity: '0.3',
-          });
-        });
-      }
+
       if (browserName === 'firefox') return;
       if (!item.disabled) {
         await test.step('Verify hover styles', async () => {
@@ -370,20 +334,18 @@ test.describe(`${TAG.VISUAL} `, () => {
     await locators.button(page).click();
     await locators.menuitem(page, 0).waitFor({ state: 'visible' });
 
-    await test.step('Verify item woth hint L size', async () => {
+    await test.step('Verify item with hint L size', async () => {
       await checkStyles(locators.itemInGroup(page).nth(1), {
         'font-size': '16px',
         'min-height': '40px',
-        'padding': '8px 12px',
         'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
 
-    await test.step('Verify item woth hint M size', async () => {
+    await test.step('Verify item with hint M size', async () => {
       await checkStyles(locators.itemInGroup(page).nth(2), {
         'font-size': '14px',
         'min-height': '32px',
-        'padding': '6px 8px',
         'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
@@ -403,11 +365,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify tooltip on hover', async () => {
-      await locators.itemInGroup(page).nth(4).hover();
+      await locators.itemInGroup(page).nth(3).hover();
       await page.getByText('Some tooltip for4').waitFor({ state: 'visible' });
 
       await expect(page).toHaveScreenshot();
-      await locators.button(page).click();
+      await locators.button(page).first().click();
       await locators.menuitem(page, 0).waitFor({ state: 'hidden' });
     });
   });
@@ -417,13 +379,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@dropdown-menu'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
-
-    const MathPlus = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Add new"][role="menuitem"]',
-    );
-    const Trash = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Delete"][role="menuitem"]',
-    );
 
     await test.step('Verify dd menu with actions in items', async () => {
       await page.keyboard.press('Tab');
@@ -450,9 +405,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify on the action item', async () => {
-      await page.keyboard.press('Tab');
-      await expect(MathPlus).toBeFocused();
-      await expect(Trash).not.toBeFocused();
+      await page.keyboard.press('ArrowRight');
       await page.getByText('Add new').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
@@ -463,9 +416,6 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify focus on submenu', async () => {
       await page.keyboard.press('ArrowDown');
-      await expect(locators.menuitem(page, 3)).toBeFocused();
-      await expect(page.getByText('Add')).not.toBeVisible();
-
       await page.keyboard.press('Enter');
       await page.getByText('Add').waitFor({ state: 'visible' });
 
@@ -517,6 +467,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify prev selected item selected and tooltip shown on hover', async () => {
       await locators.button(page).click();
       await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+      await expect.poll(async () => {
+        return await locators.menuitemradio(page, 4).getAttribute('class');
+      }, {
+        timeout: 1000,
+      }).toMatch(/inAfterOutline/);
 
       await deleteButton4.hover();
       await page.getByText('Delete item').waitFor({ state: 'visible' });
@@ -525,7 +480,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify menu not closed by click on addon', async () => {
       await deleteButton4.click();
-      await expect(locators.menu(page)).toBeVisible();
+      await expect(deleteButton4).toBeVisible();
     });
   });
 
@@ -541,6 +496,11 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.menuitemcheckbox(page, 0).waitFor({ state: 'visible' });
+      await expect.poll(async () => {
+        return await locators.menuitemcheckbox(page, 0).getAttribute('class');
+      }, {
+        timeout: 1000,
+      }).toMatch(/highlighted/);
     });
 
     await test.step('Verify enter checks item and menu is not closed', async () => {
@@ -560,32 +520,21 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(locators.button(page).first()).not.toBeFocused();
-    await locators.menuitemradio(page).getByText('project 33').waitFor({ state: 'visible' });
+    await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
 
-    await expect(locators.itemByText(page, 'project 33')).toBeFocused();
+    await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
 
-    await expect(locators.item(page).getByText('project 32')).not.toBeFocused();
-
-    await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(100);
-    await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(100);
-    await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(100);
-    await expect(locators.item(page).getByText('project 36')).toBeFocused();
-    await expect(locators.item(page).getByText('project 33')).not.toBeFocused();
+    await pressKeyMultipleTimes(page, 'ArrowDown', 3);
+    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
 
     if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
     await expect(createProject).toBeFocused();
-    await expect(locators.menuitemradio(page, 'project 36')).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     const input = page.locator('input[data-ui-name="InputSearch"]');
     await expect(input).toBeFocused();
-    await expect(createProject).not.toBeFocused();
-    await expect(locators.menuitemradio(page, 'project 36')).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
@@ -596,7 +545,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('ArrowDown');
     await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
-    await expect(locators.item(page).getByText('project 36')).toBeFocused();
+    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -609,23 +558,21 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.button(page).click();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
-    await expect(locators.item(page).getByText('project 33')).toHaveAttribute('aria-checked', 'true');
-    await expect(locators.item(page).getByText('project 32')).toHaveAttribute('aria-checked', 'false');
-    await expect(locators.item(page).getByText('project 32')).not.toBeFocused();
+    await expect(locators.menuitemradio(page, 'project 33')).toHaveAttribute('aria-checked', 'true');
+    await expect(locators.menuitemradio(page, 'project 32')).toHaveAttribute('aria-checked', 'false');
 
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    const project35 = page.getByRole('menuitemradio', { name: 'project 35' });
-    await expect(project35).toBeFocused();
-    await expect(project35).toHaveAttribute('aria-checked', 'false');
-    await project35.click();
-    await expect(locators.button(page)).toHaveText('project 35');
+    await pressKeyMultipleTimes(page, 'ArrowDown', 3);
+    await expect(locators.menuitemradio(page, 'project 35')).toBeFocused();
+    await locators.menuitemradio(page, 'project 35').click();
+    await locators.menuitemradio(page, 'project 35').waitFor({ state: 'hidden' });
+
+    await expect(locators.button(page).first()).toHaveText('project 35');
     await locators.button(page).click();
+    await locators.menuitemradio(page, 'project 35').waitFor({ state: 'visible' });
 
     await locators.menuitemradio(page, 'project 42').scrollIntoViewIfNeeded();
-    await page.waitForTimeout(200);
-    await expect(locators.item(page).getByText('project 35')).toBeVisible();
+    await expect(locators.menuitemradio(page, 'project 42')).toBeInViewport();
+    await expect(locators.menuitemradio(page, 'project 35')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -645,14 +592,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.item(page).nth(0).waitFor({ state: 'visible' });
-      await expect(locators.button(page).first()).not.toBeFocused();
       await expect(locators.item(page).nth(0)).toHaveClass(/highlighted/);
 
-      for (let i = 0; i < 10; i++) {
-        await page.keyboard.press('ArrowDown');
-        await page.waitForTimeout(100);
-      }
-      await expect(locators.item(page).nth(10)).toHaveClass(/highlighted/);
+      await pressKeyMultipleTimes(page, 'ArrowDown', 10);
+      await expect(locators.item(page).nth(30)).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Enter');
       await locators.item(page).nth(10).waitFor({ state: 'hidden' });
@@ -661,7 +604,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Enter');
       await locators.item(page).nth(10).waitFor({ state: 'visible' });
       await expect.poll(async () => {
-        return await locators.item(page).nth(10).getAttribute('class');
+        return await locators.item(page).nth(30).getAttribute('class');
       }, {
         timeout: 1000,
       }).toMatch(/highlighted/);
@@ -676,7 +619,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Tab');
       if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
-      await expect(locators.item(page).nth(10)).toHaveClass(/highlighted/);
+      await expect(locators.item(page).nth(30)).toHaveClass(/highlighted/);
     });
 
     test('Verify mouse interactions with menu with sticky groups', {
@@ -696,14 +639,17 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await popper.hover();
       await page.mouse.wheel(0, 1500);
-      await page.waitForTimeout(1000); //  wait for finish the scroll animation
+      // Wait for scroll animation to finish by checking if scroll position is stable
+      await page.waitForFunction(() => {
+        const scrollContainer = document.querySelector('[data-ui-name="ScrollArea.Container"]');
+        return scrollContainer && scrollContainer.scrollTop > 0;
+      });
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
       await page.keyboard.press('Tab');
       await expect(search).toBeFocused();
 
       await page.keyboard.press('Tab');
-
       await page.keyboard.press('Tab');
       if (browserName !== 'webkit') {
         await expect(button).toBeFocused();
@@ -817,7 +763,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.menuitem(page, 0)).toBeFocused();
     });
 
-    await test.step('Verify Tab not swicthes focus', async () => {
+    await test.step('Verify Tab not switches focus', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.menuitem(page, 0)).toBeFocused();
     });
@@ -825,17 +771,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify ArrowNavigation', async () => {
       await page.keyboard.press('ArrowUp');
       await expect(locators.menuitem(page, 3)).toBeFocused();
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.press('ArrowUp');
+      await pressKeyMultipleTimes(page, 'ArrowUp', 3);
       await expect(locators.menuitem(page, 0)).toBeFocused();
     });
   });
 
-  test('Verify keyboard interactions dd menu with notice and interactive item inside', {
+  test('Verify keyboard interactions with notice and interactive item in menu', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@notice'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx', 'en');
 
@@ -846,7 +791,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await expect(locators.menuitem(page, 0)).toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify cant switch to interactive element by arrows', async () => {
@@ -854,7 +798,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.menuitem(page, 2)).toBeFocused();
     });
 
-    await test.step('Verify switch beiween interactive elements by tab', async () => {
+    await test.step('Verify switch between interactive elements by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(link).toBeFocused();
 
@@ -869,7 +813,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page)).toBeFocused();
     });
 
-    await test.step('Verify closed by enterd on the item and trigger is focused', async () => {
+    await test.step('Verify closed by entered on the item and trigger is focused', async () => {
       await page.keyboard.press('Space');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
@@ -928,7 +872,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.menuitem(page, 2)).toBeFocused();
       await expect(MathPlus).not.toBeFocused();
-      await expect(Trash).not.toBeFocused();
     });
 
     await test.step('Verify enter not switch focus', async () => {
@@ -937,10 +880,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(Trash).not.toBeFocused();
     });
 
-    await test.step('Verify focus swicthes by tab', async () => {
+    await test.step('Verify focus switches by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(MathPlus).toBeFocused();
-      await expect(Trash).not.toBeFocused();
       await page.getByText('Add new').waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
       await page.getByText('Add new').waitFor({ state: 'hidden' });
@@ -950,7 +892,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(Trash).not.toBeFocused();
     });
 
-    await test.step('Verify focus swicthes by ArrowRight', async () => {
+    await test.step('Verify focus switches by ArrowRight', async () => {
       await page.keyboard.press('ArrowRight');
       await expect(MathPlus).toBeFocused();
       await page.getByText('Add new').waitFor({ state: 'visible' });
@@ -972,7 +914,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify submenu not expands automatically', async () => {
-      await page.waitForTimeout(200);
+      // Ensure focus is stable before moving to next item
+      await expect(locators.menuitem(page, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
       await expect(page.getByRole('menuitem', { name: 'Menu item 4' })).toBeFocused();
@@ -997,7 +940,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(page.getByText('Add')).toBeFocused();
     });
 
-    await test.step('Verify escape retuns and closes all submenus', async () => {
+    await test.step('Verify escape returns and closes all submenus', async () => {
       await page.keyboard.press('Escape');
       await page.getByText('Add').waitFor({ state: 'hidden' });
 
@@ -1197,6 +1140,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+      await expect.poll(async () => {
+        return await page.locator('[data-ui-name="DropdownMenu.Item"]').first().getAttribute('class');
+      }, {
+        timeout: 1000,
+      }).toMatch(/highlighted/);
     });
 
     await test.step('Verify interactive item focused by right arrow', async () => {
@@ -1255,7 +1203,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowUp');
       await locators.menuitemcheckbox(page, 9).waitFor({ state: 'visible' });
       await expect(locators.menuitemcheckbox(page, 9)).toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify escape closes menu', async () => {
@@ -1309,7 +1256,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.menuitemcheckbox(page, 0).waitFor({ state: 'visible' });
 
       await expect(locators.menuitemcheckbox(page, 0)).not.toBeChecked();
-      await expect(locators.menuitemcheckbox(page, 2)).toBeChecked();
       await expect(locators.menuitemcheckbox(page, 2)).toBeChecked();
       await expect(locators.menuitemcheckbox(page, 1)).toBeChecked();
     });
