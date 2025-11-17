@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Focus behaviour if `Popper` already has a focus inside.
+- Focus behavior if `Popper` already has a focus inside.
 
 ## [16.1.13] - 2025-11-10
 
