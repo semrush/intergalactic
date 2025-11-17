@@ -224,7 +224,7 @@ const CheckMark = (props) => {
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked, indeterminate } = props;
   return sstyled(styles)(
-    <SCheckbox render={Flex} tag='span' checked={checked} use:theme={resolveColor(theme)}>
+    <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>
       {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
     </SCheckbox>,
   );
