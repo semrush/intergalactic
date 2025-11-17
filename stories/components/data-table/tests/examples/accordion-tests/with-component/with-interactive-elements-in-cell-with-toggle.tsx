@@ -140,7 +140,6 @@ const Demo = () => {
                   title='Go to our awesome article'
                   data-test-id='interactive-icon'
                   color='icon-secondary-neutral'
-                  onClick={stopPropagation}
                 />
                 <DescriptionTooltip onClick={stopPropagation}>
                   <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
