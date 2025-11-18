@@ -1,6 +1,6 @@
 {
   "codeConnect": {
-    "include": ["figma/*.figma.jsx"],
+    "include": ["mappings/**/*.figma.{tsx,jsx}"],
     "label": "React",
     "paths": {
       "@semcore/ui/*": ["semcore/*/src"]
