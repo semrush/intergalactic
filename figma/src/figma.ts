@@ -1,27 +1,73 @@
-type Template = {
-  example: string;
-};
+/** Metadata that can be included in template exports */
+interface Metadata {
+  /**
+   * Controls how nested instances are rendered in the Code Connect panel:
+   * - true: The instance's code will be rendered inline within its parent
+   * - false: The instance will be shown as a clickable pill that expands when clicked
+   *
+   * For example:
+   * - Set to true for small components like icons that make sense inline
+   * - Set to false for complex components that should be viewed separately
+   */
+  nestable?: boolean;
 
-type InstanceHandle = {
+  /** Props which can be consumed in a parent instance */
+  props?: Record<string, any>;
+}
+
+/**
+ * Dummy type. See full info on
+ * [Code Sections (Template V2 API)](https://developers.figma.com/docs/code-connect/template-v2-api/#code-sections)
+ * */
+type ResultSection = string;
+
+/** Options for finding layers */
+interface SelectorOptions {
+  /** List of parent layer names that matches the layer hierarchy */
+  path?: string[];
+  /** Whether to search through nested instances */
+  traverseInstances?: boolean;
+}
+
+export interface InstanceHandle {
   name: string;
-  findInstance: (layerName: string) => InstanceHandle | ErrorHandle;
+  /**
+   * Gets a boolean property value.
+   * Optional mapping object can transform the boolean value to any other type.
+   * */
+  getBoolean(propName: string, options?: Record<string, any>): boolean | any;
+  /** Gets a raw property value. */
+  getPropertyValue(propName: string): string | boolean;
+  /**
+   * Finds an child instance layer by name.
+   * Optional selector options for path matching and traversal behavior.
+   * */
+  findInstance(layerName: string, opts?: SelectorOptions): InstanceHandle | ErrorHandle;
+  /**
+   * Finds all layers (instances or text) that match the selector function.
+   * Optional selector options for path matching and traversal behavior.
+   * */
+  findLayers(selectorFn: (node: InstanceHandle | TextHandle) => boolean, opts?: SelectorOptions): (InstanceHandle | TextHandle)[];
   type: 'INSTANCE';
-  executeTemplate: () => Template;
+  /**
+   * Renders the instance and returns both the rendered sections and metadata.
+   * */
+  executeTemplate: () => { example: ResultSection[]; metadata: Metadata };
   children: (InstanceHandle | TextHandle)[];
 };
 
-type TextHandle = {
+export interface TextHandle {
   name: string;
   type: 'TEXT';
   textContent: string;
 };
 
-type ErrorHandle = {
+interface ErrorHandle {
   type: 'ERROR';
 };
 
-type Figma = {
-  tsx: (...str: (TemplateStringsArray | string | undefined)[]) => string;
+interface Figma {
+  tsx: (...str: (TemplateStringsArray | string | string[] | undefined)[]) => string;
   selectedInstance?: InstanceHandle;
 };
 
