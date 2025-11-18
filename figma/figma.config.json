@@ -1,7 +1,11 @@
 {
   "codeConnect": {
-    "include": ["mappings/**/*.figma.{tsx,jsx}"],
+    "include": [
+      "mappings/**/*.figma.{tsx,jsx}"
+    ],
+    "exclude": ["mappings/**/Icon.figma.jsx"],
     "label": "React",
+    "parser": "react",
     "paths": {
       "@semcore/ui/*": ["semcore/*/src"]
     },
