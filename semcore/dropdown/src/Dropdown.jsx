@@ -78,6 +78,7 @@ class DropdownRoot extends Component {
       !hasFocusableIn(element)
     ) {
       e.preventDefault();
+      e.stopPropagation();
 
       return;
     }

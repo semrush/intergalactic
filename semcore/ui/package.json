@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "16.11.1",
+  "version": "16.12.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -8,8 +8,7 @@
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "build": "pnpm run clear && pnpm run update-dependencies && pnpm run generate-reexport",
     "generate-reexport": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts",
-    "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts",
-    "update-changelog": "pnpm update-release-changelog"
+    "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts"
   },
   "dependencies": {
     "@semcore/accordion": "16.0.0",

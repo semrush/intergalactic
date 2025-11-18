@@ -1,6 +1,8 @@
 import { Box, Flex } from '@semcore/base-components';
 import { Root, sstyled, createComponent, Component } from '@semcore/core';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import * as React from 'react';
 
 import type { DataTableCellProps } from './Cell.types';
@@ -44,7 +46,16 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rowIndexValue = ariaRowindex - 2;
     }
 
-    onClick(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
+    const focusableChildren = Array.from(this.cellRef.current?.children ?? []).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
+
+    if (isInteractiveElement(e.target) && this.cellRef.current && focusableChildren.length > 1) {
+      this.lockedCell[0] = this.cellRef.current;
+      this.lockedCell[1] = true;
+    }
+
+    onClick?.(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
   };
 
   render() {

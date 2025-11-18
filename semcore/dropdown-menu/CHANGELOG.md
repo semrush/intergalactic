@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.14] - 2025-11-14
+
+### Changed
+
+- Focus behavior if `Popper` already has a focus inside.
+
 ## [16.1.13] - 2025-11-10
 
 ### Fixed
