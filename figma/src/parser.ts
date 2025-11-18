@@ -4,17 +4,17 @@ import * as esbuild from 'esbuild';
 
 import type { ConnectSettings } from './connect';
 import type {
-  ParseResponsePayload, ParserExecutableMessages, SyntaxHighlightLanguage,
+  ParseResponsePayload, ParserExecutableMessage, CodeConnectDoc,
 } from './parser.types';
 
-const messages: ParserExecutableMessages = [];
+const messages: ParserExecutableMessage[] = [];
 
 const prepare = (content: string) => {
   return `var figma = require("figma");
   ${content
     .replace(/import.*figma.*/, '')
     .replace('var settings =', 'export default')
-    .replace(/\s*export\s*{\s*settings\s*};?/s, '')
+    .replace(/\s*export\s*{.*};?/s, '')
     .replace('example: `', 'example: figma.tsx`')
     .replace('example = `', 'example = figma.tsx`')}`;
 };
@@ -22,7 +22,7 @@ const prepare = (content: string) => {
 const stdin = JSON.parse(fs.readFileSync(0, 'utf-8')) as { paths: string[] };
 if (!stdin.paths.length) messages.push({ level: 'ERROR', message: 'No files found.' });
 
-const docs = [];
+const docs: CodeConnectDoc[] = [];
 
 for (const path of stdin.paths) {
   messages.push({ level: 'INFO', message: `\n-> Parsing ${path}` });
@@ -42,7 +42,7 @@ for (const path of stdin.paths) {
     figmaNode: settings.url,
     component: '',
     source: 'string',
-    language: 'typescript' as SyntaxHighlightLanguage,
+    language: 'typescript',
     label: 'React',
     templateData: {
       nestable: true,

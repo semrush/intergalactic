@@ -1,35 +1,4 @@
-/** Metadata that can be included in template exports */
-interface Metadata {
-  /**
-   * Controls how nested instances are rendered in the Code Connect panel:
-   * - true: The instance's code will be rendered inline within its parent
-   * - false: The instance will be shown as a clickable pill that expands when clicked
-   *
-   * For example:
-   * - Set to true for small components like icons that make sense inline
-   * - Set to false for complex components that should be viewed separately
-   */
-  nestable?: boolean;
-
-  /** Props which can be consumed in a parent instance */
-  props?: Record<string, any>;
-}
-
-/**
- * Dummy type. See full info on
- * [Code Sections (Template V2 API)](https://developers.figma.com/docs/code-connect/template-v2-api/#code-sections)
- * */
-type ResultSection = string;
-
-/** Options for finding layers */
-interface SelectorOptions {
-  /** List of parent layer names that matches the layer hierarchy */
-  path?: string[];
-  /** Whether to search through nested instances */
-  traverseInstances?: boolean;
-}
-
-export interface InstanceHandle {
+interface InstanceHandle {
   name: string;
   /**
    * Gets a boolean property value.
@@ -56,7 +25,7 @@ export interface InstanceHandle {
   children: (InstanceHandle | TextHandle)[];
 };
 
-export interface TextHandle {
+interface TextHandle {
   name: string;
   type: 'TEXT';
   textContent: string;
@@ -65,6 +34,37 @@ export interface TextHandle {
 interface ErrorHandle {
   type: 'ERROR';
 };
+
+/** Options for finding layers */
+interface SelectorOptions {
+  /** List of parent layer names that matches the layer hierarchy */
+  path?: string[];
+  /** Whether to search through nested instances */
+  traverseInstances?: boolean;
+}
+
+/** Metadata that can be included in template exports */
+interface Metadata {
+  /**
+   * Controls how nested instances are rendered in the Code Connect panel:
+   * - true: The instance's code will be rendered inline within its parent
+   * - false: The instance will be shown as a clickable pill that expands when clicked
+   *
+   * For example:
+   * - Set to true for small components like icons that make sense inline
+   * - Set to false for complex components that should be viewed separately
+   */
+  nestable?: boolean;
+
+  /** Props which can be consumed in a parent instance */
+  props?: Record<string, any>;
+}
+
+/**
+ * Dummy type. See full info on
+ * [Code Sections (Template V2 API)](https://developers.figma.com/docs/code-connect/template-v2-api/#code-sections)
+ * */
+type ResultSection = string;
 
 interface Figma {
   tsx: (...str: (TemplateStringsArray | string | string[] | undefined)[]) => string;

@@ -1,10 +1,10 @@
 import fs from 'fs';
 
 import type {
-  ParseResponsePayload, ParserExecutableMessages, SyntaxHighlightLanguage,
+  ParseResponsePayload, ParserExecutableMessage, CodeConnectDoc,
 } from './parser.types';
 
-const messages: ParserExecutableMessages = [];
+const messages: ParserExecutableMessage[] = [];
 
 const readFile = (filePath: string) => {
   messages.push({ level: 'INFO', message: `\n-> Parsing ${filePath}` });
@@ -72,9 +72,9 @@ const readFile = (filePath: string) => {
       props: {},
       imports,
     },
-    language: 'typescript' as SyntaxHighlightLanguage,
+    language: 'typescript',
     label: 'React',
-  };
+  } as CodeConnectDoc;
 };
 
 const stdin = JSON.parse(fs.readFileSync(0, 'utf-8')) as { paths: string[] };

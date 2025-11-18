@@ -1,16 +1,5 @@
 import { figma } from './figma';
 
-export interface ConnectSettings {
-  /** Code snippet that will display in Figma. */
-  example: string | undefined;
-  /** Component ID. Can be used to reference component in other examples. */
-  id: string;
-  /** Figma node URL. */
-  url: string;
-  /** List of imports for the component. */
-  imports?: string[];
-};
-
 const instance = figma.selectedInstance;
 
 export const connect = {
@@ -47,4 +36,15 @@ export const connect = {
   },
   getBoolean: (propName: string, options?: Record<string, any>) => instance?.getBoolean(propName, options),
   printAll: () => JSON.stringify(instance?.children),
+};
+
+export interface ConnectSettings {
+  /** Code snippet that will display in Figma. */
+  example: string | undefined;
+  /** Component ID. Can be used to reference component in other examples. */
+  id: string;
+  /** Figma node URL. */
+  url: string;
+  /** List of imports for the component. */
+  imports?: string[];
 };
