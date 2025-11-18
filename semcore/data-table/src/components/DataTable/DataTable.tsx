@@ -21,7 +21,7 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem, DTValue,
+  DataRowItem,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -30,7 +30,6 @@ import type { BodyPropsInner } from '../Body/Body.types';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
-import type { DataTableGroupProps } from '../Head/Group.type';
 import { Head } from '../Head/Head';
 import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 
@@ -64,7 +63,7 @@ class DataTableRoot<
     {},
     {},
   typeof DataTableRoot.enhance,
-  { use: DTRow<UniqKeyType>; expandedRows: Set<UniqKeyType>; renderEmptyData: () => React.ReactNode }
+  typeof DataTableRoot.defaultProps
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -82,6 +81,8 @@ class DataTableRoot<
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
     variant: 'default',
+    accordionAnimationRows: 40,
+    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
@@ -151,7 +152,7 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns } = this.asProps;
+    const { data, selectedRows, columns, loading } = this.asProps;
     if (prevProps.columns !== columns) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -165,11 +166,31 @@ class DataTableRoot<
       }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
-      if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
+      const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
+
+      const allChecked: UniqKeyType[] = [];
+      const allUnchecked: UniqKeyType[] = [];
+
+      this.flatRows.forEach((row) => {
+        if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+          allChecked.push(row[UNIQ_ROW_KEY]);
+        } else {
+          allUnchecked.push(row[UNIQ_ROW_KEY]);
+        }
+      });
+
+      if (allChecked.length === data.length) {
         this.setSelectAllMessage(true);
-      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+      } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
       }
+    }
+    if (prevProps.loading !== loading) {
+      setTimeout(() => {
+        if (document.activeElement === document.body || (this.tableContainerRef.current && hasParent(document.activeElement, this.tableContainerRef.current))) {
+          this.tableRef.current?.focus();
+        }
+      }, 0);
     }
   }
 
@@ -185,7 +206,7 @@ class DataTableRoot<
     const { totalRows, expandedRows } = this.asProps;
     const flatRows = this.getFlatRows();
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];
@@ -319,12 +340,14 @@ class DataTableRoot<
       limit,
       variant,
       totalRows,
+      accordionAnimationRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
 
     return {
       accordionDuration,
+      accordionAnimationRows,
       accordionMode,
       columns: this.columns,
       rows: this.getRows(),
@@ -403,7 +426,7 @@ class DataTableRoot<
     }
   });
 
-  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
+  handleCellClick = (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }
@@ -801,12 +824,14 @@ class DataTableRoot<
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
-  handleContainerResizeEnd = () => {
+  handleContainerResizeEnd = (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     if (this.containerResizeEndTimeoutId) {
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
     this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
+
+    this.asProps.onResize?.(entries, observer);
   };
 
   render() {

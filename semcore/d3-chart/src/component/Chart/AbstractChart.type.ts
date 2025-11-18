@@ -6,6 +6,7 @@ import type React from 'react';
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
+import type { PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -124,6 +125,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
      * Count of ticks for Y axis
      */
     yTicksCount?: number;
+    /** Enables multiline tick labels for X axis, applicable only for band scales */
+    multilineXTicks?: boolean;
+    /** Enables multiline tick labels for Y axis, applicable only for band scales */
+    multilineYTicks?: boolean;
     /**
      * Group key for all array-based charts (for get keys of items for legend except that group key)
      */
@@ -137,6 +142,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
      * Function for format text for tooltip
      */
     tooltipValueFormatter?: (value?: unknown) => string;
+    /**
+     * Custom event emitter. Could be useful to handle event on few charts at the same time.
+     */
+    eventEmitter?: InstanceType<typeof PlotEventEmitter>;
     /**
      * Config for a11y summary
      */

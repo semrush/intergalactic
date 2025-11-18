@@ -1,4 +1,5 @@
 import { Component, Root, sstyled } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
@@ -27,11 +28,11 @@ class BubbleRoot extends Component {
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, plotId } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
+    eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+    eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
+    eventEmitter.emit(`setTooltipVisible_${plotId}`, visible);
   };
 
   animationCircle() {
@@ -113,7 +114,7 @@ class BubbleRoot extends Component {
       resolveColor,
       patterns,
       bindHandlerTooltip: this.bindHandlerTooltip,
-      onClick: this.handlerOnClick.bind(this),
+      onClickCircleRoot: this.handlerOnClick.bind(this),
     };
   }
 
@@ -176,6 +177,7 @@ function BubbleCircle(props) {
     Element,
     visible = true,
     onClick,
+    onClickCircleRoot,
   } = props;
   const circleData = data[index];
 
@@ -204,7 +206,7 @@ function BubbleCircle(props) {
     <SvgElement
       tag='g'
       key={`circle(#${index})`}
-      onClickCapture={onClick(index)}
+      onClickCapture={callAllEventHandlers(onClickCircleRoot(index), onClick)}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
       visible={`${visible}`}

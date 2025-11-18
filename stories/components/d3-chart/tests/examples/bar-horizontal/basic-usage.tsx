@@ -17,6 +17,8 @@ const Demo = (props: BaseExampleProps) => {
         invertAxis={true}
         aria-label='CompactHorizontalBar chart'
         showLegend={showLegend}
+        multilineYTicks={true}
+        marginY={100}
       />
     </>
   );

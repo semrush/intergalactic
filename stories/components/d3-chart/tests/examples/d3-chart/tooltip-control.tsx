@@ -27,7 +27,7 @@ const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
-  const plotRef = React.useRef(null);
+  const plotRef = React.useRef<SVGSVGElement | null>(null);
 
   const xScale = scaleTime()
     .range([MARGIN, width - MARGIN])
@@ -38,14 +38,19 @@ const Demo = () => {
     .domain([0, 10]);
 
   React.useEffect(() => {
-    const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
-      { /* @ts-ignore */ }
-      const plotRect = plotRef.current?.getBoundingClientRect();
+    const plotElement = plotRef.current;
+
+    if (!plotElement) return;
+
+    const plotId = plotElement.dataset.plotId!;
+    const unsubscribe = eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
+      const plotRect = plotElement.getBoundingClientRect();
+
       if (x - plotRect.x < 150) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 150, y);
       }
       if (x - plotRect.x > 200) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 200, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 200, y);
       }
     });
     return () => unsubscribe();

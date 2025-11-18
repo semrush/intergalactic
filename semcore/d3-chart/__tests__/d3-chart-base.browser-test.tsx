@@ -275,8 +275,7 @@ test.describe('Hover Line and Tooltip', () => {
 
     await expect(text).not.toBeVisible();
     dots.first().hover();
-    await expect(text).toHaveCount(1);
-    await page.waitForTimeout(500);
+    await text.waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -284,15 +283,20 @@ test.describe('Hover Line and Tooltip', () => {
     const standPath = 'stories/components/d3-chart/docs/examples/d3-chart/synchronous-charts.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
+    await page.setViewportSize({ width: 800, height: 1400 });
 
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500);// wait for animation finishes
 
     const dots = page.locator('[data-ui-name="Line.Dots"]');
     const bars = page.locator('[data-ui-name="Bar"]');
 
     dots.first().hover();
-    await page.waitForTimeout(500);
+    await page.getByText('172').nth(1).waitFor({ state: 'visible' });
+    await expect(page.getByText('172')).toHaveCount(2);
     await expect(page).toHaveScreenshot();
+
+    await bars.nth(1).hover();
+    await expect(page.getByText('182')).toHaveCount(2);
   });
 });
 
@@ -328,7 +332,7 @@ test.describe('Pattern fills, dots and lines', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const svg = await page.locator('svg[data-ui-name="Plot"]');
+    const svg = page.locator('svg[data-ui-name="Plot"]');
 
     await expect(svg).toBeVisible();
 

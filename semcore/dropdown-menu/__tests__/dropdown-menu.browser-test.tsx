@@ -257,6 +257,7 @@ test.describe('Dropdown menu base', () => {
 
     await page.setContent(htmlContent);
 
+    const trigger = page.getByRole('button');
     const menu = page.getByRole('menu');
     const items = page.getByRole('menuitem');
     const link = page.getByRole('link');
@@ -264,8 +265,7 @@ test.describe('Dropdown menu base', () => {
     await test.step('Verify opens by Enter and first item focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await menu.waitFor();
-      await expect(menu).toBeVisible();
+      await items.first().waitFor({ state: 'visible' });
       await expect(items.first()).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
@@ -286,7 +286,18 @@ test.describe('Dropdown menu base', () => {
     await test.step('Verify closed by escape when focus on notice', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
+      await items.first().waitFor({ state: 'hidden' });
+      await expect(trigger).toBeFocused();
       await expect(menu).not.toBeVisible();
+    });
+
+    await test.step('Verify closed by enterd on the item and trigger is focused', async () => {
+      await page.keyboard.press('Space');
+      await items.first().waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await items.first().waitFor({ state: 'hidden' });
+      await expect(trigger).toBeFocused();
     });
   });
 });
@@ -688,8 +699,8 @@ test.describe('Selectable radio items', () => {
     await test.step('Verify opened by trigger click', async () => {
       await ddMenuTrigger.click();
       await menu.waitFor();
-      await expect(ddMenuTrigger).toBeFocused();
-      await expect(items.first()).not.toBeFocused();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(items.first()).toBeFocused();
     });
 
     await test.step('Verify menu closed click on item', async () => {
@@ -1069,16 +1080,15 @@ test.describe('Sticky groups', () => {
     await page.setContent(htmlContent);
 
     const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-    await page.keyboard.press('Tab');
-    await expect(ddMenuTrigger).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(ddMenuTrigger).not.toBeFocused();
-
-    const group = page.locator('[data-ui-name="DropdownMenu.Group"]');
     const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
     const search = page.locator('[data-ui-name="InputSearch"]');
     const button = page.locator('span[data-ui-name="DropdownMenu.Item.Content"][role="button"]');
-    await group.first().waitFor({ state: 'visible' });
+
+    await page.keyboard.press('Tab');
+    await expect(ddMenuTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await items.nth(0).waitFor({ state: 'visible' });
+    await expect(ddMenuTrigger).not.toBeFocused();
     await expect(items.nth(0)).toHaveClass(/highlighted/);
 
     for (let i = 0; i < 10; i++) {
@@ -1089,66 +1099,72 @@ test.describe('Sticky groups', () => {
 
     await page.keyboard.press('Enter');
     await expect(ddMenuTrigger).toBeFocused();
-    await expect(items.nth(30)).not.toBeVisible();
+    await items.nth(30).waitFor({ state: 'hidden' });
 
     await page.keyboard.press('Enter');
     await items.nth(30).waitFor({ state: 'visible' });
-
+    await expect.poll(async () => {
+      return await items.nth(30).getAttribute('class');
+    }, {
+      timeout: 1000,
+    }).toMatch(/highlighted/);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-    if (browserName !== 'chromium') return;
-
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(100);
+
     await expect(button).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(100);
     await expect(search).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(100);
+    if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
     await expect(items.nth(30)).toHaveClass(/highlighted/);
   });
 
   test('Verify mouse interactions with menu with sticky groups', async ({ page, browserName }) => {
-    if (browserName === 'firefox') return;
     const standPath = 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
     const ddMenuTrigger = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
-
-    const group = page.locator('[data-ui-name="DropdownMenu.Group"]');
     const popper = page.locator('[data-ui-name="DropdownMenu.Popper"]');
     const items = page.locator('[data-ui-name="DropdownMenu.Item"]');
     const search = page.locator('[data-ui-name="InputSearch"]');
     const button = page.locator('span[data-ui-name="DropdownMenu.Item.Content"][role="button"]');
 
     await ddMenuTrigger.click();
-    await group.first().waitFor({ state: 'visible' });
+    await items.nth(0).waitFor({ state: 'visible' });
     await expect(items.nth(0)).not.toHaveClass(/highlighted/);
 
     await popper.hover();
     await page.mouse.wheel(0, 1500);
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1000); //  wait for finish the scroll animation
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-    if (browserName !== 'chromium') return;
     await page.keyboard.press('Tab');
     await expect(search).toBeFocused();
 
     await page.keyboard.press('Tab');
 
     await page.keyboard.press('Tab');
-    await expect(button).toBeFocused();
+    if (browserName !== 'webkit') {
+      await expect(button).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(search).toBeFocused();
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await page.keyboard.press('Tab');
+      await expect(search).toBeFocused();
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-    await ddMenuTrigger.click();
-    await expect(items.nth(0)).not.toBeVisible();
+      await ddMenuTrigger.click();
+      await expect(items.nth(0)).not.toBeVisible();
+    } else {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+      await ddMenuTrigger.click();
+      await expect(items.nth(0)).not.toBeVisible();
+    }
   });
 });
 

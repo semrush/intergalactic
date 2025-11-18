@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.11] - 2025-10-30
+
+### Fixed
+
+- The tooltip popper content is not announced by screen readers in Chrome.
+
 ## [16.0.10] - 2025-10-06
 
 ### Changed
