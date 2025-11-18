@@ -96,9 +96,6 @@ importers:
       '@semcore/builder':
         specifier: workspace:*
         version: link:tools/builder
-      '@semcore/changelog-handler':
-        specifier: workspace:*
-        version: link:tools/changelog-handler
       '@semcore/continuous-delivery':
         specifier: workspace:*
         version: link:tools/continuous-delivery
@@ -117,9 +114,6 @@ importers:
       '@semcore/icon':
         specifier: workspace:*
         version: link:semcore/icon
-      '@semcore/slack-integration':
-        specifier: workspace:*
-        version: link:tools/slack-integration
       '@semcore/theme-redesign':
         specifier: 1.5.12
         version: 1.5.12
@@ -2784,39 +2778,8 @@ importers:
         specifier: 6.7.0
         version: 6.7.0
 
-  tools/changelog-handler:
-    dependencies:
-      '@semcore/continuous-delivery':
-        specifier: workspace:*
-        version: link:../continuous-delivery
-      dayjs:
-        specifier: 1.8.36
-        version: 1.8.36
-      fast-deep-equal:
-        specifier: ^3.1.3
-        version: 3.1.3
-      marked-ast:
-        specifier: 0.3.0
-        version: 0.3.0
-      marked-ast-markdown:
-        specifier: 2.1.0
-        version: 2.1.0
-    devDependencies:
-      '@types/fs-extra':
-        specifier: 9.0.13
-        version: 9.0.13
-      '@types/semver':
-        specifier: 7.3.9
-        version: 7.3.9
-
   tools/continuous-delivery:
     dependencies:
-      '@semcore/changelog-handler':
-        specifier: workspace:*
-        version: link:../changelog-handler
-      '@semcore/slack-integration':
-        specifier: workspace:*
-        version: link:../slack-integration
       axios:
         specifier: 1.9.0
         version: 1.9.0
@@ -2842,15 +2805,6 @@ importers:
       '@types/semver':
         specifier: 7.3.9
         version: 7.3.9
-
-  tools/dep-checker:
-    dependencies:
-      axios:
-        specifier: 1.9.0
-        version: 1.9.0
-      require-all:
-        specifier: 3.0.0
-        version: 3.0.0
 
   tools/esbuild-plugin-semcore:
     dependencies:
@@ -2930,24 +2884,6 @@ importers:
         specifier: 0.3.2
         version: 0.3.2
 
-  tools/slack-integration:
-    dependencies:
-      '@semcore/changelog-handler':
-        specifier: 0.0.1
-        version: link:../changelog-handler
-      axios:
-        specifier: 1.9.0
-        version: 1.9.0
-      dayjs:
-        specifier: 1.8.17
-        version: 1.8.17
-      dotenv:
-        specifier: 16.0.0
-        version: 16.0.0
-      tsm:
-        specifier: 2.2.2
-        version: 2.2.2
-
   tools/testing-utils:
     dependencies:
       '@axe-core/playwright':
@@ -3022,7 +2958,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.93.2)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0))
 
   website:
     dependencies:
@@ -8237,9 +8173,6 @@ packages:
   dayjs@1.10.4:
     resolution: {integrity: sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==}
 
-  dayjs@1.8.17:
-    resolution: {integrity: sha512-47VY/htqYqr9GHd7HW/h56PpQzRBSJcxIQFwqL3P20bMF/3az5c3PWdVY3LmPXFl6cQCYHL7c79b9ov+2bOBbw==}
-
   dayjs@1.8.36:
     resolution: {integrity: sha512-3VmRXEtw7RZKAf+4Tv1Ym9AGeo8r8+CjDi26x+7SYQil1UqtqdaokhzoEJohqlzt0m5kacJSDhJQkG/LWhpRBw==}
 
@@ -8513,10 +8446,6 @@ packages:
   dot-prop@8.0.2:
     resolution: {integrity: sha512-xaBe6ZT4DHPkg0k4Ytbvn5xoxgpG0jOS1dYxSOwAHPuNLjP3/OzN0gH55SrLqpx8cBfSaVt91lXYkApjb+nYdQ==}
     engines: {node: '>=16'}
-
-  dotenv@16.0.0:
-    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
-    engines: {node: '>=12'}
 
   dotenv@16.0.1:
     resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
@@ -12826,10 +12755,6 @@ packages:
     resolution: {integrity: sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==}
     engines: {node: '>= 6'}
     deprecated: request has been deprecated, see https://github.com/request/request/issues/3142
-
-  require-all@3.0.0:
-    resolution: {integrity: sha512-jPGN876lc5exWYrMcgZSd7U42P0PmVQzxnQB13fCSzmyGnqQWW4WUz5DosZ/qe24hz+5o9lSvW2epBNZ1xa6Fw==}
-    engines: {node: '>= 0.8'}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -21210,8 +21135,6 @@ snapshots:
 
   dayjs@1.10.4: {}
 
-  dayjs@1.8.17: {}
-
   dayjs@1.8.36: {}
 
   debug@2.6.9:
@@ -21478,8 +21401,6 @@ snapshots:
   dot-prop@8.0.2:
     dependencies:
       type-fest: 3.13.1
-
-  dotenv@16.0.0: {}
 
   dotenv@16.0.1: {}
 
@@ -26818,8 +26739,6 @@ snapshots:
       tunnel-agent: 0.6.0
       uuid: 3.4.0
 
-  require-all@3.0.0: {}
-
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
@@ -28678,7 +28597,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.93.2)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -28686,7 +28605,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0)
+      vitest: 3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.93.2)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.12)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@18.16.15)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.0)(yaml@2.8.0):
     dependencies:
@@ -28731,7 +28650,7 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0):
+  vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.93.2)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.0)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0):
     dependencies:
       '@vitest/expect': 3.0.9
       '@vitest/mocker': 3.0.9(msw@2.11.3(@types/node@22.18.8)(typescript@5.8.3))(vite@6.3.5(@types/node@22.18.8)(less@3.13.1)(sass@1.93.2)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(yaml@2.8.0))
