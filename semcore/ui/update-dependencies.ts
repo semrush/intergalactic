@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fetchFromNpm, collectPackages } from '@semcore/continuous-delivery';
+import { Package } from '@semcore/continuous-delivery';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 
@@ -10,15 +10,14 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
 const packageFile = await fs.readJSON(path.resolve(dirname, './package.json'));
-const components = Object.keys(packageFile.dependencies ?? {});
 
-const installComponents = async (packages: string[]) => {
-  const npmPackages = await fetchFromNpm(packages);
-  const localPackages = await collectPackages(npmPackages);
-  const versions = Object.fromEntries(localPackages.map((pkg) => [pkg.name, pkg.currentVersion]));
+const installComponents = async () => {
+  const packages = new Package();
+  await packages.collectPackages();
+
   packageFile.dependencies = {};
-  for (const packageName of packages) {
-    packageFile.dependencies[packageName] = versions[packageName];
+  for (const pack of packages.list) {
+    packageFile.dependencies[pack.name] = pack.version;
   }
   await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
   execSync('pnpm install --frozen-lockfile false', {
@@ -49,4 +48,4 @@ const installComponents = async (packages: string[]) => {
   }
 };
 
-await installComponents(components);
+await installComponents();
