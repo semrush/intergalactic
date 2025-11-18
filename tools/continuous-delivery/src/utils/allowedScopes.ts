@@ -5,7 +5,7 @@ export const allowedScopes = async () => {
     !scopeName.startsWith('.') && !scopeName.startsWith('@');
   const semcoreComponents = (await fs.readdir('./semcore')).filter(filterFsEntries);
   const toolsComponents = (await fs.readdir('./tools')).filter(filterFsEntries);
-  const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests', 'stories'];
+  const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests', 'stories', 'figma'];
 
   return {
     specialScopes,
