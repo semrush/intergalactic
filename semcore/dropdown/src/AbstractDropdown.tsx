@@ -342,6 +342,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     ) {
       if (this.asProps.visible !== true) {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.handlers.visible(true);
         }
 
@@ -352,6 +354,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         }, 200);
       } else {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.afterOpenPopper();
         }
       }
