@@ -5,6 +5,7 @@ import { Text } from '@semcore/ui/typography';
 figma.connect(
   FeaturePopover,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52334-2678&t=B1622uxt4mPTLZzH-11',
+
   {
     props: {
       theme: figma.enum('theme', {
@@ -34,10 +35,10 @@ figma.connect(
     example: ({ theme, placement, text, title, actions }) => (
       <FeaturePopover theme={theme} placement={placement.placement}>
         <FeaturePopover.Trigger>
-          /* Add trigger */
+          {`/* Add trigger */`}
         </FeaturePopover.Trigger>
         <FeaturePopover.Popper
-          aria-label='/* Add aria-label */'
+          aria-label={`/* Add aria-label */`}
           closeIcon
           wMax={250}
         >
