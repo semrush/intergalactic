@@ -2,12 +2,12 @@ import type { BarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: BarChartProps) => {
   return (
     <Chart.Bar
-      {...props}
+      {...getPropsToChart(props)}
       aria-label='Bar chart'
     />
   );

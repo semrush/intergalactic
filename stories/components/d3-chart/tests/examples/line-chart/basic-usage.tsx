@@ -2,7 +2,7 @@ import type { LineChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: LineChartProps) => {
   const onClickHandler = () => {
@@ -11,7 +11,7 @@ const Demo = (props: LineChartProps) => {
 
   return (
     <Chart.Line
-      {...props}
+      {...getPropsToChart(props)}
       aria-label='Line chart'
       onClickLine={onClickHandler}
     />

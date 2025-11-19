@@ -2,12 +2,12 @@ import type { CompactHorizontalBarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: CompactHorizontalBarChartProps) => {
   return (
     <Chart.CompactHorizontalBar
-      {...props}
+      {...getPropsToChart(props)}
       aria-label='CompactHorizontalBar chart'
     />
   );
@@ -45,5 +45,7 @@ export const defaultProps = getChartProps<CompactHorizontalBarChartProps>({
   showXAxis: false,
   data,
 });
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

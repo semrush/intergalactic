@@ -2,10 +2,10 @@ import type { BubbleChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: BubbleChartProps) => {
-  return <Chart.Bubble {...props} aria-label='Bubble chart' />;
+  return <Chart.Bubble {...getPropsToChart(props)} aria-label='Bubble chart' />;
 };
 
 const data = [
@@ -19,5 +19,7 @@ const data = [
 export const defaultProps = getChartProps<BubbleChartProps>({
   data,
 });
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

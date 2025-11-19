@@ -2,7 +2,7 @@ import type { ScatterPlotChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: ScatterPlotChartProps) => {
   const onClickHandler = () => {
@@ -10,7 +10,7 @@ const Demo = (props: ScatterPlotChartProps) => {
   };
   return (
     <Chart.ScatterPlot
-      {...props}
+      {...getPropsToChart(props)}
       aria-label='ScatterPlot chart'
       onClickScatterItem={onClickHandler}
     />
@@ -25,5 +25,7 @@ export const defaultProps = getChartProps<ScatterPlotChartProps>({
   data,
   groupKey: 'x',
 });
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

@@ -1,31 +1,33 @@
-import { Plot, YAxis, XAxis, Bar } from '@semcore/ui/d3-chart';
+import { Plot, YAxis, XAxis, StackBar } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-interface BarsPropsStoryProps {
-  barColor?: string;
+interface StackBarPropsStoryProps {
+  barColor1?: string;
+  barColor2?: string;
+  barColor3?: string;
   barRadius?: number;
   barHMin?: number;
-  barHide?: boolean;
   barTransparent?: boolean;
   maxBarSize?: number;
   duration?: number;
 }
 
-const Demo = (props: BarsPropsStoryProps = {}) => {
+const Demo = (props: StackBarPropsStoryProps = {}) => {
   const {
-    barColor,
+    barColor1,
+    barColor2,
+    barColor3,
     barRadius,
     barHMin,
-    barHide = false,
     barTransparent = false,
     maxBarSize,
     duration = 0,
   } = props;
 
   const MARGIN = 40;
-  const width = 400;
-  const height = 200;
+  const width = 500;
+  const height = 300;
 
   const data = [
     { time: 0, stack1: 1, stack2: 4, stack3: 3 },
@@ -40,7 +42,7 @@ const Demo = (props: BarsPropsStoryProps = {}) => {
     { time: 9, stack1: 5, stack2: 5, stack3: 3 },
   ];
 
-  const xScale = scaleBand<number>()
+  const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
     .domain(data.map((d) => d.time))
     .paddingInner(0.4)
@@ -59,22 +61,37 @@ const Demo = (props: BarsPropsStoryProps = {}) => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bar
-        x='time'
-        y='stack1'
-        duration={duration}
-        color={barColor}
-        r={barRadius}
-        hMin={barHMin}
-        hide={barHide}
-        transparent={barTransparent}
-        maxBarSize={maxBarSize}
-      />
+      <StackBar x='time' maxBarSize={maxBarSize}>
+        <StackBar.Bar
+          y='stack1'
+          color={barColor1}
+          duration={duration}
+          r={barRadius}
+          hMin={barHMin}
+          transparent={barTransparent}
+        />
+        <StackBar.Bar
+          y='stack2'
+          color={barColor2}
+          duration={duration}
+          r={barRadius}
+          hMin={barHMin}
+          transparent={barTransparent}
+        />
+        <StackBar.Bar
+          y='stack3'
+          color={barColor3}
+          duration={duration}
+          r={barRadius}
+          hMin={barHMin}
+          transparent={barTransparent}
+        />
+      </StackBar>
     </Plot>
   );
 };
 
-export const defaultProps: BarsPropsStoryProps = {
+export const defaultProps: StackBarPropsStoryProps = {
   duration: 0,
 };
 

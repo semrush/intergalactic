@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bubble-chart/basic-usage';
-import BubbleChartExample from './examples/bubble-chart/bubble-chart';
 import type { defaultProps as UsageProps } from './examples/bubble-chart/bubble-chart-on-click';
 import BubbleChartOnClickExample from './examples/bubble-chart/bubble-chart-on-click';
 import OnClickBubbleExample from './examples/bubble-chart/on-click-in-bubble';
@@ -17,10 +16,6 @@ export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes(),
   args: BasicUsageProps,
-};
-
-export const BubbleChart: StoryObj = {
-  render: BubbleChartExample,
 };
 
 export const OnClickBubble: StoryObj = {
