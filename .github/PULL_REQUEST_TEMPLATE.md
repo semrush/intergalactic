@@ -1,3 +1,11 @@
+## Changelog
+
+### @semcore/_$component_name
+
+#### Fixed
+
+-
+
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Motivation and Context
@@ -30,5 +38,4 @@
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
 - [ ] I have updated the documentation accordingly.
-- [ ] I have added changelog note to corresponding `CHANGELOG.md` file with planned publish date.
 - [ ] I have added new tests on added of fixed functionality.

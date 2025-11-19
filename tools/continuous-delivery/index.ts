@@ -1,81 +1,35 @@
 import * as process from 'process';
 
-import {
-  serializeReleaseChangelog,
-  getReleaseChangelog,
-  updateReleaseChangelog,
-} from '@semcore/changelog-handler';
-import { validateSlackIntegrationEnv } from '@semcore/slack-integration';
 import dotenv from 'dotenv';
-import semver from 'semver';
 
-import { collectPackages } from './src/collectPackages';
-import { fetchFromNpm } from './src/fetchFromNpm';
 import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
 import { closeTasks } from './src/intg-release/closeTasks';
-import { makeVersionPatches, orderedReleaseType } from './src/makeVersionPatches';
 import { publishReleaseNotes } from './src/publishReleaseNotes';
 import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
-import { syncCheck } from './src/syncCheck';
-import { updateChangelogs } from './src/updateChangelogs';
 import { updateVersions } from './src/updateVersions';
 import { formatMarkdown, log } from './src/utils';
+import type { ChangelogChangeLabel, ChangelogItem } from './src/utils/changelog';
+import { Changelog } from './src/utils/changelog';
 import { getChangedFiles } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
+import { Package } from './src/utils/packages';
+import { validateSlackIntegrationEnv } from './src/utils/slackIntegration';
 
 dotenv.config();
 
 export const initPrerelease = async () => {
-  const npmData = await fetchFromNpm();
-  const packages = await collectPackages(npmData);
+  const prevReleaseTag = await gitUtils.getPrevReleaseTag();
 
-  if (process.argv.includes('--check')) {
-    await syncCheck(packages);
-    process.exit();
-  }
+  const packages = new Package();
+  await packages.collectPackages();
 
-  const versionPatches = await makeVersionPatches(packages);
+  const changelog = new Changelog(prevReleaseTag, packages.list);
+  await changelog.collectFromHistory();
 
-  if (versionPatches.length > 0) {
-    await updateVersions(
-      versionPatches.map((patch) => {
-        return {
-          name: patch.package.name,
-          version: patch.to,
-        };
-      }),
-    );
-    await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
-    await updateReleaseChangelog();
+  await packages.updateVersions(changelog.data);
 
-    if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
-      const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
-      const diffs = versionPatches.map((patch) => semver.diff(patch.from, patch.to));
-      if (diffs.includes('major') || diffs.includes('premajor')) {
-        throw new Error(
-          'Unexpected major release preventer is here. Comment this line if you sure that you really want to release major version.',
-        );
-      }
-      let releaseType = diffs.sort(
-        (a, b) => orderedReleaseType.indexOf(a!) - orderedReleaseType.indexOf(b!),
-      )[0];
-      if (!releaseType) releaseType = 'patch';
-      const versionTo = semver.inc(pkg.currentVersion, releaseType)!;
-      const patch = {
-        package: pkg,
-        from: pkg.currentVersion,
-        to: versionTo,
-        changes: [],
-        changelogUpdated: true,
-        needPublish: true,
-      };
-      await updateVersions([{ name: pkg.name, version: versionTo }]);
-      versionPatches.push(patch);
-    }
-
-    await gitUtils.initNewPrerelease(versionPatches);
-  }
+  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 };
 
 export const uploadStatic = async () => {
@@ -139,8 +93,8 @@ export const publishRelease = async () => {
   }
 
   if (!process.argv.includes('--dry-run') && version) {
-    const releaseChangelog = await getReleaseChangelog();
-    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+    const releaseChangelog = await Changelog.getRelease();
+    const lastVersionChangelogs = releaseChangelog.slice(0, 1);
     const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
 
     await publishReleaseNotes(version, lastVersionChangelogs);
@@ -168,8 +122,8 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
   const version = versionTag?.slice(1);
 
   if (version && endpoints) {
-    const releaseChangelog = await getReleaseChangelog();
-    const lastVersionChangelogs = releaseChangelog.changelogs.slice(0, 1);
+    const releaseChangelog = await Changelog.getRelease();
+    const lastVersionChangelogs = releaseChangelog.slice(0, 1);
 
     validateSlackIntegrationEnv(endpoints);
 
@@ -178,11 +132,14 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
 };
 
 export {
-  fetchFromNpm,
   formatMarkdown,
-  collectPackages,
-  serializeReleaseChangelog,
   publishReleaseNotes,
   getUnlockedPrerelease,
   sendReleaseChangelog,
+  Package,
+};
+
+export type {
+  ChangelogChangeLabel,
+  ChangelogItem,
 };
