@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.13] - 2025-11-17
+
+### Fixed
+
+- `disabled` state for `InputTags/InputTags.Tag`.
+
 ## [16.0.12] - 2025-10-29
 
 ### Changed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.13] - 2025-11-14
+
+### Fixed
+
+- Font for tags in non-interactive state.
+
 ## [16.1.12] - 2025-10-29
 
 ### Changed

@@ -139,6 +139,10 @@ class InputTags extends Component<IInputTagsProps> {
   };
 
   handlePaste = (event: React.ClipboardEvent) => {
+    const { disabled } = this.asProps;
+
+    if (disabled) return;
+
     const currentEnteredValue = this.inputRef.current?.value;
     const value = event.clipboardData.getData('text/plain');
     const { delimiters, onAdd, onAppend } = this.asProps;
@@ -186,14 +190,22 @@ class InputTags extends Component<IInputTagsProps> {
     };
   }
 
-  getTagProps({ editable }: { editable: boolean }, index: number) {
+  getTagProps(
+    { editable, disabled }: { editable: boolean; disabled: boolean },
+    index: number,
+  ) {
+    const isDisabled = this.asProps.disabled ?? (disabled ?? false);
+    const isEditable = isDisabled ? false : editable;
+
     return {
-      size: this.asProps.size,
-      onClick: editable ? this.onTagClick : undefined,
-      interactive: editable,
-      ref: (node: HTMLElement | null) => {
+      'size': this.asProps.size,
+      'onClick': isEditable ? this.onTagClick : undefined,
+      'interactive': isEditable,
+      'ref': (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
       },
+      'use:disabled': isDisabled,
+      'use:editable': isEditable,
     };
   }
 

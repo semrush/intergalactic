@@ -16,4 +16,8 @@ SIcon[interactive] {
   &:hover {
     filter: brightness(0.8);
   }
+
+  path {
+    pointer-events: none;
+  }
 }

@@ -699,8 +699,8 @@ test.describe('Selectable radio items', () => {
     await test.step('Verify opened by trigger click', async () => {
       await ddMenuTrigger.click();
       await menu.waitFor();
-      await expect(ddMenuTrigger).toBeFocused();
-      await expect(items.first()).not.toBeFocused();
+      await expect(ddMenuTrigger).not.toBeFocused();
+      await expect(items.first()).toBeFocused();
     });
 
     await test.step('Verify menu closed click on item', async () => {
