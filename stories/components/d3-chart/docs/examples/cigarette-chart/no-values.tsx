@@ -1,5 +1,8 @@
-import { Chart, interpolateValue } from '@semcore/ui/d3-chart';
+import type { interpolateValue } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
+
+import CigaretteMockData from '../../../__mocks__/d3-chart/cigarette';
 
 function Demo() {
   return (
@@ -13,13 +16,7 @@ function Demo() {
   );
 }
 
-const data: Record<string, number | typeof interpolateValue> = {
-  Cats: 3524,
-  Dogs: interpolateValue,
-  Capybaras: 6135,
-  // @ts-ignore
-  Hamsters: null,
-  Birds: 1823,
-};
+// @ts-ignore
+const data = CigaretteMockData.EdgeCase as Record<string, number | typeof interpolateValue>;
 
 export default Demo;

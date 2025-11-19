@@ -3,31 +3,11 @@ import LikeM from '@semcore/ui/icon/Like/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import RadialMockData from '../../../__mocks__/d3-chart/radial';
+
 const Demo = () => {
   const width = 500;
   const height = 500;
-
-  const data = Array(12)
-    .fill({})
-    .map((_, index) => ({
-      label: [
-        'consectetur\nadipiscing',
-        'elit, sed do\neiusmod tempor',
-        'incididunt ut\nlabore et\ndolore',
-        'magna aliqua',
-        'Ut enim',
-        'ad minim veniam',
-        'quis nostrud\nexercitation',
-        'ullamco\nlaboris\nnisi',
-        'ut aliquip ex',
-        'ea commodo',
-        'consequat',
-        'Duis aute',
-        'irure dolor\nin',
-        'reprehenderit',
-      ][index],
-      icon: LikeM,
-    }));
 
   const textSize = 12;
   const lineHeight = textSize * 1.2;
@@ -57,5 +37,7 @@ const Demo = () => {
     </Plot>
   );
 };
+
+const data = RadialMockData.MultilineText;
 
 export default Demo;

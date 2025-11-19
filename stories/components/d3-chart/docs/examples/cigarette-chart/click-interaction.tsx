@@ -1,10 +1,10 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type KEY = string;
+import CigaretteMockData from '../../../__mocks__/d3-chart/cigarette';
 
 function Demo() {
-  const handleClick = (key: KEY, e: React.SyntheticEvent) => {
+  const handleClick = (key: string) => {
     console.log('click', key);
   };
 
@@ -19,12 +19,6 @@ function Demo() {
   );
 }
 
-const data: { [key: KEY]: number } = {
-  Cats: 3524,
-  Dogs: 1344,
-  Capybaras: 6135,
-  Hamsters: 1456,
-  Birds: 1823,
-};
+const data = CigaretteMockData.Default;
 
 export default Demo;

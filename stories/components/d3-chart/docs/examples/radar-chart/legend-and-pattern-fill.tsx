@@ -2,17 +2,7 @@ import { Plot, Radar, colors, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-const data = {
-  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-  data_1: [1, 3, 5, 5, 9, 2],
-  data_2: [5, 2, 1, 2, 7, 6],
-};
-
-const lineColors: Record<keyof typeof data, string> = {
-  categories: '',
-  data_1: colors['orange-04'],
-  data_2: colors['violet-04'],
-};
+import RadarMockData from '../../../__mocks__/d3-chart/radar';
 
 type DataKey = keyof typeof data;
 
@@ -74,6 +64,14 @@ const Demo = () => {
       </Plot>
     </>
   );
+};
+
+const data = RadarMockData.Default;
+
+const lineColors: Record<keyof typeof data, string> = {
+  categories: '',
+  data_1: colors['orange-04'],
+  data_2: colors['violet-04'],
 };
 
 export default Demo;

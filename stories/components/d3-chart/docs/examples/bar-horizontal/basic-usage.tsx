@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/d3-chart/bar';
+
 const Demo = () => {
   return (
     <Chart.Bar
@@ -14,11 +16,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `C.${i}`,
-    bar: Math.random() * 10,
-  }));
+const data = BarMockData.Default.map((d, i) => ({ ...d, category: `C.${i}` }));
 
 export default Demo;

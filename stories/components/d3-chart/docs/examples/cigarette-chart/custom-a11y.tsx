@@ -1,15 +1,8 @@
 import type { PlotSummarizerConfig } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
-const data = {
-  Cats: 3524,
-  Dogs: 1344,
-  Capybaras: 6135,
-  Hamsters: 14,
-  Birds: 1823,
-};
 
-const sum = Object.values(data).reduce((acc, item) => acc + item, 0);
+import CigaretteMockData from '../../../__mocks__/d3-chart/cigarette';
 
 const a11yAltTextConfig: PlotSummarizerConfig = {
   valuesFormatter: (value: unknown) => {
@@ -31,5 +24,9 @@ function Demo() {
     />
   );
 }
+
+const data = CigaretteMockData.Default;
+
+const sum = Object.values(data).reduce((acc, item) => acc + item, 0);
 
 export default Demo;

@@ -3,6 +3,8 @@ import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import DonutMockData from '../../../__mocks__/d3-chart/donut';
+
 const Demo = () => {
   return (
     <Plot width={300} height={300} data={data}>
@@ -35,10 +37,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  a: 3,
-  b: 1,
-  c: 2,
-};
+const data = DonutMockData.Default;
 
 export default Demo;

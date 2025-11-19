@@ -3,6 +3,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import BubbleMockData from '../../../__mocks__/d3-chart/bubble';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -56,12 +58,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(10)
-  .fill({})
-  .map((d, i) => ({
-    x: Math.random() * 10,
-    y: Math.random() * 10,
-    value: Math.random() * 1000,
-  }));
+const data = BubbleMockData.Default;
 
 export default Demo;

@@ -5,12 +5,14 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/d3-chart/bar';
+
 const Demo = () => {
   const MARGIN = 30;
   const width = 500;
   const height = 500;
 
-  const sum = data.reduce((acc, d) => acc + d.value, 0);
+  const sum = data.reduce((acc, d) => acc + d.bar, 0);
 
   const xScale = scaleLinear().range([0, width]).domain([0, sum]);
 
@@ -22,7 +24,7 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <CompactHorizontalBar x='value' y='category'>
+      <CompactHorizontalBar x='bar' y='category'>
         <CompactHorizontalBar.Hover />
         <CompactHorizontalBar.Tooltip>
           {({ index }) => {
@@ -34,7 +36,7 @@ const Demo = () => {
                   </CompactHorizontalBar.Tooltip.Title>
                   <Flex justifyContent='space-between'>
                     <CompactHorizontalBar.Tooltip.Dot mr={4}>Bar</CompactHorizontalBar.Tooltip.Dot>
-                    <Text bold>{data[index].value}</Text>
+                    <Text bold>{data[index].bar}</Text>
                   </Flex>
                 </>
               ),
@@ -64,27 +66,6 @@ const Demo = () => {
   );
 };
 
-const data = [
-  {
-    category: 'Schema.org (Microdata)',
-    value: 0,
-  },
-  {
-    category: 'Open graph',
-    value: 9650,
-  },
-  {
-    category: 'Twitter cards',
-    value: 7650,
-  },
-  {
-    category: 'Microformats',
-    value: 14650,
-  },
-  {
-    category: 'Schema.org (JSON-LD)',
-    value: 135650,
-  },
-];
+const data = BarMockData.Default;
 
 export default Demo;

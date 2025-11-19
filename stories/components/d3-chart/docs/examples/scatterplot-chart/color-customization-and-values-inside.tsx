@@ -3,6 +3,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -57,13 +59,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((_, i) => ({
-    x: i,
-    y1: Math.random() * 10,
-    y2: Math.random() * 10,
-    value: i,
-  }));
+const data = ScatterplotMockData.TwoSetsWithValue;
 
 export default Demo;

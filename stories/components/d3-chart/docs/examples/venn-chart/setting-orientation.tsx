@@ -3,6 +3,8 @@ import Button from '@semcore/ui/button';
 import { Plot, Venn } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import VennMockData from '../../../__mocks__/d3-chart/venn';
+
 const orders = [
   (val1: any, val2: any) => val2.radius - val1.radius,
   (val1: any, val2: any) => val1.radius - val2.radius,
@@ -33,10 +35,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  'F': 5,
-  'S': 7,
-  'F/S': 3,
-};
+const data = VennMockData.SwitchOrder;
 
 export default Demo;

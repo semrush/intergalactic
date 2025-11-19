@@ -12,6 +12,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/d3-chart/bar';
+
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
@@ -35,7 +37,7 @@ const Demo = () => {
       .map((item, index) => {
         return {
           id: item,
-          label: `Bar ${item}`,
+          label: `Bar ${index + 1}}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -98,13 +100,13 @@ const Demo = () => {
                   <HoverRect.Tooltip.Dot mr={4} color={legendItems[0].color}>
                     Bar 1
                   </HoverRect.Tooltip.Dot>
-                  <Text bold>{data[yIndex][1]}</Text>
+                  <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
                   <HoverRect.Tooltip.Dot mr={4} color={legendItems[1].color}>
                     Bar 2
                   </HoverRect.Tooltip.Dot>
-                  <Text bold>{data[yIndex][2]}</Text>
+                  <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
               </>
             ),
@@ -129,12 +131,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `Category ${i}`,
-    1: Math.random() * 10,
-    2: Math.random() * 10,
-  }));
+const data = BarMockData.TwoBars;
 
 export default Demo;

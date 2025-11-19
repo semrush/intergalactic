@@ -2,16 +2,7 @@ import { Plot, Venn } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const data = {
-  'G': 200,
-  'F': 200,
-  'C': 500,
-  'U': 1,
-  'G/F': 100,
-  'G/C': 100,
-  'F/C': 100,
-  'G/F/C': 100,
-};
+import VennMockData from '../../../__mocks__/d3-chart/venn';
 
 const Demo = () => {
   return (
@@ -42,5 +33,7 @@ const Demo = () => {
     </Plot>
   );
 };
+
+const data = VennMockData.Default;
 
 export default Demo;

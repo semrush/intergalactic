@@ -3,28 +3,7 @@ import LikeM from '@semcore/ui/icon/Like/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-const movies = [
-  'Action',
-  'Comedy',
-  'Drama',
-  'Fantasy',
-  'Mystery',
-  'Romance',
-  'Western',
-  'Thriller',
-  'Crime Thriller',
-  'Disaster Thriller',
-  'Psychological\nThriller',
-  'Techno Thriller',
-  'Horror',
-  'Zombie Horror',
-  'Folk Horror',
-  'Body Horror',
-  'Found\nFootage Horror',
-].map((label, index) => ({
-  label,
-  color: `chart-palette-order-${index + 1}`,
-}));
+import RadialMockData from '../../../__mocks__/d3-chart/radial';
 
 const Demo = () => {
   const width = 500;
@@ -32,7 +11,7 @@ const Demo = () => {
 
   return (
     <Plot
-      data={movies}
+      data={data}
       scale={[scaleLinear(), scaleLinear()]}
       width={width}
       height={height}
@@ -50,5 +29,7 @@ const Demo = () => {
     </Plot>
   );
 };
+
+const data = RadialMockData.MoviesWithPaletteColor;
 
 export default Demo;

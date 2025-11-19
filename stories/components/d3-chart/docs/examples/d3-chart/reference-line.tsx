@@ -9,6 +9,8 @@ import {
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/d3-chart/bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -42,11 +44,6 @@ const Demo = () => {
   );
 };
 
-const dataBar = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `Category ${i}`,
-    bar: i >= 3 ? Math.random() * 10 : 0,
-  }));
+const dataBar = BarMockData.Default;
 
 export default Demo;

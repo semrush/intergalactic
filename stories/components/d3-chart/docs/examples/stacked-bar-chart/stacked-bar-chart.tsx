@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import StackedBarMockData from '../../../__mocks__/d3-chart/stacked-bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -36,15 +38,15 @@ const Demo = () => {
                 <HoverRect.Tooltip.Title>{data[xIndex].bar}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
                   <HoverRect.Tooltip.Dot mr={4}>Stack 1</HoverRect.Tooltip.Dot>
-                  <Text bold>{data[xIndex].category1}</Text>
+                  <Text bold>{data[xIndex].Category1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
                   <HoverRect.Tooltip.Dot mr={4}>Stack 2</HoverRect.Tooltip.Dot>
-                  <Text bold>{data[xIndex].category2}</Text>
+                  <Text bold>{data[xIndex].Category2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
                   <Box mr={4}>Total</Box>
-                  <Text bold>{data[xIndex].category1 + data[xIndex].category2}</Text>
+                  <Text bold>{data[xIndex].Category1 + data[xIndex].Category2}</Text>
                 </Flex>
               </>
             ),
@@ -52,17 +54,13 @@ const Demo = () => {
         }}
       </HoverRect.Tooltip>
       <StackBar x='bar'>
-        <StackBar.Bar y='category1' />
-        <StackBar.Bar y='category2' />
+        <StackBar.Bar y='Category1' />
+        <StackBar.Bar y='Category2' />
       </StackBar>
     </Plot>
   );
 };
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  bar: `Bar ${i + 1}`,
-  category1: Math.random() * 10,
-  category2: Math.random() * 10,
-}));
+const data = StackedBarMockData.Default;
 
 export default Demo;

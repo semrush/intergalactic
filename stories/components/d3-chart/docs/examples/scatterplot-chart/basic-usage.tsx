@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+
 const Demo = () => {
   return (
     <Chart.ScatterPlot
@@ -13,11 +15,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+const data = ScatterplotMockData.Default;
 
 export default Demo;

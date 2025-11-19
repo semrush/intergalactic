@@ -291,12 +291,12 @@ test.describe('Hover Line and Tooltip', () => {
     const bars = page.locator('[data-ui-name="Bar"]');
 
     dots.first().hover();
-    await page.getByText('172').nth(1).waitFor({ state: 'visible' });
-    await expect(page.getByText('172')).toHaveCount(2);
+    await page.getByText('100').nth(1).waitFor({ state: 'visible' });
+    await expect(page.getByText('100')).toHaveCount(2);
     await expect(page).toHaveScreenshot();
 
     await bars.nth(1).hover();
-    await expect(page.getByText('182')).toHaveCount(2);
+    await expect(page.getByText('120')).toHaveCount(2);
   });
 });
 

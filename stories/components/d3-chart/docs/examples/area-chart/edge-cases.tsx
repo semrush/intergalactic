@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import AreaMockData from '../../../__mocks__/d3-chart/area';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -49,13 +51,6 @@ const Demo = () => {
   );
 };
 
-const data = [
-  { x: 0, y: 1 },
-  { x: 1, y: 4 },
-  { x: 2, y: null },
-  { x: 3, y: null },
-  { x: 4, y: 1 },
-  { x: 5, y: null },
-];
+const data = AreaMockData.XYEdgeCase;
 
 export default Demo;

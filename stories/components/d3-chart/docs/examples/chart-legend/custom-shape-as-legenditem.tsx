@@ -3,14 +3,7 @@ import type { LegendItem } from '@semcore/ui/d3-chart';
 import { ChartLegend } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  x: i,
-  Line1: Math.random() * 10,
-  Line2: Math.random() * 10,
-  Line3: Math.random() * 10,
-  Line4: Math.random() * 10,
-  Line5: Math.random() * 10,
-}));
+import ChartLegendMockData from '../../../__mocks__/d3-chart/chart-legend';
 
 const Shape = (props: any) => {
   const colorResolver = useColorResolver();
@@ -58,5 +51,7 @@ const Demo = () => {
     </div>
   );
 };
+
+const data = ChartLegendMockData.Default;
 
 export default Demo;
