@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as basicUsageProps } from './examples/donut-chart/basic-usage';
-import DonutPropsExample from './examples/donut-chart/donut-props';
-import ShowLegendPropExample, { defaultProps as ShowLegendPropExampleProps } from './examples/donut-chart/donut-show-legend-prop';
-import LegendAndPatternFillExample from './examples/donut-chart/legend-and-pattern-fill';
+import DonutPropsExample, {
+  defaultProps as donutPropsExampleProps,
+} from './examples/donut-chart/donut-props';
 import OnClickPieExample from './examples/donut-chart/on-click-pie';
-import SemiDonutExample from './examples/donut-chart/semi-donut';
 import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -20,32 +19,22 @@ export const BasicUsage = {
   args: basicUsageProps,
 };
 
-export const DonutProps: StoryObj = {
+export const DonutProps = {
   render: DonutPropsExample,
-};
-
-export const SemiDonutWithOneActive: StoryObj = {
-  render: SemiDonutExample,
-};
-
-export const LegendAndPatternFill: StoryObj = {
-  render: LegendAndPatternFillExample,
+  argTypes: {
+    innerRadius: { control: { type: 'number', min: 0, max: 150 } },
+    outerRadius: { control: { type: 'number', min: 0, max: 150 } },
+    paddingAngle: { control: { type: 'number', min: 0, max: 1, step: 0.1 } },
+    duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
+    halfsize: { control: { type: 'boolean' } },
+    patterns: { control: { type: 'boolean' } },
+    showLabel: { control: { type: 'boolean' } },
+    showTooltip: { control: { type: 'boolean' } },
+    data: { control: { type: 'object' } },
+  },
+  args: donutPropsExampleProps,
 };
 
 export const OnClickPie: StoryObj = {
   render: OnClickPieExample,
-};
-
-export const ShowLegendProp: StoryObj<typeof ShowLegendPropExampleProps> = {
-  render: ShowLegendPropExample,
-  argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-    data: {
-      control: 'object',
-    },
-  },
-  args: ShowLegendPropExampleProps,
 };

@@ -7,7 +7,10 @@ import { getChartProps } from '../stories_props_helper';
 const Demo = (props: DonutChartProps) => {
   return (
     <div style={{ width: '650px' }}>
-      <Chart.Donut {...props} aria-label='Donut chart' />
+      <Chart.Donut
+        {...props}
+        aria-label='Donut chart'
+      />
     </div>
   );
 };

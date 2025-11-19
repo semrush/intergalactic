@@ -2,12 +2,8 @@ import type { AreaChartProps } from '@semcore/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimatedDotsExample from './examples/area-chart/animated-dots';
-import AreaExample from './examples/area-chart/area';
 import BasicUsageExample, { defaultProps as areaExampleProps } from './examples/area-chart/basic-usage';
-import CustomLineExample from './examples/area-chart/custom-line';
 import DifferentPropsExample from './examples/area-chart/different-props';
-import InterpolationExample from './examples/area-chart/interpolation';
-import LegendPatternExample from './examples/area-chart/legend-and-pattern-fill';
 import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -22,22 +18,6 @@ export const DifferentProps: StoryObj = {
 
 export const AnimatedDots: StoryObj = {
   render: AnimatedDotsExample,
-};
-
-export const CustomLine: StoryObj = {
-  render: CustomLineExample,
-};
-
-export const LegendPattern: StoryObj = {
-  render: LegendPatternExample,
-};
-
-export const Interpolation: StoryObj = {
-  render: InterpolationExample,
-};
-
-export const Area: StoryObj = {
-  render: AreaExample,
 };
 
 export const BasicUsage = {
