@@ -21,6 +21,6 @@ figma.connect(
         }),
       }),
     },
-    example: ({ size, theme }) => <SpinContainer loading size={size.size} theme={theme} aria-live='polite' role='status'></SpinContainer>,
+    example: ({ size, theme }) => <SpinContainer loading size={size.size} theme={theme} aria-live='polite' role='status'>{/* Place content here */}</SpinContainer>,
   },
 );

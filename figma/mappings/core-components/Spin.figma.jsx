@@ -9,12 +9,12 @@ figma.connect(
   {
     props: {
       size: figma.enum('size', {
-        'XS (16 x 16)': 'xs',
-        'S (20 x 20)': 's',
-        'M (24 x 24)': 'm',
-        'L (32 x 32)': 'l',
-        'XL (40 x 40)': 'xl',
-        'XXL (72 x 72)': 'xxl',
+        'XS (16 х 16)': 'xs',
+        'S (20 х 20)': 's',
+        'M (24 х 24)': 'm',
+        'L (32 х 32)': 'l',
+        'XL (48 х 48)': 'xl',
+        'XXL (72 х 72)': 'xxl',
       }),
       theme: figma.enum('theme', {
         dark: 'dark',
@@ -43,11 +43,12 @@ figma.connect(
         dark: 'dark',
         invert: 'invert',
       }),
+      spin: figma.children('Spin'),
       text: figma.textContent('↳ text'),
     },
-    example: ({ size, theme, text }) => (
-      <Flex alignItems='center' direction='row' gap={/* margin depends on text and spin size */}>
-        <Spin size={size} theme={theme}>{text}</Spin>
+    example: ({ spin, text }) => (
+      <Flex alignItems='center' gap={/* margin depends on text and spin size */}>
+        {spin}
         <Text size={/* fontSize */} color='text-secondary'>{text}</Text>
       </Flex>
     ),
@@ -72,11 +73,12 @@ figma.connect(
         dark: 'dark',
         invert: 'invert',
       }),
+      spin: figma.children('Spin'),
       text: figma.textContent('↳ text'),
     },
-    example: ({ size, theme, text }) => (
+    example: ({ spin, text }) => (
       <Flex alignItems='center' direction='column' gap={/* margin depends on text and spin size */}>
-        <Spin size={size} theme={theme}>{text}</Spin>
+        {spin}
         <Text size={/* fontSize */} color='text-secondary'>{text}</Text>
       </Flex>
     ),

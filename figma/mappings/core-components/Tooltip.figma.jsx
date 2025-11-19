@@ -34,9 +34,8 @@ figma.connect(
         title={title}
         theme={theme}
         placement={placement.placement}
-        tag={addonTag}
-        {...addonProps}
-      />
+        tag={/* Optionally define addon tag */}
+        {...addonProps}>{/* Place tooltip's trigger here */}</Tooltip>
     ),
   },
 );

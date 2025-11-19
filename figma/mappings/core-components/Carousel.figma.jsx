@@ -46,7 +46,7 @@ figma.connect(
 
           {/* Add items here */}
         </Carousel.Container>
-        <Flex direction='row'>
+        <Flex gap={2}>
           <Carousel.Prev  />
           <Carousel.Next />
         </Flex>

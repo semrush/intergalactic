@@ -22,7 +22,9 @@ figma.connect(
         'blue-500': 'blue-500',
         'green-500': 'green-500',
         'orange-500': 'orange-500',
+        'yellow-500': 'yellow-500',
         'red-500': 'red-500',
+        'violet-500': 'violet-500',
         'invert': 'invert',
       }),
       active: figma.enum('state', {

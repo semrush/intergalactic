@@ -50,7 +50,7 @@ figma.connect(
       },
       example: ({ label, textarea }) => (
         <Flex direction='column' gap={2}>
-          <Flex direction='row' justifyContent='space-between'>
+          <Flex justifyContent='space-between'>
             <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
             {label}
           </Text>
@@ -74,7 +74,7 @@ figma.connect(
         textarea: figma.children('Textarea'),
       },
       example: ({ label, textarea }) => (
-        <Flex direction='row' gap={6}>
+        <Flex gap={6}>
           <Flex direction='column' mt={/* value */}>
             <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
               {label}

@@ -38,7 +38,7 @@ figma.connect(
         <Flex direction='column' gap={6}>
           {childrenForm}
         </Flex>
-        <Flex direction='row' gap={3}>{childrenActions}</Flex>
+        <Flex gap={3}>{childrenActions}</Flex>
       </Flex>
     ) },
 );

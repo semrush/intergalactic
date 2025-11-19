@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { '← addon': 'false', 'addon →': 'false', 'icon only': 'false' },
     props: {
@@ -32,7 +32,7 @@ figma.connect(
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { 'icon only': 'false' },
     props: {
@@ -92,7 +92,7 @@ figma.connect(
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { 'icon only': 'true' },
     props: {
@@ -158,7 +158,7 @@ figma.connect(
     },  
     example: ({ label, input, optional, counter, infoIcon }) => (
       <Flex direction='column' gap={2}>
-        <Flex direction='row' justifyContent='space-between'>
+        <Flex justifyContent='space-between'>
         <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
           {label}
         </Text>
@@ -198,7 +198,7 @@ figma.connect(
       }),
     },  
     example: ({ label, input, optional, counter, infoIcon }) => (
-      <Flex direction='row' gap={6}>
+      <Flex gap={6}>
         <Flex direction='column' mt={/* value */}>
         <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
           {label}

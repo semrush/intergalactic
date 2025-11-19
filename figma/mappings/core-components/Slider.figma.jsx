@@ -40,7 +40,7 @@ figma.connect(
       disabled: figma.boolean('disabled'),
       input: figma.children('InputNumber'),
     },
-    example: ({ disabled, input }) => <Flex direction='row' gap={4}>
+    example: ({ disabled, input }) => <Flex gap={4}>
       <Slider
         disabled={disabled}
       >

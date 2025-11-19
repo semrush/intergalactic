@@ -41,10 +41,10 @@ figma.connect(
     example: () => (
       <Flex>
         <InputNumber neighborLocation='right'>
-          {/* select individual inputs for props */}
+          {/* Select individual inputs to inspect their props */}
         </InputNumber>
         <InputNumber neighborLocation='left'>
-          {/* select individual inputs for props */}
+          {/* Select individual inputs to inspect their props */}
         </InputNumber>
       </Flex>
     ),

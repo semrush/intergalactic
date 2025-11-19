@@ -21,7 +21,7 @@ figma.connect(
                 <Dropdown.Popper p={4} wMax={260} aria-labelledby='/* id */'>
                     <Text size={300} bold mb={1}>{title}</Text>
                     <Text size={200}>{content}</Text>
-                    <Flex direction='row' gap={2} mt={4}>
+                    <Flex gap={2} mt={4}>
                         {actions}
                     </Flex>
                     {children}

@@ -68,6 +68,6 @@ figma.connect(
       size: figma.enum('size', { L: 'l' }),
       style: figma.enum('type', { king: { alignItems: 'stretch' } }),
     },
-    example: (props) => <Pills {...props}>{/* list of pills */}</Pills>,
+    example: (props) => <Pills {...props}>{/* Select individual Pills.Items to inspect their props */}</Pills>,
   },
 );
