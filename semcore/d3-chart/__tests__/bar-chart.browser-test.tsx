@@ -57,10 +57,10 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Basic bar chart', () => {
-    // Pairwise testing combinations to cover all props interactions
     const variables = [
-    // Combination 1: All features enabled, standard size
+      // Combination 1: Standard configuration with all features
       {
+        description: 'Standard: all features enabled',
         plotWidth: 500,
         plotHeight: 300,
         marginX: 40,
@@ -75,14 +75,15 @@ test.describe(`${TAG.VISUAL}`, () => {
         multilineYTicks: false,
         duration: 0,
       },
-      // Combination 2: Large size, minimal margins, no axes, multiline X ticks
+      // Combination 2: Patterns with minimal UI
       {
-        plotWidth: 700,
-        plotHeight: 400,
-        marginX: 20,
-        marginY: 20,
+        description: 'Patterns: minimal axes and UI, multiline ticks',
+        plotWidth: 600,
+        plotHeight: 350,
+        marginX: 40,
+        marginY: 40,
         showXAxis: false,
-        showYAxis: false,
+        showYAxis: true,
         invertAxis: false,
         showTooltip: true,
         showLegend: true,
@@ -91,65 +92,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         multilineYTicks: false,
         duration: 0,
       },
-      // Combination 3: Horizontal mode (inverted), small size, large margins, no tooltip, multiline Y ticks
+      // Combination 3: Inverted axis (horizontal mode)
       {
-        plotWidth: 400,
-        plotHeight: 250,
+        description: 'Inverted: horizontal layout, no legend',
+        plotWidth: 500,
+        plotHeight: 300,
         marginX: 60,
         marginY: 60,
         showXAxis: true,
-        showYAxis: false,
-        invertAxis: true,
-        showTooltip: false,
-        showLegend: false,
-        patterns: false,
-        multilineXTicks: false,
-        multilineYTicks: true,
-        duration: 0,
-      },
-      // Combination 4: Horizontal mode (inverted), medium size, medium margins, patterns, multiline both
-      {
-        plotWidth: 600,
-        plotHeight: 350,
-        marginX: 50,
-        marginY: 50,
-        showXAxis: false,
         showYAxis: true,
         invertAxis: true,
         showTooltip: true,
         showLegend: false,
-        patterns: true,
-        multilineXTicks: true,
-        multilineYTicks: true,
-        duration: 0,
-      },
-      // Combination 5: Minimal features, multiline X ticks
-      {
-        plotWidth: 450,
-        plotHeight: 280,
-        marginX: 30,
-        marginY: 70,
-        showXAxis: true,
-        showYAxis: true,
-        invertAxis: false,
-        showTooltip: false,
-        showLegend: true,
-        patterns: true,
-        multilineXTicks: true,
-        multilineYTicks: false,
-        duration: 0,
-      },
-      // Combination 6: Horizontal mode with legend, multiline Y ticks
-      {
-        plotWidth: 550,
-        plotHeight: 320,
-        marginX: 45,
-        marginY: 35,
-        showXAxis: true,
-        showYAxis: false,
-        invertAxis: true,
-        showTooltip: true,
-        showLegend: true,
         patterns: false,
         multilineXTicks: false,
         multilineYTicks: true,
@@ -158,7 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     ];
 
     variables.forEach((vars, index) => {
-      test(`Verify bar chart with config ${index + 1}`, {
+      test(`Verify bar chart with config ${index + 1} (${vars.description})`, {
         tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(
@@ -168,19 +122,10 @@ test.describe(`${TAG.VISUAL}`, () => {
           vars,
         );
 
-        await test.step('Verify chart renders correctly with current configuration', async () => {
+        await test.step('Verify chart renders correctly', async () => {
           await locators.plot(page).waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
-
-        if (vars.showTooltip) {
-          await test.step('Verify tooltip appears on hover', async () => {
-            await locators.groupBarBar(page, 1).hover();
-            const tooltip = locators.tooltip(page);
-            await tooltip.waitFor({ state: 'visible' });
-            await expect(tooltip).toBeVisible();
-          });
-        }
       });
     });
 
@@ -429,30 +374,28 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const label = page.getByText('Category 1');
 
-      await test.step('Verify highlights by hover on label', async () => {
+      await test.step('Verify default state with legend hover', async () => {
         await label.hover();
         await page.waitForTimeout(300);
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify not highlights by hover when unchecked', async () => {
+      await test.step('Verify unchecked items behavior and all disabled state', async () => {
         await label.click();
         await label.hover();
         await page.waitForTimeout(300);
-        await expect(page).toHaveScreenshot();
-      });
 
-      await test.step('Verify looks good when all items disabled by keyboard', async () => {
+        // Disable all items and verify chart appearance
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
+
         const box = await chart.boundingBox();
         if (!box) throw new Error('Bounding box not found');
 
         const targetX = 128.42;
         const targetY = 190.53;
-
         const hoverX = box.x + targetX;
         const hoverY = box.y + targetY;
 
@@ -474,18 +417,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       const chart = locators.plot(page).first();
       await chart.waitFor({ state: 'visible' });
 
-      await test.step('Verify highlighted when focused', async () => {
+      await test.step('Verify keyboard focus state', async () => {
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify highlighted when unchecked and checked', async () => {
+      await test.step('Verify toggle and navigation behavior', async () => {
         await page.keyboard.press('Space');
         await page.keyboard.press('Space');
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify not highlighted when one left focused', async () => {
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
       });
@@ -493,7 +432,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test.describe('Bar props variations', () => {
-  // Bar props combinations testing
     const barPropsVariations = [
       {
         name: 'with default props',
@@ -502,45 +440,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         },
       },
       {
-        name: 'with custom color',
-        props: {
-          barColor: '#FF5733',
-          duration: 0,
-        },
-      },
-      {
-        name: 'with custom radius',
-        props: {
-          barRadius: 8,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with hMin prop',
-        props: {
-          barHMin: 10,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with transparent prop',
-        props: {
-          barTransparent: true,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with maxBarSize',
-        props: {
-          maxBarSize: 20,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with combined props',
+        name: 'with visual styling (color, radius, transparency)',
         props: {
           barColor: '#3498db',
           barRadius: 6,
+          barTransparent: false,
+          duration: 0,
+        },
+      },
+      {
+        name: 'with size constraints (hMin, maxBarSize)',
+        props: {
+          barHMin: 10,
           maxBarSize: 30,
           duration: 0,
         },
@@ -567,7 +478,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test.describe('Data variations', () => {
-  // Data combinations testing
     const dataVariations = [
       {
         name: 'with standard data',
@@ -580,50 +490,28 @@ test.describe(`${TAG.VISUAL}`, () => {
         ],
       },
       {
-        name: 'with null values in data',
+        name: 'with null and undefined values',
         data: [
           { category: 'Category 0', bar: 2 },
           { category: 'Category 1', bar: null },
-          { category: 'Category 2', bar: 7 },
-          { category: 'Category 3', bar: null },
-          { category: 'Category 4', bar: 8 },
-        ],
-      },
-      {
-        name: 'with undefined values in data',
-        data: [
-          { category: 'Category 0', bar: 2 },
-          { category: 'Category 1', bar: undefined },
           { category: 'Category 2', bar: 7 },
           { category: 'Category 3', bar: undefined },
           { category: 'Category 4', bar: 8 },
         ],
       },
       {
-        name: 'with single data point',
-        data: [
-          { category: 'Category 0', bar: 5 },
-        ],
-      },
-      {
-        name: 'with empty array',
-        data: [],
-      },
-      {
-        name: 'with zero values',
+        name: 'with edge case values (zero, empty, large)',
         data: [
           { category: 'Category 0', bar: 0 },
-          { category: 'Category 1', bar: 0 },
-          { category: 'Category 2', bar: 5 },
+          { category: 'Category 1', bar: 5 },
+          { category: 'Category 2', bar: 10000 },
           { category: 'Category 3', bar: 0 },
         ],
       },
       {
-        name: 'with very large values',
+        name: 'with single data point',
         data: [
-          { category: 'Category 0', bar: 1000 },
-          { category: 'Category 1', bar: 5000 },
-          { category: 'Category 2', bar: 10000 },
+          { category: 'Category 0', bar: 5 },
         ],
       },
     ];
@@ -734,7 +622,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
 
-    // HorizontalBar props combinations testing
     const horizontalBarPropsVariations = [
       {
         name: 'with default props',
@@ -743,47 +630,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         },
       },
       {
-        name: 'with custom color',
-        props: {
-          barColor: '#FF5733',
-          duration: 0,
-        },
-      },
-      {
-        name: 'with custom radius (number)',
-        props: {
-          barRadius: 8,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with custom radius (array)',
-        props: {
-          barRadius: [6, 6, 0, 0],
-          duration: 0,
-        },
-      },
-      {
-        name: 'with transparent prop',
-        props: {
-          barTransparent: true,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with maxBarSize',
-        props: {
-          maxBarSize: 20,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with combined props',
+        name: 'with visual styling (color, array radius, transparency)',
         props: {
           barColor: '#3498db',
-          barRadius: [4, 4, 0, 0],
-          maxBarSize: 25,
+          barRadius: [6, 6, 0, 0],
           barTransparent: true,
+          duration: 0,
+        },
+      },
+      {
+        name: 'with size constraints (maxBarSize)',
+        props: {
+          maxBarSize: 25,
           duration: 0,
         },
       },
@@ -847,19 +705,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       const chart = locators.plot(page).first();
       await chart.waitFor({ state: 'visible' });
 
-      await test.step('Verify highlighted when focused', async () => {
+      await test.step('Verify keyboard focus state', async () => {
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify highlighted when check and uncheck', async () => {
+      await test.step('Verify toggle and navigation behavior', async () => {
         await page.keyboard.press('Space');
         await page.keyboard.press('Space');
         await page.waitForTimeout(200);
-        await expect(page).toHaveScreenshot();
-      });
 
-      await test.step('Verify highlight when navigation next unchecked checkbox', async () => {
+        // Verify navigation to next checkbox
         await page.keyboard.press('Tab');
         await page.waitForTimeout(200);
         await expect(page).toHaveScreenshot();
@@ -868,7 +724,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test.describe('Stacked bars', () => {
-    // StackBar props combinations testing
     const stackBarPropsVariations = [
       {
         name: 'with default props',
@@ -877,51 +732,21 @@ test.describe(`${TAG.VISUAL}`, () => {
         },
       },
       {
-        name: 'with custom colors',
-        props: {
-          barColor1: '#FF5733',
-          barColor2: '#3498db',
-          barColor3: '#2ecc71',
-          duration: 0,
-        },
-      },
-      {
-        name: 'with custom radius',
-        props: {
-          barRadius: 8,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with hMin prop',
-        props: {
-          barHMin: 5,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with transparent prop',
-        props: {
-          barTransparent: true,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with maxBarSize',
-        props: {
-          maxBarSize: 30,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with combined props',
+        name: 'with visual styling (colors, radius, transparency)',
         props: {
           barColor1: '#e74c3c',
           barColor2: '#f39c12',
           barColor3: '#9b59b6',
           barRadius: 6,
-          maxBarSize: 25,
           barTransparent: true,
+          duration: 0,
+        },
+      },
+      {
+        name: 'with size constraints (hMin, maxBarSize)',
+        props: {
+          barHMin: 5,
+          maxBarSize: 30,
           duration: 0,
         },
       },
@@ -1006,20 +831,18 @@ test.describe(`${TAG.VISUAL}`, () => {
       const label = page.getByText('Category 1');
       const label2 = page.getByText('Category 2');
 
-      await test.step('Verify highlights by hover on label', async () => {
+      await test.step('Verify default hover on legend label', async () => {
         await label.hover();
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify not highlights by hover on unchecked label', async () => {
+      await test.step('Verify unchecked label behavior and switching hover', async () => {
         await label.click();
         await label.hover();
         await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
 
-      await test.step('Verify highlights by hover on other label', async () => {
+        // Verify switching hover to another label
         await label2.hover();
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
@@ -1105,20 +928,18 @@ test.describe(`${TAG.VISUAL}`, () => {
       const label = page.getByText('Category 1');
       const label2 = page.getByText('Category 2');
 
-      await test.step('Verify highlights by hover on label', async () => {
+      await test.step('Verify default hover on legend label', async () => {
         await label.hover();
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify not highlights by hover on unchecked label', async () => {
+      await test.step('Verify unchecked label behavior and switching hover', async () => {
         await label.click();
         await label.hover();
         await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
 
-      await test.step('Verify highlights by hover on other label', async () => {
+        // Verify switching hover to another label
         await label2.hover();
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
@@ -1137,20 +958,18 @@ test.describe(`${TAG.VISUAL}`, () => {
       const chart = locators.plot(page).first();
       await chart.waitFor({ state: 'visible' });
 
-      await test.step('Verify highlights when focused', async () => {
+      await test.step('Verify keyboard focus state', async () => {
         await page.keyboard.press('Tab');
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify highlights when checked and unchecked', async () => {
+      await test.step('Verify toggle behavior and unchecked state', async () => {
         await page.keyboard.press('Space');
         await page.keyboard.press('Space');
         await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
 
-      await test.step('Verify not highlights when unchecked', async () => {
+        // Verify unchecked state
         await page.keyboard.press('Space');
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();

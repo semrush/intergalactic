@@ -87,7 +87,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  // Pairwise testing combinations to cover all props interactions
   const variables = [
     // Combination 1: All features enabled, standard size
     {

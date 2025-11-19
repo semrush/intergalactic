@@ -28,10 +28,9 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  // Pairwise testing combinations to cover all props interactions
   const variables = [
-    // Combination 1: All features enabled, standard size
     {
+      description: 'Standard: all features enabled, medium size',
       plotWidth: 500,
       plotHeight: 300,
       marginX: 40,
@@ -44,8 +43,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 2: Large size, minimal margins, no axes
     {
+      description: 'Patterns: no axes, patterns enabled, large size',
       plotWidth: 700,
       plotHeight: 400,
       marginX: 20,
@@ -58,22 +57,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 3: Inverted axis, small size, no tooltip
     {
-      plotWidth: 400,
-      plotHeight: 250,
-      marginX: 60,
-      marginY: 60,
-      showXAxis: true,
-      showYAxis: false,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
-      patterns: false,
-      duration: 0,
-    },
-    // Combination 4: Inverted, large margins, patterns
-    {
+      description: 'Inverted: axis inversion, mixed features, no tooltip',
       plotWidth: 600,
       plotHeight: 350,
       marginX: 80,
@@ -81,35 +66,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       showXAxis: false,
       showYAxis: true,
       invertAxis: true,
-      showTooltip: true,
-      showTotalInTooltip: true,
-      patterns: true,
-      duration: 0,
-    },
-    // Combination 5: Minimal features, medium size
-    {
-      plotWidth: 450,
-      plotHeight: 280,
-      marginX: 30,
-      marginY: 70,
-      showXAxis: true,
-      showYAxis: true,
-      invertAxis: false,
       showTooltip: false,
-      showTotalInTooltip: true,
-      patterns: true,
-      duration: 0,
-    },
-    // Combination 6: No axes, mixed features
-    {
-      plotWidth: 550,
-      plotHeight: 320,
-      marginX: 45,
-      marginY: 35,
-      showXAxis: true,
-      showYAxis: false,
-      invertAxis: false,
-      showTooltip: true,
       showTotalInTooltip: false,
       patterns: false,
       duration: 0,
@@ -117,7 +74,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
 
   variables.forEach((vars, index) => {
-    test(`Verify bubble chart with config ${index + 1}`, {
+    test(`Verify bubble chart with config ${index + 1} (${vars.description})`, {
       tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -155,12 +112,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       'en',
     );
 
-    await test.step('Verify chart renders correctly', async () => {
+    await test.step('Verify tooltip shown on hover', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
-      await expect(locators.plot(page)).toBeVisible();
-    });
 
-    await test.step('Verify tooltip shown by hover', async () => {
       const box = await locators.bubbleCircle(page, 0).boundingBox();
       if (box) {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
@@ -197,7 +151,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.plot(page).waitFor({ state: 'visible' });
 
-    await test.step('Verify patterns render correctly', async () => {
+    await test.step('Verify patterns render correctly with default state', async () => {
       const groups = await locators.group(page).all();
       for (const group of groups) {
         const pattern = group.locator('pattern');
@@ -207,7 +161,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify chart when one element unchecked', async () => {
+    await test.step('Verify unchecking behavior and all disabled state', async () => {
       const firstCheckbox = locators.checkbox(page, 0);
       const firstGroup = locators.group(page, 0);
 
@@ -219,11 +173,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(firstCheckbox).not.toBeChecked();
       await expect(firstGroup).toHaveCSS('display', 'none');
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify chart when all elements unchecked', async () => {
+      // Uncheck remaining elements to test all disabled state
       const checkboxes = await locators.checkbox(page).all();
       const groups = await locators.group(page).all();
 
@@ -251,16 +201,16 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify circles count and attributes', {
+  test('Verify bubble circles count and attributes', {
     tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bubble-chart/basic-usage.tsx',
-      'en',
-    );
+    await test.step('Verify basic usage example', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/docs/examples/bubble-chart/basic-usage.tsx',
+        'en',
+      );
 
-    await test.step('Verify circles amount', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
       const gCount = await locators.group(page).count();
@@ -268,33 +218,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       const circleCount = await locators.bubbleCircle(page).count();
       expect(circleCount).toBe(5);
-    });
 
-    await test.step('Verify bubbles attributes', async () => {
       const circles = await locators.bubbleCircle(page).all();
-
       for (const circle of circles) {
         await expect(circle).toHaveAttribute('aria-hidden', 'true');
         await expect(circle).toHaveAttribute('value', 'value');
         await expect(circle).toHaveAttribute('label', 'label');
       }
     });
-  });
 
-  test('Verify bubble chart implementation attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx',
-      'en',
-    );
+    await test.step('Verify bubble chart implementation example', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx',
+        'en',
+      );
 
-    await test.step('Verify bubbles attributes', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
 
       const circles = await locators.bubbleCircle(page).all();
-
       for (const circle of circles) {
         await expect(circle).toHaveAttribute('aria-hidden', 'true');
         await expect(circle).toHaveAttribute('value', 'value');

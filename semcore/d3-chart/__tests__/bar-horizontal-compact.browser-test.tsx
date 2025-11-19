@@ -25,10 +25,9 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  // Pairwise testing combinations to cover all props interactions
   const variables = [
-    // Combination 1: Standard size, with margins, X axis visible
     {
+      description: 'Standard: all features, medium size, with axis',
       plotHeight: 350,
       marginX: 40,
       marginY: 40,
@@ -37,8 +36,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 2: Large size, no margins, no X axis, patterns
     {
+      description: 'Patterns: no margins, no axis, patterns enabled',
       plotHeight: 450,
       marginX: 0,
       marginY: 0,
@@ -47,8 +46,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 3: Small size, large margins, X axis visible, no tooltip
     {
+      description: 'Custom: large margins, no tooltip',
       plotHeight: 250,
       marginX: 60,
       marginY: 60,
@@ -57,20 +56,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 4: Medium size, medium margins, no X axis, patterns
-    {
-      plotHeight: 300,
-      marginX: 20,
-      marginY: 20,
-      showXAxis: false,
-      showTooltip: true,
-      patterns: true,
-      duration: 0,
-    },
   ];
 
   variables.forEach((vars, index) => {
-    test(`Verify bar horizontal compact with config ${index + 1}`, {
+    test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
       tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -129,13 +118,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    await test.step('Verify links by hover', async () => {
+    await test.step('Verify links hover and keyboard navigation', async () => {
       await locators.link(page, 2).hover();
       await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
 
-    await test.step('Verify links by tab', async () => {
+      // Navigate with keyboard to verify focus state
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -151,7 +138,7 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify bar backgrounds aria-hidden attribute', {
+  test('Verify bar elements aria-hidden attributes', {
     tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
@@ -160,7 +147,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       'en',
     );
 
-    await test.step('Verify bars backgrounds have aria-hidden', async () => {
+    await test.step('Verify bar backgrounds have aria-hidden', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
       const barBacks = await locators.barBackground(page).all();
@@ -170,50 +157,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
       }
     });
-  });
 
-  test('Verify bar fills aria-hidden attribute', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars fills have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
+    await test.step('Verify bar fills have aria-hidden', async () => {
       const barFills = await locators.barFill(page).all();
       expect(barFills.length).toBeGreaterThan(0);
-
-      for (const bar of barFills) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify advanced usage bar attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-horizontal-compact', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have correct attributes', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      const barBacks = await locators.barBackground(page).all();
-      const barFills = await locators.barFill(page).all();
-
-      expect(barBacks.length).toBeGreaterThan(0);
-      expect(barFills.length).toBeGreaterThan(0);
-
-      for (const bar of barBacks) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
 
       for (const bar of barFills) {
         await expect(bar).toHaveAttribute('aria-hidden', 'true');

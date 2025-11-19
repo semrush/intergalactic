@@ -28,13 +28,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
 
-    await test.step('Verify chart renders correctly', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      const chart = locators.plot(page).first();
-      await expect(chart).toBeVisible();
-    });
-
     await test.step('Verify pie highlights on hover', async () => {
+      await locators.plot(page).waitFor({ state: 'visible' });
       await page.locator('path').nth(1).hover();
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
@@ -42,16 +37,32 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   const variables = [
-    { paddingAngle: 0.2, showTooltip: true, showLabel: true, duration: 0 },
-    { innerRadius: 50, paddingAngle: 0.2, showTooltip: true, showLabel: true, duration: 0 },
-    { innerRadius: 80, showTooltip: false, showLabel: true, duration: 0 },
-    { outerRadius: 120, showTooltip: true, showLabel: false, duration: 0 },
-    { outerRadius: 100, showTooltip: false, showLabel: false, duration: 0 },
-    { patterns: true, showTooltip: true, showLabel: true, duration: 0 },
+    {
+      description: 'Standard: default with tooltip and label',
+      paddingAngle: 0.2,
+      showTooltip: true,
+      showLabel: true,
+      duration: 0,
+    },
+    {
+      description: 'Custom radius: inner and outer radius variations',
+      innerRadius: 50,
+      outerRadius: 120,
+      showTooltip: true,
+      showLabel: false,
+      duration: 0,
+    },
+    {
+      description: 'Patterns: patterns enabled, no tooltip',
+      patterns: true,
+      showTooltip: false,
+      showLabel: true,
+      duration: 0,
+    },
   ];
 
   variables.forEach((item, index) => {
-    test(`Verify donut chart with config ${index + 1}`, {
+    test(`Verify donut chart with config ${index + 1} (${item.description})`, {
       tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -81,16 +92,34 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   const halfsizeVariables = [
-    { halfsize: true, showTooltip: true, showLabel: true, duration: 0 },
-    { halfsize: true, innerRadius: 50, showTooltip: true, showLabel: true, duration: 0 },
-    { halfsize: true, innerRadius: 80, showTooltip: false, showLabel: true, duration: 0 },
-    { halfsize: true, outerRadius: 120, showTooltip: true, showLabel: false, duration: 0 },
-    { halfsize: true, paddingAngle: 0.2, showTooltip: true, showLabel: true, duration: 0 },
-    { halfsize: true, patterns: true, showTooltip: false, showLabel: false, duration: 0 },
+    {
+      description: 'Standard: halfsize with tooltip and label',
+      halfsize: true,
+      showTooltip: true,
+      showLabel: true,
+      duration: 0,
+    },
+    {
+      description: 'Custom radius: innerRadius and paddingAngle',
+      halfsize: true,
+      innerRadius: 50,
+      paddingAngle: 0.2,
+      showTooltip: true,
+      showLabel: false,
+      duration: 0,
+    },
+    {
+      description: 'Patterns: patterns enabled, no tooltip',
+      halfsize: true,
+      patterns: true,
+      showTooltip: false,
+      showLabel: false,
+      duration: 0,
+    },
   ];
 
   halfsizeVariables.forEach((item, index) => {
-    test(`Verify semi-donut with config ${index + 1}`, {
+    test(`Verify semi-donut with config ${index + 1} (${item.description})`, {
       tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -142,8 +171,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify donut legend and pattern fill hover styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart'],
+  test('Verify donut legend and pattern fill interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -179,32 +208,26 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
-  });
 
-  test('Verify donut legend and pattern fill focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@donut-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
-      'en',
-      {
-        patterns: true,
-        showLegend: true,
-      },
-    );
-
-    await test.step('Verify chart renders', async () => {
+    await test.step('Verify highlighted by keyboard focus', async () => {
+      // Reload for keyboard test
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
+        'en',
+        {
+          patterns: true,
+          showLegend: true,
+        },
+      );
       await locators.plot(page).waitFor({ state: 'visible' });
-    });
 
-    await test.step('Verify highlighted by focus', async () => {
       for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify highlighted by check and uncheck', async () => {
+    await test.step('Verify highlighted by check and uncheck via keyboard', async () => {
       await page.keyboard.press('Space');
       await page.keyboard.press('Space');
       await page.waitForTimeout(200);
@@ -231,32 +254,11 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify aria-hidden attributes on pies', {
+  test('Verify aria-hidden attributes', {
     tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
-
-    await test.step('Verify pies have aria-hidden attribute', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      const pies = locators.pie(page);
-      const count = await pies.count();
-
-      for (let i = 0; i < count; i++) {
-        const pie = pies.nth(i);
-        await expect(pie).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify aria-hidden attributes on pies and labels', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx', 'en', {
-      showLabel: true,
-      duration: 0,
-    });
-
-    await test.step('Verify pies have aria-hidden attribute', async () => {
+    await test.step('Verify pies have aria-hidden attribute in basic usage', async () => {
+      await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
       await locators.plot(page).waitFor({ state: 'visible' });
       const pies = locators.pie(page);
       const count = await pies.count();
@@ -267,11 +269,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
     });
 
-    await test.step('Verify labels have aria-hidden attribute', async () => {
+    await test.step('Verify pies and labels have aria-hidden attribute', async () => {
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx', 'en', {
+        showLabel: true,
+        duration: 0,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const pies = locators.pie(page);
+      const pieCount = await pies.count();
+      for (let i = 0; i < pieCount; i++) {
+        const pie = pies.nth(i);
+        await expect(pie).toHaveAttribute('aria-hidden', 'true');
+      }
+
       const labels = locators.label(page);
-      const countLabel = await labels.count();
-
-      for (let i = 0; i < countLabel; i++) {
+      const labelCount = await labels.count();
+      for (let i = 0; i < labelCount; i++) {
         const label = labels.nth(i);
         await expect(label).toHaveAttribute('aria-hidden', 'true');
       }

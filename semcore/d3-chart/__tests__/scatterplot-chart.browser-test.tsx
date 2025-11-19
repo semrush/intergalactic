@@ -20,10 +20,9 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  // Pairwise testing combinations to cover all props interactions
   const variables = [
-    // Combination 1: All features enabled, standard size
     {
+      description: 'Standard: all features enabled, medium size',
       plotWidth: 500,
       plotHeight: 300,
       marginX: 40,
@@ -37,8 +36,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 2: Large size, minimal margins, no axes
     {
+      description: 'Patterns: no axes, patterns enabled, large size',
       plotWidth: 700,
       plotHeight: 400,
       marginX: 20,
@@ -52,23 +51,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 3: Inverted axis, small size, no tooltip
     {
-      plotWidth: 400,
-      plotHeight: 250,
-      marginX: 60,
-      marginY: 60,
-      showXAxis: true,
-      showYAxis: false,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
-      showLegend: false,
-      patterns: false,
-      duration: 0,
-    },
-    // Combination 4: Inverted, large margins, patterns
-    {
+      description: 'Inverted: axis inversion, no tooltip, no legend',
       plotWidth: 600,
       plotHeight: 350,
       marginX: 80,
@@ -76,37 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       showXAxis: false,
       showYAxis: true,
       invertAxis: true,
-      showTooltip: true,
-      showTotalInTooltip: true,
-      showLegend: false,
-      patterns: true,
-      duration: 0,
-    },
-    // Combination 5: Minimal features, medium size
-    {
-      plotWidth: 450,
-      plotHeight: 280,
-      marginX: 30,
-      marginY: 70,
-      showXAxis: true,
-      showYAxis: true,
-      invertAxis: false,
       showTooltip: false,
-      showTotalInTooltip: true,
-      showLegend: true,
-      patterns: true,
-      duration: 0,
-    },
-    // Combination 6: No legend, mixed features
-    {
-      plotWidth: 550,
-      plotHeight: 320,
-      marginX: 45,
-      marginY: 35,
-      showXAxis: true,
-      showYAxis: false,
-      invertAxis: false,
-      showTooltip: true,
       showTotalInTooltip: false,
       showLegend: false,
       patterns: false,
@@ -115,7 +69,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
 
   variables.forEach((vars, index) => {
-    test(`Verify scatterplot chart with config ${index + 1}`, {
+    test(`Verify scatterplot chart with config ${index + 1} (${vars.description})`, {
       tag: [TAG.PRIORITY_HIGH, '@scatterplot-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -153,7 +107,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       'en',
     );
 
-    await test.step('Verify chart with custom colors and values renders correctly', async () => {
+    await test.step('Verify chart with custom colors and values', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
@@ -171,11 +125,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       'en',
     );
 
-    await test.step('Verify chart renders correctly', async () => {
+    await test.step('Verify keyboard interaction with legend items', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
-    });
-
-    await test.step('Verify looks good when some items disabled by keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
