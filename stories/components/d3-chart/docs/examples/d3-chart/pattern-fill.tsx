@@ -2,6 +2,8 @@ import { Chart } from '@semcore/ui/d3-chart';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
+import StackedAreaMockData from '../../../__mocks__/d3-chart/stacked-area';
+
 const Demo = () => {
   return (
     <Chart.Area
@@ -18,12 +20,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = [...Array(5).keys()].map((d, i) => ({
-  time: new Date(date.setDate(date.getDate() + 5)),
-  stack1: Math.random() * 5,
-  stack2: Math.random() * 5,
-  stack3: Math.random() * 5,
-}));
+const data = StackedAreaMockData.Default;
 
 export default Demo;

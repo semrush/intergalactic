@@ -3,6 +3,8 @@ import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/d3-chart/line';
+
 const a11yAltTextConfig: PlotSummarizerConfig = {
   titlesFormatter: (title) => {
     if (title === 'y') return 'Money volume';
@@ -53,11 +55,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+const data = LineMockData.Default;
 
 export default Demo;

@@ -3,6 +3,8 @@ import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/d3-chart/bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -11,7 +13,7 @@ const Demo = () => {
   const resolveColor = useColorResolver();
   const xScale = scaleLinear()
     .range([MARGIN * 2, width - MARGIN * 2])
-    .domain([0, Math.max(...data.map((d) => Number.parseFloat(d.bar)))]);
+    .domain([0, Math.max(...data.map((d) => d.bar))]);
 
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
@@ -47,9 +49,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  category: `Category ${i}`,
-  bar: i + (Math.random() * 10).toFixed(2),
-}));
+const data = BarMockData.Default;
 
 export default Demo;

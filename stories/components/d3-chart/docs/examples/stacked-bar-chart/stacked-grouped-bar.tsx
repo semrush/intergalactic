@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import StackedBarMockData from '../../../__mocks__/d3-chart/stacked-bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -76,12 +78,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  category: `Category ${i}`,
-  a: Math.random() * 10,
-  b: Math.random() * 10,
-  c: Math.random() * 10,
-  d: Math.random() * 10,
-}));
+const data = StackedBarMockData.FourBars;
 
 export default Demo;

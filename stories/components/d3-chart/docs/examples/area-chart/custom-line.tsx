@@ -3,6 +3,8 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
+import AreaMockData from '../../../__mocks__/d3-chart/area';
+
 const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
 
 const Demo = () => {
@@ -33,13 +35,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(10)
-  .fill({})
-  .map((d, i) => {
-    return {
-      x: i,
-      y: Math.random() * 10,
-    };
-  });
+const data = AreaMockData.XY;
 
 export default Demo;

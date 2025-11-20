@@ -2,13 +2,15 @@ import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/u
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])
     .filter((name) => name !== 'x' && name !== 'value')
     .map((item, index) => {
       return {
         id: item,
-        label: `Dataset ${item}`,
+        label: `Dataset ${index + 1}`,
         checked: true,
         color: `chart-palette-order-${index + 1}`,
       };
@@ -73,14 +75,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(10)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    1: Math.random() * 10,
-    2: Math.random() * 10,
-    3: Math.random() * 10,
-    value: i,
-  }));
+const data = ScatterplotMockData.ThreeSetsWithValue;
 
 export default Demo;

@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/d3-chart/line';
+
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
@@ -65,14 +67,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = Array(10)
-  .fill({})
-  .map((d, i) => {
-    return {
-      time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random() * 10,
-    };
-  });
+const data = LineMockData.Time;
 
 export default Demo;

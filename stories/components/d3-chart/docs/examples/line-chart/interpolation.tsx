@@ -1,6 +1,8 @@
-import { Plot, Line, XAxis, YAxis, minMax, interpolateValue } from '@semcore/ui/d3-chart';
+import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
+
+import LineMockData from '../../../__mocks__/d3-chart/line';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -34,37 +36,6 @@ const Demo = () => {
   );
 };
 
-const data = [
-  {
-    x: 0,
-    line1: 5,
-    line2: 3,
-  },
-  {
-    x: 1,
-    line1: 8,
-    line2: interpolateValue,
-  },
-  {
-    x: 2,
-    line1: 4,
-    line2: 8,
-  },
-  {
-    x: 3,
-    line1: 5,
-    line2: interpolateValue,
-  },
-  {
-    x: 4,
-    line1: 5,
-    line2: interpolateValue,
-  },
-  {
-    x: 5,
-    line1: 3,
-    line2: 1,
-  },
-];
+const data = LineMockData.Interpolation;
 
 export default Demo;

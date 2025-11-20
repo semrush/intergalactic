@@ -11,6 +11,8 @@ import {
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/d3-chart/line';
+
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
@@ -32,7 +34,7 @@ const Demo = () => {
       .map((item, index) => {
         return {
           id: item,
-          label: `Line${item}`,
+          label: `Line ${index + 1}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -106,11 +108,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  x: i,
-  1: Math.random() * 10,
-  2: Math.random() * 10,
-  3: Math.random() * 10,
-}));
+const data = LineMockData.ThreeLines;
 
 export default Demo;

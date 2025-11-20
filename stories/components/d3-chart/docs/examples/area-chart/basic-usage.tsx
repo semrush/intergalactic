@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import AreaMockData from '../../../__mocks__/d3-chart/area';
+
 function formatDate(value: any) {
   const options = {
     month: 'short' as const,
@@ -23,14 +25,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = Array(10)
-  .fill({})
-  .map((d, i) => {
-    return {
-      time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random() * 10,
-    };
-  });
+const data = AreaMockData.Default;
 
 export default Demo;
