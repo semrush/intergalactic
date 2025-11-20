@@ -21,7 +21,6 @@ const Demo = (props: ExampleProps) => {
 export const defaultProps: ExampleProps = {
   size: 'm',
   theme: undefined,
-  customTheme: undefined,
   state: undefined,
   disabled: false,
   color: undefined,

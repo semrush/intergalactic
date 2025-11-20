@@ -10,7 +10,7 @@ const Demo = (props: ExampleProps) => {
       <div style={{ background: 'blue' }}>
         <Skeleton h={100} theme={props.theme} duration={props.duration}>
           <Skeleton.Text h={50} amount={props.amount} />
-          <Skeleton.Text w={props.width} />
+          <Skeleton.Text w={props.w} />
         </Skeleton>
       </div>
     </>
@@ -21,7 +21,7 @@ export const defaultProps: ExampleProps = {
   theme: 'dark',
   duration: 0,
   amount: undefined,
-  width: '60%',
+  w: '60%',
 };
 
 Demo.defaultProps = defaultProps;

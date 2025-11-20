@@ -23,6 +23,9 @@ const commonArgTypes = {
   duration: {
     control: { type: 'number' },
   },
+  w: {
+    control: { type: 'number' },
+  },
 } as const;
 
 export const SkeletonThemes: StoryObj<typeof defaultProps> = {
