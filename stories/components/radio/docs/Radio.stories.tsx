@@ -1,8 +1,8 @@
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AdditionalPropsInputExample from './examples/additional_props_for_input';
-import RadioGroupExampleExample from './examples/radiogroup_example';
+import AdditionalPropsInputExample, { defaultAdditionalInputProps } from './examples/additional_props_for_input';
+import RadioGroupExampleExample, { defaultProps } from './examples/radiogroup_example';
 
 const meta: Meta<typeof Radio> = {
   title: 'Components/Radio/Documentation',
@@ -10,12 +10,29 @@ const meta: Meta<typeof Radio> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Radio>;
 
-export const AdditionalPropsInput: Story = {
-  render: AdditionalPropsInputExample,
+const commonArgTypes = {
+  size: {
+    control: { type: 'select' },
+    options: ['m', 'l'],
+  },
+  theme: {
+    control: { type: 'select' },
+    options: ['yellow-400', 'blue-400'],
+  },
+  disabled: {
+    control: { type: 'boolean' },
+  },
+} as const;
+
+export const RadioGroupExample: StoryObj<typeof defaultProps> = {
+  render: RadioGroupExampleExample,
+  argTypes: commonArgTypes,
+  args: defaultProps,
 };
 
-export const RadioGroupExample: Story = {
-  render: RadioGroupExampleExample,
+export const AdditionalPropsInput: StoryObj<typeof defaultAdditionalInputProps> = {
+  render: AdditionalPropsInputExample,
+  argTypes: commonArgTypes,
+  args: defaultAdditionalInputProps,
 };

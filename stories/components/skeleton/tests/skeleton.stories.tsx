@@ -2,16 +2,7 @@ import Skeleton from '@semcore/ui/skeleton';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ObserveParentSizeExample from './examples/observe-parent-size';
-import AreaChartExample from './examples/skeleton-in-charts/area-chart-skeleton';
-import BarChartExample from './examples/skeleton-in-charts/bar-chart-skeleton';
-import BubbleChartExample from './examples/skeleton-in-charts/bubble-chart-skeleton';
-import DonutChartExample from './examples/skeleton-in-charts/donut-chart-skeleton';
-import HistogramChartExample from './examples/skeleton-in-charts/histogram-chart-skeleton';
-import LineChartExample from './examples/skeleton-in-charts/line-chart-skeleton';
-import RadialChartExample from './examples/skeleton-in-charts/radial-tree-chart-skeleton';
-import SkatterplotChartExample from './examples/skeleton-in-charts/skatterplot-chart-skeleton';
-import VennChartExample from './examples/skeleton-in-charts/venn-chart-skeleton';
-import SkeletonThemesExample from './examples/skeleton-themes';
+import SkeletonThemesExample, { defaultProps } from './examples/skeleton-themes';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Skeleton/Tests',
@@ -21,44 +12,26 @@ const meta: Meta<typeof Skeleton> = {
 export default meta;
 type Story = StoryObj<typeof Skeleton>;
 
-export const VennChart: Story = {
-  render: VennChartExample,
-};
+const commonArgTypes = {
+  placement: {
+    theme: { type: 'select' },
+    options: ['dark', 'invert'],
+  },
+  amount: {
+    control: { type: 'number' },
+  },
+  duration: {
+    control: { type: 'number' },
+  },
+  w: {
+    control: { type: 'number' },
+  },
+} as const;
 
-export const SkatterplotChart: Story = {
-  render: SkatterplotChartExample,
-};
-
-export const LineChart: Story = {
-  render: LineChartExample,
-};
-
-export const AreaChart: Story = {
-  render: AreaChartExample,
-};
-
-export const BarChart: Story = {
-  render: BarChartExample,
-};
-
-export const BubbleChart: Story = {
-  render: BubbleChartExample,
-};
-
-export const DonutChart: Story = {
-  render: DonutChartExample,
-};
-
-export const HistogramChart: Story = {
-  render: HistogramChartExample,
-};
-
-export const RadialChart: Story = {
-  render: RadialChartExample,
-};
-
-export const SkeletonThemes: Story = {
+export const SkeletonThemes: StoryObj<typeof defaultProps> = {
   render: SkeletonThemesExample,
+  argTypes: commonArgTypes,
+  args: defaultProps,
 };
 
 export const ObserveParentSize: Story = {
