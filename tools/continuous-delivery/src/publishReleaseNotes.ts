@@ -1,12 +1,13 @@
 import { execSync } from 'child_process';
 import fs from 'fs/promises';
 
-import type { Changelog } from '@semcore/changelog-handler';
-import { serializeReleaseChangelog, toMarkdown } from '@semcore/changelog-handler';
+import { toMarkdown } from 'marked-ast-markdown';
 
 import { log } from './utils';
+import type { ChangelogItem } from './utils/changelog';
+import { Changelog } from './utils/changelog';
 
-export const publishReleaseNotes = async (version: string, lastVersionChangelogs: Changelog[]) => {
+export const publishReleaseNotes = async (version: string, lastVersionChangelogs: ChangelogItem[]) => {
   log('Publishing release note.');
   try {
     log('Authorizing in github...');
@@ -18,7 +19,7 @@ export const publishReleaseNotes = async (version: string, lastVersionChangelogs
     await fs.rm('./.gh-auth-token.txt');
     log('Authorized in github.');
     log('Publishing release note...');
-    const releaseNotes = toMarkdown(serializeReleaseChangelog(lastVersionChangelogs))
+    const releaseNotes = toMarkdown(Changelog.serializeRelease(lastVersionChangelogs))
       .split('\n')
       .slice(2)
       .join('\n');

@@ -7,8 +7,8 @@ import CheckboxInTableWithNoDataExample from './examples/cells-tests/checkbox-in
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
-import MiniChartsInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
-import MergedScrolledRowExample from './examples/cells-tests/one-big-merged-row-and-scroll';
+import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
+import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
 
 const meta: Meta<typeof DataTable> = {
@@ -31,16 +31,16 @@ export const CheckboxInTableWithNoData: Story = {
   render: CheckboxInTableWithNoDataExample,
 };
 
-export const MiniChartsInCells: Story = {
-  render: MiniChartsInCellsExample,
+export const MiniChartsInlineEditInCells: Story = {
+  render: MiniChartsInlineEditInCellsExample,
 };
 
 export const OneMergedCell: Story = {
   render: OneMergedCellExample,
 };
 
-export const MergedScrolledRow: Story = {
-  render: MergedScrolledRowExample,
+export const OneBigMergedRowAndScroll: Story = {
+  render: OneBigMergedRowAndScrollExample,
 };
 
 export const DDSelectInCell: Story = {

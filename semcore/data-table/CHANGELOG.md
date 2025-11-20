@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
 - SR didn't pronounce all items selecting/deselecting on table with pagination.
+- Keyboard interaction after mouse clicking in cell with few interactive elements.
 
 ## [16.4.3] - 2025-10-31
 

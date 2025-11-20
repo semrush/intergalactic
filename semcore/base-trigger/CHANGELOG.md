@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [16.4.4] - 2025-11-14
 
+### Added
+
+- `data-ui-name` for Inner container.
+
 ### Fixed
 
 - `font-family` style for the `LinkTrigger` wasn't inherited.
