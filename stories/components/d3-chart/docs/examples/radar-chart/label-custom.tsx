@@ -4,7 +4,7 @@ import Tag from '@semcore/ui/tag';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import RadarMockData from '../../../__mocks__/d3-chart/radar';
+import RadarMockData from '../../../__mocks__/radar';
 
 const Demo = () => {
   const width = 250;

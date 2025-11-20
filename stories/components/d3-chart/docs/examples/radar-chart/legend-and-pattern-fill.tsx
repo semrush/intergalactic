@@ -2,7 +2,7 @@ import { Plot, Radar, colors, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import RadarMockData from '../../../__mocks__/d3-chart/radar';
+import RadarMockData from '../../../__mocks__/radar';
 
 type DataKey = keyof typeof data;
 

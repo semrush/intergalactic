@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-import StackedAreaMockData from '../../../__mocks__/d3-chart/stacked-area';
+import StackedAreaMockData from '../../../__mocks__/stacked-area';
 
 const Demo = () => {
   const MARGIN = 40;

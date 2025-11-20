@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import AreaMockData from '../../../__mocks__/d3-chart/area';
+import AreaMockData from '../../../__mocks__/area';
 
 const Demo = () => {
   const MARGIN = 40;
