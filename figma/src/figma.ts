@@ -13,6 +13,11 @@ interface InstanceHandle {
    * */
   findInstance(layerName: string, opts?: SelectorOptions): InstanceHandle | ErrorHandle;
   /**
+   * Finds a text layer by name.
+   * Optional selector options for path matching and traversal behavior.
+   * */
+  findText(layerName: string, opts?: SelectorOptions): TextHandle | ErrorHandle;
+  /**
    * Finds all layers (instances or text) that match the selector function.
    * Optional selector options for path matching and traversal behavior.
    * */
@@ -67,7 +72,7 @@ interface Metadata {
 type ResultSection = string;
 
 interface Figma {
-  tsx: (...str: (TemplateStringsArray | string | string[] | undefined)[]) => string;
+  tsx: (...str: (any)[]) => string;
   selectedInstance?: InstanceHandle;
 };
 

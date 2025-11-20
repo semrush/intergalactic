@@ -3,6 +3,15 @@ import { figma } from './figma';
 const instance = figma.selectedInstance;
 
 export const connect = {
+  prop: (propName: string, expectedPropValue: string | boolean) => {
+    if (instance) {
+      const propValue = instance.getPropertyValue(propName);
+      if (expectedPropValue !== undefined && propValue == expectedPropValue)
+        return propValue;
+      // return figma.tsx`${propName} = ${propValue}`;
+    }
+    return;
+  },
   children: ({ prop, value }: { prop?: string; value?: string | boolean } = {}) => {
     if (instance) {
       if (prop !== undefined && value !== undefined) {
@@ -11,13 +20,19 @@ export const connect = {
     }
     return [];
   },
-  /** Finds a child instance by the layer name and returns its code. */
-  childInstanceCode: (layerName: string) => {
+  /** Finds a child instance or text by the layer name and returns its code. */
+  childCode: (layerName: string, wrapper?: string) => {
     if (instance) {
       const inst = instance.findInstance(layerName);
+      const text = instance.findText(layerName);
+      let result: string | string[] | undefined;
       if (inst.type === 'INSTANCE') {
-        return inst.executeTemplate().example;
+        result = inst.executeTemplate().example;
+      } else if (text.type === 'TEXT') {
+        result = text.textContent;
       }
+      if (result)
+        return wrapper ? figma.tsx`<${wrapper}>${result}</${wrapper.split(' ')[0]}>` : result;
     }
     return;
   },
