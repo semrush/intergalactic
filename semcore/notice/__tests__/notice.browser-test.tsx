@@ -134,11 +134,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+    const closeNotif = page.getByText('Close notification');
 
     await test.step('Verify close notification shown on focus and hover', async () => {
       const closes = locators.close(page);
-      const closeNotif = page.getByText('Close notification');
-
       await page.keyboard.press('Tab');
       await closeNotif.first().waitFor({ state: 'visible' });
 
@@ -149,6 +148,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify notices close on interaction', async () => {
       await page.keyboard.press('Enter');
+      await closeNotif.first().waitFor({ state: 'hidden' });
+
       await locators.close(page).first().click();
       await expect(page).toHaveScreenshot();
     });
