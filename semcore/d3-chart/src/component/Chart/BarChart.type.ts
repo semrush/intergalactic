@@ -7,8 +7,8 @@ import type { AriaNameProps, BaseChartProps } from './AbstractChart.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {
-  x: number;
-  y: number;
+  x: number | string;
+  y: number | string;
 };
 
 type BarKey = string;

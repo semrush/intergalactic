@@ -4,16 +4,13 @@ type StoryChartProps<T, LP = BaseLegendProps> = T & {
   [key in keyof LP as `legendProps.${key & string}`]?: LP[key];
 };
 
-export const baseLegendProps: BaseLegendProps = {
+export const baseLegendProps: Omit<BaseLegendProps, 'withTrend' | 'trendIsVisible' | 'onTrendIsVisibleChange'> = {
   size: 'm',
   shape: 'Checkbox',
   disableHoverItems: false,
   disableSelectItems: false,
   legendType: 'Flex',
   title: 'Legend',
-  withTrend: true,
-  trendIsVisible: false,
-  onTrendIsVisibleChange: () => {},
 };
 
 export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
@@ -33,7 +30,6 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   duration: 200,
   data: [],
   showLegend: true,
-  // legendProps: baseLegendProps,
 };
 
 Object.entries(baseLegendProps).forEach(([key, value]) => {
@@ -84,8 +80,6 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'legendProps.disableSelectItems': { control: 'boolean' },
     'legendProps.legendType': { control: 'select', options: ['Flex', 'Table'] },
     'legendProps.title': { control: 'text' },
-    'legendProps.withTrend': { control: 'boolean' },
-    'legendProps.trendIsVisible': { control: 'boolean' },
 
     'showTooltip': { control: { type: 'boolean' } },
     'showTotalInTooltip': { control: { type: 'boolean' } },

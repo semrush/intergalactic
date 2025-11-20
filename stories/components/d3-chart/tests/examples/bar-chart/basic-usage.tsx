@@ -25,6 +25,15 @@ export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'category',
   type: 'group',
   data,
+  trend: {
+    bar: [
+      { x: 'Category 0', y: 2 },
+      { x: 'Category 1', y: 5 },
+      { x: 'Category 2', y: 7 },
+      { x: 'Category 3', y: 4 },
+      { x: 'Category 4', y: 8 },
+    ],
+  },
 });
 
 Demo.defaultProps = defaultProps;
