@@ -3,12 +3,33 @@ import { figma } from './figma';
 const instance = figma.selectedInstance;
 
 export const connect = {
-  prop: (propName: string, expectedPropValue: string | boolean) => {
+  /** Returns a pretty representation of a prop/value pair. */
+  setProp: (propName: string, propValue: any) => {
+    if (propValue === undefined) {
+      return;
+    }
+    if (typeof propValue === 'string' && !propValue.startsWith('/*')) {
+      return figma.tsx`${propName} = "${propValue}"`;
+    }
+    return figma.tsx`${propName} = {${propValue}}`;
+  },
+  /**
+   * Gets a property value and returns a pretty representation of it and its value.
+   * If `expectedPropValue` is provided, returns that value as the prop name
+   * (but only if it matches the current value).
+   * */
+  getProp: (propName: string, expectedPropValue?: string | boolean) => {
     if (instance) {
       const propValue = instance.getPropertyValue(propName);
-      if (expectedPropValue !== undefined && propValue == expectedPropValue)
+      if (expectedPropValue !== undefined && propValue == expectedPropValue) {
         return propValue;
-      // return figma.tsx`${propName} = ${propValue}`;
+      } else if (expectedPropValue === undefined) {
+        if (typeof propValue === 'string') {
+          return figma.tsx`${propName} = "${propValue}"`;
+        } else {
+          return figma.tsx`${propName} = {${propValue}}`;
+        }
+      }
     }
     return;
   },
