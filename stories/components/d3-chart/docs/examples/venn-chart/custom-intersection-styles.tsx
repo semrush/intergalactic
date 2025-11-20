@@ -1,7 +1,7 @@
 import { Plot, Venn } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import VennMockData from '../../../__mocks__/d3-chart/venn';
+import VennMockData from '../../../__mocks__/venn';
 
 const Demo = () => {
   return (

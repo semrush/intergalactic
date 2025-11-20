@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import LineMockData from '../../../__mocks__/d3-chart/line';
+import LineMockData from '../../../__mocks__/line';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);

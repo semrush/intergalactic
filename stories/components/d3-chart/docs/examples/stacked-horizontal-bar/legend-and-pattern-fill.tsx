@@ -11,7 +11,7 @@ import {
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-import StackedBarMockData from '../../../__mocks__/d3-chart/stacked-bar';
+import StackedBarMockData from '../../../__mocks__/stacked-bar';
 
 const dataHints = makeDataHintsContainer();
 

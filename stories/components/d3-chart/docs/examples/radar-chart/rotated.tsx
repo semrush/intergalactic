@@ -4,7 +4,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 import React from 'react';
 
-import RadarMockData from '../../../__mocks__/d3-chart/radar';
+import RadarMockData from '../../../__mocks__/radar';
 
 const scale = scaleLinear().domain([0, 10]);
 const Demo = () => {

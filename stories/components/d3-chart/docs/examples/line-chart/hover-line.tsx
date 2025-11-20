@@ -2,7 +2,7 @@ import { Plot, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import LineMockData from '../../../__mocks__/d3-chart/line';
+import LineMockData from '../../../__mocks__/line';
 
 const Demo = () => {
   const MARGIN = 40;

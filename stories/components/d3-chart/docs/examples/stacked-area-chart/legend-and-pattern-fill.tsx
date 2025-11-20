@@ -14,7 +14,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-import StackedAreaMockData from '../../../__mocks__/d3-chart/stacked-area';
+import StackedAreaMockData from '../../../__mocks__/stacked-area';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);

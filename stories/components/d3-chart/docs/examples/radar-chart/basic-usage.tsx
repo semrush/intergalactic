@@ -1,7 +1,7 @@
 import { Chart, colors } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import RadarMockData from '../../../__mocks__/d3-chart/radar';
+import RadarMockData from '../../../__mocks__/radar';
 
 const Demo = () => {
   return (

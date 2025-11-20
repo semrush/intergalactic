@@ -3,7 +3,7 @@ import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-import BarMockData from '../../../__mocks__/d3-chart/bar';
+import BarMockData from '../../../__mocks__/bar';
 
 const Demo = () => {
   const MARGIN = 40;

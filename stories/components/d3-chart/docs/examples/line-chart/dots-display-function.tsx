@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-import LineMockData from '../../../__mocks__/d3-chart/line';
+import LineMockData from '../../../__mocks__/line';
 
 const displayDots = (index: number, active: boolean, single: boolean) => {
   if (single || active) return true;

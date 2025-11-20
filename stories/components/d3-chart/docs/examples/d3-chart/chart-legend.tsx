@@ -3,7 +3,7 @@ import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/ui/d3-ch
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import LineMockData from '../../../__mocks__/d3-chart/line';
+import LineMockData from '../../../__mocks__/line';
 
 const MAP_THEME = {
   line1: 'orange',

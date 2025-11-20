@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import BubbleMockData from '../../../__mocks__/d3-chart/bubble';
+import BubbleMockData from '../../../__mocks__/bubble';
 
 const dataHints = makeDataHintsContainer();
 

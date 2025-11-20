@@ -2,7 +2,7 @@ import { ChartLegendTable } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import ChartLegendMockData from '../../../__mocks__/d3-chart/chart-legend';
+import ChartLegendMockData from '../../../__mocks__/chart-legend';
 
 const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(

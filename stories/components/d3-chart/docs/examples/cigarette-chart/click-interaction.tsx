@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import CigaretteMockData from '../../../__mocks__/d3-chart/cigarette';
+import CigaretteMockData from '../../../__mocks__/cigarette';
 
 function Demo() {
   const handleClick = (key: string) => {
