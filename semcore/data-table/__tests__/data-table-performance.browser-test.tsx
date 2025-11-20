@@ -1,13 +1,15 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Rows', () => {
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.skip('Measure render time between first and last row', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/additional-tests/performmance-tooltips-ellipsis-test.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/data-table/tests/examples/additional-tests/performmance-tooltips-ellipsis-test.tsx', 'en');
 
     const start = await page.evaluate(() => performance.now());
 

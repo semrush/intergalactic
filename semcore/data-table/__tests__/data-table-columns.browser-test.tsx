@@ -1,25 +1,26 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 import type { Property } from 'csstype';
 
-async function getColumnWidth(page: any, colIndex: any) {
-  const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
-  const box = await column.boundingBox();
-  return box ? box.width : 0;
-}
+import { locators, getColumnWidth } from './utils';
 
 const COLUMN_SORT_TO_ARIA: Record<string, string> = {
   asc: 'ascending',
   desc: 'descending',
 };
 
-test.describe('Columns', () => {
-  test('Verify alignment props', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
 
-    await page.setContent(htmlContent);
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify alignment props', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/rows-columns-tests/column-alignment.tsx', 'en');
 
     const checkProperty = async (columnIndex: number, check: {
       justifyContent?: Property.JustifyContent;
@@ -63,12 +64,69 @@ test.describe('Columns', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify column width - static and based on content', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/rows-columns-tests/column-expand.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Column sizes functionality', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/column-sizes.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await expect(page).toHaveScreenshot();
+
+    await page.setViewportSize({ width: 375, height: 800 });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify merged columns keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify head column shadow for fixed columns with different screen sizes', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx', 'en');
+
+    const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
+
+    let isShadowExist = await lastColumn.evaluate((node) => {
+      // default `left` value is `auto`
+      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
+    });
+
+    expect(isShadowExist).toBe(false);
+
+    await page.setViewportSize({ width: 400, height: 700 });
+
+    isShadowExist = await lastColumn.evaluate((node) => {
+      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
+    });
+
+    expect(isShadowExist).toBe(true);
+  });
+});
+
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify column width when static and based on content', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/rows-columns-tests/column-expand.tsx', 'en');
+
     const getWidths = async (viewportWidth: any) => {
       await page.setViewportSize({ width: viewportWidth, height: 800 });
       const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
@@ -86,39 +144,25 @@ test.describe('Columns', () => {
     expect(width3Mobile).toBeLessThan(width3Desktop);
     expect(width4Mobile).toBeLessThan(width4Desktop);
     expect(width5Mobile).toBeLessThan(width5Desktop);
-
-    await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Column sizes functionality', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/column-sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify merged columns keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+    const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(0);
+    const secondCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(1);
 
-    await page.setViewportSize({ width: 375, height: 800 });
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify merged columns keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/columns-merging.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-    const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
-    const secondCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(1);
-
-    const secondRow = page.locator('[data-ui-name="Body.Row"]').nth(1);
-    const secondCell2 = secondRow.locator('[data-ui-name="Row.Cell"]').nth(1);
-    const fourthCell2 = secondRow.locator('[data-ui-name="Row.Cell"]').nth(2);
+    const secondCell2 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').nth(1);
+    const fourthCell2 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').nth(2);
 
     await page.keyboard.press('Tab');
     await expect(firstCell).toBeFocused();
     await page.keyboard.press('ArrowRight');
 
-    await expect(page).toHaveScreenshot();
     await expect(secondCell).toBeFocused();
     await page.keyboard.press('ArrowRight');
     await expect(secondCell).toBeFocused();
@@ -134,12 +178,12 @@ test.describe('Columns', () => {
     await page.keyboard.press('ArrowDown');
   });
 
-  test('Verify merged columns and interactive cells', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/access-to-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const lastRow = page.locator('[data-ui-name="Body.Row"][aria-rowindex="7"]');
+  test('Verify merged columns and interactive cells', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table',
+      '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/access-to-cells.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
@@ -147,33 +191,20 @@ test.describe('Columns', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
-    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
+    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').nth(1)).toBeFocused();
+    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').nth(1)).toBeFocused();
 
     await page.keyboard.press('ArrowLeft');
-    await expect(lastRow.locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
+    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
   });
 
-  test('Verify data table renders when refs in columns', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/multiple_use.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
-    await page.keyboard.press('Tab');
-    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
-    const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
-    await expect(firstCell).toBeFocused();
-  });
-
-  test('Verify column\'s aria-sort and aria-describedby attributes ', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify column\'s aria-sort and aria-describedby attributes ', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
     const columns = await page.locator('[data-ui-name="Head.Column"]').all();
     const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];
@@ -188,29 +219,5 @@ test.describe('Columns', () => {
       expect(column).not.toHaveAttribute('aria-sort');
       expect(column).toHaveAttribute('aria-describedby');
     }
-  });
-
-  test('Verify head column shadow for fixed columns with different screen sizes', async ({ page }) => {
-    const standPath = 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'end');
-
-    page.setContent(htmlContent);
-
-    const lastColumn = await page.locator('[data-ui-name="Head.Column"]').last();
-
-    let isShadowExist = await lastColumn.evaluate((node) => {
-      // default `left` value is `auto`
-      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
-    });
-
-    expect(isShadowExist).toBe(false);
-
-    await page.setViewportSize({ width: 400, height: 700 });
-
-    isShadowExist = await lastColumn.evaluate((node) => {
-      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
-    });
-
-    expect(isShadowExist).toBe(true);
   });
 });

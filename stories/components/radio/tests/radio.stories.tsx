@@ -1,11 +1,9 @@
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AdditionalPropsInputLExample from './examples/additional_props_for_input_L';
 import AdditionalPropsInputTooltipExample from './examples/additional_props_for_input_tooltip';
-import SizesCheckedUncheckedExample from './examples/checked-and-focused-states';
+import RadioPropsExample, { defaultProps } from './examples/radio-props';
 import RadioGroupStatesExample from './examples/radiogroup_different_states';
-import RadioGroupLExample from './examples/radiogroup_example_L';
 import WithLinkInTextExample from './examples/radiogroup_example_with_link';
 
 const meta: Meta<typeof Radio> = {
@@ -16,8 +14,38 @@ const meta: Meta<typeof Radio> = {
 export default meta;
 type Story = StoryObj<typeof Radio>;
 
-export const RadioGroupL: Story = {
-  render: RadioGroupLExample,
+const commonArgTypes = {
+  size: {
+    control: { type: 'select' },
+    options: ['m', 'l'],
+  },
+  theme: {
+    control: { type: 'select' },
+    options: ['yellow-400', 'blue-400'],
+  },
+  state: {
+    control: { type: 'select' },
+    options: ['normal', 'invalid'],
+  },
+  color: {
+    control: { type: 'select' },
+    options: ['text-critical'],
+  },
+  checked: {
+    control: { type: 'boolean' },
+  },
+  disabled: {
+    control: { type: 'boolean' },
+  },
+  value: {
+    control: { type: 'text' },
+  },
+} as const;
+
+export const RadioProps: StoryObj<typeof defaultProps> = {
+  render: RadioPropsExample,
+  argTypes: commonArgTypes,
+  args: defaultProps,
 };
 
 export const AdditionalPropsInputTooltip: Story = {
@@ -26,14 +54,6 @@ export const AdditionalPropsInputTooltip: Story = {
 
 export const RadioGroupStates: Story = {
   render: RadioGroupStatesExample,
-};
-
-export const AdditionalPropsInputL: Story = {
-  render: AdditionalPropsInputLExample,
-};
-
-export const SizesCheckedUnchecked: Story = {
-  render: SizesCheckedUncheckedExample,
 };
 
 export const WithLinkInText: Story = {
