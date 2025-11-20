@@ -148,7 +148,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify notices close on interaction', async () => {
       await page.keyboard.press('Enter');
-      await closeNotif.first().waitFor({ state: 'hidden' });
+      await closeNotif.nth(1).waitFor({ state: 'hidden' });
 
       await locators.close(page).first().click();
       await expect(page).toHaveScreenshot();
