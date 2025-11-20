@@ -287,6 +287,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
       icon,
       children,
       action,
+      focusLock,
     } = this.props;
 
     return sstyled(styles)(
@@ -304,6 +305,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
           onMouseLeave={this.handleMouseLeave}
           onKeyDown={this.handleKeydown}
           role={type === 'warning' ? 'alert' : undefined}
+          focusLock={focusLock}
         >
           <SDismiss
             aria-haspopup={undefined}
