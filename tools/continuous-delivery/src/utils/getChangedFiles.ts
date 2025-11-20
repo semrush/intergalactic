@@ -1,7 +1,6 @@
 import Git from 'simple-git';
 
-import type { Package } from '../collectPackages';
-import { collectPackages } from '../collectPackages';
+import { Package } from './packages';
 
 const git = Git();
 
@@ -13,11 +12,12 @@ const excludePackageNames = new Set([
 ]);
 
 export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> {
+  const packages = new Package();
+  await packages.collectPackages();
   const dependencyMap = new Map<string, Set<string>>();
-  const packages = await collectPackages({});
 
-  packages.forEach((pack) => {
-    if (pack.name !== '@semcore/ui') {
+  packages.list.forEach((pack) => {
+    if (pack.name !== '@semcore/ui' && pack.dependencies) {
       const deps = Object.keys(pack.dependencies);
 
       deps.forEach((dep) => {

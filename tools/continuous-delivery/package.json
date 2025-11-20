@@ -8,13 +8,12 @@
     "publish-release": "bin/publish-release.ts",
     "upload-static": "bin/upload-static.ts",
     "pkg-diff": "bin/get-changed-packages.ts",
-    "send-prerelease-changelog": "bin/send-prerelease-changelog.ts"
+    "send-prerelease-changelog": "bin/send-prerelease-changelog.ts",
+    "format-changelogs": "bin/format-changelogs.ts"
   },
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@semcore/changelog-handler": "workspace:*",
-    "@semcore/slack-integration": "workspace:*",
     "axios": "1.9.0",
     "compressing": "^1.10.3",
     "dayjs": "1.8.36",
