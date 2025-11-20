@@ -3,12 +3,12 @@ import type { Flex } from '@semcore/flex-box';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { AriaNameProps, BaseChartProps } from './AbstractChart.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {
-  x: number;
-  y: number;
+  x: number | string;
+  y: number | string;
 };
 
 type BarKey = string;
@@ -32,4 +32,4 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
 };
 
-export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps>;
+export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;

@@ -1,22 +1,15 @@
+import type { CigaretteChartProps } from '@semcore/ui/d3-chart';
 import { Chart, interpolateValue } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type BaseExampleProps = {
-  showLegend?: boolean;
-};
-const Demo = (props: BaseExampleProps) => {
-  const { showLegend } = props;
+import { getChartProps } from '../stories_props_helper';
+
+const Demo = (props: CigaretteChartProps) => {
   return (
-    <>
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-      <Chart.Cigarette
-        data={data}
-        plotWidth={400}
-        plotHeight={28}
-        aria-label='Cigarette chart'
-        showLegend={showLegend}
-      />
-    </>
+    <Chart.Cigarette
+      {...props}
+      aria-label='Cigarette chart'
+    />
   );
 };
 
@@ -29,9 +22,13 @@ const data: Record<string, number | typeof interpolateValue> = {
   Birds: 1823,
 };
 
-export const defaultProps: BaseExampleProps = {
-  showLegend: undefined,
+export const defaultProps = getChartProps<CigaretteChartProps>({
+  data,
+  plotHeight: 28,
+  showLegend: true,
+  invertAxis: true,
+});
 
-};
+Demo.defaultProps = defaultProps;
 
 export default Demo;

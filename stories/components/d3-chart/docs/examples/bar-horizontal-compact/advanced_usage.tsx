@@ -11,7 +11,7 @@ const Demo = () => {
   const width = 500;
   const height = 500;
 
-  const sum = data.reduce((acc, d) => acc + d.bar, 0);
+  const sum = data.reduce((acc, d) => acc + d.value, 0);
 
   const xScale = scaleLinear().range([0, width]).domain([0, sum]);
 
@@ -23,7 +23,7 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <CompactHorizontalBar x='bar' y='category'>
+      <CompactHorizontalBar x='value' y='category'>
         <CompactHorizontalBar.Hover />
         <CompactHorizontalBar.Tooltip>
           {({ index }) => {
@@ -35,7 +35,7 @@ const Demo = () => {
                   </CompactHorizontalBar.Tooltip.Title>
                   <Flex justifyContent='space-between'>
                     <CompactHorizontalBar.Tooltip.Dot mr={4}>Bar</CompactHorizontalBar.Tooltip.Dot>
-                    <Text bold>{data[index].bar}</Text>
+                    <Text bold>{data[index].value}</Text>
                   </Flex>
                 </>
               ),
@@ -56,6 +56,6 @@ const Demo = () => {
   );
 };
 
-const data = BarMockData.Default;
+const data = BarMockData.WithValue;
 
 export default Demo;

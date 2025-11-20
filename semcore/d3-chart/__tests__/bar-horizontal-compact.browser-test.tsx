@@ -1,99 +1,170 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Bar horizontal compact', () => {
-  test('Verify basic usage of bar horizontal compact', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+export const locators = {
+  plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),
+  barBackground: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Background"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  barFill: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Fill"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  link: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Link.Text"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tooltip: (page: Page) => page.locator('[data-ui-name="CompactHorizontalBar.Tooltip"]'),
+};
 
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    const barBacks = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Background"]');
-    const barFills = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Fill"]');
-    await expect(chart).toBeVisible();
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variables = [
+    {
+      description: 'Standard: all features, medium size, with axis',
+      plotHeight: 350,
+      marginX: 40,
+      marginY: 40,
+      showXAxis: true,
+      showTooltip: true,
+      patterns: false,
+      duration: 0,
+    },
+    {
+      description: 'Patterns: no margins, no axis, patterns enabled',
+      plotHeight: 450,
+      marginX: 0,
+      marginY: 0,
+      showXAxis: false,
+      showTooltip: true,
+      patterns: true,
+      duration: 0,
+    },
+    {
+      description: 'Custom: large margins, no tooltip',
+      plotHeight: 250,
+      marginX: 60,
+      marginY: 60,
+      showXAxis: true,
+      showTooltip: false,
+      patterns: false,
+      duration: 0,
+    },
+  ];
 
-    await test.step('Verify bars  backgrounds aria-hidden', async () => {
-      const count = await barBacks.count();
+  variables.forEach((vars, index) => {
+    test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
+      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/bar-horizontal-compact/basic_usage.tsx',
+        'en',
+        vars,
+      );
 
-      for (let i = 0; i < count; i++) {
-        const bar = barBacks.nth(i);
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
+      await test.step('Verify chart renders correctly with current configuration', async () => {
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+
+      if (vars.showTooltip) {
+        await test.step('Verify tooltip appears on hover', async () => {
+          await locators.barFill(page, 1).hover();
+          const tooltip = locators.tooltip(page);
+          await tooltip.waitFor({ state: 'visible' });
+          await expect(tooltip).toBeVisible();
+        });
       }
     });
+  });
 
-    await test.step('Verify bars fills aria-hidden', async () => {
-      const count = await barFills.count();
+  test('Verify advanced usage of bar horizontal compact', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx',
+      'en',
+    );
 
-      for (let i = 0; i < count; i++) {
-        const bar = barFills.nth(i);
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
+    await test.step('Verify chart renders correctly', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
-      await barFills.nth(1).hover();
+    await test.step('Verify bar highlights on hover and tooltip shown', async () => {
+      await locators.barFill(page, 1).hover();
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify advanced usage of bar horizontal compact', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify bar horizontal compact with links', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@bar-horizontal-compact', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx',
+      'en',
+    );
 
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    const barBacks = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Background"]');
-    const barFills = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Fill"]');
-    await expect(chart).toBeVisible();
+    await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    await test.step('Verify bars  backgrounds aria-hidden', async () => {
-      const count = await barBacks.count();
+    await test.step('Verify links hover and keyboard navigation', async () => {
+      await locators.link(page, 2).hover();
+      await page.waitForTimeout(500);
 
-      for (let i = 0; i < count; i++) {
-        const bar = barBacks.nth(i);
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-
-    await test.step('Verify bars fills aria-hidden', async () => {
-      const count = await barFills.count();
-
-      for (let i = 0; i < count; i++) {
-        const bar = barFills.nth(i);
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-
-    await test.step('Verify bar hihlights on hover and tooltip shown', async () => {
-      await barFills.nth(1).hover();
+      // Navigate with keyboard to verify focus state
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
+});
 
-  test('Verify bar horizontal compact with links', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify bar elements aria-hidden attributes', {
+    tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx',
+      'en',
+    );
 
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    await expect(chart).toBeVisible();
+    await test.step('Verify bar backgrounds have aria-hidden', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    await test.step('Verify links by hover', async () => {
-      await page.locator('[data-ui-name="Link.Text"]').nth(2).hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
+      const barBacks = await locators.barBackground(page).all();
+      expect(barBacks.length).toBeGreaterThan(0);
+
+      for (const bar of barBacks) {
+        await expect(bar).toHaveAttribute('aria-hidden', 'true');
+      }
     });
 
-    await test.step('Verify links by tab', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
+    await test.step('Verify bar fills have aria-hidden', async () => {
+      const barFills = await locators.barFill(page).all();
+      expect(barFills.length).toBeGreaterThan(0);
+
+      for (const bar of barFills) {
+        await expect(bar).toHaveAttribute('aria-hidden', 'true');
+      }
     });
   });
 });

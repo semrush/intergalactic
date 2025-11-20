@@ -9,7 +9,7 @@ const Demo = () => {
     <Flex flexWrap gap={5}>
       <Chart.CompactHorizontalBar
         y='category'
-        x='bar'
+        x='value'
         data={data}
         plotWidth={500}
         plotHeight={450}
@@ -20,6 +20,6 @@ const Demo = () => {
   );
 };
 
-const data = BarMockData.Default;
+const data = BarMockData.WithValue;
 
 export default Demo;

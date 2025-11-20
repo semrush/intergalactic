@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/stacked-bar-chart/basic-usage';
-import EdgeCasesExample from './examples/stacked-bar-chart/edge-cases';
-import LegendAndPatternFillExample from './examples/stacked-bar-chart/legend-and-pattern-fill';
-import StackedBarChartExample from './examples/stacked-bar-chart/stacked-bar-chart';
-import StackedGroupedBarExample from './examples/stacked-bar-chart/stacked-grouped-bar';
+import StackBarPropsExample, { defaultProps as StackBarPropsDefaultProps } from './examples/stacked-bar-chart/stack-bar-props-cases';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Stacked-Bar-Chart',
@@ -12,29 +8,17 @@ const meta: Meta = {
 
 export default meta;
 
-export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
-  render: BasicUsageExample,
+export const StackBarProps: StoryObj = {
+  render: StackBarPropsExample,
   argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
+    barColor1: { control: 'color', description: 'Color for stack1' },
+    barColor2: { control: 'color', description: 'Color for stack2' },
+    barColor3: { control: 'color', description: 'Color for stack3' },
+    barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
+    barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
+    barTransparent: { control: 'boolean' },
+    maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
+    duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },
-  args: BasicUsageProps,
-};
-
-export const LegendAndPatternFill: StoryObj = {
-  render: LegendAndPatternFillExample,
-};
-
-export const StackedBarChart: StoryObj = {
-  render: StackedBarChartExample,
-};
-
-export const StackedGroupedBar: StoryObj = {
-  render: StackedGroupedBarExample,
-};
-
-export const EdgeCases: StoryObj = {
-  render: EdgeCasesExample,
+  args: StackBarPropsDefaultProps,
 };
