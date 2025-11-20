@@ -1,64 +1,67 @@
+import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import HeaderContentExample from './examples/header-tests/header-content';
-import MultiLevelExample from './examples/header-tests/multi-level-header';
-import MultiLevelStickyExample from './examples/header-tests/multi-level-header-sticky';
-import MultiLevelSortingExample from './examples/header-tests/multi-level-sorting';
-import MultiLevelInteractiveExample from './examples/header-tests/multi-level-with-interactive';
-import SecondaryHeaderExample from './examples/header-tests/secondary-header';
-import SecondarySortingExample from './examples/header-tests/secondary-sorting';
-import SortingSizeExample from './examples/header-tests/sorting-changing-size';
-import SortingDefaultUndefinedExample from './examples/header-tests/sorting-default-undefined';
-import SortingInteractiveHeaderExample from './examples/header-tests/sorting-with-interactive';
-import InteractiveHeaderExample from './examples/header-tests/table-with-1tf-and diff-elements';
+import BaseOneLevelHeaderExample, { baseDefaultProps } from './examples/header-tests/base-one-level-header-props';
+import type { OneLevelHeaderBaseProps } from './examples/header-tests/base-one-level-header-props';
+import LongHeaderEllipsisExample, { longHeaderEllipsisProps } from './examples/header-tests/long-header-ellipsis';
+import type { LongHeaderEllipsisProps } from './examples/header-tests/long-header-ellipsis';
+import MultiLevelBodersExample from './examples/header-tests/multi-level-borders';
+import MultiLevelNonInteractivePropsExample, {
+  multiLevelNonInteractiveProps,
+} from './examples/header-tests/multi-level-header-non-interactive';
+import type { MultiLevelNonInteractiveProps } from './examples/header-tests/multi-level-header-non-interactive';
+import MultiLevelInteractivePropsExample, {
+  multiLevelInteractiveProps,
+} from './examples/header-tests/multi-level-with-interactive';
+import type { MultiLevelInteractiveProps } from './examples/header-tests/multi-level-with-interactive';
+import OneLevelInteractiveHeaderExample, { oneLevelInteractiveExampleProps } from './examples/header-tests/one-level-interactive-header';
+import type { OneLevelInteractiveExampleProps } from './examples/header-tests/one-level-interactive-header';
 
-const meta: Meta = {
+const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Header',
+  component: DataTable,
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<typeof DataTable>;
 
-export const SecondaryHeader: Story = {
-  render: SecondaryHeaderExample,
+export const BaseOneLevelHeader: StoryObj<OneLevelHeaderBaseProps> = {
+  render: BaseOneLevelHeaderExample,
+  args: {
+    ...baseDefaultProps,
+  },
 };
 
-export const SortingDefaultUndefined: Story = {
-  render: SortingDefaultUndefinedExample,
+export const OneLevelInteractiveHeader: StoryObj<OneLevelInteractiveExampleProps> = {
+  render: OneLevelInteractiveHeaderExample,
+  args: {
+    ...oneLevelInteractiveExampleProps,
+  },
 };
 
-export const SortingInteractiveHeader: Story = {
-  render: SortingInteractiveHeaderExample,
+export const MultiLevelNonInteractivePropsStory: StoryObj<MultiLevelNonInteractiveProps> = {
+  render: MultiLevelNonInteractivePropsExample,
+  args: {
+    ...multiLevelNonInteractiveProps,
+  },
 };
 
-export const SortingSize: Story = {
-  render: SortingSizeExample,
+export const MultiLevelInteractivePropsStory: StoryObj<MultiLevelInteractiveProps> = {
+  render: MultiLevelInteractivePropsExample,
+  args: {
+    ...multiLevelInteractiveProps,
+    sideIndents: 'wide',
+  },
 };
 
-export const MultiLevelInteractive: Story = {
-  render: MultiLevelInteractiveExample,
-};
-
-export const SecondarySorting: Story = {
-  render: SecondarySortingExample,
-};
-
-export const InteractiveHeader: Story = {
-  render: InteractiveHeaderExample,
-};
-
-export const HeaderContent: Story = {
-  render: HeaderContentExample,
-};
-
-export const MultiLevelSorting: Story = {
-  render: MultiLevelSortingExample,
-};
-
-export const MultiLevelSticky: Story = {
-  render: MultiLevelStickyExample,
+export const LongHeaderEllipsis: StoryObj<LongHeaderEllipsisProps> = {
+  render: LongHeaderEllipsisExample,
+  args: {
+    ...longHeaderEllipsisProps,
+    sideIndents: 'wide',
+  },
 };
 
 export const MultiLevelBorders: Story = {
-  render: MultiLevelExample,
+  render: MultiLevelBodersExample,
 };
