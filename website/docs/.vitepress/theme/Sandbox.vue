@@ -39,12 +39,11 @@ const htmlCode = computed(() => {
 });
 
 const codesandboxUrl = computed(() => {
-  let code = rawCode;
-
-  let codeWithMockData = mockData ? rawCode + '\n' + mockData : rawCode;
+  const code = rawCode;
   const dependencies = {};
-  
+  const codeWithMockData = mockData ? `${rawCode}\n${mockData}` : rawCode;
   const lines = codeWithMockData.split('\n');
+
   for (const line of lines) {
     for (const quote of ["'", '"']) {
       if (line.includes(`from ${quote}./mock${quote}`)) continue;
