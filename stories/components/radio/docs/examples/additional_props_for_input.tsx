@@ -1,9 +1,16 @@
 import Radio, { RadioGroup } from '@semcore/ui/radio';
+import type { RadioGroupProps } from '@semcore/ui/radio';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: RadioGroupProps) => {
   return (
-    <RadioGroup name='radio' aria-label='radiogroup with custom properties'>
+    <RadioGroup
+      name='radio'
+      aria-label='radiogroup with custom properties'
+      size={props.size}
+      disabled={props.disabled}
+      theme={props.theme}
+    >
       <Radio mb={3} value='1'>
         <Radio.Value>
           <Radio.Value.Control data-test-id='TEST_ID' />
@@ -15,5 +22,11 @@ const Demo = () => {
     </RadioGroup>
   );
 };
+export const defaultAdditionalInputProps: RadioGroupProps = {
+  size: 'm',
+  theme: undefined,
+  disabled: false,
+};
 
+Demo.defaultProps = defaultAdditionalInputProps;
 export default Demo;
