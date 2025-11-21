@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.3] - 2025-11-14
-
-### Fixed
-
-- Disabled first item receives focus.
-
 ## [16.1.2] - 2025-11-10
 
 ### Added
