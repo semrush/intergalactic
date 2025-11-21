@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.7.3] - 2025-11-14
+
+### Changed
+
+- Set `pointer-events: none` for path's in interactive svg.
+
 ## [16.7.2] - 2025-10-06
 
 ### Changed

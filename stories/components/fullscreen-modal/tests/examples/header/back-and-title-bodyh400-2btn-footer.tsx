@@ -28,6 +28,7 @@ const Demo = () => {
                 addonLeft={InfoM}
                 color='icon-secondary-neutral'
                 aria-label='About peregrine falcon'
+                mr={1}
               />
               <DescriptionTooltip.Popper aria-label='About fastest animals'>
                 <Text tag='p' mb={3}>
