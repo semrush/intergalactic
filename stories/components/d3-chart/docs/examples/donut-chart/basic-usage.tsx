@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import DonutMockData from '../../../__mocks__/d3-chart/donut';
+import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   return (

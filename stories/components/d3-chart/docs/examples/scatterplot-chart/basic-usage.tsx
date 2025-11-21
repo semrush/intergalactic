@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+import ScatterplotMockData from '../../../__mocks__/scatterplot';
 
 const Demo = () => {
   return (

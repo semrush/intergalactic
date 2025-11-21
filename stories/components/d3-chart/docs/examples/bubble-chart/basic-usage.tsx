@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import BubbleMockData from '../../../__mocks__/d3-chart/bubble';
+import BubbleMockData from '../../../__mocks__/bubble';
 
 const Demo = () => {
   return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} aria-label='Bubble chart' />;

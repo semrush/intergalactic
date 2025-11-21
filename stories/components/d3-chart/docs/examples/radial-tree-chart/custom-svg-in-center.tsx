@@ -2,7 +2,7 @@ import { Plot, RadialTree } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import RadialMockData from '../../../__mocks__/d3-chart/radial';
+import RadialMockData from '../../../__mocks__/radial';
 
 const Demo = () => {
   const width = 500;

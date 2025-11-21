@@ -2,7 +2,7 @@ import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/u
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+import ScatterplotMockData from '../../../__mocks__/scatterplot';
 
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])

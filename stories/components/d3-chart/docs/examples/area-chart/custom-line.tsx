@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
-import AreaMockData from '../../../__mocks__/d3-chart/area';
+import AreaMockData from '../../../__mocks__/area';
 
 const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
 

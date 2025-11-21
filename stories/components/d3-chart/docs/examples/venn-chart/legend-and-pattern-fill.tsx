@@ -2,7 +2,7 @@ import { Plot, Venn, ChartLegend } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import VennMockData from '../../../__mocks__/d3-chart/venn';
+import VennMockData from '../../../__mocks__/venn';
 
 const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(() => defaultLegendItems);

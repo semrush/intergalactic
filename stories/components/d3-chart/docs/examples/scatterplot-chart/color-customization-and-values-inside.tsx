@@ -3,7 +3,7 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import ScatterplotMockData from '../../../__mocks__/d3-chart/scatterplot';
+import ScatterplotMockData from '../../../__mocks__/scatterplot';
 
 const Demo = () => {
   const MARGIN = 40;

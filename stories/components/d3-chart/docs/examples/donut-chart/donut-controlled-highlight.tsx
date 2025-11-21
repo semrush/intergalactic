@@ -3,7 +3,7 @@ import Checkbox from '@semcore/ui/checkbox';
 import { Donut, Plot } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import DonutMockData from '../../../__mocks__/d3-chart/donut';
+import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   const [selected, setSelected] = React.useState(['b']);
