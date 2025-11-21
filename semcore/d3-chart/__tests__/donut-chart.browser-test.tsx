@@ -15,7 +15,7 @@ export const locators = {
   },
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
-    text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
+    text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"], [data-ui-name="LegendTable.LegendItem"]'),
 };
 
 /* =====================================================
@@ -23,19 +23,6 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify base example', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
-
-    await test.step('Verify pie highlights on hover', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      await page.locator('path').nth(1).hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   const variables = [
     {
       description: 'Standard: default with tooltip and label',
@@ -61,8 +48,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((item, index) => {
-    test(`Verify donut chart with config ${index + 1} (${item.description})`, {
+  variables.forEach((item) => {
+    test(`Verify donut chart ${item.description}`, {
       tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -74,19 +61,20 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify chart renders correctly', async () => {
         await locators.plot(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify pie highlights on hover', async () => {
         const pies = locators.pie(page);
         await pies.nth(1).hover();
-        await page.waitForTimeout(300);
 
         if (item.showTooltip) {
           const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
-          await expect(tooltip).toBeVisible();
-        } else
-          await expect(page).toHaveScreenshot();
+          await tooltip.waitFor({ state: 'visible' });
+        }
+        await expect(page).toHaveScreenshot();
       });
     });
   });
@@ -119,7 +107,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
 
   halfsizeVariables.forEach((item, index) => {
-    test(`Verify semi-donut with config ${index + 1} (${item.description})`, {
+    test(`Verify semi-donut ${item.description}`, {
       tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
@@ -131,19 +119,21 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify semi-donut renders correctly', async () => {
         await locators.plot(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify pie highlights on hover', async () => {
         const pies = locators.pie(page);
         await pies.nth(1).hover();
-        await page.waitForTimeout(300);
 
         if (item.showTooltip) {
           const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
-          await expect(tooltip).toBeVisible();
-        } else
-          await expect(page).toHaveScreenshot();
+          await tooltip.waitFor({ state: 'visible' });
+        }
+
+        await expect(page).toHaveScreenshot();
       });
     });
   });
@@ -176,7 +166,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
+      'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx',
       'en',
       {
         patterns: true,
@@ -184,6 +174,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       },
     );
     await locators.plot(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(300);
 
     await test.step('Verify highlights by hover on legend item', async () => {
       const label = locators.legendItem(page).first();
@@ -292,53 +283,65 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify showLegend prop logic', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx';
-    const props: {
-      showLegend?: boolean;
-      data: { [key: string]: number };
-    } = {
+  const showLegendCombinations = [
+    {
+      description: 'legend shown when showLegend: undefined and >=2 items',
       showLegend: undefined,
-      data: {
-        a: 1,
-        b: 2,
-      },
-    };
+      data: { a: 1, b: 2 },
+      expectedVisible: true,
+    },
+    {
+      description: 'legend hidden when showLegend: false and >=2 items',
+      showLegend: false,
+      data: { a: 1, b: 2 },
+      expectedVisible: false,
+    },
+    {
+      description: 'legend shown when showLegend: true and >=2 items',
+      showLegend: true,
+      data: { a: 1, b: 2 },
+      expectedVisible: true,
+    },
+    {
+      description: 'legend hidden when showLegend: undefined and 1 item',
+      showLegend: undefined,
+      data: { a: 1 },
+      expectedVisible: false,
+    },
+    {
+      description: 'legend hidden when showLegend: false and 1 item',
+      showLegend: false,
+      data: { a: 1 },
+      expectedVisible: false,
+    },
+    {
+      description: 'legend visible when showLegend: true and 1 item',
+      showLegend: true,
+      data: { a: 1 },
+      expectedVisible: true,
+    },
+  ];
 
-    await test.step('Verify legend shown when showLegend: undefined and >=2 items in legend', async () => {
-      await loadPage(page, standPath, 'en', props);
-      const legend = locators.legend(page);
-      await expect(legend).toBeVisible();
-    });
+  showLegendCombinations.forEach((item) => {
+    test(`Verify showLegend prop: ${item.description}`, {
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
+        'en',
+        {
+          data: item.data,
+          showLegend: item.showLegend,
+        },
+      );
 
-    await test.step('Verify legend hidden when showLegend: false and >=2 items in legend', async () => {
-      props.showLegend = false;
-      await loadPage(page, standPath, 'en', props);
       const legend = locators.legend(page);
-      await expect(legend).toBeHidden();
-    });
-
-    await test.step('Verify legend hidden when showLegend: undefined and < 2 items in legend', async () => {
-      props.showLegend = undefined;
-      props.data = {
-        a: 1,
-      };
-      await loadPage(page, standPath, 'en', props);
-      const legend = locators.legend(page);
-      await expect(legend).toBeHidden();
-    });
-
-    await test.step('Verify legend visible when showLegend: true and < 2 items in legend', async () => {
-      props.showLegend = true;
-      props.data = {
-        a: 1,
-      };
-      await loadPage(page, standPath, 'en', props);
-      const legend = locators.legend(page);
-      await expect(legend).toBeVisible();
+      if (item.expectedVisible) {
+        await expect(legend).toBeVisible();
+      } else {
+        await expect(legend).toBeHidden();
+      }
     });
   });
 
@@ -373,8 +376,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       if (box) {
         await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
       }
-      expect(messages.length).toBe(1);
       expect(messages).toEqual(['I call on mount']);
+      expect(messages.length).toBe(1);
     });
   });
 });

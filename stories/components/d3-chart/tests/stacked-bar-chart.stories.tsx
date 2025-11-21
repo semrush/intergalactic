@@ -11,9 +11,17 @@ export default meta;
 export const StackBarProps: StoryObj = {
   render: StackBarPropsExample,
   argTypes: {
-    barColor1: { control: 'color', description: 'Color for stack1' },
-    barColor2: { control: 'color', description: 'Color for stack2' },
-    barColor3: { control: 'color', description: 'Color for stack3' },
+    barColor1: {
+      control: { type: 'select' },
+      options: ['#3498db', 'yellow'],
+    },
+    barColor2: {
+      control: { type: 'select' },
+      options: ['#3bdb30ff', 'pink'],
+    }, barColor3: {
+      control: { type: 'select' },
+      options: ['#db309fff', 'violet'],
+    },
     barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
     barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
     barTransparent: { control: 'boolean' },

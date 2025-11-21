@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimatedDotsExample from './examples/area-chart/animated-dots';
 import BasicUsageExample, { defaultProps as areaExampleProps } from './examples/area-chart/basic-usage';
-import DifferentPropsExample from './examples/area-chart/different-props';
 import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -11,10 +10,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
-export const DifferentProps: StoryObj = {
-  render: DifferentPropsExample,
-};
 
 export const AnimatedDots: StoryObj = {
   render: AnimatedDotsExample,

@@ -14,11 +14,14 @@ export default meta;
 export const BarProps: StoryObj = {
   render: BarPropsExample,
   argTypes: {
-    barColor: { control: 'color' },
-    barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
-    barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
-    barHide: { control: 'boolean' },
-    barTransparent: { control: 'boolean' },
+    color: {
+      control: { type: 'select' },
+      options: ['#3498db', 'yellow'],
+    },
+    r: { control: { type: 'number', min: 0, max: 20, step: 1 } },
+    hMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
+    hide: { control: 'boolean' },
+    transparent: { control: 'boolean' },
     maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },

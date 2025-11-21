@@ -47,11 +47,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      description: 'Custom: large margins, no tooltip',
+      description: 'Standart: No margins no tooltip',
       plotHeight: 250,
-      marginX: 60,
-      marginY: 60,
-      showXAxis: true,
+      marginX: 0,
+      marginY: 0,
+      showXAxis: false,
       showTooltip: false,
       patterns: false,
       duration: 0,
@@ -70,7 +70,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       );
 
       await test.step('Verify chart renders correctly with current configuration', async () => {
-        await locators.plot(page).waitFor({ state: 'visible' });
+        await locators.plot(page).first().waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
 
@@ -117,16 +118,15 @@ test.describe(`${TAG.VISUAL}`, () => {
     );
 
     await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
 
     await test.step('Verify links hover and keyboard navigation', async () => {
       await locators.link(page, 2).hover();
-      await page.waitForTimeout(500);
 
       // Navigate with keyboard to verify focus state
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });

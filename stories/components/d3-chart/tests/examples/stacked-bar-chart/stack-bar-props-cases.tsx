@@ -93,6 +93,12 @@ const Demo = (props: StackBarPropsStoryProps = {}) => {
 
 export const defaultProps: StackBarPropsStoryProps = {
   duration: 0,
+  barColor1: 'yellow',
+  barColor2: 'blue',
+  barColor3: 'violet',
+  barRadius: undefined,
+  barHMin: undefined,
+  barTransparent: undefined,
 };
 
 Demo.defaultProps = defaultProps;

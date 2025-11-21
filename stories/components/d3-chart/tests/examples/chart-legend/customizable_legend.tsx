@@ -12,9 +12,6 @@ const Demo = (props: LegendFlexProps) => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   bar: `Bar ${i + 1}`,
-  1: Math.random() * 5,
-  2: Math.random() * 5,
-  3: Math.random() * 5,
 }));
 
 export const defaultProps: LegendFlexProps = {

@@ -58,7 +58,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      description: 'Inverted: axis inversion, mixed features, no tooltip',
+      description: 'Inverted: yAxis and no tooltip',
       plotWidth: 600,
       plotHeight: 350,
       marginX: 80,
@@ -74,7 +74,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
 
   variables.forEach((vars, index) => {
-    test(`Verify bubble chart with config ${index + 1} (${vars.description})`, {
+    test(`Verify bubble chart ${vars.description}`, {
       tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(

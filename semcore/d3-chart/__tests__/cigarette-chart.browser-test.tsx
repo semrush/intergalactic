@@ -16,7 +16,7 @@ export const locators = {
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="Cigarette.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="HoverRect.Tooltip"]'),
 };
 
 /* =====================================================
@@ -35,14 +35,18 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify tooltip with all values shown', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
-      await locators.plot(page).first().locator('path').nth(2).hover();
       await page.waitForTimeout(500);
+      await locators.plot(page).first().locator('path').nth(2).hover();
+      await locators.tooltip(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify tooltip with one value shown', async () => {
-      await locators.plot(page).nth(1).locator('path').nth(2).hover();
-      await page.waitForTimeout(500);
+      await page.mouse.move(0, 0);
+      await locators.tooltip(page).waitFor({ state: 'hidden' });
+
+      await locators.plot(page).nth(1).locator('path').nth(3).hover();
+      await locators.tooltip(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -57,18 +61,16 @@ test.describe(`${TAG.VISUAL}`, () => {
     );
 
     await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+    const cats = page.getByText('Cats');
 
     await test.step('Verify horizontal highlighted section by hover legend item', async () => {
-      const cats = page.getByText('Cats');
       await cats.first().hover();
-      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify vertical highlighted section by hover legend item', async () => {
-      const cats = page.getByText('Cats');
       await cats.nth(1).hover();
-      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -86,16 +88,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
+      await expect(locators.barItem(page)).toHaveCount(3);
     });
 
     await test.step('Verify unchecking the empty and non empty items', async () => {
       const cats = page.getByText('Cats');
       const hamsters = page.getByText('Hamsters');
-
       await cats.click();
       await hamsters.click();
-
-      await page.waitForTimeout(500);
+      await expect(locators.barItem(page)).toHaveCount(2);
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });

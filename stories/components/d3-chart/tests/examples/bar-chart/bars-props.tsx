@@ -3,26 +3,16 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
 interface BarsPropsStoryProps {
-  barColor?: string;
-  barRadius?: number;
-  barHMin?: number;
-  barHide?: boolean;
-  barTransparent?: boolean;
+  color?: string;
+  r?: number;
+  hMin?: number;
+  hide?: boolean;
+  transparent?: boolean;
   maxBarSize?: number;
   duration?: number;
 }
 
 const Demo = (props: BarsPropsStoryProps = {}) => {
-  const {
-    barColor,
-    barRadius,
-    barHMin,
-    barHide = false,
-    barTransparent = false,
-    maxBarSize,
-    duration = 0,
-  } = props;
-
   const MARGIN = 40;
   const width = 400;
   const height = 200;
@@ -62,13 +52,13 @@ const Demo = (props: BarsPropsStoryProps = {}) => {
       <Bar
         x='time'
         y='stack1'
-        duration={duration}
-        color={barColor}
-        r={barRadius}
-        hMin={barHMin}
-        hide={barHide}
-        transparent={barTransparent}
-        maxBarSize={maxBarSize}
+        duration={props.duration}
+        color={props.color}
+        r={props.r}
+        hMin={props.hMin}
+        hide={props.hide}
+        transparent={props.transparent}
+        maxBarSize={props.maxBarSize}
       />
     </Plot>
   );
@@ -76,6 +66,11 @@ const Demo = (props: BarsPropsStoryProps = {}) => {
 
 export const defaultProps: BarsPropsStoryProps = {
   duration: 0,
+  color: undefined,
+  hMin: undefined,
+  hide: undefined,
+  transparent: undefined,
+  maxBarSize: undefined,
 };
 
 Demo.defaultProps = defaultProps;

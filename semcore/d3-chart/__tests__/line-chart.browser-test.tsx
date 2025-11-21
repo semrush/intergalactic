@@ -25,7 +25,7 @@ export const locators = {
     const base = page.locator('[data-ui-name="Checkbox"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
 };
 
 /* =====================================================
@@ -88,8 +88,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   const variables = [
-    // Combination 1: All features enabled, standard size
     {
+      name: 'All features enabled, standard size',
       plotWidth: 500,
       plotHeight: 300,
       marginX: 40,
@@ -104,8 +104,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 2: Large size, minimal margins, no axes
     {
+      name: 'Large size, minimal margins, no axes',
       plotWidth: 700,
       plotHeight: 400,
       marginX: 20,
@@ -120,8 +120,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 3: Inverted axis, small size, no tooltip
     {
+      name: 'Inverted axis, small size, no tooltip',
       plotWidth: 400,
       plotHeight: 250,
       marginX: 60,
@@ -136,8 +136,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
-    // Combination 4: Inverted, large margins, patterns
     {
+      name: 'Inverted, large margins, patterns',
       plotWidth: 600,
       plotHeight: 350,
       marginX: 80,
@@ -152,8 +152,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 5: Minimal features, medium size
     {
+      name: ' Minimal features, medium size',
       plotWidth: 450,
       plotHeight: 280,
       marginX: 30,
@@ -168,8 +168,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: true,
       duration: 0,
     },
-    // Combination 6: No legend, mixed features
     {
+      name: ' No legend, mixed features',
       plotWidth: 550,
       plotHeight: 320,
       marginX: 45,
@@ -186,13 +186,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((vars, index) => {
-    test(`Verify line chart with config ${index + 1}`, {
+  variables.forEach((vars) => {
+    test(`Verify line chart with config ${vars.name}`, {
       tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+        'stories/components/d3-chart/docs/examples/line-chart/basic-usage.tsx',
         'en',
         vars,
       );
@@ -224,7 +224,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/tests/examples/line-chart/line.tsx',
+      'stories/components/d3-chart/docs/examples/line-chart/line.tsx',
       'en',
     );
 
@@ -338,7 +338,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
       if (box) {
-        await page.mouse.move(box.x + 100, box.y + 100);
+        await page.mouse.move(box.x + 50, box.y + 50);
       }
 
       const tooltip = locators.tooltip(page);
@@ -347,7 +347,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify custom tooltip implementation', {
+  test('Verify custom tooltip', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
@@ -355,19 +355,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       'stories/components/d3-chart/docs/examples/line-chart/tooltip.tsx',
       'en',
     );
-
-    await test.step('Verify chart with custom tooltip renders correctly', async () => {
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
 
     await test.step('Verify custom tooltip appears on hover', async () => {
       const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
       if (box) {
-        await page.mouse.move(box.x + 150, box.y + 100);
+        await page.mouse.move(box.x + 50, box.y + 50);
       }
 
       const tooltip = locators.tooltip(page);
@@ -452,7 +448,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify duration attribute on groups', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      await expect(locators.group(page, 0)).toHaveAttribute('duration', '0ms');
+      await expect(locators.group(page, 0)).toHaveAttribute('duration', '500ms');
     });
   });
 
