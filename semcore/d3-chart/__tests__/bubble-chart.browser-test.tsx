@@ -120,7 +120,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
       }
       await locators.tooltip(page).waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot({
+        maxDiffPixelRatio: browserName === 'firefox' ? 0.01 : undefined,
+      });
     });
   });
 

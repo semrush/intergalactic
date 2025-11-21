@@ -345,6 +345,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       'en',
     );
 
+    await page.waitForTimeout(500);
+
     await test.step('Verify no calls on render', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
       expect(messages.length).toBe(0);

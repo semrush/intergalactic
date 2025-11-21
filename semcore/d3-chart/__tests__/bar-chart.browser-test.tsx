@@ -169,7 +169,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
 
         await test.step('Verify hover trend dot', async () => {
-          await page.locator('[data-ui-name="Line.Dots"]').first().hover();
+          const trendDot = page.locator('[data-ui-name="Line.Dots"]').first();
+          const box = await trendDot.boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+          }
           await locators.tooltip(page).waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });

@@ -26,7 +26,7 @@ export const defaultProps: LegendFlexProps = {
       additionalInfo: { count: index },
     };
   }),
-};
+} as LegendFlexProps;
 
 Demo.defaultProps = defaultProps;
 
