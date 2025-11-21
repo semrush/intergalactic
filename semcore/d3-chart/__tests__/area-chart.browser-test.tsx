@@ -389,10 +389,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify onClickArea callback is triggered', async () => {
-      const areaPath = locators.areaPath(page, 0);
-      const bbox = await areaPath.boundingBox();
+      const areaDot = locators.areaDots(page, 0);
+      const bbox = await areaDot.boundingBox();
       if (bbox) {
-        await locators.areaDots(page, 0).click();
+        const centerX = bbox.x + bbox.width / 2;
+        const centerY = bbox.y + bbox.height / 2;
+
+        await page.mouse.click(centerX, centerY);
+        await page.waitForTimeout(200);
         await page.waitForTimeout(200);
         const hasClickMessage = consoleMessages.some((msg) => msg.includes('Clicked area chart point'));
         expect(hasClickMessage).toBe(true);

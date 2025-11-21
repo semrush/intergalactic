@@ -27,14 +27,14 @@ export const defaultProps = getChartProps<BarChartProps>({
   data,
   trend: {
     bar: [
-      { x: 'Category 0', y: 2 },
-      { x: 'Category 1', y: 5 },
-      { x: 'Category 2', y: 7 },
-      { x: 'Category 3', y: 4 },
-      { x: 'Category 4', y: 8 },
+      { x: 'Category 0' as string, y: 2 as number },
+      { x: 'Category 1' as string, y: 5 as number },
+      { x: 'Category 2' as string, y: 7 as number },
+      { x: 'Category 3' as string, y: 4 as number },
+      { x: 'Category 4' as string, y: 8 as number },
     ],
   },
-});
+} as any);
 
 Demo.defaultProps = defaultProps;
 

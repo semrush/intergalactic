@@ -105,7 +105,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify bubble chart implementation', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(
       page,
       'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx',
@@ -119,7 +119,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (box) {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
       }
-      await page.waitForTimeout(500);
+      await locators.tooltip(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });

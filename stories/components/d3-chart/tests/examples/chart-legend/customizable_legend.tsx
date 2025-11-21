@@ -15,7 +15,8 @@ const data = [...Array(5).keys()].map((d, i) => ({
 }));
 
 export const defaultProps: LegendFlexProps = {
-  ...baseLegendProps,
+  size: baseLegendProps.size,
+  shape: baseLegendProps.shape,
   items: Array.from(data).map((item, index) => {
     return {
       id: item.bar,

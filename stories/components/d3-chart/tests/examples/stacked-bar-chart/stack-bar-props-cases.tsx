@@ -44,7 +44,7 @@ const Demo = (props: StackBarPropsStoryProps = {}) => {
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.time))
+    .domain(data.map((d) => String(d.time)))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 

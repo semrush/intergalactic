@@ -2,13 +2,13 @@ import type { DonutChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: DonutChartProps) => {
   return (
     <div style={{ width: '650px' }}>
       <Chart.Donut
-        {...props}
+        {...getPropsToChart(props)}
         aria-label='Donut chart'
       />
     </div>
@@ -21,9 +21,15 @@ const data = {
   c: 2,
 };
 
-export const defaultProps = getChartProps<DonutChartProps>({
+const propsFromHelper = getChartProps<DonutChartProps>({
   data,
 });
+
+// Remove showLegend from defaultProps to allow DonutChart's internal logic to work
+// (auto-hide legend when data has only 1 item)
+const { showLegend, ...defaultProps } = propsFromHelper as any;
+
+export { defaultProps };
 
 Demo.defaultProps = defaultProps;
 

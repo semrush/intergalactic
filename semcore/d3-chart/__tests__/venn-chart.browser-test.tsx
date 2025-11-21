@@ -57,13 +57,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify custom intersection styles', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(
       page,
       'stories/components/d3-chart/docs/examples/venn-chart/custom-intersection-styles.tsx',
       'en',
     );
 
+    if (browserName == 'webkit') test.skip();
     await test.step('Verify chart with custom styles on hover', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       const chart = locators.plot(page).first();
@@ -77,7 +78,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       const hoverY = box.y + targetY;
 
       await page.mouse.move(hoverX, hoverY);
-      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });

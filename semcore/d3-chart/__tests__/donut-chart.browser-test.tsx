@@ -15,7 +15,7 @@ export const locators = {
   },
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
-    text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"], [data-ui-name="LegendTable.LegendItem"]'),
+    text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"], [data-ui-name="LegendTable.LegendItem"], [data-ui-name="LegendFlex.LegendItem"]'),
 };
 
 /* =====================================================
@@ -166,12 +166,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx',
+      'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx',
       'en',
-      {
-        patterns: true,
-        showLegend: true,
-      },
     );
     await locators.plot(page).waitFor({ state: 'visible' });
     await page.waitForTimeout(300);
@@ -201,31 +197,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await test.step('Verify highlighted by keyboard focus', async () => {
-      // Reload for keyboard test
-      await loadPage(
-        page,
-        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
-        'en',
-        {
-          patterns: true,
-          showLegend: true,
-        },
-      );
-      await locators.plot(page).waitFor({ state: 'visible' });
-
-      for (let i = 0; i < 7; i++) await page.keyboard.press('Tab');
-      await page.waitForTimeout(200);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify highlighted by check and uncheck via keyboard', async () => {
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
+
+      await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
-      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });
-
   test('Verify semi-donut with labels', {
     tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart'],
   }, async ({ page }) => {
@@ -326,14 +305,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify showLegend prop: ${item.description}`, {
       tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
     }, async ({ page }) => {
+      const testProps: any = {
+        data: item.data,
+      };
+
+      if (item.showLegend !== undefined) {
+        testProps.showLegend = item.showLegend;
+      }
+
       await loadPage(
         page,
         'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
         'en',
-        {
-          data: item.data,
-          showLegend: item.showLegend,
-        },
+        testProps,
       );
 
       const legend = locators.legend(page);

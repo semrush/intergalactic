@@ -33,6 +33,10 @@ export const locators = {
     const base = page.locator('[data-ui-name="StackBar.HorizontalBar"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  stackGroupBar: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="StackGroupBar"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   stackGroupBarBar: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="StackGroupBar.Bar"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -801,9 +805,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const chart = locators.plot(page).first();
       await chart.waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
 
       await test.step('Verify looks good and tooltip shown on hover', async () => {
-        const box = await locators.stackGroupBarBar(page, 1).boundingBox();
+        const box = await page.locator('[data-ui-name="StackGroupBar"]').boundingBox();
         if (!box) throw new Error('Bounding box not found');
 
         const hoverX = box.x + box.x / 2;
@@ -902,7 +907,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/stacked-bar/horizontal-stacked-bar-negative.tsx',
+        'stories/components/d3-chart/tests/examples/stacked-bar-chart/horizontal-stacked-bar-negative.tsx',
         'en',
       );
 
