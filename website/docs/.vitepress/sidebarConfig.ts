@@ -176,11 +176,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Accordion',
           },
           {
-            link: '/components/auto-suggest/auto-suggest',
-            activeMatch: '/components/auto-suggest/',
-            text: 'AutoSuggest',
-          },
-          {
             link: '/components/badge/badge',
             activeMatch: '/components/badge/',
             text: 'Badge',
@@ -692,6 +687,11 @@ export const sideBarConfig: SidebarConfig = [
         text: 'UX patterns',
         collapsed: true,
         items: [
+          {
+            link: '/patterns/auto-suggest/auto-suggest',
+            activeMatch: '/components/auto-suggest/',
+            text: 'AutoSuggest',
+          },
           {
             link: '/patterns/modal-content/modal-content',
             text: 'Content in modal window',
