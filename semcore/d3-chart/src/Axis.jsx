@@ -1,5 +1,5 @@
 import { Component, sstyled } from '@semcore/core';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
@@ -298,26 +298,14 @@ function Ticks(props) {
     multiline,
   } = props;
 
-  const [ticksState, setTicksState] = useState([]);
+  const tickBandwidth = scale[indexScale]?.bandwidth?.();
 
-  useEffect(() => {
-    const tickBandwidth = scale[indexScale]?.bandwidth?.();
-
-    const ticksWithLines = ticks.map((tick) => {
-      let lines = [];
-
-      if (typeof tick === 'string' && multiline) {
-        lines = splitTextByWidth(rootRef.current, tick, tickBandwidth);
-      }
-
-      return {
-        tick,
-        lines,
-      };
-    });
-
-    setTicksState(ticksWithLines);
-  }, [ticks, multiline]);
+  const ticksState = ticks.map((tick) => ({
+    tick,
+    lines: typeof tick === 'string' && multiline
+      ? splitTextByWidth(rootRef.current, tick, tickBandwidth)
+      : [],
+  }));
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
@@ -417,6 +405,8 @@ class XAxisRoot extends AxisRoot {
     position: 'bottom',
   };
 }
+
+XAxisRoot.stopDebug = true;
 
 const XAxis = createElement(XAxisRoot, {
   Ticks,
