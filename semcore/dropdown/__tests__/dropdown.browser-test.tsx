@@ -167,7 +167,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await expect(locators.popper(page)).not.toBeFocused();
-    await expect(locators.popper(page)).toHaveCount(1);
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
   });
 
   test('Verify mouse interaction  when interaction = focus', {
@@ -217,7 +218,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.popper(page)).toHaveCount(1);
 
     await page.keyboard.press('Escape');
-    await expect(locators.popper(page)).toHaveCount(1); // we have bug here
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
   });
 
   test('Verify keyboard and mouse interaction when interaction = click', {
