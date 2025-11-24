@@ -21,12 +21,6 @@ const group = {
     disabled: false,
     type: 'components',
   },
-  // autoSuggest: {
-  //   title: 'AutoSuggest',
-  //   route: '/intergalactic/patterns/auto-suggest/auto-suggest',
-  //   disabled: false,
-  //   type: 'components',
-  // },
   badge: {
     title: 'Badge',
     route: '/intergalactic/components/badge/badge',
