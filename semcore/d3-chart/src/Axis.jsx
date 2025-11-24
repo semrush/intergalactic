@@ -1,5 +1,5 @@
 import { Component, sstyled } from '@semcore/core';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
