@@ -1,6 +1,7 @@
 import { Box } from '@semcore/base-components';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
@@ -36,6 +37,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   lastIndex = -1;
 
   bodyRef = React.createRef<HTMLDivElement>();
+  spinContainerIsFocused = false;
 
   constructor(props: DataTableBodyProps<Data, UniqKeyType>) {
     super(props);
@@ -44,6 +46,24 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   componentDidMount() {
     this.calculateAriaRowIndex();
+  }
+
+  componentDidUpdate(prevProps: DataTableBodyProps<Data, UniqKeyType> & BodyPropsInner<Data, UniqKeyType>) {
+    const { loading, tableRef } = this.asProps;
+    if (prevProps.loading !== loading) {
+      if (loading) {
+        setTimeout(() => {
+          if ((tableRef.current && hasParent(document.activeElement, tableRef.current))) {
+            tableRef.current?.focus();
+          }
+        });
+      } else if (!loading && this.spinContainerIsFocused) {
+        setTimeout(() => {
+          tableRef.current?.focus();
+        });
+        this.spinContainerIsFocused = false;
+      }
+    }
   }
 
   calculateAriaRowIndex = () => {
@@ -178,6 +198,14 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
 
     return headerHeight;
+  };
+
+  handleFocusSpinContainer = () => {
+    this.spinContainerIsFocused = true;
+  };
+
+  handleBlurSpinContainer = () => {
+    this.spinContainerIsFocused = false;
   };
 
   render() {
@@ -356,6 +384,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             tabIndex={-1}
             ref={spinnerRef}
             role='row'
+            onFocus={this.handleFocusSpinContainer}
+            onBlur={this.handleBlurSpinContainer}
           >
             <Spin size='xxl' role='gridcell' />
           </SSpinContainer>
