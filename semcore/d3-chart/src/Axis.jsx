@@ -1,5 +1,5 @@
 import { Component, sstyled } from '@semcore/core';
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
@@ -297,13 +297,17 @@ function Ticks(props) {
     rootRef,
     multiline,
   } = props;
+  const [rootRefElement, setRootRefElement] = useState(null);
+
+  useEffect(() => {
+    if (rootRef.current) setRootRefElement(rootRef.current);
+  }, []);
 
   const tickBandwidth = scale[indexScale]?.bandwidth?.();
-
   const ticksState = ticks.map((tick) => ({
     tick,
-    lines: typeof tick === 'string' && multiline
-      ? splitTextByWidth(rootRef.current, tick, tickBandwidth)
+    lines: typeof tick === 'string' && multiline && rootRefElement
+      ? splitTextByWidth(rootRefElement, tick, tickBandwidth)
       : [],
   }));
 
