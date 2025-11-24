@@ -21,13 +21,13 @@ interface InstanceHandle {
    * Finds all layers (instances or text) that match the selector function.
    * Optional selector options for path matching and traversal behavior.
    * */
-  findLayers(selectorFn: (node: InstanceHandle | TextHandle) => boolean, opts?: SelectorOptions): (InstanceHandle | TextHandle)[];
+  findLayers(selectorFn: (node: LayerHandle) => boolean, opts?: SelectorOptions): LayerHandle[];
   type: 'INSTANCE';
   /**
    * Renders the instance and returns both the rendered sections and metadata.
    * */
   executeTemplate: () => { example: ResultSection[]; metadata: Metadata };
-  children: (InstanceHandle | TextHandle)[];
+  children: LayerHandle[];
 };
 
 interface TextHandle {
@@ -36,9 +36,11 @@ interface TextHandle {
   textContent: string;
 };
 
-interface ErrorHandle {
+export interface ErrorHandle {
   type: 'ERROR';
 };
+
+export type LayerHandle = InstanceHandle | TextHandle;
 
 /** Options for finding layers */
 interface SelectorOptions {

@@ -1,10 +1,46 @@
 import { figma } from './figma';
-
+import type { LayerHandle, ErrorHandle } from './figma';
 const instance = figma.selectedInstance;
+
+interface ChildCodeParameters {
+  wrapper?: string;
+  path?: string[];
+}
+
+interface Result {
+  node: LayerHandle;
+  path: string[];
+}
+
+const traverse = (
+  node: LayerHandle,
+  layerName: string,
+  results: Result[],
+  path: string[] = [],
+) => {
+  if (node.name === layerName) {
+    results.push({ node, path: path.slice(1) });
+    return;
+  }
+
+  if (node.type === 'INSTANCE' && node.children) {
+    node.children.forEach((child) => {
+      traverse(child, layerName, results, [...path, node.name]);
+    });
+  }
+};
+
+const layerCode = (layer: LayerHandle | ErrorHandle | undefined) => {
+  switch (layer?.type) {
+    case 'INSTANCE': return layer.executeTemplate().example;
+    case 'TEXT': return layer.textContent;
+    default: return;
+  }
+};
 
 export const connect = {
   /** Returns a pretty representation of a prop/value pair. */
-  setProp: (propName: string, propValue: any) => {
+  formatProp: (propName: string, propValue: any) => {
     if (propValue === undefined) {
       return;
     }
@@ -33,27 +69,37 @@ export const connect = {
     }
     return;
   },
+  /**
+   * @returns array of children
+   * @param prop return only children that have `prop=value`
+   */
   children: ({ prop, value }: { prop?: string; value?: string | boolean } = {}) => {
     if (instance) {
       if (prop !== undefined && value !== undefined) {
         return instance.findLayers((child) => child.type === 'INSTANCE' && child.getPropertyValue(prop) === value);
       }
+      return instance.findLayers((child) => child.type === 'INSTANCE');
     }
     return [];
   },
   /** Finds a child instance or text by the layer name and returns its code. */
-  childCode: (layerName: string, wrapper?: string) => {
+  childCode: (layerName: string, params?: ChildCodeParameters) => {
     if (instance) {
-      const inst = instance.findInstance(layerName);
-      const text = instance.findText(layerName);
+      const { path, wrapper } = params ?? {};
+      const inst = instance.findInstance(layerName, { path });
+      const text = instance.findText(layerName, { traverseInstances: !!path });
       let result: string | string[] | undefined;
-      if (inst.type === 'INSTANCE') {
-        result = inst.executeTemplate().example;
-      } else if (text.type === 'TEXT') {
-        result = text.textContent;
+      if (text.type === 'TEXT' && path) {
+        const results: Result[] = [];
+        traverse(instance, layerName, results);
+        result = layerCode(results.filter((node) => node.path.join('#SEP;') === path?.join('#SEP;'))[0]?.node);
+      } else {
+        result = layerCode(inst ?? text);
       }
       if (result)
-        return wrapper ? figma.tsx`<${wrapper}>${result}</${wrapper.split(' ')[0]}>` : result;
+        return wrapper
+          ? figma.tsx`<${wrapper}>${result}</${wrapper.split(' ')[0]}>`
+          : result;
     }
     return;
   },
@@ -71,7 +117,7 @@ export const connect = {
     return code;
   },
   getBoolean: (propName: string, options?: Record<string, any>) => instance?.getBoolean(propName, options),
-  printAll: () => JSON.stringify(instance?.children),
+  printAll: () => JSON.stringify(instance),
 };
 
 export interface ConnectSettings {

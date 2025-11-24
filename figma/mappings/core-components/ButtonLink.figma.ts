@@ -1,17 +1,17 @@
 import { connect } from '../../src/connect';
 import type { ConnectSettings } from '../../src/connect';
 
-const addonLeft = connect.childCode('← - - addon properties', 'ButtonLink.Addon');
-const addonRight = connect.childCode('addon properties - - →', 'ButtonLink.Addon');
+const addonLeft = connect.childCode('← - - addon properties', { wrapper: 'ButtonLink.Addon' });
+const addonRight = connect.childCode('addon properties - - →', { wrapper: 'ButtonLink.Addon' });
 
-const textWrapper = addonLeft || addonRight
+const wrapper = addonLeft || addonRight
   ? 'ButtonLink.Text'
   : undefined;
-const text = connect.childCode('↳ text', textWrapper);
+const text = connect.childCode('↳ text', { wrapper });
 
 const ariaLabel = text
   ? undefined
-  : connect.setProp('aria-label', connect.childCode('↳ title') ?? '/* short description */');
+  : connect.formatProp('aria-label', connect.childCode('↳ title') ?? '/* short description */');
 
 const active = connect.getProp('state', 'active');
 const disabled = connect.getProp('state', 'disabled');

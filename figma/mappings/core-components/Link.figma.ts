@@ -1,11 +1,11 @@
 import { connect } from '../../src/connect';
 import type { ConnectSettings } from '../../src/connect';
 
-const addonLeft = connect.childCode('← - - addon properties', 'Link.Addon');
-const addonRight = connect.childCode('addon properties - - →', 'Link.Addon');
+const addonLeft = connect.childCode('← - - addon properties', { wrapper: 'Link.Addon' });
+const addonRight = connect.childCode('addon properties - - →', { wrapper: 'Link.Addon' });
 
-const textWrapper = addonLeft || addonRight ? 'Link.Text' : undefined;
-const text = connect.childCode('↳ text', textWrapper);
+const wrapper = addonLeft || addonRight ? 'Link.Text' : undefined;
+const text = connect.childCode('↳ text', { wrapper });
 
 const ariaLabel = text ? undefined : 'aria-label = {/* short description */}';
 
