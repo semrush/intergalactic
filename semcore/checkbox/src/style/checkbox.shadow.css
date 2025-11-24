@@ -165,11 +165,11 @@ SControl[indeterminate]~SCheckbox[state='invalid']:before {
   border-color: var(--intergalactic-control-primary-critical, #ff4953);
 }
 
-SCheckbox[theme][state='normal']:before {
+SCheckbox[checked][theme][state='normal']:before {
   border-color: var(--theme);
 }
 
-SCheckbox[theme][state='normal']:focus-visible:before {
+SCheckbox[checked][theme][state='normal']:focus-visible:before {
   border-color: var(--theme);
 }
 

@@ -19,11 +19,11 @@ const commonArgTypes = {
   },
   state: {
     control: { type: 'select' },
-    options: ['normal', 'valid'],
+    options: ['normal', 'invalid'],
   },
   theme: {
     control: { type: 'select' },
-    options: ['info', 'success', 'pink'],
+    options: ['yellow', 'violet', 'pink'],
   },
   checked: {
     control: { type: 'boolean' },
