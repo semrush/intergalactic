@@ -410,8 +410,6 @@ class XAxisRoot extends AxisRoot {
   };
 }
 
-XAxisRoot.stopDebug = true;
-
 const XAxis = createElement(XAxisRoot, {
   Ticks,
   Grid,
