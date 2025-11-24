@@ -6,6 +6,7 @@ import type React from 'react';
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
+import type { PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -141,6 +142,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
      * Function for format text for tooltip
      */
     tooltipValueFormatter?: (value?: unknown) => string;
+    /**
+     * Custom event emitter. Could be useful to handle event on few charts at the same time.
+     */
+    eventEmitter?: InstanceType<typeof PlotEventEmitter>;
     /**
      * Config for a11y summary
      */

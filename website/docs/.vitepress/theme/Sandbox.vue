@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { createRoot as createReactRoot } from 'react-dom/client'
 import lzString from 'lz-string';
 import { isolateStyles } from './isolateStyles';
@@ -109,12 +109,18 @@ root.render(<App />);
 let rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
 
+let reactRoot;
+
 onMounted(() => {
   if (!playgroundId) return;
   const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
   if (!wrapper) return;
   let element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
 
-  globalThis[`render_${playgroundId}`]?.(element)
-})
+  reactRoot = globalThis[`render_${playgroundId}`]?.(element);
+});
+
+onBeforeUnmount(() => {
+  reactRoot?.unmount();
+});
 </script>

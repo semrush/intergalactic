@@ -1,140 +1,174 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Styles', () => {
-  test('Verify spin with correct sizes and right text', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-    const sizes = {
-      xs: '16px',
-      s: '20px',
-      m: '24px',
-      l: '32px',
-      xl: '48px',
-      xxl: '72px',
-    };
+export const locators = {
+  spin: (page: Page, index?: number) => {
+    const base = page.locator('svg[role="img"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  button: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Button"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
 
-    for (const [size, expectedPx] of Object.entries(sizes)) {
-      const spinner = page.locator(`svg[class*="size_${size}"]`);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify spin with correct sizes and right text', {
+    tag: [TAG.PRIORITY_HIGH, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/tests/examples/spin-sizes.tsx', 'en');
 
-      await expect(spinner).toBeVisible();
+    await test.step('Verify screenshot', async () => {
+      await expect(page).toHaveScreenshot();
+    });
 
-      const height = await spinner.evaluate((el) => getComputedStyle(el).height);
-      const width = await spinner.evaluate((el) => getComputedStyle(el).width);
+    await test.step('Verify sizes', async () => {
+      const sizes = {
+        xs: '16px',
+        s: '20px',
+        m: '24px',
+        l: '32px',
+        xl: '48px',
+        xxl: '72px',
+      };
 
-      expect(height).toBe(expectedPx);
-      expect(width).toBe(expectedPx);
+      for (const [size, expectedPx] of Object.entries(sizes)) {
+        const spinner = page.locator(`svg[class*="size_${size}"]`);
 
-      const style = await spinner.getAttribute('style');
-      expect(style).toContain('dark');
-    }
+        await expect(spinner).toBeVisible();
+
+        const height = await spinner.evaluate((el) => getComputedStyle(el).height);
+        const width = await spinner.evaluate((el) => getComputedStyle(el).width);
+
+        expect(height).toBe(expectedPx);
+        expect(width).toBe(expectedPx);
+
+        const style = await spinner.getAttribute('style');
+        expect(style).toContain('dark');
+      }
+    });
   });
 
-  test('Verify spin with bottom text', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-sizes-bottom-text.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify themes and default sizes', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-theme.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const spinners = page.locator('svg');
-    const styleDark = await spinners.first().getAttribute('style');
-    expect(styleDark).toContain('dark');
-
-    const styleInvert = await spinners.nth(1).getAttribute('style');
-    expect(styleInvert).toContain('invert');
-
-    const height = await spinners.nth(1).evaluate((el) => getComputedStyle(el).height);
-    const width = await spinners.nth(1).evaluate((el) => getComputedStyle(el).width);
-
-    expect(height).toBe('24px');
-    expect(width).toBe('24px');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify custom themes and default sizes', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-custom-theme.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const spinners = page.locator('svg');
-    const styleFirst = await spinners.first().getAttribute('style');
-    expect(styleFirst).toContain('blanchedalmond');
-
-    const styleSecond = await spinners.nth(1).getAttribute('style');
-    expect(styleSecond).toContain('3eeb4c');
-
-    const styleThind = await spinners.nth(2).getAttribute('style');
-    expect(styleThind).toContain('8649e1');
+  test('Verify spin with bottom text', {
+    tag: [TAG.PRIORITY_HIGH, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/tests/examples/spin-sizes-bottom-text.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify spin box props', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-box-props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify themes and default sizes', {
+    tag: [TAG.PRIORITY_HIGH, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/tests/examples/spin-theme.tsx', 'en');
 
-    const spinners = page.locator('svg');
+    await test.step('Verify theme styles', async () => {
+      const styleDark = await locators.spin(page, 0).getAttribute('style');
+      expect(styleDark).toContain('dark');
 
-    const customWidth = await spinners.first().evaluate((el) => getComputedStyle(el).width);
-    expect(customWidth).toBe('50px');
+      const styleInvert = await locators.spin(page, 1).getAttribute('style');
+      expect(styleInvert).toContain('invert');
+    });
 
-    const customHeight = await spinners.nth(1).evaluate((el) => getComputedStyle(el).height);
-    expect(customHeight).toBe('50px');
+    await test.step('Verify default size', async () => {
+      const height = await locators.spin(page, 1).evaluate((el) => getComputedStyle(el).height);
+      const width = await locators.spin(page, 1).evaluate((el) => getComputedStyle(el).width);
 
-    const customWidth1 = await spinners.nth(2).evaluate((el) => getComputedStyle(el).width);
-    const customHeight1 = await spinners.nth(2).evaluate((el) => getComputedStyle(el).height);
-    expect(customWidth1).toBe('50px');
-    expect(customHeight1).toBe('50px');
+      expect(height).toBe('24px');
+      expect(width).toBe('24px');
+    });
 
-    const margin = await spinners.nth(2).evaluate((el) => getComputedStyle(el).margin);
-    expect(margin).toBe('16px');
+    await test.step('Verify screenshot', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
 
-    const padding = await spinners.nth(3).evaluate((el) => getComputedStyle(el).padding);
-    expect(padding).toBe('16px');
+  test('Verify custom themes and default sizes', {
+    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/tests/examples/spin-custom-theme.tsx', 'en');
+
+    await test.step('Verify custom theme colors', async () => {
+      const styleFirst = await locators.spin(page, 0).getAttribute('style');
+      expect(styleFirst).toContain('blanchedalmond');
+
+      const styleSecond = await locators.spin(page, 1).getAttribute('style');
+      expect(styleSecond).toContain('3eeb4c');
+
+      const styleThird = await locators.spin(page, 2).getAttribute('style');
+      expect(styleThird).toContain('8649e1');
+    });
+
+    await test.step('Verify screenshot', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify spin box props', {
+    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/tests/examples/spin-box-props.tsx', 'en');
+
+    await test.step('Verify custom width', async () => {
+      const customWidth = await locators.spin(page, 0).evaluate((el) => getComputedStyle(el).width);
+      expect(customWidth).toBe('50px');
+    });
+
+    await test.step('Verify custom height', async () => {
+      const customHeight = await locators.spin(page, 1).evaluate((el) => getComputedStyle(el).height);
+      expect(customHeight).toBe('50px');
+    });
+
+    await test.step('Verify custom width and height together', async () => {
+      const customWidth = await locators.spin(page, 2).evaluate((el) => getComputedStyle(el).width);
+      const customHeight = await locators.spin(page, 2).evaluate((el) => getComputedStyle(el).height);
+      expect(customWidth).toBe('50px');
+      expect(customHeight).toBe('50px');
+    });
+
+    await test.step('Verify margin', async () => {
+      const margin = await locators.spin(page, 2).evaluate((el) => getComputedStyle(el).margin);
+      expect(margin).toBe('16px');
+    });
+
+    await test.step('Verify padding', async () => {
+      const padding = await locators.spin(page, 3).evaluate((el) => getComputedStyle(el).padding);
+      expect(padding).toBe('16px');
+    });
   });
 });
 
-test.describe('Attributes', () => {
-  test('Verify spin sttributes inside table', async ({ page }) => {
-    const standPath = 'stories/components/spin/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify spin attributes inside table', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/spin/docs/examples/basic_example.tsx', 'en');
 
     const div = page.locator('div[role="status"][aria-live="polite"]');
     const svg = div.locator('svg');
 
-    await expect(svg).toBeVisible();
+    await test.step('Verify spin visibility and attributes', async () => {
+      await expect(svg).toBeVisible();
 
-    await expect(svg).toHaveAttribute('role', 'img');
-    await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-    await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+      await expect(svg).toHaveAttribute('role', 'img');
+      await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+      await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+    });
 
-    await page.locator('[data-ui-name="Button"]').click();
-    await expect(svg).not.toBeVisible();
-  });
-
-  test('Verify default spin sttributes', async ({ page }) => {
-    const standPath = 'stories/components/spin/tests/examples/spin-sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const spinners = page.locator('svg');
-
-    const spinnerCount = await spinners.count();
-    for (let i = 0; i < spinnerCount; i++) {
-      const spinner = spinners.nth(i);
-
-      await expect(spinner).toHaveAttribute('aria-label', 'Loading…');
-      await expect(spinner).toHaveAttribute('role', 'img');
-    }
+    await test.step('Verify spin hides after button click', async () => {
+      await locators.button(page).click();
+      await expect(svg).not.toBeVisible();
+    });
   });
 });

@@ -1,29 +1,26 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Notice', () => {
-  test('Basic', async ({ page }) => {
-    const standPath = 'stories/components/notice/docs/examples/basic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+test.describe(`@notice ${TAG.ACCESSIBILITY}`, () => {
+  test('Verify basic notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice/docs/examples/basic_notice.tsx', 'en');
+
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Custom', async ({ page }) => {
-    const standPath = 'stories/components/notice/docs/examples/custom_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const violations = await getAccessibilityViolations({ page });
 
+  test('Verify custom notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice/docs/examples/custom_notice.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
-  test('Smart', async ({ page }) => {
-    const standPath = 'stories/components/notice/docs/examples/noticesmart.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const violations = await getAccessibilityViolations({ page });
 
+  test('Verify NoticeSmart accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
 });
