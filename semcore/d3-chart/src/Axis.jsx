@@ -304,7 +304,7 @@ function Ticks(props) {
   }, []);
 
   const tickBandwidth = scale[indexScale]?.bandwidth?.();
-  const ticksState = ticks.map((tick) => ({
+  const ticksWithLines = ticks.map((tick) => ({
     tick,
     lines: typeof tick === 'string' && multiline && rootRefElement
       ? splitTextByWidth(rootRefElement, tick, tickBandwidth)
@@ -326,7 +326,7 @@ function Ticks(props) {
     }
   }
 
-  return ticksState.map(({ tick: value, lines }, i) => {
+  return ticksWithLines.map(({ tick: value, lines }, i) => {
     const displayValue = typeof children === 'function' ? undefined : renderValue(value);
 
     return sstyled(styles)(
