@@ -313,6 +313,154 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(noticeBubble).toContainText('Link 2 was moved to');
     await expect(noticeBubble).toHaveCount(1);
   });
+
+  test('Verify multiple managers work with same SM2 container - mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+  }, async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const notices = container.locator('[aria-live="polite"]');
+    await test.step('Verify both managers can add notices to same container', async () => {
+      await buttonBasic.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+
+      await expect(notices).toHaveCount(1);
+      await expect(notices.first()).toContainText('Link was moved to');
+
+      await buttonSuccess.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(1)).toContainText('Keyword was successfully moved');
+    });
+
+    await test.step('Verify notices can be closed independently', async () => {
+      await locators.closeButton(page).first().click();
+      await expect(notices).toHaveCount(1);
+      await expect(notices).toContainText('Keyword was successfully moved');
+    });
+  });
+
+  test('Verify replace last notice in SM2 container - mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+  }, async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const buttonReplace = locators.buttonTrigger(page, 'replace last success');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Show basic notice from first manager', async () => {
+      await buttonBasic.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+      await expect(notices).toContainText('Link was moved to');
+    });
+
+    await test.step('Show success notice from second manager', async () => {
+      await buttonSuccess.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(1)).toContainText('Keyword was successfully moved');
+    });
+
+    // await test.step('Replace last notice', async () => {
+    //   await buttonReplace.click();
+    //   await page.getByText('This is notice about replace!').waitFor({ state: 'visible', timeout: 5000 });
+    //   await expect(notices).toHaveCount(2);
+    //   await expect(notices.nth(0)).toContainText('Link was moved to');
+    //   await expect(notices.nth(1)).toContainText('This is notice about replace!');
+    //   await expect(notices.nth(1)).not.toContainText('Keyword was successfully moved');
+    // });
+  });
+
+  test('Verify multiple managers keyboard interactions in SM2 container', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const container = page.locator('#notice-bubble-container');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Open first notice with keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+    });
+
+    await test.step('Tab to second button and open second notice', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+    });
+  });
+
+  test('Verify notices disappear in SM2 container aftre duration is passed', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: false,
+      duration: 500,
+      type: 'info',
+      focusLock: false,
+    });
+
+    await page.setContent(htmlContent);
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Verify Base notice closes after duratiom', async () => {
+      await buttonBasic.click();
+      await buttonBasic.click();
+      await buttonBasic.click();
+      await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(3);
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      await expect(notices).toHaveCount(0);
+    });
+
+    await test.step('Verify Success notice closes after duratiom', async () => {
+      await buttonSuccess.click();
+      await buttonSuccess.click();
+      await buttonSuccess.click();
+      await expect(notices).toHaveCount(3);
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      await expect(notices).toHaveCount(0);
+    });
+  });
 });
 
 /**
@@ -554,5 +702,41 @@ test.describe(`${TAG.VISUAL}`, () => {
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify notice bubble in SM2 container', {
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+  }, async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+    await page.setContent(htmlContent);
+
+    const container = page.locator('#notice-bubble-container');
+    const noticeInContainer = container.locator('[aria-live="polite"]');
+    await expect(noticeInContainer).toHaveCount(0);
+
+    await test.step('Verify basic notice renders in SM2 container', async () => {
+      await locators.buttonTrigger(page, 'Show basic notice').click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+
+      await expect(noticeInContainer).toHaveCount(1);
+      await expect(noticeInContainer).toContainText('Link was moved to');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify success notice with icon renders in SM2 container', async () => {
+      await locators.buttonTrigger(page, 'Show success notice').click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(noticeInContainer).toHaveCount(2);
+      await expect(noticeInContainer.nth(1)).toContainText('Keyword was successfully moved');
+      await locators.closeButton(page).nth(1).hover();
+      await page.getByText('Close').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
