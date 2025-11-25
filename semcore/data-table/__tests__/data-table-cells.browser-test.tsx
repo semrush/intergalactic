@@ -286,6 +286,37 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('ArrowDown');
     await expect(page.locator('[data-ui-name="Row.Cell"]')).toBeFocused();
   });
+
+  test('Verify select rows with Shift', {
+    tag: [
+      TAG.KEYBOARD,
+      '@data-table',
+    ],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
+
+    const firstCell = locators.getCell(page, 3, 1);
+    const secondCell = locators.getCell(page, 7, 1);
+
+    await firstCell.locator('label').click();
+    await secondCell.locator('label').click({ modifiers: ['Shift'] });
+
+    for (let i = 3; i <= 7; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).toBeChecked();
+    }
+
+    await locators.getCell(page, 5, 1).locator('label').click({ modifiers: ['Shift'] });
+
+    for (let i = 5; i <= 7; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
+    }
+
+    await locators.getCell(page, 9, 1).locator('label').click({ modifiers: ['Shift'] });
+    for (let i = 5; i <= 8; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
+    }
+    await expect(locators.getCell(page, 9, 1).locator('input')).toBeChecked();
+  });
 });
 
 test('Verify multiple access to cells with spin', {

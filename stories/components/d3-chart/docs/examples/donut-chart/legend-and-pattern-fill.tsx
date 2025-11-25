@@ -2,6 +2,8 @@ import { Flex } from '@semcore/ui/base-components';
 import { ChartLegend, Donut, makeDataHintsContainer, Plot } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import DonutMockData from '../../../__mocks__/donut';
+
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
@@ -12,7 +14,7 @@ const Demo = () => {
     Object.keys(data).map((item, index) => {
       return {
         id: item,
-        label: `Category ${item}`,
+        label: `Category ${index + 1}`,
         checked: true,
         color: `chart-palette-order-${index + 1}`,
       };
@@ -75,10 +77,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  1: 3,
-  2: 1,
-  3: 2,
-};
+const data = DonutMockData.Default;
 
 export default Demo;

@@ -4,6 +4,8 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 import React from 'react';
 
+import RadarMockData from '../../../__mocks__/radar';
+
 const scale = scaleLinear().domain([0, 10]);
 const Demo = () => {
   const width = 500;
@@ -66,10 +68,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-  data_1: [1, 3, 5, 5, 9, 2],
-  data_2: [5, 2, 1, 2, 7, 6],
-};
+const data = RadarMockData.Default;
 
 export default Demo;
