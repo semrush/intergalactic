@@ -3,8 +3,8 @@ import Flags from '@semcore/ui/flags';
 
 figma.connect(
   Flags,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10034-250009&t=NrTxRQcw036G61Oc-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=32767-192692',
   {
-    example: (props) => <Flags iso2={/* value */} />,
+    example: () => <Flags iso2={/* value */} />,
   },
 );
