@@ -355,7 +355,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     const standPath = 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      initialAnimation: false,
+      initialAnimation: true, // we have bug here
       duration: 0,
       type: 'info',
       focusLock: false,
@@ -382,14 +382,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(notices.nth(1)).toContainText('Keyword was successfully moved');
     });
 
-    // await test.step('Replace last notice', async () => {
-    //   await buttonReplace.click();
-    //   await page.getByText('This is notice about replace!').waitFor({ state: 'visible', timeout: 5000 });
-    //   await expect(notices).toHaveCount(2);
-    //   await expect(notices.nth(0)).toContainText('Link was moved to');
-    //   await expect(notices.nth(1)).toContainText('This is notice about replace!');
-    //   await expect(notices.nth(1)).not.toContainText('Keyword was successfully moved');
-    // });
+    await test.step('Replace last notice', async () => {
+      await buttonReplace.click();
+      await page.getByText('This is notice about replace!').waitFor({ state: 'visible', timeout: 5000 });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(0)).toContainText('Link was moved to');
+      await expect(notices.nth(1)).toContainText('This is notice about replace!');
+      await expect(notices.nth(1)).not.toContainText('Keyword was successfully moved');
+    });
   });
 
   test('Verify multiple managers keyboard interactions in SM2 container', {
