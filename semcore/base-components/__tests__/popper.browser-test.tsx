@@ -829,4 +829,25 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     }
   });
+
+  test('Verify popper match trigger size', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@popper',
+    ],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/popper/tests/examples/match_trigger_size.tsx', 'en');
+
+    const trigger = page.locator('[data-ui-name=Popper.Trigger]');
+    const popper = page.locator('[data-ui-name=Popper.Popper]');
+
+    const triggerWidth = await trigger.evaluate((el) => {
+      return window.getComputedStyle(el).getPropertyValue('width');
+    });
+    const popperMaxWidth = await popper.evaluate((el) => {
+      return window.getComputedStyle(el).getPropertyValue('max-width');
+    });
+
+    expect(popperMaxWidth).toBe(triggerWidth);
+  });
 });

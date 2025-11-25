@@ -100,6 +100,11 @@ export type PopperProps = OutsideClickProps &
     cursorAnchoring?: boolean;
     /** Sets a margin that reduces the maximum size of the popper  */
     popperMargin?: number;
+    /**
+     * Set the width/height of popper exact the same as trigger's, by max-width/max-height
+     * @default false
+     */
+    matchTriggerSize?: boolean;
   };
 
 /** @deprecated */
