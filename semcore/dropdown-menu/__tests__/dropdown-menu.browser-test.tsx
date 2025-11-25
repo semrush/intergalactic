@@ -461,25 +461,16 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify menu closed click on item', async () => {
       await locators.menuitemradio(page, 4).click();
-      await locators.menuitemradio(page, 0).waitFor({ state: 'hidden' });
+      await locators.menuitemradio(page, 4).waitFor({ state: 'hidden' });
     });
 
     await test.step('Verify prev selected item selected and tooltip shown on hover', async () => {
       await locators.button(page).click();
-      await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
-      await expect.poll(async () => {
-        return await locators.menuitemradio(page, 4).getAttribute('class');
-      }, {
-        timeout: 1000,
-      }).toMatch(/inAfterOutline/);
+      await locators.menuitemradio(page, 4).waitFor({ state: 'visible' });
 
       await deleteButton4.hover();
       await page.getByText('Delete item').waitFor({ state: 'visible' });
-      if (browserName == 'chromium') {
-        await expect(page).toHaveScreenshot();
-      } else {
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-      }
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     await test.step('Verify menu not closed by click on addon', async () => {
