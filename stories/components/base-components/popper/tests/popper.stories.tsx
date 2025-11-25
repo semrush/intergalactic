@@ -11,7 +11,6 @@ import NoneInteractionExample from './examples/interaction-none';
 import LabelReferencedExample from './examples/label-referenced';
 import LabelWrappedExample from './examples/label-wrapped';
 import LabelWrappedDisablePortalExample from './examples/label-wrapped-disable-portal';
-import MatchTriggerSizeExample from './examples/match_trigger_size';
 import MultipleFocusabledInTriggerExample from './examples/multiple-focusables-in-trigger';
 import offSetExample from './examples/offSet';
 import PageResizingExample from './examples/page-resizing';
@@ -77,10 +76,6 @@ export const LabelWrapped: StoryObj = {
 
 export const LabelWrappedDisablePortal: StoryObj = {
   render: LabelWrappedDisablePortalExample,
-};
-
-export const MatchTriggerSize: StoryObj = {
-  render: MatchTriggerSizeExample,
 };
 
 export const MultipleFocusabledInTrigger: StoryObj = {

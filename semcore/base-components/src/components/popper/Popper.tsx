@@ -232,15 +232,6 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
         },
       });
     }
-    if (this.asProps.matchTriggerSize) {
-      modifiersOptions.push({
-        name: 'matchTriggerSize',
-        enabled: true,
-        options: {
-          popperCtx: this,
-        },
-      });
-    }
 
     const modifiersMerge = modifiersFallback.concat(...modifiersOptions, modifiers);
 
