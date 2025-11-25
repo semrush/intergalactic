@@ -95,7 +95,7 @@ const Demo = () => {
         Email frequency
       </Text>
 
-      <Flex mb={6} gap={4}>
+      <Flex mb={4} gap={4}>
         <Controller
           render={({ field }) => <Select size='l' id='period' options={periods} {...field} />}
           control={control}
@@ -173,7 +173,7 @@ const Demo = () => {
         name='emails'
       />
 
-      <Button mt={8} type='submit' use='primary' theme='success' size='l' wMin={120}>
+      <Button mt={6} type='submit' use='primary' theme='success' size='l' wMin={120}>
         Save
       </Button>
     </Flex>
