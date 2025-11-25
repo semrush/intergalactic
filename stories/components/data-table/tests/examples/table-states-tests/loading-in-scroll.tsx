@@ -10,7 +10,7 @@ const Demo = () => {
 
       const hideTimeout = setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 3000);
 
       return () => clearTimeout(hideTimeout);
     }, 3000);
