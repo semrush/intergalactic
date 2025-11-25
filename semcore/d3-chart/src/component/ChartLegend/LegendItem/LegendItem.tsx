@@ -160,7 +160,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
         <Checkbox
           size={size}
           checked={checked}
-          theme={checked ? color : undefined}
+          theme={color}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}

@@ -45,7 +45,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     { size: 'm', state: 'normal', theme: 'pink', color: undefined, checked: true, disabled: true, indeterminate: false },
     { size: 'l', state: 'normal', theme: undefined, color: 'violet', checked: true, disabled: true, indeterminate: false },
 
-    // loading
+    // indeterminate
     { size: 'm', state: 'normal', theme: undefined, color: undefined, checked: false, disabled: true, indeterminate: true },
     { size: 'l', state: 'invalid', theme: undefined, color: undefined, checked: false, disabled: true, indeterminate: true },
     { size: 'm', state: 'normal', theme: 'pink', color: undefined, checked: false, disabled: false, indeterminate: true },

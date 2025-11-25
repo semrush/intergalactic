@@ -166,6 +166,14 @@ export const Sorting: Story = {
 export const SortingChangingSize: StoryObj<SortTableProps> = {
   render: SortingChangingSizeExample,
   args: defaultTableProps,
+  argTypes: {
+    use: {
+      control: {
+        type: 'select',
+      },
+      options: ['primary', 'secondary', undefined],
+    },
+  },
 };
 
 export const TableInTable: StoryObj<TableInTableProps> = {
