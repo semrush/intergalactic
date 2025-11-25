@@ -297,27 +297,19 @@ function Ticks(props) {
     rootRef,
     multiline,
   } = props;
-
-  const [ticksState, setTicksState] = useState([]);
+  const [rootRefElement, setRootRefElement] = useState(null);
 
   useEffect(() => {
-    const tickBandwidth = scale[indexScale]?.bandwidth?.();
+    if (rootRef.current) setRootRefElement(rootRef.current);
+  }, []);
 
-    const ticksWithLines = ticks.map((tick) => {
-      let lines = [];
-
-      if (typeof tick === 'string' && multiline) {
-        lines = splitTextByWidth(rootRef.current, tick, tickBandwidth);
-      }
-
-      return {
-        tick,
-        lines,
-      };
-    });
-
-    setTicksState(ticksWithLines);
-  }, [ticks, multiline]);
+  const tickBandwidth = scale[indexScale]?.bandwidth?.();
+  const ticksWithLines = ticks.map((tick) => ({
+    tick,
+    lines: typeof tick === 'string' && multiline && rootRefElement
+      ? splitTextByWidth(rootRefElement, tick, tickBandwidth)
+      : [],
+  }));
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
@@ -334,7 +326,7 @@ function Ticks(props) {
     }
   }
 
-  return ticksState.map(({ tick: value, lines }, i) => {
+  return ticksWithLines.map(({ tick: value, lines }, i) => {
     const displayValue = typeof children === 'function' ? undefined : renderValue(value);
 
     return sstyled(styles)(
