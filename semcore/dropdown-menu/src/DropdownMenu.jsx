@@ -361,6 +361,7 @@ function Item({
     role,
     tabIndex,
     ariaChecked,
+    disabled,
   };
   const ariaDescribes = [];
 
@@ -479,6 +480,7 @@ function ItemContent({ styles }) {
       aria-checked={menuItemCtxValue.ariaChecked}
       alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
+      disabled={menuItemCtxValue.disabled}
     />,
   );
 }
