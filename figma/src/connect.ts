@@ -94,7 +94,7 @@ export const connect = {
         traverse(instance, layerName, results);
         result = layerCode(results.filter((node) => node.path.join('#SEP;') === path?.join('#SEP;'))[0]?.node);
       } else {
-        result = layerCode(inst ?? text);
+        result = layerCode(inst) ?? layerCode(text);
       }
       if (result)
         return wrapper

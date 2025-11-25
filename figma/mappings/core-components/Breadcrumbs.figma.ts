@@ -1,18 +1,15 @@
 import { connect } from '../../src/connect';
 import type { ConnectSettings } from '../../src/connect';
 
-const first = connect.childCode('↳ text', {
-  path: ['Home link'],
+const first = connect.childCode('Home link', {
   wrapper: 'Breadcrumbs.Item href="/"',
 });
 
-const second = connect.childCode('↳ text', {
-  path: ['Toolkit link'],
+const second = connect.childCode('Toolkit link', {
   wrapper: 'Breadcrumbs.Item href={/* url */}',
 });
 
-const third = connect.childCode('↳ text', {
-  path: ['Product link'],
+const third = connect.childCode('Product link', {
   wrapper: 'Breadcrumbs.Item active',
 });
 
