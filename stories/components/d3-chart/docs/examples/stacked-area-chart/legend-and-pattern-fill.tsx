@@ -14,32 +14,29 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
+import StackedAreaMockData from '../../../__mocks__/stacked-area';
+
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
 const lineColors: Record<string, string> = {
-  1: '--blue-300',
-  2: '--green-200',
-  3: '--orange-400',
+  stack1: '--blue-300',
+  stack2: '--green-200',
+  stack3: '--orange-400',
 };
 
 const dataHints = makeDataHintsContainer();
 
-type DataItem = {
-  time: Date;
-  1: number;
-  2: number;
-  3: number;
-};
+type DataItem = typeof StackedAreaMockData.Default[0];
 
 const getDegaultLegendItems = () => {
   return Object.keys(data[0])
     .filter((name) => name !== 'time')
-    .map((item) => {
+    .map((item, index) => {
       return {
         id: item,
-        label: `Stack ${item}`,
+        label: `Stack ${index + 1}`,
         checked: true,
         color: lineColors[item],
       };
@@ -135,7 +132,7 @@ const Demo = () => {
                   <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
                     <Text bold>
-                      {data[xIndex]['1'] + data[xIndex]['2'] + data[xIndex]['3']}
+                      {data[xIndex].stack1 + data[xIndex].stack2 + data[xIndex].stack3}
                     </Text>
                   </Flex>
                 </>
@@ -165,12 +162,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = [...Array(5).keys()].map((d, i) => ({
-  time: new Date(date.setDate(date.getDate() + 5)),
-  1: Math.random() * 5,
-  2: Math.random() * 5,
-  3: Math.random() * 5,
-}));
+const data = StackedAreaMockData.Default;
 
 export default Demo;

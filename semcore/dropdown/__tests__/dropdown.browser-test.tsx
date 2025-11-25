@@ -1,252 +1,517 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Dropdown', () => {
-  test('Verify keyboard interactios with Basic usage', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
-    const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+import { disableEnforceFocus } from '../../../stories/components/base-components/popper/tests/popper.stories';
 
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+export const locators = {
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowDown');
-    await expect(trigger).toBeFocused();
-    await expect(popper).toBeHidden();
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  popper: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 
-    await page.keyboard.press('Enter');
-    await popper.waitFor({ state: 'visible', timeout: 500 });
+};
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  const variables = [
 
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowDown');
-    await expect(trigger).not.toBeFocused();
-    await expect(popper).toBeFocused();
-    await expect(page).toHaveScreenshot();
+    { placement: 'auto', stretch: 'min' },
+    { placement: 'top', stretch: 'min' },
+    { placement: 'bottom', stretch: 'min' },
+    { placement: 'left', stretch: 'min' },
+    { placement: 'right', stretch: 'min' },
 
-    await page.keyboard.press('Escape');
-    await popper.waitFor({ state: 'hidden', timeout: 500 });
-    await expect(trigger).toBeFocused();
+    { placement: 'auto-start', stretch: 'fixed' },
+    { placement: 'top-start', stretch: 'fixed' },
+    { placement: 'bottom-start', stretch: 'fixed' },
+    { placement: 'left-start', stretch: 'fixed' },
+    { placement: 'right-start', stretch: 'fixed' },
 
-    await page.keyboard.press('Space');
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(trigger).not.toBeFocused();
-    await expect(popper).toBeFocused();
+    { placement: 'auto-end', stretch: false },
+    { placement: 'top-end', stretch: false },
+    { placement: 'bottom-end', stretch: false },
+    { placement: 'left-end', stretch: false },
+    { placement: 'right-end', stretch: false },
+  ];
+  variables.forEach((item) => {
+    test(`Verify Dropdown when placement=${item.placement} and stretch=${item.stretch}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@dropdown'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', item);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
 
-    await trigger.click();
-    await expect(popper).toBeHidden();
-  });
-
-  test('Verify mouse interactios with Basic usage', async ({ page, browserName }) => {
-    const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-
-    await trigger.click();
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(trigger).not.toBeFocused();
-
-    await trigger.click();
-    await popper.waitFor({ state: 'hidden', timeout: 500 });
-
-    await trigger.click();
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await popper.click();
-
-    await expect(trigger).not.toBeFocused();
-    await expect(popper).toBeVisible();
-
-    if (browserName === 'webkit') return;
-    await page.keyboard.press('Escape');
-    await popper.waitFor({ state: 'hidden', timeout: 500 });
-    await expect(trigger).toBeFocused();
-  });
-
-  test('Verify keyboard interaction when Focus interaction enabled', async ({
-    page,
-    browserName,
-  }) => {
-    if (browserName === 'webkit') return;
-
-    const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowDown');
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(trigger).not.toBeFocused();
-    await expect(popper).toBeFocused();
-
-    await page.keyboard.press('Escape');
-    await expect(trigger).toBeFocused();
-    await expect(popper).toBeHidden();
-
-    await page.keyboard.press('Space');
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(trigger).not.toBeFocused();
-    await expect(popper).toBeFocused();
-
-    await page.keyboard.press('Tab');
-    await expect(trigger).toBeFocused();
-    await expect(popper).not.toBeFocused();
-  });
-
-  test('Verify mouse interaction when Focus interaction enabled', async ({ page, browserName }) => {
-    const standPath = 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.locator('[data-ui-name="Dropdown.Trigger"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-
-    await trigger.click();
-    await expect(trigger).not.toBeFocused();
-
-    await trigger.click();
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-
-    if (browserName === 'webkit') return;
-    await page.keyboard.press('Escape');
-    await popper.waitFor({ state: 'hidden', timeout: 500 });
-    await expect(trigger).toBeFocused();
-  });
-
-  test('Verify stretch and placement', async ({ page }) => {
-    const standPath = 'stories/components/dropdown/tests/examples/dd-stretch.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const button = page.getByRole('button');
-
-    await button.first().click();
-    await page.waitForTimeout(200);
-
-    await expect(page).toHaveScreenshot();
-    await button.first().click();
-    await button.nth(1).click();
-    await page.waitForTimeout(200);
-    await expect(page).toHaveScreenshot();
-
-    await button.nth(2).click();
-    await page.waitForTimeout(200);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify dropdown states functionality by mouse', async ({ page }) => {
-    const standPath = 'stories/components/dropdown/tests/examples/dd-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-
-    await test.step('Verify default visible expanded', async () => {
-      await expect(popper).toHaveCount(1);
-      await expect(popper).toBeFocused();
-    });
-
-    await test.step('Verify no popper when visible = false', async () => {
-      await page.locator('[data-testid="visible"]').click();
-      await expect(popper).toHaveCount(0);
-    });
-
-    await test.step('Verify no popper when disabled', async () => {
-      await page.locator('[data-testid="disabled"]').click();
-      await expect(popper).toHaveCount(0);
-    });
-
-    await test.step('Verify no focus outline when disableEnforceFocus', async () => {
-      await page.locator('[data-testid="disableEnforceFocus"]').click();
-      await expect(popper).toHaveCount(1);
-      await expect(popper).not.toBeFocused();
-    });
-
-    await test.step('Verify no focus outline when explicitTriggerSet', async () => {
-      await page.locator('[data-testid="explicitTriggerSet"]').click();
-      await expect(popper).toHaveCount(1);
+      await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify dropdown states functionality by keyboard', async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
+  test(`Verify Dropdown with offSet`, {
+    tag: [TAG.PRIORITY_HIGH,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { offset: 100 });
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
 
-    const standPath = 'stories/components/dropdown/tests/examples/dd-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
 
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify keyboard interactios when interaction undefined', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/docs/examples/basic_usage.tsx', 'en');
 
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
 
-    await test.step('Verify no popper when visible = false', async () => {
-      await page.locator('[data-testid="visible"]').click();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
-      await expect(popper).toHaveCount(0);
-    });
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
 
-    await test.step('Verify popper when disabled', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await expect(popper).toHaveCount(1);
-      await page.keyboard.press('Escape');
-    });
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
 
-    await test.step('Verify no focus outline when disableEnforceFocus', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await expect(popper).toHaveCount(1);
-      await expect(popper).not.toBeFocused();
-      await page.keyboard.press('Escape');
-    });
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
 
-    await test.step('Verify popper when explicitTriggerSet', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await expect(popper).toHaveCount(1);
-      await page.keyboard.press('Escape');
-      await popper.waitFor({ state: 'hidden', timeout: 500 });
-    });
+    await page.keyboard.press('Space');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
   });
 
-  test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', async ({
-    page,
-    browserName,
-  }) => {
-    if (browserName === 'webkit') return;
-    const standPath = 'stories/components/dropdown/tests/examples/dd-input-trigger.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify mouse interactios when interaction undefined', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/docs/examples/basic_usage.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.button(page)).not.toBeFocused();
 
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await locators.popper(page).click();
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeVisible();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
+  });
+
+  test('Verify keyboard interaction when interaction = focus', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/docs/examples/focus_interaction.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Space');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).not.toBeFocused();
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
+  });
+
+  test('Verify mouse interaction  when interaction = focus', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/docs/examples/focus_interaction.tsx', 'en');
+
+    await locators.button(page).hover();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await locators.button(page).click();
+    await expect(locators.popper(page)).toHaveCount(1);
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
+  });
+
+  test('Verify keyboard and mouse interaction when interaction = hover', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'hover' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
+    await expect(locators.button(page).first()).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.mouse.click(0, 0);
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).hover();
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
+    await expect(locators.button(page).first()).not.toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(1);
+
+    await page.keyboard.press('Escape');
+    await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
+  });
+
+  test('Verify keyboard and mouse interaction when interaction = click', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'click' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Space');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.button(page).first()).not.toBeFocused();
+    await expect(locators.popper(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(1);
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await page.mouse.click(0, 0);
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).not.toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).hover();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+  });
+
+  test('Verify keyboard and mouse interaction when interaction = none', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'none' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Space');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).hover();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).click();
+    await expect(locators.popper(page)).toHaveCount(0);
+  });
+
+  test('Verify keyboard and mouse interaction when visible = false', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { visible: false });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Space');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).hover();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).click();
+    await expect(locators.popper(page)).toHaveCount(0);
+  });
+
+  test('Verify dropdown when visible = true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { visible: true });
+
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+  });
+
+  test('Verify dropdown when defaultVisible = true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { defaultVisible: true });
+
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await expect(locators.popper(page)).toHaveCount(0);
+    await expect(locators.button(page)).toBeFocused();
+
+    await locators.button(page).click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+  });
+
+  test('Verify dropdown when disableEnforceFocus = true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { disableEnforceFocus: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).not.toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
+    await expect(locators.button(page)).toBeFocused();
+
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).not.toBeFocused();
+    await expect(locators.button(page).first()).not.toBeFocused();
+
+    await locators.button(page).first().click();
+    await locators.popper(page).waitFor({ state: 'hidden' });
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await locators.button(page).first().click();
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+  });
+
+  test('Verify dropdown when focusLoop = true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { focusLoop: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.button(page)).toBeFocused();
+    await expect(locators.popper(page)).toHaveCount(0);
+
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+  });
+
+  test('Verify dropdown when disableEnforceFocus=false and autoFocus =true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: true, disableEnforceFocus: false });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+  });
+
+  test('Verify dropdown when disableEnforceFocus=true and autoFocus =true', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: true, disableEnforceFocus: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).not.toBeFocused();
+  });
+
+  test('Verify dropdown when disableEnforceFocus=false and autoFocus =false', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: false, disableEnforceFocus: false });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).not.toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await expect(locators.popper(page)).not.toBeFocused();
+  });
+
+  test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown/tests/examples/input-as-trigger.tsx', 'en');
 
     await test.step('Verify not opened when input focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(popper).toHaveCount(0);
+      await expect(locators.popper(page)).toHaveCount(0);
     });
 
     await test.step('Verify popper opened and focused', async () => {
       await page.keyboard.press('Enter');
-      await popper.waitFor({ state: 'visible', timeout: 500 });
-      await expect(popper).toHaveCount(1);
-      await expect(popper).toBeFocused();
+      await locators.popper(page).waitFor({ state: 'visible' });
+      await expect(locators.popper(page)).toHaveCount(1);
+      await expect(locators.popper(page)).toBeFocused();
     });
 
     await test.step('Verify Navigation bettwenn items', async () => {
@@ -256,46 +521,48 @@ test.describe('Dropdown', () => {
 
     await test.step('Verify Closes by ESC', async () => {
       await page.keyboard.press('Escape');
-      await expect(popper).toHaveCount(0);
+      await locators.popper(page).waitFor({ state: 'hidden' });
+
+      await expect(locators.popper(page)).toHaveCount(0);
     });
   });
 
-  test('Verify dropdown can be closed by click on button inside', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify dropdown can be closed by click on button inside', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx', 'en');
 
     const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
-    const applyButton = page.getByRole('button', { name: 'Apply' });
 
     await trigger.click();
-    await expect(popper).toHaveCount(1);
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await applyButton.click();
-    await expect(popper).toHaveCount(0);
+    await locators.popper(page).waitFor({ state: 'visible' });
+
+    await expect(locators.popper(page)).toHaveCount(1);
+    await locators.button(page, 'Apply').click();
+    await locators.popper(page).waitFor({ state: 'hidden' });
+
+    await expect(locators.popper(page)).toHaveCount(0);
   });
 
-  test('Verify dropdown can be closed by keyboard press on button inside', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const popper = page.locator('[data-ui-name="Dropdown.Popper"]');
+  test('Verify dropdown can be closed by keyboard press on button inside', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
-    await expect(popper).toHaveCount(1);
-    await popper.waitFor({ state: 'visible', timeout: 500 });
-    await expect(page).toHaveScreenshot();
+    await locators.popper(page).waitFor({ state: 'visible' });
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await popper.waitFor({ state: 'hidden', timeout: 500 });
+    await locators.popper(page).waitFor({ state: 'hidden' });
 
-    await expect(popper).not.toBeVisible();
+    await expect(locators.popper(page)).not.toBeVisible();
   });
 });

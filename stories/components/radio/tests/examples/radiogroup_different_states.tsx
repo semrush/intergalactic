@@ -52,17 +52,11 @@ const Demo = () => {
       >
         <Flex direction='column' gap={2}>
           <Text size={200}>Radio group L is disabled</Text>
-
           <Radio value='1' state='invalid' label='supports state=invalid' />
-
           <Radio value='2' theme='yellow' label='supports theme=yellow' />
-
           <Radio value='3' state='invalid' disabled label='supports state=invalid and disabled' />
-
           <Radio value='4' disabled label='supports disabled' />
-
           <Radio value='5' state='normal' label='supports normal state' />
-
           <Radio value='6' label='supports checked prop'>
             <Radio.Value
               autoFocus

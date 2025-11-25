@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import StackedBarMockData from '../../../__mocks__/stacked-bar';
+
 const Demo = () => {
   return (
     <Chart.Bar
@@ -14,12 +16,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    bar: `Bar ${i + 1}`,
-    Category1: Math.random() * 10,
-    Category2: Math.random() * 10,
-  }));
+const data = StackedBarMockData.Default;
 
 export default Demo;

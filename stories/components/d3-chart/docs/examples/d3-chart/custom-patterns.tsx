@@ -2,16 +2,7 @@ import type { Pattern } from '@semcore/ui/d3-chart';
 import { Plot, Venn } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-const data = {
-  'G': 200,
-  'F': 200,
-  'C': 500,
-  'U': 1,
-  'G/F': 100,
-  'G/C': 100,
-  'F/C': 100,
-  'G/F/C': 100,
-};
+import VennMockData from '../../../__mocks__/venn';
 
 const patterns: Pattern[] = [
   {
@@ -73,5 +64,7 @@ const Demo = () => {
     </Plot>
   );
 };
+
+const data = VennMockData.Default;
 
 export default Demo;

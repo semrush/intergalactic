@@ -1,40 +1,19 @@
+import type { BarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type BaseExampleProps = {
-  showLegend?: boolean;
-  multilineXTicks?: boolean;
-  marginX?: number;
-  multilineYTicks?: boolean;
-  marginY?: number;
-  data?: Array<{
-    category: string;
-    bar: number;
-  }>;
-};
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-const Demo = (props: BaseExampleProps) => {
-  const { showLegend, multilineXTicks, data, marginX, multilineYTicks, marginY } = props;
+const Demo = (props: BarChartProps) => {
   return (
-    <>
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-      <Chart.Bar
-        groupKey='category'
-        data={data ?? defaultData}
-        plotWidth={500}
-        plotHeight={300}
-        aria-label='Bar chart'
-        showLegend={showLegend}
-        multilineXTicks={multilineXTicks}
-        marginX={marginX}
-        multilineYTicks={multilineYTicks}
-        marginY={marginY}
-      />
-    </>
+    <Chart.Bar
+      {...getPropsToChart(props)}
+      aria-label='Bar chart'
+    />
   );
 };
 
-const defaultData = [
+const data = [
   { category: 'Category 0', bar: 2 },
   { category: 'Category 1', bar: 5 },
   { category: 'Category 2', bar: 7 },
@@ -42,12 +21,21 @@ const defaultData = [
   { category: 'Category 4', bar: 8 },
 ];
 
-export const defaultProps: BaseExampleProps = {
-  showLegend: undefined,
-  multilineXTicks: undefined,
-  marginX: undefined,
-  multilineYTicks: undefined,
-  marginY: undefined,
-};
+export const defaultProps = getChartProps<BarChartProps>({
+  groupKey: 'category',
+  type: 'group',
+  data,
+  trend: {
+    bar: [
+      { x: 'Category 0' as string, y: 2 as number },
+      { x: 'Category 1' as string, y: 5 as number },
+      { x: 'Category 2' as string, y: 7 as number },
+      { x: 'Category 3' as string, y: 4 as number },
+      { x: 'Category 4' as string, y: 8 as number },
+    ],
+  },
+} as any);
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

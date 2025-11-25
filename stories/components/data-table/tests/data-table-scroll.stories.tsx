@@ -1,14 +1,15 @@
 import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import FixedColumnDiffWidthExample from './examples/scroll-tests/fixed-column-with-d-ff-width';
-import FixedColumnWithoutVerticalExample from './examples/scroll-tests/fixed-column-without-vertical';
-import HorizontalScrollWithoutFixedExample from './examples/scroll-tests/horizontal-scroll';
-import FixedGroupExample from './examples/scroll-tests/horizontal-scroll-fixed-group';
-import MultiLevelHorizontalScrollExample from './examples/scroll-tests/milti-level-horizontal-scroll';
-import MultipleScrollsExample from './examples/scroll-tests/multiple-scrolls';
-import ScrollAndStickyExample, { defaultProps as ScrollStickyProps } from './examples/scroll-tests/scroll-in-table-sticky';
-import ScrollTopHeaderExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-in-top-header';
+import MultiLevelScrollInTableExample, { multiLevelScrollIntableProps } from './examples/scroll-tests/multi-level-scroll-in-table';
+import type { MultiLevelScrollIntableProps } from './examples/scroll-tests/multi-level-scroll-in-table';
+import MultiLevelWithFixedColumnExample, { fixedColumnMultiLevelScrollExampleProps } from './examples/scroll-tests/multi-level-with-fixed-column';
+import type { FixedColumnMultiLevelScrollExampleProps } from './examples/scroll-tests/multi-level-with-fixed-column';
+import OneLevelScrollInTableExample, { oneLevelScrollIntableProps } from './examples/scroll-tests/one-level-scroll-in-table';
+import type { OneLevelScrollIntableProps } from './examples/scroll-tests/one-level-scroll-in-table';
+import OneLevelWithFixedColumnExample, { fixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
+import type { FixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
+import ScrollWithStickyAndTopTopHeaderPropsExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-with-sticky-and-top-props-header';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 
 const meta: Meta<typeof DataTable> = {
@@ -19,44 +20,40 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const FixedGroups: Story = {
-  render: FixedGroupExample,
-};
-
-export const MultiLevelHorizontalScroll: Story = {
-  render: MultiLevelHorizontalScrollExample,
-};
-
-export const ScrollWithTopStickyProps: StoryObj<typeof ScrollTopHeaderProps> = {
-  render: ScrollTopHeaderExample,
+export const ScrollWithStickyAndTopTopHeaderProps: StoryObj<typeof ScrollTopHeaderProps> = {
+  render: ScrollWithStickyAndTopTopHeaderPropsExample,
   argTypes: {
     loading: { control: 'boolean' },
   },
   args: ScrollTopHeaderProps,
 };
 
-export const ScrollSticky: StoryObj<typeof ScrollStickyProps> = {
-  render: ScrollAndStickyExample,
-  argTypes: {
-    loading: { control: 'boolean' },
+export const OneLevelScrollInTable: StoryObj<OneLevelScrollIntableProps> = {
+  render: OneLevelScrollInTableExample,
+  args: {
+    ...oneLevelScrollIntableProps,
   },
-  args: ScrollStickyProps,
 };
 
-export const ThreeScrolls: Story = {
-  render: MultipleScrollsExample,
+export const MultiLevelScrollInTable: StoryObj<MultiLevelScrollIntableProps> = {
+  render: MultiLevelScrollInTableExample,
+  args: {
+    ...multiLevelScrollIntableProps,
+  },
 };
 
-export const HorizontalScrollsWithoutFixedColmns: Story = {
-  render: HorizontalScrollWithoutFixedExample,
+export const OneLevelWithFixedColumn: StoryObj<FixedColumnScrollExampleProps> = {
+  render: OneLevelWithFixedColumnExample,
+  args: {
+    ...fixedColumnScrollExampleProps,
+  },
 };
 
-export const HorizontalScrollWithFixedColumnAndDiffWidth: Story = {
-  render: FixedColumnDiffWidthExample,
-};
-
-export const FixedColumnWithoutVertical: Story = {
-  render: FixedColumnWithoutVerticalExample,
+export const MultiLevelWithFixedColumn: StoryObj<FixedColumnMultiLevelScrollExampleProps> = {
+  render: MultiLevelWithFixedColumnExample,
+  args: {
+    ...fixedColumnMultiLevelScrollExampleProps,
+  },
 };
 
 export const CaseWithW100: Story = {

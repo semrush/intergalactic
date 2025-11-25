@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Radio', () => {
+test.describe(`@radio ${TAG.ACCESSIBILITY}`, () => {
   test('Radiogroup', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/radiogroup_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,23 +12,15 @@ test.describe('Radio', () => {
   });
 
   test('Additional props to input', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/additional_props_for_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/radio/docs/examples/additional_props_for_input.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
-});
 
-test.describe('UX pattern', () => {
   test('Radio and select', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import DonutMockData from '../../../__mocks__/donut';
+
 const Demo = () => {
   return (
     <div style={{ width: '450px' }}>
@@ -9,10 +11,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  a: 3,
-  b: 1,
-  c: 2,
-};
+const data = DonutMockData.Default;
 
 export default Demo;
