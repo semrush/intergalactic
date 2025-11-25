@@ -52,8 +52,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const { loading, tableRef } = this.asProps;
     if (prevProps.loading !== loading) {
       if (loading) {
+        const activeElement = document.activeElement; // need to define it here because of FF
         setTimeout(() => {
-          if ((tableRef.current && hasParent(document.activeElement, tableRef.current))) {
+          if ((tableRef.current && hasParent(activeElement, tableRef.current))) {
             tableRef.current?.focus();
           }
         });
