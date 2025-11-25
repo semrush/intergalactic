@@ -80,13 +80,13 @@ class DropdownMenuRoot extends AbstractDropdown {
     const options = menuElement.querySelectorAll(
       '[role="menuitemcheckbox"], [role="menuitemradio"]',
     );
-    const selected = menuElement.querySelector('[aria-checked="true"]');
+    const selected = menuElement.querySelector('[aria-checked="true"]:not([disabled])');
 
     return { selected, options };
   }
 
   focusAndScrollToSelected() {
-    const { selected, options } = this.menuElements;
+    let { selected, options } = this.menuElements;
 
     const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
@@ -229,7 +229,15 @@ class DropdownMenuRoot extends AbstractDropdown {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
-          const { highlightedIndex } = this.asProps;
+          let { highlightedIndex } = this.asProps;
+          const highlightedIndexProps = this.itemProps[highlightedIndex];
+
+          if (highlightedIndexProps?.disabled) {
+            highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+          }
+
+          if (highlightedIndex === -1) return;
+
           this.itemRefs[highlightedIndex]?.focus();
         }, 0);
 
