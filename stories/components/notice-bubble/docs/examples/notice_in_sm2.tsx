@@ -99,7 +99,6 @@ noticeContainer.style.setProperty('position', 'fixed');
 noticeContainer.style.setProperty('right', '20px');
 noticeContainer.style.setProperty('top', '20px');
 noticeContainer.style.setProperty('width', '300px');
-noticeContainer.style.setProperty('z-index', '9999');
 
 document.body.appendChild(noticeContainer);
 
