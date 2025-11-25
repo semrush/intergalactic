@@ -35,32 +35,38 @@ figma.connect(
       childrenHeader: figma.children('FullscreenModal.Header'),
       childrenFooter: figma.children('FullscreenModal.Footer'),
     },
-    example: ({ childrenHeader, childrenFooter }) => <FullscreenModal>
+    example: ({ childrenHeader, childrenFooter }) => (
+      <FullscreenModal>
         <FullscreenModal.Close />
-        <FullscreenModal.Back>{/* Add button label */}</FullscreenModal.Back>{childrenHeader}
+        <FullscreenModal.Back>{/* Add button label */}</FullscreenModal.Back>
+        {childrenHeader}
         <FullscreenModal.Body>{/* content */}</FullscreenModal.Body>
         {childrenFooter}
-  </FullscreenModal>,
+      </FullscreenModal>
+    ),
   },
 );
 
 figma.connect(
-    FullscreenModal,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11498-135869&t=8tFmR59x5n76jWX8-11',
-    {
-      variant: { 'dual-zone': 'true' },
-      props: {
-        childrenHeader: figma.children('FullscreenModal.Header'),
-        childrenFooter: figma.children('FullscreenModal.Footer'),
-      },
-      example: ({ childrenHeader, childrenFooter }) => <FullscreenModal>
-          <FullscreenModal.Close />
-          <FullscreenModal.Back>{/* Add button label */}</FullscreenModal.Back>{childrenHeader}
-          <FullscreenModal.Body>
-            <FullscreenModal.Section>{/* content */}</FullscreenModal.Section>
-            <FullscreenModal.Section>{/* content */}</FullscreenModal.Section>
-          </FullscreenModal.Body>
-          {childrenFooter}
-    </FullscreenModal>,
+  FullscreenModal,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11498-135869&t=8tFmR59x5n76jWX8-11',
+  {
+    variant: { 'dual-zone': 'true' },
+    props: {
+      childrenHeader: figma.children('FullscreenModal.Header'),
+      childrenFooter: figma.children('FullscreenModal.Footer'),
     },
-  );
+    example: ({ childrenHeader, childrenFooter }) => (
+      <FullscreenModal>
+        <FullscreenModal.Close />
+        <FullscreenModal.Back>{/* Add button label */}</FullscreenModal.Back>
+        {childrenHeader}
+        <FullscreenModal.Body>
+          <FullscreenModal.Section>{/* content */}</FullscreenModal.Section>
+          <FullscreenModal.Section>{/* content */}</FullscreenModal.Section>
+        </FullscreenModal.Body>
+        {childrenFooter}
+      </FullscreenModal>
+    ),
+  },
+);

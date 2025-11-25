@@ -21,6 +21,16 @@ figma.connect(
       text: figma.textContent('↳ text'),
       // icon: figma.children('Notice.Label'),
     },
-    example: ({ theme, title, text }) => <NoticeSmart aria-label={/* Add aria-label */} theme={theme} label={/* icon or illustration from the library */} title={title} actions={(/* add Buttons here */)}>{text}</NoticeSmart>,
-  }
+    example: ({ theme, title, text }) => (
+      <NoticeSmart
+        aria-label={/* Add aria-label */}
+        theme={theme}
+        label={/* icon or illustration from the library */}
+        title={title}
+        actions={/* add Buttons here */}
+      >
+        {text}
+      </NoticeSmart>
+    ),
+  },
 );

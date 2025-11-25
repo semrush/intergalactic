@@ -6,27 +6,27 @@ figma.connect(
   Pagination,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10270-109137',
   {
-    variant: {'select (# of rows)': false},
+    variant: { 'select (# of rows)': false },
     props: {
-      size: figma.enum('size', {L: 'l'})
+      size: figma.enum('size', { L: 'l' }),
     },
     example: (p) => (
-      <Pagination 
+      <Pagination
         size={p.size}
         currentPage={/* number */}
         totalPages={/* number */}
       />
     ),
-});
+  });
 
 figma.connect(
   Pagination,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10270-109137',
   {
-    variant: {'select (# of rows)': true},
+    variant: { 'select (# of rows)': true },
     props: {
-      size: figma.enum('size', {L: 'l'}),
-      ml: figma.enum('size', {M: 4, L: 5})
+      size: figma.enum('size', { L: 'l' }),
+      ml: figma.enum('size', { M: 4, L: 5 }),
     },
     example: (p) => (
       <Pagination
@@ -46,5 +46,4 @@ figma.connect(
         />
       </Pagination>
     ),
-});
-
+  });

@@ -1,26 +1,31 @@
 import figma from '@figma/code-connect';
-import Notice from '@semcore/ui/notice';
 import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 
-// TODO: When we add mappings for Notice, we can import Notice here, so I left import for Notice.
+// Default Select List
 
 figma.connect(
   Select.Menu,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111&t=TXEgCxM6iJO0FYiJ-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
   {
+    variant: { 'type': 'select list', 'search input': 'true' },
     props: {
+      size: figma.enum('size', {
+        M: 'm',
+        L: 'l',
+      }),
       searchInput: figma.boolean('search input', {
         true: <Select.InputSearch value={/* value */} onChange={/* onChange */} aria-describedby={/* aria-describedby */} />,
         false: undefined,
       }),
       notice: figma.boolean('notice ↓', {
-        true: figma.children('Item/Notice'),
+        true: figma.children('Notice'),
         false: undefined,
       }),
     },
 
-    example: ({ searchInput, notice }) => (
-      <Select.Popper aria-label='/* aria-label */'>
+    example: ({ searchInput, notice, size }) => (
+      <Select.Popper size={size} aria-label='/* Add your aria-label */'>
         {searchInput}
         <Select.List hMax={/* value */}>
           <Select.Option key={/* value */} value={/* value */}>
@@ -33,24 +38,57 @@ figma.connect(
   },
 );
 
+// figma.connect(
+//   Select.Menu,
+//   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
+//   {
+//     variant: { 'search input': 'false' },
+//     props: {
+//       size: figma.enum('size', {
+//         M: 'm',
+//         L: 'l',
+//       }),
+//       notice: figma.boolean('notice ↓', {
+//         true: figma.children('Notice'),
+//         false: undefined,
+//       }),
+//     },
+
+//     example: ({ notice, size }) => (
+//       <Select.Menu size={size} hMax={/* value */}>
+//         <Select.Option key={/* value */} value={/* value */}>
+//           {/* option */}
+//         </Select.Option>
+//         {notice}
+//       </Select.Menu>
+//     ),
+//   },
+// );
+
+// Country Select List
+
 figma.connect(
   Select.Menu,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16880&t=TXEgCxM6iJO0FYiJ-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
   {
+    variant: { 'type': 'select list (country)', 'search input': 'true' },
     props: {
+      size: figma.enum('size', {
+        M: 'm',
+        L: 'l',
+      }),
       notice: figma.boolean('notice ↓', {
-        true: figma.children('Item/Notice'),
+        true: figma.children('Notice'),
         false: undefined,
       }),
     },
 
-    example: ({ notice }) => (
-      <Select.Popper aria-label='/* aria-label */'>
+    example: ({ notice, size }) => (
+      <Select.Popper size={size} aria-label='/* Add your aria-label */'>
         <Select.InputSearch value={/* value */} onChange={/* onChange */} aria-describedby={/* aria-describedby */} />
         <Select.List hMax={/* value */}>
-          <Select.Option key={/* value */} value={/* value */}>
-            {/* option */}
-          </Select.Option>
+          {/* Options map */}
+          {/* Options length + ScreenReaderOnly */}
         </Select.List>
         {notice}
       </Select.Popper>
@@ -58,28 +96,35 @@ figma.connect(
   },
 );
 
+// Multiselect
+
 figma.connect(
   Select.Menu,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47966-8771&t=TXEgCxM6iJO0FYiJ-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
   {
+    variant: { type: 'multiselect' },
     props: {
+      size: figma.enum('size', {
+        M: 'm',
+        L: 'l',
+      }),
       searchInput: figma.boolean('search input', {
         true: <Select.InputSearch value={/* value */} onChange={/* onChange */} aria-describedby={/* aria-describedby */} />,
         false: undefined,
       }),
       notice: figma.boolean('notice ↓', {
-        true: figma.children('Item/Notice'),
+        true: figma.children('Notice'),
         false: undefined,
       }),
     },
 
-    example: ({ searchInput, notice }) => (
-      <Select.Popper aria-label='/* aria-label */'>
+    example: ({ searchInput, notice, size }) => (
+      <Select.Popper size={size} aria-label='/* Add your aria-label */'>
         {searchInput}
         <Select.Menu hMax={/* value */}>
           <Select.Option value='%all%'>
             <Text color='text-link'>
-              {(currentValue as any).length ? 'Deselect all' : 'Select all'}
+              {currentValue.length ? 'Deselect all' : 'Select all'}
             </Text>
           </Select.Option>
           <Select.Option value={/* value */} key={/* value */}>

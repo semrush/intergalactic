@@ -35,10 +35,10 @@ figma.connect(
     example: ({ theme, placement, text, title, actions }) => (
       <FeaturePopover theme={theme} placement={placement.placement}>
         <FeaturePopover.Trigger>
-          {`/* Add trigger */`}
+          {/* Add trigger */}
         </FeaturePopover.Trigger>
         <FeaturePopover.Popper
-          aria-label={`/* Add aria-label */`}
+          aria-label='/* Add aria-label */'
           closeIcon
           wMax={250}
         >

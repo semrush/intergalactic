@@ -2,7 +2,6 @@ import figma from '@figma/code-connect';
 import Select from '@semcore/ui/select';
 
 // TODO: Add addons
-
 // Select.Option/Default without hint
 
 figma.connect(

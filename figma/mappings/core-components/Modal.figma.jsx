@@ -9,9 +9,11 @@ figma.connect(
       title: figma.textContent('↳ title'),
       // children: figma.children('*'),
     },
-    example: ({ title }) => <Modal>
-    <Modal.Title mb={4}>{title}</Modal.Title>
-    {/* Place content here */}
-  </Modal>,
+    example: ({ title }) => (
+      <Modal>
+        <Modal.Title mb={4}>{title}</Modal.Title>
+        {/* Place content here */}
+      </Modal>
+    ),
   },
 );

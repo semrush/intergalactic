@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect/react';
 import { Flex } from '@semcore/ui/base-components';
+import MailSent from '@semcore/ui/illustration/MailSent';
 import { Text } from '@semcore/ui/typography';
-import MailSent from '@semcore/ui/illustration/MailSent'
 
 figma.connect(
   Flex,
@@ -12,12 +12,12 @@ figma.connect(
       children: figma.children('*'),
     },
     example: ({ text, children }) => (
-        <Flex direction='column' gap={4}>
-          <Text size={/* font size */} tag='p'>
-            {text}
-          </Text>
-          {children}
-        </Flex>
+      <Flex direction='column' gap={4}>
+        <Text size={/* font size */} tag='p'>
+          {text}
+        </Text>
+        {children}
+      </Flex>
     ) },
 );
 
@@ -51,12 +51,14 @@ figma.connect(
       text: figma.textContent('↳ text'),
       children: figma.children('*'),
     },
-    example: ({ text, children }) => <Flex direction='column' gap={4}>
-      <Text size={/* font size */} tag='p'>
-        {text}
-      </Text>
-      {children}
-    </Flex>,
+    example: ({ text, children }) => (
+      <Flex direction='column' gap={4}>
+        <Text size={/* font size */} tag='p'>
+          {text}
+        </Text>
+        {children}
+      </Flex>
+    ),
   },
 );
 
@@ -68,13 +70,15 @@ figma.connect(
       text: figma.textContent('↳ text'),
       childrenActions: figma.children('Button'),
     },
-    example: ({ text, childrenActions }) => <Flex direction='column' alignItems='center' gap={4}>
-      <MailSent />
-      <Text size={/* font size */} tag='p'>
-        {text}
-      </Text>
-      {childrenActions}
-    </Flex>,
+    example: ({ text, childrenActions }) => (
+      <Flex direction='column' alignItems='center' gap={4}>
+        <MailSent />
+        <Text size={/* font size */} tag='p'>
+          {text}
+        </Text>
+        {childrenActions}
+      </Flex>
+    ),
   },
 );
 
@@ -86,12 +90,14 @@ figma.connect(
       text: figma.textContent('↳ text'),
       children: figma.children('*'),
     },
-    example: ({ text, children }) => <Flex direction='column' gap={4}>
-      <Text size={/* font size */} tag='p'>
-        {text}
-      </Text>
-      {/* illustration */}
-      {children}
-    </Flex>,
+    example: ({ text, children }) => (
+      <Flex direction='column' gap={4}>
+        <Text size={/* font size */} tag='p'>
+          {text}
+        </Text>
+        {/* illustration */}
+        {children}
+      </Flex>
+    ),
   },
 );

@@ -25,7 +25,6 @@ export default defineConfig([
     'semcore/icon/**/*.mjs',
     'semcore/icon/**/*.js',
     'semcore/icon/**/*.d.ts',
-    'figma/**/*.figma.{tsx,jsx}',
   ]),
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
   pluginReact.configs.flat.recommended,
@@ -107,9 +106,15 @@ export default defineConfig([
     },
   },
   {
-    files: ['tools/**/*', 'website/**/*', 'stories/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
+    files: ['tools/**/*', 'website/**/*', 'stories/**/*', 'figma/src/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
     rules: {
       'no-console': 'off',
+    },
+  },
+  {
+    files: ['figma/mappings/**/Icon.figma.{jsx,tsx}'],
+    rules: {
+      'import/order': 'off',
     },
   },
 ]);

@@ -1,5 +1,7 @@
 import figma from '@figma/code-connect/react';
 import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import CloseM from '@semcore/ui/icon/Close/m';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 
@@ -49,7 +51,7 @@ figma.connect(
           <Input.Addon>
             <ButtonLink
               use='secondary'
-              addonLeft={/* CloseM */}
+              addonLeft={CloseM}
               title='Clear'
             />
           </Input.Addon>
@@ -148,7 +150,7 @@ figma.connect(
           {infoIcon}
           {optional}
         </Flex>
-          {input}
+        {input}
       </Flex>
     ),
   },

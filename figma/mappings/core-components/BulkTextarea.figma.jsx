@@ -1,7 +1,7 @@
-import figma from '@figma/code-connect/react';
+import figma from '@figma/code-connect';
+import { Flex } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/base-components';
 
 // add placeholder somehow, for now Figma Code Connect doesn't see placeholder
 
@@ -25,24 +25,26 @@ figma.connect(
       }),
     },
 
-    example: ({ size, readonly, label }) => <BulkTextarea
-    size={size}
-    readonly={readonly}
-    placeholder='/* Add your placeholder */'
-  >
-    <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-      <Text tag='label' size={/* font size */}>
-        {label}
-      </Text>
-      <BulkTextarea.Counter />
-    </Flex>
-    <BulkTextarea.InputField
-      commonErrorMessage={/* Add error message */}
-    />
-    <Flex alignItems='center' justifyContent='space-between' mt={2}>
-      <BulkTextarea.ErrorsNavigation />
-      <BulkTextarea.ClearAll />
-    </Flex>
-  </BulkTextarea>,
+    example: ({ size, readonly, label }) => (
+      <BulkTextarea
+        size={size}
+        readonly={readonly}
+        placeholder='/* Add your placeholder */'
+      >
+        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+          <Text tag='label' size={/* font size */}>
+            {label}
+          </Text>
+          <BulkTextarea.Counter />
+        </Flex>
+        <BulkTextarea.InputField
+          commonErrorMessage={/* Add error message */}
+        />
+        <Flex alignItems='center' justifyContent='space-between' mt={2}>
+          <BulkTextarea.ErrorsNavigation />
+          <BulkTextarea.ClearAll />
+        </Flex>
+      </BulkTextarea>
+    ),
   },
 );

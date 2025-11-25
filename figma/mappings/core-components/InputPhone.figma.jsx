@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect/react';
+import { Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Flag, { iso2Name } from '@semcore/ui/flags';
-import { Box } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
 
 // Need somehow to get the readOnly and disabled props from the Input component
@@ -94,7 +94,7 @@ figma.connect(
     example: ({ size, state, inputValue, clearButton }) => (
       <Input w='/* width */' size={size} state={state}>
         <Input.Addon>
-          <Flag iso2={/* value */} role='img' aria-label={/* {iso2Name['US']} */} />
+          <Flag iso2={/* value */} role='img' aria-label={iso2Name(/* value */)} />
         </Input.Addon>
         {inputValue}
         {clearButton}

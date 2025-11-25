@@ -1,5 +1,6 @@
 import figma from '@figma/code-connect';
 import { FeedbackRating } from '@semcore/ui/feedback-form';
+import Link from '@semcore/ui/link';
 
 // The base components are commented out because currently we are not rendering them separately from the FeedbackRating component
 
@@ -35,56 +36,63 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 // });
 
 figma.connect(
-    FeedbackRating,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
-        variant: { 'state': 'Notice' },
+  FeedbackRating,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
+    variant: { state: 'Notice' },
     props: {
-        // notificationTitle: figma.boolean('notification title', {
-        //     true: figma.textContent('↳ title'),
-        //     false: undefined,
-        // }),
-        // notificationText: figma.textContent('↳ text'),
-        learnMoreLink: figma.boolean('Learn more link', {
-            true: figma.children('Link'),
-            false: undefined,
-        }),
+      // notificationTitle: figma.boolean('notification title', {
+      //     true: figma.textContent('↳ title'),
+      //     false: undefined,
+      // }),
+      // notificationText: figma.textContent('↳ text'),
+      learnMoreLink: figma.boolean('Learn more link', {
+        true: figma.children('Link'),
+        false: undefined,
+      }),
     },
     example: ({ notificationTitle, notificationText, learnMoreLink }) => (
-        <FeedbackRating notificationTitle={/* notificationTitle */} notificationText={/* notificationText */} learnMoreLink={/*Set URL */} header={/* Add Modal title */} submitText={/* Add Modal submit button text */} formConfig={/* Add form config */}             description={
-            <>
-                We will only use this email to respond to you on your feedback.
-                {' '}
-                {learnMoreLink}
-            </>
-        }
-    />
-    )
-});
+      <FeedbackRating
+        notificationTitle={/* notificationTitle */}
+        notificationText={/* notificationText */}
+        learnMoreLink={/* Set URL */}
+        header={/* Add Modal title */}
+        submitText={/* Add Modal submit button text */}
+        formConfig={/* Add form config */}
+        description={(
+          <>
+            We will only use this email to respond to you on your feedback.
+            {' '}
+            {learnMoreLink}
+          </>
+        )}
+      />
+    ),
+  });
 
 figma.connect(
-    FeedbackRating,
-    'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
-    variant: { 'state': 'Form' },
+  FeedbackRating,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56115-298638&t=7CEXrbu9XEfMUFlr-11', {
+    variant: { state: 'Form' },
     props: {
-        header: figma.textContent('↳ title'),
+      header: figma.textContent('↳ title'),
     },
     example: ({ header }) => (
-        <FeedbackRating 
-            notificationTitle={/* notificationTitle */} 
-            notificationText={/* notificationText */} 
-            learnMoreLink={/* Set URL */} 
-            header={header} 
-            submitText={/* Add Modal submit button text */} 
-            formConfig={/* Add form config */}
-            description={
-                <>
-                    We will only use this email to respond to you on your feedback.
-                    {' '}
-                    <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
-                        Privacy Policy
-                    </Link>
-                </>
-            }
-        />
-    )
-});
+      <FeedbackRating
+        notificationTitle={/* notificationTitle */}
+        notificationText={/* notificationText */}
+        learnMoreLink={/* Set URL */}
+        header={header}
+        submitText={/* Add Modal submit button text */}
+        formConfig={/* Add form config */}
+        description={(
+          <>
+            We will only use this email to respond to you on your feedback.
+            {' '}
+            <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
+              Privacy Policy
+            </Link>
+          </>
+        )}
+      />
+    ),
+  });

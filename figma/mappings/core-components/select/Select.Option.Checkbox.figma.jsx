@@ -2,6 +2,7 @@ import figma from '@figma/code-connect';
 import Select from '@semcore/ui/select';
 
 // TODO: Add addons
+// Select.Option.Checkbox without hint
 
 figma.connect(
   Select.Option,
@@ -25,6 +26,8 @@ figma.connect(
     ),
   },
 );
+
+// Select.Option.Checkbox with hint
 
 figma.connect(
   Select.Option,

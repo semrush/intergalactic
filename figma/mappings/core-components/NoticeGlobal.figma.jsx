@@ -13,15 +13,17 @@ figma.connect(
         '🟠 warning': 'warning',
         '🔴 danger': 'danger',
       }),
-    //   closable: figma.boolean('closable'), // commented because don't want to show this prop by default
+      //   closable: figma.boolean('closable'), // commented because don't want to show this prop by default
       content: figma.textContent('↳ text'),
       actions: figma.children('Button'),
     },
-    example: ({ theme, content, actions }) => <NoticeGlobal theme={theme}>
-      <NoticeGlobal.Content gap={2} alignItems='center'>
-        {content}
-        {actions}
-      </NoticeGlobal.Content>
-    </NoticeGlobal>,
-  }
+    example: ({ theme, content, actions }) => (
+      <NoticeGlobal theme={theme}>
+        <NoticeGlobal.Content gap={2} alignItems='center'>
+          {content}
+          {actions}
+        </NoticeGlobal.Content>
+      </NoticeGlobal>
+    ),
+  },
 );

@@ -8,10 +8,12 @@ figma.connect(
     props: {
       title: figma.textContent('↳ title'),
     },
-    example: ({title}) => <SidePanel.Header>
-    <SidePanel.Back>{/* Add button label */}</SidePanel.Back>
-    <SidePanel.Title>{title}</SidePanel.Title>
-  </SidePanel.Header>,
+    example: ({ title }) => (
+      <SidePanel.Header>
+        <SidePanel.Back>{/* Add button label */}</SidePanel.Back>
+        <SidePanel.Title>{title}</SidePanel.Title>
+      </SidePanel.Header>
+    ),
   },
 );
 
@@ -22,7 +24,7 @@ figma.connect(
     props: {
       children: figma.children('Button'),
     },
-    example: ({children}) => <SidePanel.Footer justifyContent='center' pt={2}>{children}</SidePanel.Footer>,
+    example: ({ children }) => <SidePanel.Footer justifyContent='center' pt={2}>{children}</SidePanel.Footer>,
   },
 );
 
@@ -31,14 +33,17 @@ figma.connect(
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11578-136509&t=8tFmR59x5n76jWX8-11',
   {
     props: {
-        childrenHeader: figma.children('SidePanel.Header'),
-        childrenFooter: figma.children('SidePanel.Footer'),
+      childrenHeader: figma.children('SidePanel.Header'),
+      childrenFooter: figma.children('SidePanel.Footer'),
     },
-    example: ({ childrenHeader, childrenFooter }) => <SidePanel aria-label='{/* Add your aria-label */}'>
+    example: ({ childrenHeader, childrenFooter }) => (
+      <SidePanel aria-label='{/* Add your aria-label */}'>
         <SidePanel.Close />
-        <SidePanel.Back>{/* Add button label */}</SidePanel.Back>{childrenHeader}
+        <SidePanel.Back>{/* Add button label */}</SidePanel.Back>
+        {childrenHeader}
         <SidePanel.Body>{/* content */}</SidePanel.Body>
         {childrenFooter}
-  </SidePanel>,
+      </SidePanel>
+    ),
   },
 );

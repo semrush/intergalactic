@@ -1,11 +1,11 @@
 import figma from '@figma/code-connect';
-import Select from '@semcore/ui/select';
 import { Flex } from '@semcore/ui/base-components';
+import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { '← addon': 'false', 'addon →': 'false', 'icon only': 'false' },
     props: {
@@ -22,7 +22,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
     },
     example: (props) => <Select options={/* options */} {...props} />,
   },
@@ -30,7 +32,7 @@ figma.connect(
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { 'icon only': 'false' },
     props: {
@@ -67,7 +69,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
     },
     example: ({ size, addonLeft, addonRight, content, state, loading, disabled }) => {
       <Select options={/* options */} size={size} state={state} loading={loading} disabled={disabled} placeholder={/* placeholder */}>
@@ -88,7 +92,7 @@ figma.connect(
 
 figma.connect(
   Select.Trigger,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&t=UlTa6oEFj0Vk1UAt-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10171-91601&',
   {
     variant: { 'icon only': 'true' },
     props: {
@@ -105,7 +109,9 @@ figma.connect(
       disabled: figma.enum('state', {
         disabled: true,
       }),
-      loading: figma.boolean('loading'),
+      loading: figma.enum('state', {
+        loading: true,
+      }),
       title: figma.textContent('↳ title'),
     },
     example: ({ size, addonLeft, state, loading, disabled, title }) => (
@@ -149,16 +155,16 @@ figma.connect(
         true: figma.children('Info icon with tooltip (Informer)'),
         false: undefined,
       }),
-    },  
+    },
     example: ({ label, input, optional, counter, infoIcon }) => (
       <Flex direction='column' gap={2}>
-        <Flex direction='row' justifyContent='space-between'>
-        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-          {label}
-        </Text>
-        {counter}
-        {infoIcon}
-        {optional}
+        <Flex justifyContent='space-between'>
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
         </Flex>
         {input}
       </Flex>
@@ -190,16 +196,16 @@ figma.connect(
         true: figma.children('Info icon with tooltip (Informer)'),
         false: undefined,
       }),
-    },  
+    },
     example: ({ label, input, optional, counter, infoIcon }) => (
-      <Flex direction='row' gap={6}>
+      <Flex gap={6}>
         <Flex direction='column' mt={/* value */}>
-        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-          {label}
-        </Text>
-        {counter}
-        {infoIcon}
-        {optional}
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
         </Flex>
         {input}
       </Flex>

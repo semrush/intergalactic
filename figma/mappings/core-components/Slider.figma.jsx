@@ -1,4 +1,5 @@
 import figma from '@figma/code-connect/react';
+import { Flex } from '@semcore/ui/base-components';
 import Slider from '@semcore/ui/slider';
 
 figma.connect(
@@ -6,7 +7,7 @@ figma.connect(
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10272-140147&t=57sa2Koua22LmcsR-11',
   {
     example: () => <Slider.Knob />,
-  }
+  },
 );
 
 figma.connect(
@@ -14,7 +15,7 @@ figma.connect(
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11441-126125&t=57sa2Koua22LmcsR-11',
   {
     example: () => <Slider.Bar />,
-  }
+  },
 );
 
 figma.connect(
@@ -29,7 +30,7 @@ figma.connect(
       }),
     },
     example: ({ disabled, options }) => <Slider disabled={disabled} options={options} />,
-  }
+  },
 );
 
 figma.connect(
@@ -40,14 +41,16 @@ figma.connect(
       disabled: figma.boolean('disabled'),
       input: figma.children('InputNumber'),
     },
-    example: ({ disabled, input }) => <Flex gap={4}>
-      <Slider
-        disabled={disabled}
-      >
-        <Slider.Bar />
-        <Slider.Knob />
-      </Slider>
-      {input}
-  </Flex>,
-  }
+    example: ({ disabled, input }) => (
+      <Flex gap={4}>
+        <Slider
+          disabled={disabled}
+        >
+          <Slider.Bar />
+          <Slider.Knob />
+        </Slider>
+        {input}
+      </Flex>
+    ),
+  },
 );
