@@ -11,6 +11,8 @@ import {
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import StackedBarMockData from '../../../__mocks__/stacked-bar';
+
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
@@ -34,7 +36,7 @@ const Demo = () => {
       .map((item, index) => {
         return {
           id: item,
-          label: `Category ${item}`,
+          label: `Category ${index + 1}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
@@ -114,11 +116,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(5).keys()].map((d, i) => ({
-  bar: `Bar ${i + 1}`,
-  1: Math.random() * 5,
-  2: Math.random() * 5,
-  3: Math.random() * 5,
-}));
+const data = StackedBarMockData.ThreeBars;
 
 export default Demo;

@@ -32,17 +32,22 @@ const dataToLzCompressedJson = (data) => {
   return base64;
 };
 
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation, mockData: mockDataEncoded } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean, mockData: String })
 const htmlCode = computed(() => {
   let code = atob(codeEncoded!);
   return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code>');
 });
+
 const codesandboxUrl = computed(() => {
-  let code = rawCode;
+  const code = rawCode;
   const dependencies = {};
-  const lines = code!.split('\n');
+  const codeWithMockData = mockData ? `${rawCode}\n${mockData}` : rawCode;
+  const lines = codeWithMockData.split('\n');
+
   for (const line of lines) {
     for (const quote of ["'", '"']) {
+      if (line.includes(`from ${quote}./mock${quote}`)) continue;
+
       const importStatementStart = line.indexOf(`from ${quote}`);
       if (importStatementStart === -1) continue;
       if (line[importStatementStart - 1] !== ' ' && importStatementStart !== 0) continue;
@@ -100,6 +105,11 @@ root.render(<App />);
       'src/App.tsx': {
         content: code + '\n\nexport const App = () => <Demo />;\n',
       },
+      ...(mockData && ({
+        'src/mock.ts': {
+          content: mockData,
+        }
+      }))
     },
   });
 
@@ -108,6 +118,7 @@ root.render(<App />);
 
 let rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
+const mockData = mockDataEncoded && atob(mockDataEncoded);
 
 let reactRoot;
 

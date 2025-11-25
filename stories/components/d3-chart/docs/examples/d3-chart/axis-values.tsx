@@ -2,6 +2,8 @@ import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const Demo = () => {
   const MARGIN = 60;
   const width = 500;
@@ -32,11 +34,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: (Math.random() > 0.5 ? 1 : -1) * Math.random(),
-  }));
+const data = LineMockData.Default.map((d) => ({ ...d, y: d.y >= 5 ? d.y / 10 : -(d.y / 10) }));
 
 export default Demo;

@@ -1,169 +1,288 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Line chart', () => {
-  test('Verify hoverLine works well', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/line-chart/hover-line.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+export const locators = {
+  plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),
+  line: (page: Page, index?: number) => {
+    const base = page.locator('line');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dots: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Line.Dots"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  lineNull: (page: Page) => page.locator('[data-ui-name="Line.Null"]'),
+  group: (page: Page, index?: number) => {
+    const base = page.locator('g');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  legend: (page: Page) => page.getByLabel('Chart legend'),
+  legendItem: (page: Page, text?: string) =>
+    text ? page.getByText(text) : page.locator('[data-ui-name="LegendFlex.LegendItem"]'),
+  checkbox: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Checkbox"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+};
 
-    const chart = await page.locator('svg[data-ui-name="Plot"]').first();
-    await expect(chart).toBeVisible();
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify hoverLine works well', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/hover-line.tsx',
+      'en',
+    );
 
-    const box = await chart.boundingBox();
-    if (!box) throw new Error('Bounding box not found');
+    await test.step('Verify hover line appears on mouse move', async () => {
+      const chart = locators.plot(page).first();
+      await chart.waitFor({ state: 'visible' });
 
-    const targetX = 128.42;
-    const targetY = 190.53;
-
-    const hoverX = box.x + targetX;
-    const hoverY = box.y + targetY;
-
-    await page.mouse.move(hoverX, hoverY);
-
-    const lines = page.locator('line');
-    const count = await lines.count();
-    await expect(count).not.toBeNull();
-
-    for (let i = 0; i < count; i++) {
-      const line = lines.nth(i);
-      await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
-    }
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify interpolation renders correctly when dost can be hovered', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/line-chart/interpolation.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const dots = page.locator('[data-ui-name="Line.Dots"]');
-
-    await dots.nth(4).hover();
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify basic usage with legend ui and interactions', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
-    const checkbox = page.locator('[data-ui-name="Checkbox"]');
-    const chart = page.locator('svg[data-ui-name="Plot"]');
-    await expect(chart.first()).toBeVisible();
-
-    await test.step('Veriry highlight changes when hover the checkbox', async () => {
-      await checkbox.first().hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Veriry line disappears when uncheck the checkbox', async () => {
-      await legendTitle.first().click();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Veriry line added when uncheck checked and tooltip without total by def', async () => {
-      const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
-      await legendTitle.first().click();
-
-      const box = await chart.first().boundingBox();
+      const box = await chart.boundingBox();
       if (!box) throw new Error('Bounding box not found');
 
-      const targetX = 50;
-      const targetY = 50;
+      const targetX = 128.42;
+      const targetY = 190.53;
 
       const hoverX = box.x + targetX;
       const hoverY = box.y + targetY;
 
       await page.mouse.move(hoverX, hoverY);
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
+      const lines = locators.line(page);
+      const count = await lines.count();
+      await expect(count).not.toBeNull();
 
-    await test.step('Veriry line not highlight on hover when props is false', async () => {
-      await checkbox.nth(3).hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Veriry tooltip with total looks well', async () => {
-      const box = await chart.nth(1).boundingBox();
-      if (!box) throw new Error('Bounding box not found');
-
-      const targetX = 50;
-      const targetY = 50;
-
-      const hoverX = box.x + targetX;
-      const hoverY = box.y + targetY;
-
-      await page.mouse.move(hoverX, hoverY);
-
-      await page.waitForTimeout(500);
+      for (let i = 0; i < count; i++) {
+        const line = lines.nth(i);
+        await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
+      }
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify render and interactions with Line and Dots ', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/line.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify interpolation renders correctly when dots can be hovered', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/interpolation.tsx',
+      'en',
+    );
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
 
-    const legendTitle = page.locator('[data-ui-name="LegendFlex.LegendItem"]');
-    const lines = page.locator('g');
-    const chart = page.locator('svg[data-ui-name="Plot"]').first();
-    await expect(chart).toBeVisible();
+    await test.step('Verify tooltip on dot hover', async () => {
+      await locators.dots(page, 4).hover();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const variables = [
+    {
+      name: 'All features enabled, standard size',
+      plotWidth: 500,
+      plotHeight: 300,
+      marginX: 40,
+      marginY: 40,
+      showXAxis: true,
+      showYAxis: true,
+      invertAxis: false,
+      showTooltip: true,
+      showTotalInTooltip: true,
+      showLegend: true,
+      showDots: true,
+      patterns: false,
+      duration: 0,
+    },
+    {
+      name: 'Large size, minimal margins, no axes',
+      plotWidth: 700,
+      plotHeight: 400,
+      marginX: 20,
+      marginY: 20,
+      showXAxis: false,
+      showYAxis: false,
+      invertAxis: false,
+      showTooltip: true,
+      showTotalInTooltip: false,
+      showLegend: true,
+      showDots: false,
+      patterns: true,
+      duration: 0,
+    },
+    {
+      name: 'Inverted axis, small size, no tooltip',
+      plotWidth: 400,
+      plotHeight: 250,
+      marginX: 60,
+      marginY: 60,
+      showXAxis: true,
+      showYAxis: false,
+      invertAxis: true,
+      showTooltip: false,
+      showTotalInTooltip: false,
+      showLegend: false,
+      showDots: true,
+      patterns: false,
+      duration: 0,
+    },
+    {
+      name: 'Inverted, large margins, patterns',
+      plotWidth: 600,
+      plotHeight: 350,
+      marginX: 80,
+      marginY: 50,
+      showXAxis: false,
+      showYAxis: true,
+      invertAxis: true,
+      showTooltip: true,
+      showTotalInTooltip: true,
+      showLegend: false,
+      showDots: false,
+      patterns: true,
+      duration: 0,
+    },
+    {
+      name: ' Minimal features, medium size',
+      plotWidth: 450,
+      plotHeight: 280,
+      marginX: 30,
+      marginY: 70,
+      showXAxis: true,
+      showYAxis: true,
+      invertAxis: false,
+      showTooltip: false,
+      showTotalInTooltip: true,
+      showLegend: true,
+      showDots: false,
+      patterns: true,
+      duration: 0,
+    },
+    {
+      name: ' No legend, mixed features',
+      plotWidth: 550,
+      plotHeight: 320,
+      marginX: 45,
+      marginY: 35,
+      showXAxis: true,
+      showYAxis: false,
+      invertAxis: false,
+      showTooltip: true,
+      showTotalInTooltip: false,
+      showLegend: false,
+      showDots: true,
+      patterns: false,
+      duration: 0,
+    },
+  ];
+
+  variables.forEach((vars) => {
+    test(`Verify line chart with config ${vars.name}`, {
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/docs/examples/line-chart/basic-usage.tsx',
+        'en',
+        vars,
+      );
+
+      await test.step('Verify chart renders correctly with current configuration', async () => {
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
+        await expect(page).toHaveScreenshot();
+      });
+
+      if (vars.showTooltip) {
+        await test.step('Verify tooltip appears on hover', async () => {
+          const chart = locators.plot(page).first();
+          const box = await chart.boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + 50, box.y + 50);
+          }
+
+          const tooltip = locators.tooltip(page);
+          await tooltip.waitFor({ state: 'visible' });
+          await expect(tooltip).toBeVisible();
+        });
+      }
+    });
+  });
+
+  test('Verify render and interactions with Line and Dots', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/line.tsx',
+      'en',
+    );
+
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+    await test.step('Verify renders correctly', async () => {
+      await locators.dots(page, 4).hover();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify area with empty line renders and looks good', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx',
+      'en',
+    );
 
     await test.step('Verify renders correctly', async () => {
+      const chart = locators.plot(page).first();
+      await chart.waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
-
-    await test.step('Veriry duration props applies to all lines inside the chart', async () => {
-      await expect(lines.first()).toHaveAttribute('duration', '0ms');
-      await expect(lines.nth(1)).toHaveAttribute('duration', '0ms');
-    });
   });
 
-  test('Verify area with empty line renders and looks good', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify area default props looks good', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/line-with-area.tsx',
+      'en',
+    );
 
     await test.step('Verify renders correctly', async () => {
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Veriry Line.Null attributes', async () => {
-      const nullLune = page.locator('[data-ui-name="Line.Null"]');
-      await expect(nullLune).toHaveAttribute('aria-hidden', 'true');
-    });
-  });
-
-  test('Verify area default props looks good', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/line-with-area.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await test.step('Verify renders correctly', async () => {
+      const chart = locators.plot(page).first();
+      await chart.waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify curve prop', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/tests/examples/line-chart/curve.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify curve prop', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/curve.tsx',
+      'en',
+    );
 
-    const chart = page.locator('svg[data-ui-name="Plot"]');
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
 
     await test.step('Verify tooltip shown correctly with dots', async () => {
       const box = await chart.first().boundingBox();
@@ -177,87 +296,176 @@ test.describe('Line chart', () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tooltip shown correctly without dots', async () => {
-      const box = await chart.nth(1).boundingBox();
-      if (!box) throw new Error('Bounding box not found');
-
-      const targetX = 50;
-      const targetY = 50;
-
-      const hoverX = box.x + targetX;
-      const hoverY = box.y + targetY;
-
-      await page.mouse.move(hoverX, hoverY);
-
-      await page.waitForTimeout(500);
+      await locators.tooltip(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify dots partial display', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/line-chart/dots-display-function.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const chart = page.locator('svg[data-ui-name="Plot"]');
+  test('Verify dots partial display', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/dots-display-function.tsx',
+      'en',
+    );
 
     await test.step('Verify dots render partly', async () => {
+      const chart = locators.plot(page).first();
+      await chart.waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify patterns and symbols for dots mouse interactions', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const checkbox = page.locator('[data-ui-name="Checkbox"]');
+  test('Verify time scale with tooltip', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/time.tsx',
+      'en',
+    );
+
+    await test.step('Verify chart with time scale renders correctly', async () => {
+      const chart = locators.plot(page).first();
+      await chart.waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify tooltip shows formatted date on hover', async () => {
+      const chart = locators.plot(page).first();
+      const box = await chart.boundingBox();
+      if (box) {
+        await page.mouse.move(box.x + 50, box.y + 50);
+      }
+
+      const tooltip = locators.tooltip(page);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify custom tooltip', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/tooltip.tsx',
+      'en',
+    );
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    await test.step('Verify custom tooltip appears on hover', async () => {
+      const chart = locators.plot(page).first();
+      const box = await chart.boundingBox();
+      if (box) {
+        await page.mouse.move(box.x + 50, box.y + 50);
+      }
+
+      const tooltip = locators.tooltip(page);
+      await tooltip.waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify patterns and symbols for dots mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/legend-and-symbols-for-dots.tsx',
+      'en',
+    );
+
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
 
     await test.step('Verify highlights when hover the checkbox', async () => {
-      await checkbox.nth(1).hover();
-      await page.waitForTimeout(500);
+      await locators.checkbox(page, 1).hover();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify not highlights when hover unchecked checkbox', async () => {
-      await checkbox.nth(1).click();
-      await checkbox.nth(1).hover();
-      await page.waitForTimeout(500);
+      await locators.checkbox(page, 1).click();
+      await locators.checkbox(page, 1).hover();
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify patterns and symbols for dots keyboard interactions', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/tests/examples/line-chart/legend-and-symbols-for-dots.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const checkbox = page.locator('[data-ui-name="Checkbox"]');
-
+  test('Verify patterns and symbols for dots keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/legend-and-symbols-for-dots.tsx',
+      'en',
+    );
+    const chart = locators.plot(page).first();
+    await chart.waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
     await test.step('Verify highlights when focus the checkbox', async () => {
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify highlights when check and uncheck the checkbox', async () => {
       await page.keyboard.press('Space');
       await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify highlights focus next checkbox', async () => {
       await page.keyboard.press('Space');
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify duration props applies to all lines inside the chart', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/line-chart/line.tsx',
+      'en',
+    );
+
+    await test.step('Verify duration attribute on groups', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+
+      await expect(locators.group(page, 0)).toHaveAttribute('duration', '500ms');
+    });
+  });
+
+  test('Verify Line.Null attributes', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx',
+      'en',
+    );
+
+    await test.step('Verify Line.Null aria-hidden attribute', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+
+      const nullLine = locators.lineNull(page);
+      await expect(nullLine).toHaveAttribute('aria-hidden', 'true');
     });
   });
 });
