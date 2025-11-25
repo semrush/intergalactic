@@ -1,6 +1,8 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const Demo = () => {
   return (
     <Chart.Line
@@ -14,12 +16,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    line1: Math.random() * 10,
-    line2: Math.random() * 10,
-  }));
+const data = LineMockData.TwoLines;
 
 export default Demo;

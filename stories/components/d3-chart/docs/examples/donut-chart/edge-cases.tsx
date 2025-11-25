@@ -1,6 +1,8 @@
 import { Plot, Donut } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import DonutMockData from '../../../__mocks__/donut';
+
 const Demo = () => {
   return (
     <Plot width={300} height={300} data={data}>
@@ -14,10 +16,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  a: 0,
-  b: 0,
-  c: 0,
-};
+const data = DonutMockData.EdgeCase;
 
 export default Demo;

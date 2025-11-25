@@ -1,18 +1,12 @@
 import { Plot, RadialTree } from '@semcore/ui/d3-chart';
-import LikeM from '@semcore/ui/icon/Like/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
+
+import RadialMockData from '../../../__mocks__/radial';
 
 const Demo = () => {
   const width = 500;
   const height = 500;
-
-  const data = Array(12)
-    .fill({})
-    .map((_, i) => ({
-      label: `Sheep ${i + 1}`,
-      icon: LikeM,
-    }));
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
@@ -28,5 +22,7 @@ const Demo = () => {
     </Plot>
   );
 };
+
+const data = RadialMockData.Default;
 
 export default Demo;
