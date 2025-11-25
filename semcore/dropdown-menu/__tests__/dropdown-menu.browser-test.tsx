@@ -475,11 +475,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await deleteButton4.hover();
       await page.getByText('Delete item').waitFor({ state: 'visible' });
-      if (browserName == 'chromium') {
-        await expect(page).toHaveScreenshot();
-      } else {
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-      }
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
 
     await test.step('Verify menu not closed by click on addon', async () => {
