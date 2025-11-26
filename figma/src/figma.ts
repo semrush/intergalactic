@@ -78,6 +78,10 @@ interface Figma {
   selectedInstance?: InstanceHandle;
 };
 
+/**
+ * Dummy figma object. See full info on
+ * [Template V2 API](https://developers.figma.com/docs/code-connect/template-v2-api/)
+ */
 export const figma: Figma = {
   tsx: () => '',
 };

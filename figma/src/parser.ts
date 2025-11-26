@@ -15,8 +15,7 @@ const prepare = (content: string) => {
     .replace(/import.*figma.*/, '')
     .replace('var settings =', 'export default')
     .replace(/\s*export\s*{.*};?/s, '')
-    .replace('example: `', 'example: figma.tsx`')
-    .replace('example = `', 'example = figma.tsx`')}`;
+    .replaceAll(' `', ' figma.tsx`')}`;
 };
 
 const stdin = JSON.parse(fs.readFileSync(0, 'utf-8')) as { paths: string[] };
