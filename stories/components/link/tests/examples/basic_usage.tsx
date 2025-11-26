@@ -8,6 +8,8 @@ type BasicLinkProps = LinkProps & BoxProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
+  href?: string;
+  title?: string;
 };
 
 const Demo = (props: BasicLinkProps) => {
