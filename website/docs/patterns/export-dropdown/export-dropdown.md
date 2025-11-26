@@ -1,5 +1,5 @@
 ---
-title: Export
+title: Export dropdown
 ---
 
 ## Description
@@ -26,7 +26,7 @@ To add the data export, provide a button that users can click to initiate immedi
 - The export button opens a dropdown menu with the export form.
 
 ::: tip
-Remember to add an aria-label for the button with no text.
+Remember to add an `aria-label` for the [button with no text](/components/button/button-code#icon-only-button).
 :::
 
 ### Expanded version
@@ -45,7 +45,7 @@ For time-consuming processes, the button gets a loading state. The recommended s
 ## Dropdown
 
 - Clicking the export trigger opens the dropdown. The trigger gets an `active` state.
-- The dropdown content may comprise various components, depending on the product. It should include at least two download buttons.
+- The dropdown content may include various components, depending on the product case. **But we recommend including at least two download buttons there.**
 - The dropdown's width and height adjust based on the content.
 
 ## Compact dropdown
@@ -61,15 +61,14 @@ When exporting is feasible in at least two formats with no additional settings, 
 
 ## Export with settings
 
-![](static/dropdown-2.png)
+![](static/dropdown.png)
 
 - Include the title "Export Data" in this dropdown version.
 - For exporting to one or two formats, use full format names on buttons (for example, "Export to CSV").
 - For three formats, use shortened format names (for example, "CSV" instead of "Export to CSV").
-- If there's no data available for all export parameters and settings, avoid disabling the buttons.
 
 ::: tip
-Additional controls can also be added to the dropdown.
+If there's no data available for all export parameters and settings, avoid disabling the buttons
 :::
 
 ### Postponed export
@@ -119,9 +118,7 @@ For error messages, employ the following text: "Please try again later. If the p
 
 For the compact dropdown version, use a [NoticeBubble](/components/notice-bubble/notice-bubble) for such errors.
 
-![](static/export-error-2.png)
-
-![](static/export-error-1.png)
+![](static/export-error.png)
 
 ### Limit
 
@@ -129,9 +126,7 @@ For limit messages, display a [Notice](/components/notice/notice) at the dropdow
 
 Users can access all settings, allowing them to explore export options that may necessitate an upgrade. However, the export buttons remain disabled.
 
-![](static/export-limit-2.png)
-
-![](static/export-limit-1.png)
+![](static/export-limit.png)
 
 ### Loading
 
