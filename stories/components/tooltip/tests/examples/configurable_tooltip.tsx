@@ -1,7 +1,6 @@
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
 import FileExportM from '@semcore/ui/icon/FileExport/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
 import type { TooltipProps, TooltipHintProps, DescriptionTooltipProps } from '@semcore/ui/tooltip';
@@ -22,7 +21,7 @@ type ConfigurableTooltipProps = {
 
   // DescriptionTooltip props
   descriptionTheme?: DescriptionTooltipProps['theme'];
-  descriptionInteraction?: DescriptionTooltipProps['interaction'] | 'focus' | 'none';
+  descriptionInteraction?: DescriptionTooltipProps['interaction'];
 };
 
 const Demo = (props: ConfigurableTooltipProps) => {
