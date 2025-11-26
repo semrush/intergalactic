@@ -52,6 +52,16 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
+  /**
+   * TODO: It needs to be reconsidered in a future implementation so that component accepts items as a prop instead of JSX.
+   * Tab index recalculation flag.
+   *
+   * When an item becomes disabled while highlighted, we need to transfer focus
+   * to the next available focusable item. This flag ensures the focus lock
+   * remains within proper boundaries during the initial render cycle.
+  */
+  shouldRecalculateItemTabIndex = false;
+
   uncontrolledProps() {
     return {
       ...super.uncontrolledProps(),
@@ -173,14 +183,34 @@ class DropdownMenuRoot extends AbstractDropdown {
     };
   }
 
-  getItemProps(props, index) {
-    const { disabled } = props;
+  getItemTabIndex(props, itemIndex) {
+    const { disabled, index } = props;
     const { highlightedIndex, visible } = this.asProps;
+
+    if (!visible) return -1;
+
+    const isHighlighted = (index ?? itemIndex) === highlightedIndex;
+    if (isHighlighted && !disabled) {
+      return 0;
+    }
+
+    if (disabled && isHighlighted) {
+      this.shouldRecalculateItemTabIndex = true;
+    }
+
+    if (!isHighlighted && !disabled && this.shouldRecalculateItemTabIndex) {
+      this.shouldRecalculateItemTabIndex = false;
+      return 0;
+    }
+
+    return -1;
+  }
+
+  getItemProps(props, index) {
     const realIndex = props.index ?? index;
-    const isHighlighted = realIndex === highlightedIndex;
     const itemProps = {
       ...super.getItemProps(props, realIndex),
-      tabIndex: isHighlighted && visible && !disabled ? 0 : -1,
+      tabIndex: this.getItemTabIndex(props, index),
       ref: (node) => this.itemRef(props, realIndex, node),
       actionsRef: this.actionsRef,
     };
