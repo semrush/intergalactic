@@ -1,121 +1,141 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Blockquote - Visual', () => {
-  test('Verify Blockquote looks good with and without author props', async ({ page }) => {
-    const standPath = 'stories/components/typography/tests/examples/blockquote.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
+  blockquote: (page: Page, index?: number) => {
+    const base = page.locator('blockquote');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  cite: (page: Page, index?: number) => {
+    const base = page.locator('cite');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  list: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="List"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  listItem: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="List.Item"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  listMarker: (page: Page, index?: number) => {
+    const base = page.locator('span[class*="SMarker"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
 
-    await page.setContent(htmlContent);
-    const blockquotes = await page.locator('blockquote');
+/* =====================================================
+@visual
+Visual states, styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify Blockquote looks good with and without author props', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/tests/examples/blockquote.tsx', 'en');
 
-    await expect(blockquotes).toHaveCount(2);
+    await test.step('Verify visual appearance', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify first blockquote margins', async () => {
+      await expect(locators.blockquote(page, 0)).toHaveCSS('margin-top', '18px');
+      await expect(locators.blockquote(page, 0)).toHaveCSS('margin-bottom', '18px');
+    });
 
-    for (let i = 0; i < 2; i++) {
-      const blockquote = blockquotes.nth(i);
-      await expect(blockquote).not.toBeEmpty();
-    }
+    await test.step('Verify second blockquote margins', async () => {
+      await expect(locators.blockquote(page, 1)).toHaveCSS('margin-top', '20px');
+      await expect(locators.blockquote(page, 1)).toHaveCSS('margin-bottom', '20px');
+    });
 
-    await expect(blockquotes.first()).toHaveCSS('margin-top', '18px');
-    await expect(blockquotes.first()).toHaveCSS('margin-bottom', '18px');
-
-    await expect(blockquotes.nth(1)).toHaveCSS('margin-top', '20px');
-    await expect(blockquotes.nth(1)).toHaveCSS('margin-bottom', '20px');
-
-    const cite = blockquotes.nth(0).locator('cite');
-    await expect(cite).toHaveText('Roy Batty');
-
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify cite element content', async () => {
+      const cite = locators.blockquote(page, 0).locator('cite');
+      await expect(cite).toHaveText('Roy Batty');
+    });
   });
-});
 
-test.describe('List- Visual', () => {
-  test('Verify List supports custom marker and Item content ', async ({ page }) => {
-    const standPath = 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
+  test('Verify List supports custom marker and Item content', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx', 'en');
 
-  const formatTags = [
-    { formatTags: true },
-    { formatTags: false },
-  ];
-
-  formatTags.forEach((item) => {
-    test(`Verify format text nested lists with formatTags = ${item.formatTags} `, async ({ page }) => {
-      const standPath = 'stories/components/typography/docs/examples/formattext-nested-lists.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    await test.step('Verify custom bullets visual', async () => {
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify List with custom bullets ', async ({ page }) => {
-    const standPath = 'stories/components/typography/docs/examples/list-with-custom-content.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify nested list and default marked ', async ({ page }) => {
-    const standPath = 'stories/components/typography/tests/examples/nested-list.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const list = await page.locator('ul[data-ui-name="List"]').first();
-    await expect(list).toHaveAttribute('role', 'list');
-
-    const listItems = await page.locator('li[data-ui-name="List.Item"]');
-    for (let i = 0; i < (await listItems.count()); i++) {
-      await expect(listItems.nth(i)).toHaveAttribute('role', 'listitem');
-    }
-
-    const markers = await page.locator('span[class*="SMarker"]');
-
-    await expect(markers).toHaveCount((await listItems.count()) - 1);
-
-    for (let i = 0; i < (await markers.count()); i++) {
-      await expect(markers.nth(i)).toHaveAttribute('aria-hidden', 'true');
-    }
-
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Text - Visual', () => {
-  test('Verify text styles with tags', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/typography/docs/examples/text-styles.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Additional information styles', async ({
-    page,
-  }) => {
-    const standPath = 'stories/components/typography/docs/examples/additional-information.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
-
   const formatTags = [
     { formatTags: true },
     { formatTags: false },
   ];
 
   formatTags.forEach((item) => {
-    test(`Verify Native typography tags with formatTags=${item.formatTags} `, async ({ page }) => {
-      const standPath = 'stories/components/typography/docs/examples/native-typography-tags.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify format text nested lists with formatTags=${item.formatTags}`, {
+      tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/docs/examples/formattext-nested-lists.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
+      await test.step('Verify nested lists visual', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
+
+  test('Verify List with custom bullets', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-content.tsx', 'en');
+
+    await test.step('Verify custom content visual', async () => {
       await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify nested list and default marker', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/tests/examples/nested-list.tsx', 'en');
+
+    await test.step('Verify nested list visual', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify text styles with tags', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/text-styles.tsx', 'en');
+
+    await test.step('Verify text styles visual', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Additional information styles', {
+    tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/additional-information.tsx', 'en');
+
+    await test.step('Verify additional info visual', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const nativeFormatTags = [
+    { formatTags: true },
+    { formatTags: false },
+  ];
+
+  nativeFormatTags.forEach((item) => {
+    test(`Verify Native typography tags with formatTags=${item.formatTags}`, {
+      tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/docs/examples/native-typography-tags.tsx', 'en', item);
+
+      await test.step('Verify native tags visual', async () => {
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
@@ -152,31 +172,70 @@ test.describe('Text - Visual', () => {
       .map(([key, value]) => `${key}=${value}`)
       .join(', ');
 
-    test(title, async ({ page }) => {
-      const standPath =
-        'stories/components/typography/tests/examples/text-with-diff-combimations.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(title, {
+      tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/tests/examples/text-with-diff-combimations.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
+      await test.step('Verify text props combination visual', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
+
+  test('Verify counter in limits', {
+    tag: [TAG.PRIORITY_LOW, '@counter', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_in_limits.tsx', 'en');
+
+    await test.step('Verify counter limits visual', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify counter and typography', {
+    tag: [TAG.PRIORITY_LOW, '@counter', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/counter/docs/examples/counter_and_typography.tsx', 'en');
+
+    await test.step('Verify counter typography visual', async () => {
       await expect(page).toHaveScreenshot();
     });
   });
 });
 
-test.describe('Counter and typograohy', () => {
-  test('Verify counter in limits', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_in_limits.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`@typography ${TAG.FUNCTIONAL}`, () => {
+  test('Verify nested list structure and accessibility', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/tests/examples/nested-list.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-  });
+    await test.step('Verify list has role attribute', async () => {
+      const list = locators.list(page, 0).locator('ul').first();
+      await expect(list).toHaveAttribute('role', 'list');
+    });
 
-  test('Verify counter and typoghraphy', async ({ page }) => {
-    const standPath = 'stories/components/counter/docs/examples/counter_and_typography.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await test.step('Verify list items have role attribute', async () => {
+      const listItemsCount = await locators.listItem(page).count();
+      for (let i = 0; i < listItemsCount; i++) {
+        await expect(locators.listItem(page, i)).toHaveAttribute('role', 'listitem');
+      }
+    });
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify markers count and attributes', async () => {
+      const listItemsCount = await locators.listItem(page).count();
+      const markersCount = await locators.listMarker(page).count();
+
+      await expect(locators.listMarker(page)).toHaveCount(listItemsCount - 1);
+
+      for (let i = 0; i < markersCount; i++) {
+        await expect(locators.listMarker(page, i)).toHaveAttribute('aria-hidden', 'true');
+      }
+    });
   });
 });
