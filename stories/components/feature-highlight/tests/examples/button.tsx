@@ -1,0 +1,81 @@
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import type { ButtonProps } from '@semcore/ui/button';
+import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
+import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
+import React from 'react';
+
+export type ButtonFHAdvancedProps = ButtonProps & {
+  buttonText?: string;
+  showBadge?: boolean;
+  badgeText?: string;
+  animatedSparkleCount?: number;
+  showIcon?: boolean;
+  use?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'm' | 'l';
+  disabled?: boolean;
+  loading?: boolean;
+  active?: boolean;
+};
+
+const Demo = (props: ButtonFHAdvancedProps) => {
+  const {
+    buttonText = 'Primary Large',
+    showBadge = false,
+    badgeText = 'AI-powered',
+    animatedSparkleCount = 5,
+    showIcon = true,
+    use = 'primary',
+    size = 'l',
+    disabled = false,
+    loading = false,
+    active = false,
+  } = props;
+
+  return (
+    <>
+      <Flex flexWrap gap={4}>
+        <ButtonFH
+          aria-describedby='button-aria-desc'
+          use={use}
+          addonLeft={showIcon ? SummaryAI : undefined}
+          size={size}
+          disabled={disabled}
+          loading={loading}
+          active={active}
+        >
+          {showBadge
+            ? (
+                <>
+                  <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
+                  <ButtonFH.Text>{buttonText}</ButtonFH.Text>
+                  <ButtonFH.Addon>
+                    <BadgeFH>{badgeText}</BadgeFH>
+                  </ButtonFH.Addon>
+                </>
+              )
+            : (
+                buttonText
+              )}
+        </ButtonFH>
+        <ScreenReaderOnly id='button-aria-desc'>Powered by AI</ScreenReaderOnly>
+      </Flex>
+    </>
+  );
+};
+
+export const defaultProps: ButtonFHAdvancedProps = {
+  buttonText: 'Primary Large',
+  showBadge: false,
+  badgeText: 'AI-powered',
+  animatedSparkleCount: 5,
+  showIcon: true,
+  use: 'primary',
+  size: 'l',
+  disabled: false,
+  loading: false,
+  active: false,
+};
+
+Demo.defaultProps = defaultProps;
+
+export default Demo;
