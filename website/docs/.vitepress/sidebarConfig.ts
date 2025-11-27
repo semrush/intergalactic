@@ -756,9 +756,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'ProjectSelect',
           },
           {
-            link: '/patterns/success-state/success-state',
-            activeMatch: '/patterns/success-state/',
-            text: 'Success state',
+            link: '/patterns/success-message/success-message',
+            activeMatch: '/patterns/success-message/',
+            text: 'Success message',
           },
           {
             link: '/patterns/summary/summary',
