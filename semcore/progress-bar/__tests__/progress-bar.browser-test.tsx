@@ -1,21 +1,28 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@playwright/test';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
-  const variables = [
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variablesCustomization = [
     { theme: 'invert', size: 's' },
     { theme: 'dark', size: 'm' },
     { theme: 'violet-100', size: 'l' },
   ];
-  variables.forEach((item) => {
-    test(`Verify progress bar customization with size= ${item.size}  and theme= e= ${item.theme}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+  variablesCustomization.forEach((item) => {
+    test(`Verify progress bar customization with size=${item.size} and theme=${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify progress bar visual with keyboard focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
@@ -25,70 +32,64 @@ test.describe('Visual', () => {
     { value: 50, size: 'l' },
   ];
   variablesProgressValue.forEach((item) => {
-    test(`Verify progress bar customization with value= ${item.value}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    test(`Verify progress bar with value=${item.value} and size=${item.size}`, {
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify progress bar visual with keyboard focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
-  const variablesValueValue = [
-    { value: 0 },
-    { value: 110 },
-    { value: 50 },
+  const variablesValueCustomization = [
+    { value: 0, theme: 'inviolet-500', size: 's' },
+    { value: 110, theme: 'violet-100', size: 'm' },
+    { value: 50, theme: 'violet-100', size: 'l' },
   ];
-  variablesValueValue.forEach((item) => {
-    test(`Verify progress bar value customization with value= ${item.value}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+  variablesValueCustomization.forEach((item) => {
+    test(`Verify progress bar value customization with value=${item.value}, size=${item.size}, theme=${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify progress bar value visual with keyboard focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
-  const variablesValue = [
-    { theme: 'inviolet-500', size: 's' },
-    { theme: 'violet-100', size: 'm' },
-    { theme: 'violet-100', size: 'l' },
-  ];
-  variablesValue.forEach((item) => {
-    test(`Verify progress bar value customization with size= ${item.size} theme= ${item.theme}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+  test('Verify progress bar and value customization', {
+    tag: [TAG.PRIORITY_MEDIUM, '@progress-bar'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/progress-bar/docs/examples/customizing_the_bar.tsx', 'en');
 
-      await page.setContent(htmlContent);
-
+    await test.step('Verify progress bar and value customization visual', async () => {
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
-  });
-
-  test('Verify progress bar and value customization', async ({ page }) => {
-    const standPath = 'stories/components/progress-bar/docs/examples/customizing_the_bar.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify keyboard interactions and attributes', async ({ page }) => {
-    const standPath = 'stories/components/progress-bar/docs/examples/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  const locators = {
+    progressBar: (page: Page) => page.locator('[data-ui-name="ProgressBar"]'),
+  };
 
-    await page.setContent(htmlContent);
+  test('Verify keyboard interactions and attributes', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@progress-bar'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/progress-bar/docs/examples/basic-usage.tsx', 'en');
 
-    const progressBar = page.locator('[data-ui-name="ProgressBar"]');
+    const progressBar = locators.progressBar(page);
 
     await test.step('Verify attributes', async () => {
       await expect(progressBar).toHaveAttribute('role', 'progressbar');
@@ -99,7 +100,7 @@ test.describe('Functional', () => {
       await expect(progressBar).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify focus on ptogress bar by tab', async () => {
+    await test.step('Verify focus on progress bar by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(progressBar).toBeFocused();
     });
