@@ -156,7 +156,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         const outline = page.locator('[class*="SOutline"]');
 
-        if (!item.disabled || item.state !== 'normal') {
+        if (item.disabled || item.state !== 'normal') {
           await test.step('Verify disabled or invalid state', async () => {
             await expect(page).toHaveScreenshot();
           });
@@ -299,7 +299,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/radio.tsx', 'en', item);
 
-        const radio = locators.radioGroup(page);
         const radioMark = locators.radioMark(page);
 
         if (item.disabled || item.state !== 'normal') {
