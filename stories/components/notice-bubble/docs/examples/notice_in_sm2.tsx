@@ -81,8 +81,9 @@ const Demo = (props: BaseNoticeBubbleProps) => {
       <Button onClick={handleClickSuccess} ref={openButtonRef2}>
         Show success notice
       </Button>
+      {' '}
       <Button onClick={handleClickReplace} ref={replaceButtonRef}>
-        replace last success
+        Replace last success
       </Button>
       <NoticeBubbleContainer manager={manager} containerNode={containerNode} />
       <NoticeBubbleContainer manager={manager2} containerNode={containerNode} />
