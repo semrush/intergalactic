@@ -104,8 +104,7 @@ class DropdownMenuRoot extends AbstractDropdown {
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
 
-    // this case is handled slightly differently on line 63.
-    if (selected && options && this.asProps.itemsCount === undefined) return;
+    if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
   }
