@@ -6,7 +6,6 @@ import ConfigurableTooltipExample, {
   defaultProps as ConfigurableTooltipProps,
 } from './examples/configurable_tooltip';
 import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
-import TooltipStatesExample from './examples/tooltip-styles';
 import ValidationErrorsExample from './examples/validation-error';
 
 const meta: Meta<typeof Tooltip> = {
@@ -72,10 +71,6 @@ export const ConfigurableTooltip: StoryObj<typeof ConfigurableTooltipProps> = {
 
 export const InteractiveInTooltips: Story = {
   render: InteractiveInTooltipsExample,
-};
-
-export const TooltipStates: Story = {
-  render: TooltipStatesExample,
 };
 
 export const TooltipInteractions: Story = {

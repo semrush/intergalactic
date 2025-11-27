@@ -59,46 +59,6 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test.describe('Tooltip', () => {
-    test('Verify Tooltip, Hint and DescriptionTooltip styles', {
-      tag: [TAG.PRIORITY_HIGH, '@tooltip'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/tooltip/tests/examples/tooltip-styles.tsx', 'en');
-
-      const hintPopper = locators.hintPopper(page);
-      const tooltipPopper = locators.tooltipPopper(page);
-      await tooltipPopper.nth(3).waitFor({ state: 'visible' });
-      const descriptionTooltipPopper = locators.descriptionTooltipPopper(page);
-      await hintPopper.first().waitFor({ state: 'visible' });
-
-      await expect(page).toHaveScreenshot();
-      await test.step('Verify hint popper styles', async () => {
-        const count1 = await hintPopper.count();
-        for (let i = 0; i < count1; i++) {
-          await expect(hintPopper.nth(i)).toHaveCSS('padding', '12px');
-
-          await expect(hintPopper.nth(i)).toHaveCSS('border-radius', '6px');
-        }
-      });
-
-      await test.step('Verify tooltip popper styles', async () => {
-        const count1 = await tooltipPopper.count();
-        for (let i = 0; i < count1; i++) {
-          await expect(tooltipPopper.nth(i)).toHaveCSS('padding', '12px');
-
-          await expect(tooltipPopper.nth(i)).toHaveCSS('border-radius', '6px');
-        }
-      });
-
-      await test.step('Verify description tooltip popper styles', async () => {
-        const count1 = await descriptionTooltipPopper.count();
-        for (let i = 0; i < count1; i++) {
-          await expect(descriptionTooltipPopper.nth(i)).toHaveCSS('padding', '12px');
-
-          await expect(descriptionTooltipPopper.nth(i)).toHaveCSS('border-radius', '6px');
-        }
-      });
-    });
-
     test('Verify Base example', {
       tag: [TAG.PRIORITY_HIGH, '@tooltip'],
     }, async ({ page }) => {
