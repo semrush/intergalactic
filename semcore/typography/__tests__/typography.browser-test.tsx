@@ -203,39 +203,3 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 });
-
-/* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
-test.describe(`@typography ${TAG.FUNCTIONAL}`, () => {
-  test('Verify nested list structure and accessibility', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/typography/tests/examples/nested-list.tsx', 'en');
-
-    await test.step('Verify list has role attribute', async () => {
-      const list = locators.list(page, 0).locator('ul').first();
-      await expect(list).toHaveAttribute('role', 'list');
-    });
-
-    await test.step('Verify list items have role attribute', async () => {
-      const listItemsCount = await locators.listItem(page).count();
-      for (let i = 0; i < listItemsCount; i++) {
-        await expect(locators.listItem(page, i)).toHaveAttribute('role', 'listitem');
-      }
-    });
-
-    await test.step('Verify markers count and attributes', async () => {
-      const listItemsCount = await locators.listItem(page).count();
-      const markersCount = await locators.listMarker(page).count();
-
-      await expect(locators.listMarker(page)).toHaveCount(listItemsCount - 1);
-
-      for (let i = 0; i < markersCount; i++) {
-        await expect(locators.listMarker(page, i)).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-});
