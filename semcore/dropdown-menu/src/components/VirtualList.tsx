@@ -67,7 +67,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
     const SBar = ScrollAreaComponent.Bar;
 
     const { scrollDirection, scrollTop } = this.state;
-    const { rows, rowHeight, rowsBuffer, styles, renderRow, customData } = this.asProps;
+    const { rows, rowHeight, rowsBuffer, styles, renderRow: RenderRow, customData } = this.asProps;
 
     const offsetHeight = 0;
     const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 6;
@@ -99,7 +99,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
           <ScrollAreaComponent.Container tabIndex={undefined} h={rows.length * rowHeight}>
             <Box h={rowMarginTop} />
             {rowsToRender.map((item, index) => {
-              return renderRow({ row: item, index: startIndex + index, data: customData });
+              return <RenderRow key={startIndex + index} row={item} index={startIndex + index} data={customData} />;
             })}
             <Box h={rowMarginBottom} />
           </ScrollAreaComponent.Container>
