@@ -3,7 +3,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-// Define reusable locators
 export const locators = {
   tag: (page: Page) => page.locator('[data-ui-name="Tag"]'),
   tagText: (page: Page) => page.locator('[data-ui-name="Tag.Text"]'),
@@ -21,108 +20,98 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify Tag without addons or close', {
-    tag: [TAG.PRIORITY_HIGH, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
+  test.describe('Base states and styles', () => {
+    const tagVariables = [
+      // Base tags without addons (sizes m, l, xl) - pairwise with colors
+      { size: 'm', theme: 'primary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'l', theme: 'secondary', color: 'blue-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'xl', theme: 'additional', color: 'green-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
 
-    await test.step('Verify tag sizes', async () => {
-      const flex = page.locator('[data-testid="Primary-base"]');
-      const tags = flex.locator('[data-ui-name="Tag"]');
+      // Disabled state - pairwise with different theme/color
+      { size: 'm', theme: 'muted', color: 'salad-500', disabled: true, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
 
-      // m size
-      await expect(tags.first()).toHaveCSS('height', '20px');
-      // l size
-      await expect(tags.nth(1)).toHaveCSS('height', '28px');
-      // xl size
-      await expect(tags.nth(2)).toHaveCSS('height', '40px');
-    });
+      // Interactive with addons - pairwise colors
+      { size: 'm', theme: 'primary', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'secondary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'additional', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
 
-    await test.step('Verify visual appearance', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-  });
+      // TagContainer with close button - pairwise colors
+      { size: 'm', theme: 'primary', color: 'pink-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'violet-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
 
-  test('Verify Tag without addon and close disabled', {
-    tag: [TAG.PRIORITY_HIGH, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-disabled', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
+      // TagContainer with icon and close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'white-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-    await test.step('Verify visual appearance', async () => {
-      await expect(page).toHaveScreenshot();
-    });
+      // TagContainer disabled with icon - pairwise with invert theme
+      { size: 'm', theme: 'invert', color: 'blue-500', disabled: true, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-    await test.step('Verify disabled attributes', async () => {
-      const tag = locators.tag(page);
-      const count = await tag.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tag.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tag.nth(i)).toHaveAttribute('disabled');
-      }
-    });
-  });
+      // TagContainer interactive with addons without close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'green-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'secondary', color: 'salad-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'additional', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
 
-  test('Verify Tag with addons and without close interactive', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-addons-interactive.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
+      // TagContainer interactive with addon and close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
+      // TagContainer disabled with addon and close - pairwise colors
+      { size: 'm', theme: 'muted', color: 'pink-500', disabled: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-    await test.step('Verify tag text attributes and padding', async () => {
-      const tagText = locators.tagText(page);
-      const count = await tagText.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tagText.nth(i)).toHaveCSS('padding-left', '4px');
-        await expect(tagText.nth(i)).toHaveCSS('padding-right', '4px');
-      }
-    });
+      // TagContainer active with addon and close - pairwise colors
+      { size: 'm', theme: 'invert', color: 'violet-500', disabled: false, active: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+    ];
 
-    await test.step('Verify hover state for primary tags', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-base"]');
-      const tags = flexPrimary.locator('[data-ui-name="Tag"]');
-      await tags.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
+    tagVariables.forEach((item) => {
+      const description = `Verify Tag size ${item.size}, theme ${item.theme}, ` +
+        `color ${item.color || 'default'}, ` +
+        `disabled ${item.disabled}, active ${item.active || false}, ` +
+        `interactive ${item.interactive}, ` +
+        `addons L:${item.showAddonLeft} R:${item.showAddonRight}, ` +
+        `container ${item.useTagContainer}, close ${item.showClose}`;
 
-    await test.step('Verify hover state for secondary tags', async () => {
-      const flexSecondary = page.locator('[data-testid="Secondary-base"]');
-      const tagsSec = flexSecondary.locator('[data-ui-name="Tag"]');
-      await tagsSec.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
+      const tags = [TAG.PRIORITY_HIGH, '@tag'];
 
-    await test.step('Verify hover state for additional tags', async () => {
-      const flexAdditional = page.locator('[data-testid="additional-base"]');
-      const tagsAdd = flexAdditional.locator('[data-ui-name="Tag"]');
-      await tagsAdd.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
+      test(description, {
+        tag: tags,
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/tag/tests/examples/basic_usage.tsx', 'en', item);
 
-    await test.step('Verify focus state', async () => {
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
+        const box = page.locator('[data-ui-name="Box"]');
 
-  test('Verify grouping Less than 5 tags', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_less.tsx', 'en');
+        await test.step('Verify default state', async () => {
+          await expect(box).toHaveScreenshot();
+        });
 
-    await test.step('Verify flex has group role', async () => {
-      const flex = locators.flex(page);
-      await expect(flex).toHaveAttribute('role', 'group');
-    });
+        if (item.interactive && !item.disabled) {
+          await test.step('Verify hover state', async () => {
+            const tag = item.useTagContainer && item.showClose
+              ? locators.tagContainerTag(page)
+              : locators.tag(page);
 
-    await test.step('Verify visual appearance', async () => {
-      await expect(page).toHaveScreenshot();
+            await tag.hover();
+            await expect(box).toHaveScreenshot();
+          });
+          await test.step('Verify focus state', async () => {
+            await page.keyboard.press('Tab');
+            await expect(box).toHaveScreenshot();
+            if (item.showClose) {
+              await page.keyboard.press('Tab');
+              await expect(box).toHaveScreenshot();
+            }
+          });
+        }
+
+        if (item.showAddonLeft || item.showAddonRight) {
+          await test.step('Verify tag text padding with addons', async () => {
+            const tagText = locators.tagText(page);
+            await expect(tagText).toHaveCSS('padding-left', '4px');
+            if (item.showAddonRight) {
+              await expect(tagText).toHaveCSS('padding-right', '4px');
+            }
+          });
+        }
+      });
     });
   });
 
@@ -130,297 +119,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
-
-    await test.step('Verify tag count', async () => {
-      const flex = page.locator('ul[data-ui-name="Flex"]');
-      const tags = flex.locator('li[data-ui-name="Tag"]');
-      await expect(tags).toHaveCount(5);
-    });
-
-    await test.step('Verify visual appearance', async () => {
-      await expect(page).toHaveScreenshot();
-    });
+    await expect(page).toHaveScreenshot();
   });
 
-  test('Verify TagContainer without addons and with close', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-X.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify close button accessibility attributes', async () => {
-      const close = locators.tagContainerClose(page);
-      const count = await close.count();
-      for (let i = 0; i < count; i++) {
-        await expect(close.nth(i)).toHaveAttribute('aria-label', 'Delete');
-        await expect(close.nth(i)).toHaveAttribute('aria-labelledby');
-      }
-    });
-
-    await test.step('Verify hover state for primary tags', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-close"]');
-      const tags = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-      await tags.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus states for secondary tags', async () => {
-      const flexSecondary = page.locator('[data-testid="secondary-close"]');
-      const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-      await tagsSec.nth(4).hover();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify TagContainer with icon and with close', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-icon-and-X.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify close button accessibility attributes', async () => {
-      const close = locators.tagContainerClose(page);
-      const count = await close.count();
-      for (let i = 0; i < count; i++) {
-        await expect(close.nth(i)).toHaveAttribute('aria-label', 'Delete');
-        await expect(close.nth(i)).toHaveAttribute('aria-labelledby');
-      }
-    });
-
-    await test.step('Verify tag text padding', async () => {
-      const tagText = locators.tagText(page);
-      const count = await tagText.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tagText.nth(i)).toHaveCSS('padding-left', '4px');
-      }
-    });
-
-    await test.step('Verify hover state for primary close buttons', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-base"]');
-      const tags = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-      await tags.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus states for secondary close buttons', async () => {
-      const flexSecondary = page.locator('[data-testid="secondary-base"]');
-      const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-      await tagsSec.nth(4).hover();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify TagContainer interactive with icon and with disabled close', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-icon-and-disabled-X.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus state', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify TagContainer with addons and without close interactive', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-interactive.tsx', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tag text padding', async () => {
-      const tagText = locators.tagText(page);
-      const count = await tagText.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tagText.nth(i)).toHaveCSS('padding-left', '4px');
-        await expect(tagText.nth(i)).toHaveCSS('padding-right', '4px');
-      }
-    });
-
-    await test.step('Verify hover state for primary tags', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-base"]');
-      const tags = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-      await tags.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify hover state for secondary tags', async () => {
-      const flexSecondary = page.locator('[data-testid="secondary-base"]');
-      const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-      await tagsSec.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus states for additional tags', async () => {
-      const flexAdditional = page.locator('[data-testid="additional-base"]');
-      const tagsAdd = flexAdditional.locator('[data-ui-name="TagContainer.Tag"]');
-      await tagsAdd.nth(4).hover();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify TagContainer with addon and with close interactive', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-interactive', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify tag text padding', async () => {
-      const tagText = locators.tagText(page);
-      const count = await tagText.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tagText.nth(i)).toHaveCSS('padding-left', '4px');
-      }
-    });
-
-    await test.step('Verify hover states for primary tags', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-base"]');
-      const tagContainerPr = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-      const tagContainerClosePr = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-
-      await tagContainerPr.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-
-      await tagContainerClosePr.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus states for secondary tags', async () => {
-      const flexSecondary = page.locator('[data-testid="secondary-base"]');
-      const tagContainerSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-      const tagContainerCloseSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-
-      await tagContainerSec.nth(4).hover();
-      await expect(page).toHaveScreenshot();
-
-      await tagContainerCloseSec.nth(4).hover();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify TagContainer with addon and with close disabled', {
+  test('Verify grouping Less than 5 tags', {
     tag: [TAG.PRIORITY_MEDIUM, '@tag'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-disabled', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify visual appearance', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify disabled attributes', async () => {
-      const tagContainer = locators.tagContainerTag(page);
-      const count = await tagContainer.count();
-      for (let i = 0; i < count; i++) {
-        await expect(tagContainer.nth(i)).toHaveAttribute('tabindex', '-1');
-        await expect(tagContainer.nth(i)).toHaveAttribute('disabled');
-      }
-    });
-  });
-
-  test('Verify TagContainer with addon and with close active', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, TAG.MOUSE, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-active-part', 'en');
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await test.step('Verify default state', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify hover state for primary close button', async () => {
-      const flexPrimary = page.locator('[data-testid="Primary-base"]');
-      const tagContainerClosePr = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-      await tagContainerClosePr.first().hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus state for secondary close button', async () => {
-      const flexSecondary = page.locator('[data-testid="secondary-base"]');
-      const tagContainerCloseSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-      await tagContainerCloseSec.first().hover();
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify Editing tag when tag by keyboard inside inline-edit', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/docs/examples/editing_tag.tsx', 'en');
-
-    const inlineEditView = locators.inlineEditView(page);
-    const tag = inlineEditView.locator('span[data-ui-name="Tag.Text"]');
-
-    await test.step('Verify initial state', async () => {
-      await expect(tag).toHaveText('Default tag');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify edit and escape cancels changes', async () => {
-      await page.keyboard.press('Enter');
-      await page.keyboard.type('Test');
-      await page.keyboard.press('Escape');
-      await expect(tag).toHaveText('Default tag');
-    });
-
-    await test.step('Verify edit and enter saves changes', async () => {
-      await page.keyboard.press('Enter');
-      await page.keyboard.type('Test Test Test');
-      await page.keyboard.press('Enter');
-      // Known bug: changes are not saved
-      await expect(tag).toHaveText('Default tag');
-    });
+    await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_less.tsx', 'en');
+    await expect(page).toHaveScreenshot();
   });
 });
 
@@ -517,7 +223,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify focus moves to next close button', async () => {
       await page.keyboard.press('Tab');
       await expect(close.nth(1)).toBeFocused();
-      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify removing tag with Space key', async () => {

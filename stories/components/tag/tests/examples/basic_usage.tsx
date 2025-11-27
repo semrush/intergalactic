@@ -1,20 +1,16 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/ui/icon/Check/m';
 import CloseM from '@semcore/ui/icon/Close/m';
-import Tag from '@semcore/ui/tag';
+import Tag, { TagContainer } from '@semcore/ui/tag';
+import type { TagProps } from '@semcore/ui/tag';
 import React from 'react';
-
-export type BasicTagProps = {
+export type BasicTagProps = TagProps & {
   text?: string;
   disabled?: boolean;
-  active?: boolean;
-  interactive?: boolean;
-  theme?: 'primary' | 'secondary' | 'muted' | 'invert';
-  color?: string;
-  size?: 'xl' | 'l' | 'm';
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  locale?: string;
+  showClose?: boolean;
+  useTagContainer?: boolean;
 };
 
 export const defaultProps: BasicTagProps = {
@@ -27,10 +23,12 @@ export const defaultProps: BasicTagProps = {
   size: 'm',
   showAddonLeft: false,
   showAddonRight: false,
+  showClose: false,
+  useTagContainer: false,
   locale: undefined,
 };
 
-const Demo: React.FC<BasicTagProps> = ({
+const Demo = ({
   text = defaultProps.text,
   disabled = defaultProps.disabled,
   active = defaultProps.active,
@@ -40,10 +38,44 @@ const Demo: React.FC<BasicTagProps> = ({
   size = defaultProps.size,
   showAddonLeft = defaultProps.showAddonLeft,
   showAddonRight = defaultProps.showAddonRight,
+  showClose = defaultProps.showClose,
+  useTagContainer = defaultProps.useTagContainer,
   locale,
-}) => {
+}: BasicTagProps) => {
+  if (useTagContainer && showClose) {
+    return (
+      <Box style={{ backgroundColor: '#8b9bddff' }} m={3} p={3}>
+        <TagContainer
+          disabled={disabled}
+          active={active}
+          interactive={interactive}
+          theme={theme}
+          color={color}
+          size={size}
+          locale={locale}
+        >
+          <TagContainer.Tag>
+            {showAddonLeft && (
+              <Tag.Addon>
+                <CheckM />
+              </Tag.Addon>
+            )}
+            <Tag.Text>{text}</Tag.Text>
+            {showAddonRight && (
+              <Tag.Addon>
+                <CloseM />
+              </Tag.Addon>
+            )}
+          </TagContainer.Tag>
+          <TagContainer.Close />
+        </TagContainer>
+      </Box>
+    );
+  }
+
   return (
-    <Flex>
+    <Box style={{ backgroundColor: '#8b9bddff' }} m={3} p={3}>
+
       <Tag
         disabled={disabled}
         active={active}
@@ -65,7 +97,7 @@ const Demo: React.FC<BasicTagProps> = ({
           </Tag.Addon>
         )}
       </Tag>
-    </Flex>
+    </Box>
   );
 };
 
