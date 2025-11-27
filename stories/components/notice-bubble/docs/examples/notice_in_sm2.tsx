@@ -97,8 +97,8 @@ const noticeContainer = document.createElement('div');
 noticeContainer.id = 'notice-bubble-container';
 
 noticeContainer.style.setProperty('position', 'fixed');
-noticeContainer.style.setProperty('right', '20px');
-noticeContainer.style.setProperty('top', '20px');
+noticeContainer.style.setProperty('right', 'var(--intergalactic-spacing-3x, 12px)');
+noticeContainer.style.setProperty('top', 'var(--intergalactic-spacing-3x, 12px)');
 noticeContainer.style.setProperty('width', '300px');
 noticeContainer.style.setProperty('z-index', '50');
 
