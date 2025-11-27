@@ -1,8 +1,9 @@
 import figma from '@figma/code-connect/react';
-import { Box } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Flag, { iso2Name } from '@semcore/ui/flags';
 import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
 
 // Need somehow to get the readOnly and disabled props from the Input component
 // and pass it to the Input.Value component
@@ -130,6 +131,90 @@ figma.connect(
         {select}
         <Input w='/* width */' size={size} state={state}>{inputValue}</Input>
       </Box>
+    ),
+  },
+);
+
+// InputPhone with label
+
+figma.connect(
+  Input,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-1634&',
+  {
+    variant: { 'label position': 'top' },
+    props: {
+      label: figma.textContent('↳ label'),
+      input: figma.children('InputPhone'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
+    },
+    example: ({ label, input, optional, counter, infoIcon }) => (
+      <Flex direction='column' gap={2}>
+        <Flex direction='row' justifyContent='space-between'>
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
+        </Flex>
+        {input}
+      </Flex>
+    ),
+  },
+);
+
+figma.connect(
+  Input,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-1634&',
+  {
+    variant: { 'label position': 'left' },
+    props: {
+      label: figma.textContent('↳ label'),
+      input: figma.children('InputPhone'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
+    },
+    example: ({ label, input, optional, counter, infoIcon }) => (
+      <Flex direction='row' gap={6}>
+        <Flex direction='column' mt={/* value */}>
+          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+            {label}
+          </Text>
+          {counter}
+          {infoIcon}
+          {optional}
+        </Flex>
+        {input}
+      </Flex>
     ),
   },
 );
