@@ -1,9 +1,7 @@
 import Slider from '@semcore/ui/slider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import CustomizesOptionsViewExample from './examples/customized_options_view';
-import TextExample from './examples/different-types-states';
-import SliderWithOptionsExample from './examples/numeric_slider';
+import BasicPropsExample, { defaultProps } from './examples/basic_usage';
 
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider/Tests',
@@ -13,14 +11,33 @@ const meta: Meta<typeof Slider> = {
 export default meta;
 type Story = StoryObj<typeof Slider>;
 
-export const Text: Story = {
-  render: TextExample,
-};
-
-export const SliderWithOptions: Story = {
-  render: SliderWithOptionsExample,
-};
-
-export const CustomizesOptionsView: Story = {
-  render: CustomizesOptionsViewExample,
+export const BasicProps: StoryObj<typeof defaultProps> = {
+  args: defaultProps,
+  argTypes: {
+    value: {
+      control: { type: 'number' },
+    },
+    defaultValue: {
+      control: { type: 'number' },
+    },
+    min: {
+      control: { type: 'number' },
+    },
+    max: {
+      control: { type: 'number' },
+    },
+    step: {
+      control: { type: 'number' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    showKnob: {
+      control: { type: 'boolean' },
+    },
+    showBar: {
+      control: { type: 'boolean' },
+    },
+  },
+  render: BasicPropsExample,
 };
