@@ -1,8 +1,8 @@
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import type { RenderRowProps } from '@semcore/ui/dropdown-menu';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
+import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
 import { Flex } from '@semcore/ui/flex-box';
 import PlusM from '@semcore/ui/icon/MathPlus/m';
 import Pin from '@semcore/ui/icon/Pin/m';
@@ -14,7 +14,12 @@ import React from 'react';
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
 const listHeight = 200;
 
-const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void }>) => {
+type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & DropdownMenuItemHintProps & {
+  disabledAll?: boolean;
+  disabledFirstItem?: boolean;
+};
+
+const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void; disabledAll?: boolean; disabledFirstItem?: boolean }>) => {
   const projectName = projects[index];
 
   return (
@@ -22,6 +27,7 @@ const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: stri
       key={projectName}
       onClick={() => data.setProject(projectName, index)}
       selected={data.selected === projectName}
+      disabled={data.disabledAll || (index === 0 && data.disabledFirstItem)}
       index={index}
     >
       <DropdownMenu inlineActions placement='right'>
@@ -52,7 +58,7 @@ const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: stri
   );
 });
 
-const Demo = () => {
+const Demo = (props: ProjectSelectorProps) => {
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [selectedProject, setProject] = React.useState<string | null>('project 33');
@@ -74,6 +80,7 @@ const Demo = () => {
 
   return (
     <DropdownMenu
+      stretch={props.stretch}
       selectable
       itemsCount={projects.length}
       visible={visible}
@@ -92,9 +99,12 @@ const Demo = () => {
           rowHeight={52}
           renderRow={Row}
           rows={projects}
+
           customData={{
             setProject: handleSetProject,
             selected: selectedProject,
+            disabledAll: props.disabledAll,
+            disabledFirstItem: props.disabledFirstItem,
           }}
         />
         <Divider />
@@ -115,5 +125,13 @@ const Demo = () => {
     </DropdownMenu>
   );
 };
+
+export const defaultProps: ProjectSelectorProps = {
+  disabledAll: false,
+  disabledFirstItem: false,
+  stretch: undefined,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
