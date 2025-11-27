@@ -1343,6 +1343,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.menuitem(page, 0)).not.toBeFocused();
         await expect(locators.menuitem(page, 1)).toBeFocused();
       });
+
+      await test.step('Verify Tab not moves focus from the menu', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.menuitem(page, 1)).toBeFocused();
+      });
     });
 
     test('Verify focus skips first disabled item by mouse and arrow', {
@@ -1460,6 +1465,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify second nested item focused when first disabled', async () => {
         await expect(page.getByRole('menuitem', { name: 'Add' })).not.toBeFocused();
+        await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
+      });
+
+      await test.step('Verify Tab not moves focus from the menu', async () => {
+        await page.keyboard.press('Tab');
         await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
       });
     });
