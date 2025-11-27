@@ -1304,14 +1304,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         size: 'm',
         disabledAll: true,
       });
-
-      await test.step('Open menu', async () => {
+      await test.step('Verify no item is focused when all disabled', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.menuitem(page, 0).waitFor({ state: 'visible' });
-      });
-
-      await test.step('Verify no item is focused when all disabled', async () => {
         const count = await locators.menuitem(page).count();
         for (let i = 0; i < count; i++) {
           await expect(locators.menuitem(page, i)).not.toBeFocused();
@@ -1333,13 +1329,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         disabledSave: true,
       });
 
-      await test.step('Open menu', async () => {
+      await test.step('Verify second item focused when first disabled', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.menuitem(page, 0).waitFor({ state: 'visible' });
-      });
-
-      await test.step('Verify second item focused when first disabled', async () => {
         await expect(locators.menuitem(page, 0)).not.toBeFocused();
         await expect(locators.menuitem(page, 1)).toBeFocused();
       });
@@ -1360,12 +1353,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         disabledSave: true,
       });
 
-      await test.step('Verify opens by mouse click', async () => {
+      await test.step('Verify arrow down focuses second item when first disabled', async () => {
         await locators.button(page).first().click();
         await locators.menuitem(page, 0).waitFor({ state: 'visible' });
-      });
-
-      await test.step('Verify arrow down focuses second item when first disabled', async () => {
         await page.keyboard.press('ArrowDown');
         await expect(locators.menuitem(page, 0)).not.toBeFocused();
         await expect(locators.menuitem(page, 1)).toBeFocused();

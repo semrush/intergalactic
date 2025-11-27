@@ -59,6 +59,9 @@ export const SelectableProps: StoryObj<typeof defaultDropDownSelectablePropsExam
   render: SelectablePropsExample,
   argTypes: {
     ...commonArgTypes,
+    disabledFirstItem: {
+      control: { type: 'boolean' },
+    },
   },
   args: defaultDropDownSelectablePropsExample,
 };
@@ -67,6 +70,9 @@ export const MultiselectProps: StoryObj<typeof defaultDropDownMultiselectPropsEx
   render: MultiselectPropsExample,
   argTypes: {
     ...commonArgTypes,
+    disabledFirstItem: {
+      control: { type: 'boolean' },
+    },
   },
   args: defaultDropDownMultiselectPropsExample,
 };

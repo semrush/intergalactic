@@ -9,6 +9,7 @@ const menuItems: null[] = new Array(10).fill(null);
 
 type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
   disabledAll?: boolean;
+  disabledFirstItem?: boolean;
 };
 const Demo = (props: DropDownPropsExample) => {
   const [selected, setSelected] = React.useState<number>(0);
@@ -23,7 +24,7 @@ const Demo = (props: DropDownPropsExample) => {
             {menuItems.map((_, index) => (
               <DropdownMenu.Item
                 size={props.size}
-                disabled={props.disabledAll}
+                disabled={props.disabledAll || (index === 0 && props.disabledFirstItem)}
                 key={index}
                 selected={index === selected}
                 onClick={() => {
@@ -60,6 +61,7 @@ const Demo = (props: DropDownPropsExample) => {
 export const defaultDropDownSelectablePropsExample: DropDownPropsExample = {
   size: 'm',
   disabledAll: false,
+  disabledFirstItem: false,
   visible: undefined,
   stretch: undefined,
   disablePortal: undefined,
