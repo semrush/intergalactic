@@ -277,6 +277,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       expect(hasScroll).toBe(true);
     });
+
+    test('Verify focus after loading is finished', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-in-scroll.tsx', 'en');
+      const spin = page.locator('svg[data-ui-name="Spin"]');
+      await test.step('Verify Focus returns in cell when focus was in table and loading finished', async () => {
+        await locators.dataTable(page).waitFor({ state: 'visible' });
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+
+        await expect(locators.getCell(page, 2, 1)).toBeFocused();
+        await spin.waitFor({ state: 'visible' });
+        await spin.waitFor({ state: 'hidden' });
+        await expect(locators.getCell(page, 2, 1)).toBeFocused();
+      });
+
+      await test.step('Verify Focus not goes in cell when focus was outside the table and loading finished', async () => {
+        await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-in-scroll.tsx', 'en');
+        await locators.dataTable(page).waitFor({ state: 'visible' });
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+
+        await spin.waitFor({ state: 'visible' });
+        await spin.waitFor({ state: 'hidden' });
+        await expect(locators.getCell(page, 2, 1)).not.toBeFocused();
+      });
+    });
   });
 
   test.describe('Checkbox in table', () => {

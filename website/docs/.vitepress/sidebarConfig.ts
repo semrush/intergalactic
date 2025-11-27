@@ -711,8 +711,8 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Error message',
           },
           {
-            link: '/patterns/export/export',
-            text: 'Export',
+            link: '/patterns/export-dropdown/export-dropdown',
+            text: 'Export dropdown',
           },
           {
             link: '/patterns/feature-highlight/feature-highlight',
