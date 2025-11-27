@@ -1,7 +1,7 @@
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
-import { lastInteraction } from '@semcore/ui/core';
 import Divider from '@semcore/ui/divider';
+import type { RenderRowProps } from '@semcore/ui/dropdown-menu';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { Flex } from '@semcore/ui/flex-box';
 import PlusM from '@semcore/ui/icon/MathPlus/m';
@@ -10,66 +10,53 @@ import Settings from '@semcore/ui/icon/Settings/m';
 import { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
-import { FixedSizeList } from 'react-window';
 
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
-const listItemHeight = 52;
 const listHeight = 200;
 
-const Row = React.memo(({ index, style, data: { project, projects, setProject } }: any) => {
+const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void }>) => {
   const projectName = projects[index];
 
   return (
-    <div style={style}>
-      <DropdownMenu.Item
-        key={projectName}
-        onClick={() => setProject(projectName)}
-        selected={project === projectName}
-        index={index}
-      >
-        <DropdownMenu inlineActions placement='right'>
-          <Flex justifyContent='space-between'>
-            <DropdownMenu.Item.Content tag={DropdownMenu.Trigger} h={20}>
-              {projectName}
-            </DropdownMenu.Item.Content>
-            <DropdownMenu.Actions gap={2}>
-              <DropdownMenu.Item
-                tag={Button}
-                addonLeft={Settings}
-                title='Settings'
-                hintPlacement='right'
-                onClick={(e) => e.stopPropagation()}
-              />
-              <DropdownMenu.Item
-                tag={Button}
-                addonLeft={Pin}
-                title='Pin'
-                hintPlacement='right'
-                onClick={(e) => e.stopPropagation()}
-              />
-            </DropdownMenu.Actions>
-          </Flex>
-          <DropdownMenu.Item.Hint h={20}>{projectName}</DropdownMenu.Item.Hint>
-        </DropdownMenu>
-      </DropdownMenu.Item>
-    </div>
+    <DropdownMenu.Item
+      key={projectName}
+      onClick={() => data.setProject(projectName, index)}
+      selected={data.selected === projectName}
+      index={index}
+    >
+      <DropdownMenu inlineActions placement='right'>
+        <Flex justifyContent='space-between'>
+          <DropdownMenu.Item.Content tag={DropdownMenu.Trigger} h={20}>
+            {projectName}
+          </DropdownMenu.Item.Content>
+          <DropdownMenu.Actions gap={2}>
+            <DropdownMenu.Item
+              tag={Button}
+              addonLeft={Settings}
+              title='Settings'
+              hintPlacement='right'
+              onClick={(e) => e.stopPropagation()}
+            />
+            <DropdownMenu.Item
+              tag={Button}
+              addonLeft={Pin}
+              title='Pin'
+              hintPlacement='right'
+              onClick={(e) => e.stopPropagation()}
+            />
+          </DropdownMenu.Actions>
+        </Flex>
+        <DropdownMenu.Item.Hint h={20}>{projectName}</DropdownMenu.Item.Hint>
+      </DropdownMenu>
+    </DropdownMenu.Item>
   );
 });
 
 const Demo = () => {
-  const listRef = React.useRef<FixedSizeList>(null);
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
-  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
   const [selectedProject, setProject] = React.useState<string | null>('project 33');
-
-  React.useEffect(() => {
-    if (selectedProject && visible) {
-      const selectedIndex = projects.findIndex((p) => selectedProject === p);
-      setHighlightedIndex(selectedIndex);
-      listRef.current?.scrollToItem(selectedIndex, 'center');
-    }
-  }, [projects, selectedProject, visible]);
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(projects.findIndex((p) => p === selectedProject));
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -80,14 +67,18 @@ const Demo = () => {
     }
   };
 
+  const handleSetProject = (project: string, index: number) => {
+    setProject(project);
+    setHighlightedIndex(index);
+  };
+
   return (
     <DropdownMenu
       selectable
       itemsCount={projects.length}
       visible={visible}
       onVisibleChange={setVisible}
-      highlightedIndex={highlightedIndex}
-      onHighlightedIndexChange={setHighlightedIndex}
+      defaultHighlightedIndex={highlightedIndex}
     >
       <DropdownMenu.Trigger tag={ButtonTrigger} w={220}>
         {selectedProject ?? 'Select project'}
@@ -96,19 +87,16 @@ const Demo = () => {
       <DropdownMenu.Popper aria-label='Select project popover'>
         <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
 
-        <DropdownMenu.List hMax={listHeight + 41}>
-          <FixedSizeList
-            ref={listRef}
-            height={projects.length > 7 ? listHeight : projects.length * listItemHeight}
-            width='100%'
-            itemCount={projects.length}
-            overscanCount={5}
-            itemSize={listItemHeight}
-            itemData={{ projects, project: selectedProject, setProject }}
-          >
-            {Row}
-          </FixedSizeList>
-        </DropdownMenu.List>
+        <DropdownMenu.VirtualList
+          hMax={listHeight + 41}
+          rowHeight={52}
+          renderRow={Row}
+          rows={projects}
+          customData={{
+            setProject: handleSetProject,
+            selected: selectedProject,
+          }}
+        />
         <Divider />
         <DropdownMenu.Item
           role='button'
