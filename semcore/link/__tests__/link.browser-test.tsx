@@ -20,23 +20,15 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
   const variables = [
-    // size 100
     { size: 100, disabled: false, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: undefined },
-    // size 200
     { size: 200, disabled: false, active: true, showAddonLeft: true, showAddonRight: false, inline: true, color: 'text-success' },
-    // size 300
     { size: 300, disabled: false, active: false, showAddonLeft: false, showAddonRight: true, inline: false, color: 'text-critical' },
     { size: 300, disabled: true, active: false, showAddonLeft: true, showAddonRight: false, inline: true, color: undefined },
-    // size 400
     { size: 400, disabled: false, active: true, showAddonLeft: false, showAddonRight: true, inline: false, color: undefined },
-    // size 500
     { size: 500, disabled: true, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: 'text-success' },
     { size: 500, disabled: false, active: false, showAddonLeft: true, showAddonRight: true, inline: true, color: undefined },
-    // size 600
     { size: 600, disabled: false, active: true, showAddonLeft: false, showAddonRight: false, inline: true, color: 'text-critical' },
-    // size 700
     { size: 700, disabled: true, active: true, showAddonLeft: true, showAddonRight: true, inline: false, color: undefined },
-    // size 800
     { size: 800, disabled: false, active: false, showAddonLeft: true, showAddonRight: false, inline: false, color: 'text-success' },
   ];
 

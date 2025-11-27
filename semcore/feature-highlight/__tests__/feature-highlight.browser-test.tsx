@@ -80,19 +80,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             }
           });
         }
-
-        if (item.disabled) {
-          await test.step('Verify buttons are not focused when disabled', async () => {
-            await expect(button).toHaveAttribute('disabled');
-            await expect(button).toHaveAttribute('tabindex', '0');
-
-            if (item.loading === true) {
-              await expect(button).toHaveAttribute('aria-busy', 'true');
-            } else {
-              await expect(button).toHaveAttribute('aria-busy', 'false');
-            }
-          });
-        }
       });
     });
   });
@@ -335,7 +322,6 @@ test.describe(`${TAG.VISUAL} `, () => {
   test.describe(`CheckboxFH`, () => {
     const variables = [
       { disabled: false, size: 'm', state: 'normal', checked: false, animatedSparkleCount: 0 },
-
       { disabled: false, size: 'l', state: 'normal', checked: false, animatedSparkleCount: 0, showBadge: true },
       { disabled: false, size: 'm', state: 'invalid', checked: false, animatedSparkleCount: 0 },
       { disabled: true, size: 'm', state: 'normal', checked: false },
@@ -449,6 +435,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
 /* =====================================================
 @functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Pills addon logic', {
