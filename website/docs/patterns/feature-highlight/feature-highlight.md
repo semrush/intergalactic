@@ -23,7 +23,7 @@ To add more accent to [Input](#input), [TabLine](#tabline), or other components,
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/badge.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/badge.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ If the control's text doesn't mention the promotion, add an accessible descripti
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/button.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/button.tsx';
 </script>
 
 :::
@@ -65,7 +65,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/checkbox.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/checkbox.tsx';
 </script>
 
 :::
@@ -83,7 +83,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/data-table.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/data-table.tsx';
 </script>
 
 :::
@@ -99,7 +99,7 @@ If the control's label doesn't mention the promotion, add an accessible descript
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/input.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/input.tsx';
 </script>
 
 :::
@@ -111,7 +111,7 @@ To highlight a [Notice](../../components/notice/notice), use the `NoticeFH` comp
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/notice.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/notice.tsx';
 </script>
 
 :::
@@ -129,7 +129,7 @@ If the control's text or badge doesn't mention the promotion, add an accessible 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/pills.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/pills.tsx';
 </script>
 
 :::
@@ -151,7 +151,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/radio.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/radio.tsx';
 </script>
 
 :::
@@ -167,7 +167,7 @@ If the control's text or badge doesn't mention the promotion, add an accessible 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/select.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/select.tsx';
 </script>
 
 :::
@@ -189,7 +189,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/switch.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/switch.tsx';
 </script>
 
 :::
@@ -207,7 +207,7 @@ If the control's text or badge doesn't mention the promotion, add an accessible 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/feature-highlight/docs/examples/tabline.tsx';
+  export Demo from 'stories/components/feature-highlight/docs/examples/tabline.tsx';
 </script>
 
 :::
