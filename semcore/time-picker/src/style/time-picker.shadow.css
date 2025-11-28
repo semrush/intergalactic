@@ -89,7 +89,7 @@ SPickerFormat[size='m'] {
 SPickerFormat[size='l'] {
   height: var(--intergalactic-form-control-l, 40px);
   font-size: var(--intergalactic-fs-300, 16px);
-  margin: 0 calc(-1 * var(--intergalactic-spacing-1x, 4px)) 0 0;
+  margin: 0 -1px 0 0;
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-3x, 12px);
   }
