@@ -18,7 +18,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify filter KD positions volume visual states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@filter-kd-positions-volume'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
 
@@ -53,7 +53,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify filter KD positions volume keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@filter-kd-positions-volume'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
 
@@ -181,7 +181,7 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test('Verify filter KD positions volume mouse navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@filter-kd-positions-volume'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
 

@@ -24,7 +24,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify SERP features mouse interaction states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@serp-features'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
@@ -74,7 +74,7 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify SERP features keyboard interaction states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@serp-features'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
@@ -129,7 +129,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify SERP features keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@serp-features'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 

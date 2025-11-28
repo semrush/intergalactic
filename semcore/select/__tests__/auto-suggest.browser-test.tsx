@@ -16,7 +16,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify AutoSuggest keyboard navigation states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 
@@ -32,22 +32,8 @@ test.describe(TAG.VISUAL, () => {
 
       await expect(page).toHaveScreenshot();
     });
-  });
 
-  test('Verify AutoSuggest option selected state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
-
-    await test.step('Verify selected option visual state', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await page.keyboard.type('a');
-      await locators.options(page).first().waitFor({ state: 'visible' });
-
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
+    await test.step('Verify selected state', async () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'hidden' });
 
@@ -56,51 +42,39 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify AutoSuggest mouse navigation states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 
-    await test.step('Verify menu with options visual state', async () => {
-      const input = locators.input(page);
-      const inputRect = (await input.boundingBox())!;
-      const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
+    const input = locators.input(page);
+    const inputRect = (await input.boundingBox())!;
+    const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
 
+    await test.step('Verify menu with options visual state', async () => {
       await page.mouse.click(inputCoords[0], inputCoords[1]);
       await page.keyboard.type('a');
       await locators.options(page).first().waitFor({ state: 'visible' });
 
       await expect(page).toHaveScreenshot();
     });
-  });
 
-  test('Verify AutoSuggest selected option highlighted state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
+    await test.step('Verify selected state', async () => {
+      await test.step('Verify selected option highlighted visual state', async () => {
+        const persianOption = locators.optionByText(page, 'persian');
+        const persianOptionRect = (await persianOption.boundingBox())!;
+        const persianOptionCoords = [
+          persianOptionRect.x + persianOptionRect.width / 2,
+          persianOptionRect.y + persianOptionRect.height / 2,
+        ];
 
-    await test.step('Verify selected option highlighted visual state', async () => {
-      const input = locators.input(page);
-      const inputRect = (await input.boundingBox())!;
-      const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
+        await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
+        await locators.options(page).first().waitFor({ state: 'hidden' });
 
-      await page.mouse.click(inputCoords[0], inputCoords[1]);
-      await page.keyboard.type('a');
-      await locators.options(page).first().waitFor({ state: 'visible' });
+        await page.mouse.click(inputCoords[0], inputCoords[1]);
+        await locators.options(page).first().waitFor({ state: 'visible' });
 
-      const persianOption = locators.optionByText(page, 'persian');
-      const persianOptionRect = (await persianOption.boundingBox())!;
-      const persianOptionCoords = [
-        persianOptionRect.x + persianOptionRect.width / 2,
-        persianOptionRect.y + persianOptionRect.height / 2,
-      ];
-
-      await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
-      await locators.options(page).first().waitFor({ state: 'hidden' });
-
-      await page.mouse.click(inputCoords[0], inputCoords[1]);
-      await locators.options(page).first().waitFor({ state: 'visible' });
-
-      await expect(page).toHaveScreenshot();
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 });
@@ -112,7 +86,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify AutoSuggest keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 
@@ -181,7 +155,7 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test('Verify AutoSuggest mouse navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 

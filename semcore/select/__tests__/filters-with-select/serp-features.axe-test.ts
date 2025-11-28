@@ -2,7 +2,7 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`@serp-features ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@select ${TAG.ACCESSIBILITY}`, () => {
   test('SERP features filter with all interaction states', async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
