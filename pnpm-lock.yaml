@@ -1741,9 +1741,6 @@ importers:
       '@semcore/animation':
         specifier: 16.0.7
         version: link:../animation
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
@@ -1757,6 +1754,9 @@ importers:
         specifier: 16.0.11
         version: link:../portal
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
