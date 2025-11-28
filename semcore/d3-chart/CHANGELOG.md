@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.1] - 2025-11-28
+
+### Fixed
+
+- `ticks` state var isn't re-calculated for `children` render prop.
+- Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
 ## [16.4.0] - 2025-11-17
 
 ### Added

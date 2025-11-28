@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2025-11-28
+
+### Fixed
+
+- Unnecessary autofocus to the table after loading.
+
+### Added
+
+- Logic for selecting multiples rows using Shift
+
 ## [16.4.4] - 2025-11-14
 
 ### Fixed
