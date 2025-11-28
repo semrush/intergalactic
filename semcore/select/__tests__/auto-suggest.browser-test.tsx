@@ -1,53 +1,152 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { expect, test, type Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('AutoSuggest', () => {
-  test('Verify keyboard Navigation', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+const locators = {
+  menu: (page: Page) => page.locator('[data-ui-name="Select.Menu"]'),
+  options: (page: Page) => page.locator('[data-ui-name="Select.Option"]'),
+  trigger: (page: Page) => page.locator('[data-ui-name="Select.Trigger"]'),
+  input: (page: Page) => page.locator('input'),
+  optionByText: (page: Page, text: string) => page.locator(`text=${text}`),
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(TAG.VISUAL, () => {
+  test('Verify AutoSuggest keyboard navigation states', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 
-    const menu = page.locator('[data-ui-name="Select.Menu"]');
-    const options = page.locator('[data-ui-name="Select.Option"]');
-    const trigger = page.locator('[data-ui-name="Select.Trigger"]');
-
-    await test.step('Verify menu not expanded when nothing entered', async () => {
+    await test.step('Verify navigation between options visual state', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.keyboard.press('ArrowDown');
-      await expect(menu).not.toBeVisible();
-    });
-    await test.step('Verify menu appears when character entered but nothing is selected', async () => {
       await page.keyboard.type('a');
-      await options.first().waitFor({ state: 'visible' });
+      await locators.options(page).first().waitFor({ state: 'visible' });
 
-      const count = await options.count();
-      for (let i = 1; i < count; i++) {
-        await expect(options.nth(i)).not.toHaveClass(/selected/);
-      }
-    });
-
-    await test.step('Verify arrows navigation between options', async () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
       await expect(page).toHaveScreenshot();
     });
+  });
+
+  test('Verify AutoSuggest option selected state', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
+
+    await test.step('Verify selected option visual state', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('a');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify AutoSuggest mouse navigation states', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
+
+    await test.step('Verify menu with options visual state', async () => {
+      const input = locators.input(page);
+      const inputRect = (await input.boundingBox())!;
+      const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
+
+      await page.mouse.click(inputCoords[0], inputCoords[1]);
+      await page.keyboard.type('a');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify AutoSuggest selected option highlighted state', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
+
+    await test.step('Verify selected option highlighted visual state', async () => {
+      const input = locators.input(page);
+      const inputRect = (await input.boundingBox())!;
+      const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
+
+      await page.mouse.click(inputCoords[0], inputCoords[1]);
+      await page.keyboard.type('a');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      const persianOption = locators.optionByText(page, 'persian');
+      const persianOptionRect = (await persianOption.boundingBox())!;
+      const persianOptionCoords = [
+        persianOptionRect.x + persianOptionRect.width / 2,
+        persianOptionRect.y + persianOptionRect.height / 2,
+      ];
+
+      await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+
+      await page.mouse.click(inputCoords[0], inputCoords[1]);
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(TAG.FUNCTIONAL, () => {
+  test('Verify AutoSuggest keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
+
+    await test.step('Verify menu not expanded when nothing entered', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.menu(page)).not.toBeVisible();
+    });
+
+    await test.step('Verify menu appears when character entered but nothing is selected', async () => {
+      await page.keyboard.type('a');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      const count = await locators.options(page).count();
+      for (let i = 1; i < count; i++) {
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
+      }
+    });
 
     await test.step('Verify option not selected and menu closed by Escape', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Escape');
 
-      await expect(menu).not.toBeVisible();
-      await expect(trigger).toHaveAttribute('value', 'a');
+      await expect(locators.menu(page)).not.toBeVisible();
+      await expect(locators.trigger(page)).toHaveAttribute('value', 'a');
 
       await page.keyboard.press('Enter');
-      await options.first().waitFor({ state: 'visible' });
-      const count = await options.count();
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      const count = await locators.options(page).count();
       for (let i = 1; i < count; i++) {
-        await expect(options.nth(i)).not.toHaveClass(/selected/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
       }
     });
 
@@ -56,65 +155,58 @@ test.describe('AutoSuggest', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      await options.first().waitFor({ state: 'hidden' });
-      await expect(trigger).toHaveAttribute('value', 'ragdoll');
-      await expect(page).toHaveScreenshot();
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+      await expect(locators.trigger(page)).toHaveAttribute('value', 'ragdoll');
     });
 
     await test.step('Verify selected item shown and highlighted but not focused', async () => {
       await page.keyboard.press('Enter');
-      await options.first().waitFor({ state: 'visible' });
-      await expect(options.first()).toHaveClass(/selected/);
-      await expect(options.first()).toHaveClass(/highlighted/);
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify item is selected and menu not closed by Enter when exact match opened', async () => {
       for (let i = 0; i < 'ragdoll'.length; i++) {
         await page.keyboard.press('Backspace');
-      };
+      }
       await page.keyboard.type('persian');
-      await options.first().waitFor({ state: 'visible' });
-      await expect(options.first()).toHaveText(/persian/);
-      await expect(options.first()).toHaveClass(/selected/);
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.options(page).first()).toHaveText(/persian/);
+      await expect(locators.options(page).first()).toHaveClass(/selected/);
       await page.keyboard.press('Enter');
-      await expect(options.first()).toHaveText(/persian/);
-      await expect(options.first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveText(/persian/);
+      await expect(locators.options(page).first()).toHaveClass(/selected/);
     });
   });
 
-  test('Verify mouse Navigation', async ({ page }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify AutoSuggest mouse navigation', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@auto-suggest'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const menu = page.locator('[data-ui-name="Select.Menu"]');
-    const options = page.locator('[data-ui-name="Select.Option"]');
-    const trigger = page.locator('[data-ui-name="Select.Trigger"]');
-
-    const input = page.locator('input');
+    const input = locators.input(page);
     const inputRect = (await input.boundingBox())!;
     const inputCoords = [inputRect.x + inputRect.width / 2, inputRect.y + inputRect.height / 2];
 
     await test.step('Verify menu not expanded when nothing entered', async () => {
       await page.mouse.click(inputCoords[0], inputCoords[1]);
+      await expect(locators.menu(page)).not.toBeVisible();
     });
 
     await test.step('Verify menu expanded when character entered', async () => {
       await page.keyboard.type('a');
-      await options.first().waitFor({ state: 'visible' });
+      await locators.options(page).first().waitFor({ state: 'visible' });
 
-      await expect(menu).toBeVisible();
-      const count = await options.count();
+      await expect(locators.menu(page)).toBeVisible();
+      const count = await locators.options(page).count();
       for (let i = 1; i < count; i++) {
-        await expect(options.nth(i)).not.toHaveClass(/selected/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
       }
     });
 
     await test.step('Verify menu closed when option clicked', async () => {
-      const persianOption = page.locator('text=persian');
-      await expect(page).toHaveScreenshot();
+      const persianOption = locators.optionByText(page, 'persian');
       const persianOptionRect = (await persianOption.boundingBox())!;
       const persianOptionCoords = [
         persianOptionRect.x + persianOptionRect.width / 2,
@@ -122,21 +214,19 @@ test.describe('AutoSuggest', () => {
       ];
 
       await page.mouse.click(persianOptionCoords[0], persianOptionCoords[1]);
-      await options.first().waitFor({ state: 'hidden' });
+      await locators.options(page).first().waitFor({ state: 'hidden' });
 
       await expect(persianOption).toHaveCount(0);
-      await expect(trigger).toHaveAttribute('value', 'persian');
+      await expect(locators.trigger(page)).toHaveAttribute('value', 'persian');
     });
 
     await test.step('Verify menu opened and selected option highlighted', async () => {
       await page.mouse.click(inputCoords[0], inputCoords[1]);
-      await options.first().waitFor({ state: 'visible' });
-      await expect(trigger).toHaveAttribute('value', 'persian');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.trigger(page)).toHaveAttribute('value', 'persian');
 
-      await expect(options.first()).toHaveClass(/selected/);
-      await expect(options.first()).not.toHaveClass(/highlighted/);
-
-      await expect(page).toHaveScreenshot();
+      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
     });
   });
 });
