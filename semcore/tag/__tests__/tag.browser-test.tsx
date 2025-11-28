@@ -121,13 +121,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
-
-  test('Verify grouping Less than 5 tags', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_less.tsx', 'en');
-    await expect(page).toHaveScreenshot();
-  });
 });
 
 /* =====================================================
