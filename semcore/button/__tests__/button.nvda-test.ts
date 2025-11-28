@@ -41,7 +41,7 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate button and verify loading state', async () => {
-      await nvda.perform(nvda.keyboardCommands.pressSpace);
+      await nvda.perform(nvda.keyboardCommands.activate);
 
       // Wait for loading state to appear
       await page.waitForTimeout(500);
