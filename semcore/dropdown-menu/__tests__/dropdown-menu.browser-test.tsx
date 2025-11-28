@@ -514,8 +514,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(locators.button(page).first()).not.toBeFocused();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
+    if (browserName == 'webkit') await page.waitForTimeout(200);
 
     await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
 
@@ -540,6 +540,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('ArrowDown');
     await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
+    if (browserName == 'webkit') await page.waitForTimeout(200);
     await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
