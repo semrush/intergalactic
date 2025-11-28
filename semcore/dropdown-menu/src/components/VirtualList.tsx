@@ -41,6 +41,9 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
     rowsBuffer: 10,
   };
 
+  containerRef = React.createRef<HTMLDivElement>();
+  listRef = React.createRef<HTMLDivElement>();
+
   state: State = {
     scrollTop: 0,
     scrollDirection: 'down',
@@ -48,7 +51,11 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
 
   componentDidMount() {
     const { index, rowHeight } = this.asProps;
-    this.setState({ scrollTop: index * rowHeight });
+
+    setTimeout(() => {
+      const listHeight = (this.listRef.current?.getBoundingClientRect().height ?? 0) / 2;
+      this.containerRef.current?.scrollTo({ top: index * rowHeight - listHeight + rowHeight / 2 });
+    }, 0);
   }
 
   handleScroll = (e: React.SyntheticEvent<HTMLDivElement>) => {
@@ -95,8 +102,9 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
           shadowTheme='light'
           onScroll={this.handleScroll}
           data-is-virtual='true'
+          ref={this.listRef}
         >
-          <ScrollAreaComponent.Container tabIndex={undefined} h={rows.length * rowHeight}>
+          <ScrollAreaComponent.Container ref={this.containerRef} tabIndex={undefined} h={rows.length * rowHeight}>
             <Box h={rowMarginTop} />
             {rowsToRender.map((item, index) => {
               return <RenderRow key={startIndex + index} row={item} index={startIndex + index} data={customData} />;
