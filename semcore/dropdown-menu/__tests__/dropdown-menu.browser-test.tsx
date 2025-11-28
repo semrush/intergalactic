@@ -514,8 +514,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(locators.button(page).first()).not.toBeFocused();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
+    await expect(locators.button(page).first()).not.toBeFocused();
 
     await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
 
