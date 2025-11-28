@@ -55,7 +55,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
     setTimeout(() => {
       const listHeight = (this.listRef.current?.getBoundingClientRect().height ?? 0) / 2;
       this.containerRef.current?.scrollTo({ top: index * rowHeight - listHeight + rowHeight / 2 });
-    }, 0);
+    }, 10); // 10 for correct work in safari
   }
 
   handleScroll = (e: React.SyntheticEvent<HTMLDivElement>) => {
