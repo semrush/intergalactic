@@ -1,0 +1,36 @@
+import { Error } from '@semcore/ui/widget-empty';
+import type { WidgetErrorProps } from '@semcore/ui/widget-empty';
+import React from 'react';
+
+export type BasicWidgetErrorProps = WidgetErrorProps & {
+  showDescription?: boolean;
+  customDescription?: string;
+  showChildren?: boolean;
+};
+
+const Demo = ({
+  showDescription,
+  customDescription,
+  showChildren,
+  description,
+  ...rest
+}: BasicWidgetErrorProps) => {
+  const finalDescription = showDescription && customDescription ? customDescription : description;
+
+  return (
+    <Error description={finalDescription} {...rest}>
+      {showChildren && <div style={{ marginTop: '16px' }}>Additional content</div>}
+    </Error>
+  );
+};
+
+export const defaultProps: BasicWidgetErrorProps = {
+  showDescription: false,
+  customDescription: undefined,
+  showChildren: false,
+  description: undefined,
+};
+
+Demo.defaultProps = defaultProps;
+
+export default Demo;

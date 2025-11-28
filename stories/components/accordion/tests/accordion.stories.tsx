@@ -7,7 +7,7 @@ import DefaultValuesExample from './examples/default-values';
 import ValuesExample from './examples/values';
 
 const meta: Meta<typeof Accrordion> = {
-  title: 'Components/Accrordion/Tests',
+  title: 'Components/Accordion/Tests',
   component: Accrordion,
 };
 
