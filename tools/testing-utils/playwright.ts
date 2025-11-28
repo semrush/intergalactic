@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
+import { voiceOverTest as voiceOverBase, nvdaTest as nvdaBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
 import {
   label,
@@ -57,6 +57,8 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
     layerName = 'Axe tests';
   } else if (suiteName.includes('vo')) {
     layerName = 'Voice over tests';
+  } else if (suiteName.includes('nvda')) {
+    layerName = 'NVDA tests';
   }
 
   const storyParts = testInfo.titlePath.length > 1 ? testInfo.titlePath.slice(1) : [testInfo.title];
@@ -86,9 +88,13 @@ const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 
+const nvdaTest = nvdaBase.extend<{ testHook: void }>({
+  testHook: [beforeEachTests, { auto: true }],
+});
+
 export type { Page };
 // eslint-disable-next-line import/export
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
 // eslint-disable-next-line import/export
-export { AxeBuilder, test, voiceOverTest };
+export { AxeBuilder, test, voiceOverTest, nvdaTest };
