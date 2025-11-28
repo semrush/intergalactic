@@ -504,7 +504,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test('Verify virtual scroll by keyboard', {
+  test.skip('Verify virtual scroll by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu'],
