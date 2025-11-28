@@ -88,7 +88,9 @@ export class Changelog {
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
-          this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+          if (!this.changelogs.components[token.raw.toLowerCase()]) {
+            this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+          }
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
           traversingType = token.raw;
