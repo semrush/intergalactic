@@ -130,11 +130,19 @@ export class Changelog {
   public static async getRelease() {
     const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'ui', 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const releaseChangelog = Changelog.releaseParser(
+    const fullChangelog = Changelog.releaseParser(
       releaseChangelogString,
-      // packages.map((p) => p.data.name).concat(...removedComponents),
       changelogPath,
     );
+
+    const releaseChangelog: ChangelogItem[] = [];
+    const version = fullChangelog[0].version;
+
+    for (let i = 0; i < fullChangelog.length; i++) {
+      if (fullChangelog[i].version !== version) break;
+
+      releaseChangelog.push(fullChangelog[i]);
+    }
 
     return releaseChangelog;
   }
