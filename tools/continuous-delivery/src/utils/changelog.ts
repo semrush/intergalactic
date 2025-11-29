@@ -305,7 +305,10 @@ export class Changelog {
           }
 
           if (Changelog.isMajor(traversingVersion)) {
-            if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+            if (
+              changelogs[changelogs.length - 1]?.version !== traversingVersion ||
+              changelogs[changelogs.length - 1]?.component !== traversingComponent
+            ) {
               changelogs.push({
                 component: traversingComponent,
                 date: traversingDate,
@@ -338,7 +341,10 @@ export class Changelog {
           const descriptionFormatted = restText as Token[];
           const description = toMarkdown(descriptionFormatted).trim();
 
-          if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+          if (
+            changelogs[changelogs.length - 1]?.version !== traversingVersion ||
+            changelogs[changelogs.length - 1]?.component !== traversingComponent
+          ) {
             changelogs.push({
               component: traversingComponent,
               date: traversingDate,
@@ -452,13 +458,14 @@ export class Changelog {
   public static serializeRelease(changelogs: ChangelogItem[]): Token[] {
     const result: Token[] = [];
 
+    let currentVersion: string | null = null;
     let currentDate: string | null = null;
     let currentComponent: string | null = null;
 
     changelogs
       .toSorted((a, b) => b.date.localeCompare(a.date))
       .forEach((changelog) => {
-        if (currentDate === null || currentDate !== changelog.date) {
+        if (currentDate === null || currentDate !== changelog.date || currentVersion !== changelog.version) {
           const versionHeading: Token = {
             type: 'heading',
             level: 2,
@@ -474,6 +481,8 @@ export class Changelog {
           result.push(versionHeading);
 
           currentDate = changelog.date;
+          currentVersion = changelog.version;
+          currentComponent = null;
         }
 
         if (currentComponent === null || currentComponent !== changelog.component) {

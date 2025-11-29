@@ -9279,13 +9279,13 @@
 
 - **Added** Added enhance for set uid and useUID to set random numbers.
 
-## [2.3.0] - 2020-12-4
+## [2.3.0] - 2020-12-04
 
 ### @semcore/carousel
 
 - **Added** Release library
 
-## [2.2.0] - 2020-12-4
+## [2.2.0] - 2020-12-04
 
 ### @semcore/animation
 
@@ -9352,7 +9352,7 @@
 
 - **Fixed** Fixed move props position in component Box.
 
-## [2.1.0] - 2020-11-9
+## [2.1.0] - 2020-11-09
 
 ### Global
 
@@ -9546,7 +9546,7 @@
 - **Changed** Build changed from rollup to babel
 - **Changed** Move .d.ts files from /lib to /lib/types directory
 
-## [1.2.1] - 2020-9-8
+## [1.2.1] - 2020-09-08
 
 ### Global
 
@@ -9617,7 +9617,7 @@
 - **Fixed** Flag sideEffects now contain list of files with side effects
 - **Fixed** Added flag sideEffects: false to package.json
 
-## [1.2.0] - 2020-9-2
+## [1.2.0] - 2020-09-02
 
 ### @semcore/core
 
