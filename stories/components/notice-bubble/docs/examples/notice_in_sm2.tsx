@@ -92,24 +92,26 @@ const Demo = (props: BaseNoticeBubbleProps) => {
 };
 
 /** =============== This is a container from sm2, you shouldn't add it by yourself =============== */
-const noticeContainer = document.createElement('div');
+if (typeof window !== 'undefined' && window.document) {
+  const noticeContainer = document.createElement('div');
 
-noticeContainer.id = 'notice-bubble-container';
+  noticeContainer.id = 'notice-bubble-container';
 
-noticeContainer.style.setProperty('position', 'fixed');
-noticeContainer.style.setProperty('right', 'var(--intergalactic-spacing-3x, 12px)');
-noticeContainer.style.setProperty('top', 'var(--intergalactic-spacing-3x, 12px)');
-noticeContainer.style.setProperty('width', '300px');
-noticeContainer.style.setProperty('z-index', '50');
+  noticeContainer.style.setProperty('position', 'fixed');
+  noticeContainer.style.setProperty('right', 'var(--intergalactic-spacing-3x, 12px)');
+  noticeContainer.style.setProperty('top', 'var(--intergalactic-spacing-3x, 12px)');
+  noticeContainer.style.setProperty('width', '300px');
+  noticeContainer.style.setProperty('z-index', '50');
 
-document.body.appendChild(noticeContainer);
+  document.body.appendChild(noticeContainer);
 
-// @ts-ignore
-window.sm2 = {
-  getNoticeBubbleContainer: () => {
-    return document.getElementById('notice-bubble-container');
-  },
-};
+  // @ts-ignore
+  window.sm2 = {
+    getNoticeBubbleContainer: () => {
+      return document.getElementById('notice-bubble-container');
+    },
+  };
+}
 /** =============== This is a container from sm2, you shouldn't add it by yourself =============== */
 
 export const defaultProps: BaseNoticeBubbleProps = {
