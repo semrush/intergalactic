@@ -1,3 +1,43 @@
+## [16.13.0] - 2025-11-29
+
+### @semcore/checkbox
+
+- **Fixed** Unchecked themed `Checkbox` should remain gray.
+
+### @semcore/base-components
+
+- **Fixed** The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+### @semcore/d3-chart
+
+- **Fixed** `ticks` state var isn't re-calculated for `children` render prop.
+- **Fixed** Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary autofocus to the table after loading.
+- **Added** Logic for selecting multiples rows using Shift
+
+### @semcore/dropdown
+
+- **Fixed** Disabled first item receives focus.
+
+### @semcore/time-picker
+
+- **Fixed** UI focus issue for size `l`.
+
+### @semcore/notice-bubble
+
+- **Added** `containerNode` property to set one common container for all notices
+on the page from different applications.
+
+### @semcore/dropdown-menu
+
+- **Added** Virtualization.
+- **Fixed** Disabled first item receives focus.
+
 ## [16.12.0] - 2025-11-17
 
 ### @semcore/base-trigger
