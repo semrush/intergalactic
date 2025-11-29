@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-11-29
+
+### Added
+
+- `containerNode` property to set one common container for all notices
+on the page from different applications.
+
 ## [16.1.12] - 2025-11-17
 
 ### Changed
