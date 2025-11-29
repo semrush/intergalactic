@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-11-29
+
+### Added
+
+- Virtualization.
+
+### Fixed
+
+- Disabled first item receives focus.
+
 ## [16.1.14] - 2025-11-14
 
 ### Changed
