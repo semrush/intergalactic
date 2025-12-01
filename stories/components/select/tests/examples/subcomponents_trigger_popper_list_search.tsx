@@ -1,4 +1,3 @@
-import { Flex } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
 import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
@@ -6,8 +5,6 @@ import React from 'react';
 
 export type SelectComponentConfigProps = SelectProps & {
   // Main props
-  labelText?: string;
-  showLabel?: boolean;
   optionCount?: number;
 
   // Trigger props
@@ -24,24 +21,17 @@ export type SelectComponentConfigProps = SelectProps & {
   popperArrow?: boolean;
   popperModifiers?: any[];
 
-  // Menu props
-  menuSize?: 'm' | 'l';
-  menuW?: string | number;
-  menuMaxH?: string | number;
-
   // List props
   listSize?: 'm' | 'l';
+  listMaxH?: string | number;
 
   // InputSearch props
   showInputSearch?: boolean;
   inputSearchPlaceholder?: string;
-  inputSearchSize?: 'm' | 'l';
 };
 
 const Demo = (props: SelectComponentConfigProps) => {
   const {
-    labelText = 'Select with component configuration',
-    showLabel = true,
     optionCount = 6,
 
     // Trigger
@@ -58,18 +48,13 @@ const Demo = (props: SelectComponentConfigProps) => {
     popperArrow = undefined,
     popperModifiers = undefined,
 
-    // Menu
-    menuSize = 'm',
-    menuW = 200,
-    menuMaxH = 180,
-
     // List
     listSize = 'm',
+    listMaxH = 224,
 
     // InputSearch
     showInputSearch = false,
     inputSearchPlaceholder = 'Search...',
-    inputSearchSize = 'm',
 
     ...restProps
   } = props;
@@ -92,68 +77,52 @@ const Demo = (props: SelectComponentConfigProps) => {
     : options;
 
   return (
-    <Flex direction='column'>
-      {showLabel && (
-        <Text tag='label' size={200} htmlFor='component-config-select'>
-          {labelText}
-        </Text>
-      )}
-      <Select
-        value={value}
-        onChange={setValue}
-        mt={showLabel ? 2 : 0}
-        {...restProps}
+    <Select
+      value={value}
+      onChange={setValue}
+      {...restProps}
+    >
+      <Select.Trigger
+        placeholder={triggerPlaceholder}
+        mr='auto'
+        size={triggerSize}
+        disabled={triggerDisabled}
+        state={triggerState}
+        loading={triggerLoading}
+        id='component-config-select'
+      />
+      <Select.Popper
+        placement={popperPlacement}
+        flip={popperFlip}
+        offset={popperOffset}
+        arrow={popperArrow}
+        modifiers={popperModifiers}
       >
-        <Select.Trigger
-          placeholder={triggerPlaceholder}
-          mr='auto'
-          size={triggerSize}
-          disabled={triggerDisabled}
-          state={triggerState}
-          loading={triggerLoading}
-          id='component-config-select'
-        />
-        <Select.Popper
-          placement={popperPlacement}
-          flip={popperFlip}
-          offset={popperOffset}
-          arrow={popperArrow}
-          modifiers={popperModifiers}
-        >
-          {showInputSearch && (
-            <Select.InputSearch
-              value={searchValue}
-              onChange={setSearchValue}
-              size={inputSearchSize}
-            >
-              <Select.InputSearch.SearchIcon />
-              <Select.InputSearch.Value placeholder={inputSearchPlaceholder} />
-              {searchValue && <Select.InputSearch.Clear />}
-            </Select.InputSearch>
+        {showInputSearch && (
+          <Select.InputSearch
+            value={searchValue}
+            onChange={setSearchValue}
+            placeholder={inputSearchPlaceholder}
+          />
+        )}
+        <Select.List size={listSize} maxH={listMaxH}>
+          {filteredOptions.map((option) => (
+            <Select.Option key={option.value} value={option.value}>
+              {option.children}
+            </Select.Option>
+          ))}
+          {filteredOptions.length === 0 && (
+            <Text tag='div' p='6px 8px' size={200} use='secondary'>
+              Nothing found
+            </Text>
           )}
-          <Select.Menu size={menuSize} w={menuW}>
-            <Select.List size={listSize} maxH={menuMaxH}>
-              {filteredOptions.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  {option.children}
-                </Select.Option>
-              ))}
-              {filteredOptions.length === 0 && (
-                <Select.Option value='no-results' disabled>
-                  No results found
-                </Select.Option>
-              )}
-            </Select.List>
-          </Select.Menu>
-        </Select.Popper>
-      </Select>
-    </Flex>
+        </Select.List>
+      </Select.Popper>
+    </Select>
   );
 };
 
 export const defaultProps: SelectComponentConfigProps = {
-  labelText: 'Select with component configuration',
-  showLabel: true,
   optionCount: 6,
 
   // Trigger
@@ -170,18 +139,13 @@ export const defaultProps: SelectComponentConfigProps = {
   popperArrow: undefined,
   popperModifiers: undefined,
 
-  // Menu
-  menuSize: 'm',
-  menuW: 200,
-  menuMaxH: 180,
-
   // List
   listSize: 'm',
+  listMaxH: 224,
 
   // InputSearch
   showInputSearch: false,
   inputSearchPlaceholder: 'Search...',
-  inputSearchSize: 'm',
 };
 
 Demo.defaultProps = defaultProps;

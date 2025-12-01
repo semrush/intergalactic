@@ -2,16 +2,12 @@ import Select from '@semcore/ui/select';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
-import AdvancedConfigExample, { defaultProps as AdvancedConfigProps } from './examples/advanced_configuration';
-import BasicExample, { defaultProps as BasicProps } from './examples/basic_usage';
-import ComponentConfigExample, { defaultProps as ComponentConfigProps } from './examples/component_configuration';
-import FocusExample from './examples/focus_interaction';
+import BasicPropsExample, { defaultProps as BasicProps } from './examples/basic_props_and_trigger_addons';
 import OnChangeInputSearchExample from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
-import OptionsExample from './examples/options';
+import OptionsExample, { defaultProps as OptionsProps } from './examples/options_checkbox_group_and_hint';
 import ProgrammaticallyFocusExample from './examples/programmatically_focus';
-import SelectDisabledItemsExample, { defaultProps as SelectDisabledItemsProps } from './examples/select_disabled_items';
-import TriggerExample from './examples/trigger';
+import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',
@@ -22,46 +18,34 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 const commonArgTypes = {
+  labelText: {
+    control: { type: 'text' },
+  },
+  showLabel: {
+    control: { type: 'boolean' },
+  },
   size: {
     control: { type: 'select' },
     options: ['m', 'l'],
   },
-  visible: {
+  disabled: {
     control: { type: 'boolean' },
   },
-  disablePortal: {
-    control: { type: 'boolean' },
-  },
-  disabledAll: {
-    control: { type: 'boolean' },
+  state: {
+    control: { type: 'select' },
+    options: ['normal', 'valid', 'invalid'],
   },
 } as const;
 
-export const Basic: StoryObj<typeof BasicProps> = {
-  render: BasicExample,
+export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
+  render: BasicPropsExample,
   argTypes: {
-    labelText: {
-      control: { type: 'text' },
-    },
-    showLabel: {
-      control: { type: 'boolean' },
-    },
+    ...commonArgTypes,
     optionCount: {
       control: { type: 'number' },
     },
     placeholder: {
       control: { type: 'text' },
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['m', 'l'],
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-    state: {
-      control: { type: 'select' },
-      options: ['normal', 'valid', 'invalid'],
     },
     multiselect: {
       control: { type: 'boolean' },
@@ -73,20 +57,48 @@ export const Basic: StoryObj<typeof BasicProps> = {
     scrollToSelected: {
       control: { type: 'boolean' },
     },
+
+    // Trigger Addon props
+    showLeftAddon: {
+      control: { type: 'boolean' },
+    },
+    leftAddonContent: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'text'],
+    },
+    leftAddonText: {
+      control: { type: 'text' },
+    },
+    leftAddonBadgeText: {
+      control: { type: 'text' },
+    },
+    leftAddonBadgeBg: {
+      control: { type: 'text' },
+    },
+    showRightAddon: {
+      control: { type: 'boolean' },
+    },
+    rightAddonContent: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'text'],
+    },
+    rightAddonText: {
+      control: { type: 'text' },
+    },
+    rightAddonBadgeText: {
+      control: { type: 'text' },
+    },
+    rightAddonBadgeBg: {
+      control: { type: 'text' },
+    },
+    triggerText: {
+      control: { type: 'text' },
+    },
+    showTriggerText: {
+      control: { type: 'boolean' },
+    },
   },
   args: BasicProps,
-};
-
-export const Options: Story = {
-  render: OptionsExample,
-};
-
-export const Trigger: Story = {
-  render: TriggerExample,
-};
-
-export const BasicSelectFocusIteracrion: Story = {
-  render: FocusExample,
 };
 
 export const OnVisible: Story = {
@@ -101,54 +113,13 @@ export const ProgrammaticallyFocus: Story = {
   render: ProgrammaticallyFocusExample,
 };
 
-export const SelectDisabledItems: StoryObj<typeof SelectDisabledItemsProps> = {
-  render: SelectDisabledItemsExample,
+export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
+  render: OptionsExample,
   argTypes: {
     ...commonArgTypes,
-    disabledOption1: {
-      control: { type: 'boolean' },
-    },
-    disabledOption2: {
-      control: { type: 'boolean' },
-    },
-    disabledOption3: {
-      control: { type: 'boolean' },
-    },
-    disabledOption4: {
-      control: { type: 'boolean' },
-    },
-    selectedOption1: {
-      control: { type: 'boolean' },
-    },
-    selectedOption2: {
-      control: { type: 'boolean' },
-    },
-    selectedOption3: {
-      control: { type: 'boolean' },
-    },
-    selectedOption4: {
-      control: { type: 'boolean' },
-    },
-  },
-  args: SelectDisabledItemsProps,
-};
-
-export const AdvancedConfiguration: StoryObj<typeof AdvancedConfigProps> = {
-  render: AdvancedConfigExample,
-  argTypes: {
-    // Main Select props
-    labelText: { control: { type: 'text' } },
-    showLabel: { control: { type: 'boolean' } },
     triggerPlaceholder: { control: { type: 'text' } },
-    size: {
-      control: { type: 'select' },
-      options: ['m', 'l'],
-    },
-    disabled: { control: { type: 'boolean' } },
-    state: {
-      control: { type: 'select' },
-      options: ['normal', 'valid', 'invalid'],
-    },
+    visible: { control: { type: 'boolean' } },
+    disablePortal: { control: { type: 'boolean' } },
 
     // Option 1 - Default option (SelectOptionProps)
     option1Value: { control: { type: 'text' } },
@@ -174,6 +145,12 @@ export const AdvancedConfiguration: StoryObj<typeof AdvancedConfigProps> = {
     option3CheckboxIndeterminate: { control: { type: 'boolean' } },
     option3HintText: { control: { type: 'text' } },
 
+    // Option 4 - Simple option (SelectOptionProps)
+    option4Value: { control: { type: 'text' } },
+    option4Text: { control: { type: 'text' } },
+    option4Disabled: { control: { type: 'boolean' } },
+    option4Selected: { control: { type: 'boolean' } },
+
     // Group (Select.Group props)
     showGroup: { control: { type: 'boolean' } },
     groupTitle: { control: { type: 'text' } },
@@ -182,16 +159,16 @@ export const AdvancedConfiguration: StoryObj<typeof AdvancedConfigProps> = {
     groupOption1Text: { control: { type: 'text' } },
     groupOption2Value: { control: { type: 'text' } },
     groupOption2Text: { control: { type: 'text' } },
+
+    // Bulk controls
+    disabledAll: { control: { type: 'boolean' } },
   },
-  args: AdvancedConfigProps,
+  args: OptionsProps,
 };
 
-export const ComponentConfiguration: StoryObj<typeof ComponentConfigProps> = {
-  render: ComponentConfigExample,
+export const SubcomponentsTriggerPopperListSearch: StoryObj<typeof SubcomponentsProps> = {
+  render: SubcomponentsExample,
   argTypes: {
-    // Main props
-    labelText: { control: { type: 'text' } },
-    showLabel: { control: { type: 'boolean' } },
     optionCount: { control: { type: 'number' } },
 
     // Trigger props
@@ -216,27 +193,16 @@ export const ComponentConfiguration: StoryObj<typeof ComponentConfigProps> = {
     popperOffset: { control: { type: 'number' } },
     popperArrow: { control: { type: 'boolean' } },
 
-    // Menu props
-    menuSize: {
-      control: { type: 'select' },
-      options: ['m', 'l'],
-    },
-    menuW: { control: { type: 'number' } },
-    menuMaxH: { control: { type: 'number' } },
-
     // List props
     listSize: {
       control: { type: 'select' },
       options: ['m', 'l'],
     },
+    listMaxH: { control: { type: 'number' } },
 
     // InputSearch props
     showInputSearch: { control: { type: 'boolean' } },
     inputSearchPlaceholder: { control: { type: 'text' } },
-    inputSearchSize: {
-      control: { type: 'select' },
-      options: ['m', 'l'],
-    },
   },
-  args: ComponentConfigProps,
+  args: SubcomponentsProps,
 };

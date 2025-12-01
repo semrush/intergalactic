@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
-import type { SelectProps, SelectOptionProps, SelectOptionCheckboxProps } from '@semcore/ui/select';
+import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -9,6 +9,8 @@ export type SelectAdvancedConfigProps = SelectProps & {
   labelText?: string;
   showLabel?: boolean;
   triggerPlaceholder?: string;
+  visible?: boolean;
+  disablePortal?: boolean;
 
   // Option 1 - Default option
   option1Value?: string | number;
@@ -34,6 +36,12 @@ export type SelectAdvancedConfigProps = SelectProps & {
   option3CheckboxIndeterminate?: boolean;
   option3HintText?: string;
 
+  // Option 4 - Simple option
+  option4Value?: string | number;
+  option4Text?: string;
+  option4Disabled?: boolean;
+  option4Selected?: boolean;
+
   // Group
   showGroup?: boolean;
   groupTitle?: string;
@@ -42,6 +50,9 @@ export type SelectAdvancedConfigProps = SelectProps & {
   groupOption1Text?: string;
   groupOption2Value?: string | number;
   groupOption2Text?: string;
+
+  // Bulk options control
+  disabledAll?: boolean;
 };
 
 const Demo = (props: SelectAdvancedConfigProps) => {
@@ -52,6 +63,8 @@ const Demo = (props: SelectAdvancedConfigProps) => {
     size = 'm',
     disabled = undefined,
     state = undefined,
+    visible = undefined,
+    disablePortal = undefined,
 
     // Option 1
     option1Value = 1,
@@ -77,14 +90,23 @@ const Demo = (props: SelectAdvancedConfigProps) => {
     option3CheckboxIndeterminate = true,
     option3HintText = 'This is a hint for the option',
 
+    // Option 4
+    option4Value = 4,
+    option4Text = 'Simple option',
+    option4Disabled = false,
+    option4Selected = false,
+
     // Group
     showGroup = true,
     groupTitle = 'Group title',
     groupSubTitle = 'Group subtitle',
-    groupOption1Value = 4,
+    groupOption1Value = 5,
     groupOption1Text = '1st option in group',
-    groupOption2Value = 5,
+    groupOption2Value = 6,
     groupOption2Text = '2nd option in group',
+
+    // Bulk control
+    disabledAll = false,
 
     ...restProps
   } = props;
@@ -96,7 +118,14 @@ const Demo = (props: SelectAdvancedConfigProps) => {
           {labelText}
         </Text>
       )}
-      <Select size={size} disabled={disabled} state={state} {...restProps}>
+      <Select
+        size={size}
+        disabled={disabled}
+        state={state}
+        visible={visible}
+        disablePortal={disablePortal}
+        {...restProps}
+      >
         <Select.Trigger
           placeholder={triggerPlaceholder}
           mr='auto'
@@ -106,7 +135,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
         <Select.Menu>
           <Select.Option
             value={option1Value}
-            disabled={option1Disabled}
+            disabled={disabledAll || option1Disabled}
             selected={option1Selected}
           >
             {option1Text}
@@ -114,7 +143,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
 
           <Select.Option
             value={option2Value}
-            disabled={option2Disabled}
+            disabled={disabledAll || option2Disabled}
             selected={option2Selected}
           >
             {option2ShowCheckbox && (
@@ -129,7 +158,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
 
           <Select.Option
             value={option3Value}
-            disabled={option3Disabled}
+            disabled={disabledAll || option3Disabled}
             selected={option3Selected}
           >
             <Select.Option.Content>
@@ -144,12 +173,26 @@ const Demo = (props: SelectAdvancedConfigProps) => {
             <Select.Option.Hint>{option3HintText}</Select.Option.Hint>
           </Select.Option>
 
+          <Select.Option
+            value={option4Value}
+            disabled={disabledAll || option4Disabled}
+            selected={option4Selected}
+          >
+            {option4Text}
+          </Select.Option>
+
           {showGroup && (
             <Select.Group title={groupTitle} subTitle={groupSubTitle}>
-              <Select.Option value={groupOption1Value}>
+              <Select.Option
+                value={groupOption1Value}
+                disabled={disabledAll}
+              >
                 {groupOption1Text}
               </Select.Option>
-              <Select.Option value={groupOption2Value}>
+              <Select.Option
+                value={groupOption2Value}
+                disabled={disabledAll}
+              >
                 {groupOption2Text}
               </Select.Option>
             </Select.Group>
