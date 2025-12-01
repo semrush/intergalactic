@@ -144,7 +144,7 @@ export class Changelog {
       releaseChangelog.push(fullChangelog[i]);
     }
 
-    return releaseChangelog;
+    return releaseChangelog.toSorted((a, b) => a.component.localeCompare(b.component));
   }
 
   public static componentParser(
