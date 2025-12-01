@@ -1,11 +1,9 @@
 import type { ButtonLinkComponent } from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 import type { InputNumberControlsProps } from '@semcore/input-number';
 import type React from 'react';
 
-/** @deprecated */
-export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
 export type InlineInputProps = BoxProps & {
   /**
    * Visual state of inline input
@@ -62,11 +60,8 @@ export type InlineInputProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IInlineInputAddonProps extends InlineInputAddonProps, UnknownProperties {}
 export type InlineInputAddonProps = BoxProps & {};
-/** @deprecated */
-export interface IInlineInputValueProps extends InlineInputValueProps, UnknownProperties {}
+
 export type InlineInputValueProps = BoxProps & {
   /**
    * id attribute of input tag
@@ -105,10 +100,7 @@ export type InlineInputValueProps = BoxProps & {
    */
   placeholder?: string;
 };
-/** @deprecated */
-export interface IInlineInputConfirmControlProps
-  extends InlineInputConfirmControlProps,
-  UnknownProperties {}
+
 export type InlineInputConfirmControlProps = BoxProps & {
   /**
    * Text of tooltip
@@ -121,10 +113,7 @@ export type InlineInputConfirmControlProps = BoxProps & {
    */
   icon?: React.FC;
 };
-/** @deprecated */
-export interface IInlineInputCancelControlProps
-  extends InlineInputCancelControlProps,
-  UnknownProperties {}
+
 export type InlineInputCancelControlProps = BoxProps & {
   /**
    * Text of tooltip

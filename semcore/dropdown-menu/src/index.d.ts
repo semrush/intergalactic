@@ -1,4 +1,4 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
   DropdownProps,
@@ -8,7 +8,6 @@ import type {
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
 import type { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
-import type { eventInteraction } from '@semcore/popper';
 import type { ScrollAreaProps } from '@semcore/scroll-area';
 import type { Text } from '@semcore/typography';
 
@@ -16,8 +15,6 @@ import type { VirtualList, RenderRowProps } from './components/VirtualList';
 
 export type DropdownMenuSize = 'm' | 'l';
 
-/** @deprecated */
-export interface IDropdownMenuProps extends DropdownMenuProps, UnknownProperties {}
 export type DropdownMenuProps = DropdownProps & {
   /**
    * Set role `menuitemradio` (or `menuitemcheckbox` if `multiselect`) for Dropdown.Item
@@ -58,8 +55,6 @@ export type DropdownMenuProps = DropdownProps & {
   itemsCount?: number;
 };
 
-/** @deprecated */
-export interface IDropdownMenuListProps extends DropdownMenuListProps, UnknownProperties {}
 export type DropdownMenuListProps = BoxProps &
   ScrollAreaProps & {
     /**
@@ -69,12 +64,8 @@ export type DropdownMenuListProps = BoxProps &
     size?: DropdownMenuSize;
   };
 
-/** @deprecated */
-export interface IDropdownMenuMenuProps extends DropdownMenuMenuProps, UnknownProperties {}
 export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 
-/** @deprecated */
-export interface IDropdownMenuItemProps extends DropdownMenuItemProps, UnknownProperties {}
 export type DropdownMenuItemProps = FlexProps & {
   /**
    * Enables selected state. For selectable dropdowns only.
@@ -90,11 +81,6 @@ export type DropdownMenuItemProps = FlexProps & {
    */
   highlighted?: boolean;
   /**
-   * Disables hover state
-   * @deprecated use `disabled` instead
-   */
-  notInteractive?: boolean;
-  /**
    * Size of the component
    * @default m
    */
@@ -105,8 +91,6 @@ export type DropdownMenuItemProps = FlexProps & {
   index?: number;
 };
 
-/** @deprecated */
-export interface IDropdownMenuItemHintProps extends DropdownMenuItemHintProps, UnknownProperties {}
 export type DropdownMenuItemHintProps = FlexProps & {
   /**
    * Size of the component
@@ -115,10 +99,6 @@ export type DropdownMenuItemHintProps = FlexProps & {
   size?: DropdownMenuSize;
 };
 
-/** @deprecated */
-export interface IDropdownMenuItemTitleProps
-  extends DropdownMenuItemTitleProps,
-  UnknownProperties {}
 export type DropdownMenuItemTitleProps = FlexProps & {
   /**
    * Size of the component
@@ -127,8 +107,6 @@ export type DropdownMenuItemTitleProps = FlexProps & {
   size?: DropdownMenuSize;
 };
 
-/** @deprecated */
-export interface IDropdownMenuContext extends DropdownMenuContext, UnknownProperties {}
 export type DropdownMenuContext = DropdownContext & {
   /**
     * Tracks which menu item is currently highlighted/focused for keyboard navigation
@@ -152,8 +130,6 @@ export type DropdownMenuContext = DropdownContext & {
   getItemTitleProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IDropdownMenuHandlers extends DropdownMenuHandlers, UnknownProperties {}
 export type DropdownMenuHandlers = DropdownHandlers & {
   highlightedIndex: (index: number) => void;
 };
@@ -197,43 +173,12 @@ declare const DropdownMenu: Intergalactic.Component<
     Text: typeof Text;
     Hint: typeof Flex;
   };
-  /**
-   * @deprecated Use Group with title prop
-   */
-  ItemTitle: Intergalactic.Component<'div', DropdownMenuItemTitleProps>;
-  /**
-   * @deprecated Use prop subTitle on Group or Item component
-   */
-  ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
+
   Group: typeof Dropdown.Group;
 
   VirtualList: typeof VirtualList;
 
-  /**
-   * @deprecated Use Item instead of Nesting
-   */
-  Nesting: Intergalactic.Component<
-    'div',
-    DropdownMenuItemProps,
-    DropdownMenuContext,
-    [handlers: DropdownMenuHandlers]
-  > & {
-    /**
-     * @deprecated Use Item instead of Nesting
-     */
-    Trigger: Intergalactic.Component<'div', DropdownMenuItemProps>;
-    /**
-     * @deprecated Use Item instead of Nesting
-     */
-    Item: Intergalactic.Component<'div', DropdownMenuItemProps>;
-    /**
-     * @deprecated Use Item instead of Nesting
-     */
-    Addon: typeof Box;
-  };
-
   selectedIndexContext: React.Context<number>;
-  nestedMenuInteraction: eventInteraction;
 };
 
 export default DropdownMenu;

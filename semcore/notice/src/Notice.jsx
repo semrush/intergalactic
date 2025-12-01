@@ -146,13 +146,6 @@ function Content({ styles }) {
   return sstyled(styles)(<SContent render={Box} />);
 }
 
-function CloseIcon({ styles, getI18nText }) {
-  const SCloseIcon = Root;
-  return sstyled(styles)(
-    <SCloseIcon render={Box} tag={CloseIconM} interactive aria-label={getI18nText('close')} />,
-  );
-}
-
 function Close({ styles, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
@@ -172,7 +165,6 @@ const Notice = createComponent(RootNotice, {
   Text: NoticeText,
   Actions,
   Content,
-  CloseIcon,
   Close,
 });
 

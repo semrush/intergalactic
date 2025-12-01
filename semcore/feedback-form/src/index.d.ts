@@ -6,8 +6,6 @@ import type { FormProps, FieldProps, FieldInputProps, FieldMetaState } from 'rea
 
 import { default as FeedbackRating } from './component/feedback-rating/FeedbackRating';
 
-/** @deprecated */
-export type IFeedbackForm = FeedbackFormProps;
 export type FeedbackFormProps = FormProps & {
   /** The event is called when the form is submitted */
   onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;

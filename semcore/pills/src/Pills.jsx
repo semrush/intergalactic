@@ -12,13 +12,13 @@ const optionsA11yEnhance = {
   onNeighborChange: (neighborElement, props) => {
     if (neighborElement) {
       neighborElement.focus();
-      if (props.behavior === 'auto' || props.behavior === 'radio') {
+      if (props.behavior === 'auto') {
         neighborElement.click();
       }
     }
   },
   childSelector: (props) =>
-    props.behavior === 'auto' || props.behavior === 'radio' ? ['role', 'radio'] : ['role', 'tab'],
+    props.behavior === 'auto' ? ['role', 'radio'] : ['role', 'tab'],
 };
 
 class RootPills extends Component {
@@ -32,20 +32,6 @@ class RootPills extends Component {
 
   itemValues = [];
   static enhance = [a11yEnhance(optionsA11yEnhance)];
-
-  componentDidMount() {
-    log.warn(
-      this.asProps.behavior === 'tabs',
-      'Use behavior `manual` instead of `tabs`. \n`tabs` is deprecated and will be removed in the next major release.',
-      'Pills',
-    );
-
-    log.warn(
-      this.asProps.behavior === 'radio',
-      'Use behavior `auto` (or nothing, it is default value) instead of `radio`. \n`radio` is deprecated and will be removed in the next major release.',
-      'Pills',
-    );
-  }
 
   uncontrolledProps() {
     return {
@@ -105,7 +91,7 @@ class RootPills extends Component {
     return sstyled(styles)(
       <SPills
         render={Box}
-        role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
+        role={behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
         use:tabIndex={value !== null ? -1 : 0}
       >
@@ -122,7 +108,7 @@ function Pill(props) {
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
   const roleAreaProps = {};
-  if (behavior === 'radio' || behavior === 'auto') {
+  if (behavior === 'auto') {
     roleAreaProps.role = 'radio';
     roleAreaProps['aria-checked'] = selected;
   } else {

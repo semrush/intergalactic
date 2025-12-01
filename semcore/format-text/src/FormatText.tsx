@@ -1,6 +1,5 @@
 import { Box, type BoxProps } from '@semcore/base-components';
 import {
-  type UnknownProperties,
   type Intergalactic,
   Component,
   sstyled,
@@ -11,14 +10,12 @@ import React from 'react';
 
 import style from './style/format-text.shadow.css';
 
-/** @deprecated */
-export interface IFormatTextProps extends FormatTextProps, UnknownProperties {}
 export type FormatTextProps = BoxProps & {
   /** Controls the overall text size scale for the formatted content */
   size?: 's' | 'm' | 'l';
 };
 
-class FormatText extends Component<IFormatTextProps> {
+class FormatText extends Component<FormatTextProps> {
   static displayName = 'FormatText';
   static style = style;
   static defaultProps = {

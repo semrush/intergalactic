@@ -23,14 +23,10 @@ import React from 'react';
 import style from './style/input-tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-/** @deprecated */
-export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
 export type InputTagsValueProps = InputValueProps & {};
 
 export type InputTagsSize = 'l' | 'm';
 
-/** @deprecated */
-export interface IInputTagsProps extends InputTagsProps, UnknownProperties {}
 export type InputTagsProps = Omit<InputProps, 'size'> &
   ScrollAreaProps & {
     /**
@@ -38,11 +34,6 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
      * @default m
      */
     size?: InputTagsSize;
-    /**
-     * Event is called when tag needs to be added
-     * @deprecated use `onAppend` instead
-     */
-    onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
     /** Event is called when tags need to be added */
     onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
     /** Event is called when tags need to be removed  */
@@ -55,24 +46,20 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
     locale?: string;
   };
 
-/** @deprecated */
-export interface IInputTagsTagProps extends InputTagsTagProps, UnknownProperties {}
 export type InputTagsTagProps = TagProps & {
   /** Property enabling the ability to remove a tag on click */
   editable?: boolean;
 };
 
-/** @deprecated */
-export interface IInputTagsContext extends InputTagsContext, UnknownProperties {}
 export type InputTagsContext = InputTagsProps & {
   getValueProps: PropGetterFn;
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends Component<IInputTagsProps> {
+class InputTags extends Component<InputTagsProps, {}, {}, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
@@ -145,7 +132,7 @@ class InputTags extends Component<IInputTagsProps> {
 
     const currentEnteredValue = this.inputRef.current?.value;
     const value = event.clipboardData.getData('text/plain');
-    const { delimiters, onAdd, onAppend } = this.asProps;
+    const { delimiters, onAppend } = this.asProps;
     const reg = new RegExp(
       delimiters!
         .filter((s) => !/\w+/.test(String(s)))
@@ -160,9 +147,6 @@ class InputTags extends Component<IInputTagsProps> {
 
     if (tagsToBeAdded.length > 0) {
       event.preventDefault();
-      for (const tag of tagsToBeAdded) {
-        onAdd?.(tag, event);
-      }
       onAppend?.(tagsToBeAdded, event);
     }
     if (typeof this.inputRef.current?.scrollIntoView === 'function') {
@@ -268,7 +252,7 @@ class InputTags extends Component<IInputTagsProps> {
   }
 }
 
-class Value extends Component<IInputTagsValueProps> {
+class Value extends Component<InputTagsValueProps> {
   private _spacer = React.createRef<HTMLDivElement>();
 
   state = {

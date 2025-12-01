@@ -1,10 +1,8 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
 import type { Property } from 'csstype';
 import type React from 'react';
 
-/** @deprecated */
-export interface ITextProps extends TextProps, UnknownProperties {}
 export type TextProps = BoxProps & {
   /** Font size and line-heights */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
@@ -48,16 +46,12 @@ export type TextProps = BoxProps & {
   formatTags?: boolean;
 };
 
-/** @deprecated */
-export interface IListProps extends ListProps, UnknownProperties {}
 export type ListProps = TextProps & {
   /** Marker of the entire list
    * @default • */
   marker?: React.ReactNode;
 };
 
-/** @deprecated */
-export interface IListItemProps extends ListItemProps, UnknownProperties {}
 export type ListItemProps = TextProps & {
   /** Individual marker of a list item */
   marker?: React.ReactNode;
@@ -65,14 +59,10 @@ export type ListItemProps = TextProps & {
 
 export type ListItemContentProps = FlexProps;
 
-/** @deprecated */
-export interface IListContext extends ListContext, UnknownProperties {}
 export type ListContext = {
   getItemProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IBlockquoteProps extends BlockquoteProps, UnknownProperties {}
 export type BlockquoteProps = BoxProps & {
   /** Source of the quote */
   author?: React.ReactNode;

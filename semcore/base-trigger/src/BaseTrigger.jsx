@@ -1,7 +1,6 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -43,12 +42,6 @@ class RootBaseTrigger extends Component {
     const SInner = 'span';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
-
-    logger.warn(
-      theme !== undefined,
-      'The \'theme\' property is deprecated, use \'state\'',
-      this.asProps['data-ui-name'] || BaseTrigger.displayName,
-    );
 
     // TODO: add aria
     return (

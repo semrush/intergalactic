@@ -3,7 +3,6 @@ import {
   Component,
   sstyled,
   Root,
-  type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
@@ -12,8 +11,6 @@ import React from 'react';
 
 import style from './style/info.shadow.css';
 
-/** @deprecated */
-export interface IInfoItemProps extends InfoItemProps, UnknownProperties {}
 export type InfoItemProps = BoxProps & {
   /** A label content that appears before the main item content */
   label?: React.ReactNode;

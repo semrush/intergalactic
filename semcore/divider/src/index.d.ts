@@ -1,8 +1,6 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 
-/** @deprecated */
-export interface IDividerProps extends DividerProps, UnknownProperties {}
 export type DividerProps = BoxProps & {
   /**
    * Type of the divider

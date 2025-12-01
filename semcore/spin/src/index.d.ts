@@ -1,10 +1,8 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { BoxProps } from '@semcore/flex-box';
 
 export type SpinSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
-/** @deprecated */
-export interface ISpinProps extends SpinProps, UnknownProperties {}
 export type SpinProps = BoxProps & {
   /** Spinner size
    * @default m

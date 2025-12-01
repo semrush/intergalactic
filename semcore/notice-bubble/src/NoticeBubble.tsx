@@ -352,55 +352,6 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-class NoticeBubbleView extends Component<{ manager: NoticeBubbleManager } & (NoticeBubbleProps | NoticeBubbleWarningProps)> {
-  static defaultProps = {
-    duration: 5000,
-    type: 'info',
-    manager,
-  };
-
-  _notice: null | AddedNoticeMeta = null;
-
-  componentDidMount() {
-    this._notice = this.asProps.manager.add(this.asProps);
-  }
-
-  componentWillUnmount() {
-    if (this._notice) {
-      this._notice.remove();
-    }
-  }
-
-  componentDidUpdate() {
-    if (this._notice) {
-      this._notice.update(this.asProps);
-    }
-  }
-
-  render() {
-    return null;
-  }
-}
-
-class NoticeBubbleWarningView extends NoticeBubbleView {
-  static defaultProps = {
-    duration: 5000,
-    type: 'warning',
-    manager,
-  };
-}
-
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot, {
-  Info: NoticeBubbleView,
-  Warning: NoticeBubbleWarningView,
-}) as Intergalactic.Component<'div', NoticeBubbleContainerProps> & {
-  Info: typeof NoticeBubbleView;
-  Warning: typeof NoticeBubbleWarningView;
-};
-
-const NoticeBubble = NoticeBubbleContainer.Info;
-const NoticeBubbleWarning = NoticeBubbleContainer.Warning;
-
-export { NoticeBubble, NoticeBubbleWarning };
+const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
 
 export default NoticeBubbleContainer;

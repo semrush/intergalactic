@@ -1,4 +1,4 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import { inputProps } from '@semcore/core/lib/utils/inputProps';
 import type { BoxProps } from '@semcore/flex-box';
 import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
@@ -6,8 +6,6 @@ import type React from 'react';
 
 export type SwitchTheme = 'info' | 'success' | string;
 
-/** @deprecated */
-export interface ISwitchProps extends SwitchProps, UnknownProperties {}
 export type SwitchProps = BoxProps &
   NeighborLocationProps & {
     /** Switch size
@@ -20,8 +18,6 @@ export type SwitchProps = BoxProps &
     theme?: SwitchTheme;
   };
 
-/** @deprecated */
-export interface ISwitchValueProps extends SwitchValueProps, UnknownProperties {}
 export type SwitchValueProps = BoxProps &
   NeighborItemProps & {
     /** Handler on change */
@@ -39,19 +35,8 @@ export type SwitchValueProps = BoxProps &
     theme?: SwitchTheme;
   };
 
-/** @deprecated */
-export interface ISwitchAddonProps extends SwitchAddonProps, UnknownProperties {}
-export type SwitchAddonProps = BoxProps &
-  NeighborItemProps & {
-    /** @deprecated
-     * You shouldn't use Switch with two addons if one of them has hidden prop.
-     * Just use one Addon with text which could be read as On or Off.
-     * */
-    hidden?: boolean;
-  };
+export type SwitchAddonProps = BoxProps & NeighborItemProps;
 
-/** @deprecated */
-export interface ISwitchContext extends SwitchContext, UnknownProperties {}
 export type SwitchContext = {
   getAddonProps: PropGetterFn;
   getValueProps: PropGetterFn;

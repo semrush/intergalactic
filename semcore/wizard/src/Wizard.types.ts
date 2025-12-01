@@ -1,5 +1,5 @@
 import type { ButtonProps } from '@semcore/button';
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { BoxProps } from '@semcore/flex-box';
 import type { ModalProps } from '@semcore/modal';
@@ -7,8 +7,6 @@ import type React from 'react';
 
 export type WizardStep = string | number | boolean;
 
-/** @deprecated */
-export interface IWizardProps extends WizardProps, UnknownProperties {}
 export type WizardProps = ModalProps & {
   /**
    * Active step value
@@ -18,8 +16,6 @@ export type WizardProps = ModalProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IWizardSidebarProps extends WizardSidebarProps, UnknownProperties {}
 export type WizardSidebarProps = BoxProps & {
   /**
    * Sidebar title
@@ -32,8 +28,6 @@ export type WizardSidebarProps = BoxProps & {
   id?: string;
 };
 
-/** @deprecated */
-export interface IWizardStepProps extends WizardStepProps, UnknownProperties {}
 export type WizardStepProps = BoxProps & {
   /**
    * Step value
@@ -50,8 +44,6 @@ export type WizardStepProps = BoxProps & {
   active?: boolean;
 };
 
-/** @deprecated */
-export interface IWizardStepperProps extends WizardStepperProps, UnknownProperties {}
 export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   /**
    * Step value

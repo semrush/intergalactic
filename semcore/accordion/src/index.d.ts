@@ -1,4 +1,4 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import type { Text } from '@semcore/typography';
 import type { Property } from 'csstype';

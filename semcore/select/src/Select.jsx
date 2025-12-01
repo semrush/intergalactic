@@ -471,8 +471,6 @@ const Select = createComponent(
       },
     ],
     Group: Dropdown.Group,
-    OptionTitle: DropdownMenu.ItemTitle,
-    OptionHint: DropdownMenu.ItemHint,
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],

@@ -1,4 +1,4 @@
-import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import type { BoxProps } from '@semcore/flex-box';
 import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
@@ -6,8 +6,6 @@ import type React from 'react';
 
 export type InputSize = 'm' | 'l';
 
-/** @deprecated */
-export interface IInputProps extends InputProps, UnknownProperties {}
 export type InputProps = BoxProps &
   NeighborItemProps &
   NeighborLocationProps & {
@@ -27,8 +25,6 @@ export type InputProps = BoxProps &
     state?: 'normal' | 'invalid' | 'valid';
   };
 
-/** @deprecated */
-export interface IInputValueProps extends InputValueProps, UnknownProperties {}
 export type InputValueProps = BoxProps &
   NeighborItemProps &
   WithAutoFocusEnhanceProps & {
@@ -45,10 +41,6 @@ export type InputValueProps = BoxProps &
      */
     onChange?: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
     /**
-     * @deprecated Set `disabled` on `Input` instead.
-     * */
-    disabled?: boolean;
-    /**
      * Sets the input to the read-only state
      * */
     readOnly?: boolean;
@@ -63,8 +55,6 @@ export type InputValueProps = BoxProps &
     placeholder?: string;
   };
 
-/** @deprecated */
-export interface IInputAddonProps extends InputAddonProps, UnknownProperties {}
 export type InputAddonProps = BoxProps &
   NeighborItemProps & {
     /**
@@ -82,8 +72,6 @@ export type InputAddonProps = BoxProps &
     size?: InputSize;
   };
 
-/** @deprecated */
-export interface IInputCtx extends InputCtx, UnknownProperties {}
 export type InputCtx = {
   getValueProps: PropGetterFn;
   getAddonProps: PropGetterFn;

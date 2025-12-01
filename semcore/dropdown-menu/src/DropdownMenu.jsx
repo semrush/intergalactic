@@ -533,46 +533,6 @@ function ItemHint({ styles }) {
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);
 }
 
-/**
- * @deprecated Use Item hint
- */
-function Hint(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='hint' />,
-  );
-}
-/**
- * @deprecated Use Group with title prop
- */
-function Title(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='title' />,
-  );
-}
-
-/**
- * @deprecated
- */
-function Nesting({ forwardRef }) {
-  return <Root render={DropdownMenu.Item} ref={forwardRef} />;
-}
-
-/**
- * @deprecated
- */
-function NestingTrigger({ forwardRef }) {
-  return (
-    <Root
-      render={DropdownMenu.Item.Content}
-      tag={DropdownMenu.Trigger}
-      ref={forwardRef}
-      use:role='menuitem'
-    />
-  );
-}
-
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
@@ -583,12 +543,6 @@ const DropdownMenu = createComponent(
     Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
-    /**
-     * @deprecated. Use just Item. See examples on
-     */
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
-    ItemTitle: Title,
-    ItemHint: Hint,
     Group: Dropdown.Group,
   },
   {

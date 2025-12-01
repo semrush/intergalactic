@@ -1,4 +1,4 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import type React from 'react';
 
@@ -17,10 +17,6 @@ export type SliderOption<OptionValue extends SliderValue> = {
   label: React.ReactNode;
 };
 
-/** @deprecated */
-export interface ISliderProps<Value extends SliderValue = SliderValue>
-  extends SliderProps<Value>,
-  UnknownProperties {}
 export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps & {
   /** Numeric value
    */

@@ -1,12 +1,10 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { DotProps } from '@semcore/dot';
 import type { Box, BoxProps } from '@semcore/flex-box';
 import type { NeighborItemProps } from '@semcore/neighbor-location';
 import type React from 'react';
 
-/** @deprecated */
-export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
 export type BaseTriggerProps = BoxProps &
   NeighborItemProps &
   WithAnimatedSizeEnhanceProps & {
@@ -35,15 +33,8 @@ export type BaseTriggerProps = BoxProps &
      * Sets disabled state to trigger
      */
     disabled?: boolean;
-    /** Trigger theme
-     * @deprecated
-     * @use IBaseTriggerProps.state
-     * */
-    theme?: 'normal' | 'valid' | 'invalid' | false;
   };
 
-/** @deprecated */
-export interface IButtonTriggerProps extends ButtonTriggerProps, UnknownProperties {}
 export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
@@ -54,8 +45,6 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   chevron?: boolean;
 };
 
-/** @deprecated */
-export interface ILinkTriggerProps extends LinkTriggerProps, UnknownProperties {}
 export type LinkTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
@@ -63,8 +52,6 @@ export type LinkTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   color?: string;
 };
 
-/** @deprecated */
-export interface IFilterTriggerProps extends FilterTriggerProps, UnknownProperties {}
 export type FilterTriggerProps = BaseTriggerProps & {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;

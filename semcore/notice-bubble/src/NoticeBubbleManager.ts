@@ -59,25 +59,12 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     this.emit();
     return {
       uid,
-      update: this.update.bind(this, uid),
+      update: this.replace.bind(this, uid),
       remove: this.remove.bind(this, uid),
       ref,
       // todo Brauer Ilia: remove this property, because we added logic about autofocus in Notice
       focus,
     };
-  }
-
-  public update(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): boolean {
-    const index = this.items.findIndex((item) => item.uid === uid);
-    if (index !== -1) {
-      this.items[index] = {
-        ...this.items[index],
-        ...props,
-      };
-      this.emit();
-      return true;
-    }
-    return false;
   }
 
   public replace(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {

@@ -10,8 +10,6 @@ type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-/** @deprecated */
-export interface IDragAndDropProps extends DragAndDropProps, UnknownProperties {}
 export type DragAndDropProps = BoxProps & {
   /**
    * @deprecated don't use this prop
@@ -42,8 +40,6 @@ export type DragAndDropProps = BoxProps & {
   scrollableContainerRef?: React.MutableRefObject<HTMLElement | null>;
 };
 
-/** @deprecated */
-export interface IDraggableProps extends DraggableProps, UnknownProperties {}
 export type DraggableProps = BoxProps & {
   /** Placement of visual drag-and-drop marker
    * @default right
@@ -67,8 +63,6 @@ export type DraggableProps = BoxProps & {
   isCustomFocus?: boolean;
 };
 
-/** @deprecated */
-export interface IDragAndDropContext extends DragAndDropContext, UnknownProperties {}
 export type DragAndDropContext = {
   getDraggableProps: PropGetterFn;
   getDroppableProps: PropGetterFn;
