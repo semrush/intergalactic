@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import SwitchAdvancedExample, { defaultProps } from './examples/switch';
+import SwitchPropsExample, { defaultProps } from './examples/switch-fh';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Switch',
 };
 
-export const SwitchAdvanced: StoryObj<typeof defaultProps> = {
-  render: SwitchAdvancedExample,
+export const SwitchProps: StoryObj<typeof defaultProps> = {
+  render: SwitchPropsExample,
   argTypes: {
     label: { control: 'text' },
     showBadge: { control: 'boolean' },

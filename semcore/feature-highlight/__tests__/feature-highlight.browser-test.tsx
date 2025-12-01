@@ -175,7 +175,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       test(`Verify Switch disabled=${item.disabled} size=${item.size}  checked=${item.checked} showBadge=${item.showBadge}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch.tsx', 'en', item);
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch-fh.tsx', 'en', item);
 
         const outline = locators.switchOutline(page);
         if (item.disabled) {

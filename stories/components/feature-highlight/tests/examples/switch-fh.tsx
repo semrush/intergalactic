@@ -43,11 +43,11 @@ const Demo = (props: SwitchFHAdvancedProps) => {
             <SummaryAI
               color='--intergalactic-icon-primary-feature-highlight'
               ml={2}
-              style={{ verticalAlign: size === 'xl' ? -3 : 'middle' }}
+              style={{ verticalAlign: -3 }}
             />
           )}
+          {showBadge && <BadgeFH ml={2}>{badgeText}</BadgeFH>}
         </SwitchFH.Addon>
-        {showBadge && <BadgeFH ml={2}>{badgeText}</BadgeFH>}
       </SwitchFH>
       <ScreenReaderOnly id='switch-aria-desc'>Powered by AI</ScreenReaderOnly>
     </Flex>
