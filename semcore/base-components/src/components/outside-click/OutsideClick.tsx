@@ -6,8 +6,6 @@ import { getNodeByRef, type NodeByRef, useForkRef } from '@semcore/core/lib/util
 import useEventCallback from '@semcore/core/lib/utils/use/useEventCallback';
 import React, { cloneElement } from 'react';
 
-/** @deprecated */
-export interface IOutsideClickProps extends OutsideClickProps, UnknownProperties {}
 export type OutsideClickProps = {
   /**
    * Function called on click outside the component from excludeRefs
@@ -31,7 +29,7 @@ type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEve
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
 const noop = () => {};
-function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
+function OutsideClickRoot(props: IFunctionProps<OutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);

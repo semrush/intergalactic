@@ -2,10 +2,6 @@ import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/co
 
 import type { BoxProps, FlexProps } from '../flex-box';
 
-/* utils type */
-
-/** @deprecated */
-export interface IColProps extends ColProps, UnknownProperties {}
 export type ColProps = BoxProps & {
   /** Column size */
   span?: number | boolean | Array<number | boolean>;
@@ -27,8 +23,6 @@ export type ColProps = BoxProps & {
   gutter?: number;
 };
 
-/** @deprecated */
-export interface IRowProps extends RowProps, UnknownProperties {}
 export type RowProps = FlexProps & {
   /**
    * Gutter between columns
