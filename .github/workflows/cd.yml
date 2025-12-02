@@ -520,7 +520,14 @@ jobs:
           CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
         shell: pwsh
         run: |
-          pnpm exec playwright test --config playwright.nvda.config.ts $env:CHANGED_COMPONENTS
+          $components = $env:CHANGED_COMPONENTS -split '\s+' | Where-Object { $_ }
+
+          if (-not $components -or $components.Count -eq 0) {
+            Write-Host "No changed components; skipping."
+            exit 0
+          }
+
+          pnpm exec playwright test --config playwright.nvda.config.ts -- $components
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.nvda-testing.outcome != 'success'
