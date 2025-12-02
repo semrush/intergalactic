@@ -23,8 +23,8 @@ const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
     );
   }
   const [semcoreDirItems, toolsDirItems] = await Promise.all([
-    readdir(resolvePath(rootPath, 'semcore')),
-    readdir(resolvePath(rootPath, 'tools')),
+    readdir(resolvePath(...rootPath.split('/'), 'semcore')),
+    readdir(resolvePath(...rootPath.split('/'), 'tools')),
   ]);
   const workspaces: string[] = [];
   for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
@@ -46,7 +46,7 @@ const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
   for (const workspace of workspaces) {
     const workspaceDestination = workspace.split('/').pop();
     if (workspaceDestination === componentName) {
-      return resolvePath(rootPath, workspace);
+      return resolvePath(...rootPath.split('/'), ...workspace.split('/'));
     }
   }
 
@@ -71,7 +71,7 @@ const tryToResolveFileExtention = async (path: string) => {
 };
 
 const tryToResolveIndexFile = async (path: string) => {
-  return tryToResolveFileExtention(resolvePath(path, 'index'));
+  return tryToResolveFileExtention(resolvePath(...path.split('/'), 'index'));
 };
 
 const rootFiles = ['README.md', 'package.json'];
@@ -114,8 +114,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
         }
 
         for (const absolutePath of [
-          resolvePath(workspacePath, modifiedSubPath),
-          resolvePath(workspacePath, subPath),
+          resolvePath(...workspacePath.split('/'), ...modifiedSubPath.split('/')),
+          resolvePath(...workspacePath.split('/'), ...subPath.split('/')),
         ]) {
           for (const tryToResolve of [
             tryToResolveFile,
