@@ -44,7 +44,7 @@ const Demo = (props: SelectComponentConfigProps) => {
     ...restProps
   } = props;
 
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState<string | number | (string | number)[] | null>('');
   const [searchValue, setSearchValue] = React.useState('');
 
   const options = Array(optionCount)
@@ -76,7 +76,7 @@ const Demo = (props: SelectComponentConfigProps) => {
         loading={triggerLoading}
         id='component-config-select'
       />
-      <Select.Popper>
+      <Select.Popper aria-labelledby='component-config-select'>
         {showInputSearch && (
           <Select.InputSearch
             value={searchValue}
@@ -110,13 +110,6 @@ export const defaultProps: SelectComponentConfigProps = {
   triggerDisabled: undefined,
   triggerState: undefined,
   triggerLoading: undefined,
-
-  // Popper
-  popperPlacement: undefined,
-  popperFlip: undefined,
-  popperOffset: undefined,
-  popperArrow: undefined,
-  popperModifiers: undefined,
 
   // List
   listSize: 'm',
