@@ -66,9 +66,9 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     await test.step('Verify keyboard navigation inside dialog', async () => {
-      // Wait for options to be fully interactive
-      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+      await page.waitForTimeout(200);
 
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -117,7 +117,8 @@ test.describe(TAG.FUNCTIONAL, () => {
     await test.step('Verify value applies on trigger when selecting item from select list', async () => {
       await page.keyboard.press('ArrowDown');
       await locators.apply(page).waitFor({ state: 'visible' });
-      // Wait for options to be fully interactive
+      await page.waitForTimeout(200);
+
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('ArrowDown');
@@ -141,7 +142,8 @@ test.describe(TAG.FUNCTIONAL, () => {
     await test.step('Verify Case when entering min value only', async () => {
       await page.keyboard.press('Space');
       await locators.popper(page).waitFor({ state: 'visible' });
-      // Wait for textboxes to be fully interactive
+      await page.waitForTimeout(200);
+
       await expect(locators.textboxes(page).nth(0)).toBeVisible();
 
       await page.keyboard.press('Tab');
@@ -164,7 +166,6 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     await test.step('Verify Case when entering max value only', async () => {
-      // Wait for trigger to be ready
       await expect(locators.trigger(page)).toBeVisible();
 
       await page.keyboard.press('Space');

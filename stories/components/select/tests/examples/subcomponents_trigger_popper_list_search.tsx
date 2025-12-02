@@ -13,14 +13,6 @@ export type SelectComponentConfigProps = SelectProps & {
   triggerDisabled?: boolean;
   triggerState?: 'normal' | 'valid' | 'invalid';
   triggerLoading?: boolean;
-
-  // Popper props
-  popperPlacement?: 'top' | 'bottom' | 'left' | 'right';
-  popperFlip?: boolean;
-  popperOffset?: number;
-  popperArrow?: boolean;
-  popperModifiers?: any[];
-
   // List props
   listSize?: 'm' | 'l';
   listMaxH?: string | number;
@@ -40,13 +32,6 @@ const Demo = (props: SelectComponentConfigProps) => {
     triggerDisabled = undefined,
     triggerState = undefined,
     triggerLoading = undefined,
-
-    // Popper
-    popperPlacement = undefined,
-    popperFlip = undefined,
-    popperOffset = undefined,
-    popperArrow = undefined,
-    popperModifiers = undefined,
 
     // List
     listSize = 'm',
@@ -91,13 +76,7 @@ const Demo = (props: SelectComponentConfigProps) => {
         loading={triggerLoading}
         id='component-config-select'
       />
-      <Select.Popper
-        placement={popperPlacement}
-        flip={popperFlip}
-        offset={popperOffset}
-        arrow={popperArrow}
-        modifiers={popperModifiers}
-      >
+      <Select.Popper>
         {showInputSearch && (
           <Select.InputSearch
             value={searchValue}

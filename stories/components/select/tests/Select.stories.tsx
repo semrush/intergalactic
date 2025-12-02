@@ -184,15 +184,6 @@ export const SubcomponentsTriggerPopperListSearch: StoryObj<typeof Subcomponents
     },
     triggerLoading: { control: { type: 'boolean' } },
 
-    // Popper props
-    popperPlacement: {
-      control: { type: 'select' },
-      options: ['top', 'bottom', 'left', 'right'],
-    },
-    popperFlip: { control: { type: 'boolean' } },
-    popperOffset: { control: { type: 'number' } },
-    popperArrow: { control: { type: 'boolean' } },
-
     // List props
     listSize: {
       control: { type: 'select' },
