@@ -1,249 +1,256 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Slider', () => {
-  test('Verify different states and types', async ({ page }) => {
-    const standPath = 'stories/components/slider/tests/examples/different-types-states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
+  slider: (page: Page) => page.locator('[data-ui-name="Slider"]'),
+  bar: (page: Page) => page.locator('[data-ui-name="Slider.Bar"]'),
+  knob: (page: Page) => page.locator('[data-ui-name="Slider.Knob"]'),
+  options: (page: Page) => page.locator('[data-ui-name="Slider.Options"]'),
+  item: (page: Page, value?: string) => {
+    const base = page.locator('div[data-ui-name="Slider.Item"]');
+    return value ? base.filter({ has: page.locator(`[value="${value}"]`) }) : base;
+  },
+  hiddenInput: (page: Page) => page.locator('input[type="hidden"]'),
+  inputNumberValue: (page: Page) => page.locator('[data-ui-name="InputNumber.Value"]'),
+  visibleInput: (page: Page) => page.locator('input[data-ui-name="Box"]'),
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test.describe('Base states and styles', () => {
+    const sliderVariables = [
+      // Basic combinations with defaultValue variations
+      { defaultValue: 0, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
+      { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
+      { defaultValue: 100, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
 
-    await expect(page).toHaveScreenshot();
-  });
+      // Test with disabled state
+      { defaultValue: 50, min: 0, max: 100, step: 1, disabled: true, showKnob: true, showBar: true },
 
-  test('Verify customized options view', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/customized_options_view.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+      // Test without knob
+      { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: false, showBar: true },
 
-    await page.setContent(htmlContent);
+      // Test without bar
+      { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: false },
 
-    await expect(page).toHaveScreenshot();
-  });
+      // Test without both knob and bar
+      { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: false, showBar: false },
 
-  test('Verify deafult styles', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/slider_with_options.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+      // Test with different ranges
+      { defaultValue: 25, min: 10, max: 50, step: 5, disabled: false, showKnob: true, showBar: true },
+      { defaultValue: 500, min: 0, max: 1000, step: 10, disabled: false, showKnob: true, showBar: true },
 
-    await page.setContent(htmlContent);
+      // Test disabled with different configurations
+      { defaultValue: 75, min: 0, max: 100, step: 1, disabled: true, showKnob: false, showBar: true },
+      { defaultValue: 25, min: 0, max: 100, step: 1, disabled: true, showKnob: true, showBar: false },
+    ];
 
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
-    await expect(bar).toHaveCount(1);
-    const knob = page.locator('[data-ui-name="Slider.Knob"]');
-    const options = page.locator('[data-ui-name="Slider.Options"]');
+    sliderVariables.forEach((item) => {
+      test(`Verify Slider defaultValue ${item.defaultValue}, min ${item.min}, max ${item.max}, step ${item.step}, disabled ${item.disabled}, showKnob ${item.showKnob}, showBar ${item.showBar}`, {
+        tag: [TAG.PRIORITY_HIGH, '@slider'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/slider/tests/examples/basic_usage.tsx', 'en', item);
 
-    await test.step('Verify bar default styles', async () => {
-      await expect(bar).toHaveCSS('height', '4px');
-      await expect(bar).toHaveCSS('background-color', 'rgb(0, 143, 248)');
+        const slider = locators.slider(page);
+        const knob = locators.knob(page);
+
+        await test.step('Verify default state', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+
+        if (!item.disabled && item.showKnob) {
+          await test.step('Verify hover state on knob', async () => {
+            await knob.hover();
+            await expect(page).toHaveScreenshot();
+          });
+
+          await test.step('Verify focus state', async () => {
+            await page.keyboard.press('Tab');
+            await expect(slider).toBeFocused();
+            await expect(page).toHaveScreenshot();
+          });
+        }
+      });
     });
+  });
 
-    await test.step('Verify bar hover on item', async () => {
-      const item = page.locator('div[data-ui-name="Slider.Item"][value="big"]');
+  test('Verify slider between options by keyboard', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/slider/docs/examples/customized_options_view.tsx', 'en');
+
+    const slider = locators.slider(page);
+    const knob = locators.knob(page);
+
+    await test.step('Focus slider and verify hover state', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await item.hover();
+      await page.keyboard.press('ArrowRight');
+      await expect(slider).toBeFocused();
+      await knob.hover();
       await expect(page).toHaveScreenshot();
     });
-
-    await test.step('Verify bar knob defauls styles', async () => {
-      await expect(knob).toHaveCSS('width', '20px');
-      await expect(knob).toHaveCSS('height', '20px');
-      await expect(knob).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-    });
-
-    await test.step('Verify bar knob hover styles', async () => {
-      await knob.hover();
-    });
-
-    await test.step('Verify bar knob defauls options', async () => {
-      await expect(options).toHaveCSS('margin-top', '4px');
-      await expect(options).toHaveCSS('padding-top', '2px');
-      await expect(options).toHaveCSS('color', 'rgb(108, 110, 121)');
-    });
   });
 
-  test('Verify roles and attributes', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/slider_with_options.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify slider with input validation states', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@slider'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    const bar = locators.bar(page);
+    const inputValue = locators.inputNumberValue(page);
 
-    const slider = page.locator('[data-ui-name="Slider"]');
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
     await expect(bar).toHaveCount(1);
-    const knob = page.locator('[data-ui-name="Slider.Knob"]');
-    const input = page.locator('input');
 
-    await test.step('Verify slider attributes', async () => {
-      await expect(slider).toHaveAttribute('type', 'button');
-      await expect(slider).toHaveAttribute('role', 'slider');
-      await expect(slider).toHaveAttribute('aria-orientation', 'horizontal');
-      await expect(slider).toHaveAttribute('aria-valuemin', '1');
-      await expect(slider).toHaveAttribute('aria-valuemax', '3');
+    await test.step('Verify invalid state with value below min', async () => {
+      await inputValue.fill('0');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify keyboard navigation between options', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/slider/docs/examples/customized_options_view.tsx', 'en');
+
+    const slider = locators.slider(page);
+    const bar = locators.bar(page);
+    const input = locators.hiddenInput(page);
+
+    await expect(bar).toHaveCount(1);
+
+    await test.step('Focus slider', async () => {
+      await page.keyboard.press('Tab');
+      await expect(slider).toBeFocused();
+    });
+
+    await test.step('Navigate right with ArrowRight', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(input).toHaveValue('big');
+      await expect(slider).toHaveAttribute('aria-valuenow', '3');
+    });
+
+    await test.step('Navigate down with ArrowDown', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(input).toHaveValue('small');
+      await expect(slider).toHaveAttribute('aria-valuenow', '1');
+    });
+
+    await test.step('Navigate up with ArrowUp', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(input).toHaveValue('medium');
       await expect(slider).toHaveAttribute('aria-valuenow', '2');
-      await expect(slider).toHaveAttribute('aria-valuetext', 'Medium');
-      await expect(slider).toHaveAttribute('min', '1');
-      await expect(slider).toHaveAttribute('max', '3');
-      await expect(slider).toHaveAttribute('step', '1');
-      await expect(slider).toHaveAttribute('value', 'medium');
     });
-    await test.step('Verify bar attributes', async () => {
-      await expect(bar).toHaveAttribute('value', '2');
-      await expect(bar).toHaveAttribute('min', '1');
-      await expect(bar).toHaveAttribute('max', '3');
+
+    await test.step('Navigate to start with Home', async () => {
+      await page.keyboard.press('Home');
+      await expect(slider).toHaveAttribute('aria-valuenow', '1');
     });
-    await test.step('Verify knob attributes', async () => {
-      await expect(knob).toHaveAttribute('value', '2');
-      await expect(knob).toHaveAttribute('min', '1');
-      await expect(knob).toHaveAttribute('max', '3');
-    });
-    await test.step('Verify input attributes', async () => {
-      await expect(input).toHaveAttribute('value', 'medium');
-      await expect(input).toHaveAttribute('aria-hidden', 'true');
-      await expect(input).toHaveAttribute('type', 'hidden');
+
+    await test.step('Navigate to end with End', async () => {
+      await page.keyboard.press('End');
+      await expect(slider).toHaveAttribute('aria-valuenow', '3');
     });
   });
 
-  test('Verify slider between options by mouse', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/customized_options_view.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify slider with input by mouse', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@slider'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    const slider = locators.slider(page);
+    const bar = locators.bar(page);
+    const input = locators.visibleInput(page);
+    const inputValue = locators.inputNumberValue(page);
 
-    const slider = page.locator('[data-ui-name="Slider"]');
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
     await expect(bar).toHaveCount(1);
-    const knob = page.locator('[data-ui-name="Slider.Knob"]');
-    const input = page.locator('input');
-    const items = page.locator('div[data-ui-name="Slider.Item"]');
 
-    await items.nth(2).click();
-    await expect(input).toHaveValue('big');
-    await expect(slider).toHaveAttribute('aria-valuenow', '3');
+    await test.step('Fill input with invalid value below min', async () => {
+      await inputValue.fill('0');
+      await expect(input).toHaveValue('0');
+      await expect(slider).toHaveAttribute('aria-valuenow', '0');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+    });
 
-    await items.first().click();
-    await expect(input).toHaveValue('small');
-    await expect(slider).toHaveAttribute('aria-valuenow', '1');
+    await test.step('Fill input with valid value at min', async () => {
+      await inputValue.fill('10');
+      await expect(input).toHaveValue('10');
+      await expect(slider).toHaveAttribute('aria-valuenow', '10');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
+    });
 
-    await expect(page).toHaveScreenshot();
+    await test.step('Fill input with invalid value above max', async () => {
+      await inputValue.fill('900');
+      await expect(input).toHaveValue('900');
+      await expect(slider).toHaveAttribute('aria-valuenow', '900');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+    });
   });
 
-  test('Verify slider between options by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/customized_options_view.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify slider with input by keyboard', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    const slider = locators.slider(page);
+    const bar = locators.bar(page);
+    const input = locators.visibleInput(page);
+    const inputValue = locators.inputNumberValue(page);
 
-    const slider = page.locator('[data-ui-name="Slider"]');
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
     await expect(bar).toHaveCount(1);
-    const knob = page.locator('[data-ui-name="Slider.Knob"]');
-    const input = page.locator('input');
-    const items = page.locator('div[data-ui-name="Slider.Item"]');
 
-    await page.keyboard.press('Tab');
+    await test.step('Navigate and increment slider value', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await expect(input).toHaveValue('52');
+      await expect(slider).toHaveAttribute('aria-valuenow', '52');
+      await expect(inputValue).toHaveValue('52');
+    });
 
-    await expect(slider).toBeFocused();
-    await knob.hover();
-    await expect(page).toHaveScreenshot();
+    await test.step('Focus input and increment value', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowUp');
+      await expect(input).toHaveValue('53');
+      await expect(slider).toHaveAttribute('aria-valuenow', '53');
+      await expect(inputValue).toHaveValue('53');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
+    });
 
-    await page.keyboard.press('ArrowRight');
+    await test.step('Fill invalid value and verify slider clamps to min', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await inputValue.fill('0');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('ArrowRight');
+      await expect(input).toHaveValue('10');
+      await expect(slider).toHaveAttribute('aria-valuenow', '10');
+      await expect(inputValue).toHaveValue('10');
+    });
 
-    await expect(input).toHaveValue('big');
-    await expect(slider).toHaveAttribute('aria-valuenow', '3');
-
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await expect(input).toHaveValue('small');
-    await expect(slider).toHaveAttribute('aria-valuenow', '1');
-
-    await page.keyboard.press('ArrowUp');
-    await expect(input).toHaveValue('medium');
-    await expect(slider).toHaveAttribute('aria-valuenow', '2');
-
-    await page.keyboard.press('Home');
-    await expect(slider).toHaveAttribute('aria-valuenow', '1');
-
-    await page.keyboard.press('End');
-    await expect(slider).toHaveAttribute('aria-valuenow', '3');
-  });
-
-  test('Verify slider with input by mouse', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/numeric_slider.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const slider = page.locator('[data-ui-name="Slider"]');
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
-    await expect(bar).toHaveCount(1);
-    const knob = page.locator('[data-ui-name="Slider.Knob"]');
-    const input = page.locator('input[data-ui-name="Box"]');
-    const items = page.locator('div[data-ui-name="Slider.Item"]');
-
-    const inputValue = page.locator('[data-ui-name="InputNumber.Value"]');
-
-    inputValue.fill('0');
-    await expect(input).toHaveValue('0');
-    await expect(slider).toHaveAttribute('aria-valuenow', '0');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
-
-    await expect(page).toHaveScreenshot();
-
-    inputValue.fill('10');
-    await expect(input).toHaveValue('10');
-    await expect(slider).toHaveAttribute('aria-valuenow', '10');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
-
-    inputValue.fill('900');
-    await expect(input).toHaveValue('900');
-    await expect(slider).toHaveAttribute('aria-valuenow', '900');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
-  });
-
-  test('Verify slider with input by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/slider/docs/examples/numeric_slider.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const slider = page.locator('[data-ui-name="Slider"]');
-    const bar = page.locator('[data-ui-name="Slider.Bar"]');
-    await expect(bar).toHaveCount(1);
-    const input = page.locator('input[data-ui-name="Box"]');
-
-    const inputValue = page.locator('[data-ui-name="InputNumber.Value"]');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await expect(input).toHaveValue('52');
-    await expect(slider).toHaveAttribute('aria-valuenow', '52');
-    await expect(inputValue).toHaveValue('52');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowUp');
-    await expect(input).toHaveValue('53');
-    await expect(slider).toHaveAttribute('aria-valuenow', '53');
-    await expect(inputValue).toHaveValue('53');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
-
-    await page.keyboard.press('Shift+Tab');
-    await page.keyboard.press('Tab');
-    inputValue.fill('0');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
-    await page.keyboard.press('Shift+Tab');
-    await page.keyboard.press('ArrowRight');
-    await expect(input).toHaveValue('10');
-    await expect(slider).toHaveAttribute('aria-valuenow', '10');
-    await expect(inputValue).toHaveValue('10');
-
-    await page.keyboard.press('Tab');
-    inputValue.fill('110');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
-    await page.keyboard.press('Shift+Tab');
-    await page.keyboard.press('ArrowLeft');
-    await expect(input).toHaveValue('100');
-    await expect(slider).toHaveAttribute('aria-valuenow', '100');
-    await expect(inputValue).toHaveValue('100');
-    await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
+    await test.step('Fill invalid value and verify slider clamps to max', async () => {
+      await page.keyboard.press('Tab');
+      await inputValue.fill('110');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('ArrowLeft');
+      await expect(input).toHaveValue('100');
+      await expect(slider).toHaveAttribute('aria-valuenow', '100');
+      await expect(inputValue).toHaveValue('100');
+      await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
+    });
   });
 });

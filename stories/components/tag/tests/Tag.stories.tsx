@@ -1,17 +1,7 @@
 import Tag from '@semcore/ui/tag';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import StylesThemeSizesExample from './examples/styles-themes-sizes';
-import StylesThemeSizesAddonsInteractiveExample from './examples/styles-themes-sizes-addons-interactive';
-import DisabledStylesThemeSizesExample from './examples/styles-themes-sizes-disabled';
-import StylesThemeSizesInteractiveExample from './examples/styles-themes-sizes-interactive';
-import StylesThemeSizesWithAddonAndCloseActiveExample from './examples/styles-themes-sizes-with-addon-and-X-active-part';
-import StylesThemeSizesWithAddonAndCloseDisabledExample from './examples/styles-themes-sizes-with-addon-and-X-disabled';
-import StylesThemeSizesWithAddonAndCloseInteractiveExample from './examples/styles-themes-sizes-with-addon-and-X-interactive';
-import StylesThemeSizesWithAddonInteractiveExample from './examples/styles-themes-sizes-with-addon-interactive';
-import StylesThemeSizesWithDisabledXExample from './examples/styles-themes-sizes-with-icon-and-disabled-X';
-import StylesThemeSizesWithIconAndXExample from './examples/styles-themes-sizes-with-icon-and-X';
-import StylesThemeSizesWithXExample from './examples/styles-themes-sizes-with-X';
+import BasicPropsExample, { defaultProps } from './examples/basic_usage';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag/Tests',
@@ -19,48 +9,60 @@ const meta: Meta<typeof Tag> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Tag>;
 
-export const StylesThemeSizes: Story = {
-  render: StylesThemeSizesExample,
-};
-
-export const StylesThemeSizesAddonsInteractive: Story = {
-  render: StylesThemeSizesAddonsInteractiveExample,
-};
-
-export const StylesThemeSizesInteractive: Story = {
-  render: StylesThemeSizesInteractiveExample,
-};
-
-export const DisabledStylesThemeSizes: Story = {
-  render: DisabledStylesThemeSizesExample,
-};
-
-export const StylesThemeSizesWithAddonAndCloseInteractive: Story = {
-  render: StylesThemeSizesWithAddonAndCloseInteractiveExample,
-};
-
-export const StylesThemeSizesWithAddonAndCloseActive: Story = {
-  render: StylesThemeSizesWithAddonAndCloseActiveExample,
-};
-
-export const StylesThemeSizesWithAddonAndCloseDisabled: Story = {
-  render: StylesThemeSizesWithAddonAndCloseDisabledExample,
-};
-
-export const StylesThemeSizesWithX: Story = {
-  render: StylesThemeSizesWithXExample,
-};
-
-export const StylesThemeSizesWithIconAndX: Story = {
-  render: StylesThemeSizesWithIconAndXExample,
-};
-
-export const StylesThemeSizesWithDisabledX: Story = {
-  render: StylesThemeSizesWithDisabledXExample,
-};
-
-export const StylesThemeSizesWithAddonInteractive: Story = {
-  render: StylesThemeSizesWithAddonInteractiveExample,
+export const BasicProps: StoryObj<typeof defaultProps> = {
+  args: defaultProps,
+  argTypes: {
+    text: {
+      control: 'text',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    active: {
+      control: 'boolean',
+    },
+    interactive: {
+      control: 'boolean',
+    },
+    theme: {
+      control: 'select',
+      options: ['primary', 'secondary', 'additional', 'muted', 'invert'],
+    },
+    color: {
+      control: 'select',
+      options: [
+        'gray-500',
+        'blue-500',
+        'green-500',
+        'salad-500',
+        'orange-500',
+        'yellow-500',
+        'red-500',
+        'pink-500',
+        'violet-500',
+        'white-500',
+      ],
+    },
+    size: {
+      control: 'select',
+      options: ['m', 'l', 'xl'],
+    },
+    showAddonLeft: {
+      control: 'boolean',
+    },
+    showAddonRight: {
+      control: 'boolean',
+    },
+    showClose: {
+      control: 'boolean',
+    },
+    useTagContainer: {
+      control: 'boolean',
+    },
+    locale: {
+      control: 'text',
+    },
+  },
+  render: BasicPropsExample,
 };

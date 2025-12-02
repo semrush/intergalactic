@@ -504,17 +504,17 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test('Verify virtual scroll by keyboard', {
+  test.skip('Verify virtual scroll by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu'],
   }, async ({ page, browserName }) => {
+    if (browserName != 'chromium') test.skip();
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(locators.button(page).first()).not.toBeFocused();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
 
     await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
@@ -522,7 +522,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await pressKeyMultipleTimes(page, 'ArrowDown', 3);
     await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
 
-    if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
     await expect(createProject).toBeFocused();

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice-bubble",
   "description": "Semrush NoticeBubble Component",
-  "version": "16.1.12",
+  "version": "16.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

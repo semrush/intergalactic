@@ -12,6 +12,8 @@ import type { eventInteraction } from '@semcore/popper';
 import type { ScrollAreaProps } from '@semcore/scroll-area';
 import type { Text } from '@semcore/typography';
 
+import type { VirtualList, RenderRowProps } from './components/VirtualList';
+
 export type DropdownMenuSize = 'm' | 'l';
 
 /** @deprecated */
@@ -204,6 +206,9 @@ declare const DropdownMenu: Intergalactic.Component<
    */
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
   Group: typeof Dropdown.Group;
+
+  VirtualList: typeof VirtualList;
+
   /**
    * @deprecated Use Item instead of Nesting
    */
@@ -232,3 +237,7 @@ declare const DropdownMenu: Intergalactic.Component<
 };
 
 export default DropdownMenu;
+
+export {
+  RenderRowProps,
+};

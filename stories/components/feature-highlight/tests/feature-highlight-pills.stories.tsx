@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import PillsAdvancedExample, { defaultProps } from './examples/pills/pills';
+import PillsPropsExample, { defaultProps } from './examples/pills/pills';
 import PillsAddonLogicExample from './examples/pills/pills-addon-logic';
 
 const meta: Meta = {
@@ -11,8 +11,8 @@ export const PillsAddonLogic: StoryObj = {
   render: PillsAddonLogicExample,
 };
 
-export const PillsAdvanced: StoryObj<typeof defaultProps> = {
-  render: PillsAdvancedExample,
+export const PillsProps: StoryObj<typeof defaultProps> = {
+  render: PillsPropsExample,
   argTypes: {
     firstPillText: { control: 'text' },
     secondPillText: { control: 'text' },

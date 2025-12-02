@@ -8,18 +8,14 @@ import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Flex, Box } from '@semcore/flex-box';
-import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
+import ScrollAreaComponent from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import { ListBoxContextProvider } from './components/Context';
+import { VirtualList } from './components/VirtualList';
 import style from './style/dropdown-menu.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-const ListBoxContextProvider = ({ children }) => (
-  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
-    {children}
-  </hideScrollBarsFromScreenReadersContext.Provider>
-);
 
 const menuItemContext = React.createContext({});
 
@@ -100,7 +96,7 @@ class DropdownMenuRoot extends AbstractDropdown {
 
     const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
-    if (!selected || !options || this.asProps.itemsCount !== undefined || isFocusAlreadyInPopper) return;
+    if (!selected || !options || this.menuRef.current?.dataset.isVirtual || isFocusAlreadyInPopper) return;
 
     this.scrollToNodeAsync(selected, true).then(() => {
       if (this.asProps.visible) {
@@ -118,8 +114,7 @@ class DropdownMenuRoot extends AbstractDropdown {
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
 
-    // this case is handled slightly differently on line 63.
-    if (selected && options && this.asProps.itemsCount === undefined) return;
+    if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
   }
@@ -150,6 +145,17 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   getListProps() {
+    return {
+      ...super.getListProps(),
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleKeyDownForMenu('list'),
+        this.handleArrowKeyDown.bind(this),
+      ),
+    };
+  }
+
+  getVirtualListProps() {
     return {
       ...super.getListProps(),
       onKeyDown: callAllEventHandlers(
@@ -573,6 +579,7 @@ const DropdownMenu = createComponent(
     Trigger,
     Popper: Dropdown.Popper,
     List,
+    VirtualList,
     Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],

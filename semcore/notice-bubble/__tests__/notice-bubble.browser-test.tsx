@@ -1,6 +1,6 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -26,12 +26,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
     },
     async ({ page, browserName }) => {
-      const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', {
+      await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
         focusLock: undefined,
       });
 
-      await page.setContent(htmlContent);
       const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
       const noticeBubbleContainer = page.locator('[data-ui-name="NoticeBubbleContainer"]');
 
@@ -101,12 +99,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Notice with interactive inside keyboard interactions when focusLock = true', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: true,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
     await test.step('Verify close button focused and hint shown when notice opened by keyboard', async () => {
@@ -149,12 +145,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Notice with interactiove inside mouse interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: false,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
     await test.step('Verify notice shown when click on th trigger', async () => {
@@ -181,15 +175,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Notice without interactive with duration keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
       duration: 500,
       type: 'info',
       focusLock: true,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show notice with completion state');
 
     await test.step('Verify multiple notices can be opened by keyboard and focus on trigger', async () => {
@@ -217,15 +209,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Notice without interactive with duration mouse interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: false,
       duration: 500,
       type: 'info',
       focusLock: false,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show notice with completion state');
 
     await test.step('Verify multiple notices can be opened by mouse click', async () => {
@@ -267,15 +257,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Replace last notice by keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx', 'en', {
       initialAnimation: false,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
-
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
@@ -292,15 +279,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Replace last notice by mouse', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
     await buttonTrigger.click();
@@ -312,6 +297,143 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.waitForSelector('text="Link 2 was moved to "Cats from outer space""');
     await expect(noticeBubble).toContainText('Link 2 was moved to');
     await expect(noticeBubble).toHaveCount(1);
+  });
+
+  test('Verify multiple managers work with same SM2 container - mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const notices = container.locator('[aria-live="polite"]');
+    await test.step('Verify both managers can add notices to same container', async () => {
+      await buttonBasic.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+
+      await expect(notices).toHaveCount(1);
+      await expect(notices.first()).toContainText('Link was moved to');
+
+      await buttonSuccess.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(1)).toContainText('Keyword was successfully moved');
+    });
+
+    await test.step('Verify notices can be closed independently', async () => {
+      await locators.closeButton(page).first().click();
+      await expect(notices).toHaveCount(1);
+      await expect(notices).toContainText('Keyword was successfully moved');
+    });
+  });
+
+  test('Verify replace last notice in SM2 container - mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
+      initialAnimation: true, // we have bug here
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const buttonReplace = locators.buttonTrigger(page, 'replace last success');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Show basic notice from first manager', async () => {
+      await buttonBasic.click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+      await expect(notices).toContainText('Link was moved to');
+    });
+
+    await test.step('Show success notice from second manager', async () => {
+      await buttonSuccess.click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(1)).toContainText('Keyword was successfully moved');
+    });
+
+    await test.step('Replace last notice', async () => {
+      await buttonReplace.click();
+      await page.getByText('This is notice about replace!').waitFor({ state: 'visible', timeout: 5000 });
+      await expect(notices).toHaveCount(2);
+      await expect(notices.nth(0)).toContainText('Link was moved to');
+      await expect(notices.nth(1)).toContainText('This is notice about replace!');
+      await expect(notices.nth(1)).not.toContainText('Keyword was successfully moved');
+    });
+  });
+
+  test('Verify multiple managers keyboard interactions in SM2 container', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
+      initialAnimation: false,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+    const container = page.locator('#notice-bubble-container');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Open first notice with keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+    });
+
+    await test.step('Tab to second button and open second notice', async () => {
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(1);
+    });
+  });
+
+  test('Verify notices disappear in SM2 container aftre duration is passed', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
+      initialAnimation: false,
+      duration: 500,
+      type: 'info',
+      focusLock: false,
+    });
+    const container = page.locator('#notice-bubble-container');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
+    const notices = container.locator('[aria-live="polite"]');
+
+    await test.step('Verify Base notice closes after duratiom', async () => {
+      await buttonBasic.click();
+      await buttonBasic.click();
+      await buttonBasic.click();
+      await locators.closeButton(page).nth(2).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(3);
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      await expect(notices).toHaveCount(0);
+    });
+
+    await test.step('Verify Success notice closes after duratiom', async () => {
+      await buttonSuccess.click();
+      await buttonSuccess.click();
+      await buttonSuccess.click();
+      await expect(notices).toHaveCount(3);
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      await expect(notices).toHaveCount(0);
+    });
   });
 });
 
@@ -325,15 +447,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Basic notice', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: undefined,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
     await page.keyboard.press('Tab');
@@ -351,15 +471,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Undo action', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/undo_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/undo_action.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: true,
     });
-
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -375,16 +492,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice not in portal', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx';
-
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
     await buttonTrigger.click();
@@ -397,15 +511,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Reload action', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/reload_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/reload_action.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: true,
     });
-
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -418,15 +529,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Completion state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
-
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -439,15 +547,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Success state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/success_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
 
-    await page.setContent(htmlContent);
     const buttonTrigger = locators.buttonTrigger(page, 'Show success notice');
     await buttonTrigger.click();
     await locators.closeButton(page).waitFor({ state: 'visible' });
@@ -457,15 +563,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Failture state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/failure_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/failure_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
-
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.closeButton(page).waitFor({ state: 'visible' });
@@ -476,15 +579,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Loading state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
-
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.closeButton(page).waitFor({ state: 'visible' });
@@ -501,14 +601,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify notice with illustration', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
     });
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -522,14 +620,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Warning notice without interactive element', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'warning',
       focusLock: false,
     });
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -540,19 +636,51 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Warning notice with interactive element', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'warning',
       focusLock: false,
     });
-    await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify notice bubble in SM2 container', {
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+
+    const container = page.locator('#notice-bubble-container');
+    const noticeInContainer = container.locator('[aria-live="polite"]');
+    await expect(noticeInContainer).toHaveCount(0);
+
+    await test.step('Verify basic notice renders in SM2 container', async () => {
+      await locators.buttonTrigger(page, 'Show basic notice').click();
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+
+      await expect(noticeInContainer).toHaveCount(1);
+      await expect(noticeInContainer).toContainText('Link was moved to');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify success notice with icon renders in SM2 container', async () => {
+      await locators.buttonTrigger(page, 'Show success notice').click();
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(noticeInContainer).toHaveCount(2);
+      await expect(noticeInContainer.nth(1)).toContainText('Keyword was successfully moved');
+      await locators.closeButton(page).nth(1).hover();
+      await page.getByText('Close').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });

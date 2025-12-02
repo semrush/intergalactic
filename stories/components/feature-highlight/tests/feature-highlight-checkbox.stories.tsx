@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import CheckboxAdvancedExample, { defaultProps } from './examples/checkbox';
+import CheckboxPropsExample, { defaultProps } from './examples/checkbox';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Checkbox',
 };
 
-export const CheckboxAdvanced: StoryObj<typeof defaultProps> = {
-  render: CheckboxAdvancedExample,
+export const CheckboxProps: StoryObj<typeof defaultProps> = {
+  render: CheckboxPropsExample,
   argTypes: {
     firstOptionText: { control: 'text' },
     secondOptionText: { control: 'text' },
