@@ -27,4 +27,16 @@ test.describe(` @tooltip ${TAG.ACCESSIBILITY}`, () => {
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
+
+  test('Informer', async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.getByRole('dialog').waitFor({ state: 'visible' });
+
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
 });

@@ -5,7 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
   modal: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Modal"]');
+    const base = page.getByRole('dialog');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   close: (page: Page, index?: number) => {
@@ -72,7 +72,6 @@ test.describe(` ${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify modal attributes', async () => {
-      await expect(locators.modal(page)).toHaveAttribute('role', 'dialog');
       await expect(locators.modal(page)).toHaveAttribute('aria-modal', 'true');
       await expect(locators.modal(page)).toHaveAttribute('aria-labelledby');
       await expect(locators.close(page)).toHaveAttribute('aria-label', 'Close');
