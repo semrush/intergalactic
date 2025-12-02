@@ -49,7 +49,7 @@ test.describe(`@select ${TAG.ACCESSIBILITY}`, () => {
     await test.step('Opened select', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').waitFor({ state: 'visible' });
+      await page.getByRole('option').first().waitFor({ state: 'visible' });
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
     });
