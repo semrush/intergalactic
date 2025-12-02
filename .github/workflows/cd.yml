@@ -32,7 +32,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -110,7 +110,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Cache build
         uses: actions/cache@v4
@@ -158,7 +158,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
@@ -214,7 +214,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
@@ -276,7 +276,7 @@ jobs:
 #        name: Setup pnpm cache
 #        with:
 #          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-#          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+#          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 #      - name: Restore cached build
 #        uses: actions/cache@v4
 #        id: cache-build
@@ -345,7 +345,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
@@ -418,7 +418,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
@@ -488,7 +488,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
