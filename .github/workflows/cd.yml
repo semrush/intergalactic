@@ -111,6 +111,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Cache build
         uses: actions/cache@v4
         id: cache-build
@@ -125,6 +126,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -157,6 +159,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
         id: cache-build
@@ -171,6 +174,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -211,6 +215,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
         id: cache-build
@@ -225,6 +230,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -340,6 +346,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
@@ -359,6 +366,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
@@ -411,6 +419,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
@@ -430,6 +439,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
@@ -479,6 +489,7 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
         id: cache-build
@@ -493,6 +504,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
