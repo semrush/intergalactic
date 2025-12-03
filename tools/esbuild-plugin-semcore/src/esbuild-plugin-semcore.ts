@@ -1,6 +1,6 @@
 import { readFile, access } from 'fs/promises';
 import { platform } from 'node:process';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { dirname as resolveDirname, join as joinPaths, resolve as resolvePath } from 'path';
 
 import type { Loader, Plugin } from 'esbuild';
 
@@ -18,7 +18,7 @@ const babelTransform = async (contents: string, path: string) => {
       contents,
       {
         filename: platform === 'win32' ? path.replaceAll('/', '\\') : path,
-        cwd: resolveDirname(platform === 'win32' ? path.replaceAll('/', '\\') : path),
+        cwd: resolveDirname(platform === 'win32' ? resolveDirname(joinPaths(process.cwd(), 'intergalactic')) : path),
         ...babelConfig(),
       },
       (error: any, result: any) => {
