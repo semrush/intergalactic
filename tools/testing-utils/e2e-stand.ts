@@ -1,5 +1,5 @@
 import os from 'os';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { dirname as resolveDirname, resolve as resolvePath, join as joinPaths } from 'path';
 
 import {
   esbuildPluginSemcore,
@@ -51,7 +51,7 @@ export const e2eStandToHtml = async (
             return {
               contents,
               loader: 'tsx',
-              resolveDir: resolveDirname(process.cwd()),
+              resolveDir: resolveDirname(joinPaths(process.cwd(), 'intergalactic')),
             };
           });
         },
