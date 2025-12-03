@@ -84,7 +84,7 @@ const Demo = (props: SelectComponentConfigProps) => {
             placeholder={inputSearchPlaceholder}
           />
         )}
-        <Select.List size={listSize} maxH={listMaxH}>
+        <Select.List size={listSize} hMax={listMaxH}>
           {filteredOptions.map((option) => (
             <Select.Option key={option.value} value={option.value}>
               {option.children}
