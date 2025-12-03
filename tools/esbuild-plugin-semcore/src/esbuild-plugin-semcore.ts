@@ -60,7 +60,7 @@ export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Pl
         }
       }
 
-      const sourceContents = await readFile(path, 'utf-8');
+      const sourceContents = await readFile(resolvePath(...path.split('/')), 'utf-8');
       const extension = path.split('.').pop()! as Loader;
       const loader = loaderOfExtension[extension] || extension;
 
