@@ -35,7 +35,7 @@ export const e2eStandToHtml = async (
             const contents = `
               import React from 'react';
               import ReactDOM from 'react-dom';
-              import App from '../${standFilePath}';
+              import App from './${standFilePath}';
               import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
               const props = { ${propsCode} };
