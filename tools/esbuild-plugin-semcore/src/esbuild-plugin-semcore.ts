@@ -1,4 +1,5 @@
 import { readFile, access } from 'fs/promises';
+import { platform } from 'node:process';
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
 
 import type { Loader, Plugin } from 'esbuild';
@@ -16,8 +17,8 @@ const babelTransform = async (contents: string, path: string) => {
     babel.transform(
       contents,
       {
-        filename: resolvePath(...path.split('/')),
-        cwd: resolveDirname(resolvePath(...path.split('/'))),
+        filename: platform === 'win32' ? path.replaceAll('/', '\\') : path,
+        cwd: resolveDirname(platform === 'win32' ? path.replaceAll('/', '\\') : path),
         ...babelConfig(),
       },
       (error: any, result: any) => {
