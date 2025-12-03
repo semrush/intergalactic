@@ -51,7 +51,7 @@ export const e2eStandToHtml = async (
             return {
               contents,
               loader: 'tsx',
-              // resolveDir: resolveDirname(__dirname),
+              resolveDir: resolveDirname(process.cwd()),
             };
           });
         },
