@@ -192,6 +192,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify menu opened and selected option highlighted', async () => {
       await locators.label(page).click();
       await locators.options(page, 0).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
       await locators.options(page, 5).click();
       await expect(locators.options(page, 1)).toHaveClass(/selected/);
       await expect(locators.options(page, 3)).toHaveClass(/selected/);
