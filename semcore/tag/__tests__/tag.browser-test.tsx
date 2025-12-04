@@ -1,434 +1,227 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@playwright/test';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Tags sizes color and themes', () => {
-  test('Verify Tag without addons or close', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
+export const locators = {
+  tag: (page: Page) => page.locator('[data-ui-name="Tag"]'),
+  tagText: (page: Page) => page.locator('[data-ui-name="Tag.Text"]'),
+  tagContainer: (page: Page) => page.locator('[data-ui-name="TagContainer"]'),
+  tagContainerTag: (page: Page) => page.locator('[data-ui-name="TagContainer.Tag"]'),
+  tagContainerClose: (page: Page) => page.locator('[data-ui-name="TagContainer.Close"]'),
+  flex: (page: Page) => page.locator('[data-ui-name="Flex"]'),
+  inlineEditView: (page: Page) => page.locator('[data-ui-name="InlineEdit.View"]'),
+  saveButton: (page: Page) => page.getByLabel('Save'),
+  cancelButton: (page: Page) => page.getByLabel('Cancel'),
+};
 
-    const flex = page.locator('[data-testid="Primary-base"]');
-    const tags = flex.locator('[data-ui-name="Tag"]');
-    // m size
-    await expect(tags.first()).toHaveCSS(
-      'height',
-      '20px',
-    );
-    // l size
-    await expect(tags.nth(1)).toHaveCSS(
-      'height',
-      '28px',
-    );
-    // xl size
-    await expect(tags.nth(2)).toHaveCSS(
-      'height',
-      '40px',
-    );
-    await expect(page).toHaveScreenshot();
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test.describe('Base states and styles', () => {
+    const tagVariables = [
+      // Base tags without addons (sizes m, l, xl) - pairwise with colors
+      { size: 'm', theme: 'primary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'l', theme: 'secondary', color: 'blue-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'xl', theme: 'additional', color: 'green-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+
+      // Disabled state - pairwise with different theme/color
+      { size: 'm', theme: 'muted', color: 'salad-500', disabled: true, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+
+      // Interactive with addons - pairwise colors
+      { size: 'm', theme: 'primary', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'secondary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'additional', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+
+      // TagContainer with close button - pairwise colors
+      { size: 'm', theme: 'primary', color: 'pink-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'violet-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer with icon and close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'white-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer disabled with icon - pairwise with invert theme
+      { size: 'm', theme: 'invert', color: 'blue-500', disabled: true, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer interactive with addons without close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'green-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'secondary', color: 'salad-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'additional', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+
+      // TagContainer interactive with addon and close - pairwise colors
+      { size: 'm', theme: 'primary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer disabled with addon and close - pairwise colors
+      { size: 'm', theme: 'muted', color: 'pink-500', disabled: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer active with addon and close - pairwise colors
+      { size: 'm', theme: 'invert', color: 'violet-500', disabled: false, active: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+    ];
+
+    tagVariables.forEach((item) => {
+      const description = `Verify Tag size ${item.size}, theme ${item.theme}, ` +
+        `color ${item.color || 'default'}, ` +
+        `disabled ${item.disabled}, active ${item.active || false}, ` +
+        `interactive ${item.interactive}, ` +
+        `addons L:${item.showAddonLeft} R:${item.showAddonRight}, ` +
+        `container ${item.useTagContainer}, close ${item.showClose}`;
+
+      const tags = [TAG.PRIORITY_HIGH, '@tag'];
+
+      test(description, {
+        tag: tags,
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/tag/tests/examples/basic_usage.tsx', 'en', item);
+
+        const box = page.locator('[data-ui-name="Box"]');
+
+        await test.step('Verify default state', async () => {
+          await expect(box).toHaveScreenshot();
+        });
+
+        if (item.interactive && !item.disabled) {
+          await test.step('Verify hover state', async () => {
+            const tag = item.useTagContainer && item.showClose
+              ? locators.tagContainerTag(page)
+              : locators.tag(page);
+
+            await tag.hover();
+            await expect(box).toHaveScreenshot();
+          });
+          await test.step('Verify focus state', async () => {
+            await page.keyboard.press('Tab');
+            await expect(box).toHaveScreenshot();
+            if (item.showClose) {
+              await page.keyboard.press('Tab');
+              await expect(box).toHaveScreenshot();
+            }
+          });
+        }
+
+        if (item.showAddonLeft || item.showAddonRight) {
+          await test.step('Verify tag text padding with addons', async () => {
+            const tagText = locators.tagText(page);
+            await expect(tagText).toHaveCSS('padding-left', '4px');
+            if (item.showAddonRight) {
+              await expect(tagText).toHaveCSS('padding-right', '4px');
+            }
+          });
+        }
+      });
+    });
   });
 
-  test('Verify Tag without addon and close disabled', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-disabled';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-    await expect(page).toHaveScreenshot();
-
-    const tag = page.locator('[data-ui-name="Tag"]');
-    const count1 = await tag.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tag.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tag.nth(i)).toHaveAttribute('disabled');
-    }
-  });
-
-  test('Verify Tag with addons and without close interactive', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-addons-interactive.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const tagText = page.locator('[data-ui-name="Tag.Text"]');
-    const count1 = await tagText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-left',
-        '4px',
-      );
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-right',
-        '4px',
-      );
-    }
-
-    const flexPrimary = page.locator('[data-testid="Primary-base"]');
-    const tags = flexPrimary.locator('[data-ui-name="Tag"]');
-
-    await tags.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="Secondary-base"]');
-    const tagsSec = flexSecondary.locator('[data-ui-name="Tag"]');
-
-    await tagsSec.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexAdditional = page.locator('[data-testid="additional-base"]');
-    const tagsAdd = flexAdditional.locator('[data-ui-name="Tag"]');
-
-    await tagsAdd.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Grouping Tags', () => {
-  test('Verify grouping Less than 5 tags', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/grouping_tags_less.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const flex = page.locator('[data-ui-name="Flex"]');
-    await expect(flex).toHaveAttribute('role', 'group');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify grouping More than 5 tags', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/grouping_tags_more.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const flex = page.locator('ul[data-ui-name="Flex"]');
-    const tags = flex.locator('li[data-ui-name="Tag"]');
-    await expect(tags).toHaveCount(5);
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Tags container sizes color and themes', () => {
-  test('Verify TagContainer without addons and with close', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-X.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const close = page.locator('[data-ui-name="TagContainer.Close"]');
-    const count = await close.count();
-    for (let i = 0; i < count; i++) {
-      await expect(close.nth(i)).toHaveAttribute('aria-label', 'Delete');
-      await expect(close.nth(i)).toHaveAttribute('aria-labelledby');
-    }
-
-    const flexPrimary = page.locator('[data-testid="Primary-close"]');
-    const tags = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-
-    await tags.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="secondary-close"]');
-    const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-
-    await tagsSec.nth(4).hover();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify TagContainer with icon and with close', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-icon-and-X.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const close = page.locator('[data-ui-name="TagContainer.Close"]');
-    const count = await close.count();
-    for (let i = 0; i < count; i++) {
-      await expect(close.nth(i)).toHaveAttribute('aria-label', 'Delete');
-      await expect(close.nth(i)).toHaveAttribute('aria-labelledby');
-    }
-
-    const tagText = page.locator('[data-ui-name="Tag.Text"]');
-    const count1 = await close.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-left',
-        '4px',
-      );
-    }
-
-    const flexPrimary = page.locator('[data-testid="Primary-base"]');
-    const tags = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tags.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="secondary-base"]');
-    const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tagsSec.nth(4).hover();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify TagContainer intearctive with icon and with disabled close', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-icon-and-disabled-X.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify TagContainer with addons and without close interactive', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-interactive.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const tagText = page.locator('[data-ui-name="Tag.Text"]');
-    const count1 = await tagText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-left',
-        '4px',
-      );
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-right',
-        '4px',
-      );
-    }
-
-    const flexPrimary = page.locator('[data-testid="Primary-base"]');
-    const tags = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-
-    await tags.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="secondary-base"]');
-    const tagsSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-
-    await tagsSec.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexAdditional = page.locator('[data-testid="additional-base"]');
-    const tagsAdd = flexAdditional.locator('[data-ui-name="TagContainer.Tag"]');
-
-    await tagsAdd.nth(4).hover();
-    await page.keyboard.press('Tab');
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify TagContainer with addon and with close interactive', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-interactive';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const tagText = page.locator('[data-ui-name="Tag.Text"]');
-    const count1 = await tagText.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tagText.nth(i)).toHaveCSS(
-        'padding-left',
-        '4px',
-      );
-    }
-
-    const flexPrimary = page.locator('[data-testid="Primary-base"]');
-    const tagContaiterPr = flexPrimary.locator('[data-ui-name="TagContainer.Tag"]');
-    const tagContaiterClosePr = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tagContaiterPr.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    await tagContaiterClosePr.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="secondary-base"]');
-    const tagContaiterSec = flexSecondary.locator('[data-ui-name="TagContainer.Tag"]');
-    const tagContaiterCloseSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tagContaiterSec.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-
-    await tagContaiterCloseSec.nth(4).hover();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify TagContainer with addon and with close disabled', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-disabled';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const tagContainer = page.locator('[data-ui-name="TagContainer.Tag"]');
-    const count1 = await tagContainer.count();
-    for (let i = 0; i < count1; i++) {
-      await expect(tagContainer.nth(i)).toHaveAttribute('tabindex', '-1');
-      await expect(tagContainer.nth(i)).toHaveAttribute('disabled');
-    }
-  });
-
-  test('Verify TagContainer with addon and with close active', async ({ page }) => {
-    const standPath = 'stories/components/tag/tests/examples/styles-themes-sizes-with-addon-and-X-active-part';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.setViewportSize({ width: 700, height: 1300 });
-
-    await expect(page).toHaveScreenshot();
-
-    const flexPrimary = page.locator('[data-testid="Primary-base"]');
-    const tagContaiterClosePr = flexPrimary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tagContaiterClosePr.first().hover();
-    await expect(page).toHaveScreenshot();
-
-    const flexSecondary = page.locator('[data-testid="secondary-base"]');
-    const tagContaiterCloseSec = flexSecondary.locator('[data-ui-name="TagContainer.Close"]');
-
-    await tagContaiterCloseSec.first().hover();
-    await page.keyboard.press('Tab');
+  test('Verify grouping More than 5 tags', {
+    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
 });
 
-test.describe('Tag interactions', () => {
-  test('Verify Editing tag when tag by mouse inside inline-edit', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/editing_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify Editing tag by mouse inside inline-edit', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tag/docs/examples/editing_tag.tsx', 'en');
 
-    const inlineEditView = page.locator('[data-ui-name="InlineEdit.View"]');
+    const inlineEditView = locators.inlineEditView(page);
     const tag = inlineEditView.locator('span[data-ui-name="Tag.Text"]');
-    const save = page.getByLabel('Save');
-    const cancel = page.getByLabel('Cancel');
+    const save = locators.saveButton(page);
+    const cancel = locators.cancelButton(page);
 
-    await expect(tag).toHaveText('Default tag');
-    await inlineEditView.click();
+    await test.step('Verify initial state', async () => {
+      await expect(tag).toHaveText('Default tag');
+    });
 
-    await page.keyboard.type('Test');
-    await cancel.click();
-    await expect(tag).toHaveText('Default tag');
+    await test.step('Verify edit and cancel does not save changes', async () => {
+      await inlineEditView.click();
+      await page.keyboard.type('Test');
+      await cancel.click();
+      await expect(tag).toHaveText('Default tag');
+    });
 
-    await inlineEditView.click();
-    await page.keyboard.type('Test');
-    await save.click();
-    await expect(tag).toHaveText('Default tagTest');
+    await test.step('Verify edit and save saves changes', async () => {
+      await inlineEditView.click();
+      await page.keyboard.type('Test');
+      await save.click();
+      await expect(tag).toHaveText('Default tagTest');
+    });
 
-    await inlineEditView.click();
-    await page.keyboard.type('Test');
-    await page.keyboard.press('Enter');
-
-    await expect(tag).toHaveText('Default tagTestTest');
+    await test.step('Verify edit with Enter key saves changes', async () => {
+      await inlineEditView.click();
+      await page.keyboard.type('Test');
+      await page.keyboard.press('Enter');
+      await expect(tag).toHaveText('Default tagTestTest');
+    });
   });
 
-  test('Verify Editing tag when tag by keyboard inside inline-edit', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/editing_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Removing tags by mouse', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
-    const inlineEditView = page.locator('[data-ui-name="InlineEdit.View"]');
-    const tag = inlineEditView.locator('span[data-ui-name="Tag.Text"]');
+    const tags = locators.tagContainer(page);
+    const close = locators.tagContainerClose(page);
 
-    await expect(tag).toHaveText('Default tag');
-    await page.keyboard.press('Tab');
+    await test.step('Verify initial count', async () => {
+      await expect(tags).toHaveCount(3);
+    });
 
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('Test');
-    await page.keyboard.press('Escape');
-    await expect(tag).toHaveText('Default tag');
+    await test.step('Verify removing second tag', async () => {
+      await close.nth(1).click();
+      await expect(tags).toHaveCount(2);
+    });
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('Test Test Test');
-    await page.keyboard.press('Enter');
+    await test.step('Verify removing first tag', async () => {
+      await close.nth(0).click();
+      await expect(tags).toHaveCount(1);
+    });
 
-    await expect(tag).toHaveText('Default tag');// bug
+    await test.step('Verify removing last tag', async () => {
+      await close.nth(0).click();
+      await expect(tags).toHaveCount(0);
+    });
   });
 
-  test('Verify Removing tags by mouse', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/removing_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify Removing tags by keyboard', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
-    const tags = page.locator('[data-ui-name="TagContainer"]');
-    const close = page.locator('[data-ui-name="TagContainer.Close"]');
+    const tags = locators.tagContainer(page);
+    const close = locators.tagContainerClose(page);
 
-    await expect(tags).toHaveCount(3);
-    await close.nth(1).click();
-    await expect(tags).toHaveCount(2);
-    await close.nth(0).click();
-    await expect(tags).toHaveCount(1);
-    await close.nth(0).click();
-    await expect(tags).toHaveCount(0);
-  });
+    await test.step('Verify initial state and focus', async () => {
+      await page.keyboard.press('Tab');
+      await expect(tags).toHaveCount(3);
+      await expect(close.first()).toBeFocused();
+    });
 
-  test('Verify Removing tags by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/tag/docs/examples/removing_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await test.step('Verify removing tag with Enter key', async () => {
+      await page.keyboard.press('Enter');
+      await expect(tags).toHaveCount(2);
+      await expect(close.first()).toBeFocused();
+    });
 
-    const tags = page.locator('[data-ui-name="TagContainer"]');
-    const close = page.locator('[data-ui-name="TagContainer.Close"]');
+    await test.step('Verify focus moves to next close button', async () => {
+      await page.keyboard.press('Tab');
+      await expect(close.nth(1)).toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(tags).toHaveCount(3);
-    await expect(close.first()).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(tags).toHaveCount(2);
-    await expect(close.first()).toBeFocused();
-
-    await page.keyboard.press('Tab');
-    await expect(close.nth(1)).toBeFocused();
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Space');
-
-    await expect(tags).toHaveCount(1);
-    await expect(close.first()).not.toBeFocused();
+    await test.step('Verify removing tag with Space key', async () => {
+      await page.keyboard.press('Space');
+      await expect(tags).toHaveCount(1);
+      await expect(close.first()).not.toBeFocused();
+    });
   });
 });

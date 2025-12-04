@@ -8,7 +8,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -19,7 +19,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -30,7 +30,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -41,7 +41,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -52,7 +52,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -63,7 +63,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -74,7 +74,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -85,7 +85,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -96,7 +96,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -107,7 +107,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -118,7 +118,7 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
@@ -129,7 +129,18 @@ test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Verify notice in sm2 accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);

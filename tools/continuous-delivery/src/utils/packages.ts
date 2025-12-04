@@ -140,7 +140,6 @@ export class Package {
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
     const packageChangelog = Changelog.releaseParser(
       packageChangelogString,
-      // packages.map((p) => p.data.name).concat(...removedComponents),
       changelogPath,
     );
 

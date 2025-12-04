@@ -189,13 +189,6 @@ class DataTableRoot<
         this.setSelectAllMessage(false);
       }
     }
-    if (prevProps.loading !== loading) {
-      setTimeout(() => {
-        if (document.activeElement === document.body || (this.tableContainerRef.current && hasParent(document.activeElement, this.tableContainerRef.current))) {
-          this.tableRef.current?.focus();
-        }
-      }, 0);
-    }
   }
 
   componentWillUnmount() {

@@ -176,11 +176,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Accordion',
           },
           {
-            link: '/components/auto-suggest/auto-suggest',
-            activeMatch: '/components/auto-suggest/',
-            text: 'AutoSuggest',
-          },
-          {
             link: '/components/badge/badge',
             activeMatch: '/components/badge/',
             text: 'Badge',
@@ -693,6 +688,11 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
+            link: '/patterns/auto-suggest/auto-suggest',
+            activeMatch: '/components/auto-suggest/',
+            text: 'AutoSuggest',
+          },
+          {
             link: '/patterns/modal-content/modal-content',
             text: 'Content in modal window',
           },
@@ -711,8 +711,8 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Error message',
           },
           {
-            link: '/patterns/export/export',
-            text: 'Export',
+            link: '/patterns/export-dropdown/export-dropdown',
+            text: 'Export dropdown',
           },
           {
             link: '/patterns/feature-highlight/feature-highlight',

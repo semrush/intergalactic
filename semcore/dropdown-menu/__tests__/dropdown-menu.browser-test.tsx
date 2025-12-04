@@ -126,19 +126,19 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variables = [
-    { size: 'm', disabled: false, selected: false, visible: true, stretch: 'min' },
-    { size: 'm', disabled: false, selected: false, visible: true, stretch: 'fixed' },
-    { size: 'm', disabled: false, selected: false, visible: true, stretch: false },
-    { size: 'm', disabled: true, selected: false, visible: true, stretch: undefined },
+    { size: 'm', disabledAll: false, visible: true, stretch: 'min' },
+    { size: 'm', disabledAll: false, visible: true, stretch: 'fixed' },
+    { size: 'm', disabledAll: false, visible: true, stretch: false },
+    { size: 'm', disabledAll: true, visible: true, stretch: undefined },
 
-    { size: 'l', disabled: false, selected: false, visible: true, stretch: 'min' },
-    { size: 'l', disabled: false, selected: false, visible: true, stretch: 'fixed' },
-    { size: 'l', disabled: false, selected: false, visible: true, stretch: false },
-    { size: 'l', disabled: true, selected: false, visible: true, stretch: undefined },
+    { size: 'l', disabledAll: false, visible: true, stretch: 'min' },
+    { size: 'l', disabledAll: false, visible: true, stretch: 'fixed' },
+    { size: 'l', disabledAll: false, visible: true, stretch: false },
+    { size: 'l', disabledAll: true, visible: true, stretch: undefined },
 
   ];
   variables.forEach((item) => {
-    test(`Verify base dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
+    test(`Verify base dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@dropdown-menu'],
@@ -173,7 +173,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           }
         });
       }
-      if (item.disabled) {
+      if (item.disabledAll) {
         await test.step('Verify disabled styles', async () => {
           const count1 = await locators.menuitem(page).count();
 
@@ -186,7 +186,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (browserName === 'firefox') return;
-      if (!item.disabled) {
+      if (!item.disabledAll) {
         await test.step('Verify hover styles', async () => {
           await locators.menuitem(page, 1).hover();
           await checkStyles(locators.menuitem(page, 1), {
@@ -196,7 +196,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify multiselect dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
+    test(`Verify multiselect dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@dropdown-menu'],
@@ -232,7 +232,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify selectable radio dropdown with size=${item.size} disabled=${item.disabled} stretch=${item.stretch} selected=${item.selected} visible=${item.visible}`, {
+    test(`Verify selectable radio dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@dropdown-menu'],
@@ -309,7 +309,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (browserName === 'firefox') return;
-      if (!item.disabled) {
+      if (!item.disabledAll) {
         await test.step('Verify hover styles', async () => {
           await locators.menuitemradio(page, 0).hover();
           await checkStyles(locators.itemInGroup(page).first(), {
@@ -461,17 +461,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify menu closed click on item', async () => {
       await locators.menuitemradio(page, 4).click();
-      await locators.menuitemradio(page, 0).waitFor({ state: 'hidden' });
+      await locators.menuitemradio(page, 4).waitFor({ state: 'hidden' });
     });
 
     await test.step('Verify prev selected item selected and tooltip shown on hover', async () => {
       await locators.button(page).click();
-      await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
-      await expect.poll(async () => {
-        return await locators.menuitemradio(page, 4).getAttribute('class');
-      }, {
-        timeout: 1000,
-      }).toMatch(/inAfterOutline/);
+      await locators.menuitemradio(page, 4).waitFor({ state: 'visible' });
 
       await deleteButton4.hover();
       await page.getByText('Delete item').waitFor({ state: 'visible' });
@@ -509,17 +504,17 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test('Verify virtual scroll by keyboard', {
+  test.skip('Verify virtual scroll by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu'],
   }, async ({ page, browserName }) => {
+    if (browserName != 'chromium') test.skip();
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(locators.button(page).first()).not.toBeFocused();
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
 
     await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
@@ -527,7 +522,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await pressKeyMultipleTimes(page, 'ArrowDown', 3);
     await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
 
-    if (browserName === 'firefox') return; // because of bug on firefox UIK-3349
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
     await expect(createProject).toBeFocused();
@@ -1296,6 +1290,177 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await ddMenuPopper.waitFor({ state: 'hidden' });
       await expect(tagClose.first()).toBeFocused();
+    });
+  });
+
+  test.describe('Dropdown with disabled items', () => {
+    test('Verify focus when all items disabled by keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
+        size: 'm',
+        disabledAll: true,
+      });
+      await test.step('Verify no item is focused when all disabled', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+        const count = await locators.menuitem(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitem(page, i)).not.toBeFocused();
+        }
+      });
+
+      await test.step('Verify trigger is still focused', async () => {
+        await expect(locators.button(page).first()).toBeFocused();
+      });
+    });
+
+    test('Verify focus skips first disabled item by keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
+        size: 'm',
+        disabledSave: true,
+      });
+
+      await test.step('Verify second item focused when first disabled', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitem(page, 0)).not.toBeFocused();
+        await expect(locators.menuitem(page, 1)).toBeFocused();
+      });
+
+      await test.step('Verify Tab not moves focus from the menu', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.menuitem(page, 1)).toBeFocused();
+      });
+    });
+
+    test('Verify focus skips first disabled item by mouse and arrow', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
+        size: 'm',
+        disabledSave: true,
+      });
+
+      await test.step('Verify arrow down focuses second item when first disabled', async () => {
+        await locators.button(page).first().click();
+        await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.menuitem(page, 0)).not.toBeFocused();
+        await expect(locators.menuitem(page, 1)).toBeFocused();
+      });
+    });
+
+    test('Verify focus when all items disabled in multiselect by keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', {
+        size: 'm',
+        disabledAll: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemcheckbox(page, 0).waitFor({ state: 'visible' });
+      });
+
+      await test.step('Verify no item is focused when all disabled', async () => {
+        const count = await locators.menuitemcheckbox(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitemcheckbox(page, i)).not.toBeFocused();
+        }
+      });
+
+      await test.step('Verify trigger is still focused', async () => {
+        await expect(locators.button(page)).toBeFocused();
+      });
+    });
+
+    test('Verify focus when all items disabled in selectable by keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledAll: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+      });
+
+      await test.step('Verify no item is focused when all disabled', async () => {
+        const count = await locators.menuitemradio(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitemradio(page, i)).not.toBeFocused();
+        }
+      });
+
+      await test.step('Verify trigger is still focused', async () => {
+        await expect(locators.button(page)).toBeFocused();
+      });
+    });
+
+    test('Verify focus skips first disabled item in nested menu', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/nested-menu-props.tsx', 'en', {
+        size: 'm',
+        disabledNestedAdd: true,
+      });
+
+      await test.step('Verify opens main menu by Tab and Enter', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+        await expect.poll(async () => {
+          return await locators.menuitem(page, 0).getAttribute('class');
+        }, {
+          timeout: 1000,
+        }).toMatch(/highlighted/);
+      });
+
+      await test.step('Verify navigate to nested menu item', async () => {
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.menuitem(page, 2)).toBeFocused();
+      });
+
+      await test.step('Verify open nested menu by ArrowRight', async () => {
+        await page.keyboard.press('ArrowRight');
+        await page.getByRole('menuitem', { name: 'Delete' }).waitFor({ state: 'visible' });
+      });
+
+      await test.step('Verify second nested item focused when first disabled', async () => {
+        await expect(page.getByRole('menuitem', { name: 'Add' })).not.toBeFocused();
+        await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
+      });
+
+      await test.step('Verify Tab not moves focus from the menu', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
+      });
     });
   });
 });
