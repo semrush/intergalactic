@@ -75,6 +75,7 @@ export const e2eStandToHtml = async (
     bundle: true,
     write: false,
     outdir: os.devNull,
+    logLevel: 'verbose',
   });
 
   const cssFiles = standBundle.outputFiles
