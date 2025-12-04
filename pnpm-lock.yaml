@@ -81,6 +81,9 @@ importers:
       '@playwright/test':
         specifier: 1.48.0
         version: 1.48.0
+      '@rollup/rollup-win32-arm64-msvc':
+        specifier: ^4.53.3
+        version: 4.53.3
       '@semcore/babel-plugin-react-semcore':
         specifier: workspace:*
         version: link:tools/babel-plugin-react-semcore
@@ -5370,6 +5373,11 @@ packages:
 
   '@rollup/rollup-win32-arm64-msvc@4.52.4':
     resolution: {integrity: sha512-8GKr640PdFNXwzIE0IrkMWUNUomILLkfeHjXBi/nUvFlpZP+FA8BKGKpacjW6OUUHaNI6sUURxR2U2g78FOHWQ==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@rollup/rollup-win32-arm64-msvc@4.53.3':
+    resolution: {integrity: sha512-GOFuKpsxR/whszbF/bzydebLiXIHSgsEUp6M0JI8dWvi+fFa1TD6YQa4aSZHtpmh2/uAlj/Dy+nmby3TJ3pkTw==}
     cpu: [arm64]
     os: [win32]
 
@@ -17503,6 +17511,8 @@ snapshots:
 
   '@rollup/rollup-win32-arm64-msvc@4.52.4':
     optional: true
+
+  '@rollup/rollup-win32-arm64-msvc@4.53.3': {}
 
   '@rollup/rollup-win32-ia32-msvc@4.52.4':
     optional: true
