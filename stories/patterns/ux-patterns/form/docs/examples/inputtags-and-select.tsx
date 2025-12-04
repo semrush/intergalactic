@@ -38,11 +38,11 @@ const Demo = () => {
   const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
     if (newTags.some((tag) => !isEmailValid(tag))) {
-      setError('emails', { message: 'Email isn\'t valid' });
+      setError('emails', { message: 'Email isn\'t valid.' });
       return;
     }
     if (tags.length + newTags.length > 5) {
-      setError('emails', { message: 'Max emails is 5' });
+      setError('emails', { message: 'There must be no more than 5 emails.' });
       return;
     }
     setValue('emails', [...tags, ...newTags]);
@@ -51,7 +51,7 @@ const Demo = () => {
 
   const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.target.value && !isEmailValid(e.target.value)) {
-      setError('emails', { message: 'Email isn\'t valid' });
+      setError('emails', { message: 'Email isn\'t valid.' });
     }
     setIsFocused(false);
   };
@@ -130,7 +130,7 @@ const Demo = () => {
             </Flex>
             <Tooltip
               interaction='none'
-              placement='bottom'
+              placement='right'
               theme='warning'
               w='100%'
               animationsDisabled

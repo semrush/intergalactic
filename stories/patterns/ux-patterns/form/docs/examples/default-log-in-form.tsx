@@ -63,7 +63,7 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
   };
 
   return (
-    <Tooltip placement='top' interaction='none' animationsDisabled>
+    <Tooltip placement='right' interaction='none' animationsDisabled>
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
         {showErrorTooltip() && (error?.message as any)}
       </Tooltip.Popper>
@@ -108,13 +108,13 @@ const Demo = () => {
           autocomplete='email'
           options={{
             validate: {
-              required: (v: string) => Boolean(v) || 'Email is required',
+              required: (v: string) => Boolean(v) || 'Email is required.',
               email: (v: string) => {
                 if (!v) {
                   return true;
                 }
 
-                return /.+@.+\..+/i.test(v) || 'Email is not valid';
+                return /.+@.+\..+/i.test(v) || 'Email is not valid.';
               },
             },
           }}
@@ -128,10 +128,10 @@ const Demo = () => {
           type='password'
           autocomplete='current-password'
           options={{
-            required: 'Password is required',
+            required: 'Password is required.',
             minLength: {
               value: 8,
-              message: 'Password must have at least 8 characters',
+              message: 'Password must have at least 8 characters.',
             },
           }}
         />
