@@ -87,7 +87,15 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   protected afterOpenPopper() {
-    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    let highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const elementProps = this.itemProps[highlightedIndex];
+
+    if (elementProps?.disabled) {
+      highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+    }
+
+    if (highlightedIndex === -1) return;
+
     const element = this.itemRefs[highlightedIndex];
     element?.focus();
     if (this.role === 'menu') {
@@ -342,6 +350,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     ) {
       if (this.asProps.visible !== true) {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.handlers.visible(true);
         }
 
@@ -352,6 +362,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         }, 200);
       } else {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.afterOpenPopper();
         }
       }

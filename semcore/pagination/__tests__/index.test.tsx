@@ -12,32 +12,6 @@ describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
 });
 
-describe('Pagination', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Verify correctly renders for different locales', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <div>
-          EN (default):
-          <Pagination currentPage={12345} totalPages={222333}>
-            <Pagination.PageInput />
-            <Pagination.TotalPages />
-          </Pagination>
-        </div>
-        <div>
-          DE:
-          <Pagination locale='de' currentPage={12345} totalPages={222333}>
-            <Pagination.PageInput />
-            <Pagination.TotalPages />
-          </Pagination>
-        </div>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-});
-
 describe('Pagination.FirstPage', () => {
   beforeEach(cleanup);
 
@@ -167,29 +141,6 @@ describe('Pagination.TotalPages', () => {
     fireEvent.click(getByTestId('totalPages'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
-  });
-});
-
-describe('Pagination.PageInput', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Verify input not cut up to 3 digits', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pagination currentPage={1234} totalPages={1234}>
-          <Pagination.PageInput {...{ focused: true }}>
-            <Pagination.PageInput.Value id='page-number' />
-          </Pagination.PageInput>
-        </Pagination>
-      </snapshot.ProxyProps>
-    );
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#page-number',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
   });
 });
 

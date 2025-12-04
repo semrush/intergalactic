@@ -11,7 +11,7 @@ import SeoExample from './examples/seo';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Accrordion> = {
-  title: 'Components/Accrordion/Documentation',
+  title: 'Components/Accordion/Documentation',
   component: Accrordion,
 };
 

@@ -1,17 +1,22 @@
 import { Flex } from '@semcore/ui/base-components';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
+import type { RadioGroupProps } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: RadioGroupProps) => {
   const [value, setValue] = React.useState('1');
   return (
     <div>
       <RadioGroup
+
         name='radio'
         aria-labelledby='radioGroup'
         value={value}
         onChange={(v: string) => setValue(v)}
+        size={props.size}
+        disabled={props.disabled}
+        theme={props.theme}
       >
         <Text id='radioGroup' size={200}>
           Select dog breed
@@ -26,4 +31,11 @@ const Demo = () => {
   );
 };
 
+export const defaultProps: RadioGroupProps = {
+  size: 'm',
+  theme: undefined,
+  disabled: false,
+};
+
+Demo.defaultProps = defaultProps;
 export default Demo;

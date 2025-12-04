@@ -1,3 +1,118 @@
+## [16.13.0] - 2025-12-01
+
+### @semcore/checkbox
+
+- **Fixed** Unchecked themed `Checkbox` should remain gray.
+
+### @semcore/base-components
+
+- **Fixed** The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+### @semcore/d3-chart
+
+- **Fixed** `ticks` state var isn't re-calculated for `children` render prop.
+- **Fixed** Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary autofocus to the table after loading.
+- **Added** Logic for selecting multiples rows using Shift
+
+### @semcore/dropdown
+
+- **Fixed** Disabled first item receives focus.
+
+### @semcore/time-picker
+
+- **Fixed** UI focus issue for size `l`.
+
+### @semcore/notice-bubble
+
+- **Added** `containerNode` property to set one common container for all notices
+on the page from different applications.
+
+### @semcore/dropdown-menu
+
+- **Added** Virtualization.
+- **Fixed** Disabled first item receives focus.
+
+## [16.12.0] - 2025-11-17
+
+### @semcore/base-trigger
+
+- **Added** `data-ui-name` for Inner container.
+- **Fixed** `font-family` style for the `LinkTrigger` wasn't inherited.
+
+### @semcore/button
+
+- **Added** `data-ui-name` for Inner container.
+
+### @semcore/color-picker
+
+- **Fixed** Issue with `svg` in `ColorPicker.Trigger` and `ColorPicker.Item`.
+- **Fixed** `size` property didn't apply for the `PaletteManager.InputColor`.
+- **Fixed** Incorrect types for `PaletteManager`.
+- **Fixed** Validation issues in `PaletteManager.InputColor`.
+- **Fixed** "Blocked aria-hidden on an element" accessibility error for `ChevronDownM`.
+- **Fixed** `PaletteManager`'s add button active/hover states.
+
+### @semcore/d3-chart
+
+- **Added** The ability to use multiple synchronized tooltips on multiple charts.
+- **Fixed** `onClick` handler in child components overrides root `onClick` and called on mount.
+
+### @semcore/data-table
+
+- **Fixed** The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
+- **Fixed** SR didn't pronounce all items selecting/deselecting on table with pagination.
+- **Fixed** Keyboard interaction after mouse clicking in cell with few interactive elements.
+
+### @semcore/date-picker
+
+- **Fixed** Space key interactions in Date Picker (unable to switch months, apply Today, keep selected date, etc.)
+
+### @semcore/dropdown
+
+- **Changed** Canceled default behavior for `Arrow Up` `Arrow Down` keys.
+- **Added** Foundation to handle scroll ending.
+- **Added** `stopPropagation` when the `tab` key is pressed in an open dropdown with `click` interaction.
+
+### @semcore/dropdown-menu
+
+- **Changed** Focus behavior if `Popper` already has a focus inside.
+- **Fixed** "scroll to element" animation for keyboard interactions.
+
+### @semcore/ellipsis
+
+- **Changed** `innerHTML` to `textContent` in the calculation of ellipsis size.
+
+### @semcore/feature-highlight
+
+- **Fixed** Switching between highlighted Pills items left animation artifacts.
+
+### @semcore/feedback-form
+
+- **Fixed** `margin-bottom` of the `Email` illustration in the form success state.
+
+### @semcore/icon
+
+- **Changed** Set `pointer-events: none` for path's in interactive svg.
+
+### @semcore/input-tags
+
+- **Fixed** `disabled` state for `InputTags/InputTags.Tag`.
+
+### @semcore/tag
+
+- **Fixed** Font for tags in non-interactive state.
+
+### @semcore/wizard
+
+- **Fixed** Unnecessary scroll in small mode with long text in sidebar step.
+- **Fixed** Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
 ## [16.11.1] - 2025-10-30
 
 ### @semcore/data-table
@@ -9204,13 +9319,13 @@
 
 - **Added** Added enhance for set uid and useUID to set random numbers.
 
-## [2.3.0] - 2020-12-4
+## [2.3.0] - 2020-12-04
 
 ### @semcore/carousel
 
 - **Added** Release library
 
-## [2.2.0] - 2020-12-4
+## [2.2.0] - 2020-12-04
 
 ### @semcore/animation
 
@@ -9277,7 +9392,7 @@
 
 - **Fixed** Fixed move props position in component Box.
 
-## [2.1.0] - 2020-11-9
+## [2.1.0] - 2020-11-09
 
 ### Global
 
@@ -9471,7 +9586,7 @@
 - **Changed** Build changed from rollup to babel
 - **Changed** Move .d.ts files from /lib to /lib/types directory
 
-## [1.2.1] - 2020-9-8
+## [1.2.1] - 2020-09-08
 
 ### Global
 
@@ -9542,7 +9657,7 @@
 - **Fixed** Flag sideEffects now contain list of files with side effects
 - **Fixed** Added flag sideEffects: false to package.json
 
-## [1.2.0] - 2020-9-2
+## [1.2.0] - 2020-09-02
 
 ### @semcore/core
 

@@ -8,7 +8,7 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 ## Description
 
-**InputTags** is an input field that wraps entered information into tags. It's commonly used alongside the [Combobox](/components/auto-suggest/auto-suggest).
+**InputTags** is an input field that wraps entered information into tags. It's commonly used alongside the [Combobox](/patterns/auto-suggest/auto-suggest).
 
 This input field is useful for entering a large amount of similar information in a single field, such as keywords or employee emails.
 
@@ -51,7 +51,7 @@ Table: Interaction with InputTags
 | -------------------------- | -------------------------- | -------------------------------------------- |
 | ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png)                   |
 
-When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
+When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/patterns/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
 
 ### Turning text into tags
 

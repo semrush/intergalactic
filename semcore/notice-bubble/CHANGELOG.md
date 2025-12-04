@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.0] - 2025-12-01
+
+### Added
+
+- `containerNode` property to set one common container for all notices
+on the page from different applications.
+
+## [16.1.12] - 2025-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [16.7.2 ~> 16.7.3], `@semcore/button` [16.0.11 ~> 16.0.12]).
+
 ## [16.1.11] - 2025-10-29
 
 ### Changed

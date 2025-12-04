@@ -459,13 +459,13 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration } =
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter } =
       this.asProps;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group'>
+      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group'>
         {this.renderLegend()}
         <Plot
           data={data}
@@ -476,6 +476,7 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
+          eventEmitter={eventEmitter}
           {...extractedAriaProps}
         >
           {this.renderAxis()}

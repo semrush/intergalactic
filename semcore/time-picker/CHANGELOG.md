@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.13] - 2025-12-01
+
+### Fixed
+
+- UI focus issue for size `l`.
+
+## [16.1.12] - 2025-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.11 ~> 16.0.12], `@semcore/select` [16.1.11 ~> 16.1.12]).
+
 ## [16.1.11] - 2025-10-29
 
 ### Changed

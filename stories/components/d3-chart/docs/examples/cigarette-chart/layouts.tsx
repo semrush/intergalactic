@@ -3,6 +3,8 @@ import { Chart } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import CigaretteMockData from '../../../__mocks__/cigarette';
+
 function Demo() {
   return (
     <Flex gap={15} flexWrap={true}>
@@ -38,12 +40,6 @@ function Demo() {
   );
 }
 
-const data = {
-  Cats: 3524,
-  Dogs: 1344,
-  Capybaras: 6135,
-  Hamsters: 1456,
-  Birds: 1823,
-};
+const data = CigaretteMockData.Default;
 
 export default Demo;

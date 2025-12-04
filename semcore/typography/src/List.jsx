@@ -24,7 +24,7 @@ class ListRoot extends Component {
   render() {
     const SList = Root;
     const { styles } = this.asProps;
-    return sstyled(styles)(<SList render={Text} tag='ul' role='list' />);
+    return sstyled(styles)(<SList render={Text} tag='ul' />);
   }
 }
 
@@ -41,7 +41,7 @@ class ItemRoot extends Component {
     const isAdvancedMode = isAdvanceMode(Children, [List.Item.Content.displayName]);
 
     return sstyled(styles)(
-      <SItem render={Text} tag='li' role='listitem'>
+      <SItem render={Text} tag='li'>
         {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
         {isAdvancedMode ? <Children /> : <SContent>{children}</SContent>}
       </SItem>,

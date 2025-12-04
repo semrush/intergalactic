@@ -1,22 +1,15 @@
+import type { VennChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type ExampleVennShowLegendProps = {
-  showLegend?: boolean;
-};
+import { getChartProps } from '../stories_props_helper';
 
-const Demo = (props: ExampleVennShowLegendProps) => {
-  const { showLegend } = props;
+const Demo = (props: VennChartProps) => {
   return (
-    <div style={{ width: '500px' }}>
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */ }
+    <div style={{ width: '1000px' }}>
       <Chart.Venn
-        data={data}
-        plotWidth={300}
-        plotHeight={300}
-        legendProps={legendProps}
+        {...props}
         aria-label='Venn chart'
-        showLegend={showLegend}
       />
     </div>
   );
@@ -43,8 +36,10 @@ const legendProps = {
   },
 };
 
-export const defaultProps: ExampleVennShowLegendProps = {
-  showLegend: false,
-};
+export const defaultProps = getChartProps<VennChartProps>({
+  data,
+  showLegend: true,
+  legendProps,
+});
 
 export default Demo;

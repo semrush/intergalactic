@@ -1,173 +1,148 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Notice bubble', () => {
-  test('Basic', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+test.describe(`@notice-bubble ${TAG.ACCESSIBILITY}`, () => {
+  test('Verify basic notice bubble accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Completion state', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify completion state accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Dynamic', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify dynamic notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Failure', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/failure_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify failure notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/failure_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('No connection', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify no connection notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('No connection with action', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify no connection with action accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Not in portal', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify notice bubble not in portal accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Reload action', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/reload_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify reload action accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/reload_action.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Replace last notice', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify replace last notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Special events', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify special events notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Success', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/success_notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify success notice accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
-  test('Undo action', async ({ page }) => {
-    const standPath = 'stories/components/notice-bubble/docs/examples/undo_action.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+
+  test('Verify undo action accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/undo_action.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
-    await page.locator('[data-ui-name="Animation"]').waitFor();
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
 
     const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
 
+  test('Verify notice in sm2 accessibility', async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.locator('[data-ui-name="Animation"]').waitFor({ state: 'visible' });
+
+    const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
 });

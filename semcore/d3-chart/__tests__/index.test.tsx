@@ -146,7 +146,8 @@ describe('YAxis', () => {
   test.concurrent(
     'Should support call children function for Ticks how many ticks are passed',
     ({ expect }) => {
-      expect.assertions(2);
+      /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
+      expect.assertions(4);
 
       render(
         <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>

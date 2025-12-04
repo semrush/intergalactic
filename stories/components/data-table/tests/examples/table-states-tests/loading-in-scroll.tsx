@@ -1,3 +1,4 @@
+import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
@@ -10,7 +11,7 @@ const Demo = () => {
 
       const hideTimeout = setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 3000);
 
       return () => clearTimeout(hideTimeout);
     }, 3000);
@@ -19,31 +20,34 @@ const Demo = () => {
   }, []);
 
   return (
-    <DataTable
-      data={data}
-      aria-label='Scroll inside'
-      loading={loading}
-      wMax={800}
-      hMax={200}
-      columns={[
-        {
-          name: 'keyword',
-          children: 'keyword',
-        },
-        {
-          name: 'kd',
-          children: 'KD,%',
-        },
-        {
-          name: 'cpc',
-          children: 'CPC',
-        },
-        {
-          name: 'vol',
-          children: 'Vol.',
-        },
-      ]}
-    />
+    <>
+      <Button>Click</Button>
+      <DataTable
+        data={data}
+        aria-label='Scroll inside'
+        loading={loading}
+        wMax={800}
+        hMax={200}
+        columns={[
+          {
+            name: 'keyword',
+            children: 'keyword',
+          },
+          {
+            name: 'kd',
+            children: 'KD,%',
+          },
+          {
+            name: 'cpc',
+            children: 'CPC',
+          },
+          {
+            name: 'vol',
+            children: 'Vol.',
+          },
+        ]}
+      />
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ColumnAlignmentExample from './examples/rows-columns-tests/column-alignment';
-import DefaultColumnWidthsExample from './examples/rows-columns-tests/column-expand';
+import ColumnExpandExample from './examples/rows-columns-tests/column-expand';
 import RowColumnMergeExample from './examples/rows-columns-tests/row-and-column-merging';
 
 const meta: Meta<typeof DataTable> = {
@@ -21,6 +21,6 @@ export const ColumnAlignment: Story = {
   render: ColumnAlignmentExample,
 };
 
-export const DefaultColumnWidth: Story = {
-  render: DefaultColumnWidthsExample,
+export const ColumnExpand: Story = {
+  render: ColumnExpandExample,
 };

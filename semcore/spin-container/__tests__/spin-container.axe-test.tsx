@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Spin-container', () => {
+test.describe(`@spin-container ${TAG.ACCESSIBILITY}`, () => {
   test('Verify no Axe errors when used in content', async ({ page }) => {
-    const standPath = 'stories/components/spin-container/docs/examples/usage_in_content.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/spin-container/docs/examples/usage_in_content.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
@@ -14,10 +12,8 @@ test.describe('Spin-container', () => {
   });
 
   test('Verify no Axe errors when used in dropdown', async ({ page }) => {
-    const standPath = 'stories/components/spin-container/docs/examples/usage_in_dropdowns.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/spin-container/docs/examples/usage_in_dropdowns.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.locator('[data-ui-name="Dropdown.Trigger"]').click();
 
     const violations = await getAccessibilityViolations({ page });

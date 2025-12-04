@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -54,12 +56,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `Category ${i}`,
-    bar1: Math.random() * 10,
-    bar2: -Math.random() * 10,
-  }));
+const data = BarMockData.TwoBarsNegative;
 
 export default Demo;

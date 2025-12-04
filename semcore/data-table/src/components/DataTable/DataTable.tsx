@@ -22,6 +22,7 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
   DataRowItem,
+  DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -118,6 +119,9 @@ class DataTableRoot<
 
   private headerNodesMap = new Map();
 
+  private isPressedShift = false;
+  private lastSelectedRowKey: UniqKeyType | undefined;
+
   constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
     super(props);
 
@@ -184,13 +188,6 @@ class DataTableRoot<
       } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
       }
-    }
-    if (prevProps.loading !== loading) {
-      setTimeout(() => {
-        if (document.activeElement === document.body || (this.tableContainerRef.current && hasParent(document.activeElement, this.tableContainerRef.current))) {
-          this.tableRef.current?.focus();
-        }
-      }, 0);
     }
   }
 
@@ -444,11 +441,41 @@ class DataTableRoot<
 
     const selectedRowsSet = new Set(selectedRows);
 
-    if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
-      selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+    if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
+      let select = false;
+
+      for (const item of this.flatRows) {
+        if (!select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
+          select = true;
+          if (isSelected) {
+            selectedRowsSet.add(item[UNIQ_ROW_KEY]);
+          } else {
+            selectedRowsSet.delete(item[UNIQ_ROW_KEY]);
+          }
+          continue;
+        }
+
+        if (select) {
+          if (isSelected) {
+            selectedRowsSet.add(item[UNIQ_ROW_KEY]);
+          } else {
+            selectedRowsSet.delete(item[UNIQ_ROW_KEY]);
+          }
+        }
+
+        if (select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
+          break;
+        }
+      }
     } else {
-      selectedRowsSet.add(row[UNIQ_ROW_KEY]);
+      if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+        selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+      } else {
+        selectedRowsSet.add(row[UNIQ_ROW_KEY]);
+      }
     }
+
+    this.lastSelectedRowKey = row[UNIQ_ROW_KEY];
 
     onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
   };
@@ -680,6 +707,15 @@ class DataTableRoot<
         this.changeFocusCell(1, 0, 'down');
         break;
       }
+      case 'Shift': {
+        this.isPressedShift = true;
+      }
+    }
+  };
+
+  handleKeyUp = (e: React.KeyboardEvent) => {
+    if (e.key === 'Shift') {
+      this.isPressedShift = false;
     }
   };
 
@@ -907,6 +943,7 @@ class DataTableRoot<
             ref={forkRef(this.tableRef, this.tableContainerRef)}
             role='grid'
             onKeyDown={this.handleKeyDown}
+            onKeyUp={this.handleKeyUp}
             onMouseMove={this.handleMouseMove}
             tabIndex={0}
             onFocus={this.handleFocus}
