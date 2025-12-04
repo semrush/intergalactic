@@ -96,7 +96,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Tab');
     await locators.tooltip(page).waitFor({ state: 'visible' });
-    await expect(locators.tooltip(page)).toHaveText('Password is required');
+    await expect(locators.tooltip(page)).toHaveText('Password is required.');
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwe');
