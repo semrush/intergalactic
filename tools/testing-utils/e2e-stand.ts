@@ -69,7 +69,7 @@ export const e2eStandToHtml = async (
           }));
         },
       },
-      esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '../..')),
+      esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '..')),
       esbuildPluginSemcore(/semcore|tools|stories/, /(tools\/playground)|node_modules/),
     ],
     bundle: true,
