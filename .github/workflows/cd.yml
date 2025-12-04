@@ -527,6 +527,9 @@ jobs:
             exit 0
           }
 
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/icon build
+
           pnpm exec playwright test --config playwright.nvda.config.ts -- $components
         continue-on-error: true
       - name: Save test results as artifacts
