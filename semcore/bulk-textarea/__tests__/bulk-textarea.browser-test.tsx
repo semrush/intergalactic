@@ -90,7 +90,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Counter and Clear all', () => {
-    test('Verify counter fucntionality', {
+    test('Verify counter functionality', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@bulk-textarea'],
@@ -131,7 +131,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.counter(page)).toHaveText('15/15of 15 linesLimit reached');
       });
 
-      await test.step('Exceeded counter limit by enterring one row', async () => {
+      await test.step('Exceeded counter limit by entering one row', async () => {
         await page.keyboard.press('Enter');
         await locators.textbox(page).press('a');
         await page.keyboard.press('Space');
@@ -207,7 +207,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Type text into textarea and press clear all', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.type('Testhttp://,test2', { delay: 20 });
-        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Tab');
         await page.waitForTimeout(100);
         await expect(locators.button(page, 'Clear all')).toBeFocused();
@@ -245,7 +245,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Common error ON - Validation Delimiter LineProcessing', () => {
-    test('Verity Validation on Blur', {
+    test('Verify Validation on Blur', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
@@ -285,7 +285,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify validation on clicking outside textbox', async () => {
         await locators.textbox(page).press('[');
-        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
@@ -376,7 +376,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await page.keyboard.type('text\n[]\nttext', { delay: 10 });
-        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
 
         if (boxBoundingBox) {
@@ -400,7 +400,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify focus order when validation starts ', async () => {
-        await page.waitForTimeout(100); // it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Next error')).toBeFocused();
         await page.keyboard.press('Tab');
@@ -417,7 +417,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/on-submit-example.tsx', 'en');
 
-      await test.step('Verify validation on blurRow starts by cliclikng sumbit', async () => {
+      await test.step('Verify validation on blurRow starts by clicking submit', async () => {
         await page.keyboard.press('Tab');
         const text = 'Zoom in \nSecond[] row\n3 row';
         await page.keyboard.type(text, { delay: 10 });
@@ -432,7 +432,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify Delimiter and LineProcessing fucntionality', {
+    test('Verify Delimiter and LineProcessing functionality', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
@@ -616,7 +616,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify Delimiter and Rows Processing fucntionality', {
+    test('Verify Delimiter and Rows Processing functionality', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@bulk-textarea'],
@@ -747,7 +747,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify tooltips by keyboard click and havigate by arrows', {
+    test('Verify tooltips by keyboard click and navigate by arrows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@bulk-textarea'],
@@ -956,7 +956,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify tooltips by keyboard click and havigate by arrows', {
+    test('Verify tooltips by keyboard click and navigate by arrows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@bulk-textarea'],
