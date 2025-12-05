@@ -17,9 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "workspace:*",
     "@semcore/icon": "16.0.0",
-    "@semcore/scroll-area": "workspace:*",
     "@semcore/typography": "16.0.0",
     "classnames": "2.2.6"
   },
@@ -33,6 +31,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6"
   }
