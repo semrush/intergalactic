@@ -269,36 +269,6 @@ describe('Token Processor - processTokens', () => {
     });
   });
 
-  describe('Error handling', () => {
-    test('Should throw error for unresolved color references', () => {
-      const base = {} as any;
-      const tokens = {
-        bg: {
-          primary: { value: '{nonexistent.color}', type: 'color' },
-        },
-      } as any;
-      const featureHighlight = {} as any;
-
-      expect(() => {
-        processTokens(base, tokens, featureHighlight, '--');
-      }).toThrow(/was not found/);
-    });
-
-    test('Should throw error for malformed rgba', () => {
-      const base = {} as any;
-      const tokens = {
-        bg: {
-          broken: { value: 'rgba(255, 255, 0.5)', type: 'color' }, // Missing one component
-        },
-      } as any;
-      const featureHighlight = {} as any;
-
-      expect(() => {
-        processTokens(base, tokens, featureHighlight, '--');
-      }).toThrow();
-    });
-  });
-
   describe('Linear gradients', () => {
     test('Should process linear gradients with color references', () => {
       const base = {
@@ -376,6 +346,96 @@ describe('Token Processor - processTokens', () => {
       expect(result.values['blue-500']).toBeTruthy();
       expect(result.values['blue-500']).not.toBe('#008ff8'); // Should be modified
       expect(result.rawValues['blue-500']).toContain('lighten');
+    });
+  });
+
+  describe('Real tokens validation', () => {
+    // validate our tokens are ok
+    test('Should process light theme tokens without errors', async () => {
+      const fs = await import('node:fs/promises');
+      const { resolve } = await import('node:path');
+
+      const lightThemeContent = await fs.readFile(
+        resolve(__dirname, '../src/theme/light.json'),
+        'utf-8',
+      );
+      const { base, tokens, featureHighlight } = JSON.parse(lightThemeContent);
+
+      // no errors- validates all token references are correct
+      expect(() => {
+        const result = processTokens(base, tokens, featureHighlight, 'intergalactic');
+
+        // base sanity checks
+        expect(Object.keys(result.values).length).toBeGreaterThan(0);
+        expect(result.processedTokens.length).toBeGreaterThan(0);
+
+        //  all values are resolved (no unresolved references like {xxx.xxx})
+        for (const [tokenName, value] of Object.entries(result.values)) {
+          expect(value).not.toMatch(/\{[^}]+\}/);
+          expect(value).toBeTruthy();
+        }
+      }).not.toThrow();
+    });
+
+    test('Should process dark theme tokens without errors', async () => {
+      const fs = await import('node:fs/promises');
+      const { resolve } = await import('node:path');
+
+      const darkThemeContent = await fs.readFile(
+        resolve(__dirname, '../src/theme/dark.json'),
+        'utf-8',
+      );
+      const { base, tokens, featureHighlight } = JSON.parse(darkThemeContent);
+
+      // no errors - validates all token references are correct
+      expect(() => {
+        const result = processTokens(base, tokens, featureHighlight, 'intergalactic');
+
+        // base sanity checks
+        expect(Object.keys(result.values).length).toBeGreaterThan(0);
+        expect(result.processedTokens.length).toBeGreaterThan(0);
+
+        // all values are resolved (no unresolved references like {xxx.xxx})
+        for (const [tokenName, value] of Object.entries(result.values)) {
+          expect(value).not.toMatch(/\{[^}]+\}/);
+          expect(value).toBeTruthy();
+        }
+      }).not.toThrow();
+    });
+
+    // if this works it sould prevent us from figma plugin problems, some manual typos
+    test('Should detect typos in token references', () => {
+      const base = {
+        gray: {
+          white: { value: '#ffffff', type: 'color' },
+        },
+      } as any;
+      const tokens = {
+        bg: {
+          // Typo: "grey" instead of "gray"
+          primary: { value: '{grey.white}', type: 'color' },
+        },
+      } as any;
+      const featureHighlight = {} as any;
+
+      expect(() => {
+        processTokens(base, tokens, featureHighlight, '--');
+      }).toThrow(/was not found/);
+    });
+
+    test('Should detect invalid rgba format', () => {
+      const base = {} as any;
+      const tokens = {
+        bg: {
+          // Missing one color component
+          invalid: { value: 'rgba(255, 255, 0.5)', type: 'color' },
+        },
+      } as any;
+      const featureHighlight = {} as any;
+
+      expect(() => {
+        processTokens(base, tokens, featureHighlight, '--');
+      }).toThrow();
     });
   });
 });

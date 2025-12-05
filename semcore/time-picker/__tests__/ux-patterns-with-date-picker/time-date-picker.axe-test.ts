@@ -13,6 +13,7 @@ test.describe(`${TAG.ACCESSIBILITY} @time-picker @date-picker`, () => {
     }
     {
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.getByRole('option').first().waitFor({ state: 'visible' });
       const violations = await getAccessibilityViolations({ page });
