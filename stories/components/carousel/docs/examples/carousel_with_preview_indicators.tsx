@@ -26,7 +26,6 @@ const Demo = () => (
     {images.map((url, index) => (
       <Carousel.Item key={url} w={imageWidth}>
         <img
-
           role='button'
           src={url}
           alt={altTexts[index]}
