@@ -113,6 +113,20 @@ describe('Core types', () => {
     const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
     const Pills: IntergalacticPillsComponent<'div'> = any;
 
+    assertType<JSX.Element>(<Link href='https://google.com' xProp1={1} />);
+    assertType<JSX.Element>(<Pills xProp2={2} />);
+    assertType<JSX.Element>(<Pills tag={Link} href='https://google.com' xProp1={1} xProp2={2} />);
+    assertType<JSX.Element>(<Pills tag={Link} xProp1={1} xProp2={2} />);
+
+    // @ts-expect-error
+    assertType<JSX.Element>(<Link hrefXX='https://google.com' xProp1={1} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Pills href='https://google.com' xProp2={2} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Pills tag={Link} xProp2={2} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Pills tag={Link} xProp1={1} />);
+
     assertType<JSX.Element>(<Pills xProp2={2} value={1} onChange={(_value: number) => {}} />);
     // @ts-expect-error
     assertType<JSX.Element>(<Pills xProp2={2} value={1} onChange={(_value: string) => {}} />);

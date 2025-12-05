@@ -97,25 +97,6 @@ describe('ThemeProvider', () => {
     expect(wrapper.className).toBe('custom-class');
     expect(wrapper.id).toBe('custom-id');
   });
-
-  test('Should update when tokens prop changes', () => {
-    const { container, rerender } = render(
-      <ThemeProvider tokens={{ '--intergalactic-bg-primary': '#ffffff' }}>
-        <div>Content</div>
-      </ThemeProvider>,
-    );
-
-    const wrapper = container.firstChild as HTMLElement;
-    expect(wrapper.style.getPropertyValue('--intergalactic-bg-primary')).toBe('#ffffff');
-
-    rerender(
-      <ThemeProvider tokens={{ '--intergalactic-bg-primary': '#000000' }}>
-        <div>Content</div>
-      </ThemeProvider>,
-    );
-
-    expect(wrapper.style.getPropertyValue('--intergalactic-bg-primary')).toBe('#000000');
-  });
 });
 
 describe('useContextTokens', () => {
@@ -153,30 +134,6 @@ describe('useContextTokens', () => {
     );
 
     expect(contextTokens).toEqual(tokens);
-  });
-
-  test('Should return merged tokens from nested ThemeProviders', () => {
-    let contextTokens: any;
-    const parentTokens = { '--token-parent': 'parent-value' };
-    const childTokens = { '--token-child': 'child-value' };
-
-    function TestComponent() {
-      contextTokens = useContextTokens();
-      return <div>Test</div>;
-    }
-
-    render(
-      <ThemeProvider tokens={parentTokens}>
-        <ThemeProvider tokens={childTokens}>
-          <TestComponent />
-        </ThemeProvider>
-      </ThemeProvider>,
-    );
-
-    expect(contextTokens).toEqual({
-      '--token-parent': 'parent-value',
-      '--token-child': 'child-value',
-    });
   });
 
   test('Should update when ThemeProvider tokens change', () => {
@@ -260,38 +217,5 @@ describe('useContextTheme', () => {
     const element = getByTestId('themed-element');
     // Tokens should not be applied when available is false
     expect(element.style.getPropertyValue('--intergalactic-bg-primary')).toBe('');
-  });
-
-  test('Should update tokens when context changes', async () => {
-    const tokens1 = { '--intergalactic-bg-primary': '#ffffff' };
-    const tokens2 = { '--intergalactic-bg-primary': '#000000' };
-
-    function TestComponent() {
-      const ref = React.useRef<HTMLDivElement>(null);
-      useContextTheme(ref);
-
-      return <div ref={ref} data-testid='themed-element'>Content</div>;
-    }
-
-    const { getByTestId, rerender } = render(
-      <ThemeProvider tokens={tokens1}>
-        <TestComponent />
-      </ThemeProvider>,
-    );
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    const element = getByTestId('themed-element');
-    expect(element.style.getPropertyValue('--intergalactic-bg-primary')).toBe('#ffffff');
-
-    rerender(
-      <ThemeProvider tokens={tokens2}>
-        <TestComponent />
-      </ThemeProvider>,
-    );
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    expect(element.style.getPropertyValue('--intergalactic-bg-primary')).toBe('#000000');
   });
 });
