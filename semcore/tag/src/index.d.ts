@@ -5,7 +5,7 @@ import type React from 'react';
 
 export type TagSize = 'xl' | 'l' | 'm';
 
-export type TagTheme = 'primary' | 'secondary';
+export type TagTheme = 'primary' | 'secondary' | 'additional';
 export type TagUse = 'primary' | 'secondary';
 
 export type TagProps = BoxProps & {

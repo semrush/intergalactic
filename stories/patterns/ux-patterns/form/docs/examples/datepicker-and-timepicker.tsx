@@ -82,8 +82,8 @@ const Demo = () => {
         </Flex>
       </Flex>
 
-      <Checkbox size='l'>
-        <Checkbox.Value onChange={setPeriod} />
+      <Checkbox size='l' onChange={setPeriod}>
+        <Checkbox.Value />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 

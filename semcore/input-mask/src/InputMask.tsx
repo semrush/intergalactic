@@ -13,7 +13,7 @@ import logger from '@semcore/core/lib/utils/logger';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
-import Input, { type InputProps, type IInputProps, type InputValueProps } from '@semcore/input';
+import Input, { type InputProps, type InputValueProps } from '@semcore/input';
 import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
@@ -105,7 +105,7 @@ export function getAfterPositionValue(value: string, mask: any = ''): number {
   return afterPotionValue;
 }
 
-class InputMask extends Component<IInputProps> {
+class InputMask extends Component<InputProps> {
   static displayName = 'InputMask';
   static style = style;
 

@@ -58,11 +58,14 @@ describe('DropdownMenu', () => {
       <React.Fragment>
         <DropdownMenu visible disablePortal>
           <DropdownMenu.Menu>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
-            <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
+            <DropdownMenu.Group title='Title 1'>
+              <DropdownMenu.Item>
+                <DropdownMenu.Item.Content>Item 1</DropdownMenu.Item.Content>
+                <DropdownMenu.Item.Hint>Hint 1</DropdownMenu.Item.Hint>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            </DropdownMenu.Group>
           </DropdownMenu.Menu>
         </DropdownMenu>
       </React.Fragment>

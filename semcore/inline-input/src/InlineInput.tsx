@@ -9,7 +9,7 @@ import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
 import Spin from '@semcore/spin';
-import type { ITooltipProps } from '@semcore/tooltip';
+import type { TooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
 import type { InlineInputComponent } from './index.type';
@@ -54,7 +54,7 @@ type ControlAsProps = {
   children: React.ReactNode;
   styles?: React.CSSProperties;
   title?: string;
-  $tooltipsProps?: ITooltipProps;
+  $tooltipsProps?: TooltipProps;
   loading?: boolean;
   disabled?: boolean;
   onCancel?: OnCancel;

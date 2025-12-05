@@ -8,6 +8,7 @@ import type {
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
 import type { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
+import type { eventInteraction } from '@semcore/popper';
 import type { ScrollAreaProps } from '@semcore/scroll-area';
 import type { Text } from '@semcore/typography';
 
@@ -179,6 +180,7 @@ declare const DropdownMenu: Intergalactic.Component<
   VirtualList: typeof VirtualList;
 
   selectedIndexContext: React.Context<number>;
+  nestedMenuInteraction: eventInteraction;
 };
 
 export default DropdownMenu;
