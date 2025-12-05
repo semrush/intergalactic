@@ -11,7 +11,8 @@ SContainer {
 }
 
 SContentBox,
-SModalBox {
+SModalBox,
+SIndicator {
   position: relative;
   overflow: hidden;
   border-radius: var(--intergalactic-surface-rounded, 6px);
@@ -86,7 +87,6 @@ SIndicator {
   display: block;
   width: 12px;
   height: 12px;
-  border-radius: var(--intergalactic-control-rounded, 6px);
   background-color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   object-fit: cover;
