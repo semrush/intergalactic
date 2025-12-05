@@ -1,4 +1,4 @@
-import ScrollAreaComponent, { Box } from '@semcore/base-components';
+import { ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
 import React from 'react';

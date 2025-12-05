@@ -1,7 +1,5 @@
 import Button from '@semcore/button';
-import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {

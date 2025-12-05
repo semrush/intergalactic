@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 import { Col, Row } from '@semcore/ui/grid';
 import React from 'react';
 

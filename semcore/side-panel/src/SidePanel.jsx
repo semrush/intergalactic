@@ -1,7 +1,4 @@
-import { FadeInOut, Slide } from '@semcore/base-components';
-import { Flex, Box } from '@semcore/base-components';
-import OutsideClick from '@semcore/base-components';
-import Portal, { PortalProvider } from '@semcore/base-components';
+import { FadeInOut, Slide, Flex, Box, OutsideClick, PortalProvider, Portal } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';

@@ -1,4 +1,4 @@
-import NeighborLocation, { Box } from '@semcore/base-components';
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';

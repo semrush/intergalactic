@@ -1,4 +1,4 @@
-import NeighborLocation, { Box, InvalidStateBox } from '@semcore/base-components';
+import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';

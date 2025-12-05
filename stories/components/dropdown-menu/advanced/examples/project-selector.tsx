@@ -1,9 +1,9 @@
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
 import PlusM from '@semcore/ui/icon/MathPlus/m';
 import Pin from '@semcore/ui/icon/Pin/m';
 import Settings from '@semcore/ui/icon/Settings/m';

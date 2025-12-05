@@ -1,7 +1,7 @@
 import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger, ButtonTrigger } from '@semcore/ui/base-trigger';
 import Dot from '@semcore/ui/dot';
-import { Flex } from '@semcore/ui/flex-box';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';

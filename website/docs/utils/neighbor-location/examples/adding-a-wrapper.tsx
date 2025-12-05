@@ -1,6 +1,5 @@
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { Flex, NeighborLocation } from '@semcore/flex-box';
 import React from 'react';
 
 const Demo = () => {

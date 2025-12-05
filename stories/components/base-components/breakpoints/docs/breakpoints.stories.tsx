@@ -1,4 +1,4 @@
-import Breakpoints from '@semcore/ui/breakpoints';
+import Breakpoints from '@semcore/ui/base-componentsints';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomMediaExample from './examples/custom-media';

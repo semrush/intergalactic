@@ -1,7 +1,7 @@
 import Table from '@semcore/table';
+import { ScrollArea } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import Link from '@semcore/ui/link';
-import ScrollArea from '@semcore/ui/scroll-area';
 import Spin from '@semcore/ui/spin';
 import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

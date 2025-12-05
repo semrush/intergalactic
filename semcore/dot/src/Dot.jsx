@@ -1,4 +1,4 @@
-import Portal, { Animation, Box } from '@semcore/base-components';
+import { Portal, Animation, Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import logger from '@semcore/core/lib/utils/logger';

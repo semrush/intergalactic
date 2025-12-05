@@ -1,4 +1,4 @@
-import Popper, { Box } from '@semcore/base-components';
+import { Popper, Box } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';

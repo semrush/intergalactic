@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import { DatePicker } from '@semcore/ui/date-picker';
-import { Flex } from '@semcore/ui/flex-box';
 import ProgressBar from '@semcore/ui/progress-bar';
 import React from 'react';
 

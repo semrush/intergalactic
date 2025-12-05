@@ -1,4 +1,4 @@
-import NeighborLocation, { Box, ScreenReaderOnly } from '@semcore/base-components';
+import { NeighborLocation, Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';

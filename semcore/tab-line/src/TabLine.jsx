@@ -1,4 +1,4 @@
-import NeighborLocation, { Box } from '@semcore/base-components';
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';

@@ -1,4 +1,4 @@
-import NeighborLocation, { Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
+import { NeighborLocation, Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
 import {
   createComponent,
   Component,

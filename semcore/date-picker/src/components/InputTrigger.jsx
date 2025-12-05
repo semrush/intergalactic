@@ -1,4 +1,4 @@
-import NeighborLocation, { Flex, Box } from '@semcore/base-components';
+import { NeighborLocation, Flex, Box } from '@semcore/base-components';
 import BaseTrigger from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';

@@ -1,4 +1,4 @@
-import NeighborLocation, { Box } from '@semcore/base-components';
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';

@@ -1,12 +1,11 @@
-import Portal, { ScreenReaderOnly } from '@semcore/base-components';
-import ScrollArea, { type ScrollAreaProps } from '@semcore/base-components';
+import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
+import { type ScrollAreaProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
   type PropGetterFn,
-  type UnknownProperties,
   type Intergalactic,
   type IRootComponentProps,
 } from '@semcore/core';

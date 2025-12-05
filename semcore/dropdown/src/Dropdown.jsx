@@ -1,4 +1,4 @@
-import Popper, { Flex, Box, isInputTriggerTag } from '@semcore/base-components';
+import { Popper, Flex, Box, isInputTriggerTag } from '@semcore/base-components';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';

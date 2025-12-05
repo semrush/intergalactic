@@ -1,4 +1,4 @@
-import ScrollAreaComponent, { Flex, Box } from '@semcore/base-components';
+import { ScrollArea as ScrollAreaComponent, Flex, Box } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
