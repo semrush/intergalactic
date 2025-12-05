@@ -33,7 +33,6 @@
     "@semcore/typography": "workspace:*",
     "@semcore/accordion": "workspace:*",
     "@semcore/divider": "workspace:*",
-    "@semcore/portal": "workspace:*",
     "@semcore/progress-bar": "workspace:*",
     "@semcore/skeleton": "workspace:*",
     "@semcore/spin": "workspace:*",
