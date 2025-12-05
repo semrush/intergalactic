@@ -11,7 +11,7 @@ test.describe(`@button ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('Confirm button');
+    expect(await nvda.itemText()).toBe('clickable, button, Confirm');
   });
 
   test(`Users can interact with Button with only addon props`, async ({
@@ -22,10 +22,10 @@ test.describe(`@button ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('Confirm action button');
+    expect(await nvda.itemText()).toBe('clickable, button, Confirm action, button, Close notification');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('Close notification button');
+    expect(await nvda.itemText()).toBe('clickable, button, Close notification');
   });
 
   test(`Users can interact with Button with loading state via NVDA`, async ({
