@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';

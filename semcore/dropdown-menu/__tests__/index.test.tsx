@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { Box } from '@semcore/flex-box';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';

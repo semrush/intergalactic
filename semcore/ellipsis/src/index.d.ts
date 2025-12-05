@@ -1,5 +1,5 @@
+import type { Box, BoxProps } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
 import type { TooltipProps } from '@semcore/tooltip';
 import type Tooltip from '@semcore/tooltip';
 import type { RefObject } from 'react';

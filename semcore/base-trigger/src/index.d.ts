@@ -1,8 +1,7 @@
+import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { DotProps } from '@semcore/dot';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps } from '@semcore/neighbor-location';
 import type React from 'react';
 
 export type BaseTriggerProps = BoxProps &

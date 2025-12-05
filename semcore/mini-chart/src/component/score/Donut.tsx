@@ -1,9 +1,9 @@
+import { Box, type BoxProps } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
 import { assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './donut.shadow.css';

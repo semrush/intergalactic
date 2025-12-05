@@ -1,8 +1,6 @@
-import type { FadeInOutProps, SlideProps } from '@semcore/animation';
+import type { FadeInOutProps, SlideProps, Box, BoxProps, PortalProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { PortalProps } from '@semcore/portal';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 

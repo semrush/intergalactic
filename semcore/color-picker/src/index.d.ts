@@ -1,9 +1,9 @@
+import type { BoxProps } from '@semcore/base-components';
+import type Popper from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
-import type { BoxProps } from '@semcore/flex-box';
 import type { InputProps } from '@semcore/input';
-import type Popper from '@semcore/popper';
 
 export type ItemProps = BoxProps & {
   /**

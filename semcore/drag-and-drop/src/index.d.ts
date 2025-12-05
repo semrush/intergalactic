@@ -1,5 +1,5 @@
+import type { Box, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
 
 /**
  * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).

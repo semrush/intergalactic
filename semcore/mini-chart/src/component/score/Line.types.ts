@@ -1,6 +1,6 @@
+import type { BoxProps, Box } from '@semcore/base-components';
 import type { Intergalactic, ComponentType } from '@semcore/core';
 import type resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import type { BoxProps, Box } from '@semcore/flex-box';
 import type React from 'react';
 
 import type { CommonScoreProps } from './Score';

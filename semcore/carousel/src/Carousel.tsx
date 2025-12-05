@@ -1,12 +1,11 @@
-import { createBreakpoints } from '@semcore/breakpoints';
+import { createBreakpoints, Box, Flex } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex } from '@semcore/flex-box';
-import type { BoxProps } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';

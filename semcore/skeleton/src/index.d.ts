@@ -1,6 +1,6 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type { BoxProps } from '@semcore/flex-box';
 
 export type SkeletonProps = BoxProps &
   UniqueIDProps & {

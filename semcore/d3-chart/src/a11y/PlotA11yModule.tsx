@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';

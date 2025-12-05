@@ -1,6 +1,5 @@
+import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
 import type React from 'react';
 
 export type PillsValue = string | number | boolean | null;

@@ -1,5 +1,5 @@
+import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import type React from 'react';
 
 type SliderValue = string | number;

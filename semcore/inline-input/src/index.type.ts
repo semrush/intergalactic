@@ -1,6 +1,6 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { ButtonLinkComponent } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 import type { InputNumberControlsProps } from '@semcore/input-number';
 import type React from 'react';
 

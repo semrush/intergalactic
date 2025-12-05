@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React from 'react';

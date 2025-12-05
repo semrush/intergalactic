@@ -1,4 +1,7 @@
-import { FadeInOut, Slide } from '@semcore/animation';
+import { FadeInOut, Slide } from '@semcore/base-components';
+import { Flex, Box } from '@semcore/base-components';
+import OutsideClick from '@semcore/base-components';
+import Portal, { PortalProvider } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -14,11 +17,8 @@ import {
   ZIndexStackingContextProvider,
   useZIndexStacking,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { Flex, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import CloseIcon from '@semcore/icon/Close/l';
-import OutsideClick from '@semcore/outside-click';
-import Portal, { PortalProvider } from '@semcore/portal';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

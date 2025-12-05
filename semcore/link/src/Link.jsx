@@ -1,10 +1,10 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';

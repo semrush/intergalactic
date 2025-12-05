@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 

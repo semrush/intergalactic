@@ -1,7 +1,7 @@
+import type { BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import type { BoxProps } from '@semcore/flex-box';
 import type { InputProps } from '@semcore/input';
 import type Input from '@semcore/input';
 import type { TextProps } from '@semcore/typography';

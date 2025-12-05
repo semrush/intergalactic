@@ -1,12 +1,10 @@
-import { Animation } from '@semcore/animation';
+import Portal, { Animation, Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import logger from '@semcore/core/lib/utils/logger';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box } from '@semcore/flex-box';
-import Portal from '@semcore/portal';
 import React from 'react';
 
 import style from './style/dot.shadow.css';

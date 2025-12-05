@@ -1,9 +1,8 @@
+import NeighborLocation, { Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 import style from './style/base-trigger.shadow.css';

@@ -1,7 +1,6 @@
-import type { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps, Box, BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
 import type { Text } from '@semcore/typography';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';

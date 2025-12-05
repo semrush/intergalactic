@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import Context from './context';
 
 const RowInner = (props, ref) => {

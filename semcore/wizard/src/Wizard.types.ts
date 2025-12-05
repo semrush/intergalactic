@@ -1,7 +1,7 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { ButtonProps } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import type { BoxProps } from '@semcore/flex-box';
 import type { ModalProps } from '@semcore/modal';
 import type React from 'react';
 

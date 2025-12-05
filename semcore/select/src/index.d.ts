@@ -1,3 +1,4 @@
+import type { BoxProps, Flex } from '@semcore/base-components';
 import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Divider from '@semcore/divider';
@@ -10,7 +11,6 @@ import type {
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
 import type DropdownMenu from '@semcore/dropdown-menu';
-import type { BoxProps, Flex } from '@semcore/flex-box';
 import type { InputValueProps } from '@semcore/input';
 import type Input from '@semcore/input';
 import type React from 'react';

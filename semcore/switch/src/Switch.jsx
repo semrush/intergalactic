@@ -1,10 +1,9 @@
+import NeighborLocation, { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 import style from './style/switch.shadow.css';

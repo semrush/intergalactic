@@ -1,6 +1,6 @@
+import type { Flex, Box, BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Flex, Box, BoxProps } from '@semcore/flex-box';
 import type { ModalProps } from '@semcore/modal';
 import type { Text } from '@semcore/typography';
 

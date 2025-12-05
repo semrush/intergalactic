@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -7,7 +8,6 @@ import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside'
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import React from 'react';
 

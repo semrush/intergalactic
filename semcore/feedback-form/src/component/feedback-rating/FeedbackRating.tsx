@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
 import FeedbackIllustration from '@semcore/illustration/Feedback';

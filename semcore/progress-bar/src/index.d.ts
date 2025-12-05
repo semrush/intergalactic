@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 
 export type ProgressBarProps = BoxProps & {
   /**

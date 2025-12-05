@@ -1,6 +1,6 @@
+import type { Box } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
-import type { Box } from '@semcore/flex-box';
 import type { NoticeSmart } from '@semcore/notice';
 import type { FormProps, FieldProps, FieldInputProps, FieldMetaState } from 'react-final-form';
 

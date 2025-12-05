@@ -1,9 +1,8 @@
+import NeighborLocation, { Box } from '@semcore/base-components';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
 

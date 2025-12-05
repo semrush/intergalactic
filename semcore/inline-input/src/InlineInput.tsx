@@ -1,10 +1,10 @@
+import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';

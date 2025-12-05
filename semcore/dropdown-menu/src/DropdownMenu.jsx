@@ -1,3 +1,4 @@
+import ScrollAreaComponent, { Flex, Box } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -7,8 +8,6 @@ import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, Box } from '@semcore/flex-box';
-import ScrollAreaComponent from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import React from 'react';
 

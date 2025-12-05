@@ -1,3 +1,5 @@
+import type { Flex, Box, BoxProps } from '@semcore/base-components';
+import type Popper from '@semcore/base-components';
 import type { BaseTriggerProps } from '@semcore/base-trigger';
 import type BaseTrigger from '@semcore/base-trigger';
 import type { ButtonProps } from '@semcore/button';
@@ -7,11 +9,9 @@ import type { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/co
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type Divider from '@semcore/divider';
 import type { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
-import type { Flex, Box, BoxProps } from '@semcore/flex-box';
 import type { InputProps, InputValueProps } from '@semcore/input';
 import type Input from '@semcore/input';
 import type { InputMaskValueProps } from '@semcore/input-mask';
-import type Popper from '@semcore/popper';
 import type { TooltipProps } from '@semcore/tooltip';
 import type dayjs from 'dayjs';
 import type { ChangeEvent } from 'react';

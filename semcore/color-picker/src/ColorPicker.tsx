@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
-import { Box, Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
 

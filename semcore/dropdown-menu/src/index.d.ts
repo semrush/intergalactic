@@ -1,3 +1,4 @@
+import type { Box, BoxProps, FlexProps, Flex, eventInteraction, ScrollAreaProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
@@ -7,9 +8,6 @@ import type {
   DropdownPopperAriaProps,
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
-import type { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
-import type { eventInteraction } from '@semcore/popper';
-import type { ScrollAreaProps } from '@semcore/scroll-area';
 import type { Text } from '@semcore/typography';
 
 import type { VirtualList, RenderRowProps } from './components/VirtualList';

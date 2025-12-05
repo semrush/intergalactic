@@ -1,8 +1,8 @@
+import { Flex, Box } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import type { DOMAttributes } from 'react';
 import React from 'react';

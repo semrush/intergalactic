@@ -10,12 +10,10 @@ import type {
   BoxProps,
   OutsideClickProps,
   PortalProps,
-} from '@semcore/base-components';
+  Box, PopperContext, PopperPopperProps, Placement } from '@semcore/base-components';
+import type Popper from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type { Box } from '@semcore/flex-box';
-import type { PopperContext, PopperPopperProps, Placement } from '@semcore/popper';
-import type Popper from '@semcore/popper';
 import type React from 'react';
 
 /**

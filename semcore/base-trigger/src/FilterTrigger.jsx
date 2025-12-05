@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import NeighborLocation, { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -12,7 +12,6 @@ import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import Dot from '@semcore/dot';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Close from '@semcore/icon/Close/m';
-import NeighborLocation from '@semcore/neighbor-location';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
 

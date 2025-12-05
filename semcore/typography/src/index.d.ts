@@ -1,5 +1,5 @@
+import type { BoxProps, Flex, FlexProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { BoxProps, Flex, FlexProps } from '@semcore/flex-box';
 import type { Property } from 'csstype';
 import type React from 'react';
 

@@ -1,3 +1,4 @@
+import { Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -6,7 +7,6 @@ import {
   type Intergalactic,
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/title.shadow.css';

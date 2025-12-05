@@ -7,7 +7,7 @@ import Head from './Head';
 import StickyHead from './StickyHead';
 import Body from './Body';
 import { Provider } from './context';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import { sstyled } from '@semcore/core';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 

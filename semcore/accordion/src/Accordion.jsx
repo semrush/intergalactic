@@ -1,8 +1,7 @@
-import { Collapse as CollapseAnimate } from '@semcore/animation';
+import { Collapse as CollapseAnimate, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Flex } from '@semcore/flex-box';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { Text } from '@semcore/typography';

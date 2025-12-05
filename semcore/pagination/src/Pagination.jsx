@@ -1,8 +1,8 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import InputNumber from '@semcore/input-number';
 import { Hint } from '@semcore/tooltip';

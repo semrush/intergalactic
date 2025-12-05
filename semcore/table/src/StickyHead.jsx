@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { fireFn } from '@semcore/core/lib/utils/fire';
 import Table from './Table';
-import ScrollAreaSmart from '@semcore/scroll-area';
+import ScrollAreaSmart from '@semcore/base-components';
 import ContextTable from './context';
 import throttle from '@semcore/core/lib/utils/rafTrottle';
 import { getNodeByRef, setRef } from '@semcore/core/lib/utils/ref';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import { createBaseComponent, sstyled } from '@semcore/core';
 
 import Context from './context';

@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { createComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
-import { Flex } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './legend-flex.shadow.css';

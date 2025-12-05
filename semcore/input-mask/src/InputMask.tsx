@@ -1,3 +1,4 @@
+import NeighborLocation, { Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -12,9 +13,7 @@ import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 

@@ -1,7 +1,7 @@
 import { UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps } from '@semcore/base-components';
 import { TextProps } from '@semcore/typography';
-import { ScrollAreaProps } from '@semcore/scroll-area';
+import { ScrollAreaProps } from '@semcore/base-components';
 
 /** @deprecated */
 export interface ITableCtx extends TableCtx, UnknownProperties {}

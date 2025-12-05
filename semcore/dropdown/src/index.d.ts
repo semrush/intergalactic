@@ -1,13 +1,12 @@
-import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type {
+import type { Box, BoxProps,
   PopperContext,
   PopperProps,
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
-} from '@semcore/popper';
-import type Popper from '@semcore/popper';
+} from '@semcore/base-components';
+import type Popper from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
 export type DropdownProps = PopperProps & {

@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box, Flex } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './line.shadow.css';

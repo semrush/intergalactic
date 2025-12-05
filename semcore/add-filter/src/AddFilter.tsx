@@ -1,9 +1,9 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import type { SelectProps } from '@semcore/select';

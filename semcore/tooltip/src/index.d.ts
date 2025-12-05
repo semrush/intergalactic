@@ -1,10 +1,10 @@
-import type { Intergalactic } from '@semcore/core';
 import type {
   PopperContext,
   PopperProps,
   PopperTriggerProps,
   eventInteraction,
-} from '@semcore/popper';
+} from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 export type ArrowCustom = {

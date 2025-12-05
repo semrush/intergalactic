@@ -1,6 +1,6 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
-import type { BoxProps } from '@semcore/flex-box';
 import type { Property } from 'csstype';
 import type { SyntheticEvent } from 'react';
 

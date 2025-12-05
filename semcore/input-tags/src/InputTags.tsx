@@ -1,3 +1,5 @@
+import Portal, { ScreenReaderOnly } from '@semcore/base-components';
+import ScrollArea, { type ScrollAreaProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -13,10 +15,7 @@ import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponen
 import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
-import Portal from '@semcore/portal';
-import ScrollArea, { type ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
 import React from 'react';
 

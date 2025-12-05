@@ -1,8 +1,8 @@
+import { Box } from '@semcore/base-components';
+import type { PopperContext } from '@semcore/base-components';
 import { Component, sstyled, Root } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
-import type { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import DOMPurify from 'dompurify';
 import React from 'react';
