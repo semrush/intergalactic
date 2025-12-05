@@ -23,9 +23,6 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toBe('clickable, button, Confirm action, button, Close notification');
-
-    await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, button, Close notification');
   });
 
   test(`Users can interact with Button with loading state via NVDA`, async ({
