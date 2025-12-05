@@ -100,7 +100,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwe');
-    await expect(locators.tooltip(page)).toHaveText('Password must have at least 8 characters');
+    await expect(locators.tooltip(page)).toHaveText('Password must have at least 8 characters.');
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwerty');
