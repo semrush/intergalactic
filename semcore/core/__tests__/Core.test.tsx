@@ -159,6 +159,9 @@ describe('Core', () => {
 
   shouldSupportRef(createComponent(RootTestClass));
 
+  shouldSupportCallEnhance(RootTestClass, 'Class');
+  shouldSupportCallEnhance(RootTestFunc, 'Function');
+
   shouldSupportCallEnhanceWithProps(RootTestClass, 'Class');
   shouldSupportCallEnhanceWithProps(RootTestFunc, 'Function');
 
@@ -382,7 +385,40 @@ describe('Controll/Uncontroll mode', () => {
 });
 
 describe('Getter props function', () => {
-  test('Should support move props from Root in Children', () => {
+  test('Should support move props from Root in Children Class', () => {
+    class RootTestClass extends Component {
+      static displayName = 'Test';
+
+      getItemProps() {
+        return { test: 'test' };
+      }
+
+      render() {
+        const { Root } = this;
+        return <Root render='div' />;
+      }
+    }
+
+    class ChildrenTestClass extends Component {
+      render() {
+        const { Root } = this;
+        // @ts-ignore
+        spy(this.asProps.test);
+        return <Root render='div' />;
+      }
+    }
+
+    const spy = vi.fn();
+
+    const Test = createComponent(RootTestClass, { Item: ChildrenTestClass }) as any;
+    render(
+      <Test>
+        <Test.Item />
+      </Test>,
+    );
+    expect(spy).toHaveBeenCalledWith('test');
+  });
+  test('Should support move props from Root in Children Function', () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -522,7 +558,7 @@ describe('Getter props function', () => {
 });
 
 describe('Hoist props', () => {
-  test('Should support hoist props from Children to Root', () => {
+  test('Should support hoist props from Children Func to Root', () => {
     const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
@@ -541,6 +577,35 @@ describe('Hoist props', () => {
     ChildrenTestFunc.hoistProps = ['test'];
 
     const Test = createComponent(RootComponent, { Item: ChildrenTestFunc }) as any;
+    render(
+      <Test>
+        <Test.Item test='test' />
+      </Test>,
+    );
+    expect(spy).toHaveBeenCalledWith('test');
+  });
+
+  test('Should support hoist props from Children Class to Root', () => {
+    const spy = vi.fn();
+
+    class RootComponent extends RootTestClass {
+      render() {
+        const { Root } = this;
+        spy(this.asProps.test);
+        return <Root render='div' />;
+      }
+    }
+
+    class ChildrenTestClass extends Component<IComponentProps<{}>> {
+      static hoistProps = ['test'];
+
+      render() {
+        const { Root } = this;
+        return <Root render='div' />;
+      }
+    }
+
+    const Test = createComponent(RootComponent, { Item: ChildrenTestClass }) as any;
     render(
       <Test>
         <Test.Item test='test' />
