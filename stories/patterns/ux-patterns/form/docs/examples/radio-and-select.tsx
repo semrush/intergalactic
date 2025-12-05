@@ -51,12 +51,12 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <Text size={300} id='radio-group-label' tag='label'>
+      <Text size={300} id='radio-group-label' tag='label' bold>
         Export data
       </Text>
       <Controller
         render={({ field }) => (
-          <RadioGroup {...field} size='l' gap={3} aria-labelledby='radio-group-label'>
+          <RadioGroup {...field} size='l' gap={2} aria-labelledby='radio-group-label'>
             <Radio mb={2} value='all' label='All' />
             <Radio>
               <Radio.Value value='selected' />
@@ -84,7 +84,7 @@ const Demo = () => {
         name='export'
       />
 
-      <Button type='submit' use='primary' theme='info' size='l' mt={2}>
+      <Button type='submit' use='primary' theme='info' size='l'>
         Export
       </Button>
     </Flex>

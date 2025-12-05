@@ -115,7 +115,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }
     await page.keyboard.press('Enter');
     await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText(`Email isn't valid`);
+    await expect(tooltip).toHaveText(`Email isn't valid.`);
 
     await page.keyboard.type('.test');
     await tooltip.waitFor({ state: 'hidden' });
@@ -139,7 +139,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(counterText).toBe('5/5');
     }
     await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText(`Max emails is 5`);
+    await expect(tooltip).toHaveText(`There must be no more than 5 emails.`);
 
     await page.keyboard.press('Enter');
     await expect(locators.input(page)).toBeFocused();
