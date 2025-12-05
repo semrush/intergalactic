@@ -1,4 +1,5 @@
-import { cleanup, renderHook, act, render } from '@semcore/testing-utils/testing-library';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 import {
   expect,
   test,
@@ -33,19 +34,257 @@ import useCss from '../src/utils/use/useCss';
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify CSS in JS generates className', () => {
-    const CSSJS = ({ css }: any) => {
-      const className = useCss(css);
-      return <div className={className} data-testid='css-test' />;
-    };
+  test.concurrent('Verify Utils assignProps other prop', () => {
+    const result1 = assignProps(
+      {
+        test: 1,
+      },
+      {
+        test: 2,
+      },
+    );
+    const result2 = assignProps(
+      {
+        test: 1,
+      },
+      {},
+    );
+    const result3 = assignProps(
+      {},
+      {
+        test: 2,
+      },
+    );
+    const result4 = assignProps(
+      {
+        test: undefined,
+      },
+      {
+        test: 2,
+      },
+    );
+    // first obj overwrite second obj
+    expect(result1.test).toEqual(1);
+    expect(result2.test).toEqual(1);
+    expect(result3.test).toEqual(2);
+    // first obj overwrite second obj by key
+    expect(result4.test).toEqual(undefined);
+  });
 
-    const { getByTestId } = render(
-      <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />,
+  test.concurrent('Verify Utils assignProps style', () => {
+    const result1 = assignProps(
+      {
+        style: {
+          margin: 1,
+          paddingTop: 1,
+        },
+      },
+      {
+        style: {
+          margin: 2,
+          paddingBottom: 1,
+        },
+      },
     );
 
-    const element = getByTestId('css-test');
-    expect(element.className).toBeTruthy();
-    expect(element.className.length).toBeGreaterThan(0);
+    const result2 = assignProps(
+      {
+        style: {},
+      },
+      {
+        style: {
+          margin: 2,
+        },
+      },
+    );
+
+    const result3 = assignProps(
+      {
+        style: {
+          margin: 1,
+        },
+      },
+      {
+        style: {},
+      },
+    );
+
+    // first obj overwrite second obj
+    expect(result1.style.margin).toEqual(1);
+
+    // style merge
+    expect(result1.style.paddingTop).toEqual(1);
+    expect(result1.style.paddingBottom).toEqual(1);
+
+    expect(result2.style.margin).toEqual(2);
+    expect(result3.style.margin).toEqual(1);
+  });
+
+  test.concurrent('Verify Utils assignProps className', () => {
+    const result1 = assignProps(
+      {
+        className: 'test1',
+      },
+      {
+        className: 'test2',
+      },
+    );
+    const result2 = assignProps(
+      {
+        className: 'test1',
+      },
+      {},
+    );
+    const result3 = assignProps(
+      {},
+      {
+        className: 'test2',
+      },
+    );
+    const result4 = assignProps(
+      {
+        className: '',
+      },
+      {
+        className: 'test2',
+      },
+    );
+    const result5 = assignProps(
+      {
+        className: 'test1',
+      },
+      {
+        className: '',
+      },
+    );
+    // class concat
+    expect(result1.className).toEqual('test1 test2');
+    expect(result2.className).toEqual('test1');
+    expect(result3.className).toEqual('test2');
+    expect(result4.className).toEqual('test2');
+    expect(result5.className).toEqual('test1');
+  });
+
+  test.concurrent('Verify Utils assignProps ref', () => {
+    const spy1 = vi.fn();
+    const result1 = assignProps(
+      {
+        ref: spy1,
+      },
+      {
+        ref: spy1,
+      },
+    );
+
+    const spy2 = vi.fn();
+    const result2 = assignProps(
+      {
+        ref: spy2,
+      },
+      {},
+    );
+
+    const spy3 = vi.fn();
+    const result3 = assignProps(
+      {},
+      {
+        ref: spy3,
+      },
+    );
+
+    result1.ref();
+    result2.ref();
+    result3.ref();
+    expect(result1.ref).not.toEqual(spy1);
+    expect(spy1).toBeCalledTimes(1);
+    expect(spy2).toBeCalledTimes(1);
+    expect(result2.ref).toEqual(spy2);
+    expect(spy3).toBeCalledTimes(1);
+    expect(result3.ref).toEqual(spy3);
+  });
+
+  test.concurrent('Verify Utils assignProps handler', () => {
+    const spy1 = vi.fn();
+    const result1 = assignProps(
+      {
+        onClick: spy1,
+      },
+      {
+        onClick: spy1,
+      },
+    );
+
+    const spy2 = vi.fn();
+    const result2 = assignProps(
+      {
+        onClick: spy2,
+      },
+      {},
+    );
+
+    const spy3 = vi.fn();
+    const result3 = assignProps(
+      {},
+      {
+        onClick: spy3,
+      },
+    );
+
+    result1.onClick();
+    result2.onClick();
+    result3.onClick();
+    expect(result1.onClick).not.toEqual(spy1);
+    expect(spy1).toBeCalledTimes(2);
+    expect(spy2).toBeCalledTimes(1);
+    expect(result2.onClick).toEqual(spy2);
+    expect(spy3).toBeCalledTimes(1);
+    expect(result3.onClick).toEqual(spy3);
+  });
+
+  test.concurrent('Verify Utils assignHandlers', () => {
+    const spy1 = vi.fn();
+    const result1: any = assignHandlers(
+      {
+        onClick: spy1,
+      },
+      {
+        onClick: spy1,
+      },
+    );
+
+    const spy2 = vi.fn();
+    const result2 = assignHandlers(
+      {
+        onClick: spy2,
+      },
+      {},
+    );
+
+    const spy3 = vi.fn();
+    const result3: any = assignHandlers(
+      {},
+      {
+        onClick: spy3,
+      },
+    );
+
+    result1.onClick();
+    result3.onClick();
+    expect(result1.onClick).not.toEqual(spy1);
+    expect(spy1).toBeCalledTimes(2);
+    expect(result2).toEqual({});
+    expect(spy3).toBeCalledTimes(1);
+    expect(result3.onClick).not.toEqual(spy3);
+  });
+
+  test.concurrent('Verufy CSS in JS', async ({ task }) => {
+    const CSSJS = ({ css }: any) => {
+      const className = useCss(css);
+      return <div className={className} />;
+    };
+    const component = <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />;
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
@@ -122,9 +361,15 @@ describe('Utils reactToText', () => {
     expect(reactToText(1)).toBe('1');
   });
 
+  test.concurrent('Verify support boolean', () => {
+    expect(reactToText(false)).toBe('false');
+    expect(reactToText(true)).toBe('true');
+  });
+
   test.concurrent('Verify support undefined types', () => {
     expect(reactToText(undefined)).toBe('');
     expect(reactToText(null)).toBe('');
+    expect(reactToText(Number.NaN)).toBe('');
   });
 
   test.concurrent('Verify support array and obj', () => {
@@ -369,7 +614,7 @@ describe('EventEmitter', () => {
     const handler = vi.fn();
     const unsubscribe = emitter.subscribe('testEvent', handler);
 
-    unsubscribe(); // Отписываемся
+    unsubscribe();
     emitter.emit('testEvent');
 
     expect(handler).not.toHaveBeenCalled();
@@ -412,6 +657,16 @@ describe('getEventTarget', () => {
     expect(result).toBe(shadowRootElement);
   });
 
+  test('Verify return event.target when composedPath is undefined', () => {
+    const event = {
+      target: 'targetElement',
+      composedPath: vi.fn().mockReturnValue(undefined), // Mocking composedPath as undefined
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe('targetElement');
+  });
+
   test('Verify handle nativeEvent with composedPath correctly', () => {
     const shadowRootElement = { shadowRoot: {} } as HTMLElement;
     const event = {
@@ -422,6 +677,16 @@ describe('getEventTarget', () => {
 
     const result = getEventTarget(event);
     expect(result).toBe(shadowRootElement);
+  });
+
+  test('Verify return event.target when nativeEvent does not have composedPath', () => {
+    const event = {
+      target: 'targetElement',
+      nativeEvent: {}, // No composedPath in nativeEvent
+    } as unknown as React.SyntheticEvent;
+
+    const result = getEventTarget(event);
+    expect(result).toBe('targetElement');
   });
 });
 
@@ -502,6 +767,56 @@ describe('getInputProps', () => {
     expect(includedProps).toEqual({});
     expect(excludedProps).toEqual({});
   });
+
+  test('Verify include all the required props from the inputProps array', () => {
+    const requiredProps = [
+      'autoFocus',
+      'autoComplete',
+      'defaultChecked',
+      'checked',
+      'disabled',
+      'name',
+      'type',
+      'value',
+      'defaultValue',
+      'id',
+      'indeterminate',
+      'required',
+      'onInvalid',
+      'onChange',
+      'onFocus',
+      'onBlur',
+      'onKeyDown',
+      'onKeyPress',
+      'onKeyUp',
+      'tabIndex',
+      'data-ui-name',
+      'inputMode',
+    ];
+
+    // Ensure that the inputProps array contains all the required props
+    requiredProps.forEach((prop) => {
+      expect(inputProps).toContain(prop);
+    });
+
+    const props = requiredProps.reduce((acc: { [key: string]: string }, prop) => {
+      acc[prop] = 'test'; // Assigning dummy values for each prop
+      return acc;
+    }, {});
+
+    const [includedProps, excludedProps] = getInputProps(props);
+
+    // all required props are correctly included in the result
+    requiredProps.forEach((prop) => {
+      expect(includedProps).toHaveProperty(prop, 'test');
+    });
+
+    // no other props are present in includedProps
+    expect(Object.keys(includedProps).length).toBe(requiredProps.length);
+
+    // excludedProps is empty as we only used requiredProps in this test
+    expect(excludedProps).toEqual({});
+  });
 });
 
 describe('propsForElement', () => {
@@ -562,6 +877,11 @@ describe('validAttr function', () => {
 
   test('Verify not allow invalid attributes', () => {
     expect(validAttr('invalidAttr')).toBe(false);
+  });
+
+  test('Verify allow standard allowed attributes', () => {
+    expect(validAttr('className')).toBe(true);
+    expect(validAttr('onClick')).toBe(true);
   });
 });
 
