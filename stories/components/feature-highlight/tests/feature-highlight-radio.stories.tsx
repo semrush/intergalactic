@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import RadioAdvancedExample, { defaultProps } from './examples/radio';
+import RadioPropsExample, { defaultProps } from './examples/radio';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Radio',
 };
 
-export const RadioAdvanced: StoryObj<typeof defaultProps> = {
-  render: RadioAdvancedExample,
+export const RadioProps: StoryObj<typeof defaultProps> = {
+  render: RadioPropsExample,
   argTypes: {
     firstOptionText: { control: 'text' },
     secondOptionText: { control: 'text' },

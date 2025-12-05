@@ -316,10 +316,14 @@ jobs:
 #      - name: Fail if test step actually failed
 #        if: steps.a11y-testing.outcome != 'success'
 #        run: exit 1
-  browser-tests:
+  browser-tests-visual:
     runs-on: ubuntu-latest
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
     container:
       image: mcr.microsoft.com/playwright:v1.48.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
@@ -374,21 +378,97 @@ jobs:
           pnpm --filter @semcore/base-components build
           pnpm build:icons
           pnpm build:illustration
-      - name: Browser testing
-        id: browser-testing
+      - name: Browser testing (Visual tests - ${{ matrix.browser }})
+        id: browser-testing-visual
         env:
           CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
-        run: HOME=/root pnpm playwright test --config playwright.browser.config.ts $CHANGED_COMPONENTS
+        run: HOME=/root pnpm playwright test --config playwright.browser.config.ts --grep "@visual" --project=${{ matrix.browser }} $CHANGED_COMPONENTS
         continue-on-error: true
       - name: Save test results as artifacts
-        if: steps.browser-testing.outcome != 'success'
+        if: steps.browser-testing-visual.outcome != 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: browser-testing-failure-output
+          name: browser-testing-visual-${{ matrix.browser }}-failure-output
           path: test-results
           retention-days: 3
       - name: Fail if test step actually failed
-        if: steps.browser-testing.outcome != 'success'
+        if: steps.browser-testing-visual.outcome != 'success'
+        run: exit 1
+  browser-tests-functional:
+    runs-on: ubuntu-latest
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    container:
+      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      options: --ipc=host  # Needed for Chromium sandboxing
+    steps:
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
+      - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          version: 10.11.1
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install Browser
+        run: npx playwright install --with-deps
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Build basic packages
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/base-components build
+          pnpm build:icons
+          pnpm build:illustration
+      - name: Browser testing (Functional tests - ${{ matrix.browser }})
+        id: browser-testing-functional
+        env:
+          CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
+        run: HOME=/root pnpm playwright test --config playwright.browser.config.ts --grep "@functional" --project=${{ matrix.browser }} $CHANGED_COMPONENTS
+        continue-on-error: true
+      - name: Save test results as artifacts
+        if: steps.browser-testing-functional.outcome != 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-testing-functional-${{ matrix.browser }}-failure-output
+          path: test-results
+          retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.browser-testing-functional.outcome != 'success'
         run: exit 1
   axe-tests:
     runs-on: ubuntu-latest

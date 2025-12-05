@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import NoticeAdvancedExample, { defaultProps } from './examples/notice';
+import NoticePropsExample, { defaultProps } from './examples/notice';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Notice',
 };
 
-export const NoticeAdvanced: StoryObj<typeof defaultProps> = {
-  render: NoticeAdvancedExample,
+export const NoticeProps: StoryObj<typeof defaultProps> = {
+  render: NoticePropsExample,
   argTypes: {
     noticeText: { control: 'text' },
     showTitle: { control: 'boolean' },

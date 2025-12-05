@@ -94,16 +94,15 @@ export const publishRelease = async () => {
 
   if (!process.argv.includes('--dry-run') && version) {
     const releaseChangelog = await Changelog.getRelease();
-    const lastVersionChangelogs = releaseChangelog.slice(0, 1);
     const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
 
-    await publishReleaseNotes(version, lastVersionChangelogs);
+    await publishReleaseNotes(version, releaseChangelog);
 
     if (!process.argv.includes('--dry-run')) {
       validateSlackIntegrationEnv(endpoints);
     }
 
-    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
+    await sendMessageAboutRelease(version, releaseChangelog, endpoints);
   }
 };
 
@@ -123,11 +122,10 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
 
   if (version && endpoints) {
     const releaseChangelog = await Changelog.getRelease();
-    const lastVersionChangelogs = releaseChangelog.slice(0, 1);
 
     validateSlackIntegrationEnv(endpoints);
 
-    await sendMessageAboutRelease(version, lastVersionChangelogs, endpoints);
+    await sendMessageAboutRelease(version, releaseChangelog, endpoints);
   }
 };
 

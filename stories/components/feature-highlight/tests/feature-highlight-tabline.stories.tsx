@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import TabLineAdvancedExample, { defaultProps } from './examples/tabline';
+import TabLinePropsExample, { defaultProps } from './examples/tabline';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/TabLine',
 };
 
-export const TabLineAdvanced: StoryObj<typeof defaultProps> = {
-  render: TabLineAdvancedExample,
+export const TabLineProps: StoryObj<typeof defaultProps> = {
+  render: TabLinePropsExample,
   argTypes: {
     firstTabText: { control: 'text' },
     secondTabText: { control: 'text' },

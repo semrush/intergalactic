@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import SelectAdvancedExample, { defaultProps } from './examples/select';
+import SelectPropsExample, { defaultProps } from './examples/select';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Select',
 };
 
-export const SelectAdvanced: StoryObj<typeof defaultProps> = {
-  render: SelectAdvancedExample,
+export const SelectProps: StoryObj<typeof defaultProps> = {
+  render: SelectPropsExample,
   argTypes: {
     placeholder: { control: 'text' },
     showBadge: { control: 'boolean' },

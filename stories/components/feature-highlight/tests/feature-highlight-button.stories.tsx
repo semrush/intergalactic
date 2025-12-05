@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import ButtonAdvancedExample, { defaultProps } from './examples/button';
+import ButtonPropsExample, { defaultProps } from './examples/button';
 
 const meta: Meta = {
   title: 'Components/Feature Highlight/Tests/Button',
 };
 
-export const ButtonAdvanced: StoryObj<typeof defaultProps> = {
-  render: ButtonAdvancedExample,
+export const ButtonProps: StoryObj<typeof defaultProps> = {
+  render: ButtonPropsExample,
   argTypes: {
     buttonText: { control: 'text' },
     showBadge: { control: 'boolean' },
