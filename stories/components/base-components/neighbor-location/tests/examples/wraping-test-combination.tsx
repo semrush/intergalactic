@@ -1,8 +1,7 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import Input from '@semcore/ui/input';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import Select from '@semcore/ui/select';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
