@@ -82,12 +82,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('Enter');
     await locators.tooltip(page).waitFor({ state: 'visible' });
     await expect(locators.input(page).first()).toBeFocused();
-    await expect(locators.tooltip(page)).toHaveText('Email is required');
+    await expect(locators.tooltip(page)).toHaveText('Email is required.');
     await expect(locators.input(page).first()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('tes');
     await locators.tooltip(page).waitFor({ state: 'visible' });
-    await expect(locators.tooltip(page)).toHaveText('Email is not valid');
+    await expect(locators.tooltip(page)).toHaveText('Email is not valid.');
     await expect(locators.input(page).first()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('t@test.test');
@@ -96,11 +96,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Tab');
     await locators.tooltip(page).waitFor({ state: 'visible' });
-    await expect(locators.tooltip(page)).toHaveText('Password is required');
+    await expect(locators.tooltip(page)).toHaveText('Password is required.');
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwe');
-    await expect(locators.tooltip(page)).toHaveText('Password must have at least 8 characters');
+    await expect(locators.tooltip(page)).toHaveText('Password must have at least 8 characters.');
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwerty');
