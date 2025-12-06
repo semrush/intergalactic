@@ -2,6 +2,7 @@ import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import ReloadM from '@semcore/ui/icon/Reload/m';
 import WarningM from '@semcore/ui/icon/Warning/m';
+import type { AddedNoticeMeta } from '@semcore/ui/notice-bubble';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import Spin from '@semcore/ui/spin';
 import React from 'react';
@@ -9,14 +10,14 @@ type DynamicNoticeBubbleProps = { initialAnimation: boolean; duration: number; t
 
 const manager = new NoticeBubbleManager();
 
-let notice: any = null;
+let notice: AddedNoticeMeta | null = null;
 
 const Demo = (props: DynamicNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const tryAgain = async () => {
     if (!notice) return;
     notice.update({
-      icon: null,
+      icon: undefined,
       children: (
         <Flex justifyContent='center' gap={1}>
           <Spin size='xs' theme='invert' />
