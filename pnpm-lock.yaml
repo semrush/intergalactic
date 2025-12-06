@@ -1909,31 +1909,19 @@ importers:
 
   semcore/side-panel:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/outside-click':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
