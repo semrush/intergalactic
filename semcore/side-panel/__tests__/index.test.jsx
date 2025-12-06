@@ -1,4 +1,4 @@
-import Portal from '@semcore/base-components';
+import { Portal } from '@semcore/base-components';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';

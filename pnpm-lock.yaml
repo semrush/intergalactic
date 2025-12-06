@@ -2237,9 +2237,6 @@ importers:
       '@semcore/add-filter':
         specifier: ^16.6.2
         version: link:../add-filter
-      '@semcore/animation':
-        specifier: ^16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
       '@semcore/badge':
         specifier: ^16.0.7
         version: link:../badge
@@ -2252,9 +2249,6 @@ importers:
       '@semcore/breadcrumbs':
         specifier: ^16.5.4
         version: link:../breadcrumbs
-      '@semcore/breakpoints':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/bulk-textarea':
         specifier: ^16.6.2
         version: link:../bulk-textarea
@@ -2321,18 +2315,12 @@ importers:
       '@semcore/flags':
         specifier: ^16.1.8
         version: link:../flags
-      '@semcore/flex-box':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/format-text':
         specifier: ^16.1.1
         version: link:../format-text
       '@semcore/fullscreen-modal':
         specifier: ^16.1.12
         version: link:../fullscreen-modal
-      '@semcore/grid':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/i18n-unplugin':
         specifier: ^16.0.9
         version: link:../i18n-unplugin
@@ -2369,9 +2357,6 @@ importers:
       '@semcore/modal':
         specifier: ^16.1.12
         version: link:../modal
-      '@semcore/neighbor-location':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/notice':
         specifier: ^16.1.12
         version: link:../notice
@@ -2381,21 +2366,12 @@ importers:
       '@semcore/notice-global':
         specifier: ^16.1.12
         version: link:../notice-global
-      '@semcore/outside-click':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/pagination':
         specifier: ^16.1.12
         version: link:../pagination
       '@semcore/pills':
         specifier: ^16.0.11
         version: link:../pills
-      '@semcore/popper':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/product-head':
         specifier: ^16.0.11
         version: link:../product-head
@@ -2405,9 +2381,6 @@ importers:
       '@semcore/radio':
         specifier: ^16.1.1
         version: link:../radio
-      '@semcore/scroll-area':
-        specifier: ^16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/select':
         specifier: ^16.1.12
         version: link:../select
@@ -2429,9 +2402,6 @@ importers:
       '@semcore/sticky':
         specifier: ^16.0.11
         version: link:../sticky
-      '@semcore/stylelint-plugin':
-        specifier: ^0.0.1
-        version: link:../stylelint-plugin
       '@semcore/switch':
         specifier: ^16.1.1
         version: link:../switch
@@ -2456,9 +2426,6 @@ importers:
       '@semcore/typography':
         specifier: ^16.3.2
         version: link:../typography
-      '@semcore/ui':
-        specifier: ^16.13.0
-        version: 'link:'
       '@semcore/widget-empty':
         specifier: ^16.0.11
         version: link:../widget-empty
