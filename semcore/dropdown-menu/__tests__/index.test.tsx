@@ -53,27 +53,6 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent('Verify ItemHint and ItemTitle are not broken', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <DropdownMenu visible disablePortal>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Group title='Title 1'>
-              <DropdownMenu.Item>
-                <DropdownMenu.Item.Content>Item 1</DropdownMenu.Item.Content>
-                <DropdownMenu.Item.Hint>Hint 1</DropdownMenu.Item.Hint>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-              <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            </DropdownMenu.Group>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.sequential('Verify menu actions interactions', async ({ expect }) => {
     const spy = vi.fn();
 

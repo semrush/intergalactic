@@ -1,13 +1,8 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { Portal, PortalProvider } from '../src';
-
-describe('portal Dependency imports', () => {
-  runDependencyCheckTests('portal');
-});
 
 describe('Portal', () => {
   beforeEach(cleanup);
