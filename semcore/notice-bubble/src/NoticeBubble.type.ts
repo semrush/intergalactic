@@ -75,10 +75,9 @@ export type NoticeBubbleWarningProps = NoticeBubbleProps & {
 
 export type AddedNoticeMeta = {
   uid: number;
-  update: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
+  update: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => Promise<AddedNoticeMeta>;
   remove: () => boolean;
   ref: RefObject<HTMLElement>;
-  focus: () => void;
 };
 
 export type NoticeBubbleManagerClass = {

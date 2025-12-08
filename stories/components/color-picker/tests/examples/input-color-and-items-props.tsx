@@ -4,7 +4,7 @@ import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#98848D');
-  const [customColors, setCustomColors] = React.useState(['#8649E6', '#8649E7', '#8649E8']);
+  const [customColors, setCustomColors] = React.useState(['#00FF00', '#0000FF']);
 
   const presetColors = [
     null,
@@ -46,27 +46,15 @@ const Demo = () => {
           <PaletteManager
             colors={customColors}
             onColorsChange={setCustomColors}
-            defaultColors={['#00FF00', '#0000FF']}
           >
-            <PaletteManager.Colors colors={customColors} />
+            <PaletteManager.Colors />
 
             <PaletteManager.InputColor
               defaultValue='#ABCDEF'
               ref={inputRef}
-              // disabled
               onAdd={handleAdd}
               size='l'
               state='normal'
-              colors={customColors}
-            />
-            <PaletteManager.InputColor
-              defaultValue='#ABCDEF'
-              ref={inputRef}
-              disabled
-              onAdd={handleAdd}
-              size='l'
-              state='normal'
-              colors={customColors}
             />
           </PaletteManager>
         </ColorPicker.Popper>

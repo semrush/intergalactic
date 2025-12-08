@@ -16,7 +16,7 @@ const Demo = (props: DynamicNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const tryAgain = async () => {
     if (!notice) return;
-    notice.update({
+    notice = await notice.update({
       icon: undefined,
       children: (
         <Flex justifyContent='center' gap={1}>
@@ -27,7 +27,7 @@ const Demo = (props: DynamicNoticeBubbleProps) => {
       action: null,
     });
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    notice.update({
+    notice = await notice.update({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
       icon: <WarningM color='--intergalactic-icon-primary-warning' />,
       action: (
