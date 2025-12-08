@@ -20,7 +20,7 @@ import type { UnknownProperties } from './core-types/UnknownProperties';
 import { createComponent, createBaseComponent, assignProps } from './coreFactory';
 import { lastInteraction } from './LastInteractionType';
 import register from './register';
-import type { StyledProps } from './styled';
+import type { IStyledProps } from './styled';
 import { sstyled } from './styled';
 
 export {
@@ -43,7 +43,7 @@ export {
   CHILDREN_COMPONENT,
   INHERITED_NAME,
   type ReturnEl,
-  type StyledProps,
+  type IStyledProps,
   wrapIntergalacticComponent,
   assignProps,
   register,

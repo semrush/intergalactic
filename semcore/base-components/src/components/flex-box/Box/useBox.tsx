@@ -1,4 +1,4 @@
-import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
+import { sstyled, type UnknownProperties, type IStyledProps } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
@@ -28,7 +28,7 @@ function getSize(size: any) {
   }
 }
 
-export type BoxProps = StyledProps & {
+export type BoxProps = IStyledProps & {
   /**
    * CSS `display` property
    */
