@@ -3,8 +3,6 @@ import { BoxProps } from '@semcore/base-components';
 import { TextProps } from '@semcore/typography';
 import { ScrollAreaProps } from '@semcore/base-components';
 
-/** @deprecated */
-export interface ITableCtx extends TableCtx, UnknownProperties {}
 export type TableCtx = {
   styles: { [key: string]: any };
   use: 'primary' | 'secondary' | false;
@@ -13,8 +11,6 @@ export type TableCtx = {
 
 export type RowTheme = 'info' | 'success' | 'warning' | 'danger' | 'default' | false;
 
-/** @deprecated */
-export interface ITableProps extends TableProps, UnknownProperties {}
 export type TableProps = BoxProps & {
   /**
    * @default primary
@@ -24,8 +20,6 @@ export type TableProps = BoxProps & {
   compact?: boolean;
 };
 
-/** @deprecated */
-export interface ICellProps extends CellProps, UnknownProperties {}
 export type CellProps = TextProps & {
   /** Positioning content horizontally in a cell
    * @default left
@@ -49,8 +43,6 @@ export type CellProps = TextProps & {
   borderLeft?: boolean;
 };
 
-/** @deprecated */
-export interface ITableCellHeadProps extends TableCellHeadProps, UnknownProperties {}
 export type TableCellHeadProps = CellProps & {
   /** Responsible for the sort direction */
   sorting?: 'asc' | 'desc' | false;
@@ -58,8 +50,6 @@ export type TableCellHeadProps = CellProps & {
   active?: boolean;
 };
 
-/** @deprecated */
-export interface ITableCellRowProps extends TableCellRowProps, UnknownProperties {}
 export type TableCellRowProps = CellProps & {
   /** Property responsible for highlighting the cell */
   highlighted?: boolean;
@@ -69,8 +59,6 @@ export type TableCellRowProps = CellProps & {
   theme?: RowTheme;
 };
 
-/** @deprecated */
-export interface IStickyHeadProps extends StickyHeadProps, UnknownProperties {}
 export type StickyHeadProps = ScrollAreaProps & {
   /** HTML element, which is used for table scrolling */
 
@@ -93,8 +81,6 @@ export type StickyHeadProps = ScrollAreaProps & {
   disablePortal?: boolean;
 };
 
-/** @deprecated */
-export interface ITableRowProps extends TableRowProps, UnknownProperties {}
 export type TableRowProps = BoxProps & {
   /** Property responsible for the row interactivity */
   interactive?: boolean;

@@ -313,8 +313,6 @@ export declare const nameWithoutIso: {
   WALES: string;
 };
 
-/** @deprecated */
-export interface IFlagsProps extends FlagsProps, UnknownProperties {}
 export type FlagsProps = BoxProps & {
   /** URL before css file with a sprite
    * @default `//static.semrush.com/intergalactic/flags/${version package}`

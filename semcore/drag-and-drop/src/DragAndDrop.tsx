@@ -7,7 +7,7 @@ import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
-import type { DragAndDropProps, DropZoneProps } from './index';
+import type { DragAndDropComponent, DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
 import style from './style/drag-and-drop.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -53,7 +53,6 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {
-    theme: 'default',
     i18n: localizedMessages,
     locale: 'en',
   };
@@ -261,11 +260,6 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
           toIndex: dragOver ?? dragging.index,
         });
       }
-    }
-    if (!currentItem.draggingAllowed) {
-      this.asProps.onInsertDroppable?.(items[dragging!.index]?.children, currentItem.children);
-    } else {
-      this.asProps.onSwapDraggable?.(items[dragging!.index]?.children, currentItem.children);
     }
   };
 
@@ -485,7 +479,6 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
       dropPreview: index === this.state.dragOver,
       keyboardDragging: index === this.state.keyboardDraggingIndex,
       reversedScaling: this.state.reversedScaling,
-      dark: this.asProps.theme === 'dark',
       hideHoverEffect: this.state.hideHoverEffect,
       animatedScaling: index === this.state.animatedScaling,
       active: index === this.state.dragging?.index ? 'true' : 'false',
@@ -721,6 +714,6 @@ const DragAndDrop = createComponent(DragAndDropRoot, {
   Draggable,
   DropZone,
   Dropable: DropZone,
-}) as any;
+}) as DragAndDropComponent;
 
 export default DragAndDrop;

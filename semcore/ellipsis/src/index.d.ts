@@ -4,8 +4,6 @@ import type { TooltipProps } from '@semcore/tooltip';
 import type Tooltip from '@semcore/tooltip';
 import type { RefObject } from 'react';
 
-/** @deprecated */
-export interface IEllipsisProps extends EllipsisProps, UnknownProperties {}
 export type EllipsisProps = BoxProps &
   Partial<TooltipProps> & {
     /**

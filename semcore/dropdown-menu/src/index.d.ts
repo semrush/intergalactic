@@ -75,11 +75,6 @@ export type DropdownMenuItemProps = FlexProps & {
    */
   disabled?: boolean;
   /**
-   * Adds focus styles around
-   * @deprecated set focus manually by `.focus()` method to the same behaviour
-   */
-  highlighted?: boolean;
-  /**
    * Size of the component
    * @default m
    */
@@ -88,22 +83,6 @@ export type DropdownMenuItemProps = FlexProps & {
    * Index of item (used in virtualized lists)
    */
   index?: number;
-};
-
-export type DropdownMenuItemHintProps = FlexProps & {
-  /**
-   * Size of the component
-   * @default m
-   */
-  size?: DropdownMenuSize;
-};
-
-export type DropdownMenuItemTitleProps = FlexProps & {
-  /**
-   * Size of the component
-   * @default m
-   */
-  size?: DropdownMenuSize;
 };
 
 export type DropdownMenuContext = DropdownContext & {

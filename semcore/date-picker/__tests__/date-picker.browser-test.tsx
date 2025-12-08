@@ -538,7 +538,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.calendar(page)).toBeFocused();
 
         await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
       });
 

@@ -1,5 +1,5 @@
 import type { Box, BoxProps } from '@semcore/base-components';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 /**
  * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).
@@ -11,18 +11,6 @@ type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
 }>;
 
 export type DragAndDropProps = BoxProps & {
-  /**
-   * @deprecated don't use this prop
-   */
-  theme?: 'dark' | 'default';
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onSwapDraggable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onInsertDroppable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
   /**
    * Controlled drag and drop handler
    */
@@ -76,15 +64,11 @@ export type DropZoneProps = BoxProps &
     zoneName?: string;
   };
 
-declare const DragAndDrop: Intergalactic.Component<
+export type DragAndDropComponent = Intergalactic.Component<
   'div',
   DragAndDropProps & DNDAriaProps,
   DragAndDropContext
 > & {
   Draggable: Intergalactic.Component<'div', DraggableProps & DNDAriaProps>;
   DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
-  /** @deprecated use `DragAndDrop.DropZone` instead */
-  Droppable: Intergalactic.Component<typeof Box, DropZoneProps>;
 };
-
-export default DragAndDrop;

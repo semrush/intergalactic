@@ -21,14 +21,10 @@ import style from './style/input-mask.shadow.css';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
-/** @deprecated */
-export interface InputMaskAliases extends nputMaskAliases, UnknownProperties {}
-export type nputMaskAliases = {
+export type InputMaskAliases = {
   [s: string]: RegExp;
 };
 
-/** @deprecated */
-export interface IInputMaskValueProps extends InputMaskValueProps, UnknownProperties {}
 export type InputMaskValueProps = InputValueProps & {
   /**
    * Mask for entering text

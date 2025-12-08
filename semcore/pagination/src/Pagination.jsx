@@ -96,12 +96,6 @@ class PaginationRoot extends Component {
     return finalValue <= 0 ? 1 : finalValue;
   };
 
-  /** @deprecated */
-  handlePageInputIconClick = () => {
-    const dirtyCurrentPage = this.getDirtyCurrentPage();
-    this.handlePageChange(dirtyCurrentPage);
-  };
-
   handlePageInputKeyDown = (event) => {
     if (event.key !== 'Enter') return;
     const dirtyCurrentPage = this.getDirtyCurrentPage();
@@ -174,10 +168,8 @@ class PaginationRoot extends Component {
     };
   };
 
-  /** @deprecated */
   getPageInputAddonProps = () => {
     return {
-      onClick: this.handlePageInputIconClick,
       ref: this.pageInputAddonRef,
       onBlur: this.handlePageValueBlur,
     };

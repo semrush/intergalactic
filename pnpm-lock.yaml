@@ -1097,7 +1097,7 @@ importers:
         version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/format-text':
         specifier: 16.1.1
-        version: link:../format-text
+        version: 16.1.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/illustration':
         specifier: 16.0.12
         version: link:../illustration
@@ -1292,25 +1292,6 @@ importers:
       pngjs:
         specifier: 7.0.0
         version: 7.0.0
-
-  semcore/format-text:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      react:
-        specifier: 16.8 - 18
-        version: 18.3.1
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.3.1(react@18.3.1)
-    devDependencies:
-      '@semcore/core':
-        specifier: workspace:*
-        version: link:../core
-      '@semcore/testing-utils':
-        specifier: workspace:*
-        version: link:../../tools/testing-utils
 
   semcore/fullscreen-modal:
     dependencies:
@@ -1805,14 +1786,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/product-head:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1991,22 +1968,6 @@ importers:
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
-    devDependencies:
-      '@semcore/core':
-        specifier: workspace:*
-        version: link:../core
-      '@semcore/testing-utils':
-        specifier: workspace:*
-        version: link:../../tools/testing-utils
-
-  semcore/sticky:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -2317,7 +2278,7 @@ importers:
         version: link:../flags
       '@semcore/format-text':
         specifier: ^16.1.1
-        version: link:../format-text
+        version: 16.1.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/fullscreen-modal':
         specifier: ^16.1.12
         version: link:../fullscreen-modal
@@ -2401,7 +2362,7 @@ importers:
         version: link:../spin-container
       '@semcore/sticky':
         specifier: ^16.0.11
-        version: link:../sticky
+        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/switch':
         specifier: ^16.1.1
         version: link:../switch
@@ -5314,6 +5275,13 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
+  '@semcore/format-text@16.1.1':
+    resolution: {integrity: sha512-ePFl7v5mY+SAhpbGq2OdOmdMYYe90nB54nLBdJMfksSqhwZwZLbQYLwqhEYttsgBayrg0xV58lMy5SLF2DneXw==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+
   '@semcore/grid@16.0.11':
     resolution: {integrity: sha512-IW1AAWecQbZImGIqhZ1VXqXoNtqcbRpFpSMHy1JoQS2YGB/2Vh6Y29taqCtcMaQYGgzZZdQ9XOI/riybXvpoyQ==}
     peerDependencies:
@@ -5366,6 +5334,11 @@ packages:
 
   '@semcore/spin@16.0.11':
     resolution: {integrity: sha512-q4sqYxsGWCjy9FEhcxWfCt7hF6waduTJvvCC8LZHX4G64zblQaUkb19xs0B4165Xl1xRos5RHf5f23HHvj0qHg==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/sticky@16.0.11':
+    resolution: {integrity: sha512-LJAB6FjnI0be/VILn2EYNkzAkDkCWjbbjIPwDmc7XNhFxexyLW/22R6bmdAPh6oI5TnHp6vDS1gEVFVQVaHDSQ==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17030,6 +17003,12 @@ snapshots:
     dependencies:
       '@semcore/base-components': link:semcore/base-components
 
+  '@semcore/format-text@16.1.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@semcore/base-components': link:semcore/base-components
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   '@semcore/grid@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -17082,6 +17061,11 @@ snapshots:
       '@semcore/base-components': link:semcore/base-components
 
   '@semcore/spin@16.0.11(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/base-components': link:semcore/base-components
+      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
+
+  '@semcore/sticky@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
