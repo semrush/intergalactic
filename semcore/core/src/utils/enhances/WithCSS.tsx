@@ -2,7 +2,6 @@ import type { NanoOptions } from '@phytonmk/nano-css';
 import type { CssLikeObject } from '@phytonmk/nano-css/types/common';
 import React, { PureComponent } from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
 
@@ -30,8 +29,6 @@ function initNanoCss(options: NanoOptions = {}) {
   return CSSinJS(options);
 }
 
-/** @deprecated */
-export interface IEnhancedWithCSSProps extends EnhancedWithCSSProps, UnknownProperties {}
 export type EnhancedWithCSSProps = {
   className?: string;
   css?: {};
@@ -39,7 +36,7 @@ export type EnhancedWithCSSProps = {
   children(props: { className: string | undefined }): React.ReactNode;
 };
 
-class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
+class EnhancedWithCSS extends PureComponent<EnhancedWithCSSProps> {
   static contextType = WithCssContext;
 
   static defaultProps = {

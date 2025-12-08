@@ -1,14 +1,10 @@
 import type React from 'react';
 import { PureComponent } from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import createHoc from '../createHoc';
 import fire from '../fire';
 import { internalSetState } from '../uncontroll';
 
-/** @deprecated */
-export interface IEnhancedWithKeyboardFocusInjectedProps
-  extends EnhancedWithKeyboardFocusInjectedProps {}
 export type EnhancedWithKeyboardFocusInjectedProps = {
   tabIndex: number;
   keyboardFocused: boolean;
@@ -22,22 +18,14 @@ export type EnhancedWithKeyboardFocusInjectedProps = {
   onMouseDown(e: MouseEvent): void;
 };
 
-/** @deprecated */
-export interface IEnhancedWithKeyboardFocusProps
-  extends EnhancedWithKeyboardFocusProps,
-  UnknownProperties {}
 export type EnhancedWithKeyboardFocusProps = {
   keyboardFocused?: boolean;
   tabIndex?: number;
   disabled?: boolean;
 
-  children(props: IEnhancedWithKeyboardFocusInjectedProps): React.ReactNode;
+  children(props: EnhancedWithKeyboardFocusInjectedProps): React.ReactNode;
 };
 
-/** @deprecated */
-export interface IEnhancedWithKeyboardFocusState
-  extends EnhancedWithKeyboardFocusState,
-  UnknownProperties {}
 export type EnhancedWithKeyboardFocusState = {
   keyboardFocused: boolean;
 };
@@ -45,8 +33,8 @@ export type EnhancedWithKeyboardFocusState = {
 let usingKeyBoard = true;
 
 export class EnhancedWithKeyboardFocus extends PureComponent<
-  IEnhancedWithKeyboardFocusProps,
-  IEnhancedWithKeyboardFocusState
+  EnhancedWithKeyboardFocusProps,
+  EnhancedWithKeyboardFocusState
 > {
   static displayName = 'EnhancedWithKeyboardFocus';
 

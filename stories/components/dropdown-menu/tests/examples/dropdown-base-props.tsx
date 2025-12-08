@@ -2,7 +2,7 @@ import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import type { DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
+import type { DropdownMenuProps, DropdownMenuListProps } from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {

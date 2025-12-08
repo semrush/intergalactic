@@ -2,22 +2,17 @@ import type React from 'react';
 import { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import createHoc from '../createHoc';
 
-/** @deprecated */
-export interface IEnhancedWithAutoFocusProps
-  extends EnhancedWithAutoFocusProps,
-  UnknownProperties {}
 export type EnhancedWithAutoFocusProps = {
   /**
    * @default undefined
    */
   autoFocus?: string | number | boolean;
-  children?: (props: IEnhancedWithAutoFocusProps) => React.ReactNode;
+  children?: (props: EnhancedWithAutoFocusProps) => React.ReactNode;
 };
 
-class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
+class EnhancedWithAutoFocus extends PureComponent<EnhancedWithAutoFocusProps> {
   static displayName = 'EnhancedWithAutoFocus';
 
   static defaultProps = {
@@ -47,12 +42,12 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
   }
 
   render() {
-    const { children } = this.props as any;
-    const props = {} as IEnhancedWithAutoFocusProps;
+    const { children } = this.props;
+    const props: EnhancedWithAutoFocusProps = {};
     if (this.notUsingNativeAutoFocus()) {
       props.autoFocus = undefined;
     }
-    return children(props);
+    return children?.(props);
   }
 }
 

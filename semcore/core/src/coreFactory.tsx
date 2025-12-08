@@ -16,7 +16,6 @@ import childrenEnhancement from './enhancement/Children';
 import dataNameEnhancement from './enhancement/dataName';
 import enhanceEnhancement from './enhancement/enhance';
 import functionDefaultPropsEnhancement from './enhancement/functionDefaultProps';
-import hoistPropsEnhancement from './enhancement/hoistProps';
 import i18nAppLocaleEnhance from './enhancement/i18n';
 import inheritedNameEnhancement from './enhancement/inheritedName';
 import rootEnhancement from './enhancement/Root';
@@ -359,8 +358,6 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     // enhanceEnhancement must be under the functionDefaultPropsEnhancement
     enhanceEnhancement(),
     styleEnhancement(childComponents, context),
-    // must be the last one so any properties can be raised
-    hoistPropsEnhancement(childComponents, context),
   ]);
   Component[CONTEXT_COMPONENT] = context;
   Component._______childrenComponents = childComponents;
