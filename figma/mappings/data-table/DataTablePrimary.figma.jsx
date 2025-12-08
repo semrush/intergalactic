@@ -61,7 +61,22 @@ figma.connect(
   DataTable,
   'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
   {
-    variant: { variant: 'card' },
+    variant: { variant: 'card (grid)' },
+    example: () => (
+      <DataTable
+        data={/* Add your data here */}
+        aria-label='/* Add your aria-label here */'
+        variant='card'
+        columns={/* Add your columns here */}
+      />
+    ) },
+);
+
+figma.connect(
+  DataTable,
+  'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
+  {
+    variant: { variant: 'card (autolayout)' },
     example: () => (
       <DataTable
         data={/* Add your data here */}
