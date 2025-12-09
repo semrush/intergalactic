@@ -1,13 +1,8 @@
 /** ============================== core ============================== */
-import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './core-types/Component';
+import { Root, AbstractComponent, Intergalactic, wrapIntergalacticComponent } from './core-types/Component';
 import type {
   PropGetterFn,
   IRootComponentProps,
-  ComponentType,
-  IRootComponentHandlers,
-  IComponentProps,
-  ReturnEl,
-  IFunctionProps,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -28,21 +23,16 @@ export {
   createComponent,
   createBaseComponent,
   Root,
-  Component,
+  AbstractComponent,
   type UnknownProperties,
   Intergalactic,
   type PropGetterFn,
   type IRootComponentProps,
-  type ComponentType,
-  type IRootComponentHandlers,
-  type IComponentProps,
-  type IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
-  type ReturnEl,
   type IStyledProps,
   wrapIntergalacticComponent,
   assignProps,

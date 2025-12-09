@@ -1,13 +1,10 @@
 import type { BoxProps } from '@semcore/base-components';
-import type { UnknownProperties, ReturnEl } from '@semcore/core';
 import type React from 'react';
 
 import type { Context } from './context';
 import type { IntergalacticD3Component } from './Plot';
 import type { TooltipTypeBase } from './Tooltip';
 
-/** @deprecated */
-export interface IHoverProps extends HoverProps, UnknownProperties {}
 export type HoverProps = Context & {
   /** Field name from `data` array item for the XAxis */
   x?: string;
@@ -28,7 +25,7 @@ type HoverTooltip = (<X, Y>(
       xIndex: X extends string ? number : never;
       /** Index in `data` array of the current item */
       yIndex: Y extends string ? number : never;
-    }) => { children: ReturnEl };
+    }) => { children: React.ReactElement | null };
     /** Flag for hide line on hovered value */
     hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
   } & Omit<BoxProps, 'children'>,

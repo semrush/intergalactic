@@ -1,7 +1,7 @@
 import type { Instance, Modifier } from '@popperjs/core/lib/types';
 import {
   createComponent,
-  Component,
+  AbstractComponent,
   type IRootComponentProps,
   Root,
   sstyled,
@@ -89,7 +89,7 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhance, typeof PopperRoot.defaultProps> {
+class PopperRoot extends AbstractComponent<PopperProps, {}, {}, typeof PopperRoot.enhance, typeof PopperRoot.defaultProps> {
   static displayName = 'Popper';
 
   static style = style;
@@ -164,7 +164,7 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
     }
   }
 
-  uncontrolledProps() {
+  override uncontrolledProps() {
     return {
       visible: null,
     };

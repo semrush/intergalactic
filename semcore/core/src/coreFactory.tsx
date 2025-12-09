@@ -1,7 +1,9 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
+import type { ForwardRefRenderFunction } from 'react';
+import React from 'react';
 
-import { Component, type PropsWithRenderFnChildren } from './core-types/Component';
+import type { Intergalactic, IRootNodeProps, AbstractCtor, FunctionComponent } from './core-types/Component';
+import { AbstractComponent } from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
   CORE_AS_PROPS,
@@ -248,7 +250,7 @@ function createComposeComponent(OriginComponent: any, Context: any, enhancements
     React.PureComponent.isPrototypeOf(OriginComponent) ||
     React.Component.isPrototypeOf(OriginComponent)
   ) {
-    if (OriginComponent.prototype instanceof Component) {
+    if (OriginComponent.prototype instanceof AbstractComponent) {
       return wrapClass(OriginComponent, enhancements, Context);
     } else {
       throw new Error('Must inherit from our component');
@@ -262,34 +264,29 @@ function createComposeComponent(OriginComponent: any, Context: any, enhancements
   }
 }
 
-export type PropsAndRef<T, Ctx, UCProps> = PropsWithRenderFnChildren<T, Ctx, UCProps> &
-  RefAttributes<unknown>;
-export type ForwardRefComponent<T, Ctx, UCProps> = ForwardRefExoticComponent<
-  PropsAndRef<T, Ctx, UCProps>
->;
-type ComponentOrProps<T, Context, UCProps> = T extends [infer ParentProps, infer ChildProps]
-  ? ComponentType<ParentProps, ChildProps, Context, UCProps>
-  : ForwardRefComponent<T, Context, UCProps>;
-
-export type ComponentType<
-  ComponentProps,
-  ChildComponentProps = {},
-  ContextType = {},
-  UCProps = {},
-  FNType = null,
-> = (FNType extends null
-  ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
-  : FNType & { displayName: string }) & {
-    [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
-  } & {
-    [CORE_COMPONENT]: boolean;
-    [CREATE_COMPONENT]: () => ComponentType<
-      ComponentProps,
-      ChildComponentProps,
-      ContextType,
-      UCProps
-    >;
-  };
+// type ComponentOrProps<T, Context, UCProps> = T extends [infer ParentProps, infer ChildProps]
+//   ? ComponentType<ParentProps, ChildProps, Context, UCProps>
+//   : ForwardRefComponent<T, Context, UCProps>;
+//
+// export type ComponentType<
+//   ComponentProps,
+//   ChildComponentProps = {},
+//   ContextType = {},
+//   UCProps = {},
+//   FNType = null,
+// > = (FNType extends null
+//   ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
+//   : FNType & { displayName: string }) & {
+//     [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+//   } & {
+//     [CORE_COMPONENT]: boolean;
+//     [CREATE_COMPONENT]: () => ComponentType<
+//       ComponentProps,
+//       ChildComponentProps,
+//       ContextType,
+//       UCProps
+//     >;
+//   };
 
 interface ClassWithUncontrolledProps {
   uncontrolledProps(): unknown;
@@ -299,23 +296,38 @@ export function assignProps(p1: any, p2: any) {
   return _assignProps(p2, p1);
 }
 
-function createComponent<ComponentProps, ChildComponentProps = {}, ContextType = {}, FNType = null>(
-  OriginComponent: any,
-  childComponents: any = {},
+type PropsExtractor<T extends AbstractCtor<AbstractComponent> | FunctionComponent> = T extends AbstractCtor<AbstractComponent>
+  ? ConstructorParameters<T>[0]
+  : T extends (...args: infer P) => any ? P[0] : never;
+
+function createComponent<
+  OriginComponent extends AbstractCtor<AbstractComponent> | FunctionComponent,
+  Child extends Record<string, AbstractCtor<AbstractComponent> | FunctionComponent | [AbstractCtor<AbstractComponent> | FunctionComponent, Record<string, AbstractCtor<AbstractComponent> | FunctionComponent>]> = never,
+  ContextType = {},
+  P = PropsExtractor<OriginComponent>,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = P extends { tag: Intergalactic.InternalTypings.ComponentTag }
+    ? P['tag']
+    : 'div',
+>(
+  OriginComponent: OriginComponent,
+  childComponents: Child,
   options: {
     context?: React.Context<ContextType>;
-    parent?: ComponentType<unknown> | ComponentType<unknown>[];
-    enhancements?: [any];
+    parent?: AbstractCtor<AbstractComponent> | FunctionComponent | Array<AbstractCtor<AbstractComponent> | FunctionComponent>;
+    enhancements?: OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : [];
   } = {},
-): ComponentType<
-    ComponentProps extends Component<infer Props> ? Props : ComponentProps,
-    ChildComponentProps,
-    ContextType,
-    ComponentProps extends ClassWithUncontrolledProps
-      ? ReturnType<ComponentProps['uncontrolledProps']>
-      : { [key: string]: (arg: unknown) => void },
-    FNType
-  > {
+): Intergalactic.Component<
+  Tag,
+  P,
+  ContextType,
+  OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : []
+> & {
+  [key in keyof Child]: Child[key] extends [infer P, infer Ch]
+    ? P extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<P>, ContextType> & {
+      [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType> : never
+    } : never
+    : Child[key] extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Child[key]>, ContextType> : never
+} {
   const {
     context = React.createContext<ContextType>({} as ContextType),
     parent = [],
@@ -323,7 +335,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   } = options;
   let parents = Array.isArray(parent) ? parent : [parent];
   if (parents.length) {
-    const wholeFamily = parents.reduce((acc: any, parent: any) => {
+    const wholeFamily = parents.reduce((acc, parent) => {
       if (parent[PARENT_COMPONENTS]) {
         acc = [...parent[PARENT_COMPONENTS], ...acc];
       }
@@ -379,24 +391,35 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   return Component;
 }
 
-function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentType<ComponentProps> {
-  let Component = null;
+function createBaseComponent<C extends ForwardRefRenderFunction<T, P>, T, P extends IRootNodeProps = C extends FunctionComponent<infer P> ? P : never>(OriginComponent: C) {
   if (
     !React.PureComponent.isPrototypeOf(OriginComponent) &&
     !React.Component.isPrototypeOf(OriginComponent) &&
     typeof OriginComponent === 'function'
   ) {
-    Component = React.forwardRef(OriginComponent);
-    Component.displayName = OriginComponent.displayName;
+    const Component = React.forwardRef(OriginComponent) as unknown as Intergalactic.Component<
+      P extends IRootNodeProps
+        ? P['tag'] extends string
+          ? P['tag']
+          : P['tag'] extends AbstractComponent
+            ? P['tag']
+            : P['tag'] extends Function
+              ? P['tag']
+              : P['tag'] extends undefined
+                ? 'div'
+                : never
+        : never,
+      P>;
+    Component.displayName = OriginComponent.displayName!;
     Component.defaultProps = {
       'data-ui-name': OriginComponent.displayName,
-      ...OriginComponent.defaultProps,
     };
-    (Component as any)[CORE_COMPONENT] = true;
-  } else {
-    throw new Error('createBaseComponent accepts only functional component');
+    Component[CORE_COMPONENT] = true;
+
+    return Component;
   }
-  return Component as any;
+
+  throw new Error('createBaseComponent accepts only functional component');
 }
 
 export { createComponent, createBaseComponent };

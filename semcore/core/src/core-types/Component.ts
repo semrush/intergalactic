@@ -1,146 +1,87 @@
 import type React from 'react';
-import { type
-AllHTMLAttributes, type
-ForwardRefExoticComponent,
-PureComponent, type
-ReactNode, type
-RefAttributes, type
-RefObject,
+import {
+  type AllHTMLAttributes,
+  type ForwardRefExoticComponent,
+  PureComponent,
+  type RefAttributes,
+  type RefObject,
 } from 'react';
 
-import type { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
+import { CORE_COMPONENT, CREATE_COMPONENT, PARENT_COMPONENTS } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
-/** @deprecated */
-type KnownKeys<T> = {
-  [K in keyof T]: string extends K ? never : number extends K ? never : K;
-} extends { [_ in keyof T]: infer U }
-  ? U
-  : never;
-
-/** @deprecated */
-export type HandlersType<UCProps> = { [K in keyof UCProps]?: <T = unknown>(arg: T) => void };
-/** @deprecated */
-export type ChildrenType<Props = {}, Ctx = {}, UCProps = {}> =
-  | ((props: Props & Ctx, handlers: HandlersType<UCProps>) => ReactNode)
-  | ReactNode;
-
-/** @deprecated */
-export type RootComponentHandler = (...args: any[]) => void | false;
-
-/** @deprecated */
-export interface IRootComponentHandlers {
-  [key: string]: RootComponentHandler;
-}
-
-/** @deprecated */
-export interface IRootComponentProps<Props = {}, Ctx = {}> {
+export interface IRootComponentProps {
   'forwardRef'?: RefObject<any>;
   'Children'?: any;
-  'children'?: ChildrenType<Props, Ctx>;
+  'children'?: React.ReactNode;
   'styles'?: IStyledProps['styles'];
   'data-ui-name'?: string;
 }
 
-/** @deprecated */
-export type IComponentProps<Props = {}, Ctx = {}> = Props & IRootComponentProps<Props, Ctx>;
-
-/** @deprecated */
-export type IFunctionProps<Props = {}, Ctx = {}> = IComponentProps<Props, Ctx> &
-  Omit<AllHTMLAttributes<any>, keyof IComponentProps<Props, Ctx>> & { Root?: Root };
-
-/** @deprecated */
-export type PropsWithRenderFnChildren<Props = {}, Ctx = {}, UCProps = {}> = Omit<
-  Pick<Props, KnownKeys<Props>>,
-  'children'
-> & {
-  children?: ChildrenType<Props, Ctx, UCProps>;
-  [key: string]: unknown;
-};
-
-/** @deprecated */
-export type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactNode) | React.ReactNode;
-};
-/** @deprecated */
-export type ReturnEl = React.ReactElement | null;
-
 export interface IRootNodeProps {
-  render: React.ElementType | string;
-  tag?: React.ElementType | string;
+  render: Intergalactic.Tag;
+  tag?: Intergalactic.Tag;
 
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 type Root = ForwardRefExoticComponent<IRootNodeProps>;
 
-/**
- * @deprecated since version ^1.8.0
- */
-export type PropGetter<T extends (...args: any) => any> = <P>(props?: P) => ReturnType<T> & P;
-/**
- * @deprecated since version ^1.8.0
- */
-/** @deprecated */
-export type PropGetterReturn<T extends (...args: any) => any> = Partial<ReturnType<T>>;
 /** @deprecated */
 export type PropGetterFn = <T extends {}>(props?: T) => T & { [key: string]: unknown };
-/** @deprecated */
-export type Merge<Props, HTMLProps> = Props & Omit<HTMLProps, keyof Props>;
-/** @deprecated */
-export type MergeGetters<G1 extends (...args: any) => any, G2 extends (...args: any) => any> = <P>(
-  props?: P,
-) => Merge<ReturnType<G1>, ReturnType<G2>> & P;
 
 const Root: Root = undefined as any;
 
 export { Root };
 
-/** @deprecated */
-abstract class RootComponent<
-  Props = {},
+type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[] = [], InnerProps = {}> = Readonly<
+  Props &
+  IRootComponentProps &
+  Intergalactic.InternalTypings.ExtractEnhanceType<Enhance> &
+  InnerProps
+>;
+
+export interface AbstractCtor<T extends AbstractComponent> {
+  new (...args: any[]): T;
+  [CORE_COMPONENT]?: boolean;
+  [PARENT_COMPONENTS]?: AbstractComponent[];
+}
+
+export interface FunctionComponent<P = {}> extends React.FunctionComponent<P> {
+  [CORE_COMPONENT]?: boolean;
+  [PARENT_COMPONENTS]?: AbstractComponent[] | FunctionComponent<any>;
+}
+
+export abstract class AbstractComponent<
+  Props extends Partial<IRootNodeProps> = {},
   Context = {},
   State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   InnerProps = {},
 > extends PureComponent<Props, State> {
-  get handlers(): Readonly<IRootComponentHandlers> {
+  protected uncontrolledProps() {
+    return {};
+  };
+
+  protected get handlers(): Readonly<{ [key in keyof ReturnType<typeof this.uncontrolledProps>]: ReturnType<typeof this.uncontrolledProps[key]> extends ((...args: infer P) => any) ? P[0] : never }> {
     return {};
   }
 
-  get asProps() {
+  protected get asProps() {
     return {} as Readonly<
-      Merge<
-        Props &
-        IRootComponentProps<Props, Context> &
-        Intergalactic.InternalTypings.ExtractEnhanceType<Enhance> &
-        InnerProps,
-        AllHTMLAttributes<any>
-      >
+      { Root: Root } &
+      BaseAsProps<Props, Enhance, InnerProps> &
+      Omit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>>
     >;
   }
 
-  Root: Root = undefined as any;
+  protected Root: Root = undefined as any;
 
-  isControlled = false;
+  protected isControlled = false;
+
+  protected [CORE_COMPONENT] = true;
+  protected [PARENT_COMPONENTS]: AbstractComponent[] = [];
 }
-
-export const Component = RootComponent;
-/** @deprecated */
-export type Component<
-  Props = {},
-  Context = {},
-  State = {},
-  Handlers extends IRootComponentHandlers = IRootComponentHandlers,
-> = React.ComponentClass<Props, State> & {
-  isControlled: boolean;
-
-  handlers: Readonly<Handlers>;
-
-  asProps: Readonly<Merge<Props & IRootComponentProps<Props, Context>, AllHTMLAttributes<any>>>;
-
-  Root: Root;
-};
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Intergalactic {
@@ -233,8 +174,8 @@ export namespace Intergalactic {
       | string
       | null;
     export type ComponentTag =
-      | keyof JSX.IntrinsicElements
-      | React.ComponentClass
+      | keyof React.JSX.IntrinsicElements
+      | AbstractComponent
       | React.FC
       | ReactFCLike;
     export type ComponentProps<
@@ -293,6 +234,8 @@ export namespace Intergalactic {
       __additionalContext: AdditionalContext;
       displayName: string;
       newInstance: () => Component<BaseTag, Props, Context>;
+      [CORE_COMPONENT]: boolean;
+      defaultProps?: object;
     };
     export type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
       T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;
@@ -352,31 +295,32 @@ export const wrapIntergalacticComponent = <
   Component['__additionalContext']
 > => wrapper as any;
 
-export type PropsAndRef<T, Ctx, UCProps> = PropsWithRenderFnChildren<T, Ctx, UCProps> &
-  RefAttributes<unknown>;
-export type ForwardRefComponent<T, Ctx, UCProps> = ForwardRefExoticComponent<
-  PropsAndRef<T, Ctx, UCProps>
->;
-type ComponentOrProps<T, Context, UCProps> = T extends [infer ParentProps, infer ChildProps]
-  ? ComponentType<ParentProps, ChildProps, Context, UCProps>
-  : ForwardRefComponent<T, Context, UCProps>;
-
-export type ComponentType<
-  ComponentProps,
-  ChildComponentProps = {},
-  ContextType = {},
-  UCProps = {},
-  FNType = null,
-> = (FNType extends null
-  ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
-  : FNType & { displayName: string }) & {
-    [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
-  } & {
-    [CORE_COMPONENT]: boolean;
-    [CREATE_COMPONENT]: () => ComponentType<
-      ComponentProps,
-      ChildComponentProps,
-      ContextType,
-      UCProps
-    >;
-  };
+// type PropsAndRef<T, Ctx, UCProps> = PropsWithRenderFnChildren<T, Ctx, UCProps> &
+//   RefAttributes<unknown>;
+//
+// export type ForwardRefComponent<T, Ctx, UCProps> = ForwardRefExoticComponent<
+//   PropsAndRef<T, Ctx, UCProps>
+// >;
+// type ComponentOrProps<T, Context, UCProps> = T extends [infer ParentProps, infer ChildProps]
+//   ? ComponentType<ParentProps, ChildProps, Context, UCProps>
+//   : ForwardRefComponent<T, Context, UCProps>;
+//
+// export type ComponentType<
+//   ComponentProps,
+//   ChildComponentProps = {},
+//   ContextType = {},
+//   UCProps = {},
+//   FNType = null,
+// > = (FNType extends null
+//   ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
+//   : FNType & { displayName: string }) & {
+//     [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+//   } & {
+//     [CORE_COMPONENT]: boolean;
+//     [CREATE_COMPONENT]: () => ComponentType<
+//       ComponentProps,
+//       ChildComponentProps,
+//       ContextType,
+//       UCProps
+//     >;
+//   };

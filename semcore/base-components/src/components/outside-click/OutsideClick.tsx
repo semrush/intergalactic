@@ -1,4 +1,4 @@
-import { createComponent, type IFunctionProps, type Intergalactic, type UnknownProperties } from '@semcore/core';
+import { createComponent, type IRootComponentProps } from '@semcore/core';
 import { getEventTarget } from '@semcore/core/lib/utils/getEventTarget';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import ownerDocument from '@semcore/core/lib/utils/ownerDocument';
@@ -29,7 +29,7 @@ type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEve
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
 const noop = () => {};
-function OutsideClickRoot(props: IFunctionProps<OutsideClickProps>) {
+function OutsideClickRoot(props: IRootComponentProps & OutsideClickProps) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);
@@ -111,7 +111,4 @@ function OutsideClickRoot(props: IFunctionProps<OutsideClickProps>) {
 OutsideClickRoot.displayName = 'OutsideClick';
 OutsideClickRoot.eventsMap = [] as RootEventsPair[];
 
-export const OutsideClick = createComponent(OutsideClickRoot) as Intergalactic.Component<
-  Intergalactic.Tag,
-  OutsideClickProps
->;
+export const OutsideClick = createComponent(OutsideClickRoot, {});
