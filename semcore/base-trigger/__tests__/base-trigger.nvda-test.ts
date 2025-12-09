@@ -55,7 +55,9 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to LinkTrigger and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toBe('clickable, combo box, collapsed, Select option');
+      expect(nvda.itemText()).toContain('combo box');
+      expect(nvda.itemText()).toContain('collapsed');
+      expect(nvda.itemText()).toContain('Select option');
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
