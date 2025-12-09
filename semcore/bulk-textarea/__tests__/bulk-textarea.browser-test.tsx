@@ -67,15 +67,16 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
         await page.keyboard.type('\n[]');
-        await page.waitForTimeout(200);
-        await page.keyboard.press('Shift+Tab');
+        await page.waitForTimeout(100);
+
+        await page.keyboard.press('Tab');
+        await page.waitForTimeout(500);
         await locators.button(page, 'Next error').waitFor({ state: 'visible' });
-
-        await page.keyboard.press('Shift+Tab');
         await expect(locators.button(page, 'Next error')).toBeFocused();
+
         await page.keyboard.press('Shift+Tab');
 
-        await page.waitForTimeout(200);
+        await page.waitForTimeout(100);
         await page.keyboard.press('ArrowUp');
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
