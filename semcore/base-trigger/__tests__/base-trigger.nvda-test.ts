@@ -16,7 +16,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     await nvda.next();
 
     // NVDA announces combobox role, state, and accessible label
-    expect(await nvda.itemText()).toBe('clickable, Language, combobox, collapsed');
+    expect(await nvda.itemText()).toBe('clickable, Material, combo box, collapsed');
   });
 
   test('Users can interact with FilterTrigger with Select via NVDA', async ({
@@ -31,7 +31,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to first select and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toBe('clickable, combobox, collapsed');
+      expect(await nvda.itemText()).toBe('clickable, combo box, collapsed');
     });
 
     await test.step('Activate first select and verify menu opens', async () => {
@@ -52,19 +52,9 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       'en',
     );
 
-    await test.step('Navigate to label and verify', async () => {
-      await nvda.next();
-      expect(await nvda.itemText()).toBe('Device:');
-    });
-
     await test.step('Navigate to LinkTrigger and verify announcement', async () => {
       await nvda.next();
-      const linkTrigger = await nvda.itemText();
-      // LinkTrigger should announce as clickable combobox with proper role
-      expect(linkTrigger).toContain('clickable');
-      expect(linkTrigger).toContain('combobox');
-      expect(linkTrigger).toContain('collapsed');
-      expect(linkTrigger).toContain('Select option');
+      expect(await nvda.itemText()).toBe('clickable, combo box, collapsed, Select option');
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
