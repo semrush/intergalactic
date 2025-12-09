@@ -1,6 +1,6 @@
 import { ScreenReaderOnly, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import type { IRootComponentProps, Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
@@ -23,7 +23,7 @@ import type {
   WizardSidebarProps,
   WizardContentProps,
   IntergalacticWizardStepperComponent,
-  WizardType,
+  // WizardType,
   WizardStepBackProps,
   WizardStepNextProps,
 } from './Wizard.types';
@@ -32,7 +32,7 @@ type State = {
   highlighted: number;
 };
 
-class WizardRoot extends Component<WizardProps, {}, State, typeof WizardRoot.enhance> {
+class WizardRoot extends AbstractComponent<WizardProps, {}, State, typeof WizardRoot.enhance> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
@@ -353,7 +353,7 @@ const Wizard = createComponent(WizardRoot, {
   Stepper,
   StepBack,
   StepNext,
-}) as WizardType;
+});
 
 export const wrapWizardStepper = <PropsExtending extends {}>(
   wrapper: (

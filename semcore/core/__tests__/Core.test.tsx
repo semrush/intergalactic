@@ -6,6 +6,7 @@ import React from 'react';
 
 const { shouldSupportRef } = sharedTests;
 import { createComponent, createBaseComponent, AbstractComponent } from '../src';
+import type { AbstractCtor, FunctionComponent } from '../src/core-types/Component';
 import { CORE_COMPONENT } from '../src/core-types/symbols';
 
 /*
@@ -63,7 +64,7 @@ ChildrenTestFunc.displayName = 'ChildrenTestFunc';
 type CompType = HTMLAttributes<HTMLDivElement>;
 type ItemType = { Item: HTMLAttributes<HTMLDivElement> };
 
-function shouldSupportRender(RootComponent: typeof RootTestClass | typeof RootTestFunc, typeRootComponent: 'Class' | 'Function') {
+function shouldSupportRender(RootComponent: AbstractCtor<RootTestClass> | FunctionComponent, typeRootComponent: 'Class' | 'Function') {
   test(`Should support just render ${typeRootComponent}`, () => {
     const Test = createComponent(RootComponent, {});
     const { getByTestId } = render(<Test data-testid='core'>test</Test>);
@@ -72,8 +73,8 @@ function shouldSupportRender(RootComponent: typeof RootTestClass | typeof RootTe
 }
 
 function shouldSupportRenderChildrenRoot(
-  RootComponent: typeof RootTestClass | typeof RootTestFunc,
-  ChildrenComponent: typeof ChildrenTestClass | typeof ChildrenTestFunc,
+  RootComponent: AbstractCtor<RootTestClass> | FunctionComponent,
+  ChildrenComponent: AbstractCtor<ChildrenTestClass> | FunctionComponent,
   description: string,
 ) {
   test(`Should support render children root ${description}`, () => {
@@ -88,7 +89,7 @@ function shouldSupportRenderChildrenRoot(
   });
 }
 
-function shouldSupportChildren(ChildrenComponent: typeof ChildrenTestClass | typeof ChildrenTestFunc, typeChildrenComponent: 'Class' | 'Function') {
+function shouldSupportChildren(ChildrenComponent: AbstractCtor<ChildrenTestClass> | FunctionComponent, typeChildrenComponent: 'Class' | 'Function') {
   test(`Should support children components ${typeChildrenComponent}`, () => {
     const Test = createComponent(RootTestClass, {
       Item: ChildrenComponent,
@@ -99,7 +100,7 @@ function shouldSupportChildren(ChildrenComponent: typeof ChildrenTestClass | typ
   });
 }
 
-function shouldSupportCallEnhance(RootComponent: typeof RootTestClass | typeof RootTestFunc, typeRootComponent: 'Class' | 'Function') {
+function shouldSupportCallEnhance(RootComponent: AbstractCtor<RootTestClass> | FunctionComponent, typeRootComponent: 'Class' | 'Function') {
   test(`Should support call static enhance in Root ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const enhance = (props: any) => {
@@ -113,7 +114,7 @@ function shouldSupportCallEnhance(RootComponent: typeof RootTestClass | typeof R
   });
 }
 
-function shouldSupportCallEnhanceWithProps(RootComponent: typeof RootTestClass | typeof RootTestFunc, typeRootComponent: 'Class' | 'Function') {
+function shouldSupportCallEnhanceWithProps(RootComponent: AbstractCtor<RootTestClass> | FunctionComponent, typeRootComponent: 'Class' | 'Function') {
   test(`Should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
     const spy = vi.fn();
     const props = {
@@ -551,124 +552,6 @@ describe('Getter props function', () => {
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toBe(0);
     expect(spy.mock.calls[1][0]).toBe(1);
-  });
-});
-
-describe('Hoist props', () => {
-  test('Should support hoist props from Children Func to Root', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc });
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support hoist props from Children Class to Root', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    class ChildrenTestClass extends AbstractComponent {
-      static hoistProps = ['test'];
-
-      render() {
-        const { Root } = this;
-        return <Root render='div' />;
-      }
-    }
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestClass });
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support rename hoist props', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.id);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test:id'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc });
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support update hoist props', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc });
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenLastCalledWith('test');
-    render(
-      <Test>
-        <Test.Item test='test-2' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenLastCalledWith('test-2');
   });
 });
 

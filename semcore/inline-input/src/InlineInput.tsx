@@ -1,6 +1,6 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -12,7 +12,8 @@ import Spin from '@semcore/spin';
 import type { TooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
-import type { InlineInputComponent } from './index.type';
+import type { InlineInputProps, InlineInputValueProps } from './index.type';
+import { InlineInputComponent } from './index.type';
 import style from './style/inline-input.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -24,25 +25,25 @@ type OnCancel = (
   prevValue: string,
   event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
 ) => void;
-type RootAsProps = {
-  state?: 'normal' | 'valid' | 'invalid';
-  loading?: boolean;
-  disabled?: boolean;
-  onConfirm?: OnConfirm;
-  onCancel?: OnCancel;
-  value?: string;
-  defaultValue?: string;
-  autoFocus?: boolean;
-  placeholder?: string;
-  onChange?: (value: string, event: React.ChangeEvent) => void;
-  onBlur?: (event: React.FocusEvent) => void;
-  onFocus?: (event: React.FocusEvent) => void;
-  onBlurBehavior?: 'cancel' | 'confirm';
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-  locale?: string;
-};
+// type RootAsProps = {
+//   state?: 'normal' | 'valid' | 'invalid';
+//   loading?: boolean;
+//   disabled?: boolean;
+//   onConfirm?: OnConfirm;
+//   onCancel?: OnCancel;
+//   value?: string;
+//   defaultValue?: string;
+//   autoFocus?: boolean;
+//   placeholder?: string;
+//   onChange?: (value: string, event: React.ChangeEvent) => void;
+//   onBlur?: (event: React.FocusEvent) => void;
+//   onFocus?: (event: React.FocusEvent) => void;
+//   onBlurBehavior?: 'cancel' | 'confirm';
+//   styles?: React.CSSProperties;
+//   Children: React.FC;
+//   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+//   locale?: string;
+// };
 
 type AddonAsProps = {
   styles?: React.CSSProperties;
@@ -91,10 +92,10 @@ const pointInsideOfRect = ({
   return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
 };
 
-class InlineInputBase extends Component<RootAsProps> {
+class InlineInputBase extends AbstractComponent<InlineInputProps, {}, {}, typeof InlineInputBase.enhance> {
   static displayName = 'InlineInput';
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     state: 'normal',
     onBlurBehavior: 'confirm',
@@ -128,7 +129,7 @@ class InlineInputBase extends Component<RootAsProps> {
     document.body.addEventListener('keydown', this.handleDocumentKeyDown);
   }
 
-  componentDidUpdate(prevProps: Readonly<RootAsProps>): void {
+  componentDidUpdate(prevProps: Readonly<InlineInputProps>): void {
     if (prevProps.disabled !== this.asProps.disabled) {
       this.updateInert();
     }
@@ -168,11 +169,12 @@ class InlineInputBase extends Component<RootAsProps> {
   }
 
   getValueProps() {
-    const { state } = this.asProps;
+    const { state, disabled } = this.asProps;
     return {
       ref: this.inputRef,
       state,
       onKeyDown: this.handleKeyDown,
+      disabled,
     };
   }
 
@@ -291,13 +293,12 @@ class InlineInputBase extends Component<RootAsProps> {
   }
 }
 
-class Value extends Component<RootAsProps> {
+class Value extends AbstractComponent<InlineInputValueProps, {}, {}, typeof Value.enhance> {
   static defaultProps = {
     defaultValue: '',
   };
 
-  static enhance = [autoFocusEnhance()];
-  static hoistProps = ['disabled'];
+  static enhance = [autoFocusEnhance()] as const;
 
   uncontrolledProps() {
     return {
@@ -442,6 +443,6 @@ const InlineInput = createComponent(InlineInputBase, {
   CancelControl,
   NumberValue,
   NumberControls,
-}) as InlineInputComponent;
+});
 
 export default InlineInput;

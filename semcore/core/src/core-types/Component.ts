@@ -41,19 +41,26 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
+export type PropsExtractor<T extends AbstractCtor<AbstractComponent> | FunctionComponent> = T extends AbstractCtor<AbstractComponent>
+  ? ConstructorParameters<T>[0]
+  : T extends (...args: infer P) => any ? P[0] : never;
+
 export interface AbstractCtor<T extends AbstractComponent> {
   new (...args: any[]): T;
+  displayName?: string;
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: AbstractComponent[];
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
+  enhance?: Array<(props: PropsExtractor<AbstractCtor<T>>) => any>;
 }
 
 export interface FunctionComponent<P = {}> extends React.FunctionComponent<P> {
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: AbstractComponent[] | FunctionComponent<any>;
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
+  enhance?: Array<(props: P) => any>;
 }
 
 export abstract class AbstractComponent<
-  Props extends Partial<IRootNodeProps> = {},
+  Props = {},
   Context = {},
   State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],

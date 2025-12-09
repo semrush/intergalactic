@@ -22,7 +22,11 @@ class Switch extends Component {
   };
 
   inputRef = React.createRef();
-  state = { active: false };
+  state = {
+    active: false,
+    checked: false,
+    disabled: false,
+  };
 
   constructor(props) {
     super(props);
@@ -48,6 +52,8 @@ class Switch extends Component {
       $rootForceUpdate: this.forceUpdate,
       uid,
       active,
+      onChange: (checked, event) => this.setState({ checked }),
+      onDisabledChange: (disabled) => this.setState({ disabled }),
     };
   }
 
@@ -79,7 +85,6 @@ class Switch extends Component {
 }
 
 class Value extends Component {
-  static hoistProps = ['checked', 'disabled'];
   static enhance = [resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,
@@ -108,10 +113,13 @@ class Value extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { checked } = prevProps;
+    const { checked, disabled } = prevProps;
     // TODO: bad crutch for updating the DOM node
     if (checked !== undefined && checked !== this.asProps.checked) {
       this.asProps.$rootForceUpdate();
+    }
+    if (disabled !== this.asProps.disabled) {
+      this.asProps.onDisabledChange(this.asProps.disabled);
     }
   }
 

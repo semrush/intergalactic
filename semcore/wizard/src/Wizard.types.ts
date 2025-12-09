@@ -140,11 +140,11 @@ export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
 
-export type WizardType = Intergalactic.Component<'div', WizardProps> & {
-  Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
-  Step: Intergalactic.Component<'div', WizardStepProps>;
-  Stepper: IntergalacticWizardStepperComponent;
-  Content: Intergalactic.Component<'div', WizardContentProps>;
-  StepBack: Intergalactic.Component<'button', WizardStepBackProps>;
-  StepNext: Intergalactic.Component<'button', WizardStepNextProps>;
-};
+// export type WizardType = Intergalactic.Component<'div', WizardProps> & {
+//   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
+//   Step: Intergalactic.Component<'div', WizardStepProps>;
+//   Stepper: IntergalacticWizardStepperComponent;
+//   Content: Intergalactic.Component<'div', WizardContentProps>;
+//   StepBack: Intergalactic.Component<'button', WizardStepBackProps>;
+//   StepNext: Intergalactic.Component<'button', WizardStepNextProps>;
+// };

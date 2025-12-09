@@ -92,10 +92,6 @@ export type InlineInputValueProps = BoxProps & {
    */
   loading?: boolean;
   /**
-   * disables interactive elements
-   */
-  disabled?: boolean;
-  /**
    * gray text in empty input tag
    */
   placeholder?: string;

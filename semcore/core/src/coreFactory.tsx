@@ -2,7 +2,13 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import type { ForwardRefRenderFunction } from 'react';
 import React from 'react';
 
-import type { Intergalactic, IRootNodeProps, AbstractCtor, FunctionComponent } from './core-types/Component';
+import type {
+  Intergalactic,
+  IRootNodeProps,
+  AbstractCtor,
+  FunctionComponent,
+  PropsExtractor,
+} from './core-types/Component';
 import { AbstractComponent } from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
@@ -296,10 +302,6 @@ export function assignProps(p1: any, p2: any) {
   return _assignProps(p2, p1);
 }
 
-type PropsExtractor<T extends AbstractCtor<AbstractComponent> | FunctionComponent> = T extends AbstractCtor<AbstractComponent>
-  ? ConstructorParameters<T>[0]
-  : T extends (...args: infer P) => any ? P[0] : never;
-
 function createComponent<
   OriginComponent extends AbstractCtor<AbstractComponent> | FunctionComponent,
   Child extends Record<string, AbstractCtor<AbstractComponent> | FunctionComponent | [AbstractCtor<AbstractComponent> | FunctionComponent, Record<string, AbstractCtor<AbstractComponent> | FunctionComponent>]> = never,
@@ -313,7 +315,7 @@ function createComponent<
   childComponents: Child,
   options: {
     context?: React.Context<ContextType>;
-    parent?: AbstractCtor<AbstractComponent> | FunctionComponent | Array<AbstractCtor<AbstractComponent> | FunctionComponent>;
+    parent?: AbstractCtor<AbstractComponent> | FunctionComponent<any> | Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
     enhancements?: OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : [];
   } = {},
 ): Intergalactic.Component<
@@ -337,7 +339,8 @@ function createComponent<
   if (parents.length) {
     const wholeFamily = parents.reduce((acc, parent) => {
       if (parent[PARENT_COMPONENTS]) {
-        acc = [...parent[PARENT_COMPONENTS], ...acc];
+        const parentParents = parent[PARENT_COMPONENTS];
+        acc = [...parentParents, ...acc];
       }
       return acc;
     }, parents);
