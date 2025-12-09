@@ -69,6 +69,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.menuItems(page, 1).dragTo(locators.menuItems(page, 4));
+    // Wait for drag animation and DOM update to complete
+    await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
   });
 
