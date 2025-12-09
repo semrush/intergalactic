@@ -35,6 +35,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate first select and verify menu opens', async () => {
+      await nvda.next();
       await nvda.perform(nvda.keyboardCommands.activate);
       await page.getByRole('option').first().waitFor({ state: 'visible' });
 
@@ -58,6 +59,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
+      await nvda.next();
       await nvda.perform(nvda.keyboardCommands.activate);
       await page.getByRole('option').first().waitFor({ state: 'visible' });
 
