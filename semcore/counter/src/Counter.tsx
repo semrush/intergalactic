@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
@@ -8,7 +8,7 @@ import style from './style/counter.shadow.css';
 
 const enhance = [resolveColorEnhance()] as const;
 
-class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
+class Counter extends AbstractComponent<CounterProps, {}, {}, typeof enhance> {
   static displayName = 'Counter';
   static enhance = enhance;
 
@@ -35,5 +35,5 @@ class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
   }
 }
 
-export default createComponent(Counter);
+export default createComponent(Counter, {});
 export * from './AnimatedNumber';

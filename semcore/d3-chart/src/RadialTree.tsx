@@ -137,7 +137,7 @@ type RootAsProps = IRadialTreeProps & {
   dataHintsHandler: DataHintsHandler;
 };
 
-class RadialTreeBase extends Component<RootAsProps> {
+class RadialTreeBase extends AbstractComponent<RootAsProps> {
   static displayName = 'RadialTree';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
@@ -369,7 +369,7 @@ type RadianAsProps = RootAsProps & {
   onRadianClick: (key: string) => (event: React.MouseEvent) => void;
 };
 
-class RadialTreeRadian extends Component<RadianAsProps> {
+class RadialTreeRadian extends AbstractComponent<RadianAsProps> {
   static displayName = 'RadialTreeRadian';
   static style = style;
 

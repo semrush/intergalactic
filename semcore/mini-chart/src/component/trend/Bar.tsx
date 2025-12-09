@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { createComponent, type AbstractComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
@@ -101,7 +101,7 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
 }
 
 export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
-  createComponent(TrendBarRoot);
+  createComponent(TrendBarRoot, {});
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 

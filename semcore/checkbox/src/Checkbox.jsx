@@ -1,5 +1,5 @@
 import { Box, Flex, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -11,7 +11,7 @@ import React from 'react';
 
 import style from './style/checkbox.shadow.css';
 
-class CheckboxRoot extends Component {
+class CheckboxRoot extends AbstractComponent {
   static displayName = 'Checkbox';
   static style = style;
 
@@ -101,7 +101,7 @@ class CheckboxRoot extends Component {
   }
 }
 
-class ValueRoot extends Component {
+class ValueRoot extends AbstractComponent {
   static defaultProps = (props) => {
     return {
       includeInputProps: [

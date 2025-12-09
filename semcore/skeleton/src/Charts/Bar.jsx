@@ -26,4 +26,4 @@ const BarChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(BarChartSkeleton);
+export default createComponent(BarChartSkeleton, {});

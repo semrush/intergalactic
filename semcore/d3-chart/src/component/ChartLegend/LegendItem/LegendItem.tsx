@@ -1,6 +1,6 @@
 import { Flex, Box } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
-import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Text as TypographyText } from '@semcore/typography';
@@ -19,7 +19,7 @@ import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
 const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
-class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
+class LegendItemRoot extends AbstractComponent<LegendItemProps, {}, {}, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 

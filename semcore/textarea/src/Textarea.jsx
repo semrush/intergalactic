@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
@@ -8,7 +8,7 @@ import React from 'react';
 
 import style from './style/textarea.shadow.css';
 
-class Textarea extends Component {
+class Textarea extends AbstractComponent {
   static displayName = 'Textarea';
   static defaultProps = {
     size: 'm',
@@ -134,4 +134,4 @@ class Textarea extends Component {
   }
 }
 
-export default createComponent(Textarea);
+export default createComponent(Textarea, {});

@@ -1,15 +1,18 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import type { ForwardRefRenderFunction } from 'react';
 import React from 'react';
+import type { ExtractedProp } from 'storybook/internal/docs-tools';
 
 import type {
   Intergalactic,
   IRootNodeProps,
-  AbstractCtor,
   FunctionComponent,
   PropsExtractor,
+  AbstractCtor,
 } from './core-types/Component';
-import { AbstractComponent } from './core-types/Component';
+import {
+  AbstractComponent,
+} from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
   CORE_AS_PROPS,
@@ -303,19 +306,20 @@ export function assignProps(p1: any, p2: any) {
 }
 
 function createComponent<
-  OriginComponent extends AbstractCtor<AbstractComponent> | FunctionComponent,
-  Child extends Record<string, AbstractCtor<AbstractComponent> | FunctionComponent | [AbstractCtor<AbstractComponent> | FunctionComponent, Record<string, AbstractCtor<AbstractComponent> | FunctionComponent>]> = never,
+  C extends AbstractComponent<any>,
+  OriginComponent extends AbstractCtor<C> | FunctionComponent<any>,
+  ChildMap extends Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any> | [AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>, Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>]> = never,
   ContextType = {},
-  P = PropsExtractor<OriginComponent>,
+  P = PropsExtractor<C>,
   Tag extends Intergalactic.InternalTypings.ComponentTag = P extends { tag: Intergalactic.InternalTypings.ComponentTag }
     ? P['tag']
     : 'div',
 >(
   OriginComponent: OriginComponent,
-  childComponents: Child,
+  childComponents: ChildMap,
   options: {
     context?: React.Context<ContextType>;
-    parent?: AbstractCtor<AbstractComponent> | FunctionComponent<any> | Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
+    parent?: AbstractCtor<AbstractComponent<any>> | FunctionComponent<any> | Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
     enhancements?: OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : [];
   } = {},
 ): Intergalactic.Component<
@@ -324,11 +328,26 @@ function createComponent<
   ContextType,
   OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : []
 > & {
-  [key in keyof Child]: Child[key] extends [infer P, infer Ch]
-    ? P extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<P>, ContextType> & {
-      [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType> : never
-    } : never
-    : Child[key] extends AbstractCtor<AbstractComponent> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Child[key]>, ContextType> : never
+  [key in keyof ChildMap]: ChildMap[key] extends [infer Parent, infer Ch]
+    ? never
+    // ? Parent extends AbstractCtor<AbstractComponent<any>>
+    // ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
+    //     [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent<any>>
+    //       ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+    //       : Ch[key] extends FunctionComponent<any>
+    //         ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+    //         : never
+    //   }
+    //   : Parent extends FunctionComponent<any>
+    //   ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
+    //       [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent<any>> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType> : never
+    //     }
+    //     : never
+    : ChildMap[key] extends AbstractCtor<infer C>
+      ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+      : ChildMap[key] extends FunctionComponent<infer P>
+        ? Intergalactic.Component<'div', P, ContextType>
+        : never
 } {
   const {
     context = React.createContext<ContextType>({} as ContextType),
@@ -394,7 +413,11 @@ function createComponent<
   return Component;
 }
 
-function createBaseComponent<C extends ForwardRefRenderFunction<T, P>, T, P extends IRootNodeProps = C extends FunctionComponent<infer P> ? P : never>(OriginComponent: C) {
+function createBaseComponent<
+  C = ForwardRefRenderFunction<any, any>,
+  P = C extends FunctionComponent<infer D> ? D : never,
+  T = C extends ForwardRefRenderFunction<infer T> ? T : never,
+>(OriginComponent: ForwardRefRenderFunction<T, P>) {
   if (
     !React.PureComponent.isPrototypeOf(OriginComponent) &&
     !React.Component.isPrototypeOf(OriginComponent) &&
@@ -402,11 +425,11 @@ function createBaseComponent<C extends ForwardRefRenderFunction<T, P>, T, P exte
   ) {
     const Component = React.forwardRef(OriginComponent) as unknown as Intergalactic.Component<
       P extends IRootNodeProps
-        ? P['tag'] extends string
+        ? P['tag'] extends keyof React.JSX.IntrinsicAttributes
           ? P['tag']
           : P['tag'] extends AbstractComponent
             ? P['tag']
-            : P['tag'] extends Function
+            : P['tag'] extends FunctionComponent
               ? P['tag']
               : P['tag'] extends undefined
                 ? 'div'

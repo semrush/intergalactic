@@ -1,5 +1,5 @@
 import { Collapse as CollapseAnimate, Flex } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
@@ -9,7 +9,7 @@ import React from 'react';
 
 import style from './style/accordion.shadow.css';
 
-class RootAccordion extends Component {
+class RootAccordion extends AbstractComponent {
   static displayName = 'Accordion';
   static style = style;
   static defaultProps = {
@@ -65,7 +65,7 @@ class RootAccordion extends Component {
   }
 }
 
-export class RootItem extends Component {
+export class RootItem extends AbstractComponent {
   static displayName = 'Item';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
@@ -124,7 +124,7 @@ export class RootItem extends Component {
   }
 }
 
-class Toggle extends Component {
+class Toggle extends AbstractComponent {
   toggleRef = React.createRef();
 
   handleKeyDown = (event) => {

@@ -18,7 +18,7 @@ export const MIN_WIDTH = 4;
 const barHeight = 20;
 const hoverOffset = 6;
 
-class CompactHorizontalBarRoot extends Component {
+class CompactHorizontalBarRoot extends AbstractComponent {
   static displayName = 'CompactHorizontalBar';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
@@ -374,7 +374,7 @@ function BarBackground(props) {
   );
 }
 
-class Hover extends Component {
+class Hover extends AbstractComponent {
   state = {
     index: null,
   };

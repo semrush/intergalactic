@@ -23,7 +23,7 @@ function getEndDate(value) {
   return endDate;
 }
 
-class RangePickerAbstract extends Component {
+class RangePickerAbstract extends AbstractComponent {
   static displayName = 'DatePicker';
   static style = style;
 

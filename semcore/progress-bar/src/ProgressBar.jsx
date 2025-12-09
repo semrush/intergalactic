@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
@@ -9,7 +9,7 @@ function isCustomTheme(theme) {
   return !['dark', 'invert'].includes(theme);
 }
 
-class ProgressBarRoot extends Component {
+class ProgressBarRoot extends AbstractComponent {
   static displayName = 'ProgressBar';
   static style = style;
   static enhance = [resolveColorEnhance()];

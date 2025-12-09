@@ -1,5 +1,5 @@
 import { NeighborLocation, Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
@@ -18,7 +18,7 @@ const optionsA11yEnhance = {
   childSelector: ['role', 'tab'],
 };
 
-class TabLineRoot extends Component {
+class TabLineRoot extends AbstractComponent {
   static displayName = 'TabLine';
   static style = style;
   static defaultProps = {

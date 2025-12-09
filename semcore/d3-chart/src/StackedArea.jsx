@@ -10,7 +10,7 @@ import { getChartDefaultColorName } from './utils';
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const Y0 = Symbol('Y0');
 
-class StackedAreaRoot extends Component {
+class StackedAreaRoot extends AbstractComponent {
   static displayName = 'StackedArea';
 
   static defaultProps = () => {

@@ -1,5 +1,5 @@
 import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -7,7 +7,7 @@ import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
 
-class RootBaseTrigger extends Component {
+class RootBaseTrigger extends AbstractComponent {
   static displayName = 'BaseTrigger';
   static enhance = [
     cssVariableEnhance({

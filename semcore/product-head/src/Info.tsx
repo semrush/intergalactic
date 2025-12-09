@@ -16,7 +16,7 @@ export type InfoItemProps = BoxProps & {
   label?: React.ReactNode;
 };
 
-class InfoRoot extends Component<BoxProps> {
+class InfoRoot extends AbstractComponent<BoxProps> {
   static displayName = 'Info';
   static style = style;
 

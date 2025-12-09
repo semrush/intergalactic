@@ -1,5 +1,5 @@
 import { Popper, Flex, Box, isInputTriggerTag } from '@semcore/base-components';
-import { createComponent, Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, AbstractComponent, sstyled } from '@semcore/core';
 import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
@@ -12,7 +12,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
-class DropdownRoot extends Component {
+class DropdownRoot extends AbstractComponent {
   static displayName = 'Dropdown';
   static style = style;
   static defaultProps = {

@@ -21,4 +21,4 @@ const ScatterPlotChartSkeleton = () => {
   );
 };
 
-export default createComponent(ScatterPlotChartSkeleton);
+export default createComponent(ScatterPlotChartSkeleton, {});

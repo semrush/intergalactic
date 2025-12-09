@@ -234,7 +234,7 @@ function measureTextWidth(rootRef, text, fontSize = 12) {
   return width;
 }
 
-class AxisRoot extends Component {
+class AxisRoot extends AbstractComponent {
   static displayName = 'Axis';
 
   static style = style;

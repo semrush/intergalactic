@@ -12,7 +12,7 @@ import style from './style/bubble.shadow.css';
 import Tooltip from './Tooltip';
 import { getBubbleChartValueScale, measureText } from './utils';
 
-class BubbleRoot extends Component {
+class BubbleRoot extends AbstractComponent {
   static displayName = 'Bubble';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

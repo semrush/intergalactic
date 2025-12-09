@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createComponent, sstyled, Root, Component } from '@semcore/core';
+import { createComponent, sstyled, Root, AbstractComponent } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
@@ -28,7 +28,7 @@ const makeAnimationContextValue = () => {
 };
 export const animationContext = React.createContext<AnimationContext | null>(null);
 
-class Animation extends Component {
+class Animation extends AbstractComponent {
   static displayName = 'Animation';
   static style = style;
   static defaultProps = {
@@ -144,4 +144,4 @@ class Animation extends Component {
   }
 }
 
-export default createComponent(Animation);
+export default createComponent(Animation, {});

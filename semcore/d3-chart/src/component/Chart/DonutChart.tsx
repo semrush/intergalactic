@@ -111,4 +111,4 @@ class DonutChartComponent extends AbstractChart<
   }
 }
 
-export const DonutChart: DonutChartType = createComponent(DonutChartComponent);
+export const DonutChart: DonutChartType = createComponent(DonutChartComponent, {});

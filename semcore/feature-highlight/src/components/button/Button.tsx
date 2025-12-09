@@ -1,5 +1,5 @@
 import Button from '@semcore/button';
-import { createComponent, Root, sstyled, Component } from '@semcore/core';
+import { createComponent, Root, sstyled, AbstractComponent } from '@semcore/core';
 import type { IRootNodeProps } from '@semcore/core/src/core-types/Component';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
@@ -8,7 +8,7 @@ import style from './button.shadow.css';
 import type { HighLightedButtonAddonProps, HighlightedButtonComponent } from './Button.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class ButtonFHRoot extends Component {
+class ButtonFHRoot extends AbstractComponent {
   static displayName = 'ButtonFH';
   static style = style;
 

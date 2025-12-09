@@ -14,7 +14,7 @@ const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
-class PickerAbstract extends Component {
+class PickerAbstract extends AbstractComponent {
   static displayName = 'DatePicker';
   static style = style;
   static defaultProps({ value, defaultValue }) {

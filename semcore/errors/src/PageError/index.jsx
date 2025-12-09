@@ -1,5 +1,5 @@
 import Button from '@semcore/button';
-import { createComponent, Component } from '@semcore/core';
+import { createComponent, AbstractComponent } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -8,7 +8,7 @@ import React from 'react';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootPageError extends Component {
+class RootPageError extends AbstractComponent {
   static displayName = 'PageError';
   static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
@@ -47,4 +47,4 @@ class RootPageError extends Component {
   }
 }
 
-export default createComponent(RootPageError);
+export default createComponent(RootPageError, {});

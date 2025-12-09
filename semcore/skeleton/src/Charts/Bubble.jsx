@@ -21,4 +21,4 @@ const BubbleChartSkeleton = () => {
   );
 };
 
-export default createComponent(BubbleChartSkeleton);
+export default createComponent(BubbleChartSkeleton, {});

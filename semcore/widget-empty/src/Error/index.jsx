@@ -1,11 +1,11 @@
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import WidgetEmpty, { getIconPath } from '../WidgetEmpty';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class Error extends Component {
+class Error extends AbstractComponent {
   static displayName = 'WidgetError';
   static defaultProps = {
     i18n: localizedMessages,
@@ -29,4 +29,4 @@ class Error extends Component {
   }
 }
 
-export default createComponent(Error);
+export default createComponent(Error, {});

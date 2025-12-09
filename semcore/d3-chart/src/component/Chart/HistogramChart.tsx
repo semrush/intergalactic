@@ -202,4 +202,4 @@ class HistogramChartComponent extends AbstractChart<
   }
 }
 
-export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent);
+export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent, {});

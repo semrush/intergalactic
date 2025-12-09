@@ -3,7 +3,7 @@ import { Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-class TimePickerFormat extends Component {
+class TimePickerFormat extends AbstractComponent {
   static enhance = [uniqueIDEnhancement()];
 
   state = {

@@ -7,7 +7,7 @@ import style from './radio.shadow.css';
 import type { HighlightedRadioComponent } from './Radio.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class RadioFHRoot extends Component<RadioProps> {
+class RadioFHRoot extends AbstractComponent<RadioProps> {
   static displayName = 'RadioFH';
   static style = style;
   // @ts-ignore

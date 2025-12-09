@@ -1,5 +1,5 @@
 import { Box, type BoxProps } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
+import { createComponent, Component, Root, sstyled, type AbstractComponentType } from '@semcore/core';
 import { assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -18,7 +18,7 @@ type Enhances = {
   isSemiDonut?: true;
 };
 
-class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
+class DonutRoot extends AbstractComponent<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-extra-slow',
@@ -122,7 +122,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
 }
 
 export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> =
-  createComponent(DonutRoot);
+  createComponent(DonutRoot, {});
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 

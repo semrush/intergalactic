@@ -155,4 +155,4 @@ class VennChartComponent extends AbstractChart<
   }
 }
 
-export const VennChart: VennChartType = createComponent(VennChartComponent);
+export const VennChart: VennChartType = createComponent(VennChartComponent, {});

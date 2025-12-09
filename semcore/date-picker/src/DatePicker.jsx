@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import dayjs from 'dayjs';
@@ -119,7 +119,7 @@ export class DatePickerRoot extends PickerAbstract {
   }
 }
 
-class Today extends Component {
+class Today extends AbstractComponent {
   static enhance = [i18nEnhance(localizedMessages)];
 
   render() {

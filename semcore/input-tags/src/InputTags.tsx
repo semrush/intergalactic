@@ -54,7 +54,7 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends Component<InputTagsProps, {}, {}, typeof InputTags.enhance> {
+class InputTags extends AbstractComponent<InputTagsProps, {}, {}, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
@@ -250,7 +250,7 @@ class InputTags extends Component<InputTagsProps, {}, {}, typeof InputTags.enhan
   }
 }
 
-class Value extends Component<InputTagsValueProps> {
+class Value extends AbstractComponent<InputTagsValueProps> {
   private _spacer = React.createRef<HTMLDivElement>();
 
   state = {

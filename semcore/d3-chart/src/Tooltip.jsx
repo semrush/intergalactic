@@ -15,7 +15,7 @@ import { getChartDefaultColorName } from './utils';
  */
 const TooltipDotRenderContext = React.createContext({ index: -1, indexKeysCache: new Set() });
 
-class TooltipRoot extends Component {
+class TooltipRoot extends AbstractComponent {
   static displayName = 'Tooltip';
 
   static style = style;

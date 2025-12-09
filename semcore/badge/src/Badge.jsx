@@ -1,11 +1,11 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
 import style from './style/badge.shadow.css';
 
-class RootBadge extends Component {
+class RootBadge extends AbstractComponent {
   static displayName = 'Badge';
   static style = style;
   static enhance = [resolveColorEnhance()];
@@ -24,4 +24,4 @@ class RootBadge extends Component {
   }
 }
 
-export default createComponent(RootBadge);
+export default createComponent(RootBadge, {});

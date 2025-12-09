@@ -1,4 +1,12 @@
-import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
+import {
+  type IAbstractComponent,
+  type PropsExtractor,
+  createComponent,
+  sstyled,
+  AbstractComponent,
+  Root,
+  type IRootComponentProps,
+} from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
@@ -44,7 +52,7 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
+class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
   static displayName = 'ScrollArea';
 
   static style = style;
@@ -451,7 +459,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: ScrollBar,
-}) as typeof ScrollAreaType;
+});
 
 // TODO: remove named ScrollArea export
 export { eventCalculate, ScrollArea };

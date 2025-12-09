@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
@@ -7,7 +7,7 @@ import React from 'react';
 import style from './style/list.shadow.css';
 import Text from './Text';
 
-class ListRoot extends Component {
+class ListRoot extends AbstractComponent {
   static displayName = 'List';
   static style = style;
   static defaultProps = {
@@ -28,7 +28,7 @@ class ListRoot extends Component {
   }
 }
 
-class ItemRoot extends Component {
+class ItemRoot extends AbstractComponent {
   static style = style;
   static displayName = 'Item';
 

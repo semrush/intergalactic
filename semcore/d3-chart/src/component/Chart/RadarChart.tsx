@@ -107,4 +107,4 @@ class RadarChartComponent extends AbstractChart<
   }
 }
 
-export const RadarChart: RadarChartType = createComponent(RadarChartComponent);
+export const RadarChart: RadarChartType = createComponent(RadarChartComponent, {});

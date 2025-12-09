@@ -9,7 +9,7 @@ import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 
-class Hover extends Component {
+class Hover extends AbstractComponent {
   static style = style;
 
   state = {

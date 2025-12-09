@@ -91,7 +91,7 @@ function getOuterRadius({ size, halfsize }) {
   return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
 }
 
-class DonutRoot extends Component {
+class DonutRoot extends AbstractComponent {
   static displayName = 'Donut';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

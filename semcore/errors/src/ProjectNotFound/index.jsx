@@ -1,5 +1,5 @@
 import Button from '@semcore/button';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -7,7 +7,7 @@ import React from 'react';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootProjectNotFound extends Component {
+class RootProjectNotFound extends AbstractComponent {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
@@ -48,4 +48,4 @@ class RootProjectNotFound extends Component {
   }
 }
 
-export default createComponent(RootProjectNotFound);
+export default createComponent(RootProjectNotFound, {});

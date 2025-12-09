@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import InfoM from '@semcore/icon/Info/m';
 import { DescriptionTooltip } from '@semcore/tooltip';
@@ -9,7 +9,7 @@ import React from 'react';
 
 import style from './style/card.shadow.css';
 
-class CardRoot extends Component {
+class CardRoot extends AbstractComponent {
   static displayName = 'Card';
 
   static style = style;

@@ -31,7 +31,7 @@ const getLatestDate = (...dateRanges) => {
   return latestDate;
 };
 
-class DateRangeComparatorAbstract extends Component {
+class DateRangeComparatorAbstract extends AbstractComponent {
   static displayName = 'DateRangeComparator';
   static style = style;
 

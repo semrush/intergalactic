@@ -1,5 +1,5 @@
 import { Flex, Box, type BoxProps } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled, type Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
@@ -25,7 +25,7 @@ type StarProps = BoxProps & {
 const MIN = 1;
 const MAX = 5;
 
-class SliderRatingRoot extends Component<
+class SliderRatingRoot extends AbstractComponent<
   SliderRatingProps,
   {},
   State,

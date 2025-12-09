@@ -8,7 +8,7 @@ import createElement from './createElement';
 import HorizontalBar from './HorizontalBar';
 import { getChartDefaultColorName, scaleToBand } from './utils';
 
-class GroupBarRoot extends Component {
+class GroupBarRoot extends AbstractComponent {
   static displayName = 'GroupBar';
 
   getScaleGroup() {

@@ -8,7 +8,7 @@ import style from './tabLine.shadow.css';
 import type { HighlightedTabLineComponent } from './TabLine.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class TabLineFHRoot extends Component {
+class TabLineFHRoot extends AbstractComponent {
   static displayName = 'TabLineFH';
   static style = style;
 
@@ -17,7 +17,7 @@ class TabLineFHRoot extends Component {
   }
 }
 
-class HighlightedItemRoot extends Component {
+class HighlightedItemRoot extends AbstractComponent {
   static displayName = 'HighlightedItem';
   static style = style;
 

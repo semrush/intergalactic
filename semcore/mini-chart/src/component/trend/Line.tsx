@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { createComponent, type AbstractComponentType, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -150,7 +150,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
 }
 
 export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances> =
-  createComponent(TrendLineRoot);
+  createComponent(TrendLineRoot, {});
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 

@@ -1,5 +1,5 @@
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import type { InputValueProps } from '@semcore/input';
 import React from 'react';
@@ -11,7 +11,7 @@ type AsPropsWithOnClear<T> = T & {
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterInputRoot extends Component<AddFilterItemProps> {
+class AddFilterInputRoot extends AbstractComponent<AddFilterItemProps> {
   static displayName = 'AddFilterInput';
 
   componentWillUnmount() {

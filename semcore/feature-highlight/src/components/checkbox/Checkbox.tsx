@@ -7,7 +7,7 @@ import style from './checkbox.shadow.css';
 import type { HighlightedCheckboxComponent } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class CheckboxFHRoot extends Component<CheckboxProps> {
+class CheckboxFHRoot extends AbstractComponent<CheckboxProps> {
   static displayName = 'CheckboxFH';
   static style = style;
 

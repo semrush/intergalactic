@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
@@ -11,7 +11,7 @@ import type {
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+class LineRoot extends AbstractComponent<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 

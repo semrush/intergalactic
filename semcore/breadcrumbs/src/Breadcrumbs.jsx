@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import SSeparator from '@semcore/icon/ChevronRight/m';
 import React from 'react';
@@ -7,7 +7,7 @@ import React from 'react';
 import style from './style/breadcrumbs.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class Breadcrumbs extends Component {
+class Breadcrumbs extends AbstractComponent {
   static displayName = 'Breadcrumbs';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
@@ -40,7 +40,7 @@ class Breadcrumbs extends Component {
   }
 }
 
-class Item extends Component {
+class Item extends AbstractComponent {
   static defaultProps = {
     tag: 'a',
     locale: 'en',

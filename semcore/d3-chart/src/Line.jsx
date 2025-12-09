@@ -20,7 +20,7 @@ import {
   invert,
 } from './utils';
 
-class LineRoot extends Component {
+class LineRoot extends AbstractComponent {
   static displayName = 'Line';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

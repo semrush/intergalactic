@@ -267,4 +267,4 @@ class BarChartComponent extends AbstractChart<
   }
 }
 
-export const BarChart: BarChartType = createComponent(BarChartComponent);
+export const BarChart: BarChartType = createComponent(BarChartComponent, {});

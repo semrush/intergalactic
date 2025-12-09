@@ -3,6 +3,7 @@ import { Root, AbstractComponent, Intergalactic, wrapIntergalacticComponent } fr
 import type {
   PropGetterFn,
   IRootComponentProps,
+  PropsExtractor,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -34,6 +35,7 @@ export {
   CHILDREN_COMPONENT,
   INHERITED_NAME,
   type IStyledProps,
+  type PropsExtractor,
   wrapIntergalacticComponent,
   assignProps,
   register,

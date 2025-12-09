@@ -117,7 +117,7 @@ export function getLabelOffsetPosition(xDirection, yDirection, width, height) {
 
 const MINIMUM_OFFSET = 5;
 
-class RadarRoot extends Component {
+class RadarRoot extends AbstractComponent {
   static displayName = 'Line';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
@@ -280,7 +280,7 @@ class RadarRoot extends Component {
   }
 }
 
-class PolygonRoot extends Component {
+class PolygonRoot extends AbstractComponent {
   static displayName = 'Polygon';
   static style = style;
 
@@ -435,7 +435,7 @@ function PolygonDots(props) {
   });
 }
 
-class AxisRoot extends Component {
+class AxisRoot extends AbstractComponent {
   static displayName = 'Polygon';
   static style = style;
 
@@ -592,7 +592,7 @@ function AxisLabels(props) {
   });
 }
 
-class Hover extends Component {
+class Hover extends AbstractComponent {
   state = {
     index: null,
   };

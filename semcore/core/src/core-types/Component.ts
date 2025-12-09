@@ -1,11 +1,11 @@
-import type React from 'react';
 import {
+  type ReactNode,
   type AllHTMLAttributes,
   type ForwardRefExoticComponent,
   PureComponent,
-  type RefAttributes,
   type RefObject,
 } from 'react';
+import type React from 'react';
 
 import { CORE_COMPONENT, CREATE_COMPONENT, PARENT_COMPONENTS } from './symbols';
 import type { IStyledProps } from '../styled/index';
@@ -41,22 +41,22 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
-export type PropsExtractor<T extends AbstractCtor<AbstractComponent> | FunctionComponent> = T extends AbstractCtor<AbstractComponent>
-  ? ConstructorParameters<T>[0]
-  : T extends (...args: infer P) => any ? P[0] : never;
+export type PropsExtractor<C extends AbstractComponent<any> | FunctionComponent<any>> = C extends AbstractComponent<infer P, any>
+  ? P
+  : C extends (...args: infer P) => ReactNode ? P : never;
 
-export interface AbstractCtor<T extends AbstractComponent> {
+export interface AbstractCtor<T extends AbstractComponent<any>> {
   new (...args: any[]): T;
   displayName?: string;
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
-  enhance?: Array<(props: PropsExtractor<AbstractCtor<T>>) => any>;
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
+  enhance?: Readonly<Array<(props: PropsExtractor<T>) => any>>;
 }
 
 export interface FunctionComponent<P = {}> extends React.FunctionComponent<P> {
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent> | FunctionComponent<any>>;
-  enhance?: Array<(props: P) => any>;
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
+  enhance?: Readonly<Array<(props: P) => any>>;
 }
 
 export abstract class AbstractComponent<
@@ -78,7 +78,7 @@ export abstract class AbstractComponent<
     return {} as Readonly<
       { Root: Root } &
       BaseAsProps<Props, Enhance, InnerProps> &
-      Omit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>>
+      Intergalactic.InternalTypings.EfficientOmit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>>
     >;
   }
 
@@ -87,7 +87,7 @@ export abstract class AbstractComponent<
   protected isControlled = false;
 
   protected [CORE_COMPONENT] = true;
-  protected [PARENT_COMPONENTS]: AbstractComponent[] = [];
+  protected [PARENT_COMPONENTS]: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>> = [];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -159,7 +159,7 @@ export namespace Intergalactic {
                   [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
                 }
                 : {};
-    export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
+    export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = EfficientOmit<
       MergeProps<
         Tag extends React.FC
           ? ReactFCProps<Tag>
@@ -183,7 +183,7 @@ export namespace Intergalactic {
     export type ComponentTag =
       | keyof React.JSX.IntrinsicElements
       | AbstractComponent
-      | React.FC
+      | FunctionComponent
       | ReactFCLike;
     export type ComponentProps<
       Tag extends ComponentTag | [ComponentTag, keyof JSX.IntrinsicElements],
@@ -274,8 +274,8 @@ export namespace Intergalactic {
   ) => InternalTypings.ComponentRenderingResults) &
   InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
   export type Tag = InternalTypings.ComponentTag;
-  export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
-    InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
+  export type DomProps<Tag extends keyof React.JSX.IntrinsicElements> =
+    InternalTypings.InferJsxIntrinsicElement<React.JSX.IntrinsicElements[Tag]>;
   export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
     T,
     Exclude<keyof T, Keys>

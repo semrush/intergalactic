@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { createComponent, Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, AbstractComponent, sstyled } from '@semcore/core';
 import { getIllustrationPath } from '@semcore/illustration';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import style from './style/errors.shadow.css';
 
 export const getIconPath = (name) => getIllustrationPath(name);
 
-class RootError extends Component {
+class RootError extends AbstractComponent {
   static displayName = 'Error';
   static style = style;
 

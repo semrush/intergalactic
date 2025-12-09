@@ -1,4 +1,4 @@
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import type { NoticeSmartProps } from '@semcore/notice';
 import Notice from '@semcore/notice';
@@ -7,7 +7,7 @@ import React from 'react';
 import style from './notice.shadow.css';
 import type { HighlightedNoticeComponent } from './Notice.type';
 
-class NoticeFHRoot extends Component<NoticeSmartProps> {
+class NoticeFHRoot extends AbstractComponent<NoticeSmartProps> {
   static displayName = 'NoticeFH';
   static style = style;
 

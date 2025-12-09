@@ -1,6 +1,6 @@
 import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -36,7 +36,7 @@ type AddFilterState = {
   clearFiltersMessage: string;
 };
 
-class RootAddFilter extends Component<
+class RootAddFilter extends AbstractComponent<
   AddFilterProps,
   {},
   AddFilterState,

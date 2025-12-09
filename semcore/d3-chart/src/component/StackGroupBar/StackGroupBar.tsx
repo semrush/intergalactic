@@ -11,7 +11,7 @@ import { getChartDefaultColorName, scaleToBand } from '../../utils';
 
 const XY0 = Symbol('XY0');
 
-class StackGroupBarRoot extends Component<StackGroupProps> {
+class StackGroupBarRoot extends AbstractComponent<StackGroupProps> {
   static displayName = 'StackGroupBar';
 
   groupDomain = new Set<string>();

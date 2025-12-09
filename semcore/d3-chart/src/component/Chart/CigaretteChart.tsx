@@ -334,4 +334,4 @@ class CigaretteChartComponent extends AbstractChart<
   }
 }
 
-export const CigaretteChart: CigaretteChartType = createComponent(CigaretteChartComponent);
+export const CigaretteChart: CigaretteChartType = createComponent(CigaretteChartComponent, {});

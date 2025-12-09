@@ -1,4 +1,4 @@
-import { Component, sstyled, CORE_INSTANCE } from '@semcore/core';
+import { AbstractComponent, sstyled, CORE_INSTANCE } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
@@ -20,7 +20,7 @@ type State = { focus: boolean };
 
 const enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-class PaletteManagerRoot extends Component<RootAsProps, {}, State, typeof enhance> {
+class PaletteManagerRoot extends AbstractComponent<RootAsProps, {}, State, typeof enhance> {
   static displayName = 'PaletteManager';
 
   static style = style;

@@ -1,6 +1,6 @@
 import { Portal, Animation, Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
@@ -36,7 +36,7 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
+class NoticeBubbleContainerRoot extends AbstractComponent<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -196,7 +196,7 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
   );
 };
 
-class ViewInfo extends Component<NoticeBubbleViewItemProps> {
+class ViewInfo extends AbstractComponent<NoticeBubbleViewItemProps> {
   timer: Timer | null = null;
   ref = React.createRef<HTMLDivElement>();
   closeButtonRef = React.createRef<HTMLButtonElement>();

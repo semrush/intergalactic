@@ -17,7 +17,7 @@ export function parseValueWithMinMax(
   return Math.max(min, Math.min(max, value));
 }
 
-class InputNumber extends Component {
+class InputNumber extends AbstractComponent {
   static displayName = 'InputNumber';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
@@ -64,7 +64,7 @@ class InputNumber extends Component {
   }
 }
 
-class Value extends Component {
+class Value extends AbstractComponent {
   static style = style;
   static defaultProps = {
     defaultValue: '',

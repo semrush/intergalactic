@@ -1,12 +1,12 @@
 import Button from '@semcore/button';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootAccessDenied extends Component {
+class RootAccessDenied extends AbstractComponent {
   static displayName = 'AccessDenied';
   static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
@@ -34,4 +34,4 @@ class RootAccessDenied extends Component {
   }
 }
 
-export default createComponent(RootAccessDenied);
+export default createComponent(RootAccessDenied, {});

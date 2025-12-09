@@ -1,6 +1,6 @@
 import { ScrollArea, Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import React, { Component, createRef } from 'react';
+import React from 'react';
 
 interface State {
   width: number;
@@ -22,7 +22,7 @@ function getRandomColor() {
   return color;
 }
 
-class Demo extends Component<{}, State> {
+class Demo extends React.Component<{}, State> {
   mirror: HTMLDivElement | null = null;
   state: State = {
     width: 300,
@@ -49,7 +49,7 @@ class Demo extends Component<{}, State> {
     }
   }
 
-  containerRef = createRef<HTMLDivElement>();
+  containerRef = React.createRef<HTMLDivElement>();
 
   render() {
     return (

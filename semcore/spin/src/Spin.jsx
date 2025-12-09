@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
@@ -7,7 +7,7 @@ import React from 'react';
 import style from './style/spin.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootSpin extends Component {
+class RootSpin extends AbstractComponent {
   static displayName = 'Spin';
   static style = style;
   static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)];
@@ -35,4 +35,4 @@ class RootSpin extends Component {
   }
 }
 
-export default createComponent(RootSpin);
+export default createComponent(RootSpin, {});

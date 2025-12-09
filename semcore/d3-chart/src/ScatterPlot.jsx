@@ -10,7 +10,7 @@ import style from './style/scatterplot.shadow.css';
 import Tooltip from './Tooltip';
 import { getScatterPlotRadius } from './utils';
 
-class ScatterPlotRoot extends Component {
+class ScatterPlotRoot extends AbstractComponent {
   static displayName = 'ScatterPlot';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

@@ -1,11 +1,11 @@
 import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import React from 'react';
 
 import style from './style/input.shadow.css';
 
-class Input extends Component {
+class Input extends AbstractComponent {
   static displayName = 'Input';
 
   static defaultProps = {
@@ -107,7 +107,7 @@ class Input extends Component {
   }
 }
 
-class Value extends Component {
+class Value extends AbstractComponent {
   static defaultProps = {
     defaultValue: '',
   };

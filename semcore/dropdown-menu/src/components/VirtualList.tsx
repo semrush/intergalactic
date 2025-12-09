@@ -1,6 +1,6 @@
 import { ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import { Root, Component, createComponent, sstyled } from '@semcore/core';
+import { Root, AbstractComponent, createComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
 import { ListBoxContextProvider } from './Context';
@@ -32,7 +32,7 @@ type State = {
   scrollDirection: 'up' | 'down';
 };
 
-class VirtualListRoot<T = string, D extends object = {}> extends Component<VirtualListProps<T, D>, {}, State, [], { rowsBuffer: number; index: number }> {
+class VirtualListRoot<T = string, D extends object = {}> extends AbstractComponent<VirtualListProps<T, D>, {}, State, [], { rowsBuffer: number; index: number }> {
   static displayName = 'VirtualList';
   static style = style;
 

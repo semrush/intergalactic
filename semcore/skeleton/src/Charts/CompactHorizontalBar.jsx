@@ -21,4 +21,4 @@ const CompactHorizontalBarChartSkeleton = (_props) => {
   );
 };
 
-export default createComponent(CompactHorizontalBarChartSkeleton);
+export default createComponent(CompactHorizontalBarChartSkeleton, {});

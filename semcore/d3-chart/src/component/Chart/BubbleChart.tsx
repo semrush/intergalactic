@@ -147,4 +147,4 @@ class BubbleChartComponent extends AbstractChart<
   }
 }
 
-export const BubbleChart: BubbleChartType = createComponent(BubbleChartComponent);
+export const BubbleChart: BubbleChartType = createComponent(BubbleChartComponent, {});

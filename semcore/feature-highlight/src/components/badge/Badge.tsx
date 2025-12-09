@@ -1,10 +1,10 @@
 import Badge from '@semcore/badge';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import style from './badge.shadow.css';
 
-class BadgeFHRoot extends Component {
+class BadgeFHRoot extends AbstractComponent {
   static displayName = 'BadgeFH';
   static style = style;
 
@@ -18,4 +18,4 @@ class BadgeFHRoot extends Component {
   }
 }
 
-export const BadgeFH = createComponent(BadgeFHRoot);
+export const BadgeFH = createComponent(BadgeFHRoot, {});

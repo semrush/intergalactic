@@ -152,4 +152,4 @@ class AreaChartComponent extends AbstractChart<
   }
 }
 
-export const AreaChart: AreaChartType = createComponent(AreaChartComponent);
+export const AreaChart: AreaChartType = createComponent(AreaChartComponent, {});

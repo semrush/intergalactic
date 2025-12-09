@@ -1,5 +1,5 @@
 import type { IRootComponentProps } from '@semcore/core';
-import { createComponent, Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, AbstractComponent, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Pills from '@semcore/pills';
 import React from 'react';
@@ -8,7 +8,7 @@ import style from './pills.shadow.css';
 import type { HighlightedItemAddonProps, HighlightedPillComponent } from './Pills.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class PillsFHRoot extends Component {
+class PillsFHRoot extends AbstractComponent {
   static displayName = 'PillsFH';
   static style = style;
 
@@ -17,7 +17,7 @@ class PillsFHRoot extends Component {
   }
 }
 
-class HighlightedItemRoot extends Component {
+class HighlightedItemRoot extends AbstractComponent {
   static displayName = 'HighlightedItem';
   static style = style;
 

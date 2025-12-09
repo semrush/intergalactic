@@ -1,6 +1,6 @@
 import { FadeInOut, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -16,7 +16,7 @@ function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info', 'neutral'].includes(theme);
 }
 
-class NoticeGlobalRoot extends Component {
+class NoticeGlobalRoot extends AbstractComponent {
   static displayName = 'NoticeGlobal';
   static style = style;
   static enhance = [

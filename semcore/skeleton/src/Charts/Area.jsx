@@ -27,4 +27,4 @@ const AreaChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(AreaChartSkeleton);
+export default createComponent(AreaChartSkeleton, {});

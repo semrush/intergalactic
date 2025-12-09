@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -13,7 +13,7 @@ const MAP_COLOR_THEME = {
   invert: 'rgba(224, 225, 233, 0.8)',
 };
 
-class SkeletonRoot extends Component {
+class SkeletonRoot extends AbstractComponent {
   static displayName = 'Skeleton';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
@@ -40,7 +40,7 @@ class SkeletonRoot extends Component {
   }
 }
 
-class SkeletonSVG extends Component {
+class SkeletonSVG extends AbstractComponent {
   static displayName = 'SkeletonSVG';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
@@ -133,7 +133,7 @@ function Text(props) {
   );
 }
 
-const Skeleton = createComponent(SkeletonRoot);
+const Skeleton = createComponent(SkeletonRoot, {});
 
 export { Skeleton };
 

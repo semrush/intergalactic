@@ -21,7 +21,7 @@ type LimitOverlayProps<UniqKeyType> = {
   scrollAreaRef: React.RefObject<HTMLDivElement>;
 };
 
-class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyType>> implements IFocusableCell {
+class LimitOverlayRoot<UniqKeyType> extends AbstractComponent<LimitOverlayProps<UniqKeyType>> implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 
   limitWrapperRef = React.createRef<HTMLDivElement>();

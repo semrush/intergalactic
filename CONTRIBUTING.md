@@ -97,7 +97,7 @@ import createComponent, { Component, Root, sstyled } from "@semcore/core";
 import { Text } from "@semcore/typography";
 import style from "./style/link.shadow.css";
 
-class RootLink extends Component {
+class RootLink extends AbstractComponent {
   static style = style;
 
   render() {
@@ -112,7 +112,7 @@ class RootLink extends Component {
   }
 }
 
-const Link = createComponent(RootLink);
+const Link = createComponent(RootLink, {});
 
 export default Link;
 ```

@@ -1,5 +1,5 @@
 import { Flex, Box, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
 import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
@@ -10,7 +10,7 @@ import React from 'react';
 
 import style from './style/radio.shadow.css';
 
-class RadioGroupRoot extends Component {
+class RadioGroupRoot extends AbstractComponent {
   static displayName = 'RadioGroup';
 
   static defaultProps = {
@@ -47,9 +47,9 @@ class RadioGroupRoot extends Component {
   }
 }
 
-const RadioGroup = createComponent(RadioGroupRoot);
+const RadioGroup = createComponent(RadioGroupRoot, {});
 
-class RadioRoot extends Component {
+class RadioRoot extends AbstractComponent {
   static displayName = 'Radio';
   static style = style;
   static contextType = RadioGroup[CONTEXT_COMPONENT];
@@ -129,7 +129,7 @@ class RadioRoot extends Component {
   }
 }
 
-class ValueRoot extends Component {
+class ValueRoot extends AbstractComponent {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,

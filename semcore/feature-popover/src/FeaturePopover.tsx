@@ -1,7 +1,7 @@
 import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
-import { createComponent, Root, Component, sstyled } from '@semcore/core';
+import { createComponent, Root, AbstractComponent, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import CloseIcon from '@semcore/icon/Close/m';
@@ -45,7 +45,7 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends Component<FeaturePopoverProps, {}, {}, typeof enhance> {
+class FeaturePopover extends AbstractComponent<FeaturePopoverProps, {}, {}, typeof enhance> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -120,7 +120,7 @@ function Trigger({ Children, styles }: IRootComponentProps) {
   );
 }
 
-class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, [], FeaturePopoverPopperInnerProps> {
+class FeaturePopoverPopper extends AbstractComponent<FeaturePopoverPopperProps, {}, {}, [], FeaturePopoverPopperInnerProps> {
   static defaultProps = {
     closeIcon: false,
     duration: 200,

@@ -22,4 +22,4 @@ const RadialTreeChartSkeleton = () => {
   );
 };
 
-export default createComponent(RadialTreeChartSkeleton);
+export default createComponent(RadialTreeChartSkeleton, {});

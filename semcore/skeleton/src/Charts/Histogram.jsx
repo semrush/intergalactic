@@ -28,4 +28,4 @@ const HistogramChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(HistogramChartSkeleton);
+export default createComponent(HistogramChartSkeleton, {});

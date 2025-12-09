@@ -1,4 +1,4 @@
-import { createComponent, Component, Root, register } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, register } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
@@ -49,7 +49,7 @@ function calculateNeighborLocation(
   return neighborLocation;
 }
 
-export class NeighborLocationRoot extends Component<NeighborLocationProps> {
+export class NeighborLocationRoot extends AbstractComponent<NeighborLocationProps> {
   static displayName = 'NeighborLocation';
 
   controlsLengthRef = React.createRef() as React.MutableRefObject<number | undefined>;
@@ -99,7 +99,7 @@ export class NeighborLocationRoot extends Component<NeighborLocationProps> {
   }
 }
 
-class Detect extends Component<NeighborLocationDetectProps> {
+class Detect extends AbstractComponent<NeighborLocationDetectProps> {
   render() {
     const { children, neighborLocation: selfNeighborLocation, getNeighborLocation } = this.asProps;
     const calculateNeighborLocation = getNeighborLocation ? getNeighborLocation(this) : undefined;

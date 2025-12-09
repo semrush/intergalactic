@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import CheckM from '@semcore/icon/Check/m';
@@ -29,7 +29,7 @@ type State = {
   error: boolean;
 };
 
-class FeedbackRatingRoot extends Component<
+class FeedbackRatingRoot extends AbstractComponent<
   FeedbackRatingProps,
   {},
   State,

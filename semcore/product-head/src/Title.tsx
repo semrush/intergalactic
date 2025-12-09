@@ -16,7 +16,7 @@ export type HeaderTitleProps = BoxProps & {
   toolName?: React.ReactNode;
 };
 
-class TitleRoot extends Component<HeaderTitleProps> {
+class TitleRoot extends AbstractComponent<HeaderTitleProps> {
   static displayName = 'Title';
   static style = style;
 

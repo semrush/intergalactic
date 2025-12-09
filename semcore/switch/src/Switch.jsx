@@ -1,5 +1,5 @@
 import { NeighborLocation, Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
@@ -12,7 +12,7 @@ function isCustomTheme(theme) {
   return !['info', 'success'].includes(theme);
 }
 
-class Switch extends Component {
+class Switch extends AbstractComponent {
   static displayName = 'Switch';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
@@ -84,7 +84,7 @@ class Switch extends Component {
   }
 }
 
-class Value extends Component {
+class Value extends AbstractComponent {
   static enhance = [resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,

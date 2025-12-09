@@ -84,7 +84,7 @@ export function Next({ children, Children }) {
   );
 }
 
-export class Period extends Component {
+export class Period extends AbstractComponent {
   getActiveControl = (period = [], value = undefined) => {
     function compareMonth(monthOne, monthTwo) {
       return dayjs(monthOne).isSame(dayjs(monthTwo), 'date');

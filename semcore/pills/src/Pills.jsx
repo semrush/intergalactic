@@ -1,5 +1,5 @@
 import { NeighborLocation, Box, useNeighborLocationDetect } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
@@ -19,7 +19,7 @@ const optionsA11yEnhance = {
     props.behavior === 'auto' ? ['role', 'radio'] : ['role', 'tab'],
 };
 
-class RootPills extends Component {
+class RootPills extends AbstractComponent {
   static displayName = 'Pills';
   static style = style;
   static defaultProps = ({ behavior }) => ({

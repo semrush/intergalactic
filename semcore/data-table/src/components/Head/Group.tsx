@@ -7,7 +7,7 @@ import type { DataTableGroupProps, GroupPropsInner } from './Group.type';
 import style from './style.shadow.css';
 import { DataTable } from '../DataTable/DataTable';
 
-export class Group extends Component<
+export class Group extends AbstractComponent<
   DataTableGroupProps,
   {},
   {},

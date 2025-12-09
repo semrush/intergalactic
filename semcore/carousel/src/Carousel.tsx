@@ -1,7 +1,7 @@
 import { createBreakpoints, Box, Flex } from '@semcore/base-components';
 import type { BoxProps } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
@@ -35,7 +35,7 @@ const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
 const isSmallScreen = (index?: number) => index === 1;
 
-class CarouselRoot extends Component<
+class CarouselRoot extends AbstractComponent<
   CarouselProps,
   CarouselContext,
   CarouselState,
@@ -614,7 +614,7 @@ const ContentBox = (props: BoxProps) => {
   return sstyled(styles)(<SContentBox render={Box} />);
 };
 
-class Item extends Component<CarouselItemProps> {
+class Item extends AbstractComponent<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
 
   componentDidMount() {

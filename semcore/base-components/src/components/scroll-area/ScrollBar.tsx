@@ -1,4 +1,4 @@
-import { createComponent, sstyled, Component, Root } from '@semcore/core';
+import { createComponent, sstyled, AbstractComponent, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
@@ -33,7 +33,7 @@ const setAriaValues = (
   }
 };
 
-class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
+class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
   static displayName = 'Bar';
 
   static style = style;

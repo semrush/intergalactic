@@ -21,4 +21,4 @@ const VennChartSkeleton = () => {
   );
 };
 
-export default createComponent(VennChartSkeleton);
+export default createComponent(VennChartSkeleton, {});

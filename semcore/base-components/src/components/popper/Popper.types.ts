@@ -5,7 +5,7 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Options, Instance } from '@popperjs/core/lib/types';
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type { DOMAttributes } from 'react';
 

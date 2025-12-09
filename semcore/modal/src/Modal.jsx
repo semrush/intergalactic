@@ -1,6 +1,6 @@
 import { FadeInOut, Slide, Flex, OutsideClick, Portal, PortalProvider } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import fire from '@semcore/core/lib/utils/fire';
@@ -21,7 +21,7 @@ import React from 'react';
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class ModalRoot extends Component {
+class ModalRoot extends AbstractComponent {
   static displayName = 'Modal';
   static style = style;
   static enhance = [

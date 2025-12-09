@@ -100,7 +100,7 @@ export function getAfterPositionValue(value: string, mask: any = ''): number {
   return afterPotionValue;
 }
 
-class InputMask extends Component<InputProps> {
+class InputMask extends AbstractComponent<InputProps> {
   static displayName = 'InputMask';
   static style = style;
 
@@ -109,7 +109,7 @@ class InputMask extends Component<InputProps> {
   }
 }
 
-class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance> {
+class Value extends AbstractComponent<InputMaskValueProps, {}, {}, typeof Value.enhance> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',

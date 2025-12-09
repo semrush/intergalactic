@@ -1,5 +1,5 @@
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import CloseM from '@semcore/icon/Close/m';
 import SearchM from '@semcore/icon/Search/m';
@@ -10,7 +10,7 @@ import { selectContext } from './context';
 import style from './style/input-search.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class InputSearchRoot extends Component {
+class InputSearchRoot extends AbstractComponent {
   static displayName = 'InputSearch';
 
   static style = style;

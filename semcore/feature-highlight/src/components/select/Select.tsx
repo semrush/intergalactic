@@ -1,11 +1,11 @@
 import type { IRootComponentProps } from '@semcore/core';
-import { createComponent, Root, Component } from '@semcore/core';
+import { createComponent, Root, AbstractComponent } from '@semcore/core';
 import Select from '@semcore/select';
 import React from 'react';
 
 import { ButtonTriggerFH } from '../../inner-components/button-trigger/ButtonTrigger';
 
-class SelectFHRoot extends Component {
+class SelectFHRoot extends AbstractComponent {
   static displayName = 'SelectFH';
 
   render() {

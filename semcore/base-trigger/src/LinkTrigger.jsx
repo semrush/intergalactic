@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
@@ -8,7 +8,7 @@ import React from 'react';
 
 import style from './style/link-trigger.shadow.css';
 
-class RootLinkTrigger extends Component {
+class RootLinkTrigger extends AbstractComponent {
   static displayName = 'LinkTrigger';
   static style = style;
   static defaultProps = {

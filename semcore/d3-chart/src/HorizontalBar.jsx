@@ -19,7 +19,7 @@ const calcPartBarX = (x, minWidth, width) => {
   return Object.is(x, 0) ? minWidth : 0;
 };
 
-class HorizontalBarRoot extends Component {
+class HorizontalBarRoot extends AbstractComponent {
   static displayName = 'HorizontalBar';
   static enhance = [uniqueIDEnhancement()];
   static style = style;

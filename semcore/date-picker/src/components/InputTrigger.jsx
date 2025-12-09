@@ -1,6 +1,6 @@
 import { NeighborLocation, Flex, Box } from '@semcore/base-components';
 import BaseTrigger from '@semcore/base-trigger';
-import { createComponent, Root, sstyled, Component } from '@semcore/core';
+import { createComponent, Root, sstyled, AbstractComponent } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import Calendar from '@semcore/icon/Calendar/m';
@@ -16,7 +16,7 @@ import { includesDate } from '../utils/includesDate';
 const defaultAllowedParts = { year: true, month: true, day: true };
 const exampleDate = new Date(2000, 4, 29);
 
-class InputTriggerRoot extends Component {
+class InputTriggerRoot extends AbstractComponent {
   static displayName = 'InputTrigger';
   static style = style;
   static defaultProps = {
@@ -68,7 +68,7 @@ class InputTriggerRoot extends Component {
   }
 }
 
-class SingleDateInputRoot extends Component {
+class SingleDateInputRoot extends AbstractComponent {
   static displayName = 'SingleDateInput';
   static style = style;
   static defaultProps = {
@@ -185,7 +185,7 @@ class SingleDateInputRoot extends Component {
     );
   }
 }
-class DateRangeRoot extends Component {
+class DateRangeRoot extends AbstractComponent {
   static displayName = 'DateRange';
   static style = style;
   static defaultProps = {

@@ -1,5 +1,5 @@
 import { Box, type BoxProps } from '@semcore/base-components';
-import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
@@ -149,7 +149,7 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: s
 const forcedAdvancedMode = { forcedAdvancedMode: true } as any;
 const noAdvancedMode = {} as any;
 
-class RootEllipsis extends Component<AsProps> {
+class RootEllipsis extends AbstractComponent<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
   static defaultProps: AsProps = {

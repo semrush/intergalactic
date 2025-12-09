@@ -26,4 +26,4 @@ const DonutChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(DonutChartSkeleton);
+export default createComponent(DonutChartSkeleton, {});

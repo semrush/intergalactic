@@ -1,5 +1,5 @@
 import { FilterTrigger } from '@semcore/base-trigger';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import React from 'react';
 
@@ -11,7 +11,7 @@ type AsPropsTypeWithHandlers<T> = T & {
   setFocusRef: (el: HTMLElement) => {};
 };
 
-class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
+class AddFilterDropdownRoot extends AbstractComponent<AddFilterItemProps> {
   static displayName = 'AddFilterDropdown';
 
   static defaultProps = () => {

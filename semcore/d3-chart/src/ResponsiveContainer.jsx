@@ -1,12 +1,12 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import fire from '@semcore/core/lib/utils/fire';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
-class ResponsiveContainerRoot extends Component {
+class ResponsiveContainerRoot extends AbstractComponent {
   static displayName = 'ResponsiveContainer';
 
   containerRef = React.createRef();
@@ -83,6 +83,6 @@ class ResponsiveContainerRoot extends Component {
   }
 }
 
-const ResponsiveContainer = createComponent(ResponsiveContainerRoot);
+const ResponsiveContainer = createComponent(ResponsiveContainerRoot, {});
 
 export default ResponsiveContainer;

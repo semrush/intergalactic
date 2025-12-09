@@ -10,6 +10,6 @@ const InvalidStatePatternComponent = () => {
   return sstyled(style)(<SPattern render={Box} />);
 };
 
-export const InvalidStateBox = createComponent(InvalidStatePatternComponent);
+export const InvalidStateBox = createComponent(InvalidStatePatternComponent, {});
 
 export default InvalidStateBox;

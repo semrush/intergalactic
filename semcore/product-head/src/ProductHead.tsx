@@ -1,10 +1,10 @@
 import { Box, type BoxProps } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './style/product-head.shadow.css';
 
-class HeaderRoot extends Component<BoxProps> {
+class HeaderRoot extends AbstractComponent<BoxProps> {
   static displayName = 'ProductHead';
   static style = style;
 

@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { Root, sstyled, createComponent, Component } from '@semcore/core';
+import { Root, sstyled, createComponent, AbstractComponent } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
@@ -12,7 +12,7 @@ import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
+class CellRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponent<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 
   static displayName = 'Cell';
@@ -129,4 +129,4 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 }
 
-export const Cell = createComponent(CellRoot);
+export const Cell = createComponent(CellRoot, {});

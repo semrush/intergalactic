@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -13,7 +13,7 @@ import React from 'react';
 import style from './style/tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootTag extends Component {
+class RootTag extends AbstractComponent {
   static displayName = 'Tag';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
@@ -89,7 +89,7 @@ class RootTag extends Component {
   }
 }
 
-class RootTagContainer extends Component {
+class RootTagContainer extends AbstractComponent {
   static displayName = 'TagContainer';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
@@ -215,7 +215,7 @@ class RootTagContainer extends Component {
   }
 }
 
-class RootCloseTagContainer extends Component {
+class RootCloseTagContainer extends AbstractComponent {
   static displayName = 'CloseTagContainer';
   static style = style;
 

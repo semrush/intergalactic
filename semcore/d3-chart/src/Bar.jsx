@@ -20,7 +20,7 @@ const calcPartBarY = (y, minHeight, height) => {
   return height <= minHeight ? minHeight : 0;
 };
 
-class BarRoot extends Component {
+class BarRoot extends AbstractComponent {
   static displayName = 'Bar';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

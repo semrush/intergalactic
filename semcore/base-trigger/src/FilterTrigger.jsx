@@ -1,5 +1,5 @@
 import { NeighborLocation, Box, ScreenReaderOnly } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
@@ -31,7 +31,7 @@ const filterTriggerInputProps = [
   'role',
 ];
 
-class RootFilterTrigger extends Component {
+class RootFilterTrigger extends AbstractComponent {
   static displayName = 'FilterTrigger';
   static style = style;
   static enhance = [
@@ -163,7 +163,7 @@ class RootFilterTrigger extends Component {
   }
 }
 
-class TriggerButton extends Component {
+class TriggerButton extends AbstractComponent {
   static displayName = 'TriggerButton';
   static style = style;
 
@@ -193,7 +193,7 @@ class TriggerButton extends Component {
   }
 }
 
-class ClearButton extends Component {
+class ClearButton extends AbstractComponent {
   static displayName = 'ClearButton';
   static style = style;
 

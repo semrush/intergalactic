@@ -1,10 +1,10 @@
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
 import Notice from './Notice';
 
-class NoticeSmart extends Component {
+class NoticeSmart extends AbstractComponent {
   static displayName = 'NoticeSmart';
 
   static defaultProps = {
@@ -43,4 +43,4 @@ class NoticeSmart extends Component {
   }
 }
 
-export default createComponent(NoticeSmart);
+export default createComponent(NoticeSmart, {});

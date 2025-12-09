@@ -8,7 +8,7 @@ import style from './switch.shadow.css';
 import type { HighlightedSwitchComponent } from './Switch.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class SwitchFHRoot extends Component<SwitchProps> {
+class SwitchFHRoot extends AbstractComponent<SwitchProps> {
   static displayName = 'SwitchFH';
   static style = style;
 

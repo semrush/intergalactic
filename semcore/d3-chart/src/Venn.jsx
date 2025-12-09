@@ -12,7 +12,7 @@ import style from './style/venn.shadow.css';
 import Tooltip from './Tooltip';
 import { getChartDefaultColorName } from './utils';
 
-class VennRoot extends Component {
+class VennRoot extends AbstractComponent {
   static displayName = 'Venn';
   static style = style;
 

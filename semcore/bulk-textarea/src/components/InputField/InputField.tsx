@@ -18,7 +18,7 @@ type State = {
   visibleErrorPopper: boolean;
 };
 
-class InputField<T extends string | string[]> extends Component<
+class InputField<T extends string | string[]> extends AbstractComponent<
   InputFieldProps<T>,
   {},
   State,

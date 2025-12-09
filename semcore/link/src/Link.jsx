@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -11,7 +11,7 @@ import React from 'react';
 
 import style from './style/link.shadow.css';
 
-class RootLink extends Component {
+class RootLink extends AbstractComponent {
   static displayName = 'Link';
   static defaultProps = {
     noWrap: true,

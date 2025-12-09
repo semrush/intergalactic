@@ -21,7 +21,7 @@ import {
   invert,
 } from './utils';
 
-class AreaRoot extends Component {
+class AreaRoot extends AbstractComponent {
   static displayName = 'Area';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

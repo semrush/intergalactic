@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import { getIllustrationPath } from '@semcore/illustration';
 import React from 'react';
@@ -8,7 +8,7 @@ import style from './style/widget-empty.shadow.css';
 
 export const getIconPath = (name) => getIllustrationPath(name);
 
-class WidgetEmpty extends Component {
+class WidgetEmpty extends AbstractComponent {
   static displayName = 'WidgetEmpty';
   static style = style;
 

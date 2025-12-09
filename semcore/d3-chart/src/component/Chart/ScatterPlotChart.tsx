@@ -143,4 +143,4 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 }
 
-export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent);
+export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent, {});

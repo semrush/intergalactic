@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -12,7 +12,7 @@ import style from './style/plot.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { eventToPoint, uniqueId } from './utils';
 
-class PlotRoot extends Component {
+class PlotRoot extends AbstractComponent {
   static displayName = 'Plot';
   static style = style;
 
@@ -124,4 +124,4 @@ class PlotRoot extends Component {
   }
 }
 
-export default createComponent(PlotRoot);
+export default createComponent(PlotRoot, {});

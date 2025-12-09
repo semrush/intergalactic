@@ -1,6 +1,6 @@
 import { FadeInOut, Slide, Flex, Box, OutsideClick, PortalProvider, Portal } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -22,7 +22,7 @@ import React from 'react';
 import style from './style/side-panel.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootSidePanel extends Component {
+class RootSidePanel extends AbstractComponent {
   static displayName = 'SidePanel';
   static style = style;
   static enhance = [

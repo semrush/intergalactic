@@ -1,5 +1,5 @@
 import { Portal, Animation, Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import logger from '@semcore/core/lib/utils/logger';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
@@ -29,7 +29,7 @@ const styleDot = sstyled.css`
   }
 `;
 
-class Dot extends Component {
+class Dot extends AbstractComponent {
   static displayName = 'Dot';
   static style = style;
   static defaultProps = {
@@ -105,4 +105,4 @@ class Dot extends Component {
   }
 }
 
-export default createComponent(Dot);
+export default createComponent(Dot, {});

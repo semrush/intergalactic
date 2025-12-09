@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Input from '@semcore/input';
 import React from 'react';
@@ -60,7 +60,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
   return hours;
 }
 
-class TimePickerRoot extends Component {
+class TimePickerRoot extends AbstractComponent {
   static displayName = 'TimePicker';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
@@ -247,7 +247,7 @@ class TimePickerRoot extends Component {
   }
 }
 
-class Separator extends Component {
+class Separator extends AbstractComponent {
   static defaultProps = {
     children: ':',
   };

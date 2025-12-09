@@ -1,5 +1,5 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import { createComponent, sstyled, Component, Root } from '@semcore/core';
+import { createComponent, sstyled, AbstractComponent, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
@@ -49,7 +49,7 @@ type State = {
 
 type A11yHintKeys = keyof typeof localizedMessages.en;
 
-class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
+class DragAndDropRoot extends AbstractComponent<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {

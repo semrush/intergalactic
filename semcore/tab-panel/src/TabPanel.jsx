@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
@@ -18,7 +18,7 @@ const optionsA11yEnhance = {
   childSelector: ['role', 'tab'],
 };
 
-class TabPanelRoot extends Component {
+class TabPanelRoot extends AbstractComponent {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {

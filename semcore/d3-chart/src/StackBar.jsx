@@ -11,7 +11,7 @@ import { getChartDefaultColorName } from './utils';
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const XY0 = Symbol('XY0');
 
-class StackBarRoot extends Component {
+class StackBarRoot extends AbstractComponent {
   static displayName = 'StackBar';
 
   static defaultProps = () => {

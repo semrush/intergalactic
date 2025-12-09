@@ -1,5 +1,5 @@
 import { FadeInOut, Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import Spin from '@semcore/spin';
@@ -7,7 +7,7 @@ import React from 'react';
 
 import style from './style/spin-container.shadow.css';
 
-class SpinContainerRoot extends Component {
+class SpinContainerRoot extends AbstractComponent {
   static displayName = 'SpinContainer';
   static style = style;
   static defaultProps = {
@@ -85,7 +85,7 @@ class SpinContainerRoot extends Component {
   }
 }
 
-class Overlay extends Component {
+class Overlay extends AbstractComponent {
   static defaultProps = ({ size, theme }) => ({
     children: <Spin size={size} theme={theme} />,
   });

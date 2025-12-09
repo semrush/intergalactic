@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
@@ -58,7 +58,7 @@ type ItemAsProps = {
   value: string;
 };
 
-class ColorPickerRoot extends Component<RootAsProps> {
+class ColorPickerRoot extends AbstractComponent<RootAsProps> {
   static displayName = 'ColorPicker';
 
   static style = style;
@@ -200,13 +200,13 @@ const ColorPicker = createComponent(ColorPickerRoot, {
   Popper,
   Item,
   Colors,
-}) as any;
+});
 
 const PaletteManager = createComponent(PaletteManagerRoot, {
   Item: ColorPicker.Item,
   Colors: ColorsCustom,
   InputColor,
-}) as any;
+});
 
 export { PaletteManager, defaultColors };
 export default ColorPicker;

@@ -1,5 +1,5 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import dayjs from 'dayjs';
@@ -27,7 +27,7 @@ function getDayJSLocaleParams(locale) {
   };
 }
 
-class CalendarWeekDaysRoot extends Component {
+class CalendarWeekDaysRoot extends AbstractComponent {
   static displayName = 'CalendarWeekDays';
   static style = style;
   static defaultProps = {
@@ -107,7 +107,7 @@ function resolveSelecting(date, unit, value) {
   };
 }
 
-class CalendarAbstract extends Component {
+class CalendarAbstract extends AbstractComponent {
   static style = style;
 
   today = new Date(new Date().setHours(0, 0, 0, 0));

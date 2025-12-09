@@ -27,4 +27,4 @@ const LineChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(LineChartSkeleton);
+export default createComponent(LineChartSkeleton, {});

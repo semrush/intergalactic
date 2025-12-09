@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
@@ -19,7 +19,7 @@ type State<T extends string | string[]> = {
   prevError?: InputFieldProps<T>['errors'][number];
 };
 
-class BulkTextareaRoot<T extends string | string[]> extends Component<
+class BulkTextareaRoot<T extends string | string[]> extends AbstractComponent<
   BulkTextareaProps<T>,
   {},
   State<T>,

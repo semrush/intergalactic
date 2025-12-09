@@ -1,5 +1,5 @@
 import { Flex, Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import React from 'react';
 
@@ -11,7 +11,7 @@ const convertValueToPercent = (value, min, max) => {
   return ((value - min) / (max - min)) * 100;
 };
 
-class SliderRoot extends Component {
+class SliderRoot extends AbstractComponent {
   static displayName = 'Slider';
   static style = style;
 

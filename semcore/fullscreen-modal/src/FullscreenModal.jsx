@@ -1,6 +1,6 @@
 import { Flex, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -13,7 +13,7 @@ import React from 'react';
 import style from './style/fullscreen-modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class FullscreenModalRoot extends Component {
+class FullscreenModalRoot extends AbstractComponent {
   static displayName = 'FullscreenModal';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];

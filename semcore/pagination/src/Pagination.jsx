@@ -1,6 +1,6 @@
 import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
@@ -12,7 +12,7 @@ import React from 'react';
 import style from './style/pagination.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class PaginationRoot extends Component {
+class PaginationRoot extends AbstractComponent {
   static displayName = 'Pagination';
 
   static defaultProps = () => {
@@ -257,7 +257,7 @@ class PaginationRoot extends Component {
   }
 }
 
-class FirstPage extends Component {
+class FirstPage extends AbstractComponent {
   static defaultProps = (props) => {
     const hintContent = props.getI18nText('firstPage');
 
@@ -282,7 +282,7 @@ class FirstPage extends Component {
   }
 }
 
-class PrevPage extends Component {
+class PrevPage extends AbstractComponent {
   static defaultProps = (props) => ({
     children: props.getI18nText('prevPageLabel'),
   });
@@ -292,7 +292,7 @@ class PrevPage extends Component {
     return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
   }
 }
-class NextPage extends Component {
+class NextPage extends AbstractComponent {
   static defaultProps = (props) => ({
     children: props.getI18nText('nextPageLabel'),
   });
@@ -303,7 +303,7 @@ class NextPage extends Component {
   }
 }
 
-class TotalPages extends Component {
+class TotalPages extends AbstractComponent {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
@@ -352,7 +352,7 @@ const PageInputAddon = (props) => {
   return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
 };
 
-class PageInput extends Component {
+class PageInput extends AbstractComponent {
   static enhance = [uniqueIDEnhancement()];
 
   render() {

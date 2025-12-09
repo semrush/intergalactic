@@ -1,5 +1,5 @@
 import { Box, Popper as PopperOrigin, Portal } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
@@ -28,7 +28,7 @@ const defaultProps = {
 };
 const Popper = PopperOrigin.newInstance();
 
-class TooltipRoot extends Component {
+class TooltipRoot extends AbstractComponent {
   static displayName = 'Tooltip';
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];

@@ -24,6 +24,11 @@
       "@semcore/ui/d3-chart": ["d3-chart"],
       "@semcore/ui/core/lib/*": ["core/src/*"],
       "@semcore/ui/*": ["*/src"],
+      "@semcore/illustration/*": ["illustration/*"],
+      "@semcore/icon/*": ["icon/*"],
+      "@semcore/d3-chart": ["d3-chart"],
+      "@semcore/core/lib/*": ["core/src/*"],
+      "@semcore/*": ["*/src"],
       "@tools/*": ["../tools/*"]
     }
   },

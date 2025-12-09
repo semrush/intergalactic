@@ -1,5 +1,5 @@
 import { FilterTrigger } from '@semcore/base-trigger';
-import { createComponent, Component, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, Root } from '@semcore/core';
 import Select, { type SelectProps } from '@semcore/select';
 import React from 'react';
 
@@ -10,7 +10,7 @@ type AsPropsWithOnClear<T> = T & {
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
+class AddFilterSelectRoot extends AbstractComponent<SelectProps & AddFilterItemProps> {
   static displayName = 'AddFilterSelect';
 
   static defaultProps = () => {

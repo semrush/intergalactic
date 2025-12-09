@@ -132,4 +132,4 @@ class LineChartComponent extends AbstractChart<
   }
 }
 
-export const LineChart: LineChartType = createComponent(LineChartComponent);
+export const LineChart: LineChartType = createComponent(LineChartComponent, {});

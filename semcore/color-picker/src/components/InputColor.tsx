@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
@@ -39,7 +39,7 @@ function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   };
 }
 
-class InputColorRoot extends Component<InputColorAsProps> {
+class InputColorRoot extends AbstractComponent<InputColorAsProps> {
   static displayName = 'InputColor';
 
   static style = style;
@@ -151,4 +151,4 @@ class InputColorRoot extends Component<InputColorAsProps> {
   }
 }
 
-export const InputColor = createComponent(InputColorRoot);
+export const InputColor = createComponent(InputColorRoot, {});

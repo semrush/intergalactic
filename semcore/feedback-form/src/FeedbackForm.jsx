@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
 import createFocusDecorator from 'final-form-focus';
@@ -11,7 +11,7 @@ import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';
 import style from './style/feedback-form.shadow.css';
 
-class FeedbackForm extends Component {
+class FeedbackForm extends AbstractComponent {
   static displayName = 'FeedbackForm';
   static style = style;
   static FinalForm = {

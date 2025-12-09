@@ -1,11 +1,11 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
 import style from './style/divider.shadow.css';
 
-class Divider extends Component {
+class Divider extends AbstractComponent {
   static displayName = 'Divider';
   static style = style;
   static enhance = [resolveColorEnhance()];
@@ -29,4 +29,4 @@ class Divider extends Component {
   }
 }
 
-export default createComponent(Divider);
+export default createComponent(Divider, {});

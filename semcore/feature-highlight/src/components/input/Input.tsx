@@ -6,7 +6,7 @@ import React from 'react';
 
 import style from './input.shadow.css';
 
-class InputFHRoot extends Component {
+class InputFHRoot extends AbstractComponent {
   static displayName = 'InputFH';
   static style = style;
 

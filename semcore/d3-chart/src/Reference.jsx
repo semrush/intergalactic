@@ -97,7 +97,7 @@ const titleSideToProps = {
   },
 };
 
-class ReferenceLineRoot extends Component {
+class ReferenceLineRoot extends AbstractComponent {
   static displayName = 'ReferenceLine';
   static style = style;
   static defaultProps = {

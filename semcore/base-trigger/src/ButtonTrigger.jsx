@@ -1,4 +1,4 @@
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -9,7 +9,7 @@ import React from 'react';
 import BaseTrigger from './BaseTrigger';
 import style from './style/button-trigger.shadow.css';
 
-class RootButtonTrigger extends Component {
+class RootButtonTrigger extends AbstractComponent {
   static displayName = 'ButtonTrigger';
   static style = style;
   static enhance = [

@@ -1,8 +1,8 @@
-import { createComponent, Component } from '@semcore/core';
+import { createComponent, AbstractComponent } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import React from 'react';
 
-class AnimatedClipPath extends Component {
+class AnimatedClipPath extends AbstractComponent {
   static defaultProps = {
     tag: 'rect',
     duration: 500,
@@ -26,4 +26,4 @@ class AnimatedClipPath extends Component {
   }
 }
 
-export default createComponent(AnimatedClipPath);
+export default createComponent(AnimatedClipPath, {});
