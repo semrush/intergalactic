@@ -155,7 +155,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await test.step('Verify graggable items can be moved to the drop zone', async () => {
         await draggableMarketTraffic.waitFor({ state: 'visible' });
         await draggableMarketTraffic.dragTo(locators.dropZone(page).nth(0));
-        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
+        // Wait for DOM to update after drag operation
+        await expect.poll(
+          async () => await allItems.first().getAttribute('data-ui-name'),
+          {
+            timeout: 3000,
+          },
+        ).toBe('DragAndDrop.Draggable');
       });
     });
 
