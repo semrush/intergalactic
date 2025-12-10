@@ -8,11 +8,9 @@ import type {
   IRootNodeProps,
   FunctionComponent,
   PropsExtractor,
-  AbstractCtor,
-} from './core-types/Component';
-import {
-  AbstractComponent,
-} from './core-types/Component';
+  AbstractCtor, IRootComponentProps,
+
+  AbstractComponent } from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
   CORE_AS_PROPS,
@@ -322,33 +320,40 @@ function createComponent<
     parent?: AbstractCtor<AbstractComponent<any>> | FunctionComponent<any> | Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
     enhancements?: OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : [];
   } = {},
-): Intergalactic.Component<
-  Tag,
-  P,
-  ContextType,
-  OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : []
-> & {
-  [key in keyof ChildMap]: ChildMap[key] extends [infer Parent, infer Ch]
-    ? never
-    // ? Parent extends AbstractCtor<AbstractComponent<any>>
-    // ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
-    //     [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent<any>>
-    //       ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
-    //       : Ch[key] extends FunctionComponent<any>
-    //         ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
-    //         : never
-    //   }
-    //   : Parent extends FunctionComponent<any>
-    //   ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
-    //       [key in keyof Ch]: Ch[key] extends AbstractCtor<AbstractComponent<any>> | FunctionComponent ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType> : never
-    //     }
-    //     : never
-    : ChildMap[key] extends AbstractCtor<infer C>
-      ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
-      : ChildMap[key] extends FunctionComponent<infer P>
-        ? Intergalactic.Component<'div', P, ContextType>
-        : never
-} {
+): (OriginComponent extends FunctionComponent<any>
+  ? React.FC<React.PropsWithChildren<Omit<PropsExtractor<OriginComponent>, keyof IRootComponentProps>>>
+  : AbstractCtor<AbstractComponent<
+    PropsExtractor<OriginComponent>,
+    ContextType,
+    {},
+    OriginComponent extends AbstractComponent<any, any, any, infer E> ? E : []
+  >>) & {
+    [key in keyof ChildMap]: ChildMap[key] extends [infer Parent, infer Ch]
+      ? Parent extends AbstractCtor<infer C>
+        // eslint-disable-next-line @stylistic/indent-binary-ops
+        ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType> & {
+          [key in keyof Ch]: Ch[key] extends AbstractCtor<infer C>
+            ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+            : Ch[key] extends FunctionComponent<any>
+              ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+              : never
+        }
+        : Parent extends FunctionComponent<any>
+          // eslint-disable-next-line @stylistic/indent-binary-ops
+          ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
+            [key in keyof Ch]: Ch[key] extends AbstractCtor<infer C>
+              ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+              : Ch[key] extends FunctionComponent<any>
+                ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+                : never
+          }
+          : never
+      : ChildMap[key] extends AbstractCtor<infer C>
+        ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+        : ChildMap[key] extends FunctionComponent<infer P>
+          ? Intergalactic.Component<'div', P, ContextType>
+          : never
+  } {
   const {
     context = React.createContext<ContextType>({} as ContextType),
     parent = [],

@@ -1,4 +1,3 @@
-import type { Intergalactic, ReturnEl } from '@semcore/core';
 import type React from 'react';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
@@ -22,10 +21,6 @@ export type NeighborLocationDetectProps = NeighborItemProps & {
   getNeighborLocation: (component: any) => NeighborItemProps['neighborLocation'];
 };
 
-declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationProps> & {
-  Detect: Intergalactic.Component<'div', NeighborItemProps, 'right' | 'both' | 'left' | undefined>;
-};
-
 declare const NeighborLocationRoot: {
   new (...args: any[]): any;
   cacheChild: Map<any, any>;
@@ -34,4 +29,4 @@ declare const NeighborLocationRoot: {
 
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;
 
-export { NeighborLocation, NeighborLocationRoot, useNeighborLocationDetect };
+export { NeighborLocationRoot, useNeighborLocationDetect };

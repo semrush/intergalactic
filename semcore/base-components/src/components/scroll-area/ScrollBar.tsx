@@ -33,7 +33,7 @@ const setAriaValues = (
   }
 };
 
-class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
+export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
   static displayName = 'Bar';
 
   static style = style;
@@ -373,7 +373,7 @@ class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typeof Scr
   }
 }
 
-function Slider(props: ScrollBarProps) {
+export function Slider(props: ScrollBarProps) {
   const { styles } = props;
   const SSlider = Root;
 
@@ -382,6 +382,6 @@ function Slider(props: ScrollBarProps) {
 
 export const ScrollBar = createComponent(ScrollBarRoot, {
   Slider,
-}) as typeof ScrollBarType;
+});
 
 export { setAriaValues as setAreaValue };

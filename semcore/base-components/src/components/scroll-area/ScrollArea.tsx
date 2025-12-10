@@ -1,6 +1,4 @@
 import {
-  type IAbstractComponent,
-  type PropsExtractor,
   createComponent,
   sstyled,
   AbstractComponent,

@@ -8,7 +8,6 @@ import type {
   NeighborLocationUnion,
   NeighborLocationDetectProps,
   NeighborLocationProps,
-  NeighborLocation as NeighborLocationType,
 } from './NeighborLocation.types';
 
 const Context = register.get(
@@ -131,6 +130,6 @@ export const NeighborLocation = createComponent(
   {
     context: Context,
   },
-) as typeof NeighborLocationType;
+);
 
 export { useNeighborLocationDetect };

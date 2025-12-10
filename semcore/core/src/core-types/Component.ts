@@ -41,9 +41,13 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
-export type PropsExtractor<C extends AbstractComponent<any> | FunctionComponent<any>> = C extends AbstractComponent<infer P, any>
+export type PropsExtractor<C extends AbstractComponent<any> | FunctionComponent<any> | AbstractCtor<AbstractComponent<any>>> = C extends AbstractComponent<infer P, any>
   ? P
-  : C extends (...args: infer P) => ReactNode ? P : never;
+  : C extends new (...args: any[]) => AbstractComponent<infer P, any>
+    ? P
+    : C extends (...args: infer P) => any
+      ? P[0]
+      : never;
 
 export interface AbstractCtor<T extends AbstractComponent<any>> {
   new (...args: any[]): T;

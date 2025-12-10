@@ -1,4 +1,4 @@
-import { createComponent, register, type Intergalactic, type UnknownProperties } from '@semcore/core';
+import { createComponent, register, type Intergalactic } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { getNodeByRef, type NodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
@@ -51,4 +51,4 @@ Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
 export { PortalProvider, PortalContext };
-export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;
+export default createComponent(Portal, {});

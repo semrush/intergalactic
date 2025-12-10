@@ -784,4 +784,4 @@ PopperPopper.enhance = [keyboardFocusEnhance(false)];
 export const Popper = createComponent(PopperRoot, {
   Trigger,
   Popper: PopperPopper,
-}) as typeof PopperType;
+});
