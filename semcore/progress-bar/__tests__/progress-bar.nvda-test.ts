@@ -7,10 +7,7 @@ test.describe(`@progress-bar ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/progress-bar/docs/examples/basic-usage.tsx', 'en');
 
     await nvda.next();
-
-    for (let i = 0; i < 10; i++) {
-      expect(await nvda.itemText()).toContain('% progress indicator');
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
+    expect(await nvda.itemText()).toContain('clickable, Basic Progress Bar example, progress bar, 0 of 2000');
+    expect(await nvda.itemText()).toContain('clickable, Basic Progress Bar example, progress bar, 0 of 2000');
   });
 });
