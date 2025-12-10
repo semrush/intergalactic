@@ -741,6 +741,15 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
 
+  semcore/css-virtualizer-unplugin:
+    dependencies:
+      '@reshadow/utils':
+        specifier: 0.0.1-alpha.75
+        version: 0.0.1-alpha.75
+      unplugin:
+        specifier: 1.2.0
+        version: 1.2.0
+
   semcore/d3-chart:
     dependencies:
       '@formatjs/intl':

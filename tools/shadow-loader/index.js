@@ -1,3 +1,9 @@
+/**
+ *
+ * @deprecated Please use `@semcore/css-virtualizer-unplugin` instead.
+ *
+*/
+
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
