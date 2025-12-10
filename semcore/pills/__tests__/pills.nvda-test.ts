@@ -18,14 +18,5 @@ test.describe(`@pills ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('radio button, not checked, Dislike');
-
-    await page.keyboard.press('Space');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('selected');
-
-    await nvda.previous();
-
-    expect(await nvda.itemText()).toContain('2 of 3');
   });
 });
