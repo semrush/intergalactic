@@ -31,7 +31,7 @@ class ProgressBarRoot extends AbstractComponent {
   }
 
   render() {
-    const SProgressBar = Root;
+    const SProgressBar = Root();
     const { Children, styles, duration, theme, value, resolveColor } = this.asProps;
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
@@ -52,7 +52,7 @@ class ProgressBarRoot extends AbstractComponent {
 }
 
 function Value(props) {
-  const SValue = Root;
+  const SValue = Root();
   const { styles, value, theme, duration, resolveColor } = props;
   const width = `${value}%`;
 

@@ -32,7 +32,7 @@ type State = {
   scrollDirection: 'up' | 'down';
 };
 
-class VirtualListRoot<T = string, D extends object = {}> extends AbstractComponent<VirtualListProps<T, D>, {}, State, [], { rowsBuffer: number; index: number }> {
+class VirtualListRoot<T = string, D extends object = {}> extends AbstractComponent<VirtualListProps<T, D>, [], never, { rowsBuffer: number; index: number }, State> {
   static displayName = 'VirtualList';
   static style = style;
 
@@ -69,7 +69,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends AbstractCompone
   };
 
   render() {
-    const SDropdownMenuList = Root;
+    const SDropdownMenuList = Root();
     const SBar = ScrollAreaComponent.Bar;
 
     const { scrollDirection, scrollTop } = this.state;

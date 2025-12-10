@@ -1,4 +1,4 @@
-import { Component, sstyled, type UnknownProperties, type Intergalactic } from '@semcore/core';
+import { AbstractComponent, sstyled, type UnknownProperties, type Intergalactic } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';

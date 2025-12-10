@@ -69,7 +69,7 @@ class CheckboxRoot extends AbstractComponent {
   }
 
   render() {
-    const SLabel = Root;
+    const SLabel = Root();
     const { Children, children: hasChildren, styles } = this.asProps;
     return sstyled(styles)(
       <SLabel
@@ -197,7 +197,7 @@ class ValueRoot extends AbstractComponent {
 }
 
 const Control = (props) => {
-  const SControl = Root;
+  const SControl = Root();
   const { indeterminate, styles, state } = props;
   const checkboxRef = React.useRef(null);
 
@@ -220,7 +220,7 @@ const Control = (props) => {
 Control.displayName = 'Control';
 
 const CheckMark = (props) => {
-  const SCheckbox = Root;
+  const SCheckbox = Root();
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked, indeterminate } = props;
   return sstyled(styles)(
@@ -232,7 +232,7 @@ const CheckMark = (props) => {
 CheckMark.displayName = 'CheckMark';
 
 const Text = (props) => {
-  const SText = Root;
+  const SText = Root();
   const { styles, color } = props;
 
   React.useEffect(() => {

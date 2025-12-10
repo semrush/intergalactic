@@ -53,7 +53,7 @@ class RootTag extends AbstractComponent {
   };
 
   render() {
-    const STag = Root;
+    const STag = Root();
     const {
       Children,
       styles,
@@ -181,7 +181,7 @@ class RootTagContainer extends AbstractComponent {
   }
 
   render() {
-    const STagContainer = Root;
+    const STagContainer = Root();
     const { styles, Children, forcedAdvancedMode } = this.asProps;
     const advancedMode =
       forcedAdvancedMode ||
@@ -246,7 +246,7 @@ class RootCloseTagContainer extends AbstractComponent {
   };
 
   render() {
-    const STagContainerClose = Root;
+    const STagContainerClose = Root();
     const { Children, styles, color, resolveColor } = this.asProps;
 
     return sstyled(styles)(
@@ -267,7 +267,7 @@ class RootCloseTagContainer extends AbstractComponent {
 
 function TagContainerCircle(props) {
   const SAddon = Box;
-  const SCircle = Root;
+  const SCircle = Root();
   const { styles, color, resolveColor } = props;
   return sstyled(styles)(
     <SAddon tag-color={resolveColor(color)}>
@@ -277,13 +277,13 @@ function TagContainerCircle(props) {
 }
 
 function Text(props) {
-  const SText = Root;
+  const SText = Root();
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { styles, color, resolveColor } = props;
 
   const tagColor = React.useMemo(() => {
@@ -295,7 +295,7 @@ function Addon(props) {
 }
 
 function Circle(props) {
-  const SCircle = Root;
+  const SCircle = Root();
   const { styles, color, resolveColor } = props;
   const tagColor = React.useMemo(() => {
     if (typeof resolveColor !== 'function') return;

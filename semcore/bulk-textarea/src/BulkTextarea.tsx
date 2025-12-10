@@ -21,9 +21,15 @@ type State<T extends string | string[]> = {
 
 class BulkTextareaRoot<T extends string | string[]> extends AbstractComponent<
   BulkTextareaProps<T>,
+  typeof BulkTextareaRoot.enhance,
+  {
+    value: null;
+    state: null;
+    showErrors: null;
+    errors: null;
+  },
   {},
-  State<T>,
-  typeof BulkTextareaRoot.enhance
+  State<T>
 > {
   static displayName = 'BulkTextarea';
   static defaultProps = {
@@ -233,6 +239,7 @@ class BulkTextareaRoot<T extends string | string[]> extends AbstractComponent<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
+    // @ts-ignore. TODO Brauer Ilia - How could it work???
     this.handlers.value('', e);
     this.handlers.state('normal');
 
@@ -268,16 +275,16 @@ class BulkTextareaRoot<T extends string | string[]> extends AbstractComponent<
   };
 
   render() {
-    return <Root render={Box} __excludeProps={['onBlur', 'value', 'placeholder']} />;
+    const SBT = Root();
+    return <SBT render={Box} __excludeProps={['onBlur', 'value', 'placeholder']} />;
   }
 }
 
-const BulkTextarea = (<T extends string | string[]>() =>
-  createComponent(BulkTextareaRoot, {
-    InputField,
-    Counter,
-    ClearAll,
-    ErrorsNavigation,
-  }) as BulkTextareaType<T>)();
+const BulkTextarea = createComponent(BulkTextareaRoot, {
+  InputField,
+  Counter,
+  ClearAll,
+  ErrorsNavigation,
+});
 
 export default BulkTextarea;

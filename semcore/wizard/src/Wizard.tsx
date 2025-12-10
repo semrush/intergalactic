@@ -32,7 +32,7 @@ type State = {
   highlighted: number;
 };
 
-class WizardRoot extends AbstractComponent<WizardProps, {}, State, typeof WizardRoot.enhance> {
+class WizardRoot extends AbstractComponent<WizardProps, typeof WizardRoot.enhance, never, {}, State> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
@@ -203,7 +203,7 @@ class WizardRoot extends AbstractComponent<WizardProps, {}, State, typeof Wizard
 
 function Sidebar(props: WizardSidebarProps & IRootComponentProps) {
   const { Children, styles, title, id } = props;
-  const SSidebar = Root;
+  const SSidebar = Root();
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
 
@@ -218,7 +218,7 @@ function Sidebar(props: WizardSidebarProps & IRootComponentProps) {
 }
 
 function Step(props: IRootComponentProps & WizardStepProps) {
-  const SStep = Root;
+  const SStep = Root();
   const { Children, styles, active } = props;
   if (active) {
     return sstyled(styles)(
@@ -242,7 +242,7 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
     focusNext,
     focusPrev,
   } = props;
-  const SStepper = Root;
+  const SStepper = Root();
   const SStepNumber = 'span';
   const SStepDescription = 'span';
   const SCompleted = CheckM;
@@ -292,7 +292,7 @@ Stepper.enhance = [keyboardFocusEnhance()];
 
 function Content(props: WizardContentProps & IRootComponentProps) {
   const { Children, styles } = props;
-  const SContent = Root;
+  const SContent = Root();
   return sstyled(styles)(
     <SContent
       render={Box}
@@ -304,7 +304,7 @@ function Content(props: WizardContentProps & IRootComponentProps) {
 }
 
 function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
-  const SStepBack = Root;
+  const SStepBack = Root();
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
     props.onActive?.(props.step - 1);
@@ -325,7 +325,7 @@ function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
   );
 }
 function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
-  const SStepNext = Root;
+  const SStepNext = Root();
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
     props.onActive?.(props.step + 1);

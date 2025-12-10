@@ -45,16 +45,17 @@ class RootButtonTrigger extends AbstractComponent {
     const SButtonAddon = ButtonTrigger.Addon;
     const SButtonTriggerSpin = Spin;
     const { Children, styles, loading, chevron, empty } = this.asProps;
+    const SButtonTriggerRoot = Root();
 
     return sstyled(styles)(
-      <Root render={BaseTrigger} tabIndex={loading ? -1 : 0}>
+      <SButtonTriggerRoot render={BaseTrigger} tabIndex={loading ? -1 : 0}>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         {(chevron || loading) && (
           <SButtonAddon>
             {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
           </SButtonAddon>
         )}
-      </Root>,
+      </SButtonTriggerRoot>,
     );
   }
 }

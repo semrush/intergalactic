@@ -43,7 +43,7 @@ class NoticeGlobalRoot extends AbstractComponent {
   }
 
   render() {
-    const SNoticeGlobal = Root;
+    const SNoticeGlobal = Root();
     const {
       Children,
       styles,
@@ -88,12 +88,12 @@ class NoticeGlobalRoot extends AbstractComponent {
 }
 
 function Content({ styles }) {
-  const SContent = Root;
+  const SContent = Root();
   return sstyled(styles)(<SContent render={Flex} />);
 }
 
 function CloseIcon({ styles, children: hasChildren, Children, getI18nText }) {
-  const SCloseIcon = Root;
+  const SCloseIcon = Root();
   return sstyled(styles)(
     <SCloseIcon
       render={Button}

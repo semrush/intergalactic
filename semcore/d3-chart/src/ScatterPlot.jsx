@@ -1,4 +1,4 @@
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
@@ -162,7 +162,7 @@ class ScatterPlotRoot extends AbstractComponent {
 }
 
 const ScatterPlotTooltip = (props) => {
-  const SScatterPlotTooltip = Root;
+  const SScatterPlotTooltip = Root();
   return sstyled(props.styles)(<SScatterPlotTooltip render={Tooltip} excludeAnchorProps />);
 };
 

@@ -1,4 +1,4 @@
-import { Component, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
@@ -190,13 +190,13 @@ class HoverRectRoot extends Hover {
 }
 
 const HoverLineTooltip = (props) => {
-  const SHoverLineTooltip = Root;
+  const SHoverLineTooltip = Root();
   return sstyled(props.styles)(
     <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
   );
 };
 const HoverRectTooltip = (props) => {
-  const SHoverRectTooltip = Root;
+  const SHoverRectTooltip = Root();
   return sstyled(props.styles)(
     <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
   );

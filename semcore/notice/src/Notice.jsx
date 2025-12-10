@@ -80,7 +80,7 @@ class RootNotice extends AbstractComponent {
   }
 
   render() {
-    const SNotice = Root;
+    const SNotice = Root();
     const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
@@ -119,34 +119,34 @@ class RootNotice extends AbstractComponent {
 }
 
 function Label({ styles, theme, resolveColor }) {
-  const SLabel = Root;
+  const SLabel = Root();
   const useTheme = isCustomTheme(theme) ? 'custom' : theme;
   const color = resolveColor(theme);
   return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
 }
 
 function Title({ styles }) {
-  const STitle = Root;
+  const STitle = Root();
   return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight='bold' />);
 }
 
 function NoticeText({ styles }) {
-  const SText = Root;
+  const SText = Root();
   return sstyled(styles)(<SText render={Text} tag='div' />);
 }
 
 function Actions({ styles }) {
-  const SActions = Root;
+  const SActions = Root();
   return sstyled(styles)(<SActions render={Box} />);
 }
 
 function Content({ styles }) {
-  const SContent = Root;
+  const SContent = Root();
   return sstyled(styles)(<SContent render={Box} />);
 }
 
 function Close({ styles, getI18nText }) {
-  const SCloseIcon = Root;
+  const SCloseIcon = Root();
   return sstyled(styles)(
     <SCloseIcon
       render={Button}

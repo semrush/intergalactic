@@ -17,7 +17,7 @@ export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
 
 type Props = AbstractButtonProps<any, any, any>;
 
-export abstract class AbstractButton extends AbstractComponent<Props, {}, {}> {
+export abstract class AbstractButton extends AbstractComponent<Props> {
   static displayName = 'AbstractButton';
 
   containerRef = React.createRef<HTMLButtonElement>();
@@ -71,7 +71,7 @@ export abstract class AbstractButton extends AbstractComponent<Props, {}, {}> {
 
   renderButton({ buttonProps, children }: any) {
     const { styles, theme } = this.asProps;
-    const SButton = Root;
+    const SButton = Root();
 
     return sstyled(styles)(
       <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
@@ -82,7 +82,7 @@ export abstract class AbstractButton extends AbstractComponent<Props, {}, {}> {
 
   renderButtonWithHint({ buttonProps, children, hintProps }: any) {
     const { styles, theme } = this.asProps;
-    const SButton = Root;
+    const SButton = Root();
 
     return sstyled(styles)(
       <SButton render={Hint} invertOutline={theme === 'invert'} {...buttonProps} {...hintProps} ignorePortalsStacking>

@@ -6,7 +6,7 @@ import React from 'react';
 import styles from './style/blockquote.shadow.css';
 
 function Blockquote(props, ref) {
-  const SBlockquote = Root;
+  const SBlockquote = Root();
   const SDoubleQuotation = 'span';
   const SAuthor = 'cite';
   const { children, author } = props;

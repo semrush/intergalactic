@@ -9,7 +9,7 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/venn-chart
 `;
 
 const VennChartSkeleton = () => {
-  const SChartSkeleton = Root;
+  const SChartSkeleton = Root();
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

@@ -17,7 +17,7 @@ class RootSpin extends AbstractComponent {
   };
 
   render() {
-    const SSpin = Root;
+    const SSpin = Root();
     const { Children, styles, theme, resolveColor, getI18nText } = this.asProps;
     return sstyled(styles)(
       <SSpin

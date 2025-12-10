@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/base-components';
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { Text } from '@semcore/typography';
@@ -458,7 +458,7 @@ export abstract class AbstractChart<
   }
 
   public render() {
-    const SChart = Root;
+    const SChart = Root();
     const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter } =
       this.asProps;
 

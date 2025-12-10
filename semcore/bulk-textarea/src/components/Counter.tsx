@@ -13,9 +13,10 @@ export type CounterProps = {
 
 export function Counter(props: CounterProps) {
   const { theme, linesCount, maxLines, getI18nText } = props;
+  const SCounter = Root();
 
   return (
-    <Root render={CounterKit} ml={1} theme={theme}>
+    <SCounter render={CounterKit} ml={1} theme={theme}>
       {linesCount}
       <span aria-hidden='true'>
         /
@@ -34,6 +35,6 @@ export function Counter(props: CounterProps) {
           {getI18nText('BulkTextarea.Counter.limitExceeded:sr-message')}
         </ScreenReaderOnly>
       )}
-    </Root>
+    </SCounter>
   );
 }

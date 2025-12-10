@@ -209,7 +209,7 @@ class PaginationRoot extends AbstractComponent {
   };
 
   render() {
-    const SPagination = Root;
+    const SPagination = Root();
     const {
       Children,
       children: hasChildren,
@@ -277,8 +277,9 @@ class FirstPage extends AbstractComponent {
 
   render() {
     const { getI18nText } = this.asProps;
+    const SPaginationRoot = Root();
 
-    return <Root render={Button} aria-label={getI18nText('firstPage')} />;
+    return <SPaginationRoot render={Button} aria-label={getI18nText('firstPage')} />;
   }
 }
 
@@ -288,7 +289,7 @@ class PrevPage extends AbstractComponent {
   });
 
   render() {
-    const SPrevPage = Root;
+    const SPrevPage = Root();
     return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
   }
 }
@@ -298,14 +299,14 @@ class NextPage extends AbstractComponent {
   });
 
   render() {
-    const SNextPage = Root;
+    const SNextPage = Root();
     return sstyled(this.asProps.styles)(<SNextPage render={Button} use='primary' theme='info' />);
   }
 }
 
 class TotalPages extends AbstractComponent {
   render() {
-    const STotalPages = Root;
+    const STotalPages = Root();
     const STotalPagesLabel = Text;
     const STotalLastPages = Text;
     const { styles, getI18nText, totalPages, isLastOrSingle, children, ...other } = this.asProps;
@@ -335,7 +336,7 @@ class TotalPages extends AbstractComponent {
 }
 
 const PageInputValue = (props) => {
-  const SPageInputValue = Root;
+  const SPageInputValue = Root();
 
   return sstyled(props.styles)(
     <SPageInputValue
@@ -348,7 +349,7 @@ const PageInputValue = (props) => {
 };
 
 const PageInputAddon = (props) => {
-  const SPageInputAddon = Root;
+  const SPageInputAddon = Root();
   return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
 };
 
@@ -356,7 +357,7 @@ class PageInput extends AbstractComponent {
   static enhance = [uniqueIDEnhancement()];
 
   render() {
-    const SPageInput = Root;
+    const SPageInput = Root();
     const SLabel = Text;
     const { Children, getI18nText, styles, locale, size, paginationInputId } = this.asProps;
 

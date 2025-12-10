@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { Component, lastInteraction, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
@@ -280,7 +280,7 @@ export class Column<
   };
 
   render() {
-    const SColumn = Root;
+    const SColumn = Root();
     const SSortWrapper = 'div';
     const SSortButton = ButtonLink;
     const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =

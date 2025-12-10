@@ -9,7 +9,7 @@ class BadgeFHRoot extends AbstractComponent {
   static style = style;
 
   render() {
-    const SHighlightedBadge = Root;
+    const SHighlightedBadge = Root();
     const { styles } = this.asProps;
 
     return sstyled(styles)(

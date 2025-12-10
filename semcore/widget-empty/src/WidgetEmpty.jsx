@@ -13,7 +13,7 @@ class WidgetEmpty extends AbstractComponent {
   static style = style;
 
   render() {
-    const SWidgetEmpty = Root;
+    const SWidgetEmpty = Root();
     const { Children, icon, styles } = this.asProps;
     const SImage = 'div';
 
@@ -31,13 +31,13 @@ class WidgetEmpty extends AbstractComponent {
 }
 
 const Title = (props) => {
-  const STitle = Root;
+  const STitle = Root();
   const { styles } = props;
   return sstyled(styles)(<STitle render={Box} />);
 };
 
 const Description = (props) => {
-  const SDescription = Root;
+  const SDescription = Root();
   const { styles } = props;
   return sstyled(styles)(<SDescription render={Box} />);
 };

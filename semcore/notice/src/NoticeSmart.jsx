@@ -12,7 +12,7 @@ class NoticeSmart extends AbstractComponent {
   };
 
   render() {
-    const SNoticeSmart = Root;
+    const SNoticeSmart = Root();
     const { Children, label, title, actions, closable, onClose } = this.asProps;
     let textContent = <Children />;
 

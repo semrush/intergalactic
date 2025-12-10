@@ -1,4 +1,4 @@
-import { Component, sstyled } from '@semcore/core';
+import { AbstractComponent, sstyled } from '@semcore/core';
 import React, { useState, useEffect } from 'react';
 
 import createElement from './createElement';

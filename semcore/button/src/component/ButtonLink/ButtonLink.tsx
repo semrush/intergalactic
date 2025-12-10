@@ -26,16 +26,16 @@ class RootButtonLink extends AbstractButton {
 }
 
 function Text(props: ButtonLinkTextProps) {
-  const SText = Root;
+  const SText = Root();
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props: ButtonLinkAddonProps) {
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
 export const ButtonLink = createComponent(RootButtonLink, {
   Text,
   Addon,
-}) as ButtonLinkComponent;
+});

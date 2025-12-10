@@ -38,7 +38,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   }
 
   render() {
-    const SLegendFlex = Root;
+    const SLegendFlex = Root();
     const { styles, Children, direction, withTrend, suffix, items } = this.asProps;
     const orientation = direction === 'row' ? 'vertical' : 'horizontal';
 

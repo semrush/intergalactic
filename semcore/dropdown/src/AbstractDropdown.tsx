@@ -1,4 +1,4 @@
-import { Component, lastInteraction } from '@semcore/core';
+import { AbstractComponent, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -28,7 +28,7 @@ export const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] a
 
 export const selectedIndexContext = React.createContext(0);
 
-export abstract class AbstractDropdown extends AbstractComponent<AbstractDDProps, {}, {}, typeof enhance> {
+export abstract class AbstractDropdown extends AbstractComponent<AbstractDDProps, typeof enhance, { selectedIndex: null; visible: null; highlightedIndex: any }> {
   protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
@@ -49,12 +49,9 @@ export abstract class AbstractDropdown extends AbstractComponent<AbstractDDProps
   uncontrolledProps() {
     return {
       selectedIndex: null,
-      highlightedIndex: [
-        null,
-        (index: number | null) => {
-          this.handlers.selectedIndex(index);
-        },
-      ],
+      highlightedIndex: [null, (index: number | null) => {
+        this.handlers.selectedIndex(index);
+      }],
       visible: null,
     };
   }

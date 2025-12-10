@@ -8,7 +8,7 @@ import style from './style/counter.shadow.css';
 
 const enhance = [resolveColorEnhance()] as const;
 
-class Counter extends AbstractComponent<CounterProps, {}, {}, typeof enhance> {
+class Counter extends AbstractComponent<CounterProps, typeof enhance> {
   static displayName = 'Counter';
   static enhance = enhance;
 
@@ -19,7 +19,7 @@ class Counter extends AbstractComponent<CounterProps, {}, {}, typeof enhance> {
   };
 
   render() {
-    const SCounter = Root;
+    const SCounter = Root();
     const SText = 'span';
     const { styles, theme, resolveColor, Children } = this.asProps;
 

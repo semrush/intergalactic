@@ -16,8 +16,9 @@ export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement
     | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => React.ReactElement | null);
+};
 
-  /** Inner from Root */
+export type NeighborLocationDetectInnerProps = {
   getNeighborLocation: (component: any) => NeighborItemProps['neighborLocation'];
 };
 

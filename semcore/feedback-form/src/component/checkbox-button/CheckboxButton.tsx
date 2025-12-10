@@ -13,7 +13,7 @@ class CheckboxButtonRoot extends AbstractComponent<FeedbackRatingCheckboxProps> 
     const { styles, id, label, type: _type, focused, ...other } = this.asProps;
     const autoFocus = focused ? 20 : false;
 
-    const SCheckboxButton = Root;
+    const SCheckboxButton = Root();
     return sstyled(styles)(
       <SCheckboxButton render={Box} __excludeProps={['onChange', 'id', 'type']}>
         <Checkbox {...other}>

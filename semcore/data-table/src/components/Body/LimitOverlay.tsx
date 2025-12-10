@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
-import { Component, createComponent, type Intergalactic, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, type Intergalactic, sstyled } from '@semcore/core';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import * as React from 'react';
 
@@ -120,7 +120,7 @@ class LimitOverlayRoot<UniqKeyType> extends AbstractComponent<LimitOverlayProps<
         gridArea={this.limitOverlayGridArea}
         w={width ? width : undefined}
         left={left ? left : undefined}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
       >
         <Box
           role='gridcell'
@@ -146,4 +146,4 @@ type LimitOverlayType = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', LimitOverlayProps<any>>;
 
-export const LimitOverlay = createComponent(LimitOverlayRoot) as LimitOverlayType;
+export const LimitOverlay = createComponent(LimitOverlayRoot, {});

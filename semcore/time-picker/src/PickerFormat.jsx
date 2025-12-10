@@ -1,5 +1,5 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
-import { Component, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
@@ -22,7 +22,7 @@ class TimePickerFormat extends AbstractComponent {
   };
 
   render() {
-    const SPickerFormat = Root;
+    const SPickerFormat = Root();
     const { Children, meridiem, styles, getI18nText, uid } = this.asProps;
     const { changedFormatNotice } = this.state;
     const SPickerFormatText = 'span';

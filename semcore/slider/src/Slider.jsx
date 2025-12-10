@@ -214,7 +214,7 @@ class SliderRoot extends AbstractComponent {
   };
 
   render() {
-    const SSlider = Root;
+    const SSlider = Root();
     const SInput = Box;
     const { Children, styles, value, min, max, name, options } = this.asProps;
 
@@ -253,14 +253,14 @@ class SliderRoot extends AbstractComponent {
 }
 
 function Bar(props) {
-  const SBar = Root;
+  const SBar = Root();
   const { styles, value, min, max } = props;
 
   return sstyled(styles)(<SBar render={Box} w={`${convertValueToPercent(value, min, max)}%`} />);
 }
 
 function Knob(props) {
-  const SKnob = Root;
+  const SKnob = Root();
   const { styles, value, min, max } = props;
 
   return sstyled(styles)(
@@ -269,7 +269,7 @@ function Knob(props) {
 }
 
 function Options({ styles, options, Children }) {
-  const SSliderOptions = Root;
+  const SSliderOptions = Root();
 
   return sstyled(styles)(
     <SSliderOptions render={Flex} mt={1} justifyContent='space-between'>
@@ -281,7 +281,7 @@ function Options({ styles, options, Children }) {
 }
 
 function Item({ styles, Children }) {
-  const SSliderOption = Root;
+  const SSliderOption = Root();
 
   return sstyled(styles)(
     <SSliderOption render={Box}>

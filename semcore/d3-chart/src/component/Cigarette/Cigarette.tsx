@@ -1,4 +1,4 @@
-import { Component, sstyled } from '@semcore/core';
+import { AbstractComponent, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';

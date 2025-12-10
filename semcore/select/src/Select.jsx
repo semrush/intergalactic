@@ -297,12 +297,12 @@ class RootSelect extends AbstractDropdown {
       'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
       other['data-ui-name'] || Select.displayName,
     );
-
+    const SRoot = Root();
     this.itemProps = [];
 
     if (options) {
       return (
-        <Root render={DropdownMenu}>
+        <SRoot render={DropdownMenu}>
           <Select.Trigger {...other} />
           <Select.Menu>
             {options.map((option, index) => {
@@ -314,14 +314,14 @@ class RootSelect extends AbstractDropdown {
               );
             })}
           </Select.Menu>
-        </Root>
+        </SRoot>
       );
     }
 
     return (
-      <Root render={DropdownMenu}>
+      <SRoot render={DropdownMenu}>
         <Children />
-      </Root>
+      </SRoot>
     );
   }
 }
@@ -336,7 +336,7 @@ function Trigger({
   getI18nText,
 }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
-  const SSelectTrigger = Root;
+  const SSelectTrigger = Root();
 
   return sstyled(styles)(
     <SSelectTrigger
@@ -376,10 +376,11 @@ function Menu(props) {
     autoFocus,
     animationsDisabled,
   };
+  const SRoot = Root();
   return (
     <ListBoxContextProvider>
       <Select.Popper {...popperProps} role={null}>
-        <Root render={Select.List} />
+        <SRoot render={Select.List} />
       </Select.Popper>
     </ListBoxContextProvider>
   );
@@ -387,7 +388,7 @@ function Menu(props) {
 
 const optionPropsContext = React.createContext({});
 function Option(props) {
-  const SSelectOption = Root;
+  const SSelectOption = Root();
   const { styles, Children } = props;
 
   const hasCheckbox = isAdvanceMode(Children, [Select.Option.Checkbox.displayName]);
@@ -443,7 +444,8 @@ function Checkbox(providedProps) {
 }
 
 const InputSearchWrapper = function () {
-  return <Root render={InputSearch} />;
+  const SRoot = Root();
+  return <SRoot render={InputSearch} />;
 };
 
 const Select = createComponent(

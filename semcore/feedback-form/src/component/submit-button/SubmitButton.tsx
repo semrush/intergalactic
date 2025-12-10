@@ -4,6 +4,6 @@ import React from 'react';
 
 export function SubmitButton(props: IRootComponentProps) {
   const { styles } = props;
-  const SSubmit = Root;
+  const SSubmit = Root();
   return sstyled(styles)(<SSubmit render={Button} type='submit' use='primary' theme='success' />);
 }

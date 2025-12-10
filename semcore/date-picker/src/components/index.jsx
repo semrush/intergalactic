@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Dropdown from '@semcore/dropdown';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
@@ -13,12 +13,14 @@ import InputTriggerBase from './InputTrigger';
 
 /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
 export function Trigger() {
-  return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
+  const SRoot = Root();
+  return <SRoot render={Dropdown.Trigger} tag={ButtonTrigger} />;
 }
 
 export function InputTrigger() {
+  const SRoot = Root();
   return (
-    <Root
+    <SRoot
       render={Dropdown.Trigger}
       tag={InputTriggerBase}
       __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
@@ -34,17 +36,17 @@ InputTrigger.DateRangeFromInput = InputTriggerBase.DateRangeFromInput;
 InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
-  const SPopper = Root;
+  const SPopper = Root();
   return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='dialog' />);
 }
 
 export function Header(props) {
-  const SHeader = Root;
+  const SHeader = Root();
   return sstyled(props.styles)(<SHeader render={Box} />);
 }
 
 export const Title = ({ Children, styles }) => {
-  const STitle = Root;
+  const STitle = Root();
   return sstyled(styles)(
     <STitle render={Box} aria-live='polite'>
       <Children />
@@ -53,8 +55,9 @@ export const Title = ({ Children, styles }) => {
 };
 
 export function Prev({ children, Children }) {
+  const SRoot = Root();
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l'>
+    <SRoot render={Button} use='tertiary' theme='muted' size='l'>
       {children
         ? (
             <Children />
@@ -64,13 +67,14 @@ export function Prev({ children, Children }) {
               <ChevronLeft />
             </Button.Addon>
           )}
-    </Root>
+    </SRoot>
   );
 }
 
 export function Next({ children, Children }) {
+  const SRoot = Root();
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l'>
+    <SRoot render={Button} use='tertiary' theme='muted' size='l'>
       {children
         ? (
             <Children />
@@ -80,7 +84,7 @@ export function Next({ children, Children }) {
               <ChevronRight />
             </Button.Addon>
           )}
-    </Root>
+    </SRoot>
   );
 }
 
@@ -100,7 +104,7 @@ export class Period extends AbstractComponent {
   };
 
   render() {
-    const SPeriod = Root;
+    const SPeriod = Root();
     const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange, periodRef } =
       this.asProps;
 

@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, type AbstractComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
@@ -23,11 +23,6 @@ export type TrendBarProps = CommonTrendProps & {
    * Data to bar chart
    */
   data: BarItem[];
-};
-
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  isHistogram?: true;
 };
 
 class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
@@ -54,7 +49,7 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 
   render() {
-    const STrendBar = Root;
+    const STrendBar = Root();
     const { styles, resolveColor, isHistogram, animate, loading } = this.asProps;
     const step = this.defaultWidth / this.data.length;
     const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
@@ -100,16 +95,16 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 }
 
-export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
-  createComponent(TrendBarRoot, {});
+export const TrendBar = createComponent(TrendBarRoot, {});
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 
-export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = createComponent(
+export const TrendHistogram = createComponent(
   TrendBarRoot,
   {},
   {
     enhancements: [
+      // @ts-ignore. TODO: Brauer Ilia - if this is only one place - change this logic somehow
       () => {
         return {
           wrapperProps: (props: TrendBarProps) => {

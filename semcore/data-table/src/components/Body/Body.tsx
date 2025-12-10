@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
@@ -23,7 +23,7 @@ const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 export const INDEX_OFFSET = 2; // 1 - for header, 1 - because start not from 0, but from 1
 
-class BodyRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponent<DataTableBodyProps<Data, UniqKeyType>, {}, {}, [], BodyPropsInner<Data, UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponent<DataTableBodyProps<Data, UniqKeyType>, [], never, BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -210,7 +210,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponen
   };
 
   render() {
-    const SBody = Root;
+    const SBody = Root();
     const SRowGroup = Box;
     const SSpinContainer = Box;
     const {

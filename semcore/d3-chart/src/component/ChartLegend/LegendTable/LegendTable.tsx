@@ -16,7 +16,7 @@ class LegendTableRoot extends BaseLegend<LegendTableProps> {
   });
 
   render() {
-    const SLegendTable = Root;
+    const SLegendTable = Root();
     const { styles, Children, size = 'm', items } = this.asProps;
     const columnsCount = items[0]?.columns.length;
 
@@ -44,7 +44,7 @@ class LegendTableRoot extends BaseLegend<LegendTableProps> {
 }
 
 function ColumnComponent(props: LegendColumnProps & IRootComponentProps) {
-  const SColumnItem = Root;
+  const SColumnItem = Root();
   const { styles, index, size, Children } = props;
 
   return sstyled(styles)(

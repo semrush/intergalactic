@@ -19,9 +19,9 @@ class RootMaintenance extends AbstractComponent {
 
   render() {
     const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
-
+    const SRoot = Root();
     return (
-      <Root render={Error}>
+      <SRoot render={Error}>
         <Error.Title tag={titleTag}>{`${toolName} ${getI18nText('title')}`}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
@@ -30,7 +30,7 @@ class RootMaintenance extends AbstractComponent {
             {getI18nText('btnHome')}
           </Button>
         </Error.Controls>
-      </Root>
+      </SRoot>
     );
   }
 }

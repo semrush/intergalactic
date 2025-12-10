@@ -12,7 +12,7 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bar-chart-
 `;
 
 const BarChartSkeleton = (props) => {
-  const SChartSkeleton = Root;
+  const SChartSkeleton = Root();
   const layout = props.layout ?? 'horizontal';
   const patternBase64 = { vertical: barVerticalSvg, horizontal: barHorizontalSvg }[layout];
   return sstyled(styles)(

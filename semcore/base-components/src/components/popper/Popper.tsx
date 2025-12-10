@@ -89,7 +89,7 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends AbstractComponent<PopperProps, {}, {}, typeof PopperRoot.enhance, typeof PopperRoot.defaultProps> {
+class PopperRoot extends AbstractComponent<PopperProps, typeof PopperRoot.enhance, { visible: null }, typeof PopperRoot.defaultProps> {
   static displayName = 'Popper';
 
   static style = style;
@@ -594,7 +594,7 @@ class PopperRoot extends AbstractComponent<PopperProps, {}, {}, typeof PopperRoo
 }
 
 function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTriggerProps) {
-  const STrigger = Root;
+  const STrigger = Root();
   const { Children, onKeyboardFocus, highlighted, active, popperRef, forwardRef } = props;
 
   const triggerRef = React.useRef<HTMLElement>();
@@ -638,7 +638,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
 }
 
 function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopperPopperProps) {
-  const SPopper = Root;
+  const SPopper = Root();
   const {
     Children,
     styles,

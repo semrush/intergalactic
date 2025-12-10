@@ -87,7 +87,7 @@ class PlotRoot extends AbstractComponent {
   }
 
   render() {
-    const SPlot = Root;
+    const SPlot = Root();
     const { styles, width, height, Children, data, a11yAltTextConfig, label, locale, getI18nText } =
       this.asProps;
 

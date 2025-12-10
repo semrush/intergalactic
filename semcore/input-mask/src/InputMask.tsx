@@ -1,11 +1,10 @@
 import { NeighborLocation, Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
 import {
   createComponent,
-  Component,
+  AbstractComponent,
   sstyled,
   Root,
   type PropGetterFn,
-  type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
@@ -105,11 +104,12 @@ class InputMask extends AbstractComponent<InputProps> {
   static style = style;
 
   render() {
-    return <Root render={Input} ref={Input} />;
+    const SIM = Root();
+    return <SIM render={Input} ref={Input} />;
   }
 }
 
-class Value extends AbstractComponent<InputMaskValueProps, {}, {}, typeof Value.enhance> {
+class Value extends AbstractComponent<InputMaskValueProps, typeof Value.enhance, { value: ((value?: string) => boolean | void)[] }> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',
@@ -308,7 +308,7 @@ class Value extends AbstractComponent<InputMaskValueProps, {}, {}, typeof Value.
 
   render() {
     const SInputMask = Flex;
-    const SValue = Root;
+    const SValue = Root();
     const SMask = Box;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
@@ -395,7 +395,4 @@ class Value extends AbstractComponent<InputMaskValueProps, {}, {}, typeof Value.
 export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,
-}) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
-  Value: Intergalactic.Component<'input', InputMaskValueProps>;
-  Addon: typeof Input.Addon;
-};
+});

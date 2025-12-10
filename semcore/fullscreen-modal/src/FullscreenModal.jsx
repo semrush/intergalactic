@@ -53,7 +53,7 @@ class FullscreenModalRoot extends AbstractComponent {
   }
 
   render() {
-    const SFullscreenModal = Root;
+    const SFullscreenModal = Root();
     const {
       styles,
       Children,
@@ -93,7 +93,7 @@ class FullscreenModalRoot extends AbstractComponent {
 }
 
 function Header(props) {
-  const SHeader = Root;
+  const SHeader = Root();
   const { Children, styles, title, description } = props;
   return sstyled(styles)(
     <SHeader render={Box}>
@@ -105,22 +105,22 @@ function Header(props) {
 }
 
 function Body(props) {
-  const SBody = Root;
+  const SBody = Root();
   return sstyled(props.styles)(<SBody render={Box} />);
 }
 
 function Section(props) {
-  const SSection = Root;
+  const SSection = Root();
   return sstyled(props.styles)(<SSection render={Box} tag='section' />);
 }
 
 function Footer(props) {
-  const SFooter = Root;
+  const SFooter = Root();
   return sstyled(props.styles)(<SFooter render={Flex} />);
 }
 
 function Close(props) {
-  const SClose = Root;
+  const SClose = Root();
   const { getI18nText } = props;
   return sstyled(props.styles)(
     <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')}>
@@ -132,7 +132,7 @@ function Close(props) {
 }
 
 function Title(props) {
-  const STitle = Root;
+  const STitle = Root();
   const { setHasTitle } = props;
 
   React.useEffect(() => setHasTitle());
@@ -141,12 +141,12 @@ function Title(props) {
 }
 
 function Description(props) {
-  const SDescription = Root;
+  const SDescription = Root();
   return sstyled(props.styles)(<SDescription render={Text} />);
 }
 
 function Back(props) {
-  const SBack = Root;
+  const SBack = Root();
   const SBackText = Text;
   const { Children, styles } = props;
 

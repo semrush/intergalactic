@@ -20,8 +20,6 @@
     "@semcore/icon": "16.7.3",
     "@semcore/button": "16.0.12",
     "@semcore/checkbox": "16.2.1",
-    "@semcore/flex-box": "16.0.11",
-    "@semcore/scroll-area": "16.0.11",
     "@semcore/spin": "16.0.11",
     "@semcore/tooltip": "16.0.11",
     "@semcore/widget-empty": "16.0.11"

@@ -118,7 +118,7 @@ class RootFilterTrigger extends AbstractComponent {
   }
 
   render() {
-    const SWrapper = Root;
+    const SWrapper = Root();
     const { Children, styles, getI18nText, empty, forcedAdvancedMode } = this.asProps;
 
     const advancedMode =
@@ -168,7 +168,7 @@ class TriggerButton extends AbstractComponent {
   static style = style;
 
   render() {
-    const SFilterTrigger = Root;
+    const SFilterTrigger = Root();
     const { Children, styles, empty, triggerRef } = this.asProps;
 
     return sstyled(styles)(
@@ -198,7 +198,7 @@ class ClearButton extends AbstractComponent {
   static style = style;
 
   render() {
-    const SFilterTrigger = Root;
+    const SFilterTrigger = Root();
     const {
       styles,
       empty,
@@ -233,7 +233,7 @@ class ClearButton extends AbstractComponent {
 }
 
 function Counter({ styles, Children, count, getI18nText }) {
-  const SCounter = Root;
+  const SCounter = Root();
   return sstyled(styles)(
     <SCounter render={BaseTrigger.Addon} tag={Dot}>
       {count !== undefined

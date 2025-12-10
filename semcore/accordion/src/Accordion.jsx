@@ -142,7 +142,7 @@ class Toggle extends AbstractComponent {
 
   render() {
     const { styles, use } = this.asProps;
-    const SItemToggle = Root;
+    const SItemToggle = Root();
 
     return sstyled(styles)(
       <SItemToggle
@@ -159,14 +159,14 @@ class Toggle extends AbstractComponent {
 function Chevron(props) {
   const { styles, size } = props;
 
-  const SItemChevron = Root;
+  const SItemChevron = Root();
   return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
 function ToggleButton(props) {
   const { styles } = props;
 
-  const SToggleButton = Root;
+  const SToggleButton = Root();
   return sstyled(styles)(
     <SToggleButton alignItems='center' render={Flex} role='button' {...props} />,
   );
@@ -175,9 +175,10 @@ function ToggleButton(props) {
 function Collapse(props) {
   const { selected } = props;
   const visible = selected;
+  const SCollapseRoot = Root();
 
   return (
-    <Root
+    <SCollapseRoot
       render={CollapseAnimate}
       visible={visible}
       interactive
@@ -187,15 +188,13 @@ function Collapse(props) {
   );
 }
 
-const Item = createComponent(RootItem, {
-  Toggle,
-  Chevron,
-  ToggleButton,
-  Collapse,
-});
-
 const Accordion = createComponent(RootAccordion, {
-  Item,
+  Item: [RootItem, {
+    Toggle,
+    Chevron,
+    ToggleButton,
+    Collapse,
+  }],
 });
 
 export const wrapAccordion = (wrapper) => wrapper;

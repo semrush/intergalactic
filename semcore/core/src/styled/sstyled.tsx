@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import type React from 'react';
 
-/** @ts-ignore */
 import { getStyles as reshadowGetStyles } from './reshadow-core';
+import type { Intergalactic, RootResult } from '../core-types/Component';
 
 const RESHADOW_ID = '__reshadow__';
 
@@ -122,7 +122,7 @@ function reshadowToShadow(obj: any) {
   return shadowStyle;
 }
 
-function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
+function sstyled<T extends Intergalactic.Tag | never>(styles = {}): (RootResult<T>) & {
   cn(name: string, props: any): any;
 } {
   // @ts-ignore

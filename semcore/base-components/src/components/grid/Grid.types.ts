@@ -1,5 +1,3 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
-
 import type { BoxProps, FlexProps } from '../flex-box';
 
 export type ColProps = BoxProps & {
@@ -30,14 +28,3 @@ export type RowProps = FlexProps & {
    */
   gutter?: number;
 };
-
-type GridContext = {
-  getColProps: PropGetterFn;
-};
-
-declare const Row: Intergalactic.Component<'div', RowProps, GridContext> & {
-  Col: Intergalactic.Component<'div', ColProps, RowProps>;
-};
-declare const Col: typeof Row.Col;
-
-export { Row, Col };

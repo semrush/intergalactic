@@ -12,7 +12,7 @@ class RootError extends AbstractComponent {
   static style = style;
 
   render() {
-    const SError = Root;
+    const SError = Root();
     const { Children, styles, icon } = this.asProps;
     const SInner = 'div';
     const SImageWrapper = 'div';
@@ -36,17 +36,17 @@ class RootError extends AbstractComponent {
 }
 
 function Title(props) {
-  const STitle = Root;
+  const STitle = Root();
   return sstyled(props.styles)(<STitle render={Box} data-errors-title tag='h2' />);
 }
 
 function Description(props) {
-  const SDescription = Root;
+  const SDescription = Root();
   return sstyled(props.styles)(<SDescription render={Box} tag='p' />);
 }
 
 function Controls(props) {
-  const SControls = Root;
+  const SControls = Root();
   return sstyled(props.styles)(<SControls render={Box} />);
 }
 

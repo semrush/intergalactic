@@ -37,7 +37,7 @@ class RootBaseTrigger extends AbstractComponent {
   }
 
   render() {
-    const SBaseTrigger = Root;
+    const SBaseTrigger = Root();
     const SInner = 'span';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
@@ -67,7 +67,7 @@ class RootBaseTrigger extends AbstractComponent {
 }
 
 function Text(props) {
-  const SText = Root;
+  const SText = Root();
   const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
@@ -78,7 +78,7 @@ function Text(props) {
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} />);
 }

@@ -1,5 +1,5 @@
 import type { IRootComponentProps } from '@semcore/core';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import type { SwitchProps } from '@semcore/switch';
 import Switch from '@semcore/switch';
 import React from 'react';
@@ -40,7 +40,7 @@ class SwitchFHRoot extends AbstractComponent<SwitchProps> {
   }
 
   render() {
-    const SInput = Root;
+    const SInput = Root();
     return sstyled(this.asProps.styles)(
       <SInput render={Switch} />,
     );
@@ -48,7 +48,7 @@ class SwitchFHRoot extends AbstractComponent<SwitchProps> {
 }
 
 function Value(props: IRootComponentProps & { onChange: () => void }) {
-  const SToggle = Root;
+  const SToggle = Root();
 
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
 }

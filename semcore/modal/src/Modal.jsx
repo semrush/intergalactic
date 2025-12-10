@@ -106,7 +106,7 @@ class ModalRoot extends AbstractComponent {
 
   render() {
     const { Children, disablePortal, forcedAdvancedMode, ignorePortalsStacking } = this.asProps;
-
+    const SRoot = Root();
     const advancedMode =
       forcedAdvancedMode ||
       isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
@@ -119,7 +119,7 @@ class ModalRoot extends AbstractComponent {
             )
           : (
               <Modal.Overlay>
-                <Root render={Modal.Window} />
+                <SRoot render={Modal.Window} />
               </Modal.Overlay>
             )}
       </Portal>
@@ -128,7 +128,7 @@ class ModalRoot extends AbstractComponent {
 }
 
 function Window(props) {
-  const SWindow = Root;
+  const SWindow = Root();
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = React.useRef(null);
 
@@ -157,7 +157,7 @@ function Window(props) {
 }
 
 function Overlay(props) {
-  const SOverlay = Root;
+  const SOverlay = Root();
   const SOverlayContentWrapper = Flex;
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayContentWrapperRef = React.useRef(null);
@@ -178,7 +178,7 @@ function Overlay(props) {
 }
 
 function Close(props) {
-  const SClose = Root;
+  const SClose = Root();
   const { Children, children: hasChildren, getI18nText, ghost } = props;
   return sstyled(props.styles)(
     <SClose
@@ -203,7 +203,7 @@ function Close(props) {
 
 function Title(props) {
   const { setHasTitle, styles, color } = props;
-  const STitle = Root;
+  const STitle = Root();
 
   const resolveColor = useColorResolver();
   React.useEffect(() => setHasTitle());

@@ -42,7 +42,7 @@ class HighlightedItemRoot extends AbstractComponent {
   }
 
   render() {
-    const SHighlightedPill = Root;
+    const SHighlightedPill = Root();
 
     return sstyled(this.asProps.styles)(<SHighlightedPill render={Pills.Item} onClick={this.handleClick.bind(this)} />);
   }

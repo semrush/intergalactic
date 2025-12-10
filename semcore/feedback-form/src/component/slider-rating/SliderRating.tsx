@@ -27,9 +27,10 @@ const MAX = 5;
 
 class SliderRatingRoot extends AbstractComponent<
   SliderRatingProps,
+  typeof SliderRatingRoot.enhance,
+  never,
   {},
-  State,
-  typeof SliderRatingRoot.enhance
+  State
 > {
   static displayName = 'SliderRating';
   static style = style;
@@ -141,7 +142,7 @@ class SliderRatingRoot extends AbstractComponent<
     const { styles, readonly, getI18nText, value } = this.asProps;
     const { hoveredIndex } = this.state;
 
-    const SSliderRating = Root;
+    const SSliderRating = Root();
     const label = this.getLabelText();
 
     if (readonly) {
@@ -194,7 +195,7 @@ class SliderRatingRoot extends AbstractComponent<
 }
 
 function Star(props: StarProps) {
-  const SStar = Root;
+  const SStar = Root();
   return sstyled(props.styles)(
     <SStar
       render={Box}
@@ -224,8 +225,6 @@ Star.displayName = 'Star';
 
 const SliderRating = createComponent(SliderRatingRoot, {
   Star,
-}) as Intergalactic.Component<typeof Flex, SliderRatingProps> & {
-  Star: Intergalactic.Component<typeof Box, StarProps>;
-};
+});
 
 export default SliderRating;

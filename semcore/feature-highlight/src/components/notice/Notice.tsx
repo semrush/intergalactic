@@ -32,7 +32,7 @@ class NoticeFHRoot extends AbstractComponent<NoticeSmartProps> {
   }
 
   render() {
-    const SHighlightedNotice = Root;
+    const SHighlightedNotice = Root();
     const { label, title, styles, actions, closable, onClose } = this.asProps;
 
     return sstyled(styles)(

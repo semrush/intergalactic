@@ -54,7 +54,7 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends AbstractComponent<InputTagsProps, {}, {}, typeof InputTags.enhance> {
+class InputTags extends AbstractComponent<InputTagsProps, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
@@ -211,7 +211,7 @@ class InputTags extends AbstractComponent<InputTagsProps, {}, {}, typeof InputTa
   }
 
   render() {
-    const SInputTags = Root;
+    const SInputTags = Root();
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
@@ -293,7 +293,7 @@ class Value extends AbstractComponent<InputTagsValueProps> {
   };
 
   render() {
-    const SValue = Root;
+    const SValue = Root();
     const SSpacer = 'div';
 
     return sstyled(this.asProps.styles)(
@@ -320,7 +320,7 @@ function InputTagsContainer({
 }
 
 function InputTagContainer(props: any) {
-  const STag = Root;
+  const STag = Root();
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
@@ -346,7 +346,7 @@ function InputTagContainer(props: any) {
   );
 }
 function InputTagContainerTag(props: any) {
-  const STag = Root;
+  const STag = Root();
   const { getI18nText } = props;
 
   const ref = React.useRef<HTMLElement>();
@@ -379,7 +379,7 @@ function TagContainerTextContent(props: IRootComponentProps) {
 }
 
 function TagCloseButton(props: IRootComponentProps) {
-  const STagContainerClose = Root;
+  const STagContainerClose = Root();
   return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
 }
 
@@ -395,15 +395,4 @@ export default createComponent(InputTags, {
       Circle: TagContainer.Circle,
     },
   ],
-}) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
-  Value: typeof Input.Value;
-  TagsContainer: Intergalactic.Component<'ul'>;
-  Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
-      Content: Intergalactic.Component<'div', TagTextProps>;
-    };
-    Close: typeof TagContainer.Close;
-    Addon: typeof Tag.Addon;
-    Circle: typeof Tag.Circle;
-  };
-};
+});

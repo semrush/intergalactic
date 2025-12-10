@@ -1,4 +1,4 @@
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
@@ -436,7 +436,7 @@ function Label({
 }
 
 const DonutTooltip = (props) => {
-  const SDonutTooltip = Root;
+  const SDonutTooltip = Root();
   return sstyled(props.styles)(<SDonutTooltip render={Tooltip} excludeAnchorProps />);
 };
 

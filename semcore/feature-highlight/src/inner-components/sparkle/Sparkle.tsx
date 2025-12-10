@@ -14,7 +14,7 @@ type SparkleProps = {
 };
 
 function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGElement>) {
-  const SSparkle = Root;
+  const SSparkle = Root();
   const { num, index, curve, left } = props;
   const rand = Math.floor(Math.random() * 50);
   const angle = (360 / num) * index + rand;
@@ -44,4 +44,4 @@ function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGElement>) {
   );
 }
 
-export default createBaseComponent(SvgSparkle) as unknown as Intergalactic.Component<'svg', SparkleProps>;
+export default createBaseComponent(SvgSparkle, {});

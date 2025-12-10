@@ -15,7 +15,7 @@ class Divider extends AbstractComponent {
   };
 
   render() {
-    const SDivider = Root;
+    const SDivider = Root();
     const { orientation, resolveColor, theme } = this.asProps;
 
     return sstyled(this.asProps.styles)(

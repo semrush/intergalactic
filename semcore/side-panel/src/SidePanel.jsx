@@ -115,7 +115,7 @@ class RootSidePanel extends AbstractComponent {
 
   render() {
     const { Children, disablePortal, ignorePortalsStacking } = this.asProps;
-
+    const SRoot = Root();
     return (
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
         {this.isAdvanceMode()
@@ -124,7 +124,7 @@ class RootSidePanel extends AbstractComponent {
             )
           : (
               <SidePanel.Overlay>
-                <Root render={SidePanel.Panel} />
+                <SRoot render={SidePanel.Panel} />
               </SidePanel.Overlay>
             )}
       </Portal>
@@ -133,7 +133,7 @@ class RootSidePanel extends AbstractComponent {
 }
 
 function Overlay(props) {
-  const SOverlay = Root;
+  const SOverlay = Root();
   const overlayRef = React.useRef(null);
   usePreventScroll(props.visible, props.disablePreventScroll);
   useContextTheme(overlayRef, props.visible);
@@ -142,7 +142,7 @@ function Overlay(props) {
 }
 
 function Panel(props) {
-  const SPanel = Root;
+  const SPanel = Root();
   const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
     props;
   const advancedMode =
@@ -197,12 +197,12 @@ function Panel(props) {
 }
 
 function Footer(props) {
-  const SFooter = Root;
+  const SFooter = Root();
   return sstyled(props.styles)(<SFooter render={Flex} tag='footer' />);
 }
 
 function Close({ styles, children: hasChildren, Children, getI18nText }) {
-  const SClose = Root;
+  const SClose = Root();
   return sstyled(styles)(
     <SClose
       render={Button}
@@ -220,12 +220,12 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
 Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
-  const STitle = Root;
+  const STitle = Root();
   return sstyled(props.styles)(<STitle render={Text} tag='h6' />);
 }
 
 function Back(props) {
-  const SBack = Root;
+  const SBack = Root();
   const SBackText = ButtonLink.Text;
   const { Children, styles } = props;
 
@@ -240,13 +240,13 @@ function Back(props) {
 }
 
 function Body(props) {
-  const SBody = Root;
+  const SBody = Root();
 
   return sstyled(props.styles)(<SBody render={Box} />);
 }
 
 function Header(props) {
-  const SHeader = Root;
+  const SHeader = Root();
   const { Children, styles, title } = props;
   return sstyled(styles)(
     <SHeader render={Box} tag='header'>

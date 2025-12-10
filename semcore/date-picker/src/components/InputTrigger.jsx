@@ -53,7 +53,7 @@ class InputTriggerRoot extends AbstractComponent {
   }
 
   render() {
-    const SInputTrigger = Root;
+    const SInputTrigger = Root();
     const { Children, style, getI18nText } = this.asProps;
 
     return sstyled(style)(
@@ -162,7 +162,7 @@ class SingleDateInputRoot extends AbstractComponent {
     } = this.asProps;
     const { errorText, showError: showErrorState, focused } = this.state;
     const showError = showErrorState && showErrorProps;
-    const SSingleDateInput = Root;
+    const SSingleDateInput = Root();
 
     return sstyled(styles)(
       <SSingleDateInput
@@ -413,7 +413,7 @@ class DateRangeRoot extends AbstractComponent {
   }
 
   render() {
-    const SDateRange = Root;
+    const SDateRange = Root();
     const { Children, styles, w, state, showError: showErrorProps, popoverVisible } = this.asProps;
     const { errorText, lastChangedInput, showError: showErrorState, containerFocused } = this.state;
     const showError = showErrorState && showErrorProps;
@@ -440,7 +440,7 @@ class DateRangeRoot extends AbstractComponent {
 }
 
 const FromMaskedInput = (props) => {
-  const SFromMaskedInput = Root;
+  const SFromMaskedInput = Root();
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
@@ -449,7 +449,7 @@ const FromMaskedInput = (props) => {
 };
 
 const ToMaskedInput = (props) => {
-  const SToMaskedInput = Root;
+  const SToMaskedInput = Root();
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
@@ -458,7 +458,7 @@ const ToMaskedInput = (props) => {
 };
 
 const Indicator = (props) => {
-  const SIndicator = Root;
+  const SIndicator = Root();
 
   return sstyled(props.styles)(
     <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
@@ -466,7 +466,7 @@ const Indicator = (props) => {
 };
 
 const RangeSep = (props) => {
-  const SRangeSep = Root;
+  const SRangeSep = Root();
 
   return sstyled(props.styles)(
     <SRangeSep

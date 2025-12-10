@@ -46,7 +46,7 @@ class RootLink extends AbstractComponent {
 
   renderLink({ linkProps, children }) {
     const { styles } = this.asProps;
-    const SLink = Root;
+    const SLink = Root();
 
     return sstyled(styles)(
       <SLink render={Text} {...linkProps}>
@@ -57,7 +57,7 @@ class RootLink extends AbstractComponent {
 
   renderLinkWithHint({ linkProps, children, hintProps }) {
     const { styles } = this.asProps;
-    const SLink = Root;
+    const SLink = Root();
 
     return sstyled(styles)(
       <SLink render={Hint} {...linkProps} {...hintProps}>
@@ -137,13 +137,13 @@ class RootLink extends AbstractComponent {
 }
 
 function LinkText(props) {
-  const SText = Root;
+  const SText = Root();
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }

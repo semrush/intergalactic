@@ -8,6 +8,7 @@ import type {
   NeighborLocationUnion,
   NeighborLocationDetectProps,
   NeighborLocationProps,
+  NeighborLocationDetectInnerProps,
 } from './NeighborLocation.types';
 
 const Context = register.get(
@@ -81,6 +82,7 @@ export class NeighborLocationRoot extends AbstractComponent<NeighborLocationProp
   }
 
   render() {
+    const SNeighbor = Root();
     // @ts-ignore
     const { Children, tag: Tag, controlsLength } = this.asProps;
     this.controlsLengthRef.current =
@@ -89,16 +91,16 @@ export class NeighborLocationRoot extends AbstractComponent<NeighborLocationProp
 
     if (Tag)
       return (
-        <Root render={Tag}>
+        <SNeighbor render={Tag}>
           <Children />
-        </Root>
+        </SNeighbor>
       );
 
     return <Children />;
   }
 }
 
-class Detect extends AbstractComponent<NeighborLocationDetectProps> {
+class Detect extends AbstractComponent<NeighborLocationDetectProps, [], never, NeighborLocationDetectInnerProps> {
   render() {
     const { children, neighborLocation: selfNeighborLocation, getNeighborLocation } = this.asProps;
     const calculateNeighborLocation = getNeighborLocation ? getNeighborLocation(this) : undefined;

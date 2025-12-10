@@ -1,4 +1,4 @@
-import { Component, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
@@ -696,7 +696,7 @@ const Polygon = createElement(PolygonRoot, {
 });
 
 const RadarTooltip = (props) => {
-  const SRadarTooltip = Root;
+  const SRadarTooltip = Root();
   return sstyled(props.styles)(
     <SRadarTooltip render={Tooltip} tag={Radar.Hover} excludeAnchorProps />,
   );

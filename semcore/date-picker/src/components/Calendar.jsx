@@ -57,7 +57,7 @@ class CalendarWeekDaysRoot extends AbstractComponent {
   }
 
   render() {
-    const SWeekDays = Root;
+    const SWeekDays = Root();
     const { Children, styles } = this.asProps;
     return sstyled(styles)(
       <SWeekDays render={Box}>
@@ -68,7 +68,7 @@ class CalendarWeekDaysRoot extends AbstractComponent {
 }
 
 function CalendarWeekUnit({ styles }) {
-  const SWeekDay = Root;
+  const SWeekDay = Root();
   return sstyled(styles)(<SWeekDay render={Box} role='columnheader' />);
 }
 
@@ -258,7 +258,7 @@ class CalendarAbstract extends AbstractComponent {
 }
 
 function CalendarUnit({ styles, date, long, outdated, disabled, highlighted }) {
-  const SCalendarUnit = Root;
+  const SCalendarUnit = Root();
   return sstyled(styles)(
     <SCalendarUnit
       use:disabled={disabled || outdated || !date}
@@ -336,7 +336,7 @@ class CalendarDaysRoot extends CalendarAbstract {
   }
 
   render() {
-    const SCalendar = Root;
+    const SCalendar = Root();
     const SGridDays = 'div';
     const { Children, styles, locale } = this.asProps;
     const description = this.describeValue();
@@ -389,7 +389,7 @@ class CalendarMonthsRoot extends CalendarAbstract {
   formatter = formatMMYY;
 
   render() {
-    const SCalendar = Root;
+    const SCalendar = Root();
     const SGridMonths = 'div';
     const { Children, styles } = this.asProps;
     const description = this.describeValue();

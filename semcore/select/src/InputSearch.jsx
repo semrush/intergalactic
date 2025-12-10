@@ -69,7 +69,7 @@ class InputSearchRoot extends AbstractComponent {
   }
 
   render() {
-    const Value = Root;
+    const Value = Root();
     const SInputSearch = Input;
     const { size, styles, children: hasChildren, Children } = this.asProps;
 
@@ -92,7 +92,7 @@ class InputSearchRoot extends AbstractComponent {
 }
 
 const SearchIcon = (props) => {
-  const SSearchIcon = Root;
+  const SSearchIcon = Root();
   const { styles } = props;
   return sstyled(styles)(
     <SSearchIcon render={Input.Addon}>
@@ -101,12 +101,12 @@ const SearchIcon = (props) => {
   );
 };
 const SearchValue = (props) => {
-  const SSearchValue = Root;
+  const SSearchValue = Root();
   const { styles } = props;
   return sstyled(styles)(<SSearchValue render={Input.Value} />);
 };
 const SearchClear = (props) => {
-  const SSearchClear = Root;
+  const SSearchClear = Root();
   const { styles } = props;
   return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use='secondary' />);
 };

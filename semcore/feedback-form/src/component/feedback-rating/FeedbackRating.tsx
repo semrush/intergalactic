@@ -31,9 +31,10 @@ type State = {
 
 class FeedbackRatingRoot extends AbstractComponent<
   FeedbackRatingProps,
+  typeof FeedbackRatingRoot.enhance,
+  never,
   {},
-  State,
-  typeof FeedbackRatingRoot.enhance
+  State
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
@@ -255,7 +256,7 @@ class FeedbackRatingRoot extends AbstractComponent<
       ...other
     } = this.asProps;
 
-    const SFeedbackRating = Root;
+    const SFeedbackRating = Root();
     const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input' || item.type === 'email',
@@ -388,7 +389,7 @@ class FeedbackRatingRoot extends AbstractComponent<
 
 function Header(props: any) {
   const { styles } = props;
-  const SHeader = Root;
+  const SHeader = Root();
   return sstyled(styles)(
     <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign='center' />,
   );

@@ -1,5 +1,5 @@
 import { Popper, Box } from '@semcore/base-components';
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import React from 'react';
@@ -96,7 +96,7 @@ class TooltipRoot extends AbstractComponent {
 
   render() {
     const { Children, children, tag, forcedAdvancedMode, onClick: _, ...other } = this.asProps;
-
+    const SPopperRoot = Root();
     const advancedMode =
       forcedAdvancedMode ||
       !!findComponent(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
@@ -106,7 +106,7 @@ class TooltipRoot extends AbstractComponent {
 
     return (
       <TooltipDotRenderContext.Provider value={this.renderContext}>
-        <Root
+        <SPopperRoot
           render={Popper}
           visible={this.state.$visible}
           onFirstUpdate={this.handlerCancel}
@@ -131,14 +131,16 @@ class TooltipRoot extends AbstractComponent {
                   </>
                 );
           }}
-        </Root>
+        </SPopperRoot>
       </TooltipDotRenderContext.Provider>
     );
   }
 }
 
 function PopperTrigger() {
-  return <Root render={Popper.Trigger} />;
+  const SPopperTriggerRoot = Root();
+
+  return <SPopperTriggerRoot render={Popper.Trigger} />;
 }
 
 function PopperPopper(props) {
@@ -161,7 +163,7 @@ function PopperPopper(props) {
 PopperPopper.style = style;
 
 function Title(props) {
-  const STitle = Root;
+  const STitle = Root();
   const { styles } = props;
   return sstyled(styles)(<STitle render={Box} __excludeProps={['data', 'scale']} />);
 }
@@ -179,7 +181,7 @@ function Dot(props) {
     renderContext.indexKeysCache.add(key);
     renderContext.index += 1;
   }
-  const SDotGroup = Root;
+  const SDotGroup = Root();
   const SDot = Box;
   const SDotCircle = Box;
   return sstyled(styles)(
@@ -206,7 +208,7 @@ Dot.style = style;
 
 function Footer(props) {
   const { styles } = props;
-  const SFooter = Root;
+  const SFooter = Root();
   return sstyled(styles)(<SFooter render={Box} __excludeProps={['data', 'scale']} />);
 }
 Footer.style = style;

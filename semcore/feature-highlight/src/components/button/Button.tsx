@@ -38,7 +38,7 @@ class ButtonFHRoot extends AbstractComponent {
 
   render() {
     const { styles } = this.asProps;
-    const SHighlightedButton = Root;
+    const SHighlightedButton = Root();
     return sstyled(styles)(
       <SHighlightedButton render={Button} use:onClick={this.handleClick.bind(this)} />,
     );
@@ -46,7 +46,7 @@ class ButtonFHRoot extends AbstractComponent {
 }
 
 function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean } & IRootNodeProps) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
   return sstyled(props.styles)(
     <SAddon render={Button.Addon}>

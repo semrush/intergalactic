@@ -221,7 +221,7 @@ class TimePickerRoot extends AbstractComponent {
   }
 
   render() {
-    const STimePicker = Root;
+    const STimePicker = Root();
     const { styles, Children, value, is12Hour, getI18nText, title } = this.asProps;
     const [hours, minutes] = this.valueToTime(this.value);
 
@@ -259,7 +259,7 @@ class Separator extends AbstractComponent {
   };
 
   render() {
-    const STimePickerSeparator = Root;
+    const STimePickerSeparator = Root();
     const { styles } = this.asProps;
 
     return sstyled(styles)(

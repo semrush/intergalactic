@@ -81,7 +81,7 @@ class FeedbackForm extends AbstractComponent {
 
 function Success(props) {
   const { Children, styles } = props;
-  const SSuccess = Root;
+  const SSuccess = Root();
   const SEmail = 'div';
 
   return sstyled(styles)(
@@ -98,13 +98,13 @@ Success.style = style;
 
 function Cancel(props) {
   const { styles } = props;
-  const SCancel = Root;
+  const SCancel = Root();
   return sstyled(styles)(<SCancel render={Button} type='reset' use='secondary' theme='muted' />);
 }
 
 function Notice(props) {
   const { styles, theme = 'muted', use = 'secondary' } = props;
-  const SNotice = Root;
+  const SNotice = Root();
   return sstyled(styles)(<SNotice render={NoticeSmart} use:theme={theme} use:use={use} />);
 }
 

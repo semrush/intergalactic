@@ -1,4 +1,4 @@
-import { Component } from '@semcore/core';
+import { AbstractComponent } from '@semcore/core';
 import { type ScaleBand, scaleBand } from 'd3-scale';
 import { type Stack, stack as d3Stack } from 'd3-shape';
 import React from 'react';

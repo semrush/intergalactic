@@ -4,6 +4,7 @@ import type {
   PropGetterFn,
   IRootComponentProps,
   PropsExtractor,
+  FunctionComponent,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -36,6 +37,7 @@ export {
   INHERITED_NAME,
   type IStyledProps,
   type PropsExtractor,
+  type FunctionComponent,
   wrapIntergalacticComponent,
   assignProps,
   register,

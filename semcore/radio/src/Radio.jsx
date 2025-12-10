@@ -38,11 +38,12 @@ class RadioGroupRoot extends AbstractComponent {
 
   render() {
     const { Children } = this.asProps;
+    const SRadioGroup = Root();
 
     return (
-      <Root render={Flex} direction='column' role='group' __excludeProps={['onChange']}>
+      <SRadioGroup render={Flex} direction='column' role='group' __excludeProps={['onChange']}>
         <Children />
-      </Root>
+      </SRadioGroup>
     );
   }
 }
@@ -109,7 +110,7 @@ class RadioRoot extends AbstractComponent {
   }
 
   render() {
-    const SRadio = Root;
+    const SRadio = Root();
     const { styles, Children, children: hasChildren } = this.asProps;
 
     return sstyled(styles)(
@@ -244,7 +245,7 @@ class ValueRoot extends AbstractComponent {
 }
 
 const Control = (props) => {
-  const SControl = Root;
+  const SControl = Root();
   const { styles, state } = props;
 
   return sstyled(styles)(
@@ -254,7 +255,7 @@ const Control = (props) => {
 Control.displayName = 'Control';
 
 const RadioMark = (props) => {
-  const SValue = Root;
+  const SValue = Root();
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked } = props;
 
@@ -267,7 +268,7 @@ const RadioMark = (props) => {
 RadioMark.displayName = 'RadioMark';
 
 const Text = (props) => {
-  const SText = Root;
+  const SText = Root();
   const { styles, color } = props;
 
   React.useEffect(() => {

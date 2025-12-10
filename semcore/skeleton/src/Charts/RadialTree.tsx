@@ -10,7 +10,7 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/radial-cha
 `;
 
 const RadialTreeChartSkeleton = () => {
-  const SChartSkeleton = Root;
+  const SChartSkeleton = Root();
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

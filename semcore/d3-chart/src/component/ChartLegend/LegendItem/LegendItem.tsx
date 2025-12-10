@@ -19,7 +19,7 @@ import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
 const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
-class LegendItemRoot extends AbstractComponent<LegendItemProps, {}, {}, typeof enhance> {
+class LegendItemRoot extends AbstractComponent<LegendItemProps, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
@@ -110,7 +110,7 @@ class LegendItemRoot extends AbstractComponent<LegendItemProps, {}, {}, typeof e
   }
 
   render() {
-    const SLegendItem = Root;
+    const SLegendItem = Root();
     const { styles, Children, shape } = this.asProps;
 
     // @ts-ignore
@@ -125,7 +125,7 @@ class LegendItemRoot extends AbstractComponent<LegendItemProps, {}, {}, typeof e
 }
 
 function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabelElement>) {
-  const SPointShape = Root;
+  const SPointShape = Root();
   const SPatternSymbol = PatternSymbol;
   const {
     styles,
@@ -183,7 +183,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
 }
 
 function Icon({ styles, children: hasChildren, Children }: IRootComponentProps) {
-  const SIcon = Root;
+  const SIcon = Root();
 
   if (!hasChildren) {
     return null;
@@ -198,7 +198,7 @@ function Icon({ styles, children: hasChildren, Children }: IRootComponentProps) 
 Icon.displayName = 'Icon';
 
 function Label({ styles, children: hasChildren, Children }: IRootComponentProps) {
-  const SLabel = Root;
+  const SLabel = Root();
 
   if (!hasChildren) {
     return null;
@@ -213,7 +213,7 @@ function Label({ styles, children: hasChildren, Children }: IRootComponentProps)
 Label.displayName = 'Label';
 
 function AdditionalLabel({ styles, children: hasChildren, Children }: IRootComponentProps) {
-  const SAdditionalLabel = Root;
+  const SAdditionalLabel = Root();
 
   if (!hasChildren) {
     return null;
@@ -228,7 +228,7 @@ function AdditionalLabel({ styles, children: hasChildren, Children }: IRootCompo
 AdditionalLabel.displayName = 'AdditionalLabel';
 
 function Count({ styles, children: hasChildren, Children }: IRootComponentProps) {
-  const SCount = Root;
+  const SCount = Root();
 
   if (!hasChildren) {
     return null;

@@ -1,5 +1,5 @@
 import type { IRootComponentProps } from '@semcore/core';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import TabLine from '@semcore/tab-line';
 import React from 'react';
@@ -42,7 +42,7 @@ class HighlightedItemRoot extends AbstractComponent {
   }
 
   render() {
-    const SHighlightedItem = Root;
+    const SHighlightedItem = Root();
 
     return sstyled(this.asProps.styles)(<SHighlightedItem render={TabLine.Item} onClick={this.handleClick.bind(this)} />);
   }

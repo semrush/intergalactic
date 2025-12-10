@@ -100,7 +100,7 @@ class TooltipRoot extends AbstractComponent {
 
   render() {
     const { Children, title, offset: _offset, forcedAdvancedMode, ...other } = this.asProps;
-
+    const SRoot = Root();
     const advancedMode = forcedAdvancedMode || isAdvanceMode(Children, this.subcomponents);
 
     logger.warn(
@@ -110,16 +110,16 @@ class TooltipRoot extends AbstractComponent {
     );
 
     return (
-      <Root render={Popper}>
+      <SRoot render={Popper}>
         {advancedMode ? <Children /> : this.defaultChildren(title, Children, other)}
-      </Root>
+      </SRoot>
     );
   }
 }
 
 function TooltipTrigger(props) {
   const { Children, styles } = props;
-  const STrigger = Root;
+  const STrigger = Root();
 
   return sstyled(styles)(
     <STrigger render={Popper.Trigger}>
@@ -142,7 +142,7 @@ function TooltipPopper(props) {
     visible,
     timeout,
   } = props;
-  const STooltip = Root;
+  const STooltip = Root();
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
   const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;

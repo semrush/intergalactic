@@ -28,8 +28,9 @@ class RootProjectNotFound extends AbstractComponent {
       li: (chunk) => <li>{chunk}</li>,
       supportLink: (chunk) => <a href={supportTeamLink}>{chunk}</a>,
     });
+    const SRoot = Root();
     return (
-      <Root render={Error}>
+      <SRoot render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description tag={Text} size='l'>
           {text}
@@ -43,7 +44,7 @@ class RootProjectNotFound extends AbstractComponent {
             {getI18nText('btnContacts')}
           </Button>
         </Error.Controls>
-      </Root>
+      </SRoot>
     );
   }
 }

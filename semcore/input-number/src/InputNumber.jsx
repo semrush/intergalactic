@@ -1,4 +1,4 @@
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { createComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { forkRef } from '@semcore/core/lib/utils/ref';
@@ -59,7 +59,7 @@ class InputNumber extends AbstractComponent {
   }
 
   render() {
-    const SInputNumber = Root;
+    const SInputNumber = Root();
     return sstyled(this.asProps.style)(<SInputNumber render={Input} />);
   }
 }
@@ -443,7 +443,7 @@ class Value extends AbstractComponent {
   };
 
   render() {
-    const SValue = Root;
+    const SValue = Root();
     const { styles, min, max, step, forwardRef, inputRef, displayValue } = this.asProps;
 
     return sstyled(styles)(
@@ -470,7 +470,7 @@ class Value extends AbstractComponent {
 
 function Controls(props) {
   const { Children, increment, decrement, size, styles, getI18nText } = props;
-  const SControls = Root;
+  const SControls = Root();
   const SUp = 'button';
   const SDown = 'button';
 

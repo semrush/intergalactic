@@ -133,7 +133,7 @@ class TabLineRoot extends AbstractComponent {
   }
 
   render() {
-    const STabLine = Root;
+    const STabLine = Root();
     const SCaret = Box;
     const { styles, Children, controlsLength } = this.asProps;
     const { animation } = this.state;
@@ -150,7 +150,7 @@ class TabLineRoot extends AbstractComponent {
 }
 
 function TabLineItem(props) {
-  const STabLineItem = Root;
+  const STabLineItem = Root();
   const { Children, styles, addonLeft, addonRight, neighborLocation } = props;
 
   return (
@@ -176,13 +176,13 @@ function TabLineItem(props) {
 
 function Text(props) {
   const { styles } = props;
-  const SText = Root;
+  const SText = Root();
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
   const { styles } = props;
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 

@@ -92,7 +92,7 @@ const pointInsideOfRect = ({
   return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
 };
 
-class InlineInputBase extends AbstractComponent<InlineInputProps, {}, {}, typeof InlineInputBase.enhance> {
+class InlineInputBase extends AbstractComponent<InlineInputProps, typeof InlineInputBase.enhance> {
   static displayName = 'InlineInput';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -277,7 +277,7 @@ class InlineInputBase extends AbstractComponent<InlineInputProps, {}, {}, typeof
   }
 
   render() {
-    const SInlineInput = Root;
+    const SInlineInput = Root();
     const SUnderline = 'div';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, state } = this.asProps;
@@ -293,7 +293,7 @@ class InlineInputBase extends AbstractComponent<InlineInputProps, {}, {}, typeof
   }
 }
 
-class Value extends AbstractComponent<InlineInputValueProps, {}, {}, typeof Value.enhance> {
+class Value extends AbstractComponent<InlineInputValueProps, typeof Value.enhance> {
   static defaultProps = {
     defaultValue: '',
   };
@@ -307,19 +307,19 @@ class Value extends AbstractComponent<InlineInputValueProps, {}, {}, typeof Valu
   }
 
   render() {
-    const SValue = Root;
+    const SValue = Root();
 
     return sstyled(this.asProps.styles)(<SValue render={Box} tag='input' type='text' />);
   }
 }
 
 const Addon: React.FC<AddonAsProps> = (props) => {
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
 };
 
 const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
-  const SAddon = Root;
+  const SAddon = Root();
   const { Children, children: hasChildren, inputRef } = props;
   const title = props.title ?? props.getI18nText('confirm');
 
@@ -370,7 +370,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   ) as React.ReactElement;
 };
 const CancelControl: React.FC<CancelControlAsProps> = (props) => {
-  const SAddon = Root;
+  const SAddon = Root();
   const { Children, children: hasChildren } = props;
   const title = props.title ?? props.getI18nText('discard');
 
@@ -422,13 +422,13 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 };
 
 const NumberValue: React.FC<NumberValueAsProps> = (props) => {
-  const SValue = Root;
+  const SValue = Root();
 
   return sstyled(props.styles)(<SValue render={InputNumber.Value} />) as React.ReactElement;
 };
 
 function NumberControls(props: NumberControlsAsProps) {
-  const SControls = Root;
+  const SControls = Root();
 
   return sstyled(props.styles)(
     <SControls render={InputNumber.Controls} tag={InlineInput.Addon} />,

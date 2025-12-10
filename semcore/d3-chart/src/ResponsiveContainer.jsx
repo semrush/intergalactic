@@ -77,7 +77,7 @@ class ResponsiveContainerRoot extends AbstractComponent {
   }
 
   render() {
-    const SResponsiveContainer = Root;
+    const SResponsiveContainer = Root();
     const { styles } = this.asProps;
     return sstyled(styles)(<SResponsiveContainer render={Box} ref={this.containerRef} />);
   }

@@ -36,7 +36,7 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends AbstractComponent<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
+class NoticeBubbleContainerRoot extends AbstractComponent<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, never, typeof NoticeBubbleContainerRoot.defaultProps, State> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -81,7 +81,7 @@ class NoticeBubbleContainerRoot extends AbstractComponent<NoticeBubbleContainerP
   };
 
   render() {
-    const SNoticeBubble = Root;
+    const SNoticeBubble = Root();
     const SNoticeAriaLiveWrapper = 'div';
     const { Children, styles, disablePortal, getI18nText, ref, parentZIndexStacking, duration, containerNode } =
             this.asProps;
@@ -350,6 +350,6 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
+const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot, {});
 
 export default NoticeBubbleContainer;

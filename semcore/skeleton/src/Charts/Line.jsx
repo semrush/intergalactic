@@ -12,7 +12,7 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart
 `;
 
 const LineChartSkeleton = (props) => {
-  const SChartSkeleton = Root;
+  const SChartSkeleton = Root();
   const patternBase64 = { linear: lineLinearSvg, monotone: lineMonotoneSvg }[
     props.type ?? 'linear'
   ];

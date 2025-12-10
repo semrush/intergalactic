@@ -143,7 +143,7 @@ class DropdownRoot extends AbstractComponent {
 
 function DropdownTrigger({ styles, tag: Tag }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
-  const SDropdownTrigger = Root;
+  const SDropdownTrigger = Root();
 
   return sstyled(styles)(
     <SDropdownTrigger render={Popper.Trigger} role={hasInputTrigger ? 'combobox' : 'button'} />,
@@ -151,13 +151,13 @@ function DropdownTrigger({ styles, tag: Tag }) {
 }
 
 function DropdownPopper({ styles }) {
-  const SDropdownPopper = Root;
+  const SDropdownPopper = Root();
   return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
 }
 
 function DropdownGroup(props) {
   const { styles, title, Children, subTitle, size, sticky } = props;
-  const SGroup = Root;
+  const SGroup = Root();
   const SDropdownItemContainer = Dropdown.Item;
   const SGroupTitle = Flex;
   const SGroupHint = Flex;

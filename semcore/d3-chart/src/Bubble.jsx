@@ -1,4 +1,4 @@
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -150,7 +150,7 @@ class BubbleRoot extends AbstractComponent {
 }
 
 const BubbleTooltip = (props) => {
-  const SBubbleTooltip = Root;
+  const SBubbleTooltip = Root();
   return sstyled(props.styles)(<SBubbleTooltip render={Tooltip} excludeAnchorProps />);
 };
 

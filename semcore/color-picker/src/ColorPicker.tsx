@@ -173,7 +173,7 @@ export function Trigger(props: TriggerAsProps) {
 
 const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;
-  const SDefaultTrigger = Root;
+  const SDefaultTrigger = Root();
   const STriggerCircle = Flex;
 
   return sstyled(styles)(
@@ -186,7 +186,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
 
 export function Popper(props: PopperAsProps) {
   const { styles, Children, getI18nText, children } = props;
-  const SColorPickerPopper = Root;
+  const SColorPickerPopper = Root();
 
   return sstyled(styles)(
     <SColorPickerPopper render={Dropdown.Popper} aria-label={getI18nText('palette')}>

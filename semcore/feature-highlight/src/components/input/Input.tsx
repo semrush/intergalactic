@@ -1,5 +1,5 @@
 import type { IRootComponentProps } from '@semcore/core';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Input from '@semcore/input';
 import React from 'react';
@@ -11,7 +11,7 @@ class InputFHRoot extends AbstractComponent {
   static style = style;
 
   render() {
-    const SHighlightedInput = Root;
+    const SHighlightedInput = Root();
     return sstyled(this.asProps.styles)(
       <SHighlightedInput render={Input} />,
     );

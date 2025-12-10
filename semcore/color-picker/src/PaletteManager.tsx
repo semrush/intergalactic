@@ -20,7 +20,7 @@ type State = { focus: boolean };
 
 const enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-class PaletteManagerRoot extends AbstractComponent<RootAsProps, {}, State, typeof enhance> {
+class PaletteManagerRoot extends AbstractComponent<RootAsProps, typeof enhance, never, {}, State> {
   static displayName = 'PaletteManager';
 
   static style = style;

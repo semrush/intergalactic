@@ -60,7 +60,7 @@ class SpinContainerRoot extends AbstractComponent {
   }
 
   render() {
-    const SSpinContainer = Root;
+    const SSpinContainer = Root();
     const { styles, Children, forcedAdvancedMode } = this.asProps;
 
     const advancedMode =
@@ -91,7 +91,7 @@ class Overlay extends AbstractComponent {
   });
 
   render() {
-    const SOverlay = Root;
+    const SOverlay = Root();
     const { styles, theme, background, loading, duration, resolveColor } = this.asProps;
     const useTheme = background ? 'custom' : theme;
 
@@ -104,7 +104,7 @@ class Overlay extends AbstractComponent {
 }
 
 function Content(props) {
-  const SContent = Root;
+  const SContent = Root();
   const { styles } = props;
   return sstyled(styles)(<SContent render={Box} />);
 }

@@ -16,15 +16,16 @@ class NoData extends AbstractComponent {
 
   render() {
     const { Children, type, description, getI18nText } = this.asProps;
+    const SRoot = Root();
 
     return (
-      <Root render={WidgetEmpty} icon={getIconPath(type)}>
+      <SRoot render={WidgetEmpty} icon={getIconPath(type)}>
         <WidgetEmpty.Title>{getI18nText('title')}</WidgetEmpty.Title>
         <WidgetEmpty.Description>
           {description || getI18nText('description')}
         </WidgetEmpty.Description>
         <Children />
-      </Root>
+      </SRoot>
     );
   }
 }

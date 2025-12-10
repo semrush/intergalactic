@@ -1,6 +1,6 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
-import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
 import React from 'react';
 
@@ -150,7 +150,7 @@ class HeadRoot<
   }
 
   render() {
-    const SHead = Root;
+    const SHead = Root();
     const SHeadCheckboxCol = Head.Column;
     const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration, isDataEmpty, gridTemplateColumns } = this.asProps;
 
@@ -220,14 +220,4 @@ class HeadRoot<
   }
 }
 
-export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalactic.Component<
-  'div',
-  DataTableHeadProps
-> & {
-  Column: <Tag extends 'div' | typeof Tooltip = 'div'>(
-    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableColumnProps, {}, []>,
-  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
-  Group: <Tag extends 'div' | typeof Tooltip = 'div'>(
-    props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableGroupProps, {}, []>,
-  ) => Intergalactic.InternalTypings.ComponentRenderingResults;
-};
+export const Head = createComponent(HeadRoot, { Column, Group });

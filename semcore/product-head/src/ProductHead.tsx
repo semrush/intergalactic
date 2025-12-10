@@ -9,23 +9,23 @@ class HeaderRoot extends AbstractComponent<BoxProps> {
   static style = style;
 
   render() {
-    const SProductHead = Root;
+    const SProductHead = Root();
     return sstyled(this.asProps.styles)(<SProductHead render={Box} />);
   }
 }
 
 function Buttons(props: any) {
-  const SButtons = Root;
+  const SButtons = Root();
   return sstyled(props.styles)(<SButtons render={Box} />);
 }
 
 function Links(props: any) {
-  const SLinks = Root;
+  const SLinks = Root();
   return sstyled(props.styles)(<SLinks render={Box} />);
 }
 
 function Row(props: any) {
-  const SRow = Root;
+  const SRow = Root();
   return sstyled(props.styles)(<SRow render={Box} />);
 }
 
@@ -33,9 +33,6 @@ const Header = createComponent(HeaderRoot, {
   Buttons,
   Links,
   Row,
-}) as typeof Box & {
-  Buttons: typeof Box;
-  Links: typeof Box;
-  Row: typeof Box;
-};
+});
+
 export default Header;

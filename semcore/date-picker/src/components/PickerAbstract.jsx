@@ -1,4 +1,4 @@
-import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
 import dayjs from 'dayjs';
@@ -248,17 +248,17 @@ class PickerAbstract extends AbstractComponent {
 
   render() {
     const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
-
+    const SRoot = Root();
     return (
       <>
         {sstyled(styles)(
-          <Root
+          <SRoot
             render={Dropdown}
             use:aria-label={providedAriaLabel}
             __excludeProps={['onChange', 'value']}
           >
             <Children />
-          </Root>,
+          </SRoot>,
         )}
       </>
     );

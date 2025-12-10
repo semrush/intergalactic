@@ -1,4 +1,4 @@
-import { Component } from '@semcore/core';
+import { AbstractComponent } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import { scaleBand } from 'd3-scale';
 import React from 'react';

@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
@@ -9,9 +9,8 @@ import { DataTable } from '../DataTable/DataTable';
 
 export class Group extends AbstractComponent<
   DataTableGroupProps,
-  {},
-  {},
   typeof Group.enhance,
+  never,
   GroupPropsInner
 > {
   static displayName = 'Group';
@@ -32,7 +31,7 @@ export class Group extends AbstractComponent<
 
   render() {
     const SGroupContainer = Box;
-    const SGroup = Root;
+    const SGroup = Root();
     const { styles, Children, title, columns, withConfig } = this.asProps;
     const groupColumns = columns ?? [];
 

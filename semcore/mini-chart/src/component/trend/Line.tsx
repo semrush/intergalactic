@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, type AbstractComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -86,7 +86,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
   }
 
   render() {
-    const STrendLine = Root;
+    const STrendLine = Root();
     const { uid, withArea, animate, lastPointColor, resolveColor, loading, styles } = this.asProps;
 
     const points: string[] = [];
@@ -149,16 +149,16 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
   }
 }
 
-export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances> =
-  createComponent(TrendLineRoot, {});
+export const TrendLine = createComponent(TrendLineRoot, {});
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 
-export const TrendArea: ComponentType<TrendLineProps, {}, {}, Enhances> = createComponent(
+export const TrendArea = createComponent(
   TrendLineRoot,
   {},
   {
     enhancements: [
+      // @ts-ignore. TODO: Brauer Ilia - if this is only one place - change this logic somehow
       () => {
         return {
           wrapperProps: (props: TrendLineProps) => {

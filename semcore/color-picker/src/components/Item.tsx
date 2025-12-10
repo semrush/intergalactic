@@ -12,7 +12,6 @@ type ItemAsProps = {
   editable?: boolean;
   selected?: boolean;
   onRemove?: React.MouseEventHandler | React.KeyboardEventHandler;
-  Children?: React.FC;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
   uid: string;
 };
@@ -31,7 +30,7 @@ const interaction = {
 export function Item(props: ItemAsProps) {
   const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
     props as any;
-  const SItemContainer = Root;
+  const SItemContainer = Root();
   const SLabel = Box;
   const SCloseIcon = Box;
   const deleteDescriber = `delete_${value}_${uid}`;

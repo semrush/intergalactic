@@ -308,24 +308,24 @@ class DropdownMenuRoot extends AbstractDropdown {
 
   render() {
     const { Children, selectedIndex, interaction, timeout } = this.asProps;
-
+    const SRoot = Root();
     this.itemProps = [];
 
     return (
       <selectedIndexContext.Provider value={selectedIndex}>
-        <Root
+        <SRoot
           render={Dropdown}
           timeout={timeout || (interaction === 'hover' ? [0, 100] : undefined)}
         >
           <Children />
-        </Root>
+        </SRoot>
       </selectedIndexContext.Provider>
     );
   }
 }
 
 function List({ styles, Children }) {
-  const SDropdownMenuList = Root;
+  const SDropdownMenuList = Root();
   const SBar = ScrollAreaComponent.Bar;
 
   return sstyled(styles)(
@@ -341,7 +341,7 @@ function List({ styles, Children }) {
   );
 }
 function Actions({ styles }) {
-  const SDropdownMenuActions = Root;
+  const SDropdownMenuActions = Root();
 
   return sstyled(styles)(<SDropdownMenuActions render={Flex} />);
 }
@@ -365,10 +365,11 @@ function Menu(props) {
     autoFocus,
     animationsDisabled,
   };
+  const SRoot = Root();
   return (
     <ListBoxContextProvider>
       <DropdownMenu.Popper {...popperProps} role={null}>
-        <Root render={DropdownMenu.List} />
+        <SRoot render={DropdownMenu.List} />
       </DropdownMenu.Popper>
     </ListBoxContextProvider>
   );
@@ -385,7 +386,7 @@ function Item({
   actionsRef,
   'aria-checked': ariaChecked,
 }) {
-  const SDropdownMenuItemContainer = Root;
+  const SDropdownMenuItemContainer = Root();
   const itemRef = React.useRef();
 
   const [highlighted, setHighlighted] = React.useState(false);
@@ -465,16 +466,17 @@ function Item({
 }
 
 function Addon(props) {
-  const SDropdownMenuItemAddon = Root;
+  const SDropdownMenuItemAddon = Root();
   return sstyled(props.styles)(<SDropdownMenuItemAddon render={Box} />);
 }
 
 function Trigger() {
-  return <Root render={Dropdown.Trigger} />;
+  const SRoot = Root();
+  return <SRoot render={Dropdown.Trigger} />;
 }
 
 function ItemContent({ styles }) {
-  const SItemContent = Root;
+  const SItemContent = Root();
   const ref = React.useRef();
   const menuItemCtxValue = React.useContext(menuItemContext);
 
@@ -521,12 +523,12 @@ function ItemContent({ styles }) {
 }
 
 function ItemContentText({ styles }) {
-  const SItemContentText = Root;
+  const SItemContentText = Root();
   return sstyled(styles)(<SItemContentText render={Text} />);
 }
 
 function ItemHint({ styles }) {
-  const SItemHint = Root;
+  const SItemHint = Root();
   const { hintId } = React.useContext(menuItemContext);
 
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);

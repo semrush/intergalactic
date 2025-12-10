@@ -8,7 +8,7 @@ import type { AnimatedNumberBaseProps } from './index';
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
 
-export const AnimatedNumber = ((props) => {
+export const AnimatedNumber = (props) => {
   const ref = React.useRef<HTMLElement>(null);
   const defaultDurationStr = useCssVariable('--intergalactic-duration-counter', '200', ref);
   const defaultDuration = React.useMemo(
@@ -62,4 +62,4 @@ export const AnimatedNumber = ((props) => {
       {formatValue(value)}
     </Tag>
   );
-}) as Intergalactic.Component<'div', AnimatedNumberBaseProps>;
+};

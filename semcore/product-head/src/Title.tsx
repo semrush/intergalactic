@@ -1,10 +1,9 @@
 import { Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
-  Component,
+  AbstractComponent,
   sstyled,
   Root,
-  type Intergalactic,
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
@@ -21,7 +20,7 @@ class TitleRoot extends AbstractComponent<HeaderTitleProps> {
   static style = style;
 
   render() {
-    const STitle = Root;
+    const STitle = Root();
     const SName = 'div';
     const { Children, styles, toolName } = this.asProps;
     return sstyled(styles)(
@@ -36,14 +35,12 @@ class TitleRoot extends AbstractComponent<HeaderTitleProps> {
 }
 
 function Tool(props: any) {
-  const STool = Root;
+  const STool = Root();
   return sstyled(props.styles)(<STool render={Box} />);
 }
 
 const Title = createComponent(TitleRoot, {
   Tool,
-}) as any as Intergalactic.Component<'h1', HeaderTitleProps> & {
-  Tool: typeof Box;
-};
+});
 
 export default Title;

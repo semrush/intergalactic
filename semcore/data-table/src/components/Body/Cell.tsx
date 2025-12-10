@@ -60,7 +60,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponen
 
   render() {
     const SCellWrapper = Box;
-    const SCell = Root;
+    const SCell = Root();
     const {
       Children,
       styles,

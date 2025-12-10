@@ -1,13 +1,12 @@
 import {
-  type ReactNode,
   type AllHTMLAttributes,
-  type ForwardRefExoticComponent,
-  PureComponent,
+  type ForwardRefExoticComponent, type ForwardRefRenderFunction,
+  PureComponent, type RefAttributes,
   type RefObject,
 } from 'react';
 import type React from 'react';
 
-import { CORE_COMPONENT, CREATE_COMPONENT, PARENT_COMPONENTS } from './symbols';
+import { CORE_COMPONENT, PARENT_COMPONENTS } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
 export interface IRootComponentProps {
@@ -18,21 +17,20 @@ export interface IRootComponentProps {
   'data-ui-name'?: string;
 }
 
-export interface IRootNodeProps {
-  render: Intergalactic.Tag;
-  tag?: Intergalactic.Tag;
-
-  [key: string]: unknown;
+export interface IRootNodeProps<T extends Intergalactic.Tag | never> {
+  render?: Intergalactic.Tag;
+  tag?: T;
 }
 
-type Root = ForwardRefExoticComponent<IRootNodeProps>;
+export type RootResult<T extends Intergalactic.Tag | never> = ForwardRefExoticComponent<IRootNodeProps<T> & Intergalactic.InternalTypings.ComponentPropsNesting<T>>;
 
 /** @deprecated */
 export type PropGetterFn = <T extends {}>(props?: T) => T & { [key: string]: unknown };
 
-const Root: Root = undefined as any;
-
-export { Root };
+export function Root<T extends Intergalactic.Tag | never>(): RootResult<T> {
+  // @ts-ignore
+  return {};
+}
 
 type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[] = [], InnerProps = {}> = Readonly<
   Props &
@@ -41,58 +39,117 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
-export type PropsExtractor<C extends AbstractComponent<any> | FunctionComponent<any> | AbstractCtor<AbstractComponent<any>>> = C extends AbstractComponent<infer P, any>
-  ? P
-  : C extends new (...args: any[]) => AbstractComponent<infer P, any>
-    ? P
-    : C extends (...args: infer P) => any
-      ? P[0]
-      : never;
+export type PropsExtractor<
+  C extends AbstractComponent<any, any, any, any, any> | FunctionComponent<any> | AbstractCtor<AbstractComponent<any, any, any, any, any>> | ForwardRefRenderFunction<any, any>,
+  D extends keyof React.JSX.IntrinsicElements = 'div',
+> = C extends (AbstractComponent<infer P, any, any, any, any>) | (new (...args: any[]) => AbstractComponent<infer P, any, any, any, any>)
+  ? P & Intergalactic.InternalTypings.ComponentPropsNesting<ExtendedFromHTMLProps<P, D>> & Partial<IRootNodeProps<any>>
+  : C extends (...args: infer P) => any
+    ? P[0] extends undefined
+      ? Intergalactic.InternalTypings.ComponentPropsNesting<D>
+      : P[0] & Intergalactic.InternalTypings.ComponentPropsNesting<ExtendedFromHTMLProps<P[0], D>> & Partial<IRootNodeProps<any>>
+    : never;
 
-export interface AbstractCtor<T extends AbstractComponent<any>> {
+export interface AbstractCtor<T extends AbstractComponent<any, any, any, any, any>> {
   new (...args: any[]): T;
   displayName?: string;
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>;
   enhance?: Readonly<Array<(props: PropsExtractor<T>) => any>>;
 }
 
 export interface FunctionComponent<P = {}> extends React.FunctionComponent<P> {
   [CORE_COMPONENT]?: boolean;
-  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>;
+  [PARENT_COMPONENTS]?: Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>;
   enhance?: Readonly<Array<(props: P) => any>>;
 }
 
+type ExtendedFromHTMLProps<P, D extends keyof React.JSX.IntrinsicElements> = P extends IRootNodeProps<any>
+  ? P['render'] extends | AbstractComponent<any, any, any, any, any> | FunctionComponent<any>
+    ? P['render']
+    : P['tag'] extends keyof React.JSX.IntrinsicAttributes | AbstractComponent<any, any, any, any, any> | FunctionComponent<any>
+      ? P['tag']
+      : D
+  : D;
+
 export abstract class AbstractComponent<
   Props = {},
-  Context = {},
-  State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
+  Uncontrolled extends Readonly<{ [key in keyof Props]?: null | ((value: Props[key], e?: any) => void | boolean) | ((value: Props[key], e?: any) => void | boolean)[] }> = never,
   InnerProps = {},
+  State = {},
 > extends PureComponent<Props, State> {
-  protected uncontrolledProps() {
+  protected uncontrolledProps(): [Uncontrolled] extends [never] ? {} : Uncontrolled {
+    // @ts-ignore. This is a default value. Should be defined in related classes.
     return {};
   };
 
-  protected get handlers(): Readonly<{ [key in keyof ReturnType<typeof this.uncontrolledProps>]: ReturnType<typeof this.uncontrolledProps[key]> extends ((...args: infer P) => any) ? P[0] : never }> {
+  protected get handlers(): [Uncontrolled] extends [never]
+    ? {}
+    : Readonly<{
+      [key in keyof Uncontrolled]: Uncontrolled[key] extends null
+        ? key extends keyof Props ? (value: Props[key], e?: any) => void : never
+        : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
+    }> {
+    // @ts-ignore. The body will be generated in factory
     return {};
   }
 
   protected get asProps() {
     return {} as Readonly<
-      { Root: Root } &
+      { Root: RootResult<any> } &
       BaseAsProps<Props, Enhance, InnerProps> &
       Intergalactic.InternalTypings.EfficientOmit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>>
     >;
   }
 
-  protected Root: Root = undefined as any;
+  protected Root: RootResult<any> = undefined as any;
 
   protected isControlled = false;
 
   protected [CORE_COMPONENT] = true;
-  protected [PARENT_COMPONENTS]: Array<AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>> = [];
+  protected [PARENT_COMPONENTS]: Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>> = [];
 }
+
+export type IntergalacticComponent<
+  Tag extends keyof React.JSX.IntrinsicElements,
+  C extends AbstractComponent<any, any, any, any, any>,
+  OriginComponent extends AbstractCtor<C> | FunctionComponent<any>,
+  ChildMap extends Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any> | [AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>, Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>]> = never,
+  ContextType = {},
+> = (OriginComponent extends FunctionComponent<any>
+  ? React.FC<React.PropsWithChildren<Omit<PropsExtractor<OriginComponent, Tag>, keyof IRootComponentProps>>>
+  : AbstractCtor<AbstractComponent<
+    React.PropsWithChildren<Omit<PropsExtractor<OriginComponent, Tag>, keyof IRootComponentProps>> & RefAttributes<Tag>,
+    OriginComponent extends AbstractComponent<any, infer E> ? E : [],
+    OriginComponent extends AbstractComponent<any, any, infer UP> ? UP : never
+  >>) & {
+    [key in keyof ChildMap]: ChildMap[key] extends [infer Parent, infer Ch]
+      ? Parent extends AbstractCtor<infer C>
+      // eslint-disable-next-line @stylistic/indent-binary-ops
+        ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType> & {
+          [key in keyof Ch]: Ch[key] extends AbstractCtor<infer C>
+            ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+            : Ch[key] extends FunctionComponent<any>
+              ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+              : never
+        }
+        : Parent extends FunctionComponent<any>
+        // eslint-disable-next-line @stylistic/indent-binary-ops
+          ? Intergalactic.Component<'div', PropsExtractor<Parent>, ContextType> & {
+            [key in keyof Ch]: Ch[key] extends AbstractCtor<infer C>
+              ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+              : Ch[key] extends FunctionComponent<any>
+                ? Intergalactic.Component<'div', PropsExtractor<Ch[key]>, ContextType>
+                : never
+          }
+          : never
+      : ChildMap[key] extends AbstractCtor<infer C>
+        ? Intergalactic.Component<'div', PropsExtractor<C>, ContextType>
+        : ChildMap[key] extends FunctionComponent<infer P>
+          ? Intergalactic.Component<'div', P, ContextType>
+          : never
+  };
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Intergalactic {
@@ -171,8 +228,8 @@ export namespace Intergalactic {
             ? ReactComponentProps<Tag>
             : Tag extends ReactFCLike
               ? ReactFCLikeProps<Tag>
-              : Tag extends keyof JSX.IntrinsicElements
-                ? JSX.IntrinsicElements[Tag]
+              : Tag extends keyof React.JSX.IntrinsicElements
+                ? React.JSX.IntrinsicElements[Tag]
                 : {},
         Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}
       >,
@@ -255,8 +312,8 @@ export namespace Intergalactic {
       ? InferElementFromRef<T['ref']>
       : HTMLElement;
     export type ComponentHtmlElement<Tag extends ComponentTag> =
-      Tag extends keyof JSX.IntrinsicElements
-        ? InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>
+      Tag extends keyof React.JSX.IntrinsicElements
+        ? InferJsxIntrinsicElement<React.JSX.IntrinsicElements[Tag]>
         : Tag extends { __nestedProps: infer NestedProps }
           ? InferRefElementFromProps<NestedProps>
           : HTMLElement;

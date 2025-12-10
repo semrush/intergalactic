@@ -1,4 +1,4 @@
-import { Component, sstyled } from '@semcore/core';
+import { AbstractComponent, sstyled } from '@semcore/core';
 import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { bisector } from 'd3-array';
 import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';

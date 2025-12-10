@@ -354,7 +354,7 @@ type EllipsisContentAsProps = {
 };
 
 const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
-  const SEllipsis = Root;
+  const SEllipsis = Root();
   const ellipsisMiddleContext = React.useContext(EllipsisMiddleContext);
   const STail = 'span';
   const SBeginning = 'span';
@@ -379,9 +379,6 @@ const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
 const Ellipsis = createComponent(RootEllipsis, {
   Content,
   Popper: Tooltip.Popper,
-}) as any as Intergalactic.Component<'div', EllipsisProps> & {
-  Content: typeof Box;
-  Popper: typeof Tooltip.Popper;
-};
+});
 
 export default Ellipsis;

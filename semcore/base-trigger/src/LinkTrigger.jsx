@@ -26,7 +26,7 @@ class RootLinkTrigger extends AbstractComponent {
   }
 
   render() {
-    const SLinkTrigger = Root;
+    const SLinkTrigger = Root();
     const SLinkAddon = LinkTrigger.Addon;
     const { Children, loading, styles, empty, color: providedColor, resolveColor } = this.asProps;
 
@@ -50,7 +50,7 @@ class RootLinkTrigger extends AbstractComponent {
 }
 
 function Text(props) {
-  const SText = Root;
+  const SText = Root();
   const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
@@ -62,7 +62,7 @@ function Text(props) {
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} />);
 }
 

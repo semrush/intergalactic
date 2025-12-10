@@ -24,7 +24,7 @@ class SkeletonRoot extends AbstractComponent {
   };
 
   render() {
-    const SSkeleton = Root;
+    const SSkeleton = Root();
     const { styles, duration, hidden, getI18nText } = this.asProps;
 
     if (hidden) return null;
@@ -86,7 +86,7 @@ class SkeletonSVG extends AbstractComponent {
 
   render() {
     const { Children, styles, uid, theme, duration } = this.asProps;
-    const SSkeletonSVG = Root;
+    const SSkeletonSVG = Root();
 
     return sstyled(styles)(
       <SSkeletonSVG

@@ -1,5 +1,5 @@
 import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
-import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
@@ -871,7 +871,7 @@ class DataTableRoot<
   };
 
   render() {
-    const SDataTable = Root;
+    const SDataTable = Root();
     const {
       Children,
       styles,

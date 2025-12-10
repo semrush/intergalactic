@@ -1,4 +1,4 @@
-import { Component } from '@semcore/core';
+import { AbstractComponent } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import { stack as d3Stack } from 'd3-shape';
 import React from 'react';

@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { Component, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
@@ -238,7 +238,7 @@ function Annotation(props) {
 }
 const excludeProps = ['data', 'scale', 'value', 'offset'];
 function Label(props) {
-  const SBarLabel = Root;
+  const SBarLabel = Root();
   const { styles, Children } = props;
   return sstyled(styles)(
     <SBarLabel render={Box} __excludeProps={excludeProps}>
@@ -247,7 +247,7 @@ function Label(props) {
   );
 }
 function Percent(props) {
-  const SBarPercent = Root;
+  const SBarPercent = Root();
   const { styles, Children } = props;
   return sstyled(styles)(
     <SBarPercent render={Box} __excludeProps={excludeProps}>
@@ -256,7 +256,7 @@ function Percent(props) {
   );
 }
 function Value(props) {
-  const SBarValue = Root;
+  const SBarValue = Root();
   const { styles, Children } = props;
   return sstyled(styles)(
     <SBarValue render={Box} __excludeProps={excludeProps}>
@@ -471,7 +471,7 @@ class Hover extends AbstractComponent {
 
 const CompactHorizontalBarTooltip = (props) => {
   if (!props.render) return null;
-  const SCompactHorizontalBarRadarTooltip = Root;
+  const SCompactHorizontalBarRadarTooltip = Root();
   return sstyled(props.styles)(
     <SCompactHorizontalBarRadarTooltip
       render={Tooltip}

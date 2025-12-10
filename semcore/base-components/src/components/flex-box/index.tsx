@@ -1,4 +1,4 @@
-export { default as Box } from './Box';
+export { Box } from './Box';
 export { default as useBox } from './Box/useBox';
 export * from './Box/useBox';
 export { default as Flex } from './Flex';

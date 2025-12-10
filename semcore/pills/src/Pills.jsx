@@ -83,7 +83,7 @@ class RootPills extends AbstractComponent {
   };
 
   render() {
-    const SPills = Root;
+    const SPills = Root();
     const { Children, styles, controlsLength, disabled, behavior, value } = this.asProps;
 
     return sstyled(styles)(
@@ -102,7 +102,7 @@ class RootPills extends AbstractComponent {
 }
 
 function Pill(props) {
-  const SPill = Root;
+  const SPill = Root();
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
   const roleAreaProps = {};
@@ -131,12 +131,12 @@ function Pill(props) {
 }
 
 function Text(props) {
-  const SText = Root;
+  const SText = Root();
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 

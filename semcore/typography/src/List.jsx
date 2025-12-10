@@ -22,7 +22,7 @@ class ListRoot extends AbstractComponent {
   }
 
   render() {
-    const SList = Root;
+    const SList = Root();
     const { styles } = this.asProps;
     return sstyled(styles)(<SList render={Text} tag='ul' />);
   }
@@ -33,7 +33,7 @@ class ItemRoot extends AbstractComponent {
   static displayName = 'Item';
 
   render() {
-    const SItem = Root;
+    const SItem = Root();
     const { styles, children, marker: markerNode, Children } = this.asProps;
     const SMarker = 'span';
     const SContent = 'div';
@@ -51,15 +51,13 @@ class ItemRoot extends AbstractComponent {
 
 function Content(props) {
   const { styles, children } = props;
-  const SContent = Root;
+  const SContent = Root();
 
   return sstyled(styles)(<SContent render={Flex}>{children}</SContent>);
 }
 
 Content.displayName = 'Content';
 
-const Item = createComponent(ItemRoot, { Content });
-
-const List = createComponent(ListRoot, { Item });
+const List = createComponent(ListRoot, { Item: [ItemRoot, { Content }] });
 
 export default List;

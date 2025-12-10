@@ -15,7 +15,7 @@ class RootBadge extends AbstractComponent {
   };
 
   render() {
-    const SBadge = Root;
+    const SBadge = Root();
     const { styles, color, bg, resolveColor } = this.asProps;
 
     return sstyled(styles)(

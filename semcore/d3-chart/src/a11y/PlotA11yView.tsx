@@ -21,7 +21,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   config: providedConfig,
   locale,
 }) => {
-  const SPlotA11yView = Root;
+  const SPlotA11yView = Root();
   const translations = useAsyncI18nMessages(localizedMessages, locale);
   const intl = React.useMemo(
     () => getIntl(locale, translations, localizedMessages),

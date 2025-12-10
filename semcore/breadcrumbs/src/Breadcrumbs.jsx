@@ -27,7 +27,7 @@ class Breadcrumbs extends AbstractComponent {
   }
 
   render() {
-    const SBreadcrumbs = Root;
+    const SBreadcrumbs = Root();
     const SListContainer = 'ol';
     const { styles, getI18nText, Children } = this.asProps;
     return sstyled(styles)(
@@ -48,7 +48,7 @@ class Item extends AbstractComponent {
   };
 
   render() {
-    const SBreadcrumbsItem = Root;
+    const SBreadcrumbsItem = Root();
     const { styles, separator, active, disabled, href, tabIndex, tag } = this.asProps;
     const SSeparator = 'div';
     const SListItem = 'li';

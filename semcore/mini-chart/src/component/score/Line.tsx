@@ -5,13 +5,12 @@ import React from 'react';
 
 import style from './line.shadow.css';
 import type {
-  ScoreLineComponent,
   ScoreLineGaugeProps,
   SegmentProps,
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends AbstractComponent<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+class LineRoot extends AbstractComponent<ScoreLineGaugeProps, typeof LineRoot.enhance> {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 
@@ -22,7 +21,7 @@ class LineRoot extends AbstractComponent<ScoreLineGaugeProps, {}, {}, typeof Lin
   };
 
   getSegmentProps(segmentProps: SegmentProps) {
-    const { children, resolveColor } = this.asProps;
+    const { children = [], resolveColor } = this.asProps;
 
     let sum = 0;
     React.Children.forEach(children, (child) => {
@@ -40,7 +39,7 @@ class LineRoot extends AbstractComponent<ScoreLineGaugeProps, {}, {}, typeof Lin
   }
 
   render() {
-    const SLineGauge = Root;
+    const SLineGauge = Root();
     const SLineValue = Box;
     const SAnimationLine = Box;
     const SLineGaugeSegment = Flex;
@@ -106,7 +105,7 @@ class LineRoot extends AbstractComponent<ScoreLineGaugeProps, {}, {}, typeof Lin
 
 function Segment(props: InnerSegmentProps) {
   const { styles, value } = props;
-  const SLineSegmentItem = Root;
+  const SLineSegmentItem = Root();
 
   if (!value) return null;
 
@@ -114,7 +113,7 @@ function Segment(props: InnerSegmentProps) {
 }
 Segment.displayName = 'Segment';
 
-export const ScoreLine: ScoreLineComponent = createComponent(LineRoot, {
+export const ScoreLine = createComponent(LineRoot, {
   Segment,
 });
 

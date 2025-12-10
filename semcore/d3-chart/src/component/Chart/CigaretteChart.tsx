@@ -235,7 +235,7 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   override render() {
-    const SChart = Root;
+    const SChart = Root();
     const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } =
       this.asProps;
 

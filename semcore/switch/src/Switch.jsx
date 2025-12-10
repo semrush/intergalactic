@@ -64,7 +64,7 @@ class Switch extends AbstractComponent {
   }
 
   render() {
-    const SSwitch = Root;
+    const SSwitch = Root();
     const { Children, styles, controlsLength } = this.asProps;
     const checked = this.inputRef.current?.checked;
 
@@ -191,7 +191,7 @@ class Value extends AbstractComponent {
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { styles, neighborLocation, uid } = props;
 
   return (

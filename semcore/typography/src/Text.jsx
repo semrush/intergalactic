@@ -16,7 +16,7 @@ function getTextDecoration(underline, lineThrough) {
 }
 
 function Text(props, ref) {
-  const SText = Root;
+  const SText = Root();
   const { color, underline, lineThrough } = props;
   const textDecoration = getTextDecoration(underline, lineThrough);
   const resolveColor = useColorResolver();

@@ -29,8 +29,7 @@ function RootPlugin({ types: t }, opts) {
           if (specifier.imported?.name !== 'Root') return;
 
           p.scope.getBinding(specifier.local.name)?.referencePaths.forEach((refP) => {
-            if (!t.isVariableDeclarator(refP.container) && !t.isJSXOpeningElement(refP.container))
-              return;
+            if (!t.isCallExpression(refP.container)) return;
 
             let propsVal;
             const propsIdent = refP.scope.generateUidIdentifierBasedOnNode('props');
@@ -60,7 +59,7 @@ function RootPlugin({ types: t }, opts) {
               id: propsIdent,
               init: propsVal,
             });
-            const nameJSX = refP.container.id?.name || refP.container.name?.name;
+            const nameJSX = refP.parentPath.container.id?.name;
             refP.scope.path.traverse({
               JSXElement(p) {
                 if (nameJSX !== p.node.openingElement.name.name) return;
@@ -98,7 +97,7 @@ function RootPlugin({ types: t }, opts) {
                   ),
                 ];
 
-                if (t.isVariableDeclarator(refP.container)) {
+                if (t.isVariableDeclarator(refP.parentPath.container)) {
                   const varP = p.scope.getBinding(p.node.openingElement.name.name).path;
                   if (options.coverage) {
                     varP.scope.push({

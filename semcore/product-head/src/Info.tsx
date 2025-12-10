@@ -1,10 +1,9 @@
 import { Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
-  Component,
+  AbstractComponent,
   sstyled,
   Root,
-  type Intergalactic,
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
@@ -21,13 +20,13 @@ class InfoRoot extends AbstractComponent<BoxProps> {
   static style = style;
 
   render() {
-    const SInfo = Root;
+    const SInfo = Root();
     return sstyled(this.asProps.styles)(<SInfo render={Box} />);
   }
 }
 
 function Item(props: any) {
-  const SItem = Root;
+  const SItem = Root();
   const { Children, styles, label } = props;
   return sstyled(styles)(
     <SItem render={Box}>
@@ -38,7 +37,7 @@ function Item(props: any) {
 }
 
 function Label(props: any) {
-  const SLabel = Root;
+  const SLabel = Root();
   return sstyled(props.styles)(<SLabel render={Box} />);
 }
 
@@ -49,10 +48,6 @@ const Info = createComponent(InfoRoot, {
       Label,
     },
   ],
-}) as typeof Box & {
-  Item: Intergalactic.Component<'div', InfoItemProps> & {
-    Label: typeof Box;
-  };
-};
+});
 
 export default Info;

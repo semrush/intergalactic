@@ -74,7 +74,7 @@ class Input extends AbstractComponent {
   }
 
   render() {
-    const SInput = Root;
+    const SInput = Root();
     const SOutline = 'div';
     const { Children, styles, neighborLocation, controlsLength, state } = this.asProps;
     return (
@@ -121,7 +121,7 @@ class Value extends AbstractComponent {
   }
 
   render() {
-    const SValue = Root;
+    const SValue = Root();
     const { styles, neighborLocation, state } = this.asProps;
 
     return (
@@ -143,7 +143,7 @@ class Value extends AbstractComponent {
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { Children, styles, neighborLocation } = props;
   return (
     <NeighborLocation.Detect neighborLocation={neighborLocation}>

@@ -51,7 +51,7 @@ class Dot extends AbstractComponent {
   ref = React.createRef();
 
   render() {
-    const SDot = Root;
+    const SDot = Root();
     const SA11yAlert = 'div';
 
     let {

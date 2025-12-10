@@ -1,6 +1,6 @@
 import type { CheckboxProps } from '@semcore/checkbox';
 import Checkbox from '@semcore/checkbox';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import style from './checkbox.shadow.css';
@@ -36,7 +36,7 @@ class CheckboxFHRoot extends AbstractComponent<CheckboxProps> {
   }
 
   render() {
-    const SHighlightedCheckbox = Root;
+    const SHighlightedCheckbox = Root();
     const { styles, Children, children: hasChildren } = this.asProps;
 
     return sstyled(styles)(

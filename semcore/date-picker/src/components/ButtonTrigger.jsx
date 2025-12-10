@@ -5,11 +5,13 @@ import Calendar from '@semcore/icon/Calendar/m';
 import React from 'react';
 
 const ButtonTriggerRoot = ({ Children }) => {
+  const SButtonTriggerRoot = Root();
+
   return (
-    <Root render={BaseTrigger}>
+    <SButtonTriggerRoot render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Calendar} />
       {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, true)}
-    </Root>
+    </SButtonTriggerRoot>
   );
 };
 

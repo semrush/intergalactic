@@ -33,7 +33,7 @@ const setAriaValues = (
   }
 };
 
-export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
+export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, typeof ScrollBarRoot.enhance> {
   static displayName = 'Bar';
 
   static style = style;
@@ -306,7 +306,7 @@ export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typ
   }
 
   render() {
-    const SScrollBar = Root;
+    const SScrollBar = Root();
     const { styles, uid, position, container, orientation, hideFromScreenReaders } = this.asProps;
     const { visibleScroll } = this.state;
 
@@ -375,7 +375,7 @@ export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, {}, {}, typ
 
 export function Slider(props: ScrollBarProps) {
   const { styles } = props;
-  const SSlider = Root;
+  const SSlider = Root();
 
   return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
 }

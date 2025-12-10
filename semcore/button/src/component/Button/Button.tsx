@@ -3,7 +3,7 @@ import { createComponent, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { ButtonAddonProps, ButtonComponent, ButtonTextProps } from './Button.type';
+import type { ButtonAddonProps, ButtonTextProps } from './Button.type';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 
 class RootButton extends AbstractButton {
@@ -20,18 +20,18 @@ class RootButton extends AbstractButton {
 }
 
 function Text(props: ButtonTextProps) {
-  const SText = Root;
+  const SText = Root();
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props: ButtonAddonProps) {
-  const SAddon = Root;
+  const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
 const Button = createComponent(RootButton, {
   Text,
   Addon,
-}) as ButtonComponent;
+});
 
 export default Button;

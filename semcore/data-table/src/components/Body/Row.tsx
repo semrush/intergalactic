@@ -1,7 +1,7 @@
 import { Box, Collapse } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import { AbstractComponent, Root, sstyled, createComponent } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
@@ -23,7 +23,7 @@ type State<UniqKeyType> = {
   accordionComponent?: React.ReactNode;
 };
 
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponent<DataTableRowProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], RowPropsInner<Data, UniqKeyType>> {
+export class RowRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponent<DataTableRowProps<Data, UniqKeyType>, [], never, RowPropsInner<Data, UniqKeyType>, State<UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 
@@ -418,7 +418,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends AbstractCo
   }
 
   render() {
-    const SRow = Root;
+    const SRow = Root();
     const SCollapseRow = Collapse;
     const SCell = Row.Cell;
     const SCheckboxCell = Row.Cell;

@@ -15,7 +15,7 @@ class CardRoot extends AbstractComponent {
   static style = style;
 
   render() {
-    const SCard = Root;
+    const SCard = Root();
     const { Children, styles, forcedAdvancedMode } = this.asProps;
 
     const advancedMode =
@@ -41,7 +41,7 @@ class CardRoot extends AbstractComponent {
 function Title(props) {
   const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
   const hintAfter = props.hintAfter || props.hint;
-  const STitle = Root;
+  const STitle = Root();
   const SInfo = DescriptionTooltip;
   const SInfoTrigger = SInfo.Trigger;
 
@@ -87,19 +87,19 @@ function Title(props) {
 
 function Description(props) {
   const { styles } = props;
-  const SDescription = Root;
+  const SDescription = Root();
   return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
 function Header(props) {
   const { styles } = props;
-  const SHeader = Root;
+  const SHeader = Root();
   return sstyled(styles)(<SHeader render={Box} {...props} />);
 }
 
 function Body(props) {
   const { styles } = props;
-  const SBody = Root;
+  const SBody = Root();
   return sstyled(styles)(<SBody render={Box} {...props} />);
 }
 

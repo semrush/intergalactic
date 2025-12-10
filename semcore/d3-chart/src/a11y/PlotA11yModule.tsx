@@ -23,7 +23,7 @@ export type A11yViewProps = {
 };
 
 export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
-  const SPlotA11yModule = Root;
+  const SPlotA11yModule = Root();
   const [wasFocused, setWasFocused] = React.useState(globalWasFocused);
   const [navWithKeyboard, setNavWithKeyboard] = React.useState(globalNavWithKeyboard);
   const [plotA11yView, setPlotA11yView] = React.useState<{

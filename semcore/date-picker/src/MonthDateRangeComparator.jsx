@@ -21,7 +21,7 @@ const dateParts = { day: false, month: true, year: true };
 
 function RangeInput(props) {
   const { styles } = props;
-  const SComparatorRangeInput = Root;
+  const SComparatorRangeInput = Root();
   const SRangeIndicator = Box;
   return sstyled(styles)(
     <SComparatorRangeInput

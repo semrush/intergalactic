@@ -58,7 +58,7 @@ class TabPanelRoot extends AbstractComponent {
   }
 
   render() {
-    const STabPanel = Root;
+    const STabPanel = Root();
     const { styles } = this.asProps;
 
     return sstyled(styles)(<STabPanel render={Box} role='tablist' />);
@@ -66,7 +66,7 @@ class TabPanelRoot extends AbstractComponent {
 }
 
 function TabPanelItem(props) {
-  const STabPanelItem = Root;
+  const STabPanelItem = Root();
   const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
@@ -79,13 +79,13 @@ function TabPanelItem(props) {
 }
 
 function Text(props) {
-  const SText = Root;
+  const SText = Root();
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }

@@ -1,6 +1,6 @@
 import { Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
+import { AbstractComponent, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
@@ -449,17 +449,17 @@ class RangePickerAbstract extends AbstractComponent {
 
   render() {
     const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
-
+    const SRoot = Root();
     return (
       <>
         {sstyled(styles)(
-          <Root
+          <SRoot
             render={Dropdown}
             use:aria-label={providedAriaLabel}
             __excludeProps={['onChange', 'value']}
           >
             <Children />
-          </Root>,
+          </SRoot>,
         )}
       </>
     );
@@ -468,12 +468,14 @@ class RangePickerAbstract extends AbstractComponent {
 
 function Apply(props) {
   const { getI18nText } = props;
-  return <Root render={Button} use='primary' children={getI18nText('apply')} />;
+  const SRoot = Root();
+  return <SRoot render={Button} use='primary' children={getI18nText('apply')} />;
 }
 
 function Reset(props) {
   const { getI18nText } = props;
-  return <Root render={Button} use='tertiary' theme='muted' children={getI18nText('reset')} />;
+  const SRoot = Root();
+  return <SRoot render={Button} use='tertiary' theme='muted' children={getI18nText('reset')} />;
 }
 
 export { Apply, Reset };

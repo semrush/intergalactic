@@ -1,4 +1,4 @@
-import { Component, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
@@ -98,7 +98,7 @@ class ItemPicker extends AbstractComponent {
   };
 
   render() {
-    const SPickerInput = Root;
+    const SPickerInput = Root();
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } =
       this.asProps;
     const { dirtyValue, visible } = this.state;

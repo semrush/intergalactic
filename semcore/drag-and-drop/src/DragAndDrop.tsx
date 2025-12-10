@@ -49,7 +49,7 @@ type State = {
 
 type A11yHintKeys = keyof typeof localizedMessages.en;
 
-class DragAndDropRoot extends AbstractComponent<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
+class DragAndDropRoot extends AbstractComponent<DragAndDropProps, typeof DragAndDropRoot.enhance, never, {}, State> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {
@@ -570,7 +570,7 @@ class DragAndDropRoot extends AbstractComponent<DragAndDropProps, {}, State, typ
     const { a11yHint } = this.state;
     const context = { attach, detach };
     const { getI18nText, uid } = this.asProps;
-    const SDnDContainer = Root;
+    const SDnDContainer = Root();
 
     return sstyled(this.asProps.styles)(
       <DragAndDropContext.Provider value={context}>
@@ -589,7 +589,7 @@ class DragAndDropRoot extends AbstractComponent<DragAndDropProps, {}, State, typ
 }
 
 const Draggable = (props: any) => {
-  const SDraggable = Root;
+  const SDraggable = Root();
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
   const {
@@ -702,7 +702,7 @@ const findNextRectangleIndex = <
 };
 
 const DropZone = (props: DropZoneProps) => {
-  const SDropZone = Root;
+  const SDropZone = Root();
   const { styles } = props;
 
   return sstyled(styles)(

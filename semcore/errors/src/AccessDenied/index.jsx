@@ -19,8 +19,9 @@ class RootAccessDenied extends AbstractComponent {
 
   render() {
     const { Children, getI18nText, homeLink, titleTag } = this.asProps;
+    const SRoot = Root();
     return (
-      <Root render={Error}>
+      <SRoot render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description wMax='640px'>{getI18nText('text')}</Error.Description>
         <Children />
@@ -29,7 +30,7 @@ class RootAccessDenied extends AbstractComponent {
             {getI18nText('btnHome')}
           </Button>
         </Error.Controls>
-      </Root>
+      </SRoot>
     );
   }
 }

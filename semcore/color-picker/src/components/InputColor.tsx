@@ -97,7 +97,7 @@ class InputColorRoot extends AbstractComponent<InputColorAsProps> {
     const { styles, state, value, onFocus, onBlur, focus, getI18nText, size } = this.asProps;
 
     const SPaletteManager = Box;
-    const SInputValue = Root;
+    const SInputValue = Root();
     const SInput = 'div';
     const SInputContainer = 'div';
     const SConfirmColor = Input.Addon;

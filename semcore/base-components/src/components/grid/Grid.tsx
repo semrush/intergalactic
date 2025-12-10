@@ -2,7 +2,7 @@ import { createComponent, AbstractComponent, Root, sstyled } from '@semcore/core
 import React from 'react';
 
 import { Box, Flex } from '../flex-box';
-import type { RowProps, ColProps, Row as RowType } from './Grid.types';
+import type { RowProps, ColProps } from './Grid.types';
 import style from './style/grid.shadow.css';
 
 class Row extends AbstractComponent<RowProps> {
@@ -20,16 +20,17 @@ class Row extends AbstractComponent<RowProps> {
   }
 
   render() {
+    const SGrid = Root();
     const { gutter } = this.asProps;
 
-    return <Root render={Flex} flexWrap mx={gutter ? `${gutter * -2}px` : undefined} />;
+    return <SGrid render={Flex} flexWrap mx={gutter ? `${gutter * -2}px` : undefined} />;
   }
 }
 
 const excludeProps = ['span'];
 
 function Col(props: ColProps) {
-  const SCol = Root;
+  const SCol = Root();
   const { styles, gutter } = props;
   let { span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
 
@@ -68,4 +69,4 @@ function Col(props: ColProps) {
   );
 }
 
-export default createComponent(Row, { Col }) as typeof RowType;
+export default createComponent(Row, { Col });

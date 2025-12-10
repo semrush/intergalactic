@@ -123,7 +123,7 @@ class Today extends AbstractComponent {
   static enhance = [i18nEnhance(localizedMessages)];
 
   render() {
-    const SToday = Root;
+    const SToday = Root();
     const { styles, getI18nText, disabled, onClick } = this.asProps;
     return sstyled(styles)(
       <SToday render={Box} __excludeProps={['onClick']}>

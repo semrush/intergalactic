@@ -12,7 +12,7 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/donut-char
 `;
 
 const DonutChartSkeleton = (props) => {
-  const SChartSkeleton = Root;
+  const SChartSkeleton = Root();
   const halfsize = props.halfsize ?? false;
   const patternBase64 = { true: donutHalfSvg, false: donutFullSvg }[halfsize];
   return sstyled(styles)(

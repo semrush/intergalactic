@@ -127,7 +127,7 @@ class Textarea extends AbstractComponent {
   }
 
   render() {
-    const STextarea = Root;
+    const STextarea = Root();
     const { styles } = this.asProps;
 
     return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} />);

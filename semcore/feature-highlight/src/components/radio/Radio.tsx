@@ -1,4 +1,4 @@
-import { Component, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
+import { AbstractComponent, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
 import type { RadioProps } from '@semcore/radio';
 import Radio, { RadioGroup } from '@semcore/radio';
 import React from 'react';
@@ -47,7 +47,7 @@ class RadioFHRoot extends AbstractComponent<RadioProps> {
   };
 
   render() {
-    const SHighlightedRadio = Root;
+    const SHighlightedRadio = Root();
     const { styles, Children, children: hasChildren } = this.asProps;
 
     return sstyled(styles)(

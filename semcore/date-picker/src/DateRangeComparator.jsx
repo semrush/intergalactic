@@ -18,7 +18,7 @@ import InputTriggerBase from './components/InputTrigger';
 
 function RangeInput(props) {
   const { styles } = props;
-  const SComparatorRangeInput = Root;
+  const SComparatorRangeInput = Root();
   const SRangeIndicator = Box;
   return sstyled(styles)(
     <SComparatorRangeInput

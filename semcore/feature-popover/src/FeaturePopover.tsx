@@ -45,7 +45,7 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends AbstractComponent<FeaturePopoverProps, {}, {}, typeof enhance> {
+class FeaturePopover extends AbstractComponent<FeaturePopoverProps, typeof enhance> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -112,7 +112,7 @@ class FeaturePopover extends AbstractComponent<FeaturePopoverProps, {}, {}, type
 }
 
 function Trigger({ Children, styles }: IRootComponentProps) {
-  const STrigger = Root;
+  const STrigger = Root();
   return sstyled(styles)(
     <STrigger render={Popper.Trigger} tag={Box} aria-haspopup={false}>
       <Children />
@@ -120,14 +120,14 @@ function Trigger({ Children, styles }: IRootComponentProps) {
   );
 }
 
-class FeaturePopoverPopper extends AbstractComponent<FeaturePopoverPopperProps, {}, {}, [], FeaturePopoverPopperInnerProps> {
+class FeaturePopoverPopper extends AbstractComponent<FeaturePopoverPopperProps, [], never, FeaturePopoverPopperInnerProps> {
   static defaultProps = {
     closeIcon: false,
     duration: 200,
   };
 
   render() {
-    const SFeaturePopover = Root;
+    const SFeaturePopover = Root();
     const SClose = Button;
     const {
       Children,
@@ -190,7 +190,7 @@ class FeaturePopoverPopper extends AbstractComponent<FeaturePopoverPopperProps, 
 }
 
 const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
-  const SSpot = Root;
+  const SSpot = Root();
 
   const { styles, visible } = props;
 

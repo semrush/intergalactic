@@ -16,15 +16,16 @@ class Error extends AbstractComponent {
 
   render() {
     const { Children, description, getI18nText } = this.asProps;
+    const SRoot = Root();
 
     return (
-      <Root render={WidgetEmpty} icon={getIconPath('warning')}>
+      <SRoot render={WidgetEmpty} icon={getIconPath('warning')}>
         <WidgetEmpty.Title>{getI18nText('title')}</WidgetEmpty.Title>
         <WidgetEmpty.Description>
           {description || getI18nText('description')}
         </WidgetEmpty.Description>
         <Children />
-      </Root>
+      </SRoot>
     );
   }
 }

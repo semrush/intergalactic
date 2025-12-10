@@ -50,7 +50,7 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
+class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, typeof ScrollAreaRoot.enhance, never, DefaultProps, State> {
   static displayName = 'ScrollArea';
 
   static style = style;
@@ -351,7 +351,7 @@ class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, {}, State, typeo
   }
 
   render() {
-    const SScrollArea = Root;
+    const SScrollArea = Root();
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
     const {
@@ -427,7 +427,7 @@ class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, {}, State, typeo
 }
 
 function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
-  const SContainer = Root;
+  const SContainer = Root();
   const {
     Children,
     styles,

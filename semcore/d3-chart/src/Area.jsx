@@ -1,4 +1,4 @@
-import { Component, sstyled } from '@semcore/core';
+import { AbstractComponent, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { bisector } from 'd3-array';

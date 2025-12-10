@@ -91,7 +91,7 @@ class InlineEdit extends AbstractComponent<AsProps> {
   }
 
   render() {
-    const SInlineEdit = Root;
+    const SInlineEdit = Root();
     const { Children, children: hasChildren, styles } = this.asProps;
 
     if (!hasChildren) {
@@ -126,7 +126,7 @@ const useHidden = (visible: boolean) => {
 
 const Edit: React.FC<AsProps> = (props) => {
   const visible = props.editable;
-  const SEdit = Root;
+  const SEdit = Root();
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-control', '200', ref);
   const duration = React.useMemo(() => Number.parseInt(durationStr, 10), [durationStr]);
@@ -146,7 +146,7 @@ const Edit: React.FC<AsProps> = (props) => {
 
 const View: React.FC<AsProps> = (props) => {
   const visible = !props.editable;
-  const SView = Root;
+  const SView = Root();
 
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
@@ -194,7 +194,4 @@ type InputCtx = {
 export default createComponent(InlineEdit, {
   Edit,
   View,
-}) as Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
-  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
-  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
-};
+});

@@ -15,7 +15,7 @@ class ButtonTriggerFHRoot extends AbstractComponent {
 
   render() {
     const { styles } = this.asProps;
-    const SHighlightedButtonTrigger = Root;
+    const SHighlightedButtonTrigger = Root();
     return sstyled(styles)(
       <SHighlightedButtonTrigger render={ButtonTrigger} />,
     );
@@ -23,7 +23,7 @@ class ButtonTriggerFHRoot extends AbstractComponent {
 }
 
 function Addon(props: IRootComponentProps) {
-  const SAddon = Root;
+  const SAddon = Root();
   const { Children, children: hasChildren } = props;
   return sstyled(props.styles)(
     <SAddon render={ButtonTrigger.Addon}>

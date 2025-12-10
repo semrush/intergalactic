@@ -1,4 +1,4 @@
-import { Component, type Intergalactic } from '@semcore/core';
+import { AbstractComponent, type Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 import type { LegendProps } from './BaseLegend.type';

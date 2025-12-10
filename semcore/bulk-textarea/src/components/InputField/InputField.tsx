@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import type { PopperContext } from '@semcore/base-components';
-import { Component, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Tooltip from '@semcore/tooltip';
@@ -20,9 +20,14 @@ type State = {
 
 class InputField<T extends string | string[]> extends AbstractComponent<
   InputFieldProps<T>,
+  typeof InputField.enhance,
+  {
+    value: null;
+    linesCount: null;
+    errorIndex: null;
+  },
   {},
-  State,
-  typeof InputField.enhance
+  State
 > {
   static displayName = 'Textarea';
   static style = style;
@@ -842,7 +847,7 @@ class InputField<T extends string | string[]> extends AbstractComponent<
   }
 
   render() {
-    const SInputField = Root;
+    const SInputField = Root();
     const { styles, showErrors } = this.asProps;
     const { visibleErrorPopper } = this.state;
 

@@ -37,9 +37,10 @@ const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends AbstractComponent<
   CarouselProps,
+  typeof enhance,
+  never,
   CarouselContext,
-  CarouselState,
-        typeof enhance
+  CarouselState
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -463,7 +464,7 @@ class CarouselRoot extends AbstractComponent<
   }
 
   renderModal(isSmall: boolean, ComponentItems: any[]) {
-    const SModalContainer = Root;
+    const SModalContainer = Root();
     const SModalBox = Box;
     const SImageBoxContainer = Box;
     const { styles, uid, duration, zoomWidth } = this.asProps;
@@ -523,7 +524,7 @@ class CarouselRoot extends AbstractComponent<
   }
 
   render() {
-    const SCarousel = Root;
+    const SCarousel = Root();
     const {
       styles,
       Children,
@@ -599,7 +600,7 @@ class CarouselRoot extends AbstractComponent<
 }
 
 const Container = (props: BoxProps & { duration?: number }) => {
-  const SContainer = Root;
+  const SContainer = Root();
   const { styles, duration } = props;
 
   return sstyled(styles)(
@@ -608,7 +609,7 @@ const Container = (props: BoxProps & { duration?: number }) => {
 };
 
 const ContentBox = (props: BoxProps) => {
-  const SContentBox = Root;
+  const SContentBox = Root();
   const { styles } = props;
 
   return sstyled(styles)(<SContentBox render={Box} />);
@@ -650,7 +651,7 @@ class Item extends AbstractComponent<CarouselItemProps> {
 
   render() {
     const { styles, index, uid, current, zoomIn, onToggleZoomModal } = this.props;
-    const SItem = Root;
+    const SItem = Root();
 
     return sstyled(styles)(
       <SItem
@@ -670,7 +671,7 @@ class Item extends AbstractComponent<CarouselItemProps> {
 
 const Prev = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted } = props;
-  const SPrev = Root;
+  const SPrev = Root();
   const SPrevButton = Button;
 
   return sstyled(styles)(
@@ -695,7 +696,7 @@ const Prev = (props: CarouselButtonProps) => {
 
 const Next = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted } = props;
-  const SNext = Root;
+  const SNext = Root();
   const SNextButton = Button;
 
   return sstyled(styles)(
@@ -719,7 +720,7 @@ const Next = (props: CarouselButtonProps) => {
 };
 
 const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsProps) => {
-  const SIndicators = Root;
+  const SIndicators = Root();
   if (Children.origin) {
     return sstyled(styles)(
       <SIndicators render={Box} innerOffset>
@@ -737,7 +738,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
 };
 
 const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
-  const SIndicator = Root;
+  const SIndicator = Root();
   return sstyled(styles)(
     <SIndicator render={Box}>
       <Children />
