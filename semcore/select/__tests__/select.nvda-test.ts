@@ -30,7 +30,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
     await test.step('Navigate backwards through options', async () => {
       await nvda.previous();
-      expect(await nvda.itemText()).toContain('Basic select, list. Option 0, 1 of 6');
+      expect(await nvda.itemText()).toContain('Option 0, 1 of 6');
     });
   });
 

@@ -11,7 +11,7 @@ test.describe(`@slider ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('slider');
     expect(await nvda.itemText()).toContain('Medium');
 
-    await nvda.press('Tab');
+    await nvda.press('Enter');
     await page.waitForTimeout(300);
 
     await nvda.press('ArrowLeft');
