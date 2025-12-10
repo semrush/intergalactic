@@ -1,0 +1,39 @@
+import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
+
+test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
+  test('Users can interact with DragAndDrop cards via NVDA', async ({ page, nvda }) => {
+    await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
+
+    await nvda.next();
+
+    expect(await nvda.itemText()).toContain('Draggable charts');
+
+    await nvda.next();
+
+    expect(await nvda.itemText()).toContain('Drop zone 1');
+
+    await nvda.next();
+
+    expect(await nvda.itemText()).toContain('Market traffic widget');
+    expect(await nvda.itemText()).toContain('1 of 4');
+
+    await nvda.press('Space');
+    await page.waitForTimeout(300);
+
+    expect(await nvda.itemText()).toContain('grabbed');
+    expect(await nvda.itemText()).toContain('current position is 2 of 4');
+
+    await nvda.next();
+
+    expect(await nvda.itemText()).toContain('Backlinks widget');
+    expect(await nvda.itemText()).toContain('3 of 4');
+
+    await nvda.press('Space');
+    await page.waitForTimeout(300);
+
+    expect(await nvda.itemText()).toContain('dropped');
+    expect(await nvda.itemText()).toContain('final position is 3 of 4');
+  });
+});
