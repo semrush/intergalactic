@@ -8,7 +8,7 @@ test.describe(`@pills ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Your opinion');
+    expect(await nvda.itemText()).toContain('clickable, grouping, radio button, not checked, Like');
     expect(await nvda.itemText()).toContain('radio');
 
     await nvda.next();

@@ -8,6 +8,5 @@ test.describe(`@progress-bar ${TAG.NVDA}`, () => {
 
     await nvda.next();
     expect(await nvda.itemText()).toContain('clickable, Basic Progress Bar example, progress bar, 0 of 2000');
-    expect(await nvda.itemText()).toContain('clickable, Basic Progress Bar example, progress bar, 0 of 2000');
   });
 });
