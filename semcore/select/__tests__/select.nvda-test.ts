@@ -56,12 +56,12 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 20');
+      expect(await nvda.itemText()).toContain('Multiselect, list. Option 1, 2 of 20');
     });
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 20');
+      expect(await nvda.itemText()).toContain('Option 2, 3 of 20, not checked');
     });
   });
 
