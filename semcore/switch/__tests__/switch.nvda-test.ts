@@ -9,13 +9,8 @@ test.describe(`@switch ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('clickable, Receive updates');
-  });
 
-  test('Users can interact with switch via NVDA', async ({ page, nvda }) => {
-    await loadPage(page, 'stories/components/switch/docs/examples/basic_example.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
+    await nvda.press('Enter');
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('not checked');
