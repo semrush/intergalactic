@@ -6,12 +6,14 @@ test.describe(`@slider ${TAG.NVDA}`, () => {
   test('Users can interact with Slider via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/slider_with_options.tsx', 'en');
 
-    await nvda.next();
+    // Даём фокус слайдеру через Tab
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('slider');
     expect(await nvda.itemText()).toContain('Medium');
 
-    await page.keyboard.press('Enter');
+    // Теперь стрелки работают - слайдер в фокусе
     await page.keyboard.press('ArrowLeft');
     await page.waitForTimeout(300);
 
