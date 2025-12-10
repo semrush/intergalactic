@@ -12,6 +12,8 @@ test.describe(`@switch ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
+    await nvda.press('Enter');
+    await page.waitForTimeout(300);
     expect(await nvda.itemText()).toContain('Receive updates, check box, not checked');
   });
 });

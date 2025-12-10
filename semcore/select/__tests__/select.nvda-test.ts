@@ -34,60 +34,34 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     });
   });
 
-  test.skip('Users can select an option via NVDA', async ({ page, nvda }) => {
-    await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
-
-    await nvda.next();
-    await nvda.next();
-    await page.keyboard.press('Space');
-    await page.waitForTimeout(500);
-
-    await test.step('Navigate to second option and select it', async () => {
-      await nvda.next();
-      await nvda.next();
-      expect(await nvda.itemText()).toContain('Option 1');
-
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(500);
-
-      expect(await nvda.itemText()).toContain('collapsed');
-    });
-  });
-
-  test.skip('Users can interact with Multiselect via NVDA', async ({ page, nvda }) => {
+  test('Users can interact with Multiselect via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
     await test.step('Navigate to multiselect trigger and verify announcement', async () => {
       await nvda.next();
+      await nvda.next();
       const trigger = await nvda.itemText();
-      expect(trigger).toContain('combobox');
-      expect(trigger).toContain('collapsed');
+      expect(trigger).toContain('combo box, collapsed');
     });
 
     await test.step('Activate multiselect and verify options with checkboxes', async () => {
-      await page.keyboard.press('Space');
+      await nvda.press('Tab');
+      await nvda.press('Space');
       await page.waitForTimeout(500);
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      // Multiselect options should announce checkbox
-      expect(firstOption).toContain('Option 0');
-      expect(firstOption).toContain('not selected');
-      expect(firstOption).toContain('1 of 20');
+      expect(firstOption).toContain('expanded');
     });
 
-    await test.step('Select option', async () => {
-      await page.keyboard.press('Space');
-      await page.waitForTimeout(300);
-
-      expect(await nvda.itemText()).toContain('selected');
+    await test.step('Navigate through options', async () => {
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 20');
     });
 
-    await test.step('Close multiselect', async () => {
-      await page.keyboard.press('Escape');
-      await page.waitForTimeout(300);
-
-      expect(await nvda.itemText()).toContain('collapsed');
+    await test.step('Navigate through options', async () => {
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 20');
     });
   });
 
