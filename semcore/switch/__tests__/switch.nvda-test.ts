@@ -14,7 +14,11 @@ test.describe(`@switch ${TAG.NVDA}`, () => {
 
     expect(await nvda.itemText()).toContain('Receive updates, check box, checked');
 
-    await nvda.interact();
+    await nvda.press('Enter');
+    await page.waitForTimeout(300);
+
+    expect(await nvda.itemText()).toContain('checked');
+
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 

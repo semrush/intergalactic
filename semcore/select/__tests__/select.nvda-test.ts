@@ -20,20 +20,17 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      // First option should be announced
       expect(firstOption).toContain('expanded');
     });
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Option 0');
-      expect(nvda.itemText()).toContain('not selected');
-      expect(nvda.itemText()).toContain('1 of 6');
+      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 6');
     });
 
     await test.step('Navigate backwards through options', async () => {
       await nvda.previous();
-      expect(await nvda.itemText()).toContain('Option 0');
+      expect(await nvda.itemText()).toContain('Basic select, list. Option 0, 1 of 6');
     });
   });
 
