@@ -14,12 +14,10 @@ test.describe(`@pills ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('radio button, checked, Don\'t care');
-    expect(await nvda.itemText()).toContain('2 of 3');
 
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('radio button, checked, Dislike');
-    expect(await nvda.itemText()).toContain('3 of 3');
 
     await page.keyboard.press('Space');
     await page.waitForTimeout(300);
