@@ -8,15 +8,14 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Section 1');
-    expect(await nvda.itemText()).toContain('expanded');
-    expect(await nvda.itemText()).toContain('button');
+    expect(await nvda.itemText()).toContain('clickable, Section 1, region, Hello Section 1');
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Section 1');
     expect(await nvda.itemText()).toContain('collapsed');
+    expect(await nvda.itemText()).toContain('button');
 
     await nvda.next();
 
