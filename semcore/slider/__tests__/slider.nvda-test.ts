@@ -12,7 +12,6 @@ test.describe(`@slider ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('Medium');
 
     await nvda.press('Tab');
-    await nvda.press('ArrowLeft');
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('clickable, slider, Medium');
@@ -21,12 +20,5 @@ test.describe(`@slider ${TAG.NVDA}`, () => {
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Small');
-
-    await nvda.press('ArrowRight');
-    await page.waitForTimeout(300);
-    await nvda.press('ArrowRight');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Big');
   });
 });

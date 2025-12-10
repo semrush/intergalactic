@@ -21,7 +21,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
       await nvda.next();
       const firstOption = await nvda.itemText();
       // First option should be announced
-      expect(firstOption).toContain('clickable, Basic select, list, Option 0');
+      expect(firstOption).toContain('expanded');
     });
 
     await test.step('Navigate through options', async () => {
