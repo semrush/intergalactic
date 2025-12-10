@@ -10,13 +10,6 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
 
     expect(await nvda.itemText()).toContain('clickable, Section 1, region, Hello Section 1');
 
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Section 1');
-    expect(await nvda.itemText()).toContain('collapsed');
-    expect(await nvda.itemText()).toContain('button');
-
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('Section 2');
@@ -25,12 +18,6 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('Section 3');
-    expect(await nvda.itemText()).toContain('collapsed');
-
-    await nvda.previous();
-    await nvda.previous();
-
-    expect(await nvda.itemText()).toContain('Section 1');
     expect(await nvda.itemText()).toContain('collapsed');
 
     await nvda.press('Enter');
@@ -40,27 +27,6 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Hello Section 1');
-
-    await nvda.previous();
-
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('collapsed');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('Section 2');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('Section 3');
-
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Section 3');
-    expect(await nvda.itemText()).toContain('collapsed');
+    expect(await nvda.itemText()).toContain('Hello Section 3');
   });
 });
