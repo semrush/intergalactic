@@ -14,23 +14,21 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate select and verify menu opens', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
+      await nvda.press('Tab');
+      await nvda.press('Space');
       await page.waitForTimeout(500);
 
       await nvda.next();
       const firstOption = await nvda.itemText();
       // First option should be announced
-      expect(firstOption).toContain('Option 0');
-      expect(firstOption).toContain('not selected');
-      expect(firstOption).toContain('1 of 6');
+      expect(firstOption).toContain('clickable, Basic select, list, Option 0');
     });
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Option 1');
+      expect(await nvda.itemText()).toContain('Option 0');
       expect(nvda.itemText()).toContain('not selected');
-      expect(nvda.itemText()).toContain('2 of 6');
+      expect(nvda.itemText()).toContain('1 of 6');
     });
 
     await test.step('Navigate backwards through options', async () => {

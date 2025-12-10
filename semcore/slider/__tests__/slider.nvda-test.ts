@@ -11,15 +11,20 @@ test.describe(`@slider ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('slider');
     expect(await nvda.itemText()).toContain('Medium');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowLeft');
+    await nvda.press('Tab');
+    await nvda.press('ArrowLeft');
+    await page.waitForTimeout(300);
+
+    expect(await nvda.itemText()).toContain('clickable, slider, Medium');
+
+    await nvda.press('ArrowLeft');
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Small');
 
-    await page.keyboard.press('ArrowRight');
+    await nvda.press('ArrowRight');
     await page.waitForTimeout(300);
-    await page.keyboard.press('ArrowRight');
+    await nvda.press('ArrowRight');
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Big');
