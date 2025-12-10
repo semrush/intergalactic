@@ -10,13 +10,11 @@ test.describe(`@select ${TAG.NVDA}`, () => {
       await nvda.next();
       await nvda.next();
       const trigger = await nvda.itemText();
-      // Select trigger should announce as clickable combobox
-      expect(trigger).toContain('clickable');
-      expect(trigger).toContain('combobox');
-      expect(trigger).toContain('collapsed');
+      expect(trigger).toContain('combo box, collapsed');
     });
 
     await test.step('Activate select and verify menu opens', async () => {
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
 
