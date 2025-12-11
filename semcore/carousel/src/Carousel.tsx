@@ -573,8 +573,7 @@ class CarouselRoot extends Component<
                         <Carousel.Indicator
                           {...item.props}
                           key={item.key}
-                          w={100}
-                          h={100}
+                          w={undefined}
                           aria-roledescription='slide'
                           active={this.isSelected(index)}
                           onClick={this.bindHandlerClickIndicator(index)}

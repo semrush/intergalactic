@@ -93,6 +93,11 @@ SIndicator {
   transition: ease-in-out opacity 0.1s;
 }
 
+SIndicator[aria-roledescription="slide"] {
+  width: 100px;
+  height: 100px;
+}
+
 SIndicator:hover {
   opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.3));
 }
