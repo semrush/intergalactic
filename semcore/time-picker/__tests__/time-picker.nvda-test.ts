@@ -20,7 +20,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('button , AM');
+    expect(await nvda.itemText()).toBe('button, AM');
 
     await nvda.previous();
     await nvda.previous();

@@ -11,7 +11,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Simple date picker');
+    expect(await nvda.itemText()).toContain('clickable, Date, combo box, collapsed, editable, 06 slash 29 slash 2020');
 
     await nvda.next();
 

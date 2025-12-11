@@ -13,7 +13,7 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toContain('Author, Edit: Martin Eden');
+    expect(await nvda.itemText()).toContain('Author:, edit, Martin Eden');
 
     // Clear existing text and type new value
     for (let i = 0; i < 12; i++) {
