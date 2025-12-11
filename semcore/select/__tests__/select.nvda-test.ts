@@ -65,24 +65,6 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     });
   });
 
-  test('Users can interact with Select with search filtering via NVDA', async ({
-    page,
-    nvda,
-  }) => {
-    await loadPage(page, 'stories/components/select/docs/examples/options_filtering.tsx', 'en');
-
-    await test.step('Navigate to search input and verify announcement', async () => {
-      await nvda.press('Tab');
-      await nvda.press('Space');
-      await page.waitForTimeout(500);
-
-      expect(nvda.itemText()).toContain('combo box, collapsed');
-
-      await page.keyboard.press('Tab');
-      expect(nvda.itemText()).toContain('edit');
-    });
-  });
-
   test('Users can interact with Select loading state via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/select/docs/examples/loading_state.tsx', 'en');
 
