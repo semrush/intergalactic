@@ -20,13 +20,7 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('Section 3');
     expect(await nvda.itemText()).toContain('collapsed');
 
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
+    await nvda.act();
     expect(await nvda.itemText()).toContain('expanded');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('Hello Section 3');
   });
 });

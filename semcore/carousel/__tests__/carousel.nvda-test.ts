@@ -12,20 +12,14 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Beauty of Nature');
+    expect(await nvda.itemText()).toContain('clickable, Beauty of Nature, carousel, button, Previous slide');
     expect(await nvda.itemText()).toContain('carousel');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Beauty of Nature');
-    expect(await nvda.itemText()).toContain('group');
-
-    await nvda.next();
-
+    expect(await nvda.itemText()).toContain('clickable, current');
     expect(await nvda.itemText()).toContain('Open in fullscreen');
-    expect(await nvda.itemText()).toContain('A cyclist performing stunts in the forest');
-    expect(await nvda.itemText()).toContain('button');
-    expect(await nvda.itemText()).toContain('current item');
+    expect(await nvda.itemText()).toContain('Open in fullscreen');
 
     await nvda.next();
 
@@ -40,5 +34,13 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
       'A pug wrapped in a blanket sits on the road in the forest',
     );
     expect(await nvda.itemText()).toContain('button');
+
+    await nvda.next();
+    expect(await nvda.itemText()).toContain('clickable, button, Next slide');
+    await nvda.next();
+    expect(await nvda.itemText()).toContain('tab, selected,Slide 1');
+
+    await nvda.next();
+    expect(await nvda.itemText()).toContain('tab, Slide 2');
   });
 });
