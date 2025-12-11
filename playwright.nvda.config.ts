@@ -6,7 +6,7 @@ import { testPlanFilter } from 'allure-playwright/testplan';
 const config: PlaywrightTestConfig = {
   ...screenReaderConfig,
   reportSlowTests: null,
-  workers: 1,
+  workers: 2,
   timeout: 2 * 60 * 1000,
   testMatch: /\.nvda-test.ts(x){0,1}$/,
   retries: process.env.CI ? 2 : 0,

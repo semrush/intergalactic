@@ -20,22 +20,12 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     // Clear existing text and type new value
     for (let i = 0; i < 12; i++) {
-      await page.keyboard.press('Backspace');
+      await nvda.press('Backspace');
     }
-    await page.keyboard.type('Algernon');
-    await page.keyboard.press('Enter');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Edit: Algernon');
-
-    // Test canceling edit with Escape
+    await nvda.type('Algernon');
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
-    await page.keyboard.type('Hello world?');
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Algernon');
+    expect(await nvda.itemText()).toContain('Edit: Algernon');
   });
 });

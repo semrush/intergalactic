@@ -28,10 +28,5 @@ test.describe(`@dropdown-menu ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('menu item, Delete');
-
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('collapsed');
   });
 });

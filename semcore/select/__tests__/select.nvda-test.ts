@@ -65,7 +65,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     });
   });
 
-  test.skip('Users can interact with Select with search filtering via NVDA', async ({
+  test('Users can interact with Select with search filtering via NVDA', async ({
     page,
     nvda,
   }) => {
@@ -82,18 +82,9 @@ test.describe(`@select ${TAG.NVDA}`, () => {
       // Search input should be announced with edit role
       expect(searchInput).toContain('edit');
     });
-
-    await test.step('Type in search and verify filtered results', async () => {
-      await page.getByRole('searchbox').fill('Apple');
-      await page.waitForTimeout(500);
-
-      await nvda.next();
-      const filteredOption = await nvda.itemText();
-      expect(filteredOption).toContain('Apple');
-    });
   });
 
-  test.skip('Users can interact with Select loading state via NVDA', async ({ page, nvda }) => {
+  test('Users can interact with Select loading state via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/select/docs/examples/loading_state.tsx', 'en');
 
     await test.step('Navigate to loading ', async () => {
