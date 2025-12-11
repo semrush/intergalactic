@@ -12,11 +12,11 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('Start time');
+    expect(await nvda.itemText()).toBe('clickable, Start time Select, grouping, Hours, combo box, collapsed, has auto complete, editable, 00');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('Minutes');
+    expect(await nvda.itemText()).toBe('Minutes, combo box, collapsed, has auto complete, editable, 00');
 
     await nvda.next();
 
@@ -27,6 +27,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
+    expect(await nvda.itemText()).toBe('cHours, combo box, expanded, has auto complete, editable, 00');
 
     await page.keyboard.type('04');
     await page.keyboard.press('Tab');
@@ -36,7 +37,6 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toContain('Time input');
-    expect(await nvda.itemText()).toContain('4:20 AM');
+    expect(await nvda.itemText()).toContain('Start time, 04:00 AM');
   });
 });

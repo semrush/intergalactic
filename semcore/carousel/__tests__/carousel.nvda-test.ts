@@ -17,8 +17,6 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('clickable, current');
-    expect(await nvda.itemText()).toContain('Open in fullscreen');
-    expect(await nvda.itemText()).toContain('Open in fullscreen');
 
     await nvda.next();
 

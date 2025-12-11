@@ -8,12 +8,12 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, button, Edit:Martin Eden');
+    expect(await nvda.itemText()).toContain('clickable, button, Edit: Martin Eden');
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toContain('Author, Edit:Martin Eden');
+    expect(await nvda.itemText()).toContain('Author, Edit: Martin Eden');
 
     // Clear existing text and type new value
     for (let i = 0; i < 12; i++) {
@@ -23,7 +23,7 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toContain('Edit:Algernon');
+    expect(await nvda.itemText()).toContain('Edit: Algernon');
 
     // Test canceling edit with Escape
     await nvda.press('Enter');

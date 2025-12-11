@@ -20,7 +20,7 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('Section 3');
     expect(await nvda.itemText()).toContain('collapsed');
 
-    await nvda.act();
+    await nvda.interact();
     expect(await nvda.itemText()).toContain('expanded');
   });
 });
