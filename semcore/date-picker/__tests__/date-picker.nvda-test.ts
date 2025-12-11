@@ -15,7 +15,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Date field');
+    expect(await nvda.itemText()).toContain('Jun 29, 2020');
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);

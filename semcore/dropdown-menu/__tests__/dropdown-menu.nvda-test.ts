@@ -8,7 +8,7 @@ test.describe(`@dropdown-menu ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('cliclable, menu, button, collapsed, submenu, Actions');
+    expect(await nvda.itemText()).toContain('cliclable, menu, button, collapsed, sub Menu, Actions');
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);

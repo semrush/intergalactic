@@ -22,7 +22,7 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
 
     await nvda.interact();
     expect(await nvda.itemText()).toContain('heading, level 3, button, collapsed, Section 3');
-    await nvda.press('Enter');
+    page.keyboard.press('Space');
     expect(await nvda.itemText()).toContain('heading, level 3, button, collapsed, Section 3');
   });
 });
