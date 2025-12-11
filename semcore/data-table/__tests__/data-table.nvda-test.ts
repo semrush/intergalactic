@@ -8,7 +8,7 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
     await nvda.next();
-    expect(await nvda.itemText()).toBe('table');
+    expect(await nvda.itemText()).toBe('clickable, table, with 11 rows and 5 columns, row 1, column 1, clickable, Keyword');
 
     await nvda.next();
 

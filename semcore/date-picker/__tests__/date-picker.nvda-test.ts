@@ -54,6 +54,6 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     await nvda.next();
     await nvda.previous();
 
-    expect(await nvda.itemText()).toContain('05/29/2000');
+    expect(await nvda.itemText()).toContain('column 1, Sun');
   });
 });
