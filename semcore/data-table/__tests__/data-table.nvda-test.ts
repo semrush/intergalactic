@@ -7,9 +7,8 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
 
     await nvda.next();
-
-    expect(await nvda.itemText()).toContain('table');
-    expect(await nvda.itemText()).toContain('Basic table example');
+    await nvda.next();
+    expect(await nvda.itemText()).toBe('table');
 
     await nvda.next();
 

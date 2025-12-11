@@ -78,9 +78,10 @@ test.describe(`@select ${TAG.NVDA}`, () => {
       await page.waitForTimeout(500);
 
       await nvda.next();
-      const searchInput = await nvda.itemText();
-      // Search input should be announced with edit role
-      expect(searchInput).toContain('edit');
+      expect(nvda.itemText()).toContain('combo box, collapsed');
+
+      await nvda.next();
+      expect(nvda.itemText()).toContain('edit');
     });
   });
 

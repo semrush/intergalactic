@@ -51,6 +51,8 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     await page.keyboard.type('29');
     await page.keyboard.type('2000');
     await page.waitForTimeout(300);
+    await nvda.next();
+    await nvda.previous();
 
     expect(await nvda.itemText()).toContain('05/29/2000');
   });
