@@ -33,10 +33,9 @@ import { intergalacticCssVirtualizerVitePlugin } from '@semcore/css-virtualizer-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    // without options
-    intergalacticCssVirtualizerVitePlugin(),
-    // with options
-    intergalacticCssVirtualizerVitePlugin({ prefix: 'myprefix' }),
+    intergalacticCssVirtualizerVitePlugin({
+      prefix: 'myprefix' // optional
+    }),
   ],
 });
 ```
@@ -44,15 +43,14 @@ export default defineConfig({
 ### Webpack
 
 ```js
-var { intergalacticCssVirtualizerWebpackPlugin } = require('@semcore/css-virtualizer-unplugin');
+import { intergalacticCssVirtualizerWebpackPlugin } from '@semcore/css-virtualizer-unplugin';
 
 module.exports = {
   // ...
   plugins: [
-    // without options
-    intergalacticCssVirtualizerWebpackPlugin()
-    // with options
-    intergalacticCssVirtualizerWebpackPlugin({ prefix: 'myprefix' })
+    intergalacticCssVirtualizerVitePlugin({
+      prefix: 'myprefix' // optional
+    }),
   ],
   // ...
 };

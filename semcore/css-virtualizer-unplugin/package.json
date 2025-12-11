@@ -11,8 +11,11 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "unplugin": "1.2.0",
-    "@reshadow/utils": "0.0.1-alpha.75"
+    "string-hash": "1.1.3",
+    "unplugin": "1.2.0"
+  },
+  "devDependencies": {
+    "@types/string-hash": "^1.1.3"
   },
   "repository": {
     "type": "git",

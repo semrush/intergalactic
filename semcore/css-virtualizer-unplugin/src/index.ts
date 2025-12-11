@@ -1,5 +1,4 @@
-// @ts-ignore
-import reshadowUtils from '@reshadow/utils';
+import stringHash from 'string-hash';
 import type { UnpluginInstance } from 'unplugin';
 import { createUnplugin } from 'unplugin';
 
@@ -11,7 +10,7 @@ const REGEXPS = {
 } as const;
 
 const generateHashedFilePath = (path: string, code: string, prefix?: string): string => {
-  const hash = `${reshadowUtils.getFileHash(path)}_${reshadowUtils.getFileHash(code)}`;
+  const hash = `${stringHash(path)}_${stringHash(code)}`;
   return prefix ? `${prefix}_${hash}.css` : `${hash}.css`;
 };
 
