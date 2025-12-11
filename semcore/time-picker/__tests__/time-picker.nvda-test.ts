@@ -28,7 +28,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('Time period changed to PM');
 
     await nvda.previous();
-    expect(await nvda.itemText()).toContain('Time period changed to PM');
+    expect(await nvda.itemText()).toContain('Time period changed to AM');
 
     await nvda.previous();
     await nvda.interact();

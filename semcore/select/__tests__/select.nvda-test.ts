@@ -72,9 +72,8 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/select/docs/examples/options_filtering.tsx', 'en');
 
     await test.step('Navigate to search input and verify announcement', async () => {
-      await nvda.next();
-      await nvda.next();
-      await page.keyboard.press('Space');
+      await nvda.press('Tab');
+      await nvda.press('Space');
       await page.waitForTimeout(500);
 
       expect(nvda.itemText()).toContain('combo box, collapsed');
