@@ -12,18 +12,14 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Keyword');
-    expect(await nvda.itemText()).toContain('column');
+    expect(await nvda.itemText()).toContain('column 2, clickable, KD percent');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('KD %');
+    expect(await nvda.itemText()).toContain('column 2, clickable, CPC percent');
     expect(await nvda.itemText()).toContain('column');
 
     await nvda.next();
-
-    expect(await nvda.itemText()).toContain('CPC');
-    expect(await nvda.itemText()).toContain('column');
 
     // Navigate to data rows
     await nvda.next();

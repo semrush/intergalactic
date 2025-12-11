@@ -77,10 +77,9 @@ test.describe(`@select ${TAG.NVDA}`, () => {
       await page.keyboard.press('Space');
       await page.waitForTimeout(500);
 
-      await nvda.next();
       expect(nvda.itemText()).toContain('combo box, collapsed');
 
-      await nvda.next();
+      await page.keyboard.press('Tab');
       expect(nvda.itemText()).toContain('edit');
     });
   });
