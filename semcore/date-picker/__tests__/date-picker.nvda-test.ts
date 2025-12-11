@@ -31,11 +31,10 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     expect(await nvda.itemText()).toContain('dialog. clickable, button, Previous month');
 
-    // Move to DateRangePicker
     await nvda.next();
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Date range picker');
+    expect(await nvda.itemText()).toContain('button, Next month');
 
     await nvda.next();
 

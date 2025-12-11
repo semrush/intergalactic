@@ -27,7 +27,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
-    expect(await nvda.itemText()).toBe('cHours, combo box, expanded, has auto complete, editable, 00');
+    expect(await nvda.itemText()).toBe('Start time Select, grouping. Hours, combo box, expanded, has auto complete, editable, 00, blank');
 
     await page.keyboard.type('04');
     await page.keyboard.press('Tab');

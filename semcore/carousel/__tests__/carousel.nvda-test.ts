@@ -21,11 +21,11 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
     await nvda.next();
 
     // expect(await nvda.itemText()).toContain('A vulture flies with its wings spread wide');
-    expect(await nvda.itemText()).toContain('clickable');
+    expect(await nvda.itemText()).toBe('clickable');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain(
+    expect(await nvda.itemText()).toBe(
       'A pug wrapped in a blanket sits on the road in the forest',
     );
     expect(await nvda.itemText()).toContain('button');

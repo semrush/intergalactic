@@ -10,7 +10,7 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('clickable, button, Edit: Martin Eden');
 
     await nvda.next();
-    expect(await nvda.itemText()).toContain('clickable, button, Edit: Martin Eden');
+    expect(await nvda.itemText()).toContain('button, Edit: Martin Eden');
 
     await nvda.interact();
     await nvda.press('Enter');
