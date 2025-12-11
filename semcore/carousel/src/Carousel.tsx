@@ -531,7 +531,6 @@ class CarouselRoot extends Component<
       uid,
       zoom: hasZoom,
       'aria-label': ariaLabel,
-      'aria-roledescription': ariaRoledescription,
       indicators,
     } = this.asProps;
     const ComponentItems = findAllComponents(Children, ['Carousel.Item']);
@@ -545,13 +544,12 @@ class CarouselRoot extends Component<
       <SCarousel
         render={Box}
         role='region'
-        roledescription='carousel'
+        aria-roledescription='carousel'
         onKeyDown={this.handlerKeyDown}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
         ref={this.refCarousel}
         id={`igc-${uid}-carousel`}
-        aria-roledescription={ariaRoledescription}
       >
         {Controls.length === 0
           ? (

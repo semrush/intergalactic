@@ -20,7 +20,6 @@ const Demo = (props: CarouselProps) => (
   <Box w={width}>
     <Carousel
       w={width}
-      aria-roledescription='carousel'
       aria-label='Beauty of Nature'
       zoom={props.zoom}
       zoomWidth={props.zoomWidth}
