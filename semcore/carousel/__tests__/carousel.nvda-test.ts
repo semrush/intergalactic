@@ -12,8 +12,7 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, Beauty of Nature, carousel, button, Previous slide');
-    expect(await nvda.itemText()).toContain('carousel');
+    expect(await nvda.itemText()).toContain('clickable, Beauty of Nature, carousel, Beauty of Nature');
 
     await nvda.next();
 

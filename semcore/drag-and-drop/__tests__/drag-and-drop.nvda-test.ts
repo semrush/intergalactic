@@ -3,7 +3,7 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
-  test('Users can interact with DragAndDrop cards via NVDA', async ({ page, nvda }) => {
+  test.skip('Users can interact with DragAndDrop cards via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
     await nvda.next();

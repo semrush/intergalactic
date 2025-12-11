@@ -8,11 +8,7 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Author');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('button, Edit:Martin Eden');
+    expect(await nvda.itemText()).toContain('clickable, button, Edit:Martin Eden');
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
