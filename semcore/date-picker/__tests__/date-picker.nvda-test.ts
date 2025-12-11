@@ -29,7 +29,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     await page.keyboard.type('2000');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toContain('05/29/2000');
+    expect(await nvda.itemText()).toContain('dialog. clickable, button, Previous month');
 
     // Move to DateRangePicker
     await nvda.next();

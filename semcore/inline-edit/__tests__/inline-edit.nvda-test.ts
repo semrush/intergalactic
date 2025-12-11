@@ -5,9 +5,11 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 test.describe(`@inline-edit ${TAG.NVDA}`, () => {
   test('Users can interact with InlineEdit via NVDA', async ({ page, nvda }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
-    await nvda.start();
     await nvda.next();
 
+    expect(await nvda.itemText()).toContain('clickable, button, Edit: Martin Eden');
+
+    await nvda.next();
     expect(await nvda.itemText()).toContain('clickable, button, Edit: Martin Eden');
 
     await nvda.interact();
@@ -35,6 +37,5 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Algernon');
-    await nvda.End();
   });
 });

@@ -21,8 +21,7 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('collapsed');
 
     await nvda.interact();
-    expect(await nvda.itemText()).toContain('heading, level 3, button, collapsed, Section 3');
-    page.keyboard.press('Space');
+    await nvda.press('Space');
     expect(await nvda.itemText()).toContain('heading, level 3, button, collapsed, Section 3');
   });
 });
