@@ -249,14 +249,9 @@ const Text = (props) => {
 };
 Text.displayName = 'Text';
 
-const Value = createComponent(ValueRoot, {
-  Control,
-  CheckMark,
-});
-
 const Checkbox = createComponent(CheckboxRoot, {
   Text,
-  Value,
+  Value: [ValueRoot, { Control, CheckMark }],
 });
 export { inputProps };
 export default Checkbox;

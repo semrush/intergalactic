@@ -1,4 +1,4 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 /**
@@ -10,7 +10,7 @@ type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type DragAndDropProps = BoxProps & {
+export type DragAndDropProps = BoxProps & DNDAriaProps & {
   /**
    * Controlled drag and drop handler
    */
@@ -63,12 +63,3 @@ export type DropZoneProps = BoxProps &
      */
     zoneName?: string;
   };
-
-export type DragAndDropComponent = Intergalactic.Component<
-  'div',
-  DragAndDropProps & DNDAriaProps,
-  DragAndDropContext
-> & {
-  Draggable: Intergalactic.Component<'div', DraggableProps & DNDAriaProps>;
-  DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
-};

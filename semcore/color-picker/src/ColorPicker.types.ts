@@ -1,6 +1,5 @@
-import type { BoxProps } from '@semcore/base-components';
-import type Popper from '@semcore/base-components';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps, Popper } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
 import type { InputProps } from '@semcore/input';
@@ -26,6 +25,19 @@ export type ItemProps = BoxProps & {
    * Fired with color item when user clicks on the close icon
    */
   onRemove?: React.MouseEventHandler;
+
+  /**
+   * @internal
+   */
+  Children: any;
+  /**
+   * @internal
+   */
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+  /**
+   * @internal
+   */
+  uid: string;
 };
 
 export type ColorsProps = BoxProps & {
@@ -33,15 +45,23 @@ export type ColorsProps = BoxProps & {
    * Array of color items
    */
   colors?: Array<string | null>;
+
+  /**
+   * @internal
+   */
+  styles?: React.CSSProperties;
+  /**
+   * @internal
+   */
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-export type ColorsCustomProps = ColorsProps &
-  BoxProps & {
-    /**
-     * Fired when user clicks on the plus icon in Palette Manager - focuses the input component
-     */
-    onPlusButtonClick?: React.MouseEventHandler;
-  };
+export type ColorsCustomProps = ColorsProps & {
+  /**
+   * Fired when user clicks on the plus icon in Palette Manager - focuses the input component
+   */
+  onPlusButtonClick?: React.MouseEventHandler;
+};
 
 export type InputColorProps = InputProps & {
   /**
@@ -70,6 +90,19 @@ export type InputColorProps = InputProps & {
    * Handle changes of state
    */
   onStateChange?: (state: 'normal' | 'valid' | 'invalid') => void;
+
+  /**
+   * @internal
+   */
+  focus?: boolean;
+  /**
+   * @internal
+   */
+  Children: any;
+  /**
+   * @internal
+   */
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 export type ColorPickerProps = DropdownProps & {

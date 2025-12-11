@@ -11,7 +11,6 @@ export function ClearAll(
   return (
     !props.isHidden &&
     sstyled(props.styles)(
-      // @ts-ignore
       <SButton render={Button} theme='muted' use='tertiary' addonLeft={CloseM}>
         {props.getI18nText('BulkTextarea.ClearAllButton.buttonText')}
       </SButton>,

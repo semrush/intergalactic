@@ -32,6 +32,8 @@ function Addon(props: ButtonAddonProps) {
 const Button = createComponent(RootButton, {
   Text,
   Addon,
+}, {
+  tag: 'button',
 });
 
 export default Button;

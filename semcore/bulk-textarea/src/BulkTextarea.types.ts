@@ -48,22 +48,3 @@ export type BulkTextareaProps<T extends string | string[]> = {
   /** Internal */
   onImmediatelyChange?: InputFieldProps<T>['onImmediatelyChange'];
 };
-
-type BulkTextareaComponent = (<T extends string | string[]>(
-  props: Intergalactic.InternalTypings.ComponentProps<
-    'div',
-    'div',
-    BoxProps & BulkTextareaProps<T>
-  >,
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
-
-export type BulkTextareaType<T extends string | string[]> = BulkTextareaComponent & {
-  InputField: Intergalactic.Component<
-    'div',
-    Pick<InputFieldProps<T>, 'commonErrorMessage' | 'id'> & Partial<BulkTextareaProps<T>> & BoxProps
-  >;
-  Counter: Intergalactic.Component<'div', Partial<CounterProps>>;
-  ClearAll: typeof Button;
-  ErrorsNavigation: Intergalactic.Component<'div', Partial<ErrorsNavigationProps>>;
-};

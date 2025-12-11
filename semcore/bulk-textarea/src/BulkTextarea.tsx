@@ -4,7 +4,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
+import type { BulkTextareaProps } from './BulkTextarea.types';
 import { ClearAll } from './components/ClearAll';
 import { Counter } from './components/Counter';
 import { ErrorsNavigation } from './components/ErrorsNavigation';

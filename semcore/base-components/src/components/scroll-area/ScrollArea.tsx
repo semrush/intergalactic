@@ -3,7 +3,6 @@ import {
   sstyled,
   AbstractComponent,
   Root,
-  type IRootComponentProps,
 } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
@@ -16,10 +15,9 @@ import React, { type ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
-import { setAreaValue, ScrollBar } from './ScrollBar';
+import { setAreaValue, ScrollBarRoot, Slider } from './ScrollBar';
 import type {
   ScrollAreaProps,
-  ScrollArea as ScrollAreaType,
   ScrollAreaContainerProps,
 } from './ScrollBar.types';
 import style from './style/scroll-area.shadow.css';
@@ -50,7 +48,7 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, typeof ScrollAreaRoot.enhance, never, DefaultProps, State> {
+class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, typeof ScrollAreaRoot.enhance, Readonly<Partial<ScrollAreaProps>>, DefaultProps, State> {
   static displayName = 'ScrollArea';
 
   static style = style;
@@ -426,7 +424,7 @@ class ScrollAreaRoot extends AbstractComponent<ScrollAreaProps, typeof ScrollAre
   }
 }
 
-function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
+function ContainerRoot(props: ScrollAreaContainerProps) {
   const SContainer = Root();
   const {
     Children,
@@ -456,8 +454,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
 
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
-  Bar: ScrollBar,
+  Bar: [ScrollBarRoot, { Slider: Slider }],
 });
 
-// TODO: remove named ScrollArea export
 export { eventCalculate, ScrollArea };

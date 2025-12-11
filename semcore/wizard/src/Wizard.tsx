@@ -358,10 +358,10 @@ const Wizard = createComponent(WizardRoot, {
 export const wrapWizardStepper = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
+      Intergalactic.InternalTypings.ComponentPropsNesting<typeof WizardRoot>
     > &
     PropsExtending,
   ) => React.ReactNode,
-) => wrapper as IntergalacticWizardStepperComponent<PropsExtending>;
+) => wrapper as unknown as IntergalacticWizardStepperComponent<PropsExtending>;
 
 export default Wizard;

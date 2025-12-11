@@ -18,7 +18,7 @@ class AddFilterInputRoot extends AbstractComponent<AddFilterItemProps> {
     this.asProps.onUnmount?.();
   }
 
-  getValueProps(props: InputValueProps) {
+  getValueProps(props: InputValueProps): any {
     const { value, onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
@@ -47,12 +47,14 @@ class AddFilterInputRoot extends AbstractComponent<AddFilterItemProps> {
   }
 
   render() {
-    return <Root render={Input} w='auto' inline={false} />;
+    const SInputRoot = Root();
+    return <SInputRoot render={Input} w='auto' inline={false} />;
   }
 }
 
 const Clear = () => {
-  return <Root render={ButtonLink} />;
+  const SClearRoot = Root();
+  return <SClearRoot render={ButtonLink} />;
 };
 
 const AddFilterInput = createComponent(AddFilterInputRoot, {

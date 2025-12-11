@@ -7,7 +7,7 @@ import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
-import type { DragAndDropComponent, DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
+import type { DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
 import style from './style/drag-and-drop.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -714,6 +714,6 @@ const DragAndDrop = createComponent(DragAndDropRoot, {
   Draggable,
   DropZone,
   Dropable: DropZone,
-}) as DragAndDropComponent;
+});
 
 export default DragAndDrop;

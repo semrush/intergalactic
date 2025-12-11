@@ -1,26 +1,12 @@
 import { Box } from '@semcore/base-components';
-import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
+import { AbstractComponent, sstyled, Root } from '@semcore/core';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
-import type { InputSize } from '@semcore/input';
 import React from 'react';
 
+import type { InputColorProps } from '../ColorPicker.types';
 import style from '../style/color-picker.shadow.css';
-
-type InputColorAsProps = {
-  styles?: React.CSSProperties;
-  defaultValue?: string;
-  defaultState?: string;
-  value?: string;
-  state?: 'normal' | 'valid' | 'invalid';
-  colors?: string[];
-  onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
-  focus?: boolean;
-  Children: any;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-  size?: InputSize;
-};
 
 function isValidHex(hex: string) {
   if (hex[0] !== '#' && hex.length === 7) return false;
@@ -39,7 +25,7 @@ function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   };
 }
 
-class InputColorRoot extends AbstractComponent<InputColorAsProps> {
+export class InputColorRoot extends AbstractComponent<InputColorProps, [], { value: string; state: null }, {}, {}> {
   static displayName = 'InputColor';
 
   static style = style;
@@ -147,8 +133,6 @@ class InputColorRoot extends AbstractComponent<InputColorAsProps> {
           </SInput>
         </SInputContainer>
       </SPaletteManager>,
-    ) as React.ReactElement;
+    );
   }
 }
-
-export const InputColor = createComponent(InputColorRoot, {});

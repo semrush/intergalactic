@@ -5,16 +5,7 @@ import CloseM from '@semcore/icon/Close/m';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
-type ItemAsProps = {
-  styles?: React.CSSProperties;
-  value?: string;
-  displayLabel?: boolean;
-  editable?: boolean;
-  selected?: boolean;
-  onRemove?: React.MouseEventHandler | React.KeyboardEventHandler;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-  uid: string;
-};
+import type { ItemProps } from '../ColorPicker.types';
 
 const interaction = {
   trigger: [
@@ -27,9 +18,8 @@ const interaction = {
   ],
 };
 
-export function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
-    props as any;
+export function Item(props: ItemProps) {
+  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } = props;
   const SItemContainer = Root();
   const SLabel = Box;
   const SCloseIcon = Box;
@@ -37,6 +27,7 @@ export function Item(props: ItemAsProps) {
 
   const handleKeydown = React.useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'Backspace') {
+      // @ts-ignore
       onRemove?.(event);
     }
   }, []);
@@ -69,7 +60,7 @@ export function Item(props: ItemAsProps) {
         </>
       )}
     </SItemContainer>,
-  ) as React.ReactElement;
+  );
 }
 
 Item.enhance = [keyboardFocusEnhance()];

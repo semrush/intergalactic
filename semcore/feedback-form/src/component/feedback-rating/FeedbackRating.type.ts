@@ -69,12 +69,3 @@ export type FeedbackRatingCheckboxProps = Omit<CheckboxProps, 'label'> & {
   focused: boolean;
   label: React.ReactNode;
 };
-
-declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {
-  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
-  Submit: typeof Button;
-  Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
-  Header: typeof Text;
-};
-
-export { FeedbackRatingType };

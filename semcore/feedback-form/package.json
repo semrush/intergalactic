@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/checkbox": "16.2.1",
+    "@semcore/checkbox": "16.2.2",
     "@semcore/notice-bubble": "16.1.12",
     "@semcore/typography": "16.3.2",
     "@semcore/link": "16.0.11",

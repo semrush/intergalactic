@@ -1,12 +1,13 @@
 import { Box, Flex } from '@semcore/base-components';
 import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import Dropdown from '@semcore/dropdown';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
 
-import { Item, Colors, ColorsCustom, InputColor } from './components';
-import PaletteManagerRoot from './PaletteManager';
+import type { ColorPickerProps, InputColorProps } from './ColorPicker.types';
+import { Item, Colors } from './components';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -25,20 +26,6 @@ const defaultColors = [
   '#C7EE96',
 ];
 
-type RootAsProps = {
-  defaultVisible?: boolean;
-  visible?: boolean;
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string, event: React.ChangeEvent) => void;
-  colors?: string[];
-  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
-  displayLabel?: boolean;
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
 type TriggerAsProps = {
   styles?: React.CSSProperties;
   value?: string;
@@ -54,15 +41,11 @@ type PopperAsProps = {
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-type ItemAsProps = {
-  value: string;
-};
-
-class ColorPickerRoot extends AbstractComponent<RootAsProps> {
+class ColorPickerRoot extends AbstractComponent<ColorPickerProps, typeof ColorPickerRoot.enhance, { value: null; visible: boolean }> {
   static displayName = 'ColorPicker';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
   static defaultProps = () => ({
     defaultVisible: false,
@@ -85,7 +68,7 @@ class ColorPickerRoot extends AbstractComponent<RootAsProps> {
     };
   }
 
-  bindHandlerItemClick = (value: string) => (event: React.MouseEvent | React.KeyboardEvent) => {
+  bindHandlerItemClick = (value: string | undefined) => (event: React.MouseEvent | React.KeyboardEvent) => {
     this.handlers.value(value, event);
     this.handlers.visible(false, event);
     event.preventDefault();
@@ -118,8 +101,8 @@ class ColorPickerRoot extends AbstractComponent<RootAsProps> {
     };
   }
 
-  getItemProps(props: ItemAsProps) {
-    const { value, displayLabel, getI18nText } = this.asProps;
+  getItemProps(props: InputColorProps) {
+    const { value, displayLabel, getI18nText, uid } = this.asProps;
     const isSelected = value === props.value;
 
     return {
@@ -133,6 +116,7 @@ class ColorPickerRoot extends AbstractComponent<RootAsProps> {
       },
       selected: isSelected,
       getI18nText,
+      uid,
     };
   }
 
@@ -144,11 +128,12 @@ class ColorPickerRoot extends AbstractComponent<RootAsProps> {
 
   render() {
     const { styles, Children } = this.asProps;
+    const SColorRoot = Root();
 
     return sstyled(styles)(
-      <Root render={Dropdown} stretch={false}>
+      <SColorRoot render={Dropdown} stretch={false}>
         <Children />
-      </Root>,
+      </SColorRoot>,
     );
   }
 }
@@ -164,10 +149,12 @@ export function Trigger(props: TriggerAsProps) {
     return getI18nText('currentColor', { color: value });
   }, [value]);
 
+  const SColorTriggerRoot = Root();
+
   return (
-    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label={label} role='combobox'>
+    <SColorTriggerRoot render={Dropdown.Trigger} tag={DefaultTrigger} aria-label={label} role='combobox'>
       <Children />
-    </Root>
+    </SColorTriggerRoot>
   );
 }
 
@@ -195,18 +182,13 @@ export function Popper(props: PopperAsProps) {
   );
 }
 
-const ColorPicker = createComponent(ColorPickerRoot, {
+export const ColorPicker = createComponent(ColorPickerRoot, {
   Trigger,
   Popper,
   Item,
   Colors,
 });
 
-const PaletteManager = createComponent(PaletteManagerRoot, {
-  Item: ColorPicker.Item,
-  Colors: ColorsCustom,
-  InputColor,
-});
-
-export { PaletteManager, defaultColors };
-export default ColorPicker;
+export {
+  defaultColors,
+};

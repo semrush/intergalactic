@@ -3,19 +3,11 @@ import { Root, sstyled } from '@semcore/core';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import React from 'react';
 
-import ColorPicker, { PaletteManager } from '../ColorPicker';
+import { ColorPicker } from '../ColorPicker';
+import type { ColorsCustomProps, ColorsProps } from '../ColorPicker.types';
+import { PaletteManager } from '../PaletteManager';
 
-type ColorsAsProps = {
-  styles?: React.CSSProperties;
-  colors?: string[];
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
-type ColorsCustomAsProps = ColorsAsProps & {
-  onPlusButtonClick?: React.MouseEventHandler;
-};
-
-export function Colors(props: ColorsAsProps) {
+export function Colors(props: ColorsProps) {
   const { styles, colors, getI18nText } = props;
   const SColors = Root();
 
@@ -28,10 +20,10 @@ export function Colors(props: ColorsAsProps) {
     >
       {colors?.map((color) => <ColorPicker.Item value={color} key={color} />)}
     </SColors>,
-  ) as React.ReactElement;
+  );
 }
 
-export function ColorsCustom(props: ColorsCustomAsProps) {
+export function ColorsCustom(props: ColorsCustomProps) {
   const { styles, colors, onPlusButtonClick, getI18nText } = props;
   const SColors = Root();
   const SColorsContainer = Flex;
@@ -51,5 +43,5 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
         <MathPlusM color='icon-primary-neutral' />
       </SPlusButton>
     </SColorsContainer>,
-  ) as React.ReactElement;
+  );
 }

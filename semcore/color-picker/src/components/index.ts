@@ -1,3 +1,3 @@
 export * from './Item';
-export { InputColor } from './InputColor';
+export * from './InputColor';
 export * from './colors';

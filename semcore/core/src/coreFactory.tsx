@@ -303,20 +303,20 @@ export function assignProps(p1: any, p2: any) {
 }
 
 function createComponent<
-  Tag extends keyof React.JSX.IntrinsicElements,
-  C extends AbstractComponent<any, any, any, any, any>,
-  OriginComponent extends AbstractCtor<C> | FunctionComponent<any>,
-  ChildMap extends Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any> | [AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>, Record<string, AbstractCtor<AbstractComponent<any>> | FunctionComponent<any>>]> = never,
+  OriginCtor extends AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>,
+  ChildMap extends Readonly<Record<string, IntergalacticComponent<any, any, any, any> | AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any> | [AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>, Record<string, AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>]>>,
+  Tag extends keyof React.JSX.IntrinsicElements = 'div',
   ContextType = {},
 >(
-  OriginComponent: OriginComponent,
+  OriginComponent: OriginCtor,
   childComponents: ChildMap,
   options: {
+    tag?: Tag;
     context?: React.Context<ContextType>;
     parent?: AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any> | Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>;
-    enhancements?: OriginComponent extends AbstractComponent<any, infer E, any, any, any> ? E : [];
+    enhancements?: OriginCtor extends AbstractCtor<AbstractComponent<any, infer E, any, any, any>> ? E : never;
   } = {},
-): IntergalacticComponent<Tag, C, OriginComponent, ChildMap, ContextType> {
+): IntergalacticComponent<Tag, OriginCtor, ChildMap, ContextType> {
   const {
     context = React.createContext<ContextType>({} as ContextType),
     parent = [],

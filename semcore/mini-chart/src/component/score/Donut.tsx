@@ -11,12 +11,6 @@ import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  duration: ReturnType<typeof cssVariableEnhance>;
-  isSemiDonut?: true;
-};
-
 class DonutRoot extends AbstractComponent<ScoreDonutProps, typeof DonutRoot.enhance> {
   static enhance = [
     cssVariableEnhance({

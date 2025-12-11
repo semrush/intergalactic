@@ -1,11 +1,12 @@
-import { createComponent, sstyled, AbstractComponent, Root } from '@semcore/core';
+import { sstyled, AbstractComponent, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
-import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
+import { ScrollArea } from './ScrollArea';
+import type { ScrollBarProps } from './ScrollBar.types';
 import style from './style/scroll-bar.shadow.css';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
@@ -44,7 +45,7 @@ export class ScrollBarRoot extends AbstractComponent<ScrollBarProps, typeof Scro
   static defaultProps = () => {
     return {
       container: React.createRef(),
-      children: <ScrollBar.Slider />,
+      children: <ScrollArea.Bar.Slider />,
     };
   };
 
@@ -379,9 +380,5 @@ export function Slider(props: ScrollBarProps) {
 
   return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
 }
-
-export const ScrollBar = createComponent(ScrollBarRoot, {
-  Slider,
-});
 
 export { setAriaValues as setAreaValue };

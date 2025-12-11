@@ -1,5 +1,7 @@
 import { FilterTrigger } from '@semcore/base-trigger';
+import type { IntergalacticComponent } from '@semcore/core';
 import { createComponent, AbstractComponent, Root } from '@semcore/core';
+import type { DropdownPopperProps, DropdownTriggerProps } from '@semcore/dropdown';
 import Dropdown from '@semcore/dropdown';
 import React from 'react';
 
@@ -11,7 +13,7 @@ type AsPropsTypeWithHandlers<T> = T & {
   setFocusRef: (el: HTMLElement) => {};
 };
 
-class AddFilterDropdownRoot extends AbstractComponent<AddFilterItemProps> {
+class AddFilterDropdownRoot extends AbstractComponent<AddFilterItemProps, [], { visible: null }> {
   static displayName = 'AddFilterDropdown';
 
   static defaultProps = () => {
@@ -22,7 +24,7 @@ class AddFilterDropdownRoot extends AbstractComponent<AddFilterItemProps> {
 
   uncontrolledProps() {
     return {
-      visible: [null],
+      visible: null,
     };
   }
 
@@ -60,13 +62,24 @@ class AddFilterDropdownRoot extends AbstractComponent<AddFilterItemProps> {
   }
 
   render() {
-    return <Root render={Dropdown} />;
+    const SDropdownRoot = Root();
+    return <SDropdownRoot render={Dropdown} />;
   }
 }
 
+function Trigger(props: DropdownTriggerProps) {
+  const SDropdownTrigger = Root();
+  return <SDropdownTrigger render={Dropdown.Trigger} />;
+}
+
+function Popper(props: DropdownPopperProps) {
+  const SDropdownPopper = Root();
+  return <SDropdownPopper render={Dropdown.Popper} />;
+}
+
 const AddFilterDropdown = createComponent(AddFilterDropdownRoot, {
-  Trigger: Dropdown.Trigger,
-  Popper: Dropdown.Popper,
+  Trigger,
+  Popper,
 });
 
 export default AddFilterDropdown;

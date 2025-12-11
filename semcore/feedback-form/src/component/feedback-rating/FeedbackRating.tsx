@@ -17,10 +17,10 @@ import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import type { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
+import type { FeedbackRatingProps, FormConfigItem } from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import CheckboxButton from '../checkbox-button/CheckboxButton';
+import { CheckboxButtonRoot } from '../checkbox-button/CheckboxButton';
 import { FeedbackItem } from '../feedback-item/FeedbackItem';
 import SliderRating from '../slider-rating/SliderRating';
 import { SubmitButton } from '../submit-button/SubmitButton';
@@ -264,7 +264,7 @@ class FeedbackRatingRoot extends AbstractComponent<
     const notificationId = this.getNoticeTextId();
 
     return sstyled(styles)(
-      <Root render={Box}>
+      <Box>
         <Notice
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
@@ -382,7 +382,7 @@ class FeedbackRatingRoot extends AbstractComponent<
         </SFeedbackRating>
 
         <NoticeBubbleContainer manager={this.manager} />
-      </Root>,
+      </Box>,
     );
   }
 }
@@ -395,12 +395,13 @@ function Header(props: any) {
   );
 }
 
-const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate } =
-  createComponent(FeedbackRatingRoot, {
-    Header,
-    Item: FeedbackItem,
-    Checkbox: CheckboxButton,
-    Submit: SubmitButton,
-  });
+const Checkbox = createComponent(CheckboxButtonRoot, {}, { tag: 'input' });
+
+const FeedbackRating = createComponent(FeedbackRatingRoot, {
+  Header,
+  Item: FeedbackItem,
+  Checkbox,
+  Submit: SubmitButton,
+});
 
 export default FeedbackRating;

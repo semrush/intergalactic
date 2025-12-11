@@ -11,7 +11,6 @@ import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';
 import React from 'react';
 
-import type CarouselType from './Carousel.types';
 import type {
   CarouselProps,
   CarouselState,
@@ -38,7 +37,7 @@ const isSmallScreen = (index?: number) => index === 1;
 class CarouselRoot extends AbstractComponent<
   CarouselProps,
   typeof enhance,
-  never,
+  { index: (index?: number) => void },
   CarouselContext,
   CarouselState
 > {
@@ -74,15 +73,12 @@ class CarouselRoot extends AbstractComponent<
 
   uncontrolledProps() {
     return {
-      index: [
-        null,
-        (_index: number) => {
-          this.refCarousel.current?.blur();
-          setTimeout(() => {
-            this.refCarousel.current?.focus();
-          }, 0);
-        },
-      ],
+      index: (_index?: number) => {
+        this.refCarousel.current?.blur();
+        setTimeout(() => {
+          this.refCarousel.current?.focus();
+        }, 0);
+      },
     };
   }
 
@@ -746,7 +742,7 @@ const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
   );
 };
 
-const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
+const Carousel = createComponent(CarouselRoot, {
   Container,
   ContentBox,
   Indicators,

@@ -1,7 +1,7 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { PropGetterFn, IRootComponentProps } from '@semcore/core';
 import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 
-import type { Box, BoxProps } from '../flex-box';
+import type { BoxProps } from '../flex-box';
 
 export type ShadowTheme = 'dark' | 'light';
 
@@ -69,8 +69,8 @@ export type ScrollBarContext = ScrollBarProps & {
   getSliderProps: PropGetterFn;
 };
 
-export type ScrollAreaContainerProps = BoxProps & {
-  /** Inner prop */
+export type ScrollAreaContainerProps = BoxProps & IRootComponentProps & {
+  /** @internal */
   $refInner?: React.RefObject<any>;
 
   focusRingTopOffset?: string;
@@ -79,17 +79,8 @@ export type ScrollAreaContainerProps = BoxProps & {
   focusRingLeftOffset?: string;
 };
 
-declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBarContext> & {
-  Slider: typeof Box;
-};
-
-declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, ScrollAreaContext> & {
-  Container: Intergalactic.Component<'div', ScrollAreaContainerProps>;
-  Bar: typeof ScrollBar;
-};
-
 declare const eventCalculate: Event;
 
 declare const hideScrollBarsFromScreenReadersContext: React.Context<boolean>;
 
-export { eventCalculate, hideScrollBarsFromScreenReadersContext, ScrollBar, ScrollArea };
+export { eventCalculate, hideScrollBarsFromScreenReadersContext };

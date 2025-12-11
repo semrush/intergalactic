@@ -1,4 +1,3 @@
-import type { Intergalactic } from '@semcore/core';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
@@ -8,7 +7,7 @@ import type { AnimatedNumberBaseProps } from './index';
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
 
-export const AnimatedNumber = (props) => {
+export const AnimatedNumber = (props: any) => {
   const ref = React.useRef<HTMLElement>(null);
   const defaultDurationStr = useCssVariable('--intergalactic-duration-counter', '200', ref);
   const defaultDuration = React.useMemo(
@@ -24,7 +23,7 @@ export const AnimatedNumber = (props) => {
     value,
     ...restProps
   } = props;
-  const Tag: any = props.tag ?? 'div';
+  const Tag = props.tag ?? 'div';
   const animationRef = React.useRef({
     animationStart: -1,
     animationFrame: -1,

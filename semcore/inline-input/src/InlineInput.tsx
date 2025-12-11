@@ -1,84 +1,25 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, AbstractComponent, sstyled, Root } from '@semcore/core';
-import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
+import InputNumber from '@semcore/input-number';
 import Spin from '@semcore/spin';
-import type { TooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
-import type { InlineInputProps, InlineInputValueProps } from './index.type';
-import { InlineInputComponent } from './index.type';
+import type {
+  InlineInputAddonProps,
+  InlineInputCancelControlProps, InlineInputConfirmControlProps,
+  InlineInputProps,
+  InlineInputValueProps,
+  InputNumberControlsProps,
+  InputNumberValueProps,
+} from './index.type';
 import style from './style/inline-input.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-type OnConfirm = (
-  value: string,
-  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-) => void;
-type OnCancel = (
-  prevValue: string,
-  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-) => void;
-// type RootAsProps = {
-//   state?: 'normal' | 'valid' | 'invalid';
-//   loading?: boolean;
-//   disabled?: boolean;
-//   onConfirm?: OnConfirm;
-//   onCancel?: OnCancel;
-//   value?: string;
-//   defaultValue?: string;
-//   autoFocus?: boolean;
-//   placeholder?: string;
-//   onChange?: (value: string, event: React.ChangeEvent) => void;
-//   onBlur?: (event: React.FocusEvent) => void;
-//   onFocus?: (event: React.FocusEvent) => void;
-//   onBlurBehavior?: 'cancel' | 'confirm';
-//   styles?: React.CSSProperties;
-//   Children: React.FC;
-//   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-//   locale?: string;
-// };
-
-type AddonAsProps = {
-  styles?: React.CSSProperties;
-  Children: React.FC;
-};
-
-type ControlAsProps = {
-  Children: React.FC;
-  children: React.ReactNode;
-  styles?: React.CSSProperties;
-  title?: string;
-  $tooltipsProps?: TooltipProps;
-  loading?: boolean;
-  disabled?: boolean;
-  onCancel?: OnCancel;
-  value?: string;
-  icon?: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-type ConfirmControlAsProps = ControlAsProps & {
-  onConfirm?: OnConfirm;
-  inputRef?: React.RefObject<HTMLInputElement>;
-};
-type CancelControlAsProps = ControlAsProps & {
-  onCancel?: OnCancel;
-};
-type NumberValueAsProps = InputNumberValueProps & {
-  inputHandlerRefs?: React.RefObject<IRootComponentHandlers>;
-  increment?: (event: WheelEvent) => void;
-  decrement?: (event: WheelEvent) => void;
-};
-type NumberControlsAsProps = ControlAsProps & {
-  increment?: (event: React.SyntheticEvent) => void;
-  decrement?: (event: React.SyntheticEvent) => void;
-};
 
 const pointInsideOfRect = ({
   x,
@@ -107,7 +48,7 @@ class InlineInputBase extends AbstractComponent<InlineInputProps, typeof InlineI
 
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
-  inputHandlersRef = React.createRef<IRootComponentHandlers>();
+  inputHandlersRef = React.createRef<any>();
   initValue = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
   lastHandledKeyboardEvent = -1;
@@ -293,7 +234,7 @@ class InlineInputBase extends AbstractComponent<InlineInputProps, typeof InlineI
   }
 }
 
-class Value extends AbstractComponent<InlineInputValueProps, typeof Value.enhance> {
+class Value extends AbstractComponent<InlineInputValueProps, typeof Value.enhance, { value: any }> {
   static defaultProps = {
     defaultValue: '',
   };
@@ -313,12 +254,12 @@ class Value extends AbstractComponent<InlineInputValueProps, typeof Value.enhanc
   }
 }
 
-const Addon: React.FC<AddonAsProps> = (props) => {
+const Addon: React.FC<InlineInputAddonProps> = (props) => {
   const SAddon = Root();
   return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
 };
 
-const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
+const ConfirmControl: React.FC<InlineInputConfirmControlProps> = (props) => {
   const SAddon = Root();
   const { Children, children: hasChildren, inputRef } = props;
   const title = props.title ?? props.getI18nText('confirm');
@@ -369,7 +310,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
     </SAddon>,
   ) as React.ReactElement;
 };
-const CancelControl: React.FC<CancelControlAsProps> = (props) => {
+const CancelControl: React.FC<InlineInputCancelControlProps> = (props) => {
   const SAddon = Root();
   const { Children, children: hasChildren } = props;
   const title = props.title ?? props.getI18nText('discard');
@@ -421,13 +362,13 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   ) as React.ReactElement;
 };
 
-const NumberValue: React.FC<NumberValueAsProps> = (props) => {
+const NumberValue: React.FC<InputNumberValueProps> = (props) => {
   const SValue = Root();
 
   return sstyled(props.styles)(<SValue render={InputNumber.Value} />) as React.ReactElement;
 };
 
-function NumberControls(props: NumberControlsAsProps) {
+function NumberControls(props: InputNumberControlsProps) {
   const SControls = Root();
 
   return sstyled(props.styles)(

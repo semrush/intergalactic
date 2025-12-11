@@ -1,7 +1,6 @@
 import type { BoxProps } from '@semcore/base-components';
-import type { ButtonLinkComponent } from '@semcore/button';
-import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { InputNumberControlsProps } from '@semcore/input-number';
+import type { InputNumberControlsProps as INCP, InputNumberValueProps as INVP } from '@semcore/input-number';
+import type { TooltipProps } from '@semcore/tooltip';
 import type React from 'react';
 
 export type InlineInputProps = BoxProps & {
@@ -97,7 +96,37 @@ export type InlineInputValueProps = BoxProps & {
   placeholder?: string;
 };
 
-export type InlineInputConfirmControlProps = BoxProps & {
+type OnConfirm = (
+  value: string,
+  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+) => void;
+type OnCancel = (
+  prevValue: string,
+  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+) => void;
+
+export type ControlProps = {
+  /** @internal */
+  Children: React.FC;
+  /** @internal */
+  children: React.ReactNode;
+  /** @internal */
+  styles?: React.CSSProperties;
+  /** @internal */
+  $tooltipsProps?: TooltipProps;
+  /** @internal */
+  loading?: boolean;
+  /** @internal */
+  disabled?: boolean;
+  /** @internal */
+  onCancel?: OnCancel;
+  /** @internal */
+  value?: string;
+  /** @internal */
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+};
+
+export type InlineInputConfirmControlProps = BoxProps & ControlProps & {
   /**
    * Text of tooltip
    * @default Confirm
@@ -108,9 +137,13 @@ export type InlineInputConfirmControlProps = BoxProps & {
    * @default CheckM
    */
   icon?: React.FC;
+  /** @internal */
+  onConfirm?: OnConfirm;
+  /** @internal */
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
-export type InlineInputCancelControlProps = BoxProps & {
+export type InlineInputCancelControlProps = BoxProps & ControlProps & {
   /**
    * Text of tooltip
    * @default Cancel
@@ -121,28 +154,22 @@ export type InlineInputCancelControlProps = BoxProps & {
    * @default CloseM
    */
   icon?: React.FC;
+
+  /** @internal */
+  onCancel?: OnCancel;
 };
 
-type InlineInputCtx = {
-  getAddonProps: PropGetterFn;
-  getConfirmControlProps: PropGetterFn;
-  getCancelControlProps: PropGetterFn;
-  getValueProps: PropGetterFn;
+export type InputNumberControlsProps = INCP & {
+  /** @internal */
+  increment?: (event: WheelEvent) => void;
+  /** @internal */
+  decrement?: (event: WheelEvent) => void;
 };
-
-export type InlineInputComponent = Intergalactic.Component<'div', InlineInputProps, InlineInputCtx> & {
-  Addon: Intergalactic.Component<'div', InlineInputAddonProps, InlineInputProps>;
-  Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
-  ConfirmControl: Intergalactic.Component<
-    ButtonLinkComponent,
-    InlineInputConfirmControlProps,
-    InlineInputProps
-  >;
-  CancelControl: Intergalactic.Component<
-    ButtonLinkComponent,
-    InlineInputCancelControlProps,
-    InlineInputProps
-  >;
-  NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
-  NumberControls: Intergalactic.Component<'div', InputNumberControlsProps, InlineInputProps>;
+export type InputNumberValueProps = INVP & {
+  /** @internal */
+  inputHandlerRefs?: React.RefObject<any>;
+  /** @internal */
+  increment?: (event: WheelEvent) => void;
+  /** @internal */
+  decrement?: (event: WheelEvent) => void;
 };

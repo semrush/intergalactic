@@ -1073,8 +1073,8 @@ importers:
         specifier: 16.0.12
         version: link:../button
       '@semcore/checkbox':
-        specifier: 16.2.1
-        version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 16.2.2
+        version: link:../checkbox
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon

@@ -1,16 +1,28 @@
-import { FilterTrigger } from '@semcore/base-trigger';
+import { type ButtonTriggerProps, FilterTrigger } from '@semcore/base-trigger';
 import { createComponent, AbstractComponent, Root } from '@semcore/core';
-import Select, { type SelectProps } from '@semcore/select';
+import type { DropdownPopperAriaProps } from '@semcore/dropdown';
+import type {
+  DropdownMenuListProps,
+  DropdownMenuMenuProps,
+  DropdownMenuProps,
+  DropdownMenuTriggerProps,
+} from '@semcore/dropdown-menu';
+import Select, {
+  type SelectOptionProps,
+  type SelectOptionCheckboxProps,
+  type SelectInputSearch,
+  type SelectProps,
+} from '@semcore/select';
 import React from 'react';
 
-import type { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
+import type { AddFilterItemProps } from '../AddFilter.types';
 
 type AsPropsWithOnClear<T> = T & {
   onClear: () => void;
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterSelectRoot extends AbstractComponent<SelectProps & AddFilterItemProps> {
+class AddFilterSelectRoot extends AbstractComponent<SelectProps & AddFilterItemProps, [], { visible: null }> {
   static displayName = 'AddFilterSelect';
 
   static defaultProps = () => {
@@ -25,7 +37,7 @@ class AddFilterSelectRoot extends AbstractComponent<SelectProps & AddFilterItemP
 
   uncontrolledProps() {
     return {
-      visible: [null],
+      visible: null,
     };
   }
 
@@ -60,22 +72,48 @@ class AddFilterSelectRoot extends AbstractComponent<SelectProps & AddFilterItemP
   }
 
   render() {
-    return <Root render={Select} />;
+    const SSelectRoot = Root();
+    return <SSelectRoot render={Select} />;
   }
 }
 
-const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSelectRoot, {
-  Trigger: Select.Trigger,
-  Menu: Select.Menu,
-  Option: [
-    Select.Option,
-    {
-      Checkbox: Select.Option.Checkbox,
-    },
-  ],
-  List: Select.List,
-  Popper: Select.Popper,
-  InputSearch: Select.InputSearch,
+function Trigger(props: DropdownMenuTriggerProps & ButtonTriggerProps) {
+  const SSelectTrigger = Root();
+  // @ts-ignore
+  return <SSelectTrigger render={Select.Trigger} />;
+}
+function Menu(props: DropdownMenuMenuProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Menu} />;
+}
+function Option(props: SelectOptionProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Option} />;
+}
+function Checkbox(props: SelectOptionCheckboxProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Option.Checkbox} />;
+}
+function List(props: DropdownMenuListProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.List} />;
+}
+function Popper(props: DropdownMenuProps & DropdownPopperAriaProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Popper} />;
+}
+function InputSearch(props: SelectInputSearch) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.InputSearch} />;
+}
+
+const AddFilterSelect = createComponent(AddFilterSelectRoot, {
+  Trigger,
+  Menu,
+  Option: [Option, { Checkbox }],
+  List,
+  Popper,
+  InputSearch,
 });
 
 export default AddFilterSelect;

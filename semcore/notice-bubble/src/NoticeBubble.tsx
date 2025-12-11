@@ -318,6 +318,7 @@ class ViewInfo extends AbstractComponent<NoticeBubbleViewItemProps> {
             ref={this.closeButtonRef}
             data-hide-focus-hover-popper='true'
           >
+            {/* @ts-ignore */}
             <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
           </SDismiss>
 

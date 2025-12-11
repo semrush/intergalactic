@@ -4,8 +4,6 @@ import {
   AbstractComponent,
   sstyled,
   Root,
-  type PropGetterFn,
-  type Intergalactic,
 } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
@@ -78,11 +76,6 @@ export type InputMaskValueProps = InputValueProps & {
    * Aria role for input
    */
   inputRole?: string;
-};
-
-type InputMaskCtx = {
-  getInputProps: PropGetterFn;
-  getValueProps: PropGetterFn;
 };
 
 export function getAfterPositionValue(value: string, mask: any = ''): number {

@@ -1,26 +1,20 @@
-import { AbstractComponent, sstyled, CORE_INSTANCE } from '@semcore/core';
+import { Box } from '@semcore/base-components';
+import { AbstractComponent, sstyled, createComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
 import React from 'react';
 
+import type { PaletteManagerProps } from './ColorPicker.types';
+import { InputColorRoot, Item, ColorsCustom } from './components';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-type RootAsProps = {
-  defaultColors?: string[];
-  colors?: string[];
-  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
 
 type State = { focus: boolean };
 
 const enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-class PaletteManagerRoot extends AbstractComponent<RootAsProps, typeof enhance, never, {}, State> {
+class PaletteManagerRoot extends AbstractComponent<PaletteManagerProps, typeof enhance, { colors: string[] }, {}, State> {
   static displayName = 'PaletteManager';
 
   static style = style;
@@ -102,13 +96,12 @@ class PaletteManagerRoot extends AbstractComponent<RootAsProps, typeof enhance, 
     };
   }
 
-  render(this: any) {
+  render() {
     const { styles, Children } = this.asProps;
-
-    const PaletteManager = this[CORE_INSTANCE];
+    const SPaletteRoot = Root();
 
     return sstyled(styles)(
-      <>
+      <SPaletteRoot render={Box} display='contents'>
         <Divider mt={3} mb={3} />
         {Children.origin
           ? (
@@ -120,9 +113,13 @@ class PaletteManagerRoot extends AbstractComponent<RootAsProps, typeof enhance, 
                 <PaletteManager.InputColor />
               </>
             )}
-      </>,
+      </SPaletteRoot>,
     );
   }
 }
 
-export default PaletteManagerRoot;
+export const PaletteManager = createComponent(PaletteManagerRoot, {
+  Item,
+  Colors: ColorsCustom,
+  InputColor: InputColorRoot,
+});

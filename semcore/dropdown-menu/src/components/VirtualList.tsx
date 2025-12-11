@@ -1,5 +1,4 @@
 import { ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import { Root, AbstractComponent, createComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
@@ -118,11 +117,4 @@ class VirtualListRoot<T = string, D extends object = {}> extends AbstractCompone
   }
 }
 
-export type VirtualListComponent = (<
-  T = string,
-  D extends object = {},
->(
-  props: Intergalactic.InternalTypings.EfficientOmit<Intergalactic.InternalTypings.ComponentProps<typeof Box, 'div', VirtualListProps<T, D>>, 'tag' | 'children'>
-) => Intergalactic.InternalTypings.ComponentRenderingResults) & Intergalactic.InternalTypings.ComponentAdditive<typeof Box, 'div', VirtualListProps<any, any>>;
-
-export const VirtualList = createComponent(VirtualListRoot) as VirtualListComponent;
+export const VirtualList = createComponent(VirtualListRoot, {});

@@ -106,19 +106,3 @@ export type CarouselIndicatorProps = IRootComponentProps &
     onClick?: () => void;
     inverted?: boolean;
   } & CarouselItem;
-
-declare const CarouselType: Intergalactic.Component<
-  'div',
-  CarouselProps,
-  CarouselContext & CarouselState
-> & {
-  Container: Intergalactic.Component<'div', BoxProps>;
-  ContentBox: Intergalactic.Component<'div', BoxProps>;
-  Indicators: Intergalactic.Component<'div', CarouselIndicatorsProps, CarouselState>;
-  Indicator: Intergalactic.Component<'div', CarouselIndicatorProps>;
-  Item: Intergalactic.Component<'div', CarouselItemProps>;
-  Prev: Intergalactic.Component<'div', CarouselButtonProps>;
-  Next: Intergalactic.Component<'div', CarouselButtonProps>;
-};
-
-export default CarouselType;
