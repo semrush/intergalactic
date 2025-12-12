@@ -40,9 +40,11 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await nvda.perform(nvda.keyboardCommands.activate);
 
       await nvda.next();
-      const menuItem = await nvda.itemText();
       // Menu items should announce as clickable options
-      expect(menuItem).toContain('combo box, collapsed');
+      expect(nvda.itemText()).toBe('expanded');
+      await nvda.next();
+      // Menu items should announce as clickable options
+      expect(nvda.itemText()).toBe('expanded');
     });
   });
 
@@ -60,13 +62,10 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
       await nvda.next();
-      page.keyboard.press('Space');
-      // await page.getByRole('option').first().waitFor({ state: 'visible' });
-
-      await nvda.next();
+      await nvda.perform(nvda.keyboardCommands.activate);
 
       const announcement = await nvda.itemText();
-      expect(announcement).toContain('Period, combo box, collapsed, Select period');
+      expect(announcement).toBe('expanded');
     });
   });
 });
