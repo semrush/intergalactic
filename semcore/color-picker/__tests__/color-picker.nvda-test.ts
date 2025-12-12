@@ -13,10 +13,8 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toBe('separator');
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-    await nvda.next();
+    expect(await nvda.itemText()).toBe('Color field, combo box, collapsed');
+    await nvda.press('Tab');
 
     expect(await nvda.itemText()).toContain('Clear color, 1 of 12');
 

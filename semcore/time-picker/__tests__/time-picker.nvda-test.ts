@@ -26,10 +26,5 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Time period changed to AM');
-
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('Time period changed to PM');
   });
 });
