@@ -46,6 +46,9 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toBe('clickable, button, Previous slide');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, button, Previous slide');
+    expect(await nvda.itemText()).toBe('clickable, current, button, Open in fullscreen A cyclist performing stunts in the forest');
+
+    await nvda.press('ArrowRight');
+    expect(await nvda.itemText()).toBe('clickable, current, button, Open in fullscreen A cyclist performing stunts in the forest');
   });
 });
