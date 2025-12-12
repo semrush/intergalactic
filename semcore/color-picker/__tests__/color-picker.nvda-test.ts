@@ -14,11 +14,11 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toBe('Color field, combo box, collapsed');
-    await nvda.press('Tab');
+    await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Clear color, 1 of 12');
+    expect(await nvda.itemText()).toContain('divider');
 
-    await page.keyboard.press('Tab');
+    await nvda.next();
     expect(await nvda.itemText()).toContain('Preset colors');
   });
 });

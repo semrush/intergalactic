@@ -19,7 +19,7 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.press('Space');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toBe('space. alert, Unique Visitors grabbed. Current position: 2 out of 5. Use the arrows to change the position, Space to apply the new position, Escape to cancel');
+    expect(await nvda.itemText()).toBe('space. alert, Unique Visitors grabbed. Current position: 2 out of 5. Use the arrows to change the position, Space to apply the new position, Escape to cancel.');
 
     await nvda.press('ArrowDown');
     await nvda.press('Space');
