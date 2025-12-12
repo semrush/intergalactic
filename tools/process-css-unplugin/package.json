@@ -1,14 +1,14 @@
 {
-  "name": "@semcore/css-virtualizer-unplugin",
-  "description": "Intergalactic CSS virtualizer unplugin.",
-  "version": "18.0.0",
+  "name": "@semcore/process-css-unplugin",
+  "description": "Intergalactic CSS processor plugin.",
+  "version": "1.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "UI-Kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=ts"
+    "build": "pnpm semcore-builder"
   },
   "dependencies": {
     "string-hash": "1.1.3",
@@ -20,6 +20,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "semcore/css-virtualizer-unplugin"
+    "directory": "tools/process-css-unplugin"
   }
 }

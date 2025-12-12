@@ -1,17 +1,17 @@
-# @semcore/css-virtualizer-unplugin
+# @semcore/process-css-unplugin
 
-[![version](https://img.shields.io/npm/v/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/@semcore/css-virtualizer-unplugin)
-[![downloads](https://img.shields.io/npm/dt/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/package/@semcore/css-virtualizer-unplugin)
+[![version](https://img.shields.io/npm/v/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/@semcore/process-css-unplugin)
+[![downloads](https://img.shields.io/npm/dt/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/package/@semcore/process-css-unplugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
-> This component is part of the Intergalactic Design System
+> This plugin is part of the Intergalactic Design System
 
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 
 ## Install
 
 ```sh
-npm install @semcore/css-virtualizer-unplugin
+npm install @semcore/process-css-unplugin
 ```
 
 ## Options
@@ -28,12 +28,12 @@ type Options = {
 
 ```js
 import { defineConfig } from 'vite';
-import { intergalacticCssVirtualizerVitePlugin } from '@semcore/css-virtualizer-unplugin';
+import { processCssVitePlugin } from '@semcore/process-css-unplugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    intergalacticCssVirtualizerVitePlugin({
+    processCssVitePlugin({
       prefix: 'myprefix' // optional
     }),
   ],
@@ -43,12 +43,12 @@ export default defineConfig({
 ### Webpack
 
 ```js
-import { intergalacticCssVirtualizerWebpackPlugin } from '@semcore/css-virtualizer-unplugin';
+import { processCssWebpackPlugin } from '@semcore/process-css-unplugin';
 
 module.exports = {
   // ...
   plugins: [
-    intergalacticCssVirtualizerVitePlugin({
+    processCssWebpackPlugin({
       prefix: 'myprefix' // optional
     }),
   ],

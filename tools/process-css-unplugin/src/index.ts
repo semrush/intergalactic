@@ -35,12 +35,12 @@ type Options = {
   prefix?: string;
 };
 
-export const intergalacticCssVirtualizerUnplugin = createUnplugin<Options>((options = {}) => {
+const processCssUnplugin = createUnplugin<Options>((options = {}) => {
   const { prefix } = options;
   const cssFiles = new Map<string, string>();
 
   return {
-    name: 'intergalactic-css-virtualizer-unplugin',
+    name: 'semcore-process-css-unplugin',
     enforce: 'pre',
 
     resolveId(id) {
@@ -48,7 +48,7 @@ export const intergalacticCssVirtualizerUnplugin = createUnplugin<Options>((opti
     },
 
     loadInclude(id) {
-      return id.endsWith('.css');
+      return cssFiles.has(id);
     },
 
     load(id) {
@@ -83,5 +83,5 @@ export const intergalacticCssVirtualizerUnplugin = createUnplugin<Options>((opti
   };
 });
 
-export const intergalacticCssVirtualizerVitePlugin: UnpluginInstance<Options>['vite'] = intergalacticCssVirtualizerUnplugin.vite;
-export const intergalacticCssVirtualizerWebpackPlugin: UnpluginInstance<Options>['webpack'] = intergalacticCssVirtualizerUnplugin.webpack;
+export const processCssVitePlugin: UnpluginInstance<Options>['vite'] = processCssUnplugin.vite;
+export const processCssWebpackPlugin: UnpluginInstance<Options>['webpack'] = processCssUnplugin.webpack;
