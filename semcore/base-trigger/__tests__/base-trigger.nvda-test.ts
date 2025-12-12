@@ -34,6 +34,8 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Activate first select and verify menu opens', async () => {
       await nvda.perform(nvda.keyboardCommands.activate);
+      await page.waitForTimeout(500);
+
       expect(nvda.itemText()).toBe('expanded');
     });
   });
@@ -52,9 +54,11 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
       await nvda.perform(nvda.keyboardCommands.activate);
+      await page.waitForTimeout(500);
 
-      const announcement = await nvda.itemText();
-      expect(announcement).toBe('expanded');
+      expect(await nvda.itemText()).toBe('Device:, combo box, Select option, collapsed');
+      await nvda.next();
+      expect(await nvda.itemText()).toBe('Device:, combo box, Select option, collapsed');
     });
   });
 });

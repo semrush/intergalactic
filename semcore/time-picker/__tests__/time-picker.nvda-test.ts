@@ -38,12 +38,12 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     await page.waitForTimeout(300);
 
     await nvda.type('04');
-    await nvda.perform(nvda.keyboardCommands.activate);
+    await nvda.press('Enter');
 
     await page.waitForTimeout(300);
 
     await nvda.type('20');
-    await nvda.perform(nvda.keyboardCommands.activate);
+    await nvda.press('Enter');
 
     await page.waitForTimeout(300);
     await nvda.previous();
