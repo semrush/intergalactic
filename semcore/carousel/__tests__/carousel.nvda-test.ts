@@ -20,23 +20,26 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    // expect(await nvda.itemText()).toContain('A vulture flies with its wings spread wide');
     expect(await nvda.itemText()).toBe('clickable');
 
     await nvda.next();
     expect(await nvda.itemText()).toBe('clickable');
-
-    // expect(await nvda.itemText()).toBe(
-    //   'A pug wrapped in a blanket sits on the road in the forest',
-    // );
-    // expect(await nvda.itemText()).toContain('button');
 
     await nvda.next();
     expect(await nvda.itemText()).toContain('clickable, button, Next slide');
+
     await nvda.next();
     expect(await nvda.itemText()).toContain('tab, selected, Slide 1');
 
     await nvda.next();
+    expect(await nvda.itemText()).toContain('tab, Slide 2');
+
+    await nvda.previous();
+    await nvda.previous();
+    await nvda.previous();
+
+    await nvda.interact();
+    await nvda.click();
     expect(await nvda.itemText()).toContain('tab, Slide 2');
   });
 });
