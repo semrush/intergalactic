@@ -532,6 +532,7 @@ class CarouselRoot extends Component<
       zoom: hasZoom,
       'aria-label': ariaLabel,
       indicators,
+      getI18nText,
     } = this.asProps;
     const ComponentItems = findAllComponents(Children, ['Carousel.Item']);
     const Controls = findAllComponents(Children, [
@@ -544,7 +545,7 @@ class CarouselRoot extends Component<
       <SCarousel
         render={Box}
         role='region'
-        aria-roledescription='carousel'
+        aria-roledescription={getI18nText('Carousel:aria-roledescription')}
         onKeyDown={this.handlerKeyDown}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
@@ -572,7 +573,7 @@ class CarouselRoot extends Component<
                           {...item.props}
                           key={item.key}
                           w={undefined}
-                          aria-roledescription='slide'
+                          aria-roledescription={getI18nText('Carousel.Indicator:aria-roledescription')}
                           active={this.isSelected(index)}
                           onClick={this.bindHandlerClickIndicator(index)}
                         />
