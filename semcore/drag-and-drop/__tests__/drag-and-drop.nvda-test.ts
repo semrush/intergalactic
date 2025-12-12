@@ -14,7 +14,7 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('Market traffic widget');
+    expect(await nvda.itemText()).toBe('Unique Visitors, not checked, Press Space to grab the element for drag and drop, 2 of 5');
 
     await nvda.press('Space');
     await page.waitForTimeout(300);
