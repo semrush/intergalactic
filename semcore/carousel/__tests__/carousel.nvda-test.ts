@@ -40,6 +40,9 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
 
     await nvda.interact();
     await nvda.press('Enter');
-    expect(await nvda.itemText()).toContain('tab, Slide 2');
+    expect(await nvda.itemText()).toContain('Modal window, dialog. Close, button. Modal window, dialog. button, Close');
+
+    await nvda.next();
+    expect(await nvda.itemText()).toBe('clickable');
   });
 });
