@@ -36,7 +36,6 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@drag-and-drop',
         '@card'],
     }, async ({ page, browserName }) => {
-      if (browserName == 'webkit') test.skip(); // it is unstable on cd
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
       await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
@@ -44,6 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
+      if (browserName == 'webkit') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
