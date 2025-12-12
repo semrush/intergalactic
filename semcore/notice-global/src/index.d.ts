@@ -31,9 +31,9 @@ export type NoticeGlobalProps = FadeInOutProps & {
 
 /** @deprecated since v.17 */
 declare const NoticeGlobal: Intergalactic.Component<'div', NoticeGlobalProps> & {
-  /** @deprecated since v.16 */
+  /** @deprecated since v.17 */
   Content: typeof Flex;
-  /** @deprecated since v.16 */
+  /** @deprecated since v.17 */
   CloseIcon: Intergalactic.Component<'div', IconProps>;
 };
 
