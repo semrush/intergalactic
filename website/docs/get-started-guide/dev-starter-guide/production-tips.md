@@ -13,7 +13,7 @@ To speed up the load time and decrease TTI (time to interactive), separate JS an
 
 ::: warning
 [`@semcore/shadow-loader`](https://github.com/semrush/intergalactic/tree/release/v16/tools/shadow-loader) is deprecated.
-To unify behaviour across the bundlers, please use [`@semcore/css-virtualizer-unplugin`](https://github.com/semrush/intergalactic/tree/release/v16/semcore/css-virtualizer-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
+To unify behaviour across the bundlers, please use [`@semcore/process-css-unplugin`](https://github.com/semrush/intergalactic/tree/release/v16/tools/process-css-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
 :::
 
 To do that, use the [shadow-loader](https://github.com/semrush/intergalactic/blob/master/tools/shadow-loader/README.md) webpack plugin. It will strip the styles from JavaScript and replace them with `require ("./style.css")` in the component code. This way you will be able to extract the styles into a separate file using [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) or a similar tool.
@@ -42,17 +42,17 @@ module.exports = {
 };
 ```
 
-### Webpack/Vite integration with `@semcore/css-virtualizer-unplugin`
+### Webpack/Vite integration with `@semcore/process-css-unplugin`
 
 `vite.config.ts`:
 ```js
 import { defineConfig } from 'vite';
-import { intergalacticCssVirtualizerVitePlugin } from '@semcore/css-virtualizer-unplugin';
+import { processCssVitePlugin } from '@semcore/process-css-unplugin';
 
 export default defineConfig({
   //...
   plugins: [
-    intergalacticCssVirtualizerVitePlugin(),
+    processCssVitePlugin(),
   ],
 })
 ```
@@ -61,7 +61,7 @@ export default defineConfig({
 
 ```js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { intergalacticCssVirtualizerWebpackPlugin } = require('@semcore/css-virtualizer-unplugin');
+const { processCssWebpackPlugin } = require('@semcore/process-css-unplugin');
 
 module.exports = {
   //...
@@ -75,7 +75,7 @@ module.exports = {
     ],
   },
   plugins: [
-    intergalacticCssVirtualizerWebpackPlugin(),
+    processCssWebpackPlugin(),
   ],
 };
 ```
