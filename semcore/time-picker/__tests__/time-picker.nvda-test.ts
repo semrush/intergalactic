@@ -33,13 +33,13 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     await nvda.previous();
     await nvda.previous();
 
-    await nvda.interact();
+    await nvda.perform(nvda.keyboardCommands.activate);
 
-    await nvda.press('Enter');
     await page.waitForTimeout(300);
 
     await nvda.type('04');
-    await nvda.press('Tab');
+    await nvda.perform(nvda.keyboardCommands.activate);
+
     await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toBe('AM, button, Time period');

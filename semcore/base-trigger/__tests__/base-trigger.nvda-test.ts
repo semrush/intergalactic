@@ -36,8 +36,8 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Activate first select and verify menu opens', async () => {
       await nvda.next();
-      page.keyboard.press('Space');
-      // await page.getByRole('option').first().waitFor({ state: 'visible' });
+      // page.keyboard.press('Space');
+      await nvda.perform(nvda.keyboardCommands.activate);
 
       await nvda.next();
       const menuItem = await nvda.itemText();
