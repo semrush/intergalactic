@@ -25,6 +25,6 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.press('Space');
     await page.waitForTimeout(300);
 
-    expect(await nvda.itemText()).toBe('dropped');
+    expect(await nvda.itemText()).toBe('space. Position 3 applied');
   });
 });
