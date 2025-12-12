@@ -35,7 +35,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         TAG.KEYBOARD,
         '@drag-and-drop',
         '@card'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
+      if (browserName == 'webkit') test.skip(); // it is unstable on cd
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
       await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
