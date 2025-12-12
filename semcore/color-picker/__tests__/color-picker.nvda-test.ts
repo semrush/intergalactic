@@ -19,7 +19,7 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('expanded. Colors palette, dialog. clickable, Preset colors, list');
 
     await nvda.next();
-    expect(await nvda.itemText()).toContain('Preset colors');
+    expect(await nvda.itemText()).toContain('separator');
 
     await nvda.press('Tab');
     expect(await nvda.itemText()).toContain('Preset colors');
