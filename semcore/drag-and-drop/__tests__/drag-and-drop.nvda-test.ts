@@ -8,7 +8,6 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
 
     await nvda.next();
     await nvda.press('Enter');
-    await page.waitForTimeout(500);
 
     expect(await nvda.itemText()).toContain('expanded. Show table columns, dialog. drag and drop container, grouping. Show table columns, dialog. drag and drop container, grouping. Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5');
 
@@ -17,13 +16,11 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toBe('Unique Visitors, not checked, Press Space to grab the element for drag and drop, 2 of 5');
 
     await nvda.press('Space');
-    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toBe('space. alert, Unique Visitors grabbed. Current position: 2 out of 5. Use the arrows to change the position, Space to apply the new position, Escape to cancel.');
 
     await nvda.press('ArrowDown');
     await nvda.press('Space');
-    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toBe('space. Position 3 applied');
   });

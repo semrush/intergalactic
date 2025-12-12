@@ -14,7 +14,6 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     await nvda.interact();
     await nvda.press('Enter');
-    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Author:, edit, Martin Eden');
 
@@ -24,7 +23,6 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     }
     await nvda.type('Algernon');
     await nvda.press('Enter');
-    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toContain('Edit: Algernon');
   });

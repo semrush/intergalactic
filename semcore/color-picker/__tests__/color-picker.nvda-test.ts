@@ -11,7 +11,6 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('clickable, Color field, combo box, collapsed');
     await nvda.interact();
     await nvda.press('Enter');
-    await page.waitForTimeout(300);
 
     expect(await nvda.itemText()).toBe('Color field, combo box, collapsed');
     await nvda.press('Enter');

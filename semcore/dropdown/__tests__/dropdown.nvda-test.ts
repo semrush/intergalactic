@@ -12,7 +12,6 @@ test.describe(`@dropdown ${TAG.NVDA}`, () => {
 
     await nvda.interact();
     await nvda.press('Enter');
-    await page.waitForTimeout(300);
 
     await nvda.next();
 
