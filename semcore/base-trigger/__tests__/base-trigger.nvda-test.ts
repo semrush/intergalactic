@@ -14,8 +14,6 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     );
 
     await nvda.next();
-
-    // NVDA announces combobox role, state, and accessible label
     expect(await nvda.itemText()).toBe('clickable, Material, combo box, collapsed');
   });
 
@@ -35,15 +33,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate first select and verify menu opens', async () => {
-      await nvda.next();
-      // page.keyboard.press('Space');
       await nvda.perform(nvda.keyboardCommands.activate);
-
-      await nvda.next();
-      // Menu items should announce as clickable options
-      expect(nvda.itemText()).toBe('expanded');
-      await nvda.next();
-      // Menu items should announce as clickable options
       expect(nvda.itemText()).toBe('expanded');
     });
   });
@@ -61,7 +51,6 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
-      await nvda.next();
       await nvda.perform(nvda.keyboardCommands.activate);
 
       const announcement = await nvda.itemText();

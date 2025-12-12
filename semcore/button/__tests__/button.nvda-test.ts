@@ -34,8 +34,7 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await test.step('Navigate to button and verify initial state', async () => {
       await nvda.next();
       const buttonText = await nvda.itemText();
-      expect(buttonText).toContain('button');
-      expect(buttonText).toContain('Loading...');
+      expect(buttonText).toContain('clickable, button, unavailable, graphic, Loading…');
     });
   });
 });

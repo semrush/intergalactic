@@ -47,6 +47,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await page.waitForTimeout(300);
     await nvda.previous();
+    await nvda.next();
 
     expect(await nvda.itemText()).toBe('AM, button, Time period');
   });
