@@ -16,9 +16,12 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toBe('Color field, combo box, collapsed');
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toContain('divider');
+    expect(await nvda.itemText()).toContain('expanded. Colors palette, dialog. clickable, Preset colors, list');
 
     await nvda.next();
+    expect(await nvda.itemText()).toContain('Preset colors');
+
+    await nvda.press('Tab');
     expect(await nvda.itemText()).toContain('Preset colors');
   });
 });
