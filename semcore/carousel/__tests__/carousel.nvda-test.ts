@@ -39,7 +39,7 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
     await nvda.previous();
 
     await nvda.interact();
-    await nvda.click();
+    await nvda.press('Enter');
     expect(await nvda.itemText()).toContain('tab, Slide 2');
   });
 });
