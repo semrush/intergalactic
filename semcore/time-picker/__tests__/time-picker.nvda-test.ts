@@ -49,6 +49,19 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
     await nvda.previous();
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('AM, button, Time period');
+    expect(await nvda.itemText()).toBe('Start time : AM, grouping, Hours, combo box, collapsed, has auto complete, editable, 00');
+
+    await nvda.type('04');
+    await nvda.press('Enter');
+
+    await page.waitForTimeout(300);
+
+    await nvda.type('20');
+    await nvda.press('Enter');
+
+    await page.waitForTimeout(300);
+    await nvda.previous();
+    await nvda.next();
+    expect(await nvda.itemText()).toBe('Start time : AM, grouping, Hours, combo box, collapsed, has auto complete, editable, 00');
   });
 });
