@@ -17,14 +17,11 @@ const Demo = (props: ScatterPlotChartProps) => {
   );
 };
 
-const data = Array(10)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y1: Math.random() * 10,
-    y2: Math.random() * 10,
-    value: i,
-  }));
+const data = Array.from({ length: 20 }, (_, i) => ({
+  x: i,
+  y: (i % 5) + 1,
+}));
+
 export const defaultProps = getChartProps<ScatterPlotChartProps>({
   data,
   groupKey: 'x',
