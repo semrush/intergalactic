@@ -10,7 +10,6 @@ test.describe(`@modal ${TAG.NVDA}`, () => {
       'en',
     );
 
-    // Попробуем использовать interact() как в VoiceOver
     if (typeof nvda.interact === 'function') {
       await nvda.interact();
     }

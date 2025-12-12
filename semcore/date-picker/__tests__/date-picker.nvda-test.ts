@@ -43,14 +43,6 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 
-    // Enter date range (start and end dates)
-    await page.keyboard.type('05');
-    await page.keyboard.type('29');
-    await page.keyboard.type('2000');
-    await page.keyboard.type('05');
-    await page.keyboard.type('29');
-    await page.keyboard.type('2000');
-    await page.waitForTimeout(300);
     await nvda.next();
     await nvda.previous();
 

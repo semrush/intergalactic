@@ -19,7 +19,6 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('column 3, clickable, CPC');
     await nvda.next();
 
-    // Navigate to data rows
     await nvda.next();
     await nvda.next();
 
