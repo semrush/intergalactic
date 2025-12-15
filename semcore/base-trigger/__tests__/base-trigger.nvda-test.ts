@@ -14,8 +14,6 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     );
 
     await nvda.next();
-
-    // NVDA announces combobox role, state, and accessible label
     expect(await nvda.itemText()).toBe('clickable, Material, combo box, collapsed');
   });
 
@@ -35,14 +33,10 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate first select and verify menu opens', async () => {
+      await nvda.perform(nvda.keyboardCommands.activate);
+      await page.waitForTimeout(500);
       await nvda.next();
-      page.keyboard.press('Space');
-      // await page.getByRole('option').first().waitFor({ state: 'visible' });
-
-      await nvda.next();
-      const menuItem = await nvda.itemText();
-      // Menu items should announce as clickable options
-      expect(menuItem).toContain('combo box, collapsed');
+      expect(await nvda.itemText()).toBe('expanded');
     });
   });
 
@@ -59,14 +53,12 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
-      await nvda.next();
-      page.keyboard.press('Space');
-      // await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await nvda.perform(nvda.keyboardCommands.activate);
+      await page.waitForTimeout(500);
 
+      expect(await nvda.itemText()).toBe('Device:, combo box, Select option, collapsed');
       await nvda.next();
-
-      const announcement = await nvda.itemText();
-      expect(announcement).toContain('Period, combo box, collapsed, Select period');
+      expect(await nvda.itemText()).toBe('expanded');
     });
   });
 });

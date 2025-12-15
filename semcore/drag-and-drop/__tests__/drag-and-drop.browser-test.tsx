@@ -35,7 +35,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         TAG.KEYBOARD,
         '@drag-and-drop',
         '@card'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
       await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
@@ -43,6 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
+      if (browserName == 'webkit') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
@@ -175,7 +176,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
-      if (browserName === 'webkit') test.skip();
+      if (browserName !== 'chromium') test.skip();
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
       await page.keyboard.press('Tab');

@@ -34,21 +34,7 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await test.step('Navigate to button and verify initial state', async () => {
       await nvda.next();
       const buttonText = await nvda.itemText();
-      expect(buttonText).toContain('button');
-    });
-
-    await test.step('Activate button and verify loading state', async () => {
-      await nvda.perform(nvda.keyboardCommands.activate);
-
-      // Wait for loading state to appear
-      await page.waitForTimeout(500);
-
-      await nvda.next();
-      await nvda.previous();
-
-      const loadingText = await nvda.itemText();
-      // Button should announce loading state or be disabled during loading
-      expect(loadingText).toBeTruthy();
+      expect(buttonText).toContain('clickable, button, unavailable, graphic, Loading…');
     });
   });
 });
