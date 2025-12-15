@@ -1,5 +1,6 @@
 #!/usr/bin/env tsm
 
+import { rm } from 'node:fs/promises';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,7 +26,7 @@ const workingDir = process.cwd();
 process.chdir(babelPresetPackagePath);
 
 const makeCommand: Record<string, (...args: any[]) => string> = {
-  CLEANUP: () => `rm -rf ${workingDir}/lib`,
+  CLEANUP: () => `${workingDir}/lib`,
   TYPES: (output: string) =>
     `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
   COPY_TYPES: (output: string) =>
@@ -61,7 +62,9 @@ const MAP_BABEL_ENV: Record<string, string> = {
 
 console.log(`running builder from dir ${workingDir}\n`);
 
-await runCommand('CLEANUP');
+await rm(makeCommand.CLEANUP(), { recursive: true, force: true }).catch((err) => {});
+
+if (process.platform === 'win32') process.exit(0);
 
 const source = argv.source.split(',');
 
