@@ -5,7 +5,6 @@ import Notice from '@semcore/notice';
 import React from 'react';
 
 import style from './notice.shadow.css';
-import type { HighlightedNoticeComponent } from './Notice.type';
 
 class NoticeFHRoot extends AbstractComponent<NoticeSmartProps> {
   static displayName = 'NoticeFH';
@@ -49,4 +48,4 @@ class NoticeFHRoot extends AbstractComponent<NoticeSmartProps> {
   }
 }
 
-export const NoticeFH = createComponent(NoticeFHRoot) as HighlightedNoticeComponent;
+export const NoticeFH = createComponent(NoticeFHRoot, {});

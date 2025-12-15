@@ -1,10 +1,9 @@
-import type { CheckboxProps } from '@semcore/checkbox';
+import type { CheckboxProps, CheckboxTextProps, CheckboxValueProps } from '@semcore/checkbox';
 import Checkbox from '@semcore/checkbox';
 import { AbstractComponent, createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import style from './checkbox.shadow.css';
-import type { HighlightedCheckboxComponent } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class CheckboxFHRoot extends AbstractComponent<CheckboxProps> {
@@ -54,8 +53,18 @@ class CheckboxFHRoot extends AbstractComponent<CheckboxProps> {
   }
 }
 
+function Text(props: CheckboxTextProps) {
+  const SRoot = Root();
+  return (<SRoot render={Checkbox.Text} />);
+}
+
+function Value(props: CheckboxValueProps) {
+  const SRoot = Root();
+  return (<SRoot render={Checkbox.Value} />);
+}
+
 export const CheckboxFH = createComponent(CheckboxFHRoot, {
-  Text: Checkbox.Text,
-  Value: Checkbox.Value,
+  Text,
+  Value,
   AnimatedSparkles,
-}) as HighlightedCheckboxComponent;
+});

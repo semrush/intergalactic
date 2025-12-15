@@ -4,7 +4,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import React from 'react';
 
 import style from './buttonLink.shadow.css';
-import type { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
+import type { ButtonLinkAddonProps, ButtonLinkTextProps } from './ButtonLink.type';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
 
 const enhance = {
@@ -38,4 +38,6 @@ function Addon(props: ButtonLinkAddonProps) {
 export const ButtonLink = createComponent(RootButtonLink, {
   Text,
   Addon,
+}, {
+  tag: 'button',
 });

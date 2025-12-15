@@ -119,9 +119,3 @@ export type FeaturePopoverSpotProps = {
   visible?: boolean;
   theme?: FeaturePopoverProps['theme'];
 };
-
-export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
-  Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
-  Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
-  Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
-};

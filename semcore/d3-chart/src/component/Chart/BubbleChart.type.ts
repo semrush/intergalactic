@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -27,5 +25,3 @@ export type BubbleChartProps = BaseChartProps<BubbleChartData> & {
   /** Callback triggered when a user clicks on a bubble */
   onClickBubble?: (index: number, event: React.SyntheticEvent) => void;
 };
-
-export type BubbleChartType = Intergalactic.Component<typeof Flex, BubbleChartProps>;

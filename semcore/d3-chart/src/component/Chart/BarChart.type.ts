@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
@@ -15,7 +13,7 @@ type BarKey = string;
 
 export type BarChartData = Array<Record<BarKey, string | number | Date>>;
 
-export type BarChartProps = BaseChartProps<BarChartData> & {
+export type BarChartProps = AriaNameProps & BaseChartProps<BarChartData> & {
   /** Field name that groups the data points */
   groupKey: string;
   /** Custom x-axis scale */
@@ -31,5 +29,3 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   /** Handle click by Bar. */
   onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
 };
-
-export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;

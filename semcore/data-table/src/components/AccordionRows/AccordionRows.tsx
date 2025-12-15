@@ -1,6 +1,5 @@
 import { Box } from '@semcore/base-components';
 import { sstyled } from '@semcore/core';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
 import type { CellRenderProps } from '../Body/Body.types';

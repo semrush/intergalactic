@@ -8,7 +8,7 @@ import React from 'react';
 // @ts-ignore
 import { Donut } from '../..';
 import { AbstractChart } from './AbstractChart';
-import type { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
+import type { DonutChartData, DonutChartProps } from './DonutChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class DonutChartComponent extends AbstractChart<
@@ -111,4 +111,4 @@ class DonutChartComponent extends AbstractChart<
   }
 }
 
-export const DonutChart: DonutChartType = createComponent(DonutChartComponent, {});
+export const DonutChart = createComponent(DonutChartComponent, {});

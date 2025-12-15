@@ -1,10 +1,10 @@
 import { AbstractComponent, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
-import type { RadioProps } from '@semcore/radio';
+import type { RadioProps, RadioValueProps } from '@semcore/radio';
 import Radio, { RadioGroup } from '@semcore/radio';
+import type { TextProps } from '@semcore/typography';
 import React from 'react';
 
 import style from './radio.shadow.css';
-import type { HighlightedRadioComponent } from './Radio.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class RadioFHRoot extends AbstractComponent<RadioProps> {
@@ -65,8 +65,18 @@ class RadioFHRoot extends AbstractComponent<RadioProps> {
   }
 }
 
+function Text(props: TextProps) {
+  const SRoot = Root();
+  return (<SRoot render={Radio.Text} />);
+}
+
+function Value(props: RadioValueProps) {
+  const SRoot = Root();
+  return (<SRoot render={Radio.Value} />);
+}
+
 export const RadioFH = createComponent(RadioFHRoot, {
-  Text: Radio.Text,
-  Value: Radio.Value,
+  Text,
+  Value,
   AnimatedSparkles,
-}) as HighlightedRadioComponent;
+});

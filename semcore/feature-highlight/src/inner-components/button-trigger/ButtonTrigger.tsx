@@ -1,13 +1,10 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, sstyled, AbstractComponent } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './buttonTrigger.shadow.css';
-import type { HighlightedButtonTriggerComponent } from './ButtonTrigger.type';
-import { AnimatedSparkles } from '../sparkle/AnimatedSparkles';
 
 class ButtonTriggerFHRoot extends AbstractComponent {
   static displayName = 'ButtonTriggerFH';
@@ -39,4 +36,4 @@ function Addon(props: IRootComponentProps) {
 export const ButtonTriggerFH = createComponent(ButtonTriggerFHRoot, {
   Text: ButtonTrigger.Text,
   Addon,
-}) as HighlightedButtonTriggerComponent;
+});

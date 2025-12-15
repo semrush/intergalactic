@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -19,5 +17,3 @@ export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
   /** Callback triggered when a user clicks on a scatter item */
   onClickScatterItem?: (index: number, event: React.SyntheticEvent) => void;
 };
-
-export type ScatterPlotChartType = Intergalactic.Component<typeof Flex, ScatterPlotChartProps>;

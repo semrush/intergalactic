@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
@@ -25,8 +23,3 @@ export type CompactHorizontalBarChartProps = BaseChartProps<CompactHorizontalBar
   /** Handle click by Bar. */
   onClickBar?: (barItem: number, e: React.SyntheticEvent) => void;
 };
-
-export type CompactHorizontalBarChartType = Intergalactic.Component<
-  typeof Flex,
-  CompactHorizontalBarChartProps
->;

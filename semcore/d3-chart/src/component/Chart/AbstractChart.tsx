@@ -1,10 +1,11 @@
 import { Flex } from '@semcore/base-components';
+import type { Intergalactic, IRootComponentProps, RootResult } from '@semcore/core';
 import { AbstractComponent, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import React from 'react';
+import React, { type AllHTMLAttributes } from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 // @ts-ignore
@@ -26,7 +27,7 @@ export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
   E extends readonly ((...args: any[]) => any)[] = [],
-> extends Component<T, {}, ChartState, E> {
+> extends AbstractComponent<T, E, never, Partial<BaseChartProps<any>>, ChartState> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -58,6 +59,20 @@ export abstract class AbstractChart<
     this.resolveColor = this.resolveColor.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
+  }
+
+  get asProps(): Readonly<
+    { Root: RootResult<any> } &
+    T &
+    IRootComponentProps &
+    Intergalactic.InternalTypings.ExtractEnhanceType<E> &
+    Partial<BaseChartProps<any>> &
+    Intergalactic.InternalTypings.EfficientOmit<AllHTMLAttributes<any>, keyof (T &
+      IRootComponentProps &
+      Intergalactic.InternalTypings.ExtractEnhanceType<E> &
+      Partial<BaseChartProps<any>>)>
+  > {
+    return super.asProps;
   }
 
   public componentDidUpdate(prevProps: T) {

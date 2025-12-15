@@ -1,8 +1,5 @@
-import type { Intergalactic } from '@semcore/core';
-
 import type {
   AbstractButtonAddonProps,
-  AbstractButtonContext,
   AbstractButtonTextProps,
   AbstractButtonProps,
 } from '../AbstractButton/AbstractButton.type';
@@ -22,19 +19,3 @@ export type ButtonLinkProps = AbstractButtonProps<ButtonLinkSize, Use, never>;
 export type ButtonLinkTextProps = AbstractButtonTextProps<ButtonLinkSize>;
 
 export type ButtonLinkAddonProps = AbstractButtonAddonProps<ButtonLinkSize>;
-
-export type ButtonLinkContext = AbstractButtonContext;
-
-export type ButtonLinkChildren = {
-  Text: Intergalactic.Component<'span', ButtonLinkTextProps>;
-  Addon: Intergalactic.Component<'span', ButtonLinkAddonProps>;
-};
-
-export type ButtonLinkComponent = Intergalactic.Component<
-  'button',
-  ButtonLinkProps,
-  ButtonLinkContext
-> & {
-  Text: Intergalactic.Component<'span', ButtonLinkTextProps>;
-  Addon: Intergalactic.Component<'span', ButtonLinkAddonProps>;
-};

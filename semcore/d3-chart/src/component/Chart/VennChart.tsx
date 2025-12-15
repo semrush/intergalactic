@@ -8,7 +8,7 @@ import type { BaseChartProps } from './AbstractChart.type';
 // @ts-ignore
 import { Venn } from '../..';
 import { AbstractChart } from './AbstractChart';
-import type { VennChartData, VennChartProps, VennChartType } from './VennChart.type';
+import type { VennChartData, VennChartProps } from './VennChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
@@ -155,4 +155,4 @@ class VennChartComponent extends AbstractChart<
   }
 }
 
-export const VennChart: VennChartType = createComponent(VennChartComponent, {});
+export const VennChart = createComponent(VennChartComponent, {});

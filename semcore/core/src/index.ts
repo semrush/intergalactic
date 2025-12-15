@@ -6,6 +6,7 @@ import type {
   PropsExtractor,
   FunctionComponent,
   IntergalacticComponent,
+  RootResult,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -13,6 +14,8 @@ import {
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
+  CORE_COMPONENT,
+  PARENT_COMPONENTS,
 } from './core-types/symbols';
 import type { UnknownProperties } from './core-types/UnknownProperties';
 import { createComponent, createBaseComponent, assignProps } from './coreFactory';
@@ -36,10 +39,13 @@ export {
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
+  CORE_COMPONENT,
+  PARENT_COMPONENTS,
   type IStyledProps,
   type PropsExtractor,
   type FunctionComponent,
   type IntergalacticComponent,
+  type RootResult,
   wrapIntergalacticComponent,
   assignProps,
   register,

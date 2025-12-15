@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 import type React from 'react';
 
@@ -25,5 +23,3 @@ export type DonutChartProps = BaseChartProps<DonutChartData> & {
   /** Callback triggered when a user clicks on a pie */
   onClickPie?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
-
-export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;

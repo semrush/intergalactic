@@ -2,11 +2,10 @@ import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
 import { type ScrollAreaProps } from '@semcore/base-components';
 import {
   createComponent,
-  Component,
+  AbstractComponent,
   sstyled,
   Root,
   type PropGetterFn,
-  type Intergalactic,
   type IRootComponentProps,
 } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -375,7 +374,8 @@ function InputTagContainerTag(props: any) {
 }
 
 function TagContainerTextContent(props: IRootComponentProps) {
-  return sstyled(props.styles)(<Root render={Tag.Text} />);
+  const SRoot = Root();
+  return sstyled(props.styles)(<SRoot render={Tag.Text} />);
 }
 
 function TagCloseButton(props: IRootComponentProps) {
@@ -389,10 +389,10 @@ export default createComponent(InputTags, {
   Tag: [
     InputTagContainer,
     {
-      Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
+      Text: [InputTagContainerTag, { Content: TagContainerTextContent }] as const,
       Close: TagCloseButton,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
     },
   ],
-});
+} as const);

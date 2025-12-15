@@ -7,7 +7,7 @@ import type {
   FunctionComponent,
   PropsExtractor,
   AbstractCtor,
-  IRootComponentProps,
+  IRootComponentProps, ChildMapValue,
 } from './core-types/Component';
 import { AbstractComponent } from './core-types/Component';
 import {
@@ -304,7 +304,7 @@ export function assignProps(p1: any, p2: any) {
 
 function createComponent<
   OriginCtor extends AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>,
-  ChildMap extends Readonly<Record<string, IntergalacticComponent<any, any, any, any> | AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any> | [AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>, Record<string, AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>]>>,
+  ChildMap extends ChildMapValue,
   Tag extends keyof React.JSX.IntrinsicElements = 'div',
   ContextType = {},
 >(

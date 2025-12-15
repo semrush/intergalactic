@@ -5,15 +5,19 @@ import Pills from '@semcore/pills';
 import React from 'react';
 
 import style from './pills.shadow.css';
-import type { HighlightedItemAddonProps, HighlightedPillComponent } from './Pills.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
+
+type HighlightedItemAddonProps = {
+  animatedSparkleCount?: number;
+};
 
 class PillsFHRoot extends AbstractComponent {
   static displayName = 'PillsFH';
   static style = style;
 
   render() {
-    return (<Root render={Pills} />);
+    const SRoot = Root();
+    return (<SRoot render={Pills} />);
   }
 }
 
@@ -50,8 +54,9 @@ class HighlightedItemRoot extends AbstractComponent {
 
 function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: boolean } & IRootComponentProps) {
   const { clicked, animatedSparkleCount, Children, children } = props;
+  const SRoot = Root();
   return (
-    <Root render={Pills.Item.Addon}>
+    <SRoot render={Pills.Item.Addon}>
       {children !== undefined
         ? (<Children />)
         : (
@@ -60,11 +65,11 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
-    </Root>
+    </SRoot>
   );
 }
 
 export const PillsFH = createComponent(PillsFHRoot, {
   Item: Pills.Item,
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: Pills.Item.Text, Addon: HighlightedItemAddon }),
-}) as HighlightedPillComponent;
+});

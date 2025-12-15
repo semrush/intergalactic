@@ -11,7 +11,6 @@ import type { BaseChartProps, ListData } from './AbstractChart.type';
 import type {
   ScatterPlotChartData,
   ScatterPlotChartProps,
-  ScatterPlotChartType,
 } from './ScatterPlotChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
@@ -143,4 +142,4 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 }
 
-export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent, {});
+export const ScatterPlotChart = createComponent(ScatterPlotChartComponent, {});

@@ -8,7 +8,7 @@ import React from 'react';
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractChart } from './AbstractChart';
-import type { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
+import type { AreaChartData, AreaChartProps } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class AreaChartComponent extends AbstractChart<
@@ -152,4 +152,4 @@ class AreaChartComponent extends AbstractChart<
   }
 }
 
-export const AreaChart: AreaChartType = createComponent(AreaChartComponent, {});
+export const AreaChart = createComponent(AreaChartComponent, {});

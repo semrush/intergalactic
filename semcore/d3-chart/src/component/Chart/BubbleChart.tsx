@@ -7,7 +7,7 @@ import React from 'react';
 // @ts-ignore
 import { Bubble, calculateBubbleDomain } from '../..';
 import { AbstractChart } from './AbstractChart';
-import type { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
+import type { BubbleChartData, BubbleChartProps } from './BubbleChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
@@ -147,4 +147,4 @@ class BubbleChartComponent extends AbstractChart<
   }
 }
 
-export const BubbleChart: BubbleChartType = createComponent(BubbleChartComponent, {});
+export const BubbleChart = createComponent(BubbleChartComponent, {});

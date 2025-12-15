@@ -22,6 +22,8 @@
     "@semcore/badge": "^16.0.0",
     "@semcore/base-trigger": "^16.0.0",
     "@semcore/button": "^16.0.0",
+    "@semcore/dropdown": "^16.0.0",
+    "@semcore/dropdown-menu": "^16.0.0",
     "@semcore/checkbox": "^16.0.0",
     "@semcore/input": "^16.0.0",
     "@semcore/notice": "^16.0.0",

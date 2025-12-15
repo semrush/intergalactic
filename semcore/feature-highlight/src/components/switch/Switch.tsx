@@ -5,7 +5,6 @@ import Switch from '@semcore/switch';
 import React from 'react';
 
 import style from './switch.shadow.css';
-import type { HighlightedSwitchComponent } from './Switch.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class SwitchFHRoot extends AbstractComponent<SwitchProps> {
@@ -57,4 +56,4 @@ export const SwitchFH = createComponent(SwitchFHRoot, {
   Addon: Switch.Addon,
   Value: Value,
   AnimatedSparkles,
-}) as HighlightedSwitchComponent;
+});

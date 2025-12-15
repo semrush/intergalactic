@@ -5,7 +5,6 @@ import TabLine from '@semcore/tab-line';
 import React from 'react';
 
 import style from './tabLine.shadow.css';
-import type { HighlightedTabLineComponent } from './TabLine.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class TabLineFHRoot extends AbstractComponent {
@@ -13,7 +12,8 @@ class TabLineFHRoot extends AbstractComponent {
   static style = style;
 
   render() {
-    return (<Root render={TabLine} />);
+    const SRoot = Root();
+    return (<SRoot render={TabLine} />);
   }
 }
 
@@ -50,9 +50,9 @@ class HighlightedItemRoot extends AbstractComponent {
 
 function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boolean } & IRootComponentProps) {
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
-
+  const SRoot = Root();
   return (
-    <Root render={TabLine.Item.Addon}>
+    <SRoot render={TabLine.Item.Addon}>
       {hasChildren
         ? (<Children />)
         : (
@@ -61,11 +61,11 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
-    </Root>
+    </SRoot>
   );
 }
 
 export const TabLineFH = createComponent(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: TabLine.Item.Text, Addon: HighlightedAddon }),
-}) as HighlightedTabLineComponent;
+});

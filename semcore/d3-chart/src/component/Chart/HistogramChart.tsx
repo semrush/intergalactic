@@ -8,7 +8,7 @@ import React from 'react';
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
 import { AbstractChart } from './AbstractChart';
-import type { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
+import type { HistogramChartData, HistogramChartProps } from './HistogramChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class HistogramChartComponent extends AbstractChart<
@@ -202,4 +202,4 @@ class HistogramChartComponent extends AbstractChart<
   }
 }
 
-export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent, {});
+export const HistogramChart = createComponent(HistogramChartComponent, {});

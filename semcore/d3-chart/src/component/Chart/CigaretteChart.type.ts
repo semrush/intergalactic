@@ -23,5 +23,3 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   /** Click handler that receives the data key and event */
   onClick?: (key: DataKey, event: React.SyntheticEvent) => void;
 };
-
-export type CigaretteChartType = Intergalactic.Component<'div', CigaretteChartProps>;

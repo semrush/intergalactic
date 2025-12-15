@@ -20,14 +20,15 @@ class InputFHRoot extends AbstractComponent {
 
 function HighlightAddon(props: IRootComponentProps) {
   const { Children, children: hasChildren } = props;
+  const SRoot = Root();
   return (
-    <Root render={Input.Addon}>
+    <SRoot render={Input.Addon}>
       {hasChildren ? (<Children />) : (<SummaryAI color='--intergalactic-icon-primary-feature-highlight' />)}
-    </Root>
+    </SRoot>
   );
 }
 
 export const InputFH = createComponent(InputFHRoot, {
   Addon: HighlightAddon,
   Value: Input.Value,
-}) as typeof Input;
+});

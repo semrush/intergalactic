@@ -1,12 +1,15 @@
-import Button from '@semcore/button';
+import Button, { type ButtonAddonProps } from '@semcore/button';
 import { createComponent, Root, sstyled, AbstractComponent } from '@semcore/core';
 import type { IRootNodeProps } from '@semcore/core/src/core-types/Component';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { HighLightedButtonAddonProps, HighlightedButtonComponent } from './Button.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
+
+type HighLightedButtonAddonProps = ButtonAddonProps & {
+  animatedSparkleCount?: number;
+};
 
 class ButtonFHRoot extends AbstractComponent {
   static displayName = 'ButtonFH';
@@ -45,7 +48,7 @@ class ButtonFHRoot extends AbstractComponent {
   }
 }
 
-function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean } & IRootNodeProps) {
+function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean; Children: React.ElementType } & IRootNodeProps<'span'>) {
   const SAddon = Root();
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
   return sstyled(props.styles)(
@@ -65,4 +68,4 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
 export const ButtonFH = createComponent(ButtonFHRoot, {
   Addon: HighlightAddon,
   Text: Button.Text,
-}) as HighlightedButtonComponent;
+});

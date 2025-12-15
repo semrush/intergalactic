@@ -35,7 +35,8 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^16.0.0",
+    "@semcore/core": "^16.0.0"
   },
   "repository": {
     "type": "git",

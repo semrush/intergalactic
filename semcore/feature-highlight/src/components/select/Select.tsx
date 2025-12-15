@@ -1,6 +1,14 @@
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, AbstractComponent } from '@semcore/core';
-import Select from '@semcore/select';
+import type { DropdownPopperAriaProps } from '@semcore/dropdown';
+import type {
+  DropdownMenuListProps,
+  DropdownMenuMenuProps,
+  DropdownMenuProps,
+} from '@semcore/dropdown-menu';
+import Select, {
+  type SelectOptionProps,
+} from '@semcore/select';
 import React from 'react';
 
 import { ButtonTriggerFH } from '../../inner-components/button-trigger/ButtonTrigger';
@@ -9,17 +17,18 @@ class SelectFHRoot extends AbstractComponent {
   static displayName = 'SelectFH';
 
   render() {
+    const SRoot = Root();
     return (
-      <Root render={Select} />
+      <SRoot render={Select} />
     );
   }
 }
 
 function Trigger(props: IRootComponentProps) {
   const { Children, children: hasChildren } = props;
-
+  const SRoot = Root();
   return (
-    <Root render={Select.Trigger} tag={ButtonTriggerFH}>
+    <SRoot render={Select.Trigger} tag={ButtonTriggerFH}>
       {hasChildren
         ? <Children />
         : (
@@ -28,8 +37,25 @@ function Trigger(props: IRootComponentProps) {
               <SelectFH.Trigger.Text />
             </>
           )}
-    </Root>
+    </SRoot>
   );
+}
+
+function Menu(props: DropdownMenuMenuProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Menu} />;
+}
+function Option(props: SelectOptionProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Option} />;
+}
+function List(props: DropdownMenuListProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.List} />;
+}
+function Popper(props: DropdownMenuProps & DropdownPopperAriaProps) {
+  const SSelectTrigger = Root();
+  return <SSelectTrigger render={Select.Popper} />;
 }
 
 export const SelectFH = createComponent(SelectFHRoot, {
@@ -37,8 +63,8 @@ export const SelectFH = createComponent(SelectFHRoot, {
     Text: ButtonTriggerFH.Text,
     Addon: ButtonTriggerFH.Addon,
   }],
-  Popper: Select.Popper,
-  Menu: Select.Menu,
-  Option: Select.Option,
-  List: Select.List,
-}) as typeof Select;
+  Popper,
+  Menu,
+  Option,
+  List,
+});

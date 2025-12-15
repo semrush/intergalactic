@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
@@ -33,5 +31,3 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   /** Callback triggered when a user clicks on a line */
   onClickLine?: (index: number, event: React.SyntheticEvent) => void;
 };
-
-export type LineChartType = Intergalactic.Component<typeof Flex, LineChartProps>;

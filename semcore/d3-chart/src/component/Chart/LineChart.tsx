@@ -5,7 +5,7 @@ import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
+import type { LineChartData, LineChartProps } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
 import { AbstractChart } from './AbstractChart';
@@ -132,4 +132,4 @@ class LineChartComponent extends AbstractChart<
   }
 }
 
-export const LineChart: LineChartType = createComponent(LineChartComponent, {});
+export const LineChart = createComponent(LineChartComponent, {});

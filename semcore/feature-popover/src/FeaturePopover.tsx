@@ -9,7 +9,6 @@ import React from 'react';
 
 import type {
   FeaturePopoverProps,
-  FeaturePopoverComponent,
   FeaturePopoverSpotProps,
   FeaturePopoverPopperProps,
   FeaturePopoverPopperInnerProps,
@@ -45,7 +44,7 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends AbstractComponent<FeaturePopoverProps, typeof enhance> {
+class FeaturePopover extends AbstractComponent<FeaturePopoverProps, typeof enhance, { visible: null }> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -152,6 +151,7 @@ class FeaturePopoverPopper extends AbstractComponent<FeaturePopoverPopperProps, 
         disableEnforceFocus
         zIndex={zIndex}
         tabIndex={0}
+        // @ts-ignore
         autoFocus={autoFocus}
         role='dialog'
         aria-describedby={ariaDescribedBy}
@@ -206,6 +206,5 @@ export default createComponent(
     Popper: FeaturePopoverPopper,
     Spot,
   },
-  // @ts-ignore
   { parent: Popper },
-) as FeaturePopoverComponent;
+);

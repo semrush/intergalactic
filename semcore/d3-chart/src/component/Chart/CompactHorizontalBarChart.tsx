@@ -7,7 +7,6 @@ import type { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
 import type {
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartProps,
-  CompactHorizontalBarChartType,
 } from './CompactHorizontalBarChart.type';
 // @ts-ignore
 import { CompactHorizontalBar } from '../..';
@@ -117,6 +116,4 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 }
 
-export const CompactHorizontalBarChart: CompactHorizontalBarChartType = createComponent(
-  CompactHorizontalBarChartComponent,
-);
+export const CompactHorizontalBarChart = createComponent(CompactHorizontalBarChartComponent, {});

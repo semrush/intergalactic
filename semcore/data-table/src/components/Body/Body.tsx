@@ -5,11 +5,11 @@ import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
-import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
+import type { BodyPropsInner, DataTableBodyProps } from './Body.types';
 import { MergedColumnsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
-import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import {
   GRID_ROW_INDEX,
@@ -415,6 +415,4 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends AbstractComponen
 
 export const Body = createComponent(BodyRoot, {
   Row,
-}) as DataTableBodyType & {
-  Row: DataTableRowType;
-};
+});

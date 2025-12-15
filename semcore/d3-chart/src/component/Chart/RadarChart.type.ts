@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -16,5 +14,3 @@ export type RadarChartProps = BaseChartProps<RadarChartData> & {
   /** Callback triggered when a user clicks on a chart at a position corresponding to a category */
   onClickRadar?: (index: number, e: React.SyntheticEvent) => void;
 };
-
-export type RadarChartType = Intergalactic.Component<typeof Flex, RadarChartProps>;

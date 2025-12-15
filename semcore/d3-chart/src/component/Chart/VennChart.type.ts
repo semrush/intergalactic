@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -18,5 +16,3 @@ export type VennChartProps = BaseChartProps<VennChartData> & {
   /** Callback triggered when a user clicks on a circle */
   onClickVennItem?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
-
-export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

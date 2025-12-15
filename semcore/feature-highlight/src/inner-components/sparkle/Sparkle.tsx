@@ -1,4 +1,3 @@
-import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import type { ForwardedRef } from 'react';
 import React from 'react';
@@ -44,4 +43,4 @@ function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGElement>) {
   );
 }
 
-export default createBaseComponent(SvgSparkle, {});
+export default createBaseComponent(SvgSparkle);

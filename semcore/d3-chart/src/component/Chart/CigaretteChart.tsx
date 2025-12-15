@@ -8,7 +8,7 @@ import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
+import type { CigaretteChartData, CigaretteChartProps } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
 import { AbstractChart } from './AbstractChart';
@@ -334,4 +334,4 @@ class CigaretteChartComponent extends AbstractChart<
   }
 }
 
-export const CigaretteChart: CigaretteChartType = createComponent(CigaretteChartComponent, {});
+export const CigaretteChart = createComponent(CigaretteChartComponent, {});

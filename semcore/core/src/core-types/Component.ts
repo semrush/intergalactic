@@ -1,7 +1,7 @@
 import type { ElementRef, AllHTMLAttributes, ForwardRefExoticComponent, RefObject } from 'react';
 import React from 'react';
 
-import { CORE_COMPONENT, PARENT_COMPONENTS } from './symbols';
+import type { CORE_COMPONENT, PARENT_COMPONENTS } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
 export interface IRootComponentProps {
@@ -114,47 +114,60 @@ export abstract class AbstractComponent<
 
   protected isControlled = false;
 
-  protected [CORE_COMPONENT] = true;
-  protected [PARENT_COMPONENTS]: Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>> = [];
+  // protected [CORE_COMPONENT] = true;
+  // protected [PARENT_COMPONENTS]: Array<AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>> = [];
 }
+
+export type ChildMapLastLevelValue = AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>;
+
+export type ChildMapValue = Readonly<Record<string, ChildMapLastLevelValue | [ChildMapLastLevelValue, ChildMapValue]>>;
 
 export type IntergalacticComponent<
   Tag extends keyof React.JSX.IntrinsicElements,
-  OriginCtor extends AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>,
-  ChildMap extends Readonly<Record<string, AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any> | [(AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>), Record<string, AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>>]>>,
+  Ctor extends AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>,
+  ChildMap extends ChildMapValue,
   ContextType,
-> = (React.FC<React.PropsWithChildren<Intergalactic.InternalTypings.EfficientOmit<PropsExtractor<OriginCtor, Tag>, keyof IRootComponentProps>> & { ref?: React.LegacyRef<ElementRef<Tag>> }>) & {
-  [key in keyof ChildMap]: ChildMap[key] extends [infer Parent, infer Ch]
-    ? Parent extends new (...args: any[]) => infer C
-      ? C extends AbstractComponent<any, any, any, any, any>
-        // eslint-disable-next-line @stylistic/indent-binary-ops
-        ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType> & {
-          [key in keyof Ch]: Ch[key] extends new (...args: any[]) => infer C
-            ? C extends AbstractComponent<any, any, any, any, any>
-              ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType>
-              : never
-            : Ch[key] extends FunctionComponent<any>
-              ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Ch[key]>, OriginCtor, key>, ContextType>
-              : never
-        }
+> = (React.FC<React.PropsWithChildren<Intergalactic.InternalTypings.EfficientOmit<PropsExtractor<Ctor, Tag>, keyof IRootComponentProps>> & { ref?: React.LegacyRef<ElementRef<Tag>> }>) & {
+  [key in keyof ChildMap]: ChildMap[key] extends ChildMapLastLevelValue
+    ? IntergalacticComponent<'div', ChildMap[key], Readonly<{}>, ContextType>
+    : ChildMap[key] extends [infer Parent, infer Ch]
+      ? Parent extends ChildMapLastLevelValue
+        ? Ch extends ChildMapValue
+          ? IntergalacticComponent<'div', Parent, Ch, ContextType>
+          : never
         : never
-      : Parent extends FunctionComponent<any>
-      // eslint-disable-next-line @stylistic/indent-binary-ops
-        ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Parent>, OriginCtor, key>, ContextType> & {
-          [key in keyof Ch]: Ch[key] extends new (...args: any[]) => infer C
-            ? C extends AbstractComponent<any, any, any, any, any>
-              ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType>
-              : never
-            : Ch[key] extends FunctionComponent<any>
-              ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Ch[key]>, OriginCtor, key>, ContextType>
-              : never
-        }
-        : never
-    : ChildMap[key] extends AbstractCtor<AbstractComponent<any, any, any, any, any>>
-      ? Intergalactic.Component<'div', ChildProps<PropsExtractor<ChildMap[key]>, OriginCtor, key>, ContextType>
-      : ChildMap[key] extends FunctionComponent<any>
-        ? Intergalactic.Component<'div', ChildProps<PropsExtractor<ChildMap[key]>, OriginCtor, key>, ContextType>
-        : never;
+      : never;
+  //   ? Parent extends new (...args: any[]) => infer C
+  //   ? C extends AbstractComponent<any, any, any, any, any>
+  //     // eslint-disable-next-line @stylistic/indent-binary-ops
+  //     ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType> & {
+  //       [key in keyof Ch]: Ch[key] extends new (...args: any[]) => infer C
+  //         ? C extends AbstractComponent<any, any, any, any, any>
+  //           ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType>
+  //           : never
+  //         : Ch[key] extends FunctionComponent<any>
+  //           ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Ch[key]>, OriginCtor, key>, ContextType>
+  //           : never
+  //     }
+  //     : never
+  //   : Parent extends FunctionComponent<any>
+  //   // eslint-disable-next-line @stylistic/indent-binary-ops
+  //     ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Parent>, OriginCtor, key>, ContextType> & {
+  //       [key in keyof Ch]: Ch[key] extends new (...args: any[]) => infer C
+  //         ? C extends AbstractComponent<any, any, any, any, any>
+  //           ? Intergalactic.Component<'div', ChildProps<PropsExtractor<C>, OriginCtor, key>, ContextType>
+  //           : never
+  //         : Ch[key] extends FunctionComponent<any>
+  //           ? Intergalactic.Component<'div', ChildProps<PropsExtractor<Ch[key]>, OriginCtor, key>, ContextType>
+  //           : never
+  //     }
+  //     : never
+  // : IntergalacticComponent<'div', ChildMap[key], {}, ContextType>;
+  // extends AbstractCtor<AbstractComponent<any, any, any, any, any>>
+  //     ? Intergalactic.Component<'div', ChildProps<PropsExtractor<ChildMap[key]>, OriginCtor, key>, ContextType>
+  //     : ChildMap[key] extends FunctionComponent<any>
+  //       ? Intergalactic.Component<'div', ChildProps<PropsExtractor<ChildMap[key]>, OriginCtor, key>, ContextType>
+  //       : never;
 };
 
 type ChildProps<P, OriginCtor extends AbstractCtor<AbstractComponent<any, any, any, any, any>> | FunctionComponent<any>, K> = OriginCtor extends new (...args: any[]) => infer C

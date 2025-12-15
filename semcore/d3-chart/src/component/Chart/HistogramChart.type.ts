@@ -1,5 +1,3 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -14,5 +12,3 @@ export type HistogramChartProps = BaseChartProps<HistogramChartData> & {
   /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
 };
-
-export type HistogramChartType = Intergalactic.Component<typeof Flex, HistogramChartProps>;

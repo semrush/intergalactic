@@ -6,7 +6,7 @@ import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 import type { BaseLegendProps } from './AbstractChart.type';
-import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
+import type { BarChartData, BarChartProps } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
 import { AbstractChart } from './AbstractChart';
@@ -267,4 +267,4 @@ class BarChartComponent extends AbstractChart<
   }
 }
 
-export const BarChart: BarChartType = createComponent(BarChartComponent, {});
+export const BarChart = createComponent(BarChartComponent, {});
