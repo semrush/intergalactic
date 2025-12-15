@@ -15,10 +15,10 @@ const data = Array(10000)
   .fill(0)
   .map((_, index) => ({
     id: `#${index + 1}`,
-    keyword: index < 3 ? keyword[3] : keyword[Math.floor(keyword.length * Math.random())],
-    kd: kd[Math.floor(kd.length * Math.random())],
-    cpc: cpc[Math.floor(cpc.length * Math.random())],
-    vol: vol[Math.floor(vol.length * Math.random())],
+    keyword: index < 3 ? keyword[3] : keyword[index % keyword.length],
+    kd: kd[index % kd.length],
+    cpc: cpc[index % cpc.length],
+    vol: vol[index % vol.length],
   }));
 
 const Demo = () => {
