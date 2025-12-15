@@ -21,6 +21,7 @@ const data = Array.from({ length: 20 }, (_, i) => ({
   x: i,
   y: (i % 5) + 1,
 }));
+
 export const defaultProps = getChartProps<ScatterPlotChartProps>({
   data,
   groupKey: 'x',

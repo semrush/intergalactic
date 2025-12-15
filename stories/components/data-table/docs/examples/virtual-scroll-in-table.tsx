@@ -26,7 +26,7 @@ const Demo = () => {
       data={data}
       totalRows={10000}
       aria-label='Virtual scroll'
-      h={400}
+      h={100}
       virtualScroll={{ rowHeight: 45 }}
       headerProps={{ sticky: true }}
       columns={[
