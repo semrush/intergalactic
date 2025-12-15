@@ -1,4 +1,4 @@
-import type { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
@@ -16,7 +16,7 @@ export type NeighborItemProps = {
 export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement
-    | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
+    | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => React.ReactElement | null);
 
   /** Inner from Root */
   getNeighborLocation: (component: any) => NeighborItemProps['neighborLocation'];

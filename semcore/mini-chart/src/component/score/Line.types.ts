@@ -1,5 +1,5 @@
 import type { BoxProps, Box } from '@semcore/base-components';
-import type { Intergalactic, ComponentType } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import type React from 'react';
 
@@ -54,10 +54,10 @@ export type ScoreLineGaugeProps = BoxProps &
   Intergalactic.InternalTypings.EfficientOmit<CommonScoreProps, 'value' | 'color'> &
   (ValuedScoreProps | CustomRenderScoreProps);
 
-export type Enhances = {
+export type Enhances = [() => {
   resolveColor: ReturnType<typeof resolveColorEnhance>;
-};
+}];
 
-export type ScoreLineComponent = ComponentType<ScoreLineGaugeProps, {}, {}, Enhances> & {
+export type ScoreLineComponent = Intergalactic.Component<'svg', ScoreLineGaugeProps, {}, Enhances> & {
   Segment: Intergalactic.Component<typeof Box, SegmentProps>;
 };

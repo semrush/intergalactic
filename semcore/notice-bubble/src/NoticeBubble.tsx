@@ -19,12 +19,10 @@ import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
 import type {
-  AddedNoticeMeta,
   NoticeBubbleContainerProps,
-  NoticeBubbleProps,
-  NoticeBubbleViewItemProps, NoticeBubbleWarningProps,
+  NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
-import type { NoticeBubbleManager, NoticeItem } from './NoticeBubbleManager';
+import type { NoticeItem } from './NoticeBubbleManager';
 import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

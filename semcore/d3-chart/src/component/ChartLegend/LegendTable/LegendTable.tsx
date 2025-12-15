@@ -58,7 +58,7 @@ function ColumnComponent(props: LegendColumnProps & IRootComponentProps) {
   );
 }
 
-export const LegendTable: LegendTableType = createComponent(LegendTableRoot, {
+export const LegendTable = createComponent(LegendTableRoot, {
   LegendItem: LegendItemComponent,
   Column: ColumnComponent,
-});
+}) as LegendTableType;

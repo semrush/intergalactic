@@ -114,8 +114,8 @@ function Segment(props: InnerSegmentProps) {
 }
 Segment.displayName = 'Segment';
 
-export const ScoreLine: ScoreLineComponent = createComponent(LineRoot, {
+export const ScoreLine = createComponent(LineRoot, {
   Segment,
-});
+}) as ScoreLineComponent;
 
 ScoreLine.displayName = 'MiniChart.ScoreLine';

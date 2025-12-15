@@ -659,6 +659,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
 export const Row = createComponent(RowRoot, {
   Cell,
-}) as DataTableRowType & {
+}) as unknown as DataTableRowType & {
   Cell: any;
 };

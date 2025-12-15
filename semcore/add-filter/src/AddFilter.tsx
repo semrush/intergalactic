@@ -9,8 +9,7 @@ import MathPlusM from '@semcore/icon/MathPlus/m';
 import type { SelectProps } from '@semcore/select';
 import React from 'react';
 
-import type AddFilterType from './AddFilter.types';
-import type { AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
+import type { AddFilterType, AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterSelect from './components/AddFilterSelect';
@@ -306,10 +305,10 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
     : null;
 }
 
-const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {
+const AddFilter = createComponent(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,
   Dropdown: AddFilterDropdown,
-});
+}) as AddFilterType;
 
 export default AddFilter;

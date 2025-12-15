@@ -745,7 +745,7 @@ const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
   );
 };
 
-const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
+const Carousel = createComponent(CarouselRoot, {
   Container,
   ContentBox,
   Indicators,
@@ -753,6 +753,6 @@ const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
   Item,
   Prev,
   Next,
-});
+}) as typeof CarouselType;
 
 export default Carousel;

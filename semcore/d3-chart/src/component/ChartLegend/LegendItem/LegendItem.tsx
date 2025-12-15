@@ -242,10 +242,10 @@ function Count({ styles, children: hasChildren, Children }: IRootComponentProps)
 }
 Count.displayName = 'Count';
 
-export const LegendItemComponent: LegendItemType = createComponent(LegendItemRoot, {
+export const LegendItemComponent = createComponent(LegendItemRoot, {
   Shape,
   Icon,
   Label,
   AdditionalLabel,
   Count,
-});
+}) as LegendItemType;

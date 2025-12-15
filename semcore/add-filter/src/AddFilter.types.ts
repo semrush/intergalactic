@@ -70,11 +70,10 @@ export type AddFilterProps = FlexProps & {
   onVisibleFiltersChange?: (visibleFilters: AddFilterKey[]) => void;
 };
 
-declare const AddFilterType: Intergalactic.Component<'div', AddFilterProps> & {
+export type AddFilterType = Intergalactic.Component<'div', AddFilterProps> & {
   Dropdown: typeof AddFilterDropdownType;
   Input: typeof AddFilterInputType;
   Select: typeof AddFilterSelectType;
 };
 
 export { AddFilterInputType, AddFilterSelectType, AddFilterDropdownType };
-export default AddFilterType;

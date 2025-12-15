@@ -2,9 +2,10 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';
+import type { FadeInOutProps } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function FadeInOut(props: any, ref: React.Ref<HTMLElement>) {
+function FadeInOut(props: FadeInOutProps, ref: React.Ref<HTMLDivElement>) {
   return sstyled(style)(
     <Animation
       ref={ref}
@@ -16,4 +17,4 @@ function FadeInOut(props: any, ref: React.Ref<HTMLElement>) {
 
 FadeInOut.displayName = 'FadeInOut';
 
-export default createBaseComponent(FadeInOut);
+export default createBaseComponent<'div', FadeInOutProps>(FadeInOut);

@@ -1668,21 +1668,12 @@ importers:
 
   semcore/notice-bubble:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*

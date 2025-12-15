@@ -415,6 +415,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
 export const Body = createComponent(BodyRoot, {
   Row,
-}) as DataTableBodyType & {
+}) as unknown as DataTableBodyType & {
   Row: DataTableRowType;
 };

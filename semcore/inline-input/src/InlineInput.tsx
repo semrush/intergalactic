@@ -1,7 +1,6 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import type { IRootComponentHandlers } from '@semcore/core';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -70,7 +69,6 @@ type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
 type NumberValueAsProps = InputNumberValueProps & {
-  inputHandlerRefs?: React.RefObject<IRootComponentHandlers>;
   increment?: (event: WheelEvent) => void;
   decrement?: (event: WheelEvent) => void;
 };
@@ -106,7 +104,6 @@ class InlineInputBase extends Component<RootAsProps> {
 
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
-  inputHandlersRef = React.createRef<IRootComponentHandlers>();
   initValue = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
   lastHandledKeyboardEvent = -1;
@@ -181,14 +178,12 @@ class InlineInputBase extends Component<RootAsProps> {
     if (this.inputRef.current?.value === '')
       this.inputRef.current.value = this.inputRef.current.min || '0';
     this.inputRef.current?.stepUp?.(event as any);
-    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
   };
 
   decrement = (event: React.SyntheticEvent | WheelEvent) => {
     if (this.inputRef.current?.value === '')
       this.inputRef.current.value = this.inputRef.current.max || '0';
     this.inputRef.current?.stepDown?.(event as any);
-    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
   };
 
   getNumberValueProps() {
@@ -197,7 +192,6 @@ class InlineInputBase extends Component<RootAsProps> {
     return {
       numberFormatter,
       inputRef: this.inputRef,
-      inputHandlerRefs: this.inputHandlersRef,
       increment: this.increment,
       decrement: this.decrement,
     };

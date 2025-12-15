@@ -1420,7 +1420,7 @@ class DataTableRoot<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as unknown as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

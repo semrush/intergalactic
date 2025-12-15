@@ -11,11 +11,11 @@ import { localizedMessages } from '../../../translations/__intergalactic-dynamic
 import { BaseLegend } from '../BaseLegend';
 import { LegendItemComponent } from '../LegendItem/LegendItem';
 
-class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
+class LegendFlexRoot extends BaseLegend<LegendFlexProps, typeof LegendFlexRoot.enhance> {
   static displayName = 'LegendFlex';
   static style = style;
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   static defaultProps = () => ({
     direction: 'row',
@@ -24,7 +24,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
 
   renderTrend() {
     const { onTrendIsVisibleChange, trendIsVisible, trendLabel, size, getI18nText } = this
-      .asProps as TrendProps & LegendFlexProps & { getI18nText: (s: string) => string };
+      .asProps as unknown as TrendProps & LegendFlexProps & { getI18nText: (s: string) => string };
 
     return (
       <Checkbox
@@ -55,6 +55,6 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   }
 }
 
-export const LegendFlex: LegendFlexType = createComponent(LegendFlexRoot, {
+export const LegendFlex = createComponent(LegendFlexRoot, {
   LegendItem: LegendItemComponent,
-});
+}) as LegendFlexType;

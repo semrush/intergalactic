@@ -3,11 +3,6 @@ import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './co
 import type {
   PropGetterFn,
   IRootComponentProps,
-  ComponentType,
-  IRootComponentHandlers,
-  IComponentProps,
-  ReturnEl,
-  IFunctionProps,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -33,16 +28,11 @@ export {
   Intergalactic,
   type PropGetterFn,
   type IRootComponentProps,
-  type ComponentType,
-  type IRootComponentHandlers,
-  type IComponentProps,
-  type IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
-  type ReturnEl,
   type IStyledProps,
   wrapIntergalacticComponent,
   assignProps,

@@ -278,6 +278,6 @@ const BulkTextarea = (<T extends string | string[]>() =>
     Counter,
     ClearAll,
     ErrorsNavigation,
-  }) as BulkTextareaType<T>)();
+  }) as unknown as BulkTextareaType<T>)();
 
 export default BulkTextarea;
