@@ -47,7 +47,7 @@ const data = [
   },
 ];
 
-type accordionMergedProps = { loading: boolean };
+type accordionMergedProps = { loading?: boolean };
 const Demo = (props: accordionMergedProps) => {
   return (
     <DataTable
