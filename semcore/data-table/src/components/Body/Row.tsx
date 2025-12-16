@@ -589,6 +589,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             id={accordionId}
             visible={expanded}
             aria-hidden={!expanded}
+            // @ts-ignore
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}

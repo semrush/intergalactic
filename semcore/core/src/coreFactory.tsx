@@ -1,7 +1,7 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React from 'react';
 
-import { type IRootNodeProps, type Intergalactic, Component } from './core-types/Component';
+import { type Intergalactic, Component } from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
   CORE_AS_PROPS,
