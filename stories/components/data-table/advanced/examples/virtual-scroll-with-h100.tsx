@@ -1,0 +1,61 @@
+import { DataTable } from '@semcore/ui/data-table';
+import { Box } from '@semcore/ui/flex-box';
+import React from 'react';
+
+const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
+const kd = ['77.8', '10', '11.2', '-', '75.89'];
+const cpc = ['$3.4', '$0.65', '$1.25', '$0', '$0'];
+const vol = ['32,500,000', '65,457,920', '47,354,640', 'n/a', '21,644,290'];
+
+const data = Array(10000)
+  .fill(0)
+  .map((_, index) => ({
+    id: `#${index + 1}`,
+    keyword: keyword[Math.floor(keyword.length * Math.random())],
+    // [ROW_GROUP]: [
+    //   {
+    kd: kd[Math.floor(kd.length * Math.random())],
+    cpc: cpc[Math.floor(cpc.length * Math.random())],
+    vol: vol[Math.floor(vol.length * Math.random())],
+    // },
+    // ],
+  }));
+
+const Demo = () => {
+  return (
+    <Box
+      p={4}
+      h={800}
+      style={{
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        resize: 'both',
+        overflow: 'auto',
+      }}
+    >
+      <DataTable
+        data={data}
+        totalRows={10000}
+        aria-label='Virtual scroll'
+        h='100%'
+        virtualScroll
+        headerProps={{ sticky: true }}
+        columns={[
+          { name: 'id', children: 'ID' },
+          { name: 'keyword', children: 'Keyword', gtcWidth: '300px' },
+          {
+            name: 'group',
+            children: 'Organic Sessions',
+            columns: [
+              { name: 'kd', children: 'KD %' },
+              { name: 'cpc', children: 'CPC' },
+              { name: 'vol', children: 'Vol.' },
+            ],
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+export default Demo;
