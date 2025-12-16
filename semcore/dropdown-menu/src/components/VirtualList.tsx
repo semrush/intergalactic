@@ -56,6 +56,10 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
     setTimeout(() => {
       const listHeight = (this.listRef.current?.getBoundingClientRect().height ?? 0) / 2;
       this.containerRef.current?.scrollTo({ top: index * rowHeight - listHeight + rowHeight / 2 });
+
+      if (index === 0) {
+        this.forceUpdate(); // we need this for correct render all items with calculated container height
+      }
     }, 10); // 10 for correct work in safari
   }
 
