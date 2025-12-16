@@ -8,7 +8,7 @@ const bubbleSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bubble-chart.svg'))
 `;
 
-const BubbleChartSkeleton = () => {
+function BubbleChartSkeleton() {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -19,6 +19,6 @@ const BubbleChartSkeleton = () => {
       bgPattern={`url(data:image/svg+xml;base64,${bubbleSvg})`}
     />,
   );
-};
+}
 
 export default createComponent(BubbleChartSkeleton);

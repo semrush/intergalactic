@@ -11,7 +11,7 @@ const lineMonotoneSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart-monotone.svg'))
 `;
 
-const LineChartSkeleton = (props) => {
+function LineChartSkeleton(props) {
   const SChartSkeleton = Root;
   const patternBase64 = { linear: lineLinearSvg, monotone: lineMonotoneSvg }[
     props.type ?? 'linear'
@@ -25,6 +25,6 @@ const LineChartSkeleton = (props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(LineChartSkeleton);
