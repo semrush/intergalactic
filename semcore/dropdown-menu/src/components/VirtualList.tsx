@@ -39,7 +39,7 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
   static style = style;
 
   static defaultProps = {
-    rowsBuffer: 10,
+    rowsBuffer: 6,
   };
 
   containerRef = React.createRef<HTMLDivElement>();
@@ -78,17 +78,15 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
     const { rows, rowHeight, rowsBuffer, styles, renderRow: RenderRow, customData } = this.asProps;
 
     const offsetHeight = this.listRef.current?.offsetHeight ?? 0;
-    const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 6;
-    const nextPrepared = scrollDirection === 'up' ? 6 : rowsBuffer;
+    const prevPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
+    const nextPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
 
     const startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
-    const lastIndex = scrollDirection === 'up' && scrollTop === 0
-      ? rowsBuffer
-      : Math.min(
-          Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
-          rows.length,
-        );
+    const lastIndex = Math.min(
+      Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
+      rows.length,
+    );
 
     const rowsToRender = rows.slice(startIndex, lastIndex);
     const rowMarginTop = rowHeight * startIndex;
