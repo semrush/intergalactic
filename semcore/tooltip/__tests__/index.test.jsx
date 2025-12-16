@@ -1,9 +1,14 @@
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 import { waitFor } from 'storybook/test';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
+
+describe('tooltip Dependency imports', () => {
+  runDependencyCheckTests('tooltip');
+});
 
 describe('Tooltip', () => {
   beforeEach(cleanup);

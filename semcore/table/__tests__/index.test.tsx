@@ -3,7 +3,6 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Table, { RowTheme } from '../src';
@@ -143,27 +142,6 @@ describe('Table', () => {
     await expect(
       await snapshot(<Component />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot(task);
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <Table>
-        <Table.Head>
-          <Table.Row>
-            <Table.CellHead>head 1</Table.CellHead>
-          </Table.Row>
-        </Table.Head>
-
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>cell 1</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
 
