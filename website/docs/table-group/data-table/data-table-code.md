@@ -282,7 +282,7 @@ By default, horizontal scrolling is displayed at the bottom of the table, but it
 ### Virtual scroll with constant row height
 
 ::: tip
-When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent height and `height='100%'` for the DataTable.
+When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent's height and `height='100%'` for the DataTable.
 Without a defined height, virtual scroll can't calculate its layout correctly.
 :::
 
@@ -299,7 +299,7 @@ Enable scroll virtualization using the `virtualScroll` property. Passing `rowHei
 ### Virtual scroll with variable row height
 
 ::: tip
-When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent height and `height='100%'` for the DataTable.
+When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent's height and `height='100%'` for the DataTable.
 Without a defined height, virtual scroll can't calculate its layout correctly.
 :::
 
