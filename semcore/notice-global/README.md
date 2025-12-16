@@ -2,7 +2,7 @@
 
 # @semcore/notice-global (DEPRECATED)
 
-## This package is deprecated and will be deleted in the future releases.
+## This package is deprecated and will be deleted in v.17.
 
 [![version](https://img.shields.io/npm/v/@semcore/notice-global.svg)](https://www.npmjs.com/@semcore/notice-global)
 [![downloads](https://img.shields.io/npm/dt/@semcore/notice-global.svg)](https://www.npmjs.com/package/@semcore/notice-global)
