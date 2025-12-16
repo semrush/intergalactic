@@ -1,13 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { voiceOverTest as voiceOverBase, nvdaTest as nvdaBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
-import {
-  label,
-  feature,
-  story,
-  suite,
-  layer,
-} from 'allure-js-commons';
+import { feature, story, suite } from 'allure-js-commons';
 import type axe from 'axe-core';
 import type { Page } from 'playwright';
 import type { TestInfo } from 'playwright/types/test';
@@ -46,30 +40,17 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
 
   const component = testsIndex > 0 ? filePathParts[testsIndex - 1] : 'unknown-component';
 
-  const fileName = testsIndex !== -1 ? filePathParts[testsIndex + 1] : '';
+  // Feature: component name
+  feature(component);
 
-  const suiteName = fileName.split('.')[1] ?? 'unknown';
-
-  let layerName = 'Other tests';
-  if (suiteName.includes('browser')) {
-    layerName = 'Browser tests';
-  } else if (suiteName.includes('axe')) {
-    layerName = 'Axe tests';
-  } else if (suiteName.includes('vo')) {
-    layerName = 'Voice over tests';
-  } else if (suiteName.includes('nvda')) {
-    layerName = 'NVDA tests';
+  // Story: second describe if it exists
+  // titlePath structure: [describe1, describe2?, ..., testName]
+  if (testInfo.titlePath.length > 2) {
+    story(testInfo.titlePath[1]);
   }
 
-  const storyParts = testInfo.titlePath.length > 1 ? testInfo.titlePath.slice(1) : [testInfo.title];
-  const storyName = storyParts.join(' > ');
-
-  label('feature', suiteName);
-  label('component', component);
-  story(storyName);
-  feature(suiteName);
-  suite(component);
-  layer(layerName);
+  // Suite: test name
+  suite(testInfo.title);
 
   await use();
 };
