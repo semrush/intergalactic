@@ -4,7 +4,6 @@ import {
   toHaveAttribute,
   toBeInTheDocument,
 } from '@testing-library/jest-dom/matchers';
-import * as axeMatchers from 'vitest-axe/matchers';
 
 import { toMatchImageSnapshot } from './toMatchImageSnapshot';
 import { expect, vi } from './vitest';
@@ -15,7 +14,6 @@ expect.extend({
   toHaveAttribute,
   toBeInTheDocument,
 } as any);
-expect.extend(axeMatchers);
 
 Object.defineProperty(window.SVGElement.prototype, 'getBBox', {
   writable: true,

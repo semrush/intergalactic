@@ -35,7 +35,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Open modal', async () => {
       await locators.button(page).click();
-      await page.waitForSelector('text=Do you want to save your changes?');
+      await locators.close(page).waitFor({ state: 'visible' });
       await expect(locators.modal(page)).toHaveCount(1);
     });
 
