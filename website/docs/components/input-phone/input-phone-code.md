@@ -16,7 +16,7 @@ The input is pre-filled with the value: `+`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/input-phone/docs/examples/unknown_country_and_number_format.tsx';
+  export Demo from 'stories/patterns/ux-patterns/input-phone/docs/examples/unknown_country_and_number_format.tsx';
 </script>
 
 :::
@@ -32,7 +32,7 @@ Some countries may have multiple formats for phone numbers. Therefore, it's some
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/input-phone/docs/examples/known_country_but_the_number_format_is_unknown.tsx';
+  export Demo from 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_but_the_number_format_is_unknown.tsx';
 </script>
 
 :::
@@ -54,7 +54,7 @@ Make sure to verify the available valid phone number formats for the specific co
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/input-phone/docs/examples/known_country_and_number_format.tsx';
+  export Demo from 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_and_number_format.tsx';
 </script>
 
 :::
