@@ -51,6 +51,10 @@ export const ProjectSelector: StoryObj<typeof ProjectSelectorProps> = {
       control: { type: 'select' },
       options: ['min', 'fixed', false],
     },
+    visibleItems: {
+      control: { type: 'number' },
+
+    },
   },
   args: ProjectSelectorProps,
   play: playWrapper(ProjectSelectorTest),
