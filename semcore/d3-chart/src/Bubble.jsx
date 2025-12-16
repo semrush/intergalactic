@@ -149,10 +149,10 @@ class BubbleRoot extends Component {
   }
 }
 
-const BubbleTooltip = (props) => {
+function BubbleTooltip(props) {
   const SBubbleTooltip = Root;
   return sstyled(props.styles)(<SBubbleTooltip render={Tooltip} excludeAnchorProps />);
-};
+}
 
 function BubbleCircle(props) {
   const {
