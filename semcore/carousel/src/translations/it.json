@@ -2,5 +2,7 @@
   "next": "Slide successiva",
   "prev": "Slide precedente",
   "slides": "Slide",
-  "slide": "Slide {slideNumber}"
+  "slide": "Slide {slideNumber}",
+  "Carousel:aria-roledescription": "carosello",
+  "Carousel.Indicator:aria-roledescription": "slide"
 }
