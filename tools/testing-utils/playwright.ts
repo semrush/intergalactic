@@ -40,16 +40,14 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
 
   const component = testsIndex > 0 ? filePathParts[testsIndex - 1] : 'unknown-component';
 
-  // Feature: component name
   feature(component);
 
-  // Story: second describe if it exists
-  // titlePath structure: [describe1, describe2?, ..., testName]
   if (testInfo.titlePath.length > 2) {
     story(testInfo.titlePath[1]);
+  } else if (testInfo.titlePath.length > 1) {
+    story(testInfo.titlePath[0]);
   }
 
-  // Suite: test name
   suite(testInfo.title);
 
   await use();
