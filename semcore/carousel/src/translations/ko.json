@@ -2,5 +2,7 @@
   "next": "다음 슬라이드",
   "prev": "이전 슬라이드",
   "slides": "슬라이드",
-  "slide": "슬라이드 {slideNumber}"
+  "slide": "슬라이드 {slideNumber}",
+  "Carousel:aria-roledescription": "캐러셀",
+  "Carousel.Indicator:aria-roledescription": "슬라이드"
 }
