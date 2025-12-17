@@ -1,10 +1,9 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { Box } from '@semcore/flex-box';
 import type { InputProps, InputValueProps } from '@semcore/input';
-import type React from 'react';
 
-/** @deprecated */
-export interface ITimePickerProps extends TimePickerProps, UnknownProperties {}
+import type { TimePickerFormatProps } from '../PickerFormat/PickerFormat.type';
+
 export type TimePickerProps = Omit<InputProps, 'size'> & {
   /** Time in the hh:mm format */
   value?: string;
@@ -23,32 +22,35 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface ITimePickerItemProps extends TimePickerItemProps, UnknownProperties {}
-export type TimePickerItemProps = InputValueProps & {
+export type TimePickerSeparatorProps = {
+  /** Internal */
+  hoursInputRef: React.RefObject<HTMLElement>;
+  /** Internal */
+  disabled?: boolean;
+};
+
+export type TimePickerItemProps = {
   /** Step for changing of the values in the dropdown list */
   step?: number;
 };
 
-/** @deprecated */
-export interface ITimePickerFormatProps extends TimePickerFormatProps, UnknownProperties {}
-export type TimePickerFormatProps = BoxProps & {};
-
-/** @deprecated */
-export interface ITimePickerContext extends TimePickerContext, UnknownProperties {}
 export type TimePickerContext = {
   getHoursProps: PropGetterFn;
   getFormatProps: PropGetterFn;
   getMinutesProps: PropGetterFn;
+  getSeparatorProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ITimePickerHandlers extends TimePickerHandlers, UnknownProperties {}
+// title ???
 export type TimePickerHandlers = {
   value: (value: string) => void;
 };
 
-declare const TimePicker: Intergalactic.Component<
+export type TimePickerMeridiem = 'AM' | 'PM';
+
+export type TimePickerField = 'hours' | 'minutes';
+
+export type TimePickerComponent = Intergalactic.Component<
   'div',
   TimePickerProps,
   TimePickerContext,
@@ -59,5 +61,3 @@ declare const TimePicker: Intergalactic.Component<
   Separator: typeof Box;
   Format: Intergalactic.Component<'div', TimePickerFormatProps>;
 };
-
-export default TimePicker;

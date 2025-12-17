@@ -3,8 +3,12 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import React from 'react';
 
-class TimePickerFormat extends Component {
-  static enhance = [uniqueIDEnhancement()];
+import style from './picker-format.shadow.css';
+import type { TimePickerFormatProps } from './PickerFormat.type';
+
+class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof TimePickerFormat.enhance> {
+  static style = style;
+  static enhance = [uniqueIDEnhancement()] as const;
 
   state = {
     changedFormatNotice: '',
@@ -13,7 +17,7 @@ class TimePickerFormat extends Component {
   handleClick = () => {
     setTimeout(() => {
       const { meridiem, getI18nText } = this.asProps;
-      this.setState({ changedFormatNotice: getI18nText('changedFormatNotice', { meridiem }) });
+      this.setState({ changedFormatNotice: getI18nText?.('changedFormatNotice', { meridiem }) });
     }, 0);
 
     setTimeout(() => {
@@ -43,7 +47,7 @@ class TimePickerFormat extends Component {
           {changedFormatNotice}
         </ScreenReaderOnly>
         <ScreenReaderOnly aria-hidden='true' id={`${uid}_describe`}>
-          {getI18nText('formatToggler')}
+          {getI18nText?.('formatToggler')}
         </ScreenReaderOnly>
       </>,
     );
