@@ -3,7 +3,6 @@ import * as process from 'process';
 import dotenv from 'dotenv';
 
 import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
-import { closeTasks } from './src/intg-release/closeTasks';
 import { publishReleaseNotes } from './src/publishReleaseNotes';
 import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
 import { updateVersions } from './src/updateVersions';
@@ -82,28 +81,8 @@ export const publishPrerelease = async () => {
 
 export const publishRelease = async () => {
   const updatedPackages = await gitUtils.getUpdatedPackages();
-  const versionTag = await gitUtils.getCurrentTag();
-  const version = versionTag?.slice(1);
 
   await NpmUtils.publish(updatedPackages, false);
-
-  // 8) Close tasks in clickup
-  if (!process.argv.includes('--dry-run') && version) {
-    await closeTasks(version);
-  }
-
-  if (!process.argv.includes('--dry-run') && version) {
-    const releaseChangelog = await Changelog.getRelease();
-    const endpoints = process.env['SLACK_API_ENDPOINTS']?.split(',') ?? ['fake-url'];
-
-    await publishReleaseNotes(version, releaseChangelog);
-
-    if (!process.argv.includes('--dry-run')) {
-      validateSlackIntegrationEnv(endpoints);
-    }
-
-    await sendMessageAboutRelease(version, releaseChangelog, endpoints);
-  }
 };
 
 export const getChangedPackages = async (base: string): Promise<string[]> => {
