@@ -1,6 +1,6 @@
 /**
  *
- * @deprecated Please use `@semcore/css-virtualizer-unplugin` instead.
+ * @deprecated Please use `@semcore/process-css-unplugin` instead.
  *
 */
 
