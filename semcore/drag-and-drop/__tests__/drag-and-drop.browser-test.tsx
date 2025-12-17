@@ -93,8 +93,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
-
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 
