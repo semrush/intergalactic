@@ -534,4 +534,47 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tabpanel(page, 2)).toHaveAttribute('tabindex', '-1');
     });
   });
+
+  test('Verify CSS override for preview indicator sizes', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@carousel'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/carousel/tests/examples/carousel_with_props.tsx', 'en', {
+      indicators: 'preview',
+      zoom: false,
+    });
+
+    await locators.img(page).nth(0).waitFor({ state: 'visible' });
+
+    await test.step('Verify default preview indicator size is 100px', async () => {
+      const indicator = locators.tab(page, 0);
+      const box = await indicator.boundingBox();
+
+      expect(box?.width).toBeCloseTo(100, 0);
+      expect(box?.height).toBeCloseTo(100, 0);
+
+      await expect(indicator).toHaveAttribute('aria-roledescription', 'slide');
+    });
+
+    await test.step('Verify CSS override changes indicator size', async () => {
+      await page.addStyleTag({
+        content: `
+          [aria-roledescription="slide"] {
+            width: 150px !important;
+            height: 150px !important;
+          }
+        `,
+      });
+
+      // Wait for styles to apply
+      await page.waitForTimeout(100);
+
+      const indicator = locators.tab(page, 0);
+      const box = await indicator.boundingBox();
+
+      // the size  overridden
+      expect(box?.width).toBeCloseTo(150, 0);
+      expect(box?.height).toBeCloseTo(150, 0);
+    });
+  });
 });
