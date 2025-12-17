@@ -11,7 +11,7 @@ import type {
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+class LineRoot extends Component<ScoreLineGaugeProps, typeof LineRoot.enhance> {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 

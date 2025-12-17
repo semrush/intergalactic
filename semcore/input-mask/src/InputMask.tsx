@@ -5,7 +5,6 @@ import {
   sstyled,
   Root,
   type PropGetterFn,
-  type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
@@ -109,7 +108,7 @@ class InputMask extends Component<InputProps> {
   }
 }
 
-class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance> {
+class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value: Array<(value?: string) => string> }> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',

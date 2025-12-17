@@ -27,9 +27,10 @@ const MAX = 5;
 
 class SliderRatingRoot extends Component<
   SliderRatingProps,
+  typeof SliderRatingRoot.enhance,
   {},
-  State,
-  typeof SliderRatingRoot.enhance
+  {},
+  State
 > {
   static displayName = 'SliderRating';
   static style = style;

@@ -10,18 +10,12 @@ RefObject,
 import type { CORE_COMPONENT } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
-/** @deprecated */
-export type HandlersType<UCProps> = { [K in keyof UCProps]?: <T = unknown>(arg: T) => void };
-/** @deprecated */
-export type ChildrenType<Props = {}, Ctx = {}, UCProps = {}> =
-  | ((props: Props & Ctx, handlers: HandlersType<UCProps>) => ReactNode)
-  | ReactNode;
+type HandlersType<UCProps> = { [K in keyof UCProps]?: <T = unknown>(arg: T) => void };
 
-/** @deprecated */
-export interface IRootComponentProps<Props = {}, Ctx = {}> {
+export interface IRootComponentProps<Props = {}, Ctx = {}, H = {}> {
   'forwardRef'?: RefObject<any>;
   'Children'?: any;
-  'children'?: ChildrenType<Props, Ctx>;
+  'children'?: ReactNode | ((props: Props & Ctx, handlers: HandlersType<H>) => ReactNode);
   'styles'?: IStyledProps['styles'];
   'data-ui-name'?: string;
 }
@@ -53,16 +47,28 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
 
 export abstract class Component<
   Props = {},
-  Context = {},
-  State = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
+  Uncontrolled extends Readonly<{ [key in keyof Props]?: Props[key] | null | ((value: Props[key], e?: any) => void | boolean | Props[key]) | ((value: Props[key], e?: any) => void | boolean | Props[key])[] }> = never,
   InnerProps = {},
+  State = {},
 > extends PureComponent<Props, State> {
-  get handlers(): Readonly<any> {
-    return {};
+  protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
+    // @ts-ignore. This is a default value. Should be defined in related classes.
+    return;
+  };
+
+  protected get handlers(): Readonly<{
+    [key in keyof Uncontrolled]: key extends keyof Props
+      ? Uncontrolled[key] extends (null | Props[key])
+        ? (value: Props[key], e?: any) => void
+        : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
+      : never
+  }> {
+    // @ts-ignore. The body will be generated in factory
+    return;
   }
 
-  get asProps() {
+  protected get asProps() {
     return {} as Readonly<
       { Root: RootResult<any> } &
       BaseAsProps<Props, Enhance, InnerProps> &
@@ -70,9 +76,9 @@ export abstract class Component<
     >;
   }
 
-  Root: Root = undefined as any;
+  protected Root: RootResult<any> = undefined as any;
 
-  isControlled = false;
+  protected isControlled = false;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

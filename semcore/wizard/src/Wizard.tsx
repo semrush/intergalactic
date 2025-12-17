@@ -32,7 +32,7 @@ type State = {
   highlighted: number;
 };
 
-class WizardRoot extends Component<WizardProps, {}, State, typeof WizardRoot.enhance> {
+class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {}, State> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;

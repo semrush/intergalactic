@@ -23,7 +23,7 @@ const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 export const INDEX_OFFSET = 2; // 1 - for header, 1 - because start not from 0, but from 1
 
-class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, {}, [], BodyPropsInner<Data, UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, [], {}, BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 

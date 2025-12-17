@@ -22,6 +22,11 @@ export type AddFilterItemProps = {
    * Action to perform on filter item unmount.
    */
   onUnmount?: () => void;
+
+  /**
+   * @inner
+   */
+  visible?: boolean;
 };
 
 declare const AddFilterSelectType: Intergalactic.Component<typeof Select, AddFilterItemProps> & {

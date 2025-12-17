@@ -137,7 +137,7 @@ type RootAsProps = IRadialTreeProps & {
   dataHintsHandler: DataHintsHandler;
 };
 
-class RadialTreeBase extends Component<RootAsProps> {
+class RadialTreeBase extends Component<RootAsProps, [], { activeKey: null }> {
   static displayName = 'RadialTree';
   static style = style;
   static enhance = [uniqueIDEnhancement()];

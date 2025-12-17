@@ -34,7 +34,7 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
+class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [

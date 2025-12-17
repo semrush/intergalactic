@@ -285,7 +285,7 @@ class InlineInputBase extends Component<RootAsProps> {
   }
 }
 
-class Value extends Component<RootAsProps> {
+class Value extends Component<RootAsProps, [], { value: any }> {
   static defaultProps = {
     defaultValue: '',
   };

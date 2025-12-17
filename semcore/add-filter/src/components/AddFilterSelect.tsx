@@ -10,7 +10,7 @@ type AsPropsWithOnClear<T> = T & {
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
+class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps, [], { visible: null }> {
   static displayName = 'AddFilterSelect';
 
   static defaultProps = () => {
@@ -25,7 +25,7 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
 
   uncontrolledProps() {
     return {
-      visible: [null],
+      visible: null,
     };
   }
 

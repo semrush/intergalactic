@@ -5,7 +5,7 @@ import { Box, Flex } from '../flex-box';
 import type { RowProps, ColProps, RowType, GridContext } from './Grid.types';
 import style from './style/grid.shadow.css';
 
-class RowRoot extends Component<RowProps, GridContext> {
+class RowRoot extends Component<RowProps, [], {}, GridContext> {
   static displayName = 'Row';
   static style = style;
   static defaultProps = {

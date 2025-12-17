@@ -11,7 +11,7 @@ import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
-class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
+class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-extra-slow',

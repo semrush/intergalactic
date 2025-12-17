@@ -37,12 +37,12 @@ type AddFilterState = {
 
 class RootAddFilter extends Component<
   AddFilterProps,
-  {},
-  AddFilterState,
   typeof RootAddFilter.enhance,
+  { visibleFilters: null },
   {
     visibleFilters: Exclude<AddFilterProps['visibleFilters'], undefined>;
-  }
+  },
+  AddFilterState
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();

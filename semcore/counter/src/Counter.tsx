@@ -8,7 +8,7 @@ import style from './style/counter.shadow.css';
 
 const enhance = [resolveColorEnhance()] as const;
 
-class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
+class Counter extends Component<CounterProps, typeof enhance> {
   static displayName = 'Counter';
   static enhance = enhance;
 

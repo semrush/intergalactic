@@ -26,7 +26,7 @@ export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
   E extends readonly ((...args: any[]) => any)[] = [],
-> extends Component<T, {}, ChartState, E> {
+> extends Component<T, E, Readonly<{}>, {}, ChartState> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',

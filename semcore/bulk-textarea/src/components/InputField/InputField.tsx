@@ -20,9 +20,14 @@ type State = {
 
 class InputField<T extends string | string[]> extends Component<
   InputFieldProps<T>,
+  typeof InputField.enhance,
+  {
+    value: null;
+    linesCount: null;
+    errorIndex: null;
+  },
   {},
-  State,
-  typeof InputField.enhance
+  State
 > {
   static displayName = 'Textarea';
   static style = style;

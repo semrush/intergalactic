@@ -23,7 +23,7 @@ type State<UniqKeyType> = {
   accordionComponent?: React.ReactNode;
 };
 
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], RowPropsInner<Data, UniqKeyType>> {
+export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, [], {}, RowPropsInner<Data, UniqKeyType>, State<UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 

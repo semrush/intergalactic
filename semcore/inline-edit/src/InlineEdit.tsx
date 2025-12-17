@@ -25,7 +25,7 @@ type AsProps = {
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-class InlineEdit extends Component<AsProps> {
+class InlineEdit extends Component<AsProps, [], { editable: null }> {
   static displayName = 'InlineEdit';
 
   static style = style;

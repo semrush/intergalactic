@@ -38,9 +38,10 @@ type State = {
 
 class FeedbackRatingRoot extends Component<
   FeedbackRatingProps,
+  typeof FeedbackRatingRoot.enhance,
   {},
-  State,
-  typeof FeedbackRatingRoot.enhance
+  {},
+  State
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;

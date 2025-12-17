@@ -49,7 +49,7 @@ type State = {
 
 type A11yHintKeys = keyof typeof localizedMessages.en;
 
-class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
+class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot.enhance, {}, {}, State> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {

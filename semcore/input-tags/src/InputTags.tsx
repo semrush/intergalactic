@@ -54,7 +54,7 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends Component<InputTagsProps, {}, {}, typeof InputTags.enhance> {
+class InputTags extends Component<InputTagsProps, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;

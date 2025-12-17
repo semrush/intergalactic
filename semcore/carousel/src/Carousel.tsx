@@ -37,9 +37,10 @@ const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends Component<
   CarouselProps,
+  typeof enhance,
+  { index: any },
   CarouselContext,
-  CarouselState,
-        typeof enhance
+  CarouselState
 > {
   static displayName = 'Carousel';
   static defaultProps = {

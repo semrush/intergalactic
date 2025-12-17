@@ -17,7 +17,7 @@ export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
 
 type Props = AbstractButtonProps<any, any, any>;
 
-export abstract class AbstractButton extends Component<Props, {}, {}> {
+export abstract class AbstractButton extends Component<Props> {
   static displayName = 'AbstractButton';
 
   containerRef = React.createRef<HTMLButtonElement>();

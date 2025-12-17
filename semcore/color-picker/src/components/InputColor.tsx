@@ -39,7 +39,7 @@ function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   };
 }
 
-class InputColorRoot extends Component<InputColorAsProps> {
+class InputColorRoot extends Component<InputColorAsProps, [], { value: string; state: null }> {
   static displayName = 'InputColor';
 
   static style = style;

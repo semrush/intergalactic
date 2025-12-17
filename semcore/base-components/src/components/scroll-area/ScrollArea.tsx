@@ -44,7 +44,7 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
+class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.enhance, {}, DefaultProps, State> {
   static displayName = 'ScrollArea';
 
   static style = style;

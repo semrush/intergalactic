@@ -21,9 +21,15 @@ type State<T extends string | string[]> = {
 
 class BulkTextareaRoot<T extends string | string[]> extends Component<
   BulkTextareaProps<T>,
+  typeof BulkTextareaRoot.enhance,
+  {
+    value: null;
+    state: null;
+    showErrors: null;
+    errors: null;
+  },
   {},
-  State<T>,
-  typeof BulkTextareaRoot.enhance
+  State<T>
 > {
   static displayName = 'BulkTextarea';
   static defaultProps = {
@@ -233,6 +239,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
+    // @ts-ignore
     this.handlers.value('', e);
     this.handlers.state('normal');
 

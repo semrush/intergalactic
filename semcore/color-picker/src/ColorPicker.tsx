@@ -58,7 +58,7 @@ type ItemAsProps = {
   value: string;
 };
 
-class ColorPickerRoot extends Component<RootAsProps> {
+class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible: boolean }> {
   static displayName = 'ColorPicker';
 
   static style = style;
