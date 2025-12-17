@@ -1,4 +1,5 @@
 {
   "clear": "Pulisci",
-  "filter": "Filtro"
+  "filter": "Filtro",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "selezionati"
 }

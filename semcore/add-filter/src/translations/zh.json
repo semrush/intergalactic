@@ -1,4 +1,5 @@
 {
   "AddFilter.DropdownTrigger.Text": "添加筛选器",
-  "AddFilter.Button.Text": "清除筛选器"
+  "AddFilter.Button.Text": "清除筛选器",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "筛选器已清除"
 }

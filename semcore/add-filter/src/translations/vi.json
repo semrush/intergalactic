@@ -1,4 +1,5 @@
 {
   "AddFilter.DropdownTrigger.Text": "Thêm bộ lọc",
-  "AddFilter.Button.Text": "Xóa bộ lọc"
+  "AddFilter.Button.Text": "Xóa bộ lọc",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "Đã xóa bộ lọc"
 }

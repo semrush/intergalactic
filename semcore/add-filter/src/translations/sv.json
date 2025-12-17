@@ -1,4 +1,5 @@
 {
   "AddFilter.DropdownTrigger.Text": "Tillämpa filter",
-  "AddFilter.Button.Text": "Rensa filter"
+  "AddFilter.Button.Text": "Rensa filter",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "Filtren rensade"
 }
