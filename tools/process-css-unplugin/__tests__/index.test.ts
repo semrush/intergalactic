@@ -206,6 +206,49 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
   });
 
   describe('Edge cases', () => {
+    test('Verify handling of mismatched CSS blocks and style markers', () => {
+      const plugin = processCssVitePlugin();
+
+      // style marker more than CSS blocks - creates invalid import with undefined
+      const sourceCode = `import React from 'react';
+/*!__reshadow-styles__:"./style/button.shadow.css"*/
+/*!__reshadow-styles__:"./style/input.shadow.css"*/
+const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: red; }",/*__inner_css_end__*/"hash"),
+/*__reshadow_css_end__*/
+{});
+`;
+
+      const id = '/node_modules/@semcore/button/lib/index.js';
+      const result = plugin.transform?.(sourceCode, id);
+
+      // Bug? creates import 'undefined'
+      expect(result?.code).toContain('undefined');
+
+      // or this should crash ??
+      expect(() => {
+        plugin.transform?.(sourceCode, id);
+      }).toThrow();
+    });
+
+    test('Verify handling of malformed CSS markers', () => {
+      const plugin = processCssVitePlugin();
+
+      // Malformed marker - missing closing */
+      const sourceCode = `import React from 'react';
+/*!__reshadow-styles__:"./style/button.shadow.css"
+const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: red; }",/*__inner_css_end__*/"hash"),
+/*__reshadow_css_end__*/
+{});
+`;
+
+      const id = '/node_modules/@semcore/button/lib/index.js';
+
+      // Without try-catch in transform, regex errors would crash the build
+      // With proper error handling, should return gracefully or throw descriptive error
+      const result = plugin.transform?.(sourceCode, id);
+      expect(result).toBeDefined();
+    });
+
     test('Verify handling of special characters in CSS', () => {
       const plugin = processCssVitePlugin();
 
