@@ -20,6 +20,7 @@ import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
 import TablePerfExample from './examples/table_perf/table_perf';
+import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
@@ -76,6 +77,10 @@ export const FixedColumnsWithDiffWidths: Story = {
 
 export const LinkInTable: Story = {
   render: LinkInTableExample,
+};
+
+export const VirtualScrollWithH100: Story = {
+  render: VirtualScrollWithH100Example,
 };
 
 export const RowCellStates: Story = {

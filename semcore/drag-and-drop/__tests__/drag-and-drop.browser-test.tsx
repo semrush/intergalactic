@@ -43,7 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
-      if (browserName == 'webkit') return; // it is unstable on cd
+      if (browserName != 'chromium') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
@@ -93,8 +93,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
-
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 

@@ -1,4 +1,5 @@
 {
   "clear": "清除",
-  "filter": "筛选器"
+  "filter": "筛选器",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "已选定"
 }

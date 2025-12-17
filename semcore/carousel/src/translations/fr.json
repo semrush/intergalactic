@@ -2,5 +2,7 @@
   "next": "Diapositive suivante",
   "prev": "Diapositive précédente",
   "slides": "Diapositives",
-  "slide": "Diapositive {slideNumber}"
+  "slide": "Diapositive {slideNumber}",
+  "Carousel:aria-roledescription": "carrousel",
+  "Carousel.Indicator:aria-roledescription": "diapositive"
 }

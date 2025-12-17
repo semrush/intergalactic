@@ -5,7 +5,7 @@ import KnownCountryButNumberFormatUnknownExample from './examples/known_country_
 import UnknownCountryAndNumberFormatExample from './examples/unknown_country_and_number_format';
 
 const meta: Meta = {
-  title: 'Components/InputPhone/Documentation',
+  title: 'Patterns/UX Patterns/InputPhone/Documentation',
 };
 
 export default meta;

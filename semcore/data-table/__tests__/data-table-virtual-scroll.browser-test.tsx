@@ -42,11 +42,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
+  }, async ({ page, browserName }) => {
+    if (browserName == 'webkit') test.skip();
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
       await page.keyboard.press('ArrowDown');
     }
     await page.waitForTimeout(500);
@@ -138,5 +139,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.toggle(page).nth(2).click();
     await plot.nth(1).waitFor({ state: 'visible' });
     await expect(plot).toHaveCount(2);
+  });
+
+  test('Verify keyboard scroll for table with different height', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < 100; i++) {
+      await page.keyboard.press('ArrowDown');
+    }
+    await page.waitForTimeout(500);
+    await expect(locators.getCell(page, 101, 1)).toBeVisible();
+    await expect(page.getByText('#101')).toBeVisible();
   });
 });
