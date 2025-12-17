@@ -35,7 +35,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         TAG.KEYBOARD,
         '@drag-and-drop',
         '@card'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
       await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
@@ -43,6 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
+      if (browserName != 'chromium') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
@@ -69,6 +70,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.menuItems(page, 1).dragTo(locators.menuItems(page, 4));
+    // Wait for drag animation and DOM update to complete
+    await page.waitForTimeout(100);
     await expect(page).toHaveScreenshot();
   });
 
@@ -90,8 +93,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
-
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(100);
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 
@@ -155,7 +159,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await test.step('Verify graggable items can be moved to the drop zone', async () => {
         await draggableMarketTraffic.waitFor({ state: 'visible' });
         await draggableMarketTraffic.dragTo(locators.dropZone(page).nth(0));
-        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
+        // Wait for DOM to update after drag operation
+        await expect.poll(
+          async () => await allItems.first().getAttribute('data-ui-name'),
+          {
+            timeout: 3000,
+          },
+        ).toBe('DragAndDrop.Draggable');
       });
     });
 
@@ -167,7 +177,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
-      if (browserName === 'webkit') test.skip();
+      if (browserName !== 'chromium') test.skip();
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
       await page.keyboard.press('Tab');

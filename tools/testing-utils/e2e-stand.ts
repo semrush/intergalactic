@@ -34,24 +34,24 @@ export const e2eStandToHtml = async (
 
             const contents = `
               import React from 'react';
-              import ReactDOM from 'react-dom';
-              import App from '${resolvePath(standFilePath)}';
+              import { createRoot } from 'react-dom/client';
+              import App from './${standFilePath}';
               import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
               const props = { ${propsCode} };
+              const root = createRoot(document.querySelector('#root'));
 
-              ReactDOM.render(
+              root.render(
                 <I18nProvider value='${locale}'>
                   <App {...props} />
-                </I18nProvider>,
-                document.querySelector('#root')
+                </I18nProvider>
               );
             `;
 
             return {
               contents,
               loader: 'tsx',
-              resolveDir: resolveDirname(standFilePath),
+              resolveDir: process.cwd(),
             };
           });
         },
@@ -75,6 +75,7 @@ export const e2eStandToHtml = async (
     bundle: true,
     write: false,
     outdir: os.devNull,
+    logLevel: 'debug',
   });
 
   const cssFiles = standBundle.outputFiles

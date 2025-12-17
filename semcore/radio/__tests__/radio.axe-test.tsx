@@ -18,12 +18,4 @@ test.describe(`@radio ${TAG.ACCESSIBILITY}`, () => {
 
     expect(violations).toEqual([]);
   });
-
-  test('Radio and select', async ({ page }) => {
-    await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx', 'en');
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
 });

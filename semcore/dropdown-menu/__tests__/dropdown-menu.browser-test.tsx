@@ -1255,6 +1255,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify Items render in DD with Virtual scroll ', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en', { visibleItems: 10 });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.menuitemradio(page, 'project 38').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 38').first()).toBeVisible();
+    await pressKeyMultipleTimes(page, 'ArrowUp', 40);
+    await expect(locators.menuitemradio(page, 'project 0')).toBeFocused();
+
+    await page.keyboard.press('Enter');
+    await locators.menuitemradio(page, 'project 10').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 10').first()).toBeVisible();
+  });
+
   test.describe('DD menu with input tags as trigger', () => {
     test('Verify focus order', {
       tag: [TAG.PRIORITY_HIGH,

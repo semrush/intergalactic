@@ -1,13 +1,13 @@
 {
   "currentColor": "Färgfält, nuvarande färg är {color}",
-  "emptyColor": "Color field",
-  "palette": "Colors palette",
+  "emptyColor": "Färgfält",
+  "palette": "Färgpalett",
   "presetColors": "Förinställda färger",
-  "customColors": "Custom preset colors",
-  "addColor": "Add color",
+  "customColors": "Anpassade förinställda färger",
+  "addColor": "Lägg till färg",
   "clearColor": "Rensa färg",
-  "colorField": "Custom color, HEX format",
+  "colorField": "Anpassad färg, HEX-format",
   "colorFieldConfirm": "Lägg till färg i listan över anpassade färger",
   "colorFieldClear": "Rensa fält för anpassad färg",
-  "deleteColorDescriber": "Delete color with backspace"
+  "deleteColorDescriber": "Ta bort färg med backspace"
 }

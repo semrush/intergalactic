@@ -1,4 +1,5 @@
 {
+  "d3Chart.Plot:aria-label": "Grafik",
   "trend": "Trend",
-  "legendForChart": "Chart legend"
+  "legendForChart": "Grafik açıklaması"
 }
