@@ -1,4 +1,5 @@
 {
+  "d3Chart.Plot:aria-label": "Wykres",
   "trend": "Trend",
   "legendForChart": "Legenda wykresu"
 }
