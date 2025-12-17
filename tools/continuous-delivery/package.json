@@ -9,6 +9,8 @@
     "upload-static": "bin/upload-static.ts",
     "pkg-diff": "bin/get-changed-packages.ts",
     "send-prerelease-changelog": "bin/send-prerelease-changelog.ts",
+    "send-release-changelog": "bin/send-release-changelog.ts",
+    "close-tasks": "bin/close-tasks.ts",
     "format-changelogs": "bin/format-changelogs.ts"
   },
   "private": true,
