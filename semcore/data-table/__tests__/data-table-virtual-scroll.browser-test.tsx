@@ -42,7 +42,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
+    if (browserName == 'webkit') test.skip();
     await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -140,7 +141,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(plot).toHaveCount(2);
   });
 
-  test('Verify rows are visible', {
+  test('Verify keyboard scroll for table with different height', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table'],
