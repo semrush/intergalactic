@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.13] - 2025-12-17
+
+### Fixed
+
+- Enabled `overflow-hidden` for `Indicator` for `border-radius` to apply
+correctly.
+- Moved default width and height for indicators with preview to CSS for
+more convenient styling.
+- Added `aria-roledescription="carousel"` to the root element.
+- Added translations for `aria-roledescription` in the root element and
+indicators with preview.
+
 ## [16.1.12] - 2025-11-17
 
 ### Changed
