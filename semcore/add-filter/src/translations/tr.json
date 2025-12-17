@@ -1,4 +1,5 @@
 {
-  "AddFilterPattern.DropdownTrigger.Text": "Filtre ekle",
-  "AddFilterPattern.Button.Text": "Filtreleri temizle"
+  "AddFilter.DropdownTrigger.Text": "Filtre ekle",
+  "AddFilter.Button.Text": "Filtreleri temizle",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "Filtreler temizlendi"
 }

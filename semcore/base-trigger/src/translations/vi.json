@@ -1,4 +1,5 @@
 {
   "clear": "Xóa",
-  "filter": "Lọc"
+  "filter": "Lọc",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "đã chọn"
 }

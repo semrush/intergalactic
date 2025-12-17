@@ -1,13 +1,13 @@
 {
   "currentColor": "Kleurveld, huidige kleur is {color}",
-  "emptyColor": "Color field",
-  "palette": "Colors palette",
+  "emptyColor": "Kleurenveld",
+  "palette": "Kleurenpalet",
   "presetColors": "Vooraf ingestelde kleuren",
-  "customColors": "Custom preset colors",
-  "addColor": "Add color",
+  "customColors": "Aangepaste vooraf ingestelde kleuren",
+  "addColor": "Kleur toevoegen",
   "clearColor": "Wis kleur",
-  "colorField": "Custom color, HEX format",
+  "colorField": "Aangepaste kleur, HEX-indeling",
   "colorFieldConfirm": "Voeg kleur toe aan overzicht van aangepaste kleuren",
   "colorFieldClear": "Wis aangepast kleurveld",
-  "deleteColorDescriber": "Delete color with backspace"
+  "deleteColorDescriber": "Verwijder kleur met backspace"
 }
