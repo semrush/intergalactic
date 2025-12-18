@@ -14,20 +14,6 @@ export async function loadPage(page: any, examplePath: string, lang: string, pro
   //  fonts to be loaded
   await page.evaluate(() => document.fonts.ready);
 
-  // images to be loaded
-  await page.evaluate(() => {
-    return Promise.all(
-      Array.from(document.images)
-        .filter((img) => !img.complete)
-        .map(
-          (img) =>
-            new Promise((resolve) => {
-              img.onload = img.onerror = resolve;
-            }),
-        ),
-    );
-  });
-
   // DOM to stabilize with animation frames
   await page.evaluate(
     () =>
