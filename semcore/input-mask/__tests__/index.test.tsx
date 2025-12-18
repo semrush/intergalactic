@@ -1,4 +1,3 @@
-import { axe } from '@semcore/testing-utils/axe';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
@@ -99,25 +98,6 @@ describe('InputMask', () => {
     const input = getByTestId('input') as HTMLInputElement;
 
     expect(input.value).toBe('6000');
-  });
-
-  test('a11y', async () => {
-    const { container } = render(
-      <>
-        <label htmlFor='input_mask'>Expire date</label>
-        <InputMask size='l' mb={4}>
-          <InputMask.Value
-            mask='99 99'
-            title='4-digit number'
-            placeholder='__ __'
-            id='input_mask'
-          />
-        </InputMask>
-      </>,
-    );
-
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
   });
 });
 

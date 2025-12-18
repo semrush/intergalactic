@@ -130,7 +130,7 @@ export class Package {
     for (const packageValue of packages) {
       const packageName = packageValue.data.name;
       const packageJson = this.packagesMap.get(packageName);
-      if (!packageJson) continue;
+      if (!packageJson || !releasePackageJson.data.dependencies[packageName]) continue;
 
       releasePackageJson.data.dependencies[packageName] = `^${packageJson.data.version}`;
     }

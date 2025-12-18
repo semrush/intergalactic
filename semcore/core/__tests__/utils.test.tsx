@@ -614,7 +614,7 @@ describe('EventEmitter', () => {
     const handler = vi.fn();
     const unsubscribe = emitter.subscribe('testEvent', handler);
 
-    unsubscribe(); // Отписываемся
+    unsubscribe();
     emitter.emit('testEvent');
 
     expect(handler).not.toHaveBeenCalled();
