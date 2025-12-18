@@ -9,7 +9,7 @@
     "d3-scale": "3.3.0",
     "d3-shape": "3.2.0",
     "react-hook-form": "7.54.0",
-    "react-virtualized": "9.22.3",
+    "react-virtualized": "9.22.6",
     "react-intl": "7.1.11",
     "@storybook/react-vite": "9.1.6"
   },
