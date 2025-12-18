@@ -43,7 +43,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
-      if (browserName != 'chromium') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
