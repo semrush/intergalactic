@@ -1,3 +1,66 @@
+## [16.13.1] - 2025-12-18
+
+### @semcore/notice-global
+
+- **Changed** Package is deprecated.
+- **Changed** [ ] Bug fix (non-breaking change which fixes an issue).
+- **Changed** [ ] New feature (non-breaking change which adds functionality).
+- **Changed** [ ] Breaking change (fix or feature that would cause existing
+functionality to not work as expected).
+- **Changed** [ ] Nice improve.
+- **Changed** [x] I have updated the documentation accordingly.
+- **Changed** [ ] I have added new tests on added of fixed functionality.
+
+### @semcore/data-table
+
+- **Fixed** Non-working virtual scroll with rows with unknown height.
+- **Fixed** `columns.name` property description to have information about
+valid/invalid characters.
+
+### @semcore/carousel
+
+- **Fixed** Enabled `overflow-hidden` for `Indicator` for `border-radius` to apply
+correctly.
+- **Fixed** Moved default width and height for indicators with preview to CSS for
+more convenient styling.
+- **Fixed** Added `aria-roledescription="carousel"` to the root element.
+- **Fixed** Added translations for `aria-roledescription` in the root element and
+indicators with preview.
+
+### @semcore/wizard
+
+- **Fixed** Missing translations
+
+### @semcore/tag
+
+- **Fixed** Missing translations
+
+### @semcore/dropdown-menu
+
+- **Fixed** Missing translations
+- **Fixed** Virtual scroll issues.
+- **Fixed** Required customData property changed to optional.
+
+### @semcore/date-picker
+
+- **Fixed** Missing translations
+
+### @semcore/d3-chart
+
+- **Fixed** Missing translations
+
+### @semcore/color-picker
+
+- **Fixed** Missing translations
+
+### @semcore/base-trigger
+
+- **Fixed** Missing translations
+
+### @semcore/add-filter
+
+- **Fixed** Missing translations
+
 ## [16.13.0] - 2025-12-01
 
 ### @semcore/checkbox

@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.13] - 2025-12-18
+
+### Changed
+
+- Package is deprecated.
+- [ ] Bug fix (non-breaking change which fixes an issue).
+- [ ] New feature (non-breaking change which adds functionality).
+- [ ] Breaking change (fix or feature that would cause existing
+functionality to not work as expected).
+- [ ] Nice improve.
+- [x] I have updated the documentation accordingly.
+- [ ] I have added new tests on added of fixed functionality.
+
 ## [16.1.12] - 2025-11-17
 
 ### Changed
