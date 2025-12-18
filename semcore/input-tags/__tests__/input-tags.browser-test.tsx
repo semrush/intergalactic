@@ -342,8 +342,6 @@ test.describe(`${TAG.VISUAL} `, () => {
         let iterations = 0;
         const maxIterations = 10; //  limit to prevent infinite loops
         while (await locators.options(page).count() > 0 && iterations < maxIterations) {
-          // Firefox doesn't automatically highlight first option, need to press ArrowDown first
-          if (browserName == 'firefox') await page.keyboard.press('ArrowDown');
           await page.keyboard.press('Enter');
           iterations++;
         }

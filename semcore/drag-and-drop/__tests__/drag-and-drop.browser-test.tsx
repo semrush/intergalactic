@@ -176,7 +176,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
-      if (browserName !== 'chromium') test.skip();
+      // if (browserName !== 'chromium') test.skip();
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
       await page.keyboard.press('Tab');
