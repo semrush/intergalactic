@@ -2645,8 +2645,8 @@ importers:
         specifier: 7.1.11
         version: 7.1.11(react@18.3.1)(typescript@5.8.3)
       react-virtualized:
-        specifier: 9.22.3
-        version: 9.22.3(patch_hash=ef31cf74e1cf375a2149db1277cc4fc7ce97626239b42e55560316e9e660b413)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 9.22.6
+        version: 9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@semcore/testing-utils':
         specifier: workspace:*
@@ -12218,6 +12218,12 @@ packages:
     peerDependencies:
       react: ^15.3.0 || ^16.0.0-alpha
       react-dom: ^15.3.0 || ^16.0.0-alpha
+
+  react-virtualized@9.22.6:
+    resolution: {integrity: sha512-U5j7KuUQt3AaMatlMJ0UJddqSiX+Km0YJxSqbAzIiGw5EmNz0khMyqP2hzgu4+QUtm+QPIrxzUX4raJxmVJnHg==}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -25402,6 +25408,17 @@ snapshots:
       react: 18.3.1
 
   react-virtualized@9.22.3(patch_hash=ef31cf74e1cf375a2149db1277cc4fc7ce97626239b42e55560316e9e660b413)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.27.6
+      clsx: 1.2.1
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-lifecycles-compat: 3.0.4
+
+  react-virtualized@9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.27.6
       clsx: 1.2.1
