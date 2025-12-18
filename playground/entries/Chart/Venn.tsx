@@ -20,6 +20,7 @@ const data = {
   'G/F': 100,
   'G/C': 100,
   'F/C': 100,
+  'G/F/C': 100,
 };
 
 function getJSX(props: VennChartJSXProps) {
