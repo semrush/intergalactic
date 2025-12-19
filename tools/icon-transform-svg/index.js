@@ -60,7 +60,7 @@ function getDescriptionIcons(iconPath, outLib) {
   const match = fileName.match(groupsReg);
   if (!match) throw new Error(`"${fileName}" has invalid size`);
   const size = match[1];
-  const name = iconPath.replace(rootDir, '').split('/')[3];
+  const name = iconPath.replace(rootDir, '').split(process.platform === 'win32' ? '\\' : '/')[3];
   const location = `${outLib}/${name}/${size}/index.js`;
 
   return {
@@ -156,7 +156,7 @@ const generateIcons = (
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {
-      const icons = await glob(`${rootDir}/${sourceLib}/**/*svg`);
+      const icons = await glob(`${rootDir}/${sourceLib}/**/*svg`, { absolute: true });
 
       const results = icons.map(async (iconPath) => {
         const { name, location, type, group } = getDescriptionIcons(iconPath, outLib);
@@ -177,9 +177,9 @@ const generateIcons = (
         const cjs = await babel.transformAsync(sourceCjs, babelConfig);
         const esm = await babel.transformAsync(sourceEsm, { presets: ['@babel/preset-react'] });
 
-        outputFile(path.join(rootDir, location), cjs.code);
-        outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
-        outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
+        outputFile(path.join(rootDir, ...location.split('/')), cjs.code);
+        outputFile(path.join(rootDir, ...location.replace('.js', '.mjs').split('/')), esm.code);
+        outputFile(path.join(rootDir, ...location.replace('.js', '.d.ts').split('/')), templateDTS(name));
         return { name, location, group };
       });
 

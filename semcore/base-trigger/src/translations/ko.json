@@ -1,4 +1,5 @@
 {
   "clear": "지우기",
-  "filter": "필터"
+  "filter": "필터",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "선택됨"
 }

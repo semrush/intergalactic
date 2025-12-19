@@ -2,5 +2,7 @@
   "next": "下一张幻灯片",
   "prev": "上一张幻灯片",
   "slides": "幻灯片",
-  "slide": "幻灯片 {slideNumber}"
+  "slide": "幻灯片 {slideNumber}",
+  "Carousel:aria-roledescription": "广告轮播",
+  "Carousel.Indicator:aria-roledescription": "幻灯片"
 }

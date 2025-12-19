@@ -32,7 +32,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -110,7 +110,8 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Cache build
         uses: actions/cache@v4
         id: cache-build
@@ -125,6 +126,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -156,7 +158,8 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
         id: cache-build
@@ -171,6 +174,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -210,7 +214,8 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Restore cached build
         uses: actions/cache@v4
         id: cache-build
@@ -225,6 +230,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -270,7 +276,7 @@ jobs:
 #        name: Setup pnpm cache
 #        with:
 #          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-#          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+#          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 #      - name: Restore cached build
 #        uses: actions/cache@v4
 #        id: cache-build
@@ -343,7 +349,8 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
@@ -363,6 +370,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
@@ -490,7 +498,8 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
@@ -510,6 +519,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
@@ -532,4 +542,83 @@ jobs:
           retention-days: 3
       - name: Fail if test step actually failed
         if: steps.axe-testing.outcome != 'success'
+        run: exit 1
+  nvda-tests:
+    runs-on: windows-latest
+    needs: [ build, defineChangedComponents ]
+    if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Install Node.js
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 10.11.1
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: pwsh
+        run: |
+          $pnpmStorePath = pnpm store path
+          echo "pnpm_cache_dir=$pnpmStorePath" >> $env:GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          enableCrossOsArchive: true
+      - name: Restore cached build
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          enableCrossOsArchive: true
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install Playwright Browsers
+        run: npx playwright install
+      - name: NVDA setup
+        run: pnpm nvda-test:setup
+      - name: NVDA testing
+        id: nvda-testing
+        env:
+          CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
+        shell: pwsh
+        run: |
+          $components = $env:CHANGED_COMPONENTS -split '\s+' | Where-Object { $_ }
+
+          if (-not $components -or $components.Count -eq 0) {
+            Write-Host "No changed components; skipping."
+            exit 0
+          }
+
+          pnpm --filter @semcore/core build
+          pnpm --filter @semcore/icon build
+
+          pnpm exec playwright test --config playwright.nvda.config.ts -- $components
+        continue-on-error: true
+      - name: Save test results as artifacts
+        if: steps.nvda-testing.outcome != 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nvda-testing-failure-output
+          path: test-results
+          retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.nvda-testing.outcome != 'success'
         run: exit 1

@@ -1,13 +1,13 @@
 {
   "currentColor": "Pole koloru, bieżący kolor to {color}",
-  "emptyColor": "Color field",
-  "palette": "Colors palette",
+  "emptyColor": "Pole koloru",
+  "palette": "Paleta kolorów",
   "presetColors": "Gotowe kolory",
-  "customColors": "Custom preset colors",
-  "addColor": "Add color",
+  "customColors": "Niestandardowe gotowe kolory",
+  "addColor": "Dodaj kolor",
   "clearColor": "Wyczyść kolor",
-  "colorField": "Custom color, HEX format",
+  "colorField": "Kolor niestandardowy, format szesnastkowy",
   "colorFieldConfirm": "Dodaj kolor do listy kolorów niestandardowych",
   "colorFieldClear": "Wyczyść pole koloru niestandardowego",
-  "deleteColorDescriber": "Delete color with backspace"
+  "deleteColorDescriber": "Usuń kolor klawiszem Backspace"
 }

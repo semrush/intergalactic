@@ -17,14 +17,13 @@ const imageWidth = width - 75;
 const Demo = () => (
   <Carousel
     w={width}
-    aria-roledescription='carousel'
     aria-label='Beauty of Nature'
+    aria-roledescription='something'
     indicators='preview'
   >
     {images.map((url, index) => (
       <Carousel.Item key={url} w={imageWidth}>
         <img
-
           role='button'
           src={url}
           alt={altTexts[index]}
