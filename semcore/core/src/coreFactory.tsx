@@ -11,7 +11,6 @@ import {
   CREATE_COMPONENT,
   PARENT_COMPONENTS,
 } from './core-types/symbols';
-import bindHandlerEnhancement from './enhancement/bindHandler';
 import childrenEnhancement from './enhancement/Children';
 import dataNameEnhancement from './enhancement/dataName';
 import enhanceEnhancement from './enhancement/enhance';
@@ -300,7 +299,6 @@ function createComponent<T extends Intergalactic.InternalTypings.ComponentTag = 
     // @ts-ignore
     ...enhancements.map((f) => f(context, parents, createComponent, childComponents)),
     i18nAppLocaleEnhance(),
-    bindHandlerEnhancement(),
     childrenEnhancement(context, parents),
     // root must be under the children
     rootEnhancement(),
