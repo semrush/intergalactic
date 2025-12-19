@@ -1,5 +1,5 @@
 import os from 'os';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'path';
 
 import {
   esbuildPluginSemcore,
@@ -35,11 +35,11 @@ export const e2eStandToHtml = async (
             const contents = `
               import React from 'react';
               import ReactDOM from 'react-dom';
-              import App from '${resolvePath(standFilePath)}';
+              import App from './${standFilePath}';
               import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
               const props = { ${propsCode} };
-
+              // legacy synchronous rendering for more stable visual tests
               ReactDOM.render(
                 <I18nProvider value='${locale}'>
                   <App {...props} />
@@ -51,7 +51,7 @@ export const e2eStandToHtml = async (
             return {
               contents,
               loader: 'tsx',
-              resolveDir: resolveDirname(standFilePath),
+              resolveDir: process.cwd(),
             };
           });
         },
@@ -75,6 +75,7 @@ export const e2eStandToHtml = async (
     bundle: true,
     write: false,
     outdir: os.devNull,
+    logLevel: 'debug',
   });
 
   const cssFiles = standBundle.outputFiles

@@ -342,7 +342,7 @@ class TotalPages extends Component {
   }
 }
 
-const PageInputValue = (props) => {
+function PageInputValue(props) {
   const SPageInputValue = Root;
 
   return sstyled(props.styles)(
@@ -353,12 +353,12 @@ const PageInputValue = (props) => {
       onBlur={() => false}
     />,
   );
-};
+}
 
-const PageInputAddon = (props) => {
+function PageInputAddon(props) {
   const SPageInputAddon = Root;
   return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
-};
+}
 
 class PageInput extends Component {
   static enhance = [uniqueIDEnhancement()];

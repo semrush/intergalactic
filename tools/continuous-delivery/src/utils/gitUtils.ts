@@ -15,9 +15,9 @@ export const gitUtils = {
     await git.checkout(['-b', newPrereleaseBranch]);
 
     await NpmUtils.updateLockFile();
-    // await gitUtils.commitNewPrerelease(packages);
-    // const tag = await gitUtils.createPrereleaseTag(version);
-    // await gitUtils.push(tag);
+    await gitUtils.commitNewPrerelease(packages);
+    const tag = await gitUtils.createPrereleaseTag(version);
+    await gitUtils.push(tag);
   },
 
   getUpdatedPackages: async () => {

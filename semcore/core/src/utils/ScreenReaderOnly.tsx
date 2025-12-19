@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * @deprecated Use ScreenReaderOnly from 'flex-box' component
  */
-export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) => {
+export function ScreenReaderOnly(props: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       {...props}
@@ -21,5 +21,5 @@ export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) =
       }}
     />
   );
-};
+}
 ScreenReaderOnly.displayName = 'ScreenReaderOnlyRoot';

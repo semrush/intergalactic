@@ -16,7 +16,7 @@ It's always positioned below the main Semrush header and searchbar.
 
 **The report header includes the following:**
 
-1. `ProductHead.Row`: The header is divided into rows with components, and they're separated from each other by equal paddings.
+1. `ProductHead.Row`: The header is divided into rows with components, and they're separated from each other by equal margins.
 2. `ProductHead.Links`: They're usually placed at the top right of the header, refer to [Additional links pattern](/patterns/links-order/links-order).
 3. `ProductHead.Buttons`.
 4. `Title`: It's a name of the product and the project. Can have additional controls for customizing the product or performing additional actions.
@@ -27,13 +27,9 @@ It's always positioned below the main Semrush header and searchbar.
 
 ### Marings and paddings
 
+Set left and right paddings to `--spacing-8x`.
+
 ![product-head paddings](static/padding-left-right.png)
-
-![product-head margins](static/margins.png)
-
-If there is a [Notice](/components/notice/notice) in the header, it has an 8px margin-bottom to the elements in ProductHead.
-
-![product-head notice-margins](static/notice-margins.png)
 
 ### Margins between elements
 
@@ -44,12 +40,11 @@ If there is a [Notice](/components/notice/notice) in the header, it has an 8px m
 #### Breadcrumbs and additional links
 
 ::: tip
-Use the [ButtonLink](../../components/button/button#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
+Use the [ButtonLink](../../components/button/button#button-with-link-styles) component if the element acts as a button: that is, opens a dialog or changes something on the page.
 :::
 
 - [Breadcrumbs](/components/breadcrumbs/breadcrumbs) and [additional links](/patterns/links-order/links-order) are center-aligned.
 - [Links](/components/link/link) have a size of 14px.
-- The margin between the links is 20px.
 
 #### Heading and main controls
 
@@ -70,22 +65,14 @@ Use the [ButtonLink](../../components/button/button#button-with-link-styles) com
 
 ### Maximum set of elements inside
 
-![max element product-head](static/max-info.png)
-
-::: tip
-When the domain and/or project names are too long and don't fit in the intended place, collapse them into an `ellipsis`. If you have controls on the right, add a “protective” left margin of 24px.
-:::
+When the domain and/or project names are too long and don't fit in the intended place, clip them with an `ellipsis`. If you have controls on the right, add a margin of `--spacing-6x`.
 
 ![title in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
-### Global filters or additional information
-
-![short product-head](static/short-info.png)
-
 ### No global filters, additional information or tabs
 
-In these cases, the margin between the row with the product's title and the TabLine/Divider is 16px.
+Even if your `ProductHead` doesn't have the row with filters and data, it should still have a bottom margin of `--spacing-6x`.
 
 ![product-head without filters](static/without-filters.png)
 
-![product-head without filters](static/min-info.png)
+![product-head without filters and tabs](static/min-info.png)

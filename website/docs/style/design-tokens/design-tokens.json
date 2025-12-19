@@ -2791,7 +2791,6 @@
       "side-panel",
       "tag",
       "textarea",
-      "time-picker",
       "typography",
       "widget-empty",
       "wizard"
@@ -3130,7 +3129,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "carousel",
       "date-picker",
       "dropdown-menu",
       "feature-highlight",

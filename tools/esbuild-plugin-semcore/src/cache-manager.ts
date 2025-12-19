@@ -115,7 +115,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         console.time(timeLabel);
       }
       const relativePath = resolveRelativePath(cwd, filePath);
-      const cacheFileName = relativePath.split('/').join('_');
+      const cacheFileName = relativePath.split('/').join('_').split('\\').join('_');
       const cachedContentsFilePath = resolvePath(cacheDir, `${cacheFileName}_contents`);
       const cachedHashSumFilePath = resolvePath(cacheDir, `${cacheFileName}_hash_sum`);
       const cachedLastUseFilePath = resolvePath(cacheDir, `${cacheFileName}_last_use`);
@@ -167,7 +167,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
     },
     addToCache: async (filePath: string, content: string, implicitDependencies: string[] = []) => {
       const relativePath = resolveRelativePath(cwd, filePath);
-      const cacheFileName = relativePath.split('/').join('_');
+      const cacheFileName = relativePath.split('/').join('_').split('\\').join('_');
       const cachedContentsFilePath = resolvePath(cacheDir, `${cacheFileName}_contents`);
       const cachedHashSumFilePath = resolvePath(cacheDir, `${cacheFileName}_hash_sum`);
       const cachedLastUseFilePath = resolvePath(cacheDir, `${cacheFileName}_last_use`);

@@ -130,7 +130,7 @@ export class Package {
     for (const packageValue of packages) {
       const packageName = packageValue.data.name;
       const packageJson = this.packagesMap.get(packageName);
-      if (!packageJson) continue;
+      if (!packageJson || !releasePackageJson.data.dependencies[packageName]) continue;
 
       releasePackageJson.data.dependencies[packageName] = `^${packageJson.data.version}`;
     }
@@ -140,7 +140,6 @@ export class Package {
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
     const packageChangelog = Changelog.releaseParser(
       packageChangelogString,
-      // packages.map((p) => p.data.name).concat(...removedComponents),
       changelogPath,
     );
 

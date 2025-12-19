@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import GridAxisPropsExample, { defaultProps as BasicUsageProps } from './examples/d3-chart/grid-axis-props';
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
 import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
+import XAsisiRenderDelayedExample from './examples/d3-chart/xAxis-ticks-render-delayed';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/D3-Chart',
@@ -27,4 +28,8 @@ export const GridAxisProps: StoryObj<typeof BasicUsageProps> = {
 
 export const ReferenceLineProps: StoryObj = {
   render: ReferenceLinePropsExample,
+};
+
+export const XAsisiRenderDelayed: StoryObj = {
+  render: XAsisiRenderDelayedExample,
 };

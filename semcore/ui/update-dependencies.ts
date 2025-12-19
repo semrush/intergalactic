@@ -17,7 +17,9 @@ const installComponents = async () => {
 
   packageFile.dependencies = {};
   for (const pack of packages.list) {
-    packageFile.dependencies[pack.name] = pack.version;
+    if (pack.name !== '@semcore/ui') {
+      packageFile.dependencies[pack.name] = pack.version;
+    }
   }
   await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
   execSync('pnpm install --frozen-lockfile false', {

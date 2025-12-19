@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.1] - 2025-12-18
+
+### Fixed
+
+- Missing translations
+- Virtual scroll issues.
+- Required customData property changed to optional.
+
+## [16.2.0] - 2025-12-01
+
+### Added
+
+- Virtualization.
+
+### Fixed
+
+- Disabled first item receives focus.
+
 ## [16.1.14] - 2025-11-14
 
 ### Changed

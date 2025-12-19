@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.1] - 2025-12-18
+
+### Fixed
+
+- Non-working virtual scroll with rows with unknown height.
+- `columns.name` property description to have information about
+valid/invalid characters.
+
+## [16.5.0] - 2025-12-01
+
+### Fixed
+
+- Unnecessary autofocus to the table after loading.
+
+### Added
+
+- Logic for selecting multiples rows using Shift
+
 ## [16.4.4] - 2025-11-14
 
 ### Fixed

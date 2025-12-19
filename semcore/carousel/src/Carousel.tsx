@@ -531,8 +531,8 @@ class CarouselRoot extends Component<
       uid,
       zoom: hasZoom,
       'aria-label': ariaLabel,
-      'aria-roledescription': ariaRoledescription,
       indicators,
+      getI18nText,
     } = this.asProps;
     const ComponentItems = findAllComponents(Children, ['Carousel.Item']);
     const Controls = findAllComponents(Children, [
@@ -545,13 +545,12 @@ class CarouselRoot extends Component<
       <SCarousel
         render={Box}
         role='region'
-        roledescription='carousel'
+        aria-roledescription={getI18nText('Carousel:aria-roledescription')}
         onKeyDown={this.handlerKeyDown}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
         ref={this.refCarousel}
         id={`igc-${uid}-carousel`}
-        aria-roledescription={ariaRoledescription}
       >
         {Controls.length === 0
           ? (
@@ -573,9 +572,8 @@ class CarouselRoot extends Component<
                         <Carousel.Indicator
                           {...item.props}
                           key={item.key}
-                          w={100}
-                          h={100}
-                          aria-roledescription='slide'
+                          w={undefined}
+                          aria-roledescription={getI18nText('Carousel.Indicator:aria-roledescription')}
                           active={this.isSelected(index)}
                           onClick={this.bindHandlerClickIndicator(index)}
                         />
@@ -599,21 +597,21 @@ class CarouselRoot extends Component<
   }
 }
 
-const Container = (props: BoxProps & { duration?: number }) => {
+function Container(props: BoxProps & { duration?: number }) {
   const SContainer = Root;
   const { styles, duration } = props;
 
   return sstyled(styles)(
     <SContainer render={Box} use:duration={`${duration}ms`} aria-live='polite' />,
   );
-};
+}
 
-const ContentBox = (props: BoxProps) => {
+function ContentBox(props: BoxProps) {
   const SContentBox = Root;
   const { styles } = props;
 
   return sstyled(styles)(<SContentBox render={Box} />);
-};
+}
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
@@ -669,7 +667,7 @@ class Item extends Component<CarouselItemProps> {
   }
 }
 
-const Prev = (props: CarouselButtonProps) => {
+function Prev(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
   const SPrevButton = Button;
@@ -694,7 +692,7 @@ const Prev = (props: CarouselButtonProps) => {
   );
 };
 
-const Next = (props: CarouselButtonProps) => {
+function Next(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
   const SNextButton = Button;
@@ -719,7 +717,7 @@ const Next = (props: CarouselButtonProps) => {
   );
 };
 
-const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsProps) => {
+function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsProps) {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
@@ -737,7 +735,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   );
 };
 
-const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
+function Indicator({ styles, Children, inverted }: CarouselIndicatorProps) {
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>

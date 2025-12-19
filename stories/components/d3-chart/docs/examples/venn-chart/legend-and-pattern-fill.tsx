@@ -85,12 +85,6 @@ const defaultLegendItems = [
     checked: true,
     color: 'chart-palette-order-3',
   },
-  {
-    id: 'U',
-    label: 'Unknown',
-    checked: true,
-    color: 'chart-palette-order-4',
-  },
 ];
 
 const defaultIntersections = [
@@ -101,17 +95,17 @@ const defaultIntersections = [
   },
   {
     id: 'G/C',
-    label: 'Fast',
+    label: 'Good & Cheap',
     visible: true,
   },
   {
     id: 'F/C',
-    label: 'Cheap',
+    label: 'Fast & Cheap',
     visible: true,
   },
   {
     id: 'G/F/C',
-    label: 'Unknown',
+    label: 'Good & Fast & Cheap',
     visible: true,
   },
 ];

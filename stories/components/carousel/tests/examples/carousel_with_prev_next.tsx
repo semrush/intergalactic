@@ -3,9 +3,9 @@ import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const images = [
-  'https://placehold.co/600x400/png?text=Image+1',
-  'https://placehold.co/600x400/png?text=Image+2',
-  'https://placehold.co/600x400/png?text=Image+3',
+  'https://placehold.co/600x400/8000FF/FFFF00?text=Image+1',
+  'https://placehold.co/600x400/8000FF/FFFF00?text=Image+2',
+  'https://placehold.co/600x400/8000FF/FFFF00?text=Image+3',
 ];
 const altTexts = [
   'A cyclist performing stunts in the forest',

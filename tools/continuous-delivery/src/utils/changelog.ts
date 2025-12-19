@@ -88,7 +88,9 @@ export class Changelog {
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
-          this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+          if (!this.changelogs.components[token.raw.toLowerCase()]) {
+            this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+          }
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
           traversingType = token.raw;
@@ -128,13 +130,21 @@ export class Changelog {
   public static async getRelease() {
     const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'ui', 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const releaseChangelog = Changelog.releaseParser(
+    const fullChangelog = Changelog.releaseParser(
       releaseChangelogString,
-      // packages.map((p) => p.data.name).concat(...removedComponents),
       changelogPath,
     );
 
-    return releaseChangelog;
+    const releaseChangelog: ChangelogItem[] = [];
+    const version = fullChangelog[0].version;
+
+    for (let i = 0; i < fullChangelog.length; i++) {
+      if (fullChangelog[i].version !== version) break;
+
+      releaseChangelog.push(fullChangelog[i]);
+    }
+
+    return releaseChangelog.toSorted((a, b) => a.component.localeCompare(b.component));
   }
 
   public static componentParser(
@@ -303,7 +313,10 @@ export class Changelog {
           }
 
           if (Changelog.isMajor(traversingVersion)) {
-            if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+            if (
+              changelogs[changelogs.length - 1]?.version !== traversingVersion ||
+              changelogs[changelogs.length - 1]?.component !== traversingComponent
+            ) {
               changelogs.push({
                 component: traversingComponent,
                 date: traversingDate,
@@ -336,7 +349,10 @@ export class Changelog {
           const descriptionFormatted = restText as Token[];
           const description = toMarkdown(descriptionFormatted).trim();
 
-          if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
+          if (
+            changelogs[changelogs.length - 1]?.version !== traversingVersion ||
+            changelogs[changelogs.length - 1]?.component !== traversingComponent
+          ) {
             changelogs.push({
               component: traversingComponent,
               date: traversingDate,
@@ -450,13 +466,14 @@ export class Changelog {
   public static serializeRelease(changelogs: ChangelogItem[]): Token[] {
     const result: Token[] = [];
 
+    let currentVersion: string | null = null;
     let currentDate: string | null = null;
     let currentComponent: string | null = null;
 
     changelogs
       .toSorted((a, b) => b.date.localeCompare(a.date))
       .forEach((changelog) => {
-        if (currentDate === null || currentDate !== changelog.date) {
+        if (currentDate === null || currentDate !== changelog.date || currentVersion !== changelog.version) {
           const versionHeading: Token = {
             type: 'heading',
             level: 2,
@@ -472,6 +489,8 @@ export class Changelog {
           result.push(versionHeading);
 
           currentDate = changelog.date;
+          currentVersion = changelog.version;
+          currentComponent = null;
         }
 
         if (currentComponent === null || currentComponent !== changelog.component) {

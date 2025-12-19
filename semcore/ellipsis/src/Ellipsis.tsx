@@ -263,7 +263,7 @@ const EllipsisMiddleContext = React.createContext<null | {
   ref: React.RefObject<HTMLElement>;
 }>(null);
 
-const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
+function EllipsisMiddle(props: AsPropsMiddle) {
   const {
     styles,
     text,
@@ -346,14 +346,14 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
       <STail>{contextValue.tail}</STail>
     </SContainerMiddle>,
   );
-};
+}
 
 type EllipsisContentAsProps = {
   styles: any;
   Children: React.FC;
 };
 
-const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
+function Content({ styles, Children }: EllipsisContentAsProps) {
   const SEllipsis = Root;
   const ellipsisMiddleContext = React.useContext(EllipsisMiddleContext);
   const STail = 'span';
@@ -374,7 +374,7 @@ const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
       <Children />
     </SEllipsis>,
   ) as any;
-};
+}
 
 const Ellipsis = createComponent(RootEllipsis, {
   Content,

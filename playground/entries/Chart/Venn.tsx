@@ -17,7 +17,6 @@ const data = {
   'G': 200,
   'F': 200,
   'C': 500,
-  'U': 1,
   'G/F': 100,
   'G/C': 100,
   'F/C': 100,
@@ -31,7 +30,6 @@ function getJSX(props: VennChartJSXProps) {
       G: { label: 'Good' },
       F: { label: 'Fast' },
       C: { label: 'Clean' },
-      U: { label: 'Unique' },
     },
   };
   return (

@@ -613,14 +613,14 @@ type RadialTreeRadianInteractiveAreaAsProps = IRadialTreeRadianInteractiveAreaPr
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   styles: React.CSSProperties;
 };
-const InteractiveArea: React.FC<RadialTreeRadianInteractiveAreaAsProps> = ({
+function InteractiveArea({
   Element: SInteractiveArea,
   styles,
-}) => {
+}: RadialTreeRadianInteractiveAreaAsProps) {
   return sstyled(styles)(
     <SInteractiveArea stroke='transparent' render='line' />,
   ) as React.ReactElement;
-};
+}
 
 /** @deprecated */
 export interface IRadialTreeRadianLineProps extends RadialTreeRadianLineProps, UnknownProperties {}
@@ -640,17 +640,17 @@ type RadialTreeRadianLineAsProps = IRadialTreeRadianLineProps & {
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
 };
-const Line: React.FC<RadialTreeRadianLineAsProps> = ({
+function Line({
   Element: SLine,
   styles,
   stroke,
   resolveColor,
   transparent,
-}) => {
+}: RadialTreeRadianLineAsProps) {
   return sstyled(styles)(
     <SLine render='line' stroke={resolveColor(stroke)} transparent={transparent!} />,
   ) as React.ReactElement;
-};
+}
 
 /** @deprecated */
 export interface IRadialTreeRadianCapProps extends RadialTreeRadianCapProps, UnknownProperties {}
@@ -678,7 +678,7 @@ type RadialTreeRadianCapAsProps = RadialTreeRadianCapProps & {
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
 };
-const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
+function Cap({
   Element: SCap,
   styles,
   x = 0,
@@ -688,7 +688,7 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   resolveColor,
   transparent,
   patterns,
-}) => {
+}: RadialTreeRadianCapAsProps) {
   if (!patterns) {
     return sstyled(styles)(
       <SCap
@@ -719,7 +719,7 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
       pattern
     />,
   ) as React.ReactElement;
-};
+}
 
 /** @deprecated */
 export interface IRadialTreeRadianIconProps extends RadialTreeRadianIconProps, UnknownProperties {}
@@ -742,7 +742,7 @@ type RadialTreeRadianIconAsProps = IRadialTreeRadianIconProps & {
   styles: React.CSSProperties;
   tag?: React.FC;
 };
-const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
+function Icon({
   Element: SIcon,
   styles,
   isActive,
@@ -751,14 +751,14 @@ const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
   y,
   iconSize,
   transparent,
-}) => {
+}: RadialTreeRadianIconAsProps) {
   if (!(isActive && tag)) return null;
   const width = iconSize;
   const height = iconSize;
   return sstyled(styles)(
     <SIcon x={x} y={y} width={width} height={height} render={tag} transparent={transparent!} />,
   ) as React.ReactElement;
-};
+}
 
 /** @deprecated */
 export interface IRadialTreeRadianLabelProps
@@ -787,7 +787,7 @@ type RadialTreeRadianLabelAsProps = IRadialTreeRadianLabelProps & {
   textSize: number;
   resolveColor: (color?: string) => string;
 };
-const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
+function Label({
   Element: SLabel,
   Children,
   styles,
@@ -800,7 +800,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   textSize,
   angle,
   transparent,
-}) => {
+}: RadialTreeRadianLabelAsProps) {
   const lines = String(label).split('\n');
   const linesCount = lines.length;
   const SLabelLine = 'tspan';
@@ -840,7 +840,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
       <Children />
     </SLabel>
   ) as React.ReactElement;
-};
+}
 
 const Radian = createElement(RadialTreeRadian, {
   InteractiveArea,
@@ -868,7 +868,7 @@ type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   dataHintsHandler: DataHintsHandler;
   resolveColor: (color?: string) => string;
 };
-const Title: React.FC<RadialTreeTitleAsProps> = ({
+function Title({
   Element: STitle,
   Children,
   children,
@@ -879,7 +879,7 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   x,
   y,
   dataHintsHandler,
-}) => {
+}: RadialTreeTitleAsProps) {
   if (typeof children === 'string') {
     dataHintsHandler.setTitle('vertical', children);
   }
@@ -897,7 +897,7 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
       <Children />
     </STitle>,
   ) as React.ReactElement;
-};
+}
 
 type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context = {}> = (<
   Tag extends Intergalactic.Tag = Intergalactic.Tag,

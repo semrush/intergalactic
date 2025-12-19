@@ -695,12 +695,12 @@ const Polygon = createElement(PolygonRoot, {
   Dots: PolygonDots,
 });
 
-const RadarTooltip = (props) => {
+function RadarTooltip(props) {
   const SRadarTooltip = Root;
   return sstyled(props.styles)(
     <SRadarTooltip render={Tooltip} tag={Radar.Hover} excludeAnchorProps />,
   );
-};
+}
 
 const Radar = createElement(RadarRoot, {
   Axis,

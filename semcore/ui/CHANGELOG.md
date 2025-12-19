@@ -1,3 +1,99 @@
+## [16.13.1] - 2025-12-18
+
+### @semcore/notice-global
+
+- **Changed** Package is deprecated.
+
+### @semcore/data-table
+
+- **Fixed** Non-working virtual scroll with rows with unknown height.
+- **Fixed** `columns.name` property description to have information about
+valid/invalid characters.
+
+### @semcore/carousel
+
+- **Fixed** Enabled `overflow-hidden` for `Indicator` for `border-radius` to apply
+correctly.
+- **Fixed** Moved default width and height for indicators with preview to CSS for
+more convenient styling.
+- **Fixed** Added `aria-roledescription="carousel"` to the root element.
+- **Fixed** Added translations for `aria-roledescription` in the root element and
+indicators with preview.
+
+### @semcore/wizard
+
+- **Fixed** Missing translations
+
+### @semcore/tag
+
+- **Fixed** Missing translations
+
+### @semcore/dropdown-menu
+
+- **Fixed** Missing translations
+- **Fixed** Virtual scroll issues.
+- **Fixed** Required customData property changed to optional.
+
+### @semcore/date-picker
+
+- **Fixed** Missing translations
+
+### @semcore/d3-chart
+
+- **Fixed** Missing translations
+
+### @semcore/color-picker
+
+- **Fixed** Missing translations
+
+### @semcore/base-trigger
+
+- **Fixed** Missing translations
+
+### @semcore/add-filter
+
+- **Fixed** Missing translations
+
+## [16.13.0] - 2025-12-01
+
+### @semcore/checkbox
+
+- **Fixed** Unchecked themed `Checkbox` should remain gray.
+
+### @semcore/base-components
+
+- **Fixed** The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+### @semcore/d3-chart
+
+- **Fixed** `ticks` state var isn't re-calculated for `children` render prop.
+- **Fixed** Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary autofocus to the table after loading.
+- **Added** Logic for selecting multiples rows using Shift
+
+### @semcore/dropdown
+
+- **Fixed** Disabled first item receives focus.
+
+### @semcore/time-picker
+
+- **Fixed** UI focus issue for size `l`.
+
+### @semcore/notice-bubble
+
+- **Added** `containerNode` property to set one common container for all notices
+on the page from different applications.
+
+### @semcore/dropdown-menu
+
+- **Added** Virtualization.
+- **Fixed** Disabled first item receives focus.
+
 ## [16.12.0] - 2025-11-17
 
 ### @semcore/base-trigger
@@ -9279,13 +9375,13 @@
 
 - **Added** Added enhance for set uid and useUID to set random numbers.
 
-## [2.3.0] - 2020-12-4
+## [2.3.0] - 2020-12-04
 
 ### @semcore/carousel
 
 - **Added** Release library
 
-## [2.2.0] - 2020-12-4
+## [2.2.0] - 2020-12-04
 
 ### @semcore/animation
 
@@ -9352,7 +9448,7 @@
 
 - **Fixed** Fixed move props position in component Box.
 
-## [2.1.0] - 2020-11-9
+## [2.1.0] - 2020-11-09
 
 ### Global
 
@@ -9546,7 +9642,7 @@
 - **Changed** Build changed from rollup to babel
 - **Changed** Move .d.ts files from /lib to /lib/types directory
 
-## [1.2.1] - 2020-9-8
+## [1.2.1] - 2020-09-08
 
 ### Global
 
@@ -9617,7 +9713,7 @@
 - **Fixed** Flag sideEffects now contain list of files with side effects
 - **Fixed** Added flag sideEffects: false to package.json
 
-## [1.2.0] - 2020-9-2
+## [1.2.0] - 2020-09-02
 
 ### @semcore/core
 

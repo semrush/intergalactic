@@ -43,7 +43,7 @@ Table: Roles and attributes
 
 `TimePicker` consists of several components that have their own accessibility guidelines:
 
-- [Combobox](../auto-suggest/auto-suggest-a11y)
+- [Combobox](/patterns/auto-suggest/auto-suggest-a11y)
 - [Button](../button/button-a11y)
 
 <!-- You can also read more about the dropdown behavior in [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->

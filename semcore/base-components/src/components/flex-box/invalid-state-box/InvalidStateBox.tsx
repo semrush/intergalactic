@@ -4,7 +4,7 @@ import React from 'react';
 import style from './invalidStateBox.shadow.css';
 import Box from '../Box';
 
-const InvalidStatePatternComponent = () => {
+function InvalidStatePatternComponent() {
   const SPattern = Root;
 
   return sstyled(style)(<SPattern render={Box} />);

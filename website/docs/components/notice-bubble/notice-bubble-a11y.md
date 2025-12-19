@@ -22,11 +22,11 @@ The following list describes roles and attributes that the component already has
 
 Table: Roles and attributes
 
-| Component                 | Attribute                                     | Usage                                                                                                                                                                                                                               |
-| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NoticeBubbleContainer`   | `role="region"`, `aria-label="Notifications"` | Defines a landmark, so that users can easily navigate to it and access elements inside. |
-| `NoticeBubbleContainer`   | `aria-live="polite"`                          | Instructs the screen reader to announce changes inside the container whenever the user is idle. |
-| `Bubble.Content`          | `role="alert"` (only with `type="warning"`)   | Instructs the screen reader to announce the changes immediately, interrupting other processes. |
+| Component or element    | Attribute                                     | Usage                                                                                                                          |
+|-------------------------| --------------------------------------------- |--------------------------------------------------------------------------------------------------------------------------------|
+| `Bubble`'s parent `div` | `role="region"`, `aria-label="Notifications"` | Defines a landmark so that users can navigate to it and access elements inside.                                                |
+|                         | `aria-live="polite"`                          | **Only with `type="info"`.** Instructs the screen reader to announce changes within the container whenever the user is idle.   |
+| `Bubble`                | `role="alert"`                                | **Only with `type="warning"`.** Instructs the screen reader to announce the changes immediately, interrupting other processes. |
 
 ## Considerations for developers
 

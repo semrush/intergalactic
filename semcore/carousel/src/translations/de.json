@@ -2,5 +2,7 @@
   "next": "Nächste Folie",
   "prev": "Vorherige Folie",
   "slides": "Folien",
-  "slide": "Folie {slideNumber}"
+  "slide": "Folie {slideNumber}",
+  "Carousel:aria-roledescription": "Karussell",
+  "Carousel.Indicator:aria-roledescription": "Folie"
 }

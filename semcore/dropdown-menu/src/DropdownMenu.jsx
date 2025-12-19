@@ -8,18 +8,14 @@ import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Flex, Box } from '@semcore/flex-box';
-import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
+import ScrollAreaComponent from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import { ListBoxContextProvider } from './components/Context';
+import { VirtualList } from './components/VirtualList';
 import style from './style/dropdown-menu.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-const ListBoxContextProvider = ({ children }) => (
-  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
-    {children}
-  </hideScrollBarsFromScreenReadersContext.Provider>
-);
 
 const menuItemContext = React.createContext({});
 
@@ -52,6 +48,16 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
+  /**
+   * TODO: It needs to be reconsidered in a future implementation so that component accepts items as a prop instead of JSX.
+   * Tab index recalculation flag.
+   *
+   * When an item becomes disabled while highlighted, we need to transfer focus
+   * to the next available focusable item. This flag ensures the focus lock
+   * remains within proper boundaries during the initial render cycle.
+  */
+  shouldRecalculateItemTabIndex = false;
+
   uncontrolledProps() {
     return {
       ...super.uncontrolledProps(),
@@ -63,7 +69,7 @@ class DropdownMenuRoot extends AbstractDropdown {
               this.focusAndScrollToSelected();
               // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
               // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
-            }, 30);
+            }, 50);
           }
         },
       ],
@@ -80,17 +86,17 @@ class DropdownMenuRoot extends AbstractDropdown {
     const options = menuElement.querySelectorAll(
       '[role="menuitemcheckbox"], [role="menuitemradio"]',
     );
-    const selected = menuElement.querySelector('[aria-checked="true"]');
+    const selected = menuElement.querySelector('[aria-checked="true"]:not([disabled])');
 
     return { selected, options };
   }
 
   focusAndScrollToSelected() {
-    const { selected, options } = this.menuElements;
+    let { selected, options } = this.menuElements;
 
     const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
-    if (!selected || !options || this.asProps.itemsCount !== undefined || isFocusAlreadyInPopper) return;
+    if (!selected || !options || this.menuRef.current?.dataset.isVirtual || isFocusAlreadyInPopper) return;
 
     this.scrollToNodeAsync(selected, true).then(() => {
       if (this.asProps.visible) {
@@ -108,8 +114,7 @@ class DropdownMenuRoot extends AbstractDropdown {
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
 
-    // this case is handled slightly differently on line 63.
-    if (selected && options && this.asProps.itemsCount === undefined) return;
+    if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
   }
@@ -150,6 +155,17 @@ class DropdownMenuRoot extends AbstractDropdown {
     };
   }
 
+  getVirtualListProps() {
+    return {
+      ...super.getListProps(),
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleKeyDownForMenu('list'),
+        this.handleArrowKeyDown.bind(this),
+      ),
+    };
+  }
+
   getPopperProps() {
     return {
       ...super.getPopperProps(),
@@ -173,13 +189,34 @@ class DropdownMenuRoot extends AbstractDropdown {
     };
   }
 
-  getItemProps(props, index) {
+  getItemTabIndex(props, itemIndex) {
+    const { disabled, index } = props;
     const { highlightedIndex, visible } = this.asProps;
+
+    if (!visible) return -1;
+
+    const isHighlighted = (index ?? itemIndex) === highlightedIndex;
+    if (isHighlighted && !disabled) {
+      return 0;
+    }
+
+    if (disabled && isHighlighted) {
+      this.shouldRecalculateItemTabIndex = true;
+    }
+
+    if (!isHighlighted && !disabled && this.shouldRecalculateItemTabIndex) {
+      this.shouldRecalculateItemTabIndex = false;
+      return 0;
+    }
+
+    return -1;
+  }
+
+  getItemProps(props, index) {
     const realIndex = props.index ?? index;
-    const isHighlighted = realIndex === highlightedIndex;
     const itemProps = {
       ...super.getItemProps(props, realIndex),
-      tabIndex: isHighlighted && visible ? 0 : -1,
+      tabIndex: this.getItemTabIndex(props, index),
       ref: (node) => this.itemRef(props, realIndex, node),
       actionsRef: this.actionsRef,
     };
@@ -228,7 +265,15 @@ class DropdownMenuRoot extends AbstractDropdown {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
-          const { highlightedIndex } = this.asProps;
+          let { highlightedIndex } = this.asProps;
+          const highlightedIndexProps = this.itemProps[highlightedIndex];
+
+          if (highlightedIndexProps?.disabled) {
+            highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+          }
+
+          if (highlightedIndex === -1) return;
+
           this.itemRefs[highlightedIndex]?.focus();
         }, 0);
 
@@ -352,6 +397,7 @@ function Item({
     role,
     tabIndex,
     ariaChecked,
+    disabled,
   };
   const ariaDescribes = [];
 
@@ -470,6 +516,7 @@ function ItemContent({ styles }) {
       aria-checked={menuItemCtxValue.ariaChecked}
       alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
+      disabled={menuItemCtxValue.disabled}
     />,
   );
 }
@@ -532,6 +579,7 @@ const DropdownMenu = createComponent(
     Trigger,
     Popper: Dropdown.Popper,
     List,
+    VirtualList,
     Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],

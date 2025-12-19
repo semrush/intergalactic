@@ -2,5 +2,7 @@
   "next": "Sonraki slayt",
   "prev": "Önceki slayt",
   "slides": "Slaytlar",
-  "slide": "Slayt {slideNumber}"
+  "slide": "Slayt {slideNumber}",
+  "Carousel:aria-roledescription": "bant",
+  "Carousel.Indicator:aria-roledescription": "slayt"
 }

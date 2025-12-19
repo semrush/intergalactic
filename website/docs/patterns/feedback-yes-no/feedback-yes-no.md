@@ -16,10 +16,6 @@ Show [Feedback illustration](/style/illustration/illustration) on the left to th
 
 ![](static/feedback-yes-no.png)
 
-### Margins and paddings
-
-![](static/feedback-yes-no-sizes.png)
-
 ## Behavior
 
 There are two potential variants for the notice to appear:
