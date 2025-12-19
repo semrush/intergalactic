@@ -70,7 +70,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.waitForTimeout(100);
 
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(500);
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+
         await locators.button(page, 'Next error').waitFor({ state: 'visible' });
         await expect(locators.button(page, 'Next error')).toBeFocused();
 
@@ -769,8 +771,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.type(text, { delay: 20 });
         await page.waitForTimeout(200);
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(500); // neede because in playwright browser focus goes to clear all and only after some delay to prev error
         await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+
         await page.waitForTimeout(200);
 
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
