@@ -54,7 +54,7 @@ export abstract class Component<
 > extends PureComponent<Props, State> {
   protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
     // @ts-ignore. This is a default value. Should be defined in related classes.
-    return;
+    return {};
   };
 
   protected get handlers(): Readonly<{
@@ -65,7 +65,7 @@ export abstract class Component<
       : never
   }> {
     // @ts-ignore. The body will be generated in factory
-    return;
+    return {};
   }
 
   protected get asProps() {

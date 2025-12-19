@@ -1,7 +1,7 @@
 import Button from '@semcore/button';
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import FormatText from '@semcore/format-text';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
@@ -31,7 +31,7 @@ class RootProjectNotFound extends Component {
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description tag={FormatText} size='l'>
+        <Error.Description tag={Text} size='l'>
           {text}
         </Error.Description>
         <Children />

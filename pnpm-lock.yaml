@@ -1086,18 +1086,9 @@ importers:
 
   semcore/errors:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/format-text':
-        specifier: 16.1.1
-        version: 16.1.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/illustration':
         specifier: 16.0.12
         version: link:../illustration
@@ -1105,6 +1096,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
