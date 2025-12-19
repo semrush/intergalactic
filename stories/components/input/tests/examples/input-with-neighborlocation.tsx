@@ -28,7 +28,7 @@ const Demo = (props: WithNeighborLocationExampleProps) => {
               readOnly={props.readOnly}
             />
             <Input.Addon>
-              <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
+              <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} disabled={props.disabled} />
             </Input.Addon>
           </Input>
           <Input
