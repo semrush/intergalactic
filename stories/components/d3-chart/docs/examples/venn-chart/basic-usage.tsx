@@ -24,7 +24,6 @@ const legendProps = {
     G: { label: 'Good' },
     F: { label: 'Fast' },
     C: { label: 'Clean' },
-    U: { label: 'Uniq' },
   },
 };
 

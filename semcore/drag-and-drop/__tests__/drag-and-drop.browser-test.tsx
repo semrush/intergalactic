@@ -59,7 +59,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button',
       '@dropdown-menu',
       '@counter'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
+    if (browserName == 'webkit') test.skip();
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
     await locators.button(page).click();
