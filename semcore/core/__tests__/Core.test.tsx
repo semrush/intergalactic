@@ -337,7 +337,11 @@ describe('Controll/Uncontroll mode', () => {
   test('Should support create prop with name and handler in uncontroll mode', () => {
     const spy = vi.fn();
 
-    class RootTestClass extends Component<IRootComponentProps, [], { value: null }> {
+    class RootTestClass extends Component<
+      IRootComponentProps & { value?: number; defaultValue?: number },
+      [],
+      { value: null }
+    > {
       static defaultProps = {
         defaultValue: 5,
       };
@@ -362,7 +366,11 @@ describe('Controll/Uncontroll mode', () => {
   test('Should support set everything value and call it in handler uncontroll mode', () => {
     const spy = vi.fn();
 
-    class RootTestClass extends Component<IRootComponentProps, [], { value: any }> {
+    class RootTestClass extends Component<
+      IRootComponentProps & { value?: any; defaultValue?: any },
+      [],
+      { value: any }
+    > {
       static defaultProps = {
         defaultValue: '',
       };
@@ -627,7 +635,11 @@ describe('Option "parent"', () => {
   beforeEach(cleanup);
 
   test('Should support parent context', () => {
-    class RootTestParent extends Component<IRootComponentProps, [], { value: null }> {
+    class RootTestParent extends Component<
+      IRootComponentProps & { value?: number; defaultValue?: number },
+      [],
+      { value: null }
+    > {
       static defaultProps = {
         defaultValue: 5,
       };
