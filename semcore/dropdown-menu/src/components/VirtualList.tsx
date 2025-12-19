@@ -33,7 +33,7 @@ type State = {
   scrollDirection: 'up' | 'down';
 };
 
-class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, [], {}, { rowsBuffer: number; index: number }, State> {
+class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, [], Readonly<{}>, { rowsBuffer: number; index: number }, State> {
   static displayName = 'VirtualList';
   static style = style;
 
