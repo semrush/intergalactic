@@ -31,7 +31,7 @@ function getJSX(props: InputJSXProps) {
       />
       {props.after && (
         <Input.Addon>
-          <ButtonLink use='secondary'>
+          <ButtonLink use='secondary' disabled={props.disabled}>
             <ButtonLink.Addon>
               <ArrowRightM />
             </ButtonLink.Addon>
