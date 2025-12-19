@@ -161,7 +161,7 @@ class ScatterPlotRoot extends Component {
   }
 }
 
-const ScatterPlotTooltip = (props) => {
+function ScatterPlotTooltip(props) {
   const SScatterPlotTooltip = Root;
   return sstyled(props.styles)(<SScatterPlotTooltip render={Tooltip} excludeAnchorProps />);
 };

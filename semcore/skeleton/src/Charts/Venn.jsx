@@ -8,7 +8,7 @@ const vennSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/venn-chart.svg'))
 `;
 
-const VennChartSkeleton = () => {
+function VennChartSkeleton() {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -19,6 +19,6 @@ const VennChartSkeleton = () => {
       bgPattern={`url(data:image/svg+xml;base64,${vennSvg})`}
     />,
   );
-};
+}
 
 export default createComponent(VennChartSkeleton);

@@ -435,7 +435,7 @@ function Label({
   );
 }
 
-const DonutTooltip = (props) => {
+function DonutTooltip(props) {
   const SDonutTooltip = Root;
   return sstyled(props.styles)(<SDonutTooltip render={Tooltip} excludeAnchorProps />);
 };
