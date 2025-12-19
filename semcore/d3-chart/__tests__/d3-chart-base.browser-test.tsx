@@ -131,7 +131,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx', 'en');
-
+      await page.waitForTimeout(500); // wait for finish animation
       await locators.lineDots(page, 0).hover();
       await locators.tooltip(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
