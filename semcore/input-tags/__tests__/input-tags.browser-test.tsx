@@ -552,8 +552,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(locators.inputValue(page)).not.toBeFocused();
-      // Firefox has a bug with Space key on focused tag - it doesn't trigger editing mode
-      // Using Enter instead which works consistently across all browsers
       await page.keyboard.press('Enter');
       await expect(locators.inputValue(page)).toHaveAttribute('value', 'Social media with a very long nameTest2');
 
@@ -872,21 +870,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Shift+Tab');
       await page.waitForSelector('text="TikTok"');
       await expect(locators.inputValue(page)).not.toBeFocused();
-      // Webkit : Tab navigation doesn't properly focus Close buttons
-      if (browserName !== 'webkit') {
-        await expect(locators.inputClose(page).nth(1)).toBeFocused();
-      }
-      // Firefox behavior: Clears highlight when focus moves away from input
+
+      await expect(locators.inputClose(page).nth(1)).toBeFocused();
+
       await expect(locators.options(page).nth(0)).toBeVisible();
-      if (browserName !== 'firefox') {
-        await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
-      }
+
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
+
       await page.keyboard.press('Shift+Tab');
       await expect(locators.inputValue(page)).not.toBeFocused();
-      // Webkit : Tab navigation doesn't properly focus Close buttons
-      if (browserName !== 'webkit') {
-        await expect(locators.inputClose(page).nth(0)).toBeFocused();
-      }
+
+      await expect(locators.inputClose(page).nth(0)).toBeFocused();
+
       await expect(locators.options(page).nth(0)).toBeVisible();
     });
 
