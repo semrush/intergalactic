@@ -1,4 +1,4 @@
-import { Plot, Radar, colors, ChartLegend } from '@semcore/ui/d3-chart';
+import { Plot, Radar, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -70,8 +70,8 @@ const data = RadarMockData.Default;
 
 const lineColors: Record<keyof typeof data, string> = {
   categories: '',
-  data_1: colors['orange-04'],
-  data_2: colors['violet-04'],
+  data_1: '--intergalactic-chart-palette-order-3',
+  data_2: '--intergalactic-chart-palette-order-6',
 };
 
 export default Demo;
