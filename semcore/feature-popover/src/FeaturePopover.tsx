@@ -189,7 +189,7 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
   }
 }
 
-const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
+function Spot(props: IRootComponentProps & FeaturePopoverSpotProps) {
   const SSpot = Root;
 
   const { styles, visible } = props;
@@ -197,7 +197,7 @@ const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
   if (!visible) return null;
 
   return sstyled(styles)(<SSpot render={Box} />);
-};
+}
 
 export default createComponent(
   FeaturePopover,

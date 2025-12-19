@@ -8,7 +8,7 @@ const scatterSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/scatter-plot-chart.svg'))
 `;
 
-const ScatterPlotChartSkeleton = () => {
+function ScatterPlotChartSkeleton() {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -19,6 +19,6 @@ const ScatterPlotChartSkeleton = () => {
       bgPattern={`url(data:image/svg+xml;base64,${scatterSvg})`}
     />,
   );
-};
+}
 
 export default createComponent(ScatterPlotChartSkeleton);

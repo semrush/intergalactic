@@ -440,33 +440,33 @@ class DateRangeRoot extends Component {
   }
 }
 
-const FromMaskedInput = (props) => {
+function FromMaskedInput(props) {
   const SFromMaskedInput = Root;
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
     <SFromMaskedInput labelPrefix={getI18nText('fromDatePlaceholder')} render={MaskedInput} />,
   );
-};
+}
 
-const ToMaskedInput = (props) => {
+function ToMaskedInput(props) {
   const SToMaskedInput = Root;
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
     <SToMaskedInput labelPrefix={getI18nText('toDatePlaceholder')} render={MaskedInput} />,
   );
-};
+}
 
-const Indicator = (props) => {
+function Indicator(props) {
   const SIndicator = Root;
 
   return sstyled(props.styles)(
     <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
   );
-};
+}
 
-const RangeSep = (props) => {
+function RangeSep(props) {
   const SRangeSep = Root;
 
   return sstyled(props.styles)(
@@ -481,9 +481,9 @@ const RangeSep = (props) => {
       –
     </SRangeSep>,
   );
-};
+}
 
-const MaskedInput = ({
+function MaskedInput({
   date: outerValue,
   onDateChange,
   onDisplayedPeriodChange,
@@ -505,7 +505,7 @@ const MaskedInput = ({
 
   Root: _root,
   ...otherProps
-}) => {
+}) {
   const ref = React.useRef();
   const [width, setWidth] = React.useState(undefined);
 
@@ -891,7 +891,7 @@ const MaskedInput = ({
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,
   );
-};
+}
 
 const SingleDateInput = createComponent(SingleDateInputRoot, {
   Indicator,

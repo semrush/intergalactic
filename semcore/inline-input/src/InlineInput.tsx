@@ -312,12 +312,12 @@ class Value extends Component<RootAsProps> {
   }
 }
 
-const Addon: React.FC<AddonAsProps> = (props) => {
+function Addon(props: AddonAsProps) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
-};
+}
 
-const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
+function ConfirmControl(props: ConfirmControlAsProps) {
   const SAddon = Root;
   const { Children, children: hasChildren, inputRef } = props;
   const title = props.title ?? props.getI18nText('confirm');
@@ -367,8 +367,9 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
           )}
     </SAddon>,
   ) as React.ReactElement;
-};
-const CancelControl: React.FC<CancelControlAsProps> = (props) => {
+}
+
+function CancelControl(props: CancelControlAsProps) {
   const SAddon = Root;
   const { Children, children: hasChildren } = props;
   const title = props.title ?? props.getI18nText('discard');
@@ -418,9 +419,9 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
           )}
     </SAddon>,
   ) as React.ReactElement;
-};
+}
 
-const NumberValue: React.FC<NumberValueAsProps> = (props) => {
+function NumberValue(props: NumberValueAsProps) {
   const SValue = Root;
 
   return sstyled(props.styles)(<SValue render={InputNumber.Value} />) as React.ReactElement;
