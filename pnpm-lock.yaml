@@ -313,18 +313,9 @@ importers:
 
   semcore/accordion:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -335,6 +326,9 @@ importers:
         specifier: 3.1.3
         version: 3.1.3
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -344,9 +338,6 @@ importers:
 
   semcore/add-filter:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/base-trigger':
         specifier: 16.4.4
         version: 16.4.4(@semcore/base-components@semcore+base-components)
@@ -359,9 +350,6 @@ importers:
       '@semcore/dropdown-menu':
         specifier: 16.1.14
         version: 16.1.14(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -372,6 +360,9 @@ importers:
         specifier: 16.1.12
         version: link:../select
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -380,14 +371,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/badge:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -422,21 +409,12 @@ importers:
 
   semcore/base-trigger:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/dot':
         specifier: 16.0.11
         version: link:../dot
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
@@ -444,6 +422,9 @@ importers:
         specifier: 16.0.11
         version: link:../tooltip
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -453,16 +434,13 @@ importers:
 
   semcore/breadcrumbs:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -472,24 +450,15 @@ importers:
 
   semcore/bulk-textarea:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
       '@semcore/counter':
         specifier: 16.0.11
         version: link:../counter
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
@@ -500,6 +469,9 @@ importers:
         specifier: 3.2.3
         version: 3.2.3
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -512,12 +484,6 @@ importers:
 
   semcore/button:
     dependencies:
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
@@ -540,15 +506,9 @@ importers:
 
   semcore/card:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -559,6 +519,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -568,18 +531,12 @@ importers:
 
   semcore/carousel:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/breakpoints':
         specifier: 16.0.11
         version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -587,6 +544,9 @@ importers:
         specifier: 16.1.12
         version: link:../modal
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -596,12 +556,6 @@ importers:
 
   semcore/checkbox:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.1
         version: 16.3.1(@semcore/base-components@semcore+base-components)
@@ -612,6 +566,9 @@ importers:
         specifier: 16.8 - 18
         version: 18.3.1(react@18.3.1)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -621,9 +578,6 @@ importers:
 
   semcore/color-picker:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
@@ -633,22 +587,19 @@ importers:
       '@semcore/dropdown':
         specifier: 16.1.3
         version: 16.1.3(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -700,14 +651,10 @@ importers:
         version: 4.1.0
 
   semcore/counter:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -720,24 +667,15 @@ importers:
       '@formatjs/intl':
         specifier: 2.3.0
         version: 2.3.0(typescript@4.9.5)
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
       '@semcore/checkbox':
         specifier: 16.2.1
         version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/divider':
         specifier: 16.0.11
         version: link:../divider
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -814,15 +752,9 @@ importers:
       '@semcore/checkbox':
         specifier: 16.2.1
         version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/scroll-area':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
@@ -872,9 +804,6 @@ importers:
 
   semcore/date-picker:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/base-trigger':
         specifier: 16.4.4
         version: 16.4.4(@semcore/base-components@semcore+base-components)
@@ -890,9 +819,6 @@ importers:
       '@semcore/dropdown':
         specifier: 16.1.3
         version: 16.1.3(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -902,12 +828,6 @@ importers:
       '@semcore/input-mask':
         specifier: 16.0.11
         version: link:../input-mask
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
@@ -918,6 +838,9 @@ importers:
         specifier: 1.8.36
         version: 1.8.36
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -926,14 +849,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/divider:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -942,20 +861,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/dot:
-    dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/button':
         specifier: workspace:*
         version: link:../button
@@ -968,18 +877,9 @@ importers:
 
   semcore/drag-and-drop:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/card':
         specifier: 16.1.12
         version: link:../card
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/grid':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       react:
         specifier: 16.8 - 18
         version: 18.3.1
@@ -990,6 +890,9 @@ importers:
       '@semcore/badge':
         specifier: workspace:*
         version: link:../badge
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1004,17 +907,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/dropdown:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1024,27 +920,15 @@ importers:
 
   semcore/dropdown-menu:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
       '@semcore/dropdown':
         specifier: 16.1.3
         version: 16.1.3(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/scroll-area':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -1052,6 +936,9 @@ importers:
         specifier: 2.2.6
         version: 2.2.6
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/base-trigger':
         specifier: workspace:*
         version: link:../base-trigger
@@ -1067,16 +954,13 @@ importers:
 
   semcore/ellipsis:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1154,28 +1038,19 @@ importers:
 
   semcore/feature-popover:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@popperjs/core':
         specifier: 2.11.5
         version: 2.11.5
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1191,18 +1066,12 @@ importers:
 
   semcore/feedback-form:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
       '@semcore/checkbox':
         specifier: 16.2.1
         version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -1246,6 +1115,9 @@ importers:
         specifier: 6.5.9
         version: 6.5.9(final-form@4.20.7)(react@18.3.1)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1258,16 +1130,13 @@ importers:
 
   semcore/flags:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       classnames:
         specifier: 2.2.6
         version: 2.2.6
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1289,15 +1158,9 @@ importers:
 
   semcore/fullscreen-modal:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -1308,6 +1171,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1397,17 +1263,10 @@ importers:
         version: 1.0.4
 
   semcore/inline-edit:
-    dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1417,15 +1276,9 @@ importers:
 
   semcore/inline-input:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -1442,6 +1295,9 @@ importers:
         specifier: 16.0.11
         version: link:../tooltip
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1450,17 +1306,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/input:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1473,22 +1322,16 @@ importers:
 
   semcore/input-mask:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       text-mask-core:
         specifier: 5.1.2
         version: 5.1.2
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1498,16 +1341,13 @@ importers:
 
   semcore/input-number:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1517,25 +1357,16 @@ importers:
 
   semcore/input-tags:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/scroll-area':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tag':
         specifier: 16.1.13
         version: 16.1.13(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/button':
         specifier: workspace:*
         version: link:../button
@@ -1560,12 +1391,6 @@ importers:
 
   semcore/link:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
@@ -1573,6 +1398,9 @@ importers:
         specifier: 16.3.1
         version: 16.3.1(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1597,31 +1425,19 @@ importers:
 
   semcore/modal:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
-      '@semcore/outside-click':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1631,18 +1447,9 @@ importers:
 
   semcore/notice:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -1653,6 +1460,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1681,22 +1491,16 @@ importers:
 
   semcore/notice-global:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1706,15 +1510,9 @@ importers:
 
   semcore/pagination:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -1734,6 +1532,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1742,20 +1543,13 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/pills:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/badge':
         specifier: workspace:*
         version: link:../badge
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1779,14 +1573,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/progress-bar:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1796,16 +1586,13 @@ importers:
 
   semcore/radio:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.1
         version: 16.3.1(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1815,9 +1602,6 @@ importers:
 
   semcore/select:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/base-trigger':
         specifier: 16.4.4
         version: 16.4.4(@semcore/base-components@semcore+base-components)
@@ -1836,22 +1620,19 @@ importers:
       '@semcore/dropdown-menu':
         specifier: 16.1.14
         version: 16.1.14(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       classnames:
         specifier: 2.2.6
         version: 2.2.6
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1888,14 +1669,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/skeleton:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1904,14 +1681,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/slider:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1920,14 +1693,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/spin:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1937,19 +1706,13 @@ importers:
 
   semcore/spin-container:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1980,17 +1743,10 @@ importers:
         version: 36.0.0(stylelint@16.6.1(typescript@5.8.3))
 
   semcore/switch:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -1999,17 +1755,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-line:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2018,14 +1767,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-panel:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2038,16 +1783,13 @@ importers:
 
   semcore/tag:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2056,14 +1798,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/textarea:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2076,15 +1814,9 @@ importers:
 
   semcore/time-picker:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -2092,6 +1824,9 @@ importers:
         specifier: 16.1.12
         version: link:../select
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2100,20 +1835,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tooltip:
-    dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/popper':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2126,16 +1851,13 @@ importers:
 
   semcore/typography:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2383,16 +2105,13 @@ importers:
 
   semcore/widget-empty:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/illustration':
         specifier: 16.0.12
         version: link:../illustration
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -2402,15 +2121,9 @@ importers:
 
   semcore/wizard:
     dependencies:
-      '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon':
         specifier: 16.7.3
         version: link:../icon
@@ -2418,6 +2131,9 @@ importers:
         specifier: 16.1.12
         version: link:../modal
     devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
@@ -5256,11 +4972,6 @@ packages:
       react: 16.8 - 18
       react-dom: 16.8 - 18
 
-  '@semcore/grid@16.0.11':
-    resolution: {integrity: sha512-IW1AAWecQbZImGIqhZ1VXqXoNtqcbRpFpSMHy1JoQS2YGB/2Vh6Y29taqCtcMaQYGgzZZdQ9XOI/riybXvpoyQ==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
   '@semcore/icon@16.7.2':
     resolution: {integrity: sha512-KKnnU2c6zyaUjwzCR8XjIi3ArgvgIJqqad4D81popRuMuKH6KAfvXmUuePnvX2PhlU580HCP66hFTeoOXjiJeA==}
     peerDependencies:
@@ -5283,11 +4994,6 @@ packages:
 
   '@semcore/notice-global@16.1.12':
     resolution: {integrity: sha512-8d5IEtJJsf2wdeHlh5+kGtSTrAqdwQKZciO+Q/Giq3UJVjJdBGmlizN670lEd3N57hD9jemzvLO48kEY7YZvdA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/outside-click@16.0.11':
-    resolution: {integrity: sha512-fW4clx8uIEgOpMvGjVrKZnu9gTwmgKufM/MV9zr7l0IXNgSxEXo63VMzooO6O5YqN47q9BsA0yzXy1P2PvgDow==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17002,10 +16708,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@semcore/grid@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
   '@semcore/icon@16.7.2(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -17038,10 +16740,6 @@ snapshots:
       '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-
-  '@semcore/outside-click@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
 
   '@semcore/popper@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
