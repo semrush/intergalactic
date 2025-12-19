@@ -18,7 +18,6 @@ import { CORE_COMPONENT } from '../src/core-types/symbols';
  * - bindHandler
  * - default props
  * - enhance
- * - hoistProps
  * - inheritedName
  * - assainProps
  * - assain function
@@ -560,124 +559,6 @@ describe('Getter props function', () => {
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toBe(0);
     expect(spy.mock.calls[1][0]).toBe(1);
-  });
-});
-
-describe('Hoist props', () => {
-  test('Should support hoist props from Children Func to Root', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc }) as any;
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support hoist props from Children Class to Root', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    class ChildrenTestClass extends Component<IRootComponentProps<{}>> {
-      static hoistProps = ['test'];
-
-      render() {
-        const { Root } = this;
-        return <Root render='div' />;
-      }
-    }
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestClass }) as any;
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support rename hoist props', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.id);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test:id'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc }) as any;
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenCalledWith('test');
-  });
-
-  test('Should support update hoist props', () => {
-    const spy = vi.fn();
-
-    class RootComponent extends RootTestClass {
-      render() {
-        const { Root } = this;
-        spy(this.asProps.test);
-        return <Root render='div' />;
-      }
-    }
-
-    function ChildrenTestFunc(props: any) {
-      const { Root } = props;
-      return <Root render='div' />;
-    }
-
-    ChildrenTestFunc.hoistProps = ['test'];
-
-    const Test = createComponent(RootComponent, { Item: ChildrenTestFunc }) as any;
-    render(
-      <Test>
-        <Test.Item test='test' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenLastCalledWith('test');
-    render(
-      <Test>
-        <Test.Item test='test-2' />
-      </Test>,
-    );
-    expect(spy).toHaveBeenLastCalledWith('test-2');
   });
 });
 
