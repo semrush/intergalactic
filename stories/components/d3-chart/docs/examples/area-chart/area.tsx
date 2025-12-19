@@ -31,7 +31,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks ticks={data.map((d) => +d.time)}>
           {({ index }) => ({
-            children: formatDate(data[index], {
+            children: formatDate(data[index].time, {
               month: 'short',
               day: 'numeric',
             }),
