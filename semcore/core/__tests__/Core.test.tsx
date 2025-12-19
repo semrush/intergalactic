@@ -15,7 +15,6 @@ import { CORE_COMPONENT } from '../src/core-types/symbols';
  * - Children
  * - getProps
  * - data-ui-name
- * - bindHandler
  * - default props
  * - enhance
  * - inheritedName
@@ -183,8 +182,8 @@ describe('Core', () => {
         </TestWithChildren>
       </>,
     );
-    expect((getByTestId('test').attributes as any)['name'].value).toBe('test');
-    expect((getByTestId('testWithChildren').attributes as any)['name'].value).toBe('test');
+    expect((getByTestId('test').attributes as any)['data-name'].value).toBe('test');
+    expect((getByTestId('testWithChildren').attributes as any)['data-name'].value).toBe('test');
   });
 
   test('Should support set data-ui-name', () => {
@@ -205,56 +204,57 @@ describe('Core', () => {
     expect((queryByTestId('test')?.attributes as any)['data-ui-name'].value).toBe('TestClass');
   });
 
-  test('Should support optimization function in getter method', () => {
-    const spy = vi.fn();
+  // TThis test checked bindHandler enhancement optimization, which was removed
+  // test('Should support optimization function in getter method', () => {
+  //   const spy = vi.fn();
 
-    class TestRoot extends Component {
-      static displayName = 'TestRoot';
+  //   class TestRoot extends Component {
+  //     static displayName = 'TestRoot';
 
-      bindHandlerClick = (value: any, a: any, b: any, c: any) => (e: any) => {};
+  //     bindHandlerClick = (value: any, a: any, b: any, c: any) => (e: any) => {};
 
-      getItemProps({ value }: any) {
-        return {
-          onClick: this.bindHandlerClick(value, 'a', 'b', 'c'),
-        };
-      }
+  //     getItemProps({ value }: any) {
+  //       return {
+  //         onClick: this.bindHandlerClick(value, 'a', 'b', 'c'),
+  //       };
+  //     }
 
-      render() {
-        const { Root } = this;
-        return <Root render='div' />;
-      }
-    }
+  //     render() {
+  //       const { Root } = this;
+  //       return <Root render='div' />;
+  //     }
+  //   }
 
-    class TestChildren extends Component {
-      render() {
-        const { Root } = this;
-        spy();
-        return <Root render='div' />;
-      }
-    }
+  //   class TestChildren extends Component {
+  //     render() {
+  //       const { Root } = this;
+  //       spy();
+  //       return <Root render='div' />;
+  //     }
+  //   }
 
-    const Test = createComponent(TestRoot, {
-      Item: TestChildren,
-    }) as any;
+  //   const Test = createComponent(TestRoot, {
+  //     Item: TestChildren,
+  //   }) as any;
 
-    const { rerender } = render(
-      <Test>
-        <Test.Item value={1} />
-      </Test>,
-    );
-    rerender(
-      <Test>
-        <Test.Item value={1} />
-      </Test>,
-    );
-    expect(spy).toBeCalledTimes(1);
-    rerender(
-      <Test>
-        <Test.Item value={2} />
-      </Test>,
-    );
-    expect(spy).toBeCalledTimes(2);
-  });
+  //   const { rerender } = render(
+  //     <Test>
+  //       <Test.Item value={1} />
+  //     </Test>,
+  //   );
+  //   rerender(
+  //     <Test>
+  //       <Test.Item value={1} />
+  //     </Test>,
+  //   );
+  //   expect(spy).toBeCalledTimes(1);
+  //   rerender(
+  //     <Test>
+  //       <Test.Item value={2} />
+  //     </Test>,
+  //   );
+  //   expect(spy).toBeCalledTimes(2);
+  // });
 });
 
 describe('Root', () => {
