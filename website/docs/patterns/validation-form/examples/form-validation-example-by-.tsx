@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { DatePicker } from '@semcore/date-picker';
-import { Box, Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';

@@ -108,7 +108,7 @@ await Promise.all(
     const component = `
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
@@ -133,7 +133,7 @@ export default createBaseComponent(${illustration})
     `;
 
     const typesDeclaration = `
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps } from '@semcore/base-components';
 import { Intergalactic } from '@semcore/core';
 
 type IllustrationProps = BoxProps & {

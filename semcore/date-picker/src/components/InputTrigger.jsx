@@ -1,11 +1,10 @@
+import { NeighborLocation, Flex, Box } from '@semcore/base-components';
 import BaseTrigger from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
 import InputMask from '@semcore/input-mask';
-import NeighborLocation from '@semcore/neighbor-location';
 import Tooltip from '@semcore/tooltip';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -440,33 +439,33 @@ class DateRangeRoot extends Component {
   }
 }
 
-const FromMaskedInput = (props) => {
+function FromMaskedInput(props) {
   const SFromMaskedInput = Root;
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
     <SFromMaskedInput labelPrefix={getI18nText('fromDatePlaceholder')} render={MaskedInput} />,
   );
-};
+}
 
-const ToMaskedInput = (props) => {
+function ToMaskedInput(props) {
   const SToMaskedInput = Root;
   const { getI18nText } = props;
 
   return sstyled(props.styles)(
     <SToMaskedInput labelPrefix={getI18nText('toDatePlaceholder')} render={MaskedInput} />,
   );
-};
+}
 
-const Indicator = (props) => {
+function Indicator(props) {
   const SIndicator = Root;
 
   return sstyled(props.styles)(
     <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
   );
-};
+}
 
-const RangeSep = (props) => {
+function RangeSep(props) {
   const SRangeSep = Root;
 
   return sstyled(props.styles)(
@@ -481,9 +480,9 @@ const RangeSep = (props) => {
       –
     </SRangeSep>,
   );
-};
+}
 
-const MaskedInput = ({
+function MaskedInput({
   date: outerValue,
   onDateChange,
   onDisplayedPeriodChange,
@@ -505,7 +504,7 @@ const MaskedInput = ({
 
   Root: _root,
   ...otherProps
-}) => {
+}) {
   const ref = React.useRef();
   const [width, setWidth] = React.useState(undefined);
 
@@ -891,7 +890,7 @@ const MaskedInput = ({
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,
   );
-};
+}
 
 const SingleDateInput = createComponent(SingleDateInputRoot, {
   Indicator,

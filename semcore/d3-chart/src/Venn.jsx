@@ -1,4 +1,4 @@
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
@@ -222,7 +222,7 @@ function Intersection(props) {
   );
 }
 
-const VennTooltip = (props) => {
+function VennTooltip(props) {
   const SVennTooltip = Root;
   return sstyled(props.styles)(<SVennTooltip render={Tooltip} excludeAnchorProps />);
 };

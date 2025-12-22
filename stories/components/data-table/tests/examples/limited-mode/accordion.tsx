@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';

@@ -56,9 +56,6 @@ export type FlexProps = BoxProps & {
   scaleIndent?: number;
 };
 
-/** @deprecated */
-export interface IFlexProps extends FlexProps {}
-
 function calculateFlexStyles(props: any) {
   const DirectionReverse: Record<string, string> = {
     row: 'row-reverse',

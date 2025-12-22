@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/progress-bar.shadow.css';

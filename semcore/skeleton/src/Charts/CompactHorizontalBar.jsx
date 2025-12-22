@@ -8,7 +8,7 @@ const patternBase64 = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/compact-horizontal-bar-chart.svg'))
 `;
 
-const CompactHorizontalBarChartSkeleton = (_props) => {
+function CompactHorizontalBarChartSkeleton() {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -19,6 +19,6 @@ const CompactHorizontalBarChartSkeleton = (_props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(CompactHorizontalBarChartSkeleton);

@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import type { CheckboxProps } from '@semcore/ui/checkbox';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

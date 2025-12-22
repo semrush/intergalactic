@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { Box, Flex } from '@semcore/flex-box';
 import { getIllustrationPath } from '@semcore/illustration';
 import React from 'react';
 
@@ -30,17 +30,17 @@ class WidgetEmpty extends Component {
   }
 }
 
-const Title = (props) => {
+function Title(props) {
   const STitle = Root;
   const { styles } = props;
   return sstyled(styles)(<STitle render={Box} />);
-};
+}
 
-const Description = (props) => {
+function Description(props) {
   const SDescription = Root;
   const { styles } = props;
   return sstyled(styles)(<SDescription render={Box} />);
-};
+}
 
 export default createComponent(WidgetEmpty, {
   Title,

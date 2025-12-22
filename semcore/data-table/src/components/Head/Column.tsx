@@ -46,10 +46,10 @@ export class Column<
   UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableColumnProps,
-    {},
-    {},
     [],
-    ColumnPropsInner<Data, UniqKey, UniqKeyType>
+    {},
+    ColumnPropsInner<Data, UniqKey, UniqKeyType>,
+    State
   > implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 

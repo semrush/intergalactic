@@ -1,10 +1,8 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { Box, BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { InputProps, InputValueProps } from '@semcore/input';
 import type React from 'react';
 
-/** @deprecated */
-export interface ITimePickerProps extends TimePickerProps, UnknownProperties {}
 export type TimePickerProps = Omit<InputProps, 'size'> & {
   /** Time in the hh:mm format */
   value?: string;
@@ -23,27 +21,19 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface ITimePickerItemProps extends TimePickerItemProps, UnknownProperties {}
 export type TimePickerItemProps = InputValueProps & {
   /** Step for changing of the values in the dropdown list */
   step?: number;
 };
 
-/** @deprecated */
-export interface ITimePickerFormatProps extends TimePickerFormatProps, UnknownProperties {}
 export type TimePickerFormatProps = BoxProps & {};
 
-/** @deprecated */
-export interface ITimePickerContext extends TimePickerContext, UnknownProperties {}
 export type TimePickerContext = {
   getHoursProps: PropGetterFn;
   getFormatProps: PropGetterFn;
   getMinutesProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ITimePickerHandlers extends TimePickerHandlers, UnknownProperties {}
 export type TimePickerHandlers = {
   value: (value: string) => void;
 };

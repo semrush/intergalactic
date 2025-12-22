@@ -1,12 +1,11 @@
-import { createBreakpoints } from '@semcore/breakpoints';
+import { createBreakpoints, Box, Flex } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex } from '@semcore/flex-box';
-import type { BoxProps } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';
@@ -38,9 +37,10 @@ const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends Component<
   CarouselProps,
+  typeof enhance,
+  { index: any },
   CarouselContext,
-  CarouselState,
-        typeof enhance
+  CarouselState
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -597,21 +597,21 @@ class CarouselRoot extends Component<
   }
 }
 
-const Container = (props: BoxProps & { duration?: number }) => {
+function Container(props: BoxProps & { duration?: number }) {
   const SContainer = Root;
   const { styles, duration } = props;
 
   return sstyled(styles)(
     <SContainer render={Box} use:duration={`${duration}ms`} aria-live='polite' />,
   );
-};
+}
 
-const ContentBox = (props: BoxProps) => {
+function ContentBox(props: BoxProps) {
   const SContentBox = Root;
   const { styles } = props;
 
   return sstyled(styles)(<SContentBox render={Box} />);
-};
+}
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
@@ -667,7 +667,7 @@ class Item extends Component<CarouselItemProps> {
   }
 }
 
-const Prev = (props: CarouselButtonProps) => {
+function Prev(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
   const SPrevButton = Button;
@@ -692,7 +692,7 @@ const Prev = (props: CarouselButtonProps) => {
   );
 };
 
-const Next = (props: CarouselButtonProps) => {
+function Next(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
   const SNextButton = Button;
@@ -717,7 +717,7 @@ const Next = (props: CarouselButtonProps) => {
   );
 };
 
-const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsProps) => {
+function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsProps) {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
@@ -735,7 +735,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   );
 };
 
-const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
+function Indicator({ styles, Children, inverted }: CarouselIndicatorProps) {
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>
@@ -744,7 +744,7 @@ const Indicator = ({ styles, Children, inverted }: CarouselIndicatorProps) => {
   );
 };
 
-const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
+const Carousel = createComponent(CarouselRoot, {
   Container,
   ContentBox,
   Indicators,
@@ -752,6 +752,6 @@ const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
   Item,
   Prev,
   Next,
-});
+}) as typeof CarouselType;
 
 export default Carousel;

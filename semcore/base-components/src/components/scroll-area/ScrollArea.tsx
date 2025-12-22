@@ -44,7 +44,7 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
+class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.enhance, {}, DefaultProps, State> {
   static displayName = 'ScrollArea';
 
   static style = style;
@@ -353,7 +353,6 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       styles,
       orientation,
       tabIndex,
-      forcedAdvancedMode,
       leftOffset,
       rightOffset,
       topOffset,
@@ -363,9 +362,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
+    const advancedMode = isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
 
     const horizontalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.horizontal;
     const verticalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.vertical;

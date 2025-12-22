@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 

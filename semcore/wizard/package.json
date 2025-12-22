@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/flex-box": "16.0.11",
     "@semcore/icon": "16.7.3",
     "@semcore/modal": "16.1.12"
   },
@@ -32,6 +31,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

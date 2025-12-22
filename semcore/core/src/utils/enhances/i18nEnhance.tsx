@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { type LocaleKeys, useI18n } from './WithI18n';
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 
-/** @deprecated */
-export interface IWithI18nEnhanceProps extends WithI18nEnhanceProps, UnknownProperties {}
 export type WithI18nEnhanceProps = {
   /* Function for getting the required field from the translation dictionary */
   getI18nText?: (key?: string, variables?: {}) => any;

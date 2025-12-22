@@ -386,7 +386,6 @@
       "dropdown-menu",
       "errors",
       "feature-popover",
-      "format-text",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -424,7 +423,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "format-text",
       "fullscreen-modal",
       "pills",
       "slider",
@@ -518,7 +516,6 @@
     "components": [
       "base-trigger",
       "button",
-      "format-text",
       "link",
       "pagination",
       "tab-panel",
@@ -534,7 +531,6 @@
     "components": [
       "base-trigger",
       "button",
-      "format-text",
       "link",
       "tab-panel",
       "typography"
@@ -577,8 +573,7 @@
     "description": "Hint link text.",
     "components": [
       "button",
-      "d3-chart",
-      "format-text"
+      "d3-chart"
     ]
   },
   {
@@ -589,7 +584,6 @@
     "description": "Hover and active states of the hint link text.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -1286,7 +1280,6 @@
       "carousel",
       "drag-and-drop",
       "feature-highlight",
-      "format-text",
       "fullscreen-modal",
       "notice",
       "typography"
@@ -1408,7 +1401,6 @@
     "components": [
       "breadcrumbs",
       "carousel",
-      "format-text",
       "inline-input",
       "input",
       "input-number",
@@ -2319,7 +2311,6 @@
     "description": "Use with font-size-800.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2332,7 +2323,6 @@
     "components": [
       "button",
       "errors",
-      "format-text",
       "typography"
     ]
   },
@@ -2344,7 +2334,6 @@
     "description": "Use with font-size-600.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2356,7 +2345,6 @@
     "description": "Use with font-size-500.",
     "components": [
       "button",
-      "format-text",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2370,7 +2358,6 @@
     "description": "Use with font-size-400.",
     "components": [
       "button",
-      "format-text",
       "product-head",
       "typography"
     ]
@@ -2389,7 +2376,6 @@
       "d3-chart",
       "dropdown",
       "errors",
-      "format-text",
       "pagination",
       "radio",
       "side-panel",
@@ -2417,7 +2403,6 @@
       "d3-chart",
       "data-table",
       "dropdown",
-      "format-text",
       "fullscreen-modal",
       "notice",
       "notice-bubble",
@@ -2447,7 +2432,6 @@
       "button",
       "d3-chart",
       "data-table",
-      "format-text",
       "fullscreen-modal",
       "switch",
       "tag",
@@ -2478,7 +2462,6 @@
       "color-picker",
       "dropdown",
       "flags",
-      "format-text",
       "fullscreen-modal",
       "side-panel",
       "typography",
@@ -2509,7 +2492,6 @@
       "badge",
       "button",
       "counter",
-      "format-text",
       "tab-line",
       "tab-panel",
       "tag",
@@ -2541,7 +2523,6 @@
       "counter",
       "d3-chart",
       "data-table",
-      "format-text",
       "fullscreen-modal",
       "switch",
       "tag",
@@ -2566,7 +2547,6 @@
       "data-table",
       "date-picker",
       "dropdown",
-      "format-text",
       "fullscreen-modal",
       "input",
       "notice",
@@ -2603,7 +2583,6 @@
       "d3-chart",
       "dropdown",
       "errors",
-      "format-text",
       "input",
       "pagination",
       "pills",
@@ -2626,7 +2605,6 @@
     "computedValue": "20px",
     "components": [
       "button",
-      "format-text",
       "product-head",
       "typography"
     ]
@@ -2638,7 +2616,6 @@
     "computedValue": "24px",
     "components": [
       "button",
-      "format-text",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2651,7 +2628,6 @@
     "computedValue": "32px",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2663,7 +2639,6 @@
     "components": [
       "button",
       "errors",
-      "format-text",
       "typography"
     ]
   },
@@ -2674,7 +2649,6 @@
     "computedValue": "48px",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2747,7 +2721,6 @@
       "counter",
       "data-table",
       "dropdown",
-      "format-text",
       "input-tags",
       "link",
       "notice",
@@ -2779,7 +2752,6 @@
       "dropdown",
       "dropdown-menu",
       "feature-popover",
-      "format-text",
       "fullscreen-modal",
       "inline-input",
       "input-tags",
@@ -2818,7 +2790,6 @@
       "dropdown",
       "feature-popover",
       "feedback-form",
-      "format-text",
       "fullscreen-modal",
       "input",
       "input-tags",
@@ -2863,7 +2834,6 @@
       "dropdown",
       "errors",
       "feedback-form",
-      "format-text",
       "fullscreen-modal",
       "input",
       "modal",
@@ -2895,7 +2865,6 @@
       "errors",
       "feature-popover",
       "feedback-form",
-      "format-text",
       "modal",
       "notice",
       "notice-global",
@@ -2918,7 +2887,6 @@
       "card",
       "data-table",
       "errors",
-      "format-text",
       "notice-bubble",
       "pagination",
       "product-head",
@@ -2936,7 +2904,6 @@
     "components": [
       "bulk-textarea",
       "errors",
-      "format-text",
       "fullscreen-modal",
       "notice-bubble",
       "product-head",
@@ -2953,7 +2920,6 @@
     "components": [
       "bulk-textarea",
       "errors",
-      "format-text",
       "fullscreen-modal",
       "notice-bubble",
       "notice-global",

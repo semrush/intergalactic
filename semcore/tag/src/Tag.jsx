@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -5,27 +6,12 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
-import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import React from 'react';
 
 import style from './style/tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-const legacyThemeRecommendedMigration = {
-  primary: {
-    muted: 'gray-500',
-    info: 'blue-500',
-    success: 'green-500',
-    warning: 'orange-500',
-    danger: 'red-500',
-  },
-  secondary: {
-    muted: 'gray-50',
-  },
-};
 
 class RootTag extends Component {
   static displayName = 'Tag';
@@ -38,18 +24,6 @@ class RootTag extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
-
-  constructor(props) {
-    super(props);
-
-    logger.warn(
-      props.use,
-      `Property 'use' is deprecated, replace property to "theme='${props.use}' color='${
-        legacyThemeRecommendedMigration[props.use]?.[props.theme]
-      }'"`,
-      props['data-ui-name'] || Tag.displayName,
-    );
-  }
 
   getCircleProps() {
     const { size, color, resolveColor } = this.asProps;

@@ -1,7 +1,7 @@
 import AddFilter from '@semcore/ui/add-filter';
+import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import CloseM from '@semcore/ui/icon/Close/m';
 import SearchM from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';

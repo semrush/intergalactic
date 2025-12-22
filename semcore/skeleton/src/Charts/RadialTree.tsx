@@ -9,7 +9,7 @@ const radialSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/radial-chart.svg'))
 `;
 
-const RadialTreeChartSkeleton = () => {
+function RadialTreeChartSkeleton() {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -20,6 +20,6 @@ const RadialTreeChartSkeleton = () => {
       bgPattern={`url(data:image/svg+xml;base64,${radialSvg})`}
     />,
   );
-};
+}
 
 export default createComponent(RadialTreeChartSkeleton);

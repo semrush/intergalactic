@@ -45,6 +45,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await locators.options(page, 0).waitFor({ state: 'visible' });
 
+      await page.waitForTimeout(150); // finish animation especially for ff and webkit
       await locators.options(page, 5).click();
       await locators.options(page, 1).click();
       await locators.options(page, 3).click();

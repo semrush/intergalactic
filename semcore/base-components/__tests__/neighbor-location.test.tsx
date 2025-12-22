@@ -1,4 +1,3 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, renderHook } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -16,10 +15,6 @@ const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any)
 const CustomComponent: any = function ({ neighborLocation, ...other }: any) {
   return <div {...other} data-neighborlocation={neighborLocation} />;
 };
-
-describe('neighbor-location Dependency imports', () => {
-  runDependencyCheckTests('neighbor-location');
-});
 
 describe('neighbor-location', () => {
   beforeEach(cleanup);

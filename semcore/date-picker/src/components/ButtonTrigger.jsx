@@ -4,14 +4,14 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import Calendar from '@semcore/icon/Calendar/m';
 import React from 'react';
 
-const ButtonTriggerRoot = ({ Children }) => {
+function ButtonTriggerRoot({ Children }) {
   return (
     <Root render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Calendar} />
       {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, true)}
     </Root>
   );
-};
+}
 
 ButtonTriggerRoot.displayName = 'ButtonTrigger';
 
