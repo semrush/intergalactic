@@ -1,377 +1,513 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Feature highlight', () => {
-  test.describe('Button styles', () => {
+// Helper to get ::before pseudo-element styles
+export const getBeforeStyles = async (el: Locator) => {
+  return el.evaluate((node) => {
+    const style = getComputedStyle(node, '::before');
+    return { backgroundImage: style.backgroundImage };
+  });
+};
+
+export const locators = {
+  buttons: (page: Page) => page.locator('[data-ui-name="ButtonFH"]'),
+  pills: (page: Page) => page.getByRole('radio'),
+  pillHighlightedItem: (page: Page) => page.locator('[data-ui-name="HighlightedItem.Addon"]'),
+  select: (page: Page) => page.getByRole('combobox'),
+  selectOptions: (page: Page) => page.getByRole('option'),
+  input: (page: Page) => page.getByRole('textbox'),
+  inputOutline: (page: Page) => page.locator('[class*="SOutline"]'),
+  switch: (page: Page) => page.locator('[data-ui-name="SwitchFH"]'),
+  switchOutline: (page: Page) => page.locator('[class*="inAfterOutline"][data-ui-name="Box"]').first(),
+  radioGroup: (page: Page) => page.locator('[data-ui-name="RadioGroup"]'),
+  radioMark: (page: Page) => page.locator('[data-ui-name="Value.RadioMark"]'),
+  checkbox: (page: Page) => page.locator('[data-ui-name="CheckboxFH"]'),
+  checkboxMark: (page: Page) => page.locator('[data-ui-name="Value.CheckMark"]'),
+  notice: (page: Page) => page.locator('[data-ui-name="NoticeFH"]'),
+  dataTable: (page: Page) => page.locator('[role="grid"]'),
+  tablist: (page: Page) => page.getByRole('tablist'),
+  tabs: (page: Page) => page.getByRole('tab'),
+};
+
+/* =====================================================
+@visual - Button styles
+Visual states, hover and focus styles.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  test.describe(`ButtonFH`, () => {
     const variables = [
-      { disabled: false, size: 'm', loading: false, active: false },
-      { disabled: false, size: 'm', loading: true, active: false },
-      { disabled: false, size: 'm', loading: false, active: true },
-      { disabled: true, size: 'm', loading: false, active: false },
-      { disabled: false, size: 'l', loading: false, active: false },
-      { disabled: false, size: 'l', loading: false, active: true },
-      { disabled: true, size: 'l', loading: false, active: false },
+      // Primary button variations
+      { use: 'primary', disabled: false, size: 'm', loading: false, active: false, showBadge: false, showIcon: true },
+      { use: 'primary', disabled: false, size: 'l', loading: true, active: false, showBadge: true, showIcon: true },
+      { use: 'primary', disabled: false, size: 'm', loading: false, active: true, showBadge: false, showIcon: false },
+      { use: 'primary', disabled: true, size: 'l', loading: false, active: false, showBadge: true, showIcon: true },
+
+      // Secondary button variations
+      { use: 'secondary', disabled: false, size: 'm', loading: false, active: false, showBadge: true, showIcon: true },
+      { use: 'secondary', disabled: false, size: 'l', loading: false, active: true, showBadge: false, showIcon: true },
+      { use: 'secondary', disabled: false, size: 'm', loading: true, active: false, showBadge: false, showIcon: false },
+      { use: 'secondary', disabled: true, size: 'm', loading: false, active: false, showBadge: false, showIcon: true },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Button ${item.disabled} ${item.size} active=${item.active} loading=${item.loading}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Button use = ${item.use} showBadge=${item.showBadge} showIcon=${item.showIcon} disabled=${item.disabled} size=${item.size} active=${item.active} loading=${item.loading}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@button'],
+      }, async ({ page, browserName }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/button.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        const button = locators.buttons(page);
+        await expect(page).toHaveScreenshot();
 
-        const flex = page.locator('[data-testid="buttons"]');
-        const screenshotsClip = (await flex.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
+        if (!item.disabled) {
+          await test.step('Verify focus style for buttons', async () => {
+            await page.keyboard.press('Tab');
 
-        const button = page.locator('[data-ui-name="ButtonFH"]');
-        const ariaBusy = await button.first().getAttribute('aria-busy');
-        const isDisabled = await button.first().getAttribute('disabled');
+            await expect(button).toBeFocused();
+            const styles = await getBeforeStyles(button);
+            expect(styles.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
 
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
-        }
-
-        if (ariaBusy === 'true') {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
-        } else {
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await button.first().hover();
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await page.keyboard.press('Tab');
-
-          await button.nth(1).hover();
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          if (browserName === 'firefox') return;
+          await test.step('Verify hover style for non-active buttons', async () => {
+            if (!item.active && !item.loading) {
+              await button.hover();
+              await expect(page).toHaveScreenshot();
+            }
+          });
         }
       });
     });
   });
 
-  test.describe('Pills styles', () => {
+  test.describe(`PillsFH`, () => {
     const variables = [
-      { disabled: false, size: 'm', animatedSparkleCount: 0 },
+      { disabled: false, size: 'm', animatedSparkleCount: 0, showBadge: true },
       { disabled: false, size: 'l', animatedSparkleCount: 0 },
       { disabled: true, size: 'm', animatedSparkleCount: 0 },
-      { disabled: true, size: 'l', animatedSparkleCount: 0 },
+      { disabled: true, size: 'l', animatedSparkleCount: 0, showBadge: true },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Pills ${item.disabled} ${item.size}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Pills disabled=${item.disabled} size=${item.size} showBadge=${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@pills'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/pills/pills.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        const pills = locators.pills(page);
 
-        const flex = page.locator('[data-testid="pills"]');
-        const screenshotsClip = (await flex.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
+        if (!item.disabled) {
+          await test.step('Verify focus and navigation', async () => {
+            await page.keyboard.press('Tab');
 
-        const pills = page.locator('[data-ui-name="PillsFH.Item"]');
-        const isDisabled = await pills.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
+            await page.keyboard.press('ArrowRight');
+            await page.keyboard.press('ArrowLeft');
+            const styles = await getBeforeStyles(pills.nth(1));
+            expect(styles.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
+          await test.step('Verify Hover when not focused', async () => {
+            await page.keyboard.press('ArrowRight');
+            await page.keyboard.press('ArrowLeft');
+            await pills.nth(1).hover();
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await page.keyboard.press('ArrowRight');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await expect(page).toHaveScreenshot();
         }
       });
     });
   });
 
-  test.describe('Select styles', () => {
+  test.describe(`InputFH`, () => {
     const variables = [
       { disabled: false, size: 'm', state: 'normal' },
+      { disabled: false, size: 'l', state: 'normal', showBadge: true },
       { disabled: false, size: 'm', state: 'valid' },
-      { disabled: false, size: 'l', state: 'invalid' },
-      { disabled: true, size: 'm', state: 'normal' },
+      { disabled: false, size: 'l', state: 'invalid', showBadge: true },
+      { disabled: true, size: 'm', state: 'normal', showBadge: true },
+      { disabled: true, size: 'l', state: 'normal' },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Select ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Input disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@input'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/input.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        const outline = page.locator('[class*="SOutline"]');
 
-        const trigger = page.locator('[data-ui-name="SelectFH.Trigger"]');
-        const screenshotsClip = (await trigger.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
-
-        const isDisabled = await trigger.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
+        if (item.disabled || item.state !== 'normal') {
+          await test.step('Verify disabled or invalid state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await trigger.hover();
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-          await page.keyboard.press('ArrowDown');
-          await page.keyboard.press('Enter');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await test.step('Verify focus style', async () => {
+            await page.keyboard.press('Tab');
+            const styles = await getBeforeStyles(outline);
+            expect(styles.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
         }
       });
     });
   });
 
-  test.describe('Input styles', () => {
+  test.describe(`SwitchFH`, () => {
     const variables = [
-      { disabled: false, size: 'm', state: 'normal' },
-      { disabled: false, size: 'm', state: 'valid' },
-      { disabled: false, size: 'l', state: 'invalid' },
-      { disabled: true, size: 'm', state: 'normal' },
+      { disabled: true, size: 'm', checked: true, showBadge: true },
+      { disabled: true, size: 'l', checked: true },
+      { disabled: true, size: 'xl' },
+      { disabled: false, size: 'm', animatedSparkleCount: 0 },
+      { disabled: false, size: 'l', animatedSparkleCount: 0, showBadge: true },
+      { disabled: false, size: 'xl', animatedSparkleCount: 0 },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Input ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Switch disabled=${item.disabled} size=${item.size}  checked=${item.checked} showBadge=${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch-fh.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
-
-        const input = page.locator('[data-ui-name="InputFH.Value"]');
-        const flex = page.locator('[data-testid="input"]');
-        const screenshotsClip = (await flex.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
-
-        const isDisabled = await input.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
+        const outline = locators.switchOutline(page);
+        if (item.disabled) {
+          await test.step('Verify disabled state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await test.step('Verify focus and toggle', async () => {
+            await page.keyboard.press('Tab');
+            const styles = await getBeforeStyles(outline);
+            expect(styles.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+
+            await page.keyboard.press('Space');
+            const stylesSelected = await getBeforeStyles(outline);
+            expect(stylesSelected.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
         }
       });
     });
   });
 
-  test.describe('Switch styles', () => {
+  test.describe(`DataTableFH`, () => {
+    test('Verify Data table styles', {
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/feature-highlight/docs/examples/data-table.tsx', 'en');
+
+      const flex = locators.dataTable(page);
+
+      await test.step('Verify primary table', async () => {
+        const screenshotsClip1 = (await flex.first().boundingBox())!;
+        screenshotsClip1.x -= 4;
+        screenshotsClip1.y -= 4;
+        screenshotsClip1.width += 8;
+        screenshotsClip1.height += 8;
+
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip1 });
+      });
+
+      await test.step('Verify secondary table', async () => {
+        const screenshotsClip2 = (await flex.nth(1).boundingBox())!;
+        screenshotsClip2.x -= 4;
+        screenshotsClip2.y -= 4;
+        screenshotsClip2.width += 8;
+        screenshotsClip2.height += 8;
+
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip2 });
+      });
+    });
+  });
+
+  test.describe(`TablineFH`, () => {
     const variables = [
-      { disabled: true, size: 'm', checked: true },
-      { disabled: false, size: 'm', checked: true },
-      { disabled: false, size: 'l', checked: true },
-      { disabled: true, size: 'xl', checked: true },
+      { disabled: true, size: 'm' },
+      { disabled: true, size: 'l', showBadge: true },
+      { disabled: false, size: 'l', animatedSparkleCount: 0, showBadge: true },
+      { disabled: false, size: 'm', animatedSparkleCount: 0 },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Switch ${item.disabled} ${item.size} ${item.checked}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Tabline disabled = ${item.disabled} size = ${item.size} showBadge = ${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@tabline'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/tabline.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        const tab = locators.tabs(page);
 
-        const input = page.locator('[data-ui-name="SwitchFH"]');
-        const screenshotsClip = (await input.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
-
-        const isDisabled = await input.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
+        if (item.disabled) {
+          await test.step('Verify disabled state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await test.step('Verify focus and hover on tabs', async () => {
+            await page.keyboard.press('Tab');
+            await page.keyboard.press('ArrowRight');
+            await page.keyboard.press('ArrowLeft');
+            await tab.nth(1).hover();
+            await expect(page).toHaveScreenshot();
+
+            const stylesFH = await getBeforeStyles(tab.nth(1));
+            expect(stylesFH.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+          });
         }
       });
     });
   });
 
-  test.describe('Radio styles', () => {
+  test.describe(`RadioFH`, () => {
     const variables = [
-      { disabled: true, size: 'm', state: 'normal' },
+      { disabled: false, size: 'l', state: 'normal', animatedSparkleCount: 0, showBadge: true },
+      { disabled: false, size: 'm', state: 'normal', animatedSparkleCount: 0, showIcon: false },
+      { disabled: false, size: 'm', state: 'invalid', animatedSparkleCount: 0 },
+      { disabled: true, size: 'm', state: 'invalid', showBadge: true },
+      { disabled: true, size: 'l', state: 'normal' },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Radio disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge} showIcon=${item.showIcon}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@radio'],
+      }, async ({ page, browserName }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/radio.tsx', 'en', item);
+
+        const radioMark = locators.radioMark(page);
+
+        if (item.disabled || item.state !== 'normal') {
+          await test.step('Verify disabled or invalid state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
+        } else {
+          if (browserName !== 'webkit') {
+            await test.step('Verify focus and selection', async () => {
+              await page.keyboard.press('Tab');
+              const styles = await getBeforeStyles(radioMark.first());
+              expect(styles.backgroundImage).toContain(
+                'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+              );
+              await expect(page).toHaveScreenshot();
+
+              await page.keyboard.press('Space');
+              const stylesSelected = await getBeforeStyles(radioMark.first());
+              expect(stylesSelected.backgroundImage).toContain(
+                'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+              );
+              await expect(page).toHaveScreenshot();
+
+              await page.keyboard.press('ArrowDown');
+              const stylesSecond = await getBeforeStyles(radioMark.nth(1));
+              expect(stylesSecond.backgroundImage).toContain('none');
+            });
+          }
+        }
+      });
+    });
+  });
+
+  test.describe(`CheckboxFH`, () => {
+    const variables = [
+      { disabled: false, size: 'm', state: 'normal', checked: false, animatedSparkleCount: 0 },
+      { disabled: false, size: 'l', state: 'normal', checked: false, animatedSparkleCount: 0, showBadge: true },
+      { disabled: false, size: 'm', state: 'invalid', checked: false, animatedSparkleCount: 0 },
+      { disabled: true, size: 'm', state: 'normal', checked: false },
+      { disabled: true, size: 'l', state: 'normal', checked: false, showBadge: true },
+    ];
+
+    variables.forEach((item) => {
+      test(`Verify Checkbox disabled = ${item.disabled} size = ${item.size} state = ${item.state} checked = ${item.checked} showBadge = ${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@checkbox'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/checkbox.tsx', 'en', item);
+
+        const value = locators.checkboxMark(page);
+
+        if (item.disabled || item.state !== 'normal') {
+          await test.step('Verify disabled or invalid state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
+        } else {
+          await test.step('Verify focus and toggle', async () => {
+            await page.keyboard.press('Tab');
+            const styles = await getBeforeStyles(value.first());
+            expect(styles.backgroundImage).toContain(
+              'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(90deg, rgb(198, 149, 255), rgb(43, 179, 255))');
+            await expect(page).toHaveScreenshot();
+
+            await page.keyboard.press('Enter');
+            const stylesSelected = await getBeforeStyles(value.first());
+            expect(stylesSelected.backgroundImage).toContain(
+              'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(90deg, rgb(198, 149, 255), rgb(43, 179, 255))');
+            await expect(page).toHaveScreenshot();
+
+            await page.keyboard.press('Tab');
+            const stylesSecond = await getBeforeStyles(value.nth(1));
+            expect(stylesSecond.backgroundImage).toContain('none');
+          });
+        }
+      });
+    });
+  });
+
+  test.describe(`Select FH`, () => {
+    const variables = [
+      { disabled: false, size: 'm', state: 'normal', showBadge: true },
       { disabled: false, size: 'l', state: 'normal' },
-      { disabled: false, size: 'm', state: 'invalid' },
+      { disabled: false, size: 'm', state: 'valid' },
+      { disabled: false, size: 'l', state: 'invalid', showBadge: true },
+      { disabled: true, size: 'm', state: 'normal' },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Radio ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Select disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@select'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/select.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        const trigger = locators.select(page);
+        const options = locators.selectOptions(page);
 
-        const radio = page.locator('[data-ui-name="RadioGroup"]');
-        const screenshotsClip = (await radio.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
-
-        const isDisabled = await radio.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
+        if (item.disabled || item.state !== 'normal') {
+          await test.step('Verify disabled or invalid state', async () => {
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('Space');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await test.step('Verify hover and focus styles', async () => {
+            await page.keyboard.press('Tab');
+            await trigger.hover();
+            const stylesEmpty = await getBeforeStyles(trigger.nth(0));
+            expect(stylesEmpty.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
+
+          await test.step('Verify selection interaction', async () => {
+            await page.keyboard.press('ArrowDown');
+            await options.first().waitFor({ state: 'visible' });
+            await page.keyboard.press('Enter');
+            await options.first().waitFor({ state: 'hidden' });
+
+            const stylesSelected = await getBeforeStyles(trigger.nth(0));
+            expect(stylesSelected.backgroundImage).toContain(
+              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            );
+            await expect(page).toHaveScreenshot();
+          });
         }
       });
     });
   });
 
-  test.describe('Checkbox styles', () => {
+  test.describe(`Notice FH`, () => {
     const variables = [
-      { disabled: true, size: 'm', state: 'normal', checked: true },
-      { disabled: false, size: 'l', state: 'normal', checked: true },
-      { disabled: false, size: 'm', state: 'invalid', checked: false },
+      { showTitle: false, showActions: false, iconType: 'ai' },
+      { showTitle: true, showActions: true, iconType: 'mail' },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Checkbox ${item.disabled} ${item.size} ${item.state}`, async ({ page }) => {
-        const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+      test(`Verify Notice showTitle=${item.showTitle} showActions=${item.showActions} iconType=${item.iconType} `, {
+        tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
-
-        const fieldset = page.locator('fieldset');
-        const screenshotsClip = (await fieldset.first().boundingBox())!;
-        screenshotsClip.x -= 4;
-        screenshotsClip.y -= 4;
-        screenshotsClip.width += 8;
-        screenshotsClip.height += 8;
-
-        const checkbox = page.locator('[data-ui-name="CheckboxFH"]');
-
-        const isDisabled = await checkbox.first().getAttribute('disabled');
-
-        if (isDisabled !== null) {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          return;
-        } else {
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-        }
+        await test.step('Verify notice appearance', async () => {
+          await expect(page).toHaveScreenshot();
+        });
       });
     });
   });
+});
 
-  test.describe('Notice', () => {
-    test('Verify notice styles', async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify Pills addon logic', {
+    tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@pills'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/tests/examples/pills/pills-addon-logic.tsx', 'en');
 
-      await page.setContent(htmlContent);
+    const pill = locators.pills(page);
 
-      const flex = page.locator('[data-ui-name="NoticeFH"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    await test.step('Verify stars in addon', async () => {
+      const addons = pill.first().locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(1);
+      }
     });
-  });
 
-  test.describe('Data table', () => {
-    test('Verify Data table styles', async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/feature-highlight/advanced/examples/all-controls.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await test.step('Verify number in addons', async () => {
+      const addons = pill.nth(1).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
 
-      await page.setContent(htmlContent);
-
-      const flex = page.locator('[role="grid"]');
-      const screenshotsClip1 = (await flex.first().boundingBox())!;
-      screenshotsClip1.x -= 4;
-      screenshotsClip1.y -= 4;
-      screenshotsClip1.width += 8;
-      screenshotsClip1.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip1 });
-
-      const screenshotsClip2 = (await flex.nth(1).boundingBox())!;
-      screenshotsClip2.x -= 4;
-      screenshotsClip2.y -= 4;
-      screenshotsClip2.width += 8;
-      screenshotsClip2.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip2 });
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('0');
+      }
     });
-  });
 
-  test.describe('Tabline', () => {
-    test(`Verify Tabline styles`, async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/tabline.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await test.step('Verify icon in addons', async () => {
+      const addons = pill.nth(2).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
 
-      await page.setContent(htmlContent);
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+      }
+    });
 
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+    await test.step('Verify badge in addons', async () => {
+      const addons = pill.nth(3).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
 
-      await page.keyboard.press('ArrowRight');
-      await expect(page).toHaveScreenshot();
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        const badge = addon.locator('[data-ui-name="BadgeFH"]');
+        await expect(icons).toHaveCount(0);
+        await expect(badge).toHaveCount(1);
+      }
+    });
 
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+    await test.step('Verify text in addons', async () => {
+      const addons = pill.nth(4).locator('[data-ui-name="HighlightedItem.Addon"]');
+      await expect(addons).toHaveCount(2);
+
+      const addonCount = await addons.count();
+      for (let j = 0; j < addonCount; j++) {
+        const addon = addons.nth(j);
+        const icons = addon.locator('[data-ui-name="SummaryAI"]');
+        await expect(icons).toHaveCount(0);
+        expect(await addon.textContent()).toBe('Test');
+      }
     });
   });
 });

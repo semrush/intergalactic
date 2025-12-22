@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import AmericanExpressL from '@semcore/ui/icon/pay/AmericanExpress/l';
 import AmericanExpressM from '@semcore/ui/icon/pay/AmericanExpress/m';
 import PayPalL from '@semcore/ui/icon/pay/PayPal/l';

@@ -1,5 +1,5 @@
+import type { Flex, FlexProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex, FlexProps } from '@semcore/flex-box';
 
 import type { LegendProps } from '../BaseLegend.type';
 import type { LegendItemType } from '../LegendItem/LegendItem.type';

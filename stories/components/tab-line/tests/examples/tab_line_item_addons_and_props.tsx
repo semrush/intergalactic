@@ -1,6 +1,6 @@
 import Badge from '@semcore/ui/badge';
+import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
-import type { BoxProps } from '@semcore/ui/flex-box';
 import FacebookM from '@semcore/ui/icon/Facebook/m';
 import InstagramM from '@semcore/ui/icon/Instagram/m';
 import TwitterM from '@semcore/ui/icon/Twitter/m';

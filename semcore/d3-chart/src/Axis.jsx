@@ -1,5 +1,5 @@
 import { Component, sstyled } from '@semcore/core';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
@@ -186,6 +186,54 @@ function renderValue(value) {
   return value;
 }
 
+function splitTextByWidth(root, text, maxWidth) {
+  if (!text || !maxWidth || maxWidth <= 0) return [];
+
+  const words = text.split(/\s+/).filter((word) => word.length > 0);
+  if (words.length === 0) return [];
+
+  const lines = [];
+  let currentLine = words[0];
+
+  for (let i = 1; i < words.length; i++) {
+    const testLine = `${currentLine} ${words[i]}`.trim();
+    const testWidth = measureTextWidth(root, testLine);
+
+    if (testWidth <= maxWidth) {
+      currentLine = testLine;
+    } else {
+      if (currentLine) {
+        lines.push(currentLine);
+      }
+
+      currentLine = words[i];
+
+      if (measureTextWidth(root, currentLine) > maxWidth) {
+        lines.push(currentLine);
+        currentLine = '';
+      }
+    }
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+}
+
+function measureTextWidth(rootRef, text, fontSize = 12) {
+  const textEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  textEl.setAttribute('font-size', fontSize);
+  textEl.setAttribute('visibility', 'hidden');
+  textEl.textContent = text;
+
+  rootRef.appendChild(textEl);
+  const width = textEl.getComputedTextLength();
+  rootRef.removeChild(textEl);
+  return width;
+}
+
 class AxisRoot extends Component {
   static displayName = 'Axis';
 
@@ -246,7 +294,22 @@ function Ticks(props) {
     dataHintsHandler,
     children,
     childrenPosition = 'inside',
+    rootRef,
+    multiline,
   } = props;
+  const [rootRefElement, setRootRefElement] = useState(null);
+
+  useEffect(() => {
+    if (rootRef.current) setRootRefElement(rootRef.current);
+  }, []);
+
+  const tickBandwidth = scale[indexScale]?.bandwidth?.();
+  const ticksWithLines = ticks.map((tick) => ({
+    tick,
+    lines: typeof tick === 'string' && multiline && rootRefElement
+      ? splitTextByWidth(rootRefElement, tick, tickBandwidth)
+      : [],
+  }));
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
@@ -263,7 +326,7 @@ function Ticks(props) {
     }
   }
 
-  return ticks.map((value, i) => {
+  return ticksWithLines.map(({ tick: value, lines }, i) => {
     const displayValue = typeof children === 'function' ? undefined : renderValue(value);
 
     return sstyled(styles)(
@@ -277,9 +340,14 @@ function Ticks(props) {
         index={i}
         position={positionClass}
         hide={hide}
+        multiline={multiline}
         {...pos(scale, value, position)}
       >
-        {displayValue}
+        { lines.length > 1
+          ? lines.map((line, lineIndex) => (
+              <tspan key={line} {...pos(scale, value, position)} dy={lineIndex * 15}>{line}</tspan>
+            ))
+          : displayValue}
       </STick>,
     );
   });

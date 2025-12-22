@@ -1,4 +1,4 @@
-import { FadeInOut, type FadeInOutProps } from '@semcore/animation';
+import { FadeInOut, type FadeInOutProps, Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -11,7 +11,6 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/inline-edit.shadow.css';
@@ -26,7 +25,7 @@ type AsProps = {
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-class InlineEdit extends Component<AsProps> {
+class InlineEdit extends Component<AsProps, [], { editable: null }> {
   static displayName = 'InlineEdit';
 
   static style = style;
@@ -125,7 +124,7 @@ const useHidden = (visible: boolean) => {
   return hidden;
 };
 
-const Edit: React.FC<AsProps> = (props) => {
+function Edit(props: AsProps) {
   const visible = props.editable;
   const SEdit = Root;
   const ref = React.useRef();
@@ -143,9 +142,9 @@ const Edit: React.FC<AsProps> = (props) => {
       ref={ref}
     />,
   ) as React.ReactElement;
-};
+}
 
-const View: React.FC<AsProps> = (props) => {
+function View(props: AsProps) {
   const visible = !props.editable;
   const SView = Root;
 
@@ -175,7 +174,7 @@ const View: React.FC<AsProps> = (props) => {
       onKeyDown={handleKeyDown}
     />,
   ) as React.ReactElement;
-};
+}
 
 type InlineEditProps = BoxProps & {
   editable?: boolean;

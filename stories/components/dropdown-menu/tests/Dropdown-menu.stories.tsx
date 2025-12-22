@@ -1,14 +1,13 @@
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import WidthExample from './examples/dd-width';
-import WithDividerExample from './examples/dd-with-divider';
+import DropdownBasePropsExample, { defaultDropDownPropsExample } from './examples/dropdown-base-props';
 import ListItemsTypeExample from './examples/list_item_types';
+import MultiselectPropsExample, { defaultDropDownMultiselectPropsExample } from './examples/multiselect-props';
+import NestedMenuPropsExample, { defaultNestedMenuPropsExample } from './examples/nested-menu-props';
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
-import SizesExample from './examples/sizes';
-import SizesMultiselectExample from './examples/sizes-multiselect';
-import SizesSelectableExample from './examples/sizes-selectable';
+import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
 
@@ -20,9 +19,29 @@ export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
 
-export const WithDivider: Story = {
-  render: WithDividerExample,
-};
+const commonArgTypes = {
+  size: {
+    control: { type: 'select' },
+    options: ['m', 'l'],
+  },
+  visible: {
+    control: { type: 'boolean' },
+  },
+  stretch: {
+    control: { type: 'select' },
+    options: ['min', 'fixed', false],
+  },
+  disablePortal: {
+    control: { type: 'select' },
+    options: ['min', 'fixed', false],
+  },
+  locale: {
+    control: { type: 'select' },
+    options: ['ko', 'pl'],
+  }, disabledAll: {
+    control: { type: 'boolean' },
+  },
+} as const;
 
 export const WithFocusableTrigger: Story = {
   render: WithFocusableTriggerExample,
@@ -36,20 +55,59 @@ export const OnVisible: Story = {
   render: OnVisibleExample,
 };
 
-export const SizesSelectable: Story = {
-  render: SizesSelectableExample,
+export const SelectableProps: StoryObj<typeof defaultDropDownSelectablePropsExample> = {
+  render: SelectablePropsExample,
+  argTypes: {
+    ...commonArgTypes,
+    disabledFirstItem: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultDropDownSelectablePropsExample,
 };
 
-export const SizesMultiselect: Story = {
-  render: SizesMultiselectExample,
+export const MultiselectProps: StoryObj<typeof defaultDropDownMultiselectPropsExample> = {
+  render: MultiselectPropsExample,
+  argTypes: {
+    ...commonArgTypes,
+    disabledFirstItem: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultDropDownMultiselectPropsExample,
 };
 
-export const Sizes: Story = {
-  render: SizesExample,
-};
+export const DropdownBaseProps: StoryObj<typeof defaultDropDownPropsExample> = {
+  render: DropdownBasePropsExample,
+  argTypes: {
+    ...commonArgTypes,
 
-export const Width: Story = {
-  render: WidthExample,
+    disabledSave: {
+      control: { type: 'boolean' },
+    },
+    disabledRename: {
+      control: { type: 'boolean' },
+    },
+    disabledDownload: {
+      control: { type: 'boolean' },
+    },
+    disabledDelete: {
+      control: { type: 'boolean' },
+    },
+    selectedSave: {
+      control: { type: 'boolean' },
+    },
+    selectedRename: {
+      control: { type: 'boolean' },
+    },
+    selectedDownload: {
+      control: { type: 'boolean' },
+    },
+    selectedDelete: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultDropDownPropsExample,
 };
 
 export const WithSearch: Story = {
@@ -58,4 +116,18 @@ export const WithSearch: Story = {
 
 export const OnVisible2nd: Story = {
   render: OnVisible2ndExample,
+};
+
+export const NestedMenuProps: StoryObj<typeof defaultNestedMenuPropsExample> = {
+  render: NestedMenuPropsExample,
+  argTypes: {
+    ...commonArgTypes,
+    disabledNestedAdd: {
+      control: { type: 'boolean' },
+    },
+    disabledNestedDelete: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: defaultNestedMenuPropsExample,
 };

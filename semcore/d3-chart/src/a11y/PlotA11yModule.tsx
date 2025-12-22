@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';
@@ -22,7 +22,7 @@ export type A11yViewProps = {
   plotRef: React.RefObject<HTMLElement>;
 };
 
-export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
+export function PlotA11yModule(props: A11yViewProps) {
   const SPlotA11yModule = Root;
   const [wasFocused, setWasFocused] = React.useState(globalWasFocused);
   const [navWithKeyboard, setNavWithKeyboard] = React.useState(globalNavWithKeyboard);
@@ -124,4 +124,4 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
       {t('disabled')}
     </SPlotA11yModule>,
   ) as React.ReactElement;
-};
+}

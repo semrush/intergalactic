@@ -11,7 +11,7 @@ const barHorizontalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bar-chart-horizontal.svg'))
 `;
 
-const BarChartSkeleton = (props) => {
+function BarChartSkeleton(props) {
   const SChartSkeleton = Root;
   const layout = props.layout ?? 'horizontal';
   const patternBase64 = { vertical: barVerticalSvg, horizontal: barHorizontalSvg }[layout];
@@ -24,6 +24,6 @@ const BarChartSkeleton = (props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(BarChartSkeleton);

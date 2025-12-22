@@ -1,15 +1,9 @@
+import type { BarChartProps } from '@semcore/ui/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BarExample from './examples/bar-chart/bar';
-import BarHoverExample from './examples/bar-chart/bar-hover';
-import BarPropsExample from './examples/bar-chart/bars-props';
+import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bar-chart/basic-usage';
-import DateFormatExample from './examples/bar-chart/date-format-with-tooltip';
-import GroupedBarsExample from './examples/bar-chart/grouped-bars';
-import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern-fill';
-import NegativeValuesExample from './examples/bar-chart/negative-values';
-import TooltipExample from './examples/bar-chart/tooltip';
-import TrendLineExample from './examples/bar-chart/trend-line';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bar-Chart',
@@ -19,47 +13,25 @@ export default meta;
 
 export const BarProps: StoryObj = {
   render: BarPropsExample,
-};
-
-export const BarHover: StoryObj = {
-  render: BarHoverExample,
-};
-
-export const Bar: StoryObj = {
-  render: BarExample,
-};
-
-export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
-  render: BasicUsageExample,
   argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
+    color: {
+      control: { type: 'select' },
+      options: ['#3498db', 'yellow'],
     },
+    r: { control: { type: 'number', min: 0, max: 20, step: 1 } },
+    hMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
+    hide: { control: 'boolean' },
+    transparent: { control: 'boolean' },
+    maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
+    duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },
+  args: BarPropsDefaultProps,
+};
+
+export const BasicUsage = {
+  render: BasicUsageExample,
+  argTypes: getChartArgTypes({
+    type: { control: 'select', options: ['stack', 'group'] },
+  }),
   args: BasicUsageProps,
-};
-
-export const DateFormat: StoryObj = {
-  render: DateFormatExample,
-};
-
-export const GroupedBars: StoryObj = {
-  render: GroupedBarsExample,
-};
-
-export const NegativeValues: StoryObj = {
-  render: NegativeValuesExample,
-};
-
-export const Tooltip: StoryObj = {
-  render: TooltipExample,
-};
-
-export const TrendLine: StoryObj = {
-  render: TrendLineExample,
-};
-
-export const LegendAndPatternFill: StoryObj = {
-  render: LegendAndPatternFillExample,
 };

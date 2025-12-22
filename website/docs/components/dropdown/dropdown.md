@@ -26,17 +26,9 @@ The component doesn't have any fixed sizes since they are defined by the content
 If dropdown changes its state while user interacts with it, don’t change the dropdown size (width and height).
 :::
 
-### Trigger
-
-Margin between trigger and dropdown is always 4px.
-
-![](static/trigger-dropdown-scheme.png)
-
 ## Position
 
 By default, the Dropdown component drops down from the trigger. However, if there isn't enough space below, it will drop in the opposite direction using [Popper.js](https://popper.js.org/).
-
-![All possible positions for Dropdown component based on Popper.js properties clockwise: top-start, top, top-end, right-start, right, right-end, bottom-end, bottom, bottom-start, left-end, left, left-start.](static/dropdown-directions.png)
 
 ::: tip
 **The Dropdown component should maintain its position relative to the trigger and not move when the page is scrolled.** For instance, if the dropdown opens upward, it should remain in that position even if the user scrolls down, causing the dropdown to become partially or completely hidden.

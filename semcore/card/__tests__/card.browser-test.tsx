@@ -1,12 +1,37 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual tests', () => {
-  test('Verify Base example margins and paddings', async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
 
-    await page.setContent(htmlContent);
+  button: (page: Page, index?: number) => {
+    const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  option: (page: Page, index?: number) => {
+    const base = page.getByRole('option');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  dialog: (page: Page, index?: number) => {
+    const base = page.getByRole('dialog');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+
+};
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  test('Verify Base example margins and paddings', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/docs/examples/basic_example.tsx', 'en');
 
     const header = page.locator('[data-ui-name="Card.Header"]');
     const description = page.locator('[data-ui-name="Card.Description"]');
@@ -62,38 +87,51 @@ test.describe('Visual tests', () => {
     });
   });
 
-  test('Verify card with ellipsis width:768, height: 800', async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/ellipsis.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify card with ellipsis width:768, height: 800', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@ellipsis',
+    ],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/docs/examples/ellipsis.tsx', 'en');
+
     await expect(page).toHaveScreenshot();
     await page.setViewportSize({ width: 768, height: 800 });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify complex card styles', async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/complex_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify complex card styles', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@base-trigger',
+      '@link-trigger',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
-    await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'visible' });
+    await locators.option(page, 0).waitFor({ state: 'visible' });
     await page.keyboard.press('Space');
-    await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'hidden' });
+    await locators.option(page, 0).first().waitFor({ state: 'hidden' });
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify card with different card componens styles', async ({ page }) => {
-    const standPath = 'stories/components/card/tests/examples/different-cards.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify card with different card componens styles', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@pills'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/tests/examples/different-cards.tsx', 'en');
+
     await page.setViewportSize({ width: 1200, height: 1200 });
 
     await test.step('Verify card only component', async () => {
-      const card = await page.locator('[data-testid="card-only"]');
+      const card = page.locator('[data-testid="card-only"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -104,7 +142,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card description component', async () => {
-      const card = await page.locator('[data-testid="card-description"]');
+      const card = page.locator('[data-testid="card-description"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -115,7 +153,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title hintAfter component', async () => {
-      const card = await page.locator('[data-testid="card-title"]');
+      const card = page.locator('[data-testid="card-title"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -126,7 +164,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title  description content hintAfter component', async () => {
-      const card = await page.locator('[data-testid="card-title-description"]');
+      const card = page.locator('[data-testid="card-title-description"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -137,7 +175,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title  description content innterHint component', async () => {
-      const card = await page.locator('[data-testid="card-title-description-innterHint"]');
+      const card = page.locator('[data-testid="card-title-description-innterHint"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -148,7 +186,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title  description content hintAfter innterHint component', async () => {
-      const card = await page.locator('[data-testid="card-title-content-innerHint"]');
+      const card = page.locator('[data-testid="card-title-content-innerHint"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -159,7 +197,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card title description content innterHint tag component', async () => {
-      const card = await page.locator('[data-testid="card-title-description-content-innerHint-tag-text-styles"]');
+      const card = page.locator('[data-testid="card-title-description-content-innerHint-tag-text-styles"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -170,7 +208,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card header title description body component', async () => {
-      const card = await page.locator('[data-testid="card-header-title-desription-body"]');
+      const card = page.locator('[data-testid="card-header-title-desription-body"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -181,7 +219,7 @@ test.describe('Visual tests', () => {
     });
 
     await test.step('Verify card heder pills body component', async () => {
-      const card = await page.locator('[data-testid="card-header-pills-body"]');
+      const card = page.locator('[data-testid="card-header-pills-body"]');
       const screenshotsClip = (await card.first().boundingBox())!;
       screenshotsClip.x -= 4;
       screenshotsClip.y -= 4;
@@ -192,11 +230,13 @@ test.describe('Visual tests', () => {
     });
   });
 
-  test('Verify description tooltip trigger has not unnecessary margins', async ({ page }) => {
-    const standPath = 'stories/components/card/tests/examples/card_with_description_tooltip_in_body.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify description tooltip trigger has not unnecessary margins', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body', 'en');
 
     const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
     const descriptionTooltipTriggerCount = await descriptionTooltipTrigger.count();
@@ -205,73 +245,79 @@ test.describe('Visual tests', () => {
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify base example keyboard interactions', async ({ page }) => {
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify base example keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@card',
+      '@button'],
+  }, async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-
     await test.step('Verify tooltip not shown when trigger is focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(descriptionTooltipTrigger).toBeFocused();
-      await expect(descriptionTooltipPopper).not.toBeVisible();
+      await expect(locators.button(page).first()).toBeFocused();
+      await expect(locators.dialog(page)).not.toBeVisible();
     });
 
     await test.step('Verify tooltip shown on space', async () => {
       await page.keyboard.press('Space');
-      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
-      await expect(descriptionTooltipTrigger).not.toBeFocused();
-      await expect(descriptionTooltipPopper).toBeFocused();
+      await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.button(page).first()).not.toBeFocused();
+      await expect(locators.dialog(page)).toBeFocused();
     });
 
     await test.step('Verify tooltip hidden on Escape', async () => {
       await page.keyboard.press('Escape');
-      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'hidden' });
-      await expect(descriptionTooltipTrigger).toBeFocused();
+      await locators.dialog(page).waitFor({ state: 'hidden' });
+      await expect(locators.button(page).first()).toBeFocused();
     });
 
     await test.step('Verify tooltip opened on Enter', async () => {
       await page.keyboard.press('Enter');
-      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
-      await expect(descriptionTooltipTrigger).not.toBeFocused();
-      await expect(descriptionTooltipPopper).toBeFocused();
+      await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.button(page).first()).not.toBeFocused();
+      await expect(locators.dialog(page)).toBeFocused();
     });
 
     await test.step('Verify tooltip hidden by Tab', async () => {
       await page.keyboard.press('Tab');
-      await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'hidden' });
-      await expect(descriptionTooltipTrigger).toBeFocused();
+      await locators.dialog(page).waitFor({ state: 'hidden' });
+      await expect(locators.button(page).first()).toBeFocused();
     });
 
     await test.step('Next control focused by tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(page.locator('[data-ui-name="Button"]')).toBeFocused();
+      await expect(locators.button(page, 1)).toBeFocused();
     });
   });
 
-  test('Verify complex example keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/complex_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify complex example keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@card',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const descriptionTooltipPopper = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
-    const button = page.locator('[data-ui-name="Button"]');
     const select = page.locator('[data-ui-name="Select"]');
     await test.step('Verify tooltip not shown when trigger is focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(descriptionTooltipTrigger).toBeFocused();
-      await expect(descriptionTooltipPopper).not.toBeVisible();
+      await expect(locators.button(page, 0)).toBeFocused();
+      await expect(locators.dialog(page)).not.toBeVisible();
     });
 
     await test.step('Verify button focused on next tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(button).toBeFocused();
+      await expect(locators.button(page, 1)).toBeFocused();
       await page.getByText('Hide widget').waitFor({ state: 'visible' });
       await expect(page.getByText('Hide widget')).toHaveCount(1);
       await page.keyboard.press('Escape');
@@ -284,14 +330,14 @@ test.describe('Functional', () => {
       await expect(select).toBeFocused();
       await page.keyboard.press('Space');
 
-      await expect(page.locator('[data-ui-name="Select.Option"]')).toHaveCount(3);
+      await expect(locators.option(page)).toHaveCount(3);
       await page.keyboard.press('Enter');
-      await expect(page.locator('[data-ui-name="Select.Option"]')).toHaveCount(0);
+      await expect(locators.option(page)).toHaveCount(0);
     });
 
     await test.step('Verify prev element focused by shift+Tab', async () => {
       await page.keyboard.press('Shift+Tab');
-      await expect(button).toBeFocused();
+      await expect(locators.button(page, 1)).toBeFocused();
     });
   });
 });

@@ -4,7 +4,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import { DataTable, UNIQ_ROW_KEY } from '../src';
+import { DataTable } from '../src';
 import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {

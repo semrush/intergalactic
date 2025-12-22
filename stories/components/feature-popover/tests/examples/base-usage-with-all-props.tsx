@@ -1,10 +1,10 @@
 import { Flex, Box } from '@semcore/ui/base-components';
+import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
 import type { FeaturePopoverPopperProps, FeaturePopoverProps } from '@semcore/ui/feature-popover';
 import FileExport from '@semcore/ui/icon/FileExport/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/popper';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -22,7 +22,6 @@ const Demo = (props: ExampleProps) => {
         placement={props.placement}
         timeout={props.timeout}
         explicitTriggerSet={props.explicitTriggerSet}
-        cursorAnchoring={props.cursorAnchoring}
         popperMargin={props.popperMargin}
         theme={props.theme}
       >
@@ -38,7 +37,14 @@ const Demo = (props: ExampleProps) => {
           </DropdownMenu>
           {visible && <FeaturePopover.Spot />}
         </FeaturePopover.Trigger>
-        <FeaturePopover.Popper closeIcon={props.closeIcon} duration={props.duration} wMax={350} aria-label='New feature: Export' disableEnforceFocus={props.disableEnforceFocus} autoFocus={props.autoFocus}>
+        <FeaturePopover.Popper
+          closeIcon={props.closeIcon}
+          duration={props.duration}
+          wMax={350}
+          aria-label='New feature: Export'
+          autoFocus={props.autoFocus}
+          disableEnforceFocus={props.disableEnforceFocus}
+        >
           <Flex alignItems='start'>
             <Box
               w={40}
@@ -75,15 +81,17 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
+  autoFocus: true,
   placement: undefined,
   timeout: undefined,
   disablePortal: true,
   explicitTriggerSet: false,
-  cursorAnchoring: false,
   popperMargin: undefined,
   closeIcon: true,
   duration: undefined,
   theme: 'accent',
+  disableEnforceFocus: true,
+
 };
 
 Demo.defaultProps = defaultProps;

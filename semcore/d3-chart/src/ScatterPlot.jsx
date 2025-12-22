@@ -27,11 +27,11 @@ class ScatterPlotRoot extends Component {
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, plotId } = this.asProps;
 
-    eventEmitter.emit('setTooltipPosition', clientX, clientY);
-    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
-    eventEmitter.emit('setTooltipVisible', visible);
+    eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+    eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
+    eventEmitter.emit(`setTooltipVisible_${plotId}`, visible);
   };
 
   animationCircle() {
@@ -161,7 +161,7 @@ class ScatterPlotRoot extends Component {
   }
 }
 
-const ScatterPlotTooltip = (props) => {
+function ScatterPlotTooltip(props) {
   const SScatterPlotTooltip = Root;
   return sstyled(props.styles)(<SScatterPlotTooltip render={Tooltip} excludeAnchorProps />);
 };

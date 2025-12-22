@@ -6,7 +6,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ## Description
 
-**WidgetEmpty** is a component designed to display empty states in widgets.
+**WidgetEmpty** is a component for displaying empty states in cards, tables, widgets, etc.
 
 The WidgetEmpty component informs the user why there is no data (for example due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
 
@@ -25,24 +25,9 @@ Component consists of the following:
 
 ### Styles
 
-We recommend restricting maximum width of the message text to 400px to ensure readability.
+We recommend restricting maximum width of the description to 400px to ensure readability.
 
 ![](static/medium-nothing.png)
-
-Table: WidgetEmpty styles
-
-| Element      | Styles                                                                                                                        |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| Title        | Font has 16px size (`--fs-300`, `--lh-300` tokens), `--text-secondary` token for color and `margin-bottom: var(--spacing-1x)` |
-| Description  | Font has 14px size (`--fs-200`, `--lh-200` tokens) and `--text-secondary` token for color                                     |
-| Illustration | `margin-bottom: 12px`                                                                                                         |
-| Controls     | Usually have M size and `margin-top: var(--spacing-4x)`                                                                       |
-
-### Indents
-
-![](static/margins-scheme.png)
-
-![](static/margins-scheme-2.png)
 
 ## Widget size
 
@@ -57,17 +42,6 @@ In some cases, widget's height needs to be reduced in the empty state to save sp
 ![](static/big-extra-empty.png)
 
 ![](static/medium-extra-empty.png)
-
-### Widgets with small width
-
-If your widget's width is less than 300px, you can use the compact version of the state:
-
-- hide the illustration,
-- display the title using description styles,
-- move the description text into an [Informer](../../patterns/informer/informer),
-- display a link instead of the button.
-
-![](static/small-empty.png)
 
 ## State types
 
@@ -187,10 +161,12 @@ Table: Set up your product message examples
 | -------------------------- | ----------------------------- | -------------------------------------------------------------- |
 | ![](static/big-set-up.png) | ![](static/medium-set-up.png) | Title: "Set up your {Name Tool}". Description: {Hint message}. |
 
+<!-- Commenting this because this information doesn't belong this component. It's more about the empty state pattern in tables.
+
 ### No more results
 
 This state is used when there is a small amount of data in the widget, typically with tables, text, or other data.
 
 Add the text: "No more results" after the data and center it horizontally.
 
-![](static/no-more-results.png)
+![](static/no-more-results.png) -->

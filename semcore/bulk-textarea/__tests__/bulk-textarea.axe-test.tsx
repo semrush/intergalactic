@@ -1,15 +1,25 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Bulk textarea', () => {
+test.describe(`@bulk-textarea ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/bulk-textarea/docs/examples/basic-usage.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    }
 
-    expect(violations).toEqual([]);
+    {
+      const text =
+        'Zoom in on product categories to understand how each site segment drives conversions.\nSecond row\n3 row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row';
+      await page.keyboard.type(text, { delay: 20 });
+      await page.keyboard.press('Tab');
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
   });
 });

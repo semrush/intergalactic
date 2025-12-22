@@ -1,10 +1,10 @@
+import { Flex, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
 import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
@@ -243,7 +243,7 @@ class ValueRoot extends Component {
   }
 }
 
-const Control = (props) => {
+function Control(props) {
   const SControl = Root;
   const { styles, state } = props;
 
@@ -253,7 +253,7 @@ const Control = (props) => {
 };
 Control.displayName = 'Control';
 
-const RadioMark = (props) => {
+function RadioMark(props) {
   const SValue = Root;
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked } = props;
@@ -263,10 +263,10 @@ const RadioMark = (props) => {
       {state === 'invalid' && !checked && <SInvalidPattern />}
     </SValue>,
   );
-};
+}
 RadioMark.displayName = 'RadioMark';
 
-const Text = (props) => {
+function Text(props) {
   const SText = Root;
   const { styles, color } = props;
 
@@ -280,7 +280,7 @@ const Text = (props) => {
   return sstyled(styles)(
     <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
   );
-};
+}
 Text.displayName = 'Text';
 
 export { inputProps, RadioGroup };

@@ -1,5 +1,6 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
@@ -18,8 +19,8 @@ class Hover extends Component {
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
-  handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, data, scale, x, y, rootRef, patterns } = this.asProps;
+  handlerMouseMoveRoot = trottle((e, currentTarget) => {
+    const { eventEmitter, data, scale, x, y, rootRef, patterns, plotId } = this.asProps;
     const { clientX, clientY } = e;
     const [xScale, yScale] = scale;
     const [pX, pY] = eventToPoint(e, rootRef.current);
@@ -31,10 +32,22 @@ class Hover extends Component {
       y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
 
+    const { x: xRect, y: yRect, height } = rootRef.current.getBoundingClientRect();
+    const { y: yOriginal, height: heightOriginal } = currentTarget.getBoundingClientRect();
+    const isRootTooltip = hasParent(e.target, rootRef.current);
+
     this.setState(state, () => {
-      eventEmitter.emit('setTooltipPosition', clientX, clientY);
-      eventEmitter.emit('setTooltipRenderingProps', {}, state);
-      eventEmitter.emit('setTooltipVisible', xIndex !== null || yIndex !== null);
+      if (isRootTooltip) {
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+      } else {
+        const diff = clientY - yOriginal;
+        const dimension = (diff / heightOriginal) * 100;
+        const heightValue = height / 100 * dimension;
+
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, pX + xRect, yRect + heightValue);
+      }
+      eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, {}, state);
+      eventEmitter.emit(`setTooltipVisible_${plotId}`, xIndex !== null || yIndex !== null);
     });
   });
 
@@ -45,7 +58,7 @@ class Hover extends Component {
       patterns: this.asProps.patterns,
     };
     this.setState(state, () => {
-      this.asProps.eventEmitter.emit('setTooltipVisible', false);
+      this.asProps.eventEmitter.emit(`setTooltipVisible_${this.asProps.plotId}`, false);
     });
   });
 
@@ -53,7 +66,7 @@ class Hover extends Component {
     const { eventEmitter } = this.asProps;
     this.unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
       e.persist();
-      this.handlerMouseMoveRoot(e);
+      this.handlerMouseMoveRoot(e, e.currentTarget);
     });
     this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
       'onMouseLeaveChart',
@@ -176,18 +189,18 @@ class HoverRectRoot extends Hover {
   }
 }
 
-const HoverLineTooltip = (props) => {
+function HoverLineTooltip(props) {
   const SHoverLineTooltip = Root;
   return sstyled(props.styles)(
     <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
   );
-};
-const HoverRectTooltip = (props) => {
+}
+function HoverRectTooltip(props) {
   const SHoverRectTooltip = Root;
   return sstyled(props.styles)(
     <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
   );
-};
+}
 
 const HoverLine = createElement(HoverLineRoot, {
   Tooltip: [HoverLineTooltip, Tooltip._______childrenComponents],

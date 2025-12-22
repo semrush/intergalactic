@@ -4,8 +4,6 @@ import { getNodeByRef, type NodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-/** @deprecated */
-export interface IPortalProps extends PortalProps, UnknownProperties {}
 export type PortalProps = {
   /** Disables children rendering in React portal */
   disablePortal?: boolean;

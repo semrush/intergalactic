@@ -7,7 +7,7 @@ import { OutsideClick } from '../src';
 describe('OutsideClick', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify call onOutsideClick worsk if event outside', () => {
+  test.concurrent('Verify call onOutsideClick if event outside', () => {
     const onOutsideClick = vi.fn();
     render(<OutsideClick onOutsideClick={onOutsideClick} />);
 
@@ -16,7 +16,7 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).toBeCalled();
   });
 
-  test.concurrent('Verify supports excludeRefs with single and multiple elements', () => {
+  test.concurrent('Verify excludeRefs with single and multiple elements', () => {
     const onOutsideClick = vi.fn();
     const outsideRef1 = React.createRef<any>();
     const outsideRef2 = React.createRef<any>();
@@ -45,7 +45,7 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test.concurrent('Verify supports excludeRefs', () => {
+  test.concurrent('Verify excludeRefs', () => {
     const onOutsideClick = vi.fn();
     const outsideRef = React.createRef<any>();
     const { getByTestId } = render(
@@ -62,7 +62,7 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test.concurrent('Verify supports excludeRefs node', () => {
+  test.concurrent('Verify excludeRefs node', () => {
     const onOutsideClick = vi.fn();
     render(
       <>

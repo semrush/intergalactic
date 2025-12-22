@@ -51,9 +51,9 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
   }
 }
 
-const Clear = () => {
+function Clear() {
   return <Root render={ButtonLink} />;
-};
+}
 
 const AddFilterInput = createComponent(AddFilterInputRoot, {
   Value: Input.Value,

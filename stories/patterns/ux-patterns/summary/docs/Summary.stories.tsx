@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DefaultSummaryExample from './examples/default-summary-example';
 import SummaryWithErrorExample from './examples/summary-with-error';
-import SummaryWithMinitrensExample from './examples/summary-with-minitrend';
+import SummaryWithMinitrendsExample from './examples/summary-with-minitrend';
 
 const meta: Meta = {
   title: 'Patterns/UX Patterns/Summary',
@@ -16,8 +16,8 @@ export const SummaryWithError: StoryObj = {
   render: SummaryWithErrorExample,
 };
 
-export const SummaryWithMinitrens: StoryObj = {
-  render: SummaryWithMinitrensExample,
+export const SummaryWithMinitrends: StoryObj = {
+  render: SummaryWithMinitrendsExample,
 };
 
 export default meta;

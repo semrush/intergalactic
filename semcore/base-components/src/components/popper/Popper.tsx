@@ -89,7 +89,7 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhance> {
+class PopperRoot extends Component<PopperProps, typeof PopperRoot.enhance, { visible: null }, typeof PopperRoot.defaultProps> {
   static displayName = 'Popper';
 
   static style = style;
@@ -458,9 +458,11 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
             }
           }
           if (!visible && component === 'popper') {
+            const { timeout } = this.asProps;
+            const latency = Array.isArray(timeout) ? timeout[1] : timeout;
             setTimeout(() => {
               this.ignoreTriggerFocus = false;
-            }, 0);
+            }, latency + 20);
           }
         }, 0);
       });

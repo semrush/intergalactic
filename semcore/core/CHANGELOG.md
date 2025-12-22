@@ -6,11 +6,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Removed `WithI18n`. Use `useI18n`. From v16.
-- Removed `WithCSS`. Use `useCss`. From v16.
-- Removed `WithAutoFocus`. Use `autoFocusEnhance`. From v16.
-- Removed `WithKeyboardFocus`. Just don't use. From v16.
-- Removed `WithRef`. Use `useForkRef`. From v16.
+- Removed `WithI18n`. Use `useI18n`.
+- Removed `WithCSS`. Use `useCss`.
+- Removed `WithAutoFocus`. Use `autoFocusEnhance`.
+- Removed `WithKeyboardFocus`. Just don't use.
+- Removed `WithRef`. Use `useForkRef`.
+
+## [16.5.1] - 2025-10-30
+
+### Fixed
+
+- Unnecessary calculations in `sstyled` wrapper.
 
 ## [16.5.0] - 2025-10-03
 

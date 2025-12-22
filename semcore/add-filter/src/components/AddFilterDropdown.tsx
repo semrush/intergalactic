@@ -11,7 +11,7 @@ type AsPropsTypeWithHandlers<T> = T & {
   setFocusRef: (el: HTMLElement) => {};
 };
 
-class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
+class AddFilterDropdownRoot extends Component<AddFilterItemProps, [], { visible: null }> {
   static displayName = 'AddFilterDropdown';
 
   static defaultProps = () => {
@@ -22,7 +22,7 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
 
   uncontrolledProps() {
     return {
-      visible: [null],
+      visible: null,
     };
   }
 

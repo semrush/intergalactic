@@ -1,3 +1,9 @@
+/**
+ *
+ * @deprecated Please use `@semcore/process-css-unplugin` instead.
+ *
+*/
+
 const fs = require('fs');
 const os = require('os');
 const path = require('path');

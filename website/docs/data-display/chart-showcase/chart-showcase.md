@@ -54,7 +54,7 @@ const group = {
     type: 'charts',
   },
   donut: {
-    title: 'Donut Pie chart',
+    title: 'Donut chart',
     route: '/intergalactic/data-display/donut-chart/donut-chart',
     disabled: false,
     type: 'charts',
@@ -347,7 +347,7 @@ import { Box } from '@semcore/base-components';
 
 const group = {
   donut: {
-    title: 'Donut Pie chart',
+    title: 'Donut chart',
     route: '/intergalactic/data-display/donut-chart/donut-chart',
     disabled: false,
     type: 'charts',

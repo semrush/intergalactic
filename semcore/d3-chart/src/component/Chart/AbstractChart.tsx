@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React from 'react';
@@ -26,7 +26,7 @@ export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
   E extends readonly ((...args: any[]) => any)[] = [],
-> extends Component<T, {}, ChartState, E> {
+> extends Component<T, E, Readonly<{}>, {}, ChartState> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -401,8 +401,16 @@ export abstract class AbstractChart<
   }
 
   protected renderAxis(): React.ReactNode {
-    const { invertAxis, showXAxis, showYAxis, data, axisXValueFormatter, axisYValueFormatter } =
-      this.asProps;
+    const {
+      invertAxis,
+      showXAxis,
+      showYAxis,
+      data,
+      axisXValueFormatter,
+      axisYValueFormatter,
+      multilineXTicks,
+      multilineYTicks,
+    } = this.asProps;
 
     if (!Array.isArray(data)) {
       return null;
@@ -424,10 +432,10 @@ export abstract class AbstractChart<
           <YAxis>
             {yTicks
               ? (
-                  <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
                 )
               : (
-                  <YAxis.Ticks>{childrenY}</YAxis.Ticks>
+                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
                 )}
             {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
           </YAxis>
@@ -437,10 +445,10 @@ export abstract class AbstractChart<
           <XAxis>
             {xTicks
               ? (
-                  <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
                 )
               : (
-                  <XAxis.Ticks>{childrenX}</XAxis.Ticks>
+                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
                 )}
             {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
           </XAxis>
@@ -451,13 +459,13 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration } =
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter } =
       this.asProps;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group'>
+      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group'>
         {this.renderLegend()}
         <Plot
           data={data}
@@ -468,6 +476,7 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
+          eventEmitter={eventEmitter}
           {...extractedAriaProps}
         >
           {this.renderAxis()}

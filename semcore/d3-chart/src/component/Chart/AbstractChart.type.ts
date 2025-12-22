@@ -1,11 +1,12 @@
+import type { FlexProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { FlexProps } from '@semcore/flex-box';
 import type Icon from '@semcore/icon';
 import type React from 'react';
 
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
+import type { PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -55,120 +56,132 @@ export type AriaNameProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
-  AriaNameProps & {
-    /**
-     * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
-     */
-    data: T;
-    /**
-     * Width of plot
-     */
-    plotWidth: number;
-    /**
-     * Height of plot
-     */
-    plotHeight: number;
+export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
+  /**
+   * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
+   */
+  data: T;
+  /**
+   * Width of plot
+   */
+  plotWidth: number;
+  /**
+   * Height of plot
+   */
+  plotHeight: number;
 
-    /** Enables charts patterns that enhances charts accessibility */
-    patterns?: PatternsConfig;
-    /**
-     * Margin (for Y axis points) from left side of chart container to Y axis
-     */
-    marginY?: number;
-    /**
-     * Margin (for X axis points) from bottom of chart container to X axis
-     */
-    marginX?: number;
-    /**
-     * invert axis and show horizontal charts (only for Bars!)
-     */
-    invertAxis?: boolean;
+  /** Enables charts patterns that enhances charts accessibility */
+  patterns?: PatternsConfig;
+  /**
+   * Margin (for Y axis points) from left side of chart container to Y axis
+   */
+  marginY?: number;
+  /**
+   * Margin (for X axis points) from bottom of chart container to X axis
+   */
+  marginX?: number;
+  /**
+   * invert axis and show horizontal charts (only for Bars!)
+   */
+  invertAxis?: boolean;
 
-    /**
-     * Show X axis
-     * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
-     */
-    showXAxis?: boolean;
-    /**
-     * Show Y axis
-     * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
-     */
-    showYAxis?: boolean;
-    /**
-     * Map with colors for data items
-     */
-    colorMap?: Record<string, string>;
-    /**
-     * Show tooltip's.
-     * @default true
-     */
-    showTooltip?: boolean;
-    /**
-     * Show sum of values for selected point in tooltip
-     */
-    showTotalInTooltip?: boolean;
-    /**
-     * Scale for xAxis (see more in d3-scale)
-     */
-    xScale?: unknown;
-    /**
-     * Scale for yAxis (see more in d3-scale)
-     */
-    yScale?: unknown;
-    /**
-     * Count of ticks for X axis
-     */
-    xTicksCount?: number;
-    /**
-     * Count of ticks for Y axis
-     */
-    yTicksCount?: number;
-    /**
-     * Group key for all array-based charts (for get keys of items for legend except that group key)
-     */
-    groupKey?: string;
-    /**
-     * function for format axis item text
-     */
-    axisXValueFormatter?: (value: unknown) => string;
-    axisYValueFormatter?: (value: unknown) => string;
-    /**
-     * Function for format text for tooltip
-     */
-    tooltipValueFormatter?: (value?: unknown) => string;
-    /**
-     * Config for a11y summary
-     */
-    a11yAltTextConfig?: PlotSummarizerConfig;
+  /**
+   * Show X axis
+   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   */
+  showXAxis?: boolean;
+  /**
+   * Show Y axis
+   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   */
+  showYAxis?: boolean;
+  /**
+   * Map with colors for data items
+   */
+  colorMap?: Record<string, string>;
+  /**
+   * Show tooltip's.
+   * @default true
+   */
+  showTooltip?: boolean;
+  /**
+   * Show sum of values for selected point in tooltip
+   */
+  showTotalInTooltip?: boolean;
+  /**
+   * Scale for xAxis (see more in d3-scale)
+   */
+  xScale?: unknown;
+  /**
+   * Scale for yAxis (see more in d3-scale)
+   */
+  yScale?: unknown;
+  /**
+   * Count of ticks for X axis
+   */
+  xTicksCount?: number;
+  /**
+   * Count of ticks for Y axis
+   */
+  yTicksCount?: number;
+  /** Enables multiline tick labels for X axis, applicable only for band scales */
+  multilineXTicks?: boolean;
+  /** Enables multiline tick labels for Y axis, applicable only for band scales */
+  multilineYTicks?: boolean;
+  /**
+   * Group key for all array-based charts (for get keys of items for legend except that group key)
+   */
+  groupKey?: string;
+  /**
+   * function for format axis item text
+   */
+  axisXValueFormatter?: (value: unknown) => string;
+  axisYValueFormatter?: (value: unknown) => string;
+  /**
+   * Function for format text for tooltip
+   */
+  tooltipValueFormatter?: (value?: unknown) => string;
+  /**
+   * Custom event emitter. Could be useful to handle event on few charts at the same time.
+   */
+  eventEmitter?: InstanceType<typeof PlotEventEmitter>;
+  /**
+   * Config for a11y summary
+   */
+  a11yAltTextConfig?: PlotSummarizerConfig;
 
+  /**
+   * Animations duration, set 0 to disable animations
+   */
+  duration?: number;
+  /**
+   * Flag to show/hide legend
+   */
+  showLegend?: boolean;
+  /**
+   * Props for Legend
+   */
+  legendProps?: Partial<BaseLegendProps>;
+} & (
+  | {
+  /**
+   * Don't show legend
+   */
+    showLegend?: false;
+    legendProps?: never;
+  }
+  | {
+  /**
+   *  By default (if showLegend don't set), for one data item on chart,
+   *  Legend component will be hide, and show for more then 1 data item.
+   *  If set `true` - Legend component will show always.
+   */
+    showLegend?: true;
     /**
-     * Animations duration, set 0 to disable animations
-     */
-    duration?: number;
-  } /**
-   * By default, we show the Legend for all charts with more the one data item.
-   * For hide the Legend, you should set showLegend prop to `false`.
-  */ & (
-    | {
-      /**
-         * Don't show legend
-         */
-      showLegend?: false;
-      legendProps?: never;
-    }
-    | {
-      /**
-         *  By default (if showLegend don't set), for one data item on chart,
-         *  Legend component will be hide, and show for more then 1 data item.
-         *  If set `true` - Legend component will show always.
-         */
-      showLegend?: true;
-      /**
-         * Props for Legend
-         */
-      legendProps?: Partial<BaseLegendProps>;
-    }
+   * Props for Legend
+   */
+    legendProps?: Partial<BaseLegendProps>;
+  }
   );
 
 type LegendDataMap<T extends 'Flex' | 'Table'> = Record<

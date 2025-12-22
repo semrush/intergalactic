@@ -11,6 +11,8 @@ import {
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/bar';
+
 const eventEmitter = new PlotEventEmitter();
 
 const Demo = () => {
@@ -86,9 +88,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(10).keys()].map((i) => ({
-  download: 172 + 10 * i,
-  date_chart: String(1594791280000 + 1000000000 * i),
-}));
+const data = BarMockData.Date;
 
 export default Demo;

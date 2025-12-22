@@ -1,9 +1,9 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
@@ -46,7 +46,7 @@ class PlotRoot extends Component {
       const [maxY, minY] = yScale.range();
 
       if (pX >= minX && pX <= maxX && pY >= minY && pY <= maxY) {
-        this.eventEmitter.emit('onMouseMoveChart', e);
+        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current);
       } else {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }
@@ -81,6 +81,7 @@ class PlotRoot extends Component {
         resolveColor,
         patterns,
         duration,
+        plotId: this.plotId,
       },
     };
   }
@@ -104,6 +105,7 @@ class PlotRoot extends Component {
         onMouseLeave={this.handlerMouseLeave}
         aria-label={ariaLabel}
         tabIndex={0}
+        data-plot-id={this.plotId}
       >
         <Children />
         <foreignObject width='100%' height='100%' data-aria-only>

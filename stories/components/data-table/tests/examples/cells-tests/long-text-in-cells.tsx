@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/ui/icon/Check/m';
 import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';

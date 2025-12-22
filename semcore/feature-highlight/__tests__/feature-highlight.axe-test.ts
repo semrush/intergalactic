@@ -1,145 +1,101 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Feature highlight', () => {
-  test('Badge', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/badge.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+test.describe(`@feature-highlight ${TAG.ACCESSIBILITY}`, () => {
+  test('Verify Badge has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/badge.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Button', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/button.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Button has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/button.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Checkbox', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/checkbox.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Checkbox has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/checkbox.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Data table', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/data-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Data table has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/data-table.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Input', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Input has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/input.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Notice', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/notice.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Notice has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/notice.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Pills', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/pills.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Pills has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/pills.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Radio', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/radio.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Radio has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/radio.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Select', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Select has no Axe issues in closed state', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/select.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    {
+    await test.step('Verify closed state', async () => {
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
+    });
 
-    {
+    await test.step('Verify opened state', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-
       await page.getByRole('option').first().waitFor({ state: 'visible' });
+
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    {
+    await test.step('Verify closed state after selection', async () => {
       await page.keyboard.press('Enter');
-
       await page.getByRole('option').first().waitFor({ state: 'hidden' });
-      const violations = await getAccessibilityViolations({ page });
 
+      const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
+    });
   });
 
-  test('Switch', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/switch.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Switch has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/switch.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 
-  test('Tabline', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/feature-highlight/docs/examples/tabline.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Tabline has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/docs/examples/tabline.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
-
     expect(violations).toEqual([]);
   });
 });

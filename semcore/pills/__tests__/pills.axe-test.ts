@@ -1,28 +1,24 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Pills', () => {
+test.describe(`@pills ${TAG.ACCESSIBILITY}`, () => {
   test('Basic example', async ({ page }) => {
-    const standPath = 'stories/components/pills/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/pills/docs/examples/basic_example.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
+
   test('Tabs example', async ({ page }) => {
-    const standPath = 'stories/components/pills/docs/examples/tabs_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/pills/docs/examples/tabs_example.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
 
   test('Custom pills example', async ({ page }) => {
-    const standPath = 'stories/components/pills/docs/examples/custom_pills_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/pills/docs/examples/custom_pills_example.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);

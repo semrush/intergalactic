@@ -91,7 +91,7 @@ class InputSearchRoot extends Component {
   }
 }
 
-const SearchIcon = (props) => {
+function SearchIcon(props) {
   const SSearchIcon = Root;
   const { styles } = props;
   return sstyled(styles)(
@@ -99,17 +99,17 @@ const SearchIcon = (props) => {
       <SearchM />
     </SSearchIcon>,
   );
-};
-const SearchValue = (props) => {
+}
+function SearchValue(props) {
   const SSearchValue = Root;
   const { styles } = props;
   return sstyled(styles)(<SSearchValue render={Input.Value} />);
-};
-const SearchClear = (props) => {
+}
+function SearchClear(props) {
   const SSearchClear = Root;
   const { styles } = props;
   return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use='secondary' />);
-};
+}
 
 const InputSearch = createComponent(InputSearchRoot, {
   SearchIcon: SearchIcon,

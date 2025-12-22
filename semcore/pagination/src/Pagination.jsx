@@ -1,8 +1,8 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import InputNumber from '@semcore/input-number';
 import { Hint } from '@semcore/tooltip';
@@ -26,7 +26,7 @@ class PaginationRoot extends Component {
   };
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
 
   nextPageButtonRef = React.createRef();
   prevPageButtonRef = React.createRef();
@@ -49,6 +49,12 @@ class PaginationRoot extends Component {
     if (prevProps.currentPage !== undefined && prevProps.currentPage !== this.asProps.currentPage) {
       this.setState({ dirtyCurrentPage: undefined });
     }
+  }
+
+  get paginationInputId() {
+    const { uid } = this.asProps;
+
+    return `pagination-input-${uid}`;
   }
 
   returnLostFocusTo = (ref) => {
@@ -88,12 +94,6 @@ class PaginationRoot extends Component {
     const { totalPages } = this.asProps;
     const finalValue = dirtyCurrentPage > totalPages ? totalPages : dirtyCurrentPage;
     return finalValue <= 0 ? 1 : finalValue;
-  };
-
-  /** @deprecated */
-  handlePageInputIconClick = () => {
-    const dirtyCurrentPage = this.getDirtyCurrentPage();
-    this.handlePageChange(dirtyCurrentPage);
   };
 
   handlePageInputKeyDown = (event) => {
@@ -164,13 +164,12 @@ class PaginationRoot extends Component {
       getI18nText,
       locale,
       size,
+      paginationInputId: this.paginationInputId,
     };
   };
 
-  /** @deprecated */
   getPageInputAddonProps = () => {
     return {
-      onClick: this.handlePageInputIconClick,
       ref: this.pageInputAddonRef,
       onBlur: this.handlePageValueBlur,
     };
@@ -189,6 +188,7 @@ class PaginationRoot extends Component {
       onKeyDown: this.handlePageInputKeyDown,
       getI18nText,
       size,
+      id: this.paginationInputId,
     };
   };
 
@@ -334,7 +334,7 @@ class TotalPages extends Component {
   }
 }
 
-const PageInputValue = (props) => {
+function PageInputValue(props) {
   const SPageInputValue = Root;
 
   return sstyled(props.styles)(
@@ -345,12 +345,12 @@ const PageInputValue = (props) => {
       onBlur={() => false}
     />,
   );
-};
+}
 
-const PageInputAddon = (props) => {
+function PageInputAddon(props) {
   const SPageInputAddon = Root;
   return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
-};
+}
 
 class PageInput extends Component {
   static enhance = [uniqueIDEnhancement()];
@@ -358,11 +358,11 @@ class PageInput extends Component {
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { Children, getI18nText, styles, uid, locale, size } = this.asProps;
+    const { Children, getI18nText, styles, locale, size, paginationInputId } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SLabel tag='label' htmlFor={`pagination-input-${uid}`} size={size}>
+        <SLabel tag='label' htmlFor={paginationInputId} size={size}>
           {getI18nText('pageInputLabel')}
         </SLabel>
         <SPageInput
@@ -375,7 +375,7 @@ class PageInput extends Component {
                 <Children />
               )
             : (
-                <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
+                <Pagination.PageInput.Value />
               )}
         </SPageInput>
       </>,

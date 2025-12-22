@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Box, Flex } from '@semcore/ui/flex-box';
 import FavoriteFilledM from '@semcore/ui/icon/FavoriteFilled/m';
 import { Text } from '@semcore/ui/typography';
 import type { FC } from 'react';

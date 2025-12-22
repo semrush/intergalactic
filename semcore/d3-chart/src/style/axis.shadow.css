@@ -61,28 +61,64 @@ STick[position='bottom'] {
   transform: translateY(12px);
   text-anchor: middle;
   dominant-baseline: hanging;
+
+  tspan {
+    dominant-baseline: hanging;
+  }
 }
 
 STick[position='right'] {
   transform: translateX(16px);
   text-anchor: start;
   dominant-baseline: middle;
+
+  tspan {
+    dominant-baseline: middle;
+  }
+
+  &[multiline] {
+    dominant-baseline: auto;
+
+    tspan {
+      dominant-baseline: auto;
+    }
+  }
 }
 
 STick[position='left'] {
   transform: translateX(-16px);
   text-anchor: end;
   dominant-baseline: middle;
+
+  tspan {
+    dominant-baseline: middle;
+  }
+
+  &[multiline] {
+    dominant-baseline: auto;
+
+    tspan {
+      dominant-baseline: auto;
+    }
+  }
 }
 
 STick[position='custom_0'] {
   transform: translateY(12px);
   text-anchor: middle;
   dominant-baseline: hanging;
+
+  tspan {
+    dominant-baseline: hanging;
+  }
 }
 
 STick[position='custom_1'] {
   transform: translateX(-16px);
   text-anchor: end;
   dominant-baseline: middle;
+
+  tspan {
+    dominant-baseline: middle;
+  }
 }

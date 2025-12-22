@@ -1,12 +1,22 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Pagination', () => {
-  test('Verify keyboard access with changing data', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/pagination.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+import { locators } from './utils';
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify keyboard access with changing data', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table',
+      '@pagination',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/pagination.tsx', 'en');
 
     await page.getByRole('combobox').click();
 
@@ -15,11 +25,7 @@ test.describe('Pagination', () => {
     await page.getByRole('option', { name: '8' }).click();
 
     await test.step('Focus 3rd row cell on 1st page  ', async () => {
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Shift+Tab');
+      for (let i = 0; i < 5; i++) await page.keyboard.press('Shift+Tab');
       await expect(page.getByRole('gridcell', { name: '1 ebay buy' })).toBeFocused();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
@@ -28,12 +34,8 @@ test.describe('Pagination', () => {
       await page.keyboard.press('Tab');
       await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
 
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Space');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Space');
+
       await expect(page.getByRole('button', { name: 'Prev' })).toBeFocused();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');

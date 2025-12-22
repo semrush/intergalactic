@@ -1,7 +1,7 @@
 import Button from '@semcore/ui/button';
 import FileExportM from '@semcore/ui/icon/FileExport/m';
 import Link from '@semcore/ui/link';
-import Tooltip, { DescriptionTooltip, Hint, type DescriptionTooltipProps, type HintProps, type TooltipProps } from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip, Hint, type DescriptionTooltipProps, type TooltipHintProps, type TooltipProps } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -14,7 +14,7 @@ const Components = [Hint.displayName, Tooltip.displayName, DescriptionTooltip.di
 type AdditionalJSXProps<Component extends (typeof Components)[number]> = {
   component: Component;
 };
-type HintComponentJSXProps = JSXProps<HintProps> & AdditionalJSXProps<'Hint'>;
+type HintComponentJSXProps = JSXProps<TooltipHintProps> & AdditionalJSXProps<'Hint'>;
 type DescriptionTooltipComponentJSXProps = JSXProps<DescriptionTooltipProps> & AdditionalJSXProps<'DescriptionTooltip'>;
 type TooltipComponentJSXProps = JSXProps<TooltipProps> & AdditionalJSXProps<'Tooltip'>;
 

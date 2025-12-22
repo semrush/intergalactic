@@ -2,5 +2,7 @@
   "next": "Nästa bild",
   "prev": "Föregående bild",
   "slides": "Bilder",
-  "slide": "Bild {slideNumber}"
+  "slide": "Bild {slideNumber}",
+  "Carousel:aria-roledescription": "carousel",
+  "Carousel.Indicator:aria-roledescription": "bild"
 }

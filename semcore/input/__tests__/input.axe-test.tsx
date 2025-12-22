@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Input', () => {
+test.describe(`${TAG.ACCESSIBILITY} @input `, () => {
   test('Input with submit', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -26,10 +24,7 @@ test.describe('Input', () => {
   });
 
   test('Input with text addon', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_text_addon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -49,10 +44,7 @@ test.describe('Input', () => {
   });
 
   test('Input with multiple addons', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_multiple_addons.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_multiple_addons.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -72,11 +64,7 @@ test.describe('Input', () => {
   });
 
   test('Input with other component ', async ({ page }) => {
-    const standPath =
-      'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -88,10 +76,7 @@ test.describe('Input', () => {
   });
 
   test('Input with clear ', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -111,10 +96,7 @@ test.describe('Input', () => {
   });
 
   test('Input with loading state ', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
@@ -134,10 +116,7 @@ test.describe('Input', () => {
   });
 
   test('Input password ', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/password_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
     {
       await page.keyboard.press('Tab');
