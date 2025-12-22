@@ -79,7 +79,6 @@ class Switch extends Component {
 }
 
 class Value extends Component {
-  static hoistProps = ['checked', 'disabled'];
   static enhance = [resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,

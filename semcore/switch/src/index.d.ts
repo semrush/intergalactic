@@ -15,6 +15,8 @@ export type SwitchProps = BoxProps &
      * @default info
      */
     theme?: SwitchTheme;
+    /** Disabled state  */
+    disabled?: boolean;
   };
 
 export type SwitchValueProps = BoxProps &
@@ -26,8 +28,6 @@ export type SwitchValueProps = BoxProps &
     /** Initial state for uncontrolled mode
      * @default false */
     defaultChecked?: boolean;
-    /** Disabled state  */
-    disabled?: boolean;
     /** The list of properties that can be placed in the hidden input */
     includeInputProps?: string[];
     /** Switch theme */

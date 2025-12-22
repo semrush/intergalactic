@@ -30,7 +30,7 @@ export const selectedIndexContext = React.createContext(0);
 
 export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof enhance, {
   selectedIndex: null;
-  highlightedIndex: null;
+  highlightedIndex: any;
   visible: null;
 }> {
   protected abstract role: 'menu' | 'listbox';

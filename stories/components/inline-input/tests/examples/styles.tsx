@@ -24,9 +24,9 @@ const Styles = (props: ExampleInputTagsProps) => {
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <InlineInput onBlurBehavior={onBlurBehavior} state={state} loading={loading}>
+          <InlineInput onBlurBehavior={onBlurBehavior} state={state} loading={loading} disabled={disabled}>
             <InlineInput.Addon>I don't care, I punk:</InlineInput.Addon>
-            <InlineInput.Value id='constant-placeholder' defaultValue={defaultValue} disabled={disabled} placeholder={placeholder} />
+            <InlineInput.Value id='constant-placeholder' defaultValue={defaultValue} placeholder={placeholder} />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
