@@ -1,5 +1,5 @@
+import { Box } from '@semcore/ui/base-components';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

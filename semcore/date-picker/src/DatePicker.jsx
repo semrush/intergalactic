@@ -1,8 +1,8 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
-import { Box } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 

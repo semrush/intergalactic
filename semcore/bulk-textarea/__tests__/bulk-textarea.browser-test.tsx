@@ -67,10 +67,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
         await page.keyboard.type('\n[]');
+        await page.waitForTimeout(100);
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Shift+Tab');
+
+        await locators.button(page, 'Next error').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Next error')).toBeFocused();
 
         await page.keyboard.press('Shift+Tab');
-        await locators.button(page, 'Next error').waitFor({ state: 'visible' });
-        await page.keyboard.press('Tab');
+
+        await page.waitForTimeout(100);
         await page.keyboard.press('ArrowUp');
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
@@ -761,13 +769,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const text =
           'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row';
         await page.keyboard.type(text, { delay: 20 });
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
         await page.keyboard.press('Tab');
         await page.keyboard.press('Shift+Tab');
-        await page.waitForTimeout(100);
         await page.keyboard.press('Shift+Tab');
-        await page.waitForTimeout(100);
         await page.keyboard.press('Shift+Tab');
+
+        await page.waitForTimeout(200);
+
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
@@ -875,7 +884,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.type(text, { delay: 10 });
         await page.waitForTimeout(200);
         await page.keyboard.press('Tab');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(500);
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
         await locators.row(page, 4).click();
         await page.keyboard.type('test[]', { delay: 20 });
@@ -968,7 +977,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.type(text, { delay: 20 });
       await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(500);
       await expect(locators.tooltip(page)).toHaveCount(0);
       await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
       await expect(locators.errorMessage(page)).toHaveText('3 errors');

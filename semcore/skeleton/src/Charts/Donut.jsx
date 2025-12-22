@@ -11,7 +11,7 @@ const donutHalfSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/donut-chart-halfsize.svg'))
 `;
 
-const DonutChartSkeleton = (props) => {
+function DonutChartSkeleton(props) {
   const SChartSkeleton = Root;
   const halfsize = props.halfsize ?? false;
   const patternBase64 = { true: donutHalfSvg, false: donutFullSvg }[halfsize];
@@ -24,6 +24,6 @@ const DonutChartSkeleton = (props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(DonutChartSkeleton);

@@ -1,11 +1,8 @@
 import React from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { lastInteraction } from '../../LastInteractionType';
 import assignProps from '../assignProps';
 
-/** @deprecated */
-export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}
 export type KeyboardFocusProps = {
   /* Property responsible for displaying "keyboard" focus */
   keyboardFocused?: boolean;

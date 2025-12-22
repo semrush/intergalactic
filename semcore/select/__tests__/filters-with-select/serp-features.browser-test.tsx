@@ -1,189 +1,223 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { expect, test, type Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
-  test('Verify Serp features mouse interaction', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+const locators = {
+  trigger: (page: Page) => page.getByRole('combobox'),
+  textbox: (page: Page) => page.getByRole('textbox'),
+  clearSearch: (page: Page) => page.getByRole('button', { name: 'Clear search field' }),
+  reload: (page: Page) => page.getByRole('button', { name: 'Reload' }),
+  apply: (page: Page) => page.getByRole('button', { name: 'Apply' }),
+  options: (page: Page) => page.getByRole('option'),
+  checkboxes: (page: Page) => page.locator('[data-ui-name="Select.Option.Checkbox"]'),
+  clear: (page: Page) => page.getByRole('button', { name: 'Clear' }),
+  loadingText: (page: Page) => page.getByText('Loading...'),
+  errorText: (page: Page) => page.getByText('Something went wrong.'),
+  clearSearchHint: (page: Page) => page.getByText('Clear search field'),
+  optionByName: (page: Page, name: string) => page.getByRole('option', { name }),
+  textByContent: (page: Page, text: string) => page.getByText(text),
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(TAG.VISUAL, () => {
+  test('Verify SERP features mouse interaction states', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
-    const trigger = page.getByRole('combobox');
-    const textbox = page.getByRole('textbox');
-    const clearSearch = page.getByRole('button', { name: 'Clear search field' });
-    const reload = page.getByRole('button', { name: 'Reload' });
-    const apply = page.getByRole('button', { name: 'Apply' });
-    const options = page.getByRole('option');
-    await trigger.click();
-    await page.getByText('Loading...').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify loading state', async () => {
+      await locators.trigger(page).click();
+      await locators.loadingText(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.getByText('Something went wrong.').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify error state', async () => {
+      await locators.errorText(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await textbox.fill('Test');
-    await clearSearch.hover();
-    await page.getByText('Clear search field').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify clear search hint', async () => {
+      await locators.textbox(page).fill('Test');
+      await locators.clearSearch(page).hover();
+      await locators.clearSearchHint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await reload.click();
-    await apply.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify reload success state', async () => {
+      await locators.reload(page).click();
+      await locators.apply(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await clearSearch.click();
-    await options.first().waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify cleared search with options', async () => {
+      await locators.clearSearch(page).click();
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await textbox.fill('Ads');
-    await page.getByRole('option', { name: 'Shopping Ads (Product Listing' }).hover();
-    await page.getByText('Shopping Ads (Product Listing').nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify option hover with hint', async () => {
+      await locators.textbox(page).fill('Ads');
+      await locators.optionByName(page, 'Shopping Ads (Product Listing').hover();
+      await locators.textByContent(page, 'Shopping Ads (Product Listing').nth(1).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await options.first().click();
-    await apply.click();
-    await apply.waitFor({ state: 'hidden' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify applied filter state', async () => {
+      await locators.options(page).first().click();
+      await locators.apply(page).click();
+      await locators.apply(page).waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
   });
-  test('Verify Serp features keyboard interaction', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    await page.setContent(htmlContent);
+  test('Verify SERP features keyboard interaction states', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
-    const apply = page.getByRole('button', { name: 'Apply' });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
+    await test.step('Verify loading state via keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.loadingText(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.getByText('Loading...').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify error state via keyboard', async () => {
+      await locators.errorText(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.getByText('Something went wrong.').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify reload success state via keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.apply(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await apply.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify search and navigation state', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Ads');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Ads');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify selected options state', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Space');
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('Space');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Space');
-
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await apply.waitFor({ state: 'hidden' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify applied state via keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await locators.apply(page).waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify keyboard interaction', async ({ page }) => {
-    const standPath = 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.getByRole('combobox');
-    const textbox = page.getByRole('textbox');
-    const clearSearch = page.getByRole('button', { name: 'Clear search field' });
-    const reload = page.getByRole('button', { name: 'Reload' });
-    const apply = page.getByRole('button', { name: 'Apply' });
-    const options = page.getByRole('option');
-    const checkboxes = page.locator('[data-ui-name="Select.Option.Checkbox"]');
-    const clear = page.getByRole('button', { name: 'Clear' });
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(TAG.FUNCTIONAL, () => {
+  test('Verify SERP features keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+
     await test.step('Verify focus order when reload state', async () => {
-      await page.getByText('Something went wrong.').waitFor({ state: 'visible' });
-      await expect(textbox).toBeFocused();
+      await locators.errorText(page).waitFor({ state: 'visible' });
+      await expect(locators.textbox(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
-      await expect(reload).toBeFocused();
+      await expect(locators.reload(page)).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');
-      await expect(textbox).toBeFocused();
+      await expect(locators.textbox(page)).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');
-      await expect(reload).toBeFocused();
+      await expect(locators.reload(page)).toBeFocused();
     });
 
     await test.step('Verify focus order in the input', async () => {
       await page.keyboard.press('Enter');
-      await apply.waitFor({ state: 'visible' });
+      await locators.apply(page).waitFor({ state: 'visible' });
 
       await page.keyboard.press('Tab');
       await page.keyboard.type('a');
-      await expect(clearSearch).toBeVisible();
+      await expect(locators.clearSearch(page)).toBeVisible();
       await page.keyboard.press('Tab');
-      await expect(clearSearch).toBeFocused();
+      await expect(locators.clearSearch(page)).toBeFocused();
       await page.keyboard.press('Enter');
-      await expect(clearSearch).not.toBeVisible();
-      await expect(textbox).toBeFocused();
+      await expect(locators.clearSearch(page)).not.toBeVisible();
+      await expect(locators.textbox(page)).toBeFocused();
     });
 
     await test.step('Verify all options can be selected', async () => {
       await page.keyboard.press('ArrowDown');
-      await expect(page.getByRole('option', { name: 'Select all' })).toHaveClass(/highlighted/);
+      await expect(locators.optionByName(page, 'Select all')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await options.count();
+      const count = await locators.options(page).count();
       for (let i = 0; i < count - 2; i++) {
-        await expect(checkboxes.nth(i)).toHaveClass(/selected/);
+        await expect(locators.checkboxes(page).nth(i)).toHaveClass(/selected/);
       }
-      await expect(page.getByRole('option', { name: 'None' })).toHaveAttribute('disabled');
+      await expect(locators.optionByName(page, 'None')).toHaveAttribute('disabled');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'hidden' });
-      await expect(trigger).toHaveText(/SERP Features: All selected/);
+      await locators.apply(page).waitFor({ state: 'hidden' });
+      await expect(locators.trigger(page)).toHaveText(/SERP Features: All selected/);
     });
 
     await test.step('Verify all options can be deselected and cleared', async () => {
       await page.keyboard.press('ArrowDown');
-      await apply.waitFor({ state: 'visible' });
+      await locators.apply(page).waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
-      await expect(page.getByRole('option', { name: 'Deselect all' })).toHaveClass(/highlighted/);
+      await expect(locators.optionByName(page, 'Deselect all')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await options.count();
+      const count = await locators.options(page).count();
       for (let i = 0; i < count - 2; i++) {
-        await expect(checkboxes.nth(i)).not.toHaveClass(/selected/);
+        await expect(locators.checkboxes(page).nth(i)).not.toHaveClass(/selected/);
       }
-      await expect(page.getByRole('option', { name: 'None' })).not.toHaveAttribute('disabled');
+      await expect(locators.optionByName(page, 'None')).not.toHaveAttribute('disabled');
 
       await page.keyboard.press('Tab');
-      await expect(clear).toBeFocused();
+      await expect(locators.clear(page)).toBeFocused();
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'hidden' });
-      await expect(trigger).toBeFocused();
-      await expect(trigger).toHaveText(/SERP Features/);
+      await locators.apply(page).waitFor({ state: 'hidden' });
+      await expect(locators.trigger(page)).toBeFocused();
+      await expect(locators.trigger(page)).toHaveText(/SERP Features/);
     });
 
     await test.step('Verify none can be deselected', async () => {
       await page.keyboard.press('ArrowDown');
-      await apply.waitFor({ state: 'visible' });
+      await locators.apply(page).waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowUp');
-      await expect(page.getByRole('option', { name: 'None' })).toHaveClass(/highlighted/);
+      await expect(locators.optionByName(page, 'None')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await options.count();
+      const count = await locators.options(page).count();
       for (let i = 0; i < count - 2; i++) {
-        await expect(checkboxes.nth(i)).toHaveAttribute('disabled');
+        await expect(locators.checkboxes(page).nth(i)).toHaveAttribute('disabled');
       }
-      await expect(page.getByRole('option', { name: 'None' })).not.toHaveAttribute('disabled');
+      await expect(locators.optionByName(page, 'None')).not.toHaveAttribute('disabled');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await apply.waitFor({ state: 'hidden' });
-      await expect(trigger).toBeFocused();
-      await expect(trigger).toHaveText(/SERP Features: %none%/);
+      await locators.apply(page).waitFor({ state: 'hidden' });
+      await expect(locators.trigger(page)).toBeFocused();
+      await expect(locators.trigger(page)).toHaveText(/SERP Features: %none%/);
     });
   });
 });

@@ -17,7 +17,6 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.11",
     "@semcore/checkbox": "16.2.1",
     "@semcore/notice-bubble": "16.1.12",
     "@semcore/typography": "16.3.2",
@@ -45,6 +44,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@types/final-form-focus": "1.1.7",
     "@semcore/testing-utils": "workspace:*"
   },

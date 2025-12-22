@@ -1,9 +1,9 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';

@@ -1,13 +1,13 @@
 {
   "currentColor": "색상 필드, 현재 색상은 {color}",
-  "emptyColor": "Color field",
-  "palette": "Colors palette",
+  "emptyColor": "색상 필드",
+  "palette": "색상 팔레트",
   "presetColors": "색상 프리셋",
-  "customColors": "Custom preset colors",
-  "addColor": "Add color",
+  "customColors": "사용자 지정 프리셋 색상",
+  "addColor": "색상 추가",
   "clearColor": "색상 지우기",
-  "colorField": "Custom color, HEX format",
+  "colorField": "사용자 지정 색상, HEX 형식",
   "colorFieldConfirm": "색상을 맞춤 색상 목록에 추가합니다",
   "colorFieldClear": "맞춤 색상 필드 지우기",
-  "deleteColorDescriber": "Delete color with backspace"
+  "deleteColorDescriber": "백스페이스로 색상 삭제"
 }

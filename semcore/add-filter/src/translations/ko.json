@@ -1,4 +1,5 @@
 {
   "AddFilter.DropdownTrigger.Text": "필터 추가",
-  "AddFilter.Button.Text": "필터 지우기"
+  "AddFilter.Button.Text": "필터 지우기",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "필터 해제됨"
 }

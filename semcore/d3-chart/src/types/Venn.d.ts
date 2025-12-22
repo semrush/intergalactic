@@ -1,4 +1,4 @@
-import type { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
 
 import type { Context } from './context';

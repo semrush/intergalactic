@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
 import ChevronRightIcon from '@semcore/ui/icon/ChevronRight/m';
 import React from 'react';
 

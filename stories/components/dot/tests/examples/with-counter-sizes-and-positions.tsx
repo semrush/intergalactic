@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Dot from '@semcore/ui/dot';
 import type { DotProps } from '@semcore/ui/dot';
-import { Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
 import React from 'react';

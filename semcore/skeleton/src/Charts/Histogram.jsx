@@ -11,7 +11,7 @@ const histogramHorizontalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/histogram-chart-horizontal.svg'))
 `;
 
-const HistogramChartSkeleton = (props) => {
+function HistogramChartSkeleton(props) {
   const SChartSkeleton = Root;
   const layout = props.layout ?? 'horizontal';
   const patternBase64 = { vertical: histogramVerticalSvg, horizontal: histogramHorizontalSvg }[
@@ -26,6 +26,6 @@ const HistogramChartSkeleton = (props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(HistogramChartSkeleton);

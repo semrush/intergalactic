@@ -1,9 +1,9 @@
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
+import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps } from '@semcore/ui/dropdown-menu';
 import PlusM from '@semcore/ui/icon/MathPlus/m';
 import Pin from '@semcore/ui/icon/Pin/m';
 import Settings from '@semcore/ui/icon/Settings/m';
@@ -12,11 +12,12 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
-const listHeight = 200;
+const rowHeight = 52;
 
-type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & DropdownMenuItemHintProps & {
+type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & {
   disabledAll?: boolean;
   disabledFirstItem?: boolean;
+  visibleItems?: number;
 };
 
 const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void; disabledAll?: boolean; disabledFirstItem?: boolean }>) => {
@@ -41,14 +42,14 @@ const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: stri
               addonLeft={Settings}
               title='Settings'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
             <DropdownMenu.Item
               tag={Button}
               addonLeft={Pin}
               title='Pin'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
           </DropdownMenu.Actions>
         </Flex>
@@ -63,6 +64,9 @@ const Demo = (props: ProjectSelectorProps) => {
   const [visible, setVisible] = React.useState(false);
   const [selectedProject, setProject] = React.useState<string | null>('project 33');
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(projects.findIndex((p) => p === selectedProject));
+
+  const visibleItems = props.visibleItems ?? 10;
+  const listHeight = visibleItems * rowHeight;
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -96,7 +100,7 @@ const Demo = (props: ProjectSelectorProps) => {
 
         <DropdownMenu.VirtualList
           hMax={listHeight + 41}
-          rowHeight={52}
+          rowHeight={rowHeight}
           renderRow={Row}
           rows={projects}
 
@@ -130,6 +134,7 @@ export const defaultProps: ProjectSelectorProps = {
   disabledAll: false,
   disabledFirstItem: false,
   stretch: undefined,
+  visibleItems: 4,
 };
 
 Demo.defaultProps = defaultProps;

@@ -1,19 +1,18 @@
-import { Box } from '@semcore/base-components';
+import { ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
-import ScrollAreaComponent from '@semcore/scroll-area';
 import React from 'react';
 
 import { ListBoxContextProvider } from './Context';
 import style from '../style/dropdown-menu.shadow.css';
 
-export type RenderRowProps<T, D> = {
+export type RenderRowProps<T, D = never> = {
   index: number;
   row: T;
-  data: D;
+  data: [D] extends [never] ? undefined : D;
 };
 
-type VirtualListProps<T, D extends object> = {
+type VirtualListProps<T, D extends object = never> = {
   /** List of all rows in ddMenu */
   rows: T[];
   /** Method for render row, it's better to wrap it via React.memo */
@@ -24,21 +23,22 @@ type VirtualListProps<T, D extends object> = {
    * @default 10
    */
   rowsBuffer?: number;
+} & ([D] extends [never] ? { customData?: undefined } : {
   /** Some custom data for each renderRow function */
   customData: D;
-};
+});
 
 type State = {
   scrollTop: number;
   scrollDirection: 'up' | 'down';
 };
 
-class VirtualListRoot<T = string, D extends object = {}> extends Component<VirtualListProps<T, D>, {}, State, [], { rowsBuffer: number; index: number }> {
+class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, [], Readonly<{}>, { rowsBuffer: number; index: number }, State> {
   static displayName = 'VirtualList';
   static style = style;
 
   static defaultProps = {
-    rowsBuffer: 10,
+    rowsBuffer: 6,
   };
 
   containerRef = React.createRef<HTMLDivElement>();
@@ -50,11 +50,15 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
   };
 
   componentDidMount() {
-    const { index, rowHeight } = this.asProps;
+    const { index, rowHeight, rowsBuffer } = this.asProps;
 
     setTimeout(() => {
       const listHeight = (this.listRef.current?.getBoundingClientRect().height ?? 0) / 2;
       this.containerRef.current?.scrollTo({ top: index * rowHeight - listHeight + rowHeight / 2 });
+
+      if (index <= rowsBuffer) {
+        this.forceUpdate(); // we need this for correct render all items with calculated container height
+      }
     }, 10); // 10 for correct work in safari
   }
 
@@ -76,18 +80,16 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
     const { scrollDirection, scrollTop } = this.state;
     const { rows, rowHeight, rowsBuffer, styles, renderRow: RenderRow, customData } = this.asProps;
 
-    const offsetHeight = 0;
-    const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 6;
-    const nextPrepared = scrollDirection === 'up' ? 6 : rowsBuffer;
+    const offsetHeight = this.listRef.current?.offsetHeight ?? 0;
+    const prevPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
+    const nextPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
 
     const startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
-    const lastIndex = scrollDirection === 'up' && scrollTop === 0
-      ? rowsBuffer
-      : Math.min(
-          Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
-          rows.length,
-        );
+    const lastIndex = Math.min(
+      Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
+      rows.length,
+    );
 
     const rowsToRender = rows.slice(startIndex, lastIndex);
     const rowMarginTop = rowHeight * startIndex;
@@ -107,6 +109,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
           <ScrollAreaComponent.Container ref={this.containerRef} tabIndex={undefined} h={rows.length * rowHeight}>
             <Box h={rowMarginTop} />
             {rowsToRender.map((item, index) => {
+              // @ts-ignore
               return <RenderRow key={startIndex + index} row={item} index={startIndex + index} data={customData} />;
             })}
             <Box h={rowMarginBottom} />
@@ -121,7 +124,7 @@ class VirtualListRoot<T = string, D extends object = {}> extends Component<Virtu
 
 export type VirtualListComponent = (<
   T = string,
-  D extends object = {},
+  D extends object = never,
 >(
   props: Intergalactic.InternalTypings.EfficientOmit<Intergalactic.InternalTypings.ComponentProps<typeof Box, 'div', VirtualListProps<T, D>>, 'tag' | 'children'>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) & Intergalactic.InternalTypings.ComponentAdditive<typeof Box, 'div', VirtualListProps<any, any>>;

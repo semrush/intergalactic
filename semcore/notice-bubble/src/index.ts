@@ -11,7 +11,6 @@ export * from './NoticeBubble';
 
 export * from './NoticeBubbleManager';
 
-export default noticeBubbleDefaultManager;
 export { NoticeBubbleContainer, noticeBubbleDefaultManager };
 
 export type {

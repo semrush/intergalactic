@@ -343,7 +343,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/notice-global/notice-global',
             activeMatch: '/components/notice-global/',
-            text: 'NoticeGlobal',
+            text: 'NoticeGlobal [deprecated]',
           },
           {
             link: '/components/pagination/pagination',
@@ -621,11 +621,6 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/table-group/table-states/table-states',
             text: 'Table states',
-          },
-          {
-            link: '/table-group/table-old/table-old',
-            activeMatch: '/table-group/table-old/',
-            text: 'Table [deprecated]',
           },
         ],
       },

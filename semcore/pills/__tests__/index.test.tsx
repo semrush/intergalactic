@@ -101,71 +101,11 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  /**
-   * @deprecated behavior
-   */
-  test('Verify behavior=tabs', async () => {
-    const spy = vi.fn();
-
-    const { getByTestId } = render(
-      <Pills behavior='tabs' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid='behavior=tabs_pill1'>
-          1
-        </Pills.Item>
-        <Pills.Item value={2} data-testid='behavior=tabs_pill2'>
-          2
-        </Pills.Item>
-        <Pills.Item value={3}>3</Pills.Item>
-      </Pills>,
-    );
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('behavior=tabs_pill1')).toHaveFocus();
-
-    await userEvent.keyboard('[ArrowRight]');
-    expect(getByTestId('behavior=tabs_pill2')).toHaveFocus();
-    expect(spy).not.toBeCalled();
-
-    await userEvent.keyboard('[ArrowRight]');
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toBeCalledWith(3, expect.anything());
-  });
-
-  /**
-   * @deprecated behavior
-   */
-  test('Verify behavior=radio', async () => {
-    const spy = vi.fn();
-
-    const { getByTestId } = render(
-      <Pills behavior='radio' defaultValue={1} onChange={spy}>
-        <Pills.Item value={1} data-testid='behavior=radio_pill1'>
-          1
-        </Pills.Item>
-        <Pills.Item value={2} data-testid='behavior=radio_pill2'>
-          2
-        </Pills.Item>
-        <Pills.Item value={3}>3</Pills.Item>
-      </Pills>,
-    );
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('behavior=radio_pill1')).toHaveFocus();
-
-    await userEvent.keyboard('[ArrowRight]');
-    expect(getByTestId('behavior=radio_pill2')).toHaveFocus();
-    expect(spy).toBeCalledWith(2, expect.anything());
-
-    await userEvent.keyboard('[ArrowRight]');
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toBeCalledWith(3, expect.anything());
-  });
-
   test('Verify behavior=manual', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='tabs' defaultValue={1} onChange={spy}>
+      <Pills behavior='manual' defaultValue={1} onChange={spy}>
         <Pills.Item value={1} data-testid='behavior=manual_pill1'>
           1
         </Pills.Item>
@@ -192,7 +132,7 @@ describe('PillGroup', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='radio' defaultValue={1} onChange={spy}>
+      <Pills behavior='auto' defaultValue={1} onChange={spy}>
         <Pills.Item value={1} data-testid='behavior=auto_pill1'>
           1
         </Pills.Item>

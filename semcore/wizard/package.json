@@ -1,7 +1,7 @@
 {
   "name": "@semcore/wizard",
   "description": "Semrush Wizard Component",
-  "version": "16.2.1",
+  "version": "16.2.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/flex-box": "16.0.11",
     "@semcore/icon": "16.7.3",
     "@semcore/modal": "16.1.12"
   },
@@ -32,6 +31,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }
