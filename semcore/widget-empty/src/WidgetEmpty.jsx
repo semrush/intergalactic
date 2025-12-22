@@ -30,17 +30,17 @@ class WidgetEmpty extends Component {
   }
 }
 
-const Title = (props) => {
+function Title(props) {
   const STitle = Root;
   const { styles } = props;
   return sstyled(styles)(<STitle render={Box} />);
-};
+}
 
-const Description = (props) => {
+function Description(props) {
   const SDescription = Root;
   const { styles } = props;
   return sstyled(styles)(<SDescription render={Box} />);
-};
+}
 
 export default createComponent(WidgetEmpty, {
   Title,

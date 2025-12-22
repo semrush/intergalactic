@@ -196,7 +196,7 @@ class ValueRoot extends Component {
   }
 }
 
-const Control = (props) => {
+function Control(props) {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
   const checkboxRef = React.useRef(null);
@@ -216,10 +216,10 @@ const Control = (props) => {
       aria-invalid={state === 'invalid'}
     />,
   );
-};
+}
 Control.displayName = 'Control';
 
-const CheckMark = (props) => {
+function CheckMark(props) {
   const SCheckbox = Root;
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked, indeterminate } = props;
@@ -228,10 +228,10 @@ const CheckMark = (props) => {
       {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
     </SCheckbox>,
   );
-};
+}
 CheckMark.displayName = 'CheckMark';
 
-const Text = (props) => {
+function Text(props) {
   const SText = Root;
   const { styles, color } = props;
 
@@ -246,7 +246,7 @@ const Text = (props) => {
   return sstyled(styles)(
     <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
   );
-};
+}
 Text.displayName = 'Text';
 
 const Value = createComponent(ValueRoot, {

@@ -11,7 +11,7 @@ const areaMonotoneSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/area-chart-monotone.svg'))
 `;
 
-const AreaChartSkeleton = (props) => {
+function AreaChartSkeleton(props) {
   const SChartSkeleton = Root;
   const patternBase64 = { linear: areaLinearSvg, monotone: areaMonotoneSvg }[
     props.type ?? 'linear'
@@ -25,6 +25,6 @@ const AreaChartSkeleton = (props) => {
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
-};
+}
 
 export default createComponent(AreaChartSkeleton);

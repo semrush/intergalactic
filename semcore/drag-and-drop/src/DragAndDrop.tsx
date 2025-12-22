@@ -588,7 +588,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
   }
 }
 
-const Draggable = (props: any) => {
+function Draggable(props: any) {
   const SDraggable = Root;
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
@@ -701,7 +701,7 @@ const findNextRectangleIndex = <
   return rectangles.indexOf(candidate!);
 };
 
-const DropZone = (props: DropZoneProps) => {
+function DropZone(props: DropZoneProps) {
   const SDropZone = Root;
   const { styles } = props;
 

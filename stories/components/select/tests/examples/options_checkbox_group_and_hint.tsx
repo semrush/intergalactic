@@ -132,7 +132,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
           mt={showLabel ? 2 : 0}
           id='advanced-select'
         />
-        <Select.Menu>
+        <Select.Menu hMax='none'>
           <Select.Option
             value={option1Value}
             disabled={disabledAll || option1Disabled}

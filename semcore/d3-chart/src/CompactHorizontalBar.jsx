@@ -469,7 +469,7 @@ class Hover extends Component {
   }
 }
 
-const CompactHorizontalBarTooltip = (props) => {
+function CompactHorizontalBarTooltip(props) {
   if (!props.render) return null;
   const SCompactHorizontalBarRadarTooltip = Root;
   return sstyled(props.styles)(

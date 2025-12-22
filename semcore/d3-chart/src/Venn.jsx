@@ -222,7 +222,7 @@ function Intersection(props) {
   );
 }
 
-const VennTooltip = (props) => {
+function VennTooltip(props) {
   const SVennTooltip = Root;
   return sstyled(props.styles)(<SVennTooltip render={Tooltip} excludeAnchorProps />);
 };

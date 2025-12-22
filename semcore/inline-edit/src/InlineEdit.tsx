@@ -124,7 +124,7 @@ const useHidden = (visible: boolean) => {
   return hidden;
 };
 
-const Edit: React.FC<AsProps> = (props) => {
+function Edit(props: AsProps) {
   const visible = props.editable;
   const SEdit = Root;
   const ref = React.useRef();
@@ -142,9 +142,9 @@ const Edit: React.FC<AsProps> = (props) => {
       ref={ref}
     />,
   ) as React.ReactElement;
-};
+}
 
-const View: React.FC<AsProps> = (props) => {
+function View(props: AsProps) {
   const visible = !props.editable;
   const SView = Root;
 
@@ -174,7 +174,7 @@ const View: React.FC<AsProps> = (props) => {
       onKeyDown={handleKeyDown}
     />,
   ) as React.ReactElement;
-};
+}
 
 type InlineEditProps = BoxProps & {
   editable?: boolean;

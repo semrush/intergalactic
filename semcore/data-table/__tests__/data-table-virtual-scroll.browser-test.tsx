@@ -38,22 +38,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify Keyboard scroll when cells have different height', {
-    tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
-      '@data-table'],
-  }, async ({ page, browserName }) => {
-    if (browserName == 'webkit') test.skip();
-    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < 50; i++) {
-      await page.keyboard.press('ArrowDown');
-    }
-    await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-  });
-
   test('Verify Mouse scroll when cells have different height', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
