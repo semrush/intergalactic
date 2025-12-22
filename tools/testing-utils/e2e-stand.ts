@@ -34,17 +34,16 @@ export const e2eStandToHtml = async (
 
             const contents = `
               import React from 'react';
-              import ReactDOM from 'react-dom';
+              import { createRoot } from 'react-dom/client';
               import App from './${standFilePath}';
               import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 
               const props = { ${propsCode} };
-              // legacy synchronous rendering for more stable visual tests
-              ReactDOM.render(
+              const root = createRoot(document.querySelector('#root'));
+              root.render(
                 <I18nProvider value='${locale}'>
                   <App {...props} />
-                </I18nProvider>,
-                document.querySelector('#root')
+                </I18nProvider>
               );
             `;
 
