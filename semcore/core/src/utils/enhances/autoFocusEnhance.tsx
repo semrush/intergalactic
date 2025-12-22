@@ -1,14 +1,11 @@
 import React from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { useForkRef } from '../ref';
 
 function notUsingNativeAutoFocus(autoFocus: any) {
   return typeof autoFocus === 'boolean' || typeof autoFocus === 'number';
 }
 
-/** @deprecated */
-export interface IWithAutoFocusEnhanceProps extends WithAutoFocusEnhanceProps, UnknownProperties {}
 export type WithAutoFocusEnhanceProps = {
   /** Native autofocus, but with support for working inside modals, you can also transmit the number of ms before focus is triggered */
   autoFocus?: boolean | number;

@@ -1,6 +1,5 @@
-import type { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps, Flex } from '@semcore/base-components';
 import type { Intergalactic, UnknownProperties } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { IconProps } from '@semcore/icon';
 
 export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral';

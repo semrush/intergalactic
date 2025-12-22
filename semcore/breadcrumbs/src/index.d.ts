@@ -1,8 +1,6 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface IBreadcrumbsProps extends BreadcrumbsProps, UnknownProperties {}
 export type BreadcrumbsProps = BoxProps & {
   /**
    * Links divider
@@ -12,8 +10,6 @@ export type BreadcrumbsProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IBreadcrumbsItemProps extends BreadcrumbsItemProps, UnknownProperties {}
 export type BreadcrumbsItemProps = BoxProps & {
   /** The property is responsible for the activity of the element */
   active?: boolean;
@@ -21,8 +17,6 @@ export type BreadcrumbsItemProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IBreadcrumbsContext extends BreadcrumbsContext, UnknownProperties {}
 export type BreadcrumbsContext = BreadcrumbsProps & {
   getItemProps: PropGetterFn;
 };

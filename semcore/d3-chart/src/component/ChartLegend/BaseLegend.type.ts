@@ -1,4 +1,4 @@
-import type { BoxProps, FlexProps } from '@semcore/flex-box';
+import type { BoxProps, FlexProps } from '@semcore/base-components';
 
 import type { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
 import type { DataStructureHints } from '../../a11y/hints';

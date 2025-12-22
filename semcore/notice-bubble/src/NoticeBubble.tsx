@@ -1,4 +1,4 @@
-import { Animation, Box } from '@semcore/base-components';
+import { Portal, Animation, Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
@@ -15,18 +15,14 @@ import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { Flex } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
-import Portal from '@semcore/portal';
 import React from 'react';
 
 import type {
-  AddedNoticeMeta,
   NoticeBubbleContainerProps,
-  NoticeBubbleProps,
-  NoticeBubbleViewItemProps, NoticeBubbleWarningProps,
+  NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
-import type { NoticeBubbleManager, NoticeItem } from './NoticeBubbleManager';
+import type { NoticeItem } from './NoticeBubbleManager';
 import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -38,7 +34,7 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
+class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -352,55 +348,6 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-class NoticeBubbleView extends Component<{ manager: NoticeBubbleManager } & (NoticeBubbleProps | NoticeBubbleWarningProps)> {
-  static defaultProps = {
-    duration: 5000,
-    type: 'info',
-    manager,
-  };
-
-  _notice: null | AddedNoticeMeta = null;
-
-  componentDidMount() {
-    this._notice = this.asProps.manager.add(this.asProps);
-  }
-
-  componentWillUnmount() {
-    if (this._notice) {
-      this._notice.remove();
-    }
-  }
-
-  componentDidUpdate() {
-    if (this._notice) {
-      this._notice.update(this.asProps);
-    }
-  }
-
-  render() {
-    return null;
-  }
-}
-
-class NoticeBubbleWarningView extends NoticeBubbleView {
-  static defaultProps = {
-    duration: 5000,
-    type: 'warning',
-    manager,
-  };
-}
-
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot, {
-  Info: NoticeBubbleView,
-  Warning: NoticeBubbleWarningView,
-}) as Intergalactic.Component<'div', NoticeBubbleContainerProps> & {
-  Info: typeof NoticeBubbleView;
-  Warning: typeof NoticeBubbleWarningView;
-};
-
-const NoticeBubble = NoticeBubbleContainer.Info;
-const NoticeBubbleWarning = NoticeBubbleContainer.Warning;
-
-export { NoticeBubble, NoticeBubbleWarning };
+const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
 
 export default NoticeBubbleContainer;

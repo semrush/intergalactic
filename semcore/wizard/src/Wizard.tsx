@@ -1,3 +1,4 @@
+import { ScreenReaderOnly, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import type { IRootComponentProps, Intergalactic } from '@semcore/core';
@@ -6,7 +7,6 @@ import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocus
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
-import { ScreenReaderOnly, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 import CheckM from '@semcore/icon/Check/m';
@@ -32,7 +32,7 @@ type State = {
   highlighted: number;
 };
 
-class WizardRoot extends Component<WizardProps, {}, State, typeof WizardRoot.enhance> {
+class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {}, State> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;

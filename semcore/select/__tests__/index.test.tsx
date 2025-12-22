@@ -255,8 +255,12 @@ describe('Option.Checkbox', () => {
             <Select.Option.Checkbox data-testid='thirdOptionCheckbox' />
             I'm disabled option-checkbox
           </Select.Option>
-          <Select.OptionTitle>I'm title</Select.OptionTitle>
-          <Select.OptionHint>I'm hint</Select.OptionHint>
+          <Select.Group title="I'm title">
+            <Select.Option value={4}>
+              <Select.Option.Content>Content</Select.Option.Content>
+              <Select.Option.Hint>I'm hint</Select.Option.Hint>
+            </Select.Option>
+          </Select.Group>
         </Select.Menu>
       </Select>,
     );

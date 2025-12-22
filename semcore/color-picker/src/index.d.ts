@@ -1,12 +1,10 @@
+import type { BoxProps } from '@semcore/base-components';
+import type Popper from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
-import type { BoxProps } from '@semcore/flex-box';
 import type { InputProps } from '@semcore/input';
-import type Popper from '@semcore/popper';
 
-/** @deprecated */
-export interface IItemProps extends ItemProps, UnknownProperties {}
 export type ItemProps = BoxProps & {
   /**
    * Color item in hexadecimal format.
@@ -30,8 +28,6 @@ export type ItemProps = BoxProps & {
   onRemove?: React.MouseEventHandler;
 };
 
-/** @deprecated */
-export interface IColorsProps extends ColorsProps, UnknownProperties {}
 export type ColorsProps = BoxProps & {
   /**
    * Array of color items
@@ -39,8 +35,6 @@ export type ColorsProps = BoxProps & {
   colors?: Array<string | null>;
 };
 
-/** @deprecated */
-export interface IColorsCustomProps extends ColorsCustomProps, UnknownProperties {}
 export type ColorsCustomProps = ColorsProps &
   BoxProps & {
     /**
@@ -49,8 +43,6 @@ export type ColorsCustomProps = ColorsProps &
     onPlusButtonClick?: React.MouseEventHandler;
   };
 
-/** @deprecated */
-export interface IInputColorProps extends InputColorProps, UnknownProperties {}
 export type InputColorProps = InputProps & {
   /**
    * Text value of input
@@ -80,8 +72,6 @@ export type InputColorProps = InputProps & {
   onStateChange?: (state: 'normal' | 'valid' | 'invalid') => void;
 };
 
-/** @deprecated */
-export interface IColorPickerProps extends ColorPickerProps, UnknownProperties {}
 export type ColorPickerProps = DropdownProps & {
   /**
    * Selected color item. Should be used with `onChange` property together
@@ -112,8 +102,6 @@ export type ColorPickerProps = DropdownProps & {
   displayLabel?: boolean;
 };
 
-/** @deprecated */
-export interface IPaletteManagerProps extends PaletteManagerProps, UnknownProperties {}
 export type PaletteManagerProps = {
   /**
    * Array of color items. Should be used with `onColorsChange` property together
@@ -131,12 +119,8 @@ export type PaletteManagerProps = {
   onColorsChange?: (value: string[], event: React.ChangeEvent) => void;
 };
 
-/** @deprecated */
-export interface IColorPickerHandlers extends ColorPickerHandlers, UnknownProperties {}
 export type ColorPickerHandlers = DropdownHandlers & {};
 
-/** @deprecated */
-export interface IPaletteManagerHandlers extends PaletteManagerHandlers, UnknownProperties {}
 export type PaletteManagerHandlers = DropdownHandlers & {};
 
 type ColorPickerContext = {
@@ -159,10 +143,6 @@ declare const PaletteManager: Intergalactic.Component<
   PaletteManagerContext,
   [handlers: PaletteManagerHandlers]
 > & {
-  /**
-   * @deprecated Use `colors` property in `PaletteManager.Colors`
-   */
-  Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsCustomProps>;
   InputColor: Intergalactic.Component<'div', InputColorProps>;
 };
@@ -175,10 +155,6 @@ declare const ColorPicker: Intergalactic.Component<
 > & {
   Trigger: typeof Dropdown.Trigger;
   Popper: typeof Popper.Popper;
-  /**
-   * @deprecated Use `colors` property in `ColorPicker.Colors`
-   */
-  Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsProps>;
 };
 

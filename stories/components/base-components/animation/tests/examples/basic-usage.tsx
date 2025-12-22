@@ -1,6 +1,5 @@
-import { Animation, FadeInOut, Transform } from '@semcore/ui/animation';
-import type { AnimationProps } from '@semcore/ui/animation';
-import { Flex } from '@semcore/ui/base-components';
+import type { AnimationProps } from '@semcore/ui/base-components';
+import { Flex, Animation, FadeInOut, Transform } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import React from 'react';
 

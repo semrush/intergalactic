@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import Radio from '@semcore/ui/radio';
 import type { RadioProps } from '@semcore/ui/radio';
 import React from 'react';

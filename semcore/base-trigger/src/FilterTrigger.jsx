@@ -1,3 +1,4 @@
+import { NeighborLocation, Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -5,15 +6,12 @@ import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEn
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
-import { ScreenReaderOnly } from '@semcore/core/lib/utils/ScreenReaderOnly';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import Dot from '@semcore/dot';
-import { Box } from '@semcore/flex-box';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Close from '@semcore/icon/Close/m';
-import NeighborLocation from '@semcore/neighbor-location';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
 

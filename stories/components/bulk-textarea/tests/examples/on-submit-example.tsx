@@ -1,7 +1,7 @@
+import { Box, Flex } from '@semcore/ui/base-components';
 import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
-import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

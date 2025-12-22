@@ -336,7 +336,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.paletteItem(page).nth(1).hover();
-    await page.getByText('#8649E7').waitFor({ state: 'visible' });
+    await page.getByText('#0000FF').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 

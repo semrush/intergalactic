@@ -18,4 +18,4 @@ class BadgeFHRoot extends Component {
   }
 }
 
-export const BadgeFH = createComponent(BadgeFHRoot);
+export const BadgeFH = createComponent(BadgeFHRoot) as typeof Badge;

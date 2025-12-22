@@ -5,8 +5,6 @@ import type { Box, BoxProps } from '../flex-box';
 
 export type ShadowTheme = 'dark' | 'light';
 
-/** @deprecated */
-export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}
 export type ScrollAreaProps = BoxProps & {
   /** Shadow display on container */
   shadow?: boolean;
@@ -22,11 +20,6 @@ export type ScrollAreaProps = BoxProps & {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Tab index that is being bypassed to the scroll container. */
   tabIndex?: number | null;
-
-  /**
-   * @deprecated
-   */
-  forcedAdvancedMode?: boolean;
   /**
    * Flag to enable resizing if the parent of ScrollArea is resized
    * @default false
@@ -60,15 +53,11 @@ export type ScrollAreaProps = BoxProps & {
   shadowTheme?: ShadowTheme | { horizontalTop?: ShadowTheme; horizontalBottom?: ShadowTheme; verticalLeft?: ShadowTheme; verticalRight?: ShadowTheme };
 };
 
-/** @deprecated */
-export interface IScrollAreaContext extends ScrollAreaContext, UnknownProperties {}
 export type ScrollAreaContext = ScrollAreaProps & {
   getContainerProps: PropGetterFn;
   getBarProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IScrollBarProps extends ScrollBarProps, UnknownProperties {}
 export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
@@ -76,8 +65,6 @@ export type ScrollBarProps = BoxProps & {
   container?: React.RefObject<HTMLElement>;
 };
 
-/** @deprecated */
-export interface IScrollBarContext extends ScrollBarContext, UnknownProperties {}
 export type ScrollBarContext = ScrollBarProps & {
   getSliderProps: PropGetterFn;
 };

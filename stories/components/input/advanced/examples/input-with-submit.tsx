@@ -1,5 +1,5 @@
+import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Box } from '@semcore/ui/flex-box';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';

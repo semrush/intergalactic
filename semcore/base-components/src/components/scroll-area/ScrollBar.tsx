@@ -33,7 +33,7 @@ const setAriaValues = (
   }
 };
 
-class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
+class ScrollBarRoot extends Component<ScrollBarProps, typeof ScrollBarRoot.enhance> {
   static displayName = 'Bar';
 
   static style = style;

@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import { Flex } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import ChevronUpM from '@semcore/icon/ChevronUp/m';
 import { Text } from '@semcore/typography';

@@ -1,7 +1,7 @@
+import { Flex, Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
-import { Flex, Box } from '@semcore/ui/flex-box';
 import FileExport from '@semcore/ui/icon/FileExport/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
