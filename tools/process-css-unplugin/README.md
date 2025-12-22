@@ -1,7 +1,7 @@
 # @semcore/process-css-unplugin
 
-[![version](https://img.shields.io/npm/v/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/@semcore/process-css-unplugin)
-[![downloads](https://img.shields.io/npm/dt/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/package/@semcore/process-css-unplugin)
+[![version](https://img.shields.io/npm/v/@semcore/process-css-unplugin.svg)](https://www.npmjs.com/@semcore/process-css-unplugin)
+[![downloads](https://img.shields.io/npm/dt/@semcore/process-css-unplugin.svg)](https://www.npmjs.com/package/@semcore/process-css-unplugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This plugin is part of the Intergalactic Design System
