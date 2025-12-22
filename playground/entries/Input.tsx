@@ -18,21 +18,20 @@ export type InputJSXProps = JSXProps<InputProps> & AdditionalJSXProps;
 
 function getJSX(props: InputJSXProps) {
   return (
-    <Input size={props.size} state={props.state}>
+    <Input size={props.size} state={props.state} disabled={props.disabled}>
       {props.before && (
         <Input.Addon>
           <CheckM />
         </Input.Addon>
       )}
       <Input.Value
-        disabled={props.disabled}
         readOnly={props.readOnly}
         placeholder='Placeholder'
         aria-label='Input example'
       />
       {props.after && (
         <Input.Addon>
-          <ButtonLink use='secondary'>
+          <ButtonLink use='secondary' disabled={props.disabled}>
             <ButtonLink.Addon>
               <ArrowRightM />
             </ButtonLink.Addon>
