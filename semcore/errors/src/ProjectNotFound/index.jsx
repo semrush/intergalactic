@@ -31,7 +31,7 @@ class RootProjectNotFound extends Component {
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description tag={Text} formatTags={true} size='l'>
+        <Error.Description tag={Text} formatTags={true} size='300'>
           {text}
         </Error.Description>
         <Children />

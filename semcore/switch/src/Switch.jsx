@@ -39,7 +39,7 @@ class Switch extends Component {
   };
 
   getValueProps() {
-    const { theme, uid } = this.asProps;
+    const { theme, uid, disabled } = this.asProps;
     const { active } = this.state;
 
     return {
@@ -48,6 +48,7 @@ class Switch extends Component {
       $rootForceUpdate: this.forceUpdate,
       uid,
       active,
+      disabled,
     };
   }
 

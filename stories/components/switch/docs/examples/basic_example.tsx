@@ -6,8 +6,8 @@ type SwitchExampleProps = SwitchProps & SwitchValueProps;
 
 const Demo = (props: SwitchExampleProps) => {
   return (
-    <Switch size={props.size} theme={props.theme}>
-      <Switch.Value defaultChecked={props.defaultChecked} ml={0} checked={props.checked} disabled={props.disabled} />
+    <Switch size={props.size} theme={props.theme} disabled={props.disabled}>
+      <Switch.Value defaultChecked={props.defaultChecked} ml={0} checked={props.checked} />
       <Switch.Addon>Receive updates</Switch.Addon>
     </Switch>
   );
