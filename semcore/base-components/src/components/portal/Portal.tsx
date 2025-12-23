@@ -14,14 +14,12 @@ export type PortalProps = {
   nodeToMount?: HTMLElement;
 };
 
-const initContainer = {
-  current: canUseDOM() ? document.body : null,
-};
+type PortalContextType = React.RefObject<HTMLElement | null> | HTMLElement | null;
 
 const PortalContext = register.get(
   'portal-context',
 
-  React.createContext<React.RefObject<HTMLElement | null>>(initContainer),
+  React.createContext<PortalContextType>(canUseDOM() ? document.body : null),
 );
 
 function Portal(props: PortalProps & { Children: React.FC }) {
@@ -40,7 +38,7 @@ function Portal(props: PortalProps & { Children: React.FC }) {
       setMountNode(nodeToMount);
       return;
     }
-    setMountNode(container.current);
+    setMountNode((container && 'current' in container) ? container.current : container);
   }, [container, disablePortal, onMount, nodeToMount]);
 
   if (disablePortal) {
