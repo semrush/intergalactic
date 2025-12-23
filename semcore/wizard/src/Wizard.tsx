@@ -239,6 +239,7 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
     getI18nText,
     focusNext,
     focusPrev,
+    disabled,
   } = props;
   const SStepper = Root;
   const SStepNumber = 'span';
@@ -287,15 +288,13 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
   );
 }
 
-function Content(props) {
-  const { Children, children: hasChildren, styles, uid, step } = props;
+function Content(props: WizardContentProps & IRootComponentProps) {
+  const { Children, styles } = props;
   const SContent = Root;
   return sstyled(styles)(
     <SContent
       render={Box}
       role='tabpanel'
-      aria-labelledby={`${uid}-stepper-${step}`}
-      id={`${uid}-content-${step}`}
     >
       <Children />
     </SContent>,
