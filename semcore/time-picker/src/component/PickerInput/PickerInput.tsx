@@ -16,7 +16,8 @@ function getOptions(minMax: PickerInputMinMax, step = 1) {
   let numValue = min;
   return options.map((_i, index) => {
     numValue = index === 0 ? numValue : numValue + step;
-    const value = withLeadingZero(numValue);
+    const value = String(numValue).padStart(2, '0');
+
     return (
       <Select.Option value={value} key={value}>
         {value}
@@ -46,7 +47,6 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, {}, State
 
   abstract get field(): TimePickerField;
   abstract get minMax(): PickerInputMinMax;
-  abstract get ariaLabel(): string;
   abstract handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void;
 
   parseValueWithMinMax = (value: string) => {
@@ -89,7 +89,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, {}, State
 
   render() {
     const SPickerInput = Root;
-    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } = this.asProps;
+    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
     const value = dirtyValue === undefined ? time : dirtyValue;
 
@@ -112,7 +112,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, {}, State
           disabled={disabled}
           neighborLocation={false}
           value={value}
-          aria-label={this.ariaLabel}
+          aria-label={ariaLabel}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
@@ -131,12 +131,6 @@ class Hours extends AbstractPickerInput {
 
   get field(): TimePickerField {
     return 'hours';
-  }
-
-  get ariaLabel() {
-    const { _getI18nText: getI18nText } = this.asProps;
-
-    return getI18nText('hours');
   }
 
   get minMax(): PickerInputMinMax {
@@ -187,12 +181,6 @@ class Minutes extends AbstractPickerInput {
 
   get field(): TimePickerField {
     return 'minutes';
-  }
-
-  get ariaLabel() {
-    const { _getI18nText: getI18nText } = this.asProps;
-
-    return getI18nText('minutes');
   }
 
   get minMax(): PickerInputMinMax {

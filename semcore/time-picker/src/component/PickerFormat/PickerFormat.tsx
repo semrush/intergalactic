@@ -4,9 +4,9 @@ import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './picker-format.shadow.css';
-import type { TimePickerFormatProps } from './PickerFormat.type';
+import type { TimePickerFormatProps, TimePickerFormatPropsInternal } from './PickerFormat.type';
 
-class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof TimePickerFormat.enhance> {
+class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof TimePickerFormat.enhance, TimePickerFormatPropsInternal> {
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 

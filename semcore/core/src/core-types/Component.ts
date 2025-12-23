@@ -123,6 +123,8 @@ abstract class RootComponent<
   Root: Root = undefined as any;
 
   isControlled = false;
+
+  watchProps() {}
 }
 
 export const Component = RootComponent;

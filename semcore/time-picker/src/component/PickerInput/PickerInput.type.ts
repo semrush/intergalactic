@@ -11,7 +11,7 @@ export type PickerInputProps = SelectProps & TimePickerItemProps & {
   $onValueChange: (value: string, field: TimePickerField, event: React.SyntheticEvent) => void;
   minutesInputRef: React.RefObject<HTMLElement>;
   hoursInputRef: React.RefObject<HTMLElement>;
-  _getI18nText: ReturnType<typeof useI18n>;
+  ariaLabel: string;
 };
 
 export type PickerInputMinMax = [number, number];

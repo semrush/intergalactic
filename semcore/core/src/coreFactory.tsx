@@ -163,6 +163,9 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
       }
       const asProps: any = this.asProps;
       const ctx = this.setContext();
+
+      this.watchProps();
+
       // RENDER
       const render = renders.reduce(
         (acc: any, enhancement: any) =>

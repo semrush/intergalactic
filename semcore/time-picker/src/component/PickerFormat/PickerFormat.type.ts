@@ -3,7 +3,9 @@ import type { BoxProps } from '@semcore/flex-box';
 
 import type { TimePickerMeridiem } from '../TimePicker/TimePicker.type';
 
-export type TimePickerFormatProps = BoxProps & {
+export type TimePickerFormatProps = BoxProps & {};
+
+export type TimePickerFormatPropsInternal = {
   /** Internal */
   getI18nText?: ReturnType<typeof useI18n>;
   /** Internal */

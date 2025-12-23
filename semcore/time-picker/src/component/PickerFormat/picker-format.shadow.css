@@ -59,7 +59,3 @@ SPickerFormat[disabled] {
   pointer-events: none;
   border-color: transparent transparent transparent var(--intergalactic-border-primary, #c4c7cf);
 }
-
-/*SPickerFormat[keyboardFocused] {*/
-/*  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));*/
-/*}*/

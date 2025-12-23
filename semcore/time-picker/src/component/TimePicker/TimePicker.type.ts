@@ -41,7 +41,6 @@ export type TimePickerContext = {
   getSeparatorProps: PropGetterFn;
 };
 
-// title ???
 export type TimePickerHandlers = {
   value: (value: string) => void;
 };
