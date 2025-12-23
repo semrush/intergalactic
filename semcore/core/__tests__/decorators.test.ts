@@ -500,7 +500,6 @@ describe('@reactive', () => {
   });
 });
 
-/*
 describe('@callOnPropsChange', () => {
   describe('basic functionality', () => {
     it('should call decorated function when watched prop changes', () => {
@@ -1193,4 +1192,3 @@ describe('@callOnPropsChange', () => {
     });
   });
 });
-*/
