@@ -62,17 +62,3 @@ export function forkRef<T>(...refs: Ref<T>[]): Ref<T> {
     uniqueRefs.forEach((ref) => setRef(ref, refValue));
   };
 }
-
-export type NodeByRef = RefObject<Element> | Element | (() => RefObject<Element> | Element);
-
-export function getNodeByRef(ref: NodeByRef): Element | null {
-  if (typeof ref === 'function') {
-    ref = ref();
-  }
-  if (!ref) return null;
-
-  const node = getRef(ref);
-  if (node && 'nodeType' in node && node.nodeType === 1) return node;
-
-  return null;
-}

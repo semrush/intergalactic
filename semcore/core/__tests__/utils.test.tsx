@@ -28,7 +28,7 @@ import getInputProps, { inputProps } from '../src/utils/inputProps';
 import isNode from '../src/utils/isNode';
 import propsForElement, { validAttr } from '../src/utils/propsForElement';
 import reactToText from '../src/utils/reactToText';
-import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
+import { getRef, setRef } from '../src/utils/ref';
 import useCss from '../src/utils/use/useCss';
 
 describe('Utils CSS in JS', () => {
@@ -423,21 +423,6 @@ describe('Utils ref', () => {
     const div = document.createElement('div');
     setRef(fn, div);
     expect(fn).toHaveBeenCalledWith(div);
-  });
-
-  test.concurrent('[getNodeByRef] support function', () => {
-    const div = document.createElement('div');
-    const fn = vi.fn(() => div);
-    // setRef(fn, div)
-    expect(getNodeByRef(fn)).toBe(div);
-  });
-
-  test.concurrent('[getNodeByRef] support ref', () => {
-    const div = document.createElement('div');
-    const ref = React.createRef<HTMLDivElement>();
-    // @ts-ignore
-    ref.current = div;
-    expect(getNodeByRef(ref)).toBe(div);
   });
 });
 

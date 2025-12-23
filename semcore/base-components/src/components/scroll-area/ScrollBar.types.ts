@@ -1,5 +1,4 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
-import type { NodeByRef } from '@semcore/core/lib/utils/ref';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { Box, BoxProps } from '../flex-box';
 
@@ -11,9 +10,9 @@ export type ScrollAreaProps = BoxProps & {
   /** Scroll direction */
   orientation?: 'horizontal' | 'vertical';
   /** Link to the dom element, which will be a container with overflow */
-  container?: NodeByRef;
+  container?: React.RefObject<HTMLElement | null>;
   /** Link to the dom element that will be stretched along with the content */
-  inner?: NodeByRef;
+  inner?: React.RefObject<HTMLElement | null>;
   /** Callback executed when container change size  */
   onResize?: ResizeObserverCallback;
   /** Called every time user scrolls area  */
@@ -62,7 +61,7 @@ export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
   /** Reference to the scrollable container element */
-  container?: React.RefObject<HTMLElement>;
+  container?: React.RefObject<HTMLElement | null>;
 };
 
 export type ScrollBarContext = ScrollBarProps & {
