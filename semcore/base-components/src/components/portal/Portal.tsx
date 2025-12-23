@@ -11,7 +11,7 @@ export type PortalProps = {
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
   /** Manually set node to mount portal content */
-  nodeToMount?: React.RefObject<HTMLElement | null>;
+  nodeToMount?: HTMLElement;
 };
 
 const initContainer = {
@@ -37,7 +37,7 @@ function Portal(props: PortalProps & { Children: React.FC }) {
       return;
     }
     if (nodeToMount) {
-      setMountNode(nodeToMount.current);
+      setMountNode(nodeToMount);
       return;
     }
     setMountNode(container.current);

@@ -11,7 +11,7 @@ export type NoticeBubbleContainerPortalProps = PortalProps;
 export type NoticeBubbleContainerProps = BoxProps &
   NoticeBubbleContainerPortalProps & {
     /** Ref to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
-    containerNode?: React.RefObject<HTMLElement | null>;
+    containerNode?: HTMLElement;
     /** Manager copy */
     manager?: NoticeBubbleManagerClass;
     /** Specifies the locale for i18n support */
@@ -19,7 +19,7 @@ export type NoticeBubbleContainerProps = BoxProps &
   };
 
 export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
-  containerNode?: React.RefObject<HTMLElement | null>;
+  containerNode?: HTMLElement;
   animationDuration: number;
   getI18nText: ReturnType<typeof useI18n>;
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | undefined;
