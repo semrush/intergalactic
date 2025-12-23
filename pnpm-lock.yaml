@@ -125,7 +125,7 @@ importers:
         version: 9.1.9(@types/react@18.2.19)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
       '@storybook/addon-links':
         specifier: 9.1.6
-        version: 9.1.6(react@19.2.0)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
+        version: 9.1.6(react@18.3.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
       '@storybook/addon-storysource':
         specifier: ^8.6.14
         version: 8.6.14(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
@@ -134,7 +134,7 @@ importers:
         version: 4.4.0(eslint@9.27.0)(typescript@5.8.3)
       '@testing-library/react':
         specifier: 13.4.0
-        version: 13.4.0(@types/react@18.2.19)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 13.4.0(@types/react@18.2.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/glob':
         specifier: 8.1.0
         version: 8.1.0
@@ -238,11 +238,11 @@ importers:
         specifier: 1.48.0
         version: 1.48.0
       react:
-        specifier: 19.2.0
-        version: 19.2.0
+        specifier: 18.3.1
+        version: 18.3.1
       react-dom:
-        specifier: 19.2.0
-        version: 19.2.0(react@19.2.0)
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
       rollup-plugin-copy:
         specifier: 3.5.0
         version: 3.5.0
@@ -11533,6 +11533,11 @@ packages:
     resolution: {integrity: sha512-kmob/FOTwep7DUWf9KjuenKX0vyvChr3oTdvvPt09V60Iz75FJp+T/0ZeHMbAfJj2WaVWqAPP5Hmm3PYzSPPKg==}
     engines: {node: ^20.9.0 || >=22}
 
+  react-dom@18.3.1:
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
+    peerDependencies:
+      react: ^18.3.1
+
   react-dom@19.2.0:
     resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
     peerDependencies:
@@ -11680,6 +11685,10 @@ packages:
     peerDependencies:
       react: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+    engines: {node: '>=0.10.0'}
 
   react@19.2.0:
     resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
@@ -11974,6 +11983,9 @@ packages:
   saxes@6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
+
+  scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
@@ -15904,11 +15916,11 @@ snapshots:
 
   '@mdit-vue/types@1.0.0': {}
 
-  '@mdx-js/react@3.1.0(@types/react@18.2.19)(react@19.2.0)':
+  '@mdx-js/react@3.1.0(@types/react@18.2.19)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.2.19
-      react: 19.2.0
+      react: 18.3.1
 
   '@mswjs/interceptors@0.38.7':
     dependencies:
@@ -16794,23 +16806,23 @@ snapshots:
 
   '@storybook/addon-docs@9.1.9(@types/react@18.2.19)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
     dependencies:
-      '@mdx-js/react': 3.1.0(@types/react@18.2.19)(react@19.2.0)
+      '@mdx-js/react': 3.1.0(@types/react@18.2.19)(react@18.3.1)
       '@storybook/csf-plugin': 9.1.9(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
-      '@storybook/icons': 1.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@storybook/react-dom-shim': 9.1.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      '@storybook/icons': 1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/react-dom-shim': 9.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       storybook: 9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0))
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-links@9.1.6(react@19.2.0)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
+  '@storybook/addon-links@9.1.6(react@18.3.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0))
     optionalDependencies:
-      react: 19.2.0
+      react: 18.3.1
 
   '@storybook/addon-storysource@8.6.14(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
     dependencies:
@@ -16838,6 +16850,11 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
+  '@storybook/icons@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   '@storybook/icons@1.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       react: 19.2.0
@@ -16849,10 +16866,10 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
       storybook: 9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@22.15.30)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.5.4))(terser@5.41.0)(yaml@2.8.0))
 
-  '@storybook/react-dom-shim@9.1.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
+  '@storybook/react-dom-shim@9.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0)))':
     dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       storybook: 9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@18.16.15)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.41.0)(yaml@2.8.0))
 
   '@storybook/react-vite@9.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.42.0)(storybook@9.1.6(@testing-library/dom@10.4.0)(msw@2.9.0(@types/node@22.15.30)(typescript@5.8.3))(prettier@3.5.3)(vite@6.3.5(@types/node@22.15.30)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.5.4))(terser@5.41.0)(yaml@2.8.0)))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.30)(less@3.13.1)(sass@1.89.1)(sugarss@5.0.1(postcss@8.5.4))(terser@5.41.0)(yaml@2.8.0))':
@@ -16940,13 +16957,13 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@13.4.0(@types/react@18.2.19)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@testing-library/react@13.4.0(@types/react@18.2.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.27.6
       '@testing-library/dom': 8.20.1
       '@types/react-dom': 18.3.7(@types/react@18.2.19)
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
 
@@ -24647,6 +24664,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  react-dom@18.3.1(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.1
+      scheduler: 0.23.2
+
   react-dom@19.2.0(react@19.2.0):
     dependencies:
       react: 19.2.0
@@ -24873,6 +24896,10 @@ snapshots:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       react-lifecycles-compat: 3.0.4
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
 
   react@19.2.0: {}
 
@@ -25242,6 +25269,10 @@ snapshots:
   saxes@6.0.0:
     dependencies:
       xmlchars: 2.2.0
+
+  scheduler@0.23.2:
+    dependencies:
+      loose-envify: 1.4.0
 
   scheduler@0.25.0: {}
 
