@@ -1,10 +1,9 @@
-import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
+import { createComponent, sstyled, Component, Root, type IRootComponentProps, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { lastInteraction } from '@semcore/ui/core';
 import React, { type ForwardedRef } from 'react';
 
 import { Box } from '../flex-box';
