@@ -49,7 +49,6 @@ class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {
   stepperRefs: Array<HTMLElement | null> = [];
 
   state: State = {
-    // @ts-ignore
     highlighted: this.props.step,
   };
 
@@ -172,7 +171,7 @@ class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {
 
   componentDidUpdate(prevProps: WizardProps) {
     if (prevProps.step === this.asProps.step) return;
-    // @ts-ignore
+
     this.setState({ highlighted: this.asProps.step });
     setTimeout(() => {
       if (prevProps.step === this.asProps.step) return;

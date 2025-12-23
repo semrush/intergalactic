@@ -5,7 +5,8 @@ import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { ModalProps } from '@semcore/modal';
 import type React from 'react';
 
-export type WizardStep = string | number | boolean;
+/** Ordered step position from 0 */
+export type WizardStep = number;
 
 export type WizardProps = ModalProps & {
   /**
@@ -30,7 +31,7 @@ export type WizardSidebarProps = BoxProps & {
 
 export type WizardStepProps = BoxProps & {
   /**
-   * Step value
+   * Ordered step position from 0
    */
   step: WizardStep;
   /**
@@ -44,17 +45,17 @@ export type WizardStepProps = BoxProps & {
   active?: boolean;
 };
 
-export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
+export type WizardStepperProps = BoxProps & {
   /**
-   * Step value
+   * Ordered step position from 0
    */
-  step: T;
+  step: WizardStep;
   /**
    * Is invoked when active the step
    */
   onActive?:
-    | ((step: T, e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent) => void)
-    | React.Dispatch<React.SetStateAction<T>>;
+    | ((step: WizardStep, e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent) => void)
+    | React.Dispatch<React.SetStateAction<WizardStep>>;
   /**
    * Stepper number
    * @default incremental value
@@ -92,11 +93,11 @@ export type WizardContentProps = BoxProps & {
   noSidebar?: boolean;
 };
 
-export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps & {
+export type WizardStepBackProps = ButtonProps & {
   /** Callback invoked when navigating to the previous step */
   onActive?:
-    | ((step: T, e?: React.SyntheticEvent<HTMLElement>) => void)
-    | React.Dispatch<React.SetStateAction<T>>;
+    | ((step: WizardStep, e?: React.SyntheticEvent<HTMLElement>) => void)
+    | React.Dispatch<React.SetStateAction<WizardStep>>;
   /** Step name being navigated to */
   stepName?: string;
 
@@ -104,18 +105,18 @@ export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps
    * CurrentStep
    * @internal
    */
-  step?: number;
+  step?: WizardStep;
   /**
    * Translation function
    * @internal
    */
   getI18nText?: ReturnType<typeof useI18n>;
 };
-export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
+export type WizardStepNextProps = ButtonProps & {
   /** Callback invoked when navigating to the next step */
   onActive?:
-    | ((step: T, e?: React.SyntheticEvent<HTMLElement>) => void)
-    | React.Dispatch<React.SetStateAction<T>>;
+    | ((step: WizardStep, e?: React.SyntheticEvent<HTMLElement>) => void)
+    | React.Dispatch<React.SetStateAction<WizardStep>>;
   /** Step name being navigated to */
   stepName?: string;
 
@@ -123,7 +124,7 @@ export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps
    * CurrentStep
    * @internal
    */
-  step?: number;
+  step?: WizardStep;
   /**
    * Translation function
    * @internal
@@ -132,10 +133,9 @@ export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps
 };
 
 export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
-  Value extends WizardStep,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>> &
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps> &
     PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
