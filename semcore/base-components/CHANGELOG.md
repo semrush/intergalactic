@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-02-02
+
+### BREAK
+
+- Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
+
 ## [16.4.2] - 2025-12-01
 
 ### Fixed

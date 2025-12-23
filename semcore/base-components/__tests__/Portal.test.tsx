@@ -36,7 +36,7 @@ describe('Portal', () => {
   });
 
   test.concurrent('Verify render change containerNode', () => {
-    const containerRef = React.createRef<any>();
+    const containerRef = React.createRef<HTMLDivElement>();
     const { getByTestId } = render(
       <>
         <div data-testid='container' ref={containerRef} />
