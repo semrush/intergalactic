@@ -1,13 +1,65 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Link', () => {
-  test('Verify default link styles when links inside the text', async ({ page }) => {
-    const standPath =
-      'stories/components/link/tests/examples/link_inside_the_content-with_enable_visited.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
+  link: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Link"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  linkAddon: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Link.Addon"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(` ${TAG.VISUAL}`, () => {
+  const variables = [
+    { size: 100, disabled: false, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: undefined },
+    { size: 200, disabled: false, active: true, showAddonLeft: true, showAddonRight: false, inline: true, color: 'text-success' },
+    { size: 300, disabled: false, active: false, showAddonLeft: false, showAddonRight: true, inline: false, color: 'text-critical' },
+    { size: 300, disabled: true, active: false, showAddonLeft: true, showAddonRight: false, inline: true, color: undefined },
+    { size: 400, disabled: false, active: true, showAddonLeft: false, showAddonRight: true, inline: false, color: undefined },
+    { size: 500, disabled: true, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: 'text-success' },
+    { size: 500, disabled: false, active: false, showAddonLeft: true, showAddonRight: true, inline: true, color: undefined },
+    { size: 600, disabled: false, active: true, showAddonLeft: false, showAddonRight: false, inline: true, color: 'text-critical' },
+    { size: 700, disabled: true, active: true, showAddonLeft: true, showAddonRight: true, inline: false, color: undefined },
+    { size: 800, disabled: false, active: false, showAddonLeft: true, showAddonRight: false, inline: false, color: 'text-success' },
+  ];
+
+  variables.forEach((item) => {
+    test(`Verify Link size=${item.size}, disabled=${item.disabled}, active=${item.active}, addonLeft=${item.showAddonLeft}, addonRight=${item.showAddonRight}, inline=${item.inline}, color=${item.color || 'default'}`, {
+      tag: [TAG.PRIORITY_HIGH, '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', item);
+
+      await test.step('Verify default visual state', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+
+      if (!item.disabled) {
+        await test.step('Verify focused state', async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        });
+
+        await test.step('Verify hover state', async () => {
+          await locators.link(page).hover();
+          await expect(page).toHaveScreenshot();
+        });
+      }
+    });
+  });
+
+  test('Verify default link styles when links inside the text', {
+    tag: [TAG.PRIORITY_HIGH, '@link', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/tests/examples/link_inside_the_content-with_enable_visited.tsx', 'en');
 
     await test.step('Verify links styles active disabled and normal', async () => {
       await expect(page).toHaveScreenshot();
@@ -22,119 +74,116 @@ test.describe('Link', () => {
     });
   });
 
-  test('Verify colored link styles', async ({ page }) => {
-    const standPath = 'stories/components/link/docs/examples/color_links.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Links without text mouse interactions', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await test.step('Verify default color', async () => {
+      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+    });
 
-    const links = page.locator('[data-ui-name="Link"]');
-    await test.step('Verify colored links styles focused and hovered', async () => {
+    await test.step('Verify first link hover with hint', async () => {
+      await locators.link(page).first().hover();
+      await page.waitForSelector('text="Home page"');
+      if (browserName !== 'firefox') {
+        await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(4, 71, 146)');
+        await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+      }
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify second link hover with hint', async () => {
+      await locators.link(page, 1).hover();
+      await page.waitForSelector('text="Go to the next page"');
+      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(4, 71, 146)');
+    });
+  });
+
+  test('Verify Links without text keyboard interactions', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
+
+    await test.step('Verify first link focus with hint', async () => {
       await page.keyboard.press('Tab');
-      await links.nth(1).hover();
+      await page.waitForSelector('text="Home page"');
+      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+    });
 
+    await test.step('Verify second link focus with hint', async () => {
+      await page.keyboard.press('Tab');
+      await page.waitForSelector('text="Go to the next page"');
+      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(4, 71, 146)');
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify disabled link', async ({ page }) => {
-    const standPath = 'stories/components/link/docs/examples/link_disabled.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify link with ellipsis', {
+    tag: [TAG.PRIORITY_MEDIUM, '@link', '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/docs/examples/links_with_ellipsis.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const links = page.locator('[data-ui-name="Link"]');
-    await test.step('Verify colored links styles focused and hovered', async () => {
+    await test.step('Verify ellipsis visual with focus', async () => {
       await page.keyboard.press('Tab');
-      await expect(links).not.toBeFocused();
-      await expect(links).toHaveAttribute('tabindex', '-1');
-      await expect(links.first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(links.first()).toHaveCSS('opacity', '0.3');
-
       await expect(page).toHaveScreenshot();
     });
   });
+});
 
-  test('Verify Links without text mouse interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/link/docs/examples/link_without_text.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
+  test('Verify link keyboard navigation and attributes', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await test.step('Verify link attributes', async () => {
+      await expect(locators.link(page)).toHaveAttribute('href', '#');
+      await expect(locators.link(page)).toHaveAttribute('tabindex', '0');
+    });
 
-    const links = page.locator('[data-ui-name="Link"]');
-
-    await expect(links.first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-    await expect(links.nth(1)).toHaveCSS('color', 'rgb(0, 109, 202)');
-
-    await links.first().hover();
-    await page.waitForSelector('text="Home page"');
-    if (browserName !== 'firefox') {
-      await expect(links.first()).toHaveCSS('color', 'rgb(4, 71, 146)');
-      await expect(links.nth(1)).toHaveCSS('color', 'rgb(0, 109, 202)');
-    }
-    await expect(page).toHaveScreenshot();
-
-    await links.nth(1).hover();
-    await page.waitForSelector('text="Go to the next page"');
-    await expect(links.first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-    await expect(links.nth(1)).toHaveCSS('color', 'rgb(4, 71, 146)');
+    await test.step('Verify link can be focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page)).toBeFocused();
+    });
   });
 
-  test('Verify Links without text keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/link/docs/examples/link_without_text.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify disabled link cannot be focused', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { disabled: true });
 
-    await page.setContent(htmlContent);
+    await test.step('Verify disabled link attributes', async () => {
+      await expect(locators.link(page)).toHaveAttribute('tabindex', '-1');
+    });
 
-    const links = page.locator('[data-ui-name="Link"]');
-
-    await page.keyboard.press('Tab');
-    await page.waitForSelector('text="Home page"');
-    await expect(links.first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-    await expect(links.nth(1)).toHaveCSS('color', 'rgb(0, 109, 202)');
-
-    await page.keyboard.press('Tab');
-    await page.waitForSelector('text="Go to the next page"');
-    await expect(links.first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-    await expect(links.nth(1)).toHaveCSS('color', 'rgb(4, 71, 146)');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify disabled link cannot receive focus', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page)).not.toBeFocused();
+    });
   });
 
-  test('Verify links sizes', async ({ page }) => {
-    const standPath = 'stories/components/link/tests/examples/sizes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify link with addons maintains correct structure', {
+    tag: [TAG.PRIORITY_MEDIUM, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { showAddonLeft: true, showAddonRight: true });
 
-    await page.setContent(htmlContent);
-    const links = page.locator('[data-ui-name="Link"]');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    await test.step('Verify addons are present', async () => {
+      const link = locators.link(page);
+      await expect(link).toBeVisible();
 
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify links with addons', async ({ page }) => {
-    const standPath = 'stories/components/link/tests/examples/icons_in_links.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const links = page.locator('[data-ui-name="Link"]');
-    await page.keyboard.press('Tab');
-    await links.nth(4).hover();
-    await expect(page).toHaveScreenshot();
-    const addons = links.nth(6).locator('[data-ui-name="Link.Addon"]');
-    await expect(addons.first()).toHaveCSS('margin-right', '4px');
-    await expect(addons.nth(1)).toHaveCSS('margin-left', '4px');
-  });
-
-  test('Verify link with ellipsis', async ({ page }) => {
-    const standPath = 'stories/components/link/docs/examples/links_with_ellipsis.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+      // Verify the link can be focused with addons
+      await page.keyboard.press('Tab');
+      await expect(link).toBeFocused();
+    });
   });
 });

@@ -2,11 +2,43 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-02-02
+
+### BREAK
+
+- Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
+
+## [16.4.2] - 2025-12-01
+
+### Fixed
+
+- The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+## [16.4.1] - 2025-10-17
+
+### Fixed
+
+- Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
+
+## [16.4.0] - 2025-10-03
+
+### Changed
+
+- Styles for `:focus-visible` in Box and ScrollArea.
+- Border-radius for invalid pattern in InvalidStateBox.
+
 ## [16.3.0] - 2025-09-20
 
 ### Added
 
 - Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+
+## [16.2.4] - 2025-09-12
+
+### Changed
+
+- Don't open popper `onFocus` if last interaction was with mouse.
 
 ## [16.2.3] - 2025-09-17
 

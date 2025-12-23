@@ -2,6 +2,9 @@ import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
+import type { AccordionWithCheckboxProps } from './examples/accordion_with_checkbox';
+import AccordionWithCheckboxExample, { accordionWithCheckboxProps } from './examples/accordion_with_checkbox';
+import AccordionWithManyRowsExample, { accordionTableInTableDefaultProps } from './examples/accordion_with_many_rows';
 import AccordionWithPaginationExample, { tableInTableDefaultProps } from './examples/accordion_with_pagination';
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
@@ -17,6 +20,7 @@ import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SideIndentsExample from './examples/side-indents';
 import TablePerfExample from './examples/table_perf/table_perf';
+import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
@@ -32,6 +36,20 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
     loading: { control: 'boolean' },
   },
   args: accordionMergedProps,
+};
+
+export const AccordionWithCheckbox: StoryObj<AccordionWithCheckboxProps> = {
+  render: AccordionWithCheckboxExample,
+  args: {
+    ...accordionWithCheckboxProps,
+  },
+};
+
+export const AccordionWithManyRows: StoryObj<typeof accordionTableInTableDefaultProps> = {
+  render: AccordionWithManyRowsExample,
+  args: {
+    ...accordionTableInTableDefaultProps,
+  },
 };
 
 export const AccordionWithPagination: StoryObj<TableInTableProps> = {
@@ -59,6 +77,10 @@ export const FixedColumnsWithDiffWidths: Story = {
 
 export const LinkInTable: Story = {
   render: LinkInTableExample,
+};
+
+export const VirtualScrollWithH100: Story = {
+  render: VirtualScrollWithH100Example,
 };
 
 export const RowCellStates: Story = {

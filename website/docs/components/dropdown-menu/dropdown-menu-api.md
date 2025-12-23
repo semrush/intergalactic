@@ -77,7 +77,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item.Content />;
 ```
 
-<TypesView type="DropdownMenuItemHintProps" :types={...types} />
+<TypesView type="FlexProps" :types={...types} />
 
 ## Dropdown.Group
 
@@ -99,7 +99,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item.Hint />;
 ```
 
-<TypesView type="DropdownMenuItemHintProps" :types={...types} />
+<TypesView type="FlexProps" :types={...types} />
 
 ## Context
 
@@ -108,35 +108,3 @@ Context of the component is available inside the render-function.
 <TypesView type="DropdownMenuContext" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
-
-## Deprecated
-
-### DropdownMenu.ItemTitle
-
-::: warning
-The `DropdownMenu.ItemTitle` is deprecated, use `DropdownMenu.Group` instead.
-:::
-
-This noninteractive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
-
-```jsx
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-<DropdownMenu.ItemTitle />;
-```
-
-<TypesView type="DropdownMenuItemTitleProps" :types={...types} />
-
-### DropdownMenu.ItemHint
-
-::: warning
-The `DropdownMenu.ItemHint` is deprecated, use `DropdownMenu.Item.Hint` or `DropdownMenu.Group` with `subTitle` props instead.
-:::
-
-This noninteractive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
-
-```jsx
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-<DropdownMenu.ItemHint />;
-```
-
-<TypesView type="DropdownMenuItemHintProps" :types={...types} />

@@ -45,7 +45,7 @@ const Demo = () => {
       onSubmit={handleSubmit(onSubmit)}
       direction='column'
       alignItems='flex-start'
-      gap={6}
+      gap={4}
     >
       <Flex gap={4}>
         <Flex direction='column' gap={2}>
@@ -82,8 +82,8 @@ const Demo = () => {
         </Flex>
       </Flex>
 
-      <Checkbox size='l'>
-        <Checkbox.Value onChange={setPeriod} />
+      <Checkbox size='l' onChange={setPeriod}>
+        <Checkbox.Value />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 

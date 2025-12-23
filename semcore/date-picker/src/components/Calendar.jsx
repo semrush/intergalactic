@@ -1,6 +1,6 @@
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
-import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 

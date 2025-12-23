@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pills",
   "description": "Semrush Pills Component",
-  "version": "16.0.9",
+  "version": "16.0.11",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,10 +16,6 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/flex-box": "16.0.9",
-    "@semcore/neighbor-location": "16.0.9"
-  },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
   },
@@ -30,6 +26,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/badge": "workspace:*",
     "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"

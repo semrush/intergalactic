@@ -70,13 +70,11 @@ SidePanel has a fixed width that doesn't change when the browser window is resiz
 
 _It can be changed, for example, when using SidePanel on a small screen where you want to reduce paddings._
 
-![](static/container-paddings.png)
-
 ### Content styles
 
 General recommendations for `SidePanel` content styles:
 
-- Use a `--spacing-4x` (16px) padding between the title and the content:
+- Use a `--spacing-4x` padding between the title and the content:
 
 ![](static/content-paddings.png)
 
@@ -143,7 +141,7 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 `SidePanel.Header` should be visible even in loading, empty and error states.
 
-### Initial load
+### Initial loading
 
 At the initial load of the content, show the content structure with [Skeleton](/components/skeleton/skeleton).
 

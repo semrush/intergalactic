@@ -2,6 +2,8 @@ import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
@@ -30,11 +32,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+const data = LineMockData.Default;
 
 export default Demo;

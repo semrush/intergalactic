@@ -2,6 +2,59 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.1] - 2025-12-18
+
+### Fixed
+
+- Non-working virtual scroll with rows with unknown height.
+- `columns.name` property description to have information about
+valid/invalid characters.
+
+## [16.5.0] - 2025-12-01
+
+### Fixed
+
+- Unnecessary autofocus to the table after loading.
+
+### Added
+
+- Logic for selecting multiples rows using Shift
+
+## [16.4.4] - 2025-11-14
+
+### Fixed
+
+- The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
+- SR didn't pronounce all items selecting/deselecting on table with pagination.
+- Keyboard interaction after mouse clicking in cell with few interactive elements.
+
+## [16.4.3] - 2025-10-31
+
+### Fixed
+
+- Non-working `Accordion` for the cell with the skeleton when loading.
+
+## [16.4.2] - 2025-10-30
+
+### Fixed
+
+- Low performance when opening an accordion with a large number of rows.
+- Keyboard interaction after mouse clicking in Safari.
+
+## [16.4.1] - 2025-10-17
+
+### Fixed
+
+- Background color in expanded state when a theme is applied to a single cell.
+- Limited mode doesn't prevent interaction with accordion.
+
+## [16.4.0] - 2025-10-03
+
+### Added
+
+- Limited mode support.
+- Render accordion and checkbox in one row together.
+
 ## [16.3.3] - 2025-10-03
 
 ### Fixed

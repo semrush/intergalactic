@@ -88,7 +88,7 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhance> {
+class PopperRoot extends Component<PopperProps, typeof PopperRoot.enhance, { visible: null }, typeof PopperRoot.defaultProps> {
   static displayName = 'Popper';
 
   static style = style;
@@ -381,6 +381,18 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
         }
       }
 
+      if (
+        visible &&
+        component === 'trigger' &&
+        action === 'onFocus' &&
+        this.asProps.interaction === 'hover' &&
+        !lastInteraction.isKeyboard() &&
+        e.target instanceof HTMLElement &&
+        e.target.dataset.hideFocusHoverPopper === 'true'
+      ) {
+        return;
+      }
+
       if (component === 'trigger' && action === 'onClick' && e.target instanceof HTMLElement) {
         const triggerClick = hasParent(e.target, trigger!);
         // @ts-ignore
@@ -445,9 +457,11 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
             }
           }
           if (!visible && component === 'popper') {
+            const { timeout } = this.asProps;
+            const latency = Array.isArray(timeout) ? timeout[1] : timeout;
             setTimeout(() => {
               this.ignoreTriggerFocus = false;
-            }, 0);
+            }, latency + 20);
           }
         }, 0);
       });

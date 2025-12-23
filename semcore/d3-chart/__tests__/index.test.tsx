@@ -3,7 +3,7 @@ import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
@@ -13,6 +13,7 @@ import {
   XAxis,
   makeDataHintsContainer,
   Chart,
+  ChartLegend,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -145,7 +146,8 @@ describe('YAxis', () => {
   test.concurrent(
     'Should support call children function for Ticks how many ticks are passed',
     ({ expect }) => {
-      expect.assertions(2);
+      /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
+      expect.assertions(4);
 
       render(
         <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
@@ -196,8 +198,8 @@ describe('XAxis', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
     // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
-      emit() {}
-      subscribe() {}
+      emit() { }
+      subscribe() { }
     }
 
     const eventEmitter = new EventEmitter();
@@ -268,6 +270,8 @@ describe('XAxis', () => {
 });
 
 describe('utils', () => {
+  beforeEach(cleanup);
+
   test.concurrent('should support getIndexFromData for Line, Bar chart', () => {
     const data = [
       { x: 1, y: 'test' },
@@ -752,5 +756,50 @@ describe('Chart.Venn', () => {
     expect(circles.length).toBe(Object.keys(ChartOptions.venn.legendMap).length);
 
     expect(() => fireEvent.click(circles[0])).not.toThrow();
+  });
+});
+
+describe('ChartLegend', () => {
+  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  test.concurrent('should support pattern, icon and info interactivity for shape=\'checkbox\'', async () => {
+    const onChangeHandler = vi.fn();
+
+    const legendItems = [{
+      id: 'id1',
+      label: `Line 1`,
+      checked: true,
+      color: `chart-palette-order`,
+      additionalInfo: { label: 'Additional info' },
+      icon: <Icon />,
+
+    }];
+
+    const { container } = render(
+      <ChartLegend
+        items={legendItems}
+        onChangeVisibleItem={onChangeHandler}
+        patterns
+        aria-label='Area chart legend'
+      />,
+    );
+
+    const user = userEvent.setup();
+
+    const svg = container.querySelector('svg');
+    expect(svg).not.toBe(null);
+    await user.click(svg!);
+    expect(onChangeHandler).toHaveBeenCalledTimes(1);
+
+    const additionalInfo = container.querySelector('[class*="AdditionalLabel"]');
+    expect(additionalInfo).not.toBeNull();
+    await user.click(additionalInfo!);
+    expect(onChangeHandler).toHaveBeenCalledTimes(2);
+
+    const counter = container.querySelector('[data-ui-name="Video"]');
+    expect(counter).not.toBeNull();
+    await user.click(counter!);
+    expect(onChangeHandler).toHaveBeenCalledTimes(3);
   });
 });

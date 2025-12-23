@@ -1,5 +1,5 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
-import type { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
+import type { BoxProps, FlexProps, Flex } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type { Property } from 'csstype';
 
@@ -36,20 +36,14 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
   extends AccordionProps<T> {}
 
-/** @deprecated */
-export interface IAccordionContext extends AccordionContext, UnknownProperties {}
 export type AccordionContext = {
   getItemProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IAccordionHandlers extends AccordionHandlers, UnknownProperties {}
 export type AccordionHandlers = {
   value: (value: AccordionValue) => void;
 };
 
-/** @deprecated */
-export interface IAccordionItemProps extends AccordionItemProps, UnknownProperties {}
 export type AccordionItemProps = {
   /** Tab value */
   value: string | number;
@@ -60,8 +54,6 @@ export type AccordionItemProps = {
   duration?: number;
 };
 
-/** @deprecated */
-export interface IAccordionItemContext extends AccordionItemContext, UnknownProperties {}
 export type AccordionItemContext = {
   getToggleProps?: PropGetterFn;
   getCollapseProps?: PropGetterFn;
@@ -81,16 +73,6 @@ export type ChevronItemProps = BoxProps & {
 };
 
 export type CollapseAnimationProps = {
-  /**
-   * The property is responsible for the visibility of the element
-   * @deprecated Internal animation props, get this value from Accordion root component.
-   */
-  visible?: boolean;
-  /** Animation delay in ms
-   * @deprecated You shouldn't use delay in Accordion.
-   * @default 0
-   */
-  delay?: number | [number, number];
   /** Animation titles */
   keyframes?: [string, string];
   /** Enables animation on first rendering

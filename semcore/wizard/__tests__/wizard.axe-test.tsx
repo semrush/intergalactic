@@ -1,41 +1,45 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import type { Page, Locator } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Wizard axe checks', () => {
+export const locators = {
+  button: (page: Page, name?: string, index?: number): Locator => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
+
+test.describe(`@wizard ${TAG.ACCESSIBILITY}`, () => {
   test('Base example', async ({ page }) => {
-    const standPath = 'stories/components/wizard/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/wizard/docs/examples/basic_example.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
 
   test('Custom Step', async ({ page }) => {
-    const standPath = 'stories/components/wizard/docs/examples/custom_step.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
 
   test('Custom Stepper', async ({ page }) => {
-    const standPath = 'stories/components/wizard/docs/examples/custom_stepper.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(100);
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);

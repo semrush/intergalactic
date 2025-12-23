@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import AdsToolkit from '@semcore/ui/icon/platform/AdsToolkit';
 import AISEOToolkit from '@semcore/ui/icon/platform/AISEOToolkit';
 import AIToolkit from '@semcore/ui/icon/platform/AIToolkit';

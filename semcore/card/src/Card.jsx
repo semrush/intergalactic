@@ -1,7 +1,7 @@
+import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { Box } from '@semcore/flex-box';
 import InfoM from '@semcore/icon/Info/m';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
@@ -42,14 +42,16 @@ function Title(props) {
   const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
   const hintAfter = props.hintAfter || props.hint;
   const STitle = Root;
+  const SInfo = DescriptionTooltip;
+  const SInfoTrigger = SInfo.Trigger;
 
   return sstyled(styles)(
     <>
       <STitle render={Text}>
         <Children />
         {innerHint && (
-          <DescriptionTooltip>
-            <DescriptionTooltip.Trigger
+          <SInfo>
+            <SInfoTrigger
               tag={ButtonLink}
               ml={1}
               use='secondary'
@@ -59,14 +61,14 @@ function Title(props) {
               <ButtonLink.Addon>
                 <InfoM />
               </ButtonLink.Addon>
-            </DescriptionTooltip.Trigger>
-            <DescriptionTooltip.Popper>{innerHint}</DescriptionTooltip.Popper>
-          </DescriptionTooltip>
+            </SInfoTrigger>
+            <SInfo.Popper>{innerHint}</SInfo.Popper>
+          </SInfo>
         )}
       </STitle>
       {hintAfter && (
-        <DescriptionTooltip>
-          <DescriptionTooltip.Trigger
+        <SInfo>
+          <SInfoTrigger
             tag={ButtonLink}
             use='secondary'
             aria-label={hintAfterAriaLabel}
@@ -75,9 +77,9 @@ function Title(props) {
             <ButtonLink.Addon>
               <InfoM />
             </ButtonLink.Addon>
-          </DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper>{hintAfter}</DescriptionTooltip.Popper>
-        </DescriptionTooltip>
+          </SInfoTrigger>
+          <SInfo.Popper>{hintAfter}</SInfo.Popper>
+        </SInfo>
       )}
     </>,
   );

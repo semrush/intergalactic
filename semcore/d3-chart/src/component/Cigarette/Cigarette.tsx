@@ -7,7 +7,7 @@ import createElement from '../../createElement';
 import { PatternFill } from '../../Pattern';
 import { roundedPath } from '../../utils';
 
-class CigaretteBarRoot extends Component<any> {
+class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
   static displayName = 'Cigarette.BarItem';
   static enhance = [uniqueIDEnhancement()];
   static style = {};

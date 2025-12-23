@@ -3,11 +3,9 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { lastInteraction } from '@semcore/ui/core';
 import React, { type ForwardedRef } from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
 import { setAreaValue, ScrollBar } from './ScrollBar';
@@ -33,8 +31,8 @@ type State = {
 };
 
 type DefaultProps = {
-  container: React.Ref<HTMLElement>;
-  inner: React.Ref<HTMLElement>;
+  container: React.Ref<HTMLElement | null>;
+  inner: React.Ref<HTMLElement | null>;
   tabIndex: number;
   observeParentSize: boolean;
   disableAutofocusToContent: boolean;
@@ -44,15 +42,15 @@ type DefaultProps = {
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance, DefaultProps> {
+class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.enhance, {}, DefaultProps, State> {
   static displayName = 'ScrollArea';
 
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 
   static defaultProps: () => DefaultProps = () => ({
-    container: React.createRef(),
-    inner: React.createRef(),
+    container: React.createRef<HTMLElement | null>(),
+    inner: React.createRef<HTMLElement | null>(),
     tabIndex: 0,
     observeParentSize: false,
     disableAutofocusToContent: false,
@@ -68,15 +66,15 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
   verticalBarRef = React.createRef<HTMLElement>();
 
   get $container(): HTMLElement | null {
-    const element = getNodeByRef(this.asProps.container!);
+    const element = this.asProps.container.current;
 
-    return element instanceof HTMLElement ? element : null;
+    return element;
   }
 
   get $inner(): HTMLElement | null {
-    const element = getNodeByRef(this.asProps.inner!);
+    const element = this.asProps.inner.current;
 
-    return element instanceof HTMLElement ? element : null;
+    return element;
   }
 
   state: State = {
@@ -92,8 +90,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     }
   }
 
-  refWrapper = (node: HTMLElement) => {
-    this.$wrapper = findDOMNode(node) as HTMLElement;
+  refWrapper = (node: HTMLElement | null) => {
+    this.$wrapper = node;
   };
 
   setStyleSizeProperty = (element: HTMLElement, propertyKey: string, value: string | number) => {
@@ -353,7 +351,6 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
       styles,
       orientation,
       tabIndex,
-      forcedAdvancedMode,
       leftOffset,
       rightOffset,
       topOffset,
@@ -363,9 +360,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof Scroll
     } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
+    const advancedMode = isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName], true);
 
     const horizontalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.horizontal;
     const verticalShadowSize = typeof shadowSize === 'number' ? shadowSize : shadowSize.vertical;
@@ -437,6 +432,7 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   return sstyled(styles)(
     <SContainer
       render={Box}
+      inAfterOutline={true}
       tabIndex={0}
       focusRingTopOffset={focusRingTopOffset}
       focusRingRightOffset={focusRingRightOffset}

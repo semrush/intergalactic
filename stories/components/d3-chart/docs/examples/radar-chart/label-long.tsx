@@ -3,6 +3,8 @@ import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import RadarMockData from '../../../__mocks__/radar';
+
 const Demo = () => {
   const width = 250;
   const height = 250;
@@ -27,9 +29,6 @@ const Demo = () => {
   );
 };
 
-const data = {
-  categories: ['Cat 1', 'Cat tender\nDog sweet', 'Cat 3', 'Cat 4', 'Cat 5', 'Cat 6'],
-  data_1: [10, 2, 10, 2, 10, 2],
-};
+const data = RadarMockData.LongLabel;
 
 export default Demo;

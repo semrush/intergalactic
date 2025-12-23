@@ -1,18 +1,25 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, type Page, type Locator } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   async function expectScreenshotOf(page: Page, locator: Locator, name?: string) {
     const box = await locator.boundingBox();
     if (!box) throw new Error('Element not found or not visible');
     await expect(page).toHaveScreenshot(`${name}.png`, { clip: box });
   }
 
-  test('Veriry error templates', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Veriry error templates', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@errors',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en');
     await page.setViewportSize({ width: 1280, height: 2500 });
-    await page.setContent(htmlContent);
 
     await expectScreenshotOf(page, page.locator('[data-ui-name="AccessDenied"]'), 'AccessDenied');
     await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(0), 'Maintenance');
@@ -21,11 +28,13 @@ test.describe('Visual', () => {
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError');
   });
 
-  test('Veriry error templates when screen width is 648px', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Veriry error templates when screen width is 648px', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@errors',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en');
     await page.setViewportSize({ width: 648, height: 2700 });
-    await page.setContent(htmlContent);
 
     await expectScreenshotOf(page, page.locator('[data-ui-name="AccessDenied"]'), 'AccessDenied648px');
     await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(0), 'Maintenance648px');
@@ -34,11 +43,14 @@ test.describe('Visual', () => {
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError648px');
   });
 
-  test('Veriry custom error states', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/global-errors/tests/examples/custom-error-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Veriry custom error states', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@errors',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/errors/tests/examples/custom-error-cases.tsx', 'en');
+
     await page.setViewportSize({ width: 1280, height: 2500 });
-    await page.setContent(htmlContent);
 
     await expectScreenshotOf(page, page.locator('[data-testid="title-description"]'), 'Custom-title-description');
     await expectScreenshotOf(page, page.locator('[data-testid="icon-title-controls"]'), 'Custom-icon-title-controls');
@@ -49,7 +61,12 @@ test.describe('Visual', () => {
   });
 });
 
-test.describe('Functional', () => {
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
   const variables = [
     { titleTag: 'h1', homeLink: 'test1' },
     { titleTag: 'h2', homeLink: 'test1' },
@@ -59,11 +76,12 @@ test.describe('Functional', () => {
     { titleTag: 'p', homeLink: undefined },
   ];
   variables.forEach((item) => {
-    test(`Verify Errors with titleTag=${item.titleTag} homeLink= ${item.homeLink}`, async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify Errors with titleTag=${item.titleTag} homeLink= ${item.homeLink}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@errors',
+        '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en', item);
 
       const errorBlocks = [
         page.locator('[data-ui-name="AccessDenied"]'),
@@ -110,11 +128,12 @@ test.describe('Functional', () => {
     { toolName: undefined },
   ];
   toolName.forEach((item) => {
-    test(`Verify Maintenance with toolName=${item.toolName}  `, async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify Maintenance with toolName=${item.toolName}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@errors',
+        '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en', item);
 
       const maintenance = page.locator('[data-ui-name="Maintenance"]').nth(0);
       const title = maintenance.locator('[data-ui-name="Error.Title"]');
@@ -136,11 +155,12 @@ test.describe('Functional', () => {
     { projectsLink: 'projectsLink', contactsLink: 'contactLink', supportTeamLink: 'supportTeamLink' },
   ];
   projectNotFound.forEach((item) => {
-    test(`Verify projectNotFound with projectsLink=${item.projectsLink} contactLink=${item.contactsLink}  supportTeamLink=${item.supportTeamLink}`, async ({ page }) => {
-      const standPath = 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
+    test(`Verify projectNotFound with projectsLink=${item.projectsLink} contactLink=${item.contactsLink}  supportTeamLink=${item.supportTeamLink}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@errors',
+        '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en', item);
 
       const projectNotFoundBlock = page.locator('[data-ui-name="Maintenance"]').nth(2);
       const controls = projectNotFoundBlock.locator('[data-ui-name="Error.Controls"]');

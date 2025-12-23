@@ -1,8 +1,5 @@
-import type Button from '@semcore/button';
-import type Checkbox from '@semcore/checkbox';
 import type { CheckboxProps } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
-import type { Text } from '@semcore/typography';
 import type React from 'react';
 import type { FieldProps } from 'react-final-form';
 
@@ -69,12 +66,3 @@ export type FeedbackRatingCheckboxProps = Omit<CheckboxProps, 'label'> & {
   focused: boolean;
   label: React.ReactNode;
 };
-
-declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {
-  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
-  Submit: typeof Button;
-  Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
-  Header: typeof Text;
-};
-
-export { FeedbackRatingType };

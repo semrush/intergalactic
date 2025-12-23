@@ -1,9 +1,9 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { AriaNameProps, BaseChartProps } from './AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 
 export type AreaChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
@@ -25,4 +25,4 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   onClickArea?: (index: number, event: React.SyntheticEvent) => void;
 };
 
-export type AreaChartType = Intergalactic.Component<typeof Flex, AreaChartProps>;
+export type AreaChartType = Intergalactic.Component<typeof Flex, Intergalactic.InternalTypings.EfficientOmit<AreaChartProps, 'showLegend'> & { showLegend?: boolean } & AriaNameProps>;

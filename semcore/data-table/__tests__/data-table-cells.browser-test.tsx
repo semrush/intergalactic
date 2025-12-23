@@ -1,159 +1,186 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Cells', () => {
-  test('Verify long text in cells - default and wrap and ellipsis', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+import { locators } from './utils';
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify long text in cells and wrap and ellipsis', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx', 'en');
+
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify overflow=hidden visual finctionality', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/advanced/examples/overflow_in_cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
+  test('Verify overflow=hidden visual finctionality', {
+    tag: [TAG.PRIORITY_LOW,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/overflow_in_cells.tsx', 'en');
     await page.setViewportSize({ width: 768, height: 1024 });
-    await page.setContent(htmlContent);
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify multiple access to cells with spin', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
+  test('Verify colored cells', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/row_cell_states.tsx', 'en');
     await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowRight');
-    await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowDown');
+    await expect(page).toHaveScreenshot();
 
-    const svgInSecondCell = page.getByLabel('Loading…').first();
+    if (browserName !== 'chromium') test.skip();
+    const cell = locators.row(page, 4).locator('[aria-colindex="1"]');
+    const box = await cell.boundingBox();
 
-    await expect(svgInSecondCell).toHaveCount(1);
-    await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
-    await expect(svgInSecondCell).toHaveAttribute('role', 'img');
+    if (box) {
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    }
+    await expect(page).toHaveScreenshot();
   });
 
-  test('Verify keyboard interaction with interactive elements in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify empty data with selectable rows', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en');
 
-    const getCell = (row: number, col: number) =>
-      page.locator(
-        `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
-      );
-    const descriptionTooltipTrigger = (row: number, col: number) =>
-      getCell(row, col).locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const buttonInCell = (row: number, col: number) =>
-      getCell(row, col).locator('[data-ui-name="Button"]').first();
+    await expect(page).toHaveScreenshot();
+  });
 
-    // Start navigation with Tab
+  test('Verify sideIndents=wide with selectable rows non compact and compact', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
+      sideIndents: 'wide',
+    });
+
+    await test.step('Verify wide for non compact data-tablet', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify wide for compact data-tablet', async () => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
+        sideIndents: 'wide', compact: true,
+      });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify keyboard interaction with interactive elements in cells', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx', 'en');
+
     await page.keyboard.press('Tab');
-    await expect(getCell(2, 1)).toBeFocused();
-
-    // Navigate right
-    await page.keyboard.press('ArrowRight');
-    await expect(descriptionTooltipTrigger(2, 2)).toBeFocused();
+    await expect(locators.getCell(page, 2, 1)).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await expect(getCell(2, 3)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 2, 2)).toBeFocused();
 
-    // Navigate down
+    await page.keyboard.press('ArrowRight');
+    await expect(locators.getCell(page, 2, 3)).toBeFocused();
+
     await page.keyboard.press('ArrowDown');
-    await expect(getCell(3, 3)).toBeFocused();
+    await expect(locators.getCell(page, 3, 3)).toBeFocused();
 
-    // Open and close button inside a cell
     await page.keyboard.press('Enter');
-    await expect(buttonInCell(3, 3)).toBeFocused();
+    await expect(locators.buttonInCell(page, 3, 3)).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await expect(buttonInCell(3, 3)).toBeFocused();
+    await expect(locators.buttonInCell(page, 3, 3)).toBeFocused();
 
     await page.keyboard.press('Escape');
-    await expect(getCell(3, 3)).toBeFocused();
+    await expect(locators.getCell(page, 3, 3)).toBeFocused();
 
-    // Navigate outside table and back
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-test-id="button-after-table"]')).toBeFocused();
 
     await page.keyboard.press('Shift+Tab');
-    await expect(getCell(3, 3)).toBeFocused();
+    await expect(locators.getCell(page, 3, 3)).toBeFocused();
 
-    // Move left and open tooltip
     await page.keyboard.press('ArrowLeft');
-    await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 3, 2)).toBeFocused();
 
     await page.keyboard.press('Enter');
     await expect(page.locator('[data-ui-name="DescriptionTooltip.Popper"]')).toBeFocused();
     await page.keyboard.press('Escape');
-    await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 3, 2)).toBeFocused();
 
-    // Navigate into link inside tooltip
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
     await expect(page.getByRole('link')).toBeFocused();
 
     await page.keyboard.press('Escape');
-    await expect(descriptionTooltipTrigger(3, 2)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 3, 2)).toBeFocused();
 
-    // Move left and interact with elements
     await page.keyboard.press('ArrowLeft');
-    await expect(getCell(3, 1)).toBeFocused();
+    await expect(locators.getCell(page, 3, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
-    await expect(getCell(3, 1)).toBeFocused();
+    await expect(locators.getCell(page, 3, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
-    await expect(getCell(3, 1).locator('[data-test-id="interactive-icon"]')).toBeFocused();
+    await expect(locators.getCell(page, 3, 1).locator('[data-test-id="interactive-icon"]')).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 3, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
+    await page.getByLabel('About fastest animals').waitFor({ state: 'visible' });
     await expect(page.getByLabel('About fastest animals')).toBeFocused();
     await page.keyboard.press('Escape');
 
-    await expect(descriptionTooltipTrigger(3, 1)).toBeFocused();
+    await expect(locators.descriptionTooltipTrigger(page, 3, 1)).toBeFocused();
   });
 
-  test('Verify keyboard interaction with dd and select in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify keyboard interaction with dd and select in cells', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown',
+      '@select',
+      '@tooltip',
+      '@checkbox',
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
 
-    const getCell = (row: number, col: number) =>
-      page.locator(
-        `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
-      );
-    const selectButton = (row: number, col: number) =>
-      getCell(row, col).locator('button[data-ui-name="Select"]');
-    const dropdownButton = (row: number, col: number) =>
-      getCell(row, col).locator('button[data-ui-name="Dropdown.Trigger"]');
     const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await page.keyboard.press('Tab');
 
     await test.step('Verify interaction with select', async () => {
-      const firstCell = getCell(2, 1);
-      await expect(firstCell).toBeFocused();
+      await expect(locators.getCell(page, 2, 1)).toBeFocused();
 
       await page.keyboard.press('Enter');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
-      await expect(selectButton(2, 1)).toBeFocused();
+      await expect(locators.selectButton(page, 2, 1)).toBeFocused();
       await page.keyboard.press('Enter');
 
       const selectOption = page.getByRole('option', { name: 'Option 0' });
@@ -164,17 +191,17 @@ test.describe('Cells', () => {
       await page.keyboard.press('Enter');
 
       await expect(selectOption).toBeHidden();
-      await expect(selectButton(2, 1)).toHaveAttribute('value', '2');
+      await expect(locators.selectButton(page, 2, 1)).toHaveAttribute('value', '2');
 
       await page.keyboard.press('Escape');
-      await expect(firstCell).toBeFocused();
+      await expect(locators.getCell(page, 2, 1)).toBeFocused();
     });
 
     await test.step('Verify interaction with dropdown', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      await expect(dropdownButton(2, 3)).toBeFocused();
+      await expect(locators.dropdownButton(page, 2, 3)).toBeFocused();
       await expect(dropdownPopper).toBeHidden();
 
       await page.keyboard.press('Enter');
@@ -188,22 +215,23 @@ test.describe('Cells', () => {
       await page.keyboard.press('Escape');
 
       await expect(dropdownPopper).toBeHidden();
-      await expect(dropdownButton(2, 3)).toBeFocused();
+      await expect(locators.dropdownButton(page, 2, 3)).toBeFocused();
     });
   });
 
-  test('Verify mouse interaction with dd and select in cells', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify mouse interaction with dd and select in cells', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown',
+      '@select',
+      '@tooltip',
+      '@checkbox',
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
 
-    const getCell = (row: number, col: number) =>
-      page.locator(
-        `[role="row"][aria-rowindex="${row}"] [role="gridcell"][aria-colindex="${col}"]`,
-      );
-    const selectButton = getCell(2, 2).locator('button[data-ui-name="Select"]');
-    const dropdownButton = getCell(2, 3).locator('button[data-ui-name="Dropdown.Trigger"]');
+    const selectButton = locators.getCell(page, 2, 2).locator('button[data-ui-name="Select"]');
+    const dropdownButton = locators.getCell(page, 2, 3).locator('button[data-ui-name="Dropdown.Trigger"]');
     const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await test.step('Verify interaction with select', async () => {
@@ -237,11 +265,13 @@ test.describe('Cells', () => {
     });
   });
 
-  test('Verify keyoard navigation from header to merged cell', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify keyboard navigation from header to merged cell', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/one-merged-cell.tsx', 'en');
+
     const cell = page.locator('[data-ui-name="Row.Cell"]');
     await expect(cell).toHaveAttribute('data-grouped-by', 'colgroup');
     await expect(cell).toHaveAttribute('scope', 'colgroup');
@@ -257,53 +287,56 @@ test.describe('Cells', () => {
     await expect(page.locator('[data-ui-name="Row.Cell"]')).toBeFocused();
   });
 
-  test('Verify colored cells', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/advanced/examples/row_cell_states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
+  test('Verify select rows with Shift', {
+    tag: [
+      TAG.KEYBOARD,
+      '@data-table',
+    ],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
 
-    if (browserName !== 'chromium') return;
-    const row = page.locator('[data-ui-name="Body.Row"][aria-rowindex="4"]');
-    const cell = row.locator('[aria-colindex="1"]');
-    const box = await cell.boundingBox();
+    const firstCell = locators.getCell(page, 3, 1);
+    const secondCell = locators.getCell(page, 7, 1);
 
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await firstCell.locator('label').click();
+    await secondCell.locator('label').click({ modifiers: ['Shift'] });
+
+    for (let i = 3; i <= 7; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).toBeChecked();
     }
-    await expect(page).toHaveScreenshot();
+
+    await locators.getCell(page, 5, 1).locator('label').click({ modifiers: ['Shift'] });
+
+    for (let i = 5; i <= 7; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
+    }
+
+    await locators.getCell(page, 9, 1).locator('label').click({ modifiers: ['Shift'] });
+    for (let i = 5; i <= 8; i++) {
+      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
+    }
+    await expect(locators.getCell(page, 9, 1).locator('input')).toBeChecked();
   });
+});
 
-  test('Verify empty data with selectable rows', async ({ page }) => {
-    const standPath = 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+test('Verify multiple access to cells with spin', {
+  tag: [TAG.PRIORITY_HIGH,
+    TAG.KEYBOARD,
+    '@dropdown',
+    '@spin'],
+}, async ({ page }) => {
+  await loadPage(page, 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx', 'en');
 
-    await expect(page).toHaveScreenshot();
-  });
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
 
-  test('Verify wide indents with selectable rows non compact and compact', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/checkbox-in-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', {
-      sideIndents: 'wide',
-    });
-    await page.setContent(htmlContent);
+  const svgInSecondCell = page.getByLabel('Loading…').first();
 
-    await test.step('Verify wide for non compact data-tablet', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify wide for compact data-tablet', async () => {
-      const htmlContent = await e2eStandToHtml(standPath, 'en', {
-        sideIndents: 'wide',
-        compact: true,
-      });
-      await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
-    });
-  });
+  await expect(svgInSecondCell).toHaveCount(1);
+  await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
+  await expect(svgInSecondCell).toHaveAttribute('role', 'img');
 });

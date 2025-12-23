@@ -1,9 +1,7 @@
-import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type { BoxProps } from '@semcore/flex-box';
 
-/** @deprecated */
-export interface ISkeletonProps extends SkeletonProps, UnknownProperties {}
 export type SkeletonProps = BoxProps &
   UniqueIDProps & {
     /**
@@ -29,14 +27,10 @@ export type SkeletonProps = BoxProps &
     observeParentSize?: boolean;
   };
 
-/** @deprecated */
-export interface ISkeletonCtx extends SkeletonCtx, UnknownProperties {}
 export type SkeletonCtx = {
   gradientUrl: 'string';
 };
 
-/** @deprecated */
-export interface ISkeletonTextProps extends SkeletonTextProps, UnknownProperties {}
 export type SkeletonTextProps = BoxProps & {
   /**
    * Number of items to be returned

@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <DropdownMenu
       visible={visible}
-      onVisibleChange={(value) => {
+      onVisibleChange={(value: any) => {
         setVisible(value);
       }}
     >

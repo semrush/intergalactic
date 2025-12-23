@@ -1,12 +1,27 @@
+import type { BoxProps } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Select from '@semcore/ui/select';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import React from 'react';
+
+export type MultiLevelInteractiveProps = {
+  compact?: DataTableProps<typeof data, any, any>['compact'];
+  use?: DataTableProps<typeof data, any, any>['use'];
+
+  loading?: DataTableProps<typeof data, any, any>['loading'];
+  defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
+  sticky: boolean;
+  withScrollBar?: boolean;
+  sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
+  top?: number;
+
+} & BoxProps;
 
 const options = Array(6)
   .fill('')
@@ -30,7 +45,7 @@ const CustomSelect = () => {
       data-test-id='select-header'
       id='basic-select'
       tag={LinkTrigger}
-      onKeyDown={(e) => {
+      onKeyDown={(e: any) => {
         if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
           return false;
         }
@@ -42,88 +57,109 @@ const CustomSelect = () => {
   );
 };
 
-const Demo = () => {
+const columns = [
+  {
+    children: 'Keyword',
+    name: 'keyword',
+    gtcWidth: '300px',
+  },
+  {
+    name: 'group1',
+    children: 'Group',
+    columns: [
+      {
+        name: 'kd',
+        gtcWidth: 'minmax(100px, max-content)',
+        children: (
+          <DescriptionTooltip placement='right'>
+            Cpc 1
+            <DescriptionTooltip.Trigger
+              ml={1}
+              tag={ButtonLink}
+              addonLeft={InfoM}
+              color='icon-secondary-neutral'
+              aria-label='Additional info 1'
+              data-test-id='tooltip-with-interactive-el'
+            />
+            <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
+              Jesus Christ, Joe,
+              {' '}
+              <Link>fucking forget</Link>
+              {' '}
+              about it. I'm Mr.
+              Pink. Let's move on.
+            </DescriptionTooltip.Popper>
+          </DescriptionTooltip>
+        ),
+      },
+      {
+        name: 'cpc',
+        gtcWidth: 'minmax(300px, max-content)',
+        children: (
+          <>
+            <Checkbox data-test-id='header-checkbox' />
+            <DescriptionTooltip placement='right'>
+              Hello
+              <DescriptionTooltip.Trigger
+                ml={1}
+                tag={ButtonLink}
+                addonLeft={InfoM}
+                color='icon-secondary-neutral'
+                aria-label='Additional info'
+                data-test-id='tooltip-without-interactive-el'
+              />
+              <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
+                Jesus Christ, Joe,
+                Pink. Let's move on.
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
+          </>
+        ),
+      },
+      {
+        name: 'vol',
+        gtcWidth: '300px',
+        children: (<CustomSelect />),
+      },
+
+    ],
+  },
+];
+
+const Demo = (props: MultiLevelInteractiveProps) => {
   return (
 
     <DataTable
       data={data}
-      aria-label='Base table example'
-      defaultGridTemplateColumnWidth='auto'
-
-      h={400}
+      aria-label='Multi level interactive'
+      defaultGridTemplateColumnWidth={props.defaultGridTemplateColumnWidth}
+      compact={props.compact}
+      sideIndents={props.sideIndents}
+      loading={props.loading}
+      w={props.w}
+      h={props.h}
+      use={props.use}
       headerProps={{
-        sticky: true,
+        sticky: props.sticky,
+        withScrollBar: props.withScrollBar,
       }}
-      columns={[
-        {
-          children: 'Keyword',
-          name: 'keyword',
-          gtcWidth: '300px',
-        },
-        {
-          name: 'group1',
-          children: 'Group',
-          columns: [
-            {
-              name: 'kd',
-              gtcWidth: 'minmax(100px, max-content)',
-              children: (
-                <DescriptionTooltip placement='right'>
-                  Cpc 1
-                  <DescriptionTooltip.Trigger
-                    ml={1}
-                    tag={ButtonLink}
-                    addonLeft={InfoM}
-                    color='icon-secondary-neutral'
-                    aria-label='Additional info 1'
-                    data-test-id='tooltip-with-interactive-el'
-                  />
-                  <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
-                    Jesus Christ, Joe,
-                    {' '}
-                    <Link>fucking forget</Link>
-                    {' '}
-                    about it. I'm Mr.
-                    Pink. Let's move on.
-                  </DescriptionTooltip.Popper>
-                </DescriptionTooltip>
-              ),
-            },
-            {
-              name: 'cpc',
-              gtcWidth: 'minmax(300px, max-content)',
-              children: (
-                <>
-                  <Checkbox data-test-id='header-checkbox' />
-                  <DescriptionTooltip placement='right'>
-                    Hello
-                    <DescriptionTooltip.Trigger
-                      ml={1}
-                      tag={ButtonLink}
-                      addonLeft={InfoM}
-                      color='icon-secondary-neutral'
-                      aria-label='Additional info'
-                      data-test-id='tooltip-without-interactive-el'
-                    />
-                    <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
-                      Jesus Christ, Joe,
-                      Pink. Let's move on.
-                    </DescriptionTooltip.Popper>
-                  </DescriptionTooltip>
-                </>
-              ),
-            },
-            {
-              name: 'vol',
-              gtcWidth: '300px',
-              children: (<CustomSelect />),
-            },
-          ],
-        },
-      ]}
+      columns={columns}
     />
   );
 };
+
+export const multiLevelInteractiveProps: MultiLevelInteractiveProps = {
+  sideIndents: undefined,
+  compact: undefined,
+  h: '100%',
+  w: '100%',
+  defaultGridTemplateColumnWidth: '1fr',
+  loading: undefined,
+  sticky: true,
+  withScrollBar: undefined,
+  use: 'primary',
+};
+Demo.defaultProps = multiLevelInteractiveProps;
 
 const data = [
   {

@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, sstyled, Root, type IRootComponentProps } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './legend-table.shadow.css';
@@ -58,7 +58,7 @@ function ColumnComponent(props: LegendColumnProps & IRootComponentProps) {
   );
 }
 
-export const LegendTable: LegendTableType = createComponent(LegendTableRoot, {
+export const LegendTable = createComponent(LegendTableRoot, {
   LegendItem: LegendItemComponent,
   Column: ColumnComponent,
-});
+}) as LegendTableType;

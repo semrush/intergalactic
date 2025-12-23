@@ -1,11 +1,99 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Rows', () => {
-  test('Verify merged cells on Hover', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/columns-merging.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify colored rows', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/row-themes.tsx', 'en');
+
+    await test.step('Verify success theme', async () => {
+      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[0],
+      });
+
+      await locators.getCell(page, 2, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[0],
+        });
+    });
+
+    await test.step('Verify info theme', async () => {
+      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[1],
+      });
+
+      await locators.getCell(page, 3, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[1],
+        });
+    });
+
+    await test.step('Verify muted theme', async () => {
+      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[2],
+      });
+
+      await locators.getCell(page, 4, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[2],
+        });
+    });
+
+    await test.step('Verify warning theme', async () => {
+      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[3],
+      });
+
+      await locators.getCell(page, 5, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[3],
+        });
+    });
+
+    await test.step('Verify danger theme', async () => {
+      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
+
+      await checkStyles(cells, {
+        'background-color': stylesNotActive[4],
+      });
+
+      await locators.getCell(page, 6, 1).hover();
+      if (browserName !== 'firefox')
+        await checkStyles(cells, {
+          'background-color': stylesActiveHovered[4],
+        });
+    });
+  });
+
+  test('Verify merged cells on Hover', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
+
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
     const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
     await firstCell.hover();
@@ -16,12 +104,21 @@ test.describe('Rows', () => {
     await secondCellSecondRow.hover();
     await expect(page).toHaveScreenshot();
   });
+});
 
-  test('Verify merged rows keyboard navigation', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/rows-merging.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify merged rows keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/rows-merging.tsx', 'en');
 
-    await page.setContent(htmlContent);
     await page.keyboard.press('Tab');
 
     const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
@@ -61,24 +158,5 @@ test.describe('Rows', () => {
     await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowLeft');
     await expect(MergedCellSecondRow).toBeFocused();
-  });
-
-  test('Verify colored rows', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/row-themes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot();
-
-    if (browserName === 'firefox') return;
-    const row = page.locator('[role="gridcell"][aria-colindex="1"]');
-    const rowsCount = await row.count();
-    for (let i = 0; i < rowsCount; i++) {
-      await row.nth(i).hover({ force: true });
-      await expect(page).toHaveScreenshot();
-    }
   });
 });

@@ -1,14 +1,21 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@playwright/test';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Grid base tests', () => {
+/* =====================================================
+@visual
+Visual states, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
   const sizes = [{ width: 320 }, { width: 768 }, { width: 1200 }];
 
   sizes.forEach(({ width }) => {
-    test(`Verify Row gutter for each ${width}px`, async ({ page }) => {
-      const standPath = 'stories/components/grid/docs/examples/example-use.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test(`Verify Row gutter for each ${width}px`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/grid/docs/examples/example-use.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
 
@@ -37,10 +44,12 @@ test.describe('Grid base tests', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Col span and offset for each ${width}px`, async ({ page }) => {
-      const standPath = 'stories/components/grid/docs/examples/change-in-general-offset.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test(`Verify Col span and offset for each ${width}px`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/grid/docs/examples/change-in-general-offset.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
       await expect(page).toHaveScreenshot();
@@ -83,20 +92,26 @@ test.describe('Grid base tests', () => {
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px`, async ({ page }) => {
-      const standPath = 'stories/components/grid/docs/examples/responsive.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test(`Verify Grid is responsive with md, sm, xs, offset and mdOffset for each ${width}px`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive.tsx', 'en');
+
       await page.setViewportSize({ width, height: 800 });
       await expect(page).toHaveScreenshot();
     });
   });
 
   sizes.forEach(({ width }) => {
-    test(`Verify Grid is responsive with alternative API for each ${width}px`, async ({ page }) => {
-      const standPath = 'stories/components/grid/docs/examples/responsive-alternative-api.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
+    test(`Verify Grid is responsive with alternative API for each ${width}px`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@grid'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/grid/docs/examples/responsive-alternative-api.tsx', 'en');
+
       await page.setViewportSize({ width, height: 800 });
       await expect(page).toHaveScreenshot();
     });

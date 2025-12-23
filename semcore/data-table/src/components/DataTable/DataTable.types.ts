@@ -5,7 +5,7 @@ import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { DataTableBodyProps } from '../Body/Body.types';
-import type { DTRow } from '../Body/Row.types';
+import type { DTRow, RowPropsInner } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 import type { DataTableHeadProps } from '../Head/Head.types';
 
@@ -128,7 +128,7 @@ export type DataTableProps<
         selectedRowIndex: number;
         isSelected: boolean;
         row: DTRow<UniqKeyType>;
-      },
+      }
     ) => void;
 
     /**
@@ -148,6 +148,12 @@ export type DataTableProps<
     accordionDuration?: number | [number, number];
 
     /**
+     * List of animated rows in accordion.
+     * @default 20
+     */
+    accordionAnimationRows?: RowPropsInner<Data, UniqKeyType>['accordionAnimationRows'];
+
+    /**
      * Whether multiple accordion items can be open at a time, or only one.
      * @default 'independent'
      */
@@ -159,6 +165,22 @@ export type DataTableProps<
      */
     onAccordionToggle?: (type: 'open' | 'close', uniqRowKey: UniqKeyType, rowIndex: number) => void;
 
+    /** Defines a limit configuration */
+    limit?: {
+      /**
+       * Start limit from this row
+       * @default 0
+       */
+      fromRow?: number;
+      /**
+       * Start limit from this column
+       * @default 0
+       */
+      fromColumn?: number;
+      /** Limit overlay */
+      renderOverlay: () => React.ReactNode;
+    };
+
     /**
      * Visual variant that adapts the table styling to different usage contexts
      * @default 'default'
@@ -169,6 +191,11 @@ export type DataTableProps<
      * Handle change expanded rows
      */
     onExpandedRowsChange?: (expandedRows: Set<UniqKeyType>) => void;
+
+    /**
+   * Handling table container resizing.
+   */
+    onResize?: ResizeObserverCallback;
   };
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
@@ -186,7 +213,14 @@ export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
 
 export type ColumnGroupConfig = {
   /**
+   * Name of column for mapping with data.
+   *
    * Necessary to set a unique name for a group. (It will use as a React key).
+   *
+   * Note: Column names cannot contain the "/" character as it is reserved
+   * as a separator for merged columns. Column names are also used to generate
+   * CSS variable names for grid layout, so they must be valid CSS identifiers.
+   * Use letters, numbers, hyphens, and underscores only.
    */
   name: string;
 
@@ -199,7 +233,7 @@ export type ColumnGroupConfig = {
   columns: ColumnItemConfig[];
 };
 
-type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
+export type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
 
 export type VirtualScroll =
   | boolean

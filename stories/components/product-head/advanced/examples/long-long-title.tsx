@@ -1,7 +1,7 @@
+import { Flex, Box } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex, Box } from '@semcore/ui/flex-box';
 import BookM from '@semcore/ui/icon/Book/m';
 import Chat from '@semcore/ui/icon/Chat/m';
 import EditM from '@semcore/ui/icon/Edit/m';

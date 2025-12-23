@@ -1,14 +1,9 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 export type PillsValue = string | number | boolean | null;
 
-/** @deprecated */
-export interface IPillsProps<T extends PillsValue = PillsValue>
-  extends PillsProps<T>,
-  UnknownProperties {}
 export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
   BoxProps & {
     /** Pills size */
@@ -31,16 +26,11 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
      * while `manual` behavior for navigation and layout.
      * @default tabs
      */
-    behavior?: /** @deprecated use `manual` */
-      | 'tabs'
-      /** @deprecated use `auto` */
-      | 'radio'
+    behavior?:
       | 'auto'
       | 'manual';
   };
 
-/** @deprecated */
-export interface IPillProps extends PillProps, UnknownProperties {}
 export type PillProps = BoxProps &
   NeighborItemProps & {
     /** Pill value */
@@ -55,14 +45,10 @@ export type PillProps = BoxProps &
     addonRight?: React.ElementType;
   };
 
-/** @deprecated */
-export interface IPillsContext extends PillsContext, UnknownProperties {}
 export type PillsContext = {
   getItemProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IPillsHandlers extends PillsHandlers, UnknownProperties {}
 export type PillsHandlers = {
   value: (value: PillsValue) => void;
 };

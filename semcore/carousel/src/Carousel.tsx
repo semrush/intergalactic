@@ -1,12 +1,11 @@
-import { createBreakpoints } from '@semcore/breakpoints';
+import { createBreakpoints, Box, Flex } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex } from '@semcore/flex-box';
-import type { BoxProps } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';
@@ -38,9 +37,10 @@ const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends Component<
   CarouselProps,
+  typeof enhance,
+  { index: any },
   CarouselContext,
-  CarouselState,
-        typeof enhance
+  CarouselState
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -466,6 +466,7 @@ class CarouselRoot extends Component<
   renderModal(isSmall: boolean, ComponentItems: any[]) {
     const SModalContainer = Root;
     const SModalBox = Box;
+    const SImageBoxContainer = Box;
     const { styles, uid, duration, zoomWidth } = this.asProps;
     const { isOpenZoom } = this.state;
 
@@ -478,32 +479,34 @@ class CarouselRoot extends Component<
       >
         <Flex direction={isSmall ? 'column' : 'row'}>
           {!isSmall && <Carousel.Prev inverted={true} />}
-          <SModalBox>
-            <SModalContainer
-              render={Box}
-              aria-live='polite'
-              use:duration={`${duration}ms`}
-              ref={this.refModalContainer}
-              use:w={undefined}
-              wMax={zoomWidth}
-            >
-              {ComponentItems.map((item, i) => {
-                return (
-                  <Carousel.Item
-                    {...item.props}
-                    key={item.key}
-                    uid={uid}
-                    index={i}
-                    current={this.isSelected(i)}
-                    toggleItem={undefined}
-                    zoom={true}
-                    zoomOut={true}
-                    transform={this.isSelected(i) ? this.getTransform() : undefined}
-                  />
-                );
-              })}
-            </SModalContainer>
-          </SModalBox>
+          <SImageBoxContainer>
+            <SModalBox>
+              <SModalContainer
+                render={Box}
+                aria-live='polite'
+                use:duration={`${duration}ms`}
+                ref={this.refModalContainer}
+                use:w={undefined}
+                wMax={zoomWidth}
+              >
+                {ComponentItems.map((item, i) => {
+                  return (
+                    <Carousel.Item
+                      {...item.props}
+                      key={item.key}
+                      uid={uid}
+                      index={i}
+                      current={this.isSelected(i)}
+                      toggleItem={undefined}
+                      zoom={true}
+                      zoomOut={true}
+                      transform={this.isSelected(i) ? this.getTransform() : undefined}
+                    />
+                  );
+                })}
+              </SModalContainer>
+            </SModalBox>
+          </SImageBoxContainer>
           {isSmall
             ? (
                 <Flex justifyContent='center' mt={2}>
@@ -528,8 +531,8 @@ class CarouselRoot extends Component<
       uid,
       zoom: hasZoom,
       'aria-label': ariaLabel,
-      'aria-roledescription': ariaRoledescription,
       indicators,
+      getI18nText,
     } = this.asProps;
     const ComponentItems = findAllComponents(Children, ['Carousel.Item']);
     const Controls = findAllComponents(Children, [
@@ -542,13 +545,12 @@ class CarouselRoot extends Component<
       <SCarousel
         render={Box}
         role='region'
-        roledescription='carousel'
+        aria-roledescription={getI18nText('Carousel:aria-roledescription')}
         onKeyDown={this.handlerKeyDown}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
         ref={this.refCarousel}
         id={`igc-${uid}-carousel`}
-        aria-roledescription={ariaRoledescription}
       >
         {Controls.length === 0
           ? (
@@ -570,9 +572,8 @@ class CarouselRoot extends Component<
                         <Carousel.Indicator
                           {...item.props}
                           key={item.key}
-                          w={100}
-                          h={100}
-                          aria-roledescription='slide'
+                          w={undefined}
+                          aria-roledescription={getI18nText('Carousel.Indicator:aria-roledescription')}
                           active={this.isSelected(index)}
                           onClick={this.bindHandlerClickIndicator(index)}
                         />
@@ -596,21 +597,21 @@ class CarouselRoot extends Component<
   }
 }
 
-const Container = (props: BoxProps & { duration?: number }) => {
+function Container(props: BoxProps & { duration?: number }) {
   const SContainer = Root;
   const { styles, duration } = props;
 
   return sstyled(styles)(
     <SContainer render={Box} use:duration={`${duration}ms`} aria-live='polite' />,
   );
-};
+}
 
-const ContentBox = (props: BoxProps) => {
+function ContentBox(props: BoxProps) {
   const SContentBox = Root;
   const { styles } = props;
 
   return sstyled(styles)(<SContentBox render={Box} />);
-};
+}
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
@@ -666,7 +667,7 @@ class Item extends Component<CarouselItemProps> {
   }
 }
 
-const Prev = (props: CarouselButtonProps) => {
+function Prev(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
   const SPrevButton = Button;
@@ -691,7 +692,7 @@ const Prev = (props: CarouselButtonProps) => {
   );
 };
 
-const Next = (props: CarouselButtonProps) => {
+function Next(props: CarouselButtonProps) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
   const SNextButton = Button;
@@ -716,17 +717,17 @@ const Next = (props: CarouselButtonProps) => {
   );
 };
 
-const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsProps) => {
+function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsProps) {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box}>
+      <SIndicators render={Box} innerOffset>
         <Children />
       </SIndicators>,
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box}>
+    <SIndicators render={Box} invertOutline={inverted}>
       {items?.map((item: CarouselItem, index: number) => (
         <Carousel.Indicator key={index} {...item} inverted={inverted} />
       ))}
@@ -734,7 +735,7 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   );
 };
 
-const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
+function Indicator({ styles, Children, inverted }: CarouselIndicatorProps) {
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>
@@ -743,7 +744,7 @@ const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
   );
 };
 
-const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
+const Carousel = createComponent(CarouselRoot, {
   Container,
   ContentBox,
   Indicators,
@@ -751,6 +752,6 @@ const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
   Item,
   Prev,
   Next,
-});
+}) as typeof CarouselType;
 
 export default Carousel;

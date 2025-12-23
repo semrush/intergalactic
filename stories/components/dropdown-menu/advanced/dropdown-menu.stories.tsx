@@ -7,7 +7,7 @@ import LeftPlacementExample from './examples/left-placement';
 import ModalInItemExample from './examples/modal-in-dd-item';
 import ModalInDDNoticeExample from './examples/modal-in-dd-notice';
 import ModalInNestedDdItemExample from './examples/modal-in-nested-dd-item';
-import ProjectSelectorExample from './examples/project-selector';
+import ProjectSelectorExample, { defaultProps as ProjectSelectorProps } from './examples/project-selector';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -38,7 +38,24 @@ export const LeftPlacement: Story = {
   render: LeftPlacementExample,
 };
 
-export const ProjectSelector: Story = {
+export const ProjectSelector: StoryObj<typeof ProjectSelectorProps> = {
   render: ProjectSelectorExample,
+  argTypes: {
+    disabledAll: {
+      control: { type: 'boolean' },
+    },
+    disabledFirstItem: {
+      control: { type: 'boolean' },
+    },
+    stretch: {
+      control: { type: 'select' },
+      options: ['min', 'fixed', false],
+    },
+    visibleItems: {
+      control: { type: 'number' },
+
+    },
+  },
+  args: ProjectSelectorProps,
   play: playWrapper(ProjectSelectorTest),
 };

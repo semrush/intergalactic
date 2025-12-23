@@ -281,6 +281,11 @@ By default, horizontal scrolling is displayed at the bottom of the table, but it
 
 ### Virtual scroll with constant row height
 
+::: tip
+When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent's height and `height='100%'` for the DataTable.
+Without a defined height, virtual scroll can't calculate its layout correctly.
+:::
+
 Enable scroll virtualization using the `virtualScroll` property. Passing `rowHeight` as its subproperty will ensure the best performance.
 
 ::: sandbox
@@ -292,6 +297,11 @@ Enable scroll virtualization using the `virtualScroll` property. Passing `rowHei
 :::
 
 ### Virtual scroll with variable row height
+
+::: tip
+When using virtual scroll, you must define the DataTable’s height by setting `h` or `hMin`, or by defining the parent's height and `height='100%'` for the DataTable.
+Without a defined height, virtual scroll can't calculate its layout correctly.
+:::
 
 Omit `rowHeight` for tables with variable row heights.
 
@@ -337,6 +347,18 @@ Add a skeleton to the table by directly substituting the cell content.
 
 <script lang="tsx">
   export Demo from 'stories/components/data-table/docs/examples/spin-container-in-table.tsx';
+</script>
+
+:::
+
+### Limited data
+
+You can hide the limited data with a blurred overlay by using the `limit` prop, and add your own message for this table state.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/data-table/docs/examples/limited-mode.tsx';
 </script>
 
 :::

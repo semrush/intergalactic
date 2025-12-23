@@ -21,7 +21,8 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem, DTValue,
+  DataRowItem,
+  DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -30,7 +31,6 @@ import type { BodyPropsInner } from '../Body/Body.types';
 import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
-import type { DataTableGroupProps } from '../Head/Group.type';
 import { Head } from '../Head/Head';
 import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
 
@@ -61,10 +61,10 @@ class DataTableRoot<
   UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableProps<Data, UniqKey, UniqKeyType>,
-    {},
-    {},
   typeof DataTableRoot.enhance,
-  { use: DTRow<UniqKeyType>; expandedRows: Set<UniqKeyType>; renderEmptyData: () => React.ReactNode }
+  {},
+  typeof DataTableRoot.defaultProps,
+  State<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -82,6 +82,8 @@ class DataTableRoot<
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
     variant: 'default',
+    accordionAnimationRows: 40,
+    accordionDuration: 200,
   };
 
   private columns: DTColumn[] = [];
@@ -117,6 +119,9 @@ class DataTableRoot<
 
   private headerNodesMap = new Map();
 
+  private isPressedShift = false;
+  private lastSelectedRowKey: UniqKeyType | undefined;
+
   constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
     super(props);
 
@@ -151,7 +156,7 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns } = this.asProps;
+    const { data, selectedRows, columns, loading } = this.asProps;
     if (prevProps.columns !== columns) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -165,9 +170,22 @@ class DataTableRoot<
       }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
-      if (prevProps.selectedRows.length < data.length && selectedRows.length === data.length) {
+      const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
+
+      const allChecked: UniqKeyType[] = [];
+      const allUnchecked: UniqKeyType[] = [];
+
+      this.flatRows.forEach((row) => {
+        if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+          allChecked.push(row[UNIQ_ROW_KEY]);
+        } else {
+          allUnchecked.push(row[UNIQ_ROW_KEY]);
+        }
+      });
+
+      if (allChecked.length === data.length) {
         this.setSelectAllMessage(true);
-      } else if (prevProps.selectedRows.length > 0 && selectedRows.length === 0) {
+      } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
       }
     }
@@ -185,7 +203,7 @@ class DataTableRoot<
     const { totalRows, expandedRows } = this.asProps;
     const flatRows = this.getFlatRows();
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];
@@ -205,10 +223,10 @@ class DataTableRoot<
     }
 
     const rows = this.getRows().reduce((acc, item) => {
-      acc = acc + 1;
-
       if (Array.isArray(item)) {
         acc = acc + item.length;
+      } else {
+        acc = acc + 1;
       }
 
       return acc;
@@ -316,14 +334,17 @@ class DataTableRoot<
       accordionMode,
       data: rawData,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
+      accordionAnimationRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
 
     return {
       accordionDuration,
+      accordionAnimationRows,
       accordionMode,
       columns: this.columns,
       rows: this.getRows(),
@@ -359,8 +380,9 @@ class DataTableRoot<
       rawData,
       shadowVertical,
       renderCellOverlay,
-      totalRows,
+      limit,
       variant,
+      totalRows,
     };
   }
 
@@ -401,7 +423,7 @@ class DataTableRoot<
     }
   });
 
-  handleCellClick = (e: React.SyntheticEvent, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
+  handleCellClick = (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
       this.initFocusableCell([this.hasFocusableInHeader() ? opt.rowIndex + 1 : opt.rowIndex, opt.colIndex]);
     }
@@ -419,11 +441,41 @@ class DataTableRoot<
 
     const selectedRowsSet = new Set(selectedRows);
 
-    if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
-      selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+    if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
+      let select = false;
+
+      for (const item of this.flatRows) {
+        if (!select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
+          select = true;
+          if (isSelected) {
+            selectedRowsSet.add(item[UNIQ_ROW_KEY]);
+          } else {
+            selectedRowsSet.delete(item[UNIQ_ROW_KEY]);
+          }
+          continue;
+        }
+
+        if (select) {
+          if (isSelected) {
+            selectedRowsSet.add(item[UNIQ_ROW_KEY]);
+          } else {
+            selectedRowsSet.delete(item[UNIQ_ROW_KEY]);
+          }
+        }
+
+        if (select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
+          break;
+        }
+      }
     } else {
-      selectedRowsSet.add(row[UNIQ_ROW_KEY]);
+      if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
+        selectedRowsSet.delete(row[UNIQ_ROW_KEY]);
+      } else {
+        selectedRowsSet.add(row[UNIQ_ROW_KEY]);
+      }
     }
+
+    this.lastSelectedRowKey = row[UNIQ_ROW_KEY];
 
     onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
   };
@@ -495,6 +547,7 @@ class DataTableRoot<
     colIndex: ColIndex,
     direction?: 'up' | 'down' | 'left' | 'right',
   ) => {
+    const { limit } = this.asProps;
     const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
@@ -530,9 +583,11 @@ class DataTableRoot<
     const cell = row?.querySelector(
       `:scope > div > [role=gridcell][aria-colindex="${
         newCol + 1
-      }"], :scope > [role=columnheader][aria-colindex="${
+      }"]:not([aria-hidden="true"]), :scope > [role=columnheader][aria-colindex="${
         newCol + 1
-      }"], :scope > div > [role=columnheader][aria-colindex="${newCol + 1}"]`,
+      }"]:not([aria-hidden="true"]), :scope > div > [role=columnheader][aria-colindex="${
+        newCol + 1
+      }"]:not([aria-hidden="true"])`,
     );
 
     if (cell instanceof HTMLElement && currentCell !== cell) {
@@ -552,7 +607,7 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus();
+      cell?.focus({ focusVisible: true });
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
@@ -569,7 +624,10 @@ class DataTableRoot<
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
           return;
         }
-
+        // skipping x-axis movement of the focus within limit overlay and there is only limit by rows
+        if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
+          return;
+        }
         // left/right
         if (
           currentCell.dataset.groupedBy === 'colgroup' ||
@@ -577,7 +635,19 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          colI = direction === 'left' ? colI - 1 : colI + 1;
+          if (direction === 'right' && limit?.fromColumn !== undefined) {
+            if (newCol > limit.fromColumn) return;
+
+            rowI = direction === 'right' ? rowI - 1 : rowI;
+          } else {
+            colI = direction === 'left' ? colI - 1 : colI + 1;
+          }
+        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
+          if (newCol === limit.fromColumn) {
+            rowI = rowI - 1;
+          } else {
+            return;
+          }
         } else {
           rowI = rowI - 1;
         }
@@ -589,6 +659,11 @@ class DataTableRoot<
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
+          const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
+          if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
+            return;
+          }
+
           colI = colI - 1;
         }
       }
@@ -632,6 +707,15 @@ class DataTableRoot<
         this.changeFocusCell(1, 0, 'down');
         break;
       }
+      case 'Shift': {
+        this.isPressedShift = true;
+      }
+    }
+  };
+
+  handleKeyUp = (e: React.KeyboardEvent) => {
+    if (e.key === 'Shift') {
+      this.isPressedShift = false;
     }
   };
 
@@ -727,16 +811,16 @@ class DataTableRoot<
       }
 
       const cell = row
-        ?.querySelectorAll('[role=gridcell], [role=columnheader]')
+        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
         .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');
 
       if (cell instanceof HTMLElement) {
-        if (hasParent(e.target, cell)) {
-          e.target.focus();
+        if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
+          e.target.focus({ focusVisible: true });
         } else {
-          cell.focus();
+          cell.focus({ focusVisible: true });
         }
       }
 
@@ -776,12 +860,14 @@ class DataTableRoot<
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
-  handleContainerResizeEnd = () => {
+  handleContainerResizeEnd = (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     if (this.containerResizeEndTimeoutId) {
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
     this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
+
+    this.asProps.onResize?.(entries, observer);
   };
 
   render() {
@@ -857,6 +943,7 @@ class DataTableRoot<
             ref={forkRef(this.tableRef, this.tableContainerRef)}
             role='grid'
             onKeyDown={this.handleKeyDown}
+            onKeyUp={this.handleKeyUp}
             onMouseMove={this.handleMouseMove}
             tabIndex={0}
             onFocus={this.handleFocus}
@@ -1333,7 +1420,7 @@ class DataTableRoot<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as unknown as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

@@ -1,8 +1,6 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface ICounterProps extends CounterProps, UnknownProperties {}
 export type CounterProps = BoxProps & {
   /** Counter theme or custom color */
   theme?: 'warning' | 'danger' | 'info' | string;
@@ -14,8 +12,6 @@ export type CounterProps = BoxProps & {
 
 declare const Counter: Intergalactic.Component<'div', CounterProps>;
 
-/** @deprecated */
-export interface IAnimatedNumberBaseProps extends AnimatedNumberBaseProps, UnknownProperties {}
 export type AnimatedNumberBaseProps = {
   /** Animates number change, receives value between 0 and 1 and returns value in range from 0 to 1, e.g. for linear easing pass (t) => t */
   easing?: (t: number) => number;

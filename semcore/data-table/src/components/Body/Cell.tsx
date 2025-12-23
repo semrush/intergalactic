@@ -1,23 +1,24 @@
 import { Box, Flex } from '@semcore/base-components';
-import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import { Root, sstyled, createComponent, Component } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
+import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import * as React from 'react';
 
-import type { CellPropsInner, DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps } from './Cell.types';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import style from './style.shadow.css';
+import styles from './style.shadow.css';
+import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
+import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-const DEFAULT_ROW_DURATION = 50;
+class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<Data, UniqKeyType>> implements IFocusableCell {
+  lockedCell: LockedCell = [null, false];
 
-class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableCellProps<UniqKeyType>, {}, {}, [], CellPropsInner<Data, UniqKeyType>> {
   static displayName = 'Cell';
-  static style = style;
+  static style = styles;
 
   cellRef = React.createRef<HTMLDivElement>();
-
-  lockedCell: [HTMLElement | null, boolean] = [null, false];
 
   componentWillUnmount() {
     const { virtualScroll, tableRef } = this.asProps;
@@ -26,100 +27,35 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   }
 
-  handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.currentTarget === this.lockedCell[0]) {
-      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
-        getFocusableIn(node as HTMLElement),
-      );
-
-      if (this.lockedCell[1]) {
-        if (e.key === 'Escape') {
-          this.lockedCell[0]?.focus();
-          this.lockedCell[1] = false;
-        }
-        if (e.key.startsWith('Arrow')) {
-          e.stopPropagation();
-          e.preventDefault();
-        }
-        if (e.key === 'Tab') {
-          if (e.target === focusableChildren[0] && e.shiftKey) {
-            focusableChildren[focusableChildren.length - 1]?.focus();
-            e.preventDefault();
-          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
-            focusableChildren[0]?.focus();
-            e.preventDefault();
-          }
-          e.stopPropagation();
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        e.stopPropagation();
-        this.lockedCell[1] = true;
-        focusableChildren[0]?.focus();
-      }
-    }
+  handleFocusableCellKeyDown = (e: React.KeyboardEvent) => {
+    handleKeydownFocusCell(this.lockedCell, e);
   };
 
-  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (e.target === e.currentTarget && e.target.matches(':focus-visible')) {
-      e.target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
-
-      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
-        getFocusableIn(node as HTMLElement),
-      );
-
-      if (focusableChildren.length === 1) {
-        focusableChildren[0].focus();
-      } else if (focusableChildren.length > 1) {
-        this.lockedCell = [e.currentTarget, false];
-      }
-    }
+  handleFocusableCellFocus = (e: React.FocusEvent) => {
+    handleFocusCell(this.lockedCell, e.target, e.currentTarget);
   };
 
-  calculateAnimationSettings() {
-    const {
-      accordionRowIndex = 0,
-      isAccordionRow,
-      animationExpand,
-      accordionDuration,
-      rows,
-    } = this.asProps;
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
+    const { rowIndex, columnIndex, onClick, row, accordionRowIndex } = this.asProps;
 
-    if (!isAccordionRow) {
-      return {};
+    const rowElement = e.currentTarget.parentElement?.parentElement;
+    const ariaRowindex = Number(rowElement?.getAttribute('aria-rowindex'));
+    let rowIndexValue = accordionRowIndex === undefined ? rowIndex : rowIndex + 1 + accordionRowIndex;
+
+    if (!isNaN(ariaRowindex)) {
+      rowIndexValue = ariaRowindex - 2;
     }
 
-    const rowsLength = rows.length;
-    const durationPerRow = (duration: number) => duration / rowsLength;
+    const focusableChildren = Array.from(this.cellRef.current?.children ?? []).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
 
-    const duration = Array.isArray(accordionDuration)
-      ? [durationPerRow(accordionDuration[0]), durationPerRow(accordionDuration[1])]
-      : accordionDuration !== undefined
-        ? durationPerRow(accordionDuration)
-        : rowsLength > 4
-          ? durationPerRow(200)
-          : DEFAULT_ROW_DURATION;
-
-    let delay;
-    const delayIndex = animationExpand ? accordionRowIndex : rows.length - 1 - accordionRowIndex;
-
-    if (Array.isArray(duration)) {
-      delay = [duration[0] * delayIndex, duration[1] * delayIndex];
-    } else if (duration !== undefined) {
-      delay = duration * delayIndex;
+    if (isInteractiveElement(e.target) && this.cellRef.current && focusableChildren.length > 1) {
+      this.lockedCell[0] = this.cellRef.current;
+      this.lockedCell[1] = true;
     }
 
-    return { duration, delay };
-  }
-
-  handleClickCell = (e: React.SyntheticEvent) => {
-    const { rowIndex, columnIndex, onClick, row } = this.asProps;
-
-    onClick(e, { rowIndex, colIndex: columnIndex, row });
+    onClick?.(e, { rowIndex: rowIndexValue, colIndex: columnIndex, row });
   };
 
   render() {
@@ -128,15 +64,12 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       Children,
       styles,
+      style,
       row,
       column,
       columnIndex,
       gridRowIndex,
-      isAccordionRow,
-      animationExpand,
-      style,
       shadowVertical,
-      calculatedHeight,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -158,17 +91,12 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + 1}`;
     }
 
-    const { duration, delay } = this.calculateAnimationSettings();
-
     return sstyled(styles)(
       <SCellWrapper
         // @ts-ignore
         gridArea={gridArea}
-        duration={`${duration}ms`}
-        delay={`${delay}ms`}
-        h={isAccordionRow ? (animationExpand ? `${calculatedHeight}px` : `0px`) : undefined}
-        style={style}
         fixed={column.fixed}
+        style={style}
         shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
       >
         <SCell
@@ -176,8 +104,8 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           render={Flex}
           innerOutline
           tabIndex={-1}
-          onKeyDown={this.handleKeyDown}
-          onFocus={this.onFocusCell}
+          onKeyDown={this.handleFocusableCellKeyDown}
+          onFocus={this.handleFocusableCellFocus}
           use:onClick={this.handleClickCell}
           name={cellName.toString()}
           role='gridcell'

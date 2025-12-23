@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import StackAreaMockData from '../../../__mocks__/stacked-area';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -67,17 +69,6 @@ const Demo = () => {
   );
 };
 
-const data = [
-  { time: 0, stack1: 1, stack2: 4, stack3: 3 },
-  { time: 1, stack1: 2, stack2: 3, stack3: 4 },
-  { time: 2, stack1: 1, stack2: 4, stack3: 5 },
-  { time: 3, stack1: null, stack2: null, stack3: null },
-  { time: 4, stack1: null, stack2: null, stack3: null },
-  { time: 5, stack1: 3, stack2: 4, stack3: 3 },
-  { time: 6, stack1: null, stack2: null, stack3: null },
-  { time: 7, stack1: 2, stack2: 5, stack3: 3 },
-  { time: 8, stack1: 2, stack2: 6, stack3: 5 },
-  { time: 9, stack1: 5, stack2: 5, stack3: 3 },
-];
+const data = StackAreaMockData.EdgeCase;
 
 export default Demo;

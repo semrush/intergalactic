@@ -41,7 +41,7 @@ Read more about the accessibility of the components used in `InputTags`:
 
 - [Tag](../tag/tag-a11y.md)
 - [Input](../input/input-a11y.md)
-- [Combobox](../auto-suggest/auto-suggest-a11y.md)
+- [Combobox](/patterns/auto-suggest/auto-suggest-a11y.md)
 
 ## Other recommendations
 

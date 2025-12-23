@@ -1,6 +1,7 @@
 import { Box } from '@semcore/base-components';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
 import * as React from 'react';
 
@@ -22,7 +23,7 @@ const ROWS_BUFFER = 20;
 const APROX_ROWS_ON_PAGE = 20;
 export const INDEX_OFFSET = 2; // 1 - for header, 1 - because start not from 0, but from 1
 
-class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, {}, {}, [], BodyPropsInner<Data, UniqKeyType>> {
+class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableBodyProps<Data, UniqKeyType>, [], {}, BodyPropsInner<Data, UniqKeyType>> {
   static displayName = 'Body';
   static style = style;
 
@@ -33,9 +34,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   indexForUpIterate = 0;
 
   startIndex = -1;
-  lastIndex = -1;
 
   bodyRef = React.createRef<HTMLDivElement>();
+  spinContainerIsFocused = false;
 
   constructor(props: DataTableBodyProps<Data, UniqKeyType>) {
     super(props);
@@ -44,6 +45,25 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   componentDidMount() {
     this.calculateAriaRowIndex();
+  }
+
+  componentDidUpdate(prevProps: DataTableBodyProps<Data, UniqKeyType> & BodyPropsInner<Data, UniqKeyType>) {
+    const { loading, tableRef } = this.asProps;
+    if (prevProps.loading !== loading) {
+      if (loading) {
+        const activeElement = document.activeElement; // need to define it here because of FF
+        setTimeout(() => {
+          if ((tableRef.current && hasParent(activeElement, tableRef.current))) {
+            tableRef.current?.focus();
+          }
+        });
+      } else if (!loading && this.spinContainerIsFocused) {
+        setTimeout(() => {
+          tableRef.current?.focus();
+        });
+        this.spinContainerIsFocused = false;
+      }
+    }
   }
 
   calculateAriaRowIndex = () => {
@@ -69,6 +89,16 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     }
   };
 
+  handleComponentRef = (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => {
+    requestAnimationFrame(() => {
+      if (component) {
+        this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
+      } else {
+        this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
+      }
+    });
+  };
+
   getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
     const {
       use,
@@ -90,6 +120,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       onSelectRow,
       getFixedStyle,
       accordionDuration,
+      accordionAnimationRows,
       getI18nText,
       renderCell,
       tableRef,
@@ -98,6 +129,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       shadowVertical,
       accordionMode,
       virtualScroll,
+      limit,
       variant,
     } = this.asProps;
     const row = props.row;
@@ -127,6 +159,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
+      accordionAnimationRows,
       flatRows,
       getI18nText,
       renderCell,
@@ -142,8 +175,38 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       calculateAriaRowIndex: this.calculateAriaRowIndex,
       virtualScroll,
       variant,
+      limit,
+      hasGroups,
     };
   }
+
+  getSpinnerTopOffset = () => {
+    const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
+
+    let headerHeight = propsHeaderHeight;
+
+    if (stickyHeader) {
+      return headerHeight;
+    }
+
+    if (tableContainerRef.current) {
+      if (tableContainerRef.current.scrollTop > headerHeight) {
+        headerHeight = 0;
+      } else {
+        headerHeight = headerHeight - tableContainerRef.current.scrollTop;
+      }
+    }
+
+    return headerHeight;
+  };
+
+  handleFocusSpinContainer = () => {
+    this.spinContainerIsFocused = true;
+  };
+
+  handleBlurSpinContainer = () => {
+    this.spinContainerIsFocused = false;
+  };
 
   render() {
     const SBody = Root;
@@ -152,7 +215,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const {
       styles,
       loading,
-      headerHeight,
       spinnerRef,
       virtualScroll,
       scrollDirection,
@@ -166,8 +228,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     } = this.asProps;
 
     let rowsToRender = rows;
-    // let startIndex = -1;
-    // let lastIndex = -1;
+
+    let startIndex = -1;
+    let lastIndex = -1;
 
     if (virtualScroll) {
       const rowsBuffer =
@@ -190,22 +253,21 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const key = i;
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
-
-            if (this.startIndex === -1 && scrollTop < valueFromToCompare) {
-              this.startIndex = Math.max(key - prevPrepared, 0);
+            if (startIndex === -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (this.startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
-              this.lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (startIndex !== -1 && scrollTop + offsetHeight < valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (this.startIndex !== -1 && this.lastIndex !== -1) {
+            if (startIndex !== -1 && lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(this.lastIndex ?? 0)?.[1] ?? 0)) {
-            this.lastIndex = this.lastIndex + aproxRowsOnPage;
+          if (scrollTop + offsetHeight < (this.rowsHeightMap.get(lastIndex ?? 0)?.[1] ?? 0)) {
+            lastIndex = lastIndex + aproxRowsOnPage;
           }
         } else if (scrollDirection === 'up') {
           for (let i = this.indexForUpIterate; i >= 0; i--) {
@@ -215,51 +277,51 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const valueFromToCompare = value[1];
             const valueToToCompare = value[0];
 
-            if (this.lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
-              this.lastIndex = Math.min(key + nextPrepared, rows.length);
+            if (lastIndex === -1 && scrollTop + offsetHeight > valueToToCompare) {
+              lastIndex = Math.min(key + nextPrepared, rows.length);
             }
 
-            if (this.lastIndex !== -1 && scrollTop < valueFromToCompare) {
-              this.startIndex = Math.max(key - prevPrepared, 0);
+            if (lastIndex !== -1 && scrollTop < valueFromToCompare) {
+              startIndex = Math.max(key - prevPrepared, 0);
             }
 
-            if (this.startIndex !== -1 && this.lastIndex !== -1) {
+            if (startIndex !== -1 && lastIndex !== -1) {
               break;
             }
           }
 
-          if (scrollTop < (this.rowsHeightMap.get(this.startIndex ?? 0)?.[0] ?? 0)) {
-            this.startIndex = Math.max(this.startIndex - aproxRowsOnPage, 0);
+          if (scrollTop < (this.rowsHeightMap.get(startIndex ?? 0)?.[0] ?? 0)) {
+            startIndex = Math.max(startIndex - aproxRowsOnPage, 0);
           }
         }
 
-        if (this.startIndex === -1) {
-          this.startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
+        if (startIndex === -1) {
+          startIndex = scrollTop === 0 ? 0 : Math.max(rows.length - aproxRowsOnPage, 0);
         }
 
-        if (this.lastIndex === -1) {
-          this.lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
+        if (lastIndex === -1) {
+          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
         }
 
-        this.indexForDownIterate = this.startIndex;
-        this.indexForUpIterate = this.lastIndex;
+        this.indexForDownIterate = startIndex;
+        this.indexForUpIterate = lastIndex;
 
-        rowsToRender = rows.slice(this.startIndex, this.lastIndex);
+        rowsToRender = rows.slice(startIndex, lastIndex);
       } else if ('rowHeight' in virtualScroll) {
         const rowHeight = virtualScroll.rowHeight;
 
-        this.startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
+        startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
         const lastIndex = Math.min(
           Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
           rows.length,
         );
 
-        rowsToRender = rows.slice(this.startIndex, lastIndex);
+        rowsToRender = rows.slice(startIndex, lastIndex);
       }
     }
 
-    this.startIndex = this.startIndex === -1 ? 0 : this.startIndex;
+    this.startIndex = startIndex === -1 ? 0 : startIndex;
     const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
 
     let emptyRow: DTRow<string> | null = null;
@@ -299,13 +361,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                       key={item[UNIQ_ROW_KEY]?.toString()}
                       row={item}
                       mergedRow={i > 0 ? true : false}
-                      componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                        if (component) {
-                          this.rowsComponentsMap.set(item[UNIQ_ROW_KEY], component);
-                        } else {
-                          this.rowsComponentsMap.delete(item[UNIQ_ROW_KEY]);
-                        }
-                      }}
+                      componentRef={this.handleComponentRef(item)}
                     />
                   );
                 })}
@@ -317,13 +373,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
-              componentRef={(component: RowRoot<Data, UniqKeyType> | null) => {
-                if (component) {
-                  this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
-                } else {
-                  this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
-                }
-              }}
+              componentRef={this.handleComponentRef(row)}
             />
           );
         })}
@@ -332,10 +382,12 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           <SSpinContainer
             innerOutline
             // @ts-ignore
-            headerHeight={`${headerHeight}px`}
+            headerHeight={`${this.getSpinnerTopOffset()}px`}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'
+            onFocus={this.handleFocusSpinContainer}
+            onBlur={this.handleBlurSpinContainer}
           >
             <Spin size='xxl' role='gridcell' />
           </SSpinContainer>
@@ -364,6 +416,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
 export const Body = createComponent(BodyRoot, {
   Row,
-}) as DataTableBodyType & {
+}) as unknown as DataTableBodyType & {
   Row: DataTableRowType;
 };

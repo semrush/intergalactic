@@ -1,5 +1,16 @@
-SBody, SRow, SRowGroup, SAccordionRows {
+SBody, SRow, SRowGroup {
   display: contents;
+}
+
+SAccordionRows {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: var(--gridRow);
+  overflow: clip;
+  transition-property: max-height;
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  grid-template-columns: subgrid;
 }
 
 SBody[compact] {
@@ -17,6 +28,11 @@ SBody[compact] {
     }
   }
   SRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+  SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
     }
@@ -61,65 +77,85 @@ SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
 }
 
+SCell[theme='muted'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCell[theme='info'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+}
+
+SCell[theme='success'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+}
+
+SCell[theme='warning'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+}
+
+SCell[theme='danger'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+}
+
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-accordion, #f4f5f9);
 }
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
+  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
   /* MUTED THEME */
-  SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
-  SRow[theme='muted']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='muted'],
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted'],
-  SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
-    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='muted']:not([aria-hidden]),
+  SRow[theme='muted']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='muted']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted']:not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
+    background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
   }
 
   /* INFO THEME */
-  SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
-  SRow[theme='info']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='info'],
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info'],
-  SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
+  SRow[theme='info']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info']:not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
   }
 
   /* SUCCESS THEME */
-  SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
-  SRow[theme='success']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='success'],
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success'],
-  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]) {
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='success']:not([aria-hidden]),
+  SRow[theme='success']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='success']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success']:not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
   }
 
   /* WARNING THEME */
-  SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRow[theme='warning']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='warning'],
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning'],
-  SRowGroup:has(SCell:hover) > SRow[theme='warning']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='warning']:not([aria-hidden]),
+  SRow[theme='warning']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='warning']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning']:not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow[theme='warning']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
   }
 
   /* DANGER THEME */
-  SRow:hover:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
-  SRow[theme='danger']:hover:not([expanded][isNonInteractive]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[theme='danger'],
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell:not([theme]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger'],
-  SRowGroup:has(SCell:hover) > SRow[theme='danger']:not([isNonInteractive]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]) {
+  SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='danger']:not([aria-hidden]),
+  SRow[theme='danger']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='danger']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger']:not([aria-hidden]),
+  SRowGroup:has(SCell:hover) > SRow[theme='danger']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
   }
 }
@@ -238,6 +274,11 @@ SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[na
   cursor: pointer;
 }
 
+SCheckboxCell[aria-hidden] {
+  filter: blur(3px);
+  pointer-events: none;
+}
+
 SCell[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
@@ -315,13 +356,12 @@ SEmptyData {
   grid-column: 1 / -1;
 }
 
-SRow[sideIndents='wide'] {
+SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
-
     }
   }
 
@@ -330,13 +370,6 @@ SRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow][withAnimation] > SCellWrapper {
-  transition-property: height;
-  transition-delay: var(--delay);
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
-  overflow: clip;
-}
 
 SCellWrapper[fixed][shadowVertical] {
   &:after {
@@ -380,3 +413,21 @@ SCellWrapper[fixed='right'][shadowVertical='end'] {
   }
 }
 
+SLimitOverlayCellWrapper[gridArea] {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 16;
+  grid-area: var(--gridArea);
+  backdrop-filter: blur(6px);
+}
+
+SLimitOverlayCellWrapper[left] {
+  position: sticky;
+  left: var(---left);
+}
+
+SCell[innerOutline]:focus-visible {
+  transition: none;
+}

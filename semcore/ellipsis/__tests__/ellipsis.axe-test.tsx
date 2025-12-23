@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Ellipsis', () => {
+test.describe(`${TAG.ACCESSIBILITY} @ellipsis`, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/basic_usage.tsx', 'en');
 
     // base check
     {
@@ -29,10 +27,7 @@ test.describe('Ellipsis', () => {
   });
 
   test('Advanced use', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/advanced_use.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/advanced_use.tsx', 'en');
 
     // base check
     {
@@ -55,10 +50,7 @@ test.describe('Ellipsis', () => {
   });
 
   test('Multiline in card ', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/multiline.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/multiline.tsx', 'en');
 
     // base check
     {
@@ -81,10 +73,7 @@ test.describe('Ellipsis', () => {
   });
 
   test('Multiple use in table', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/multiple_use.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/multiple_use.tsx', 'en');
 
     // base check
     {
@@ -107,10 +96,7 @@ test.describe('Ellipsis', () => {
   });
 
   test('Cursor anchoring', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/tooltip-cursor-anchoring.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/tooltip-cursor-anchoring.tsx', 'en');
 
     // base check
     {
@@ -133,10 +119,7 @@ test.describe('Ellipsis', () => {
   });
 
   test('Trimming type', async ({ page }) => {
-    const standPath = 'stories/components/ellipsis/docs/examples/trimming_type.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/ellipsis/docs/examples/trimming_type.tsx', 'en');
 
     // base check
     {

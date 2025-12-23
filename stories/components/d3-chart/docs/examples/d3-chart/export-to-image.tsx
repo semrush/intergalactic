@@ -6,14 +6,11 @@ import FileExportM from '@semcore/ui/icon/FileExport/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const extensions = ['png', 'jpeg', 'webp'];
 
-const data = Array(20)
-  .fill({})
-  .map((_, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+const data = LineMockData.Default;
 
 const Demo = () => {
   const svgRef = React.useRef<SVGSVGElement>(null);

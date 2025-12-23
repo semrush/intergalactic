@@ -1,12 +1,8 @@
 import type { NanoOptions } from '@phytonmk/nano-css';
 import type { CssLikeObject } from '@phytonmk/nano-css/types/common';
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
-import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
-
-const getStylesheet = () => CSSinJS().raw;
 
 /**
  * Function to clear the nano CSS styles object from keys with undefined value
@@ -30,47 +26,4 @@ function initNanoCss(options: NanoOptions = {}) {
   return CSSinJS(options);
 }
 
-/** @deprecated */
-export interface IEnhancedWithCSSProps extends EnhancedWithCSSProps, UnknownProperties {}
-export type EnhancedWithCSSProps = {
-  className?: string;
-  css?: {};
-
-  children(props: { className: string | undefined }): React.ReactNode;
-};
-
-class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
-  static contextType = WithCssContext;
-
-  static defaultProps = {
-    css: {},
-  };
-
-  state = {
-    dynamicClassName: '',
-  };
-
-  static getDerivedStateFromProps(props: any) {
-    const cleanCss = normaliseCss(props.css);
-    return {
-      dynamicClassName: Object.keys(cleanCss).length ? CSSinJS().cache?.(cleanCss) : '',
-    };
-  }
-
-  constructor(props: any, context: any) {
-    super(props, context);
-
-    initNanoCss(context);
-  }
-
-  render() {
-    const { children, className = '' } = this.props;
-    const { dynamicClassName } = this.state;
-    return children({
-      className: className + dynamicClassName || undefined,
-    });
-  }
-}
-
-export { getStylesheet, EnhancedWithCSS, Provider, WithCssContext, initNanoCss, normaliseCss };
-export default createHoc(EnhancedWithCSS);
+export { Provider, WithCssContext, initNanoCss, normaliseCss };

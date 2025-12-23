@@ -1,7 +1,9 @@
-import { Plot, XAxis, YAxis, minMax, Area, interpolateValue } from '@semcore/ui/d3-chart';
+import { Plot, XAxis, YAxis, minMax, Area } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
+
+import AreaMockData from '../../../__mocks__/area';
 
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -46,37 +48,6 @@ const Demo = () => {
   );
 };
 
-const data = [
-  {
-    time: new Date(Date.now() + 5 * 60 * 60 * 1000),
-    line1: 5,
-    line2: 3,
-  },
-  {
-    time: new Date(Date.now() + 10 * 60 * 60 * 1000),
-    line1: 8,
-    line2: interpolateValue,
-  },
-  {
-    time: new Date(Date.now() + 15 * 60 * 60 * 1000),
-    line1: 4,
-    line2: 8,
-  },
-  {
-    time: new Date(Date.now() + 20 * 60 * 60 * 1000),
-    line1: 5,
-    line2: interpolateValue,
-  },
-  {
-    time: new Date(Date.now() + 25 * 60 * 60 * 1000),
-    line1: 5,
-    line2: interpolateValue,
-  },
-  {
-    time: new Date(Date.now() + 30 * 60 * 60 * 1000),
-    line1: 3,
-    line2: 1,
-  },
-];
+const data = AreaMockData.Interpolation;
 
 export default Demo;

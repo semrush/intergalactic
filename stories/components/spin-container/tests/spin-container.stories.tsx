@@ -2,7 +2,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomBackgroundExample from './examples/custom-background';
-import OverInteractiveContentExample from './examples/over-interactive-cotent';
+import OverInteractiveContentExample from './examples/over-interactive-content';
 import SizesExample from './examples/sizes';
 
 const meta: Meta<typeof SpinContainer> = {

@@ -1,0 +1,11 @@
+@define-mixin focus-outline-mixin $offset: 2px {
+  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: $offset;
+  transition-duration: calc(var(--intergalactic-duration-extra-fast, 100) * 1ms);
+  transition-timing-function: ease-in-out;
+  transition-property: outline-color, outline-width, outline-offset;
+
+  @mixin-content;
+}

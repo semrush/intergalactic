@@ -1,595 +1,589 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Modal interactions', () => {
-  test('Verify basic usage keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
+  modal: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Modal"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  close: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Modal.Close"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  overlay: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Modal.Overlay"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  overlayContentWrapper: (page: Page) => page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]'),
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+};
 
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(` ${TAG.VISUAL}`, () => {
+  test('Verify modal close button hover state', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx', 'en');
 
-    const close = page.locator('[data-ui-name="Modal.Close"]');
-    const modal = page.locator('[data-ui-name="Modal"]');
+    await test.step('Open modal', async () => {
+      await locators.button(page).click();
+      await locators.close(page).waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
+    });
 
-    const bths = modal.locator('[data-ui-name="Button"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
+    await test.step('Verify close button hover state', async () => {
+      await locators.close(page).hover();
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify modal Overlay paddings on different page sizes', {
+    tag: [TAG.PRIORITY_MEDIUM, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en', { content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus facere iste praesentium quae quia repudiandae tempore! Assumenda consequatur cum ducimus, fuga incidunt necessitatibus nulla odit placeat praesentium quidem rerum vero? quidem rerum vero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus facere iste praesentium quae quia repudiandae tempore' });
+
+    await test.step('Open modal and verify default padding', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.close(page).waitFor({ state: 'visible' });
+      await expect(locators.overlayContentWrapper(page)).toHaveCSS('padding', '40px');
+    });
+
+    await test.step('Verify padding at 1280x320 viewport', async () => {
+      await page.setViewportSize({ width: 1280, height: 320 });
+      await expect(locators.overlayContentWrapper(page)).toHaveCSS('padding', '40px');
+    });
+
+    await test.step('Verify padding at 320x320 viewport', async () => {
+      await page.setViewportSize({ width: 320, height: 320 });
+      await expect(locators.overlayContentWrapper(page)).toHaveCSS('padding', '12px');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify modal when height is bigger than browser page', {
+    tag: [TAG.PRIORITY_MEDIUM, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx', 'en');
+
+    await test.step('Open modal and verify padding', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Got it!').waitFor({ state: 'visible' });
+      await expect(locators.overlayContentWrapper(page)).toHaveCSS('padding', '40px');
+    });
+
+    await test.step('Scroll and verify visual state', async () => {
+      await page.mouse.wheel(0, 600);
+      await page.waitForTimeout(300);
+      // Wait for scroll to complete by checking if the overlay has been scrolled
+      await page.waitForFunction(() => {
+        const overlay = document.querySelector('[data-ui-name="Modal.Overlay"]');
+        return overlay && overlay.scrollTop > 0;
+      });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify modal styles with access to internal html nodes', {
+    tag: [TAG.PRIORITY_LOW, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/access_to_internal_html_nodes.tsx', 'en');
+
+    await test.step('Open modal and verify custom styles', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Close me!').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify modal inside modal styles', {
+    tag: [TAG.PRIORITY_MEDIUM, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx', 'en');
+
+    await test.step('Open first modal', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Open modal', 1).waitFor({ state: 'visible' });
+    });
+
+    await test.step('Open second modal and verify both visible', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Close second modal and verify first still visible', async () => {
+      await page.keyboard.press('Escape');
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify modal nested', {
+    tag: [TAG.PRIORITY_MEDIUM, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/modal-nested.tsx', 'en');
+
+    await test.step('Verify nested modal visual state', async () => {
+      await locators.close(page, 1).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const variables = [
+    { ghost: false, w: undefined, closable: true },
+    { ghost: true, w: undefined, closable: true },
+    { ghost: false, w: 800, closable: false },
+    { ghost: true, w: 600, closable: false },
+  ];
+
+  variables.forEach((item) => {
+    test(`Verify modal with ghost=${item.ghost}, w=${item.w}, closable=${item.closable}`, {
+      tag: [TAG.PRIORITY_HIGH, '@modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en', item);
+
+      await test.step('Open modal', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.modal(page).waitFor({ state: 'visible' });
+      });
+
+      await test.step('Verify default visual state', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+
+      if (item.closable) {
+        await test.step('Verify close button is visible', async () => {
+          await expect(locators.close(page)).toBeVisible();
+        });
+      } else {
+        await test.step('Verify close button is not visible', async () => {
+          await expect(locators.close(page)).toHaveCount(0);
+        });
+      }
+    });
+  });
+
+  test('Verify select height inside modal', {
+    tag: [TAG.PRIORITY_LOW, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_select.tsx', 'en');
+
+    await test.step('Verify select dropdown height with keyboard', async () => {
+      await locators.close(page, 0).waitFor({ state: 'visible' });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Reopen and verify select dropdown height again', async () => {
+      await page.keyboard.press('Escape');
+      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Modal with iframe inside keyboard interactions', {
+    tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, '@modal'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_iframe.tsx', 'en');
+
+    await test.step('Open modal and navigate to iframe', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+
+      if (browserName !== 'chromium') {
+        await page.keyboard.press('Tab');
+      }
+      await page.keyboard.press('Tab');
+    });
+    await page.keyboard.type('Hello world');
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
+  test('Verify Closable modal keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx', 'en');
+
+    const buttons = locators.modal(page).locator('[data-ui-name="Button"]');
 
     await test.step('Verify opens by enter and Close is focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Do you want to save your changes?');
-      await expect(modal).toHaveCount(1);
-      await expect(close).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+
+      await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.close(page)).toBeFocused();
     });
 
     await test.step('Verify closes by pressing Enter on Close', async () => {
       await page.keyboard.press('Enter');
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+
+      await expect(locators.modal(page)).toHaveCount(0);
+      await expect(locators.button(page)).toBeFocused();
     });
 
     await test.step('Verify opens by space and Close is focused', async () => {
       await page.keyboard.press('Space');
-      await page.waitForSelector('text=Do you want to save your changes?');
-      await expect(modal).toHaveCount(1);
-      await expect(close).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.close(page)).toBeFocused();
     });
 
     await test.step('Verify focus cycled inside the modal', async () => {
       await page.keyboard.press('Tab');
-      await expect(bths.first()).toBeFocused();
+      await expect(buttons.first()).toBeFocused();
       await page.keyboard.press('Tab');
-      await expect(bths.nth(1)).toBeFocused();
+      await expect(buttons.nth(1)).toBeFocused();
       await page.keyboard.press('Tab');
-      await expect(close).toBeFocused();
+      await expect(locators.close(page)).toBeFocused();
       await page.keyboard.press('Shift+Tab');
-      await expect(bths.nth(1)).toBeFocused();
+      await expect(buttons.nth(1)).toBeFocused();
     });
 
     await test.step('Verify modal closed when pressing ESC', async () => {
       await page.keyboard.press('Escape');
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(0);
+      await expect(locators.button(page)).toBeFocused();
     });
 
     await test.step('Verify modal closed when you firstly click on a modal and then pressing ESC', async () => {
-      await trigger.click();
-      await modal.waitFor({ state: 'attached' });
-
-      await modal.click();
+      await locators.button(page).click();
+      await locators.modal(page).waitFor({ state: 'attached' });
+      await locators.modal(page).click();
       await page.keyboard.press('Escape');
-
-      await expect(modal).toHaveCount(0);
+      await expect(locators.modal(page)).toHaveCount(0);
     });
   });
 
-  test('Verify basic usage mouse interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Modal with iframe inside keyboard interactions', {
+    tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, '@modal'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_iframe.tsx', 'en');
 
-    await page.setContent(htmlContent);
+    await test.step('Open modal and navigate to iframe', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-    const close = page.locator('[data-ui-name="Modal.Close"]');
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const bths = modal.locator('[data-ui-name="Button"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+      if (browserName !== 'chromium') {
+        await page.keyboard.press('Tab');
+      }
+      await page.keyboard.press('Tab');
+    });
+
+    await test.step('Verify ESC does not close modal when focus is in iframe', async () => {
+      await page.keyboard.press('Escape');
+      await expect(locators.modal(page)).toBeVisible();
+      await page.keyboard.type('Hello world');
+    });
+
+    await test.step('Verify ESC closes modal after leaving iframe', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Escape');
+      await expect(locators.modal(page)).not.toBeVisible();
+    });
+  });
+
+  test('Verify Modal with prevent focus keyboard interactions', {
+    tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, '@modal'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_prevent_focus.tsx', 'en');
+
+    await test.step('Open modal and navigate to input', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+
+      if (browserName !== 'chromium') {
+        await page.keyboard.press('Tab');
+      }
+      await page.keyboard.press('Tab');
+    });
+
+    await test.step('Verify ESC does not close modal when focus is in input', async () => {
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await expect(locators.modal(page)).toBeVisible();
+    });
+
+    await test.step('Verify ESC closes modal after leaving input and returns focus', async () => {
+      await page.keyboard.type('Hello world');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Escape');
+      await expect(locators.modal(page)).not.toBeVisible();
+      await expect(locators.button(page, 'Open modal')).toBeFocused();
+    });
+  });
+
+  test('Verify Closable modal mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/basic_modal_window_usage.tsx', 'en');
 
     await test.step('Verify opens click on trigger', async () => {
-      await trigger.click();
-      await page.waitForSelector('text=Do you want to save your changes?');
-      await expect(modal).toHaveCount(1);
+      await locators.button(page).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify closes by clicking Close', async () => {
-      await close.hover();
-      await expect(page).toHaveScreenshot();
-      await close.click();
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.close(page).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await expect(locators.button(page)).toBeFocused();
     });
 
     await test.step('Verify closed by clicking outside modal', async () => {
-      await trigger.click();
-      await page.waitForSelector('text=Do you want to save your changes?');
+      await locators.button(page).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      const overlayBox = await overlay.boundingBox();
+      const overlayBox = await locators.overlay(page).boundingBox();
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
-      await expect(modal).toHaveCount(0);
-      // await expect(trigger).toBeFocused();
+      await expect(locators.modal(page)).toHaveCount(0);
     });
 
     await test.step('Verify not closed when clicking inside modal', async () => {
-      await trigger.click();
-      await page.waitForSelector('text=Do you want to save your changes?');
-      const modal = page.locator('[data-ui-name="Modal"]');
-      const modalBox = await modal.boundingBox();
+      await locators.button(page).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      const modalBox = await locators.modal(page).boundingBox();
       if (modalBox) {
         await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
       }
-
-      await expect(modal).toBeVisible();
+      await expect(locators.modal(page)).toBeVisible();
     });
 
     await test.step('Verify closes by clicking On Buttons', async () => {
-      await bths.first().click();
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.button(page, 'Save changes').click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await expect(locators.button(page)).toBeFocused();
     });
   });
 
-  test('Verify modal in modal keyboard interactions', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const close = page.locator('[data-ui-name="Modal.Close"]');
-    const modal = page.locator('[data-ui-name="Modal"]');
-
-    const bths = modal.locator('[data-ui-name="Button"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
+  test('Verify modal in modal keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx', 'en');
 
     await test.step('Verify opens by enter and Close is focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Open one more window');
-      await expect(modal).toHaveCount(1);
-      await expect(close).toBeFocused();
+      await locators.button(page, 'Open modal', 1).waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.close(page)).toBeFocused();
     });
 
-    await test.step('Verify 2ns modal opened and X is focused', async () => {
+    await test.step('Verify 2nd modal opened and X is focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Save changes');
-      await expect(modal).toHaveCount(2);
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(2);
     });
 
     await test.step('Verify only one modal closed by activating Close', async () => {
       await page.keyboard.press('Enter');
-      await modal.nth(1).waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(1);
-      await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
+      await locators.modal(page, 1).waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
     });
 
     await test.step('Verify only one modal closed by ESC', async () => {
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Save changes');
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
       await page.keyboard.press('Escape');
-      await modal.nth(1).waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(1);
-      await expect(modal.getByRole('button', { name: 'Open modal' })).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+
+      await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
     });
 
     await test.step('Verify last one modal closed by ESC', async () => {
       await page.keyboard.press('Escape');
-      await modal.nth(0).waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.modal(page, 0).waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(0);
+      await expect(locators.button(page)).toBeFocused();
     });
   });
 
-  test('Verify modal without interactive elements inside mouse interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/tests/examples/modal-without-focusable.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+  test('Verify modal without interactive elements inside mouse interactions', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en', { showCloseButton: false, closable: false });
 
     await test.step('Verify opens click on trigger', async () => {
-      await trigger.click();
-      await modal.waitFor({ state: 'visible' });
-      await expect(modal).toHaveCount(1);
+      await locators.button(page).click();
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify closed by clicking outside modal', async () => {
-      const overlayBox = await overlay.boundingBox();
+      const overlayBox = await locators.overlay(page).boundingBox();
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
-      await modal.waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(0);
+      await locators.modal(page).waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(0);
     });
 
     await test.step('Verify not closed when clicking inside modal', async () => {
-      await trigger.click();
-      await modal.waitFor({ state: 'visible' });
-      const modalBox = await modal.boundingBox();
+      await locators.button(page).click();
+      await locators.modal(page).waitFor({ state: 'visible' });
+      const modalBox = await locators.modal(page).boundingBox();
       if (modalBox) {
         await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
       }
-      await expect(modal).toBeVisible();
+      await expect(locators.modal(page)).toBeVisible();
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
       await page.keyboard.press('Escape');
-      await modal.waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.modal(page).waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(0);
+      await expect(locators.button(page)).toBeFocused();
     });
   });
 
-  test('Verify modal without interactive elements inside keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/tests/examples/modal-without-focusable.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
+  test('Verify modal without interactive elements inside keyboard interactions', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en', { showCloseButton: false, closable: false });
 
     await test.step('Verify opens click on trigger', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await modal.waitFor({ state: 'visible' });
-      await expect(modal).toHaveCount(1);
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
       await page.keyboard.press('Escape');
-      await modal.waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
+      await locators.modal(page).waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(0);
+      await expect(locators.button(page)).toBeFocused();
     });
   });
 
-  test('Verify modal in modal mouse interactions', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
+  test('Verify modal in modal mouse interactions', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx', 'en');
 
     await test.step('Verify opens click on trigger', async () => {
-      await trigger.click();
-      await page.waitForSelector('text=Open one more window');
-      await expect(modal).toHaveCount(1);
+      await locators.button(page).click();
+      await locators.button(page, 'Open modal', 1).waitFor({ state: 'visible' });
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify 2nd opened', async () => {
-      await modal.getByRole('button', { name: 'Open modal' }).click();
-      await page.waitForSelector('text=Save changes');
+      await locators.button(page, 'Open modal', 1).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      await expect(modal).toHaveCount(2);
+      await expect(locators.modal(page)).toHaveCount(2);
     });
 
     await test.step('Verify one closed by clicking outside modal', async () => {
-      const overlayBox = await overlay.nth(1).boundingBox();
+      const overlayBox = await locators.overlay(page, 1).boundingBox();
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
-      await modal.nth(1).waitFor({ state: 'hidden' });
-      await expect(modal).toHaveCount(1);
-      // await expect(trigger).toBeFocused();
+      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify not closed when clicking inside modal', async () => {
-      await modal.getByRole('button', { name: 'Open modal' }).click();
-      await page.waitForSelector('text=Save changes');
+      await locators.button(page, 'Open modal', 1).click();
+      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      const modalBox = await modal.nth(1).boundingBox();
+      const modalBox = await locators.modal(page, 1).boundingBox();
       if (modalBox) {
         await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
       }
-
-      await expect(modal).toHaveCount(2);
+      await expect(locators.modal(page)).toHaveCount(2);
     });
 
     await test.step('Verify closes by clicking On Buttons', async () => {
-      const bths = modal.nth(1).locator('[data-ui-name="Button"]');
-      await bths.first().click();
-      await expect(modal).toHaveCount(1);
+      await locators.button(page, 'Save changes').click();
+      await expect(locators.modal(page)).toHaveCount(1);
     });
   });
 
-  test('Verify Modal with iframe inside keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/advanced/examples/modal_iframe.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const input = page.locator('input');
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForSelector('text=Do you want to save your changes?');
-
-    if (browserName !== 'chromium') {
-      await page.keyboard.press('Tab');
-    }
-
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.press('Escape');
-    await expect(modal).toBeVisible();
-    await page.keyboard.type('Hello world');
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Escape');
-    await expect(modal).not.toBeVisible();
-  });
-
-  test('Verify Modal with prevent focus keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/advanced/examples/modal_prevent_focus.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const input = page.locator('input');
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForSelector('text=Do you want to save your changes?');
-
-    if (browserName !== 'chromium') {
-      await page.keyboard.press('Tab');
-    }
-
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.press('Escape');
-    await expect(modal).toBeVisible();
-    await page.keyboard.type('Hello world');
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Escape');
-    await expect(modal).not.toBeVisible();
-    await expect(trigger).toBeFocused();
-  });
-});
-
-test.describe('Modal positioning ans styles', () => {
-  test('Verify modal Overlay paddings on different page sizes', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/tests/examples/modal.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=Got it!');
-
-    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
-
-    await page.setViewportSize({ width: 1280, height: 320 });
-
-    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
-
-    await page.setViewportSize({ width: 320, height: 320 });
-
-    await expect(overlayContentWrapper).toHaveCSS('padding', '12px');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify modal when height is bigger than browser page', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const overlayContentWrapper = page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=Got it!');
-
-    await expect(overlayContentWrapper).toHaveCSS('padding', '40px');
-
-    await page.mouse.wheel(0, 600);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify modal styles with access to internal html nodes', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/docs/examples/access_to_internal_html_nodes.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=Lorem Title');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify modal inside modal styles', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/modal/docs/examples/modal_window_inside_a_modal_window.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=Open one more window');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=Save changes');
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Escape');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify modal modal nested', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/tests/examples/modal-nested.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.waitForSelector('text=Test nested');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify select height inside modal', async ({ page, browserName }) => {
-    const standPath = 'stories/components/modal/advanced/examples/modal_with_select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.waitForSelector('text=Do you want to save your changes?');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.waitForSelector('text=option1');
-
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Escape');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await page.waitForSelector('text=option1');
-
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Confirmation modal dialog pattern', () => {
-  test('Verify Confirmation modal dialog keyboard interactions', async ({ page, browserName }) => {
-    const standPath =
-      'stories/patterns/ux-patterns/confirmation-modal-dialog/docs/examples/confirmation-modal-example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const close = page.locator('[data-ui-name="Modal.Close"]');
-    const modal = page.locator('[data-ui-name="Modal"]');
-
-    const bths = modal.locator('[data-ui-name="Button"]');
-    const trigger = page.getByRole('button', { name: 'Open confirmation modal' });
-
-    await test.step('Verify opens by enter and Close is focused', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Delete project?');
-      await expect(page).toHaveScreenshot();
-      await expect(modal).toHaveCount(1);
-      await expect(close).toBeFocused();
+  test.describe('Modal outside click interaction', () => {
+    test('Verify click near scrollbar closes modal', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx', 'en');
+
+      await test.step('Open modal', async () => {
+        await locators.button(page).click();
+        await locators.button(page, 'Got it!').waitFor({ state: 'visible' });
+      });
+
+      await test.step('Click near scrollbar to close modal', async () => {
+        const overlayBox = await locators.overlay(page).boundingBox();
+        expect(overlayBox).toBeTruthy();
+
+        // 16px - approximate scrollbar width, click 20px from right edge
+        const x = overlayBox!.x + overlayBox!.width - 20;
+        const y = overlayBox!.y + overlayBox!.height / 2;
+        await page.mouse.click(x, y);
+        await expect(locators.modal(page)).toBeHidden();
+      });
     });
 
-    await test.step('Verify modal attributes', async () => {
-      await expect(modal).toHaveAttribute('role', 'dialog');
-      await expect(modal).toHaveAttribute('aria-modal', 'true');
-      await expect(modal).toHaveAttribute('aria-labelledby');
+    test('Verify click very close to edge does not close modal', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx', 'en');
 
-      await expect(close).toHaveAttribute('aria-label', 'Close');
+      await test.step('Open modal', async () => {
+        await locators.button(page).click();
+        await locators.button(page, 'Got it!').waitFor({ state: 'visible' });
+      });
+
+      await test.step('Click very close to edge should keep modal open', async () => {
+        const overlayBox = await locators.overlay(page).boundingBox();
+        expect(overlayBox).toBeTruthy();
+
+        // Click 8px from right edge (within scrollbar area)
+        const x = overlayBox!.x + overlayBox!.width - 8;
+        const y = overlayBox!.y + overlayBox!.height / 2;
+        await page.mouse.click(x, y);
+        await expect(locators.modal(page)).toBeVisible();
+      });
     });
-
-    await test.step('Verify not closed and focus in input by Save when no data added', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Please enter the correct project name');
-
-      await expect(modal).toHaveCount(1);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify closed by ESC', async () => {
-      await page.keyboard.press('Escape');
-      await expect(modal).toHaveCount(0);
-      await expect(trigger).toBeFocused();
-    });
-
-    await test.step('Verify focus cycled inside the modal', async () => {
-      await page.keyboard.press('Enter');
-      await page.waitForSelector('text=Delete project?');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(bths.first()).toBeFocused();
-      await page.keyboard.press('Tab');
-      await expect(bths.nth(1)).toBeFocused();
-      await page.keyboard.press('Tab');
-      await expect(close).toBeFocused();
-      await page.keyboard.press('Shift+Tab');
-      await expect(bths.nth(1)).toBeFocused();
-    });
-  });
-});
-
-test.describe('Modal outside click interaction', () => {
-  test('Basic case', async ({ page }) => {
-    const standPath = 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
-
-    await trigger.click();
-    await modal.waitFor();
-
-    const overlayBox = await overlay.boundingBox();
-
-    expect(overlayBox).toBeTruthy();
-
-    /*
-      16px - approximate scrollbar width
-    */
-    const x = overlayBox!.x + overlayBox!.width - 20;
-    const y = overlayBox!.y + overlayBox!.height / 2;
-    await page.mouse.click(x, y);
-
-    await expect(modal).toBeHidden();
-  });
-
-  test('Edge case', async ({ page }) => {
-    const standPath = 'stories/components/modal/docs/examples/modal_window_height_is_bigger_than_the_browser_page.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.getByRole('button', { name: 'Open modal' });
-    const modal = page.locator('[data-ui-name="Modal"]');
-    const overlay = page.locator('[data-ui-name="Modal.Overlay"]');
-
-    await trigger.click();
-    await modal.waitFor();
-
-    const overlayBox = await overlay.boundingBox();
-
-    expect(overlayBox).toBeTruthy();
-
-    /*
-      16px - approximate scrollbar width
-    */
-    const x = overlayBox!.x + overlayBox!.width - 8;
-    const y = overlayBox!.y + overlayBox!.height / 2;
-    await page.mouse.click(x, y);
-
-    await expect(modal).toBeVisible();
   });
 });

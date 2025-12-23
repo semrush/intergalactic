@@ -2,6 +2,8 @@ import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@se
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
+import BarMockData from '../../../__mocks__/bar';
+
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
@@ -41,11 +43,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(10)
-  .fill({})
-  .map((d, i) => ({
-    category: i.toString(),
-    bar: Math.random() * i,
-  }));
+const data = BarMockData.Default;
 
 export default Demo;

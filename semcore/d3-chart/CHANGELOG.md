@@ -2,7 +2,53 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.5] - 2025-10-03
+## [16.4.2] - 2025-12-18
+
+### Fixed
+
+- Missing translations
+
+## [16.4.1] - 2025-12-01
+
+### Fixed
+
+- `ticks` state var isn't re-calculated for `children` render prop.
+- Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
+## [16.4.0] - 2025-11-17
+
+### Added
+
+- The ability to use multiple synchronized tooltips on multiple charts.
+
+### Fixed
+
+- `onClick` handler in child components overrides root `onClick` and called on mount.
+
+## [16.3.0] - 2025-10-31
+
+### Added
+
+- New `multiline` property for `XAxis.Ticks/YAxis.Ticks` and `multilineXTicks/multilineYTicks` for `Chart`.
+
+### Fixed
+
+- Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+
+## [16.2.1] - 2025-10-17
+
+### Fixed
+
+- Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+- Clicking on pattern icons in legend items with checkboxes has no effect despite interactive cursor.
+- Improve interaction handling for `Chart.Legend` items (custom shapes, child components, etc.)
+
+## [16.2.0] - 2025-10-03
+
+### Changed
+
+- Focus styles for `Plot`.
 
 ### Fixed
 

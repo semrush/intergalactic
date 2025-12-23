@@ -1,7 +1,7 @@
 {
   "name": "@semcore/inline-edit",
   "description": "Semrush Input Component",
-  "version": "16.0.9",
+  "version": "16.0.11",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,12 +16,9 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/animation": "16.0.5",
-    "@semcore/flex-box": "16.0.9"
-  },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   },
   "peerDependencies": {

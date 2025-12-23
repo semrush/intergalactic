@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import FileExportM from '@semcore/ui/icon/FileExport/m';
 import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';

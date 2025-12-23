@@ -1,5 +1,5 @@
 import Copy from '@components/Copy';
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import Pills from '@semcore/pills';
 import SidePanel from '@semcore/side-panel';
 import Tooltip from '@semcore/tooltip';

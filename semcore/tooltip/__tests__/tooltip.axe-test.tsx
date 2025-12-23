@@ -1,12 +1,10 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Tooltip, Hint, Description tooltip', () => {
+test.describe(`@tooltip ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify collapsed triggers', async () => {
       const violations = await getAccessibilityViolations({ page });
@@ -66,10 +64,7 @@ test.describe('Tooltip, Hint, Description tooltip', () => {
   });
 
   test('Ignore portal stacking', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/ignore_portal_stacking.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/tooltip/docs/examples/ignore_portal_stacking.tsx', 'en');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.waitForSelector('text="Tooltip with ignoring portals stacking."');
@@ -80,10 +75,7 @@ test.describe('Tooltip, Hint, Description tooltip', () => {
   });
 
   test('Info icon', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/info_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/tooltip/docs/examples/info_icon.tsx', 'en');
     await page.keyboard.press('Tab');
     await page.waitForSelector('text="Content for tooltip"');
 
@@ -93,10 +85,7 @@ test.describe('Tooltip, Hint, Description tooltip', () => {
   });
 
   test('Nested', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/nested.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/tooltip/docs/examples/nested.tsx', 'en');
     {
       const violations = await getAccessibilityViolations({ page });
 
@@ -113,10 +102,7 @@ test.describe('Tooltip, Hint, Description tooltip', () => {
   });
 
   test('Title', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/docs/examples/title.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/tooltip/docs/examples/title.tsx', 'en');
     {
       const violations = await getAccessibilityViolations({ page });
 
@@ -130,5 +116,37 @@ test.describe('Tooltip, Hint, Description tooltip', () => {
 
       expect(violations).toEqual([]);
     }
+  });
+
+  test('Custom background color', async ({ page }) => {
+    await loadPage(page, 'stories/components/tooltip/docs/examples/custom_bg_color.tsx', 'en');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Placement properties', async ({ page }) => {
+    await loadPage(page, 'stories/components/tooltip/docs/examples/placement-properties.tsx', 'en');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test.skip('Role status', async ({ page }) => {
+    await loadPage(page, 'stories/components/tooltip/docs/examples/role-status.tsx', 'en');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Singleton tooltip', async ({ page }) => {
+    await loadPage(page, 'stories/components/tooltip/docs/examples/singleton.tsx', 'en');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
   });
 });

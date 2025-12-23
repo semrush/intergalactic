@@ -1,7 +1,6 @@
 import Button from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -10,32 +9,6 @@ import Pagination from '../src';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
-});
-
-describe('Pagination', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Verify correctly renders for different locales', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <div>
-          EN (default):
-          <Pagination currentPage={12345} totalPages={222333}>
-            <Pagination.PageInput />
-            <Pagination.TotalPages />
-          </Pagination>
-        </div>
-        <div>
-          DE:
-          <Pagination locale='de' currentPage={12345} totalPages={222333}>
-            <Pagination.PageInput />
-            <Pagination.TotalPages />
-          </Pagination>
-        </div>
-      </snapshot.ProxyProps>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
 });
 
 describe('Pagination.FirstPage', () => {
@@ -170,29 +143,6 @@ describe('Pagination.TotalPages', () => {
   });
 });
 
-describe('Pagination.PageInput', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Verify input not cut up to 3 digits', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pagination currentPage={1234} totalPages={1234}>
-          <Pagination.PageInput {...{ focused: true }}>
-            <Pagination.PageInput.Value id='page-number' />
-          </Pagination.PageInput>
-        </Pagination>
-      </snapshot.ProxyProps>
-    );
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#page-number',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-});
-
 describe('Pagination.PageInput.Value', () => {
   beforeEach(cleanup);
 
@@ -252,17 +202,16 @@ describe('Pagination.PageInput.Value', () => {
 
     const input = getByTestId('value') as HTMLInputElement;
 
-    vi.useFakeTimers();
+    input.focus();
+    await userEvent.keyboard('0');
 
-    fireEvent.change(input, { target: { value: '100' } });
     expect(input.value).toBe('100');
     expect(spy).toBeCalledTimes(0);
-    fireEvent.blur(input);
-    await vi.runAllTimersAsync();
+
+    await userEvent.keyboard('[Tab]');
+
     expect(spy).toBeCalledTimes(0);
     expect(input.value).toBe('10');
-
-    vi.useRealTimers();
   });
 
   test('Verify calls onCurrentPageChange on Enter click', () => {
@@ -322,7 +271,7 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledWith(totalPages);
   });
 
-  test('Verify typed valu keept in input when focus moves to Addon, resets to currentPage when focus moves outside', async () => {
+  test('Verify typed value keep in input when focus moves to Addon, resets to currentPage when focus moves outside', async () => {
     const { getByTestId } = render(
       <>
         <Pagination currentPage={1} totalPages={100}>
