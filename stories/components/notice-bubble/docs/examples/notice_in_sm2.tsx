@@ -69,7 +69,7 @@ const Demo = (props: BaseNoticeBubbleProps) => {
   };
 
   // @ts-ignore - we don't have sm2 in our storybook environment
-  const containerNode = window.sm2.getNoticeBubbleContainer();
+  const containerNode = { current: window.sm2.getNoticeBubbleContainer() };
 
   return (
     <>
