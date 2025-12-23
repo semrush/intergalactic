@@ -11,7 +11,7 @@ export type PortalProps = {
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
   /** Manually set node to mount portal content */
-  nodeToMount?: React.RefObject<HTMLElement>;
+  nodeToMount?: React.RefObject<HTMLElement | null>;
 };
 
 const initContainer = {
