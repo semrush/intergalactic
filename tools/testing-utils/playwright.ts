@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { voiceOverTest as voiceOverBase, nvdaTest as nvdaBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
-import { feature, story, suite } from 'allure-js-commons';
+import { feature, label, story, suite } from 'allure-js-commons';
 import type axe from 'axe-core';
 import type { Page } from 'playwright';
 import type { TestInfo } from 'playwright/types/test';
@@ -36,11 +36,19 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   const filePathParts = testInfo.file.split('/');
 
-  const testsIndex = filePathParts.findIndex((part) => part === '__tests__');
+  let component = 'unknown-component';
 
-  const component = testsIndex > 0 ? filePathParts[testsIndex - 1] : 'unknown-component';
+  const semcoreIndex = filePathParts.findLastIndex((part) => part === 'semcore');
+  if (semcoreIndex >= 0 && semcoreIndex + 2 < filePathParts.length) {
+    const potentialComponent = filePathParts[semcoreIndex + 1];
+    const potentialTests = filePathParts[semcoreIndex + 2];
+    if (potentialTests === '__tests__') {
+      component = potentialComponent;
+    }
+  }
 
   feature(component);
+  label('Component', component);
 
   if (testInfo.titlePath.length > 2) {
     story(testInfo.titlePath[1]);

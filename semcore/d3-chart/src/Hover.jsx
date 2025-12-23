@@ -189,18 +189,18 @@ class HoverRectRoot extends Hover {
   }
 }
 
-const HoverLineTooltip = (props) => {
+function HoverLineTooltip(props) {
   const SHoverLineTooltip = Root;
   return sstyled(props.styles)(
     <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
   );
-};
-const HoverRectTooltip = (props) => {
+}
+function HoverRectTooltip(props) {
   const SHoverRectTooltip = Root;
   return sstyled(props.styles)(
     <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
   );
-};
+}
 
 const HoverLine = createElement(HoverLineRoot, {
   Tooltip: [HoverLineTooltip, Tooltip._______childrenComponents],

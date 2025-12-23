@@ -19,7 +19,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - This chart type focuses on how much different groups of sets have in common (or how different they are).
 
 ::: tip
-Venn charts can become cluttered with more than two data sets.
+Venn charts can become cluttered with more than three data sets.
 :::
 
 **When to use venn chart?**
@@ -58,7 +58,7 @@ Table: Venn chart legend placement
 
 ### General recommendations
 
-- Keep legend close to the chart, max 24px away.
+- Keep legend close to the chart, max 20px away.
 - Legend labels should have a 16px margin-right.
 - Align legends to the top of the chart.
 - If it doesn't fit, place it below the chart with a 24px margin.

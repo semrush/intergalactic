@@ -43,7 +43,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await expect(page).toHaveScreenshot();
 
-      if (browserName != 'chromium') return; // it is unstable on cd
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(page).toHaveScreenshot();
@@ -59,7 +58,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button',
       '@dropdown-menu',
       '@counter'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
     await locators.button(page).click();
@@ -177,7 +176,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
-      if (browserName !== 'chromium') test.skip();
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
       await page.keyboard.press('Tab');

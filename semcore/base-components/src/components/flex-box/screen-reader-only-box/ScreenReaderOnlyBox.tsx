@@ -4,7 +4,7 @@ import React from 'react';
 import style from './screenReaderOnlyBox.shadow.css';
 import Box from '../Box';
 
-const ScreenReaderOnlyComponent = () => {
+function ScreenReaderOnlyComponent() {
   const SScreenReaderOnly = Root;
 
   return sstyled(style)(<SScreenReaderOnly render={Box} tag='span' />);

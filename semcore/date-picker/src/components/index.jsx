@@ -43,14 +43,14 @@ export function Header(props) {
   return sstyled(props.styles)(<SHeader render={Box} />);
 }
 
-export const Title = ({ Children, styles }) => {
+export function Title({ Children, styles }) {
   const STitle = Root;
   return sstyled(styles)(
     <STitle render={Box} aria-live='polite'>
       <Children />
     </STitle>,
   );
-};
+}
 
 export function Prev({ children, Children }) {
   return (
