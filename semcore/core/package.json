@@ -315,8 +315,8 @@
     "@babel/runtime": "7.27.6"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19"
   },
   "repository": {
     "type": "git",

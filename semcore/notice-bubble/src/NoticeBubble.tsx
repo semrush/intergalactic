@@ -6,7 +6,6 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
-import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import { useFocusLock, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
@@ -160,7 +159,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: NodeByRef; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite

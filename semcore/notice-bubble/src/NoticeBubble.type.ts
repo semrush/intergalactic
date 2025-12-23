@@ -1,7 +1,6 @@
 import type { PortalProps, BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 import type { RefObject } from 'react';
 
 /**
@@ -11,8 +10,8 @@ export type NoticeBubbleContainerPortalProps = PortalProps;
 
 export type NoticeBubbleContainerProps = BoxProps &
   NoticeBubbleContainerPortalProps & {
-    /** Ref or element to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
-    containerNode?: NodeByRef;
+    /** Ref to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
+    containerNode?: HTMLElement;
     /** Manager copy */
     manager?: NoticeBubbleManagerClass;
     /** Specifies the locale for i18n support */
@@ -20,7 +19,7 @@ export type NoticeBubbleContainerProps = BoxProps &
   };
 
 export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
-  containerNode?: NodeByRef;
+  containerNode?: HTMLElement;
   animationDuration: number;
   getI18nText: ReturnType<typeof useI18n>;
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | undefined;

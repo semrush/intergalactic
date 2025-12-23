@@ -31,7 +31,7 @@ describe('OutsideClick', () => {
         </div>
         <OutsideClick
           onOutsideClick={onOutsideClick}
-          excludeRefs={[outsideRef1, outsideRef2, document.body]}
+          excludeRefs={[outsideRef1, outsideRef2, { current: document.body }]}
         >
           <div data-testid='child'>test</div>
         </OutsideClick>
@@ -66,7 +66,7 @@ describe('OutsideClick', () => {
     const onOutsideClick = vi.fn();
     render(
       <>
-        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[document.body]} />
+        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[{ current: document.body }]} />
       </>,
     );
 

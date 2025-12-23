@@ -4,10 +4,8 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React, { type ForwardedRef } from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
 import { setAreaValue, ScrollBar } from './ScrollBar';
@@ -33,8 +31,8 @@ type State = {
 };
 
 type DefaultProps = {
-  container: React.Ref<HTMLElement>;
-  inner: React.Ref<HTMLElement>;
+  container: React.Ref<HTMLElement | null>;
+  inner: React.Ref<HTMLElement | null>;
   tabIndex: number;
   observeParentSize: boolean;
   disableAutofocusToContent: boolean;
@@ -51,8 +49,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
   static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()] as const;
 
   static defaultProps: () => DefaultProps = () => ({
-    container: React.createRef(),
-    inner: React.createRef(),
+    container: React.createRef<HTMLElement | null>(),
+    inner: React.createRef<HTMLElement | null>(),
     tabIndex: 0,
     observeParentSize: false,
     disableAutofocusToContent: false,
@@ -68,15 +66,15 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
   verticalBarRef = React.createRef<HTMLElement>();
 
   get $container(): HTMLElement | null {
-    const element = getNodeByRef(this.asProps.container!);
+    const element = this.asProps.container.current;
 
-    return element instanceof HTMLElement ? element : null;
+    return element;
   }
 
   get $inner(): HTMLElement | null {
-    const element = getNodeByRef(this.asProps.inner!);
+    const element = this.asProps.inner.current;
 
-    return element instanceof HTMLElement ? element : null;
+    return element;
   }
 
   state: State = {
@@ -92,8 +90,8 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
     }
   }
 
-  refWrapper = (node: HTMLElement) => {
-    this.$wrapper = findDOMNode(node) as HTMLElement;
+  refWrapper = (node: HTMLElement | null) => {
+    this.$wrapper = node;
   };
 
   setStyleSizeProperty = (element: HTMLElement, propertyKey: string, value: string | number) => {
