@@ -607,7 +607,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, size, rootRef, patterns, getIndex } = this.asProps;
+    const { eventEmitter, size, rootRef, patterns, getIndex, plotId } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const diam = Math.min(size[0], size[1]);
     const centerX = point[0] - diam / 2;
@@ -617,15 +617,15 @@ class Hover extends Component {
     const index = getIndex([centerX, centerY]);
 
     this.setState({ index }, () => {
-      eventEmitter.emit('setTooltipPosition', clientX, clientY);
-      eventEmitter.emit('setTooltipRenderingProps', {}, { index, patterns });
-      eventEmitter.emit('setTooltipVisible', index !== null);
+      eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
+      eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, {}, { index, patterns });
+      eventEmitter.emit(`setTooltipVisible_${plotId}`, index !== null);
     });
   });
 
   handlerMouseLeaveRoot = trottle(() => {
     this.setState({ index: null }, () => {
-      this.asProps.eventEmitter.emit('setTooltipVisible', false);
+      this.asProps.eventEmitter.emit(`setTooltipVisible_${this.asProps.plotId}`, false);
     });
   });
 
@@ -695,12 +695,12 @@ const Polygon = createElement(PolygonRoot, {
   Dots: PolygonDots,
 });
 
-const RadarTooltip = (props) => {
+function RadarTooltip(props) {
   const SRadarTooltip = Root;
   return sstyled(props.styles)(
     <SRadarTooltip render={Tooltip} tag={Radar.Hover} excludeAnchorProps />,
   );
-};
+}
 
 const Radar = createElement(RadarRoot, {
   Axis,

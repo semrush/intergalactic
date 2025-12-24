@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.2.0] - 2025-08-08
+## [17.0.0] - 2026-02-02
 
 ### Added
 
 - `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
+## [16.1.12] - 2025-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [16.4.3 ~> 16.4.4], `@semcore/button` [16.0.11 ~> 16.0.12], `@semcore/dropdown` [16.1.1 ~> 16.1.3], `@semcore/dropdown-menu` [16.1.12 ~> 16.1.14], `@semcore/icon` [16.7.2 ~> 16.7.3]).
+
+## [16.1.11] - 2025-10-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [16.4.2 ~> 16.4.3], `@semcore/button` [16.0.10 ~> 16.0.11], `@semcore/checkbox` [16.2.0 ~> 16.2.1], `@semcore/divider` [16.0.10 ~> 16.0.11], `@semcore/dropdown` [16.1.0 ~> 16.1.1], `@semcore/dropdown-menu` [16.1.11 ~> 16.1.12], `@semcore/flex-box` [16.0.10 ~> 16.0.11], `@semcore/icon` [16.5.1 ~> 16.7.2], `@semcore/input` [16.1.0 ~> 16.1.1], `@semcore/popper` [16.0.10 ~> 16.0.11], `@semcore/base-components` [16.4.0 ~> 16.4.1]).
 
 ## [16.1.10] - 2025-10-06
 

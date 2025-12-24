@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flags",
   "description": "Semrush Flags Component",
-  "version": "16.1.7",
+  "version": "16.1.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,6 @@
     "upload-static": "gcs-upload intergalactic-flags lib/sprites/*"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.10",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -26,6 +25,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
     "imagemin": "9.0.1",

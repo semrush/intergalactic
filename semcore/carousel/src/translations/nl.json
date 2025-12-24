@@ -2,5 +2,7 @@
   "next": "Volgende dia",
   "prev": "Vorige dia",
   "slides": "Dia's",
-  "slide": "Dia {slideNumber}"
+  "slide": "Dia {slideNumber}",
+  "Carousel:aria-roledescription": "carrousel",
+  "Carousel.Indicator:aria-roledescription": "dia"
 }

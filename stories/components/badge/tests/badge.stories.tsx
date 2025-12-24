@@ -1,9 +1,7 @@
 import Badge from '@semcore/ui/badge';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BadgeBgExample from './examples/badge-bg-colors';
-import BadgeBoxPropsExample from './examples/badge-box-props';
-import BadgeColorsExample from './examples/badge-colors';
+import BadgeBgExample, { defaultExampleBadgeProps } from './examples/badge-bg-colors';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge/Tests',
@@ -13,14 +11,29 @@ const meta: Meta<typeof Badge> = {
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const BadgeColors: Story = {
-  render: BadgeColorsExample,
-};
-
-export const BadgeBg: Story = {
+export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
   render: BadgeBgExample,
-};
-
-export const BadgeBoxProps: Story = {
-  render: BadgeBoxPropsExample,
+  argTypes: {
+    bg: {
+      control: { type: 'select' },
+      options: ['mist', 'cyan', 'red', 'orange', 'green', 'white', 'violet-400'],
+    },
+    color: {
+      control: { type: 'select' },
+      options: ['white', 'gray20', 'green', 'text-primary', 'text-primary-invert'],
+    },
+    pt: {
+      control: { type: 'number' },
+    },
+    w: {
+      control: { type: 'number' },
+    },
+    h: {
+      control: { type: 'number' },
+    },
+    m: {
+      control: { type: 'number' },
+    },
+  },
+  args: defaultExampleBadgeProps,
 };

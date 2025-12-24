@@ -6,6 +6,7 @@ import DynamicNoticeExample, { defaultProps as DynamicNoticeProps } from './exam
 import FailureNoticeExample, { defaultProps as FailureNoticeProps } from './examples/failure_notice';
 import NoConnectionNoticeExample, { defaultProps as NoConnectionNoticeBubbleProps } from './examples/no_connection_notice';
 import NoConnectionNoticeWithActionExample, { defaultProps as NoConnectionActionNoticeBubbleProps } from './examples/no_connection_notice_with_action';
+import NoticeInSm2Example from './examples/notice_in_sm2';
 import NoticebubbleNotInPortalExample, { defaultProps as NotInPortalNoticeBubbleProps } from './examples/noticebubble_not_in_portal';
 import ReloadActionExample, { defaultProps as ReloadActionNoticeBubbleProps } from './examples/reload_action';
 import ReplaceLastNoticeExample, { defaultProps as ReplaceLastNoticeBubbleProps } from './examples/replace_last_notice';
@@ -104,4 +105,10 @@ export const UndoAction: StoryObj<typeof UndoActionNoticeBubbleProps> = {
   render: UndoActionExample,
   argTypes: sharedArgTypes,
   args: UndoActionNoticeBubbleProps,
+};
+
+export const NoticeInSM2: StoryObj<typeof BasicNoticeProps> = {
+  render: NoticeInSm2Example,
+  argTypes: sharedArgTypes,
+  args: BasicNoticeProps,
 };

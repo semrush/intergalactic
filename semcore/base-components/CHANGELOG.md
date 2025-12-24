@@ -2,12 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.5.0] - 2025-12-12
+## [17.0.0] - 2026-02-02
+
+### BREAK
+
+- Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
 
 ### Added
 
 - `useEllipsis` hook.
 - `Hint` component.
+
+## [16.4.2] - 2025-12-01
+
+### Fixed
+
+- The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+## [16.4.1] - 2025-10-17
+
+### Fixed
+
+- Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
 
 ## [16.4.0] - 2025-10-03
 

@@ -1,3 +1,4 @@
+import { Box, Popper as PopperOrigin, Portal } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -8,9 +9,6 @@ import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { Box } from '@semcore/flex-box';
-import PopperOrigin from '@semcore/popper';
-import Portal from '@semcore/portal';
 import React from 'react';
 
 import style from './style/tooltip.shadow.css';
@@ -162,11 +160,11 @@ function TooltipPopper(props) {
     if (visible) {
       timer = setTimeout(() => {
         setIsVisible(true);
-      }, timeoutConfig[0] + 50);
+      }, timeoutConfig[0] + 150);
     } else {
       timer = setTimeout(() => {
         setIsVisible(false);
-      }, timeoutConfig[1] + 50);
+      }, timeoutConfig[1] + 150);
     }
 
     return () => {

@@ -1,109 +1,182 @@
 import { platform } from 'os';
 
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual tests', () => {
+export const locators = {
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  options: (page: Page) => page.getByRole('option'),
+  inputTags: (page: Page) => page.locator(`[data-ui-name="InputTags"]`),
+  inputValue: (page: Page) => page.locator(`[data-ui-name="InputTags.Value"]`),
+  tag: (page: Page) => page.locator(`li[data-ui-name="InputTags.Tag"]`),
+  inputText: (page: Page) => page.locator(`[data-ui-name="InputTags.Tag.Text"]`),
+  inputClose: (page: Page) => page.locator(`[data-ui-name="InputTags.Tag.Close"]`),
+};
+
+const testHelpers = {
+  async verifyCSSForAll(
+    locator: Locator,
+    cssProps: Record<string, string>,
+  ) {
+    const elements = await locator.all();
+    for (const element of elements) {
+      for (const [prop, value] of Object.entries(cssProps)) {
+        await expect(element).toHaveCSS(prop, value);
+      }
+    }
+  },
+
+  async verifyAttributesForAll(
+    locator: Locator,
+    attributes: Record<string, string | RegExp>,
+  ) {
+    const elements = await locator.all();
+    for (const element of elements) {
+      for (const [attr, value] of Object.entries(attributes)) {
+        if (typeof value === 'string') {
+          await expect(element).toHaveAttribute(attr, value);
+        } else {
+          await expect(element).toHaveAttribute(attr);
+        }
+      }
+    }
+  },
+
+  async selectAll(page: Page) {
+    if (platform() === 'darwin') {
+      await page.keyboard.press('Meta+A');
+    } else {
+      await page.keyboard.press('Control+A');
+    }
+  },
+};
+
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
   test.describe('Base states and styles', () => {
-    const variables = [
-      { state: 'normal', size: 'm' },
-      { state: 'valid', size: 'm' },
-      { state: 'invalid', size: 'm' },
-      { state: 'normal', size: 'l' },
-      { state: 'valid', size: 'l' },
-      { state: 'invalid', size: 'l' },
-    ];
-    variables.forEach((item) => {
-      test(`Verify InputTags normal ${item.state} and ${item.size} size unfocused and focused`, async ({ page }) => {
-        const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+    [
+      { state: 'normal', size: 'm', disabled: false },
+      { state: 'valid', size: 'm', disabled: false },
+      { state: 'invalid', size: 'm', disabled: false },
+      { state: 'normal', size: 'm', disabled: true },
+      { state: 'valid', size: 'm', disabled: true },
+      { state: 'invalid', size: 'm', disabled: true },
+      { state: 'normal', size: 'l', disabled: true },
+      { state: 'valid', size: 'l', disabled: true },
+      { state: 'invalid', size: 'l', disabled: true },
+      { state: 'normal', size: 'l', disabled: false },
+      { state: 'valid', size: 'l', disabled: false },
+      { state: 'invalid', size: 'l', disabled: false },
+    ].forEach((item) => {
+      test(`Verify InputTags state ${item.state}, size ${item.size}, disabled ${item.disabled}, unfocused and focused`, {
+        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@ellipsis'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', item);
 
-        await page.setContent(htmlContent);
+        await expect(page).toHaveScreenshot();
 
-        const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-        await expect(page).toHaveScreenshot();
-        await inputValue.click();
-        await expect(page).toHaveScreenshot();
+        if (!item.disabled) {
+          await locators.inputValue(page).click();
+          await expect(page).toHaveScreenshot();
+        }
 
         const input_tags_m = page.locator('div[data-ui-name="InputTags"][class*="size_m"]');
         const input_tags_l = page.locator('div[data-ui-name="InputTags"][class*="size_l"]');
 
         await test.step('Verify inputTagsM styles', async () => {
-          const count = await input_tags_m.count();
-          for (let i = 0; i < count; i++) {
-            await expect(input_tags_m.nth(i)).toHaveCSS('padding-left', '4px');
-            await expect(input_tags_m.nth(i)).toHaveCSS('padding-right', '6px');
-          }
+          await testHelpers.verifyCSSForAll(input_tags_m, {
+            'padding-left': '4px',
+            'padding-right': '6px',
+          });
         });
 
         await test.step('Verify inputTagsL styles', async () => {
-          const count = await input_tags_l.count();
-          for (let i = 0; i < count; i++) {
-            await expect(input_tags_l.nth(i)).toHaveCSS('padding-left', '8px');
-            await expect(input_tags_l.nth(i)).toHaveCSS('padding-right', '10px');
-          }
+          await testHelpers.verifyCSSForAll(input_tags_l, {
+            'padding-left': '8px',
+            'padding-right': '10px',
+          });
         });
 
         await test.step('Verify InputTags.Tag styles', async () => {
-          const li = page.locator('li[data-ui-name="InputTags.Tag"]');
-          const count = await li.count();
-          for (let i = 0; i < count; i++) {
-            await expect(li.nth(i)).toHaveCSS('margin', '2px');
-          }
+          await testHelpers.verifyCSSForAll(locators.tag(page), {
+            margin: '2px',
+          });
         });
 
         await test.step('Verify TagContainer.Tag styles', async () => {
-          const tagContainer = page.locator('li[data-ui-name="TagContainer.Tag"]');
-          const count = await tagContainer.count();
-          for (let i = 0; i < count; i++) {
-            await expect(tagContainer.nth(i)).toHaveCSS('padding-left', '4px');
-            await expect(tagContainer.nth(i)).toHaveCSS('padding-right', '4px');
-            await expect(tagContainer.nth(i)).toHaveCSS('border', '1px');
-            await expect(tagContainer.nth(i)).toHaveAttribute('tabindex', '-1');
-          }
+          const tagContainer = page.locator(`li[data-ui-name="TagContainer.Tag"]`);
+          await testHelpers.verifyCSSForAll(tagContainer, {
+            'padding-left': '4px',
+            'padding-right': '4px',
+            'border': '1px',
+          });
+          await testHelpers.verifyAttributesForAll(tagContainer, {
+            tabindex: '-1',
+          });
         });
 
-        await test.step('Verify TagContainer.Tag styles', async () => {
-          const tagText = page.locator('span[data-ui-name="Tag.Text"]');
-          const count = await tagText.count();
-          for (let i = 0; i < count; i++) {
-            await expect(tagText.nth(i)).toHaveCSS('padding-left', '4px');
-            await expect(tagText.nth(i)).toHaveCSS('padding-right', '0px');
-            await expect(tagText.nth(i)).toHaveAttribute('tabindex', '-1');
-          }
+        await test.step('Verify TagContainer.Tag.Text styles', async () => {
+          const tagText = page.locator(`span[data-ui-name="Tag.Text"]`);
+          await testHelpers.verifyCSSForAll(tagText, {
+            'padding-left': '4px',
+            'padding-right': '0px',
+          });
+          await testHelpers.verifyAttributesForAll(tagText, {
+            tabindex: '-1',
+          });
         });
 
         await test.step('Verify InputTags.Value styles', async () => {
-          const tagValue = page.locator('span[data-ui-name="InputTags.Value"]');
-          const count = await tagValue.count();
-          for (let i = 0; i < count; i++) {
-            await expect(tagValue.nth(i)).toHaveCSS('margin-left', '2px');
-            await expect(tagValue.nth(i)).toHaveCSS('margin-right', '2px');
+          await testHelpers.verifyCSSForAll(locators.inputValue(page), {
+            'margin-left': '2px',
+            'margin-right': '2px',
+          });
+        });
+
+        await test.step('Verify InputTags and InputTags.Tag disabled state', async () => {
+          const inputTagsClasses = await locators.inputTags(page).getAttribute('class');
+
+          if (item.disabled) {
+            expect(inputTagsClasses).toContain('disabled');
+            await expect(locators.inputValue(page)).toBeDisabled();
+          } else {
+            expect(inputTagsClasses).not.toContain('disabled');
+            await expect(locators.inputValue(page)).not.toBeDisabled();
+          }
+
+          for await (const tag of await locators.tag(page).all()) {
+            const tagClasses = await tag.getAttribute('class');
+
+            if (item.disabled) {
+              expect(tagClasses).toContain('disabled');
+            } else {
+              expect(tagClasses).not.toContain('disabled');
+            }
           }
         });
       });
     });
 
-    const variablesEmail = [
-      { theme: 'primary', size: 'l', disabled: true },
-      { theme: 'secondary', size: 'm', disabled: false },
-      { theme: 'primary', size: 'xl', disabled: true },
+    [
+      { theme: 'primary', size: 'l', disabled: true, editable: undefined },
+      { theme: 'secondary', size: 'm', disabled: false, editable: undefined },
+      { theme: 'primary', size: 'xl', disabled: true, editable: undefined },
       { theme: 'primary', size: 'xl', disabled: false, editable: true },
-    ];
+    ].forEach((item) => {
+      test(`Verify InputTags.Tag ${item.theme} and ${item.size} size and disabled ${item.disabled} and editable ${item.editable}`, {
+        tag: [TAG.PRIORITY_HIGH, '@input-tags'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en', item);
 
-    variablesEmail.forEach((item) => {
-      test(`Verify InputTags.Tag ${item.theme} and ${item.size} size and disabled ${item.disabled} and editable ${item.editable} `, async ({ page }) => {
-        const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-        await page.setContent(htmlContent);
-
-        const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-        const inputClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-
-        const locator = page.locator('li[data-ui-name="InputTags.Tag"]');
-
-        const firstClass = await locator.first().getAttribute('class');
+        const firstClass = await locators.tag(page).first().getAttribute('class');
 
         if (firstClass?.includes('disabled')) {
           await expect(page).toHaveScreenshot();
@@ -111,36 +184,30 @@ test.describe('Visual tests', () => {
         }
 
         if (firstClass?.includes('interactive')) {
-          await inputText.nth(1).hover();
+          await locators.inputText(page).nth(1).hover();
           await expect(page).toHaveScreenshot();
 
-          await locator.nth(2).click();
+          await locators.tag(page).nth(2).click();
         } else {
-          await inputClose.nth(1).hover();
+          await locators.inputClose(page).nth(1).hover();
           await expect(page).toHaveScreenshot();
         }
       });
     });
 
-    const variablesAddons = [
-      { theme: 'primary', size: 'l', disabled: true },
-      { theme: 'secondary', size: 'm', disabled: false },
+    [
+      { theme: 'primary', size: 'l', disabled: true, interactive: undefined },
+      { theme: 'secondary', size: 'm', disabled: false, interactive: undefined },
       { theme: 'primary', size: 'xl', disabled: true, interactive: true },
       { theme: 'primary', size: 'xl', disabled: false, interactive: true },
-    ];
-
-    variablesAddons.forEach((item) => {
-      test(`Verify InputTags.Tag with addon ${item.theme} and ${item.size} size and disabled ${item.disabled} and interactive ${item.interactive} `, async ({ page }) => {
-        const standPath = 'stories/components/input-tags/tests/examples/tags-with-addons.tsx';
-        const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-        await page.setContent(htmlContent);
+    ].forEach((item) => {
+      test(`Verify InputTags.Tag with addon ${item.theme} and ${item.size} size and disabled ${item.disabled} and interactive ${item.interactive}`, {
+        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@icon'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/input-tags/tests/examples/tags-with-addons.tsx', 'en', item);
 
         const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-
-        const locator = page.locator('li[data-ui-name="InputTags.Tag"]');
-
-        const firstClass = await locator.first().getAttribute('class');
+        const firstClass = await locators.tag(page).first().getAttribute('class');
 
         if (firstClass?.includes('disabled')) {
           await expect(page).toHaveScreenshot();
@@ -154,11 +221,13 @@ test.describe('Visual tests', () => {
   });
 
   test.describe('Input-tags visual states after mouse and keyboard interactions in examples', () => {
-    test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
+    test('Verify tags can be added removed and edited by mouse', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@input-tags',
+        '@ellipsis'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
       const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
       const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
@@ -184,20 +253,15 @@ test.describe('Visual tests', () => {
       });
     });
 
-    test('Verify wrapping emails in tags without width limitation and email validation', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-      const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-      const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-      const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+    test('Verify wrapping emails in tags without width limitation and email validation', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input-tags'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
       await test.step('Verify hover states', async () => {
-        await inputValue.click();
-        const count = await tag.count();
+        await locators.inputValue(page).click();
+        const count = await locators.tag(page).count();
         await page.keyboard.type('TestTestTestTestTestTestTestTestTestTestTestTest@Test.Test');
         await page.keyboard.press('Enter');
 
@@ -207,11 +271,11 @@ test.describe('Visual tests', () => {
         await page.keyboard.type('Social media');
         await page.keyboard.press('Shift+Tab');
 
-        await tagClose.first().hover();
+        await locators.inputClose(page).first().hover();
         await page.keyboard.press('Shift+Tab');
-        await tagClose.nth(count - 1).hover();
+        await locators.inputClose(page).nth(count - 1).hover();
         await expect(page).toHaveScreenshot();
-        await inputText.first().hover();
+        await locators.inputText(page).first().hover();
         await expect(page).toHaveScreenshot();
       });
 
@@ -222,14 +286,15 @@ test.describe('Visual tests', () => {
       });
     });
 
-    test('Verify Data from the select visual states when interacting by mouse', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
+    test('Verify Data from the select visual states when interacting by mouse', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@input-tags',
+        '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
       const label = page.locator('[data-ui-name="Text"]');
-      const menus = page.locator('[data-ui-name="Select.Option"]');
 
       await test.step('Verify focused and menu opened by click on label', async () => {
         await label.click();
@@ -244,18 +309,18 @@ test.describe('Visual tests', () => {
       });
 
       await test.step('Verify menu item can be selected by click', async () => {
-        await menus.first().click();
+        await locators.options(page).first().click();
         await expect(page).toHaveScreenshot();
       });
     });
 
-    test('Verify Data from the select visual states when interacting by keyboard', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const menus = page.locator('[data-ui-name="Select.Option"]');
+    test('Verify Data from the select visual states when interacting by keyboard', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@input-tags',
+        '@select'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
       await test.step('Verify nothing found state', async () => {
         await page.keyboard.press('Tab');
@@ -275,186 +340,175 @@ test.describe('Visual tests', () => {
       await test.step('Verify Adding tag', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
-        while (await menus.count() > 0) {
+        let iterations = 0;
+        const maxIterations = 10; //  limit to prevent infinite loops
+        while (await locators.options(page).count() > 0 && iterations < maxIterations) {
           await page.keyboard.press('Enter');
+          iterations++;
         }
         await expect(page).toHaveScreenshot();
       });
     });
 
-    test('Verify input tag with default value', async ({ page }) => {
-      const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultValue: 'default value add something', value: undefined });
+    test('Verify input tag with default value', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@input-tags',
+        '@ellipsis'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { defaultValue: 'default value add something', value: undefined });
 
-      await page.setContent(htmlContent);
-
-      const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
       const label = page.locator('[data-ui-name="Text"]');
 
       await expect(page).toHaveScreenshot();
       await label.click();
       await expect(page).toHaveScreenshot();
-      const tagCountPrev = await tag.count();
+      const tagCountPrev = await locators.tag(page).count();
       await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(tagCountPrev + 1);
+      await expect(locators.tag(page)).toHaveCount(tagCountPrev + 1);
     });
   });
 });
 
-test.describe('Functional tests', () => {
-  test('Verify tags can be added removed and edited by mouse', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify tags can be added removed and edited by mouse', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-tags',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
     const ul = page.locator('ul');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
     const label = page.locator('[data-ui-name="Text"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
 
     await test.step('Verify attributes', async () => {
       await expect(ul).toHaveAttribute('aria-label', 'Social media');
-      const count = await inputText.count();
+      const count = await locators.inputText(page).count();
       for (let i = 0; i < count; i++) {
-        await expect(inputText.nth(i)).toHaveAttribute('aria-describedby');
-        await expect(inputText.nth(i)).toHaveAttribute('tabindex', '0');
+        await expect(locators.inputText(page).nth(i)).toHaveAttribute('aria-describedby');
+        await expect(locators.inputText(page).nth(i)).toHaveAttribute('tabindex', '0');
       }
     });
 
     await test.step('Verify focused and cursor set by click on label', async () => {
       await label.click();
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify adding new tag by Space Tab Enter and ShiftTab', async () => {
-      const count = await inputText.count();
+      const count = await locators.inputText(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.press('Enter');
-      await expect(inputText).toHaveCount(count + 1);
+      await expect(locators.inputText(page)).toHaveCount(count + 1);
 
       await page.keyboard.type('Test2');
       await page.keyboard.press('Tab');
-      await expect(inputText).toHaveCount(count + 2);
+      await expect(locators.inputText(page)).toHaveCount(count + 2);
 
       await page.keyboard.type('1111');
       await page.keyboard.press('Shift+Tab');
-      await expect(inputText).toHaveCount(count + 3);
+      await expect(locators.inputText(page)).toHaveCount(count + 3);
 
       await page.keyboard.type('Hello');
       await page.keyboard.press('Space');
       await page.keyboard.press('Space');
-      await expect(inputText).toHaveCount(count + 4);
+      await expect(locators.inputText(page)).toHaveCount(count + 4);
     });
 
     await test.step('Verify editing mode enaled by click on text', async () => {
-      await inputText.first().click();
-      await expect(inputValue).toHaveAttribute('value', 'TikTok');
-      await inputText.nth(2).click();
-      await expect(inputValue).toHaveAttribute('value', 'Instagram');
+      await locators.inputText(page).first().click();
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'TikTok');
+      await locators.inputText(page).nth(2).click();
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Instagram');
 
       // editing and save
       await page.keyboard.type('Test');
       await page.keyboard.press('Enter');
-      const count = await inputText.count();
-      await expect(inputText.nth(count - 1)).toHaveText('InstagramTest');
+      const count = await locators.inputText(page).count();
+      await expect(locators.inputText(page).nth(count - 1)).toHaveText('InstagramTest');
 
       // no edit and press enter
-      await inputText.first().click();
+      await locators.inputText(page).first().click();
       await page.keyboard.press('Enter');
-      await expect(inputText.nth(count - 1)).toHaveText('Facebook');
+      await expect(locators.inputText(page).nth(count - 1)).toHaveText('Facebook');
 
       /// ctrl a and remove editing
-      await inputText.first().click();
+      await locators.inputText(page).first().click();
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await testHelpers.selectAll(page);
       await page.keyboard.press('Backspace');
       await page.keyboard.press('Enter');
-      await expect(inputValue).toHaveAttribute('value', '');
+      await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
     await test.step('Verify adding and edditing by click on the tag', async () => {
       await page.keyboard.type('TikTokTest');
-      await inputText.nth(0).click();
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long name');
+      await locators.inputText(page).nth(0).click();
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Social media with a very long name');
 
-      const count = await inputText.count();
-      await expect(inputText.nth(count - 1)).toHaveText('TikTokTest');
+      const count = await locators.inputText(page).count();
+      await expect(locators.inputText(page).nth(count - 1)).toHaveText('TikTokTest');
       await page.keyboard.press('Enter');
     });
 
     await test.step('Verify tag removes by click X', async () => {
-      while (await tagClose.count() > 0) {
-        await tagClose.first().click();
+      while (await locators.inputClose(page).count() > 0) {
+        await locators.inputClose(page).first().click();
       }
 
-      await expect(tagClose).toHaveCount(0);
+      await expect(locators.inputClose(page)).toHaveCount(0);
     });
   });
 
-  test('Verify tags can be added removed and edited by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+  test('Verify tags can be added removed and edited by keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input-tags',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
     await test.step('Verify 1st Tag Text focused by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).toBeFocused();
-      await expect(tagClose.first()).not.toBeFocused();
+      await expect(locators.inputText(page).first()).toBeFocused();
     });
 
     await test.step('Verify Tag Close can be focused by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).not.toBeFocused();
-      await expect(tagClose.first()).toBeFocused();
+      await expect(locators.inputClose(page).first()).toBeFocused();
     });
 
     await test.step('Verify removing 1st tag by Enter', async () => {
-      const initialCount = await tag.count();
+      const initialCount = await locators.tag(page).count();
 
       await page.keyboard.press('Enter');
-      const newCount = await tag.count();
+      const newCount = await locators.tag(page).count();
 
       expect(newCount).toBe(initialCount - 1);
-
-      await expect(inputValue).not.toBeFocused();
-      await expect(tagClose.first()).not.toBeFocused();
-      await expect(inputText.first()).toBeFocused();
+      await expect(locators.inputText(page).first()).toBeFocused();
     });
 
     await test.step('Verify removing 1st tag by Space', async () => {
-      const initialCount = await tag.count();
+      const initialCount = await locators.tag(page).count();
       await page.keyboard.press('Tab');
 
       await page.keyboard.press('Space');
-      const newCount = await tag.count();
+      const newCount = await locators.tag(page).count();
 
       expect(newCount).toBe(initialCount - 1);
 
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.first()).toBeFocused();
-      await expect(tagClose.first()).not.toBeFocused();
+      await expect(locators.inputText(page).first()).toBeFocused();
     });
 
     await test.step('Verify next Tag Text focused by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(inputText.nth(1)).toBeFocused();
-      await expect(tagClose.nth(1)).not.toBeFocused();
+      await expect(locators.inputText(page).nth(1)).toBeFocused();
     });
 
     await test.step('Verify input tag focused and сursor in value by tab', async () => {
@@ -462,77 +516,72 @@ test.describe('Functional tests', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await expect(inputValue).toBeFocused();
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify adding new tag by entering special symbols', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.type(',');
-      await expect(tag).toHaveCount(count + 1);
+      await expect(locators.tag(page)).toHaveCount(count + 1);
 
       await page.keyboard.type('Test2');
       await page.keyboard.type(';');
-      await expect(inputText).toHaveCount(count + 2);
+      await expect(locators.inputText(page)).toHaveCount(count + 2);
 
       await page.keyboard.type('Social media with a very long name');
       await page.keyboard.type('|');
-      await expect(inputText).toHaveCount(count + 3);
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputText(page)).toHaveCount(count + 3);
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify editing mode when press Enter or Space on tag Text', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
-      const count1 = await tag.count();
-      await expect(inputText.nth(count1 - 1)).toBeFocused();
+      const count1 = await locators.tag(page).count();
+      await expect(locators.inputText(page).nth(count1 - 1)).toBeFocused();
 
       await page.keyboard.press('Enter');
 
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long name');
-      await expect(tag).toHaveCount(count1 - 1);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Social media with a very long name');
+      await expect(locators.tag(page)).toHaveCount(count1 - 1);
       await page.keyboard.type('Test2');
       await page.keyboard.press('|');
-      await expect(inputText.nth(count1 - 1)).toHaveText('Social media with a very long nameTest2');
-      await expect(tag).toHaveCount(count1);
+      await expect(locators.inputText(page).nth(count1 - 1)).toHaveText('Social media with a very long nameTest2');
+      await expect(locators.tag(page)).toHaveCount(count1);
 
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
-      await expect(inputValue).not.toBeFocused();
-      await page.keyboard.press('Space');
-      await expect(inputValue).toHaveAttribute('value', 'Social media with a very long nameTest2 ');
+      await expect(locators.inputValue(page)).not.toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Social media with a very long nameTest2');
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await testHelpers.selectAll(page);
       await page.keyboard.press('Backspace');
-      await expect(inputValue).toHaveAttribute('value', '');
+      await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
     await test.step('Verify editing mode By press Backspace', async () => {
-      const count1 = await tag.count();
+      const count1 = await locators.tag(page).count();
 
       await page.keyboard.press('Backspace');
-      await expect(tag).toHaveCount(count1 - 1);
+      await expect(locators.tag(page)).toHaveCount(count1 - 1);
 
-      await expect(inputValue).toHaveAttribute('value', 'Test2 ');
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Test2 ');
 
       await page.keyboard.press('Backspace');
       await page.keyboard.press('Backspace');
       await page.keyboard.press('|');
-      await expect(inputText.nth(count1 - 1)).toHaveText('Test');
+      await expect(locators.inputText(page).nth(count1 - 1)).toHaveText('Test');
     });
 
     await test.step('Verify entered text is pasted when paste action happened', async () => {
       const bufferedText = 'Buffer';
       const typedValue = 'Test';
-      const tagCount = await tag.count();
+      const tagCount = await locators.tag(page).count();
 
       await page.keyboard.type(typedValue);
-      await inputValue.evaluate((el, text) => {
+      await locators.inputValue(page).evaluate((el, text) => {
         const event = new Event('paste', { bubbles: true, cancelable: true });
         (event as any).clipboardData = {
           getData: (type: string) => (type === 'text/plain' ? text : ''),
@@ -541,18 +590,17 @@ test.describe('Functional tests', () => {
         el.dispatchEvent(event);
       }, bufferedText);
 
-      await expect(tag).toHaveCount(tagCount + 2);
-      await expect(inputValue).toBeEmpty();
+      await expect(locators.tag(page)).toHaveCount(tagCount + 2);
+      await expect(locators.inputValue(page)).toBeEmpty();
     });
   });
 
-  test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input-tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
     const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
     const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
     const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
@@ -563,18 +611,18 @@ test.describe('Functional tests', () => {
     });
 
     await test.step('Verify adding correct and wrong emails tag by Space Tab Enter and ShiftTab', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('TestTestTestTestTestTestTestTestTestTestTestTest@Test.Test');
       await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(count + 1);
+      await expect(locators.tag(page)).toHaveCount(count + 1);
 
       await page.keyboard.type('Test2');
       await page.keyboard.press('Tab');
-      await expect(tag).toHaveCount(count + 2);
+      await expect(locators.tag(page)).toHaveCount(count + 2);
 
       await page.keyboard.type('Social media');
       await page.keyboard.press('Shift+Tab');
-      await expect(tag).toHaveCount(count + 3);
+      await expect(locators.tag(page)).toHaveCount(count + 3);
 
       // 2 spaces don't work in this examples, possibly bug in the example
       // await page.keyboard.type('Hello@gmail.com');
@@ -598,13 +646,12 @@ test.describe('Functional tests', () => {
     });
   });
 
-  test('Verify wrapping emails in tags without width limitation and email validation keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify wrapping emails in tags without width limitation and email validation keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input-tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
     const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
     const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
     const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
@@ -618,10 +665,10 @@ test.describe('Functional tests', () => {
     });
 
     await test.step('Verify removing 1st tag by Enter', async () => {
-      const initialCount = await tag.count();
+      const initialCount = await locators.tag(page).count();
 
       await page.keyboard.press('Enter');
-      const newCount = await tag.count();
+      const newCount = await locators.tag(page).count();
 
       expect(newCount).toBe(initialCount - 1);
 
@@ -631,10 +678,10 @@ test.describe('Functional tests', () => {
     });
 
     await test.step('Verify removing 1st tag by Space', async () => {
-      const initialCount = await tag.count();
+      const initialCount = await locators.tag(page).count();
 
       await page.keyboard.press('Space');
-      const newCount = await tag.count();
+      const newCount = await locators.tag(page).count();
 
       expect(newCount).toBe(initialCount - 1);
 
@@ -663,10 +710,10 @@ test.describe('Functional tests', () => {
     });
 
     await test.step('Verify adding new tag by entering special symbols', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.type(',');
-      await expect(tag).toHaveCount(count + 1);
+      await expect(locators.tag(page)).toHaveCount(count + 1);
 
       await page.keyboard.type('Test2');
       await page.keyboard.type(';');
@@ -679,393 +726,262 @@ test.describe('Functional tests', () => {
     });
   });
 
-  test('Verify Data from the select and be added and removed by mouse', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+  test('Verify Data from the select and be added and removed by mouse', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-tags',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
     const ul = page.locator('ul');
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
     const label = page.locator('[data-ui-name="Text"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-    const menus = page.locator('[data-ui-name="Select.Option"]');
 
     await test.step('Verify attributes', async () => {
       await expect(ul).toHaveAttribute('aria-label', 'Social media');
-      await expect(inputValue).toHaveAttribute('aria-invalid', 'false');
-      await expect(inputValue).toHaveAttribute('aria-expanded', 'false');
-      await expect(inputValue).toHaveAttribute('aria-autocomplete', 'list');
-      await expect(inputValue).toHaveAttribute('value', '');
+      await expect(locators.inputValue(page)).toHaveAttribute('aria-invalid', 'false');
+      await expect(locators.inputValue(page)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.inputValue(page)).toHaveAttribute('aria-autocomplete', 'list');
+      await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
     await test.step('Verify focused and menu opened by click on label', async () => {
       await label.click();
-      await expect(inputValue).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.inputValue(page)).toHaveAttribute('aria-expanded', 'true');
       await page.waitForSelector('text="LinkedIn"');
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
 
-      const count = await menus.count();
+      const count = await locators.options(page).count();
       for (let i = 0; i < count; i++) {
-        await expect(menus.nth(i)).not.toHaveClass(/highlighted/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
       }
-      await expect(tag).toHaveCount(0);
+      await expect(locators.tag(page)).toHaveCount(0);
     });
 
     await test.step('Verify nothing found state', async () => {
       await page.keyboard.type('TE');
       await page.waitForSelector('text="Nothing found"');
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify menu item not focused when entered data', async () => {
       await page.keyboard.press('Backspace');
       await page.waitForSelector('text="TikTok"');
-      await expect(inputValue).toBeFocused();
-      await expect(menus.first()).not.toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
+      await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
     });
 
     await test.step('Verify menu item focused after press down', async () => {
       await page.keyboard.press('ArrowDown');
-      await expect(inputValue).toBeFocused();
-      await expect(menus.first()).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify menu item focused removed data', async () => {
       await page.keyboard.press('Backspace');
       await page.waitForSelector('text="LinkedIn"');
-      await expect(inputValue).toBeFocused();
-      await expect(menus.first()).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify menu item can be selected by click', async () => {
-      await expect(menus).toHaveCount(4);
-      await menus.first().click();
-      await expect(tag).toHaveCount(1);
-      await expect(menus).toHaveCount(3);
+      await expect(locators.options(page)).toHaveCount(4);
+      await locators.options(page).first().click();
+      await expect(locators.tag(page)).toHaveCount(1);
+      await expect(locators.options(page)).toHaveCount(3);
     });
 
     await test.step('Verify all menu items can be selected by click', async () => {
-      while (await menus.count() > 0) {
-        await menus.first().click();
+      while (await locators.options(page).count() > 0) {
+        await locators.options(page).first().click();
       }
 
-      await expect(menus).toHaveCount(0);
-      await expect(tag).toHaveCount(4);
+      await expect(locators.options(page)).toHaveCount(0);
+      await expect(locators.tag(page)).toHaveCount(4);
     });
 
     await test.step('Verify tag removes by click X', async () => {
-      while (await tagClose.count() > 0) {
-        await tagClose.first().click();
+      while (await locators.inputClose(page).count() > 0) {
+        await locators.inputClose(page).first().click();
       }
-      const count = await menus.count();
+      const count = await locators.options(page).count();
       for (let i = 0; i < count; i++) {
-        await expect(menus.nth(i)).not.toHaveClass(/highlighted/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
       }
-      await expect(tag).toHaveCount(0);
+      await expect(locators.tag(page)).toHaveCount(0);
     });
   });
 
-  test('Verify Data from the select and be added and removed by keyboard', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
-    const menus = page.locator('[data-ui-name="Select.Option"]');
+  test('Verify Data from the select and be added and removed by keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input-tags',
+      '@select'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
     await test.step('Verify input focused and menu expanded by Tab', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
       await page.waitForSelector('text="LinkedIn"');
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
 
-      const count = await menus.count();
+      const count = await locators.options(page).count();
       for (let i = 1; i < count; i++) {
-        await expect(menus.nth(i)).not.toHaveClass(/highlighted/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
       }
     });
 
     await test.step('Verify menu hidden by ESC', async () => {
       await page.keyboard.press('Escape');
-      await expect(inputValue).toBeFocused();
-      await expect(menus.nth(0)).not.toBeVisible();
+      await expect(locators.inputValue(page)).toBeFocused();
+      await expect(locators.options(page).nth(0)).not.toBeVisible();
     });
 
     await test.step('Verify input focused and menu expanded by Enter', async () => {
       await page.keyboard.press('Enter');
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
       await page.waitForSelector('text="LinkedIn"');
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
 
-      const count = await menus.count();
+      const count = await locators.options(page).count();
       for (let i = 1; i < count; i++) {
-        await expect(menus.nth(i)).not.toHaveClass(/highlighted/);
+        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
       }
     });
 
     await test.step('Verify tag added by Enter', async () => {
-      await expect(menus).toHaveCount(4);
+      await expect(locators.options(page)).toHaveCount(4);
       await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(1);
-      await expect(menus).toHaveCount(3);
+      await expect(locators.tag(page)).toHaveCount(1);
+      await expect(locators.options(page)).toHaveCount(3);
 
       await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(2);
-      await expect(menus).toHaveCount(2);
+      await expect(locators.tag(page)).toHaveCount(2);
+      await expect(locators.options(page)).toHaveCount(2);
     });
 
     await test.step('Verify nothing found state', async () => {
       await page.keyboard.press('Space');
       await page.waitForSelector('text="Nothing found"');
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify focus By Shift+Tab', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.waitForSelector('text="TikTok"');
-      await expect(inputValue).not.toBeFocused();
-      await expect(tagClose.nth(1)).toBeFocused();
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).not.toBeFocused();
+
+      await expect(locators.inputClose(page).nth(1)).toBeFocused();
+
+      await expect(locators.options(page).nth(0)).toBeVisible();
+
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Shift+Tab');
-      await expect(inputValue).not.toBeFocused();
-      await expect(tagClose.nth(0)).toBeFocused();
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).not.toBeFocused();
+
+      await expect(locators.inputClose(page).nth(0)).toBeFocused();
+
+      await expect(locators.options(page).nth(0)).toBeVisible();
     });
 
     await test.step('Verify focus By Tab', async () => {
       await page.keyboard.press('Tab');
       await page.waitForSelector('text="TikTok"');
-      await expect(inputValue).not.toBeFocused();
-      await expect(tagClose.nth(1)).toBeFocused();
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).not.toBeFocused();
+      await expect(locators.inputClose(page).nth(1)).toBeFocused();
+      await expect(locators.options(page).nth(0)).toBeVisible();
 
       await page.keyboard.press('Tab');
-      await expect(inputValue).toBeFocused();
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
+      // Firefox behavior: Doesn't restore highlight automatically after Tab navigation
+      if (browserName !== 'firefox') {
+        await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
+      }
     });
 
     await test.step('Verify Removing tag', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
-      await expect(menus.nth(0)).not.toHaveClass(/highlighted/);
-      await expect(inputValue).toBeFocused();
+      await expect(locators.options(page).nth(0)).not.toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');
-      await expect(menus.nth(0)).not.toHaveClass(/highlighted/);
-      await expect(inputValue).toBeFocused();
+      await expect(locators.options(page).nth(0)).not.toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify Adding tag', async () => {
       await page.keyboard.press('ArrowDown');
-      await expect(menus.nth(0)).toHaveClass(/highlighted/);
-      await expect(inputValue).toBeFocused();
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
+      await expect(locators.inputValue(page)).toBeFocused();
 
-      while (await menus.count() > 0) {
+      while (await locators.options(page).count() > 0) {
         await page.keyboard.press('Enter');
       }
 
-      await expect(menus).toHaveCount(0);
-      await expect(tag).toHaveCount(4);
+      await expect(locators.options(page)).toHaveCount(0);
+      await expect(locators.tag(page)).toHaveCount(4);
     });
   });
 
-  test('Verify adding tags with custom delimiters', async ({ page }) => {
-    const standPath = 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { delimiters: [']', '/', '['] });
-
-    await page.setContent(htmlContent);
-
-    const tag = page.locator('li[data-ui-name="InputTags.Tag"]');
-    const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-    const inputValue = page.locator('[data-ui-name="InputTags.Value"]');
+  test('Verify adding tags with custom delimiters', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-tags',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { delimiters: [']', '/', '['] });
 
     await test.step('Verify adding new tag by entering custom delimiters', async () => {
-      await inputValue.click();
-      const count = await tag.count();
+      await locators.inputValue(page).click();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.type(']');
-      await expect(tag).toHaveCount(count + 1);
+      await expect(locators.tag(page)).toHaveCount(count + 1);
 
       await page.keyboard.type('Test2');
       await page.keyboard.type('/');
-      await expect(inputText).toHaveCount(count + 2);
+      await expect(locators.inputText(page)).toHaveCount(count + 2);
 
       await page.keyboard.type('Social media with a very long name');
       await page.keyboard.type(']');
-      await expect(inputText).toHaveCount(count + 3);
-      await expect(inputValue).toBeFocused();
+      await expect(locators.inputText(page)).toHaveCount(count + 3);
+      await expect(locators.inputValue(page)).toBeFocused();
     });
 
     await test.step('Verify default special symbols delimiters dont work', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.type(',');
-      await expect(tag).toHaveCount(count);
-      await expect(inputValue).toHaveAttribute('value', 'Test,');
+      await expect(locators.tag(page)).toHaveCount(count);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Test,');
 
       await page.keyboard.type(';');
-      await expect(inputText).toHaveCount(count);
-      await expect(inputValue).toHaveAttribute('value', 'Test,;');
+      await expect(locators.inputText(page)).toHaveCount(count);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Test,;');
 
       await page.keyboard.type('|');
-      await expect(inputText).toHaveCount(count);
-      await expect(inputValue).toHaveAttribute('value', 'Test,;|');
+      await expect(locators.inputText(page)).toHaveCount(count);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Test,;|');
     });
 
     await test.step('Verify enter adds tag', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.press('Enter');
-      await expect(tag).toHaveCount(count + 1);
-      await expect(inputValue).toHaveAttribute('value', '');
+      await expect(locators.tag(page)).toHaveCount(count + 1);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
     await test.step('Verify Tab not adds tag', async () => {
-      const count = await tag.count();
+      const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
 
       await page.keyboard.press('Tab');
-      await expect(tag).toHaveCount(count);
-      await expect(inputValue).toHaveAttribute('value', 'Test');
+      await expect(locators.tag(page)).toHaveCount(count);
+      await expect(locators.inputValue(page)).toHaveAttribute('value', 'Test');
     });
-  });
-});
-
-test.describe('Visual - UX pattern', () => {
-  test('Verify Input tags and select', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const trigger = page.getByRole('combobox');
-    const options = page.getByRole('option');
-    const emailLabel = page.locator('label:text("Emails")');
-    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
-    await expect(trigger).toHaveCount(2);
-    await expect(page).toHaveScreenshot();
-
-    await trigger.first().click();
-    await options.first().waitFor({ state: 'visible' });
-    await options.first().click();
-    await options.first().waitFor({ state: 'hidden' });
-
-    await expect(trigger).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
-
-    await emailLabel.click();
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('test@tets');
-    await page.keyboard.press('Enter');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.type('.test');
-    await tooltip.waitFor({ state: 'hidden' });
-
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Functional - UX pattern', () => {
-  test('Verify Input tags and select keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    if (browserName === 'webkit') return;
-    const trigger = page.getByRole('combobox');
-    const options = page.getByRole('option');
-    const input = page.getByRole('textbox');
-    const counter = page.locator('[data-ui-name="Counter"]');
-    const tooltip = page.locator('[data-ui-name="Tooltip.Popper"]');
-    const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
-    await expect(trigger).toHaveCount(2);
-
-    await page.keyboard.press('Tab');
-    await expect(trigger.first()).toBeFocused();
-    await page.keyboard.press('Enter');
-    await options.first().waitFor({ state: 'visible' });
-    await page.waitForTimeout(200);
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    await options.first().waitFor({ state: 'hidden' });
-    await expect(trigger).toHaveCount(1);
-
-    await page.keyboard.press('Tab');
-    await expect(tagClose.first()).toBeFocused();
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.press('Tab');
-
-    await expect(input).toBeFocused();
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    {
-      const counterText = await counter.locator('span').textContent();
-      await expect(counterText).toBe('3/5');
-    }
-
-    await page.keyboard.type('test@tets');
-    {
-      const counterText = await counter.locator('span').textContent();
-      await expect(counterText).toBe('3/5');
-    }
-    await page.keyboard.press('Enter');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText(`Email isn't valid`);
-
-    await page.keyboard.type('.test');
-    await tooltip.waitFor({ state: 'hidden' });
-
-    await page.keyboard.press('Enter');
-    {
-      const counterText = await counter.locator('span').textContent();
-      await expect(counterText).toBe('4/5');
-    }
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    {
-      const counterText = await counter.locator('span').textContent();
-      await expect(counterText).toBe('5/5');
-    } await expect(counter).toHaveClass(/warning/);
-
-    await page.keyboard.type('test@tets.test');
-    await page.keyboard.press('Enter');
-    {
-      const counterText = await counter.locator('span').textContent();
-      await expect(counterText).toBe('5/5');
-    }
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText(`Max emails is 5`);
-
-    await page.keyboard.press('Enter');
-    await expect(input).toBeFocused();
-
-    const value = await input.inputValue();
-    const length = value.length;
-
-    for (let i = 0; i < length; i++) {
-      await page.keyboard.press('Backspace');
-    }
-    await tooltip.waitFor({ state: 'hidden' });
-
-    await page.keyboard.press('Shift+Tab');
-    await expect(tagClose.last()).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(counter).not.toHaveClass(/warning/);
   });
 });

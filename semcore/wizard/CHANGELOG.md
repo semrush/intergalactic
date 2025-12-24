@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.2] - 2025-12-18
+
+### Fixed
+
+- Missing translations
+
+## [16.2.1] - 2025-11-10
+
+### Fixed
+
+- Unnecessary scroll in small mode with long text in sidebar step.
+- Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
+## [16.2.0] - 2025-10-29
+
+### Changed
+
+- Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in TypeScript.
+
+## [16.1.11] - 2025-10-24
+
+### Changed
+
+- `z-index` value for `Stepper` in `hover` state.
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

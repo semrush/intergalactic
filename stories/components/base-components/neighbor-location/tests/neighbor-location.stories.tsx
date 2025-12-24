@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
+import WrappingTestExample from './examples/wraping-test-combination';
+
+const meta: Meta = {
+  title: 'Components/Base Components/NeighborLocation/Tests',
+};
+
+export default meta;
+
+export const WrappingTest: StoryObj = {
+  render: WrappingTestExample,
+};

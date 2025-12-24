@@ -1,11 +1,8 @@
-import { Hint, useEllipsis } from '@semcore/base-components';
+import { Hint, useEllipsis, NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
@@ -48,12 +45,6 @@ class RootBaseTrigger extends Component {
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
 
-    logger.warn(
-      theme !== undefined,
-      'The \'theme\' property is deprecated, use \'state\'',
-      this.asProps['data-ui-name'] || BaseTrigger.displayName,
-    );
-
     // TODO: add aria
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
@@ -69,7 +60,7 @@ class RootBaseTrigger extends Component {
               ref={this.triggerRef}
             >
               {state === 'invalid' && <SInvalidPattern size={size} />}
-              <SInner>
+              <SInner data-ui-name={`${this.asProps['data-ui-name']}.InnerTriggerWrapper`}>
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>
             </SBaseTrigger>,

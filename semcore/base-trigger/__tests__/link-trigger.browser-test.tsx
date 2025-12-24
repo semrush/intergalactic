@@ -1,188 +1,299 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { checkKeyboardNavigation } from './utils';
+import { locators } from './utils';
 
-test.describe('Link-trigger', () => {
-  test.describe('Styles and a11y checks', () => {
-    test('Verify base styles and props', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variables = [
+    // Normal
+    { size: 'm', active: false, empty: false, placeholder: 'Placeholder', disabled: false, loading: false, color: undefined },
+    { size: 'm', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: false, color: 'violet' },
 
-      await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
+    // Disabled
+    { size: 'm', active: false, empty: false, placeholder: undefined, disabled: true, loading: false, color: 'red' },
+    { size: 'l', active: true, empty: true, placeholder: 'Placeholder', disabled: true, loading: false, color: undefined },
 
-      await test.step('Focus styles', async () => {
-        await page.keyboard.press('Tab');
+    // Loading
+    { size: 'm', active: false, empty: false, placeholder: undefined, disabled: false, loading: true, color: undefined },
+    { size: 'l', active: true, empty: true, placeholder: 'Placeholder', disabled: false, loading: true, color: 'yellow' },
+  ];
 
-        const button = await page.locator('[data-test-id="link-trigger-active"]');
-        await button.hover();
-        await expect(page).toHaveScreenshot();
+  variables.forEach((item) => {
+    test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx', 'en', item);
 
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '-1');
+          const svg = locators.button(page).locator('svg');
+          await expect(svg).toBeVisible();
+          await expect(svg).toHaveAttribute('role', 'img');
+          await expect(svg).toHaveAttribute('aria-label', 'Loading…');
 
-        await page.locator('[data-test-id="link-trigger-red"]').hover();
-        await expect(page).toHaveScreenshot();
-      });
+          await page.keyboard.press('Tab');
+          await expect(locators.button(page)).not.toBeFocused();
+        });
+      }
+
+      if (!item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+          if (item.empty && item.placeholder !== undefined) {
+            const placeholderElement = page.locator('[data-ui-name="LinkTrigger.Text"][placeholder]').first();
+            await expect(placeholderElement).not.toHaveAttribute('aria-hidden');
+          }
+
+          if (!item.loading) {
+            const svg = locators.button(page).locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('aria-hidden', 'true');
+          }
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-active:${item.active}-placeholder:${item.placeholder}-color:${item.color}.png`);
+        });
+      }
+
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
+          await page.keyboard.press('Tab');
+          await expect(locators.button(page)).not.toBeFocused();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-active:${item.active}-placeholder:${item.placeholder}-color:${item.color}.png`);
+        });
+      }
     });
 
-    test('Verify link trigger in select styles', async ({ page, browserName }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/link-trigger-with-select.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger',
+        '@icon'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-addons.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
+      const buttons = await locators.button(page).all();
 
-      const linkTrigger = page.locator('[data-ui-name="LinkTrigger.Text"]');
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          for (const button of buttons) {
+            const svg = button.locator('svg');
 
-      await test.step('Base styles', async () => {
-        const count = await linkTrigger.count();
-        for (let i = 0; i < count; i++) {
-          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(0, 109, 202)');
-          await expect(linkTrigger.nth(i)).not.toHaveCSS('border-color', 'rgb(4, 71, 146)');
-        }
-      });
+            await expect(button).toHaveAttribute('tabindex', '-1');
 
-      if (browserName === 'firefox') return; // skipped in ff because hover works weird on playwright browser
-      await test.step('Hover styles', async () => {
-        const count = await linkTrigger.count();
-        for (let i = 0; i < count; i++) {
-          await linkTrigger.nth(i).hover();
-          await expect(linkTrigger.nth(i)).toHaveCSS('color', 'rgb(4, 71, 146)');
-          await expect(linkTrigger.nth(i)).toHaveCSS('border-color', 'rgb(4, 71, 146)');
-        }
-      });
+            await expect(svg.nth(1)).toHaveAttribute('role', 'img');
+            await expect(svg.nth(1)).toHaveAttribute('aria-label', 'Loading…');
+
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
+
+      if (!item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = page.locator('[data-ui-name="LinkTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).not.toHaveAttribute('aria-hidden');
+            }
+
+            if (!item.loading) {
+              const svgs = await button.locator('svg').all();
+              for (const svg of svgs) {
+                await expect(svg).toBeVisible();
+                await expect(svg).toHaveAttribute('aria-hidden', 'true');
+              }
+            }
+          }
+
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-active:${item.active}-placeholder:${item.placeholder}-color:${item.color}.png`);
+        });
+      }
+
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          for (const button of buttons) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
     });
 
-    test('Verify main styles a11y attributes and focus', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/tests/examples/link-trigger-all-states.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    test(`Verify Link Trigger for Select case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-trigger',
+        '@link-trigger',
+        '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
+      const triggers = await locators.trigger(page).all();
 
-      await test.step('Verify focus on Active and Disabled', async () => {
-        await checkKeyboardNavigation(page, '[data-test-id]');
+      await test.step('Base background check', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-active:${item.active}-placeholder:${item.placeholder}-color:${item.color}.png`);
       });
 
-      await test.step('Verify roles and attributes', async () => {
-        const button = await page.locator('[data-test-id="link-trigger-active"]');
-        await expect(button).toHaveAttribute('type', 'button');
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '-1');
+            const svg = button.locator('svg');
+            await expect(svg).toBeVisible();
+            await expect(svg).toHaveAttribute('role', 'img');
+            await expect(svg).toHaveAttribute('aria-label', 'Loading…');
+          }
+        });
+      }
 
-        await expect(button).toHaveAttribute('tabindex', '0');
-        const svg = button.locator('svg');
-        await expect(svg).toBeVisible();
-        await expect(svg).toHaveAttribute('tabindex', '-1');
-        await expect(svg).toHaveAttribute('aria-hidden', 'true');
-      });
-    });
+      if (!item.disabled) {
+        await test.step('Normal/Active styles', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            if (item.empty && item.placeholder !== undefined) {
+              const placeholderElement = page.locator('[data-ui-name="LinkTrigger.Text"][placeholder]').first();
+              await expect(placeholderElement).not.toHaveAttribute('aria-hidden');
+            }
 
-    test('Verify loading props a11y and focus', async ({ page }) => {
-      const standPath = 'stories/components/base-trigger/tests/examples/button-trigger-loading.tsx';
+            if (!item.loading) {
+              const svg = button.locator('svg');
+              await expect(svg).toBeVisible();
+              await expect(svg).toHaveAttribute('aria-hidden', 'true');
+            }
+          }
+        });
+      }
 
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-      await page.setContent(htmlContent);
-
-      const button1 = await page.locator('[data-test-id="normal-state-trigger"]');
-      await expect(button1).toHaveAttribute('tabindex', '-1');
-
-      const svg = button1.locator('svg');
-      await expect(svg).toBeVisible();
-
-      await expect(svg).toHaveAttribute('role', 'img');
-      await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-      const textSpan = await button1.locator('[data-ui-name="ButtonTrigger.Text"]');
-      await expect(textSpan).toHaveAttribute('aria-hidden', 'false');
-
-      await page.keyboard.press('Tab');
-      await expect(page.locator('[data-test-id="active-trigger"]')).not.toBeFocused();
-    });
-
-    test('Verify ellipsis', async ({ page }) => {
-      const standPath =
-        'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
-      await page.setContent(htmlContent);
-      await expect(page).toHaveScreenshot();
-
-      const button = page.getByRole('button');
-      await button.nth(1).hover();
-      await page.locator('div[class*="HintPopper"]').waitFor({ state: 'visible' });
-      await expect(page.locator('div[class*="HintPopper"]')).toHaveCount(1);
+      if (item.disabled) {
+        await test.step('Disabled state', async () => {
+          for (const button of triggers) {
+            await expect(button).toHaveAttribute('tabindex', '0');
+            await page.keyboard.press('Tab');
+            await expect(button).not.toBeFocused();
+          }
+        });
+      }
     });
   });
 
-  test.describe('Interactions', () => {
-    test('Verify keyboard navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify ellipsis in Link trigger', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-trigger',
+      '@link-trigger',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/advanced/examples/link-trigger-ellipsis.tsx', 'en');
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox').first();
-      await expect(button).toHaveAttribute('aria-haspopup', 'listbox');
-      await expect(button).toHaveAttribute('placeholder', 'Select option');
-      await page.keyboard.press('Tab');
-      await expect(button).toBeFocused();
-      await page.keyboard.press('ArrowDown');
-      const option = page.getByRole('option', { name: 'Desktop' });
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await page.keyboard.press('Escape');
-      await expect(option).not.toBeVisible();
+    await expect(page).toHaveScreenshot();
 
-      await expect(button).toBeFocused();
-      await page.keyboard.press('Enter');
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await page.keyboard.press('Space');
-      await expect(button).toBeFocused();
-      await expect(button).toHaveAttribute('value', 'Desktop');
-    });
+    await locators.button(page).nth(1).hover();
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+});
 
-    test('Verify mouse navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify navigation and changing values by keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-trigger',
+      '@link-trigger',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox').first();
-      const initialWidth = await button.boundingBox().then((b) => b?.width || 0);
-      await button.click();
+    await expect(locators.trigger(page).first()).toHaveAttribute('aria-haspopup', 'listbox');
+    await expect(locators.trigger(page).first()).toHaveAttribute('placeholder', 'Select option');
+    await page.keyboard.press('Tab');
+    await expect(locators.trigger(page).first()).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Desktop')).toHaveClass(/highlighted/);
 
-      const option = page.getByRole('option', { name: 'Desktop' });
-      await expect(option).toBeVisible();
-      await expect(option).not.toHaveClass(/highlighted/);
-      await button.click();
-      await expect(option).not.toBeVisible();
-      await button.click();
-      await page.getByRole('option', { name: 'Mobile' }).click();
-      await page.waitForTimeout(50);
-      await expect(button).toHaveAttribute('value', 'Mobile');
-      const finalWidth = await button.boundingBox().then((b) => b?.width || 0);
-      expect(finalWidth).toBeLessThan(initialWidth);
-    });
+    await page.keyboard.press('Escape');
+    await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page).first()).toBeFocused();
 
-    test('Verify mouse with keyboard navigation and changing values', async ({ page }) => {
-      const standPath = 'stories/components/base-trigger/docs/examples/link-trigger.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.keyboard.press('Enter');
+    await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
+    await page.keyboard.press('Space');
+    await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page).first()).toBeFocused();
+    await expect(locators.trigger(page).first()).toHaveAttribute('value', 'Desktop');
+  });
 
-      await page.setContent(htmlContent);
-      const button = page.getByRole('combobox').first();
-      await button.click();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      const option = page.getByRole('option', { name: 'Mobile' });
-      await expect(option).toBeVisible();
-      await expect(option).toHaveClass(/highlighted/);
-      await button.click();
-      await expect(option).not.toBeVisible();
-      await expect(button).not.toHaveAttribute('value', 'Mobile');
-      await button.click();
-      await option.click();
-      await expect(button).toHaveAttribute('value', 'Mobile');
-    });
+  test('Verify navigation and changing values by mouse', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@link-trigger',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
+
+    const initialWidth = await locators.trigger(page).first().boundingBox().then((b) => b?.width || 0);
+    await locators.trigger(page).first().click();
+
+    await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
+    await expect(locators.options(page, 'Desktop')).not.toHaveClass(/highlighted/);
+
+    await locators.trigger(page).first().click();
+    await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
+
+    await locators.trigger(page).first().click();
+    await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
+
+    await locators.options(page, 'Mobile').click();
+    await locators.options(page, 'Desktop').waitFor({ state: 'hidden' });
+
+    await expect(locators.trigger(page).first()).toHaveAttribute('value', 'Mobile');
+    const finalWidth = await locators.trigger(page).first().boundingBox().then((b) => b?.width || 0);
+    expect(finalWidth).toBeLessThan(initialWidth);
+  });
+
+  test('Verify navigation and changing values by mouse AND keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@base-trigger',
+      '@link-trigger',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
+
+    await locators.trigger(page).first().click();
+    await locators.options(page, 'Desktop').waitFor({ state: 'visible' });
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.options(page, 'Mobile')).toHaveClass(/highlighted/);
+
+    await locators.trigger(page).first().click();
+    await locators.options(page, 'Mobile').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page).first()).not.toHaveAttribute('value', 'Mobile');
+
+    await locators.trigger(page).first().click();
+    await locators.options(page, 'Mobile').waitFor({ state: 'visible' });
+    await locators.options(page, 'Mobile').click();
+    await locators.options(page, 'Mobile').waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page).first()).toHaveAttribute('value', 'Mobile');
   });
 });

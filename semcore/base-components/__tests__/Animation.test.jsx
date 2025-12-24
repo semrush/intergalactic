@@ -4,8 +4,8 @@ import React from 'react';
 
 import { Animation } from '../src';
 
-describe('Animation Component', () => {
-  test('should not render when visible is false and preserveNode is false', () => {
+describe('Animation', () => {
+  test('Verify not renders when visible is false and preserveNode is false', () => {
     render(
       <Animation visible={false} preserveNode={false}>
         Content
@@ -14,7 +14,7 @@ describe('Animation Component', () => {
     expect(screen.queryByText('Content')).not.toBeInTheDocument();
   });
 
-  test('should preserve node when preserveNode is true', () => {
+  test('Verify preserve node when preserveNode is true', () => {
     render(
       <Animation visible={false} preserveNode={true}>
         Content

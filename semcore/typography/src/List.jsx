@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { Flex } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/list.shadow.css';
@@ -24,7 +24,7 @@ class ListRoot extends Component {
   render() {
     const SList = Root;
     const { styles } = this.asProps;
-    return sstyled(styles)(<SList render={Text} tag='ul' role='list' />);
+    return sstyled(styles)(<SList render={Text} tag='ul' />);
   }
 }
 
@@ -41,7 +41,7 @@ class ItemRoot extends Component {
     const isAdvancedMode = isAdvanceMode(Children, [List.Item.Content.displayName]);
 
     return sstyled(styles)(
-      <SItem render={Text} tag='li' role='listitem'>
+      <SItem render={Text} tag='li'>
         {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
         {isAdvancedMode ? <Children /> : <SContent>{children}</SContent>}
       </SItem>,

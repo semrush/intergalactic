@@ -28,7 +28,11 @@ export const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] a
 
 export const selectedIndexContext = React.createContext(0);
 
-export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}, typeof enhance> {
+export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof enhance, {
+  selectedIndex: null;
+  highlightedIndex: any;
+  visible: null;
+}> {
   protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
@@ -38,9 +42,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   itemProps: any[] = [];
   itemRefs: HTMLElement[] = [];
 
-  highlightedItemRef = React.createRef<HTMLElement>();
+  highlightedItem: HTMLElement | null = null;
 
   prevHighlightedIndex: number | null = null;
+
+  scrollTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+  scrollResolve: (() => void) | null = () => {};
+  scrollObserver: IntersectionObserver | null = null;
 
   uncontrolledProps() {
     return {
@@ -53,6 +61,15 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ],
       visible: null,
     };
+  }
+
+  componentDidMount() {
+    this.setupObserver();
+  }
+
+  componentWillUnmount() {
+    this.cleanupScroll();
+    this.scrollObserver?.disconnect();
   }
 
   get childRole() {
@@ -74,7 +91,15 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   protected afterOpenPopper() {
-    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    let highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const elementProps = this.itemProps[highlightedIndex];
+
+    if (elementProps?.disabled) {
+      highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+    }
+
+    if (highlightedIndex === -1) return;
+
     const element = this.itemRefs[highlightedIndex];
     element?.focus();
     if (this.role === 'menu') {
@@ -163,10 +188,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     };
   }
 
-  scrollToNode(node: Element | null, withAnimation = false) {
+  scrollToNode(node: HTMLElement | null, withAnimation = false) {
     if (node) {
-      // @ts-ignore
-      this.highlightedItemRef.current = node;
+      this.highlightedItem = node;
     }
     setTimeout(() => {
       if (node?.scrollIntoView) {
@@ -182,6 +206,66 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     }, 0);
   }
 
+  setupObserver() {
+    this.scrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            if (this.scrollResolve) {
+              this.scrollResolve();
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.5],
+      },
+    );
+  }
+
+  cleanupScroll() {
+    clearTimeout(this.scrollTimeoutId);
+    if (this.highlightedItem) {
+      this.scrollObserver?.unobserve(this.highlightedItem);
+    }
+    this.scrollResolve = null;
+  }
+
+  scrollToNodeAsync(node: HTMLElement | null, withAnimation = false) {
+    return new Promise<void>((resolve) => {
+      this.cleanupScroll();
+
+      if (!node) {
+        resolve();
+        return;
+      }
+
+      this.highlightedItem = node;
+
+      this.scrollTimeoutId = setTimeout(() => {
+        this.cleanupScroll();
+        resolve();
+      }, 3000);
+
+      this.scrollResolve = () => {
+        clearTimeout(this.scrollTimeoutId);
+        this.scrollObserver?.unobserve(node);
+        this.scrollResolve = null;
+        resolve();
+      };
+
+      this.scrollObserver?.observe(node);
+
+      requestAnimationFrame(() => {
+        node.scrollIntoView({
+          block: 'nearest',
+          inline: 'nearest',
+          behavior: withAnimation ? 'smooth' : 'instant',
+        });
+      });
+    });
+  }
+
   getHighlightedIndex(amount: number): number {
     const { highlightedIndex, itemsCount } = this.asProps;
     const itemsLastIndex = (itemsCount ?? this.itemProps.length) - 1;
@@ -194,7 +278,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
-      } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
+      } else if (this.highlightedItem && this.prevHighlightedIndex !== null) {
         innerHighlightedIndex =
           this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
@@ -227,8 +311,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (visibilityChanged && !visible) {
       this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
-      // @ts-ignore
-      this.highlightedItemRef.current = null;
+      this.highlightedItem = null;
       this.itemProps = [];
       this.itemRefs = [];
       if (
@@ -277,6 +360,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     ) {
       if (this.asProps.visible !== true) {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.handlers.visible(true);
         }
 
@@ -287,6 +372,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         }, 200);
       } else {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+
           this.afterOpenPopper();
         }
       }
@@ -327,13 +414,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       case ' ':
       case 'Enter':
         if (
-          this.highlightedItemRef.current &&
+          this.highlightedItem &&
           highlightedIndex !== null &&
           !this.itemProps[highlightedIndex].disabled
         ) {
           e.stopPropagation();
           e.preventDefault();
-          this.highlightedItemRef.current.click();
+          this.highlightedItem.click();
         }
 
         break;

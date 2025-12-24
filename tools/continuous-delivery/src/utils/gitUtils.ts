@@ -3,25 +3,21 @@ import process from 'process';
 
 import Git from 'simple-git';
 
-import type { VersionPatch } from '../makeVersionPatches';
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
+import type { PackageJson } from './packages';
 
 const git = Git();
 
 export const gitUtils = {
-  initNewPrerelease: async (versionPatches: VersionPatch[]) => {
-    const semcoreUiPatch = versionPatches.find((item) => item.package.name === '@semcore/ui');
+  initNewPrerelease: async (version: string, packages: PackageJson[]) => {
+    const newPrereleaseBranch = `prerelease/v${version}`;
+    await git.checkout(['-b', newPrereleaseBranch]);
 
-    if (semcoreUiPatch) {
-      const newPrereleaseBranch = `prerelease/v${semcoreUiPatch.to}`;
-      await git.checkout(['-b', newPrereleaseBranch]);
-
-      await NpmUtils.updateLockFile();
-      await gitUtils.commitNewPrerelease(versionPatches);
-      const tag = await gitUtils.createPrereleaseTag(semcoreUiPatch);
-      await gitUtils.push(tag);
-    }
+    await NpmUtils.updateLockFile();
+    await gitUtils.commitNewPrerelease(packages);
+    const tag = await gitUtils.createPrereleaseTag(version);
+    await gitUtils.push(tag);
   },
 
   getUpdatedPackages: async () => {
@@ -67,14 +63,14 @@ export const gitUtils = {
     }
   },
 
-  commitNewPrerelease: async (versionPatches: VersionPatch[]) => {
+  commitNewPrerelease: async (packages: PackageJson[]) => {
     let commitMessage = '[chore] bumped';
-    if (versionPatches.length === 1) {
+    if (packages.length === 1) {
       commitMessage += ' version of ';
     } else {
       commitMessage += ' versions of ';
     }
-    commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
+    commitMessage += packages.map((pack) => `${pack.name}@${pack.version}`).join(', ');
 
     const status = await git.status();
     if (status.files.length) {
@@ -87,8 +83,8 @@ export const gitUtils = {
     }
   },
 
-  createPrereleaseTag: async (patch: VersionPatch) => {
-    const tagNamePrefix = `v${patch.to}-${prerelaseSuffix}.`;
+  createPrereleaseTag: async (version: string) => {
+    const tagNamePrefix = `v${version}-${prerelaseSuffix}.`;
 
     const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
@@ -141,5 +137,13 @@ export const gitUtils = {
       console.warn(e);
       return null;
     }
+  },
+
+  getPrevReleaseTag: async (): Promise<string> => {
+    const tags = await git.tags(['v*', '--sort', 'creatordate']);
+    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+
+    return currentReleaseTag;
   },
 };

@@ -1,11 +1,18 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Styles', () => {
-  test('Verify styles of links and icons', async ({ page, browserName }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify links and icons styles', {
+    tag: [`${TAG.PRIORITY_HIGH},
+        @breadcrumbs,
+        @ellipsis`],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('a[data-ui-name="Breadcrumbs.Item"]');
     const chevronIcons = page.locator('[data-ui-name="ChevronRight"]');
@@ -87,158 +94,310 @@ test.describe('Styles', () => {
     });
   });
 
-  test('Verify base truncation', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variables = [
+    { active: true },
+    { active: false },
+  ];
+  variables.forEach((item) => {
+    test(`Verify base truncation and last item is active=${item.active}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@breadcrumbs'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 
-    await page.setContent(htmlContent);
+      const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+
+      await breadcrumbLinks.first().hover();
+      await expect(page).toHaveScreenshot();
+      if (!item.active) {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      }
+    });
+
+    test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@breadcrumbs',
+        '@ellipis'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
+
+      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
+      const status = page.getByRole('status');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await breadcrumbLinks.nth(1).hover();
+      await status.waitFor({ state: 'attached' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify ellipsis in the end', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@breadcrumbs',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
+
+    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const status = page.getByRole('status');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await breadcrumbLinks.nth(1).hover();
+    await status.waitFor({ state: 'attached' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify custom styles and separator', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@breadcrumbs'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify ellipsis truncation in the end', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
+      '@breadcrumbs',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
+
+    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const lastItem = page.locator('[aria-current="page"]');
+    const status = page.getByRole('status');
+
+    const count = await breadcrumbLinks.count();
+    for (let i = 0; i < count; i++) {
+      await expect(status).toHaveCount(0);
+      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
+    }
+
     await breadcrumbLinks.first().hover();
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify ellipsis truncation in end', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
-    await page
-      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!').nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify ellipsis truncation in middle', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
-    await page
-      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!')
-      .waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Attributes', () => {
-  test('Default attributes', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const nav = page.locator('nav');
-    await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
-    await expect(nav).toHaveAttribute('aria-label', 'Breadcrumbs');
-
-    const separator = page.locator('nav > div');
-
-    const separatorCount = await separator.count();
-    for (let i = 0; i < separatorCount; i++) {
-      await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
-      const svg = separator.nth(i).locator('svg');
-      await expect(svg).toHaveAttribute('aria-hidden', 'true');
-      await expect(svg).toHaveAttribute('tabindex', '-1');
-      await expect(svg).toHaveAttribute('hidden', '');
+    for (let i = 0; i < count; i++) {
+      await expect(status).toHaveCount(0);
+      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
     }
 
-    const list = page.locator('nav > li');
+    await breadcrumbLinks.nth(1).hover();
+    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
+    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
+    await expect(status).toHaveCount(1);
 
-    const listCount = await list.count();
-    for (let i = 0; i < listCount; i++) {
-      const item = list.nth(i);
-      await expect(item).toHaveAttribute('role', 'listitem');
-      await expect(item).toHaveAttribute('level', `${i + 1}`);
+    await lastItem.hover();
+    for (let i = 0; i < count; i++) {
+      await expect(status).toHaveCount(0);
+      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
     }
 
-    const currentItem = page.locator('nav ol > li').nth(2).locator('span');
-    await expect(currentItem).toHaveAttribute('aria-current', 'page');
-    await expect(currentItem).toHaveAttribute('tabindex', '-1');
+    await page.keyboard.press('Tab');
+    for (let i = 0; i < count; i++) {
+      await expect(status).toHaveCount(0);
+      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
+    }
+
+    await page.keyboard.press('Tab');
+    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
+    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
+    await expect(status).toHaveCount(1);
   });
 
-  test('Custom aria-label and items are links', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variables = [
+    { active: true },
+    { active: false },
+  ];
+  variables.forEach((item) => {
+    test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@breadcrumbs',
+        '@ellipsis'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
-    await page.setContent(htmlContent);
+      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
+      const lastItem = page.locator('[aria-current="page"]');
+      const status = page.getByRole('status');
 
-    const nav = page.locator('nav');
-    await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
-    await expect(nav).toHaveAttribute('aria-label', 'Redefining tag example');
+      const count = await breadcrumbLinks.count();
+      for (let i = 0; i < count; i++) {
+        await expect(status).toHaveCount(0);
+        await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
+      }
+      await breadcrumbLinks.first().hover();
+      await expect(breadcrumbLinks.first()).toHaveAttribute('aria-describedby', /popper/);
+      await expect(status).toHaveCount(1);
+      await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
 
-    const separator = page.locator('nav > div');
+      await breadcrumbLinks.nth(1).hover();
+      await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
+      await expect(status).toHaveCount(1);
+      await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
 
-    const separatorCount = await separator.count();
-    for (let i = 0; i < separatorCount; i++) {
-      await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
-      const svg = separator.nth(i).locator('svg');
-      await expect(svg).toHaveAttribute('aria-hidden', 'true');
-      await expect(svg).toHaveAttribute('tabindex', '-1');
-      await expect(svg).toHaveAttribute('hidden', '');
-    }
-
-    const list = page.locator('nav > li');
-
-    const listCount = await list.count();
-    for (let i = 0; i < listCount; i++) {
-      const item = list.nth(i);
-      await expect(item).toHaveAttribute('role', 'listitem');
-      await expect(item).toHaveAttribute('level', `${i + 1}`);
-    }
-
-    const currentItem = page.locator('nav ol > li').nth(2).locator('span');
-    await expect(currentItem).toHaveAttribute('aria-current', 'page');
-    await expect(currentItem).toHaveAttribute('tabindex', '-1');
+      if (item.active) {
+        await lastItem.hover();
+        for (let i = 0; i < count; i++) {
+          await expect(status).toHaveCount(0);
+          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
+        }
+      } else {
+        await breadcrumbLinks.nth(2).hover();
+        for (let i = 0; i < count - 1; i++) {
+          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
+          await expect(breadcrumbLinks.nth(2)).toHaveAttribute('aria-describedby', /popper/);
+          await expect(status).toHaveCount(1);
+        }
+      }
+    });
   });
-});
 
-test.describe('Keyboard and mouse interactions', () => {
-  test('Verify links focused and active item not focused by keyboard', async ({
-    page,
-    browserName,
-  }) => {
-    const standPath = 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test.describe('Attributes', () => {
+    test('Verify Default attributes', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@breadcrumbs',
+        '@ellipsis'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en');
+
+      const nav = page.locator('nav');
+      await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
+      await expect(nav).toHaveAttribute('aria-label', 'Breadcrumbs');
+
+      const separator = page.locator('nav > div');
+
+      const separatorCount = await separator.count();
+      for (let i = 0; i < separatorCount; i++) {
+        await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
+        const svg = separator.nth(i).locator('svg');
+        await expect(svg).toHaveAttribute('aria-hidden', 'true');
+        await expect(svg).toHaveAttribute('tabindex', '-1');
+        await expect(svg).toHaveAttribute('hidden', '');
+      }
+
+      const list = page.locator('nav > li');
+
+      const listCount = await list.count();
+      for (let i = 0; i < listCount; i++) {
+        const item = list.nth(i);
+        await expect(item).toHaveAttribute('role', 'listitem');
+        await expect(item).toHaveAttribute('level', `${i + 1}`);
+      }
+
+      const currentItem = page.locator('nav ol > li').nth(2).locator('span');
+      await expect(currentItem).toHaveAttribute('aria-current', 'page');
+      await expect(currentItem).toHaveAttribute('tabindex', '-1');
+    });
+
+    test('Verify attributes when custom aria-label and items are links', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@breadcrumbs',
+        '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx', 'en');
+
+      const nav = page.locator('nav');
+      await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
+      await expect(nav).toHaveAttribute('aria-label', 'Redefining tag example');
+
+      const separator = page.locator('nav > div');
+
+      const separatorCount = await separator.count();
+      for (let i = 0; i < separatorCount; i++) {
+        await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
+        const svg = separator.nth(i).locator('svg');
+        await expect(svg).toHaveAttribute('aria-hidden', 'true');
+        await expect(svg).toHaveAttribute('tabindex', '-1');
+        await expect(svg).toHaveAttribute('hidden', '');
+      }
+
+      const list = page.locator('nav > li');
+
+      const listCount = await list.count();
+      for (let i = 0; i < listCount; i++) {
+        const item = list.nth(i);
+        await expect(item).toHaveAttribute('role', 'listitem');
+        await expect(item).toHaveAttribute('level', `${i + 1}`);
+      }
+
+      const currentItem = page.locator('nav ol > li').nth(2).locator('span');
+      await expect(currentItem).toHaveAttribute('aria-current', 'page');
+      await expect(currentItem).toHaveAttribute('tabindex', '-1');
+    });
+  });
+
+  test('Verify focus by keyboard when last item is active', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@breadcrumbs',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
     const lastItem = page.locator('[aria-current="page"]');
-
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.first()).toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.nth(1)).toBeFocused();
-    await page
-      .getByText('This title is longer than a giraffe\'s neck, I bet it\'s been doing neck workouts!').nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Shift+Tab');
     await expect(breadcrumbLinks.first()).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    if (browserName === 'firefox') {
-      await expect(breadcrumbLinks.first()).not.toBeFocused();
-      await expect(breadcrumbLinks.nth(1)).toBeFocused();
-    } else {
-      await expect(breadcrumbLinks.first()).not.toBeFocused();
-      await expect(breadcrumbLinks.nth(1)).not.toBeFocused();
-      await expect(lastItem).not.toBeFocused();
-    }
+    await expect(lastItem).not.toBeFocused();
   });
 
-  test('Verify few active not focused and custom styles when focus active', async ({ page }) => {
-    const standPath = 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify focus by keyboard when last item is not active', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@breadcrumbs'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', { active: false });
+
+    const breadcrumbItems = page.locator('[data-ui-name="Breadcrumbs.Item"]');
+    await page.keyboard.press('Tab');
+    await expect(breadcrumbItems.first()).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(breadcrumbItems.nth(1)).toBeFocused();
+
+    await page.keyboard.press('Shift+Tab');
+    await expect(breadcrumbItems.first()).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+
+    await expect(breadcrumbItems.nth(2)).toBeFocused();
+  });
+
+  test('Verify keyboard navigation when few active elements and custom separator', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@breadcrumbs'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-testid="one-active"]')).not.toBeFocused();
@@ -250,7 +409,5 @@ test.describe('Keyboard and mouse interactions', () => {
     await expect(page.locator('[data-testid="second-cust-separator"]')).not.toBeFocused();
     await expect(page.locator('[data-testid="active-cust-separator"]')).not.toBeFocused();
     await expect(page.locator('[data-testid="style-cust-separator"]')).toBeFocused();
-
-    await expect(page).toHaveScreenshot();
   });
 });

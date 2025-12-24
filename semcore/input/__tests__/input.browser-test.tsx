@@ -1,62 +1,276 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Functional', () => {
-  test('Verify focus return back to Input after keyboard interactions with Close button', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+export const locators = {
 
-    await page.setContent(htmlContent);
+  button: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  input: (page: Page) => page.getByRole('textbox'),
+  hint: (page: Page, text: string) => page.getByText(text),
 
-    const input = await page.locator('input');
-    const addonButton = await page.locator('[data-ui-name="Input.Addon"] button');
+  addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
+};
+/* =====================================================
+  @visual
+  Visual states, hover and focus styles, paddings, margins, and snapshots.
+  ===================================================== */
+test.describe(`${TAG.VISUAL} `, () => {
+  const variablesActive = [
+    // active
+    { size: 'm', state: 'normal', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
+    { size: 'm', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 200 },
+    { size: 'm', state: 'invalid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 150 },
+
+    { size: 'l', state: 'normal', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 200 },
+    { size: 'l', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
+    { size: 'l', state: 'invalid', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
+
+    // disabled
+    { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 200 },
+    { size: 'l', state: 'valid', disabled: true, autoFocus: true, readOnly: false, placeholder: undefined, w: undefined },
+    { size: 'm', state: 'invalid', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
+
+    // readOnly
+    { size: 'm', state: 'normal', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 200 },
+    { size: 'l', state: 'valid', disabled: false, autoFocus: true, readOnly: true, placeholder: undefined, w: undefined },
+    { size: 'l', state: 'invalid', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
+
+    // readOnly + disabled
+    { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
+
+  ];
+  variablesActive.forEach((item) => {
+    test(`Verify input base state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input',
+        '@badge'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input/tests/examples/input-base-example.tsx', 'en', item);
+
+      const flex = page.locator('[data-testid="wrap"]');
+      const screenshotsClip = (await flex.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+      const count = await locators.input(page).count();
+
+      await test.step('Verify Default ', async () => {
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+
+      if (item.size == 'm') {
+        await test.step('Verify m styles ', async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.input(page).nth(i)).toHaveCSS('height', '26px');
+          }
+        });
+      }
+
+      if (item.size == 'l') {
+        await test.step('Verify l styles ', async () => {
+          for (let i = 0; i < count; i++) {
+            await expect(locators.input(page).nth(i)).toHaveCSS('height', '38px');
+          }
+        });
+      }
+
+      if (!item.disabled && !item.readOnly) {
+        await test.step('Verify Focused ', async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('k');
+        });
+      }
+      if (item.readOnly) {
+        await test.step('Verify readOnly Rocused ', async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        });
+      }
+    });
+
+    test(`Verify input with neighbor-location state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@input',
+        '@badge',
+        '@base-components',
+        '@neighbor-locatioon'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation.tsx', 'en', item);
+
+      const flex = page.locator('[data-testid="wrap"]');
+      const screenshotsClip = (await flex.first().boundingBox())!;
+      screenshotsClip.x -= 4;
+      screenshotsClip.y -= 4;
+      screenshotsClip.width += 8;
+      screenshotsClip.height += 8;
+
+      await test.step('Verify Default ', async () => {
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+
+      if (!item.disabled && !item.readOnly) {
+        await test.step('Verify Focused ', async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+          await page.keyboard.press('k');
+        });
+      }
+      if (item.readOnly) {
+        await test.step('Verify readOnly Rocused ', async () => {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+        });
+      }
+    });
+  });
+
+  test('Verify Input with submit button', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('Hello world');
+    await page.keyboard.press('Tab');
+    await locators.hint(page, 'Submit').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify password input', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
+
+    const hint = page.locator('[data-ui-name="Hint"]');
+    await hint.click();
+    await locators.hint(page, 'Hide password').waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify input loading state ', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input',
+      '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/loading_state_in_the_input.tsx', 'en');
+
+    await expect(locators.addon(page)).toHaveAttribute('role', 'status');
+    await expect(locators.addon(page)).toHaveAttribute('aria-live', 'polite');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('Hello world');
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.press('Tab');
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Input Text with addon keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input',
+      '@spin'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
+
+    if (browserName === 'firefox') return; // issue - long text in input not alwasy truncated in ff
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('Hello world Hello world Hello world Hello world');
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('Hello world');
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify Input with counter and badge keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@input',
+      '@tag',
+      '@badge'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('Hello world');
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  test('Verify focus return back to Input after keyboard interactions with Close button', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input',
+      '@button'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_the_clearing_ability.tsx', 'en');
+
+    const addonButton = page.locator('[data-ui-name="Input.Addon"] button');
     await test.step('Verify focus return back to Input by Enter press on Close button', async () => {
       await page.keyboard.press('Tab');
-      await expect(input).toBeFocused();
+      await expect(locators.input(page)).toBeFocused();
 
       await page.keyboard.type('Focus test');
       await addonButton.waitFor({ state: 'visible' });
 
       await page.keyboard.press('Tab');
-      await expect(input).not.toBeFocused();
+      await expect(locators.input(page)).not.toBeFocused();
       await expect(addonButton).toBeFocused();
 
       await page.keyboard.press('Enter');
 
-      await expect(input).toBeFocused();
+      await expect(locators.input(page)).toBeFocused();
       await expect(addonButton).toBeHidden();
-      expect(await input.inputValue()).toBe('');
+      expect(await locators.input(page).inputValue()).toBe('');
     });
+
     await test.step('Verify focus return back to Input by Enter press on Close button ', async () => {
       await page.keyboard.type('Focus test');
       await addonButton.waitFor({ state: 'visible' });
 
       await page.keyboard.press('Tab');
-      await expect(input).not.toBeFocused();
+      await expect(locators.input(page)).not.toBeFocused();
       await expect(addonButton).toBeFocused();
 
       await page.keyboard.press('Space');
 
-      await expect(input).toBeFocused();
+      await expect(locators.input(page)).toBeFocused();
       await expect(addonButton).toBeHidden();
-      expect(await input.inputValue()).toBe('');
+      expect(await locators.input(page).inputValue()).toBe('');
     });
   });
 
-  test('Verify Input with submit button keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Input with submit button keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const inputLocator = page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
     await test.step('Verify focus return back to Input by Enter press on Submit button ', async () => {
       await page.keyboard.press('Tab');
-      await expect(inputLocator).toBeFocused();
-      await expect(inputLocator).toHaveAttribute('type', 'text');
+      await expect(locators.input(page)).toBeFocused();
+      await expect(locators.input(page)).toHaveAttribute('type', 'text');
 
       await page.keyboard.type('Hello world');
-      await expect(await inputLocator.inputValue()).toBe('Hello world');
+      await expect(locators.input(page)).toHaveValue('Hello world');
 
       await page.keyboard.press('Tab');
       await expect(hint).toBeFocused();
@@ -64,73 +278,79 @@ test.describe('Functional', () => {
 
       await page.keyboard.press('Enter');
 
-      await expect(await inputLocator.inputValue()).toBe('');
-      await expect(inputLocator).toBeFocused();
+      await expect(locators.input(page)).toHaveValue('');
+      await expect(locators.input(page)).toBeFocused();
       await expect(hint).not.toBeVisible();
     });
 
     await test.step('Verify focus return back to Input by Space press on Submit button ', async () => {
       await page.keyboard.type('Hello world');
-      await expect(await inputLocator.inputValue()).toBe('Hello world');
+      await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
       await page.keyboard.press('Tab');
       await expect(hint).toBeFocused();
       await page.getByText('Submit').waitFor({ state: 'visible' });
       await page.keyboard.press('Space');
 
-      await expect(await inputLocator.inputValue()).toBe('');
-      await expect(inputLocator).toBeFocused();
+      await expect(await locators.input(page).inputValue()).toBe('');
+      await expect(locators.input(page)).toBeFocused();
       await expect(hint).not.toBeVisible();
     });
   });
 
-  test('Verify Input with submit button mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Input with submit button mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const inputLocator = page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
 
-    await inputLocator.click();
-    await expect(inputLocator).toBeFocused();
+    await locators.input(page).click();
+    await expect(locators.input(page)).toBeFocused();
 
     await page.keyboard.type('Hello world');
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
+    await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
     await expect(hint).toBeVisible();
 
     await hint.hover();
     await page.getByText('Submit').waitFor({ state: 'visible' });
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
+    await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
     await hint.click();
-    await expect(await inputLocator.inputValue()).toBe('');
-    await expect(inputLocator).toBeFocused();
+    await expect(await locators.input(page).inputValue()).toBe('');
+    await expect(locators.input(page)).toBeFocused();
     await expect(hint).not.toBeVisible();
   });
 
-  test('Verify password input keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/password_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify password input keyboard interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const inputLocator = await page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
 
     await page.keyboard.press('Tab');
-    await expect(inputLocator).toBeFocused();
+    await expect(locators.input(page)).toBeFocused();
     await expect(hint).toBeVisible();
     await expect(hint).not.toBeFocused();
 
-    await expect(inputLocator).toHaveAttribute('autocomplete', 'current-password');
-    await expect(inputLocator).toHaveAttribute('value', 'I_like_cats');
+    await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
+    await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
 
     await page.keyboard.press('Backspace');
-    await expect(await inputLocator.inputValue()).toBe('');
+    await expect(locators.input(page)).toHaveValue('');
 
     await page.keyboard.type('Hello world');
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
+    await expect(locators.input(page)).toHaveValue('Hello world');
 
     await page.keyboard.press('Tab');
     await expect(hint).toBeFocused();
@@ -138,424 +358,120 @@ test.describe('Functional', () => {
 
     await page.keyboard.down('Enter');
 
-    await expect(await inputLocator.inputValue()).toBe('Hello world');
+    await expect(locators.input(page)).toHaveValue('Hello world');
     await page.getByText('Hide password').waitFor({ state: 'visible' });
     await expect(hint).toBeVisible();
 
     await page.keyboard.press('Shift+Tab');
-    await expect(inputLocator).toBeFocused();
+    await expect(locators.input(page)).toBeFocused();
   });
 
-  test('Verify password input mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/password_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify password input mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input',
+      '@button',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const inputLocator = page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
 
     await expect(hint).toBeVisible();
 
-    await expect(inputLocator).toHaveAttribute('autocomplete', 'current-password');
-    await expect(inputLocator).toHaveAttribute('value', 'I_like_cats');
+    await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
+    await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
 
     await hint.hover();
     await page.getByText('Show password').waitFor({ state: 'visible' });
-    await expect(inputLocator).not.toBeFocused();
+    await expect(locators.input(page)).not.toBeFocused();
     await expect(hint).not.toBeFocused();
 
     await hint.click();
-    await expect(await inputLocator.inputValue()).toBe('I_like_cats');
+    await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
     await page.getByText('Hide password').waitFor({ state: 'visible' });
-    await expect(inputLocator).toBeFocused();
+    await expect(locators.input(page)).toBeFocused();
     await expect(hint).not.toBeFocused();
 
-    await inputLocator.click();
-    await expect(await inputLocator.inputValue()).toBe('I_like_cats');
-    await expect(inputLocator).toBeFocused();
+    await locators.input(page).click();
+    await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
+    await expect(locators.input(page)).toBeFocused();
     await expect(hint).not.toBeFocused();
   });
 
-  test('Verify Input Text addon mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_text_addon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const inputLocator = page.locator('input');
-    const addon = page.locator('[data-ui-name="Input.Addon"]');
+  test('Verify Input Text addon mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
     // input focused by click on the text addon
-    await addon.first().click();
-    await expect(inputLocator.first()).toBeFocused();
-    await expect(addon.first()).not.toBeFocused();
+    await locators.addon(page).first().click();
+    await expect(locators.input(page).first()).toBeFocused();
+    await expect(locators.addon(page).first()).not.toBeFocused();
     await page.keyboard.type('Hello world');
     // input focused by click on the input
 
-    await inputLocator.nth(1).click();
-    await expect(inputLocator.first()).not.toBeFocused();
-    await expect(inputLocator.nth(1)).toBeFocused();
-    await expect(addon.nth(1)).not.toBeFocused();
+    await locators.input(page).nth(1).click();
+    await expect(locators.input(page).first()).not.toBeFocused();
+    await expect(locators.input(page).nth(1)).toBeFocused();
+    await expect(locators.addon(page).nth(1)).not.toBeFocused();
   });
 
-  test('Verify Input with counter and badge mouse interactions', async ({ page }) => {
-    const standPath =
-      'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const inputLocator = await page.locator('input');
-    const addon = page.locator('[data-ui-name="Input.Addon"]');
+  test('Verify Input with counter and badge mouse interactions', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input',
+      '@tag',
+      '@badge'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
     // input focused by click on the text addon
-    await addon.first().click();
-    await expect(inputLocator.first()).toBeFocused();
-    await expect(addon.first()).not.toBeFocused();
+    await locators.addon(page).first().click();
+    await expect(locators.input(page).first()).toBeFocused();
+    await expect(locators.addon(page).first()).not.toBeFocused();
     await page.keyboard.type('Hello world');
     // input focused by click on the input
 
-    await inputLocator.nth(1).click();
-    await expect(inputLocator.first()).not.toBeFocused();
-    await expect(inputLocator.nth(1)).toBeFocused();
-    await expect(addon.nth(1)).not.toBeFocused();
+    await locators.input(page).nth(1).click();
+    await expect(locators.input(page).first()).not.toBeFocused();
+    await expect(locators.input(page).nth(1)).toBeFocused();
+    await expect(locators.addon(page).nth(1)).not.toBeFocused();
   });
 
-  test('Verify Input multiple addon focus order', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_multiple_addons.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Verify Input multiple addon focus order', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@input',
+      '@button',
+      '@tooltip',
+      '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input/docs/examples/input_with_multiple_addons.tsx', 'en');
 
-    await page.setContent(htmlContent);
-    const inputLocator = await page.locator('input');
     const hint = page.locator('[data-ui-name="Hint"]');
     const link = page.locator('[data-ui-name="Link"]');
 
     await page.keyboard.press('Tab');
-    await expect(inputLocator).toBeFocused();
+    await expect(locators.input(page)).toBeFocused();
     await expect(hint).not.toBeFocused();
     await expect(link).not.toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(inputLocator).not.toBeFocused();
+    await expect(locators.input(page)).not.toBeFocused();
     await expect(link).toBeFocused();
     await expect(hint).not.toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(inputLocator).not.toBeFocused();
+    await expect(locators.input(page)).not.toBeFocused();
     await expect(link).not.toBeFocused();
     await expect(hint).toBeFocused();
 
     await page.keyboard.press('Shift+Tab');
-    await expect(inputLocator).not.toBeFocused();
+    await expect(locators.input(page)).not.toBeFocused();
     await expect(link).toBeFocused();
     await expect(hint).not.toBeFocused();
-  });
-});
-
-test.describe('Visual', () => {
-  test('Verify input states and styles', async ({ page }) => {
-    const standPath = 'stories/components/input/tests/examples/input-styles.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await test.step('Verify Default ', async () => {
-      const flex = await page.locator('[data-testid="Default"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      // disabled not focused
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
-
-      // readOnly focused but without cursor
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
-
-      // invalid focused
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      // valid focused
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    });
-
-    await test.step('Verify m styles ', async () => {
-      const flex = await page.locator('[data-testid="Default"]');
-      const m = flex.locator('[placeholder="m-size"]');
-      await expect(m).toHaveCSS('padding', '0px 8px');
-      await expect(m).toHaveCSS('height', '26px');
-    });
-
-    await test.step('Verify l styles ', async () => {
-      const flex = await page.locator('[data-testid="Default"]');
-      const l = flex.locator('[placeholder="l-size"]');
-      await expect(l).toHaveCSS('padding', '0px 12px');
-      await expect(l).toHaveCSS('height', '38px');
-    });
-
-    await test.step('Verify with Left Addon ', async () => {
-      const flex = await page.locator('[data-testid="Left-addon"]');
-      await flex.locator('[placeholder="m-size"]').click();
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      // disabled not focused
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
-
-      // readOnly focused but without cursor
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
-
-      // invalid focused
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      // valid focused
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    });
-
-    await test.step('Verify with Left and Right Addon ', async () => {
-      const flex = await page.locator('[data-testid="Left-right-addon"]');
-      await flex.locator('[placeholder="m-size"]').click();
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      // disabled not focused
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
-
-      // readOnly focused but without cursor
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
-
-      // invalid focused
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      // valid focused
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    });
-
-    await test.step('Verify with Right Addon ', async () => {
-      const flex = await page.locator('[data-testid="Right-addon"]');
-      await flex.locator('[placeholder="m-size"]').click();
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      // disabled not focused
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-size"]')).toBeFocused();
-
-      // readOnly focused but without cursor
-      await page.keyboard.press('Tab');
-      await expect(flex.locator('[placeholder="l-readOnly"]')).toBeFocused();
-
-      // invalid focused
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-
-      // valid focused
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    });
-  });
-
-  test('Verify input with neighbor location', async ({ page }) => {
-    const standPath = 'stories/components/input/tests/examples/with-neighborlocation.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Input with submit button', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await page.keyboard.press('Tab');
-    await page.getByText('Submit').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify password input', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/password_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const hint = page.locator('[data-ui-name="Hint"]');
-    await hint.click();
-    await page.getByText('Hide password').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify input loading state ', async ({ page }) => {
-    const standPath = 'stories/components/input/docs/examples/loading_state_in_the_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const addon = page.locator('[data-ui-name="Input.Addon"]');
-
-    await expect(addon).toHaveAttribute('role', 'status');
-    await expect(addon).toHaveAttribute('aria-live', 'polite');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
-    await expect(addon).not.toBeFocused();
-  });
-
-  test('Verify Input Text with addon keyboard interactions', async ({ page, browserName }) => {
-    if (browserName === 'firefox') return; // issue - long text in input not alwasy truncated in ff
-
-    const standPath = 'stories/components/input/docs/examples/input_with_a_text_addon.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const inputLocator = await page.locator('input');
-    const addon = page.locator('[data-ui-name="Input.Addon"]');
-
-    await page.keyboard.press('Tab');
-    await expect(inputLocator.first()).toBeFocused();
-    await expect(addon.first()).not.toBeFocused();
-    await page.keyboard.type('Hello world Hello world Hello world Hello world');
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Input with counter and badge keyboard interactions', async ({ page }) => {
-    const standPath =
-      'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const inputLocator = page.locator('input');
-    const addon = page.locator('[data-ui-name="Input.Addon"]');
-
-    await page.keyboard.press('Tab');
-    await expect(inputLocator.first()).toBeFocused();
-    await expect(addon.first()).not.toBeFocused();
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('UX pattern - Visual', () => {
-  test('Verify login form', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const tooltip = page.getByRole('tooltip');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-
-    await page.keyboard.press('Enter');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.type('test@test.test');
-    await tooltip.waitFor({ state: 'hidden' });
-    await page.keyboard.press('Tab');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('UX pattern - Functional', () => {
-  test('Verify login form keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const textboxes = page.getByRole('textbox');
-    const tooltip = page.getByRole('tooltip');
-    const submit = page.getByRole('button');
-    await page.keyboard.press('Tab');
-    await expect(textboxes.first()).toBeFocused();
-    await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'false');
-    await expect(textboxes.first()).toHaveAttribute('name', 'email');
-    await expect(textboxes.first()).toHaveAttribute('id', 'email');
-    await expect(textboxes.first()).toHaveAttribute('autocomplete', 'email');
-
-    await page.keyboard.press('Tab');
-
-    await expect(textboxes.last()).toBeFocused();
-    await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'false');
-    await expect(textboxes.last()).toHaveAttribute('name', 'password');
-    await expect(textboxes.last()).toHaveAttribute('id', 'password');
-    await expect(textboxes.last()).toHaveAttribute('autocomplete', 'current-password');
-
-    await page.keyboard.press('Tab');
-    await expect(submit).toBeFocused();
-
-    await page.keyboard.press('Enter');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(textboxes.first()).toBeFocused();
-    await expect(tooltip).toHaveText('Email is required');
-    await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'true');
-
-    await page.keyboard.type('tes');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText('Email is not valid');
-    await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'true');
-
-    await page.keyboard.type('t@test.test');
-    await tooltip.waitFor({ state: 'hidden' });
-    await expect(textboxes.first()).toHaveAttribute('aria-invalid', 'false');
-
-    await page.keyboard.press('Tab');
-    await tooltip.waitFor({ state: 'visible' });
-    await expect(tooltip).toHaveText('Password is required');
-    await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'true');
-
-    await page.keyboard.type('Qwe');
-    await expect(tooltip).toHaveText('Password must have at least 8 characters');
-    await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'true');
-
-    await page.keyboard.type('Qwerty');
-    await tooltip.waitFor({ state: 'hidden' });
-    await expect(textboxes.last()).toHaveAttribute('aria-invalid', 'false');
-
-    await page.keyboard.press('Shift+Tab');
-    await expect(tooltip).toHaveCount(0);
   });
 });

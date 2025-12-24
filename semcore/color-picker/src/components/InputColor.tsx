@@ -1,8 +1,9 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
+import type { InputSize } from '@semcore/input';
 import React from 'react';
 
 import style from '../style/color-picker.shadow.css';
@@ -18,6 +19,7 @@ type InputColorAsProps = {
   focus?: boolean;
   Children: any;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+  size?: InputSize;
 };
 
 function isValidHex(hex: string) {
@@ -37,7 +39,7 @@ function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   };
 }
 
-class InputColorRoot extends Component<InputColorAsProps> {
+class InputColorRoot extends Component<InputColorAsProps, [], { value: string; state: null }> {
   static displayName = 'InputColor';
 
   static style = style;
@@ -69,6 +71,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
 
   handlerCancel = (event: React.MouseEvent) => {
     this.handlers.value('', event);
+    this.handlers.state('normal');
   };
 
   handlerChange = debounce((value: string) => {
@@ -91,7 +94,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
   };
 
   render() {
-    const { styles, state, value, onFocus, onBlur, focus, getI18nText } = this.asProps;
+    const { styles, state, value, onFocus, onBlur, focus, getI18nText, size } = this.asProps;
 
     const SPaletteManager = Box;
     const SInputValue = Root;
@@ -108,7 +111,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
         <SInputContainer>
           <span aria-hidden='true'>#</span>
           <SInput>
-            <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
+            <Input ml={1} w={135} state={state} size={size} onKeyDown={this.handlekeyDown}>
               <SInputValue
                 render={Input.Value}
                 placeholder='FFFFFF'

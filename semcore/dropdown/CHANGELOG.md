@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.4] - 2025-12-01
+
+### Fixed
+
+- Disabled first item receives focus.
+
+## [16.1.3] - 2025-11-14
+
+### Changed
+
+- Canceled default behavior for `Arrow Up` `Arrow Down` keys.
+
+## [16.1.2] - 2025-11-10
+
+### Added
+
+- Foundation to handle scroll ending.
+- `stopPropagation` when the `tab` key is pressed in an open dropdown with `click` interaction.
+
+## [16.1.1] - 2025-10-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-components` [16.4.0 ~> 16.4.1]).
+
 ## [16.1.0] - 2025-10-03
 
 ### Changed

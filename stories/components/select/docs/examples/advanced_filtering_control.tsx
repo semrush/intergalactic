@@ -49,9 +49,9 @@ const Demo = () => {
                   </ScreenReaderOnly>
                 )
               : (
-                  <Select.OptionHint id='search-result-advanced' key='Nothing'>
+                  <Select.Option.Hint id='search-result-advanced' key='Nothing'>
                     Nothing found
-                  </Select.OptionHint>
+                  </Select.Option.Hint>
                 )}
           </Select.List>
         </Select.Popper>

@@ -19,7 +19,7 @@ const interactiveRoles = new Set([
   'menuitemradio',
 ]);
 
-const uikitInteractive = ['Button', 'Link', 'Select', 'Dropdown', 'Tag'];
+const uikitInteractive = ['Button', 'Link', 'Select', 'Dropdown', 'Tag', 'DescriptionTooltip'];
 
 export function isInteractiveElement(element: unknown): boolean {
   if (!(element instanceof HTMLElement) && !(element instanceof SVGElement)) return false;

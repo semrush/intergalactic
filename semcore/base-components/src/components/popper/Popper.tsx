@@ -9,7 +9,6 @@ import {
 } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import logger from '@semcore/core/lib/utils/logger';
 import pick from '@semcore/core/lib/utils/pick';
@@ -89,7 +88,7 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhance> {
+class PopperRoot extends Component<PopperProps, typeof PopperRoot.enhance, { visible: null }, typeof PopperRoot.defaultProps> {
   static displayName = 'Popper';
 
   static style = style;
@@ -458,9 +457,11 @@ class PopperRoot extends Component<PopperProps, {}, {}, typeof PopperRoot.enhanc
             }
           }
           if (!visible && component === 'popper') {
+            const { timeout } = this.asProps;
+            const latency = Array.isArray(timeout) ? timeout[1] : timeout;
             setTimeout(() => {
               this.ignoreTriggerFocus = false;
-            }, 0);
+            }, latency + 20);
           }
         }, 0);
       });
@@ -776,8 +777,6 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
     </Portal>,
   );
 }
-
-PopperPopper.enhance = [keyboardFocusEnhance(false)];
 
 export const Popper = createComponent(PopperRoot, {
   Trigger,

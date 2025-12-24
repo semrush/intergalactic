@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/line-chart/basic-usage';
-import CurveExample from './examples/line-chart/curve';
 import HiddenHoverPropExample from './examples/line-chart/disable-hover-line';
-import DotsDisplayFunctionExample from './examples/line-chart/dots-display-function';
-import LegendAndSymbolsForDotExample from './examples/line-chart/legend-and-symbols-for-dots';
-import LineExample from './examples/line-chart/line';
 import LineAreWithEmptyExample from './examples/line-chart/line-area-with-empty';
-import LineWithAreaExample from './examples/line-chart/line-with-area';
-import TimeExample from './examples/line-chart/time';
-import TooltipExample from './examples/line-chart/tooltip';
+import LinesExample from './examples/line-chart/lines';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Line-Chart',
@@ -25,41 +20,12 @@ export const LineAreWithEmpty: StoryObj = {
   render: LineAreWithEmptyExample,
 };
 
-export const Line: StoryObj = {
-  render: LineExample,
+export const Lines: StoryObj = {
+  render: LinesExample,
 };
 
-export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
+export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: {
-    showLegend: {
-      control: 'select',
-      options: [true, false, undefined],
-    },
-  },
+  argTypes: getChartArgTypes(),
   args: BasicUsageProps,
-};
-
-export const Curve: StoryObj = {
-  render: CurveExample,
-};
-
-export const DotsDisplayFunction: StoryObj = {
-  render: DotsDisplayFunctionExample,
-};
-
-export const LegendAndSymbolsForDot: StoryObj = {
-  render: LegendAndSymbolsForDotExample,
-};
-
-export const LineWithArea: StoryObj = {
-  render: LineWithAreaExample,
-};
-
-export const Time: StoryObj = {
-  render: TimeExample,
-};
-
-export const Tooltip: StoryObj = {
-  render: TooltipExample,
 };

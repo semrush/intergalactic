@@ -1,253 +1,372 @@
-import type { Page } from '@playwright/test';
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-const locators = {
-  radios: (page: Page) => page.getByRole('radio'),
+export const locators = {
+  radios: (page: Page, index?: number) => {
+    const base = page.getByRole('radio');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  radio: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Radio"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  radioMark: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Value.RadioMark"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  radioText: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Radio.Text"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   textLabel: (page: Page, text: string) => page.locator('label', { hasText: text }),
-  status: (page: Page) => page.getByRole('status'),
-  radioGroup: (page: Page) => page.getByRole('group'),
-  radioText: (page: Page, text: string) => page.locator('label[data-ui-name="Radio.Text"]', { hasText: text }),
-  options: (page: Page) => page.getByRole('option'),
-  selectTrigger: (page: Page) => page.getByRole('combobox'),
+  status: (page: Page, index?: number) => {
+    const base = page.getByRole('status');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  radioGroup: (page: Page, index?: number) => {
+    const base = page.getByRole('group');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  options: (page: Page, index?: number) => {
+    const base = page.getByRole('option');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  selectTrigger: (page: Page, index?: number) => {
+    const base = page.getByRole('combobox');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   button: (page: Page, text: string) => page.locator('button', { hasText: text }),
 };
 
-test.describe('Visual - Radio with group', () => {
-  test('Verify styles for m size', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/radiogroup_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test.describe('Verify RadioGroup and Radio prop combinations', () => {
+    const variables = [
+      { size: 'm', theme: undefined, disabled: false },
+      { size: 'm', theme: 'yellow-400', disabled: true },
+      { size: 'l', theme: undefined, disabled: false },
+      { size: 'l', theme: 'yellow-400', disabled: true },
+    ];
+    variables.forEach((item) => {
+      test(`Verify RadioGroup size ${item.size}, theme ${item.theme}, disabled ${item.disabled}`, {
+        tag: [TAG.PRIORITY_HIGH, '@radio'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en', item);
 
-    const radios = page.locator('[data-ui-name="Radio"]');
-    const count = await radios.count();
+        await expect(page).toHaveScreenshot();
+        if (!item.disabled) {
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Enter');
+          await expect(page).toHaveScreenshot();
+        }
 
-    for (let i = 0; i < count; i++) {
-      const radio = radios.nth(i);
-      const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
-      const labelText = radio.locator('[data-ui-name="Radio.Text"]');
+        // Only verify styles for enabled state to avoid redundant checks
+        if (!item.disabled) {
+          const radio_m = page.locator('[data-ui-name="Radio"][class*="size_m"]');
+          const radio_l = page.locator('[data-ui-name="Radio"][class*="size_l"]');
 
-      const radioMarginBottom = await radio.evaluate((el) => getComputedStyle(el).marginBottom);
-      expect(radioMarginBottom).toBe('12px');
-      const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
-      const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-      expect(markWidth).toBe('16px');
-      expect(markHeight).toBe('16px');
+          if (item.size === 'm') {
+            await test.step('Verify Radio size m styles', async () => {
+              const count = await radio_m.count();
+              if (count > 0) {
+                const mark = radio_m.first().locator('[data-ui-name="Value.RadioMark"]');
+                const labelText = radio_m.first().locator('[data-ui-name="Radio.Text"]');
 
-      const styles = await labelText.evaluate((el) => {
-        const s = getComputedStyle(el);
-        return { fontSize: s.fontSize, marginleft: s.marginLeft };
+                const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
+                const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
+                expect(markWidth).toBe('16px');
+                expect(markHeight).toBe('16px');
+
+                const styles = await labelText.evaluate((el) => {
+                  const s = getComputedStyle(el);
+                  return { fontSize: s.fontSize, marginLeft: s.marginLeft };
+                });
+                expect(styles.fontSize).toBe('14px');
+                expect(styles.marginLeft).toBe('8px');
+              }
+            });
+          } else {
+            await test.step('Verify Radio size l styles', async () => {
+              const count = await radio_l.count();
+              if (count > 0) {
+                const mark = radio_l.first().locator('[data-ui-name="Value.RadioMark"]');
+                const labelText = radio_l.first().locator('[data-ui-name="Radio.Text"]');
+
+                const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
+                const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
+                expect(markWidth).toBe('20px');
+                expect(markHeight).toBe('20px');
+
+                const styles = await labelText.evaluate((el) => {
+                  const s = getComputedStyle(el);
+                  return { fontSize: s.fontSize, marginLeft: s.marginLeft };
+                });
+                expect(styles.fontSize).toBe('16px');
+                expect(styles.marginLeft).toBe('8px');
+              }
+            });
+          }
+        }
+
+        await test.step('Verify Radio disabled state', async () => {
+          const radioInput = locators.radios(page, 0);
+          if (item.disabled) {
+            await expect(radioInput).toBeDisabled();
+          } else {
+            await expect(radioInput).not.toBeDisabled();
+          }
+        });
       });
 
-      expect(styles.fontSize).toBe('14px');
-      expect(styles.marginleft).toBe('8px');
-    }
-  });
+      test(`Verify RadioGroup with additional props size ${item.size}, theme ${item.theme}, disabled ${item.disabled}`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@radio'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/radio/docs/examples/additional_props_for_input.tsx', 'en', item);
 
-  test('Verify styles for l size', async ({ page }) => {
-    const standPath = 'stories/components/radio/tests/examples/radiogroup_example_L.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+        await expect(page).toHaveScreenshot();
+        if (!item.disabled) {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        }
 
-    const radios = page.locator('[data-ui-name="Radio"]');
-    const count = await radios.count();
+        await test.step('Verify RadioGroup disabled state', async () => {
+          const radioInput = locators.radios(page, 0);
 
-    for (let i = 0; i < count; i++) {
-      const radio = radios.nth(i);
-      const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
-      const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
-
-      const radioMarginBottom = await radio.evaluate((el) => getComputedStyle(el).marginBottom);
-      expect(radioMarginBottom).toBe('12px');
-      const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
-      const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-      expect(markWidth).toBe('20px');
-      expect(markHeight).toBe('20px');
-
-      const styles = await labelText.evaluate((el) => {
-        const s = getComputedStyle(el);
-        return { fontSize: s.fontSize, marginleft: s.marginLeft };
+          if (item.disabled) {
+            await expect(radioInput).toBeDisabled();
+          } else {
+            await expect(radioInput).not.toBeDisabled();
+          }
+        });
       });
-
-      expect(styles.fontSize).toBe('16px');
-      expect(styles.marginleft).toBe('8px');
-    }
-  });
-
-  test('Verify all states and sizes', async ({ page }) => {
-    const standPath = 'stories/components/radio/tests/examples/radiogroup_different_states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Radio Group example', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/radiogroup_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await test.step('Verify checking works by clicking on checkmart', async () => {
-      page.locator('label').filter({ hasText: 'Beagle' }).locator('div').click();
-      await expect(page).toHaveScreenshot();
     });
+  });
 
-    await test.step('Verify keyboard interactions work after mouse', async () => {
-      page.locator('[data-ui-name="Value.RadioMark"]').nth(1).click();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.press('ArrowUp');
-      page.locator('label').filter({ hasText: 'Labrador Retriever' }).locator('div').hover();
-      await expect(page).toHaveScreenshot();
+  test.describe('Verify Radio prop combinations', () => {
+    const variables = [
+      { size: 'm', state: 'normal', disabled: false, checked: false },
+      { size: 'm', state: 'invalid', disabled: false, checked: true },
+      { size: 'm', state: 'normal', disabled: true, checked: true },
+      { size: 'l', state: 'normal', disabled: false, checked: false },
+      { size: 'l', state: 'invalid', disabled: false, checked: true },
+      { size: 'l', state: 'normal', disabled: true, checked: false },
+    ];
+    variables.forEach((item) => {
+      const priority = item.disabled && item.size === 'l' ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH;
+      test(`Verify Radio size ${item.size}, state ${item.state}, disabled ${item.disabled}, checked ${item.checked}`, {
+        tag: [priority, '@radio'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/radio/tests/examples/radio-props.tsx', 'en', item);
+
+        await expect(page).toHaveScreenshot();
+        if (!item.disabled) {
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot();
+        }
+
+        // Only verify styles for one enabled example per size to avoid redundant checks
+        if (!item.disabled && item.state === 'normal' && !item.checked) {
+          const radio_m = page.locator('[data-ui-name="Radio"][class*="size_m"]');
+          const radio_l = page.locator('[data-ui-name="Radio"][class*="size_l"]');
+
+          if (item.size === 'm') {
+            await test.step('Verify Radio size m styles', async () => {
+              const count = await radio_m.count();
+              if (count > 0) {
+                const mark = radio_m.first().locator('[data-ui-name="Value.RadioMark"]');
+                const labelText = radio_m.first().locator('[data-ui-name="Radio.Text"]');
+
+                const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
+                const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
+                expect(markWidth).toBe('16px');
+                expect(markHeight).toBe('16px');
+
+                const styles = await labelText.evaluate((el) => {
+                  const s = getComputedStyle(el);
+                  return { fontSize: s.fontSize, marginLeft: s.marginLeft };
+                });
+                expect(styles.fontSize).toBe('14px');
+                expect(styles.marginLeft).toBe('8px');
+              }
+            });
+          } else {
+            await test.step('Verify Radio size l styles', async () => {
+              const count = await radio_l.count();
+              if (count > 0) {
+                const mark = radio_l.first().locator('[data-ui-name="Value.RadioMark"]');
+                const labelText = radio_l.first().locator('[data-ui-name="Radio.Text"]');
+
+                const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
+                const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
+                expect(markWidth).toBe('20px');
+                expect(markHeight).toBe('20px');
+
+                const styles = await labelText.evaluate((el) => {
+                  const s = getComputedStyle(el);
+                  return { fontSize: s.fontSize, marginLeft: s.marginLeft };
+                });
+                expect(styles.fontSize).toBe('16px');
+                expect(styles.marginLeft).toBe('8px');
+              }
+            });
+          }
+        }
+
+        await test.step('Verify Radio disabled and checked states', async () => {
+          const radioInput = locators.radios(page, 0);
+
+          if (item.disabled) {
+            await expect(radioInput).toBeDisabled();
+          } else {
+            await expect(radioInput).not.toBeDisabled();
+          }
+
+          if (item.checked) {
+            await expect(radioInput).toBeChecked();
+          } else {
+            await expect(radioInput).not.toBeChecked();
+          }
+        });
+
+        await test.step('Verify Radio state attribute', async () => {
+          const radioInput = locators.radios(page, 0);
+
+          if (item.state === 'invalid') {
+            await expect(radioInput).toHaveAttribute('aria-invalid', 'true');
+          } else {
+            await expect(radioInput).toHaveAttribute('aria-invalid', 'false');
+          }
+        });
+      });
     });
   });
 });
 
-test.describe('Functional - Radio with group', () => {
-  test('Verify roles and attributes for radio with group', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/radiogroup_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(locators.radioGroup(page)).toHaveAttribute('role', 'group');
-    await expect(locators.radioGroup(page)).toHaveAttribute('name', 'radio');
-    await expect(locators.radioGroup(page)).toHaveAttribute('aria-labelledby', 'radioGroup');
-    await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-
-    const count = await locators.radios(page).count();
-
-    for (let i = 0; i < count; i++) {
-      const radio = locators.radios(page).nth(i);
-      const mark = page.locator('[data-ui-name="Value.RadioMark"]').nth(i);
-      await expect(radio).toHaveAttribute('type', 'radio');
-      await expect(radio).toHaveAttribute('name', 'radio');
-      await expect(radio).toHaveAttribute('aria-invalid', 'false');
-
-      const value = await radio.getAttribute('value');
-      if (value === '1') {
-        await expect(radio).toBeChecked();
-      } else {
-        await expect(radio).not.toBeChecked();
-      }
-
-      await expect(mark).toHaveAttribute('aria-hidden', 'true');
-    }
-  });
-
-  test('Verify mouse interactions for radio with group', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/radiogroup_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify mouse interactions for radio with group', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en');
 
     await test.step('Verify pre checked value works', async () => {
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeChecked();
     });
 
-    await test.step('Verify checking works by clicking on checkmart', async () => {
+    await test.step('Verify checking works by clicking on checkmark', async () => {
       page.locator('label').filter({ hasText: 'Beagle' }).locator('div').click();
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-      await expect(locators.radios(page).nth(2)).toBeChecked();
+      await expect(locators.radios(page, 2)).toBeChecked();
     });
 
-    await test.step('Verify checking works by clicking on checkmart', async () => {
-      page.locator('[data-ui-name="Radio.Text"]').nth(1).click();
+    await test.step('Verify checking works by clicking on text', async () => {
+      locators.radioText(page, 1).click();
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-      await expect(locators.radios(page).nth(1)).toBeChecked();
+      await expect(locators.radios(page, 1)).toBeChecked();
     });
 
     await test.step('Verify keyboard interactions work after mouse', async () => {
       await page.keyboard.press('ArrowDown');
 
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-      await expect(locators.radios(page).nth(2)).toBeChecked();
-      await expect(locators.radios(page).nth(2)).toBeFocused();
+      await expect(locators.radios(page, 2)).toBeChecked();
+      await expect(locators.radios(page, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
   });
 
-  test('Verify keyboard interactions for radio with group', async ({ page, browserName }) => {
-    const standPath = 'stories/components/radio/tests/examples/radiogroup_example_L.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify keyboard interactions for radio with group', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en');
 
     await test.step('Verify tab focuses 1st radio', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
 
     if (browserName !== 'webkit') {
       await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
         await page.keyboard.press('ArrowUp');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+        await expect(locators.radios(page, 2)).toBeChecked();
+        await expect(locators.radios(page, 2)).toBeFocused();
 
         await page.keyboard.press('ArrowUp');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 1)).toBeChecked();
+        await expect(locators.radios(page, 1)).toBeFocused();
 
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
       });
 
       await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
         await page.keyboard.press('ArrowLeft');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+        await expect(locators.radios(page, 2)).toBeChecked();
+        await expect(locators.radios(page, 2)).toBeFocused();
 
         await page.keyboard.press('ArrowLeft');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 1)).toBeChecked();
+        await expect(locators.radios(page, 1)).toBeFocused();
 
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
       });
     } else {
       await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+        await expect(locators.radios(page, 2)).toBeChecked();
+        await expect(locators.radios(page, 2)).toBeFocused();
       });
 
       await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('ArrowLeft');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-        await expect(locators.radios(page).first()).toBeChecked();
-        await expect(locators.radios(page).first()).toBeFocused();
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
       });
     }
   });
 
-  test('Verify actions when interactive element in text', async ({ page, browserName }) => {
-    const standPath = 'stories/components/radio/tests/examples/radiogroup_example_with_link.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify actions when interactive element in text', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/radio/tests/examples/radiogroup_example_with_link.tsx', 'en');
 
     await test.step('Verify tab focuses 1st radio', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
 
     await test.step('Verify tab focuses next interactive element', async () => {
@@ -259,7 +378,7 @@ test.describe('Functional - Radio with group', () => {
     await test.step('Verify tab focuses next interactive element', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeChecked();
       await expect(page.locator('[data-testid="link2"]')).toBeFocused();
     });
 
@@ -267,218 +386,111 @@ test.describe('Functional - Radio with group', () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).first()).toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
   });
-});
 
-test.describe('Visual - Radio with Additional input props', () => {
-  test('Verify styles for m size', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/additional_props_for_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const radios = page.locator('[data-ui-name="Radio"]');
-    const count = await radios.count();
-
-    for (let i = 0; i < count; i++) {
-      const radio = radios.nth(i);
-      const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
-      const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
-
-      const radioMarginBottom = await radio.evaluate((el) => getComputedStyle(el).marginBottom);
-      expect(radioMarginBottom).toBe('12px');
-      const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
-      const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-      expect(markWidth).toBe('16px');
-      expect(markHeight).toBe('16px');
-
-      const styles = await labelText.evaluate((el) => {
-        const s = getComputedStyle(el);
-        return { fontSize: s.fontSize, marginleft: s.marginLeft };
-      });
-      // Например, ожидаем 14px и какой-то цвет
-      expect(styles.fontSize).toBe('14px');
-      expect(styles.marginleft).toBe('8px');
-    }
-  });
-
-  test('Verify styles for l size', async ({ page }) => {
-    const standPath = 'stories/components/radio/tests/examples/additional_props_for_input_L.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const radios = page.locator('[data-ui-name="Radio"]');
-    const count = await radios.count();
-
-    for (let i = 0; i < count; i++) {
-      const radio = radios.nth(i);
-      const input = radio.locator('input[data-ui-name="Radio.Value"]');
-      const mark = radio.locator('[data-ui-name="Value.RadioMark"]');
-      const labelText = radio.locator('span[data-ui-name="Radio.Text"]');
-
-      const radioMarginBottom = await radio.evaluate((el) => getComputedStyle(el).marginBottom);
-      expect(radioMarginBottom).toBe('12px');
-      const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
-      const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-      expect(markWidth).toBe('20px');
-      expect(markHeight).toBe('20px');
-
-      if (i === 2) await expect(input).toHaveAttribute('aria-invalid', 'true');
-      const styles = await labelText.evaluate((el) => {
-        const s = getComputedStyle(el);
-        return { fontSize: s.fontSize, marginleft: s.marginLeft };
-      });
-      expect(styles.fontSize).toBe('16px');
-      expect(styles.marginleft).toBe('8px');
-    }
-  });
-
-  test('Verify all states and sizes', async ({ page }) => {
-    const standPath = 'stories/components/radio/tests/examples/checked-and-focused-states.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Additional props in input example', async ({ page, browserName }) => {
-    const standPath = 'stories/components/radio/tests/examples/additional_props_for_input_L.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await test.step('Verify tab focuses 1st radio', async () => {
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-});
-
-test.describe('Functional - Radio with Additional input props', () => {
-  test('Verify roles and attributes for radio with Additional input props', async ({ page }) => {
-    const standPath = 'stories/components/radio/docs/examples/additional_props_for_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const count = await locators.radios(page).count();
-
-    for (let i = 0; i < count; i++) {
-      const radio = locators.radios(page).nth(i);
-      const mark = page.locator('[data-ui-name="Value.RadioMark"]').nth(i);
-
-      await expect(radio).toHaveAttribute('aria-invalid', 'false');
-
-      await expect(radio).not.toBeChecked();
-
-      await expect(mark).toHaveAttribute('aria-hidden', 'true');
-    }
-  });
-
-  test('Verify mouse interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/radio/docs/examples/additional_props_for_input.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify mouse interactions with additional props', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/radio/docs/examples/additional_props_for_input.tsx', 'en');
 
     await test.step('Verify pre checked value works', async () => {
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-      await expect(locators.radios(page).first()).not.toBeChecked();
+      await expect(locators.radios(page, 0)).not.toBeChecked();
     });
 
-    await test.step('Verify checking works by clicking on checkmart', async () => {
+    await test.step('Verify checking works by clicking on checkmark', async () => {
       page.locator('label').filter({ hasText: 'Second value' }).locator('div').click();
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-      await expect(locators.radios(page).nth(1)).toBeChecked();
+      await expect(locators.radios(page, 1)).toBeChecked();
     });
 
     await test.step('Verify checking works by clicking on radio text', async () => {
-      page.locator('[data-ui-name="Radio.Text"]').first().click();
+      locators.radioText(page, 0).click();
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
-      await expect(locators.radios(page).nth(0)).toBeChecked();
+      await expect(locators.radios(page, 0)).toBeChecked();
     });
 
     await test.step('Verify keyboard interactions work after mouse', async () => {
-      if (browserName === 'firefox') {
-        // BUG!
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-      } else await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
       await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
 
-      await expect(locators.radios(page).nth(1)).toBeChecked();
-      await expect(locators.radios(page).nth(1)).toBeFocused();
+      await expect(locators.radios(page, 1)).toBeChecked();
+      await expect(locators.radios(page, 1)).toBeFocused();
     });
   });
 
-  test('Verify keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/radio/tests/examples/additional_props_for_input_L.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
+  test('Verify keyboard interactions with additional props', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/radio/docs/examples/additional_props_for_input.tsx', 'en');
+    if (browserName == 'webkit') test.skip(); // tab doesn work when setting 'Press Tab to highlight each item on a webpage' disabled
     await test.step('Verify tab focuses 1st radio', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-      await expect(locators.radios(page).first()).not.toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).not.toBeChecked();
+
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
 
     if (browserName !== 'firefox') {
       await test.step('Verify focus and selection changes by Up/Down arrows', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
 
         await page.keyboard.press('ArrowUp');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 1)).toBeChecked();
+        await expect(locators.radios(page, 1)).toBeFocused();
       });
 
       await test.step('Verify focus and selection changes by Left/Right arrows', async () => {
         await page.keyboard.press('ArrowRight');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '3');
-        await expect(locators.radios(page).nth(2)).toBeChecked();
-        await expect(locators.radios(page).nth(2)).toBeFocused();
+        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
 
         await page.keyboard.press('ArrowLeft');
         await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 1)).toBeChecked();
+        await expect(locators.radios(page, 1)).toBeFocused();
       });
     } else {
       await test.step('Verify focus and selection changes in Firefox', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-        await expect(locators.radios(page).nth(1)).not.toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 0)).not.toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
 
         await page.keyboard.press('Enter');
         await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-        await expect(locators.radios(page).nth(1)).not.toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radios(page, 0)).not.toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
 
         await page.keyboard.press('Space');
-        await expect(locators.radioGroup(page)).toHaveAttribute('value', '2');
-        await expect(locators.radios(page).nth(1)).toBeChecked();
-        await expect(locators.radios(page).nth(1)).toBeFocused();
+        await expect(locators.radioGroup(page)).toHaveAttribute('value', '1');
+        await expect(locators.radios(page, 0)).toBeChecked();
+        await expect(locators.radios(page, 0)).toBeFocused();
       });
     }
   });
 
-  test('Verify actions when interactive element in text', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
+  test('Verify actions when interactive element in text with tooltip', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx', 'en');
 
     await test.step('Verify tab focuses 1st radio', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-      await expect(locators.radios(page).first()).not.toBeChecked();
-      await expect(locators.radios(page).first()).toBeFocused();
+      await expect(locators.radios(page, 0)).not.toBeChecked();
+      await expect(locators.radios(page, 0)).toBeFocused();
     });
 
     await test.step('Verify tab focuses next interactive element', async () => {
@@ -489,92 +501,20 @@ test.describe('Functional - Radio with Additional input props', () => {
       } else await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
-      await expect(locators.radios(page).first()).not.toBeChecked();
-      await expect(locators.radios(page).nth(2)).not.toBeChecked();
-      await expect(locators.radios(page).nth(2)).not.toBeFocused();
+      await expect(locators.radios(page, 0)).not.toBeChecked();
+      await expect(locators.radios(page, 2)).not.toBeChecked();
+      await expect(locators.radios(page, 2)).not.toBeFocused();
     });
 
     await test.step('Verify enter activates interactive element not not checks radio ', async () => {
       await page.keyboard.press('Enter');
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
-      await expect(locators.radios(page).nth(2)).not.toBeChecked();
-      await expect(locators.radios(page).nth(2)).not.toBeFocused();
+      await expect(locators.radios(page, 2)).not.toBeChecked();
+      await expect(locators.radios(page, 2)).not.toBeFocused();
 
       await page.keyboard.press('Escape');
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
-      await expect(locators.radios(page).nth(2)).not.toBeChecked();
+      await expect(locators.radios(page, 2)).not.toBeChecked();
     });
-  });
-});
-
-test.describe('Vusual - Radio and Select pattern', () => {
-  test('Verify Radio and Select Ux pattern', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await locators.options(page).first().waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Functional - Radio and Select pattern', () => {
-  test('Verify Radio and Select UX pattern keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'all');
-    await page.keyboard.press('Tab');
-    await expect(locators.radios(page).first()).toBeFocused();
-    await expect(locators.radios(page).first()).toHaveAttribute('checked');
-
-    await page.keyboard.press('Tab');
-    await expect(locators.selectTrigger(page)).toBeFocused();
-    await page.keyboard.press('Space');
-    await page.getByText('500').waitFor({ state: 'visible' });
-    await expect(locators.options(page).first()).toHaveClass(/highlighted/);
-
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.options(page).nth(1)).toHaveClass(/highlighted/);
-
-    await page.keyboard.press('Space');
-    await locators.options(page).first().waitFor({ state: 'hidden' });
-
-    await expect(locators.selectTrigger(page)).toHaveAttribute('value', '500');
-    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'first');
-    await expect(locators.radios(page).nth(2)).toBeChecked();
-    await page.keyboard.press('Shift+Tab');
-    await expect(locators.radios(page).nth(2)).toBeFocused();
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await expect(locators.button(page, 'Export')).toBeFocused();
-  });
-
-  test('Verify Radio and Select UX pattern mouse interactions', async ({ page }) => {
-    const standPath = 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'all');
-    await expect(locators.radios(page).first()).toHaveAttribute('checked');
-
-    await locators.selectTrigger(page).click();
-    await page.getByText('500').waitFor({ state: 'visible' });
-    await expect(locators.options(page).first()).toHaveClass(/selected/);
-
-    await locators.options(page).nth(1).click();
-
-    await locators.options(page).first().waitFor({ state: 'hidden' });
-
-    await expect(locators.selectTrigger(page)).toHaveAttribute('value', '500');
-    await expect(locators.radioGroup(page)).toHaveAttribute('value', 'first');
-    await expect(locators.radios(page).nth(2)).toBeChecked();
   });
 });

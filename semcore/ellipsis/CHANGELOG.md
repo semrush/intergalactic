@@ -2,16 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.0] - 2025-08-08
+## [17.0.0] - 2026-02-02
 
 ### Deprecated
 
 - This component is now deprecated. Use the new `ellipsis` prop that's built into various components, and the `useEllipsis` hook from the `base-components` package for all other cases.
 
-### Fixed
+## [16.0.12] - 2025-11-14
 
-- Ellipsis with `trim=middle` cut off text at the end.
-- Incorrect cropping with different font-size.
+### Changed
+
+- `innerHTML` to `textContent` in the calculation of ellipsis size.
+
+## [16.0.11] - 2025-10-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [16.0.10 ~> 16.0.11], `@semcore/base-components` [16.4.0 ~> 16.4.1]).
 
 ## [16.0.10] - 2025-10-06
 

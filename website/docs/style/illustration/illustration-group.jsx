@@ -1,7 +1,7 @@
 import Copy from '@components/Copy';
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import CopyM from '@semcore/icon/Copy/m';
 import FileDownloadM from '@semcore/icon/FileDownload/m';
 import SidePanel from '@semcore/side-panel';

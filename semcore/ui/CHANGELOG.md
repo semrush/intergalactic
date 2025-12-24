@@ -1,3 +1,231 @@
+## [16.13.1] - 2025-12-18
+
+### @semcore/notice-global
+
+- **Changed** Package is deprecated.
+
+### @semcore/data-table
+
+- **Fixed** Non-working virtual scroll with rows with unknown height.
+- **Fixed** `columns.name` property description to have information about
+valid/invalid characters.
+
+### @semcore/carousel
+
+- **Fixed** Enabled `overflow-hidden` for `Indicator` for `border-radius` to apply
+correctly.
+- **Fixed** Moved default width and height for indicators with preview to CSS for
+more convenient styling.
+- **Fixed** Added `aria-roledescription="carousel"` to the root element.
+- **Fixed** Added translations for `aria-roledescription` in the root element and
+indicators with preview.
+
+### @semcore/wizard
+
+- **Fixed** Missing translations
+
+### @semcore/tag
+
+- **Fixed** Missing translations
+
+### @semcore/dropdown-menu
+
+- **Fixed** Missing translations
+- **Fixed** Virtual scroll issues.
+- **Fixed** Required customData property changed to optional.
+
+### @semcore/date-picker
+
+- **Fixed** Missing translations
+
+### @semcore/d3-chart
+
+- **Fixed** Missing translations
+
+### @semcore/color-picker
+
+- **Fixed** Missing translations
+
+### @semcore/base-trigger
+
+- **Fixed** Missing translations
+
+### @semcore/add-filter
+
+- **Fixed** Missing translations
+
+## [16.13.0] - 2025-12-01
+
+### @semcore/checkbox
+
+- **Fixed** Unchecked themed `Checkbox` should remain gray.
+
+### @semcore/base-components
+
+- **Fixed** The "Popper" with focus or hover interaction opens after moving to the
+trigger from the popper using the Tab key.
+
+### @semcore/d3-chart
+
+- **Fixed** `ticks` state var isn't re-calculated for `children` render prop.
+- **Fixed** Removed `LegendItem` checkbox theme behavior, since it's been
+implemented within `Checkbox` component.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary autofocus to the table after loading.
+- **Added** Logic for selecting multiples rows using Shift
+
+### @semcore/dropdown
+
+- **Fixed** Disabled first item receives focus.
+
+### @semcore/time-picker
+
+- **Fixed** UI focus issue for size `l`.
+
+### @semcore/notice-bubble
+
+- **Added** `containerNode` property to set one common container for all notices
+on the page from different applications.
+
+### @semcore/dropdown-menu
+
+- **Added** Virtualization.
+- **Fixed** Disabled first item receives focus.
+
+## [16.12.0] - 2025-11-17
+
+### @semcore/base-trigger
+
+- **Added** `data-ui-name` for Inner container.
+- **Fixed** `font-family` style for the `LinkTrigger` wasn't inherited.
+
+### @semcore/button
+
+- **Added** `data-ui-name` for Inner container.
+
+### @semcore/color-picker
+
+- **Fixed** Issue with `svg` in `ColorPicker.Trigger` and `ColorPicker.Item`.
+- **Fixed** `size` property didn't apply for the `PaletteManager.InputColor`.
+- **Fixed** Incorrect types for `PaletteManager`.
+- **Fixed** Validation issues in `PaletteManager.InputColor`.
+- **Fixed** "Blocked aria-hidden on an element" accessibility error for `ChevronDownM`.
+- **Fixed** `PaletteManager`'s add button active/hover states.
+
+### @semcore/d3-chart
+
+- **Added** The ability to use multiple synchronized tooltips on multiple charts.
+- **Fixed** `onClick` handler in child components overrides root `onClick` and called on mount.
+
+### @semcore/data-table
+
+- **Fixed** The focus did not move to the trigger via `Escape` when opening the accordion with the mouse.
+- **Fixed** SR didn't pronounce all items selecting/deselecting on table with pagination.
+- **Fixed** Keyboard interaction after mouse clicking in cell with few interactive elements.
+
+### @semcore/date-picker
+
+- **Fixed** Space key interactions in Date Picker (unable to switch months, apply Today, keep selected date, etc.)
+
+### @semcore/dropdown
+
+- **Changed** Canceled default behavior for `Arrow Up` `Arrow Down` keys.
+- **Added** Foundation to handle scroll ending.
+- **Added** `stopPropagation` when the `tab` key is pressed in an open dropdown with `click` interaction.
+
+### @semcore/dropdown-menu
+
+- **Changed** Focus behavior if `Popper` already has a focus inside.
+- **Fixed** "scroll to element" animation for keyboard interactions.
+
+### @semcore/ellipsis
+
+- **Changed** `innerHTML` to `textContent` in the calculation of ellipsis size.
+
+### @semcore/feature-highlight
+
+- **Fixed** Switching between highlighted Pills items left animation artifacts.
+
+### @semcore/feedback-form
+
+- **Fixed** `margin-bottom` of the `Email` illustration in the form success state.
+
+### @semcore/icon
+
+- **Changed** Set `pointer-events: none` for path's in interactive svg.
+
+### @semcore/input-tags
+
+- **Fixed** `disabled` state for `InputTags/InputTags.Tag`.
+
+### @semcore/tag
+
+- **Fixed** Font for tags in non-interactive state.
+
+### @semcore/wizard
+
+- **Fixed** Unnecessary scroll in small mode with long text in sidebar step.
+- **Fixed** Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
+## [16.11.1] - 2025-10-30
+
+### @semcore/data-table
+
+- **Fixed** Non-working `Accordion` for the cell with the skeleton when loading.
+
+## [16.11.0] - 2025-10-29
+
+### @semcore/base-components
+
+- **Fixed** Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
+
+### @semcore/core
+
+- **Fixed** Unnecessary calculations in `sstyled` wrapper.
+
+### @semcore/d3-chart
+
+- **Added** New `multiline` property for `XAxis.Ticks/YAxis.Ticks` and `multilineXTicks/multilineYTicks` for `Chart`.
+- **Fixed** Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+- **Fixed** Chart content remains visible after unchecking single legend item in Bar, Horizontal Bar, Histogram, and Stacked Horizontal Bar charts.
+- **Fixed** Clicking on pattern icons in legend items with checkboxes has no effect despite interactive cursor.
+- **Fixed** Improve interaction handling for `Chart.Legend` items (custom shapes, child components, etc.)
+
+### @semcore/data-table
+
+- **Fixed** Low performance when opening an accordion with a large number of rows.
+- **Fixed** Keyboard interaction after mouse clicking in Safari.
+- **Fixed** Background color in expanded state when a theme is applied to a single cell.
+- **Fixed** Limited mode doesn't prevent interaction with accordion.
+
+### @semcore/feature-highlight
+
+- **Сhanged** Types for `NoticeFH`.
+- **Сhanged** Pills addon logic to determine whether to display stars or numeric value.
+
+### @semcore/feature-popover
+
+- **Fixed** `autoFocus` property on Popper didn't work.
+
+### @semcore/inline-input
+
+- **Fixed** `onConfirm` behaviour to query latest input updates.
+
+### @semcore/pagination
+
+- **Fixed** The `id` property wasn't passed to `Pagination.PageInput.Value` in advanced mode.
+
+### @semcore/tooltip
+
+- **Fixed** The tooltip popper content is not announced by screen readers in Chrome.
+
+### @semcore/wizard
+
+- **Changed** Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in TypeScript.
+- **Changed** `z-index` value for `Stepper` in `hover` state.
+
 ## [16.10.0] - 2025-10-06
 
 ### @semcore/base-components
@@ -9147,13 +9375,13 @@
 
 - **Added** Added enhance for set uid and useUID to set random numbers.
 
-## [2.3.0] - 2020-12-4
+## [2.3.0] - 2020-12-04
 
 ### @semcore/carousel
 
 - **Added** Release library
 
-## [2.2.0] - 2020-12-4
+## [2.2.0] - 2020-12-04
 
 ### @semcore/animation
 
@@ -9220,7 +9448,7 @@
 
 - **Fixed** Fixed move props position in component Box.
 
-## [2.1.0] - 2020-11-9
+## [2.1.0] - 2020-11-09
 
 ### Global
 
@@ -9414,7 +9642,7 @@
 - **Changed** Build changed from rollup to babel
 - **Changed** Move .d.ts files from /lib to /lib/types directory
 
-## [1.2.1] - 2020-9-8
+## [1.2.1] - 2020-09-08
 
 ### Global
 
@@ -9485,7 +9713,7 @@
 - **Fixed** Flag sideEffects now contain list of files with side effects
 - **Fixed** Added flag sideEffects: false to package.json
 
-## [1.2.0] - 2020-9-2
+## [1.2.0] - 2020-09-02
 
 ### @semcore/core
 

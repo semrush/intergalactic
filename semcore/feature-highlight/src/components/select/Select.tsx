@@ -41,4 +41,4 @@ export const SelectFH = createComponent(SelectFHRoot, {
   Menu: Select.Menu,
   Option: Select.Option,
   List: Select.List,
-}) as typeof Select;
+}) as unknown as typeof Select;

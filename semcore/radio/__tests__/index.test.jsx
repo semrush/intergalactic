@@ -241,7 +241,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('r1').checked).toBe(true);
   });
 
-  test('Verofy disabled priority: group vs item', () => {
+  test('Verify disabled priority: group vs item', () => {
     const spyWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
     const { getByTestId } = render(

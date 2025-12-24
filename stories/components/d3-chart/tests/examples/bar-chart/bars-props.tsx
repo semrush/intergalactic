@@ -1,13 +1,22 @@
-import { Chart, Plot, YAxis, XAxis, Bar } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import { Plot, YAxis, XAxis, Bar } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-const Demo = () => {
+interface BarsPropsStoryProps {
+  color?: string;
+  r?: number;
+  hMin?: number;
+  hide?: boolean;
+  transparent?: boolean;
+  maxBarSize?: number;
+  duration?: number;
+}
+
+const Demo = (props: BarsPropsStoryProps = {}) => {
   const MARGIN = 40;
   const width = 400;
   const height = 200;
+
   const data = [
     { time: 0, stack1: 1, stack2: 4, stack3: 3 },
     { time: 1, stack1: 2, stack2: 3, stack3: 4 },
@@ -31,162 +40,39 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  const yScale1 = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([-5, 5]);
-
   return (
-    <Flex direction='column'>
-      <Flex>
-        <Flex direction='column'>
-          <Text>With color</Text>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} color='red' />
-          </Plot>
-        </Flex>
-
-        <Flex direction='column'>
-          <Text>With radius</Text>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} r={15} />
-          </Plot>
-        </Flex>
-
-        <Flex direction='column'>
-          <Text>With hMin</Text>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} hMin={200} />
-          </Plot>
-        </Flex>
-      </Flex>
-
-      <Flex>
-        <Flex>
-          <Flex direction='column'>
-            <Text>With hide='true'</Text>
-            <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-              <YAxis>
-                <YAxis.Ticks />
-                <YAxis.Grid />
-              </YAxis>
-              <XAxis>
-                <XAxis.Ticks />
-              </XAxis>
-              <Bar x='time' y='stack1' duration={0} hide={true} />
-            </Plot>
-          </Flex>
-        </Flex>
-
-        <Flex direction='column'>
-          <Text>With transparent='true'</Text>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} transparent={true} />
-          </Plot>
-        </Flex>
-        <Flex direction='column'>
-          <Text>Without data</Text>
-          <Plot data={data1} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} />
-          </Plot>
-        </Flex>
-
-      </Flex>
-
-      <Flex>
-        <Flex direction='column'>
-          <Text>
-            maxBarSize=
-            {6}
-          </Text>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} maxBarSize={6} />
-          </Plot>
-        </Flex>
-        <Flex direction='column'>
-          <Text>Bars with a height close to zero</Text>
-          <Plot data={data2} scale={[xScale, yScale1]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            <Bar x='time' y='stack1' duration={0} />
-          </Plot>
-        </Flex>
-      </Flex>
-    </Flex>
-
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis>
+        <YAxis.Ticks />
+        <YAxis.Grid />
+      </YAxis>
+      <XAxis>
+        <XAxis.Ticks />
+      </XAxis>
+      <Bar
+        x='time'
+        y='stack1'
+        duration={props.duration}
+        color={props.color}
+        r={props.r}
+        hMin={props.hMin}
+        hide={props.hide}
+        transparent={props.transparent}
+        maxBarSize={props.maxBarSize}
+      />
+    </Plot>
   );
 };
 
-const data = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `Category ${i}`,
-    bar: Math.random() * 10,
-  }));
+export const defaultProps: BarsPropsStoryProps = {
+  duration: 0,
+  color: undefined,
+  hMin: undefined,
+  hide: undefined,
+  transparent: undefined,
+  maxBarSize: undefined,
+};
 
-const data2 = [
-  { time: 0, stack1: 0 },
-  { time: 1, stack1: 0.05 },
-  { time: 2, stack1: 0.5 },
-  { time: 3, stack1: 1 },
-  { time: 4, stack1: -4 },
-  { time: 5, stack1: -0.05 },
-  { time: 6, stack1: -0 },
-  { time: 7, stack1: -0.5 },
-];
-
-const data1 = [
-  { time: 0, stack1: 0 },
-  { time: 1, stack1: null },
-  { time: 2, stack1: 10 },
-  { time: 3, stack1: null },
-  { time: 4, stack1: -0 },
-];
+Demo.defaultProps = defaultProps;
 
 export default Demo;

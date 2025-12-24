@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.13] - 2025-12-18
+
+### Fixed
+
+- Enabled `overflow-hidden` for `Indicator` for `border-radius` to apply
+correctly.
+- Moved default width and height for indicators with preview to CSS for
+more convenient styling.
+- Added `aria-roledescription="carousel"` to the root element.
+- Added translations for `aria-roledescription` in the root element and
+indicators with preview.
+
+## [16.1.12] - 2025-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [16.7.2 ~> 16.7.3], `@semcore/button` [16.0.11 ~> 16.0.12]).
+
+## [16.1.11] - 2025-10-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [16.5.1 ~> 16.7.2], `@semcore/button` [16.0.10 ~> 16.0.11], `@semcore/breakpoints` [16.0.10 ~> 16.0.11], `@semcore/base-components` [16.4.0 ~> 16.4.1]).
+
 ## [16.1.10] - 2025-10-06
 
 ### Changed

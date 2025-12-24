@@ -9,5 +9,5 @@
   "colorField": "Màu tùy chỉnh, định dạng HEX",
   "colorFieldConfirm": "Thêm màu vào danh sách các màu tùy chỉnh",
   "colorFieldClear": "Xóa trường màu tùy chỉnh",
-  "deleteColorDescriber": "Delete color with backspace"
+  "deleteColorDescriber": "Xóa màu bằng phím backspace"
 }

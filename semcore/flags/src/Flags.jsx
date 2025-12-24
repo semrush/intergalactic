@@ -1,7 +1,7 @@
+import { useBox } from '@semcore/base-components';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import isRetina from '@semcore/core/lib/utils/isRetina';
-import { useBox } from '@semcore/flex-box';
 import cn from 'classnames';
 import React from 'react';
 

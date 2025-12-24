@@ -12,7 +12,7 @@ import style from '../animation/style/keyframes.shadow.css';
 import keyframes from '../animation/style/keyframes.shadow.css';
 
 type Handlers = {
-  visible: (visible: boolean) => void;
+  visible: null;
 };
 
 export type SimpleHintPopperProps = {
@@ -72,7 +72,7 @@ function propToArray(prop: number | [number, number]): [number, number] {
 
 const keyframesMap = new Map<Placement, string>();
 
-class HintPopperRoot extends Component<SimpleHintPopperProps, {}, State, typeof enhances, DefaultProps, Handlers> {
+class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, Handlers, DefaultProps, State> {
   public readonly hintRef = React.createRef<HTMLElement>();
   private readonly arrowRef = React.createRef<HTMLDivElement>();
 

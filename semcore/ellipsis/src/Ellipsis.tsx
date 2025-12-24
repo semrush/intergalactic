@@ -1,4 +1,4 @@
-import { isTextOverflowing, useResizeObserver, setFontSettings } from '@semcore/base-components';
+import { isTextOverflowing, useResizeObserver, setFontSettings, Box, type BoxProps } from '@semcore/base-components';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -7,7 +7,6 @@ import pick from '@semcore/core/lib/utils/pick';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import Tooltip, { type TooltipProps } from '@semcore/tooltip';
 import React, { type RefObject } from 'react';
 
@@ -208,7 +207,7 @@ const EllipsisMiddleContext = React.createContext<null | {
   ref: React.RefObject<HTMLElement>;
 }>(null);
 
-const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
+function EllipsisMiddle(props: AsPropsMiddle) {
   const {
     styles,
     text,
@@ -234,7 +233,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     const dateSpan = document.createElement('temporary-block');
 
     setFontSettings(dateSpan, styleElement);
-    dateSpan.innerHTML = 'a';
+    dateSpan.textContent = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
 
@@ -291,14 +290,14 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
       <STail>{contextValue.tail}</STail>
     </SContainerMiddle>,
   );
-};
+}
 
 type EllipsisContentAsProps = {
   styles: any;
   Children: React.FC;
 };
 
-const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
+function Content({ styles, Children }: EllipsisContentAsProps) {
   const SEllipsis = Root;
   const ellipsisMiddleContext = React.useContext(EllipsisMiddleContext);
   const STail = 'span';
@@ -319,7 +318,7 @@ const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
       <Children />
     </SEllipsis>,
   ) as any;
-};
+}
 
 const Ellipsis = createComponent(RootEllipsis, {
   Content,

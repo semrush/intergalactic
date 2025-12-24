@@ -51,6 +51,7 @@ STagContainerClose {
   border-radius: var(--intergalactic-tag-rounded, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
+  font-family: inherit;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
 

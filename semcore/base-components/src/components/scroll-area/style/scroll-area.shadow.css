@@ -8,6 +8,7 @@ SScrollArea {
     right: var(--focusRingRightOffset);
     bottom: var(--focusRingBottomOffset);
     left: var(--focusRingLeftOffset);
+    pointer-events: none;
   }
 }
 

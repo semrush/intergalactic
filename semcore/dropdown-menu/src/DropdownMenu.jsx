@@ -1,24 +1,20 @@
-import { useEllipsis, Flex, useBox, Hint, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
+import { useEllipsis, Flex, useBox, Hint, ScrollArea as ScrollAreaComponent, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
 import { Text } from '@semcore/typography';
-import cn from 'classnames';
 import React from 'react';
 
+import { ListBoxContextProvider } from './components/Context';
+import { VirtualList } from './components/VirtualList';
 import style from './style/dropdown-menu.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-const ListBoxContextProvider = ({ children }) => (
-  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
-    {children}
-  </hideScrollBarsFromScreenReadersContext.Provider>
-);
 
 const menuItemContext = React.createContext({});
 
@@ -51,6 +47,16 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
+  /**
+   * TODO: It needs to be reconsidered in a future implementation so that component accepts items as a prop instead of JSX.
+   * Tab index recalculation flag.
+   *
+   * When an item becomes disabled while highlighted, we need to transfer focus
+   * to the next available focusable item. This flag ensures the focus lock
+   * remains within proper boundaries during the initial render cycle.
+  */
+  shouldRecalculateItemTabIndex = false;
+
   uncontrolledProps() {
     return {
       ...super.uncontrolledProps(),
@@ -59,28 +65,57 @@ class DropdownMenuRoot extends AbstractDropdown {
         (visible) => {
           if (visible === true) {
             setTimeout(() => {
-              const options = this.menuRef.current?.querySelectorAll(
-                '[role="menuitemcheckbox"], [role="menuitemradio"]',
-              );
-              const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
-
-              if (selected && options && this.asProps.itemsCount === undefined) {
-                this.scrollToNode(selected, true);
-
-                for (let i = 0; i < options.length; i++) {
-                  if (options[i] === selected) {
-                    this.handlers.highlightedIndex(i);
-                    break;
-                  }
-                }
-              }
+              this.focusAndScrollToSelected();
               // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
               // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
-            }, 30);
+            }, 50);
           }
         },
       ],
     };
+  }
+
+  get menuElements() {
+    const menuElement = this.menuRef.current;
+
+    if (!menuElement) {
+      return { selected: null, options: null };
+    }
+
+    const options = menuElement.querySelectorAll(
+      '[role="menuitemcheckbox"], [role="menuitemradio"]',
+    );
+    const selected = menuElement.querySelector('[aria-checked="true"]:not([disabled])');
+
+    return { selected, options };
+  }
+
+  focusAndScrollToSelected() {
+    let { selected, options } = this.menuElements;
+
+    const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
+
+    if (!selected || !options || this.menuRef.current?.dataset.isVirtual || isFocusAlreadyInPopper) return;
+
+    this.scrollToNodeAsync(selected, true).then(() => {
+      if (this.asProps.visible) {
+        selected.focus({ preventScroll: true });
+      }
+    });
+
+    const selectedIndex = Array.from(options).indexOf(selected);
+
+    if (selectedIndex !== -1) {
+      this.handlers.highlightedIndex(selectedIndex);
+    }
+  }
+
+  afterOpenPopper() {
+    const { selected, options } = this.menuElements;
+
+    if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
+
+    super.afterOpenPopper();
   }
 
   itemRef(props, index, node) {
@@ -119,6 +154,17 @@ class DropdownMenuRoot extends AbstractDropdown {
     };
   }
 
+  getVirtualListProps() {
+    return {
+      ...super.getListProps(),
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleKeyDownForMenu('list'),
+        this.handleArrowKeyDown.bind(this),
+      ),
+    };
+  }
+
   getPopperProps() {
     return {
       ...super.getPopperProps(),
@@ -142,13 +188,34 @@ class DropdownMenuRoot extends AbstractDropdown {
     };
   }
 
-  getItemProps(props, index) {
+  getItemTabIndex(props, itemIndex) {
+    const { disabled, index } = props;
     const { highlightedIndex, visible } = this.asProps;
+
+    if (!visible) return -1;
+
+    const isHighlighted = (index ?? itemIndex) === highlightedIndex;
+    if (isHighlighted && !disabled) {
+      return 0;
+    }
+
+    if (disabled && isHighlighted) {
+      this.shouldRecalculateItemTabIndex = true;
+    }
+
+    if (!isHighlighted && !disabled && this.shouldRecalculateItemTabIndex) {
+      this.shouldRecalculateItemTabIndex = false;
+      return 0;
+    }
+
+    return -1;
+  }
+
+  getItemProps(props, index) {
     const realIndex = props.index ?? index;
-    const isHighlighted = realIndex === highlightedIndex;
     const itemProps = {
       ...super.getItemProps(props, realIndex),
-      tabIndex: isHighlighted && visible ? 0 : -1,
+      tabIndex: this.getItemTabIndex(props, index),
       ref: (node) => this.itemRef(props, realIndex, node),
       actionsRef: this.actionsRef,
     };
@@ -197,7 +264,15 @@ class DropdownMenuRoot extends AbstractDropdown {
         this.handlers.visible(true);
         this.handlers.highlightedIndex(0);
         setTimeout(() => {
-          const { highlightedIndex } = this.asProps;
+          let { highlightedIndex } = this.asProps;
+          const highlightedIndexProps = this.itemProps[highlightedIndex];
+
+          if (highlightedIndexProps?.disabled) {
+            highlightedIndex = this.itemProps.findIndex((p) => !p.disabled);
+          }
+
+          if (highlightedIndex === -1) return;
+
           this.itemRefs[highlightedIndex]?.focus();
         }, 0);
 
@@ -251,14 +326,14 @@ class DropdownMenuRoot extends AbstractDropdown {
 
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
-  const SBar = ScrollArea.Bar;
+  const SBar = ScrollAreaComponent.Bar;
 
   return sstyled(styles)(
     <ListBoxContextProvider>
-      <SDropdownMenuList render={ScrollArea} shadow={true} shadowSize={16} shadowTheme='light'>
-        <ScrollArea.Container tabIndex={undefined}>
+      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
+        <ScrollAreaComponent.Container tabIndex={undefined}>
           <Children />
-        </ScrollArea.Container>
+        </ScrollAreaComponent.Container>
         <SBar orientation='horizontal' />
         <SBar orientation='vertical' />
       </SDropdownMenuList>
@@ -321,6 +396,7 @@ function Item({
     role,
     tabIndex,
     ariaChecked,
+    disabled,
   };
   const ariaDescribes = [];
 
@@ -389,14 +465,8 @@ function Item({
 }
 
 function Addon(props) {
-  const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
-  const styles = sstyled(props.styles);
-  return (
-    <SDropdownMenuItemAddon
-      className={cn(styles.cn('SDropdownMenuItemAddon', props).className, className) || undefined}
-      {...other}
-    />
-  );
+  const SDropdownMenuItemAddon = Root;
+  return sstyled(props.styles)(<SDropdownMenuItemAddon render={Box} />);
 }
 
 function Trigger() {
@@ -445,6 +515,7 @@ function ItemContent({ styles }) {
       aria-checked={menuItemCtxValue.ariaChecked}
       alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
+      disabled={menuItemCtxValue.disabled}
     />,
   );
 }
@@ -470,61 +541,16 @@ function ItemHint({ styles }) {
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);
 }
 
-/**
- * @deprecated Use Item hint
- */
-function DeprecatedHint(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='hint' />,
-  );
-}
-/**
- * @deprecated Use Group with title prop
- */
-function Title(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='title' />,
-  );
-}
-
-/**
- * @deprecated
- */
-function Nesting({ forwardRef }) {
-  return <Root render={DropdownMenu.Item} ref={forwardRef} />;
-}
-
-/**
- * @deprecated
- */
-function NestingTrigger({ forwardRef }) {
-  return (
-    <Root
-      render={DropdownMenu.Item.Content}
-      tag={DropdownMenu.Trigger}
-      ref={forwardRef}
-      use:role='menuitem'
-    />
-  );
-}
-
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
     Trigger,
     Popper: Dropdown.Popper,
     List,
+    VirtualList,
     Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
-    /**
-     * @deprecated. Use just Item. See examples on
-     */
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
-    ItemTitle: Title,
-    ItemHint: DeprecatedHint,
     Group: Dropdown.Group,
   },
   {

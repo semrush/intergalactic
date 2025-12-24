@@ -1,28 +1,19 @@
+import type { ScatterPlotChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-type BaseExampleProps = {
-  showLegend?: boolean;
-};
-const Demo = (props: BaseExampleProps) => {
-  const { showLegend } = props;
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
+
+const Demo = (props: ScatterPlotChartProps) => {
   const onClickHandler = () => {
     console.log('Clicked scatterplot item');
   };
   return (
-    <>
-      { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
-
-      <Chart.ScatterPlot
-        data={data}
-        showLegend={showLegend}
-        plotWidth={500}
-        plotHeight={300}
-        groupKey='x'
-        aria-label='ScatterPlot chart'
-        onClickScatterItem={onClickHandler}
-      />
-    </>
+    <Chart.ScatterPlot
+      {...getPropsToChart(props)}
+      aria-label='ScatterPlot chart'
+      onClickScatterItem={onClickHandler}
+    />
   );
 };
 
@@ -30,9 +21,12 @@ const data = Array.from({ length: 20 }, (_, i) => ({
   x: i,
   y: (i % 5) + 1,
 }));
-export const defaultProps: BaseExampleProps = {
-  showLegend: undefined,
 
-};
+export const defaultProps = getChartProps<ScatterPlotChartProps>({
+  data,
+  groupKey: 'x',
+});
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

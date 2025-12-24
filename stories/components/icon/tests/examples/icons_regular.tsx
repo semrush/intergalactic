@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import ArrowsL from '@semcore/ui/icon/Arrows/l';
 import ArrowsM from '@semcore/ui/icon/Arrows/m';
 import MailFilledL from '@semcore/ui/icon/MailFilled/l';

@@ -176,11 +176,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Accordion',
           },
           {
-            link: '/components/auto-suggest/auto-suggest',
-            activeMatch: '/components/auto-suggest/',
-            text: 'AutoSuggest',
-          },
-          {
             link: '/components/badge/badge',
             activeMatch: '/components/badge/',
             text: 'Badge',
@@ -273,7 +268,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/feedback-form/feedback-form',
             activeMatch: '/components/feedback-form/',
-            text: 'Feedback',
+            text: 'FeedbackForm',
           },
           {
             link: '/components/filter-trigger/filter-trigger',
@@ -348,7 +343,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/notice-global/notice-global',
             activeMatch: '/components/notice-global/',
-            text: 'NoticeGlobal',
+            text: 'NoticeGlobal [deprecated]',
           },
           {
             link: '/components/pagination/pagination',
@@ -627,11 +622,6 @@ export const sideBarConfig: SidebarConfig = [
             link: '/table-group/table-states/table-states',
             text: 'Table states',
           },
-          {
-            link: '/table-group/table-old/table-old',
-            activeMatch: '/table-group/table-old/',
-            text: 'Table [deprecated]',
-          },
         ],
       },
       {
@@ -693,6 +683,11 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
+            link: '/patterns/auto-suggest/auto-suggest',
+            activeMatch: '/components/auto-suggest/',
+            text: 'AutoSuggest',
+          },
+          {
             link: '/patterns/modal-content/modal-content',
             text: 'Content in modal window',
           },
@@ -711,8 +706,8 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Error message',
           },
           {
-            link: '/patterns/export/export',
-            text: 'Export',
+            link: '/patterns/export-dropdown/export-dropdown',
+            text: 'Export dropdown',
           },
           {
             link: '/patterns/feature-highlight/feature-highlight',
@@ -756,9 +751,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'ProjectSelect',
           },
           {
-            link: '/patterns/success-state/success-state',
-            activeMatch: '/patterns/success-state/',
-            text: 'Success state',
+            link: '/patterns/success-message/success-message',
+            activeMatch: '/patterns/success-message/',
+            text: 'Success message',
           },
           {
             link: '/patterns/summary/summary',

@@ -49,10 +49,10 @@ class HighlightedItemRoot extends Component {
 }
 
 function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: boolean } & IRootComponentProps) {
-  const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
+  const { clicked, animatedSparkleCount, Children, children } = props;
   return (
     <Root render={Pills.Item.Addon}>
-      {hasChildren
+      {children !== undefined
         ? (<Children />)
         : (
             <>
@@ -67,4 +67,4 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
 export const PillsFH = createComponent(PillsFHRoot, {
   Item: Pills.Item,
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: Pills.Item.Text, Addon: HighlightedItemAddon }),
-}) as HighlightedPillComponent;
+}) as unknown as HighlightedPillComponent;

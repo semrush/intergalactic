@@ -1,31 +1,25 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-async function getColumnWidth(page: any, colIndex: any) {
-  const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
-  const box = await column.boundingBox();
-  return box ? box.width : 0;
-}
+import { locators, checkStyles, getColumnWidth } from './utils';
 
-const checkStyles = async (element: any, styles: Record<string, string>) => {
-  for (const [property, value] of Object.entries(styles) as [string, string][]) {
-    await expect(element).toHaveCSS(property, value);
-  }
-};
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  test('Verify styles Primary', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
 
-test.describe('Base styles Primary Table', () => {
-  test('Verify styles when no interactive elements in header', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
+    const header = page.locator('[data-ui-name="Head.Column"]');
+    const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
 
-    const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
-    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
-
-    await test.step('Verify hovered header cell styles', async () => {
-      await checkStyles(keywordHeader, {
+    await test.step('Verify header cell styles', async () => {
+      await checkStyles(header, {
         'font-size': '12px',
         'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
         'color': 'rgb(25, 27, 35)',
@@ -36,29 +30,29 @@ test.describe('Base styles Primary Table', () => {
     });
 
     await test.step('Verify hovered header cell styles', async () => {
-      await keywordHeader.hover();
+      await header.first().hover();
       if (browserName !== 'firefox')
-        await expect(keywordHeader).toHaveCSS('background-color', 'rgb(244, 245, 249)');
-
-      await checkStyles(firstCell, {
-        'font-size': '14px',
-        'border-bottom': '1px solid rgb(224, 225, 233)',
-        'color': 'rgb(25, 27, 35)',
-        'background-color': 'rgb(255, 255, 255)',
-        'padding': '12px',
-        'min-height': '45px',
-      });
+        await checkStyles(header.first(), {
+          'font-size': '12px',
+          'border-bottom': '1px solid rgb(224, 225, 233)',
+          'color': 'rgb(25, 27, 35)',
+          'background-color': 'rgb(244, 245, 249)',
+          'padding': '12px',
+        });
     });
 
     await test.step('Verify body cell styles', async () => {
-      await firstCell.hover();
+      await firstCell.first().hover();
       if (browserName !== 'firefox')
-        await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+        await checkStyles(firstCell, {
+          'font-size': '14px',
+          'border-bottom': '1px solid rgb(224, 225, 233)',
+          'color': 'rgb(25, 27, 35)',
+          'background-color': 'rgb(240, 240, 244)',
+        });
 
-      await expect(page).toHaveScreenshot();
       await page.keyboard.press('Tab');
-      if (browserName !== 'firefox')
-        await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify overflow=hidden on the CellWrapper', async () => {
@@ -73,125 +67,79 @@ test.describe('Base styles Primary Table', () => {
       }
     });
   });
+  const variantSideIndents = [
+    { sideIndents: 'wide', use: 'primary' },
+    { sideIndents: 'wide', use: 'secondary' },
+  ];
+  variantSideIndents.forEach((item) => {
+    test(`Verify styles when sideIndents=${item.sideIndents} and use=${item.use} `, {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
 
-  test('Verify data table attributes', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
+      const cellsFirstColumn = page.locator('[aria-colindex="1"]');
+      const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
+      const cellsMLastColumn = page.locator('[aria-colindex="5"]');
+      if (item.use === 'primary') {
+        await test.step('Verify first column padding', async () => {
+          await checkStyles(cellsFirstColumn, {
+            'padding-top': '12px',
+            'padding-right': '12px',
+            'padding-bottom': '12px',
+            'padding-left': '20px',
+          });
+        });
 
-    const head = page.locator('[data-ui-name="DataTable.Head"]');
-    const row = page.locator('[data-ui-name="Body.Row"]');
-    const cells = page.locator('[data-ui-name="Row.Cell"]');
-    const headColumn = page.locator('[data-ui-name="Head.Column"]');
+        await test.step('Verify first column padding after update', async () => {
+          await checkStyles(cellsMLastColumn, {
+            'padding-top': '12px',
+            'padding-left': '12px',
+            'padding-bottom': '12px',
+            'padding-right': '20px',
+          });
+        });
 
-    await test.step('Verify data table attributes', async () => {
-      await expect(table).toHaveAttribute('role', 'grid');
-      await expect(table).toHaveAttribute('aria-rowcount', '10');
-      await expect(table).toHaveAttribute('aria-colcount', '5');
-      await expect(table).toHaveAttribute('tabindex', '0');
-    });
+        await test.step('Verify middle column padding', async () => {
+          await checkStyles(cellsMiddleColumn, { padding: '12px' });
+        });
+      }
+      if (item.use === 'secondary') {
+        await test.step('Verify first column padding', async () => {
+          await checkStyles(cellsFirstColumn, {
+            'padding-top': '8px',
+            'padding-right': '8px',
+            'padding-bottom': '8px',
+            'padding-left': '20px',
+          });
+        });
 
-    await test.step('Verify data head attributes', async () => {
-      await expect(head).toHaveAttribute('role', 'row');
-      await expect(head).toHaveAttribute('aria-rowindex', '1');
-    });
+        await test.step('Verify first column padding after update', async () => {
+          await checkStyles(cellsMLastColumn, {
+            'padding-top': '8px',
+            'padding-left': '8px',
+            'padding-bottom': '8px',
+            'padding-right': '20px',
+          });
+        });
 
-    await test.step('Verify data head columna atributes', async () => {
-      const count = await headColumn.count();
-      for (let i = 0; i < count; i++) {
-        await expect(headColumn.nth(i)).toHaveAttribute('role', 'columnheader');
-        await expect(headColumn.nth(i)).toHaveAttribute('aria-colindex', `${i + 1}`);
-        await expect(headColumn.nth(i)).toHaveAttribute('tabindex', '-1');
+        await test.step('Verify middle column padding', async () => {
+          await checkStyles(cellsMiddleColumn, { padding: '8px' });
+        });
       }
     });
-
-    await test.step('Verify data body row attributes', async () => {
-      const count = await row.count();
-      for (let i = 0; i < count; i++) {
-        await expect(row.nth(i)).toHaveAttribute('role', 'row');
-        await expect(row.nth(i)).toHaveAttribute('aria-rowindex', `${i + 2}`);
-      }
-    });
-
-    await test.step('Verify data body cell attributes', async () => {
-      await expect(cells.nth(1)).toHaveAttribute('tabindex', '-1');
-      await expect(cells.nth(0)).toHaveAttribute('data-aria-level', '1');
-      await expect(cells.nth(1)).not.toHaveAttribute('data-aria-level');
-
-      await expect(cells.nth(1)).toHaveAttribute('role', 'gridcell');
-      await expect(cells.nth(1)).toHaveAttribute('aria-colindex');
-    });
   });
 
-  test('Verify padding when sideIndent l is set', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/advanced/examples/side-indents.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
+  test('Verify styles Compact', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
 
-    const cellsFirstColumn = page.locator('[aria-colindex="1"]');
-    const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
-    const cellsMLastColumn = page.locator('[aria-colindex="5"]');
-
-    const count1 = await cellsFirstColumn.count();
-    for (let i = 0; i < count1; i++) {
-      await checkStyles(cellsFirstColumn.nth(i), {
-        padding: '12px 12px 12px 20px',
-      });
-    }
-
-    const count2 = await cellsMiddleColumn.count();
-    for (let i = 0; i < count2; i++) {
-      await checkStyles(cellsMiddleColumn.nth(i), {
-        padding: '12px',
-      });
-    }
-    const count3 = await cellsMLastColumn.count();
-    for (let i = 0; i < count3; i++) {
-      await checkStyles(cellsMLastColumn.nth(i), {
-        padding: '12px 20px 12px 12px',
-      });
-    }
-  });
-
-  test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/header-content.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-    const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
-    await amazonIcon.hover();
-    await page.waitForTimeout(100);
-
-    await expect(page.getByText('AmazonM non interactive')).toHaveCount(1);
-
-    await page.getByRole('columnheader', { name: 'cpc' }).hover();
-    await expect(page).toHaveScreenshot();
-
-    const elements = page.locator('[data-ui-name="Head.Column"]');
-    for (const element of await elements.all()) {
-      const alignItems = await element.evaluate((el) => window.getComputedStyle(el).alignItems);
-      expect(alignItems).toBe('flex-start');
-    }
-  });
-
-  test('Verify styles of Compact table', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/compact.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
-
-    const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
+    const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = page.getByRole('gridcell').first();
 
-    await checkStyles(keywordHeader, {
+    await checkStyles(header, {
       'font-size': '12px',
       'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': 'rgb(25, 27, 35)',
@@ -209,105 +157,21 @@ test.describe('Base styles Primary Table', () => {
     });
 
     await firstCell.hover();
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify styles of sorting button', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/sorting.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
-    await expect(buttonLink1).toHaveCSS('margin-left', '4px');
-    await page.keyboard.press('Tab');
-    await expect(buttonLink1).toBeFocused();
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Enter');
-    await expect(buttonLink1).toHaveCSS('margin-left', '4px');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Enter');
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Column width by default - auto', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/base.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
-
-    expect(widths[1]).toBeLessThan(widths[0]);
-    expect(widths[2]).toBeLessThan(widths[0]);
-    expect(widths[1]).toBeLessThan(widths[4]);
-    expect(widths[2]).toBeLessThan(widths[4]);
-  });
-
-  test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/table-with-1tf-and diff-elements.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const widths = await Promise.all([1, 2, 3, 4, 5, 6].map((i) => getColumnWidth(page, i)));
-
-    expect(widths[1]).toBeLessThanOrEqual(widths[2]);
-    expect(widths[1]).toBeCloseTo(widths[3], 1);
-    expect(widths[2]).toBeCloseTo(widths[5], 1);
-  });
-});
-
-test.describe('Base styles Secondary Table', () => {
-  test('Verify Keyboard interactions', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
-
     await page.keyboard.press('Tab');
 
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify styles Secondary', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/secondary-table.tsx', 'en');
+
+    const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
-    await expect(firstCell).toBeFocused();
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('ArrowRight');
-
-    const secondCell = page.locator('[role="gridcell"][aria-colindex="2"]').first();
-    await expect(secondCell).toBeFocused();
-
-    await page.keyboard.press('ArrowDown');
-    const secondCellSecondRow = page.locator('[role="gridcell"][aria-colindex="2"]').nth(1);
-    await expect(secondCellSecondRow).toBeFocused();
-
-    await page.keyboard.press('Tab');
-    await expect(secondCell).not.toBeFocused();
-
-    if (browserName === 'firefox') return;
-    await page.keyboard.press('Shift+Tab');
-    await expect(secondCellSecondRow).toBeFocused();
-  });
-
-  test('Verify Secondary styles', async ({ page, browserName }) => {
-    const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
-
-    const keywordHeader = page.locator('[data-ui-name="Head.Column"]').nth(0);
-    const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
-
-    await checkStyles(keywordHeader, {
+    await checkStyles(header, {
       'font-size': '12px',
       'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': 'rgb(25, 27, 35)',
@@ -316,9 +180,15 @@ test.describe('Base styles Secondary Table', () => {
       'border-bottom': '1px solid rgb(169, 171, 182)',
     });
 
-    await keywordHeader.hover();
+    await header.first().hover();
     if (browserName !== 'firefox')
-      await expect(keywordHeader).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+      await checkStyles(header, {
+        'font-size': '12px',
+        'color': 'rgb(25, 27, 35)',
+        'padding': '8px',
+        'background-color': 'rgb(255, 255, 255)',
+        'border-bottom': '1px solid rgb(169, 171, 182)',
+      });
 
     await checkStyles(firstCell, {
       'font-size': '14px',
@@ -331,116 +201,90 @@ test.describe('Base styles Secondary Table', () => {
     await firstCell.hover();
     if (browserName !== 'firefox')
       await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
-    await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
     if (browserName !== 'firefox')
       await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+    await expect(page).toHaveScreenshot();
+  });
+});
+
+/* =====================================================
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  const variantUse = [
+    { use: 'primary' },
+    { use: 'secondary' },
+  ];
+  variantUse.forEach((item) => {
+    test(`Verify keyboard interaction when use=${item.use} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
+
+      await page.keyboard.press('Tab');
+
+      const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
+
+      await expect(firstCell).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+
+      const secondCell = page.locator('[role="gridcell"][aria-colindex="2"]').first();
+      await expect(secondCell).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      const secondCellSecondRow = page.locator('[role="gridcell"][aria-colindex="2"]').nth(1);
+      await expect(secondCellSecondRow).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(secondCell).not.toBeFocused();
+
+      if (browserName === 'firefox') test.skip();
+      await page.keyboard.press('Shift+Tab');
+      await expect(secondCellSecondRow).toBeFocused();
+    });
   });
 
-  test('Verify Secondary padding when sideIndent l is set', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-    await page.setContent(htmlContent);
-    const table = page.locator('[data-ui-name="DataTable"]');
-    await expect(table).toBeVisible();
+  const variant1fr = [
+    { use: 'primary', defaultGridTemplateColumnWidth: '1fr' },
+    { use: 'secondary', defaultGridTemplateColumnWidth: '1fr' },
+  ];
+  variant1fr.forEach((item) => {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
 
-    const cellsFirstColumn = page.locator('[aria-colindex="1"]');
-    const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
-    const cellsMLastColumn = page.locator('[aria-colindex="5"]');
-
-    const count1 = await cellsFirstColumn.count();
-    for (let i = 0; i < count1; i++) {
-      await checkStyles(cellsFirstColumn.nth(i), {
-        padding: '8px 8px 8px 20px',
-      });
-    }
-
-    const count2 = await cellsMiddleColumn.count();
-    for (let i = 0; i < count2; i++) {
-      await checkStyles(cellsMiddleColumn.nth(i), {
-        padding: '8px',
-      });
-    }
-    const count3 = await cellsMLastColumn.count();
-    for (let i = 0; i < count3; i++) {
-      await checkStyles(cellsMLastColumn.nth(i), {
-        padding: '8px 20px 8px 8px',
-      });
-    }
+      expect(widths[1]).toBeLessThanOrEqual(widths[2]);
+      expect(widths[1]).toBeCloseTo(widths[3], 1);
+      expect(widths[3]).toBeCloseTo(widths[4], 1);
+    });
   });
 
-  test('Verify styles when long text and icons in header', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-header.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
+  const variantAuto = [
+    { use: 'primary', defaultGridTemplateColumnWidth: 'auto' },
+    { use: 'secondary', defaultGridTemplateColumnWidth: 'auto' },
+  ];
+  variantAuto.forEach((item) => {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/base-one-level-header-props.tsx', 'en', item);
+      const widths = await Promise.all([1, 2, 3, 4, 5].map((i) => getColumnWidth(page, i)));
 
-    await page.setContent(htmlContent);
-    await expect(page).toHaveScreenshot();
-    const Icon = page.getByLabel('WhatsApp icon').first();
-    await Icon.hover();
-
-    await expect(page.getByText('WhatsApp icon')).toHaveCount(1);
-
-    await page.getByRole('columnheader', { name: 'cpc' }).hover();
-    await expect(page).toHaveScreenshot();
-
-    const elements = page.locator('[data-ui-name="Head.Column"]');
-    for (const element of await elements.all()) {
-      const alignItems = await element.evaluate((el) => window.getComputedStyle(el).alignItems);
-      expect(alignItems).toBe('flex-start');
-    }
-  });
-
-  test('Verify sorting icon style and interactions ', async ({ page, browserName }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    await expect(page).toHaveScreenshot();
-    const column1 = page.locator('[data-ui-name="Head.Column"][aria-colindex="1"]');
-    const buttonLink1 = column1.locator('button[data-ui-name="ButtonLink"]');
-    await column1.hover();
-    if (browserName !== 'firefox')
-      await expect(column1).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-    await expect(buttonLink1).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-    await buttonLink1.hover();
-    if (browserName !== 'firefox')
-      await expect(column1).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-    await expect(buttonLink1).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-    await expect(buttonLink1).toBeFocused();
-  });
-
-  test('Verify Column width by default - auto', async ({ page }) => {
-    const standPath = 'stories/components/data-table/docs/examples/secondary-table.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const widths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-
-    expect(widths[1]).toBeLessThan(widths[0]);
-    expect(widths[1]).toBeCloseTo(widths[2], 1);
-    expect(widths[2]).toBeLessThan(widths[3]);
-  });
-
-  test('Verify Column width when 1fr', async ({ page }) => {
-    const standPath =
-      'stories/components/data-table/tests/examples/header-tests/secondary-sorting.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const widths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
-
-    expect(widths[0]).toEqual(widths[1]);
-    expect(widths[1]).toEqual(widths[2]);
-    expect(widths[2]).toEqual(widths[3]);
+      expect(widths[1]).toBeLessThan(widths[0]);
+      expect(widths[2]).toBeLessThan(widths[0]);
+      expect(widths[1]).toBeLessThan(widths[4]);
+      expect(widths[2]).toBeLessThan(widths[4]);
+    });
   });
 });
