@@ -50,6 +50,11 @@ export type InputValueProps = BoxProps &
      * Placeholder for input
      */
     placeholder?: string;
+    /**
+     * Flag to enable autofocusing after component mounting
+     * @default false
+     */
+    autoFocus?: boolean;
   };
 
 export type InputAddonProps = BoxProps &
