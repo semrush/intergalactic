@@ -149,7 +149,6 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, [], {}, 
 
     return sstyled(styles)(
       <Popper.Popper
-        disableEnforceFocus
         zIndex={zIndex}
         tabIndex={0}
         autoFocus={autoFocus}
