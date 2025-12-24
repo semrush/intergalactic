@@ -277,7 +277,6 @@ describe('Pagination.PageInput.Value', () => {
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
-            {/* @ts-ignore */}
             <Pagination.PageInput.Addon data-testid='selectPageButton' tag={Return} interactive />
           </Pagination.PageInput>
         </Pagination>

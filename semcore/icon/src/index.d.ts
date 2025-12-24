@@ -1,8 +1,6 @@
 import { BoxProps } from '@semcore/base-components';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
+import { Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface IIconProps extends IconProps, UnknownProperties {}
 export type IconProps = BoxProps & {
     /** Icon width */
     width?: string | number;

@@ -63,6 +63,7 @@ function Icon(props, ref) {
       role={interactive ? 'button' : undefined}
       aria-hidden={interactive ? undefined : 'true'}
       {...propsForElement(other)}
+      tabIndex={interactive ? 0 : -1}
       style={Object.assign({}, style, other.style)}
       className={cn(className, other.className) || undefined}
       onKeyDown={onKeyDown}

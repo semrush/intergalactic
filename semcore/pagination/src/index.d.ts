@@ -66,6 +66,7 @@ declare const Pagination: Intergalactic.Component<
   >;
   PageInput: Intergalactic.Component<'div', PageInputProps, {}, [handlers: PaginationHandlers]> & {
     Value: typeof Input.Value;
+    Addon: typeof Input.Addon;
   };
 };
 
