@@ -437,11 +437,6 @@
       "import": "./core/lib/utils/enhances/animatedSizeEnhance.mjs",
       "types": "./core/lib/utils/enhances/animatedSizeEnhance.d.ts"
     },
-    "./core/lib/utils/enhances/autoFocusEnhance": {
-      "require": "./core/lib/utils/enhances/autoFocusEnhance.cjs",
-      "import": "./core/lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./core/lib/utils/enhances/autoFocusEnhance.d.ts"
-    },
     "./core/lib/utils/enhances/contextEnhance": {
       "require": "./core/lib/utils/enhances/contextEnhance.cjs",
       "import": "./core/lib/utils/enhances/contextEnhance.mjs",

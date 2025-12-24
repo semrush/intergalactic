@@ -1,7 +1,6 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import CheckM from '@semcore/icon/Check/m';
@@ -289,9 +288,6 @@ class Value extends Component<RootAsProps, [], { value: any }> {
   static defaultProps = {
     defaultValue: '',
   };
-
-  static enhance = [autoFocusEnhance()];
-  static hoistProps = ['disabled'];
 
   uncontrolledProps() {
     return {

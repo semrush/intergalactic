@@ -1,6 +1,5 @@
 import type { BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import type React from 'react';
 
 export type InputSize = 'm' | 'l';
@@ -25,8 +24,7 @@ export type InputProps = BoxProps &
   };
 
 export type InputValueProps = BoxProps &
-  NeighborItemProps &
-  WithAutoFocusEnhanceProps & {
+  NeighborItemProps & {
     /**
      * Input value
      */

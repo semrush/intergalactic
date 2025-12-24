@@ -1,7 +1,6 @@
 import { Box, Flex, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
@@ -114,7 +113,7 @@ class ValueRoot extends Component {
     };
   };
 
-  static enhance = [autoFocusEnhance(), resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 

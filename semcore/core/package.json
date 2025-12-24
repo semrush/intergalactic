@@ -71,11 +71,6 @@
       "import": "./lib/utils/enhances/animatedSizeEnhance.mjs",
       "types": "./lib/utils/enhances/animatedSizeEnhance.d.ts"
     },
-    "./lib/utils/enhances/autoFocusEnhance": {
-      "require": "./lib/utils/enhances/autoFocusEnhance.js",
-      "import": "./lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./lib/utils/enhances/autoFocusEnhance.d.ts"
-    },
     "./lib/utils/enhances/contextEnhance": {
       "require": "./lib/utils/enhances/contextEnhance.js",
       "import": "./lib/utils/enhances/contextEnhance.mjs",
