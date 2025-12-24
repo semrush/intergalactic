@@ -1,7 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import React from 'react';
@@ -26,7 +25,7 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance(), colorResolverEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
   plotId = uniqueId();
 

@@ -1,7 +1,6 @@
-import { createComponent, sstyled, Component, Root, type IRootComponentProps } from '@semcore/core';
+import { createComponent, sstyled, Component, Root, type IRootComponentProps, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -46,7 +45,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()] as const;
+  static enhance = [uniqueIDEnhancement()] as const;
 
   static defaultProps: () => DefaultProps = () => ({
     container: React.createRef<HTMLElement | null>(),
@@ -203,7 +202,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
 
   handleFocusIn = (e: FocusEvent) => {
     setTimeout(() => {
-      const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
+      const { leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
       if (
         e.target instanceof HTMLElement &&
@@ -227,7 +226,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
             Math.floor(element.left) >= viewPort.right - offset.right ||
             Math.floor(element.right) <= viewPort.left + offset.left;
 
-          if (outOfViewport && keyboardFocused) {
+          if (outOfViewport && lastInteraction.isKeyboard()) {
             this.$container.scrollTo({
               top: element.top + this.$container.scrollTop - offset.top - viewPort.top,
               left: element.left + this.$container.scrollLeft - offset.left - viewPort.left,

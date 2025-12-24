@@ -46,6 +46,7 @@ export type FeaturePopoverPopperInnerProps = {
   $onCloseClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   animationsDisabled: boolean;
   getI18nText: (message: string, opts?: Record<string, unknown>) => string;
+  autofocus: boolean;
 };
 
 export type FeaturePopoverContext = PopperContext & {

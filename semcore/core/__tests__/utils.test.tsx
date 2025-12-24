@@ -6,20 +6,14 @@ import {
   describe,
   beforeEach,
   vi,
-  it,
   afterEach,
 } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import { extractAriaProps } from '../src/utils/ariaProps';
 import assignProps, { assignHandlers } from '../src/utils/assignProps';
 import { shade, opacity } from '../src/utils/color';
 import compose from '../src/utils/compose';
-import type {
-  KeyboardFocusEnhanceHook,
-} from '../src/utils/enhances/keyboardFocusEnhance';
-import keyboardFocusEnhance from '../src/utils/enhances/keyboardFocusEnhance';
 import EventEmitter from '../src/utils/eventEmitter';
 import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/utils/focus-lock/focusBorders';
 import { isFocusable } from '../src/utils/focus-lock/isFocusable';
@@ -424,37 +418,6 @@ describe('Utils ref', () => {
     setRef(fn, div);
     expect(fn).toHaveBeenCalledWith(div);
   });
-});
-
-describe('Enhances - keyboardFocusEnhances', () => {
-  beforeEach(cleanup);
-
-  test.concurrent(
-    'Verify keyboardFocus returns keyboardFocused to false if component is disabled',
-    () => {
-      const enhance = keyboardFocusEnhance();
-
-      const { result, rerender } = renderHook<
-        ReturnType<KeyboardFocusEnhanceHook>,
-        { disabled: boolean }
-      >(enhance, { initialProps: { disabled: false } });
-
-      act(() => {
-        // @ts-ignore
-        result.current.onFocus({});
-      });
-
-      expect(result.current.keyboardFocused).toBe(true);
-
-      rerender({ disabled: true });
-
-      expect(result.current.keyboardFocused).toBe(false);
-
-      rerender({ disabled: false });
-
-      expect(result.current.keyboardFocused).toBe(false);
-    },
-  );
 });
 
 describe('extractAriaProps', () => {

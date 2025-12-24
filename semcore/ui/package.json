@@ -437,11 +437,6 @@
       "import": "./core/lib/utils/enhances/animatedSizeEnhance.mjs",
       "types": "./core/lib/utils/enhances/animatedSizeEnhance.d.ts"
     },
-    "./core/lib/utils/enhances/autoFocusEnhance": {
-      "require": "./core/lib/utils/enhances/autoFocusEnhance.cjs",
-      "import": "./core/lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./core/lib/utils/enhances/autoFocusEnhance.d.ts"
-    },
     "./core/lib/utils/enhances/contextEnhance": {
       "require": "./core/lib/utils/enhances/contextEnhance.cjs",
       "import": "./core/lib/utils/enhances/contextEnhance.mjs",
@@ -451,11 +446,6 @@
       "require": "./core/lib/utils/enhances/i18nEnhance.cjs",
       "import": "./core/lib/utils/enhances/i18nEnhance.mjs",
       "types": "./core/lib/utils/enhances/i18nEnhance.d.ts"
-    },
-    "./core/lib/utils/enhances/keyboardFocusEnhance": {
-      "require": "./core/lib/utils/enhances/keyboardFocusEnhance.cjs",
-      "import": "./core/lib/utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./core/lib/utils/enhances/keyboardFocusEnhance.d.ts"
     },
     "./core/lib/utils/enhances/resolveColorEnhance": {
       "require": "./core/lib/utils/enhances/resolveColorEnhance.cjs",

@@ -3,7 +3,6 @@ import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import type { IRootComponentProps, Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
@@ -240,6 +239,7 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
     getI18nText,
     focusNext,
     focusPrev,
+    disabled,
   } = props;
   const SStepper = Root;
   const SStepNumber = 'span';
@@ -275,6 +275,7 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
     <SStepper
       render={Box}
       role='tab'
+      tabIndex={disabled ? undefined : 0}
       onClick={handlerClick}
       onKeyDown={handlerKeyDown}
     >
@@ -286,8 +287,6 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
     </SStepper>,
   );
 }
-
-Stepper.enhance = [keyboardFocusEnhance()];
 
 function Content(props: WizardContentProps & IRootComponentProps) {
   const { Children, styles } = props;

@@ -1,6 +1,5 @@
 import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 
 export type CheckboxSize = 'm' | 'l';
@@ -35,9 +34,7 @@ export type CheckboxProps = BoxProps & {
   theme?: string;
 };
 
-export type CheckboxValueProps = WithAutoFocusEnhanceProps &
-  FlexProps &
-  CheckboxValueControlProps;
+export type CheckboxValueProps = FlexProps & CheckboxValueControlProps;
 
 export type CheckboxValueControlProps = {};
 export type CheckboxValueCheckMarkProps = {};

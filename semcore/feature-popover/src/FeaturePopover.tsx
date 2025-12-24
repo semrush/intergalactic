@@ -124,7 +124,18 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, [], {}, 
   static defaultProps = {
     closeIcon: false,
     duration: 200,
+    autoFocus: true,
   };
+
+  popperRef = React.createRef<HTMLDivElement>();
+
+  componentDidMount() {
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.popperRef.current?.focus();
+      }, 0);
+    }
+  }
 
   render() {
     const SFeaturePopover = Root;
@@ -144,15 +155,14 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, [], {}, 
       'aria-labelledby': ariaLabelledby,
       title,
       theme,
-      autoFocus = true,
     } = this.asProps;
 
     return sstyled(styles)(
       <Popper.Popper
+        ref={this.popperRef}
         disableEnforceFocus
         zIndex={zIndex}
         tabIndex={0}
-        autoFocus={autoFocus}
         role='dialog'
         aria-describedby={ariaDescribedBy}
         aria-label={ariaLabel}

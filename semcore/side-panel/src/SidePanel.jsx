@@ -2,7 +2,6 @@ import { FadeInOut, Slide, Flex, Box, OutsideClick, PortalProvider, Portal } fro
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import fire from '@semcore/core/lib/utils/fire';
 import logger from '@semcore/core/lib/utils/logger';
@@ -217,7 +216,6 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
     </SClose>,
   );
 }
-Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
   const STitle = Root;
