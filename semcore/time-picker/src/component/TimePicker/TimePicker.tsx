@@ -1,5 +1,6 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import reactive from '@semcore/core/lib/decorators/reactive';
+import trackPropsChanges from '@semcore/core/lib/decorators/trackPropsChanges';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
@@ -12,7 +13,6 @@ import type {
   TimePickerField,
   TimePickerSeparatorProps,
 } from './TimePicker.type';
-import trackPropsChanges from '../../../../core/src/decorators/trackPropsChanges';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import Format from '../PickerFormat/PickerFormat';
