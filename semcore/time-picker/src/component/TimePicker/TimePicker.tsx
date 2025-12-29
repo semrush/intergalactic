@@ -42,7 +42,7 @@ class TimePickerRoot extends Component<TimePickerProps, {}, {}, typeof TimePicke
   @reactive(['meridiem'], function () {
     this.forceUpdate();
   })
-  readonly entity = new TimePickerEntity(this.props.value, { is12Hour: this.props.is12Hour });
+  readonly entity = new TimePickerEntity(this.props.value, this.props.is12Hour);
 
   @callOnPropsChange<TimePickerProps>(['value'])
   watchProps() {

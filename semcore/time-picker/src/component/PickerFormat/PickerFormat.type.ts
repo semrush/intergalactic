@@ -7,13 +7,13 @@ export type TimePickerFormatProps = BoxProps & {};
 
 export type TimePickerFormatPropsInternal = {
   /** Internal */
-  getI18nText?: ReturnType<typeof useI18n>;
+  getI18nText: ReturnType<typeof useI18n>;
   /** Internal */
-  size?: 'm' | 'l';
+  size: 'm' | 'l';
   /** Internal */
-  disabled?: boolean;
+  disabled: boolean;
   /** Internal */
-  meridiem?: TimePickerMeridiem;
+  meridiem: TimePickerMeridiem;
   /** Internal */
-  onClick?: (event: React.SyntheticEvent) => void;
+  onClick: (event: React.SyntheticEvent) => void;
 };

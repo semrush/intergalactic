@@ -17,7 +17,7 @@ class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof T
   handleClick = () => {
     setTimeout(() => {
       const { meridiem, getI18nText } = this.asProps;
-      this.setState({ changedFormatNotice: getI18nText?.('changedFormatNotice', { meridiem }) });
+      this.setState({ changedFormatNotice: getI18nText('changedFormatNotice', { meridiem }) });
     }, 0);
 
     setTimeout(() => {
@@ -47,7 +47,7 @@ class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof T
           {changedFormatNotice}
         </ScreenReaderOnly>
         <ScreenReaderOnly aria-hidden='true' id={`${uid}_describe`}>
-          {getI18nText?.('formatToggler')}
+          {getI18nText('formatToggler')}
         </ScreenReaderOnly>
       </>,
     );

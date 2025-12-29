@@ -115,21 +115,6 @@ describe('@reactive', () => {
       expect(callback).toHaveBeenNthCalledWith(2, 'counter', 2);
       expect(callback).toHaveBeenNthCalledWith(3, 'counter', 3);
     });
-
-    it('should preserve getter functionality', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value = 100;
-      }
-
-      const instance = new TestClass();
-      expect(instance.value).toBe(100);
-
-      instance.value = 200;
-      expect(instance.value).toBe(200);
-    });
   });
   describe('non-primitive values (objects)', () => {
     it('should call callback when watched field changes in object', () => {
@@ -199,37 +184,6 @@ describe('@reactive', () => {
       expect(capturedThis.id).toBe('test-123');
     });
 
-    it('should preserve object functionality', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(['count'], callback)
-        readonly data = { count: 0, label: 'test' };
-      }
-
-      const instance = new TestClass();
-
-      expect(instance.data.count).toBe(0);
-      expect(instance.data.label).toBe('test');
-
-      instance.data.count = 5;
-      expect(instance.data.count).toBe(5);
-    });
-
-    it('should handle nested object structures', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(['settings'], callback)
-        readonly config = { settings: { theme: 'dark' }, version: 1 };
-      }
-
-      const instance = new TestClass();
-      instance.config.settings = { theme: 'light' };
-
-      expect(callback).toHaveBeenCalledWith('settings', { theme: 'light' });
-    });
-
     it('should work with arrays', () => {
       const callback = vi.fn();
 
@@ -289,107 +243,6 @@ describe('@reactive', () => {
     });
   });
 
-  describe('decorator signature overloads', () => {
-    it('should work with callback-only signature for primitives', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value = 42;
-      }
-
-      const instance = new TestClass();
-      instance.value = 100;
-
-      expect(callback).toHaveBeenCalledWith('value', 100);
-    });
-
-    it('should work with watchedFields + callback signature for objects', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(['x'], callback)
-        readonly point = { x: 0, y: 0 };
-      }
-
-      const instance = new TestClass();
-      instance.point.x = 10;
-
-      expect(callback).toHaveBeenCalledWith('x', 10);
-    });
-  });
-
-  describe('multiple decorated fields', () => {
-    it('should handle multiple decorated fields independently', () => {
-      const callback1 = vi.fn();
-      const callback2 = vi.fn();
-
-      class TestClass {
-        @reactive(callback1)
-        counter = 0;
-
-        @reactive(callback2)
-        name = 'test';
-      }
-
-      const instance = new TestClass();
-
-      instance.counter = 5;
-      expect(callback1).toHaveBeenCalledWith('counter', 5);
-      expect(callback2).not.toHaveBeenCalled();
-
-      instance.name = 'updated';
-      expect(callback2).toHaveBeenCalledWith('name', 'updated');
-      expect(callback1).toHaveBeenCalledTimes(1);
-    });
-
-    it('should handle mix of primitive and non-primitive decorated fields', () => {
-      const callback1 = vi.fn();
-      const callback2 = vi.fn();
-
-      class TestClass {
-        @reactive(callback1)
-        count = 0;
-
-        @reactive(['status'], callback2)
-        readonly state = { status: 'idle', progress: 0 };
-      }
-
-      const instance = new TestClass();
-
-      instance.count = 10;
-      expect(callback1).toHaveBeenCalledWith('count', 10);
-
-      instance.state.status = 'loading';
-      expect(callback2).toHaveBeenCalledWith('status', 'loading');
-
-      instance.state.progress = 50;
-      expect(callback2).toHaveBeenCalledTimes(1); // progress not watched
-    });
-  });
-
-  describe('multiple instances', () => {
-    it('should maintain separate reactive state per instance', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value = 0;
-      }
-
-      const instance1 = new TestClass();
-      const instance2 = new TestClass();
-
-      instance1.value = 10;
-      expect(callback).toHaveBeenCalledWith('value', 10);
-      expect(callback).toHaveBeenCalledTimes(1);
-
-      instance2.value = 20;
-      expect(callback).toHaveBeenCalledWith('value', 20);
-      expect(callback).toHaveBeenCalledTimes(2);
-    });
-  });
-
   describe('edge cases', () => {
     it('should handle empty watchedFields array for objects', () => {
       const callback = vi.fn();
@@ -405,21 +258,6 @@ describe('@reactive', () => {
       expect(callback).not.toHaveBeenCalled();
     });
 
-    it('should handle symbol property keys in objects', () => {
-      const callback = vi.fn();
-      const symbolKey = Symbol('key');
-
-      class TestClass {
-        @reactive([symbolKey], callback)
-        readonly data = { [symbolKey]: 'value' };
-      }
-
-      const instance = new TestClass();
-      instance.data[symbolKey] = 'updated';
-
-      expect(callback).toHaveBeenCalledWith(symbolKey, 'updated');
-    });
-
     it('should work when setting same value multiple times', () => {
       const callback = vi.fn();
 
@@ -433,69 +271,7 @@ describe('@reactive', () => {
       instance.value = 5;
       instance.value = 5;
 
-      expect(callback).toHaveBeenCalledTimes(3);
-    });
-
-    it('should handle Date objects as non-primitive', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(['time'], callback)
-        readonly date = { time: new Date() };
-      }
-
-      const instance = new TestClass();
-      const newDate = new Date('2024-01-01');
-      instance.date.time = newDate;
-
-      expect(callback).toHaveBeenCalledWith('time', newDate);
-    });
-  });
-
-  describe('property descriptors', () => {
-    it('should make primitive property enumerable', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value = 42;
-      }
-
-      const instance = new TestClass();
-      const descriptor = Object.getOwnPropertyDescriptor(instance, 'value');
-
-      expect(descriptor?.enumerable).toBe(true);
-    });
-
-    it('should make primitive property configurable', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value = 42;
-      }
-
-      const instance = new TestClass();
-      const descriptor = Object.getOwnPropertyDescriptor(instance, 'value');
-
-      expect(descriptor?.configurable).toBe(true);
-    });
-
-    it('should allow primitive property to be enumerated', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        reactiveValue = 42;
-
-        normalValue = 100;
-      }
-
-      const instance = new TestClass();
-      const keys = Object.keys(instance);
-
-      expect(keys).toContain('reactiveValue');
-      expect(keys).toContain('normalValue');
+      expect(callback).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -3,16 +3,16 @@ import type { TimePickerMeridiem } from '../component/TimePicker/TimePicker.type
 class TimePickerEntity {
   private _hours: string = '';
   private _minutes: string = '';
-  private _options: { is12Hour?: boolean };
+  private is12Hour: undefined | boolean;
   private _meridiem: TimePickerMeridiem = 'AM';
 
   constructor(
     value: string = ':', // should be in the format 'HH:mm'
-    options: { is12Hour?: boolean },
+    is12Hour?: boolean,
   ) {
     const [hours = '', minutes = ''] = value.split(':');
 
-    this._options = options;
+    this.is12Hour = is12Hour;
     this._hours = hours;
     this._minutes = minutes;
   }
@@ -22,17 +22,11 @@ class TimePickerEntity {
   }
 
   get hours() {
-    const { is12Hour } = this.options;
-
-    return is12Hour ? this.formatHoursTo12(this._hours) : this.formatHoursTo24(this._hours);
+    return this.is12Hour ? this.formatHoursTo12(this._hours) : this.formatHoursTo24(this._hours);
   }
 
   get minutes() {
     return this._minutes && this.withLeadingZero(this._minutes);
-  }
-
-  get options() {
-    return this._options;
   }
 
   set hours(newHours) {
@@ -41,10 +35,6 @@ class TimePickerEntity {
 
   set minutes(newMinutes) {
     this._minutes = newMinutes;
-  }
-
-  set options(newOptions) {
-    this._options = newOptions;
   }
 
   set meridiem(newMeridiem) {
@@ -86,9 +76,7 @@ class TimePickerEntity {
   }
 
   toString() {
-    const { is12Hour } = this.options;
-
-    const hours = is12Hour ? this.formatHoursTo24(this.hours) : this.hours;
+    const hours = this.is12Hour ? this.formatHoursTo24(this.hours) : this.hours;
 
     return `${hours}:${this.minutes}`;
   }

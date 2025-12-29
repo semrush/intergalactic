@@ -6,7 +6,6 @@ import React from 'react';
 
 import style from './picker-input.shadow.css';
 import type { PickerInputMinMax, PickerInputProps } from './PickerInput.type';
-import { withLeadingZero } from '../../utils';
 import type { TimePickerField } from '../TimePicker/TimePicker.type';
 
 function getOptions(minMax: PickerInputMinMax, step = 1) {
