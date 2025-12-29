@@ -46,8 +46,13 @@ function reactive<
             return value;
           },
           set(newValue) {
+            const oldValue = value;
+
             value = newValue;
-            callback.call(thisRoot, name, newValue);
+
+            if (oldValue !== newValue) {
+              callback.call(thisRoot, name, newValue);
+            }
           },
           enumerable: true,
           configurable: true,

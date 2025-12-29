@@ -1,7 +1,12 @@
 import { describe, it, expect, vi, Test } from '@semcore/testing-utils/vitest';
 
-import callOnPropsChange from '../src/decorators/callOnPropsChange';
 import reactive from '../src/decorators/reactive';
+import trackPropsChanges from '../src/decorators/trackPropsChanges';
+
+interface TestProps {
+  name: string;
+  age: number;
+}
 
 describe('@reactive', () => {
   describe('primitive values', () => {
@@ -276,695 +281,262 @@ describe('@reactive', () => {
   });
 });
 
-describe('@callOnPropsChange', () => {
-  describe('basic functionality', () => {
-    it('should call decorated function when watched prop changes', () => {
-      const mockFn = vi.fn();
+describe('@trackPropsChanges', () => {
+  describe('Basic functionality', () => {
+    it('should track specified props changes', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class RootClass {
-        props = { count: 0, name: 'test' };
-      }
+      @trackPropsChanges(['name', 'age'])
+      class TestComponent {
+        props: TestProps;
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        handleChange() {
-          mockFn();
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
 
-      instance.props.count = 1;
-      instance.handleChange();
+      component.render();
+      expect(onPropsChangeSpy).not.toHaveBeenCalled();
 
-      expect(mockFn).toHaveBeenCalledTimes(1);
+      component.props = { name: 'Jane', age: 30 };
+      component.render();
+
+      expect(onPropsChangeSpy).toHaveBeenCalledWith({ name: 'Jane' });
+      expect(onPropsChangeSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT call decorated function when watched prop has not changed', () => {
-      const mockFn = vi.fn();
+    it('should detect multiple props changes', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class RootClass {
-        props = { count: 0 };
-      }
+      @trackPropsChanges(['name', 'age'])
+      class TestComponent {
+        props: TestProps;
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        handleChange() {
-          mockFn();
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
+      component.render();
 
-      instance.handleChange();
-      instance.handleChange();
+      component.props = { name: 'Jane', age: 25 };
+      component.render();
 
-      expect(mockFn).toHaveBeenCalledTimes(0);
+      expect(onPropsChangeSpy).toHaveBeenCalledWith({ name: 'Jane', age: 25 });
     });
 
-    it('should NOT call function when non-watched prop changes', () => {
-      const mockFn = vi.fn();
+    it('should not call onPropsChange when no tracked props changed', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class RootClass {
-        props = { count: 0, name: 'test' };
-      }
+      @trackPropsChanges(['name'])
+      class TestComponent {
+        props: TestProps;
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        handleChange() {
-          mockFn();
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
+      component.render();
 
-      instance.props.name = 'updated';
-      instance.handleChange();
+      component.props = { name: 'John', age: 25 };
+      component.render();
 
-      expect(mockFn).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('multiple watched props', () => {
-    it('should call function when any watched prop changes', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { count: 0, name: 'test', status: 'idle' };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count', 'name'])
-        handleChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.count = 1;
-      instance.handleChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
-
-      instance.props.name = 'updated';
-      instance.handleChange();
-      expect(mockFn).toHaveBeenCalledTimes(2);
-    });
-
-    it('should NOT call function when all watched props remain unchanged', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { x: 0, y: 0, z: 0 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['x', 'y'])
-        handleChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.z = 10;
-      instance.handleChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-    });
-
-    it('should update all changed props tracking on single call', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { a: 1, b: 2, c: 3 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['a', 'b', 'c'])
-        handleChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.a = 10;
-      instance.props.b = 20;
-      instance.props.c = 30;
-      instance.handleChange();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-
-      instance.handleChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
+      expect(onPropsChangeSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('function arguments and return values', () => {
-    it('should pass arguments to decorated function', () => {
-      const mockFn = vi.fn();
+  describe('Reference equality for objects and arrays', () => {
+    it('should detect object reference changes', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class RootClass {
-        props = { value: 0 };
+      interface ObjectProps {
+        user: { name: string };
       }
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        handleChange(arg1: string, arg2: number) {
-          mockFn(arg1, arg2);
+      @trackPropsChanges(['user'])
+      class TestComponent {
+        props: ObjectProps;
+
+        constructor(props: ObjectProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<ObjectProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const user = { name: 'John' };
+      const component = new TestComponent({ user });
+      component.render();
 
-      instance.props.value = 1;
-      instance.handleChange('test', 42);
+      component.props = { user };
+      component.render();
+      expect(onPropsChangeSpy).not.toHaveBeenCalled();
 
-      expect(mockFn).toHaveBeenCalledWith('test', 42);
+      component.props = { user: { name: 'John' } };
+      component.render();
+      expect(onPropsChangeSpy).toHaveBeenCalledWith({ user: { name: 'John' } });
     });
 
-    it('should return value from decorated function', () => {
-      class RootClass {
-        props = { count: 0 };
+    it('should detect array reference changes', () => {
+      const onPropsChangeSpy = vi.fn();
+
+      interface ArrayProps {
+        items: string[];
       }
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        calculate(multiplier: number): number {
-          return this.props.count * multiplier;
+      @trackPropsChanges(['items'])
+      class TestComponent {
+        props: ArrayProps;
+
+        constructor(props: ArrayProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<ArrayProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const items = ['a', 'b'];
+      const component = new TestComponent({ items });
+      component.render();
 
-      instance.props.count = 5;
-      const result = instance.calculate(3);
+      component.props = { items: ['a', 'b'] };
+      component.render();
 
-      expect(result).toBe(15);
-    });
-
-    it('should return undefined when function is not called', () => {
-      class RootClass {
-        props = { value: 10 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        getValue(): number {
-          return this.props.value;
-        }
-      }
-
-      const instance = new TestClass();
-
-      const result = instance.getValue();
-
-      expect(result).toBeUndefined();
-    });
-
-    it('should handle functions with no arguments', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { flag: false };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['flag'])
-        toggle() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.flag = true;
-      instance.toggle();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
+      expect(onPropsChangeSpy).toHaveBeenCalledWith({ items: ['a', 'b'] });
     });
   });
 
-  describe('context (this) binding', () => {
-    it('should preserve correct "this" context', () => {
-      let capturedThis: any;
+  describe('Edge cases', () => {
+    it('should handle empty propsToWatch array', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class RootClass {
-        props = { value: 0 };
-      }
+      @trackPropsChanges([])
+      class TestComponent {
+        props: TestProps;
 
-      class TestClass extends RootClass {
-        id = 'test-123';
+        constructor(props: TestProps) {
+          this.props = props;
+        }
 
-        @callOnPropsChange(['value'])
-        handleChange() {
-          capturedThis = this;
+        onPropsChange(changedProps: Partial<TestProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
 
-      instance.props.value = 1;
-      instance.handleChange();
+      component.render();
 
-      expect(capturedThis).toBe(instance);
-      expect(capturedThis.id).toBe('test-123');
+      component.props = { name: 'Jane', age: 25 };
+      component.render();
+
+      expect(onPropsChangeSpy).not.toHaveBeenCalled();
     });
 
-    it('should allow accessing other instance properties', () => {
-      class RootClass {
-        props = { multiplier: 2 };
-      }
+    it('should work with multiple renders without prop changes', () => {
+      const onPropsChangeSpy = vi.fn();
 
-      class TestClass extends RootClass {
-        baseValue = 10;
+      @trackPropsChanges(['name'])
+      class TestComponent {
+        props: TestProps;
 
-        @callOnPropsChange(['multiplier'])
-        calculate(): number {
-          return this.baseValue * this.props.multiplier;
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {
+          onPropsChangeSpy(changedProps);
+        }
+
+        render() {
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
 
-      instance.props.multiplier = 3;
-      const result = instance.calculate();
+      component.render();
+      component.render();
+      component.render();
 
-      expect(result).toBe(30);
-    });
-  });
-
-  describe('different prop value types', () => {
-    it('should handle string props', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { name: 'John' };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['name'])
-        onNameChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.name = 'Jane';
-      instance.onNameChange();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should handle boolean props', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { isActive: false };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['isActive'])
-        onToggle() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.isActive = true;
-      instance.onToggle();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should handle null and undefined props', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props: { value: string | null } = { value: null };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.value = 'defined';
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
-
-      instance.props.value = null;
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(2);
-    });
-
-    it('should handle object props with reference comparison', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { user: { name: 'John' } };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['user'])
-        onUserChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.onUserChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.onUserChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.props.user = { name: 'Jane' };
-      instance.onUserChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should handle array props with reference comparison', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { items: [1, 2, 3] };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['items'])
-        onItemsChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.onItemsChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.props.items.push(4);
-      instance.onItemsChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.props.items = [5, 6, 7];
-      instance.onItemsChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
+      expect(onPropsChangeSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('multiple decorated methods', () => {
-    it('should track props independently for different methods', () => {
-      const mockFn1 = vi.fn();
-      const mockFn2 = vi.fn();
+  describe('Render behavior', () => {
+    it('should call onPropsChange before parent render', () => {
+      const callOrder: string[] = [];
 
-      class RootClass {
-        props = { count: 0, name: 'test' };
-      }
+      @trackPropsChanges(['name'])
+      class TestComponent {
+        props: TestProps;
 
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        onCountChange() {
-          mockFn1();
+        constructor(props: TestProps) {
+          this.props = props;
         }
 
-        @callOnPropsChange(['name'])
-        onNameChange() {
-          mockFn2();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.count = 1;
-      instance.onCountChange();
-      expect(mockFn1).toHaveBeenCalledTimes(1);
-      expect(mockFn2).not.toHaveBeenCalled();
-
-      instance.props.name = 'updated';
-      instance.onNameChange();
-      expect(mockFn1).toHaveBeenCalledTimes(1);
-      expect(mockFn2).toHaveBeenCalledTimes(1);
-    });
-
-    it('should allow same prop watched by multiple methods', () => {
-      const mockFn1 = vi.fn();
-      const mockFn2 = vi.fn();
-
-      class RootClass {
-        props = { value: 0 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        handler1() {
-          mockFn1();
+        onPropsChange(changedProps: Partial<TestProps>) {
+          callOrder.push('onPropsChange');
         }
 
-        @callOnPropsChange(['value'])
-        handler2() {
-          mockFn2();
+        render() {
+          callOrder.push('render');
+          return 'rendered';
         }
       }
 
-      const instance = new TestClass();
+      const component = new TestComponent({ name: 'John', age: 30 });
+      component.render();
 
-      instance.props.value = 1;
-      instance.handler1();
-      instance.handler2();
+      component.props = { name: 'Jane', age: 30 };
+      component.render();
 
-      expect(mockFn1).toHaveBeenCalledTimes(1);
-      expect(mockFn2).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('inheritance scenarios', () => {
-    it('should work with multi-level inheritance', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { value: 0 };
-      }
-
-      class MiddleClass extends RootClass {
-        multiplier = 2;
-      }
-
-      class TestClass extends MiddleClass {
-        @callOnPropsChange(['value'])
-        calculate() {
-          mockFn(this.props.value * this.multiplier);
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.value = 5;
-      instance.calculate();
-
-      expect(mockFn).toHaveBeenCalledWith(10);
-    });
-
-    it('should work when props are defined in parent constructor', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props: { count: number };
-
-        constructor() {
-          this.props = { count: 0 };
-        }
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.count = 5;
-      instance.onChange();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should work with child class overriding props', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { value: 0 };
-      }
-
-      class TestClass extends RootClass {
-        props = { value: 10, extra: 'test' };
-
-        @callOnPropsChange(['value'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.value = 20;
-      instance.onChange();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('edge cases', () => {
-    it('should handle empty watched props array', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { value: 0 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange([])
-        handleChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.value = 1;
-      instance.handleChange();
-
-      expect(mockFn).not.toHaveBeenCalled();
-    });
-
-    it('should handle props changing from undefined to defined', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props: { value?: number } = {};
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.props.value = 42;
-      instance.onChange();
-
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should handle setting prop to same value (no change)', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { count: 5 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['count'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.props.count = 5;
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-    });
-
-    it('should handle rapid prop changes', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { value: 0 };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      for (let i = 1; i <= 10; i++) {
-        instance.props.value = i;
-        instance.onChange();
-      }
-
-      expect(mockFn).toHaveBeenCalledTimes(10);
-    });
-
-    it('should handle prop changing back to original value', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { flag: false };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['flag'])
-        onToggle() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.onToggle();
-      expect(mockFn).toHaveBeenCalledTimes(0);
-
-      instance.props.flag = true;
-      instance.onToggle();
-      expect(mockFn).toHaveBeenCalledTimes(1);
-
-      instance.props.flag = false;
-      instance.onToggle();
-      expect(mockFn).toHaveBeenCalledTimes(2);
-    });
-
-    it('should handle NaN comparison correctly', () => {
-      const mockFn = vi.fn();
-
-      class RootClass {
-        props = { value: NaN };
-      }
-
-      class TestClass extends RootClass {
-        @callOnPropsChange(['value'])
-        onChange() {
-          mockFn();
-        }
-      }
-
-      const instance = new TestClass();
-
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(1);
-
-      instance.onChange();
-      expect(mockFn).toHaveBeenCalledTimes(2);
+      expect(callOrder).toEqual(['render', 'onPropsChange', 'render']);
     });
   });
 });

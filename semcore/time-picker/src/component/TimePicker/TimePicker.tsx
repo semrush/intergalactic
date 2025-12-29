@@ -1,5 +1,4 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import callOnPropsChange from '@semcore/core/lib/decorators/callOnPropsChange';
 import reactive from '@semcore/core/lib/decorators/reactive';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box } from '@semcore/flex-box';
@@ -13,11 +12,13 @@ import type {
   TimePickerField,
   TimePickerSeparatorProps,
 } from './TimePicker.type';
+import trackPropsChanges from '../../../../core/src/decorators/trackPropsChanges';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import Format from '../PickerFormat/PickerFormat';
 import { Hours, Minutes } from '../PickerInput/PickerInput';
 
+@trackPropsChanges(['value'])
 class TimePickerRoot extends Component<TimePickerProps, {}, {}, typeof TimePickerRoot.enhance> {
   static displayName = 'TimePicker';
   static style = style;
@@ -44,9 +45,11 @@ class TimePickerRoot extends Component<TimePickerProps, {}, {}, typeof TimePicke
   })
   readonly entity = new TimePickerEntity(this.props.value, this.props.is12Hour);
 
-  @callOnPropsChange<TimePickerProps>(['value'])
-  watchProps() {
-    const { value = ':' } = this.props;
+  onPropsChange(changedProps: TimePickerProps) {
+    const { value } = changedProps;
+
+    if (!value) return;
+
     const [hours = '', minutes = ''] = value.split(':');
 
     this.entity.hours = hours;
