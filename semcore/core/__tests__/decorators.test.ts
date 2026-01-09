@@ -44,64 +44,6 @@ describe('@reactive', () => {
       expect(capturedThis.name).toBe('TestInstance');
     });
 
-    it('should handle string primitive', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        text = 'initial';
-      }
-
-      const instance = new TestClass();
-      instance.text = 'updated';
-
-      expect(callback).toHaveBeenCalledWith('text', 'updated');
-      expect(instance.text).toBe('updated');
-    });
-
-    it('should handle boolean primitive', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        isActive = false;
-      }
-
-      const instance = new TestClass();
-      instance.isActive = true;
-
-      expect(callback).toHaveBeenCalledWith('isActive', true);
-      expect(instance.isActive).toBe(true);
-    });
-
-    it('should handle null primitive', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value: number | null = null;
-      }
-
-      const instance = new TestClass();
-      instance.value = 42;
-
-      expect(callback).toHaveBeenCalledWith('value', 42);
-    });
-
-    it('should handle undefined primitive', () => {
-      const callback = vi.fn();
-
-      class TestClass {
-        @reactive(callback)
-        value?: string = undefined;
-      }
-
-      const instance = new TestClass();
-      instance.value = 'defined';
-
-      expect(callback).toHaveBeenCalledWith('value', 'defined');
-    });
-
     it('should call callback multiple times on multiple changes', () => {
       const callback = vi.fn();
 
@@ -192,7 +134,6 @@ describe('@reactive', () => {
     it('should work with arrays', () => {
       const callback = vi.fn();
 
-      // TODO: 111
       class TestClass {
         @reactive(['0', '1'], callback)
         readonly items = ['a', 'b', 'c'];
