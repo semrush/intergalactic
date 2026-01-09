@@ -151,7 +151,7 @@ describe('@reactive', () => {
       expect(callback).toHaveBeenCalledTimes(2); // index 2 not watched
     });
 
-    it('should be called for every change when watchedFields=undefined', () => {
+    it('should not be called for every change when watchedFields is not defined', () => {
       const arrCallback = vi.fn();
       const objCallback = vi.fn();
 
@@ -166,26 +166,24 @@ describe('@reactive', () => {
       const instance = new TestClass();
 
       instance.items[0] = 'x';
-      expect(arrCallback).toHaveBeenCalledWith('0', 'x');
+      expect(arrCallback).not.toHaveBeenCalled();
 
       instance.items[1] = 'y';
-      expect(arrCallback).toHaveBeenCalledWith('1', 'y');
+      expect(arrCallback).not.toHaveBeenCalled();
 
       instance.items[2] = 'z';
-      expect(arrCallback).toHaveBeenCalledWith('2', 'z');
+      expect(arrCallback).not.toHaveBeenCalled();
 
-      expect(arrCallback).toHaveBeenCalledTimes(3);
+      expect(arrCallback).not.toHaveBeenCalled();
 
       instance.obj.a = 4;
-      expect(objCallback).toHaveBeenCalledWith('a', 4);
+      expect(objCallback).not.toHaveBeenCalled();
 
       instance.obj.b = 5;
-      expect(objCallback).toHaveBeenCalledWith('b', 5);
+      expect(objCallback).not.toHaveBeenCalled();
 
       instance.obj.c = 6;
-      expect(objCallback).toHaveBeenCalledWith('c', 6);
-
-      expect(objCallback).toHaveBeenCalledTimes(3);
+      expect(objCallback).not.toHaveBeenCalled();
     });
   });
 
@@ -201,7 +199,7 @@ describe('@reactive', () => {
       const instance = new TestClass();
       instance.data.value = 42;
 
-      expect(callback).not.toHaveBeenCalled();
+      expect(callback).toHaveBeenCalledOnce();
     });
 
     it('should work when setting same value multiple times', () => {

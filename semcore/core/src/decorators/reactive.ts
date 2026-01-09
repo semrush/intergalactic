@@ -63,7 +63,7 @@ function reactive<
           set(target, p, newValue) {
             target[p] = newValue;
 
-            if (fields === null || fields.includes(p as keyof This[Property])) {
+            if (fields?.length === 0 || fields?.includes(p as keyof This[Property])) {
               callback.call(thisRoot, p, newValue);
             }
 
