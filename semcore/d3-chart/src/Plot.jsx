@@ -104,7 +104,7 @@ class PlotRoot extends Component {
         onMouseMove={this.handlerMouseMove}
         onMouseLeave={this.handlerMouseLeave}
         aria-label={ariaLabel}
-        tabIndex={0}
+        use:tabIndex={-1}
         data-plot-id={this.plotId}
       >
         <Children />
