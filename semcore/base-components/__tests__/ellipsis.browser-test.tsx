@@ -4,9 +4,9 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 test.describe('Visual - link', () => {
   const withEllipsis = [
     { ellipsis: true },
-    { ellipsis: { trim: 'middle' } },
-    { ellipsis: { trim: 'end' } },
-    { ellipsis: { trim: 'end', maxLine: 2 } },
+    { ellipsis: { cropPosition: 'middle' } },
+    { ellipsis: { cropPosition: 'end' } },
+    { ellipsis: { cropPosition: 'end', maxLine: 2 } },
     { ellipsis: { maxLine: 2 } },
   ];
 
@@ -39,7 +39,7 @@ test.describe('Visual - link', () => {
 
   const withoutEllipsis = [
     { ellipsis: false },
-    { ellipsis: { trim: 'end', maxLine: 6 } },
+    { ellipsis: { cropPosition: 'end', maxLine: 6 } },
   ];
 
   withoutEllipsis.forEach((item) => {
@@ -63,21 +63,21 @@ test.describe('Visual - link', () => {
 test.describe('Visual - text', () => {
   const withEllipsis = [
     { ellipsis: true, size: 100 },
-    { ellipsis: { trim: 'end' }, size: 200 },
+    { ellipsis: { cropPosition: 'end' }, size: 200 },
     { ellipsis: true, size: 200 },
-    { ellipsis: { trim: 'end' }, size: 400 },
+    { ellipsis: { cropPosition: 'end' }, size: 400 },
     { ellipsis: true, size: 500 },
-    { ellipsis: { trim: 'end' }, size: 600 },
+    { ellipsis: { cropPosition: 'end' }, size: 600 },
     { ellipsis: true, size: 700 },
-    { ellipsis: { trim: 'end' }, size: 800 },
-    { ellipsis: { trim: 'middle' }, size: 100 },
-    { ellipsis: { trim: 'middle' }, size: 200 },
-    { ellipsis: { trim: 'middle' }, size: 300 },
-    { ellipsis: { trim: 'middle' }, size: 400 },
-    { ellipsis: { trim: 'middle' }, size: 500 },
-    { ellipsis: { trim: 'middle' }, size: 600 },
-    { ellipsis: { trim: 'middle' }, size: 700 },
-    { ellipsis: { trim: 'middle' }, size: 800 },
+    { ellipsis: { cropPosition: 'end' }, size: 800 },
+    { ellipsis: { cropPosition: 'middle' }, size: 100 },
+    { ellipsis: { cropPosition: 'middle' }, size: 200 },
+    { ellipsis: { cropPosition: 'middle' }, size: 300 },
+    { ellipsis: { cropPosition: 'middle' }, size: 400 },
+    { ellipsis: { cropPosition: 'middle' }, size: 500 },
+    { ellipsis: { cropPosition: 'middle' }, size: 600 },
+    { ellipsis: { cropPosition: 'middle' }, size: 700 },
+    { ellipsis: { cropPosition: 'middle' }, size: 800 },
 
   ];
 
@@ -96,7 +96,7 @@ test.describe('Visual - text', () => {
 
   const withoutEllipsis = [
     { ellipsis: false },
-    { ellipsis: { trim: 'end', maxLine: 6 } },
+    { ellipsis: { cropPosition: 'end', maxLine: 6 } },
   ];
 
   withoutEllipsis.forEach((item) => {

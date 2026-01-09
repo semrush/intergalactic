@@ -244,7 +244,7 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Select.Option.Text flex={1} ellipsis={{ trim: 'end' }}>{option.label}</Select.Option.Text>
+                            <Select.Option.Text flex={1} ellipsis={{ cropPosition: 'end' }}>{option.label}</Select.Option.Text>
                           </Select.Option>
                         );
                       })}

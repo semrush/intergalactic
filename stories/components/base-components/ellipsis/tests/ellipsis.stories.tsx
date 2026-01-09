@@ -20,14 +20,14 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
   argTypes: {
     ellipsis: {
       control: 'select',
-      options: ['false', 'true', 'trim:middle', 'trim:end', 'trim:end maxLine:2', 'trim:end maxLine:6'],
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6'],
       mapping: {
         'false': false,
         'true': true,
-        'trim:middle': { trim: 'middle' },
-        'trim:end': { trim: 'end' },
-        'trim:end maxLine:2': { trim: 'end', maxLine: 2 },
-        'trim:end maxLine:6': { trim: 'end', maxLine: 6 },
+        'cropPosition:middle': { cropPosition: 'middle' },
+        'cropPosition:end': { cropPosition: 'end' },
+        'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
+        'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
       },
     },
   },
@@ -39,14 +39,14 @@ export const TrimWithTextSize: StoryObj<typeof TextSizeExampleProps> = {
   argTypes: {
     ellipsis: {
       control: 'select',
-      options: ['false', 'true', 'trim:middle', 'trim:end', 'trim:end maxLine:2', 'trim:end maxLine:6'],
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6'],
       mapping: {
         'false': false,
         'true': true,
-        'trim:middle': { trim: 'middle' },
-        'trim:end': { trim: 'end' },
-        'trim:end maxLine:2': { trim: 'end', maxLine: 2 },
-        'trim:end maxLine:6': { trim: 'end', maxLine: 6 },
+        'cropPosition:middle': { cropPosition: 'middle' },
+        'cropPosition:end': { cropPosition: 'end' },
+        'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
+        'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
       },
     },
 

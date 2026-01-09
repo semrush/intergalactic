@@ -1,9 +1,10 @@
-import { Hint, useEllipsis, Box } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
+import { Text as TextKit } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/link-trigger.shadow.css';
@@ -58,14 +59,21 @@ function Text(props) {
   const textRef = React.useRef();
   const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
   const content = empty ? placeholder : children;
-  const showHint = useEllipsis(textRef, ellipsis);
 
   return sstyled(styles)(
     <>
-      <SText render={Box} display-placeholder={empty} ref={textRef} use:ellipsis={false}>
+      <SText
+        render={TextKit}
+        display-placeholder={empty}
+        ref={textRef}
+        ellipsis={ellipsis}
+        hintProps={{
+          ...hintProps,
+          triggerRef,
+        }}
+      >
         {content}
       </SText>
-      {showHint && (<Hint triggerRef={triggerRef} {...hintProps}>{content}</Hint>)}
     </>,
   );
 }

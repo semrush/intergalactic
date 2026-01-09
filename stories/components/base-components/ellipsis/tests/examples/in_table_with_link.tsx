@@ -1,16 +1,11 @@
-import { useResizeObserver } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
 const Demo = () => {
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
-  const containerRect = useResizeObserver(containerRef);
-
   return (
     <DataTable
       data={data}
@@ -54,8 +49,7 @@ const Demo = () => {
             >
               <Link.Text
                 wMin={0}
-                tag={Text}
-                ellipsis={{ trim: 'middle' }}
+                ellipsis={{ cropPosition: 'middle' }}
                 hintProps={{ triggerRef }}
               >
                 {removeProtocol(pageUrl)}

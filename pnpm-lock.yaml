@@ -440,6 +440,9 @@ importers:
       '@semcore/icon':
         specifier: 16.7.3
         version: 16.7.3(@semcore/base-components@semcore+base-components)
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1618,8 +1621,8 @@ importers:
         specifier: 16.1.1
         version: link:../input
       '@semcore/typography':
-        specifier: 16.3.0
-        version: 16.3.0(@semcore/base-components@semcore+base-components)
+        specifier: 16.3.2
+        version: link:../typography
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -4954,11 +4957,6 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
-  '@semcore/flex-box@16.0.10':
-    resolution: {integrity: sha512-ol/qHL6DjzCZL5V7nXlgIv6qD+LhJB8fKsUOdjtBQPMBHYRE2DgbCV4TOqDRvIyZ2bW/V4zi+oWq2P6Cz2BA6w==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
   '@semcore/flex-box@16.0.11':
     resolution: {integrity: sha512-KjzQtTTLiPYwASHyfLWtywsslij+CIsz2McEb0Pcw38uaE0y9LG7tlmbdsWz0/rUDkL+QqO6GYZ2gmQ9l/uX/g==}
     peerDependencies:
@@ -4966,11 +4964,6 @@ packages:
 
   '@semcore/flex-box@16.0.6':
     resolution: {integrity: sha512-wUMy71h5OLFNyHFueS0caCHpsYINnLyB10Q6Yi39OlFwqgN+mG6kdBhIg2kSMKdtZXlHXi13e/zYSf4nhjcaNA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/icon@16.5.1':
-    resolution: {integrity: sha512-uiwFIfKgtmWgedVydA8WdfbRmCuxSuR046iyhaKkqR8ndmK4G6BN+ap3O30NpQEveKp0lzxTgx4fd2bOmZVSrw==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -5029,11 +5022,6 @@ packages:
 
   '@semcore/tooltip@16.0.11':
     resolution: {integrity: sha512-v5fogbtyYs5qEs52yWLQe65fX5APjdUJegSmcISE4qpYkawMuOLaagPkEy9wpBBQ6thIcWFjjG0HgQA/x+FQjQ==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/typography@16.3.0':
-    resolution: {integrity: sha512-kOieKF6BCQAlmVP0B9UD6R0Kz5f7z2RsUcZH5TbCEJQcRt+pYNQN802574X6JLo6PAx6QanWSdovMdeEp/lwkg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -16711,10 +16699,6 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
 
-  '@semcore/flex-box@16.0.10(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
   '@semcore/flex-box@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -16722,12 +16706,6 @@ snapshots:
   '@semcore/flex-box@16.0.6(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/icon@16.5.1(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.10(@semcore/base-components@semcore+base-components)
-      classnames: 2.2.6
 
   '@semcore/icon@16.7.2(@semcore/base-components@semcore+base-components)':
     dependencies:
@@ -16793,12 +16771,6 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/typography@16.3.0(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.10(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.5.1(@semcore/base-components@semcore+base-components)
 
   '@semcore/typography@16.3.1(@semcore/base-components@semcore+base-components)':
     dependencies:

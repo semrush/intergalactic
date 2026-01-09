@@ -1,39 +1,46 @@
+import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import { useResizeObserver } from '@semcore/ui/ellipsis';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const containerRef = React.useRef(null);
+  const columns = React.useMemo(() => {
+    return [
+      { name: 'keyword', children: 'Keyword' },
+      { name: 'kd', children: 'KD,%' },
+      { name: 'cpc', children: 'CPC' },
+      {
+        name: 'vol',
+        children: 'Vol.',
+        gtcWidth: '100px',
+      },
+    ];
+  }, []);
 
-  const containerRect = useResizeObserver(containerRef);
+  const renderCell: DataTableProps<any, any, any>['renderCell'] | undefined = React.useMemo(() => {
+    return (props) => {
+      if (props.columnName === 'vol') {
+        return (
+          <Text
+            ellipsis={{ cropPosition: 'middle' }}
+            hintProps={{ placement: 'right' }}
+            flex={1}
+          >
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, []);
 
   return (
     <DataTable
       data={data}
       aria-label='Table title'
-      columns={[
-        { name: 'keyword', children: 'Keyword' },
-        { name: 'kd', children: 'KD,%' },
-        { name: 'cpc', children: 'CPC' },
-        {
-          name: 'vol',
-          children: 'Vol.',
-          gtcWidth: '100px',
-          ref: containerRef,
-        },
-      ]}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Text ellipsis={{ trim: 'middle', containerRect }} hintProps={{ placement: 'right' }} flex={1}>
-              {props.value}
-            </Text>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      columns={columns}
+      renderCell={renderCell}
     />
   );
 };

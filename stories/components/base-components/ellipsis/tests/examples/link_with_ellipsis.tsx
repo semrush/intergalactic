@@ -8,12 +8,11 @@ type Linkrops = {
 
 const Demo = (props: Linkrops) => {
   return (
-    <Link
-      href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
-      ellipsis={props.ellipsis}
-      w={120}
-    >
-      <Link.Text>
+    <Link href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'>
+      <Link.Text
+        ellipsis={props.ellipsis}
+        w={120}
+      >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
       </Link.Text>
     </Link>

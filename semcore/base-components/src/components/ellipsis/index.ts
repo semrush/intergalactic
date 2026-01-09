@@ -1,16 +1,7 @@
-import { useEllipsis } from './useEllipsis';
-import type { EllipsisSettings } from './useEllipsis';
-import { useResizeObserver } from './useResizeObserver';
-import {
-  isTextOverflowing,
-  setFontSettings,
-} from './utils';
+import { Ellipsis, type EllipsisSettings } from './Ellipsis';
 
 export {
-  useEllipsis,
-  isTextOverflowing,
-  useResizeObserver,
-  setFontSettings,
+  Ellipsis,
 };
 export type {
   EllipsisSettings,

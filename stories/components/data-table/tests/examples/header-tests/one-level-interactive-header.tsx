@@ -197,7 +197,7 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
         if (props.columnName === 'vol') {
           return (
             <>
-              <Text ellipsis={{ trim: 'middle' }}>
+              <Text ellipsis={{ cropPosition: 'middle' }}>
                 {props.value}
               </Text>
             </>

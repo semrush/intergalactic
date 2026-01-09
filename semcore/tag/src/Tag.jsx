@@ -1,4 +1,4 @@
-import { useEllipsis, Hint, Box } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -8,7 +8,8 @@ import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside'
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import CloseM from '@semcore/icon/Close/m';
-import React, { useEffect } from 'react';
+import { Text as TypographyText } from '@semcore/typography';
+import React from 'react';
 
 import style from './style/tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -284,14 +285,18 @@ function TagContainerCircle(props) {
 
 function Text(props) {
   const SText = Root;
-  const innerRef = React.useRef(null);
-  const { styles, Children, tagRef, ellipsis = true, hintProps } = props;
-  const showHint = useEllipsis(innerRef, ellipsis);
+  const { styles, tagRef, ellipsis = false, hintProps } = props;
 
   return sstyled(styles)(
     <>
-      <SText render={Box} tag='span' ref={innerRef} />
-      {showHint && <Hint triggerRef={tagRef} {...hintProps}><Children /></Hint>}
+      <SText
+        render={TypographyText}
+        ellipsis={ellipsis}
+        hintProps={{
+          ...hintProps,
+          triggerRef: tagRef,
+        }}
+      />
     </>,
   );
 }

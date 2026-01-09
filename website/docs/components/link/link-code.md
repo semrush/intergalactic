@@ -57,11 +57,6 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 
 ## Link with ellipsis
 
-There are two moments you need to consider when using link with addons and ellipsis:
-
-- To properly display a link with ellipsis inside a flex block, you need to use a hack with `min-width: 0px`.
-- When the text has an `overflow:hidden` property, it may overlap with a vertical addon. To avoid this, wrap the content in a flex container with vertical alignment.
-
 ::: sandbox
 
 <script lang="tsx">

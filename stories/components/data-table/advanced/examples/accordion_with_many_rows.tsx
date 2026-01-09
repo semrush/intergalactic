@@ -1,5 +1,7 @@
+import type { EllipsisSettings } from '@semcore/base-components';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 export type TableInTableProps = {
@@ -14,6 +16,45 @@ export type TableInTableProps = {
 };
 
 const Demo = (props: TableInTableProps) => {
+  const keywordRef = React.useRef<HTMLDivElement | null>(null);
+  const volRef = React.useRef<HTMLDivElement | null>(null);
+
+  const [keywordElement, setKeywordElement] = React.useState<HTMLDivElement | null>(null);
+  const [volElement, setVolElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setKeywordElement(keywordRef.current);
+    setVolElement(volRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (props) => {
+    const ellipsisSettingsVol: EllipsisSettings = React.useMemo(() => {
+      return {
+        cropPosition: 'middle',
+        containerElement: volElement ?? undefined,
+      } as const;
+    }, [volElement]);
+
+    const ellipsisSettingsKeyword: EllipsisSettings = React.useMemo(() => {
+      return {
+        cropPosition: 'middle',
+        containerElement: keywordElement ?? undefined,
+      } as const;
+    }, [keywordElement]);
+
+    if (props.dataKey === 'keyword' && keywordElement) {
+      return (
+        <Text ellipsis={ellipsisSettingsKeyword}>{props.value}</Text>
+      );
+    }
+    if (props.dataKey === 'vol' && volElement) {
+      return (
+        <Text ellipsis={ellipsisSettingsVol}>{props.value}</Text>
+      );
+    }
+    return props.defaultRender();
+  }, [keywordElement, volElement]);
+
   return (
     <DataTable
       data={data}
@@ -23,10 +64,10 @@ const Demo = (props: TableInTableProps) => {
       accordionAnimationRows={props.accordionAnimationRows}
       accordionMode={props.accordionMode}
       columns={[
-        { name: 'keyword', children: 'Keyword' },
+        { name: 'keyword', children: 'Keyword', ref: keywordRef },
         { name: 'kd', children: 'KD %' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.' },
+        { name: 'vol', children: 'Vol.', ref: volRef },
         { name: 'kd1', children: 'KD %' },
         { name: 'cpc1', children: 'CPC' },
         { name: 'vol1', children: 'Vol.' },
@@ -40,6 +81,7 @@ const Demo = (props: TableInTableProps) => {
         { name: 'cpc4', children: 'CPC' },
         { name: 'vol4', children: 'Vol.' },
       ]}
+      renderCell={renderCell}
     />
   );
 };
@@ -52,13 +94,22 @@ export const accordionTableInTableDefaultProps: TableInTableProps = {
 
 Demo.defaultProps = accordionTableInTableDefaultProps;
 
+function generateRandomString(length: number) {
+  const chars = '0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
 const acc = Array(300)
   .fill(null)
   .map((item, id) => ({
     keyword: 'www.ebay.com' + id,
     kd: '11.2',
     cpc: '$3.4',
-    vol: '65,457,920',
+    vol: generateRandomString(10),
 
     kd1: '1.2',
     cpc1: '$4.4',

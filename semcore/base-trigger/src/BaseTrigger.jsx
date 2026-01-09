@@ -1,8 +1,9 @@
-import { Hint, useEllipsis, NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
+import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { Text as TextKit } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
@@ -75,14 +76,22 @@ function Text(props) {
   const textRef = React.useRef();
   const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
   const content = empty ? placeholder : children;
-  const showHint = useEllipsis(textRef, ellipsis);
 
   return sstyled(styles)(
     <>
-      <SText render={Box} display-placeholder={empty} aria-hidden={empty} ref={textRef} use:ellipsis={false}>
+      <SText
+        render={TextKit}
+        display-placeholder={empty}
+        aria-hidden={empty}
+        ref={textRef}
+        ellipsis={ellipsis}
+        hintProps={{
+          ...hintProps,
+          triggerRef,
+        }}
+      >
         {content}
       </SText>
-      {showHint && (<Hint triggerRef={triggerRef} {...hintProps}>{content}</Hint>)}
     </>,
   );
 }

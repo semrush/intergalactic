@@ -48,7 +48,7 @@ class RootLink extends Component {
     const SLink = Root;
 
     return sstyled(styles)(
-      <SLink render={Text} {...linkProps}>
+      <SLink render={Box} {...linkProps}>
         {children}
       </SLink>,
     );
@@ -138,7 +138,7 @@ class RootLink extends Component {
 function LinkText(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  return sstyled(styles)(<SText render={Text} tag='span' />);
 }
 
 function Addon(props) {

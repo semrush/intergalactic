@@ -12,7 +12,7 @@ const Demo = () => {
       </p>
       <p>
 
-        <Text w={111} display='block' ellipsis={{ trim: 'middle' }}>Segment 2sfdsf</Text>
+        <Text w={111} display='block' ellipsis={{ cropPosition: 'middle' }}>Segment 2sfdsf</Text>
 
       </p>
       <p>
@@ -22,7 +22,7 @@ const Demo = () => {
       </p>
       <p>
 
-        <Text w={50} display='block' ellipsis={{ trim: 'middle' }}>Lorem bbjips</Text>
+        <Text w={50} display='block' ellipsis={{ cropPosition: 'middle' }}>Lorem bbjips</Text>
 
       </p>
       <p>
@@ -41,7 +41,7 @@ const Demo = () => {
         </Text>
       </p>
       <p>
-        <Text display='block' w={111} mb={3} ellipsis={{ trim: 'middle' }}>
+        <Text display='block' w={111} mb={3} ellipsis={{ cropPosition: 'middle' }}>
           Segment 2sfdsf
         </Text>
       </p>
@@ -54,7 +54,7 @@ const Demo = () => {
           tag='p'
           mt={0}
           style={{ outline: '1px solid red' }}
-          ellipsis={{ trim: 'end', maxLine: 2 }}
+          ellipsis={{ cropPosition: 'end', maxLine: 2 }}
         >
           Word WordWor
         </Text>

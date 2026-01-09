@@ -1,2 +1,2 @@
 export { default } from './Ellipsis';
-export { useResizeObserver } from '@semcore/base-components';
+export { useResizeObserver } from './useResizeObserver';

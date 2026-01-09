@@ -1,7 +1,8 @@
-import type { Box, BoxProps, NeighborItemProps, EllipsisSettings, SimpleHintPopperProps } from '@semcore/base-components';
+import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { DotProps } from '@semcore/dot';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type BaseTriggerProps = BoxProps &
@@ -68,7 +69,7 @@ export type FilterTriggerCounterProps = {
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
-  Text: Intergalactic.Component<typeof Box, { ellipsis?: EllipsisSettings | true; hintProps?: SimpleHintPopperProps }>;
+  Text: typeof Text;
   Addon: typeof Box;
 };
 

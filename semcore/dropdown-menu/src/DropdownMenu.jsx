@@ -1,4 +1,4 @@
-import { useEllipsis, Flex, useBox, Hint, ScrollArea as ScrollAreaComponent, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
+import { Flex, ScrollArea as ScrollAreaComponent } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -520,16 +520,23 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles, Children, ellipsis = false, index }) {
+function ItemContentText({ styles, ellipsis = false, index }) {
   const SItemContentText = Root;
   const innerRef = React.useRef(null);
   const selectedCtx = React.useContext(selectedIndexContext);
-  const showHint = useEllipsis(innerRef, ellipsis === true ? {} : ellipsis);
 
   return sstyled(styles)(
     <>
-      <SItemContentText render={Text} ref={innerRef} use:ellipsis={false} />
-      {showHint && index === selectedCtx && <Hint triggerRef={innerRef} placement='right' visible><Children /></Hint>}
+      <SItemContentText
+        render={Text}
+        ref={innerRef}
+        ellipsis={ellipsis}
+        hintProps={index === selectedCtx
+          ? {
+              triggerRef: innerRef,
+            }
+          : false}
+      />
     </>,
   );
 }

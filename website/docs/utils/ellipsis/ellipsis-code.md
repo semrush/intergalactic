@@ -1,6 +1,6 @@
 ---
 title: ellipsis
-tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
+tabs: Design('ellipsis'), A11y('ellipsis-a11y'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
 ## Basic usage
@@ -10,22 +10,7 @@ Out of the box, you can use `Text` component with ellipsis settings.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/base-components/ellipsis/docs/examples/basic-usage.tsx';
-</script>
-
-:::
-
-## useEllipsis hook
-
-The useEllipsis hook helps determine whether the content of a referenced DOM element fits within its container.
-If the content overflows, the hook can automatically apply a CSS class or inline style (e.g., text-overflow: ellipsis) to visually truncate the text.
-This is useful for managing long strings in limited-width containers without manual checks.
-The hook listens for changes in size and updates dynamically.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/base-components/ellipsis/docs/examples/use-ellipsis-hook.tsx';
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -37,7 +22,31 @@ In case of multiple use of a component for optimization you can use one observer
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/base-components/ellipsis/docs/examples/multiple-use.tsx';
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx';
+</script>
+
+:::
+
+## Add searchable highlight
+
+You can add a logic for highlight some searching parts of the text.
+You should calculate indexes from/to by yourself.
+You can add some styles for this part - it could be an object with CSSProperties or a string with class name.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/with_search_selection.tsx';
+</script>
+
+:::
+
+## Render some required symbols at the end of middle trimmed text.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/with_required_last_symbols.tsx';
 </script>
 
 :::

@@ -1,6 +1,5 @@
 import BaseTrigger from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -8,21 +7,21 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[BaseTrigger, 'h1']}>
-          <BaseTrigger.Text w={150} tag={[Text, 'h2']} size={400}>
+          <BaseTrigger.Text w={150} tag='h2' size={400}>
             Few Tags Tags Tags
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} tag={Text} size={400} ellipsis={{ trim: 'middle' }}>
+          <BaseTrigger.Text w={150} size={400} ellipsis={{ cropPosition: 'middle' }}>
             This is first trigger with a very very long text!
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} tag={Text} size={400} ellipsis={true}>
+          <BaseTrigger.Text w={150} size={400} ellipsis={true}>
             This is second trigger with a very very long text!
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>

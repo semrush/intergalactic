@@ -8,8 +8,10 @@ export const setFontSettings = (element: HTMLElement, styleElement: CSSStyleDecl
   element.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 };
 
-export function isTextOverflowing(element: HTMLElement | null, multiline: boolean, text?: string): boolean {
+export function isTextOverflowing(element: HTMLElement | null, multiline: boolean, text: string): boolean {
   if (!element) return false;
+
+  element.textContent = text;
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
   const measuringElement = createMeasurerElement(element, text);
@@ -35,9 +37,7 @@ export function isTextOverflowing(element: HTMLElement | null, multiline: boolea
   return isOverflowing;
 }
 
-export function truncateMiddleToFit(text: string, container: HTMLElement, font: string) {
-  const containerWidth = container.clientWidth;
-
+export function truncateMiddleToFit(text: string, containerWidth: number, font: string): { text: string; positions: [number, number] } {
   let left = 0;
   let right = text.length;
   let truncated = text;
@@ -48,7 +48,7 @@ export function truncateMiddleToFit(text: string, container: HTMLElement, font: 
     const testText = text.slice(0, keep) + '...' + text.slice(-keep);
     const testWidth = getTextWidth(testText, font);
 
-    if (testWidth > containerWidth) {
+    if (testWidth >= containerWidth) {
       right = mid;
     } else {
       truncated = testText;
@@ -56,7 +56,10 @@ export function truncateMiddleToFit(text: string, container: HTMLElement, font: 
     }
   }
 
-  return truncated;
+  return {
+    text: truncated,
+    positions: [left, right],
+  };
 }
 
 function getTextWidth(text: string, font: string) {

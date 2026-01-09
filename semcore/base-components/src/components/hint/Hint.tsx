@@ -1,14 +1,14 @@
 import { computePosition, flip, offset, shift, arrow, type Placement } from '@floating-ui/dom';
-import { createComponent, Root, sstyled, Component, type Intergalactic } from '@semcore/core';
+import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
 import type { DataType } from 'csstype';
 import React from 'react';
 
+import { Middleware } from './Middleware';
 import { Box } from '../flex-box';
 import { Portal } from '../portal';
 import styles from './style/hint.shadow.css';
-import style from '../animation/style/keyframes.shadow.css';
 import keyframes from '../animation/style/keyframes.shadow.css';
 
 type Handlers = {
@@ -17,10 +17,10 @@ type Handlers = {
 
 export type SimpleHintPopperProps = {
   /** Ref to the trigger element */
-  triggerRef: React.RefObject<HTMLElement>;
+  triggerRef: React.RefObject<HTMLElement | null>;
   /**
    * The position of the popper relative to the trigger that called it.
-   * @default auto
+   * @default top
    */
   placement?: Placement;
   /**
@@ -43,12 +43,11 @@ export type SimpleHintPopperProps = {
   onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
 };
 
-type HintComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
-
 type DefaultProps = {
   defaultVisible?: boolean;
   timeout: number | [number, number];
   timingFunction: DataType.EasingFunction;
+  placement?: Placement;
 };
 
 type State = {
@@ -87,6 +86,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     defaultVisible: false,
     timeout: [500, 500],
     timingFunction: 'ease-out',
+    placement: 'top',
   };
 
   constructor(props: SimpleHintPopperProps) {
@@ -145,7 +145,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     }
   }
 
-  private showHint(node: HTMLElement): void {
+  private showHint(node: HTMLElement, mouseEvent?: MouseEvent): void {
     const { placement, timeout } = this.asProps;
 
     const showTimeout = Array.isArray(timeout) ? timeout[0] : timeout;
@@ -161,9 +161,19 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
         const popperElement = this.hintRef.current;
         const arrowElement = this.arrowRef.current;
         if (popperElement && arrowElement) {
+          const middleware = [
+            offset(10),
+            flip(),
+            shift({ padding: 4 }),
+            arrow({ element: arrowElement }),
+          ];
+          if (mouseEvent !== undefined) {
+            middleware.push(Middleware.cursorAnchoring({ x: mouseEvent.clientX, y: mouseEvent.clientY }), shift({ padding: 4 }));
+          }
+
           computePosition(node, popperElement, {
             placement: placement,
-            middleware: [offset(10), flip(), shift({ padding: 4 }), arrow({ element: arrowElement })],
+            middleware,
           }).then(({ x, y, placement, middlewareData }) => {
             Object.assign(popperElement.style, {
               left: `${x}px`,
@@ -228,7 +238,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
   private handleMouseEnter(e: MouseEvent): void {
     if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
-      this.showHint(e.target);
+      this.showHint(e.target, e);
     }
   }
 
@@ -289,8 +299,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
           timingFunction={timingFunction}
-          keyframesInitialize={style[`@${this.keyframesKey(calculatedPlacement)}-in`]}
-          keyframesFinalize={style[`@${this.keyframesKey(calculatedPlacement)}-out`]}
+          keyframesInitialize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`]}
+          keyframesFinalize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`]}
         >
           <Children />
           <SHintArrow ref={this.arrowRef} />
@@ -300,4 +310,4 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 }
 
-export const Hint = createComponent(HintPopperRoot) as HintComponent;
+export const Hint = createComponent<'div', SimpleHintPopperProps>(HintPopperRoot);

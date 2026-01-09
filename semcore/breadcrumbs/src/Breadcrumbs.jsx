@@ -1,7 +1,8 @@
-import { Hint, useEllipsis, Box } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import SSeparator from '@semcore/icon/ChevronRight/m';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/breadcrumbs.shadow.css';
@@ -41,29 +42,25 @@ class Breadcrumbs extends Component {
 }
 
 function Item(props) {
-  const itemRef = React.useRef();
-
   const SBreadcrumbsItem = Root;
-  const { styles, separator, active, disabled, href, tabIndex, tag, Children, ellipsis = false, hintProps } = props;
+  const { styles, separator, active, disabled, href, tabIndex, tag, ellipsis = true, hintProps } = props;
   const SSeparator = 'div';
   const SListItem = 'li';
-
-  const showHint = useEllipsis(itemRef, ellipsis);
 
   return sstyled(styles)(
     <>
       <SListItem>
         <SBreadcrumbsItem
-          render={Box}
+          render={Text}
           use:tabIndex={active || disabled ? -1 : tabIndex}
           use:href={!active && !disabled ? href : undefined}
           aria-current={active ? 'page' : undefined}
           use:tag={active ? 'span' : tag}
-          ref={itemRef}
+          ellipsis={ellipsis}
+          hintProps={hintProps}
         />
       </SListItem>
       <SSeparator aria-hidden='true'>{separator}</SSeparator>
-      {showHint && (<Hint triggerRef={itemRef} {...hintProps}><Children /></Hint>)}
     </>,
   );
 }
