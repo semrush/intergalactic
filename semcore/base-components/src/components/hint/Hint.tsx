@@ -301,6 +301,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           timingFunction={timingFunction}
           keyframesInitialize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`]}
           keyframesFinalize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`]}
+          use:data-ui-name='Hint'
         >
           <Children />
           <SHintArrow ref={this.arrowRef} />

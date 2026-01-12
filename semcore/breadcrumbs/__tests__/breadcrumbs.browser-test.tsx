@@ -182,7 +182,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.getByRole('link');
     const lastItem = page.locator('[aria-current="page"]');
     const status = page.getByRole('status');
 
@@ -234,7 +234,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
-      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
+      const breadcrumbLinks = page.getByRole('link');
       const lastItem = page.locator('[aria-current="page"]');
       const status = page.getByRole('status');
 
