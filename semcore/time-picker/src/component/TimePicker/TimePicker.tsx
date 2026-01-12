@@ -1,6 +1,6 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import reactive from '@semcore/core/lib/decorators/reactive';
-import trackPropsChanges from '@semcore/core/lib/decorators/trackPropsChanges';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
@@ -18,7 +18,7 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 import Format from '../PickerFormat/PickerFormat';
 import { Hours, Minutes } from '../PickerInput/PickerInput';
 
-@trackPropsChanges(['value'])
+@propsObserver(['value'])
 class TimePickerRoot extends Component<TimePickerProps, {}, {}, typeof TimePickerRoot.enhance> {
   static displayName = 'TimePicker';
   static style = style;

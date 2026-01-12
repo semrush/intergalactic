@@ -1,12 +1,12 @@
-type WatchedProps<Props> = { [key in keyof Props]?: any };
+type WatchedProps<Props> = { [key in keyof Props]?: unknown };
 
-type Constructor<Props> = new (...args: any) => {
+type Constructor<Props> = new (...args: any[]) => {
   props: Props;
   onPropsChange(changedProps: WatchedProps<Props>): void;
-  render(): any;
+  render(): React.ReactNode;
 };
 
-function trackPropsChanges<
+function propsObserver<
   P,
   C extends Constructor<P> = Constructor<P>,
 >(propsToWatch: Array<keyof P>) {
@@ -17,11 +17,11 @@ function trackPropsChanges<
       constructor(...args: any[]) {
         super(...args);
 
-        propsToWatch.reduce((acc, prop) => {
-          acc[prop] = this.props?.[prop];
+        if (!this.props) return;
 
-          return acc;
-        }, watchedProps);
+        propsToWatch.forEach((prop) => {
+          watchedProps[prop] = this.props[prop];
+        });
       }
 
       onPropsChange(_?: WatchedProps<P>) {
@@ -53,4 +53,4 @@ function trackPropsChanges<
   };
 }
 
-export default trackPropsChanges;
+export default propsObserver;

@@ -23,9 +23,9 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
 };
 
 export type TimePickerSeparatorProps = {
-  /** Internal */
+  /** @Internal */
   hoursInputRef: React.RefObject<HTMLElement>;
-  /** Internal */
+  /** @Internal */
   disabled?: boolean;
 };
 

@@ -37,7 +37,7 @@ class TimePickerEntity {
     this._minutes = newMinutes;
   }
 
-  set meridiem(newMeridiem) {
+  private set meridiem(newMeridiem) {
     this._meridiem = newMeridiem;
   }
 
@@ -60,7 +60,7 @@ class TimePickerEntity {
   }
 
   private formatHoursTo24(hours: string) {
-    const numberHours = Number.parseInt(hours);
+    const numberHours = Number.parseInt(hours, 10);
 
     if (Number.isNaN(numberHours)) return hours;
 

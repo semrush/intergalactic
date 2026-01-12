@@ -4,7 +4,7 @@ type IsReadonly<This, Property extends keyof This> =
   (<F>() => F extends { -readonly [P in Property]: This[Property] } ? 1 : 2)
     ? false
     : true;
-type Callback<This> = (this: This, field: string | symbol, newValue: any) => void;
+type Callback<This> = (this: This, field: string | symbol, newValue: unknown) => void;
 type ReturnType<
   This,
   Property extends keyof This = keyof This,
@@ -14,7 +14,7 @@ type ReturnType<
     ? (_: undefined, ctx: ClassFieldDecoratorContext<This, This[Property]>) => void
     : never;
 
-const isPrimitiveValue = (value: any) => value !== Object(value);
+const isPrimitiveValue = (value: unknown) => value !== Object(value);
 
 function reactive<This>(cb: Callback<This>): ReturnType<This>;
 function reactive<

@@ -6,14 +6,14 @@ import type { TimePickerMeridiem } from '../TimePicker/TimePicker.type';
 export type TimePickerFormatProps = BoxProps & {};
 
 export type TimePickerFormatPropsInternal = {
-  /** Internal */
+  /** @Internal */
   getI18nText: ReturnType<typeof useI18n>;
-  /** Internal */
+  /** @Internal */
   size: 'm' | 'l';
-  /** Internal */
+  /** @Internal */
   disabled: boolean;
-  /** Internal */
+  /** @Internal */
   meridiem: TimePickerMeridiem;
-  /** Internal */
+  /** @Internal */
   onClick: (event: React.SyntheticEvent) => void;
 };

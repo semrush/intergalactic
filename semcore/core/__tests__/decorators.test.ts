@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, Test } from '@semcore/testing-utils/vitest';
 
+import propsObserver from '../src/decorators/propsObserver';
 import reactive from '../src/decorators/reactive';
-import trackPropsChanges from '../src/decorators/trackPropsChanges';
 
 interface TestProps {
   name: string;
@@ -31,7 +31,7 @@ describe('@reactive', () => {
       class TestClass {
         name = 'TestInstance';
 
-        @reactive(function (this: TestClass) {
+        @reactive(function () {
           capturedThis = this;
         })
         value = 10;
@@ -78,6 +78,7 @@ describe('@reactive', () => {
       expect(callback).toHaveBeenCalledWith('name', 'Jane');
       expect(callback).toHaveBeenCalledTimes(1);
     });
+
     it('should NOT call callback when non-watched field changes', () => {
       const callback = vi.fn();
 
@@ -118,7 +119,7 @@ describe('@reactive', () => {
       class TestClass {
         id = 'test-123';
 
-        @reactive(['value'], function (this: TestClass) {
+        @reactive(['value'], function () {
           capturedThis = this;
         })
         readonly data = { value: 0 };
@@ -193,16 +194,17 @@ describe('@reactive', () => {
 
       class TestClass {
         @reactive([], callback)
-        readonly data = { value: 0 };
+        readonly data = { value: 0, name: 'test' };
       }
 
       const instance = new TestClass();
       instance.data.value = 42;
+      instance.data.name = 'updated name';
 
-      expect(callback).toHaveBeenCalledOnce();
+      expect(callback).toHaveBeenCalledTimes(2);
     });
 
-    it('should work when setting same value multiple times', () => {
+    it('should call only once for the same value', () => {
       const callback = vi.fn();
 
       class TestClass {
@@ -220,12 +222,12 @@ describe('@reactive', () => {
   });
 });
 
-describe('@trackPropsChanges', () => {
+describe('@propsObserver', () => {
   describe('Basic functionality', () => {
     it('should track specified props changes', () => {
       const onPropsChangeSpy = vi.fn();
 
-      @trackPropsChanges(['name', 'age'])
+      @propsObserver(['name', 'age'])
       class TestComponent {
         props: TestProps;
 
@@ -257,7 +259,7 @@ describe('@trackPropsChanges', () => {
     it('should detect multiple props changes', () => {
       const onPropsChangeSpy = vi.fn();
 
-      @trackPropsChanges(['name', 'age'])
+      @propsObserver(['name', 'age'])
       class TestComponent {
         props: TestProps;
 
@@ -286,7 +288,7 @@ describe('@trackPropsChanges', () => {
     it('should not call onPropsChange when no tracked props changed', () => {
       const onPropsChangeSpy = vi.fn();
 
-      @trackPropsChanges(['name'])
+      @propsObserver(['name'])
       class TestComponent {
         props: TestProps;
 
@@ -321,7 +323,7 @@ describe('@trackPropsChanges', () => {
         user: { name: string };
       }
 
-      @trackPropsChanges(['user'])
+      @propsObserver(['user'])
       class TestComponent {
         props: ObjectProps;
 
@@ -358,7 +360,7 @@ describe('@trackPropsChanges', () => {
         items: string[];
       }
 
-      @trackPropsChanges(['items'])
+      @propsObserver(['items'])
       class TestComponent {
         props: ArrayProps;
 
@@ -390,7 +392,7 @@ describe('@trackPropsChanges', () => {
     it('should handle empty propsToWatch array', () => {
       const onPropsChangeSpy = vi.fn();
 
-      @trackPropsChanges([])
+      @propsObserver([])
       class TestComponent {
         props: TestProps;
 
@@ -420,7 +422,7 @@ describe('@trackPropsChanges', () => {
     it('should work with multiple renders without prop changes', () => {
       const onPropsChangeSpy = vi.fn();
 
-      @trackPropsChanges(['name'])
+      @propsObserver(['name'])
       class TestComponent {
         props: TestProps;
 
@@ -451,7 +453,7 @@ describe('@trackPropsChanges', () => {
     it('should call onPropsChange before parent render', () => {
       const callOrder: string[] = [];
 
-      @trackPropsChanges(['name'])
+      @propsObserver(['name'])
       class TestComponent {
         props: TestProps;
 
