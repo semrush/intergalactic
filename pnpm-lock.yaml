@@ -424,6 +424,9 @@ importers:
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1780,6 +1783,9 @@ importers:
       '@semcore/icon':
         specifier: 16.7.3
         version: 16.7.3(@semcore/base-components@semcore+base-components)
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
