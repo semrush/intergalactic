@@ -22,7 +22,6 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
   DataRowItem,
-  DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -64,7 +63,7 @@ class DataTableRoot<
     {},
     {},
   typeof DataTableRoot.enhance,
-  typeof DataTableRoot.defaultProps
+  ReturnType<typeof DataTableRoot.defaultProps>
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -74,16 +73,18 @@ class DataTableRoot<
     i18nEnhance(localizedMessages),
   ] as const;
 
-  static defaultProps = {
-    use: 'primary',
-    defaultGridTemplateColumnWidth: 'auto',
-    expandedRows: new Set(),
-    defaultSelectedRows: undefined,
-    h: 'fit-content',
-    renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
-    variant: 'default',
-    accordionAnimationRows: 40,
-    accordionDuration: 200,
+  static defaultProps = () => {
+    return {
+      use: 'primary',
+      defaultGridTemplateColumnWidth: 'auto',
+      expandedRows: new Set(),
+      defaultSelectedRows: undefined,
+      h: 'fit-content',
+      renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
+      variant: 'default',
+      accordionAnimationRows: 40,
+      accordionDuration: 200,
+    };
   };
 
   private columns: DTColumn[] = [];
