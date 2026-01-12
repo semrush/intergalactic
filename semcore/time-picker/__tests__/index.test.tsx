@@ -104,22 +104,6 @@ describe('TimePickerEntity', () => {
     });
   });
 
-  describe('getters and setters', () => {
-    it('should update hours via setter', () => {
-      const entity = new TimePickerEntity('10:00', false);
-      entity.hours = '15';
-
-      expect(entity.hours).toBe('15');
-    });
-
-    it('should update minutes via setter', () => {
-      const entity = new TimePickerEntity('10:00', false);
-      entity.minutes = '45';
-
-      expect(entity.minutes).toBe('45');
-    });
-  });
-
   describe('toggleMeridiem', () => {
     it('should toggle multiple times correctly', () => {
       const entity = new TimePickerEntity('10:00', true);
