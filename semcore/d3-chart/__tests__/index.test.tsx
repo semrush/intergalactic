@@ -299,6 +299,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -312,6 +313,8 @@ describe('Focus skip to content after plot', () => {
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -333,7 +336,6 @@ describe('Focus skip to content after plot', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement-1')).toHaveFocus();
@@ -349,6 +351,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -362,6 +365,8 @@ describe('Focus skip to content after plot', () => {
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -385,7 +390,6 @@ describe('Focus skip to content after plot', () => {
 
     const { getByTestId } = render(<PlotComponent />);
 
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');

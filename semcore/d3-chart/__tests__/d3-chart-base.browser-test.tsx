@@ -284,7 +284,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify plot svg with aria-label attributes', async () => {
         const svg = svgs.first();
         const svgAttributes = [
-          ['tabindex', '0'],
           ['aria-label', 'Last market trends with pattern'],
           ['width', '300'],
           ['height', '200'],
