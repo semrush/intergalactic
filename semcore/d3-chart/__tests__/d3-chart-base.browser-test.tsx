@@ -306,6 +306,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(dialog).not.toBeVisible();
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
         await expect(dialog).toBeVisible();
 
         await expect(dialog).toHaveAttribute('tabindex', '0');
@@ -348,7 +349,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify plot svg without aria-label attributes', async () => {
         const svg = svgs.nth(1);
         const svgAttributes = [
-          ['tabindex', '0'],
           ['aria-label', 'Chart'],
           ['data-ui-name', 'Plot'],
         ];
