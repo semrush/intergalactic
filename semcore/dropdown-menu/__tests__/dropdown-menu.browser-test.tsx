@@ -1281,11 +1281,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@dropdown-menu'],
     }, async ({ page, browserName }) => {
-      if (browserName === 'webkit') {
-        // skip test for webkit - very unstable
-        return;
-      }
-
       await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/input_tags_trigger.tsx', 'en');
 
       const tagClose = page.locator('[data-ui-name="InputTags.Tag.Close"]');
