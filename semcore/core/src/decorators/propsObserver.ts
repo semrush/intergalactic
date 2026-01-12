@@ -19,7 +19,9 @@ function propsObserver<
 
         if (!this.props) return;
 
-        propsToWatch.forEach((prop) => {
+        const propKeys = propsToWatch.length === 0 ? Object.keys(this.props) as Array<keyof P> : [...propsToWatch];
+
+        propKeys.forEach((prop) => {
           watchedProps[prop] = this.props[prop];
         });
       }
@@ -28,7 +30,7 @@ function propsObserver<
         let shouldCallFunc = false;
         const changedProps: WatchedProps<P> = {};
 
-        propsToWatch.forEach((prop) => {
+        (Object.keys(watchedProps) as Array<keyof P>).forEach((prop) => {
           const isPropValueEqual = Object.is(watchedProps[prop], this.props[prop]);
 
           if (!isPropValueEqual) {

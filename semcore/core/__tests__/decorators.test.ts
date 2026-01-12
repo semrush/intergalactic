@@ -410,13 +410,12 @@ describe('@propsObserver', () => {
       }
 
       const component = new TestComponent({ name: 'John', age: 30 });
-
       component.render();
 
       component.props = { name: 'Jane', age: 25 };
       component.render();
 
-      expect(onPropsChangeSpy).not.toHaveBeenCalled();
+      expect(onPropsChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should work with multiple renders without prop changes', () => {
