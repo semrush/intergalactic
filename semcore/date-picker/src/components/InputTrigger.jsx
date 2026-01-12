@@ -1,11 +1,10 @@
+import { NeighborLocation, Flex, Box } from '@semcore/base-components';
 import BaseTrigger from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import assignProps from '@semcore/core/lib/utils/assignProps';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
 import InputMask from '@semcore/input-mask';
-import NeighborLocation from '@semcore/neighbor-location';
 import Tooltip from '@semcore/tooltip';
 import dayjs from 'dayjs';
 import React from 'react';

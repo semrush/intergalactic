@@ -1,8 +1,7 @@
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { Box } from '@semcore/flex-box';
 import Spin from '@semcore/spin';
 import React from 'react';
 

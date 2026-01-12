@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Counter from '@semcore/ui/counter';
-import { Flex } from '@semcore/ui/flex-box';
-import type { BoxProps } from '@semcore/ui/flex-box';
 import Input from '@semcore/ui/input';
 import type { InputProps, InputValueProps } from '@semcore/ui/input';
 import Select from '@semcore/ui/select';

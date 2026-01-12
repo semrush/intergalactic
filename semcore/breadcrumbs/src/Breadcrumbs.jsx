@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box } from '@semcore/flex-box';
 import SSeparator from '@semcore/icon/ChevronRight/m';
 import React from 'react';
 

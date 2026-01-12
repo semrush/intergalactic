@@ -1,8 +1,8 @@
+import { Flex, Box } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import type { DOMAttributes } from 'react';
 import React from 'react';
@@ -19,7 +19,7 @@ import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
 const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
-class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
+class LegendItemRoot extends Component<LegendItemProps, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
@@ -242,10 +242,10 @@ function Count({ styles, children: hasChildren, Children }: IRootComponentProps)
 }
 Count.displayName = 'Count';
 
-export const LegendItemComponent: LegendItemType = createComponent(LegendItemRoot, {
+export const LegendItemComponent = createComponent(LegendItemRoot, {
   Shape,
   Icon,
   Label,
   AdditionalLabel,
   Count,
-});
+}) as LegendItemType;

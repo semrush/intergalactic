@@ -1,11 +1,7 @@
 import { BoxProps } from '@semcore/base-components';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import { Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface IIconProps extends IconProps, UnknownProperties {}
-export type IconProps = BoxProps &
-  KeyboardFocusProps & {
+export type IconProps = BoxProps & {
     /** Icon width */
     width?: string | number;
     /** Icon height */

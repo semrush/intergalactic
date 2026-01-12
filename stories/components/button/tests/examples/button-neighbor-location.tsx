@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 

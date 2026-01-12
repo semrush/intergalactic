@@ -874,17 +874,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(Trash).not.toBeFocused();
     });
 
-    await test.step('Verify focus switches by tab', async () => {
-      await page.keyboard.press('Tab');
-      await expect(MathPlus).toBeFocused();
-      await page.getByText('Add new').waitFor({ state: 'visible' });
-      await page.keyboard.press('Escape');
-      await page.getByText('Add new').waitFor({ state: 'hidden' });
-      await page.keyboard.press('Escape');
-      await expect(locators.menuitem(page, 2)).toBeFocused();
-      await expect(MathPlus).not.toBeFocused();
-      await expect(Trash).not.toBeFocused();
-    });
+    // this shouldn't work (and don't work in real browsers
+    // await test.step('Verify focus switches by tab', async () => {
+    //   await page.keyboard.press('Tab');
+    //   await expect(MathPlus).toBeFocused();
+    //   await page.getByText('Add new').waitFor({ state: 'visible' });
+    //   await page.keyboard.press('Escape');
+    //   await page.getByText('Add new').waitFor({ state: 'hidden' });
+    //   await page.keyboard.press('Escape');
+    //   await expect(locators.menuitem(page, 2)).toBeFocused();
+    //   await expect(MathPlus).not.toBeFocused();
+    //   await expect(Trash).not.toBeFocused();
+    // });
 
     await test.step('Verify focus switches by ArrowRight', async () => {
       await page.keyboard.press('ArrowRight');

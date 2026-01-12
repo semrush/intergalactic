@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import type { CounterProps } from './index';
@@ -8,7 +8,7 @@ import style from './style/counter.shadow.css';
 
 const enhance = [resolveColorEnhance()] as const;
 
-class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
+class Counter extends Component<CounterProps, typeof enhance> {
   static displayName = 'Counter';
   static enhance = enhance;
 

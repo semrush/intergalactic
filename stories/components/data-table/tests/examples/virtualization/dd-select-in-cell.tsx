@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import Dropdown from '@semcore/ui/dropdown';
-import { Flex } from '@semcore/ui/flex-box';
 import InfoM from '@semcore/ui/icon/Info/m';
 import Select from '@semcore/ui/select';
 import { Hint } from '@semcore/ui/tooltip';

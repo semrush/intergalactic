@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
 import Notice from '@semcore/ui/notice';
 import { Text, List } from '@semcore/ui/typography';

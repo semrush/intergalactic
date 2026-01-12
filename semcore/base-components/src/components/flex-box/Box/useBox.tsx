@@ -1,5 +1,4 @@
-import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
-import logger from '@semcore/core/lib/utils/logger';
+import { sstyled, type UnknownProperties, type IStyledProps } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
@@ -29,7 +28,7 @@ function getSize(size: any) {
   }
 }
 
-export type BoxProps = StyledProps & {
+export type BoxProps = IStyledProps & {
   /**
    * CSS `display` property
    */
@@ -151,11 +150,6 @@ export type BoxProps = StyledProps & {
    * @default false
    */
   inAfterOutline?: boolean;
-
-  /** Property for specifying css properties in js
-   * @deprecated v4.0.0 */
-  css?: React.CSSProperties;
-
   /** CSS `position` property */
   position?: Property.Position;
   /** CSS `top` property */
@@ -310,12 +304,6 @@ export default function useBox<T extends BoxProps>(
     right,
     zIndex,
   ]);
-
-  logger.warn(
-    css !== undefined,
-    'The \'css\' property is deprecated, use \'style\'',
-    other['data-ui-name'] || 'Box',
-  );
 
   const styles = sstyled(style);
 

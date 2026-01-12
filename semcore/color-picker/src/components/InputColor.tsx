@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
@@ -39,7 +39,7 @@ function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   };
 }
 
-class InputColorRoot extends Component<InputColorAsProps> {
+class InputColorRoot extends Component<InputColorAsProps, [], { value: string; state: null }> {
   static displayName = 'InputColor';
 
   static style = style;

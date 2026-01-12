@@ -104,10 +104,6 @@ class StackBarRoot extends Component {
     const seriesIndex = this.series.findIndex((s) => s.key === x);
     const series = this.series[seriesIndex];
 
-    const rBar = series.map((_s, i) =>
-      this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
-    );
-
     this.offsetBars[seriesIndex] = this.offsetBars[seriesIndex] ?? [];
     const data = series.map((s) => ({
       ...s.data,
@@ -131,7 +127,7 @@ class StackBarRoot extends Component {
       wMin,
       x0: XY0,
       y,
-      r: rBar,
+      r: 0,
       groupKey: y,
       offset: calcOffset,
       maxBarSize,

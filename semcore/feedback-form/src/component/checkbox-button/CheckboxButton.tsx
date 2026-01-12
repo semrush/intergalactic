@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from '../../style/checkbox-button.shadow.css';
@@ -9,15 +9,26 @@ import type { FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRat
 class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {
   static style = style;
 
+  checkboxRef = React.createRef<HTMLInputElement>();
+
+  componentDidMount() {
+    const { focused } = this.asProps;
+
+    if (focused) {
+      setTimeout(() => {
+        this.checkboxRef.current?.focus();
+      }, 20);
+    }
+  }
+
   render() {
     const { styles, id, label, type: _type, focused, ...other } = this.asProps;
-    const autoFocus = focused ? 20 : false;
 
     const SCheckboxButton = Root;
     return sstyled(styles)(
       <SCheckboxButton render={Box} __excludeProps={['onChange', 'id', 'type']}>
         <Checkbox {...other}>
-          <Checkbox.Value autoFocus={autoFocus} aria-labelledby={id} />
+          <Checkbox.Value ref={this.checkboxRef} aria-labelledby={id} />
           <Checkbox.Text id={id}>{label}</Checkbox.Text>
         </Checkbox>
       </SCheckboxButton>,

@@ -1,36 +1,22 @@
-import type { UnknownProperties, Intergalactic, ReturnEl } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
 
-/** @deprecated */
-export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {
-  /**
-   *  HTML tag name for the displayed item
-   * @default div
-   */
-  tag?: React.ElementType | string;
-}
 export type NeighborLocationProps = {
   /** Number of elements in a group */
   controlsLength?: number;
 };
 
-/** @deprecated */
-export interface INeighborItemProps extends NeighborItemProps, UnknownProperties {}
 export type NeighborItemProps = {
   /** Determines from which side the component has neighbors */
   neighborLocation?: NeighborLocationUnion | false;
 };
 
-/** @deprecated */
-export interface INeighborLocationDetectProps
-  extends NeighborLocationDetectProps,
-  UnknownProperties {}
 export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement
-    | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
+    | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => React.ReactElement | null);
 
   /** Inner from Root */
   getNeighborLocation: (component: any) => NeighborItemProps['neighborLocation'];

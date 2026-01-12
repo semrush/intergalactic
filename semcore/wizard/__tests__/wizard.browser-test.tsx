@@ -130,6 +130,12 @@ test.describe(`${TAG.VISUAL}`, () => {
         for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
       });
+
+      await test.step('Verify disabled stepper has correct aria attributes', async () => {
+        const disabledStepper = locators.stepperTabs(page).nth(8);
+        await expect(disabledStepper).toHaveAttribute('aria-disabled', 'true');
+        await expect(disabledStepper).toHaveAttribute('tabindex', '-1');
+      });
     });
 
     test('Steps on hover and focus - small state', {

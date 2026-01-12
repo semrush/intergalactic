@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React, { useState, useRef } from 'react';

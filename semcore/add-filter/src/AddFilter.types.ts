@@ -1,9 +1,9 @@
+import type { FlexProps } from '@semcore/base-components';
 import type { FilterTrigger } from '@semcore/base-trigger';
 import type { ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type Dropdown from '@semcore/dropdown';
 import type { DropdownTriggerProps } from '@semcore/dropdown';
-import type { FlexProps } from '@semcore/flex-box';
 import type Input from '@semcore/input';
 import type Select from '@semcore/select';
 
@@ -22,6 +22,11 @@ export type AddFilterItemProps = {
    * Action to perform on filter item unmount.
    */
   onUnmount?: () => void;
+
+  /**
+   * @inner
+   */
+  visible?: boolean;
 };
 
 declare const AddFilterSelectType: Intergalactic.Component<typeof Select, AddFilterItemProps> & {
@@ -70,11 +75,10 @@ export type AddFilterProps = FlexProps & {
   onVisibleFiltersChange?: (visibleFilters: AddFilterKey[]) => void;
 };
 
-declare const AddFilterType: Intergalactic.Component<'div', AddFilterProps> & {
+export type AddFilterType = Intergalactic.Component<'div', AddFilterProps> & {
   Dropdown: typeof AddFilterDropdownType;
   Input: typeof AddFilterInputType;
   Select: typeof AddFilterSelectType;
 };
 
 export { AddFilterInputType, AddFilterSelectType, AddFilterDropdownType };
-export default AddFilterType;

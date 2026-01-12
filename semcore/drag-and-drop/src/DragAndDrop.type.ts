@@ -1,5 +1,5 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { Box, BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 /**
  * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).
@@ -10,21 +10,7 @@ type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-/** @deprecated */
-export interface IDragAndDropProps extends DragAndDropProps, UnknownProperties {}
 export type DragAndDropProps = BoxProps & {
-  /**
-   * @deprecated don't use this prop
-   */
-  theme?: 'dark' | 'default';
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onSwapDraggable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-  /**
-   * @deprecated use `onDnD` instead
-   */
-  onInsertDroppable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
   /**
    * Controlled drag and drop handler
    */
@@ -42,8 +28,6 @@ export type DragAndDropProps = BoxProps & {
   scrollableContainerRef?: React.MutableRefObject<HTMLElement | null>;
 };
 
-/** @deprecated */
-export interface IDraggableProps extends DraggableProps, UnknownProperties {}
 export type DraggableProps = BoxProps & {
   /** Placement of visual drag-and-drop marker
    * @default right
@@ -67,8 +51,6 @@ export type DraggableProps = BoxProps & {
   isCustomFocus?: boolean;
 };
 
-/** @deprecated */
-export interface IDragAndDropContext extends DragAndDropContext, UnknownProperties {}
 export type DragAndDropContext = {
   getDraggableProps: PropGetterFn;
   getDroppableProps: PropGetterFn;
@@ -82,15 +64,11 @@ export type DropZoneProps = BoxProps &
     zoneName?: string;
   };
 
-declare const DragAndDrop: Intergalactic.Component<
+export type DragAndDropComponent = Intergalactic.Component<
   'div',
   DragAndDropProps & DNDAriaProps,
   DragAndDropContext
 > & {
   Draggable: Intergalactic.Component<'div', DraggableProps & DNDAriaProps>;
   DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
-  /** @deprecated use `DragAndDrop.DropZone` instead */
-  Droppable: Intergalactic.Component<typeof Box, DropZoneProps>;
 };
-
-export default DragAndDrop;

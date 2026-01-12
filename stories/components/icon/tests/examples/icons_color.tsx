@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import AmazonL from '@semcore/ui/icon/color/Amazon/l';
 import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import WhatsAppL from '@semcore/ui/icon/color/WhatsApp/l';
