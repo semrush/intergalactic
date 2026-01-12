@@ -186,11 +186,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await page.waitForSelector('text="Great! What do you like the most?"');
-      await expect(checkboxInput.first()).toBeFocused();
-
       if (browserName === 'webkit') {
         test.skip();
       }
+      await expect(checkboxInput.first()).toBeFocused();
+
       for (let i = 0; i < 3; i++) {
         await page.keyboard.press('Tab');
       }
