@@ -53,14 +53,14 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   const [generatingSummary, setGeneratingSummary] = React.useState(true);
 
   React.useEffect(() => {
-    rootRef?.current?.focus();
+    rootRef.current?.focus();
 
     function focusOutHandler(event: FocusEvent) {
       if (event.relatedTarget === null) {
         return requestIdleCallback(onCloseHandler);
       }
 
-      if (!(event.relatedTarget instanceof Node)) return;
+      if (!(event.relatedTarget instanceof HTMLElement)) return;
 
       if (rootRef.current?.contains(event.relatedTarget)) return;
 

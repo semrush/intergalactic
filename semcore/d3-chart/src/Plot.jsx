@@ -26,7 +26,7 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance(), colorResolverEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [keyboardFocusEnhance(false), colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
   plotId = uniqueId();
 
@@ -104,7 +104,6 @@ class PlotRoot extends Component {
         onMouseMove={this.handlerMouseMove}
         onMouseLeave={this.handlerMouseLeave}
         aria-label={ariaLabel}
-        use:tabIndex={-1}
         data-plot-id={this.plotId}
       >
         <Children />
