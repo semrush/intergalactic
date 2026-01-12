@@ -82,7 +82,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const fromCol = columnIndex + 1;
 
     if (cell instanceof MergedColumnsCell) {
-      gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
+      if (cell.value instanceof MergedRowsCell) {
+        gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.value.rowsCount} / ${fromCol + cell.columnsCount}`;
+      } else {
+        gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
+      }
       scope = 'colgroup';
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.rowsCount} / ${fromCol + 1}`;

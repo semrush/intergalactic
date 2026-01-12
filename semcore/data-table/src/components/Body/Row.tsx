@@ -286,7 +286,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
     if (isMergedColumns || isMergedRows) {
-      value = cellValue.value;
+      value = cellValue.value instanceof MergedRowsCell ? cellValue.value.value : cellValue.value;
       if (isMergedColumns) {
         dataKey = cellValue.dataKey;
       }

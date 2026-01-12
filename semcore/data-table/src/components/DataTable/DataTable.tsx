@@ -1336,7 +1336,13 @@ class DataTableRoot<
               : row[ACCORDION];
 
             acc[key] = new MergedRowsCell(value, groupedRows.length, accordion);
-            groupedKeys.push(key);
+            const columnsToRow = key.split(this.columnsSplitter);
+            if (columnsToRow.length === 1) {
+              groupedKeys.push(key);
+            } else {
+              groupedKeys.push(...columnsToRow);
+            }
+
             return acc;
           },
           {
