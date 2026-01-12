@@ -46,7 +46,7 @@ class TimePickerEntity {
   }
 
   private formatHoursTo12(hours: string) {
-    const numberHours = Number.parseInt(hours);
+    const numberHours = Number.parseInt(hours, 10);
 
     if (Number.isNaN(numberHours)) return hours;
 
