@@ -20,9 +20,7 @@ const nestedData3 = [
 ];
 
 // Nested table component
-const NestedTable: React.FC<{
-  data: Array<{ id: number; name: string; count: number }>;
-}> = ({ data }) => {
+const NestedTable = ({ data }: { data: Array<{ id: number; name: string; count: number }> }) => {
   return (
     <DataTable
       aria-label='Nested Table'
@@ -44,7 +42,7 @@ const NestedTable: React.FC<{
 };
 
 // Main component with accordion
-const MultipleIndependentTablesExample: React.FC = () => {
+const MultipleIndependentTablesExample = () => {
   // Mocked data for parent table with accordion content
   const data = [
     {
