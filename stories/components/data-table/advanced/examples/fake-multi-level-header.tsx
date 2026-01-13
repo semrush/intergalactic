@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import { Flex } from '@semcore/ui/flex-box';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 

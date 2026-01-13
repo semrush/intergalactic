@@ -1,10 +1,10 @@
+import { Flex } from '@semcore/base-components';
 import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 
@@ -66,7 +66,12 @@ class DateRangeComparatorAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  prevButtonRef = React.createRef();
+  nextButtonRef = React.createRef();
   popperRef = React.createRef();
+  resetButtonRef = React.createRef();
+  applyButtonRef = React.createRef();
+  periodRefs = [];
   unitRefs = {};
 
   getPeriodProps() {
@@ -100,6 +105,11 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       'role': 'listbox',
       'aria-label': getI18nText('periods'),
+      'periodRef': (index) => (element) => {
+        if (!element) return;
+
+        this.periodRefs[index] = element;
+      },
     };
   }
 
@@ -117,6 +127,7 @@ class DateRangeComparatorAbstract extends Component {
     const { navigateStep } = this;
     return {
       getI18nText,
+      'ref': this.prevButtonRef,
       'onClick': this.bindHandlerNavigateClick(-1),
       'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
@@ -127,6 +138,7 @@ class DateRangeComparatorAbstract extends Component {
     const { navigateStep } = this;
     return {
       getI18nText,
+      'ref': this.nextButtonRef,
       'onClick': this.bindHandlerNavigateClick(1),
       'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
@@ -188,6 +200,7 @@ class DateRangeComparatorAbstract extends Component {
     return {
       getI18nText,
       onClick: this.handleApplyClick,
+      ref: this.applyButtonRef,
     };
   }
 
@@ -196,6 +209,7 @@ class DateRangeComparatorAbstract extends Component {
     return {
       getI18nText,
       onClick: () => this.handleApply(null, null),
+      ref: this.resetButtonRef,
     };
   }
 
@@ -212,9 +226,11 @@ class DateRangeComparatorAbstract extends Component {
 
   handleKeydownDown = (place) => (e) => {
     const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
-    const key = e.key;
+    const { key, target } = e;
     const highlighted =
       focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
+
+    if ([' ', 'Enter'].includes(key) && [this.prevButtonRef.current, this.nextButtonRef.current].includes(target)) return;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.preventDefault();
@@ -254,7 +270,16 @@ class DateRangeComparatorAbstract extends Component {
       return displayedPeriod;
     };
 
-    if (place === 'popper' && e.key === ' ' && highlighted.length) {
+    const isPeriodTarget = this.periodRefs.find((el) => el === target);
+    const isResetButtonTarget = target === this.resetButtonRef.current;
+    const isApplyButtonTarget = target === this.applyButtonRef.current;
+    const areTargetedControls = isPeriodTarget || isResetButtonTarget || isApplyButtonTarget;
+
+    if (place === 'popper' &&
+      e.key === ' ' &&
+      highlighted.length &&
+      !areTargetedControls
+    ) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {

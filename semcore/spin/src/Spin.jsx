@@ -1,7 +1,7 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/spin.shadow.css';

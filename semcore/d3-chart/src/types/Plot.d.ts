@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 
 import type { DataStructureHints } from './a11y/hints';
 import type { Context } from './context';

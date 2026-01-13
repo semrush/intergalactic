@@ -178,7 +178,6 @@
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "accordion",
-      "color-picker",
       "time-picker"
     ]
   },
@@ -387,7 +386,6 @@
       "dropdown-menu",
       "errors",
       "feature-popover",
-      "format-text",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -425,7 +423,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "format-text",
       "fullscreen-modal",
       "pills",
       "slider",
@@ -519,7 +516,6 @@
     "components": [
       "base-trigger",
       "button",
-      "format-text",
       "link",
       "pagination",
       "tab-panel",
@@ -535,7 +531,6 @@
     "components": [
       "base-trigger",
       "button",
-      "format-text",
       "link",
       "tab-panel",
       "typography"
@@ -578,8 +573,7 @@
     "description": "Hint link text.",
     "components": [
       "button",
-      "d3-chart",
-      "format-text"
+      "d3-chart"
     ]
   },
   {
@@ -590,7 +584,6 @@
     "description": "Hover and active states of the hint link text.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -1200,7 +1193,8 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "color-picker"
     ]
   },
   {
@@ -1210,7 +1204,8 @@
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "color-picker"
     ]
   },
   {
@@ -1285,7 +1280,6 @@
       "carousel",
       "drag-and-drop",
       "feature-highlight",
-      "format-text",
       "fullscreen-modal",
       "notice",
       "typography"
@@ -1407,7 +1401,6 @@
     "components": [
       "breadcrumbs",
       "carousel",
-      "format-text",
       "inline-input",
       "input",
       "input-number",
@@ -2221,104 +2214,86 @@
   {
     "name": "--intergalactic-keyboard-focus-outline",
     "type": "color",
-    "rawValue": "rgba({blue.400}, 0.5)",
-    "computedValue": "rgba(0, 143, 248, 0.5)",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "description": "Color for default keyboard focus outline styles.",
-    "components": [
-      "base-components",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-keyboard-focus-outline-invert",
-    "type": "color",
-    "rawValue": "rgba({gray.white}, 0.7)",
-    "computedValue": "rgba(255, 255, 255, 0.7)",
-    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
-    "components": [
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-keyboard-focus",
-    "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
-    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
-    "description": "Default keyboard focus box-shadow styles.",
-    "components": [
-      "base-components",
-      "bulk-textarea",
-      "carousel",
-      "checkbox",
-      "d3-chart",
-      "date-picker",
-      "dropdown",
-      "dropdown-menu",
-      "fullscreen-modal",
-      "inline-input",
-      "input",
-      "input-tags",
-      "radio",
-      "slider",
-      "switch",
-      "tag"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
     "type": "color",
-    "rawValue": "rgba({red.400}, 0.5)",
-    "computedValue": "rgba(255, 73, 83, 0.5)",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "description": "Color for keyboard focus outline styles for elements with invalid state.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
+      "checkbox",
+      "inline-input",
+      "input",
+      "radio",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": [
-      "bulk-textarea",
-      "checkbox",
-      "inline-input",
-      "input",
-      "radio"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-valid-outline",
     "type": "color",
-    "rawValue": "rgba({green.400}, 0.5)",
-    "computedValue": "rgba(0, 159, 129, 0.5)",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "description": "Color for keyboard focus outline styles for elements with valid state.",
     "components": [
+      "bulk-textarea",
+      "inline-input",
+      "input",
       "textarea"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-invert-outline",
+    "type": "color",
+    "rawValue": "rgba({gray.white}, 0.8)",
+    "computedValue": "rgba(255, 255, 255, 0.8)",
+    "description": "Color for keyboard focus outline styles to use on the dark and color background.",
     "components": [
-      "bulk-textarea",
-      "inline-input",
-      "input"
+      "base-components",
+      "carousel",
+      "wizard"
     ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
-    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
-    "description": "Default keyboard focus styles for using with dark background.",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
+    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
+    "description": "Keyboard focus styles for use on dark backgrounds.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-keyboard-focus",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
+    "description": "Default keyboard focus box-shadow styles.",
+    "components": [
+      "input-tags",
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-base",
@@ -2336,7 +2311,6 @@
     "description": "Use with font-size-800.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2349,7 +2323,6 @@
     "components": [
       "button",
       "errors",
-      "format-text",
       "typography"
     ]
   },
@@ -2361,7 +2334,6 @@
     "description": "Use with font-size-600.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2373,7 +2345,6 @@
     "description": "Use with font-size-500.",
     "components": [
       "button",
-      "format-text",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2387,7 +2358,6 @@
     "description": "Use with font-size-400.",
     "components": [
       "button",
-      "format-text",
       "product-head",
       "typography"
     ]
@@ -2406,7 +2376,6 @@
       "d3-chart",
       "dropdown",
       "errors",
-      "format-text",
       "pagination",
       "radio",
       "side-panel",
@@ -2434,7 +2403,6 @@
       "d3-chart",
       "data-table",
       "dropdown",
-      "format-text",
       "fullscreen-modal",
       "notice",
       "notice-bubble",
@@ -2464,7 +2432,6 @@
       "button",
       "d3-chart",
       "data-table",
-      "format-text",
       "fullscreen-modal",
       "switch",
       "tag",
@@ -2495,7 +2462,6 @@
       "color-picker",
       "dropdown",
       "flags",
-      "format-text",
       "fullscreen-modal",
       "side-panel",
       "typography",
@@ -2526,7 +2492,6 @@
       "badge",
       "button",
       "counter",
-      "format-text",
       "tab-line",
       "tab-panel",
       "tag",
@@ -2558,7 +2523,6 @@
       "counter",
       "d3-chart",
       "data-table",
-      "format-text",
       "fullscreen-modal",
       "switch",
       "tag",
@@ -2583,7 +2547,6 @@
       "data-table",
       "date-picker",
       "dropdown",
-      "format-text",
       "fullscreen-modal",
       "input",
       "notice",
@@ -2620,7 +2583,6 @@
       "d3-chart",
       "dropdown",
       "errors",
-      "format-text",
       "input",
       "pagination",
       "pills",
@@ -2643,7 +2605,6 @@
     "computedValue": "20px",
     "components": [
       "button",
-      "format-text",
       "product-head",
       "typography"
     ]
@@ -2655,7 +2616,6 @@
     "computedValue": "24px",
     "components": [
       "button",
-      "format-text",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2668,7 +2628,6 @@
     "computedValue": "32px",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2680,7 +2639,6 @@
     "components": [
       "button",
       "errors",
-      "format-text",
       "typography"
     ]
   },
@@ -2691,7 +2649,6 @@
     "computedValue": "48px",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -2764,8 +2721,6 @@
       "counter",
       "data-table",
       "dropdown",
-      "feedback-form",
-      "format-text",
       "input-tags",
       "link",
       "notice",
@@ -2797,7 +2752,6 @@
       "dropdown",
       "dropdown-menu",
       "feature-popover",
-      "format-text",
       "fullscreen-modal",
       "inline-input",
       "input-tags",
@@ -2809,7 +2763,6 @@
       "side-panel",
       "tag",
       "textarea",
-      "time-picker",
       "typography",
       "widget-empty",
       "wizard"
@@ -2837,7 +2790,6 @@
       "dropdown",
       "feature-popover",
       "feedback-form",
-      "format-text",
       "fullscreen-modal",
       "input",
       "input-tags",
@@ -2882,7 +2834,6 @@
       "dropdown",
       "errors",
       "feedback-form",
-      "format-text",
       "fullscreen-modal",
       "input",
       "modal",
@@ -2914,7 +2865,6 @@
       "errors",
       "feature-popover",
       "feedback-form",
-      "format-text",
       "modal",
       "notice",
       "notice-global",
@@ -2923,7 +2873,6 @@
       "side-panel",
       "tab-line",
       "typography",
-      "widget-empty",
       "wizard"
     ]
   },
@@ -2938,7 +2887,6 @@
       "card",
       "data-table",
       "errors",
-      "format-text",
       "notice-bubble",
       "pagination",
       "product-head",
@@ -2956,7 +2904,6 @@
     "components": [
       "bulk-textarea",
       "errors",
-      "format-text",
       "fullscreen-modal",
       "notice-bubble",
       "product-head",
@@ -2973,7 +2920,6 @@
     "components": [
       "bulk-textarea",
       "errors",
-      "format-text",
       "fullscreen-modal",
       "notice-bubble",
       "notice-global",
@@ -3148,7 +3094,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "carousel",
       "date-picker",
       "dropdown-menu",
       "feature-highlight",
@@ -3182,6 +3127,8 @@
     "components": [
       "card",
       "carousel",
+      "d3-chart",
+      "date-picker",
       "feedback-form",
       "notice"
     ]
@@ -4180,7 +4127,9 @@
     "rawValue": "200",
     "computedValue": "200",
     "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-duration-extra-fast",
@@ -4190,7 +4139,8 @@
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
     "components": [
       "data-table",
-      "drag-and-drop"
+      "drag-and-drop",
+      "feature-highlight"
     ]
   },
   {
@@ -4415,8 +4365,8 @@
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
     "type": "color",
-    "rawValue": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
-    "computedValue": "linear-gradient(90deg, rgba(171, 108, 254, 0.5), rgba(0, 143, 248, 0.5))",
+    "rawValue": "linear-gradient(90deg, {violet.400}, {blue.400})",
+    "computedValue": "linear-gradient(90deg, #ab6cfe, #008ff8)",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"

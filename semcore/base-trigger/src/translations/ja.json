@@ -1,4 +1,5 @@
 {
   "clear": "クリア",
-  "filter": "フィルタ"
+  "filter": "フィルタ",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "選択済み"
 }

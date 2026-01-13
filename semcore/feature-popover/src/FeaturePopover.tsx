@@ -45,7 +45,7 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends Component<FeaturePopoverProps, {}, {}, typeof enhance> {
+class FeaturePopover extends Component<FeaturePopoverProps, typeof enhance, { visible: null }> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -120,11 +120,22 @@ function Trigger({ Children, styles }: IRootComponentProps) {
   );
 }
 
-class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, [], FeaturePopoverPopperInnerProps> {
+class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, [], {}, FeaturePopoverPopperInnerProps> {
   static defaultProps = {
     closeIcon: false,
     duration: 200,
+    autoFocus: true,
   };
+
+  popperRef = React.createRef<HTMLDivElement>();
+
+  componentDidMount() {
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.popperRef.current?.focus();
+      }, 0);
+    }
+  }
 
   render() {
     const SFeaturePopover = Root;
@@ -148,10 +159,10 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
 
     return sstyled(styles)(
       <Popper.Popper
+        ref={this.popperRef}
         disableEnforceFocus
         zIndex={zIndex}
         tabIndex={0}
-        autoFocus
         role='dialog'
         aria-describedby={ariaDescribedBy}
         aria-label={ariaLabel}
@@ -188,7 +199,7 @@ class FeaturePopoverPopper extends Component<FeaturePopoverPopperProps, {}, {}, 
   }
 }
 
-const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
+function Spot(props: IRootComponentProps & FeaturePopoverSpotProps) {
   const SSpot = Root;
 
   const { styles, visible } = props;
@@ -196,7 +207,7 @@ const Spot = (props: IRootComponentProps & FeaturePopoverSpotProps) => {
   if (!visible) return null;
 
   return sstyled(styles)(<SSpot render={Box} />);
-};
+}
 
 export default createComponent(
   FeaturePopover,

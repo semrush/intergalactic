@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
@@ -135,12 +135,14 @@ class HistogramChartComponent extends AbstractChart<
     const item = dataDefinitions[0];
 
     return (
-      <Bar
-        x={invertAxis ? item.id : groupKey}
-        y={invertAxis ? groupKey : item.id}
-        key={item.id}
-        color={item.color}
-      />
+      item.checked && (
+        <Bar
+          x={invertAxis ? item.id : groupKey}
+          y={invertAxis ? groupKey : item.id}
+          key={item.id}
+          color={item.color}
+        />
+      )
     );
   }
 

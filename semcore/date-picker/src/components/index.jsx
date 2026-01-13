@@ -1,8 +1,8 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { Component, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Dropdown from '@semcore/dropdown';
-import { Box } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import dayjs from 'dayjs';
@@ -43,14 +43,14 @@ export function Header(props) {
   return sstyled(props.styles)(<SHeader render={Box} />);
 }
 
-export const Title = ({ Children, styles }) => {
+export function Title({ Children, styles }) {
   const STitle = Root;
   return sstyled(styles)(
     <STitle render={Box} aria-live='polite'>
       <Children />
     </STitle>,
   );
-};
+}
 
 export function Prev({ children, Children }) {
   return (
@@ -101,13 +101,14 @@ export class Period extends Component {
 
   render() {
     const SPeriod = Root;
-    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange } =
+    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange, periodRef } =
       this.asProps;
 
     return sstyled(styles)(
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
+            ref={periodRef?.(i)}
             key={i}
             use='tertiary'
             theme='muted'

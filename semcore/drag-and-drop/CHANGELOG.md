@@ -2,11 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [16.1.10] - 2025-09-20
+## [16.1.12] - 2025-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [16.1.11 ~> 16.1.12]).
+
+## [16.1.11] - 2025-10-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [16.1.10 ~> 16.1.11], `@semcore/base-components` [16.4.0 ~> 16.4.1]).
+
+## [16.1.10] - 2025-10-03
 
 ### Fixed
 
 - Unnecessary background-color on hovered draggable elements.
+- Non-working dragging in scrollable containers.
 
 ## [16.1.9] - 2025-09-17
 

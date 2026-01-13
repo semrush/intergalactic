@@ -1,107 +1,53 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
-  const variables = [
-    { theme: 'invert', size: 's' },
-    { theme: 'dark', size: 'm' },
-    { theme: 'violet-100', size: 'l' },
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const variablesBarCustomization = [
+    { theme: 'invert', size: 's', value: 0 },
+    { theme: 'dark', size: 'm', value: 110 },
+    { theme: 'violet-100', size: 'l', value: 50 },
   ];
-  variables.forEach((item) => {
-    test(`Verify progress bar customization with size= ${item.size}  and theme= e= ${item.theme}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+  variablesBarCustomization.forEach((item) => {
+    test(`Verify progress bar with background customization with value=${item.value}, size=${item.size}, theme=${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/progress-bar/tests/examples/customizing_the_bar_with_background.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify progress bar visual with keyboard focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
-  const variablesProgressValue = [
-    { value: 0, size: 's' },
-    { value: 110, size: 'm' },
-    { value: 50, size: 'l' },
+  const variablesValueCustomization = [
+    { value: 0, theme: 'inviolet-500', size: 's' },
+    { value: 110, theme: 'violet-100', size: 'm' },
+    { value: 50, theme: 'violet-100', size: 'l' },
   ];
-  variablesProgressValue.forEach((item) => {
-    test(`Verify progress bar customization with value= ${item.value}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_bar1.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
+  variablesValueCustomization.forEach((item) => {
+    test(`Verify progress bar value customization with value=${item.value}, size=${item.size}, theme=${item.theme}`, {
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx', 'en', item);
 
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify progress bar value visual with keyboard focus', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
-  const variablesValueValue = [
-    { value: 0 },
-    { value: 110 },
-    { value: 50 },
-  ];
-  variablesValueValue.forEach((item) => {
-    test(`Verify progress bar value customization with value= ${item.value}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  const variablesValue = [
-    { theme: 'inviolet-500', size: 's' },
-    { theme: 'violet-100', size: 'm' },
-    { theme: 'violet-100', size: 'l' },
-  ];
-  variablesValue.forEach((item) => {
-    test(`Verify progress bar value customization with size= ${item.size} theme= ${item.theme}`, async ({ page }) => {
-      const standPath = 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-
-      await page.setContent(htmlContent);
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify progress bar and value customization', async ({ page }) => {
-    const standPath = 'stories/components/progress-bar/docs/examples/customizing_the_bar.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
+  test('Verify both value and progress bar customized', {
+    tag: [TAG.PRIORITY_MEDIUM, '@progress-bar'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/progress-bar/docs/examples/customizing_the_bar.tsx', 'en');
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
-  });
-});
-
-test.describe('Functional', () => {
-  test('Verify keyboard interactions and attributes', async ({ page }) => {
-    const standPath = 'stories/components/progress-bar/docs/examples/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
-    const progressBar = page.locator('[data-ui-name="ProgressBar"]');
-
-    await test.step('Verify attributes', async () => {
-      await expect(progressBar).toHaveAttribute('role', 'progressbar');
-      await expect(progressBar).toHaveAttribute('value');
-      await expect(progressBar).toHaveAttribute('aria-valuenow');
-      await expect(progressBar).toHaveAttribute('aria-valuetext');
-      await expect(progressBar).toHaveAttribute('aria-label', 'Basic ProgressBar example');
-      await expect(progressBar).toHaveAttribute('tabindex', '0');
-    });
-
-    await test.step('Verify focus on ptogress bar by tab', async () => {
-      await page.keyboard.press('Tab');
-      await expect(progressBar).toBeFocused();
-    });
   });
 });

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.7.3] - 2025-11-14
+
+### Changed
+
+- Set `pointer-events: none` for path's in interactive svg.
+
+## [16.7.2] - 2025-10-06
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [16.0.9 ~> 16.0.10], `@semcore/base-components` [16.2.3 ~> 16.4.0]).
+
 ## [16.7.1] - 2025-09-17
 
 ### Changed

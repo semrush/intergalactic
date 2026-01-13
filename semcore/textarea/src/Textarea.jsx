@@ -1,9 +1,8 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/textarea.shadow.css';
@@ -18,7 +17,6 @@ class Textarea extends Component {
     defaultValue: '',
   };
 
-  static enhance = [autoFocusEnhance()];
   static style = style;
 
   node = null;

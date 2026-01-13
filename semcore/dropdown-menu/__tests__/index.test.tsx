@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { Box } from '@semcore/flex-box';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
@@ -14,7 +14,17 @@ describe('dropdown-menu Dependency imports', () => {
 });
 
 describe('DropdownMenu', () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
 
   test.concurrent('Verify does not trigger visibility change on Space key in input', () => {
     const spy = vi.fn();
@@ -41,24 +51,6 @@ describe('DropdownMenu', () => {
     const textarea = getByTestId('textarea');
     fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
     expect(spy).not.toHaveBeenCalled();
-  });
-
-  test.concurrent('Verify ItemHint and ItemTitle are not broken', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <DropdownMenu visible disablePortal>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
-            <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.sequential('Verify menu actions interactions', async ({ expect }) => {

@@ -4,6 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
@@ -26,15 +28,19 @@ const Demo = () => {
     .domain([0, 10]);
 
   React.useEffect(() => {
-    const unsubscribe = eventEmitter.subscribe('setTooltipPosition', (x, y) => {
-      const plotRect = plotRef.current?.getBoundingClientRect();
-      if (!plotRect) return;
+    const plotElement = plotRef.current;
+
+    if (!plotElement) return;
+
+    const plotId = plotElement.dataset.plotId!;
+    const unsubscribe = eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
+      const plotRect = plotElement.getBoundingClientRect();
 
       if (x - plotRect.x < 150) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 150, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 150, y);
       }
       if (x - plotRect.x > 200) {
-        eventEmitter.emit('setTooltipPosition', plotRect.x + 200, y);
+        eventEmitter.emit(`setTooltipPosition_${plotId}`, plotRect.x + 200, y);
       }
     });
     return () => unsubscribe();
@@ -94,14 +100,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = Array(10)
-  .fill({})
-  .map((d, i) => {
-    return {
-      time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random() * 10,
-    };
-  });
+const data = LineMockData.Time;
 
 export default Demo;

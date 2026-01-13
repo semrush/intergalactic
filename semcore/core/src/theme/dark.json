@@ -1560,46 +1560,46 @@
         "description": "Use it only for controls that float above the whole interface."
       }
     },
-    "keyboard-focus": {
-      "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
-      "type": "boxShadow",
-      "description": "Default keyboard focus box-shadow styles.",
-      "outline": {
-        "value": "rgba({gray.white}, 0.7)",
-        "type": "color",
-        "description": "Color for default keyboard focus outline styles."
-      },
-      "outline-invert": {
-        "value": "rgba({gray.white}, 0.7)",
-        "type": "color",
-        "description": "Color for default keyboard focus outline styles to use on the dark and color background."
-      }
-    },
-    "keyboard-focus-invalid": {
-      "value": "0px 0px 0px 3px {keyboard-focus-invalid.outline}",
-      "type": "boxShadow",
-      "description": "Keyboard focus styles for elements with invalid state.",
-      "outline": {
-        "value": "rgba({red.400}, 0.8)",
-        "type": "color",
-        "description": "Color for keyboard focus outline styles for elements with invalid state."
-      }
-    },
-    "keyboard-focus-valid": {
-      "value": "0px 0px 0px 3px {keyboard-focus-valid.outline}",
-      "type": "boxShadow",
-      "description": "Keyboard focus styles for elements with valid state.",
-      "outline": {
-        "value": "rgba({green.400}, 0.8)",
-        "type": "color",
-        "description": "Color for keyboard focus outline styles for elements with valid state."
-      }
-    },
-    "keyboard-focus-invert": {
-      "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
-      "type": "boxShadow",
-      "description": "Default keyboard focus styles for using with dark background."
-    },
+"keyboard-focus": {
+  "value": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
+  "type": "boxShadow",
+  "description": "Default keyboard focus box-shadow styles.",
+  "outline": {
+    "value": "{blue.400}",
+    "type": "color",
+    "description": "Color for default keyboard focus outline styles."
+  },
+  "invalid": {
+    "value": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
+    "type": "boxShadow",
+    "description": "Keyboard focus styles for elements with invalid state.",
+    "outline": {
+      "value": "{red.400}",
+      "type": "color",
+      "description": "Color for keyboard focus outline styles for elements with invalid state."
+    }
+  },
+  "valid": {
+    "value": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
+    "type": "boxShadow",
+    "description": "Keyboard focus styles for elements with valid state.",
+    "outline": {
+      "value": "{green.400}",
+      "type": "color",
+      "description": "Color for keyboard focus outline styles for elements with valid state."
+    }
+  },
+  "invert": {
+    "value": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
+    "type": "boxShadow",
+    "description": "Keyboard focus styles for use on dark backgrounds.",
+    "outline": {
+      "value": "rgba({gray.white}, 0.8)",
+      "type": "color",
+      "description": "Color for keyboard focus outline styles to use on the dark and color background."
+    }
+  }
+},
     "base": {
       "value": "Inter",
       "type": "fontFamilies",
@@ -2686,7 +2686,7 @@
       "type": "border",
       "description": "Keyboard focus styles for highlighted controls.",
       "outline": {
-        "value": "linear-gradient(90deg, rgba({violet.400}, 0.5), rgba({blue.400}, 0.5))",
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
         "type": "color",
         "description": "Color for keyboard focus outline styles for highlighted controls."
       }

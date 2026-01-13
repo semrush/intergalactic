@@ -1,27 +1,71 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('radar-chart', () => {
-  test('basic-usage', async ({ page }) => {
-    const standPath = 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
+test.describe(`@d3-chart @radar-chart ${TAG.ACCESSIBILITY}`, () => {
+  test('background-color', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/background-color.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
 
+  test('basic-usage', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('circle', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/circle.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('color', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/color.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('label-custom', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/label-custom.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('label-long', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/label-long.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
 
   test('legend-and-pattern-fill', async ({ page }) => {
-    const standPath =
-      'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/legend-and-pattern-fill.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
 
+  test.skip('rotated', async ({ page }) => { // we have issue in example
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/rotated.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('scale', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/scale.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('tick-size', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/tick-size.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('tooltip', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/tooltip.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
 });

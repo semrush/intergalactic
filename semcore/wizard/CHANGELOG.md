@@ -2,6 +2,37 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.2] - 2025-12-18
+
+### Fixed
+
+- Missing translations
+
+## [16.2.1] - 2025-11-10
+
+### Fixed
+
+- Unnecessary scroll in small mode with long text in sidebar step.
+- Disabled `Wizard.Stepper` in `Sidebar` can be focused and activated by keyboard.
+
+## [16.2.0] - 2025-10-29
+
+### Changed
+
+- Improve types, added `WizardContentProps` with `noSidebar` property, component rewritten in TypeScript.
+
+## [16.1.11] - 2025-10-24
+
+### Changed
+
+- `z-index` value for `Stepper` in `hover` state.
+
+## [16.1.10] - 2025-10-06
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [16.0.9 ~> 16.0.10], `@semcore/flex-box` [16.0.9 ~> 16.0.10], `@semcore/icon` [16.5.0 ~> 16.5.1], `@semcore/modal` [16.1.9 ~> 16.1.10], `@semcore/base-components` [16.2.3 ~> 16.4.0]).
+
 ## [16.1.9] - 2025-09-17
 
 ### Changed

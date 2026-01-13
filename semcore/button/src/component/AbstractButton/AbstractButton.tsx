@@ -1,9 +1,8 @@
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
@@ -18,7 +17,7 @@ export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
 
 type Props = AbstractButtonProps<any, any, any>;
 
-export abstract class AbstractButton extends Component<Props, {}, {}> {
+export abstract class AbstractButton extends Component<Props> {
   static displayName = 'AbstractButton';
 
   containerRef = React.createRef<HTMLButtonElement>();
@@ -71,22 +70,22 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
   }
 
   renderButton({ buttonProps, children }: any) {
-    const { styles } = this.asProps;
+    const { styles, theme } = this.asProps;
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Box} {...buttonProps}>
+      <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
         {children}
       </SButton>,
     );
   }
 
   renderButtonWithHint({ buttonProps, children, hintProps }: any) {
-    const { styles } = this.asProps;
+    const { styles, theme } = this.asProps;
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Hint} {...buttonProps} {...hintProps} ignorePortalsStacking>
+      <SButton render={Hint} invertOutline={theme === 'invert'} {...buttonProps} {...hintProps} ignorePortalsStacking>
         {children}
       </SButton>,
     );
@@ -142,7 +141,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
           const children = sstyled(styles)(
             <>
               {/* @ts-ignore */}
-              <SInner tag='span' loading={loading}>
+              <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
                 {AddonLeft
                   ? (
                       <Button.Addon>

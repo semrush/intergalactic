@@ -1,0 +1,94 @@
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+
+type FormValues = {
+  export?: string;
+};
+const defaultValues: FormValues = {
+  export: 'all',
+};
+const Demo = () => {
+  const [selectedFirst, setSelectedFirst] = React.useState(100);
+  const [message, setMessage] = React.useState('');
+  const { handleSubmit, control, reset, getValues } = useForm<FormValues>({
+    defaultValues,
+  });
+  const optionsFirst = [100, 500].map((value) => ({ value, children: value }));
+
+  const onSubmit = (data: FormValues) => {
+    if (data.export === 'first') {
+      data.export = `first ${selectedFirst}`;
+    }
+    alert(JSON.stringify(data));
+  };
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setMessage(''), 500);
+    return () => clearTimeout(timer);
+  }, [message]);
+
+  const onChangeSelect = (value: number) => {
+    setSelectedFirst(value);
+    if (getValues('export') !== 'first') {
+      setMessage(`Selection changed to First ${value} rows`);
+      reset({ export: 'first' });
+    }
+  };
+
+  return (
+    <Flex
+      tag='form'
+      onSubmit={handleSubmit(onSubmit)}
+      direction='column'
+      alignItems='flex-start'
+      gap={4}
+    >
+      <ScreenReaderOnly role='status' aria-live='polite'>
+        {message}
+      </ScreenReaderOnly>
+      <Text size={300} id='radio-group-label' tag='label' bold>
+        Export data
+      </Text>
+      <Controller
+        render={({ field }) => (
+          <RadioGroup {...field} size='l' gap={2} aria-labelledby='radio-group-label'>
+            <Radio mb={2} value='all' label='All' />
+            <Radio>
+              <Radio.Value value='selected' />
+              <Radio.Text>
+                Selected
+                {' '}
+                <Text use='secondary'>(3)</Text>
+              </Radio.Text>
+            </Radio>
+            <Radio style={{ alignItems: 'center' }}>
+              <Radio.Value value='first' />
+              <Radio.Text>First</Radio.Text>
+              <Select
+                size='l'
+                ml={2}
+                options={optionsFirst}
+                onChange={onChangeSelect}
+                defaultValue={100}
+                aria-label='Rows'
+              />
+            </Radio>
+          </RadioGroup>
+        )}
+        control={control}
+        name='export'
+      />
+
+      <Button type='submit' use='primary' theme='info' size='l'>
+        Export
+      </Button>
+    </Flex>
+  );
+};
+
+export default Demo;

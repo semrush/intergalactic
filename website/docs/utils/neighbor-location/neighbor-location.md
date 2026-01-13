@@ -30,7 +30,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/grouped-buttons.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/grouped-buttons.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/grouped-input-and-button.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/grouped-input-and-button.tsx';
 </script>
 
 :::
@@ -50,7 +50,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/grouped-input-and-select.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/grouped-input-and-select.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ You can group input, select, and button.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/grouped-input,-select,-and-button.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/grouped-input,-select,-and-button.tsx';
 </script>
 
 :::
@@ -85,7 +85,7 @@ For the correct type mapping in the TC, you must also pass the interface.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/adding-a-wrapper.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/adding-a-wrapper.tsx';
 </script>
 
 :::
@@ -107,7 +107,7 @@ You can use the render function or the element will be cloned.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/neighbor-location/docs/examples/using-a-custom-component.tsx';
+  export Demo from 'stories/components/base-components/neighbor-location/docs/examples/using-a-custom-component.tsx';
 </script>
 
 :::

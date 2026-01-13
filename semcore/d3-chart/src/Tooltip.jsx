@@ -1,8 +1,7 @@
+import { Popper, Box } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { Box } from '@semcore/flex-box';
-import Popper from '@semcore/popper';
 import React from 'react';
 
 import createElement from './createElement';
@@ -55,15 +54,16 @@ class TooltipRoot extends Component {
   virtualTriggerElement = null;
   unsubscribe = [];
   componentDidMount() {
-    const { eventEmitter } = this.asProps;
+    const { eventEmitter, plotId } = this.asProps;
+
     this.unsubscribe.push(
-      eventEmitter.subscribe('setTooltipRenderingProps', (anchorProps, tooltipProps) => {
+      eventEmitter.subscribe(`setTooltipRenderingProps_${plotId}`, (anchorProps, tooltipProps) => {
         this.setState({ anchorProps, tooltipProps });
       }),
-      eventEmitter.subscribe('setTooltipVisible', (visible) =>
+      eventEmitter.subscribe(`setTooltipVisible_${plotId}`, (visible) =>
         this.setState({ $visible: visible }),
       ),
-      eventEmitter.subscribe('setTooltipPosition', (x, y) => {
+      eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
         this.virtualElementPosition.x = x;
         this.virtualElementPosition.y = y;
         if (this.virtualTriggerElement === null) {

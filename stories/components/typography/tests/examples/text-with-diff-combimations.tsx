@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/flex-box';
+import type { BoxProps } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';

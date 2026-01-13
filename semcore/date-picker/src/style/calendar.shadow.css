@@ -1,6 +1,11 @@
 SCalendar {
   display: flex;
   flex-direction: column;
+  border-radius: var(--intergalactic-surface-rounded, 6px);
+
+  SCalendarUnit:focus-visible {
+    outline: none;
+  }
 }
 
 SGridDays {
@@ -59,7 +64,7 @@ SCalendarUnit {
   min-height: 32px;
   min-width: 32px;
   position: relative;
-  transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-radius 0.15s 0.15s;
+  transition: border-radius 0.15s 0.15s;
   outline: none;
   margin: 0;
   margin-top: 4px;
@@ -67,10 +72,6 @@ SCalendarUnit {
   &:hover {
     color: var(--intergalactic-text-primary, #191b23);
     background-color: var(--intergalactic-date-picker-cell-hover, #e0e1e9);
-  }
-
-  &:focus-visible {
-    outline: none;
   }
 }
 
@@ -99,7 +100,7 @@ SCalendarUnit[today]SCalendarUnit[endSelected] {
 SCalendarUnit[selected] {
   background-color: var(--intergalactic-date-picker-cell-range, #c4e5fe);
   border-radius: 0;
-  transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-radius 0s 0s;
+  transition: border-radius 0s 0s;
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
@@ -108,9 +109,9 @@ SCalendarUnit[selected] {
 }
 
 SCalendarUnit[highlighted] {
-  background-color: var(--intergalactic-date-picker-cell-range-hover, #8ecdff);
+  background-color: var(--intergalactic-date-picker-cell-range, #c4e5fe);
   border-radius: 0;
-  transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-radius 0s 0s;
+  transition: border-radius 0s 0s;
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
@@ -237,19 +238,12 @@ SCalendarUnit[disabled] {
 }
 
 SCalendar:focus {
-  outline: none;
   & SCalendarUnit[highlighted] {
     z-index: 1;
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
   }
+
   &:not(&:has(SCalendarUnit[highlighted])) {
-    box-shadow: var(
-      --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
-    );
+    border-radius: var(--intergalactic-surface-rounded, 6px);
   }
 }
 

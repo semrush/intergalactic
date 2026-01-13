@@ -3,6 +3,8 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
+import AreaMockData from '../../../__mocks__/area';
+
 function formatDate(value: any, options: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
@@ -28,8 +30,8 @@ const Demo = () => {
       </YAxis>
       <XAxis>
         <XAxis.Ticks ticks={data.map((d) => +d.time)}>
-          {({ value }) => ({
-            children: formatDate(value, {
+          {({ index }) => ({
+            children: formatDate(data[index].time, {
               month: 'short',
               day: 'numeric',
             }),
@@ -43,14 +45,6 @@ const Demo = () => {
   );
 };
 
-const date = new Date();
-const data = Array(10)
-  .fill({})
-  .map((d, i) => {
-    return {
-      time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random() * 10,
-    };
-  });
+const data = AreaMockData.Default;
 
 export default Demo;

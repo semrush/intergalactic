@@ -86,7 +86,7 @@ const makePlaygroundExecutableCode = (
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
-    `;\n globalThis["render_${playgroundId}"] = (mountNode) => { globalThis.createReactRoot?.(mountNode).render(<${entryPoint} />); }; }`;
+    `;\n globalThis["render_${playgroundId}"] = (mountNode) => { const reactRoot = globalThis.createReactRoot?.(mountNode); reactRoot.render(<${entryPoint} />); return reactRoot; }; }`;
 
   return {
     executableCode,
@@ -145,6 +145,25 @@ export const renderSandbox = (
         }
       }
 
+      let mockData = null;
+
+      if (displayedCode.includes('__mocks__')) {
+        const mockRegExp = /^import\s+(?<mockName>\w+)\s+from\s+['"](?<mockPath>\.{1,2}(?:\/\.{2})*\/__mocks__[^'"]+)['"];?$/m;
+
+        const { groups } = displayedCode.match(mockRegExp) ?? {};
+
+        if (groups?.mockName && groups?.mockPath) {
+          const { mockName, mockPath } = groups;
+
+          mockData = fs.readFileSync(
+            `${resolvePath(resolvePath('..', demoVariableImport), '..', mockPath)}.ts`,
+            'utf-8',
+          );
+
+          displayedCode = displayedCode.replace(mockRegExp, `import ${mockName} from './mock';`);
+        }
+      }
+
       const htmlCode = markdownRenderer.render('```' + meta + '\n' + displayedCode + '\n```\n');
       let lastScriptTokenIndex = -1;
       for (let i = tokens.length - 1; i >= 0; i--) {
@@ -173,7 +192,24 @@ export const renderSandbox = (
 
       const encodedHtmlCode = btoa(htmlCode);
       const encodedRawCode = btoa(displayedCode);
-      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}" :stylesIsolation="${
+
+      const sandboxArgs: Record<string, string | boolean> = {
+        playgroundId: playgroundId,
+        hideCode: hideCode,
+        htmlCode: encodedHtmlCode,
+        rawCode: encodedRawCode,
+      };
+
+      if (mockData) {
+        sandboxArgs.mockData = btoa(mockData);
+      }
+
+      const args = Object.entries(sandboxArgs).reduce((acc, [key, value]) => {
+        acc += `${key}="${value}" `;
+        return acc;
+      }, '').trim();
+
+      return `<Sandbox ${args} :stylesIsolation="${
         htmlTag === 'sandbox'
       }">`;
     }

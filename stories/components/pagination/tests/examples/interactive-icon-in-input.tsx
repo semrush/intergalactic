@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import Return from '@semcore/ui/icon/Return/m';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';

@@ -2,9 +2,10 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';
+import type { SlideProps } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function Slide(props: any, ref: React.Ref<HTMLElement>) {
+function Slide(props: SlideProps, ref: React.Ref<HTMLDivElement>) {
   return sstyled(style)(
     <Animation
       ref={ref}
@@ -19,4 +20,4 @@ function Slide(props: any, ref: React.Ref<HTMLElement>) {
 
 Slide.displayName = 'Slide';
 
-export default createBaseComponent(Slide);
+export default createBaseComponent<'div', SlideProps>(Slide);

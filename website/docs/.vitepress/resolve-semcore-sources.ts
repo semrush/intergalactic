@@ -116,5 +116,5 @@ export const resolveSemcoreSources = async (path: string) => {
     }
   }
 
-  throw new Error(`Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}").`);
+  throw new Error(`Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}" with "${resolvePath(workspacePath, modifiedSubPath)}" or "${resolvePath(workspacePath, subPath)}").`);
 };

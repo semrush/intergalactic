@@ -20,15 +20,11 @@ export const esbuildPluginIcons = (): Plugin => ({
       namespace: 'icons',
     }));
     build.onLoad({ filter: /^@icons/, namespace: 'icons' }, async ({ path }) => {
-      console.log(path);
-
       const fullPath = path.endsWith('/lib') ? resolvePath(iconsDir, 'lib') : resolvePath(iconsDir);
       const allIcons = await glob('**/index.mjs', {
         cwd: fullPath,
         ignore: ['esm', 'src', 'node_modules', 'cjs', 'es6'],
       });
-
-      console.log(allIcons);
 
       const iconPaths = allIcons.filter((path) => {
         const maybeSize = path.split('/')[path.split('/').length - 2];

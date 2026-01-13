@@ -1,8 +1,8 @@
+import { Flex, Box } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, sstyled, Root, type IRootComponentProps } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, Box } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import type { DOMAttributes } from 'react';
 import React from 'react';
@@ -19,7 +19,7 @@ import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
 const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
-class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
+class LegendItemRoot extends Component<LegendItemProps, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
@@ -62,12 +62,13 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getIconProps(): LegendItem & IRootComponentProps {
+  getIconProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
     return {
       ...props,
       children: props.icon,
+      onClick: () => props.onChangeLegendItem(props.id, !props.checked),
     };
   }
 
@@ -83,26 +84,28 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     };
   }
 
-  getAdditionalLabelProps(): LegendItem & IRootComponentProps {
+  getAdditionalLabelProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
-    const { additionalInfo } = props;
+    const { additionalInfo, onChangeLegendItem, id, checked } = props;
 
     return {
       ...props,
       children: additionalInfo && 'label' in additionalInfo ? `${additionalInfo.label}` : undefined,
+      onClick: () => onChangeLegendItem(id, !checked),
     };
   }
 
-  getCountProps(): LegendItem & IRootComponentProps {
+  getCountProps(): LegendItem & IRootComponentProps & { onClick: () => void } {
     const props = this.asProps;
 
-    const { additionalInfo } = props;
+    const { additionalInfo, onChangeLegendItem, id, checked } = props;
 
     return {
       ...props,
       children:
         additionalInfo && 'count' in additionalInfo ? `(${additionalInfo.count})` : undefined,
+      onClick: () => onChangeLegendItem(id, !checked),
     };
   }
 
@@ -111,7 +114,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
     const { styles, Children, shape } = this.asProps;
 
     // @ts-ignore
-    const disabled = StaticShapes.includes(shape);
+    const disabled = StaticShapes.includes(shape) || shape === undefined;
 
     return sstyled(styles)(
       <SLegendItem render={Flex} disabled={disabled} __excludeProps={['id']}>
@@ -157,14 +160,14 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
         <Checkbox
           size={size}
           checked={checked}
-          theme={checked ? color : undefined}
+          theme={color}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
           aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
-          <Box mt='2px' mr={1}>
+          <Box mt='2px' mr={1} onClick={() => onChange(!checked)}>
             <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}
@@ -239,10 +242,10 @@ function Count({ styles, children: hasChildren, Children }: IRootComponentProps)
 }
 Count.displayName = 'Count';
 
-export const LegendItemComponent: LegendItemType = createComponent(LegendItemRoot, {
+export const LegendItemComponent = createComponent(LegendItemRoot, {
   Shape,
   Icon,
   Label,
   AdditionalLabel,
   Count,
-});
+}) as LegendItemType;

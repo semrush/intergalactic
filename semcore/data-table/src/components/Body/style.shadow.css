@@ -1,5 +1,16 @@
-SBody, SRow, SRowGroup, SAccordionRows {
+SBody, SRow, SRowGroup {
   display: contents;
+}
+
+SAccordionRows {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: var(--gridRow);
+  overflow: clip;
+  transition-property: max-height;
+  transition-duration: var(--duration);
+  transition-timing-function: linear;
+  grid-template-columns: subgrid;
 }
 
 SBody[compact] {
@@ -17,6 +28,11 @@ SBody[compact] {
     }
   }
   SRow[sideIndents='wide'] {
+    SCellWrapper:first-child SCell[data-aria-level] {
+      padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
+    }
+  }
+  SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
     }
@@ -59,6 +75,26 @@ SRow[active] > SCellWrapper > SCell:not([theme]) {
 SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
 SCell:not([theme])[expanded][withAccordion] {
   background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCell[theme='muted'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
+SCell[theme='info'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+}
+
+SCell[theme='success'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+}
+
+SCell[theme='warning'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+}
+
+SCell[theme='danger'][expanded][withAccordion] {
+  background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
 }
 
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
@@ -320,13 +356,12 @@ SEmptyData {
   grid-column: 1 / -1;
 }
 
-SRow[sideIndents='wide'] {
+SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-5x, 20px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
-
     }
   }
 
@@ -335,13 +370,6 @@ SRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow][withAnimation] > SCellWrapper {
-  transition-property: height;
-  transition-delay: var(--delay);
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
-  overflow: clip;
-}
 
 SCellWrapper[fixed][shadowVertical] {
   &:after {
@@ -398,4 +426,8 @@ SLimitOverlayCellWrapper[gridArea] {
 SLimitOverlayCellWrapper[left] {
   position: sticky;
   left: var(---left);
+}
+
+SCell[innerOutline]:focus-visible {
+  transition: none;
 }

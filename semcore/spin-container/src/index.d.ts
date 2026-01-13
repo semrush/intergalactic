@@ -1,10 +1,7 @@
-import type { FadeInOutProps } from '@semcore/animation';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { SpinProps } from '@semcore/spin';
 
-/** @deprecated */
-export interface ISpinContainerProps extends SpinContainerProps, UnknownProperties {}
 export type SpinContainerProps = BoxProps &
   SpinProps & {
     /**
@@ -21,18 +18,12 @@ export type SpinContainerProps = BoxProps &
     loading?: boolean;
   };
 
-/** @deprecated */
-export interface ISpinOverlayProps extends SpinOverlayProps, UnknownProperties {}
 export type SpinOverlayProps = BoxProps & FadeInOutProps & {};
 
-/** @deprecated */
-export interface ISpinContainerContext extends SpinContainerContext, UnknownProperties {}
 export type SpinContainerContext = {
   getOverlayProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ISpinContainerOverlayProps extends SpinContainerOverlayProps, UnknownProperties {}
 export type SpinContainerOverlayProps = BoxProps & {
   /**
    * Css background; you can use your own color

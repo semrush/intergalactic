@@ -3,6 +3,8 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const displayDots = (index: number, active: boolean, single: boolean) => {
   if (single || active) return true;
   return index < 10;
@@ -37,11 +39,6 @@ const Demo = () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+const data = LineMockData.Default;
 
 export default Demo;

@@ -3,6 +3,8 @@ import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/ui/d3-ch
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
+import LineMockData from '../../../__mocks__/line';
+
 const MAP_THEME = {
   line1: 'orange',
   line2: 'green',
@@ -91,10 +93,6 @@ const Demo = () => {
   );
 };
 
-const data = [...Array(10).keys()].map((d, i) => ({
-  x: i,
-  line1: Math.random() * i,
-  line2: Math.random() * (i + 2),
-}));
+const data = LineMockData.TwoLines;
 
 export default Demo;

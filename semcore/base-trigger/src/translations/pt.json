@@ -1,4 +1,5 @@
 {
   "clear": "Limpar",
-  "filter": "Filtro"
+  "filter": "Filtro",
+  "BaseTrigger.FilterTrigger.Counter.selected:aria-label": "selecionados"
 }

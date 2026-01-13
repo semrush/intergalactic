@@ -1,12 +1,12 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Counter from '@semcore/ui/counter';
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
-import React from 'react';
+import React, { useState } from 'react';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },
@@ -18,8 +18,7 @@ const defeaultColumns = [
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
 const Demo = () => {
-  const searchRef = React.useRef<HTMLInputElement>(null);
-  const [visible, setVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null,
   );
@@ -42,14 +41,6 @@ const Demo = () => {
   const [selectedColumns, setSelectedColumns] = React.useState<string[]>(
     defaultSelectedColumns,
   );
-  const handleVisible = (visible: boolean) => {
-    setVisible(visible);
-    if (visible) {
-      setTimeout(() => {
-        searchRef.current?.focus();
-      }, 200);
-    }
-  };
   const resetToDefault = React.useCallback(() => {
     setSelectedColumns(defaultSelectedColumns);
   }, []);
@@ -67,10 +58,9 @@ const Demo = () => {
     <DropdownMenu
       selectable
       multiselect
-      visible={visible}
-      onVisibleChange={handleVisible}
       highlightedIndex={highlightedIndex}
       onHighlightedIndexChange={setHighlightedIndex}
+      onVisibleChange={setIsVisible}
     >
       <DropdownMenu.Trigger
         mt={2}
@@ -91,7 +81,7 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby='popper_id'>
-        <Select.InputSearch ref={searchRef} />
+        <Select.InputSearch autoFocus={isVisible} />
         <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
           <Text bold id='popper_id'>
             Show table columns
