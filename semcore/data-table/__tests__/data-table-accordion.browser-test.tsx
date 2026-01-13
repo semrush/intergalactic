@@ -1393,7 +1393,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.FUNCTIONAL,
       '@data-table'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/multiple-independent-tables.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/nested-table-with-accordion.tsx', 'en');
 
     await test.step('Expand first accordion (Item 1)', async () => {
       const toggles = locators.toggle(page);

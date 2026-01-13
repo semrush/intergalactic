@@ -5,11 +5,11 @@ import AccordionDurationExample, { accordionDurationDefaultProps } from './examp
 import type { AccordionDurationProps } from './examples/accordion-tests/table-in-table/accordion-duration';
 import type { AccordionWithTablenProps } from './examples/accordion-tests/table-in-table/for-animation-and-justify-content-test';
 import ForAnimationAndJustifyContentTestExample, { accordionWithTablenProps } from './examples/accordion-tests/table-in-table/for-animation-and-justify-content-test';
-import MultipleIndependentTablesExample from './examples/accordion-tests/table-in-table/multiple-independent-tables';
+import NestedTableWithAccordionExample from './examples/accordion-tests/table-in-table/nested-table-with-accordion';
 import type { TableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
 import TableInTableInTableExample, { tableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
-import WithFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
 import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
+import WithFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
 import WithSortingExample from './examples/accordion-tests/table-in-table/with-sorting';
 
 const meta: Meta<typeof DataTable> = {
@@ -60,6 +60,6 @@ export const TableInTableInTable: StoryObj<TableInTableInTableProps> = {
   },
 };
 
-export const MultipleIndependentTables: Story = {
-  render: MultipleIndependentTablesExample,
+export const NestedTableWithAccordion: Story = {
+  render: NestedTableWithAccordionExample,
 };

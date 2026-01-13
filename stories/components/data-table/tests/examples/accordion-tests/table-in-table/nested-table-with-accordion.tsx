@@ -26,6 +26,11 @@ const NestedTable = ({ data }: { data: Array<{ id: number; name: string; count: 
       aria-label='Nested Table'
       use='secondary'
       data={data}
+      onKeyDown={(e) => {
+        if (e.key !== 'Escape') {
+          e.stopPropagation();
+        }
+      }}
       columns={[
         {
           name: 'name',
@@ -47,9 +52,9 @@ const MultipleIndependentTablesExample = () => {
   const data = [
     {
       id: 1,
-      name: 'Item 1',
+      name: { toString: () => 'Item 1', [ACCORDION]: <NestedTable data={nestedData1} /> },
       count: 10,
-      [ACCORDION]: <NestedTable data={nestedData1} />,
+
     },
     {
       id: 2,
