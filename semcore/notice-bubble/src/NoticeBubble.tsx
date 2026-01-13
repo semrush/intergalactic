@@ -1,4 +1,4 @@
-import { Animation, Box } from '@semcore/base-components';
+import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
@@ -15,9 +15,7 @@ import {
   ZIndexStackingContextProvider,
   zIndexStackingEnhance,
 } from '@semcore/core/lib/utils/zIndexStacking';
-import { Flex } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/m';
-import Portal from '@semcore/portal';
 import React from 'react';
 
 import type {
