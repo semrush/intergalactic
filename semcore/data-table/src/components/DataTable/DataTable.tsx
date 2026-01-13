@@ -63,7 +63,7 @@ class DataTableRoot<
     {},
     {},
   typeof DataTableRoot.enhance,
-  ReturnType<typeof DataTableRoot.defaultProps>
+  typeof DataTableRoot.defaultProps
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -73,19 +73,18 @@ class DataTableRoot<
     i18nEnhance(localizedMessages),
   ] as const;
 
-  static defaultProps = () => {
-    return {
-      use: 'primary',
-      defaultGridTemplateColumnWidth: 'auto',
-      expandedRows: new Set(),
-      defaultSelectedRows: undefined,
-      h: 'fit-content',
-      renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
-      variant: 'default',
-      accordionAnimationRows: 40,
-      accordionDuration: 200,
-    };
+  static defaultProps = {
+    use: 'primary',
+    defaultGridTemplateColumnWidth: 'auto',
+    defaultSelectedRows: undefined,
+    h: 'fit-content',
+    renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
+    variant: 'default',
+    accordionAnimationRows: 40,
+    accordionDuration: 200,
   };
+
+  private expandedRows = new Set<UniqKeyType>();
 
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
@@ -133,6 +132,10 @@ class DataTableRoot<
     this.calculatedRows = this.getRows();
     this.flatRows = this.calculatedRows.flat();
     this.tmpData = props.data;
+
+    if (props.expandedRows) {
+      this.expandedRows = props.expandedRows;
+    }
   }
 
   state: State<Data, UniqKey, UniqKeyType> = {
@@ -157,7 +160,7 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns, loading } = this.asProps;
+    const { data, selectedRows, columns, expandedRows } = this.asProps;
     if (prevProps.columns !== columns) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -188,6 +191,13 @@ class DataTableRoot<
         this.setSelectAllMessage(true);
       } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
+      }
+    }
+    if (prevProps.expandedRows !== expandedRows) {
+      if (expandedRows) {
+        this.expandedRows = expandedRows;
+      } else {
+        this.expandedRows = new Set<UniqKeyType>();
       }
     }
   }
@@ -322,7 +332,6 @@ class DataTableRoot<
       compact,
       loading,
       getI18nText,
-      expandedRows,
       virtualScroll,
       uid,
       rowProps,
@@ -358,7 +367,7 @@ class DataTableRoot<
       headerHeight: this.getHeaderHeight(),
       stickyHeader: headerProps?.sticky,
       getI18nText,
-      expandedRows,
+      expandedRows: this.expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
       scrollTop: this.state.scrollTop,
@@ -525,7 +534,8 @@ class DataTableRoot<
   };
 
   onExpandRow = (expandedRow: DTRow<UniqKeyType>) => {
-    const { expandedRows, onAccordionToggle, accordionMode } = this.asProps;
+    const { onAccordionToggle, accordionMode } = this.asProps;
+    const expandedRows = this.expandedRows;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 

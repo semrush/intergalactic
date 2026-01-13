@@ -167,7 +167,7 @@ const TableExample1 = () => {
 
 export const tableInTableInTableProps: TableInTableInTableProps = {
   accordionMode: 'independent',
-  use: 'primary',
+  use: undefined,
   compact: undefined,
   justifyContent: undefined,
   withSkeletonsAndAsyncDataLoading: false,
