@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/base-components';
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';

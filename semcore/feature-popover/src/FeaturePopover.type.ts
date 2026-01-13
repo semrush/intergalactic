@@ -8,15 +8,11 @@ import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/
 import type {
   AnimationProps,
   BoxProps,
-  eventInteraction, Flex,
   OutsideClickProps,
   PortalProps,
-} from '@semcore/base-components';
-import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type { Box } from '@semcore/flex-box';
-import type { PopperContext, PopperPopperProps, Placement } from '@semcore/popper';
-import type Popper from '@semcore/popper';
 import type React from 'react';
 
 /**
@@ -28,8 +24,6 @@ type AriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-/** @deprecated */
-export interface IFeaturePopoverPopperProps extends FeaturePopoverPopperProps, UnknownProperties {}
 export type FeaturePopoverPopperProps = PopperPopperProps & {
   /**
    * The property responsible for the visibility of the closing icon
@@ -52,10 +46,9 @@ export type FeaturePopoverPopperInnerProps = {
   $onCloseClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   animationsDisabled: boolean;
   getI18nText: (message: string, opts?: Record<string, unknown>) => string;
+  autofocus: boolean;
 };
 
-/** @deprecated */
-export interface IFeaturePopoverContext extends FeaturePopoverContext, UnknownProperties {}
 export type FeaturePopoverContext = PopperContext & {
   getSpotProps: PropGetterFn;
 };
@@ -98,39 +91,8 @@ export type FPPopperProps = OutsideClickProps &
      * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
      */
     explicitTriggerSet?: boolean;
-    /**
-     * If set, popper will be placed near the place mouse cursor entered the trigger
-     * @deprecated
-     */
-    cursorAnchoring?: boolean;
 
     popperMargin?: number;
-
-    /**
-     * You shouldn't change an interaction in FeaturePopover. Comes from a Popper component.
-     * @deprecated
-     * @default none
-     */
-    interaction?: 'click' | 'hover' | 'focus' | 'none' | eventInteraction;
-    /**
-     * You shouldn't change it in FeaturePopover as it should be controlled always. Comes from a Popper component.
-     * @deprecated
-     * @default false */
-    defaultVisible?: boolean;
-    /**
-     * Disabled focus trap, autofocus and focus return
-     * You shouldn't change it in FeaturePopover as it should be controlled always. Comes from a Popper component.
-     * @deprecated
-     */
-    disableEnforceFocus?: boolean;
-    /**
-     * If enabled, after reaching the end of popper the browser focus goes to the start of popper and vice versa.
-     * If disabled, after reading the end of popper the browser focus returns to trigger and popper is being closed.
-     * You shouldn't change it in FeaturePopover as it should be controlled always. Comes from a Popper component.
-     * @deprecated
-     * @default `true` (`false` in Tooltip)
-     */
-    focusLoop?: boolean;
   };
 
 export type FeaturePopoverProps = FPPopperProps & {

@@ -1,10 +1,9 @@
+import type { BoxProps } from '@semcore/ui/base-components';
+import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import type { BoxProps } from '@semcore/ui/flex-box';
 import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import type { InputProps, InputValueProps } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 

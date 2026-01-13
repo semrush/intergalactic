@@ -1,4 +1,4 @@
-import { hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
+import { hideScrollBarsFromScreenReadersContext, useBox, isInputTriggerTag } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -9,8 +9,6 @@ import logger from '@semcore/core/lib/utils/logger';
 import Divider from '@semcore/divider';
 import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { useBox } from '@semcore/flex-box';
-import { isInputTriggerTag } from '@semcore/popper';
 import cn from 'classnames';
 import React from 'react';
 
@@ -471,8 +469,6 @@ const Select = createComponent(
       },
     ],
     Group: Dropdown.Group,
-    OptionTitle: DropdownMenu.ItemTitle,
-    OptionHint: DropdownMenu.ItemHint,
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],

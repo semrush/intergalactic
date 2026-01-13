@@ -1,12 +1,10 @@
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Flex } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import React from 'react';
 
@@ -108,7 +106,6 @@ function CloseIcon({ styles, children: hasChildren, Children, getI18nText }) {
     </SCloseIcon>,
   );
 }
-CloseIcon.enhance = [keyboardFocusEnhance()];
 
 const NoticeGlobal = createComponent(NoticeGlobalRoot, {
   Content,

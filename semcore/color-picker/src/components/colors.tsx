@@ -1,5 +1,5 @@
+import { Box, Flex } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
-import { Box, Flex } from '@semcore/flex-box';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import React from 'react';
 

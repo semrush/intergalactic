@@ -1,10 +1,8 @@
-import type { Intergalactic, UnknownProperties } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
-/** @deprecated */
-export interface ILinkProps extends LinkProps, UnknownProperties {}
 export type LinkProps = TextProps & {
   /**
    * CSS property of the display link (inline|inline-block)

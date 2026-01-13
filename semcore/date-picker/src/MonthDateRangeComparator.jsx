@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Root, sstyled } from '@semcore/core';
 import Divider from '@semcore/divider';
-import { Box, Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 

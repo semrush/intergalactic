@@ -1,11 +1,8 @@
-import { createComponent, register, type Intergalactic, type UnknownProperties } from '@semcore/core';
+import { createComponent, register, type Intergalactic } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { getNodeByRef, type NodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-/** @deprecated */
-export interface IPortalProps extends PortalProps, UnknownProperties {}
 export type PortalProps = {
   /** Disables children rendering in React portal */
   disablePortal?: boolean;
@@ -14,13 +11,15 @@ export type PortalProps = {
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
   /** Manually set node to mount portal content */
-  nodeToMount?: NodeByRef;
+  nodeToMount?: HTMLElement;
 };
+
+type PortalContextType = React.RefObject<HTMLElement | null> | HTMLElement | null;
 
 const PortalContext = register.get(
   'portal-context',
 
-  React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
+  React.createContext<PortalContextType>(canUseDOM() ? document.body : null),
 );
 
 function Portal(props: PortalProps & { Children: React.FC }) {
@@ -36,10 +35,10 @@ function Portal(props: PortalProps & { Children: React.FC }) {
       return;
     }
     if (nodeToMount) {
-      setMountNode(getNodeByRef(nodeToMount));
+      setMountNode(nodeToMount);
       return;
     }
-    setMountNode(getNodeByRef(container));
+    setMountNode((container && 'current' in container) ? container.current : container);
   }, [container, disablePortal, onMount, nodeToMount]);
 
   if (disablePortal) {

@@ -1,4 +1,3 @@
-import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import type { ForwardedRef } from 'react';
 import React from 'react';
@@ -13,7 +12,7 @@ type SparkleProps = {
   left?: string;
 };
 
-function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGElement>) {
+function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGSVGElement>) {
   const SSparkle = Root;
   const { num, index, curve, left } = props;
   const rand = Math.floor(Math.random() * 50);
@@ -44,4 +43,4 @@ function SvgSparkle(props: SparkleProps, ref: ForwardedRef<SVGElement>) {
   );
 }
 
-export default createBaseComponent(SvgSparkle) as unknown as Intergalactic.Component<'svg', SparkleProps>;
+export default createBaseComponent<'svg', SparkleProps>(SvgSparkle);

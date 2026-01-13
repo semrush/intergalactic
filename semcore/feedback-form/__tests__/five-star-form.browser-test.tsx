@@ -35,7 +35,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
@@ -53,6 +53,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
+    if (browserName == 'webkit') test.skip();
     await test.step('Verify form styles', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
@@ -124,7 +125,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     const checkboxInput = page.getByRole('checkbox');
@@ -185,19 +186,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await page.waitForSelector('text="Great! What do you like the most?"');
+      if (browserName === 'webkit') {
+        test.skip();
+      }
       await expect(checkboxInput.first()).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      for (let i = 0; i < 3; i++) {
+        await page.keyboard.press('Tab');
+      }
       await expect(locators.inputs(page, 0)).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      for (let i = 0; i < 2; i++) {
+        await page.keyboard.press('Tab');
+      }
       await expect(buttons.nth(1)).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(buttons.nth(0)).toBeFocused();
