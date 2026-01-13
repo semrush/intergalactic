@@ -25,7 +25,7 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance(false), colorResolverEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
   plotId = uniqueId();
 

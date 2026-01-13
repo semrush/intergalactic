@@ -17,7 +17,7 @@ foreignObject[data-aria-only] {
   pointer-events: none;
 }
 
-SPlot:focus-visible {
+SPlot:has(*:focus-visible) {
   @mixin focus-outline-mixin;
   border-radius: var(--intergalactic-surface-rounded, 6px);
 }
