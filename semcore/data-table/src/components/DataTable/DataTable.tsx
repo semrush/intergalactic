@@ -52,6 +52,7 @@ type State<
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
   shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
+  expandedRows: Set<UniqKeyType>;
 };
 
 class DataTableRoot<
@@ -84,7 +85,14 @@ class DataTableRoot<
     accordionDuration: 200,
   };
 
-  private expandedRows = new Set<UniqKeyType>();
+  static getDerivedStateFromProps(props: DataTableProps<any, any, any>, state: State<any, any, any>) {
+    if (props.expandedRows === state.expandedRows || props.expandedRows === undefined) {
+      return null;
+    }
+    return {
+      expandedRows: props.expandedRows,
+    };
+  }
 
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
@@ -132,10 +140,6 @@ class DataTableRoot<
     this.calculatedRows = this.getRows();
     this.flatRows = this.calculatedRows.flat();
     this.tmpData = props.data;
-
-    if (props.expandedRows) {
-      this.expandedRows = props.expandedRows;
-    }
   }
 
   state: State<Data, UniqKey, UniqKeyType> = {
@@ -143,6 +147,7 @@ class DataTableRoot<
     scrollDirection: 'down',
     selectAllMessage: '',
     shadowVertical: '',
+    expandedRows: new Set<UniqKeyType>(),
   };
 
   componentDidMount() {
@@ -193,14 +198,6 @@ class DataTableRoot<
         this.setSelectAllMessage(false);
       }
     }
-    if (prevProps.expandedRows !== expandedRows) {
-      if (expandedRows) {
-        this.expandedRows = expandedRows;
-      } else {
-        this.expandedRows = new Set<UniqKeyType>();
-      }
-      this.forceUpdate();
-    }
   }
 
   componentWillUnmount() {
@@ -208,13 +205,13 @@ class DataTableRoot<
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
 
-    this.expandedRows?.clear();
+    this.state.expandedRows?.clear();
   }
 
   get totalRows() {
     const { totalRows } = this.asProps;
     const flatRows = this.getFlatRows();
-    const expandedRows = this.expandedRows;
+    const expandedRows = this.state.expandedRows;
 
     const expandedRowsCount = Array.from(expandedRows).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
@@ -369,7 +366,7 @@ class DataTableRoot<
       headerHeight: this.getHeaderHeight(),
       stickyHeader: headerProps?.sticky,
       getI18nText,
-      expandedRows: this.expandedRows,
+      expandedRows: this.state.expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
       scrollTop: this.state.scrollTop,
@@ -537,7 +534,7 @@ class DataTableRoot<
 
   onExpandRow = (expandedRow: DTRow<UniqKeyType>) => {
     const { onAccordionToggle, accordionMode } = this.asProps;
-    const expandedRows = this.expandedRows;
+    const expandedRows = this.state.expandedRows;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
