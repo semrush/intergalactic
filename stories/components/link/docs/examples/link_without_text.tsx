@@ -1,18 +1,20 @@
+import { Hint } from '@semcore/ui/base-components';
 import HomeM from '@semcore/ui/icon/Home/m';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
-import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {
+  const linkRef = React.useRef<HTMLAnchorElement | null>(null);
   return (
     <>
       <Link addonLeft={HomeM} aria-label='Home page' href='#' />
-      <Link ml={4} href='#' tag={Hint} title='Go to the next page'>
+      <Link ml={4} href='#' ref={linkRef}>
         <Link.Addon>
           <LinkExternalM />
         </Link.Addon>
       </Link>
+      <Hint triggerRef={linkRef}>Go to the next page</Hint>
     </>
   );
 };

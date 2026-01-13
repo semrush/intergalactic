@@ -3,7 +3,6 @@ import { ButtonLink } from '@semcore/ui/button';
 import CloseM from '@semcore/ui/icon/Close/m';
 import Search from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';
-import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

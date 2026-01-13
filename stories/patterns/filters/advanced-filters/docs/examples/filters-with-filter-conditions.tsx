@@ -8,7 +8,6 @@ import MathPlusM from '@semcore/ui/icon/MathPlus/m';
 import TrashM from '@semcore/ui/icon/Trash/m';
 import Input from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
-import { Hint } from '@semcore/ui/tooltip';
 import React, { useEffect, useRef, useState } from 'react';
 
 const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));
