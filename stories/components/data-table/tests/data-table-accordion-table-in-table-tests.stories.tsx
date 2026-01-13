@@ -5,7 +5,6 @@ import AccordionDurationExample, { accordionDurationDefaultProps } from './examp
 import type { AccordionDurationProps } from './examples/accordion-tests/table-in-table/accordion-duration';
 import type { AccordionWithTablenProps } from './examples/accordion-tests/table-in-table/for-animation-and-justify-content-test';
 import ForAnimationAndJustifyContentTestExample, { accordionWithTablenProps } from './examples/accordion-tests/table-in-table/for-animation-and-justify-content-test';
-import NestedTableWithAccordionExample from './examples/accordion-tests/table-in-table/nested-table-with-accordion';
 import type { TableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
 import TableInTableInTableExample, { tableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
 import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
@@ -58,8 +57,4 @@ export const TableInTableInTable: StoryObj<TableInTableInTableProps> = {
   args: {
     ...tableInTableInTableProps,
   },
-};
-
-export const NestedTableWithAccordion: Story = {
-  render: NestedTableWithAccordionExample,
 };
