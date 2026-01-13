@@ -68,8 +68,7 @@ export function PlotA11yModule(props: A11yModuleProps) {
       <button
         ref={srButtonRef}
         onClick={() => setIsOpened(true)}
-        // TODO: use t for i18n
-        aria-label='Open data summary'
+        aria-label={t('PlotA11yModule.ScreenReaderOnlyButton.Label')}
       />
       <Box role='status'>
         {loading && t('loading')}
