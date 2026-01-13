@@ -371,7 +371,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
-        await page.keyboard.press('ArrowLeft');
+        await page.keyboard.press('ArrowRight');// because of bug UIK-4652
         await page.keyboard.press('Space');
 
         await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
