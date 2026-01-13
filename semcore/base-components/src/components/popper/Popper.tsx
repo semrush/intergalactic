@@ -599,10 +599,10 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
   const triggerRef = React.useRef<HTMLElement>();
 
   React.useEffect(() => {
-    if (highlighted === true) {
+    if (highlighted === true && onKeyboardFocus) {
       onKeyboardFocus({ currentTarget: triggerRef.current });
     }
-  }, [highlighted, onKeyboardFocus]);
+  }, [highlighted]);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;
