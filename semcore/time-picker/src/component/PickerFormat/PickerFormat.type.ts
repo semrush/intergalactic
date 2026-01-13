@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import type { BoxProps } from '@semcore/flex-box';
 
 import type { TimePickerMeridiem } from '../TimePicker/TimePicker.type';
 

@@ -1,4 +1,3 @@
-import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { SelectProps } from '@semcore/select';
 
 import type { TimePickerField, TimePickerItemProps } from '../TimePicker/TimePicker.type';
