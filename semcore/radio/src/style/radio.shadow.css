@@ -19,12 +19,12 @@ SRadio[disabled] {
 
 SText[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 
 SText[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }
 
 SValue {

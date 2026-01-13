@@ -239,7 +239,7 @@ SCell {
   display: flex;
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);

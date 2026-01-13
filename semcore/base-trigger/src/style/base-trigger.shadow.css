@@ -72,7 +72,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   flex-grow: 1;
   text-align: left;
 }

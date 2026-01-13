@@ -1606,22 +1606,22 @@
       "description": "Base font family."
     },
     "lh-800": {
-      "value": "117%",
+      "value": "1.16667",
       "type": "lineHeights",
       "description": "Use with font-size-800."
     },
     "lh-700": {
-      "value": "110%",
+      "value": "1.1112",
       "type": "lineHeights",
       "description": "Use with font-size-700."
     },
     "lh-600": {
-      "value": "125%",
+      "value": "1.25",
       "type": "lineHeights",
       "description": "Use with font-size-600."
     },
     "lh-500": {
-      "value": "117%",
+      "value": "1.1667",
       "type": "lineHeights",
       "description": "Use with font-size-500."
     },
@@ -1631,17 +1631,17 @@
       "description": "Use with font-size-400."
     },
     "lh-300": {
-      "value": "150%",
+      "value": "1.5",
       "type": "lineHeights",
       "description": "Use with font-size-300."
     },
     "lh-200": {
-      "value": "142%",
+      "value": "1.4286",
       "type": "lineHeights",
       "description": "Use with font-size-200."
     },
     "lh-100": {
-      "value": "133%",
+      "value": "1.3334",
       "type": "lineHeights",
       "description": "Use with font-size-100."
     },

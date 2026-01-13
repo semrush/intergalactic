@@ -33,7 +33,7 @@ SBack {
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
   background: none;
   padding: 0;
   border: none;
@@ -47,7 +47,7 @@ SBack {
 SBackText {
   margin-left: var(--intergalactic-spacing-1x, 4px);
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,7 +62,7 @@ SDescription {
 
 STitle {
   font-size: var(--intergalactic-fs-500, 24px);
-  line-height: var(--intergalactic-lh-500, 117%);
+  line-height: var(--intergalactic-lh-500, 1.1667);
   font-weight: var(--intergalactic-bold, 700);
   color: var(--intergalactic-text-primary, #191b23);
 }
@@ -71,7 +71,7 @@ SDescription {
   display: flex;
   align-items: baseline;
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
   color: var(--intergalactic-text-secondary, #6c6e79);
 
   &::before {

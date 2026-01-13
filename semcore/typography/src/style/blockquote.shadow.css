@@ -24,5 +24,5 @@ SAuthor {
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-style: normal;
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }

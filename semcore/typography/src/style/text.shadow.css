@@ -68,7 +68,7 @@ SText {
         margin-top: var(--intergalactic-spacing-4x, 16px);
         color: var(--intergalactic-text-secondary, #6c6e79);
         font-size: var(--intergalactic-fs-300, 16px);
-        line-height: var(--intergalactic-lh-300, 150%);
+        line-height: var(--intergalactic-lh-300, 1.5);
       }
     }
 
@@ -108,7 +108,7 @@ SText {
 
     & h1 {
       font-size: var(--intergalactic-fs-800, 48px);
-      line-height: var(--intergalactic-lh-800, 117%);
+      line-height: var(--intergalactic-lh-800, 1.16667);
       font-weight: var(--intergalactic-semi-bold, 600);
       margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 
@@ -119,7 +119,7 @@ SText {
 
     & h2 {
       font-size: var(--intergalactic-fs-700, 36px);
-      line-height: var(--intergalactic-lh-700, 110%);
+      line-height: var(--intergalactic-lh-700, 1.1112);
       font-weight: var(--intergalactic-semi-bold, 600);
       margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
@@ -130,7 +130,7 @@ SText {
 
     & h3 {
       font-size: var(--intergalactic-fs-600, 32px);
-      line-height: var(--intergalactic-lh-600, 125%);
+      line-height: var(--intergalactic-lh-600, 1.25);
       font-weight: var(--intergalactic-semi-bold, 600);
       margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
@@ -141,7 +141,7 @@ SText {
 
     & h4 {
       font-size: var(--intergalactic-fs-500, 24px);
-      line-height: var(--intergalactic-lh-500, 117%);
+      line-height: var(--intergalactic-lh-500, 1.1667);
       font-weight: var(--intergalactic-semi-bold, 600);
       margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
 
@@ -163,7 +163,7 @@ SText {
 
     & h6 {
       font-size: var(--intergalactic-fs-300, 16px);
-      line-height: var(--intergalactic-lh-300, 150%);
+      line-height: var(--intergalactic-lh-300, 1.5);
       font-weight: var(--intergalactic-bold, 700);
       margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
 
@@ -188,7 +188,7 @@ SText {
     & p,
     & li {
       font-size: var(--intergalactic-fs-200, 14px);
-      line-height: var(--intergalactic-lh-200, 142%);
+      line-height: var(--intergalactic-lh-200, 1.4286);
     }
 
     & p {
@@ -224,13 +224,13 @@ SText {
 
 SText[size='100'] {
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-100, 12px);
-      line-height: var(--intergalactic-lh-100, 133%);
+      line-height: var(--intergalactic-lh-100, 1.3334);
     }
 
     & p {
@@ -265,13 +265,13 @@ SText[size='100'] {
 
 SText[size='200'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-200, 14px);
-      line-height: var(--intergalactic-lh-200, 142%);
+      line-height: var(--intergalactic-lh-200, 1.4286);
     }
 
     & p {
@@ -307,13 +307,13 @@ SText[size='200'] {
 
 SText[size='300'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-300, 16px);
-      line-height: var(--intergalactic-lh-300, 150%);
+      line-height: var(--intergalactic-lh-300, 1.5);
     }
 
     & p {
@@ -353,22 +353,22 @@ SText[size='400'] {
 
 SText[size='500'] {
   font-size: var(--intergalactic-fs-500, 24px);
-  line-height: var(--intergalactic-lh-500, 117%);
+  line-height: var(--intergalactic-lh-500, 1.1667);
 }
 
 SText[size='600'] {
   font-size: var(--intergalactic-fs-600, 32px);
-  line-height: var(--intergalactic-lh-600, 125%);
+  line-height: var(--intergalactic-lh-600, 1.25);
 }
 
 SText[size='700'] {
   font-size: var(--intergalactic-fs-700, 36px);
-  line-height: var(--intergalactic-lh-700, 110%);
+  line-height: var(--intergalactic-lh-700, 1.1112);
 }
 
 SText[size='800'] {
   font-size: var(--intergalactic-fs-800, 48px);
-  line-height: var(--intergalactic-lh-800, 117%);
+  line-height: var(--intergalactic-lh-800, 1.16667);
 }
 
 SText[noWrap] {

@@ -2314,8 +2314,8 @@
   {
     "name": "--intergalactic-lh-800",
     "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
+    "rawValue": "1.16667",
+    "computedValue": "1.16667",
     "description": "Use with font-size-800.",
     "components": [
       "button",
@@ -2326,8 +2326,8 @@
   {
     "name": "--intergalactic-lh-700",
     "type": "lineHeights",
-    "rawValue": "110%",
-    "computedValue": "110%",
+    "rawValue": "1.1112",
+    "computedValue": "1.1112",
     "description": "Use with font-size-700.",
     "components": [
       "button",
@@ -2339,8 +2339,8 @@
   {
     "name": "--intergalactic-lh-600",
     "type": "lineHeights",
-    "rawValue": "125%",
-    "computedValue": "125%",
+    "rawValue": "1.25",
+    "computedValue": "1.25",
     "description": "Use with font-size-600.",
     "components": [
       "button",
@@ -2351,8 +2351,8 @@
   {
     "name": "--intergalactic-lh-500",
     "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
+    "rawValue": "1.1667",
+    "computedValue": "1.1667",
     "description": "Use with font-size-500.",
     "components": [
       "button",
@@ -2378,8 +2378,8 @@
   {
     "name": "--intergalactic-lh-300",
     "type": "lineHeights",
-    "rawValue": "150%",
-    "computedValue": "150%",
+    "rawValue": "1.5",
+    "computedValue": "1.5",
     "description": "Use with font-size-300.",
     "components": [
       "bulk-textarea",
@@ -2405,8 +2405,8 @@
   {
     "name": "--intergalactic-lh-200",
     "type": "lineHeights",
-    "rawValue": "142%",
-    "computedValue": "142%",
+    "rawValue": "1.4286",
+    "computedValue": "1.4286",
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
@@ -2440,8 +2440,8 @@
   {
     "name": "--intergalactic-lh-100",
     "type": "lineHeights",
-    "rawValue": "133%",
-    "computedValue": "133%",
+    "rawValue": "1.3334",
+    "computedValue": "1.3334",
     "description": "Use with font-size-100.",
     "components": [
       "button",

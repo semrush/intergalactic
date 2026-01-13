@@ -84,5 +84,5 @@ SSliderOptions {
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-200, 14px);
   font-weight: var(--intergalactic-regular, 400);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
