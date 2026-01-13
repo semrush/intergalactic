@@ -207,14 +207,15 @@ class DataTableRoot<
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
 
-    this.asProps.expandedRows?.clear();
+    this.expandedRows?.clear();
   }
 
   get totalRows() {
-    const { totalRows, expandedRows } = this.asProps;
+    const { totalRows } = this.asProps;
     const flatRows = this.getFlatRows();
+    const expandedRows = this.expandedRows;
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];
