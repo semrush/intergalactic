@@ -199,6 +199,7 @@ class DataTableRoot<
       } else {
         this.expandedRows = new Set<UniqKeyType>();
       }
+      this.forceUpdate();
     }
   }
 
