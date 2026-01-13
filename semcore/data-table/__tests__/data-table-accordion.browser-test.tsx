@@ -497,11 +497,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(100); // just make sute that sorting happened
+      await page.waitForTimeout(100); // just make sure that sorting happened
       await expect(page).toHaveScreenshot();
 
       locators.button(page, 'ascending').click();
-      await page.waitForTimeout(100); // just make sute that sorting happened
+      await page.waitForTimeout(100); // just make sure that sorting happened
 
       await expect(page).toHaveScreenshot();
     });
@@ -1385,6 +1385,49 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(messages.length).toBe(2);
         expect(messages).toEqual(['Accordion open for row #1', 'Accordion close for row #0']);
       });
+    });
+  });
+
+  test('Verify accordion toggle mode works correctly with nested tables', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/multiple-independent-tables.tsx', 'en');
+
+    await test.step('Expand first accordion (Item 1)', async () => {
+      const toggles = locators.toggle(page);
+      await toggles.first().click();
+
+      const collapses = locators.collapse(page);
+      await collapses.first().waitFor({ state: 'visible' });
+      await expect(collapses).toHaveCount(1);
+
+      const tables = locators.dataTable(page);
+      await expect(tables).toHaveCount(2); // parent + nested
+    });
+
+    await test.step('Expand second accordion (Item 2) - should close first in toggle mode', async () => {
+      const toggles = locators.toggle(page);
+      await toggles.nth(1).click();
+
+      const collapses = locators.collapse(page);
+      await collapses.first().waitFor({ state: 'visible' });
+
+      await expect(collapses).toHaveCount(1);
+
+      const tables = locators.dataTable(page);
+      await expect(tables).toHaveCount(2);
+    });
+
+    await test.step('Expand third accordion (Item 3) - should close second', async () => {
+      const toggles = locators.toggle(page);
+      await toggles.nth(2).click();
+
+      const collapses = locators.collapse(page);
+      await collapses.first().waitFor({ state: 'visible' });
+
+      await expect(collapses).toHaveCount(1);
     });
   });
 
