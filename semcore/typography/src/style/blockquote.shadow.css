@@ -3,7 +3,7 @@ SBlockquote {
   display: flex;
   font-style: italic;
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
   color: var(--intergalactic-text-primary, #191b23);
 }
 

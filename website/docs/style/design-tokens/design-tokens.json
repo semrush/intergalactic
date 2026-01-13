@@ -2365,8 +2365,8 @@
   {
     "name": "--intergalactic-lh-400",
     "type": "lineHeights",
-    "rawValue": "120%",
-    "computedValue": "120%",
+    "rawValue": "1.2",
+    "computedValue": "1.2",
     "description": "Use with font-size-400.",
     "components": [
       "button",

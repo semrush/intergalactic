@@ -1661,7 +1661,7 @@
       "description": "Use with font-size-500."
     },
     "lh-400": {
-      "value": "120%",
+      "value": "1.2",
       "type": "lineHeights",
       "description": "Use with font-size-400."
     },

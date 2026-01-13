@@ -565,7 +565,7 @@
   /* Use with font-size-500. */
   --intergalactic-lh-500: 1.1667;
   /* Use with font-size-400. */
-  --intergalactic-lh-400: 120%;
+  --intergalactic-lh-400: 1.2;
   /* Use with font-size-300. */
   --intergalactic-lh-300: 1.5;
   /* Use with font-size-200. */
@@ -1436,7 +1436,7 @@
   /* Use with font-size-500. */
   --intergalactic-lh-500: 1.1667;
   /* Use with font-size-400. */
-  --intergalactic-lh-400: 120%;
+  --intergalactic-lh-400: 1.2;
   /* Use with font-size-300. */
   --intergalactic-lh-300: 1.5;
   /* Use with font-size-200. */

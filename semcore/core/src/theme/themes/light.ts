@@ -317,7 +317,7 @@ export default {
   '--intergalactic-lh-700': '1.1112',
   '--intergalactic-lh-600': '1.25',
   '--intergalactic-lh-500': '1.1667',
-  '--intergalactic-lh-400': '120%',
+  '--intergalactic-lh-400': '1.2',
   '--intergalactic-lh-300': '1.5',
   '--intergalactic-lh-200': '1.4286',
   '--intergalactic-lh-100': '1.3334',

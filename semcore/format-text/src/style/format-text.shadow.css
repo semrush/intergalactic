@@ -47,7 +47,7 @@ SFormatText {
     /* disable-tokens-validator */
     padding-left: 51px;
     font-size: var(--intergalactic-fs-400, 20px);
-    line-height: var(--intergalactic-lh-400, 120%);
+    line-height: var(--intergalactic-lh-400, 1.2);
     font-style: italic;
 
     &:before {
@@ -149,7 +149,7 @@ SFormatText {
 
   & h5 {
     font-size: var(--intergalactic-fs-400, 20px);
-    line-height: var(--intergalactic-lh-400, 120%);
+    line-height: var(--intergalactic-lh-400, 1.2);
     font-weight: var(--intergalactic-medium, 500);
     margin: 0 0 var(--intergalactic-spacing-2x, 8px) 0;
 

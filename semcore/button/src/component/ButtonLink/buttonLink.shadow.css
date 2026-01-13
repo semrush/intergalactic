@@ -125,7 +125,7 @@ SButton[size='300'] {
 
 SButton[size='400'] {
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
 }
 
 SButton[size='500'] {
