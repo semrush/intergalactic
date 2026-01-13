@@ -6,7 +6,7 @@ import React from 'react';
 import style from './picker-format.shadow.css';
 import type { TimePickerFormatProps, TimePickerFormatPropsInternal } from './PickerFormat.type';
 
-class TimePickerFormat extends Component<TimePickerFormatProps, {}, {}, typeof TimePickerFormat.enhance, TimePickerFormatPropsInternal> {
+class TimePickerFormat extends Component<TimePickerFormatProps, typeof TimePickerFormat.enhance, {}, TimePickerFormatPropsInternal> {
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 

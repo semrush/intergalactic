@@ -7,7 +7,7 @@ type Constructor<Props> = new (...args: any[]) => {
 };
 
 function propsObserver<
-  P,
+  P extends Record<string, any>,
   C extends Constructor<P> = Constructor<P>,
 >(propsToWatch: Array<keyof P>) {
   const watchedProps: WatchedProps<P> = {};
@@ -19,7 +19,7 @@ function propsObserver<
 
         if (!this.props) return;
 
-        const propKeys = propsToWatch.length === 0 ? Object.keys(this.props) as Array<keyof P> : [...propsToWatch];
+        const propKeys = propsToWatch.length === 0 ? Object.keys(this.props) : [...propsToWatch];
 
         propKeys.forEach((prop) => {
           watchedProps[prop] = this.props[prop];

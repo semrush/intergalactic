@@ -151,41 +151,6 @@ describe('@reactive', () => {
       instance.items[2] = 'z';
       expect(callback).toHaveBeenCalledTimes(2); // index 2 not watched
     });
-
-    it('should not be called for every change when watchedFields is not defined', () => {
-      const arrCallback = vi.fn();
-      const objCallback = vi.fn();
-
-      class TestClass {
-        @reactive(arrCallback)
-        readonly items = ['a', 'b', 'c'];
-
-        @reactive(objCallback)
-        obj = { a: 1, b: 2, c: 3 };
-      }
-
-      const instance = new TestClass();
-
-      instance.items[0] = 'x';
-      expect(arrCallback).not.toHaveBeenCalled();
-
-      instance.items[1] = 'y';
-      expect(arrCallback).not.toHaveBeenCalled();
-
-      instance.items[2] = 'z';
-      expect(arrCallback).not.toHaveBeenCalled();
-
-      expect(arrCallback).not.toHaveBeenCalled();
-
-      instance.obj.a = 4;
-      expect(objCallback).not.toHaveBeenCalled();
-
-      instance.obj.b = 5;
-      expect(objCallback).not.toHaveBeenCalled();
-
-      instance.obj.c = 6;
-      expect(objCallback).not.toHaveBeenCalled();
-    });
   });
 
   describe('edge cases', () => {

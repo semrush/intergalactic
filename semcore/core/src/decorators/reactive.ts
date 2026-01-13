@@ -16,7 +16,11 @@ type ReturnType<
 
 const isPrimitiveValue = (value: unknown) => value !== Object(value);
 
-function reactive<This>(cb: Callback<This>): ReturnType<This>;
+function reactive<
+  This,
+  Property extends keyof This,
+  Value = This[Property],
+>(cb: Value extends Primitive ? Callback<This> : never): ReturnType<This>;
 function reactive<
   This,
   Property extends keyof This,

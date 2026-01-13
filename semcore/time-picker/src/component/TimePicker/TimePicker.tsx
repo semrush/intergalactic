@@ -12,6 +12,7 @@ import type {
   TimePickerProps,
   TimePickerField,
   TimePickerSeparatorProps,
+  TimePickerHandlers,
 } from './TimePicker.type';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -19,7 +20,7 @@ import Format from '../PickerFormat/PickerFormat';
 import { Hours, Minutes } from '../PickerInput/PickerInput';
 
 @propsObserver(['value'])
-class TimePickerRoot extends Component<TimePickerProps, {}, {}, typeof TimePickerRoot.enhance> {
+class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.enhance, { value: null }> {
   static displayName = 'TimePicker';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;

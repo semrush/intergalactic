@@ -3,12 +3,12 @@ import type { TimePickerMeridiem } from '../component/TimePicker/TimePicker.type
 class TimePickerEntity {
   private _hours: string = '';
   private _minutes: string = '';
-  private is12Hour: undefined | boolean;
+  private is12Hour: boolean;
   private _meridiem: TimePickerMeridiem = 'AM';
 
   constructor(
     value: string = ':', // should be in the format 'HH:mm'
-    is12Hour?: boolean,
+    is12Hour: boolean = false,
   ) {
     const [hours = '', minutes = ''] = value.split(':');
 

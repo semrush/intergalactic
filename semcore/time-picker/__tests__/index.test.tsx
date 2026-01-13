@@ -10,21 +10,21 @@ describe('time-picker Dependency imports', () => {
 describe('TimePickerEntity', () => {
   describe('constructor', () => {
     it('should initialize with default empty time when no value provided', () => {
-      const entity = new TimePickerEntity(':', false);
+      const entity = new TimePickerEntity(':');
 
       expect(entity.hours).toBe('');
       expect(entity.minutes).toBe('');
     });
 
     it('should parse hours and minutes from value string', () => {
-      const entity = new TimePickerEntity('14:30', false);
+      const entity = new TimePickerEntity('14:30');
 
       expect(entity.hours).toBe('14');
       expect(entity.minutes).toBe('30');
     });
 
     it('should handle single digit hours and minutes', () => {
-      const entity = new TimePickerEntity('9:5', false);
+      const entity = new TimePickerEntity('9:5');
 
       expect(entity.hours).toBe('09');
       expect(entity.minutes).toBe('05');
@@ -66,39 +66,39 @@ describe('TimePickerEntity', () => {
 
   describe('24-hour format', () => {
     it('should format hours with leading zero in 24-hour mode', () => {
-      const entity = new TimePickerEntity('9:30', false);
+      const entity = new TimePickerEntity('9:30');
 
       expect(entity.hours).toBe('09');
     });
 
     it('should handle midnight in 24-hour format', () => {
-      const entity = new TimePickerEntity('0:00', false);
+      const entity = new TimePickerEntity('0:00');
 
       expect(entity.hours).toBe('00');
     });
 
     it('should convert 12 AM to 00:00 in 24-hour format', () => {
-      const entity = new TimePickerEntity('12:00', false);
+      const entity = new TimePickerEntity('12:00');
 
       expect(entity.hours).toBe('00');
     });
 
     it('should convert 12 PM to 12:00 in 24-hour format', () => {
-      const entity = new TimePickerEntity('12:00', false);
+      const entity = new TimePickerEntity('12:00');
       entity.toggleMeridiem();
 
       expect(entity.hours).toBe('12');
     });
 
     it('should convert PM hours correctly', () => {
-      const entity = new TimePickerEntity('3:00', false);
+      const entity = new TimePickerEntity('3:00');
       entity.toggleMeridiem();
 
       expect(entity.hours).toBe('15');
     });
 
     it('should keep AM hours unchanged (except 12)', () => {
-      const entity = new TimePickerEntity('9:00', false);
+      const entity = new TimePickerEntity('9:00');
 
       expect(entity.hours).toBe('09');
     });
@@ -121,7 +121,7 @@ describe('TimePickerEntity', () => {
 
   describe('toString', () => {
     it('should return 24-hour format string when is12Hour is false', () => {
-      const entity = new TimePickerEntity('14:30', false);
+      const entity = new TimePickerEntity('14:30');
 
       expect(entity.toString()).toBe('14:30');
     });
@@ -147,7 +147,7 @@ describe('TimePickerEntity', () => {
     });
 
     it('should add leading zeros to output', () => {
-      const entity = new TimePickerEntity('9:5', false);
+      const entity = new TimePickerEntity('9:5');
 
       expect(entity.toString()).toBe('09:05');
     });
@@ -155,19 +155,19 @@ describe('TimePickerEntity', () => {
 
   describe('edge cases', () => {
     it('should handle invalid hours gracefully', () => {
-      const entity = new TimePickerEntity('invalid:30', false);
+      const entity = new TimePickerEntity('invalid:30');
 
       expect(entity.hours).toBe('invalid');
     });
 
     it('should handle empty minutes', () => {
-      const entity = new TimePickerEntity('10:', false);
+      const entity = new TimePickerEntity('10:');
 
       expect(entity.minutes).toBe('');
     });
 
     it('should handle empty hours', () => {
-      const entity = new TimePickerEntity(':30', false);
+      const entity = new TimePickerEntity(':30');
 
       expect(entity.hours).toBe('');
     });

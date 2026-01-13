@@ -30,7 +30,7 @@ type State = {
   visible: boolean;
 };
 
-abstract class AbstractPickerInput extends Component<PickerInputProps, {}, State> {
+abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {}, State> {
   static style = style;
   static defaultProps = (_: PickerInputProps) => ({
     placeholder: '00',
