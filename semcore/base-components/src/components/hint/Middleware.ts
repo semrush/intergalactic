@@ -10,17 +10,17 @@ export class Middleware {
     return {
       name: 'cursorAnchoring',
       fn(state: MiddlewareState) {
-        const { placement, rects } = state;
+        const { placement, rects, x, y } = state;
         const verticalPlacement =
           !placement || placement.startsWith('top') || placement.startsWith('bottom');
 
         if (verticalPlacement) {
           return {
-            x: mouseCursorPosition.x - rects.floating.width / 2,
+            x: rects.floating.width > rects.reference.width ? x : mouseCursorPosition.x - rects.floating.width / 2,
           };
         } else {
           return {
-            y: mouseCursorPosition.y - rects.floating.height / 2,
+            y: rects.floating.height > rects.reference.height ? y : mouseCursorPosition.y - rects.floating.height / 2,
           };
         }
       },

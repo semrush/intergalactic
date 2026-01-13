@@ -1,9 +1,8 @@
-import { NeighborLocation, Box } from '@semcore/base-components';
+import { NeighborLocation, Box, Hint } from '@semcore/base-components';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
 import type { AbstractButtonProps } from './AbstractButton.type';
@@ -69,25 +68,17 @@ export abstract class AbstractButton extends Component<Props> {
     }
   }
 
-  renderButton({ buttonProps, children }: any) {
+  renderButton({ buttonProps, children, hintProps }: any) {
     const { styles, theme } = this.asProps;
     const SButton = Root;
 
     return sstyled(styles)(
-      <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
-        {children}
-      </SButton>,
-    );
-  }
-
-  renderButtonWithHint({ buttonProps, children, hintProps }: any) {
-    const { styles, theme } = this.asProps;
-    const SButton = Root;
-
-    return sstyled(styles)(
-      <SButton render={Hint} invertOutline={theme === 'invert'} {...buttonProps} {...hintProps} ignorePortalsStacking>
-        {children}
-      </SButton>,
+      <>
+        <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
+          {children}
+        </SButton>
+        {hintProps !== undefined && (<Hint triggerRef={this.containerRef} {...hintProps} />)}
+      </>,
     );
   }
 
@@ -128,11 +119,10 @@ export abstract class AbstractButton extends Component<Props> {
     };
 
     const hintProps = {
-      title: buttonAriaLabel,
+      children: buttonAriaLabel,
       timeout: [250, 50],
       placement: hintPlacement,
       theme: theme === 'invert' ? 'invert' : undefined,
-      __excludeProps: [],
     };
 
     return (
@@ -167,11 +157,11 @@ export abstract class AbstractButton extends Component<Props> {
           );
           buttonProps.neighborLocation = neighborLocation;
 
-          if (hasChildren === undefined || title) {
-            return this.renderButtonWithHint({ buttonProps, hintProps, children });
-          }
-
-          return this.renderButton({ buttonProps, children });
+          return this.renderButton({
+            buttonProps,
+            children,
+            hintProps: (hasChildren === undefined || title) ? hintProps : undefined,
+          });
         }}
       </NeighborLocation.Detect>
     );

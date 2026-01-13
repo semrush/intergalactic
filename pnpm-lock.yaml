@@ -496,9 +496,6 @@ importers:
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*

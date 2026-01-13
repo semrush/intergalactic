@@ -96,6 +96,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.handleBlur = this.handleBlur.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
 
     this.state = {
       innerVisible: props.visible ?? false,
@@ -116,6 +117,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     trigger?.addEventListener('blur', this.handleBlur);
     trigger?.addEventListener('mouseenter', this.handleMouseEnter);
     trigger?.addEventListener('mouseleave', this.handleMouseLeave);
+    trigger?.addEventListener('keydown', this.handleKeyDown);
 
     if (this.asProps.visible && trigger) {
       this.showHint(trigger);
@@ -129,6 +131,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     trigger?.removeEventListener('blur', this.handleBlur);
     trigger?.removeEventListener('mouseenter', this.handleMouseEnter);
     trigger?.removeEventListener('mouseleave', this.handleMouseLeave);
+    trigger?.removeEventListener('keydown', this.handleKeyDown);
 
     this.hideHint();
   }
@@ -232,6 +235,13 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
   private handleBlur(e: FocusEvent): void {
     if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+      this.hideHint();
+    }
+  }
+
+  private handleKeyDown(e: KeyboardEvent): void {
+    if (e.key === 'Escape' && e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && this.state.innerVisible) {
+      e.stopPropagation();
       this.hideHint();
     }
   }
