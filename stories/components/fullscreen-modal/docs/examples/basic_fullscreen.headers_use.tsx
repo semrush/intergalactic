@@ -11,7 +11,7 @@ const Demo = () => {
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
-        <FullscreenModal.Header title='Modal Window Title' description='Additional information' />
+        <FullscreenModal.Header title='An Amazing Journey Through Enchanted Worlds, Where Every Step Unveils New Horizons and Dreams Become Reality' description='In the bustling city of Eldoria, where the sun sets behind the towering spires of ancient castles, a mysterious event is about to unfold' />
         <FullscreenModal.Footer />
       </FullscreenModal>
     </>
