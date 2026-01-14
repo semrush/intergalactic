@@ -6,6 +6,7 @@ import BackWithoutTextClose1bthFooterExample from './examples/header/back-no-tex
 import CloseBackTitleDescriptionExample from './examples/header/close-back-title-description';
 import CloseInHeaderExample from './examples/header/close-in-header';
 import CloseTitleDescriptionExample from './examples/header/close-title-description';
+import LongTitleAndDescriptionExample from './examples/header/long-title-and-description';
 import TitleDescriptionExample from './examples/header/title-description';
 import ModalPropsExample, { defaultProps } from './examples/modal-props';
 import WithSpinContainerExample from './examples/with-spin-container';
@@ -54,6 +55,10 @@ export const BackAndTitleBody400: StoryObj = {
 
 export const CloseInHeader: StoryObj = {
   render: CloseInHeaderExample,
+};
+
+export const LongTitleAndDescription: StoryObj = {
+  render: LongTitleAndDescriptionExample,
 };
 
 export default meta;

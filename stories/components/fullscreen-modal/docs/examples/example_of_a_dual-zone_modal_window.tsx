@@ -13,9 +13,9 @@ const Demo = () => {
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header>
-          <FullscreenModal.Title>An Amazing Journey Through Enchanted Worlds, Where Every Step Unveils New Horizons and Dreams Become Reality</FullscreenModal.Title>
+          <FullscreenModal.Title>Modal Window Title</FullscreenModal.Title>
           <FullscreenModal.Description>
-            In the bustling city of Eldoria, where the sun sets behind the towering spires of ancient castles, a mysterious event is about to unfold
+            Additional information
           </FullscreenModal.Description>
         </FullscreenModal.Header>
         <FullscreenModal.Body>
