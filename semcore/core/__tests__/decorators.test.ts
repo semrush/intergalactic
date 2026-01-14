@@ -444,4 +444,66 @@ describe('@propsObserver', () => {
       expect(callOrder).toEqual(['render', 'onPropsChange', 'render']);
     });
   });
+
+  describe('Unmount behavior', () => {
+    it('should call decorated componentWillUnmount', () => {
+      const onComponentWillUnmountSpy = vi.fn();
+
+      @propsObserver(['name', 'age'])
+      class TestComponent {
+        props: TestProps;
+
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {}
+
+        componentWillUnmount() {
+          onComponentWillUnmountSpy();
+        }
+
+        render() {
+          return 'rendered';
+        }
+      }
+
+      const component = new TestComponent({ name: 'John', age: 30 });
+
+      component.render();
+      expect(onComponentWillUnmountSpy).not.toHaveBeenCalled();
+
+      component.componentWillUnmount();
+      expect(onComponentWillUnmountSpy).toHaveBeenCalledOnce();
+    });
+
+    it('should set observable props to undefined', () => {
+      @propsObserver(['name', 'age'])
+      class TestComponent {
+        props: TestProps;
+
+        constructor(props: TestProps) {
+          this.props = props;
+        }
+
+        onPropsChange(changedProps: Partial<TestProps>) {}
+
+        componentWillUnmount() {}
+
+        render() {
+          return 'rendered';
+        }
+      }
+
+      const component = new TestComponent({ name: 'John', age: 30 });
+
+      component.render();
+      // @ts-expect-error
+      expect(component.__observableProps).toEqual({ name: 'John', age: 30 });
+
+      component.componentWillUnmount();
+      // @ts-expect-error
+      expect(component.__observableProps).toEqual({ name: undefined, age: undefined });
+    });
+  });
 });

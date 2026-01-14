@@ -9,9 +9,9 @@ type Constructor<Props> = new (...args: any[]) => {
 
 function propsObserver<
   P extends Record<string, any>,
-  C extends Constructor<P> = Constructor<P>,
+  C extends Constructor<P>,
 >(propsToWatch: Array<keyof P>) {
-  return function (Class: C) {
+  return function (Class: C): C & Constructor<P> {
     return class extends Class {
       __observableProps: WatchedProps<P> = {};
 
@@ -47,18 +47,18 @@ function propsObserver<
         super.onPropsChange(changedProps);
       }
 
+      componentWillUnmount() {
+        super.componentWillUnmount?.();
+
+        Object.keys(this.__observableProps).forEach((key: keyof P) => {
+          this.__observableProps[key] = undefined;
+        });
+      }
+
       render() {
         this.onPropsChange();
 
         return super.render();
-      }
-
-      componentWillUnmount() {
-        super.componentWillUnmount?.();
-
-        Object.entries(this.__observableProps).forEach(([key, value]: [value: keyof P, value: unknown]) => {
-          this.__observableProps[key] = undefined;
-        });
       }
     };
   };
