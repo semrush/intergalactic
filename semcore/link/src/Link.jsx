@@ -43,6 +43,14 @@ class RootLink extends Component {
     }
   }
 
+  getTextProps() {
+    const { size } = this.asProps;
+
+    return {
+      size,
+    };
+  }
+
   renderLink({ linkProps, children }) {
     const { styles } = this.asProps;
     const SLink = Root;
