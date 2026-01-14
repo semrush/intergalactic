@@ -25,7 +25,7 @@ const Demo = () => {
             <ButtonLink
               addonLeft={CheckM}
               color='icon-secondary-success'
-              title='Submit'
+              aria-label='Submit'
               onClick={() => setValue('')}
             />
           </Input.Addon>
