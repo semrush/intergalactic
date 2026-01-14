@@ -664,7 +664,7 @@ class DataTableRoot<
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
         if (
-          currentCell.dataset.groupedBy === 'rowgroup' || currentCell.dataset.groupedBy === 'both' ||
+          currentCell.dataset.groupedBy === 'rowgroup' ||
           Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;

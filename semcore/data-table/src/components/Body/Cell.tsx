@@ -75,7 +75,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
 
-    let scope: null | 'rowgroup' | 'colgroup' | 'both' = null;
+    let scope: null | 'rowgroup' | 'colgroup' = null;
     let gridArea: string | undefined = undefined;
 
     const fromRow = gridRowIndex;
@@ -84,7 +84,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     if (cell instanceof MergedColumnsCell) {
       if (cell.value instanceof MergedRowsCell) {
         gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.value.rowsCount} / ${fromCol + cell.columnsCount}`;
-        scope = 'both';
+        scope = 'rowgroup';
       } else {
         gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
         scope = 'colgroup';
