@@ -12,7 +12,6 @@ import type {
   TimePickerProps,
   TimePickerField,
   TimePickerSeparatorProps,
-  TimePickerHandlers,
 } from './TimePicker.type';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -44,7 +43,7 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
   @reactive(['meridiem'], function () {
     this.forceUpdate();
   })
-  readonly entity = new TimePickerEntity(this.props.value, this.props.is12Hour);
+  readonly entity = new TimePickerEntity(this.props.value ?? this.props.defaultValue, this.props.is12Hour);
 
   onPropsChange(changedProps: TimePickerProps) {
     const { value } = changedProps;

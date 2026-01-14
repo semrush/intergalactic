@@ -4,44 +4,45 @@ type Constructor<Props> = new (...args: any[]) => {
   props: Props;
   onPropsChange(changedProps: WatchedProps<Props>): void;
   render(): React.ReactNode;
+  componentWillUnmount?(): void;
 };
 
 function propsObserver<
   P extends Record<string, any>,
   C extends Constructor<P> = Constructor<P>,
 >(propsToWatch: Array<keyof P>) {
-  const watchedProps: WatchedProps<P> = {};
-
   return function (Class: C) {
     return class extends Class {
+      __observableProps: WatchedProps<P> = {};
+
       constructor(...args: any[]) {
         super(...args);
 
         if (!this.props) return;
 
-        const propKeys = propsToWatch.length === 0 ? Object.keys(this.props) : [...propsToWatch];
+        const observablePropKeys = propsToWatch.length === 0 ? Object.keys(this.props) : [...propsToWatch];
 
-        propKeys.forEach((prop) => {
-          watchedProps[prop] = this.props[prop];
+        observablePropKeys.forEach((key) => {
+          this.__observableProps[key] = this.props[key];
         });
       }
 
       onPropsChange(_?: WatchedProps<P>) {
-        let shouldCallFunc = false;
+        let shouldEmitChanges = false;
         const changedProps: WatchedProps<P> = {};
 
-        (Object.keys(watchedProps) as Array<keyof P>).forEach((prop) => {
-          const isPropValueEqual = Object.is(watchedProps[prop], this.props[prop]);
+        Object.entries(this.__observableProps).forEach(([key, value]: [key: keyof P, value: unknown]) => {
+          const arePropsEqual = Object.is(value, this.props[key]);
 
-          if (!isPropValueEqual) {
-            watchedProps[prop] = this.props[prop];
-            changedProps[prop] = this.props[prop];
+          if (!arePropsEqual) {
+            this.__observableProps[key] = this.props[key];
+            changedProps[key] = this.props[key];
 
-            shouldCallFunc = true;
+            shouldEmitChanges = true;
           }
         });
 
-        if (!shouldCallFunc) return;
+        if (!shouldEmitChanges) return;
 
         super.onPropsChange(changedProps);
       }
@@ -50,6 +51,14 @@ function propsObserver<
         this.onPropsChange();
 
         return super.render();
+      }
+
+      componentWillUnmount() {
+        super.componentWillUnmount?.();
+
+        Object.entries(this.__observableProps).forEach(([key, value]: [value: keyof P, value: unknown]) => {
+          this.__observableProps[key] = undefined;
+        });
       }
     };
   };
