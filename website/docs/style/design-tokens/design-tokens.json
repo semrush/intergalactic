@@ -397,6 +397,7 @@
       "product-head",
       "radio",
       "side-panel",
+      "status-badge",
       "switch",
       "tab-line",
       "tab-panel",
@@ -494,6 +495,7 @@
       "feature-popover",
       "notice-bubble",
       "notice-global",
+      "status-badge",
       "tag",
       "tooltip",
       "wizard"
@@ -2492,6 +2494,7 @@
       "badge",
       "button",
       "counter",
+      "status-badge",
       "tab-line",
       "tab-panel",
       "tag",
@@ -2509,7 +2512,8 @@
       "badge",
       "counter",
       "d3-chart",
-      "dot"
+      "dot",
+      "status-badge"
     ]
   },
   {
@@ -2557,6 +2561,7 @@
       "product-head",
       "radio",
       "slider",
+      "status-badge",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2761,6 +2766,7 @@
       "pagination",
       "product-head",
       "side-panel",
+      "status-badge",
       "tag",
       "textarea",
       "typography",
@@ -3039,7 +3045,8 @@
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
     "components": [
-      "badge"
+      "badge",
+      "status-badge"
     ]
   },
   {

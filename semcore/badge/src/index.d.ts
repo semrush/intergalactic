@@ -13,6 +13,9 @@ export type BadgeProps = BoxProps & {
   color?: 'white' | 'gray20' | string;
 };
 
+/**
+ * @deprecated. Use StatusBadge from @semcore/status-badge package.
+ */
 declare const Badge: Intergalactic.Component<'div', BadgeProps>;
 
 export default Badge;
