@@ -7,9 +7,17 @@ export type MergedRowColumnWithFixedProps = {
   withBorders?: boolean;
   headerLevels?: 1 | 2;
   showLastRows?: boolean;
+  lastRowsPosition?: 'top' | 'bottom' | 'both';
+  showRightColumn?: boolean;
+  fixedColumns?: boolean;
 };
 
-const generateData = (rowsCount: number, columnsCount: number, showLastRows: boolean) => {
+const generateData = (
+  rowsCount: number,
+  columnsCount: number,
+  showLastRows: boolean,
+  lastRowsPosition: 'top' | 'bottom' | 'both',
+) => {
   const childRows = Array.from({ length: rowsCount }, (_, i) => ({
     keyword: `${77.8 + i * 10}`,
   }));
@@ -17,36 +25,50 @@ const generateData = (rowsCount: number, columnsCount: number, showLastRows: boo
   const columnKeys = ['kd', 'cpc', 'vol', 'extra'];
   const mergedKey = columnKeys.slice(0, columnsCount).join('/');
 
-  const data: any[] = [
+  const additionalRows = [
     {
-      [mergedKey]: 'ebay buy',
-      [ROW_GROUP]: childRows,
+      keyword: 'google',
+      kd: '88.5',
+      cpc: '$2.50',
+      vol: '40,000,000',
+      ...(columnsCount >= 4 && { extra: '100' }),
+    },
+    {
+      keyword: 'amazon',
+      kd: '92.1',
+      cpc: '$3.00',
+      vol: '50,000,000',
+      ...(columnsCount >= 4 && { extra: '200' }),
     },
   ];
 
-  if (showLastRows) {
-    data.push(
-      {
-        keyword: 'google',
-        kd: '88.5',
-        cpc: '$2.50',
-        vol: '40,000,000',
-        ...(columnsCount >= 4 && { extra: '100' }),
-      },
-      {
-        keyword: 'amazon',
-        kd: '92.1',
-        cpc: '$3.00',
-        vol: '50,000,000',
-        ...(columnsCount >= 4 && { extra: '200' }),
-      },
-    );
+  const groupedRow = {
+    [mergedKey]: 'ebay buy',
+    [ROW_GROUP]: childRows,
+  };
+
+  const data: any[] = [];
+
+  if (showLastRows && (lastRowsPosition === 'top' || lastRowsPosition === 'both')) {
+    data.push(...additionalRows);
+  }
+
+  data.push(groupedRow);
+
+  if (showLastRows && (lastRowsPosition === 'bottom' || lastRowsPosition === 'both')) {
+    data.push(...additionalRows);
   }
 
   return data;
 };
 
-const generateColumns = (columnsCount: number, withBorders: boolean, headerLevels: number) => {
+const generateColumns = (
+  columnsCount: number,
+  withBorders: boolean,
+  headerLevels: number,
+  showRightColumn: boolean,
+  fixedColumns: boolean,
+) => {
   const columnConfigs = [
     { name: 'kd', children: 'KD %', gtcWidth: '150px' },
     { name: 'cpc', children: 'CPC', gtcWidth: '150px' },
@@ -55,7 +77,12 @@ const generateColumns = (columnsCount: number, withBorders: boolean, headerLevel
   ];
 
   const columns: any[] = [
-    { name: 'keyword', children: 'Keyword', fixed: 'left', gtcWidth: '150px' },
+    {
+      name: 'keyword',
+      children: 'Keyword',
+      ...(fixedColumns && { fixed: 'left' }),
+      gtcWidth: '150px',
+    },
   ];
 
   if (headerLevels === 1) {
@@ -69,6 +96,16 @@ const generateColumns = (columnsCount: number, withBorders: boolean, headerLevel
     });
   }
 
+  if (showRightColumn) {
+    columns.push({
+      name: 'keyword',
+      children: 'Keyword (right)',
+      ...(fixedColumns && { fixed: 'right' }),
+      ...(withBorders && { borders: 'left' }),
+      gtcWidth: '150px',
+    });
+  }
+
   return columns;
 };
 
@@ -79,10 +116,13 @@ const Demo = (props: MergedRowColumnWithFixedProps) => {
     withBorders = true,
     headerLevels = 2,
     showLastRows = true,
+    lastRowsPosition = 'bottom',
+    showRightColumn = false,
+    fixedColumns = true,
   } = props;
 
-  const data = generateData(rowsCount, columnsCount, showLastRows);
-  const columns = generateColumns(columnsCount, withBorders, headerLevels);
+  const data = generateData(rowsCount, columnsCount, showLastRows, lastRowsPosition);
+  const columns = generateColumns(columnsCount, withBorders, headerLevels, showRightColumn, fixedColumns);
 
   return (
     <DataTable
@@ -100,6 +140,9 @@ export const mergedRowColumnWithFixedProps: MergedRowColumnWithFixedProps = {
   withBorders: true,
   headerLevels: 2,
   showLastRows: true,
+  lastRowsPosition: 'bottom',
+  showRightColumn: false,
+  fixedColumns: true,
 };
 
 Demo.defaultProps = mergedRowColumnWithFixedProps;

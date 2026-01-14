@@ -88,11 +88,24 @@ export const MergedRowColumnWithFixed: StoryObj<MergedRowColumnWithFixedProps> =
     headerLevels: {
       control: { type: 'select' },
       options: [1, 2],
-      description: 'Nesting level of column headers',
+      description: 'level of column headers',
     },
     showLastRows: {
       control: 'boolean',
       description: 'Show last two rows without grouping',
+    },
+    lastRowsPosition: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'both'],
+      description: 'Position of additional rows (top, bottom, or both)',
+    },
+    showRightColumn: {
+      control: 'boolean',
+      description: 'Show column on the right',
+    },
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed columns (left and right)',
     },
   },
 };

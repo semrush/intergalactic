@@ -35,7 +35,6 @@ const Demo = () => {
     <DataTable
       data={data}
       aria-label='Rows grouping in multiline header'
-      // h={200}
       columns={[
         { name: 'keyword', children: 'Keyword' },
         {
