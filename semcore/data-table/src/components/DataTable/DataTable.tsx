@@ -645,10 +645,8 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          if (direction === 'right') {
-            if (limit?.fromColumn !== undefined && newCol > limit.fromColumn) return;
-
-            rowI = direction === 'right' ? rowI - 1 : rowI;
+          if (direction === 'right' && limit?.fromColumn !== undefined && newCol === limit.fromColumn) {
+            rowI = rowI - 1;
           } else {
             colI = direction === 'left' ? colI - 1 : colI + 1;
           }
