@@ -75,7 +75,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const cell = row[column.name];
     const cellName = cell instanceof MergedColumnsCell ? cell.dataKey : column.name;
 
-    let scope: null | 'rowgroup' | 'colgroup' = null;
+    let scope: null | 'rowgroup' | 'colgroup' | 'both' = null;
     let gridArea: string | undefined = undefined;
 
     const fromRow = gridRowIndex;
@@ -84,10 +84,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     if (cell instanceof MergedColumnsCell) {
       if (cell.value instanceof MergedRowsCell) {
         gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.value.rowsCount} / ${fromCol + cell.columnsCount}`;
+        scope = 'both';
       } else {
         gridArea = `${fromRow} / ${fromCol} / ${fromRow + 1} / ${fromCol + cell.columnsCount}`;
+        scope = 'colgroup';
       }
-      scope = 'colgroup';
     } else if (cell instanceof MergedRowsCell) {
       gridArea = `${fromRow} / ${fromCol} / ${fromRow + cell.rowsCount} / ${fromCol + 1}`;
       scope = 'rowgroup';
@@ -117,7 +118,11 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           data-grouped-by={scope}
           scope={scope}
           aria-colspan={cell instanceof MergedColumnsCell ? cell.columnsCount : undefined}
-          aria-rowspan={cell instanceof MergedRowsCell ? cell.rowsCount : undefined}
+          aria-rowspan={cell instanceof MergedRowsCell
+            ? cell.rowsCount
+            : cell instanceof MergedColumnsCell && cell.value instanceof MergedRowsCell
+              ? cell.value.rowsCount
+              : undefined}
           gridArea={gridArea}
           borders={column.borders}
           flexWrap={column.flexWrap}

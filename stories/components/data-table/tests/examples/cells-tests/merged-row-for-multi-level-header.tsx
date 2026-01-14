@@ -22,6 +22,12 @@ const data = [
       },
     ],
   },
+  {
+    keyword: '77.8',
+    kd: '33.8',
+    cpc: '77.8',
+    vol: '123',
+  },
 ];
 
 const Demo = () => {

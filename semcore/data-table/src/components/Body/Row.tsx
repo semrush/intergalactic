@@ -474,6 +474,18 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
 
+    const filledColumns = columns.reduce((acc, column) => {
+      const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined = row[column.name];
+
+      if (cellValue instanceof MergedColumnsCell) {
+        acc = acc + cellValue.columnsCount;
+      } else if (cellValue !== undefined) {
+        acc++;
+      }
+
+      return acc;
+    }, 0);
+
     return sstyled(styles)(
       <>
         <SRow
@@ -485,6 +497,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           use:expanded={expanded && !mergedRow}
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
+          data-filled-columns={filledColumns}
         >
           {columns.map((column, i) => {
             const index = i;

@@ -645,8 +645,8 @@ class DataTableRoot<
           (currentCell.parentElement &&
             Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
         ) {
-          if (direction === 'right' && limit?.fromColumn !== undefined) {
-            if (newCol > limit.fromColumn) return;
+          if (direction === 'right') {
+            if (limit?.fromColumn !== undefined && newCol > limit.fromColumn) return;
 
             rowI = direction === 'right' ? rowI - 1 : rowI;
           } else {
@@ -664,7 +664,7 @@ class DataTableRoot<
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
         if (
-          currentCell.dataset.groupedBy === 'rowgroup' ||
+          currentCell.dataset.groupedBy === 'rowgroup' || currentCell.dataset.groupedBy === 'both' ||
           Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
@@ -674,7 +674,13 @@ class DataTableRoot<
             return;
           }
 
-          colI = colI - 1;
+          const hasRowSpanUpper = row instanceof HTMLElement && currentRow instanceof HTMLElement && row.dataset.filledColumns !== currentRow?.dataset.filledColumns;
+
+          if (direction === 'up' && hasRowSpanUpper) {
+            rowI = rowI - 1;
+          } else {
+            colI = colI - 1;
+          }
         }
       }
       this.changeFocusCell(rowI, colI, direction);
