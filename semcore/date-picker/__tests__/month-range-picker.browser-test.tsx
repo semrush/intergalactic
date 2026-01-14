@@ -513,7 +513,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
 
-        await pressTab(5);
+        await pressTab(6);
         await expect(locators.button(page, 'Apply')).toBeFocused();
 
         await page.keyboard.press('Enter');
