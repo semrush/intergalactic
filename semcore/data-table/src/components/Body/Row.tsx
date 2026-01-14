@@ -606,6 +606,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
             sideIndents={sideIndents}
+            data-filled-columns={filledColumns}
           >
             <SCell
               aria-colindex={1}
