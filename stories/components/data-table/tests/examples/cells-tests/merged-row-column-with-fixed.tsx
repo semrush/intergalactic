@@ -6,9 +6,10 @@ export type MergedRowColumnWithFixedProps = {
   columnsCount?: 2 | 3 | 4;
   withBorders?: boolean;
   headerLevels?: 1 | 2;
+  showLastRows?: boolean;
 };
 
-const generateData = (rowsCount: number, columnsCount: number) => {
+const generateData = (rowsCount: number, columnsCount: number, showLastRows: boolean) => {
   const childRows = Array.from({ length: rowsCount }, (_, i) => ({
     keyword: `${77.8 + i * 10}`,
   }));
@@ -16,26 +17,33 @@ const generateData = (rowsCount: number, columnsCount: number) => {
   const columnKeys = ['kd', 'cpc', 'vol', 'extra'];
   const mergedKey = columnKeys.slice(0, columnsCount).join('/');
 
-  return [
+  const data: any[] = [
     {
       [mergedKey]: 'ebay buy',
       [ROW_GROUP]: childRows,
     },
-    {
-      keyword: 'google',
-      kd: '88.5',
-      cpc: '$2.50',
-      vol: '40,000,000',
-      ...(columnsCount >= 4 && { extra: '100' }),
-    },
-    {
-      keyword: 'amazon',
-      kd: '92.1',
-      cpc: '$3.00',
-      vol: '50,000,000',
-      ...(columnsCount >= 4 && { extra: '200' }),
-    },
   ];
+
+  if (showLastRows) {
+    data.push(
+      {
+        keyword: 'google',
+        kd: '88.5',
+        cpc: '$2.50',
+        vol: '40,000,000',
+        ...(columnsCount >= 4 && { extra: '100' }),
+      },
+      {
+        keyword: 'amazon',
+        kd: '92.1',
+        cpc: '$3.00',
+        vol: '50,000,000',
+        ...(columnsCount >= 4 && { extra: '200' }),
+      },
+    );
+  }
+
+  return data;
 };
 
 const generateColumns = (columnsCount: number, withBorders: boolean, headerLevels: number) => {
@@ -70,9 +78,10 @@ const Demo = (props: MergedRowColumnWithFixedProps) => {
     columnsCount = 3,
     withBorders = true,
     headerLevels = 2,
+    showLastRows = true,
   } = props;
 
-  const data = generateData(rowsCount, columnsCount);
+  const data = generateData(rowsCount, columnsCount, showLastRows);
   const columns = generateColumns(columnsCount, withBorders, headerLevels);
 
   return (
@@ -90,6 +99,7 @@ export const mergedRowColumnWithFixedProps: MergedRowColumnWithFixedProps = {
   columnsCount: 3,
   withBorders: true,
   headerLevels: 2,
+  showLastRows: true,
 };
 
 Demo.defaultProps = mergedRowColumnWithFixedProps;

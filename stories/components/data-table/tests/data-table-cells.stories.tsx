@@ -90,5 +90,9 @@ export const MergedRowColumnWithFixed: StoryObj<MergedRowColumnWithFixedProps> =
       options: [1, 2],
       description: 'Nesting level of column headers',
     },
+    showLastRows: {
+      control: 'boolean',
+      description: 'Show last two rows without grouping',
+    },
   },
 };

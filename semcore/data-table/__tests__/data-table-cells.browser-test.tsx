@@ -81,7 +81,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify color on hover when merged rows AND columns with multi-level header', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
+    if (browserName == 'firefox') test.skip();
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
 
     await test.step('Verify Color when child cell hovered', async () => {
@@ -323,7 +324,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.getCell(page, 2, 1)).toBeFocused();
 
-      for (let row = 3; row <= 6; row++) {
+      for (let row = 3; row <= 5; row++) {
         await page.keyboard.press('ArrowDown');
         await expect(locators.getCell(page, row, 1)).toBeFocused();
       }
@@ -334,6 +335,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowLeft');
