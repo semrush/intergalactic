@@ -40,9 +40,8 @@ declare const useResizeObserver: (
   ref: RefObject<HTMLElement>,
   hookOverride?: { width: number },
 ) => { width: number };
-
 /**
- * @deprecated. Use Text with ellipsis property for @semcore/typography or `useEllipsis` hook from @semcore/base-components.
+ * @deprecated. Use Text with ellipsis property for @semcore/typography.
  */
 declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
   Content: typeof Box;

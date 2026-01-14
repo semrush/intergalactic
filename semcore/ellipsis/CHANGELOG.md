@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Deprecated
 
-- This component is now deprecated. Use the new `ellipsis` prop that's built into various components, and the `useEllipsis` hook from the `base-components` package for all other cases.
+- This component is now deprecated. Use the new `ellipsis` prop that's built into various components.
 
 ## [16.0.12] - 2025-11-14
 
