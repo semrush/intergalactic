@@ -83,7 +83,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={false}
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Text.Content wMax={100} ellipsis>{tag}</InputTags.Tag.Text.Content>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'middle' }}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag(idx)} />}
           </InputTags.Tag>

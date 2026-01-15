@@ -31,7 +31,7 @@ export const useResizeObserver = (
         ro.disconnect();
       };
     }
-  }, [hookOverride, ref]);
+  }, [hookOverride]);
 
   if (hookOverride) {
     return hookOverride;
