@@ -44,10 +44,10 @@ class RootLink extends Component {
   }
 
   getTextProps() {
-    const { size } = this.asProps;
+    const { inline, active, enableVisited, addonLeft, addonRight, disabled, ...textProps } = this.asProps;
 
     return {
-      size,
+      ...textProps,
     };
   }
 
