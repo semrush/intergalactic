@@ -657,11 +657,10 @@ class DataTableRoot<
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (
-          rowspan > 0 ||
-          Number(currentCell.getAttribute('aria-colindex')) === 1
-        ) {
+        if (rowspan > 0) {
           rowI = direction === 'up' ? rowI - rowspan + 1 : rowI + rowspan - 1;
+        } else if (Number(currentCell.getAttribute('aria-colindex')) === 1) {
+          rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
           if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
