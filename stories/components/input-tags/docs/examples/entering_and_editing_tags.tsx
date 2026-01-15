@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/ui/base-components';
-import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
+import type { InputTagsProps, InputTagsValueProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -65,7 +65,7 @@ const Demo = (props: ExampleInputTagsProps) => {
       return false;
     }
   };
-
+  console.log(props);
   return (
     <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='add-new-social-media'>
@@ -75,7 +75,6 @@ const Demo = (props: ExampleInputTagsProps) => {
         {tags.map((tag, idx) => (
           <InputTags.Tag
             key={tag}
-            tag={InputTags.Tag}
             theme='primary'
             editable={!props.disabled}
             data-id={idx}
@@ -83,8 +82,8 @@ const Demo = (props: ExampleInputTagsProps) => {
             onKeyDown={handleTagKeyDown}
             active={false}
           >
-            <InputTags.Tag.Text wMax={100}>
-              {tag}
+            <InputTags.Tag.Text>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag(idx)} />}
           </InputTags.Tag>

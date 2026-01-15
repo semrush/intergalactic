@@ -58,8 +58,8 @@ export type TagTextProps = BoxProps & {
    * Ellipsis settings
    * @default true
    */
-  ellipsis?: false | EllipsisSettings;
-  hintProps?: SimpleHintPopperProps;
+  ellipsis?: boolean | EllipsisSettings;
+  hintProps?: SimpleHintPopperProps | false;
 };
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
