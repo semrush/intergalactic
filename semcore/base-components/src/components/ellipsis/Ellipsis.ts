@@ -132,15 +132,39 @@ export class Ellipsis extends EventEmitter<Events> {
     this.isEllipsized = this.isTextOverflowing();
 
     if (this.isEllipsized && this.settings.cropPosition === 'middle') {
-      this.element.setAttribute('aria-label', this.textContent);
       if (this.requiredFrom === -1 && this.requiredTo === -1) {
         const [from, to] = this.getTruncateSize();
+        const croppedText = this.textContent.slice(0, from) + '...' + this.textContent.slice(-1 * to);
 
-        this.element.textContent = this.textContent.slice(0, from) + '...' + this.textContent.slice(-1 * to);
+        this.setCroppedText(croppedText);
       } else {
         this.handleRequiredPath(this.requiredFrom, this.requiredTo);
       }
     }
+  }
+
+  private setCroppedText(text: string): void {
+    const croppedElement = document.createElement('span');
+    croppedElement.setAttribute('aria-hidden', 'true');
+    croppedElement.textContent = text;
+
+    const hiddenFullText = document.createElement('span');
+    hiddenFullText.textContent = this.textContent;
+
+    hiddenFullText.style.setProperty('position', 'absolute');
+    hiddenFullText.style.setProperty('width', '1px');
+    hiddenFullText.style.setProperty('height', '1px');
+    hiddenFullText.style.setProperty('padding', '0');
+    hiddenFullText.style.setProperty('margin', '-1px');
+    hiddenFullText.style.setProperty('overflow', 'hidden');
+    hiddenFullText.style.setProperty('white-space', 'nowrap');
+    hiddenFullText.style.setProperty('border-width', '0');
+    hiddenFullText.style.setProperty(' left', '-1px');
+    hiddenFullText.style.setProperty('top', '-1px');
+
+    this.element.innerHTML = '';
+    this.element.appendChild(croppedElement);
+    this.element.appendChild(hiddenFullText);
   }
 
   private isTextOverflowing(): boolean {
@@ -195,7 +219,7 @@ export class Ellipsis extends EventEmitter<Events> {
     const end = endText.slice(-1 * sizeEnd);
 
     if (this.stylesForRequired === null) {
-      this.element.textContent = `${start}${requiredText}${end}`;
+      this.setCroppedText(`${start}${requiredText}${end}`);
     } else {
       this.highlightRequiredPath(start, end, requiredText, this.stylesForRequired);
     }

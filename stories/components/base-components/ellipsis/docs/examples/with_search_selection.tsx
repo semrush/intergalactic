@@ -32,10 +32,15 @@ const Demo = () => {
         {text}
       </Text>
 
-      <Input mt={1}>
-        <Input.Addon><SearchIcon /></Input.Addon>
-        <Input.Value value={search} onChange={setSearch} />
-      </Input>
+      <br />
+      <br />
+      <Text tag='label'>
+        Filter:
+        <Input mt={1}>
+          <Input.Addon><SearchIcon /></Input.Addon>
+          <Input.Value value={search} onChange={setSearch} />
+        </Input>
+      </Text>
     </>
 
   );
