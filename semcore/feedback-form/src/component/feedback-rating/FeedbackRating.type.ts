@@ -2,6 +2,7 @@ import type Button from '@semcore/button';
 import type Checkbox from '@semcore/checkbox';
 import type { CheckboxProps } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
+import type { NoticeSmartProps } from '@semcore/notice';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 import type { FieldProps } from 'react-final-form';
@@ -56,6 +57,10 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   errorFeedbackEmail: string;
   /** Specifies the locale for i18n support */
   locale?: string;
+  /** Illustration component */
+  illustrationElement?: React.ReactElement;
+  /** Notice smart component like NoticeSmart/NoticeFH  */
+  NoticeComponent?: React.ComponentType<NoticeSmartProps>;
 };
 
 export type FeedbackRatingItemProps = FieldProps<any, any> & {

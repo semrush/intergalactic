@@ -8,7 +8,7 @@ import FeedbackIllustration from '@semcore/illustration/Feedback';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Modal from '@semcore/modal';
-import Notice from '@semcore/notice';
+import Notice, { NoticeSmart } from '@semcore/notice';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
@@ -44,6 +44,8 @@ class FeedbackRatingRoot extends Component<
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
+    illustrationElement: <FeedbackIllustration />,
+    NoticeComponent: NoticeSmart,
   };
 
   static validate = {
@@ -252,6 +254,8 @@ class FeedbackRatingRoot extends Component<
       getI18nText,
       errorFeedbackEmail,
       modalWidth,
+      illustrationElement,
+      NoticeComponent,
       ...other
     } = this.asProps;
 
@@ -264,38 +268,38 @@ class FeedbackRatingRoot extends Component<
 
     return sstyled(styles)(
       <Root render={Box}>
-        <Notice
+        <NoticeComponent
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
           tag={Flex}
           alignItems={notificationTitle ? 'flex-start' : 'center'}
+          label={(
+            <Box mr={3} aria-hidden>
+              {illustrationElement}
+            </Box>
+          )}
+          tittle={notificationTitle}
+          onClose={onNotificationClose}
+          closable
         >
-          <Notice.Label mr={3} aria-hidden={true}>
-            <FeedbackIllustration />
-          </Notice.Label>
-          <Notice.Content>
-            {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
-            <Notice.Text tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
-              <Text mr={3} id={notificationId}>
-                {notificationText}
-              </Text>
-              <Notice.Actions mt={0}>
-                <SliderRating
-                  value={rating}
-                  onChange={this.handleChangeRating}
-                  aria-labelledby={notificationId}
-                />
-              </Notice.Actions>
-              {learnMoreLink && (
-                <Link ml={3} href={learnMoreLink}>
-                  {getI18nText('learnMore')}
-                </Link>
-              )}
-            </Notice.Text>
-          </Notice.Content>
-          <Notice.Close onClick={onNotificationClose} />
-        </Notice>
-
+          <Flex alignItems={notificationTitle ? 'flex-start' : 'center'}>
+            <Text mr={3} id={notificationId}>
+              {notificationText}
+            </Text>
+            <Notice.Actions mt={0}>
+              <SliderRating
+                value={rating}
+                onChange={this.handleChangeRating}
+                aria-labelledby={notificationId}
+              />
+            </Notice.Actions>
+            {learnMoreLink && (
+              <Link ml={3} href={learnMoreLink}>
+                {getI18nText('learnMore')}
+              </Link>
+            )}
+          </Flex>
+        </NoticeComponent>
         <SFeedbackRating
           render={Modal}
           visible={visible}
