@@ -111,6 +111,16 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify feedback rating notice with illustration and feature highlight notice', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-custom-illustration-and-notice.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 /* =====================================================
