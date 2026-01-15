@@ -15,7 +15,7 @@ class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
   static style = style;
 
   static defaultProps = {
-    size: 'm',
+    size: 's',
   };
 
   render() {
