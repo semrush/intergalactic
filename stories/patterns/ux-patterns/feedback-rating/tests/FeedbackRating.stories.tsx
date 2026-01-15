@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { WithErrorTest } from './__tests__/with-error.test';
-import FeedbackRatingWithIllustrationAndNoticeExample from './examples/with-custom-illustration-and-notice-component';
+import FeedbackRatingWithIllustrationAndNoticeExample from './examples/with-custom-illustration-and-notice';
 import WithErrorOnSendExample from './examples/with-error-on-send';
 import FeedbackRatingWithTitleAndSubtitleExample from './examples/with-title-and-subtitle';
 import { playWrapper } from '../../../../utils/playWrapper';
