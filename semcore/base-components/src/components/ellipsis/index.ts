@@ -1,4 +1,5 @@
-import { Ellipsis, type EllipsisSettings } from './Ellipsis';
+import { Ellipsis } from './Ellipsis';
+import type { EllipsisSettings } from './Ellipsis.types';
 
 export {
   Ellipsis,
