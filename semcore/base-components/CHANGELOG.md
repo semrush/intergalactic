@@ -10,7 +10,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `useEllipsis` hook.
 - `Hint` component.
 
 ## [16.4.2] - 2025-12-01
