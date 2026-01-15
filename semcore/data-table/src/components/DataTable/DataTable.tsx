@@ -642,7 +642,7 @@ class DataTableRoot<
           return;
         }
 
-        const hasRowSpanUpper = row instanceof HTMLElement && Number(row.dataset.filledColumns) < maxCol;
+        const hasRowSpanUpper = row instanceof HTMLElement && Number(row.dataset.filledColumns) < this.columns.length;
 
         if (colspan > 0) {
           if (direction === 'right' && limit?.fromColumn !== undefined && newCol === limit.fromColumn) {
