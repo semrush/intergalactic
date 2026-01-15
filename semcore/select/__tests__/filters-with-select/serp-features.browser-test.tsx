@@ -10,6 +10,7 @@ const locators = {
   apply: (page: Page) => page.getByRole('button', { name: 'Apply' }),
   options: (page: Page) => page.getByRole('option'),
   checkboxes: (page: Page) => page.locator('[data-ui-name="Select.Option.Checkbox"]'),
+  ellipsisHint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
   clear: (page: Page) => page.getByRole('button', { name: 'Clear' }),
   loadingText: (page: Page) => page.getByText('Loading...'),
   errorText: (page: Page) => page.getByText('Something went wrong.'),
@@ -55,18 +56,20 @@ test.describe(TAG.VISUAL, () => {
     await test.step('Verify cleared search with options', async () => {
       await locators.clearSearch(page).click();
       await locators.options(page).first().waitFor({ state: 'visible' });
+      await locators.clearSearchHint(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify option hover with hint', async () => {
       await locators.textbox(page).fill('Ads');
-      await locators.optionByName(page, 'Shopping Ads (Product Listing').hover();
-      await locators.textByContent(page, 'Shopping Ads (Product Listing').nth(1).waitFor({ state: 'visible' });
+      await locators.optionByName(page, 'Shopping Ads (Product Listing Ads Block)').hover({ force: true });
+      const hint = page.locator('[data-ui-name="Hint"]').filter({ hasText: 'Shopping Ads (Product Listing Ads Block)' });
+      await hint.waitFor({ state: 'visible', timeout: 2000 });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify applied filter state', async () => {
-      await locators.options(page).first().click();
+      await locators.optionByName(page, 'Shopping Ads (Product Listing Ads Block)').click();
       await locators.apply(page).click();
       await locators.apply(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
