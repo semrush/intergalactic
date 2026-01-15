@@ -41,16 +41,18 @@ const Demo = (props: TableInTableInTableProps) => {
       }).map((row) => {
         return {
           ...row,
-          [ACCORDION]: row[ACCORDION]?.sort((aRow, bRow) => {
-            const [prop, sortDirection] = sort;
-            // @ts-ignore
-            const a = aRow[prop];
-            // @ts-ignore
-            const b = bRow[prop];
-            if (a === b) return 0;
-            if (sortDirection === 'asc') return a > b ? 1 : -1;
-            else return a > b ? -1 : 1;
-          }),
+          [ACCORDION]: Array.isArray(row[ACCORDION])
+            ? row[ACCORDION].sort((aRow, bRow) => {
+                const [prop, sortDirection] = sort;
+                // @ts-ignore
+                const a = aRow[prop];
+                // @ts-ignore
+                const b = bRow[prop];
+                if (a === b) return 0;
+                if (sortDirection === 'asc') return a > b ? 1 : -1;
+                else return a > b ? -1 : 1;
+              })
+            : row[ACCORDION],
         };
       }),
     [sort, tableData],
@@ -127,13 +129,13 @@ const TableExample = () => {
       data={data1}
       aria-label='Table title'
       variant='card'
+      use='secondary'
       columns={[
         { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
         { name: 'kd', children: 'KD,%' },
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      expandedRows={new Set<string>()}
       renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
@@ -195,7 +197,6 @@ const TableExample1 = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      expandedRows={new Set<string>()}
       renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
@@ -333,6 +334,7 @@ const data = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
+    [ACCORDION]: (<TableExample />),
   },
   {
     id: '4',
