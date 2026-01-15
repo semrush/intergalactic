@@ -1,4 +1,4 @@
-import { computePosition, flip, offset, shift, arrow, type Placement } from '@floating-ui/dom';
+import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
@@ -6,10 +6,10 @@ import type { DataType } from 'csstype';
 import React from 'react';
 
 import { Middleware } from './Middleware';
+import keyframes from '../animation/style/keyframes.shadow.css';
 import { Box } from '../flex-box';
 import { Portal } from '../portal';
 import styles from './style/hint.shadow.css';
-import keyframes from '../animation/style/keyframes.shadow.css';
 
 type Handlers = {
   visible: null;
@@ -63,6 +63,18 @@ const enhances = [
     map: (v: string) => Number.parseInt(v, 10).toString(),
     prop: 'duration',
   }),
+  cssVariableEnhance({
+    variable: '--intergalactic-spacing-1x',
+    fallback: '4',
+    map: (v: string) => Number.parseInt(v, 10).toString(),
+    prop: 'offset',
+  }),
+  cssVariableEnhance({
+    variable: '--intergalactic-spacing-1x',
+    fallback: '4',
+    map: (v: string) => Number.parseInt(v, 10).toString(),
+    prop: 'padding',
+  }),
 ] as const;
 
 function propToArray(prop: number | [number, number]): [number, number] {
@@ -73,7 +85,6 @@ const keyframesMap = new Map<Placement, string>();
 
 class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, Handlers, DefaultProps, State> {
   public readonly hintRef = React.createRef<HTMLElement>();
-  private readonly arrowRef = React.createRef<HTMLDivElement>();
 
   static style = Object.assign(keyframes, styles);
 
@@ -162,22 +173,23 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
       window.setTimeout(() => {
         const popperElement = this.hintRef.current;
-        const arrowElement = this.arrowRef.current;
-        if (popperElement && arrowElement) {
+        if (popperElement) {
           const middleware = [
-            offset(10),
+            offset(Number(this.asProps.offset)),
             flip(),
-            shift({ padding: 4 }),
-            arrow({ element: arrowElement }),
+            shift({ padding: Number(this.asProps.padding) }),
           ];
           if (mouseEvent !== undefined) {
-            middleware.push(Middleware.cursorAnchoring({ x: mouseEvent.clientX, y: mouseEvent.clientY }), shift({ padding: 4 }));
+            middleware.push(
+              Middleware.cursorAnchoring({ x: mouseEvent.clientX, y: mouseEvent.clientY }),
+              shift({ padding: Number(this.asProps.padding) }),
+            );
           }
 
           computePosition(node, popperElement, {
             placement: placement,
             middleware,
-          }).then(({ x, y, placement, middlewareData }) => {
+          }).then(({ x, y, placement }) => {
             Object.assign(popperElement.style, {
               left: `${x}px`,
               top: `${y}px`,
@@ -185,25 +197,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
             popperElement.style.visibility = 'visible';
 
             this.setState({ innerVisible: true, calculatedPlacement: placement });
-
-            const arrow = middlewareData.arrow;
-
-            if (arrow) {
-              const staticSide = {
-                top: 'bottom',
-                right: 'left',
-                bottom: 'top',
-                left: 'right',
-              }[placement.split('-')[0]]!;
-
-              Object.assign(arrowElement.style, {
-                left: arrow.x !== undefined ? `${arrow.x}px` : '',
-                top: arrow.y !== undefined ? `${arrow.y}px` : '',
-                right: '',
-                bottom: '',
-              });
-              arrowElement.dataset.side = staticSide;
-            }
           });
         }
       }, 10);
@@ -281,7 +274,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
   render() {
     const SHintPopper = Root;
-    const SHintArrow = Box;
     const { visible, Children, triggerRef, parentZIndexStacking, styles, timingFunction } = this.asProps;
     const { innerVisible, calculatedPlacement } = this.state;
 
@@ -314,7 +306,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           use:data-ui-name='Hint'
         >
           <Children />
-          <SHintArrow ref={this.arrowRef} />
         </SHintPopper>
       </Portal>,
     );
