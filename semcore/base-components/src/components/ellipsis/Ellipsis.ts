@@ -273,27 +273,31 @@ export class Ellipsis extends EventEmitter<Events> {
   private getContainerWidth() {
     const containerElement = this.containerElement;
 
+    let width = this.element.clientWidth;
+
     if (containerElement) {
       const computedStyle = window.getComputedStyle(containerElement);
-      const boxSizing = computedStyle?.boxSizing;
-      let containerWidth: number;
-
-      if (boxSizing === 'border-box') {
-        const paddingLeft = computedStyle?.paddingLeft.replace('px', '') ?? '0';
-        const paddingRight = computedStyle?.paddingRight.replace('px', '') ?? '0';
-
-        containerWidth = containerElement.clientWidth - Number(paddingLeft) - Number(paddingRight);
-      } else {
-        containerWidth = containerElement.clientWidth;
-      }
+      const containerWidth = containerElement.clientWidth - this.calculatePaddings(computedStyle);
 
       if (this.settings.recalculateContainerWidth !== undefined) {
-        return this.settings.recalculateContainerWidth(containerWidth);
+        width = this.settings.recalculateContainerWidth(containerWidth);
       } else {
-        return containerWidth;
+        width = containerWidth;
       }
+    } else {
+      const computedStyle = window.getComputedStyle(this.element);
+      width = width - this.calculatePaddings(computedStyle);
     }
 
-    return this.element.clientWidth;
+    return width;
+  }
+
+  private calculatePaddings(computedStyle: CSSStyleDeclaration): number {
+    const paddingLeft = computedStyle?.paddingLeft.replace('px', '') ?? '0';
+    const paddingRight = computedStyle?.paddingRight.replace('px', '') ?? '0';
+
+    const paddings = Number(paddingLeft) + Number(paddingRight);
+
+    return paddings;
   }
 }
