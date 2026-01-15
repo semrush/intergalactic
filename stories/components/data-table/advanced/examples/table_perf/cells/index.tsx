@@ -61,8 +61,8 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
     return {
       cropPosition: 'middle',
       containerElement: headerRef ?? undefined,
-      // `width - 20` because there is custom copy icon on each cell. Therefore, the header width should be reduced based on the width of this icon.
-      recalculateContainerWidth: (width: number) => (width - 20),
+      // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
+      recalculateContainerWidth: (width: number) => (width - 28),
     };
   }, [cropPosition, cellProps.columnName, headerRef]);
 

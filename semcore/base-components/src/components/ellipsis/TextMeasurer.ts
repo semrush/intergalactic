@@ -5,11 +5,22 @@ class TextMeasurer {
   private canvas = document.createElement('canvas');
   private ctx = this.canvas.getContext('2d')!;
 
-  public measure(text: string, font: string): number {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.font = font;
+  private canvasTnum = document.createElement('canvas');
+  private ctxTnum = this.canvasTnum.getContext('2d')!;
 
-    const textData = this.ctx.measureText(text);
+  constructor() {
+    this.canvasTnum.style.setProperty('font-variant-numeric', 'tabular-nums');
+    this.canvasTnum.style.setProperty('display', 'none');
+    document.body.appendChild(this.canvasTnum);
+  }
+
+  public measure(text: string, font: string, isTnum: boolean): number {
+    const ctx = isTnum ? this.ctxTnum : this.ctx;
+
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    ctx.font = font;
+
+    const textData = ctx.measureText(text);
     return Math.ceil(textData.width);
   }
 

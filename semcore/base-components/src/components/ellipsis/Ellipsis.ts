@@ -18,6 +18,7 @@ export class Ellipsis extends EventEmitter<Events> {
 
   private _isEllipsized: boolean = false;
   private calculatedFont = '';
+  private isTnum: boolean = false;
 
   private requiredFrom = -1;
   private requiredTo = -1;
@@ -89,7 +90,7 @@ export class Ellipsis extends EventEmitter<Events> {
       } else {
         testText = options.direction === 'start' ? text.slice(0, keep) : text.slice(-keep);
       }
-      const testWidth = textMeasurer.measure(testText, font);
+      const testWidth = textMeasurer.measure(testText, font, this.isTnum);
 
       if (testWidth < containerWidth) {
         size = keep;
@@ -189,7 +190,7 @@ export class Ellipsis extends EventEmitter<Events> {
 
       document.body.removeChild(measuringElement);
     } else {
-      isOverflowing = textMeasurer.measure(this.textContent, this.getFont()) > this.getContainerWidth();
+      isOverflowing = textMeasurer.measure(this.textContent, this.getFont(), this.isTnum) > this.getContainerWidth();
     }
 
     return isOverflowing;
@@ -197,7 +198,7 @@ export class Ellipsis extends EventEmitter<Events> {
 
   private handleRequiredPath(from: number, to: number) {
     const requiredText = `...${this.textContent.slice(from, to)}${this.textContent.length === to ? '' : '...'}`;
-    const requiredWidth = textMeasurer.measure(requiredText, this.getFont());
+    const requiredWidth = textMeasurer.measure(requiredText, this.getFont(), this.isTnum);
     const startText = this.textContent.slice(0, from);
     const endText = this.textContent.slice(to);
     const containerWidth = this.textContent.length === to
@@ -265,6 +266,7 @@ export class Ellipsis extends EventEmitter<Events> {
     if (!this.calculatedFont) {
       const styleElement = window.getComputedStyle(this.element);
       this.calculatedFont = `${styleElement.fontWeight} ${styleElement.fontSize} ${styleElement.fontFamily}`;
+      this.isTnum = styleElement.getPropertyValue('font-variant-numeric') === 'tabular-nums';
     }
 
     return this.calculatedFont;
