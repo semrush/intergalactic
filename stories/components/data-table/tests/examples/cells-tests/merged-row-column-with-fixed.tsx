@@ -17,9 +17,11 @@ const generateData = (
   columnsCount: number,
   showLastRows: boolean,
   lastRowsPosition: 'top' | 'bottom' | 'both',
+  showRightColumn: boolean,
 ) => {
   const childRows = Array.from({ length: rowsCount }, (_, i) => ({
     keyword: `${77.8 + i * 10}`,
+    ...(showRightColumn && { keywordRight: `Right ${77.8 + i * 10}` }),
   }));
 
   const columnKeys = ['kd', 'cpc', 'vol', 'extra'];
@@ -32,6 +34,7 @@ const generateData = (
       cpc: '$2.50',
       vol: '40,000,000',
       ...(columnsCount >= 4 && { extra: '100' }),
+      ...(showRightColumn && { keywordRight: 'google (right)' }),
     },
     {
       keyword: 'amazon',
@@ -39,6 +42,7 @@ const generateData = (
       cpc: '$3.00',
       vol: '50,000,000',
       ...(columnsCount >= 4 && { extra: '200' }),
+      ...(showRightColumn && { keywordRight: 'amazon (right)' }),
     },
   ];
 
@@ -98,7 +102,7 @@ const generateColumns = (
 
   if (showRightColumn) {
     columns.push({
-      name: 'keyword',
+      name: 'keywordRight',
       children: 'Keyword (right)',
       ...(fixedColumns && { fixed: 'right' }),
       ...(withBorders && { borders: 'left' }),
@@ -121,7 +125,7 @@ const Demo = (props: MergedRowColumnWithFixedProps) => {
     fixedColumns = true,
   } = props;
 
-  const data = generateData(rowsCount, columnsCount, showLastRows, lastRowsPosition);
+  const data = generateData(rowsCount, columnsCount, showLastRows, lastRowsPosition, showRightColumn);
   const columns = generateColumns(columnsCount, withBorders, headerLevels, showRightColumn, fixedColumns);
 
   return (

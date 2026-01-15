@@ -321,9 +321,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify keyboard navigation through child cells', async () => {
       await page.keyboard.press('Tab');
-
       await expect(locators.getCell(page, 2, 1)).toBeFocused();
-
       for (let row = 3; row <= 5; row++) {
         await page.keyboard.press('ArrowDown');
         await expect(locators.getCell(page, row, 1)).toBeFocused();
@@ -343,6 +341,63 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 2, 1)).toBeFocused();
+    });
+  });
+
+  test('Verify keyboard navigation when merged rows AND columns with multi-level header - right and top child column', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-column-with-fixed', 'en', { lastRowsPosition: 'both', showRightColumn: true });
+
+    await page.keyboard.press('Tab');
+
+    await test.step('Verify keyboard navigation from upper chid to bittom child', async () => {
+      await page.keyboard.press('ArrowRight');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+    });
+
+    await test.step('Verify keyboard navigation from right to left child column', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 4, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+
+      await expect(locators.getCell(page, 4, 1)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 4, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
     });
   });
 
