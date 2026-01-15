@@ -57,7 +57,7 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   errorFeedbackEmail: string;
   /** Specifies the locale for i18n support */
   locale?: string;
-  /** Illustration component */
+  /** Illustration element */
   illustrationElement?: React.ReactElement;
   /** Notice smart component like NoticeSmart/NoticeFH  */
   NoticeComponent?: React.ComponentType<NoticeSmartProps>;

@@ -30,7 +30,7 @@ type State = {
 };
 
 class FeedbackRatingRoot extends Component<
-  FeedbackRatingProps,
+  FeedbackRatingProps & { NoticeComponent: typeof FeedbackRatingRoot.defaultProps['NoticeComponent'] },
   {},
   State,
   typeof FeedbackRatingRoot.enhance
@@ -278,7 +278,7 @@ class FeedbackRatingRoot extends Component<
               {illustrationElement}
             </Box>
           )}
-          tittle={notificationTitle}
+          title={notificationTitle}
           onClose={onNotificationClose}
           closable
         >
