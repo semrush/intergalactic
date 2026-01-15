@@ -629,6 +629,9 @@ class DataTableRoot<
       let rowI = rowIndex;
       let colI = colIndex;
 
+      const colspan = Number(currentCell.getAttribute('aria-colspan'));
+      const rowspan = Number(currentCell.getAttribute('aria-rowspan'));
+
       if (direction === 'left' || direction === 'right') {
         // we need to skip Collapse Element with one big component from keyboard left/right pressing
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
@@ -638,41 +641,34 @@ class DataTableRoot<
         if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
           return;
         }
-        // left/right
-        if (
-          currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-          (currentCell.parentElement &&
-            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
-        ) {
+
+        const hasRowSpanUpper = row instanceof HTMLElement && Number(row.dataset.filledColumns) < maxCol;
+
+        if (colspan > 0) {
           if (direction === 'right' && limit?.fromColumn !== undefined && newCol === limit.fromColumn) {
             rowI = rowI - 1;
           } else {
-            colI = direction === 'left' ? colI - 1 : colI + 1;
+            colI = direction === 'left' ? colI - colspan + 1 : colI + colspan - 1;
           }
-        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
-          if (newCol === limit.fromColumn) {
-            rowI = rowI - 1;
-          } else {
-            return;
-          }
-        } else {
+        } else if (hasRowSpanUpper || (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined))) {
           rowI = rowI - 1;
+        } else {
+          colI = direction === 'left' ? colI - 1 : colI + 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
         if (
-          currentCell.dataset.groupedBy === 'rowgroup' ||
+          rowspan > 0 ||
           Number(currentCell.getAttribute('aria-colindex')) === 1
         ) {
-          rowI = direction === 'up' ? rowI - 1 : rowI + 1;
+          rowI = direction === 'up' ? rowI - rowspan + 1 : rowI + rowspan - 1;
         } else {
           const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
           if (areLimitsDefined && newRow > (limit?.fromRow ?? 0) + 1) {
             return;
           }
 
-          const hasRowSpanUpper = row instanceof HTMLElement && currentRow instanceof HTMLElement && row.dataset.filledColumns !== currentRow?.dataset.filledColumns;
+          const hasRowSpanUpper = row instanceof HTMLElement && currentRow instanceof HTMLElement && row.dataset.filledColumns !== currentRow.dataset.filledColumns;
 
           if (direction === 'up' && hasRowSpanUpper) {
             rowI = rowI - 1;
