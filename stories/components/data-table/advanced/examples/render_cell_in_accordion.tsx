@@ -1,5 +1,4 @@
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
-import type { DataTableProps, DataTableSort } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
@@ -33,6 +32,7 @@ const Demo = () => {
       aria-label='Parent'
       h='100%'
       data={data}
+      uniqueRowKey='id'
       accordionDuration={400}
       renderCell={renderCell}
       columns={[
@@ -109,7 +109,7 @@ const data1 = [
 
 const data = [
   {
-    [UNIQ_ROW_KEY]: '1',
+    id: '1',
     keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
@@ -139,7 +139,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '2',
+    id: '2',
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -149,7 +149,7 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '4',
+    id: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
@@ -157,7 +157,7 @@ const data = [
     [ACCORDION]: (<ChartExample1 />),
   },
   {
-    [UNIQ_ROW_KEY]: '5',
+    id: '5',
     keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
@@ -169,7 +169,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '6',
+    id: '6',
     keyword: 'ebay buy3',
     kd: '100',
     cpc: '$0',
@@ -181,7 +181,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '7',
+    id: '7',
     keyword: 'ebay buy4',
     kd: '-',
     cpc: '$0',

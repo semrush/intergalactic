@@ -1,4 +1,4 @@
-import ScrollArea from '@semcore/ui/scroll-area';
+import { ScrollArea } from '@semcore/ui/base-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import type { ScrollAreaExampleProps } from './examples/scroll-props';

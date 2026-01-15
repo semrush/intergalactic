@@ -61,10 +61,10 @@ class DataTableRoot<
   UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableProps<Data, UniqKey, UniqKeyType>,
-    {},
-    {},
   typeof DataTableRoot.enhance,
-  typeof DataTableRoot.defaultProps
+  {},
+  typeof DataTableRoot.defaultProps,
+  State<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -1430,7 +1430,7 @@ class DataTableRoot<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as unknown as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

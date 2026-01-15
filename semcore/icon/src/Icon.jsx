@@ -1,6 +1,5 @@
 import { useBox } from '@semcore/base-components';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
@@ -28,25 +27,21 @@ function Icon(props, ref) {
   const { interactive, color: colorProps } = props;
   const resolveColor = useColorResolver();
   const color = resolveColor(colorProps);
-  const { keyboardFocused, ...propsEnhance } = keyboardFocusEnhance()({
-    disabled: !interactive,
-    ...other,
-  });
+
   const sstyles = sstyled(styles);
   const { className, style } = sstyles.cn('SIcon', {
     'use:color': color,
     'interactive': interactive,
-    'keyboardFocused': keyboardFocused,
   });
 
   function onKeyDown(event) {
-    if (propsEnhance.onKeyDown) {
-      return propsEnhance.onKeyDown(event);
+    if (other.onKeyDown) {
+      return other.onKeyDown(event);
     }
 
-    if (interactive && propsEnhance.onClick && (event.key === 'Enter' || event.key === ' ')) {
+    if (interactive && other.onClick && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
-      propsEnhance.onClick(event);
+      other.onClick(event);
     }
   }
 
@@ -67,9 +62,10 @@ function Icon(props, ref) {
     <SIcon
       role={interactive ? 'button' : undefined}
       aria-hidden={interactive ? undefined : 'true'}
-      {...propsForElement(propsEnhance)}
-      style={Object.assign({}, style, propsEnhance.style)}
-      className={cn(className, propsEnhance.className) || undefined}
+      {...propsForElement(other)}
+      tabIndex={interactive ? 0 : -1}
+      style={Object.assign({}, style, other.style)}
+      className={cn(className, other.className) || undefined}
       onKeyDown={onKeyDown}
       ref={forkedRef}
     />

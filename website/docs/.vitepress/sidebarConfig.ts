@@ -622,11 +622,6 @@ export const sideBarConfig: SidebarConfig = [
             link: '/table-group/table-states/table-states',
             text: 'Table states',
           },
-          {
-            link: '/table-group/table-old/table-old',
-            activeMatch: '/table-group/table-old/',
-            text: 'Table [deprecated]',
-          },
         ],
       },
       {

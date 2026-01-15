@@ -1,12 +1,10 @@
-import type { Intergalactic, UnknownProperties } from '@semcore/core';
+import type { Box, FlexProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import type { Box, FlexProps } from '@semcore/flex-box';
 import type { TIllustrationNamesWidgetEmpty } from '@semcore/illustration';
 
 export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 
-/** @deprecated */
-export interface IWidgetEmptyProps extends WidgetEmptyProps, UnknownProperties {}
 export type WidgetEmptyProps = FlexProps & {
   /**
    * URL before the icon or the whole component
@@ -14,16 +12,12 @@ export type WidgetEmptyProps = FlexProps & {
   icon?: React.ReactNode;
 };
 
-/** @deprecated */
-export interface IWidgetErrorProps extends WidgetErrorProps, UnknownProperties {}
 export type WidgetErrorProps = WidgetEmptyProps &
   WithI18nEnhanceProps & {
     /** Error description. If it is absent, use the local default one */
     description?: React.ReactNode;
   };
 
-/** @deprecated */
-export interface IWidgetNoDataProps extends WidgetNoDataProps, UnknownProperties {}
 export type WidgetNoDataProps = WidgetEmptyProps &
   WithI18nEnhanceProps & {
     /** Error description. If it is absent, use the local default one */

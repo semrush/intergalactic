@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import ChargebackLoss from '@semcore/ui/icon/ChargebackLoss/m';
 import ChargebackWinM from '@semcore/ui/icon/ChargebackWin/m';
 import MoneyCoinsM from '@semcore/ui/icon/MoneyCoins/m';

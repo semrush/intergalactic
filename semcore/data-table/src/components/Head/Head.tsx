@@ -19,9 +19,8 @@ class HeadRoot<
   UniqKeyType extends Data[number][UniqKey],
 > extends Component<
     DataTableHeadProps,
-    {},
-    {},
     [],
+    {},
     HeadPropsInner<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'Head';

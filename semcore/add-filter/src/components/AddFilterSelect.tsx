@@ -10,7 +10,7 @@ type AsPropsWithOnClear<T> = T & {
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
+class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps, [], { visible: null }> {
   static displayName = 'AddFilterSelect';
 
   static defaultProps = () => {
@@ -25,7 +25,7 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
 
   uncontrolledProps() {
     return {
-      visible: [null],
+      visible: null,
     };
   }
 
@@ -64,7 +64,7 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
   }
 }
 
-const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSelectRoot, {
+const AddFilterSelect = createComponent(AddFilterSelectRoot, {
   Trigger: Select.Trigger,
   Menu: Select.Menu,
   Option: [
@@ -76,6 +76,6 @@ const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSel
   List: Select.List,
   Popper: Select.Popper,
   InputSearch: Select.InputSearch,
-});
+}) as typeof AddFilterSelectType;
 
 export default AddFilterSelect;
