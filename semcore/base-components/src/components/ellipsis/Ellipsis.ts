@@ -1,80 +1,18 @@
+import type { Intergalactic } from '@semcore/core';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { CSSProperties } from 'react';
 
+import type { Events, EllipsisSettings, TruncateOptions } from './Ellipsis.types';
 import { ellipsisManager } from './EllipsisManager';
 import { Scheduler } from './Scheduler';
 import { textMeasurer } from './TextMeasurer';
-
-type CommonEllipsisSettings = {
-  /**
-   * Common container element for few ellipsises for improve performance.
-   */
-  containerElement?: HTMLElement;
-
-  /**
-   * Function for crop or increase a container width. For example, for tables with accordion
-   */
-  recalculateContainerWidth?: (width: number) => number;
-
-  /**
-   * Flag to enable observing changes in cropped texts.
-   * @default false
-   */
-  observeChildrenMutations?: boolean;
-};
-
-type MiddleCroppedEllipsisSettings = {
-  /**
-   * Crop position
-   * @default end
-   */
-  cropPosition: 'middle';
-
-  maxLine?: never;
-
-  /**
-   * Count of last symbols which shouldn't be cropped.
-   */
-  lastRequiredSymbols?: number;
-};
-
-type EndCroppedEllipsisSettings = {
-  /**
-   * Crop position
-   * @default end
-   */
-  cropPosition?: 'end';
-  /**
-   * Lines count in multiline Ellipsis.
-   * Applies only for `trim = end`
-   * @default 1
-   */
-  maxLine?: number;
-};
-
-export type EllipsisSettings = Readonly<(EndCroppedEllipsisSettings | MiddleCroppedEllipsisSettings) & CommonEllipsisSettings>;
-
-type PartialRequired<T, K extends keyof T> = Omit<T, K> & {
-  [key in K]-?: T[key];
-};
-
-type Events = {
-  isEllipsized: (isEllipsized: boolean) => void;
-};
-
-type TruncateOptions = {
-  text?: string;
-  containerWidth?: number;
-  font?: string;
-  direction?: 'start' | 'end';
-};
 
 export class Ellipsis extends EventEmitter<Events> {
   public readonly element: HTMLElement;
   public readonly containerElement: HTMLElement | undefined;
   public textContent: string;
 
-  private readonly settings: PartialRequired<EllipsisSettings, 'cropPosition' | 'maxLine'>;
+  private readonly settings: Intergalactic.InternalTypings.PartialRequired<EllipsisSettings, 'cropPosition' | 'maxLine'>;
 
   public readonly scheduler = new Scheduler();
 
