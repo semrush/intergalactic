@@ -14,6 +14,7 @@ type Story = StoryObj<typeof Badge>;
 export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
   render: BadgeBgExample,
   argTypes: {
+    type: { control: 'select', options: ['admin', 'alpha', 'beta', 'new', 'for you', 'soon'] },
     bg: {
       control: { type: 'select' },
       options: ['mist', 'cyan', 'red', 'orange', 'green', 'white', 'violet-400'],

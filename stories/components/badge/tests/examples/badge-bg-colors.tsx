@@ -8,12 +8,27 @@ type ExampleBadgeProps = BadgeProps & BoxProps;
 const Demo = (props: ExampleBadgeProps) => {
   return (
     <Flex gap={2}>
-      <Badge bg={props.bg} color={props.color} w={props.w} h={props.h} pt={props.pt} m={props.m}>Badge Test</Badge>
+      <Badge
+        type={props.type}
+        bg={props.bg}
+        color={props.color}
+        // @ts-ignore
+        w={props.w}
+        // @ts-ignore
+        h={props.h}
+        // @ts-ignore
+        pt={props.pt}
+        // @ts-ignore
+        m={props.m}
+      >
+        Badge Test
+      </Badge>
     </Flex>
   );
 };
 
 export const defaultExampleBadgeProps: ExampleBadgeProps = {
+  type: undefined,
   bg: undefined,
   color: undefined,
   w: undefined,
