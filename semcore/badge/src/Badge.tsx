@@ -1,11 +1,13 @@
 import type { BoxProps } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import logger from '@semcore/core/lib/utils/logger';
 import React from 'react';
 
 import style from './style/badge.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'for you' | 'soon';
 
@@ -48,7 +50,7 @@ export type BadgeProps = {
 class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   static displayName = 'Badge';
   static style = style;
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
 
   componentDidMount() {
     logger.warn(
@@ -66,9 +68,17 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
 
     return sstyled(styles)(
       <SBadge render={Box} tag='span' use:color={resolvedColor} use:bg={resolvedBg}>
-        {type !== undefined ? type : children}
+        {type !== undefined ? this.typedChildren(type) : children}
       </SBadge>,
     );
+  }
+
+  private typedChildren(type: BadgeType): string {
+    const { getI18nText } = this.asProps;
+
+    const badgeName = type === 'for you' ? 'ForYou' : type[0].toUpperCase() + type.slice(1);
+
+    return getI18nText(`Badge.${badgeName}`);
   }
 
   private resolveBg(): string {
