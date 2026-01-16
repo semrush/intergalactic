@@ -10,7 +10,6 @@ const Demo = () => {
         <Badge type='alpha' />
         <Badge type='beta' />
         <Badge type='new' />
-        <Badge type='for you' />
         <Badge type='soon' />
       </Flex>
       <Flex gap={2} mt={2} p='4px 0' style={{ background: '#000' }}>
@@ -18,7 +17,6 @@ const Demo = () => {
         <Badge type='alpha' inverted />
         <Badge type='beta' inverted />
         <Badge type='new' inverted />
-        <Badge type='for you' inverted />
         <Badge type='soon' inverted />
       </Flex>
     </>

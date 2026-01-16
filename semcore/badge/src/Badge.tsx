@@ -9,7 +9,7 @@ import React from 'react';
 import style from './style/badge.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'for you' | 'soon';
+export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon';
 
 export type BadgeProps = {
   /**
@@ -76,7 +76,7 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   private typedChildren(type: BadgeType): string {
     const { getI18nText } = this.asProps;
 
-    const badgeName = type === 'for you' ? 'ForYou' : type[0].toUpperCase() + type.slice(1);
+    const badgeName = type[0].toUpperCase() + type.slice(1);
 
     return getI18nText(`Badge.${badgeName}`);
   }
@@ -101,9 +101,6 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
       }
       case 'new': {
         return resolveColor('--green-400');
-      }
-      case 'for you': {
-        return resolveColor('--violet-400');
       }
       case 'soon': {
         return resolveColor('--gray-400');
