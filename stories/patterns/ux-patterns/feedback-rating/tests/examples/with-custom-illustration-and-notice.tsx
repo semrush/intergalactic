@@ -1,7 +1,7 @@
 import Button from '@semcore/ui/button';
 import { NoticeFH } from '@semcore/ui/feature-highlight';
 import { FeedbackRating } from '@semcore/ui/feedback-form';
-import Illustration from '@semcore/ui/illustration/Confirmation';
+import Illustration from '@semcore/ui/illustration/Congrats';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -73,8 +73,8 @@ const Demo = () => {
         status={status}
         onSubmit={handleSubmit}
         errorFeedbackEmail='some@default.email'
-        illustrationElement={<Illustration w={75} h={75} />}
-        NoticeComponent={NoticeFH}
+        Illustration={Illustration}
+        Notice={NoticeFH}
         formConfig={[
           {
             key: 'option1',

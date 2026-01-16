@@ -7,7 +7,3 @@ SFeedbackRating {
     list-style: none;
   }
 }
-
-SFeedbackRatingNoticeComponent > *[data-ui-name="Notice.Label"] {
-  margin-right: var(--intergalactic-spacing-3x, 12px);
-}

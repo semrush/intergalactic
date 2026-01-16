@@ -1,4 +1,5 @@
 import { Box, Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -8,7 +9,7 @@ import FeedbackIllustration from '@semcore/illustration/Feedback';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Modal from '@semcore/modal';
-import Notice, { NoticeSmart } from '@semcore/notice';
+import { default as SemcoreNotice } from '@semcore/notice';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
@@ -29,8 +30,10 @@ type State = {
   error: boolean;
 };
 
+type Props = Intergalactic.InternalTypings.PartialRequired<FeedbackRatingProps, 'Notice' | 'Illustration'>;
+
 class FeedbackRatingRoot extends Component<
-  FeedbackRatingProps & { NoticeComponent: typeof FeedbackRatingRoot.defaultProps['NoticeComponent'] },
+  Props,
   {},
   State,
   typeof FeedbackRatingRoot.enhance
@@ -44,8 +47,8 @@ class FeedbackRatingRoot extends Component<
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
-    illustrationElement: <FeedbackIllustration />,
-    NoticeComponent: NoticeSmart,
+    Illustration: FeedbackIllustration,
+    Notice: SemcoreNotice,
   };
 
   static validate = {
@@ -111,7 +114,7 @@ class FeedbackRatingRoot extends Component<
       fn(e);
     };
 
-  componentDidUpdate(prevProps: Readonly<FeedbackRatingProps>) {
+  componentDidUpdate(prevProps: Readonly<Props>) {
     const { status, getI18nText } = this.asProps;
 
     if (prevProps.status !== status) {
@@ -254,13 +257,12 @@ class FeedbackRatingRoot extends Component<
       getI18nText,
       errorFeedbackEmail,
       modalWidth,
-      illustrationElement,
-      NoticeComponent,
+      Illustration,
+      Notice: NoticeComponent,
       ...other
     } = this.asProps;
 
     const SFeedbackRating = Root;
-    const SFeedbackRatingNoticeComponent = NoticeComponent;
     const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input' || item.type === 'email',
@@ -269,34 +271,38 @@ class FeedbackRatingRoot extends Component<
 
     return sstyled(styles)(
       <Root render={Box}>
-        <SFeedbackRatingNoticeComponent
+        <NoticeComponent
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
           tag={Flex}
           alignItems={notificationTitle ? 'flex-start' : 'center'}
-          label={illustrationElement}
-          title={notificationTitle}
-          onClose={onNotificationClose}
-          closable
         >
-          <Notice.Text tag={Flex} gap={3} alignItems={notificationTitle ? 'flex-start' : 'center'}>
-            <Text id={notificationId}>
-              {notificationText}
-            </Text>
-            <Notice.Actions mt={0}>
-              <SliderRating
-                value={rating}
-                onChange={this.handleChangeRating}
-                aria-labelledby={notificationId}
-              />
-            </Notice.Actions>
-            {learnMoreLink && (
-              <Link href={learnMoreLink}>
-                {getI18nText('learnMore')}
-              </Link>
-            )}
-          </Notice.Text>
-        </SFeedbackRatingNoticeComponent>
+          <NoticeComponent.Label mr={3} aria-hidden={true}>
+            <Illustration />
+          </NoticeComponent.Label>
+          <NoticeComponent.Content>
+            {notificationTitle ? <NoticeComponent.Title>{notificationTitle}</NoticeComponent.Title> : null}
+            <NoticeComponent.Text gap={3} tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
+              <Text id={notificationId}>
+                {notificationText}
+              </Text>
+              <NoticeComponent.Actions mt={0}>
+                <SliderRating
+                  value={rating}
+                  onChange={this.handleChangeRating}
+                  aria-labelledby={notificationId}
+                />
+              </NoticeComponent.Actions>
+              {learnMoreLink && (
+                <Link href={learnMoreLink}>
+                  {getI18nText('learnMore')}
+                </Link>
+              )}
+            </NoticeComponent.Text>
+          </NoticeComponent.Content>
+          <NoticeComponent.Close onClick={onNotificationClose} />
+        </NoticeComponent>
+
         <SFeedbackRating
           render={Modal}
           visible={visible}
@@ -349,11 +355,11 @@ class FeedbackRatingRoot extends Component<
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 
                     {this.state.error && (
-                      <Notice theme='warning' mt={4} mb={4}>
-                        <Notice.Label>
+                      <SemcoreNotice theme='warning' mt={4} mb={4}>
+                        <SemcoreNotice.Label>
                           <WarnM />
-                        </Notice.Label>
-                        <Notice.Content>
+                        </SemcoreNotice.Label>
+                        <SemcoreNotice.Content>
                           {getI18nText('errorMessage', {
                             // todo: Brauer Ilia - think how to fix type
                             // @ts-ignore
@@ -363,8 +369,8 @@ class FeedbackRatingRoot extends Component<
                               </Link>
                             ),
                           })}
-                        </Notice.Content>
-                      </Notice>
+                        </SemcoreNotice.Content>
+                      </SemcoreNotice>
                     )}
 
                     <Flex mt={4} justifyContent='center'>
