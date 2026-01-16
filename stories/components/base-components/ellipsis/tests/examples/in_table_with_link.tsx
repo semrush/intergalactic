@@ -1,3 +1,4 @@
+import { type EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
@@ -6,6 +7,23 @@ import React from 'react';
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
 const Demo = () => {
+  const urlRef = React.useRef(null);
+  const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (urlRef.current) {
+      setColumnElement(urlRef.current);
+    }
+  }, []);
+
+  const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+    return {
+      cropPosition: 'middle',
+      containerElement: columnElement,
+      recalculateContainerWidth: (width: number) => width - 28,
+    };
+  }, [columnElement]);
+
   return (
     <DataTable
       data={data}
@@ -28,6 +46,7 @@ const Demo = () => {
           name: 'url',
           children: 'URL',
           gtcWidth: 'minmax(auto, 200px)',
+          ref: urlRef,
         },
       ]}
       renderCell={(props) => {
@@ -48,7 +67,7 @@ const Demo = () => {
             >
               <Link.Text
                 wMin={0}
-                ellipsis={{ cropPosition: 'middle' }}
+                ellipsis={ellipsisSettings}
                 hintProps={{ triggerRef }}
               >
                 {removeProtocol(pageUrl)}
