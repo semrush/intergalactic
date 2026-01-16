@@ -61,8 +61,7 @@ const Demo = () => {
                 <>
                   Try again later. If the problem persists,
                   {' '}
-                  <Link href='https://www.semrush.com/company/contacts/'>contact our support team</Link>
-                  .
+                  <Link href='https://www.semrush.com/company/contacts/'>contact our support team</Link>.
                 </>
               )}
             >
