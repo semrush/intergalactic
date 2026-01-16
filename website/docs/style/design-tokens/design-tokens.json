@@ -372,6 +372,7 @@
     "description": "Primary text.",
     "components": [
       "accordion",
+      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",
@@ -397,7 +398,6 @@
       "product-head",
       "radio",
       "side-panel",
-      "status-badge",
       "switch",
       "tab-line",
       "tab-panel",
@@ -488,6 +488,7 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
+      "badge",
       "button",
       "date-picker",
       "dot",
@@ -495,7 +496,6 @@
       "feature-popover",
       "notice-bubble",
       "notice-global",
-      "status-badge",
       "tag",
       "tooltip",
       "wizard"
@@ -2494,7 +2494,6 @@
       "badge",
       "button",
       "counter",
-      "status-badge",
       "tab-line",
       "tab-panel",
       "tag",
@@ -2512,8 +2511,7 @@
       "badge",
       "counter",
       "d3-chart",
-      "dot",
-      "status-badge"
+      "dot"
     ]
   },
   {
@@ -2561,7 +2559,6 @@
       "product-head",
       "radio",
       "slider",
-      "status-badge",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2766,7 +2763,6 @@
       "pagination",
       "product-head",
       "side-panel",
-      "status-badge",
       "tag",
       "textarea",
       "typography",
@@ -3045,8 +3041,7 @@
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
     "components": [
-      "badge",
-      "status-badge"
+      "badge"
     ]
   },
   {

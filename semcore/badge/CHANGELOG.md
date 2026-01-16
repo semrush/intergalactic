@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [17.0.0] - 2026-02-02
-
-### Deprecated
-
-- This component is now deprecated. Use the new `StatusBadge` from the `@semcore/status-badge` package.
-
 ## [16.0.7] - 2025-10-29
 
 ### Changed
