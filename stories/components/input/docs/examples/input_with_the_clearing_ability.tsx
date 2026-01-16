@@ -25,7 +25,7 @@ const Demo = () => {
             <ButtonLink
               use='secondary'
               addonLeft={CloseM}
-              aria-label='Clear'
+              title='Clear'
               onClick={() => setValue('')}
             />
           </Input.Addon>

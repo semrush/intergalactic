@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import HintExample, { defaultProps } from './examples/base-example-props';
+import ControlledModeExample from './examples/controlled_mode';
 
 const meta: Meta = {
   title: 'Components/Base Components/Hint/Tests',
@@ -26,4 +27,8 @@ export const Hint: StoryObj<typeof defaultProps> = {
     },
   },
   args: defaultProps,
+};
+
+export const ControlledMode: StoryObj = {
+  render: ControlledModeExample,
 };

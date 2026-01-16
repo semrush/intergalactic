@@ -1,5 +1,5 @@
 import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
-import { createComponent, Root, sstyled, Component } from '@semcore/core';
+import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
 import type { DataType } from 'csstype';
@@ -221,7 +221,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 
   private handleFocus(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && lastInteraction.isKeyboard()) {
       this.showHint(e.target);
     }
   }

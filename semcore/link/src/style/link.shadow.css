@@ -1,15 +1,10 @@
 SLink {
-  display: inline-block;
-  font-family: inherit;
+  display: inline-flex;
+  align-items: baseline;
   color: var(--intergalactic-text-link, #006dca);
-  line-height: normal;
   position: relative;
   cursor: pointer;
   text-decoration: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
   -webkit-tap-highlight-color: transparent;
   background: none;
   transition: color 0.15s ease-in-out;

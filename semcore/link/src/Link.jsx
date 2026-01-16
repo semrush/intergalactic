@@ -44,7 +44,7 @@ class RootLink extends Component {
   }
 
   getTextProps() {
-    const { inline, active, enableVisited, addonLeft, addonRight, disabled, ...textProps } = this.asProps;
+    const { inline, active, enableVisited, addonLeft, addonRight, disabled, 'data-ui-name': dataUiName, ...textProps } = this.asProps;
 
     return {
       ...textProps,

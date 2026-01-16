@@ -42,7 +42,6 @@ const Demo = () => {
               target='_blank'
               rel='noopener noreferrer'
               color='text-primary'
-              w='100%'
               wMin={0}
               style={{ display: 'inline-flex', alignItems: 'center' }}
               ref={triggerRef}
