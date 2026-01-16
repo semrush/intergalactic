@@ -64,6 +64,7 @@ class EllipsisManager {
 
     if (this.ellipsisEntities.has(element)) {
       this.ellipsisEntities.delete(element);
+      this.handledElements.delete(element);
 
       this.io.unobserve(element);
       this.ro.unobserve(element);
