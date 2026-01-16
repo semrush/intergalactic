@@ -824,12 +824,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
 
-    const MathPlus = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Add new"][role="menuitem"]',
-    );
-    const Trash = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Delete"][role="menuitem"]',
-    );
+    const MathPlus = locators.itemByText(page, 'Add new');
+    const Trash = locators.itemByText(page, 'Delete');
 
     await test.step('Verify 1st item focused when menu expanded by Enter', async () => {
       await page.keyboard.press('Tab');

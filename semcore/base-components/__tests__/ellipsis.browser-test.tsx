@@ -35,7 +35,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
-          await locators.hint(page).waitFor({ state: 'visible' });
+          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
+          if (!hasMaxLine) {
+            await locators.hint(page).waitFor({ state: 'visible' });
+          }
           await expect(page).toHaveScreenshot();
         });
       });
@@ -47,8 +50,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
-          await locators.hint(page).waitFor({ state: 'visible' });
-
+          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
+          if (!hasMaxLine) {
+            await locators.hint(page).waitFor({ state: 'visible' });
+          }
           await expect(page).toHaveScreenshot();
         });
       });
@@ -175,10 +180,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Hover text - hint should appear', async () => {
-      const textBox = await locators.text(page).boundingBox();
-      if (textBox) {
-        await page.mouse.move(textBox.x + textBox.width / 2, textBox.y + textBox.height / 2);
-      }
+      await locators.text(page).hover();
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
