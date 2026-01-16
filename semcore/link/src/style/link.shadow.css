@@ -1,6 +1,6 @@
 SLink {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
   cursor: pointer;
