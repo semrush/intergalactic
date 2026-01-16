@@ -35,6 +35,14 @@ export type BadgeProps = {
    * @default white
    * */
   color?: 'white' | 'gray20' | string;
+
+  m?: BoxProps['m'];
+  ml?: BoxProps['ml'];
+  mt?: BoxProps['mt'];
+  mr?: BoxProps['mr'];
+  mb?: BoxProps['mb'];
+  mx?: BoxProps['mx'];
+  my?: BoxProps['my'];
 };
 
 class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
