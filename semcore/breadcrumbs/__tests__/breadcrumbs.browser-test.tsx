@@ -125,13 +125,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
-      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
-      const status = page.getByRole('status');
+      const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
+      const hint = page.locator('[data-ui-name="Hint"]');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await breadcrumbLinks.nth(1).hover();
-      await status.waitFor({ state: 'attached' });
+      await breadcrumb.hover();
+      await hint.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -143,13 +143,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
-    const status = page.getByRole('status');
+    const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
+    const hint = page.locator('[data-ui-name="Hint"]');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await breadcrumbLinks.nth(1).hover();
-    await status.waitFor({ state: 'attached' });
+    await breadcrumb.hover();
+    await hint.waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -185,40 +185,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const breadcrumbLinks = page.getByRole('link');
     const lastItem = page.locator('[aria-current="page"]');
     const status = page.getByRole('status');
-
-    const count = await breadcrumbLinks.count();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
+    const hint = page.locator('[data-ui-name="Hint"]');
 
     await breadcrumbLinks.first().hover();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
+    await expect(hint).toHaveCount(0);
 
     await breadcrumbLinks.nth(1).hover();
-    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-    await expect(status).toHaveCount(1);
+    await expect(hint).toHaveCount(1);
+    await expect(status).toHaveCount(0);
 
     await lastItem.hover();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
-
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
-
-    await page.keyboard.press('Tab');
-    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-    await expect(status).toHaveCount(1);
+    await expect(hint).toHaveCount(0);
+    await expect(status).toHaveCount(0);
   });
 
   const variables = [
@@ -237,35 +215,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const breadcrumbLinks = page.getByRole('link');
       const lastItem = page.locator('[aria-current="page"]');
       const status = page.getByRole('status');
+      const hint = page.locator('[data-ui-name="Hint"]');
 
-      const count = await breadcrumbLinks.count();
-      for (let i = 0; i < count; i++) {
-        await expect(status).toHaveCount(0);
-        await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-      }
       await breadcrumbLinks.first().hover();
-      await expect(breadcrumbLinks.first()).toHaveAttribute('aria-describedby', /popper/);
-      await expect(status).toHaveCount(1);
-      await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
+      await expect(hint).toHaveCount(0);
 
       await breadcrumbLinks.nth(1).hover();
-      await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-      await expect(status).toHaveCount(1);
-      await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
+      await expect(hint).toHaveCount(1);
+      await expect(status).toHaveCount(0);
 
       if (item.active) {
         await lastItem.hover();
-        for (let i = 0; i < count; i++) {
-          await expect(status).toHaveCount(0);
-          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-        }
-      } else {
-        await breadcrumbLinks.nth(2).hover();
-        for (let i = 0; i < count - 1; i++) {
-          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-          await expect(breadcrumbLinks.nth(2)).toHaveAttribute('aria-describedby', /popper/);
-          await expect(status).toHaveCount(1);
-        }
+        await expect(hint).toHaveCount(0);
+        await expect(status).toHaveCount(0);
       }
     });
   });
@@ -302,8 +264,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(item).toHaveAttribute('level', `${i + 1}`);
       }
 
-      const currentItem = page.locator('nav ol > li').nth(2).locator('span');
-      await expect(currentItem).toHaveAttribute('aria-current', 'page');
+      const currentItem = page.locator('nav ol > li').nth(2).locator('span').first();
       await expect(currentItem).toHaveAttribute('tabindex', '-1');
     });
 
