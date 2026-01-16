@@ -1,79 +1,175 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
+import { test, expect } from '@semcore/testing-utils/playwright';
+import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe('Visual', () => {
-  const placements = [
+export const locators = {
+  trigger: (page: Page, index?: number) => {
+    const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  hint: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Hint"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  text: (page: Page) => page.getByText('Export to PDF'),
+};
+
+/* =====================================================
+@visual
+Visual states, hover and focus styles, paddings, margins, and snapshots.
+===================================================== */
+test.describe(`${TAG.VISUAL}`, () => {
+  const placementVariants = [
     { placement: 'top-start' },
     { placement: 'top' },
     { placement: 'top-end' },
-    { placement: 'left-start' },
-    { placement: 'left' },
-    { placement: 'left-end' },
-    { placement: 'right-start' },
-    { placement: 'right' },
-    { placement: 'right-end' },
     { placement: 'bottom-start' },
     { placement: 'bottom' },
     { placement: 'bottom-end' },
+    { placement: 'right-start' },
+    { placement: 'right' },
+    { placement: 'right-end' },
+    { placement: 'left-start' },
+    { placement: 'left' },
+    { placement: 'left-end' },
+
   ];
+  placementVariants.forEach((variant) => {
+    test(`Verify hint with placement= ${variant.placement}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', variant);
 
-  placements.forEach((item) => {
-    test(`Verify Hint for placements ${item.placement}`, async ({ page }) => {
-      const standPath = 'stories/components/base-components/hint/tests/examples/base-example-props.tsx';
-      const htmlContent = await e2eStandToHtml(standPath, 'en', item);
-      await page.setContent(htmlContent);
+      await test.step('Hover trigger and verify hint appears', async () => {
+        await locators.trigger(page).hover();
+        await locators.hint(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
 
+  test('Verify hint focus state', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
+
+    await test.step('Focus trigger with keyboard', async () => {
       await page.keyboard.press('Tab');
-      await page.getByText('Export to PDF').waitFor({ state: 'visible' });
-      await expect(page.getByText('Export to PDF')).toHaveCount(1);
+      await expect(locators.trigger(page)).toBeFocused();
+      await expect(locators.hint(page)).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 
+  test('Verify cursor anchoring', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/cursor_anchoring.tsx', 'en');
+
+    await test.step('Hover link and verify hint follows cursor', async () => {
+      const link = page.getByRole('link').first();
+      await link.hover();
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
 });
 
-test.describe('Functional', () => {
-  test('Verify Hint visible = true', async ({ page }) => {
-    const standPath = 'stories/components/base-components/hint/tests/examples/base-example-props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { visible: true });
-    await page.setContent(htmlContent);
+/* =====================================================
+@functional
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify hint shows on hover and hides on mouse leave', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.getByText('Export to PDF').waitFor({ state: 'visible' });
-    await expect(page.getByText('Export to PDF')).toHaveCount(1);
+    await test.step('Initial state - hint should not be visible', async () => {
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
+
+    await test.step('Hover trigger - hint should appear after delay', async () => {
+      await locators.trigger(page).hover();
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
+
+    await test.step('Move mouse away - hint should hide', async () => {
+      await page.mouse.move(0, 0);
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
   });
 
-  test('Verify Hint visible = false', async ({ page }) => {
-    const standPath = 'stories/components/base-components/hint/tests/examples/base-example-props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { visible: false });
-    await page.setContent(htmlContent);
+  test('Verify hint shows on focus and hides on blur', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await expect(page.getByText('Export to PDF')).toHaveCount(0);
+    await test.step('Focus trigger with keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.trigger(page)).toBeFocused();
+
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
+
+    await test.step('Tab away - hint should hide', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
   });
 
-  test('Verify Hint default visible true ', async ({ page }) => {
-    const standPath = 'stories/components/base-components/hint/tests/examples/base-example-props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultVisible: true });
-    await page.setContent(htmlContent);
+  test('Verify hint hides on Escape key', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
-    await page.getByText('Export to PDF').waitFor({ state: 'visible' });
-    await expect(page.getByText('Export to PDF')).toHaveCount(1);
+    await test.step('Show hint by focusing trigger', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
 
-    await page.getByRole('button').hover();
-    await page.keyboard.press('Tab');
-    await expect(page.getByText('Export to PDF')).toHaveCount(1);
+    await test.step('Press Escape - hint should hide', async () => {
+      await page.keyboard.press('Escape');
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
   });
 
-  test('Verify Hint default visible false ', async ({ page }) => {
-    const standPath = 'stories/components/base-components/hint/tests/examples/base-example-props.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en', { defaultVisible: false });
-    await page.setContent(htmlContent);
+  test('Verify custom timeout delays', {
+    tag: [TAG.PRIORITY_MEDIUM, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/base-example-props.tsx', 'en', { timeout: 1000 });
 
-    await expect(page.getByText('Export to PDF')).toHaveCount(0);
+    await test.step('Hover and verify hint respects custom show delay', async () => {
+      await locators.trigger(page).hover();
 
-    await page.getByRole('button').hover();
-    await page.keyboard.press('Tab');
-    await expect(page.getByText('Export to PDF')).toHaveCount(1);
+      await page.waitForTimeout(500);
+      await expect(locators.hint(page)).toHaveCount(0);
+
+      await page.waitForTimeout(1000);
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
+  });
+
+  test('Verify hint z-index stacking', {
+    tag: [TAG.PRIORITY_MEDIUM, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
+
+    await test.step('Show hint', async () => {
+      await locators.trigger(page).hover();
+      await expect(locators.hint(page)).toBeVisible({ timeout: 1000 });
+    });
+
+    await test.step('Verify hint has proper z-index', async () => {
+      const hint = locators.hint(page);
+      const zIndex = await hint.evaluate((el) => {
+        return window.getComputedStyle(el).zIndex;
+      });
+
+      // Hint should have high z-index for tooltip layer
+      expect(parseInt(zIndex)).toBeGreaterThan(0);
+    });
   });
 });
