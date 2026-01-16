@@ -279,7 +279,7 @@ class FeedbackRatingRoot extends Component<
           onClose={onNotificationClose}
           closable
         >
-          <Flex gap={3} alignItems={notificationTitle ? 'flex-start' : 'center'}>
+          <Notice.Text tag={Flex} gap={3} alignItems={notificationTitle ? 'flex-start' : 'center'}>
             <Text id={notificationId}>
               {notificationText}
             </Text>
@@ -295,7 +295,7 @@ class FeedbackRatingRoot extends Component<
                 {getI18nText('learnMore')}
               </Link>
             )}
-          </Flex>
+          </Notice.Text>
         </SFeedbackRatingNoticeComponent>
         <SFeedbackRating
           render={Modal}
