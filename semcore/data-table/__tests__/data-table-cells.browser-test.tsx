@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators } from './utils';
+import { locators, checkStyles } from './utils';
 
 /* =====================================================
 @visual
@@ -77,8 +77,33 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
-});
 
+  test('Verify color on hover when merged rows AND columns with multi-level header', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    if (browserName == 'firefox') test.skip();
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
+
+    await test.step('Verify Color when child cell hovered', async () => {
+      await locators.getCell(page, 3, 1).hover();
+
+      await checkStyles(locators.getCell(page, 3, 1), { 'background-color': 'rgb(240, 240, 244)' });
+      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(255, 255, 255)' });
+    });
+
+    await test.step('Verify Color when parent cell hovered', async () => {
+      await locators.getCell(page, 2, 2).hover();
+
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
+
+      for (let row = 2; row <= 6; row++) {
+        await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
+      }
+    });
+  });
+});
 /* =====================================================
   @functional
   Keyboard and mouse interactions - no snapshots here.
@@ -287,6 +312,95 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(page.locator('[data-ui-name="Row.Cell"]')).toBeFocused();
   });
 
+  test('Verify keyboard navigation when merged rows AND columns with multi-level header', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
+
+    await test.step('Verify keyboard navigation through child cells', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.getCell(page, 2, 1)).toBeFocused();
+      for (let row = 3; row <= 5; row++) {
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.getCell(page, row, 1)).toBeFocused();
+      }
+    });
+
+    await test.step('Verify keyboard navigation between merged cell and child cells', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 2, 1)).toBeFocused();
+    });
+  });
+
+  test('Verify keyboard navigation when merged rows AND columns with multi-level header - right and top child column', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-column-with-fixed', 'en', { lastRowsPosition: 'both', showRightColumn: true });
+
+    await page.keyboard.press('Tab');
+
+    await test.step('Verify keyboard navigation from upper chid to bittom child', async () => {
+      await page.keyboard.press('ArrowRight');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+    });
+
+    await test.step('Verify keyboard navigation from right to left child column', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 4, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
+
+      await expect(locators.getCell(page, 4, 1)).toBeFocused();
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 4, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 4, 2)).toBeFocused();
+    });
+  });
+
   test('Verify select rows with Shift', {
     tag: [
       TAG.KEYBOARD,
@@ -317,26 +431,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }
     await expect(locators.getCell(page, 9, 1).locator('input')).toBeChecked();
   });
-});
 
-test('Verify multiple access to cells with spin', {
-  tag: [TAG.PRIORITY_HIGH,
-    TAG.KEYBOARD,
-    '@dropdown',
-    '@spin'],
-}, async ({ page }) => {
-  await loadPage(page, 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx', 'en');
+  test('Verify multiple access to cells with spin', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown',
+      '@spin'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx', 'en');
 
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('ArrowDown');
-  await page.keyboard.press('ArrowDown');
-  await page.keyboard.press('ArrowDown');
-  await page.keyboard.press('ArrowRight');
-  await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowRight');
+    await expect(page.getByRole('gridcell', { name: 'Loading…' }).first()).toBeFocused();
 
-  const svgInSecondCell = page.getByLabel('Loading…').first();
+    const svgInSecondCell = page.getByLabel('Loading…').first();
 
-  await expect(svgInSecondCell).toHaveCount(1);
-  await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
-  await expect(svgInSecondCell).toHaveAttribute('role', 'img');
+    await expect(svgInSecondCell).toHaveCount(1);
+    await expect(svgInSecondCell).toHaveAttribute('aria-label', 'Loading…');
+    await expect(svgInSecondCell).toHaveAttribute('role', 'img');
+  });
 });
