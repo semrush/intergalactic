@@ -4,16 +4,16 @@ SHintPopper {
   top: 0;
   left: 0;
   max-width: 250px;
-  overflow-wrap: break-word;
+  word-break: break-all;
   visibility: hidden;
 
-  background: var(--intergalactic-tooltip-default, #ffffff);
-  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  color: var(--intergalactic-text-primary, #191b23);
-  padding: var(--intergalactic-spacing-3x, 12px);
-  border-radius: var(--intergalactic-popper-rounded, 6px);
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  background: var(--intergalactic-tooltip-invert, #191b23);
+  border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-2x, 8px);
+  border-radius: var(--intergalactic-rounded-small, 4px);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 
   animation-fill-mode: both;
@@ -24,32 +24,6 @@ SHintPopper {
   &[visible] {
     animation-duration: var(--durationInitialize);
     animation-name: var(--keyframesInitialize);
-  }
-}
-
-SHintArrow {
-  position: absolute;
-  background: var(--intergalactic-tooltip-default, #ffffff);
-  width: 8px;
-  height: 8px;
-  border-top: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-
-  &[data-side="top"] {
-    top: -5px;
-    transform: rotate(45deg);
-  }
-  &[data-side="bottom"] {
-    bottom: -5px;
-    transform: rotate(225deg);
-  }
-  &[data-side="left"] {
-    left: -5px;
-    transform: rotate(315deg);
-  }
-  &[data-side="right"] {
-    right: -5px;
-    transform: rotate(135deg);
   }
 }
 
