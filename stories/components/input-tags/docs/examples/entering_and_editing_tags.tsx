@@ -1,10 +1,12 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Flex, type EllipsisSettings } from '@semcore/ui/base-components';
 import type { InputTagsProps, InputTagsValueProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps;
+
+const ellipsisSettings: EllipsisSettings = { cropPosition: 'middle', observeChildrenMutations: true };
 
 const Demo = (props: ExampleInputTagsProps) => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
@@ -65,7 +67,7 @@ const Demo = (props: ExampleInputTagsProps) => {
       return false;
     }
   };
-  console.log(props);
+
   return (
     <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='add-new-social-media'>
@@ -83,7 +85,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={false}
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'middle' }}>{tag}</InputTags.Tag.Text.Content>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis={ellipsisSettings}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             {!props.disabled && <InputTags.Tag.Close onClick={handleCloseTag(idx)} />}
           </InputTags.Tag>
