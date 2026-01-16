@@ -20,7 +20,7 @@ export type BadgeProps = {
   inverted?: boolean;
 
   /**
-   * @deprecated. Use just type with predefined texts. You should use badge with custom text inside.
+   * @deprecated. Use just type with predefined texts. You should not use badge with custom text inside.
    */
   children?: any;
 
