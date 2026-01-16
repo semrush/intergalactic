@@ -24,7 +24,7 @@ const Demo = () => {
         />
         <Input.Addon>
           <ButtonLink
-            aria-label={type === 'password' ? 'Show password' : 'Hide password'}
+            title={type === 'password' ? 'Show password' : 'Hide password'}
             use='secondary'
             addonLeft={type === 'password' ? ShowYesM : ShowNoM}
             onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}

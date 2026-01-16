@@ -16,12 +16,16 @@ export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
 
 type Props = AbstractButtonProps<any, any, any>;
 
-export abstract class AbstractButton extends Component<Props> {
+type State = {
+  ariaLabelledByContent: null | string;
+};
+
+export abstract class AbstractButton extends Component<Props, [], never, {}, State> {
   static displayName = 'AbstractButton';
 
   containerRef = React.createRef<HTMLButtonElement>();
 
-  state = {
+  state: State = {
     ariaLabelledByContent: null,
   };
 
@@ -68,20 +72,6 @@ export abstract class AbstractButton extends Component<Props> {
     }
   }
 
-  renderButton({ buttonProps, children, hintProps }: any) {
-    const { styles, theme } = this.asProps;
-    const SButton = Root;
-
-    return sstyled(styles)(
-      <>
-        <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
-          {children}
-        </SButton>
-        {hintProps !== undefined && (<Hint triggerRef={this.containerRef} {...hintProps} />)}
-      </>,
-    );
-  }
-
   render() {
     const {
       styles,
@@ -91,7 +81,7 @@ export abstract class AbstractButton extends Component<Props> {
       disabled = loading,
       size,
       neighborLocation,
-      children: hasChildren,
+      children,
       title,
       ['aria-label']: ariaLabel,
       Children,
@@ -99,6 +89,7 @@ export abstract class AbstractButton extends Component<Props> {
       addonRight: AddonRight,
       hintPlacement,
     } = this.asProps;
+    const SButton = Root;
     // @ts-ignore
     const Button = this[CORE_INSTANCE];
     const useTheme = use && theme ? `${use}-${theme}` : false;
@@ -106,62 +97,62 @@ export abstract class AbstractButton extends Component<Props> {
     const SSpin = Box;
     const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
-    const buttonProps: Record<string, any> = {
-      'type': 'button',
-      'tag': 'button',
-      disabled,
-      'use:theme': useTheme,
-      'ref': this.containerRef,
-      'text-color': this.getTextColor(),
-      'aria-busy': loading,
-      '__excludeProps': ['title'],
-      'tabIndex': 0,
-    };
-
-    const hintProps = {
-      children: buttonAriaLabel,
-      timeout: [250, 50],
-      placement: hintPlacement,
-      theme: theme === 'invert' ? 'invert' : undefined,
-    };
+    const showHint = (children === undefined || title);
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) => {
-          const children = sstyled(styles)(
+          return sstyled(styles)(
             <>
-              {/* @ts-ignore */}
-              <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
-                {AddonLeft
-                  ? (
-                      <Button.Addon>
-                        <AddonLeft />
-                      </Button.Addon>
-                    )
-                  : null}
-                {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {AddonRight
-                  ? (
-                      <Button.Addon>
-                        <AddonRight />
-                      </Button.Addon>
-                    )
-                  : null}
-              </SInner>
-              {loading && (
-                <SSpin tag='span'>
-                  <SpinButton centered size={size} theme={useTheme} />
-                </SSpin>
+              <SButton
+                render={Box}
+                invertOutline={theme === 'invert'}
+                type='button'
+                tag='button'
+                disabled={disabled}
+                use:theme={useTheme}
+                ref={this.containerRef}
+                text-color={this.getTextColor()}
+                aria-busy={loading}
+                __excludeProps={['title']}
+                aria-label={children === undefined ? buttonAriaLabel : undefined}
+                neighborLocation={neighborLocation}
+              >
+                {/* @ts-ignore */}
+                <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
+                  {AddonLeft
+                    ? (
+                        <Button.Addon>
+                          <AddonLeft />
+                        </Button.Addon>
+                      )
+                    : null}
+                  {addonTextChildren(Children, Button.Text, Button.Addon)}
+                  {AddonRight
+                    ? (
+                        <Button.Addon>
+                          <AddonRight />
+                        </Button.Addon>
+                      )
+                    : null}
+                </SInner>
+                {loading && (
+                  <SSpin tag='span'>
+                    <SpinButton centered size={size} theme={useTheme} />
+                  </SSpin>
+                )}
+              </SButton>
+              {showHint && (
+                <Hint
+                  triggerRef={this.containerRef}
+                  timeout={[250, 50]}
+                  placement={hintPlacement}
+                >
+                  {buttonAriaLabel}
+                </Hint>
               )}
             </>,
           );
-          buttonProps.neighborLocation = neighborLocation;
-
-          return this.renderButton({
-            buttonProps,
-            children,
-            hintProps: (hasChildren === undefined || title) ? hintProps : undefined,
-          });
         }}
       </NeighborLocation.Detect>
     );

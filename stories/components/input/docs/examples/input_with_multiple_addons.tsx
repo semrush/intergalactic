@@ -32,7 +32,7 @@ const Demo = () => {
               <ButtonLink
                 addonLeft={CloseM}
                 use='secondary'
-                aria-label='Clear'
+                title='Clear'
                 onClick={() => setValue('')}
               />
             </Input.Addon>
@@ -42,7 +42,7 @@ const Demo = () => {
           </Input.Addon>
           <Input.Addon>
             <ButtonLink
-              aria-label={type === 'password' ? 'Show password' : 'Hide password'}
+              title={type === 'password' ? 'Show password' : 'Hide password'}
               use='secondary'
               addonLeft={type === 'password' ? ShowYesM : ShowNoM}
               onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
