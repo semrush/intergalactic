@@ -1,3 +1,4 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -8,11 +9,10 @@ import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Modal from '@semcore/modal';
 import Notice, { NoticeSmart } from '@semcore/notice';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
-import { Box, Flex } from '@semcore/ui/base-components';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
