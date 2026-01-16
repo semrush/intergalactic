@@ -275,11 +275,11 @@ export class Ellipsis extends EventEmitter<Events> {
   private getContainerWidth() {
     const containerElement = this.containerElement;
 
-    let width = this.element.clientWidth;
+    let width: number;
 
     if (containerElement) {
       const computedStyle = window.getComputedStyle(containerElement);
-      const containerWidth = containerElement.clientWidth - this.calculatePaddings(computedStyle);
+      const containerWidth = Math.ceil(containerElement.getBoundingClientRect().width) - this.calculatePaddings(computedStyle);
 
       if (this.settings.recalculateContainerWidth !== undefined) {
         width = this.settings.recalculateContainerWidth(containerWidth);
@@ -288,7 +288,7 @@ export class Ellipsis extends EventEmitter<Events> {
       }
     } else {
       const computedStyle = window.getComputedStyle(this.element);
-      width = width - this.calculatePaddings(computedStyle);
+      width = Math.ceil(this.element.getBoundingClientRect().width) - this.calculatePaddings(computedStyle);
     }
 
     return width;
