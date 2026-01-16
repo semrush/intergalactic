@@ -1,7 +1,6 @@
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
 import FeedbackIllustration from '@semcore/illustration/Feedback';
@@ -9,10 +8,11 @@ import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Modal from '@semcore/modal';
 import Notice, { NoticeSmart } from '@semcore/notice';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/ui/base-components';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
@@ -260,6 +260,7 @@ class FeedbackRatingRoot extends Component<
     } = this.asProps;
 
     const SFeedbackRating = Root;
+    const SFeedbackRatingNoticeComponent = NoticeComponent;
     const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input' || item.type === 'email',
@@ -268,22 +269,18 @@ class FeedbackRatingRoot extends Component<
 
     return sstyled(styles)(
       <Root render={Box}>
-        <NoticeComponent
+        <SFeedbackRatingNoticeComponent
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
           tag={Flex}
           alignItems={notificationTitle ? 'flex-start' : 'center'}
-          label={(
-            <Box mr={3} aria-hidden>
-              {illustrationElement}
-            </Box>
-          )}
+          label={illustrationElement}
           title={notificationTitle}
           onClose={onNotificationClose}
           closable
         >
-          <Flex alignItems={notificationTitle ? 'flex-start' : 'center'}>
-            <Text mr={3} id={notificationId}>
+          <Flex gap={3} alignItems={notificationTitle ? 'flex-start' : 'center'}>
+            <Text id={notificationId}>
               {notificationText}
             </Text>
             <Notice.Actions mt={0}>
@@ -294,12 +291,12 @@ class FeedbackRatingRoot extends Component<
               />
             </Notice.Actions>
             {learnMoreLink && (
-              <Link ml={3} href={learnMoreLink}>
+              <Link href={learnMoreLink}>
                 {getI18nText('learnMore')}
               </Link>
             )}
           </Flex>
-        </NoticeComponent>
+        </SFeedbackRatingNoticeComponent>
         <SFeedbackRating
           render={Modal}
           visible={visible}
