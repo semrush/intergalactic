@@ -113,4 +113,4 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   }
 }
 
-export const Badge = createComponent<'div', BadgeProps>(RootBadge);
+export const Badge = createComponent<'span', BadgeProps>(RootBadge);
