@@ -1,8 +1,8 @@
 SLink {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
+  line-height: normal;
   cursor: pointer;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -51,11 +51,6 @@ SLink[inline] {
 }
 
 SAddon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
-  vertical-align: middle;
   pointer-events: none;
 }
 
@@ -70,6 +65,7 @@ SLink SAddon {
 }
 
 SText {
+  vertical-align: bottom;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: transparent;
