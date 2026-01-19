@@ -1,10 +1,9 @@
-import { Box } from '@semcore/base-components';
+import { Box, Hint } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -43,36 +42,6 @@ class RootLink extends Component {
     }
   }
 
-  getTextProps() {
-    const { inline, active, enableVisited, addonLeft, addonRight, disabled, 'data-ui-name': dataUiName, ...textProps } = this.asProps;
-
-    return {
-      ...textProps,
-    };
-  }
-
-  renderLink({ linkProps, children }) {
-    const { styles } = this.asProps;
-    const SLink = Root;
-
-    return sstyled(styles)(
-      <SLink render={Box} {...linkProps}>
-        {children}
-      </SLink>,
-    );
-  }
-
-  renderLinkWithHint({ linkProps, children, hintProps }) {
-    const { styles } = this.asProps;
-    const SLink = Root;
-
-    return sstyled(styles)(
-      <SLink render={Hint} {...linkProps} {...hintProps}>
-        {children}
-      </SLink>,
-    );
-  }
-
   render() {
     const {
       styles,
@@ -81,7 +50,7 @@ class RootLink extends Component {
       resolveColor,
       disabled,
       href,
-      children: hasChildren,
+      children,
       addonLeft: AddonLeft,
       addonRight: AddonRight,
       Children,
@@ -91,55 +60,52 @@ class RootLink extends Component {
     } = this.asProps;
     // @ts-ignore
     const Link = this[CORE_INSTANCE];
-
-    const children = sstyled(styles)(
-      <>
-        {AddonLeft
-          ? (
-              <Link.Addon>
-                <AddonLeft />
-              </Link.Addon>
-            )
-          : null}
-        {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {AddonRight
-          ? (
-              <Link.Addon>
-                <AddonRight />
-              </Link.Addon>
-            )
-          : null}
-      </>,
-    );
-
+    const SLink = Root;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
-    const linkProps = {
-      'role': 'link',
-      'tabIndex': disabled ? -1 : 0,
-      'use:href': disabled ? undefined : href,
-      'visually-disabled': disabled,
-      'render': Text,
-      'text-color': resolveColor(color),
-      'tag': 'a',
-      'noWrapText': noWrap,
-      'use:noWrap': false,
-      'ref': this.containerRef,
-      '__excludeProps': ['disabled', 'aria-disabled'],
-    };
-
-    const hintProps = {
-      title: hintContent,
-      timeout: [250, 50],
-      placement: hintPlacement,
-      __excludeProps: [],
-    };
-
-    if (hasChildren === undefined || title) {
-      return this.renderLinkWithHint({ linkProps, hintProps, children });
-    }
-
-    return this.renderLink({ linkProps, children });
+    return sstyled(styles)(
+      <>
+        <SLink
+          role='link'
+          tabIndex={disabled ? -1 : 0}
+          use:href={disabled ? undefined : href}
+          visually-disabled={disabled}
+          render={Text}
+          text-color={resolveColor(color)}
+          tag='a'
+          noWrapText={noWrap}
+          use:noWrap={false}
+          ref={this.containerRef}
+          __excludeProps={['disabled', 'aria-disabled']}
+          aria-label={children === undefined ? hintContent : undefined}
+        >
+          {AddonLeft
+            ? (
+                <Link.Addon>
+                  <AddonLeft />
+                </Link.Addon>
+              )
+            : null}
+          {addonTextChildren(Children, Link.Text, Link.Addon)}
+          {AddonRight
+            ? (
+                <Link.Addon>
+                  <AddonRight />
+                </Link.Addon>
+              )
+            : null}
+        </SLink>
+        {(children === undefined || title) && (
+          <Hint
+            triggerRef={this.containerRef}
+            timeout={[250, 50]}
+            placement={hintPlacement}
+          >
+            {hintContent}
+          </Hint>
+        )}
+      </>,
+    );
   }
 }
 
