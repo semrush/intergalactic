@@ -51,6 +51,7 @@ SLink[inline] {
 }
 
 SAddon {
+  vertical-align: middle;
   pointer-events: none;
 }
 
@@ -65,7 +66,7 @@ SLink SAddon {
 }
 
 SText {
-  vertical-align: bottom;
+  vertical-align: middle;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: transparent;
