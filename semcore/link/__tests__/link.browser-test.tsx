@@ -130,6 +130,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/link/docs/examples/links_with_ellipsis.tsx', 'en');
 
+    await locators.link(page).waitFor({ state: 'visible' });
     await test.step('Verify ellipsis visual with focus', async () => {
       await page.keyboard.press('Tab');
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
