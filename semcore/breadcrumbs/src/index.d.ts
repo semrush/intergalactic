@@ -16,7 +16,8 @@ export type BreadcrumbsItemProps = BoxProps & {
   /** Specifies the locale for i18n support */
   locale?: string;
   /**
-   * Ellipsis settings
+   * Ellipsis settings. You shouldn't use `cropPosition: middle` for breadcrumbs.
+   * If you sure, you need `cropPosition: middle`, manually set `w` to Breadcrumbs.Item, for correct Ellipsis calculations
    * @default false
    */
   ellipsis?: true | EllipsisSettings;
