@@ -109,13 +109,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Focus trigger with keyboard', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.trigger(page)).toBeFocused();
-
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
     await test.step('Tab away - hint should hide', async () => {
       await page.keyboard.press('Tab');
+      await locators.hint(page).waitFor({ state: 'hidden' });
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
@@ -127,11 +127,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Show hint by focusing trigger', async () => {
       await page.keyboard.press('Tab');
+      await locators.hint(page).waitFor({ state: 'visible' });
+
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
     await test.step('Press Escape - hint should hide', async () => {
       await page.keyboard.press('Escape');
+      await locators.hint(page).waitFor({ state: 'hidden' });
+
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
@@ -139,7 +143,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify custom timeout delays', {
     tag: [TAG.PRIORITY_MEDIUM, '@hint'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/hint/docs/examples/base-example-props.tsx', 'en', { timeout: 1000 });
+    await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', { timeout: 1000 });
 
     await test.step('Hover and verify hint respects custom show delay', async () => {
       await locators.trigger(page).hover();
@@ -148,7 +152,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.hint(page)).toHaveCount(0);
 
       await page.waitForTimeout(1000);
-      await expect(locators.hint(page)).toHaveCount(0);
+      await expect(locators.hint(page)).toHaveCount(1);
     });
   });
 

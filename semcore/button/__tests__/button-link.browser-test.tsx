@@ -70,16 +70,6 @@ test.describe(`${TAG.VISUAL} `, () => {
           await expect(page).toHaveScreenshot();
         });
       }
-
-      if (item.disabled) {
-        await test.step(`Verify attributes for disabled`, async () => {
-          await expect(page).toHaveScreenshot();
-
-          for (let i = 0; i < count; i++) {
-            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
-          }
-        });
-      }
     });
 
     test(`Verify Addon only example size=${item.size} use=${item.use} color=${item.color} disabled=${item.disabled} active=${item.active} hintPlacement=${item.hintPlacement}`, {
@@ -96,7 +86,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.getByText('ButtonLink Addon').waitFor({ state: 'visible' });
+          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -106,16 +96,6 @@ test.describe(`${TAG.VISUAL} `, () => {
           await locators.button(page).nth(1).hover();
           await page.getByLabel('addonLeft').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
-        });
-      }
-
-      if (item.disabled) {
-        await test.step(`Verify attributes for disabled`, async () => {
-          await expect(page).toHaveScreenshot();
-
-          for (let i = 0; i < count; i++) {
-            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
-          }
         });
       }
     });

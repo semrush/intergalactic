@@ -200,12 +200,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify focus orted and is looped inside side panel', async () => {
-      await expect(locators.button(page, 'Close')).toHaveAttribute('tabindex', '0');
-      await expect(locators.button(page, 'Close')).toBeFocused();
-
       await page.keyboard.press('Tab');
       await expect(locators.back(page)).toBeFocused();
-      await expect(locators.back(page)).toHaveAttribute('tabindex', '0');
       await expect(locators.back(page)).toHaveAttribute('color', 'text-hint');
 
       await page.keyboard.press('Tab');

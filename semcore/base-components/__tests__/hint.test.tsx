@@ -1,35 +1,93 @@
-import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 import { Hint } from '../src';
 
 describe('Hint', () => {
-  test('Verify content is rendered into body', async () => {
+  test('Should support controlled visible mode', async () => {
     const TestComponent = () => {
+      const [visible, setVisible] = React.useState(false);
       const ref = useRef<HTMLButtonElement>(null);
 
       return (
-        <div data-testid='parent'>
-          <button ref={ref} data-testid='trigger'>
-            Hover me
+        <>
+          <button data-testid='toggle' onClick={() => setVisible(!visible)}>
+            Toggle
           </button>
-          <Hint triggerRef={ref} placement='right' data-testid='hint-content'>
-            <div>Hint text</div>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} visible={visible} data-testid='hint'>
+            Hint text
           </Hint>
-        </div>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+
+    expect(document.body.querySelector('[data-testid="hint"]')).toBeNull();
+
+    fireEvent.click(getByTestId('toggle'));
+    await waitFor(() => {
+      expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
+    });
+
+    fireEvent.click(getByTestId('toggle'));
+    await waitFor(() => {
+      expect(document.body.querySelector('[data-testid="hint"]')).toBeNull();
+    });
+  });
+
+  test('Should call onVisibleChange callback', async () => {
+    vi.useFakeTimers();
+    const handleChange = vi.fn();
+
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={handleChange} timeout={[50, 50]}>
+            Hint text
+          </Hint>
+        </>
       );
     };
 
     const { getByTestId } = render(<TestComponent />);
 
     fireEvent.mouseEnter(getByTestId('trigger'));
+
+    vi.advanceTimersByTime(60);
     await waitFor(() => {
-      const hint = document.body.querySelector('[data-testid="hint-content"]');
-      expect(hint).not.toBeNull();
-      expect(hint?.textContent).toBe('Hint text');
+      expect(handleChange).toHaveBeenCalledWith(true);
     });
 
-    expect(getByTestId('parent').querySelector('[data-testid="hint-content"]')).toBeNull();
+    fireEvent.mouseLeave(getByTestId('trigger'));
+
+    vi.advanceTimersByTime(60);
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledWith(false);
+    });
+
+    vi.useRealTimers();
+  });
+
+  test('Should use defaultVisible for initial state', () => {
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} defaultVisible={true}>
+            <div data-testid='hint'>Hint text</div>
+          </Hint>
+        </>
+      );
+    };
+
+    render(<TestComponent />);
+
+    expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
   });
 });
