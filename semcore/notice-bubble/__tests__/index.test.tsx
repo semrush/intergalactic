@@ -6,6 +6,7 @@ import {
 import {
   render,
   cleanup,
+  waitFor,
 } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -13,6 +14,7 @@ import React from 'react';
 import {
   NoticeBubbleContainer,
 } from '../src';
+import { NoticeBubbleManager } from '../src/NoticeBubbleManager';
 
 const TestNoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) => (
   <>
@@ -52,5 +54,62 @@ describe('NoticeBubbleContainer', () => {
     expect(
       Array.from(document.body.querySelectorAll('[data-testid="notice"]')).length,
     ).toBeGreaterThan(0);
+  });
+
+  test('Verify notices render in custom container element when containerNode is provided', async () => {
+    const customContainer = document.createElement('div');
+    customContainer.setAttribute('id', 'custom-notice-container');
+    document.body.appendChild(customContainer);
+
+    const manager = new NoticeBubbleManager();
+
+    render(<NoticeBubbleContainer containerNode={customContainer} manager={manager} />);
+
+    const notice = manager.add({
+      type: 'info',
+      children: 'Test notice in custom container',
+      initialAnimation: false,
+    });
+
+    await waitFor(() => {
+      const noticeInCustomContainer = customContainer.querySelector('[aria-live="polite"]');
+      expect(noticeInCustomContainer).toBeTruthy();
+      expect(noticeInCustomContainer?.textContent).toContain('Test notice in custom container');
+    });
+
+    notice.remove();
+    document.body.removeChild(customContainer);
+  });
+
+  test('Verify notices render in custom container via ref when containerNode is RefObject', async () => {
+    const TestComponent = () => {
+      const [containerNode, setContainerNode] = React.useState<HTMLElement | null>(null);
+      const [manager] = React.useState(() => new NoticeBubbleManager());
+
+      React.useEffect(() => {
+        manager.add({
+          type: 'info',
+          children: 'Notice via ref',
+          initialAnimation: false,
+        });
+      }, [manager]);
+
+      return (
+        <>
+          <div ref={setContainerNode} data-testid='ref-container' />
+          <NoticeBubbleContainer containerNode={containerNode} manager={manager} />
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+
+    const refContainer = getByTestId('ref-container');
+
+    await waitFor(() => {
+      const noticeInRefContainer = refContainer.querySelector('[aria-live="polite"]');
+      expect(noticeInRefContainer).toBeTruthy();
+      expect(noticeInRefContainer?.textContent).toContain('Notice via ref');
+    });
   });
 });
