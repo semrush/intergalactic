@@ -97,7 +97,7 @@ describe('NoticeBubbleContainer', () => {
       return (
         <>
           <div ref={containerRef} data-testid='ref-container' />
-          <NoticeBubbleContainer containerNode={containerRef} manager={manager} />
+          <NoticeBubbleContainer containerNode={containerRef.current} manager={manager} />
         </>
       );
     };

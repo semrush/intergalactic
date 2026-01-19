@@ -46,7 +46,7 @@ const Demo = (props: ContainerNodeDemoProps) => {
       return customElementContainer;
     }
     if (props.containerMode === 'custom-ref') {
-      return customRefContainerRef;
+      return customRefContainerRef.current;
     }
     return null;
   };
