@@ -7,9 +7,6 @@ SBreadcrumbs {
   SListContainer {
     display: contents;
     list-style: none;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
 
     SSeparator {
       margin: 0 var(--intergalactic-spacing-2x, 8px);

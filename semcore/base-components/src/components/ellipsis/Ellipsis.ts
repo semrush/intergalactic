@@ -295,10 +295,9 @@ export class Ellipsis extends EventEmitter<Events> {
   }
 
   private calculatePaddings(computedStyle: CSSStyleDeclaration): number {
-    const paddingLeft = computedStyle?.paddingLeft.replace('px', '') ?? '0';
-    const paddingRight = computedStyle?.paddingRight.replace('px', '') ?? '0';
-
-    const paddings = Number(paddingLeft) + Number(paddingRight);
+    const paddingLeft = Number(computedStyle?.paddingLeft.replace('px', '') ?? '0');
+    const paddingRight = Number(computedStyle?.paddingRight.replace('px', '') ?? '0');
+    const paddings = paddingLeft + paddingRight;
 
     return paddings;
   }
