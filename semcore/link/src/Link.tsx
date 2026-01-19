@@ -1,25 +1,33 @@
+import type { BoxProps } from '@semcore/base-components';
 import { Box, Hint } from '@semcore/base-components';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import type { TextProps } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { LinkProps } from './Link.types';
 import style from './style/link.shadow.css';
 
-class RootLink extends Component {
+type State = {
+  ariaLabelledByContent: string;
+};
+
+class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { noWrap: boolean }, State> {
   static displayName = 'Link';
   static defaultProps = {
     noWrap: true,
   };
 
   static style = style;
-  static enhance = [resolveColorEnhance()];
-  containerRef = React.createRef();
+  static enhance = [resolveColorEnhance()] as const;
+  containerRef = React.createRef<HTMLElement | null>();
 
-  state = {
+  state: State = {
     ariaLabelledByContent: '',
   };
 
@@ -109,13 +117,13 @@ class RootLink extends Component {
   }
 }
 
-function LinkText(props) {
+function LinkText(props: IRootComponentProps) {
   const SText = Root;
   const { styles } = props;
   return sstyled(styles)(<SText render={Text} tag='span' />);
 }
 
-function Addon(props) {
+function Addon(props: IRootComponentProps) {
   const SAddon = Root;
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
@@ -124,6 +132,9 @@ function Addon(props) {
 const Link = createComponent(RootLink, {
   Text: LinkText,
   Addon,
-});
+}) as Intergalactic.Component<'a', LinkProps, {}, typeof RootLink.enhance> & {
+  Text: Intergalactic.Component<'span', TextProps>;
+  Addon: Intergalactic.Component<'span', BoxProps>;
+};
 
 export default Link;

@@ -1,9 +1,8 @@
-import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
-export type LinkProps = TextProps & {
+export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, 'ellipsis' | 'hintProps'> & {
   /**
    * CSS property of the display link (inline|inline-block)
    * @default false
@@ -29,10 +28,3 @@ export type LinkProps = TextProps & {
   /** Right addon tag */
   addonRight?: React.ElementType;
 };
-
-declare const Link: Intergalactic.Component<'a', LinkProps> & {
-  Text: Intergalactic.Component<'span', TextProps>;
-  Addon: Intergalactic.Component<'span', BoxProps>;
-};
-
-export default Link;
