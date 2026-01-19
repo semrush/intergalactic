@@ -14,7 +14,7 @@ type ContainerNodeDemoProps = {
 
 const Demo = (props: ContainerNodeDemoProps) => {
   const [customElementContainer, setCustomElementContainer] = React.useState<HTMLDivElement | null>(null);
-  const customRefContainerRef = React.useRef<HTMLDivElement>(null);
+  const [customRefContainer, setCustomRefContainer] = React.useState<HTMLDivElement | null>(null);
   const [manager] = React.useState(() => new NoticeBubbleManager());
 
   React.useEffect(() => {
@@ -46,7 +46,7 @@ const Demo = (props: ContainerNodeDemoProps) => {
       return customElementContainer;
     }
     if (props.containerMode === 'custom-ref') {
-      return customRefContainerRef;
+      return customRefContainer;
     }
     return null;
   };
@@ -83,7 +83,7 @@ const Demo = (props: ContainerNodeDemoProps) => {
 
       {props.containerMode === 'custom-ref' && (
         <Box
-          ref={customRefContainerRef}
+          ref={setCustomRefContainer}
           style={{
             border: '2px dashed var(--intergalactic-border-warning)',
             padding: 'var(--intergalactic-spacing-3x)',
