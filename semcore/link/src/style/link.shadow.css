@@ -1,7 +1,5 @@
 SLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
   line-height: normal;

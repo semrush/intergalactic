@@ -1,5 +1,5 @@
 import type { BoxProps } from '@semcore/base-components';
-import { Box, Hint } from '@semcore/base-components';
+import { Flex, Box, Hint } from '@semcore/base-components';
 import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -69,6 +69,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
     // @ts-ignore
     const Link = this[CORE_INSTANCE];
     const SLink = Root;
+    const SInner = Flex;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     return sstyled(styles)(
@@ -87,21 +88,23 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
           __excludeProps={['disabled', 'aria-disabled']}
           aria-label={children === undefined ? hintContent : undefined}
         >
-          {AddonLeft
-            ? (
-                <Link.Addon>
-                  <AddonLeft />
-                </Link.Addon>
-              )
-            : null}
-          {addonTextChildren(Children, Link.Text, Link.Addon)}
-          {AddonRight
-            ? (
-                <Link.Addon>
-                  <AddonRight />
-                </Link.Addon>
-              )
-            : null}
+          <SInner inline={true} alignItems='center'>
+            {AddonLeft
+              ? (
+                  <Link.Addon>
+                    <AddonLeft />
+                  </Link.Addon>
+                )
+              : null}
+            {addonTextChildren(Children, Link.Text, Link.Addon)}
+            {AddonRight
+              ? (
+                  <Link.Addon>
+                    <AddonRight />
+                  </Link.Addon>
+                )
+              : null}
+          </SInner>
         </SLink>
         {(children === undefined || title) && (
           <Hint
