@@ -22,7 +22,7 @@ const Demo = () => (
       </Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text tag='div' size={200} ellipsis={true}>
+      <Text tag='div' w='100%' size={200} ellipsis={true}>
         Long body text which should show ellipsis when there isn't enough space.
       </Text>
     </Card.Body>
