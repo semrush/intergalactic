@@ -1,3 +1,19 @@
+## [16.13.2] - 2026-01-19
+
+### @semcore/notice-bubble
+
+- **Fixed** `containerNode` property type. Added the ability to specify the null
+type.
+
+### @semcore/data-table
+
+- **Fixed** Merging rows and colums at the same time.
+- **Fixed** `accordionMode="toggle"` no longer works for nested tables
+
+### @semcore/icon
+
+- **Fixed** `Copy` icon
+
 ## [16.13.1] - 2025-12-18
 
 ### @semcore/notice-global
