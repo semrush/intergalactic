@@ -7,10 +7,12 @@ type Linkrops = {
 };
 
 const Demo = (props: Linkrops) => {
+  const linkRef = React.useRef();
   return (
-    <Link href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'>
+    <Link href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis' ref={linkRef}>
       <Link.Text
         ellipsis={props.ellipsis}
+        hintProps={{ triggerRef: linkRef }}
         w={120}
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
