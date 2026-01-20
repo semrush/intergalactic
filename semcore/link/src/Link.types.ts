@@ -6,6 +6,7 @@ export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, '
   /**
    * CSS property of the display link (inline|inline-block)
    * @default false
+   * @deprecated. You should use default inline-flex for all cases.
    */
   inline?: boolean;
   /**
