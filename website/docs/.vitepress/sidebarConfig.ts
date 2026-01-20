@@ -343,7 +343,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/notice-global/notice-global',
             activeMatch: '/components/notice-global/',
-            text: 'NoticeGlobal [deprecated]',
+            text: 'NoticeGlobal [deleted]',
           },
           {
             link: '/components/pagination/pagination',
