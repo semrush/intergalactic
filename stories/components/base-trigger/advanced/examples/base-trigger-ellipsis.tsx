@@ -8,7 +8,7 @@ const Demo = () => {
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[BaseTrigger, 'h1']}>
           <BaseTrigger.Text w={150} tag='h2' size={400}>
-            Few Tags Tags Tags
+            No ellipsis Few Tags Tags Tags
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
