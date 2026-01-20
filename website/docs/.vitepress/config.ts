@@ -105,7 +105,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/semrush/intergalactic/edit/master/website/docs/:path',
+      pattern: 'https://github.com/semrush/intergalactic/edit/release/v16/website/docs/:path',
       text: 'Edit this page on GitHub',
     },
     // https://vitepress.dev/reference/default-theme-config

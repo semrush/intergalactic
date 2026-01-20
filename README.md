@@ -44,7 +44,7 @@ After the installation, all components will be available at `@semcore/{{componen
 
 ### How to contribute to the project
 
-[Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
+[Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/HEAD/CONTRIBUTING.md)
 
 #### Contributors
 
