@@ -166,6 +166,15 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
 
 SColumn[sortable]:hover {
   cursor: pointer;
+
+  &[use='secondary'] {
+    cursor: auto;
+
+    SSortButton {
+      cursor: default;
+      filter: none;
+    }
+  }
 }
 
 SSortWrapper {

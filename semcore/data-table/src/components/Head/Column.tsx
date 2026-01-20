@@ -283,7 +283,7 @@ export class Column<
     const SColumn = Root;
     const SSortWrapper = 'div';
     const SSortButton = ButtonLink;
-    const { styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
+    const { use, styles, sortable, sort, uid, name, parent, sortableColumnDescribeId, Children } =
       this.asProps;
 
     const [sortBy, sortDirection] = sort ?? [undefined, undefined];
@@ -329,6 +329,7 @@ export class Column<
               onClick={this.handleSortClick}
               aria-label={ariaSortValue}
               color='--intergalactic-icon-primary-neutral'
+              tabIndex={use === 'primary' ? 0 : -1}
             >
               <SSortButton.Addon tag={SSortIcon} />
             </SSortButton>
