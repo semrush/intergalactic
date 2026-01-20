@@ -8,7 +8,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button ref={ref}>
+      <Button ref={ref} title='Hint with custom timeout'>
         <Button.Addon tag={FileExportM} />
       </Button>
       <Hint triggerRef={ref} timeout={[100, 50]}>

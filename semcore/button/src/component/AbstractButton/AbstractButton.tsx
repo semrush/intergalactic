@@ -115,7 +115,7 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
                 text-color={this.getTextColor()}
                 aria-busy={loading}
                 __excludeProps={['title']}
-                aria-label={children === undefined ? buttonAriaLabel : undefined}
+                aria-label={showHint ? buttonAriaLabel : undefined}
                 neighborLocation={neighborLocation}
               >
                 {/* @ts-ignore */}

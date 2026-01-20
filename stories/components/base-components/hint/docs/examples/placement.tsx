@@ -8,7 +8,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button ref={ref}>
+      <Button ref={ref} title='Bottom hint'>
         <Button.Addon tag={FileExportM} />
       </Button>
       <Hint triggerRef={ref} placement='bottom-start'>
