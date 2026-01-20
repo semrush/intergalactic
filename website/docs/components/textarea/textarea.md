@@ -33,7 +33,7 @@ Avoid making the textarea smaller than 160-200px in width and 3-4 rows in height
 
 ## Counter
 
-Textarea may include a counter displaying the number of characters entered, character limits, etc.
+Textarea may include a counter displaying the number of characters entered, character limits, etc. Refer to [Counter](../counter/counter#appearance) to learn more about limiting input in Textarea.
 
 The counter can be positioned next to the text label or close to the textarea itself.
 

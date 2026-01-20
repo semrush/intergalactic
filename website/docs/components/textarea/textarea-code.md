@@ -17,3 +17,7 @@ To control the automatic stretching, you can set limits on the number of lines u
 </script>
 
 :::
+
+## Input limit
+
+The [Counter in forms](../counter/counter-code#counter-in-forms) example demonstrates handling input limits in Textarea.
