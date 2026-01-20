@@ -45,6 +45,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/advanced/examples/long-long-title.tsx', 'en');
 
+    await page.locator('[data-ui-name="Text"]').first().hover();
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 

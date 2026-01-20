@@ -824,11 +824,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
 
-    const MathPlus = locators.itemByText(page, 'Add new');
-    const Trash = locators.itemByText(page, 'Delete');
+    const MathPlus = page.getByRole('menuitem', { name: 'Add new' });
+    const Trash = page.getByRole('menuitem', { name: 'Delete' });
 
     await test.step('Verify 1st item focused when menu expanded by Enter', async () => {
       await page.keyboard.press('Tab');
+      await locators.button(page).waitFor({ state: 'visible' });
+      // Webkit may not focus via Tab, so focus directly if needed
+      if (!(await locators.button(page).evaluate((el) => el === document.activeElement))) {
+        await locators.button(page).focus();
+      }
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });

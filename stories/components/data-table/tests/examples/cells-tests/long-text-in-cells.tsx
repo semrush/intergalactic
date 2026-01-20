@@ -38,7 +38,7 @@ const Demo = () => {
 
           if (props.columnName === 'cpc') {
             return (
-              <Flex>
+              <Flex alignItems='flex-start'>
 
                 <Text noWrap={false}>
                   No Wrap False
@@ -59,8 +59,8 @@ const Demo = () => {
           }
           if (props.columnName === 'vol') {
             return (
-              <>
-                <Text ellipsis={true}>
+              <Flex alignItems='flex-start'>
+                <Text ellipsis={true} flex='1' w={100}>
                   {' '}
                   {props.value}
                 </Text>
@@ -73,7 +73,7 @@ const Demo = () => {
                   color='gray-300'
                   ml={1}
                 />
-              </>
+              </Flex>
             );
           }
           return props.defaultRender();

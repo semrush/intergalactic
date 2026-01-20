@@ -107,6 +107,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
+    await page.getByRole('button').waitFor({ state: 'visible' });
     await test.step('Focus trigger with keyboard', async () => {
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'visible' });

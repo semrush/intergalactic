@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AdvancedFeaturesDemoExample from './examples/advanced_features_demo';
+import CopyFullTextExample from './examples/copy_full_text';
 import TableLinkExample from './examples/in_table_with_link';
 import LinkExample, { defaultProps as LinkExampleProps } from './examples/link_with_ellipsis';
+import ObserveChildrenMutationsExample from './examples/observe_children_mutations';
 import TextExample from './examples/text_cases';
 import TrimWithTextSizeExample, { defaultProps as TextSizeExampleProps } from './examples/trim_with_special_text_size';
 
@@ -20,7 +23,7 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
   argTypes: {
     ellipsis: {
       control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6'],
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
       mapping: {
         'false': false,
         'true': true,
@@ -28,7 +31,37 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
         'cropPosition:end': { cropPosition: 'end' },
         'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
         'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
+        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
+        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
       },
+    },
+    w: {
+      control: { type: 'number' },
+      description: 'Width of the link text',
+    },
+    color: {
+      control: { type: 'select' },
+      options: [
+        undefined,
+        'text-primary',
+        'text-secondary',
+        'text-success',
+        'text-critical',
+      ],
+      description: 'Text color',
+    },
+    size: {
+      control: { type: 'select' },
+      options: [undefined, 100, 200, 300, 400, 500],
+      description: 'Text size',
+    },
+    active: {
+      control: { type: 'boolean' },
+      description: 'Active state of the link',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Disabled state of the link',
     },
   },
   args: LinkExampleProps,
@@ -39,7 +72,7 @@ export const TrimWithTextSize: StoryObj<typeof TextSizeExampleProps> = {
   argTypes: {
     ellipsis: {
       control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6'],
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
       mapping: {
         'false': false,
         'true': true,
@@ -47,6 +80,9 @@ export const TrimWithTextSize: StoryObj<typeof TextSizeExampleProps> = {
         'cropPosition:end': { cropPosition: 'end' },
         'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
         'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
+        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
+        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
+
       },
     },
 
@@ -63,4 +99,16 @@ export const TrimWithTextSize: StoryObj<typeof TextSizeExampleProps> = {
 
 export const Text = {
   render: TextExample,
+};
+
+export const CopyFullText: StoryObj = {
+  render: CopyFullTextExample,
+};
+
+export const AdvancedFeaturesDemo: StoryObj = {
+  render: AdvancedFeaturesDemoExample,
+};
+
+export const ObserveChildrenMutations: StoryObj = {
+  render: ObserveChildrenMutationsExample,
 };
