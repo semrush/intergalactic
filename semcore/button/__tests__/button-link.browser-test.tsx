@@ -70,6 +70,12 @@ test.describe(`${TAG.VISUAL} `, () => {
           await expect(page).toHaveScreenshot();
         });
       }
+
+      if (item.disabled) {
+        await test.step(`Verify disabled styles`, async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      }
     });
 
     test(`Verify Addon only example size=${item.size} use=${item.use} color=${item.color} disabled=${item.disabled} active=${item.active} hintPlacement=${item.hintPlacement}`, {
@@ -95,6 +101,12 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByLabel('addonLeft').waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot();
+        });
+      }
+
+      if (item.disabled) {
+        await test.step(`Verify disabled styles`, async () => {
           await expect(page).toHaveScreenshot();
         });
       }

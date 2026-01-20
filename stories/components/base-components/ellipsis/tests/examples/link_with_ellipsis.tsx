@@ -7,7 +7,7 @@ type Linkrops = {
 };
 
 const Demo = (props: Linkrops) => {
-  const linkRef = React.useRef();
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
   return (
     <Link href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis' ref={linkRef}>
       <Link.Text

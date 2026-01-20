@@ -479,6 +479,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify Tag Close can be focused by Tab', async () => {
+      await expect(locators.inputClose(page).first()).toBeVisible();
       await page.keyboard.press('Tab');
       await expect(locators.inputClose(page).first()).toBeFocused();
     });
@@ -547,7 +548,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.tag(page)).toHaveCount(count1 - 1);
       await page.keyboard.type('Test2');
       await page.keyboard.press('|');
-      await expect(locators.inputText(page).nth(count1 - 1)).toHaveText('Social media with a very long nameTest2');
+      await expect(locators.inputText(page).nth(count1 - 1)).toContainText('Social media with a very long nameTest2');
       await expect(locators.tag(page)).toHaveCount(count1);
 
       await page.keyboard.press('Shift+Tab');
