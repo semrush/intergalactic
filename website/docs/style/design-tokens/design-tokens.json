@@ -62,8 +62,7 @@
     "description": "Accent background of the message with regular information.",
     "components": [
       "base-trigger",
-      "counter",
-      "notice-global"
+      "counter"
     ]
   },
   {
@@ -72,9 +71,7 @@
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
     "description": "Accent background of the message or banner with information about the successful result.",
-    "components": [
-      "notice-global"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-critical",
@@ -84,8 +81,7 @@
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
       "counter",
-      "notice-bubble",
-      "notice-global"
+      "notice-bubble"
     ]
   },
   {
@@ -95,8 +91,7 @@
     "computedValue": "#ff642d",
     "description": "Accent background of a message or a banner with a warning information.",
     "components": [
-      "counter",
-      "notice-global"
+      "counter"
     ]
   },
   {
@@ -121,9 +116,7 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Accented muted background for a message with regular information.",
-    "components": [
-      "notice-global"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert",
@@ -493,7 +486,6 @@
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
-      "notice-global",
       "tag",
       "tooltip",
       "wizard"
@@ -2406,7 +2398,6 @@
       "fullscreen-modal",
       "notice",
       "notice-bubble",
-      "notice-global",
       "pagination",
       "product-head",
       "radio",
@@ -2551,7 +2542,6 @@
       "input",
       "notice",
       "notice-bubble",
-      "notice-global",
       "pagination",
       "pills",
       "product-head",
@@ -2796,7 +2786,6 @@
       "modal",
       "notice",
       "notice-bubble",
-      "notice-global",
       "pagination",
       "pills",
       "product-head",
@@ -2868,7 +2857,6 @@
       "fullscreen-modal",
       "modal",
       "notice",
-      "notice-global",
       "pagination",
       "product-head",
       "side-panel",
@@ -2923,7 +2911,6 @@
       "errors",
       "fullscreen-modal",
       "notice-bubble",
-      "notice-global",
       "typography"
     ]
   },

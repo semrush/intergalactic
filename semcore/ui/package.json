@@ -54,7 +54,6 @@
     "@semcore/modal": "^16.1.12",
     "@semcore/notice": "^16.1.12",
     "@semcore/notice-bubble": "^16.2.0",
-    "@semcore/notice-global": "^16.1.13",
     "@semcore/pagination": "^16.1.12",
     "@semcore/pills": "^16.0.11",
     "@semcore/product-head": "^16.0.11",
