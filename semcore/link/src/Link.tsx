@@ -70,7 +70,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
     const Link = this[CORE_INSTANCE];
     const SLink = Root;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
-
+    const showHint = children === undefined || title;
     return sstyled(styles)(
       <>
         <SLink
@@ -86,7 +86,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
           use:noWrap={false}
           ref={this.containerRef}
           __excludeProps={['disabled', 'aria-disabled']}
-          aria-label={children === undefined ? hintContent : undefined}
+          aria-label={showHint ? hintContent : undefined}
         >
           {AddonLeft
             ? (
@@ -104,7 +104,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
               )
             : null}
         </SLink>
-        {(children === undefined || title) && (
+        {showHint && (
           <Hint
             triggerRef={this.containerRef}
             timeout={[250, 50]}
