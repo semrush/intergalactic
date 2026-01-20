@@ -67,10 +67,10 @@ SLink SAddon {
 }
 
 SText {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: transparent;
-    transition: border-bottom-color 0.15s ease-in-out;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: transparent;
+  transition: border-bottom-color 0.15s ease-in-out;
 }
 
 SLink[text-color] {
