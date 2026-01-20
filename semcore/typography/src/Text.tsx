@@ -74,8 +74,8 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
           use:decoration={this.getTextDecoration(underline, lineThrough)}
           use:color={resolveColor(color)}
           use:ellipsis={Boolean(ellipsis)}
-          use:maxLine={typeof ellipsis === 'object' ? ellipsis.maxLine : undefined}
-          use:trim={typeof ellipsis === 'object' ? ellipsis.cropPosition : undefined}
+          maxLine={maxLineValue}
+          trim={typeof ellipsis === 'object' ? ellipsis.cropPosition : undefined}
         />
         {showHint && withHint && <Hint triggerRef={this.innerRef} {...hintProps}>{children}</Hint>}
       </>,
