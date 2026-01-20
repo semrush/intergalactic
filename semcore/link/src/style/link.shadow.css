@@ -1,5 +1,6 @@
 SLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
   line-height: normal;
@@ -25,7 +26,7 @@ SLink {
     color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
-      text-decoration: underline;
+      border-color: currentColor;
     }
   }
 
@@ -63,6 +64,13 @@ SLink SAddon {
   &:not(:only-child):last-child {
     margin-left: var(--intergalactic-spacing-1x, 4px);
   }
+}
+
+SText {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    transition: border-bottom-color 0.15s ease-in-out;
 }
 
 SLink[text-color] {

@@ -98,6 +98,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   private cleanUpEllipsis() {
     this.ellipsis?.off('isEllipsized', this.handleEllipsized);
     this.ellipsis?.cleanUp();
+    this.setState({ showHint: false });
   }
 
   private getTextDecoration(underline?: boolean, lineThrough?: boolean) {
