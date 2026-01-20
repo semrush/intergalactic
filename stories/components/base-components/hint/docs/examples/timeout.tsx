@@ -1,19 +1,16 @@
 import { Hint } from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {
-  const ref = React.useRef<HTMLButtonElement | null>(null);
+  const ref = React.useRef<HTMLAnchorElement | null>(null);
 
   return (
     <>
-      <Button ref={ref} title='Hint with custom timeout'>
-        <Button.Addon tag={FileExportM} />
-      </Button>
-      <Hint triggerRef={ref} timeout={[100, 50]}>
-        Hint with 100ms/50ms timeout
-      </Hint>
+      <Link href='#' ref={ref}>
+        <Link.Text>Hint with 200ms/150ms timeout</Link.Text>
+      </Link>
+      <Hint triggerRef={ref} timeout={[200, 150]}>Export to PDF</Hint>
     </>
   );
 };
