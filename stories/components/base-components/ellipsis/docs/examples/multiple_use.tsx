@@ -19,16 +19,21 @@ const Demo = () => {
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] | undefined = React.useMemo(() => {
     return (props) => {
+      const cellRef = React.useRef<HTMLDivElement | null>(null);
+
       if (props.columnName === 'vol') {
-        return (
-          <Text
-            ellipsis={{ cropPosition: 'middle' }}
-            hintProps={{ placement: 'right' }}
-            flex={1}
-          >
-            {props.value}
-          </Text>
-        );
+        return {
+          ref: cellRef,
+          children: (
+            <Text
+              ellipsis={{ cropPosition: 'middle' }}
+              hintProps={{ placement: 'right', triggerRef: cellRef }}
+              flex={1}
+            >
+              {props.value}
+            </Text>
+          ),
+        };
       }
 
       return props.defaultRender();
