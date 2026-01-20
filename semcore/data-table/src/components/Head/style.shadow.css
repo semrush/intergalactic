@@ -164,16 +164,13 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
   z-index: 19;
 }
 
-SColumn[sortable]:hover {
-  cursor: pointer;
+SColumn[sortable] {
+  &:hover {
+    cursor: pointer;
+  }
 
   &[use='secondary'] {
-    cursor: auto;
-
-    SSortButton {
-      cursor: default;
-      filter: none;
-    }
+    pointer-events: none;
   }
 }
 
