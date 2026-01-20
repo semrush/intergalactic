@@ -30,13 +30,12 @@ type State = {
   error: boolean;
 };
 
-type Props = Intergalactic.InternalTypings.PartialRequired<FeedbackRatingProps, 'Notice' | 'Illustration'>;
-
 class FeedbackRatingRoot extends Component<
-  Props,
+  FeedbackRatingProps,
   {},
   State,
-  typeof FeedbackRatingRoot.enhance
+  typeof FeedbackRatingRoot.enhance,
+  typeof FeedbackRatingRoot.defaultProps
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
@@ -114,7 +113,7 @@ class FeedbackRatingRoot extends Component<
       fn(e);
     };
 
-  componentDidUpdate(prevProps: Readonly<Props>) {
+  componentDidUpdate(prevProps: Readonly<FeedbackRatingProps>) {
     const { status, getI18nText } = this.asProps;
 
     if (prevProps.status !== status) {
