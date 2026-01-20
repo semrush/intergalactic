@@ -43,6 +43,10 @@ STotalPagesLabel {
   margin-left: var(--intergalactic-spacing-2x, 8px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
   color: var(--intergalactic-text-primary, #191b23);
+
+  &[paginationSize="l"] {
+    margin-right: var(--intergalactic-spacing-2x, 8px);
+  }
 }
 
 STotalLastPages {

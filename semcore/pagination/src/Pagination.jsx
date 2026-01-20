@@ -312,7 +312,7 @@ class TotalPages extends Component {
     const textSize = other.size === 'l' ? '300' : '200';
     return sstyled(styles)(
       <>
-        <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
+        <STotalPagesLabel paginationSize={other.size} size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle
           ? (
               <STotalLastPages
