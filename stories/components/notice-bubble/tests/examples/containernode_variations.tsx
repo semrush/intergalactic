@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ContainerNodeDemoProps = {
-  containerMode: 'default' | 'custom-element';
+  containerMode: 'default' | 'custom-element' | 'custom-ref';
   initialAnimation: boolean;
   duration: number;
   type: 'info' | 'warning';

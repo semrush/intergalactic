@@ -142,7 +142,7 @@ function Title(props) {
 
 function Description(props) {
   const SDescription = Root;
-  return sstyled(props.styles)(<SDescription render={Text} />);
+  return sstyled(props.styles)(<SDescription render={Text} tag='p' />);
 }
 
 function Back(props) {

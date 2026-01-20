@@ -1200,8 +1200,8 @@ importers:
   semcore/icon:
     dependencies:
       '@semcore/flex-box':
-        specifier: 16.0.6
-        version: 16.0.6(@semcore/base-components@semcore+base-components)
+        specifier: 16.0.11
+        version: 16.0.11(@semcore/base-components@semcore+base-components)
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -1904,7 +1904,7 @@ importers:
         specifier: ^16.4.2
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.1
+        specifier: ^16.5.2
         version: link:../data-table
       '@semcore/date-picker':
         specifier: ^16.2.3
@@ -1949,8 +1949,8 @@ importers:
         specifier: ^16.0.9
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: ^16.7.3
-        version: 16.7.3(@semcore/base-components@semcore+base-components)
+        specifier: ^16.7.4
+        version: link:../icon
       '@semcore/illustration':
         specifier: ^16.0.12
         version: link:../illustration
@@ -1985,7 +1985,7 @@ importers:
         specifier: ^16.1.12
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../notice-bubble
       '@semcore/notice-global':
         specifier: ^16.1.13
@@ -4945,11 +4945,6 @@ packages:
 
   '@semcore/flex-box@16.0.11':
     resolution: {integrity: sha512-KjzQtTTLiPYwASHyfLWtywsslij+CIsz2McEb0Pcw38uaE0y9LG7tlmbdsWz0/rUDkL+QqO6GYZ2gmQ9l/uX/g==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/flex-box@16.0.6':
-    resolution: {integrity: sha512-wUMy71h5OLFNyHFueS0caCHpsYINnLyB10Q6Yi39OlFwqgN+mG6kdBhIg2kSMKdtZXlHXi13e/zYSf4nhjcaNA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -16704,10 +16699,6 @@ snapshots:
       '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
 
   '@semcore/flex-box@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/flex-box@16.0.6(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
 
