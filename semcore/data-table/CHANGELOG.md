@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.2] - 2026-01-19
+
+### Fixed
+
+- Merging rows and colums at the same time.
+- `accordionMode="toggle"` no longer works for nested tables
+
 ## [16.5.1] - 2025-12-18
 
 ### Fixed

@@ -83,7 +83,7 @@ describe('NoticeBubbleContainer', () => {
 
   test('Verify notices render in custom container via ref when containerNode is RefObject', async () => {
     const TestComponent = () => {
-      const containerRef = React.useRef<HTMLDivElement>(null);
+      const [containerNode, setContainerNode] = React.useState<HTMLElement | null>(null);
       const [manager] = React.useState(() => new NoticeBubbleManager());
 
       React.useEffect(() => {
@@ -96,8 +96,8 @@ describe('NoticeBubbleContainer', () => {
 
       return (
         <>
-          <div ref={containerRef} data-testid='ref-container' />
-          <NoticeBubbleContainer containerNode={containerRef} manager={manager} />
+          <div ref={setContainerNode} data-testid='ref-container' />
+          <NoticeBubbleContainer containerNode={containerNode} manager={manager} />
         </>
       );
     };
