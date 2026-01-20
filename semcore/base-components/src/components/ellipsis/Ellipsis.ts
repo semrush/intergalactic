@@ -34,6 +34,7 @@ export class Ellipsis extends EventEmitter<Events> {
       cropPosition: props.cropPosition ?? 'end',
       maxLine: props.maxLine ?? 1,
       recalculateContainerWidth: props.recalculateContainerWidth,
+      observeChildrenMutations: props.observeChildrenMutations,
     };
 
     if ('lastRequiredSymbols' in props && props.lastRequiredSymbols !== undefined) {
