@@ -1,28 +1,33 @@
 <template>
-  <a href="https://developer.semrush.com/" class="devportal-logo" target="_blank"
-    aria-label="Go to Semrush Developer portal">
-    <img src="/devportal-logo.svg" width="30" height="30" class="devportal-logo" />
+  <a href="https://developer.semrush.com/" class="devportal-logo" target="_blank" aria-label="Developer home page">
+    <img src="/devportal-logo.svg" width="30" height="30" class="devportal-logo" alt="Semrush Developer portal" />
     Developer
   </a>
-  <a .href="homeUrl" class="title intergalactic-logo" aria-label="Go to Intergalactic Design System main page">
+  <a :href="link" class="title intergalactic-logo" aria-label="Intergalactic Design System home page" @click.prevent="navigateAndReload">
     Intergalactic
   </a>
 </template>
 <script setup lang="ts">
-const homeUrl = process.env.NODE_ENV === 'development' ? '/' : '/intergalactic/';
-
-import { useRouter } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
 import { onMounted, onUnmounted } from 'vue';
 import {
   initAmplitude, initGlobalEventsHandler, disposeGlobalEventsHandler
 } from './amplitude/amplitude'
+import { getCurrentVersion, getVersionedBaseLink } from './VersionSwitcher';
+
+const { theme } = useData()
+const router = useRouter()
+const link = getVersionedBaseLink(getCurrentVersion(theme, router.route))
 
 onMounted(() => {
-  const router = useRouter();
   initAmplitude();
   initGlobalEventsHandler(router);
 })
 onUnmounted(() => {
   disposeGlobalEventsHandler();
 });
+
+const navigateAndReload = () => {
+  window.location.reload();
+};
 </script>

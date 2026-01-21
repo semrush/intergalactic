@@ -1,9 +1,9 @@
 <template>
-  <OriginalNotFoundPate></OriginalNotFoundPate>
+  <NotFoundPage></NotFoundPage>
 </template>
 
 <script setup>
-import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue'
+import NotFoundPage from './NotFound.vue'
 import { onMounted } from 'vue';
 import { logEvent } from './amplitude/amplitude';
 

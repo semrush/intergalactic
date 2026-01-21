@@ -1,18 +1,27 @@
-import { defineConfig } from 'vite';
-import { createUnplugin } from 'unplugin';
-import { resolveSemcoreSources } from './resolve-semcore-sources';
-import { loadSemcoreSources } from './load-semcore-sources';
-import pluginReact from '@vitejs/plugin-react';
 import { resolve as resolvePath } from 'path';
-import { unpluginIcons } from './unplugins/unplugin-icons';
-import { unpluginStatic } from './unplugins/unplugin-static';
-import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { fileURLToPath, URL } from 'url';
 
+import pluginReact from '@vitejs/plugin-react';
+import { createUnplugin } from 'unplugin';
+import { defineConfig } from 'vite';
+
+import { loadSemcoreSources } from './load-semcore-sources';
+import { resolveSemcoreSources } from './resolve-semcore-sources';
+import { unpluginIcons } from './unplugins/unplugin-icons';
+import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
+import { unpluginStatic } from './unplugins/unplugin-static';
+
+export const LATEST = process.env.VITE_LATEST ?? 'latest';
+export const currentBuildVersion = process.env.DOCS_VERSION ?? LATEST;
+
 export const viteConfig = defineConfig({
-  base: '/intergalactic/',
+  base: `/intergalactic${currentBuildVersion !== LATEST ? `/${currentBuildVersion}` : ''}/`,
   plugins: [
-    pluginReact(),
+    pluginReact({
+      babel: {
+        plugins: ['@babel/plugin-syntax-import-assertions', '@semcore/babel-plugin-styles'],
+      },
+    }),
     createUnplugin<{}>(() => ({
       name: 'semcore-resolve',
       async resolveId(id) {
@@ -49,6 +58,14 @@ export const viteConfig = defineConfig({
         return `${resolvePath(__dirname, '../../src/docs', purePath)}.jsx`;
       },
     })).vite({}),
+    createUnplugin<{}>(() => ({
+      name: 'stories-resolver',
+      async resolveId(id) {
+        if (!id.startsWith('stories/')) return null;
+        const purePath = id.substring('stories/'.length);
+        return resolvePath(__dirname, '../../../stories', purePath);
+      },
+    })).vite({}),
     unpluginIcons.vite({}),
     unpluginStatic.vite({}),
     unpluginIllustrations.vite({}),
@@ -62,9 +79,14 @@ export const viteConfig = defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 1500,
+    emptyOutDir: false,
   },
   resolve: {
     alias: [
+      {
+        find: /^.*\/NotFound\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/NotFound.vue', import.meta.url)),
+      },
       {
         find: /^.*\/VPSidebarItem\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPSidebarItem.vue', import.meta.url)),
@@ -72,6 +94,20 @@ export const viteConfig = defineConfig({
       {
         find: /^.*\/VPNavBarMenu\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPNavBarMenu.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPNavScreenMenu\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPNavScreenMenu.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPMenuLink\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPMenuLink.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPNavScreenMenuGroupLink\.vue$/,
+        replacement: fileURLToPath(
+          new URL('./theme/VPNavScreenMenuGroupLink.vue', import.meta.url),
+        ),
       },
     ],
   },
