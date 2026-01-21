@@ -1,10 +1,11 @@
-import { expect, test, describe, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 import { Hint } from '../src';
 
 describe('Hint', () => {
+  afterEach(cleanup);
   test('Should support controlled visible mode', async () => {
     const TestComponent = () => {
       const [visible, setVisible] = React.useState(false);

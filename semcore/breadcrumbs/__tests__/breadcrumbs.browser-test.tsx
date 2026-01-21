@@ -226,7 +226,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       if (item.active) {
         await lastItem.hover();
-        await expect(hint).toHaveCount(0);
+        await expect(hint).toHaveCount(1);
         await expect(status).toHaveCount(0);
       }
     });

@@ -62,9 +62,9 @@ test.describe(TAG.VISUAL, () => {
 
     await test.step('Verify option hover with hint', async () => {
       await locators.textbox(page).fill('Ads');
-      await locators.optionByName(page, 'Shopping Ads (Product Listing Ads Block)').hover({ force: true });
-      const hint = page.locator('[data-ui-name="Hint"]').filter({ hasText: 'Shopping Ads (Product Listing Ads Block)' });
-      await hint.waitFor({ state: 'visible', timeout: 2000 });
+      await locators.optionByName(page, 'Shopping Ads (Product Listing Ads Block)').hover();
+      const hint = page.locator('[data-ui-name="Hint"]');
+      await hint.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 

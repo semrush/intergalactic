@@ -12,17 +12,14 @@ type LinkEllipsisProps = {
 };
 
 const Demo = (props: LinkEllipsisProps) => {
-  const linkRef = React.useRef<HTMLAnchorElement>(null);
   return (
     <Link
       href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
-      ref={linkRef}
       active={props.active}
       disabled={props.disabled}
     >
       <Link.Text
         ellipsis={props.ellipsis}
-        hintProps={{ triggerRef: linkRef }}
         w={props.w}
         color={props.color}
         size={props.size}
