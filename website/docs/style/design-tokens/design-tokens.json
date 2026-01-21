@@ -61,7 +61,6 @@
     "computedValue": "#008ff8",
     "description": "Accent background of the message with regular information.",
     "components": [
-      "base-trigger",
       "counter",
       "notice-global"
     ]
