@@ -16,7 +16,7 @@ Our design system has two table types:
 
 1. **Primary table** is the foundational table type for displaying large data volumes and complex functionality.
 ![](static/table-left.png)
-2. **Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card).
+2. **Secondary table** is designed for displaying small amounts of data in a compact way in [cards](/components/card/card). Interactive features, such as accordions and checkboxes, should be avoided. Showing [non-interactive sorting indicators](../table-controls/table-controls#sorting-in-secondary-table) is preferred over fully functional sorting.
 ![](static/secondary-table.png)
 
 ### Variants
