@@ -46,7 +46,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify styles when long text and icons in header when use=${item.use}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@ellipsis'],
+          '@base-components'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/long-header-ellipsis.tsx', 'en', item);
 
@@ -55,8 +55,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         await amazonIcon.hover();
         await page.getByText('AmazonM non interactive').waitFor({ state: 'visible' });
 
-        await page.locator('[data-ui-name="Ellipsis"]').hover();
-        await page.getByRole('tooltip', { name: 'Difficulty Difficulty' }).waitFor({ state: 'visible' });
+        await page.getByText('Difficulty Difficulty').hover();
+        await page.locator('[data-ui-name="Hint"]').getByText('Difficulty Difficulty').waitFor({ state: 'visible' });
 
         const elements = page.locator('[data-ui-name="Head.Column"]');
         for (const element of await elements.all()) {

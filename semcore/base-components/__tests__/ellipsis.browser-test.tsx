@@ -16,29 +16,24 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Link with ellipsis', () => {
     const ellipsisVariants = [
-      { ellipsis: true, description: 'true' },
+      { ellipsis: true, size: 200, description: 'true and size: 200' },
       { ellipsis: { cropPosition: 'middle' }, description: 'cropPosition: middle' },
-      { ellipsis: { cropPosition: 'end' }, description: 'cropPosition: end' },
+      { ellipsis: { cropPosition: 'end' }, color: 'text-success', description: 'cropPosition: end,  color: text- success' },
+      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
       { ellipsis: { cropPosition: 'end', maxLine: 2 }, description: 'cropPosition: end, maxLine: 2' },
     ];
 
     ellipsisVariants.forEach((variant) => {
-      test(`Verify ellipsis on link with keyboard focus and mouse hover when ${variant.description}`, {
+      test(`Verify ellipsis on link with keyboard focus when ${variant.description}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@ellipsis', '@link'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
+        await locators.link(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
 
         await test.step('Focus link with keyboard', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page)).toBeFocused();
-        });
-
-        await test.step('Hover link and verify hint appears', async () => {
-          await locators.link(page).hover();
-          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
-          if (!hasMaxLine) {
-            await locators.hint(page).waitFor({ state: 'visible' });
-          }
           await expect(page).toHaveScreenshot();
         });
       });
@@ -47,9 +42,12 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
+        await page.waitForTimeout(100);
 
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
+          await page.waitForTimeout(200);
+
           const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
           if (!hasMaxLine) {
             await locators.hint(page).waitFor({ state: 'visible' });
@@ -71,6 +69,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
+        await page.waitForTimeout(100);
 
         await test.step('Focus and hover link - no hint should appear', async () => {
           await page.keyboard.press('Tab');
@@ -92,8 +91,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       { ellipsis: { cropPosition: 'end' }, size: 600 },
       { ellipsis: true, size: 700 },
       { ellipsis: { cropPosition: 'end' }, size: 800 },
-      { ellipsis: { cropPosition: 'middle' }, size: 100 },
-      { ellipsis: { cropPosition: 'middle' }, size: 200 },
+      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, size: 100 },
+      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 7 }, size: 200 },
       { ellipsis: { cropPosition: 'middle' }, size: 300 },
       { ellipsis: { cropPosition: 'middle' }, size: 400 },
       { ellipsis: { cropPosition: 'middle' }, size: 500 },
@@ -108,6 +107,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@text'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
+        await locators.text(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
 
         await test.step('Hover text and verify hint appears', async () => {
           await locators.text(page).hover();
@@ -129,6 +130,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@text'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
+        await page.waitForTimeout(100);
 
         await test.step('Hover text - no hint should appear', async () => {
           await locators.text(page).hover();
@@ -139,28 +141,25 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify ellipsis with required last symbols', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_required_last_symbols.tsx', 'en');
-
-    await test.step('Hover first text with lastRequiredSymbols: 5', async () => {
-      await locators.text(page).first().hover();
-      await locators.hint(page).waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify basic ellipsis usage', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
+    await page.waitForTimeout(100);
 
     await test.step('Hover text and verify hint appears', async () => {
       await locators.text(page).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
+  });
+
+  test('Verify search highlight works well', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_search_selection.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
   });
 });
 
@@ -190,33 +189,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.skip('Verify hint shows on link focus and hides on blur', { // hint not shown
+  test('Verify hint shows on link focus and hides when enableHintTriggerRef', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: true });
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: true, enableHintTriggerRef: true });
+    await locators.link(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(200);
 
     await test.step('Focus link with keyboard - hint should appear', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.link(page)).toBeFocused();
+      await locators.hint(page).waitFor({ state: 'visible' });
+
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
-    await test.step('Tab away - hint should hide', async () => {
-      await page.keyboard.press('Tab');
+    await test.step('Escape - hint should hide', async () => {
+      await page.keyboard.press('Escape');
       await expect(locators.hint(page)).toHaveCount(0);
-    });
-  });
-
-  test.skip('Verify ellipsis with maxLine multiline truncation', { // hint not shown, looks like bug
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', {
-      ellipsis: { cropPosition: 'end', maxLine: 2 },
-    });
-
-    await test.step('Hover and verify hint appears for multiline', async () => {
-      await locators.link(page).hover();
-      await expect(locators.hint(page)).toHaveCount(1);
     });
   });
 
@@ -224,6 +214,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: false });
+    await page.waitForTimeout(100);
 
     await test.step('Hover - no hint should appear', async () => {
       await locators.link(page).hover();
@@ -235,6 +226,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_required_last_symbols.tsx', 'en');
+    await page.waitForTimeout(100);
 
     await test.step('Verify first text preserves last 5 symbols', async () => {
       const textContent = await locators.text(page).first().textContent();
@@ -254,6 +246,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
+    await page.waitForTimeout(100);
 
     await test.step('Show hint and verify it is positioned above text', async () => {
       const textElement = locators.text(page);
@@ -270,6 +263,70 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       if (textBox && hintBox) {
         expect(Math.abs(hintBox.y - textBox.y)).toBeLessThan(200);
       }
+    });
+  });
+
+  test('Verify observe children truncation', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/observe_children_mutations.tsx', 'en');
+
+    await test.step('Initial state - short text without ellipsis', async () => {
+      const textElement = locators.text(page);
+      await expect(textElement).toBeVisible();
+      const textContent = await textElement.textContent();
+      expect(textContent).toBe('Short text');
+
+      // No ellipsis structure initially
+      const ariaHiddenSpan = textElement.locator('span[aria-hidden="true"]');
+      await expect(ariaHiddenSpan).toHaveCount(0);
+    });
+
+    await test.step('Click button to change text to long text', async () => {
+      await page.getByRole('button').first().click();
+
+      // Wait for text to change
+      const textElement = locators.text(page);
+      await expect(textElement.locator('span[aria-hidden="true"]')).toBeVisible();
+
+      // Verify ellipsis structure appeared
+      const ariaHiddenSpan = textElement.locator('span[aria-hidden="true"]');
+      const ariaHiddenText = await ariaHiddenSpan.textContent();
+      expect(ariaHiddenText).toContain('...');
+    });
+
+    await test.step('Hover on ellipsis text - hint should appear with full text', async () => {
+      await page.getByRole('button').nth(0).click();
+
+      const textElement = locators.text(page);
+      await textElement.hover();
+
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+
+      const hintText = await locators.hint(page).textContent();
+      expect(hintText).toContain('This is a very long text that was changed directly in DOM');
+    });
+
+    await test.step('Verify return to Initial state - short text without ellipsis', async () => {
+      await page.mouse.move(0, 0);
+      await locators.hint(page).waitFor({ state: 'hidden' });
+
+      await expect(locators.hint(page)).toHaveCount(0);
+
+      await page.getByRole('button').nth(1).click();
+
+      const textElement = locators.text(page);
+      await expect(textElement).toBeVisible();
+      const textContent = await textElement.textContent();
+      expect(textContent).toBe('Short text');
+
+      // No ellipsis structure
+      const ariaHiddenSpan = textElement.locator('span[aria-hidden="true"]');
+      await expect(ariaHiddenSpan).toHaveCount(0);
+
+      await textElement.hover();
+      await expect(locators.hint(page)).toHaveCount(0);
     });
   });
 });

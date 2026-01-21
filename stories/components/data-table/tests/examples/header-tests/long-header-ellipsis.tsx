@@ -1,7 +1,6 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/ui/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/ui/tooltip';
@@ -22,8 +21,7 @@ const columns = [
   {
     name: 'keyword', gtcWidth: '65px', sortable: true,
     children: (
-      <Text noWrap>
-        ,
+      <Text ellipsis={{ cropPosition: 'middle' }}>
         Keyword
         <Text color='text-secondary'>(Keyword 1-100)</Text>
       </Text>
@@ -44,7 +42,7 @@ const columns = [
     name: 'cpc', gtcWidth: '85px',
     children: (
       <>
-        <Ellipsis>Difficulty Difficulty</Ellipsis>
+        <Text ellipsis={true}>Difficulty Difficulty</Text>
         <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
         <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
       </>

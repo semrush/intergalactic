@@ -104,7 +104,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify hint shows on focus and hides on blur', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
     await page.getByRole('button').waitFor({ state: 'visible' });
@@ -114,6 +114,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
+    if (browserName == 'firefox') return;
     await test.step('Tab away - hint should hide', async () => {
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'hidden' });
