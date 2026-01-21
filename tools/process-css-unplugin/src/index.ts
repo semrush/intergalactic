@@ -2,6 +2,7 @@ import stringHash from 'string-hash';
 import type { UnpluginInstance } from 'unplugin';
 import { createUnplugin } from 'unplugin';
 
+const ISOLUTION_SUFFIX = '_gg_';
 const REGEXPS = {
   RESHADOW_STYLES: /\/\*!__reshadow-styles__:"(.*?)"\*\//g,
   RESHADOW_CSS: /\/\*__reshadow_css_start__\*\/([\s\S]*?),( ?)(\n?)\/\*__reshadow_css_end__\*\//g,
@@ -31,12 +32,21 @@ const createImportStatement = (path: string, isES6: boolean): string => {
   return isES6 ? `import '${path}';` : `require('${path}');`;
 };
 
+const replaceIsolationSuffix = (content: string, newSuffix?: string): string => {
+  if (!newSuffix || (newSuffix && newSuffix === ISOLUTION_SUFFIX)) return content;
+
+  const suffixRegex = new RegExp(ISOLUTION_SUFFIX, 'g');
+
+  return content.replace(suffixRegex, newSuffix);
+};
+
 type Options = {
-  prefix?: string;
+  virtualFilesPrefix?: string;
+  isolationSuffix?: string;
 };
 
 const processCssUnplugin = createUnplugin<Options>((options = {}) => {
-  const { prefix } = options;
+  const { virtualFilesPrefix, isolationSuffix } = options;
   const cssFiles = new Map<string, string>();
 
   return {
@@ -63,12 +73,14 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
       const importPaths: string[] = [];
       const isES6Mode = REGEXPS.ES6_IMPORT.test(source);
 
-      const transformedCode = source.replace(
+      let transformedCode = source.replace(
         REGEXPS.RESHADOW_CSS,
         (_, codeBlock: string) => {
-          const css = extractCssFromCode(codeBlock);
+          let css = extractCssFromCode(codeBlock);
 
-          const hashedFilePath = generateHashedFilePath(id, css, prefix);
+          css = replaceIsolationSuffix(css, isolationSuffix);
+
+          const hashedFilePath = generateHashedFilePath(id, css, virtualFilesPrefix);
           cssFiles.set(hashedFilePath, css);
           importPaths.push(hashedFilePath);
 
@@ -77,6 +89,8 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
       ).replace(REGEXPS.RESHADOW_STYLES, () =>
         createImportStatement(importPaths.shift()!, isES6Mode),
       );
+
+      transformedCode = replaceIsolationSuffix(transformedCode, isolationSuffix);
 
       return { code: transformedCode };
     },
