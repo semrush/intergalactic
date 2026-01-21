@@ -29,7 +29,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column' gap={4}>
-      <Box>
+      <Flex direction='row' gap={4}>
         <Text size={300} bold mb={2}>
           Copy Full Text Feature
         </Text>
@@ -37,11 +37,11 @@ const Demo = () => {
           Try to select and copy the truncated text below. The full text will be copied to your
           clipboard, not the truncated version!
         </Text>
-      </Box>
+      </Flex>
 
       {/* Example 1: End crop */}
-      <Box>
-        <Text size={200} mb={1} bold>
+      <Flex direction='row' gap={4}>
+        <Text size={200} mb={1} mr={2} bold>
           Example 1: End crop
         </Text>
         <Text w={300} ellipsis={{ cropPosition: 'end' }}>
@@ -50,11 +50,11 @@ const Demo = () => {
         <Text size={100} color='text-secondary' mt={1}>
           Select the text above and press Ctrl+C (or Cmd+C)
         </Text>
-      </Box>
+      </Flex>
 
       {/* Example 2: Middle crop */}
       <Box>
-        <Text size={200} mb={1} bold>
+        <Text size={200} mb={1} mr={2} bold>
           Example 2: Middle crop
         </Text>
         <Text w={300} ellipsis={{ cropPosition: 'middle' }}>
@@ -67,7 +67,7 @@ const Demo = () => {
 
       {/* Example 3: Very long text */}
       <Box>
-        <Text size={200} mb={1} bold>
+        <Text size={200} mb={1} mr={2} bold>
           Example 3: Very long URL
         </Text>
         <Link
