@@ -44,6 +44,7 @@ class EllipsisManager {
           characterData: true,
           subtree: true,
           characterDataOldValue: true,
+          childList: true,
         });
 
         this.ellipsisMutationObservers.set(element, mo);
@@ -117,15 +118,30 @@ class EllipsisManager {
   }
 
   private handleMutationObserver(mutations: MutationRecord[]) {
-    const text = mutations[0]?.target;
-    const parent = text?.parentElement;
+    if (mutations.length === 1) {
+      const { type, target } = mutations[0];
 
-    if (text instanceof Text && parent instanceof HTMLElement) {
-      const ellipsis = this.ellipsisEntities.get(parent);
+      let text: Text | undefined;
 
-      if (ellipsis) {
-        ellipsis.textContent = text.wholeText;
-        ellipsis?.scheduler.schedule(ellipsis?.handleChanges);
+      if (type === 'characterData' && target instanceof Text) {
+        text = target;
+      } else if (type === 'childList') {
+        const mutation = mutations[0];
+        const addedNodes = mutation.addedNodes;
+        const removedNodes = mutation.removedNodes;
+        if (addedNodes.length === 1 && addedNodes[0] instanceof Text && removedNodes.length === 2 && removedNodes[0] instanceof HTMLSpanElement && removedNodes[1] instanceof HTMLSpanElement) {
+          text = addedNodes[0];
+        }
+      }
+
+      const parent = text?.parentElement;
+      if (text && parent instanceof HTMLElement) {
+        const ellipsis = this.ellipsisEntities.get(parent);
+
+        if (ellipsis) {
+          ellipsis.textContent = text.wholeText;
+          ellipsis?.scheduler.schedule(ellipsis?.handleChanges);
+        }
       }
     }
   }
