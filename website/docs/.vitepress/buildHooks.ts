@@ -1,15 +1,19 @@
 import { createWriteStream } from 'fs';
-import { resolve as resolvePath } from 'path';
-import { SitemapStream } from 'sitemap';
-import { UserConfig, DefaultTheme } from 'vitepress';
 import fs from 'fs/promises';
+import { resolve as resolvePath } from 'path';
+
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
+import { SitemapStream } from 'sitemap';
+import type { UserConfig, DefaultTheme } from 'vitepress';
+
+import { currentBuildVersion, LATEST } from './vite.config';
+import { algoliaConfig } from '../../algoliaConfig.js';
+import { algoliaIndexes } from '../../algoliaIndexes.js';
 import iconsList from '../style/icon/icons-list.js';
 import illustrationsList from '../style/illustration/illustrations-list.js';
 
 import 'dotenv/config';
-import { algoliaConfig } from '../../algoliaConfig.js';
 
 const excludeFromSearch = ['a11y-report'];
 
@@ -30,6 +34,10 @@ if (process.env.CI) {
     );
   }
 }
+
+const BASE_URL = `https://developer.semrush.com/intergalactic/${
+  currentBuildVersion === LATEST ? '' : `${currentBuildVersion}/`
+}`;
 
 const sitemapLinks: { url: string; lastmod?: number }[] = [];
 const searchObjects: {
@@ -116,10 +124,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
           objectID: objectId++,
           title: title,
           type: level,
-          url:
-            'https://developer.semrush.com/intergalactic/' +
-            pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2') +
-            `#${id}`,
+          url: BASE_URL + pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2') + `#${id}`,
           heading: true,
           hierarchy: { ...hierarchy },
           changelogPage: pageData.relativePath.includes('changelog'),
@@ -134,9 +139,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
       title: metadata?.title ?? pageData.title,
       content: metadata?.title ?? pageData.title,
       type: 'content',
-      url:
-        'https://developer.semrush.com/intergalactic/' +
-        pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+      url: BASE_URL + pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
       heading: false,
       hierarchy: { lvl0: hierarchy.lvl0, lvl1: hierarchy.lvl1 },
       changelogPage: pageData.relativePath.includes('changelog'),
@@ -147,7 +150,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
 };
 const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir }) => {
   const sitemap = new SitemapStream({
-    hostname: 'https://developer.semrush.com/intergalactic/',
+    hostname: BASE_URL,
   });
   const writeStream = createWriteStream(resolvePath(outDir, 'sitemap.xml'));
   sitemap.pipe(writeStream);
@@ -158,9 +161,9 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
   if (process.env.CI) {
     // await fs.writeFile('search-index.json', JSON.stringify(searchObjects, null, 2));
     const client = algoliasearch(algoliaConfig.appName, process.env.ALGOLIA_SECRET_KEY!);
-    const mainSearchIndex = client.initIndex(algoliaConfig.mainSearchIndexName);
-    const iconsSearchIndex = client.initIndex(algoliaConfig.iconsSearchIndexName);
-    const illustrationsSearchIndex = client.initIndex(algoliaConfig.illustrationsSearchIndexName!);
+    const mainSearchIndex = client.initIndex(algoliaIndexes.mainSearchIndexName);
+    const iconsSearchIndex = client.initIndex(algoliaIndexes.iconsSearchIndexName);
+    const illustrationsSearchIndex = client.initIndex(algoliaIndexes.illustrationsSearchIndexName!);
 
     const iconsSearchObjects = iconsList.icons.map((o, i) => ({ objectID: i, ...o }));
     const illustrationsSearchObjects = illustrationsList.illustrations.map((o, i) => ({
