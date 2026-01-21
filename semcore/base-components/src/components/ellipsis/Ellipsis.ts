@@ -161,8 +161,6 @@ export class Ellipsis extends EventEmitter<Events> {
     hiddenFullText.style.setProperty('overflow', 'hidden');
     hiddenFullText.style.setProperty('white-space', 'nowrap');
     hiddenFullText.style.setProperty('border-width', '0');
-    hiddenFullText.style.setProperty(' left', '-1px');
-    hiddenFullText.style.setProperty('top', '-1px');
 
     this.element.innerHTML = '';
     this.element.appendChild(croppedElement);

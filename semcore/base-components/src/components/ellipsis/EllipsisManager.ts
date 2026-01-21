@@ -173,13 +173,20 @@ class EllipsisManager {
   }
 
   private handleCopy(event: ClipboardEvent) {
-    if (event instanceof ClipboardEvent && event.target instanceof HTMLElement) {
+    if (event instanceof ClipboardEvent && event.target instanceof HTMLElement && event.target.parentElement instanceof HTMLElement) {
       const selection = window.getSelection();
-      const ellipsis = this.ellipsisEntities.get(event.target);
+      const ellipsis = this.ellipsisEntities.get(event.target.parentElement);
 
-      if (selection && ellipsis && (selection.anchorNode === ellipsis.element.childNodes[0] || selection.focusNode === ellipsis.element.childNodes[0])) {
-        if (!(selection.focusNode instanceof Text) || selection.focusOffset === ellipsis.element.textContent?.length || selection.focusOffset === 0) {
-          navigator.clipboard.writeText(ellipsis.textContent);
+      if (selection && ellipsis) {
+        const ellipsisSpans = ellipsis.element.childNodes;
+        const croppedSpan = ellipsisSpans[0];
+        const fullSpan = ellipsisSpans[1];
+
+        const isCroppedSelected = selection.anchorNode === croppedSpan?.childNodes[0] && selection.focusOffset === croppedSpan?.textContent?.length;
+        const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && selection.focusOffset === fullSpan?.textContent?.length;
+
+        if (fullSpan?.textContent && (!(selection.focusNode instanceof Text) || isCroppedSelected || isFullSelected)) {
+          navigator.clipboard.writeText(fullSpan.textContent);
         }
       }
     }
