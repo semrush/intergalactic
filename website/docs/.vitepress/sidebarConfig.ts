@@ -341,11 +341,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'NoticeBubble',
           },
           {
-            link: '/components/notice-global/notice-global',
-            activeMatch: '/components/notice-global/',
-            text: 'NoticeGlobal [deleted]',
-          },
-          {
             link: '/components/pagination/pagination',
             activeMatch: '/components/pagination/',
             text: 'Pagination',
