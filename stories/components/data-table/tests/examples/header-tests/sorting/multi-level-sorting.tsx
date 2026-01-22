@@ -1,4 +1,5 @@
 import type { BoxProps } from '@semcore/ui/base-components';
+import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
@@ -65,7 +66,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         gtcWidth: '100px',
         children: (
           <>
-            <Ellipsis>Kd Organic Sessions</Ellipsis>
+            <Text ellipsis={true}>Kd Organic Sessions</Text>
             <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </>
         ),
@@ -74,10 +75,38 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         name: 'cpc2',
         children: 'CPC',
         sortable: true,
+
       },
       {
         name: 'vol2',
-        children: 'Vol.',
+        children: (props) => {
+          const containerRef = React.useRef<HTMLDivElement | null>(null);
+          const [headerCell, setHeaderCell] = React.useState<HTMLElement | null>(null);
+
+          React.useEffect(() => {
+            if (containerRef.current) {
+              const cell = containerRef.current.closest('[role="columnheader"]') as HTMLElement;
+              if (cell) {
+                setHeaderCell(cell);
+                if (!cell.hasAttribute('tabindex')) {
+                  cell.setAttribute('tabindex', '0');
+                }
+              }
+            }
+          }, []);
+
+          return (
+            <Box ref={containerRef} display='inline-flex' wMin={0}>
+              <Text
+                ellipsis={true}
+                hintProps={headerCell ? { placement: 'bottom', triggerRef: { current: headerCell } } : undefined}
+                wMin={0}
+              >
+                Vol.Vol.Vol.Vol.Vol.
+              </Text>
+            </Box>
+          );
+        },
       },
     ],
   },

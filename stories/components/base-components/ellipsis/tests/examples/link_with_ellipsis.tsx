@@ -1,4 +1,5 @@
 import type { EllipsisSettings } from '@semcore/ui/base-components';
+import type { HintProps } from '@semcore/ui/hint';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -9,20 +10,30 @@ type LinkEllipsisProps = {
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
   active?: boolean;
   disabled?: boolean;
+  enableHintTriggerRef?: boolean;
+  hintProps?: HintProps;
 };
 
 const Demo = (props: LinkEllipsisProps) => {
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
+
   return (
     <Link
       href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
       active={props.active}
       disabled={props.disabled}
+      ref={linkRef}
     >
       <Link.Text
         ellipsis={props.ellipsis}
         w={props.w}
         color={props.color}
         size={props.size}
+        hintProps={
+          props.enableHintTriggerRef
+            ? { triggerRef: linkRef, ...props.hintProps }
+            : props.hintProps
+        }
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
       </Link.Text>

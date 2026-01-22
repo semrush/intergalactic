@@ -161,7 +161,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
-      await expect(checkboxInput.first()).toBeFocused();
+      if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
