@@ -32,9 +32,7 @@ const createImportStatement = (path: string, isES6: boolean): string => {
   return isES6 ? `import '${path}';` : `require('${path}');`;
 };
 
-const replaceIsolationSuffix = (content: string, newSuffix?: string): string => {
-  if (!newSuffix || (newSuffix && newSuffix === ISOLUTION_SUFFIX)) return content;
-
+const replaceIsolationSuffix = (content: string, newSuffix: string): string => {
   const suffixRegex = new RegExp(ISOLUTION_SUFFIX, 'g');
 
   return content.replace(suffixRegex, newSuffix);
@@ -78,7 +76,9 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
         (_, codeBlock: string) => {
           let css = extractCssFromCode(codeBlock);
 
-          css = replaceIsolationSuffix(css, isolationSuffix);
+          if (isolationSuffix) {
+            css = replaceIsolationSuffix(css, isolationSuffix);
+          }
 
           const hashedFilePath = generateHashedFilePath(id, css, virtualFilesPrefix);
           cssFiles.set(hashedFilePath, css);
@@ -90,7 +90,9 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
         createImportStatement(importPaths.shift()!, isES6Mode),
       );
 
-      transformedCode = replaceIsolationSuffix(transformedCode, isolationSuffix);
+      if (isolationSuffix) {
+        transformedCode = replaceIsolationSuffix(transformedCode, isolationSuffix);
+      }
 
       return { code: transformedCode };
     },
