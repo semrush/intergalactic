@@ -3,11 +3,6 @@ import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './co
 import type {
   PropGetterFn,
   IRootComponentProps,
-  ComponentType,
-  IRootComponentHandlers,
-  IComponentProps,
-  ReturnEl,
-  IFunctionProps,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -20,7 +15,7 @@ import type { UnknownProperties } from './core-types/UnknownProperties';
 import { createComponent, createBaseComponent, assignProps } from './coreFactory';
 import { lastInteraction } from './LastInteractionType';
 import register from './register';
-import type { StyledProps } from './styled';
+import type { IStyledProps } from './styled';
 import { sstyled } from './styled';
 
 export {
@@ -33,17 +28,12 @@ export {
   Intergalactic,
   type PropGetterFn,
   type IRootComponentProps,
-  type ComponentType,
-  type IRootComponentHandlers,
-  type IComponentProps,
-  type IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,
   CHILDREN_COMPONENT,
   INHERITED_NAME,
-  type ReturnEl,
-  type StyledProps,
+  type IStyledProps,
   wrapIntergalacticComponent,
   assignProps,
   register,

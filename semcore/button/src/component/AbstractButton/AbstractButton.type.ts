@@ -1,6 +1,5 @@
+import type { BoxProps, NeighborItemProps } from '@semcore/base-components';
 import type { PropGetterFn } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps } from '@semcore/neighbor-location';
 import type { TooltipHintProps } from '@semcore/tooltip';
 import type React from 'react';
 

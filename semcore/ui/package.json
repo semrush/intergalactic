@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "16.13.1",
+  "version": "16.13.2",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -13,12 +13,10 @@
   "dependencies": {
     "@semcore/accordion": "^16.7.2",
     "@semcore/add-filter": "^16.6.3",
-    "@semcore/animation": "^16.0.7",
     "@semcore/badge": "^16.0.7",
     "@semcore/base-components": "^16.4.2",
     "@semcore/base-trigger": "^16.4.5",
     "@semcore/breadcrumbs": "^16.5.4",
-    "@semcore/breakpoints": "^16.0.11",
     "@semcore/bulk-textarea": "^16.6.2",
     "@semcore/button": "^16.0.12",
     "@semcore/card": "^16.1.12",
@@ -28,7 +26,7 @@
     "@semcore/core": "^16.5.1",
     "@semcore/counter": "^16.0.11",
     "@semcore/d3-chart": "^16.4.2",
-    "@semcore/data-table": "^16.5.1",
+    "@semcore/data-table": "^16.5.2",
     "@semcore/date-picker": "^16.2.3",
     "@semcore/divider": "^16.0.11",
     "@semcore/dot": "^16.0.11",
@@ -41,12 +39,9 @@
     "@semcore/feature-popover": "^16.2.5",
     "@semcore/feedback-form": "^16.1.12",
     "@semcore/flags": "^16.1.8",
-    "@semcore/flex-box": "^16.0.11",
-    "@semcore/format-text": "^16.1.1",
     "@semcore/fullscreen-modal": "^16.1.12",
-    "@semcore/grid": "^16.0.11",
     "@semcore/i18n-unplugin": "^16.0.9",
-    "@semcore/icon": "^16.7.3",
+    "@semcore/icon": "^16.7.4",
     "@semcore/illustration": "^16.0.12",
     "@semcore/inline-edit": "^16.0.11",
     "@semcore/inline-input": "^16.2.2",
@@ -57,26 +52,20 @@
     "@semcore/link": "^16.0.11",
     "@semcore/mini-chart": "^16.1.1",
     "@semcore/modal": "^16.1.12",
-    "@semcore/neighbor-location": "^16.0.11",
     "@semcore/notice": "^16.1.12",
-    "@semcore/notice-bubble": "^16.2.0",
+    "@semcore/notice-bubble": "^16.2.1",
     "@semcore/notice-global": "^16.1.13",
-    "@semcore/outside-click": "^16.0.11",
     "@semcore/pagination": "^16.1.12",
     "@semcore/pills": "^16.0.11",
-    "@semcore/popper": "^16.0.11",
-    "@semcore/portal": "^16.0.11",
     "@semcore/product-head": "^16.0.11",
     "@semcore/progress-bar": "^16.0.11",
     "@semcore/radio": "^16.1.1",
-    "@semcore/scroll-area": "^16.0.11",
     "@semcore/select": "^16.1.12",
     "@semcore/side-panel": "^16.1.12",
     "@semcore/skeleton": "^16.0.11",
     "@semcore/slider": "^16.1.1",
     "@semcore/spin": "^16.0.11",
     "@semcore/spin-container": "^16.0.11",
-    "@semcore/sticky": "^16.0.11",
     "@semcore/switch": "^16.1.1",
     "@semcore/tab-line": "^16.0.11",
     "@semcore/tab-panel": "^16.0.11",
@@ -89,8 +78,8 @@
     "@semcore/wizard": "^16.2.2"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",
@@ -448,11 +437,6 @@
       "import": "./core/lib/utils/enhances/animatedSizeEnhance.mjs",
       "types": "./core/lib/utils/enhances/animatedSizeEnhance.d.ts"
     },
-    "./core/lib/utils/enhances/autoFocusEnhance": {
-      "require": "./core/lib/utils/enhances/autoFocusEnhance.cjs",
-      "import": "./core/lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./core/lib/utils/enhances/autoFocusEnhance.d.ts"
-    },
     "./core/lib/utils/enhances/contextEnhance": {
       "require": "./core/lib/utils/enhances/contextEnhance.cjs",
       "import": "./core/lib/utils/enhances/contextEnhance.mjs",
@@ -462,11 +446,6 @@
       "require": "./core/lib/utils/enhances/i18nEnhance.cjs",
       "import": "./core/lib/utils/enhances/i18nEnhance.mjs",
       "types": "./core/lib/utils/enhances/i18nEnhance.d.ts"
-    },
-    "./core/lib/utils/enhances/keyboardFocusEnhance": {
-      "require": "./core/lib/utils/enhances/keyboardFocusEnhance.cjs",
-      "import": "./core/lib/utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./core/lib/utils/enhances/keyboardFocusEnhance.d.ts"
     },
     "./core/lib/utils/enhances/resolveColorEnhance": {
       "require": "./core/lib/utils/enhances/resolveColorEnhance.cjs",

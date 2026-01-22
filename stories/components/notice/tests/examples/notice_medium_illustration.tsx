@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import Coffee from '@semcore/ui/illustration/Coffee';
 import MailSent from '@semcore/ui/illustration/MailSent';
 import Notice from '@semcore/ui/notice';

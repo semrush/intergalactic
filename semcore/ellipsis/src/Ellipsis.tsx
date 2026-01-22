@@ -1,3 +1,4 @@
+import { Box, type BoxProps } from '@semcore/base-components';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -6,7 +7,6 @@ import pick from '@semcore/core/lib/utils/pick';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import Tooltip, { type TooltipProps } from '@semcore/tooltip';
 import React, { type RefObject } from 'react';
 

@@ -764,7 +764,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.chart(page, 'Chart')).toHaveCount(1);
       });
 
-      await test.step('Verify focus returns to the §st togglel', async () => {
+      await test.step('Verify focus returns to the 1st toggle', async () => {
         for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowUp');
         await expect(locators.toggle(page).nth(0)).toBeFocused();
       });

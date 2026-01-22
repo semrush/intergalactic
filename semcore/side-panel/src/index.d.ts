@@ -1,8 +1,6 @@
-import type { FadeInOutProps, SlideProps } from '@semcore/animation';
+import type { FadeInOutProps, SlideProps, Box, BoxProps, Flex, PortalProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps, Flex } from '@semcore/flex-box';
-import type { PortalProps } from '@semcore/portal';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
@@ -14,8 +12,6 @@ export type OnCloseType = (
 
 export type SidePanelPlacement = 'top' | 'left' | 'right' | 'bottom';
 
-/** @deprecated */
-export interface ISidePanelProps extends SidePanelProps, UnknownProperties {}
 export type SidePanelProps = PortalProps &
   BoxProps & {
     /** Animation display duration in ms
@@ -47,28 +43,20 @@ export type SidePanelProps = PortalProps &
     disablePreventScroll?: boolean;
   };
 
-/** @deprecated */
-export interface ISidePanelOverlayProps extends SidePanelOverlayProps, UnknownProperties {}
 export type SidePanelOverlayProps = FadeInOutProps & BoxProps & {};
 
-/** @deprecated */
-export interface ISidePanelPanelProps extends SidePanelPanelProps, UnknownProperties {}
 export type SidePanelPanelProps = SlideProps &
   BoxProps & {
     /** Callback that is triggered when click outside is occured */
     onOutsideClick?: (e?: React.SyntheticEvent) => void;
   };
 
-/** @deprecated */
-export interface ISidePanelContext extends SidePanelContext, UnknownProperties {}
 export type SidePanelContext = {
   getOverlayProps?: PropGetterFn;
   getPanelProps?: PropGetterFn;
   getCloseProps?: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ISidePanelHeaderProps extends SidePanelHeaderProps, UnknownProperties {}
 export type SidePanelHeaderProps = BoxProps & {
   title?: React.ReactNode;
 };

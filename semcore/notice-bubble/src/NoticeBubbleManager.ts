@@ -25,8 +25,6 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
   private emitter = new EventEmitter();
   private counter = 0;
 
-  private replaceTimer: ReturnType<typeof setTimeout> | null = null;
-
   public addListener(fn: (items: NoticeItem[]) => void): () => void {
     return this.emitter.subscribe(EVENT_NAME, fn);
   }
@@ -38,13 +36,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
   public add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): AddedNoticeMeta {
     const uid = this.counter++;
     const ref = React.createRef<HTMLElement>();
-    const focus = () => {
-      setTimeout(() => {
-        if (ref.current) {
-          setFocus(ref.current);
-        }
-      }, 0);
-    };
+
     const item = {
       type: 'info',
       uid,
@@ -59,53 +51,34 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     this.emit();
     return {
       uid,
-      update: this.update.bind(this, uid),
+      update: this.replace.bind(this, uid),
       remove: this.remove.bind(this, uid),
       ref,
-      // todo Brauer Ilia: remove this property, because we added logic about autofocus in Notice
-      focus,
     };
   }
 
-  public update(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): boolean {
-    const index = this.items.findIndex((item) => item.uid === uid);
-    if (index !== -1) {
-      this.items[index] = {
-        ...this.items[index],
-        ...props,
-      };
-      this.emit();
-      return true;
-    }
-    return false;
-  }
-
-  public replace(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {
-    if (this.replaceTimer) {
-      clearTimeout(this.replaceTimer);
-    }
-
+  public replace(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): Promise<AddedNoticeMeta> {
     this.remove(uid);
 
-    this.replaceTimer = setTimeout(() => {
-      this.add(props);
-    }, 300);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.add(props));
+      }, 300);
+    });
   }
 
-  public replaceLast(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): void {
-    if (this.replaceTimer) {
-      clearTimeout(this.replaceTimer);
-    }
-
+  public replaceLast(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): Promise<AddedNoticeMeta> {
     const item = this.items[this.items.length - 1];
 
     if (item?.visible) {
       this.remove(this.counter - 1);
     }
 
-    this.replaceTimer = setTimeout(() => {
-      this.add(props);
-    }, 300);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.add(props));
+      }, 300);
+    });
   }
 
   public remove(uid: number): boolean {

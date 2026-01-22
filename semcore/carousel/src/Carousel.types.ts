@@ -1,8 +1,6 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic, IRootComponentProps } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic, IRootComponentProps } from '@semcore/core';
 
-/** @deprecated */
-export interface ICarouselProps extends CarouselProps, UnknownProperties {}
 export type CarouselProps = BoxProps & {
   /** Index active item */
   index?: number;
@@ -31,8 +29,6 @@ export type CarouselProps = BoxProps & {
   indicators?: 'default' | 'hide' | 'preview';
 };
 
-/** @deprecated */
-export interface ICarouselContext extends CarouselContext, UnknownProperties {}
 export type CarouselContext = {
   getContainerProps: PropGetterFn;
   getItemProps: PropGetterFn;
@@ -85,8 +81,6 @@ export type CarouselItemProps = BoxProps & {
   isOpenZoom?: boolean;
 };
 
-/** @deprecated */
-export interface ICarouselState extends CarouselState, UnknownProperties {}
 export type CarouselState = {
   isOpenZoom: boolean;
   selectedIndex: number;
