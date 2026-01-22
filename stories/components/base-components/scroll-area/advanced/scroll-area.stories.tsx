@@ -1,4 +1,4 @@
-import ScrollArea from '@semcore/ui/scroll-area';
+import { ScrollArea } from '@semcore/ui/base-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import InteractiveElememntInsideScrollAreaExample from './examples/iteractive-element-inside-scroll-area';

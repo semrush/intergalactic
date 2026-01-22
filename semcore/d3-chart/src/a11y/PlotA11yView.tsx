@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { DataAccessibilityTable } from './DataAccessibilityTable';

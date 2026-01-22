@@ -1,9 +1,9 @@
+import { Flex, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, Box } from '@semcore/flex-box';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import CloseIcon from '@semcore/icon/Close/l';
 import Modal from '@semcore/modal';
@@ -142,7 +142,7 @@ function Title(props) {
 
 function Description(props) {
   const SDescription = Root;
-  return sstyled(props.styles)(<SDescription render={Text} />);
+  return sstyled(props.styles)(<SDescription render={Text} tag='p' />);
 }
 
 function Back(props) {

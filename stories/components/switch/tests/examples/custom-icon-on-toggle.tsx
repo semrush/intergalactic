@@ -6,8 +6,8 @@ type SwitchExampleProps = SwitchProps & SwitchValueProps;
 
 const Demo = (props: SwitchExampleProps) => {
   return (
-    <Switch size={props.size}>
-      <Switch.Value theme={props.theme} checked={props.checked} disabled={props.disabled}>$</Switch.Value>
+    <Switch size={props.size} disabled={props.disabled}>
+      <Switch.Value theme={props.theme} checked={props.checked}>$</Switch.Value>
     </Switch>
   );
 };

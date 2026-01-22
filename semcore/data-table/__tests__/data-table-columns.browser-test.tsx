@@ -153,29 +153,73 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
 
-    const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(0);
-    const secondCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]').nth(1);
+    const mergedCell = locators.getCell(page, 2, 2);
 
-    const secondCell2 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').nth(1);
-    const fourthCell2 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').nth(2);
+    await test.step('Verify merged cell focused from left cell', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await expect(mergedCell).toBeFocused();
+    });
+
+    await test.step('Verify no focus movement when no right cells', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(mergedCell).toBeFocused();
+    });
+
+    await test.step('Verify return focus to the merged cell from 1st child', async () => {
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 3, 2)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(mergedCell).toBeFocused();
+    });
+
+    await test.step('Verify return focus to the merged cell from last child', async () => {
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await page.keyboard.press('ArrowUp');
+      await expect(mergedCell).toBeFocused();
+    });
+  });
+
+  test('Verify merged columns keyboard navigation when megred columns in different positions', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      '@data-table'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/rows-columns-tests/row-and-column-merging.tsx', 'en');
 
     await page.keyboard.press('Tab');
-    await expect(firstCell).toBeFocused();
-    await page.keyboard.press('ArrowRight');
 
-    await expect(secondCell).toBeFocused();
-    await page.keyboard.press('ArrowRight');
-    await expect(secondCell).toBeFocused();
+    await test.step('Verify merged column focused when it is not in 1st column', async () => {
+      for (let i = 0; i < 7; i++)
+        await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+    });
 
-    await page.keyboard.press('ArrowDown');
-    await expect(secondCell2).toBeFocused();
+    await test.step('Verify merged row focused from merged column', async () => {
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+    });
 
-    await page.keyboard.press('ArrowRight');
-    await expect(fourthCell2).toBeFocused();
+    await test.step('Verify return to merged column from upper 1st child', async () => {
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+    });
 
-    await page.keyboard.press('ArrowUp');
-    await expect(secondCell).toBeFocused();
-    await page.keyboard.press('ArrowDown');
+    await test.step('Verify return to merged column from upper last child', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(locators.getCell(page, 9, 2)).toBeFocused();
+    });
   });
 
   test('Verify merged columns and interactive cells', {
@@ -186,18 +230,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/access-to-cells.tsx', 'en');
 
     await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
+    for (let i = 0; i < 5; i++)
+      await page.keyboard.press('ArrowDown');
+    await expect(locators.getCell(page, 7, 1)).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').nth(1)).toBeFocused();
+    await expect(locators.getCell(page, 7, 4)).toBeFocused();
 
     await page.keyboard.press('ArrowLeft');
-    await expect(locators.row(page, 7).locator('[data-ui-name="Row.Cell"]').first()).toBeFocused();
+    await expect(locators.getCell(page, 7, 1)).toBeFocused();
   });
 
   test('Verify column\'s aria-sort and aria-describedby attributes ', {

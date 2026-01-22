@@ -1,7 +1,7 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import type { DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
+import type { DropdownMenuProps, DropdownMenuListProps } from '@semcore/ui/dropdown-menu';
 import React from 'react';
 const menuItems: null[] = new Array(10).fill(null);
 

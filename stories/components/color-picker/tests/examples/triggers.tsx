@@ -1,7 +1,7 @@
+import { Flex, Box } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import ColorPicker from '@semcore/ui/color-picker';
-import { Flex, Box } from '@semcore/ui/flex-box';
 import Input from '@semcore/ui/input';
 import Tag from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';

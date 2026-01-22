@@ -1,7 +1,7 @@
+import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
-import { Box } from '@semcore/flex-box';
 import InfoM from '@semcore/icon/Info/m';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';

@@ -1,9 +1,9 @@
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
+import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps } from '@semcore/ui/dropdown-menu';
 import PlusM from '@semcore/ui/icon/MathPlus/m';
 import Pin from '@semcore/ui/icon/Pin/m';
 import Settings from '@semcore/ui/icon/Settings/m';
@@ -14,7 +14,7 @@ import React from 'react';
 const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
 const rowHeight = 52;
 
-type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & DropdownMenuItemHintProps & {
+type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & {
   disabledAll?: boolean;
   disabledFirstItem?: boolean;
   visibleItems?: number;
@@ -42,14 +42,14 @@ const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: stri
               addonLeft={Settings}
               title='Settings'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
             <DropdownMenu.Item
               tag={Button}
               addonLeft={Pin}
               title='Pin'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
           </DropdownMenu.Actions>
         </Flex>

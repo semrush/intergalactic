@@ -71,11 +71,6 @@
       "import": "./lib/utils/enhances/animatedSizeEnhance.mjs",
       "types": "./lib/utils/enhances/animatedSizeEnhance.d.ts"
     },
-    "./lib/utils/enhances/autoFocusEnhance": {
-      "require": "./lib/utils/enhances/autoFocusEnhance.js",
-      "import": "./lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./lib/utils/enhances/autoFocusEnhance.d.ts"
-    },
     "./lib/utils/enhances/contextEnhance": {
       "require": "./lib/utils/enhances/contextEnhance.js",
       "import": "./lib/utils/enhances/contextEnhance.mjs",
@@ -85,11 +80,6 @@
       "require": "./lib/utils/enhances/focusSourceEnhance.js",
       "import": "./lib/utils/enhances/focusSourceEnhance.mjs",
       "types": "./lib/utils/enhances/focusSourceEnhance.d.ts"
-    },
-    "./lib/utils/enhances/keyboardFocusEnhance": {
-      "require": "./lib/utils/enhances/keyboardFocusEnhance.js",
-      "import": "./lib/utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./lib/utils/enhances/keyboardFocusEnhance.d.ts"
     },
     "./lib/utils/enhances/i18nEnhance": {
       "require": "./lib/utils/enhances/i18nEnhance.js",
@@ -315,8 +305,8 @@
     "@babel/runtime": "7.27.6"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19"
   },
   "repository": {
     "type": "git",

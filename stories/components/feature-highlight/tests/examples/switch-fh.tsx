@@ -29,11 +29,10 @@ const Demo = (props: SwitchFHAdvancedProps) => {
 
   return (
     <Flex direction='column' gap={4} alignItems='start'>
-      <SwitchFH size={size}>
+      <SwitchFH size={size} disabled={disabled}>
         <SwitchFH.Value
           aria-describedby='switch-aria-desc'
           checked={checked}
-          disabled={disabled}
           ml={0}
         />
         <SwitchFH.AnimatedSparkles count={animatedSparkleCount} />

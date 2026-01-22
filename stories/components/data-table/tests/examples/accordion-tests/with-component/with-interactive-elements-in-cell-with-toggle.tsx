@@ -1,8 +1,8 @@
+import { Flex } from '@semcore/ui/base-components';
 import ButtonLink from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
-import { Flex } from '@semcore/ui/flex-box';
 import EditM from '@semcore/ui/icon/Edit/m';
 import InfoM from '@semcore/ui/icon/Info/m';
 import InlineEdit from '@semcore/ui/inline-edit';

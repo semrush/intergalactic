@@ -1,4 +1,4 @@
-import { FadeInOut, type FadeInOutProps } from '@semcore/animation';
+import { FadeInOut, type FadeInOutProps, Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -11,7 +11,6 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/inline-edit.shadow.css';
@@ -26,7 +25,7 @@ type AsProps = {
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-class InlineEdit extends Component<AsProps> {
+class InlineEdit extends Component<AsProps, [], { editable: null }> {
   static displayName = 'InlineEdit';
 
   static style = style;

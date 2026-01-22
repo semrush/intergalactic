@@ -1,6 +1,5 @@
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
-import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import { Hint } from '@semcore/tooltip';
 import React from 'react';
@@ -56,6 +55,7 @@ export function Item(props: ItemAsProps) {
       onKeyDown={handleKeydown}
       __excludeProps={['title']}
       timeout={[250, 50]}
+      tabIndex={0}
     >
       {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
       <Children />
@@ -72,5 +72,3 @@ export function Item(props: ItemAsProps) {
     </SItemContainer>,
   ) as React.ReactElement;
 }
-
-Item.enhance = [keyboardFocusEnhance()];

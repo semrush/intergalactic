@@ -1,10 +1,9 @@
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 import style from './style/switch.shadow.css';
@@ -40,7 +39,7 @@ class Switch extends Component {
   };
 
   getValueProps() {
-    const { theme, uid } = this.asProps;
+    const { theme, uid, disabled } = this.asProps;
     const { active } = this.state;
 
     return {
@@ -49,6 +48,7 @@ class Switch extends Component {
       $rootForceUpdate: this.forceUpdate,
       uid,
       active,
+      disabled,
     };
   }
 
@@ -80,7 +80,6 @@ class Switch extends Component {
 }
 
 class Value extends Component {
-  static hoistProps = ['checked', 'disabled'];
   static enhance = [resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,

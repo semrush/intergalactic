@@ -1,13 +1,8 @@
 import React from 'react';
 
-import type { UnknownProperties } from '../../core-types/UnknownProperties';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
 
-/** @deprecated */
-export interface IWithAnimatedSizeEnhanceProps
-  extends WithAnimatedSizeEnhanceProps,
-  UnknownProperties {}
 export type WithAnimatedSizeEnhanceProps = {
   animationsDisabled?: boolean;
 };

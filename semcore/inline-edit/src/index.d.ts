@@ -1,9 +1,6 @@
-import type { FadeInOutProps } from '@semcore/animation';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface IInlineEditProps extends InlineEditProps, UnknownProperties {}
 export type InlineEditProps = BoxProps & {
   /**
    * Determines which children should be displayed
@@ -25,11 +22,8 @@ export type InlineEditProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IInlineEditViewProps extends InlineEditViewProps, UnknownProperties {}
 export type InlineEditViewProps = BoxProps & FadeInOutProps & {};
-/** @deprecated */
-export interface IInlineEditEditProps extends InlineEditEditProps, UnknownProperties {}
+
 export type InlineEditEditProps = BoxProps & FadeInOutProps & {};
 
 type InputCtx = {
