@@ -136,7 +136,7 @@ const Demo = () => {
         <Text tag='label' size={300}>
           Tags
         </Text>
-        <Counter size='xl' theme={isTagsLengthReached ? 'warning' : ''}>
+        <Counter size='l' theme={isTagsLengthReached ? 'warning' : ''}>
           {`${tags.length}/${TAGS_MAX_COUNT}`}
         </Counter>
       </Flex>
