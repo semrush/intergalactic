@@ -392,7 +392,8 @@ function Item({
 
   const menuItemContextValue = {
     contentId: id,
-    ref: forkRef(forwardRef, itemRef),
+    ref: itemRef,
+    forwardRef,
     role,
     tabIndex,
     ariaChecked,
@@ -445,13 +446,13 @@ function Item({
       document.removeEventListener('focus', onFocus, { capture: true });
       document.removeEventListener('blur', onBlur, { capture: true });
     };
-  }, [itemRef.current]);
+  });
 
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
         render={Dropdown.Item}
-        ref={advancedMode ? undefined : menuItemContextValue.ref}
+        ref={advancedMode ? undefined : forkRef(itemRef, forwardRef)}
         use:highlighted={!disabled && highlighted && lastInteraction.isKeyboard()}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
@@ -508,7 +509,7 @@ function ItemContent({ styles }) {
       role={menuItemCtxValue.role}
       id={menuItemCtxValue.contentId}
       tabIndex={menuItemCtxValue.tabIndex}
-      ref={forkRef(menuItemCtxValue.ref, ref)}
+      ref={forkRef(menuItemCtxValue.ref, menuItemCtxValue.forwardRef, ref)}
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
@@ -522,20 +523,15 @@ function ItemContent({ styles }) {
 
 function ItemContentText({ styles, ellipsis = false, index }) {
   const SItemContentText = Root;
-  const innerRef = React.useRef(null);
   const selectedCtx = React.useContext(selectedIndexContext);
+  const menuItemCtxValue = React.useContext(menuItemContext);
 
   return sstyled(styles)(
     <>
       <SItemContentText
         render={Text}
-        ref={innerRef}
         ellipsis={ellipsis}
-        hintProps={index === selectedCtx
-          ? {
-              triggerRef: innerRef,
-            }
-          : false}
+        hintProps={{ visible: selectedCtx === index }}
       />
     </>,
   );

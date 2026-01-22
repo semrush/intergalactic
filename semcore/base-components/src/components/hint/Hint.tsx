@@ -124,31 +124,21 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   componentDidMount() {
     const trigger = this.asProps.triggerRef.current;
 
-    trigger?.addEventListener('focus', this.handleFocus);
-    trigger?.addEventListener('blur', this.handleBlur);
-    trigger?.addEventListener('mouseenter', this.handleMouseEnter);
-    trigger?.addEventListener('mouseleave', this.handleMouseLeave);
-    trigger?.addEventListener('keydown', this.handleKeyDown);
-
-    if (this.asProps.visible && trigger) {
-      this.showHint(trigger);
+    if (trigger) {
+      this.subscribe(trigger);
     }
   }
 
   componentWillUnmount() {
     const trigger = this.asProps.triggerRef.current;
 
-    trigger?.removeEventListener('focus', this.handleFocus);
-    trigger?.removeEventListener('blur', this.handleBlur);
-    trigger?.removeEventListener('mouseenter', this.handleMouseEnter);
-    trigger?.removeEventListener('mouseleave', this.handleMouseLeave);
-    trigger?.removeEventListener('keydown', this.handleKeyDown);
-
-    this.hideHint();
+    if (trigger) {
+      this.unsubscribe(trigger);
+    }
   }
 
   componentDidUpdate(prevProps: SimpleHintPopperProps) {
-    if (prevProps.visible !== this.props.visible || prevProps.triggerRef.current !== this.props.triggerRef.current) {
+    if (prevProps.visible !== this.props.visible) {
       const trigger = this.asProps.triggerRef.current;
 
       if (this.props.visible && trigger) {
@@ -157,6 +147,28 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
         this.hideHint();
       }
     }
+  }
+
+  private subscribe(trigger: HTMLElement) {
+    trigger.addEventListener('focus', this.handleFocus);
+    trigger.addEventListener('blur', this.handleBlur);
+    trigger.addEventListener('mouseenter', this.handleMouseEnter);
+    trigger.addEventListener('mouseleave', this.handleMouseLeave);
+    trigger.addEventListener('keydown', this.handleKeyDown);
+
+    if (this.asProps.visible) {
+      this.showHint(trigger);
+    }
+  }
+
+  private unsubscribe(trigger: HTMLElement) {
+    trigger.removeEventListener('focus', this.handleFocus);
+    trigger.removeEventListener('blur', this.handleBlur);
+    trigger.removeEventListener('mouseenter', this.handleMouseEnter);
+    trigger.removeEventListener('mouseleave', this.handleMouseLeave);
+    trigger.removeEventListener('keydown', this.handleKeyDown);
+
+    this.hideHint();
   }
 
   private showHint(node: HTMLElement, mouseEvent?: MouseEvent): void {

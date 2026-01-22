@@ -10,6 +10,7 @@ import OnVisible2ndExample from './examples/on-visible-2nd';
 import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
+import WithEllipsisExample from './examples/with_ellipsis';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -112,6 +113,10 @@ export const DropdownBaseProps: StoryObj<typeof defaultDropDownPropsExample> = {
 
 export const WithSearch: Story = {
   render: WithSearchExample,
+};
+
+export const WithEllipsis: Story = {
+  render: WithEllipsisExample,
 };
 
 export const OnVisible2nd: Story = {
