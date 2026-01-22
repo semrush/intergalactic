@@ -468,4 +468,32 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(2)).toBeFocused();
     });
   });
+
+  test('Verify Format changing when value empty', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
+    const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
+
+    await test.step('Verify Format can be changed by keyboard when nothing entered', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      const formatValue = (await formatButton.textContent())?.trim();
+      expect(formatValue).toBe('PM');
+    });
+
+    await test.step('Verify Format can be changed by mouse', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await formatButton.click();
+      const formatValue = (await formatButton.textContent())?.trim();
+      expect(formatValue).toBe('AM');
+    });
+  });
 });
