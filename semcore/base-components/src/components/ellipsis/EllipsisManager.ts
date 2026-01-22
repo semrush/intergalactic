@@ -196,9 +196,9 @@ class EllipsisManager {
       if (selection && ellipsis) {
         const ellipsisSpans = ellipsis.element.childNodes;
         const croppedSpan = ellipsisSpans[0];
-        const fullSpan = ellipsisSpans[1];
+        const fullSpan = ellipsisSpans[ellipsisSpans.length - 1];
 
-        const isCroppedSelected = selection.anchorNode === croppedSpan?.childNodes[0] && selection.focusOffset === croppedSpan?.textContent?.length;
+        const isCroppedSelected = (selection.anchorNode === croppedSpan?.childNodes[0] && selection.focusOffset === croppedSpan?.textContent?.length) || (selection.focusNode === croppedSpan?.childNodes[0] && selection.focusOffset === 0);
         const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && selection.focusOffset === fullSpan?.textContent?.length;
 
         if (fullSpan?.textContent && (!(selection.focusNode instanceof Text) || isCroppedSelected || isFullSelected)) {
