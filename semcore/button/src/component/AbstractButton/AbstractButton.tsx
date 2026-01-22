@@ -109,6 +109,7 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
                 invertOutline={theme === 'invert'}
                 type='button'
                 tag='button'
+                tabIndex={0}
                 disabled={disabled}
                 use:theme={useTheme}
                 ref={this.containerRef}
