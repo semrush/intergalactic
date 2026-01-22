@@ -8,7 +8,7 @@ type Task = (...args: any[]) => void;
 export class Scheduler {
   private idleId: number | null = null;
   private timeout: ReturnType<typeof setTimeout> | null = null;
-  private readonly tasksTimeout: number = 16;
+  private readonly tasksTimeout: number = 200;
 
   constructor(tasksTimeout?: number) {
     if (tasksTimeout !== undefined) {

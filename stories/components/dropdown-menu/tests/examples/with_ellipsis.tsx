@@ -57,7 +57,7 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Addon>
                 <DesktopIconM />
               </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text ellipsis>Menu item 3 with long long long text</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item 3 with long long long text</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
             <DropdownMenu.Item.Hint>Hint for menu item 3</DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
