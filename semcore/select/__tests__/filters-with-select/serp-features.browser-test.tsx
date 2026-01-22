@@ -100,12 +100,14 @@ test.describe(TAG.VISUAL, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify search and navigation state', async () => {
+    await test.step('Verify search, navigation state and hint on focus', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.type('Ads');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
+      const hint = page.locator('[data-ui-name="Hint"]');
+      await hint.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 

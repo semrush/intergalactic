@@ -50,7 +50,7 @@ const Demo = (props: WithEllipsisProps) => {
             <DropdownMenu.Item.Content w='100%'>
               <DropdownMenu.Item.Text>Menu item L 2 with long long long text</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
-            <DropdownMenu.Item.Hint>Hint for menu item 2</DropdownMenu.Item.Hint>
+            <DropdownMenu.Item.Hint>Hint for menu item 2  with long long</DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
           <DropdownMenu.Item selected={isSelected(2)} onClick={() => handleItemClick(2)}>
             <DropdownMenu.Item.Content w='100%'>
@@ -59,7 +59,7 @@ const Demo = (props: WithEllipsisProps) => {
               </DropdownMenu.Item.Addon>
               <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item 3 with long long long text</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
-            <DropdownMenu.Item.Hint>Hint for menu item 3</DropdownMenu.Item.Hint>
+            <DropdownMenu.Item.Hint> <DropdownMenu.Item.Text ellipsis>Hint item 3 with long long long text</DropdownMenu.Item.Text></DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
           <DropdownMenu.Item selected={isSelected(3)} onClick={() => handleItemClick(3)}>
             <DropdownMenu.Item.Content>

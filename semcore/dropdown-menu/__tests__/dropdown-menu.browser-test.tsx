@@ -58,6 +58,8 @@ export const locators = {
   },
   popper: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Popper"]'),
+  hint: (page: Page) =>
+    page.locator('[data-ui-name="Hint"]'),
   actions: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Actions"]'),
   item: (page: Page) =>
@@ -500,6 +502,40 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify enter checks item and menu is not closed', async () => {
       await page.keyboard.press('Enter');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify Ellipsis and Hint on DD menu', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en');
+
+    await test.step('Verify Ellipsis applies and Hint shown on Hover with placement Top', async () => {
+      await locators.button(page).click();
+      await page.keyboard.press('Enter');
+      await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await locators.menuitem(page, 0).hover();
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify Ellipsis applies and Hint shown on Focus with placement bottom', async () => {
+      await page.keyboard.press('Escape');
+      await locators.menuitem(page, 0).waitFor({ state: 'hidden' });
+      await locators.hint(page).waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Enter');
+      await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await locators.hint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('ArrowDown');
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
