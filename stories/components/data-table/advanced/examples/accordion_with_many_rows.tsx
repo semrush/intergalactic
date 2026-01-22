@@ -39,9 +39,9 @@ const Demo = (props: TableInTableProps) => {
       return {
         cropPosition: 'middle',
         containerElement: keywordElement ?? undefined,
-        // recalculateContainerWidth: (width: number) => width - 28,
+        recalculateContainerWidth: props.isAccordionRow ? (width: number) => width - 26 : undefined,
       } as const;
-    }, [keywordElement]);
+    }, [keywordElement, props.isAccordionRow]);
 
     if (props.dataKey === 'keyword' && keywordElement) {
       return (
@@ -68,7 +68,7 @@ const Demo = (props: TableInTableProps) => {
         { name: 'keyword', children: 'Keyword', ref: keywordRef, gtcWidth: '120px' },
         { name: 'kd', children: 'KD %' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.', ref: volRef },
+        { name: 'vol', children: 'Vol.', ref: volRef, gtcWidth: 'minmax(60px, 120px)' },
         { name: 'kd1', children: 'KD %' },
         { name: 'cpc1', children: 'CPC' },
         { name: 'vol1', children: 'Vol.' },
