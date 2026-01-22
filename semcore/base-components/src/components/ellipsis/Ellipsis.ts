@@ -150,6 +150,12 @@ export class Ellipsis extends EventEmitter<Events> {
     croppedElement.setAttribute('aria-hidden', 'true');
     croppedElement.textContent = text;
 
+    this.element.innerHTML = '';
+    this.element.appendChild(croppedElement);
+    this.addFullText();
+  }
+
+  private addFullText(): void {
     const hiddenFullText = document.createElement('span');
     hiddenFullText.textContent = this.textContent;
 
@@ -162,8 +168,6 @@ export class Ellipsis extends EventEmitter<Events> {
     hiddenFullText.style.setProperty('white-space', 'nowrap');
     hiddenFullText.style.setProperty('border-width', '0');
 
-    this.element.innerHTML = '';
-    this.element.appendChild(croppedElement);
     this.element.appendChild(hiddenFullText);
   }
 
@@ -249,6 +253,7 @@ export class Ellipsis extends EventEmitter<Events> {
 
     this.element.innerHTML = '';
     this.element.append(startElement, requiredElement, endElement);
+    this.addFullText();
   }
 
   private isElementInViewport(): boolean {
