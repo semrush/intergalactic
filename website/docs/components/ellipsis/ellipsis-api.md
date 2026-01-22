@@ -7,7 +7,7 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 ::: warning
 `Ellipsis` as a component is deprecated and will be removed in the next major release.
 
-Use the new [**ellipsis** prop and **useEllipsis** hook](/utils/ellipsis/ellipsis-api) instead.
+Use the new [**ellipsis** prop in Text component](/style/typography/typography-api) instead.
 :::
 
 ## Ellipsis
