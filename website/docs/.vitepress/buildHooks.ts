@@ -210,6 +210,11 @@ const transformPageData: UserConfig<DefaultTheme.Config>['transformPageData'] = 
 
   if (!folder || !parentName || !pageName) return;
 
+  // Enable h3 in outline for API pages
+  if (pageName.endsWith('-api.md')) {
+    pageData.frontmatter.outline = [2, 3];
+  }
+
   if (folder === 'content') {
     pageData.title = `Content: ${title}`;
     return;
