@@ -75,4 +75,6 @@ declare const Dropdown: Intergalactic.Component<
   Group: Intergalactic.Component<'div', DropdownGroupProps>;
 };
 
+declare const dropdownItemContext: React.ContextType<{ ref: React.MutableRefObject<HTMLElement> }>;
+
 export default Dropdown;

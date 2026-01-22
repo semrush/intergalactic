@@ -139,13 +139,15 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
   componentDidUpdate(prevProps: SimpleHintPopperProps) {
     if (prevProps.visible !== this.props.visible) {
-      const trigger = this.asProps.triggerRef.current;
+      requestAnimationFrame(() => {
+        const trigger = this.props.triggerRef.current;
 
-      if (this.props.visible && trigger) {
-        this.showHint(trigger);
-      } else {
-        this.hideHint();
-      }
+        if (this.props.visible && trigger) {
+          this.showHint(trigger);
+        } else {
+          this.hideHint();
+        }
+      });
     }
   }
 

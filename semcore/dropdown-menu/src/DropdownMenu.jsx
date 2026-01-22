@@ -521,12 +521,13 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles, ellipsis = false, index, hintProps = {} }) {
+function ItemContentText({ styles, ellipsis = false, hintProps = {} }) {
   const SItemContentText = Root;
-  const selectedCtx = React.useContext(selectedIndexContext);
   const menuItemCtxValue = React.useContext(menuItemContext);
 
-  hintProps.visible = selectedCtx === index;
+  if (menuItemCtxValue.ref) {
+    hintProps.triggerRef = menuItemCtxValue.ref;
+  }
 
   return sstyled(styles)(
     <>
