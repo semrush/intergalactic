@@ -521,17 +521,19 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles, ellipsis = false, index }) {
+function ItemContentText({ styles, ellipsis = false, index, hintProps = {} }) {
   const SItemContentText = Root;
   const selectedCtx = React.useContext(selectedIndexContext);
   const menuItemCtxValue = React.useContext(menuItemContext);
+
+  hintProps.visible = selectedCtx === index;
 
   return sstyled(styles)(
     <>
       <SItemContentText
         render={Text}
         ellipsis={ellipsis}
-        hintProps={{ visible: selectedCtx === index }}
+        hintProps={hintProps}
       />
     </>,
   );

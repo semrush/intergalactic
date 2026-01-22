@@ -39,6 +39,7 @@ const Demo = (props: TableInTableProps) => {
       return {
         cropPosition: 'middle',
         containerElement: keywordElement ?? undefined,
+        // recalculateContainerWidth: (width: number) => width - 28,
       } as const;
     }, [keywordElement]);
 
@@ -64,7 +65,7 @@ const Demo = (props: TableInTableProps) => {
       accordionAnimationRows={props.accordionAnimationRows}
       accordionMode={props.accordionMode}
       columns={[
-        { name: 'keyword', children: 'Keyword', ref: keywordRef },
+        { name: 'keyword', children: 'Keyword', ref: keywordRef, gtcWidth: '120px' },
         { name: 'kd', children: 'KD %' },
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', ref: volRef },
