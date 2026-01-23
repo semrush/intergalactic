@@ -161,7 +161,7 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
         <STimePicker render={Input} role='group' aria-label={label} __excludeProps={['value', 'id']}>
           <Children />
         </STimePicker>
-        <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true}>{`${time} ${meridiem}`}</ScreenReaderOnly>
+        <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true} value={`${time} ${meridiem}`} />
       </>,
     );
   }
