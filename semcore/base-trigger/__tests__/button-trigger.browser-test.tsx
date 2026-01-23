@@ -374,9 +374,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(200);
 
     await locators.button(page).nth(1).hover();
-    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -461,7 +462,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
-    await expect(page.locator(`[data-ui-name="Hint"]`)).toHaveCount(1);
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+    await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
   });
 });

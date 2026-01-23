@@ -188,12 +188,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
-      const count = await locators.button(page).count();
-
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
