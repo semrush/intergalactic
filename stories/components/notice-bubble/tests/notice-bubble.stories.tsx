@@ -29,8 +29,8 @@ export const ContainerNodeVariations: StoryObj<typeof ContainerNodeVariationsPro
     ...sharedArgTypes,
     containerMode: {
       control: { type: 'select' },
-      options: ['default', 'custom-element', 'custom-ref'],
-      description: 'Mode for containerNode prop: default (null), custom element, or custom ref',
+      options: ['default', 'custom-element'],
+      description: 'Mode for containerNode prop: default (null) or custom element',
     },
   },
   args: ContainerNodeVariationsProps,
