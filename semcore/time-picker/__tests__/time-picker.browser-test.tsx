@@ -360,16 +360,31 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
     });
 
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(2)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('');
+    });
+
+    await test.step('Verify value applues when entering wrong data', async () => {
+      await page.keyboard.press('3');
+      await page.keyboard.press('a');
+      await page.keyboard.press('3');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
+    });
+
     await test.step('Verify Focus on the input with Minutes and list options expanded by Tab', async () => {
-      await page.keyboard.press('Tab');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await expect(locators.timeBoxes(page).nth(3)).toBeFocused();
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible select the option', async () => {
+      await page.waitForTimeout(100);
       await page.keyboard.press('ArrowDown');
-      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await page.keyboard.press('Enter');
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
     });
@@ -379,6 +394,39 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('3');
+      await page.keyboard.press('?');
+      await page.keyboard.press('3');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Enter');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'hidden' });
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(3)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('34');
     });
 
     await test.step('Verify Tab moves focus to the Format', async () => {
