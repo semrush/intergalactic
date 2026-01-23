@@ -19,7 +19,7 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
 
-  counter: (page: Page) => locators.trigger(page, 0).locator('span[data-ui-name="FilterTrigger.Counter"]'),
+  counter: (page: Page) => locators.trigger(page, 0).locator('[data-ui-name="FilterTrigger.Counter"]'),
   input: (page: Page) => page.locator('[data-ui-name="Input.Value"]'),
   conditionLegend: (page: Page) => page.locator('legend'),
 
