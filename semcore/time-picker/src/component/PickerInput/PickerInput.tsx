@@ -69,9 +69,9 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   }
 
   handleChange = (value: string, event: React.SyntheticEvent) => {
-    /* hide props for bubbling events */
     event.stopPropagation();
-    const numberValue = Number.parseInt(value);
+
+    const numberValue = Number(value);
 
     if (!Number.isNaN(numberValue)) {
       this.setState({ dirtyValue: value.slice(-2) });

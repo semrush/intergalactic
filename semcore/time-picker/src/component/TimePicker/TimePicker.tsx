@@ -18,7 +18,7 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 import Format from '../PickerFormat/PickerFormat';
 import { Hours, Minutes } from '../PickerInput/PickerInput';
 
-@propsObserver(['value'])
+@propsObserver(['value', 'is12Hour'])
 class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.enhance, { value: null }> {
   static displayName = 'TimePicker';
   static style = style;
@@ -46,14 +46,18 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
   readonly entity = new TimePickerEntity(this.props.value ?? this.props.defaultValue, this.props.is12Hour);
 
   onPropsChange(changedProps: TimePickerProps) {
-    const { value } = changedProps;
+    const { value, is12Hour } = changedProps;
 
-    if (!value) return;
+    if (value !== undefined) {
+      const [hours = '', minutes = ''] = value.split(':');
 
-    const [hours = '', minutes = ''] = value.split(':');
+      this.entity.hours = hours;
+      this.entity.minutes = minutes;
+    }
 
-    this.entity.hours = hours;
-    this.entity.minutes = minutes;
+    if (is12Hour !== undefined) {
+      this.entity.is12Hour = is12Hour;
+    }
   }
 
   uncontrolledProps() {
