@@ -37,6 +37,10 @@ STotalPages {
   align-self: center;
   line-height: normal;
   color: var(--intergalactic-text-link, #006dca);
+
+  > :first-child {
+    display: unset;
+  }
 }
 
 STotalPagesLabel {
