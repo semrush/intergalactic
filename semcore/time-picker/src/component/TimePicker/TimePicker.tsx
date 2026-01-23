@@ -1,4 +1,4 @@
-import { Box } from '@semcore/base-components';
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import reactive from '@semcore/core/lib/decorators/reactive';
@@ -39,6 +39,21 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
 
   hoursInputRef = React.createRef<HTMLElement>();
   minutesInputRef = React.createRef<HTMLElement>();
+
+  state = {
+    ariaLabel: '',
+  };
+
+  componentDidMount() {
+    const { id, 'aria-describedby': ariaDescribedBy } = this.asProps;
+    const selector = `[for=${id}]`;
+
+    const element = document.querySelector(selector) ?? document.querySelector(`#${ariaDescribedBy}`);
+
+    if (element) {
+      this.setState({ ariaLabel: element.textContent });
+    }
+  }
 
   @reactive(['meridiem'], function () {
     this.forceUpdate();
@@ -129,19 +144,24 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
 
   render() {
     const STimePicker = Root;
-    const { styles, Children, value, is12Hour, getI18nText } = this.asProps;
+    const { styles, Children, value, is12Hour, getI18nText, id } = this.asProps;
+
+    const time = this.entity.toString();
+    const meridiem = is12Hour ? this.entity.meridiem : '';
+
     const label = value
-      ? `${getI18nText('title', {
-        time: this.entity.toString(),
-        meridiem: is12Hour ? this.entity.meridiem : '',
+      ? `${this.state.ariaLabel} ${getI18nText('title', {
+        time,
+        meridiem,
       })}`
-      : `${getI18nText('titleEmpty')}`;
+      : `${this.state.ariaLabel} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
       <>
-        <STimePicker render={Input} role='group' aria-label={label} __excludeProps={['value']}>
+        <STimePicker render={Input} role='group' aria-label={label} __excludeProps={['value', 'id']}>
           <Children />
         </STimePicker>
+        <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true}>{`${time} ${meridiem}`}</ScreenReaderOnly>
       </>,
     );
   }

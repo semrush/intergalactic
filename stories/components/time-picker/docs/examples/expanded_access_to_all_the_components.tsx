@@ -6,11 +6,11 @@ import React from 'react';
 const Demo = () => {
   return (
     <>
-      <Text id='time-picker-label' size={200}>
+      <Text tag='label' htmlFor='time-picker' size={200}>
         Start time
       </Text>
       <Box mt={2}>
-        <TimePicker is12Hour aria-labelledby='time-picker-label'>
+        <TimePicker is12Hour id='time-picker'>
           <TimePicker.Hours />
           <TimePicker.Separator />
           <TimePicker.Minutes />
