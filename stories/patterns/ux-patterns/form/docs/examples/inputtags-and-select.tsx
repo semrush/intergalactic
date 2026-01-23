@@ -122,7 +122,7 @@ const Demo = () => {
 
               <Counter
                 ml={1}
-                size='xl'
+                size='l'
                 theme={tags.length < 5 ? '' : 'warning'}
               >
                 {`${tags.length}/5`}

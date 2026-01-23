@@ -6,8 +6,8 @@ export type CounterProps = BoxProps & {
   theme?: 'warning' | 'danger' | 'info' | string;
 
   /** Counter size
-   * @default m */
-  size?: 'm' | 'l' | 'xl';
+   * @default s */
+  size?: 's' | 'm' | 'l';
 };
 
 declare const Counter: Intergalactic.Component<'div', CounterProps>;
