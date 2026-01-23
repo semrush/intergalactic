@@ -191,7 +191,7 @@ const Demo = () => {
           {' '}
           {triggerValueText}
         </Select.Trigger>
-        <Select.Popper aria-label='SERP Features'>
+        <Select.Popper wMax='260px' aria-label='SERP Features'>
           <InputSearch
             value={search}
             onChange={setSearch}
@@ -229,9 +229,8 @@ const Demo = () => {
                 <hideScrollBarsFromScreenReadersContext.Provider value={true}>
                   <ScrollArea
                     shadow={true}
-                    hMax='224px'
                     wMin='224px'
-                    wMax='260px'
+                    hMax='224px'
                     p={0}
                     orientation='vertical'
                   >
@@ -276,7 +275,7 @@ const Demo = () => {
                             </Text>
                           )}
                     </ScrollArea.Container>
-                    <ScrollArea.Bar orientation='vertical' />
+                    { Boolean(options.length) && <ScrollArea.Bar orientation='vertical' /> }
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 

@@ -1,0 +1,55 @@
+import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
+import React from 'react';
+
+const data = [
+  {
+    'kd/cpc/vol': 'ebay buy',
+    [ROW_GROUP]: [
+      {
+        keyword: '77.8',
+      },
+      {
+        keyword: '55.8',
+      },
+      {
+        keyword: '22.8',
+      },
+      {
+        keyword: '33.8',
+      },
+      {
+        keyword: '77.8',
+      },
+    ],
+  },
+  {
+    keyword: '77.8',
+    kd: '33.8',
+    cpc: '77.8',
+    vol: '123',
+  },
+];
+
+const Demo = () => {
+  return (
+    <DataTable
+      data={data}
+      aria-label='Rows grouping in multiline header'
+      columns={[
+        { name: 'keyword', children: 'Keyword' },
+        {
+          name: 'group',
+          children: 'Organic Sessions',
+          borders: 'both',
+          columns: [
+            { name: 'kd', children: 'KD %' },
+            { name: 'cpc', children: 'CPC' },
+            { name: 'vol', children: 'Vol.' },
+          ],
+        },
+      ]}
+    />
+  );
+};
+
+export default Demo;

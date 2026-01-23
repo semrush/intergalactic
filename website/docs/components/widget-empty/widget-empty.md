@@ -116,7 +116,7 @@ Table: Something went wrong message examples
 
 | Large widget                | Medium widget                  | Text                                                                                                               |
 | --------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try again later. If the problem persists, please contact our support" |
+| ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try again later. If the problem persists, contact our support team." |
 
 ### Button name
 
