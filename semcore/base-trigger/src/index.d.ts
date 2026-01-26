@@ -1,7 +1,7 @@
 import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import type { DotProps } from '@semcore/dot';
+import type { CounterProps } from '@semcore/counter';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
@@ -86,7 +86,7 @@ declare const LinkTrigger: Intergalactic.Component<'div', LinkTriggerProps> & {
 declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
-  Counter: Intergalactic.Component<'div', BoxProps & DotProps & FilterTriggerCounterProps>;
+  Counter: Intergalactic.Component<'div', CounterProps & FilterTriggerCounterProps>;
   TriggerButton: typeof BaseTrigger;
   ClearButton: typeof BaseTrigger;
 };

@@ -9,7 +9,7 @@ import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import Dot from '@semcore/dot';
+import { default as SemcoreCounter } from '@semcore/counter';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Close from '@semcore/icon/Close/m';
 import React from 'react';
@@ -109,10 +109,11 @@ class RootFilterTrigger extends Component {
   }
 
   getCounterProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, size } = this.asProps;
 
     return {
       getI18nText,
+      size,
     };
   }
 
@@ -236,7 +237,7 @@ class ClearButton extends Component {
 function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
   return sstyled(styles)(
-    <SCounter render={BaseTrigger.Addon} tag={Dot}>
+    <SCounter render={BaseTrigger.Addon} tag={SemcoreCounter} theme='info'>
       {count !== undefined
         ? (
             <>
