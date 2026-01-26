@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.1] - 2026-01-19
+
+### Fixed
+
+- `containerNode` property type. Added the ability to specify the null
+type.
+
 ## [16.2.0] - 2025-12-01
 
 ### Added

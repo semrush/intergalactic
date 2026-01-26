@@ -20,7 +20,3 @@ SWrapper {
     outline: none;
   }
 }
-
-SCounter {
-  background-color: var(--intergalactic-bg-primary-info, #008ff8);
-}
