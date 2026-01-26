@@ -10,6 +10,7 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   badgeText?: string;
   animatedSparkleCount?: number;
   showIcon?: boolean;
+  useBadge?: 'accent' | 'neutral';
   use?: 'primary' | 'secondary' | 'tertiary';
   size?: 'm' | 'l';
   disabled?: boolean;
@@ -49,7 +50,7 @@ const Demo = (props: ButtonFHAdvancedProps) => {
                   <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
                   <ButtonFH.Text>{buttonText}</ButtonFH.Text>
                   <ButtonFH.Addon>
-                    <BadgeFH>{badgeText}</BadgeFH>
+                    <BadgeFH use={props.useBadge}>{badgeText}</BadgeFH>
                   </ButtonFH.Addon>
                 </>
               )
@@ -74,6 +75,7 @@ export const defaultProps: ButtonFHAdvancedProps = {
   disabled: false,
   loading: false,
   active: false,
+  useBadge: 'accent',
 };
 
 Demo.defaultProps = defaultProps;

@@ -43,4 +43,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page.locator('[data-ui-name="Badge"]')).toHaveScreenshot();
     });
   });
+
+  test(`Verify all main types and inverted styles`, {
+    tag: [TAG.PRIORITY_HIGH,
+      '@badge'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
+    await expect(page).toHaveScreenshot();
+  });
 });
