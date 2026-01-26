@@ -16,7 +16,7 @@ export const CounterBase: StoryObj<typeof CounterDefProps> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['m', 'l'],
+      options: ['s', 'm', 'l'],
     },
     theme: {
       control: { type: 'select' },
