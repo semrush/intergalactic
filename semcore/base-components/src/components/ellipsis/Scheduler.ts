@@ -7,34 +7,36 @@ type Task = (...args: any[]) => void;
  */
 export class Scheduler {
   private idleId: number | null = null;
+  private animationFrameId: number | null = null;
   private timeout: ReturnType<typeof setTimeout> | null = null;
-  private readonly tasksTimeout: number = 200;
 
-  constructor(tasksTimeout?: number) {
-    if (tasksTimeout !== undefined) {
-      this.tasksTimeout = tasksTimeout;
-    }
-  }
-
-  public schedule(task: Task) {
+  public schedule(task: Task, tasksTimeout?: number | null) {
     if (canUseDOM() && 'requestIdleCallback' in window) {
       if (this.idleId !== null) {
         window.cancelIdleCallback(this.idleId);
       }
 
       this.idleId = window.requestIdleCallback(task);
-    } else {
+    } else if (tasksTimeout !== null && tasksTimeout !== undefined) {
       if (this.timeout !== null) {
         clearTimeout(this.timeout);
       }
 
-      this.timeout = setTimeout(task, this.tasksTimeout);
+      this.timeout = setTimeout(task, tasksTimeout);
+    } else {
+      if (this.animationFrameId !== null) {
+        cancelAnimationFrame(this.animationFrameId);
+      }
+
+      this.animationFrameId = requestAnimationFrame(task);
     }
   }
 
   public cancel() {
     if (this.idleId !== null) {
       window.cancelIdleCallback(this.idleId);
+    } else if (this.animationFrameId !== null) {
+      cancelAnimationFrame(this.animationFrameId);
     } else if (this.timeout !== null) {
       clearTimeout(this.timeout);
     }

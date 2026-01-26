@@ -128,8 +128,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     if (trigger) {
       this.subscribe(trigger);
     }
-
-    document.addEventListener('mousemove', this.handleMouseMove, { once: true });
   }
 
   componentWillUnmount() {
@@ -138,8 +136,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     if (trigger) {
       this.unsubscribe(trigger);
     }
-
-    document.removeEventListener('mousemove', this.handleMouseMove);
   }
 
   componentDidUpdate(prevProps: SimpleHintPopperProps) {
