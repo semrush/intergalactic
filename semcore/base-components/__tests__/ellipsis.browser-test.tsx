@@ -25,7 +25,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     ellipsisVariants.forEach((variant) => {
       test(`Verify ellipsis on link with keyboard focus when ${variant.description}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@ellipsis', '@link'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
         await locators.link(page).waitFor({ state: 'visible' });
@@ -104,7 +104,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     textVariants.forEach((variant) => {
       const ellipsisDesc = variant.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
       test(`Verify ellipsis on text with ellipsis: ${ellipsisDesc}, size: ${variant.size}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@text'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
         await locators.text(page).waitFor({ state: 'visible' });
@@ -127,7 +127,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     noEllipsisVariants.forEach((variant) => {
       test(`Verify no hint appears when ellipsis: ${variant.description}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@text'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
         await page.waitForTimeout(100);
@@ -142,7 +142,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify basic ellipsis usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
     await page.waitForTimeout(100);
@@ -155,7 +155,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify search highlight works well', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_search_selection.tsx', 'en');
 
