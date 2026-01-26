@@ -1,8 +1,7 @@
 {
   "Badge.Admin": "admin",
-  "Badge.Alpha": "alpha",
+  "Badge.Alpha": "alfa",
   "Badge.Beta": "beta",
-  "Badge.New": "new",
-  "Badge.ForYou": "for you",
-  "Badge.Soon": "soon"
+  "Badge.New": "novo",
+  "Badge.Soon": "em breve"
 }

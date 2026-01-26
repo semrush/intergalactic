@@ -1,8 +1,7 @@
 {
-  "Badge.Admin": "admin",
-  "Badge.Alpha": "alpha",
-  "Badge.Beta": "beta",
-  "Badge.New": "new",
-  "Badge.ForYou": "for you",
-  "Badge.Soon": "soon"
+  "Badge.Admin": "관리자",
+  "Badge.Alpha": "알파",
+  "Badge.Beta": "베타",
+  "Badge.New": "신규",
+  "Badge.Soon": "서비스 예정"
 }

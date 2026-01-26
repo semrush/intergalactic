@@ -1,8 +1,7 @@
 {
-  "Badge.Admin": "admin",
+  "Badge.Admin": "yönetici",
   "Badge.Alpha": "alpha",
   "Badge.Beta": "beta",
-  "Badge.New": "new",
-  "Badge.ForYou": "for you",
-  "Badge.Soon": "soon"
+  "Badge.New": "yeni",
+  "Badge.Soon": "yakında"
 }
