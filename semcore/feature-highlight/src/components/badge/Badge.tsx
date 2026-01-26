@@ -1,4 +1,4 @@
-import Badge from '@semcore/badge';
+import Badge, { type BadgeMargins } from '@semcore/badge';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
@@ -7,7 +7,7 @@ import style from './badge.shadow.css';
 
 type BadgeFHUse = 'accent' | 'neutral';
 
-type BadgeFHProps = {
+type BadgeFHProps = BadgeMargins & {
   /**
    * Type of feature badge.
    * @default accent

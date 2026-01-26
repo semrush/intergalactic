@@ -11,7 +11,17 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon';
 
-export type BadgeProps = {
+export type BadgeMargins = {
+  m?: BoxProps['m'];
+  ml?: BoxProps['ml'];
+  mt?: BoxProps['mt'];
+  mr?: BoxProps['mr'];
+  mb?: BoxProps['mb'];
+  mx?: BoxProps['mx'];
+  my?: BoxProps['my'];
+};
+
+export type BadgeProps = BadgeMargins & {
   /**
    * Type of badge.
    */
@@ -37,14 +47,6 @@ export type BadgeProps = {
    * @default white
    * */
   color?: 'white' | 'gray20' | string;
-
-  m?: BoxProps['m'];
-  ml?: BoxProps['ml'];
-  mt?: BoxProps['mt'];
-  mr?: BoxProps['mr'];
-  mb?: BoxProps['mb'];
-  mx?: BoxProps['mx'];
-  my?: BoxProps['my'];
 };
 
 class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
