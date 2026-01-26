@@ -193,9 +193,10 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
             flip(),
             shift({ padding: Number(this.asProps.padding) }),
           ];
-          if (mouseEvent !== undefined) {
+          const verticalPlacement = !placement || placement.startsWith('top') || placement.startsWith('bottom');
+          if (mouseEvent !== undefined && verticalPlacement) {
             middleware.push(
-              Middleware.cursorAnchoring({ x: mouseEvent.clientX, y: mouseEvent.clientY }),
+              Middleware.verticalCursorAnchoring({ x: mouseEvent.clientX }),
               shift({ padding: Number(this.asProps.padding) }),
             );
           }
