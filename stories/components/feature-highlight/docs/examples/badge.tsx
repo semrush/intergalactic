@@ -6,7 +6,7 @@ const Demo = () => (
     <BadgeFH>AI-powered</BadgeFH>
     <br />
     <br />
-    <BadgeFH use='neutral'>For you</BadgeFH>
+    <BadgeFH use='neutral'>Most popular</BadgeFH>
   </>
 );
 
