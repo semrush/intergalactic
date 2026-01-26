@@ -228,6 +228,11 @@ SText[ellipsis] {
   white-space: pre;
   display: inline-block;
 
+  &[trim='end']::after {
+    content: '';
+    display: block;
+  }
+
   &[maxLine] {
     -webkit-line-clamp: var(--maxLine);
     display: -webkit-box;

@@ -57,6 +57,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
     const { color, underline, lineThrough, hintProps, children, ellipsis, resolveColor } = this.asProps;
     const { showHint } = this.state;
 
+    const cropPosition = typeof ellipsis === 'object' ? (ellipsis.cropPosition ?? 'end') : (ellipsis === true ? 'end' : undefined);
     let withHint = hintProps !== false;
 
     const maxLineValue = typeof ellipsis === 'object' && ellipsis.maxLine !== undefined ? ellipsis.maxLine : undefined;
@@ -75,7 +76,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
           use:color={resolveColor(color)}
           use:ellipsis={Boolean(ellipsis)}
           maxLine={maxLineValue}
-          trim={typeof ellipsis === 'object' ? ellipsis.cropPosition : undefined}
+          trim={cropPosition}
         />
         {showHint && withHint && <Hint triggerRef={this.innerRef} {...hintProps}>{children}</Hint>}
       </>,
