@@ -43,7 +43,7 @@ const Demo = (props: WithEllipsisProps) => {
     <DropdownMenu selectable={props.selectable} multiselect={props.multiselect}>
       <DropdownMenu.Trigger tag={Button}>Menu</DropdownMenu.Trigger>
       <DropdownMenu.Menu hMax='400px' w='200px'>
-        <DropdownMenu.Group title='Menu title' subTitle='Subtitle'>
+        <DropdownMenu.Group title='We do not recommend' subTitle='Use ellipsis in menu items!'>
           <DropdownMenu.Item selected={isSelected(0)} onClick={() => handleItemClick(0)}>
             <DropdownMenu.Item.Content w='100%'>
               <DropdownMenu.Item.Text w='100%' ellipsis hintProps={{ placement: 'right' }}>Menu item 1 with long long long text</DropdownMenu.Item.Text>
@@ -60,9 +60,9 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Addon>
                 <DesktopIconM />
               </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item 3 with long long long text</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
-            <DropdownMenu.Item.Hint w='100%' tag={Text} ellipsis hintProps={false}>Hint item 3 with long long long text</DropdownMenu.Item.Hint>
+            <DropdownMenu.Item.Hint w='100%' tag={Text} ellipsis hintProps={{ placement: 'right' }}>Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!</DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
           <DropdownMenu.Item selected={isSelected(3)} onClick={() => handleItemClick(3)}>
             <DropdownMenu.Item.Content>
@@ -75,7 +75,9 @@ const Demo = (props: WithEllipsisProps) => {
           {props.addExtraItems && (
             <>
               <DropdownMenu.Item selected={isSelected(4)} onClick={() => handleItemClick(4)}>
-                <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 5 with long long long text</DropdownMenu.Item.Text>
+                <DropdownMenu.Item.Content w='100%'>
+                  <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 5 with long long long text</DropdownMenu.Item.Text>
+                </DropdownMenu.Item.Content>
               </DropdownMenu.Item>
               <DropdownMenu.Item selected={isSelected(5)} onClick={() => handleItemClick(5)}>
                 <DropdownMenu.Item.Content w='100%'>
@@ -86,7 +88,9 @@ const Demo = (props: WithEllipsisProps) => {
                 </DropdownMenu.Item.Content>
               </DropdownMenu.Item>
               <DropdownMenu.Item selected={isSelected(6)} onClick={() => handleItemClick(6)}>
-                <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 7 with long long long text</DropdownMenu.Item.Text>
+                <DropdownMenu.Item.Content w='100%'>
+                  <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 7 with long long long text</DropdownMenu.Item.Text>
+                </DropdownMenu.Item.Content>
               </DropdownMenu.Item>
               <DropdownMenu.Item selected={isSelected(7)} onClick={() => handleItemClick(7)}>
                 <DropdownMenu.Item.Content w='100%'>
@@ -94,7 +98,9 @@ const Demo = (props: WithEllipsisProps) => {
                 </DropdownMenu.Item.Content>
               </DropdownMenu.Item>
               <DropdownMenu.Item selected={isSelected(8)} onClick={() => handleItemClick(8)}>
-                <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 9 with long long long text</DropdownMenu.Item.Text>
+                <DropdownMenu.Item.Content w='100%'>
+                  <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 9 with long long long text</DropdownMenu.Item.Text>
+                </DropdownMenu.Item.Content>
               </DropdownMenu.Item>
             </>
           )}

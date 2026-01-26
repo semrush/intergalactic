@@ -516,7 +516,6 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify Ellipsis applies and Hint shown on Hover with placement Top', async () => {
       await locators.button(page).click();
-      await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await locators.menuitem(page, 0).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
@@ -530,7 +529,6 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
-      await page.keyboard.press('ArrowDown');
       await locators.hint(page).waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await locators.hint(page).waitFor({ state: 'hidden' });
