@@ -105,6 +105,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -127,6 +128,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     if (trigger) {
       this.subscribe(trigger);
     }
+
+    document.addEventListener('mousemove', this.handleMouseMove, { once: true });
   }
 
   componentWillUnmount() {
@@ -135,6 +138,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     if (trigger) {
       this.unsubscribe(trigger);
     }
+
+    document.removeEventListener('mousemove', this.handleMouseMove);
   }
 
   componentDidUpdate(prevProps: SimpleHintPopperProps) {
@@ -233,6 +238,26 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       this.hintRef.current?.style.setProperty('visibility', 'hidden');
       this.handlers.visible(false);
     }, hideTimeout);
+  }
+
+  private handleMouseMove(event: MouseEvent) {
+    const trigger = this.asProps.triggerRef.current;
+    const eventTarget = event.target;
+
+    if (trigger instanceof HTMLElement && eventTarget instanceof HTMLElement) {
+      const rect = trigger.getBoundingClientRect();
+      const { clientX, clientY } = event;
+
+      const isOver =
+        clientX >= rect.left &&
+        clientX <= rect.right &&
+        clientY >= rect.top &&
+        clientY <= rect.bottom;
+
+      if (isOver) {
+        this.showHint(trigger, event);
+      }
+    }
   }
 
   private handleFocus(e: FocusEvent): void {
