@@ -51,7 +51,9 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   parseValueWithMinMax = (value: string) => {
     const [min, max] = this.minMax;
 
-    return String(Math.max(min, Math.min(max, Number(value))));
+    const numberValue = isNaN(Number(value)) ? min : Number(value);
+
+    return String(Math.max(min, Math.min(max, numberValue)));
   };
 
   dispatchOnChange(value: string, event: React.SyntheticEvent) {
@@ -71,10 +73,11 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   handleChange = (value: string, event: React.SyntheticEvent) => {
     event.stopPropagation();
 
-    const numberValue = Number(value);
+    const inputValue = value.replace(/[^0-9]/g, '');
+    const numberValue = Number(inputValue);
 
     if (!Number.isNaN(numberValue)) {
-      this.setState({ dirtyValue: value.slice(-2) });
+      this.setState({ dirtyValue: inputValue.slice(-2) });
     }
   };
 
@@ -101,6 +104,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
         onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
         visible={visible}
         value={time}
+        defaultHighlightedIndex={time ? null : 0}
       >
         <SPickerInput
           render={Select.Trigger}
