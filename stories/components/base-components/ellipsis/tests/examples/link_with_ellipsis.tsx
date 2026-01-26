@@ -1,5 +1,4 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
-import type { HintProps } from '@semcore/ui/hint';
+import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -11,7 +10,7 @@ type LinkEllipsisProps = {
   active?: boolean;
   disabled?: boolean;
   enableHintTriggerRef?: boolean;
-  hintProps?: HintProps;
+  hintProps?: SimpleHintPopperProps;
 };
 
 const Demo = (props: LinkEllipsisProps) => {
