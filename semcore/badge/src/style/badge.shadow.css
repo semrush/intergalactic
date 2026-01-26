@@ -11,11 +11,17 @@ SBadge {
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
 SBadge[bg] {
   background-color: var(--bg);
 }
+
+SBadge[inverted] {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
 SBadge[color] {
   color: var(--color);
 }

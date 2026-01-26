@@ -18,6 +18,10 @@ export const ButtonProps: StoryObj<typeof defaultProps> = {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'tertiary'],
     },
+    useBadge: {
+      control: { type: 'select' },
+      options: ['accent', 'neutral', undefined],
+    },
     size: {
       control: { type: 'select' },
       options: ['m', 'l'],

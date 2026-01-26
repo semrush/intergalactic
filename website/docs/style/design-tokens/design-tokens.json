@@ -364,6 +364,7 @@
     "description": "Primary text.",
     "components": [
       "accordion",
+      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",
@@ -479,6 +480,7 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
+      "badge",
       "button",
       "date-picker",
       "dot",
