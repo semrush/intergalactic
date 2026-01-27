@@ -1,4 +1,5 @@
 {
   "loading": "Laddar åtkomstmodul.",
-  "failed": "Det gick inte att ladda åtkomstmodulen. Kontakta supporten för att hjälpa oss att lösa problemet snabbare."
+  "failed": "Det gick inte att ladda åtkomstmodulen. Kontakta supporten för att hjälpa oss att lösa problemet snabbare.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Öppna sammanfattning av data"
 }

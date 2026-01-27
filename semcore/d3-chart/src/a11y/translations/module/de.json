@@ -1,4 +1,5 @@
 {
   "loading": "Lade Zugriffsmodul.",
-  "failed": "Zugriffsmodul konnte nicht geladen werden. Kontaktieren Sie den Support und helfen Sie uns, das Problem schneller zu beheben."
+  "failed": "Zugriffsmodul konnte nicht geladen werden. Kontaktieren Sie den Support und helfen Sie uns, das Problem schneller zu beheben.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Zusammenfassung der Daten öffnen"
 }

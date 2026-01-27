@@ -1,4 +1,5 @@
 {
   "loading": "Erişilebilirlik modülü yükleniyor.",
-  "failed": "Erişilebilirlik modülü yüklenemedi. Sorunu daha hızlı çözmemize yardımcı olmak için kullanıcı destek hizmeti ile iletişime geçin."
+  "failed": "Erişilebilirlik modülü yüklenemedi. Sorunu daha hızlı çözmemize yardımcı olmak için kullanıcı destek hizmeti ile iletişime geçin.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Veri özetini aç"
 }

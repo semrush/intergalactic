@@ -1,4 +1,5 @@
 {
   "loading": "Đang tải mô-đun trợ năng.",
-  "failed": "Không tải được mô-đun trợ năng. Liên hệ với bộ phận hỗ trợ người dùng dịch vụ để giúp chúng tôi giải quyết vấn đề nhanh hơn."
+  "failed": "Không tải được mô-đun trợ năng. Liên hệ với bộ phận hỗ trợ người dùng dịch vụ để giúp chúng tôi giải quyết vấn đề nhanh hơn.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Mở tóm tắt dữ liệu"
 }

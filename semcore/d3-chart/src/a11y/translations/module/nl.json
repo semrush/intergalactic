@@ -1,4 +1,5 @@
 {
   "loading": "De toegankelijkheidsmodule wordt geladen.",
-  "failed": "De toegankelijkheidsmodule kan niet worden geladen. Neem contact op met ons supportteam zodat we het probleem sneller kunnen oplossen."
+  "failed": "De toegankelijkheidsmodule kan niet worden geladen. Neem contact op met ons supportteam zodat we het probleem sneller kunnen oplossen.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Open samenvatting gegevens"
 }
