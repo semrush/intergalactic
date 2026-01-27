@@ -17,7 +17,7 @@ export type NoticeBubbleContainerPortalProps = PortalProps;
 export type NoticeBubbleContainerProps = BoxProps &
   NoticeBubbleContainerPortalProps & {
     /** Ref or element to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
-    containerNode?: NodeByRef;
+    containerNode?: NodeByRef | null;
     /** Manager copy */
     manager?: NoticeBubbleManagerClass;
     /** Specifies the locale for i18n support */
