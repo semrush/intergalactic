@@ -32,7 +32,6 @@ import InputNumber from './entries/InputNumber';
 import InputTags from './entries/InputTags';
 import Link from './entries/Link';
 import Notice from './entries/Notice';
-import NoticeGlobal from './entries/NoticeGlobal';
 import Pagination from './entries/Pagination';
 import Pills from './entries/Pills';
 import ProgressBar from './entries/ProgressBar';
@@ -67,7 +66,6 @@ const registry = {
   InputTags,
   Link,
   Notice,
-  NoticeGlobal,
   Pagination,
   Pills,
   ProgressBar,

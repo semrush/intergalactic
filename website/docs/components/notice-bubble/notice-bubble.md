@@ -8,16 +8,16 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 
 **NoticeBubble (Alert)** is a notification component that informs users about completed actions, the beginning or ending of a process.
 
-Let's compare NoticeBubble with [Notice](/components/notice/notice) and [NoticeGlobal](/components/notice-global/notice-global) based on the following criteria:
+Let's compare NoticeBubble with [Notice](/components/notice/notice) based on the following criteria:
 
-Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice and NoticeBubble
 
-| Criteria                                                                                    | Notice | NoticeBubble | NoticeGlobal |
-| ------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
-| Refers to the entire website                                                                | ❌     | ✅ ❌        | ✅           |
-| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        | ✅           |
-| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           | ✅           |
-| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           | ✅           |
+| Criteria                                                                                    | Notice | NoticeBubble |
+| ------------------------------------------------------------------------------------------- | ------ | ------------ |
+| Refers to the entire website                                                                | ❌     | ✅ ❌        |
+| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        |
+| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           |
+| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           |
 
 **This component includes:**
 

@@ -6,7 +6,6 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import CloseIconM from '@semcore/icon/Close/m';
-import NoticeGlobal from '@semcore/notice-global';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -81,18 +80,9 @@ class RootNotice extends Component {
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
+    const { Children, styles, hidden, theme, resolveColor, getI18nText } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-
-    if (use === 'primary') {
-      logger.warn(
-        true,
-        `Deprecated property-value pair "use=primary", use component <NoticeGlobal/> instead`,
-        RootNotice.displayName,
-      );
-      return <NoticeGlobal {...this.asProps} />;
-    }
 
     let ariaLabel = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
 
