@@ -146,7 +146,7 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
     const STimePicker = Root;
     const { styles, Children, value, is12Hour, getI18nText, id } = this.asProps;
 
-    const time = this.entity.toString();
+    const time = `${this.entity.hours}:${this.entity.minutes}`;
     const meridiem = is12Hour ? this.entity.meridiem : '';
 
     const label = value
