@@ -127,7 +127,7 @@ figma.connect(
   BarChartSkeleton,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=MuIvHlIpGrVpSu9j-11',
   {
-    variant: { chart: '📊 bar chart (vertical)' },
+    variant: { chart: '📊 bar chart (horizontal)' },
 
     example: () => <BarChartSkeleton layout='vertical' />,
   },
@@ -147,7 +147,7 @@ figma.connect(
   HistogramChartSkeleton,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10328-147008&t=MuIvHlIpGrVpSu9j-11',
   {
-    variant: { chart: '📊 histogram (vertical)' },
+    variant: { chart: '📊 histogram (horizontal)' },
 
     example: () => <HistogramChartSkeleton layout='vertical' />,
   },
