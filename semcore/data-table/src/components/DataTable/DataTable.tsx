@@ -1270,6 +1270,33 @@ class DataTableRoot<
 
       let accordionInCell = null as null | React.ReactNode | DataTableData;
 
+      let rowKey = row[UNIQ_ROW_KEY];
+
+      if (!rowKey && uniqueRowKey) {
+        if (uniqueRowKey) {
+          // @ts-ignore
+          const keyValue = row[uniqueRowKey];
+          if (keyValue instanceof MergedRowsCell) {
+            rowKey = keyValue.value;
+          } else {
+            rowKey = keyValue;
+          }
+        } else {
+          rowKey = `${uid}_${(rowIndex + id).toString(36)}`;
+        }
+      }
+
+      const initData: DTRow<UniqKeyType> = {
+        /*
+          row -> DataRowItem
+          uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
+        */
+        // @ts-ignore
+        [UNIQ_ROW_KEY]: rowKey,
+        [ROW_INDEX]: rowIndex,
+        [GRID_ROW_INDEX]: gridRowIndex,
+      };
+
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
@@ -1293,16 +1320,7 @@ class DataTableRoot<
 
           return acc;
         },
-        {
-          /*
-            row -> DataRowItem
-            uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
-          */
-          // @ts-ignore
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`),
-          [ROW_INDEX]: rowIndex,
-          [GRID_ROW_INDEX]: gridRowIndex,
-        },
+        initData,
       );
 
       gridRowIndex++;

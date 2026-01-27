@@ -6,7 +6,7 @@ import Spin from '@semcore/spin';
 import * as React from 'react';
 
 import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
-import { MergedColumnsCell } from './MergedCells';
+import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
 import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
@@ -14,7 +14,7 @@ import style from './style.shadow.css';
 import {
   GRID_ROW_INDEX,
   IS_EMPTY_DATA_ROW,
-  ROW_INDEX,
+  ROW_INDEX, SELECT_ALL,
   UNIQ_ROW_KEY,
 } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
@@ -225,6 +225,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       uid,
       rows,
       renderCellOverlay,
+      selectedRows,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -349,17 +350,40 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
+            const groupUniqKey = row[0][UNIQ_ROW_KEY];
+
+            let isFirstCellAreMergedRows = false;
+            let theme: 'info' | undefined = undefined;
+
+            if (selectedRows) {
+              const nextColumnName = columns[1].name;
+              const firstCell = row[0][nextColumnName];
+
+              if (firstCell instanceof MergedRowsCell) {
+                row[0][SELECT_ALL.toString()] = new MergedRowsCell('', firstCell.rowsCount);
+
+                isFirstCellAreMergedRows = true;
+              }
+            }
+
             return sstyled(styles)(
               <SRowGroup
                 role='rowgroup'
-                key={`gg_${row[0][UNIQ_ROW_KEY]}`}
+                key={`gg_${groupUniqKey}`}
                 ref={this.handleRef(this.startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
+                  if (isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey)) {
+                    theme = 'info';
+                  } else {
+                    theme = selectedRows?.includes(item[UNIQ_ROW_KEY]) ? 'info' : undefined;
+                  }
+
                   return (
                     <Body.Row
-                      key={item[UNIQ_ROW_KEY]?.toString()}
+                      key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
                       row={item}
+                      theme={theme}
                       mergedRow={i > 0 ? true : false}
                       componentRef={this.handleComponentRef(item)}
                     />
@@ -368,10 +392,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               </SRowGroup>,
             );
           }
+
+          const rowUniqKey = row[UNIQ_ROW_KEY];
+          const theme = selectedRows?.includes(rowUniqKey) ? 'info' : undefined;
+
           return (
             <Body.Row
-              key={row[UNIQ_ROW_KEY]?.toString()}
+              key={rowUniqKey?.toString()}
               row={row}
+              theme={theme}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={this.handleComponentRef(row)}
             />
