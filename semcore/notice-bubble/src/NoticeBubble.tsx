@@ -1,4 +1,4 @@
-import { Portal, Animation, Box, Flex } from '@semcore/base-components';
+import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';

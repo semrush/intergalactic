@@ -409,9 +409,9 @@ importers:
 
   semcore/base-trigger:
     dependencies:
-      '@semcore/dot':
+      '@semcore/counter':
         specifier: 16.0.11
-        version: link:../dot
+        version: link:../counter
       '@semcore/icon':
         specifier: 16.7.3
         version: 16.7.3(@semcore/base-components@semcore+base-components)
@@ -1477,25 +1477,6 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
 
-  semcore/notice-global:
-    dependencies:
-      '@semcore/button':
-        specifier: 16.0.12
-        version: link:../button
-      '@semcore/icon':
-        specifier: 16.7.3
-        version: 16.7.3(@semcore/base-components@semcore+base-components)
-    devDependencies:
-      '@semcore/base-components':
-        specifier: workspace:*
-        version: link:../base-components
-      '@semcore/core':
-        specifier: workspace:*
-        version: link:../core
-      '@semcore/testing-utils':
-        specifier: workspace:*
-        version: link:../../tools/testing-utils
-
   semcore/pagination:
     dependencies:
       '@semcore/button':
@@ -1987,9 +1968,6 @@ importers:
       '@semcore/notice-bubble':
         specifier: ^16.2.0
         version: link:../notice-bubble
-      '@semcore/notice-global':
-        specifier: ^16.1.13
-        version: link:../notice-global
       '@semcore/pagination':
         specifier: ^16.1.12
         version: link:../pagination
