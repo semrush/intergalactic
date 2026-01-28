@@ -452,8 +452,12 @@ class DataTableRoot<
 
     if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
       let select = false;
+      const firstColumnKey = this.columns[0].name;
+      const isMerged = this.flatRows.some((item) => item[firstColumnKey] instanceof MergedRowsCell);
 
       for (const item of this.flatRows) {
+        if (isMerged && !item[firstColumnKey]) continue;
+
         if (!select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
           select = true;
           if (isSelected) {
