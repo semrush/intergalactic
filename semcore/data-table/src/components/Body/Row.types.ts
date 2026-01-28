@@ -2,7 +2,7 @@ import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
 import type { CellRenderProps } from './Body.types';
-import type { DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps, Theme } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import type {
@@ -104,9 +104,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   limit: DataTableProps<any, any, any>['limit'];
   totalRows?: number;
   hasGroups: boolean;
-
-  /** rendering selected rows with this theme */
-  theme?: 'info';
+  theme?: Theme;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
