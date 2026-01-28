@@ -4,25 +4,19 @@ import Input from '@semcore/input';
 import Select from '@semcore/select';
 import React from 'react';
 
-import { intOrDefault, withLeadingZero } from './TimePicker';
+import style from './picker-input.shadow.css';
+import type { PickerInputMinMax, PickerInputProps } from './PickerInput.type';
+import type { TimePickerField } from '../TimePicker/TimePicker.type';
 
-const MAP_FIELD_TO_TIME = {
-  hours: 0,
-  minutes: 1,
-};
-
-const MAP_SIZE_SELECT = {
-  m: 'm',
-  l: 'l',
-};
-
-function getOptions(min, max, step = 1) {
+function getOptions(minMax: PickerInputMinMax, step = 1) {
+  const [min, max] = minMax;
   const length = Number(((max + 1 - min) / step).toFixed(0));
   const options = Array(length).fill('');
   let numValue = min;
   return options.map((_i, index) => {
     numValue = index === 0 ? numValue : numValue + step;
-    const value = withLeadingZero(String(numValue));
+    const value = String(numValue).padStart(2, '0');
+
     return (
       <Select.Option value={value} key={value}>
         {value}
@@ -31,36 +25,43 @@ function getOptions(min, max, step = 1) {
   });
 }
 
-const defaultPopperOffset = [-8, 4];
+type State = {
+  dirtyValue?: string;
+  visible: boolean;
+};
 
-class ItemPicker extends Component {
-  static defaultProps = {
+abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {}, State> {
+  static style = style;
+  static defaultProps = (_: PickerInputProps) => ({
     placeholder: '00',
-    offset: defaultPopperOffset,
-  };
+    offset: [-8, 4],
+  });
 
-  inputRef = React.createRef();
-
-  minMax() {
-    return [];
-  }
-
-  state = {
+  state: State = {
     dirtyValue: undefined,
     visible: false,
   };
 
-  parseValueWithMinMax = (value) => {
-    const [min, max] = this.minMax();
-    return String(Math.max(min, Math.min(max, value)));
+  inputRef = React.createRef();
+
+  abstract get field(): TimePickerField;
+  abstract get minMax(): PickerInputMinMax;
+  abstract handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void;
+
+  parseValueWithMinMax = (value: string) => {
+    const [min, max] = this.minMax;
+
+    const numberValue = isNaN(Number(value)) ? min : Number(value);
+
+    return String(Math.max(min, Math.min(max, numberValue)));
   };
 
-  dispatchOnChange(value, event) {
+  dispatchOnChange(value: string, event: React.SyntheticEvent) {
     this.setState({ dirtyValue: undefined });
     this.asProps.$onValueChange(value, this.field, event);
   }
 
-  submitChanges(event) {
+  submitChanges(event: React.SyntheticEvent) {
     let { dirtyValue } = this.state;
     if (dirtyValue !== undefined) {
       // if changes value
@@ -69,52 +70,41 @@ class ItemPicker extends Component {
     }
   }
 
-  handleChange = (value, event) => {
-    /* hide props for bubbling events */
+  handleChange = (value: string, event: React.SyntheticEvent) => {
     event.stopPropagation();
-    const numberValue = intOrDefault(Number(value), Number.NaN);
+
+    const inputValue = value.replace(/[^0-9]/g, '');
+    const numberValue = Number(inputValue);
 
     if (!Number.isNaN(numberValue)) {
-      this.setState({ dirtyValue: value.slice(-2) });
+      this.setState({ dirtyValue: inputValue.slice(-2) });
     }
   };
 
-  handleBlur = (event) => this.submitChanges(event);
+  handleBlur = (event: React.SyntheticEvent) => this.submitChanges(event);
 
-  /* rewrite method */
-  handleKeyDown = () => {};
-
-  handleSelect = (value, event) => {
+  handleSelect = (value: string, event: React.SyntheticEvent) => {
     this.dispatchOnChange(value, event);
   };
 
-  handleVisibleChange = (visible) => this.setState({ visible });
-
-  getAriaLabel = () => {
-    const { _getI18nText: getI18nText } = this.asProps;
-    if (this.field === 'hours') return getI18nText('hours');
-    if (this.field === 'minutes') return getI18nText('minutes');
-    return undefined;
-  };
+  handleVisibleChange = (visible: boolean) => this.setState({ visible });
 
   render() {
     const SPickerInput = Root;
-    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } =
-      this.asProps;
+    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
-    const timeValue = time[MAP_FIELD_TO_TIME[this.field]];
-    const value = dirtyValue === undefined ? timeValue : dirtyValue;
-    const [min, max] = this.minMax();
+    const value = dirtyValue === undefined ? time : dirtyValue;
 
     return sstyled(styles)(
       <Select
         {...other}
         interaction='focus'
-        size={size ? MAP_SIZE_SELECT[size] : false}
+        size={size}
         onChange={callAllEventHandlers(onSelect, this.handleSelect)}
         onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
         visible={visible}
-        value={timeValue}
+        value={time}
+        defaultHighlightedIndex={time ? null : 0}
       >
         <SPickerInput
           render={Select.Trigger}
@@ -125,31 +115,31 @@ class ItemPicker extends Component {
           disabled={disabled}
           neighborLocation={false}
           value={value}
-          aria-label={this.getAriaLabel()}
+          aria-label={ariaLabel}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
-        <Select.Menu hMax={180}>{getOptions(min, max, step)}</Select.Menu>
+        <Select.Menu hMax={180}>{getOptions(this.minMax, step)}</Select.Menu>
       </Select>,
     );
   }
 }
 
-class Hours extends ItemPicker {
-  field = 'hours';
-  static defaultProps = ({ size }) => ({
-    ...ItemPicker.defaultProps,
-    ml: size === 'l' ? 3 : undefined,
+class Hours extends AbstractPickerInput {
+  static defaultProps = (props: PickerInputProps) => ({
+    ...AbstractPickerInput.defaultProps(props),
+    ml: props.size === 'l' ? 3 : undefined,
   });
 
-  minMax() {
+  get field(): TimePickerField {
+    return 'hours';
+  }
+
+  get minMax(): PickerInputMinMax {
     const { is12Hour } = this.asProps;
-    if (is12Hour) {
-      return [1, 12];
-    } else {
-      return [0, 23];
-    }
+
+    return is12Hour ? [1, 12] : [0, 23];
   }
 
   focusNext() {
@@ -159,13 +149,14 @@ class Hours extends ItemPicker {
     }
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { currentTarget } = event;
     if (event.key === 'Enter') {
       this.submitChanges(event);
     }
     if (event.key === 'ArrowRight') {
       if (
+        currentTarget.selectionStart &&
         currentTarget.selectionStart >= currentTarget.value.length &&
         currentTarget.selectionStart === currentTarget.selectionEnd
       ) {
@@ -175,7 +166,7 @@ class Hours extends ItemPicker {
     }
   };
 
-  componentDidUpdate(_prevProps, prevState) {
+  componentDidUpdate(_: PickerInputProps, prevState: State) {
     const { dirtyValue } = this.state;
     if (prevState.dirtyValue === undefined || dirtyValue === undefined) return;
 
@@ -185,14 +176,17 @@ class Hours extends ItemPicker {
   }
 }
 
-class Minutes extends ItemPicker {
-  field = 'minutes';
-  static defaultProps = ({ size }) => ({
-    ...ItemPicker.defaultProps,
-    mr: size === 'l' ? 3 : undefined,
+class Minutes extends AbstractPickerInput {
+  static defaultProps = (props: PickerInputProps) => ({
+    ...AbstractPickerInput.defaultProps(props),
+    mr: props.size === 'l' ? 3 : undefined,
   });
 
-  minMax() {
+  get field(): TimePickerField {
+    return 'minutes';
+  }
+
+  get minMax(): PickerInputMinMax {
     return [0, 59];
   }
 
@@ -203,10 +197,11 @@ class Minutes extends ItemPicker {
     }
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { currentTarget } = event;
     if (event.key === 'ArrowLeft') {
       if (
+        currentTarget.selectionStart &&
         currentTarget.selectionStart <= 0 &&
         currentTarget.selectionStart === currentTarget.selectionEnd
       ) {

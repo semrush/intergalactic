@@ -3,8 +3,12 @@ import { Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-class TimePickerFormat extends Component {
-  static enhance = [uniqueIDEnhancement()];
+import style from './picker-format.shadow.css';
+import type { TimePickerFormatProps, TimePickerFormatPropsInternal } from './PickerFormat.type';
+
+class TimePickerFormat extends Component<TimePickerFormatProps, typeof TimePickerFormat.enhance, {}, TimePickerFormatPropsInternal> {
+  static style = style;
+  static enhance = [uniqueIDEnhancement()] as const;
 
   state = {
     changedFormatNotice: '',
