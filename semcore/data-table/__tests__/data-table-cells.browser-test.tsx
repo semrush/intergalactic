@@ -83,7 +83,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     if (browserName == 'firefox') test.skip();
+
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
+
+    const consoleErrors: string[] = [];
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        consoleErrors.push(msg.text());
+      }
+    });
+
+    page.on('pageerror', (error) => {
+      consoleErrors.push(error.message);
+    });
 
     await test.step('Verify Color when child cell hovered', async () => {
       await locators.getCell(page, 3, 1).hover();
@@ -99,6 +112,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       for (let row = 2; row <= 5; row++) {
         await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
       }
+    });
+
+    await test.step('Verify no console errors', async () => {
+      expect(consoleErrors, `Console errors found:\n${consoleErrors.join('\n')}`).toHaveLength(0);
     });
   });
 });
