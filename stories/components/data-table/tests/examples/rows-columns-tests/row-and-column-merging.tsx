@@ -31,16 +31,17 @@ const data = [
     vol: '21,644,290',
   },
   {
-    keyword: 'www.ebay.com',
+    kd: '11.2',
     [ROW_GROUP]: [
       {
-        'kd': '11.2',
-        'cpc/vol': 'These TWO columns are grouped.',
-      },
-      {
-        kd: '10',
+        keyword: 'www.ebay.com',
         cpc: '$0.65',
         vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay.com',
+        cpc: '$1.25',
+        vol: '32,500,000',
       },
     ],
   },
@@ -73,16 +74,17 @@ const data = [
     vol: '21,644,290',
   },
   {
-    keyword: 'www.ebay.com',
+    kd: '11.2',
     [ROW_GROUP]: [
       {
-        'kd': '11.2',
-        'cpc/vol': 'These TWO columns are grouped.',
-      },
-      {
-        kd: '10',
+        keyword: 'www.ebay.com',
         cpc: '$0.65',
         vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay.com',
+        cpc: '$1.25',
+        vol: '32,500,000',
       },
     ],
   },
@@ -115,16 +117,17 @@ const data = [
     vol: '21,644,290',
   },
   {
-    keyword: 'www.ebay.com',
+    kd: '11.2',
     [ROW_GROUP]: [
       {
-        'kd': '11.2',
-        'cpc/vol': 'These TWO columns are grouped.',
-      },
-      {
-        kd: '10',
+        keyword: 'www.ebay.com',
         cpc: '$0.65',
         vol: '47,354,640',
+      },
+      {
+        keyword: 'ebay.com',
+        cpc: '$1.25',
+        vol: '32,500,000',
       },
     ],
   },

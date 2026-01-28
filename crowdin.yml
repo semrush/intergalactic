@@ -10,6 +10,10 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "semcore/badge/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/base-trigger/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },

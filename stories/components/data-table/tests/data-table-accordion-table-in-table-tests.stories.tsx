@@ -7,8 +7,8 @@ import type { AccordionWithTablenProps } from './examples/accordion-tests/table-
 import ForAnimationAndJustifyContentTestExample, { accordionWithTablenProps } from './examples/accordion-tests/table-in-table/for-animation-and-justify-content-test';
 import type { TableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
 import TableInTableInTableExample, { tableInTableInTableProps } from './examples/accordion-tests/table-in-table/table-in-table-in-table';
-import WithFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
 import type { TableInTableFixedColumnProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
+import WithFixedColumnExample, { tableInTableFixedColumnDefaultProps } from './examples/accordion-tests/table-in-table/with-fixed-column';
 import WithSortingExample from './examples/accordion-tests/table-in-table/with-sorting';
 
 const meta: Meta<typeof DataTable> = {

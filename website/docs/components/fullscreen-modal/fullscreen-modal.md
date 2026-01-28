@@ -83,8 +83,3 @@ When loading and reloading the content of the window, use [SpinContainer](../spi
 If an error occurred during data loading, show an error message with the **Reload** button.
 
 For error messages use [Widget empty state](/components/widget-empty/widget-empty) component.
-
-#### Limit
-
-![](static/limit.png)
-
