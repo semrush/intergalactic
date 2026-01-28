@@ -82,7 +82,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey, showTotalInTooltip, showTooltip } = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, showPercentValueInTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {
@@ -107,7 +107,10 @@ class LineChartComponent extends AbstractChart<
                         <HoverLine.Tooltip.Dot mr={4} color={item.color}>
                           {item.label}
                         </HoverLine.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        <Flex gap={2}>
+                          { showPercentValueInTooltip && <Text color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text> }
+                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        </Flex>
                       </Flex>
                     )
                   );
@@ -116,7 +119,10 @@ class LineChartComponent extends AbstractChart<
                 {showTotalInTooltip === true && (
                   <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
+                    <Flex gap={2}>
+                      { showPercentValueInTooltip && <Text color='text-secondary'>100%</Text> }
+                      <Text bold>{total}</Text>
+                    </Flex>
                   </Flex>
                 )}
               </>

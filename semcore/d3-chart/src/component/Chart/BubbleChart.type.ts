@@ -17,7 +17,10 @@ export type BubbleChartData = Array<{
   color?: string;
 }>;
 
-export type BubbleChartProps = BaseChartProps<BubbleChartData> & {
+export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<BubbleChartData>,
+  'showTotalInTooltip' | 'showPercentValueInTooltip'
+> & {
   /** Field name that groups the data points */
   groupKey?: never;
   /** Custom x-axis scale */

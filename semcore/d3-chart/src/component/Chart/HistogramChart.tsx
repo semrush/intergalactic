@@ -147,7 +147,7 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis } = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, showPercentValueInTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {
@@ -177,7 +177,10 @@ class HistogramChartComponent extends AbstractChart<
                         <HoverRect.Tooltip.Dot mr={4} color={item.color}>
                           {item.label}
                         </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        <Flex gap={2}>
+                          { showPercentValueInTooltip && <Text color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text> }
+                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        </Flex>
                       </Flex>
                     )
                   );
@@ -186,7 +189,10 @@ class HistogramChartComponent extends AbstractChart<
                 {showTotalInTooltip === true && (
                   <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
+                    <Flex gap={2}>
+                      { showPercentValueInTooltip && <Text color='text-secondary'>100%</Text> }
+                      <Text bold>{total}</Text>
+                    </Flex>
                   </Flex>
                 )}
               </>

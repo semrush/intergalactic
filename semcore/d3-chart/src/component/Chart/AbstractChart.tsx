@@ -33,6 +33,7 @@ export abstract class AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    showPercentValueInTooltip: false,
   };
 
   /**
@@ -264,6 +265,25 @@ export abstract class AbstractChart<
     }, 0);
 
     return total;
+  }
+
+  protected percentValue(data: ObjectData, key: string): string {
+    const total = this.totalValue(data);
+
+    const value = data[key];
+
+    if (typeof value === 'number') {
+      // just to prevent NaN and Infinity as procent.
+      if (value === 0 || total === 0) {
+        return `0%`;
+      }
+
+      const procent = Math.round((100 * value) / total);
+
+      return `${procent}%`;
+    }
+
+    return 'n/a';
   }
 
   protected getValueScale(values: number[]): number {

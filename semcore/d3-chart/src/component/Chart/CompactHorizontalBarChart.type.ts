@@ -9,7 +9,10 @@ type BarKey = string;
 
 export type CompactHorizontalBarChartData = Array<Record<BarKey, number | string>>;
 
-export type CompactHorizontalBarChartProps = BaseChartProps<CompactHorizontalBarChartData> & {
+export type CompactHorizontalBarChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<CompactHorizontalBarChartData>,
+  'showTotalInTooltip' | 'showPercentValueInTooltip'
+> & {
   /** Field name from data array for the x-axis values */
   x: string;
   /** Field name from data array for the y-axis values */

@@ -5,11 +5,11 @@ import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
-import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -156,7 +156,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect } =
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect, showPercentValueInTooltip } =
       this.asProps;
     const { dataDefinitions } = this.state;
 
@@ -188,7 +188,10 @@ class BarChartComponent extends AbstractChart<
                         <HoverRect.Tooltip.Dot mr={4} color={item.color}>
                           {item.label}
                         </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        <Flex gap={2}>
+                          {showPercentValueInTooltip && <Text color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
+                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                        </Flex>
                       </Flex>
                     )
                   );
@@ -197,7 +200,10 @@ class BarChartComponent extends AbstractChart<
                 {showTotalInTooltip === true && (
                   <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
+                    <Flex gap={2}>
+                      {showPercentValueInTooltip && <Text color='text-secondary'>100%</Text>}
+                      <Text bold>{total}</Text>
+                    </Flex>
                   </Flex>
                 )}
               </>
