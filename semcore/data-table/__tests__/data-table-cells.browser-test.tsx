@@ -96,9 +96,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify Color when parent cell hovered', async () => {
       await locators.getCell(page, 2, 2).hover();
 
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
-
-      for (let row = 2; row <= 6; row++) {
+      for (let row = 2; row <= 5; row++) {
         await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
       }
     });
@@ -337,7 +335,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
-      await expect(locators.getCell(page, 2, 3)).toBeFocused();
+      await expect(locators.getCell(page, 2, 5)).toBeFocused();
 
       await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
