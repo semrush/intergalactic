@@ -32,30 +32,26 @@ export const initPrerelease = async () => {
 };
 
 export const initIconPrerelease = async () => {
-  const npmData = await fetchFromNpm(['@semcore/icon']);
+  const COMPONENT_NAME = '@semcore/icon';
+  const prevReleaseTag = await gitUtils.getPrevIconTag();
 
-  const packages = await collectPackages(npmData);
-  const iconPackage = packages.find((pkg) => pkg.name === '@semcore/icon');
+  const packages = new Package();
+  await packages.collectIcon();
 
-  if (!iconPackage) {
-    console.log('No icon package found.');
+  const changelog = new Changelog(prevReleaseTag, packages.list);
+  await changelog.collectFromHistory();
+
+  const components = changelog.data.components;
+  const iconChangeLog = components[COMPONENT_NAME];
+
+  if (!iconChangeLog) {
+    console.log('No changes in icon package.');
     process.exit();
   }
 
-  const versionPatches = await makeVersionPatches([iconPackage]);
+  await packages.updatePackageVersion(COMPONENT_NAME, iconChangeLog.incrementType, iconChangeLog.changelog);
 
-  if (versionPatches.length === 1) {
-    await updateVersions(
-      versionPatches.map((patch) => {
-        return {
-          name: patch.package.name,
-          version: patch.to,
-        };
-      }),
-    );
-
-    await gitUtils.initNewPrerelease(versionPatches);
-  }
+  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 };
 
 export const uploadStatic = async () => {

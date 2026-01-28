@@ -21,13 +21,14 @@ export type PackageJson = {
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
-const removedComponents = [
+const ignoreComponents = [
   '@semcore/babel-plugin-shadow',
   '@semcore/project-create',
   '@semcore/chart',
   '@semcore/email',
   '@semcore/utils',
   '@semcore/table',
+  '@semcore/icon', // separate to another pipeline
 ];
 
 export class Package {
@@ -57,12 +58,13 @@ export class Package {
         if (
           !(await fs.pathExists(packageFilePath)) ||
           packagePath.endsWith('semcore/table')
-        )
+        ) {
           return null;
+        }
 
         const packageFile: PackageJson = await fs.readJson(resolvePath(packagePath, 'package.json'));
 
-        if (packageFile.private !== true) {
+        if (packageFile.private !== true && !ignoreComponents.includes(packageFile.name)) {
           this.packagesMap.set(packageFile.name, {
             path: packagePath,
             data: packageFile,
@@ -70,6 +72,16 @@ export class Package {
         }
       }),
     );
+  }
+
+  public async collectIcon() {
+    const packagePath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'icon');
+    const packageFile: PackageJson = await fs.readJson(resolvePath(packagePath, 'package.json'));
+
+    this.packagesMap.set(packageFile.name, {
+      path: packagePath,
+      data: packageFile,
+    });
   }
 
   public async updateVersions(collectedChangelog: CollectedChangelog) {
@@ -82,7 +94,7 @@ export class Package {
     await this.updateReleaseVersion(collectedChangelog);
   }
 
-  private async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
+  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
     const packageJson = this.packagesMap.get(componentName);
     if (!packageJson || changelog.length === 0) return;
 

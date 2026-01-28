@@ -19,7 +19,7 @@ export const gitUtils = {
 
       await NpmUtils.updateLockFile();
       await gitUtils.commitNewPrerelease(packages);
-      const tag = await gitUtils.createPrereleaseTag(version);
+      const tag = await gitUtils.createPrereleaseTag(`v${version}`);
       await gitUtils.push(tag);
     } else if (packages.length === 1 && packages[0].name === '@semcore/icon') {
       const newPrereleaseBranch = `prerelease/icon${version}`;
@@ -27,7 +27,7 @@ export const gitUtils = {
 
       await NpmUtils.updateLockFile();
       await gitUtils.commitNewPrerelease(packages);
-      const tag = await gitUtils.createPrereleaseTag(version);
+      const tag = await gitUtils.createPrereleaseTag(`icon${version}`);
       await gitUtils.push(tag);
     }
   },
@@ -96,11 +96,7 @@ export const gitUtils = {
   },
 
   createPrereleaseTag: async (version: string) => {
-    let tagPrefix = 'v';
-    if (patch.package.name === '@semcore/icon') {
-      tagPrefix = 'icon';
-    }
-    const tagNamePrefix = `${tagPrefix}${version}-${prerelaseSuffix}.`;
+    const tagNamePrefix = `${version}-${prerelaseSuffix}.`;
 
     const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
@@ -157,6 +153,14 @@ export const gitUtils = {
 
   getPrevReleaseTag: async (): Promise<string> => {
     const tags = await git.tags(['v*', '--sort', 'creatordate']);
+    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+
+    return currentReleaseTag;
+  },
+
+  getPrevIconTag: async (): Promise<string> => {
+    const tags = await git.tags(['icon*', '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 

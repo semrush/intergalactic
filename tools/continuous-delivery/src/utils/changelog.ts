@@ -56,7 +56,7 @@ export class Changelog {
   };
 
   constructor(
-    private readonly releaseTag: string,
+    private readonly releaseTag: string = 'v16.1.0',
     private readonly collectedPackages: PackageJson[],
   ) {
   }
@@ -68,7 +68,15 @@ export class Changelog {
   public async collectFromHistory(): Promise<void> {
     const logs = await git.log({ from: this.releaseTag });
     const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
-    const allAllowedScopes = new Set([...specialScopes, ...semcoreComponents, ...toolsComponents]);
+    const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
+    const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
+      if (!this.collectedPackages) {
+        return true;
+      }
+
+      return collectedSet.has(element);
+    });
+    const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;
     let traversingType: ChangelogChangeLabel | null = null;
