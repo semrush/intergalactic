@@ -12,8 +12,8 @@ const __dirname = dirname(__filename);
 const DOCS_DIR = path.join(__dirname, '..', 'docs');
 
 interface ValidationResult {
-  validLinks: Set<string>;
   invalidLinks: Set<string>;
+  invalidTabs: Set<string>;
   staleFiles: Set<string>;
 }
 
@@ -41,34 +41,45 @@ function getMarkdownFilesInDirectory(dirPath: string, excludeFile: string) {
   return new Set(mdFiles.filter((file) => file !== excludeFile));
 }
 
-function validateFileAndTabs(filePath: string) {
-  const valid = new Set<string>([filePath]);
-  const invalid = new Set<string>();
+function validateFilesAndTabs(filePath: string) {
+  const fileDir = path.dirname(filePath);
+
+  const visitedTabs = new Set<string>();
+  const invalidTabs = new Set<string>();
+  const staleFiles = getMarkdownFilesInDirectory(fileDir, filePath);
 
   const content = fs.readFileSync(filePath, 'utf-8');
-  const tabs = extractTabsFromContent(content);
+  const rootTabs = extractTabsFromContent(content);
 
-  const fileDir = path.dirname(filePath);
-  const mdFilesInDir = getMarkdownFilesInDirectory(fileDir, filePath);
+  function validateTab(tab: string) {
+    if (visitedTabs.has(tab)) return;
 
-  for (const tab of tabs) {
+    visitedTabs.add(tab);
+
     const tabPath = path.join(fileDir, `${tab}.md`);
 
     if (fs.existsSync(tabPath)) {
-      valid.add(tabPath);
-      mdFilesInDir.delete(tabPath);
+      staleFiles.delete(tabPath);
     } else {
-      invalid.add(tabPath);
+      invalidTabs.add(tabPath);
+      return;
     }
+
+    const tabContent = fs.readFileSync(tabPath, 'utf-8');
+    const tabs = extractTabsFromContent(tabContent);
+
+    tabs.forEach(validateTab);
   }
 
-  return { valid, invalid, stale: mdFilesInDir };
+  rootTabs.forEach(validateTab);
+
+  return { invalidTabs, staleFiles };
 }
 
 function validateLinks(links: string[]): ValidationResult {
   const result: ValidationResult = {
-    validLinks: new Set(),
     invalidLinks: new Set(),
+    invalidTabs: new Set(),
     staleFiles: new Set(),
   };
 
@@ -80,25 +91,33 @@ function validateLinks(links: string[]): ValidationResult {
       continue;
     }
 
-    const { valid, invalid, stale } = validateFileAndTabs(filePath);
+    const { invalidTabs, staleFiles } = validateFilesAndTabs(filePath);
 
-    valid.forEach((file) => result.validLinks.add(file));
-    invalid.forEach((file) => result.invalidLinks.add(file));
-    stale.forEach((file) => result.staleFiles.add(file));
+    invalidTabs.forEach((file) => result.invalidTabs.add(file));
+    staleFiles.forEach((file) => result.staleFiles.add(file));
   }
 
   return result;
 }
 
 function reportValidationResults(result: ValidationResult): void {
-  const { invalidLinks, staleFiles } = result;
+  let hasCriticalError = false;
+  const { invalidLinks, invalidTabs, staleFiles } = result;
 
   if (invalidLinks.size > 0) {
     console.error(
       '[validate-sidebar-links]: ❌ invalid sidebar links are detected.\n',
       JSON.stringify([...invalidLinks], null, 2),
     );
-    process.exit(1);
+    hasCriticalError = true;
+  }
+
+  if (invalidTabs.size > 0) {
+    console.error(
+      '[validate-sidebar-links]: ❌ invalid tabs are detected.\n',
+      JSON.stringify([...invalidTabs], null, 2),
+    );
+    hasCriticalError = true;
   }
 
   if (staleFiles.size > 0) {
@@ -108,7 +127,11 @@ function reportValidationResults(result: ValidationResult): void {
     );
   }
 
-  console.log('[validate-sidebar-links]: ✅ all sidebar links are valid and reachable.');
+  if (hasCriticalError) {
+    process.exit(1);
+  }
+
+  console.log('[validate-sidebar-links]: ✅ all sidebar links/tabs are valid and reachable.');
 }
 
 function validateSidebarLinks(): void {
