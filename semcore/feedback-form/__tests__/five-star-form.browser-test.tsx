@@ -121,6 +121,36 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify feedback rating with custom modal width', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/modal-width-variants.tsx', 'en');
+
+    await test.step('Verify modal opens with default width', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').nth(1).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').nth(1).waitFor({ state: 'hidden' });
+
+      await locators.stars(page, 2).click();
+      await locators.dialog(page).waitFor({ state: 'visible' });
+
+      const modal = locators.dialog(page);
+      const width = await modal.evaluate((el) => {
+        const style = window.getComputedStyle(el);
+        return parseInt(style.width, 10);
+      });
+
+      expect(width).toBe(300);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
