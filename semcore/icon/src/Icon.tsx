@@ -1,4 +1,3 @@
-import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
@@ -23,7 +22,7 @@ function Icon({
   viewBox = '0 0 16 16',
   color: colorProps,
   ...props
-}: IconProps, ref: React.RefObject<SVGSVGElement>) {
+}: IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
   const SIcon = 'svg';
 
   const resolveColor = useColorResolver();
@@ -50,4 +49,4 @@ function Icon({
 
 Icon.displayName = 'Icon';
 
-export default createBaseComponent(Icon) as unknown as Intergalactic.Component<'svg', IconProps>;
+export default createBaseComponent<'svg', IconProps>(Icon);
