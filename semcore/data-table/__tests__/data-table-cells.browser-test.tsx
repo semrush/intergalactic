@@ -333,10 +333,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
-      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+      await expect(locators.getCell(page, 6, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 2, 3)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowLeft');
