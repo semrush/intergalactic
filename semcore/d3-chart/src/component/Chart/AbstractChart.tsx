@@ -278,7 +278,7 @@ export abstract class AbstractChart<
         return `0%`;
       }
 
-      const procent = Math.round((100 * value) / total);
+      const percent = Math.round((100 * value) / total);
 
       return `${procent}%`;
     }
