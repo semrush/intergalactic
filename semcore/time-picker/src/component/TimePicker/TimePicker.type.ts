@@ -1,7 +1,8 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { Box } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { InputProps, InputValueProps } from '@semcore/input';
-import type React from 'react';
+
+import type { TimePickerFormatProps } from '../PickerFormat/PickerFormat.type';
 
 export type TimePickerProps = Omit<InputProps, 'size'> & {
   /** Time in the hh:mm format */
@@ -21,24 +22,34 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
   locale?: string;
 };
 
+export type TimePickerSeparatorProps = {
+  /** @Internal */
+  hoursInputRef: React.RefObject<HTMLElement>;
+  /** @Internal */
+  disabled?: boolean;
+};
+
 export type TimePickerItemProps = InputValueProps & {
   /** Step for changing of the values in the dropdown list */
   step?: number;
 };
 
-export type TimePickerFormatProps = BoxProps & {};
-
 export type TimePickerContext = {
   getHoursProps: PropGetterFn;
   getFormatProps: PropGetterFn;
   getMinutesProps: PropGetterFn;
+  getSeparatorProps: PropGetterFn;
 };
 
 export type TimePickerHandlers = {
   value: (value: string) => void;
 };
 
-declare const TimePicker: Intergalactic.Component<
+export type TimePickerMeridiem = 'AM' | 'PM';
+
+export type TimePickerField = 'hours' | 'minutes';
+
+export type TimePickerComponent = Intergalactic.Component<
   'div',
   TimePickerProps,
   TimePickerContext,
@@ -49,5 +60,3 @@ declare const TimePicker: Intergalactic.Component<
   Separator: typeof Box;
   Format: Intergalactic.Component<'div', TimePickerFormatProps>;
 };
-
-export default TimePicker;
