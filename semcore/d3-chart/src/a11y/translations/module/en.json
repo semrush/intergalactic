@@ -1,5 +1,5 @@
 {
-  "disabled": "Press \"Tab\" to enable graphical charts accessibility module.",
   "loading": "Loading accessibility module.",
-  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster."
+  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Open data summary"
 }

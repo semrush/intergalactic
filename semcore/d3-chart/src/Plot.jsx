@@ -103,14 +103,13 @@ class PlotRoot extends Component {
         onMouseMove={this.handlerMouseMove}
         onMouseLeave={this.handlerMouseLeave}
         aria-label={ariaLabel}
-        tabIndex={0}
         data-plot-id={this.plotId}
       >
         <Children />
         <foreignObject width='100%' height='100%' data-aria-only>
           <PlotA11yModule
             id={this.plotId}
-            data={data}
+            payload={data}
             plotLabel={label}
             locale={locale}
             plotRef={this.rootRef}
