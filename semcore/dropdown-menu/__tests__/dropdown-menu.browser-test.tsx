@@ -568,7 +568,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(locators.menuitemradio(page, 'project 42')).toBeInViewport();
     await expect(locators.menuitemradio(page, 'project 36')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot();
   });
 
   test.describe('Sticky groups', () => {
