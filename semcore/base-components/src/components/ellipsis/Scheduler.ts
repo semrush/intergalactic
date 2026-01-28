@@ -1,7 +1,6 @@
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
-type Task = (...args: any[]) => void;
-
+export type Task = (...args: any[]) => void;
 /**
  * Util class for scheduling some work
  */
@@ -10,19 +9,19 @@ export class Scheduler {
   private animationFrameId: number | null = null;
   private timeout: ReturnType<typeof setTimeout> | null = null;
 
-  public schedule(task: Task, tasksTimeout?: number | null) {
-    if (canUseDOM() && 'requestIdleCallback' in window) {
+  public schedule(task: Task, timeoutOrType?: number | 'idle') {
+    if (typeof timeoutOrType === 'number') {
+      if (this.timeout !== null) {
+        clearTimeout(this.timeout);
+      }
+
+      this.timeout = setTimeout(task, timeoutOrType);
+    } else if (timeoutOrType === 'idle' && canUseDOM() && 'requestIdleCallback' in window) {
       if (this.idleId !== null) {
         window.cancelIdleCallback(this.idleId);
       }
 
       this.idleId = window.requestIdleCallback(task);
-    } else if (tasksTimeout !== null && tasksTimeout !== undefined) {
-      if (this.timeout !== null) {
-        clearTimeout(this.timeout);
-      }
-
-      this.timeout = setTimeout(task, tasksTimeout);
     } else {
       if (this.animationFrameId !== null) {
         cancelAnimationFrame(this.animationFrameId);

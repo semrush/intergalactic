@@ -1,8 +1,13 @@
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 import type { Ellipsis } from './Ellipsis';
+import { Queue } from './Queue';
+
+export const isSafari = canUseDOM() ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent) : false;
 
 class EllipsisManager {
+  private readonly queue: Queue;
+
   private ro = new ResizeObserver(this.handleResizeObserver.bind(this));
   private io = new IntersectionObserver(this.handleIntersectionObserver.bind(this), {
     root: null,
@@ -19,6 +24,8 @@ class EllipsisManager {
   private ellipsisMutationObservers = new WeakMap<HTMLElement, MutationObserver>();
 
   constructor() {
+    this.queue = new Queue(isSafari ? { queueTimeout: 16 } : undefined);
+
     this.handleResizeObserver = this.handleResizeObserver.bind(this);
     this.handleMutationObserver = this.handleMutationObserver.bind(this);
     this.handleIntersectionObserver = this.handleIntersectionObserver.bind(this);
@@ -102,16 +109,20 @@ class EllipsisManager {
           for (const el of ellipsisSet.values()) {
             const ellipsis = this.ellipsisEntities.get(el.element);
 
-            if (ellipsis && ellipsis.cropPosition === 'middle') {
-              this.setApproximateSize(target, ellipsis);
-            }
+            if (ellipsis) {
+              if (ellipsis.cropPosition === 'middle') {
+                this.setApproximateSize(target, ellipsis);
+              }
 
-            ellipsis?.scheduler.schedule(ellipsis?.handleChanges);
+              this.queue.add(ellipsis.handleChanges);
+            }
           }
         } else {
           const ellipsis = this.ellipsisEntities.get(target);
 
-          ellipsis?.scheduler.schedule(ellipsis?.handleChanges);
+          if (ellipsis) {
+            this.queue.delete(ellipsis.handleChanges);
+          }
         }
       }
     });
@@ -161,7 +172,7 @@ class EllipsisManager {
               this.setApproximateSize(target, ellipsis);
             }
 
-            ellipsis?.scheduler.schedule(ellipsis?.handleChanges);
+            this.queue.add(ellipsis.handleChanges);
           } else {
             this.ro?.observe(target);
           }
@@ -169,7 +180,10 @@ class EllipsisManager {
           this.handledElements.add(target);
         } else if (entry.isIntersecting === false && this.handledElements.has(target)) {
           const ellipsis = this.ellipsisEntities.get(target);
-          ellipsis?.scheduler.cancel();
+
+          if (ellipsis) {
+            this.queue.delete(ellipsis.handleChanges);
+          }
 
           this.handledElements.delete(target);
 

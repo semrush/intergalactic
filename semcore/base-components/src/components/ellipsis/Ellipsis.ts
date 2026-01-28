@@ -3,7 +3,7 @@ import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { CSSProperties } from 'react';
 
 import type { Events, EllipsisSettings, TruncateOptions } from './Ellipsis.types';
-import { ellipsisManager } from './EllipsisManager';
+import { ellipsisManager, isSafari } from './EllipsisManager';
 import { Scheduler } from './Scheduler';
 import { textMeasurer } from './TextMeasurer';
 
@@ -47,7 +47,7 @@ export class Ellipsis extends EventEmitter<Events> {
     if (props.cropPosition === 'middle' && this.isElementInViewport()) {
       ellipsisManager.addEllipsis(this);
     } else {
-      this.scheduler.schedule(() => ellipsisManager.addEllipsis(this));
+      this.scheduler.schedule(() => ellipsisManager.addEllipsis(this), isSafari ? 10 : 'idle');
     }
   }
 
