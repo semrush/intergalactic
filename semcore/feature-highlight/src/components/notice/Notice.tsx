@@ -68,7 +68,7 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
     ]);
 
     return sstyled(styles)(
-      <SHighlightedNotice render={Notice} __excludeProps={['title']} use:theme={undefined}>
+      <SHighlightedNotice render={Notice} beforeVisibility={this.asProps.visible ? 'visible' : 'hidden'} __excludeProps={['title']} use:theme={undefined}>
         {advancedMode ? this.renderAdvancedMode() : this.renderSmartMode()}
       </SHighlightedNotice>,
     );
