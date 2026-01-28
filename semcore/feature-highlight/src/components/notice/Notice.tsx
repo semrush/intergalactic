@@ -56,7 +56,7 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
 
   render() {
     const SHighlightedNotice = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, visible } = this.asProps;
 
     const advancedMode = isAdvanceMode(Children, [
       NoticeFH.Label.displayName,
@@ -67,8 +67,10 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
       NoticeFH.Close.displayName,
     ]);
 
+    const beforeVisibility = visible === undefined || visible ? 'visible' : 'hidden';
+
     return sstyled(styles)(
-      <SHighlightedNotice render={Notice} beforeVisibility={this.asProps.visible ? 'visible' : 'hidden'} __excludeProps={['title']} use:theme={undefined}>
+      <SHighlightedNotice render={Notice} beforeVisibility={beforeVisibility} __excludeProps={['title']} use:theme={undefined}>
         {advancedMode ? this.renderAdvancedMode() : this.renderSmartMode()}
       </SHighlightedNotice>,
     );
