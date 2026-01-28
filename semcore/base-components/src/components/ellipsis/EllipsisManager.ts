@@ -121,7 +121,7 @@ class EllipsisManager {
           const ellipsis = this.ellipsisEntities.get(target);
 
           if (ellipsis) {
-            this.queue.delete(ellipsis.handleChanges);
+            this.queue.add(ellipsis.handleChanges);
           }
         }
       }
