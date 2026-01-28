@@ -10,13 +10,13 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTable, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableHeadProps,
     {},

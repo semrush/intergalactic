@@ -45,8 +45,8 @@ const SCROLL_BAR_HEIGHT = 12;
 
 type State<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
@@ -57,8 +57,8 @@ type State<
 
 class DataTableRoot<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableProps<Data, UniqKey, UniqKeyType>,
     {},
