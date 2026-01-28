@@ -14,7 +14,7 @@ import { localizedMessages } from './translations/view/__intergalactic-dynamic-l
 
 export type A11yViewProps = {
   id: string;
-  data: Record<string, unknown>[];
+  payload: Record<string, unknown>[];
   hints: DataStructureHints;
   plotLabel: string;
   locale: NavigatorLanguage['language'];
@@ -27,7 +27,7 @@ export type A11yViewProps = {
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,
-  data: providedData,
+  payload: providedData,
   hints,
   plotLabel,
   triggerRef,

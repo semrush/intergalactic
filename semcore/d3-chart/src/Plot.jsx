@@ -109,7 +109,7 @@ class PlotRoot extends Component {
         <foreignObject width='100%' height='100%' data-aria-only>
           <PlotA11yModule
             id={this.plotId}
-            data={data}
+            payload={data}
             plotLabel={label}
             locale={locale}
             plotRef={this.rootRef}
