@@ -307,7 +307,7 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
@@ -359,7 +359,7 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
