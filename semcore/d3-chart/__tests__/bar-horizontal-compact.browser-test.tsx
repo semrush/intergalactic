@@ -126,7 +126,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       // Navigate with keyboard to verify focus state
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
   });
