@@ -23,7 +23,7 @@ export const initPrerelease = async () => {
   const packages = new Package();
   await packages.collectPackages();
 
-  const changelog = new Changelog(prevReleaseTag, packages.list);
+  const changelog = new Changelog('v', prevReleaseTag, packages.list);
   await changelog.collectFromHistory();
 
   await packages.updateVersions(changelog.data);
@@ -38,7 +38,7 @@ export const initIconPrerelease = async () => {
   const packages = new Package();
   await packages.collectIcon();
 
-  const changelog = new Changelog(prevReleaseTag, packages.list);
+  const changelog = new Changelog('icon', prevReleaseTag, packages.list);
   await changelog.collectFromHistory();
 
   const components = changelog.data.components;

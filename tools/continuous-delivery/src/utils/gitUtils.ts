@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
+import type { ReleaseVersion } from '@tools/continuous-delivery/src/utils/changelog';
 import Git from 'simple-git';
 
 import { log, prerelaseSuffix } from '../utils';
@@ -151,19 +152,19 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<string> => {
+  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
     const tags = await git.tags(['v*', '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
-    return currentReleaseTag;
+    return currentReleaseTag.slice(1) as ReleaseVersion;
   },
 
-  getPrevIconTag: async (): Promise<string> => {
+  getPrevIconTag: async (): Promise<ReleaseVersion> => {
     const tags = await git.tags(['icon*', '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
-    return currentReleaseTag;
+    return currentReleaseTag.slice(4) as ReleaseVersion;
   },
 };

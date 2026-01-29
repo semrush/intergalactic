@@ -27,6 +27,8 @@ export type ChangelogChange = {
   descriptionFormatted: (string | Token)[];
 };
 
+export type ReleaseVersion = `${number}.${number}.${number}`;
+
 export type IncrementType = 'major' | 'minor' | 'patch';
 
 export type CollectedChangelog = {
@@ -56,7 +58,8 @@ export class Changelog {
   };
 
   constructor(
-    private readonly releaseTag: string = 'v16.1.0',
+    private readonly prefix: string,
+    private readonly releaseTag: ReleaseVersion,
     private readonly collectedPackages: PackageJson[],
   ) {
   }
@@ -66,7 +69,7 @@ export class Changelog {
   }
 
   public async collectFromHistory(): Promise<void> {
-    const logs = await git.log({ from: this.releaseTag });
+    const logs = await git.log({ from: this.tag });
     const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
     const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
     const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
@@ -131,8 +134,13 @@ export class Changelog {
         }
       });
 
-      this.changelogs.version = semver.inc(this.releaseTag, incrementType)!;
+      const newVersion = semver.inc(this.releaseTag, incrementType)!;
+      this.changelogs.version = `${this.prefix}${newVersion}`;
     });
+  }
+
+  private get tag(): string {
+    return `${this.prefix}${this.releaseTag}`;
   }
 
   public static async getRelease() {
