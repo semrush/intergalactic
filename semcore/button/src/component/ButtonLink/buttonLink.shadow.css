@@ -73,6 +73,8 @@ SInner {
   display: inline-flex;
   align-items: baseline;
   justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 SAddon {
