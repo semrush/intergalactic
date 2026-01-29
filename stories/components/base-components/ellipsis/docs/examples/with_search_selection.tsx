@@ -22,7 +22,7 @@ const Demo = () => {
     const to = from !== -1 ? from + search.length : -1;
 
     if (ellipsis instanceof Ellipsis) {
-      ellipsis.setRequiredIndexes([from, to], { background: 'green', fontWeight: 'bold' });
+      ellipsis.setRequiredIndexes([from, to], { background: 'lightgreen', fontWeight: '500' });
     }
   }, [search, ellipsis]);
 
