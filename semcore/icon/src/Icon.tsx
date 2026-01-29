@@ -6,11 +6,20 @@ import React from 'react';
 import styles from './style/icon.shadow.css';
 
 export type IconProps = React.SVGProps<SVGSVGElement> & {
-  /** Icon width */
+  /**
+   * Icon width
+   * @internal
+   */
   width?: string | number;
-  /** Icon height */
+  /**
+   * Icon height
+   * @internal
+   */
   height?: string | number;
-  /** SVG viewBox attribute */
+  /**
+   * SVG viewBox attribute
+   * @internal
+   */
   viewBox?: string;
   /** Icon color */
   color?: string;
@@ -43,6 +52,7 @@ function Icon({
       className={`${className} ${props.className ?? ''}`}
       ref={ref}
       data-ui-name='Icon'
+      aria-hidden='true'
     />
   );
 }
