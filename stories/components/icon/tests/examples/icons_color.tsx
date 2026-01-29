@@ -13,20 +13,16 @@ const Demo = () => {
         <Hint
           tag={WhatsAppM}
           interactive
-          title='ColorM interactive'
+          title='ColorM neutral'
           color='icon-secondary-neutral'
         />
 
         <Hint
           tag={WhatsAppL}
           interactive
-          title='ColorL interactive'
+          title='ColorL neutral'
           color='icon-secondary-neutral'
         />
-
-        <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-
-        <Hint tag={AmazonL} title='AmazonL non interactive' color='icon-secondary-neutral' />
       </Flex>
     </>
   );
