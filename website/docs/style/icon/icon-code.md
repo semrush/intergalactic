@@ -5,7 +5,7 @@ tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), 
 
 ## Interactive icon
 
-If you want an interactive icon, you should use `ButtonLink` with addon.
+If you want an interactive icon, use [ButtonLink](/components/button/button-code#button-looking-like-link) with addon.
 
 ::: sandbox
 
