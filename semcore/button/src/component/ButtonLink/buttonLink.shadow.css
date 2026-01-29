@@ -71,19 +71,11 @@ SButton[use='secondary'] {
   }
 }
 
-SInner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
 SAddon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   pointer-events: none;
 }
 
