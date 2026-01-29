@@ -231,11 +231,14 @@ export class Ellipsis extends EventEmitter<Events> {
 
   private highlightRequiredPath(start: string, end: string, requiredText: string, stylesForRequired: string | CSSProperties): void {
     const startElement = document.createElement('span');
+    startElement.setAttribute('aria-hidden', 'true');
     startElement.textContent = `${start}...`;
     const endElement = document.createElement('span');
+    startElement.setAttribute('aria-hidden', 'true');
     endElement.textContent = `...${end}`;
 
     const requiredElement = document.createElement('span');
+    startElement.setAttribute('aria-hidden', 'true');
     requiredElement.textContent = `${requiredText.slice(3, -3)}`;
 
     if (typeof stylesForRequired === 'string') {

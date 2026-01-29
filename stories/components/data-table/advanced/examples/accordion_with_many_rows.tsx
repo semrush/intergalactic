@@ -39,7 +39,7 @@ const Demo = (props: TableInTableProps) => {
       return {
         cropPosition: 'middle',
         containerElement: keywordElement ?? undefined,
-        recalculateContainerWidth: props.isAccordionRow ? (width: number) => width - 26 : undefined,
+        recalculateContainerWidth: (props.isAccordionRow || props.row[ACCORDION]) ? (width: number) => width - 26 : undefined,
       } as const;
     }, [keywordElement, props.isAccordionRow]);
 
