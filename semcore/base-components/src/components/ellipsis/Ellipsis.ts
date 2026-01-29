@@ -234,11 +234,11 @@ export class Ellipsis extends EventEmitter<Events> {
     startElement.setAttribute('aria-hidden', 'true');
     startElement.textContent = start ? `${start}...` : '';
     const endElement = document.createElement('span');
-    startElement.setAttribute('aria-hidden', 'true');
+    endElement.setAttribute('aria-hidden', 'true');
     endElement.textContent = end ? `...${end}` : '';
 
     const requiredElement = document.createElement('span');
-    startElement.setAttribute('aria-hidden', 'true');
+    requiredElement.setAttribute('aria-hidden', 'true');
     requiredElement.textContent = `${requiredText.slice(3, end ? -3 : undefined)}`;
 
     if (typeof stylesForRequired === 'string') {
