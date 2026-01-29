@@ -284,7 +284,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify plot svg with aria-label attributes', async () => {
         const svg = svgs.first();
         const svgAttributes = [
-          ['tabindex', '0'],
           ['aria-label', 'Last market trends with pattern'],
           ['width', '300'],
           ['height', '200'],
@@ -301,12 +300,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify data attributes and accessibility structure', async () => {
-        const foreignObject = page.locator('foreignObject[data-aria-only="true"]').first();
-        await expect(foreignObject).toBeVisible();
+        const foreignObject = page.locator('foreignObject[data-aria-only="true"]');
+        const foreignObjectCount = await foreignObject.count();
+        await expect(foreignObjectCount).toBe(2);
+        for (let i = 0; i < foreignObjectCount; i++) {
+          await expect(foreignObject.nth(i).locator('button')).toHaveAttribute('aria-label', 'Open data summary');
+          await expect(foreignObject.nth(i)).toBeVisible();
+        }
         const dialog = page.getByRole('dialog', { name: 'Last market trends with pattern data' });
         await expect(dialog).not.toBeVisible();
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
         await expect(dialog).toBeVisible();
 
         await expect(dialog).toHaveAttribute('tabindex', '0');
@@ -349,7 +354,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify plot svg without aria-label attributes', async () => {
         const svg = svgs.nth(1);
         const svgAttributes = [
-          ['tabindex', '0'],
           ['aria-label', 'Chart'],
           ['data-ui-name', 'Plot'],
         ];

@@ -7,10 +7,7 @@ export default mergeConfig(
   defineConfig({
     build: {
       lib: {
-        entry: './src/index.js',
-      },
-      rollupOptions: {
-        external: ['react', 'react-dom', 'react/jsx-runtime', /@babel\/runtime\/*/, /@semcore\/*/],
+        entry: './src/index.ts',
       },
     },
   }),

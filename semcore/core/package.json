@@ -295,6 +295,16 @@
       "require": "./lib/utils/use/useScrollBarWidth.js",
       "import": "./lib/utils/use/useScrollBarWidth.mjs",
       "types": "./lib/utils/use/useScrollBarWidth.d.ts"
+    },
+    "./lib/decorators/reactive": {
+      "require": "./lib/decorators/reactive.js",
+      "import": "./lib/decorators/reactive.mjs",
+      "types": "./lib/decorators/reactive.d.ts"
+    },
+    "./lib/decorators/propsObserver": {
+      "require": "./lib/decorators/propsObserver.js",
+      "import": "./lib/decorators/propsObserver.mjs",
+      "types": "./lib/decorators/propsObserver.d.ts"
     }
   },
   "dependencies": {

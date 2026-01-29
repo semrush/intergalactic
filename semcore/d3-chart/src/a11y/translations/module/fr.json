@@ -1,5 +1,5 @@
 {
-  "disabled": "Appuyez sur « Onglet » pour activer le module d’accessibilité aux diagrammes.",
   "loading": "Chargement du module d’accessibilité en cours.",
-  "failed": "Impossible de charger le module d’accessibilité. Contactez le service d’assistance aux utilisateurs pour nous permettre de résoudre le problème plus rapidement."
+  "failed": "Impossible de charger le module d’accessibilité. Contactez le service d’assistance aux utilisateurs pour nous permettre de résoudre le problème plus rapidement.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Ouvrir le récapitulatif des données"
 }

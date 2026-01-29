@@ -434,7 +434,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         // Disable all items and verify chart appearance
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
 
         const box = await chart.boundingBox();
         if (!box) throw new Error('Bounding box not found');

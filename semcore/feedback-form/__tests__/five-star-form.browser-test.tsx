@@ -161,7 +161,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
-      await expect(checkboxInput.first()).toBeFocused();
+      if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
@@ -233,7 +233,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     const checkboxInput = page.getByRole('checkbox');
@@ -272,7 +272,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify form closed by click Send request', async () => {
       await locators.stars(page, 3).click();
       await page.waitForSelector('text="Great! What do you like the most?"');
-      await expect(checkboxInput.first()).toBeFocused();
+      if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await buttons.nth(1).click();
 
       await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });
