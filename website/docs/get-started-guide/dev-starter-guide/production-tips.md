@@ -85,13 +85,13 @@ module.exports = {
 
 Classes in styles include a hash based on content and version to avoid collisions. However, this approach breaks down when two components of the same version, built by different teams, are rendered on the same page. In such cases, styles may overlap or be applied incorrectly due to the CSS cascade order.
 
-To address this, class names must be made unique by adding a suffix. Since we distribute pre-built JavaScript and CSS files, the suffix cannot be hardcoded at build time.
+To address this, class names must be made unique by adding a suffix. Since we distribute pre-built JavaScript and CSS files, the suffix can't be hardcoded at build time.
 
 The recommended solution is to use the `isolationSuffix` option provided by `process-css-unplugin`. This option allows you to change default suffix to a unique one, defined as a value of `isolationSuffix`.
 
 The suffix is applied consistently to both JavaScript and CSS.
 
-Below is an example of how your `webpack.config.js` might look:
+Following is an example of how your `webpack.config.js` might look:
 
 ```js
 const { processCssWebpackPlugin } = require('@semcore/process-css-unplugin');
