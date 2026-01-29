@@ -54,9 +54,9 @@ export default Icon;
 
     // @ts-ignore
     exports[`./${exportName}`] = {
-      require: `./lib/${exportName}/index.js`,
-      import: `./lib/${exportName}/index.mjs`,
       types: `./lib/${exportName}/index.d.ts`,
+      import: `./lib/${exportName}/index.mjs`,
+      require: `./lib/${exportName}/index.js`,
     };
   }
 

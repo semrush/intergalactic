@@ -6,7 +6,6 @@ import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
-import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import * as React from 'react';
@@ -17,7 +16,7 @@ import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
-const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
+const SORTING_ICON: { [key in SortDirection]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
