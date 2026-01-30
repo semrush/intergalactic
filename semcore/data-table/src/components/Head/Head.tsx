@@ -196,11 +196,12 @@ class HeadRoot<
                 <>
                   {treeColumns.map((column, _i) => {
                     if ('columns' in column) {
+                      const columnsName = column.columns?.map((c) => c.name).join('/');
                       return (
                         <DataTable.Head.Group
-                          key={column.name}
+                          key={columnsName}
                           {...column}
-                          name={column.columns?.map((c) => c.name).join('/')}
+                          name={columnsName}
                           title=''
                         />
                       );
