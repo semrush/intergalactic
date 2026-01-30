@@ -105,14 +105,13 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
     this.state = {
       innerVisible: props.visible ?? false,
-      calculatedPlacement: undefined,
+      calculatedPlacement: props.placement,
     };
   }
 
@@ -236,26 +235,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     }, hideTimeout);
   }
 
-  private handleMouseMove(event: MouseEvent) {
-    const trigger = this.asProps.triggerRef.current;
-    const eventTarget = event.target;
-
-    if (trigger instanceof HTMLElement && eventTarget instanceof HTMLElement) {
-      const rect = trigger.getBoundingClientRect();
-      const { clientX, clientY } = event;
-
-      const isOver =
-        clientX >= rect.left &&
-        clientX <= rect.right &&
-        clientY >= rect.top &&
-        clientY <= rect.bottom;
-
-      if (isOver) {
-        this.showHint(trigger, event);
-      }
-    }
-  }
-
   private handleFocus(e: FocusEvent): void {
     if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && lastInteraction.isKeyboard()) {
       this.showHint(e.target);
@@ -333,7 +312,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           aria-hidden={true}
           role={undefined}
           zIndex={parentZIndexStacking}
-          use:visible={innerVisible}
+          use:visible={innerVisible || visible}
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
           timingFunction={timingFunction}
