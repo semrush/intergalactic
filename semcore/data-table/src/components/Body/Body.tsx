@@ -138,8 +138,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
+    const calculatedRowProps = rowProps?.(row, index) ?? {};
+
+    const rowUniqKey = row[UNIQ_ROW_KEY];
+    if (selectedRows?.includes(rowUniqKey)) {
+      calculatedRowProps.theme = 'info';
+    }
+
     return {
-      ...rowProps?.(row, index),
+      ...calculatedRowProps,
       use,
       uid,
       gridTemplateAreas,
@@ -373,10 +380,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 ref={this.handleRef(this.startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
-                  if (isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey)) {
+                  if ((isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey))) {
                     theme = 'info';
-                  } else {
-                    theme = selectedRows?.includes(item[UNIQ_ROW_KEY]) ? 'info' : undefined;
                   }
 
                   return (
@@ -393,14 +398,10 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             );
           }
 
-          const rowUniqKey = row[UNIQ_ROW_KEY];
-          const theme = selectedRows?.includes(rowUniqKey) ? 'info' : undefined;
-
           return (
             <Body.Row
-              key={rowUniqKey?.toString()}
+              key={row[UNIQ_ROW_KEY]?.toString()}
               row={row}
-              theme={theme}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={this.handleComponentRef(row)}
             />

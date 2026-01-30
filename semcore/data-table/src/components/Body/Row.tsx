@@ -275,6 +275,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
+      theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -316,6 +317,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      theme,
     };
 
     if (renderCell) {
@@ -586,7 +588,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 aria-hidden={isCellHidden}
                 style={style}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
-                theme={theme}
               />
             );
           })}
