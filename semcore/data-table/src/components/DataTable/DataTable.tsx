@@ -1276,7 +1276,7 @@ class DataTableRoot<
 
       let rowKey = row[UNIQ_ROW_KEY];
 
-      if (!rowKey && uniqueRowKey) {
+      if (!rowKey) {
         if (uniqueRowKey) {
           // @ts-ignore
           const keyValue = row[uniqueRowKey];
