@@ -1938,8 +1938,8 @@ importers:
         specifier: ^16.0.9
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: 16.7.4 - 17
-        version: 16.7.4(@semcore/base-components@semcore+base-components)
+        specifier: ^16.0.0 || ^17.0.0
+        version: link:../icon
       '@semcore/illustration':
         specifier: ^16.0.12
         version: link:../illustration
@@ -4951,11 +4951,6 @@ packages:
 
   '@semcore/icon@16.7.3':
     resolution: {integrity: sha512-BfuPVc7KqEQM6CE+w7nhrN0aMz/Y56DHVcb3bAGhTOHV/QBtb6tGzWXHmPRynVaC8AUyF9sRPjbBK8GNbRzkuA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/icon@16.7.4':
-    resolution: {integrity: sha512-FguMPK4Xu7rVE6k3RYoBq/mt0cLqY5lyjSRKM9z1Sj5PppZG/3ZlsF4xy1QFFNHGGkK8YK/Au2RMmEZw5eOo7w==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17084,12 +17079,6 @@ snapshots:
       classnames: 2.2.6
 
   '@semcore/icon@16.7.3(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      classnames: 2.2.6
-
-  '@semcore/icon@16.7.4(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
