@@ -45,6 +45,13 @@ test.describe(`@feature-highlight ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
+  test('Verify Notice advanced mode has no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice-advanced-mode.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
   test('Verify Pills has no Axe issues', async ({ page }) => {
     await loadPage(page, 'stories/components/feature-highlight/docs/examples/pills.tsx', 'en');
 
