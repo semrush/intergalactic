@@ -76,7 +76,6 @@ class ModalRoot extends Component {
   getWindowProps() {
     const { visible, closable, getI18nText, uid, duration, animationsDisabled } = this.asProps;
     const { hasTitle } = this.state;
-
     return {
       visible,
       closable,
