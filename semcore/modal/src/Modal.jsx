@@ -76,13 +76,12 @@ class ModalRoot extends Component {
   getWindowProps() {
     const { visible, closable, getI18nText, uid, duration, animationsDisabled } = this.asProps;
     const { hasTitle } = this.state;
-    const ariaLabelledBy = this.asProps['aria-labelledby'];
 
     return {
       visible,
       closable,
       'onKeyDown': this.handleKeyDown,
-      'aria-label': hasTitle || ariaLabelledBy ? undefined : getI18nText('title'),
+      'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
       animationsDisabled,

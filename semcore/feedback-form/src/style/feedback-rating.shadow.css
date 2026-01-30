@@ -7,3 +7,7 @@ SFeedbackRating {
     list-style: none;
   }
 }
+
+SHeader {
+  font-size: var(--intergalactic-fs-300, 16px);
+}
