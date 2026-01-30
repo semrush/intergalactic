@@ -1356,7 +1356,7 @@ class DataTableRoot<
     data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      if (groupedRows) {
+      if (groupedRows && groupedRows.length > 1) {
         const innerRows: DTRow<UniqKeyType>[] & { [ACCORDION]?: React.ReactElement } = [];
 
         const groupedKeys: string[] = [];
@@ -1407,6 +1407,14 @@ class DataTableRoot<
         });
 
         rows.push(innerRows);
+      } else if (groupedRows?.length === 1) {
+        const dtRow = makeDtRow({
+          ...groupedRows[0],
+          ...row,
+        });
+
+        rows.push(dtRow);
+        rowIndex++;
       } else {
         const dtRow = makeDtRow(row);
 
