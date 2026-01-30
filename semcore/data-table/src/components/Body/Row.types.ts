@@ -45,6 +45,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   componentRef?: (component: RowRoot<Data, UniqKeyType> | null) => void;
 
   accordionIndex?: number;
+
+  theme?: Theme;
 };
 
 export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {
@@ -104,7 +106,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   limit: DataTableProps<any, any, any>['limit'];
   totalRows?: number;
   hasGroups: boolean;
-  theme?: Theme;
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(

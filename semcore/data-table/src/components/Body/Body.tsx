@@ -9,7 +9,7 @@ import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Bo
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
-import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import {
   GRID_ROW_INDEX,
@@ -360,7 +360,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             const groupUniqKey = row[0][UNIQ_ROW_KEY];
 
             let isFirstCellAreMergedRows = false;
-            let theme: 'info' | undefined = undefined;
+            const theme: 'info' | undefined = undefined;
 
             if (selectedRows) {
               const nextColumnName = columns[1].name;
@@ -380,17 +380,20 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 ref={this.handleRef(this.startIndex + index, row[0])}
               >
                 {row.map((item, i) => {
+                  const rowProps: DataTableRowProps<any, any> = {
+                    row: item,
+                    mergedRow: i > 0 ? true : false,
+                    componentRef: this.handleComponentRef(item),
+                  };
+
                   if ((isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey))) {
-                    theme = 'info';
+                    rowProps.theme = 'info';
                   }
 
                   return (
                     <Body.Row
                       key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
-                      row={item}
-                      theme={theme}
-                      mergedRow={i > 0 ? true : false}
-                      componentRef={this.handleComponentRef(item)}
+                      {...rowProps}
                     />
                   );
                 })}
