@@ -1019,6 +1019,9 @@ importers:
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils

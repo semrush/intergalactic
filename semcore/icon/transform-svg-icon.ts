@@ -23,7 +23,11 @@ transform();
 async function transform() {
   const icons = await glob(`${__dirname}/svg/**/*svg`);
 
-  const exports = {};
+  const exports = {
+    '.': {
+      types: `./lib/types/index.d.ts`,
+    },
+  };
 
   for (const icon of icons) {
     const [type, name, iconName] = icon.slice(__dirname.length + 1 + 'svg'.length + 1).split('/');
