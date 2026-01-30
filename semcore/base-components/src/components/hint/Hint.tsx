@@ -51,7 +51,7 @@ type DefaultProps = {
 };
 
 type State = {
-  innerVisible: boolean;
+  innerVisible: boolean | null;
   calculatedPlacement?: Placement;
 };
 
@@ -110,7 +110,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
     this.state = {
-      innerVisible: props.visible ?? false,
+      innerVisible: props.visible ?? null,
       calculatedPlacement: props.placement,
     };
   }
@@ -232,6 +232,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.hideTimer = window.setTimeout(() => {
       this.hintRef.current?.style.setProperty('visibility', 'hidden');
       this.handlers.visible(false);
+      this.setState({ innerVisible: null });
     }, hideTimeout);
   }
 
@@ -304,6 +305,9 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
     const duration = propToArray(Number(this.asProps.duration));
 
+    /* `visible && innerVisible === null` - is a condition to start showing right after hover/focus  */
+    const showHint = (visible && innerVisible === null) || innerVisible === true;
+
     return sstyled(styles)(
       <Portal>
         <SHintPopper
@@ -312,7 +316,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           aria-hidden={true}
           role={undefined}
           zIndex={parentZIndexStacking}
-          use:visible={innerVisible || visible}
+          use:visible={showHint}
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
           timingFunction={timingFunction}
