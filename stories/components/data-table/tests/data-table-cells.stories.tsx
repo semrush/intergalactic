@@ -16,6 +16,8 @@ import MergedRowForMultiLevelHeaderExample from './examples/cells-tests/merged-r
 import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
+import SelectableWithMergedRowsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
+import type { SelectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Cells',
@@ -24,6 +26,22 @@ const meta: Meta<typeof DataTable> = {
 
 export default meta;
 type Story = StoryObj<typeof DataTable>;
+
+export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
+  render: SelectableWithMergedRowsExample,
+  argTypes: {
+    headerLevels: {
+      control: { type: 'radio' },
+      options: [1, 2],
+      description: 'Number of header levels (1 = single level, 2 = multi-level header)',
+    },
+    withBorders: {
+      control: 'boolean',
+      description: 'Show borders around the grouped columns in multi-level header',
+    },
+  },
+  args: selectableWithMergedRowsProps,
+};
 
 export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
