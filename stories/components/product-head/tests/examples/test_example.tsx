@@ -96,10 +96,10 @@ const Demo = () => {
         Info Item
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={InfoM}
+            tag={ButtonLink}
+            addonLeft={InfoM}
             display='inline-flex'
             ml={1}
-            interactive
             color='icon-secondary-neutral'
             aria-label='About update rate'
           />
