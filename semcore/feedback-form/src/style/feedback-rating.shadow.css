@@ -9,6 +9,6 @@ SFeedbackRating {
 
   SHeader {
     font-size: var(--intergalactic-fs-300, 16px);
-    line-height: normal;
+    line-height: var(--intergalactic-lh-300, 150%);
   }
 }
