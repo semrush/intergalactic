@@ -55,7 +55,7 @@ export type HeadPropsInner<
 
   totalRows: number;
   selectedRows?: UniqKeyType[];
-  onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
+  onChangeSelectAll?: (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow<UniqKeyType>[];
 
   getFixedStyle: (

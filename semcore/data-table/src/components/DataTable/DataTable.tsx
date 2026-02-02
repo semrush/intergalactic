@@ -305,18 +305,7 @@ class DataTableRoot<
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),
-      onChangeSelectAll: (value, e) => {
-        const mappedFlatRows = this.getFlatRows().map((r) => r[UNIQ_ROW_KEY]);
-        const selectedRowsSet = new Set(selectedRows);
-
-        if (value) {
-          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
-        } else {
-          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
-        }
-
-        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
-      },
+      onChangeSelectAll: onSelectedRowsChange,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
