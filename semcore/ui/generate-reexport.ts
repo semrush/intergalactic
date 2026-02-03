@@ -218,7 +218,7 @@ const GENERATOR = {
           );
         }
 
-        const illustrationPath = `./lib/${name}/${icon}${
+        const illustrationPath = `./${name}/${icon}${
           subFile && subFile !== '.' ? `/${subFile}` : ''
         }`;
 
