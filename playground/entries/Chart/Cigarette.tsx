@@ -1,0 +1,81 @@
+import type { CigaretteChartProps } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
+import React from 'react';
+
+import { getDefaultChartControls } from './common/controls';
+import type { CommonChartProps, LegendChartProps } from './common/controls';
+import type { JSXProps } from '../../types/JSXProps';
+import type { PlaygroundEntry } from '../../types/Playground';
+import createGithubLink from '../../utils/createGHLink';
+
+type CigaretteChartPlaygroundProps = {
+  commonChartProps: CommonChartProps;
+  legendProps: LegendChartProps & { withTrend: boolean };
+  cigaretteProps: {
+    tooltipViewType: CigaretteChartProps['tooltipViewType'];
+    layout: 'vertical' | 'horizontal';
+  };
+};
+export type CigaretteChartJSXProps = JSXProps<CigaretteChartPlaygroundProps>;
+
+const data = {
+  Cats: 3524,
+  Dogs: 1344,
+  Capybaras: 6135,
+  Hamsters: 1456,
+  Birds: 1823,
+};
+
+function getJSX(props: CigaretteChartJSXProps) {
+  const { ...legendProps } = props.legendProps ?? {};
+  return (
+    <Chart.Cigarette
+      data={data}
+      plotWidth={props.cigaretteProps.layout === 'horizontal' ? 300 : 44}
+      plotHeight={props.cigaretteProps.layout === 'horizontal' ? 28 : 200}
+      aria-label='Cigarette chart'
+      {...props.cigaretteProps}
+      {...props.commonChartProps}
+      invertAxis={props.cigaretteProps.layout === 'vertical' ? false : true}
+      {...(props.legendProps && {
+        legendProps,
+        showLegend: props.commonChartProps.showLegend as true,
+      })}
+      {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
+    />
+  );
+}
+
+const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
+  JSX: (props) => getJSX(props),
+  controls: {
+    cigaretteProps: {
+      type: 'group',
+      groupName: 'Cigarette props',
+      isOpenedByDefault: true,
+      controls: {
+        tooltipViewType: {
+          type: 'select',
+          options: ['all', 'single'],
+          value: 'single',
+          displayName: 'Tooltip type',
+        },
+        layout: {
+          type: 'select',
+          options: ['horizontal', 'vertical'],
+          value: 'horizontal',
+          displayName: 'Layout',
+        },
+      },
+    },
+    ...getDefaultChartControls({
+      skip: {
+        commonChartProps: ['showXAxis', 'showYAxis', 'direction', 'alignItems'],
+        legendProps: ['direction'],
+      },
+    }) },
+  link: createGithubLink('d3-chart'),
+  filterProps: ['data'],
+};
+
+export default entry;
