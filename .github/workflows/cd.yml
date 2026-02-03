@@ -119,9 +119,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -167,9 +164,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -223,9 +217,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -363,9 +354,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -440,9 +428,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -512,9 +497,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -579,9 +561,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
