@@ -184,7 +184,7 @@ const data = [
       },
       {
         'id': '6',
-        'kd/cpc': '66.4 / $3.80',
+        'kd/cpc': '66.5 / $40',
         'vol': 'n/a',
       },
     ],
@@ -220,15 +220,30 @@ const data = [
       },
     ],
   },
-  // Merged kd/cpc in the middle
+  // Second page - 3 merged rows after checkbox
   {
     category: 'Travel',
-    keyword: 'cheap flights expedia',
     [ROW_GROUP]: [
       {
-        'id': '10',
-        'kd/cpc': '52 / $4.10',
-        'vol': '35,800',
+        id: '10a',
+        keyword: 'cheap flights expedia',
+        kd: '52',
+        cpc: '$4.10',
+        vol: '35,800',
+      },
+      {
+        id: '10b',
+        keyword: 'booking vacation deals',
+        kd: '48',
+        cpc: '$3.85',
+        vol: '29,200',
+      },
+      {
+        id: '10c',
+        keyword: 'last minute travel',
+        kd: '43',
+        cpc: '$3.50',
+        vol: '22,100',
       },
     ],
   },

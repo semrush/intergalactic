@@ -12,7 +12,10 @@ import MergedRowColumnWithFixedExample, {
   mergedRowColumnWithFixedProps,
   type MergedRowColumnWithFixedProps,
 } from './examples/cells-tests/merged-row-column-with-fixed';
-import MergedRowForMultiLevelHeaderExample from './examples/cells-tests/merged-row-for-multi-level-header';
+import MergedRowForMultiLevelHeaderExample, {
+  mergedRowForMultiLevelHeaderProps,
+  type DemoProps as MergedRowForMultiLevelHeaderProps,
+} from './examples/cells-tests/merged-row-for-multi-level-header';
 import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
@@ -55,8 +58,15 @@ export const CheckboxInTableWithNoData: Story = {
   render: CheckboxInTableWithNoDataExample,
 };
 
-export const MergedRowForMultiLevelHeader: Story = {
+export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeaderProps> = {
   render: MergedRowForMultiLevelHeaderExample,
+  args: mergedRowForMultiLevelHeaderProps,
+  argTypes: {
+    showAdditionalColumn: {
+      control: 'boolean',
+      description: 'Show additional column at the end of the table',
+    },
+  },
 };
 
 export const MiniChartsInlineEditInCells: Story = {
