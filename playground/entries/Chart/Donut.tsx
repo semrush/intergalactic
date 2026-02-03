@@ -87,7 +87,7 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
     },
     ...getDefaultChartControls({
       skip: {
-        commonChartProps: ['showTotalInTooltip'],
+        commonChartProps: ['showTotalInTooltip', 'showPercentValueInTooltip'],
         legendProps: ['direction'],
       },
     }),

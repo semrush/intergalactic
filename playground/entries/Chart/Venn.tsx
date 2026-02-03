@@ -53,7 +53,7 @@ const entry: PlaygroundEntry<VennChartJSXProps> = {
   controls: {
     ...getDefaultChartControls({
       skip: {
-        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip'],
+        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip', 'showPercentValueInTooltip'],
         legendProps: ['direction'],
       },
     }),

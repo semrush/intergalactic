@@ -42,7 +42,7 @@ const entry: PlaygroundEntry<BubbleChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: getDefaultChartControls({
     skip: {
-      commonChartProps: ['showTotalInTooltip'],
+      commonChartProps: ['showTotalInTooltip', 'showPercentValueInTooltip'],
     },
   }),
   link: createGithubLink('d3-chart'),
