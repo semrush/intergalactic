@@ -36,7 +36,7 @@ function getJSX(props: CigaretteChartJSXProps) {
       aria-label='Cigarette chart'
       {...props.cigaretteProps}
       {...props.commonChartProps}
-      invertAxis={props.cigaretteProps.layout === 'vertical' ? false : true}
+      invertAxis={props.cigaretteProps.layout !== 'vertical'}
       {...(props.legendProps && {
         legendProps,
         showLegend: props.commonChartProps.showLegend as true,
@@ -54,17 +54,17 @@ const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
       groupName: 'Cigarette props',
       isOpenedByDefault: true,
       controls: {
-        tooltipViewType: {
-          type: 'select',
-          options: ['all', 'single'],
-          value: 'single',
-          displayName: 'Tooltip type',
-        },
         layout: {
           type: 'select',
           options: ['horizontal', 'vertical'],
           value: 'horizontal',
           displayName: 'Layout',
+        },
+        tooltipViewType: {
+          type: 'select',
+          options: ['all', 'single'],
+          value: 'single',
+          displayName: 'Tooltip type',
         },
       },
     },
