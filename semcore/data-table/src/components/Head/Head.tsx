@@ -10,13 +10,14 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
-import { DataTable, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import type { DTRow } from '../Body/Row.types';
+import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
 class HeadRoot<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableHeadProps,
     {},
@@ -128,25 +129,50 @@ class HeadRoot<
   }
 
   handleSelectAll = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
-    this.asProps.onChangeSelectAll?.(value, event);
+    const { selectedRows = [] } = this.asProps;
+    const idsSet = new Set<UniqKeyType>(selectedRows);
+
+    if (value) {
+      this.selectableRows.forEach((row) => {
+        idsSet.add(row[UNIQ_ROW_KEY]);
+      });
+    } else {
+      this.selectableRows.forEach((row) => {
+        idsSet.delete(row[UNIQ_ROW_KEY]);
+      });
+    }
+
+    this.asProps.onChangeSelectAll?.(Array.from(idsSet), event);
   };
 
   handleClickSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
     event?.stopPropagation();
-    this.asProps.onChangeSelectAll?.(value, event);
+
+    this.handleSelectAll(value, event);
   };
 
   get areAllRowsSelected() {
-    const { selectedRows = [], flatRows } = this.asProps;
+    const { selectedRows = [] } = this.asProps;
 
-    return selectedRows.length > 0 && flatRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    return selectedRows.length > 0 && this.selectableRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
   }
 
   get isIndeterminate() {
-    const { flatRows, selectedRows } = this.asProps;
+    const { selectedRows } = this.asProps;
 
-    return flatRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    return this.selectableRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+  }
+
+  get selectableRows(): DTRow<UniqKeyType>[] {
+    const { columns, flatRows } = this.asProps;
+    const mappedFlatRows = flatRows
+      .filter((r) => {
+        const nextColumnName = columns[1].name;
+        return r[nextColumnName] !== undefined;
+      });
+
+    return mappedFlatRows;
   }
 
   render() {
@@ -196,11 +222,12 @@ class HeadRoot<
                 <>
                   {treeColumns.map((column, _i) => {
                     if ('columns' in column) {
+                      const columnsName = column.columns?.map((c) => c.name).join('/');
                       return (
                         <DataTable.Head.Group
-                          key={column.name}
+                          key={columnsName}
                           {...column}
-                          name={column.columns?.map((c) => c.name).join('/')}
+                          name={columnsName}
                           title=''
                         />
                       );

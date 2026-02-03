@@ -70,12 +70,6 @@ const group = {
     route: '/intergalactic/data-display/bubble-chart/bubble-chart',
     type: 'charts',
   },
-  lollipop: {
-    title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
-    disabled: true,
-    type: 'charts',
-  },
 };
 
 const cardsStyle = {
@@ -178,12 +172,6 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  lollipop: {
-    title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
-    disabled: true,
-    type: 'charts',
-  },
 };
 
 const cardsStyle = {
@@ -283,12 +271,6 @@ const group = {
   heatmap: {
     title: 'Heatmap',
     route: '/intergalactic/data-display/heatmap/heatmap',
-    disabled: true,
-    type: 'charts',
-  },
-  lollipop: {
-    title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
     disabled: true,
     type: 'charts',
   },
@@ -717,12 +699,6 @@ const group = {
     title: 'Mini chart',
     route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
-    type: 'charts',
-  },
-  lollipop: {
-    title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
-    disabled: true,
     type: 'charts',
   },
 };

@@ -327,7 +327,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -364,7 +364,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -446,7 +446,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/neighbor-location':
         specifier: 16.0.11
         version: link:../neighbor-location
@@ -474,7 +474,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -512,7 +512,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/popper':
         specifier: 16.0.11
         version: link:../popper
@@ -577,7 +577,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
@@ -608,7 +608,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
         version: link:../modal
@@ -664,7 +664,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -760,7 +760,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/popper':
         specifier: 16.0.11
         version: link:../popper
@@ -845,7 +845,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/scroll-area':
         specifier: 16.0.11
         version: link:../scroll-area
@@ -924,7 +924,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -1067,7 +1067,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/popper':
         specifier: 16.0.11
         version: link:../popper
@@ -1203,7 +1203,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/popper':
         specifier: 16.0.11
         version: link:../popper
@@ -1240,7 +1240,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/illustration':
         specifier: 16.0.12
         version: link:../illustration
@@ -1360,7 +1360,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
         version: link:../modal
@@ -1494,7 +1494,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -1681,7 +1681,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/outside-click':
         specifier: 16.0.11
         version: link:../outside-click
@@ -1721,7 +1721,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/notice-global':
         specifier: 16.1.12
         version: 16.1.12(@semcore/base-components@semcore+base-components)
@@ -1749,7 +1749,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/portal':
         specifier: 16.0.11
         version: link:../portal
@@ -1780,7 +1780,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -1808,7 +1808,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -1954,7 +1954,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -1994,7 +1994,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/outside-click':
         specifier: 16.0.11
         version: link:../outside-click
@@ -2218,7 +2218,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -2306,7 +2306,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -2372,7 +2372,7 @@ importers:
         specifier: ^16.4.2
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.1
+        specifier: ^16.5.2
         version: link:../data-table
       '@semcore/date-picker':
         specifier: ^16.2.3
@@ -2426,7 +2426,7 @@ importers:
         specifier: ^16.0.9
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: ^16.7.3
+        specifier: ^16.7.4
         version: link:../icon
       '@semcore/illustration':
         specifier: ^16.0.12
@@ -2465,7 +2465,7 @@ importers:
         specifier: ^16.1.12
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../notice-bubble
       '@semcore/notice-global':
         specifier: ^16.1.13
@@ -2612,7 +2612,7 @@ importers:
         version: link:../flex-box
       '@semcore/icon':
         specifier: 16.7.3
-        version: link:../icon
+        version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
         version: link:../modal

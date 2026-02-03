@@ -423,11 +423,23 @@ test.describe(`${TAG.VISUAL} `, () => {
       test(`Verify Notice showTitle=${item.showTitle} showActions=${item.showActions} iconType=${item.iconType} `, {
         tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice.tsx', 'en', item);
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice.tsx', 'en', item);
 
         await test.step('Verify notice appearance', async () => {
           await expect(page).toHaveScreenshot();
         });
+      });
+    });
+
+    test('Verify Notice advanced mode rendering', {
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice-advanced-mode.tsx', 'en');
+
+      await test.step('Verify both smart and advanced mode notices render correctly', async () => {
+        const notices = locators.notice(page);
+        await expect(notices).toHaveCount(2);
+        await expect(page).toHaveScreenshot();
       });
     });
   });
