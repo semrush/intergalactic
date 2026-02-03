@@ -2,6 +2,7 @@ import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
+import type { ROW_GROUP } from '../DataTable/DataTable';
 import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTable.types';
 
 export type DataTableHeadProps = {
@@ -33,8 +34,8 @@ export type DataTableHeadProps = {
 
 export type HeadPropsInner<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = {
   use: DTUse;
   tableRef: React.RefObject<HTMLElement>;
@@ -54,7 +55,7 @@ export type HeadPropsInner<
 
   totalRows: number;
   selectedRows?: UniqKeyType[];
-  onChangeSelectAll?: (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => void;
+  onChangeSelectAll?: (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow<UniqKeyType>[];
 
   getFixedStyle: (
