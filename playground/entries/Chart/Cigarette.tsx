@@ -34,9 +34,9 @@ function getJSX(props: CigaretteChartJSXProps) {
       plotWidth={props.cigaretteProps.layout === 'horizontal' ? 300 : 44}
       plotHeight={props.cigaretteProps.layout === 'horizontal' ? 28 : 200}
       aria-label='Cigarette chart'
-      {...props.cigaretteProps}
-      {...props.commonChartProps}
+      tooltipViewType={props.cigaretteProps.tooltipViewType}
       invertAxis={props.cigaretteProps.layout !== 'vertical'}
+      {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps,
         showLegend: props.commonChartProps.showLegend as true,
