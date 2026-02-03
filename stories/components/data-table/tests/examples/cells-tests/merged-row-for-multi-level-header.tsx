@@ -9,7 +9,7 @@ export const mergedRowForMultiLevelHeaderProps: DemoProps = {
   showAdditionalColumn: false,
 };
 
-const Demo: React.FC<DemoProps> = ({ showAdditionalColumn = false }) => {
+const Demo = ({ showAdditionalColumn = false }: DemoProps) => {
   const baseColumns = [
     { name: 'keyword', children: 'Keyword' },
     {
