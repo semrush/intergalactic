@@ -1,6 +1,4 @@
-import { DefaultTheme } from 'vitepress';
-
-type SidebarConfig = {
+export type SidebarConfig = {
   text?: string;
   link?: string;
   collapsed?: boolean;
