@@ -18,7 +18,8 @@ npm install @semcore/process-css-unplugin
 
 ```ts
 type Options = {
-  prefix?: string; // Defines the prefix for a virtual CSS file. Default is undefined.
+  virtualFilePrefix?: string; // Defines the prefix for a virtual CSS file.
+  isolationSuffix?: string; // Defines new isolation suffix for CSS classes.
 }
 ```
 
@@ -34,7 +35,8 @@ import { processCssVitePlugin } from '@semcore/process-css-unplugin';
 export default defineConfig({
   plugins: [
     processCssVitePlugin({
-      prefix: 'myprefix' // optional
+      virtualFilesPrefix: 'myprefix', // Optional
+      isolationSuffix: '_my-team_', // Optional
     }),
   ],
 });
@@ -49,7 +51,8 @@ module.exports = {
   // ...
   plugins: [
     processCssWebpackPlugin({
-      prefix: 'myprefix' // optional
+      virtualFilesPrefix: 'myprefix', // Optional
+      isolationSuffix: '_my-team_', // Optional
     }),
   ],
   // ...

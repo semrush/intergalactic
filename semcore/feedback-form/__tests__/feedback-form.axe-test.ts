@@ -93,4 +93,24 @@ test.describe(`@feedback-form ${TAG.ACCESSIBILITY}`, () => {
       expect(violations).toEqual([]);
     });
   });
+
+  test('Feedback rating with form and illustration', async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-custom-illustration-and-notice.tsx', 'en');
+
+    await test.step('Verify notice', async () => {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    });
+    await test.step('Verify empty form', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    });
+  });
 });
