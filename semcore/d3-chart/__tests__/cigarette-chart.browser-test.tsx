@@ -101,6 +101,25 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify tooltip with percent', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+      'en',
+      { showPercentValueInTooltip: true },
+    );
+
+    await test.step('Verify tooltip with percent shown', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      await locators.plot(page).first().locator('path').nth(2).hover();
+      await locators.tooltip(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================

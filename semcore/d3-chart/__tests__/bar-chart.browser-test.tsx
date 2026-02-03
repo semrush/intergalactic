@@ -72,6 +72,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: true,
         invertAxis: false,
         showTooltip: true,
+        showPercentValueInTooltip: true,
         showLegend: true,
         patterns: false,
         multilineXTicks: false,
@@ -88,6 +89,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: false,
         invertAxis: false,
         showTooltip: true,
+        showPercentValueInTooltip: false,
         showLegend: true,
         patterns: true,
         multilineXTicks: true,
@@ -104,6 +106,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: true,
         invertAxis: true,
         showTooltip: true,
+        showPercentValueInTooltip: true,
         showLegend: false,
         patterns: false,
         multilineXTicks: false,
@@ -123,10 +126,17 @@ test.describe(`${TAG.VISUAL}`, () => {
           vars,
         );
 
-        await test.step('Verify chart renders correctly', async () => {
+        await test.step('Verify chart with tooltip renders correctly', async () => {
           await locators.plot(page).waitFor({ state: 'visible' });
           await page.waitForTimeout(500);
+          const chart = locators.plot(page).first();
+          const box = await page.locator('path').nth(2).boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + 50, box.y + 50);
+          }
 
+          const tooltip = locators.tooltip(page);
+          await tooltip.waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       });
@@ -312,6 +322,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'group',
+          showPercentValueInTooltip: true,
           invertAxis: false,
           data: [
             { category: 'Category 0', bar1: 4, bar2: 7 },
@@ -327,6 +338,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'group',
+          showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
             { category: 'Category 0', bar1: 4, bar2: 7 },
@@ -342,6 +354,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'stack',
+          showPercentValueInTooltip: true,
           invertAxis: false,
           data: [
             { category: 'Category 0', bar1: 4, bar2: 7 },
@@ -357,6 +370,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'stack',
+          showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
             { category: 'Category 0', bar1: 4, bar2: 7 },
