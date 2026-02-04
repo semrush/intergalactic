@@ -38,7 +38,6 @@
     "@types/classnames": "2.2.6",
     "@semcore/testing-utils": "workspace:*",
     "@semcore/base-trigger": "workspace:*",
-    "@semcore/icon": "workspace:*",
     "@semcore/button": "workspace:*"
   }
 }

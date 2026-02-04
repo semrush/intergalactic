@@ -52,7 +52,6 @@
     "@semcore/divider": "workspace:*",
     "@semcore/dropdown-menu": "workspace:*",
     "@semcore/ellipsis": "workspace:*",
-    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@semcore/typography": "workspace:*",
     "@types/d3-array": "^3.2.1",
