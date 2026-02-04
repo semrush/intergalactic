@@ -396,7 +396,7 @@ function Header(props: any) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(
-    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign='center' />,
+    <SHeader render={Modal.Title} />,
   );
 }
 
