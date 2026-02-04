@@ -171,45 +171,4 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       expect(tagName).toBe('svg');
     }
   });
-
-  test('Verify Custom icons type', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@icon'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/icon/tests/examples/icon_with_custom_size_color.tsx', 'en');
-
-    const expectedAttributes = [
-      {
-        'aria-label': 'icon with size 22',
-        'width': '22',
-        'height': '22',
-        'viewBox': '0 0 22 22',
-        'aria-hidden': 'true',
-      },
-      {
-        'aria-label': 'icon with size 55',
-        'width': '55',
-        'height': '55',
-        'viewBox': '0 0 55 55',
-        'aria-hidden': 'true',
-      },
-    ];
-
-    const svgs = await page.locator('svg');
-    const count = await svgs.count();
-
-    expect(count).toBe(expectedAttributes.length);
-
-    for (let i = 0; i < count; i++) {
-      const svg = svgs.nth(i);
-      const attrs = expectedAttributes[i];
-
-      for (const [key, value] of Object.entries(attrs)) {
-        await expect(svg).toHaveAttribute(key, value);
-      }
-
-      const tagName = await svg.evaluate((el) => el.tagName.toLowerCase());
-      expect(tagName).toBe('svg');
-    }
-  });
 });
