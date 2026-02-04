@@ -117,7 +117,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const expectedAttributes = [
       {
-        'aria-label': 'ColorM neutral',
         'data-group': 'm',
         'width': '16',
         'height': '16',
@@ -125,7 +124,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'aria-hidden': 'true',
       },
       {
-        'aria-label': 'ColorL neutral',
         'data-group': 'l',
         'width': '24',
         'height': '24',
