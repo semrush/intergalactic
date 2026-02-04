@@ -3,8 +3,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
+import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/ui/base-components';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React, { Fragment } from 'react';
 
@@ -211,7 +211,7 @@ class CigaretteChartComponent extends AbstractChart<
                 title: tooltipTitle,
                 Tooltip: HoverRect.Tooltip,
                 content,
-                getData: () => item,
+                dataItem: item,
                 showTotal: false,
               }),
             };
@@ -242,7 +242,7 @@ class CigaretteChartComponent extends AbstractChart<
               title: tooltipTitle,
               Tooltip: HoverRect.Tooltip,
               content,
-              getData: () => data,
+              dataItem: data,
             }),
           };
         }}

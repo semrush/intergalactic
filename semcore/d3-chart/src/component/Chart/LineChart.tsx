@@ -94,7 +94,7 @@ class LineChartComponent extends AbstractChart<
           return {
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
-              getData: () => dataItem,
+              dataItem,
               title: dataItem[groupKey]?.toString(),
             }),
           };

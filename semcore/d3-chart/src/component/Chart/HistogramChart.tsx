@@ -164,7 +164,7 @@ class HistogramChartComponent extends AbstractChart<
           return {
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
-              getData: () => dataItem,
+              dataItem,
               title: dataItem[groupKey]?.toString(),
             }),
           };

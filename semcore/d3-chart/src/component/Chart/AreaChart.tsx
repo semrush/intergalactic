@@ -115,7 +115,7 @@ class AreaChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               title: dataItem[groupKey]?.toString(),
-              getData: () => dataItem,
+              dataItem,
             }),
           };
         }}

@@ -1,8 +1,8 @@
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/ui/base-components';
 import type { HoverLine, HoverRect } from 'd3-chart/src/types';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
@@ -481,18 +481,17 @@ export abstract class AbstractChart<
 
   protected getTooltipChildren<D extends ObjectData>(options: {
     Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
-    getData: () => D;
+    dataItem: D;
     content?: React.JSX.Element;
     title?: string;
     showTotal?: boolean;
   }) {
     const STooltipChildrenWrapper = Box;
-    const { Tooltip, getData, content, title, showTotal = true } = options;
+    const { Tooltip, dataItem, content, title, showTotal = true } = options;
 
     const { showPercentValueInTooltip, showTotalInTooltip, styles } = this.asProps;
     const { dataDefinitions } = this.state;
 
-    const dataItem = getData();
     const total = this.totalValue(dataItem);
 
     return sstyled(styles)(
@@ -501,7 +500,7 @@ export abstract class AbstractChart<
 
         <STooltipChildrenWrapper
           // @ts-ignore
-          showPercentValueInTooltip
+          showPercentValueInTooltip={showPercentValueInTooltip}
         >
           {content || dataDefinitions?.map((item) => {
             return (

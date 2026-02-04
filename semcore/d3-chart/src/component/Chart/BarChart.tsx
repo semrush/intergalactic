@@ -176,7 +176,7 @@ class BarChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               title: dataItem[groupKey]?.toString(),
-              getData: () => dataItem,
+              dataItem,
             }),
           };
         }}
