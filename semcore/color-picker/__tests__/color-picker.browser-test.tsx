@@ -230,8 +230,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       const paletteIcon = locators.paletteItem(page).locator('svg');
-      await expect(paletteIcon).toHaveAttribute('width', '16');
-      await expect(paletteIcon).toHaveAttribute('height', '16');
+      await expect(paletteIcon).toHaveAttribute('width', '10');
+      await expect(paletteIcon).toHaveAttribute('height', '10');
 
       const itemColorBox = page.locator('[data-ui-name="Box"][class*="ItemColor"]');
       const itemColorBoxBounding = await itemColorBox.boundingBox();

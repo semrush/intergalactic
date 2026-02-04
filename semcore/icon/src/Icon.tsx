@@ -47,11 +47,11 @@ function Icon({
       width={width}
       height={height}
       viewBox={viewBox}
+      aria-hidden='true'
       {...propsForElement(props)}
       style={Object.assign({}, style, props.style)}
       className={`${className} ${props.className ?? ''}`}
       ref={ref}
-      aria-hidden='true'
     />
   );
 }

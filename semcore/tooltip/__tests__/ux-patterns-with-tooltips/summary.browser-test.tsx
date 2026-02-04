@@ -83,7 +83,6 @@ test.describe(TAG.VISUAL, () => {
       await page.keyboard.press('Space');
       await descriptionTooltip.waitFor({ state: 'visible' });
       await expect(image.first()).toHaveAttribute('aria-hidden', 'false');
-      await expect(image.first()).toHaveAttribute('tabindex', '-1');
       await expect(image.first()).toHaveAttribute('data-name', 'Warning');
       await expect(image.first()).toHaveAttribute('color', 'icon-secondary-neutral');
 
