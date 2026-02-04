@@ -29,7 +29,7 @@ export type Placement = Options['placement'];
 export type PopperProps = OutsideClickProps &
   PortalProps &
   UniqueIDProps &
-  Omit<ScaleProps, 'placement'> & {
+  Omit<ScaleProps, 'placement' | 'preserveNode'> & {
     /**
      * Popper can have different positioning options
      * @default absolute
