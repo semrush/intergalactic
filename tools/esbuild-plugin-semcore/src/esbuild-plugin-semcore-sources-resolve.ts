@@ -108,6 +108,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
         ) {
           if (subPath.includes('lib')) {
             modifiedSubPath = subPath.replace('lib/', 'src/');
+          } else if (componentName === 'icon') {
+            modifiedSubPath = `lib/${subPath}`;
           } else if (!subPath.startsWith('src/')) {
             modifiedSubPath = `src/${subPath}`;
           }
