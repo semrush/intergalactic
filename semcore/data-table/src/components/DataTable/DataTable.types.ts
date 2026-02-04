@@ -45,8 +45,8 @@ export type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'
 
 export type DataTableProps<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = DataTableAriaProps &
   Sizes & {
     /** Data for table */
@@ -245,8 +245,8 @@ export type ColIndex = number;
 
 export type DataTableType = (<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number] = keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey] = Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
   Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.EfficientOmit<

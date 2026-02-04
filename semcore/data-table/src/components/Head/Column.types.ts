@@ -2,6 +2,7 @@ import type { Property } from 'csstype';
 
 import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
+import type { ROW_GROUP } from '../DataTable/DataTable';
 import type {
   ColumnGroupConfig,
   ColumnItemConfig,
@@ -81,8 +82,8 @@ export type DataTableColumnProps = CommonColumnType & {
 
 export type ColumnPropsInner<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = {
   use: DTUse;
   borders?: 'both' | 'left' | 'right';

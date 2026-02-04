@@ -229,7 +229,7 @@ function Annotation(props) {
   const { Children, y, height, width, styles } = props;
   const SBarAnnotation = 'div';
   return sstyled(styles)(
-    <foreignObject x='0' y={y - barHeight} height={height} width={width}>
+    <foreignObject x='0' y={y - barHeight} height={height} width={width} overflow='visible'>
       <SBarAnnotation>
         <Children />
       </SBarAnnotation>
