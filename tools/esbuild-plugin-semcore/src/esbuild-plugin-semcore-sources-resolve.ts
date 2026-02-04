@@ -71,7 +71,7 @@ const tryToResolveFileExtention = async (path: string) => {
 };
 
 const tryToResolveIndexFile = async (path: string) => {
-  return tryToResolveFileExtention(resolvePath(path, 'index'));
+  return tryToResolveFileExtention(resolvePath(...path.split('/'), 'index'));
 };
 
 const rootFiles = ['README.md', 'package.json'];
