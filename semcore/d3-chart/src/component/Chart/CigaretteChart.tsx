@@ -3,10 +3,10 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
-import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/base-components';
 import { scaleBand, scaleLinear } from 'd3-scale';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
@@ -74,6 +74,21 @@ class CigaretteChartComponent extends AbstractChart<
       legendType: 'Table' as const,
       w: 'fit-content',
     };
+  }
+
+  protected override percentValue(data: CigaretteChartData, key: string): string {
+    const value = data[key];
+
+    /*
+      TODO: for some hictorical reasons we have to handle 'null' values as 0.
+      Changing this behavior could cause BREAKING CHANGES.
+      Leave it as it is.
+    */
+    if (value === null) {
+      return '0%';
+    }
+
+    return super.percentValue(data, key);
   }
 
   get xScale() {
@@ -171,7 +186,8 @@ class CigaretteChartComponent extends AbstractChart<
       >
         {(tooltipProps: any) => {
           const dataKey = invertAxis ? tooltipProps.xIndex : tooltipProps.yIndex;
-          const total = this.totalValue(data);
+
+          let content: React.JSX.Element | null = null;
 
           if (tooltipViewType === 'single') {
             const item = dataDefinitions.find((dataDefItem) => dataDefItem.id === dataKey);
@@ -180,56 +196,54 @@ class CigaretteChartComponent extends AbstractChart<
               return null;
             }
 
+            content = (
+              <>
+                <HoverRect.Tooltip.Dot mr={2} color={item.color}>
+                  {item.label}
+                </HoverRect.Tooltip.Dot>
+                { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, dataKey)}</Text> }
+                <Text textAlign='end' bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
+              </>
+            );
+
             return {
-              children: (
-                <Flex justifyContent='space-between' key={dataKey}>
-                  <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                    {item.label}
-                  </HoverRect.Tooltip.Dot>
-                  <Text bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
-                </Flex>
-              ),
+              children: this.getTooltipChildren({
+                title: tooltipTitle,
+                Tooltip: HoverRect.Tooltip,
+                content,
+                getData: () => item,
+                showTotal: false,
+              }),
             };
           }
 
+          content = (
+            <>
+              {dataDefinitions.map((item) => {
+                const style = { opacity: item.id === dataKey ? 1 : 0.3 };
+
+                return (
+                  item.checked && (
+                    <Fragment key={item.id}>
+                      <HoverRect.Tooltip.Dot style={style} mr={2} color={item.color}>
+                        {item.label}
+                      </HoverRect.Tooltip.Dot>
+                      { showPercentValueInTooltip && <Text style={style} textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                      <Text style={style} textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
+                    </Fragment>
+                  )
+                );
+              })}
+            </>
+          );
+
           return {
-            children: (
-              <>
-                {tooltipTitle && (
-                  <HoverRect.Tooltip.Title>Some tooltip title</HoverRect.Tooltip.Title>
-                )}
-
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex
-                        justifyContent='space-between'
-                        key={item.id}
-                        style={{ opacity: item.id === dataKey ? 1 : 0.3 }}
-                      >
-                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverRect.Tooltip.Dot>
-                        <Flex gap={2}>
-                          { showPercentValueInTooltip && <Text color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
-                          <Text bold>{this.tooltipValueFormatter(data[item.id])}</Text>
-                        </Flex>
-                      </Flex>
-                    )
-                  );
-                })}
-
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Flex gap={2}>
-                      {showPercentValueInTooltip && <Text color='text-secondary'>100%</Text>}
-                      <Text bold>{total}</Text>
-                    </Flex>
-                  </Flex>
-                )}
-              </>
-            ),
+            children: this.getTooltipChildren({
+              title: tooltipTitle,
+              Tooltip: HoverRect.Tooltip,
+              content,
+              getData: () => data,
+            }),
           };
         }}
       </HoverRect.Tooltip>

@@ -1,7 +1,5 @@
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Flex, Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
@@ -102,8 +100,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   renderTooltip() {
-    const { data, groupKey, showTotalInTooltip, showTooltip, showPercentValueInTooltip } = this.asProps;
-    const { dataDefinitions } = this.state;
+    const { data, groupKey, showTooltip } = this.asProps;
 
     if (!showTooltip) {
       return null;
@@ -113,40 +110,13 @@ class AreaChartComponent extends AbstractChart<
       <HoverLine.Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
-          const total = this.totalValue(dataItem);
 
           return {
-            children: (
-              <>
-                <HoverLine.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverLine.Tooltip.Title>
-
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex justifyContent='space-between' key={item.id}>
-                        <HoverLine.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverLine.Tooltip.Dot>
-                        <Flex gap={2}>
-                          {showPercentValueInTooltip && <Text color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
-                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                        </Flex>
-                      </Flex>
-                    )
-                  );
-                })}
-
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Flex gap={2}>
-                      {showPercentValueInTooltip && <Text color='text-secondary'>100%</Text>}
-                      <Text bold>{total}</Text>
-                    </Flex>
-                  </Flex>
-                )}
-              </>
-            ),
+            children: this.getTooltipChildren({
+              Tooltip: HoverLine.Tooltip,
+              title: dataItem[groupKey]?.toString(),
+              getData: () => dataItem,
+            }),
           };
         }}
       </HoverLine.Tooltip>

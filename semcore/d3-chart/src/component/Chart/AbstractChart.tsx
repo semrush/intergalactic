@@ -1,15 +1,17 @@
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/base-components';
+import type { HoverLine, HoverRect } from 'd3-chart/src/types';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { makeDataHintsContainer } from '../../a11y/hints';
+import style from '../../style/abstract-chart.shadow.css';
 import { interpolateValue } from '../../utils';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
@@ -27,7 +29,7 @@ export abstract class AbstractChart<
   T extends BaseChartProps<D>,
   E extends readonly ((...args: any[]) => any)[] = [],
 > extends Component<T, {}, ChartState, E> {
-  public static style = {};
+  public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
     showXAxis: true,
@@ -474,6 +476,60 @@ export abstract class AbstractChart<
           </XAxis>
         )}
       </>
+    );
+  }
+
+  protected getTooltipChildren<D extends ObjectData>(options: {
+    Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
+    getData: () => D;
+    content?: React.JSX.Element;
+    title?: string;
+    showTotal?: boolean;
+  }) {
+    const STooltipChildrenWrapper = Box;
+    const { Tooltip, getData, content, title, showTotal = true } = options;
+
+    const { showPercentValueInTooltip, showTotalInTooltip, styles } = this.asProps;
+    const { dataDefinitions } = this.state;
+
+    const dataItem = getData();
+    const total = this.totalValue(dataItem);
+
+    return sstyled(styles)(
+      <Flex direction='column'>
+        { title && <Tooltip.Title>{title}</Tooltip.Title> }
+
+        <STooltipChildrenWrapper
+          // @ts-ignore
+          showPercentValueInTooltip
+        >
+          {content || dataDefinitions?.map((item) => {
+            return (
+              item.checked && (
+                <Fragment key={item.id}>
+                  <Tooltip.Dot mr={2} color={item.color}>
+                    {item.label}
+                  </Tooltip.Dot>
+                  {showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
+                </Fragment>
+              )
+            );
+          })}
+
+          {/*
+            TODO: Left visual behaviour as it is since it could cause UI disrepancies which could be treated as BREAKING CHANGES.
+            It should be updated later, in the upcoming release (row gap will be consisted across data items and total label).
+          */}
+          {showTotalInTooltip === true && showTotal && (
+            <>
+              <Box mt={2} mr={2}>Total</Box>
+              { showPercentValueInTooltip && <Text mt={2} textAlign='end' color='text-secondary'>100%</Text> }
+              <Text mt={2} textAlign='end' bold>{total}</Text>
+            </>
+          )}
+        </STooltipChildrenWrapper>
+      </Flex>,
     );
   }
 

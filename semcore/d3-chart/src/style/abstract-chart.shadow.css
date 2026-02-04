@@ -1,0 +1,9 @@
+STooltipChildrenWrapper {
+    display: grid;
+    column-gap: var(--intergalactic-spacing-2x);
+    grid-template-columns: auto minmax(28px, max-content);
+    
+    &[showPercentValueInTooltip] {
+        grid-template-columns: auto minmax(28px, max-content) minmax(28px, max-content);
+    }
+}
