@@ -123,7 +123,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'height': '16',
         'viewBox': '0 0 16 16',
         'aria-hidden': 'true',
-
       },
       {
         'aria-label': 'ColorL neutral',
@@ -132,7 +131,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'height': '24',
         'viewBox': '0 0 24 24',
         'aria-hidden': 'true',
-
       },
     ];
 

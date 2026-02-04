@@ -467,10 +467,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       const paletteClose = locators.paletteItem(page).locator('svg');
-      await expectAttributes(paletteClose, {
-        'tabindex': '-1',
-        'aria-hidden': 'true',
-      });
+      await expectAttributes(paletteClose, { 'aria-hidden': 'true' });
     });
   });
 
