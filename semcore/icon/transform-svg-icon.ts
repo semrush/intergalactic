@@ -26,6 +26,8 @@ async function transform() {
   const exports = {
     '.': {
       types: `./lib/types/index.d.ts`,
+      import: `./lib/esm/index.mjs`,
+      require: `./lib/cjs/index.js`,
     },
   };
 
@@ -102,6 +104,7 @@ function Root${name}({
       <Icon
         ref={ref}
         data-name="${name}"
+        data-ui-name="${name}"
         data-group="${group}"
         width={width}
         height={height}

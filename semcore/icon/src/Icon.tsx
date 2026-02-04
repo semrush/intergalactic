@@ -51,12 +51,9 @@ function Icon({
       style={Object.assign({}, style, props.style)}
       className={`${className} ${props.className ?? ''}`}
       ref={ref}
-      data-ui-name='Icon'
       aria-hidden='true'
     />
   );
 }
-
-Icon.displayName = 'Icon';
 
 export default createBaseComponent<'svg', IconProps>(Icon);
