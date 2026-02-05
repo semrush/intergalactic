@@ -12,27 +12,25 @@ const Demo = () => {
       <Flex columnGap={2} mb={4}>
         <Hint
           tag={ArrowsM}
-          interactive
-          title='Icon RegularM Interactive'
+          title='Icon neutralM'
           color='icon-secondary-neutral'
         />
 
         <Hint
           tag={ArrowsL}
-          interactive
-          title='Icon RegularL Interative'
+          title='Icon neutraL'
           color='icon-secondary-neutral'
         />
 
         <Hint
           tag={MailFilledM}
-          title='Icon ColoredM Non Interactive'
+          title='Icon ColoredM'
           color='text-critical'
         />
 
         <Hint
           tag={MailFilledL}
-          title='Icon ColoredL Non Interactive'
+          title='Icon ColoredL'
           color='text-critical'
         />
       </Flex>

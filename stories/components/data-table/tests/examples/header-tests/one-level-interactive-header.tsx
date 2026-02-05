@@ -91,10 +91,9 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           {' '}
           <Text color='text-secondary'>(100)</Text>
         </Text>
-        <Hint
+        <ButtonLink
           ml={1}
-          tag={LinkExternalM}
-          interactive
+          addonLeft={LinkExternalM}
           title='Go to our awesome article'
           data-test-id='interactive-icon'
           color='icon-secondary-neutral'

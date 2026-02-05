@@ -33,10 +33,9 @@ const Demo = () => {
                   {' '}
                   <Text color='text-secondary'>(100)</Text>
                 </Text>
-                <Hint
+                <ButtonLink
                   ml={1}
-                  tag={InfoM}
-                  interactive
+                  addonLeft={InfoM}
                   title='Go to our awesome article'
                   data-test-id='interactive-icon'
                   color='icon-secondary-neutral'

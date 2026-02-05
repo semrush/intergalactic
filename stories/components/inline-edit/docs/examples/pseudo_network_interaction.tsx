@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import EditM from '@semcore/ui/icon/Edit/m';
 import InlineEdit from '@semcore/ui/inline-edit';
 import InlineInput from '@semcore/ui/inline-input';
@@ -26,7 +27,7 @@ const Example = () => {
           <InlineEdit.View pr={5}>
             {title}
             {' '}
-            <EditM ml={1} />
+            <Box tag={EditM} ml={1} />
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>
