@@ -34,7 +34,7 @@ Use the secondary table to display small amounts of data in a compact layout.
 
 To ensure optimal performance, follow these best practices:
 
-- **Use virtual scrolling or implement pagination for large datasets.** Enable `virtualScroll` when rendering tables with hundreds or thousands of rows. Specify `rowHeight` for constant-height rows to maximize performance.
+- **Use virtual scrolling or pagination for large datasets.** Enable `virtualScroll` when rendering tables with hundreds or thousands of rows. Specify `rowHeight` for constant-height rows to maximize performance.
 
 - **Keep column definitions stable.** Define your columns array outside the component or use `React.useMemo()` to maintain the same reference between renders.
 
@@ -44,7 +44,7 @@ To ensure optimal performance, follow these best practices:
 
 - **Keep all object properties stable.** Ensure property objects maintain consistent references between renders. Avoid creating new objects on every render.
 
-- **Provide `uniqueRowKey` prop.** Specify a unique key for each row and describe it using the `uniqueRowKey` prop to prevent the `DataTable` from calculating row keys.
+- **Provide `uniqueRowKey` prop.** Specify a unique key for each row and describe it by using the `uniqueRowKey` prop to prevent the `DataTable` from calculating row keys.
 
 - **Optimize custom cell components.** If using custom components in cells, ensure they're properly memoized with `React.memo()` and don't cause unnecessary re-renders.
 
