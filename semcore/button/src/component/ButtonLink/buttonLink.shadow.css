@@ -63,6 +63,7 @@ SButton[use='secondary'] {
   }
 
   SText {
+    box-shadow: none;
     border-bottom-width: 1px;
     border-bottom-style: dashed;
     border-color: currentColor;
