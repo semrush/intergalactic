@@ -32,8 +32,6 @@ async function transform() {
   };
 
   for (const icon of icons) {
-    // eslint-disable-next-line no-console
-    console.log('process', icon, __dirname, sep);
     const [type, name, iconName] = icon.slice(__dirname.length + 1 + 'svg'.length + 1).split(sep);
     const group = iconName.length === 5 && (iconName[0] === 'm' || iconName[0] === 'l') ? iconName[0] : '';
     const svg = await fs.readFile(icon, 'utf8');
