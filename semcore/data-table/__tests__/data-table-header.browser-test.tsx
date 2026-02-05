@@ -54,8 +54,16 @@ test.describe(`${TAG.VISUAL}`, () => {
         const amazonIcon = page.getByLabel('AmazonM non interactive').nth(1);
         await amazonIcon.hover();
         await page.getByText('AmazonM non interactive').waitFor({ state: 'visible' });
+        await page.mouse.move(0, 0);
+        await page.getByText('AmazonM non interactive').waitFor({ state: 'hidden' });
 
-        await page.getByText('Difficulty Difficulty').hover();
+        const difficultyElement = page.getByText('Difficulty Difficulty');
+        const difficultyBox = await difficultyElement.boundingBox();
+        if (!difficultyBox) throw new Error('Difficulty element bounding box not found');
+        await page.mouse.move(
+          difficultyBox.x + difficultyBox.width / 4,
+          difficultyBox.y + difficultyBox.height / 4,
+        );
         await page.locator('[data-ui-name="Hint"]').getByText('Difficulty Difficulty').waitFor({ state: 'visible' });
 
         const elements = page.locator('[data-ui-name="Head.Column"]');
@@ -156,6 +164,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify focus on the 1st sorted icon', async () => {
         await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
       });
     });
@@ -169,7 +179,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Sorting activation on click', async () => {
         await locators.getHeadColumn(page, 1).hover();
-        await locators.sortButton(page, 1).click();
+        await locators.sortButton(page, 1).nth(1).click();
       });
 
       await test.step('Verify hover and click on another sorting column', async () => {
@@ -919,16 +929,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await test.step('Verify focus on the 1st sorted icon', async () => {
           await page.keyboard.press('Tab');
-          await expect(locators.sortButton(page, 1)).toBeFocused();
-          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
+          await page.keyboard.press('Enter');
+          await page.keyboard.press('Tab');
+
+          await expect(locators.sortButton(page, 1).nth(1)).toBeFocused();
+          await expect(locators.sortButton(page, 1).nth(1)).toHaveAttribute('aria-label', 'descending');
         });
 
         await test.step('Verify sorting interaction by keyboard', async () => {
           await page.keyboard.press('Enter');
-          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
+          await expect(locators.sortButton(page, 1).nth(1)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify sorting interaction with mouse and keyboard', async () => {
+          await page.keyboard.press('Escape');
           await page.keyboard.press('ArrowRight');
           await expect(locators.sortButton(page, 2)).not.toHaveAttribute('aria-label');
 
@@ -957,9 +971,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await test.step('Verify sorting activation on click', async () => {
           await locators.getHeadColumn(page, 1).hover();
-          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'descending');
-          await locators.sortButton(page, 1).click();
-          await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
+          await expect(locators.sortButton(page, 1).nth(1)).toHaveAttribute('aria-label', 'descending');
+          await locators.sortButton(page, 1).nth(1).click();
+          await expect(locators.sortButton(page, 1).nth(1)).toHaveAttribute('aria-label', 'ascending');
         });
 
         await test.step('Verify hover and click on another sorting column', async () => {
