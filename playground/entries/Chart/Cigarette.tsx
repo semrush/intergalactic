@@ -19,11 +19,11 @@ type CigaretteChartPlaygroundProps = {
 export type CigaretteChartJSXProps = JSXProps<CigaretteChartPlaygroundProps>;
 
 const data = {
-  Cats: 3524,
-  Dogs: 1344,
-  Capybaras: 6135,
+  Cats: 524,
+  Dogs: 44,
+  Capybaras: 0,
   Hamsters: 1456,
-  Birds: 1823,
+  Birds: 123,
 };
 
 function getJSX(props: CigaretteChartJSXProps) {
