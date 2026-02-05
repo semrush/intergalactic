@@ -28,6 +28,7 @@ const data = {
 
 function getJSX(props: CigaretteChartJSXProps) {
   const { ...legendProps } = props.legendProps ?? {};
+
   return (
     <Chart.Cigarette
       data={data}
@@ -76,6 +77,7 @@ const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
     }) },
   link: createGithubLink('d3-chart'),
   filterProps: ['data'],
+  JSXDisplayName: 'Chart.Cigarette',
 };
 
 export default entry;
