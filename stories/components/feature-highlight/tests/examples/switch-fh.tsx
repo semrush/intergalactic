@@ -1,4 +1,4 @@
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { SwitchFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import type { SwitchProps } from '@semcore/ui/switch';
@@ -39,7 +39,8 @@ const Demo = (props: SwitchFHAdvancedProps) => {
         <SwitchFH.Addon>
           {label}
           {showIcon && (
-            <SummaryAI
+            <Box
+              tag={SummaryAI}
               color='--intergalactic-icon-primary-feature-highlight'
               ml={2}
               style={{ verticalAlign: -3 }}

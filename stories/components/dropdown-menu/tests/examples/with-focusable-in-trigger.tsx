@@ -1,4 +1,4 @@
-import Button from '@semcore/ui/button';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import { Hint } from '@semcore/ui/tooltip';
@@ -9,9 +9,8 @@ const Demo = () => {
     <DropdownMenu interaction='focus'>
       <DropdownMenu.Trigger tag={Button}>
         Actions
-        <Hint
-          tag={LinkExternalM}
-          interactive
+        <ButtonLink
+          addonLeft={LinkExternalM}
           title='Go to our awesome article'
           color='icon-secondary-neutral'
         />

@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
+import type { ReleaseVersion } from '@tools/continuous-delivery/src/utils/changelog';
 import Git from 'simple-git';
 
 import { log, prerelaseSuffix } from '../utils';
@@ -11,13 +12,25 @@ const git = Git();
 
 export const gitUtils = {
   initNewPrerelease: async (version: string, packages: PackageJson[]) => {
-    const newPrereleaseBranch = `prerelease/v${version}`;
-    await git.checkout(['-b', newPrereleaseBranch]);
+    const semcoreUiPatch = packages.find((item) => item.name === '@semcore/ui');
 
-    await NpmUtils.updateLockFile();
-    await gitUtils.commitNewPrerelease(packages);
-    const tag = await gitUtils.createPrereleaseTag(version);
-    await gitUtils.push(tag);
+    if (semcoreUiPatch) {
+      const newPrereleaseBranch = `prerelease/v${version}`;
+      await git.checkout(['-b', newPrereleaseBranch]);
+
+      await NpmUtils.updateLockFile();
+      await gitUtils.commitNewPrerelease(packages);
+      const tag = await gitUtils.createPrereleaseTag(`v${version}`);
+      await gitUtils.push(tag);
+    } else if (packages.length === 1 && packages[0].name === '@semcore/icon') {
+      const newPrereleaseBranch = `prerelease/icon${version}`;
+      await git.checkout(['-b', newPrereleaseBranch]);
+
+      await NpmUtils.updateLockFile();
+      await gitUtils.commitNewPrerelease(packages);
+      const tag = await gitUtils.createPrereleaseTag(`icon${version}`);
+      await gitUtils.push(tag);
+    }
   },
 
   getUpdatedPackages: async () => {
@@ -84,7 +97,7 @@ export const gitUtils = {
   },
 
   createPrereleaseTag: async (version: string) => {
-    const tagNamePrefix = `v${version}-${prerelaseSuffix}.`;
+    const tagNamePrefix = `${version}-${prerelaseSuffix}.`;
 
     const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
@@ -139,11 +152,19 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<string> => {
+  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
     const tags = await git.tags(['v*', '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
-    return currentReleaseTag;
+    return currentReleaseTag.slice(1) as ReleaseVersion;
+  },
+
+  getPrevIconTag: async (): Promise<ReleaseVersion> => {
+    const tags = await git.tags(['icon*', '--sort', 'creatordate']);
+    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+
+    return currentReleaseTag.slice(4) as ReleaseVersion;
   },
 };

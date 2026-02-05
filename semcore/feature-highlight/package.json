@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@semcore/base-components": "workspace:*",
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -16,11 +16,10 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/icon": "16.7.3"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^16.0.0",
+    "@semcore/icon": "16.7.3 - 17"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,7 @@
   "devDependencies": {
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

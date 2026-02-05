@@ -23,10 +23,33 @@ export const initPrerelease = async () => {
   const packages = new Package();
   await packages.collectPackages();
 
-  const changelog = new Changelog(prevReleaseTag, packages.list);
+  const changelog = new Changelog('v', prevReleaseTag, packages.list);
   await changelog.collectFromHistory();
 
   await packages.updateVersions(changelog.data);
+
+  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
+};
+
+export const initIconPrerelease = async () => {
+  const COMPONENT_NAME = '@semcore/icon';
+  const prevReleaseTag = await gitUtils.getPrevIconTag();
+
+  const packages = new Package();
+  await packages.collectIcon();
+
+  const changelog = new Changelog('icon', prevReleaseTag, packages.list);
+  await changelog.collectFromHistory();
+
+  const components = changelog.data.components;
+  const iconChangeLog = components[COMPONENT_NAME];
+
+  if (!iconChangeLog) {
+    console.log('No changes in icon package.');
+    process.exit();
+  }
+
+  await packages.updatePackageVersion(COMPONENT_NAME, iconChangeLog.incrementType, iconChangeLog.changelog);
 
   await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 };

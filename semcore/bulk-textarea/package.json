@@ -20,12 +20,12 @@
     "@semcore/button": "16.0.12",
     "@semcore/typography": "16.3.2",
     "@semcore/counter": "16.0.11",
-    "@semcore/icon": "16.7.3",
     "@semcore/tooltip": "16.0.11",
     "dompurify": "3.2.3"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^16.0.0",
+    "@semcore/icon": "16.7.3 - 17"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/dompurify": "3.2.0"
   }

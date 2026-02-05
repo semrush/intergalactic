@@ -248,9 +248,9 @@ const Demo = () => {
 
       <Flex>
         <div>
-          <List size={300} marker={<IconM color='icon-secondary-success' mt={1} />}>
+          <List size={300} marker={<Box tag={IconM} color='icon-secondary-success' mt={1} />}>
             <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
-            <List.Item marker={<IconL color='icon-secondary-neutral' mt={1} />}>
+            <List.Item marker={<Box tag={IconL} color='icon-secondary-neutral' mt={1} />}>
               (Unchecked icon L) Carpe diem.
             </List.Item>
             <List.Item>Listen to them. Children of the night. What music they make.</List.Item>

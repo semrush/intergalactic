@@ -1,4 +1,4 @@
-import Button from '@semcore/ui/button';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import TrashIcon from '@semcore/ui/icon/Trash/m';
 import Modal from '@semcore/ui/modal';
 import { Text } from '@semcore/ui/typography';
@@ -19,12 +19,10 @@ const Demo = () => {
         <Text size={200} mb={4} tag='p'>
           Your changes will be lost if you don't save them.
           {isVisibleButton && (
-            <TrashIcon
-              interactive
+            <ButtonLink
+              addonLeft={TrashIcon}
               color='gray-300'
               onClick={() => setIsVisibleButton(false)}
-              onKeyDown={() => setIsVisibleButton(false)}
-              type='button'
             />
           )}
         </Text>

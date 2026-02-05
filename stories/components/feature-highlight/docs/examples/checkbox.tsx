@@ -1,4 +1,4 @@
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import { CheckboxFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
@@ -19,7 +19,8 @@ const Demo = () => (
             <CheckboxFH.AnimatedSparkles count={5} />
             <CheckboxFH.Text>
               First option
-              <SummaryAI
+              <Box
+                tag={SummaryAI}
                 color='--intergalactic-icon-primary-feature-highlight'
                 ml={2}
                 style={{ verticalAlign: -3 }}

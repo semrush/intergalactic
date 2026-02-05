@@ -23,8 +23,9 @@ export const esbuildPluginIcons = (): Plugin => ({
       const fullPath = path.endsWith('/lib') ? resolvePath(iconsDir, 'lib') : resolvePath(iconsDir);
       const allIcons = await glob('**/index.mjs', {
         cwd: fullPath,
-        ignore: ['lib', 'src', 'node_modules', 'cjs', 'es6'],
+        ignore: ['esm', 'src', 'node_modules', 'cjs', 'es6'],
       });
+
       const iconPaths = allIcons.filter((path) => {
         const maybeSize = path.split('/')[path.split('/').length - 2];
         return !['xxl', 'xl', 'l', 's', 'xs', 'xxs'].includes(maybeSize);

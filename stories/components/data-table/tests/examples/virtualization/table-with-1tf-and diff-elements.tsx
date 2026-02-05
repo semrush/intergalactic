@@ -92,10 +92,9 @@ const Demo = () => {
                 {' '}
                 <Text color='text-secondary'>(100)</Text>
               </Text>
-              <Hint
+              <ButtonLink
+                addonLeft={LinkExternalM}
                 ml={1}
-                tag={LinkExternalM}
-                interactive
                 title='Go to our awesome article'
                 data-test-id='interactive-icon'
                 color='icon-secondary-neutral'

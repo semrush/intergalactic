@@ -259,10 +259,10 @@ const FocusInAllComponents = () => {
               1 hour ago
               <DescriptionTooltip>
                 <DescriptionTooltip.Trigger
-                  tag={InfoIcon}
+                  tag={ButtonLink}
+                  addonLeft={InfoIcon}
                   display='inline-flex'
                   ml={1}
-                  interactive
                   color='icon-secondary-neutral'
                   aria-label='About update rate'
                 />
