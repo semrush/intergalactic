@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { resolve as resolvePath, dirname } from 'node:path';
+import { resolve as resolvePath, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // @ts-ignore
@@ -32,7 +32,7 @@ async function transform() {
   };
 
   for (const icon of icons) {
-    const [type, name, iconName] = icon.slice(__dirname.length + 1 + 'svg'.length + 1).split('/');
+    const [type, name, iconName] = icon.slice(__dirname.length + 1 + 'svg'.length + 1).split(sep);
     const group = iconName.length === 5 && (iconName[0] === 'm' || iconName[0] === 'l') ? iconName[0] : '';
     const svg = await fs.readFile(icon, 'utf8');
 
