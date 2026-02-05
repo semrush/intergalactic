@@ -593,9 +593,6 @@ importers:
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1500,9 +1497,6 @@ importers:
       '@semcore/link':
         specifier: 16.0.11
         version: link:../link
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
