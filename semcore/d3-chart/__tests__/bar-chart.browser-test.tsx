@@ -323,11 +323,12 @@ test.describe(`${TAG.VISUAL}`, () => {
           groupKey: 'category',
           type: 'group',
           showPercentValueInTooltip: true,
+          showTotalInTooltip: true,
           invertAxis: false,
           data: [
-            { category: 'Category 0', bar1: 4, bar2: 7 },
-            { category: 'Category 1', bar1: 3, bar2: 5 },
-            { category: 'Category 2', bar1: 8, bar2: 2 },
+            { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
+            { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
+            { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
           ],
@@ -341,8 +342,9 @@ test.describe(`${TAG.VISUAL}`, () => {
           showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
-            { category: 'Category 0', bar1: 4, bar2: 7 },
-            { category: 'Category 1', bar1: 3, bar2: 5 },
+            { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
+            { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
+            { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
             { category: 'Category 2', bar1: 8, bar2: 2 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
@@ -355,11 +357,12 @@ test.describe(`${TAG.VISUAL}`, () => {
           groupKey: 'category',
           type: 'stack',
           showPercentValueInTooltip: true,
+          showTotalInTooltip: true,
           invertAxis: false,
           data: [
-            { category: 'Category 0', bar1: 4, bar2: 7 },
-            { category: 'Category 1', bar1: 3, bar2: 5 },
-            { category: 'Category 2', bar1: 8, bar2: 2 },
+            { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
+            { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
+            { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
           ],
@@ -373,8 +376,9 @@ test.describe(`${TAG.VISUAL}`, () => {
           showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
-            { category: 'Category 0', bar1: 4, bar2: 7 },
-            { category: 'Category 1', bar1: 3, bar2: 5 },
+            { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
+            { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
+            { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
             { category: 'Category 2', bar1: 8, bar2: 2 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
@@ -402,17 +406,29 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
 
         await test.step('Verify tooltip on hover', async () => {
-          const box = await chart.boundingBox();
-          if (!box) throw new Error('Bounding box not found');
+          if (variant.props.type == 'group') {
+            const boxLocator = page.locator('path:nth-child(9)');
+            const box = await boxLocator.boundingBox();
+            if (!box) throw new Error('Bounding box not found');
 
-          const targetX = 128.42;
-          const targetY = 190.53;
-          const hoverX = box.x + targetX;
-          const hoverY = box.y + targetY;
+            const hoverX = box.x + box.width / 2;
+            const hoverY = box.y + box.height / 2;
 
-          await page.mouse.move(hoverX, hoverY);
-          await page.waitForTimeout(500);
-          await expect(page).toHaveScreenshot();
+            await page.mouse.move(hoverX, hoverY);
+            await page.waitForTimeout(500);
+            await expect(page).toHaveScreenshot();
+          } else if (variant.props.type == 'stack') {
+            const boxLocator = page.locator('path:nth-child(37)');
+            const box = await boxLocator.boundingBox();
+            if (!box) throw new Error('Bounding box not found');
+
+            const hoverX = box.x + box.width / 2;
+            const hoverY = box.y + box.height / 2;
+
+            await page.mouse.move(hoverX, hoverY);
+            await page.waitForTimeout(500);
+            await expect(page).toHaveScreenshot();
+          }
         });
       });
     });
