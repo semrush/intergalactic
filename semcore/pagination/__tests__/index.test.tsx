@@ -1,4 +1,4 @@
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
@@ -277,7 +277,7 @@ describe('Pagination.PageInput.Value', () => {
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
-            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={Return} interactive />
+            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={ButtonLink} addonLeft={Return} p={0} />
           </Pagination.PageInput>
         </Pagination>
         <Button data-testid='testButton'>test button</Button>

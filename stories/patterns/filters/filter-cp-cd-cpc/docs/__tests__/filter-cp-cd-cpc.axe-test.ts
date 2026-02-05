@@ -1,6 +1,5 @@
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
-import { a } from 'vitest/dist/chunks/suite.d.FvehnV49';
 
 test.describe('Filter cp/cd/cpc', () => {
   test('Basic', async ({ page }) => {

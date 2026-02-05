@@ -212,7 +212,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger svg attributes', async () => {
         const svg = locators.dateRangeComparatorTrigger(page, 0).locator('svg');
         const svgAttributes = [
-          { name: 'tabindex', value: '-1' },
           { name: 'aria-hidden', value: 'true' },
           { name: 'width', value: '16' },
           { name: 'height', value: '16' },

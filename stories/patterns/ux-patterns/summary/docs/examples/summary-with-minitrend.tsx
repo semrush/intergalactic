@@ -1,4 +1,5 @@
 import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import Info from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
@@ -16,8 +17,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About visibility'
             color='icon-secondary-neutral'
           />
@@ -49,8 +50,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About estimated traffic'
             color='icon-secondary-neutral'
           />
@@ -96,8 +97,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About Average position'
             color='icon-secondary-neutral'
           />

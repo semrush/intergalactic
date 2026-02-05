@@ -3,6 +3,7 @@ import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './co
 import type {
   PropGetterFn,
   IRootComponentProps,
+  IRootNodeProps,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -28,6 +29,7 @@ export {
   Intergalactic,
   type PropGetterFn,
   type IRootComponentProps,
+  type IRootNodeProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,

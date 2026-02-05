@@ -1,12 +1,17 @@
+import { Box } from '@semcore/ui/base-components';
 import CheckM from '@semcore/ui/icon/Check/m';
 import { List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (
   <div>
+<<<<<<< UIK-3931/typography-update-margins
     <List mb={4} size={300} marker={<CheckM color='icon-secondary-success' mt={1} />}>
+=======
+    <List size={300} marker={<Box tag={CheckM} color='icon-secondary-success' mt={1} />}>
+>>>>>>> release/v17
       <List.Item>List item with custom bullet.</List.Item>
-      <List.Item marker={<CheckM color='icon-secondary-neutral' mt={1} />}>
+      <List.Item marker={<Box tag={CheckM} color='icon-secondary-neutral' mt={1} />}>
         List item with other custom bullet.
       </List.Item>
     </List>

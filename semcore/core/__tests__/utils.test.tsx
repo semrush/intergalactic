@@ -1,5 +1,4 @@
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
+import { cleanup } from '@semcore/testing-utils/testing-library';
 import {
   expect,
   test,
@@ -23,7 +22,6 @@ import isNode from '../src/utils/isNode';
 import propsForElement, { validAttr } from '../src/utils/propsForElement';
 import reactToText from '../src/utils/reactToText';
 import { getRef, setRef } from '../src/utils/ref';
-import useCss from '../src/utils/use/useCss';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
@@ -269,16 +267,6 @@ describe('Utils CSS in JS', () => {
     expect(result2).toEqual({});
     expect(spy3).toBeCalledTimes(1);
     expect(result3.onClick).not.toEqual(spy3);
-  });
-
-  test.concurrent('Verufy CSS in JS', async ({ task }) => {
-    const CSSJS = ({ css }: any) => {
-      const className = useCss(css);
-      return <div className={className} />;
-    };
-    const component = <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />;
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 

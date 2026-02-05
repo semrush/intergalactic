@@ -17,13 +17,13 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/icon": "16.7.3",
     "@semcore/modal": "16.1.12",
     "@semcore/typography": "16.3.2",
     "@semcore/button": "16.0.12"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^16.0.0",
+    "@semcore/icon": "16.7.3 - 17"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

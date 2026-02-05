@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort } from '@semcore/ui/data-table';
@@ -87,7 +87,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
               <RadioFH.Value />
               <RadioFH.Text>
                 First option
-                <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+                <Box tag={SummaryAI} color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
               </RadioFH.Text>
               <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
             </RadioFH>
@@ -99,7 +99,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
           <RadioFH.Value />
           <RadioFH.Text>
             First option
-            <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+            <Box tag={SummaryAI} color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
           </RadioFH.Text>
           <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
         </RadioFH>
@@ -114,7 +114,12 @@ const Demo = (props: ExampleButtonHihlightProps) => {
                 <CheckboxFH.Value />
                 <CheckboxFH.Text>
                   First option
-                  <SummaryAI color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+                  <Box
+                    tag={SummaryAI}
+                    color='--intergalactic-icon-primary-feature-highlight'
+                    ml={2}
+                    style={{ verticalAlign: -3 }}
+                  />
                 </CheckboxFH.Text>
                 <CheckboxFH.AnimatedSparkles count={props.animatedSparkleCount} />
               </CheckboxFH>
