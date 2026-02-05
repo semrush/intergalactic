@@ -21,7 +21,7 @@ const babelConfig = {
 transform();
 
 async function transform() {
-  const icons = await glob(`${__dirname}/svg/**/*svg`);
+  const icons = await glob(`${__dirname.replaceAll(/\\/g, '/')}/svg/**/*svg`);
 
   const exports = {
     '.': {
