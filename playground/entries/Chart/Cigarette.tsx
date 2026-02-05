@@ -76,7 +76,17 @@ const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
       },
     }) },
   link: createGithubLink('d3-chart'),
-  filterProps: ['data'],
+  filterProps: (value: unknown, key: string) => {
+    if (key === 'data') {
+      return false;
+    }
+
+    if (key === 'invertAxis') {
+      return value === false;
+    }
+
+    return true;
+  },
   JSXDisplayName: 'Chart.Cigarette',
 };
 

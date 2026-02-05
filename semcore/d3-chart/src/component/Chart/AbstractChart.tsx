@@ -25,6 +25,8 @@ type ChartState = {
   withTrend: boolean;
 };
 
+const NOT_A_VALUE = 'n/a';
+
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
@@ -121,7 +123,7 @@ export abstract class AbstractChart<
             {percent !== undefined ? `${percent}%` : ''}
           </Text>,
           <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
-            {value ?? 'n/a'}
+            {value ?? NOT_A_VALUE}
           </Text>,
         ];
       }
@@ -253,19 +255,32 @@ export abstract class AbstractChart<
   protected totalValue(data: ObjectData): number {
     const { dataDefinitions } = this.state;
 
+    let allNotAValue = true;
+
     const total = dataDefinitions.reduce((sum, legendItem) => {
       const item = data[legendItem.id];
 
+      if (item === null) {
+        allNotAValue = false;
+        return sum;
+      }
+
       if (typeof item === 'number') {
+        allNotAValue = false;
         return sum + item;
       }
 
       if (item instanceof Date && !Number.isNaN(item.getMilliseconds())) {
+        allNotAValue = false;
         return sum + item.getMilliseconds();
       }
 
       return sum;
     }, 0);
+
+    if (allNotAValue) {
+      return Number.NaN;
+    }
 
     return total;
   }
@@ -285,7 +300,7 @@ export abstract class AbstractChart<
       return `0%`;
     }
 
-    return 'n/a';
+    return NOT_A_VALUE;
   }
 
   protected getValueScale(values: number[]): number {
@@ -344,7 +359,7 @@ export abstract class AbstractChart<
     }
 
     if (value === undefined || value === interpolateValue) {
-      return 'n/a';
+      return NOT_A_VALUE;
     }
 
     if (value === null) {
@@ -489,6 +504,7 @@ export abstract class AbstractChart<
     const { showPercentValueInTooltip, styles, groupKey } = this.asProps;
     const { dataDefinitions } = this.state;
     const title = dataItem[groupKey as keyof D]?.toString();
+    const showPercentColumn = showPercentValueInTooltip && this.totalValue(dataItem) !== 0;
 
     return sstyled(styles)(
       <Flex direction='column'>
@@ -496,7 +512,8 @@ export abstract class AbstractChart<
 
         <STooltipChildrenWrapper
           render={Box}
-          showPercentValueInTooltip={showPercentValueInTooltip}
+          columnsCount={showPercentColumn ? '3' : '2'}
+          __excludeProps={['data']}
         >
           {dataDefinitions.map((item) => {
             return (
@@ -505,7 +522,7 @@ export abstract class AbstractChart<
                   <Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </Tooltip.Dot>
-                  {showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
+                  {showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
                 </Fragment>
               )
@@ -530,8 +547,8 @@ export abstract class AbstractChart<
     return (
       <>
         <Box mt={2} mr={2}>Total</Box>
-        { showPercentValueInTooltip && <Text mt={2} textAlign='end' color='text-secondary'>100%</Text> }
-        <Text mt={2} textAlign='end' bold>{total}</Text>
+        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
       </>
     );
   }

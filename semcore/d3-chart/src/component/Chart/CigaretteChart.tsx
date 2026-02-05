@@ -168,6 +168,7 @@ class CigaretteChartComponent extends AbstractChart<
       >
         {(tooltipProps: any) => {
           const dataKey = invertAxis ? tooltipProps.xIndex : tooltipProps.yIndex;
+          const showPercentColumn = showPercentValueInTooltip && this.totalValue(data) !== 0;
 
           if (tooltipViewType === 'single') {
             const item = dataDefinitions.find((dataDefItem) => dataDefItem.id === dataKey);
@@ -177,11 +178,11 @@ class CigaretteChartComponent extends AbstractChart<
 
             return {
               children: sstyled(styles)(
-                <STooltipChildrenWrapper render={Box} showPercentValueInTooltip={showPercentValueInTooltip}>
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
                   <HoverRect.Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </HoverRect.Tooltip.Dot>
-                  { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                  { showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
                 </STooltipChildrenWrapper>,
               ),
@@ -195,7 +196,7 @@ class CigaretteChartComponent extends AbstractChart<
                   <HoverRect.Tooltip.Title>Some tooltip title</HoverRect.Tooltip.Title>
                 )}
 
-                <STooltipChildrenWrapper render={Box} showPercentValueInTooltip={showPercentValueInTooltip}>
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
                   {dataDefinitions.map((item) => {
                     const style = { opacity: item.id === dataKey ? 1 : 0.3 };
                     return (
@@ -204,7 +205,7 @@ class CigaretteChartComponent extends AbstractChart<
                           <HoverRect.Tooltip.Dot mr={2} color={item.color} style={style}>
                             {item.label}
                           </HoverRect.Tooltip.Dot>
-                          { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
+                          { showPercentColumn && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
                           <Text textAlign='end' bold style={style}>{this.tooltipValueFormatter(data[item.id])}</Text>
                         </React.Fragment>
                       )
