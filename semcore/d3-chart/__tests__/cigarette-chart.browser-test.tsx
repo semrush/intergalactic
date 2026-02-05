@@ -120,6 +120,44 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  const tooltipViewTypeVariants = [
+    {
+      name: 'single with percent',
+      props: {
+        showPercentValueInTooltip: true,
+        tooltipViewType: 'single',
+      },
+    },
+    {
+      name: 'single without percent',
+      props: {
+        showPercentValueInTooltip: false,
+        tooltipViewType: 'single',
+      },
+    },
+  ];
+
+  tooltipViewTypeVariants.forEach((variant) => {
+    test(`Verify tooltipViewType=${variant.name}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        variant.props,
+      );
+
+      await test.step('Verify tooltip shown correctly', async () => {
+        await locators.plot(page).first().waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
+        await locators.plot(page).first().locator('path').nth(2).hover();
+        await locators.tooltip(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
 });
 
 /* =====================================================
