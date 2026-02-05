@@ -145,11 +145,7 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTooltip, invertAxis } = this.asProps;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey, invertAxis } = this.asProps;
 
     return (
       <HoverRect.Tooltip
@@ -165,7 +161,6 @@ class HistogramChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               dataItem,
-              title: dataItem[groupKey]?.toString(),
             }),
           };
         }}

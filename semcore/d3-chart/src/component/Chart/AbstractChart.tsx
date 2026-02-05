@@ -3,11 +3,12 @@ import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import type { HoverLine, HoverRect } from 'd3-chart/src/types';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+// @ts-ignore
+import type { HoverLine, HoverRect } from '../..';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { makeDataHintsContainer } from '../../a11y/hints';
@@ -274,15 +275,14 @@ export abstract class AbstractChart<
 
     const value = data[key];
 
-    if (typeof value === 'number') {
-      // just to prevent NaN and Infinity as procent.
-      if (value === 0 || total === 0) {
-        return `0%`;
-      }
-
+    if (typeof value === 'number' && total !== 0) {
       const percent = Math.round((100 * value) / total);
 
       return `${percent}%`;
+    }
+
+    if (value === null) {
+      return `0%`;
     }
 
     return 'n/a';
@@ -482,27 +482,23 @@ export abstract class AbstractChart<
   protected getTooltipChildren<D extends ObjectData>(options: {
     Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
     dataItem: D;
-    content?: React.JSX.Element;
-    title?: string;
-    showTotal?: boolean;
   }) {
-    const STooltipChildrenWrapper = Box;
-    const { Tooltip, dataItem, content, title, showTotal = true } = options;
+    const STooltipChildrenWrapper = Root;
+    const { Tooltip, dataItem } = options;
 
-    const { showPercentValueInTooltip, showTotalInTooltip, styles } = this.asProps;
+    const { showPercentValueInTooltip, styles, groupKey } = this.asProps;
     const { dataDefinitions } = this.state;
-
-    const total = this.totalValue(dataItem);
+    const title = dataItem[groupKey as keyof D]?.toString();
 
     return sstyled(styles)(
       <Flex direction='column'>
         { title && <Tooltip.Title>{title}</Tooltip.Title> }
 
         <STooltipChildrenWrapper
-          // @ts-ignore
+          render={Box}
           showPercentValueInTooltip={showPercentValueInTooltip}
         >
-          {content || dataDefinitions?.map((item) => {
+          {dataDefinitions.map((item) => {
             return (
               item.checked && (
                 <Fragment key={item.id}>
@@ -516,25 +512,33 @@ export abstract class AbstractChart<
             );
           })}
 
-          {/*
-            TODO: Left visual behaviour as it is since it could cause UI disrepancies which could be treated as BREAKING CHANGES.
-            It should be updated later, in the upcoming release (row gap will be consisted across data items and total label).
-          */}
-          {showTotalInTooltip === true && showTotal && (
-            <>
-              <Box mt={2} mr={2}>Total</Box>
-              { showPercentValueInTooltip && <Text mt={2} textAlign='end' color='text-secondary'>100%</Text> }
-              <Text mt={2} textAlign='end' bold>{total}</Text>
-            </>
-          )}
+          {this.renderTooltipTotalLine(dataItem)}
         </STooltipChildrenWrapper>
       </Flex>,
     );
   }
 
+  protected renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
+    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+
+    if (!showTotalInTooltip) {
+      return null;
+    }
+
+    const total = this.totalValue(dataItem);
+
+    return (
+      <>
+        <Box mt={2} mr={2}>Total</Box>
+        { showPercentValueInTooltip && <Text mt={2} textAlign='end' color='text-secondary'>100%</Text> }
+        <Text mt={2} textAlign='end' bold>{total}</Text>
+      </>
+    );
+  }
+
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter } =
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
       this.asProps;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
@@ -555,7 +559,7 @@ export abstract class AbstractChart<
           {...extractedAriaProps}
         >
           {this.renderAxis()}
-          {this.renderTooltip()}
+          {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>
       </SChart>,

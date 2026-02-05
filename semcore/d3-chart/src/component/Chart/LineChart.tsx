@@ -80,11 +80,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey, showTooltip } = this.asProps;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey } = this.asProps;
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
@@ -95,7 +91,6 @@ class LineChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
-              title: dataItem[groupKey]?.toString(),
             }),
           };
         }}

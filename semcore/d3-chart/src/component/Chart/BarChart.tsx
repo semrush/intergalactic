@@ -154,12 +154,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTooltip, invertAxis, onClickHoverRect } =
-      this.asProps;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey, invertAxis, onClickHoverRect } = this.asProps;
 
     return (
       <HoverRect.Tooltip
@@ -175,7 +170,6 @@ class BarChartComponent extends AbstractChart<
           return {
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
-              title: dataItem[groupKey]?.toString(),
               dataItem,
             }),
           };

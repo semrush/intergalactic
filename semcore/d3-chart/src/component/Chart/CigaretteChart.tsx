@@ -76,21 +76,6 @@ class CigaretteChartComponent extends AbstractChart<
     };
   }
 
-  protected override percentValue(data: CigaretteChartData, key: string): string {
-    const value = data[key];
-
-    /*
-      TODO: for some hictorical reasons we have to handle 'null' values as 0.
-      Changing this behavior could cause BREAKING CHANGES.
-      Leave it as it is.
-    */
-    if (value === null) {
-      return '0%';
-    }
-
-    return super.percentValue(data, key);
-  }
-
   get xScale() {
     const { invertAxis } = this.asProps;
 
@@ -169,13 +154,10 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, showTotalInTooltip, showTooltip, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip } =
+    const { data, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip, styles } =
       this.asProps;
     const { dataDefinitions } = this.state;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const STooltipChildrenWrapper = Root;
 
     return (
       <HoverRect.Tooltip
@@ -187,63 +169,52 @@ class CigaretteChartComponent extends AbstractChart<
         {(tooltipProps: any) => {
           const dataKey = invertAxis ? tooltipProps.xIndex : tooltipProps.yIndex;
 
-          let content: React.JSX.Element | null = null;
-
           if (tooltipViewType === 'single') {
             const item = dataDefinitions.find((dataDefItem) => dataDefItem.id === dataKey);
-
             if (!item) {
               return null;
             }
 
-            content = (
-              <>
-                <HoverRect.Tooltip.Dot mr={2} color={item.color}>
-                  {item.label}
-                </HoverRect.Tooltip.Dot>
-                { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, dataKey)}</Text> }
-                <Text textAlign='end' bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
-              </>
-            );
-
             return {
-              children: this.getTooltipChildren({
-                title: tooltipTitle,
-                Tooltip: HoverRect.Tooltip,
-                content,
-                dataItem: item,
-                showTotal: false,
-              }),
+              children: sstyled(styles)(
+                <STooltipChildrenWrapper render={Box} showPercentValueInTooltip={showPercentValueInTooltip}>
+                  <HoverRect.Tooltip.Dot mr={2} color={item.color}>
+                    {item.label}
+                  </HoverRect.Tooltip.Dot>
+                  { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
+                </STooltipChildrenWrapper>,
+              ),
             };
           }
 
-          content = (
-            <>
-              {dataDefinitions.map((item) => {
-                const style = { opacity: item.id === dataKey ? 1 : 0.3 };
-
-                return (
-                  item.checked && (
-                    <Fragment key={item.id}>
-                      <HoverRect.Tooltip.Dot style={style} mr={2} color={item.color}>
-                        {item.label}
-                      </HoverRect.Tooltip.Dot>
-                      { showPercentValueInTooltip && <Text style={style} textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
-                      <Text style={style} textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
-                    </Fragment>
-                  )
-                );
-              })}
-            </>
-          );
-
           return {
-            children: this.getTooltipChildren({
-              title: tooltipTitle,
-              Tooltip: HoverRect.Tooltip,
-              content,
-              dataItem: data,
-            }),
+            children: sstyled(styles)(
+              <Flex direction='column'>
+                {tooltipTitle && (
+                  <HoverRect.Tooltip.Title>Some tooltip title</HoverRect.Tooltip.Title>
+                )}
+
+                <STooltipChildrenWrapper render={Box} showPercentValueInTooltip={showPercentValueInTooltip}>
+                  {dataDefinitions.map((item) => {
+                    const style = { opacity: item.id === dataKey ? 1 : 0.3 };
+                    return (
+                      item.checked && (
+                        <React.Fragment key={item.id}>
+                          <HoverRect.Tooltip.Dot mr={2} color={item.color} style={style}>
+                            {item.label}
+                          </HoverRect.Tooltip.Dot>
+                          { showPercentValueInTooltip && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
+                          <Text textAlign='end' bold style={style}>{this.tooltipValueFormatter(data[item.id])}</Text>
+                        </React.Fragment>
+                      )
+                    );
+                  })}
+
+                  {this.renderTooltipTotalLine(data)}
+                </STooltipChildrenWrapper>
+              </Flex>,
+            ),
           };
         }}
       </HoverRect.Tooltip>

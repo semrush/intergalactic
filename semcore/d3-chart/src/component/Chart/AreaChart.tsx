@@ -100,11 +100,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   renderTooltip() {
-    const { data, groupKey, showTooltip } = this.asProps;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey } = this.asProps;
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
@@ -114,7 +110,6 @@ class AreaChartComponent extends AbstractChart<
           return {
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
-              title: dataItem[groupKey]?.toString(),
               dataItem,
             }),
           };
