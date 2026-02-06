@@ -51,7 +51,7 @@ function extractLinks(content: string) {
           // don't check commented links
           const prev = token.children[i - 1];
 
-          if (prev && prev.type === 'text' && (prev.content.startsWith('<!--') || prev.content.endsWith('<!-- @skip-link-checking -->'))) {
+          if (prev && prev.type === 'text' && prev.content.startsWith('<!--')) {
             continue;
           }
 
