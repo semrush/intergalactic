@@ -25,7 +25,7 @@ type ChartState = {
   withTrend: boolean;
 };
 
-const NOT_A_VALUE = 'n/a';
+export const NOT_A_VALUE = 'n/a';
 
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
@@ -38,7 +38,6 @@ export abstract class AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
-    showPercentValueInTooltip: false,
   };
 
   /**
@@ -534,7 +533,7 @@ export abstract class AbstractChart<
   }
 
   protected renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
-    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+    const { showTotalInTooltip } = this.asProps;
 
     if (!showTotalInTooltip) {
       return null;
@@ -545,7 +544,6 @@ export abstract class AbstractChart<
     return (
       <>
         <Box mt={2} mr={2}>Total</Box>
-        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
         <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
       </>
     );

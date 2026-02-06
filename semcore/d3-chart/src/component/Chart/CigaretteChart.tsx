@@ -6,12 +6,13 @@ import Divider from '@semcore/divider';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear } from 'd3-scale';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
-import { AbstractChart } from './AbstractChart';
+import { AbstractChart, NOT_A_VALUE } from './AbstractChart';
+import type { ObjectData } from './AbstractChart.type';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -41,6 +42,7 @@ class CigaretteChartComponent extends AbstractChart<
       duration: 500,
       plotWidth: !invertAxis && !props.plotWidth ? 44 : props.plotWidth,
       plotHeight: invertAxis && !props.plotHeight ? 28 : props.plotHeight,
+      showPercentValueInTooltip: false,
     };
   };
 
@@ -219,6 +221,24 @@ class CigaretteChartComponent extends AbstractChart<
           };
         }}
       </HoverRect.Tooltip>
+    );
+  }
+
+  protected override renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
+    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+
+    if (!showTotalInTooltip) {
+      return null;
+    }
+
+    const total = this.totalValue(dataItem);
+
+    return (
+      <>
+        <Box mt={2} mr={2}>Total</Box>
+        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
+      </>
     );
   }
 
