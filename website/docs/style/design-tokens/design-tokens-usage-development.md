@@ -5,17 +5,15 @@ tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in 
 
 ## Global theme
 
-Design tokens are ideal for global theming because they help ensure consistent visual choices and behavior across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
+Design tokens help ensure consistent visual choices and behavior across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
 
-**Why design tokens should be used only for global theming:**
+<!-- **Why design tokens should be used only for global theming:**
 
-- By using design tokens only for global theming, you can ensure that the design system remains flexible and adaptable to a change. As the design system evolves, updates can be made to the design tokens, which will then be reflected in all relevant places throughout the design system.
-- Design tokens add a centralized approach to updating the design system, making it easier to ensure that all updates are made in a controlled and deliberate manner.
-
-To sum up, using design tokens only for global theming is a best practice because it promotes consistency, maintainability, modularity, and adaptability in the design system.
+- By using design tokens for global theming, you can ensure that the design system remains flexible and adaptable to a change. As the design system evolves, updates can be made to the design tokens, which will then be reflected in all relevant places throughout the design system.
+- Design tokens add a centralized approach to updating the design system look and feel, making it easier to ensure that all updates are made in a controlled and deliberate manner. -->
 
 ::: tip
-If you can't find the token you are looking for, then please double-check the existing ones. If it is really missing, you can drop us a line with a request to add a new token.
+If you can't find the token you are looking for, we recommend you to double-check the existing ones. If it's really missing, you can drop us a line with a request to add a new entity.
 :::
 
 ### How to apply theme globally
