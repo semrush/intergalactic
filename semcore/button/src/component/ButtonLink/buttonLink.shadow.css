@@ -31,7 +31,7 @@ SButton {
     color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
-      border-color: currentColor;
+      box-shadow: 0 1px 0 0 currentColor;
     }
   }
 
@@ -41,10 +41,8 @@ SButton {
   }
 
   SText {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: transparent;
-    transition: border-bottom-color 0.15s ease-in-out;
+    box-shadow: 0 1px 0 0 transparent;
+    transition: box-shadow 0.15s ease-in-out;
   }
 }
 
@@ -65,6 +63,7 @@ SButton[use='secondary'] {
   }
 
   SText {
+    box-shadow: none;
     border-bottom-width: 1px;
     border-bottom-style: dashed;
     border-color: currentColor;
@@ -73,7 +72,7 @@ SButton[use='secondary'] {
 
 SInner {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   height: 100%;
   width: 100%;
@@ -82,9 +81,10 @@ SInner {
 SAddon {
   display: inline-flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   vertical-align: middle;
   pointer-events: none;
+  align-self: center;
 }
 
 SButton SAddon {

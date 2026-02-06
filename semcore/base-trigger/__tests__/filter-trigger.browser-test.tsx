@@ -55,8 +55,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@tooltip',
-        '@icon'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
