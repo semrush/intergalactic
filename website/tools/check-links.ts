@@ -34,7 +34,7 @@ function collectMdFiles(dir: string) {
 function extractLinks(content: string) {
   const tokens = md.parse(content, {});
   const links = [];
-  const routeRegexp = /(?<!\/\/ *)route: '\/intergalactic(.+)'/;
+  const routeRegexp = /(?<!\/\/ *)route: '([./a-z0-9-#]+)'/;
 
   for (const token of tokens) {
     let lines = '';
