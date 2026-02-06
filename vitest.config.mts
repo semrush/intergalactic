@@ -26,7 +26,7 @@ export default defineConfig({
       },
       {
         find: /^@semcore\/icon\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/icon/$1'),
+        replacement: resolvePath(__dirname, 'semcore/icon/lib/$1'),
       },
       {
         find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,

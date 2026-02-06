@@ -278,7 +278,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify trigger svg attributes', async () => {
         const svgAttributes = [
-          ['tabindex', '-1'],
           ['aria-hidden', 'true'],
           ['width', '16'],
           ['height', '16'],

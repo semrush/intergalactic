@@ -1,4 +1,4 @@
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import type { CheckboxProps } from '@semcore/ui/checkbox';
 import { CheckboxFH, BadgeFH } from '@semcore/ui/feature-highlight';
@@ -57,7 +57,8 @@ const Demo = (props: CheckboxFHAdvancedProps) => {
               <CheckboxFH.Text>
                 {firstOptionText}
                 {showIcon && (
-                  <SummaryAI
+                  <Box
+                    tag={SummaryAI}
                     color='--intergalactic-icon-primary-feature-highlight'
                     ml={2}
                     style={{ verticalAlign: -3 }}

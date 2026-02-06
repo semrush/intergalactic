@@ -15,7 +15,7 @@ type PaymentOperationTypeProps = {
   testIdPrefix?: string;
 } & TextProps;
 
-const mapIcons: Record<string, FC<{ color: string }>> = {
+const mapIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   purchase: MoneyCoinsM,
   charge: ReloadM,
   refund: ReturnM,

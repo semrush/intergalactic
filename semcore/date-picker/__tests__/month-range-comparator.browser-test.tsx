@@ -207,7 +207,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify trigger svg attributes', async () => {
         const svg = locators.monthRangeComparatorPickerTrigger(page).locator('svg');
-        await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');

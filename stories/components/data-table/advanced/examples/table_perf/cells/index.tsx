@@ -75,7 +75,7 @@ const Copy: FC<CopyProps> = ({ value, trim = 'none', handle = true }) => {
           )}
       {handle && (
         <Box>
-          <CopyM w={20} />
+          <CopyM width='20px' />
         </Box>
       )}
     </Tooltip>
