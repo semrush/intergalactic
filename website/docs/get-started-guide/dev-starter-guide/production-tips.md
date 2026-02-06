@@ -12,11 +12,11 @@ The styles in our library are ready to use and don't require any additional acti
 To speed up the load time and decrease TTI (time to interactive), separate JS and CSS. This will reduce the size of the JS files and will allow to load CSS and JavaScript in parallel decreasing the application launch time.
 
 ::: warning
-[`@semcore/shadow-loader`](https://github.com/semrush/intergalactic/tree/release/v16/tools/shadow-loader) is deprecated.
-To unify behavior across the bundlers, use [`@semcore/process-css-unplugin`](https://github.com/semrush/intergalactic/tree/release/v16/tools/process-css-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
+[`@semcore/shadow-loader`](https://github.com/semrush/intergalactic/tree/HEAD/tools/shadow-loader) is deprecated.
+To unify behavior across the bundlers, use [`@semcore/process-css-unplugin`](https://github.com/semrush/intergalactic/tree/HEAD/tools/process-css-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
 :::
 
-To do that, use the [shadow-loader](https://github.com/semrush/intergalactic/blob/master/tools/shadow-loader/README.md) webpack plugin. It will strip the styles from JavaScript and replace them with `require ("./style.css")` in the component code. This way you will be able to extract the styles into a separate file using [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) or a similar tool.
+To do that, use the [shadow-loader](https://github.com/semrush/intergalactic/tree/HEAD/tools/shadow-loader) webpack plugin. It will strip the styles from JavaScript and replace them with `require ("./style.css")` in the component code. This way you will be able to extract the styles into a separate file using [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) or a similar tool.
 
 This is what your `webpack.config.js` might look like:
 

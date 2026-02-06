@@ -29,7 +29,7 @@ Here is a list of the main breakpoints we recommend using in the interfaces:
 
 Use [Grid system](/layout/grid-system/grid-system-layout) to build an adaptive page layout.
 
-The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-react-semcore/README.md).
+The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/HEAD/tools/babel-plugin-react-semcore/README.md).
 
 This is how your **webpack.config.js** might look like:
 
