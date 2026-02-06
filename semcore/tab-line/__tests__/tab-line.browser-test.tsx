@@ -33,7 +33,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
-        '@icon',
+
         '@counter',
         '@badge'],
     }, async ({ page }) => {
@@ -98,7 +98,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
-        '@icon',
+
         '@counter',
         '@badge'],
     }, async ({ page }) => {
@@ -118,7 +118,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         TAG.MOUSE,
         '@tab-line',
         '@base-components',
-        '@icon',
+
         '@counter',
         '@badge'],
     }, async ({ page }) => {
@@ -308,7 +308,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@tab-line',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {

@@ -195,7 +195,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@tooltip'],
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
@@ -383,7 +383,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@tooltip'],
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
@@ -571,7 +571,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@tooltip'],
+        '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
@@ -616,7 +616,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@button',
-      '@tooltip'],
+      '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');
 
@@ -640,7 +640,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@button',
-      '@tooltip'],
+      '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en');
 

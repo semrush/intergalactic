@@ -30,7 +30,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-panel',
         '@base-components',
-        '@icon',
+
         '@counter',
         '@badge'],
     }, async ({ page }) => {
@@ -67,7 +67,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@tab-panel',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {
@@ -80,7 +80,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@tab-panel',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {
@@ -274,7 +274,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@tab-panel',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {
