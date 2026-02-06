@@ -6,4 +6,12 @@ SFeedbackRating {
   ul, li {
     list-style: none;
   }
+
+  SHeader {
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
+    font-weight: var(--intergalactic-bold, 700);
+    margin: var(--intergalactic-spacing-4x, 16px) 0;
+    text-align: center;
+  }
 }
