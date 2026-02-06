@@ -31,7 +31,7 @@ const group = {
   accordion: {
 
     title: 'Accordion',
-    route: '/intergalactic/table-group/table-controls/table-controls#accordion',
+    route: '../table-controls/table-controls#accordion',
     disabled: false,
     type: 'table',
 
@@ -39,7 +39,7 @@ const group = {
   checkboxes: {
 
     title: 'Checkboxes',
-    route: '/intergalactic/table-group/table-controls/table-controls#checkboxes',
+    route: '../table-controls/table-controls#checkboxes',
     disabled: false,
     type: 'table',
 
@@ -47,7 +47,7 @@ const group = {
   resizing: {
 
     title: 'Columns resizing',
-    route: '/intergalactic/table-group/table-controls/table-controls#columns-resizing',
+    route: '../table-controls/table-controls#columns-resizing',
     disabled: false,
     type: 'table',
 
@@ -55,7 +55,7 @@ const group = {
   pagination: {
 
     title: 'Pagination',
-    route: '/intergalactic/table-group/table-controls/table-controls#pagination',
+    route: '../table-controls/table-controls#pagination',
     disabled: false,
     type: 'table',
 
@@ -63,7 +63,7 @@ const group = {
   sorting: {
 
     title: 'Sorting',
-    route: '/intergalactic/table-group/table-controls/table-controls#sorting',
+    route: '../table-controls/table-controls#sorting',
     disabled: false,
     type: 'table',
 
@@ -71,7 +71,7 @@ const group = {
   actionsRow: {
 
     title: 'Status and actions row',
-    route: '/intergalactic/table-group/table-controls/table-controls#status-and-actions-row',
+    route: '../table-controls/table-controls#status-and-actions-row',
     disabled: false,
     type: 'table',
 
@@ -79,7 +79,7 @@ const group = {
     tableSettings: {
 
     title: 'Table settings',
-    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    route: '../table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',
 
@@ -87,7 +87,7 @@ const group = {
     columnsManager: {
 
     title: 'Columns manager',
-    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    route: '../table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',
 
@@ -164,7 +164,7 @@ const group = {
   editing: {
 
     title: 'Editing and adding content',
-    route: '/intergalactic/table-group/table-controls/table-controls#editing-and-adding-content',
+    route: '../table-controls/table-controls#editing-and-adding-content',
     disabled: false,
     type: 'table',
 
@@ -172,7 +172,7 @@ const group = {
   highlighting: {
 
     title: 'Highlighting content',
-    route: '/intergalactic/table-group/table-controls/table-controls#highlighting-content',
+    route: '../table-controls/table-controls#highlighting-content',
     disabled: false,
     type: 'table',
 
@@ -180,7 +180,7 @@ const group = {
   links: {
 
     title: 'Internal and external links',
-    route: '/intergalactic/table-group/table-controls/table-controls#internal-and-external-links',
+    route: '../table-controls/table-controls#internal-and-external-links',
     disabled: false,
     type: 'table',
 
@@ -188,7 +188,7 @@ const group = {
   linksLong: {
 
     title: 'Long links and text',
-    route: '/intergalactic/table-group/table-controls/table-controls#long-links-and-text',
+    route: '../table-controls/table-controls#long-links-and-text',
     disabled: false,
     type: 'table',
 
@@ -261,7 +261,7 @@ const group = {
   empty: {
 
     title: 'Empty table',
-    route: '/intergalactic/table-group/table-states/table-states#empty-table',
+    route: '../table-states/table-states#empty-table',
     disabled: false,
     type: 'table',
 
@@ -269,7 +269,7 @@ const group = {
   loading: {
 
     title: 'Loading',
-    route: '/intergalactic/table-group/table-states/table-states#loading',
+    route: '../table-states/table-states#loading',
     disabled: false,
     type: 'table',
 
@@ -277,7 +277,7 @@ const group = {
   noData: {
 
     title: 'No data',
-    route: '/intergalactic/table-group/table-states/table-states#no-data',
+    route: '../table-states/table-states#no-data',
     disabled: false,
     type: 'table',
 
@@ -285,7 +285,7 @@ const group = {
   nothingFound: {
 
     title: 'Nothing found',
-    route: '/intergalactic/table-group/table-states/table-states#nothing-found',
+    route: '../table-states/table-states#nothing-found',
     disabled: false,
     type: 'table',
 
@@ -293,7 +293,7 @@ const group = {
   progressbar: {
 
     title: 'Progressbar',
-    route: '/intergalactic/table-group/table-states/table-states#progressbar',
+    route: '../table-states/table-states#progressbar',
     disabled: false,
     type: 'table',
 
@@ -301,7 +301,7 @@ const group = {
   skeleton: {
 
     title: 'Skeleton',
-    route: '/intergalactic/table-group/table-states/table-states#skeleton',
+    route: '../table-states/table-states#skeleton',
     disabled: false,
     type: 'table',
 
@@ -309,7 +309,7 @@ const group = {
   error: {
 
     title: 'Something went wrong',
-    route: '/intergalactic/table-group/table-states/table-states#something-went-wrong',
+    route: '../table-states/table-states#something-went-wrong',
     disabled: false,
     type: 'table',
 
