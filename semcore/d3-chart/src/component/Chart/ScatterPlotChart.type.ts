@@ -7,7 +7,10 @@ import type { interpolateValue } from '../../utils';
 
 export type ScatterPlotChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
 
-export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
+export type ScatterPlotChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<ScatterPlotChartData>,
+  'showTotalInTooltip'
+> & {
   /** Field name that groups the data points */
   groupKey: string;
   /** Custom x-axis scale */

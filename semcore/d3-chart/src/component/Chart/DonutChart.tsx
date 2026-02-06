@@ -79,12 +79,8 @@ class DonutChartComponent extends AbstractChart<
   }
 
   renderTooltip() {
-    const { data, showTooltip } = this.asProps;
+    const { data } = this.asProps;
     const { dataDefinitions } = this.state;
-
-    if (!showTooltip) {
-      return null;
-    }
 
     return (
       <Donut.Tooltip>

@@ -1,7 +1,5 @@
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
@@ -147,12 +145,7 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis } = this.asProps;
-    const { dataDefinitions } = this.state;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey, invertAxis } = this.asProps;
 
     return (
       <HoverRect.Tooltip
@@ -163,34 +156,12 @@ class HistogramChartComponent extends AbstractChart<
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;
           const dataItem = data[index];
-          const total = this.totalValue(dataItem);
 
           return {
-            children: (
-              <>
-                <HoverRect.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverRect.Tooltip.Title>
-
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex justifyContent='space-between' key={item.id}>
-                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                      </Flex>
-                    )
-                  );
-                })}
-
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
-                  </Flex>
-                )}
-              </>
-            ),
+            children: this.getTooltipChildren({
+              Tooltip: HoverRect.Tooltip,
+              dataItem,
+            }),
           };
         }}
       </HoverRect.Tooltip>
