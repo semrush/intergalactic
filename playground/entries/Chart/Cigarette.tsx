@@ -14,6 +14,7 @@ type CigaretteChartPlaygroundProps = {
   cigaretteProps: {
     tooltipViewType: CigaretteChartProps['tooltipViewType'];
     layout: 'vertical' | 'horizontal';
+    showPercentValueInTooltip: boolean;
   };
 };
 export type CigaretteChartJSXProps = JSXProps<CigaretteChartPlaygroundProps>;
@@ -37,6 +38,7 @@ function getJSX(props: CigaretteChartJSXProps) {
       aria-label='Cigarette chart'
       tooltipViewType={props.cigaretteProps.tooltipViewType}
       invertAxis={props.cigaretteProps.layout !== 'vertical'}
+      showPercentValueInTooltip={props.cigaretteProps.showPercentValueInTooltip}
       {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps,
@@ -66,6 +68,11 @@ const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
           options: ['all', 'single'],
           value: 'single',
           displayName: 'Tooltip type',
+        },
+        showPercentValueInTooltip: {
+          type: 'boolean',
+          value: false,
+          displayName: 'Percent in tooltip',
         },
       },
     },

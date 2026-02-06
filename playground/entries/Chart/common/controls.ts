@@ -13,7 +13,6 @@ export type CommonChartProps = {
   showYAxis: boolean;
   showTooltip: boolean;
   showTotalInTooltip: boolean;
-  showPercentValueInTooltip: boolean;
   showLegend: boolean;
 };
 
@@ -102,11 +101,6 @@ const defaultControls = {
         type: 'boolean',
         value: false,
         displayName: 'Total in tooltip',
-      },
-      showPercentValueInTooltip: {
-        type: 'boolean',
-        value: false,
-        displayName: 'Percent in tooltip',
       },
       showLegend: {
         type: 'boolean',

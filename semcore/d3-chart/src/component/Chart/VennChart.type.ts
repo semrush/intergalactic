@@ -10,7 +10,7 @@ export type VennChartData = Record<DataKey, number>;
 
 export type VennChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<VennChartData>,
-  'showTotalInTooltip' | 'showPercentValueInTooltip'
+  'showTotalInTooltip'
 > & {
   /** Internal */
   groupKey?: never;

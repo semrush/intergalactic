@@ -46,7 +46,7 @@ const entry: PlaygroundEntry<ScatterPlotChartJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: getDefaultChartControls({
     skip: {
-      commonChartProps: ['showTotalInTooltip', 'showPercentValueInTooltip'],
+      commonChartProps: ['showTotalInTooltip'],
     },
   }),
   link: createGithubLink('d3-chart'),

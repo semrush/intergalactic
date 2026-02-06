@@ -501,10 +501,9 @@ export abstract class AbstractChart<
     const STooltipChildrenWrapper = Root;
     const { Tooltip, dataItem } = options;
 
-    const { showPercentValueInTooltip, styles, groupKey } = this.asProps;
+    const { styles, groupKey } = this.asProps;
     const { dataDefinitions } = this.state;
     const title = dataItem[groupKey as keyof D]?.toString();
-    const showPercentColumn = showPercentValueInTooltip && this.totalValue(dataItem) !== 0;
 
     return sstyled(styles)(
       <Flex direction='column'>
@@ -512,7 +511,7 @@ export abstract class AbstractChart<
 
         <STooltipChildrenWrapper
           render={Box}
-          columnsCount={showPercentColumn ? '3' : '2'}
+          columnsCount='2'
           __excludeProps={['data']}
         >
           {dataDefinitions.map((item) => {
@@ -522,7 +521,6 @@ export abstract class AbstractChart<
                   <Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </Tooltip.Dot>
-                  {showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(dataItem, item.id)}</Text>}
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
                 </Fragment>
               )

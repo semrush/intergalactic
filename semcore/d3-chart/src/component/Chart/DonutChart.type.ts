@@ -11,7 +11,7 @@ export type DonutChartData = Record<DataKey, number>;
 
 export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<DonutChartData>,
-  'showTotalInTooltip' | 'showPercentValueInTooltip'
+  'showTotalInTooltip'
 > & {
   /** Internal */
   groupKey?: never;

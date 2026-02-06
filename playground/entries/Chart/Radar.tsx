@@ -65,7 +65,7 @@ const entry: PlaygroundEntry<RadarChartJSXProps> = {
     },
     ...getDefaultChartControls({
       skip: {
-        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip', 'showPercentValueInTooltip'],
+        commonChartProps: ['showXAxis', 'showYAxis', 'showTotalInTooltip'],
       },
     }),
   },

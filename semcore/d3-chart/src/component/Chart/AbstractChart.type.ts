@@ -108,8 +108,6 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Show sum of values for selected point in tooltip
    */
   showTotalInTooltip?: boolean;
-  /** Show percent value in tooltip */
-  showPercentValueInTooltip?: boolean;
   /**
    * Scale for xAxis (see more in d3-scale)
    */
