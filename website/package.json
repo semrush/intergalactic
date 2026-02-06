@@ -12,7 +12,8 @@
     "dev": "vitepress dev docs",
     "build": "pnpm check-links && vitepress build docs",
     "preview": "vitepress preview docs",
-    "check-links": "tsm --require=../.ci/tsm-filter-warnings.js tools/check-links.ts"
+    "check-links": "tsm --require=../.ci/tsm-filter-warnings.js tools/check-links.ts",
+    "validate-sidebar-links": "tsm --require=../.ci/tsm-filter-warnings.js tools/validate-sidebar-links.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.5.0",

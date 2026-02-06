@@ -3,24 +3,31 @@
     <img src="/devportal-logo.svg" width="30" height="30" class="devportal-logo" alt="Semrush Developer portal" />
     Developer
   </a>
-  <a href="/intergalactic/" class="title intergalactic-logo" aria-label="Intergalactic Design System home page">
+  <a :href="link" class="title intergalactic-logo" aria-label="Intergalactic Design System home page" @click.prevent="navigateAndReload">
     Intergalactic
   </a>
 </template>
 <script setup lang="ts">
-
-import { useRouter } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
 import { onMounted, onUnmounted } from 'vue';
 import {
   initAmplitude, initGlobalEventsHandler, disposeGlobalEventsHandler
 } from './amplitude/amplitude'
+import { getCurrentVersion, getVersionedBaseLink } from './VersionSwitcher';
+
+const { theme } = useData()
+const router = useRouter()
+const link = getVersionedBaseLink(getCurrentVersion(theme, router.route))
 
 onMounted(() => {
-  const router = useRouter();
   initAmplitude();
   initGlobalEventsHandler(router);
 })
 onUnmounted(() => {
   disposeGlobalEventsHandler();
 });
+
+const navigateAndReload = () => {
+  window.location.reload();
+};
 </script>

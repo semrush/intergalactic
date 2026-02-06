@@ -114,6 +114,6 @@ Refer to [our live examples](/data-display/d3-chart/d3-chart-code#pattern-fills-
 
 ## Contributing to accessible summary module
 
-If you're interested in expanding the chart accessible data summary module, or ejecting the module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/master/semcore/d3-chart/src/a11y).
+If you're interested in expanding the chart accessible data summary module, or ejecting the module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/HEAD/semcore/d3-chart/src/a11y).
 
 <script setup>import { data as types } from '@types.data.ts';</script>

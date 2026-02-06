@@ -1,9 +1,9 @@
 <template>
-  <OriginalNotFoundPate></OriginalNotFoundPate>
+  <NotFoundPage></NotFoundPage>
 </template>
 
 <script setup>
-import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue'
+import NotFoundPage from './NotFound.vue'
 import { onMounted } from 'vue';
 import { logEvent } from './amplitude/amplitude';
 
@@ -127,9 +127,8 @@ const redirects = {
   "/intergalactic/filter-group/add-filter": "/intergalactic/filter-group/add-filter/add-filter",
   "/intergalactic/filter-group/advanced-filters": "/intergalactic/filter-group/advanced-filters/advanced-filters",
   "/intergalactic/filter-group/filter-category": "/intergalactic/filter-group/filter-category/filter-category",
-  "/intergalactic/filter-group/filter-cp-cd-cpc": "/intergalactic/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc",
+  "/intergalactic/filter-group/filter-custom-range": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
   "/intergalactic/filter-group/filter-include-exclude": "/intergalactic/filter-group/filter-include-exclude/filter-include-exclude",
-  "/intergalactic/filter-group/filter-kd-positions-volume": "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume",
   "/intergalactic/filter-group/filter-search": "/intergalactic/filter-group/filter-search/filter-search",
   "/intergalactic/filter-group/filter-serp-features": "/intergalactic/filter-group/filter-serp-features/filter-serp-features",
   "/intergalactic/filter-group/filter-tags": "/intergalactic/filter-group/filter-tags/filter-tags",
@@ -159,10 +158,16 @@ const redirects = {
   "/intergalactic/terms/terms-of-use": "/intergalactic/terms/terms-of-use/terms-of-use"
 };
 
-
-// June 2025: pages moved or renamed for better page title generation; can be removed in a few months, if there's no visits
-
 const renamed = {
+  // Jan 2026: merged "CP, CD, CPC" & "KD, Positions, Volume" into "Custom range"
+  "/intergalactic/filter-group/filter-cp-cd-cpc": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
+  "/intergalactic/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
+  "/intergalactic/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc-code": "/intergalactic/filter-group/filter-custom-range/filter-custom-range-code",
+  "/intergalactic/filter-group/filter-kd-positions-volume": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
+  "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
+  "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume-code": "/intergalactic/filter-group/filter-custom-range/filter-custom-range-code",
+  
+  // June 2025: pages moved or renamed for better page title generation; can be removed in a few months, if there's no visits
   "/intergalactic/components/feedback": "/intergalactic/components/feedback-form/feedback-form",
   "/intergalactic/components/feedback/feedback": "/intergalactic/components/feedback-form/feedback-form",
   "/intergalactic/components/feedback/feedback-form-a11y": "/intergalactic/components/feedback-form/feedback-form-a11y",

@@ -202,7 +202,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       { theme: 'primary', size: 'xl', disabled: false, interactive: true },
     ].forEach((item) => {
       test(`Verify InputTags.Tag with addon ${item.theme} and ${item.size} size and disabled ${item.disabled} and interactive ${item.interactive}`, {
-        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@icon'],
+        tag: [TAG.PRIORITY_HIGH, '@input-tags'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/tests/examples/tags-with-addons.tsx', 'en', item);
 

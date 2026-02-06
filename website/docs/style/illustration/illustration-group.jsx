@@ -49,7 +49,7 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
               rel='noopener noreferrer'
               download={repoPath}
               target='_blank'
-              href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
+              href={`https://github.com/semrush/intergalactic/raw/HEAD/${repoPath}?inline=false`}
               data-illustration-download-svg={name}
             >
               Download SVG

@@ -48,7 +48,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
           rel='noopener noreferrer'
           download={url}
           target='_blank'
-          href={`https://github.com/semrush/intergalactic/raw/release/v16/${url}?inline=false`}
+          href={`https://github.com/semrush/intergalactic/raw/HEAD/${url}?inline=false`}
           data-container='body'
           data-original-title='Download'
           data-icon-download-svg={name}

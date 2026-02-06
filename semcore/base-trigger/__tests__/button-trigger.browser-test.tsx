@@ -111,8 +111,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@button-trigger',
-        '@icon'],
+        '@button-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
@@ -283,8 +282,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-trigger',
         '@button-trigger',
         '@select',
-        '@dropdown',
-        '@icon'],
+        '@dropdown'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
