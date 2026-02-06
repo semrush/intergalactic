@@ -55,7 +55,6 @@ export function Item(props: ItemAsProps) {
         ref={triggerRef}
         aria-describedby={editable ? deleteDescriber : undefined}
         onKeyDown={handleKeydown}
-        __excludeProps={['title']}
         timeout={[250, 50]}
         tabIndex={0}
       >

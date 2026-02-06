@@ -1,5 +1,6 @@
 import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
 import type { DataType } from 'csstype';
@@ -288,20 +289,36 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     return keyframe;
   }
 
+  private setTriggerAriaLabel() {
+    const { triggerRef, children } = this.asProps;
+
+    requestAnimationFrame(() => {
+      const trigger = triggerRef.current;
+
+      if (trigger) {
+        const textContent = trigger.textContent;
+        const ariaLabel = getAccessibleName(trigger);
+
+        if (!textContent && !ariaLabel) {
+          const label = (typeof children === 'string' || typeof children === 'number')
+            ? children.toString()
+            : (this.hintRef.current?.textContent ?? '');
+          triggerRef.current?.setAttribute('aria-label', label);
+        }
+      }
+    });
+  }
+
   render() {
     const SHintPopper = Root;
-    const { visible, Children, triggerRef, parentZIndexStacking, styles, timingFunction } = this.asProps;
+    const { visible, Children, parentZIndexStacking, styles, timingFunction } = this.asProps;
     const { innerVisible, calculatedPlacement } = this.state;
+
+    this.setTriggerAriaLabel();
 
     if (!visible) {
       return null;
     }
-
-    requestAnimationFrame(() => {
-      if (!triggerRef.current?.textContent && visible) {
-        triggerRef.current?.setAttribute('aria-label', this.hintRef.current?.textContent ?? '');
-      }
-    });
 
     const duration = propToArray(Number(this.asProps.duration));
 
