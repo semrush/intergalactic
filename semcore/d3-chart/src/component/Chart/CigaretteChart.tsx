@@ -156,10 +156,14 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip, styles } =
+    const { data, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip, styles, showTooltip } =
       this.asProps;
     const { dataDefinitions } = this.state;
     const STooltipChildrenWrapper = Root;
+
+    if (!showTooltip) {
+      return null;
+    }
 
     return (
       <HoverRect.Tooltip
