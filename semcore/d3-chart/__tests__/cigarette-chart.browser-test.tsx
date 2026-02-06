@@ -102,21 +102,21 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify tooltip with percent', {
+  test('Verify no tooltip when showTooltip=false', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
       'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
       'en',
-      { showPercentValueInTooltip: true },
+      { showTooltip: false },
     );
 
     await test.step('Verify tooltip with percent shown', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await locators.plot(page).first().locator('path').nth(2).hover();
-      await locators.tooltip(page).waitFor({ state: 'visible' });
+      await expect(locators.tooltip(page)).toHaveCount(0);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -134,6 +134,21 @@ test.describe(`${TAG.VISUAL}`, () => {
       props: {
         showPercentValueInTooltip: false,
         tooltipViewType: 'single',
+      },
+    },
+    {
+      name: 'all with percent and total',
+      props: {
+        showPercentValueInTooltip: true,
+        showTotalInTooltip: true,
+        tooltipViewType: 'all',
+      },
+    },
+    {
+      name: 'all without percent',
+      props: {
+        showPercentValueInTooltip: false,
+        tooltipViewType: 'all',
       },
     },
   ];
