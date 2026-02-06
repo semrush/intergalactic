@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.3] - 2026-02-06
+
+### Changed
+
+- WizardStep type to number only.
+
 ## [16.2.2] - 2025-12-18
 
 ### Fixed
