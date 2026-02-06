@@ -20,6 +20,46 @@ Users typically engage with tables for the following tasks:
 
 Each of these tasks represents a distinct process that demands attention.
 
+## Sorting
+
+### Sorting principles
+
+1. Columns that can be sorted show a `SortDesc` icon on hover. Default sorting direction is descending.
+2. In an already sorted column, a `SortDesc` or a `SortAsc` icon is always visible and indicates the current sorting direction.
+![](static/sorting1.png)
+4. When user sorts a column, sorting icons on other columns don’t change their direction.
+5. Sorting action reloads the table, returning user to the first row.
+6. Sorting isn't available for parent header cells in multi-level headers.
+![](static/two-row-head.png)
+
+::: tip
+If data in a column shouldn't be sorted, there should be no sorting icon at all.
+:::
+
+### Sorting in secondary table
+
+Try to avoid fully functional sorting in secondary tables—show a non-interactive sorting indicator instead.
+![](static/sorting2.png)
+
+### Click zone for sorting
+
+- If a column header contains only non-interactive text or icons, the entire cell area serves as the target area for sorting.
+![](static/hover-zone-1.png)
+- If there is a control in the header, such as [Select](/components/select/select), it should be excluded from the sorting target area.
+![](static/hover-zone-2.png)
+
+### Sorting direction
+
+Table: Sorting direction
+
+| Description                                                                                                                                                                                                                     | Ascending (SortAsc)                  | Descending (SortDesc)                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
+| **Icon**                                                                                                                                                                                                                        | ![](static/asc.png)                  | ![](static/desc.png)                 |
+| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                   | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
+| **Texts**. If there are several languages in the table, it's recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                               |
+| **Statuses**. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                                                                                                 | At the discretion of UX and PO       | At the discretion of UX and PO       |
+| **Dates**                                                                                                                                                                                                                       | From a newer date to an older one    | From an older date to a newer one    |
+
 ## Accordion
 
 A table row can expand like [Accordion](/components/accordion/accordion), containing more detailed table data, charts, text, links, or other information.
@@ -161,43 +201,6 @@ If the table has more than one page, display [Pagination](/components/pagination
 ::: tip
 Scroll the table to the first row when navigating pages or applying filters.
 :::
-
-## Sorting
-
-### Sorting principles
-
-1. Columns that can be sorted show a `SortDesc` icon on hover. Default sorting direction is descending.
-2. In an already sorted column, a `SortDesc` or a `SortAsc` icon is always visible and indicates the current sorting direction.
-![](static/sorting1.png)
-3. You can indicate sorting in a column without providing the possibility to change the sorting (usually in secondary tables). In this case, the sorted column will always appear as active.
-![](static/sorting2.png)
-4. When user sorts a column, sorting icons on other columns don’t change their direction.
-5. Sorting action reloads the table, returning user to the first row.
-6. Sorting is not available for parent header cells in multi-level headers.
-![](static/two-row-head.png)
-
-::: tip
-If data in a column shouldn't be sorted, there should be no sorting icon at all.
-:::
-
-### Click zone for sorting
-
-- If a column header contains only non-interactive text or icons, the entire cell area serves as the target area for sorting.
-![](static/hover-zone-1.png)
-- If there is a control in the header, such as [Select](/components/select/select), it should be excluded from the sorting target area.
-![](static/hover-zone-2.png)
-
-### Sorting direction
-
-Table: Sorting direction
-
-| Description                                                                                                                                                                                                                     | Ascending (SortAsc)                  | Descending (SortDesc)                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
-| **Icon**                                                                                                                                                                                                                        | ![](static/asc.png)                  | ![](static/desc.png)                 |
-| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                   | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
-| **Texts**. If there are several languages in the table, it's recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                               |
-| **Statuses**. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                                                                                                 | At the discretion of UX and PO       | At the discretion of UX and PO       |
-| **Dates**                                                                                                                                                                                                                       | From a newer date to an older one    | From an older date to a newer one    |
 
 ## Table settings and column manager
 

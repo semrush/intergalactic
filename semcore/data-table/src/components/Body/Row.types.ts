@@ -2,7 +2,7 @@ import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
 import type { CellRenderProps } from './Body.types';
-import type { DataTableCellProps } from './Cell.types';
+import type { DataTableCellProps, Theme } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import type {
@@ -45,6 +45,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   componentRef?: (component: RowRoot<Data, UniqKeyType> | null) => void;
 
   accordionIndex?: number;
+
+  theme?: Theme;
 };
 
 export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {

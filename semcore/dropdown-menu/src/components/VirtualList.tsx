@@ -81,7 +81,7 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
     const { rows, rowHeight, rowsBuffer, styles, renderRow: RenderRow, customData } = this.asProps;
 
     const offsetHeight = this.listRef.current?.offsetHeight ?? 0;
-    const prevPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
+    const prevPrepared = scrollDirection === 'down' ? rowsBuffer / 2 : rowsBuffer;
     const nextPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
 
     const startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);

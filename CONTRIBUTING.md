@@ -204,4 +204,4 @@ If users prefer to include CSS in the final bundle in the traditional way, they 
 
 ## Conduct
 
-All code in this repository is under the MIT License. By sending a pull request you agree to the terms of contributing under the [MIT license](https://github.com/semrush/intergalactic/blob/master/LICENSE)
+All code in this repository is under the MIT License. By sending a pull request you agree to the terms of contributing under the [MIT license](https://github.com/semrush/intergalactic/blob/HEAD/LICENSE)
