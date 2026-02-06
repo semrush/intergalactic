@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.4] - 2026-02-06
+
+### Fixed
+
+- Propagated value when `Reset` button is clicked for date range
+pickers. Before: `[undefined, undefined]`, now: `[]`.
+
 ## [16.2.3] - 2025-12-18
 
 ### Fixed
