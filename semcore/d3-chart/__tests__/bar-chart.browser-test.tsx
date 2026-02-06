@@ -72,7 +72,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: true,
         invertAxis: false,
         showTooltip: true,
-        showPercentValueInTooltip: true,
         showLegend: true,
         patterns: false,
         multilineXTicks: false,
@@ -89,7 +88,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: false,
         invertAxis: false,
         showTooltip: true,
-        showPercentValueInTooltip: false,
         showLegend: true,
         patterns: true,
         multilineXTicks: true,
@@ -106,7 +104,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         showYAxis: true,
         invertAxis: true,
         showTooltip: true,
-        showPercentValueInTooltip: true,
         showLegend: false,
         patterns: false,
         multilineXTicks: false,
@@ -322,7 +319,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'group',
-          showPercentValueInTooltip: true,
           showTotalInTooltip: true,
           invertAxis: false,
           data: [
@@ -339,7 +335,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'group',
-          showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
             { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
@@ -356,7 +351,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'stack',
-          showPercentValueInTooltip: true,
           showTotalInTooltip: true,
           invertAxis: false,
           data: [
@@ -373,7 +367,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         props: {
           groupKey: 'category',
           type: 'stack',
-          showPercentValueInTooltip: false,
           invertAxis: true,
           data: [
             { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
