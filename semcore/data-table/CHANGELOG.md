@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.3] - 2026-02-08
+
+### Fixed
+
+- `CellRenderProps` type wasn't exported.
+- `Selectable` property for merged rows.
+- React error about keys for multiple merged columns.
+
 ## [16.5.2] - 2026-01-19
 
 ### Fixed

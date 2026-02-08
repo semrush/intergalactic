@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2026-02-08
+
+### Added
+
+- `showPercentValueInTooltip` prop for Cigarette chart.
+
+### Fixed
+
+- Fixed types by removing unsupported `showTotalInTooltip` prop from
+certain chart components.
+- Fixed `Annotation` overflow in `CompactHorizontalBar`.
+
 ## [16.4.2] - 2025-12-18
 
 ### Fixed

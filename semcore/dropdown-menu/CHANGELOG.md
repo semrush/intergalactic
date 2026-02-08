@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.2] - 2026-02-08
+
+### Fixed
+
+- Amount of prepared items for back scroll when `VirtualList` is used.
+
 ## [16.2.1] - 2025-12-18
 
 ### Fixed
