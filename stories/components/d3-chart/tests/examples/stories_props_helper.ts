@@ -23,7 +23,6 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   showYAxis: true,
   showTooltip: true,
   showTotalInTooltip: true,
-  showPercentValueInTooltip: true,
   xTicksCount: 10,
   yTicksCount: 10,
   multilineXTicks: false,
