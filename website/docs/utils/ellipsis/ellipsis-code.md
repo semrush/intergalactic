@@ -73,3 +73,15 @@ Note that `maxLine` can only be used with `cropPosition: end`, and the hint is a
 </script>
 
 :::
+
+## Hint properties
+
+You can customize the hint that appears on hover/focus by using the `hintProps` property.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/hint-props.tsx';
+</script>
+
+:::
