@@ -168,7 +168,7 @@ class HeadRoot<
     const { columns, flatRows } = this.asProps;
     const mappedFlatRows = flatRows
       .filter((r) => {
-        const nextColumnName = columns[1].name;
+        const nextColumnName = columns[1]?.name;
         return r[nextColumnName] !== undefined;
       });
 
