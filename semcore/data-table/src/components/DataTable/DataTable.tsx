@@ -812,9 +812,10 @@ class DataTableRoot<
         }
       }
 
-      const cell = row
-        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
-        .item(this.focusedCell[1]);
+      const colindex = this.focusedCell[1];
+      const cell = colindex > -1
+        ? row?.querySelector(`[role=gridcell][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"]), [role=columnheader][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"])`)
+        : undefined;
 
       cell?.removeAttribute('inert');
 
