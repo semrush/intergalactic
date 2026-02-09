@@ -1,11 +1,11 @@
+import InfoM from '@semcore/icon/Info/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
-import InfoM from '@semcore/ui/icon/Info/m';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

@@ -41,7 +41,6 @@
     "@semcore/flags": "^16.1.8",
     "@semcore/fullscreen-modal": "^16.1.12",
     "@semcore/i18n-unplugin": "^16.0.9",
-    "@semcore/icon": "^16.0.0 || ^17.0.0",
     "@semcore/illustration": "^16.0.12",
     "@semcore/inline-edit": "^16.0.11",
     "@semcore/inline-input": "^16.2.2",
@@ -78,7 +77,8 @@
   },
   "peerDependencies": {
     "react": "16.8 - 19",
-    "react-dom": "16.8 - 19"
+    "react-dom": "16.8 - 19",
+    "@semcore/icon": "^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",

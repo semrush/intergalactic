@@ -1,7 +1,7 @@
+import Info from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import Info from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import MiniChart from '@semcore/ui/mini-chart';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';

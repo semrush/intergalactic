@@ -1,5 +1,5 @@
+import TrashIcon from '@semcore/icon/Trash/m';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import TrashIcon from '@semcore/ui/icon/Trash/m';
 import Modal from '@semcore/ui/modal';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

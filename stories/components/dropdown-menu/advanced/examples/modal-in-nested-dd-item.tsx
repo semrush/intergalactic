@@ -1,6 +1,6 @@
+import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import ChevronRightIcon from '@semcore/ui/icon/ChevronRight/m';
 import Modal from '@semcore/ui/modal';
 import React, { useCallback, useState } from 'react';
 

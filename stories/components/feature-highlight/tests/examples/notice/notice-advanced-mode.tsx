@@ -1,6 +1,6 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonFH, NoticeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

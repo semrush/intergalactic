@@ -1,6 +1,6 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonFH, NoticeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import MailSent from '@semcore/ui/illustration/MailSent';
 import type { NoticeProps } from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';

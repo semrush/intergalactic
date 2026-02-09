@@ -1,7 +1,7 @@
+import ReloadM from '@semcore/icon/Reload/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import ReloadM from '@semcore/ui/icon/Reload/m';
-import WarningM from '@semcore/ui/icon/Warning/m';
 import type { AddedNoticeMeta } from '@semcore/ui/notice-bubble';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import Spin from '@semcore/ui/spin';

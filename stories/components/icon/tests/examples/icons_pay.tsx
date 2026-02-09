@@ -1,8 +1,8 @@
+import AmericanExpressL from '@semcore/icon/pay/AmericanExpress/l';
+import AmericanExpressM from '@semcore/icon/pay/AmericanExpress/m';
+import PayPalL from '@semcore/icon/pay/PayPal/l';
+import PayPalM from '@semcore/icon/pay/PayPal/m';
 import { Flex } from '@semcore/ui/base-components';
-import AmericanExpressL from '@semcore/ui/icon/pay/AmericanExpress/l';
-import AmericanExpressM from '@semcore/ui/icon/pay/AmericanExpress/m';
-import PayPalL from '@semcore/ui/icon/pay/PayPal/l';
-import PayPalM from '@semcore/ui/icon/pay/PayPal/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 

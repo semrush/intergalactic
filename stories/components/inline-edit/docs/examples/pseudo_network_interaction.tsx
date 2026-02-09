@@ -1,5 +1,5 @@
+import EditM from '@semcore/icon/Edit/m';
 import { Box } from '@semcore/ui/base-components';
-import EditM from '@semcore/ui/icon/Edit/m';
 import InlineEdit from '@semcore/ui/inline-edit';
 import InlineInput from '@semcore/ui/inline-input';
 import { Text } from '@semcore/ui/typography';

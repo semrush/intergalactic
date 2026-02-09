@@ -1,6 +1,6 @@
+import Check from '@semcore/icon/Check/m';
+import Edit from '@semcore/icon/Edit/m';
 import { Box, Flex } from '@semcore/ui/base-components';
-import Check from '@semcore/ui/icon/Check/m';
-import Edit from '@semcore/ui/icon/Edit/m';
 import InputTags from '@semcore/ui/input-tags';
 import type { InputTagsTagProps } from '@semcore/ui/input-tags';
 import React from 'react';

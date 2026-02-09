@@ -1,8 +1,8 @@
+import Close from '@semcore/icon/Close/m';
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import Close from '@semcore/ui/icon/Close/m';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

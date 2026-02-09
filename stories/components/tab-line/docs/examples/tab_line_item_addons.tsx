@@ -1,7 +1,7 @@
+import FacebookM from '@semcore/icon/Facebook/m';
+import InstagramM from '@semcore/icon/Instagram/m';
+import TwitterM from '@semcore/icon/Twitter/m';
 import Badge from '@semcore/ui/badge';
-import FacebookM from '@semcore/ui/icon/Facebook/m';
-import InstagramM from '@semcore/ui/icon/Instagram/m';
-import TwitterM from '@semcore/ui/icon/Twitter/m';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 

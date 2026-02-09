@@ -1,4 +1,4 @@
-import MathPlusM from '@semcore/ui/icon/MathPlus/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
 import Tag from '@semcore/ui/tag';
 import React from 'react';
 

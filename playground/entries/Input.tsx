@@ -1,6 +1,6 @@
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import CheckM from '@semcore/icon/Check/m';
 import { ButtonLink } from '@semcore/ui/button';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
-import CheckM from '@semcore/ui/icon/Check/m';
 import Input from '@semcore/ui/input';
 import type { InputProps } from '@semcore/ui/input';
 import React from 'react';

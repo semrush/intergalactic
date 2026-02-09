@@ -1,7 +1,7 @@
+import VideoListM from '@semcore/icon/VideoList/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
-import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 
 type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };

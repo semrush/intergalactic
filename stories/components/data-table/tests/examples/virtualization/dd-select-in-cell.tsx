@@ -1,9 +1,9 @@
+import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import Dropdown from '@semcore/ui/dropdown';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Select from '@semcore/ui/select';
 import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
