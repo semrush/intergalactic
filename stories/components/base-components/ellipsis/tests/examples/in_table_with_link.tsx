@@ -1,6 +1,6 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { type EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import React from 'react';
 

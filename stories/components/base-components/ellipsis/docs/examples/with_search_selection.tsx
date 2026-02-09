@@ -1,5 +1,5 @@
+import SearchIcon from '@semcore/icon/Search/m';
 import { Ellipsis } from '@semcore/ui/base-components';
-import SearchIcon from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

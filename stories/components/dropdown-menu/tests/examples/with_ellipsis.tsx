@@ -1,10 +1,6 @@
-import Badge from '@semcore/ui/badge';
+import DesktopIconM from '@semcore/icon/Desktop/m';
 import Button from '@semcore/ui/button';
-import Counter from '@semcore/ui/counter';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Flags from '@semcore/ui/flags';
-import DesktopIconM from '@semcore/ui/icon/Desktop/m';
-import Switch from '@semcore/ui/switch';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
