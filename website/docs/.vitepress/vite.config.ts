@@ -10,9 +10,7 @@ import { resolveSemcoreSources } from './resolve-semcore-sources';
 import { unpluginIcons } from './unplugins/unplugin-icons';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginStatic } from './unplugins/unplugin-static';
-
-export const LATEST = process.env.VITE_LATEST ?? 'latest';
-export const currentBuildVersion = process.env.DOCS_VERSION ?? LATEST;
+import { currentBuildVersion, LATEST } from '../../versionEnv';
 
 export const viteConfig = defineConfig({
   base: `/intergalactic${currentBuildVersion !== LATEST ? `/${currentBuildVersion}` : ''}/`,

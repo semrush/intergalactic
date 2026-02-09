@@ -1,4 +1,4 @@
-import { currentBuildVersion, LATEST } from './docs/.vitepress/vite.config';
+import { currentBuildVersion, LATEST } from './versionEnv';
 
 const prefix = currentBuildVersion === LATEST ? 'latest' : currentBuildVersion;
 export const algoliaIndexes = {

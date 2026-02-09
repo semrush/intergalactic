@@ -16,6 +16,7 @@ import IllustrationGroup, {
 } from './illustration-group';
 import styles from './styles.module.css';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { algoliaIndexes } from '../../../algoliaIndexes.ts';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -85,7 +86,7 @@ function SearchIllustrations(props) {
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={algoliaConfig.illustrationsSearchIndexName}
+      indexName={algoliaIndexes.illustrationsSearchIndexName}
     >
       <SuggestSearch {...props} />
     </InstantSearch>

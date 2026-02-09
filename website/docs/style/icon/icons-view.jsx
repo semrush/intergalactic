@@ -11,6 +11,7 @@ import { InstantSearch } from 'react-instantsearch/dom';
 
 import IconGroup, { IconGroups, ListIcons, IconDetailsPanel } from './icon-group';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { algoliaIndexes } from '../../../algoliaIndexes.ts';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -78,7 +79,7 @@ const SuggestSearch = connectAutoComplete(
 
 function SearchIcons(props) {
   return (
-    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.iconsSearchIndexName}>
+    <InstantSearch searchClient={searchClient} indexName={algoliaIndexes.iconsSearchIndexName}>
       <SuggestSearch {...props} />
     </InstantSearch>
   );
