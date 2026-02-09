@@ -25,7 +25,7 @@ export const publishReleaseNotes = async (version: string, lastVersionChangelogs
       .join('\n');
     await fs.writeFile('./.github-release-notes.txt', releaseNotes);
     execSync(
-      `gh release create "v${version}" --title "v${version}" --notes-file .github-release-notes.txt`,
+      `gh release create "${version}" --title "${version}" --notes-file .github-release-notes.txt`,
       {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
