@@ -611,7 +611,7 @@ importers:
         version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -1252,7 +1252,7 @@ importers:
         version: link:../link
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
       '@semcore/notice':
         specifier: 16.1.12
         version: link:../notice
@@ -1363,7 +1363,7 @@ importers:
         version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -2369,13 +2369,13 @@ importers:
         specifier: ^16.0.11
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^16.4.2
+        specifier: ^16.5.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.2
+        specifier: ^16.5.3
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: ^16.2.3
+        specifier: ^16.2.4
         version: link:../date-picker
       '@semcore/divider':
         specifier: ^16.0.11
@@ -2390,7 +2390,7 @@ importers:
         specifier: ^16.1.4
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^16.2.1
+        specifier: ^16.2.2
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: ^16.0.12
@@ -2399,13 +2399,13 @@ importers:
         specifier: ^16.1.7
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^16.2.2
+        specifier: ^16.3.0
         version: link:../feature-highlight
       '@semcore/feature-popover':
         specifier: ^16.2.5
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^16.1.12
+        specifier: ^16.2.0
         version: link:../feedback-form
       '@semcore/flags':
         specifier: ^16.1.8
@@ -2456,7 +2456,7 @@ importers:
         specifier: ^16.1.1
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: ^16.1.12
+        specifier: ^16.1.13
         version: link:../modal
       '@semcore/neighbor-location':
         specifier: ^16.0.11
@@ -2615,7 +2615,7 @@ importers:
         version: 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -5463,6 +5463,11 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
+  '@semcore/modal@16.1.12':
+    resolution: {integrity: sha512-kjer8Omtdx7foRKfkeq7mzjQjlp7X3GwKkyXztOgaX3rzGSgpizmvypFnFbQX1mIGsK8lpfaUTrUbbBVhEnGwQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
   '@semcore/neighbor-location@16.0.11':
     resolution: {integrity: sha512-uDZ+0xxJZ3ap49/CL+KVG31gqNPXhE7Ft634lDuc3XG/G1aCw7sdL1zalU079ex6qfbgbfICCdv7TKOPpK80Qw==}
     peerDependencies:
@@ -5475,6 +5480,11 @@ packages:
 
   '@semcore/notice-global@16.1.12':
     resolution: {integrity: sha512-8d5IEtJJsf2wdeHlh5+kGtSTrAqdwQKZciO+Q/Giq3UJVjJdBGmlizN670lEd3N57hD9jemzvLO48kEY7YZvdA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/outside-click@16.0.11':
+    resolution: {integrity: sha512-fW4clx8uIEgOpMvGjVrKZnu9gTwmgKufM/MV9zr7l0IXNgSxEXo63VMzooO6O5YqN47q9BsA0yzXy1P2PvgDow==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17204,6 +17214,17 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       classnames: 2.2.6
 
+  '@semcore/modal@16.1.12(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': link:semcore/base-components
+      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
+      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
+      '@semcore/outside-click': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/typography': 16.3.2(@semcore/base-components@semcore+base-components)
+
   '@semcore/neighbor-location@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -17224,6 +17245,10 @@ snapshots:
       '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
+
+  '@semcore/outside-click@16.0.11(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/base-components': link:semcore/base-components
 
   '@semcore/popper@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
