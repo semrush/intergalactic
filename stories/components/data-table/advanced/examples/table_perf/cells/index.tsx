@@ -1,6 +1,6 @@
+import CopyM from '@semcore/icon/Copy/m';
 import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { Box, Flex } from '@semcore/ui/base-components';
-import CopyM from '@semcore/ui/icon/Copy/m';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

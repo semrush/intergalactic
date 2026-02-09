@@ -15,20 +15,20 @@ export const gitUtils = {
     const semcoreUiPatch = packages.find((item) => item.name === '@semcore/ui');
 
     if (semcoreUiPatch) {
-      const newPrereleaseBranch = `prerelease/v${version}`;
+      const newPrereleaseBranch = `prerelease/${version}`;
       await git.checkout(['-b', newPrereleaseBranch]);
 
       await NpmUtils.updateLockFile();
       await gitUtils.commitNewPrerelease(packages);
-      const tag = await gitUtils.createPrereleaseTag(`v${version}`);
+      const tag = await gitUtils.createPrereleaseTag(`${version}`);
       await gitUtils.push(tag);
     } else if (packages.length === 1 && packages[0].name === '@semcore/icon') {
-      const newPrereleaseBranch = `prerelease/icon${version}`;
+      const newPrereleaseBranch = `prerelease/${version}`;
       await git.checkout(['-b', newPrereleaseBranch]);
 
       await NpmUtils.updateLockFile();
       await gitUtils.commitNewPrerelease(packages);
-      const tag = await gitUtils.createPrereleaseTag(`icon${version}`);
+      const tag = await gitUtils.createPrereleaseTag(`${version}`);
       await gitUtils.push(tag);
     }
   },

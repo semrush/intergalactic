@@ -1,5 +1,5 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { ButtonLink } from '@semcore/ui/button';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import React from 'react';
 
 const Demo = () => (

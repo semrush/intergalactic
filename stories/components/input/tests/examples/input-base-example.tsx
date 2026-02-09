@@ -1,7 +1,7 @@
+import Search from '@semcore/icon/Search/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
-import Search from '@semcore/ui/icon/Search/m';
 import type { InputProps, InputValueProps } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';

@@ -1,10 +1,10 @@
+import BookM from '@semcore/icon/Book/m';
+import Chat from '@semcore/icon/Chat/m';
+import EditM from '@semcore/icon/Edit/m';
+import InfoM from '@semcore/icon/Info/m';
 import { Flex, Box } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
-import BookM from '@semcore/ui/icon/Book/m';
-import Chat from '@semcore/ui/icon/Chat/m';
-import EditM from '@semcore/ui/icon/Edit/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';

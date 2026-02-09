@@ -1,6 +1,6 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

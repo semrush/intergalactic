@@ -1,7 +1,7 @@
+import SettingsM from '@semcore/icon/Settings/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import SettingsM from '@semcore/ui/icon/Settings/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

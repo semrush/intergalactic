@@ -1,9 +1,9 @@
+import SettingsM from '@semcore/icon/Settings/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import SettingsM from '@semcore/ui/icon/Settings/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import Pills from '@semcore/ui/pills';
 import React from 'react';
 

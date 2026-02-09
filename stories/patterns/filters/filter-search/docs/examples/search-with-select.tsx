@@ -1,7 +1,7 @@
+import CloseM from '@semcore/icon/Close/m';
+import Search from '@semcore/icon/Search/m';
 import { Flex, Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import CloseM from '@semcore/ui/icon/Close/m';
-import Search from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';

@@ -1,12 +1,12 @@
+import PlusM from '@semcore/icon/MathPlus/m';
+import Pin from '@semcore/icon/Pin/m';
+import Settings from '@semcore/icon/Settings/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps } from '@semcore/ui/dropdown-menu';
-import PlusM from '@semcore/ui/icon/MathPlus/m';
-import Pin from '@semcore/ui/icon/Pin/m';
-import Settings from '@semcore/ui/icon/Settings/m';
 import { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

@@ -1,5 +1,5 @@
+import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/ui/base-components';
-import VideoListL from '@semcore/ui/icon/VideoList/l';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

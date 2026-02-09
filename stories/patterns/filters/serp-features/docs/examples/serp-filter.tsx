@@ -1,7 +1,7 @@
+import ReloadIcon from '@semcore/icon/Reload/m';
 import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import ReloadIcon from '@semcore/ui/icon/Reload/m';
 import Select, { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

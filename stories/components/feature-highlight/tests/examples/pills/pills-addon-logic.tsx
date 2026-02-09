@@ -1,7 +1,7 @@
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import { PillsFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import Pills from '@semcore/ui/pills';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

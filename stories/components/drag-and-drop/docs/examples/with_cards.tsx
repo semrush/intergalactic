@@ -1,8 +1,8 @@
+import MathPlusL from '@semcore/icon/MathPlus/l';
 import { Flex } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
 import { Chart } from '@semcore/ui/d3-chart';
 import DnD from '@semcore/ui/drag-and-drop';
-import MathPlusL from '@semcore/ui/icon/MathPlus/l';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

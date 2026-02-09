@@ -1,5 +1,5 @@
-import CheckM from '@semcore/ui/icon/Check/m';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import CheckM from '@semcore/icon/Check/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { List, Text } from '@semcore/ui/typography';
 import React from 'react';

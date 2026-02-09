@@ -1,7 +1,7 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import type { EllipsisProps } from '@semcore/ui/ellipsis';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

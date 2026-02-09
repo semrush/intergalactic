@@ -1,6 +1,6 @@
+import CheckM from '@semcore/icon/Check/m';
 import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

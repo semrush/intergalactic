@@ -1,5 +1,5 @@
+import QuestionAltM from '@semcore/icon/Question/m';
 import Button from '@semcore/ui/button';
-import QuestionAltM from '@semcore/ui/icon/Question/m';
 import type { NoticeProps } from '@semcore/ui/notice';
 import Notice from '@semcore/ui/notice';
 import React, { useState } from 'react';

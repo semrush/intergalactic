@@ -1,5 +1,5 @@
+import Edit from '@semcore/icon/Edit/m';
 import { Box } from '@semcore/ui/base-components';
-import Edit from '@semcore/ui/icon/Edit/m';
 import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
 

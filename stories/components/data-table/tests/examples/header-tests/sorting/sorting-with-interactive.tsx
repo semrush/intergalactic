@@ -1,7 +1,7 @@
+import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort } from '@semcore/ui/data-table';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

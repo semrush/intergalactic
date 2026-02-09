@@ -1,6 +1,6 @@
+import HomeM from '@semcore/icon/Home/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Hint } from '@semcore/ui/base-components';
-import HomeM from '@semcore/ui/icon/Home/m';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import React from 'react';
 

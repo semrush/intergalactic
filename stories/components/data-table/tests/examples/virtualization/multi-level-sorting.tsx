@@ -1,7 +1,7 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import { ButtonLink } from '@semcore/ui/button';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

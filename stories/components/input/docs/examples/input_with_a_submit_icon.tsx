@@ -1,6 +1,6 @@
+import CheckM from '@semcore/icon/Check/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

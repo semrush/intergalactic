@@ -1,7 +1,7 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import { Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import React from 'react';
 
 const Demo = () => {
