@@ -7,9 +7,9 @@ import parseMarkdownMetadata from 'parse-md';
 import { SitemapStream } from 'sitemap';
 import type { UserConfig, DefaultTheme } from 'vitepress';
 
-import { currentBuildVersion, LATEST } from './vite.config';
 import { algoliaConfig } from '../../algoliaConfig.js';
 import { algoliaIndexes } from '../../algoliaIndexes.js';
+import { currentBuildVersion, LATEST } from '../../versionEnv';
 import iconsList from '../style/icon/icons-list.js';
 import illustrationsList from '../style/illustration/illustrations-list.js';
 

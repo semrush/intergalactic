@@ -8,9 +8,10 @@ import { buildHooks } from './buildHooks';
 import { figmaIcon } from './figma-icon';
 import { configureMarkdownIt } from './markdown-it-config';
 import { sideBarConfig } from './sidebarConfig';
-import { viteConfig, currentBuildVersion, LATEST } from './vite.config';
+import { viteConfig } from './vite.config';
 import { algoliaConfig } from '../../algoliaConfig';
 import { algoliaIndexes } from '../../algoliaIndexes';
+import { currentBuildVersion, LATEST } from '../../versionEnv';
 
 const availableVersions = (process.env.AVAILABLE_VERSIONS ?? '').split(',');
 const gtmKey = 'GTM-PP7RKT7';
