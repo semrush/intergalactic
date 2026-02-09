@@ -48,7 +48,17 @@ export const gitUtils = {
   },
 
   getCurrentTag: async (): Promise<string | null> => {
-    const tag = execSync('git describe --tags --abbrev=0', {
+    const branchSummary = await git.branch();
+    const currentBranch = branchSummary.current;
+    let match = '';
+
+    if (currentBranch.startsWith('prerelease/v')) {
+      match = `--match "v*"`;
+    } else if (currentBranch.startsWith('prerelease/icon')) {
+      match = `--match "icon*"`;
+    }
+
+    const tag = execSync(`git describe --tags ${match} --abbrev=0`, {
       encoding: 'utf-8',
     });
 
