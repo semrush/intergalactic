@@ -1,18 +1,16 @@
 import type { EllipsisSettings } from '@semcore/ui/base-components';
-import Tag from '@semcore/ui/tag';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const text = 'Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.';
 
-const ellipsisSettings: EllipsisSettings = { cropPosition: 'middle' };
+const ellipsisSettings: EllipsisSettings = { maxLine: 3 };
 
 const Demo = () => {
   return (
-    <Tag>
-      <Tag.Text w={180} ellipsis={ellipsisSettings}>
-        {text}
-      </Tag.Text>
-    </Tag>
+    <Text w={180} ellipsis={ellipsisSettings}>
+      {text}
+    </Text>
   );
 };
 

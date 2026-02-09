@@ -5,28 +5,16 @@ const text = 'Intergalactic is a constantly developing system of UI components, 
 
 const Demo = () => {
   return (
-    <>
-      <Text
-        ellipsis={{
-          cropPosition: 'middle',
-          lastRequiredSymbols: 5,
-        }}
-        w='300px'
-      >
-        {text}
-      </Text>
-      <br />
-      <br />
-      <Text
-        ellipsis={{
-          cropPosition: 'middle',
-          lastRequiredSymbols: 29,
-        }}
-        w='300px'
-      >
-        {text}
-      </Text>
-    </>
+    <Text
+      ellipsis={{
+        cropPosition: 'middle',
+        lastRequiredSymbols: 5,
+      }}
+      size={300}
+      w='300px'
+    >
+      {text}
+    </Text>
   );
 };
 

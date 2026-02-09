@@ -1,47 +1,36 @@
 ---
 title: Hint
-fileSource: hint
-tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Changelog('hint-changelog')
+tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Example('hint-code'), Changelog('hint-changelog')
 ---
 
-::: tip
-`Hint` from `@semcore/base-components` is a new, more lightweight and performant implementation of `Hint` from `@semcore/tooltip`, with identical design and behavior.
-:::
+<Playground for='Hint' />
 
-Use `Hint` to provide labels for elements without visible text or with truncated text.
+## Description
 
-`Hint` is triggered on mouse hover or keyboard focus.
+**Hint** is a more compact counterpart of [Tooltip](../../components/tooltip/tooltip) that displays element's name or text when it's hidden or cropped.
 
-## Basic usage
+Use hint in the following cases:
 
-::: sandbox
+1. With buttons, links, or other controls that don't have visible text.
+![](static/hint.png)
+2. With truncated text.
+![](static/truncated-text.png)
 
-<script lang="tsx">
-  export Demo from 'stories/components/base-components/hint/docs/examples/basic-usage.tsx';
-</script>
+## Appearance
 
-:::
+By default, hint appears above the trigger, but you can choose other placement options. Try placing the hint so that it doesn't cover other UI elements.
 
-## Placement
+![](static/hint-placement.png)
 
-You can set your own placement of the `Hint`.
+## Interaction
 
-::: sandbox
+Hint appears on:
 
-<script lang="tsx">
-  export Demo from 'stories/components/base-components/hint/docs/examples/placement.tsx';
-</script>
+- mouse hover
+- keyboard focus
 
-:::
+Hint disappears when:
 
-## Timeout
-
-You can customize timeouts for showing and hiding the `Hint`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/base-components/hint/docs/examples/timeout.tsx';
-</script>
-
-:::
+- mouse leaves the trigger
+- trigger is no longer focused
+- user presses `Esc`

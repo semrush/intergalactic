@@ -1,0 +1,34 @@
+---
+title: Hint
+tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Example('hint-code'), Changelog('hint-changelog')
+---
+
+## Basic usage
+
+In [Button](../../components/button/button-code) and [Link](../../components/link/link-code), Hint can be enabled by using either `title` or `aria-label` attribute.
+
+You can set the Hint's position using the `hintPlacement` property.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/basic-usage.tsx';
+</script>
+
+:::
+
+## Advanced usage
+
+To use Hint with other components, or to customize its behavior, use the `Hint` component explicitly with `triggerRef` property.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/timeout.tsx';
+</script>
+
+:::
+
+## With ellipsis
+
+When using with ellipsis, Hint is enabled by default in most cases. For more information, refer to [Ellipsis](../ellipsis/ellipsis-code).

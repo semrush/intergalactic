@@ -1,10 +1,21 @@
+import FileExportM from '@semcore/icon/FileExport/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {
   return (
-    <Button addonLeft={FileExportM} title='Export to PDF' />
+    <Flex gap={3}>
+      <Button addonLeft={FileExportM} title='Export to PDF' />
+      <Link
+        href='https://semrush.com/'
+        addonLeft={LinkExternalM}
+        aria-label='semrush.com'
+        hintPlacement='right'
+      />
+    </Flex>
   );
 };
 

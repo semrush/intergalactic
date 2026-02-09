@@ -3,11 +3,9 @@ title: Ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-<Playground for="Ellipsis" />
-
 ## Description
 
-**Ellipsis** is a tool that allows to truncate a single line of text or a paragraph, showing a [hint](../hint/hint) with the full text on hover.
+**Ellipsis** is a tool that allows to truncate a line or a paragraph of text. For a single line, a [hint](../hint/hint) with the full text appears on hover.
 
 **Use ellipsis in the following situations:**
 
@@ -38,43 +36,36 @@ Ellipsis can also be placed after multiple lines of text to truncate paragraphs.
 
 ## Hint
 
-By default, ellipsis displays a [hint](../hint/hint) with the full text on hover on the truncated element.
-<!-- unless you're truncating the end of a paragraph. -->
+When truncating a single line of text, a [hint](../hint/hint) with the full text appears on hover on the truncated element.
 
-![](static/ellipsis-end-tooltp.png)
+![](static/ellipsis-end-hint.png)
+
+Hint is disabled when truncating paragraphs because the full text is usually too long in such cases.
+
+![](static/paragraph-no-hint.png)
 
 ## Usage in UX/UI
 
 ### Long URLs
 
-Usually, long URLs are most common for tables and other widgets. Read the detailed information about long links in [Table controls](/table-group/table-controls/table-controls#long-links-and-text).
+Long URLs are common in tables and other widgets. Read more about long links in [Table controls](/table-group/table-controls/table-controls#long-links-and-text).
 
-![](static/ellipsis-end.png)
-
-![](static/ellipsis-end-tooltp.png)
+![](static/ellipsis-middle-hint.png)
 
 ### Table head
 
-To show more data in the limited space you can truncate the text in the table head. In this case always show a tooltip on hover to show the entire text string, or phrase.
+To fit more data in the limited space you can truncate table column names. In this case always show a hint on hover to show the entire column name.
 
 ![](static/ellipsis-table-head.png)
 
 ### Breadcrumbs
 
-When you need to truncate links in Breadcrumbs, collapse them into ellipsis at the end of each string.
+When you need to truncate Breadcrumbs items, crop them with an ellipsis at the end of each string.
 
 ![](static/breadcrumbs.png)
 
-![](static/breadcrumbs-tooltip.png)
-
 ### Card titles
 
-To show more data in a limited space you can truncate the [Card](/components/card/card) title. In this case always show a tooltip on hover to show the entire title.
+To show more data in a limited space you can truncate the [Card](/components/card/card) title. In this case always show the full text on hover.
 
 ![](static/card-ellipsis.png)
-
-### Paragraphs
-
-To show more data in a limited space you can truncate paragraphs at the end. In this case, a tooltip with the full paragraph on hover is unnecessary.
-
-![](static/ellipsis-pharagraph.png)

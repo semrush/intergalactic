@@ -39,7 +39,7 @@ type EndCroppedEllipsisSettings = {
   cropPosition?: 'end';
   /**
    * Lines count in multiline Ellipsis.
-   * Applies only for `trim = end`
+   * Applies only for `cropPosition = 'end'`
    * @default 1
    */
   maxLine?: number;

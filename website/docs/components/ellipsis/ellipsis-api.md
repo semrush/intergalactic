@@ -4,19 +4,8 @@ fileSource: ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-::: warning
-`Ellipsis` as a component is deprecated and will be removed in the next major release.
+::: tip New ellipsis 🎉
+Learn about the new `ellipsis` property in [Utils/Ellipsis](/utils/ellipsis/ellipsis-code).
 
-Use the new [**ellipsis** prop in Text component](/style/typography/typography-api) instead.
+`@semcore/ui/ellipsis` component is deprecated and will be removed in the next major release.
 :::
-
-## Ellipsis
-
-```jsx
-import Ellipsis from '@semcore/ui/ellipsis';
-<Ellipsis />;
-```
-
-<TypesView type="EllipsisProps" :types={...types} />
-
-<script setup>import { data as types } from '@types.data.ts';</script>

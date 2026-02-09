@@ -1,7 +1,6 @@
 ---
 title: Hint
-fileSource: hint
-tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Changelog('hint-changelog')
+tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Example('hint-code'), Changelog('hint-changelog')
 ---
 
 ```jsx

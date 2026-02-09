@@ -4,10 +4,10 @@ fileSource: ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-::: warning
-`Ellipsis` as a component is deprecated and will be removed in the next major release.
+::: tip New ellipsis 🎉
+Learn about the new `ellipsis` property in [Utils/Ellipsis](/utils/ellipsis/ellipsis-code).
 
-Use the new [**ellipsis** prop and **useEllipsis** hook](/utils/ellipsis/ellipsis-changelog) instead.
+`@semcore/ui/ellipsis` component is deprecated and will be removed in the next major release.
 :::
 
 ::: changelog ellipsis :::

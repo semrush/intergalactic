@@ -1,11 +1,15 @@
 ---
-title: ellipsis
+title: Ellipsis
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
 ## Basic usage
 
-Out of the box, you can use `Text` component with ellipsis settings.
+You can enable ellipsis in [Text](../../style/typography/typography-api#text) by passing ellipsis settings to the `ellipsis` property.
+
+To use the default settings, use `ellipsis={true}`.
+
+Ellipsis can be enabled in all other components that are based on Text, such as: [Tag.Text](../../components/tag/tag-api#tag-text), [Link.Text](../../components/link/link-api#link-text), [Card.Title](../../components/card/card-api#cardtitle), and so on. To find out which components support the `ellipsis` property, refer to the API documentation.
 
 ::: sandbox
 
@@ -15,9 +19,9 @@ Out of the box, you can use `Text` component with ellipsis settings.
 
 :::
 
-## Multiple use
+## Performance optimization
 
-In case of multiple use of a component for optimization you can use one observer for all components.
+If you have a lot of ellipsis instances on one screen, you can optimize the performance by using one observer for all instances.
 
 ::: sandbox
 
@@ -27,11 +31,14 @@ In case of multiple use of a component for optimization you can use one observer
 
 :::
 
-## Add searchable highlight
+## Search in cropped text
 
-You can add a logic for highlight some searching parts of the text.
-You should calculate indexes from/to by yourself.
-You can add some styles for this part - it could be an object with CSSProperties or a string with class name.
+It's possible to implement text search in the cropped parts of the content.
+
+You can use a `CSSProperties` object or a string with the class name to highlight the found text.
+
+Note that you should calculate `from`/`to` indexes by yourself.
+
 
 ::: sandbox
 
@@ -41,12 +48,28 @@ You can add some styles for this part - it could be an object with CSSProperties
 
 :::
 
-## Render some required symbols at the end of middle trimmed text.
+## Precise ellipsis position
+
+When using `cropPosition: 'middle'`, you can position the ellipsis more precisely by defining how many characters should be visible after the ellipsis.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from 'stories/components/base-components/ellipsis/docs/examples/with_required_last_symbols.tsx';
+</script>
+
+:::
+
+## Multiline paragraphs
+
+You can truncate paragraphs of text with ellipsis using the `maxLine` property.
+
+Note that `maxLine` can only be used with `cropPosition: end`, and the hint is automatically disabled in this case.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/paragraph.tsx';
 </script>
 
 :::
