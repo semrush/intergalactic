@@ -32,4 +32,4 @@ To use Hint with other components, or to customize its behavior, use the `Hint` 
 
 ## With ellipsis
 
-When using with ellipsis, Hint is enabled by default in most cases. For more information, refer to [Ellipsis](../ellipsis/ellipsis-code).
+When using with [Ellipsis](../ellipsis/ellipsis-code), Hint is usually enabled automatically when text is overflowing. For more information, refer to [Ellipsis](../ellipsis/ellipsis-code).

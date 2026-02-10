@@ -71,7 +71,7 @@ If you need to crop a link that has an addon, refer to the root component with `
 
 ## Link without visible text
 
-If a link has no visible text, it's important to add a [Hint](/components/tooltip/tooltip-code) with a label of the link function for accessibility purposes. Adding a `Hint` will automatically provide an `aria-label` for the link.
+If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) with a label of the link function for accessibility purposes. Adding a hint will automatically provide an `aria-label` for the link.
 
 ::: sandbox
 

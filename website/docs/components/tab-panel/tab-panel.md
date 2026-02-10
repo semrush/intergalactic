@@ -72,10 +72,10 @@ Table: TabPanel states
 
 ## Usage in UX/UI
 
-In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using an `ellipsis`.
+In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using [ellipsis](../../utils/ellipsis/ellipsis).
 
 ::: tip
-Make sure to add a tooltip with the full text message to such collapsed tabs.
+Make sure to show a [hint](../../utils/hint/hint) with the full text for truncated tabs.
 :::
 
 ![](static/ellipsis.png)
