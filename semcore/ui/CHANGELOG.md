@@ -1,3 +1,73 @@
+## [v17.0.0] - 2026-02-10
+
+### @semcore/wizard
+
+- **Changed** WizardStep type to number only.
+
+### @semcore/input
+
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/base-trigger
+
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/time-picker
+
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/dropdown-menu
+
+- **Fixed** Amount of prepared items for back scroll when `VirtualList` is used.
+
+### @semcore/feature-highlight
+
+- **Added** Advanced mode for `Notice`.
+
+### @semcore/feedback-form
+
+- **Added** `illustrationElement`, `NoticeComponent` for `FeedbackRating`
+component.
+
+### @semcore/date-picker
+
+- **Fixed** Propagated value when `Reset` button is clicked for date range
+pickers. Before: `[undefined, undefined]`, now: `[]`.
+
+### @semcore/modal
+
+- **Fixed** Added conditional logic for displaying `aria-label` based on
+`aria-labelledby` prop.
+
+### @semcore/data-table
+
+- **Fixed** `CellRenderProps` type wasn't exported.
+- **Fixed** `Selectable` property for merged rows.
+- **Fixed** React error about keys for multiple merged columns.
+
+### @semcore/button
+
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/d3-chart
+
+- **Added** `showPercentValueInTooltip` prop for Cigarette chart.
+- **Fixed** Fixed types by removing unsupported `showTotalInTooltip` prop from
+certain chart components.
+- **Fixed** Fixed `Annotation` overflow in `CompactHorizontalBar`.
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
 ## [16.13.2] - 2026-01-19
 
 ### @semcore/notice-bubble

@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-02-10
+
+### BREAK
+
+- Removed 2px border-radius for Bars.
+
+### Added
+
+- `showPercentValueInTooltip` prop for Cigarette chart.
+
+### Fixed
+
+- Fixed types by removing unsupported `showTotalInTooltip` prop from
+certain chart components.
+- Fixed `Annotation` overflow in `CompactHorizontalBar`.
+
+### Changed
+
+- Refined a11y module invocation logic
+
 ## [16.4.2] - 2025-12-18
 
 ### Fixed
