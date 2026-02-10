@@ -17,11 +17,8 @@ type State = {
   ariaLabelledByContent: string;
 };
 
-class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { noWrap: boolean }, State> {
+class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, State> {
   static displayName = 'Link';
-  static defaultProps = {
-    noWrap: true,
-  };
 
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
@@ -53,7 +50,6 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
   render() {
     const {
       styles,
-      noWrap,
       color,
       resolveColor,
       disabled,
@@ -82,8 +78,6 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
           render={Text}
           text-color={resolveColor(color)}
           tag='a'
-          noWrapText={noWrap}
-          use:noWrap={false}
           ref={this.containerRef}
           __excludeProps={['disabled', 'aria-disabled']}
           aria-label={showHint ? hintContent : undefined}
@@ -91,7 +85,6 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, { no
           <SInner
             tag='span'
             data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}
-            display={noWrap === false ? 'inline-block' : undefined}
           >
             {AddonLeft
               ? (

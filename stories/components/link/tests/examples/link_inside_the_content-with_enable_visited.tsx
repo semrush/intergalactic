@@ -4,6 +4,8 @@ import Link from '@semcore/ui/link';
 import { List, Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import { ListNested } from '../../../typography/tests/typography.stories';
+
 const Demo = () => {
   return (
     <div>
@@ -11,7 +13,7 @@ const Demo = () => {
         The Intergalactic Design System is so cutting-edge that even black holes are jealous of
         its sleek interface,
         {' '}
-        <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' noWrap={false} enableVisited>
+        <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' enableVisited>
           <Link.Text>look at them</Link.Text>
           <Link.Addon>
             <LinkExternalM />
@@ -35,7 +37,7 @@ const Demo = () => {
       <p>
         Aliens from distant galaxies use it to
         {' '}
-        <Link href='#' noWrap={false} active={true}>
+        <Link href='#' active={true}>
           create otherworldly websites
           {' '}
           {' '}
@@ -59,8 +61,8 @@ const Demo = () => {
           This is some text with a
           {' '}
           {' '}
-          <Link href='#' inline={true} w={100} data-testid='Inline-true'>
-            Inline = true Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+          <Link href='#' w={100} data-testid='Inline-true'>
+            <Link.Text>Inline = true Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.</Link.Text>
             <Link.Addon>
               <LinkExternalM />
             </Link.Addon>
@@ -70,8 +72,8 @@ const Demo = () => {
           This is some text with a
           {' '}
           {' '}
-          <Link href='#' inline={false} w={100} data-testid='Inline-false'>
-            Inline = false Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
+          <Link href='#' w={100} data-testid='Inline-false'>
+            <Link.Text>Inline = false Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.</Link.Text>
             <Link.Addon>
               <LinkExternalM />
             </Link.Addon>
@@ -81,13 +83,13 @@ const Demo = () => {
           This is some text with a
           {' '}
           {' '}
-          <Link href='#' noWrap={false}>
+          <Link href='#'>
             noWrap=false Rumor has it that our design system's official font is so futuristic that it writes its
             own code while you're reading it.
           </Link>
         </List.Item>
         <List.Item w={200}>
-          <Link href='#' noWrap={true}>
+          <Link href='#'>
             noWrap=true Rumor has it that our design system's official font is so futuristic that it writes its
             own code while you're reading it.
           </Link>

@@ -1,9 +1,9 @@
 SLink {
-  display: inline-flex;
+  display: inline;
   align-items: center;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
-  line-height: normal;
+  line-height: 1;
   cursor: pointer;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -43,7 +43,7 @@ SLink[visually-disabled] {
   pointer-events: none;
 }
 
-SLink[noWrapText] {
+SLink[noWrap] {
   white-space: nowrap;
 }
 
@@ -52,14 +52,12 @@ SLink[inline] {
 }
 
 SInner {
-  display: inline-flex;
   align-items: baseline;
   height: 100%;
   width: 100%;
 }
 
 SAddon {
-  display: inline-flex;
   align-items: baseline;
   vertical-align: middle;
   pointer-events: none;

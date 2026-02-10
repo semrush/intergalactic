@@ -5,7 +5,7 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ## Link in text
 
-By default, links are displayed as `inline-block` and don’t wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
+By default, links are displayed as `inline` element and don’t need some extra settings.
 
 ::: sandbox
 

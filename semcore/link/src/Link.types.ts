@@ -21,7 +21,7 @@ export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, '
    */
   enableVisited?: boolean;
   /** The text will not be moved to a new line
-   * @default true
+   * @default false
    */
   noWrap?: boolean;
   /** Left addon tag */
