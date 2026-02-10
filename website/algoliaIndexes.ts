@@ -1,8 +1,7 @@
-import { currentBuildVersion, LATEST } from './docs/.vitepress/vite.config';
-
-const prefix = currentBuildVersion === LATEST ? 'latest' : currentBuildVersion;
-export const algoliaIndexes = {
-  mainSearchIndexName: `${prefix}_intergalactic-docs`,
-  iconsSearchIndexName: `${prefix}_intergalactic-docs-icons`,
-  illustrationsSearchIndexName: `${prefix}_intergalactic-docs-illustrations`,
+export const algoliaIndexes = (prefix: string) => {
+  return {
+    mainSearchIndexName: `${prefix}_intergalactic-docs`,
+    iconsSearchIndexName: `${prefix}_intergalactic-docs-icons`,
+    illustrationsSearchIndexName: `${prefix}_intergalactic-docs-illustrations`,
+  };
 };

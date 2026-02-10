@@ -14,6 +14,7 @@ import { NoData } from '@semcore/widget-empty';
 import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { algoliaIndexes } from '../../../algoliaIndexes.ts';
 import styles from './styles.module.css';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
@@ -80,11 +81,16 @@ const SuggestSearch = connectAutoComplete(
   },
 );
 
+const prefix =
+  import.meta.env.VITE_CURRENT_VERSION === import.meta.env.VITE_LATEST
+    ? 'latest'
+    : import.meta.env.VITE_CURRENT_VERSION;
+
 function SearchIllustrations(props) {
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={algoliaConfig.illustrationsSearchIndexName}
+      indexName={algoliaIndexes(prefix).illustrationsSearchIndexName}
     >
       <SuggestSearch {...props} />
     </InstantSearch>

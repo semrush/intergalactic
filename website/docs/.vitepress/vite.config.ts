@@ -10,7 +10,7 @@ import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { fileURLToPath, URL } from 'url';
 
 export const LATEST = process.env.VITE_LATEST ?? 'latest';
-export const currentBuildVersion = process.env.DOCS_VERSION ?? LATEST;
+export const currentBuildVersion = process.env.VITE_CURRENT_VERSION ?? LATEST;
 
 export const viteConfig = defineConfig({
   base: `/intergalactic${currentBuildVersion !== LATEST ? `/${currentBuildVersion}` : ''}/`,

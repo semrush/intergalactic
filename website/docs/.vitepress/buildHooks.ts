@@ -16,6 +16,7 @@ import illustrationsList from '../style/illustration/illustrations-list.js';
 import 'dotenv/config';
 
 const excludeFromSearch = ['a11y-report'];
+const prefix = currentBuildVersion === LATEST ? 'latest' : currentBuildVersion;
 
 if (process.env.CI) {
   if (!process.env.ALGOLIA_SECRET_KEY) {
@@ -161,9 +162,11 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
   if (process.env.CI) {
     // await fs.writeFile('search-index.json', JSON.stringify(searchObjects, null, 2));
     const client = algoliasearch(algoliaConfig.appName, process.env.ALGOLIA_SECRET_KEY!);
-    const mainSearchIndex = client.initIndex(algoliaIndexes.mainSearchIndexName);
-    const iconsSearchIndex = client.initIndex(algoliaIndexes.iconsSearchIndexName);
-    const illustrationsSearchIndex = client.initIndex(algoliaIndexes.illustrationsSearchIndexName!);
+    const mainSearchIndex = client.initIndex(algoliaIndexes(prefix).mainSearchIndexName);
+    const iconsSearchIndex = client.initIndex(algoliaIndexes(prefix).iconsSearchIndexName);
+    const illustrationsSearchIndex = client.initIndex(
+      algoliaIndexes(prefix).illustrationsSearchIndexName!,
+    );
 
     const iconsSearchObjects = iconsList.icons.map((o, i) => ({ objectID: i, ...o }));
     const illustrationsSearchObjects = illustrationsList.illustrations.map((o, i) => ({

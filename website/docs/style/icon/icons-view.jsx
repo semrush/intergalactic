@@ -10,6 +10,7 @@ import { NoData } from '@semcore/widget-empty';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { algoliaIndexes } from '../../../algoliaIndexes.ts';
 import { logEvent } from '../../.vitepress/theme/amplitude/amplitude';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -75,9 +76,17 @@ const SuggestSearch = connectAutoComplete(
   },
 );
 
+const prefix =
+  import.meta.env.VITE_CURRENT_VERSION === import.meta.env.VITE_LATEST
+    ? 'latest'
+    : import.meta.env.VITE_CURRENT_VERSION;
+
 function SearchIcons(props) {
   return (
-    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.iconsSearchIndexName}>
+    <InstantSearch
+      searchClient={searchClient}
+      indexName={algoliaIndexes(prefix).iconsSearchIndexName}
+    >
       <SuggestSearch {...props} />
     </InstantSearch>
   );
