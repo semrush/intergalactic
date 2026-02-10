@@ -51,9 +51,19 @@ SLink[inline] {
   display: inline;
 }
 
+SInner {
+  display: inline-flex;
+  align-items: baseline;
+  height: 100%;
+  width: 100%;
+}
+
 SAddon {
   display: inline-flex;
+  align-items: baseline;
+  vertical-align: middle;
   pointer-events: none;
+  align-self: center;
 }
 
 SLink SAddon {
