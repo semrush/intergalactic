@@ -18,8 +18,10 @@ Use hint in the following cases:
 
 ## Appearance
 
+<!-- vale DevDocs.Inclusive = NO -->
 By default, hint appears above the trigger, but you can choose other placement options. Try placing the hint so that it doesn't cover other UI elements.
 
+<!-- vale DevDocs.Inclusive = YES -->
 ![](static/hint-placement.png)
 
 ## Interaction

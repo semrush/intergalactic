@@ -5,8 +5,10 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 ## Truncating long items
 
-[Ellipsis](../../utils/ellipsis/ellipsis-code) is enabled in Breadcrumbs by default (you should explicitly limit the item width to see the effect). Try resizing the page to see how the links adjust.
+<!-- vale DevDocs.Inclusive = NO -->
+[Ellipsis](../../utils/ellipsis/ellipsis-code) is enabled in Breadcrumbs by default (you should explicitly limit the item width to see the effect).
 
+<!-- vale DevDocs.Inclusive = YES -->
 ::: sandbox
 
 <script lang="tsx">
