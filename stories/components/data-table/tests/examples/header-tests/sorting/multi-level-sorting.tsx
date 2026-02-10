@@ -1,8 +1,8 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

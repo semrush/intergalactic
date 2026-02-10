@@ -308,8 +308,7 @@ test.describe('@functional @popper', () => {
       '@popper',
       '@base-trigger',
       '@dropdown-menu',
-      '@input',
-      '@icon'],
+      '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/some-more-props-test.tsx', 'en');
     const popperTrigger = page.getByRole('button', { name: 'focusLoop' });

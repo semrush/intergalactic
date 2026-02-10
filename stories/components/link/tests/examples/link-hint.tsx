@@ -1,6 +1,6 @@
+import VideoListL from '@semcore/icon/VideoList/l';
 import { Flex } from '@semcore/ui/base-components';
 import Ellipsis from '@semcore/ui/ellipsis';
-import VideoListL from '@semcore/ui/icon/VideoList/l';
 import Link from '@semcore/ui/link';
 import React from 'react';
 

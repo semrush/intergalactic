@@ -1,5 +1,5 @@
+import SerpM from '@semcore/icon/Serp/m';
 import { Flex } from '@semcore/ui/base-components';
-import SerpM from '@semcore/ui/icon/Serp/m';
 import InlineInput from '@semcore/ui/inline-input';
 import type { InlineInputProps } from '@semcore/ui/inline-input';
 import type { InputNumberControlsProps } from '@semcore/ui/input-number';

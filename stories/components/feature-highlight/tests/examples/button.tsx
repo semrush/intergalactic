@@ -1,7 +1,7 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import type { ButtonProps } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import React from 'react';
 
 export type ButtonFHAdvancedProps = ButtonProps & {

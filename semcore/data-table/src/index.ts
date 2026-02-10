@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
+import type { CellRenderProps } from './components/Body/Body.types';
 import { MergedRowsCell, MergedColumnsCell } from './components/Body/MergedCells';
 import { DataTable, ACCORDION, ROW_GROUP } from './components/DataTable/DataTable';
 import type {
@@ -37,4 +38,5 @@ export type {
   DataTableChangeSort,
   ColumnGroupConfig,
   ColumnItemConfig,
+  CellRenderProps,
 };

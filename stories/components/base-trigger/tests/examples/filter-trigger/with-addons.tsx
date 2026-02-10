@@ -1,7 +1,7 @@
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import type { FilterTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import React from 'react';
 
 type FilterTriggerWithAddonExample = FilterTriggerProps & BaseTriggerProps;

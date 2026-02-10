@@ -143,8 +143,16 @@ export class Changelog {
     return `${this.prefix}${this.releaseTag}`;
   }
 
-  public static async getRelease() {
-    const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'ui', 'CHANGELOG.md');
+  public static async getRelease(versionTag: string) {
+    let component = 'ui';
+
+    if (versionTag.startsWith('icon')) {
+      component = 'icon';
+    } else if (versionTag.startsWith('illustration')) {
+      component = 'illustration';
+    }
+
+    const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', component, 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
     const fullChangelog = Changelog.releaseParser(
       releaseChangelogString,

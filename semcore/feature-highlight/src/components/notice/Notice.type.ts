@@ -1,4 +1,4 @@
-import type { Intergalactic } from '@semcore/core';
-import type { NoticeSmartProps } from '@semcore/notice';
+import type { NoticeSmart } from '@semcore/notice';
+import type Notice from '@semcore/notice';
 
-export type HighlightedNoticeComponent = Intergalactic.Component<'div', NoticeSmartProps, {}>;
+export type HighlightedNoticeComponent = typeof Notice & typeof NoticeSmart;

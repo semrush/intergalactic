@@ -1,6 +1,6 @@
+import WhatsAppL from '@semcore/icon/color/WhatsApp/l';
+import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import { Flex } from '@semcore/ui/base-components';
-import WhatsAppL from '@semcore/ui/icon/color/WhatsApp/l';
-import WhatsAppM from '@semcore/ui/icon/color/WhatsApp/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 

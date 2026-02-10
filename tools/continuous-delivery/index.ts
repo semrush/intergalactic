@@ -120,14 +120,13 @@ export const getChangedPackages = async (base: string): Promise<string[]> => {
 
 const sendReleaseChangelog = async (endpoints: string[]) => {
   const versionTag = await gitUtils.getCurrentTag();
-  const version = versionTag?.slice(1);
 
-  if (version && endpoints) {
-    const releaseChangelog = await Changelog.getRelease();
+  if (versionTag && endpoints) {
+    const releaseChangelog = await Changelog.getRelease(versionTag);
 
     validateSlackIntegrationEnv(endpoints);
 
-    await sendMessageAboutRelease(version, releaseChangelog, endpoints);
+    await sendMessageAboutRelease(versionTag, releaseChangelog, endpoints);
   }
 };
 

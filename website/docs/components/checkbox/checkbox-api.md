@@ -31,8 +31,7 @@ Represents `input[type=checkbox]`
 import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.Control />;
 ```
-
-<TypesView type="CheckboxValueControlProps" :types={...types} />
+## Checkbox.Value.CheckMark
 
 Represents `span` in `Checkbox.Value`.
 
@@ -40,8 +39,6 @@ Represents `span` in `Checkbox.Value`.
 import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.CheckMark />;
 ```
-
-<TypesView type="CheckboxValueCheckMarkProps" :types={...types} />
 
 ## Checkbox.Text
 

@@ -11,14 +11,14 @@ import { gitUtils } from '../src/utils/gitUtils';
 dotenv.config();
 
 const versionTag = await gitUtils.getCurrentTag();
-const version = versionTag?.slice(1);
-const releaseChangelog = await Changelog.getRelease();
-const lastVersionChangelogs = releaseChangelog.slice(0, 1);
 
-if (!version) {
+if (!versionTag) {
   console.error('Unknown version', versionTag);
 
   process.exit(1);
 }
 
-await publishReleaseNotes(version, lastVersionChangelogs);
+const releaseChangelog = await Changelog.getRelease(versionTag);
+const lastVersionChangelogs = releaseChangelog.slice(0, 1);
+
+await publishReleaseNotes(versionTag, lastVersionChangelogs);

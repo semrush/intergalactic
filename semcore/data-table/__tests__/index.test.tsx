@@ -26,14 +26,14 @@ describe('DataTable', () => {
     });
     test('typed data', () => {
       assertType<JSX.Element>(
-        <DataTable<{ a: number; b: number; c: number }[]>
+        <DataTable<{ a: number; b: number; c: number }[], never, never>
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
           columns={[]}
         />,
       );
       assertType<JSX.Element>(
-        <DataTable<{ a: string; b: string; c: string }[]>
+        <DataTable<{ a: string; b: string; c: string }[], never, never>
           // @ts-expect-error
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
@@ -42,7 +42,7 @@ describe('DataTable', () => {
     });
     test('sort typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number; name: string }[]>
+        <DataTable<{ id: number; name: string }[], never, never>
           data={[{ id: 1, name: 'test' }]}
           aria-label='label'
           columns={[]}
@@ -87,7 +87,7 @@ describe('DataTable', () => {
     });
     test('virtualScroll typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], never, never>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -96,7 +96,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], never, never>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}

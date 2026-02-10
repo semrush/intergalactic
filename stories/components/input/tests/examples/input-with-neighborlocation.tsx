@@ -1,7 +1,7 @@
+import ShowYesM from '@semcore/icon/ShowYes/m';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import type { InputProps, InputValueProps } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
 import { Hint } from '@semcore/ui/tooltip';

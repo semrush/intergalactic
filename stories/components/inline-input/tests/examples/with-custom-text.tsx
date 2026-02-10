@@ -1,4 +1,4 @@
-import SerpM from '@semcore/ui/icon/Serp/m';
+import SerpM from '@semcore/icon/Serp/m';
 import InlineInput from '@semcore/ui/inline-input';
 import React from 'react';
 

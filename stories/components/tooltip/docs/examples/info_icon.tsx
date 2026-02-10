@@ -1,5 +1,5 @@
+import Info from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/ui/button';
-import Info from '@semcore/ui/icon/Info/m';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 

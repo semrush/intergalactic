@@ -1,6 +1,6 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { RadioFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import type { RadioProps } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';

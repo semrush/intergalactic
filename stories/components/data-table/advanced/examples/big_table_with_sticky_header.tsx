@@ -1,6 +1,6 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 

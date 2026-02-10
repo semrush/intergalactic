@@ -1,5 +1,5 @@
+import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/ui/button';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
