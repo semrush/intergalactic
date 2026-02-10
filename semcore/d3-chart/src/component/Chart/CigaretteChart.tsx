@@ -11,7 +11,8 @@ import React from 'react';
 import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
-import { AbstractChart } from './AbstractChart';
+import { AbstractChart, NOT_A_VALUE } from './AbstractChart';
+import type { ObjectData } from './AbstractChart.type';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -41,6 +42,7 @@ class CigaretteChartComponent extends AbstractChart<
       duration: 500,
       plotWidth: !invertAxis && !props.plotWidth ? 44 : props.plotWidth,
       plotHeight: invertAxis && !props.plotHeight ? 28 : props.plotHeight,
+      showPercentValueInTooltip: false,
     };
   };
 
@@ -154,9 +156,10 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, showTotalInTooltip, showTooltip, invertAxis, tooltipTitle, tooltipViewType } =
+    const { data, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip, styles, showTooltip } =
       this.asProps;
     const { dataDefinitions } = this.state;
+    const STooltipChildrenWrapper = Root;
 
     if (!showTooltip) {
       return null;
@@ -171,62 +174,75 @@ class CigaretteChartComponent extends AbstractChart<
       >
         {(tooltipProps: any) => {
           const dataKey = invertAxis ? tooltipProps.xIndex : tooltipProps.yIndex;
-          const total = this.totalValue(data);
+          const showPercentColumn = showPercentValueInTooltip && this.totalValue(data) !== 0;
 
           if (tooltipViewType === 'single') {
             const item = dataDefinitions.find((dataDefItem) => dataDefItem.id === dataKey);
-
             if (!item) {
               return null;
             }
 
             return {
-              children: (
-                <Flex justifyContent='space-between' key={dataKey}>
-                  <HoverRect.Tooltip.Dot mr={4} color={item.color}>
+              children: sstyled(styles)(
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
+                  <HoverRect.Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </HoverRect.Tooltip.Dot>
-                  <Text bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
-                </Flex>
+                  { showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
+                </STooltipChildrenWrapper>,
               ),
             };
           }
 
           return {
-            children: (
-              <>
+            children: sstyled(styles)(
+              <Flex direction='column'>
                 {tooltipTitle && (
                   <HoverRect.Tooltip.Title>Some tooltip title</HoverRect.Tooltip.Title>
                 )}
 
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex
-                        justifyContent='space-between'
-                        key={item.id}
-                        style={{ opacity: item.id === dataKey ? 1 : 0.3 }}
-                      >
-                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(data[item.id])}</Text>
-                      </Flex>
-                    )
-                  );
-                })}
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
+                  {dataDefinitions.map((item) => {
+                    const style = { opacity: item.id === dataKey ? 1 : 0.3 };
+                    return (
+                      item.checked && (
+                        <React.Fragment key={item.id}>
+                          <HoverRect.Tooltip.Dot mr={2} color={item.color} style={style}>
+                            {item.label}
+                          </HoverRect.Tooltip.Dot>
+                          { showPercentColumn && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
+                          <Text textAlign='end' bold style={style}>{this.tooltipValueFormatter(data[item.id])}</Text>
+                        </React.Fragment>
+                      )
+                    );
+                  })}
 
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
-                  </Flex>
-                )}
-              </>
+                  {this.renderTooltipTotalLine(data)}
+                </STooltipChildrenWrapper>
+              </Flex>,
             ),
           };
         }}
       </HoverRect.Tooltip>
+    );
+  }
+
+  protected override renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
+    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+
+    if (!showTotalInTooltip) {
+      return null;
+    }
+
+    const total = this.totalValue(dataItem);
+
+    return (
+      <>
+        <Box mt={2} mr={2}>Total</Box>
+        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
+      </>
     );
   }
 

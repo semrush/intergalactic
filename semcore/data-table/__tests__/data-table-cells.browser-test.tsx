@@ -66,11 +66,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       sideIndents: 'wide',
     });
 
-    await test.step('Verify wide for non compact data-tablet', async () => {
+    await test.step('Verify wide for non compact data-table', async () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify wide for compact data-tablet', async () => {
+    await test.step('Verify wide for compact data-table', async () => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
         sideIndents: 'wide', compact: true,
       });
@@ -540,24 +540,50 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
-
-    await page.keyboard.press('Space');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await expect(locators.getCell(page, 2, 3)).toBeFocused();
-
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowLeft');
-    await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
-
-    for (let i = 0; i < 4; i++)
+    await test.step('Verify Focus on checkbox', async () => {
+      await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
-    await expect(locators.getCell(page, 10, 1).locator('input')).toBeFocused();
-    await page.keyboard.press('ArrowUp');
-    await expect(locators.getCell(page, 8, 1).locator('input')).toBeFocused();
+      await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
+    });
+
+    await test.step('Verify navigation to the 1st child', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 2, 3)).toBeFocused();
+    });
+    await test.step('Verify focus returns to checkbox', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
+    });
+    await test.step('Verify navigation from non merged to merged', async () => {
+      for (let i = 0; i < 4; i++)
+        await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 10, 1).locator('input')).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 8, 1).locator('input')).toBeFocused();
+    });
+    await test.step('Verify navigation from 2nd child outside the table and back', async () => {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 4)).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next')).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.getCell(page, 9, 4)).toBeFocused();
+    });
+    await test.step('Verify navigation from last child outside the table and back', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 9, 5)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next')).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.getCell(page, 9, 5)).toBeFocused();
+    });
   });
 
   test('Verify multiple access to cells with spin', {
