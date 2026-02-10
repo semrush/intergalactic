@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feature-highlight",
   "description": "Semrush toolkit for accent features",
-  "version": "16.2.2",
+  "version": "16.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
