@@ -12,6 +12,7 @@ import { viteConfig, currentBuildVersion, LATEST } from './vite.config';
 import { algoliaConfig } from '../../algoliaConfig';
 import { algoliaIndexes } from '../../algoliaIndexes';
 
+const prefix = currentBuildVersion === LATEST ? 'latest' : currentBuildVersion;
 const availableVersions = (process.env.AVAILABLE_VERSIONS ?? '').split(',');
 const gtmKey = 'GTM-PP7RKT7';
 
@@ -111,7 +112,7 @@ export default defineConfig({
       options: {
         appId: algoliaConfig.appName,
         apiKey: algoliaConfig.openKey,
-        indexName: algoliaIndexes.mainSearchIndexName,
+        indexName: algoliaIndexes(prefix).mainSearchIndexName,
         searchParameters: {
           attributesToRetrieve: [
             'hierarchy',

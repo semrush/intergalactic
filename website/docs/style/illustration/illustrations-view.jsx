@@ -10,6 +10,7 @@ import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
 import staticFiles from '@static';
 import { algoliaConfig } from '../../../algoliaConfig';
+import { algoliaIndexes } from '../../../algoliaIndexes.ts';
 import styles from './styles.module.css';
 
 const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
@@ -45,11 +46,16 @@ const SuggestSearch = connectAutoComplete(
   },
 );
 
+const prefix =
+  import.meta.env.VITE_CURRENT_VERSION === import.meta.env.VITE_LATEST
+    ? 'latest'
+    : import.meta.env.VITE_CURRENT_VERSION;
+
 function SearchIllustrations(props) {
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={algoliaConfig.illustrationsSearchIndexName}
+      indexName={algoliaIndexes(prefix).illustrationsSearchIndexName}
     >
       <SuggestSearch {...props} />
     </InstantSearch>
