@@ -15,7 +15,7 @@ const Demo = () => (
       active={false}
       href='#'
       role='link'
-      wMax={300}
+      wMax={200}
       ellipsis={true}
     >
       This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
