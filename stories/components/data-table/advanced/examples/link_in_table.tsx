@@ -22,6 +22,7 @@ const Demo = () => {
               target='_blank'
               rel='noreferrer'
               addonLeft={LinkExternalM}
+              aria-label='link hint'
               color='gray-300'
               ml={1}
             />

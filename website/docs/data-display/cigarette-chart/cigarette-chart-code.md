@@ -26,9 +26,9 @@ To change the layout of the chart from horizontal to vertical, just set `invertA
 
 :::
 
-## Tooltip type
+## Tooltip
 
-In the tooltip, you can display the values of all chart sectors or just one of them.
+You can customize the tooltip: display all or just one data category, and enable or disable percentages.
 
 ::: sandbox
 
