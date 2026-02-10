@@ -1,34 +1,35 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
-import { List } from '@semcore/ui/typography';
+import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
-    <div>
-      <p>
-        The Intergalactic Design System is so cutting-edge that even black holes are jealous of
-        its sleek interface,
+    <>
+      <Text size={300} mt={3} tag='p'>
+        The Intergalactic Design System
         {' '}
         <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' enableVisited>
-          <Link.Text>look at them</Link.Text>
+          <Link.Text>
+            is so cutting-edge that even black holes are jealous of
+            its sleek interface, look at them
+          </Link.Text>
           <Link.Addon>
             <LinkExternalM />
           </Link.Addon>
         </Link>
         .
-      </p>
-      <p>
+      </Text>
+      <Text size={300} mt={3} tag='p'>
         Aliens from distant galaxies use it to
         {' '}
         <Link href='#'>
           create otherworldly websites
-          {' '}
         </Link>
         {' '}
         that are so user-friendly, even a space-faring cat with paws can navigate them.
-      </p>
-      <p>Look at these:</p>
+      </Text>
+      <Text size={300} mt={3} tag='p'>Look at these:</Text>
       <List size={300} w={300}>
         <List.Item>
           <Link href='#'>
@@ -37,12 +38,12 @@ const Demo = () => {
         </List.Item>
         <List.Item>
           <Link href='#' noWrap={true}>
-            Rumor has it that our design system's official font is so futuristic that it writes its
+            This link has noWrap="true". Rumor has it that our design system's official font is so futuristic that it writes its
             own code while you're reading it.
           </Link>
         </List.Item>
       </List>
-    </div>
+    </>
   );
 };
 
