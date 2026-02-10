@@ -19,7 +19,7 @@ test.describe(`@ellipsis ${TAG.ACCESSIBILITY}`, () => {
     }
 
     {
-      await locators.text(page).first().hover();
+      await page.locator('[data-ui-name="Tag.Text"]').hover();
       await locators.hint(page).waitFor({ state: 'visible' });
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);

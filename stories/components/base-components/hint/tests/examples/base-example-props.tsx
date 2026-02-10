@@ -1,7 +1,7 @@
+import FileExportM from '@semcore/icon/FileExport/m';
 import { Hint } from '@semcore/ui/base-components';
 import type { SimpleHintPopperProps } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
 import React from 'react';
 
 const Demo = (props: Partial<SimpleHintPopperProps>) => {

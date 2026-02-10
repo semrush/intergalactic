@@ -4,8 +4,12 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-  trigger: (page: Page, index?: number) => {
+  triggerBth: (page: Page, index?: number) => {
     const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  triggerLink: (page: Page, index?: number) => {
+    const base = page.getByRole('link');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   hint: (page: Page, index?: number) => {
@@ -42,7 +46,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', variant);
 
       await test.step('Hover trigger and verify hint appears', async () => {
-        await locators.trigger(page).hover();
+        await locators.triggerBth(page).hover();
         await locators.hint(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
@@ -54,9 +58,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
-    await test.step('Focus trigger with keyboard', async () => {
+    await test.step('Focus on button', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.trigger(page)).toBeFocused();
+      await expect(locators.triggerBth(page)).toBeFocused();
+      await expect(locators.hint(page)).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Focus on Link', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.triggerLink(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
       await expect(page).toHaveScreenshot();
     });
@@ -69,7 +80,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Hover link and verify hint follows cursor', async () => {
       const link = page.getByRole('link').first();
-      await link.hover();
+      const box = await link.boundingBox();
+      await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
@@ -91,8 +103,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.hint(page)).toHaveCount(0);
     });
 
-    await test.step('Hover trigger - hint should appear after delay', async () => {
-      await locators.trigger(page).hover();
+    await test.step('Hover trigger - hint should appear', async () => {
+      await locators.triggerBth(page).hover();
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
@@ -102,42 +114,52 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify hint shows on focus and hides on blur', {
+  test('Verify hint shows on focus and hides on esc', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
     await page.getByRole('button').waitFor({ state: 'visible' });
-    await test.step('Focus trigger with keyboard', async () => {
+    await test.step('Hint shown when bth focused', async () => {
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
-    if (browserName == 'firefox') return;
-    await test.step('Tab away - hint should hide', async () => {
+    await test.step('Hint closed on ESC', async () => {
+      await page.keyboard.press('Escape');
+      await locators.hint(page).waitFor({ state: 'hidden' });
+      await expect(locators.hint(page)).toHaveCount(0);
+    });
+
+    await test.step('Hint shown when link focused', async () => {
       await page.keyboard.press('Tab');
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
+
+    await test.step('Hint closed on ESC', async () => {
+      await page.keyboard.press('Escape');
       await locators.hint(page).waitFor({ state: 'hidden' });
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
 
-  test('Verify hint hides on Escape key', {
+  test('Verify hint hides on blur', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
-
+    if (browserName == 'firefox') test.skip();
     await test.step('Show hint by focusing trigger', async () => {
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'visible' });
-
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
     await test.step('Press Escape - hint should hide', async () => {
-      await page.keyboard.press('Escape');
+      await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'hidden' });
-
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
@@ -148,7 +170,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', { timeout: 1000 });
 
     await test.step('Hover and verify hint respects custom show delay', async () => {
-      await locators.trigger(page).hover();
+      await locators.triggerBth(page).hover();
 
       await page.waitForTimeout(500);
       await expect(locators.hint(page)).toHaveCount(0);
@@ -164,7 +186,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
     await test.step('Show hint', async () => {
-      await locators.trigger(page).hover();
+      await locators.triggerBth(page).hover();
       await expect(locators.hint(page)).toBeVisible({ timeout: 1000 });
     });
 

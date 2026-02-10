@@ -148,7 +148,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.waitForTimeout(100);
 
     await test.step('Hover text and verify hint appears', async () => {
-      await locators.text(page).hover();
+      await page.locator('[data-ui-name="Tag.Text"]').hover();
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
@@ -179,7 +179,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Hover text - hint should appear', async () => {
-      await locators.text(page).hover();
+      await page.locator('[data-ui-name="Tag.Text"]').hover();
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
@@ -249,11 +249,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.waitForTimeout(100);
 
     await test.step('Show hint and verify it is positioned above text', async () => {
-      const textElement = locators.text(page);
-      await textElement.hover();
+      await page.locator('[data-ui-name="Tag.Text"]').hover();
+
       await expect(locators.hint(page)).toHaveCount(1);
 
-      const textBox = await textElement.boundingBox();
+      const textBox = await page.locator('[data-ui-name="Tag.Text"]').boundingBox();
       const hintBox = await locators.hint(page).boundingBox();
 
       expect(textBox).not.toBeNull();
