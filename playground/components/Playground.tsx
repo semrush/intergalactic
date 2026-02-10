@@ -175,6 +175,7 @@ function Playground<
           link={link}
           sourceCode={reactElementToJSXString(element, {
             showDefaultProps: false,
+            useBooleanShorthandSyntax: false,
             filterProps,
             ...(JSXDisplayName && { displayName: () => JSXDisplayName }),
           })}

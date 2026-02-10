@@ -16,6 +16,8 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   tooltipTitle?: string;
   /** Controls whether the tooltip shows all data or single item data */
   tooltipViewType?: 'all' | 'single';
+  /** Show percent value in tooltip */
+  showPercentValueInTooltip?: boolean;
   /** Header content for the chart */
   header?: React.ReactNode;
   /** Animation duration in milliseconds */
