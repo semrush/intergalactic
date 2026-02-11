@@ -77,7 +77,6 @@ SText {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: transparent;
-  vertical-align: middle;
   transition: border-bottom-color 0.15s ease-in-out;
 }
 
