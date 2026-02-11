@@ -58,7 +58,7 @@ SInner {
 
 SAddon {
   align-items: baseline;
-  vertical-align: middle;
+  vertical-align: -2px;
   pointer-events: none;
   align-self: center;
 }
