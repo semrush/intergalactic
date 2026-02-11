@@ -26,13 +26,13 @@ const Demo = (props: TabPanelDefProps) => {
   return (
     <>
       <TabPanel
-        w={props.w}
         behavior={props.behavior}
         value={value}
         onChange={(val: any) => setValue(val)}
         aria-label='Social network reports'
       >
         <TabPanel.Item
+          w={props.w}
           ref={fbRef}
           value='facebook'
           selected={props.selected}
@@ -47,6 +47,7 @@ const Demo = (props: TabPanelDefProps) => {
           </TabPanel.Item.Addon>
         </TabPanel.Item>
         <TabPanel.Item
+
           ref={igRef}
           value={2}
           disabled={props.disabled}
@@ -56,12 +57,13 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <InstagramM />
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text w={100} {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: igRef } }}>Instagram Instagram</TabPanel.Item.Text>
+          <TabPanel.Item.Text w={props.w} {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: igRef } }}>Instagram Instagram</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
             <Badge type='new'>new</Badge>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
         <TabPanel.Item
+          w={props.w}
           ref={twRef}
           value={true}
           disabled={props.disabled}
@@ -73,11 +75,12 @@ const Demo = (props: TabPanelDefProps) => {
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: twRef } }}>Twitter</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
-            <Text>Twitter</Text>
+            <Text>1</Text>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
 
         <TabPanel.Item
+          w={props.w}
           ref={tw3Ref}
           value={3}
           disabled={props.disabled}
@@ -91,6 +94,7 @@ const Demo = (props: TabPanelDefProps) => {
         </TabPanel.Item>
 
         <TabPanel.Item
+          w={props.w}
           ref={tw2Ref}
           value={false}
           disabled={props.disabled}
@@ -105,6 +109,7 @@ const Demo = (props: TabPanelDefProps) => {
         </TabPanel.Item>
 
         <TabPanel.Item
+          w={props.w}
           ref={tw4Ref}
           value={4}
           disabled={props.disabled}
