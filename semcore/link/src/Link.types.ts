@@ -1,3 +1,4 @@
+import type { SimpleHintPopperProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
@@ -28,4 +29,9 @@ export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, '
   addonLeft?: React.ElementType;
   /** Right addon tag */
   addonRight?: React.ElementType;
+  /**
+   * The position of the popper relative to the trigger that called it.
+   * @default top
+   */
+  hintPlacement?: SimpleHintPopperProps['placement'];
 };
