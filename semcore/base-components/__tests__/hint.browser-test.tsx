@@ -57,6 +57,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
+    await page.waitForTimeout(100);
 
     await test.step('Focus on button', async () => {
       await page.keyboard.press('Tab');
@@ -66,6 +67,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await test.step('Focus on Link', async () => {
+      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
       await expect(locators.triggerLink(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);

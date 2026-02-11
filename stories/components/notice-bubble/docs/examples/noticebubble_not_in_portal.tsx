@@ -14,7 +14,7 @@ const Demo = (props: NotInPortalNoticeBubbleProps) => {
         <>
           Link was moved to
           {' '}
-          <Link href='#'>Cats from outer space group</Link>
+          <Link noWrap href='#'>Cats from outer space group</Link>
         </>
       ),
       initialAnimation: props.initialAnimation,
