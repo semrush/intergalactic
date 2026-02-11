@@ -7,7 +7,7 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import Divider from '@semcore/divider';
-import Dropdown, { AbstractDropdown, dropdownItemContext, enhance, selectedIndexContext } from '@semcore/dropdown';
+import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Text } from '@semcore/typography';
 import cn from 'classnames';

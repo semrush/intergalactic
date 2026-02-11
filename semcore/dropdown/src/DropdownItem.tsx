@@ -6,8 +6,6 @@ type DropdownItemProps = {
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
 };
 
-export const dropdownItemContext = React.createContext({});
-
 export function DropdownItem(props: DropdownItemProps) {
   const SDropdownItem = Root;
   return sstyled(props.styles)(<SDropdownItem render={Box} innerOutline />);
