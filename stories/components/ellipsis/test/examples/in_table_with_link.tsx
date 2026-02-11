@@ -34,11 +34,9 @@ const Demo = (propsEllipsis: EllipsisProps) => {
               target='_blank'
               rel='noopener noreferrer'
               color='text-primary'
-              w='100%'
               wMin={0}
-              style={{ display: 'inline-flex', alignItems: 'center' }}
             >
-              <Link.Text wMin={0} tag={Text}>
+              <Link.Text style={{ display: 'inline-block', maxWidth: 'calc(100% - 20px)' }}>
                 <Ellipsis
                   trim={propsEllipsis.trim}
                   // onVisibleChange={() => alert('Hi!')}
