@@ -7,7 +7,7 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Flex gap={3}>
+    <Flex gap={3} alignItems='center'>
       <Button addonLeft={FileExportM} title='Export to PDF' />
       <Link
         href='https://semrush.com/'

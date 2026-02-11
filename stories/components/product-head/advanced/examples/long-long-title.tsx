@@ -28,7 +28,7 @@ const Demo = () => {
           </Title>
           <Header.Links>
             <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
-            <Link addonLeft={BookM}>User manual</Link>
+            <Link noWrap addonLeft={BookM}>User manual</Link>
           </Header.Links>
         </Header.Row>
 
