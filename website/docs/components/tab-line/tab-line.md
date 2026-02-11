@@ -106,11 +106,7 @@ TabLine is always placed under the [ProductHead](/components/product-head/produc
 
 ## Usage in UX/UI
 
-In cases where you have many tabs or there isn't enough space for the full tab text, truncate the text using [ellipsis](../../utils/ellipsis/ellipsis).
-
-::: tip
-Make sure to show a [hint](../../utils/hint/hint) with the full text for truncated tabs.
-:::
+When there's not enough space to show the full tab text, it's truncated with [ellipsis](../../utils/ellipsis/ellipsis), showing a [hint](../../utils/hint/hint) on hover.
 
 ![](static/ellipsis.png)
 
