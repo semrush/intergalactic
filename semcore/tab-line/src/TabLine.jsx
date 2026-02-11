@@ -2,6 +2,7 @@ import { NeighborLocation, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import { Text as UikitText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-line.shadow.css';
@@ -110,6 +111,17 @@ class TabLineRoot extends Component {
     };
   }
 
+  getItemTextProps(props) {
+    const { size: tabLineSize } = this.asProps;
+    const size = props.size
+      ? props.size
+      : tabLineSize === 'm' ? 200 : 300;
+
+    return {
+      size,
+    };
+  }
+
   getCaretProps() {
     const { animation } = this.state;
     if (!animation) return {};
@@ -175,9 +187,9 @@ function TabLineItem(props) {
 }
 
 function Text(props) {
-  const { styles } = props;
+  const { styles, ellipsis = true, size } = props;
   const SText = Root;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  return sstyled(styles)(<SText render={UikitText} ellipsis={ellipsis} size={size} />);
 }
 
 function Addon(props) {

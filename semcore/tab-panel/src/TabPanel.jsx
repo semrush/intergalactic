@@ -2,6 +2,7 @@ import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import { Text as UikitText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-panel.shadow.css';
@@ -80,8 +81,8 @@ function TabPanelItem(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  const { styles, ellipsis = true } = props;
+  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} />);
 }
 
 function Addon(props) {

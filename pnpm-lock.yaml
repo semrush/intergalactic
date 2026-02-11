@@ -1735,6 +1735,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-line:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1747,6 +1751,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-panel:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
