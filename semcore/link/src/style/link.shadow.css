@@ -79,6 +79,9 @@ SText {
   border-color: transparent;
   transition: border-bottom-color 0.15s ease-in-out;
 }
+SText[ellipsis] {
+  vertical-align: middle;
+}
 
 SLink[text-color] {
   color: var(--text-color);
