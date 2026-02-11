@@ -82,7 +82,7 @@ function TabPanelItem(props) {
 function Text(props) {
   const SText = Root;
   const { styles, ellipsis = true } = props;
-  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} />);
+  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium />);
 }
 
 function Addon(props) {
