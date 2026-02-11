@@ -105,6 +105,38 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.waitForSelector('text="Do not forget to add short text to explain why this item is disabled."');
     await expect(page).toHaveScreenshot();
   });
+
+  const variablesEllipsis = [
+    { w: 600, ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
+    { w: 600, desc: 'default' },
+  ];
+  variablesEllipsis.forEach((item) => {
+    test(`Verify ellipsis in Tab Panel ellipsis = ${item.desc} styles`, {
+
+      tag: [TAG.PRIORITY_HIGH,
+        '@tab-panel',
+        '@base-components',
+        '@counter',
+        '@badge'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', item);
+      await page.waitForTimeout(100);
+
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+
+      await page.keyboard.press('ArrowLeft');
+      await page.waitForTimeout(100);
+
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+
+      await locators.tabPanels(page).nth(2).hover();
+      await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+
+      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================

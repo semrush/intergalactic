@@ -145,6 +145,32 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  const variablesEllipsis = [
+    { w: 600, size: 'm', ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
+    { w: 700, size: 'l', desc: 'default' },
+  ];
+  variablesEllipsis.forEach((item) => {
+    test(`Verify ellipsis in Tab lines size = ${item.size} ellipsis = ${item.desc} styles`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@tab-line',
+        '@base-components',
+        '@counter',
+        '@badge'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
+      await page.waitForTimeout(100);
+
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+      await page.keyboard.press('ArrowLeft');
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await locators.tabLines(page).nth(2).hover();
+      await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================

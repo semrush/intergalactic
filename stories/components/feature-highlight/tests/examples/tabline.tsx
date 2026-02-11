@@ -1,3 +1,4 @@
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { TabLineFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import type { TabLineProps } from '@semcore/ui/tab-line';
@@ -14,6 +15,8 @@ export type TabLineFHAdvancedProps = TabLineProps & {
   disabled?: boolean;
   defaultValue?: number;
   ariaLabel?: string;
+  ellipsis?: true | EllipsisSettings;
+  w?: number | string;
 };
 
 const Demo = (props: TabLineFHAdvancedProps) => {
@@ -28,25 +31,34 @@ const Demo = (props: TabLineFHAdvancedProps) => {
     disabled = false,
     defaultValue = 2,
     ariaLabel = 'Tabs with highlighted item',
+    ellipsis,
   } = props;
+
+  const firstRef = React.useRef<HTMLDivElement>(null);
+  const secondRef = React.useRef<HTMLDivElement>(null);
+  const thirdRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <Flex direction='column' gap={4}>
       <TabLineFH
+        w={props.w}
         size={size}
         aria-label={ariaLabel}
         defaultValue={defaultValue}
       >
-        <TabLineFH.Item value={1} disabled={disabled}>
-          {firstTabText}
+        <TabLineFH.Item ref={firstRef} value={1} disabled={disabled}>
+          <TabLineFH.Item.Text {...{ ellipsis, hintProps: { triggerRef: firstRef } }}>
+            {firstTabText}
+          </TabLineFH.Item.Text>
         </TabLineFH.Item>
         <TabLineFH.HighlightedItem
+          ref={secondRef}
           value={2}
           disabled={disabled}
           aria-describedby='tab-aria-desc'
         >
           <TabLineFH.HighlightedItem.Addon animatedSparkleCount={animatedSparkleCount} />
-          <TabLineFH.HighlightedItem.Text>
+          <TabLineFH.HighlightedItem.Text {...{ ellipsis, hintProps: { triggerRef: secondRef } }}>
             {secondTabText}
           </TabLineFH.HighlightedItem.Text>
           {showBadge && (
@@ -55,8 +67,10 @@ const Demo = (props: TabLineFHAdvancedProps) => {
             </TabLineFH.HighlightedItem.Addon>
           )}
         </TabLineFH.HighlightedItem>
-        <TabLineFH.Item value={3} disabled={disabled}>
-          {thirdTabText}
+        <TabLineFH.Item ref={thirdRef} value={3} disabled={disabled}>
+          <TabLineFH.Item.Text {...{ ellipsis, hintProps: { triggerRef: thirdRef } }}>
+            {thirdTabText}
+          </TabLineFH.Item.Text>
         </TabLineFH.Item>
       </TabLineFH>
       <ScreenReaderOnly id='tab-aria-desc'>Powered by AI</ScreenReaderOnly>
@@ -75,6 +89,8 @@ export const defaultProps: TabLineFHAdvancedProps = {
   disabled: false,
   defaultValue: 2,
   ariaLabel: 'Tabs with highlighted item',
+  ellipsis: true,
+  w: undefined,
 };
 
 Demo.defaultProps = defaultProps;
