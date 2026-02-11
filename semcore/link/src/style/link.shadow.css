@@ -3,7 +3,6 @@ SLink {
   align-items: center;
   color: var(--intergalactic-text-link, #006dca);
   position: relative;
-  line-height: 1;
   cursor: pointer;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -78,6 +77,7 @@ SText {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: transparent;
+  vertical-align: middle;
   transition: border-bottom-color 0.15s ease-in-out;
 }
 

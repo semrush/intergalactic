@@ -12,7 +12,7 @@ const Demo = () => {
       <Text flex='0 0 auto'>Sep 3</Text>
       <Divider mx={4} orientation='vertical' />
       <Link href='#' ref={linkRef}>
-        <Link.Text w={480} display='inline-block' ellipsis={true} hintProps={{ triggerRef: linkRef }}>
+        <Link.Text w={480} ellipsis={true} hintProps={{ triggerRef: linkRef }}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
           Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
           Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
