@@ -61,19 +61,8 @@ const Demo = () => {
           This is some text with a
           {' '}
           {' '}
-          <Link href='#' w={100} data-testid='Inline-true'>
-            <Link.Text>Inline = true Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.</Link.Text>
-            <Link.Addon>
-              <LinkExternalM />
-            </Link.Addon>
-          </Link>
-        </List.Item>
-        <List.Item>
-          This is some text with a
-          {' '}
-          {' '}
-          <Link href='#' w={100} data-testid='Inline-false'>
-            <Link.Text>Inline = false Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.</Link.Text>
+          <Link href='#' w={100} data-testid='nowrap-false' noWrap={false}>
+            <Link.Text>noWrap=false Disabled Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.</Link.Text>
             <Link.Addon>
               <LinkExternalM />
             </Link.Addon>
@@ -83,15 +72,8 @@ const Demo = () => {
           This is some text with a
           {' '}
           {' '}
-          <Link href='#'>
-            noWrap=false Rumor has it that our design system's official font is so futuristic that it writes its
-            own code while you're reading it.
-          </Link>
-        </List.Item>
-        <List.Item w={200}>
-          <Link href='#'>
-            noWrap=true Rumor has it that our design system's official font is so futuristic that it writes its
-            own code while you're reading it.
+          <Link href='#' noWrap={true} data-testid='nowrap-true'>
+            noWrap=true Disabled Alien fashionistas on Mars are rocking sleek spacesuits with astonishing components.
           </Link>
         </List.Item>
       </List>

@@ -20,20 +20,20 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
   const variables = [
-    { size: 100, disabled: false, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: undefined },
-    { size: 200, disabled: false, active: true, showAddonLeft: true, showAddonRight: false, inline: true, color: 'text-success' },
-    { size: 300, disabled: false, active: false, showAddonLeft: false, showAddonRight: true, inline: false, color: 'text-critical' },
-    { size: 300, disabled: true, active: false, showAddonLeft: true, showAddonRight: false, inline: true, color: undefined },
-    { size: 400, disabled: false, active: true, showAddonLeft: false, showAddonRight: true, inline: false, color: undefined },
-    { size: 500, disabled: true, active: false, showAddonLeft: false, showAddonRight: false, inline: false, color: 'text-success' },
-    { size: 500, disabled: false, active: false, showAddonLeft: true, showAddonRight: true, inline: true, color: undefined },
-    { size: 600, disabled: false, active: true, showAddonLeft: false, showAddonRight: false, inline: true, color: 'text-critical' },
-    { size: 700, disabled: true, active: true, showAddonLeft: true, showAddonRight: true, inline: false, color: undefined },
-    { size: 800, disabled: false, active: false, showAddonLeft: true, showAddonRight: false, inline: false, color: 'text-success' },
+    { size: 100, disabled: false, active: false, showAddonLeft: false, showAddonRight: false, color: undefined },
+    { size: 200, disabled: false, active: true, showAddonLeft: true, showAddonRight: false, color: 'text-success' },
+    { size: 300, disabled: false, active: false, showAddonLeft: false, showAddonRight: true, color: 'text-critical' },
+    { size: 300, disabled: true, active: false, showAddonLeft: true, showAddonRight: false, color: undefined },
+    { size: 400, disabled: false, active: true, showAddonLeft: false, showAddonRight: true, color: undefined },
+    { size: 500, disabled: true, active: false, showAddonLeft: false, showAddonRight: false, color: 'text-success' },
+    { size: 500, disabled: false, active: false, showAddonLeft: true, showAddonRight: true, color: undefined },
+    { size: 600, disabled: false, active: true, showAddonLeft: false, showAddonRight: false, color: 'text-critical' },
+    { size: 700, disabled: true, active: true, showAddonLeft: true, showAddonRight: true, color: undefined },
+    { size: 800, disabled: false, active: false, showAddonLeft: true, showAddonRight: false, color: 'text-success' },
   ];
 
   variables.forEach((item) => {
-    test(`Verify Link size=${item.size}, disabled=${item.disabled}, active=${item.active}, addonLeft=${item.showAddonLeft}, addonRight=${item.showAddonRight}, inline=${item.inline}, color=${item.color || 'default'}`, {
+    test(`Verify Link size=${item.size}, disabled=${item.disabled}, active=${item.active}, addonLeft=${item.showAddonLeft}, addonRight=${item.showAddonRight},  color=${item.color || 'default'}`, {
       tag: [TAG.PRIORITY_HIGH, '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', item);
@@ -61,16 +61,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/link/tests/examples/link_inside_the_content-with_enable_visited.tsx', 'en');
 
-    await test.step('Verify links styles active disabled and normal', async () => {
+    await test.step('Verify links styles', async () => {
       await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify inline props', async () => {
-      const inlineTrue = page.locator('[data-testid="Inline-true"]');
-      const inlineFalse = page.locator('[data-testid="Inline-false"]');
-
-      await expect(inlineTrue).toHaveClass(/inline/);
-      await expect(inlineFalse).not.toHaveClass(/inline/);
     });
   });
 
@@ -131,8 +123,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/link/docs/examples/links_with_ellipsis.tsx', 'en');
 
     await locators.link(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(100);
+
     await test.step('Verify ellipsis visual with focus', async () => {
       await page.keyboard.press('Tab');
+      await expect(locators.link(page)).toBeFocused();
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
