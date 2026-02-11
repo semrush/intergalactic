@@ -14,7 +14,7 @@ const Demo = (props: BaseNoticeBubbleProps) => {
         <>
           Link was moved to
           {' '}
-          <Link noWrap href='#'>Cats from outer space group</Link>
+          <Link href='#'>Cats from outer space group</Link>
         </>
       ),
       initialAnimation: props.initialAnimation,
