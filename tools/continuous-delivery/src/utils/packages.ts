@@ -29,6 +29,7 @@ const ignoreComponents = [
   '@semcore/utils',
   '@semcore/table',
   '@semcore/icon', // separate to another pipeline
+  '@semcore/illustration', // separate to another pipeline
 ];
 
 export class Package {

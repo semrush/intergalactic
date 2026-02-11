@@ -18,7 +18,7 @@ jobs:
             --base 'release/v17' \
             --json title \
             -A semrush-ci-whale \
-            -S 'Merge released tag into master' \
+            -S 'Merge release tag into master' \
             --jq 'length')
           if ((prs > 0)); then
             echo "Merge exist PR with last release to the master first"
@@ -74,4 +74,4 @@ jobs:
           git config user.name "semrush-ci-whale"
           git config user.email "semrush-ci-whale@users.noreply.github.com"
           git remote set-url origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
-          pnpm init-icon-prerelease
+          pnpm init-illustration-prerelease

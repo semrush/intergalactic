@@ -7,4 +7,4 @@
  */
 import { initPackagePrerelease } from '../index';
 
-await initPackagePrerelease('icon');
+await initPackagePrerelease('illustration');
