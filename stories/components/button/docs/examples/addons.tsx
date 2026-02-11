@@ -10,7 +10,7 @@ const Demo = () => {
       <Button ml={2}>
         <Button.Text>Button</Button.Text>
         <Button.Addon>
-          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
+          <Badge type='new' />
         </Button.Addon>
       </Button>
     </>
