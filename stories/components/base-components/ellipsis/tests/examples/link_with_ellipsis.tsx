@@ -16,12 +16,19 @@ type LinkEllipsisProps = {
 const Demo = (props: LinkEllipsisProps) => {
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
+  let linkDisplayValue: 'inline-block' | undefined;
+
+  if (typeof props.ellipsis === 'object' && props.ellipsis.maxLine && props.ellipsis.maxLine > 1) {
+    linkDisplayValue = 'inline-block';
+  }
+
   return (
     <Link
       href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
       active={props.active}
       disabled={props.disabled}
       ref={linkRef}
+      display={linkDisplayValue}
     >
       <Link.Text
         ellipsis={props.ellipsis}
