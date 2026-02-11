@@ -108,26 +108,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  const variablesWidth = [
-    { disabled: false, size: 'm', underlined: true, selected: undefined, w: 500 },
-    { disabled: false, size: 'l', underlined: false, selected: undefined, w: 500 },
-  ];
-  variablesWidth.forEach((item) => {
-    test(`Verify text and underline when width=${item.w} and underline =${item.underlined} is set`, {
-      tag: [TAG.PRIORITY_HIGH,
-        TAG.MOUSE,
-        '@tab-line',
-        '@base-components',
-
-        '@counter',
-        '@badge'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
-
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify disabled tabLine with tooltip', {
     tag: [TAG.PRIORITY_HIGH,
       '@tab-line',
@@ -147,8 +127,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 600, size: 'm', ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
-    { w: 700, size: 'l', desc: 'default' },
+    { w: 100, size: 'm', ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
+    { w: 100, size: 'l', desc: 'default' },
+    { w: 100, size: 'm', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+
   ];
   variablesEllipsis.forEach((item) => {
     test(`Verify ellipsis in Tab lines size = ${item.size} ellipsis = ${item.desc} styles`, {

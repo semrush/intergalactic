@@ -26,7 +26,7 @@ const Demo = (props: TabLineDefProps) => {
   return (
     <>
       <TabLine
-        w={props.w}
+
         size={props.size}
         underlined={props.underlined}
         behavior={props.behavior}
@@ -35,6 +35,7 @@ const Demo = (props: TabLineDefProps) => {
         aria-label='Social network reports'
       >
         <TabLine.Item
+          w={props.w}
           ref={fbRef}
           value='facebook'
           selected={props.selected}
@@ -49,6 +50,7 @@ const Demo = (props: TabLineDefProps) => {
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item
+          w={props.w}
           ref={igRef}
           value={2}
           disabled={props.disabled}
@@ -64,6 +66,7 @@ const Demo = (props: TabLineDefProps) => {
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item
+          w={props.w}
           ref={twRef}
           value={true}
           disabled={props.disabled}
@@ -73,13 +76,14 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <TwitterM />
           </TabLine.Item.Addon>
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: twRef } }}>Twitter</TabLine.Item.Text>
+          <TabLine.Item.Text w={props.w} {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: twRef } }}>Twitter Twitter</TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Text>Addon</Text>
+            <Text>1</Text>
           </TabLine.Item.Addon>
         </TabLine.Item>
 
         <TabLine.Item
+          w={props.w}
           ref={tw3Ref}
           value={3}
           disabled={props.disabled}
@@ -93,6 +97,7 @@ const Demo = (props: TabLineDefProps) => {
         </TabLine.Item>
 
         <TabLine.Item
+          w={props.w}
           ref={tw2Ref}
           value={false}
           disabled={props.disabled}
@@ -107,6 +112,7 @@ const Demo = (props: TabLineDefProps) => {
         </TabLine.Item>
 
         <TabLine.Item
+          w={props.w}
           ref={tw4Ref}
           value={4}
           disabled={props.disabled}

@@ -76,19 +76,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify text width is set', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@tab-panel',
-      '@base-components',
-
-      '@counter',
-      '@badge'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { w: 500 });
-
-    await expect(page).toHaveScreenshot();
-  });
-
   test('Verify disabled Tab panel with tooltip', {
     tag: [TAG.PRIORITY_HIGH,
       '@tab-panel',
@@ -107,8 +94,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 600, ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
-    { w: 600, desc: 'default' },
+    { w: 100, ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
+    { w: 100, desc: 'default' },
+    { w: 100, ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+
   ];
   variablesEllipsis.forEach((item) => {
     test(`Verify ellipsis in Tab Panel ellipsis = ${item.desc} styles`, {
@@ -130,7 +119,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
 
-      await locators.tabPanels(page).nth(2).hover();
+      await locators.tabPanels(page).nth(1).hover();
       await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
 
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
