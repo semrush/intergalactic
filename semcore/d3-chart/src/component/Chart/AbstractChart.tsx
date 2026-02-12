@@ -19,7 +19,7 @@ import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type'
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
 
-type ChartState = {
+export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
   highlightedLine: number;
   withTrend: boolean;
@@ -28,10 +28,12 @@ type ChartState = {
 export const NOT_A_VALUE = 'n/a';
 
 export abstract class AbstractChart<
-  D extends ListData | ObjectData,
-  T extends BaseChartProps<D>,
-  E extends readonly ((...args: any[]) => any)[] = [],
-> extends Component<T, {}, ChartState, E> {
+  Data extends ListData | ObjectData,
+  Props extends BaseChartProps<Data>,
+  Enhancers extends readonly ((...args: any[]) => any)[] = [],
+  State extends ChartState = ChartState,
+  DefaultProps extends Props = never,
+> extends Component<Props, {}, State, Enhancers, DefaultProps> {
   public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -47,13 +49,7 @@ export abstract class AbstractChart<
 
   protected dataHints = makeDataHintsContainer();
 
-  public state: ChartState = {
-    dataDefinitions: this.getDefaultDataDefinitions(),
-    highlightedLine: -1,
-    withTrend: false,
-  };
-
-  constructor(props: T) {
+  constructor(props: Props) {
     super(props);
 
     this.setHighlightedLine = this.setHighlightedLine.bind(this);
@@ -63,9 +59,15 @@ export abstract class AbstractChart<
     this.resolveColor = this.resolveColor.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
+
+    this.state = {
+      dataDefinitions: this.getDefaultDataDefinitions(),
+      highlightedLine: -1,
+      withTrend: false,
+    } as State;
   }
 
-  public componentDidUpdate(prevProps: T) {
+  public componentDidUpdate(prevProps: Props) {
     if (prevProps.data !== this.props.data || prevProps.legendProps !== this.props.legendProps) {
       this.setState({ dataDefinitions: this.getDefaultDataDefinitions() });
     }
