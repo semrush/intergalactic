@@ -12,7 +12,7 @@ import styles from './styles.module.css';
 
 export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   const getImportText = React.useCallback(() => {
-    const lib = '@semcore/ui';
+    const lib = '@semcore';
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
     return importText;
