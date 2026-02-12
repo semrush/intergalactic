@@ -183,7 +183,7 @@ jobs:
       - name: Get changed files list
         id: changed-files
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD^1)
+          CHANGED_FILES=$(git diff --name-only HEAD^1 | xargs)
           MD_FILES=$(echo $CHANGED_FILES | grep "\.md$")
           echo "changed_files=$MD_FILES" >> $GITHUB_OUTPUT
       - uses: errata-ai/vale-action@reviewdog
