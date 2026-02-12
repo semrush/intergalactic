@@ -16,10 +16,10 @@ export const unpluginIcons = createUnplugin(() => ({
   },
   async load(id) {
     if (id !== '@icons') return null;
-    const fullPath = id.endsWith('/lib') ? resolvePath(iconsDir, 'lib') : resolvePath(iconsDir);
+    const fullPath = resolvePath(iconsDir, 'lib');
     const allIcons = await glob('**/index.mjs', {
       cwd: fullPath,
-      ignore: ['lib', 'src', 'node_modules', 'cjs', 'es6'],
+      ignore: ['esm', 'src', 'node_modules', 'cjs', 'es6'],
     });
     const iconPaths = allIcons.filter((path) => {
       const maybeSize = path.split('/')[path.split('/').length - 2];

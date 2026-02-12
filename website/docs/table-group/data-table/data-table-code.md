@@ -30,6 +30,80 @@ Use the secondary table to display small amounts of data in a compact layout.
 
 :::
 
+## Performance tips
+
+To ensure optimal performance, follow these best practices:
+
+- **Use virtual scrolling or pagination for large datasets.** Enable `virtualScroll` when rendering tables with hundreds or thousands of rows. Specify `rowHeight` for constant-height rows to maximize performance.
+
+- **Keep column definitions stable.** Define your columns array outside the component or use `React.useMemo()` to maintain the same reference between renders.
+
+- **Keep data arrays stable.** Avoid recreating the data array on every render. Define it outside the component, use `React.useMemo()`, or ensure the reference only changes when the data actually changes.
+
+- **Avoid inline functions in `renderCell`.** Define render functions outside the component or wrap them with `React.useMemo()` to maintain stable references across renders.
+
+- **Keep all object properties stable.** Ensure property objects maintain consistent references between renders. Avoid creating new objects on every render.
+
+- **Provide `uniqueRowKey` prop.** Specify a unique key for each row and describe it by using the `uniqueRowKey` prop to prevent the `DataTable` from calculating row keys.
+
+- **Optimize custom cell components.** If using custom components in cells, ensure they're properly memoized with `React.memo()` and don't cause unnecessary re-renders.
+
+```typescript jsx
+function CellRenderer({ dataKey, row, defaultRender }: CellRenderProps) { // [!code ++]
+    const value = row[dataKey].toString(); // [!code ++]
+    return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender(); // [!code ++]
+} // [!code ++]
+
+const headerProps = { sticky: true }; // [!code ++]
+
+const columns = [ // [!code ++]
+    { name: 'id', children: 'ID' }, // [!code ++]
+    { name: 'keyword', children: 'Keyword', gtcWidth: '300px' }, // [!code ++]
+    { // [!code ++]
+        name: 'group', // [!code ++]
+        children: 'Organic Sessions', // [!code ++]
+        columns: [ // [!code ++]
+            { name: 'kd', children: 'KD %' }, // [!code ++]
+            { name: 'cpc', children: 'CPC' }, // [!code ++]
+            { name: 'vol', children: 'Vol.' }, // [!code ++]
+        ], // [!code ++]
+    }, // [!code ++]
+]; // [!code ++]
+
+function Demo({ data }) {
+  return (
+    <DataTable
+      data={data}
+      uniqRowKey='id' // [!code ++]
+      aria-label='Virtual scroll' // [!code ++]
+      renderCell={({ dataKey, row, defaultRender }) => { // [!code --]
+        const value = row[dataKey].toString(); // [!code --]
+        return ['-', '$0', 'n/a'].includes(value) ? <Spin/> : defaultRender(); // [!code --]
+      }} // [!code --]
+      renderCell={CellRenderer} // [!code ++]
+      virtualScroll // [!code ++]
+      totalRows={10000} // [!code ++]
+      headerProps={{ sticky: true }} // [!code --]
+      headerProps={headerProps} // [!code ++]
+      columns={[ // [!code --]
+        { name: 'id', children: 'ID' }, // [!code --]
+        { name: 'keyword', children: 'Keyword', gtcWidth: '300px' }, // [!code --]
+        { // [!code --]
+          name: 'group', // [!code --]
+          children: 'Organic Sessions', // [!code --]
+          columns: [ // [!code --]
+            { name: 'kd', children: 'KD %' }, // [!code --]
+            { name: 'cpc', children: 'CPC' }, // [!code --]
+            { name: 'vol', children: 'Vol.' }, // [!code --]
+          ], // [!code --]
+        }, // [!code --]
+      ]} // [!code --]
+      columns={columns} // [!code ++]
+    />
+  );
+}
+```
+
 ## Styles
 
 ### Compact
@@ -211,7 +285,8 @@ You can enable selecting rows with checkboxes with the `selectedRows` and `onSel
 ### Access to cells
 
 To customize the content of a table cell, use the `renderCell` prop.
-It receives props described in [`CellRenderProps`](/table-group/data-table/data-table-api#datatable).
+
+It receives props described in [`CellRenderProps`](/table-group/data-table/data-table-api#rendercell).
 
 You can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
 If the returned object includes a children property, it will override the default cell content—otherwise, you can use it to apply custom attributes such as theming or data attributes.

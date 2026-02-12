@@ -1,6 +1,6 @@
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import SummaryAI from '@semcore/icon/SummaryAI/m';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { RadioFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import type { RadioProps } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
@@ -59,7 +59,8 @@ const Demo = (props: RadioFHAdvancedProps) => {
             <RadioFH.Text>
               {firstOptionText}
               {showIcon && (
-                <SummaryAI
+                <Box
+                  tag={SummaryAI}
                   color='--intergalactic-icon-primary-feature-highlight'
                   ml={2}
                   style={{ verticalAlign: -3 }}

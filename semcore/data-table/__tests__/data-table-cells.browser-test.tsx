@@ -66,11 +66,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       sideIndents: 'wide',
     });
 
-    await test.step('Verify wide for non compact data-tablet', async () => {
+    await test.step('Verify wide for non compact data-table', async () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify wide for compact data-tablet', async () => {
+    await test.step('Verify wide for compact data-table', async () => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
         sideIndents: 'wide', compact: true,
       });
@@ -83,7 +83,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     if (browserName == 'firefox') test.skip();
+
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
+
+    const consoleErrors: string[] = [];
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        consoleErrors.push(msg.text());
+      }
+    });
+
+    page.on('pageerror', (error) => {
+      consoleErrors.push(error.message);
+    });
 
     await test.step('Verify Color when child cell hovered', async () => {
       await locators.getCell(page, 3, 1).hover();
@@ -96,12 +109,68 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify Color when parent cell hovered', async () => {
       await locators.getCell(page, 2, 2).hover();
 
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
-
-      for (let row = 2; row <= 6; row++) {
+      for (let row = 2; row <= 5; row++) {
         await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
       }
     });
+
+    await test.step('Verify no console errors', async () => {
+      expect(consoleErrors, `Console errors found:\n${consoleErrors.join('\n')}`).toHaveLength(0);
+    });
+  });
+
+  test('Verify styles when checkbox in merged cells checked by keyboard', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table',
+      '@tooltip'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
+
+    await page.keyboard.press('Space');
+
+    await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
+    await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(233, 247, 255)' });
+    await expect(page).toHaveScreenshot();
+
+    if (browserName == 'firefox') return;
+    const cell22 = locators.getCell(page, 2, 1);
+    const box22 = await cell22.boundingBox();
+    if (box22) {
+      await page.mouse.move(box22.x + box22.width / 2, box22.y + box22.height / 2);
+    }
+
+    await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(196, 229, 254)' });
+
+    const cell23 = locators.getCell(page, 2, 3);
+    const box23 = await cell23.boundingBox();
+    if (box23) {
+      await page.mouse.move(box23.x + box23.width / 2, box23.y + box23.height / 2);
+    }
+    await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(196, 229, 254)' });
+    await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(233, 247, 255)' });
+    await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(233, 247, 255)' });
   });
 });
 /* =====================================================
@@ -333,10 +402,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
-      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+      await expect(locators.getCell(page, 6, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 2, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowLeft');
@@ -404,6 +476,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify select rows with Shift', {
     tag: [
       TAG.KEYBOARD,
+      TAG.MOUSE,
+
       '@data-table',
     ],
   }, async ({ page }) => {
@@ -430,6 +504,86 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
     }
     await expect(locators.getCell(page, 9, 1).locator('input')).toBeChecked();
+  });
+
+  test('Verify select rows with Shift when checkbox in merged cells', {
+    tag: [
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@data-table',
+    ],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
+
+    const firstCell = locators.getCell(page, 2, 1);
+    const secondCell = locators.getCell(page, 4, 1);
+
+    await firstCell.locator('label').click();
+    await secondCell.locator('label').click({ modifiers: ['Shift'] });
+
+    await expect(locators.getCell(page, 2, 1).locator('input')).toBeChecked();
+    await expect(locators.getCell(page, 4, 1).locator('input')).toBeChecked();
+
+    await locators.getCell(page, 8, 1).locator('label').click({ modifiers: ['Shift'] });
+
+    await expect(locators.getCell(page, 2, 1).locator('input')).toBeChecked();
+    await expect(locators.getCell(page, 4, 1).locator('input')).toBeChecked();
+    await expect(locators.getCell(page, 6, 1).locator('input')).toBeChecked();
+    await expect(locators.getCell(page, 8, 1).locator('input')).toBeChecked();
+  });
+
+  test('Verify keyboard interaction when checkbox in merged cells', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@data-table',
+      '@tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
+
+    await test.step('Verify Focus on checkbox', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
+    });
+
+    await test.step('Verify navigation to the 1st child', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 2, 3)).toBeFocused();
+    });
+    await test.step('Verify focus returns to checkbox', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.getCell(page, 2, 1).locator('input')).toBeFocused();
+    });
+    await test.step('Verify navigation from non merged to merged', async () => {
+      for (let i = 0; i < 4; i++)
+        await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 10, 1).locator('input')).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 8, 1).locator('input')).toBeFocused();
+    });
+    await test.step('Verify navigation from 2nd child outside the table and back', async () => {
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.getCell(page, 9, 4)).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next')).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.getCell(page, 9, 4)).toBeFocused();
+    });
+    await test.step('Verify navigation from last child outside the table and back', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.getCell(page, 9, 5)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next')).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.getCell(page, 9, 5)).toBeFocused();
+    });
   });
 
   test('Verify multiple access to cells with spin', {

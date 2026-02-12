@@ -1,6 +1,6 @@
+import CheckM from '@semcore/icon/Check/m';
 import Badge from '@semcore/ui/badge';
 import Button from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
 import React from 'react';
 
 const Demo = () => {
@@ -10,7 +10,7 @@ const Demo = () => {
       <Button ml={2}>
         <Button.Text>Button</Button.Text>
         <Button.Addon>
-          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
+          <Badge type='new' />
         </Button.Addon>
       </Button>
     </>

@@ -58,6 +58,8 @@ export const locators = {
   },
   popper: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Popper"]'),
+  hint: (page: Page) =>
+    page.locator('[data-ui-name="Hint"]'),
   actions: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Actions"]'),
   item: (page: Page) =>
@@ -504,7 +506,39 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test.skip('Verify virtual scroll by keyboard', {
+  test('Verify Ellipsis and Hint on DD menu', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en');
+
+    await test.step('Verify Ellipsis applies and Hint shown on Hover with placement Top', async () => {
+      await locators.button(page).click();
+      await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await locators.menuitem(page, 0).hover();
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify Ellipsis applies and Hint shown on Focus with placement bottom', async () => {
+      await page.keyboard.press('Escape');
+      await locators.menuitem(page, 0).waitFor({ state: 'hidden' });
+      await locators.hint(page).waitFor({ state: 'hidden' });
+
+      await page.keyboard.press('Enter');
+      await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await locators.hint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('ArrowDown');
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test('Verify virtual scroll by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu'],
@@ -566,9 +600,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.menuitemradio(page, 'project 42').scrollIntoViewIfNeeded();
     await expect(locators.menuitemradio(page, 'project 42')).toBeInViewport();
-    await expect(locators.menuitemradio(page, 'project 35')).toBeVisible();
+    await expect(locators.menuitemradio(page, 'project 36')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot();
   });
 
   test.describe('Sticky groups', () => {
@@ -824,15 +858,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
 
-    const MathPlus = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Add new"][role="menuitem"]',
-    );
-    const Trash = page.locator(
-      '[data-ui-name="DropdownMenu.Item"][aria-label="Delete"][role="menuitem"]',
-    );
+    const MathPlus = page.getByRole('menuitem', { name: 'Add new' });
+    const Trash = page.getByRole('menuitem', { name: 'Delete' });
 
     await test.step('Verify 1st item focused when menu expanded by Enter', async () => {
       await page.keyboard.press('Tab');
+      await locators.button(page).waitFor({ state: 'visible' });
+      // Webkit may not focus via Tab, so focus directly if needed
+      if (!(await locators.button(page).evaluate((el) => el === document.activeElement))) {
+        await locators.button(page).focus();
+      }
       await expect(locators.button(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ButtonLinkBaseExample, { defaultButtonLinkProps } from './examples/button-link/button-link-base';
 import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './examples/button-link/button-link-icon-only';
+import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
 
 const meta: Meta = {
   title: 'Components/Button/Tests/Button Link',
@@ -40,6 +41,12 @@ export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
   render: ButtonLinkBaseExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkProps,
+};
+
+export const ButtonLinkInText: StoryObj<typeof defaultButtonLinkInTextProps> = {
+  render: ButtonLinkInTextExample,
+  argTypes: commonArgTypes,
+  args: defaultButtonLinkInTextProps,
 };
 
 export const ButtonLinkIconOnly: StoryObj<typeof defaultButtonLinkIconOnlyProps> = {

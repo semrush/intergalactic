@@ -1,5 +1,4 @@
 import { Flex } from '@semcore/ui/base-components';
-import Ellipsis from '@semcore/ui/ellipsis';
 import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
@@ -87,7 +86,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={props.active}
           >
             <InputTags.Tag.Text>
-              <Ellipsis wMax={100}>{tag}</Ellipsis>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'end' }}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag(idx)} />
           </InputTags.Tag>

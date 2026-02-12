@@ -1,8 +1,8 @@
+import Info from '@semcore/icon/Info/m';
+import Warning from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import Info from '@semcore/ui/icon/Info/m';
-import Warning from '@semcore/ui/icon/Warning/m';
 import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -16,8 +16,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About visibility'
             color='icon-secondary-neutral'
           />
@@ -53,8 +53,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About estimated traffic'
             color='icon-secondary-neutral'
           />
@@ -89,8 +89,8 @@ const Demo = () => (
         </Text>
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About Average position'
             color='icon-secondary-neutral'
           />

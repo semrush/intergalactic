@@ -1,15 +1,14 @@
 import { Box, Flex } from '@semcore/base-components';
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Text } from '@semcore/typography';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
-import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -156,13 +155,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect } =
-      this.asProps;
-    const { dataDefinitions } = this.state;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey, invertAxis, onClickHoverRect } = this.asProps;
 
     return (
       <HoverRect.Tooltip
@@ -174,34 +167,12 @@ class BarChartComponent extends AbstractChart<
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;
           const dataItem = data[index];
-          const total = this.totalValue(dataItem);
 
           return {
-            children: (
-              <>
-                <HoverRect.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverRect.Tooltip.Title>
-
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex justifyContent='space-between' key={item.id}>
-                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                      </Flex>
-                    )
-                  );
-                })}
-
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
-                  </Flex>
-                )}
-              </>
-            ),
+            children: this.getTooltipChildren({
+              Tooltip: HoverRect.Tooltip,
+              dataItem,
+            }),
           };
         }}
       </HoverRect.Tooltip>

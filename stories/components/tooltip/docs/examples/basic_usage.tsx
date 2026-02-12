@@ -1,8 +1,8 @@
+import CheckAltM from '@semcore/icon/CheckAlt/m';
+import FileExportM from '@semcore/icon/FileExport/m';
+import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import CheckAltM from '@semcore/ui/icon/CheckAlt/m';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -26,16 +26,7 @@ const Demo = () => (
         addonLeft={FileExportM}
       />
     </Flex>
-    <Flex gap={4} alignItems='center'>
-      Hint:
-      <Hint title='Export to PDF' tag={Button} addonLeft={FileExportM} />
-      <Hint
-        title='You confirmed your email'
-        aria-hidden={false}
-        tag={CheckAltM}
-        color='var(--intergalactic-icon-primary-success)'
-      />
-    </Flex>
+
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>

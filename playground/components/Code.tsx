@@ -1,8 +1,8 @@
+import Check from '@semcore/icon/Check/m';
+import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
+import Copy from '@semcore/icon/Copy/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import Check from '@semcore/ui/icon/Check/m';
-import GitHubInvertM from '@semcore/ui/icon/color/GitHubInvert/m';
-import Copy from '@semcore/ui/icon/Copy/m';
 import React, { useEffect, useRef, useState } from 'react';
 import { codeToHtml } from 'shiki';
 

@@ -6,7 +6,6 @@ import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
-import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import * as React from 'react';
@@ -15,9 +14,10 @@ import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import style from './style.shadow.css';
 import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
+import type { ROW_GROUP } from '../DataTable/DataTable';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
-const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
+const SORTING_ICON: { [key in SortDirection]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
@@ -42,8 +42,8 @@ type State = {
 
 export class Column<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableColumnProps,
     [],

@@ -1,6 +1,6 @@
+import DesktopIconM from '@semcore/icon/Desktop/m';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import DesktopIconM from '@semcore/ui/icon/Desktop/m';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 

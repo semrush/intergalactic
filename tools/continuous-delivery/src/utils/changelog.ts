@@ -27,6 +27,8 @@ export type ChangelogChange = {
   descriptionFormatted: (string | Token)[];
 };
 
+export type ReleaseVersion = `${number}.${number}.${number}`;
+
 export type IncrementType = 'major' | 'minor' | 'patch';
 
 export type CollectedChangelog = {
@@ -56,7 +58,8 @@ export class Changelog {
   };
 
   constructor(
-    private readonly releaseTag: string,
+    private readonly prefix: string,
+    private readonly releaseTag: ReleaseVersion,
     private readonly collectedPackages: PackageJson[],
   ) {
   }
@@ -66,9 +69,17 @@ export class Changelog {
   }
 
   public async collectFromHistory(): Promise<void> {
-    const logs = await git.log({ from: this.releaseTag });
+    const logs = await git.log({ from: this.tag });
     const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
-    const allAllowedScopes = new Set([...specialScopes, ...semcoreComponents, ...toolsComponents]);
+    const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
+    const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
+      if (!this.collectedPackages) {
+        return true;
+      }
+
+      return collectedSet.has(element);
+    });
+    const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;
     let traversingType: ChangelogChangeLabel | null = null;
@@ -123,12 +134,25 @@ export class Changelog {
         }
       });
 
-      this.changelogs.version = semver.inc(this.releaseTag, incrementType)!;
+      const newVersion = semver.inc(this.releaseTag, incrementType)!;
+      this.changelogs.version = `${this.prefix}${newVersion}`;
     });
   }
 
-  public static async getRelease() {
-    const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'ui', 'CHANGELOG.md');
+  private get tag(): string {
+    return `${this.prefix}${this.releaseTag}`;
+  }
+
+  public static async getRelease(versionTag: string) {
+    let component = 'ui';
+
+    if (versionTag.startsWith('icon')) {
+      component = 'icon';
+    } else if (versionTag.startsWith('illustration')) {
+      component = 'illustration';
+    }
+
+    const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', component, 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
     const fullChangelog = Changelog.releaseParser(
       releaseChangelogString,

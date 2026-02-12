@@ -75,8 +75,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} color=${item.color}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@link-trigger',
-        '@icon'],
+        '@link-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/link-trigger/with-addons.tsx', 'en', item);
 
@@ -200,7 +199,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.button(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });

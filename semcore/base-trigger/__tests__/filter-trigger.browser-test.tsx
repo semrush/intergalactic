@@ -55,8 +55,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@tooltip',
-        '@icon'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
@@ -126,7 +125,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.trigger(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -444,15 +443,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const button = page.getByRole('combobox', { name: 'Material' });
 
       await expect(button).toHaveAttribute('value', 'Glass,Metal,Paper');
-      await expect(button.locator('div[data-ui-name="FilterTrigger.Text"]')).toContainText(
+      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).toContainText(
         '3 selected',
       );
 
-      const textSpan = button.locator('div[data-ui-name="FilterTrigger.Text"] span');
+      const textSpan = button.locator('[data-ui-name="FilterTrigger.Text"] span');
       await expect(textSpan).toHaveAttribute('aria-hidden', 'true');
 
       await locators.clearButton(page).click();
-      await expect(button.locator('div[data-ui-name="FilterTrigger.Text"]')).not.toContainText(
+      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).not.toContainText(
         '3 selected',
       );
     });

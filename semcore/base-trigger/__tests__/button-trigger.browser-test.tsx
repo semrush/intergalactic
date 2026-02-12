@@ -111,8 +111,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@button-trigger',
-        '@icon'],
+        '@button-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
@@ -283,8 +282,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-trigger',
         '@button-trigger',
         '@select',
-        '@dropdown',
-        '@icon'],
+        '@dropdown'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
@@ -374,9 +372,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
     await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(200);
 
     await locators.button(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -460,10 +459,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(tagNameText).toBe('h2');
 
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('tooltip')).toHaveCount(0);
-
-    await locators.button(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
-    await expect(page.getByRole('tooltip')).toHaveCount(1);
+    await page.keyboard.press('Tab');
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+    await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
   });
 });

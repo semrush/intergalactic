@@ -1,5 +1,5 @@
+import CheckM from '@semcore/icon/Check/m';
 import type { BoxProps } from '@semcore/ui/base-components';
-import CheckM from '@semcore/ui/icon/Check/m';
 import Link from '@semcore/ui/link';
 import type { LinkProps } from '@semcore/ui/link';
 import React from 'react';

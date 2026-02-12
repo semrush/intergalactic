@@ -1,8 +1,8 @@
+import FileExportM from '@semcore/icon/FileExport/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

@@ -9,6 +9,8 @@ const meta: Meta = {
 export default meta;
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    showPercentValueInTooltip: { control: { type: 'boolean' } },
+  }),
   args: basicUsageProps,
 };

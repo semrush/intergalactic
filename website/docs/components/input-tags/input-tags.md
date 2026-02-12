@@ -85,6 +85,6 @@ Deleting a tag can be done with the tag's **Delete** button, or by clearing all 
 Note that this behavior isn’t recommended due to poor accessibility. Web page content should be responsive and adaptable to small viewport widths, increased text size, and changes in text spacing.
 :::
 
-You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
+You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../../utils/ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
 
 ![](static/ellipsis.png)

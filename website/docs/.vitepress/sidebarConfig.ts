@@ -1,6 +1,4 @@
-import { DefaultTheme } from 'vitepress';
-
-type SidebarConfig = {
+export type SidebarConfig = {
   text?: string;
   link?: string;
   collapsed?: boolean;
@@ -258,7 +256,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/ellipsis/ellipsis',
             activeMatch: '/components/ellipsis/',
-            text: 'Ellipsis',
+            text: 'Ellipsis [deprecated]',
           },
           {
             link: '/components/feature-popover/feature-popover',
@@ -642,19 +640,14 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Category',
           },
           {
-            link: '/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc',
-            activeMatch: '/filter-group/filter-cp-cd-cpc/',
-            text: 'Click Potential, Competitive Density, CPC',
+            link: '/filter-group/filter-custom-range/filter-custom-range',
+            activeMatch: '/filter-group/filter-custom-range/',
+            text: 'Custom range filter',
           },
           {
             link: '/filter-group/filter-include-exclude/filter-include-exclude',
             activeMatch: '/filter-group/filter-include-exclude/',
             text: 'Include/Exclude keywords',
-          },
-          {
-            link: '/filter-group/filter-kd-positions-volume/filter-kd-positions-volume',
-            activeMatch: '/filter-group/filter-kd-positions-volume/',
-            text: 'Keyword Difficulty, Positions, Volume',
           },
           {
             link: '/filter-group/filter-search/filter-search',
@@ -770,6 +763,16 @@ export const sideBarConfig: SidebarConfig = [
         text: 'Utils',
         collapsed: true,
         items: [
+          {
+            link: '/utils/ellipsis/ellipsis',
+            activeMatch: '/utils/ellipsis/',
+            text: 'Ellipsis',
+          },
+          {
+            link: '/utils/hint/hint',
+            activeMatch: '/utils/hint/',
+            text: 'Hint',
+          },
           {
             link: '/utils/neighbor-location/neighbor-location',
             activeMatch: '/utils/neighbor-location/',

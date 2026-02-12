@@ -1,8 +1,8 @@
+import VideoListM from '@semcore/icon/VideoList/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
-import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 
 type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };
@@ -81,7 +81,7 @@ const Demo = (props: ExampleProps) => {
       >
         <ButtonLink.Text>ButtonLink with Badge</ButtonLink.Text>
         <ButtonLink.Addon>
-          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
+          <Badge type='new' />
         </ButtonLink.Addon>
       </ButtonLink>
 

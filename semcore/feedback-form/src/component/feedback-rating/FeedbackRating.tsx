@@ -11,7 +11,7 @@ import FeedbackIllustration from '@semcore/illustration/Feedback';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import Modal from '@semcore/modal';
-import Notice from '@semcore/notice';
+import { default as SemcoreNotice } from '@semcore/notice';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
@@ -24,7 +24,9 @@ import type {
   FeedbackRatingCheckboxProps,
   FeedbackRatingItemProps,
   FeedbackRatingProps,
-  FormConfigItem } from './FeedbackRating.type';
+  FormConfigItem,
+  FeedbackRatingDefaultProps,
+} from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
@@ -40,7 +42,7 @@ class FeedbackRatingRoot extends Component<
   FeedbackRatingProps,
   typeof FeedbackRatingRoot.enhance,
   {},
-  {},
+  FeedbackRatingDefaultProps,
   State
 > {
   static displayName = 'FeedbackRatingForm';
@@ -48,10 +50,12 @@ class FeedbackRatingRoot extends Component<
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  static defaultProps = {
+  static defaultProps: FeedbackRatingDefaultProps = {
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
+    Illustration: FeedbackIllustration,
+    Notice: SemcoreNotice,
   };
 
   static validate = {
@@ -260,6 +264,8 @@ class FeedbackRatingRoot extends Component<
       getI18nText,
       errorFeedbackEmail,
       modalWidth,
+      Illustration,
+      Notice: NoticeComponent,
       ...other
     } = this.asProps;
 
@@ -272,37 +278,37 @@ class FeedbackRatingRoot extends Component<
 
     return sstyled(styles)(
       <Root render={Box}>
-        <Notice
+        <NoticeComponent
           visible={notificationVisible}
           aria-label={getI18nText('leaveFeedback')}
           tag={Flex}
           alignItems={notificationTitle ? 'flex-start' : 'center'}
         >
-          <Notice.Label mr={3} aria-hidden={true}>
-            <FeedbackIllustration />
-          </Notice.Label>
-          <Notice.Content>
-            {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
-            <Notice.Text tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
-              <Text mr={3} id={notificationId}>
+          <NoticeComponent.Label mr={3} aria-hidden={true}>
+            <Illustration />
+          </NoticeComponent.Label>
+          <NoticeComponent.Content>
+            {notificationTitle ? <NoticeComponent.Title>{notificationTitle}</NoticeComponent.Title> : null}
+            <NoticeComponent.Text gap={3} tag={Flex} alignItems={notificationTitle ? 'flex-start' : 'center'}>
+              <Text id={notificationId}>
                 {notificationText}
               </Text>
-              <Notice.Actions mt={0}>
+              <NoticeComponent.Actions mt={0}>
                 <SliderRating
                   value={rating}
                   onChange={this.handleChangeRating}
                   aria-labelledby={notificationId}
                 />
-              </Notice.Actions>
+              </NoticeComponent.Actions>
               {learnMoreLink && (
-                <Link ml={3} href={learnMoreLink}>
+                <Link href={learnMoreLink}>
                   {getI18nText('learnMore')}
                 </Link>
               )}
-            </Notice.Text>
-          </Notice.Content>
-          <Notice.Close onClick={onNotificationClose} />
-        </Notice>
+            </NoticeComponent.Text>
+          </NoticeComponent.Content>
+          <NoticeComponent.Close onClick={onNotificationClose} />
+        </NoticeComponent>
 
         <SFeedbackRating
           render={Modal}
@@ -356,11 +362,11 @@ class FeedbackRatingRoot extends Component<
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 
                     {this.state.error && (
-                      <Notice theme='warning' mt={4} mb={4}>
-                        <Notice.Label>
+                      <SemcoreNotice theme='warning' mt={4} mb={4}>
+                        <SemcoreNotice.Label>
                           <WarnM />
-                        </Notice.Label>
-                        <Notice.Content>
+                        </SemcoreNotice.Label>
+                        <SemcoreNotice.Content>
                           {getI18nText('errorMessage', {
                             // todo: Brauer Ilia - think how to fix type
                             // @ts-ignore
@@ -370,8 +376,8 @@ class FeedbackRatingRoot extends Component<
                               </Link>
                             ),
                           })}
-                        </Notice.Content>
-                      </Notice>
+                        </SemcoreNotice.Content>
+                      </SemcoreNotice>
                     )}
 
                     <Flex mt={4} justifyContent='center'>
@@ -398,7 +404,7 @@ function Header(props: any) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(
-    <SHeader render={Text} size={300} tag='h2' mb={4} mt={4} textAlign='center' />,
+    <SHeader render={Modal.Title} />,
   );
 }
 

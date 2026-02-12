@@ -1,7 +1,6 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
+import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
-import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -29,7 +28,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),
@@ -45,7 +44,7 @@ const Demo = () => {
           {
             name: 'group2',
             children: (
-              <Ellipsis>Borders both - Organic Sessions rganic Sessions rganic Sessions</Ellipsis>
+              <Text ellipsis={true}>Borders both - Organic Sessions rganic Sessions rganic Sessions</Text>
             ),
             borders: 'both',
             columns: [
@@ -54,10 +53,10 @@ const Demo = () => {
                 gtcWidth: '100px',
                 children: (
                   <>
-                    <Ellipsis>
+                    <Text ellipsis={true}>
                       Kd Organic Sessions Organic Sessions
-                    </Ellipsis>
-                    <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    </Text>
+                    <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                   </>
                 ),
 
@@ -82,7 +81,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),
@@ -106,7 +105,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),

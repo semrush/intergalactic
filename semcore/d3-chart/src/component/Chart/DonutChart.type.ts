@@ -9,7 +9,10 @@ export type DataKey = string;
 
 export type DonutChartData = Record<DataKey, number>;
 
-export type DonutChartProps = BaseChartProps<DonutChartData> & {
+export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<DonutChartData>,
+  'showTotalInTooltip'
+> & {
   /** Internal */
   groupKey?: never;
   /** Custom x-axis scale */

@@ -145,9 +145,9 @@ const GENERATOR = {
       }
 
       packageJsonExports[`./${name}/${utilNameWithoutExtention}`] = {
-        require: `./${name}/${utilNameWithoutExtention}.cjs`,
-        import: `./${name}/${utilNameWithoutExtention}.mjs`,
         types: `./${name}/${utilNameWithoutExtention}.d.ts`,
+        import: `./${name}/${utilNameWithoutExtention}.mjs`,
+        require: `./${name}/${utilNameWithoutExtention}.cjs`,
       };
     }
 
@@ -223,9 +223,9 @@ const GENERATOR = {
         }`;
 
         packageJsonExports[illustrationPath] = {
-          require: `${illustrationPath}/index.cjs`,
-          import: `${illustrationPath}/index.mjs`,
           types: `${illustrationPath}/index.d.ts`,
+          import: `${illustrationPath}/index.mjs`,
+          require: `${illustrationPath}/index.cjs`,
         };
       }
     }
@@ -241,9 +241,9 @@ const GENERATOR = {
     }
 
     packageJsonExports[`./${name}`] = {
-      require: `./${name}/index.cjs`,
-      import: `./${name}/index.mjs`,
       types: `./${name}/index.d.ts`,
+      import: `./${name}/index.mjs`,
+      require: `./${name}/index.cjs`,
     };
   },
 };

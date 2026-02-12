@@ -42,7 +42,7 @@ export const ZIndexStackingContextProvider: React.FC<{
   );
 };
 export const zIndexStackingEnhance = (designToken?: ZIndexDesignTokens) => {
-  return (props: any) => {
+  return (props: any): { parentZIndexStacking: ReturnType<typeof useZIndexStacking> } => {
     const { ...other } = props;
     const parentZIndexStacking = useZIndexStacking(designToken);
     return {

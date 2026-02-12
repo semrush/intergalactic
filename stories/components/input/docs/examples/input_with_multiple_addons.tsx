@@ -1,11 +1,10 @@
+import CloseM from '@semcore/icon/Close/m';
+import ShowNoM from '@semcore/icon/ShowNo/m';
+import ShowYesM from '@semcore/icon/ShowYes/m';
 import { Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import CloseM from '@semcore/ui/icon/Close/m';
-import ShowNoM from '@semcore/ui/icon/ShowNo/m';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
-import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -30,8 +29,7 @@ const Demo = () => {
           />
           {value && (
             <Input.Addon pl={2} pr={1}>
-              <Hint
-                tag={ButtonLink}
+              <ButtonLink
                 addonLeft={CloseM}
                 use='secondary'
                 title='Clear'
@@ -43,9 +41,8 @@ const Demo = () => {
             <Link>Forgot?</Link>
           </Input.Addon>
           <Input.Addon>
-            <Hint
+            <ButtonLink
               title={type === 'password' ? 'Show password' : 'Hide password'}
-              tag={ButtonLink}
               use='secondary'
               addonLeft={type === 'password' ? ShowYesM : ShowNoM}
               onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}

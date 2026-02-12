@@ -1,7 +1,5 @@
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -9,32 +7,28 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis trim='middle'>Dat First List</Ellipsis>
+          <LinkTrigger.Text w={150} size={400} display='inline-flex' ellipsis={{ cropPosition: 'middle' }}>
+            Few Tags Tags Tags
           </LinkTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <br />
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
-            <Ellipsis trim='middle'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
-            </Ellipsis>
+          <LinkTrigger.Text w={150} size={400} ellipsis={{ cropPosition: 'middle' }} data-test-id='ellipsis-middle'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
+            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
+            tempore voluptas. Aliquam eos expedita illo quasi unde!
           </LinkTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <br />
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
-              commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
-              tempore voluptas. Aliquam eos expedita illo quasi unde!
-            </Ellipsis>
+          <LinkTrigger.Text w={150} size={400} ellipsis={true}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
+            commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
+            tempore voluptas. Aliquam eos expedita illo quasi unde!
           </LinkTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>

@@ -192,18 +192,17 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/docs/examples/line-chart/basic-usage.tsx',
+        'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
         'en',
         vars,
       );
-
-      await test.step('Verify chart renders correctly with current configuration', async () => {
-        await locators.plot(page).waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      if (vars.showTooltip) {
+      await locators.plot(page).waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      if (!vars.showTooltip) {
+        await test.step('Verify chart renders correctly', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      } else if (vars.showTooltip) {
         await test.step('Verify tooltip appears on hover', async () => {
           const chart = locators.plot(page).first();
           const box = await chart.boundingBox();
@@ -214,6 +213,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           const tooltip = locators.tooltip(page);
           await tooltip.waitFor({ state: 'visible' });
           await expect(tooltip).toBeVisible();
+          await expect(page).toHaveScreenshot();
         });
       }
     });

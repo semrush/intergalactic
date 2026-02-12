@@ -1,9 +1,9 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
-import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 export type MultiLevelNonInteractiveProps = {
@@ -28,8 +28,8 @@ const columns = [
         name: 'kd',
         children: (
           <Flex gap={2} alignItems='center'>
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Flex>
         ),
 

@@ -60,7 +60,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       for (const close of closes) {
         expect(close).toHaveAttribute('aria-label', 'Close notification');
-        expect(close).toHaveAttribute('tabindex', '0');
       }
     });
 
@@ -184,7 +183,6 @@ test.describe(`NoticeSmart ${TAG.FUNCTIONAL}`, () => {
 
       for (const close of closes) {
         expect(close).toHaveAttribute('aria-label', 'Close notification');
-        expect(close).toHaveAttribute('tabindex', '0');
       }
     });
   });

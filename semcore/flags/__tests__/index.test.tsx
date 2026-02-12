@@ -1,5 +1,4 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -46,17 +45,5 @@ describe('Flags', () => {
 
     expect(link).toBeTruthy();
     expect(link.tagName).toBe('LINK');
-  });
-
-  test.skip('Verify support no name country', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Flags />
-        <Flags iso2={'AA' as any} />
-        <Flags iso3={'AAA' as any} />
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

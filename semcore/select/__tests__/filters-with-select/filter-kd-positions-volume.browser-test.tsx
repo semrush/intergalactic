@@ -20,7 +20,7 @@ test.describe(TAG.VISUAL, () => {
   test('Verify filter KD positions volume visual states', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify opened dialog state', async () => {
       await page.keyboard.press('Tab');
@@ -55,7 +55,7 @@ test.describe(TAG.FUNCTIONAL, () => {
   test('Verify filter KD positions volume keyboard navigation', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify 1st item highlighted when select opened', async () => {
       await page.keyboard.press('Tab');
@@ -184,7 +184,7 @@ test.describe(TAG.FUNCTIONAL, () => {
   test('Verify filter KD positions volume mouse navigation', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify dialog opened and closed by trigger click', async () => {
       await locators.trigger(page).click();

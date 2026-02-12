@@ -1,9 +1,9 @@
+import DesktopIconM from '@semcore/icon/Desktop/m';
 import Badge from '@semcore/ui/badge';
 import Button from '@semcore/ui/button';
 import Counter, { AnimatedNumber } from '@semcore/ui/counter';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
-import DesktopIconM from '@semcore/ui/icon/Desktop/m';
 import Switch from '@semcore/ui/switch';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
@@ -53,7 +53,7 @@ const Demo = () => {
               <DropdownMenu.Item.Content>
                 <DropdownMenu.Item.Text>Menu item 5</DropdownMenu.Item.Text>
                 <DropdownMenu.Item.Addon>
-                  <Badge bg='blue-400'>admin</Badge>
+                  <Badge type='admin' />
                 </DropdownMenu.Item.Addon>
               </DropdownMenu.Item.Content>
             </DropdownMenu.Item>

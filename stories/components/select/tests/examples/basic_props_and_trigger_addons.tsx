@@ -1,6 +1,6 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Select from '@semcore/ui/select';
 import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
