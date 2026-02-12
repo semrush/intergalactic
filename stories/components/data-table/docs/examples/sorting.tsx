@@ -6,7 +6,7 @@ import React from 'react';
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['vol', 'desc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {

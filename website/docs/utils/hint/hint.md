@@ -36,3 +36,7 @@ Hint disappears when:
 - mouse leaves the trigger
 - trigger is no longer focused
 - user presses `Esc`
+
+When the trigger is large, hint automatically appears closer to the cursor position.
+
+![](static/large-trigger.png)
