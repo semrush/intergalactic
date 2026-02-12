@@ -4,10 +4,6 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
-::: info
-Design tokens are available for use from **intergalactic@13.5.0** version.
-:::
-
 ## Description
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.

@@ -182,6 +182,12 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
     };
   }
 
+  getItemTextProps(_: any, index: number) {
+    return {
+      index,
+    };
+  }
+
   scrollToNode(node: HTMLElement | null, withAnimation = false) {
     if (node) {
       this.highlightedItem = node;

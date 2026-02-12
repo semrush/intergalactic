@@ -2,7 +2,6 @@ import CloseM from '@semcore/icon/Close/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
-import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -26,7 +25,7 @@ const Demo = () => {
             <ButtonLink
               use='secondary'
               addonLeft={CloseM}
-              title='Clear'
+              aria-label='Clear'
               onClick={() => setValue('+')}
             />
           </Input.Addon>

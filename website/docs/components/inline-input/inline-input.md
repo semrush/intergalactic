@@ -81,9 +81,9 @@ Table: Trailing addon styles
 
 For save and cancel button icons on hover, it's important to show a tooltip that tells a user what they're doing.
 
-![](static/tooltip2.png)
+![](static/hint2.png)
 
-![](static/tooltip1.png)
+![](static/hint1.png)
 
 ## Save and Cancel actions
 

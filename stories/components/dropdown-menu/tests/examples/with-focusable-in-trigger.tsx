@@ -1,7 +1,6 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {

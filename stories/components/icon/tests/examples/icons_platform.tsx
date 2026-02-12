@@ -11,94 +11,93 @@ import ReportsToolkit from '@semcore/icon/platform/ReportsToolkit';
 import SEOToolkit from '@semcore/icon/platform/SEOToolkit';
 import SocialToolkit from '@semcore/icon/platform/SocialToolkit';
 import TrafficMarketToolkit from '@semcore/icon/platform/TrafficMarketToolkit';
-import { Flex } from '@semcore/ui/base-components';
-import { Hint } from '@semcore/ui/tooltip';
+import { Flex, Box } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {
   return (
     <>
       <Flex gap={7} direction='column' m={10}>
-        <Hint
+        <Box
           tag={HomePlatform}
           title='Home'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={SEOToolkit}
           title='SEO Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={AISEOToolkit}
           title='AI SEO Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={TrafficMarketToolkit}
           title='Market & Traffic Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={LocalToolkit}
           title='Local Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={SocialToolkit}
           title='Social Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={ContentToolkit}
           title='Content Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={AdsToolkit}
           title='Ads Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={ReportsToolkit}
           title='Reports Toolkit'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={AppCenter}
           title='App Center'
           color='icon-secondary-neutral'
         />
 
-        <Hint
+        <Box
           tag={AIToolkit}
           title='AI Toolkit'
           color='icon-secondary-neutral'
         />
 
         <Flex gap={4}>
-          <Hint
+          <Box
             tag={PRToolkit}
             title='PR Toolkit'
             color='icon-secondary-neutral'
           />
-          <Hint
+          <Box
             tag={PRToolkit}
             title='PR Toolkit'
             color='--intergalactic-sidebar-nav-control-icon-normal'
           />
         </Flex>
 
-        <Hint
+        <Box
           tag={EnterpriseSolutions}
 
           title='Enterprise Solutions'

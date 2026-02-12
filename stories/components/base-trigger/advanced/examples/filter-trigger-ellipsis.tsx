@@ -9,26 +9,22 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[FilterTrigger, 'h1']}>
-          <FilterTrigger.Text w={150} tag={[Text, 'h1']} size={400}>
-            <Ellipsis trim='middle'>Few tags tags</Ellipsis>
+          <FilterTrigger.Text w={150} tag='h1' size={400} ellipsis={{ cropPosition: 'middle' }}>
+            Few tags tags
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={FilterTrigger}>
-          <FilterTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
-            <Ellipsis trim='middle'>
-              This is first trigger with a very very long text!
-            </Ellipsis>
+          <FilterTrigger.Text w={150} size={400} data-test-id='ellipsis-middle' ellipsis={{ cropPosition: 'middle' }}>
+            This is first trigger with a very very long text!
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={FilterTrigger}>
-          <FilterTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis>
-              This is second trigger with a very very long text!
-            </Ellipsis>
+          <FilterTrigger.Text w={150} size={400} ellipsis={true}>
+            This is second trigger with a very very long text!
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -42,11 +38,10 @@ const Demo = () => {
       <br />
       <br />
       <FilterTrigger w={100} data-test-id='active-trigger'>
-        <Ellipsis>
+        <FilterTrigger.Text ellipsis={true}>
           This is third trigger with a very very long text!
-        </Ellipsis>
+        </FilterTrigger.Text>
       </FilterTrigger>
-
     </>
   );
 };
