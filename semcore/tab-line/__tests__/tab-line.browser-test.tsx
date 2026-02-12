@@ -137,6 +137,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
+        '@ellipsis',
+        '@hint',
         '@counter',
         '@badge'],
     }, async ({ page }) => {
