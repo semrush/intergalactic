@@ -202,4 +202,51 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify paragraph and list margins with formatTags', {
+    tag: [TAG.PRIORITY_HIGH, '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/tests/examples/paragraph-and-list-margins.tsx', 'en', { formatTags: true });
+
+    await test.step('Verify size=200 paragraph margins (should be 3x = 12px)', async () => {
+      // Size 200 paragraphs are the 5th and 6th p elements (indices 4, 5)
+      const size200P = page.locator('p').nth(4);
+      await expect(size200P).toHaveCSS('margin-bottom', '12px');
+    });
+
+    await test.step('Verify size=300 paragraph margins (should be 4x = 16px)', async () => {
+      // Size 300 paragraphs are the 7th and 8th p elements (indices 6, 7)
+      const size300P = page.locator('p').nth(6);
+      await expect(size300P).toHaveCSS('margin-bottom', '16px');
+    });
+
+    await test.step('Verify ul followed by p has matching margin (4x = 16px)', async () => {
+      // The second ul (index 1) is followed by a paragraph
+      const listFollowedByP = page.locator('ul').nth(1);
+      await expect(listFollowedByP).toHaveCSS('margin-bottom', '16px');
+    });
+
+    await test.step('Verify standalone ul has default margin (2x = 8px)', async () => {
+      // The first ul (index 0) is standalone
+      const standaloneList = page.locator('ul').first();
+      await expect(standaloneList).toHaveCSS('margin-bottom', '8px');
+    });
+  });
+
+  const formattedNestedListMargins = [
+    { formatTags: true },
+    { formatTags: false },
+  ];
+
+  formattedNestedListMargins.forEach((item) => {
+    test(`Verify formatted nested list margins with formatTags=${item.formatTags}`, {
+      tag: [TAG.PRIORITY_HIGH, '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/tests/examples/formatted-nested-list-margins.tsx', 'en', item);
+
+      await test.step('Verify formatted nested list margins visual', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
 });
