@@ -90,7 +90,7 @@ The testing setup includes:
 - `ResizeObserver` mock for components using resize detection
 - `matchMedia` mock for responsive components
 - `SVGElement.getBBox` mock for SVG-based components
-- Custom matchers from `@testing-library/jest-dom` (`toHaveStyle`, `toHaveFocus`, `toHaveAttribute`, `toBeInTheDocument`)
+- Custom matchers from `@testing-library/jest-dom`: `toHaveStyle`, `toHaveFocus`, `toHaveAttribute`, `toBeInTheDocument`
 
 Tests are located in `__tests__` directories within each component package (e.g., `semcore/button/__tests__/`).
 
