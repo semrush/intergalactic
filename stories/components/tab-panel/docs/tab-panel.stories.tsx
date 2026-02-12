@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AutomaticTabActivationExample from './examples/automatic_tab_activation';
 import DisabledTabPanelItemExample from './examples/disabled_tab_panel_item';
-import ManualTabActivationExample from './examples/manual_tab_activation';
 import TabPanelAddonsExample from './examples/tab_panel_item_addons';
 
 const meta: Meta<typeof TabPanel> = {
@@ -20,10 +19,6 @@ export const AutomaticTabActivation: Story = {
 
 export const DisabledTabPanelItem: Story = {
   render: DisabledTabPanelItemExample,
-};
-
-export const ManualTabActivation: Story = {
-  render: ManualTabActivationExample,
 };
 
 export const TabPanelAddons: Story = {

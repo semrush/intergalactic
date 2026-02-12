@@ -100,6 +100,15 @@ import Select from '@semcore/ui/select';
 <Select.Option.Checkbox />;
 ```
 
+## Select.Option.Text
+
+A styled [Text](/style/typography/typography#text-styling-and-colors) that looks like a checkbox.
+
+```jsx
+import Select from '@semcore/ui/select';
+<Select.Option.Text />;
+```
+
 <TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
 ## Deprecated

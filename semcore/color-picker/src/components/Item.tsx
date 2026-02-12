@@ -1,7 +1,6 @@
-import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, Hint } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import CloseM from '@semcore/icon/Close/m';
-import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
 type ItemAsProps = {
@@ -35,6 +34,8 @@ export function Item(props: ItemAsProps) {
   const SCloseIcon = Box;
   const deleteDescriber = `delete_${value}_${uid}`;
 
+  const triggerRef = React.useRef<HTMLElement | null>(null);
+
   const handleKeydown = React.useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'Backspace') {
       onRemove?.(event);
@@ -42,33 +43,38 @@ export function Item(props: ItemAsProps) {
   }, []);
 
   return sstyled(styles)(
-    <SItemContainer
-      render={Hint}
-      interaction={interaction}
-      selected={selected}
-      value={value}
-      displayLabel={displayLabel}
-      role='option'
-      aria-selected={selected}
-      title={value ?? getI18nText('clearColor')}
-      aria-describedby={editable ? deleteDescriber : undefined}
-      onKeyDown={handleKeydown}
-      __excludeProps={['title']}
-      timeout={[250, 50]}
-      tabIndex={0}
-    >
-      {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
-      <Children />
-      {editable && (
-        <>
-          <SCloseIcon tabIndex={-1} aria-hidden={true} onClick={onRemove}>
-            <CloseM color='icon-primary-neutral' width='10' height='10' />
-          </SCloseIcon>
-          <ScreenReaderOnly aria-hidden={true} id={deleteDescriber}>
-            {getI18nText('deleteColorDescriber')}
-          </ScreenReaderOnly>
-        </>
-      )}
-    </SItemContainer>,
+    <>
+      <SItemContainer
+        render={Box}
+        interaction={interaction}
+        selected={selected}
+        value={value}
+        displayLabel={displayLabel}
+        role='option'
+        aria-selected={selected}
+        ref={triggerRef}
+        aria-label={value ?? getI18nText('clearColor')}
+        aria-describedby={editable ? deleteDescriber : undefined}
+        onKeyDown={handleKeydown}
+        timeout={[250, 50]}
+        tabIndex={0}
+      >
+        {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
+        <Children />
+        {editable && (
+          <>
+            <SCloseIcon tabIndex={-1} aria-hidden={true} onClick={onRemove}>
+              <CloseM color='icon-primary-neutral' width='10' height='10' />
+            </SCloseIcon>
+            <ScreenReaderOnly aria-hidden={true} id={deleteDescriber}>
+              {getI18nText('deleteColorDescriber')}
+            </ScreenReaderOnly>
+          </>
+        )}
+      </SItemContainer>
+      <Hint triggerRef={triggerRef}>
+        {value ?? getI18nText('clearColor')}
+      </Hint>
+    </>,
   ) as React.ReactElement;
 }

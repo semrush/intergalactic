@@ -69,7 +69,7 @@ const Demo = (props: BaseExampleProps) => {
             readOnly={props.readOnly}
           />
           <Input.Addon>
-            <Badge bg='red-400'>alpha</Badge>
+            <Badge type='alpha' />
           </Input.Addon>
         </Input>
 
@@ -92,7 +92,7 @@ const Demo = (props: BaseExampleProps) => {
             readOnly={props.readOnly}
           />
           <Input.Addon>
-            <Badge bg='red-400'>alpha</Badge>
+            <Badge type='alpha' />
           </Input.Addon>
         </Input>
 

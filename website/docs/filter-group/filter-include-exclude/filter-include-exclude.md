@@ -100,7 +100,7 @@ For each error, be sure to show a tooltip with an explanation of what needs to b
 
 ![filter validation](static/many-errors.png)
 
-## Abbreviations and tooltips
+## Abbreviations
 
 If the names of filters "Include keywords" and "Exclude keywords" don’t fit completely, abbreviate them to "Include" and "Exclude", respectively.
 

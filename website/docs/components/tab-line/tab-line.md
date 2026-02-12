@@ -71,7 +71,7 @@ Table: Examples of addons for TabLine
 **Note the following:**
 
 - Avoid placing a single icon without accompanying text inside `TabLine.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/tab-line#usage-in-ux-ui)).
-- A flag and an icon cannot be placed together in a tab.
+- A flag and an icon can't be placed together in a tab.
 - If both a [Badge](/components/badge/badge) and a [Counter](/components/counter/counter) are present inside the tab, the Badge should be placed after the Counter.
 
 ![](static/monster.png)
@@ -98,21 +98,19 @@ When switching between active tabs, the border-bottom moves with an `ease` trans
 TabLine is always placed under the [ProductHead](/components/product-head/product-head) of the report, following the title, additional controls, and filters that affect the entire report.
 
 - The margin between ProductHead content and TabLine is always 24px.
+<!-- vale DevDocs.Inclusive = NO -->
 - The margin between TabLine and the title/widget below is always 16px.
+<!-- vale DevDocs.Inclusive = YES -->
 
 ![](static/tabs-margins.png)
 
 ## Usage in UX/UI
 
-In cases where you have many tabs or there isn't enough space for the full tab text, collapse the text using an `ellipsis`.
-
-::: tip
-Make sure to add a tooltip with the full text message to such collapsed tabs.
-:::
+When there's not enough space to show the full tab text, it's truncated with [ellipsis](../../utils/ellipsis/ellipsis), showing a [hint](../../utils/hint/hint) on hover.
 
 ![](static/ellipsis.png)
 
-Additionally, you can collapse the last tabs into a tab with an `Ellipsis` icon. By clicking on the last tab with an `Ellipsis` icon, open dropdown with a list of items that did not fit. The selected item from this list is then placed before the tab with the `Ellipsis` icon.
+Additionally, you can collapse the last tabs into a tab with an `Ellipsis` icon. By clicking on the last tab with an `Ellipsis` icon, open dropdown with a list of items that didn't fit. The selected item from this list is then placed before the tab with the `Ellipsis` icon.
 
 ![](static/tabline-collapse.png)
 
