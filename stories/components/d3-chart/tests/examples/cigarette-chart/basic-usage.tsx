@@ -28,6 +28,7 @@ export const defaultProps = getChartProps<CigaretteChartProps>({
   showLegend: true,
   invertAxis: true,
   showPercentValueInTooltip: true,
+  minimalBarWidth: 2,
 });
 
 Demo.defaultProps = defaultProps;

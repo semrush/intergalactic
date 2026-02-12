@@ -201,6 +201,41 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(item).toHaveAttribute('direction', 'horizontal');
       }
     });
+
+    await test.step('Verify minimal bar width for small values', async () => {
+      const data = {
+        Cats: 3524,
+        Dogs: 1,
+        Capybaras: 6135,
+        Hamsters: 1,
+        Birds: 1823,
+      };
+      const minimalBarWidth = 8;
+      const smallItemKeys = ['Dogs', 'Hamsters'];
+
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        {
+          data,
+          minimalBarWidth,
+        },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      const items = await locators.barItem(page).all();
+
+      for (const item of items) {
+        const itemTextContent = await item.textContent();
+
+        if (!itemTextContent) continue;
+
+        if (smallItemKeys.includes(itemTextContent)) {
+          await expect(item).toHaveAttribute('width', `${minimalBarWidth}`);
+        }
+      }
+    });
   });
 
   test('Verify onClick callback', {

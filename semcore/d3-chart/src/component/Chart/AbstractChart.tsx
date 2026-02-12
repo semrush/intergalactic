@@ -32,7 +32,7 @@ export abstract class AbstractChart<
   Props extends BaseChartProps<Data>,
   Enhancers extends readonly ((...args: any[]) => any)[] = [],
   State extends ChartState = ChartState,
-  DefaultProps extends Props = never,
+  DefaultProps = {},
 > extends Component<Props, {}, State, Enhancers, DefaultProps> {
   public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
