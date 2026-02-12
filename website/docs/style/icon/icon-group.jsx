@@ -24,7 +24,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
   const getImportText = React.useCallback(() => {
-    const lib = '@semcore/ui';
+    const lib = '@semcore';
     const haveSizeIcon = iconData.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
