@@ -29,6 +29,8 @@ class TabPanelRoot extends Component {
 
   static enhance = [a11yEnhance(optionsA11yEnhance)];
 
+  buttonRefsList = [];
+
   uncontrolledProps() {
     return {
       value: null,
@@ -46,7 +48,7 @@ class TabPanelRoot extends Component {
     }
   };
 
-  getItemProps(props, _index) {
+  getItemProps(props, index) {
     const { value } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -55,6 +57,15 @@ class TabPanelRoot extends Component {
       'onKeyDown': this.handleKeyDown(props.value),
       'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
+      'buttonRefsList': this.buttonRefsList,
+      index,
+    };
+  }
+
+  getItemTextProps(_, index) {
+    return {
+      buttonRefsList: this.buttonRefsList,
+      index,
     };
   }
 
@@ -68,10 +79,13 @@ class TabPanelRoot extends Component {
 
 function TabPanelItem(props) {
   const STabPanelItem = Root;
-  const { Children, styles, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight, buttonRefsList, index } = props;
+  const buttonRef = React.useRef();
+
+  buttonRefsList[index] = buttonRef;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab'>
+    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab' ref={buttonRef}>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
@@ -81,8 +95,8 @@ function TabPanelItem(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles, ellipsis = true } = props;
-  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium />);
+  const { styles, ellipsis = true, buttonRefsList, index, hintProps = {} } = props;
+  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium use:hintProps={{ triggerRef: buttonRefsList[index], ...hintProps }} />);
 }
 
 function Addon(props) {

@@ -16,27 +16,18 @@ type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps & {
 const Demo = (props: TabLineDefProps) => {
   const [value, setValue] = React.useState<string | number | boolean>(2);
 
-  const fbRef = React.useRef<HTMLDivElement>(null);
-  const igRef = React.useRef<HTMLDivElement>(null);
-  const twRef = React.useRef<HTMLDivElement>(null);
-  const tw3Ref = React.useRef<HTMLDivElement>(null);
-  const tw2Ref = React.useRef<HTMLDivElement>(null);
-  const tw4Ref = React.useRef<HTMLDivElement>(null);
-
   return (
     <>
       <TabLine
-
         size={props.size}
         underlined={props.underlined}
-        behavior={props.behavior}
+        behavior='manual'
         value={value}
         onChange={(val: string | number | boolean) => setValue(val)}
         aria-label='Social network reports'
       >
         <TabLine.Item
           w={props.w}
-          ref={fbRef}
           value='facebook'
           selected={props.selected}
           disabled={props.disabled}
@@ -44,14 +35,13 @@ const Demo = (props: TabLineDefProps) => {
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
           id='tab-label-fb'
         >
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: fbRef, placement: 'right' } }}>Facebook</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { placement: 'right' } }}>Facebook</TabLine.Item.Text>
           <TabLine.Item.Addon>
             <FacebookM />
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item
           w={props.w}
-          ref={igRef}
           value={2}
           disabled={props.disabled}
           aria-controls={value === 2 ? 'tab-panel-ig' : undefined}
@@ -60,14 +50,13 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <InstagramM />
           </TabLine.Item.Addon>
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: igRef } }}>Instagram Instagram</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Instagram Instagram</TabLine.Item.Text>
           <TabLine.Item.Addon>
             <Badge type='new'>new</Badge>
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item
           w={props.w}
-          ref={twRef}
           value={true}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
@@ -76,7 +65,7 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <TwitterM />
           </TabLine.Item.Addon>
-          <TabLine.Item.Text w={props.w} {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: twRef } }}>Twitter Twitter</TabLine.Item.Text>
+          <TabLine.Item.Text w={props.w} {...{ ellipsis: props.ellipsis }}>Twitter Twitter</TabLine.Item.Text>
           <TabLine.Item.Addon>
             <Text>1</Text>
           </TabLine.Item.Addon>
@@ -84,21 +73,17 @@ const Demo = (props: TabLineDefProps) => {
 
         <TabLine.Item
           w={props.w}
-          ref={tw3Ref}
           value={3}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw3' : undefined}
           id='tab-label-tw3'
           addonRight={TwitterM}
         >
-
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: tw3Ref } }}>Twitter3</TabLine.Item.Text>
-
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter3</TabLine.Item.Text>
         </TabLine.Item>
 
         <TabLine.Item
           w={props.w}
-          ref={tw2Ref}
           value={false}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
@@ -107,21 +92,18 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <Counter>32</Counter>
           </TabLine.Item.Addon>
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: tw2Ref } }}>Twitter2</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter2</TabLine.Item.Text>
 
         </TabLine.Item>
 
         <TabLine.Item
           w={props.w}
-          ref={tw4Ref}
           value={4}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
           id='tab-label-tw2'
         >
-
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { triggerRef: tw4Ref } }}>Twitter4 Twitter4</TabLine.Item.Text>
-
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter4 Twitter4</TabLine.Item.Text>
         </TabLine.Item>
       </TabLine>
 
