@@ -181,7 +181,7 @@ jobs:
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
         with:
-          files: 'README.md,CONTRIBUTING.md,semcore/*/README.md,semcore/*/CHANGELOG.md,website/docs'
+          files: '["README.md", "CONTRIBUTING.md", "semcore/*/README.md", "semcore/*/CHANGELOG.md", "website/docs"]'
   unit-tests:
     runs-on: ubuntu-latest
     needs: [build, defineChangedComponents]
