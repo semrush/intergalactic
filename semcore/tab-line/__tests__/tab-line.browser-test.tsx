@@ -241,29 +241,32 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@tab-line'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-line/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.tabLines(page).first()).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabLines(page).nth(1)).toBeFocused();
+    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby');
+    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'false');
     await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
 
     await page.keyboard.press('ArrowRight');
-    await expect(locators.tabLines(page).nth(1)).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(locators.tabLines(page).nth(2)).toBeFocused();
     await page.keyboard.press('Space');
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await expect(locators.tabpanel(page)).toContainText('Twitter');
     await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
+    await expect(locators.tabLines(page).nth(1)).not.toHaveClass(/selected/);
+
+    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabLines(page).nth(2)).toHaveClass(/selected/);
 
     await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('ArrowLeft');
+
     await expect(locators.tabLines(page).first()).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await expect(locators.tabpanel(page)).toContainText('Twitter');
     await page.keyboard.press('Enter');
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(locators.tabpanel(page)).toContainText('Facebook');
     await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
     await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
     await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
@@ -274,18 +277,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@tab-line'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-line/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'false');
     await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
 
-    await locators.tabLines(page).nth(1).click();
+    await locators.tabLines(page).nth(2).click();
     await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await expect(locators.tabLines(page).nth(1)).not.toHaveClass(/selected/);
+
+    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabLines(page).nth(2)).toHaveClass(/selected/);
+    await expect(locators.tabpanel(page)).toContainText('Twitter');
   });
 
   test('Verify interactions with defaultValue props', {

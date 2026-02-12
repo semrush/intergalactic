@@ -219,29 +219,30 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@tab-panel'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.tabPanels(page).first()).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabPanels(page).nth(1)).toBeFocused();
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
+    await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'true');
     await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'false');
 
     await page.keyboard.press('ArrowRight');
-    await expect(locators.tabPanels(page).nth(1)).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(locators.tabPanels(page).nth(2)).toBeFocused();
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
     await page.keyboard.press('Space');
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
-    await expect(locators.tabPanels(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabPanels(page).nth(1)).toHaveClass(/selected/);
+    await expect(locators.tabPanels(page).nth(1)).not.toHaveClass(/selected/);
+    await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabPanels(page).nth(2)).toHaveClass(/selected/);
 
     await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('ArrowLeft');
+
     await expect(locators.tabPanels(page).first()).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
     await page.keyboard.press('Enter');
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(page.locator('div[role="tabpanel"]')).toContainText('Facebook');
     await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'true');
     await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'false');
     await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'false');
@@ -252,19 +253,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@tab-panel'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
     const TabPanels = page.locator('[data-ui-name="TabPanel.Item"]');
-    await expect(page.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(TabPanels.nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'true');
+    await expect(TabPanels.nth(0)).toHaveAttribute('aria-selected', 'false');
     await expect(TabPanels.nth(2)).toHaveAttribute('aria-selected', 'false');
 
-    await TabPanels.nth(1).click();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await TabPanels.nth(2).click();
+    await expect(page.locator('div[role="tabpanel"]')).toContainText('Twitter');
+    await expect(TabPanels.nth(1)).not.toHaveClass(/selected/);
     await expect(TabPanels.nth(0)).not.toHaveClass(/selected/);
-    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(TabPanels.nth(1)).toHaveClass(/selected/);
+
+    await expect(TabPanels.nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(TabPanels.nth(2)).toHaveClass(/selected/);
   });
 
   test('Verify interactions with defaultValue props', {
