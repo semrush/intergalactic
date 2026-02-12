@@ -186,7 +186,7 @@ jobs:
           FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | xargs)
           echo "changed_files=$FILES" >> $GITHUB_OUTPUT
       - uses: errata-ai/vale-action@reviewdog
-        id: steps.changed-files.outputs.changed_files != ''
+        id: ${{ steps.changed-files.outputs.changed_files != '' }}
         name: Run Vale
         with:
           files: ${{ steps.changed-files.outputs.changed_files }};
