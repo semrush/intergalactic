@@ -4,6 +4,7 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
+import { Text as TextKit } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/link-trigger.shadow.css';
@@ -17,11 +18,14 @@ class RootLinkTrigger extends Component {
 
   static enhance = [resolveColorEnhance()];
 
+  triggerRef = React.createRef();
+
   getTextProps() {
     const { placeholder, empty } = this.asProps;
     return {
       placeholder,
       empty,
+      triggerRef: this.triggerRef,
     };
   }
 
@@ -38,6 +42,7 @@ class RootLinkTrigger extends Component {
         tag='button'
         type='button'
         tabIndex={loading ? -1 : 0}
+        ref={this.triggerRef}
         use:color={color}
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
@@ -51,13 +56,25 @@ class RootLinkTrigger extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { children, styles, empty, placeholder } = props;
+  const textRef = React.useRef();
+  const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
+  const content = empty ? placeholder : children;
 
   return sstyled(styles)(
-    /* "use:" prefix was used for backward compatibility (by lsroman) */
-    <SText render={Box} display-placeholder={empty}>
-      {empty ? placeholder : children}
-    </SText>,
+    <>
+      <SText
+        render={TextKit}
+        display-placeholder={empty}
+        ref={textRef}
+        ellipsis={ellipsis}
+        hintProps={{
+          ...hintProps,
+          triggerRef,
+        }}
+      >
+        {content}
+      </SText>
+    </>,
   );
 }
 

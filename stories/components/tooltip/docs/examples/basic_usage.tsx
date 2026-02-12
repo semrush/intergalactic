@@ -26,16 +26,7 @@ const Demo = () => (
         addonLeft={FileExportM}
       />
     </Flex>
-    <Flex gap={4} alignItems='center'>
-      Hint:
-      <Hint title='Export to PDF' tag={Button} addonLeft={FileExportM} />
-      <Hint
-        title='You confirmed your email'
-        aria-hidden={false}
-        tag={CheckAltM}
-        color='var(--intergalactic-icon-primary-success)'
-      />
-    </Flex>
+
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>

@@ -1,30 +1,39 @@
-type DefaultEmit = (eventName: string, ...args: any[]) => void;
-type DefaultSubscribe = (eventName: string, fn: any) => () => void;
+type Events = Record<string, (...args: any[]) => void>;
+type Cleanup = () => void;
 
-export default class EventEmitter<Emit = DefaultEmit, Subscribe = DefaultSubscribe> {
-  private events: any = {};
-  constructor() {
-    this.emit = ((eventName: string, ...args: any[]) => {
-      const event = this.events[eventName];
-      if (event) {
-        event.forEach((fn: any) => {
-          fn.call(null, ...args);
-        });
-      }
-    }) as any;
-    this.subscribe = ((eventName: string, fn: any) => {
-      if (!this.events[eventName]) {
-        this.events[eventName] = [];
-      }
+export default class EventEmitter<E extends Events, K extends keyof E = keyof E, H extends E[K] = E[K]> {
+  private events = new Map<K, Set<H>>();
 
-      this.events[eventName].push(fn);
-      return () => {
-        this.events[eventName] = this.events[eventName].filter((eventFn: any) => fn !== eventFn);
-      };
-    }) as any;
+  public on(eventName: K, fn: H): Cleanup {
+    const handlers = this.events.get(eventName) ?? new Set<H>();
+
+    handlers.add(fn);
+
+    this.events.set(eventName, handlers);
+
+    return () => {
+      this.off(eventName, fn);
+    };
   }
 
-  emit: Emit;
+  public off(eventName: K, fn: H): void {
+    this.events.get(eventName)?.delete(fn);
+  }
 
-  subscribe: Subscribe;
+  public emit(eventName: K, ...args: Parameters<H>) {
+    const handlers = this.events.get(eventName);
+
+    if (handlers) {
+      for (const handler of handlers) {
+        handler.call(null, ...args);
+      }
+    }
+  }
+
+  /**
+   * @deprecated. Fallback to the `on` method for backward compatibility.
+   */
+  public subscribe(eventName: K, fn: H): Cleanup {
+    return this.on(eventName, fn);
+  }
 }

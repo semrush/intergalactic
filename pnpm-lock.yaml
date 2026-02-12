@@ -384,6 +384,9 @@ importers:
 
   semcore/base-components:
     dependencies:
+      '@floating-ui/dom':
+        specifier: 1.7.2
+        version: 1.7.2
       '@popperjs/core':
         specifier: 2.11.5
         version: 2.11.5
@@ -418,6 +421,9 @@ importers:
       '@semcore/tooltip':
         specifier: 16.0.11
         version: link:../tooltip
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -433,6 +439,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/breadcrumbs:
+    dependencies:
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -486,9 +496,6 @@ importers:
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -538,7 +545,7 @@ importers:
         version: link:../button
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -583,9 +590,6 @@ importers:
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1073,7 +1077,7 @@ importers:
         version: link:../link
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
       '@semcore/notice':
         specifier: 16.1.12
         version: link:../notice
@@ -1153,7 +1157,7 @@ importers:
         version: link:../button
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -1393,8 +1397,8 @@ importers:
         specifier: 16.0.11
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.1
-        version: 16.3.1(@semcore/base-components@semcore+base-components)
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1501,9 +1505,6 @@ importers:
       '@semcore/link':
         specifier: 16.0.11
         version: link:../link
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -1602,6 +1603,9 @@ importers:
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -1618,9 +1622,6 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
-      '@semcore/typography':
-        specifier: workspace:*
-        version: link:../typography
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -1734,6 +1735,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-line:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1746,6 +1751,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tab-panel:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1761,6 +1770,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/tag:
+    dependencies:
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1890,13 +1903,13 @@ importers:
         specifier: ^16.0.11
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^16.4.2
+        specifier: ^16.5.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.1
+        specifier: ^16.5.3
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: ^16.2.3
+        specifier: ^16.2.4
         version: link:../date-picker
       '@semcore/divider':
         specifier: ^16.0.11
@@ -1911,7 +1924,7 @@ importers:
         specifier: ^16.1.4
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^16.2.1
+        specifier: ^16.2.2
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: ^16.0.12
@@ -1920,13 +1933,13 @@ importers:
         specifier: ^16.1.7
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^16.2.2
+        specifier: ^16.3.0
         version: link:../feature-highlight
       '@semcore/feature-popover':
         specifier: ^16.2.5
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^16.1.12
+        specifier: ^16.2.0
         version: link:../feedback-form
       '@semcore/flags':
         specifier: ^16.1.8
@@ -1968,13 +1981,13 @@ importers:
         specifier: ^16.1.1
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: ^16.1.12
+        specifier: ^16.1.13
         version: link:../modal
       '@semcore/notice':
         specifier: ^16.1.12
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../notice-bubble
       '@semcore/pagination':
         specifier: ^16.1.12
@@ -2094,7 +2107,7 @@ importers:
         version: link:../button
       '@semcore/modal':
         specifier: 16.1.12
-        version: link:../modal
+        version: 16.1.12(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -4169,6 +4182,15 @@ packages:
     resolution: {integrity: sha512-OEl393iCOoo/z8bMezRlJu+GlRGlsKbUAN7jKB6LhnKoqKve5DXRpalbItIIcwnCjs1k/FOPjFzcA6Qn+H+YbA==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
+  '@floating-ui/core@1.7.4':
+    resolution: {integrity: sha512-C3HlIdsBxszvm5McXlB8PeOEWfBhcGBTZGkGlWc2U0KFY5IwG5OQEuQ8rq52DZmcHDlPLd+YFBK+cZcytwIFWg==}
+
+  '@floating-ui/dom@1.7.2':
+    resolution: {integrity: sha512-7cfaOQuCS27HD7DX+6ib2OrnW+b4ZBwDNnCcT0uTyidcmyWb03FnQqJybDBoCnpdxwBSfA94UAYlRCt7mV+TbA==}
+
+  '@floating-ui/utils@0.2.10':
+    resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
   '@formatjs/ecma402-abstract@1.11.7':
     resolution: {integrity: sha512-uNaok4XWMJBtPZk/veTDamFCm5HeWJUk2jwoVfH5/+wenQ60QHjH6T3UQ0GOOCz9jpKmed7vqOri7xSf//Dt7g==}
 
@@ -4954,6 +4976,11 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
+  '@semcore/modal@16.1.12':
+    resolution: {integrity: sha512-kjer8Omtdx7foRKfkeq7mzjQjlp7X3GwKkyXztOgaX3rzGSgpizmvypFnFbQX1mIGsK8lpfaUTrUbbBVhEnGwQ==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
   '@semcore/neighbor-location@16.0.11':
     resolution: {integrity: sha512-uDZ+0xxJZ3ap49/CL+KVG31gqNPXhE7Ft634lDuc3XG/G1aCw7sdL1zalU079ex6qfbgbfICCdv7TKOPpK80Qw==}
     peerDependencies:
@@ -4966,6 +4993,11 @@ packages:
 
   '@semcore/notice-global@16.1.12':
     resolution: {integrity: sha512-8d5IEtJJsf2wdeHlh5+kGtSTrAqdwQKZciO+Q/Giq3UJVjJdBGmlizN670lEd3N57hD9jemzvLO48kEY7YZvdA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/outside-click@16.0.11':
+    resolution: {integrity: sha512-fW4clx8uIEgOpMvGjVrKZnu9gTwmgKufM/MV9zr7l0IXNgSxEXo63VMzooO6O5YqN47q9BsA0yzXy1P2PvgDow==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -15909,6 +15941,17 @@ snapshots:
 
   '@faker-js/faker@9.9.0': {}
 
+  '@floating-ui/core@1.7.4':
+    dependencies:
+      '@floating-ui/utils': 0.2.10
+
+  '@floating-ui/dom@1.7.2':
+    dependencies:
+      '@floating-ui/core': 1.7.4
+      '@floating-ui/utils': 0.2.10
+
+  '@floating-ui/utils@0.2.10': {}
+
   '@formatjs/ecma402-abstract@1.11.7':
     dependencies:
       '@formatjs/intl-localematcher': 0.2.28
@@ -17084,6 +17127,17 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       classnames: 2.2.6
 
+  '@semcore/modal@16.1.12(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
+      '@semcore/base-components': link:semcore/base-components
+      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
+      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
+      '@semcore/outside-click': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
+      '@semcore/typography': 16.3.2(@semcore/base-components@semcore+base-components)
+
   '@semcore/neighbor-location@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -17104,6 +17158,10 @@ snapshots:
       '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
+
+  '@semcore/outside-click@16.0.11(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/base-components': link:semcore/base-components
 
   '@semcore/popper@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:

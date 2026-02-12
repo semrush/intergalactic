@@ -24,7 +24,9 @@ import type {
   FeedbackRatingCheckboxProps,
   FeedbackRatingItemProps,
   FeedbackRatingProps,
-  FormConfigItem } from './FeedbackRating.type';
+  FormConfigItem,
+  FeedbackRatingDefaultProps,
+} from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
@@ -39,8 +41,8 @@ type State = {
 class FeedbackRatingRoot extends Component<
   FeedbackRatingProps,
   typeof FeedbackRatingRoot.enhance,
-  typeof FeedbackRatingRoot.defaultProps,
   {},
+  FeedbackRatingDefaultProps,
   State
 > {
   static displayName = 'FeedbackRatingForm';
@@ -48,7 +50,7 @@ class FeedbackRatingRoot extends Component<
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  static defaultProps = {
+  static defaultProps: FeedbackRatingDefaultProps = {
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',

@@ -3,7 +3,6 @@ import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -171,9 +170,9 @@ const Demo = () => {
         if (props.columnName === 'vol') {
           return (
             <>
-              <Ellipsis trim='middle'>
+              <Text ellipsis={{ cropPosition: 'middle' }}>
                 {props.value}
-              </Ellipsis>
+              </Text>
             </>
           );
         }

@@ -9,6 +9,7 @@ import logger from '@semcore/core/lib/utils/logger';
 import Divider from '@semcore/divider';
 import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import DropdownMenu from '@semcore/dropdown-menu';
+import { Text } from '@semcore/typography';
 import cn from 'classnames';
 import React from 'react';
 
@@ -388,14 +389,21 @@ function Menu(props) {
 const optionPropsContext = React.createContext({});
 function Option(props) {
   const SSelectOption = Root;
-  const { styles, Children } = props;
+  const { styles, Children, highlighted } = props;
+  const itemRef = React.useRef(null);
 
   const hasCheckbox = isAdvanceMode(Children, [Select.Option.Checkbox.displayName]);
   const hasContent = isAdvanceMode(Children, [Select.Option.Content.displayName]);
 
+  const optionPropsContextValue = {
+    ...props,
+    itemRef,
+    highlighted,
+  };
+
   return sstyled(styles)(
-    <SSelectOption render={Dropdown.Item}>
-      <optionPropsContext.Provider value={props}>
+    <SSelectOption render={Dropdown.Item} ref={itemRef}>
+      <optionPropsContext.Provider value={optionPropsContextValue}>
         {hasCheckbox && !hasContent
           ? (
               <Select.Option.Content>
@@ -442,6 +450,34 @@ function Checkbox(providedProps) {
   );
 }
 
+function OptionText(providedProps) {
+  const optionProps = React.useContext(optionPropsContext);
+  const selectedIndex = React.useContext(selectedIndexContext);
+  const props = React.useMemo(
+    () => ({
+      key: optionProps?.id,
+      selected: optionProps?.selected,
+      disabled: optionProps?.disabled,
+      size: optionProps?.size,
+      hintProps: optionProps?.hintProps ?? {},
+      ...(providedProps || {}),
+    }),
+    [providedProps, optionProps],
+  );
+
+  if (optionProps.itemRef) {
+    props.hintProps.triggerRef = optionProps.itemRef;
+  }
+
+  props.hintProps.visible = selectedIndex === optionProps.index;
+
+  return sstyled(props.styles)(
+    <Text
+      {...props}
+    />,
+  );
+}
+
 const InputSearchWrapper = function () {
   return <Root render={InputSearch} />;
 };
@@ -464,6 +500,7 @@ const Select = createComponent(
       {
         Addon: DropdownMenu.Item.Addon,
         Content: DropdownMenu.Item.Content,
+        Text: OptionText,
         Hint: DropdownMenu.Item.Hint,
         Checkbox,
       },

@@ -2,6 +2,7 @@ import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components'
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { CounterProps } from '@semcore/counter';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type BaseTriggerProps = BoxProps &
@@ -68,7 +69,7 @@ export type FilterTriggerCounterProps = {
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
-  Text: typeof Box;
+  Text: typeof Text;
   Addon: typeof Box;
 };
 
