@@ -78,7 +78,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify cursor anchoring', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/hint/docs/examples/cursor_anchoring.tsx', 'en');
+    await loadPage(page, 'stories/components/base-components/hint/tests/examples/cursor_anchoring.tsx', 'en');
 
     await test.step('Hover link and verify hint follows cursor', async () => {
       const link = page.getByRole('link').first();

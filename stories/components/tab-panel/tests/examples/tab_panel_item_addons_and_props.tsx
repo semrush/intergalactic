@@ -27,7 +27,6 @@ const Demo = (props: TabPanelDefProps) => {
         <TabPanel.Item
           w={props.w}
           value='facebook'
-          selected={props.selected}
           disabled={props.disabled}
           addonLeft={FacebookM}
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
@@ -56,6 +55,7 @@ const Demo = (props: TabPanelDefProps) => {
           w={props.w}
           value={true}
           disabled={props.disabled}
+          selected={props.selected}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
           id='tab-label-tw'
         >

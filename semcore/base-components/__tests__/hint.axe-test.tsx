@@ -32,22 +32,6 @@ test.describe(`@hint ${TAG.ACCESSIBILITY}`, () => {
     }
   });
 
-  test('Cursor anchoring', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/hint/docs/examples/cursor_anchoring.tsx', 'en');
-
-    {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
-
-    {
-      await page.getByRole('link').hover();
-      await locators.hint(page).waitFor({ state: 'visible' });
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
-  });
-
   test('Placement', async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/placement.tsx', 'en');
 
