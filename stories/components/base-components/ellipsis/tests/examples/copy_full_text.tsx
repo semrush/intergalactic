@@ -53,7 +53,7 @@ const Demo = () => {
       </Flex>
 
       {/* Example 2: Middle crop */}
-      <Box>
+      <Flex direction='row' gap={4}>
         <Text size={200} mb={1} mr={2} bold>
           Example 2: Middle crop
         </Text>
@@ -63,26 +63,25 @@ const Demo = () => {
         <Text size={100} color='text-secondary' mt={1}>
           With middle crop, full text is also available via aria-label
         </Text>
-      </Box>
+      </Flex>
 
       {/* Example 3: Very long text */}
-      <Box>
+      <Flex direction='row' gap={4} alignItems='center'>
         <Text size={200} mb={1} mr={2} bold>
           Example 3: Very long URL
         </Text>
         <Link
-          w={250}
 
           tag='code'
           style={{ fontFamily: 'monospace' }}
         >
-          <Link.Text ellipsis={{ cropPosition: 'middle' }}>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
+          <Link.Text w={250} ellipsis={{ cropPosition: 'middle' }}>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
 
         </Link>
         <Text size={100} color='text-secondary' mt={1}>
           Perfect for copying long URLs or file paths
         </Text>
-      </Box>
+      </Flex>
 
       {/* Copied text display */}
       {showNotice && copiedText && (
