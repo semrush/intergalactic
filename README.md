@@ -92,7 +92,7 @@ The testing setup includes:
 - `SVGElement.getBBox` mock for SVG-based components
 - Custom matchers from `@testing-library/jest-dom`: `toHaveStyle`, `toHaveFocus`, `toHaveAttribute`, `toBeInTheDocument`
 
-Tests are located in `__tests__` directories within each component package (e.g., `semcore/button/__tests__/`).
+Tests are located in `__tests__` directories within each component package, for example: `semcore/button/__tests__/`.
 
 ### How to contribute to the project
 
