@@ -94,13 +94,14 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 100, ellipsis: { cropPosition: 'end' }, desc: 'cropPosition:end' },
-    { w: 100, desc: 'default' },
-    { w: 100, ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'auto', desc: 'default' },
+    { w: 100, behavior: 'auto', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'manual', desc: 'default' },
+    { w: 100, behavior: 'manual', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
 
   ];
   variablesEllipsis.forEach((item) => {
-    test(`Verify ellipsis in Tab Panel ellipsis = ${item.desc} styles`, {
+    test(`Verify ellipsis in Tab Panel ellipsis = ${item.desc} behavior = ${item.behavior} styles`, {
 
       tag: [TAG.PRIORITY_HIGH,
         '@tab-panel',

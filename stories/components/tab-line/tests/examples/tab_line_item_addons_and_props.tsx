@@ -21,7 +21,7 @@ const Demo = (props: TabLineDefProps) => {
       <TabLine
         size={props.size}
         underlined={props.underlined}
-        behavior='manual'
+        behavior={props.behavior}
         value={value}
         onChange={(val: string | number | boolean) => setValue(val)}
         aria-label='Social network reports'
