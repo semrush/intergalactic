@@ -1,4 +1,4 @@
-import MailSent from '@semcore/ui/illustration/MailSent';
+import MailSent from '@semcore/illustration/MailSent';
 import React from 'react';
 
 const Demo = () => {
