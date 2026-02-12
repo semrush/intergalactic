@@ -18,6 +18,7 @@
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "paths": {
       "@semcore/illustration/*": ["illustration/lib/*"],
+      "@semcore/illustration": ["illustration"],
       "@semcore/icon/*": ["icon/lib/*"],
       "@semcore/ui/d3-chart": ["d3-chart"],
       "@semcore/ui/core/lib/*": ["core/src/*"],
