@@ -179,17 +179,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Get changed files list
         id: changed-files
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD^1 | xargs)
-          MD_FILES=$(echo $CHANGED_FILES | grep "\.md$")
-          echo "changed_files=$MD_FILES" >> $GITHUB_OUTPUT
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | xargs)
+          echo "changed_files=$FILES" >> $GITHUB_OUTPUT
       - uses: errata-ai/vale-action@reviewdog
+        if: ${{ steps.changed-files.outputs.changed_files != '' }}
         name: Run Vale
         with:
-          files: ${{ steps.changed-files.outputs.changed_files }};
+          files: ${{ steps.changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest
     needs: [build, defineChangedComponents]

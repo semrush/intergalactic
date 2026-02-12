@@ -44,7 +44,7 @@ const Demo = () => (
       <Text size={200} tag='p' mb={3} mt={0}>
         Paragraph, 14px, --fs-200
       </Text>
-      <Text tag='p' mb={2} mt={10}>
+      <Text tag='p' mb={3} mt={10}>
         Paragraph example, 16px, --fs-300
       </Text>
       <Text size={200} tag='p' mb={3} mt={0}>
