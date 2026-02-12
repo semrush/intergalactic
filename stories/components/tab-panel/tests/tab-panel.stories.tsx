@@ -17,9 +17,6 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
     disabled: {
       control: { type: 'boolean' },
     },
-    selected: {
-      control: { type: 'boolean' },
-    },
     behavior: {
       control: { type: 'select' },
       options: ['auto', 'manual'],

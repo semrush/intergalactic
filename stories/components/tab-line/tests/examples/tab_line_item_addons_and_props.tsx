@@ -57,7 +57,6 @@ const Demo = (props: TabLineDefProps) => {
         <TabLine.Item
           w={props.w}
           value={true}
-          selected={props.selected}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
           id='tab-label-tw'

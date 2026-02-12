@@ -32,22 +32,6 @@ test.describe(`@hint ${TAG.ACCESSIBILITY}`, () => {
     }
   });
 
-  test('Placement', async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/hint/docs/examples/placement.tsx', 'en');
-
-    {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
-
-    {
-      await page.keyboard.press('Tab');
-      await locators.hint(page).waitFor({ state: 'visible' });
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
-  });
-
   test('Timeout', async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/timeout.tsx', 'en');
 

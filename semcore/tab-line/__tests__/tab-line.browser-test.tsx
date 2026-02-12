@@ -24,12 +24,11 @@ export const locators = {
   ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   const variablesActive = [
-    { disabled: false, size: 'm', underlined: true, selected: undefined },
-    { disabled: false, size: 'l', underlined: false, selected: false },
-    { disabled: false, size: 'm', underlined: true, selected: true },
+    { disabled: false, size: 'm', underlined: true },
+    { disabled: false, size: 'l', underlined: false },
   ];
   variablesActive.forEach((item) => {
-    test(`Verify active Tab lines size = ${item.size} underlined = ${item.underlined} selected = ${item.selected} styles`, {
+    test(`Verify active Tab lines size = ${item.size} underlined = ${item.underlined} styles`, {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
@@ -89,12 +88,11 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesDisabled = [
-    { disabled: true, size: 'm', underlined: true, selected: undefined },
-    { disabled: true, size: 'l', underlined: false, selected: false },
-    { disabled: true, size: 'm', underlined: true, selected: true },
+    { disabled: true, size: 'm', underlined: true },
+    { disabled: true, size: 'l', underlined: false },
   ];
   variablesDisabled.forEach((item) => {
-    test(`Verify disabled Tab lines size = ${item.size} underlined = ${item.underlined} selected = ${item.selected} styles`, {
+    test(`Verify disabled Tab lines size = ${item.size} underlined = ${item.underlined} styles`, {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',

@@ -55,7 +55,6 @@ const Demo = (props: TabPanelDefProps) => {
           w={props.w}
           value={true}
           disabled={props.disabled}
-          selected={props.selected}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
           id='tab-label-tw'
         >

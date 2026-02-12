@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './__tests__/hoverbtn.test';
 import { Link } from './__tests__/hoverlink.test';
 import BasicUsageExample from './examples/basic-usage';
-import PlacementExample from './examples/placement';
 import TimeoutExample from './examples/timeout';
 import { playWrapper } from '../../../../utils/playWrapper';
 const meta: Meta = {
@@ -12,11 +11,6 @@ const meta: Meta = {
 
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
-  play: playWrapper(Button),
-};
-
-export const Placement: StoryObj = {
-  render: PlacementExample,
   play: playWrapper(Button),
 };
 

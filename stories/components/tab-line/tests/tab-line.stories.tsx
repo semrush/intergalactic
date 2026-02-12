@@ -24,9 +24,6 @@ export const TabLineItemAddons: StoryObj<typeof TabLineItemAddonsProps> = {
     underlined: {
       control: { type: 'boolean' },
     },
-    selected: {
-      control: { type: 'boolean' },
-    },
     behavior: {
       control: { type: 'select' },
       options: ['auto', 'manual'],
