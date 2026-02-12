@@ -42,6 +42,58 @@ npm install @semcore/ui
 
 After the installation, all components will be available at `@semcore/{{component_name}}`.
 
+### Testing
+
+The project uses a comprehensive testing setup with multiple testing frameworks and tools:
+
+#### Testing frameworks
+
+- **Vitest** - Unit and component tests
+- **Playwright** - Browser automation and E2E tests
+- **React Testing Library** - Component testing utilities
+- **Axe** - Accessibility testing
+
+#### Running tests
+
+```sh
+# Run unit tests
+pnpm test
+
+# Run browser tests (in docker to ensure consistent snapshots across different environments)
+pnpm browser-test:docker
+
+# Run accessibility tests
+pnpm axe-test
+
+# Run VoiceOver tests (macOS)
+pnpm vo-test
+
+# Run NVDA tests (Windows)
+pnpm nvda-test
+```
+
+#### Configuration and setup
+
+Test configurations are located in the project root:
+- `vitest.config.mts` - Vitest configuration for unit tests
+- `playwright.*.config.ts` - Various Playwright configurations for different test types
+
+Testing utilities and shared test helpers are located in `./tools/testing-utils/`:
+- `setupTests.ts` - Global test setup with custom matchers and mocks
+- `vitest.ts` - Extended Vitest test runner with Allure integration
+- `playwright.ts` - Extended Playwright test runner with accessibility helpers
+- `testing-library.ts` - Re-exports React Testing Library utilities
+
+#### Mocks and utilities
+
+The testing setup includes:
+- `ResizeObserver` mock for components using resize detection
+- `matchMedia` mock for responsive components
+- `SVGElement.getBBox` mock for SVG-based components
+- Custom matchers from `@testing-library/jest-dom` (`toHaveStyle`, `toHaveFocus`, `toHaveAttribute`, `toBeInTheDocument`)
+
+Tests are located in `__tests__` directories within each component package (e.g., `semcore/button/__tests__/`).
+
 ### How to contribute to the project
 
 [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/HEAD/CONTRIBUTING.md)
