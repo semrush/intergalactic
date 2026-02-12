@@ -1,7 +1,7 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
@@ -42,9 +42,6 @@ const Demo = (props: AccordionDurationProps) => {
 };
 
 const ChartExample = () => {
-  const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
-
   return (
     <DataTable
       data={data1}
@@ -53,15 +50,15 @@ const ChartExample = () => {
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
+        { name: 'vol', children: 'Vol.', gtcWidth: '100px' },
       ]}
       expandedRows={new Set<string>()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+            <Text ellipsis={{ cropPosition: 'middle' }} display='block'>
               {props.value}
-            </Ellipsis>
+            </Text>
           );
         }
 

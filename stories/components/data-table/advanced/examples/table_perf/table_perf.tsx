@@ -1,6 +1,6 @@
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
@@ -18,6 +18,8 @@ export type AccordionInTableProps = {
   loading: boolean;
 };
 
+const refsMap: Record<string | symbol, HTMLElement | null> = {};
+
 const COLUMNS_CONFIG = [
   {
     id: 'actions',
@@ -32,6 +34,7 @@ const COLUMNS_CONFIG = [
     defaultActive: true,
     Component: CopyCell,
     wMin: 150,
+    ref: (node: HTMLElement | null) => refsMap['payment_intent_id'] = node,
   },
   {
     id: 'payment_status',
@@ -176,6 +179,7 @@ const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
   children: c.id,
   gtcWidth: c.wMin ? `minmax(${c.wMin}px, 1fr)` : 'max-content',
+  ref: c.ref,
 }));
 
 // with React.memo
@@ -222,12 +226,12 @@ const Demo = (props: AccordionInTableProps) => {
           const Component = componentsMap[props.columnName];
           if (Component) {
             return {
-              children: <Component value={props.value} row={props.row} />,
+              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} />,
             };
           }
 
           return {
-            children: <Ellipsis>{props.value}</Ellipsis>,
+            children: <Text>{props.value}</Text>,
           };
         }}
       />

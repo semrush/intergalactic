@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
 
+### Added
+
+- `Hint` component.
+
 ## [16.4.2] - 2025-12-01
 
 ### Fixed

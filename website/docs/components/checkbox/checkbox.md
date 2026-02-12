@@ -12,9 +12,9 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 The checkbox component is used to select one or more options from a list. It displays whether the option is selected or not. It's commonly used for group settings and allows users to choose any number of options.
 
-![](static/check-or-toggle.png)
+![Use checkbox if changes don't apply instantly, otherwise use switch](static/check-or-toggle.png)
 
-Multi-selection, which is commonly used in filters, is the exception to the image above.
+Multi-selection, which is commonly used in filters, is the exception to this rule.
 
 ## Component composition
 
@@ -41,7 +41,7 @@ Table: Checkbox sizes
 
 ### Margins
 
-The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
+The spacing between options may differ based on the context in which they're used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed in the following table.
 
 Table: Checkbox margins
 
@@ -63,7 +63,7 @@ Table: Checkbox with a paragraph of text
 
 ## Checkbox with Info icon
 
-Add an `Info` icon next to the checkbox label to provide more information about checkbox's purpose. User can hover over the icon to see a tooltip with additional details.
+Add an [informer](../../patterns/informer/informer) next to the checkbox label to provide more information about checkbox's purpose. User can click the button to open a tooltip with additional details.
 
 ![](static/info-icon.png)
 

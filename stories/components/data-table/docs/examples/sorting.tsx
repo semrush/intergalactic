@@ -1,12 +1,12 @@
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['vol', 'desc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {
@@ -40,7 +40,7 @@ const Demo = () => {
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {
           name: 'kd',
-          children: <Ellipsis>KD % and some another text long</Ellipsis>,
+          children: <Text ellipsis={true}>KD % and some another text long</Text>,
           justifyContent: 'right',
           gtcWidth: 'minmax(0, 68px)',
           sortable: true,

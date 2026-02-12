@@ -2,6 +2,7 @@ import { NeighborLocation, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import { Text as UikitText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-line.shadow.css';
@@ -34,6 +35,7 @@ class TabLineRoot extends Component {
   itemRefs = {};
   containerRef = React.createRef();
   animationStartTimeout = -1;
+  buttonRefsList = [];
 
   uncontrolledProps() {
     return {
@@ -95,7 +97,7 @@ class TabLineRoot extends Component {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props, _index) {
+  getItemProps(props, index) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -107,6 +109,21 @@ class TabLineRoot extends Component {
       'ref': (node) => {
         this.itemRefs[props.value] = node;
       },
+      'buttonRefsList': this.buttonRefsList,
+      index,
+    };
+  }
+
+  getItemTextProps(props, index) {
+    const { size: tabLineSize } = this.asProps;
+    const size = props.size
+      ? props.size
+      : tabLineSize === 'm' ? 200 : 300;
+
+    return {
+      size,
+      buttonRefsList: this.buttonRefsList,
+      index,
     };
   }
 
@@ -151,7 +168,10 @@ class TabLineRoot extends Component {
 
 function TabLineItem(props) {
   const STabLineItem = Root;
-  const { Children, styles, addonLeft, addonRight, neighborLocation } = props;
+  const { Children, styles, addonLeft, addonRight, neighborLocation, buttonRefsList, index } = props;
+  const buttonRef = React.useRef();
+
+  buttonRefsList[index] = buttonRef;
 
   return (
     <NeighborLocation.Detect neighborLocation={neighborLocation}>
@@ -164,6 +184,7 @@ function TabLineItem(props) {
             neighborLocation={neighborLocation}
             type='button'
             role='tab'
+            ref={buttonRef}
           >
             {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
             {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
@@ -175,9 +196,9 @@ function TabLineItem(props) {
 }
 
 function Text(props) {
-  const { styles } = props;
+  const { styles, ellipsis = true, size, buttonRefsList, index, hintProps = {} } = props;
   const SText = Root;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  return sstyled(styles)(<SText render={UikitText} ellipsis={ellipsis} size={size} use:hintProps={{ triggerRef: buttonRefsList[index], ...hintProps }} />);
 }
 
 function Addon(props) {
