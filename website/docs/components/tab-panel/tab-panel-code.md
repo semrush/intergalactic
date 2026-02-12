@@ -9,7 +9,7 @@ tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example
 You can add icons, badges, and counters as addons to the left or right of the text in the item.
 
 <!-- vale DevDocs.Inclusive = NO -->
-Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with [ellipsis](../../utils/ellipsis/ellipsis) and a [hint](../../utils/hint/hint) will be shown on hover.
+Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with [ellipsis](../../utils/ellipsis/ellipsis) and a [hint](../../utils/hint/hint) will be shown on hover and focus.
 <!-- vale DevDocs.Inclusive = YES -->
 
 ::: sandbox

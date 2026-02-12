@@ -6,32 +6,32 @@ const Demo = () => {
 
   return (
     <>
-      <TabLine onChange={setValue} value={value} aria-label='Animals'>
+      <TabLine onChange={setValue} value={value} behavior='manual' aria-label='Animals'>
         <TabLine.Item
           value={1}
-          aria-controls={value === 1 ? 'tab-panel-1-1' : undefined}
-          id='tab-label-1-1'
+          aria-controls={value === 1 ? 'tab-panel-3-1' : undefined}
+          id='tab-label-3-1'
         >
-          Cats
+          Catsasdfasdfasdfadsf
         </TabLine.Item>
         <TabLine.Item
           value={2}
-          aria-controls={value === 2 ? 'tab-panel-1-2' : undefined}
-          id='tab-label-1-2'
+          aria-controls={value === 2 ? 'tab-panel-3-2' : undefined}
+          id='tab-label-3-2'
         >
-          Dogs
+          Dogsasdfasdfasdfasdf
         </TabLine.Item>
         <TabLine.Item
           value={3}
-          aria-controls={value === 3 ? 'tab-panel-1-3' : undefined}
-          id='tab-label-1-3'
+          aria-controls={value === 3 ? 'tab-panel-3-3' : undefined}
+          id='tab-label-3-3'
         >
-          Birds
+          Birdsadsfasdfasdfasdf
         </TabLine.Item>
       </TabLine>
       {
         [
-          <div key='tab-panel-1-1' id='tab-panel-1-1' role='tabpanel' aria-labelledby='tab-label-1-1' tabIndex={-1}>
+          <div key='tab-panel-3-1' id='tab-panel-3-1' role='tabpanel' aria-labelledby='tab-label-3-1' tabIndex={-1}>
             <h3>Cats</h3>
             <p>
               They are the only creatures that can simultaneously demand your attention and ignore
@@ -39,11 +39,11 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            key='tab-panel-1-2'
-            id='tab-panel-1-2'
+            key='tab-panel-3-2'
+            id='tab-panel-3-2'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-1-2'
+            aria-labelledby='tab-label-3-2'
             tabIndex={-1}
           >
             <h3>Dogs</h3>
@@ -53,11 +53,11 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            key='tab-panel-1-3'
-            id='tab-panel-1-3'
+            key='tab-panel-3-3'
+            id='tab-panel-3-3'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-1-3'
+            aria-labelledby='tab-label-3-3'
             tabIndex={-1}
           >
             <h3>Birds</h3>

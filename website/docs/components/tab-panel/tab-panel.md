@@ -72,7 +72,7 @@ Table: TabPanel states
 
 ## Usage in UX/UI
 
-When there's not enough space to show the full tab text, it's truncated with [ellipsis](../../utils/ellipsis/ellipsis), showing a [hint](../../utils/hint/hint) on hover.
+When there's not enough space to show the full tab text, it's truncated with [ellipsis](../../utils/ellipsis/ellipsis), showing a [hint](../../utils/hint/hint) on hover and focus.
 
 ![](static/ellipsis.png)
 
