@@ -3,7 +3,7 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches: [master, major/16]
+    branches: [master, release/v16, release/v17]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -178,10 +178,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
+        with:
+          fetch-deps: 2
+      - name: Get changed files list
+        id: changed-files
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD^1)
+          MD_FILES=$(echo $CHANGED_FILES | grep "\.md$")
+          echo "changed_files=$MD_FILES" >> $GITHUB_OUTPUT
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
         with:
-          files: '["README.md", "CONTRIBUTING.md", "semcore/*/README.md", "semcore/*/CHANGELOG.md", "website/docs"]'
+          files: ${{ steps.changed-files.outputs.changed_files }};
   unit-tests:
     runs-on: ubuntu-latest
     needs: [build, defineChangedComponents]
