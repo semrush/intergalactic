@@ -18,7 +18,7 @@ Charts are a complex component that can't be applied in a single line. That's wh
 - All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
 - We try to provide access to each SVG node, so you could modify it if needed.
 
-Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
+Each element that you place on the chart is based on a real SVG element or a group of elements. e.g., when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
 
 When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to `<Line.Dots/>` will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
 
@@ -38,7 +38,7 @@ To change properties of specific dots, pass a function that will be called at ea
 You also can put functions into single elements if your properties are calculated dynamically.
 :::
 
-Since many SVG elements don't support nesting, they're rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
+Since many SVG elements don't support nesting, they're rendered sequentially. e.g., this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
 
 ```jsx
 <Line>
@@ -52,7 +52,7 @@ CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tok
 
 Any SVG container must have absolute values for its size.
 
-Refer to [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
+Refer to [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as his `range` and `domain`.
 
 ::: tip
 The `range` of the horizontal `scale` is inverted, so that the axes origin is at the bottom left corner.
@@ -109,7 +109,7 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 You can change the values and properties on the axis by passing a function.
 
-The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
+The default tag is `<text/>`, but you can change it by defining the `tag` property. e.g., you can change it to `foreignObject` for inserting `html` components.
 
 ::: tip
 The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
@@ -167,7 +167,7 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 
 ## Adaptive chart
 
-For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-system-api) and can help you flexibly adjust the chart size.
+For SVG charts to display correctly on responsive layouts, you need to dynamically calculate his width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-system-api) and can help you flexibly adjust the chart size.
 
 ::: tip
 `ResponsiveContainer` supports the `aspect` property – the aspect ratio between the width and height of a chart.

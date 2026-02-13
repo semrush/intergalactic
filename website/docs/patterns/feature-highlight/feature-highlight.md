@@ -7,7 +7,7 @@ tabs: Design('feature-highlight'), Changelog('feature-highlight-changelog')
 
 You can promote certain features in your UI by using special styles from the `FeatureHighlight` package.
 
-All components from the `FeatureHighlight` package are wrappers over our standard components, such as [Button](../../components/button/button) or [Notice](../../components/notice/notice), and you can use all their standard properties.
+All components from the `FeatureHighlight` package are wrappers over our standard components, such as [Button](../../components/button/button) or [Notice](../../components/notice/notice), and you can use all his standard properties.
 
 ## General principles
 

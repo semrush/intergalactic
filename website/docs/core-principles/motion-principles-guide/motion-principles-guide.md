@@ -4,7 +4,7 @@ title: Motion (animation)
 
 ## Description
 
-Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behavior of major components – but always remember that motion must have a **purpose**.
+Motion can improve user experience when employed correctly. It can guide users, attracting his attention to events and actions, and reflecting his progress. You can use it to spice up your interface – from microinteractions with small elements, to the behaviour of major components – but always remember that motion must have a **purpose**.
 
 ## Principles
 
@@ -14,7 +14,7 @@ Motion helps users maintain flow, drawing attention to screen changes both small
 
 **Motion is Intentional**
 
-Objects must have a motivation for their movement. There should be a reason for why something moves the way it does.
+Objects must have a motivation for his movement. There should be a reason for why something moves the way it does.
 
 **Motion is Expressive**
 
@@ -127,7 +127,7 @@ const App = EasingsDemo;
 When using animation, you want to avoid the following effects:
 
 1. Provoking seizures in people with [photosensitive epilepsy](https://www.epilepsy.com/what-is-epilepsy/seizure-triggers/photosensitivity#:~:text=For%20about%203%25%20of%20people,is%20known%20as%20photosensitive%20epilepsy).
-2. Distracting users and breaking their workflow.
+2. Distracting users and breaking his workflow.
 3. Trapping them in animation sequences.
 
 To prevent these issues, we recommend you follow these best practices:

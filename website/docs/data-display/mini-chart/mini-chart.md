@@ -53,7 +53,7 @@ Table: Versions of charts with score type
 
 ### Sizes
 
-The component charts have default sizes, but you can set them to those you need, chart will scale to them. For example:
+The component charts have default sizes, but you can set them to those you need, chart will scale to them. e.g.:
 
 ![](static/trend-bar-size-big.png)
 

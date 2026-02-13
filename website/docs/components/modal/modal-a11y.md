@@ -16,7 +16,7 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the modal. Refer to [Closing modal](./modal#closing-modal) for more details. |
 
-See more about the focus behavior in the modal in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-modal-window).
+See more about the focus behaviour in the modal in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-modal-window).
 
 ### Roles & attributes
 
@@ -51,7 +51,7 @@ However, if your modal window has a separate URL, you can mark `Modal.Title` as 
 
 ## Resources
 
-[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.
+[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behaviour.
 
 ## Other recommendations
 

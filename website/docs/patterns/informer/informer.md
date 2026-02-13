@@ -5,7 +5,7 @@ tabs: Design('informer'), Example('informer-code')
 
 ## Description
 
-**Informer** is a pattern used to show rich tooltips within the interface. It's useful when there is limited space to add, for example, a [ButtonLink](../../components/button/button.md#button-with-link-styles) with text alongside a component.
+**Informer** is a pattern used to show rich tooltips within the interface. It's useful when there is limited space to add, e.g., a [ButtonLink](../../components/button/button.md#button-with-link-styles) with text alongside a component.
 
 ## Appearance
 
@@ -49,7 +49,7 @@ For comprehensive details, refer to [Tooltip](/components/tooltip/tooltip).
 
 ## Usage in UX/UI
 
-When the `Informer` contains supplementary information about a control within a group of controls (for example, filters), pay attention to margins.
+When the `Informer` contains supplementary information about a control within a group of controls (e.g., filters), pay attention to margins.
 
 ![](static/informer-yes-no.png)
 

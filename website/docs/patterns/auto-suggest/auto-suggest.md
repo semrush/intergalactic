@@ -20,7 +20,7 @@ Table: Differences between AutoSuggest, AutoComplete and Combobox search pattern
 | AutoSuggest  | ❌                           | ✅                                      | ❌                                           | ✅                                          |
 
 ::: tip
-If your search behavior differs from those described in the table, don’t hesitate to drop us a line so we can update the guide.
+If your search behaviour differs from those described in the table, don’t hesitate to drop us a line so we can update the guide.
 :::
 
 ## Pattern composition
@@ -38,7 +38,7 @@ These patterns use the following components:
 User can't enter the data not corresponding to the items list.
 :::
 
-Use combobox when usual input, select or autocomplete aren't appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/time-picker).
+Use combobox when usual input, select or autocomplete aren't appropriate for your case. e.g., we use it in the [TimePicker](/components/time-picker/time-picker).
 
 ### Interaction
 

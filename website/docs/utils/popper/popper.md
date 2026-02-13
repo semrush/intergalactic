@@ -68,7 +68,7 @@ Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'to
 
 `tag` is the name of the HTML tag for the displayed element. The trigger and popper support changing this prop.
 
-You can pass either another component or a string to the `tag`. For example, `tag="a"` or `tag={Button}`.
+You can pass either another component or a string to the `tag`. e.g., `tag="a"` or `tag={Button}`.
 
 ::: tip
 The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from the trigger go to the `Box`.
@@ -90,7 +90,7 @@ Inside the function, the first argument provides the component props and the `ge
 
 **Important!** You can pass custom props required for the component in `getTriggerProps`, `getPopperProps`. In this case, these props will merge with the props required from `Popper`.
 
-**For example**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this will not work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
+**e.g.**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this will not work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
 
 ::: tip
 The second argument of the render-function will provide `handlers`, functions for changing the internal state of the component.
@@ -124,7 +124,7 @@ Inspect the page to find out where the popper is located.
 
 ## Fixed position
 
-The Popper is positioned absolutely, but this behavior can be changed to fixed position `(display: fixed)`.
+The Popper is positioned absolutely, but this behaviour can be changed to fixed position `(display: fixed)`.
 
 This is usually needed to optimize the recalculation of the Popper's position relative to the `Trigger` when the `Trigger` is located in a block that has `display: fixed` 🤯
 

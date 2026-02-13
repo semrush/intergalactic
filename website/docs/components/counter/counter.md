@@ -42,7 +42,7 @@ Table: Counter themes
 
 The size of text counters is determined by the typography used in the element where the numeric value is being displayed. Typically, these counters are positioned near widget or table titles, within text, and other relevant locations. Additional examples can be found on the [Example page](/components/counter/counter-code).
 
-_For example, the counter in the table title has the same text size as the title itself._
+_e.g., the counter in the table title has the same text size as the title itself._
 
 ![](static/heading.png)
 

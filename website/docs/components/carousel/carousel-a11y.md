@@ -57,7 +57,7 @@ If you decide to add it, make sure to include a pause button that's keyboard acc
 
 ## Resources
 
-[W3 carousel examples](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) has detailed information about the carousel's accessible behavior.
+[W3 carousel examples](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) has detailed information about the carousel's accessible behaviour.
 
 ## Other recommendations
 

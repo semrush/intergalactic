@@ -37,7 +37,7 @@ By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can
 
 ## Resources
 
-- [W3 accordion example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html) has detailed information about the accordion accessible behavior.
+- [W3 accordion example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html) has detailed information about the accordion accessible behaviour.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html) gives recommendations for the accessible components.
 
 ## Other recommendations

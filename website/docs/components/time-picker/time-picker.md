@@ -37,7 +37,7 @@ Table: TimePicker sizes
 The content of the comboboxes can be exact, up to a minute, or with preset steps.
 
 - In the first case, the combobox step equals one minute, allowing the user to set precise times, such as 13:13.
-- In the second case, the combobox step can be adjusted depending on the required time pre-settings. For example, popular steps may include 00, 15, 30, 45, etc., for minutes.
+- In the second case, the combobox step can be adjusted depending on the required time pre-settings. e.g., popular steps may include 00, 15, 30, 45, etc., for minutes.
 
 ::: tip
 Comboboxes content may be both exact, up to a minute, and with the preset step.

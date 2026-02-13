@@ -10,8 +10,8 @@ tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example
 
 ### When to use it
 
-- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
-- **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
+- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on his task. _e.g., you can use an accordion in a table with a large amount of data or in large widgets with additional information._
+- **When screen area is limited (e.g., on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
 ::: tip
 **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
@@ -62,16 +62,16 @@ Table: Accordion trigger styles
 
 ### Collapsed content styles
 
-You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
+You can use this component to hide almost any content. This can be a text content, an additional information (e.g., in a table), or even an entire table with a chart.
 
-**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
+**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, e.g., in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 
 ## Interaction
 
 ::: tip
 **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
 
-The user expects this behavior when working with the desktop device interface.
+The user expects this behaviour when working with the desktop device interface.
 
 On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
 :::

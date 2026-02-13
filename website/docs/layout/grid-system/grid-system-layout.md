@@ -10,7 +10,7 @@ tabs: Page layout('grid-system-layout'), API('grid-system-api'), Example('grid-s
 - Each range determines the number of columns, maximum content width and content wrapper margins.
 - You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case.
 
-## Page layout and grid behavior
+## Page layout and grid behaviour
 
 ![breakpoints-scheme](static/scheme.png)
 

@@ -24,7 +24,7 @@ The following list will help you to keep in mind the necessary roles and attribu
 | Attribute                         | Usage                                                        |
 | --------------------------------- | ------------------------------------------------------------ |
 | `aria-label` or `aria-labelledby` | **Required.** Provides an accessible name for the `ProgressBar`. |
-| `aria-valuetext="string"`         | Allows to represent the progress values in a convenient format, for example, announce absolute values beside percentages ([example](./progress-bar-code#basic-usage)). |
+| `aria-valuetext="string"`         | Allows to represent the progress values in a convenient format, e.g., announce absolute values beside percentages ([example](./progress-bar-code#basic-usage)). |
 | `tabIndex="0"`                    | Includes the `ProgressBar` in the `Tab` sequence. Not mandatory, but can help enhance discoverability by making the element focusable. |
 
 ## Resources

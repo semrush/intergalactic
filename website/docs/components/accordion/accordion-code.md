@@ -21,7 +21,7 @@ By default, the accordion has the `secondary` theme (`use` property).
 
 ## One section opening
 
-`value` can take both values: single and array of values. By changing it, you change the behavior of the component.
+`value` can take both values: single and array of values. By changing it, you change the behaviour of the component.
 
 ::: sandbox
 
@@ -59,7 +59,7 @@ Pass `use='primary'` to enable the primary theme for the accordion.
 
 You can customize accordion styles if needed.
 
-For example, to find out whether an element is selected and to highlight it, pass the function into the body of the element.
+e.g., to find out whether an element is selected and to highlight it, pass the function into the body of the element.
 
 ::: sandbox
 

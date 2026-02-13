@@ -25,7 +25,7 @@ For other roles and attributes, refer to documentation for components that are c
 
 ## Considerations for developers
 
-Sometimes, the filter name is included in the trigger alongside the value, for example "Color: Blue." In these cases, hide the name part from assistive technology to avoid redundant reading. Refer to the [accessible name example](./filter-trigger-code.md#accessible-name).
+Sometimes, the filter name is included in the trigger alongside the value, e.g. "Color: Blue." In these cases, hide the name part from assistive technology to avoid redundant reading. Refer to the [accessible name example](./filter-trigger-code.md#accessible-name).
 
 ### Roles and attributes
 

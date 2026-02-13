@@ -21,7 +21,7 @@ For the Semrush developers and designers we have a couple of onboarding files. R
 
 There are base and semantic token sets in our design system.
 
-**Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette and meet accessibility guidelines, use tools like [Huetone](https://huetone.ardov.me/).
+**Base tokens** represent the theme's global palette. Changing his values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette and meet accessibility guidelines, use tools like [Huetone](https://huetone.ardov.me/).
 
 ![](static/base-tokens.png)
 
@@ -42,7 +42,7 @@ Semantic tokens include tokens for:
 
 Token name is the same in both Figma and code, except for the theme/project name which is added to the token in the code.
 
-For example, compare token for primary neutral background:
+e.g., compare token for primary neutral background:
 
 - in Figma: `bg/primary/neutral`
 - in code: `--intergalactic-bg-primary-neutral`
@@ -55,7 +55,7 @@ The token name doesn't have to contain all the elements of the naming structure.
 
 ## Tokens usage
 
-Semantic tokens are context-specific, so they're used according to the intentions implied by their names:
+Semantic tokens are context-specific, so they're used according to the intentions implied by his names:
 
 - `bg` token group for backgrounds
 - `text` token group for text color

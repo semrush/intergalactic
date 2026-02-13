@@ -9,7 +9,7 @@ tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 Most of Semrush products are designed to work with data on the desktop, so adaptivity isn’t yet required for all products.
 
 ::: tip
-Most of the core components can be used on the smaller screens. You need to increase their size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Example tab](/layout/breakpoints/breakpoints-code).
+Most of the core components can be used on the smaller screens. You need to increase his size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Example tab](/layout/breakpoints/breakpoints-code).
 :::
 
 If you are adding adaptivity to your interface, then use breakpoints described below, but remember to stretch the content in each range, except for really wide screens, where we recommend fixing the maximum content width to 1920px.

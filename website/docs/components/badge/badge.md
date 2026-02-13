@@ -10,7 +10,7 @@ tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code
 
 **Badge** is a visual component used to indicate the status of a feature or a product.
 
-_For example, you've added a new tab to the report. In this case, you can highlight the new feature in your product with the `new` badge._
+_e.g., you've added a new tab to the report. In this case, you can highlight the new feature in your product with the `new` badge._
 
 **Main features of the component:**
 

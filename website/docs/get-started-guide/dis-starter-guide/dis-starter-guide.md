@@ -58,7 +58,7 @@ Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layou
 
 ## Grid system
 
-Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed grid, depending on their needs. The standard design frame width for product pages is 1440px.
+Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed grid, depending on his needs. The standard design frame width for product pages is 1440px.
 
 Check out [Grid and page layout](/layout/grid-system/grid-system-layout) for more details and code examples.
 

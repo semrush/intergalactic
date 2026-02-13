@@ -15,7 +15,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 **Scatterplot chart** displays the relationship between two variables in datasets, revealing trends, clusters, and patterns. It's useful for analyzing how two variables correlate, particularly in large datasets.
 
 ::: tip
-The scatterplot is highly valued for its versatility and utility in statistical graphics, praised as a significant invention in statistical graphics history (refer to [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract)).
+The scatterplot is highly valued for its versatility and utility in statistical graphics, praised as a significant invention in statistical graphics history (refer to [Journal of the History of the behavioural Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract)).
 :::
 
 **Use scatterplot chart when you need to:**
@@ -57,7 +57,7 @@ Table: Scatterplot chart styles
 - Dot size: 24px by 24px.
 - Text size: 12px.
 
-Display values over 100 as "99+". Use a darker shade for text color than the dot color (for example, if dot has `--blue-300` color, then use `--blue-400` color for the label).
+Display values over 100 as "99+". Use a darker shade for text color than the dot color (e.g., if dot has `--blue-300` color, then use `--blue-400` color for the label).
 
 ![](static/values-2.png)
 
