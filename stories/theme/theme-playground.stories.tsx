@@ -1,12 +1,17 @@
 import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
 import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
+import newThemeTokens from '@semcore/core/lib/theme/themes/new';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import './theme-playground-fonts.css';
+
+const LAZZER_FONT = '\'Lazzer\', sans-serif';
 
 const meta: Meta = {
   title: 'Theme/Theme Playground',
@@ -18,8 +23,9 @@ type Story = StoryObj;
 
 /** Список тем для переключения. Чтобы добавить новую тему: добавьте JSON в semcore/core/src/theme, прогоните process-theme, добавьте экспорт в core/package.json и сюда запись. */
 const THEMES = [
-  { id: 'light', label: 'Switch to dark', tokens: defaultThemeTokens },
-  { id: 'dark', label: 'Switch to light', tokens: darkThemeTokens },
+  { id: 'light', label: 'Light', tokens: defaultThemeTokens },
+  { id: 'new', label: 'New', tokens: newThemeTokens },
+  { id: 'dark', label: 'Dark', tokens: darkThemeTokens },
 ] as const;
 
 function ButtonRow({
@@ -49,7 +55,6 @@ const BG_PRIMARY_TOKEN = '--intergalactic-bg-primary-neutral';
 function ThemePlaygroundContent() {
   const [themeIndex, setThemeIndex] = React.useState(0);
   const currentTheme = THEMES[themeIndex];
-  const cycleTheme = () => setThemeIndex((i) => (i + 1) % THEMES.length);
 
   React.useEffect(() => {
     const prevBackground = document.body.style.background;
@@ -65,14 +70,27 @@ function ThemePlaygroundContent() {
     <ThemeProvider tokens={currentTheme.tokens}>
       <Box p={6} style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
         <Flex justifyContent='space-between' alignItems='center' mb={10}>
-          <Text tag='h1' semibold size={600} color='text-primary'>
+          <Text tag='h1' semibold size={600} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
             Theme playground
           </Text>
-          <Button use='secondary' size='l' onClick={cycleTheme}>
-            {currentTheme.label}
-          </Button>
+          <DropdownMenu>
+            <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
+              Theme: {currentTheme.label}
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Menu>
+              {THEMES.map((theme, index) => (
+                <DropdownMenu.Item
+                  key={theme.id}
+                  selected={themeIndex === index}
+                  onClick={() => setThemeIndex(index)}
+                >
+                  {theme.label}
+                </DropdownMenu.Item>
+              ))}
+            </DropdownMenu.Menu>
+          </DropdownMenu>
         </Flex>
-        <Text tag='h2' size={400} semibold mb={6} color='text-primary'>
+        <Text tag='h2' size={400} semibold mb={6} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
           Button
         </Text>
 
