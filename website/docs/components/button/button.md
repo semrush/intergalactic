@@ -65,6 +65,10 @@ You can use themes (`theme` property in API) for the buttons according to the vi
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
+#### a forbidden header
+
+oh no I say please see above
+
 Table: Button themes
 
 | `use` / `theme` | `muted`                         | `info`                        | `success`                    | `brand`                    | `danger`                    | `invert`                               |
