@@ -1954,7 +1954,7 @@ importers:
         specifier: ^16.0.0 || ^17.0.0
         version: link:../icon
       '@semcore/illustration':
-        specifier: ^16.0.12
+        specifier: ^16.0.0 || ^17.0.0
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: ^16.0.11

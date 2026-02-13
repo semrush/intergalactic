@@ -7,22 +7,17 @@ import Git from 'simple-git';
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 import type { PackageJson } from './packages';
+import type { SeparatedPackage } from '../types/common.types';
 
 const git = Git();
 
 export const gitUtils = {
   initNewPrerelease: async (version: string, packages: PackageJson[]) => {
     const semcoreUiPatch = packages.find((item) => item.name === '@semcore/ui');
+    const isIcon = packages.length === 1 && packages[0].name === '@semcore/icon';
+    const isIllustration = packages.length === 1 && packages[0].name === '@semcore/illustration';
 
-    if (semcoreUiPatch) {
-      const newPrereleaseBranch = `prerelease/${version}`;
-      await git.checkout(['-b', newPrereleaseBranch]);
-
-      await NpmUtils.updateLockFile();
-      await gitUtils.commitNewPrerelease(packages);
-      const tag = await gitUtils.createPrereleaseTag(`${version}`);
-      await gitUtils.push(tag);
-    } else if (packages.length === 1 && packages[0].name === '@semcore/icon') {
+    if (semcoreUiPatch || isIcon || isIllustration) {
       const newPrereleaseBranch = `prerelease/${version}`;
       await git.checkout(['-b', newPrereleaseBranch]);
 
@@ -56,6 +51,8 @@ export const gitUtils = {
       match = `--match "v*"`;
     } else if (currentBranch.startsWith('prerelease/icon')) {
       match = `--match "icon*"`;
+    } else if (currentBranch.startsWith('prerelease/illustration')) {
+      match = `--match "illustrations*"`;
     }
 
     const tag = execSync(`git describe --tags ${match} --abbrev=0`, {
@@ -170,11 +167,11 @@ export const gitUtils = {
     return currentReleaseTag.slice(1) as ReleaseVersion;
   },
 
-  getPrevIconTag: async (): Promise<ReleaseVersion> => {
-    const tags = await git.tags(['icon*', '--sort', 'creatordate']);
+  getPrevPackageTag: async (pack: SeparatedPackage): Promise<ReleaseVersion> => {
+    const tags = await git.tags([`${pack}*`, '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
-    return currentReleaseTag.slice(4) as ReleaseVersion;
+    return currentReleaseTag.slice(pack.length) as ReleaseVersion;
   },
 };

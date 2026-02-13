@@ -17,7 +17,7 @@
     "baseUrl": "./semcore",
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "paths": {
-      "@semcore/ui/illustration/*": ["illustration/*"],
+      "@semcore/illustration/*": ["illustration/lib/*"],
       "@semcore/illustration": ["illustration"],
       "@semcore/icon/*": ["icon/lib/*"],
       "@semcore/ui/d3-chart": ["d3-chart"],

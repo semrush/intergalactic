@@ -2,7 +2,7 @@ name: init-prerelease
 on:
   workflow_dispatch:
     branch:
-      - master
+      - release/v17
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -15,7 +15,7 @@ jobs:
       - name: check-not-merged-pr
         run: |
           prs=$(gh pr list \
-            --base 'master' \
+            --base 'release/v17' \
             --json title \
             -A semrush-ci-whale \
             -S 'Merge release tag into master' \

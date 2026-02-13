@@ -1,7 +1,7 @@
+import Illustration from '@semcore/illustration/Congrats';
 import Button from '@semcore/ui/button';
 import { NoticeFH } from '@semcore/ui/feature-highlight';
 import { FeedbackRating } from '@semcore/ui/feedback-form';
-import Illustration from '@semcore/ui/illustration/Congrats';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
