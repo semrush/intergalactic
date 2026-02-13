@@ -16,7 +16,9 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@semcore/typography": "16.3.2"
+  },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0",
     "@semcore/icon": "16.7.3 - 17"
@@ -30,6 +32,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
     "@semcore/icon": "workspace:*",
-    "@semcore/testing-utils": "workspace:*"
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/typography": "workspace:*"
   }
 }

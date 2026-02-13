@@ -6,11 +6,11 @@ import React from 'react';
 const Demo = () => {
   return (
     <>
-      <Link ml={4} href='#' size={300}>
+      <Link ml={4} href='#'>
         <Link.Addon>
           <CheckM />
         </Link.Addon>
-        <Link.Text>Link</Link.Text>
+        <Link.Text size={300}>Link</Link.Text>
         <Link.Addon>
           <ChevronRightM />
         </Link.Addon>

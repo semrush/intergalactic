@@ -24,8 +24,8 @@ import DatePicker from './entries/DatePicker';
 import Divider from './entries/Divider';
 import Dot from './entries/Dot';
 import Dropdown from './entries/Dropdown';
-import Ellipsis from './entries/Ellipsis';
 import FeaturePopover from './entries/FeaturePopover';
+import Hint from './entries/Hint';
 import InlineInput from './entries/InlineInput';
 import Input from './entries/Input';
 import InputMask from './entries/InputMask';
@@ -58,8 +58,8 @@ const registry = {
   Divider,
   Dot,
   Dropdown,
-  Ellipsis,
   FeaturePopover,
+  Hint,
   InlineInput,
   Input,
   InputMask,

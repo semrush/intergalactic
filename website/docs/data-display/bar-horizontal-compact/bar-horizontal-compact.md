@@ -44,7 +44,7 @@ This chart type does not need a grid.
 ## Category labels
 
 - Labels use the primary text color (`--text-primary` token).
-- Use `ellipsis` for long labels, with tooltips showing the full name.
+- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
 
 ![](static/hor-bar-compact-labels.png)
 

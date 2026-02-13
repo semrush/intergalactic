@@ -91,7 +91,7 @@ If there are very few values, then they are evenly distributed around the entire
 
 ### Very long main element
 
-Don't fold the long center value into ellipsis. Wrap it on the second line.
+Don't truncate the long center value with an ellipsis. Wrap it to the next line.
 
 ![](static/long-value.png)
 

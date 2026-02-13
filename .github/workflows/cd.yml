@@ -3,7 +3,7 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches: [master, major/16]
+    branches: [master, release/v16, release/v17]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -178,11 +178,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
-      - uses: errata-ai/vale-action@reviewdog
-        name: Run Vale
-        continue-on-error: true
         with:
-          files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
+          fetch-depth: 0
+      - name: Get changed files list
+        id: changed-files
+        run: |
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | xargs)
+          echo "changed_files=$FILES" >> $GITHUB_OUTPUT
+      - uses: errata-ai/vale-action@reviewdog
+        if: ${{ steps.changed-files.outputs.changed_files != '' }}
+        name: Run Vale
+        with:
+          files: ${{ steps.changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest
     needs: [build, defineChangedComponents]

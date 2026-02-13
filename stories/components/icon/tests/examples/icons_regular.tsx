@@ -2,7 +2,7 @@ import ArrowsL from '@semcore/icon/Arrows/l';
 import ArrowsM from '@semcore/icon/Arrows/m';
 import MailFilledL from '@semcore/icon/MailFilled/l';
 import MailFilledM from '@semcore/icon/MailFilled/m';
-import { Flex } from '@semcore/ui/base-components';
+import { Flex, Box } from '@semcore/ui/base-components';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
@@ -10,29 +10,22 @@ const Demo = () => {
   return (
     <>
       <Flex columnGap={2} mb={4}>
-        <Hint
-          tag={ArrowsM}
-          title='Icon neutralM'
-          color='icon-secondary-neutral'
-        />
+        <Box title='Icon neutralM'>
+          <ArrowsM color='icon-secondary-neutral' />
+        </Box>
 
-        <Hint
-          tag={ArrowsL}
-          title='Icon neutraL'
-          color='icon-secondary-neutral'
-        />
+        <Box title='Icon neutraL'>
+          <ArrowsL color='icon-secondary-neutral' />
+        </Box>
 
-        <Hint
-          tag={MailFilledM}
-          title='Icon ColoredM'
-          color='text-critical'
-        />
+        <Box title='Icon ColoredM'>
+          <MailFilledM color='text-critical' />
+        </Box>
 
-        <Hint
-          tag={MailFilledL}
-          title='Icon ColoredL'
-          color='text-critical'
-        />
+        <Box title='Icon ColoredL'>
+          <MailFilledL color='text-critical' />
+        </Box>
+
       </Flex>
     </>
   );

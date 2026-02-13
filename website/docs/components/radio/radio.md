@@ -60,7 +60,7 @@ Table: Radio button with a paragraph of text
 
 ## Radio button with Info icon
 
-Add an `Info` icon next to the radio button label to provide more information about radio button's purpose. User can hover over the icon to see a tooltip with additional details.
+Add an [informer](../../patterns/informer/informer) next to the radio button label to provide more information about radio button's purpose. User can click the button to open a tooltip with additional details.
 
 ![](static/info-icon.png)
 
