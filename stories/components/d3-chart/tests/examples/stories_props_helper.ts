@@ -83,6 +83,8 @@ export const getChartArgTypes = (additionalControls?: any) => {
 
     'showTooltip': { control: { type: 'boolean' } },
     'showTotalInTooltip': { control: { type: 'boolean' } },
+    'showPercentValueInTooltip': { control: { type: 'boolean' } },
+    'tooltipViewType': { control: 'select', options: ['all', 'single'] },
     'xTicksCount': { control: { type: 'number' } },
     'yTicksCount': { control: { type: 'number' } },
     'multilineXTicks': { control: { type: 'boolean' } },

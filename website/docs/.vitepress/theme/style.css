@@ -9,7 +9,7 @@
  */
 
  /* Here Halloween styles start  */
-/* 
+/*
 :root {
   --halloween-gradient: linear-gradient(180deg, #FF642D 78.4%, #E43016 78.41%, #B22012 79.8%, #9F0707 81.89%);
   --vp-home-hero-name-color: transparent;
@@ -34,7 +34,7 @@
       font-size: 56px !important;
     }
   }
-  
+
   @media (min-width: 960px) {
     .main h1 .name {
       font-size: 80px !important;
@@ -394,7 +394,12 @@
   color: var(--vp-c-sponsor) !important;
 }
 
-.VPNavScreenMenuLink:hover {
+.VPMenuLink > .VPLink:hover {
+    color: var(--vp-c-sponsor);
+    background: transparent;
+}
+
+.VPNavScreenMenuLink:hover, .VPNavScreenMenuGroupLink:hover {
   color: var(--vp-c-sponsor) !important;
 }
 

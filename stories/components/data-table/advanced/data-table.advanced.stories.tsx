@@ -18,6 +18,7 @@ import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
+import SelectableWithMergedRowsExample from './examples/selectable_with_merged_rows';
 import SideIndentsExample from './examples/side-indents';
 import TablePerfExample from './examples/table_perf/table_perf';
 import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
@@ -85,6 +86,10 @@ export const VirtualScrollWithH100: Story = {
 
 export const RowCellStates: Story = {
   render: RowCellStatesExample,
+};
+
+export const SelectableWithMergedRows: Story = {
+  render: SelectableWithMergedRowsExample,
 };
 
 export const SideIndents: Story = {

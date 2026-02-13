@@ -6,7 +6,10 @@ import type { BaseChartProps } from './AbstractChart.type';
 
 export type RadarChartData = Record<string, string[] | number[]>;
 
-export type RadarChartProps = BaseChartProps<RadarChartData> & {
+export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<RadarChartData>,
+  'showTotalInTooltip' | 'showPercentValueInTooltip'
+> & {
   groupKey: string;
   scale?: ScaleLinear<any, any>;
   xScale?: never;

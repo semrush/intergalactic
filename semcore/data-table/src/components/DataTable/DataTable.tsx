@@ -22,7 +22,6 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
   DataRowItem,
-  DTValue,
 } from './DataTable.types';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -46,19 +45,20 @@ const SCROLL_BAR_HEIGHT = 12;
 
 type State<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
   shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
+  expandedRows: Set<UniqKeyType>;
 };
 
 class DataTableRoot<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableProps<Data, UniqKey, UniqKeyType>,
     {},
@@ -77,7 +77,6 @@ class DataTableRoot<
   static defaultProps = {
     use: 'primary',
     defaultGridTemplateColumnWidth: 'auto',
-    expandedRows: new Set(),
     defaultSelectedRows: undefined,
     h: 'fit-content',
     renderEmptyData: () => <NoData py={10} type='nothing-found' description='' w='100%' />,
@@ -85,6 +84,15 @@ class DataTableRoot<
     accordionAnimationRows: 40,
     accordionDuration: 200,
   };
+
+  static getDerivedStateFromProps(props: DataTableProps<any, any, any>, state: State<any, any, any>) {
+    if (props.expandedRows === state.expandedRows || props.expandedRows === undefined) {
+      return null;
+    }
+    return {
+      expandedRows: props.expandedRows,
+    };
+  }
 
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
@@ -139,6 +147,7 @@ class DataTableRoot<
     scrollDirection: 'down',
     selectAllMessage: '',
     shadowVertical: '',
+    expandedRows: new Set<UniqKeyType>(),
   };
 
   componentDidMount() {
@@ -156,7 +165,7 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns, loading } = this.asProps;
+    const { data, selectedRows, columns } = this.asProps;
     if (prevProps.columns !== columns) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -196,14 +205,15 @@ class DataTableRoot<
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
 
-    this.asProps.expandedRows?.clear();
+    this.state.expandedRows?.clear();
   }
 
   get totalRows() {
-    const { totalRows, expandedRows } = this.asProps;
+    const { totalRows } = this.asProps;
     const flatRows = this.getFlatRows();
+    const expandedRows = this.state.expandedRows;
 
-    const expandedRowsCount = Array.from(expandedRows ?? []).reduce<number>((acc, rowKey) => {
+    const expandedRowsCount = Array.from(expandedRows).reduce<number>((acc, rowKey) => {
       const dtRow = flatRows.find((el) => el[UNIQ_ROW_KEY] === rowKey);
       if (dtRow) {
         const expandedRows = dtRow[ACCORDION];
@@ -295,18 +305,7 @@ class DataTableRoot<
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),
-      onChangeSelectAll: (value, e) => {
-        const mappedFlatRows = this.getFlatRows().map((r) => r[UNIQ_ROW_KEY]);
-        const selectedRowsSet = new Set(selectedRows);
-
-        if (value) {
-          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
-        } else {
-          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
-        }
-
-        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
-      },
+      onChangeSelectAll: onSelectedRowsChange,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
@@ -321,7 +320,6 @@ class DataTableRoot<
       compact,
       loading,
       getI18nText,
-      expandedRows,
       virtualScroll,
       uid,
       rowProps,
@@ -357,7 +355,7 @@ class DataTableRoot<
       headerHeight: this.getHeaderHeight(),
       stickyHeader: headerProps?.sticky,
       getI18nText,
-      expandedRows,
+      expandedRows: this.state.expandedRows,
       onExpandRow: this.onExpandRow,
       spinnerRef: this.spinnerRef,
       scrollTop: this.state.scrollTop,
@@ -443,8 +441,12 @@ class DataTableRoot<
 
     if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
       let select = false;
+      const firstColumnKey = this.columns[0].name;
+      const isMerged = this.flatRows.some((item) => item[firstColumnKey] instanceof MergedRowsCell);
 
       for (const item of this.flatRows) {
+        if (isMerged && !item[firstColumnKey]) continue;
+
         if (!select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
           select = true;
           if (isSelected) {
@@ -524,7 +526,8 @@ class DataTableRoot<
   };
 
   onExpandRow = (expandedRow: DTRow<UniqKeyType>) => {
-    const { expandedRows, onAccordionToggle, accordionMode } = this.asProps;
+    const { onAccordionToggle, accordionMode } = this.asProps;
+    const expandedRows = this.state.expandedRows;
     if (expandedRows.has(expandedRow[UNIQ_ROW_KEY])) {
       expandedRows.delete(expandedRow[UNIQ_ROW_KEY]);
 
@@ -619,6 +622,9 @@ class DataTableRoot<
       let rowI = rowIndex;
       let colI = colIndex;
 
+      const colspan = Number(currentCell.getAttribute('aria-colspan'));
+      const rowspan = Number(currentCell.getAttribute('aria-rowspan'));
+
       if (direction === 'left' || direction === 'right') {
         // we need to skip Collapse Element with one big component from keyboard left/right pressing
         if (currentCell.parentElement?.parentElement?.dataset.uiName === 'Collapse') {
@@ -628,35 +634,25 @@ class DataTableRoot<
         if (limit?.fromRow !== undefined && limit.fromColumn === undefined && newCol === limit.fromRow) {
           return;
         }
-        // left/right
-        if (
-          currentCell.dataset.groupedBy === 'colgroup' ||
-          Number(currentCell.parentElement?.parentElement?.getAttribute('aria-rowindex')) === 2 ||
-          (currentCell.parentElement &&
-            Array.from(row?.children ?? []).indexOf(currentCell.parentElement) > 0)
-        ) {
-          if (direction === 'right' && limit?.fromColumn !== undefined) {
-            if (newCol > limit.fromColumn) return;
 
-            rowI = direction === 'right' ? rowI - 1 : rowI;
-          } else {
-            colI = direction === 'left' ? colI - 1 : colI + 1;
-          }
-        } else if (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined)) {
-          if (newCol === limit.fromColumn) {
+        const hasRowSpanUpper = row instanceof HTMLElement && Number(row.dataset.filledColumns) < this.columns.length;
+
+        if (colspan > 0) {
+          if (direction === 'right' && limit?.fromColumn !== undefined && newCol === limit.fromColumn) {
             rowI = rowI - 1;
           } else {
-            return;
+            colI = direction === 'left' ? colI - colspan + 1 : colI + colspan - 1;
           }
-        } else {
+        } else if (hasRowSpanUpper || (direction === 'right' && (limit?.fromColumn !== undefined || limit?.fromRow !== undefined))) {
           rowI = rowI - 1;
+        } else {
+          colI = direction === 'left' ? colI - 1 : colI + 1;
         }
       } else if (direction === 'up' || direction === 'down') {
         // top/bottom
-        if (
-          currentCell.dataset.groupedBy === 'rowgroup' ||
-          Number(currentCell.getAttribute('aria-colindex')) === 1
-        ) {
+        if (rowspan > 0) {
+          rowI = direction === 'up' ? rowI - rowspan + 1 : rowI + rowspan - 1;
+        } else if (Number(currentCell.getAttribute('aria-colindex')) === 1) {
           rowI = direction === 'up' ? rowI - 1 : rowI + 1;
         } else {
           const areLimitsDefined = limit?.fromRow !== undefined || limit?.fromColumn !== undefined;
@@ -664,7 +660,13 @@ class DataTableRoot<
             return;
           }
 
-          colI = colI - 1;
+          const hasRowSpanUpper = row instanceof HTMLElement && currentRow instanceof HTMLElement && row.dataset.filledColumns !== currentRow.dataset.filledColumns;
+
+          if (direction === 'up' && hasRowSpanUpper) {
+            rowI = rowI - 1;
+          } else {
+            colI = colI - 1;
+          }
         }
       }
       this.changeFocusCell(rowI, colI, direction);
@@ -810,9 +812,10 @@ class DataTableRoot<
         }
       }
 
-      const cell = row
-        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
-        .item(this.focusedCell[1]);
+      const colindex = this.focusedCell[1];
+      const cell = colindex > -1
+        ? row?.querySelector(`[role=gridcell][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"]), [role=columnheader][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"])`)
+        : undefined;
 
       cell?.removeAttribute('inert');
 
@@ -1261,6 +1264,33 @@ class DataTableRoot<
 
       let accordionInCell = null as null | React.ReactNode | DataTableData;
 
+      let rowKey = row[UNIQ_ROW_KEY];
+
+      if (!rowKey) {
+        if (uniqueRowKey) {
+          // @ts-ignore
+          const keyValue = row[uniqueRowKey];
+          if (keyValue instanceof MergedRowsCell) {
+            rowKey = keyValue.value;
+          } else {
+            rowKey = keyValue;
+          }
+        } else {
+          rowKey = `${uid}_${(rowIndex + id).toString(36)}`;
+        }
+      }
+
+      const initData: DTRow<UniqKeyType> = {
+        /*
+          row -> DataRowItem
+          uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
+        */
+        // @ts-ignore
+        [UNIQ_ROW_KEY]: rowKey,
+        [ROW_INDEX]: rowIndex,
+        [GRID_ROW_INDEX]: gridRowIndex,
+      };
+
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
           const columnsToRow = key.split(this.columnsSplitter);
@@ -1284,16 +1314,7 @@ class DataTableRoot<
 
           return acc;
         },
-        {
-          /*
-            row -> DataRowItem
-            uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
-          */
-          // @ts-ignore
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`),
-          [ROW_INDEX]: rowIndex,
-          [GRID_ROW_INDEX]: gridRowIndex,
-        },
+        initData,
       );
 
       gridRowIndex++;
@@ -1325,7 +1346,7 @@ class DataTableRoot<
     data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      if (groupedRows) {
+      if (groupedRows && groupedRows.length > 1) {
         const innerRows: DTRow<UniqKeyType>[] & { [ACCORDION]?: React.ReactElement } = [];
 
         const groupedKeys: string[] = [];
@@ -1336,7 +1357,13 @@ class DataTableRoot<
               : row[ACCORDION];
 
             acc[key] = new MergedRowsCell(value, groupedRows.length, accordion);
-            groupedKeys.push(key);
+            const columnsToRow = key.split(this.columnsSplitter);
+            if (columnsToRow.length === 1) {
+              groupedKeys.push(key);
+            } else {
+              groupedKeys.push(...columnsToRow);
+            }
+
             return acc;
           },
           {
@@ -1370,6 +1397,14 @@ class DataTableRoot<
         });
 
         rows.push(innerRows);
+      } else if (groupedRows?.length === 1) {
+        const dtRow = makeDtRow({
+          ...groupedRows[0],
+          ...row,
+        });
+
+        rows.push(dtRow);
+        rowIndex++;
       } else {
         const dtRow = makeDtRow(row);
 

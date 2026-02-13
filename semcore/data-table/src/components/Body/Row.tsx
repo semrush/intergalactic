@@ -275,6 +275,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
+      theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -286,7 +287,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const isMergedColumns = cellValue instanceof MergedColumnsCell;
 
     if (isMergedColumns || isMergedRows) {
-      value = cellValue.value;
+      value = cellValue.value instanceof MergedRowsCell ? cellValue.value.value : cellValue.value;
       if (isMergedColumns) {
         dataKey = cellValue.dataKey;
       }
@@ -316,6 +317,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      theme,
     };
 
     if (renderCell) {
@@ -451,6 +453,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       scrollAreaRef,
       accordionAnimationRows,
       onCellClick,
+      theme,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -474,6 +477,18 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
 
+    const filledColumns = columns.reduce((acc, column) => {
+      const cellValue: DTValue | MergedRowsCell | MergedColumnsCell | undefined = row[column.name];
+
+      if (cellValue instanceof MergedColumnsCell) {
+        acc = acc + cellValue.columnsCount;
+      } else if (cellValue !== undefined) {
+        acc++;
+      }
+
+      return acc;
+    }, 0);
+
     return sstyled(styles)(
       <>
         <SRow
@@ -481,10 +496,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           render={Box}
           role='row'
           accordionType={accordionType}
-          theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
+          data-filled-columns={filledColumns}
         >
           {columns.map((column, i) => {
             const index = i;
@@ -509,6 +524,12 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
               const checked = selectedRows.includes(rowUniqKey);
 
+              const nextColumnName = columns[i + 1].name;
+
+              if (!(nextColumnName in row)) {
+                return null;
+              }
+
               return (
                 <SCheckboxCell
                   key={i}
@@ -523,6 +544,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   isAccordionRow={isAccordionRow}
                   aria-hidden={isCellHidden}
                   withAccordion={withAccordion}
+                  theme={theme}
                 >
                   <Checkbox
                     checked={checked}
@@ -593,6 +615,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
             sideIndents={sideIndents}
+            data-filled-columns={filledColumns}
           >
             <SCell
               aria-colindex={1}

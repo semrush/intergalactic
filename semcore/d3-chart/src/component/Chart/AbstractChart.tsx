@@ -1,15 +1,18 @@
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { Flex } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 // @ts-ignore
+import type { HoverLine, HoverRect } from '../..';
+// @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
 import { makeDataHintsContainer } from '../../a11y/hints';
+import style from '../../style/abstract-chart.shadow.css';
 import { interpolateValue } from '../../utils';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
@@ -22,12 +25,14 @@ type ChartState = {
   withTrend: boolean;
 };
 
+export const NOT_A_VALUE = 'n/a';
+
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
   E extends readonly ((...args: any[]) => any)[] = [],
 > extends Component<T, {}, ChartState, E> {
-  public static style = {};
+  public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
     showXAxis: true,
@@ -117,7 +122,7 @@ export abstract class AbstractChart<
             {percent !== undefined ? `${percent}%` : ''}
           </Text>,
           <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
-            {value ?? 'n/a'}
+            {value ?? NOT_A_VALUE}
           </Text>,
         ];
       }
@@ -249,21 +254,52 @@ export abstract class AbstractChart<
   protected totalValue(data: ObjectData): number {
     const { dataDefinitions } = this.state;
 
+    let allNotAValue = true;
+
     const total = dataDefinitions.reduce((sum, legendItem) => {
       const item = data[legendItem.id];
 
+      if (item === null) {
+        allNotAValue = false;
+        return sum;
+      }
+
       if (typeof item === 'number') {
+        allNotAValue = false;
         return sum + item;
       }
 
       if (item instanceof Date && !Number.isNaN(item.getMilliseconds())) {
+        allNotAValue = false;
         return sum + item.getMilliseconds();
       }
 
       return sum;
     }, 0);
 
+    if (allNotAValue) {
+      return Number.NaN;
+    }
+
     return total;
+  }
+
+  protected percentValue(data: ObjectData, key: string): string {
+    const total = this.totalValue(data);
+
+    const value = data[key];
+
+    if (typeof value === 'number' && total !== 0) {
+      const percent = Math.round((100 * value) / total);
+
+      return `${percent}%`;
+    }
+
+    if (value === null) {
+      return `0%`;
+    }
+
+    return NOT_A_VALUE;
   }
 
   protected getValueScale(values: number[]): number {
@@ -322,7 +358,7 @@ export abstract class AbstractChart<
     }
 
     if (value === undefined || value === interpolateValue) {
-      return 'n/a';
+      return NOT_A_VALUE;
     }
 
     if (value === null) {
@@ -457,9 +493,65 @@ export abstract class AbstractChart<
     );
   }
 
+  protected getTooltipChildren<D extends ObjectData>(options: {
+    Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
+    dataItem: D;
+  }) {
+    const STooltipChildrenWrapper = Root;
+    const { Tooltip, dataItem } = options;
+
+    const { styles, groupKey } = this.asProps;
+    const { dataDefinitions } = this.state;
+    const title = dataItem[groupKey as keyof D]?.toString();
+
+    return sstyled(styles)(
+      <Flex direction='column'>
+        { title && <Tooltip.Title>{title}</Tooltip.Title> }
+
+        <STooltipChildrenWrapper
+          render={Box}
+          columnsCount='2'
+          __excludeProps={['data']}
+        >
+          {dataDefinitions.map((item) => {
+            return (
+              item.checked && (
+                <Fragment key={item.id}>
+                  <Tooltip.Dot mr={2} color={item.color}>
+                    {item.label}
+                  </Tooltip.Dot>
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
+                </Fragment>
+              )
+            );
+          })}
+
+          {this.renderTooltipTotalLine(dataItem)}
+        </STooltipChildrenWrapper>
+      </Flex>,
+    );
+  }
+
+  protected renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
+    const { showTotalInTooltip } = this.asProps;
+
+    if (!showTotalInTooltip) {
+      return null;
+    }
+
+    const total = this.totalValue(dataItem);
+
+    return (
+      <>
+        <Box mt={2} mr={2}>Total</Box>
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
+      </>
+    );
+  }
+
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter } =
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
       this.asProps;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
@@ -480,7 +572,7 @@ export abstract class AbstractChart<
           {...extractedAriaProps}
         >
           {this.renderAxis()}
-          {this.renderTooltip()}
+          {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>
       </SChart>,

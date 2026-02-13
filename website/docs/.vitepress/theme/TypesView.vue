@@ -1,5 +1,14 @@
 <template>
-  <h3>{{ types[type].declaration.name }}</h3>
+  <h3 :id="types[type].declaration.name.toLowerCase().replace(/\s+/g, '-')">
+    {{ types[type].declaration.name }}
+    <a
+        class="header-anchor"
+        :href="`#${types[type].declaration.name.toLowerCase().replace(/\s+/g, '-')}`"
+        :aria-label="`Permalink to &quot;${types[type].declaration.name}&quot;`"
+    >
+      &ZeroWidthSpace;
+    </a>
+  </h3>
   <FormattedTypeString :type="types[type].declaration.type" :types="types" />
   <table v-if="filteredTypes.length > 0">
     <thead>
