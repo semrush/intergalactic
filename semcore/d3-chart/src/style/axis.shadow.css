@@ -10,7 +10,7 @@ STick {
   font-size: var(--intergalactic-fs-100, 12px);
   fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
 }
-STick[position='left'], STick[position='right'] {
+STick[primaryText] {
   fill: var(--intergalactic-text-primary, #191b23);
 }
 

@@ -24,7 +24,7 @@ const Demo = () => {
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
-        <YAxis.Ticks />
+        <YAxis.Ticks primaryText />
       </YAxis>
       <HorizontalBar x='bar' y='category'>
         {({ index, x, y, width, height }) => {
