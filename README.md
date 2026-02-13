@@ -6,13 +6,13 @@
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
+Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for building interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 
 ---
 
 ### Features ✨
 
-- 56+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
+- 80+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
 - High-quality React components out of the box
 - Written in TypeScript with predictable static types
 - Whole package of design resources and development tools
@@ -23,10 +23,10 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 ### Browser support
 
 - Google Chrome
-- Mozilla Firefox
-- Opera
-- Microsoft Edge
 - Safari (two last versions)
+- Mozilla Firefox
+- Microsoft Edge
+- Opera
 
 ---
 
@@ -40,36 +40,59 @@ or
 npm install @semcore/ui
 ```
 
-After the installation, all components will be available at `@semcore/{{component_name}}`.
+After the installation, all components will be available at `@semcore/ui/{{component_name}}`.
 
 ### Testing
 
 The project uses a comprehensive testing setup with multiple testing frameworks and tools:
 
-#### Testing frameworks
+#### Testing tools
 
 - **Vitest** - Unit and component tests
 - **Playwright** - Browser automation and E2E tests
 - **React Testing Library** - Component testing utilities
 - **Axe** - Accessibility testing
+- **@guidepup** - Screen reader testing (NVDA)
 
 #### Running tests
 
 ```sh
-# Run unit tests
+# Run all unit tests
 pnpm test
 
-# Run browser tests (in docker to ensure consistent snapshots across different environments)
-pnpm browser-test:docker
+# Run unit tests for a specific component
+pnpm test button
+
+# Run browser test for a specific component
+pnpm browser-test button
+
+# Filter tests by tag
+TEST_TAG=@priority-high pnpm browser-test
 
 # Run accessibility tests
 pnpm axe-test
 
-# Run VoiceOver tests (macOS)
-pnpm vo-test
-
-# Run NVDA tests (Windows)
+# Run NVDA tests (Windows only, requires setup)
+pnpm nvda-test:setup   # first time
 pnpm nvda-test
+```
+
+#### Docker testing
+
+Docker ensures consistent rendering for image snapshot tests across different environments.
+
+```sh
+# Build Docker image (first time or after dependency changes)
+pnpm test:setup
+
+# Run unit tests in Docker
+pnpm test:docker
+
+# Run browser tests in Docker
+pnpm browser-test:docker
+
+# Run a specific browser test in Docker
+pnpm browser-test:docker button
 ```
 
 #### Configuration and setup
