@@ -73,22 +73,31 @@ function ThemePlaygroundContent() {
           <Text tag='h1' semibold size={600} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
             Theme playground
           </Text>
-          <DropdownMenu>
-            <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
-              Theme: {currentTheme.label}
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Menu>
-              {THEMES.map((theme, index) => (
-                <DropdownMenu.Item
-                  key={theme.id}
-                  selected={themeIndex === index}
-                  onClick={() => setThemeIndex(index)}
-                >
-                  {theme.label}
-                </DropdownMenu.Item>
-              ))}
-            </DropdownMenu.Menu>
-          </DropdownMenu>
+          <Box
+            style={{
+              position: 'fixed',
+              top: 16,
+              right: 16,
+              zIndex: 1000,
+            }}
+          >
+            <DropdownMenu>
+              <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
+                Theme: {currentTheme.label}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Menu>
+                {THEMES.map((theme, index) => (
+                  <DropdownMenu.Item
+                    key={theme.id}
+                    selected={themeIndex === index}
+                    onClick={() => setThemeIndex(index)}
+                  >
+                    {theme.label}
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Menu>
+            </DropdownMenu>
+          </Box>
         </Flex>
         <Text tag='h2' size={400} semibold mb={6} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
           Button
