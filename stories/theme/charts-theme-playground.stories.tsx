@@ -4,11 +4,11 @@ import newThemeTokens from '@semcore/core/lib/theme/themes/new';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Chart, Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
+import { Chart, Plot, Line, XAxis, YAxis, minMax, HorizontalBar, HoverRect } from '@semcore/ui/d3-chart';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { scaleLinear } from 'd3-scale';
+import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 import './theme-playground-fonts.css';
 
@@ -160,6 +160,38 @@ function LineAreaChart({
   );
 }
 
+function HorizontalBarChart({
+  data,
+  width,
+  height,
+}: {
+  data: Array<{ category: string; bar: number }>;
+  width: number;
+  height: number;
+}) {
+  const MARGIN = 40;
+  const xScale = scaleLinear()
+    .range([MARGIN * 2, width - MARGIN])
+    .domain([0, Math.max(...data.map((d) => d.bar), 10)]);
+  const yScale = scaleBand()
+    .range([height - MARGIN, MARGIN])
+    .domain(data.map((d) => d.category))
+    .paddingInner(0.4)
+    .paddingOuter(0.2);
+  return (
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis>
+        <YAxis.Ticks />
+      </YAxis>
+      <XAxis>
+        <XAxis.Ticks />
+        <XAxis.Grid />
+      </XAxis>
+      <HorizontalBar x='bar' y='category' />
+    </Plot>
+  );
+}
+
 function ChartsThemePlaygroundContent() {
   const [themeIndex, setThemeIndex] = React.useState(0);
   const currentTheme = THEMES[themeIndex];
@@ -208,124 +240,148 @@ function ChartsThemePlaygroundContent() {
           </Box>
         </Flex>
 
-        <Flex direction='column' gap={10} alignItems='flex-start'>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Line chart
-            </Text>
-            <Chart.Line
-              groupKey='x'
-              data={lineChartData}
-              plotWidth={400}
-              plotHeight={240}
-              showDots
-              aria-label='Line chart'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Line.Area chart
-            </Text>
-            <LineAreaChart data={lineAreaChartData} width={400} height={240} />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Area chart (stacked)
-            </Text>
-            <Chart.Area
-              groupKey='time'
-              data={areaChartDataStacked}
-              plotWidth={400}
-              plotHeight={240}
-              showDots
-              stacked
-              aria-label='Area chart stacked'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Bar chart
-            </Text>
-            <Chart.Bar
-              groupKey='category'
-              data={barChartData}
-              plotWidth={400}
-              plotHeight={240}
-              aria-label='Bar chart'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Donut chart
-            </Text>
-            <Chart.Donut
-              data={donutChartData}
-              plotWidth={300}
-              plotHeight={240}
-              aria-label='Donut chart'
-              innerRadius={80}
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Donut chart (halfsize)
-            </Text>
-            <Chart.Donut
-              data={donutChartData}
-              plotWidth={300}
-              plotHeight={240}
-              halfsize
-              aria-label='Donut chart halfsize'
-              innerRadius={100}
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Venn chart
-            </Text>
-            <Chart.Venn
-              data={vennChartData}
-              plotWidth={300}
-              plotHeight={300}
-              legendProps={{ legendMap: vennLegendMap }}
-              aria-label='Venn chart'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Radar chart
-            </Text>
-            <Chart.Radar
-              data={radarChartData}
-              groupKey='categories'
-              plotWidth={400}
-              plotHeight={400}
-              aria-label='Radar chart'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Bubble chart
-            </Text>
-            <Chart.Bubble
-              data={bubbleChartData}
-              plotWidth={400}
-              plotHeight={240}
-              aria-label='Bubble chart'
-            />
-          </Box>
-          <Box>
-            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              Scatterplot chart
-            </Text>
-            <Chart.ScatterPlot
-              data={scatterplotChartData}
-              groupKey='x'
-              plotWidth={400}
-              plotHeight={240}
-              aria-label='Scatterplot chart'
-            />
-          </Box>
+        <Flex gap={10} alignItems='flex-start' flexWrap>
+          <Flex direction='column' gap={10} alignItems='flex-start'>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Line chart
+              </Text>
+              <Chart.Line
+                groupKey='x'
+                data={lineChartData}
+                plotWidth={400}
+                plotHeight={240}
+                showDots
+                aria-label='Line chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Line.Area chart
+              </Text>
+              <LineAreaChart data={lineAreaChartData} width={400} height={240} />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Area chart (stacked)
+              </Text>
+              <Chart.Area
+                groupKey='time'
+                data={areaChartDataStacked}
+                plotWidth={400}
+                plotHeight={240}
+                showDots
+                stacked
+                aria-label='Area chart stacked'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Bar chart
+              </Text>
+              <Chart.Bar
+                groupKey='category'
+                data={barChartData}
+                plotWidth={400}
+                plotHeight={240}
+                aria-label='Bar chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Bubble chart
+              </Text>
+              <Chart.Bubble
+                data={bubbleChartData}
+                plotWidth={400}
+                plotHeight={240}
+                aria-label='Bubble chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Scatterplot chart
+              </Text>
+              <Chart.ScatterPlot
+                data={scatterplotChartData}
+                groupKey='x'
+                plotWidth={400}
+                plotHeight={240}
+                aria-label='Scatterplot chart'
+              />
+            </Box>
+          </Flex>
+          <Flex direction='column' gap={10} alignItems='flex-start'>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Donut chart
+              </Text>
+              <Chart.Donut
+                data={donutChartData}
+                plotWidth={300}
+                plotHeight={240}
+                aria-label='Donut chart'
+                innerRadius={80}
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Donut chart (halfsize)
+              </Text>
+              <Chart.Donut
+                data={donutChartData}
+                plotWidth={300}
+                plotHeight={240}
+                halfsize
+                aria-label='Donut chart halfsize'
+                innerRadius={100}
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Venn chart
+              </Text>
+              <Chart.Venn
+                data={vennChartData}
+                plotWidth={300}
+                plotHeight={300}
+                legendProps={{ legendMap: vennLegendMap }}
+                aria-label='Venn chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Horizontal bar chart
+              </Text>
+              <HorizontalBarChart data={barChartData} width={400} height={240} />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Compact horizontal bar chart
+              </Text>
+              <Chart.CompactHorizontalBar
+                y='category'
+                x='bar'
+                data={barChartData}
+                plotWidth={400}
+                plotHeight={320}
+                marginY={8}
+                aria-label='Compact horizontal bar chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Radar chart
+              </Text>
+              <Chart.Radar
+                data={radarChartData}
+                groupKey='categories'
+                plotWidth={400}
+                plotHeight={400}
+                aria-label='Radar chart'
+              />
+            </Box>
+          </Flex>
         </Flex>
       </Box>
     </ThemeProvider>
