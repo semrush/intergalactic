@@ -2,6 +2,7 @@ import * as path from 'node:path';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
+import type { SeparatedPackage } from '@tools/continuous-delivery/src/types/common.types';
 import dayjs from 'dayjs';
 import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
@@ -75,8 +76,8 @@ export class Package {
     );
   }
 
-  public async collectIcon() {
-    const packagePath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'icon');
+  public async collectOnePackage(pack: SeparatedPackage) {
+    const packagePath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', pack);
     const packageFile: PackageJson = await fs.readJson(resolvePath(packagePath, 'package.json'));
 
     this.packagesMap.set(packageFile.name, {

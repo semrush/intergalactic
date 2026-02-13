@@ -37,7 +37,7 @@ export const initPackagePrerelease = async (pack: SeparatedPackage) => {
   const prevReleaseTag = await gitUtils.getPrevPackageTag(pack);
 
   const packages = new Package();
-  await packages.collectIcon();
+  await packages.collectOnePackage(pack);
 
   const changelog = new Changelog(pack, prevReleaseTag, packages.list);
   await changelog.collectFromHistory();
