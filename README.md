@@ -56,18 +56,23 @@ The project uses a comprehensive testing setup with multiple testing frameworks 
 
 #### Running tests
 
+Docker ensures consistent rendering for image snapshot tests across different environments.
+
 ```sh
+# Build Docker image (first time or after dependency changes)
+pnpm test:setup
+
 # Run all unit tests
 pnpm test
 
 # Run unit tests for a specific component
 pnpm test button
 
-# Run browser test for a specific component
-pnpm browser-test button
+# Run browser tests in Docker
+pnpm browser-test:docker
 
-# Filter tests by tag
-TEST_TAG=@priority-high pnpm browser-test
+# Run browser tests in Docker for a specific component
+pnpm browser-test:docker button
 
 # Run accessibility tests
 pnpm axe-test
@@ -75,24 +80,6 @@ pnpm axe-test
 # Run NVDA tests (Windows only, requires setup)
 pnpm nvda-test:setup   # first time
 pnpm nvda-test
-```
-
-#### Docker testing
-
-Docker ensures consistent rendering for image snapshot tests across different environments.
-
-```sh
-# Build Docker image (first time or after dependency changes)
-pnpm test:setup
-
-# Run unit tests in Docker
-pnpm test:docker
-
-# Run browser tests in Docker
-pnpm browser-test:docker
-
-# Run a specific browser test in Docker
-pnpm browser-test:docker button
 ```
 
 #### Configuration and setup
