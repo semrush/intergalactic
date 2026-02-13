@@ -15,7 +15,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/icon/tests/examples/icons_pay.tsx', 'en');
     const expectedAttributes = [
       {
-        // 'aria-label': 'PayM neutral',
+        'aria-label': 'PayM neutral',
         'data-group': 'm',
         'width': '21',
         'height': '16',
@@ -23,7 +23,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'aria-hidden': 'true',
       },
       {
-        // 'aria-label': 'PayL neutral',
+        'aria-label': 'PayL neutral',
         'data-group': 'l',
         'width': '32',
         'height': '24',
@@ -58,7 +58,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const expectedAttributes = [
       {
-        // 'aria-label': 'Icon neutralM',
+        'aria-label': 'Icon neutralM',
         'data-group': 'm',
         'width': '16',
         'height': '16',
@@ -66,7 +66,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'aria-hidden': 'true',
       },
       {
-        // 'aria-label': 'Icon neutraL',
+        'aria-label': 'Icon neutraL',
         'data-group': 'l',
         'width': '24',
         'height': '24',
@@ -74,7 +74,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'aria-hidden': 'true',
       },
       {
-        // 'aria-label': 'Icon ColoredM',
+        'aria-label': 'Icon ColoredM',
         'data-group': 'm',
         'width': '16',
         'height': '16',
@@ -82,7 +82,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         'aria-hidden': 'true',
       },
       {
-        // 'aria-label': 'Icon ColoredL',
+        'aria-label': 'Icon ColoredL',
         'data-group': 'l',
         'width': '24',
         'height': '24',

@@ -1,5 +1,6 @@
-import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { BoxProps, NeighborItemProps } from '@semcore/base-components';
 import type { PropGetterFn } from '@semcore/core';
+import type { TooltipHintProps } from '@semcore/tooltip';
 import type React from 'react';
 
 export type AbstractButtonProps<S, U, T> = BoxProps &
@@ -18,7 +19,7 @@ export type AbstractButtonProps<S, U, T> = BoxProps &
      * Placement for hint
      * @default top
      */
-    hintPlacement?: SimpleHintPopperProps['placement'];
+    hintPlacement?: TooltipHintProps['placement'];
 
     /** Button size. Defined in Button.type or ButtonLink.type */
     size?: S;

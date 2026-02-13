@@ -25,21 +25,6 @@ export const TabLineProps: StoryObj<typeof defaultProps> = {
       options: [1, 2, 3],
     },
     ariaLabel: { control: 'text' },
-    w: {
-      control: { type: 'number' },
-    },
-    ellipsis: {
-      control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
-      mapping: {
-        'false': false,
-        'true': true,
-        'cropPosition:middle': { cropPosition: 'middle' },
-        'cropPosition:end': { cropPosition: 'end' },
-        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
-        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
-      },
-    },
   },
   args: defaultProps,
 };

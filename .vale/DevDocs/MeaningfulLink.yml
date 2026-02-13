@@ -11,6 +11,7 @@ tokens:
   - \[this\]\(.*\)
   - \[this page\]\(.*\)
   - \[this link\]\(.*\)
+  - \[link\]\(.*\)
   - \[click here\]\(.*\)
   - \[click this\]\(.*\)
   - \[click that\]\(.*\)

@@ -5,6 +5,7 @@ import InfoM from '@semcore/icon/Info/m';
 import { Flex, Box } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
+import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
@@ -18,17 +19,17 @@ const Demo = () => {
       <Header mx={8}>
         <Header.Row>
           <Title toolName='Tool Name:'>
-            <Text color='text-secondary' tag={Flex} mr={4}>
-              <Text ellipsis={true}>
+            <Text color='text-secondary' noWrap tag={Flex} mr={4}>
+              <Ellipsis trim='end'>
                 Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com
                 Domain.com Domain.com Domain.com
-              </Text>
+              </Ellipsis>
               <ButtonLink addonLeft={EditM} aria-label='Hint for button-link' />
             </Text>
           </Title>
           <Header.Links>
             <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
-            <Link noWrap addonLeft={BookM}>User manual</Link>
+            <Link addonLeft={BookM}>User manual</Link>
           </Header.Links>
         </Header.Row>
 

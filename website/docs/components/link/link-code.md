@@ -5,7 +5,7 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ## Link in text
 
-By default, links are displayed as `inline` element and don’t need some extra settings.
+By default, links are displayed as `inline-block` and don’t wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
 
 ::: sandbox
 
@@ -57,9 +57,10 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 
 ## Link with ellipsis
 
-<!-- There's a zero width space between curly braces in the text below because otherwise vitepress crashes -->
+There are two moments you need to consider when using link with addons and ellipsis:
 
-If you need to crop a link that has an addon, refer to the root component with `hintProps={​{triggerRef: linkRef}​}` to make sure that the hint appears by hovering the entire link, including the addon. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
+- To properly display a link with ellipsis inside a flex block, you need to use a hack with `min-width: 0px`.
+- When the text has an `overflow:hidden` property, it may overlap with a vertical addon. To avoid this, wrap the content in a flex container with vertical alignment.
 
 ::: sandbox
 
@@ -71,7 +72,7 @@ If you need to crop a link that has an addon, refer to the root component with `
 
 ## Link without visible text
 
-If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) with a label of the link function for accessibility purposes. Adding a hint will automatically provide an `aria-label` for the link.
+If a link has no visible text, it's important to add a [Hint](/components/tooltip/tooltip-code) with a label of the link function for accessibility purposes. Adding a `Hint` will automatically provide an `aria-label` for the link.
 
 ::: sandbox
 

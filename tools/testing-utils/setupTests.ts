@@ -38,12 +38,3 @@ class ResizeObserverMock {
   disconnect() {}
 }
 (window as any).ResizeObserver = ResizeObserverMock;
-
-class IntersectionObserverMock {
-  disconnect() {}
-  observe() {}
-  takeRecords() {}
-  unobserve() {}
-}
-
-vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);

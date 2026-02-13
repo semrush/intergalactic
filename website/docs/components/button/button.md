@@ -61,7 +61,7 @@ Table: Button types
 
 ### Themes
 
-You can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. Refer to [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale).
+You can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
@@ -155,13 +155,13 @@ The label of the button should clearly indicate what happens after user clicks i
 
 ## Grouped buttons
 
-**The margin between buttons should be [multiple of 4](/layout/box-system/box-system-spacing)**. If there are several buttons next to each other, use the recommended margins shown in the following table.
+**The margin between buttons should be [multiple of 4](/layout/box-system/box-system-spacing)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
 Table: Grouped buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |
-| ![Margin between buttons is 12px](static/margin-1.png) | ![Margin between buttons is 8px](static/margin-2.png) |
+| ![](static/margin-1.png) | ![](static/margin-2.png) |
 
 ## Button variations
 
@@ -182,18 +182,16 @@ We recommend using a button with an icon and text in cases when:
 
 We recommend using the icon-only button if:
 
-<!-- vale DevDocs.Judgements = NO -->
 - interface hasn’t enough space;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
 ::: tip
-**Add a [hint](../../utils/hint/hint) with the name of the action to the icon-only buttons**. It helps user to understand functionality of the button if the icon meaning isn’t obvious.
+**Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
 :::
-<!-- vale DevDocs.Judgements = YES -->
 
 ### Branded buttons
 
-If you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
+In case when you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
 
 - You can color the button in a branded color when you need to focus user's attention.
 - You can use secondary button with the branded icon inside. This is the safest option in relation to saving the visual hierarchy of the product.

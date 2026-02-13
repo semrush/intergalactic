@@ -46,11 +46,11 @@ Table: Trigger button sizes
 
 ### Maximum width
 
-If the trigger width is limited, truncate long values with an [ellipsis](../../utils/ellipsis/ellipsis). When hovering, show a [Hint](../../utils/hint/hint) with the full value.
+If the trigger width is limited, collapse long values with an `ellipsis`. When hovering, show a [Hint](../tooltip/tooltip) with the full value.
 
 ![](static/content-sizes.png)
 
-![](static/ellipsis.png)
+![](static/tooltip.png)
 
 ## Trigger states
 
@@ -184,7 +184,7 @@ Table: States for displaying the selected values in the trigger
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | If nothing is selected, write "Select" + the required value.                                                                              | ![](static/multiselect-trigger-1.png) |
 | If everything is selected, write `All`.                                                                                                   | ![](static/multiselect-trigger-2.png) |
-| If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they don’t fit, truncate the text with [ellipsis](../../utils/ellipsis/ellipsis). | ![](static/multiselect-trigger-3.png) |
+| If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they don’t fit, collapse the text in `ellipsis`. | ![](static/multiselect-trigger-3.png) |
 | **The select has a label.** If more than 2 values are selected, add them to the "Label: N selected" construction.                         | ![](static/multiselect-trigger-4.png) |
 | **The select doesn't have a label.** If more than 2 values are selected, add them to the "N selected" construction.                       | ![](static/multiselect-trigger-5.png) |
 

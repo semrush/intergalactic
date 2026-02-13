@@ -3,6 +3,7 @@ import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {
@@ -19,7 +20,7 @@ const Demo = () => {
         <Input w={200}>
           <Input.Value placeholder='Placeholder' aria-label='input example' />
           <Input.Addon>
-            <ButtonLink title='Test hint' use='secondary' addonLeft={ShowYesM} />
+            <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
           </Input.Addon>
         </Input>
         <Button>Middle</Button>

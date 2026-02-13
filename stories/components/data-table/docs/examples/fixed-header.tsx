@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 

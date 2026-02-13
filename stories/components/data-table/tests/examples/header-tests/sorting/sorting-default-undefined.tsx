@@ -1,6 +1,6 @@
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import { Text } from '@semcore/ui/typography';
+import Ellipsis from '@semcore/ui/ellipsis';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
@@ -41,7 +41,7 @@ const Demo = () => {
         { name: 'keyword', children: 'Keyword', justifyContent: 'left', sortable: true },
         {
           name: 'kd',
-          children: <Text ellipsis={true}>KD % and some another text long</Text>,
+          children: <Ellipsis>KD % and some another text long</Ellipsis>,
           justifyContent: 'right',
           gtcWidth: 'minmax(0, 68px)',
           sortable: true,

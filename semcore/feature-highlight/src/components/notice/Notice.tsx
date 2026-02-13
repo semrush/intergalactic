@@ -84,4 +84,5 @@ export const NoticeFH = createComponent(NoticeFHRoot, {
   Title: Notice.Title,
   Text: Notice.Text,
   Close: Notice.Close,
+  CloseIcon: Notice.CloseIcon,
 }) as HighlightedNoticeComponent;

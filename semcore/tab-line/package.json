@@ -16,9 +16,6 @@
     "import": "./lib/esm/index.mjs",
     "types": "./lib/types/index.d.ts"
   },
-  "dependencies": {
-    "@semcore/typography": "^16.3.2"
-  },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"
   },

@@ -81,7 +81,7 @@ const Demo = (props: ExampleProps) => {
       >
         <ButtonLink.Text>ButtonLink with Badge</ButtonLink.Text>
         <ButtonLink.Addon>
-          <Badge type='new' />
+          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
         </ButtonLink.Addon>
       </ButtonLink>
 

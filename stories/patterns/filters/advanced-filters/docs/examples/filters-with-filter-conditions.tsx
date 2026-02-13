@@ -8,6 +8,7 @@ import Divider from '@semcore/ui/divider';
 import Dropdown from '@semcore/ui/dropdown';
 import Input from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
+import { Hint } from '@semcore/ui/tooltip';
 import React, { useEffect, useRef, useState } from 'react';
 
 const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));

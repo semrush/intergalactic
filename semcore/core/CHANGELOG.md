@@ -105,7 +105,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Return type for `findComponent` util. It could be only `ReactElement` or `undefined`.
+- Return type for `fincComponent` util. It could be only `ReactElement` or `undefined`.
 
 ## [2.39.4] - 2025-05-13
 

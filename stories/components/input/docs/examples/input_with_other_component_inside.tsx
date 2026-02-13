@@ -42,7 +42,9 @@ const Demo = () => {
             aria-describedby='badge-new'
           />
           <Input.Addon>
-            <Badge type='new' id='badge-new' />
+            <Badge bg='green-300' id='badge-new'>
+              new
+            </Badge>
           </Input.Addon>
         </Input>
       </Box>

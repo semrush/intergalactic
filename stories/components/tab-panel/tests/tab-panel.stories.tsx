@@ -17,24 +17,15 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
     disabled: {
       control: { type: 'boolean' },
     },
+    selected: {
+      control: { type: 'boolean' },
+    },
     behavior: {
       control: { type: 'select' },
       options: ['auto', 'manual'],
     },
     w: {
       control: { type: 'number' },
-    },
-    ellipsis: {
-      control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
-      mapping: {
-        'false': false,
-        'true': true,
-        'cropPosition:middle': { cropPosition: 'middle' },
-        'cropPosition:end': { cropPosition: 'end' },
-        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
-        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
-      },
     },
   },
   args: TabPanelItemAddonsProps,

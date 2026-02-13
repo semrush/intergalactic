@@ -1,4 +1,4 @@
-import type { EllipsisSettings, SimpleHintPopperProps, BoxProps } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 export type BreadcrumbsProps = BoxProps & {
@@ -15,13 +15,6 @@ export type BreadcrumbsItemProps = BoxProps & {
   active?: boolean;
   /** Specifies the locale for i18n support */
   locale?: string;
-  /**
-   * Ellipsis settings. You shouldn't use `cropPosition: middle` for breadcrumbs.
-   * If you're sure you need `cropPosition: middle`, set `w` to Breadcrumbs.Item manually, for correct Ellipsis calculations.
-   * @default false
-   */
-  ellipsis?: true | EllipsisSettings;
-  hintProps?: SimpleHintPopperProps;
 };
 
 export type BreadcrumbsContext = BreadcrumbsProps & {

@@ -12,21 +12,21 @@ const Demo = () => {
           aria-controls={value === 1 ? 'tab-panel-3-1' : undefined}
           id='tab-label-3-1'
         >
-          Catsasdfasdfasdfadsf
+          Cats
         </TabLine.Item>
         <TabLine.Item
           value={2}
           aria-controls={value === 2 ? 'tab-panel-3-2' : undefined}
           id='tab-label-3-2'
         >
-          Dogsasdfasdfasdfasdf
+          Dogs
         </TabLine.Item>
         <TabLine.Item
           value={3}
           aria-controls={value === 3 ? 'tab-panel-3-3' : undefined}
           id='tab-label-3-3'
         >
-          Birdsadsfasdfasdfasdf
+          Birds
         </TabLine.Item>
       </TabLine>
       {

@@ -3,6 +3,7 @@ import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -106,10 +107,10 @@ const Demo = () => {
           if (props.columnName === 'vol') {
             return (
               <>
-                <Text ellipsis={true}>
+                <Ellipsis>
                   {' '}
                   {props.value}
-                </Text>
+                </Ellipsis>
                 <Link
                   href='#'
                   target='_blank'

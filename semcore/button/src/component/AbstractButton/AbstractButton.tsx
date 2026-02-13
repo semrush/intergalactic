@@ -1,8 +1,9 @@
-import { NeighborLocation, Box, Hint } from '@semcore/base-components';
+import { NeighborLocation, Box } from '@semcore/base-components';
 import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
 import type { AbstractButtonProps } from './AbstractButton.type';
@@ -16,16 +17,12 @@ export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
 
 type Props = AbstractButtonProps<any, any, any>;
 
-type State = {
-  ariaLabelledByContent: null | string;
-};
-
-export abstract class AbstractButton extends Component<Props, [], never, {}, State> {
+export abstract class AbstractButton extends Component<Props> {
   static displayName = 'AbstractButton';
 
   containerRef = React.createRef<HTMLButtonElement>();
 
-  state: State = {
+  state = {
     ariaLabelledByContent: null,
   };
 
@@ -72,6 +69,28 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
     }
   }
 
+  renderButton({ buttonProps, children }: any) {
+    const { styles, theme } = this.asProps;
+    const SButton = Root;
+
+    return sstyled(styles)(
+      <SButton render={Box} invertOutline={theme === 'invert'} {...buttonProps}>
+        {children}
+      </SButton>,
+    );
+  }
+
+  renderButtonWithHint({ buttonProps, children, hintProps }: any) {
+    const { styles, theme } = this.asProps;
+    const SButton = Root;
+
+    return sstyled(styles)(
+      <SButton render={Hint} invertOutline={theme === 'invert'} {...buttonProps} {...hintProps} ignorePortalsStacking>
+        {children}
+      </SButton>,
+    );
+  }
+
   render() {
     const {
       styles,
@@ -81,7 +100,7 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
       disabled = loading,
       size,
       neighborLocation,
-      children,
+      children: hasChildren,
       title,
       ['aria-label']: ariaLabel,
       Children,
@@ -89,7 +108,6 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
       addonRight: AddonRight,
       hintPlacement,
     } = this.asProps;
-    const SButton = Root;
     // @ts-ignore
     const Button = this[CORE_INSTANCE];
     const useTheme = use && theme ? `${use}-${theme}` : false;
@@ -97,63 +115,63 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
     const SSpin = Box;
     const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
-    const showHint = (children === undefined || title);
+    const buttonProps: Record<string, any> = {
+      'type': 'button',
+      'tag': 'button',
+      disabled,
+      'use:theme': useTheme,
+      'ref': this.containerRef,
+      'text-color': this.getTextColor(),
+      'aria-busy': loading,
+      '__excludeProps': ['title'],
+      'tabIndex': 0,
+    };
+
+    const hintProps = {
+      title: buttonAriaLabel,
+      timeout: [250, 50],
+      placement: hintPlacement,
+      theme: theme === 'invert' ? 'invert' : undefined,
+      __excludeProps: [],
+    };
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) => {
-          return sstyled(styles)(
+          const children = sstyled(styles)(
             <>
-              <SButton
-                render={Box}
-                invertOutline={theme === 'invert'}
-                type='button'
-                tag='button'
-                tabIndex={0}
-                disabled={disabled}
-                use:theme={useTheme}
-                ref={this.containerRef}
-                text-color={this.getTextColor()}
-                aria-busy={loading}
-                __excludeProps={['title']}
-                aria-label={showHint ? buttonAriaLabel : undefined}
-                neighborLocation={neighborLocation}
-              >
-                {/* @ts-ignore */}
-                <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
-                  {AddonLeft
-                    ? (
-                        <Button.Addon>
-                          <AddonLeft />
-                        </Button.Addon>
-                      )
-                    : null}
-                  {addonTextChildren(Children, Button.Text, Button.Addon)}
-                  {AddonRight
-                    ? (
-                        <Button.Addon>
-                          <AddonRight />
-                        </Button.Addon>
-                      )
-                    : null}
-                </SInner>
-                {loading && (
-                  <SSpin tag='span'>
-                    <SpinButton centered size={size} theme={useTheme} />
-                  </SSpin>
-                )}
-              </SButton>
-              {showHint && (
-                <Hint
-                  triggerRef={this.containerRef}
-                  timeout={[250, 50]}
-                  placement={hintPlacement}
-                >
-                  {buttonAriaLabel}
-                </Hint>
+              {/* @ts-ignore */}
+              <SInner tag='span' loading={loading} data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}>
+                {AddonLeft
+                  ? (
+                      <Button.Addon>
+                        <AddonLeft />
+                      </Button.Addon>
+                    )
+                  : null}
+                {addonTextChildren(Children, Button.Text, Button.Addon)}
+                {AddonRight
+                  ? (
+                      <Button.Addon>
+                        <AddonRight />
+                      </Button.Addon>
+                    )
+                  : null}
+              </SInner>
+              {loading && (
+                <SSpin tag='span'>
+                  <SpinButton centered size={size} theme={useTheme} />
+                </SSpin>
               )}
             </>,
           );
+          buttonProps.neighborLocation = neighborLocation;
+
+          if (hasChildren === undefined || title) {
+            return this.renderButtonWithHint({ buttonProps, hintProps, children });
+          }
+
+          return this.renderButton({ buttonProps, children });
         }}
       </NeighborLocation.Detect>
     );

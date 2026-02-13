@@ -71,8 +71,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -90,7 +94,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await page.getByText('ButtonLink Addon').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -104,8 +108,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });

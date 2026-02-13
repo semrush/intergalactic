@@ -74,7 +74,7 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 ![](static/add-loading-L.png)
 
-If space is limited, text in tags should be truncated with [ellipsis](../../utils/ellipsis/ellipsis). Hovering over a tag with an `ellipsis` should display a [hint](../../utils/hint/hint) with the full tag label.
+If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` should display a tooltip with the full tag label.
 
 ## Grouped tags
 
@@ -92,7 +92,7 @@ For editable tags, use the [InlineInput](/components/inline-input/inline-input) 
 
 ## Long text
 
-You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be truncated with an [ellipsis](../../utils/ellipsis/ellipsis), and hovering over the tag will show a [hint](../../utils/hint/hint) with the full tag label.
+You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis`, and hovering over the tag will show a tooltip with the full tag label.
 
 ![](static/ellipsis.png)
 

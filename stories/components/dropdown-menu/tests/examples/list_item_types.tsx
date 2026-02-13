@@ -53,7 +53,7 @@ const Demo = () => {
               <DropdownMenu.Item.Content>
                 <DropdownMenu.Item.Text>Menu item 5</DropdownMenu.Item.Text>
                 <DropdownMenu.Item.Addon>
-                  <Badge type='admin' />
+                  <Badge bg='blue-400'>admin</Badge>
                 </DropdownMenu.Item.Addon>
               </DropdownMenu.Item.Content>
             </DropdownMenu.Item>

@@ -2,6 +2,7 @@ import CheckM from '@semcore/icon/Check/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
+import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -22,7 +23,8 @@ const Demo = () => {
         />
         {value && (
           <Input.Addon>
-            <ButtonLink
+            <Hint
+              tag={ButtonLink}
               addonLeft={CheckM}
               color='icon-secondary-success'
               title='Submit'

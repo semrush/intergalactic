@@ -2,7 +2,6 @@ import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import SSeparator from '@semcore/icon/ChevronRight/m';
-import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/breadcrumbs.shadow.css';
@@ -41,34 +40,35 @@ class Breadcrumbs extends Component {
   }
 }
 
-function Item(props) {
-  const SBreadcrumbsItem = Root;
-  const { styles, separator, active, disabled, href, tabIndex, tag, ellipsis = true, hintProps } = props;
-  const SSeparator = 'div';
-  const SListItem = 'li';
+class Item extends Component {
+  static defaultProps = {
+    tag: 'a',
+    locale: 'en',
+    tabIndex: 0,
+  };
 
-  return sstyled(styles)(
-    <>
-      <SListItem>
-        <SBreadcrumbsItem
-          render={Text}
-          use:tabIndex={active || disabled ? -1 : tabIndex}
-          use:href={!active && !disabled ? href : undefined}
-          aria-current={active ? 'page' : undefined}
-          use:tag={active ? 'span' : tag}
-          ellipsis={ellipsis}
-          hintProps={hintProps}
-        />
-      </SListItem>
-      <SSeparator aria-hidden='true'>{separator}</SSeparator>
-    </>,
-  );
+  render() {
+    const SBreadcrumbsItem = Root;
+    const { styles, separator, active, disabled, href, tabIndex, tag } = this.asProps;
+    const SSeparator = 'div';
+    const SListItem = 'li';
+
+    return sstyled(styles)(
+      <>
+        <SListItem>
+          <SBreadcrumbsItem
+            render={Box}
+            use:tabIndex={active || disabled ? -1 : tabIndex}
+            use:href={!active && !disabled ? href : undefined}
+            aria-current={active ? 'page' : undefined}
+            use:tag={active ? 'span' : tag}
+          />
+        </SListItem>
+        <SSeparator aria-hidden='true'>{separator}</SSeparator>
+      </>,
+    );
+  }
 }
-Item.defaultProps = {
-  tag: 'a',
-  locale: 'en',
-  tabIndex: 0,
-};
 
 export default createComponent(Breadcrumbs, {
   Item,

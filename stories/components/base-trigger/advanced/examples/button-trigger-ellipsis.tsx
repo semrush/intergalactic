@@ -1,5 +1,7 @@
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -7,23 +9,26 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[ButtonTrigger, 'h1']}>
-          <ButtonTrigger.Text w={150} tag='h2' size={400} ellipsis={{ cropPosition: 'middle' }}>
-            Few Tags Tags Tags
+          <ButtonTrigger.Text w={150} tag={[Text, 'h2']} size={400}>
+            <Ellipsis trim='middle'>Few tags tags</Ellipsis>
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} size={400} data-test-id='ellipsis-middle' ellipsis={{ cropPosition: 'middle' }}>
-            This is first trigger with a very very long text!
+          <ButtonTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
+            <Ellipsis trim='middle'>
+              This is first trigger with a very very long text!
+            </Ellipsis>
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={ButtonTrigger}>
-          <ButtonTrigger.Text w={150} size={400} ellipsis={true}>
-
-            This is second trigger with a very very long text!
+          <ButtonTrigger.Text w={150} tag={Text} size={400}>
+            <Ellipsis>
+              This is second trigger with a very very long text!
+            </Ellipsis>
           </ButtonTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -37,9 +42,9 @@ const Demo = () => {
       <br />
       <br />
       <ButtonTrigger w={100} data-test-id='active-trigger'>
-        <ButtonTrigger.Text ellipsis={true}>
+        <Ellipsis>
           This is third trigger with a very very long text!
-        </ButtonTrigger.Text>
+        </Ellipsis>
       </ButtonTrigger>
 
     </>

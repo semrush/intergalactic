@@ -44,7 +44,7 @@ export const locators = {
 
   selectTriggerFilled: (page: Page, placeholder: string, index?: number): Locator => {
     const base = page.locator(
-      `[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`,
+      `div[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`,
     );
     return typeof index === 'number' ? base.nth(index) : base;
   },
@@ -52,7 +52,7 @@ export const locators = {
   addFilterSelectInputSearch: (page: Page): Locator => page.locator('[data-ui-name="AddFilterSelect.InputSearch"]'),
 
   dropdownTrigger: (page: Page, placeholder: string): Locator =>
-    page.locator(`[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
+    page.locator(`div[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
 
   dialog: (page: Page): Locator => page.getByRole('dialog'),
 

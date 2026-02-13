@@ -118,8 +118,4 @@ declare const DescriptionTooltip: Intergalactic.Component<
 };
 
 export default Tooltip;
-export {
-  /** @deprecated. Use Hint component from @semcore/base-components */
-  Hint,
-  DescriptionTooltip,
-};
+export { Hint, DescriptionTooltip };

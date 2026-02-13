@@ -30,7 +30,7 @@ const Demo = () => {
           </TabLine.Item.Addon>
           <TabLine.Item.Text>Instagram</TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge type='new'>new</Badge>
+            <Badge bg='green-400'>new</Badge>
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item

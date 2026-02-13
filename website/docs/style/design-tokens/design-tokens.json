@@ -481,7 +481,6 @@
     "description": "Inverted version of the primary text.",
     "components": [
       "badge",
-      "base-components",
       "button",
       "date-picker",
       "dot",
@@ -842,7 +841,6 @@
     "computedValue": "#6c6e79",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
-      "base-components",
       "tooltip"
     ]
   },
@@ -2199,7 +2197,6 @@
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
     "description": "Default shadow of all Poppers, Dropdowns and Tooltips.",
     "components": [
-      "base-components",
       "d3-chart",
       "dropdown",
       "feature-popover",
@@ -2377,6 +2374,7 @@
       "radio",
       "side-panel",
       "switch",
+      "tab-line",
       "tag",
       "textarea",
       "typography",
@@ -2407,6 +2405,8 @@
       "radio",
       "slider",
       "switch",
+      "tab-line",
+      "tab-panel",
       "tag",
       "textarea",
       "tooltip",
@@ -2422,7 +2422,6 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
-      "base-components",
       "button",
       "d3-chart",
       "data-table",
@@ -2488,6 +2487,7 @@
       "button",
       "counter",
       "tab-line",
+      "tab-panel",
       "tag",
       "time-picker",
       "typography"
@@ -2513,7 +2513,6 @@
     "computedValue": "12px",
     "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
     "components": [
-      "base-components",
       "button",
       "counter",
       "d3-chart",
@@ -2552,6 +2551,8 @@
       "radio",
       "slider",
       "switch",
+      "tab-line",
+      "tab-panel",
       "tag",
       "textarea",
       "time-picker",
@@ -2582,6 +2583,7 @@
       "radio",
       "side-panel",
       "switch",
+      "tab-line",
       "tag",
       "textarea",
       "time-picker",
@@ -2714,6 +2716,7 @@
       "data-table",
       "dropdown",
       "input-tags",
+      "link",
       "notice",
       "radio",
       "select",
@@ -2980,7 +2983,6 @@
     "rawValue": "4px",
     "computedValue": "4px",
     "components": [
-      "base-components",
       "checkbox"
     ]
   },
@@ -3334,7 +3336,6 @@
     "computedValue": "#191b23",
     "description": "Inverted version of the default Tooltip background.",
     "components": [
-      "base-components",
       "tooltip"
     ]
   },

@@ -54,7 +54,7 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTagsRoot extends Component<InputTagsProps, typeof InputTagsRoot.enhance> {
+class InputTags extends Component<InputTagsProps, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
@@ -383,7 +383,7 @@ function TagCloseButton(props: IRootComponentProps) {
   return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
 }
 
-const InputTags = createComponent(InputTagsRoot, {
+export default createComponent(InputTags, {
   Value,
   TagsContainer: InputTagsContainer,
   Tag: [
@@ -395,11 +395,11 @@ const InputTags = createComponent(InputTagsRoot, {
       Circle: TagContainer.Circle,
     },
   ],
-}) as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
+}) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps & TagTextProps, TagContext> & {
+    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
       Content: Intergalactic.Component<'div', TagTextProps>;
     };
     Close: typeof TagContainer.Close;
@@ -407,5 +407,3 @@ const InputTags = createComponent(InputTagsRoot, {
     Circle: typeof Tag.Circle;
   };
 };
-
-export default InputTags;

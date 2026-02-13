@@ -1,7 +1,8 @@
 import AmazonM from '@semcore/icon/color/Amazon/m';
-import { ButtonLink } from '@semcore/ui/button';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -49,7 +50,7 @@ const Demo = () => {
               children: (
                 <Text>
                   Kd Organic Sessions Organic Sessions
-                  <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 </Text>
               ),
             },
@@ -69,8 +70,8 @@ const Demo = () => {
               gtcWidth: '100px',
               children: (
                 <>
-                  <Text ellipsis={true}>Kd Organic Sessions</Text>
-                  <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  <Ellipsis>Kd Organic Sessions</Ellipsis>
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 </>
               ),
             },
@@ -88,8 +89,8 @@ const Demo = () => {
               name: 'kd',
               children: (
                 <>
-                  <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                  <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                 </>
               ),
             },

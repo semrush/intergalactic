@@ -88,7 +88,7 @@ const Demo = (props: ExampleProps) => {
         >
           <Button.Text>Button with Badge</Button.Text>
           <Button.Addon>
-            <Badge type='new' />
+            <Badge bg='--intergalactic-control-primary-success'>new</Badge>
           </Button.Addon>
         </Button>
       </Flex>

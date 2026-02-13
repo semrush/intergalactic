@@ -199,7 +199,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.button(page).nth(1).hover();
-    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await page.getByRole('tooltip').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 });

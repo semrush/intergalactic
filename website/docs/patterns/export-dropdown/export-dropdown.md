@@ -22,7 +22,7 @@ To add the data export, provide a button that users can click to initiate immedi
 
 ![](static/short-export.png)
 
-- Utilize the compact version when space is limited. Include a [hint](../../utils/hint/hint) with a descriptive label to inform users about the button's purpose.
+- Utilize the compact version when space is limited. Include a tooltip with a descriptive label to inform users about the button's purpose.
 - The export button opens a dropdown menu with the export form.
 
 ::: tip

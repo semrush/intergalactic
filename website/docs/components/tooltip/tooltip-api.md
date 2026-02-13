@@ -4,11 +4,11 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-::: tip New component  🎉
-**Hint** is now separate from **Tooltip**. You can find its documentation in [Utils/Hint](../../utils/hint/hint-api).
-:::
+`Tooltip` package contains three components for different use cases:
 
-Read more about the differences between tooltip types in the [Design guide](./tooltip).
+1. Use `Hint` if you only need to display element's label on hover/focus.
+2. Use `Tooltip` to display additional information for an interactive element on hover/focus (for example, a short description for a button or a link).
+3. Use `DescriptionTooltip` for the [Informer pattern](../../patterns/informer/informer), that is, if the trigger's only function is to show the tooltip, or if your tooltip must contain several paragraphs and/or interactive elements. This type of tooltip is triggered by click/Enter/Space.
 
 ## Tooltip
 
@@ -18,6 +18,15 @@ import Tooltip from '@semcore/ui/tooltip';
 ```
 
 <TypesView type="TooltipProps" :types={...types} />
+
+## Hint
+
+```jsx
+import { Hint } from '@semcore/ui/tooltip';
+<Hint />;
+```
+
+<TypesView type="TooltipHintProps" :types={...types} />
 
 ## DescriptionTooltip
 

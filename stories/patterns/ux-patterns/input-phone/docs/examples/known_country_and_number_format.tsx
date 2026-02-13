@@ -135,7 +135,7 @@ const Demo = () => {
               <ButtonLink
                 use='secondary'
                 addonLeft={CloseM}
-                aria-label='Clear'
+                title='Clear'
                 onClick={() => setPhoneNumber(prefix)}
               />
             </Input.Addon>

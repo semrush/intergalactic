@@ -1,7 +1,9 @@
 import InfoM from '@semcore/icon/Info/m';
 import { ButtonLink } from '@semcore/ui/button';
+import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -68,9 +70,9 @@ const Demo = () => {
         {
           name: 'kd',
           children: (
-            <Text ellipsis={true}>
+            <Ellipsis>
               KD % and some another text long
-            </Text>
+            </Ellipsis>
           ),
           justifyContent: 'right',
           gtcWidth: 'minmax(0, 68px)',

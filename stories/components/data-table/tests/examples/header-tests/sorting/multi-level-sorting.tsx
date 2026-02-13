@@ -1,9 +1,9 @@
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import type { BoxProps } from '@semcore/ui/base-components';
-import { Box } from '@semcore/ui/base-components';
-import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -34,7 +34,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         children: (
           <Text>
             Kd Organic Sessions Organic Sessions
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Text>
         ),
       },
@@ -65,8 +65,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         gtcWidth: '100px',
         children: (
           <>
-            <Text ellipsis={true}>Kd Organic Sessions</Text>
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Ellipsis>Kd Organic Sessions</Ellipsis>
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </>
         ),
       },
@@ -74,38 +74,10 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         name: 'cpc2',
         children: 'CPC',
         sortable: true,
-
       },
       {
         name: 'vol2',
-        children: (props) => {
-          const containerRef = React.useRef<HTMLDivElement | null>(null);
-          const [headerCell, setHeaderCell] = React.useState<HTMLElement | null>(null);
-
-          React.useEffect(() => {
-            if (containerRef.current) {
-              const cell = containerRef.current.closest('[role="columnheader"]') as HTMLElement;
-              if (cell) {
-                setHeaderCell(cell);
-                if (!cell.hasAttribute('tabindex')) {
-                  cell.setAttribute('tabindex', '0');
-                }
-              }
-            }
-          }, []);
-
-          return (
-            <Box ref={containerRef} display='inline-flex' wMin={0}>
-              <Text
-                ellipsis={true}
-                hintProps={headerCell ? { placement: 'bottom', triggerRef: { current: headerCell } } : undefined}
-                wMin={0}
-              >
-                Vol.Vol.Vol.Vol.Vol.
-              </Text>
-            </Box>
-          );
-        },
+        children: 'Vol.',
       },
     ],
   },
@@ -122,8 +94,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         name: 'kd3',
         children: (
           <>
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </>
         ),
       },

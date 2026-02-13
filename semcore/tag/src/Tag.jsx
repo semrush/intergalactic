@@ -8,7 +8,6 @@ import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside'
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import CloseM from '@semcore/icon/Close/m';
-import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tag.shadow.css';
@@ -26,8 +25,6 @@ class RootTag extends Component {
     locale: 'en',
   };
 
-  tagRef = React.createRef();
-
   getCircleProps() {
     const { size, color, resolveColor } = this.asProps;
     return { size, color, resolveColor };
@@ -40,7 +37,6 @@ class RootTag extends Component {
       tabIndex: -1,
       id: `${id}-text`,
       role: undefined,
-      tagRef: this.tagRef,
     };
   }
 
@@ -75,23 +71,20 @@ class RootTag extends Component {
     const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
-      <>
-        <STag
-          render={Box}
-          id={id}
-          use:interactive={isInteractive}
-          use:interactiveView={isInteractiveView}
-          tag-color={resolveColor(color)}
-          onKeyDown={this.handleKeyDown}
-          use:tabIndex={isInteractive ? 0 : -1}
-          role={isInteractive ? 'button' : undefined}
-          ref={this.tagRef}
-        >
-          {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-          {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
-          {addonRight ? <Tag.Addon tag={addonRight} /> : null}
-        </STag>
-      </>,
+      <STag
+        render={Box}
+        id={id}
+        use:interactive={isInteractive}
+        use:interactiveView={isInteractiveView}
+        tag-color={resolveColor(color)}
+        onKeyDown={this.handleKeyDown}
+        use:tabIndex={isInteractive ? 0 : -1}
+        role={isInteractive ? 'button' : undefined}
+      >
+        {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
+        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+        {addonRight ? <Tag.Addon tag={addonRight} /> : null}
+      </STag>,
     );
   }
 }
@@ -285,20 +278,8 @@ function TagContainerCircle(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles, tagRef, ellipsis = false, hintProps } = props;
-
-  return sstyled(styles)(
-    <>
-      <SText
-        render={TypographyText}
-        ellipsis={ellipsis}
-        hintProps={{
-          ...hintProps,
-          triggerRef: tagRef,
-        }}
-      />
-    </>,
-  );
+  const { styles } = props;
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {

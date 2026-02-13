@@ -284,7 +284,7 @@ const FocusInAllComponents = () => {
             Instagram
           </TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge type='new' />
+            <Badge bg='green-400'>new</Badge>
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={3}>

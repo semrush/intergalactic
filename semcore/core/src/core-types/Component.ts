@@ -112,9 +112,6 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
-    export type PartialRequired<T, K extends keyof T> = Omit<T, K> & {
-      [key in K]-?: T[key];
-    };
     export type EfficientOmit<Type, Keys> = {
       [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
     };

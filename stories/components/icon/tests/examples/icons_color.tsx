@@ -1,19 +1,20 @@
 import WhatsAppL from '@semcore/icon/color/WhatsApp/l';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
+import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {
   return (
     <>
       <Flex columnGap={2} mb={4}>
-        <Box title='ColorM neutral'>
+        <Hint title='ColorM neutral'>
           <WhatsAppM color='icon-secondary-neutral' />
-        </Box>
+        </Hint>
 
-        <Box title='ColorL neutral'>
+        <Hint title='ColorL neutral'>
           <WhatsAppL color='icon-secondary-neutral' />
-        </Box>
+        </Hint>
       </Flex>
     </>
   );

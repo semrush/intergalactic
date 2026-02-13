@@ -191,58 +191,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
   });
-
-  test.describe('Ellipsis', () => {
-    test(`Ellipsis with cropPosition = end`, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@data-table',
-        '@ellipsis',
-        '@base-components'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx', 'en');
-
-      await page.setViewportSize({ width: 1920, height: 1080 });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-
-      await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
-    });
-
-    test(`Ellipsis with cropPosition = middle`, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@data-table',
-        '@ellipsis',
-        '@link',
-        '@base-components'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-
-      await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
-    });
-  });
-
   test.describe('Limited mode', () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,

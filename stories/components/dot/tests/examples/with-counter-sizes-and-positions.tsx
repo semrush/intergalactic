@@ -9,7 +9,7 @@ import React from 'react';
 
 const Demo = (props: DotProps) => {
   return (
-    <Flex direction='row' gap={2} alignItems='center'>
+    <Flex direction='row' gap={2}>
 
       <Dot
         size={props.size}

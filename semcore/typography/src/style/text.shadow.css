@@ -227,29 +227,6 @@ SText {
   }
 }
 
-SText[ellipsis] {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  display: inline-block;
-
-  &[trim='end']::after {
-    content: '';
-    display: block;
-  }
-
-  &[maxLine] {
-    -webkit-line-clamp: var(--maxLine);
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-    overflow-wrap: break-word;
-  }
-  &[trim='middle'] {
-    text-overflow: unset;
-  }
-}
-
 SText[size='100'] {
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);

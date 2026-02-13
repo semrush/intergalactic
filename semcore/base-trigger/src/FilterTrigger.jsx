@@ -1,4 +1,4 @@
-import { NeighborLocation, Box, ScreenReaderOnly, Hint } from '@semcore/base-components';
+import { NeighborLocation, Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -12,6 +12,7 @@ import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { default as SemcoreCounter } from '@semcore/counter';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Close from '@semcore/icon/Close/m';
+import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
 import BaseTrigger from './BaseTrigger';
@@ -197,8 +198,6 @@ class ClearButton extends Component {
   static displayName = 'ClearButton';
   static style = style;
 
-  triggerRef = React.createRef();
-
   render() {
     const SFilterTrigger = Root;
     const {
@@ -214,22 +213,22 @@ class ClearButton extends Component {
     if (empty) return null;
 
     return sstyled(styles)(
-      <>
-        <SFilterTrigger
-          ref={this.triggerRef}
-          render={BaseTrigger}
-          size={size}
-          empty={empty}
-          selected
-          disabled={disabled}
-          aria-label={title ?? ariaLabel ?? getI18nText('clear')}
-          __excludeProps={['title']}
-        >
-          <FilterTrigger.Addon tag={Close} />
-        </SFilterTrigger>
-
-        <Hint triggerRef={this.triggerRef}>{title ?? ariaLabel ?? getI18nText('clear')}</Hint>
-      </>,
+      <Hint>
+        <Hint.Trigger>
+          <SFilterTrigger
+            render={BaseTrigger}
+            size={size}
+            empty={empty}
+            selected
+            disabled={disabled}
+            aria-label={title ?? ariaLabel ?? getI18nText('clear')}
+            __excludeProps={['title']}
+          >
+            <FilterTrigger.Addon tag={Close} />
+          </SFilterTrigger>
+        </Hint.Trigger>
+        <Hint.Popper>{title ?? ariaLabel ?? getI18nText('clear')}</Hint.Popper>
+      </Hint>,
     );
   }
 }

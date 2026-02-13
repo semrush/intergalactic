@@ -48,7 +48,7 @@ Table: Sorting variants for categories
 Add search if there are more than 10 categories in the list.
 :::
 
-Truncate long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a hint for them.
+Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a tooltip to them.
 
 ![long category](static/long-category.png)
 
@@ -56,9 +56,9 @@ The counters in the list are optional. If the table is heavy with data, it can b
 
 ### Filled trigger
 
-**Truncate long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text).**
+**Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text).**
 
-We recommend to always add a label to the filter. But, if there isn’t enough space and you're sure users will understand what filter they're using without a label, you can remove it.
+We recommend always add a label to the filter. But, if there isn’t enough space and if you are sure that without a label, users will understand what kind of filter they are using, you can remove the label.
 
 ![long category](static/label-cat.png)
 
@@ -110,7 +110,7 @@ Table: Sorting variants for categories
 Add search if there are more than 10 categories in the list.
 :::
 
-Truncate long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a hint for them.
+Collapse long categories according to the [rules for long URLs](../../table-group/table-controls/table-controls#long-links-and-text) and add a tooltip to them.
 
 ![long category](static/long-category-multiselect.png)
 
@@ -152,7 +152,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 ## Usage in UX/UI
 
 ::: tip
-Technically, categories don’t have nesting, it's purely visual to distinguish between categories.
+Technically, categories don’t have nesting, it is purely visual to distinguish between categories.
 
 **Example:**
 
@@ -164,10 +164,15 @@ Goods > Sports Goods > **Baseball** – website with baseball goods
 ### Category abbreviations rules
 
 1. The last part of the category name is the most important, so show it by all means.
-2. Therefore, truncate the category name so that the last part is read in full and the last part starts with ">".
-3. When hovering over a truncated category name, always show a [hint](../../utils/hint/hint) with category's full name.
+2. Therefore, collapse the category name so that the last part is read in full and the collapsed part starts with >.
 
-![category ellipsis](static/long-category.png)
+::: tip
+When hovering over the collapsed category name, always show the tooltip with category's full name.
+:::
+
+![category ellipsis](static/name-ellipsis.png)
+
+![category ellipsis](static/long-name-tooltip.png)
 
 ### Trigger min-width
 

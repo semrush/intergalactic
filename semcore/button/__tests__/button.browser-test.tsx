@@ -111,12 +111,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
+
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -170,13 +176,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -188,10 +199,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
 
+      const count = await locators.button(page).count();
+
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-
           await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -206,8 +218,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -283,13 +299,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -343,13 +364,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -366,7 +392,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -380,8 +406,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -457,13 +487,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -517,13 +552,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify attributes for loading`, async () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
           }
         });
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });
@@ -540,7 +580,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -554,8 +594,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+        await test.step(`Verify attributes for disabled`, async () => {
           await expect(page).toHaveScreenshot();
+
+          for (let i = 0; i < count; i++) {
+            await expect(locators.button(page).nth(i)).toHaveAttribute('tabindex', '0');
+          }
         });
       }
     });

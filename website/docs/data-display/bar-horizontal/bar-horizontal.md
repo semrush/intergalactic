@@ -82,7 +82,7 @@ Allocate space for category labels on both sides of the chart.
 ## Category labels
 
 - Y-axis labels use the primary text color (`--text-primary` token).
-- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
+- Use `ellipsis` for long labels, with tooltips showing the full name.
 
 ![](static/label.png)
 

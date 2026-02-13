@@ -2,7 +2,7 @@ import type { EllipsisProps } from '@semcore/ui/ellipsis';
 import Ellipsis from '@semcore/ui/ellipsis';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import TableWithLinksExample, { defaultProps as ellipsisInTableDefaultProps } from './examples/in_table_with_link';
+import TableWithLinksExample from './examples/in_table_with_link';
 import MultipleTagsInOneComponentsExample from './examples/multiple_tags_in_one_components';
 import OnChangePropsExample from './examples/on_change_props';
 import TextCasesExample from './examples/text_cases';
@@ -26,27 +26,24 @@ const meta: Meta<EllipsisProps> = {
 };
 
 export default meta;
-type Story = StoryObj<EllipsisProps>;
 
-export const TableWithLinks: Story = {
+export const TableWithLinks: StoryObj<EllipsisProps> = {
   render: TableWithLinksExample,
-  args: ellipsisInTableDefaultProps,
-
 };
 
-export const TextCases: Story = {
+export const TextCases: StoryObj<EllipsisProps> = {
   render: TextCasesExample,
 };
 
-export const OnChangeProps: Story = {
+export const OnChangeProps: StoryObj<EllipsisProps> = {
   render: OnChangePropsExample,
 };
 
-export const TrimWithTextSize: Story = {
+export const TrimWithTextSize: StoryObj<EllipsisProps> = {
   render: TrimWithTextSizeExample,
   args: sizeEllipsisProps,
 };
 
-export const MultipleTagsInOneComponents: Story = {
+export const MultipleTagsInOneComponents: StoryObj<EllipsisProps> = {
   render: MultipleTagsInOneComponentsExample,
 };

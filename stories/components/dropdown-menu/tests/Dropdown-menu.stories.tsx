@@ -10,7 +10,6 @@ import OnVisible2ndExample from './examples/on-visible-2nd';
 import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
-import WithEllipsisExample, { defaultProps as defaultWithEllipsisProps } from './examples/with_ellipsis';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -113,25 +112,6 @@ export const DropdownBaseProps: StoryObj<typeof defaultDropDownPropsExample> = {
 
 export const WithSearch: Story = {
   render: WithSearchExample,
-};
-
-export const WithEllipsis: StoryObj<typeof defaultWithEllipsisProps> = {
-  render: WithEllipsisExample,
-  argTypes: {
-    addExtraItems: {
-      control: { type: 'boolean' },
-      description: 'Add 5 extra menu items to enable scroll',
-    },
-    selectable: {
-      control: { type: 'boolean' },
-      description: 'Enable selectable mode',
-    },
-    multiselect: {
-      control: { type: 'boolean' },
-      description: 'Enable multiselect mode (requires selectable to be true)',
-    },
-  },
-  args: defaultWithEllipsisProps,
 };
 
 export const OnVisible2nd: Story = {

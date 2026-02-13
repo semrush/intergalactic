@@ -149,8 +149,8 @@ Show an [empty state](/components/widget-empty/widget-empty) with the option to 
 
 ![](static/nothing-found-advanced-filters.png)
 
-## Hint
+## Tooltip
 
-If the accordion needs a **Hide** button, make sure it displays a hint on hover.
+If the accordion needs a Close button, then show a `Hint` with the text: "Hide".
 
 ![](static/tooltip-2.png)

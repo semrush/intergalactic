@@ -34,7 +34,7 @@ const Demo = (props: PillExampleProps) => {
         <Pills.Item value={1}>
           <Pills.Item.Addon>
             <Pills.Item.Text>Badge</Pills.Item.Text>
-            <Badge type='admin' />
+            <Badge bg='blue-400'>admin</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item value={2} addonRight={Globe}>

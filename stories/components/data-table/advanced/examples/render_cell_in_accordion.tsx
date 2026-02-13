@@ -1,6 +1,5 @@
-import type { EllipsisSettings } from '@semcore/base-components';
-import { Text } from '@semcore/typography';
-import { DataTable, ACCORDION, type DataTableProps } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
@@ -48,32 +47,7 @@ const Demo = () => {
 
 const ChartExample = () => {
   const containerRef = React.useRef(null);
-  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    setContainerElement(containerRef.current);
-  }, []);
-
-  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
-    return (props) => {
-      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-        return {
-          cropPosition: 'middle',
-          containerElement: containerElement ?? undefined,
-        } as const;
-      }, [containerElement]);
-
-      if (props.columnName === 'vol' && containerElement) {
-        return (
-          <Text ellipsis={ellipsisSettings}>
-            {props.value}
-          </Text>
-        );
-      }
-
-      return props.defaultRender();
-    };
-  }, [containerElement]);
+  const containerRect = useResizeObserver(containerRef);
 
   return (
     <DataTable
@@ -86,7 +60,17 @@ const ChartExample = () => {
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
       expandedRows={new Set<string>()}
-      renderCell={renderCell}
+      renderCell={(props) => {
+        if (props.columnName === 'vol') {
+          return (
+            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+              {props.value}
+            </Ellipsis>
+          );
+        }
+
+        return props.defaultRender();
+      }}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();

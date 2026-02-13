@@ -2,16 +2,14 @@ import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
 import Badge from '@semcore/ui/badge';
-import type { BoxProps, EllipsisSettings } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabPanel from '@semcore/ui/tab-panel';
 import type { TabPanelProps, TabPanelItemProps } from '@semcore/ui/tab-panel';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps & {
-  ellipsis?: true | EllipsisSettings;
-};
+type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps;
 
 const Demo = (props: TabPanelDefProps) => {
   const [value, setValue] = React.useState<string | number | boolean>(2);
@@ -19,20 +17,21 @@ const Demo = (props: TabPanelDefProps) => {
   return (
     <>
       <TabPanel
+        w={props.w}
         behavior={props.behavior}
         value={value}
         onChange={(val: any) => setValue(val)}
         aria-label='Social network reports'
       >
         <TabPanel.Item
-          w={props.w}
           value='facebook'
+          selected={props.selected}
           disabled={props.disabled}
           addonLeft={FacebookM}
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
           id='tab-label-fb'
         >
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { placement: 'bottom' } }}>Facebook</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Facebook</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
             <FacebookM />
           </TabPanel.Item.Addon>
@@ -46,13 +45,12 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <InstagramM />
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text w={props.w} {...{ ellipsis: props.ellipsis }}>Instagram Instagram</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Instagram</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
-            <Badge type='new'>new</Badge>
+            <Badge bg='green-400'>new</Badge>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
         <TabPanel.Item
-          w={props.w}
           value={true}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw' : undefined}
@@ -61,14 +59,13 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <TwitterM />
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Twitter</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
-            <Text>1</Text>
+            <Text>Twitter</Text>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
 
         <TabPanel.Item
-          w={props.w}
           value={3}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw3' : undefined}
@@ -76,12 +73,11 @@ const Demo = (props: TabPanelDefProps) => {
           addonRight={TwitterM}
         >
 
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter3</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Twitter3</TabPanel.Item.Text>
 
         </TabPanel.Item>
 
         <TabPanel.Item
-          w={props.w}
           value={false}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
@@ -90,19 +86,18 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <Counter>32</Counter>
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter2</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Twitter2</TabPanel.Item.Text>
 
         </TabPanel.Item>
 
         <TabPanel.Item
-          w={props.w}
           value={4}
           disabled={props.disabled}
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
           id='tab-label-tw2'
         >
 
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter4</TabPanel.Item.Text>
+          <TabPanel.Item.Text>Twitter4</TabPanel.Item.Text>
 
         </TabPanel.Item>
       </TabPanel>
@@ -176,7 +171,6 @@ export const defaultProps: TabPanelDefProps = {
   disabled: false,
   selected: undefined,
   w: undefined,
-  ellipsis: true,
 };
 
 Demo.defaultProps = defaultProps;

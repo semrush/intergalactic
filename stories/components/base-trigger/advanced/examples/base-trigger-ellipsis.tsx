@@ -1,5 +1,7 @@
 import BaseTrigger from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -7,22 +9,26 @@ const Demo = () => {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[BaseTrigger, 'h1']}>
-          <BaseTrigger.Text w={150} tag='h2' size={400}>
-            No ellipsis Few Tags Tags Tags
+          <BaseTrigger.Text w={150} tag={[Text, 'h2']} size={400}>
+            <Ellipsis trim='middle'>Few tags tags</Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} size={400} ellipsis={{ cropPosition: 'middle' }}>
-            This is first trigger with a very very long text!
+          <BaseTrigger.Text w={150} tag={Text} size={400}>
+            <Ellipsis trim='middle' data-test-id='ellipsis-middle'>
+              This is first trigger with a very very long text!
+            </Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} size={400} ellipsis={true}>
-            This is second trigger with a very very long text!
+          <BaseTrigger.Text w={150} tag={Text} size={400}>
+            <Ellipsis>
+              This is second trigger with a very very long text!
+            </Ellipsis>
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -36,9 +42,9 @@ const Demo = () => {
       <br />
       <br />
       <BaseTrigger w={100} data-test-id='active-trigger'>
-        <BaseTrigger.Text ellipsis={true}>
+        <Ellipsis>
           This is third trigger with a very very long text!
-        </BaseTrigger.Text>
+        </Ellipsis>
       </BaseTrigger>
     </>
   );

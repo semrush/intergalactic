@@ -3,6 +3,7 @@ import Search from '@semcore/icon/Search/m';
 import { Flex, Box } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
+import { Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -41,7 +42,7 @@ const Demo = () => {
             </Input.Addon>
           )}
         </Input>
-        <Button addonLeft={Search} title='Search' neighborLocation='left' />
+        <Hint tag={Button} addonLeft={Search} title='Search' neighborLocation='left' />
       </Box>
     </Flex>
   );
