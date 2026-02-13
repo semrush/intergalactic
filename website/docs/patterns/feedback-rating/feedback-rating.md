@@ -76,7 +76,7 @@ Table: Interaction with form inputs
 | **Input for email**                      | Optional to fill. If the user clears the input, they get no errors or something that can block the form's submission.                                                                                                                                                                                                            |
 
 ## States
-asdf
+
 The form can be submitted without filling in any additional information (for example, immediately after it appears).
 
 Table: Feedback Rating form states
