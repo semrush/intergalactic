@@ -67,7 +67,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 #### a forbidden header
 
-oh no I say please see above
+oh no I say please see above e.g.
 
 Table: Button themes
 
