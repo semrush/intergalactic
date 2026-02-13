@@ -1,4 +1,4 @@
-name: init-icon-prerelease
+name: init-illustration-prerelease
 on:
   workflow_dispatch:
     branch:
