@@ -36,7 +36,7 @@ export const writeIfChanged = async (relativePath: string, content: string) => {
 };
 
 const defaultTheme = 'light';
-const themes = ['light', 'dark', 'new', 'new-adjusted', 'light-new', 'light-new-2ver', 'aqua-green', 'lime-green'];
+const themes = ['light', 'dark', 'new'];
 
 const warning = !process.argv.includes('--no-warning');
 

@@ -41,41 +41,6 @@
       "import": "./lib/theme/themes/highlights-light.css",
       "require": "./lib/theme/themes/highlights-light.css"
     },
-    "./lib/theme/themes/highlights-light-new": {
-      "types": "./lib/theme/themes/highlights-light-new.d.ts",
-      "import": "./lib/theme/themes/highlights-light-new.mjs",
-      "require": "./lib/theme/themes/highlights-light-new.js"
-    },
-    "./lib/theme/themes/highlights-light": {
-      "types": "./lib/theme/themes/highlights-light.d.ts",
-      "import": "./lib/theme/themes/highlights-light.mjs",
-      "require": "./lib/theme/themes/highlights-light.js"
-    },
-    "./lib/theme/themes/highlights-dark": {
-      "types": "./lib/theme/themes/highlights-dark.d.ts",
-      "import": "./lib/theme/themes/highlights-dark.mjs",
-      "require": "./lib/theme/themes/highlights-dark.js"
-    },
-    "./lib/theme/themes/highlights-new": {
-      "types": "./lib/theme/themes/highlights-new.d.ts",
-      "import": "./lib/theme/themes/highlights-new.mjs",
-      "require": "./lib/theme/themes/highlights-new.js"
-    },
-    "./lib/theme/themes/highlights-new-adjusted": {
-      "types": "./lib/theme/themes/highlights-new-adjusted.d.ts",
-      "import": "./lib/theme/themes/highlights-new-adjusted.mjs",
-      "require": "./lib/theme/themes/highlights-new-adjusted.js"
-    },
-    "./lib/theme/themes/highlights-aqua-green": {
-      "types": "./lib/theme/themes/highlights-aqua-green.d.ts",
-      "import": "./lib/theme/themes/highlights-aqua-green.mjs",
-      "require": "./lib/theme/themes/highlights-aqua-green.js"
-    },
-    "./lib/theme/themes/highlights-lime-green": {
-      "types": "./lib/theme/themes/highlights-lime-green.d.ts",
-      "import": "./lib/theme/themes/highlights-lime-green.mjs",
-      "require": "./lib/theme/themes/highlights-lime-green.js"
-    },
     "./lib/theme/themes/default": {
       "types": "./lib/theme/themes/default.d.ts",
       "import": "./lib/theme/themes/default.mjs",
@@ -95,56 +60,6 @@
       "types": "./lib/theme/themes/new.d.ts",
       "import": "./lib/theme/themes/new.mjs",
       "require": "./lib/theme/themes/new.js"
-    },
-    "./lib/theme/themes/aqua-green.css": {
-      "import": "./lib/theme/themes/aqua-green.css",
-      "require": "./lib/theme/themes/aqua-green.css"
-    },
-    "./lib/theme/themes/aqua-green": {
-      "types": "./lib/theme/themes/aqua-green.d.ts",
-      "import": "./lib/theme/themes/aqua-green.mjs",
-      "require": "./lib/theme/themes/aqua-green.js"
-    },
-    "./lib/theme/themes/lime-green.css": {
-      "import": "./lib/theme/themes/lime-green.css",
-      "require": "./lib/theme/themes/lime-green.css"
-    },
-    "./lib/theme/themes/lime-green": {
-      "types": "./lib/theme/themes/lime-green.d.ts",
-      "import": "./lib/theme/themes/lime-green.mjs",
-      "require": "./lib/theme/themes/lime-green.js"
-    },
-    "./lib/theme/themes/new-adjusted.css": {
-      "import": "./lib/theme/themes/new-adjusted.css",
-      "require": "./lib/theme/themes/new-adjusted.css"
-    },
-    "./lib/theme/themes/new-adjusted": {
-      "types": "./lib/theme/themes/new-adjusted.d.ts",
-      "import": "./lib/theme/themes/new-adjusted.mjs",
-      "require": "./lib/theme/themes/new-adjusted.js"
-    },
-    "./lib/theme/themes/light-new.css": {
-      "import": "./lib/theme/themes/light-new.css",
-      "require": "./lib/theme/themes/light-new.css"
-    },
-    "./lib/theme/themes/light-new": {
-      "types": "./lib/theme/themes/light-new.d.ts",
-      "import": "./lib/theme/themes/light-new.mjs",
-      "require": "./lib/theme/themes/light-new.js"
-    },
-    "./lib/theme/themes/light-new-2ver.css": {
-      "import": "./lib/theme/themes/light-new-2ver.css",
-      "require": "./lib/theme/themes/light-new-2ver.css"
-    },
-    "./lib/theme/themes/light-new-2ver": {
-      "types": "./lib/theme/themes/light-new-2ver.d.ts",
-      "import": "./lib/theme/themes/light-new-2ver.mjs",
-      "require": "./lib/theme/themes/light-new-2ver.js"
-    },
-    "./lib/theme/themes/highlights-light-new-2ver": {
-      "types": "./lib/theme/themes/highlights-light-new-2ver.d.ts",
-      "import": "./lib/theme/themes/highlights-light-new-2ver.mjs",
-      "require": "./lib/theme/themes/highlights-light-new-2ver.js"
     },
     "./lib/utils/focus-lock/getFocusableIn": {
       "types": "./lib/utils/focus-lock/getFocusableIn.d.ts",
