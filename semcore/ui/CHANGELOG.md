@@ -1,3 +1,48 @@
+## [v17.0.0] - 2026-02-13
+
+### @semcore/wizard
+
+- **Changed** WizardStep type to number only.
+
+### @semcore/input
+
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/base-trigger
+
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/time-picker
+
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/d3-chart
+
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
+### @semcore/button
+
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/base-components
+
+- **Changed** `Hint` now has slicker and more compact styles.
+
+### @semcore/typography
+
+- **Fixed** margins for native `p` and lists.
+
 ## [16.14.0] - 2026-02-10
 
 ### @semcore/dropdown-menu
