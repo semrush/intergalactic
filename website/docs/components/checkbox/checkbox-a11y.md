@@ -53,7 +53,7 @@ Table: Roles and attributes
 
 ## Resources
 
-- [W3 checkbox example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/checkbox/checkbox-1/checkbox-1.html) has detailed information about the accordion accessible behaviour.
+- [W3 checkbox example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/checkbox/checkbox-1/checkbox-1.html) has detailed information about the accordion accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes) gives core recommendations for the accessible checkboxes.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 

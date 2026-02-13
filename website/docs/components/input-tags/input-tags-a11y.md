@@ -33,7 +33,7 @@ Table: Roles and attributes
 
 - Label `InputTags.Value` using either `<label>`, `aria-labelledby` or `aria-label`. Remember that, when using `<label>`, only one label can be associated with each form element. [Refer to our examples](/components/input-tags/input-tags-code).
 - Indicate optional fields clearly by adding the word "optional" beside the input label.
-- Inputs in `invalid` state should be associated with his error message using `aria-describedby`.
+- Inputs in `invalid` state should be associated with their error message using `aria-describedby`.
 
 ## Resources
 

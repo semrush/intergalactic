@@ -15,7 +15,7 @@ Table: Keyboard support
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                        | When focus moves into the tab list, the active `tab` element gets the focus. When the tab list contains the focus, `Tab` moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
 | `Left Arrow` , `Right Arrow` | Changes the state of next/previous `tab` element in the group to `active`. If focus is on the last/first `tab`, arrows move focus to the first/last `tab` respectively.                                          |
-| `Space`/`Enter`              | Activates focused `tab` element. Works only when TabLine has `behaviour='manual'`.                                                                                                                                |
+| `Space`/`Enter`              | Activates focused `tab` element. Works only when TabLine has `behavior='manual'`.                                                                                                                                |
 
 ### Roles & attributes
 
@@ -49,7 +49,7 @@ Table: Roles and attributes
 
 ## Resources
 
-- [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behaviour.
+- [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the tabs.
 
 ## Other recommendations

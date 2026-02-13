@@ -63,7 +63,7 @@ Table: Button types
 
 You can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. Refer to [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale).
 
-Invert theme button is used on dark or colored background. e.g. in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
+Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
 #### a forbidden header
 
@@ -94,7 +94,7 @@ Table: States for all buttons types and themes
 This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces, especially with `use="primary"`. Instead, use either `Button` or `Link` depending on what the element does.
 :::
 
-If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. e.g., in the [Feedback](/components/feedback-form/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
+If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback-form/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
 
 Table: Button with Link styles
 
@@ -125,7 +125,7 @@ Table: How to choose what type of ButtonLink you should use
 
 ## Button width
 
-The button width is determined by its content. But it can also be stretched to a certain width. e.g.:
+The button width is determined by its content. But it can also be stretched to a certain width. For example:
 
 ```
 w="100%"
@@ -216,7 +216,7 @@ It may also be helpful checking the following branding guidelines:
 
 ## Usage in UX/UI
 
-- Try to have one call-to-action button on the page in the modal window. _e.g., one green button._
+- Try to have one call-to-action button on the page in the modal window. _For example, one green button._
 - We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
 - If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.

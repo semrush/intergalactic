@@ -64,8 +64,8 @@ When exporting is feasible in at least two formats with no additional settings, 
 ![](static/dropdown.png)
 
 - Include the title "Export Data" in this dropdown version.
-- For exporting to one or two formats, use full format names on buttons (e.g., "Export to CSV").
-- For three formats, use shortened format names (e.g., "CSV" instead of "Export to CSV").
+- For exporting to one or two formats, use full format names on buttons (for example, "Export to CSV").
+- For three formats, use shortened format names (for example, "CSV" instead of "Export to CSV").
 
 ::: tip
 If there's no data available for all export parameters and settings, avoid disabling the buttons

@@ -107,9 +107,9 @@ const App = function (props) {
 
 ## Ranking
 
-Rank items in either ascending or descending order based on his values.
+Rank items in either ascending or descending order based on their values.
 
-_e.g., you can rank countries by his market share._
+_For example, you can rank countries by their market share._
 
 ::: react-view
 
@@ -313,7 +313,7 @@ const App = function (props) {
 
 Use this chart to illustrate the contribution of individual values to the whole.
 
-_e.g., it's useful for showing the traffic share of different devices._
+_For example, it's useful for showing the traffic share of different devices._
 
 ::: react-view
 
@@ -556,7 +556,7 @@ const App = function (props) {
 
 Employ this chart to demonstrate the relationship between two or three sets of values.
 
-_e.g., it can show how website traffic is influenced by customer age._
+_For example, it can show how website traffic is influenced by customer age._
 
 ::: react-view
 
@@ -645,7 +645,7 @@ const App = function (props) {
 
 Use this chart to visualize the deviation, difference, or gap between two sets of values.
 
-_e.g., it can illustrate the deviation between the actual and target audience of a website._
+_For example, it can illustrate the deviation between the actual and target audience of a website._
 
 ::: react-view
 

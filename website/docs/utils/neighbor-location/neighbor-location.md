@@ -8,7 +8,7 @@ tabs: Design('neighbor-location'), API('neighbor-location-api'), Changelog('neig
 
 **neighborLocation** is a property for grouping components visually. It indicates where the component is in relation to its neighbors.
 
-e.g., you can group together:
+For example, you can group together:
 
 - [Button](/components/button/button)
 - [Input](/components/input/input)

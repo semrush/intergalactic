@@ -13,7 +13,7 @@ Table: Links order in ProductHead
 | **Old version**                                             | Switches to the old version of the page.                                                | ![](static/link1.png)  |
 | **App name**                                                | Opens page with application on the relevant platforms.                                  | ![](static/link2.png)  |
 | **API**                                                     | Opens page with the API description.                                                    | ![](static/link3.png)  |
-| **Top data (e.g., Top 30 Publishers & Advertisers)** | Opens a page/modal with a certain data.                                                 | ![](static/link4.png)  |
+| **Top data (for example, Top 30 Publishers & Advertisers)** | Opens a page/modal with a certain data.                                                 | ![](static/link4.png)  |
 | **Check out the (article title)**                           | Opens blog article.                                                                     | ![](static/link5.png)  |
 | **News**                                                    | Opens the modal window with product news.                                               | ![](static/link6.png)  |
 | **Semrush Academy**                                         | Opens page with the certain [Semrush Academy course](https://www.semrush.com/academy/). | ![](static/link7.png)  |

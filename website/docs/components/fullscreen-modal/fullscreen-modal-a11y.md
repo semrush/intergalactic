@@ -54,11 +54,11 @@ However, if your modal window has a separate URL, you can mark `FullscreenModal.
 
 ### Nested headings
 
-Make sure that headings inside the `FullscreenModal` follow the overall heading hierarchy. e.g., if the `FullscreenModal.Title` is marked as `h2`, then the following heading inside the modal should be marked as `h3`, and so on.
+Make sure that headings inside the `FullscreenModal` follow the overall heading hierarchy. For example, if the `FullscreenModal.Title` is marked as `h2`, then the following heading inside the modal should be marked as `h3`, and so on.
 
 ## Resources
 
-[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behaviour.
+[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.
 
 ## Other recommendations
 

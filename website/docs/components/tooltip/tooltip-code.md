@@ -13,7 +13,7 @@ The tooltip component is a wrapper over [Popper](/utils/popper/popper) with addi
 - Stylization and themes for the popper.
 - Adding arrow for the popper to point to its trigger.
 
-If you need to customize tooltip behaviour, refer to [Popper documentation](/utils/popper/popper).
+If you need to customize tooltip behavior, refer to [Popper documentation](/utils/popper/popper).
 
 ## Basic usage
 
@@ -53,7 +53,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 ## Ignore portal stacking
 
-By default, when a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may try to push it inside the block as much as possible. If you don't want this behaviour, you can set the `ignorePortalsStacking` prop.
+By default, when a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may try to push it inside the block as much as possible. If you don't want this behavior, you can set the `ignorePortalsStacking` prop.
 
 ::: sandbox
 
@@ -65,7 +65,7 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 
 ## Custom background color
 
-For some specific cases, you can color the Tooltip's arrow using the `arrowBgColor` property for its background and the `arrowShadowColor` property for its border. e.g., if you have a colored illustration placed at the bottom of the Tooltip content, you might want to color the arrow to match the illustration's color.
+For some specific cases, you can color the Tooltip's arrow using the `arrowBgColor` property for its background and the `arrowShadowColor` property for its border. For example, if you have a colored illustration placed at the bottom of the Tooltip content, you might want to color the arrow to match the illustration's color.
 
 ::: sandbox
 

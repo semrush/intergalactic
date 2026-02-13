@@ -12,7 +12,7 @@ Make sure that it's possible to interact with your interface using a keyboard on
 - Check if there is a visible focus indicator in your interface for all elements user can interact with.
 - Check if the interaction with forms and links using the `Enter` and `Space` keys works correctly.
 - Check that it's possible to cancel actions and close modal windows with the `Esc` key
-- Use hotkeys on the website. Avoid overriding hotkeys. e.g., don't override `Control+C` (or `Command+C` on Mac).
+- Use hotkeys on the website. Avoid overriding hotkeys. For example, don't override `Control+C` (or `Command+C` on Mac).
 - When opening a modal window, focus should move to the window, and then return back to the control that activated the modal.
 
 ::: tip
@@ -59,20 +59,20 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 ### Input and textarea
 
 - Input fields get focus by pressing the `Tab` key.
-- When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (e.g., orange).
+- When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (for example, orange).
 - The target action is performed by pressing `Enter` (saving, applying a filter, etc.).
 
 ### Checkbox, radio and switch
 
 - Selection controls get focus when you press `Tab`.
-- When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (e.g., orange).
+- When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (for example, orange).
 - When you press `Enter`, an element is checked/unchecked, depending on the initial state.
 
 ### Any other controls (FilterTrigger, Pills, TabLine, etc.)
 
 - The control gets focus when you press `Tab`.
 - When focused, controls are highlighted with a blue outline, regardless of the color of the control.
-- When you press `Enter`, an event occurs. _e.g., a dropdown opens._
+- When you press `Enter`, an event occurs. _For example, a dropdown opens._
 - If a tooltip or a hint should appear on hovering over the control, then when pressing `Tab`, it will appear when focused.
 
 ### Images as links or clickable groups
@@ -90,7 +90,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 
 <!-- ## Keyboard support for popper
 
-Common cases about focus behaviour when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
+Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
 ::: tip
 The trigger always has a `tabIndex=0` (even when disabled) or is an input/textarea. The popper always has a `tabIndex=0`.
@@ -142,7 +142,7 @@ A popper inside another popper has the same situation as in the above case. -->
 
 ## Keyboard support for modal window
 
-Common cases about focus behaviour when working with dropdown are described below.
+Common cases about focus behavior when working with dropdown are described below.
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When the trigger is focused, pressing `Enter`/`Space` opens a modal window.

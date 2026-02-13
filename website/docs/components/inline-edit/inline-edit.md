@@ -12,7 +12,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 - You need to effortlessly switch between read-only and text editing modes without requiring a page reload.
 - The interface is spatially constrained, necessitating efficient use of space.
-- Transmitting data to the system isn't the primary focus of the interface (e.g., providing supplementary information and notes within cards).
+- Transmitting data to the system isn't the primary focus of the interface (for example, providing supplementary information and notes within cards).
 
 ## Appearance
 
@@ -37,7 +37,7 @@ Table: InlineEdit states
 | ----------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Normal                  | ![](static/normal.png)        | The placeholder's color matches that of a default input `--text-placeholder`.                                                                                                                                                                                                                                                                  |
 | Hover                   | ![](static/hover.png)         | The cursor changes to a `pointer`.                                                                                                                                                                                                                                                                                                             |
-| Focus                   | ![](static/opened.png)        | Display any input type required for data entry ([InlineInput](/components/inline-input/inline-input), [Input](/components/input/input), [Textarea](/components/textarea/textarea), [Select](/components/select/select), [ColorPicker](/components/color-picker/color-picker), [TimePicker](/components/time-picker/time-picker), e.g.). |
+| Focus                   | ![](static/opened.png)        | Display any input type required for data entry ([InlineInput](/components/inline-input/inline-input), [Input](/components/input/input), [Textarea](/components/textarea/textarea), [Select](/components/select/select), [ColorPicker](/components/color-picker/color-picker), [TimePicker](/components/time-picker/time-picker), for example). |
 | Entered data            | ![](static/success.png)       | Text color changes to `--text-primary`.                                                                                                                                                                                                                                                                                                        |
 | Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing addon's color shifts to the darker one with CSS filters.                                                                                                                                                                                                                           |
 

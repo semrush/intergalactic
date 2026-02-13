@@ -100,7 +100,7 @@ If the menu has more than seven items, limit its height and add scroll. We also 
 
 ### List states
 
-- If the list is taking a long time to load or filter results (e.g., due to a slow connection), then display "Loading...".
+- If the list is taking a long time to load or filter results (for example, due to a slow connection), then display "Loading...".
 - If a user enters a value that isn’t in the list, then display "Nothing found".
 - If there are backend errors, a warning message should be displayed with the text "Something went wrong. Please try again later."
 
@@ -157,7 +157,7 @@ If the list includes more than 10 values, add a search input. Otherwise, it will
 
 ### Select all
 
-If the list contains more than three values, display the **Select all** action at the very beginning of the list. There are two ways in which **Select all** can switch to **Deselect all**, depending on likely user behaviour:
+If the list contains more than three values, display the **Select all** action at the very beginning of the list. There are two ways in which **Select all** can switch to **Deselect all**, depending on likely user behavior:
 
 * if users are likely to select only a few items, or reset the selection often, switch when at least one item is selected
 * if users are likely to select most or all items, switch only when all items are selected
@@ -166,7 +166,7 @@ If the list contains more than three values, display the **Select all** action a
 
 ## Specific multiselect cases
 
-In long lists (e.g., countries or time zones), selected values should be placed at the top of the list when the list is opened.
+In long lists (for example, countries or time zones), selected values should be placed at the top of the list when the list is opened.
 
 Table: Specific cases for multiselect
 
@@ -190,9 +190,9 @@ Table: States for displaying the selected values in the trigger
 
 ### Search
 
-If the user searches for something and clicks **Select all** or **Deselect all**, all found results will be selected or deselected. Other values, those that haven’t been searched for, don’t change his state.
+If the user searches for something and clicks **Select all** or **Deselect all**, all found results will be selected or deselected. Other values, those that haven’t been searched for, don’t change their state.
 
-e.g., if the user has selected the "Gunship" and then searches for the "A" bands, then clicks **Select all**, three more visible bands will be selected. As a result, four values will be marked as selected (three bands that start with "A" and the previously checked "Gunship").
+For example, if the user has selected the "Gunship" and then searches for the "A" bands, then clicks **Select all**, three more visible bands will be selected. As a result, four values will be marked as selected (three bands that start with "A" and the previously checked "Gunship").
 
 ![](static/multiselect-something-found.png)
 
@@ -204,7 +204,7 @@ Don’t show **Select all** or **Deselect all** when the user has searched and g
 
 - Sometimes, user selection can be limited by the number of required items.
 - In this case, once the user has selected the required number, all other items should receive the `disabled` state.
-- Inform the user that the choice is limited. This can be done, e.g., by putting an [Informer](../../patterns/informer/informer.md) next to the input label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
+- Inform the user that the choice is limited. This can be done, for example, by putting an [Informer](../../patterns/informer/informer.md) next to the input label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
 Hide the **Select all** and **Deselect all** buttons from lists where the maximum number of selected options is limited.

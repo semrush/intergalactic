@@ -48,7 +48,7 @@ In some cases it may open from the button "Send feedback", placed in the widgets
 If the user closes the form and then opens it again, save the content previously entered into the inputs.
 :::
 
-### Input's behaviour
+### Input's behavior
 
 - After opening the form set the focus on the textarea.
 - **There is a limitation for a minimum of 10 symbols and not less than 3 words in this textarea for submitting it.** If the entered message doesn't match these rules, after submitting it user gets an error with the tooltip describing how many symbols/words are required for submitting feedback.
@@ -58,13 +58,13 @@ Label this textarea with the text: "Tell us your suggestion or report an issue".
 
 ![](static/scroll.png)
 
-### Checkbox's behaviour
+### Checkbox's behavior
 
 If the user checked the checkbox "I need help...", the message should be automatically sent either to the product team, and to the Customer Success team, so they could help the user.
 
 Placeholder for this textarea: "I need help, please contact me".
 
-### Button's behaviour
+### Button's behavior
 
 - The form's trigger should get the `active` state if the form is opened.
 - After validation of the inputs and submitting the message, show message: "Thank you for your feedback!". After `2500ms` the form smoothly closes with a fade of `500ms`.

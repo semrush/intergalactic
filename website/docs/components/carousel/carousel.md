@@ -10,7 +10,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 
 **Use carousel when:**
 
-- There is a group of content on the same level (e.g., images or cards).
+- There is a group of content on the same level (for example, images or cards).
 - There is insufficient space in the interface, so carousel can save it.
 
 ::: tip
@@ -56,7 +56,7 @@ This example has the same styles as the example on the light background, except 
 
 ### Navigation buttons
 
-Navigation buttons are always center aligned and have styles of the [Button](/components/button/button) with `use="tertiary"` and `theme="muted"` . Inside the modal buttons change his theme to `theme="invert"` .
+Navigation buttons are always center aligned and have styles of the [Button](/components/button/button) with `use="tertiary"` and `theme="muted"` . Inside the modal buttons change their theme to `theme="invert"` .
 
 Table: Navigation buttons states
 

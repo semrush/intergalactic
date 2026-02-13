@@ -47,9 +47,9 @@ Table: Notice themes
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Muted**   | Used for regular messages and hints. ![](static/muted.png)                                                                                                                                                                                                                  |
 | **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). ![](static/info.png) |
-| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, e.g.. ![](static/success.png)                                                                                                                       |
+| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. ![](static/success.png)                                                                                                                       |
 | **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
-| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing his work or result in data loss. ![](static/danger.png)                                                                                                                              |
+| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
 
 ## Appearance
 
@@ -121,15 +121,15 @@ The notice should appear instantaneously without any delays or visual effects. I
 
 Since the notice serves as a temporary notification, it should have a predefined "lifespan." The lifespan can be determined by the following rules:
 
-- Number of days (e.g., for the duration of an experiment)
+- Number of days (for example, for the duration of an experiment)
 - Number of user sessions
-- Specific events (e.g., completion of tasks, bug fixes, transitioning features out of beta)
-- User actions as triggers (e.g., installing something, viewing specific content, resolving an error)
+- Specific events (for example, completion of tasks, bug fixes, transitioning features out of beta)
+- User actions as triggers (for example, installing something, viewing specific content, resolving an error)
 
 ### Hiding
 
 - Activating the **Close** button.
-- Activating a link that triggers a re-opening condition (e.g., "Ask me later," "Never show again," etc.).
+- Activating a link that triggers a re-opening condition (for example, "Ask me later," "Never show again," etc.).
 - If there is no **Close** button or hide link, the user can't manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
 
 ### Animation
@@ -138,7 +138,7 @@ When hiding, the notice should smoothly fade out with a duration of `250ms`. The
 
 ## Custom notice
 
-Custom notices have his own rules and distinct styles compared to the default themes.
+Custom notices have their own rules and distinct styles compared to the default themes.
 
 ### Feedback notice
 

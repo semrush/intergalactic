@@ -6,7 +6,7 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 
 ## Description
 
-**DropdownMenu** is a component for displaying the menu of options and his nested items.
+**DropdownMenu** is a component for displaying the menu of options and their nested items.
 
 ::: tip
 Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in [Select](/components/select/select).
@@ -37,7 +37,7 @@ We recommended to avoid limiting the dropdown's height for the menus. It's impor
 
 ## Placement
 
-The menu always drops down, regardless of space availability under the trigger. This behaviour is necessary to enable accessible keyboard control of the menu.
+The menu always drops down, regardless of space availability under the trigger. This behavior is necessary to enable accessible keyboard control of the menu.
 
 ## Menu item types and states
 
@@ -106,7 +106,7 @@ Table: DropdownMenu addition button states
 |------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Default trigger button | ![](static/button-1.png) | Trigger has the same styles as a regular item.                                                                                                                                                                |
 | Active input           | ![](static/button-2.png) | Clicking on the button opens an input in the `focus` state. The list item has no `hover` state in this case.                                                                                                  |
-| Entering value         | ![](static/button-3.png) | To add an item, click the submit icon. To close the input, click outside the input or press the `Esc` key. If user entered data but closed the input without submitting, his entered value should be saved. |
+| Entering value         | ![](static/button-3.png) | To add an item, click the submit icon. To close the input, click outside the input or press the `Esc` key. If user entered data but closed the input without submitting, their entered value should be saved. |
 | Loading                | ![](static/button-4.png) | For loading state change submit icon to [Spin](/components/spin/spin) with XS size. Input receives the `disabled` state.                                                                                      |
 | Error                  | ![](static/button-5.png) | If an error occurred during adding, show the error message in a tooltip and highlight the input.                                                                                                              |
 
@@ -225,6 +225,6 @@ Nested menus hide after the 0.3 seconds delay in the following cases:
 
 - When user hovers over another item in the parent menu.
 - When mouse cursor moves away from the dropdown.
-- When the entire dropdown closes (e.g., by pressing the `Esc` button).
+- When the entire dropdown closes (for example, by pressing the `Esc` button).
 
 To prevent inconvenience for users with small screens, avoid expanding the entire chain of submenus when opening a dropdown with a selected item in such a menu.

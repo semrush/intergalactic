@@ -6,7 +6,7 @@ tabs: Design('feedback-form'), A11y('feedback-form-a11y'), API('feedback-form-ap
 
 ## What pattern has
 
-Feedback pattern consists of several components that have his own accessibility requirements. You can find more about each of them in his guides:
+Feedback pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
 - [Button](/components/button/button-a11y)
 - [Checkbox](/components/checkbox/checkbox-a11y)
@@ -21,7 +21,7 @@ Feedback pattern consists of several components that have his own accessibility 
 
 ## Considerations for developers
 
-- Use the `label` element, and, in specific cases, other mechanisms (e.g., title attribute, etc.), to identify each form control.
+- Use the `label` element, and, in specific cases, other mechanisms (for example, title attribute, etc.), to identify each form control.
 - Use the `fieldset` and `legend` elements to group and associate related form controls.
 - Ensure that the browser's autofill feature works correctly for the email input. Usually, this is achieved by setting `type="email"`, `autocomplete="email"`, and `id` or `name="email"` attributes, [as in the example](./feedback-form-code.md).
 
@@ -35,7 +35,7 @@ See detailed information about the keyboard support for the all form elements in
 
 - Provide instructions to help users understand how to complete the form and individual form controls.
 - Notify users about successful task completion, any errors, and provide instructions to help them correct mistakes.
-- Divide long forms into multiple smaller forms that constitute a series of logical steps or stages and inform users about his progress.
+- Divide long forms into multiple smaller forms that constitute a series of logical steps or stages and inform users about their progress.
 
 ## Other recommendations
 

@@ -20,7 +20,7 @@ You can set the Hint's position using the `hintPlacement` property.
 
 ## Advanced usage
 
-To use Hint with other components, or to customize its behaviour, use the `Hint` component explicitly with `triggerRef` property.
+To use Hint with other components, or to customize its behavior, use the `Hint` component explicitly with `triggerRef` property.
 
 ::: sandbox
 

@@ -98,7 +98,7 @@ The `<GroupBar.Bar/>` component is a customized version of `<Bar/>` and shares t
 
 ## Trend line
 
-You can combine charts with each other. e.g., to display a trend line on a bar chart.
+You can combine charts with each other. For example, to display a trend line on a bar chart.
 
 ::: sandbox
 

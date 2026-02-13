@@ -31,7 +31,7 @@ Table: Roles and attributes
 |                          | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the checkbox group by referring to the dialog title.                                                                        |
 | `Modal` > `input#email`  | `aria-describedby="IDREF"`                                             | Provides an accessible description for the email input.<br/>In valid state, refers to the privacy text.<br/>In invalid state, refers to the error message. |
 
-FeedbackRating form pattern consists of several components that have his own accessibility requirements. You can find more about each of them in his guides:
+FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
 - [Notice](/components/notice/notice-a11y)
 - [NoticeBubble](/components/notice-bubble/notice-bubble-a11y)

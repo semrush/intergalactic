@@ -109,7 +109,7 @@ You can pass function to `display` prop of `Dots` component to control which dot
 
 ## Legend and symbols for dots
 
-To make data available without relying only on colors (e.g., for different kinds of colorblind and high-contrast modes), use the `patterns` property. With this property enabled lines become dashed and change dots to different symbols.
+To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property. With this property enabled lines become dashed and change dots to different symbols.
 
 Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 

@@ -49,7 +49,7 @@ Table: Input addon indents and sizes
 | L    | M size ![](static/addon-l-icon.png) | ![](static/addon-l-padding.png) | ![](static/addon-l-width.png) |
 
 ::: tip
-When two addons are stacked together, his indents will be divided in half. This ensures that there is a sufficient clickable zone (touch target) around each addon.
+When two addons are stacked together, their indents will be divided in half. This ensures that there is a sufficient clickable zone (touch target) around each addon.
 :::
 
 ![](static/padding_collapse.png)
@@ -99,5 +99,5 @@ Table: Input with counter
 
 1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/textarea) instead.
 2. Label the inputs clearly, so users can quickly understand what data needs to be entered.
-3. Select an appropriate width for the input field based on the content to be entered. e.g., if it's for a phone number, the input width shouldn't be wider than what's expected for a phone number.
+3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what's expected for a phone number.
 

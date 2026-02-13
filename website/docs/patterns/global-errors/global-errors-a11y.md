@@ -12,7 +12,7 @@ The following table describes roles and attributes that component already has.
 | --------------- | ---------- | ---------------------------------------------------------------- |
 | `Error` > `img` | `alt=""`   | Hides the illustration from assistive technology.                |
 
-Read more about the accessibility of components used in `Error message` in his respective guides:
+Read more about the accessibility of components used in `Error message` in their respective guides:
 
 * [Link](../../components/link/link-a11y.md)
 * [Button](../../components/button/button-a11y.md)

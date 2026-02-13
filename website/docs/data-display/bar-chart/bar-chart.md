@@ -141,7 +141,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ### Start the axes from zero
 
-When comparing bars, we are actually comparing his lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
+When comparing bars, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
 
 ![](static/deception-yes-no.png)
 
@@ -163,7 +163,7 @@ Consider a logical order for the values on the axes. For instance, arrange them 
 
 Sometimes, the chart provides an overall view, and detailed data can be accessed through interaction.
 
-e.g., clicking on a bar opens the corresponding report. The bar should have the `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
+For example, clicking on a bar opens the corresponding report. The bar should have the `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
 
 Upon hovering, the bar or bars are highlighted with `--chart-grid-bar-chart-hover`.
 

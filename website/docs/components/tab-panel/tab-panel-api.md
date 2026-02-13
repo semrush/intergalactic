@@ -18,10 +18,10 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 ## TabPanel.Item
 
-The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/button). It takes some properties from TabLine (e.g., `size`, `disabled`) and may override them.
+The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/button). It takes some properties from TabLine (for example, `size`, `disabled`) and may override them.
 
 ::: tip
-It's recommended to use links in tabs, so that user can open them in a new browser tab or window, or copy his URL.
+It's recommended to use links in tabs, so that user can open them in a new browser tab or window, or copy their URL.
 :::
 
 ```jsx

@@ -47,8 +47,8 @@ Table: Color types
 
 | Type             | Appearance example                            | Usage                                                                                                              |
 | ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Background color | ![](static/colorpicker-item-bg-default.png)   | Use for changing the background color. e.g., a user can pick colors to visually separate his competitors. |
-| Text color       | ![](static/colorpicker-item-text-default.png) | Use for changing the Tag color, e.g.                                                                        |
+| Background color | ![](static/colorpicker-item-bg-default.png)   | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
+| Text color       | ![](static/colorpicker-item-text-default.png) | Use for changing the Tag color, for example                                                                        |
 
 ## Dropdown
 

@@ -44,7 +44,7 @@ Recommended margin between table and pagination is `--spacing-4x`.
 
 ![](static/margin-top.png)
 
-### Layout behaviour
+### Layout behavior
 
 In case there is no space in the interface to place pagination in a row, the component layout changes from `row` to `column`.
 
@@ -81,7 +81,7 @@ We recommend using these values for the select: 10, 20, 50, 100.
 The current page should always be displayed in the input:
 
 - When the input is unfocused, show the current page, even if the user has changed this value but hasn’t pressed `Enter` or clicked the icon inside the input.
-- If the input is empty (e.g., the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
+- If the input is empty (for example, the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
 - This input restricts the entry of any symbols except numerical characters.
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.

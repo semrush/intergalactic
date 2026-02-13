@@ -63,7 +63,7 @@ All common rules for working with filters are described in the [Filter common ru
 
 ### Additional cases
 
-- If user entered a square bracket at the beginning and then entered a comma or pressed `Enter`, close the square brackets in this line. This behaviour should also work if the user puts only a square bracket at the end.
+- If user entered a square bracket at the beginning and then entered a comma or pressed `Enter`, close the square brackets in this line. This behavior should also work if the user puts only a square bracket at the end.
 - If user enters a closing square bracket at the end of a line, move the cursor to the next line.
 - **The "AND" logic always applies to words within the same line.**
 - Logic between lines is changed using the radio buttons (in the "Include keywords" filter).

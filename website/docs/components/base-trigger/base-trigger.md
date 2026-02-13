@@ -6,7 +6,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 
 ## Description
 
-**BaseTrigger** is a foundational component for creating triggers with button-like behaviour, resembling buttons, links, or filters.
+**BaseTrigger** is a foundational component for creating triggers with button-like behavior, resembling buttons, links, or filters.
 
 `BaseTrigger` has the following types for using in different scenarios:
 

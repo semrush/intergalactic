@@ -8,7 +8,7 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 ## Description
 
-**Switch** is a component that enables users to easily switch between two options or states without needing to refresh the page or confirm his choice.
+**Switch** is a component that enables users to easily switch between two options or states without needing to refresh the page or confirm their choice.
 
 ![](static/check-or-toggle.png)
 
