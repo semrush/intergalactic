@@ -25,6 +25,8 @@ import Cigarette from '../Cigarette/Cigarette';
 const DEFAULT_MINIMAL_BAR_WIDTH = 2;
 const DEFAULT_GAP = 2;
 
+type ScaleThresholdConfig = { range: Array<CigaretteChartDataKey>; domain: Array<number> };
+
 type CigaretteChartState = ChartState & {
   pX: number | null;
   pY: number | null;
@@ -85,7 +87,7 @@ class CigaretteChartComponent extends AbstractChart<
     return dataDefinitions.filter(({ checked }) => checked);
   }
 
-  private get nonNullActiveDataDefinitions() {
+  private get activePositiveDataDefinitions() {
     const { data } = this.asProps;
 
     return this.activeDataDefinitions.filter(({ id }) => {
@@ -122,11 +124,11 @@ class CigaretteChartComponent extends AbstractChart<
 
     const [pX, pY] = eventToPoint(event, this.plotRef.current);
 
-    this.setState((prevState) => ({ ...prevState, pX, pY }));
+    this.setState((prevState) => ({ pX, pY }));
   });
 
   private onPlotMouseLeave = trottle(() => {
-    this.setState((prevState) => ({ ...prevState, pX: null, pY: null }));
+    this.setState((prevState) => ({ pX: null, pY: null }));
   });
 
   protected override totalValue() {
@@ -150,7 +152,7 @@ class CigaretteChartComponent extends AbstractChart<
       ? this.activeDataDefinitions
       : [...this.activeDataDefinitions].reverse();
 
-    const count = this.nonNullActiveDataDefinitions.length;
+    const count = this.activePositiveDataDefinitions.length;
     const totalGapWidth = DEFAULT_GAP * Math.max(0, count - 1);
     const availableSpace = Math.max(0, (invertAxis ? plotWidth : plotHeight) - totalGapWidth);
 
@@ -458,7 +460,7 @@ class CigaretteChartComponent extends AbstractChart<
   private get visualScale() {
     const cigaretteItems = this.computeCigaretteItems();
 
-    const { range, domain } = cigaretteItems.reduce((acc, { id, visualWidth }, index) => {
+    const { range, domain } = cigaretteItems.reduce<ScaleThresholdConfig>((acc, { id, visualWidth }, index) => {
       const { range, domain } = acc;
 
       if (visualWidth) {
@@ -477,7 +479,7 @@ class CigaretteChartComponent extends AbstractChart<
       }
 
       return acc;
-    }, { range: [], domain: [] } as { range: Array<CigaretteChartDataKey>; domain: Array<number> });
+    }, { range: [], domain: [] });
 
     return scaleThreshold(domain, range);
   }
