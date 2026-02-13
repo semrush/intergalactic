@@ -154,10 +154,12 @@ export class Changelog {
 
     const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', component, 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const fullChangelog = Changelog.releaseParser(
-      releaseChangelogString,
-      changelogPath,
-    );
+    const fullChangelog = component === 'ui'
+      ? Changelog.releaseParser(
+          releaseChangelogString,
+          changelogPath,
+        )
+      : Changelog.componentParser(`@semcore/${component}`, releaseChangelogString, changelogPath);
 
     const releaseChangelog: ChangelogItem[] = [];
     const version = fullChangelog[0].version;
