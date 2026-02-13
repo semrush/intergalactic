@@ -53,7 +53,7 @@ background-color: var(--bg-secondary-neutral);
 
 ## Fixed header and footer
 
-When scrolling the modal's content area, the fixed areas acquire shadows from the top and bottom sides. Maintain moderate padding inside the fixed areas (for example, 8px).
+When scrolling the modal's content area, the fixed areas acquire shadows from the top and bottom sides. Maintain moderate padding inside the fixed areas (e.g., 8px).
 
 ![](static/fixed.png)
 
@@ -79,7 +79,7 @@ However, exceptions may arise where, according to the composition, both the head
 
 - Content includes lists and large texts (left alignment enhances readability).
 - Forms feature inputs of varying lengths.
-- Modal windows are divided into multiple logical sections (for example, wizards, dual-zone windows with previews, and a separate filter section).
+- Modal windows are divided into multiple logical sections (e.g., wizards, dual-zone windows with previews, and a separate filter section).
 - Content includes different types of content: form, lists, tables, etc.
 - Fixed controls are present.
 

@@ -8,7 +8,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 **WidgetEmpty** is a component for displaying empty states in cards, tables, widgets, etc.
 
-The WidgetEmpty component informs the user why there is no data (for example due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
+The WidgetEmpty component informs the user why there is no data (e.g. due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
 
 ## Composition and styles
 
@@ -58,7 +58,7 @@ Use this state when there is no data or the system cannot display it for some re
 
 - An illustration (use one of the [Chart type or Data type illustrations](../../style/illustration/illustration) to represent the kind of data that's normally displayed in the widget).
 - A message specifying why there's no data and what can be done to obtain it.
-- Optionally: a button to help remedy the situation in one click (for example, clear filters).
+- Optionally: a button to help remedy the situation in one click (e.g., clear filters).
 - Optionally: filters to help remedy the situation.
 
 Table: No data message examples
@@ -96,7 +96,7 @@ Display the following:
 
 - An illustration.
 - A text message specifying that we're working on the issue and asking the user to try again later.
-- Recommended: a helpful button (for example to reload the widget or the whole page).
+- Recommended: a helpful button (e.g. to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 
@@ -109,8 +109,8 @@ Table: Something went wrong message examples
 Display the following:
 
 - An illustration.
-- A text message about what happened and what the user can do (for example contact the support team).
-- Recommended: a helpful button (for example to reload the widget or the whole page).
+- A text message about what happened and what the user can do (e.g. contact the support team).
+- Recommended: a helpful button (e.g. to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 
@@ -147,7 +147,7 @@ Table: Custom message examples
 Use this state when data is absent because the user needs to connect something. This state is more detailed and serves an advertising purpose.
 
 In some cases, the product may be set up instantly by clicking the corresponding button.
-In other cases, the user should contact a specified email address for setting up the product. The title and description must be written in a positive form. For example, write: "Set up the service" instead of "The service isn’t set up."
+In other cases, the user should contact a specified email address for setting up the product. The title and description must be written in a positive form. e.g., write: "Set up the service" instead of "The service isn’t set up."
 
 Display the following:
 

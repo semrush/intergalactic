@@ -6,11 +6,11 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 
 ## What component has
 
-Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behavior, use the `behavior` property ([refer to the example](/components/pills/pills-code#using-as-tabs)).
+Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behaviour, use the `behaviour` property ([refer to the example](/components/pills/pills-code#using-as-tabs)).
 
 ### Keyboard support
 
-With `behavior='auto'` (default):
+With `behaviour='auto'` (default):
 
 Table: Keyboard support
 
@@ -19,7 +19,7 @@ Table: Keyboard support
 | `Tab`                        | When focus moves to the Pills, it moves to the active `Pills.Item`.                                                                                    |
 | `Left Arrow` , `Right Arrow` | Set `checked` value to the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. |
 
-With `behavior='manual'`:
+With `behaviour='manual'`:
 
 Table: Keyboard support
 
@@ -35,37 +35,37 @@ See detailed information about the keyboard support for clickable elements in th
 
 The following list describes roles and attributes that the component with already has.
 
-For `behavior='auto'` (default):
+For `behaviour='auto'` (default):
 
 Table: Roles & attributes
 
 | Component / Element | Roles & attributes          | Usage                                                                                                                                                                                                                                                                                                                                                                                                 |
 |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Pills`             | `radiogroup`                | Used for Pills with `behavior='auto'`. Identifies the `div` element as a container for a group of radio buttons. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                                        |
-| `Pills.Item`        | `radio`                     | Used for Pills with `behavior='auto'`. Identifies the `div` element as an ARIA radio button. The accessible name is computed from the child text content of the `div` element.                                                                                                                                                                                                                        |
+| `Pills`             | `radiogroup`                | Used for Pills with `behaviour='auto'`. Identifies the `div` element as a container for a group of radio buttons. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                                        |
+| `Pills.Item`        | `radio`                     | Used for Pills with `behaviour='auto'`. Identifies the `div` element as an ARIA radio button. The accessible name is computed from the child text content of the `div` element.                                                                                                                                                                                                                        |
 |                     | `tabIndex="0"`              | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd-roving-tabindex). |
 |                     | `tabindex="-1"`             | Makes the element focusable but not part of the page `Tab` sequence. Applied to all radio buttons contained in the radio group except for one that is included in the page `Tab` sequence. This approach to managing focus is described in the section on [Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationinsidecomponents).                        |
 |                     | `aria-checked="true/false"` | Identifies whether radio buttons are checked or unchecked.                                                                                                                                                                                                                                                                                                                                            |
 
-For `behavior='manual'` :
+For `behaviour='manual'` :
 
 Table: Roles & attributes
 
 | Component / Element | Roles & attributes           | Usage                                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Pills`             | `tablist`                    | Used for Pills with `behavior='manual'`. Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                              |
-| `Pills.Item`        | `tab`                        | Used for Pills with `behavior='manual'`. Indicates the element serves as a tab control.                                                                                                                                                                                                                                                                                                   |
+| `Pills`             | `tablist`                    | Used for Pills with `behaviour='manual'`. Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                              |
+| `Pills.Item`        | `tab`                        | Used for Pills with `behaviour='manual'`. Indicates the element serves as a tab control.                                                                                                                                                                                                                                                                                                   |
 |                     | `tabIndex="0"`               | Makes the tab control focusable and includes it in the page `Tab` sequence. Set on only one tab in the tablist. Moves with focus inside the tablist so the most recently focused tab control is included in the page `Tab` sequence. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd-roving-tabindex). |
 |                     | `tabindex="-1"`              | Makes the element focusable but not part of the page `Tab` sequence. Applied to all tab controls contained in the tablist except for one that is included in the page `Tab` sequence. This approach to managing focus is described in the section on [Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationinsidecomponents).                 |
 |                     | `aria-selected="true/false"` | Indicates whether the tab is active and its panel is displayed. `true` for the active tab (when a user activates it), `false` for all other tabs in the set. Does not change when focus moves within the tablist.                                                                                                                                                                         |
 
 ## Considerations for developers
 
-Ensure that `behavior` prop value is suitable for the use case. If you need to use Pills as a group of radio buttons, set `behavior='auto'`. If you need to use Pills as a group of tabs, set `behavior='manual'`.
+Ensure that `behaviour` prop value is suitable for the use case. If you need to use Pills as a group of radio buttons, set `behaviour='auto'`. If you need to use Pills as a group of tabs, set `behaviour='manual'`.
 
 The following recommendations will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-**When using Pills as tabs (`behavior='manual'`), ensure the following:**
+**When using Pills as tabs (`behaviour='manual'`), ensure the following:**
 
 1. Apply the `tabpanel` role to the content that corresponds to each tab.
 2. Add the `aria-labelledby` attribute to the content that corresponds to each tab.
@@ -73,11 +73,11 @@ The following recommendations will help you to keep in mind the necessary roles 
 
 Refer to the [Using as tabs example](/components/pills/pills-code#using-as-tabs).
 
-**When using Pills as radio buttons (`behavior='auto'`),** add the `aria-labelledby` attribute to the radio group to reference the element that contains its label.
+**When using Pills as radio buttons (`behaviour='auto'`),** add the `aria-labelledby` attribute to the radio group to reference the element that contains its label.
 
 ## Resources
 
-- [Examples from W3C](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) have detailed information about the tabs behavior.
+- [Examples from W3C](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) have detailed information about the tabs behaviour.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons) gives core recommendations for the accessible radio buttons.
 
 ## Other recommendations

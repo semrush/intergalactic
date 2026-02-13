@@ -10,10 +10,10 @@ These components are employed to manage user expectations:
 - [Skeleton](/components/skeleton/skeleton)
 - [ProgressBar](/components/progress-bar/progress-bar)
 
-**Use them for different cases.** For detailed insights into each component, refer to their guides.
+**Use them for different cases.** For detailed insights into each component, refer to his guides.
 
 ::: tip
-Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (for example, for the spinner, we recommend using `margin: 40px`).
+Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (e.g., for the spinner, we recommend using `margin: 40px`).
 :::
 
 ## Response from system

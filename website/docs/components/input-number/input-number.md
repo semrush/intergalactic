@@ -25,7 +25,7 @@ Numeric values can represent quantities of something, such as:
 - Price.
 - Age.
 
-Dates and various codes (for example, pin codes) are also examples of numeric values.
+Dates and various codes (e.g., pin codes) are also examples of numeric values.
 
 **InputNumber offers the following features:**
 
@@ -35,7 +35,7 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 - You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
 
 ::: tip
-**HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
+**HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (e.g., slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
 
 For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
 :::
@@ -48,7 +48,7 @@ The width of the input shouldn't exceed the maximum number that can be entered. 
 
 ## Interaction
 
-Stepper buttons are enabled when the InputNumber field receives focus. The target area for the steppers is larger than their visual size.
+Stepper buttons are enabled when the InputNumber field receives focus. The target area for the steppers is larger than his visual size.
 
 Table: InputNumber's stepper button sizes
 
@@ -112,7 +112,7 @@ If the value in the right input is less than the value in the left input, the va
 
 Table: Validation case for InputRange
 
-| The right value is less than the left value | After submitting, inputs will switch their values |
+| The right value is less than the left value | After submitting, inputs will switch his values |
 | ------------------------------------------- | ------------------------------------------------- |
 | ![](static/range-1.png)                     | ![](static/range-2.png)                           |
 
@@ -152,6 +152,6 @@ Treat the zero value like any other number:
 - If 0 is less than the minimum value, the input will reset the value to the minimum.
 
 ::: tip
-If the input is already set to 0, when the input receives focus, the user can enter a value after the 0. Upon onBlur, the entire value in the input is formatted, and the leading 0 will be removed. For example, `001` is formatted to `1`.
+If the input is already set to 0, when the input receives focus, the user can enter a value after the 0. Upon onBlur, the entire value in the input is formatted, and the leading 0 will be removed. e.g., `001` is formatted to `1`.
 :::
 

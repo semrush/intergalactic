@@ -24,9 +24,9 @@ Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 
 **Use modal:**
 
-- To show secondary data. _For example, settings, small forms to fill out, step-by-step actions, detailed information about any data._
-- To draw attention to a specific request or task. _For example, confirming an operation, adding data._
-- To focus on critical information that requires the user's attention. _For example, local news, limiting, deleting an element, or losing information._
+- To show secondary data. _e.g., settings, small forms to fill out, step-by-step actions, detailed information about any data._
+- To draw attention to a specific request or task. _e.g., confirming an operation, adding data._
+- To focus on critical information that requires the user's attention. _e.g., local news, limiting, deleting an element, or losing information._
 - To view enlarged image or video.
 
 **Don't use modal:**
@@ -110,7 +110,7 @@ After the modal is closed, the focus should always return to the trigger.
 
 If the potential consequences of accidentally closing the modal are significant, alert the user about the potential loss of information.
 
-It's recommended to save the information entered by the user when closing and reopening the modal. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the modal.
+It's recommended to save the information entered by the user when closing and reopening the modal. If it isn’t possible to do so, inform users that his entered data will be lost upon closing the modal.
 
 ### Loading
 
@@ -200,6 +200,6 @@ It is advisable to limit the usage of main buttons within the modal to a maximum
 
 ![](static/buttons-yes-no.png)
 
-**Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and their functions are not clearly designated.
+**Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and his functions are not clearly designated.
 
 ![](static/button-yes-no.png)

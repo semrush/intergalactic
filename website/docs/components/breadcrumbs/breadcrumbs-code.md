@@ -19,7 +19,7 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 ## Redefining tag
 
-You can redefine `tag` for the `<Breadcrumbs.Item />`. This is necessary, for example, to use `Link` from `react-router`.
+You can redefine `tag` for the `<Breadcrumbs.Item />`. This is necessary, e.g., to use `Link` from `react-router`.
 
 ::: sandbox
 

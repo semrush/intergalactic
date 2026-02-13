@@ -8,7 +8,7 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 
 ## Description
 
-**Dot** is a component that marks updates in the interface. For example, it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
+**Dot** is a component that marks updates in the interface. e.g., it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
 
 ::: tip
 Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
@@ -75,7 +75,7 @@ If there is one update, show a dot without a counter inside.
 If there are more than nine updates, shorten the value displayed in the counter to 9+. When the counter with a large value is used inside the dot, it “grows” only inside the control.
 
 ::: tip
-Note that this behavior isn’t implemented in the component.
+Note that this behaviour isn’t implemented in the component.
 :::
 
 ![](static/counter-2.png)

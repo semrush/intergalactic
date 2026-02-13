@@ -74,7 +74,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 
 ## Legend and pattern fill
 
-To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property.
+To make data available without relying only on colors (e.g., for different kinds of colorblind and high-contrast modes), use the `patterns` property.
 
 Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 

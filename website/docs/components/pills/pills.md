@@ -43,11 +43,11 @@ Addons (icons, flags, badges, counters) have the same margin as the addons insid
 
 ## Behaviour
 
-The Pills component can work in two modes: manual or automatic tab activation. We recommend using `auto` behavior in forms, while `manual` behavior is better for navigation and layout changes.
+The Pills component can work in two modes: manual or automatic tab activation. We recommend using `auto` behaviour in forms, while `manual` behaviour is better for navigation and layout changes.
 
-Table: Pills usage behavior
+Table: Pills usage behaviour
 
-| Behavior | Example of usage             | Description                                                                                                                   |
+| behaviour | Example of usage             | Description                                                                                                                   |
 |----------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | `auto`   | ![](static/pill-auto.png)    | Pills.Items are automatically activated when they receive focus, just like in the [Radio component](/components/radio/radio). |
 | `manual` | ![](static/pills-manual.png) | Pills.Items are activated by pressing **Space** or **Enter**.                                                                 |
@@ -75,7 +75,7 @@ Table: States for adding new item case in Pills
 
 ### Pills as summary
 
-In some products, pills can act as a block with shared metrics. Their differences from the default pills are:
+In some products, pills can act as a block with shared metrics. his differences from the default pills are:
 
 - Increased height due to content.
 - Additional controls inside, usually for adding/moving data by clicking on a link.

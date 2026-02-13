@@ -79,7 +79,7 @@ If you are redefining children rendering of `<XAxis.Ticks>` or `<YAxis.Ticks>`, 
 
 ### Tweak data summarizer configuration
 
-Sometimes the chart summary looks similar to what you expect, but not good enough. For example, your data is too variable and the summarizer seems to be too sensitive. In this case you can tweak the summarizer configuration.
+Sometimes the chart summary looks similar to what you expect, but not good enough. e.g., your data is too variable and the summarizer seems to be too sensitive. In this case you can tweak the summarizer configuration.
 
 <TypesView type="PlotSummarizerConfig" :types={...types} />
 

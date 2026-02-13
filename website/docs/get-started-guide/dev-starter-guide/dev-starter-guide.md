@@ -9,7 +9,7 @@ Let's explore the design system used at [Semrush](https://semrush.com), which yo
 
 ## Installation
 
-All components are bundled together in a single package, making the installation process straightforward. For example:
+All components are bundled together in a single package, making the installation process straightforward. e.g.:
 
 ::: code-group
 
@@ -71,15 +71,15 @@ You have the ability to change the default styles for your project. We offer [de
 
 ### Controlled & uncontrolled
 
-By default, our components work in uncontrolled mode. Once you provide a value a pair of prop and handler (for example, `value` and `onChange`), the component starts ignore it's internal state related to this pair of props and switches it to a controlled mode. This grants you complete control over the state and its changes. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
+By default, our components work in uncontrolled mode. Once you provide a value a pair of prop and handler (e.g., `value` and `onChange`), the component starts ignore it's internal state related to this pair of props and switches it to a controlled mode. This grants you complete control over the state and its changes. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
 
 ::: tip
-This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
+This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behaviour, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
 
 The handlers for these types of properties follow a specific notation: `on{ eventName }Change`.
 :::
 
-If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. e.g., if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
 ### Handlers
 
@@ -154,7 +154,7 @@ import { Box } from '@semcore/ui/base-components';
 **Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
 :::
 
-`Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
+`Box` serves as the foundation for other components, making its features available throughout the entire library. e.g.:
 
 ```jsx
 import Button from '@semcore/ui/button';

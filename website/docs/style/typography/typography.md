@@ -51,7 +51,7 @@ Use text color thoughtfully and avoid excessive color usage, as it can reduce re
 
 ### Additional information
 
-In some cases, it may be necessary to display additional information next to the primary text (for example, a result count next to some heading). We recommend styling it using the secondary text color (`--text-secondary` token).
+In some cases, it may be necessary to display additional information next to the primary text (e.g., a result count next to some heading). We recommend styling it using the secondary text color (`--text-secondary` token).
 
 ::: sandbox
 
@@ -146,7 +146,7 @@ These margins can also be used when a paragraph is followed by another paragraph
 
 **Use a 16px paragraph with the following heading sizes:**
 
-Table: Heading sizes and their bottom margins
+Table: Heading sizes and his bottom margins
 
 | Heading&nbsp;size | Bottom margin                       |
 | ----------------- | ----------------------------------- |
@@ -156,7 +156,7 @@ Table: Heading sizes and their bottom margins
 
 **Use a 14px paragraph with the following heading sizes:**
 
-Table: Heading sizes and their bottom margins
+Table: Heading sizes and his bottom margins
 
 | Heading&nbsp;size | Bottom margin                       |
 | ----------------- | ----------------------------------- |

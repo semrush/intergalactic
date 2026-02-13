@@ -16,7 +16,7 @@ Show [Feedback illustration](/style/illustration/illustration) on the left to th
 
 ![](static/feedback-yes-no.png)
 
-## Behavior
+## behaviour
 
 There are two potential variants for the notice to appear:
 
@@ -35,11 +35,11 @@ It can also be placed next to the feature for which feedback is desired.
 
 ![](static/send-feedback-notice-next-to-feature.png)
 
-## Form behavior
+## Form behaviour
 
-Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback-form/feedback-form).
+Refer to the comprehensive behaviour description of the feedback dropdown in the [Feedback](/components/feedback-form/feedback-form).
 
-## Buttons behavior
+## Buttons behaviour
 
 ### "Yes" and "No" buttons
 
@@ -58,7 +58,7 @@ Refer to the comprehensive behavior description of the feedback dropdown in the 
 - Pressing the **Cancel** button closes the feedback form.
 - The notice remains visible.
 
-## Closing behavior
+## Closing behaviour
 
 ### "Ask me later" button
 

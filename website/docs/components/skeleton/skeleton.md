@@ -118,7 +118,7 @@ Table: Skeleton appearance for all heading levels
 
 ### Illustrations
 
-The Skeleton for illustrations depends on their size:
+The Skeleton for illustrations depends on his size:
 
 - For small-sized illustrations like user pictures or advertising previews, show a skeleton "bone" corresponding to the illustration size, and immediately replace it with the actual illustration upon loading.
 
@@ -203,7 +203,7 @@ For more details, refer to [Chart principles](/data-display/d3-chart/d3-chart).
 
 ### Pills
 
-Pills should never be disabled. They should always remain active, even during the initial loading, to let users navigate to their desired tabs.
+Pills should never be disabled. They should always remain active, even during the initial loading, to let users navigate to his desired tabs.
 
 **Pills with counters**
 
@@ -232,7 +232,7 @@ Information that can be shown instantly and remains unchanged should be displaye
 
 ![skeleton-info](static/info-yes-no.png)
 
-**Use Skeleton to display changing page titles**—for example,
+**Use Skeleton to display changing page titles**—e.g.,
 the project name or widget title that depends on certain factors.
 
 ![skeleton-dynamic-info](static/dynamic-yes-no.png)

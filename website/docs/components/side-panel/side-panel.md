@@ -17,7 +17,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 Use [Modal dialogs](/components/modal/modal) to show important information or request a response from the user.
 :::
 
-**For example, you can use SidePanel as:**
+**e.g., you can use SidePanel as:**
 
 - A notification center for the whole website
 - A Help Center or News panel in products
@@ -68,7 +68,7 @@ SidePanel has a fixed width that doesn't change when the browser window is resiz
 
 **The component has a default padding.** It can be changed if necessary.
 
-_It can be changed, for example, when using SidePanel on a small screen where you want to reduce paddings._
+_It can be changed, e.g., when using SidePanel on a small screen where you want to reduce paddings._
 
 ### Content styles
 

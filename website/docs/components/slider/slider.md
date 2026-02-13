@@ -116,7 +116,7 @@ are the main use cases for the slider component.
 Consider the context of the interface.
 Clicking and dragging a control to an exact location on mobile devices can be challenging.
 Many users accidentally move the slider knob off the value they were trying to select
-when lifting their finger off the screen, [as mentioned by Nielsen Norman Group](https://www.nngroup.com/articles/sliders-knobs/).
+when lifting his finger off the screen, [as mentioned by Nielsen Norman Group](https://www.nngroup.com/articles/sliders-knobs/).
 
 ### Input values location
 

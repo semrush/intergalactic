@@ -6,7 +6,7 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 ## Description
 
-**Drag and drop** is a component that allows user to move elements within the interface, changing their order and sometimes their properties.
+**Drag and drop** is a component that allows user to move elements within the interface, changing his order and sometimes his properties.
 
 ::: tip
 One common use for drag and drop is a dropdown with a list of table columns that can be reordered, usually titled **Table settings** or **Manage columns**.

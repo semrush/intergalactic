@@ -263,7 +263,7 @@ You've requested a page on a website (cloudflarepreview.com) that is on the Clou
 
 - Most likely: if the owner just signed up for Cloudflare it can take a few minutes for the website's information to be distributed to our global network.
 
-- Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (for example, a hosting provider) and the provider's DNS fails.
+- Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (e.g., a hosting provider) and the provider's DNS fails.
 <br><br>
 
 - Ray ID: \{000000000000000\}

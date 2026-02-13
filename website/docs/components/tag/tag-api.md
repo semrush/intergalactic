@@ -6,7 +6,7 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 ## Tag, TagContainer
 
-`TagContainer` is necessary for the correct appearance and behavior of the **Delete tag** button.
+`TagContainer` is necessary for the correct appearance and behaviour of the **Delete tag** button.
 
 <TypesView type="TagProps" :types={...types} />
 

@@ -24,7 +24,7 @@ Table: Roles and attributes
 
 ## Considerations for designers and developers
 
-- Provide accessible names for notices that accurately convey their type and importance. Refer to [our examples](./notice-code.md).
+- Provide accessible names for notices that accurately convey his type and importance. Refer to [our examples](./notice-code.md).
 - Avoid showing more than one `Notice` on the same page at once. If you absolutely have to do it, make sure they all have different accessible names so they can be easily distinguished when navigating the landmarks.
 
 ## Other recommendations

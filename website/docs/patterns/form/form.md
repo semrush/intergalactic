@@ -115,7 +115,7 @@ In brief:
 - Requires more horizontal space.
 - Takes longer to complete (read [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
 - Less suitable for multilingual interfaces.
-- Users who magnify their screens may struggle to match labels with inputs, given their limited screen visibility.
+- Users who magnify his screens may struggle to match labels with inputs, given his limited screen visibility.
 
 ### Horizontal form layout, right label alignment
 

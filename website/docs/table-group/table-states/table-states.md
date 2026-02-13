@@ -180,5 +180,5 @@ A cell may be locked due to a limit or the need to take action to unlock the dat
 ![](static/cell-locked-tooltip.png)
 
 ::: tip
-For all main table styles and principles, refer to [DataTable](/table-group/data-table/data-table). Find svg illustrations for different states and their names in [WidgetEmpty](/components/widget-empty/widget-empty-code).
+For all main table styles and principles, refer to [DataTable](/table-group/data-table/data-table). Find svg illustrations for different states and his names in [WidgetEmpty](/components/widget-empty/widget-empty-code).
 :::

@@ -36,7 +36,7 @@ Table: Default attributes
 
 ## Resources
 
-[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal dialogs accessible behavior.
+[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal dialogs accessible behaviour.
 
 ## Other recommendations
 

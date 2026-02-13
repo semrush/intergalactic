@@ -44,7 +44,7 @@ Almost all our icons are drawn in an outline style.
 Some icons also have a filled variation. Filled icon can be used to represent an action that has been carried out, such as using a filled star when a post has been “favorited“.
 
 ::: tip
-For the filled version of the icon add **Filled** at the end of the icon name. _For example: Favorite / FavoriteFilled._
+For the filled version of the icon add **Filled** at the end of the icon name. _e.g.: Favorite / FavoriteFilled._
 :::
 
 ![](static/variations.png)
@@ -117,7 +117,7 @@ If you add a new icon to the library, make sure to add it in all necessary sizes
 
 ![](static/name-color.png)
 
-4. Each icon should be tagged in their primary component description, with a list of tags, matching [this JSON](https://github.com/semrush/intergalactic/blob/HEAD/website/docs/style/icon/icons-list.js) (to make it possible to search for an icon on the design system website).
+4. Each icon should be tagged in his primary component description, with a list of tags, matching [this JSON](https://github.com/semrush/intergalactic/blob/HEAD/website/docs/style/icon/icons-list.js) (to make it possible to search for an icon on the design system website).
 
 ![](static/icon-tags.png)
 
