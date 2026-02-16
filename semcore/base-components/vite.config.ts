@@ -10,15 +10,6 @@ export default mergeConfig(
         entry: './src/index.ts',
       },
       rollupOptions: {
-        // output: [
-        //   {
-        //     preserveModules: true,
-        //     preserveModulesRoot: 'src',
-        //     assetFileNames: 'esm/[name][extname]',
-        //     entryFileNames: 'esm/[name].mjs',
-        //     format: 'esm',
-        //   },
-        // ],
         external: [
           'react',
           'react-dom',
