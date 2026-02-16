@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.1.14] - 2026-02-16
+
+### Changed
+
+- Rewrite component to TS
+- `onChange` format to `HH:mm`
+
 ## [16.1.13] - 2025-12-01
 
 ### Fixed
