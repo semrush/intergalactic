@@ -10,6 +10,15 @@ export default mergeConfig(
         entry: './src/index.ts',
       },
       rollupOptions: {
+        // output: [
+        //   {
+        //     preserveModules: true,
+        //     preserveModulesRoot: 'src',
+        //     assetFileNames: 'esm/[name][extname]',
+        //     entryFileNames: 'esm/[name].mjs',
+        //     format: 'esm',
+        //   },
+        // ],
         external: [
           'react',
           'react-dom',
@@ -18,6 +27,7 @@ export default mergeConfig(
           /@semcore\/*/,
           'classnames',
           'csstype',
+          '@floating-ui/dom',
           '@popperjs/core',
           'popper-max-size-modifier',
         ],
