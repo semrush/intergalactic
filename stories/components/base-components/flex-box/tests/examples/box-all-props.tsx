@@ -1,14 +1,42 @@
-import { Box } from '@semcore/ui/flex-box';
-import type { BoxProps } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/base-components';
 import React from 'react';
 
 type ExampleProps = BoxProps & {
-  tag?: string;
+  tag?: React.ElementType;
 };
 
 const Demo = (props: ExampleProps) => {
+  const isPositioned =
+    props.position === 'absolute' || props.position === 'fixed' || props.position === 'sticky';
+
   return (
-    <div style={{ padding: 20, border: '1px dashed #ccc', minHeight: 200 }}>
+    <div
+      style={{
+        position: 'relative',
+        padding: 20,
+        border: '2px dashed #aaa',
+        minHeight: 300,
+        width: 500,
+        background: '#f9f9f9',
+      }}
+    >
+      <div style={{ color: '#999', fontSize: 12, marginBottom: 8 }}>
+        Parent container (position: relative, 500x300)
+      </div>
+
+      {isPositioned && !props.inset && !props.top && !props.left && !props.bottom && !props.right && (
+        <div style={{ color: '#e67700', fontSize: 12, marginBottom: 8 }}>
+          Hint: set inset (e.g. &quot;10px&quot; or &quot;0&quot;) or top/left/bottom/right to see positioning effect
+        </div>
+      )}
+
+      {isPositioned && props.inset && (props.w || props.h) && (
+        <div style={{ color: '#e67700', fontSize: 12, marginBottom: 8 }}>
+          Hint: clear w and h to let inset stretch the Box to fill the parent
+        </div>
+      )}
+
       <Box
         tag={props.tag}
         display={props.display}
