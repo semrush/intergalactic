@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@axe-core/playwright": "4.9.1",
-    "@playwright/test": "1.48.0",
+    "@playwright/test": "1.58.0",
     "@previewjs/plugin-react": "17.1.0",
     "@previewjs/screenshot": "0.3.2",
     "@semcore/babel-preset-ui": "workspace:*",
