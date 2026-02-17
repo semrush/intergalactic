@@ -166,7 +166,7 @@ export type BoxProps = StyledProps & {
   bottom?: number | string;
   /** CSS `right` property */
   right?: number | string;
-  /** CSS inset property */
+  /** CSS `inset` property */
   inset?: string;
   /** CSS `z-index` property */
   zIndex?: number;
