@@ -160,6 +160,8 @@ export type BoxProps = IStyledProps & {
   bottom?: number | string;
   /** CSS `right` property */
   right?: number | string;
+  /** CSS `inset` property */
+  inset?: string;
   /** CSS `z-index` property */
   zIndex?: number;
   /** CSS `text-align` property */
@@ -191,6 +193,7 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
     left: getSize(props['left']),
     bottom: getSize(props['bottom']),
     right: getSize(props['right']),
+    inset: props.inset,
     flex: props.flex,
     zIndex: props.zIndex,
     textAlign: props.textAlign,
@@ -267,6 +270,7 @@ export default function useBox<T extends BoxProps>(
     left,
     bottom,
     right,
+    inset,
     zIndex,
     ...other
   } = props as any;
@@ -302,6 +306,7 @@ export default function useBox<T extends BoxProps>(
     left,
     bottom,
     right,
+    inset,
     zIndex,
   ]);
 
