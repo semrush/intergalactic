@@ -33,6 +33,8 @@ class BadgeFHRoot extends Component<BadgeFHProps, typeof BadgeFHRoot.enhance, ne
 
     const bg = use === 'neutral' ? resolveColor('--violet-400') : undefined;
 
+    // eslint-disable-next-line no-console
+    console.log('test');
     return sstyled(styles)(
       <SHighlightedBadge
         render={Badge}
