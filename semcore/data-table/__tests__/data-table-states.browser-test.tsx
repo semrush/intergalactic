@@ -202,7 +202,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx', 'en');
 
       await page.setViewportSize({ width: 1920, height: 1080 });
-
+      await page.waitForTimeout(200); // wait for ellipsis apply
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
