@@ -15,14 +15,14 @@ const data: Record<string, number | typeof interpolateValue> = {
 
 // One tiny value among large should be invisible at minimalBarWidth=0, visible at 2+
 export const dataTinyValue = {
-  Large: 10000,
-  Medium: 5000,
+  Large: 100,
+  Medium: 50,
   Tiny: 1,
 };
 
 // Multiple tiny values all should get minimalBarWidth proportionally
 export const dataMultipleTiny = {
-  Giant: 50000,
+  Giant: 10,
   Small1: 5,
   Small2: 3,
   Small3: 1,
@@ -59,10 +59,11 @@ export const dataOverflow = {
   Z: 3,
 };
 
-const Demo = (props: CigaretteChartProps) => {
+const Demo = ({ enableMinimalBarWidth = true, ...props }: CigaretteChartProps & { enableMinimalBarWidth?: boolean }) => {
   return (
     <Chart.Cigarette
       {...props}
+      minimalBarWidth={enableMinimalBarWidth ? props.minimalBarWidth : undefined}
       aria-label='Cigarette chart'
     />
   );

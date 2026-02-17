@@ -32,6 +32,7 @@ export const BasicUsage = {
     showPercentValueInTooltip: { control: { type: 'boolean' } },
     tooltipTitle: { control: { type: 'text' } },
     tooltipViewType: { control: { type: 'select' }, options: ['all', 'single'] },
+    enableMinimalBarWidth: { control: { type: 'boolean' } },
     minimalBarWidth: { control: { type: 'number' } },
     duration: { control: { type: 'number' } },
     data: {
