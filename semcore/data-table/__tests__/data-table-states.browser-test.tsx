@@ -226,17 +226,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
-
+      await page.waitForTimeout(250); // wait for ellipsis apply
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(200); // wait for ellipsis apply
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
 
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
