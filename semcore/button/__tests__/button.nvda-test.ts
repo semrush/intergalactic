@@ -35,7 +35,8 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await test.step('Navigate to button and verify initial state', async () => {
       await page.getByRole('button').first().waitFor({ state: 'visible' });
 
-      await nvda.next();
+      // await nvda.next();
+      await page.keyboard.press('Tab');
       const buttonText = await nvda.itemText();
       expect(buttonText).toContain('button, unavailable, graphic, Loading…');
     });

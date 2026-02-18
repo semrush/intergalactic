@@ -14,9 +14,9 @@ const config: PlaywrightTestConfig = {
   reporter: [['list'], ['allure-playwright']],
   projects: [
     {
-      name: 'firefox',
+      name: 'chromium',
       use: {
-        ...devices['Desktop Firefox'],
+        ...devices['Desktop Chrome'],
         headless: false,
         video: 'off',
         launchOptions: {
