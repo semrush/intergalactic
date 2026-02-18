@@ -106,7 +106,7 @@ export class Changelog {
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
           traversingType = token.raw;
 
-          if (token.raw === 'Added') {
+          if (token.raw === 'Added' && incrementType !== 'major') {
             incrementType = 'minor';
             this.changelogs.components[traversingComponent].incrementType = incrementType;
           } else if (token.raw === 'BREAK') {
