@@ -265,7 +265,7 @@
   /* Border color of the second period for the comparison mode in the DatePicker. */
   --intergalactic-border-date-picker-range-comparison: #892aff;
   /* Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states. */
-  --intergalactic-border-critical-pattern: #ffffff;
+  --intergalactic-border-critical-pattern: repeating-linear-gradient(315deg, rgba(255, 41, 41, 1) 0, rgba(255, 41, 41, 1) 2px, transparent 0, transparent 50%);
   /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #b0c4c9;
   /* Background of the regular primary control. */
@@ -449,9 +449,9 @@
   /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
   /* Value with gradient for the ProgressBar. */
-  --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%);
+  --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%);
   /* Null value gradient for the ProgressBar. */
-  --intergalactic-progress-bar-pattern-gradient: linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%);
+  --intergalactic-progress-bar-pattern-gradient: linear-gradient(-45deg, rgba(234, 239, 241, 0.9) 25%, rgba(234, 239, 241, 1) 0%, rgba(234, 239, 241, 1) 50%, rgba(234, 239, 241, 0.9) 0%, rgba(234, 239, 241, 0.9) 75%, rgba(234, 239, 241, 1) 0%);
   /* Base value background for the ProgressBar. It is used to create gradients for the values. */
   --intergalactic-progress-bar-value-bg: #000000;
   /* Default color for the Skeleton. */
@@ -655,7 +655,7 @@
   /* Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard). */
   --intergalactic-modal-rounded: 12px;
   /* Use for the disabled state of all kind of the controls and elements. */
-  --intergalactic-disabled-opacity: 0.3;
+  --intergalactic-disabled-opacity: 0.5;
   /* Extra small screens (small phones). */
   --intergalactic-screen-extra-small: 320px;
   /* Small screens (phones and small tablets). */

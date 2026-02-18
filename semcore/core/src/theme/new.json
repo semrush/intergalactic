@@ -801,7 +801,7 @@
         "description": "Border color of the second period for the comparison mode in the DatePicker."
       },
       "critical-pattern": {
-        "value": "#ffffff",
+        "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
         "type": "color",
         "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
       }
@@ -1285,17 +1285,17 @@
         "description": "Hover state for the inverted version of the background color of the ProgressBar."
       },
       "value": {
-        "value": "#009f81",
+        "value": "{green.400}",
         "type": "color",
         "description": "Value color of the ProgressBar."
       },
       "value-gradient": {
-        "value": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
+        "value": "linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%)",
         "type": "color",
         "description": "Value with gradient for the ProgressBar."
       },
       "pattern-gradient": {
-        "value": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
+        "value": "linear-gradient(-45deg, rgba(234, 239, 241, 0.9) 25%, rgba(234, 239, 241, 1) 0%, rgba(234, 239, 241, 1) 50%, rgba(234, 239, 241, 0.9) 0%, rgba(234, 239, 241, 0.9) 75%, rgba(234, 239, 241, 1) 0%)",
         "type": "color",
         "description": "Null value gradient for the ProgressBar."
       },
@@ -1973,7 +1973,7 @@
       "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard)."
     },
     "disabled-opacity": {
-      "value": "0.3",
+      "value": "0.5",
       "type": "opacity",
       "description": "Use for the disabled state of all kind of the controls and elements."
     },
