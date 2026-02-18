@@ -639,12 +639,12 @@
         "description": "Inverted version of the secondary text."
       },
       "link": {
-        "value": "{blue.500}",
+        "value": "{gray.800}",
         "type": "color",
         "description": "Link text."
       },
       "link-hover-active": {
-        "value": "{blue.600}",
+        "value": "{gray.800}",
         "type": "color",
         "description": "Hover and active states for the link text."
       },
@@ -741,7 +741,7 @@
         "description": "Subtle secondary border in the informational message."
       },
       "info-active": {
-        "value": "{blue.500}",
+        "value": "{gray.800}",
         "type": "color",
         "description": "Active border in focused input filed."
       },
@@ -1526,7 +1526,7 @@
     },
     "box-shadow": {
       "card": {
-        "value": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
+        "value": "0 0 0 1px {gray.100}",
         "type": "boxShadow",
         "description": "Default shadow of the Card."
       },
@@ -1600,7 +1600,7 @@
       "type": "boxShadow",
       "description": "Default keyboard focus box-shadow styles.",
       "outline": {
-        "value": "{blue.400}",
+        "value": "{gray.800}",
         "type": "color",
         "description": "Color for default keyboard focus outline styles."
       },

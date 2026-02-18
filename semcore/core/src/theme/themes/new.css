@@ -201,9 +201,9 @@
   /* Inverted version of the secondary text. */
   --intergalactic-text-secondary-invert: rgba(255, 255, 255, 0.8);
   /* Link text. */
-  --intergalactic-text-link: #2969ff;
+  --intergalactic-text-link: #1e262a;
   /* Hover and active states for the link text. */
-  --intergalactic-text-link-hover-active: #2560e8;
+  --intergalactic-text-link-hover-active: #1e262a;
   /* Inverted version of the link text. Use on dark background only. */
   --intergalactic-text-link-invert: #9dbaff;
   /* Hover and active states of the inverted version of the link text. Use on dark background only. */
@@ -241,7 +241,7 @@
   /* Subtle secondary border in the informational message. */
   --intergalactic-border-info: #9dbaff;
   /* Active border in focused input filed. */
-  --intergalactic-border-info-active: #2969ff;
+  --intergalactic-border-info-active: #1e262a;
   /* Subtle secondary border in the successful message and input field. */
   --intergalactic-border-success: #a9e2b4;
   /* Active border in the focused input field with valid state. */
@@ -529,7 +529,7 @@
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
   /* Default shadow of the Card. */
-  --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(30, 38, 42, 0.16), 0px 1px 2px 0px rgba(30, 38, 42, 0.12);
+  --intergalactic-box-shadow-card: 0 0 0 1px #eaeff1;
   /* Hover state for the shadow of the Card with hover state. */
   --intergalactic-box-shadow-card-hover: 3px 3px 30px 0px rgba(30, 38, 42, 0.15);
   /* Shadow for show that element are being drag-and-drop. */
@@ -539,7 +539,7 @@
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(30, 38, 42, 0.15);
   /* Color for default keyboard focus outline styles. */
-  --intergalactic-keyboard-focus-outline: #5487ff;
+  --intergalactic-keyboard-focus-outline: #1e262a;
   /* Color for keyboard focus outline styles for elements with invalid state. */
   --intergalactic-keyboard-focus-invalid-outline: #ff5454;
   /* Keyboard focus styles for elements with invalid state. */
@@ -553,7 +553,7 @@
   /* Keyboard focus styles for use on dark backgrounds. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.8);
   /* Default keyboard focus box-shadow styles. */
-  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(84, 135, 255, 0.5);
+  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(30, 38, 42, 0.5);
   /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
