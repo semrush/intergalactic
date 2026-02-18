@@ -16,6 +16,7 @@ export type PackageJson = {
   name: string;
   version: string;
   dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
   private?: boolean;
 };
 
@@ -106,6 +107,22 @@ export class Package {
 
     packageJson.data.version = newVersion;
     await fs.writeJSON(resolvePath(packageJson.path, 'package.json'), packageJson.data, { spaces: 2 });
+
+    for (const packageFile of this.packagesMap.values()) {
+      let hasChanges = false;
+      if (packageFile.data.dependencies?.[componentName]) {
+        packageFile.data.dependencies[componentName] = `^${newVersion}`;
+        hasChanges = true;
+      }
+      if (packageFile.data.peerDependencies?.[componentName]) {
+        packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
+        hasChanges = true;
+      }
+
+      if (hasChanges) {
+        await fs.writeJSON(resolvePath(packageFile.path, 'package.json'), packageFile.data, { spaces: 2 });
+      }
+    }
 
     const changelogPath = resolvePath(packageJson.path, 'CHANGELOG.md');
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
