@@ -197,9 +197,14 @@ jobs:
   docs-lint:
     runs-on: ubuntu-latest
     needs: get-changed-files
-    if: ${{ needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
+#    if: ${{ needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
     steps:
       - uses: actions/checkout@v4.1.1
+      - name: test-prev-output
+        run: |
+          echo ${{ needs.get-changed-files.outputs.count <= 300 }}
+          echo ${{ needs.get-changed-files.outputs.count > 0 }}
+          echo ${{ needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
         with:
