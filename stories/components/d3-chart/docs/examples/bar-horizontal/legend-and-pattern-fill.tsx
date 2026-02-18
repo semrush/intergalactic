@@ -85,7 +85,7 @@ const Demo = () => {
         patterns
       >
         <YAxis>
-          <YAxis.Ticks />
+          <YAxis.Ticks primaryText />
           <YAxis.Grid />
         </YAxis>
         <XAxis>

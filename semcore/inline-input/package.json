@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0",
-    "@semcore/icon": "16.7.3 - 17"
+    "@semcore/icon": "^17.0.0"
   },
   "repository": {
     "type": "git",
