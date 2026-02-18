@@ -76,8 +76,8 @@ importers:
         specifier: 9.27.0
         version: 9.27.0
       '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.24.0)(@playwright/test@1.58.0)
+        specifier: 0.15.0
+        version: 0.15.0(@guidepup/guidepup@0.24.1)(@playwright/test@1.58.0)
       '@jridgewell/set-array':
         specifier: 1.1.2
         version: 1.1.2
@@ -2422,8 +2422,8 @@ importers:
         version: 0.31.3
     devDependencies:
       '@guidepup/guidepup':
-        specifier: 0.24.0
-        version: 0.24.0
+        specifier: 0.24.1
+        version: 0.24.1
       '@types/pixelmatch':
         specifier: 5.2.6
         version: 5.2.6
@@ -2441,7 +2441,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.97.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0))
 
   website:
     dependencies:
@@ -4330,14 +4330,14 @@ packages:
     resolution: {integrity: sha512-0saiMeQkDALf9pvDD1rDZGV5aktUbnIWjm9jYiFKlxiMROJhODzaaltvyKg5oY6ujHv7Fzc5pzQVFo3R8vENpw==}
     engines: {node: '>=10'}
 
-  '@guidepup/guidepup@0.24.0':
-    resolution: {integrity: sha512-bbbcJPbZ01Zkxi+L51R4iI7iZ3b2ax3SocqAF0hCgS+Vax6TOft5eZJ37QWRSQM6Xis6OOEVlRhzpM2807WyiA==}
+  '@guidepup/guidepup@0.24.1':
+    resolution: {integrity: sha512-L33QKSzeceTOq/DaxAhEkM6fEbJmzkOF2K0U6AsN0zuzy1T4/2LVsLG9f9IPge70T6XgUF7fsCzYotVo4FNk/A==}
 
-  '@guidepup/playwright@0.13.2':
-    resolution: {integrity: sha512-oIoF7paP8l5SxGmehqreGhiEuE5HoQ4B/qO3JfZzQH2PykF4eCrqijmOLLOAZOJFyG8+8KicVprg4GCsXhoeVQ==}
+  '@guidepup/playwright@0.15.0':
+    resolution: {integrity: sha512-HT1stSr8TMw3PDfHjzs5fum1xNwcss5Z4X34My9rgr/Gke1x/pBb46T/Yac1lzC3JVN7LXQbTorbgK33qMsiTA==}
     peerDependencies:
-      '@guidepup/guidepup': ^0.22.1
-      '@playwright/test': ^1.40.1
+      '@guidepup/guidepup': '>=0.22.1'
+      '@playwright/test': ^1.57.0
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -16239,7 +16239,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@guidepup/guidepup@0.24.0':
+  '@guidepup/guidepup@0.24.1':
     dependencies:
       regedit: 5.1.2
       semver: 7.7.2
@@ -16247,9 +16247,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@guidepup/playwright@0.13.2(@guidepup/guidepup@0.24.0)(@playwright/test@1.58.0)':
+  '@guidepup/playwright@0.15.0(@guidepup/guidepup@0.24.1)(@playwright/test@1.58.0)':
     dependencies:
-      '@guidepup/guidepup': 0.24.0
+      '@guidepup/guidepup': 0.24.1
       '@playwright/test': 1.58.0
 
   '@humanfs/core@0.19.1': {}
@@ -27892,7 +27892,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.97.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -27900,7 +27900,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.22
       redent: 3.0.0
-      vitest: 3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0)
+      vitest: 3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.97.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.12)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@18.16.15)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.1)(yaml@2.8.0):
     dependencies:
@@ -27945,7 +27945,7 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0):
+  vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.19.3)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.97.1)(sugarss@5.0.1(postcss@8.4.38))(terser@5.44.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0):
     dependencies:
       '@vitest/expect': 3.0.9
       '@vitest/mocker': 3.0.9(msw@2.12.4(@types/node@22.19.3)(typescript@5.8.3))(vite@6.3.5(@types/node@22.19.3)(less@3.13.1)(sass@1.97.1)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.1)(yaml@2.8.0))

@@ -25,7 +25,7 @@
     "sharp": "0.31.3"
   },
   "devDependencies": {
-    "@guidepup/guidepup": "0.24.0",
+    "@guidepup/guidepup": "0.24.1",
     "@types/pixelmatch": "5.2.6",
     "@types/pngjs": "6.0.5",
     "@types/request": "2.48.12",
