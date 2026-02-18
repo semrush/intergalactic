@@ -1,27 +1,39 @@
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+
 /**
  * Util class for measure text size in different elements
  */
 class TextMeasurer {
-  private canvas = document.createElement('canvas');
-  private ctx = this.canvas.getContext('2d')!;
+  private canvas: HTMLCanvasElement | undefined;
+  private ctx: CanvasRenderingContext2D | undefined;
 
-  private canvasTnum = document.createElement('canvas');
-  private ctxTnum = this.canvasTnum.getContext('2d')!;
+  private canvasTnum: HTMLCanvasElement | undefined;
+  private ctxTnum: CanvasRenderingContext2D | undefined;
 
   constructor() {
-    this.canvasTnum.style.setProperty('font-variant-numeric', 'tabular-nums');
-    this.canvasTnum.style.setProperty('display', 'none');
-    document.body.appendChild(this.canvasTnum);
+    if (canUseDOM()) {
+      this.canvas = document.createElement('canvas');
+      this.ctx = this.canvas.getContext('2d')!;
+
+      this.canvasTnum = document.createElement('canvas');
+      this.ctxTnum = this.canvasTnum.getContext('2d')!;
+      this.canvasTnum.style.setProperty('font-variant-numeric', 'tabular-nums');
+      this.canvasTnum.style.setProperty('display', 'none');
+      document.body.appendChild(this.canvasTnum);
+    }
   }
 
   public measure(text: string, font: string, isTnum: boolean): number {
     const ctx = isTnum ? this.ctxTnum : this.ctx;
 
-    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    ctx.font = font;
+    if (ctx && this.canvas) {
+      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      ctx.font = font;
 
-    const textData = ctx.measureText(text);
-    return Math.ceil(textData.width);
+      const textData = ctx.measureText(text);
+      return Math.ceil(textData.width);
+    }
+    return 0;
   }
 
   public createMeasurerElement(element: HTMLElement) {
