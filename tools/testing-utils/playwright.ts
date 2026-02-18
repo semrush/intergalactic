@@ -75,8 +75,19 @@ const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 
-const nvdaTest = nvdaBase.extend<{ testHook: void }>({
+const nvdaTest = nvdaBase.extend<{ testHook: void; nvdaPageSetup: void }>({
   testHook: [beforeEachTests, { auto: true }],
+  nvdaPageSetup: [
+    async ({ page, nvda }, use) => {
+      const originalSetContent = page.setContent.bind(page);
+      page.setContent = async (html: string, options?: any) => {
+        await originalSetContent(html, options);
+        await nvda.navigateToWebContent();
+      };
+      await use();
+    },
+    { auto: true },
+  ],
 });
 
 export type { Page };
