@@ -82,6 +82,7 @@ const nvdaTest = nvdaBase.extend<{ testHook: void; nvdaPageSetup: void }>({
       const originalSetContent = page.setContent.bind(page);
       page.setContent = async (html: string, options?: any) => {
         await originalSetContent(html, options);
+        await page.waitForSelector('#root:not(:empty)', { timeout: 5000 });
         await nvda.navigateToWebContent();
       };
       await use();
