@@ -63,7 +63,7 @@
     "@babel/runtime": "7.27.6",
     "@crowdin/cli": "3.10.1",
     "@eslint/js": "9.27.0",
-    "@guidepup/playwright": "0.13.2",
+    "@guidepup/playwright": "0.15.0",
     "@jridgewell/set-array": "1.1.2",
     "@playwright/test": "1.58.0",
     "@semcore/babel-plugin-react-semcore": "workspace:*",
