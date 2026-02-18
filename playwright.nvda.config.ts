@@ -15,7 +15,14 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], headless: false, video: 'off' },
+      use: {
+        ...devices['Desktop Chrome'],
+        headless: false,
+        video: 'off',
+        launchOptions: {
+          args: ['--force-renderer-accessibility'],
+        },
+      },
     },
   ],
 };
