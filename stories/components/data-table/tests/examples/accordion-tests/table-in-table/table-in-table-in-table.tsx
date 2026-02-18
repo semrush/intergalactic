@@ -1,7 +1,7 @@
-import type { EllipsisSettings } from '@semcore/base-components';
-import { Text } from '@semcore/typography';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
