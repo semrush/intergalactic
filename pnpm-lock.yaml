@@ -987,7 +987,7 @@ importers:
   semcore/feature-highlight:
     dependencies:
       '@semcore/badge':
-        specifier: ^16.0.0
+        specifier: ^16.0.7
         version: link:../badge
       '@semcore/base-trigger':
         specifier: ^16.0.0

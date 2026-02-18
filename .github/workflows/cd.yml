@@ -183,12 +183,14 @@ jobs:
       - name: Get changed files list
         id: changed-files
         run: |
-          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | xargs)
+          FILES=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | paste -sd "," -)
           echo "changed_files=$FILES" >> $GITHUB_OUTPUT
       - uses: errata-ai/vale-action@reviewdog
         if: ${{ steps.changed-files.outputs.changed_files != '' }}
         name: Run Vale
         with:
+          fail_on_error: true
+          separator: ","
           files: ${{ steps.changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest

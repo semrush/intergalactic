@@ -19,7 +19,7 @@
     }
   },
   "dependencies": {
-    "@semcore/badge": "^16.0.0",
+    "@semcore/badge": "^16.0.7",
     "@semcore/base-trigger": "^16.0.0",
     "@semcore/button": "^16.0.0",
     "@semcore/checkbox": "^16.0.0",
