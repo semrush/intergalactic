@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.6] - 2026-02-18
+
+### Changed
+
+- `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
 ## [16.4.5] - 2025-12-18
 
 ### Fixed
