@@ -1,3 +1,59 @@
+## [v17.0.0] - 2026-02-18
+
+### @semcore/wizard
+
+- **Changed** WizardStep type to number only.
+
+### @semcore/input
+
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/base-trigger
+
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/time-picker
+
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/d3-chart
+
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
+### @semcore/button
+
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/typography
+
+- **Fixed** margins for native `p` and lists.
+
+### @semcore/base-components
+
+- **BREAK** Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
+- **Added** `Hint` component.
+- **Changed** `Hint` now has slicker and more compact styles.
+
+### @semcore/core
+
+- **BREAK** New major version.
+- **BREAK** Removed `WithI18n`. Use `useI18n`.
+- **BREAK** Removed `WithCSS`. Use `useCss`.
+- **BREAK** Removed `WithAutoFocus` and `autoFocusEnhance`.
+- **BREAK** Removed `WithKeyboardFocus`. Just don't use.
+- **BREAK** Removed `WithRef`. Use `useForkRef`.
+
 ## [16.14.0] - 2026-02-10
 
 ### @semcore/dropdown-menu

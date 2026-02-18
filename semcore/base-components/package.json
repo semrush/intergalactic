@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-components",
   "description": "Semrush Base Components",
-  "version": "16.4.2",
+  "version": "17.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
