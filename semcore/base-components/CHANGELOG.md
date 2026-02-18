@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.4.3] - 2026-02-18
+
+### Changed
+
+- `Hint` now has slicker and more compact styles.
+
 ## [17.0.0] - 2026-02-02
 
 ### BREAK
