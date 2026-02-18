@@ -1,5 +1,6 @@
 import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
@@ -314,7 +315,9 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     const { visible, Children, parentZIndexStacking, styles, timingFunction } = this.asProps;
     const { innerVisible, calculatedPlacement } = this.state;
 
-    this.setTriggerAriaLabel();
+    if (canUseDOM()) {
+      this.setTriggerAriaLabel();
+    }
 
     if (!visible) {
       return null;
