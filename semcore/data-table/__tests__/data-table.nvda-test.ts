@@ -7,7 +7,8 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, table, with 11 rows and 5 columns, row 1, column 1, clickable, Keyword');
+    await nvda.next();
+    expect(await nvda.itemText()).toBe('table, with 11 rows and 5 columns, row 1, column 1, clickable, Keyword');
 
     await nvda.next();
 

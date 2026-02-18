@@ -9,7 +9,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
   }) => {
     await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
-    await nvda.next();
+    await nvda.press('Tab');
 
     expect(await nvda.itemText()).toContain('clickable, Date, combo box, collapsed, editable, 06 slash 29 slash 2020');
 

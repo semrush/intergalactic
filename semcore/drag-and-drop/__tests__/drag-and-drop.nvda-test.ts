@@ -9,7 +9,7 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.next();
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toContain('expanded. Show table columns, dialog. drag and drop container, grouping. Show table columns, dialog. drag and drop container, grouping. Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5');
+    expect(await nvda.itemText()).toContain('expanded. Show table columns, dialog. Show table columns, dialog. menu. drag and drop container, grouping. Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5');
 
     await nvda.next();
 
