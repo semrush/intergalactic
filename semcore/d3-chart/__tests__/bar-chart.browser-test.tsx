@@ -592,7 +592,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Horizontal bars', () => {
     test('Verify HorizontalBar implementation', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -611,7 +611,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar with custom labels', {
-      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -628,7 +628,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar with background', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -652,7 +652,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify grouped horizontal bars', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -698,11 +698,17 @@ test.describe(`${TAG.VISUAL}`, () => {
           duration: 0,
         },
       },
+      {
+        name: 'with primaryText false',
+        props: {
+          primaryText: false,
+        },
+      },
     ];
 
     horizontalBarPropsVariations.forEach((variant) => {
       test(`Verify horizontal bar props ${variant.name}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+        tag: [TAG.PRIORITY_MEDIUM, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -721,7 +727,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -750,7 +756,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,

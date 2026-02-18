@@ -8,6 +8,7 @@ interface HorizontalBarPropsStoryProps {
   barTransparent?: boolean;
   maxBarSize?: number;
   duration?: number;
+  primaryText?: boolean;
 }
 
 const Demo = (props: HorizontalBarPropsStoryProps = {}) => {
@@ -17,6 +18,7 @@ const Demo = (props: HorizontalBarPropsStoryProps = {}) => {
     barTransparent = false,
     maxBarSize,
     duration = 0,
+    primaryText = true,
   } = props;
 
   const MARGIN = 40;
@@ -44,7 +46,7 @@ const Demo = (props: HorizontalBarPropsStoryProps = {}) => {
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
-        <YAxis.Ticks />
+        <YAxis.Ticks primaryText={primaryText} />
       </YAxis>
       <XAxis>
         <XAxis.Ticks />
@@ -65,6 +67,7 @@ const Demo = (props: HorizontalBarPropsStoryProps = {}) => {
 
 export const defaultProps: HorizontalBarPropsStoryProps = {
   duration: 0,
+  primaryText: true,
 };
 
 Demo.defaultProps = defaultProps;

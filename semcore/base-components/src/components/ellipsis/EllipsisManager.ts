@@ -8,13 +8,8 @@ export const isSafari = canUseDOM() ? /^((?!chrome|android).)*safari/i.test(navi
 class EllipsisManager {
   private readonly queue: Queue;
 
-  private ro = new ResizeObserver(this.handleResizeObserver.bind(this));
-  private io = new IntersectionObserver(this.handleIntersectionObserver.bind(this), {
-    root: null,
-    // @ts-ignore
-    scrollMargin: '500px 500px 500px 500px',
-    threshold: 0.1,
-  });
+  private ro: ResizeObserver | undefined;
+  private io: IntersectionObserver | undefined;
 
   private readonly containersMap = new WeakMap<HTMLElement, Set<Ellipsis>>();
   private readonly containersApproximateSizeMap = new WeakMap<HTMLElement, [number, number]>();
@@ -33,6 +28,13 @@ class EllipsisManager {
     this.handleCopy = this.handleCopy.bind(this);
 
     if (canUseDOM()) {
+      this.ro = new ResizeObserver(this.handleResizeObserver);
+      this.io = new IntersectionObserver(this.handleIntersectionObserver, {
+        root: null,
+        // @ts-ignore
+        scrollMargin: '500px 500px 500px 500px',
+        threshold: 0.1,
+      });
       document.addEventListener('copy', this.handleCopy);
     }
   }
@@ -43,9 +45,9 @@ class EllipsisManager {
     if (!this.ellipsisEntities.has(element)) {
       this.ellipsisEntities.set(element, ellipsis);
 
-      this.io.observe(element);
+      this.io?.observe(element);
 
-      if (ellipsis.observeChildrenMutations) {
+      if (ellipsis.observeChildrenMutations && canUseDOM()) {
         const mo = new MutationObserver(this.handleMutationObserver);
         mo.observe(element, {
           characterData: true,
@@ -74,8 +76,8 @@ class EllipsisManager {
       this.ellipsisEntities.delete(element);
       this.handledElements.delete(element);
 
-      this.io.unobserve(element);
-      this.ro.unobserve(element);
+      this.io?.unobserve(element);
+      this.ro?.unobserve(element);
       this.ellipsisMutationObservers.get(element)?.disconnect();
       this.ellipsisMutationObservers.delete(element);
     }

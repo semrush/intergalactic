@@ -21,7 +21,7 @@ const Demo = () => {
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis hide={false}>
-        <YAxis.Ticks />
+        <YAxis.Ticks primaryText />
       </YAxis>
       <XAxis>
         <XAxis.Ticks />
