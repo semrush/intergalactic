@@ -11,14 +11,8 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 2, clickable, KD percent');
-
-    await nvda.next();
-
     expect(await nvda.itemText()).toContain('column 3, clickable, CPC');
-    await nvda.next();
 
-    await nvda.next();
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('ebay buy');

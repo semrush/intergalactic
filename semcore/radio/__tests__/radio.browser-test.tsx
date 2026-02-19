@@ -494,11 +494,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify tab focuses next interactive element', async () => {
-      if (browserName != 'webkit') {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-      }
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
 
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();

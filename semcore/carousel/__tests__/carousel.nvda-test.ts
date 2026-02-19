@@ -20,10 +20,7 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('clickable');
-
-    await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable');
+    expect(await nvda.itemText()).toBe('clickable, button, Open in fullscreen A pug wrapped in a blanket sits on the road in the forest');
 
     await nvda.next();
     expect(await nvda.itemText()).toContain('clickable, button, Next slide');

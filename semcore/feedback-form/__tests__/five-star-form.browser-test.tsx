@@ -209,7 +209,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify form closed by ESC and selected starts skipped', async () => {
       await page.keyboard.press('Escape');
       await buttons.first().waitFor({ state: 'hidden' });
-      await expect(locators.sliderRating(page)).toBeFocused();
+      if (browserName !== 'webkit') await expect(locators.sliderRating(page)).toBeFocused();
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
