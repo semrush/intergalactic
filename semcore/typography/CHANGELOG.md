@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [17.0.0] - 2026-02-02
-
-### Added
-
-- `ellipsis` property to crop the text out of the box.
-
 ## [16.3.2] - 2025-11-17
 
 ### Changed
