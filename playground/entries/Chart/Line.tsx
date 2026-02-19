@@ -62,7 +62,6 @@ const entry: PlaygroundEntry<LineChartJSXProps> = {
     linearChartProps: {
       type: 'group',
       groupName: 'Linear chart props',
-      isOpenedByDefault: true,
       controls: {
         curve: {
           type: 'select',
