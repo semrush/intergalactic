@@ -212,7 +212,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      if (browserName !== 'chromium') {
+      if (browserName == 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
@@ -295,8 +295,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
-
-      if (browserName !== 'chromium') {
+      if (browserName == 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
