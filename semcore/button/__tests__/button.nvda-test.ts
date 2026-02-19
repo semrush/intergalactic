@@ -10,7 +10,7 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/button/docs/examples/button_with_icon.tsx', 'en');
     await page.getByRole('button', { name: 'Confirm' }).waitFor({ state: 'visible' });
     await nvda.next();
-
+    await nvda.next();
     expect(await nvda.itemText()).toContain('button, Confirm');
   });
 
@@ -35,8 +35,8 @@ test.describe(`@button ${TAG.NVDA}`, () => {
     await test.step('Navigate to button and verify initial state', async () => {
       await page.getByRole('button').first().waitFor({ state: 'visible' });
 
-      // await nvda.next();
       await page.keyboard.press('Tab');
+      await nvda.next();
       const buttonText = await nvda.itemText();
       expect(buttonText).toContain('button, unavailable, graphic, Loading…');
     });
