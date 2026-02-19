@@ -1,3 +1,271 @@
+## [v17.0.0] - 2026-02-19
+
+### @semcore/d3-chart
+
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
+### @semcore/core
+
+- **BREAK** New major version.
+- **BREAK** Removed `WithI18n`. Use `useI18n`.
+- **BREAK** Removed `WithCSS`. Use `useCss`.
+- **BREAK** Removed `WithAutoFocus` and `autoFocusEnhance`.
+- **BREAK** Removed `WithKeyboardFocus`. Just don't use.
+- **BREAK** Removed `WithRef`. Use `useForkRef`.
+
+### @semcore/widget-empty
+
+- **BREAK** New major version.
+- **BREAK** Removed unnecessary `margin-bottom` for the widget container.
+
+### @semcore/tooltip
+
+- **BREAK** New major version. Deprecated `Tooltip.Hint`.
+
+### @semcore/textarea
+
+- **BREAK** New major version.
+
+### @semcore/tag
+
+- **BREAK** New major version.
+
+### @semcore/tab-panel
+
+- **BREAK** New major version.
+
+### @semcore/tab-line
+
+- **BREAK** New major version.
+
+### @semcore/switch
+
+- **BREAK** New major version.
+
+### @semcore/spin-container
+
+- **BREAK** New major version.
+
+### @semcore/spin
+
+- **BREAK** New major version.
+
+### @semcore/slider
+
+- **BREAK** New major version.
+
+### @semcore/skeleton
+
+- **BREAK** New major version.
+
+### @semcore/side-panel
+
+- **BREAK** New major version.
+
+### @semcore/select
+
+- **BREAK** New major version.
+- **Added** `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
+### @semcore/radio
+
+- **BREAK** New major version.
+
+### @semcore/progress-bar
+
+- **BREAK** New major version.
+
+### @semcore/product-head
+
+- **BREAK** New major version.
+
+### @semcore/pills
+
+- **BREAK** New major version.
+
+### @semcore/pagination
+
+- **BREAK** New major version.
+
+### @semcore/notice-bubble
+
+- **BREAK** New major version.
+
+### @semcore/notice
+
+- **BREAK** New major version.
+
+### @semcore/modal
+
+- **BREAK** New major version.
+
+### @semcore/mini-chart
+
+- **BREAK** New major version.
+
+### @semcore/link
+
+- **BREAK** New major version.
+
+### @semcore/input-tags
+
+- **BREAK** New major version.
+
+### @semcore/input-number
+
+- **BREAK** New major version.
+
+### @semcore/input-mask
+
+- **BREAK** New major version.
+
+### @semcore/inline-input
+
+- **BREAK** New major version.
+
+### @semcore/inline-edit
+
+- **BREAK** New major version.
+
+### @semcore/flags
+
+- **BREAK** New major version.
+
+### @semcore/feedback-form
+
+- **BREAK** New major version.
+
+### @semcore/feature-popover
+
+- **BREAK** New major version.
+
+### @semcore/feature-highlight
+
+- **BREAK** New major version.
+
+### @semcore/errors
+
+- **BREAK** New major version.
+
+### @semcore/ellipsis
+
+- **BREAK** Deprecated component. Use the new `ellipsis` prop that's built into various components.
+
+### @semcore/dropdown-menu
+
+- **BREAK** New major version.
+
+### @semcore/dropdown
+
+- **BREAK** New major version.
+
+### @semcore/drag-and-drop
+
+- **BREAK** New major version.
+
+### @semcore/dot
+
+- **BREAK** New major version.
+
+### @semcore/divider
+
+- **BREAK** New major version.
+
+### @semcore/date-picker
+
+- **BREAK** New major version.
+
+### @semcore/data-table
+
+- **BREAK** New major version.
+
+### @semcore/color-picker
+
+- **BREAK** New major version.
+
+### @semcore/checkbox
+
+- **BREAK** New major version.
+
+### @semcore/carousel
+
+- **BREAK** New major version.
+
+### @semcore/card
+
+- **BREAK** New major version.
+
+### @semcore/bulk-textarea
+
+- **BREAK** New major version.
+
+### @semcore/breadcrumbs
+
+- **BREAK** New major version.
+
+### @semcore/badge
+
+- **BREAK** New major version. Added property `type`. Deprecated `color` and `bg`.
+
+### @semcore/add-filter
+
+- **BREAK** New major version.
+
+### @semcore/accordion
+
+- **BREAK** New major version.
+
+### @semcore/wizard
+
+- **BREAK** New major version.
+- **Changed** WizardStep type to number only.
+
+### @semcore/typography
+
+- **BREAK** New major version.
+- **Added** `ellipsis` property to crop the text out of the box.
+- **Fixed** margins for native `p` and lists.
+
+### @semcore/time-picker
+
+- **BREAK** New major version.
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/input
+
+- **BREAK** New major version.
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **BREAK** New major version.
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **BREAK** New major version.
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/button
+
+- **BREAK** New major version.
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/base-trigger
+
+- **BREAK** New major version.
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/base-components
+
+- **Added** `inset` property for the Box component.
+- **BREAK** Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
+- **Added** `Hint` component.
+- **Changed** `Hint` now has slicker and more compact styles.
+
 ## [16.14.0] - 2026-02-10
 
 ### @semcore/dropdown-menu

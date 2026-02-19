@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-02-19
+
+### BREAK
+
+- Removed using `getNodeByRef` in `Portal`, `OutsideClick`, `ScrollArea` components. Use `React.RefObject` instead.
+
+### Added
+
+- `inset` property for the Box component.
+- `Hint` component.
+
+### Changed
+
+- `Hint` now has slicker and more compact styles.
+
 ## [16.4.2] - 2025-12-01
 
 ### Fixed
