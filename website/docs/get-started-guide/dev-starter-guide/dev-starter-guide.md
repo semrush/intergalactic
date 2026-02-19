@@ -81,6 +81,8 @@ The handlers for these types of properties follow a specific notation: `on{ even
 
 If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
+**Note**: Some `value` types are optional - meaning you can omit them entirely to keep the component in uncontrolled mode. However, their type might not include `undefined` as a valid value type. In that case explicitly passing `undefined` may lead to unexpected component behavior.
+
 ### Handlers
 
 Consistency is crucial for a library as it ensures predictability. In our library, all event handlers follow the same format:

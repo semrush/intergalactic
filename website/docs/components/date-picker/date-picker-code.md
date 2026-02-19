@@ -100,6 +100,18 @@ You can manually select a custom period, if needed (for example, a week) by taki
 
 :::
 
+## Reset date
+
+To reset the date, set `value` to an empty string.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/date-picker/docs/examples/reset_date_picker.tsx';
+</script>
+
+:::
+
 ## DateRangeComparator
 
 DateRangeComparator allows user to compare two date ranges. Additional date range may be controlled with `compare` and `onCompareChange` props.
