@@ -403,6 +403,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Reopen and close modal with Escape key', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Keywords').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Escape');
         await locators.button(page, 'Keywords').waitFor({ state: 'hidden', timeout: 5000 });
         await expect(locators.button(page)).toBeFocused();
@@ -550,6 +552,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify keyboard navigation on 1st page with inputs by TAB after modal just opened', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
@@ -720,9 +723,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
+
         await page.keyboard.press('Enter');
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');

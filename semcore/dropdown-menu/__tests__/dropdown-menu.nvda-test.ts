@@ -14,18 +14,18 @@ test.describe(`@dropdown-menu ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('menu, menu item, Save');
+    expect(await nvda.itemText()).toContain('Save, 1 of 4');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('menu item, Rename');
+    expect(await nvda.itemText()).toContain('Rename, 2 of 4');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('menu item, Download');
+    expect(await nvda.itemText()).toContain('Download, 3 of 4');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('menu item, Delete');
+    expect(await nvda.itemText()).toContain('Delete, 4 of 4');
   });
 });
