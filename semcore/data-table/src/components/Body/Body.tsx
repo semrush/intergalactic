@@ -68,6 +68,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   calculateAriaRowIndex = () => {
     requestAnimationFrame(() => {
+      const collapsedElements = this.bodyRef.current?.querySelectorAll('[role=row][data-ui-name="Collapse"]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+
+      collapsedElements?.forEach((collapsedElement) => {
+        const parent = collapsedElement.parentElement;
+        if (parent?.getAttribute('role') === 'rowgroup') {
+          parent?.appendChild(collapsedElement);
+        }
+      });
+
       const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
 
       visibleRows?.forEach((row, index) => {
