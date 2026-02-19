@@ -215,7 +215,7 @@ export class Column<
 
   handleBlur = (e: React.FocusEvent<HTMLElement>) => {
     const relatedTarget = e.relatedTarget as HTMLElement | undefined;
-    if (!isFocusInside(e.currentTarget, relatedTarget) && lastInteraction.isKeyboard()) {
+    if (!isFocusInside(e.currentTarget, relatedTarget)) {
       this.setState({ sortVisible: false });
     }
   };
