@@ -48,6 +48,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
     await page.keyboard.press('Tab');
 
     await page.keyboard.press('Tab');
@@ -70,10 +71,19 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
+
     await page.keyboard.press('ArrowDown');
+    await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
     await page.keyboard.press('ArrowDown');
+    await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
+
     await page.keyboard.press('Enter');
+    await expect(page.getByRole('radio').first()).toBeFocused();
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
   });
@@ -93,6 +103,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify active hovered', async () => {
         await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await locators.stepperTabs(page).nth(0).hover();
         await expect(page).toHaveScreenshot();
       });
@@ -127,7 +139,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify focus doesnt go on disabled element', async () => {
-        for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+        for (let i = 0; i < 6; i++) {
+          await page.keyboard.press('ArrowDown');
+          await page.waitForTimeout(100);
+        }
         await expect(page).toHaveScreenshot();
       });
 

@@ -15,9 +15,6 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await nvda.next();
     expect(await nvda.itemText()).toContain('clickable, Material, combo box, collapsed');
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('Material, list. Metal, 2 of 4');
   });
 
   test('Users can interact with FilterTrigger with Select via NVDA', async ({

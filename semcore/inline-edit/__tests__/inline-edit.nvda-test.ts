@@ -17,10 +17,6 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     expect(await nvda.itemText()).toContain('Edit: Martin Eden, button, Author:, edit, has auto complete, Martin Eden, Save, button, Cancel');
 
-    // Clear existing text and type new value
-    for (let i = 0; i < 12; i++) {
-      await nvda.press('Backspace');
-    }
     await nvda.type('Algernon');
     await nvda.press('Enter');
 

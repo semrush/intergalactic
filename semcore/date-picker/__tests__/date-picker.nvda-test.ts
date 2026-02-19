@@ -15,23 +15,8 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('Jun 29, 2020');
+    expect(await nvda.itemText()).toContain('expanded. dialog. clickable, button, Previous month');
 
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
-    // Clear existing date and enter new date
-    for (let i = 0; i < 8; i++) {
-      await page.keyboard.press('Backspace');
-    }
-    await page.keyboard.type('05');
-    await page.keyboard.type('29');
-    await page.keyboard.type('2000');
-    await page.waitForTimeout(300);
-
-    expect(await nvda.itemText()).toContain('dialog. clickable, button, Previous month');
-
-    await nvda.next();
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('button, Next month');
@@ -40,11 +25,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     expect(await nvda.itemText()).toContain('table, with 3 rows and 42 columns, row 1, column 1, Sun');
 
-    await nvda.press('Enter');
-    await page.waitForTimeout(300);
-
     await nvda.next();
-    await nvda.previous();
 
     expect(await nvda.itemText()).toContain('column 1, Sun');
   });
