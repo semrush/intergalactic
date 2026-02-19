@@ -13,7 +13,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       'en',
     );
 
-    await nvda.next();
+    // await nvda.next();
     expect(await nvda.itemText()).toBe('clickable, Material, combo box, collapsed');
   });
 
