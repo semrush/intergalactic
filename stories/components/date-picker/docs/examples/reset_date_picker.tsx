@@ -9,17 +9,17 @@ const Demo = () => {
   const [value, setValue] = React.useState<DateConstructorParams>(new Date('06/29/2020'));
 
   return (
-    <Flex gap={5}>
-      <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='simple-date-picker'>
-          Simple date picker
-        </Text>
+    <Flex direction='column' gap={2} alignItems='start'>
+      <Text tag='label' size={200} htmlFor='date-picker-reset'>
+        Date picker with reset
+      </Text>
+      <Flex gap={2}>
         <DatePicker value={value} onChange={(date: any) => setValue(date)}>
-          <DatePicker.Trigger mt={2} id='simple-date-picker' />
+          <DatePicker.Trigger id='date-picker-reset' />
           <DatePicker.Popper />
         </DatePicker>
+        <Button onClick={() => setValue('')}>Reset date</Button>
       </Flex>
-      <Button onClick={() => setValue('')}>Reset date</Button>
     </Flex>
   );
 };
