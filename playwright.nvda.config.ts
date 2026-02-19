@@ -14,14 +14,14 @@ const config: PlaywrightTestConfig = {
   reporter: [['list'], ['allure-playwright']],
   projects: [
     {
-      name: 'chromium',
+      name: 'firefox',
       use: {
-        ...devices['Desktop Chrome'],
+        ...devices['Desktop Firefox'],
         headless: false,
         video: 'off',
-        launchOptions: {
-          args: ['--force-renderer-accessibility'],
-        },
+        // launchOptions: {
+        //   args: ['--force-renderer-accessibility'],
+        // },
       },
     },
   ],

@@ -324,7 +324,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       expect(hasScroll).toBe(false);
 
-      page.setViewportSize({ width: 500, height: 700 });
+      await page.setViewportSize({ width: 500, height: 700 });
 
       hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
 
