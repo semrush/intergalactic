@@ -19,9 +19,6 @@ const config: PlaywrightTestConfig = {
         ...devices['Desktop Firefox'],
         headless: false,
         video: 'off',
-        // launchOptions: {
-        //   args: ['--force-renderer-accessibility'],
-        // },
       },
     },
   ],

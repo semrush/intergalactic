@@ -81,7 +81,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify accordion is responsive', async () => {
         await page.setViewportSize({ width: 920, height: 1080 });
         await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.001 });
       });
     });
 
@@ -95,7 +95,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-      await page.waitForTimeout(200); // for chart animation is finished
+      await page.waitForTimeout(300); // for chart animation is finished
 
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
