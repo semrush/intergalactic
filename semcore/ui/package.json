@@ -77,8 +77,8 @@
   "peerDependencies": {
     "react": "16.8 - 19",
     "react-dom": "16.8 - 19",
-    "@semcore/icon": "^16.0.0 || ^17.0.0",
-    "@semcore/illustration": "^16.0.0 || ^17.0.0"
+    "@semcore/icon": "^16.0.0 || ^17.0.0 || ^17.0.0-0",
+    "@semcore/illustration": "^16.0.0 || ^17.0.0 || ^17.0.0-0"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",
