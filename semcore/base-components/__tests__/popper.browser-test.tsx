@@ -253,6 +253,8 @@ test.describe('@functional @popper', () => {
     await expect(popperUncontrolled).toHaveCount(0);
 
     await triggerUncontrolled.click();
+    await expect(popperUncontrolled).toHaveCount(1);
+
     await page.keyboard.press('Escape');
     await expect(triggerUncontrolled).toBeFocused();
 
