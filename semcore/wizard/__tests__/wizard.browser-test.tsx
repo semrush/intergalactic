@@ -127,21 +127,29 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify Focus on the normal menu', async () => {
         await locators.stepperTabs(page).nth(5).click();
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Go to Photos')).toBeFocused();
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page, 5)).toBeFocused();
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify Focus on the submenu', async () => {
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 4)).toBeFocused();
+
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 3)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus doesnt go on disabled element', async () => {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 7; i++) {
           await page.keyboard.press('ArrowDown');
-          await page.waitForTimeout(100);
+          await page.waitForTimeout(200);
         }
         await expect(page).toHaveScreenshot();
       });
@@ -169,6 +177,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Open modal and check all states look good', async () => {
         await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
@@ -194,20 +204,34 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify Focus on the active normal menu', async () => {
         await locators.stepperTabs(page).nth(5).click();
+
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Go to Photos')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page, 5)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify Focus on the not active submenu', async () => {
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 4)).toBeFocused();
+
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 3)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus doesnt go on disabled element', async () => {
-        for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+        for (let i = 0; i < 6; i++) {
+          await page.keyboard.press('ArrowDown');
+          await page.waitForTimeout(200);
+        }
         await expect(page).toHaveScreenshot();
       });
     });
