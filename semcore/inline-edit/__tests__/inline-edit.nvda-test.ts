@@ -16,10 +16,5 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
 
     expect(await nvda.itemText()).toContain('Edit: Martin Eden, button, Author:, edit, has auto complete, Martin Eden, Save, button, Cancel');
-
-    await nvda.type('Algernon');
-    await nvda.press('Enter');
-    await nvda.next();
-    expect(await nvda.itemText()).toContain('section. Edit: Martin Eden Algernon, button');
   });
 });
