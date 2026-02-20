@@ -214,7 +214,6 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
       theme='muted'
       size='l'
       addonLeft={hasChildren ? undefined : CloseIcon}
-      data-hide-focus-hover-popper='true'
     >
       {hasChildren ? <Children /> : undefined}
     </SClose>,

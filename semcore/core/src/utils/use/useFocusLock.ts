@@ -1,5 +1,6 @@
 import LocalReact from 'react';
 
+import { lastInteraction } from '../../LastInteractionType';
 import canUseDOM from '../canUseDOM';
 import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders';
 import { getFocusableIn } from '../focus-lock/getFocusableIn';
@@ -127,7 +128,6 @@ const useFocusLockHook = (
   useFocusBorders(React, disabled, trapRef);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
-  const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
   const handleFocusOut = React.useCallback(
     (event: Event & { relatedTarget?: HTMLElement; target?: HTMLElement }) => {
@@ -138,7 +138,7 @@ const useFocusLockHook = (
         if (autoTriggerRef.current) return;
         autoTriggerRef.current = focusCameFrom;
       }, 0);
-      if (lastUserInteractionRef.current === 'mouse') return;
+      if (lastInteraction.isMouse()) return;
       Promise.resolve().then(() => {
         if (!trapRef.current) return;
         const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
@@ -163,12 +163,6 @@ const useFocusLockHook = (
     },
     [onFocusOut],
   );
-  const handleMouseEvent = React.useCallback(() => {
-    lastUserInteractionRef.current = 'mouse';
-  }, []);
-  const handleKeyboardEvent = React.useCallback(() => {
-    lastUserInteractionRef.current = 'keyboard';
-  }, []);
   const returnFocus = React.useCallback(() => {
     const trapNode = trapRef.current;
     if (trapNode && !isFocusInside(trapNode)) return;
@@ -190,6 +184,7 @@ const useFocusLockHook = (
       }, 0);
     }
   }, [returnFocusTo]);
+
   React.useEffect(() => {
     if (typeof trapRef !== 'object' || trapRef === null) return;
     const node = trapRef.current;
@@ -212,10 +207,6 @@ const useFocusLockHook = (
 
     document.body.addEventListener('focusout', handleFocusOut as any);
     document.body.addEventListener(syntheticEvents.blur, handleFocusOut as any);
-    document.body.addEventListener('mousedown', handleMouseEvent);
-    document.body.addEventListener('touchstart', handleMouseEvent);
-    document.body.addEventListener('keydown', handleKeyboardEvent);
-    document.body.addEventListener(syntheticEvents.keydown, handleKeyboardEvent);
 
     if (autoFocus) {
       setTimeout(() => {
@@ -233,10 +224,6 @@ const useFocusLockHook = (
     return () => {
       document.body.removeEventListener('focusout', handleFocusOut as any);
       document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
-      document.body.removeEventListener('mousedown', handleMouseEvent);
-      document.body.removeEventListener('touchstart', handleMouseEvent);
-      document.body.removeEventListener('keydown', handleKeyboardEvent);
-      document.body.removeEventListener(syntheticEvents.keydown, handleKeyboardEvent);
       returnFocus();
       autoTriggerRef.current = null;
     };
