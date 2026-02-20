@@ -80,7 +80,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
       await test.step('Verify accordion is responsive', async () => {
         await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(300);
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.001 });
       });
     });
