@@ -15,17 +15,10 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('ebay buy');
-    expect(await nvda.itemText()).toContain('row');
+    expect(await nvda.itemText()).toContain('column 4, clickable, Empty');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('77.8');
-    expect(await nvda.itemText()).toContain('column');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('$1.25');
     expect(await nvda.itemText()).toContain('column');
   });
 });

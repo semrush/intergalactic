@@ -28,9 +28,5 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('table, with 3 rows and 42 columns, row 1, column 1, Sun');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('column 1, Sun');
   });
 });

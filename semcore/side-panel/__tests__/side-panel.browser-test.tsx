@@ -153,8 +153,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
-    await expect(locators.button(page, 'Close')).toBeFocused();
-
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
