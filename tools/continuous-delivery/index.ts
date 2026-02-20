@@ -89,6 +89,7 @@ export const publishPrerelease = async () => {
   }
 
   log('Update versions to prerelease...');
+  log(updatedPackages.join('\n'));
   await updateVersions(
     updatedPackages.map((pack) => {
       return {

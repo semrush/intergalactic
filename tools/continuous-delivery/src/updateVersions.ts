@@ -47,7 +47,8 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
         setVersions[packageFile.name],
       );
     }
-    for (const dependenciesType of ['dependencies', 'peerDependencies']) {
+    const depsType = packageFile.name !== '@semcore/ui' ? ['dependencies', 'peerDependencies'] : ['dependencies'];
+    for (const dependenciesType of depsType) {
       for (const dependency in packageFile[dependenciesType]) {
         if (
           setVersions[dependency] &&
