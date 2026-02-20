@@ -106,14 +106,19 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 
       const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
+      const hint = page.locator('[data-ui-name="Hint"]');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
       await breadcrumbLinks.first().hover();
+      await hint.waitFor({ state: 'visible' });
+
       await expect(page).toHaveScreenshot();
       if (!item.active) {
         await page.keyboard.press('Tab');
+        await hint.nth(1).waitFor({ state: 'visible' });
+
         await expect(page).toHaveScreenshot();
       }
     });
@@ -124,12 +129,15 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@ellipis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
-
+      const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
       const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
       const hint = page.locator('[data-ui-name="Hint"]');
 
       await page.keyboard.press('Tab');
+      await expect(breadcrumb0).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(breadcrumb).toBeFocused();
       await breadcrumb.hover();
       await hint.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
@@ -142,12 +150,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
+    const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
 
     const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
     const hint = page.locator('[data-ui-name="Hint"]');
 
     await page.keyboard.press('Tab');
+    await expect(breadcrumb0).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(breadcrumb).toBeFocused();
+
     await breadcrumb.hover();
     await hint.waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();

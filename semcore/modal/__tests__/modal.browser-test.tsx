@@ -400,8 +400,8 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Open modal', 1).waitFor({ state: 'visible' });
-      await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.close(page)).toBeFocused();
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify 2nd modal opened and X is focused', async () => {
@@ -409,6 +409,8 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.close(page).nth(1)).toBeFocused();
+
       await expect(locators.modal(page)).toHaveCount(2);
     });
 
@@ -422,6 +424,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify only one modal closed by ESC', async () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.close(page).nth(1)).toBeFocused();
 
       await page.keyboard.press('Escape');
       await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });

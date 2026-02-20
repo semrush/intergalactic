@@ -255,6 +255,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify availabe accordion expands and visible ', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'visible' });
       });
       await test.step('Verify partly available accordion expands by keyboard', async () => {
@@ -262,13 +263,14 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Enter');
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
         await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowDown');
       });
       await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
         await page.keyboard.press('Enter');
-
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 11).waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowRight');
