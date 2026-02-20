@@ -57,6 +57,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify form styles', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 

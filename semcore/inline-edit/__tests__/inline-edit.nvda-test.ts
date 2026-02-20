@@ -19,7 +19,7 @@ test.describe(`@inline-edit ${TAG.NVDA}`, () => {
 
     await nvda.type('Algernon');
     await nvda.press('Enter');
-
+    await nvda.next();
     expect(await nvda.itemText()).toContain('section. Edit: Martin Eden Algernon, button');
   });
 });
