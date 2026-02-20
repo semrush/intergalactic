@@ -14,7 +14,6 @@ import Git from 'simple-git';
 import { allowedScopes } from './allowedScopes';
 import { isValidSemver, log as logger } from '../utils';
 import type { PackageJson } from './packages';
-import { Package } from './packages';
 
 const git = Git();
 
@@ -78,7 +77,7 @@ export class Changelog {
       }
 
       return collectedSet.has(element);
-    });
+    }).concat(...semcoreBaseComponents);
     const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;
@@ -101,9 +100,9 @@ export class Changelog {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
 
-          if (semcoreBaseComponents.includes(traversingComponent)) {
+          if (semcoreBaseComponents.includes(traversingComponent.slice(9))) {
             traversingBaseComponent = traversingComponent;
-            traversingComponent = 'base-components';
+            traversingComponent = '@semcore/base-components';
           }
 
           if (!this.changelogs.components[traversingComponent]) {
@@ -124,7 +123,12 @@ export class Changelog {
         if (token.type === 'list' && traversingComponent !== null && traversingType !== null) {
           token.body.forEach((item) => {
             if (traversingComponent !== null && traversingType !== null) {
-              const descriptionFormatted = (Array.isArray(item) ? item[0] : item).text.replace('-', `- **${traversingBaseComponent}**:`);
+              const descriptionFormatted = (Array.isArray(item) ? item[0] : item).text;
+
+              if (traversingBaseComponent && Array.isArray(descriptionFormatted)) {
+                descriptionFormatted.unshift(`**${traversingBaseComponent.slice(9)}**: `);
+              }
+
               const description = toMarkdown(descriptionFormatted);
 
               this.changelogs.components[traversingComponent].changelog.push({
@@ -137,6 +141,7 @@ export class Changelog {
         }
         if (token.type === 'heading' && token.level === 2) {
           traversingComponent = null;
+          traversingBaseComponent = null;
           traversingType = null;
         }
       });
