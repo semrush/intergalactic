@@ -427,7 +427,7 @@ function DashboardPlaygroundContent() {
             >
               <Card.Header>
                 <Card.Title tag='h3'>Line</Card.Title>
-                <Card.Description>Линия идёт куда хочет.</Card.Description>
+                <Card.Description>The line goes where it wants.</Card.Description>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
@@ -448,7 +448,7 @@ function DashboardPlaygroundContent() {
             >
               <Card.Header>
                 <Card.Title tag='h3'>Area</Card.Title>
-                <Card.Description>Три слоя — как торт.</Card.Description>
+                <Card.Description>Three layers — like a cake.</Card.Description>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
@@ -479,7 +479,7 @@ function DashboardPlaygroundContent() {
             >
               <Card.Header>
                 <Card.Title tag='h3'>Bar</Card.Title>
-                <Card.Description>Палочки растут вбок.</Card.Description>
+                <Card.Description>Bars grow sideways.</Card.Description>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
@@ -500,7 +500,7 @@ function DashboardPlaygroundContent() {
             >
               <Card.Header>
                 <Card.Title tag='h3'>Donut</Card.Title>
-                <Card.Description>Дырка от бублика с пользой.</Card.Description>
+                <Card.Description>A donut hole put to good use.</Card.Description>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
@@ -530,7 +530,7 @@ function DashboardPlaygroundContent() {
             >
               <Card.Header>
                 <Card.Title tag='h3'>Scatterplot</Card.Title>
-                <Card.Description>Точки разбежались кто куда.</Card.Description>
+                <Card.Description>Points scattered every which way.</Card.Description>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
@@ -568,7 +568,7 @@ function DashboardPlaygroundContent() {
               >
                 <Card.Header>
                   <Card.Title tag='h3'>Table</Card.Title>
-                  <Card.Description>Строки и колонки живут дружно.</Card.Description>
+                  <Card.Description>Rows and columns get along.</Card.Description>
                 </Card.Header>
                 <Card.Body
                   pt={0}
