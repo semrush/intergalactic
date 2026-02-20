@@ -9,6 +9,7 @@ import { DateRangeComparatorAdvancedTest } from './__tests__/date_range_comparat
 import { DisabledDatesTest } from './__tests__/disabled_dates.test';
 import { MonthRangeComparatorTest } from './__tests__/month_range_comparator.test';
 import { MonthRangePickerTest } from './__tests__/month_range_picker.test';
+import { ResetDatePickerTest } from './__tests__/reset_date_picker.test';
 import { TriggerAndPopperTest } from './__tests__/trigger_popper.test';
 import { WeekPickerTest } from './__tests__/week_picker.test';
 import CustomDateRangesExample from './examples/custom_date_ranges';
@@ -20,6 +21,7 @@ import DatepickerExample from './examples/datepicker';
 import DisabledDatesExample from './examples/disabled_dates';
 import MonthRangeComparatorAdvanceUseExample from './examples/month_range_comparator_advanced_use';
 import MonthRangePickerExample from './examples/monthrangepicker';
+import ResetDatePickerExample from './examples/reset_date_picker';
 import TriggerAndPopperExample from './examples/trigger_and_popper';
 import WeekPickerExample from './examples/week_picker';
 import { playWrapper } from '../../../utils/playWrapper';
@@ -32,6 +34,12 @@ export default meta;
 export const CustomDateRanges: StoryObj = {
   render: CustomDateRangesExample,
   play: playWrapper(CustomDateRangesTest),
+
+};
+
+export const ResetDatePicker: StoryObj = {
+  render: ResetDatePickerExample,
+  play: playWrapper(ResetDatePickerTest),
 
 };
 
