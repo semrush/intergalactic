@@ -70,9 +70,9 @@ export class Changelog {
 
   public async collectFromHistory(): Promise<void> {
     const logs = await git.log({ from: this.tag });
-    const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
+    const { specialScopes, toolsComponents, semcoreBaseComponents, semcoreComponents } = await allowedScopes();
     const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
-    const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
+    const allowed = [...specialScopes, ...semcoreComponents, ...semcoreBaseComponents, ...toolsComponents].filter((element) => {
       if (!this.collectedPackages) {
         return true;
       }
@@ -82,6 +82,7 @@ export class Changelog {
     const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;
+    let traversingBaseComponent: string | null = null;
     let traversingType: ChangelogChangeLabel | null = null;
     let incrementType: IncrementType = 'patch';
 
@@ -99,8 +100,14 @@ export class Changelog {
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
-          if (!this.changelogs.components[token.raw.toLowerCase()]) {
-            this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+
+          if (semcoreBaseComponents.includes(traversingComponent)) {
+            traversingBaseComponent = traversingComponent;
+            traversingComponent = 'base-components';
+          }
+
+          if (!this.changelogs.components[traversingComponent]) {
+            this.changelogs.components[traversingComponent] = { incrementType: 'patch', changelog: [] };
           }
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
@@ -117,7 +124,7 @@ export class Changelog {
         if (token.type === 'list' && traversingComponent !== null && traversingType !== null) {
           token.body.forEach((item) => {
             if (traversingComponent !== null && traversingType !== null) {
-              const descriptionFormatted = (Array.isArray(item) ? item[0] : item).text;
+              const descriptionFormatted = (Array.isArray(item) ? item[0] : item).text.replace('-', `- **${traversingBaseComponent}**:`);
               const description = toMarkdown(descriptionFormatted);
 
               this.changelogs.components[traversingComponent].changelog.push({
