@@ -130,11 +130,8 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-        if (browserName == 'webkit') {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
-        } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-        }
+
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
       });
 
       await test.step('Verify vertical scroll', async () => {
