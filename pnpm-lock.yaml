@@ -1954,10 +1954,10 @@ importers:
         specifier: ^16.0.9
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: ^16.0.0 || ^17.0.0
+        specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
         version: link:../icon
       '@semcore/illustration':
-        specifier: ^16.0.0 || ^17.0.0
+        specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: ^16.0.11
