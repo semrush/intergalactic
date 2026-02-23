@@ -192,10 +192,10 @@ jobs:
           ALL_FILES_COUNT=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} | wc -l)
           echo "count=$ALL_FILES_COUNT" >> $GITHUB_OUTPUT
 
-          if [[ -z "${changed_files}" ]]; then
+          if [[ -z $changed_files ]]; then
             echo "::notice ::The docs-lint job will be skipped because there’s no changed .md files."
           fi
-          if [[ $ALL_FILES_COUNT > 300 && -n "${changed_files}" ]]; then
+          if [[ $ALL_FILES_COUNT > 300 && -n $changed_files ]]; then
             echo "::warnng ::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
           fi
   docs-lint:
