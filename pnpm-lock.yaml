@@ -968,8 +968,8 @@ importers:
         specifier: 16.0.12
         version: link:../button
       '@semcore/illustration':
-        specifier: 16.0.12
-        version: link:../illustration
+        specifier: 17.0.0-prerelease.3
+        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -1070,8 +1070,8 @@ importers:
         specifier: 16.2.1
         version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/illustration':
-        specifier: 16.0.12
-        version: link:../illustration
+        specifier: 17.0.0-prerelease.3
+        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -1181,7 +1181,7 @@ importers:
   semcore/i18n-unplugin:
     dependencies:
       '@semcore/core':
-        specifier: ^16.0.0
+        specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
         version: link:../core
       unplugin:
         specifier: 1.2.0
@@ -1239,8 +1239,8 @@ importers:
   semcore/illustration:
     dependencies:
       '@semcore/base-components':
-        specifier: ^16.0.0
-        version: link:../base-components
+        specifier: ^17.0.0 || ^17.0.0-0
+        version: 17.0.0-prerelease.22(@semcore/core@semcore+core)
       colorjs.io:
         specifier: 0.4.3
         version: 0.4.3
@@ -2090,8 +2090,8 @@ importers:
   semcore/widget-empty:
     dependencies:
       '@semcore/illustration':
-        specifier: 16.0.12
-        version: link:../illustration
+        specifier: 17.0.0-prerelease.3
+        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -4964,6 +4964,11 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
+  '@semcore/base-components@17.0.0-prerelease.22':
+    resolution: {integrity: sha512-rfWlDwzJ+DPPqDbP7+SIZGjMMBQD+9tgpNTElQRm9BZfQAhl0rTGUifQTeCJE7mUkEBYGBMmp9ioXrrtTalDFw==}
+    peerDependencies:
+      '@semcore/core': ^17.0.0-prerelease.22
+
   '@semcore/base-trigger@16.4.4':
     resolution: {integrity: sha512-+vVEfM60MryaMo1ljDqIdyJK6bnPYyUSq98FC3g8CO6kPkz/T94E5sE76Cjc7yNfNbtB4qJYi1f9Whjtv4rfCw==}
     peerDependencies:
@@ -5013,6 +5018,11 @@ packages:
 
   '@semcore/icon@16.7.3':
     resolution: {integrity: sha512-BfuPVc7KqEQM6CE+w7nhrN0aMz/Y56DHVcb3bAGhTOHV/QBtb6tGzWXHmPRynVaC8AUyF9sRPjbBK8GNbRzkuA==}
+    peerDependencies:
+      '@semcore/base-components': ^16.0.0
+
+  '@semcore/illustration@17.0.0-prerelease.3':
+    resolution: {integrity: sha512-cyeaioAu1n8Tgx6ld69ahRtgGWPJCIuKgdREoIi81r7ywKNgUUgzyvaBCZMlIeSxbPMaM4p7rVz1oyoZNkAmjA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17159,6 +17169,15 @@ snapshots:
     dependencies:
       '@semcore/base-components': link:semcore/base-components
 
+  '@semcore/base-components@17.0.0-prerelease.22(@semcore/core@semcore+core)':
+    dependencies:
+      '@floating-ui/dom': 1.7.2
+      '@popperjs/core': 2.11.5
+      '@semcore/core': link:semcore/core
+      classnames: 2.2.6
+      csstype: 3.1.3
+      popper-max-size-modifier: 0.2.0(@popperjs/core@2.11.5)
+
   '@semcore/base-trigger@16.4.4(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
@@ -17229,6 +17248,11 @@ snapshots:
       '@semcore/base-components': link:semcore/base-components
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       classnames: 2.2.6
+
+  '@semcore/illustration@17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)':
+    dependencies:
+      '@semcore/base-components': link:semcore/base-components
+      colorjs.io: 0.4.3
 
   '@semcore/modal@16.1.12(@semcore/base-components@semcore+base-components)':
     dependencies:
