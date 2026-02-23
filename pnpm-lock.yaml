@@ -178,7 +178,7 @@ importers:
         specifier: 1.1.5
         version: 1.1.5
       chromatic:
-        specifier: ^15.1.1
+        specifier: 15.1.1
         version: 15.1.1
       csv:
         specifier: 6.2.0

@@ -97,7 +97,7 @@
     "allure-vitest": "3.2.2",
     "babel-plugin-preval": "5.1.0",
     "babel-plugin-replace-import-extension": "1.1.5",
-    "chromatic": "^15.1.1",
+    "chromatic": "15.1.1",
     "csv": "6.2.0",
     "dotenv": "16.5.0",
     "esbuild": "0.14.29",
