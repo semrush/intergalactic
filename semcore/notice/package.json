@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/notice-global": "16.1.12",
     "@semcore/typography": "16.3.2"
   },
   "peerDependencies": {
