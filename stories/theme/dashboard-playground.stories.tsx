@@ -615,7 +615,7 @@ function DashboardPlaygroundContent() {
               >
                 <Card.Header>
                   <Flex justifyContent='space-between' alignItems='center' w='100%'>
-                    <Card.Title tag='h3'>Internal Linking</Card.Title>
+                    <Card.Title tag='h3'>Histogram</Card.Title>
                     <Pills defaultValue='incoming' size='m'>
                       <Pills.Item value='incoming'>Incoming links</Pills.Item>
                       <Pills.Item value='outgoing'>Outgoing links</Pills.Item>

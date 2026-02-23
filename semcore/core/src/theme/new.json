@@ -639,12 +639,12 @@
         "description": "Inverted version of the secondary text."
       },
       "link": {
-        "value": "{gray.800}",
+        "value": "{blue.500}",
         "type": "color",
         "description": "Link text."
       },
       "link-hover-active": {
-        "value": "{gray.800}",
+        "value": "{blue.600}",
         "type": "color",
         "description": "Hover and active states for the link text."
       },

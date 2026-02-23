@@ -1949,9 +1949,9 @@
   /* Inverted version of the secondary text. */
   --intergalactic-text-secondary-invert: rgba(255, 255, 255, 0.8);
   /* Link text. */
-  --intergalactic-text-link: #1e262a;
+  --intergalactic-text-link: #2969ff;
   /* Hover and active states for the link text. */
-  --intergalactic-text-link-hover-active: #1e262a;
+  --intergalactic-text-link-hover-active: #2560e8;
   /* Inverted version of the link text. Use on dark background only. */
   --intergalactic-text-link-invert: #9dbaff;
   /* Hover and active states of the inverted version of the link text. Use on dark background only. */

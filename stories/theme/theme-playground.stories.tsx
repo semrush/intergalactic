@@ -352,7 +352,7 @@ function ThemePlaygroundContent() {
           Link
         </Text>
         <Flex gap={8} flexWrap alignItems='center' mb={10}>
-          <Link href='#' color='text-primary' size={300}>
+          <Link href='#' size={300}>
             Primary link
           </Link>
           <Link href='#' color='text-critical' size={300}>
