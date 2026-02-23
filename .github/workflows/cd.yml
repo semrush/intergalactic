@@ -194,7 +194,8 @@ jobs:
 
           if [[ -z "${changed_files}" ]]; then
             echo "::notice ::The docs-lint job will be skipped because there’s no changed .md files."
-          else if [[ $ALL_FILES_COUNT > 300 && -n "${changed_files}" ]]; then
+          fi
+          if [[ $ALL_FILES_COUNT > 300 && -n "${changed_files}" ]]; then
             echo "::warnng ::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
           fi
   docs-lint:
