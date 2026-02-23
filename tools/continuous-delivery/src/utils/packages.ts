@@ -16,7 +16,7 @@ export type PackageJson = {
   name: string;
   version: string;
   dependencies?: Record<string, string>;
-  peerDependencies?: Record<string, string>;
+  // peerDependencies?: Record<string, string>;
   private?: boolean;
 };
 
@@ -114,10 +114,10 @@ export class Package {
         packageFile.data.dependencies[componentName] = `^${newVersion}`;
         hasChanges = true;
       }
-      if (packageFile.data.peerDependencies?.[componentName]) {
-        packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
-        hasChanges = true;
-      }
+      // if (packageFile.data.peerDependencies?.[componentName]) {
+      //   packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
+      //   hasChanges = true;
+      // }
 
       if (hasChanges) {
         await fs.writeJSON(resolvePath(packageFile.path, 'package.json'), packageFile.data, { spaces: 2 });

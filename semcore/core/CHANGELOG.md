@@ -2,16 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [17.0.0] - 2026-02-02
-
-### BREAK
-
-- Removed `WithI18n`. Use `useI18n`.
-- Removed `WithCSS`. Use `useCss`.
-- Removed `WithAutoFocus` and `autoFocusEnhance`.
-- Removed `WithKeyboardFocus`. Just don't use.
-- Removed `WithRef`. Use `useForkRef`.
-
 ## [16.5.1] - 2025-10-30
 
 ### Fixed
@@ -105,7 +95,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Return type for `fincComponent` util. It could be only `ReactElement` or `undefined`.
+- Return type for `findComponent` util. It could be only `ReactElement` or `undefined`.
 
 ## [2.39.4] - 2025-05-13
 

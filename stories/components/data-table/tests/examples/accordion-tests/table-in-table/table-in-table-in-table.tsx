@@ -1,6 +1,7 @@
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
@@ -91,7 +92,37 @@ const Demo = (props: TableInTableInTableProps) => {
 
 const TableExample = () => {
   const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
+  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setContainerElement(containerRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
+    return (props) => {
+      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+        return {
+          cropPosition: 'middle',
+          containerElement: containerElement ?? undefined,
+          recalculateContainerWidth: typeof props.row.vol === 'string'
+            ? undefined
+            : (width: number) => {
+                return width - 26;
+              },
+        } as const;
+      }, [containerElement, props.row.vol]);
+
+      if (props.columnName === 'vol' && containerElement) {
+        return (
+          <Text ellipsis={ellipsisSettings}>
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, [containerElement]);
 
   return (
     <DataTable
@@ -105,17 +136,7 @@ const TableExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-              {props.value}
-            </Ellipsis>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();
@@ -133,7 +154,37 @@ const ChartExample = () => {
 };
 const TableExample1 = () => {
   const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
+  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setContainerElement(containerRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
+    return (props) => {
+      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+        return {
+          cropPosition: 'middle',
+          containerElement: containerElement ?? undefined,
+          recalculateContainerWidth: typeof props.row.vol === 'string'
+            ? undefined
+            : (width: number) => {
+                return width - 26;
+              },
+        } as const;
+      }, [containerElement]);
+
+      if (props.columnName === 'vol' && containerElement) {
+        return (
+          <Text ellipsis={ellipsisSettings}>
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, [containerElement]);
 
   return (
     <DataTable
@@ -146,17 +197,7 @@ const TableExample1 = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-              {props.value}
-            </Ellipsis>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();
