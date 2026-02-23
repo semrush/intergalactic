@@ -233,6 +233,7 @@ export class Column<
 
   handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
     if (lastInteraction.isKeyboard()) {
+      e.stopPropagation();
       this.handleSort(e);
     }
   };
