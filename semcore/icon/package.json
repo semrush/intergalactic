@@ -14,7 +14,7 @@
     "clean": "rm -rf ./lib"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0"
+    "@semcore/core": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",
@@ -63,15 +63,15 @@
       "import": "./lib/platform/PRToolkit/index.mjs",
       "require": "./lib/platform/PRToolkit/index.js"
     },
-    "./platform/HomePlatform": {
-      "types": "./lib/platform/HomePlatform/index.d.ts",
-      "import": "./lib/platform/HomePlatform/index.mjs",
-      "require": "./lib/platform/HomePlatform/index.js"
-    },
     "./platform/LocalToolkit": {
       "types": "./lib/platform/LocalToolkit/index.d.ts",
       "import": "./lib/platform/LocalToolkit/index.mjs",
       "require": "./lib/platform/LocalToolkit/index.js"
+    },
+    "./platform/HomePlatform": {
+      "types": "./lib/platform/HomePlatform/index.d.ts",
+      "import": "./lib/platform/HomePlatform/index.mjs",
+      "require": "./lib/platform/HomePlatform/index.js"
     },
     "./platform/EnterpriseSolutions": {
       "types": "./lib/platform/EnterpriseSolutions/index.d.ts",
@@ -83,25 +83,25 @@
       "import": "./lib/platform/ContentToolkit/index.mjs",
       "require": "./lib/platform/ContentToolkit/index.js"
     },
-    "./platform/AppCenter": {
-      "types": "./lib/platform/AppCenter/index.d.ts",
-      "import": "./lib/platform/AppCenter/index.mjs",
-      "require": "./lib/platform/AppCenter/index.js"
-    },
     "./platform/AdsToolkit": {
       "types": "./lib/platform/AdsToolkit/index.d.ts",
       "import": "./lib/platform/AdsToolkit/index.mjs",
       "require": "./lib/platform/AdsToolkit/index.js"
     },
-    "./platform/AISEOToolkit": {
-      "types": "./lib/platform/AISEOToolkit/index.d.ts",
-      "import": "./lib/platform/AISEOToolkit/index.mjs",
-      "require": "./lib/platform/AISEOToolkit/index.js"
-    },
     "./platform/AIToolkit": {
       "types": "./lib/platform/AIToolkit/index.d.ts",
       "import": "./lib/platform/AIToolkit/index.mjs",
       "require": "./lib/platform/AIToolkit/index.js"
+    },
+    "./platform/AppCenter": {
+      "types": "./lib/platform/AppCenter/index.d.ts",
+      "import": "./lib/platform/AppCenter/index.mjs",
+      "require": "./lib/platform/AppCenter/index.js"
+    },
+    "./platform/AISEOToolkit": {
+      "types": "./lib/platform/AISEOToolkit/index.d.ts",
+      "import": "./lib/platform/AISEOToolkit/index.mjs",
+      "require": "./lib/platform/AISEOToolkit/index.js"
     },
     "./pay/WeChatPay/m": {
       "types": "./lib/pay/WeChatPay/m/index.d.ts",
@@ -112,16 +112,6 @@
       "types": "./lib/pay/WeChatPay/l/index.d.ts",
       "import": "./lib/pay/WeChatPay/l/index.mjs",
       "require": "./lib/pay/WeChatPay/l/index.js"
-    },
-    "./pay/Visa/m": {
-      "types": "./lib/pay/Visa/m/index.d.ts",
-      "import": "./lib/pay/Visa/m/index.mjs",
-      "require": "./lib/pay/Visa/m/index.js"
-    },
-    "./pay/Visa/l": {
-      "types": "./lib/pay/Visa/l/index.d.ts",
-      "import": "./lib/pay/Visa/l/index.mjs",
-      "require": "./lib/pay/Visa/l/index.js"
     },
     "./pay/UnionPay/m": {
       "types": "./lib/pay/UnionPay/m/index.d.ts",
@@ -143,6 +133,16 @@
       "import": "./lib/pay/PayPal/l/index.mjs",
       "require": "./lib/pay/PayPal/l/index.js"
     },
+    "./pay/Visa/m": {
+      "types": "./lib/pay/Visa/m/index.d.ts",
+      "import": "./lib/pay/Visa/m/index.mjs",
+      "require": "./lib/pay/Visa/m/index.js"
+    },
+    "./pay/Visa/l": {
+      "types": "./lib/pay/Visa/l/index.d.ts",
+      "import": "./lib/pay/Visa/l/index.mjs",
+      "require": "./lib/pay/Visa/l/index.js"
+    },
     "./pay/Mastercard/m": {
       "types": "./lib/pay/Mastercard/m/index.d.ts",
       "import": "./lib/pay/Mastercard/m/index.mjs",
@@ -163,15 +163,15 @@
       "import": "./lib/pay/JCB/l/index.mjs",
       "require": "./lib/pay/JCB/l/index.js"
     },
-    "./pay/CreditCard/m": {
-      "types": "./lib/pay/CreditCard/m/index.d.ts",
-      "import": "./lib/pay/CreditCard/m/index.mjs",
-      "require": "./lib/pay/CreditCard/m/index.js"
+    "./pay/Discover/m": {
+      "types": "./lib/pay/Discover/m/index.d.ts",
+      "import": "./lib/pay/Discover/m/index.mjs",
+      "require": "./lib/pay/Discover/m/index.js"
     },
-    "./pay/CreditCard/l": {
-      "types": "./lib/pay/CreditCard/l/index.d.ts",
-      "import": "./lib/pay/CreditCard/l/index.mjs",
-      "require": "./lib/pay/CreditCard/l/index.js"
+    "./pay/Discover/l": {
+      "types": "./lib/pay/Discover/l/index.d.ts",
+      "import": "./lib/pay/Discover/l/index.mjs",
+      "require": "./lib/pay/Discover/l/index.js"
     },
     "./pay/Diners/m": {
       "types": "./lib/pay/Diners/m/index.d.ts",
@@ -183,15 +183,15 @@
       "import": "./lib/pay/Diners/l/index.mjs",
       "require": "./lib/pay/Diners/l/index.js"
     },
-    "./pay/Discover/m": {
-      "types": "./lib/pay/Discover/m/index.d.ts",
-      "import": "./lib/pay/Discover/m/index.mjs",
-      "require": "./lib/pay/Discover/m/index.js"
+    "./pay/CreditCard/m": {
+      "types": "./lib/pay/CreditCard/m/index.d.ts",
+      "import": "./lib/pay/CreditCard/m/index.mjs",
+      "require": "./lib/pay/CreditCard/m/index.js"
     },
-    "./pay/Discover/l": {
-      "types": "./lib/pay/Discover/l/index.d.ts",
-      "import": "./lib/pay/Discover/l/index.mjs",
-      "require": "./lib/pay/Discover/l/index.js"
+    "./pay/CreditCard/l": {
+      "types": "./lib/pay/CreditCard/l/index.d.ts",
+      "import": "./lib/pay/CreditCard/l/index.mjs",
+      "require": "./lib/pay/CreditCard/l/index.js"
     },
     "./pay/AmericanExpress/m": {
       "types": "./lib/pay/AmericanExpress/m/index.d.ts",
@@ -202,16 +202,6 @@
       "types": "./lib/pay/AmericanExpress/l/index.d.ts",
       "import": "./lib/pay/AmericanExpress/l/index.mjs",
       "require": "./lib/pay/AmericanExpress/l/index.js"
-    },
-    "./color/YoutubeInvert/m": {
-      "types": "./lib/color/YoutubeInvert/m/index.d.ts",
-      "import": "./lib/color/YoutubeInvert/m/index.mjs",
-      "require": "./lib/color/YoutubeInvert/m/index.js"
-    },
-    "./color/YoutubeInvert/l": {
-      "types": "./lib/color/YoutubeInvert/l/index.d.ts",
-      "import": "./lib/color/YoutubeInvert/l/index.mjs",
-      "require": "./lib/color/YoutubeInvert/l/index.js"
     },
     "./color/YoutubeColored/m": {
       "types": "./lib/color/YoutubeColored/m/index.d.ts",
@@ -233,6 +223,16 @@
       "import": "./lib/color/Yahoo/l/index.mjs",
       "require": "./lib/color/Yahoo/l/index.js"
     },
+    "./color/YoutubeInvert/m": {
+      "types": "./lib/color/YoutubeInvert/m/index.d.ts",
+      "import": "./lib/color/YoutubeInvert/m/index.mjs",
+      "require": "./lib/color/YoutubeInvert/m/index.js"
+    },
+    "./color/YoutubeInvert/l": {
+      "types": "./lib/color/YoutubeInvert/l/index.d.ts",
+      "import": "./lib/color/YoutubeInvert/l/index.mjs",
+      "require": "./lib/color/YoutubeInvert/l/index.js"
+    },
     "./color/WooCommerceColored/m": {
       "types": "./lib/color/WooCommerceColored/m/index.d.ts",
       "import": "./lib/color/WooCommerceColored/m/index.mjs",
@@ -242,16 +242,6 @@
       "types": "./lib/color/WooCommerceColored/l/index.d.ts",
       "import": "./lib/color/WooCommerceColored/l/index.mjs",
       "require": "./lib/color/WooCommerceColored/l/index.js"
-    },
-    "./color/WhatsApp/m": {
-      "types": "./lib/color/WhatsApp/m/index.d.ts",
-      "import": "./lib/color/WhatsApp/m/index.mjs",
-      "require": "./lib/color/WhatsApp/m/index.js"
-    },
-    "./color/WhatsApp/l": {
-      "types": "./lib/color/WhatsApp/l/index.d.ts",
-      "import": "./lib/color/WhatsApp/l/index.mjs",
-      "require": "./lib/color/WhatsApp/l/index.js"
     },
     "./color/WhatConvertsColored/m": {
       "types": "./lib/color/WhatConvertsColored/m/index.d.ts",
@@ -263,15 +253,15 @@
       "import": "./lib/color/WhatConvertsColored/l/index.mjs",
       "require": "./lib/color/WhatConvertsColored/l/index.js"
     },
-    "./color/TikTokColoredInvert/m": {
-      "types": "./lib/color/TikTokColoredInvert/m/index.d.ts",
-      "import": "./lib/color/TikTokColoredInvert/m/index.mjs",
-      "require": "./lib/color/TikTokColoredInvert/m/index.js"
+    "./color/WhatsApp/m": {
+      "types": "./lib/color/WhatsApp/m/index.d.ts",
+      "import": "./lib/color/WhatsApp/m/index.mjs",
+      "require": "./lib/color/WhatsApp/m/index.js"
     },
-    "./color/TikTokColoredInvert/l": {
-      "types": "./lib/color/TikTokColoredInvert/l/index.d.ts",
-      "import": "./lib/color/TikTokColoredInvert/l/index.mjs",
-      "require": "./lib/color/TikTokColoredInvert/l/index.js"
+    "./color/WhatsApp/l": {
+      "types": "./lib/color/WhatsApp/l/index.d.ts",
+      "import": "./lib/color/WhatsApp/l/index.mjs",
+      "require": "./lib/color/WhatsApp/l/index.js"
     },
     "./color/TikTokColored/m": {
       "types": "./lib/color/TikTokColored/m/index.d.ts",
@@ -283,6 +273,16 @@
       "import": "./lib/color/TikTokColored/l/index.mjs",
       "require": "./lib/color/TikTokColored/l/index.js"
     },
+    "./color/TikTokColoredInvert/m": {
+      "types": "./lib/color/TikTokColoredInvert/m/index.d.ts",
+      "import": "./lib/color/TikTokColoredInvert/m/index.mjs",
+      "require": "./lib/color/TikTokColoredInvert/m/index.js"
+    },
+    "./color/TikTokColoredInvert/l": {
+      "types": "./lib/color/TikTokColoredInvert/l/index.d.ts",
+      "import": "./lib/color/TikTokColoredInvert/l/index.mjs",
+      "require": "./lib/color/TikTokColoredInvert/l/index.js"
+    },
     "./color/Snapchat/m": {
       "types": "./lib/color/Snapchat/m/index.d.ts",
       "import": "./lib/color/Snapchat/m/index.mjs",
@@ -292,16 +292,6 @@
       "types": "./lib/color/Snapchat/l/index.d.ts",
       "import": "./lib/color/Snapchat/l/index.mjs",
       "require": "./lib/color/Snapchat/l/index.js"
-    },
-    "./color/ShopifyColored/m": {
-      "types": "./lib/color/ShopifyColored/m/index.d.ts",
-      "import": "./lib/color/ShopifyColored/m/index.mjs",
-      "require": "./lib/color/ShopifyColored/m/index.js"
-    },
-    "./color/ShopifyColored/l": {
-      "types": "./lib/color/ShopifyColored/l/index.d.ts",
-      "import": "./lib/color/ShopifyColored/l/index.mjs",
-      "require": "./lib/color/ShopifyColored/l/index.js"
     },
     "./color/Salesforce/m": {
       "types": "./lib/color/Salesforce/m/index.d.ts",
@@ -322,6 +312,16 @@
       "types": "./lib/color/PipedriveColored/l/index.d.ts",
       "import": "./lib/color/PipedriveColored/l/index.mjs",
       "require": "./lib/color/PipedriveColored/l/index.js"
+    },
+    "./color/ShopifyColored/m": {
+      "types": "./lib/color/ShopifyColored/m/index.d.ts",
+      "import": "./lib/color/ShopifyColored/m/index.mjs",
+      "require": "./lib/color/ShopifyColored/m/index.js"
+    },
+    "./color/ShopifyColored/l": {
+      "types": "./lib/color/ShopifyColored/l/index.d.ts",
+      "import": "./lib/color/ShopifyColored/l/index.mjs",
+      "require": "./lib/color/ShopifyColored/l/index.js"
     },
     "./color/PerplexityColored/m": {
       "types": "./lib/color/PerplexityColored/m/index.d.ts",
@@ -363,16 +363,6 @@
       "import": "./lib/color/MicrosoftOffice/l/index.mjs",
       "require": "./lib/color/MicrosoftOffice/l/index.js"
     },
-    "./color/MicrosoftExchange/m": {
-      "types": "./lib/color/MicrosoftExchange/m/index.d.ts",
-      "import": "./lib/color/MicrosoftExchange/m/index.mjs",
-      "require": "./lib/color/MicrosoftExchange/m/index.js"
-    },
-    "./color/MicrosoftExchange/l": {
-      "types": "./lib/color/MicrosoftExchange/l/index.d.ts",
-      "import": "./lib/color/MicrosoftExchange/l/index.mjs",
-      "require": "./lib/color/MicrosoftExchange/l/index.js"
-    },
     "./color/Microsoft/m": {
       "types": "./lib/color/Microsoft/m/index.d.ts",
       "import": "./lib/color/Microsoft/m/index.mjs",
@@ -382,6 +372,16 @@
       "types": "./lib/color/Microsoft/l/index.d.ts",
       "import": "./lib/color/Microsoft/l/index.mjs",
       "require": "./lib/color/Microsoft/l/index.js"
+    },
+    "./color/MicrosoftExchange/m": {
+      "types": "./lib/color/MicrosoftExchange/m/index.d.ts",
+      "import": "./lib/color/MicrosoftExchange/m/index.mjs",
+      "require": "./lib/color/MicrosoftExchange/m/index.js"
+    },
+    "./color/MicrosoftExchange/l": {
+      "types": "./lib/color/MicrosoftExchange/l/index.d.ts",
+      "import": "./lib/color/MicrosoftExchange/l/index.mjs",
+      "require": "./lib/color/MicrosoftExchange/l/index.js"
     },
     "./color/Matomo/m": {
       "types": "./lib/color/Matomo/m/index.d.ts",
@@ -403,15 +403,15 @@
       "import": "./lib/color/MetaColored/l/index.mjs",
       "require": "./lib/color/MetaColored/l/index.js"
     },
-    "./color/Mailchimp/m": {
-      "types": "./lib/color/Mailchimp/m/index.d.ts",
-      "import": "./lib/color/Mailchimp/m/index.mjs",
-      "require": "./lib/color/Mailchimp/m/index.js"
+    "./color/LookerStudio/m": {
+      "types": "./lib/color/LookerStudio/m/index.d.ts",
+      "import": "./lib/color/LookerStudio/m/index.mjs",
+      "require": "./lib/color/LookerStudio/m/index.js"
     },
-    "./color/Mailchimp/l": {
-      "types": "./lib/color/Mailchimp/l/index.d.ts",
-      "import": "./lib/color/Mailchimp/l/index.mjs",
-      "require": "./lib/color/Mailchimp/l/index.js"
+    "./color/LookerStudio/l": {
+      "types": "./lib/color/LookerStudio/l/index.d.ts",
+      "import": "./lib/color/LookerStudio/l/index.mjs",
+      "require": "./lib/color/LookerStudio/l/index.js"
     },
     "./color/LinkedInColored/m": {
       "types": "./lib/color/LinkedInColored/m/index.d.ts",
@@ -423,25 +423,15 @@
       "import": "./lib/color/LinkedInColored/l/index.mjs",
       "require": "./lib/color/LinkedInColored/l/index.js"
     },
-    "./color/JavaScript/m": {
-      "types": "./lib/color/JavaScript/m/index.d.ts",
-      "import": "./lib/color/JavaScript/m/index.mjs",
-      "require": "./lib/color/JavaScript/m/index.js"
+    "./color/Mailchimp/m": {
+      "types": "./lib/color/Mailchimp/m/index.d.ts",
+      "import": "./lib/color/Mailchimp/m/index.mjs",
+      "require": "./lib/color/Mailchimp/m/index.js"
     },
-    "./color/JavaScript/l": {
-      "types": "./lib/color/JavaScript/l/index.d.ts",
-      "import": "./lib/color/JavaScript/l/index.mjs",
-      "require": "./lib/color/JavaScript/l/index.js"
-    },
-    "./color/LookerStudio/m": {
-      "types": "./lib/color/LookerStudio/m/index.d.ts",
-      "import": "./lib/color/LookerStudio/m/index.mjs",
-      "require": "./lib/color/LookerStudio/m/index.js"
-    },
-    "./color/LookerStudio/l": {
-      "types": "./lib/color/LookerStudio/l/index.d.ts",
-      "import": "./lib/color/LookerStudio/l/index.mjs",
-      "require": "./lib/color/LookerStudio/l/index.js"
+    "./color/Mailchimp/l": {
+      "types": "./lib/color/Mailchimp/l/index.d.ts",
+      "import": "./lib/color/Mailchimp/l/index.mjs",
+      "require": "./lib/color/Mailchimp/l/index.js"
     },
     "./color/InstagramColored/m": {
       "types": "./lib/color/InstagramColored/m/index.d.ts",
@@ -453,15 +443,15 @@
       "import": "./lib/color/InstagramColored/l/index.mjs",
       "require": "./lib/color/InstagramColored/l/index.js"
     },
-    "./color/Hubspot/m": {
-      "types": "./lib/color/Hubspot/m/index.d.ts",
-      "import": "./lib/color/Hubspot/m/index.mjs",
-      "require": "./lib/color/Hubspot/m/index.js"
+    "./color/JavaScript/m": {
+      "types": "./lib/color/JavaScript/m/index.d.ts",
+      "import": "./lib/color/JavaScript/m/index.mjs",
+      "require": "./lib/color/JavaScript/m/index.js"
     },
-    "./color/Hubspot/l": {
-      "types": "./lib/color/Hubspot/l/index.d.ts",
-      "import": "./lib/color/Hubspot/l/index.mjs",
-      "require": "./lib/color/Hubspot/l/index.js"
+    "./color/JavaScript/l": {
+      "types": "./lib/color/JavaScript/l/index.d.ts",
+      "import": "./lib/color/JavaScript/l/index.mjs",
+      "require": "./lib/color/JavaScript/l/index.js"
     },
     "./color/GoogleSlides/m": {
       "types": "./lib/color/GoogleSlides/m/index.d.ts",
@@ -473,25 +463,15 @@
       "import": "./lib/color/GoogleSlides/l/index.mjs",
       "require": "./lib/color/GoogleSlides/l/index.js"
     },
-    "./color/GoogleSheets/m": {
-      "types": "./lib/color/GoogleSheets/m/index.d.ts",
-      "import": "./lib/color/GoogleSheets/m/index.mjs",
-      "require": "./lib/color/GoogleSheets/m/index.js"
+    "./color/Hubspot/m": {
+      "types": "./lib/color/Hubspot/m/index.d.ts",
+      "import": "./lib/color/Hubspot/m/index.mjs",
+      "require": "./lib/color/Hubspot/m/index.js"
     },
-    "./color/GoogleSheets/l": {
-      "types": "./lib/color/GoogleSheets/l/index.d.ts",
-      "import": "./lib/color/GoogleSheets/l/index.mjs",
-      "require": "./lib/color/GoogleSheets/l/index.js"
-    },
-    "./color/GoogleSearchConsole/m": {
-      "types": "./lib/color/GoogleSearchConsole/m/index.d.ts",
-      "import": "./lib/color/GoogleSearchConsole/m/index.mjs",
-      "require": "./lib/color/GoogleSearchConsole/m/index.js"
-    },
-    "./color/GoogleSearchConsole/l": {
-      "types": "./lib/color/GoogleSearchConsole/l/index.d.ts",
-      "import": "./lib/color/GoogleSearchConsole/l/index.mjs",
-      "require": "./lib/color/GoogleSearchConsole/l/index.js"
+    "./color/Hubspot/l": {
+      "types": "./lib/color/Hubspot/l/index.d.ts",
+      "import": "./lib/color/Hubspot/l/index.mjs",
+      "require": "./lib/color/Hubspot/l/index.js"
     },
     "./color/GoogleMyBusiness/m": {
       "types": "./lib/color/GoogleMyBusiness/m/index.d.ts",
@@ -503,15 +483,25 @@
       "import": "./lib/color/GoogleMyBusiness/l/index.mjs",
       "require": "./lib/color/GoogleMyBusiness/l/index.js"
     },
-    "./color/GoogleGenerativeAIColored/m": {
-      "types": "./lib/color/GoogleGenerativeAIColored/m/index.d.ts",
-      "import": "./lib/color/GoogleGenerativeAIColored/m/index.mjs",
-      "require": "./lib/color/GoogleGenerativeAIColored/m/index.js"
+    "./color/GoogleSearchConsole/m": {
+      "types": "./lib/color/GoogleSearchConsole/m/index.d.ts",
+      "import": "./lib/color/GoogleSearchConsole/m/index.mjs",
+      "require": "./lib/color/GoogleSearchConsole/m/index.js"
     },
-    "./color/GoogleGenerativeAIColored/l": {
-      "types": "./lib/color/GoogleGenerativeAIColored/l/index.d.ts",
-      "import": "./lib/color/GoogleGenerativeAIColored/l/index.mjs",
-      "require": "./lib/color/GoogleGenerativeAIColored/l/index.js"
+    "./color/GoogleSearchConsole/l": {
+      "types": "./lib/color/GoogleSearchConsole/l/index.d.ts",
+      "import": "./lib/color/GoogleSearchConsole/l/index.mjs",
+      "require": "./lib/color/GoogleSearchConsole/l/index.js"
+    },
+    "./color/GoogleSheets/m": {
+      "types": "./lib/color/GoogleSheets/m/index.d.ts",
+      "import": "./lib/color/GoogleSheets/m/index.mjs",
+      "require": "./lib/color/GoogleSheets/m/index.js"
+    },
+    "./color/GoogleSheets/l": {
+      "types": "./lib/color/GoogleSheets/l/index.d.ts",
+      "import": "./lib/color/GoogleSheets/l/index.mjs",
+      "require": "./lib/color/GoogleSheets/l/index.js"
     },
     "./color/GoogleMail/m": {
       "types": "./lib/color/GoogleMail/m/index.d.ts",
@@ -533,6 +523,16 @@
       "import": "./lib/color/GoogleDocs/l/index.mjs",
       "require": "./lib/color/GoogleDocs/l/index.js"
     },
+    "./color/GoogleGenerativeAIColored/m": {
+      "types": "./lib/color/GoogleGenerativeAIColored/m/index.d.ts",
+      "import": "./lib/color/GoogleGenerativeAIColored/m/index.mjs",
+      "require": "./lib/color/GoogleGenerativeAIColored/m/index.js"
+    },
+    "./color/GoogleGenerativeAIColored/l": {
+      "types": "./lib/color/GoogleGenerativeAIColored/l/index.d.ts",
+      "import": "./lib/color/GoogleGenerativeAIColored/l/index.mjs",
+      "require": "./lib/color/GoogleGenerativeAIColored/l/index.js"
+    },
     "./color/GoogleDisplayVideoAds/m": {
       "types": "./lib/color/GoogleDisplayVideoAds/m/index.d.ts",
       "import": "./lib/color/GoogleDisplayVideoAds/m/index.mjs",
@@ -542,16 +542,6 @@
       "types": "./lib/color/GoogleDisplayVideoAds/l/index.d.ts",
       "import": "./lib/color/GoogleDisplayVideoAds/l/index.mjs",
       "require": "./lib/color/GoogleDisplayVideoAds/l/index.js"
-    },
-    "./color/GoogleColor/m": {
-      "types": "./lib/color/GoogleColor/m/index.d.ts",
-      "import": "./lib/color/GoogleColor/m/index.mjs",
-      "require": "./lib/color/GoogleColor/m/index.js"
-    },
-    "./color/GoogleColor/l": {
-      "types": "./lib/color/GoogleColor/l/index.d.ts",
-      "import": "./lib/color/GoogleColor/l/index.mjs",
-      "require": "./lib/color/GoogleColor/l/index.js"
     },
     "./color/GoogleDataStudio/m": {
       "types": "./lib/color/GoogleDataStudio/m/index.d.ts",
@@ -573,6 +563,16 @@
       "import": "./lib/color/GoogleCloud/l/index.mjs",
       "require": "./lib/color/GoogleCloud/l/index.js"
     },
+    "./color/GoogleAnalytics/m": {
+      "types": "./lib/color/GoogleAnalytics/m/index.d.ts",
+      "import": "./lib/color/GoogleAnalytics/m/index.mjs",
+      "require": "./lib/color/GoogleAnalytics/m/index.js"
+    },
+    "./color/GoogleAnalytics/l": {
+      "types": "./lib/color/GoogleAnalytics/l/index.d.ts",
+      "import": "./lib/color/GoogleAnalytics/l/index.mjs",
+      "require": "./lib/color/GoogleAnalytics/l/index.js"
+    },
     "./color/GoogleAnalytics4/m": {
       "types": "./lib/color/GoogleAnalytics4/m/index.d.ts",
       "import": "./lib/color/GoogleAnalytics4/m/index.mjs",
@@ -583,6 +583,16 @@
       "import": "./lib/color/GoogleAnalytics4/l/index.mjs",
       "require": "./lib/color/GoogleAnalytics4/l/index.js"
     },
+    "./color/GoogleColor/m": {
+      "types": "./lib/color/GoogleColor/m/index.d.ts",
+      "import": "./lib/color/GoogleColor/m/index.mjs",
+      "require": "./lib/color/GoogleColor/m/index.js"
+    },
+    "./color/GoogleColor/l": {
+      "types": "./lib/color/GoogleColor/l/index.d.ts",
+      "import": "./lib/color/GoogleColor/l/index.mjs",
+      "require": "./lib/color/GoogleColor/l/index.js"
+    },
     "./color/GoogleAds/m": {
       "types": "./lib/color/GoogleAds/m/index.d.ts",
       "import": "./lib/color/GoogleAds/m/index.mjs",
@@ -592,16 +602,6 @@
       "types": "./lib/color/GoogleAds/l/index.d.ts",
       "import": "./lib/color/GoogleAds/l/index.mjs",
       "require": "./lib/color/GoogleAds/l/index.js"
-    },
-    "./color/GoogleAnalytics/m": {
-      "types": "./lib/color/GoogleAnalytics/m/index.d.ts",
-      "import": "./lib/color/GoogleAnalytics/m/index.mjs",
-      "require": "./lib/color/GoogleAnalytics/m/index.js"
-    },
-    "./color/GoogleAnalytics/l": {
-      "types": "./lib/color/GoogleAnalytics/l/index.d.ts",
-      "import": "./lib/color/GoogleAnalytics/l/index.mjs",
-      "require": "./lib/color/GoogleAnalytics/l/index.js"
     },
     "./color/GitLab/m": {
       "types": "./lib/color/GitLab/m/index.d.ts",
@@ -653,16 +653,6 @@
       "import": "./lib/color/Copilot/l/index.mjs",
       "require": "./lib/color/Copilot/l/index.js"
     },
-    "./color/ConstantContactColored/m": {
-      "types": "./lib/color/ConstantContactColored/m/index.d.ts",
-      "import": "./lib/color/ConstantContactColored/m/index.mjs",
-      "require": "./lib/color/ConstantContactColored/m/index.js"
-    },
-    "./color/ConstantContactColored/l": {
-      "types": "./lib/color/ConstantContactColored/l/index.d.ts",
-      "import": "./lib/color/ConstantContactColored/l/index.mjs",
-      "require": "./lib/color/ConstantContactColored/l/index.js"
-    },
     "./color/Confluence/m": {
       "types": "./lib/color/Confluence/m/index.d.ts",
       "import": "./lib/color/Confluence/m/index.mjs",
@@ -672,6 +662,16 @@
       "types": "./lib/color/Confluence/l/index.d.ts",
       "import": "./lib/color/Confluence/l/index.mjs",
       "require": "./lib/color/Confluence/l/index.js"
+    },
+    "./color/ConstantContactColored/m": {
+      "types": "./lib/color/ConstantContactColored/m/index.d.ts",
+      "import": "./lib/color/ConstantContactColored/m/index.mjs",
+      "require": "./lib/color/ConstantContactColored/m/index.js"
+    },
+    "./color/ConstantContactColored/l": {
+      "types": "./lib/color/ConstantContactColored/l/index.d.ts",
+      "import": "./lib/color/ConstantContactColored/l/index.mjs",
+      "require": "./lib/color/ConstantContactColored/l/index.js"
     },
     "./color/ClaudeColored/m": {
       "types": "./lib/color/ClaudeColored/m/index.d.ts",
@@ -693,16 +693,6 @@
       "import": "./lib/color/CampaignMonitorColored/l/index.mjs",
       "require": "./lib/color/CampaignMonitorColored/l/index.js"
     },
-    "./color/CallRailColored/m": {
-      "types": "./lib/color/CallRailColored/m/index.d.ts",
-      "import": "./lib/color/CallRailColored/m/index.mjs",
-      "require": "./lib/color/CallRailColored/m/index.js"
-    },
-    "./color/CallRailColored/l": {
-      "types": "./lib/color/CallRailColored/l/index.d.ts",
-      "import": "./lib/color/CallRailColored/l/index.mjs",
-      "require": "./lib/color/CallRailColored/l/index.js"
-    },
     "./color/BirdeyeColored/m": {
       "types": "./lib/color/BirdeyeColored/m/index.d.ts",
       "import": "./lib/color/BirdeyeColored/m/index.mjs",
@@ -723,15 +713,15 @@
       "import": "./lib/color/CallTrackingMetricsColored/l/index.mjs",
       "require": "./lib/color/CallTrackingMetricsColored/l/index.js"
     },
-    "./color/Amazon/m": {
-      "types": "./lib/color/Amazon/m/index.d.ts",
-      "import": "./lib/color/Amazon/m/index.mjs",
-      "require": "./lib/color/Amazon/m/index.js"
+    "./color/CallRailColored/m": {
+      "types": "./lib/color/CallRailColored/m/index.d.ts",
+      "import": "./lib/color/CallRailColored/m/index.mjs",
+      "require": "./lib/color/CallRailColored/m/index.js"
     },
-    "./color/Amazon/l": {
-      "types": "./lib/color/Amazon/l/index.d.ts",
-      "import": "./lib/color/Amazon/l/index.mjs",
-      "require": "./lib/color/Amazon/l/index.js"
+    "./color/CallRailColored/l": {
+      "types": "./lib/color/CallRailColored/l/index.d.ts",
+      "import": "./lib/color/CallRailColored/l/index.mjs",
+      "require": "./lib/color/CallRailColored/l/index.js"
     },
     "./color/Ahrefs/m": {
       "types": "./lib/color/Ahrefs/m/index.d.ts",
@@ -743,25 +733,15 @@
       "import": "./lib/color/Ahrefs/l/index.mjs",
       "require": "./lib/color/Ahrefs/l/index.js"
     },
-    "./ZoomPlus/m": {
-      "types": "./lib/ZoomPlus/m/index.d.ts",
-      "import": "./lib/ZoomPlus/m/index.mjs",
-      "require": "./lib/ZoomPlus/m/index.js"
+    "./color/Amazon/m": {
+      "types": "./lib/color/Amazon/m/index.d.ts",
+      "import": "./lib/color/Amazon/m/index.mjs",
+      "require": "./lib/color/Amazon/m/index.js"
     },
-    "./ZoomPlus/l": {
-      "types": "./lib/ZoomPlus/l/index.d.ts",
-      "import": "./lib/ZoomPlus/l/index.mjs",
-      "require": "./lib/ZoomPlus/l/index.js"
-    },
-    "./ZoomMinus/m": {
-      "types": "./lib/ZoomMinus/m/index.d.ts",
-      "import": "./lib/ZoomMinus/m/index.mjs",
-      "require": "./lib/ZoomMinus/m/index.js"
-    },
-    "./ZoomMinus/l": {
-      "types": "./lib/ZoomMinus/l/index.d.ts",
-      "import": "./lib/ZoomMinus/l/index.mjs",
-      "require": "./lib/ZoomMinus/l/index.js"
+    "./color/Amazon/l": {
+      "types": "./lib/color/Amazon/l/index.d.ts",
+      "import": "./lib/color/Amazon/l/index.mjs",
+      "require": "./lib/color/Amazon/l/index.js"
     },
     "./YoutubePlaceholder/m": {
       "types": "./lib/YoutubePlaceholder/m/index.d.ts",
@@ -793,16 +773,6 @@
       "import": "./lib/Yext/l/index.mjs",
       "require": "./lib/Yext/l/index.js"
     },
-    "./Wordpress/m": {
-      "types": "./lib/Wordpress/m/index.d.ts",
-      "import": "./lib/Wordpress/m/index.mjs",
-      "require": "./lib/Wordpress/m/index.js"
-    },
-    "./Wordpress/l": {
-      "types": "./lib/Wordpress/l/index.d.ts",
-      "import": "./lib/Wordpress/l/index.mjs",
-      "require": "./lib/Wordpress/l/index.js"
-    },
     "./Wristwatch/m": {
       "types": "./lib/Wristwatch/m/index.d.ts",
       "import": "./lib/Wristwatch/m/index.mjs",
@@ -813,15 +783,15 @@
       "import": "./lib/Wristwatch/l/index.mjs",
       "require": "./lib/Wristwatch/l/index.js"
     },
-    "./WebStories/m": {
-      "types": "./lib/WebStories/m/index.d.ts",
-      "import": "./lib/WebStories/m/index.mjs",
-      "require": "./lib/WebStories/m/index.js"
+    "./ZoomMinus/m": {
+      "types": "./lib/ZoomMinus/m/index.d.ts",
+      "import": "./lib/ZoomMinus/m/index.mjs",
+      "require": "./lib/ZoomMinus/m/index.js"
     },
-    "./WebStories/l": {
-      "types": "./lib/WebStories/l/index.d.ts",
-      "import": "./lib/WebStories/l/index.mjs",
-      "require": "./lib/WebStories/l/index.js"
+    "./ZoomMinus/l": {
+      "types": "./lib/ZoomMinus/l/index.d.ts",
+      "import": "./lib/ZoomMinus/l/index.mjs",
+      "require": "./lib/ZoomMinus/l/index.js"
     },
     "./Wine/m": {
       "types": "./lib/Wine/m/index.d.ts",
@@ -833,6 +803,36 @@
       "import": "./lib/Wine/l/index.mjs",
       "require": "./lib/Wine/l/index.js"
     },
+    "./Wordpress/m": {
+      "types": "./lib/Wordpress/m/index.d.ts",
+      "import": "./lib/Wordpress/m/index.mjs",
+      "require": "./lib/Wordpress/m/index.js"
+    },
+    "./Wordpress/l": {
+      "types": "./lib/Wordpress/l/index.d.ts",
+      "import": "./lib/Wordpress/l/index.mjs",
+      "require": "./lib/Wordpress/l/index.js"
+    },
+    "./ZoomPlus/m": {
+      "types": "./lib/ZoomPlus/m/index.d.ts",
+      "import": "./lib/ZoomPlus/m/index.mjs",
+      "require": "./lib/ZoomPlus/m/index.js"
+    },
+    "./ZoomPlus/l": {
+      "types": "./lib/ZoomPlus/l/index.d.ts",
+      "import": "./lib/ZoomPlus/l/index.mjs",
+      "require": "./lib/ZoomPlus/l/index.js"
+    },
+    "./WebStories/m": {
+      "types": "./lib/WebStories/m/index.d.ts",
+      "import": "./lib/WebStories/m/index.mjs",
+      "require": "./lib/WebStories/m/index.js"
+    },
+    "./WebStories/l": {
+      "types": "./lib/WebStories/l/index.d.ts",
+      "import": "./lib/WebStories/l/index.mjs",
+      "require": "./lib/WebStories/l/index.js"
+    },
     "./Warning/m": {
       "types": "./lib/Warning/m/index.d.ts",
       "import": "./lib/Warning/m/index.mjs",
@@ -842,36 +842,6 @@
       "types": "./lib/Warning/l/index.d.ts",
       "import": "./lib/Warning/l/index.mjs",
       "require": "./lib/Warning/l/index.js"
-    },
-    "./VolumeUp/m": {
-      "types": "./lib/VolumeUp/m/index.d.ts",
-      "import": "./lib/VolumeUp/m/index.mjs",
-      "require": "./lib/VolumeUp/m/index.js"
-    },
-    "./VolumeUp/l": {
-      "types": "./lib/VolumeUp/l/index.d.ts",
-      "import": "./lib/VolumeUp/l/index.mjs",
-      "require": "./lib/VolumeUp/l/index.js"
-    },
-    "./Vk/m": {
-      "types": "./lib/Vk/m/index.d.ts",
-      "import": "./lib/Vk/m/index.mjs",
-      "require": "./lib/Vk/m/index.js"
-    },
-    "./Vk/l": {
-      "types": "./lib/Vk/l/index.d.ts",
-      "import": "./lib/Vk/l/index.mjs",
-      "require": "./lib/Vk/l/index.js"
-    },
-    "./VideoStreaming/m": {
-      "types": "./lib/VideoStreaming/m/index.d.ts",
-      "import": "./lib/VideoStreaming/m/index.mjs",
-      "require": "./lib/VideoStreaming/m/index.js"
-    },
-    "./VideoStreaming/l": {
-      "types": "./lib/VideoStreaming/l/index.d.ts",
-      "import": "./lib/VideoStreaming/l/index.mjs",
-      "require": "./lib/VideoStreaming/l/index.js"
     },
     "./WebPages/m": {
       "types": "./lib/WebPages/m/index.d.ts",
@@ -883,6 +853,16 @@
       "import": "./lib/WebPages/l/index.mjs",
       "require": "./lib/WebPages/l/index.js"
     },
+    "./Vk/m": {
+      "types": "./lib/Vk/m/index.d.ts",
+      "import": "./lib/Vk/m/index.mjs",
+      "require": "./lib/Vk/m/index.js"
+    },
+    "./Vk/l": {
+      "types": "./lib/Vk/l/index.d.ts",
+      "import": "./lib/Vk/l/index.mjs",
+      "require": "./lib/Vk/l/index.js"
+    },
     "./VideoStop/m": {
       "types": "./lib/VideoStop/m/index.d.ts",
       "import": "./lib/VideoStop/m/index.mjs",
@@ -893,15 +873,25 @@
       "import": "./lib/VideoStop/l/index.mjs",
       "require": "./lib/VideoStop/l/index.js"
     },
-    "./VideoCarousel/m": {
-      "types": "./lib/VideoCarousel/m/index.d.ts",
-      "import": "./lib/VideoCarousel/m/index.mjs",
-      "require": "./lib/VideoCarousel/m/index.js"
+    "./VideoStreaming/m": {
+      "types": "./lib/VideoStreaming/m/index.d.ts",
+      "import": "./lib/VideoStreaming/m/index.mjs",
+      "require": "./lib/VideoStreaming/m/index.js"
     },
-    "./VideoCarousel/l": {
-      "types": "./lib/VideoCarousel/l/index.d.ts",
-      "import": "./lib/VideoCarousel/l/index.mjs",
-      "require": "./lib/VideoCarousel/l/index.js"
+    "./VideoStreaming/l": {
+      "types": "./lib/VideoStreaming/l/index.d.ts",
+      "import": "./lib/VideoStreaming/l/index.mjs",
+      "require": "./lib/VideoStreaming/l/index.js"
+    },
+    "./VolumeUp/m": {
+      "types": "./lib/VolumeUp/m/index.d.ts",
+      "import": "./lib/VolumeUp/m/index.mjs",
+      "require": "./lib/VolumeUp/m/index.js"
+    },
+    "./VolumeUp/l": {
+      "types": "./lib/VolumeUp/l/index.d.ts",
+      "import": "./lib/VolumeUp/l/index.mjs",
+      "require": "./lib/VolumeUp/l/index.js"
     },
     "./VideoList/m": {
       "types": "./lib/VideoList/m/index.d.ts",
@@ -923,15 +913,15 @@
       "import": "./lib/VideoAlt/l/index.mjs",
       "require": "./lib/VideoAlt/l/index.js"
     },
-    "./Video/m": {
-      "types": "./lib/Video/m/index.d.ts",
-      "import": "./lib/Video/m/index.mjs",
-      "require": "./lib/Video/m/index.js"
+    "./VideoCarousel/m": {
+      "types": "./lib/VideoCarousel/m/index.d.ts",
+      "import": "./lib/VideoCarousel/m/index.mjs",
+      "require": "./lib/VideoCarousel/m/index.js"
     },
-    "./Video/l": {
-      "types": "./lib/Video/l/index.d.ts",
-      "import": "./lib/Video/l/index.mjs",
-      "require": "./lib/Video/l/index.js"
+    "./VideoCarousel/l": {
+      "types": "./lib/VideoCarousel/l/index.d.ts",
+      "import": "./lib/VideoCarousel/l/index.mjs",
+      "require": "./lib/VideoCarousel/l/index.js"
     },
     "./Veterinary/m": {
       "types": "./lib/Veterinary/m/index.d.ts",
@@ -943,6 +933,16 @@
       "import": "./lib/Veterinary/l/index.mjs",
       "require": "./lib/Veterinary/l/index.js"
     },
+    "./Video/m": {
+      "types": "./lib/Video/m/index.d.ts",
+      "import": "./lib/Video/m/index.mjs",
+      "require": "./lib/Video/m/index.js"
+    },
+    "./Video/l": {
+      "types": "./lib/Video/l/index.d.ts",
+      "import": "./lib/Video/l/index.mjs",
+      "require": "./lib/Video/l/index.js"
+    },
     "./Value/m": {
       "types": "./lib/Value/m/index.d.ts",
       "import": "./lib/Value/m/index.mjs",
@@ -952,26 +952,6 @@
       "types": "./lib/Value/l/index.d.ts",
       "import": "./lib/Value/l/index.mjs",
       "require": "./lib/Value/l/index.js"
-    },
-    "./Vacation/m": {
-      "types": "./lib/Vacation/m/index.d.ts",
-      "import": "./lib/Vacation/m/index.mjs",
-      "require": "./lib/Vacation/m/index.js"
-    },
-    "./Vacation/l": {
-      "types": "./lib/Vacation/l/index.d.ts",
-      "import": "./lib/Vacation/l/index.mjs",
-      "require": "./lib/Vacation/l/index.js"
-    },
-    "./UserSharedFirst/m": {
-      "types": "./lib/UserSharedFirst/m/index.d.ts",
-      "import": "./lib/UserSharedFirst/m/index.mjs",
-      "require": "./lib/UserSharedFirst/m/index.js"
-    },
-    "./UserSharedFirst/l": {
-      "types": "./lib/UserSharedFirst/l/index.d.ts",
-      "import": "./lib/UserSharedFirst/l/index.mjs",
-      "require": "./lib/UserSharedFirst/l/index.js"
     },
     "./UserShared/m": {
       "types": "./lib/UserShared/m/index.d.ts",
@@ -983,15 +963,25 @@
       "import": "./lib/UserShared/l/index.mjs",
       "require": "./lib/UserShared/l/index.js"
     },
-    "./UserGroup/m": {
-      "types": "./lib/UserGroup/m/index.d.ts",
-      "import": "./lib/UserGroup/m/index.mjs",
-      "require": "./lib/UserGroup/m/index.js"
+    "./UserSharedFirst/m": {
+      "types": "./lib/UserSharedFirst/m/index.d.ts",
+      "import": "./lib/UserSharedFirst/m/index.mjs",
+      "require": "./lib/UserSharedFirst/m/index.js"
     },
-    "./UserGroup/l": {
-      "types": "./lib/UserGroup/l/index.d.ts",
-      "import": "./lib/UserGroup/l/index.mjs",
-      "require": "./lib/UserGroup/l/index.js"
+    "./UserSharedFirst/l": {
+      "types": "./lib/UserSharedFirst/l/index.d.ts",
+      "import": "./lib/UserSharedFirst/l/index.mjs",
+      "require": "./lib/UserSharedFirst/l/index.js"
+    },
+    "./Vacation/m": {
+      "types": "./lib/Vacation/m/index.d.ts",
+      "import": "./lib/Vacation/m/index.mjs",
+      "require": "./lib/Vacation/m/index.js"
+    },
+    "./Vacation/l": {
+      "types": "./lib/Vacation/l/index.d.ts",
+      "import": "./lib/Vacation/l/index.mjs",
+      "require": "./lib/Vacation/l/index.js"
     },
     "./UserDemo/m": {
       "types": "./lib/UserDemo/m/index.d.ts",
@@ -1003,6 +993,16 @@
       "import": "./lib/UserDemo/l/index.mjs",
       "require": "./lib/UserDemo/l/index.js"
     },
+    "./UserGroup/m": {
+      "types": "./lib/UserGroup/m/index.d.ts",
+      "import": "./lib/UserGroup/m/index.mjs",
+      "require": "./lib/UserGroup/m/index.js"
+    },
+    "./UserGroup/l": {
+      "types": "./lib/UserGroup/l/index.d.ts",
+      "import": "./lib/UserGroup/l/index.mjs",
+      "require": "./lib/UserGroup/l/index.js"
+    },
     "./User/m": {
       "types": "./lib/User/m/index.d.ts",
       "import": "./lib/User/m/index.mjs",
@@ -1012,16 +1012,6 @@
       "types": "./lib/User/l/index.d.ts",
       "import": "./lib/User/l/index.mjs",
       "require": "./lib/User/l/index.js"
-    },
-    "./Unsplash/m": {
-      "types": "./lib/Unsplash/m/index.d.ts",
-      "import": "./lib/Unsplash/m/index.mjs",
-      "require": "./lib/Unsplash/m/index.js"
-    },
-    "./Unsplash/l": {
-      "types": "./lib/Unsplash/l/index.d.ts",
-      "import": "./lib/Unsplash/l/index.mjs",
-      "require": "./lib/Unsplash/l/index.js"
     },
     "./Undo/m": {
       "types": "./lib/Undo/m/index.d.ts",
@@ -1043,16 +1033,6 @@
       "import": "./lib/Unarchive/l/index.mjs",
       "require": "./lib/Unarchive/l/index.js"
     },
-    "./Twitter/m": {
-      "types": "./lib/Twitter/m/index.d.ts",
-      "import": "./lib/Twitter/m/index.mjs",
-      "require": "./lib/Twitter/m/index.js"
-    },
-    "./Twitter/l": {
-      "types": "./lib/Twitter/l/index.d.ts",
-      "import": "./lib/Twitter/l/index.mjs",
-      "require": "./lib/Twitter/l/index.js"
-    },
     "./TwitterCarousel/m": {
       "types": "./lib/TwitterCarousel/m/index.d.ts",
       "import": "./lib/TwitterCarousel/m/index.mjs",
@@ -1063,15 +1043,25 @@
       "import": "./lib/TwitterCarousel/l/index.mjs",
       "require": "./lib/TwitterCarousel/l/index.js"
     },
-    "./Trash/m": {
-      "types": "./lib/Trash/m/index.d.ts",
-      "import": "./lib/Trash/m/index.mjs",
-      "require": "./lib/Trash/m/index.js"
+    "./Unsplash/m": {
+      "types": "./lib/Unsplash/m/index.d.ts",
+      "import": "./lib/Unsplash/m/index.mjs",
+      "require": "./lib/Unsplash/m/index.js"
     },
-    "./Trash/l": {
-      "types": "./lib/Trash/l/index.d.ts",
-      "import": "./lib/Trash/l/index.mjs",
-      "require": "./lib/Trash/l/index.js"
+    "./Unsplash/l": {
+      "types": "./lib/Unsplash/l/index.d.ts",
+      "import": "./lib/Unsplash/l/index.mjs",
+      "require": "./lib/Unsplash/l/index.js"
+    },
+    "./Twitter/m": {
+      "types": "./lib/Twitter/m/index.d.ts",
+      "import": "./lib/Twitter/m/index.mjs",
+      "require": "./lib/Twitter/m/index.js"
+    },
+    "./Twitter/l": {
+      "types": "./lib/Twitter/l/index.d.ts",
+      "import": "./lib/Twitter/l/index.mjs",
+      "require": "./lib/Twitter/l/index.js"
     },
     "./Trello/m": {
       "types": "./lib/Trello/m/index.d.ts",
@@ -1103,6 +1093,16 @@
       "import": "./lib/TopStories/l/index.mjs",
       "require": "./lib/TopStories/l/index.js"
     },
+    "./Trash/m": {
+      "types": "./lib/Trash/m/index.d.ts",
+      "import": "./lib/Trash/m/index.mjs",
+      "require": "./lib/Trash/m/index.js"
+    },
+    "./Trash/l": {
+      "types": "./lib/Trash/l/index.d.ts",
+      "import": "./lib/Trash/l/index.mjs",
+      "require": "./lib/Trash/l/index.js"
+    },
     "./TimeNight/m": {
       "types": "./lib/TimeNight/m/index.d.ts",
       "import": "./lib/TimeNight/m/index.mjs",
@@ -1112,16 +1112,6 @@
       "types": "./lib/TimeNight/l/index.d.ts",
       "import": "./lib/TimeNight/l/index.mjs",
       "require": "./lib/TimeNight/l/index.js"
-    },
-    "./TimeDay/m": {
-      "types": "./lib/TimeDay/m/index.d.ts",
-      "import": "./lib/TimeDay/m/index.mjs",
-      "require": "./lib/TimeDay/m/index.js"
-    },
-    "./TimeDay/l": {
-      "types": "./lib/TimeDay/l/index.d.ts",
-      "import": "./lib/TimeDay/l/index.mjs",
-      "require": "./lib/TimeDay/l/index.js"
     },
     "./TimeClock/m": {
       "types": "./lib/TimeClock/m/index.d.ts",
@@ -1133,6 +1123,16 @@
       "import": "./lib/TimeClock/l/index.mjs",
       "require": "./lib/TimeClock/l/index.js"
     },
+    "./TimeDay/m": {
+      "types": "./lib/TimeDay/m/index.d.ts",
+      "import": "./lib/TimeDay/m/index.mjs",
+      "require": "./lib/TimeDay/m/index.js"
+    },
+    "./TimeDay/l": {
+      "types": "./lib/TimeDay/l/index.d.ts",
+      "import": "./lib/TimeDay/l/index.mjs",
+      "require": "./lib/TimeDay/l/index.js"
+    },
     "./Tile/m": {
       "types": "./lib/Tile/m/index.d.ts",
       "import": "./lib/Tile/m/index.mjs",
@@ -1142,16 +1142,6 @@
       "types": "./lib/Tile/l/index.d.ts",
       "import": "./lib/Tile/l/index.mjs",
       "require": "./lib/Tile/l/index.js"
-    },
-    "./TikTok/m": {
-      "types": "./lib/TikTok/m/index.d.ts",
-      "import": "./lib/TikTok/m/index.mjs",
-      "require": "./lib/TikTok/m/index.js"
-    },
-    "./TikTok/l": {
-      "types": "./lib/TikTok/l/index.d.ts",
-      "import": "./lib/TikTok/l/index.mjs",
-      "require": "./lib/TikTok/l/index.js"
     },
     "./ThumbUp/m": {
       "types": "./lib/ThumbUp/m/index.d.ts",
@@ -1183,15 +1173,15 @@
       "import": "./lib/TextUnderline/l/index.mjs",
       "require": "./lib/TextUnderline/l/index.js"
     },
-    "./TextQuotes/m": {
-      "types": "./lib/TextQuotes/m/index.d.ts",
-      "import": "./lib/TextQuotes/m/index.mjs",
-      "require": "./lib/TextQuotes/m/index.js"
+    "./TikTok/m": {
+      "types": "./lib/TikTok/m/index.d.ts",
+      "import": "./lib/TikTok/m/index.mjs",
+      "require": "./lib/TikTok/m/index.js"
     },
-    "./TextQuotes/l": {
-      "types": "./lib/TextQuotes/l/index.d.ts",
-      "import": "./lib/TextQuotes/l/index.mjs",
-      "require": "./lib/TextQuotes/l/index.js"
+    "./TikTok/l": {
+      "types": "./lib/TikTok/l/index.d.ts",
+      "import": "./lib/TikTok/l/index.mjs",
+      "require": "./lib/TikTok/l/index.js"
     },
     "./TextItalic/m": {
       "types": "./lib/TextItalic/m/index.d.ts",
@@ -1203,6 +1193,16 @@
       "import": "./lib/TextItalic/l/index.mjs",
       "require": "./lib/TextItalic/l/index.js"
     },
+    "./TextQuotes/m": {
+      "types": "./lib/TextQuotes/m/index.d.ts",
+      "import": "./lib/TextQuotes/m/index.mjs",
+      "require": "./lib/TextQuotes/m/index.js"
+    },
+    "./TextQuotes/l": {
+      "types": "./lib/TextQuotes/l/index.d.ts",
+      "import": "./lib/TextQuotes/l/index.mjs",
+      "require": "./lib/TextQuotes/l/index.js"
+    },
     "./TextBold/m": {
       "types": "./lib/TextBold/m/index.d.ts",
       "import": "./lib/TextBold/m/index.mjs",
@@ -1212,26 +1212,6 @@
       "types": "./lib/TextBold/l/index.d.ts",
       "import": "./lib/TextBold/l/index.mjs",
       "require": "./lib/TextBold/l/index.js"
-    },
-    "./TagFilled/m": {
-      "types": "./lib/TagFilled/m/index.d.ts",
-      "import": "./lib/TagFilled/m/index.mjs",
-      "require": "./lib/TagFilled/m/index.js"
-    },
-    "./TagFilled/l": {
-      "types": "./lib/TagFilled/l/index.d.ts",
-      "import": "./lib/TagFilled/l/index.mjs",
-      "require": "./lib/TagFilled/l/index.js"
-    },
-    "./Telescope/m": {
-      "types": "./lib/Telescope/m/index.d.ts",
-      "import": "./lib/Telescope/m/index.mjs",
-      "require": "./lib/Telescope/m/index.js"
-    },
-    "./Telescope/l": {
-      "types": "./lib/Telescope/l/index.d.ts",
-      "import": "./lib/Telescope/l/index.mjs",
-      "require": "./lib/Telescope/l/index.js"
     },
     "./Text/m": {
       "types": "./lib/Text/m/index.d.ts",
@@ -1253,6 +1233,16 @@
       "import": "./lib/Tag/l/index.mjs",
       "require": "./lib/Tag/l/index.js"
     },
+    "./Telescope/m": {
+      "types": "./lib/Telescope/m/index.d.ts",
+      "import": "./lib/Telescope/m/index.mjs",
+      "require": "./lib/Telescope/m/index.js"
+    },
+    "./Telescope/l": {
+      "types": "./lib/Telescope/l/index.d.ts",
+      "import": "./lib/Telescope/l/index.mjs",
+      "require": "./lib/Telescope/l/index.js"
+    },
     "./TackNo/m": {
       "types": "./lib/TackNo/m/index.d.ts",
       "import": "./lib/TackNo/m/index.mjs",
@@ -1263,15 +1253,15 @@
       "import": "./lib/TackNo/l/index.mjs",
       "require": "./lib/TackNo/l/index.js"
     },
-    "./Tack/m": {
-      "types": "./lib/Tack/m/index.d.ts",
-      "import": "./lib/Tack/m/index.mjs",
-      "require": "./lib/Tack/m/index.js"
+    "./TagFilled/m": {
+      "types": "./lib/TagFilled/m/index.d.ts",
+      "import": "./lib/TagFilled/m/index.mjs",
+      "require": "./lib/TagFilled/m/index.js"
     },
-    "./Tack/l": {
-      "types": "./lib/Tack/l/index.d.ts",
-      "import": "./lib/Tack/l/index.mjs",
-      "require": "./lib/Tack/l/index.js"
+    "./TagFilled/l": {
+      "types": "./lib/TagFilled/l/index.d.ts",
+      "import": "./lib/TagFilled/l/index.mjs",
+      "require": "./lib/TagFilled/l/index.js"
     },
     "./Tablet/m": {
       "types": "./lib/Tablet/m/index.d.ts",
@@ -1283,15 +1273,15 @@
       "import": "./lib/Tablet/l/index.mjs",
       "require": "./lib/Tablet/l/index.js"
     },
-    "./Table/m": {
-      "types": "./lib/Table/m/index.d.ts",
-      "import": "./lib/Table/m/index.mjs",
-      "require": "./lib/Table/m/index.js"
+    "./Tack/m": {
+      "types": "./lib/Tack/m/index.d.ts",
+      "import": "./lib/Tack/m/index.mjs",
+      "require": "./lib/Tack/m/index.js"
     },
-    "./Table/l": {
-      "types": "./lib/Table/l/index.d.ts",
-      "import": "./lib/Table/l/index.mjs",
-      "require": "./lib/Table/l/index.js"
+    "./Tack/l": {
+      "types": "./lib/Tack/l/index.d.ts",
+      "import": "./lib/Tack/l/index.mjs",
+      "require": "./lib/Tack/l/index.js"
     },
     "./SummaryAI/m": {
       "types": "./lib/SummaryAI/m/index.d.ts",
@@ -1303,15 +1293,15 @@
       "import": "./lib/SummaryAI/l/index.mjs",
       "require": "./lib/SummaryAI/l/index.js"
     },
-    "./StoriesAI/m": {
-      "types": "./lib/StoriesAI/m/index.d.ts",
-      "import": "./lib/StoriesAI/m/index.mjs",
-      "require": "./lib/StoriesAI/m/index.js"
+    "./Table/m": {
+      "types": "./lib/Table/m/index.d.ts",
+      "import": "./lib/Table/m/index.mjs",
+      "require": "./lib/Table/m/index.js"
     },
-    "./StoriesAI/l": {
-      "types": "./lib/StoriesAI/l/index.d.ts",
-      "import": "./lib/StoriesAI/l/index.mjs",
-      "require": "./lib/StoriesAI/l/index.js"
+    "./Table/l": {
+      "types": "./lib/Table/l/index.d.ts",
+      "import": "./lib/Table/l/index.mjs",
+      "require": "./lib/Table/l/index.js"
     },
     "./Stroller/m": {
       "types": "./lib/Stroller/m/index.d.ts",
@@ -1323,15 +1313,15 @@
       "import": "./lib/Stroller/l/index.mjs",
       "require": "./lib/Stroller/l/index.js"
     },
-    "./Sport/m": {
-      "types": "./lib/Sport/m/index.d.ts",
-      "import": "./lib/Sport/m/index.mjs",
-      "require": "./lib/Sport/m/index.js"
+    "./StoriesAI/m": {
+      "types": "./lib/StoriesAI/m/index.d.ts",
+      "import": "./lib/StoriesAI/m/index.mjs",
+      "require": "./lib/StoriesAI/m/index.js"
     },
-    "./Sport/l": {
-      "types": "./lib/Sport/l/index.d.ts",
-      "import": "./lib/Sport/l/index.mjs",
-      "require": "./lib/Sport/l/index.js"
+    "./StoriesAI/l": {
+      "types": "./lib/StoriesAI/l/index.d.ts",
+      "import": "./lib/StoriesAI/l/index.mjs",
+      "require": "./lib/StoriesAI/l/index.js"
     },
     "./Stop/m": {
       "types": "./lib/Stop/m/index.d.ts",
@@ -1363,16 +1353,6 @@
       "import": "./lib/SortDesc/l/index.mjs",
       "require": "./lib/SortDesc/l/index.js"
     },
-    "./SmileSimple/m": {
-      "types": "./lib/SmileSimple/m/index.d.ts",
-      "import": "./lib/SmileSimple/m/index.mjs",
-      "require": "./lib/SmileSimple/m/index.js"
-    },
-    "./SmileSimple/l": {
-      "types": "./lib/SmileSimple/l/index.d.ts",
-      "import": "./lib/SmileSimple/l/index.mjs",
-      "require": "./lib/SmileSimple/l/index.js"
-    },
     "./Smoking/m": {
       "types": "./lib/Smoking/m/index.d.ts",
       "import": "./lib/Smoking/m/index.mjs",
@@ -1382,6 +1362,16 @@
       "types": "./lib/Smoking/l/index.d.ts",
       "import": "./lib/Smoking/l/index.mjs",
       "require": "./lib/Smoking/l/index.js"
+    },
+    "./Sport/m": {
+      "types": "./lib/Sport/m/index.d.ts",
+      "import": "./lib/Sport/m/index.mjs",
+      "require": "./lib/Sport/m/index.js"
+    },
+    "./Sport/l": {
+      "types": "./lib/Sport/l/index.d.ts",
+      "import": "./lib/Sport/l/index.mjs",
+      "require": "./lib/Sport/l/index.js"
     },
     "./SmileSad/m": {
       "types": "./lib/SmileSad/m/index.d.ts",
@@ -1403,6 +1393,16 @@
       "import": "./lib/SmileNeutral/l/index.mjs",
       "require": "./lib/SmileNeutral/l/index.js"
     },
+    "./SmileSimple/m": {
+      "types": "./lib/SmileSimple/m/index.d.ts",
+      "import": "./lib/SmileSimple/m/index.mjs",
+      "require": "./lib/SmileSimple/m/index.js"
+    },
+    "./SmileSimple/l": {
+      "types": "./lib/SmileSimple/l/index.d.ts",
+      "import": "./lib/SmileSimple/l/index.mjs",
+      "require": "./lib/SmileSimple/l/index.js"
+    },
     "./Slack/m": {
       "types": "./lib/Slack/m/index.d.ts",
       "import": "./lib/Slack/m/index.mjs",
@@ -1422,16 +1422,6 @@
       "types": "./lib/SmileHappy/l/index.d.ts",
       "import": "./lib/SmileHappy/l/index.mjs",
       "require": "./lib/SmileHappy/l/index.js"
-    },
-    "./Sitemap/m": {
-      "types": "./lib/Sitemap/m/index.d.ts",
-      "import": "./lib/Sitemap/m/index.mjs",
-      "require": "./lib/Sitemap/m/index.js"
-    },
-    "./Sitemap/l": {
-      "types": "./lib/Sitemap/l/index.d.ts",
-      "import": "./lib/Sitemap/l/index.mjs",
-      "require": "./lib/Sitemap/l/index.js"
     },
     "./Skype/m": {
       "types": "./lib/Skype/m/index.d.ts",
@@ -1463,15 +1453,15 @@
       "import": "./lib/SimplifyText/l/index.mjs",
       "require": "./lib/SimplifyText/l/index.js"
     },
-    "./SideMenuLeft/m": {
-      "types": "./lib/SideMenuLeft/m/index.d.ts",
-      "import": "./lib/SideMenuLeft/m/index.mjs",
-      "require": "./lib/SideMenuLeft/m/index.js"
+    "./Sitemap/m": {
+      "types": "./lib/Sitemap/m/index.d.ts",
+      "import": "./lib/Sitemap/m/index.mjs",
+      "require": "./lib/Sitemap/m/index.js"
     },
-    "./SideMenuLeft/l": {
-      "types": "./lib/SideMenuLeft/l/index.d.ts",
-      "import": "./lib/SideMenuLeft/l/index.mjs",
-      "require": "./lib/SideMenuLeft/l/index.js"
+    "./Sitemap/l": {
+      "types": "./lib/Sitemap/l/index.d.ts",
+      "import": "./lib/Sitemap/l/index.mjs",
+      "require": "./lib/Sitemap/l/index.js"
     },
     "./ShowYes/m": {
       "types": "./lib/ShowYes/m/index.d.ts",
@@ -1483,15 +1473,15 @@
       "import": "./lib/ShowYes/l/index.mjs",
       "require": "./lib/ShowYes/l/index.js"
     },
-    "./ShortVideos/m": {
-      "types": "./lib/ShortVideos/m/index.d.ts",
-      "import": "./lib/ShortVideos/m/index.mjs",
-      "require": "./lib/ShortVideos/m/index.js"
+    "./SideMenuLeft/m": {
+      "types": "./lib/SideMenuLeft/m/index.d.ts",
+      "import": "./lib/SideMenuLeft/m/index.mjs",
+      "require": "./lib/SideMenuLeft/m/index.js"
     },
-    "./ShortVideos/l": {
-      "types": "./lib/ShortVideos/l/index.d.ts",
-      "import": "./lib/ShortVideos/l/index.mjs",
-      "require": "./lib/ShortVideos/l/index.js"
+    "./SideMenuLeft/l": {
+      "types": "./lib/SideMenuLeft/l/index.d.ts",
+      "import": "./lib/SideMenuLeft/l/index.mjs",
+      "require": "./lib/SideMenuLeft/l/index.js"
     },
     "./ShowNo/m": {
       "types": "./lib/ShowNo/m/index.d.ts",
@@ -1503,16 +1493,6 @@
       "import": "./lib/ShowNo/l/index.mjs",
       "require": "./lib/ShowNo/l/index.js"
     },
-    "./Share/m": {
-      "types": "./lib/Share/m/index.d.ts",
-      "import": "./lib/Share/m/index.mjs",
-      "require": "./lib/Share/m/index.js"
-    },
-    "./Share/l": {
-      "types": "./lib/Share/l/index.d.ts",
-      "import": "./lib/Share/l/index.mjs",
-      "require": "./lib/Share/l/index.js"
-    },
     "./ShareAlt/m": {
       "types": "./lib/ShareAlt/m/index.d.ts",
       "import": "./lib/ShareAlt/m/index.mjs",
@@ -1522,6 +1502,16 @@
       "types": "./lib/ShareAlt/l/index.d.ts",
       "import": "./lib/ShareAlt/l/index.mjs",
       "require": "./lib/ShareAlt/l/index.js"
+    },
+    "./ShortVideos/m": {
+      "types": "./lib/ShortVideos/m/index.d.ts",
+      "import": "./lib/ShortVideos/m/index.mjs",
+      "require": "./lib/ShortVideos/m/index.js"
+    },
+    "./ShortVideos/l": {
+      "types": "./lib/ShortVideos/l/index.d.ts",
+      "import": "./lib/ShortVideos/l/index.mjs",
+      "require": "./lib/ShortVideos/l/index.js"
     },
     "./Settings/m": {
       "types": "./lib/Settings/m/index.d.ts",
@@ -1543,6 +1533,16 @@
       "import": "./lib/Serp/l/index.mjs",
       "require": "./lib/Serp/l/index.js"
     },
+    "./Share/m": {
+      "types": "./lib/Share/m/index.d.ts",
+      "import": "./lib/Share/m/index.mjs",
+      "require": "./lib/Share/m/index.js"
+    },
+    "./Share/l": {
+      "types": "./lib/Share/l/index.d.ts",
+      "import": "./lib/Share/l/index.mjs",
+      "require": "./lib/Share/l/index.js"
+    },
     "./SeoQuake/m": {
       "types": "./lib/SeoQuake/m/index.d.ts",
       "import": "./lib/SeoQuake/m/index.mjs",
@@ -1552,6 +1552,16 @@
       "types": "./lib/SeoQuake/l/index.d.ts",
       "import": "./lib/SeoQuake/l/index.mjs",
       "require": "./lib/SeoQuake/l/index.js"
+    },
+    "./Sent/m": {
+      "types": "./lib/Sent/m/index.d.ts",
+      "import": "./lib/Sent/m/index.mjs",
+      "require": "./lib/Sent/m/index.js"
+    },
+    "./Sent/l": {
+      "types": "./lib/Sent/l/index.d.ts",
+      "import": "./lib/Sent/l/index.mjs",
+      "require": "./lib/Sent/l/index.js"
     },
     "./SemrushRank/m": {
       "types": "./lib/SemrushRank/m/index.d.ts",
@@ -1573,26 +1583,6 @@
       "import": "./lib/Semrush/l/index.mjs",
       "require": "./lib/Semrush/l/index.js"
     },
-    "./Sent/m": {
-      "types": "./lib/Sent/m/index.d.ts",
-      "import": "./lib/Sent/m/index.mjs",
-      "require": "./lib/Sent/m/index.js"
-    },
-    "./Sent/l": {
-      "types": "./lib/Sent/l/index.d.ts",
-      "import": "./lib/Sent/l/index.mjs",
-      "require": "./lib/Sent/l/index.js"
-    },
-    "./SeeResultsAbout/m": {
-      "types": "./lib/SeeResultsAbout/m/index.d.ts",
-      "import": "./lib/SeeResultsAbout/m/index.mjs",
-      "require": "./lib/SeeResultsAbout/m/index.js"
-    },
-    "./SeeResultsAbout/l": {
-      "types": "./lib/SeeResultsAbout/l/index.d.ts",
-      "import": "./lib/SeeResultsAbout/l/index.mjs",
-      "require": "./lib/SeeResultsAbout/l/index.js"
-    },
     "./Sellzone/m": {
       "types": "./lib/Sellzone/m/index.d.ts",
       "import": "./lib/Sellzone/m/index.mjs",
@@ -1602,26 +1592,6 @@
       "types": "./lib/Sellzone/l/index.d.ts",
       "import": "./lib/Sellzone/l/index.mjs",
       "require": "./lib/Sellzone/l/index.js"
-    },
-    "./SecurityNo/m": {
-      "types": "./lib/SecurityNo/m/index.d.ts",
-      "import": "./lib/SecurityNo/m/index.mjs",
-      "require": "./lib/SecurityNo/m/index.js"
-    },
-    "./SecurityNo/l": {
-      "types": "./lib/SecurityNo/l/index.d.ts",
-      "import": "./lib/SecurityNo/l/index.mjs",
-      "require": "./lib/SecurityNo/l/index.js"
-    },
-    "./Search/m": {
-      "types": "./lib/Search/m/index.d.ts",
-      "import": "./lib/Search/m/index.mjs",
-      "require": "./lib/Search/m/index.js"
-    },
-    "./Search/l": {
-      "types": "./lib/Search/l/index.d.ts",
-      "import": "./lib/Search/l/index.mjs",
-      "require": "./lib/Search/l/index.js"
     },
     "./Security/m": {
       "types": "./lib/Security/m/index.d.ts",
@@ -1633,6 +1603,36 @@
       "import": "./lib/Security/l/index.mjs",
       "require": "./lib/Security/l/index.js"
     },
+    "./SecurityNo/m": {
+      "types": "./lib/SecurityNo/m/index.d.ts",
+      "import": "./lib/SecurityNo/m/index.mjs",
+      "require": "./lib/SecurityNo/m/index.js"
+    },
+    "./SecurityNo/l": {
+      "types": "./lib/SecurityNo/l/index.d.ts",
+      "import": "./lib/SecurityNo/l/index.mjs",
+      "require": "./lib/SecurityNo/l/index.js"
+    },
+    "./SeeResultsAbout/m": {
+      "types": "./lib/SeeResultsAbout/m/index.d.ts",
+      "import": "./lib/SeeResultsAbout/m/index.mjs",
+      "require": "./lib/SeeResultsAbout/m/index.js"
+    },
+    "./SeeResultsAbout/l": {
+      "types": "./lib/SeeResultsAbout/l/index.d.ts",
+      "import": "./lib/SeeResultsAbout/l/index.mjs",
+      "require": "./lib/SeeResultsAbout/l/index.js"
+    },
+    "./Search/m": {
+      "types": "./lib/Search/m/index.d.ts",
+      "import": "./lib/Search/m/index.mjs",
+      "require": "./lib/Search/m/index.js"
+    },
+    "./Search/l": {
+      "types": "./lib/Search/l/index.d.ts",
+      "import": "./lib/Search/l/index.mjs",
+      "require": "./lib/Search/l/index.js"
+    },
     "./Safari/m": {
       "types": "./lib/Safari/m/index.d.ts",
       "import": "./lib/Safari/m/index.mjs",
@@ -1642,6 +1642,16 @@
       "types": "./lib/Safari/l/index.d.ts",
       "import": "./lib/Safari/l/index.mjs",
       "require": "./lib/Safari/l/index.js"
+    },
+    "./Robot/m": {
+      "types": "./lib/Robot/m/index.d.ts",
+      "import": "./lib/Robot/m/index.mjs",
+      "require": "./lib/Robot/m/index.js"
+    },
+    "./Robot/l": {
+      "types": "./lib/Robot/l/index.d.ts",
+      "import": "./lib/Robot/l/index.mjs",
+      "require": "./lib/Robot/l/index.js"
     },
     "./Science/m": {
       "types": "./lib/Science/m/index.d.ts",
@@ -1662,16 +1672,6 @@
       "types": "./lib/Rss/l/index.d.ts",
       "import": "./lib/Rss/l/index.mjs",
       "require": "./lib/Rss/l/index.js"
-    },
-    "./Robot/m": {
-      "types": "./lib/Robot/m/index.d.ts",
-      "import": "./lib/Robot/m/index.mjs",
-      "require": "./lib/Robot/m/index.js"
-    },
-    "./Robot/l": {
-      "types": "./lib/Robot/l/index.d.ts",
-      "import": "./lib/Robot/l/index.mjs",
-      "require": "./lib/Robot/l/index.js"
     },
     "./Retweet/m": {
       "types": "./lib/Retweet/m/index.d.ts",
@@ -1713,16 +1713,6 @@
       "import": "./lib/ResizeRow/l/index.mjs",
       "require": "./lib/ResizeRow/l/index.js"
     },
-    "./ResizeCol/m": {
-      "types": "./lib/ResizeCol/m/index.d.ts",
-      "import": "./lib/ResizeCol/m/index.mjs",
-      "require": "./lib/ResizeCol/m/index.js"
-    },
-    "./ResizeCol/l": {
-      "types": "./lib/ResizeCol/l/index.d.ts",
-      "import": "./lib/ResizeCol/l/index.mjs",
-      "require": "./lib/ResizeCol/l/index.js"
-    },
     "./Report/m": {
       "types": "./lib/Report/m/index.d.ts",
       "import": "./lib/Report/m/index.mjs",
@@ -1742,6 +1732,16 @@
       "types": "./lib/Reply/l/index.d.ts",
       "import": "./lib/Reply/l/index.mjs",
       "require": "./lib/Reply/l/index.js"
+    },
+    "./ResizeCol/m": {
+      "types": "./lib/ResizeCol/m/index.d.ts",
+      "import": "./lib/ResizeCol/m/index.mjs",
+      "require": "./lib/ResizeCol/m/index.js"
+    },
+    "./ResizeCol/l": {
+      "types": "./lib/ResizeCol/l/index.d.ts",
+      "import": "./lib/ResizeCol/l/index.mjs",
+      "require": "./lib/ResizeCol/l/index.js"
     },
     "./Rephrase/m": {
       "types": "./lib/Rephrase/m/index.d.ts",
@@ -1773,6 +1773,16 @@
       "import": "./lib/Religion/l/index.mjs",
       "require": "./lib/Religion/l/index.js"
     },
+    "./RelatedSearches/m": {
+      "types": "./lib/RelatedSearches/m/index.d.ts",
+      "import": "./lib/RelatedSearches/m/index.mjs",
+      "require": "./lib/RelatedSearches/m/index.js"
+    },
+    "./RelatedSearches/l": {
+      "types": "./lib/RelatedSearches/l/index.d.ts",
+      "import": "./lib/RelatedSearches/l/index.mjs",
+      "require": "./lib/RelatedSearches/l/index.js"
+    },
     "./RelatedProducts/m": {
       "types": "./lib/RelatedProducts/m/index.d.ts",
       "import": "./lib/RelatedProducts/m/index.mjs",
@@ -1793,16 +1803,6 @@
       "import": "./lib/Redo/l/index.mjs",
       "require": "./lib/Redo/l/index.js"
     },
-    "./RelatedSearches/m": {
-      "types": "./lib/RelatedSearches/m/index.d.ts",
-      "import": "./lib/RelatedSearches/m/index.mjs",
-      "require": "./lib/RelatedSearches/m/index.js"
-    },
-    "./RelatedSearches/l": {
-      "types": "./lib/RelatedSearches/l/index.d.ts",
-      "import": "./lib/RelatedSearches/l/index.mjs",
-      "require": "./lib/RelatedSearches/l/index.js"
-    },
     "./Redirect/m": {
       "types": "./lib/Redirect/m/index.d.ts",
       "import": "./lib/Redirect/m/index.mjs",
@@ -1812,16 +1812,6 @@
       "types": "./lib/Redirect/l/index.d.ts",
       "import": "./lib/Redirect/l/index.mjs",
       "require": "./lib/Redirect/l/index.js"
-    },
-    "./Recent/m": {
-      "types": "./lib/Recent/m/index.d.ts",
-      "import": "./lib/Recent/m/index.mjs",
-      "require": "./lib/Recent/m/index.js"
-    },
-    "./Recent/l": {
-      "types": "./lib/Recent/l/index.d.ts",
-      "import": "./lib/Recent/l/index.mjs",
-      "require": "./lib/Recent/l/index.js"
     },
     "./Recreation/m": {
       "types": "./lib/Recreation/m/index.d.ts",
@@ -1833,25 +1823,15 @@
       "import": "./lib/Recreation/l/index.mjs",
       "require": "./lib/Recreation/l/index.js"
     },
-    "./QuestionsAnswers/m": {
-      "types": "./lib/QuestionsAnswers/m/index.d.ts",
-      "import": "./lib/QuestionsAnswers/m/index.mjs",
-      "require": "./lib/QuestionsAnswers/m/index.js"
+    "./Question/m": {
+      "types": "./lib/Question/m/index.d.ts",
+      "import": "./lib/Question/m/index.mjs",
+      "require": "./lib/Question/m/index.js"
     },
-    "./QuestionsAnswers/l": {
-      "types": "./lib/QuestionsAnswers/l/index.d.ts",
-      "import": "./lib/QuestionsAnswers/l/index.mjs",
-      "require": "./lib/QuestionsAnswers/l/index.js"
-    },
-    "./Pulse/m": {
-      "types": "./lib/Pulse/m/index.d.ts",
-      "import": "./lib/Pulse/m/index.mjs",
-      "require": "./lib/Pulse/m/index.js"
-    },
-    "./Pulse/l": {
-      "types": "./lib/Pulse/l/index.d.ts",
-      "import": "./lib/Pulse/l/index.mjs",
-      "require": "./lib/Pulse/l/index.js"
+    "./Question/l": {
+      "types": "./lib/Question/l/index.d.ts",
+      "import": "./lib/Question/l/index.mjs",
+      "require": "./lib/Question/l/index.js"
     },
     "./QuestionSerp/m": {
       "types": "./lib/QuestionSerp/m/index.d.ts",
@@ -1863,15 +1843,25 @@
       "import": "./lib/QuestionSerp/l/index.mjs",
       "require": "./lib/QuestionSerp/l/index.js"
     },
-    "./Question/m": {
-      "types": "./lib/Question/m/index.d.ts",
-      "import": "./lib/Question/m/index.mjs",
-      "require": "./lib/Question/m/index.js"
+    "./Recent/m": {
+      "types": "./lib/Recent/m/index.d.ts",
+      "import": "./lib/Recent/m/index.mjs",
+      "require": "./lib/Recent/m/index.js"
     },
-    "./Question/l": {
-      "types": "./lib/Question/l/index.d.ts",
-      "import": "./lib/Question/l/index.mjs",
-      "require": "./lib/Question/l/index.js"
+    "./Recent/l": {
+      "types": "./lib/Recent/l/index.d.ts",
+      "import": "./lib/Recent/l/index.mjs",
+      "require": "./lib/Recent/l/index.js"
+    },
+    "./Pulse/m": {
+      "types": "./lib/Pulse/m/index.d.ts",
+      "import": "./lib/Pulse/m/index.mjs",
+      "require": "./lib/Pulse/m/index.js"
+    },
+    "./Pulse/l": {
+      "types": "./lib/Pulse/l/index.d.ts",
+      "import": "./lib/Pulse/l/index.mjs",
+      "require": "./lib/Pulse/l/index.js"
     },
     "./PublicUtility/m": {
       "types": "./lib/PublicUtility/m/index.d.ts",
@@ -1883,6 +1873,16 @@
       "import": "./lib/PublicUtility/l/index.mjs",
       "require": "./lib/PublicUtility/l/index.js"
     },
+    "./QuestionsAnswers/m": {
+      "types": "./lib/QuestionsAnswers/m/index.d.ts",
+      "import": "./lib/QuestionsAnswers/m/index.mjs",
+      "require": "./lib/QuestionsAnswers/m/index.js"
+    },
+    "./QuestionsAnswers/l": {
+      "types": "./lib/QuestionsAnswers/l/index.d.ts",
+      "import": "./lib/QuestionsAnswers/l/index.mjs",
+      "require": "./lib/QuestionsAnswers/l/index.js"
+    },
     "./PublicSafety/m": {
       "types": "./lib/PublicSafety/m/index.d.ts",
       "import": "./lib/PublicSafety/m/index.mjs",
@@ -1892,16 +1892,6 @@
       "types": "./lib/PublicSafety/l/index.d.ts",
       "import": "./lib/PublicSafety/l/index.mjs",
       "require": "./lib/PublicSafety/l/index.js"
-    },
-    "./Prowly/m": {
-      "types": "./lib/Prowly/m/index.d.ts",
-      "import": "./lib/Prowly/m/index.mjs",
-      "require": "./lib/Prowly/m/index.js"
-    },
-    "./Prowly/l": {
-      "types": "./lib/Prowly/l/index.d.ts",
-      "import": "./lib/Prowly/l/index.mjs",
-      "require": "./lib/Prowly/l/index.js"
     },
     "./Printing/m": {
       "types": "./lib/Printing/m/index.d.ts",
@@ -1923,6 +1913,16 @@
       "import": "./lib/Power/l/index.mjs",
       "require": "./lib/Power/l/index.js"
     },
+    "./Prowly/m": {
+      "types": "./lib/Prowly/m/index.d.ts",
+      "import": "./lib/Prowly/m/index.mjs",
+      "require": "./lib/Prowly/m/index.js"
+    },
+    "./Prowly/l": {
+      "types": "./lib/Prowly/l/index.d.ts",
+      "import": "./lib/Prowly/l/index.mjs",
+      "require": "./lib/Prowly/l/index.js"
+    },
     "./PositionTop/m": {
       "types": "./lib/PositionTop/m/index.d.ts",
       "import": "./lib/PositionTop/m/index.mjs",
@@ -1933,15 +1933,15 @@
       "import": "./lib/PositionTop/l/index.mjs",
       "require": "./lib/PositionTop/l/index.js"
     },
-    "./PositionRight/m": {
-      "types": "./lib/PositionRight/m/index.d.ts",
-      "import": "./lib/PositionRight/m/index.mjs",
-      "require": "./lib/PositionRight/m/index.js"
+    "./PositionMiddle/m": {
+      "types": "./lib/PositionMiddle/m/index.d.ts",
+      "import": "./lib/PositionMiddle/m/index.mjs",
+      "require": "./lib/PositionMiddle/m/index.js"
     },
-    "./PositionRight/l": {
-      "types": "./lib/PositionRight/l/index.d.ts",
-      "import": "./lib/PositionRight/l/index.mjs",
-      "require": "./lib/PositionRight/l/index.js"
+    "./PositionMiddle/l": {
+      "types": "./lib/PositionMiddle/l/index.d.ts",
+      "import": "./lib/PositionMiddle/l/index.mjs",
+      "require": "./lib/PositionMiddle/l/index.js"
     },
     "./PositionLeft/m": {
       "types": "./lib/PositionLeft/m/index.d.ts",
@@ -1953,15 +1953,15 @@
       "import": "./lib/PositionLeft/l/index.mjs",
       "require": "./lib/PositionLeft/l/index.js"
     },
-    "./PositionMiddle/m": {
-      "types": "./lib/PositionMiddle/m/index.d.ts",
-      "import": "./lib/PositionMiddle/m/index.mjs",
-      "require": "./lib/PositionMiddle/m/index.js"
+    "./PositionRight/m": {
+      "types": "./lib/PositionRight/m/index.d.ts",
+      "import": "./lib/PositionRight/m/index.mjs",
+      "require": "./lib/PositionRight/m/index.js"
     },
-    "./PositionMiddle/l": {
-      "types": "./lib/PositionMiddle/l/index.d.ts",
-      "import": "./lib/PositionMiddle/l/index.mjs",
-      "require": "./lib/PositionMiddle/l/index.js"
+    "./PositionRight/l": {
+      "types": "./lib/PositionRight/l/index.d.ts",
+      "import": "./lib/PositionRight/l/index.mjs",
+      "require": "./lib/PositionRight/l/index.js"
     },
     "./PositionBottom/m": {
       "types": "./lib/PositionBottom/m/index.d.ts",
@@ -1993,15 +1993,15 @@
       "import": "./lib/Popup/l/index.mjs",
       "require": "./lib/Popup/l/index.js"
     },
-    "./Plug/m": {
-      "types": "./lib/Plug/m/index.d.ts",
-      "import": "./lib/Plug/m/index.mjs",
-      "require": "./lib/Plug/m/index.js"
+    "./PopularProducts/m": {
+      "types": "./lib/PopularProducts/m/index.d.ts",
+      "import": "./lib/PopularProducts/m/index.mjs",
+      "require": "./lib/PopularProducts/m/index.js"
     },
-    "./Plug/l": {
-      "types": "./lib/Plug/l/index.d.ts",
-      "import": "./lib/Plug/l/index.mjs",
-      "require": "./lib/Plug/l/index.js"
+    "./PopularProducts/l": {
+      "types": "./lib/PopularProducts/l/index.d.ts",
+      "import": "./lib/PopularProducts/l/index.mjs",
+      "require": "./lib/PopularProducts/l/index.js"
     },
     "./PopularStores/m": {
       "types": "./lib/PopularStores/m/index.d.ts",
@@ -2013,15 +2013,15 @@
       "import": "./lib/PopularStores/l/index.mjs",
       "require": "./lib/PopularStores/l/index.js"
     },
-    "./PopularProducts/m": {
-      "types": "./lib/PopularProducts/m/index.d.ts",
-      "import": "./lib/PopularProducts/m/index.mjs",
-      "require": "./lib/PopularProducts/m/index.js"
+    "./Plug/m": {
+      "types": "./lib/Plug/m/index.d.ts",
+      "import": "./lib/Plug/m/index.mjs",
+      "require": "./lib/Plug/m/index.js"
     },
-    "./PopularProducts/l": {
-      "types": "./lib/PopularProducts/l/index.d.ts",
-      "import": "./lib/PopularProducts/l/index.mjs",
-      "require": "./lib/PopularProducts/l/index.js"
+    "./Plug/l": {
+      "types": "./lib/Plug/l/index.d.ts",
+      "import": "./lib/Plug/l/index.mjs",
+      "require": "./lib/Plug/l/index.js"
     },
     "./Pinterest/m": {
       "types": "./lib/Pinterest/m/index.d.ts",
@@ -2043,15 +2043,15 @@
       "import": "./lib/Pins/l/index.mjs",
       "require": "./lib/Pins/l/index.js"
     },
-    "./PinNo/m": {
-      "types": "./lib/PinNo/m/index.d.ts",
-      "import": "./lib/PinNo/m/index.mjs",
-      "require": "./lib/PinNo/m/index.js"
+    "./PinUsd/m": {
+      "types": "./lib/PinUsd/m/index.d.ts",
+      "import": "./lib/PinUsd/m/index.mjs",
+      "require": "./lib/PinUsd/m/index.js"
     },
-    "./PinNo/l": {
-      "types": "./lib/PinNo/l/index.d.ts",
-      "import": "./lib/PinNo/l/index.mjs",
-      "require": "./lib/PinNo/l/index.js"
+    "./PinUsd/l": {
+      "types": "./lib/PinUsd/l/index.d.ts",
+      "import": "./lib/PinUsd/l/index.mjs",
+      "require": "./lib/PinUsd/l/index.js"
     },
     "./PinMap/m": {
       "types": "./lib/PinMap/m/index.d.ts",
@@ -2063,15 +2063,15 @@
       "import": "./lib/PinMap/l/index.mjs",
       "require": "./lib/PinMap/l/index.js"
     },
-    "./PinUsd/m": {
-      "types": "./lib/PinUsd/m/index.d.ts",
-      "import": "./lib/PinUsd/m/index.mjs",
-      "require": "./lib/PinUsd/m/index.js"
+    "./PinNo/m": {
+      "types": "./lib/PinNo/m/index.d.ts",
+      "import": "./lib/PinNo/m/index.mjs",
+      "require": "./lib/PinNo/m/index.js"
     },
-    "./PinUsd/l": {
-      "types": "./lib/PinUsd/l/index.d.ts",
-      "import": "./lib/PinUsd/l/index.mjs",
-      "require": "./lib/PinUsd/l/index.js"
+    "./PinNo/l": {
+      "types": "./lib/PinNo/l/index.d.ts",
+      "import": "./lib/PinNo/l/index.mjs",
+      "require": "./lib/PinNo/l/index.js"
     },
     "./PinList/m": {
       "types": "./lib/PinList/m/index.d.ts",
@@ -2083,16 +2083,6 @@
       "import": "./lib/PinList/l/index.mjs",
       "require": "./lib/PinList/l/index.js"
     },
-    "./Pin/m": {
-      "types": "./lib/Pin/m/index.d.ts",
-      "import": "./lib/Pin/m/index.mjs",
-      "require": "./lib/Pin/m/index.js"
-    },
-    "./Pin/l": {
-      "types": "./lib/Pin/l/index.d.ts",
-      "import": "./lib/Pin/l/index.mjs",
-      "require": "./lib/Pin/l/index.js"
-    },
     "./Pictures/m": {
       "types": "./lib/Pictures/m/index.d.ts",
       "import": "./lib/Pictures/m/index.mjs",
@@ -2102,16 +2092,6 @@
       "types": "./lib/Pictures/l/index.d.ts",
       "import": "./lib/Pictures/l/index.mjs",
       "require": "./lib/Pictures/l/index.js"
-    },
-    "./PictureAdd/m": {
-      "types": "./lib/PictureAdd/m/index.d.ts",
-      "import": "./lib/PictureAdd/m/index.mjs",
-      "require": "./lib/PictureAdd/m/index.js"
-    },
-    "./PictureAdd/l": {
-      "types": "./lib/PictureAdd/l/index.d.ts",
-      "import": "./lib/PictureAdd/l/index.mjs",
-      "require": "./lib/PictureAdd/l/index.js"
     },
     "./PictureFrame/m": {
       "types": "./lib/PictureFrame/m/index.d.ts",
@@ -2123,25 +2103,15 @@
       "import": "./lib/PictureFrame/l/index.mjs",
       "require": "./lib/PictureFrame/l/index.js"
     },
-    "./Photo/m": {
-      "types": "./lib/Photo/m/index.d.ts",
-      "import": "./lib/Photo/m/index.mjs",
-      "require": "./lib/Photo/m/index.js"
+    "./Pin/m": {
+      "types": "./lib/Pin/m/index.d.ts",
+      "import": "./lib/Pin/m/index.mjs",
+      "require": "./lib/Pin/m/index.js"
     },
-    "./Photo/l": {
-      "types": "./lib/Photo/l/index.d.ts",
-      "import": "./lib/Photo/l/index.mjs",
-      "require": "./lib/Photo/l/index.js"
-    },
-    "./Phone/m": {
-      "types": "./lib/Phone/m/index.d.ts",
-      "import": "./lib/Phone/m/index.mjs",
-      "require": "./lib/Phone/m/index.js"
-    },
-    "./Phone/l": {
-      "types": "./lib/Phone/l/index.d.ts",
-      "import": "./lib/Phone/l/index.mjs",
-      "require": "./lib/Phone/l/index.js"
+    "./Pin/l": {
+      "types": "./lib/Pin/l/index.d.ts",
+      "import": "./lib/Pin/l/index.mjs",
+      "require": "./lib/Pin/l/index.js"
     },
     "./Picture/m": {
       "types": "./lib/Picture/m/index.d.ts",
@@ -2153,6 +2123,26 @@
       "import": "./lib/Picture/l/index.mjs",
       "require": "./lib/Picture/l/index.js"
     },
+    "./Photo/m": {
+      "types": "./lib/Photo/m/index.d.ts",
+      "import": "./lib/Photo/m/index.mjs",
+      "require": "./lib/Photo/m/index.js"
+    },
+    "./Photo/l": {
+      "types": "./lib/Photo/l/index.d.ts",
+      "import": "./lib/Photo/l/index.mjs",
+      "require": "./lib/Photo/l/index.js"
+    },
+    "./PictureAdd/m": {
+      "types": "./lib/PictureAdd/m/index.d.ts",
+      "import": "./lib/PictureAdd/m/index.mjs",
+      "require": "./lib/PictureAdd/m/index.js"
+    },
+    "./PictureAdd/l": {
+      "types": "./lib/PictureAdd/l/index.d.ts",
+      "import": "./lib/PictureAdd/l/index.mjs",
+      "require": "./lib/PictureAdd/l/index.js"
+    },
     "./Perplexity/m": {
       "types": "./lib/Perplexity/m/index.d.ts",
       "import": "./lib/Perplexity/m/index.mjs",
@@ -2162,6 +2152,16 @@
       "types": "./lib/Perplexity/l/index.d.ts",
       "import": "./lib/Perplexity/l/index.mjs",
       "require": "./lib/Perplexity/l/index.js"
+    },
+    "./Phone/m": {
+      "types": "./lib/Phone/m/index.d.ts",
+      "import": "./lib/Phone/m/index.mjs",
+      "require": "./lib/Phone/m/index.js"
+    },
+    "./Phone/l": {
+      "types": "./lib/Phone/l/index.d.ts",
+      "import": "./lib/Phone/l/index.mjs",
+      "require": "./lib/Phone/l/index.js"
     },
     "./Pause/m": {
       "types": "./lib/Pause/m/index.d.ts",
@@ -2173,26 +2173,6 @@
       "import": "./lib/Pause/l/index.mjs",
       "require": "./lib/Pause/l/index.js"
     },
-    "./Packaging/m": {
-      "types": "./lib/Packaging/m/index.d.ts",
-      "import": "./lib/Packaging/m/index.mjs",
-      "require": "./lib/Packaging/m/index.js"
-    },
-    "./Packaging/l": {
-      "types": "./lib/Packaging/l/index.d.ts",
-      "import": "./lib/Packaging/l/index.mjs",
-      "require": "./lib/Packaging/l/index.js"
-    },
-    "./OrientationLandscape/m": {
-      "types": "./lib/OrientationLandscape/m/index.d.ts",
-      "import": "./lib/OrientationLandscape/m/index.mjs",
-      "require": "./lib/OrientationLandscape/m/index.js"
-    },
-    "./OrientationLandscape/l": {
-      "types": "./lib/OrientationLandscape/l/index.d.ts",
-      "import": "./lib/OrientationLandscape/l/index.mjs",
-      "require": "./lib/OrientationLandscape/l/index.js"
-    },
     "./OrientationPortrait/m": {
       "types": "./lib/OrientationPortrait/m/index.d.ts",
       "import": "./lib/OrientationPortrait/m/index.mjs",
@@ -2202,6 +2182,16 @@
       "types": "./lib/OrientationPortrait/l/index.d.ts",
       "import": "./lib/OrientationPortrait/l/index.mjs",
       "require": "./lib/OrientationPortrait/l/index.js"
+    },
+    "./Packaging/m": {
+      "types": "./lib/Packaging/m/index.d.ts",
+      "import": "./lib/Packaging/m/index.mjs",
+      "require": "./lib/Packaging/m/index.js"
+    },
+    "./Packaging/l": {
+      "types": "./lib/Packaging/l/index.d.ts",
+      "import": "./lib/Packaging/l/index.mjs",
+      "require": "./lib/Packaging/l/index.js"
     },
     "./OrganicCarousel/m": {
       "types": "./lib/OrganicCarousel/m/index.d.ts",
@@ -2213,6 +2203,16 @@
       "import": "./lib/OrganicCarousel/l/index.mjs",
       "require": "./lib/OrganicCarousel/l/index.js"
     },
+    "./OrientationLandscape/m": {
+      "types": "./lib/OrientationLandscape/m/index.d.ts",
+      "import": "./lib/OrientationLandscape/m/index.mjs",
+      "require": "./lib/OrientationLandscape/m/index.js"
+    },
+    "./OrientationLandscape/l": {
+      "types": "./lib/OrientationLandscape/l/index.d.ts",
+      "import": "./lib/OrientationLandscape/l/index.mjs",
+      "require": "./lib/OrientationLandscape/l/index.js"
+    },
     "./Organic/m": {
       "types": "./lib/Organic/m/index.d.ts",
       "import": "./lib/Organic/m/index.mjs",
@@ -2222,16 +2222,6 @@
       "types": "./lib/Organic/l/index.d.ts",
       "import": "./lib/Organic/l/index.mjs",
       "require": "./lib/Organic/l/index.js"
-    },
-    "./Opera/m": {
-      "types": "./lib/Opera/m/index.d.ts",
-      "import": "./lib/Opera/m/index.mjs",
-      "require": "./lib/Opera/m/index.js"
-    },
-    "./Opera/l": {
-      "types": "./lib/Opera/l/index.d.ts",
-      "import": "./lib/Opera/l/index.mjs",
-      "require": "./lib/Opera/l/index.js"
     },
     "./NotificationNo/m": {
       "types": "./lib/NotificationNo/m/index.d.ts",
@@ -2253,16 +2243,6 @@
       "import": "./lib/Oil/l/index.mjs",
       "require": "./lib/Oil/l/index.js"
     },
-    "./Note/m": {
-      "types": "./lib/Note/m/index.d.ts",
-      "import": "./lib/Note/m/index.mjs",
-      "require": "./lib/Note/m/index.js"
-    },
-    "./Note/l": {
-      "types": "./lib/Note/l/index.d.ts",
-      "import": "./lib/Note/l/index.mjs",
-      "require": "./lib/Note/l/index.js"
-    },
     "./Notification/m": {
       "types": "./lib/Notification/m/index.d.ts",
       "import": "./lib/Notification/m/index.mjs",
@@ -2273,6 +2253,26 @@
       "import": "./lib/Notification/l/index.mjs",
       "require": "./lib/Notification/l/index.js"
     },
+    "./Opera/m": {
+      "types": "./lib/Opera/m/index.d.ts",
+      "import": "./lib/Opera/m/index.mjs",
+      "require": "./lib/Opera/m/index.js"
+    },
+    "./Opera/l": {
+      "types": "./lib/Opera/l/index.d.ts",
+      "import": "./lib/Opera/l/index.mjs",
+      "require": "./lib/Opera/l/index.js"
+    },
+    "./Note/m": {
+      "types": "./lib/Note/m/index.d.ts",
+      "import": "./lib/Note/m/index.mjs",
+      "require": "./lib/Note/m/index.js"
+    },
+    "./Note/l": {
+      "types": "./lib/Note/l/index.d.ts",
+      "import": "./lib/Note/l/index.mjs",
+      "require": "./lib/Note/l/index.js"
+    },
     "./Music/m": {
       "types": "./lib/Music/m/index.d.ts",
       "import": "./lib/Music/m/index.mjs",
@@ -2282,6 +2282,26 @@
       "types": "./lib/Music/l/index.d.ts",
       "import": "./lib/Music/l/index.mjs",
       "require": "./lib/Music/l/index.js"
+    },
+    "./Monitoring/m": {
+      "types": "./lib/Monitoring/m/index.d.ts",
+      "import": "./lib/Monitoring/m/index.mjs",
+      "require": "./lib/Monitoring/m/index.js"
+    },
+    "./Monitoring/l": {
+      "types": "./lib/Monitoring/l/index.d.ts",
+      "import": "./lib/Monitoring/l/index.mjs",
+      "require": "./lib/Monitoring/l/index.js"
+    },
+    "./MoveAlt/m": {
+      "types": "./lib/MoveAlt/m/index.d.ts",
+      "import": "./lib/MoveAlt/m/index.mjs",
+      "require": "./lib/MoveAlt/m/index.js"
+    },
+    "./MoveAlt/l": {
+      "types": "./lib/MoveAlt/l/index.d.ts",
+      "import": "./lib/MoveAlt/l/index.mjs",
+      "require": "./lib/MoveAlt/l/index.js"
     },
     "./News/m": {
       "types": "./lib/News/m/index.d.ts",
@@ -2303,16 +2323,6 @@
       "import": "./lib/Museum/l/index.mjs",
       "require": "./lib/Museum/l/index.js"
     },
-    "./MoveAlt/m": {
-      "types": "./lib/MoveAlt/m/index.d.ts",
-      "import": "./lib/MoveAlt/m/index.mjs",
-      "require": "./lib/MoveAlt/m/index.js"
-    },
-    "./MoveAlt/l": {
-      "types": "./lib/MoveAlt/l/index.d.ts",
-      "import": "./lib/MoveAlt/l/index.mjs",
-      "require": "./lib/MoveAlt/l/index.js"
-    },
     "./MoneyCoins/m": {
       "types": "./lib/MoneyCoins/m/index.d.ts",
       "import": "./lib/MoneyCoins/m/index.mjs",
@@ -2332,16 +2342,6 @@
       "types": "./lib/Mobile/l/index.d.ts",
       "import": "./lib/Mobile/l/index.mjs",
       "require": "./lib/Mobile/l/index.js"
-    },
-    "./Monitoring/m": {
-      "types": "./lib/Monitoring/m/index.d.ts",
-      "import": "./lib/Monitoring/m/index.mjs",
-      "require": "./lib/Monitoring/m/index.js"
-    },
-    "./Monitoring/l": {
-      "types": "./lib/Monitoring/l/index.d.ts",
-      "import": "./lib/Monitoring/l/index.mjs",
-      "require": "./lib/Monitoring/l/index.js"
     },
     "./Military/m": {
       "types": "./lib/Military/m/index.d.ts",
@@ -2373,6 +2373,16 @@
       "import": "./lib/Megaphone/l/index.mjs",
       "require": "./lib/Megaphone/l/index.js"
     },
+    "./MathMinusAlt/m": {
+      "types": "./lib/MathMinusAlt/m/index.d.ts",
+      "import": "./lib/MathMinusAlt/m/index.mjs",
+      "require": "./lib/MathMinusAlt/m/index.js"
+    },
+    "./MathMinusAlt/l": {
+      "types": "./lib/MathMinusAlt/l/index.d.ts",
+      "import": "./lib/MathMinusAlt/l/index.mjs",
+      "require": "./lib/MathMinusAlt/l/index.js"
+    },
     "./MathPlus/m": {
       "types": "./lib/MathPlus/m/index.d.ts",
       "import": "./lib/MathPlus/m/index.mjs",
@@ -2392,16 +2402,6 @@
       "types": "./lib/MathPlusAlt/l/index.d.ts",
       "import": "./lib/MathPlusAlt/l/index.mjs",
       "require": "./lib/MathPlusAlt/l/index.js"
-    },
-    "./MathMinusAlt/m": {
-      "types": "./lib/MathMinusAlt/m/index.d.ts",
-      "import": "./lib/MathMinusAlt/m/index.mjs",
-      "require": "./lib/MathMinusAlt/m/index.js"
-    },
-    "./MathMinusAlt/l": {
-      "types": "./lib/MathMinusAlt/l/index.d.ts",
-      "import": "./lib/MathMinusAlt/l/index.mjs",
-      "require": "./lib/MathMinusAlt/l/index.js"
     },
     "./Medkit/m": {
       "types": "./lib/Medkit/m/index.d.ts",
@@ -2423,6 +2423,16 @@
       "import": "./lib/MathMinus/l/index.mjs",
       "require": "./lib/MathMinus/l/index.js"
     },
+    "./Marine/m": {
+      "types": "./lib/Marine/m/index.d.ts",
+      "import": "./lib/Marine/m/index.mjs",
+      "require": "./lib/Marine/m/index.js"
+    },
+    "./Marine/l": {
+      "types": "./lib/Marine/l/index.d.ts",
+      "import": "./lib/Marine/l/index.mjs",
+      "require": "./lib/Marine/l/index.js"
+    },
     "./MailOpenFilled/m": {
       "types": "./lib/MailOpenFilled/m/index.d.ts",
       "import": "./lib/MailOpenFilled/m/index.mjs",
@@ -2443,15 +2453,15 @@
       "import": "./lib/MailFilled/l/index.mjs",
       "require": "./lib/MailFilled/l/index.js"
     },
-    "./Marine/m": {
-      "types": "./lib/Marine/m/index.d.ts",
-      "import": "./lib/Marine/m/index.mjs",
-      "require": "./lib/Marine/m/index.js"
+    "./Mail/m": {
+      "types": "./lib/Mail/m/index.d.ts",
+      "import": "./lib/Mail/m/index.mjs",
+      "require": "./lib/Mail/m/index.js"
     },
-    "./Marine/l": {
-      "types": "./lib/Marine/l/index.d.ts",
-      "import": "./lib/Marine/l/index.mjs",
-      "require": "./lib/Marine/l/index.js"
+    "./Mail/l": {
+      "types": "./lib/Mail/l/index.d.ts",
+      "import": "./lib/Mail/l/index.mjs",
+      "require": "./lib/Mail/l/index.js"
     },
     "./MailOpen/m": {
       "types": "./lib/MailOpen/m/index.d.ts",
@@ -2463,15 +2473,15 @@
       "import": "./lib/MailOpen/l/index.mjs",
       "require": "./lib/MailOpen/l/index.js"
     },
-    "./Mail/m": {
-      "types": "./lib/Mail/m/index.d.ts",
-      "import": "./lib/Mail/m/index.mjs",
-      "require": "./lib/Mail/m/index.js"
+    "./MagicWand/m": {
+      "types": "./lib/MagicWand/m/index.d.ts",
+      "import": "./lib/MagicWand/m/index.mjs",
+      "require": "./lib/MagicWand/m/index.js"
     },
-    "./Mail/l": {
-      "types": "./lib/Mail/l/index.d.ts",
-      "import": "./lib/Mail/l/index.mjs",
-      "require": "./lib/Mail/l/index.js"
+    "./MagicWand/l": {
+      "types": "./lib/MagicWand/l/index.d.ts",
+      "import": "./lib/MagicWand/l/index.mjs",
+      "require": "./lib/MagicWand/l/index.js"
     },
     "./Magnet/m": {
       "types": "./lib/Magnet/m/index.d.ts",
@@ -2483,16 +2493,6 @@
       "import": "./lib/Magnet/l/index.mjs",
       "require": "./lib/Magnet/l/index.js"
     },
-    "./MagicWand/m": {
-      "types": "./lib/MagicWand/m/index.d.ts",
-      "import": "./lib/MagicWand/m/index.mjs",
-      "require": "./lib/MagicWand/m/index.js"
-    },
-    "./MagicWand/l": {
-      "types": "./lib/MagicWand/l/index.d.ts",
-      "import": "./lib/MagicWand/l/index.mjs",
-      "require": "./lib/MagicWand/l/index.js"
-    },
     "./Logistic/m": {
       "types": "./lib/Logistic/m/index.d.ts",
       "import": "./lib/Logistic/m/index.mjs",
@@ -2502,16 +2502,6 @@
       "types": "./lib/Logistic/l/index.d.ts",
       "import": "./lib/Logistic/l/index.mjs",
       "require": "./lib/Logistic/l/index.js"
-    },
-    "./LockNo/m": {
-      "types": "./lib/LockNo/m/index.d.ts",
-      "import": "./lib/LockNo/m/index.mjs",
-      "require": "./lib/LockNo/m/index.js"
-    },
-    "./LockNo/l": {
-      "types": "./lib/LockNo/l/index.d.ts",
-      "import": "./lib/LockNo/l/index.mjs",
-      "require": "./lib/LockNo/l/index.js"
     },
     "./LockYes/m": {
       "types": "./lib/LockYes/m/index.d.ts",
@@ -2543,6 +2533,16 @@
       "import": "./lib/ListCheck/l/index.mjs",
       "require": "./lib/ListCheck/l/index.js"
     },
+    "./LockNo/m": {
+      "types": "./lib/LockNo/m/index.d.ts",
+      "import": "./lib/LockNo/m/index.mjs",
+      "require": "./lib/LockNo/m/index.js"
+    },
+    "./LockNo/l": {
+      "types": "./lib/LockNo/l/index.d.ts",
+      "import": "./lib/LockNo/l/index.mjs",
+      "require": "./lib/LockNo/l/index.js"
+    },
     "./ListBullet/m": {
       "types": "./lib/ListBullet/m/index.d.ts",
       "import": "./lib/ListBullet/m/index.mjs",
@@ -2552,36 +2552,6 @@
       "types": "./lib/ListBullet/l/index.d.ts",
       "import": "./lib/ListBullet/l/index.mjs",
       "require": "./lib/ListBullet/l/index.js"
-    },
-    "./ListAddTop/m": {
-      "types": "./lib/ListAddTop/m/index.d.ts",
-      "import": "./lib/ListAddTop/m/index.mjs",
-      "require": "./lib/ListAddTop/m/index.js"
-    },
-    "./ListAddTop/l": {
-      "types": "./lib/ListAddTop/l/index.d.ts",
-      "import": "./lib/ListAddTop/l/index.mjs",
-      "require": "./lib/ListAddTop/l/index.js"
-    },
-    "./ListAddCheck/m": {
-      "types": "./lib/ListAddCheck/m/index.d.ts",
-      "import": "./lib/ListAddCheck/m/index.mjs",
-      "require": "./lib/ListAddCheck/m/index.js"
-    },
-    "./ListAddCheck/l": {
-      "types": "./lib/ListAddCheck/l/index.d.ts",
-      "import": "./lib/ListAddCheck/l/index.mjs",
-      "require": "./lib/ListAddCheck/l/index.js"
-    },
-    "./LinkInternal/m": {
-      "types": "./lib/LinkInternal/m/index.d.ts",
-      "import": "./lib/LinkInternal/m/index.mjs",
-      "require": "./lib/LinkInternal/m/index.js"
-    },
-    "./LinkInternal/l": {
-      "types": "./lib/LinkInternal/l/index.d.ts",
-      "import": "./lib/LinkInternal/l/index.mjs",
-      "require": "./lib/LinkInternal/l/index.js"
     },
     "./ListAddBottom/m": {
       "types": "./lib/ListAddBottom/m/index.d.ts",
@@ -2593,6 +2563,16 @@
       "import": "./lib/ListAddBottom/l/index.mjs",
       "require": "./lib/ListAddBottom/l/index.js"
     },
+    "./ListAddTop/m": {
+      "types": "./lib/ListAddTop/m/index.d.ts",
+      "import": "./lib/ListAddTop/m/index.mjs",
+      "require": "./lib/ListAddTop/m/index.js"
+    },
+    "./ListAddTop/l": {
+      "types": "./lib/ListAddTop/l/index.d.ts",
+      "import": "./lib/ListAddTop/l/index.mjs",
+      "require": "./lib/ListAddTop/l/index.js"
+    },
     "./LinkedIn/m": {
       "types": "./lib/LinkedIn/m/index.d.ts",
       "import": "./lib/LinkedIn/m/index.mjs",
@@ -2602,6 +2582,16 @@
       "types": "./lib/LinkedIn/l/index.d.ts",
       "import": "./lib/LinkedIn/l/index.mjs",
       "require": "./lib/LinkedIn/l/index.js"
+    },
+    "./ListAddCheck/m": {
+      "types": "./lib/ListAddCheck/m/index.d.ts",
+      "import": "./lib/ListAddCheck/m/index.mjs",
+      "require": "./lib/ListAddCheck/m/index.js"
+    },
+    "./ListAddCheck/l": {
+      "types": "./lib/ListAddCheck/l/index.d.ts",
+      "import": "./lib/ListAddCheck/l/index.mjs",
+      "require": "./lib/ListAddCheck/l/index.js"
     },
     "./LinkExternalAlt/m": {
       "types": "./lib/LinkExternalAlt/m/index.d.ts",
@@ -2613,15 +2603,15 @@
       "import": "./lib/LinkExternalAlt/l/index.mjs",
       "require": "./lib/LinkExternalAlt/l/index.js"
     },
-    "./LinkAltHalf/m": {
-      "types": "./lib/LinkAltHalf/m/index.d.ts",
-      "import": "./lib/LinkAltHalf/m/index.mjs",
-      "require": "./lib/LinkAltHalf/m/index.js"
+    "./LinkInternal/m": {
+      "types": "./lib/LinkInternal/m/index.d.ts",
+      "import": "./lib/LinkInternal/m/index.mjs",
+      "require": "./lib/LinkInternal/m/index.js"
     },
-    "./LinkAltHalf/l": {
-      "types": "./lib/LinkAltHalf/l/index.d.ts",
-      "import": "./lib/LinkAltHalf/l/index.mjs",
-      "require": "./lib/LinkAltHalf/l/index.js"
+    "./LinkInternal/l": {
+      "types": "./lib/LinkInternal/l/index.d.ts",
+      "import": "./lib/LinkInternal/l/index.mjs",
+      "require": "./lib/LinkInternal/l/index.js"
     },
     "./LinkExternal/m": {
       "types": "./lib/LinkExternal/m/index.d.ts",
@@ -2633,15 +2623,15 @@
       "import": "./lib/LinkExternal/l/index.mjs",
       "require": "./lib/LinkExternal/l/index.js"
     },
-    "./Link/m": {
-      "types": "./lib/Link/m/index.d.ts",
-      "import": "./lib/Link/m/index.mjs",
-      "require": "./lib/Link/m/index.js"
+    "./LinkAltHalf/m": {
+      "types": "./lib/LinkAltHalf/m/index.d.ts",
+      "import": "./lib/LinkAltHalf/m/index.mjs",
+      "require": "./lib/LinkAltHalf/m/index.js"
     },
-    "./Link/l": {
-      "types": "./lib/Link/l/index.d.ts",
-      "import": "./lib/Link/l/index.mjs",
-      "require": "./lib/Link/l/index.js"
+    "./LinkAltHalf/l": {
+      "types": "./lib/LinkAltHalf/l/index.d.ts",
+      "import": "./lib/LinkAltHalf/l/index.mjs",
+      "require": "./lib/LinkAltHalf/l/index.js"
     },
     "./LinkAltBroken/m": {
       "types": "./lib/LinkAltBroken/m/index.d.ts",
@@ -2653,6 +2643,16 @@
       "import": "./lib/LinkAltBroken/l/index.mjs",
       "require": "./lib/LinkAltBroken/l/index.js"
     },
+    "./Link/m": {
+      "types": "./lib/Link/m/index.d.ts",
+      "import": "./lib/Link/m/index.mjs",
+      "require": "./lib/Link/m/index.js"
+    },
+    "./Link/l": {
+      "types": "./lib/Link/l/index.d.ts",
+      "import": "./lib/Link/l/index.mjs",
+      "require": "./lib/Link/l/index.js"
+    },
     "./LikeFilled/m": {
       "types": "./lib/LikeFilled/m/index.d.ts",
       "import": "./lib/LikeFilled/m/index.mjs",
@@ -2662,16 +2662,6 @@
       "types": "./lib/LikeFilled/l/index.d.ts",
       "import": "./lib/LikeFilled/l/index.mjs",
       "require": "./lib/LikeFilled/l/index.js"
-    },
-    "./LightningFilled/m": {
-      "types": "./lib/LightningFilled/m/index.d.ts",
-      "import": "./lib/LightningFilled/m/index.mjs",
-      "require": "./lib/LightningFilled/m/index.js"
-    },
-    "./LightningFilled/l": {
-      "types": "./lib/LightningFilled/l/index.d.ts",
-      "import": "./lib/LightningFilled/l/index.mjs",
-      "require": "./lib/LightningFilled/l/index.js"
     },
     "./Lightning/m": {
       "types": "./lib/Lightning/m/index.d.ts",
@@ -2693,16 +2683,6 @@
       "import": "./lib/Like/l/index.mjs",
       "require": "./lib/Like/l/index.js"
     },
-    "./Language/m": {
-      "types": "./lib/Language/m/index.d.ts",
-      "import": "./lib/Language/m/index.mjs",
-      "require": "./lib/Language/m/index.js"
-    },
-    "./Language/l": {
-      "types": "./lib/Language/l/index.d.ts",
-      "import": "./lib/Language/l/index.mjs",
-      "require": "./lib/Language/l/index.js"
-    },
     "./Laptop/m": {
       "types": "./lib/Laptop/m/index.d.ts",
       "import": "./lib/Laptop/m/index.mjs",
@@ -2723,6 +2703,26 @@
       "import": "./lib/Law/l/index.mjs",
       "require": "./lib/Law/l/index.js"
     },
+    "./LightningFilled/m": {
+      "types": "./lib/LightningFilled/m/index.d.ts",
+      "import": "./lib/LightningFilled/m/index.mjs",
+      "require": "./lib/LightningFilled/m/index.js"
+    },
+    "./LightningFilled/l": {
+      "types": "./lib/LightningFilled/l/index.d.ts",
+      "import": "./lib/LightningFilled/l/index.mjs",
+      "require": "./lib/LightningFilled/l/index.js"
+    },
+    "./Language/m": {
+      "types": "./lib/Language/m/index.d.ts",
+      "import": "./lib/Language/m/index.mjs",
+      "require": "./lib/Language/m/index.js"
+    },
+    "./Language/l": {
+      "types": "./lib/Language/l/index.d.ts",
+      "import": "./lib/Language/l/index.mjs",
+      "require": "./lib/Language/l/index.js"
+    },
     "./KeyHotkey/m": {
       "types": "./lib/KeyHotkey/m/index.d.ts",
       "import": "./lib/KeyHotkey/m/index.mjs",
@@ -2732,16 +2732,6 @@
       "types": "./lib/KeyHotkey/l/index.d.ts",
       "import": "./lib/KeyHotkey/l/index.mjs",
       "require": "./lib/KeyHotkey/l/index.js"
-    },
-    "./Key/m": {
-      "types": "./lib/Key/m/index.d.ts",
-      "import": "./lib/Key/m/index.mjs",
-      "require": "./lib/Key/m/index.js"
-    },
-    "./Key/l": {
-      "types": "./lib/Key/l/index.d.ts",
-      "import": "./lib/Key/l/index.mjs",
-      "require": "./lib/Key/l/index.js"
     },
     "./KeyCmd/m": {
       "types": "./lib/KeyCmd/m/index.d.ts",
@@ -2773,6 +2763,16 @@
       "import": "./lib/InterestingFinds/l/index.mjs",
       "require": "./lib/InterestingFinds/l/index.js"
     },
+    "./Jewelry/m": {
+      "types": "./lib/Jewelry/m/index.d.ts",
+      "import": "./lib/Jewelry/m/index.mjs",
+      "require": "./lib/Jewelry/m/index.js"
+    },
+    "./Jewelry/l": {
+      "types": "./lib/Jewelry/l/index.d.ts",
+      "import": "./lib/Jewelry/l/index.mjs",
+      "require": "./lib/Jewelry/l/index.js"
+    },
     "./Instagram/m": {
       "types": "./lib/Instagram/m/index.d.ts",
       "import": "./lib/Instagram/m/index.mjs",
@@ -2783,15 +2783,15 @@
       "import": "./lib/Instagram/l/index.mjs",
       "require": "./lib/Instagram/l/index.js"
     },
-    "./Jewelry/m": {
-      "types": "./lib/Jewelry/m/index.d.ts",
-      "import": "./lib/Jewelry/m/index.mjs",
-      "require": "./lib/Jewelry/m/index.js"
+    "./Key/m": {
+      "types": "./lib/Key/m/index.d.ts",
+      "import": "./lib/Key/m/index.mjs",
+      "require": "./lib/Key/m/index.js"
     },
-    "./Jewelry/l": {
-      "types": "./lib/Jewelry/l/index.d.ts",
-      "import": "./lib/Jewelry/l/index.mjs",
-      "require": "./lib/Jewelry/l/index.js"
+    "./Key/l": {
+      "types": "./lib/Key/l/index.d.ts",
+      "import": "./lib/Key/l/index.mjs",
+      "require": "./lib/Key/l/index.js"
     },
     "./Info/m": {
       "types": "./lib/Info/m/index.d.ts",
@@ -2813,16 +2813,6 @@
       "import": "./lib/IndentedResult/l/index.mjs",
       "require": "./lib/IndentedResult/l/index.js"
     },
-    "./Hourglass/m": {
-      "types": "./lib/Hourglass/m/index.d.ts",
-      "import": "./lib/Hourglass/m/index.mjs",
-      "require": "./lib/Hourglass/m/index.js"
-    },
-    "./Hourglass/l": {
-      "types": "./lib/Hourglass/l/index.d.ts",
-      "import": "./lib/Hourglass/l/index.mjs",
-      "require": "./lib/Hourglass/l/index.js"
-    },
     "./Hotel/m": {
       "types": "./lib/Hotel/m/index.d.ts",
       "import": "./lib/Hotel/m/index.mjs",
@@ -2832,6 +2822,16 @@
       "types": "./lib/Hotel/l/index.d.ts",
       "import": "./lib/Hotel/l/index.mjs",
       "require": "./lib/Hotel/l/index.js"
+    },
+    "./Hourglass/m": {
+      "types": "./lib/Hourglass/m/index.d.ts",
+      "import": "./lib/Hourglass/m/index.mjs",
+      "require": "./lib/Hourglass/m/index.js"
+    },
+    "./Hourglass/l": {
+      "types": "./lib/Hourglass/l/index.d.ts",
+      "import": "./lib/Hourglass/l/index.mjs",
+      "require": "./lib/Hourglass/l/index.js"
     },
     "./Infinity/m": {
       "types": "./lib/Infinity/m/index.d.ts",
@@ -2863,16 +2863,6 @@
       "import": "./lib/Health/l/index.mjs",
       "require": "./lib/Health/l/index.js"
     },
-    "./GoogleGenerativeAI/m": {
-      "types": "./lib/GoogleGenerativeAI/m/index.d.ts",
-      "import": "./lib/GoogleGenerativeAI/m/index.mjs",
-      "require": "./lib/GoogleGenerativeAI/m/index.js"
-    },
-    "./GoogleGenerativeAI/l": {
-      "types": "./lib/GoogleGenerativeAI/l/index.d.ts",
-      "import": "./lib/GoogleGenerativeAI/l/index.mjs",
-      "require": "./lib/GoogleGenerativeAI/l/index.js"
-    },
     "./Hashtag/m": {
       "types": "./lib/Hashtag/m/index.d.ts",
       "import": "./lib/Hashtag/m/index.mjs",
@@ -2893,6 +2883,16 @@
       "import": "./lib/Hamburger/l/index.mjs",
       "require": "./lib/Hamburger/l/index.js"
     },
+    "./GoogleGenerativeAI/m": {
+      "types": "./lib/GoogleGenerativeAI/m/index.d.ts",
+      "import": "./lib/GoogleGenerativeAI/m/index.mjs",
+      "require": "./lib/GoogleGenerativeAI/m/index.js"
+    },
+    "./GoogleGenerativeAI/l": {
+      "types": "./lib/GoogleGenerativeAI/l/index.d.ts",
+      "import": "./lib/GoogleGenerativeAI/l/index.mjs",
+      "require": "./lib/GoogleGenerativeAI/l/index.js"
+    },
     "./Google/m": {
       "types": "./lib/Google/m/index.d.ts",
       "import": "./lib/Google/m/index.mjs",
@@ -2902,16 +2902,6 @@
       "types": "./lib/Google/l/index.d.ts",
       "import": "./lib/Google/l/index.mjs",
       "require": "./lib/Google/l/index.js"
-    },
-    "./Goblet/m": {
-      "types": "./lib/Goblet/m/index.d.ts",
-      "import": "./lib/Goblet/m/index.mjs",
-      "require": "./lib/Goblet/m/index.js"
-    },
-    "./Goblet/l": {
-      "types": "./lib/Goblet/l/index.d.ts",
-      "import": "./lib/Goblet/l/index.mjs",
-      "require": "./lib/Goblet/l/index.js"
     },
     "./Globe/m": {
       "types": "./lib/Globe/m/index.d.ts",
@@ -2923,16 +2913,6 @@
       "import": "./lib/Globe/l/index.mjs",
       "require": "./lib/Globe/l/index.js"
     },
-    "./GoogleBusinessProfile/m": {
-      "types": "./lib/GoogleBusinessProfile/m/index.d.ts",
-      "import": "./lib/GoogleBusinessProfile/m/index.mjs",
-      "require": "./lib/GoogleBusinessProfile/m/index.js"
-    },
-    "./GoogleBusinessProfile/l": {
-      "types": "./lib/GoogleBusinessProfile/l/index.d.ts",
-      "import": "./lib/GoogleBusinessProfile/l/index.mjs",
-      "require": "./lib/GoogleBusinessProfile/l/index.js"
-    },
     "./Gift/m": {
       "types": "./lib/Gift/m/index.d.ts",
       "import": "./lib/Gift/m/index.mjs",
@@ -2943,15 +2923,15 @@
       "import": "./lib/Gift/l/index.mjs",
       "require": "./lib/Gift/l/index.js"
     },
-    "./GenderFemale/m": {
-      "types": "./lib/GenderFemale/m/index.d.ts",
-      "import": "./lib/GenderFemale/m/index.mjs",
-      "require": "./lib/GenderFemale/m/index.js"
+    "./Goblet/m": {
+      "types": "./lib/Goblet/m/index.d.ts",
+      "import": "./lib/Goblet/m/index.mjs",
+      "require": "./lib/Goblet/m/index.js"
     },
-    "./GenderFemale/l": {
-      "types": "./lib/GenderFemale/l/index.d.ts",
-      "import": "./lib/GenderFemale/l/index.mjs",
-      "require": "./lib/GenderFemale/l/index.js"
+    "./Goblet/l": {
+      "types": "./lib/Goblet/l/index.d.ts",
+      "import": "./lib/Goblet/l/index.mjs",
+      "require": "./lib/Goblet/l/index.js"
     },
     "./GenderMale/m": {
       "types": "./lib/GenderMale/m/index.d.ts",
@@ -2963,25 +2943,25 @@
       "import": "./lib/GenderMale/l/index.mjs",
       "require": "./lib/GenderMale/l/index.js"
     },
-    "./Furniture/m": {
-      "types": "./lib/Furniture/m/index.d.ts",
-      "import": "./lib/Furniture/m/index.mjs",
-      "require": "./lib/Furniture/m/index.js"
+    "./GoogleBusinessProfile/m": {
+      "types": "./lib/GoogleBusinessProfile/m/index.d.ts",
+      "import": "./lib/GoogleBusinessProfile/m/index.mjs",
+      "require": "./lib/GoogleBusinessProfile/m/index.js"
     },
-    "./Furniture/l": {
-      "types": "./lib/Furniture/l/index.d.ts",
-      "import": "./lib/Furniture/l/index.mjs",
-      "require": "./lib/Furniture/l/index.js"
+    "./GoogleBusinessProfile/l": {
+      "types": "./lib/GoogleBusinessProfile/l/index.d.ts",
+      "import": "./lib/GoogleBusinessProfile/l/index.mjs",
+      "require": "./lib/GoogleBusinessProfile/l/index.js"
     },
-    "./Gambling/m": {
-      "types": "./lib/Gambling/m/index.d.ts",
-      "import": "./lib/Gambling/m/index.mjs",
-      "require": "./lib/Gambling/m/index.js"
+    "./GenderFemale/m": {
+      "types": "./lib/GenderFemale/m/index.d.ts",
+      "import": "./lib/GenderFemale/m/index.mjs",
+      "require": "./lib/GenderFemale/m/index.js"
     },
-    "./Gambling/l": {
-      "types": "./lib/Gambling/l/index.d.ts",
-      "import": "./lib/Gambling/l/index.mjs",
-      "require": "./lib/Gambling/l/index.js"
+    "./GenderFemale/l": {
+      "types": "./lib/GenderFemale/l/index.d.ts",
+      "import": "./lib/GenderFemale/l/index.mjs",
+      "require": "./lib/GenderFemale/l/index.js"
     },
     "./Games/m": {
       "types": "./lib/Games/m/index.d.ts",
@@ -2993,15 +2973,15 @@
       "import": "./lib/Games/l/index.mjs",
       "require": "./lib/Games/l/index.js"
     },
-    "./Foursquare/m": {
-      "types": "./lib/Foursquare/m/index.d.ts",
-      "import": "./lib/Foursquare/m/index.mjs",
-      "require": "./lib/Foursquare/m/index.js"
+    "./Furniture/m": {
+      "types": "./lib/Furniture/m/index.d.ts",
+      "import": "./lib/Furniture/m/index.mjs",
+      "require": "./lib/Furniture/m/index.js"
     },
-    "./Foursquare/l": {
-      "types": "./lib/Foursquare/l/index.d.ts",
-      "import": "./lib/Foursquare/l/index.mjs",
-      "require": "./lib/Foursquare/l/index.js"
+    "./Furniture/l": {
+      "types": "./lib/Furniture/l/index.d.ts",
+      "import": "./lib/Furniture/l/index.mjs",
+      "require": "./lib/Furniture/l/index.js"
     },
     "./Funnel/m": {
       "types": "./lib/Funnel/m/index.d.ts",
@@ -3012,6 +2992,36 @@
       "types": "./lib/Funnel/l/index.d.ts",
       "import": "./lib/Funnel/l/index.mjs",
       "require": "./lib/Funnel/l/index.js"
+    },
+    "./Gambling/m": {
+      "types": "./lib/Gambling/m/index.d.ts",
+      "import": "./lib/Gambling/m/index.mjs",
+      "require": "./lib/Gambling/m/index.js"
+    },
+    "./Gambling/l": {
+      "types": "./lib/Gambling/l/index.d.ts",
+      "import": "./lib/Gambling/l/index.mjs",
+      "require": "./lib/Gambling/l/index.js"
+    },
+    "./Foursquare/m": {
+      "types": "./lib/Foursquare/m/index.d.ts",
+      "import": "./lib/Foursquare/m/index.mjs",
+      "require": "./lib/Foursquare/m/index.js"
+    },
+    "./Foursquare/l": {
+      "types": "./lib/Foursquare/l/index.d.ts",
+      "import": "./lib/Foursquare/l/index.mjs",
+      "require": "./lib/Foursquare/l/index.js"
+    },
+    "./FormatAlignRight/m": {
+      "types": "./lib/FormatAlignRight/m/index.d.ts",
+      "import": "./lib/FormatAlignRight/m/index.mjs",
+      "require": "./lib/FormatAlignRight/m/index.js"
+    },
+    "./FormatAlignRight/l": {
+      "types": "./lib/FormatAlignRight/l/index.d.ts",
+      "import": "./lib/FormatAlignRight/l/index.mjs",
+      "require": "./lib/FormatAlignRight/l/index.js"
     },
     "./FormatAlignLeft/m": {
       "types": "./lib/FormatAlignLeft/m/index.d.ts",
@@ -3033,26 +3043,6 @@
       "import": "./lib/FormatAlignJustify/l/index.mjs",
       "require": "./lib/FormatAlignJustify/l/index.js"
     },
-    "./FormatAlignRight/m": {
-      "types": "./lib/FormatAlignRight/m/index.d.ts",
-      "import": "./lib/FormatAlignRight/m/index.mjs",
-      "require": "./lib/FormatAlignRight/m/index.js"
-    },
-    "./FormatAlignRight/l": {
-      "types": "./lib/FormatAlignRight/l/index.d.ts",
-      "import": "./lib/FormatAlignRight/l/index.mjs",
-      "require": "./lib/FormatAlignRight/l/index.js"
-    },
-    "./Formal/m": {
-      "types": "./lib/Formal/m/index.d.ts",
-      "import": "./lib/Formal/m/index.mjs",
-      "require": "./lib/Formal/m/index.js"
-    },
-    "./Formal/l": {
-      "types": "./lib/Formal/l/index.d.ts",
-      "import": "./lib/Formal/l/index.mjs",
-      "require": "./lib/Formal/l/index.js"
-    },
     "./Form/m": {
       "types": "./lib/Form/m/index.d.ts",
       "import": "./lib/Form/m/index.mjs",
@@ -3073,25 +3063,15 @@
       "import": "./lib/FormatAlignCenter/l/index.mjs",
       "require": "./lib/FormatAlignCenter/l/index.js"
     },
-    "./FolderOpen/m": {
-      "types": "./lib/FolderOpen/m/index.d.ts",
-      "import": "./lib/FolderOpen/m/index.mjs",
-      "require": "./lib/FolderOpen/m/index.js"
+    "./Formal/m": {
+      "types": "./lib/Formal/m/index.d.ts",
+      "import": "./lib/Formal/m/index.mjs",
+      "require": "./lib/Formal/m/index.js"
     },
-    "./FolderOpen/l": {
-      "types": "./lib/FolderOpen/l/index.d.ts",
-      "import": "./lib/FolderOpen/l/index.mjs",
-      "require": "./lib/FolderOpen/l/index.js"
-    },
-    "./FolderOpenFilled/m": {
-      "types": "./lib/FolderOpenFilled/m/index.d.ts",
-      "import": "./lib/FolderOpenFilled/m/index.mjs",
-      "require": "./lib/FolderOpenFilled/m/index.js"
-    },
-    "./FolderOpenFilled/l": {
-      "types": "./lib/FolderOpenFilled/l/index.d.ts",
-      "import": "./lib/FolderOpenFilled/l/index.mjs",
-      "require": "./lib/FolderOpenFilled/l/index.js"
+    "./Formal/l": {
+      "types": "./lib/Formal/l/index.d.ts",
+      "import": "./lib/Formal/l/index.mjs",
+      "require": "./lib/Formal/l/index.js"
     },
     "./Food/m": {
       "types": "./lib/Food/m/index.d.ts",
@@ -3103,6 +3083,16 @@
       "import": "./lib/Food/l/index.mjs",
       "require": "./lib/Food/l/index.js"
     },
+    "./FolderOpenFilled/m": {
+      "types": "./lib/FolderOpenFilled/m/index.d.ts",
+      "import": "./lib/FolderOpenFilled/m/index.mjs",
+      "require": "./lib/FolderOpenFilled/m/index.js"
+    },
+    "./FolderOpenFilled/l": {
+      "types": "./lib/FolderOpenFilled/l/index.d.ts",
+      "import": "./lib/FolderOpenFilled/l/index.mjs",
+      "require": "./lib/FolderOpenFilled/l/index.js"
+    },
     "./FolderFilled/m": {
       "types": "./lib/FolderFilled/m/index.d.ts",
       "import": "./lib/FolderFilled/m/index.mjs",
@@ -3112,6 +3102,16 @@
       "types": "./lib/FolderFilled/l/index.d.ts",
       "import": "./lib/FolderFilled/l/index.mjs",
       "require": "./lib/FolderFilled/l/index.js"
+    },
+    "./FolderOpen/m": {
+      "types": "./lib/FolderOpen/m/index.d.ts",
+      "import": "./lib/FolderOpen/m/index.mjs",
+      "require": "./lib/FolderOpen/m/index.js"
+    },
+    "./FolderOpen/l": {
+      "types": "./lib/FolderOpen/l/index.d.ts",
+      "import": "./lib/FolderOpen/l/index.mjs",
+      "require": "./lib/FolderOpen/l/index.js"
     },
     "./Fish/m": {
       "types": "./lib/Fish/m/index.d.ts",
@@ -3123,16 +3123,6 @@
       "import": "./lib/Fish/l/index.mjs",
       "require": "./lib/Fish/l/index.js"
     },
-    "./Folder/m": {
-      "types": "./lib/Folder/m/index.d.ts",
-      "import": "./lib/Folder/m/index.mjs",
-      "require": "./lib/Folder/m/index.js"
-    },
-    "./Folder/l": {
-      "types": "./lib/Folder/l/index.d.ts",
-      "import": "./lib/Folder/l/index.mjs",
-      "require": "./lib/Folder/l/index.js"
-    },
     "./Fire/m": {
       "types": "./lib/Fire/m/index.d.ts",
       "import": "./lib/Fire/m/index.mjs",
@@ -3142,16 +3132,6 @@
       "types": "./lib/Fire/l/index.d.ts",
       "import": "./lib/Fire/l/index.mjs",
       "require": "./lib/Fire/l/index.js"
-    },
-    "./Firefox/m": {
-      "types": "./lib/Firefox/m/index.d.ts",
-      "import": "./lib/Firefox/m/index.mjs",
-      "require": "./lib/Firefox/m/index.js"
-    },
-    "./Firefox/l": {
-      "types": "./lib/Firefox/l/index.d.ts",
-      "import": "./lib/Firefox/l/index.mjs",
-      "require": "./lib/Firefox/l/index.js"
     },
     "./FindResultsOn/m": {
       "types": "./lib/FindResultsOn/m/index.d.ts",
@@ -3163,6 +3143,26 @@
       "import": "./lib/FindResultsOn/l/index.mjs",
       "require": "./lib/FindResultsOn/l/index.js"
     },
+    "./Folder/m": {
+      "types": "./lib/Folder/m/index.d.ts",
+      "import": "./lib/Folder/m/index.mjs",
+      "require": "./lib/Folder/m/index.js"
+    },
+    "./Folder/l": {
+      "types": "./lib/Folder/l/index.d.ts",
+      "import": "./lib/Folder/l/index.mjs",
+      "require": "./lib/Folder/l/index.js"
+    },
+    "./Firefox/m": {
+      "types": "./lib/Firefox/m/index.d.ts",
+      "import": "./lib/Firefox/m/index.mjs",
+      "require": "./lib/Firefox/m/index.js"
+    },
+    "./Firefox/l": {
+      "types": "./lib/Firefox/l/index.d.ts",
+      "import": "./lib/Firefox/l/index.mjs",
+      "require": "./lib/Firefox/l/index.js"
+    },
     "./Filter/m": {
       "types": "./lib/Filter/m/index.d.ts",
       "import": "./lib/Filter/m/index.mjs",
@@ -3172,6 +3172,16 @@
       "types": "./lib/Filter/l/index.d.ts",
       "import": "./lib/Filter/l/index.mjs",
       "require": "./lib/Filter/l/index.js"
+    },
+    "./FileExport/m": {
+      "types": "./lib/FileExport/m/index.d.ts",
+      "import": "./lib/FileExport/m/index.mjs",
+      "require": "./lib/FileExport/m/index.js"
+    },
+    "./FileExport/l": {
+      "types": "./lib/FileExport/l/index.d.ts",
+      "import": "./lib/FileExport/l/index.mjs",
+      "require": "./lib/FileExport/l/index.js"
     },
     "./FileImport/m": {
       "types": "./lib/FileImport/m/index.d.ts",
@@ -3193,15 +3203,15 @@
       "import": "./lib/FileUpload/l/index.mjs",
       "require": "./lib/FileUpload/l/index.js"
     },
-    "./FileExport/m": {
-      "types": "./lib/FileExport/m/index.d.ts",
-      "import": "./lib/FileExport/m/index.mjs",
-      "require": "./lib/FileExport/m/index.js"
+    "./FeaturedVideo/m": {
+      "types": "./lib/FeaturedVideo/m/index.d.ts",
+      "import": "./lib/FeaturedVideo/m/index.mjs",
+      "require": "./lib/FeaturedVideo/m/index.js"
     },
-    "./FileExport/l": {
-      "types": "./lib/FileExport/l/index.d.ts",
-      "import": "./lib/FileExport/l/index.mjs",
-      "require": "./lib/FileExport/l/index.js"
+    "./FeaturedVideo/l": {
+      "types": "./lib/FeaturedVideo/l/index.d.ts",
+      "import": "./lib/FeaturedVideo/l/index.mjs",
+      "require": "./lib/FeaturedVideo/l/index.js"
     },
     "./FileDownload/m": {
       "types": "./lib/FileDownload/m/index.d.ts",
@@ -3212,16 +3222,6 @@
       "types": "./lib/FileDownload/l/index.d.ts",
       "import": "./lib/FileDownload/l/index.mjs",
       "require": "./lib/FileDownload/l/index.js"
-    },
-    "./FeaturedVideo/m": {
-      "types": "./lib/FeaturedVideo/m/index.d.ts",
-      "import": "./lib/FeaturedVideo/m/index.mjs",
-      "require": "./lib/FeaturedVideo/m/index.js"
-    },
-    "./FeaturedVideo/l": {
-      "types": "./lib/FeaturedVideo/l/index.d.ts",
-      "import": "./lib/FeaturedVideo/l/index.mjs",
-      "require": "./lib/FeaturedVideo/l/index.js"
     },
     "./FeaturedImage/m": {
       "types": "./lib/FeaturedImage/m/index.d.ts",
@@ -3253,16 +3253,6 @@
       "import": "./lib/Favorite/l/index.mjs",
       "require": "./lib/Favorite/l/index.js"
     },
-    "./Fashion/m": {
-      "types": "./lib/Fashion/m/index.d.ts",
-      "import": "./lib/Fashion/m/index.mjs",
-      "require": "./lib/Fashion/m/index.js"
-    },
-    "./Fashion/l": {
-      "types": "./lib/Fashion/l/index.d.ts",
-      "import": "./lib/Fashion/l/index.mjs",
-      "require": "./lib/Fashion/l/index.js"
-    },
     "./Farm/m": {
       "types": "./lib/Farm/m/index.d.ts",
       "import": "./lib/Farm/m/index.mjs",
@@ -3272,6 +3262,16 @@
       "types": "./lib/Farm/l/index.d.ts",
       "import": "./lib/Farm/l/index.mjs",
       "require": "./lib/Farm/l/index.js"
+    },
+    "./Fashion/m": {
+      "types": "./lib/Fashion/m/index.d.ts",
+      "import": "./lib/Fashion/m/index.mjs",
+      "require": "./lib/Fashion/m/index.js"
+    },
+    "./Fashion/l": {
+      "types": "./lib/Fashion/l/index.d.ts",
+      "import": "./lib/Fashion/l/index.mjs",
+      "require": "./lib/Fashion/l/index.js"
     },
     "./FacebookMessenger/m": {
       "types": "./lib/FacebookMessenger/m/index.d.ts",
@@ -3303,15 +3303,15 @@
       "import": "./lib/ExpandText/l/index.mjs",
       "require": "./lib/ExpandText/l/index.js"
     },
-    "./ExpandAlt/m": {
-      "types": "./lib/ExpandAlt/m/index.d.ts",
-      "import": "./lib/ExpandAlt/m/index.mjs",
-      "require": "./lib/ExpandAlt/m/index.js"
+    "./Events/m": {
+      "types": "./lib/Events/m/index.d.ts",
+      "import": "./lib/Events/m/index.mjs",
+      "require": "./lib/Events/m/index.js"
     },
-    "./ExpandAlt/l": {
-      "types": "./lib/ExpandAlt/l/index.d.ts",
-      "import": "./lib/ExpandAlt/l/index.mjs",
-      "require": "./lib/ExpandAlt/l/index.js"
+    "./Events/l": {
+      "types": "./lib/Events/l/index.d.ts",
+      "import": "./lib/Events/l/index.mjs",
+      "require": "./lib/Events/l/index.js"
     },
     "./Expand/m": {
       "types": "./lib/Expand/m/index.d.ts",
@@ -3323,15 +3323,15 @@
       "import": "./lib/Expand/l/index.mjs",
       "require": "./lib/Expand/l/index.js"
     },
-    "./Event/m": {
-      "types": "./lib/Event/m/index.d.ts",
-      "import": "./lib/Event/m/index.mjs",
-      "require": "./lib/Event/m/index.js"
+    "./ExpandAlt/m": {
+      "types": "./lib/ExpandAlt/m/index.d.ts",
+      "import": "./lib/ExpandAlt/m/index.mjs",
+      "require": "./lib/ExpandAlt/m/index.js"
     },
-    "./Event/l": {
-      "types": "./lib/Event/l/index.d.ts",
-      "import": "./lib/Event/l/index.mjs",
-      "require": "./lib/Event/l/index.js"
+    "./ExpandAlt/l": {
+      "types": "./lib/ExpandAlt/l/index.d.ts",
+      "import": "./lib/ExpandAlt/l/index.mjs",
+      "require": "./lib/ExpandAlt/l/index.js"
     },
     "./Exit/m": {
       "types": "./lib/Exit/m/index.d.ts",
@@ -3343,16 +3343,6 @@
       "import": "./lib/Exit/l/index.mjs",
       "require": "./lib/Exit/l/index.js"
     },
-    "./Events/m": {
-      "types": "./lib/Events/m/index.d.ts",
-      "import": "./lib/Events/m/index.mjs",
-      "require": "./lib/Events/m/index.js"
-    },
-    "./Events/l": {
-      "types": "./lib/Events/l/index.d.ts",
-      "import": "./lib/Events/l/index.mjs",
-      "require": "./lib/Events/l/index.js"
-    },
     "./Ellipsis/m": {
       "types": "./lib/Ellipsis/m/index.d.ts",
       "import": "./lib/Ellipsis/m/index.mjs",
@@ -3362,6 +3352,16 @@
       "types": "./lib/Ellipsis/l/index.d.ts",
       "import": "./lib/Ellipsis/l/index.mjs",
       "require": "./lib/Ellipsis/l/index.js"
+    },
+    "./Event/m": {
+      "types": "./lib/Event/m/index.d.ts",
+      "import": "./lib/Event/m/index.mjs",
+      "require": "./lib/Event/m/index.js"
+    },
+    "./Event/l": {
+      "types": "./lib/Event/l/index.d.ts",
+      "import": "./lib/Event/l/index.mjs",
+      "require": "./lib/Event/l/index.js"
     },
     "./Edit/m": {
       "types": "./lib/Edit/m/index.d.ts",
@@ -3383,6 +3383,16 @@
       "import": "./lib/Education/l/index.mjs",
       "require": "./lib/Education/l/index.js"
     },
+    "./DocumentSad/m": {
+      "types": "./lib/DocumentSad/m/index.d.ts",
+      "import": "./lib/DocumentSad/m/index.mjs",
+      "require": "./lib/DocumentSad/m/index.js"
+    },
+    "./DocumentSad/l": {
+      "types": "./lib/DocumentSad/l/index.d.ts",
+      "import": "./lib/DocumentSad/l/index.mjs",
+      "require": "./lib/DocumentSad/l/index.js"
+    },
     "./DropText/m": {
       "types": "./lib/DropText/m/index.d.ts",
       "import": "./lib/DropText/m/index.mjs",
@@ -3392,16 +3402,6 @@
       "types": "./lib/DropText/l/index.d.ts",
       "import": "./lib/DropText/l/index.mjs",
       "require": "./lib/DropText/l/index.js"
-    },
-    "./Drop/m": {
-      "types": "./lib/Drop/m/index.d.ts",
-      "import": "./lib/Drop/m/index.mjs",
-      "require": "./lib/Drop/m/index.js"
-    },
-    "./Drop/l": {
-      "types": "./lib/Drop/l/index.d.ts",
-      "import": "./lib/Drop/l/index.mjs",
-      "require": "./lib/Drop/l/index.js"
     },
     "./DocumentPdf/m": {
       "types": "./lib/DocumentPdf/m/index.d.ts",
@@ -3413,15 +3413,15 @@
       "import": "./lib/DocumentPdf/l/index.mjs",
       "require": "./lib/DocumentPdf/l/index.js"
     },
-    "./DocumentSad/m": {
-      "types": "./lib/DocumentSad/m/index.d.ts",
-      "import": "./lib/DocumentSad/m/index.mjs",
-      "require": "./lib/DocumentSad/m/index.js"
+    "./Drop/m": {
+      "types": "./lib/Drop/m/index.d.ts",
+      "import": "./lib/Drop/m/index.mjs",
+      "require": "./lib/Drop/m/index.js"
     },
-    "./DocumentSad/l": {
-      "types": "./lib/DocumentSad/l/index.d.ts",
-      "import": "./lib/DocumentSad/l/index.mjs",
-      "require": "./lib/DocumentSad/l/index.js"
+    "./Drop/l": {
+      "types": "./lib/Drop/l/index.d.ts",
+      "import": "./lib/Drop/l/index.mjs",
+      "require": "./lib/Drop/l/index.js"
     },
     "./DocumentHappy/m": {
       "types": "./lib/DocumentHappy/m/index.d.ts",
@@ -3433,16 +3433,6 @@
       "import": "./lib/DocumentHappy/l/index.mjs",
       "require": "./lib/DocumentHappy/l/index.js"
     },
-    "./DocumentExport/m": {
-      "types": "./lib/DocumentExport/m/index.d.ts",
-      "import": "./lib/DocumentExport/m/index.mjs",
-      "require": "./lib/DocumentExport/m/index.js"
-    },
-    "./DocumentExport/l": {
-      "types": "./lib/DocumentExport/l/index.d.ts",
-      "import": "./lib/DocumentExport/l/index.mjs",
-      "require": "./lib/DocumentExport/l/index.js"
-    },
     "./DocumentDrop/m": {
       "types": "./lib/DocumentDrop/m/index.d.ts",
       "import": "./lib/DocumentDrop/m/index.mjs",
@@ -3452,26 +3442,6 @@
       "types": "./lib/DocumentDrop/l/index.d.ts",
       "import": "./lib/DocumentDrop/l/index.mjs",
       "require": "./lib/DocumentDrop/l/index.js"
-    },
-    "./Document/m": {
-      "types": "./lib/Document/m/index.d.ts",
-      "import": "./lib/Document/m/index.mjs",
-      "require": "./lib/Document/m/index.js"
-    },
-    "./Document/l": {
-      "types": "./lib/Document/l/index.d.ts",
-      "import": "./lib/Document/l/index.mjs",
-      "require": "./lib/Document/l/index.js"
-    },
-    "./DesktopChart/m": {
-      "types": "./lib/DesktopChart/m/index.d.ts",
-      "import": "./lib/DesktopChart/m/index.mjs",
-      "require": "./lib/DesktopChart/m/index.js"
-    },
-    "./DesktopChart/l": {
-      "types": "./lib/DesktopChart/l/index.d.ts",
-      "import": "./lib/DesktopChart/l/index.mjs",
-      "require": "./lib/DesktopChart/l/index.js"
     },
     "./DocumentCheck/m": {
       "types": "./lib/DocumentCheck/m/index.d.ts",
@@ -3483,6 +3453,26 @@
       "import": "./lib/DocumentCheck/l/index.mjs",
       "require": "./lib/DocumentCheck/l/index.js"
     },
+    "./DocumentExport/m": {
+      "types": "./lib/DocumentExport/m/index.d.ts",
+      "import": "./lib/DocumentExport/m/index.mjs",
+      "require": "./lib/DocumentExport/m/index.js"
+    },
+    "./DocumentExport/l": {
+      "types": "./lib/DocumentExport/l/index.d.ts",
+      "import": "./lib/DocumentExport/l/index.mjs",
+      "require": "./lib/DocumentExport/l/index.js"
+    },
+    "./Document/m": {
+      "types": "./lib/Document/m/index.d.ts",
+      "import": "./lib/Document/m/index.mjs",
+      "require": "./lib/Document/m/index.js"
+    },
+    "./Document/l": {
+      "types": "./lib/Document/l/index.d.ts",
+      "import": "./lib/Document/l/index.mjs",
+      "require": "./lib/Document/l/index.js"
+    },
     "./Desktop/m": {
       "types": "./lib/Desktop/m/index.d.ts",
       "import": "./lib/Desktop/m/index.mjs",
@@ -3492,6 +3482,16 @@
       "types": "./lib/Desktop/l/index.d.ts",
       "import": "./lib/Desktop/l/index.mjs",
       "require": "./lib/Desktop/l/index.js"
+    },
+    "./DesktopChart/m": {
+      "types": "./lib/DesktopChart/m/index.d.ts",
+      "import": "./lib/DesktopChart/m/index.mjs",
+      "require": "./lib/DesktopChart/m/index.js"
+    },
+    "./DesktopChart/l": {
+      "types": "./lib/DesktopChart/l/index.d.ts",
+      "import": "./lib/DesktopChart/l/index.mjs",
+      "require": "./lib/DesktopChart/l/index.js"
     },
     "./CursorMove/m": {
       "types": "./lib/CursorMove/m/index.d.ts",
@@ -3503,16 +3503,6 @@
       "import": "./lib/CursorMove/l/index.mjs",
       "require": "./lib/CursorMove/l/index.js"
     },
-    "./CurrencyUsd/m": {
-      "types": "./lib/CurrencyUsd/m/index.d.ts",
-      "import": "./lib/CurrencyUsd/m/index.mjs",
-      "require": "./lib/CurrencyUsd/m/index.js"
-    },
-    "./CurrencyUsd/l": {
-      "types": "./lib/CurrencyUsd/l/index.d.ts",
-      "import": "./lib/CurrencyUsd/l/index.mjs",
-      "require": "./lib/CurrencyUsd/l/index.js"
-    },
     "./Cut/m": {
       "types": "./lib/Cut/m/index.d.ts",
       "import": "./lib/Cut/m/index.mjs",
@@ -3522,16 +3512,6 @@
       "types": "./lib/Cut/l/index.d.ts",
       "import": "./lib/Cut/l/index.mjs",
       "require": "./lib/Cut/l/index.js"
-    },
-    "./Crosshair/m": {
-      "types": "./lib/Crosshair/m/index.d.ts",
-      "import": "./lib/Crosshair/m/index.mjs",
-      "require": "./lib/Crosshair/m/index.js"
-    },
-    "./Crosshair/l": {
-      "types": "./lib/Crosshair/l/index.d.ts",
-      "import": "./lib/Crosshair/l/index.mjs",
-      "require": "./lib/Crosshair/l/index.js"
     },
     "./CursorDefault/m": {
       "types": "./lib/CursorDefault/m/index.d.ts",
@@ -3543,6 +3523,16 @@
       "import": "./lib/CursorDefault/l/index.mjs",
       "require": "./lib/CursorDefault/l/index.js"
     },
+    "./CurrencyUsd/m": {
+      "types": "./lib/CurrencyUsd/m/index.d.ts",
+      "import": "./lib/CurrencyUsd/m/index.mjs",
+      "require": "./lib/CurrencyUsd/m/index.js"
+    },
+    "./CurrencyUsd/l": {
+      "types": "./lib/CurrencyUsd/l/index.d.ts",
+      "import": "./lib/CurrencyUsd/l/index.mjs",
+      "require": "./lib/CurrencyUsd/l/index.js"
+    },
     "./Crown/m": {
       "types": "./lib/Crown/m/index.d.ts",
       "import": "./lib/Crown/m/index.mjs",
@@ -3552,6 +3542,26 @@
       "types": "./lib/Crown/l/index.d.ts",
       "import": "./lib/Crown/l/index.mjs",
       "require": "./lib/Crown/l/index.js"
+    },
+    "./Crosshair/m": {
+      "types": "./lib/Crosshair/m/index.d.ts",
+      "import": "./lib/Crosshair/m/index.mjs",
+      "require": "./lib/Crosshair/m/index.js"
+    },
+    "./Crosshair/l": {
+      "types": "./lib/Crosshair/l/index.d.ts",
+      "import": "./lib/Crosshair/l/index.mjs",
+      "require": "./lib/Crosshair/l/index.js"
+    },
+    "./Copy/m": {
+      "types": "./lib/Copy/m/index.d.ts",
+      "import": "./lib/Copy/m/index.mjs",
+      "require": "./lib/Copy/m/index.js"
+    },
+    "./Copy/l": {
+      "types": "./lib/Copy/l/index.d.ts",
+      "import": "./lib/Copy/l/index.mjs",
+      "require": "./lib/Copy/l/index.js"
     },
     "./Cosmetics/m": {
       "types": "./lib/Cosmetics/m/index.d.ts",
@@ -3573,16 +3583,6 @@
       "import": "./lib/Comics/l/index.mjs",
       "require": "./lib/Comics/l/index.js"
     },
-    "./ColumnTwo/m": {
-      "types": "./lib/ColumnTwo/m/index.d.ts",
-      "import": "./lib/ColumnTwo/m/index.mjs",
-      "require": "./lib/ColumnTwo/m/index.js"
-    },
-    "./ColumnTwo/l": {
-      "types": "./lib/ColumnTwo/l/index.d.ts",
-      "import": "./lib/ColumnTwo/l/index.mjs",
-      "require": "./lib/ColumnTwo/l/index.js"
-    },
     "./Craft/m": {
       "types": "./lib/Craft/m/index.d.ts",
       "import": "./lib/Craft/m/index.mjs",
@@ -3592,6 +3592,16 @@
       "types": "./lib/Craft/l/index.d.ts",
       "import": "./lib/Craft/l/index.mjs",
       "require": "./lib/Craft/l/index.js"
+    },
+    "./ColumnTwo/m": {
+      "types": "./lib/ColumnTwo/m/index.d.ts",
+      "import": "./lib/ColumnTwo/m/index.mjs",
+      "require": "./lib/ColumnTwo/m/index.js"
+    },
+    "./ColumnTwo/l": {
+      "types": "./lib/ColumnTwo/l/index.d.ts",
+      "import": "./lib/ColumnTwo/l/index.mjs",
+      "require": "./lib/ColumnTwo/l/index.js"
     },
     "./ColumnThree/m": {
       "types": "./lib/ColumnThree/m/index.d.ts",
@@ -3603,16 +3613,6 @@
       "import": "./lib/ColumnThree/l/index.mjs",
       "require": "./lib/ColumnThree/l/index.js"
     },
-    "./Copy/m": {
-      "types": "./lib/Copy/m/index.d.ts",
-      "import": "./lib/Copy/m/index.mjs",
-      "require": "./lib/Copy/m/index.js"
-    },
-    "./Copy/l": {
-      "types": "./lib/Copy/l/index.d.ts",
-      "import": "./lib/Copy/l/index.mjs",
-      "require": "./lib/Copy/l/index.js"
-    },
     "./CollapseList/m": {
       "types": "./lib/CollapseList/m/index.d.ts",
       "import": "./lib/CollapseList/m/index.mjs",
@@ -3622,6 +3622,16 @@
       "types": "./lib/CollapseList/l/index.d.ts",
       "import": "./lib/CollapseList/l/index.mjs",
       "require": "./lib/CollapseList/l/index.js"
+    },
+    "./CollapseAlt/m": {
+      "types": "./lib/CollapseAlt/m/index.d.ts",
+      "import": "./lib/CollapseAlt/m/index.mjs",
+      "require": "./lib/CollapseAlt/m/index.js"
+    },
+    "./CollapseAlt/l": {
+      "types": "./lib/CollapseAlt/l/index.d.ts",
+      "import": "./lib/CollapseAlt/l/index.mjs",
+      "require": "./lib/CollapseAlt/l/index.js"
     },
     "./Collapse/m": {
       "types": "./lib/Collapse/m/index.d.ts",
@@ -3643,15 +3653,15 @@
       "import": "./lib/ClusteredList/l/index.mjs",
       "require": "./lib/ClusteredList/l/index.js"
     },
-    "./CollapseAlt/m": {
-      "types": "./lib/CollapseAlt/m/index.d.ts",
-      "import": "./lib/CollapseAlt/m/index.mjs",
-      "require": "./lib/CollapseAlt/m/index.js"
+    "./Chrome/m": {
+      "types": "./lib/Chrome/m/index.d.ts",
+      "import": "./lib/Chrome/m/index.mjs",
+      "require": "./lib/Chrome/m/index.js"
     },
-    "./CollapseAlt/l": {
-      "types": "./lib/CollapseAlt/l/index.d.ts",
-      "import": "./lib/CollapseAlt/l/index.mjs",
-      "require": "./lib/CollapseAlt/l/index.js"
+    "./Chrome/l": {
+      "types": "./lib/Chrome/l/index.d.ts",
+      "import": "./lib/Chrome/l/index.mjs",
+      "require": "./lib/Chrome/l/index.js"
     },
     "./Close/m": {
       "types": "./lib/Close/m/index.d.ts",
@@ -3663,26 +3673,6 @@
       "import": "./lib/Close/l/index.mjs",
       "require": "./lib/Close/l/index.js"
     },
-    "./Claude/m": {
-      "types": "./lib/Claude/m/index.d.ts",
-      "import": "./lib/Claude/m/index.mjs",
-      "require": "./lib/Claude/m/index.js"
-    },
-    "./Claude/l": {
-      "types": "./lib/Claude/l/index.d.ts",
-      "import": "./lib/Claude/l/index.mjs",
-      "require": "./lib/Claude/l/index.js"
-    },
-    "./Chrome/m": {
-      "types": "./lib/Chrome/m/index.d.ts",
-      "import": "./lib/Chrome/m/index.mjs",
-      "require": "./lib/Chrome/m/index.js"
-    },
-    "./Chrome/l": {
-      "types": "./lib/Chrome/l/index.d.ts",
-      "import": "./lib/Chrome/l/index.mjs",
-      "require": "./lib/Chrome/l/index.js"
-    },
     "./ChevronUp/m": {
       "types": "./lib/ChevronUp/m/index.d.ts",
       "import": "./lib/ChevronUp/m/index.mjs",
@@ -3692,6 +3682,16 @@
       "types": "./lib/ChevronUp/l/index.d.ts",
       "import": "./lib/ChevronUp/l/index.mjs",
       "require": "./lib/ChevronUp/l/index.js"
+    },
+    "./Claude/m": {
+      "types": "./lib/Claude/m/index.d.ts",
+      "import": "./lib/Claude/m/index.mjs",
+      "require": "./lib/Claude/m/index.js"
+    },
+    "./Claude/l": {
+      "types": "./lib/Claude/l/index.d.ts",
+      "import": "./lib/Claude/l/index.mjs",
+      "require": "./lib/Claude/l/index.js"
     },
     "./ChevronRight/m": {
       "types": "./lib/ChevronRight/m/index.d.ts",
@@ -3703,16 +3703,6 @@
       "import": "./lib/ChevronRight/l/index.mjs",
       "require": "./lib/ChevronRight/l/index.js"
     },
-    "./ChevronLeft/m": {
-      "types": "./lib/ChevronLeft/m/index.d.ts",
-      "import": "./lib/ChevronLeft/m/index.mjs",
-      "require": "./lib/ChevronLeft/m/index.js"
-    },
-    "./ChevronLeft/l": {
-      "types": "./lib/ChevronLeft/l/index.d.ts",
-      "import": "./lib/ChevronLeft/l/index.mjs",
-      "require": "./lib/ChevronLeft/l/index.js"
-    },
     "./ChevronDown/m": {
       "types": "./lib/ChevronDown/m/index.d.ts",
       "import": "./lib/ChevronDown/m/index.mjs",
@@ -3723,15 +3713,15 @@
       "import": "./lib/ChevronDown/l/index.mjs",
       "require": "./lib/ChevronDown/l/index.js"
     },
-    "./ChevronDoubleUp/m": {
-      "types": "./lib/ChevronDoubleUp/m/index.d.ts",
-      "import": "./lib/ChevronDoubleUp/m/index.mjs",
-      "require": "./lib/ChevronDoubleUp/m/index.js"
+    "./ChevronLeft/m": {
+      "types": "./lib/ChevronLeft/m/index.d.ts",
+      "import": "./lib/ChevronLeft/m/index.mjs",
+      "require": "./lib/ChevronLeft/m/index.js"
     },
-    "./ChevronDoubleUp/l": {
-      "types": "./lib/ChevronDoubleUp/l/index.d.ts",
-      "import": "./lib/ChevronDoubleUp/l/index.mjs",
-      "require": "./lib/ChevronDoubleUp/l/index.js"
+    "./ChevronLeft/l": {
+      "types": "./lib/ChevronLeft/l/index.d.ts",
+      "import": "./lib/ChevronLeft/l/index.mjs",
+      "require": "./lib/ChevronLeft/l/index.js"
     },
     "./ChevronDoubleRight/m": {
       "types": "./lib/ChevronDoubleRight/m/index.d.ts",
@@ -3743,25 +3733,15 @@
       "import": "./lib/ChevronDoubleRight/l/index.mjs",
       "require": "./lib/ChevronDoubleRight/l/index.js"
     },
-    "./ChevronDoubleLeft/m": {
-      "types": "./lib/ChevronDoubleLeft/m/index.d.ts",
-      "import": "./lib/ChevronDoubleLeft/m/index.mjs",
-      "require": "./lib/ChevronDoubleLeft/m/index.js"
+    "./ChevronDoubleUp/m": {
+      "types": "./lib/ChevronDoubleUp/m/index.d.ts",
+      "import": "./lib/ChevronDoubleUp/m/index.mjs",
+      "require": "./lib/ChevronDoubleUp/m/index.js"
     },
-    "./ChevronDoubleLeft/l": {
-      "types": "./lib/ChevronDoubleLeft/l/index.d.ts",
-      "import": "./lib/ChevronDoubleLeft/l/index.mjs",
-      "require": "./lib/ChevronDoubleLeft/l/index.js"
-    },
-    "./Checkbox/m": {
-      "types": "./lib/Checkbox/m/index.d.ts",
-      "import": "./lib/Checkbox/m/index.mjs",
-      "require": "./lib/Checkbox/m/index.js"
-    },
-    "./Checkbox/l": {
-      "types": "./lib/Checkbox/l/index.d.ts",
-      "import": "./lib/Checkbox/l/index.mjs",
-      "require": "./lib/Checkbox/l/index.js"
+    "./ChevronDoubleUp/l": {
+      "types": "./lib/ChevronDoubleUp/l/index.d.ts",
+      "import": "./lib/ChevronDoubleUp/l/index.mjs",
+      "require": "./lib/ChevronDoubleUp/l/index.js"
     },
     "./ChevronDoubleDown/m": {
       "types": "./lib/ChevronDoubleDown/m/index.d.ts",
@@ -3773,6 +3753,16 @@
       "import": "./lib/ChevronDoubleDown/l/index.mjs",
       "require": "./lib/ChevronDoubleDown/l/index.js"
     },
+    "./ChevronDoubleLeft/m": {
+      "types": "./lib/ChevronDoubleLeft/m/index.d.ts",
+      "import": "./lib/ChevronDoubleLeft/m/index.mjs",
+      "require": "./lib/ChevronDoubleLeft/m/index.js"
+    },
+    "./ChevronDoubleLeft/l": {
+      "types": "./lib/ChevronDoubleLeft/l/index.d.ts",
+      "import": "./lib/ChevronDoubleLeft/l/index.mjs",
+      "require": "./lib/ChevronDoubleLeft/l/index.js"
+    },
     "./CheckDouble/m": {
       "types": "./lib/CheckDouble/m/index.d.ts",
       "import": "./lib/CheckDouble/m/index.mjs",
@@ -3782,6 +3772,26 @@
       "types": "./lib/CheckDouble/l/index.d.ts",
       "import": "./lib/CheckDouble/l/index.mjs",
       "require": "./lib/CheckDouble/l/index.js"
+    },
+    "./Checkbox/m": {
+      "types": "./lib/Checkbox/m/index.d.ts",
+      "import": "./lib/Checkbox/m/index.mjs",
+      "require": "./lib/Checkbox/m/index.js"
+    },
+    "./Checkbox/l": {
+      "types": "./lib/Checkbox/l/index.d.ts",
+      "import": "./lib/Checkbox/l/index.mjs",
+      "require": "./lib/Checkbox/l/index.js"
+    },
+    "./Check/m": {
+      "types": "./lib/Check/m/index.d.ts",
+      "import": "./lib/Check/m/index.mjs",
+      "require": "./lib/Check/m/index.js"
+    },
+    "./Check/l": {
+      "types": "./lib/Check/l/index.d.ts",
+      "import": "./lib/Check/l/index.mjs",
+      "require": "./lib/Check/l/index.js"
     },
     "./CheckAlt/m": {
       "types": "./lib/CheckAlt/m/index.d.ts",
@@ -3803,26 +3813,6 @@
       "import": "./lib/ChatQuestion/l/index.mjs",
       "require": "./lib/ChatQuestion/l/index.js"
     },
-    "./Check/m": {
-      "types": "./lib/Check/m/index.d.ts",
-      "import": "./lib/Check/m/index.mjs",
-      "require": "./lib/Check/m/index.js"
-    },
-    "./Check/l": {
-      "types": "./lib/Check/l/index.d.ts",
-      "import": "./lib/Check/l/index.mjs",
-      "require": "./lib/Check/l/index.js"
-    },
-    "./ChatPlus/m": {
-      "types": "./lib/ChatPlus/m/index.d.ts",
-      "import": "./lib/ChatPlus/m/index.mjs",
-      "require": "./lib/ChatPlus/m/index.js"
-    },
-    "./ChatPlus/l": {
-      "types": "./lib/ChatPlus/l/index.d.ts",
-      "import": "./lib/ChatPlus/l/index.mjs",
-      "require": "./lib/ChatPlus/l/index.js"
-    },
     "./ChatGPT/m": {
       "types": "./lib/ChatGPT/m/index.d.ts",
       "import": "./lib/ChatGPT/m/index.mjs",
@@ -3843,15 +3833,15 @@
       "import": "./lib/ChatFilled/l/index.mjs",
       "require": "./lib/ChatFilled/l/index.js"
     },
-    "./ChatCheck/m": {
-      "types": "./lib/ChatCheck/m/index.d.ts",
-      "import": "./lib/ChatCheck/m/index.mjs",
-      "require": "./lib/ChatCheck/m/index.js"
+    "./ChatPlus/m": {
+      "types": "./lib/ChatPlus/m/index.d.ts",
+      "import": "./lib/ChatPlus/m/index.mjs",
+      "require": "./lib/ChatPlus/m/index.js"
     },
-    "./ChatCheck/l": {
-      "types": "./lib/ChatCheck/l/index.d.ts",
-      "import": "./lib/ChatCheck/l/index.mjs",
-      "require": "./lib/ChatCheck/l/index.js"
+    "./ChatPlus/l": {
+      "types": "./lib/ChatPlus/l/index.d.ts",
+      "import": "./lib/ChatPlus/l/index.mjs",
+      "require": "./lib/ChatPlus/l/index.js"
     },
     "./ChatAI/m": {
       "types": "./lib/ChatAI/m/index.d.ts",
@@ -3883,15 +3873,15 @@
       "import": "./lib/ChartVenn/l/index.mjs",
       "require": "./lib/ChartVenn/l/index.js"
     },
-    "./ChartLine/m": {
-      "types": "./lib/ChartLine/m/index.d.ts",
-      "import": "./lib/ChartLine/m/index.mjs",
-      "require": "./lib/ChartLine/m/index.js"
+    "./ChatCheck/m": {
+      "types": "./lib/ChatCheck/m/index.d.ts",
+      "import": "./lib/ChatCheck/m/index.mjs",
+      "require": "./lib/ChatCheck/m/index.js"
     },
-    "./ChartLine/l": {
-      "types": "./lib/ChartLine/l/index.d.ts",
-      "import": "./lib/ChartLine/l/index.mjs",
-      "require": "./lib/ChartLine/l/index.js"
+    "./ChatCheck/l": {
+      "types": "./lib/ChatCheck/l/index.d.ts",
+      "import": "./lib/ChatCheck/l/index.mjs",
+      "require": "./lib/ChatCheck/l/index.js"
     },
     "./ChartPie/m": {
       "types": "./lib/ChartPie/m/index.d.ts",
@@ -3903,16 +3893,6 @@
       "import": "./lib/ChartPie/l/index.mjs",
       "require": "./lib/ChartPie/l/index.js"
     },
-    "./ChartBarStackedColumn/m": {
-      "types": "./lib/ChartBarStackedColumn/m/index.d.ts",
-      "import": "./lib/ChartBarStackedColumn/m/index.mjs",
-      "require": "./lib/ChartBarStackedColumn/m/index.js"
-    },
-    "./ChartBarStackedColumn/l": {
-      "types": "./lib/ChartBarStackedColumn/l/index.d.ts",
-      "import": "./lib/ChartBarStackedColumn/l/index.mjs",
-      "require": "./lib/ChartBarStackedColumn/l/index.js"
-    },
     "./ChartBubble/m": {
       "types": "./lib/ChartBubble/m/index.d.ts",
       "import": "./lib/ChartBubble/m/index.mjs",
@@ -3922,6 +3902,26 @@
       "types": "./lib/ChartBubble/l/index.d.ts",
       "import": "./lib/ChartBubble/l/index.mjs",
       "require": "./lib/ChartBubble/l/index.js"
+    },
+    "./ChartLine/m": {
+      "types": "./lib/ChartLine/m/index.d.ts",
+      "import": "./lib/ChartLine/m/index.mjs",
+      "require": "./lib/ChartLine/m/index.js"
+    },
+    "./ChartLine/l": {
+      "types": "./lib/ChartLine/l/index.d.ts",
+      "import": "./lib/ChartLine/l/index.mjs",
+      "require": "./lib/ChartLine/l/index.js"
+    },
+    "./ChartBarStackedColumn/m": {
+      "types": "./lib/ChartBarStackedColumn/m/index.d.ts",
+      "import": "./lib/ChartBarStackedColumn/m/index.mjs",
+      "require": "./lib/ChartBarStackedColumn/m/index.js"
+    },
+    "./ChartBarStackedColumn/l": {
+      "types": "./lib/ChartBarStackedColumn/l/index.d.ts",
+      "import": "./lib/ChartBarStackedColumn/l/index.mjs",
+      "require": "./lib/ChartBarStackedColumn/l/index.js"
     },
     "./ChartBarStacked/m": {
       "types": "./lib/ChartBarStacked/m/index.d.ts",
@@ -3953,16 +3953,6 @@
       "import": "./lib/ChargebackLoss/l/index.mjs",
       "require": "./lib/ChargebackLoss/l/index.js"
     },
-    "./ChargebackWin/m": {
-      "types": "./lib/ChargebackWin/m/index.d.ts",
-      "import": "./lib/ChargebackWin/m/index.mjs",
-      "require": "./lib/ChargebackWin/m/index.js"
-    },
-    "./ChargebackWin/l": {
-      "types": "./lib/ChargebackWin/l/index.d.ts",
-      "import": "./lib/ChargebackWin/l/index.mjs",
-      "require": "./lib/ChargebackWin/l/index.js"
-    },
     "./Charge/m": {
       "types": "./lib/Charge/m/index.d.ts",
       "import": "./lib/Charge/m/index.mjs",
@@ -3972,6 +3962,16 @@
       "types": "./lib/Charge/l/index.d.ts",
       "import": "./lib/Charge/l/index.mjs",
       "require": "./lib/Charge/l/index.js"
+    },
+    "./ChargebackWin/m": {
+      "types": "./lib/ChargebackWin/m/index.d.ts",
+      "import": "./lib/ChargebackWin/m/index.mjs",
+      "require": "./lib/ChargebackWin/m/index.js"
+    },
+    "./ChargebackWin/l": {
+      "types": "./lib/ChargebackWin/l/index.d.ts",
+      "import": "./lib/ChargebackWin/l/index.mjs",
+      "require": "./lib/ChargebackWin/l/index.js"
     },
     "./Casual/m": {
       "types": "./lib/Casual/m/index.d.ts",
@@ -3983,16 +3983,6 @@
       "import": "./lib/Casual/l/index.mjs",
       "require": "./lib/Casual/l/index.js"
     },
-    "./Cards/m": {
-      "types": "./lib/Cards/m/index.d.ts",
-      "import": "./lib/Cards/m/index.mjs",
-      "require": "./lib/Cards/m/index.js"
-    },
-    "./Cards/l": {
-      "types": "./lib/Cards/l/index.d.ts",
-      "import": "./lib/Cards/l/index.mjs",
-      "require": "./lib/Cards/l/index.js"
-    },
     "./Cart/m": {
       "types": "./lib/Cart/m/index.d.ts",
       "import": "./lib/Cart/m/index.mjs",
@@ -4003,15 +3993,25 @@
       "import": "./lib/Cart/l/index.mjs",
       "require": "./lib/Cart/l/index.js"
     },
-    "./CardUpdate/m": {
-      "types": "./lib/CardUpdate/m/index.d.ts",
-      "import": "./lib/CardUpdate/m/index.mjs",
-      "require": "./lib/CardUpdate/m/index.js"
+    "./Cards/m": {
+      "types": "./lib/Cards/m/index.d.ts",
+      "import": "./lib/Cards/m/index.mjs",
+      "require": "./lib/Cards/m/index.js"
     },
-    "./CardUpdate/l": {
-      "types": "./lib/CardUpdate/l/index.d.ts",
-      "import": "./lib/CardUpdate/l/index.mjs",
-      "require": "./lib/CardUpdate/l/index.js"
+    "./Cards/l": {
+      "types": "./lib/Cards/l/index.d.ts",
+      "import": "./lib/Cards/l/index.mjs",
+      "require": "./lib/Cards/l/index.js"
+    },
+    "./Car/m": {
+      "types": "./lib/Car/m/index.d.ts",
+      "import": "./lib/Car/m/index.mjs",
+      "require": "./lib/Car/m/index.js"
+    },
+    "./Car/l": {
+      "types": "./lib/Car/l/index.d.ts",
+      "import": "./lib/Car/l/index.mjs",
+      "require": "./lib/Car/l/index.js"
     },
     "./Canva/m": {
       "types": "./lib/Canva/m/index.d.ts",
@@ -4023,15 +4023,15 @@
       "import": "./lib/Canva/l/index.mjs",
       "require": "./lib/Canva/l/index.js"
     },
-    "./Calendar/m": {
-      "types": "./lib/Calendar/m/index.d.ts",
-      "import": "./lib/Calendar/m/index.mjs",
-      "require": "./lib/Calendar/m/index.js"
+    "./CardUpdate/m": {
+      "types": "./lib/CardUpdate/m/index.d.ts",
+      "import": "./lib/CardUpdate/m/index.mjs",
+      "require": "./lib/CardUpdate/m/index.js"
     },
-    "./Calendar/l": {
-      "types": "./lib/Calendar/l/index.d.ts",
-      "import": "./lib/Calendar/l/index.mjs",
-      "require": "./lib/Calendar/l/index.js"
+    "./CardUpdate/l": {
+      "types": "./lib/CardUpdate/l/index.d.ts",
+      "import": "./lib/CardUpdate/l/index.mjs",
+      "require": "./lib/CardUpdate/l/index.js"
     },
     "./CalendarCheck/m": {
       "types": "./lib/CalendarCheck/m/index.d.ts",
@@ -4042,6 +4042,16 @@
       "types": "./lib/CalendarCheck/l/index.d.ts",
       "import": "./lib/CalendarCheck/l/index.mjs",
       "require": "./lib/CalendarCheck/l/index.js"
+    },
+    "./Calendar/m": {
+      "types": "./lib/Calendar/m/index.d.ts",
+      "import": "./lib/Calendar/m/index.mjs",
+      "require": "./lib/Calendar/m/index.js"
+    },
+    "./Calendar/l": {
+      "types": "./lib/Calendar/l/index.d.ts",
+      "import": "./lib/Calendar/l/index.mjs",
+      "require": "./lib/Calendar/l/index.js"
     },
     "./Bulb/m": {
       "types": "./lib/Bulb/m/index.d.ts",
@@ -4073,16 +4083,6 @@
       "import": "./lib/Briefcase/l/index.mjs",
       "require": "./lib/Briefcase/l/index.js"
     },
-    "./Car/m": {
-      "types": "./lib/Car/m/index.d.ts",
-      "import": "./lib/Car/m/index.mjs",
-      "require": "./lib/Car/m/index.js"
-    },
-    "./Car/l": {
-      "types": "./lib/Car/l/index.d.ts",
-      "import": "./lib/Car/l/index.mjs",
-      "require": "./lib/Car/l/index.js"
-    },
     "./BracketsCode/m": {
       "types": "./lib/BracketsCode/m/index.d.ts",
       "import": "./lib/BracketsCode/m/index.mjs",
@@ -4092,26 +4092,6 @@
       "types": "./lib/BracketsCode/l/index.d.ts",
       "import": "./lib/BracketsCode/l/index.mjs",
       "require": "./lib/BracketsCode/l/index.js"
-    },
-    "./BookmarkFilled/m": {
-      "types": "./lib/BookmarkFilled/m/index.d.ts",
-      "import": "./lib/BookmarkFilled/m/index.mjs",
-      "require": "./lib/BookmarkFilled/m/index.js"
-    },
-    "./BookmarkFilled/l": {
-      "types": "./lib/BookmarkFilled/l/index.d.ts",
-      "import": "./lib/BookmarkFilled/l/index.mjs",
-      "require": "./lib/BookmarkFilled/l/index.js"
-    },
-    "./Bookmark/m": {
-      "types": "./lib/Bookmark/m/index.d.ts",
-      "import": "./lib/Bookmark/m/index.mjs",
-      "require": "./lib/Bookmark/m/index.js"
-    },
-    "./Bookmark/l": {
-      "types": "./lib/Bookmark/l/index.d.ts",
-      "import": "./lib/Bookmark/l/index.mjs",
-      "require": "./lib/Bookmark/l/index.js"
     },
     "./BracketsAngle/m": {
       "types": "./lib/BracketsAngle/m/index.d.ts",
@@ -4123,6 +4103,26 @@
       "import": "./lib/BracketsAngle/l/index.mjs",
       "require": "./lib/BracketsAngle/l/index.js"
     },
+    "./Bookmark/m": {
+      "types": "./lib/Bookmark/m/index.d.ts",
+      "import": "./lib/Bookmark/m/index.mjs",
+      "require": "./lib/Bookmark/m/index.js"
+    },
+    "./Bookmark/l": {
+      "types": "./lib/Bookmark/l/index.d.ts",
+      "import": "./lib/Bookmark/l/index.mjs",
+      "require": "./lib/Bookmark/l/index.js"
+    },
+    "./BookmarkFilled/m": {
+      "types": "./lib/BookmarkFilled/m/index.d.ts",
+      "import": "./lib/BookmarkFilled/m/index.mjs",
+      "require": "./lib/BookmarkFilled/m/index.js"
+    },
+    "./BookmarkFilled/l": {
+      "types": "./lib/BookmarkFilled/l/index.d.ts",
+      "import": "./lib/BookmarkFilled/l/index.mjs",
+      "require": "./lib/BookmarkFilled/l/index.js"
+    },
     "./Book/m": {
       "types": "./lib/Book/m/index.d.ts",
       "import": "./lib/Book/m/index.mjs",
@@ -4132,16 +4132,6 @@
       "types": "./lib/Book/l/index.d.ts",
       "import": "./lib/Book/l/index.mjs",
       "require": "./lib/Book/l/index.js"
-    },
-    "./Attach/m": {
-      "types": "./lib/Attach/m/index.d.ts",
-      "import": "./lib/Attach/m/index.mjs",
-      "require": "./lib/Attach/m/index.js"
-    },
-    "./Attach/l": {
-      "types": "./lib/Attach/l/index.d.ts",
-      "import": "./lib/Attach/l/index.mjs",
-      "require": "./lib/Attach/l/index.js"
     },
     "./Block/m": {
       "types": "./lib/Block/m/index.d.ts",
@@ -4163,6 +4153,16 @@
       "import": "./lib/AttacheCase/l/index.mjs",
       "require": "./lib/AttacheCase/l/index.js"
     },
+    "./Attach/m": {
+      "types": "./lib/Attach/m/index.d.ts",
+      "import": "./lib/Attach/m/index.mjs",
+      "require": "./lib/Attach/m/index.js"
+    },
+    "./Attach/l": {
+      "types": "./lib/Attach/l/index.d.ts",
+      "import": "./lib/Attach/l/index.mjs",
+      "require": "./lib/Attach/l/index.js"
+    },
     "./AskAI/m": {
       "types": "./lib/AskAI/m/index.d.ts",
       "import": "./lib/AskAI/m/index.mjs",
@@ -4172,16 +4172,6 @@
       "types": "./lib/AskAI/l/index.d.ts",
       "import": "./lib/AskAI/l/index.mjs",
       "require": "./lib/AskAI/l/index.js"
-    },
-    "./ArrowUp/m": {
-      "types": "./lib/ArrowUp/m/index.d.ts",
-      "import": "./lib/ArrowUp/m/index.mjs",
-      "require": "./lib/ArrowUp/m/index.js"
-    },
-    "./ArrowUp/l": {
-      "types": "./lib/ArrowUp/l/index.d.ts",
-      "import": "./lib/ArrowUp/l/index.mjs",
-      "require": "./lib/ArrowUp/l/index.js"
     },
     "./Arrows/m": {
       "types": "./lib/Arrows/m/index.d.ts",
@@ -4193,15 +4183,25 @@
       "import": "./lib/Arrows/l/index.mjs",
       "require": "./lib/Arrows/l/index.js"
     },
-    "./ArrowDown/m": {
-      "types": "./lib/ArrowDown/m/index.d.ts",
-      "import": "./lib/ArrowDown/m/index.mjs",
-      "require": "./lib/ArrowDown/m/index.js"
+    "./ArrowUp/m": {
+      "types": "./lib/ArrowUp/m/index.d.ts",
+      "import": "./lib/ArrowUp/m/index.mjs",
+      "require": "./lib/ArrowUp/m/index.js"
     },
-    "./ArrowDown/l": {
-      "types": "./lib/ArrowDown/l/index.d.ts",
-      "import": "./lib/ArrowDown/l/index.mjs",
-      "require": "./lib/ArrowDown/l/index.js"
+    "./ArrowUp/l": {
+      "types": "./lib/ArrowUp/l/index.d.ts",
+      "import": "./lib/ArrowUp/l/index.mjs",
+      "require": "./lib/ArrowUp/l/index.js"
+    },
+    "./ArrowRight/m": {
+      "types": "./lib/ArrowRight/m/index.d.ts",
+      "import": "./lib/ArrowRight/m/index.mjs",
+      "require": "./lib/ArrowRight/m/index.js"
+    },
+    "./ArrowRight/l": {
+      "types": "./lib/ArrowRight/l/index.d.ts",
+      "import": "./lib/ArrowRight/l/index.mjs",
+      "require": "./lib/ArrowRight/l/index.js"
     },
     "./ArrowLeft/m": {
       "types": "./lib/ArrowLeft/m/index.d.ts",
@@ -4223,25 +4223,15 @@
       "import": "./lib/Archive/l/index.mjs",
       "require": "./lib/Archive/l/index.js"
     },
-    "./Architecture/m": {
-      "types": "./lib/Architecture/m/index.d.ts",
-      "import": "./lib/Architecture/m/index.mjs",
-      "require": "./lib/Architecture/m/index.js"
+    "./ArrowDown/m": {
+      "types": "./lib/ArrowDown/m/index.d.ts",
+      "import": "./lib/ArrowDown/m/index.mjs",
+      "require": "./lib/ArrowDown/m/index.js"
     },
-    "./Architecture/l": {
-      "types": "./lib/Architecture/l/index.d.ts",
-      "import": "./lib/Architecture/l/index.mjs",
-      "require": "./lib/Architecture/l/index.js"
-    },
-    "./AppsBlock/m": {
-      "types": "./lib/AppsBlock/m/index.d.ts",
-      "import": "./lib/AppsBlock/m/index.mjs",
-      "require": "./lib/AppsBlock/m/index.js"
-    },
-    "./AppsBlock/l": {
-      "types": "./lib/AppsBlock/l/index.d.ts",
-      "import": "./lib/AppsBlock/l/index.mjs",
-      "require": "./lib/AppsBlock/l/index.js"
+    "./ArrowDown/l": {
+      "types": "./lib/ArrowDown/l/index.d.ts",
+      "import": "./lib/ArrowDown/l/index.mjs",
+      "require": "./lib/ArrowDown/l/index.js"
     },
     "./Apple/m": {
       "types": "./lib/Apple/m/index.d.ts",
@@ -4253,15 +4243,15 @@
       "import": "./lib/Apple/l/index.mjs",
       "require": "./lib/Apple/l/index.js"
     },
-    "./ArrowRight/m": {
-      "types": "./lib/ArrowRight/m/index.d.ts",
-      "import": "./lib/ArrowRight/m/index.mjs",
-      "require": "./lib/ArrowRight/m/index.js"
+    "./AppsBlock/m": {
+      "types": "./lib/AppsBlock/m/index.d.ts",
+      "import": "./lib/AppsBlock/m/index.mjs",
+      "require": "./lib/AppsBlock/m/index.js"
     },
-    "./ArrowRight/l": {
-      "types": "./lib/ArrowRight/l/index.d.ts",
-      "import": "./lib/ArrowRight/l/index.mjs",
-      "require": "./lib/ArrowRight/l/index.js"
+    "./AppsBlock/l": {
+      "types": "./lib/AppsBlock/l/index.d.ts",
+      "import": "./lib/AppsBlock/l/index.mjs",
+      "require": "./lib/AppsBlock/l/index.js"
     },
     "./Android/m": {
       "types": "./lib/Android/m/index.d.ts",
@@ -4273,6 +4263,16 @@
       "import": "./lib/Android/l/index.mjs",
       "require": "./lib/Android/l/index.js"
     },
+    "./Architecture/m": {
+      "types": "./lib/Architecture/m/index.d.ts",
+      "import": "./lib/Architecture/m/index.mjs",
+      "require": "./lib/Architecture/m/index.js"
+    },
+    "./Architecture/l": {
+      "types": "./lib/Architecture/l/index.d.ts",
+      "import": "./lib/Architecture/l/index.mjs",
+      "require": "./lib/Architecture/l/index.js"
+    },
     "./Amp/m": {
       "types": "./lib/Amp/m/index.d.ts",
       "import": "./lib/Amp/m/index.mjs",
@@ -4282,36 +4282,6 @@
       "types": "./lib/Amp/l/index.d.ts",
       "import": "./lib/Amp/l/index.mjs",
       "require": "./lib/Amp/l/index.js"
-    },
-    "./Adult/m": {
-      "types": "./lib/Adult/m/index.d.ts",
-      "import": "./lib/Adult/m/index.mjs",
-      "require": "./lib/Adult/m/index.js"
-    },
-    "./Adult/l": {
-      "types": "./lib/Adult/l/index.d.ts",
-      "import": "./lib/Adult/l/index.mjs",
-      "require": "./lib/Adult/l/index.js"
-    },
-    "./Airplane/m": {
-      "types": "./lib/Airplane/m/index.d.ts",
-      "import": "./lib/Airplane/m/index.mjs",
-      "require": "./lib/Airplane/m/index.js"
-    },
-    "./Airplane/l": {
-      "types": "./lib/Airplane/l/index.d.ts",
-      "import": "./lib/Airplane/l/index.mjs",
-      "require": "./lib/Airplane/l/index.js"
-    },
-    "./AdobeExperienceCloud/m": {
-      "types": "./lib/AdobeExperienceCloud/m/index.d.ts",
-      "import": "./lib/AdobeExperienceCloud/m/index.mjs",
-      "require": "./lib/AdobeExperienceCloud/m/index.js"
-    },
-    "./AdobeExperienceCloud/l": {
-      "types": "./lib/AdobeExperienceCloud/l/index.d.ts",
-      "import": "./lib/AdobeExperienceCloud/l/index.mjs",
-      "require": "./lib/AdobeExperienceCloud/l/index.js"
     },
     "./AllDevices/m": {
       "types": "./lib/AllDevices/m/index.d.ts",
@@ -4323,6 +4293,36 @@
       "import": "./lib/AllDevices/l/index.mjs",
       "require": "./lib/AllDevices/l/index.js"
     },
+    "./Airplane/m": {
+      "types": "./lib/Airplane/m/index.d.ts",
+      "import": "./lib/Airplane/m/index.mjs",
+      "require": "./lib/Airplane/m/index.js"
+    },
+    "./Airplane/l": {
+      "types": "./lib/Airplane/l/index.d.ts",
+      "import": "./lib/Airplane/l/index.mjs",
+      "require": "./lib/Airplane/l/index.js"
+    },
+    "./Adult/m": {
+      "types": "./lib/Adult/m/index.d.ts",
+      "import": "./lib/Adult/m/index.mjs",
+      "require": "./lib/Adult/m/index.js"
+    },
+    "./Adult/l": {
+      "types": "./lib/Adult/l/index.d.ts",
+      "import": "./lib/Adult/l/index.mjs",
+      "require": "./lib/Adult/l/index.js"
+    },
+    "./AdobeExperienceCloud/m": {
+      "types": "./lib/AdobeExperienceCloud/m/index.d.ts",
+      "import": "./lib/AdobeExperienceCloud/m/index.mjs",
+      "require": "./lib/AdobeExperienceCloud/m/index.js"
+    },
+    "./AdobeExperienceCloud/l": {
+      "types": "./lib/AdobeExperienceCloud/l/index.d.ts",
+      "import": "./lib/AdobeExperienceCloud/l/index.mjs",
+      "require": "./lib/AdobeExperienceCloud/l/index.js"
+    },
     "./AddressPack/m": {
       "types": "./lib/AddressPack/m/index.d.ts",
       "import": "./lib/AddressPack/m/index.mjs",
@@ -4332,6 +4332,16 @@
       "types": "./lib/AddressPack/l/index.d.ts",
       "import": "./lib/AddressPack/l/index.mjs",
       "require": "./lib/AddressPack/l/index.js"
+    },
+    "./AddCampaign/m": {
+      "types": "./lib/AddCampaign/m/index.d.ts",
+      "import": "./lib/AddCampaign/m/index.mjs",
+      "require": "./lib/AddCampaign/m/index.js"
+    },
+    "./AddCampaign/l": {
+      "types": "./lib/AddCampaign/l/index.d.ts",
+      "import": "./lib/AddCampaign/l/index.mjs",
+      "require": "./lib/AddCampaign/l/index.js"
     },
     "./AdTop/m": {
       "types": "./lib/AdTop/m/index.d.ts",
@@ -4353,15 +4363,15 @@
       "import": "./lib/AdMiddle/l/index.mjs",
       "require": "./lib/AdMiddle/l/index.js"
     },
-    "./AddCampaign/m": {
-      "types": "./lib/AddCampaign/m/index.d.ts",
-      "import": "./lib/AddCampaign/m/index.mjs",
-      "require": "./lib/AddCampaign/m/index.js"
+    "./Ad/m": {
+      "types": "./lib/Ad/m/index.d.ts",
+      "import": "./lib/Ad/m/index.mjs",
+      "require": "./lib/Ad/m/index.js"
     },
-    "./AddCampaign/l": {
-      "types": "./lib/AddCampaign/l/index.d.ts",
-      "import": "./lib/AddCampaign/l/index.mjs",
-      "require": "./lib/AddCampaign/l/index.js"
+    "./Ad/l": {
+      "types": "./lib/Ad/l/index.d.ts",
+      "import": "./lib/Ad/l/index.mjs",
+      "require": "./lib/Ad/l/index.js"
     },
     "./AdBottom/m": {
       "types": "./lib/AdBottom/m/index.d.ts",
@@ -4372,16 +4382,6 @@
       "types": "./lib/AdBottom/l/index.d.ts",
       "import": "./lib/AdBottom/l/index.mjs",
       "require": "./lib/AdBottom/l/index.js"
-    },
-    "./Ad/m": {
-      "types": "./lib/Ad/m/index.d.ts",
-      "import": "./lib/Ad/m/index.mjs",
-      "require": "./lib/Ad/m/index.js"
-    },
-    "./Ad/l": {
-      "types": "./lib/Ad/l/index.d.ts",
-      "import": "./lib/Ad/l/index.mjs",
-      "require": "./lib/Ad/l/index.js"
     }
   }
 }

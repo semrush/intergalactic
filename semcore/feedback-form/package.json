@@ -22,7 +22,7 @@
     "@semcore/typography": "16.3.2",
     "@semcore/link": "16.0.11",
     "@semcore/modal": "16.1.12",
-    "@semcore/illustration": "16.0.12",
+    "@semcore/illustration": "17.0.0-prerelease.4",
     "@semcore/textarea": "16.0.11",
     "@semcore/input": "16.1.1",
     "final-form": "4.20.7",
@@ -34,8 +34,8 @@
     "react-final-form": "6.5.9"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0",
-    "@semcore/icon": "16.7.3 - 17"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
+    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",

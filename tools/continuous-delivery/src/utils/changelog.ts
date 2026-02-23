@@ -14,7 +14,6 @@ import Git from 'simple-git';
 import { allowedScopes } from './allowedScopes';
 import { isValidSemver, log as logger } from '../utils';
 import type { PackageJson } from './packages';
-import { Package } from './packages';
 
 const git = Git();
 
@@ -70,7 +69,7 @@ export class Changelog {
 
   public async collectFromHistory(): Promise<void> {
     const logs = await git.log({ from: this.tag });
-    const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
+    const { specialScopes, toolsComponents, semcoreBaseComponents, semcoreComponents } = await allowedScopes();
     const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
     const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
       if (!this.collectedPackages) {
@@ -78,10 +77,11 @@ export class Changelog {
       }
 
       return collectedSet.has(element);
-    });
+    }).concat(...semcoreBaseComponents);
     const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;
+    let traversingBaseComponent: string | null = null;
     let traversingType: ChangelogChangeLabel | null = null;
     let incrementType: IncrementType = 'patch';
 
@@ -99,14 +99,20 @@ export class Changelog {
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
           traversingComponent = token.raw.toLowerCase();
-          if (!this.changelogs.components[token.raw.toLowerCase()]) {
-            this.changelogs.components[token.raw.toLowerCase()] = { incrementType: 'patch', changelog: [] };
+
+          if (semcoreBaseComponents.includes(traversingComponent.slice(9))) {
+            traversingBaseComponent = traversingComponent;
+            traversingComponent = '@semcore/base-components';
+          }
+
+          if (!this.changelogs.components[traversingComponent]) {
+            this.changelogs.components[traversingComponent] = { incrementType: 'patch', changelog: [] };
           }
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
           traversingType = token.raw;
 
-          if (token.raw === 'Added') {
+          if (token.raw === 'Added' && incrementType !== 'major') {
             incrementType = 'minor';
             this.changelogs.components[traversingComponent].incrementType = incrementType;
           } else if (token.raw === 'BREAK') {
@@ -118,6 +124,11 @@ export class Changelog {
           token.body.forEach((item) => {
             if (traversingComponent !== null && traversingType !== null) {
               const descriptionFormatted = (Array.isArray(item) ? item[0] : item).text;
+
+              if (traversingBaseComponent && Array.isArray(descriptionFormatted)) {
+                descriptionFormatted.unshift(`**${traversingBaseComponent.slice(9)}**: `);
+              }
+
               const description = toMarkdown(descriptionFormatted);
 
               this.changelogs.components[traversingComponent].changelog.push({
@@ -130,6 +141,7 @@ export class Changelog {
         }
         if (token.type === 'heading' && token.level === 2) {
           traversingComponent = null;
+          traversingBaseComponent = null;
           traversingType = null;
         }
       });
@@ -154,10 +166,12 @@ export class Changelog {
 
     const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', component, 'CHANGELOG.md');
     const releaseChangelogString = await fs.readFile(changelogPath, 'utf8');
-    const fullChangelog = Changelog.releaseParser(
-      releaseChangelogString,
-      changelogPath,
-    );
+    const fullChangelog = component === 'ui'
+      ? Changelog.releaseParser(
+          releaseChangelogString,
+          changelogPath,
+        )
+      : Changelog.componentParser(`@semcore/${component}`, releaseChangelogString, changelogPath);
 
     const releaseChangelog: ChangelogItem[] = [];
     const version = fullChangelog[0].version;
