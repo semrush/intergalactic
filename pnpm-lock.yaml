@@ -1452,9 +1452,6 @@ importers:
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
-      '@semcore/notice-global':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -5030,11 +5027,6 @@ packages:
 
   '@semcore/notice-bubble@16.1.12':
     resolution: {integrity: sha512-tJKRvwLXwT+Ox/P+kAIgCzuCPeFuT/fXUjYutRh4rKJLMR6N5N9wAixbYVtVtpvG3f5mT1aI+YyaE6Svx0vkuw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/notice-global@16.1.12':
-    resolution: {integrity: sha512-8d5IEtJJsf2wdeHlh5+kGtSTrAqdwQKZciO+Q/Giq3UJVjJdBGmlizN670lEd3N57hD9jemzvLO48kEY7YZvdA==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17265,14 +17257,6 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
       '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/notice-global@16.1.12(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
 
   '@semcore/outside-click@16.0.11(@semcore/base-components@semcore+base-components)':
     dependencies:
