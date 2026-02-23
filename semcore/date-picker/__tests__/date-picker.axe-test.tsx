@@ -87,6 +87,38 @@ test.describe(`@date-picker ${TAG.ACCESSIBILITY}`, () => {
     }
   });
 
+  test('Reset date', async ({ page }) => {
+    await loadPage(page, 'stories/components/date-picker/docs/examples/reset_date_picker.tsx', 'en');
+
+    // base check
+    {
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // reset picker check
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+
+    // opened date picker check
+    {
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Enter');
+
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
+  });
+
   test('Date range comparator', async ({ page }) => {
     await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
