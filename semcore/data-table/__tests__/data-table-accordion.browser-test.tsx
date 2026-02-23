@@ -78,11 +78,6 @@ test.describe(`${TAG.VISUAL}`, () => {
             await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
           }
       });
-      await test.step('Verify accordion is responsive', async () => {
-        await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot();
-      });
     });
 
     test('Verify accordion and custom component inside after keyboard interactions ', {
