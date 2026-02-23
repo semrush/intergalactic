@@ -42,14 +42,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
 
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
-          await page.waitForTimeout(200);
 
           const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
           if (!hasMaxLine) {
+            await page.waitForTimeout(200);
             await locators.hint(page).waitFor({ state: 'visible' });
           }
           await expect(page).toHaveScreenshot();
@@ -107,11 +107,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
+
         await locators.text(page).waitFor({ state: 'visible' });
+
         await page.waitForTimeout(200);
 
         await test.step('Hover text and verify hint appears', async () => {
           await locators.text(page).hover();
+
           await locators.hint(page).waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
