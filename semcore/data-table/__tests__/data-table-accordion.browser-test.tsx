@@ -701,8 +701,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const cell = page.locator('[data-ui-name="Row.Cell"][aria-colindex="2"]').first();
-
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.collapse(page).waitFor({ state: 'visible' });
@@ -712,7 +710,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.collapse(page).locator('[data-ui-name="Row.Cell"]')).toBeFocused();
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowRight');
-      await expect(cell).toBeFocused();
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.collapse(page).locator('[data-ui-name="Row.Cell"]')).toBeFocused();
     });
 
     test('Verify base keyboard interactions with accordion ', {
