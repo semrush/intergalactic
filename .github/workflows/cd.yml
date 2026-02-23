@@ -193,10 +193,10 @@ jobs:
           echo "count=$ALL_FILES_COUNT" >> $GITHUB_OUTPUT
 
           if [[ -z "$FILES" ]]; then
-            echo "::notice ::The docs-lint job will be skipped because there’s no changed .md files."
+            echo "::notice::The docs-lint job will be skipped because there’s no changed .md files."
           fi
           if [[ $ALL_FILES_COUNT -gt 300 && -n "$FILES" ]]; then
-            echo "::warnng ::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
+            echo "::warnng::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
           fi
   docs-lint:
     runs-on: ubuntu-latest
