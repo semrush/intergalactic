@@ -10,12 +10,18 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
   const renderFunc = (tokens: any[], idx: number) => {
     const token = tokens[idx];
     if (token.type === 'container_changelog_open') {
-      const component = token.info.split(':::')[0].split('changelog')[1].trim();
-      const changelogPath = resolvePath(__dirname, `../../../semcore/${component}/CHANGELOG.md`);
-      let changelogFile = changelogsCache[changelogPath];
-      if (!changelogFile) {
+      const componentNameParts = token.info.split(':::')[0].split('changelog')[1].trim().split('__');
+      const component = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? componentNameParts[1] : componentNameParts[0];
+
+      const baseChangelogPath = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? resolvePath(__dirname, `../../../semcore/base-components/CHANGELOG.md`) : null;
+      const changelogPath = resolvePath(__dirname, `../../../semcore/${componentNameParts.length === 1 ? component : `base-components/src/components/${component}`}/CHANGELOG.md`);
+      let changelogBody = changelogsCache[changelogPath];
+      let baseChangelogBody = baseChangelogPath ? changelogsCache[baseChangelogPath] : undefined;
+      if (!changelogBody) {
         try {
-          changelogFile = fs.readFileSync(changelogPath, 'utf-8');
+          const componentLogFile = fs.readFileSync(changelogPath, 'utf-8');
+
+          changelogBody = componentLogFile.substring(componentLogFile.indexOf('##'));
         } catch (error) {
           console.error(error);
           throw new Error(
@@ -23,10 +29,57 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
           );
         }
       }
-      const changelogBody = changelogFile.substring(changelogFile.indexOf('##'));
+      if (!baseChangelogBody && baseChangelogPath) {
+        try {
+          const baseChangelogFile = fs.readFileSync(baseChangelogPath, 'utf-8');
+          baseChangelogBody = baseChangelogFile.substring(baseChangelogFile.indexOf('##'));
+        } catch (error) {
+          console.error(error);
+          throw new Error(
+            `Unable to find changelog for ${component} (searching in ${changelogPath})).`,
+          );
+        }
+      }
+      const baseChangelogItems = baseChangelogBody?.split('## [');
       const changelogItems = changelogBody.split('## [');
       const changelogs = [];
       const updateVersionChangelogs = [];
+
+      baseChangelogItems?.forEach((item) => {
+        if (item.includes(`**${component}**`)) {
+          const itemRows = item.split('\n');
+          const versionAndDate = itemRows[0]?.trim().replace(']', '').replace('[', '') ?? '';
+          const [version, date] = versionAndDate.split(' - ');
+          const niceDate = new Intl.DateTimeFormat('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }).format(new Date(date));
+
+          const hasBreaking = item.includes('### Break') || item.includes('### BREAK');
+          const breakingIcon = '<span role="img" aria-label="breaking">🅱️</span>';
+
+          changelogs.push(`## ${version} ${hasBreaking ? breakingIcon : ''} (${niceDate})\n`);
+
+          let type = '';
+          let addedType = false;
+          for (let i = 1; i < itemRows.length; i++) {
+            if (itemRows[i].startsWith('###')) {
+              type = itemRows[i];
+              addedType = false;
+              continue;
+            }
+
+            if (itemRows[i].startsWith(`- **${component}**:`)) {
+              if (!addedType) {
+                changelogs.push(type);
+                addedType = true;
+              }
+              changelogs.push(itemRows[i].replace(`- **${component}**:`, '- '));
+            }
+          }
+        }
+      });
 
       changelogItems.forEach((item) => {
         if (item) {

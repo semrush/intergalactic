@@ -68,8 +68,8 @@ if (!description) {
   outputError('Got empty description in message of format "[scope] change description"');
 }
 
-const { specialScopes, semcoreComponents, toolsComponents } = await allowedScopes();
-const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
+const { specialScopes, semcoreComponents, semcoreBaseComponents, toolsComponents } = await allowedScopes();
+const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...semcoreBaseComponents, ...toolsComponents];
 
 const allProvidedScopes = scope.includes(',')
   ? scope.split(',').map((scope) => scope.trim())

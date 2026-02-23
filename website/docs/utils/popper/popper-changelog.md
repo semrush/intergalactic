@@ -4,4 +4,4 @@ fileSource: popper
 tabs: Design('popper'), API('popper-api'), Changelog('popper-changelog')
 ---
 
-::: changelog popper :::
+::: changelog base-components__popper :::
