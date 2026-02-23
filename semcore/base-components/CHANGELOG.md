@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-02-23
+
+### BREAK
+
+- **ellipsis**: Deprecated component. Use the new `ellipsis` prop that's built into various components.
+- **portal**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **outside-click**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **scroll-area**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+
+### Added
+
+- `inset` property for the Box component.
+
+### Changed
+
+- `Hint` now has slicker and more compact styles.
+
 ## [16.4.2] - 2025-12-01
 
 ### Fixed
