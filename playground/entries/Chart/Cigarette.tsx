@@ -55,7 +55,6 @@ const entry: PlaygroundEntry<CigaretteChartJSXProps> = {
     cigaretteProps: {
       type: 'group',
       groupName: 'Cigarette props',
-      isOpenedByDefault: true,
       controls: {
         layout: {
           type: 'select',

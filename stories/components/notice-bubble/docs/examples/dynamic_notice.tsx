@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
+import { lastInteraction } from '@semcore/ui/core';
 import ReloadM from '@semcore/ui/icon/Reload/m';
 import WarningM from '@semcore/ui/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
@@ -54,9 +55,11 @@ const Demo = (props: DynamicNoticeBubbleProps) => {
       type: props.type,
       focusLock: props.focusLock,
       onClose: () => {
-        setTimeout(() => {
-          openButtonRef.current?.focus();
-        }, 300);
+        if (lastInteraction.isKeyboard()) {
+          setTimeout(() => {
+            openButtonRef.current?.focus();
+          }, 300);
+        }
       },
     });
   };
