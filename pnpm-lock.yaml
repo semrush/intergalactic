@@ -968,8 +968,8 @@ importers:
         specifier: 16.0.12
         version: link:../button
       '@semcore/illustration':
-        specifier: 17.0.0-prerelease.3
-        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
+        specifier: 17.0.0-prerelease.4
+        version: 17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
@@ -1070,8 +1070,8 @@ importers:
         specifier: 16.2.1
         version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@semcore/illustration':
-        specifier: 17.0.0-prerelease.3
-        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
+        specifier: 17.0.0-prerelease.4
+        version: 17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)
       '@semcore/input':
         specifier: 16.1.1
         version: link:../input
@@ -2090,8 +2090,8 @@ importers:
   semcore/widget-empty:
     dependencies:
       '@semcore/illustration':
-        specifier: 17.0.0-prerelease.3
-        version: 17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)
+        specifier: 17.0.0-prerelease.4
+        version: 17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -5021,10 +5021,10 @@ packages:
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
-  '@semcore/illustration@17.0.0-prerelease.3':
-    resolution: {integrity: sha512-cyeaioAu1n8Tgx6ld69ahRtgGWPJCIuKgdREoIi81r7ywKNgUUgzyvaBCZMlIeSxbPMaM4p7rVz1oyoZNkAmjA==}
+  '@semcore/illustration@17.0.0-prerelease.4':
+    resolution: {integrity: sha512-4CSkXaepVz+oTVS7du2NYKkyi17WKOK+HGPRJkFRiXkT1je/RT9w/E7OD/0K4cxYh48WmnLKoP4Q0PkmcOx0PQ==}
     peerDependencies:
-      '@semcore/base-components': ^16.0.0
+      '@semcore/base-components': ^17.0.0 || ^17.0.0-0
 
   '@semcore/modal@16.1.12':
     resolution: {integrity: sha512-kjer8Omtdx7foRKfkeq7mzjQjlp7X3GwKkyXztOgaX3rzGSgpizmvypFnFbQX1mIGsK8lpfaUTrUbbBVhEnGwQ==}
@@ -17249,7 +17249,7 @@ snapshots:
       '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
       classnames: 2.2.6
 
-  '@semcore/illustration@17.0.0-prerelease.3(@semcore/base-components@semcore+base-components)':
+  '@semcore/illustration@17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
       colorjs.io: 0.4.3

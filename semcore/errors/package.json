@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/illustration": "17.0.0-prerelease.3",
+    "@semcore/illustration": "17.0.0-prerelease.4",
     "@semcore/typography": "16.3.2"
   },
   "peerDependencies": {

@@ -22,7 +22,7 @@
     "@semcore/typography": "16.3.2",
     "@semcore/link": "16.0.11",
     "@semcore/modal": "16.1.12",
-    "@semcore/illustration": "17.0.0-prerelease.3",
+    "@semcore/illustration": "17.0.0-prerelease.4",
     "@semcore/textarea": "16.0.11",
     "@semcore/input": "16.1.1",
     "final-form": "4.20.7",

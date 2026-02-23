@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/illustration": "17.0.0-prerelease.3"
+    "@semcore/illustration": "17.0.0-prerelease.4"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
