@@ -191,6 +191,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
 
       await page.keyboard.press('ArrowRight');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '1');
       await page.keyboard.press('ArrowRight');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '2');
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
@@ -207,7 +208,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
 
-    await test.step('Verify form closed by ESC and selected starts skipped', async () => {
+    await test.step('Verify form closed by ESC and selected stars skipped', async () => {
       await page.keyboard.press('Escape');
       await buttons.first().waitFor({ state: 'hidden' });
       if (browserName !== 'webkit') await expect(locators.sliderRating(page)).toBeFocused();
@@ -222,14 +223,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(buttons.first()).not.toBeVisible();
     });
 
+    if (browserName === 'webkit') return;
+
     await test.step('Verify Form focus order', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Great! What do you like the most?"');
-      if (browserName === 'webkit') {
-        test.skip();
-      }
+      await buttons.first().waitFor({ state: 'visible' });
+
       await expect(checkboxInput.first()).toBeFocused();
 
       for (let i = 0; i < 3; i++) {
@@ -239,6 +240,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Shift+Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
       for (let i = 0; i < 2; i++) {
@@ -259,7 +262,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await page.waitForTimeout(200);
+      await buttons.first().waitFor({ state: 'visible' });
       await expect(checkboxInput.first()).toBeFocused();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
@@ -305,14 +309,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify form closed by click Close button', async () => {
       await locators.stars(page, 3).click();
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await buttons.first().waitFor({ state: 'visible' });
       await buttons.first().click();
       await locators.dialog(page).waitFor({ state: 'visible' });
     });
 
     await test.step('Verify form closed by click Send request', async () => {
       await locators.stars(page, 3).click();
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await buttons.first().waitFor({ state: 'visible' });
       if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await buttons.nth(1).click();
 
