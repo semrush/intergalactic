@@ -18,8 +18,7 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/modal": "16.1.12",
-    "@semcore/breakpoints": "16.0.11"
+    "@semcore/modal": "16.1.12"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0",

@@ -540,9 +540,6 @@ importers:
 
   semcore/carousel:
     dependencies:
-      '@semcore/breakpoints':
-        specifier: 16.0.11
-        version: 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/button':
         specifier: 16.0.12
         version: link:../button
@@ -4971,11 +4968,6 @@ packages:
 
   '@semcore/base-trigger@16.4.4':
     resolution: {integrity: sha512-+vVEfM60MryaMo1ljDqIdyJK6bnPYyUSq98FC3g8CO6kPkz/T94E5sE76Cjc7yNfNbtB4qJYi1f9Whjtv4rfCw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/breakpoints@16.0.11':
-    resolution: {integrity: sha512-tSJquGDBa4cH/FKnmA1kzT32iowCEAe+9t3BvPd/Q2Z7FD1Um5ZOHu+PsqEuqXMhtfjqZj+J/qAg0BsmNdTARg==}
     peerDependencies:
       '@semcore/base-components': ^16.0.0
 
@@ -17187,10 +17179,6 @@ snapshots:
       '@semcore/neighbor-location': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/spin': 16.0.11(@semcore/base-components@semcore+base-components)
       '@semcore/tooltip': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/breakpoints@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
 
   '@semcore/button@16.0.12(@semcore/base-components@semcore+base-components)':
     dependencies:
