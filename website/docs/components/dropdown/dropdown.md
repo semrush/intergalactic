@@ -20,7 +20,7 @@ Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper`.
 
 ### Sizes
 
-The component doesn't have any fixed sizes since they are defined by the content inside it.
+The component doesn't have any fixed sizes since they're defined by the content inside it.
 
 ::: tip
 If dropdown changes its state while user interacts with it, don’t change the dropdown size (width and height).

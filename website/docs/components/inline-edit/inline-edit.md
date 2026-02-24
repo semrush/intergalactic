@@ -16,7 +16,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 ## Appearance
 
-It's important to note that the example below serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/button), an [Icon](/style/icon/icon), or text with an icon, can be utilized as a trigger.
+It's important to note that the following example serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/button), an [Icon](/style/icon/icon), or text with an icon, can be utilized as a trigger.
 
 ![](static/inline-edit.png)
 
