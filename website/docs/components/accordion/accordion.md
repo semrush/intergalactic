@@ -62,16 +62,16 @@ Table: Accordion trigger styles
 
 ### Collapsed content styles
 
-You can use this component to hide almost any content. This can be a text content, an additional information (e.g., in a table), or even an entire table with a chart.
+You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
-**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, e.g., in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
+**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 
 ## Interaction
 
 ::: tip
 **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
 
-The user expects this behaviour when working with the desktop device interface.
+The user expects this behavior when working with the desktop device interface.
 
 On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
 :::
