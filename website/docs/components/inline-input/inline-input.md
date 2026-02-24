@@ -12,9 +12,9 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 
 **Use this component when:**
 
-- you need to switch between view-only and text editing without reloading the page (e.g., edit the title, description or tag);
+- you need to switch between view-only and text editing without reloading the page (for example, edit the title, description or tag);
 - data in the interface is placed tightly, you need to save space;
-- transferring data to the system isn’t the main task of the interface (e.g., additional information and notes in cards).
+- transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
 ::: tip
 Don’t use such an input in a [form](/patterns/form/form) along with regular inputs (see the example in the UX/UI use section below).
@@ -59,7 +59,7 @@ Table: Leading addon styles
 
 Through the addon, you can add a label.
 
-_It's needed so that the user understands what data they need to enter. e.g., tag name, project name, etc._
+_It's needed so that the user understands what data they need to enter. For example, tag name, project name, etc._
 
 ![](static/permanent-placeholder.png)
 
@@ -98,7 +98,7 @@ For the default state of the icons use the following tokens:
 - `--icon-secondary-success`
 - `--icon-secondary-neutral`
 
-On hover, the icons change his color to to the darker one using CSS filter.
+On hover, the icons change their color to to the darker one using CSS filter.
 
 ![](static/tooltip2.png)
 
@@ -111,7 +111,7 @@ InlineInput can take on the same states as a [normal input](/components/input/in
 - The user has activated a trigger that opens an InlineInput.
 - InlineInput immediately receives focus.
 - The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
-- When focus is lost (e.g., the user is distracted by another screen), `onBlur` saves the entered value.
+- When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
 
 Table: InlineInput states
 
@@ -131,7 +131,7 @@ Table: InlineInput states
 
 For InlineInput, set the same text size as in view-mode.
 
-_e.g., if the heading you need to edit has 24px font-size, then it should also be 24px when you enter edit mode._
+_For example, if the heading you need to edit has 24px font-size, then it should also be 24px when you enter edit mode._
 
 ![](static/inline-size-yes-no.png)
 

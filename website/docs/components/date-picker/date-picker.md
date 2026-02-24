@@ -22,7 +22,7 @@ Trigger is built on the [Input](/components/input/input) component.
 ::: tip
 Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
 :::
-<!-- > _e.g.: "Mar 4–10, 2022"._ -->
+<!-- > _For example: "Mar 4–10, 2022"._ -->
 
 Table: Date picker trigger's states and cases
 
@@ -39,7 +39,7 @@ Table: Date picker trigger's states and cases
 
 ## "Apply" button
 
-"Apply" button allows users to submit his selected date(s). The selected date can be submitted by clicking on the date itself or by clicking the "Apply" button (if available).
+"Apply" button allows users to submit their selected date(s). The selected date can be submitted by clicking on the date itself or by clicking the "Apply" button (if available).
 
 "Apply" button is typically added to dropdowns when users need to select a range of dates or when selecting a date affects interface limitations. If necessary, the "Apply" button can be added to any type of date picker.
 
@@ -71,13 +71,13 @@ You can place [TimePicker](/components/time-picker/time-picker) inside the dropd
 
 ![](static/datepicker-timepicker-normal.png)
 
-And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
+And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (for example, user account settings).
 
 ![](static/datepicker-timepicker-12h-24h.png)
 
 ## DatePicker with custom cell elements
 
-You can add custom elements inside cells: e.g., a small progressbar under the date to show the progress of the metrics you need to show.
+You can add custom elements inside cells: for example, a small progressbar under the date to show the progress of the metrics you need to show.
 
 ![](static/datepicker-metric-normal.png)
 
@@ -99,7 +99,7 @@ Date range picker typically displays two month blocks in the calendar by default
 
 ![](static/daterangepicker-normal.png)
 
-You can add presets for date ranges. Presets and his names may be customized. The selected preset gets `active` status.
+You can add presets for date ranges. Presets and their names may be customized. The selected preset gets `active` status.
 
 ![](static/daterangepicker-custom-presets.png)
 

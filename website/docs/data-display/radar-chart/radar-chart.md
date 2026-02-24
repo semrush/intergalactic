@@ -30,7 +30,7 @@ The radar chart is also known as web chart, spider chart, spider graph, spider w
 - You need to make comparisons across multivariate data.
 - Data sets are small or moderately sized.
 
-Radar charts are at his best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to his circular structure and his relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
+Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
 
 ::: tip
 Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
@@ -44,9 +44,9 @@ The most significant advantage of using a radar chart is that outliers are immed
 
 ### Disadvantages of radar charts
 
-Data visualization specialists often criticize radar charts – e.g., in [this blog post](https://blog.scottlogic.com/2011/09/23/a-critique-of-radar-charts.html#chart2) and in [this article](https://www.perceptualedge.com/articles/dmreview/radar_graphs.pdf).
+Data visualization specialists often criticize radar charts – for example, in [this blog post](https://blog.scottlogic.com/2011/09/23/a-critique-of-radar-charts.html#chart2) and in [this article](https://www.perceptualedge.com/articles/dmreview/radar_graphs.pdf).
 
-his main cons are:
+Their main cons are:
 
 - Hard to judge radii length.
 - Radar charts can distort data.
@@ -119,7 +119,7 @@ Areas use the same color as the line, but with 20% opacity. Areas are enabled by
 
 Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api#plot)). Chart components don't have maximum and minimum size.
 
-For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. e.g.:
+For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. For example:
 
 ![Example of simplified mini radar chart without visible additional lines.](static/mini-radar-2.png)
 
@@ -255,13 +255,13 @@ Variables should be arranged in some meaningful order.
 
 ![](static/variables-yes-no.png)
 
-More than three data sets should be presented on his own radar charts or visualized through other chart type.
+More than three data sets should be presented on their own radar charts or visualized through other chart type.
 
 ![](static/data-sets-yes-no.png)
 
 Don’t use too many variables or the chart risks becoming confusing.
 
-Consider using other chart type – e.g., bar chart.
+Consider using other chart type – for example, bar chart.
 
 ![](static/variable-number-yes-no.png)
 

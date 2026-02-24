@@ -35,7 +35,7 @@ Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Tooltip
 ## Manual tab activation
 
 By default, when using keyboard interaction, a tab is activated immediately as soon as it's selected.
-You can change this behaviour by setting `behaviour='manual'`, so that user has to confirm his selection by pressing `Enter` or `Space`.
+You can change this behavior by setting `behavior='manual'`, so that user has to confirm their selection by pressing `Enter` or `Space`.
 
 This can be useful when some tabs load a lot of data and you want user to be able to select farther tabs without having to activate all tabs in-between.
 

@@ -12,7 +12,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Stacked bar chart** is used to display multiple categories of values and illustrate his proportions relative to the total.
+**Stacked bar chart** is used to display multiple categories of values and illustrate their proportions relative to the total.
 
 **Key points for using stacked bar chart:**
 

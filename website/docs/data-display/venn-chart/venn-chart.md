@@ -69,7 +69,7 @@ Table: Venn chart legend placement
 
 ### Legend content
 
-Use `--text-secondary` color for data set names and his descriptions.
+Use `--text-secondary` color for data set names and their descriptions.
 
 ![](static/venn-legend.png)
 

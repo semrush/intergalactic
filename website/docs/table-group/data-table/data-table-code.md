@@ -8,7 +8,7 @@ The `DataTable` component simplifies rendering of tabular data. It uses CSS grid
 
 ## Primary table
 
-To render a table, provide the list of columns with his titles using `columns={columns}`, and the list of rows using `data={data}`.
+To render a table, provide the list of columns with their titles using `columns={columns}`, and the list of rows using `data={data}`.
 
 ::: sandbox
 
@@ -344,7 +344,7 @@ To enable column sorting:
 
 `<DataTable/>` inherits all `Box` properties, such as `wMax` and `hMax`, which can be used to enable internal scroll.
 
-By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. e.g.s, refer to [Sticky header](/table-group/data-table/data-table-code#sticky-header).
+By default, horizontal scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for long tables, allowing users to scroll horizontally without having to scroll to the end of the table. For examples, refer to [Sticky header](/table-group/data-table/data-table-code#sticky-header).
 
 ::: sandbox
 

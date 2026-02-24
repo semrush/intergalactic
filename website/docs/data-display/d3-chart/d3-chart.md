@@ -50,7 +50,7 @@ You can show different reference lines (highlight date or dates range) to guide 
 
 ### Minimum and maximum axes' number
 
-Use 3-5 horizontal additional horizontal lines for clarity. Use rounded values on axes, e.g., _25K, 20K, 15K, 10K._
+Use 3-5 horizontal additional horizontal lines for clarity. Use rounded values on axes, for example, _25K, 20K, 15K, 10K._
 
 ::: tip
 The recommended minimum chart height is 120px. For such a chart, it's advisable to display 3 additional horizontal guides. Keep in mind that small charts might make it hard to see data changes.

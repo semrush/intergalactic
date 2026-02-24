@@ -36,7 +36,7 @@ Use `disabled` property to make `<TabPanel.Item />` disabled. Always add `Toolti
 
 By default, when using keyboard interaction, user has to confirm tab selection by pressing `Enter` or `Space`.
 
-You can set `behaviour='auto'` to change this behaviour, so that tabs are activated immediately when selected.
+You can set `behavior='auto'` to change this behavior, so that tabs are activated immediately when selected.
 
 ::: sandbox
 

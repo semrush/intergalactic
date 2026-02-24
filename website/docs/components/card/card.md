@@ -56,7 +56,7 @@ The card may have a description. It usually contains an explanation of what the 
 
 `Card.Body` includes:
 
-- Optional top controls (e.g., filters, buttons)
+- Optional top controls (for example, filters, buttons)
 - Content (`margin-top: 20px`)
 - Optional bottom controls (`margin-top: 20px`)
 

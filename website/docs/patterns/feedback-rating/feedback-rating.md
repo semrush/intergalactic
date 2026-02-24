@@ -32,7 +32,7 @@ Notice includes the following mandatory elements:
 
 ![](static/feedback-rating-notice-link.png)
 
-### Notice behaviour requirements
+### Notice behavior requirements
 
 - If the user has closed the Notice, don't show it to them again.
 - The Notice is displayed until the user closes it using the `Close` button, submits the feedback form, or until the set time expires.
@@ -77,7 +77,7 @@ Table: Interaction with form inputs
 
 ## States
 
-The form can be submitted without filling in any additional information (e.g., immediately after it appears).
+The form can be submitted without filling in any additional information (for example, immediately after it appears).
 
 Table: Feedback Rating form states
 

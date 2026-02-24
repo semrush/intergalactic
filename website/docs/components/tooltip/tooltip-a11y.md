@@ -41,11 +41,11 @@ Table: Keyboard support
 | `Tab`            | In `Tooltip` without nested interactive elements — moves focus to the next focusable element outside of the tooltip. <br />In an open `DescriptionTooltip` and `Tooltip` containing interactive elements — moves focus to the next focusable element inside the tooltip and, in the end, back to the trigger. |
 | `Shift + Tab`    | Moves focus in reverse relative to `Tab`. |
 
-### Focus behaviour
+### Focus behavior
 
-Table: Focus behaviour
+Table: Focus behavior
 
-| Component            | Trigger behaviour   | Popper behaviour   |
+| Component            | Trigger behavior   | Popper behavior   |
 | -------------------- | ------------------- | ------------------ |
 | `Tooltip`            | Triggers popper on focus.        | Popper isn't focusable by default, but becomes focusable if there are any focusable elements inside. |
 | `DescriptionTooltip` | Nothing happens on focus.       | Popper is focusable by default and receives focus automatically when opened. |

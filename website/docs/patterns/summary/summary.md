@@ -24,7 +24,7 @@ The pattern includes the following components:
 - Metric's title
 - Additional information such as date, period, location, or database of the data
 - Metric value
-- Supplementary information linked to the metric (e.g., value differences over a specific period, trends, optional content)
+- Supplementary information linked to the metric (for example, value differences over a specific period, trends, optional content)
 
 ![](static/summary-metric.png)
 
@@ -48,7 +48,7 @@ Table: Summary recommended styles
 
 | Element                             | Styles                                                                                                                                                                                                                                                                           |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title**                           | Text size: 14px (`--fs-200`, `--lh-200`), color uses `--text-primary`. Accompanied by an `Info` icon of M size. Alternatively, use a medium-sized icon for displaying brand metrics (e.g., for social media).                                                             |
+| **Title**                           | Text size: 14px (`--fs-200`, `--lh-200`), color uses `--text-primary`. Accompanied by an `Info` icon of M size. Alternatively, use a medium-sized icon for displaying brand metrics (for example, for social media).                                                             |
 | **Date/period/location/database**   | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.                                                                                                                                                                                                         |
 | **Metric**                          | Text size: 24px (`--fs-500`, `--lh-500`), color uses `--text-primary`, link color, or another relevant color for indicating specific metrics in your product. You may adjust text size to 20px or 32px as needed. Refer to the [Typography scale](/style/typography/typography). |
 | **Metric's additional information** | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.                                                                                                                                                                                                         |
@@ -122,7 +122,7 @@ When required, show tooltips displaying values while hovering over minitrends.
 
 ### Clickable minitrend
 
-Make minitrends clickable to provide the detailed information (e.g., complete widget with a full chart). This approach is useful when users don't need simultaneous chart analysis and the user flow doesn't involve frequent chart scrutiny.
+Make minitrends clickable to provide the detailed information (for example, complete widget with a full chart). This approach is useful when users don't need simultaneous chart analysis and the user flow doesn't involve frequent chart scrutiny.
 
 #### Important considerations
 

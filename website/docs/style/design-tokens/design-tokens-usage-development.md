@@ -5,7 +5,7 @@ tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in 
 
 ## Global theme
 
-Design tokens help ensure consistent visual choices and behaviour across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
+Design tokens help ensure consistent visual choices and behavior across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
 
 <!-- **Why design tokens should be used only for global theming:**
 
@@ -20,7 +20,7 @@ If you can't find the token you are looking for, we recommend you to double-chec
 
 Global themes should be preferred over local ones until multiple themes appear on the same page.
 
-To apply a global theme, define CSS variables on the `:root` via CSS or JS. e.g., following CSS will make all main backgrounds black and all primary texts white.
+To apply a global theme, define CSS variables on the `:root` via CSS or JS. For example, following CSS will make all main backgrounds black and all primary texts white.
 
 ```css
 :root {

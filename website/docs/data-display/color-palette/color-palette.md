@@ -17,7 +17,7 @@ We recommend using red carefully, as it is typically reserved for destructive ac
 
 ## Chart tokens
 
-For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic-tokens) containing tokens with `chart` in his names.
+For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic-tokens) containing tokens with `chart` in their names.
 
 ## Text and grid tokens
 
@@ -217,7 +217,7 @@ const App = function (props) {
 
 #### Null and n/a data
 
-Use `--intergalactic-chart-palette-order-null` token to indicate null or not available data when applicable (e.g., in Donut chart).
+Use `--intergalactic-chart-palette-order-null` token to indicate null or not available data when applicable (for example, in Donut chart).
 
 ::: react-view
 

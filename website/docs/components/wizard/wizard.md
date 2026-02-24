@@ -100,7 +100,7 @@ Collapse the panel to 44px, leaving only the step numbers. When hovering a step 
 
 ### Placement
 
-The scroll behaviour inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/modal).
+The scroll behavior inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/modal).
 
 Center the Wizard relative to the user's viewport. And leave margins of 40px outside the window.
 

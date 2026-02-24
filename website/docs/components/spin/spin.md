@@ -60,5 +60,5 @@ For Spin appearance and disappearance, use an animation with a 300ms delay and `
 
 ## Usage in UX/UI
 
-Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, e.g.:  **Loading...**.
+Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
 

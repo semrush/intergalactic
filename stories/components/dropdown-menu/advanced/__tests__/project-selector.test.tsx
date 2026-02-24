@@ -22,7 +22,7 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
   await new Promise((resolve) => setTimeout(resolve, 50));
 
   const input = await waitFor(() => {
-    const element = dropdown.querySelector('[data-ui-name="InputSearch"]');
+    const element = dropdown.querySelector('[data-ui-name="Input.Value"]');
     if (!element) throw new Error('Input not found');
     return element as HTMLInputElement;
   });

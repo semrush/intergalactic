@@ -45,7 +45,7 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 **Dropdown is hidden:**
 
 - by clicking outside the dropdown
-- by an action inside the dropdown (e.g., by clicking the "Cancel" button)
+- by an action inside the dropdown (for example, by clicking the "Cancel" button)
 - by pressing `Esc`
 - when the input trigger loses `focus`
 

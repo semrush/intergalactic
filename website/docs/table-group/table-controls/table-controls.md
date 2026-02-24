@@ -27,7 +27,7 @@ Each of these tasks represents a distinct process that demands attention.
 1. Columns that can be sorted show a `SortDesc` icon on hover. Default sorting direction is descending.
 2. In an already sorted column, a `SortDesc` or a `SortAsc` icon is always visible and indicates the current sorting direction.
 ![](static/sorting1.png)
-4. When user sorts a column, sorting icons on other columns don’t change his direction.
+4. When user sorts a column, sorting icons on other columns don’t change their direction.
 5. Sorting action reloads the table, returning user to the first row.
 6. Sorting isn't available for parent header cells in multi-level headers.
 ![](static/two-row-head.png)
@@ -84,7 +84,7 @@ Table rows can be selectable. In this case, each row, including the header, will
 
 When switching pages, row selection shouldn't reset.
 
-_e.g., user selects 3 rows on page 1, then goes to page 2, and selects 5 rows there. When user returns to page 1, the selected rows should be preserved._
+_For example, user selects 3 rows on page 1, then goes to page 2, and selects 5 rows there. When user returns to page 1, the selected rows should be preserved._
 
 ### Selecting multiple rows with Shift
 
@@ -192,7 +192,7 @@ Choose from three options based on context:
 
 ### Wrap text to next line
 
-This option is suitable for cases when the table cell has more than one row of a data. e.g., if there is a `row-span` with substrings in the row.
+This option is suitable for cases when the table cell has more than one row of a data. For example, if there is a `row-span` with substrings in the row.
 
 ![](static/text-wrap.png)
 

@@ -20,7 +20,7 @@ Before an irreversible action, such as permanently deleting an item or losing un
 
 ![](static/confirm-dialog-delete.png)
 
-When the user is about to take an action that leads to serious consequences, e.g. changing network configuration, ensure the following:
+When the user is about to take an action that leads to serious consequences, for example changing network configuration, ensure the following:
 
 - The dialog must explain what exactly will change.
 - The user has to confirm the action by entering the requested value.

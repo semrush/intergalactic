@@ -41,7 +41,7 @@ Read more about [how to apply styles composition in practice](/style/css-injecti
 
 ## Global specific
 
-This helps you to rewrite or to add styles to all our components by redefining his appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
+This helps you to rewrite or to add styles to all our components by redefining their appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
 
 Using this approach, you can publish CSS injections to `NPM` and reuse them later.
 

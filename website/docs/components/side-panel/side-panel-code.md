@@ -62,7 +62,7 @@ By default, the component is rendered with an overlay, but you can change this b
 
 ## Portals
 
-By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behaviour with [`PortalProvider`](/utils/portal/portal) and disable it with `disablePortal`.
+By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/portal) and disable it with `disablePortal`.
 
 ::: sandbox
 

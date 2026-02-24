@@ -8,7 +8,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ## Description
 
-**FeaturePopover** is a component that helps drawing users’ attention to an interface part or control. _e.g., it may point to a new function or suggest the next step to the user._
+**FeaturePopover** is a component that helps drawing users’ attention to an interface part or control. _For example, it may point to a new function or suggest the next step to the user._
 
 `FeaturePopover` contains only basic reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
 
@@ -131,7 +131,7 @@ Show onboarding only to new users who have never seen it. If the user has alread
 
 - Don’t show more than one `FeaturePopover` at the same time.
 - `FeaturePopover` for a new function should be shown for no more than a month.
-- `FeaturePopover` should be shown in context, e.g., when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show `FeaturePopover` on the element in the table. Don’t distract the user.
+- `FeaturePopover` should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show `FeaturePopover` on the element in the table. Don’t distract the user.
 - **Don’t show `FeaturePopover` if the user has already interacted with the advertised item.**
 - `FeaturePopover` should be shown only once (except for cases when user clicked "Show later"). If the user has closed `FeaturePopover` or clicked "Got it", don’t show this message to them again.
 
@@ -139,7 +139,7 @@ Show onboarding only to new users who have never seen it. If the user has alread
 
 ### Title
 
-- Describe the main value of a feature for the user in the title. _e.g., "Save filters to get data" instead of "Saved filters", or "Work together" instead of "Collaboration"._
+- Describe the main value of a feature for the user in the title. _For example, "Save filters to get data" instead of "Saved filters", or "Work together" instead of "Collaboration"._
 - Write briefly. Always use a verb in the title.
 - Avoid repeating the control label or the text of the element, to which FeaturePopover points.
 - Also, avoid repeating the text of the paragraph.

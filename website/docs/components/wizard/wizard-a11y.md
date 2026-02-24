@@ -46,8 +46,8 @@ Ensure the proper heading hierarchy in the `Wizard`. The `Wizard` starts with an
 
 ## Resources
 
-- [W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behaviour.
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html) describes accessible behaviour of all form elements.
+- [W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html) describes accessible behavior of all form elements.
 
 ## Other recommendations
 

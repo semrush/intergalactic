@@ -42,7 +42,7 @@ Table: Roles and attributes
 |                            | `aria-disabled="true/false"`      | Indicates whether the option is disabled or enabled.                                                                                                                                |
 | `Select.InputSearch.Clear` | `aria-label="Clear search field"` | Defines an accessible name for the **Clear** button.                                                                                                                                |
 
-<!-- * For information about the dropdown behaviour see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
+<!-- * For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
 
 ## Considerations for developers
 

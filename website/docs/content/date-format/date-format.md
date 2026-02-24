@@ -5,7 +5,7 @@ title: Date format
 ## Standard
 
 ::: warning NOTE
-Do not use ordinal numbers for dates. e.g., use April 15 instead of April 15th.
+Do not use ordinal numbers for dates. For example, use April 15 instead of April 15th.
 :::
 
 | Type            | Date                                                                |

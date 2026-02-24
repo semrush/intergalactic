@@ -34,7 +34,7 @@ Don't forget to check that long text in links is truncated with an [ellipsis](..
 
 ## Resources
 
-- [W3 breadcrumbs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html) has detailed information about the breadcrumbs accessible behaviour.
+- [W3 breadcrumbs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html) has detailed information about the breadcrumbs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html) gives recommendations for the accessible components.
 
 ## Other recommendations

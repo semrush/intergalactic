@@ -62,7 +62,7 @@ Add a new rule to your `webpack-config` :
 ```
 
 ::: tip
-You can also use the name of the package with CSS injections, e.g. `{ theme: "my-css injection-npm-package" }` .
+You can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }` .
 :::
 
 After that, all the styles created in your CSS injection style directory will be applied to the corresponding components.

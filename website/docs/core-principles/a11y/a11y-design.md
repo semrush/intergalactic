@@ -53,7 +53,7 @@ Make sure that user can easily understand the meaning and structure of the page 
 ::: tip
 **Why it's important**
 
-- It allows users to quickly find the necessary information and solve his cases.
+- It allows users to quickly find the necessary information and solve their cases.
 - It helps users quickly understand what's happening on the page.
 :::
 
@@ -76,7 +76,7 @@ People should be also able to increase the size of text to up to 200%. This help
 **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
 :::
 
-Use adaptive layout to allow the user to choose his preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
+Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
@@ -90,18 +90,18 @@ Make sure that user understands all content, including charts, icons, and images
 
 - Don't use graphics if your case can be solved with text.
 - Make sure all graphics are accompanied by a clear text description. However, decorative graphics don't require a text alternative.
-- Use icons as additional visual cues, not decorations, and only where it's really necessary. Choose easily recognizable icons (e.g., a trash can for deleting something).
+- Use icons as additional visual cues, not decorations, and only where it's really necessary. Choose easily recognizable icons (for example, a trash can for deleting something).
 - Don't forget about contrast when placing text on an image. Use a solid background or make the image darker.
 
 ### Data visualization
 
 - Provide a text description for the data visualizations.
 - Make sure data and specifications are clearly labeled.
-- Provide sufficient contrast between the presented data (e.g., lines in charts), so that colorblind users can distinguish between them. Getting a 3:1 contrast ratio between all colors in a data visualization can be hard. We recommend including other visual cues such as a difference in pattern and/or the use of textual labels (we plan to implement some solutions in our charts library).
+- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them. Getting a 3:1 contrast ratio between all colors in a data visualization can be hard. We recommend including other visual cues such as a difference in pattern and/or the use of textual labels (we plan to implement some solutions in our charts library).
 
 ### Alternate versions
 
-- Create an alternate form for the content that cannot be presented as text. e.g., to help the user find an ATM, you could offer a map, a table, or a list.
+- Create an alternate form for the content that cannot be presented as text. For example, to help the user find an ATM, you could offer a map, a table, or a list.
 - Captcha tops the list of the most difficult and common problems that blind users face. It's often used needlessly from a security point of view, and can be replaced with other validation methods. If using a Captcha is absolutely necessary, be sure to add an audio alternative for visually impaired users.
 
 To learn more, visit the [text alternatives](https://www.w3.org/TR/WCAG22/#text-alternatives) section of the WCAG website.
@@ -121,12 +121,12 @@ Animated website elements, flickering or flashing logos or ads can cause a seizu
 
 ## Forms
 
-![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "e.g., if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
+![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "For example, if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
 
 Provide instructions and hints to help users avoid mistakes when filling out a form.
 
 - Make sure that all input elements have meaningful labels that remain visible even after a field has been filled out.
-- Let the user know the data format in advance (date, phone number, zip code, etc.). It's also a good practice letting the user know when his Caps Lock button is enabled.
+- Let the user know the data format in advance (date, phone number, zip code, etc.). It's also a good practice letting the user know when their Caps Lock button is enabled.
 - Provide clear instructions to help user fix any errors.
 
 ::: tip
@@ -152,8 +152,8 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 **Requirements**:
 
-- **It should be clear from the link text what will happen on click**. Don't use URLs or the _"Click here"_ anchor text for your links, as they are too uninformative. e.g., instead of _"Click here"_ use _"Download report"_, or _"Create account"_ instead of _"Finish"_. This way, the user will have a clear idea of what will happen next.
-- **Links should be an organic part of a sentence**. e.g., it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ – instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
+- **It should be clear from the link text what will happen on click**. Don't use URLs or the _"Click here"_ anchor text for your links, as they are too uninformative. For example, instead of _"Click here"_ use _"Download report"_, or _"Create account"_ instead of _"Finish"_. This way, the user will have a clear idea of what will happen next.
+- **Links should be an organic part of a sentence**. For example, it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ – instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
 - **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write: _"Download instructions in PDF"_. This is important for mobile users with data caps.
 
 ![The illustration has two sides; "Don't" on the left and "Good" on the right. In the "Don't" section, the text says "You can see all plans and pricing lists here." Only the word "here" is colored blue to indicate it's a link. In the "Good" section, the entire text "all plans and pricing lists here" is colored like a link.](/core-principles/a11y/static/labels.png)
@@ -204,9 +204,9 @@ Some of your users may suffer from dyslexia or developmental disorders, making i
 
 - **Use clear headings**. Make your headings clear and descriptive so that readers can easily understand what the following text is about. Try to keep your paragraphs short for easier viewing on mobile devices. Use short sentences whenever possible.
 
-- **Be careful with typos**. Watch your keyboard layout. Remember that the English letter _C_ and the Russian letter _С_ are 2 completely different characters, despite the fact that they look the same. Screen readers read symbols based on his code in the symbol table, and not from its typeface. So if there are any typos like this in the text of the page, it makes it extremely difficult to work with for your blind or visually impaired users.
+- **Be careful with typos**. Watch your keyboard layout. Remember that the English letter _C_ and the Russian letter _С_ are 2 completely different characters, despite the fact that they look the same. Screen readers read symbols based on their code in the symbol table, and not from its typeface. So if there are any typos like this in the text of the page, it makes it extremely difficult to work with for your blind or visually impaired users.
 
-- **Avoid idioms**. Try not to use idioms or other expressions whose meaning cannot be easily recognized from the usual meanings of the words that they consist of. e.g., an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
+- **Avoid idioms**. Try not to use idioms or other expressions whose meaning cannot be easily recognized from the usual meanings of the words that they consist of. For example, an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
 
 ::: tip
 To learn more, visit the [Readable](https://www.w3.org/TR/WCAG22/#readable) section of the WCAG website.

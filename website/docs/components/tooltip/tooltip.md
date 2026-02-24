@@ -124,7 +124,7 @@ If the tooltip has interactive elements inside, the hiding time should be increa
 
 ## Content
 
-Tooltip content is closely related to its behaviour, so you should choose the appropriate component depending on what you intend to show inside the tooltip.
+Tooltip content is closely related to its behavior, so you should choose the appropriate component depending on what you intend to show inside the tooltip.
 
 Table: Tooltip content
 
@@ -148,7 +148,7 @@ Main recommendations:
 
 ![](static/tooltip-trigger-yes-no.png)
 
-**When the trigger isn’t clear enough, add a clear title to the tooltip.** Additionally, include a title when the trigger doesn't adequately explain the topic of the tooltip. e.g., you can describe additional conditions in the header or expand on the trigger's idea.
+**When the trigger isn’t clear enough, add a clear title to the tooltip.** Additionally, include a title when the trigger doesn't adequately explain the topic of the tooltip. For example, you can describe additional conditions in the header or expand on the trigger's idea.
 
 ![](static/tooltip-trigger2-yes-no.png)
 
