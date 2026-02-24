@@ -58,9 +58,12 @@ SInner {
 
 SAddon {
   align-items: baseline;
-  vertical-align: -2px;
   pointer-events: none;
   align-self: center;
+
+  &:has(>svg) {
+    vertical-align: -2px;
+  }
 }
 
 SLink SAddon {
