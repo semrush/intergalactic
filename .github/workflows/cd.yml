@@ -179,6 +179,7 @@ jobs:
     outputs:
       changed_files: ${{ steps.changed-files.outputs.changed_files }}
       count: ${{ steps.changed-files.outputs.count }}
+      skip_docs_lint: ${{ steps.changed-files.outputs.skip_docs_lint }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:
@@ -194,6 +195,7 @@ jobs:
 
           if [[ -z "$FILES" ]]; then
             echo "::notice::The docs-lint job will be skipped because there’s no changed .md files."
+            echo "skip_docs_lint=true" >> $GITHUB_OUTPUT
           fi
           if [[ $ALL_FILES_COUNT -gt 300 && -n "$FILES" ]]; then
             echo "::warning::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
@@ -201,7 +203,7 @@ jobs:
   docs-lint:
     runs-on: ubuntu-latest
     needs: get-changed-files
-    if: ${{ needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
+    if: ${{ needs.get-changed-files.outputs.skip_docs_lint != 'true' && needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
