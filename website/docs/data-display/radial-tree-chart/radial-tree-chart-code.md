@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Multicolor and accessibility
 
-Pass color in data to specify radians color. You also can enable `patterns` property to show different symbols for different values.
+Pass color in data to specify radians color. We also can enable `patterns` property to show different symbols for different values.
 
 ::: sandbox
 

@@ -5,7 +5,7 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), Example('ellipsis-code'), Chang
 
 ## Basic usage
 
-You can enable ellipsis in [Text](../../style/typography/typography-api#text) by passing ellipsis settings to the `ellipsis` property.
+We can enable ellipsis in [Text](../../style/typography/typography-api#text) by passing ellipsis settings to the `ellipsis` property.
 
 To use the default settings, use `ellipsis={true}`.
 
@@ -35,7 +35,7 @@ If you have a lot of ellipsis instances on one screen, you can optimize the perf
 
 It's possible to implement text search in the cropped parts of the content.
 
-You can use a `CSSProperties` object or a string with the class name to highlight the found text.
+We can use a `CSSProperties` object or a string with the class name to highlight the found text.
 
 Note that you should calculate `from`/`to` indexes by yourself.
 
@@ -62,7 +62,7 @@ When using `cropPosition: 'middle'`, you can position the ellipsis more precisel
 
 ## Multiline paragraphs
 
-You can truncate paragraphs of text with ellipsis using the `maxLine` property.
+We can truncate paragraphs of text with ellipsis using the `maxLine` property.
 
 Note that `maxLine` can only be used with `cropPosition: end`, and the hint is automatically disabled in this case.
 
@@ -76,7 +76,7 @@ Note that `maxLine` can only be used with `cropPosition: end`, and the hint is a
 
 ## Hint properties
 
-You can customize the hint that appears on hover/focus by using the `hintProps` property.
+We can customize the hint that appears on hover/focus by using the `hintProps` property.
 
 ::: sandbox
 

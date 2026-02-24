@@ -45,7 +45,7 @@ To get line with area, define `y0` and `y1` in `Line.Area` props and in the `dat
 ## Hover line
 
 - The `HoverLine` component is responsible for the hover effect. Use it with line charts.
-- You can set the orientation of the component using the `vertical` and `horizontal` properties.
+- We can set the orientation of the component using the `vertical` and `horizontal` properties.
 
 ::: sandbox
 
@@ -57,7 +57,7 @@ To get line with area, define `y0` and `y1` in `Line.Area` props and in the `dat
 
 ## Tooltip
 
-You can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
+We can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
 
 ::: sandbox
 
@@ -85,7 +85,7 @@ If you already have the tick values, you can use `scaleLine`.
 
 ## Curve
 
-To get curved lines, transfer `curve` property with the required rounding method to the chart. You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+To get curved lines, transfer `curve` property with the required rounding method to the chart. We can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 ::: sandbox
 
@@ -97,7 +97,7 @@ To get curved lines, transfer `curve` property with the required rounding method
 
 ## Partial dots display
 
-You can pass function to `display` prop of `Dots` component to control which dots should be displayed.
+We can pass function to `display` prop of `Dots` component to control which dots should be displayed.
 
 ::: sandbox
 

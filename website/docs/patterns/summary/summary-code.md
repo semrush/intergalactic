@@ -17,9 +17,9 @@ Display [Skeleton](/components/skeleton/skeleton) during initial data loading.
 
 ## Vertical layout with Mini chart
 
-You have the option to arrange metrics vertically.
+We have the option to arrange metrics vertically.
 
-You can show [Mini charts](../../data-display/mini-chart/mini-chart.md) alongside metrics. Remember to set `aria-hidden`, or add a meaningful `aria-label`.
+We can show [Mini charts](../../data-display/mini-chart/mini-chart.md) alongside metrics. Remember to set `aria-hidden`, or add a meaningful `aria-label`.
 
 ::: sandbox
 

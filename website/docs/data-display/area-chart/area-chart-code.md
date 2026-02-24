@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Area
 
-- You can draw a chart with areas using the `Area` component.
+- We can draw a chart with areas using the `Area` component.
 - `Dots` are the dots on the line chart.
 - As with the [Line chart](/data-display/line-chart/line-chart-code), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
 

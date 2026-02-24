@@ -30,9 +30,9 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 **InputNumber offers the following features:**
 
 - By default, it only allows numeric characters, including numbers, periods, commas, and minus sign. Other non-numeric characters cannot be entered.
-- You can enable or disable the stepper buttons.
-- You can set minimum and maximum values that the user can enter.
-- You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
+- We can enable or disable the stepper buttons.
+- We can set minimum and maximum values that the user can enter.
+- We can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
 
 ::: tip
 **HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
@@ -132,7 +132,7 @@ If the input doesn't have a defined range of acceptable values, no validation wi
 
 ### Fractional numbers
 
-You can use a dot to enter a fractional value in the input.
+We can use a dot to enter a fractional value in the input.
 
 ::: tip
 The dot and comma are interchangeable characters depending on the locale.

@@ -22,7 +22,7 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ### Sizes and margins
 
-You can add addons before and after the link text. Addons always have a 4px margin from the link text.
+We can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
 - The icon should represent the action that will be performed by the link.
 - If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/spin) component.

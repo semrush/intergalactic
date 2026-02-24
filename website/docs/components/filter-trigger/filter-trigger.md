@@ -54,7 +54,7 @@ Table: Default FilterTrigger states
 | Placeholder                     | Default state of the filter. It should always have a placeholder that represents what the filter is about. ![](static/ft-1.png) |
 | Placeholder (hover)             | When user hovers over an inactive filter, you can show a tooltip with small description of how the filter works. ![](static/ft-2.png) ![](static/ft-3.png)  |
 | Loading                         | If the system needs some time to load all the filter options, show a dropdown with **“Loading”** text.           ![](static/ft-4.png) |
-| Something went wrong            | If for some reason it wasn't possible to show all the filter options, show “**Something went wrong”** text in the dropdown. You can add **Reload** link, which sends the request again.  ![](static/ft-5.png) |
+| Something went wrong            | If for some reason it wasn't possible to show all the filter options, show “**Something went wrong”** text in the dropdown. We can add **Reload** link, which sends the request again.  ![](static/ft-5.png) |
 | Placeholder (active trigger)    | The opened trigger should always get the `active` state. Dropdown may be closed by clicking on an option or outside the dropdown. ![](static/ft-6.png)  |
 | Active filter                   | The trigger size changes according to the selected value or values. **If only one value can be chosen, it's suggested to display a tooltip that explains the specific selection when hovering over the active filter.** If multiple values can be selected, there's no need to show all of them in the tooltip. Instead, the tooltip can provide a description of how the filter works.  ![](static/ft-7.png) ![](static/ft-9.png) |
 | Several values selected         | If the filter allows [selecting more than two values](/components/select/select), simplify the display by showing **"N selected"** in the trigger, indicating the number of selected values. ![](static/ft-10.png) |
@@ -87,5 +87,5 @@ In the filter trigger, it's essential to show the applied value in a way that is
 
 ### Writing numbers, periods, etc
 
-You can find more details on writing numbers and periods in English in the [Content guide](../../content/numbers/numbers.md).
+We can find more details on writing numbers and periods in English in the [Content guide](../../content/numbers/numbers.md).
 

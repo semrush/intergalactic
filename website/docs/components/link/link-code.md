@@ -17,7 +17,7 @@ By default, links are displayed as `inline` element and don’t need some extra 
 
 ## Link addon
 
-You can add addons to link either by specifying the desired tag in the `addonLeft`/`addonRight` property or by rendering the `Link.Addon`/`Link.Text` in the component body. Both methods achieve the same result.
+We can add addons to link either by specifying the desired tag in the `addonLeft`/`addonRight` property or by rendering the `Link.Addon`/`Link.Text` in the component body. Both methods achieve the same result.
 
 ::: sandbox
 
@@ -29,7 +29,7 @@ You can add addons to link either by specifying the desired tag in the `addonLef
 
 ## Color links
 
-Links can be colored for specific purposes. You can apply a specific color to links by passing the `color` property to them.
+Links can be colored for specific purposes. We can apply a specific color to links by passing the `color` property to them.
 
 ::: sandbox
 

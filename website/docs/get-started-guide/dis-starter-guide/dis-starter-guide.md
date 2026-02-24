@@ -33,7 +33,7 @@ The Intergalactic Design System uses two sets of design tokens: [basic](/style/d
 Check out [Design tokens](/style/design-tokens/design-tokens) to learn more about how they work and how to use them.
 
 ::: tip
-You can use tools like [Huetone](https://huetone.ardov.me/) to create new color palettes.
+We can use tools like [Huetone](https://huetone.ardov.me/) to create new color palettes.
 :::
 
 ## Typography

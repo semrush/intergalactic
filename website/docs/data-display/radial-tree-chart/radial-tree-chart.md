@@ -47,7 +47,7 @@ Basic rules for visualizing data as a Radial Tree:
 ![](static/sizes2.png)
 
 - Size of the circle bullet in the active state – `16px * 16px`.
-- You can place an icon of M size inside the circle bullet in the active state.
+- We can place an icon of M size inside the circle bullet in the active state.
 
 ## Legend
 
@@ -65,7 +65,7 @@ This chart doesn't need tooltip.
 | ------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Default | ![](static/default.png) | In the default state, use 400 hue colors. For example, `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
 | Hover   | ![](static/hover.png)     | For the text's hover state use the next color hue. For example, `--blue-500`, `--red-500`, `--green-500` , etc. **Don’t change the color of the additional line and the circle bullet.**                                                                        |
-| Active  | ![](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. For example, `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
+| Active  | ![](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. For example, `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. We can place an icon inside the bullet if needed. |
 
 ## Animation
 

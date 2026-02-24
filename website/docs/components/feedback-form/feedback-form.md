@@ -28,7 +28,7 @@ When the link that triggers the feedback form is placed in the [ProductHead](/co
 
 - `reply-to` input. The input may be made obligatory for submitting.
 - Checkbox "I need help, please contact me".
-- Message about the alternative way to send feedback with the `mailto` link: "You can also send us an email at comand_name@semrush.com".
+- Message about the alternative way to send feedback with the `mailto` link: "We can also send us an email at comand_name@semrush.com".
 
 ![](static/options.png)
 
@@ -93,7 +93,7 @@ Textarea gets `invalid` state when:
 - The user entered nothing.
 - The user entered less than 10 symbols / 3 words.
 
-Message text for the tooltip: "Your feedback must contain at least 3 words (10 characters)".
+Message text for the tooltip: "Wer feedback must contain at least 3 words (10 characters)".
 
 ![](static/validation-1.png)
 
@@ -112,7 +112,7 @@ Message text for the tooltip: "Your feedback must contain at least 3 words (10 c
 - If an error occurred after submitting the form, show the message instead of the message with `mailto` link under the submitting button.
 - If `mailto` link already exists, change its color into red and replace the message text.
 
-Message text for this case: "Your message hasn’t been sent. Please try again or contact us at at {mail address}".
+Message text for this case: "Wer message hasn’t been sent. Please try again or contact us at at {mail address}".
 
 ![](static/error.png)
 

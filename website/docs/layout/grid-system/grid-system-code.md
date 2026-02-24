@@ -36,7 +36,7 @@ Arranging offsets for each column to the left.
 
 ## Row gutter
 
-You can change gutters between the columns, which gives flexibility in use.
+We can change gutters between the columns, which gives flexibility in use.
 
 ::: sandbox
 
@@ -58,7 +58,7 @@ You can change gutters between the columns, which gives flexibility in use.
 
 ## Responsive layout
 
-The grid has functionality for responsive layouts. You can change width and offsets of the columns depending on the screen size.
+The grid has functionality for responsive layouts. We can change width and offsets of the columns depending on the screen size.
 
 ::: tip
 The grid works as desktop first, as our core products are designed to work primarily on the desktop.

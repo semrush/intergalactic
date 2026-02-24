@@ -44,7 +44,7 @@ The input field may have a **Clear** button inside it to clear the entered value
 
 ## Input with submit button
 
-You can place a submit button inside the input as the right addon. It's only visible when the input has a nonempty value.
+We can place a submit button inside the input as the right addon. It's only visible when the input has a nonempty value.
 
 ::: sandbox
 
@@ -56,7 +56,7 @@ You can place a submit button inside the input as the right addon. It's only vis
 
 ## Input with text addon
 
-You can add text to the input as an addon that the user can't modify. This can be useful when you need a fixed placeholder text in the input.
+We can add text to the input as an addon that the user can't modify. This can be useful when you need a fixed placeholder text in the input.
 
 ::: sandbox
 
@@ -80,7 +80,7 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 
 ## Input with other components
 
-You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input.
+We can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input.
 
 ::: sandbox
 

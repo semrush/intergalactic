@@ -31,7 +31,7 @@ If you need to increase or decrease the margins between filters inside the form,
 
 ![](static/margins.png)
 
-You can visually separate submit buttons from the filters by using the following border style: `border: 1px solid var(--intergalactic-border-primary)`.
+We can visually separate submit buttons from the filters by using the following border style: `border: 1px solid var(--intergalactic-border-primary)`.
 
 ![](static/advanced-filters-dropdown2.png)
 
@@ -64,7 +64,7 @@ Advanced filters implemented in the dropdown must have:
 - A button to add a new condition (optional)
 - **Apply** and **Clear all** buttons
 
-You can fix advanced filters implemented in the dropdown at the top of the page while scrolling.
+We can fix advanced filters implemented in the dropdown at the top of the page while scrolling.
 
 ### Opened filter
 

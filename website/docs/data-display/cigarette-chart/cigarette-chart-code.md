@@ -28,7 +28,7 @@ To change the layout of the chart from horizontal to vertical, just set `invertA
 
 ## Tooltip
 
-You can customize the tooltip: display all or just one data category, and enable or disable percentages.
+We can customize the tooltip: display all or just one data category, and enable or disable percentages.
 
 ::: sandbox
 
@@ -40,7 +40,7 @@ You can customize the tooltip: display all or just one data category, and enable
 
 ## Click interaction
 
-You can add some click interaction for the chart sectors.
+We can add some click interaction for the chart sectors.
 
 ::: sandbox
 
@@ -76,7 +76,7 @@ Use [Skeleton](/components/skeleton/skeleton) for the initial chart loading.
 
 ## Custom accessible text
 
-You can set `a11yAltTextConfig` if you need accessible text that differs from the default one.
+We can set `a11yAltTextConfig` if you need accessible text that differs from the default one.
 
 ::: sandbox
 

@@ -14,7 +14,7 @@ For example, you can group together:
 - [Input](/components/input/input)
 - [Select](/components/select/select)
 
-You may also need `flex-box` to align the components. For more information, read [Flex-box and spacing system](/layout/box-system/box-system-spacing).
+We may also need `flex-box` to align the components. For more information, read [Flex-box and spacing system](/layout/box-system/box-system-spacing).
 
 ## Grouped buttons
 
@@ -57,7 +57,7 @@ Don’t group tertiary buttons this way.
 
 ## Grouped input, select, and button
 
-You can group input, select, and button.
+We can group input, select, and button.
 
 ::: sandbox
 
@@ -98,10 +98,10 @@ For the correct type mapping in the TC, you must also pass the interface.
 Use the `neighborLocation` component property instead.
 :::
 
-You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>` and then the `neighborLocation` prop will come to your component.
+We can apply `<NeighborLocation/>` to your components. We will need to use the component `<NeighborLocation.Detect/>` and then the `neighborLocation` prop will come to your component.
 
 ::: tip
-You can use the render function or the element will be cloned.
+We can use the render function or the element will be cloned.
 :::
 
 ::: sandbox

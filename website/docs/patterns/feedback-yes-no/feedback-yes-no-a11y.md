@@ -11,7 +11,7 @@ Find detailed information about the keyboard support for all form elements in th
 
 ### Roles and attributes
 
-FeedbackYesNo form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
+FeedbackYesNo form pattern consists of several components that have their own accessibility requirements. We can find more about each of them in their guides:
 
 - [Notice](/components/notice/notice-a11y)
 - [Button](/components/button/button-a11y)

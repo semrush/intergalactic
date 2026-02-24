@@ -62,7 +62,7 @@ Add a new rule to your `webpack-config` :
 ```
 
 ::: tip
-You can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }` .
+We can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }` .
 :::
 
 After that, all the styles created in your CSS injection style directory will be applied to the corresponding components.
@@ -75,7 +75,7 @@ After that, all the styles created in your CSS injection style directory will be
 Versioning is optional, but recommended for your own comfort.
 :::
 
-You can design a CSS injection for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
+We can design a CSS injection for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
 
 An example of file structure:
 

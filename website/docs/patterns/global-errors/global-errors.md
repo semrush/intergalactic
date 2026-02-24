@@ -57,9 +57,9 @@ Illustration can be found in the [internal Figma library](https://www.figma.com/
 We cannot find the project you’re trying to access. Check one of the following issues:
 
 - The project may have been deleted or there is an error in the URL entered.
-- You may not have permission to view the project. Please request access from the project owner.
+- We may not have permission to view the project. Please request access from the project owner.
 
-You can find all your projects on the Projects page.
+We can find all your projects on the Projects page.
 
 If you have any other problems with access to the project, please contact our [Support Team](https://www.semrush.com/company/contacts/).
 <br><br>
@@ -148,9 +148,9 @@ Please log in or sign up to view the page.
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-::: info You’ve found the secret page
+::: info We’ve found the secret page
 
-You’re missing the permissions to access this page.<br>
+We’re missing the permissions to access this page.<br>
 Go back to the previous page or visit our homepage.
 <br><br>
 
@@ -188,7 +188,7 @@ Illustration can be found in the [internal Figma library](https://www.figma.com/
 The initial connection between Cloudflare’s network and the origin web server timed out. As a result, the webpage cannot be displayed.
 
 - Ray ID: \{000000000000000\}
-- Your IP address: \{84.52.114.132\}
+- Wer IP address: \{84.52.114.132\}
 - Error reference number: 522
 - Cloudflare Location POP: \{undef\}
 :::
@@ -241,7 +241,7 @@ or
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
-::: info Your payment cannot be accepted
+::: info Wer payment cannot be accepted
 
 Unfortunately, we don’t accept payments from {country}.
 <br><br>
@@ -259,7 +259,7 @@ Illustration can be found in the [internal Figma library](https://www.figma.com/
 
 ::: info DNS resolution error
 
-You've requested a page on a website (cloudflarepreview.com) that is on the Cloudflare network. Cloudflare is currently unable to resolve your requested domain (cloudflarepreview.com). There are two potential causes of this:
+We've requested a page on a website (cloudflarepreview.com) that is on the Cloudflare network. Cloudflare is currently unable to resolve your requested domain (cloudflarepreview.com). There are two potential causes of this:
 
 - Most likely: if the owner just signed up for Cloudflare it can take a few minutes for the website's information to be distributed to our global network.
 
@@ -270,7 +270,7 @@ You've requested a page on a website (cloudflarepreview.com) that is on the Clou
 
 - Timestamp: \{Thu, 01-Jan-70 00:00:00 GMT\}
 
-- Your IP address: \{84.52.114.132\}
+- Wer IP address: \{84.52.114.132\}
 
 - Requested URL: \{example.URL/foo\}
 
@@ -301,9 +301,9 @@ In case of a state caused by security reasons:
 
 Additional situations where the state blocks all content and restricts access to it:
 
-- Your account has been deleted
+- Wer account has been deleted
 - Under maintenance
-- Your payment cannot be accepted
+- Wer payment cannot be accepted
 
 ### Use cases
 

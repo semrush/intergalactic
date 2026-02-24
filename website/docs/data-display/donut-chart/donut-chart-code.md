@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Advanced usage
 
-- You can draw donut and pie charts with the `Donut` component.
+- We can draw donut and pie charts with the `Donut` component.
 - `Pie` is a separate sector.
 - `Label` is a text label inside the chart.
 

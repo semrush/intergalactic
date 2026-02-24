@@ -146,7 +146,7 @@ Common cases about focus behavior when working with dropdown are described below
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When the trigger is focused, pressing `Enter`/`Space` opens a modal window.
-3. You can use `Tab` and `Shift + Tab` to move between all the interactive elements inside the window.
+3. We can use `Tab` and `Shift + Tab` to move between all the interactive elements inside the window.
 4. Pressing `Esc` key (or `Close` icon, "Submit", or "Cancel" buttons) closes the modal window, and focus remains on the trigger.
 
 ## Resources

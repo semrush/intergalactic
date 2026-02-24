@@ -20,8 +20,8 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Scale
 
-You must pass a scale with a specified `domain`, `range` doesn't need to be specified as it is calculated automatically.
-You can modify the range or use a non-linear scale.
+We must pass a scale with a specified `domain`, `range` doesn't need to be specified as it is calculated automatically.
+We can modify the range or use a non-linear scale.
 
 ::: sandbox
 
@@ -33,7 +33,7 @@ You can modify the range or use a non-linear scale.
 
 ## Color
 
-You can change the color by passing the `color` property to the `<Radar.Polygon/>`.
+We can change the color by passing the `color` property to the `<Radar.Polygon/>`.
 It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and `<Radar.Polygon.Dots/>`.
 
 ::: sandbox
@@ -46,7 +46,7 @@ It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and 
 
 ## Background color
 
-You can use the `fill="transparent"` property to make polygons transparent.
+We can use the `fill="transparent"` property to make polygons transparent.
 
 ::: sandbox
 
@@ -82,7 +82,7 @@ If you need a custom React component instead of a label, you can change the disp
 
 ## Tooltip
 
-You need to use the `<Radar.Tooltip />` component to add interactivity.
+We need to use the `<Radar.Tooltip />` component to add interactivity.
 
 ::: sandbox
 
@@ -95,7 +95,7 @@ You need to use the `<Radar.Tooltip />` component to add interactivity.
 ## Circle
 
 To make the chart round, you need to pass the parameter `type="circle"`.
-You can also round the polygons by passing the "curve" parameter from D3 into them.
+We can also round the polygons by passing the "curve" parameter from D3 into them.
 
 ::: sandbox
 

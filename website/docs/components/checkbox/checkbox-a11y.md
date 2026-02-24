@@ -32,7 +32,7 @@ Table: Roles and attributes
 
 ### Grouping with fieldset
 
-You can group `Checkbox` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Refer to the [Checkbox group example](/components/checkbox/checkbox-code#checkbox-group).
+We can group `Checkbox` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Refer to the [Checkbox group example](/components/checkbox/checkbox-code#checkbox-group).
 
 Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of checkbox buttons.
 

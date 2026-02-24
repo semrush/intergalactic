@@ -35,7 +35,7 @@ To change properties of specific dots, pass a function that will be called at ea
 ```
 
 ::: tip
-You also can put functions into single elements if your properties are calculated dynamically.
+We also can put functions into single elements if your properties are calculated dynamically.
 :::
 
 Since many SVG elements don't support nesting, they're rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
@@ -91,7 +91,7 @@ When you pass `scale` to the root component it also sets the coordinate axes. Ho
 
 It's also possible to have multiple axes with different positions.
 
-You can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
+We can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
 
 ::: tip
 According to the design guide, `YAxis` is hidden by default `(hide = true)`.
@@ -107,7 +107,7 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 ### Axis values
 
-You can change the values and properties on the axis by passing a function.
+We can change the values and properties on the axis by passing a function.
 
 The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
 
@@ -187,7 +187,7 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 
 ## Tooltip
 
-You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
+We can add a tooltip to the chart, for which you can set `Title` and `Footer`.
 
 ::: sandbox
 
@@ -223,7 +223,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend) for a more deta
 
 ## Synchronous charts
 
-You can pass a single `eventEmitter` to synchronize the charts.
+We can pass a single `eventEmitter` to synchronize the charts.
 
 ::: tip
 Be careful when choosing the `scale` for the axis, since it's common across different charts.
@@ -269,7 +269,7 @@ The `patterns` prop is inherited by all children components. So, you can apply i
 
 ### Enforcing patterns
 
-You can enforce use of build-in patterns by using it's names. The list of available patterns:
+We can enforce use of build-in patterns by using it's names. The list of available patterns:
 
 1. `starSmall`
 1. `romb`
@@ -306,7 +306,7 @@ You can enforce use of build-in patterns by using it's names. The list of availa
 
 ### Custom patterns
 
-You can provide custom pattern object to enforce it's form. The pattern object should include both fill and symbol properties.
+We can provide custom pattern object to enforce it's form. The pattern object should include both fill and symbol properties.
 
 The fill data is used for rendering charts like an `Area` while symbol data is needed to render corresponding symbol in chart legend or on the dots.
 
@@ -362,7 +362,7 @@ const data = Array(20)
 
 :::
 
-You can also provide a list of patterns.
+We can also provide a list of patterns.
 
 ::: sandbox
 
@@ -374,7 +374,7 @@ You can also provide a list of patterns.
 
 ### Low level components use
 
-You can access `PatternFill` and `PatternSymbol` components for low level use.
+We can access `PatternFill` and `PatternSymbol` components for low level use.
 
 `PatternFill` allows you to initialize [svg pattern](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns) and use it for customized charts.
 
@@ -392,7 +392,7 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 
 ### Data formatting
 
-You can provide formatting functions that will control A11y module generated summary and data table content.
+We can provide formatting functions that will control A11y module generated summary and data table content.
 
 ::: tip
 

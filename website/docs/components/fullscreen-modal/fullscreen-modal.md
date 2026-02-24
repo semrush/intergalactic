@@ -10,9 +10,9 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 **Use fullscreen modal component when:**
 
-- You need to focus user fully on a task that involves filling in, editing, or analyzing a large amount of information.
-- You need to display a substantial amount of additional data for a report and require user input on what to do with that data.
-- You need to show additional data for a report, but you don’t want to move it to a separate page.
+- We need to focus user fully on a task that involves filling in, editing, or analyzing a large amount of information.
+- We need to display a substantial amount of additional data for a report and require user input on what to do with that data.
+- We need to show additional data for a report, but you don’t want to move it to a separate page.
 - The screen size is smaller than 768px.
 
 ## Appearance
@@ -28,7 +28,7 @@ The fullscreen modal dialog includes:
 ### Content styles
 
 - Use 20px (`--fs-500`) or smaller text sizes for headings in the content area to ensure correct hierarchy with the modal header.
-- You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
+- We can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
 
 Table: Content styles for single-zone and dual-zone modal windows
 
@@ -49,7 +49,7 @@ Table: Content alignment for single-zone and dual-zone modal windows
 
 ### CTA buttons
 
-You can use either size M or size L buttons, depending on your case.
+We can use either size M or size L buttons, depending on your case.
 
 ::: tip
 The example below shows the default composition of the content, but depending on your case buttons can have different alignment.

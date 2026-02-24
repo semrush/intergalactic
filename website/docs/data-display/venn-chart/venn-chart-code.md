@@ -47,7 +47,7 @@ If you want to change the intersection styles, you can add additional styles to 
 
 ## Setting orientation
 
-You can also change the orientation and stacking order of the circles.
+We can also change the orientation and stacking order of the circles.
 
 ::: sandbox
 

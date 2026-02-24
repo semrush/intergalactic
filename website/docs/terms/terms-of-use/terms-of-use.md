@@ -30,7 +30,7 @@ Application - means software, supporting materials and documentation, photos, vi
 
 ### License
 
-We grant you a revocable, free of charge, non-exclusive license to use Semrush Design System in your Application, Software is provided under MIT License. You can find the description below. You may not use Semrush Design System for any purpose not expressly permitted by this License Agreement. Semrush reserves the right to revoke the provided license at any time. 
+We grant you a revocable, free of charge, non-exclusive license to use Semrush Design System in your Application, Software is provided under MIT License. We can find the description below. We may not use Semrush Design System for any purpose not expressly permitted by this License Agreement. Semrush reserves the right to revoke the provided license at any time. 
 
 ::: tip
 **The MIT License (MIT)**
@@ -46,18 +46,18 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 SEMRUSH DESIGN SYSTEM IS PROVIDED “AS IS” AND “WITH ALL FAULTS”. SEMRUSH AND ITS THIRD PARTY LICENSORS DISCLAIM ALL REPRESENTATIONS, WARRANTIES AND GUARANTEES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT, AND FITNESS FOR ANY PURPOSE. SEMRUSH MAKES NO REPRESENTATION, WARRANTY OR GUARANTEE RELATED TO RELIABILITY, ACCURACY, OR COMPLETENESS OF SEMRUSH DESIGN SYSTEM OR THAT YOUR USE OF SEMRUSH DESIGN SYSTEM WILL BE SECURE, TIMELY, UNINTERRUPTED OR ERROR-FREE. SEMRUSH DESIGN SYSTEM MAY NOT MEET YOUR REQUIREMENTS OR EXPECTATIONS.
 
-As we use third parties services, we have no control over these services. You agree to assume full responsibility and liability for all loss or damage suffered by yourself, any third party service providers, the Company, or any third party as a result of any breach of the Terms of Use.
+As we use third parties services, we have no control over these services. We agree to assume full responsibility and liability for all loss or damage suffered by yourself, any third party service providers, the Company, or any third party as a result of any breach of the Terms of Use.
 
 
 ## Ownership of Intellectual Property
 
-You agree that Semrush owns all legal right, title and interest in and to the Semrush products and services, including Semrush design system, including any Intellectual Property Rights inherent therein and related thereto. “Intellectual Property Rights” means any and all rights under patent law, copyright law, trade secret law, trademark law, and any and all other proprietary rights. Semrush reserves all rights not expressly granted to you under these Semrush Design System Terms.
+We agree that Semrush owns all legal right, title and interest in and to the Semrush products and services, including Semrush design system, including any Intellectual Property Rights inherent therein and related thereto. “Intellectual Property Rights” means any and all rights under patent law, copyright law, trade secret law, trademark law, and any and all other proprietary rights. Semrush reserves all rights not expressly granted to you under these Semrush Design System Terms.
 
 ## Applications; Indemnification
 
-You are solely responsible for your Applications, your use of Semrush Design System and your compliance with this Agreement. You agree to indemnify, defend and hold Semrush and its affiliates and their respective directors, officers, employees, successors, assigns, insurers, independent contractors and agents harmless from and against any and all claims, costs, damages, losses, liabilities and expenses (including reasonable attorneys’ fees and costs) arising out of any claim relating to (a) your Applications, (b) your use of Semrush Design System or (c) your breach of this Agreement or MIT license and any applicable law. You may not settle any claim without Semrush`s prior written consent. If you distribute your Applications to others, you agree to require the end users to agree that Semrush has no liability, warranty, or support or other obligations related to your Applications.
+We are solely responsible for your Applications, your use of Semrush Design System and your compliance with this Agreement. We agree to indemnify, defend and hold Semrush and its affiliates and their respective directors, officers, employees, successors, assigns, insurers, independent contractors and agents harmless from and against any and all claims, costs, damages, losses, liabilities and expenses (including reasonable attorneys’ fees and costs) arising out of any claim relating to (a) your Applications, (b) your use of Semrush Design System or (c) your breach of this Agreement or MIT license and any applicable law. We may not settle any claim without Semrush`s prior written consent. If you distribute your Applications to others, you agree to require the end users to agree that Semrush has no liability, warranty, or support or other obligations related to your Applications.
 
 ### Contacts
 
-You may contact us in connection with your use of Semrush Design System by email at ui-kit-team@semrush.com
+We may contact us in connection with your use of Semrush Design System by email at ui-kit-team@semrush.com
 

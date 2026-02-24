@@ -35,7 +35,7 @@ As an option, consider adding a tertiary button that opens a dropdown with suppl
 
 ## Illustration
 
-You can create illustrations for specific scenarios. These illustrations should fulfill an advertising role while reflecting the core essence of the product that is currently concealed from the user.
+We can create illustrations for specific scenarios. These illustrations should fulfill an advertising role while reflecting the core essence of the product that is currently concealed from the user.
 
 ![](static/example-1.png)
 

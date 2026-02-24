@@ -44,7 +44,7 @@ Keep additional lines dim to focus on data.
 
 ### Reference line
 
-You can show different reference lines (highlight date or dates range) to guide user through your data visualization.
+We can show different reference lines (highlight date or dates range) to guide user through your data visualization.
 
 ![](static/reference-line.png)
 
@@ -136,7 +136,7 @@ If you're displaying the chart inside a `Card`, use the [Card.Title](../../compo
 
 ### Chart description
 
-You can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
+We can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
 If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#card-header) component.
 

@@ -6,7 +6,7 @@ tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('t
 
 ## TabLine item with addons
 
-You can add icons, badges, and counters as addons to the left or right of the text in the item.
+We can add icons, badges, and counters as addons to the left or right of the text in the item.
 
 <!-- vale DevDocs.Inclusive = NO -->
 Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with [ellipsis](../../utils/ellipsis/ellipsis) and a [hint](../../utils/hint/hint) will be shown on hover and focus.
@@ -35,7 +35,7 @@ Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Tooltip
 ## Manual tab activation
 
 By default, when using keyboard interaction, a tab is activated immediately as soon as it's selected.
-You can change this behavior by setting `behavior='manual'`, so that user has to confirm their selection by pressing `Enter` or `Space`.
+We can change this behavior by setting `behavior='manual'`, so that user has to confirm their selection by pressing `Enter` or `Space`.
 
 This can be useful when some tabs load a lot of data and you want user to be able to select farther tabs without having to activate all tabs in-between.
 

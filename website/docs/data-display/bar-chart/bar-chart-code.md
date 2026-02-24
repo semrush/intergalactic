@@ -46,7 +46,7 @@ The `<HoverRect/>` component draws a rectangle when hovering the cursor over a c
 
 ## Tooltip
 
-You can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
+We can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
 
 ::: sandbox
 
@@ -98,7 +98,7 @@ The `<GroupBar.Bar/>` component is a customized version of `<Bar/>` and shares t
 
 ## Trend line
 
-You can combine charts with each other. For example, to display a trend line on a bar chart.
+We can combine charts with each other. For example, to display a trend line on a bar chart.
 
 ::: sandbox
 

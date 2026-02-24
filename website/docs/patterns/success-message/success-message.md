@@ -45,14 +45,14 @@ A user can close a success state by clicking on:
 * Close icon
 * Outside the modal window
 
-You can also close the success state automatically after 3—5 seconds, but be sure to test that it doesn't make the user experience worse.
+We can also close the success state automatically after 3—5 seconds, but be sure to test that it doesn't make the user experience worse.
 
 ## Other methods
 
-You can use [NoticeBubble](/components/notice-bubble/notice-bubble) to notify a user about successfully completing a small part of a scenario.
+We can use [NoticeBubble](/components/notice-bubble/notice-bubble) to notify a user about successfully completing a small part of a scenario.
 
 ![](static/notice-bubble.png)
 
-You can also use [Notice](/components/notice/notice) in a similar way to provide a user with some feedback.
+We can also use [Notice](/components/notice/notice) in a similar way to provide a user with some feedback.
 
 ![](static/notice.png)

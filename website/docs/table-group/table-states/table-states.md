@@ -72,7 +72,7 @@ Refer to [Empty page](/patterns/empty-page/empty-page) pattern for more informat
 ![](static/empty.png)
 
 ::: tip
-Illustrations for these cases are usually unique, designed specifically for each case or product. You can find all illustrations we have in our library on [Illustration](/style/illustration/illustration).
+Illustrations for these cases are usually unique, designed specifically for each case or product. We can find all illustrations we have in our library on [Illustration](/style/illustration/illustration).
 :::
 
 ## No data

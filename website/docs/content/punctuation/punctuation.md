@@ -197,12 +197,12 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
     <template #dont>
         <img src="./static/period-dont.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' with period in the end" />
         <p style="line-height: 20px;"><img src="./static/checkbox.png" alt="Checkbox" style="display: inline; border-radius: 0; vertical-align: top;"> Remind later.</p>
-        <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span>.</p>
+        <p>Wer competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span>.</p>
     </template>
     <template #do>
         <img src="./static/period-do.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' without period in the end" />
         <p style="line-height: 20px;"><img src="./static/checkbox.png" alt="Checkbox" style="display: inline; border-radius: 0; vertical-align: top;"> Remind later</p>
-        <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span></p>
+        <p>Wer competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span></p>
     </template>
 </DosDonts>
 

@@ -4,8 +4,8 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-::: tip New component  🎉
-**Hint** is now separate from **Tooltip**. You can find its documentation in [Utils/Hint](../../utils/hint/hint-code).
+::: tip New component 🎉
+**Hint** is now separate from **Tooltip**. We can find its documentation in [Utils/Hint](../../utils/hint/hint-code).
 :::
 
 The tooltip component is a wrapper over [Popper](/utils/popper/popper) with additional features:
@@ -41,7 +41,7 @@ This example shows how to ensure accessibility if you decide to nest focusable e
 
 ## Singleton
 
-You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience. This example uses React context and memo to bypass select component rerendering and much improve performance during quick navigation.
+We can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience. This example uses React context and memo to bypass select component rerendering and much improve performance during quick navigation.
 
 ::: sandbox
 

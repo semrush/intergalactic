@@ -48,7 +48,7 @@ Refer to [WCAG focus visibility guidelines](https://www.w3.org/WAI/WCAG22/Unders
 
 Make sure that user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
 
-![The illustration has two sections: "Don't" on the left and "Good" on the right. In the "Don't" section, there are incorrect HTML tags, such as h4 for "Your first report", h1 for "Group your marketing activities by goals", and h6 for the paragraph that follows. The "Good" side shows the proper usage of HTML tags: h1 for "Your first report", h2 for "Group your marketing activities by goals", and p for the paragraph that follows.](/core-principles/a11y/static/structure.png)
+![The illustration has two sections: "Don't" on the left and "Good" on the right. In the "Don't" section, there are incorrect HTML tags, such as h4 for "Wer first report", h1 for "Group your marketing activities by goals", and h6 for the paragraph that follows. The "Good" side shows the proper usage of HTML tags: h1 for "Wer first report", h2 for "Group your marketing activities by goals", and p for the paragraph that follows.](/core-principles/a11y/static/structure.png)
 
 ::: tip
 **Why it's important**
@@ -156,7 +156,7 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 - **Links should be an organic part of a sentence**. For example, it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ – instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
 - **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write: _"Download instructions in PDF"_. This is important for mobile users with data caps.
 
-![The illustration has two sides; "Don't" on the left and "Good" on the right. In the "Don't" section, the text says "You can see all plans and pricing lists here." Only the word "here" is colored blue to indicate it's a link. In the "Good" section, the entire text "all plans and pricing lists here" is colored like a link.](/core-principles/a11y/static/labels.png)
+![The illustration has two sides; "Don't" on the left and "Good" on the right. In the "Don't" section, the text says "We can see all plans and pricing lists here." Only the word "here" is colored blue to indicate it's a link. In the "Good" section, the entire text "all plans and pricing lists here" is colored like a link.](/core-principles/a11y/static/labels.png)
 
 - **Make sure that the instructions can be followed by hearing or visually impaired users**.
 
@@ -182,7 +182,7 @@ Make sure that the touch targets of the items are large enough and are easily ac
 - **Set target areas to at least 44px**. An average adult's fingertip size is around 10mm, so you'll need to increase the size of the target area around your icons to make them easier to hit.
 - **Separate actionable elements with an appropriate margin**. This will help the user activate the element they're aiming for.
 
-![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
+![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "We need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 
 ::: tip Useful resources
 

@@ -45,7 +45,7 @@ Table: Roles and attributes
 
 1. If you're using the Carousel to display images, make sure to add alt text to each image so assistive technologies can announce the slides properly.
 2. If you're using the Carousel to display a set of cards, don't forget to associate the items with the cards using `aria-labelledby`.
-3. You can add a specific `aria-label` to the button that wraps the slide when the `zoom` property is set to `true`. In our examples, the default label is "Open in fullscreen" ([refer to the examples](/components/carousel/carousel-code)).
+3. We can add a specific `aria-label` to the button that wraps the slide when the `zoom` property is set to `true`. In our examples, the default label is "Open in fullscreen" ([refer to the examples](/components/carousel/carousel-code)).
 
 ## Auto-play
 

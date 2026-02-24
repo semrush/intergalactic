@@ -84,7 +84,7 @@ Table: Multiselect menu item states
 <!--
 ### Button
 
-You can add a button to the list.
+We can add a button to the list.
 
 #### Action button
 
@@ -112,7 +112,7 @@ Table: DropdownMenu addition button states
 
 <!-- ### Reset item
 
-You can add reset item to the list to reset the selected value or values. Place it at the top of the list.
+We can add reset item to the list to reset the selected value or values. Place it at the top of the list.
 
 ![](static/reset.png)
 
@@ -135,7 +135,7 @@ Table: Divider margins
 
 ### Titled group
 
-You can group menu items using the `DropdownMenu.Group` component. Groups always have titles.
+We can group menu items using the `DropdownMenu.Group` component. Groups always have titles.
 
 Group title is noninteractive, always has `font-weight: var(--bold)` and the same size as menu items.
 
@@ -143,7 +143,7 @@ Group title is noninteractive, always has `font-weight: var(--bold)` and the sam
 
 ## Menu item content
 
-You can put the following addons before and after the text inside the list item:
+We can put the following addons before and after the text inside the list item:
 
 - [Icon](/style/icon/icon),
 - [Flag](/components/flags/flags),
@@ -186,7 +186,7 @@ Avoid using icons with tooltips in menu items. Check the [Tooltip section](#tool
 
 ### Counter
 
-You can place a text counter after the text. It should have the same size that item's text has.
+We can place a text counter after the text. It should have the same size that item's text has.
 
 ![](static/number.png)
 
@@ -198,7 +198,7 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 ### Hint
 
-You can display additional information in menu items using the `DropdownMenu.Item.Hint` component.
+We can display additional information in menu items using the `DropdownMenu.Item.Hint` component.
 
 Table: Hint text sizes
 

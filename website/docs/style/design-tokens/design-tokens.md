@@ -94,7 +94,7 @@ const App = DesignTokens;
 
 If you need to build a product that differs in style and tone of voice from our default theme, you can create a custom theme.
 
-Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. You can redefine them globally or only for a specific subtree of React app. Refer to the [Usage in development](/style/design-tokens/design-tokens-usage-development).
+Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. We can redefine them globally or only for a specific subtree of React app. Refer to the [Usage in development](/style/design-tokens/design-tokens-usage-development).
 
 ## Creating new theme
 

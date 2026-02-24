@@ -22,7 +22,7 @@ Table: Keyboard support
 
 ## Considerations for developers
 
-You can add an external label to the Switch, just make sure the label and `Switch.Value` are connected through `id`. Refer to the [External label exmaple](/components/switch/switch-code#external-label).
+We can add an external label to the Switch, just make sure the label and `Switch.Value` are connected through `id`. Refer to the [External label exmaple](/components/switch/switch-code#external-label).
 
 ## Other recommendations
 

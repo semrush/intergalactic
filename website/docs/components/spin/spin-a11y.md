@@ -22,7 +22,7 @@ Table: Roles & attributes
 
 ## Resources
 
-- You can find a detailed description of the `aria-busy` state in the [W3's guide](https://www.w3.org/TR/wai-aria-1.1/#aria-busy).
+- We can find a detailed description of the `aria-busy` state in the [W3's guide](https://www.w3.org/TR/wai-aria-1.1/#aria-busy).
 - [MDN's guide for aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy) describes core information for this state.
 
 ## Other recommendations

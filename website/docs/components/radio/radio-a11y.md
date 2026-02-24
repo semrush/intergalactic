@@ -42,7 +42,7 @@ Table: Attributes
 
 ### Grouping with fieldset
 
-You can also group `Radio` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of radio buttons.
+We can also group `Radio` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of radio buttons.
 
 ## Resources
 

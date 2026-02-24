@@ -23,7 +23,7 @@ Table: Textarea sizes
 
 ## Resize control
 
-You can enable the resize control for the textarea to allow users to adjust its size. They can stretch it horizontally, vertically, or both ways.
+We can enable the resize control for the textarea to allow users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
 When the textarea cannot be stretched, a scrollbar will appear after a certain number of lines. We recommended adding scrollbars when the textarea has at least 5 lines.
 

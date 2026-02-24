@@ -68,7 +68,7 @@ Use [neighborLocation](/utils/neighbor-location/neighbor-location) to "glue" mul
 
 ## Search tuning
 
-For the case when fine-tuning of the filter is needed, add select next to the input. You can also use a combo – input with both select and button.
+For the case when fine-tuning of the filter is needed, add select next to the input. We can also use a combo – input with both select and button.
 
 | State       | Appearance example                                        | Description                                                                                                                                                                                                                                      |
 | ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -102,7 +102,7 @@ Use the `--intergalactic-bg-highlight-results` color for highlighting. The heigh
 
 If nothing is found, display a button to reset the filter. This will help the user to understand why no data is displayed, and how to fix the situation.
 
-You can change the description if necessary.
+We can change the description if necessary.
 
 Refer to [Widget empty state](../../components/widget-empty/widget-empty.md) for more details.
 

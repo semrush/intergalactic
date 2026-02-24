@@ -18,7 +18,7 @@ Use [InputNumber](/components/input-number/input-number) and [neighborLocation](
 
 ## Appearance customization
 
-You have the ability to customize the component's appearance. To ensure the step calculation is accurate, utilize the internal API's native input.
+We have the ability to customize the component's appearance. To ensure the step calculation is accurate, utilize the internal API's native input.
 
 ::: sandbox
 

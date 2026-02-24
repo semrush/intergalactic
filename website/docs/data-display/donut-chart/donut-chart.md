@@ -94,7 +94,7 @@ Wrap long labels to the next line for clarity.
 
 ## Main metric
 
-- You can place the largest or main value inside large donut charts.
+- We can place the largest or main value inside large donut charts.
 - Always name the metric.
 - Additional info can go in an `Info` icon next to the metric name.
 - For small donuts, position the metric above the legend.

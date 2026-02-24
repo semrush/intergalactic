@@ -17,7 +17,7 @@ In basic cases the most convenient way is to use the [NoticeSmart](/components/n
 
 ## Custom notice
 
-You have the flexibility to construct custom notices by utilizing individual components.
+We have the flexibility to construct custom notices by utilizing individual components.
 
 ::: tip
 For even more customization, refer to the [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code) example.

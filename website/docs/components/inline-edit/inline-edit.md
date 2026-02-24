@@ -10,7 +10,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 **Use this component when:**
 
-- You need to effortlessly switch between read-only and text editing modes without requiring a page reload.
+- We need to effortlessly switch between read-only and text editing modes without requiring a page reload.
 - The interface is spatially constrained, necessitating efficient use of space.
 - Transmitting data to the system isn't the primary focus of the interface (for example, providing supplementary information and notes within cards).
 

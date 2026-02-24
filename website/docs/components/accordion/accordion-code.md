@@ -57,7 +57,7 @@ Pass `use='primary'` to enable the primary theme for the accordion.
 
 ## Custom styles for selected toggle
 
-You can customize accordion styles if needed.
+We can customize accordion styles if needed.
 
 For example, to find out whether an element is selected and to highlight it, pass the function into the body of the element.
 

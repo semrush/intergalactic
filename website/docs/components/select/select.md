@@ -134,7 +134,7 @@ Table: Select menu item states
 
 ### Pinned item
 
-You can pin an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/divider) and fixed while scrolling the list.
+We can pin an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/divider) and fixed while scrolling the list.
 
 Table: Pinned item examples
 

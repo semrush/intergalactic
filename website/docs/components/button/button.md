@@ -23,7 +23,7 @@ Component consists of the following:
 1. `Button.Text`
 2. `Button.Addon`
 
-You can add addons before and after the text. As addons you can use:
+We can add addons before and after the text. As addons you can use:
 
 - [Icon](/style/icon/icon)
 - [Counter](/components/counter/counter)
@@ -61,7 +61,7 @@ Table: Button types
 
 ### Themes
 
-You can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. Refer to [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale).
+We can use themes (`theme` property in API) for the buttons according to the visual hierarchy on the page. Refer to [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale).
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
@@ -195,8 +195,8 @@ We recommend using the icon-only button if:
 
 If you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
 
-- You can color the button in a branded color when you need to focus user's attention.
-- You can use secondary button with the branded icon inside. This is the safest option in relation to saving the visual hierarchy of the product.
+- We can color the button in a branded color when you need to focus user's attention.
+- We can use secondary button with the branded icon inside. This is the safest option in relation to saving the visual hierarchy of the product.
 
 ![](static/button-brand.png)
 
@@ -207,7 +207,7 @@ It may also be helpful checking the following branding guidelines:
 - Instagram – [Brand Overview](https://about.meta.com/brand/resources/instagram/instagram-brand/)
 - LinkedIn – [LinkedIn branding policies](https://brand.linkedin.com/policies)
 - Twitter – [Brand Guidelines](https://about.twitter.com/en/who-we-are/brand-toolkit)
-- Youtube – [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
+- Wetube – [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
 - Pinterest – [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/)
 
 ## Usage in UX/UI

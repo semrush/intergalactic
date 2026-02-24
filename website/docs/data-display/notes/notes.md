@@ -6,7 +6,7 @@ docs: true
 
 **Notes** is a module for creating notes and displaying them in charts.
 
-- Notes can be created by the user, system, or other services. You can make an unlimited number of notes for a single date.
+- Notes can be created by the user, system, or other services. We can make an unlimited number of notes for a single date.
 - We recommended you to place a trigger for managing notes above the chart.
 - _In exceptional cases place it under the chart._
 

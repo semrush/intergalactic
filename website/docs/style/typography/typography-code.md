@@ -5,9 +5,9 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 
 ## Basic usage
 
-The following heading styles are an example of a text scale used for product landing pages and text-heavy pages. You can set any heading tag to text of any `size`. However, we recommend setting heading levels on the page so that the visual hierarchy matches the semantic hierarchy in the code.
+The following heading styles are an example of a text scale used for product landing pages and text-heavy pages. We can set any heading tag to text of any `size`. However, we recommend setting heading levels on the page so that the visual hierarchy matches the semantic hierarchy in the code.
 
-Our typography primitives don’t have predefined margins, as these may vary depending on the use case. You can add margins as needed based on your specific layout requirements.
+Our typography primitives don’t have predefined margins, as these may vary depending on the use case. We can add margins as needed based on your specific layout requirements.
 
 ::: info
 H5 and H6 are shown here for illustrative purposes. **We recommend avoiding the use of more than 4 heading levels in the interface.**
@@ -23,7 +23,7 @@ H5 and H6 are shown here for illustrative purposes. **We recommend avoiding the 
 
 ## Text styling
 
-You can style text by changing its color, font-weight, font-style, text-transform, and even changing its font-family to `monospace`.
+We can style text by changing its color, font-weight, font-style, text-transform, and even changing its font-family to `monospace`.
 
 ::: sandbox
 
@@ -35,7 +35,7 @@ You can style text by changing its color, font-weight, font-style, text-transfor
 
 ## Custom list bullets
 
-You can add custom bullets to the `List.Item` component.
+We can add custom bullets to the `List.Item` component.
 
 ::: sandbox
 

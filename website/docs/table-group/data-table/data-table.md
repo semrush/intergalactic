@@ -23,7 +23,7 @@ Our design system has two table types:
 
 #### Compact
 
-You can make a primary table more compact by using the `compact` property, which reduces left and right cell paddings to `--spacing-2x`.
+We can make a primary table more compact by using the `compact` property, which reduces left and right cell paddings to `--spacing-2x`.
 
 ![](static/primary-compact-paddings.png)
 
@@ -47,7 +47,7 @@ Table: Common styles for table content
 
 ### Tooltip
 
-You can use [Tooltip](../../components/tooltip/tooltip.md) to display additional information about a column.
+We can use [Tooltip](../../components/tooltip/tooltip.md) to display additional information about a column.
 
 ![](static/tooltip.png)
 
@@ -63,7 +63,7 @@ Alternatively, if the space is limited, you can disable text wrap and truncate t
 
 ### Sticky header
 
-You can make the table header `sticky`, so that it stays visible when scrolling long tables.
+We can make the table header `sticky`, so that it stays visible when scrolling long tables.
 
 ::: tip
 Sticky header shouldn't have a shadow during scrolling.
@@ -108,7 +108,7 @@ Table: Hover styles for different cells
 | New, new hover           | ![](static/new-hover.png)      | `background-color: var(--table-td-cell-new)`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover)`.               |
 | Error, error hover       | ![](static/danger-hover.png)   | `background-color: var(--table-td-cell-critical)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover)`.                       |
 | Warning, warning hover   | ![](static/warning-hover.png)  | `background-color: var(--table-td-cell-warning)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover)`.                         |
-| Current, current hover   | ![](static/current-hover.png)  | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                                |
+| Current, current hover   | ![](static/current-hover.png)  | The row is tagged with tag `We`. The `hover` state is the same as the `default` state.                                                                                                |
 | Loading                  | ![](static/loading-hover.png)  | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                 |
 | Limit, limit hover       | ![](static/limit.png)          | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                                  |
 
@@ -180,7 +180,7 @@ Having a horizontal scroll in a large table isn't a bad practice; it's a familia
 
 ### Two scroll bars
 
-You can add two scroll bars to a table if needed—one in the header and one at the bottom. This is useful when the table is very long and has fixed columns, so users can scroll the table without scrolling to its very end. In these cases, the scroll bars can be in both the header and bottom. Refer to the [examples in the Sticky header section](/table-group/data-table/data-table-code#sticky-header).
+We can add two scroll bars to a table if needed—one in the header and one at the bottom. This is useful when the table is very long and has fixed columns, so users can scroll the table without scrolling to its very end. In these cases, the scroll bars can be in both the header and bottom. Refer to the [examples in the Sticky header section](/table-group/data-table/data-table-code#sticky-header).
 
 ![](static/table-scroll.png)
 

@@ -12,7 +12,7 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 
 ## Custom shape
 
-You can set your custom SVG shape for a LegendItem.
+We can set your custom SVG shape for a LegendItem.
 
 ::: sandbox
 

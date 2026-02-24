@@ -61,13 +61,13 @@ If date has `disabled` state, then nothing should happen after user clicks it.
 
 ## DatePicker and "Today" button
 
-You can include a "Today" button that selects the current date. Upon clicking the button, the present date is selected, and the calendar automatically scrolls up to the current month (if it wasn't already displayed).
+We can include a "Today" button that selects the current date. Upon clicking the button, the present date is selected, and the calendar automatically scrolls up to the current month (if it wasn't already displayed).
 
 ![](static/datepicker-today-style.png)
 
 ## DatePicker with TimePicker
 
-You can place [TimePicker](/components/time-picker/time-picker) inside the dropdown.
+We can place [TimePicker](/components/time-picker/time-picker) inside the dropdown.
 
 ![](static/datepicker-timepicker-normal.png)
 
@@ -77,7 +77,7 @@ And you can show 12-hour or 24-hour format of time for TimePicker, depending on 
 
 ## DatePicker with custom cell elements
 
-You can add custom elements inside cells: for example, a small progressbar under the date to show the progress of the metrics you need to show.
+We can add custom elements inside cells: for example, a small progressbar under the date to show the progress of the metrics you need to show.
 
 ![](static/datepicker-metric-normal.png)
 
@@ -99,11 +99,11 @@ Date range picker typically displays two month blocks in the calendar by default
 
 ![](static/daterangepicker-normal.png)
 
-You can add presets for date ranges. Presets and their names may be customized. The selected preset gets `active` status.
+We can add presets for date ranges. Presets and their names may be customized. The selected preset gets `active` status.
 
 ![](static/daterangepicker-custom-presets.png)
 
-You also can add the "Reset" button for deselecting the selected values. In this case the trigger changes its value to the placeholder.
+We also can add the "Reset" button for deselecting the selected values. In this case the trigger changes its value to the placeholder.
 
 ![](static/daterangepicker-reset-buttons.png)
 
@@ -119,14 +119,14 @@ Month range picker selects a range of several weeks and typically displays two m
 
 ![](static/monthrangepicker-normal.png)
 
-You can also add the presets of date ranges for such picker.
+We can also add the presets of date ranges for such picker.
 
 ![](static/monthrangepicker-presets.png)
 
 
 ## DateRangeComparator
 
-You can compare two date ranges with DateRangeComparator. The ranges can either intersect or not intersect.
+We can compare two date ranges with DateRangeComparator. The ranges can either intersect or not intersect.
 
 Each range in the `DateRangeComparator.Trigger` has an addon with a color: the first range uses the `--date-picker-cell-active` token, and the second range uses the `--date-picker-cell-comparison-active` token.
 

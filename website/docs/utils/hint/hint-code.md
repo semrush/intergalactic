@@ -7,7 +7,7 @@ tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Example('hint-code'), 
 
 In [Button](../../components/button/button-code) and [Link](../../components/link/link-code), Hint can be enabled by using either `title` or `aria-label` attribute.
 
-You can set the Hint's position using the `hintPlacement` property.
+We can set the Hint's position using the `hintPlacement` property.
 
 ::: sandbox
 

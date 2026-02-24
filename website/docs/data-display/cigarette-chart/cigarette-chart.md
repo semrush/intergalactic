@@ -49,7 +49,7 @@ Chart can be displayed using horizontal or vertical layout.
 
 ## Total value
 
-- You can place the largest or total value next to the chart.
+- We can place the largest or total value next to the chart.
 - Always name the value.
 
 ![](static/cigarette-legend-vertical.png)

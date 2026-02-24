@@ -142,7 +142,7 @@ Custom notices have their own rules and distinct styles compared to the default 
 
 ### Feedback notice
 
-The feedback notice deviates from the regular notice as it's attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. You can refer to the [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no) guide for an example.
+The feedback notice deviates from the regular notice as it's attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. We can refer to the [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no) guide for an example.
 
 ### Advertising
 

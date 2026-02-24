@@ -17,7 +17,7 @@ Both graphics and localized texts are already included in ready-to-use templates
 
 ## Custom error
 
-You can create a custom error message. In the `Error` package, you will find the `getIconPath` feature, which will allow you to get the latest versions of illustrations. The full list of illustrations can be found in [Illustration](../../style/illustration/illustration.md).
+We can create a custom error message. In the `Error` package, you will find the `getIconPath` feature, which will allow you to get the latest versions of illustrations. The full list of illustrations can be found in [Illustration](../../style/illustration/illustration.md).
 
 ::: sandbox
 

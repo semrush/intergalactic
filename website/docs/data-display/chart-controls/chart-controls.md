@@ -58,7 +58,7 @@ We recommend placing the legend at the top left, above the chart. For charts wit
 
 #### Notes (Notes module)
 
-You can display user, system, or other service-generated notes on the chart. To learn more about this module, refer to [Notes](/data-display/notes/notes).
+We can display user, system, or other service-generated notes on the chart. To learn more about this module, refer to [Notes](/data-display/notes/notes).
 
 ### Right-placed controls and filters
 
@@ -94,7 +94,7 @@ For custom periods, use the [DateRangePicker](../../components/date-picker/date-
 
 ## Merging controls
 
-You can merge rows with controls as needed. Different controls or control groups should be separated by a [Divider](/components/divider/divider) using the `--border-secondary` token for color and a margin of 0px 16px.
+We can merge rows with controls as needed. Different controls or control groups should be separated by a [Divider](/components/divider/divider) using the `--border-secondary` token for color and a margin of 0px 16px.
 
 ![](static/widget-yes-no.png)
 

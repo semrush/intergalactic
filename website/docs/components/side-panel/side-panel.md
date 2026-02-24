@@ -62,7 +62,7 @@ Table: SidePanel with and without overlay
 
 #### Width
 
-SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
+SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. We can change it if necessary.
 
 #### Container
 
@@ -88,7 +88,7 @@ General recommendations for `SidePanel` content styles:
 
 ### Footer styles
 
-You can place common `SidePanel` controls in the footer.
+We can place common `SidePanel` controls in the footer.
 
 - Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar/progress-bar) can be placed there.
 - The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
@@ -104,8 +104,8 @@ align-items: center;
 
 ## Placement
 
-- You can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
-- The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using `Tab`.
+- We can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
+- The focus remains inside the panel and doesn't move to the page content. We can navigate through the controls inside the SidePanel using `Tab`.
 
 ## Page scroll
 

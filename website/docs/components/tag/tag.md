@@ -92,7 +92,7 @@ For editable tags, use the [InlineInput](/components/inline-input/inline-input) 
 
 ## Long text
 
-You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be truncated with an [ellipsis](../../utils/ellipsis/ellipsis), and hovering over the tag will show a [hint](../../utils/hint/hint) with the full tag label.
+We can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be truncated with an [ellipsis](../../utils/ellipsis/ellipsis), and hovering over the tag will show a [hint](../../utils/hint/hint) with the full tag label.
 
 ![](static/ellipsis.png)
 

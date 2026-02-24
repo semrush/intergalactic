@@ -5,7 +5,7 @@ tabs: Design('feature-highlight'), Changelog('feature-highlight-changelog')
 
 ## Description
 
-You can promote certain features in your UI by using special styles from the `FeatureHighlight` package.
+We can promote certain features in your UI by using special styles from the `FeatureHighlight` package.
 
 All components from the `FeatureHighlight` package are wrappers over our standard components, such as [Button](../../components/button/button) or [Notice](../../components/notice/notice), and you can use all their standard properties.
 
@@ -36,7 +36,7 @@ For the primary button, use the standard addon.
 
 For the secondary button, use the special icon addon (`ButtonFH.Addon` component), which has a built-in click animation.
 
-You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
+We can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
 If the control's text doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -52,9 +52,9 @@ If the control's text doesn't mention the promotion, add an accessible descripti
 
 To highlight a [Checkbox](../../components/checkbox/checkbox), use the `CheckboxFH` component.
 
-You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
+We can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+We can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -92,7 +92,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 
 To highlight an [Input](../../components/input/input), use the `InputFH` component.
 
-You can add more accent by using the special icon addon (`InputFH.Addon` component) and/or the special badge (`BadgeFH` component).
+We can add more accent by using the special icon addon (`InputFH.Addon` component) and/or the special badge (`BadgeFH` component).
 
 If the control's label doesn't mention the promotion, add an accessible description by connecting the control with the badge or the `ScreenReaderOnly` text via `aria-describedby`.
 
@@ -120,7 +120,7 @@ To highlight a [Notice](../../components/notice/notice), use the `NoticeFH` comp
 
 To highlight a [Pills.Item](../../components/pills/pills), use the `PillsFH` component for the entire pill group, and the `HighlightedItem` component for the highlighted item.
 
-You can add more accent by using the special icon addon (`HighlightedItem.Addon` component), which has a built-in click animation.
+We can add more accent by using the special icon addon (`HighlightedItem.Addon` component), which has a built-in click animation.
 
 It's possible to change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
@@ -138,9 +138,9 @@ If the control's text or badge doesn't mention the promotion, add an accessible 
 
 To highlight a [Radio button](../../components/radio/radio), use the `RadioFH` component.
 
-You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
+We can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+We can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -160,7 +160,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 
 To highlight a [Select](../../components/select/select), use the `SelectFH` component.
 
-You can add more accent by using the special icon addon (`SelectFH.Trigger.Addon` component).
+We can add more accent by using the special icon addon (`SelectFH.Trigger.Addon` component).
 
 If the control's text or badge doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -176,9 +176,9 @@ If the control's text or badge doesn't mention the promotion, add an accessible 
 
 To highlight a [Switch](../../components/switch/switch), use the `SwitchFH` component.
 
-You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
+We can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+We can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -198,9 +198,9 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 
 To highlight a [TabLine.Item](../../components/tab-line/tab-line), use the `TabLineFH` component for the entire tab group, and the `HighlightedItem` component for the highlighted item.
 
-You can add more accent by using the special icon addon (`HighlightedItem.Addon` component) before the text, and/or the special badge (`BadgeFH` component) after the text.
+We can add more accent by using the special icon addon (`HighlightedItem.Addon` component) before the text, and/or the special badge (`BadgeFH` component) after the text.
 
-The icon addon has a built-in animation. You can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
+The icon addon has a built-in animation. We can change the number of animated sparkles (`animatedSparkleCount` prop) or disable the animation (set `animatedSparkleCount` to `0` or `undefined`).
 
 If the control's text or badge doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 

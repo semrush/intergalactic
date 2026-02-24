@@ -6,7 +6,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ## NoData state
 
-The component already includes a `title` and a default `description`. You only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements if needed.
+The component already includes a `title` and a default `description`. We only need to specify the [illustration](/style/illustration/illustration) `type`. We can provide a custom `description` and additional elements if needed.
 
 ::: tip
 The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `intergalactic/utils` package, as shown in the example below.
@@ -22,7 +22,7 @@ The locale can be passed directly to the component or wrap your application in `
 
 ## Error state
 
-The component already includes default `title`, `icon` and `description`. You can provide a custom `description` and additional elements if needed.
+The component already includes default `title`, `icon` and `description`. We can provide a custom `description` and additional elements if needed.
 
 ::: sandbox
 
@@ -34,7 +34,7 @@ The component already includes default `title`, `icon` and `description`. You ca
 
 ## Custom states
 
-You can create custom messages, such as the "[Set up your tool](/components/widget-empty/widget-empty#set-up-your-product)" message.
+We can create custom messages, such as the "[Set up your tool](/components/widget-empty/widget-empty#set-up-your-product)" message.
 
 To get the link to the [illustration](/style/illustration/illustration), use the function `getIconPath` from the package.
 

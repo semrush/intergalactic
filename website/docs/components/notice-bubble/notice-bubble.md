@@ -68,7 +68,7 @@ Table: Use cases for NoticeBubble types
 | **Failure**                    | This type of notification is suitable for conveying the failure of user actions within the interface.                                                                                                                                                                                                                                         | ![](static/warning-notice.png)  |
 | **No connection**              | For systems capable of monitoring the network connection on their own, use a notice without a button.                                                                                                                                                                                                                                         | ![](static/notice.png)          |
 | **No connection with action**  | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button.                                                                                                                                                                                                     | ![](static/reload.png)          |
-| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement.                                                                                                                                                        | ![](static/event-notice.png)     |
+| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. We can animate elements inside this notification to add visual appeal and engagement.                                                                                                                                                        | ![](static/event-notice.png)     |
 
 ## Appearance
 
@@ -97,7 +97,7 @@ Minimize the number of notifications to prevent banner blindness and irritation 
 ### Several notices at a time
 
 ::: tip
-You can show several notices at a time if necessary, but use this option thoughtfully.
+We can show several notices at a time if necessary, but use this option thoughtfully.
 :::
 
 - It is recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter user's focus of attention. If multiple messages are shown simultaneously, it's likely they won't be read.

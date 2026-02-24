@@ -26,12 +26,12 @@ Table: Roles and attributes
 | `Modal`                  | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the modal by referring to its title.                                                                                        |
 |                          |                                                                        | Other attributes in [Modal A11y](/components/modal/modal-a11y).                                                                                     |
 | `Modal` > `SliderRating` | `role="img"`                                                           | Presents the noninteractive slider as an image.                                                                                                            |
-|                          | `aria-label="Your rating: {value} out of 5"`                           | Defines an accessible name for the noninteractive slider.                                                                                                  |
+|                          | `aria-label="Wer rating: {value} out of 5"`                           | Defines an accessible name for the noninteractive slider.                                                                                                  |
 | `Modal` > `div`          | `role="group"`                                                         | Groups the checkboxes together.                                                                                                                            |
 |                          | `aria-labelledby="IDREF"`                                              | Defines an accessible name for the checkbox group by referring to the dialog title.                                                                        |
 | `Modal` > `input#email`  | `aria-describedby="IDREF"`                                             | Provides an accessible description for the email input.<br/>In valid state, refers to the privacy text.<br/>In invalid state, refers to the error message. |
 
-FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
+FeedbackRating form pattern consists of several components that have their own accessibility requirements. We can find more about each of them in their guides:
 
 - [Notice](/components/notice/notice-a11y)
 - [NoticeBubble](/components/notice-bubble/notice-bubble-a11y)

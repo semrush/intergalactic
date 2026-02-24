@@ -6,7 +6,7 @@ tabs: Design('feedback-form'), A11y('feedback-form-a11y'), API('feedback-form-ap
 
 ## What pattern has
 
-Feedback pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
+Feedback pattern consists of several components that have their own accessibility requirements. We can find more about each of them in their guides:
 
 - [Button](/components/button/button-a11y)
 - [Checkbox](/components/checkbox/checkbox-a11y)

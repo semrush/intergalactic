@@ -29,7 +29,7 @@ import InlineInput from '@semcore/ui/inline-input';
 
 The addon inside the container (most often it is an icon or short text) places the correct indent units depending on the size.
 
-When you click on Addon, the focus shifts to the input. You can cancel this by returning the `return false` in the `onClick` handler.
+When you click on Addon, the focus shifts to the input. We can cancel this by returning the `return false` in the `onClick` handler.
 
 ```jsx
 import InlineInput from '@semcore/ui/inline-input';

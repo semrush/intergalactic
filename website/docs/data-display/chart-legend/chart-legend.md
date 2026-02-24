@@ -54,7 +54,7 @@ Table: Chart legend placement examples
 
 ## Legend items
 
-Legend items can be either interactive or static. Use `Checkbox` for interactive legend items and choose from a list of default SVG shapes (`Circle`, `Square`, `Line`) for static legend items. You can also set a custom shape if needed.
+Legend items can be either interactive or static. Use `Checkbox` for interactive legend items and choose from a list of default SVG shapes (`Circle`, `Square`, `Line`) for static legend items. We can also set a custom shape if needed.
 
 The colors of the checkboxes or shapes correspond to the data on the chart.
 

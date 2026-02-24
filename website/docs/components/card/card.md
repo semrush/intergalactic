@@ -79,7 +79,7 @@ Table: Card paddings
 
 ### Layout with sections
 
-You can divide content into sections if needed.
+We can divide content into sections if needed.
 
 ![](static/card-layout.png)
 

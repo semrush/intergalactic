@@ -142,7 +142,7 @@ If the user entered an invalid value (less than minimum, greater than maximum), 
 
 **InputNumber step**
 
-- You can set the step by which the entered numerical value will be reduced/increased when using the stepper buttons.
+- We can set the step by which the entered numerical value will be reduced/increased when using the stepper buttons.
 - The user can change the step using the keyboard arrows or `Shift` + keyboard arrows (`Up Arrow`, `Down Arrow`).
 
 **Keyboard support**

@@ -16,7 +16,7 @@ import { Text } from '@semcore/ui/typography';
 
 ## List
 
-A list rendered with the `ul` tag. You can set a custom marker for all list items.
+A list rendered with the `ul` tag. We can set a custom marker for all list items.
 
 ```jsx
 import { List } from '@semcore/ui/typography';
@@ -31,7 +31,7 @@ The `size` property of this component only accepts the values `100`, `200`, and 
 
 ## List.Item
 
-A list item rendered with the `li` tag. You can set a custom marker and customize the content using `<List.Item.Content />`.
+A list item rendered with the `li` tag. We can set a custom marker and customize the content using `<List.Item.Content />`.
 
 ```jsx
 import { List } from '@semcore/ui/typography';

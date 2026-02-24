@@ -15,7 +15,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 **Use it when:**
 
 - It's necessary to draw the user’s attention to an interface part.
-- You need to point at the next step for the user.
+- We need to point at the next step for the user.
 
 ## Component composition
 
@@ -75,13 +75,13 @@ Two buttons are always placed under the message.
 
 ### Step counter
 
-You can enable the step counter to show the user how many messages they need to read. We recommend turning it on for walkthroughs when you need to guide the user through several features or changes in a row.
+We can enable the step counter to show the user how many messages they need to read. We recommend turning it on for walkthroughs when you need to guide the user through several features or changes in a row.
 
 ![](static/neutral-theme.png)
 
 ### Illustration
 
-You can add an illustration to your FeaturePopover to help the user to understand the basic idea of your message. It can also be animated if it makes it easier to understand the feature.
+We can add an illustration to your FeaturePopover to help the user to understand the basic idea of your message. It can also be animated if it makes it easier to understand the feature.
 
 Table: FeaturePopover illustration sizes
 
@@ -92,7 +92,7 @@ Table: FeaturePopover illustration sizes
 
 ### Maximum width
 
-You can use `wMax` property to set the maximum width of the FeaturePopover's popper. But we recommend to set the following widths:
+We can use `wMax` property to set the maximum width of the FeaturePopover's popper. But we recommend to set the following widths:
 
 - 350px for FeaturePopover without illustration.
 - 400px for FeaturePopover with step counter.

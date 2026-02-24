@@ -10,7 +10,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Horizontal bar
 
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-code#bar).
+We can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart example](/data-display/bar-chart/bar-chart-code#bar).
 
 ## Horizontal stacked bar
 

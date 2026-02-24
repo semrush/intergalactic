@@ -58,7 +58,7 @@ If the loading process is rapid, this state can be omitted.
 
 ### Spin
 
-You can use [Spin](/components/spin/spin) instead of [SpinContainer](/components/spin-container/spin-container) when you need to show a loading state of a single element, such as a [table cell](/table-group/table-states/table-states#data-loading-in-cell).
+We can use [Spin](/components/spin/spin) instead of [SpinContainer](/components/spin-container/spin-container) when you need to show a loading state of a single element, such as a [table cell](/table-group/table-states/table-states#data-loading-in-cell).
 
 ### ProgressBar
 

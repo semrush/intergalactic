@@ -136,7 +136,7 @@ Add borders to specific columns using the `borders` property.
 
 ### Themes
 
-You can use different themes for cells and rows.
+We can use different themes for cells and rows.
 
 ::: sandbox
 
@@ -164,7 +164,7 @@ Scroll in the table header is useful for long tables, allowing users to scroll h
 
 ### Header customization
 
-You can insert tooltips, selects, and other components into the table header using `children` and `tag`.
+We can insert tooltips, selects, and other components into the table header using `children` and `tag`.
 
 ::: sandbox
 
@@ -206,7 +206,7 @@ Control the column width with the `gtcWidth` prop.
 
 ### Column alignment
 
-You can use `justifyContent`, `alignItems`, `alignContent`, and `textAlign` props to align content in columns.
+We can use `justifyContent`, `alignItems`, `alignContent`, and `textAlign` props to align content in columns.
 
 ::: sandbox
 
@@ -234,7 +234,7 @@ If fixed columns aren't visible in the following example, try reducing the windo
 
 ### Column grouping
 
-Merge cells by combining column keys in the data. You can merge cells in a specific row, as shown in the following example, or in all rows.
+Merge cells by combining column keys in the data. We can merge cells in a specific row, as shown in the following example, or in all rows.
 
 ::: sandbox
 
@@ -260,7 +260,7 @@ Merge cells across rows using the `[ROW_GROUP]` key in the data.
 
 ### Checkboxes and action bar
 
-You can enable selecting rows with checkboxes with the `selectedRows` and `onSelectedRowsChange` props.
+We can enable selecting rows with checkboxes with the `selectedRows` and `onSelectedRowsChange` props.
 
 ::: sandbox
 
@@ -288,7 +288,7 @@ To customize the content of a table cell, use the `renderCell` prop.
 
 It receives props described in [`CellRenderProps`](/table-group/data-table/data-table-api#rendercell).
 
-You can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
+We can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
 If the returned object includes a children property, it will override the default cell content—otherwise, you can use it to apply custom attributes such as theming or data attributes.
 
 ::: sandbox
@@ -428,7 +428,7 @@ Add a skeleton to the table by directly substituting the cell content.
 
 ### Limited data
 
-You can hide the limited data with a blurred overlay by using the `limit` prop, and add your own message for this table state.
+We can hide the limited data with a blurred overlay by using the `limit` prop, and add your own message for this table state.
 
 ::: sandbox
 
@@ -440,7 +440,7 @@ You can hide the limited data with a blurred overlay by using the `limit` prop, 
 
 ### Empty state
 
-`DataTable` has a default empty state based on [WidgetEmpty](../../components/widget-empty/widget-empty) which is rendered automatically if the data is empty. You can customize the empty state using the `renderEmptyData` prop.
+`DataTable` has a default empty state based on [WidgetEmpty](../../components/widget-empty/widget-empty) which is rendered automatically if the data is empty. We can customize the empty state using the `renderEmptyData` prop.
 
 ::: sandbox
 
@@ -464,7 +464,7 @@ Render expandable rows using the `[ACCORDION]` key in the data.
 
 ### Custom accordion content
 
-You can also set a single cell as the accordion trigger, and customize the accordion content.
+We can also set a single cell as the accordion trigger, and customize the accordion content.
 
 ::: sandbox
 

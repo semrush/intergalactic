@@ -6,7 +6,7 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 ## Tag addon
 
-You can add addons to the Tag component in two ways: by passing the desired tag to the `addonLeft` or `addonRight` property, or by directly rendering `Tag.Addon` or `Tag.Text` within the component.
+We can add addons to the Tag component in two ways: by passing the desired tag to the `addonLeft` or `addonRight` property, or by directly rendering `Tag.Addon` or `Tag.Text` within the component.
 
 ::: sandbox
 
@@ -18,7 +18,7 @@ You can add addons to the Tag component in two ways: by passing the desired tag 
 
 ## Custom color
 
-You can set custom color to the tag using `color` property. 
+We can set custom color to the tag using `color` property. 
 
 ::: tip
 We recommend to use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they have the necessary contrast between the text and background. Background color for all states and color for icon inside the tag is calculated with CSS filter.

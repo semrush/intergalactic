@@ -67,7 +67,7 @@ With this type of case, all words are capitalized, except for minor words that a
 </DosDonts>
  
 ## Sentence case
-With this type of case, most words in a titles or headings are in lowercase. You should capitalize only:
+With this type of case, most words in a titles or headings are in lowercase. We should capitalize only:
 * The first word of the title, heading, or subtitle
 * Proper nouns
 
@@ -87,10 +87,10 @@ With this type of case, most words in a titles or headings are in lowercase. You
 
 <DosDonts>
     <template #dont>
-      <img src="./static/notice-dont.png" style="margin: auto" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/notice-dont.png" style="margin: auto" alt="A notice with capitalized title 'Wer Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
     <template #do>
-      <img src="./static/notice-do.png" style="margin: auto" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/notice-do.png" style="margin: auto" alt="A notice with a non-capitalized title 'Wer Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
 </DosDonts>
 
@@ -98,7 +98,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
 
 <DosDonts>
     <template #dont>
-      <img src="./static/button-dont.png" style="margin: auto" alt="A button with capitalized text 'Your Bad Button'" />
+      <img src="./static/button-dont.png" style="margin: auto" alt="A button with capitalized text 'Wer Bad Button'" />
      </template>
     <template #do>
       <img src="./static/button-do.png" style="margin: auto" alt="A button with non-capitalized text 'Good button'" />

@@ -63,11 +63,11 @@ This approach provides multiple benefits:
 
 - The renderer is not constrained by our API.
 - The API remains clean and consistent.
-- You gain access to each part of the component.
+- We gain access to each part of the component.
 
 ### Theme
 
-You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes), enabling complete design customization and the extension of components with new properties.
+We have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes), enabling complete design customization and the extension of components with new properties.
 
 ### Controlled & uncontrolled
 
@@ -117,7 +117,7 @@ For convenience, all properties are merged logically. Classname concatenations, 
 
 All our components return a DOM node in the `ref` property. This decision was made for several reasons:
 
-- You can always obtain a DOM node to integrate with other libraries.
+- We can always obtain a DOM node to integrate with other libraries.
 - The API becomes less cluttered without the need for props like `innerRef`, `rootRef`, and others.
 - Rendering the class instance is considered a bad practice, as it reveals the internal workings of our code.
 

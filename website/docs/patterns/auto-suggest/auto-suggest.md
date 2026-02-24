@@ -55,7 +55,7 @@ Unlike the autocomplete, combobox has no items filtration. If user have entered 
 
 ### Validation
 
-Combobox validation works similarly to the other forms. You can find the detailed information in the [Validation](/patterns/validation-form/validation-form).
+Combobox validation works similarly to the other forms. We can find the detailed information in the [Validation](/patterns/validation-form/validation-form).
 
 ### Long loading
 
@@ -71,7 +71,7 @@ If your interface needs more time to load the items list, show [Spin](/component
 User may enter the data not corresponding to any results of the items list.
 :::
 
-The difference between these types of search is conceptual. In the AutoComplete search is performed as the final list of names and symbols. In the AutoSuggest search is performed as the open list of terms and phrases. To dive deep into the subject we recommend you to read [Designing Search: As-You-Type Suggestions](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
+The difference between these types of search is conceptual. In the AutoComplete search is performed as the final list of names and symbols. In the AutoSuggest search is performed as the open list of terms and phrases. To dive deep into the subject we recommend you to read [Designing Search: As-We-Type Suggestions](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
 
 ### Interaction
 

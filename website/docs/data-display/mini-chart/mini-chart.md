@@ -33,7 +33,7 @@ Table: Versions of charts with trend type
 | Bar chart       | ![](static/trend-bar.png)       | Use to show overall trend over time for a small data set.                                                              |
 | Histogram chart | ![](static/trend-histogram.png) | Use to show overall trend over time for a big data set.                                                                |
 
-You can show the highest/lowest point if necessary.
+We can show the highest/lowest point if necessary.
 
 ![](static/trend-point.png)
 
@@ -59,7 +59,7 @@ The component charts have default sizes, but you can set them to those you need,
 
 ## Usage with text
 
-You can place a value with any font size next to a mini-chart. We recommend making margins multiples of our `--intergalactic-scale-indent` (4px).
+We can place a value with any font size next to a mini-chart. We recommend making margins multiples of our `--intergalactic-scale-indent` (4px).
 
 ![](static/text-1.png)
 

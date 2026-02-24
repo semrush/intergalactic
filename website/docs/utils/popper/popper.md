@@ -36,7 +36,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 
 ## Outside click
 
-You can subscribe to the `onOutsideClick` event. It will be called when a clicked is made on any element other than `Trigger` and `Popper`.
+We can subscribe to the `onOutsideClick` event. It will be called when a clicked is made on any element other than `Trigger` and `Popper`.
 
 ::: tip
 `excludeRefs` prop is also provided. An array of nodes which must be excluded to trigger a click can be passed to it. The `Trigger` and `Popper` nodes will be passed thereto by default.
@@ -68,7 +68,7 @@ Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'to
 
 `tag` is the name of the HTML tag for the displayed element. The trigger and popper support changing this prop.
 
-You can pass either another component or a string to the `tag`. For example, `tag="a"` or `tag={Button}`.
+We can pass either another component or a string to the `tag`. For example, `tag="a"` or `tag={Button}`.
 
 ::: tip
 The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from the trigger go to the `Box`.
@@ -84,11 +84,11 @@ The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from th
 
 ## Render functions
 
-You can change the trigger by passing a function instead of the `Popper` body.
+We can change the trigger by passing a function instead of the `Popper` body.
 
 Inside the function, the first argument provides the component props and the `getTriggerProps` functions for the trigger and `getPopperProps` for the popper, respectively. By calling them, you get the props that you need to put on the required elements.
 
-**Important!** You can pass custom props required for the component in `getTriggerProps`, `getPopperProps`. In this case, these props will merge with the props required from `Popper`.
+**Important!** We can pass custom props required for the component in `getTriggerProps`, `getPopperProps`. In this case, these props will merge with the props required from `Popper`.
 
 **For example**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this will not work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
 

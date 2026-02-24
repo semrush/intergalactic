@@ -37,13 +37,13 @@ When validating the input, highlight tags with invalid values with the `red-500`
 
 ![](static/validation.png)
 
-You can use colored tags to represent different categories, if needed.
+We can use colored tags to represent different categories, if needed.
 
 ![](static/color-tag.png)
 
 ## Interaction
 
-Tags can be added either by selecting options from the menu, or by [entering data manually](#turning-text-into-tags). You can also combine both options.
+Tags can be added either by selecting options from the menu, or by [entering data manually](#turning-text-into-tags). We can also combine both options.
 
 Table: Interaction with InputTags
 
@@ -85,6 +85,6 @@ Deleting a tag can be done with the tag's **Delete** button, or by clearing all 
 Note that this behavior isn’t recommended due to poor accessibility. Web page content should be responsive and adaptable to small viewport widths, increased text size, and changes in text spacing.
 :::
 
-You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../../utils/ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
+We can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../../utils/ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
 
 ![](static/ellipsis.png)

@@ -14,7 +14,7 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
 :::
 
-**You can use it to:**
+**We can use it to:**
 
 - draw the user's attention to updated controls and menu items. Clicking an item with a dot will reveal other items marked with a dot.
 - show new notifications, like in a blog.

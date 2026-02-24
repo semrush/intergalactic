@@ -12,7 +12,7 @@ tabs: Design('filter-tags'), Example('filter-tags-code')
 
 **Filter Tags** is a filter to sort the data on the page by the tags.
 
-- You can select multiple values or "None", which will show all keywords without tags.
+- We can select multiple values or "None", which will show all keywords without tags.
 - All tags are pulled from the table data and attached to it. So the filter shows data user can work with in the context of the table.
 - The filter works with the "or" logic.
 
@@ -38,7 +38,7 @@ tabs: Design('filter-tags'), Example('filter-tags-code')
 - Dropdown has the list of all tags from the table data.
 - There is a special option - the ability to select keywords without tags ("None").
 - Sort a list of tags in alphabetical order.
-- You can't select both "None" and tags.
+- We can't select both "None" and tags.
 
 ![small tags](static/small-tags.png)
 

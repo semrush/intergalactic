@@ -9,8 +9,8 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), Example('ellipsis-code'), Chang
 
 **Use ellipsis in the following situations:**
 
-- You need to keep the text from wrapping to a new line.
-- You need to truncate the text at a certain line.
+- We need to keep the text from wrapping to a new line.
+- We need to truncate the text at a certain line.
 - The text is user-entered or dynamic and it's difficult to know how much space to allocate, for example, for [InlineInput](/components/inline-input/inline-input) width.
 
 **Avoid the following:**

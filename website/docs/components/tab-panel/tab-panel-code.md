@@ -6,7 +6,7 @@ tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example
 
 ## TabPanel item with addons
 
-You can add icons, badges, and counters as addons to the left or right of the text in the item.
+We can add icons, badges, and counters as addons to the left or right of the text in the item.
 
 <!-- vale DevDocs.Inclusive = NO -->
 Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with [ellipsis](../../utils/ellipsis/ellipsis) and a [hint](../../utils/hint/hint) will be shown on hover and focus.
@@ -36,7 +36,7 @@ Use `disabled` property to make `<TabPanel.Item />` disabled. Always add `Toolti
 
 By default, when using keyboard interaction, user has to confirm tab selection by pressing `Enter` or `Space`.
 
-You can set `behavior='auto'` to change this behavior, so that tabs are activated immediately when selected.
+We can set `behavior='auto'` to change this behavior, so that tabs are activated immediately when selected.
 
 ::: sandbox
 

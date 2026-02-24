@@ -36,7 +36,7 @@ When displaying a table in a card, set paddings to `0 0 --intergalactic-spacing-
 
 ## Truncating text with ellipsis
 
-You can truncate text in `Card.Title` and `Card.Description` using the `ellipsis` property. Find more information and examples in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
+We can truncate text in `Card.Title` and `Card.Description` using the `ellipsis` property. Find more information and examples in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
 
 ::: sandbox
 

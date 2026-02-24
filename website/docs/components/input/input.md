@@ -82,7 +82,7 @@ The search input can have a non-clickable icon before the text and a button for 
 
 ## Input with counter
 
-You can place [Counter](/components/counter/counter) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
+We can place [Counter](/components/counter/counter) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
 ::: tip
 Don’t use the [Tag](/components/tag/tag) component as a counter. It has a different purpose and functionality.

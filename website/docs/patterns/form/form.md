@@ -26,7 +26,7 @@ Input should have an accompanying text label.
 - The font weight should be set to `regular`. Use `bold` font-weight sparingly for emphasizing input labels.
 - Omit colons after input labels.
 
-You also could mark an input as optional.
+We also could mark an input as optional.
 
 | Input size | Vertical layout    | Horizontal layout        | Font size         |
 | ---------- | ------------------ | ------------------------ | ----------------- |

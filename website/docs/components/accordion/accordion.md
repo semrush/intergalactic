@@ -10,7 +10,7 @@ tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example
 
 ### When to use it
 
-- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
+- **We have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
 - **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
 ::: tip
@@ -45,13 +45,13 @@ Table: Accordion types
 | `primary`   | ![](static/default-bg.png) | Main accent accordion.        |
 | `secondary` | ![](static/default.png)    | Default non-accent accordion. |
 
-You can set the width of the accordion that is appropriate for the context.
+We can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
 
 ### Trigger styles
 
-You are free to set link or button of any size you need as the accordion trigger.
+We are free to set link or button of any size you need as the accordion trigger.
 
 Table: Accordion trigger styles
 
@@ -62,7 +62,7 @@ Table: Accordion trigger styles
 
 ### Collapsed content styles
 
-You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
+We can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
 **Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 

@@ -14,7 +14,7 @@ Check examples in the [FilterTrigger documentation](/components/filter-trigger/f
 
 ## LinkTrigger
 
-You can use `LinkTrigger` as a trigger for [Select](../select/select-code.md) if you want it to look like a link and take less space.
+We can use `LinkTrigger` as a trigger for [Select](../select/select-code.md) if you want it to look like a link and take less space.
 
 Use either `<label>` or `aria-label` to set an accessible name.
 

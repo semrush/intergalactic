@@ -23,7 +23,7 @@ Resize the window to see the changes.
 
 ## Manual control
 
-You can use an instance of the `MediaList` class, it has methods `matches`/`addListener`/`removeListener` and `destructor`.
+We can use an instance of the `MediaList` class, it has methods `matches`/`addListener`/`removeListener` and `destructor`.
 
 ::: sandbox
 
@@ -51,7 +51,7 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 
 ## Mocking
 
-You can mock global media queries for testing purposes.
+We can mock global media queries for testing purposes.
 
 ::: warning
 It will work if you use `createBreakpoints` function only.

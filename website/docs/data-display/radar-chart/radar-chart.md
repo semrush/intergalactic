@@ -26,8 +26,8 @@ The radar chart is also known as web chart, spider chart, spider graph, spider w
 
 - There are multivariate data.
 - There is an arbitrary number of variables.
-- You need to show outliers.
-- You need to make comparisons across multivariate data.
+- We need to show outliers.
+- We need to make comparisons across multivariate data.
 - Data sets are small or moderately sized.
 
 Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
@@ -76,18 +76,18 @@ Table: Radar chart styles
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![Radar chart with 3 minimum variables.](static/variables-minimum.png) | ![Radar chart with 10 maximum variables.](static/variables-maximum.png) |
 
-You can turn off grid ticks and labels if needed. It can be helpful for small-sized charts like the following one:
+We can turn off grid ticks and labels if needed. It can be helpful for small-sized charts like the following one:
 
 ![Example of simplified mini radar chart without visible additional lines.](static/mini-radar-1.png)
 
 ### Curved data set
 
-You can curve polygons (data sets), if needed.
+We can curve polygons (data sets), if needed.
 
 ::: tip
 To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
 
-You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+We can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 :::
 
 ![Radar chart with curved polygons as data sets.](static/curved-radar-1.png)
@@ -108,7 +108,7 @@ Table: Radar chart grid types
 
 ### Filled areas
 
-You can display your data sets with filled areas or without filled areas. Radar chart with filled areas makes charts more attention-grabbing and helps to visually engage your audience.
+We can display your data sets with filled areas or without filled areas. Radar chart with filled areas makes charts more attention-grabbing and helps to visually engage your audience.
 
 Areas use the same color as the line, but with 20% opacity. Areas are enabled by default. To disable the area, use the `fill="transparent"` property.
 
@@ -139,7 +139,7 @@ Variables can be labeled with other components such as [Tag](/components/tag/tag
 
 ### Scales
 
-You can add as many scales as you need to the axes. To keep your chart readable, we recommend that you don't add too many.
+We can add as many scales as you need to the axes. To keep your chart readable, we recommend that you don't add too many.
 
 Use `dashed` lines for scales:
 
@@ -170,7 +170,7 @@ Table: Radar chart data set styles
 
 To get smoothed lines, transfer `curve` with the required [rounding method](https://github.com/d3/d3-shape#curves) to the chart.
 
-Your charts could look like this:
+Wer charts could look like this:
 
 ![Radar chart with curved data sets.](static/curved-radar-1.png)
 ![Radar chart with curved data sets.](static/curved-radar-2.png)

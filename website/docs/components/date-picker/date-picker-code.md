@@ -42,7 +42,7 @@ To access the internal components, you must expand the component. The `Trigger` 
 
 ## Custom header
 
-You can change the header layout by expanding the component further.
+We can change the header layout by expanding the component further.
 
 ::: sandbox
 
@@ -66,7 +66,7 @@ Calendar days can have metrics, and you can change the units by passing a functi
 
 ## Disabled dates
 
-You can prevent selection of certain dates or a range of dates using the `disabled` property (and imagine yourself as a superhero 🕺🏻). The property takes an array of dates or an array with two dates to specify a range, or a `crontab` format for selecting dates periodically.
+We can prevent selection of certain dates or a range of dates using the `disabled` property (and imagine yourself as a superhero 🕺🏻). The property takes an array of dates or an array with two dates to specify a range, or a `crontab` format for selecting dates periodically.
 
 ::: sandbox
 
@@ -90,7 +90,7 @@ Date ranges may be customized or switched off at all, by transferring `periods={
 
 ## Week picker
 
-You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode. For example, you can create the WeekPeaker using DateRangePicker.
+We can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode. For example, you can create the WeekPeaker using DateRangePicker.
 
 ::: sandbox
 

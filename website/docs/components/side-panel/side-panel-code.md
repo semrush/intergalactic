@@ -26,7 +26,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 
 ## Advanced usage
 
-You can access the internal components by expanding `SidePanel` for `SidePanel.Overlay`, `SidePanel.Panel` or `SidePanel.Close`.
+We can access the internal components by expanding `SidePanel` for `SidePanel.Overlay`, `SidePanel.Panel` or `SidePanel.Close`.
 
 ::: sandbox
 
@@ -62,7 +62,7 @@ By default, the component is rendered with an overlay, but you can change this b
 
 ## Portals
 
-By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/portal) and disable it with `disablePortal`.
+By default, the component is rendered to the portal, at the bottom of the body. We can redefine this behavior with [`PortalProvider`](/utils/portal/portal) and disable it with `disablePortal`.
 
 ::: sandbox
 

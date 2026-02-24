@@ -46,7 +46,7 @@ Table: Roles and attributes
 - [Combobox](/patterns/auto-suggest/auto-suggest-a11y)
 - [Button](../button/button-a11y)
 
-<!-- You can also read more about the dropdown behavior in [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
+<!-- We can also read more about the dropdown behavior in [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper). -->
 
 ## Other recommendations
 

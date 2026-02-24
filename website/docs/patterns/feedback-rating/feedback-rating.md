@@ -49,8 +49,8 @@ Notice includes the following mandatory elements:
 - **Rating slider.** Noninteractive and shows the user's choice on the previous step. If user closes the window, then its choice will be cleared.
 - **Title.** Set titles that are suitable for the value that user have chosen. Don't forget to add the appropriate `h` tag.
 - **Group of checkboxes with suggestions.** Depending on the number of stars chosen, you can show different predefined sets of checkboxes for selection. Show 3 checkboxes maximum.
-- **Textarea for optional text feedback.** It has defailt label "Is there anything we could improve?". But you can change it if necessary. You can set a maximum number of symbols for it.
-- **"Send feedback" button.** You can change button's label if necessary.
+- **Textarea for optional text feedback.** It has defailt label "Is there anything we could improve?". But you can change it if necessary. We can set a maximum number of symbols for it.
+- **"Send feedback" button.** We can change button's label if necessary.
 
 **Optional elements that you can add if necessary:**
 
@@ -72,7 +72,7 @@ Table: Interaction with form inputs
 | Input                                    | Description                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Group of checkboxes with suggestions** | Optional to select. Users can select any number of suggestions.                                                                                                                                                                                                                                                                  |
-| **Textarea for optional text feedback**  | Optional to fill. If user filled the textarea with less than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button isn't disabled. You can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
+| **Textarea for optional text feedback**  | Optional to fill. If user filled the textarea with less than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button isn't disabled. We can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
 | **Input for email**                      | Optional to fill. If the user clears the input, they get no errors or something that can block the form's submission.                                                                                                                                                                                                            |
 
 ## States

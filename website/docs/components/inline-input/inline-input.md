@@ -24,7 +24,7 @@ Don’t use such an input in a [form](/patterns/form/form) along with regular in
 
 ### Sizes
 
-InlineInput itself doesn't have a set sizes. You can set its height and font size that suit your use case.
+InlineInput itself doesn't have a set sizes. We can set its height and font size that suit your use case.
 
 ### Styles
 
