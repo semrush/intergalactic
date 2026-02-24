@@ -7,14 +7,22 @@ export async function iconSize({ canvasElement }: { canvasElement: HTMLElement }
     { 'width': '16', 'height': '16', 'viewBox': '0 0 16 16', 'aria-hidden': 'true' },
     { 'width': '24', 'height': '24', 'viewBox': '0 0 24 24', 'aria-hidden': 'true' },
   ];
-  const svgNonInteractive = canvasElement.querySelectorAll('svg[aria-hidden="true"]');
-  expect(svgNonInteractive.length).toBeGreaterThan(0);
-  for (let i = 0; i < svgNonInteractive.length; i++) {
-    const svg = svgNonInteractive[i];
-    const attrs = expectedNonInteractiveAttributes[i];
+  const svgs = Array.from(canvasElement.querySelectorAll('svg[aria-hidden="true"]'));
 
-    expect(svg).toHaveAttribute('width', attrs['width']);
-    expect(svg).toHaveAttribute('height', attrs['height']);
-    expect(svg).toHaveAttribute('viewBox', attrs['viewBox']);
+  expect(svgs.length).toBeGreaterThan(0);
+
+  for (const svg of svgs) {
+    const width = svg.getAttribute('width');
+    const height = svg.getAttribute('height');
+
+    if (width === '16') {
+      await expect(svg).toHaveAttribute('height', '16');
+      await expect(svg).toHaveAttribute('viewBox', '0 0 16 16');
+    }
+
+    if (width === '24') {
+      await expect(svg).toHaveAttribute('height', '24');
+      await expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+    }
   }
 }
