@@ -203,7 +203,7 @@ jobs:
   docs-lint:
     runs-on: ubuntu-latest
     needs: get-changed-files
-    if: ${{ needs.get-changed-files.outputs.skip_docs_lint == 'true' && needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
+    if: ${{ needs.get-changed-files.outputs.skip_docs_lint != 'true' && needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
