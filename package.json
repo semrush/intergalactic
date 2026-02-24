@@ -44,6 +44,7 @@
     "git:setup": "git config --local attributesfile.name \".gitattributes\" && git config --local rebase.backend \"merge\" && git config --local merge.changelog-merge-driver.name \"changelog-merge-driver\" && git config --local merge.changelog-merge-driver.driver \"pnpm tsm --require=./.ci/tsm-filter-warnings.js ./.ci/changelog-merge-driver.ts %A %B\"",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/prebuild-stories.ts && storybook build",
+    "storybook:chromatic:build": "storybook build",
     "storybook:test": "storybook test"
   },
   "private": true,
