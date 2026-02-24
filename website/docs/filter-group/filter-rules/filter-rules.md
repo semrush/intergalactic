@@ -13,7 +13,7 @@ title: Filter common rules
 - be able to change data.
 
 ::: tip
-**It is good practice to save the entered/selected value in the filter dropdown if the user have not saved their selection.**
+**It is good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
 
 For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
 :::

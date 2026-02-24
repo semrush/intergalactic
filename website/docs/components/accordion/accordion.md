@@ -10,8 +10,8 @@ tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example
 
 ### When to use it
 
-- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on his task. _e.g., you can use an accordion in a table with a large amount of data or in large widgets with additional information._
-- **When screen area is limited (e.g., on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
+- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
+- **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
 ::: tip
 **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
