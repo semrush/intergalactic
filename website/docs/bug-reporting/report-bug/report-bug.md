@@ -17,4 +17,4 @@ You can submit a bug report or request an improvement with [GitHub issues](https
 You can use the internal Slack channel (#ui-kit-team) to report and discuss bugs, improvements, and any other questions you want to address to the Semrush UI Kit Team.
 
 - This method is convenient for Semrush developers and other maintainers, as it allows for quick feedback, bug fixes, and collaborative problem-solving.
-- Note that Slack channel isn't very helpful in terms of saving history, so important discussions or decisions should be documented elsewhere for reference.
+- Note that Slack channel is not very helpful in terms of saving history, so important discussions or decisions should be documented elsewhere for reference.
