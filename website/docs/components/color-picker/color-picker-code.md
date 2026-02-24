@@ -17,7 +17,7 @@ PaletteManager lets you add your own colors by typing in the hexadecimal code an
 
 ## Custom trigger
 
-You have complete control over the appearance of ColorPicker, including the trigger.
+We have complete control over the appearance of ColorPicker, including the trigger.
 
 ::: sandbox
 

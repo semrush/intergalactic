@@ -5,7 +5,7 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 ## Checkbox group
 
-You can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
+We can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
 
 ::: sandbox
 
@@ -29,7 +29,7 @@ When one or more options are selected from the list, the parent checkbox gets an
 
 ## Checkbox with other components
 
-You can place other components next to the `Checkbox` or inside the `Checkbox.Text` components.
+We can place other components next to the `Checkbox` or inside the `Checkbox.Text` components.
 
 ::: sandbox
 

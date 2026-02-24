@@ -7,7 +7,7 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 
 **BulkTextarea** is a multiline text field designed for entering lists of comma-separated values.
 
-You can enter a list manually using **Enter** or a comma, or paste a comma-separated list. You can also define your own rules for splitting values into lines.
+We can enter a list manually using **Enter** or a comma, or paste a comma-separated list. We can also define your own rules for splitting values into lines.
 
 This component also provides the possibility to validate every line and the whole input.
 
@@ -93,7 +93,7 @@ When navigating between invalid lines, the text next to the buttons is updated. 
 <!-- Hiding this section since for now component doesn't have it.
  ### Resize control
 
-You can enable the resize control for the textarea, allowing users to adjust its size. They can stretch it horizontally, vertically, or both ways.
+We can enable the resize control for the textarea, allowing users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
 When the textarea cannot be stretched further, a scrollbar will appear after a certain number of lines. We recommend adding scrollbars when the textarea has at least 5 lines.
 
@@ -109,7 +109,7 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: on submit, on blur, or on line blur. By default, our component uses on blur validation.
+We can define your own validation rules for the input: on submit, on blur, or on line blur. By default, our component uses on blur validation.
 
 ### Tooltips
 
