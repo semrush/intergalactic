@@ -10,7 +10,6 @@ type TextExampleProps = {
 const Demo = (props: TextExampleProps) => {
   return (
     <Text
-      display='block'
       w={props.w}
       mb={3}
       size={props.size}

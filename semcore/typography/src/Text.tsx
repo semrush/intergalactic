@@ -11,7 +11,7 @@ type DefaultProps = {
 };
 
 type State = {
-  showHint: boolean;
+  isEllipsized: boolean;
 };
 
 class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, DefaultProps, State> {
@@ -27,7 +27,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   };
 
   state = {
-    showHint: false,
+    isEllipsized: false,
   };
 
   constructor(props: TextProps) {
@@ -55,7 +55,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   render(): React.ReactNode {
     const SText = Root;
     const { color, underline, lineThrough, hintProps, children, ellipsis, resolveColor } = this.asProps;
-    const { showHint } = this.state;
+    const { isEllipsized } = this.state;
 
     const cropPosition = typeof ellipsis === 'object' ? (ellipsis.cropPosition ?? 'end') : (ellipsis === true ? 'end' : undefined);
     let withHint = hintProps !== false;
@@ -75,16 +75,17 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
           use:decoration={this.getTextDecoration(underline, lineThrough)}
           use:color={resolveColor(color)}
           use:ellipsis={Boolean(ellipsis)}
+          isEllipsized={isEllipsized}
           maxLine={maxLineValue}
           trim={cropPosition}
         />
-        {showHint && withHint && <Hint triggerRef={this.innerRef} {...hintProps}>{children}</Hint>}
+        {isEllipsized && withHint && <Hint triggerRef={this.innerRef} {...hintProps}>{children}</Hint>}
       </>,
     );
   }
 
-  private handleEllipsized(isEllipsis: boolean) {
-    this.setState({ showHint: isEllipsis });
+  private handleEllipsized(isEllipsized: boolean) {
+    this.setState({ isEllipsized: isEllipsized });
   }
 
   private initEllipsis() {
@@ -99,7 +100,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   private cleanUpEllipsis() {
     this.ellipsis?.off('isEllipsized', this.handleEllipsized);
     this.ellipsis?.cleanUp();
-    this.setState({ showHint: false });
+    this.setState({ isEllipsized: false });
   }
 
   private getTextDecoration(underline?: boolean, lineThrough?: boolean) {
