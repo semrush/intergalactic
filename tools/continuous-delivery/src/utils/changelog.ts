@@ -71,7 +71,7 @@ export class Changelog {
     const logs = await git.log({ from: this.tag });
     const { specialScopes, toolsComponents, semcoreBaseComponents, semcoreComponents } = await allowedScopes();
     const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
-    const allowed = [...specialScopes, ...semcoreComponents, ...toolsComponents].filter((element) => {
+    const allowed = [...specialScopes, ...semcoreComponents, ...semcoreBaseComponents, ...toolsComponents].filter((element) => {
       if (!this.collectedPackages) {
         return true;
       }
