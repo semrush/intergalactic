@@ -54,6 +54,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page, 0)).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
 
@@ -79,6 +80,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify close notification hint', async () => {
       await page.keyboard.press('Escape');
+      await locators.success(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
