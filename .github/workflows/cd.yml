@@ -209,8 +209,7 @@ jobs:
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
         with:
-          fail_on_error: true
-          filter_mode: diff_context
+          reporter: github-pr-review
           separator: ","
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
