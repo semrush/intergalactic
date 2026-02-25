@@ -2,6 +2,5 @@
   "$schema": "https://www.chromatic.com/config-file.schema.json",
   "buildScriptName": "storybook:chromatic:build",
   "exitOnceUploaded": true,
-  "onlyChanged": true,
-  "untraced": ["stories/**/tests/**"]
+  "onlyChanged": true
 }

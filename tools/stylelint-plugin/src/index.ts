@@ -1,8 +1,9 @@
-import stylelint, { type PostcssResult, type Rule } from 'stylelint';
-import postcssValueParser from 'postcss-value-parser';
+import { resolve as resolvePath, isAbsolute as isAbsolutePath } from 'node:path';
+
 import levenshtein from 'js-levenshtein';
 import type { Declaration } from 'postcss';
-import { resolve as resolvePath, isAbsolute as isAbsolutePath } from 'node:path';
+import postcssValueParser from 'postcss-value-parser';
+import stylelint, { type PostcssResult, type Rule } from 'stylelint';
 
 const ruleName = 'intergalactic/design-tokens';
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -12,6 +13,24 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
     return `Unexpected design token "${usedToken}" in property "${property}".`;
   },
 });
+
+type TokensCache = Record<string, unknown>;
+
+let cachedTokens: TokensCache | null = null;
+let cachedTokensPath: string | null = null;
+
+function loadTokens(tokensSource: string): TokensCache | null {
+  if (cachedTokens && cachedTokensPath === tokensSource) {
+    return cachedTokens;
+  }
+
+  const module = require(tokensSource);
+
+  cachedTokens = module.default ?? module;
+  cachedTokensPath = tokensSource;
+
+  return cachedTokens;
+}
 
 const getClosestTokens = (value: string, designTokensList: string[]) => {
   const distanced = designTokensList.map((token) => {
@@ -91,7 +110,7 @@ type Options = {
 };
 
 const defaultOptions = {
-  tokensSource: 'node_modules/intergalactic/utils/lib/themes/default.json',
+  tokensSource: 'node_modules/@semcore/core/lib/theme/themes/default.mjs',
   include: [],
   exclude: [],
   prefix: '--intergalactic-',
@@ -108,9 +127,13 @@ const rule: Rule = (enabled: boolean, providedOptions: Partial<Options> = {}) =>
   const tokensSource = isAbsolutePath(options.tokensSource)
     ? options.tokensSource
     : resolvePath(process.cwd(), options.tokensSource);
-  const designTokens = require(tokensSource);
+
+  const designTokens = loadTokens(tokensSource);
+
+  if (!designTokens) return () => {};
+
   const designTokensList = [...Object.keys(designTokens), ...options.include].filter(
-    token => !options.exclude.includes(token),
+    (token) => !options.exclude.includes(token),
   );
   const designTokensSet = new Set(designTokensList);
   const prefix = options.prefix;
