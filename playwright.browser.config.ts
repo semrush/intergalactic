@@ -33,14 +33,14 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        launchOptions: {
-          args: [
-            '--disable-dev-shm-usage',
-            '--disable-gpu',
-            '--disable-background-networking',
-            '--js-flags=--max-old-space-size=512',
-          ],
-        },
+        // launchOptions: {
+        //   args: [
+        //     '--disable-dev-shm-usage',
+        //     '--disable-gpu',
+        //     '--disable-background-networking',
+        //     '--js-flags=--max-old-space-size=512',
+        //   ],
+        // },
       },
     },
 
