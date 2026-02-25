@@ -2,7 +2,7 @@ import { Flex, ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-comp
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
@@ -327,17 +327,10 @@ class DropdownMenuRoot extends AbstractDropdown {
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
   const SBar = ScrollAreaComponent.Bar;
-  let isStickyGroupInside = false;
-
-  const groupComponent = findComponent(Children, [Dropdown.Group.displayName]);
-
-  if (groupComponent) {
-    isStickyGroupInside = groupComponent.props.sticky ?? false;
-  }
 
   return sstyled(styles)(
     <ListBoxContextProvider>
-      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light' isStickyGroupInside={isStickyGroupInside}>
+      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
         <ScrollAreaComponent.Container tabIndex={undefined}>
           <Children />
         </ScrollAreaComponent.Container>

@@ -11,8 +11,7 @@ SDropdownMenuList {
   SBar {
     z-index: 3;
   }
-
-  &[isStickyGroupInside='false'] {
+  &:has(>[data-ui-name="DropdownMenu.Group"][data-sticky="true"]) {
     SShadowHorizontal {
       &:before,
       &:after {
@@ -27,8 +26,6 @@ SDropdownMenuList {
       }
     }
   }
-
-  
 }
 
 SDropdownMenuItemContainer {
