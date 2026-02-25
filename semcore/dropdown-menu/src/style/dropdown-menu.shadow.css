@@ -12,21 +12,23 @@ SDropdownMenuList {
     z-index: 3;
   }
 
-  SShadowHorizontal {
+  &[isStickyGroupInside='false'] {
+    SShadowHorizontal {
+      &:before,
+      &:after {
+        border-radius: var(--intergalactic-control-rounded, 6px);
+      }
+    }
 
-    &:before,
-    &:after {
-      border-radius: var(--intergalactic-control-rounded, 6px);
+    SShadowVertical {
+      &:before,
+      &:after {
+        border-radius: var(--intergalactic-control-rounded, 6px);
+      }
     }
   }
 
-  SShadowVertical {
-
-    &:before,
-    &:after {
-      border-radius: var(--intergalactic-control-rounded, 6px);
-    }
-  }
+  
 }
 
 SDropdownMenuItemContainer {
