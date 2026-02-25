@@ -140,6 +140,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
+          await page.locator('[data-testid="button-link4"]').hover();
+
           await expect(page).toHaveScreenshot();
         });
       }
@@ -147,7 +149,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-testid="button-link4"]').hover();
           await expect(page).toHaveScreenshot();
         });
       }
