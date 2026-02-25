@@ -42,7 +42,7 @@ const Demo = (props: ExampleProps) => {
       <Box w={150}>
         <Text size={props.size}>
           {' '}
-          This is some text with a
+          This is text with a
           {' '}
           <ButtonLink
             size={props.size}
@@ -52,7 +52,7 @@ const Demo = (props: ExampleProps) => {
           >
             Some Long Button Label
           </ButtonLink>
-          to check that everything is on the baseline
+          to check
           <ButtonLink
             size={props.size}
             active={props.active}

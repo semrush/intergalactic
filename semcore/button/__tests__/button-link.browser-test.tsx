@@ -137,6 +137,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-in-text.tsx', 'en', item);
 
+      if (item.size == 800) await page.setViewportSize({ width: 1280, height: 1200 });
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');

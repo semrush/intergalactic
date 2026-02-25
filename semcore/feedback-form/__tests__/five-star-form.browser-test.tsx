@@ -37,6 +37,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@feedback-form'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
+    const checkboxInput = page.getByRole('checkbox');
 
     await expect(page).toHaveScreenshot();
     const dialog = locators.dialog(page);
@@ -57,17 +58,29 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify form styles', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
+      await expect(checkboxInput.first()).toBeFocused();
+
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify email validation', async () => {
       await page.keyboard.press('Tab');
+      await expect(checkboxInput.nth(1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(checkboxInput.nth(2)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 0)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
+
       await page.keyboard.type('t');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
@@ -79,6 +92,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify loading styles', async () => {
       await page.keyboard.type('test@test.test');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
 
       await page.keyboard.press('Enter');
