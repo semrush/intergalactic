@@ -502,6 +502,9 @@ importers:
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
+      '@semcore/typography':
+        specifier: 16.3.2
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*

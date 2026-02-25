@@ -1,5 +1,5 @@
 import type { BoxProps } from '@semcore/base-components';
-import { Flex, Box, Hint } from '@semcore/base-components';
+import { Box, Hint } from '@semcore/base-components';
 import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
