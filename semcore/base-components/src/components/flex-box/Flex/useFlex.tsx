@@ -1,11 +1,11 @@
 import { sstyled } from '@semcore/core';
+import { getAutoOrScaleIndent, removeUndefinedKeys } from '@semcore/core/lib/utils/indentStyles';
 import cn from 'classnames';
 import type { Property, Properties } from 'csstype';
 import React from 'react';
 
-import useBox, { type BoxProps, removeUndefinedKeys } from '../Box/useBox';
+import useBox, { type BoxProps } from '../Box/useBox';
 import style from '../style/use-flex.shadow.css';
-import { getAutoOrScaleIndent } from '../utils';
 
 export type FlexProps = BoxProps & {
   /**
