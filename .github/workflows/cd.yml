@@ -210,6 +210,7 @@ jobs:
         name: Run Vale
         with:
           fail_on_error: true
+          filter_mode: diff_context
           separator: ","
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
