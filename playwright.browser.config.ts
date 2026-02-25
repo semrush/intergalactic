@@ -31,7 +31,17 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: {
+          args: [
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-background-networking',
+            '--js-flags=--max-old-space-size=512',
+          ],
+        },
+      },
     },
 
     {

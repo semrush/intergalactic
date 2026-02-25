@@ -85,8 +85,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-icon-only.tsx', 'en', item);
 
-      const count = await locators.button(page).count();
-
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');

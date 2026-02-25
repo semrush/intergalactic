@@ -1,7 +1,7 @@
 {
   "name": "@semcore/stylelint-plugin",
   "description": "Semrush Intergalactic stylelint plugin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,7 +19,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "semcore/stylelint-plugin"
+    "directory": "tools/stylelint-plugin"
   },
   "devDependencies": {
     "@types/js-levenshtein": "1.1.3",
