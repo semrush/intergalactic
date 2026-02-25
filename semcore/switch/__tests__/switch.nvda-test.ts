@@ -7,8 +7,9 @@ test.describe(`@switch ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/switch/docs/examples/basic_example.tsx', 'en');
 
     await nvda.next();
+    await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, Receive updates');
+    expect(await nvda.itemText()).toContain('Receive updates');
     await nvda.press('Enter');
     await page.waitForTimeout(300);
 

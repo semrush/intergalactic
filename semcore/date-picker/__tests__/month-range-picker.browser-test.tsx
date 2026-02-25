@@ -415,7 +415,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         ]);
 
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(50);
+        await page.waitForTimeout(100);
 
         const [updatedFrom, updatedTo] = await Promise.all([
           locators.title(page).first().textContent(),
@@ -429,7 +429,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Next year')).toBeFocused();
 
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(50);
+        await page.waitForTimeout(100);
 
         await expect(locators.title(page).first()).toHaveText(initialFrom!);
         await expect(locators.title(page).nth(1)).toHaveText(initialTo!);
@@ -465,9 +465,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('Space');
         await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
+
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Space');
-        await page.waitForTimeout(50);
+        await page.waitForTimeout(100);
         const [start, middle] = await Promise.all([
           input.nth(0).inputValue(),
           input.nth(1).inputValue(),
@@ -479,7 +481,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           expect(middle).toBe(initialRight);
         }
         await page.keyboard.press('Space');
-        await page.waitForTimeout(50);
+        await page.waitForTimeout(100);
 
         const [confirmedStart, confirmedEnd] = await Promise.all([
           input.nth(0).inputValue(),
@@ -505,6 +507,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Apply range via keyboard interaction', async () => {
         await page.keyboard.press('Space');
         await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
+
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Space');
         await page.keyboard.press('ArrowRight');
@@ -530,6 +534,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Reset range using keyboard', async () => {
         await page.keyboard.press('Space');
         await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
 
         await pressTab(9); // Focus Reset
         await expect(locators.button(page, 'Reset')).toBeFocused();
