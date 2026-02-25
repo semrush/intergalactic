@@ -359,6 +359,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
 
     await page.keyboard.press('Escape');
     await locators.button(page, 'Close').waitFor({ state: 'hidden' });
@@ -366,6 +367,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
+
     await page.keyboard.press('Tab');
     await expect(locators.button(page, 'Go to Tool Name')).toBeFocused();
     await page.keyboard.press('Enter');
