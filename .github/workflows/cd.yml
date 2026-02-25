@@ -210,6 +210,7 @@ jobs:
         name: Run Vale
         with:
           fail_on_error: true
+          filter_mode: diff_context
           separator: ","
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
@@ -345,7 +346,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -420,7 +421,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -489,7 +490,7 @@ jobs:
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git

@@ -54,6 +54,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.getByText('Close').waitFor({ state: 'visible' });
+      await expect(locators.button(page, 'Close')).toBeFocused();
 
       await test.step('Verify header styles', async () => {
         await expect(locators.header(page)).toHaveCSS('padding-left', '24px');
@@ -108,6 +109,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await expect(locators.button(page, 'Close')).toBeFocused();
       await page.getByText('Close').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
@@ -136,6 +138,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -163,6 +167,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
 
     const title = page.locator('h6[data-ui-name="SidePanel.Title"]');
     const box = await title.boundingBox();
@@ -194,6 +199,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
 
     await test.step('Verify panel attributes', async () => {
       await expect(locators.dialog(page)).toHaveAttribute('aria-modal', 'true');
@@ -218,9 +224,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(page.getByRole('button')).toBeFocused();
     });
 
-    await test.step('Verify closed by ESC when Close is focused', async () => {
+    await test.step('Verify closed by Activate Close when Close is focused', async () => {
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.button(page, 'Close')).toBeFocused();
+
       await page.keyboard.press('Space');
       await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(page.getByRole('button')).toBeFocused();
@@ -229,6 +237,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify closed by click outside the side panels when Close is not focused', async () => {
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.button(page, 'Close')).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.mouse.click(0, 0);
 
