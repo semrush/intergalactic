@@ -247,7 +247,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.popper(page).waitFor({ state: 'visible' });
-    await page.mouse.click(0, 0);
+    await page.mouse.click(1, 1);
+    await page.waitForTimeout(100);
+
     await locators.popper(page).waitFor({ state: 'hidden' });
     await expect(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
