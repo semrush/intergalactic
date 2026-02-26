@@ -443,6 +443,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify palette item attributes', async () => {
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveCount(1);
@@ -453,8 +454,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await locators.paletteItem(page).click();
+      await locators.color(page, 0).waitFor({ state: 'hidden' });
+
       await locators.trigger(page).click();
+      await locators.color(page, 0).waitFor({ state: 'visible' });
+
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveAttribute('aria-selected', 'true');
