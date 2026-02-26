@@ -7,7 +7,7 @@ const Demo = () => {
     <div>
       <p>
 
-        <Text w={50} display='block' ellipsis={true}>Segment 2sfdsf</Text>
+        <Text w={50} ellipsis={true}>Segment 2sfdsf</Text>
 
       </p>
       <p>
@@ -17,7 +17,7 @@ const Demo = () => {
       </p>
       <p>
 
-        <Text w={120} display='block' ellipsis={true}>Lorem bbjips</Text>
+        <Text w={120} ellipsis={true}>Lorem bbjips</Text>
 
       </p>
       <p>
@@ -53,7 +53,7 @@ const Demo = () => {
         </Text>
       </p>
       <p>
-        <Text display='block' w={111} mb={3} ellipsis={{ cropPosition: 'middle' }}>
+        <Text w={111} mb={3} ellipsis={{ cropPosition: 'middle' }}>
           Segment 2sfdsf
         </Text>
       </p>
