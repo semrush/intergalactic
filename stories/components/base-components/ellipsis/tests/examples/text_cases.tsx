@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -23,6 +23,18 @@ const Demo = () => {
       <p>
 
         <Text w={50} display='block' ellipsis={{ cropPosition: 'middle' }}>Lorem bbjips</Text>
+
+      </p>
+
+      <p>
+
+        <Box w={200}>
+          <Flex py={2} px={3} h={48} w='100%' alignItems='center'>
+            <Text ellipsis={{ maxLine: 2 }} size={100}>
+              Website is better optimized for AI search engines
+            </Text>
+          </Flex>
+        </Box>
 
       </p>
       <p>
