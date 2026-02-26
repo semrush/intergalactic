@@ -16,28 +16,45 @@ const Demo = (props: ButtonEllipsisProps) => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   return (
-    <Button
-      size={props.size}
-      use={props.use}
-      theme={props.theme}
-      active={props.active}
-      disabled={props.disabled}
-      loading={props.loading}
-      ref={buttonRef}
-      style={props.style}
-    >
-      <Button.Text
-        ellipsis={props.ellipsis}
-        w={props.w}
-        hintProps={{
-          ...(props.enableHintTriggerRef ? { triggerRef: buttonRef } : {}),
-          ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-          ...props.hintProps,
-        }}
+    <>
+      <Button
+        size={props.size}
+        use={props.use}
+        theme={props.theme}
+        active={props.active}
+        disabled={props.disabled}
+        loading={props.loading}
+        ref={buttonRef}
+        style={props.style}
       >
-        Button with very long text that should be truncated with ellipsis
-      </Button.Text>
-    </Button>
+        <Button.Text
+          ellipsis={props.ellipsis}
+          w={props.w}
+          hintProps={{
+            ...(props.enableHintTriggerRef ? { triggerRef: buttonRef } : {}),
+            ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
+            ...props.hintProps,
+          }}
+        >
+          Button with very long text that should be truncated with ellipsis
+        </Button.Text>
+      </Button>
+
+      <Button
+        ml={2}
+        size={props.size}
+        use={props.use}
+        theme={props.theme}
+        active={props.active}
+        disabled={props.disabled}
+        loading={props.loading}
+        style={props.style}
+      >
+        <Button.Text>
+          Button without ellipsis
+        </Button.Text>
+      </Button>
+    </>
   );
 };
 
