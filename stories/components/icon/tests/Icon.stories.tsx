@@ -17,7 +17,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
 export const AllIconsGenerated: StoryObj = {
   render: AllIconsGeneratedExample,
 };
