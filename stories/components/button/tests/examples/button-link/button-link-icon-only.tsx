@@ -17,7 +17,7 @@ const Demo = (props: ExampleProps) => {
         use={props.use}
         color={props.color}
         hintPlacement={props.hintPlacement}
-        tag='strong'
+
       >
         <ButtonLink.Addon>
           <VideoListM />
@@ -46,6 +46,7 @@ const Demo = (props: ExampleProps) => {
         use={props.use}
         color={props.color}
         hintPlacement={props.hintPlacement}
+        tag='strong'
       />
 
     </Flex>

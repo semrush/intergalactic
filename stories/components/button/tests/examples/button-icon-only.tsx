@@ -5,11 +5,11 @@ import type { ButtonProps } from '@semcore/ui/button';
 import Tooltip, { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
-type ExampleProps = ButtonProps;
+type ExampleProps = ButtonProps & { style?: any };
 const Demo = (props: ExampleProps) => {
   return (
 
-    <Flex direction='row' gap={2} m={15}>
+    <Flex direction='row' gap={2} m={15} style={props.style}>
 
       <Flex data-test-id='icon-only' gap={2} m={2}>
         <Button
@@ -61,6 +61,8 @@ export const defaultIconButtonProps: ExampleProps = {
   use: 'primary',
   theme: 'muted',
   hintPlacement: 'top',
+  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
+
 };
 
 Demo.defaultProps = defaultIconButtonProps;

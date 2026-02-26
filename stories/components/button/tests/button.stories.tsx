@@ -36,6 +36,11 @@ const commonArgTypes = {
     control: { type: 'select' },
     options: ['top', 'bottom', 'left', 'right'],
   },
+  style: {
+    control: { type: 'select' },
+    options: [undefined, { backgroundColor: '#191B23' }],
+  },
+
 } as const;
 
 export const ButtonBase: StoryObj<typeof defaultButtonProps> = {
@@ -75,10 +80,6 @@ const ellipsisArgTypes = {
   w: {
     control: { type: 'number' },
     description: 'Width of the button text',
-  },
-  hintProps: {
-    control: { type: 'object' },
-    description: 'Hint properties (triggerRef is set automatically when enableHintTriggerRef is true)',
   },
 } as const;
 

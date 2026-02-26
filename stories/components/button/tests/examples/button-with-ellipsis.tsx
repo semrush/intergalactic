@@ -7,7 +7,6 @@ type ButtonEllipsisProps = ButtonProps & {
   ellipsis?: true | EllipsisSettings;
   w?: number | string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
-  hintProps?: SimpleHintPopperProps;
 };
 
 const Demo = (props: ButtonEllipsisProps) => {
@@ -26,7 +25,7 @@ const Demo = (props: ButtonEllipsisProps) => {
           w={props.w}
           hintProps={{
             ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-            ...props.hintProps,
+
           }}
         >
           Button with very long text that should be truncated with ellipsis

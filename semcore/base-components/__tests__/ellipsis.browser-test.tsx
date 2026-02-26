@@ -34,10 +34,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Focus link with keyboard', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page)).toBeFocused();
+          await locators.hint(page).waitFor({ state: 'visible' });
+
           await expect(page).toHaveScreenshot();
         });
       });
-
       test(`Verify ellipsis on link with mouse hover when ${variant.description}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
       }, async ({ page }) => {
@@ -47,11 +48,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
 
-          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
-          if (!hasMaxLine) {
-            await page.waitForTimeout(200);
-            await locators.hint(page).waitFor({ state: 'visible' });
-          }
+          await page.waitForTimeout(200);
+          await locators.hint(page).waitFor({ state: 'visible' });
+
           await expect(page).toHaveScreenshot();
         });
       });
@@ -167,10 +166,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 });
 
 /* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shows full text on hover and hides on mouse leave', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],

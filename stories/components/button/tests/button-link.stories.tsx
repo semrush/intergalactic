@@ -72,10 +72,6 @@ const ellipsisArgTypes = {
     control: { type: 'number' },
     description: 'Width of the button link text',
   },
-  hintProps: {
-    control: { type: 'object' },
-    description: 'Hint properties (triggerRef is set automatically when enableHintTriggerRef is true)',
-  },
 } as const;
 
 export const ButtonLinkWithEllipsis: StoryObj<typeof defaultButtonLinkEllipsisProps> = {
