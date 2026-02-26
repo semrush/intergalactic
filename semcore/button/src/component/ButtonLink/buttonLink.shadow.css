@@ -70,8 +70,9 @@ SButton[use='secondary'] {
     text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
     text-underline-position: under;
-    text-underline-offset: 1px;
+    text-underline-offset: 0;
     text-decoration-skip-ink: none;
+    padding-bottom: 1px;
   }
 }
 
