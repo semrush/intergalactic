@@ -545,10 +545,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
       await test.step('Open date range picker by Enter', async () => {
         await page.keyboard.press('Tab');
+        await expect(input.first()).toBeFocused();
         await page.keyboard.press('Tab');
+        await expect(input.nth(1)).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(input.nth(2)).toBeFocused();
+
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
 
         await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
         await expect(locators.popper(page)).toBeFocused();
@@ -557,15 +562,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Close date range picker by Escape', async () => {
         await page.keyboard.press('Escape');
         await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await expect(input.nth(2)).toBeFocused();
       });
       await test.step('Open date range picker by Space', async () => {
         await page.keyboard.press('Space');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
 
-        await expect(locators.dateRangePickerTrigger(page, 4)).not.toBeFocused();
+        await expect(input.nth(2)).not.toBeFocused();
         await expect(locators.popper(page)).toBeFocused();
       });
-      // if (browserName === 'webkit') return;
       await test.step('Verify month switched by Enter', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Previous month')).toBeFocused();
@@ -600,6 +605,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(page.locator('[data-ui-name="DateRangePicker.Calendar"]').first()).toBeFocused();
 
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Next month')).toBeFocused();
+
         await page.keyboard.press('Tab');
         await expect(buttons.first()).toBeFocused();
 
@@ -619,9 +626,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         ]);
 
         await page.keyboard.press('Escape');
-        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
+        await expect(input.nth(2)).toBeFocused();
 
-        await expect(locators.popper(page)).toHaveCount(0);
         const [value1_1, value2_1] = await Promise.all([
           input.nth(2).inputValue(),
           input.nth(3).inputValue(),
@@ -630,7 +637,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(value2_1).toBe(initialValue2);
 
         await page.keyboard.press('Space');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(locators.popper(page)).toBeFocused();
 
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Space');
@@ -650,7 +658,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(value2_3).not.toBe(value2_2);
 
         await page.keyboard.press('Escape');
-        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
+        await expect(input.nth(2)).toBeFocused();
 
         const [value1_4, value2_4] = await Promise.all([
           input.nth(2).inputValue(),
@@ -660,17 +669,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(value2_4).toBe(initialValue2);
 
         await page.keyboard.press('Space');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(input.nth(2)).not.toBeFocused();
+        await expect(locators.popper(page)).toBeFocused();
 
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
+        await page.keyboard.press('Tab');
+        await expect(buttons.first()).toBeFocused();
 
-        for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
+        for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Apply')).toBeFocused();
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
+        await expect(input.nth(2)).toBeFocused();
 
         const [value1_6, value2_6] = await Promise.all([
           input.nth(2).inputValue(),
@@ -680,20 +695,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(value2_6).not.toBe(value2_4);
 
         await page.keyboard.press('Space');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(locators.popper(page)).toBeFocused();
 
         for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+        await expect(buttons.nth(1)).toBeFocused();
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
+        await expect(input.nth(2)).toBeFocused();
 
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+        await locators.button(page, 'Apply').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(locators.popper(page)).toBeFocused();
 
         for (let i = 0; i < 10; i++) await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Reset')).toBeFocused();
 
         await page.keyboard.press('Space');
-        await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
+        await expect(input.nth(2)).toBeFocused();
 
         const [value1_5, value2_5] = await Promise.all([
           input.nth(2).inputValue(),

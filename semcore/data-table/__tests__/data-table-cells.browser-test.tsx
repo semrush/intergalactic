@@ -337,6 +337,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(selectOption).toBeHidden();
 
       await selectButton.click();
+      await selectOption.waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
       await expect(selectOption).toBeHidden();
       await expect(selectButton).toBeFocused();

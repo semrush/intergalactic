@@ -254,21 +254,26 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify availabe accordion expands and visible ', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.toggle(page).nth(0)).toBeFocused();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'visible' });
       });
       await test.step('Verify partly available accordion expands by keyboard', async () => {
         for (let i = 0; i < 6; i++)
           await page.keyboard.press('ArrowDown');
+        await expect(locators.toggle(page).nth(2)).toBeFocused();
         await page.keyboard.press('Enter');
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await page.waitForTimeout(300);
         await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowDown');
+        await expect(locators.toggle(page).nth(3)).toBeFocused();
       });
       await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
         await page.keyboard.press('Enter');
-
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 11).waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowRight');
@@ -324,7 +329,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       expect(hasScroll).toBe(false);
 
-      page.setViewportSize({ width: 500, height: 700 });
+      await page.setViewportSize({ width: 500, height: 700 });
 
       hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
 

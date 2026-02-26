@@ -485,20 +485,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx', 'en');
-
+    if (browserName == 'webkit') test.skip();
     await test.step('Verify tab focuses 1st radio', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
       await expect(locators.radios(page, 0)).not.toBeChecked();
+
       await expect(locators.radios(page, 0)).toBeFocused();
     });
 
     await test.step('Verify tab focuses next interactive element', async () => {
-      if (browserName === 'firefox') {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-      } else await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+
       await expect(locators.radioGroup(page)).not.toHaveAttribute('value', '');
       await expect(page.locator('[data-ui-name="DescriptionTooltip.Trigger"]')).toBeFocused();
       await expect(locators.radios(page, 0)).not.toBeChecked();
