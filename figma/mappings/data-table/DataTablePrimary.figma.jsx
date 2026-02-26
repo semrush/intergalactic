@@ -6,12 +6,11 @@ figma.connect(
   DataTable,
   'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
   {
-    variant: { 'action bar': 'false' },
+    variant: { 'action bar': 'false', 'built with': 'autolayout' },
     example: () => (
       <DataTable
         data={/* Add your data here */}
         aria-label='/* Add your aria-label here */'
-        defaultGridTemplateColumnWidth='auto'
         wMax='/* Add your wMax here */'
         headerProps={/* Add your headerProps here */}
         columns={/* Add your columns here */}
@@ -23,7 +22,7 @@ figma.connect(
   DataTable,
   'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
   {
-    variant: { 'action bar': 'true' },
+    variant: { 'action bar': 'true', 'built with': 'autolayout' },
 
     example: () => (
       <>
@@ -39,7 +38,6 @@ figma.connect(
           <DataTable
             data={/* Add your data here */}
             aria-label='/* Add your aria-label here */'
-            defaultGridTemplateColumnWidth='auto'
             selectedRows={/* Add your selectedRows here */}
             onSelectedRowsChange={/* Add your onSelectedRowsChange here */}
             ref={/* Add your ref here */}
@@ -61,7 +59,7 @@ figma.connect(
   DataTable,
   'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
   {
-    variant: { variant: 'card (grid)' },
+    variant: { 'built with': 'autolayout (card layout)' },
     example: () => (
       <DataTable
         data={/* Add your data here */}
@@ -76,7 +74,7 @@ figma.connect(
   DataTable,
   'https://www.figma.com/design/hwYZpLVEg6TU1AFwpBvYXA/-Refactoring-WIP---%E2%9C%A8-Table-components?node-id=3089-153990&',
   {
-    variant: { variant: 'card (autolayout)' },
+    variant: { 'built with': 'grid (card layout)' },
     example: () => (
       <DataTable
         data={/* Add your data here */}
