@@ -7,10 +7,18 @@ import { allowedScopes } from '../utils/allowedScopes';
 
 const git = Git();
 
-export const closeTasks = async (version: string) => {
-  const tags = await git.tags(['v*', '--sort', 'creatordate']);
+export const closeTasks = async (versionTag: string) => {
+  let match = 'v*';
+
+  if (versionTag.startsWith('icon')) {
+    match = `icon*`;
+  } else if (versionTag.startsWith('illustration')) {
+    match = `illustrations*`;
+  }
+
+  const tags = await git.tags([match, '--sort', 'creatordate']);
   const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
-  const currentReleaseTagIndex = releaseTags.findIndex((tag) => tag === `v${version}`);
+  const currentReleaseTagIndex = releaseTags.findIndex((tag) => tag === versionTag);
   const prevReleaseTag = releaseTags[currentReleaseTagIndex - 1];
   const logs = await git.log({ from: prevReleaseTag });
   const regexp = new RegExp(/\[(.*?)\]/gi);
@@ -40,9 +48,15 @@ export const closeTasks = async (version: string) => {
       );
     }
 
+    let fixVersion: string | undefined = undefined;
+
+    if (versionTag.startsWith('v')) {
+      fixVersion = versionTag.slice(1);
+    }
+
     const body = JSON.stringify({
       taskIds: taskIdsArray,
-      fixVersion: version,
+      fixVersion,
     });
 
     const signature = crypto.createHmac('sha256', ingBotSecret).update(body).digest('hex');

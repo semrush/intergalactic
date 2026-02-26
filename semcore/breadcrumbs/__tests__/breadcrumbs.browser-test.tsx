@@ -130,7 +130,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
       await page.waitForTimeout(200); // wait for finish ellipsis calculation
-
       const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
       const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
       const hint = page.locator('[data-ui-name="Hint"]');
@@ -153,7 +152,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
     await page.waitForTimeout(200); // wait for finish ellipsis calculation
-
     const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
     const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
     const hint = page.locator('[data-ui-name="Hint"]');

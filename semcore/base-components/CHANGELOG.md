@@ -6,77 +6,101 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- **popper**: The "Popper" with focus or hover interaction opens after moving to the
+- The "Popper" with focus or hover interaction opens after moving to the
 trigger from the popper using the Tab key.
 
 ## [16.4.1] - 2025-10-17
 
 ### Fixed
 
-- **scroll-area**: Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
+- Mouse interaction with elements inside a `ScrollArea.Container` when the container has focus-visible.
 
 ## [16.4.0] - 2025-10-03
 
 ### Changed
 
-- **flex-box**: Styles for `:focus-visible`.
-- **flex-box**: Border-radius for invalid pattern in InvalidStateBox.
+- Styles for `:focus-visible` in Box and ScrollArea.
+- Border-radius for invalid pattern in InvalidStateBox.
 
 ## [16.3.0] - 2025-09-20
 
 ### Added
 
-- **flex-box**: Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
+- Ability to use two tags in `tag` property. First for some logic like `Ellipsis` or `Select.Trigger` and second for real `html` tag.
 
 ## [16.2.4] - 2025-09-12
 
 ### Changed
 
-- **popper**: Don't open popper `onFocus` if last interaction was with mouse.
+- Don't open popper `onFocus` if last interaction was with mouse.
+
+## [16.2.3] - 2025-09-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.2.0 ~> 16.3.0]).
+
+## [16.2.2] - 2025-09-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.1.1 ~> 16.2.0]).
 
 ## [16.2.1] - 2025-08-29
 
 ### Changed
 
-- **popper**: Type description for `PopperPopperProps`/`PopperProps`/`ScrollAreaProps`/`ScrollBarProps`/`BoxProps`.
+- Type description for `PopperPopperProps`/`PopperProps`/`ScrollAreaProps`/`ScrollBarProps`/`BoxProps`.
 
 ## [16.2.0] - 2025-08-08
 
 ### Added
 
-- **flex-box**: `text-align` CSS property to `Box` component.
+- `text-align` CSS property to `Box` component.
+
+## [16.1.2] - 2025-07-23
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.0.3 ~> 16.0.4]).
+
+## [16.1.1] - 2025-07-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [16.0.1 ~> 16.0.3]).
 
 ## [16.1.0] - 2025-06-20
 
 ### Added
 
-- **scroll-area**: New properties - `shadowSize` and `shadowTheme` for customize Shadows.
+- New properties - `shadowSize` and `shadowTheme` for customize Shadows.
 
 ## [16.0.2] - 2025-06-12
 
 ### Added
 
-- **scroll-area**: ResizeObserver for the `Wrapper` component in the `ScrollArea`.
+- ResizeObserver for the `Wrapper` component in the `ScrollArea`.
 
 ### Changed
 
-- **popper**: `keyboardFocus` to `focus` event for popper triggers with `hover` interaction.
+- `keyboardFocus` to `focus` event for popper triggers with `hover` interaction.
 
 ## [16.0.1] - 2025-05-26
 
 ### Fixed
 
-- **animation**: `Delay` doesn't work for the `Collapse` component.
+- `Delay` doesn't work for the `Collapse` component.
 
 ## [16.0.0] - 2025-05-19
 
 ### Added
 
 - Package with base components.
-- **flex-box**: `outline` for all Box'es with `:focus-visible`.
-- **scroll-area**: `topOffset` and `bottomOffset` to Bars.
-- **portal**: `nodeToMount` property.
+- `outline` for all Box'es with `:focus-visible`.
+- `topOffset` and `bottomOffset` to Bars in ScrollArea.
+- `nodeToMount` property to `Portal`.
 
 ### Fixed
 
-- **popper**: `keydown` event was propagated from Popper.
+- `keydown` event was propagated from `Popper`.

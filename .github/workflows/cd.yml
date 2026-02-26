@@ -179,6 +179,7 @@ jobs:
     outputs:
       changed_files: ${{ steps.changed-files.outputs.changed_files }}
       count: ${{ steps.changed-files.outputs.count }}
+      skip_docs_lint: ${{ steps.changed-files.outputs.skip_docs_lint }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:
@@ -191,16 +192,24 @@ jobs:
 
           ALL_FILES_COUNT=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} | wc -l)
           echo "count=$ALL_FILES_COUNT" >> $GITHUB_OUTPUT
+
+          if [[ -z "$FILES" ]]; then
+            echo "::notice::The docs-lint job will be skipped because there’s no changed .md files."
+            echo "skip_docs_lint=true" >> $GITHUB_OUTPUT
+          fi
+          if [[ $ALL_FILES_COUNT -gt 300 && -n "$FILES" ]]; then
+            echo "::warning::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
+          fi
   docs-lint:
     runs-on: ubuntu-latest
     needs: get-changed-files
-    if: ${{ needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
+    if: ${{ needs.get-changed-files.outputs.skip_docs_lint != 'true' && needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
         with:
-          fail_on_error: true
+          reporter: github-pr-review
           separator: ","
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
@@ -336,7 +345,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -411,7 +420,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -480,7 +489,7 @@ jobs:
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git

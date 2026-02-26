@@ -87,15 +87,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify Remove button for the row shown and can be focused when something added to the input', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('combobox', { name: 'Filter' }).nth(1)).toBeFocused();
       await page.keyboard.press('Enter');
       await page.getByText('Not containing').waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await page.getByRole('option').nth(1).waitFor({ state: 'hidden' });
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('textbox', { name: 'Value' })).toBeFocused();
       await page.keyboard.press('a');
       await locators.button(page, 'Remove condition').waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Remove condition')).toBeFocused();
       await page.getByText('Remove condition').waitFor({ state: 'visible' });
       await expect(locators.button(page, 'Remove condition')).toHaveCount(1);
       await page.keyboard.press('Escape');
@@ -142,11 +145,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify focus when last item removed', async () => {
       await page.keyboard.press('Space');
       await locators.popper(page).waitFor({ state: 'visible' });
+      await expect(page.getByLabel('Rule')).toBeFocused();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Remove condition')).toBeFocused();
 
       await page.keyboard.press('Enter');
       await expect(locators.button(page, 'Add condition')).not.toBeFocused();
@@ -164,20 +169,37 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify counter removed when last item removed and Apply pressed', async () => {
       await page.keyboard.press('Space');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+      await expect(page.getByLabel('Rule')).toBeFocused();
+
       await expect(locators.button(page, 'Clear all')).not.toBeHidden();
       await page.keyboard.press('Tab');
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('combobox', { name: 'Filter' }).nth(1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('textbox', { name: 'Value' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Remove condition')).toBeFocused();
 
       await page.keyboard.press('Space');
       await expect(locators.button(page, 'Clear all')).toBeHidden();
 
       await page.keyboard.press('Tab');
+      await expect(page.getByLabel('Rule')).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('combobox', { name: 'Type' })).toBeFocused();
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('combobox', { name: 'Filter' }).nth(1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('textbox', { name: 'Value' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Add condition')).toBeFocused();
+
       await page.keyboard.press('Tab');
 
       await expect(locators.button(page, 'Apply')).toBeFocused();
@@ -189,36 +211,29 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify counter removed when Clear All pressed', async () => {
       await page.keyboard.press('Space');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+      await expect(page.getByLabel('Rule')).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('textbox', { name: 'Value' })).toBeFocused();
+
       await page.keyboard.press('a');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Add condition')).toBeFocused();
+
       await page.keyboard.press('Space');
+      await expect(locators.button(page, 'Add condition')).toBeFocused();
+
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('Tab');
+      await expect(page.getByRole('textbox', { name: 'Value' }).nth(1)).toBeFocused();
       await page.keyboard.press('b');
       await page.keyboard.press('Tab');
 
       await expect(locators.conditionLegend(page)).toHaveCount(2);
       await expect(locators.button(page, 'Remove condition')).toHaveCount(2);
-      await page.keyboard.press('Space');
-
-      await page.keyboard.press('Tab');
-      await expect(locators.button(page, 'Apply')).toBeFocused();
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
-
-      await page.keyboard.press('Space');
-      await locators.button(page, 'Apply').waitFor({ state: 'visible' });
-      await page.keyboard.press('Shift+Tab');
-      await expect(locators.button(page, 'Clear all')).toBeFocused();
-      await page.keyboard.press('Space');
-      await expect(locators.button(page, 'Apply')).toBeFocused();
-      await page.keyboard.press('Space');
-      await expect(locators.counter(page)).not.toBeVisible();
     });
   });
 

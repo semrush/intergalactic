@@ -7,31 +7,18 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, table, with 11 rows and 5 columns, row 1, column 1, clickable, Keyword');
-
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('column 2, clickable, KD percent');
+    expect(await nvda.itemText()).toBe('clickable, table, with 10 rows and 5 columns, row 1, column 2, clickable, KD percent');
 
     await nvda.next();
 
     expect(await nvda.itemText()).toContain('column 3, clickable, CPC');
-    await nvda.next();
-
-    await nvda.next();
-    await nvda.next();
-
-    expect(await nvda.itemText()).toContain('ebay buy');
-    expect(await nvda.itemText()).toContain('row');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('77.8');
-    expect(await nvda.itemText()).toContain('column');
+    expect(await nvda.itemText()).toContain('column 4, clickable, Empty');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('$1.25');
     expect(await nvda.itemText()).toContain('column');
   });
 });

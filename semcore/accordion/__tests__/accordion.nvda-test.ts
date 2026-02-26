@@ -8,7 +8,7 @@ test.describe(`@accordion ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, Section 1, region, Hello Section 1');
+    expect(await nvda.itemText()).toContain('Section 1, region, Hello Section 1');
 
     await nvda.next();
 

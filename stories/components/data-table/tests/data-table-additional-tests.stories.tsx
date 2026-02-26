@@ -15,10 +15,16 @@ type Story = StoryObj<typeof DataTable>;
 
 export const PerformanceTest: Story = {
   render: PerformanceTestExample,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 export const PerformanceBaseTest: Story = {
   render: PerformanceBaseTestExample,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 export const ColoredMergedCellsColumns: Story = {

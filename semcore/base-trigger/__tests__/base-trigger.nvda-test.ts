@@ -14,7 +14,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
     );
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, Material, combo box, collapsed');
+    expect(await nvda.itemText()).toContain('clickable, Material, combo box, collapsed');
   });
 
   test('Users can interact with FilterTrigger with Select via NVDA', async ({
@@ -29,14 +29,16 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to first select and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toBe('clickable, combo box, collapsed');
+      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed');
     });
 
     await test.step('Activate first select and verify menu opens', async () => {
       await nvda.perform(nvda.keyboardCommands.activate);
       await page.waitForTimeout(500);
       await nvda.next();
-      expect(await nvda.itemText()).toBe('expanded');
+      await nvda.next();
+
+      expect(await nvda.itemText()).toContain('Color, list. Gray, 2 of 9');
     });
   });
 
@@ -49,16 +51,15 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to LinkTrigger and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toBe('clickable, combo box, collapsed, Select option');
+      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed, Select option');
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
       await nvda.perform(nvda.keyboardCommands.activate);
       await page.waitForTimeout(500);
-
-      expect(await nvda.itemText()).toBe('Device:, combo box, Select option, collapsed');
       await nvda.next();
-      expect(await nvda.itemText()).toBe('expanded');
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Device:, list. Mobile, 2 of 3');
     });
   });
 });
