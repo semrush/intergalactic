@@ -6,7 +6,7 @@ Have you found a bug in one of our components and don't know where or to whom to
 
 ## GitHub issues
 
-We can submit a bug report or request an improvement with [GitHub issues](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests).
+We master can submit a bug report or request an improvement with [GitHub issues](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests).
 
 - This method is convenient for the developers and maintainers of the design system.
 - It saves the history of changes and discussions related to all components.
