@@ -79,7 +79,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
           text-color={resolveColor(color)}
           tag='a'
           ref={this.containerRef}
-          __excludeProps={['disabled', 'aria-disabled']}
+          __excludeProps={['disabled', 'aria-disabled', 'title']}
           aria-label={showHint ? hintContent : undefined}
         >
           <SInner
