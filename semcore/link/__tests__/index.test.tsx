@@ -27,6 +27,15 @@ describe('Link', () => {
     expect((getByTestId('link').attributes as any)['data-name'].value).toBe('test');
   });
 
+  test('Verify not use ', () => {
+    const { getByTestId } = render(
+      <Link data-testid='link' title='Link title'>
+        Link
+      </Link>,
+    );
+    expect((getByTestId('link').title)).toBe('');
+  });
+
   test('Verify supports children', async () => {
     const component = (
       <Link>
