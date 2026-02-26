@@ -4,7 +4,7 @@ import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
 import React from 'react';
 
-type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };
+type ExampleProps = ButtonLinkProps & { color?: string };
 const Demo = (props: ExampleProps) => {
   return (
 
@@ -55,11 +55,7 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonLinkIconOnlyProps: ExampleProps = {
   size: undefined,
   use: 'primary',
-  color: undefined,
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  style: undefined,
 };
 
 Demo.defaultProps = defaultButtonLinkIconOnlyProps;

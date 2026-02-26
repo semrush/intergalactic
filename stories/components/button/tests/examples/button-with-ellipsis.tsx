@@ -6,15 +6,11 @@ import React from 'react';
 type ButtonEllipsisProps = ButtonProps & {
   ellipsis?: true | EllipsisSettings;
   w?: number | string;
-  enableHintTriggerRef?: boolean;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: SimpleHintPopperProps;
-  style?: any;
 };
 
 const Demo = (props: ButtonEllipsisProps) => {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-
   return (
     <>
       <Button
@@ -24,14 +20,11 @@ const Demo = (props: ButtonEllipsisProps) => {
         active={props.active}
         disabled={props.disabled}
         loading={props.loading}
-        ref={buttonRef}
-        style={props.style}
       >
         <Button.Text
           ellipsis={props.ellipsis}
           w={props.w}
           hintProps={{
-            ...(props.enableHintTriggerRef ? { triggerRef: buttonRef } : {}),
             ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
             ...props.hintProps,
           }}
@@ -48,7 +41,6 @@ const Demo = (props: ButtonEllipsisProps) => {
         active={props.active}
         disabled={props.disabled}
         loading={props.loading}
-        style={props.style}
       >
         <Button.Text>
           Button without ellipsis
@@ -63,14 +55,6 @@ export const defaultButtonEllipsisProps: ButtonEllipsisProps = {
   w: 120,
   size: 'm',
   use: 'secondary',
-  theme: undefined,
-  active: undefined,
-  disabled: undefined,
-  loading: undefined,
-  enableHintTriggerRef: undefined,
-  hintPlacement: undefined,
-  hintProps: undefined,
-  style: undefined,
 };
 
 Demo.defaultProps = defaultButtonEllipsisProps;

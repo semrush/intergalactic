@@ -4,11 +4,11 @@ import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
-type ExampleProps = ButtonProps & { style?: any };
+type ExampleProps = ButtonProps;
 const Demo = (props: ExampleProps) => {
   return (
 
-    <Flex direction='row' gap={2} mt={10} style={props.style}>
+    <Flex direction='row' gap={2} mt={10}>
       <Flex gap={2} m={2}>
         <Flex role='group' aria-label='secondary buttons'>
           <Button
@@ -58,11 +58,7 @@ export const defaultButtonNeighborProps: ExampleProps = {
   size: 'm',
   use: 'primary',
   theme: 'muted',
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  loading: undefined,
-  style: undefined,
 };
 
 Demo.defaultProps = defaultButtonNeighborProps;

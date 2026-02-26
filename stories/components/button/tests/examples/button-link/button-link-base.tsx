@@ -5,11 +5,11 @@ import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
 import React from 'react';
 
-type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };
+type ExampleProps = ButtonLinkProps & { color?: string };
 const Demo = (props: ExampleProps) => {
   return (
 
-    <Flex direction='column' gap={2} mt={10} style={props.style}>
+    <Flex direction='column' gap={2} mt={10}>
       <ButtonLink
         size={props.size}
         active={props.active}
@@ -93,11 +93,7 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonLinkProps: ExampleProps = {
   size: 100,
   use: 'primary',
-  color: undefined,
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  style: undefined,
 };
 
 Demo.defaultProps = defaultButtonLinkProps;
