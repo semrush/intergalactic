@@ -100,9 +100,11 @@ If the menu has more than seven items, limit its height and add scroll. We also 
 
 ### List states
 
+<!-- vale DevDocs.Please = NO -->
 - If the list is taking a long time to load or filter results (for example, due to a slow connection), then display "Loading...".
 - If a user enters a value that isn’t in the list, then display "Nothing found".
 - If there are backend errors, a warning message should be displayed with the text "Something went wrong. Please try again later."
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/loading-flow.png)
 

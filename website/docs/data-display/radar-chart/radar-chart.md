@@ -241,7 +241,7 @@ If for some reason data isn't available, show `n/a` in the tooltip. Data point i
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-Use the `--skeleton-bg` color token for the skeleton's background.        
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/radar-skeleton.png)
 

@@ -1,7 +1,7 @@
 ---
 title: Terms of Use
 ---
-
+<!-- vale off -->
 ## Intro
 
 **We’re grateful for your interest and proud to have you as a part of our Semrush developers community!**

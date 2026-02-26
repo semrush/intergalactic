@@ -79,6 +79,7 @@ Table: Interaction with form inputs
 
 The form can be submitted without filling in any additional information (for example, immediately after it appears).
 
+<!-- vale DevDocs.Please = NO -->
 Table: Feedback Rating form states
 
 | State       | Description                                                                                                                                                                                                                                       | Appearance example                             |
@@ -86,3 +87,4 @@ Table: Feedback Rating form states
 | **Loading** | Triggered after clicking on the "Send feedback" button or maybe triggered while the initial loading of the form.                                                                                                                                  | ![](static/feedback-rating-loading.png)        |
 | **Error**   | Triggered if the data wasn't sent for some reason. The notification appears in the form above the “Send feedback” button with the default text: “Something went wrong. Please try again or contact us at {email} ". Set the {email} by yourself. | ![](static/feedback-rating-error.png)          |
 | **Success** | Shown after feedback data was successfully submitted.                                                                                                                                                                                             | ![](static/feedback-rating-success-notice.png) |
+<!-- vale DevDocs.Please = YES -->

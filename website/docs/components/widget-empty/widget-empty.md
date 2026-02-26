@@ -100,9 +100,11 @@ Display the following:
 
 Table: Something went wrong message examples
 
+<!-- vale DevDocs.Please = NO -->
 | Large widget              | Medium widget                | Text                                                                                                                       |
 | ------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error.png) | ![](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
+<!-- vale DevDocs.Please = YES -->
 
 ### We don’t know there are problems in the system
 

@@ -46,7 +46,7 @@ With this type of case, all words are capitalized, except for minor words that a
 * Conjunctions (and, or, but)
 * “To” in an infinitive
 * “Report” and “tool” if they are not part of the title
- 
+
 <DosDonts>
     <template #dont>
       <p>Sign up for Our Newsletter</p>
@@ -65,7 +65,7 @@ With this type of case, all words are capitalized, except for minor words that a
       <p>Organic Positions report</p>
     </template>
 </DosDonts>
- 
+
 ## Sentence case
 With this type of case, most words in a titles or headings are in lowercase. You should capitalize only:
 * The first word of the title, heading, or subtitle
@@ -85,6 +85,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
 
 * Notice titles
 
+<!-- vale DevDocs.Please = NO -->
 <DosDonts>
     <template #dont>
       <img src="./static/notice-dont.png" style="margin: auto" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
@@ -93,6 +94,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
       <img src="./static/notice-do.png" style="margin: auto" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
 </DosDonts>
+<!-- vale DevDocs.Please = YES -->
 
 * Buttons
 

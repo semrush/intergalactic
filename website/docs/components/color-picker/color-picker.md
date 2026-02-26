@@ -113,7 +113,9 @@ Users can add a color to the custom palette by entering the value into the input
 
 The input field only allows six characters, including numbers and letters from A to F. If the user enters fewer or more characters, or characters that cannot be converted to a 6-character HEX value, the input gets the `invalid` state.
 
+<!-- vale DevDocs.Please = NO -->
 To help users fix the invalid input, add the following message to the tooltip: "Please enter 6 latin letters and/or digits."
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/validation.png)
 

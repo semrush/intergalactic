@@ -97,7 +97,9 @@ If there's no data available for all export parameters and settings, avoid disab
 
 ![](static/dropdown-info-1.png)
 
+<!-- vale DevDocs.Please = NO -->
 Use this message for such cases: "To export all data, please contact us at {email}". Alternatively, link to a page with a custom report form, displaying the message: "To export all data, please order a custom report."
+<!-- vale DevDocs.Please = YES -->
 
 ### Additional information concerning the selected export settings
 
@@ -110,7 +112,9 @@ Use this message for such cases: "To export all data, please contact us at {emai
 
 ### Error
 
+<!-- vale DevDocs.Please = NO -->
 For error messages, employ the following text: "Please try again later. If the problem persists, contact us at {email}".
+<!-- vale DevDocs.Please = YES -->
 
 - In case of export operation failure, display a [warning notice](/components/notice/notice) at the dropdown's bottom.
 - If the problem is known, describe it in the notice title immediately.

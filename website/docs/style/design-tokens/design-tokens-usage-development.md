@@ -83,7 +83,7 @@ import Copy from '@components/Copy';
 
 const FileInput = ({ id, onFile, multiple, accept }) => {
   const [dragging, setDragging] = React.useState(false);
-  const inputRef = React.useRef(null);  
+  const inputRef = React.useRef(null);
 
   const handleDragStart = React.useCallback(() => setDragging(true), []);
   const handleDragEnd = React.useCallback(() => setDragging(false), []);
@@ -238,7 +238,7 @@ const DesignTokensProcessor = () => {
             <h3>Error occurred while processing your files</h3>
             {!baseTokens && <div>Maybe you forgot to provide base tokens?</div>}
             <code>{String(error.message ?? error)}</code>
-          </>    
+          </>
         )}
       </div>
       {css && json && !error && (
