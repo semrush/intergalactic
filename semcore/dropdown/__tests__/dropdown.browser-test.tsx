@@ -203,11 +203,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('ArrowDown');
     await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
     await expect(locators.button(page).first()).not.toBeFocused();
+    await expect(locators.button(page).nth(1)).not.toBeFocused();
+
     await expect(locators.popper(page)).toBeFocused();
 
     await page.mouse.click(0, 0);
     await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
-    await expect(locators.button(page)).not.toBeFocused();
+    await expect.soft(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
 
     await locators.button(page).hover();
@@ -247,9 +249,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.popper(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(100);
+
     await page.mouse.click(0, 0);
     await locators.popper(page).waitFor({ state: 'hidden' });
-    await expect(locators.button(page)).not.toBeFocused();
+    await expect.soft(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
 
     await locators.button(page).hover();

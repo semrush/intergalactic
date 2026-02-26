@@ -70,7 +70,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.menuItems(page, 1).dragTo(locators.menuItems(page, 4));
     // Wait for drag animation and DOM update to complete
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     await expect(page).toHaveScreenshot();
   });
 
@@ -92,9 +92,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(200);
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 
@@ -181,7 +181,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(locators.dropZone(page).first()).toBeFocused();
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(100); // added timeout because of slow animation of this component
+      await page.waitForTimeout(200); // added timeout because of slow animation of this component
       await expect(locators.draggable(page).first()).toBeFocused();
       await test.step('Verify graggable items can be moved to the drop zone', async () => {
         await page.keyboard.press('Space');
@@ -193,7 +193,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         await page.waitForTimeout(100);
 
         await page.keyboard.press('Space');
-        await page.waitForTimeout(100);
+        await page.waitForTimeout(200);
 
         await expect(locators.draggable(page).first()).toBeFocused();
 

@@ -247,21 +247,34 @@ test.describe('@functional @popper', () => {
     await expect(popperUncontrolled).toHaveCount(0);
 
     await page.keyboard.press('Escape');
+    await expect(triggerControlled).toBeFocused();
+
     await expect(popperControlled).toHaveCount(0);
     await expect(popperUncontrolled).toHaveCount(0);
 
     await triggerUncontrolled.click();
+    await expect(popperUncontrolled).toHaveCount(1);
+
     await page.keyboard.press('Escape');
+    await expect(triggerUncontrolled).toBeFocused();
+
     await expect(popperControlled).toHaveCount(0);
     await expect(popperUncontrolled).toHaveCount(0);
 
     await triggerControlled.click();
+    await expect(popperControlled).toHaveCount(1);
+
     await triggerControlled.click();
+    await expect(popperControlled).toHaveCount(0);
+
     await page.keyboard.press('Tab');
+    await expect(triggerUncontrolled).toBeFocused();
+
     await page.keyboard.press('Enter');
     await expect(popperUncontrolled).toHaveCount(1);
 
     await page.keyboard.press('Shift+Tab');
+    await expect(triggerControlled).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(popperUncontrolled).toHaveCount(1);
     await expect(popperControlled).toHaveCount(1);

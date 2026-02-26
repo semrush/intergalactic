@@ -35,40 +35,8 @@ npm install @semcore
 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `@semcore/core/lib/utils/themes/default.json`.
+- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/core/lib/theme/themes/default.mjs`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
-
-### Alternative usage
-
-With `@semcore/ui` package: 
-
-```json
-// .stylelintrc.json
-{
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["@semcore/stylelint-plugin"],
-  "rules": {
-		"intergalactic/design-tokens": [true, {
-      "tokensSource": "node_modules/@semcore/ui/utils/lib/themes/default.json",
-    }]
-	}
-}
-```
-
-With `@semcore/utils` package:
-
-```json
-// .stylelintrc.json
-{
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["@semcore/stylelint-plugin"],
-  "rules": {
-		"intergalactic/design-tokens": [true, {
-      "tokensSource": "node_modules/@semcore/core/lib/utils/themes/default.json",
-    }]
-	}
-}
-```
 
 ## 👤 Author
 

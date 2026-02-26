@@ -154,8 +154,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await page.keyboard.press('Escape');
+      await locators.options(page, 0).waitFor({ state: 'hidden' });
       await expect(locators.triggerText(page)).toHaveText(' Option 19, Option 18');
       await page.keyboard.press('Space');
+      await locators.options(page, 0).waitFor({ state: 'visible' });
       await expect(locators.options(page, 18)).toHaveClass(/highlighted/);
     });
   });

@@ -99,15 +99,23 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.button(page).click();
     await locators.feedbackForm(page).waitFor({ state: 'visible' });
+    await expect(locators.inputs(page).nth(0)).toBeFocused();
+
     await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters.');
 
     await page.keyboard.press('Tab');
+    await expect(locators.inputs(page).nth(1)).toBeFocused();
 
     await locators.inputs(page, 1).fill('test@test.test');
     await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(locators.button(page, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
+    await expect(locators.button(page, 1)).not.toBeFocused();
+
     await page.locator('[aria-label="Loading…"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });

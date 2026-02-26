@@ -443,6 +443,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify palette item attributes', async () => {
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveCount(1);
@@ -453,8 +454,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await locators.paletteItem(page).click();
+      await locators.color(page, 0).waitFor({ state: 'hidden' });
+
       await locators.trigger(page).click();
+      await locators.color(page, 0).waitFor({ state: 'visible' });
+
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveAttribute('aria-selected', 'true');
@@ -525,23 +531,30 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Escape');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
     await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field');
+    await expect(locators.trigger(page, 0)).toBeFocused();
 
     await page.keyboard.press('Space');
+    await expect(locators.dialog(page)).toBeFocused();
+
     await locators.color(page, 0).waitFor({ state: 'visible' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.color(page, 0)).toBeFocused();
     await page.getByText('Clear color').waitFor({ state: 'visible' });
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
+
     await expect(locators.trigger(page)).toHaveAttribute('aria-label', 'Color field');
 
     await page.keyboard.press('Space');
+    await expect(locators.dialog(page)).toBeFocused();
+
     await locators.color(page, 0).waitFor({ state: 'visible' });
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
@@ -550,13 +563,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'visible' });
+    await expect(locators.dialog(page)).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Escape');
     await expect(locators.dialog(page)).toBeVisible();
+
     await page.keyboard.press('Escape');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
+
     await page.keyboard.press('Space');
     await locators.trigger(page, 0).click();
     await expect(locators.dialog(page)).not.toBeVisible();

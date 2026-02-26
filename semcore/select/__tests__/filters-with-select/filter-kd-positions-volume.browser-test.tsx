@@ -35,10 +35,13 @@ test.describe(TAG.VISUAL, () => {
     });
 
     await test.step('Verify dialog with values filled', async () => {
+      await expect(locators.textboxes(page).nth(0)).toBeFocused();
       await page.keyboard.type('6');
       await page.keyboard.press('Tab');
+      await expect(locators.textboxes(page).nth(1)).toBeFocused();
       await page.keyboard.type('1');
       await page.keyboard.press('Tab');
+      await expect(locators.apply(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();

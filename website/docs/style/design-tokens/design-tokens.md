@@ -16,7 +16,7 @@ Intergalactic Design System has:
 These sets form the default theme of the design system.
 
 ::: tip
-For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/core/src/theme/light.json).
+For the complete token set, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/core/src/theme/themes/default.ts).
 :::
 
 ## Stylelint plugin
@@ -38,7 +38,7 @@ The stylelint plugin helps developers to avoid mistakes in the design token name
 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
+- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/core/lib/theme/themes/default.mjs`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
 ## Base tokens (palette)
