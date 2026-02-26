@@ -64,9 +64,10 @@ const ellipsisArgTypes = {
   ...commonArgTypes,
   ellipsis: {
     control: 'select',
-    options: ['true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+    options: ['true', 'false', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
     mapping: {
       'true': true,
+      'false': false,
       'cropPosition:middle': { cropPosition: 'middle' },
       'cropPosition:end': { cropPosition: 'end' },
       'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },

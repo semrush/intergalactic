@@ -7,6 +7,7 @@ type ButtonEllipsisProps = ButtonProps & {
   ellipsis?: true | EllipsisSettings;
   w?: number | string;
   enableHintTriggerRef?: boolean;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: SimpleHintPopperProps;
   style?: any;
 };
@@ -28,11 +29,11 @@ const Demo = (props: ButtonEllipsisProps) => {
       <Button.Text
         ellipsis={props.ellipsis}
         w={props.w}
-        hintProps={
-          props.enableHintTriggerRef
-            ? { triggerRef: buttonRef, ...props.hintProps }
-            : props.hintProps
-        }
+        hintProps={{
+          ...(props.enableHintTriggerRef ? { triggerRef: buttonRef } : {}),
+          ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
+          ...props.hintProps,
+        }}
       >
         Button with very long text that should be truncated with ellipsis
       </Button.Text>
@@ -50,6 +51,7 @@ export const defaultButtonEllipsisProps: ButtonEllipsisProps = {
   disabled: undefined,
   loading: undefined,
   enableHintTriggerRef: undefined,
+  hintPlacement: undefined,
   hintProps: undefined,
   style: undefined,
 };
