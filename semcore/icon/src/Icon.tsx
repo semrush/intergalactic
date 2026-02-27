@@ -6,7 +6,7 @@ import React from 'react';
 
 import styles from './style/icon.shadow.css';
 
-export type IconProps = React.SVGProps<SVGSVGElement> & {
+export type IconProps = {
   /**
    * Icon width
    * @internal
@@ -85,7 +85,7 @@ function Icon({
   mr,
   mx,
   ...props
-}: IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
+}: React.SVGProps<SVGSVGElement> & IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
   const SIcon = 'svg';
 
   const resolveColor = useColorResolver();
