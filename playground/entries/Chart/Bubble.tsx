@@ -22,9 +22,15 @@ const data = [
 ];
 
 function getJSX(props: BubbleChartJSXProps) {
+  const isRow = props.commonChartProps.direction === 'row' || props.commonChartProps.direction === 'row-reverse';
+
+  // @ts-expect-error `w` is part of real legendProps from component, but we can't set it in playground manually
+  props.legendProps.w = isRow ? '72px' : '100%';
+  const plotWidth = isRow ? 280 : 320;
+
   return (
     <Chart.Bubble
-      plotWidth={300}
+      plotWidth={plotWidth}
       plotHeight={200}
       data={data}
       aria-label='Bubble chart'
