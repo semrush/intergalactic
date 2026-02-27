@@ -1,5 +1,5 @@
 SButton {
-  display: inline-flex;
+  display: inline;
   font-family: inherit;
   font-size: var(--intergalactic-fs-200, 14px);
   color: var(--intergalactic-text-link, #006dca);
@@ -77,20 +77,19 @@ SButton[use='secondary'] {
 }
 
 SInner {
-  display: inline-flex;
   align-items: baseline;
-  justify-content: center;
   height: 100%;
   width: 100%;
 }
 
 SAddon {
-  display: inline-flex;
-  justify-content: center;
   align-items: baseline;
-  vertical-align: middle;
   pointer-events: none;
   align-self: center;
+
+  &:has(>svg) {
+    vertical-align: -2px;
+  }
 }
 
 SButton SAddon {
