@@ -57,7 +57,7 @@ SAddon {
   align-self: center;
 
   &:has(>svg) {
-    vertical-align: -3px;
+    vertical-align: -2px;
   }
 }
 
@@ -81,7 +81,6 @@ SText {
   text-decoration-skip-ink: none;
 
   transition: text-decoration-color 0.15s ease-in-out;
-  vertical-align: text-top;
   padding-bottom: 1px;
 }
 

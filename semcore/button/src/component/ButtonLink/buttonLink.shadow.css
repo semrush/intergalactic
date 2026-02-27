@@ -41,10 +41,11 @@ SButton {
     text-decoration-thickness: 1px;
     text-decoration-color: transparent;
     text-underline-position: under;
-    text-underline-offset: 1px;
+    text-underline-offset: 0;
     text-decoration-skip-ink: none;
 
     transition: text-decoration-color 0.15s ease-in-out;
+    padding-bottom: 1px;
   }
 }
 
@@ -67,12 +68,7 @@ SButton[use='secondary'] {
   SText {
     text-decoration: underline;
     text-decoration-style: dashed;
-    text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
-    text-underline-position: under;
-    text-underline-offset: 0;
-    text-decoration-skip-ink: none;
-    padding-bottom: 1px;
   }
 }
 
