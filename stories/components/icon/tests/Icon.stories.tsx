@@ -4,6 +4,7 @@ import { iconPay } from './__tests__/icon_pay.test';
 import { iconPlatform } from './__tests__/icon_platform.test';
 import { iconSize } from './__tests__/icon_size.test';
 import AllIconsGeneratedExample from './examples/all-icons-generated';
+import IconPropsExample, { defaultProps as iconPropsDefaults } from './examples/icon-props';
 import IconColorExample from './examples/icons_color';
 import IconOtherElementsExample from './examples/icons_in_other_elements_example';
 import IconPayExample from './examples/icons_pay';
@@ -16,7 +17,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
 export const AllIconsGenerated: StoryObj = {
   render: AllIconsGeneratedExample,
 };
@@ -43,4 +43,23 @@ export const IconOtherElements: StoryObj = {
 export const IconPlatform: StoryObj = {
   render: IconPlatformExample,
   play: playWrapper(iconPlatform),
+};
+
+export const IconMarginProps: StoryObj<typeof iconPropsDefaults> = {
+  render: IconPropsExample,
+  argTypes: {
+    color: { control: 'text' },
+    m: { control: 'number' },
+    mt: { control: 'number' },
+    mr: { control: 'number' },
+    mb: { control: 'number' },
+    ml: { control: 'number' },
+    mx: { control: 'number' },
+    my: { control: 'number' },
+    iconSize: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+  },
+  args: iconPropsDefaults,
 };
