@@ -11,7 +11,8 @@ SDropdownMenuList {
   SBar {
     z-index: 3;
   }
-  &:has(>[data-ui-name="DropdownMenu.Group"][data-sticky="true"]) {
+
+  &:not(&:has([data-ui-name="DropdownMenu.Group"][data-sticky="true"])) {
     SShadowHorizontal {
       &:before,
       &:after {
@@ -82,5 +83,7 @@ SItemHint {
 }
 
 SScrollContainer {
-  overscroll-behavior: none;
+  &:has([data-ui-name="DropdownMenu.Group"][data-sticky="true"]) {
+    overscroll-behavior: none;
+  }
 }
