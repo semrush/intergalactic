@@ -232,6 +232,8 @@ SText[ellipsis] {
   text-overflow: ellipsis;
   white-space: pre;
   display: inline-block;
+  line-height: unset;
+  vertical-align: top;
 
   &[trim='end'][isEllipsized]::after {
     content: '';

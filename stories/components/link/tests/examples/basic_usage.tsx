@@ -1,6 +1,6 @@
 import CheckM from '@semcore/icon/Check/m';
 import type { BoxProps } from '@semcore/ui/base-components';
-import { Flex } from '@semcore/ui/base-components';
+import { Box } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import type { LinkProps } from '@semcore/ui/link';
 import React from 'react';
@@ -51,13 +51,10 @@ const Demo = (props: BasicLinkProps) => {
         {text}
       </Link>
 
-      <Flex gap={1} alignItems='baseline'>
+      <Box>
         <Link
-
           href={href}
-
           size={size}
-          inline={inline}
           disabled={disabled}
           active={active}
           enableVisited={enableVisited}
@@ -74,7 +71,6 @@ const Demo = (props: BasicLinkProps) => {
         <Link
           href={href}
           size={size}
-          inline={inline}
           disabled={disabled}
           active={active}
           enableVisited={enableVisited}
@@ -86,10 +82,9 @@ const Demo = (props: BasicLinkProps) => {
           {...restProps}
           style={{ border: '1px solid red' }}
         >
-          <Link.Text> {text}</Link.Text>
+          <Link.Text>{text}</Link.Text>
         </Link>
-
-      </Flex>
+      </Box>
     </>
   );
 };
@@ -98,16 +93,6 @@ export const defaultProps: BasicLinkProps = {
   text: 'Link example',
   href: '#',
   size: 300,
-  inline: undefined,
-  disabled: undefined,
-  active: undefined,
-  enableVisited: undefined,
-  noWrap: undefined,
-  color: undefined,
-  showAddonLeft: false,
-  showAddonRight: false,
-  w: undefined,
-  title: undefined,
 };
 
 Demo.defaultProps = defaultProps;
