@@ -3,7 +3,7 @@ import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: TextProps) => (
-  <Text formatTags={props.formatTags}>
+  <Text formatTags={'formatTags' in props ? props.formatTags : undefined}>
     <ol start={1}>
       <li>List item one</li>
       <li>

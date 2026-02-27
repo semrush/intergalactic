@@ -4,7 +4,7 @@ import React from 'react';
 
 const Demo = (props: TextProps) => (
   <div>
-    <Text size={100} formatTags={props.formatTags}>
+    <Text size={100} formatTags={'formatTags' in props ? props.formatTags : undefined}>
       <ol start={1}>
         <li>List item one</li>
         <li>
@@ -17,7 +17,7 @@ const Demo = (props: TextProps) => (
         <li>Final list item</li>
       </ol>
     </Text>
-    <Text size={200} formatTags={props.formatTags}>
+    <Text size={200} formatTags={'formatTags' in props ? props.formatTags : undefined}>
       <ol start={1}>
         <li>List item one</li>
         <li>
@@ -30,7 +30,7 @@ const Demo = (props: TextProps) => (
         <li>Final list item</li>
       </ol>
     </Text>
-    <Text size={300} formatTags={props.formatTags}>
+    <Text size={300} formatTags={'formatTags' in props ? props.formatTags : undefined}>
       <ol start={1}>
         <li>List item one</li>
         <li>
