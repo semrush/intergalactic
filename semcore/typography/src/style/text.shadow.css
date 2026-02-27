@@ -233,7 +233,7 @@ SText[ellipsis] {
   white-space: pre;
   display: inline-block;
 
-  &[trim='end']::after {
+  &[trim='end'][isEllipsized]::after {
     content: '';
     display: block;
   }
