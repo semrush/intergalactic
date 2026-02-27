@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-mask",
   "description": "Semrush InputMask Component",
-  "version": "16.0.11",
+  "version": "17.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/input": "16.1.1",
+    "@semcore/input": "^17.0.0",
     "text-mask-core": "5.1.2"
   },
   "peerDependencies": {
