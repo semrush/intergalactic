@@ -4,8 +4,6 @@ import Link from '@semcore/ui/link';
 import { List, Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import { ListNested } from '../../../typography/tests/typography.stories';
-
 const Demo = () => {
   return (
     <div>
