@@ -164,6 +164,23 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify no extra space when cropPosition end and text is not truncated', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', {
+      ellipsis: { cropPosition: 'end' },
+      size: 200,
+      w: 800,
+    });
+    await locators.text(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(200);
+
+    await test.step('Verify text is not truncated and has no extra space from ::after', async () => {
+      await expect(locators.hint(page)).toHaveCount(0);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
