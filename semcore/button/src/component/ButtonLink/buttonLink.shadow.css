@@ -156,9 +156,9 @@ SButton[size='800'] {
 @media (prefers-reduced-motion) {
   SButton {
     transition: none;
-  }
 
-  SText {
-    transition: none;
+    SText {
+      transition: none;
+    }
   }
 }
