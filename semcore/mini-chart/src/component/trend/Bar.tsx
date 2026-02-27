@@ -121,4 +121,4 @@ export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = cr
   },
 );
 
-TrendBar.displayName = 'MiniChart.TrendHistogram';
+TrendHistogram.displayName = 'MiniChart.TrendHistogram';
