@@ -157,7 +157,6 @@ SDropdownPopper {
     top: 0;
     background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
     z-index: 2;
-    overscroll-behavior: none;
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item, #ffffff);
