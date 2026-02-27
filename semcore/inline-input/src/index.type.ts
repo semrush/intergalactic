@@ -39,19 +39,6 @@ export type InlineInputProps = BoxProps & {
    */
   value?: string;
   /**
-   * Initial text value of input
-   */
-  defaultValue?: string;
-  /**
-   * Makes component to catch browser focus on component mount
-   * @default false
-   */
-  autoFocus?: boolean;
-  /**
-   * Gray text displayed in empty input
-   */
-  placeholder?: string;
-  /**
    * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
@@ -83,14 +70,6 @@ export type InlineInputValueProps = BoxProps & {
    * callback invoked on every change of input tag value
    */
   onChange?: (value: string, event: React.ChangeEvent) => void;
-  /**
-   * visual state of component
-   */
-  state?: 'normal' | 'valid' | 'invalid';
-  /**
-   * shows spinner in `InlineInput.ConfirmControl` and disables other interactive elements
-   */
-  loading?: boolean;
   /**
    * disables interactive elements
    */

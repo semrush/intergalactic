@@ -1,8 +1,8 @@
 import InlineInput from '@semcore/ui/inline-input';
-import type { InlineInputProps } from '@semcore/ui/inline-input';
+import type { InlineInputProps, InlineInputValueProps } from '@semcore/ui/inline-input';
 import React from 'react';
 
-const BasicUsage = (props: InlineInputProps) => {
+const BasicUsage = (props: InlineInputProps & InlineInputValueProps) => {
   const { disabled, loading, state, autoFocus, defaultValue } = props;
 
   return (
@@ -26,7 +26,7 @@ const BasicUsage = (props: InlineInputProps) => {
   );
 };
 
-export const basicUsageDefaultProps: InlineInputProps = {
+export const basicUsageDefaultProps: InlineInputProps & InlineInputValueProps = {
   disabled: false,
   loading: undefined,
   state: undefined,
