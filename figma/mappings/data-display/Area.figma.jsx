@@ -8,7 +8,7 @@ figma.connect(
   {
     variant: { '🔵 dots': 'false' },
     example: () => (
-      <Area x='x' y='y' />
+      <Area x='/* Set x */' y='/* Set y */' />
     ),
   },
 );
@@ -22,7 +22,7 @@ figma.connect(
       displayDots: figma.boolean('🔵 dots'),
     },
     example: ({ displayDots }) => (
-      <Area x='x' y='y'>
+      <Area x='/* Set x */' y='/* Set y */'>
         <Area.Dots display={displayDots} />
       </Area>
     ),
@@ -53,13 +53,13 @@ figma.connect(
   },
 );
 
-figma.connect(
-  AreaChartSkeleton,
-  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781&t=kZysxCyJe4tnPXYg-11',
-  {
-    variant: { skeleton: 'true' },
-    example: () => (
-      <AreaChartSkeleton type='monotone' />
-    ),
-  },
-);
+// figma.connect(
+//   AreaChartSkeleton,
+//   'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781&t=kZysxCyJe4tnPXYg-11',
+//   {
+//     variant: { skeleton: 'true' },
+//     example: () => (
+//       <AreaChartSkeleton type='monotone' />
+//     ),
+//   },
+// );
