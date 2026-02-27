@@ -42,15 +42,18 @@ export type InlineInputProps = BoxProps & {
   value?: string;
   /**
    * Initial text value of input
+   * @deprecated
    */
   defaultValue?: string;
   /**
    * Makes component to catch browser focus on component mount
    * @default false
+   * @deprecated
    */
   autoFocus?: boolean;
   /**
    * Gray text displayed in empty input
+   * @deprecated
    */
   placeholder?: string;
   /**
@@ -90,10 +93,12 @@ export type InlineInputValueProps = BoxProps & {
   onChange?: (value: string, event: React.ChangeEvent) => void;
   /**
    * visual state of component
+   * @deprecated
    */
   state?: 'normal' | 'valid' | 'invalid';
   /**
    * shows spinner in `InlineInput.ConfirmControl` and disables other interactive elements
+   * @deprecated
    */
   loading?: boolean;
   /**
