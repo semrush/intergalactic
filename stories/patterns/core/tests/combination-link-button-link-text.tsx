@@ -42,7 +42,8 @@ const Demo = (props: CombinationProps) => {
           addonLeft={linkShowAddonLeft ? CheckM : undefined}
           addonRight={linkShowAddonRight ? LinkExternalM : undefined}
         >
-          Link
+          <Link.Text>Link</Link.Text>
+
         </Link>
         {' '}
         {' '}
@@ -60,7 +61,8 @@ const Demo = (props: CombinationProps) => {
         Inline
         {' '}
         <Link href='#' size={size} addonLeft={SettingsM}>
-          Link addonLeft
+          <Link.Text> Link addonLeft</Link.Text>
+
         </Link>
         {' '}
         and

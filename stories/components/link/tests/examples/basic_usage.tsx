@@ -1,5 +1,6 @@
 import CheckM from '@semcore/icon/Check/m';
 import type { BoxProps } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import type { LinkProps } from '@semcore/ui/link';
 import React from 'react';
@@ -31,23 +32,65 @@ const Demo = (props: BasicLinkProps) => {
   } = props;
 
   return (
-    <Link
-      href={href}
-      w={w}
-      size={size}
-      inline={inline}
-      disabled={disabled}
-      active={active}
-      enableVisited={enableVisited}
-      noWrap={noWrap}
-      color={color}
-      title={title}
-      addonLeft={showAddonLeft ? CheckM : undefined}
-      addonRight={showAddonRight ? CheckM : undefined}
-      {...restProps}
-    >
-      {text}
-    </Link>
+    <>
+      <Link
+        href={href}
+
+        size={size}
+        inline={inline}
+        disabled={disabled}
+        active={active}
+        enableVisited={enableVisited}
+        noWrap={noWrap}
+        color={color}
+        title={title}
+        addonLeft={showAddonLeft ? CheckM : undefined}
+        addonRight={showAddonRight ? CheckM : undefined}
+        {...restProps}
+      >
+        {text}
+      </Link>
+
+      <Flex gap={1} alignItems='baseline'>
+        <Link
+
+          href={href}
+
+          size={size}
+          inline={inline}
+          disabled={disabled}
+          active={active}
+          enableVisited={enableVisited}
+          noWrap={noWrap}
+          color={color}
+          title={title}
+          addonLeft={showAddonLeft ? CheckM : undefined}
+          addonRight={showAddonRight ? CheckM : undefined}
+          {...restProps}
+          style={{ border: '1px solid red' }}
+        >
+          <Link.Text w={w} ellipsis> {text}</Link.Text>
+        </Link>
+        <Link
+          href={href}
+          size={size}
+          inline={inline}
+          disabled={disabled}
+          active={active}
+          enableVisited={enableVisited}
+          noWrap={noWrap}
+          color={color}
+          title={title}
+          addonLeft={showAddonLeft ? CheckM : undefined}
+          addonRight={showAddonRight ? CheckM : undefined}
+          {...restProps}
+          style={{ border: '1px solid red' }}
+        >
+          <Link.Text> {text}</Link.Text>
+        </Link>
+
+      </Flex>
+    </>
   );
 };
 
