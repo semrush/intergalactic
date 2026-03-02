@@ -52,7 +52,7 @@ You can subscribe to the `onOutsideClick` event. It will be called when a clicke
 
 ## Placement
 
-Since we are using [popper.js](https://popper.js.org/), the placement prop comes from there.
+Since we're using [popper.js](https://popper.js.org/), the placement prop comes from there.
 
 Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'top-end' | 'right-start' | 'right' | 'right-end' | 'bottom-end' | 'bottom' | 'bottom-start' | 'left-end' | 'left' | 'left-start'`
 
