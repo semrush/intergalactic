@@ -1,6 +1,8 @@
 import CheckM from '@semcore/icon/Check/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import SettingsM from '@semcore/icon/Settings/m';
+import VideoListM from '@semcore/icon/VideoList/m';
+import Badge from '@semcore/ui/badge';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Link from '@semcore/ui/link';
@@ -9,6 +11,8 @@ import React from 'react';
 
 type CombinationProps = {
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
+  disabled?: boolean;
+  use?: 'primary' | 'secondary';
   linkShowAddonLeft?: boolean;
   linkShowAddonRight?: boolean;
   buttonLinkShowAddonLeft?: boolean;
@@ -20,6 +24,8 @@ type CombinationProps = {
 const Demo = (props: CombinationProps) => {
   const {
     size = 300,
+    disabled = false,
+    use = 'primary',
     linkShowAddonLeft = false,
     linkShowAddonRight = false,
     buttonLinkShowAddonLeft = false,
@@ -104,15 +110,6 @@ const Demo = (props: CombinationProps) => {
 
       {showIconOnlyVariants && (
         <>
-          {/*  Link(icon-only) + ButtonLink(text+both addons) -- standalone */}
-          <Flex gap={2} alignItems='baseline'>
-            <Link href='#' size={size} addonLeft={SettingsM} aria-label='Icon-only link' />
-            <ButtonLink size={size} addonLeft={SettingsM} addonRight={SettingsM}>
-              ButtonLink both addons
-            </ButtonLink>
-            <Text size={size}>Text</Text>
-          </Flex>
-
           {/* Link(text+both addons) + ButtonLink(icon-only) - inside Text */}
           <Text size={size}>
             Inline
@@ -127,13 +124,6 @@ const Demo = (props: CombinationProps) => {
             {' '}
             in text.
           </Text>
-
-          {/* Link(icon-only) + ButtonLink(icon-only) + Text  standalone */}
-          <Flex gap={2} alignItems='baseline'>
-            <Link href='#' size={size} addonLeft={SettingsM} aria-label='Icon-only link' />
-            <ButtonLink size={size} addonLeft={SettingsM} title='Icon-only button link' />
-            <Text size={size}>Text next to icon-only variants</Text>
-          </Flex>
 
           {/*  Link(icon-only) + ButtonLink(icon-only) - inside Text */}
           <Text size={size}>
@@ -228,6 +218,83 @@ const Demo = (props: CombinationProps) => {
           </Box>
         </>
       )}
+
+      <Flex direction='row' gap={2}>
+        <Flex direction='column' gap={2} mt={10}>
+          <ButtonLink
+            size={size}
+            disabled={disabled}
+            use={use}
+
+          >
+            ButtonLink
+          </ButtonLink>
+
+          <ButtonLink
+            size={size}
+            disabled={disabled}
+            use={use}
+
+          >
+            <ButtonLink.Text>ButtonLink.Addon</ButtonLink.Text>
+            <ButtonLink.Addon>
+              <VideoListM />
+            </ButtonLink.Addon>
+          </ButtonLink>
+
+          <ButtonLink
+            addonLeft={VideoListM}
+            size={size}
+
+            disabled={disabled}
+            use={use}
+
+          >
+            <ButtonLink.Text>ButtonLink with Badge</ButtonLink.Text>
+            <ButtonLink.Addon>
+              <Badge type='new' />
+            </ButtonLink.Addon>
+          </ButtonLink>
+
+        </Flex>
+
+        <Flex direction='column' gap={2} mt={10} style={props.style}>
+          <Link
+            size={size}
+
+            disabled={disabled}
+
+          >
+            Link
+          </Link>
+
+          <Link
+            size={size}
+
+            disabled={disabled}
+
+          >
+            <Link.Text>Link.Addon</Link.Text>
+            <Link.Addon>
+              <VideoListM />
+            </Link.Addon>
+          </Link>
+
+          <Link
+            addonLeft={VideoListM}
+            size={size}
+
+            disabled={disabled}
+
+          >
+            <Link.Text>Link with Badge</Link.Text>
+            <Link.Addon>
+              <Badge type='new' />
+            </Link.Addon>
+          </Link>
+
+        </Flex>
+      </Flex>
     </Flex>
   );
 };
@@ -235,11 +302,13 @@ const Demo = (props: CombinationProps) => {
 export const defaultProps: CombinationProps = {
   size: 300,
   linkShowAddonLeft: false,
+  use: 'primary',
   linkShowAddonRight: false,
   buttonLinkShowAddonLeft: false,
   buttonLinkShowAddonRight: false,
   showIconOnlyVariants: true,
   showMultilineVariants: true,
+  disabled: false,
 };
 
 Demo.defaultProps = defaultProps;

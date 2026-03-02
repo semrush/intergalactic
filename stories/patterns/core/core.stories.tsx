@@ -23,6 +23,13 @@ export const LinkButtonLinkTextCombimation: StoryObj<typeof combinationDefaultPr
       control: { type: 'select' },
       options: [100, 200, 300, 400, 500, 600, 700, 800],
     },
+    use: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
     linkShowAddonLeft: {
       control: { type: 'boolean' },
     },
