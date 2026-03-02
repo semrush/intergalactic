@@ -51,7 +51,7 @@ const Demo = (props: BasicLinkProps) => {
         {text}
       </Link>
 
-      <Box>
+      <Box mt={3}>
         <Link
           href={href}
           size={size}
@@ -66,7 +66,7 @@ const Demo = (props: BasicLinkProps) => {
           {...restProps}
           style={{ border: '1px solid red' }}
         >
-          <Link.Text w={w} ellipsis> {text}</Link.Text>
+          <Link.Text w={w} ellipsis>{text} ellipsis</Link.Text>
         </Link>
         <Link
           href={href}

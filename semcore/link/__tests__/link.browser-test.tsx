@@ -45,11 +45,12 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (!item.disabled) {
         await test.step('Verify focused state', async () => {
           await page.keyboard.press('Tab');
+          await expect(locators.link(page).first()).toBeFocused();
           await expect(page).toHaveScreenshot();
         });
 
         await test.step('Verify hover state', async () => {
-          await locators.link(page).hover();
+          await locators.link(page).first().hover();
           await expect(page).toHaveScreenshot();
         });
       }
@@ -147,13 +148,13 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify link attributes', async () => {
-      await expect(locators.link(page)).toHaveAttribute('href', '#');
-      await expect(locators.link(page)).toHaveAttribute('tabindex', '0');
+      await expect(locators.link(page).first()).toHaveAttribute('href', '#');
+      await expect(locators.link(page).first()).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify link can be focused', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.link(page)).toBeFocused();
+      await expect(locators.link(page).first()).toBeFocused();
     });
   });
 
@@ -163,12 +164,12 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { disabled: true });
 
     await test.step('Verify disabled link attributes', async () => {
-      await expect(locators.link(page)).toHaveAttribute('tabindex', '-1');
+      await expect(locators.link(page).first()).toHaveAttribute('tabindex', '-1');
     });
 
     await test.step('Verify disabled link cannot receive focus', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.link(page)).not.toBeFocused();
+      await expect(locators.link(page).first()).not.toBeFocused();
     });
   });
 
@@ -178,7 +179,7 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { showAddonLeft: true, showAddonRight: true });
 
     await test.step('Verify addons are present', async () => {
-      const link = locators.link(page);
+      const link = locators.link(page).first();
       await expect(link).toBeVisible();
 
       // Verify the link can be focused with addons
