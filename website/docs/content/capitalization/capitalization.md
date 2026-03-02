@@ -77,10 +77,10 @@ With this type of case, most words in a titles or headings are in lowercase. You
 <!-- vale DevDocs.Contractions = NO -->
 <DosDonts>
     <template #dont>
-      <img src="./static/modal-dont.png" style="margin: auto" alt="A modal window with a capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
+      <img src="./static/modal-dont.png" style="margin: auto; border-radius: 0;" alt="A modal window with a capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
     </template>
     <template #do>
-      <img src="./static/modal-do.png" style="margin: auto" alt="A modal window with a non-capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
+      <img src="./static/modal-do.png" style="margin: auto; border-radius: 0;" alt="A modal window with a non-capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
     </template>
 </DosDonts>
 <!-- vale DevDocs.Contractions = YES -->
@@ -90,10 +90,10 @@ With this type of case, most words in a titles or headings are in lowercase. You
 <!-- vale DevDocs.Please = NO -->
 <DosDonts>
     <template #dont>
-      <img src="./static/notice-dont.png" style="margin: auto" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/notice-dont.png" style="margin: auto; border-radius: 0;" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
     <template #do>
-      <img src="./static/notice-do.png" style="margin: auto" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
+      <img src="./static/notice-do.png" style="margin: auto; border-radius: 0;" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
 </DosDonts>
 <!-- vale DevDocs.Please = YES -->
@@ -102,10 +102,10 @@ With this type of case, most words in a titles or headings are in lowercase. You
 
 <DosDonts>
     <template #dont>
-      <img src="./static/button-dont.png" style="margin: auto" alt="A button with capitalized text 'Your Bad Button'" />
+      <img src="./static/button-dont.png" style="margin: auto; border-radius: 0;" alt="A button with capitalized text 'Your Bad Button'" />
      </template>
     <template #do>
-      <img src="./static/button-do.png" style="margin: auto" alt="A button with non-capitalized text 'Good button'" />
+      <img src="./static/button-do.png" style="margin: auto; border-radius: 0;" alt="A button with non-capitalized text 'Good button'" />
     </template>
 </DosDonts>
 

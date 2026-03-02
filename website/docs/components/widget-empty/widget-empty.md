@@ -100,13 +100,13 @@ Display the following:
 - A text message specifying that we're working on the issue and asking the user to try again later.
 - Recommended: a helpful button (for example to reload the widget or the whole page).
 
+<!-- vale off -->
 Table: Something went wrong message examples
 
-<!-- vale DevDocs.Please = NO -->
 | Large widget              | Medium widget                | Text                                                                                                                       |
 | ------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error.png) | ![](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
-<!-- vale DevDocs.Please = YES -->
+<!-- vale on -->
 
 ### We don’t know there are problems in the system
 
