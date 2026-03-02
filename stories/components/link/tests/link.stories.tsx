@@ -50,6 +50,12 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     showAddonRight: {
       control: { type: 'boolean' },
     },
+    showAddonLeftLink2: {
+      control: { type: 'boolean' },
+    },
+    showAddonRightLink2: {
+      control: { type: 'boolean' },
+    },
     w: {
       control: { type: 'number' },
     },

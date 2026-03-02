@@ -9,6 +9,8 @@ type BasicLinkProps = LinkProps & BoxProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
+  showAddonLeftLink2?: boolean;
+  showAddonRightLink2?: boolean;
   href?: string;
   title?: string;
 };
@@ -18,6 +20,8 @@ const Demo = (props: BasicLinkProps) => {
     text = 'Link example',
     showAddonLeft = false,
     showAddonRight = false,
+    showAddonLeftLink2 = false,
+    showAddonRightLink2 = false,
     inline,
     disabled,
     active,
@@ -28,7 +32,6 @@ const Demo = (props: BasicLinkProps) => {
     color,
     w,
     title,
-    ...restProps
   } = props;
 
   return (
@@ -46,7 +49,6 @@ const Demo = (props: BasicLinkProps) => {
         title={title}
         addonLeft={showAddonLeft ? CheckM : undefined}
         addonRight={showAddonRight ? CheckM : undefined}
-        {...restProps}
       >
         {text}
       </Link>
@@ -61,9 +63,8 @@ const Demo = (props: BasicLinkProps) => {
           noWrap={noWrap}
           color={color}
           title={title}
-          addonLeft={showAddonLeft ? CheckM : undefined}
-          addonRight={showAddonRight ? CheckM : undefined}
-          {...restProps}
+          addonLeft={showAddonLeftLink2 ? CheckM : undefined}
+          addonRight={showAddonRightLink2 ? CheckM : undefined}
           style={{ border: '1px solid red' }}
         >
           <Link.Text w={w} ellipsis>{text} ellipsis</Link.Text>
@@ -77,9 +78,8 @@ const Demo = (props: BasicLinkProps) => {
           noWrap={noWrap}
           color={color}
           title={title}
-          addonLeft={showAddonLeft ? CheckM : undefined}
-          addonRight={showAddonRight ? CheckM : undefined}
-          {...restProps}
+          addonLeft={showAddonLeftLink2 ? CheckM : undefined}
+          addonRight={showAddonRightLink2 ? CheckM : undefined}
           style={{ border: '1px solid red' }}
         >
           <Link.Text>{text}</Link.Text>
