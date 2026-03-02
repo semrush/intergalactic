@@ -58,6 +58,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       await test.step('Verify format focused styles', async () => {
         await page.keyboard.press('Tab');
         await optionH.first().waitFor({ state: 'visible' });
+
+        await page.waitForTimeout(50);
+        await page.keyboard.press('ArrowDown');
+
         await expect(page).toHaveScreenshot();
       });
 
