@@ -124,9 +124,10 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 
   componentDidMount() {
-    const trigger = this.asProps.triggerRef.current;
+    const { triggerRef, children } = this.asProps;
+    const trigger = triggerRef.current;
 
-    if (trigger) {
+    if (trigger && children) {
       this.subscribe(trigger);
     }
   }
