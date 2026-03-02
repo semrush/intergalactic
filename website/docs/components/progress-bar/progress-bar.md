@@ -72,7 +72,7 @@ If it isn’t possible to perform the action immediately, display the success st
 ### When to use ProgressBar
 
 - To visualize a long process that doesn't block working with data.
-- When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
+- When you need to visualize a short process, but it's essential to show how much is left until the end of the process, such as uploading multiple files.
 - If the process is long and blocks working with data, but the user needs to know when the process will end.
 
 ::: tip

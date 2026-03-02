@@ -99,7 +99,7 @@ Table: States of item for adding colors
 
 ## Custom colors (optional)
 
-Users have the ability to add or remove custom colors, but they cannot modify default or existing custom colors.
+Users have the ability to add or remove custom colors, but they can't modify default or existing custom colors.
 
 ::: tip
 We recommend that your product sync and save the user's custom palette in different parts of the interface.
@@ -111,7 +111,7 @@ Users can add a color to the custom palette by entering the value into the input
 
 ![](static/add-custom-color.png)
 
-The input field only allows six characters, including numbers and letters from A to F. If the user enters fewer or more characters, or characters that cannot be converted to a 6-character HEX value, the input gets the `invalid` state.
+The input field only allows six characters, including numbers and letters from A to F. If the user enters fewer or more characters, or characters that can't be converted to a 6-character HEX value, the input gets the `invalid` state.
 
 <!-- vale DevDocs.Please = NO -->
 To help users fix the invalid input, add the following message to the tooltip: "Please enter 6 latin letters and/or digits."

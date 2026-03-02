@@ -24,7 +24,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
 - Showing category distribution in the specific order.
-- A category cannot have multiple values (to be stacked, in other words).
+- A category can't have multiple values (to be stacked, in other words).
 
 ![](static/hor-bar-compact-example.png)
 
@@ -39,7 +39,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Grid and axes
 
-This chart type does not need a grid.
+This chart type doesn't need a grid.
 
 ## Category labels
 

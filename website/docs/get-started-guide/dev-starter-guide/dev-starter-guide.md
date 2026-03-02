@@ -41,7 +41,7 @@ npm install @semcore/core @semcore/base-components @semcore/data-table
 
 ## Key features
 
-We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
+We've developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
 
 ### Free template
 
@@ -61,7 +61,7 @@ import Button from '@semcore/ui/button';
 
 This approach provides multiple benefits:
 
-- The renderer is not constrained by our API.
+- The renderer isn't constrained by our API.
 - The API remains clean and consistent.
 - You gain access to each part of the component.
 
@@ -79,7 +79,7 @@ This logic is similar to the [native input](https://reactjs.org/docs/forms.html#
 The handlers for these types of properties follow a specific notation: `on{ eventName }Change`.
 :::
 
-If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that's closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
 ### Handlers
 

@@ -34,7 +34,7 @@ import Button from '@semcore/ui/button';
 
 :::
 
-The `tag` property is not included in the component's props, so you can't make wrappers by simple using that.
+The `tag` property isn't included in the component's props, so you can't make wrappers by simple using that.
 
 ```tsx
 import Select, { SelectProps } from '@semcore/ui/select'

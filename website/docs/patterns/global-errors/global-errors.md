@@ -319,9 +319,11 @@ In case of a state caused by security reasons:
 
 Additional situations where the state blocks all content and restricts access to it:
 
+<!-- vale DevDocs.Contractions = NO -->
 - Your account has been deleted
 - Under maintenance
 - Your payment cannot be accepted
+<!-- vale DevDocs.Contractions = YES -->
 
 ### Use cases
 

@@ -90,7 +90,7 @@ Inside the function, the first argument provides the component props and the `ge
 
 **Important!** You can pass custom props required for the component in `getTriggerProps`, `getPopperProps`. In this case, these props will merge with the props required from `Popper`.
 
-**For example**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this will not work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
+**For example**, `getPopperProps()` will return style and ref, if we do `<input {...getPopperProps()} ref={myRef}/>`, this won't work since we will overwrite `ref`. And if we pass `ref` inside the function, `<input {... getPopperProps ({ref: myRef})} />`, then we call two functions one after another, and everything will function.
 
 ::: tip
 The second argument of the render-function will provide `handlers`, functions for changing the internal state of the component.

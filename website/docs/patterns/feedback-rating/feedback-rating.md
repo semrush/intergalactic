@@ -24,7 +24,7 @@ This pattern is built with:
 Notice includes the following mandatory elements:
 
 - [FeedbackIllustration](/style/illustration/illustration) as Notice.Label. Avoid changing it.
-- **Message for the user.** Set the text that is more suitable for your case.
+- **Message for the user.** Set the text that's more suitable for your case.
 - **Rating slider** with 0 value by default.
 - **Close button.**
 

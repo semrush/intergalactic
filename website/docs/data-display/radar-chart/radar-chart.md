@@ -14,10 +14,10 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Radar chart** is a chart for displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point.
 
-It is designed to show similarities, differences, and outliers, or any other item of interest at a glance.
+It's designed to show similarities, differences, and outliers, or any other item of interest at a glance.
 
 ::: tip
-The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
+The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It's equivalent to a parallel coordinates plot, with the axes arranged radially.
 :::
 
 ### Usage recommendations
@@ -40,7 +40,7 @@ Instead of the radar chart, you can use the parallel coordinates chart. This cha
 
 **Outliers and similarities are easy to see**
 
-The most significant advantage of using a radar chart is that outliers are immediately visible. Any metric or variable that is vastly different from the others on the chart or in a set of charts is obvious. Commonalities are also easy to assess, particularly if they are plotted on the same chart.
+The most significant advantage of using a radar chart is that outliers are immediately visible. Any metric or variable that's vastly different from the others on the chart or in a set of charts is obvious. Commonalities are also easy to assess, particularly if they're plotted on the same chart.
 
 ### Disadvantages of radar charts
 
@@ -63,7 +63,7 @@ Additionally, humans recognize and can discern data in shapes like squares, circ
 
 Variables usually start at 0 degrees and divide the grid into equal parts.
 
-Radar charts are most beneficial when there are a few items to compare. That is why we recommend showing 3-10 variables for your data sets.
+Radar charts are most beneficial when there are a few items to compare. That's why we recommend showing 3-10 variables for your data sets.
 
 #### Styles
 
@@ -129,7 +129,7 @@ For labels, use the `--chart-grid-text-label` color token.
 
 If a variable's label is too long, wrap it to the next line:
 
-![Radar chart with variables' labels containing long text that is wrapped to the next line.](static/long-named-variables.png)
+![Radar chart with variables' labels containing long text that's wrapped to the next line.](static/long-named-variables.png)
 
 ### Non-text labels
 

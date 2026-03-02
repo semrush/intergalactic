@@ -37,7 +37,7 @@ Remember to add an `aria-label` for the [button with no text](/components/button
 - The export button opens a dropdown menu with the export form.
 
 ::: tip
-If there's no data available for download, the file is still downloaded with the table headers. The file should not be empty, as it's important to show users that the export is functioning.
+If there's no data available for download, the file is still downloaded with the table headers. The file shouldn't be empty, as it's important to show users that the export is functioning.
 
 For time-consuming processes, the button gets a loading state. The recommended spinner display time is `300ms`.
 :::

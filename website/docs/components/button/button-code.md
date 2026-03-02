@@ -53,7 +53,7 @@ To create a button that acts like a link, refer to the [Link as button example](
 
 ## Button with no visible text
 
-If there is no visible text in the button, it is necessary to add an `aria-label` with a short description of an action this button performs.
+If there is no visible text in the button, it's necessary to add an `aria-label` with a short description of an action this button performs.
 
 ::: sandbox
 

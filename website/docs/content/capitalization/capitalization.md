@@ -3,7 +3,7 @@ title: Capitalization
 ---
 
 ## Title case
-With this type of case, all words are capitalized, except for minor words that are not the first or last word of the title.
+With this type of case, all words are capitalized, except for minor words that aren't the first or last word of the title.
 
 ### Elements using “Title Case”
   * Page titles
@@ -45,7 +45,7 @@ With this type of case, all words are capitalized, except for minor words that a
 * Prepositions
 * Conjunctions (and, or, but)
 * “To” in an infinitive
-* “Report” and “tool” if they are not part of the title
+* “Report” and “tool” if they aren't part of the title
 
 <DosDonts>
     <template #dont>
@@ -74,6 +74,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
 ### Elements using “Sentence case”
 * Modal window titles
 
+<!-- vale DevDocs.Contractions = NO -->
 <DosDonts>
     <template #dont>
       <img src="./static/modal-dont.png" style="margin: auto" alt="A modal window with a capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
@@ -82,6 +83,7 @@ With this type of case, most words in a titles or headings are in lowercase. You
       <img src="./static/modal-do.png" style="margin: auto" alt="A modal window with a non-capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
     </template>
 </DosDonts>
+<!-- vale DevDocs.Contractions = YES -->
 
 * Notice titles
 

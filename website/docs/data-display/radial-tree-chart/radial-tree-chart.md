@@ -85,7 +85,7 @@ The transparency of values appearance changes from 0 to 100 with `ease-in` and `
 
 ### Few values
 
-If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.
+If there are very few values, then they're evenly distributed around the entire circle relative to the central value in a clockwise direction.
 
 ![](static/few-values.png)
 
