@@ -8,6 +8,7 @@ title: Date format
 Do not use ordinal numbers for dates. For example, use April 15 instead of April 15th.
 :::
 
+<!-- vale DevDocs.DateFormat = NO -->
 | Type            | Date                                                                |
 | --------------- | ------------------------------------------------------------------- |
 | Full            | Monday, September 5, 2016 1:45:30 PM                                |
@@ -15,6 +16,7 @@ Do not use ordinal numbers for dates. For example, use April 15 instead of April
 | Weekday         | Tuesday, September 6, 2016                                          |
 | Month/year      | September, 2016                                                     |
 | mm/dd/yyyy      | 9/5/2016<br />_Not recommended. Use only in limited space_          |
+<!-- vale DevDocs.DateFormat = YES -->
 
 ## Range
 
