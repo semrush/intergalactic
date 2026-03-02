@@ -258,7 +258,7 @@ const Demo = (props: CombinationProps) => {
 
         </Flex>
 
-        <Flex direction='column' gap={2} mt={10} style={props.style}>
+        <Flex direction='column' gap={2} mt={10}>
           <Link
             size={size}
 
