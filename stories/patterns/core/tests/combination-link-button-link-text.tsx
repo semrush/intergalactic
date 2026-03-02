@@ -67,7 +67,7 @@ const Demo = (props: CombinationProps) => {
         {' '}
         and
         {' '}
-        <ButtonLink size={size} addonLeft={SettingsM}>
+        <ButtonLink size={size} addonRight={SettingsM}>
           ButtonLink addonRight
         </ButtonLink>
         {' '}
