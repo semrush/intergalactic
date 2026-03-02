@@ -173,7 +173,13 @@ function DropdownGroup(props) {
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title', 'sticky']}>
+      <SGroup
+        render={Box}
+        role='group'
+        {...groupAriaProps}
+        __excludeProps={['title', 'sticky']}
+        data-sticky={sticky}
+      >
         <Children />
       </SGroup>
     </>,
