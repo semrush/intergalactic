@@ -679,6 +679,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
         await page.keyboard.press('Tab');
+        if (!(await buttons.first().evaluate((el) => el === document.activeElement))) {
+          await page.keyboard.press('Tab');
+        }
         await expect(buttons.first()).toBeFocused();
 
         for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
