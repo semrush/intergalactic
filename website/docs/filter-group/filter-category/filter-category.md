@@ -84,7 +84,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ## Filter by multiple categories
 
-- Use this type of filter if you are sure you need it (for example, users are asking for it).
+- Use this type of filter if you're sure you need it (for example, users are asking for it).
 - Usually, such a filter is very complex, and most products only need selection of one category.
 
 Use [Multiselect](/components/select/select) for such kind of filters.

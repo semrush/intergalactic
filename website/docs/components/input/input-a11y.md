@@ -22,7 +22,7 @@ See detailed information about the keyboard support for the inputs in the [Keybo
 
 ## Considerations for developers
 
-- Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Keep it simple – do not all browsers correctly expose multiple labels that are linked to the same form element. [Refer to our examples](/components/input/input-code).
+- Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Keep it simple – not all browsers correctly expose multiple labels that are linked to the same form element. [Refer to our examples](/components/input/input-code).
 - Make optional fields obvious by adding text "optional" to the input.
 - Inputs with the `invalid` state should be associated with their error message using `aria-describedby`.
 
