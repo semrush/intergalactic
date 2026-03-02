@@ -25,7 +25,7 @@ import Button from '@semcore/ui/button';
 
 ## Button.Text
 
-Plain text with predefined paddings depending on the size. Accepts all properties of [Text](../../style/typography/typography-api#text). 
+Plain text with predefined paddings depending on the size. Accepts all properties of [Text](../../style/typography/typography-api#text).
 
 If only text with no addons is used, it will be wrapped in `Button.Text` automatically.
 
