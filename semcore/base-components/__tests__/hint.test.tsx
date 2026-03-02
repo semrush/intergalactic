@@ -91,4 +91,61 @@ describe('Hint', () => {
 
     expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
   });
+
+  test('Should not show hint when children is false', async () => {
+    vi.useFakeTimers();
+    const handleChange = vi.fn();
+
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={handleChange} timeout={[50, 50]}>
+            {false}
+          </Hint>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+
+    fireEvent.mouseEnter(getByTestId('trigger'));
+    vi.advanceTimersByTime(60);
+
+    await waitFor(() => {
+      expect(handleChange).not.toHaveBeenCalled();
+    });
+
+    vi.useRealTimers();
+  });
+
+  test('Should not show hint when children is empty string', async () => {
+    vi.useFakeTimers();
+    const handleChange = vi.fn();
+
+    const emptyString = '';
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={handleChange} timeout={[50, 50]}>
+            {emptyString}
+          </Hint>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+
+    fireEvent.mouseEnter(getByTestId('trigger'));
+    vi.advanceTimersByTime(60);
+
+    await waitFor(() => {
+      expect(handleChange).not.toHaveBeenCalled();
+    });
+
+    vi.useRealTimers();
+  });
 });
