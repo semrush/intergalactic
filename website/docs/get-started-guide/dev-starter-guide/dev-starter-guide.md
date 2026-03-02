@@ -175,7 +175,7 @@ import { Flex } from '@semcore/ui/base-components';
 
 ## Browser support
 
-To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
+To ensure the best performance and user experience, we don't support legacy browsers. Our design system is optimized for the following browser versions:
 
 Table: Browser support
 
