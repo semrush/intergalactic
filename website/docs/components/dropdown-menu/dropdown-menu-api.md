@@ -50,7 +50,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 ## DropdownMenu.Menu
 
-DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it is syntactic sugar when no direct access to the `Popper` node is needed.
+DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it's syntactic sugar when no direct access to the `Popper` node is needed.
 
 ```jsx
 import DropdownMenu from '@semcore/ui/dropdown-menu';

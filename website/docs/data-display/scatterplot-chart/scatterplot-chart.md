@@ -32,7 +32,7 @@ The scatterplot is highly valued for its versatility and utility in statistical 
 | If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)       |
 
 ::: tip
-Correlation does not imply causation. Unseen variables might influence the charted data.
+Correlation doesn't imply causation. Unseen variables might influence the charted data.
 :::
 
 ## Appearance

@@ -26,9 +26,11 @@ When the link that triggers the feedback form is placed in the [ProductHead](/co
 
 ### Optional elements
 
+<!-- vale DevDocs.Please = NO -->
 - `reply-to` input. The input may be made obligatory for submitting.
 - Checkbox "I need help, please contact me".
 - Message about the alternative way to send feedback with the `mailto` link: "You can also send us an email at comand_name@semrush.com".
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/options.png)
 
@@ -62,7 +64,9 @@ Label this textarea with the text: "Tell us your suggestion or report an issue".
 
 If the user checked the checkbox "I need help...", the message should be automatically sent either to the product team, and to the Customer Success team, so they could help the user.
 
-Placeholder for this textarea: "I need help, please contact me".
+<!-- vale DevDocs.Please = NO -->
+Label for this checkbox: "I need help, please contact me".
+<!-- vale DevDocs.Please = YES -->
 
 ### Button's behavior
 
@@ -99,11 +103,15 @@ Message text for the tooltip: "Your feedback must contain at least 3 words (10 c
 
 ### Invalid email input
 
+<!-- vale DevDocs.Please = NO -->
 - If the email input is empty, show the tooltip with the following message: "Please enter valid email".
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/validation-2.png)
 
+<!-- vale DevDocs.Please = NO -->
 - If the user enters the invalid email, the tooltip should be shown with the request to specify the right one in order we could reply to: "Please provide us with a valid email address so we could reply to you".
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/validation-3.png)
 
@@ -112,7 +120,9 @@ Message text for the tooltip: "Your feedback must contain at least 3 words (10 c
 - If an error occurred after submitting the form, show the message instead of the message with `mailto` link under the submitting button.
 - If `mailto` link already exists, change its color into red and replace the message text.
 
+<!-- vale DevDocs.Please = NO -->
 Message text for this case: "Your message hasn’t been sent. Please try again or contact us at at {mail address}".
+<!-- vale DevDocs.Please = YES -->
 
 ![](static/error.png)
 

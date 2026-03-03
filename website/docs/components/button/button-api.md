@@ -16,7 +16,7 @@ import Button from '@semcore/ui/button';
 
 ## Button.Addon
 
-The addon is inside the button (most often it is an icon), it sets the correct margins depending on the size. It takes all properties of the `Box`.
+The addon is inside the button (most often an icon), it sets the correct margins depending on the size. It takes all properties of the `Box`.
 
 ```jsx
 import Button from '@semcore/ui/button';

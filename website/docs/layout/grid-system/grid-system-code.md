@@ -74,7 +74,7 @@ The grid works as desktop first, as our core products are designed to work prima
 
 ## Shorthand responsive props
 
-We have added an alternative API for responsive grids. It's more laconic.
+We've added an alternative API for responsive grids. It's more laconic.
 
 ::: sandbox
 

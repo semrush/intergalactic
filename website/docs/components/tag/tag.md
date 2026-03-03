@@ -52,7 +52,7 @@ Table: Tag themes
 
 #### Tag colors
 
-To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they are selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
+To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they're selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
 
 In the case where you use other colors to color the tag, make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color-and-contrast).
 

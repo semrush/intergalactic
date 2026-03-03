@@ -5,9 +5,9 @@ title: Date format
 ## Standard
 
 ::: warning NOTE
-Do not use ordinal numbers for dates. For example, use April 15 instead of April 15th.
+Don't use ordinal numbers for dates. For example, use April 15 instead of April 15th.
 :::
-
+<!-- vale DevDocs.DateFormat = NO -->
 | Type            | Date                                                                |
 | --------------- | ------------------------------------------------------------------- |
 | Full            | Monday, September 5, 2016 1:45:30 PM                                |

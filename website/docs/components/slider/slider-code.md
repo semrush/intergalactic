@@ -26,7 +26,7 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 
 ## Numeric slider
 
-The Slider can be used in conjunction with the [InputNumber](/components/input-number/input-number) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
+The Slider can be used in conjunction with the [InputNumber](/components/input-number/input-number) component. Additionally, if you input a value that's either too large or too small into the InputNumber, an error will be displayed.
 
 ::: sandbox
 

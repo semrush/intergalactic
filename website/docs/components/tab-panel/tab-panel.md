@@ -50,7 +50,7 @@ Table: Examples of addons for TabPanel
 **Note the following:**
 
 - Avoid placing a single icon without accompanying text inside `TabPanel.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/tab-line#usage-in-ux-ui)).
-- A flag and an icon cannot be placed together in a tab.
+- A flag and an icon can't be placed together in a tab.
 - If both a [Badge](/components/badge/badge) and a [Counter](/components/counter/counter) are present inside the tab, the Badge should be placed after the Counter.
 
 ## Interaction
@@ -79,7 +79,7 @@ When there's not enough space to show the full tab text, it's truncated with [el
 Additionally, you can collapse the last tabs into a tab with an `Ellipsis` icon.
 
 ::: tip
-By clicking on the last tab with an `ellipsis` in the dropdown, it is possible to display a list of items that did not fit. The selected item from this list is then placed before the tab with the ellipsis.
+By clicking on the last tab with an `ellipsis` in the dropdown, it's possible to display a list of items that did not fit. The selected item from this list is then placed before the tab with the ellipsis.
 :::
 
 ![](static/tab-collapse.png)

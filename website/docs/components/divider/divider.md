@@ -45,7 +45,7 @@ Table: Divider orientation
 
 ## Usage in UX/UI
 
-The divider separates content visually and semantically, whether it is different or similar in meaning.
+The divider separates content visually and semantically, whether it's different or similar in meaning.
 
 Table: Divider usage
 

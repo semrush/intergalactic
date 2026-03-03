@@ -8,4 +8,4 @@ title: ProjectSelect
 - Create new projects.
 - View projects shared with the user and personalize them.
 
-For a more comprehensive guide, refer to the [inner Figma project](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=134%3A123098). Please note that access is limited to Semrush developers only.
+For a more comprehensive guide, refer to the [inner Figma project](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=134%3A123098). Note that access is limited to Semrush developers only.

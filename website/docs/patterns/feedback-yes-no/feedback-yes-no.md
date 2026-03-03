@@ -43,9 +43,11 @@ Refer to the comprehensive behavior description of the feedback dropdown in the 
 
 ### "Yes" and "No" buttons
 
+<!-- vale DevDocs.Please = NO -->
 - The pressed button becomes `active`.
 - The dropdown with the feedback form appears from the pressed button over `500ms`.
 - The textarea is automatically focused, with the "Please provide suggestions or report issues" placeholder.
+<!-- vale DevDocs.Please = YES -->
 
 ### "Send feedback" button
 

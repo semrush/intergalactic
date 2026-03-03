@@ -125,7 +125,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display bars for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Don't display bars for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/partially-trash.png)
 
@@ -141,7 +141,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ### Start the axes from zero
 
-When comparing bars, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
+When comparing bars, we're actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this isn't accurate.
 
 ![](static/deception-yes-no.png)
 
