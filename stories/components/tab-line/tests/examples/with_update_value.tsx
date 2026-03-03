@@ -1,0 +1,21 @@
+import Button from '@semcore/ui/button';
+import TabLine from '@semcore/ui/tab-line';
+import React, { useState } from 'react';
+
+const Demo = () => {
+  const [label, setLabel] = useState('Tab label');
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <TabLine value='tab1' onChange={() => { }}>
+        <TabLine.Item value='tab1'>{label}</TabLine.Item>
+        <TabLine.Item value='tab2'>Static tab</TabLine.Item>
+      </TabLine>
+      <div>Actual label: {label}</div>
+      <Button onClick={() => setLabel(`Tab ${Math.random()}`)}>
+        Update tab label
+      </Button>
+    </div>
+  );
+};
+export default Demo;

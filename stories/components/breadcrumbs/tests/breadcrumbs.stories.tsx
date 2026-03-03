@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EdgeCasesExample from './examples/edge-cases';
 import ItemTruncationExample, { breadcrumbsExampleProps } from './examples/item-truncation';
+import WithUpdateValuesExample from './examples/with-update-values';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs/Tests',
@@ -23,4 +24,8 @@ export const ItemTruncation: StoryObj<typeof breadcrumbsExampleProps> = {
 
 export const EdgeCases: Story = {
   render: EdgeCasesExample,
+};
+
+export const WithUpdateValues: Story = {
+  render: WithUpdateValuesExample,
 };

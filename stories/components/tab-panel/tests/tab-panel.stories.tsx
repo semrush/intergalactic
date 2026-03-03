@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabPanelItemAddonsExample, { defaultProps as TabPanelItemAddonsProps } from './examples/tab_panel_item_addons_and_props';
 import ValueAndDefaultValueExample from './examples/value_and_default_value';
+import WithUpdateValueExample from './examples/with_update_value';
 
 const meta: Meta<typeof TabPanel> = {
   title: 'Components/TabPanel/Tests',
@@ -42,4 +43,8 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
 
 export const ValueAndDefaultValue: StoryObj<typeof TabPanel> = {
   render: ValueAndDefaultValueExample,
+};
+
+export const WithUpdateValue: StoryObj<typeof TabPanel> = {
+  render: WithUpdateValueExample,
 };
