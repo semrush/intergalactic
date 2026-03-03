@@ -31,7 +31,7 @@ Table: Versions of charts with trend type
 | Line chart      | ![](static/trend-line.png)      | Use to show overall trend over time for a big data set.                                                                |
 | Area chart      | ![](static/trend-area.png)      | Use to show overall trend over time for a big data set, but when you need to make trend more visible in the interface. |
 | Bar chart       | ![](static/trend-bar.png)       | Use to show overall trend over time for a small data set.                                                              |
-| Histogram chart | ![](static/trend-histogram.png) | Use to show overall trend over time for a big data set.                                                                |
+| Histogram | ![](static/trend-histogram.png) | Use to show overall trend over time for a big data set.                                                                |
 
 You can show the highest/lowest point if necessary.
 

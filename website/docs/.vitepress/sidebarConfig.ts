@@ -533,7 +533,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/data-display/histogram-chart/histogram-chart',
             activeMatch: '/data-display/histogram-chart/',
-            text: 'Histogram chart',
+            text: 'Histogram',
           },
           {
             link: '/data-display/line-chart/line-chart',
