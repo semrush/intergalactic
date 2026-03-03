@@ -62,7 +62,7 @@ Label this textarea with the text: "Tell us your suggestion or report an issue".
 
 If the user checked the checkbox "I need help...", the message should be automatically sent either to the product team, and to the Customer Success team, so they could help the user.
 
-Placeholder for this textarea: "I need help, please contact me".
+Label for this checkbox: "I need help, please contact me".
 
 ### Button's behavior
 

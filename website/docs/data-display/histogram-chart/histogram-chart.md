@@ -1,5 +1,5 @@
 ---
-title: Histogram chart
+title: Histogram
 fileSource: d3-chart
 tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('histogram-chart-changelog')
 ---
@@ -12,7 +12,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Histogram chart** groups numeric data to compare it by quantity. It's good for showing the distribution of values.
+**Histogram** groups numeric data to compare it by quantity. It's good for showing the distribution of values.
 
 **Key points for using histogram:**
 
@@ -21,41 +21,28 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Use a single color or similar shades for simplicity.
 - Consider horizontal histogram for long range names or many ranges.
 
-::: tip
-Histogram vs. Bar Chart
+### Histogram vs. Bar chart
 
-- Histogram chart are used to display distribution of data sets: how often values fall into quantitative ranges.
-- Bar chart displays the distribution of data sets by quality categories for comparison.
+- Histogram shows quantitative data distribution. Each bar represents a range of numerical values, such as age. The bar length shows how many values fall into that range.
+- [Bar chart](../bar-chart/bar-chart) displays qualitative data distribution, with bars representing nominal categories, such as countries. Unlike histograms, bar charts have visual gaps between bars to emphasize the discrete character of the categories.
 
-> Histograms are used to show distributions of variables while bar charts are used to compare variables, [source](https://www.forbes.com/sites/naomirobbins/2012/01/04/a-histogram-is-not-a-bar-chart/#93b29b6d775f). _For example, we want to compare revenues of five companies. In this case, use [Bar chart](/data-display/bar-chart/bar-chart)._
->
-> If we want to compare the number of companies that earn from 0 to 10,000; from 10,000 to 20,000; from 20,000 to 30,000, etc., then we should use the histogram chart.
-
-- Histograms visually represent data distribution probability.
-- Columns are usually the same width for clarity.
-  :::
+![](static/histogram-vs-bar-chart.png)
 
 ## Appearance
 
-### Vertical histogram chart
-
-The upper part of the bar should have `border-radius: 2px`.
-
-![](static/histogram.png)
-
-### Color usage
+### Color
 
 - Stick to the [color palette](/data-display/color-palette/color-palette) guidelines.
-- Different colors can make the chart easier to read. Use this carefully, like for highlighting specific ranges.
+- Normally, all bars should be the same color. Use different colors only if it's helpful for understanding the data.
 
 ![colors in histogram](static/color-yes-no.png)
 
-### Sorting of columns
+### Bar order
 
 Organize values logically, such as largest to smallest, or chronologically for months.
 
 ::: tip
-Don't reorder histogram bars by size; it makes the chart hard to read.
+Avoid ordering histogram bars by length—it makes the chart hard to read.
 :::
 
 ![sorting in histogram](static/sort-yes-no.png)
@@ -97,7 +84,7 @@ Display a single bar for single-range data.
 Show zero in tooltips for all-zero data.
 
 ::: tip
-Zero counts as data. 0 ≠ n/a.
+Zero values count as data and are different from "n/a".
 :::
 
 ![](static/null-histogram-chart.png)
@@ -118,6 +105,6 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ## Usage in UX/UI
 
-Always start columns from zero to avoid misleading comparisons. Incorrect scaling can create illusions of proportion, making one value seem half as large as another when it's not.
+Bars should always begin from zero to avoid misleading comparisons. Incorrect scaling can create illusions of proportion, making one value seem half as large as another when it's not.
 
 ![](static/deception-yes-no.png)
