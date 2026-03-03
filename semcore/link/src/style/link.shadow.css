@@ -76,12 +76,9 @@ SText {
   text-decoration-style: solid;
   text-decoration-thickness: 1px;
   text-decoration-color: transparent;
-  text-underline-position: under;
-  text-underline-offset: 0;
-  text-decoration-skip-ink: none;
+  text-underline-offset: 27%;
 
   transition: text-decoration-color 0.15s ease-in-out;
-  padding-bottom: 1px;
 }
 
 SLink[text-color] {
