@@ -3,6 +3,10 @@ title: Link
 tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
+::: tip
+Make sure `line-height` is explicitly set for Link or for its ancestor. Underlining may become cropped in links with unset `line-height` due to increased offset.
+:::
+
 ## Link in text
 
 By default, links are displayed as `inline` element and don’t need some extra settings.
