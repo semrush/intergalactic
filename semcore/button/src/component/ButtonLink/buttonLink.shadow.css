@@ -36,7 +36,7 @@ SButton {
   }
 
   SText {
-    text-decoration-line: underline;
+    text-decoration: underline;
     text-decoration-style: solid;
     text-decoration-thickness: 1px;
     text-decoration-color: transparent;

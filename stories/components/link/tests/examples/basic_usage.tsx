@@ -3,6 +3,7 @@ import type { BoxProps } from '@semcore/ui/base-components';
 import { Box } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import type { LinkProps } from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type BasicLinkProps = LinkProps & BoxProps & {
@@ -53,7 +54,7 @@ const Demo = (props: BasicLinkProps) => {
         {text}
       </Link>
 
-      <Box mt={3}>
+      <Text tag='div' mt={3} size={size}>
         <Link
           href={href}
           size={size}
@@ -69,6 +70,8 @@ const Demo = (props: BasicLinkProps) => {
         >
           <Link.Text w={w} ellipsis>{text} ellipsis</Link.Text>
         </Link>
+      </Text>
+      <Text tag='div' mt={3} size={size}>
         <Link
           href={href}
           size={size}
@@ -84,7 +87,7 @@ const Demo = (props: BasicLinkProps) => {
         >
           <Link.Text>{text}</Link.Text>
         </Link>
-      </Box>
+      </Text>
     </>
   );
 };
