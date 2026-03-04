@@ -49,6 +49,7 @@ const Demo = (props: LinkEllipsisProps) => {
 
 export const defaultProps: LinkEllipsisProps = {
   ellipsis: true,
+  size: 200,
   w: 120,
 };
 
