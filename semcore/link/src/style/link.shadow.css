@@ -52,12 +52,12 @@ SInner {
 }
 
 SAddon {
-  align-items: baseline;
   pointer-events: none;
-  align-self: center;
+  vertical-align: middle;
+  display: inline-flex;
 
-  &:has(>svg) {
-    vertical-align: -2px;
+  &:is(svg), & > svg {
+    margin-top: -2px;
   }
 }
 

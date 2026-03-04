@@ -1,13 +1,15 @@
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
-import Counter, { type CounterProps } from '@semcore/ui/counter';
-import Link from '@semcore/ui/link';
-import Spin, { type SpinSize } from '@semcore/ui/spin';
+import { ButtonLink } from '@semcore/ui/button';
+import type { CounterProps } from '@semcore/ui/counter';
+import Counter from '@semcore/ui/counter';
+import type { SpinSize } from '@semcore/ui/spin';
+import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: LinkSizesProps) => {
+const Demo = (props: ButtonLinkSizesProps) => {
   const w = 150;
   const sizes = [
     800,
@@ -40,40 +42,39 @@ const Demo = (props: LinkSizesProps) => {
         return (
           <Text key={size} tag='div' size={size} mb={4}>
             {`${size} `}
-            <Link
-              href='#'
-              mr={4}
+            <ButtonLink
+              size={size}
+              use={props.use}
             >
-              {props.merged && (<Link.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
-              {!props.merged && (<Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>)}
-              <Link.Text
+              {props.merged && (<ButtonLink.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
+              {!props.merged && (<ButtonLink.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</ButtonLink.Addon>)}
+              <ButtonLink.Text
                 w={size < 600 ? w : w * 2}
                 ellipsis
               >
                 The quick brown fox jumps over the lazy dog
-              </Link.Text>
-              {props.merged && props.addonRight === 'badge' && (<Link.Addon tag={Badge} type='new' />)}
+              </ButtonLink.Text>
+              {props.merged && props.addonRight === 'badge' && (<ButtonLink.Addon tag={Badge} type='new' />)}
               {!props.merged && props.addonRight === 'badge' && (
-                <Link.Addon>
+                <ButtonLink.Addon>
                   <Badge type='new' />
-                </Link.Addon>
+                </ButtonLink.Addon>
               )}
-              {props.merged && props.addonRight === 'counter' && (<Link.Addon tag={Counter} size={counterSize}>17</Link.Addon>)}
+              {props.merged && props.addonRight === 'counter' && (<ButtonLink.Addon tag={Counter} size={counterSize}>17</ButtonLink.Addon>)}
               {!props.merged && props.addonRight === 'counter' && (
-                <Link.Addon>
+                <ButtonLink.Addon>
                   <Counter size={counterSize}>
                     17
                   </Counter>
-                </Link.Addon>
+                </ButtonLink.Addon>
               )}
-              {props.merged && props.addonRight === 'spin' && (<Link.Addon display='inline-block' size={spinSize} tag={Spin} />)}
+              {props.merged && props.addonRight === 'spin' && (<ButtonLink.Addon display='inline-block' size={spinSize} tag={Spin} />)}
               {!props.merged && props.addonRight === 'spin' && (
-                <Link.Addon>
+                <ButtonLink.Addon>
                   <Spin size={spinSize} />
-                </Link.Addon>
+                </ButtonLink.Addon>
               )}
-            </Link>
-
+            </ButtonLink>
           </Text>
         );
       })}
@@ -81,16 +82,18 @@ const Demo = (props: LinkSizesProps) => {
   );
 };
 
-type LinkSizesProps = {
+type ButtonLinkSizesProps = {
   merged: boolean;
   addonRight: 'badge' | 'counter' | 'spin';
+  use: 'secondary' | 'primary';
 };
 
-export const defaultLinksizesProps: LinkSizesProps = {
+export const defaultButtonLinkSizesProps: ButtonLinkSizesProps = {
   merged: true,
   addonRight: 'badge',
+  use: 'secondary',
 };
 
-Demo.defaultProps = defaultLinksizesProps;
+Demo.defaultProps = defaultButtonLinkSizesProps;
 
 export default Demo;

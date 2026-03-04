@@ -2,7 +2,7 @@ import Link from '@semcore/ui/link';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/basic_usage';
-import LinkDifferentSizesExample from './examples/link-different-sizes';
+import LinkDifferentSizesExample, { defaultLinksizesProps } from './examples/link-different-sizes';
 import LinkHintExample from './examples/link-hint';
 import LinkInsideTheContentWithVisibleExample from './examples/link_inside_the_content-with_enable_visited';
 
@@ -75,6 +75,13 @@ export const LinkInsideTheContentWithVisible: Story = {
   render: LinkInsideTheContentWithVisibleExample,
 };
 
-export const LinkDifferentSizes: StoryObj = {
+export const LinkDifferentSizes: StoryObj<typeof defaultLinksizesProps> = {
   render: LinkDifferentSizesExample,
+  args: defaultLinksizesProps,
+  argTypes: {
+    addonRight: {
+      control: { type: 'select' },
+      options: ['badge', 'counter', 'spin'],
+    },
+  },
 };
