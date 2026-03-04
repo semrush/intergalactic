@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ButtonLinkBaseExample, { defaultButtonLinkProps } from './examples/button-link/button-link-base';
+import ButtonLinkDifferentSizesExample from './examples/button-link/button-link-different-sizes';
 import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './examples/button-link/button-link-icon-only';
 import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
 
@@ -53,4 +54,8 @@ export const ButtonLinkIconOnly: StoryObj<typeof defaultButtonLinkIconOnlyProps>
   render: ButtonLinkIconOnlyExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkIconOnlyProps,
+};
+
+export const ButtonLinkDifferentSizes: StoryObj = {
+  render: ButtonLinkDifferentSizesExample,
 };
