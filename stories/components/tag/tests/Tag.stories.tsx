@@ -2,6 +2,7 @@ import Tag from '@semcore/ui/tag';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicPropsExample, { defaultProps } from './examples/basic_usage';
+import EllipsisExample from './examples/tag-with-ellipsis';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag/Tests',
@@ -65,4 +66,8 @@ export const BasicProps: StoryObj<typeof defaultProps> = {
     },
   },
   render: BasicPropsExample,
+};
+
+export const Ellipsis: StoryObj = {
+  render: EllipsisExample,
 };
