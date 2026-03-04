@@ -56,7 +56,7 @@ export type TagAddonProps = BoxProps & {};
 export type TagTextProps = BoxProps & {
   /**
    * Ellipsis settings
-   * @default true
+   * @default false
    */
   ellipsis?: boolean | EllipsisSettings;
   hintProps?: SimpleHintPopperProps | false;
