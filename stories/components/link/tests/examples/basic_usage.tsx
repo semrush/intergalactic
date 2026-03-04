@@ -70,8 +70,6 @@ const Demo = (props: BasicLinkProps) => {
         >
           <Link.Text w={w} ellipsis>{text} ellipsis</Link.Text>
         </Link>
-      </Text>
-      <Text tag='div' mt={3} size={size}>
         <Link
           href={href}
           size={size}
