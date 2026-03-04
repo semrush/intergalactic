@@ -63,13 +63,9 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
       control: { type: 'boolean' },
       description: 'Disabled state of the link',
     },
-    enableHintTriggerRef: {
-      control: { type: 'boolean' },
-      description: 'Enable triggerRef in hintProps (sets link as hint trigger)',
-    },
-    hintProps: {
-      control: { type: 'object' },
-      description: 'Hint properties (triggerRef is set automatically when enableHintTriggerRef is true)',
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
     },
   },
   args: LinkExampleProps,

@@ -5,7 +5,7 @@ import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
 import React from 'react';
 
-import type { AbstractButtonProps } from './AbstractButton.type';
+import type { AbstractButtonProps, AbstractButtonTextProps } from './AbstractButton.type';
 import SpinButton from './SpinButton';
 
 export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
@@ -31,11 +31,12 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
 
   protected abstract getTextColor(): string | undefined;
 
-  getTextProps() {
+  getTextProps(props: AbstractButtonTextProps<any>) {
     const { size } = this.asProps;
 
     return {
       size,
+      'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
     };
   }
 

@@ -34,7 +34,4 @@ export type ButtonLinkComponent = Intergalactic.Component<
   'button',
   ButtonLinkProps,
   ButtonLinkContext
-> & {
-  Text: Intergalactic.Component<'span', ButtonLinkTextProps>;
-  Addon: Intergalactic.Component<'span', ButtonLinkAddonProps>;
-};
+> & ButtonLinkChildren;
