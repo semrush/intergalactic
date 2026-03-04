@@ -41,7 +41,7 @@ Addons (icons, flags, badges, counters) have the same margin as the addons insid
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
 
-## Behaviour
+## Behavior
 
 The Pills component can work in two modes: manual or automatic tab activation. We recommend using `auto` behavior in forms, while `manual` behavior is better for navigation and layout changes.
 

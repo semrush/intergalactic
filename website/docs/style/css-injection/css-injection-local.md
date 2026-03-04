@@ -8,7 +8,7 @@ tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local')
 :::
 
 ::: warning
-:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
+:rotating_light: If you're using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
 :::
 
 If you need to change the style of a component in one specific case, then you should use local customization of styles.
@@ -85,7 +85,7 @@ Look at the source of styles in GitHub, styles are written in the same format.
 
 * By convention, all of our styled tags are capitalized `S + ComponentName`. You don’t need to write styles with the `.button` classes, just use the tag names `SButton`.
 * If you need to access the properties of a component, then use `SButton[keybordFocus]` or properties with the value `SButton[size="m"]`.
-* If you need properties like `:hover` and others, then they are available as usual `SButton:hover`.
+* If you need properties like `:hover` and others, then they're available as usual `SButton:hover`.
 
 **You can use variables as properties:**
 

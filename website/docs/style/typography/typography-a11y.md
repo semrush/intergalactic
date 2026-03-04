@@ -34,7 +34,7 @@ Set the paragraph width for comfortable reading. Don't make paragraphs too long 
 
 ### Using different font
 
-If you need to use a different font, make sure to choose one that is legible. Sans-serif fonts are generally recommended for interfaces, while serif fonts work well for long documents, though this is not a strict rule. Ensure that the font:
+If you need to use a different font, make sure to choose one that's legible. Sans-serif fonts are generally recommended for interfaces, while serif fonts work well for long documents, though this isn't a strict rule. Ensure that the font:
 
 - Remains readable at any scale
 - Has tall lowercase letters (high x-height)

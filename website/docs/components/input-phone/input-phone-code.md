@@ -48,7 +48,7 @@ The input includes the country code as a preset value: "+ {country code}". Addit
 This option is suitable when collecting phone numbers from users in one or a limited number of countries.
 
 ::: tip
-Make sure to verify the available valid phone number formats for the specific country you are targeting.
+Make sure to verify the available valid phone number formats for the specific country you're targeting.
 :::
 
 ::: sandbox

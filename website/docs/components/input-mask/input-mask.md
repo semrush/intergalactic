@@ -31,7 +31,7 @@ However, if you don't have precise information about the format of the data, it 
 
 The character `_` is used as a space holder for each character in the mask.
 
-It is important to include a placeholder in the input field with the same format as the mask. The placeholder helps users navigate the form and understand which inputs are not filled in yet.
+It's important to include a placeholder in the input field with the same format as the mask. The placeholder helps users navigate the form and understand which inputs aren't filled in yet.
 
 Find an example of using a mask in an input field for entering a phone number in the [Example tab](/components/input-phone/input-phone-code).
 

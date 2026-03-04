@@ -45,7 +45,7 @@ Table: Accordion types
 | `primary`   | ![](static/default-bg.png) | Main accent accordion.        |
 | `secondary` | ![](static/default.png)    | Default non-accent accordion. |
 
-You can set the width of the accordion that is appropriate for the context.
+You can set the width of the accordion that's appropriate for the context.
 
 ![](static/max-width.png)
 
@@ -73,7 +73,7 @@ You can use this component to hide almost any content. This can be a text conten
 
 The user expects this behavior when working with the desktop device interface.
 
-On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
+On mobile devices and in the menu, it's recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
 :::
 
 **The icon and text label have the same target zone**.
@@ -109,6 +109,6 @@ Keep your accordion labels short and clear. As a rule, choose nouns that capture
 Mostly, the advantages of the accordion relate to long pages that are loaded with content.
 
 - Hiding data in the accordion helps reduce the scroll area. This is very useful for mobile devices.
-- The accordion tabs makes a mini-structure of a page. Content becomes easier to navigate, and it is easier for users to build a mental model of the information available on the page.
+- The accordion tabs makes a mini-structure of a page. Content becomes easier to navigate, and it's easier for users to build a mental model of the information available on the page.
 - Hiding additional information makes the page look less intimidatingly loaded.
 - Accordions can be a great alternative to links as they don't break the mental model the way the links do.

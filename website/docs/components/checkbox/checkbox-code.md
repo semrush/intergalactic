@@ -41,7 +41,7 @@ You can place other components next to the `Checkbox` or inside the `Checkbox.Te
 
 ## Additional props for input
 
-`Checkbox.Value` is made of a `CheckMark` div and a hidden input. When you pass props to `Checkbox.Value`, it passes specific set of them to input props and all others goes to `CheckMark` div. 
+`Checkbox.Value` is made of a `CheckMark` div and a hidden input. When you pass props to `Checkbox.Value`, it passes specific set of them to input props and all others goes to `CheckMark` div.
 
 For more control over the input, you can pass props to `Checkbox.Value.Control`.
 

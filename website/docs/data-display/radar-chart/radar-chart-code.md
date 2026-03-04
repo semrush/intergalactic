@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Scale
 
-You must pass a scale with a specified `domain`, `range` doesn't need to be specified as it is calculated automatically.
+You must pass a scale with a specified `domain`, `range` doesn't need to be specified as it's calculated automatically.
 You can modify the range or use a non-linear scale.
 
 ::: sandbox
@@ -34,7 +34,7 @@ You can modify the range or use a non-linear scale.
 ## Color
 
 You can change the color by passing the `color` property to the `<Radar.Polygon/>`.
-It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and `<Radar.Polygon.Dots/>`.
+It's also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and `<Radar.Polygon.Dots/>`.
 
 ::: sandbox
 

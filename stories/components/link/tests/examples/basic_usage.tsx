@@ -40,7 +40,6 @@ const Demo = (props: BasicLinkProps) => {
       <Link
         href={href}
 
-        size={size}
         inline={inline}
         disabled={disabled}
         active={active}
@@ -51,13 +50,14 @@ const Demo = (props: BasicLinkProps) => {
         addonLeft={showAddonLeft ? CheckM : undefined}
         addonRight={showAddonRight ? CheckM : undefined}
       >
-        {text}
+        <Link.Text size={size}>
+          {text}
+        </Link.Text>
       </Link>
 
       <Text tag='div' mt={3} size={size}>
         <Link
           href={href}
-          size={size}
           disabled={disabled}
           active={active}
           enableVisited={enableVisited}
@@ -68,11 +68,10 @@ const Demo = (props: BasicLinkProps) => {
           addonRight={showAddonRightLink2 ? CheckM : undefined}
           style={{ border: '1px solid red' }}
         >
-          <Link.Text w={w} ellipsis>{text} ellipsis</Link.Text>
+          <Link.Text w={w} ellipsis>{text}  ellipsis</Link.Text>
         </Link>
         <Link
           href={href}
-          size={size}
           disabled={disabled}
           active={active}
           enableVisited={enableVisited}
@@ -83,7 +82,7 @@ const Demo = (props: BasicLinkProps) => {
           addonRight={showAddonRightLink2 ? CheckM : undefined}
           style={{ border: '1px solid red' }}
         >
-          <Link.Text>{text}</Link.Text>
+          <Link.Text line-height='10'>{text}</Link.Text>
         </Link>
       </Text>
     </>

@@ -78,7 +78,7 @@ Other rules for working and interacting with filters are described in the [Filte
 
 For more information about tooltips, see the [Filter common rules guide](/filter-group/filter-rules/filter-rules).
 
-Don't abbreviate the name of this filter, it is always `Tags`.
+Don't abbreviate the name of this filter, it's always `Tags`.
 
 ![tooltips](static/tooltip.png)
 

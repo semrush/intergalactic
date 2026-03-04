@@ -17,7 +17,7 @@ When working with the category filter, the user should:
 
 For trigger use [Select](/components/select/select) with `min-width: 102px` and [FilterTrigger](/components/filter-trigger/filter-trigger) with `min-width: 160px`.
 
-It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
+It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or not understand what category is selected.
 
 | Input size | Inactive filter (Select)               | Active filter (FilterTrigger)               |
 | ---------- | -------------------------------------- | ------------------------------------------- |
@@ -84,7 +84,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ## Filter by multiple categories
 
-- Use this type of filter if you are sure you need it (for example, users are asking for it).
+- Use this type of filter if you're sure you need it (for example, users are asking for it).
 - Usually, such a filter is very complex, and most products only need selection of one category.
 
 Use [Multiselect](/components/select/select) for such kind of filters.

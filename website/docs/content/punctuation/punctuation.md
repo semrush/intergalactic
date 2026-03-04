@@ -130,7 +130,7 @@ Use to keep the words “glued.”
 * Use double curly quotation marks
 * Include periods inside the quotation marks
 * Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
-* Use when quoting UI text, if text formatting is not available
+* Use when quoting UI text, if text formatting isn't available
 
 <DosDonts>
     <template #dont>
@@ -296,7 +296,7 @@ Omit the space after the sign.
 
 * Omit the spaces between the sign and a numeric value
 * Use to show changes in metrics
-* If you cannot use the minus character for some reason, use the en dash
+* If you can't use the minus character for some reason, use the en dash
 
 <DosDonts>
     <template #dont>

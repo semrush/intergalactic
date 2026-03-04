@@ -8,12 +8,12 @@ tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local')
 :::
 
 ::: warning
-:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
+:rotating_light: If you're using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
 :::
 
 ## Description
 
-If you are creating a product that differs in style from other products of Semrush, use the tools for theming.
+If you're creating a product that differs in style from other products of Semrush, use the tools for theming.
 
 ## How does it work?
 
@@ -35,7 +35,7 @@ Styles composition helps us to extend basic styles of our components, and someti
 * Styles shall be applied every time you use our component.
 * Styles are applied in runtime.
 * No style de-duplication.
-* It is difficult to reuse the styles.
+* It's difficult to reuse the styles.
 
 Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local).
 
