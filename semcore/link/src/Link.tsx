@@ -126,7 +126,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
 function LinkText(props: IRootComponentProps) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Text} tag='span' />);
+  return sstyled(styles)(<SText render={Text} />);
 }
 
 function Addon(props: IRootComponentProps) {
