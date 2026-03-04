@@ -5,6 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
   tag: (page: Page) => page.locator('[data-ui-name="Tag"]'),
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
   tagText: (page: Page) => page.locator('[data-ui-name="Tag.Text"]'),
   tagContainer: (page: Page) => page.locator('[data-ui-name="TagContainer"]'),
   tagContainerTag: (page: Page) => page.locator('[data-ui-name="TagContainer.Tag"]'),
@@ -121,6 +122,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify tag with ellipsis visual', {
+    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 /* =====================================================
@@ -223,5 +231,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(tags).toHaveCount(1);
       await expect(close.first()).not.toBeFocused();
     });
+  });
+
+  test('Verify tag with ellipsis hint appearing', {
+    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+  }, async ({ page, browserName }) => {
+    await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
+    if (browserName == 'webkit') test.skip();
+    await locators.tag(page).first().waitFor({ state: 'visible' });
+
+    await locators.tag(page).first().hover();
+    await locators.hint(page).waitFor({ state: 'visible' });
+    await expect(locators.hint(page)).toHaveCount(1);
   });
 });

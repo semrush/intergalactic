@@ -17,6 +17,7 @@ export const locators = {
     const base = page.locator('[data-ui-name="Button.Addon"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
 };
 
@@ -85,9 +86,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-icon-only.tsx', 'en', item);
 
+      await locators.button(page).first().waitFor({ state: 'visible' });
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
+          await expect(locators.button(page).first()).toBeFocused();
           await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -96,7 +99,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
-          await page.getByLabel('addonLeft').waitFor({ state: 'visible' });
+          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -150,6 +153,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
+          await expect(locators.button(page).first()).toBeFocused();
           await expect(page).toHaveScreenshot();
         });
       }
@@ -159,6 +163,92 @@ test.describe(`${TAG.VISUAL} `, () => {
           await expect(page).toHaveScreenshot();
         });
       }
+    });
+  });
+
+  const ellipsisVariants = [
+    { ellipsis: { cropPosition: 'middle' }, size: 400, description: 'cropPosition: middle size: 400' },
+    { ellipsis: { cropPosition: 'end' }, color: 'text-success', description: 'cropPosition: end,  color: text- success' },
+    { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
+    { ellipsis: { cropPosition: 'end', maxLine: 2 }, description: 'cropPosition: end, maxLine: 2' },
+  ];
+
+  ellipsisVariants.forEach((variant) => {
+    test(`Verify Ellipsis Hint visual for  ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@button-link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-with-ellipsis.tsx', 'en', variant);
+      await locators.button(page).nth(0).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page).nth(0)).toBeFocused();
+      await locators.button(page).nth(0).hover();
+
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+});
+
+test.describe(`${TAG.FUNCTIONAL} `, () => {
+  const noEllipsisVariants = [
+    { ellipsis: false, description: 'false' },
+    { ellipsis: { cropPosition: 'end', maxLine: 6 }, description: 'maxLine: 6 (text not truncated)' },
+  ];
+
+  noEllipsisVariants.forEach((variant) => {
+    test(`Verify no hint appears when ${variant.description}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@button-link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-with-ellipsis.tsx', 'en', variant);
+      await page.waitForTimeout(100);
+
+      await test.step('Focus and hover  - no hint should appear', async () => {
+        await page.keyboard.press('Tab');
+        await locators.button(page).nth(0).hover();
+        await expect(locators.hint(page)).toHaveCount(0);
+      });
+    });
+  });
+
+  const ellipsisVariants = [
+    { ellipsis: { cropPosition: 'middle' }, size: 400, description: 'cropPosition: middle size: 400' },
+    { ellipsis: { cropPosition: 'end' }, color: 'text-success', description: 'cropPosition: end,  color: text- success' },
+    { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
+    { ellipsis: { cropPosition: 'end', maxLine: 2 }, description: 'cropPosition: end, maxLine: 2' },
+  ];
+
+  ellipsisVariants.forEach((variant) => {
+    test(`Verify Hint shown on focus ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@button-link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-with-ellipsis.tsx', 'en', variant);
+      await locators.button(page).nth(0).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page).nth(0)).toBeFocused();
+      await locators.button(page).nth(0).hover();
+
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
+
+    test(`Verify Hint Shown on mouse hover when ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-link/button-link-with-ellipsis.tsx', 'en', variant);
+      await page.waitForTimeout(200);
+
+      await test.step('Hover link and verify hint appears', async () => {
+        await locators.button(page).nth(0).hover();
+
+        await page.waitForTimeout(200);
+        await locators.hint(page).waitFor({ state: 'visible' });
+        await expect(locators.hint(page)).toHaveCount(1);
+      });
     });
   });
 });

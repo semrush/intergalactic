@@ -61,9 +61,7 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 
 ## Link with ellipsis
 
-<!-- There's a zero width space between curly braces in the text below because otherwise vitepress crashes -->
-
-If you need to crop a link that has an addon, refer to the root component with `hintProps={​{triggerRef: linkRef}​}` to make sure that the hint appears by hovering the entire link, including the addon. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
+Link can be cropped with ellipsis by setting the width and using the `ellipsis` property in `Link.Text`. Hint with the full text will appear automatically on hover on the link, including addons. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
 
 ::: sandbox
 

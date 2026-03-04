@@ -25,7 +25,9 @@ import Button from '@semcore/ui/button';
 
 ## Button.Text
 
-Plain text, it sets the correct margins depending on the button size. If the button uses just text without addons, it will automatically turn into the `Button.Text`. It takes all properties of the `Box`.
+Plain text with predefined paddings depending on the size. Accepts all properties of [Text](../../style/typography/typography-api#text).
+
+If only text with no addons is used, it will be wrapped in `Button.Text` automatically.
 
 ```jsx
 import Button from '@semcore/ui/button';
