@@ -2,9 +2,13 @@ import InlineInput from '@semcore/ui/inline-input';
 import type { InlineInputProps, InlineInputValueProps } from '@semcore/ui/inline-input';
 import React from 'react';
 
-const BasicUsage = (props: InlineInputProps & InlineInputValueProps): React.ReactElement => {
-  const { disabled, loading, state, autoFocus, defaultValue } = props;
-
+const BasicUsage = ({
+  disabled = false,
+  loading,
+  state,
+  autoFocus,
+  defaultValue = 'John Doe',
+}: InlineInputProps & InlineInputValueProps): JSX.Element => {
   return (
     <InlineInput
       w={300}
