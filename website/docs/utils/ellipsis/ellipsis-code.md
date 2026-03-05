@@ -11,6 +11,14 @@ To use the default settings, use `ellipsis={true}`.
 
 Ellipsis can be enabled in all other components that are based on Text, such as [Button.Text](../../components/button/button-api#button-text), [Link.Text](../../components/link/link-api#link-text), [Card.Title](../../components/card/card-api#card-title), and so on. To find out which components support the `ellipsis` property, refer to the API documentation.
 
+Because of performance, we don't observe chnages in the `Text` children property. So, if you have some dynamically changed children in the `Text` component, you should set `observerChildrenMutations=true` to the ellipsis settings. 
+Also, you can set uniq key on the `Text`, depends on children content.
+
+::: tip
+For some reason, for the `FilterTrigger.Text` right now works only key property.
+:::
+
+
 ::: sandbox
 
 <script lang="tsx">
@@ -65,6 +73,8 @@ When using `cropPosition: 'middle'`, you can position the ellipsis more precisel
 You can truncate paragraphs of text with ellipsis using the `maxLine` property.
 
 Note that `maxLine` can only be used with `cropPosition: end`, and the hint is automatically disabled in this case.
+
+To enable hint for multiline cropped text, set some `hintProps` or just enable it via `hintProps={true}`.
 
 ::: sandbox
 
