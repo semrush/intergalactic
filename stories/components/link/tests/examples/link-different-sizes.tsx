@@ -43,12 +43,13 @@ const Demo = (props: LinkSizesProps) => {
             <Link
               href='#'
               mr={4}
+              active={props.active}
             >
               {props.merged && (<Link.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
               {!props.merged && (<Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>)}
               <Link.Text
-                w={size < 600 ? w : w * 2}
-                ellipsis
+                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+                ellipsis={props.ellipsis ? true : undefined}
               >
                 The quick brown fox jumps over the lazy dog
               </Link.Text>
@@ -84,11 +85,15 @@ const Demo = (props: LinkSizesProps) => {
 type LinkSizesProps = {
   merged: boolean;
   addonRight: 'badge' | 'counter' | 'spin';
+  ellipsis: boolean;
+  active: boolean;
 };
 
 export const defaultLinksizesProps: LinkSizesProps = {
   merged: true,
   addonRight: 'badge',
+  ellipsis: true,
+  active: false,
 };
 
 Demo.defaultProps = defaultLinksizesProps;

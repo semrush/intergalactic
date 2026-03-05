@@ -45,12 +45,13 @@ const Demo = (props: ButtonLinkSizesProps) => {
             <ButtonLink
               size={size}
               use={props.use}
+              active={props.active}
             >
               {props.merged && (<ButtonLink.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
               {!props.merged && (<ButtonLink.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</ButtonLink.Addon>)}
               <ButtonLink.Text
-                w={size < 600 ? w : w * 2}
-                ellipsis
+                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+                ellipsis={props.ellipsis ? true : undefined}
               >
                 The quick brown fox jumps over the lazy dog
               </ButtonLink.Text>
@@ -86,12 +87,16 @@ type ButtonLinkSizesProps = {
   merged: boolean;
   addonRight: 'badge' | 'counter' | 'spin';
   use: 'secondary' | 'primary';
+  ellipsis: boolean;
+  active: boolean;
 };
 
 export const defaultButtonLinkSizesProps: ButtonLinkSizesProps = {
   merged: true,
   addonRight: 'badge',
   use: 'secondary',
+  ellipsis: true,
+  active: false,
 };
 
 Demo.defaultProps = defaultButtonLinkSizesProps;
