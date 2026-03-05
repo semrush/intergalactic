@@ -122,6 +122,14 @@ SDropdownPopper {
     }
   }
 
+  SDropdownItem[notInteractive] {
+    cursor: default;
+
+    &:hover {
+      background: none;
+    }
+  }
+
   SDropdownItem[variant='hint'] {
     color: var(--intergalactic-text-secondary, #6c6e79);
     cursor: default;
