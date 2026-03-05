@@ -1,7 +1,5 @@
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
