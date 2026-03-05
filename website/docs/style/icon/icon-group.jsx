@@ -14,7 +14,7 @@ const iconDimensions = {
   external: { 20: 20 },
 };
 
-const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
+const DownloadIconButton = ({ size, name, action, iconData, icon }) => {
   let nameSvg = `${name}/${size}`;
   const groupName = iconData.group.toLowerCase();
   const iconSize = iconDimensions[groupName]
@@ -22,6 +22,8 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
     : iconDimensions.common[size];
   const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
+
+  const Icon = icon[size];
 
   const getImportText = React.useCallback(() => {
     const lib = '@semcore';
@@ -54,7 +56,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
           data-icon-download-svg={name}
           data-icon-size={size}
         >
-          <Icon width={20} height={20} />
+          <Icon />
           <span className={styles.iconSizes}>
             <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
             {` (${iconSize.w || iconSize}x${iconSize.h || iconSize}px)`}
@@ -72,7 +74,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon: Icon }) => {
         data-icon-copy-import={name}
         data-icon-size={size}
       >
-        <Icon width={20} height={20} />
+        <Icon />
         <span className={styles.iconSizes}>
           <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
           {` (${iconSize.w || iconSize}x${iconSize.h || iconSize}px)`}
@@ -133,7 +135,7 @@ const IconItem = (props) => {
   const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
   const buttonRef = React.useRef(null);
 
-  const Icon = icons[icon.name];
+  const Icon = icons[icon.name].m;
   if (!Icon) {
     console.error(`Icon ${icon.name} not found in import from @icons`);
     return null;

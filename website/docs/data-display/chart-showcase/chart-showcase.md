@@ -48,7 +48,7 @@ const group = {
     type: 'charts',
   },
   histogram: {
-    title: 'Histogram chart',
+    title: 'Histogram',
     route: '../histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
@@ -155,7 +155,7 @@ const group = {
     type: 'charts',
   },
   histogram: {
-    title: 'Histogram chart',
+    title: 'Histogram',
     route: '../histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
@@ -455,7 +455,7 @@ const group = {
     type: 'charts',
   },
   histogram: {
-    title: 'Histogram chart',
+    title: 'Histogram',
     route: '../histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
@@ -685,7 +685,7 @@ const group = {
     type: 'charts',
   },
   histogram: {
-    title: 'Histogram chart',
+    title: 'Histogram',
     route: '../histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
