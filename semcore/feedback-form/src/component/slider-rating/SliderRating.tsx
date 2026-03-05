@@ -148,13 +148,7 @@ class SliderRatingRoot extends Component<
     if (readonly) {
       return (
         <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
-          {new Array(MAX).fill(null).map((_, index) => {
-            return (
-              <Box key={index} position='relative'>
-                <SliderRating.Star />
-              </Box>
-            );
-          })}
+          {new Array(MAX).fill(null).map((_, index) => <SliderRating.Star key={index} />)}
         </SSliderRating>
       );
     }
@@ -182,13 +176,7 @@ class SliderRatingRoot extends Component<
         aria-valuetext={editModeLabel}
         aria-valuenow={hoverValue}
       >
-        {new Array(MAX).fill(null).map((_, index) => {
-          return (
-            <Box key={index} position='relative'>
-              <SliderRating.Star />
-            </Box>
-          );
-        })}
+        {new Array(MAX).fill(null).map((_, index) => <SliderRating.Star key={index} />)}
       </SSliderRating>,
     );
   }

@@ -1,5 +1,6 @@
 import ReloadM from '@semcore/icon/Reload/m';
 import Button from '@semcore/ui/button';
+import { lastInteraction } from '@semcore/ui/core';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 
@@ -22,9 +23,11 @@ const Demo = (props: ReloadActionNoticeBubbleProps) => {
       type: props.type,
       focusLock: props.focusLock,
       onClose: () => {
-        setTimeout(() => {
-          openButtonRef.current?.focus();
-        }, 300);
+        if (lastInteraction.isKeyboard()) {
+          setTimeout(() => {
+            openButtonRef.current?.focus();
+          }, 300);
+        }
       },
     });
   };
