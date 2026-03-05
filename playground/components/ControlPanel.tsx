@@ -94,10 +94,10 @@ function ControlPanel(props: IControlPanelProps) {
 
   return (
     <Box className={styles.controlPanel} role='group' aria-label='Component properties'>
-      {Object.entries(controls).map(([propName, propControl]) => {
+      {Object.entries(controls).map(([propName, propControl], index) => {
         return isGroupControl(propControl)
           ? (
-              <GroupControl key={propName} {...propControl} groupPropName={propName} onControlChange={onControlChange} />
+              <GroupControl key={propName} isOpenedByDefault={index === 0} {...propControl} groupPropName={propName} onControlChange={onControlChange} />
             )
           : (
               <BasicControl key={propName} {...propControl} onChange={onControlChange.bind(null, propName)} />

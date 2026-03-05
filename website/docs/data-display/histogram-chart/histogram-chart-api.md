@@ -1,13 +1,13 @@
 ---
-title: Histogram chart
+title: Histogram
 fileSource: d3-chart
 tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('histogram-chart-changelog')
 ---
 
-Histogram chart is based on the [bar chart](/data-display/bar-chart/bar-chart), but has slightly different settings.
+Histogram is based on [Bar chart](/data-display/bar-chart/bar-chart), but has slightly different settings.
 
 ::: tip
-Please note that histogram chart and [bar chart](/data-display/bar-chart/bar-chart) are used in the various cases. Check out the guides for more information.
+Note that Histogram and [Bar chart](/data-display/bar-chart/bar-chart) are used in different cases. Refer to [Histogram vs. Bar chart](./histogram-chart#histogram-vs-bar-chart) for more information.
 :::
 
 ## D3 chart
@@ -16,7 +16,7 @@ For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-cha
 
 ## Chart.Histogram
 
-For Horizontal view, you should pass `true` into `invertAxis` prop
+For Horizontal view, use `invertAxis={true}`.
 
 ```js
 import { Chart } from '@semcore/ui/d3-chart';
@@ -26,6 +26,6 @@ import { Chart } from '@semcore/ui/d3-chart';
 
 ## Bar
 
-All properties for the histogram chart developed with D3 you can find in the [bar chart guide](/data-display/bar-chart/bar-chart-api).
+Properties of a single Histogram bar are the same as in [Bar chart](/data-display/bar-chart/bar-chart-api#bar).
 
 <script setup>import { data as types } from '@types.data.ts';</script>

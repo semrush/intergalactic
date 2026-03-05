@@ -214,26 +214,26 @@ export class Column<
 
   handleBlur = (e: React.FocusEvent<HTMLElement>) => {
     const relatedTarget = e.relatedTarget as HTMLElement | undefined;
-    if (!isFocusInside(e.currentTarget, relatedTarget) && lastInteraction.isKeyboard()) {
+    if (!isFocusInside(e.currentTarget, relatedTarget)) {
       this.setState({ sortVisible: false });
     }
   };
 
-  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
-    e.stopPropagation();
-
+  handleSort = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sort, onSortChange, name, sortable } = this.asProps;
 
-    if (
-      lastInteraction.isMouse() ||
-      (lastInteraction.isKeyboard() && e.target === e.currentTarget)
-    ) {
-      if (sortable && onSortChange) {
-        const sortDirection =
+    if (sortable && onSortChange) {
+      const sortDirection =
           sort?.[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
-        onSortChange([name, sortDirection], e);
-      }
+      onSortChange([name, sortDirection], e);
+    }
+  };
+
+  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    if (lastInteraction.isKeyboard()) {
+      e.stopPropagation();
+      this.handleSort(e);
     }
   };
 
@@ -264,7 +264,7 @@ export class Column<
   handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sortable, onClick, columnIndex } = this.asProps;
     if (sortable) {
-      this.handleSortClick(e);
+      this.handleSort(e);
     }
 
     const focusableChildren = Array.from(this.columnRef.current?.children ?? []).flatMap((node) =>
@@ -326,9 +326,9 @@ export class Column<
         {sortable && (
           <SSortWrapper ref={this.sortWrapperRef}>
             <SSortButton
-              onClick={this.handleSortClick}
               aria-label={ariaSortValue}
               color='--intergalactic-icon-primary-neutral'
+              onClick={this.handleSortClick}
             >
               <SSortButton.Addon tag={SSortIcon} />
             </SSortButton>

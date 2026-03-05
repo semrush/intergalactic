@@ -467,6 +467,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
+    test('Verify it is possible to reset the date', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@date-picker'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/docs/examples/reset_date_picker.tsx', 'en');
+
+      const input = page.locator('input[data-ui-name="DatePicker.Trigger"]');
+
+      const initialValue = await input.inputValue();
+      await locators.button(page).click();
+      const newValue = await input.inputValue();
+      expect(newValue).not.toBe(initialValue);
+      expect(newValue).toBe('');
+    });
+
     test('Verify datepicker with today button by keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
