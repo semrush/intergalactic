@@ -9,7 +9,7 @@ import React from 'react';
 
 const Demo = () => (
   <>
-    <Flex gap={1} mb={4} alignItems='baseline'>
+    <Flex gap={1} mb={4}>
       <Text size={700}>Fastest animals</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
@@ -34,7 +34,7 @@ const Demo = () => (
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     </Flex>
-    <Flex gap={1} alignItems='center'>
+    <Flex gap={1}>
       <Text size={200}>Peregrine falcon</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
