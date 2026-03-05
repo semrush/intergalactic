@@ -33,8 +33,10 @@ function getJSX(props: BubbleChartJSXProps) {
       aria-label='Bubble chart'
       {...props.commonChartProps}
       {...(props.legendProps && {
-        w: isRow ? '72px' : '100%',
-        legendProps: props.legendProps,
+        legendProps: {
+          ...props.legendProps,
+          w: isRow ? '72px' : '100%',
+        },
         showLegend: props.commonChartProps.showLegend as true,
       })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
