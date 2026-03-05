@@ -34,10 +34,16 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
   getTextProps(props: AbstractButtonTextProps<any>) {
     const { size } = this.asProps;
 
-    return {
+    // `any` because we don't have typings for `use:PROPS`.
+    const textProps: any = {
       size,
-      'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
     };
+
+    if ('hintProps' in props) {
+      textProps['use:hintProps'] = { triggerRef: this.containerRef, ...props.hintProps };
+    }
+
+    return textProps;
   }
 
   getAddonProps() {
