@@ -11,7 +11,7 @@ To use the default settings, use `ellipsis={true}`.
 
 Ellipsis can be enabled in all other components that are based on Text, such as [Button.Text](../../components/button/button-api#button-text), [Link.Text](../../components/link/link-api#link-text), [Card.Title](../../components/card/card-api#card-title), and so on. To find out which components support the `ellipsis` property, refer to the API documentation.
 
-Because of performance, we don't observe chnages in the `Text` children property. So, if you have some dynamically changed children in the `Text` component, you should set `observerChildrenMutations=true` to the ellipsis settings. 
+Because of performance, we don't observe chnages in the `Text` children property. So, if you have some dynamically changed children in the `Text` component, you should set `observerChildrenMutations=true` to the ellipsis settings.
 Also, you can set uniq key on the `Text`, depends on children content.
 
 ::: tip
