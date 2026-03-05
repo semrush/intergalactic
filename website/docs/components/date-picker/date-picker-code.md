@@ -88,6 +88,18 @@ Date ranges may be customized or switched off at all, by transferring `periods={
 
 :::
 
+## Reset date
+
+To reset the date, set `value` to an empty string.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/date-picker/docs/examples/reset_date_picker.tsx';
+</script>
+
+:::
+
 ## Week picker
 
 You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode. For example, you can create the WeekPeaker using DateRangePicker.

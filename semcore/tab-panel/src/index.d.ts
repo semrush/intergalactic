@@ -1,5 +1,6 @@
 import type { Box, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type TabPanelValue = string | number | boolean;
@@ -62,7 +63,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabPanelProps>;
 
 declare const TabPanel: IntergalacticTabPanelComponent & {
   Item: Intergalactic.Component<'div', TabPanelItemProps, {}, [handlers: TabPanelHandlers]> & {
-    Text: typeof Box;
+    Text: typeof Text;
     Addon: typeof Box;
   };
 };
