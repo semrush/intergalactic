@@ -40,7 +40,7 @@ SButton {
     text-decoration-style: solid;
     text-decoration-thickness: 1px;
     text-decoration-color: transparent;
-    text-underline-offset: 27%;
+    text-underline-offset: 17%;
 
     transition: text-decoration-color 0.15s ease-in-out;
   }
@@ -78,10 +78,7 @@ SAddon {
   pointer-events: none;
   vertical-align: middle;
   display: inline-flex;
-
-  &:is(svg), & > svg {
-    margin-top: -2px;
-  }
+  margin-top: -2px;
 }
 
 SButton SAddon {
