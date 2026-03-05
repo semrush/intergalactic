@@ -89,7 +89,7 @@ Only show values for the hovered bubble, not intersections.
 
 ## Edge cases
 
-### Outliers 
+### Outliers
 
 To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size – 11px by 11px.
 
@@ -123,7 +123,7 @@ The chart will scale automatically if the bubble is near the axes.
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-Use the `--skeleton-bg` color token for the skeleton's background.         
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/bubble-chart-skeleton.png)
 

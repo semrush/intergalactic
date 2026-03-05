@@ -10,7 +10,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 
 **Counter** is a component that displays the quantity.
 
-It is used in various components such as:
+It's used in various components such as:
 
 - controls,
 - limit progress bars,
@@ -26,7 +26,7 @@ Counter is a static component and shouldn't be clickable.
 
 ### Themes
 
-The appropriate theme for a counter varies based on its context and the component it is located in or near.
+The appropriate theme for a counter depends on the context and the element the counter is related to.
 
 Table: Counter themes
 
@@ -70,7 +70,7 @@ Table: Counter usage examples
 | Entered data counter     | The counter typically displays the limit of characters allowed, commonly used in [Input](/components/input/input) and [Textarea](/components/textarea/textarea). When the limit is reached or surpassed, the color of the counter changes. <br/><br/> ![](static/textarea.png){width=150px} |
 | Limits                   | The counter changes color to indicate when the limit has been exceeded. <br/><br/> ![](static/limit-counter.png){width=150px} |
 
-In primary controls, use a counter with the `white` (invert) theme. Otherwise, it will not be readable on a bright/dark background.
+In primary controls, use a counter with the `white` (invert) theme. Otherwise, it won't be readable on a bright/dark background.
 
 ![](static/button-counter.png)
 

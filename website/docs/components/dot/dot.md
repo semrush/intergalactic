@@ -11,7 +11,7 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 **Dot** is a component that marks updates in the interface. For example, it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
 
 ::: tip
-Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
+Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It can't be green, red, blue, or any other color. It can only be orange.
 :::
 
 **You can use it to:**
@@ -43,13 +43,13 @@ Table: Dot sizes
 
 ## Placement
 
-Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)`.
+Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it always has `transform: translate (30%, -30%)`.
 
 If dot shows an update in the control, locate it in the upper right corner above the component. Use `size="l"` and `up` props.
 
 ![](static/bg.png)
 
-If dot points to a new element in the list inside the [DropdownMenu](/components/dropdown-menu/dropdown-menu), it is located to the right of the item text and has a smaller size (use `size="m"` prop).
+If dot points to a new element in the list inside the [DropdownMenu](/components/dropdown-menu/dropdown-menu), it's located to the right of the item text and has a smaller size (use `size="m"` prop).
 
 ![](static/s-margins.png)
 

@@ -1,5 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { createComponent, sstyled, Root } from '@semcore/core';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './button.shadow.css';
@@ -19,9 +20,9 @@ class RootButton extends AbstractButton {
   }
 }
 
-function Text(props: ButtonTextProps) {
+function ButtonText(props: ButtonTextProps) {
   const SText = Root;
-  return sstyled(props.styles)(<SText render={Box} tag='span' />);
+  return sstyled(props.styles)(<SText render={Text} />);
 }
 
 function Addon(props: ButtonAddonProps) {
@@ -30,7 +31,7 @@ function Addon(props: ButtonAddonProps) {
 }
 
 const Button = createComponent(RootButton, {
-  Text,
+  Text: ButtonText,
   Addon,
 }) as ButtonComponent;
 

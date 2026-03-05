@@ -34,10 +34,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Focus link with keyboard', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page)).toBeFocused();
+          await locators.hint(page).waitFor({ state: 'visible' });
+
           await expect(page).toHaveScreenshot();
         });
       });
-
       test(`Verify ellipsis on link with mouse hover when ${variant.description}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
       }, async ({ page }) => {
@@ -47,11 +48,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Hover link and verify hint appears', async () => {
           await locators.link(page).hover();
 
-          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
-          if (!hasMaxLine) {
-            await page.waitForTimeout(200);
-            await locators.hint(page).waitFor({ state: 'visible' });
-          }
+          await page.waitForTimeout(200);
+          await locators.hint(page).waitFor({ state: 'visible' });
+
           await expect(page).toHaveScreenshot();
         });
       });
@@ -164,13 +163,30 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify no extra space when cropPosition end and text is not truncated', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', {
+      ellipsis: { cropPosition: 'end' },
+      size: 200,
+      w: 800,
+    });
+    await locators.text(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(200);
+
+    await test.step('Verify text is not truncated and has no extra space from ::after', async () => {
+      await expect(locators.hint(page)).toHaveCount(0);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shows full text on hover and hides on mouse leave', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],

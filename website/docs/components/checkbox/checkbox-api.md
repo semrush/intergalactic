@@ -42,7 +42,7 @@ import Checkbox from '@semcore/ui/checkbox';
 
 ## Checkbox.Text
 
-It is the customized `Text` from `intergalactic/typography`, depending on the size.
+A customized `Text` from `intergalactic/typography`, depending on the size.
 
 ```jsx
 import Checkbox from '@semcore/ui/checkbox';

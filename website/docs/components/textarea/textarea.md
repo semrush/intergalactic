@@ -25,7 +25,7 @@ Table: Textarea sizes
 
 You can enable the resize control for the textarea to allow users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
-When the textarea cannot be stretched, a scrollbar will appear after a certain number of lines. We recommended adding scrollbars when the textarea has at least 5 lines.
+When the textarea can't be stretched, a scrollbar will appear after a certain number of lines. We recommended adding scrollbars when the textarea has at least 5 lines.
 
 ::: tip
 Avoid making the textarea smaller than 160-200px in width and 3-4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.

@@ -52,6 +52,7 @@ Try going back or click the button below and we'll take you home.<br><br>
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Project not found
 
 We cannot find the project you’re trying to access. Check one of the following issues:
@@ -69,6 +70,7 @@ If you have any other problems with access to the project, please contact our [S
 - Go to Projects (leads to the projects page)
 - [Contact us](https://www.semrush.com/company/contacts/)
 :::
+<!-- vale on -->
 
 ## Something went wrong
 
@@ -78,6 +80,7 @@ If you have any other problems with access to the project, please contact our [S
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Something went wrong
 
 Don't worry though, we are aware of the issue and are working to fix it.<br>
@@ -88,6 +91,7 @@ Please try again later.
 
 - Try again (reloads the page)
 :::
+<!-- vale on -->
 
 ### Known problem
 
@@ -95,6 +99,7 @@ Please try again later.
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Something went wrong
 
 We are aware of the issue and are working to fix it.<br>
@@ -106,6 +111,7 @@ Please try again later or contact the [Support Team](https://www.semrush.com/com
 - Reload page
 - [Contact us](https://www.semrush.com/company/contacts/)
 :::
+<!-- vale on -->
 
 ## Under maintenance
 
@@ -113,6 +119,7 @@ Please try again later or contact the [Support Team](https://www.semrush.com/com
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info {product name} is under maintenance
 
 We are doing our best to fix it as soon as possible.<br>
@@ -123,6 +130,7 @@ Please come back later.
 
 - Go to homepage (when logged out, leads to the main Semrush; when logged in, leads to the Dashboard)
 :::
+<!-- vale on -->
 
 ## Log in to access
 
@@ -130,6 +138,7 @@ Please come back later.
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Log in to view the page
 
 It seems that you were lost in space.<br>
@@ -141,6 +150,7 @@ Please log in or sign up to view the page.
 - Log in (leads to the log-in page)
 - Sign up (leads to the sign-up page)
 :::
+<!-- vale on -->
 
 ## Access denied
 
@@ -183,6 +193,7 @@ Reconnect and reload the page.
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Connection timed out
 
 The initial connection between Cloudflare’s network and the origin web server timed out. As a result, the webpage cannot be displayed.
@@ -192,6 +203,7 @@ The initial connection between Cloudflare’s network and the origin web server 
 - Error reference number: 522
 - Cloudflare Location POP: \{undef\}
 :::
+<!-- vale on -->
 
 ## Blocked (Bad) request
 
@@ -221,6 +233,7 @@ This is the 400 error page. Try one of the following:
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info Confirm you are a real person
 
 We need to make sure you’re not a robot.<br>
@@ -234,7 +247,9 @@ Please complete the security check, and we’ll be out of your way.
 or
 - Captcha (confirms the action, then we take the user to the page where they were going)
 :::
+<!-- vale on -->
 
+<!-- vale off -->
 ## Payment cannot be accepted
 
 ![](static/ge_no-payment.png)
@@ -250,6 +265,7 @@ Unfortunately, we don’t accept payments from {country}.
 
 - Go to homepage
 :::
+<!-- vale on -->
 
 ## DNS Resolution Error
 
@@ -257,6 +273,7 @@ Unfortunately, we don’t accept payments from {country}.
 
 Illustration can be found in the [internal Figma library](https://www.figma.com/design/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-UX-Patterns?node-id=12537-41788).
 
+<!-- vale off -->
 ::: info DNS resolution error
 
 You've requested a page on a website (cloudflarepreview.com) that is on the Cloudflare network. Cloudflare is currently unable to resolve your requested domain (cloudflarepreview.com). There are two potential causes of this:
@@ -280,6 +297,7 @@ You've requested a page on a website (cloudflarepreview.com) that is on the Clou
 
 - User-Agent: \{Example\}
 :::
+<!-- vale on -->
 
 ## Global errors usage
 
@@ -301,9 +319,11 @@ In case of a state caused by security reasons:
 
 Additional situations where the state blocks all content and restricts access to it:
 
+<!-- vale DevDocs.Contractions = NO -->
 - Your account has been deleted
 - Under maintenance
 - Your payment cannot be accepted
+<!-- vale DevDocs.Contractions = YES -->
 
 ### Use cases
 

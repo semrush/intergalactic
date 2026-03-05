@@ -17,7 +17,8 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "dependencies": {
-    "@semcore/spin": "16.0.11"
+    "@semcore/spin": "16.0.11",
+    "@semcore/typography": "16.3.2"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
@@ -31,6 +32,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
-    "@semcore/base-components": "workspace:*"
+    "@semcore/base-components": "workspace:*",
+    "@floating-ui/dom": "1.7.2"
   }
 }

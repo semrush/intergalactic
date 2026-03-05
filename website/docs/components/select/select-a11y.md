@@ -26,7 +26,7 @@ Table: Roles and attributes
 
 | Component                  | Attribute                         | Usage                                                                                                                                                                               |
 | -------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Select.Trigger`           | `role="combobox"`                 | Identifies the element as a combobox, that is an input that opens a list of options or a grid.                                                                                      |
+| `Select.Trigger`           | `role="combobox"`                 | Identifies the element as a combobox, that is, an input that opens a list of options or a grid.                                                                                      |
 |                            | `aria-activedescendant="IDREF"`   | When the list is open, indicates which option is currently highlighted.                                                                                                             |
 |                            | `aria-autocomplete="list"`        | **Only if an [Input](../input/input) is used as the trigger.** Indicates that a list of values that could complete the input is provided during input.                              |
 |                            | `aria-controls="IDREF"`           | Identifies the element controlled by the trigger. If `Select.Popper` is used explicitly, refers to `Select.Popper`. Otherwise, refers to `Select.List`.       |

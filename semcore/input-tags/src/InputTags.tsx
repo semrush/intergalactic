@@ -399,7 +399,7 @@ const InputTags = createComponent(InputTagsRoot, {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps & TagTextProps, TagContext> & {
+    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
       Content: Intergalactic.Component<'div', TagTextProps>;
     };
     Close: typeof TagContainer.Close;

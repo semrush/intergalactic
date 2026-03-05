@@ -31,7 +31,7 @@ Table: Roles & attributes
 
 ## Considerations for designers & developers
 
-Avoid inserting the `Pagination` component inside tables, as the navigation (`nav` tag) cannot be inserted inside other tags.
+Avoid inserting the `Pagination` component inside tables, as the navigation (`nav` tag) can't be inserted inside other tags.
 
 ## Other recommendations
 

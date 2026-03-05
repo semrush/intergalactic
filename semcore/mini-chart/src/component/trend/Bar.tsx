@@ -115,4 +115,4 @@ export const TrendHistogram = createComponent<'svg', TrendBarProps, {}, typeof T
   },
 );
 
-TrendBar.displayName = 'MiniChart.TrendHistogram';
+TrendHistogram.displayName = 'MiniChart.TrendHistogram';

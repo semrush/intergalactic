@@ -4,7 +4,7 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-::: tip New component  🎉
+::: tip New component 🎉
 **Hint** is now separate from **Tooltip**. You can find its documentation in [Utils/Hint](../../utils/hint/hint).
 :::
 

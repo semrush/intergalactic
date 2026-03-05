@@ -23,7 +23,7 @@ import Pills from '@semcore/ui/pills';
 
 ## Pill.Item.Addon
 
-The addon inside the pill (most often it is an icon) places the correct indent units depending on the size. Takes all properties of the `Box`.
+The addon inside the pill (most often an icon) places the correct indent units depending on the size. Takes all properties of the `Box`.
 
 ```jsx
 import Pills from '@semcore/ui/pills';

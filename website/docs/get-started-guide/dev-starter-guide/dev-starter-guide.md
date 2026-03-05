@@ -41,7 +41,7 @@ npm install @semcore/core @semcore/base-components @semcore/data-table
 
 ## Key features
 
-We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
+We've developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
 
 ### Free template
 
@@ -61,7 +61,7 @@ import Button from '@semcore/ui/button';
 
 This approach provides multiple benefits:
 
-- The renderer is not constrained by our API.
+- The renderer isn't constrained by our API.
 - The API remains clean and consistent.
 - You gain access to each part of the component.
 
@@ -76,10 +76,14 @@ By default, our components work in uncontrolled mode. Once you provide a value a
 ::: tip
 This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
 
-The handlers for these types of properties follow a specific notation: `on{ eventName }Change`.
+The handlers for these types of properties follow a specific notation: `on{eventName}Change`.
 :::
 
-If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that's closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+
+::: tip
+Some `value` types are optional—meaning you can omit them entirely to keep the component in uncontrolled mode. However, their type might not include `undefined` as a valid value type. In that case explicitly passing `undefined` may lead to unexpected component behavior.
+:::
 
 ### Handlers
 
@@ -175,7 +179,7 @@ import { Flex } from '@semcore/ui/base-components';
 
 ## Browser support
 
-To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
+To ensure the best performance and user experience, we don't support legacy browsers. Our design system is optimized for the following browser versions:
 
 Table: Browser support
 

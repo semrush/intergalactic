@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabLineItemAddonsExample, { defaultProps as TabLineItemAddonsProps } from './examples/tab_line_item_addons_and_props';
 import ValueAndDefaultValueExample from './examples/value_and_default_value';
+import WithUpdateValueExample from './examples/with_update_value';
 
 const meta: Meta<typeof TabLine> = {
   title: 'Components/TabLine/Tests',
@@ -49,4 +50,8 @@ export const TabLineItemAddons: StoryObj<typeof TabLineItemAddonsProps> = {
 
 export const ValueAndDefaultValue: StoryObj<typeof TabLine> = {
   render: ValueAndDefaultValueExample,
+};
+
+export const WithUpdateValue: StoryObj<typeof TabLine> = {
+  render: WithUpdateValueExample,
 };
