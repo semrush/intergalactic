@@ -57,22 +57,7 @@ export type InputValueProps = BoxProps &
     autoFocus?: boolean;
   };
 
-export type InputAddonProps = BoxProps &
-  NeighborItemProps & {
-    /**
-     * Adds styles for interactive icons
-     */
-    interactive?: boolean;
-    /**
-     * Blocks the addon
-     * */
-    disabled?: boolean;
-    /**
-     * Input size
-     * @default m
-     */
-    size?: InputSize;
-  };
+export type InputAddonProps = BoxProps & NeighborItemProps;
 
 export type InputCtx = {
   getValueProps: PropGetterFn;
