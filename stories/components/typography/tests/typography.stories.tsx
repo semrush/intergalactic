@@ -6,7 +6,6 @@ import ListAxeExample from './examples/list-axe-test';
 import ListNestedExample, { defaultProps as ListNestedProps } from './examples/nested-list';
 import TextFontAndSizeExample from './examples/text-font-size-and-weight-headers-and-paragrapsh';
 import DifferentTextPropsExample, { defaultProps as DifferentTextProps } from './examples/text-with-diff-combimations';
-import WithUpdateTextExample from './examples/with-update-values';
 
 const meta: Meta = {
   title: 'Components/Typography/Tests',
@@ -98,10 +97,6 @@ export const TextProps: StoryObj<typeof DifferentTextProps> = {
 
 export const TextFontAndSize: Story = {
   render: TextFontAndSizeExample,
-};
-
-export const WithUpdateText: Story = {
-  render: WithUpdateTextExample,
 };
 
 export const ListExampleAxe: Story = {

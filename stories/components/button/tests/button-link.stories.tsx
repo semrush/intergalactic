@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ButtonLinkBaseExample, { defaultButtonLinkProps } from './examples/button-link/button-link-base';
-import ButtonLinkDifferentSizesExample from './examples/button-link/button-link-different-sizes';
 import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './examples/button-link/button-link-icon-only';
 import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
+import ButtonLinkSizesAddonsExample, { defaultButtonLinkSizesProps } from './examples/button-link/button-link-sizes-addons';
+import ButtonLinkSizesWrapExample from './examples/button-link/button-link-sizes-wrap';
 import ButtonLinkWithEllipsisExample, { defaultButtonLinkEllipsisProps } from './examples/button-link/button-link-with-ellipsis';
 
 const meta: Meta = {
@@ -79,4 +80,23 @@ export const ButtonLinkWithEllipsis: StoryObj<typeof defaultButtonLinkEllipsisPr
   render: ButtonLinkWithEllipsisExample,
   argTypes: ellipsisArgTypes,
   args: defaultButtonLinkEllipsisProps,
+};
+
+export const ButtonLinkSizesWrap: StoryObj = {
+  render: ButtonLinkSizesWrapExample,
+};
+
+export const ButtonLinkSizesAddons: StoryObj<typeof defaultButtonLinkSizesProps> = {
+  render: ButtonLinkSizesAddonsExample,
+  args: defaultButtonLinkSizesProps,
+  argTypes: {
+    addonRight: {
+      control: { type: 'select' },
+      options: ['badge', 'counter', 'spin'],
+    },
+    use: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+  },
 };

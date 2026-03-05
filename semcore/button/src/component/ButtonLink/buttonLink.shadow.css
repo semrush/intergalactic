@@ -40,7 +40,7 @@ SButton {
     text-decoration-style: solid;
     text-decoration-thickness: 1px;
     text-decoration-color: transparent;
-    text-underline-offset: 27%;
+    text-underline-offset: 17%;
 
     transition: text-decoration-color 0.15s ease-in-out;
   }
@@ -75,13 +75,10 @@ SInner {
 }
 
 SAddon {
-  align-items: baseline;
   pointer-events: none;
-  align-self: center;
-
-  &:has(>svg) {
-    vertical-align: -2px;
-  }
+  vertical-align: middle;
+  display: inline-flex;
+  margin-top: -2px;
 }
 
 SButton SAddon {

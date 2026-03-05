@@ -26,7 +26,7 @@ function getJSX(props: HistogramChartJSXProps) {
       plotHeight={200}
       groupKey='x'
       data={data}
-      aria-label='Histogram chart'
+      aria-label='Histogram'
       {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps: props.legendProps,
