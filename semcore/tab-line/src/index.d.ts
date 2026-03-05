@@ -1,5 +1,6 @@
 import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type TabLineValue = string | number | boolean;
@@ -73,7 +74,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabLineProps>;
 
 declare const TabLine: IntergalacticTabLineComponent & {
   Item: Intergalactic.Component<'div', TabLineItemProps, {}, [handlers: TabLineHandlers]> & {
-    Text: typeof Box;
+    Text: typeof Text;
     Addon: typeof Box;
   };
 };
