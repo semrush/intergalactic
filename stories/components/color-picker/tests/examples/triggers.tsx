@@ -18,8 +18,8 @@ const Demo = () => {
       <ColorPicker value={value} onChange={setValue}>
 
         <Input w={300} size='l'>
-          <ColorPicker.Trigger tag={Input.Addon}>
-            <ButtonLink aria-label='New tag color'>
+          <Input.Addon>
+            <ColorPicker.Trigger tag={ButtonLink} aria-label='New tag color'>
               <div
                 style={{
                   width: '16px',
@@ -29,8 +29,8 @@ const Demo = () => {
                   backgroundColor: value,
                 }}
               />
-            </ButtonLink>
-          </ColorPicker.Trigger>
+            </ColorPicker.Trigger>
+          </Input.Addon>
           <Input.Value placeholder='Tag name' id='new-tag' />
         </Input>
         <ColorPicker.Popper>
