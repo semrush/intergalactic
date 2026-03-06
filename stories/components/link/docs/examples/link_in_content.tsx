@@ -14,7 +14,7 @@ const Demo = () => {
             is so cutting-edge that even black holes are jealous of
             its sleek interface, look at them
           </Link.Text>
-          <Link.Addon>
+          <Link.Addon mt='-3px'>
             <LinkExternalM />
           </Link.Addon>
         </Link>

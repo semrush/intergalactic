@@ -17,7 +17,7 @@ const Demo = () => (
           addonLeft={InfoL}
           aria-label='About fastest animals'
           color='icon-secondary-neutral'
-          mt='9px'
+          mt='10px'
         />
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
@@ -35,7 +35,7 @@ const Demo = () => (
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     </Flex>
-    <Flex tag={Text} size={200} gap={1} alignItems='start'>
+    <Flex tag={Text} size={200} gap={1}>
       Peregrine falcon
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
@@ -43,6 +43,7 @@ const Demo = () => (
           addonLeft={InfoM}
           aria-label='About peregrine falcon'
           color='icon-secondary-neutral'
+          mt='-1px'
         />
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>

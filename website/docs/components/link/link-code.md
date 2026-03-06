@@ -3,10 +3,6 @@ title: Link
 tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
-::: tip
-Make sure `line-height` is explicitly set for Link or for its ancestor. Underlining may become cropped in links with unset `line-height` due to increased offset.
-:::
-
 ## Link in text
 
 By default, links are displayed as `inline` element and don’t need some extra settings.
@@ -14,7 +10,7 @@ By default, links are displayed as `inline` element and don’t need some extra 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/link/docs/examples/link_inside_the_content.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_in_content.tsx';
 </script>
 
 :::
@@ -73,7 +69,7 @@ Link can be cropped with ellipsis by setting the width and using the `ellipsis` 
 
 ## Link without visible text
 
-If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) with a label of the link function for accessibility purposes. Adding a hint will automatically provide an `aria-label` for the link.
+If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) explaining where the link leads to. This can be done using either `title` or `aria-label`. Both will enable a visible hint on hover and an `aria-label` for assistive technology.
 
 ::: sandbox
 

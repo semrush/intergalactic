@@ -15,7 +15,7 @@ const Demo = () => {
           Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
           Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
         </Link.Text>
-        <Link.Addon>
+        <Link.Addon mt='-3px'>
           <LinkExternalM />
         </Link.Addon>
       </Link>
