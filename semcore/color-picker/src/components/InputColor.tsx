@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -124,24 +125,28 @@ class InputColorRoot extends Component<InputColorAsProps, [], { value: string; s
               <SConfirmColor
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldConfirm')}
-                role='button'
-                interactive
+                tag={ButtonLink}
                 onClick={this.handlerAdd}
-                pr='4px'
+                mt={1}
+                p={0}
                 hidden={!focus}
               >
-                <CheckM color='green-300' />
+                <ButtonLink.Addon p={0}>
+                  <CheckM color='green-300' />
+                </ButtonLink.Addon>
               </SConfirmColor>
               <SClearConfirm
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldClear')}
-                role='button'
-                interactive
+                tag={ButtonLink}
                 onClick={this.handlerCancel}
-                pl='4px'
+                mt={1}
+                px={2}
                 hidden={!focus}
               >
-                <CloseM color='gray-300' />
+                <ButtonLink.Addon p={0}>
+                  <CloseM color='gray-300' />
+                </ButtonLink.Addon>
               </SClearConfirm>
             </Input>
           </SInput>
