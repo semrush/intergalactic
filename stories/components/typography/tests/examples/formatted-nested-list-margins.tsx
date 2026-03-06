@@ -1,10 +1,13 @@
 import { Text } from '@semcore/ui/typography';
-import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: TextProps) => (
+type ExampleProps = {
+  formatTags: boolean;
+};
+
+const Demo: React.FC<ExampleProps> = (props) => (
   <div>
-    <Text size={100} formatTags={'formatTags' in props ? props.formatTags : undefined}>
+    <Text size={100} formatTags={props.formatTags}>
       <ol start={1}>
         <li>List item one</li>
         <li>
@@ -17,7 +20,7 @@ const Demo = (props: TextProps) => (
         <li>Final list item</li>
       </ol>
     </Text>
-    <Text size={200} formatTags={'formatTags' in props ? props.formatTags : undefined}>
+    <Text size={200} formatTags={props.formatTags}>
       <ol start={1}>
         <li>List item one</li>
         <li>
@@ -30,7 +33,7 @@ const Demo = (props: TextProps) => (
         <li>Final list item</li>
       </ol>
     </Text>
-    <Text size={300} formatTags={'formatTags' in props ? props.formatTags : undefined}>
+    <Text size={300} formatTags={props.formatTags}>
       <ol start={1}>
         <li>List item one</li>
         <li>
@@ -46,7 +49,7 @@ const Demo = (props: TextProps) => (
   </div>
 );
 
-export const defaultProps: TextProps = {
+export const defaultProps: ExampleProps = {
   formatTags: true,
 };
 

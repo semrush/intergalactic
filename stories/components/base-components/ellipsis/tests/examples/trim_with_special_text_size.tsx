@@ -7,7 +7,7 @@ type TextExampleProps = {
   ellipsis?: true | EllipsisSettings;
 } & TextProps & BoxProps;
 
-const Demo = (props: TextExampleProps) => {
+const Demo: React.FC<TextExampleProps> = (props) => {
   return (
     <Text
       w={props.w}
