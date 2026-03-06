@@ -125,6 +125,7 @@ class InputColorRoot extends Component<InputColorAsProps, [], { value: string; s
               <SConfirmColor
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldConfirm')}
+                tabIndex={-1}
                 tag={ButtonLink}
                 onClick={this.handlerAdd}
                 mt={1}
@@ -138,6 +139,7 @@ class InputColorRoot extends Component<InputColorAsProps, [], { value: string; s
               <SClearConfirm
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldClear')}
+                tabIndex={-1}
                 tag={ButtonLink}
                 onClick={this.handlerCancel}
                 mt={1}
