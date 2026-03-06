@@ -45,13 +45,19 @@ export type TextProps = BoxProps & {
   use?: 'primary' | 'secondary';
   /** Makes text semi-transparent to indicate disabled state */
   disabled?: boolean;
-  /** Enable formatting/styling for all nested HTML tags with our default styles for them */
-  formatTags?: boolean;
-  /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
-  ellipsis?: true | Readonly<EllipsisSettings> | Ellipsis;
-  /** Settings for a hint with full text (cropped by ellipsis) */
-  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
-};
+} & (
+  {
+    /** Enable formatting/styling for all nested HTML tags with our default styles for them */
+    formatTags?: boolean;
+    ellipsis?: never;
+  } |
+  {
+    /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
+    ellipsis?: true | Readonly<EllipsisSettings> | Ellipsis;
+    /** Settings for a hint with full text (cropped by ellipsis) */
+    hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
+  }
+  );
 
 export type ListProps = TextProps & {
   /** Marker of the entire list
