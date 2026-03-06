@@ -1,6 +1,6 @@
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
-import Button, { ButtonLink } from '@semcore/ui/button';
+import Button from '@semcore/ui/button';
 import ColorPicker from '@semcore/ui/color-picker';
 import Input from '@semcore/ui/input';
 import Tag from '@semcore/ui/tag';
@@ -18,19 +18,17 @@ const Demo = () => {
       <ColorPicker value={value} onChange={setValue}>
 
         <Input w={300} size='l'>
-          <Input.Addon>
-            <ColorPicker.Trigger tag={ButtonLink} aria-label='New tag color'>
-              <div
-                style={{
-                  width: '16px',
-                  height: '16px',
-                  borderRadius: '50%',
-                  border: '1px solid var(--intergalactic-border-secondary)',
-                  backgroundColor: value,
-                }}
-              />
-            </ColorPicker.Trigger>
-          </Input.Addon>
+          <ColorPicker.Trigger tag={Input.Addon} tabIndex={0} aria-label='New tag color'>
+            <div
+              style={{
+                width: '16px',
+                height: '16px',
+                borderRadius: '50%',
+                border: '1px solid var(--intergalactic-border-secondary)',
+                backgroundColor: value,
+              }}
+            />
+          </ColorPicker.Trigger>
           <Input.Value placeholder='Tag name' id='new-tag' />
         </Input>
         <ColorPicker.Popper>
