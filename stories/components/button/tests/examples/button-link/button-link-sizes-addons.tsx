@@ -47,30 +47,48 @@ const Demo = (props: ButtonLinkSizesProps) => {
               use={props.use}
               active={props.active}
             >
-              {props.merged && (<ButtonLink.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
-              {!props.merged && (<ButtonLink.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</ButtonLink.Addon>)}
-              <ButtonLink.Text
-                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
-                ellipsis={props.ellipsis ? true : undefined}
-              >
-                The quick brown fox jumps over the lazy dog
-              </ButtonLink.Text>
-              {props.merged && props.addonRight === 'badge' && (<ButtonLink.Addon tag={Badge} type='new' />)}
-              {!props.merged && props.addonRight === 'badge' && (
+              {props.addonLeft === 'icon' && (
+                <ButtonLink.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</ButtonLink.Addon>
+              )}
+              {props.addonLeft === 'badge' && (
                 <ButtonLink.Addon>
                   <Badge type='new' />
                 </ButtonLink.Addon>
               )}
-              {props.merged && props.addonRight === 'counter' && (<ButtonLink.Addon tag={Counter} size={counterSize}>17</ButtonLink.Addon>)}
-              {!props.merged && props.addonRight === 'counter' && (
+              {props.addonLeft === 'counter' && (
                 <ButtonLink.Addon>
                   <Counter size={counterSize}>
                     17
                   </Counter>
                 </ButtonLink.Addon>
               )}
-              {props.merged && props.addonRight === 'spin' && (<ButtonLink.Addon display='inline-block' size={spinSize} tag={Spin} />)}
-              {!props.merged && props.addonRight === 'spin' && (
+              {props.addonLeft === 'spin' && (
+                <ButtonLink.Addon>
+                  <Spin size={spinSize} />
+                </ButtonLink.Addon>
+              )}
+              <ButtonLink.Text
+                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+                ellipsis={props.ellipsis ? true : undefined}
+              >
+                The quick brown fox jumps over the lazy dog
+              </ButtonLink.Text>
+              {props.addonRight === 'icon' && (
+                <ButtonLink.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</ButtonLink.Addon>
+              )}
+              {props.addonRight === 'badge' && (
+                <ButtonLink.Addon>
+                  <Badge type='new' />
+                </ButtonLink.Addon>
+              )}
+              {props.addonRight === 'counter' && (
+                <ButtonLink.Addon>
+                  <Counter size={counterSize}>
+                    17
+                  </Counter>
+                </ButtonLink.Addon>
+              )}
+              {props.addonRight === 'spin' && (
                 <ButtonLink.Addon>
                   <Spin size={spinSize} />
                 </ButtonLink.Addon>
@@ -84,15 +102,15 @@ const Demo = (props: ButtonLinkSizesProps) => {
 };
 
 type ButtonLinkSizesProps = {
-  merged: boolean;
-  addonRight: 'badge' | 'counter' | 'spin';
+  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
+  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
   use: 'secondary' | 'primary';
   ellipsis: boolean;
   active: boolean;
 };
 
 export const defaultButtonLinkSizesProps: ButtonLinkSizesProps = {
-  merged: true,
+  addonLeft: 'icon',
   addonRight: 'badge',
   use: 'secondary',
   ellipsis: true,

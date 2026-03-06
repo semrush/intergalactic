@@ -90,9 +90,13 @@ export const ButtonLinkSizesAddons: StoryObj<typeof defaultButtonLinkSizesProps>
   render: ButtonLinkSizesAddonsExample,
   args: defaultButtonLinkSizesProps,
   argTypes: {
+    addonLeft: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
     addonRight: {
       control: { type: 'select' },
-      options: ['badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin'],
     },
     use: {
       control: { type: 'select' },

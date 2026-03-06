@@ -9,14 +9,15 @@ import React from 'react';
 
 const Demo = () => (
   <>
-    <Flex gap={1} mb={4}>
-      <Text size={700}>Fastest animals</Text>
+    <Flex tag={Text} size={700} gap={1} mb={4}>
+      Fastest animals
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={ButtonLink}
           addonLeft={InfoL}
           aria-label='About fastest animals'
           color='icon-secondary-neutral'
+          mt='9px'
         />
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
@@ -34,8 +35,8 @@ const Demo = () => (
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     </Flex>
-    <Flex gap={1}>
-      <Text size={200}>Peregrine falcon</Text>
+    <Flex tag={Text} size={200} gap={1} alignItems='start'>
+      Peregrine falcon
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={ButtonLink}

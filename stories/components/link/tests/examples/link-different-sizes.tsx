@@ -45,30 +45,48 @@ const Demo = (props: LinkSizesProps) => {
               mr={4}
               active={props.active}
             >
-              {props.merged && (<Link.Addon tag={size < 600 ? MathPlusAltM : MathPlusAltL} />)}
-              {!props.merged && (<Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>)}
-              <Link.Text
-                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
-                ellipsis={props.ellipsis ? true : undefined}
-              >
-                The quick brown fox jumps over the lazy dog
-              </Link.Text>
-              {props.merged && props.addonRight === 'badge' && (<Link.Addon tag={Badge} type='new' />)}
-              {!props.merged && props.addonRight === 'badge' && (
+              {props.addonLeft === 'icon' && (
+                <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>
+              )}
+              {props.addonLeft === 'badge' && (
                 <Link.Addon>
                   <Badge type='new' />
                 </Link.Addon>
               )}
-              {props.merged && props.addonRight === 'counter' && (<Link.Addon tag={Counter} size={counterSize}>17</Link.Addon>)}
-              {!props.merged && props.addonRight === 'counter' && (
+              {props.addonLeft === 'counter' && (
                 <Link.Addon>
                   <Counter size={counterSize}>
                     17
                   </Counter>
                 </Link.Addon>
               )}
-              {props.merged && props.addonRight === 'spin' && (<Link.Addon display='inline-block' size={spinSize} tag={Spin} />)}
-              {!props.merged && props.addonRight === 'spin' && (
+              {props.addonLeft === 'spin' && (
+                <Link.Addon>
+                  <Spin size={spinSize} />
+                </Link.Addon>
+              )}
+              <Link.Text
+                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+                ellipsis={props.ellipsis ? true : undefined}
+              >
+                The quick brown fox jumps over the lazy dog
+              </Link.Text>
+              {props.addonRight === 'icon' && (
+                <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>
+              )}
+              {props.addonRight === 'badge' && (
+                <Link.Addon>
+                  <Badge type='new' />
+                </Link.Addon>
+              )}
+              {props.addonRight === 'counter' && (
+                <Link.Addon>
+                  <Counter size={counterSize}>
+                    17
+                  </Counter>
+                </Link.Addon>
+              )}
+              {props.addonRight === 'spin' && (
                 <Link.Addon>
                   <Spin size={spinSize} />
                 </Link.Addon>
@@ -83,14 +101,14 @@ const Demo = (props: LinkSizesProps) => {
 };
 
 type LinkSizesProps = {
-  merged: boolean;
-  addonRight: 'badge' | 'counter' | 'spin';
+  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
+  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
   ellipsis: boolean;
   active: boolean;
 };
 
 export const defaultLinksizesProps: LinkSizesProps = {
-  merged: true,
+  addonLeft: 'icon',
   addonRight: 'badge',
   ellipsis: true,
   active: false,

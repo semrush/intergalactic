@@ -79,9 +79,13 @@ export const LinkDifferentSizes: StoryObj<typeof defaultLinksizesProps> = {
   render: LinkDifferentSizesExample,
   args: defaultLinksizesProps,
   argTypes: {
+    addonLeft: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
     addonRight: {
       control: { type: 'select' },
-      options: ['badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin'],
     },
   },
 };
