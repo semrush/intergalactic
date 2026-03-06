@@ -35,10 +35,6 @@ export type InlineInputProps = BoxProps & {
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => void;
   /**
-   * Text value of input. Should be used with `onChange` property together
-   */
-  value?: string;
-  /**
    * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
