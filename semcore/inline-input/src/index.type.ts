@@ -38,6 +38,7 @@ export type InlineInputProps = BoxProps & {
   ) => void;
   /**
    * Text value of input. Should be used with `onChange` property together
+   * @deprecated
    */
   value?: string;
   /**
