@@ -5,7 +5,7 @@ type ExampleProps = {
   formatTags: boolean;
 };
 
-const Demo: React.FC<ExampleProps> = (props) => (
+const Demo = (props: ExampleProps) => (
   <div>
     <Text size={100} formatTags={props.formatTags}>
       <ol start={1}>

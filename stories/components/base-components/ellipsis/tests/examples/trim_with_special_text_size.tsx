@@ -5,9 +5,11 @@ import React from 'react';
 
 type TextExampleProps = {
   ellipsis?: true | EllipsisSettings;
-} & TextProps & BoxProps;
+  size: TextProps['size'];
+  w: BoxProps['w'];
+};
 
-const Demo: React.FC<TextExampleProps> = (props) => {
+const Demo = (props: TextExampleProps) => {
   return (
     <Text
       w={props.w}
