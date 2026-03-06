@@ -48,9 +48,13 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
   }
 
   getTextProps(props: TextProps) {
-    return {
-      'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
-    };
+    if ('hintProps' in props) {
+      return {
+        'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
+      };
+    }
+
+    return {};
   }
 
   render() {
