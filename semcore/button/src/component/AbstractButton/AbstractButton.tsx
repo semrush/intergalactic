@@ -37,6 +37,9 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
     // `any` because we don't have typings for `use:PROPS`.
     const textProps: any = {
       size,
+      'use:hintProps': {
+        triggerRef: this.containerRef,
+      },
     };
 
     if ('hintProps' in props) {

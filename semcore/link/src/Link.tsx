@@ -54,7 +54,9 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
       };
     }
 
-    return {};
+    return {
+      'use:hintProps': { triggerRef: this.containerRef },
+    };
   }
 
   render() {
