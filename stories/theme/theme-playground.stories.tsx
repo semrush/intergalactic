@@ -145,7 +145,7 @@ function ThemePlaygroundContent() {
         top={0}
         right={0}
         zIndex={1000}
-        p={2}
+        p={4}
         style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}
       >
         <DropdownMenu>

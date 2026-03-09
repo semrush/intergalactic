@@ -93,11 +93,10 @@ function PopupsAndDialogsContent() {
         position='fixed'
         top={0}
         right={0}
-        zIndex={1000}
-        p={2}
-        style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}
+        zIndex={10000}
+        p={4}
       >
-        <DropdownMenu>
+        <DropdownMenu disablePortal>
           <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
             Theme: {currentTheme.label}
           </DropdownMenu.Trigger>

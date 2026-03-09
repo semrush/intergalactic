@@ -59,12 +59,11 @@ function DataTableThemePlaygroundContent() {
             DataTable theme playground
           </Text>
           <Box
-            style={{
-              position: 'fixed',
-              top: 16,
-              right: 16,
-              zIndex: 1000,
-            }}
+            position='fixed'
+            top={0}
+            right={0}
+            zIndex={10000}
+            p={4}
           >
             <DropdownMenu>
               <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
