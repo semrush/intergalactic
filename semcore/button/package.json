@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@semcore/spin": "16.0.11",
-    "@semcore/typography": "16.3.2"
+    "@semcore/typography": "16.3.2",
+    "@semcore/link": "16.0.11"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0"

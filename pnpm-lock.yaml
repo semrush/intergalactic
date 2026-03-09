@@ -418,6 +418,9 @@ importers:
 
   semcore/base-trigger:
     dependencies:
+      '@semcore/button':
+        specifier: 16.0.12
+        version: link:../button
       '@semcore/counter':
         specifier: 16.0.11
         version: link:../counter
@@ -499,6 +502,9 @@ importers:
 
   semcore/button:
     dependencies:
+      '@semcore/link':
+        specifier: 16.0.11
+        version: link:../link
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin
@@ -1402,9 +1408,6 @@ importers:
 
   semcore/link:
     dependencies:
-      '@semcore/tooltip':
-        specifier: 16.0.11
-        version: link:../tooltip
       '@semcore/typography':
         specifier: 16.3.2
         version: link:../typography
