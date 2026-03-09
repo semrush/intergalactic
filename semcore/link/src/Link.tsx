@@ -77,7 +77,6 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     // @ts-ignore
     const Link = this[CORE_INSTANCE];
     const SLink = Root;
-    const SInner = Box;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
     const showHint = children === undefined || title;
     return sstyled(styles)(
@@ -94,26 +93,21 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
           __excludeProps={['disabled', 'aria-disabled', 'title']}
           aria-label={showHint ? hintContent : undefined}
         >
-          <SInner
-            tag='span'
-            data-ui-name={`${this.asProps['data-ui-name']}.InnerWrapper`}
-          >
-            {AddonLeft
-              ? (
-                  <Link.Addon>
-                    <AddonLeft />
-                  </Link.Addon>
-                )
-              : null}
-            {addonTextChildren(Children, Link.Text, Link.Addon)}
-            {AddonRight
-              ? (
-                  <Link.Addon>
-                    <AddonRight />
-                  </Link.Addon>
-                )
-              : null}
-          </SInner>
+          {AddonLeft
+            ? (
+                <Link.Addon>
+                  <AddonLeft />
+                </Link.Addon>
+              )
+            : null}
+          {addonTextChildren(Children, Link.Text, Link.Addon)}
+          {AddonRight
+            ? (
+                <Link.Addon>
+                  <AddonRight />
+                </Link.Addon>
+              )
+            : null}
         </SLink>
         {showHint && (
           <Hint

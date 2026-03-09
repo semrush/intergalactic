@@ -45,26 +45,25 @@ SLink[inline] {
   display: inline;
 }
 
-SInner {
-  align-items: baseline;
-  height: 100%;
-  width: 100%;
-}
-
 SAddon {
   pointer-events: none;
-  vertical-align: middle;
   display: inline-flex;
-  margin-top: -2px;
+  align-items: center;
+
+  &::before {
+    /* stylelint-disable-next-line no-irregular-whitespace */
+    content: '​';
+    display: inline-block;
+  }
 }
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-1x, 4px);
+    padding-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-1x, 4px);
+    padding-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 
