@@ -19,7 +19,7 @@ import BulkTextarea from '@semcore/ui/bulk-textarea';
 <BulkTextarea.InputField />
 ```
 
-<TypesView type="InputFieldProps" :types={...types} />
+<TypesView type="BulkTextareaInputFieldProps" :types={...types} />
 
 ## BulkTextarea.ErrorsNavigation
 
