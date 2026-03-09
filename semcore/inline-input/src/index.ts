@@ -1,6 +1,6 @@
-import type { InlineInputProps } from './index.type';
+import type { InlineInputProps, InlineInputValueProps } from './index.type';
 import InlineInputBase from './InlineInput';
 
 export default InlineInputBase;
 
-export type { InlineInputProps };
+export type { InlineInputProps, InlineInputValueProps };
