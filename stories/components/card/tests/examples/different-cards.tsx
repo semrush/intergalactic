@@ -47,7 +47,7 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-description-content-innerHint-tag-text-styles'>
       <Card.Header>
-        <Flex justifyContent='space-between' w={300}>
+        <Flex justifyContent='space-between' w={300} alignItems='center'>
           <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label' tag='h1'>Market Traffic h1</Card.Title>
           <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />
         </Flex>
