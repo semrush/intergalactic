@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-09
+
+### BREAK
+
+- **ellipsis**: New major version.
+
+### Fixed
+
+- `Star` SVG alignment for `FeedbackRating` component.
+
 ## [16.2.0] - 2026-02-10
 
 ### Added

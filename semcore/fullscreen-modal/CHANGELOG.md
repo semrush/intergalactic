@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-09
+
+### BREAK
+
+- New major version.
+
+### Changed
+
+- Header styles, for the correct text behaviour and design ofc ✨
+
 ## [16.1.12] - 2025-11-17
 
 ### Changed

@@ -1,3 +1,277 @@
+## [v17.0.0] - 2026-03-09
+
+### @semcore/d3-chart
+
+- **Added** `minimalBarWidth` for `Cigarette` chart.
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
+### @semcore/core
+
+- **BREAK** New major version.
+- **BREAK** Removed `WithI18n`. Use `useI18n`.
+- **BREAK** Removed `WithCSS`. Use `useCss`.
+- **BREAK** Removed `WithAutoFocus` and `autoFocusEnhance`.
+- **BREAK** Removed `WithKeyboardFocus`. Just don't use.
+- **BREAK** Removed `WithRef`. Use `useForkRef`.
+
+### @semcore/widget-empty
+
+- **BREAK** **ellipsis**: New major version.
+- **BREAK** **ellipsis**: Removed unnecessary `margin-bottom` for the widget container.
+
+### @semcore/tooltip
+
+- **BREAK** **ellipsis**: New major version. Deprecated `Tooltip.Hint`.
+
+### @semcore/textarea
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/tag
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/tab-panel
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/tab-line
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/switch
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/spin-container
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/spin
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/slider
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/skeleton
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/side-panel
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/select
+
+- **BREAK** **ellipsis**: New major version.
+- **Added** **ellipsis**: `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
+### @semcore/radio
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/progress-bar
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/product-head
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/pills
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/pagination
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/notice-bubble
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/notice
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/modal
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/link
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/input-tags
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/input-number
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/input-mask
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/inline-input
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/inline-edit
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/flags
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/feature-popover
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/feature-highlight
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/errors
+
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/base-components
+
+- **BREAK** **ellipsis**: Deprecated component. Use the new `ellipsis` prop that's built into various components.
+- **BREAK** **portal**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **BREAK** **outside-click**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **BREAK** **scroll-area**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+
+### @semcore/dropdown
+
+- **BREAK** New major version.
+
+### @semcore/drag-and-drop
+
+- **BREAK** New major version.
+
+### @semcore/dot
+
+- **BREAK** New major version.
+
+### @semcore/divider
+
+- **BREAK** New major version.
+
+### @semcore/date-picker
+
+- **BREAK** New major version.
+
+### @semcore/color-picker
+
+- **BREAK** New major version.
+
+### @semcore/checkbox
+
+- **BREAK** New major version.
+
+### @semcore/carousel
+
+- **BREAK** New major version.
+
+### @semcore/card
+
+- **BREAK** New major version.
+
+### @semcore/breadcrumbs
+
+- **BREAK** New major version.
+
+### @semcore/badge
+
+- **BREAK** New major version. Added property `type`. Deprecated `color` and `bg`.
+
+### @semcore/add-filter
+
+- **BREAK** New major version.
+
+### @semcore/accordion
+
+- **BREAK** New major version.
+
+### @semcore/wizard
+
+- **BREAK** New major version.
+- **Changed** WizardStep type to number only.
+
+### @semcore/typography
+
+- **BREAK** New major version.
+- **Added** `ellipsis` property to crop the text out of the box.
+- **Fixed** margins for native `p` and lists.
+
+### @semcore/time-picker
+
+- **BREAK** New major version.
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/input
+
+- **BREAK** New major version.
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **BREAK** New major version.
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **BREAK** New major version.
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/button
+
+- **BREAK** New major version.
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/base-trigger
+
+- **BREAK** New major version.
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/feedback-form
+
+- **Fixed** `Star` SVG alignment for `FeedbackRating` component.
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/data-table
+
+- **Fixed** Impossible to navigate by keyboard when sorting was clicked by mouse.
+- **Fixed** Impossible to navigate cells near the merger when accordion collapsed.
+- **BREAK** New major version.
+- **Fixed** Sorted column remains visually selected after sorting another column
+via mouse when sorted was focused
+
+### @semcore/dropdown-menu
+
+- **Fixed** Border-radius for shadow under sticky group.
+- **Fixed** Overscroll "bounce" effect for sticky groups.
+- **BREAK** New major version.
+
+### @semcore/mini-chart
+
+- **Fixed** TrendBar and TrendHistogram `displayName`
+- **BREAK** **ellipsis**: New major version.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Fixed types for `Bulktextarea.InputField`.
+- **BREAK** New major version.
+
 ## [16.14.0] - 2026-02-10
 
 ### @semcore/dropdown-menu

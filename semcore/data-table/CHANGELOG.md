@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-09
+
+### BREAK
+
+- New major version.
+
+### Fixed
+
+- Impossible to navigate by keyboard when sorting was clicked by mouse.
+- Impossible to navigate cells near the merger when accordion collapsed.
+- Sorted column remains visually selected after sorting another column
+via mouse when sorted was focused
+
 ## [16.5.3] - 2026-02-10
 
 ### Fixed
