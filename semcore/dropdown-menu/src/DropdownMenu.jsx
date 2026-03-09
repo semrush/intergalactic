@@ -327,13 +327,14 @@ class DropdownMenuRoot extends AbstractDropdown {
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
   const SBar = ScrollAreaComponent.Bar;
+  const SScrollContainer = ScrollAreaComponent.Container;
 
   return sstyled(styles)(
     <ListBoxContextProvider>
       <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <ScrollAreaComponent.Container tabIndex={undefined}>
+        <SScrollContainer tabIndex={undefined}>
           <Children />
-        </ScrollAreaComponent.Container>
+        </SScrollContainer>
         <SBar orientation='horizontal' />
         <SBar orientation='vertical' />
       </SDropdownMenuList>

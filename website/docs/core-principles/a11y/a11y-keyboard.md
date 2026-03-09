@@ -83,7 +83,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 
 ### Table
 
-- Table cells should only receive keyboard focus if they are interactive. In these cases, using the `grid` role on the entire table would be more appropriate.
+- Table cells should only receive keyboard focus if they're interactive. In these cases, using the `grid` role on the entire table would be more appropriate.
 - Controls inside the table cells get focus using `Tab` only.
 - Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows – using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.

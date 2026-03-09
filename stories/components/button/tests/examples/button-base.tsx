@@ -101,11 +101,8 @@ export const defaultButtonProps: ExampleProps = {
   size: 'm',
   use: 'primary',
   theme: 'muted',
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  loading: undefined,
-  style: undefined,
+  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
 };
 
 Demo.defaultProps = defaultButtonProps;

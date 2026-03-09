@@ -4,6 +4,6 @@ message: "Avoid using '%s' in technical documentation."
 ignorecase: true
 action:
   name: remove
-level: warning
+level: suggestion
 tokens:
   - '\b(?:eas(?:y|ily)|simpl(?:e|y)|obvious(?:ly)?)\b'

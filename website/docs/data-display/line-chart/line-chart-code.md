@@ -123,7 +123,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 ## Interpolation
 
-If exact values of specific point is not available, you can pass `interpolateValue` and value will be automatically interpolated.
+If exact values of specific point aren't available, you can pass `interpolateValue` and value will be automatically interpolated.
 
 ::: sandbox
 

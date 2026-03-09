@@ -178,7 +178,13 @@ class Value extends Component {
   componentDidMount() {
     this.valueInputRef.current?.addEventListener('wheel', this.onWheel);
 
-    const { inputRef, value } = this.asProps;
+    const { inputRef, value, autoFocus } = this.asProps;
+
+    if (autoFocus) {
+      setTimeout(() => {
+        this.valueInputRef.current?.focus();
+      });
+    }
 
     if (inputRef.current) {
       inputRef.current.stepUp = this.stepUp;

@@ -1,11 +1,11 @@
 import SerpM from '@semcore/icon/Serp/m';
 import { Flex } from '@semcore/ui/base-components';
 import InlineInput from '@semcore/ui/inline-input';
-import type { InlineInputProps } from '@semcore/ui/inline-input';
+import type { InlineInputProps, InlineInputValueProps } from '@semcore/ui/inline-input';
 import type { InputNumberControlsProps } from '@semcore/ui/input-number';
 import React from 'react';
 
-type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps;
+type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps & InlineInputValueProps;
 
 const Styles = (props: ExampleInputTagsProps) => {
   const { disabled, loading, state, autoFocus, defaultValue, placeholder, showControls, onBlurBehavior } = props;

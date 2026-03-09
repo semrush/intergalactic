@@ -5,12 +5,13 @@ import React from 'react';
 
 type TextExampleProps = {
   ellipsis?: true | EllipsisSettings;
-} & TextProps & BoxProps;
+  size: TextProps['size'];
+  w: BoxProps['w'];
+};
 
 const Demo = (props: TextExampleProps) => {
   return (
     <Text
-      display='block'
       w={props.w}
       mb={3}
       size={props.size}

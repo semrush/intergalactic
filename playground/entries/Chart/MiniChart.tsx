@@ -12,6 +12,8 @@ const MiniCharts = [
   'scoreSemiDonut',
   'trendArea',
   'trendLine',
+  'trendBar',
+  'trendHistogram',
 ] as const;
 
 type MiniChartProps = {
@@ -54,6 +56,34 @@ const TypeToMiniChartComponent: { [key in MiniChartProps['type']]: React.JSX.Ele
   trendLine: (
     <MiniChart.TrendLine
       data={[20, 50, 33, 80, 70, 35, 10, 40, 90, 50]}
+      w='140px'
+      h='40px'
+    />
+  ),
+  trendBar: (
+    <MiniChart.TrendBar
+      data={[
+        { value: 10 },
+        { value: 20 },
+        { value: 50 },
+        { value: 80, color: 'chart-palette-order-1' },
+        { value: 45 },
+        { value: 66 },
+      ]}
+      w='140px'
+      h='40px'
+    />
+  ),
+  trendHistogram: (
+    <MiniChart.TrendHistogram
+      data={[
+        { value: 10 },
+        { value: 20 },
+        { value: 50 },
+        { value: 80, color: 'chart-palette-order-3' },
+        { value: 45 },
+        { value: 66, color: 'chart-palette-order-6' },
+      ]}
       w='140px'
       h='40px'
     />

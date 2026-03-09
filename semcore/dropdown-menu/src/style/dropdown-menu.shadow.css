@@ -12,19 +12,19 @@ SDropdownMenuList {
     z-index: 3;
   }
 
-  SShadowHorizontal {
-
-    &:before,
-    &:after {
-      border-radius: var(--intergalactic-control-rounded, 6px);
+  &:not(&:has([data-ui-name="DropdownMenu.Group"][data-sticky="true"])) {
+    SShadowHorizontal {
+      &:before,
+      &:after {
+        border-radius: var(--intergalactic-control-rounded, 6px);
+      }
     }
-  }
 
-  SShadowVertical {
-
-    &:before,
-    &:after {
-      border-radius: var(--intergalactic-control-rounded, 6px);
+    SShadowVertical {
+      &:before,
+      &:after {
+        border-radius: var(--intergalactic-control-rounded, 6px);
+      }
     }
   }
 }
@@ -80,4 +80,10 @@ SDropdownNestingItem SDropdownMenuItemContainer {
 
 SItemHint {
   color: var(--intergalactic-text-secondary, #6c6e79);
+}
+
+SScrollContainer {
+  &:has([data-ui-name="DropdownMenu.Group"][data-sticky="true"]) {
+    overscroll-behavior: none;
+  }
 }

@@ -24,7 +24,7 @@ When designing a success message, keep the following principles in mind:
 A success state can appear in these scenarios:
 
 * A user's manual input such as submitting a form.
-* An action that is triggered automatically such as auto-saving.
+* An action that's triggered automatically such as auto-saving.
 * A process that the user initiated such as exporting data.
 
 The positioning of a success state depends on the context it's used in.

@@ -1,8 +1,9 @@
 import { Text } from '@semcore/ui/typography';
-import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: TextProps) => (
+type ExampleProps = { formatTags: boolean };
+
+const Demo = (props: ExampleProps) => (
   <div>
     {/* Default size paragraphs */}
     <Text formatTags={props.formatTags}>
@@ -64,7 +65,7 @@ const Demo = (props: TextProps) => (
   </div>
 );
 
-export const defaultProps: TextProps = {
+export const defaultProps: ExampleProps = {
   formatTags: true,
 };
 

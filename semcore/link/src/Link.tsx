@@ -1,5 +1,5 @@
 import type { BoxProps } from '@semcore/base-components';
-import { Flex, Box, Hint } from '@semcore/base-components';
+import { Box, Hint } from '@semcore/base-components';
 import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -45,6 +45,18 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
         });
       }, 0);
     }
+  }
+
+  getTextProps(props: TextProps) {
+    if ('hintProps' in props) {
+      return {
+        'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
+      };
+    }
+
+    return {
+      'use:hintProps': { triggerRef: this.containerRef },
+    };
   }
 
   render() {
@@ -120,7 +132,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
 function LinkText(props: IRootComponentProps) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Text} tag='span' />);
+  return sstyled(styles)(<SText render={Text} />);
 }
 
 function Addon(props: IRootComponentProps) {

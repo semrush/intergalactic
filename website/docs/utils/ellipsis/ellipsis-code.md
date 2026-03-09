@@ -9,7 +9,7 @@ You can enable ellipsis in [Text](../../style/typography/typography-api#text) by
 
 To use the default settings, use `ellipsis={true}`.
 
-Ellipsis can be enabled in all other components that are based on Text, such as: [Tag.Text](../../components/tag/tag-api#tag-text), [Link.Text](../../components/link/link-api#link-text), [Card.Title](../../components/card/card-api#card-title), and so on. To find out which components support the `ellipsis` property, refer to the API documentation.
+Ellipsis can be enabled in all other components that are based on Text, such as [Button.Text](../../components/button/button-api#button-text), [Link.Text](../../components/link/link-api#link-text), [Card.Title](../../components/card/card-api#card-title), and so on. To find out which components support the `ellipsis` property, refer to the API documentation.
 
 ::: sandbox
 

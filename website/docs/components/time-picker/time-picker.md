@@ -49,8 +49,8 @@ Comboboxes content may be both exact, up to a minute, and with the preset step.
 
 Validation in this component is required in several cases:
 
-- When there is a selection of multiple time slots, and they cannot be set to equal values.
-- When users cannot select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
+- When there is a selection of multiple time slots, and they can't be set to equal values.
+- When users can't select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
 
 ### How validation is performed
 

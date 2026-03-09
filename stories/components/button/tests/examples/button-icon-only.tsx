@@ -1,5 +1,5 @@
 import VideoListM from '@semcore/icon/VideoList/m';
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import Tooltip, { Hint } from '@semcore/ui/tooltip';
@@ -60,11 +60,9 @@ export const defaultIconButtonProps: ExampleProps = {
   size: 'm',
   use: 'primary',
   theme: 'muted',
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  loading: undefined,
-  style: undefined,
+  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
+
 };
 
 Demo.defaultProps = defaultIconButtonProps;

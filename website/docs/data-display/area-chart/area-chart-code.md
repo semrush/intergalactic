@@ -58,7 +58,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Interpolation
 
-If exact values of specific point is not available, you can pass `interpolateValue` and value will be automatically interpolated.
+If exact values of specific point aren't available, you can pass `interpolateValue` and value will be automatically interpolated.
 
 ::: warning
 :rotating_light: Interpolation doesn't works with `StackedArea`.

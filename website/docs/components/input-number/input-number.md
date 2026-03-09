@@ -29,7 +29,7 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 
 **InputNumber offers the following features:**
 
-- By default, it only allows numeric characters, including numbers, periods, commas, and minus sign. Other non-numeric characters cannot be entered.
+- By default, it only allows numeric characters, including numbers, periods, commas, and minus sign. Other non-numeric characters can't be entered.
 - You can enable or disable the stepper buttons.
 - You can set minimum and maximum values that the user can enter.
 - You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
@@ -37,7 +37,7 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 ::: tip
 **HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
 
-For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
+For numbers with non-numeric characters, it's recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
 :::
 
 ## Input width
@@ -142,7 +142,7 @@ For instance, if the user enters a value with a dot and the locale uses commas f
 
 ### Negative value
 
-If the input only allows positive values, the user will not be able to enter a negative value.
+If the input only allows positive values, the user won't be able to enter a negative value.
 
 ### Zero value
 

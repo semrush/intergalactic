@@ -6,7 +6,7 @@ tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 
 ## Breakpoints
 
-It is a functional wrapper over your application giving access to the context.
+A functional wrapper over your application giving access to the context.
 
 ```jsx
 import { defaultBreakpoints as Breakpoints } from '@semcore/ui/base-components';
@@ -16,7 +16,7 @@ import { defaultBreakpoints as Breakpoints } from '@semcore/ui/base-components';
 
 ## Breakpoints.Context
 
-Is the React context.
+The React context.
 
 ```jsx
 import { defaultBreakpoints as Breakpoints } from '@semcore/ui/base-components';
@@ -26,7 +26,7 @@ useContext(Breakpoints.Context);
 
 ## Breakpoints.mediaList
 
-It is an instance of the class for media queries.
+An instance of the class for media queries.
 
 ```jsx
 import { defaultBreakpoints as Breakpoints } from '@semcore/ui/base-components';

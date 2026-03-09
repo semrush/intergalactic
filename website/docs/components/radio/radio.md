@@ -38,7 +38,7 @@ Table: Radio button sizes
 
 ### Margins
 
-The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
+The spacing between options may differ based on the context in which they're used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
 Table: Radio button margins
 

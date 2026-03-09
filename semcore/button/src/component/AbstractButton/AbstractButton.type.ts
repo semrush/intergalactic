@@ -1,5 +1,6 @@
 import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
 import type { PropGetterFn } from '@semcore/core';
+import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
 export type AbstractButtonProps<S, U, T> = BoxProps &
@@ -32,7 +33,7 @@ export type AbstractButtonAddonProps<S> = BoxProps & {
   size?: S;
 };
 
-export type AbstractButtonTextProps<S> = BoxProps & {
+export type AbstractButtonTextProps<S> = TextProps & {
   size?: S;
 };
 
