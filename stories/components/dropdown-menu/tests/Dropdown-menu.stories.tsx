@@ -8,6 +8,7 @@ import NestedMenuPropsExample, { defaultNestedMenuPropsExample } from './example
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
 import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
+import WithContentOnPageExample from './examples/test-with-content-on-page';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
 import WithEllipsisExample, { defaultProps as defaultWithEllipsisProps } from './examples/with_ellipsis';
@@ -46,6 +47,10 @@ const commonArgTypes = {
 
 export const WithFocusableTrigger: Story = {
   render: WithFocusableTriggerExample,
+};
+
+export const WithContentOnPage: Story = {
+  render: WithContentOnPageExample,
 };
 
 export const ListItemsType: Story = {

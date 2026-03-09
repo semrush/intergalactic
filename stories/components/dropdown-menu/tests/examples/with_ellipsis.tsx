@@ -58,7 +58,15 @@ const Demo = (props: WithEllipsisProps) => {
               </DropdownMenu.Item.Addon>
               <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
-            <DropdownMenu.Item.Hint w='100%' tag={Text} ellipsis hintProps={{ placement: 'right' }}>Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!</DropdownMenu.Item.Hint>
+            <DropdownMenu.Item.Hint
+              w='100%'
+              tag={Text}
+              ellipsis
+              // @ts-expect-error. We can't calculate correct types from intersections in tag prop.
+              hintProps={{ placement: 'right' }}
+            >
+              Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!
+            </DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
           <DropdownMenu.Item selected={isSelected(3)} onClick={() => handleItemClick(3)}>
             <DropdownMenu.Item.Content>

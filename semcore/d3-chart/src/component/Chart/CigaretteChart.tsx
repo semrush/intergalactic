@@ -36,8 +36,8 @@ class CigaretteChartComponent extends AbstractChart<
   CigaretteChartData,
   CigaretteChartProps,
   typeof CigaretteChartComponent.enhance,
-  CigaretteChartState,
-  typeof CigaretteChartComponent.defaultProps
+  typeof CigaretteChartComponent.defaultProps,
+  CigaretteChartState
 > {
   static displayName = 'Cigarette.Bar';
 

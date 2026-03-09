@@ -3,8 +3,8 @@ import { Text } from '@semcore/ui/typography';
 import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExmapleProps = TextProps & BoxProps;
-const Demo = (props: ExmapleProps) => (
+type ExampleProps = TextProps & BoxProps & { formatTags: boolean };
+const Demo = (props: ExampleProps) => (
   <>
     <div style={{ width: 200 }}>
       <Text
@@ -40,7 +40,7 @@ const Demo = (props: ExmapleProps) => (
   </>
 );
 
-export const defaultProps: TextProps = {
+export const defaultProps: ExampleProps = {
   size: undefined,
   noWrap: false,
   bold: false,
