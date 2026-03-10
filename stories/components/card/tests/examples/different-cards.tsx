@@ -39,7 +39,7 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-content-innerHint'>
       <Card.Header>
-        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint </Card.Title>
+        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint</Card.Title>
         <Card.Description>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
