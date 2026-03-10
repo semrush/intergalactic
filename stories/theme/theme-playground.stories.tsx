@@ -1,7 +1,3 @@
-import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
-import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
-import newThemeTokens from '@semcore/core/lib/theme/themes/new';
-import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import SettingsM from '@semcore/icon/Settings/m';
 import Accordion from '@semcore/ui/accordion';
@@ -18,7 +14,6 @@ import Counter from '@semcore/ui/counter';
 import { DatePicker } from '@semcore/ui/date-picker';
 import Divider from '@semcore/ui/divider';
 import Dot from '@semcore/ui/dot';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Flag from '@semcore/ui/flags';
 import InlineInput from '@semcore/ui/inline-input';
 import Input from '@semcore/ui/input';
@@ -42,6 +37,8 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+
+import { ThemePlaygroundLayout } from './theme-playground-switcher';
 import './theme-playground-fonts.css';
 
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
@@ -53,13 +50,6 @@ const meta: Meta = {
 export default meta;
 
 type Story = StoryObj;
-
-/** List of themes for switching. To add a new theme: add JSON to semcore/core/src/theme, run process-theme, add the export to core/package.json and add an entry here. */
-const THEMES = [
-  { id: 'light', label: 'Light', tokens: defaultThemeTokens },
-  { id: 'new', label: 'New', tokens: newThemeTokens },
-  { id: 'dark', label: 'Dark', tokens: darkThemeTokens },
-] as const;
 
 function ButtonRow({
   use,
@@ -103,8 +93,6 @@ function ButtonLinkRow({
   );
 }
 
-const BG_PRIMARY_TOKEN = '--intergalactic-bg-primary-neutral';
-
 const SELECT_OPTIONS = [
   { value: '1', label: 'Option 1', children: 'Option 1' },
   { value: '2', label: 'Option 2', children: 'Option 2' },
@@ -114,7 +102,6 @@ const SELECT_OPTIONS = [
 const FILTER_TRIGGER_OPTIONS = ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red', 'Salad', 'Violet', 'Yellow'];
 
 function ThemePlaygroundContent() {
-  const [themeIndex, setThemeIndex] = React.useState(0);
   const [radioValue, setRadioValue] = React.useState('1');
   const [pillsValue, setPillsValue] = React.useState<string | null>(null);
   const [tabValue, setTabValue] = React.useState(1);
@@ -126,45 +113,9 @@ function ThemePlaygroundContent() {
   const [inputRangeTo, setInputRangeTo] = React.useState('');
   const [inputPhoneCountry, setInputPhoneCountry] = React.useState<'DE' | 'GB'>('DE');
   const [inputPhoneValue, setInputPhoneValue] = React.useState('+49');
-  const currentTheme = THEMES[themeIndex];
-
-  React.useEffect(() => {
-    const prevBackground = document.body.style.background;
-    document.body.style.background = `var(${BG_PRIMARY_TOKEN})`;
-    document.body.style.setProperty(BG_PRIMARY_TOKEN, currentTheme.tokens[BG_PRIMARY_TOKEN] ?? '');
-    return () => {
-      document.body.style.background = prevBackground;
-      document.body.style.removeProperty(BG_PRIMARY_TOKEN);
-    };
-  }, [currentTheme.tokens]);
 
   return (
-    <ThemeProvider tokens={currentTheme.tokens}>
-      <Box
-        position='fixed'
-        top={0}
-        right={0}
-        zIndex={1000}
-        p={4}
-        style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}
-      >
-        <DropdownMenu>
-          <DropdownMenu.Trigger tag={Button} use='secondary' size='l'>
-            Theme: {currentTheme.label}
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Menu>
-            {THEMES.map((theme, index) => (
-              <DropdownMenu.Item
-                key={theme.id}
-                selected={themeIndex === index}
-                onClick={() => setThemeIndex(index)}
-              >
-                {theme.label}
-              </DropdownMenu.Item>
-            ))}
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      </Box>
+    <ThemePlaygroundLayout>
       <Box p={6} style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
         <Flex alignItems='center' mb={10}>
           <Text tag='h1' semibold size={600} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -1001,7 +952,7 @@ function ThemePlaygroundContent() {
           </Notice>
         </Flex>
       </Box>
-    </ThemeProvider>
+    </ThemePlaygroundLayout>
   );
 }
 

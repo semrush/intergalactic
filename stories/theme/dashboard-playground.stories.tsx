@@ -1,7 +1,3 @@
-import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
-import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
-import newThemeTokens from '@semcore/core/lib/theme/themes/new';
-import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
@@ -21,7 +17,6 @@ import {
 } from '@semcore/ui/d3-chart';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData } from '@semcore/ui/data-table';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
 import ProductHead, { Info, Title } from '@semcore/ui/product-head';
@@ -32,6 +27,8 @@ import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
+
+import { ThemePlaygroundLayout, ThemeSwitcherDropdown } from './theme-playground-switcher';
 import './theme-playground-fonts.css';
 
 const meta: Meta = {
@@ -41,14 +38,6 @@ const meta: Meta = {
 export default meta;
 
 type Story = StoryObj;
-
-const THEMES = [
-  { id: 'light', label: 'Light', tokens: defaultThemeTokens },
-  { id: 'new', label: 'New', tokens: newThemeTokens },
-  { id: 'dark', label: 'Dark', tokens: darkThemeTokens },
-] as const;
-
-const BG_PRIMARY_TOKEN = '--intergalactic-bg-primary-neutral';
 
 const lineChartData = [
   { x: 0, line1: 2, line2: 3 },
@@ -314,22 +303,10 @@ function BarChartHorizontal({
 }
 
 function DashboardPlaygroundContent() {
-  const [themeIndex, setThemeIndex] = React.useState(0);
   const [tabValue, setTabValue] = React.useState(1);
-  const currentTheme = THEMES[themeIndex];
-
-  React.useEffect(() => {
-    const prevBackground = document.body.style.background;
-    document.body.style.background = `var(${BG_PRIMARY_TOKEN})`;
-    document.body.style.setProperty(BG_PRIMARY_TOKEN, currentTheme.tokens[BG_PRIMARY_TOKEN] ?? '');
-    return () => {
-      document.body.style.background = prevBackground;
-      document.body.style.removeProperty(BG_PRIMARY_TOKEN);
-    };
-  }, [currentTheme.tokens]);
 
   return (
-    <ThemeProvider tokens={currentTheme.tokens}>
+    <ThemePlaygroundLayout switcherVariant='inline'>
       <Box style={{ background: 'var(--intergalactic-bg-secondary-neutral)', minHeight: '100vh', borderRadius: 12 }}>
         <ProductHead mx={8} pt={4}>
           <ProductHead.Row>
@@ -360,22 +337,7 @@ function DashboardPlaygroundContent() {
               <Button use='primary' addonLeft={MathPlusM}>
                 Add item
               </Button>
-              <DropdownMenu>
-                <DropdownMenu.Trigger tag={Button} use='secondary'>
-                  Theme: {currentTheme.label}
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Menu>
-                  {THEMES.map((theme, index) => (
-                    <DropdownMenu.Item
-                      key={theme.id}
-                      selected={themeIndex === index}
-                      onClick={() => setThemeIndex(index)}
-                    >
-                      {theme.label}
-                    </DropdownMenu.Item>
-                  ))}
-                </DropdownMenu.Menu>
-              </DropdownMenu>
+              <ThemeSwitcherDropdown triggerProps={{ size: 'm' }} />
             </ProductHead.Buttons>
           </ProductHead.Row>
 
@@ -653,7 +615,7 @@ function DashboardPlaygroundContent() {
           </Flex>
         </Box>
       </Box>
-    </ThemeProvider>
+    </ThemePlaygroundLayout>
   );
 }
 
