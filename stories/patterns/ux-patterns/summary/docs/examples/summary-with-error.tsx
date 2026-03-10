@@ -12,7 +12,12 @@ const Reload = () => {
 
   return (
     <Flex gap={2} mt={1} h={28} alignItems='center'>
-      <Warning color='icon-secondary-neutral' ref={ref} aria-hidden={false} />
+      <Warning
+        color='icon-secondary-neutral'
+        ref={ref}
+        aria-hidden={false}
+        role='img'
+      />
       <Hint triggerRef={ref}>
         Something went wrong
       </Hint>
