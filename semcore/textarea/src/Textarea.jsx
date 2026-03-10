@@ -110,7 +110,7 @@ class Textarea extends Component {
     if (this.asProps.autoFocus) {
       setTimeout(() => {
         this.node?.focus();
-      });
+      }, 1); // in autoFocusEnhance it was the same, because boolean `true` value was converted to 1.
     }
   }
 
