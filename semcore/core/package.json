@@ -61,6 +61,24 @@
       "import": "./lib/theme/themes/new.mjs",
       "require": "./lib/theme/themes/new.js"
     },
+    "./lib/theme/themes/aqua-green.css": {
+      "import": "./lib/theme/themes/aqua-green.css",
+      "require": "./lib/theme/themes/aqua-green.css"
+    },
+    "./lib/theme/themes/aqua-green": {
+      "types": "./lib/theme/themes/aqua-green.d.ts",
+      "import": "./lib/theme/themes/aqua-green.mjs",
+      "require": "./lib/theme/themes/aqua-green.js"
+    },
+    "./lib/theme/themes/lime-green.css": {
+      "import": "./lib/theme/themes/lime-green.css",
+      "require": "./lib/theme/themes/lime-green.css"
+    },
+    "./lib/theme/themes/lime-green": {
+      "types": "./lib/theme/themes/lime-green.d.ts",
+      "import": "./lib/theme/themes/lime-green.mjs",
+      "require": "./lib/theme/themes/lime-green.js"
+    },
     "./lib/utils/focus-lock/getFocusableIn": {
       "types": "./lib/utils/focus-lock/getFocusableIn.d.ts",
       "import": "./lib/utils/focus-lock/getFocusableIn.mjs",

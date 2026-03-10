@@ -1,19 +1,8 @@
 import aquaGreenThemeTokens from '@semcore/core/lib/theme/themes/aqua-green';
 import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
 import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
-import highlightsAquaGreen from '@semcore/core/lib/theme/themes/highlights-aqua-green';
-import highlightsDark from '@semcore/core/lib/theme/themes/highlights-dark';
-import highlightsLight from '@semcore/core/lib/theme/themes/highlights-light';
-import highlightsLightNew from '@semcore/core/lib/theme/themes/highlights-light-new';
-import highlightsLightNew2ver from '@semcore/core/lib/theme/themes/highlights-light-new-2ver';
-import highlightsLimeGreen from '@semcore/core/lib/theme/themes/highlights-lime-green';
-import highlightsNew from '@semcore/core/lib/theme/themes/highlights-new';
-import highlightsNewAdjusted from '@semcore/core/lib/theme/themes/highlights-new-adjusted';
-import lightNewThemeTokens from '@semcore/core/lib/theme/themes/light-new';
-import lightNew2verThemeTokens from '@semcore/core/lib/theme/themes/light-new-2ver';
 import limeGreenThemeTokens from '@semcore/core/lib/theme/themes/lime-green';
 import newThemeTokens from '@semcore/core/lib/theme/themes/new';
-import newAdjustedThemeTokens from '@semcore/core/lib/theme/themes/new-adjusted';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
@@ -21,27 +10,12 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 export const THEMES = [
-  { id: 'light', label: '[current] light', tokens: defaultThemeTokens },
-  { id: 'new-adjusted', label: '[new] light-new adjusted from Lesha', tokens: newAdjustedThemeTokens },
-  { id: 'light-new', label: '[new] light-new', tokens: lightNewThemeTokens },
-  { id: 'light-new-2ver', label: '[new] light-new-crazy', tokens: lightNew2verThemeTokens },
-  { id: 'new', label: '[new] product test', tokens: newThemeTokens },
-  { id: 'aqua-green', label: '[marketing] 🟦 aqua green', tokens: aquaGreenThemeTokens },
-  { id: 'lime-green', label: '[marketing] 🟩 lime green', tokens: limeGreenThemeTokens },
-  { id: 'dark', label: '[current] dark (for website)', tokens: darkThemeTokens },
+  { id: 'light', label: 'Light (current)', tokens: defaultThemeTokens },
+  { id: 'new', label: 'New (product test)', tokens: newThemeTokens },
+  { id: 'aqua-green', label: 'Aqua Green (marketing)', tokens: aquaGreenThemeTokens },
+  { id: 'lime-green', label: 'Lime Green (marketing)', tokens: limeGreenThemeTokens },
+  { id: 'dark', label: 'Dark (current for website)', tokens: darkThemeTokens },
 ] as const;
-
-/** Feature Highlight tokens per theme (border, bg, control, etc. for NoticeFH, ButtonFH, etc.) */
-const HIGHLIGHTS_BY_THEME_ID: Record<(typeof THEMES)[number]['id'], Record<string, string>> = {
-  'light': highlightsLight,
-  'new-adjusted': highlightsNewAdjusted,
-  'light-new': highlightsLightNew,
-  'light-new-2ver': highlightsLightNew2ver,
-  'new': highlightsNew,
-  'aqua-green': highlightsAquaGreen,
-  'lime-green': highlightsLimeGreen,
-  'dark': highlightsDark,
-};
 
 export const BG_PRIMARY_TOKEN = '--intergalactic-bg-primary-neutral';
 
@@ -117,13 +91,6 @@ export function ThemePlaygroundLayout({
 }: ThemePlaygroundLayoutProps) {
   const [themeIndex, setThemeIndex] = React.useState(0);
   const currentTheme = THEMES[themeIndex];
-  const tokensWithHighlights = React.useMemo(
-    () => ({
-      ...currentTheme.tokens,
-      ...(HIGHLIGHTS_BY_THEME_ID[currentTheme.id] ?? {}),
-    }),
-    [currentTheme],
-  );
 
   React.useEffect(() => {
     const prevBackground = document.body.style.background;
@@ -143,7 +110,7 @@ export function ThemePlaygroundLayout({
   };
 
   return (
-    <ThemeProvider tokens={tokensWithHighlights}>
+    <ThemeProvider tokens={currentTheme.tokens}>
       <ThemePlaygroundContext.Provider value={contextValue}>
         {switcherVariant === 'fixed' && (
           <Box
