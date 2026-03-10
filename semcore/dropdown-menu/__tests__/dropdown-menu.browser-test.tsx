@@ -336,6 +336,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     await locators.button(page).click();
     await locators.menuitem(page, 0).waitFor({ state: 'visible' });
 
+    await test.step('Verify no hover style on group title', async () => {
+      await page.locator('[data-ui-name="Dropdown.Item"]').first().hover();
+      await checkStyles(page.locator('[data-ui-name="Dropdown.Item"]').first(), {
+        'background-color': 'rgba(0, 0, 0, 0)',
+        'cursor': 'default',
+      });
+    });
+
     await test.step('Verify item with hint L size', async () => {
       await checkStyles(locators.itemInGroup(page).nth(1), {
         'font-size': '16px',
