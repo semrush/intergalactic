@@ -134,7 +134,19 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       }
 
       if (!resolvedColor || resolvedColor.split(',').length !== 3) {
-        throw new Error(`Unable to produce rgba of ${color} (input format is not supported yet)`);
+        try {
+          const c = new Color(resolvedColor.trim());
+          const srgb = c.to('sRGB');
+          resolvedColor = [
+            Math.round(srgb.r * 255),
+            Math.round(srgb.g * 255),
+            Math.round(srgb.b * 255),
+          ].join(', ');
+        } catch (e) {
+          throw new Error(
+            `Unable to produce rgba of ${color} (input format is not supported yet): ${e instanceof Error ? e.message : e}`,
+          );
+        }
       }
 
       return `rgba(${resolvedColor}, ${alpha})`;
@@ -157,7 +169,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
-      return resolvedColor;
+      return resolveColor(resolvedColor);
     }
     if (color.startsWith('$') && color.split('.').length > 0) {
       const path = color.substring(1);
@@ -166,10 +178,26 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
-      return resolvedColor;
+      return resolveColor(resolvedColor);
     }
     if (color.startsWith('#')) {
       return color;
+    }
+    if (color.startsWith('oklch(') && color.endsWith(')')) {
+      try {
+        const c = new Color(color);
+        const srgb = c.to('sRGB');
+        const r = Math.round(srgb.r * 255);
+        const g = Math.round(srgb.g * 255);
+        const b = Math.round(srgb.b * 255);
+        const alpha = srgb.alpha ?? 1;
+        if (alpha < 1) {
+          return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+        return srgb.toString({ format: 'hex' });
+      } catch (e) {
+        throw new Error(`Unable to process oklch color ${color}: ${e instanceof Error ? e.message : e}`);
+      }
     }
     throw new Error(`Unable to process color ${color}`);
   };
@@ -217,6 +245,20 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
   for (const token in values) {
     if (types[token] === 'color') {
       values[token] = resolveColor(values[token]);
+      if (typeof values[token] === 'string' && values[token].trim().startsWith('oklch(')) {
+        try {
+          const c = new Color(values[token].trim());
+          const srgb = c.to('sRGB');
+          const r = Math.round(srgb.r * 255);
+          const g = Math.round(srgb.g * 255);
+          const b = Math.round(srgb.b * 255);
+          const alpha = srgb.alpha ?? 1;
+          values[token] =
+            alpha < 1 ? `rgba(${r}, ${g}, ${b}, ${alpha})` : srgb.toString({ format: 'hex' });
+        } catch {
+          // leave as-is if conversion fails
+        }
+      }
     } else if (types[token] === 'boxShadow') {
       values[token] = resolveToken(values[token].split('; ').map(replaceColors).join(', '));
     } else if (
