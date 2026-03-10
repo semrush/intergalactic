@@ -96,32 +96,6 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
   traverse(tokens);
   traverse(featureHighlight, [], highlightTokens);
 
-  const resolveOklch = (raw: string): string => {
-    const trimmed = raw.trim();
-    if (!trimmed.startsWith('oklch(') || !trimmed.endsWith(')')) return raw;
-    const inner = trimmed.slice(6, -1).trim();
-    const parts = inner.split(/[\s/]+/);
-    const L = parts[0];
-    const C = parts[1] ?? '0';
-    const hasAlpha = parts.length > 3;
-    const alpha = hasAlpha ? parseFloat(parts[parts.length - 1]) : 1;
-    const isWhite = (C === '0' || parseFloat(C) === 0) && (L === '1' || L === '100%' || parseFloat(L) === 1);
-    if (isWhite) {
-      return alpha < 1 ? `rgba(255, 255, 255, ${alpha})` : '#ffffff';
-    }
-    try {
-      const c = new Color(trimmed);
-      const srgb = c.to('sRGB');
-      const r = Math.round(srgb.r * 255);
-      const g = Math.round(srgb.g * 255);
-      const b = Math.round(srgb.b * 255);
-      const a = srgb.alpha ?? 1;
-      return a < 1 ? `rgba(${r}, ${g}, ${b}, ${a})` : srgb.toString({ format: 'hex' });
-    } catch {
-      return raw;
-    }
-  };
-
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
       if (color.includes('rgba')) {
@@ -132,14 +106,13 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
     if (color.startsWith('rgba(') && color.endsWith(')')) {
       const lastComa = color.lastIndexOf(',');
-      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1).trim());
+      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1));
       if (Number.isNaN(alpha)) {
         throw new Error(`Unable to parse rgba of ${color}`);
       }
-      let resolvedColor = color.substring('rgba('.length, lastComa).trim();
+      let resolvedColor = color.substring('rgba('.length, lastComa);
       if (resolvedColor.startsWith('{')) resolvedColor = resolveColor(resolvedColor);
       if (resolvedColor.startsWith('$')) resolvedColor = resolveColor(resolvedColor);
-      resolvedColor = resolveOklch(resolvedColor);
       if (resolvedColor.startsWith('#')) {
         if (resolvedColor.length === 1 + 3) {
           resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
@@ -178,32 +151,39 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
 
       return `rgba(${resolvedColor}, ${alpha})`;
     }
+    if (color.split(', ').length === 2) {
+      const baseColor = resolveColor(color.split(', ')[0]);
+      const [r, g, b] = (
+        baseColor.length === 4
+          ? [baseColor[1], baseColor[2], baseColor[3]]
+          : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
+      ).map((chunk) => Number.parseInt(chunk, 16));
+      const a = Number.parseFloat(color.split(', ')[1]);
+
+      return `rgba(${r}, ${g}, ${b}, ${a})`;
+    }
     if (color.startsWith('{') && color.split('.').length > 0 && color.endsWith('}')) {
-      const path = color.substring(1, color.length - 1).trim();
-      let resolvedColor =
+      const path = color.substring(1, color.length - 1);
+      const resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
-      resolvedColor = resolveOklch(resolvedColor);
       return resolveColor(resolvedColor);
     }
     if (color.startsWith('$') && color.split('.').length > 0) {
-      const path = color.substring(1).trim();
-      let resolvedColor =
+      const path = color.substring(1);
+      const resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
-      resolvedColor = resolveOklch(resolvedColor);
       return resolveColor(resolvedColor);
     }
     if (color.startsWith('#')) {
       return color;
     }
     if (color.startsWith('oklch(') && color.endsWith(')')) {
-      const resolved = resolveOklch(color);
-      if (resolved !== color) return resolved;
       try {
         const c = new Color(color);
         const srgb = c.to('sRGB');
@@ -221,67 +201,30 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
     throw new Error(`Unable to process color ${color}`);
   };
-  const resolveToken = (token: string, refStack: Set<string> = new Set()): string => {
+  const resolveToken = (token: string): string => {
     if (token.includes('*')) {
       const [value, factor] = token.split('*');
-      const resolvedValue = resolveToken(value, refStack);
+      const resolvedValue = resolveToken(value);
       if (!resolvedValue.endsWith('px')) {
         throw new Error(`Unsupported expression ${token}`);
       }
       return `${Number.parseFloat(resolvedValue) * Number.parseFloat(factor)}px`;
+    } else if (token.includes('{') && token.includes('}')) {
+      const reference = token
+        .substring(token.indexOf('{') + 1, token.indexOf('}'))
+        .replace(/\./g, '-');
+      const resolvedToken =
+        token.substring(0, token.indexOf('{')) +
+        values[reference] +
+        token.substring(token.indexOf('}') + 1);
+      if (!resolvedToken || resolvedToken.includes('{')) {
+        throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
+      }
+      return resolvedToken;
+    } else {
+      return token;
     }
-    let result = token;
-    while (result.includes('{') && result.includes('}')) {
-      const match = result.match(/\{([^}]+)\}/);
-      if (!match) break;
-      const reference = match[1].replace(/\./g, '-');
-      if (refStack.has(reference)) {
-        throw new Error(`Circular token reference detected: ${reference} in "${token}"`);
-      }
-      const rawRefValue = values[reference];
-      if (rawRefValue === undefined) {
-        throw new Error(`Token "${reference}" was not found when resolving "${token}"`);
-      }
-      refStack.add(reference);
-      const replacement = resolveToken(rawRefValue, refStack);
-      refStack.delete(reference);
-      result =
-        result.substring(0, match.index!) + replacement + result.substring(match.index! + match[0].length);
-    }
-    return result;
   };
-
-  /** Replaces simple calc() expressions with computed px values for final CSS/TS output. */
-  const evaluateSimpleCalc = (value: string): string => {
-    let result = value;
-    let prev: string;
-    const toPx = (n: number) => `${n % 1 === 0 ? n : Math.round(n * 100) / 100}px`;
-    do {
-      prev = result;
-      const addMatch = result.match(/calc\(\s*([\d.]+)px\s*\+\s*([\d.]+)px\s*\)/);
-      if (addMatch) {
-        result = result.replace(addMatch[0], toPx(Number.parseFloat(addMatch[1]) + Number.parseFloat(addMatch[2])));
-        continue;
-      }
-      const subMatch = result.match(/calc\(\s*([\d.]+)px\s*-\s*([\d.]+)px\s*\)/);
-      if (subMatch) {
-        result = result.replace(subMatch[0], toPx(Number.parseFloat(subMatch[1]) - Number.parseFloat(subMatch[2])));
-        continue;
-      }
-      const mulMatch = result.match(/calc\(\s*([\d.]+)px\s*\*\s*([\d.]+)\s*\)/);
-      if (mulMatch) {
-        result = result.replace(mulMatch[0], toPx(Number.parseFloat(mulMatch[1]) * Number.parseFloat(mulMatch[2])));
-        continue;
-      }
-      const divMatch = result.match(/calc\(\s*([\d.]+)px\s*\/\s*([\d.]+)\s*\)/);
-      if (divMatch) {
-        result = result.replace(divMatch[0], toPx(Number.parseFloat(divMatch[1]) / Number.parseFloat(divMatch[2])));
-        continue;
-      }
-    } while (prev !== result);
-    return result;
-  };
-
   const replaceColors = (str: string) => {
     let result = '';
     for (let i = 0; i < str.length; i++) {
@@ -297,24 +240,11 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     return result;
   };
 
-  /** Converts color-mix(..., {gray.white} 95%, {blue.500} 5%) to CSS with var() references. */
-  const resolveColorMix = (value: string): string => {
-    return value.replace(/\{([^}]+)\}/g, (_match, ref) => {
-      const varName = ref.replace(/\./g, '-');
-      return `var(--${varName})`;
-    });
-  };
-
   const rawValues = { ...values };
 
   for (const token in values) {
     if (types[token] === 'color') {
-      const rawValue = values[token].trim();
-      if (rawValue.startsWith('color-mix(')) {
-        values[token] = resolveColorMix(values[token]);
-      } else {
-        values[token] = resolveColor(values[token]);
-      }
+      values[token] = resolveColor(values[token]);
       if (typeof values[token] === 'string' && values[token].trim().startsWith('oklch(')) {
         try {
           const c = new Color(values[token].trim());
@@ -337,7 +267,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       types[token] === 'borderRadius' ||
       types[token] === 'other'
     ) {
-      values[token] = evaluateSimpleCalc(resolveToken(values[token]));
+      values[token] = resolveToken(values[token]);
     }
     for (const modification of modifications[token] ?? []) {
       // refer to https://docs.tokens.studio/tokens/color-modifiers and https://github.com/tokens-studio/figma-plugin/tree/main/src/utils/color if extension is needed

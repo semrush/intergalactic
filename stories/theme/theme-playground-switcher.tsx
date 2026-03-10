@@ -3,6 +3,7 @@ import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
 import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
 import limeGreenThemeTokens from '@semcore/core/lib/theme/themes/lime-green';
 import newThemeTokens from '@semcore/core/lib/theme/themes/new';
+import newAdjustedThemeTokens from '@semcore/core/lib/theme/themes/new-adjusted';
 import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
@@ -12,6 +13,7 @@ import React from 'react';
 export const THEMES = [
   { id: 'light', label: 'Light (current)', tokens: defaultThemeTokens },
   { id: 'new', label: 'New (product test)', tokens: newThemeTokens },
+  { id: 'new-adjusted', label: 'New Adjusted (product test)', tokens: newAdjustedThemeTokens },
   { id: 'aqua-green', label: 'Aqua Green (marketing)', tokens: aquaGreenThemeTokens },
   { id: 'lime-green', label: 'Lime Green (marketing)', tokens: limeGreenThemeTokens },
   { id: 'dark', label: 'Dark (current for website)', tokens: darkThemeTokens },

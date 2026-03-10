@@ -95,6 +95,14 @@ const dataTableData: DataTableData = [
   { keyword: 'ebay buy', kd: '75.89', cpc: '$0.00', vol: '21,644,290' },
 ];
 
+const rowThemeStyles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
+const primaryDataTableData: DataTableData = rowThemeStyles.map((theme, i) => ({
+  theme,
+  metric: String(100 - i * 15),
+  value: String(250 + i * 50),
+  change: `${i % 2 === 0 ? '+' : ''}${(i - 2) * 5}%`,
+}));
+
 const internalLinkingData = [
   { category: '0', value: 13 },
   { category: '1', value: 18 },
@@ -530,7 +538,6 @@ function DashboardPlaygroundContent() {
               >
                 <Card.Header>
                   <Card.Title tag='h3'>Table</Card.Title>
-                  <Card.Description>Rows and columns get along.</Card.Description>
                 </Card.Header>
                 <Card.Body
                   pt={0}
@@ -612,6 +619,50 @@ function DashboardPlaygroundContent() {
                 </Card.Body>
               </Card>
             </Flex>
+
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 100%',
+                minWidth: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>Primary DataTable</Card.Title>
+              </Card.Header>
+              <Card.Body
+                pt={0}
+                px={0}
+                pb={1}
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: 0,
+                }}
+              >
+                <Box w='100%' style={{ minWidth: 0 }}>
+                  <DataTable
+                    use='primary'
+                    variant='card'
+                    data={primaryDataTableData}
+                    aria-label='Primary table with themed rows'
+                    w='100%'
+                    columns={[
+                      { name: 'theme', children: 'Theme', gtcWidth: 'minmax(100px, 1fr)' },
+                      { name: 'metric', children: 'Metric', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                      { name: 'value', children: 'Value', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                      { name: 'change', children: 'Change', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                    ]}
+                    rowProps={(_, index) => ({
+                      theme: rowThemeStyles[index],
+                    })}
+                  />
+                </Box>
+              </Card.Body>
+            </Card>
           </Flex>
         </Box>
       </Box>

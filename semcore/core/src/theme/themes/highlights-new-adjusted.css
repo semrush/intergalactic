@@ -1,6 +1,6 @@
 :root {
   /* Primary background for highlighted controls. */
-  --intergalactic-bg-primary-feature-highlight: #ffffff;
+  --intergalactic-bg-primary-feature-highlight: #fff;
   /* Primary background for hover and active (selected) state of highlighted controls. */
   --intergalactic-bg-primary-feature-highlight-hover-active: linear-gradient(90deg, #f5f1ff, #eef4ff);
   /* Secondary background for the highlighted message. */
