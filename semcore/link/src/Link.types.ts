@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
-export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, 'ellipsis' | 'hintProps'> & {
+export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, 'ellipsis' | 'hintProps' | 'noWrap'> & {
   /**
    * CSS property of the display link (inline|inline-block)
    * @default false

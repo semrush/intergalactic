@@ -1,4 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
+import type { LinkProps } from '@semcore/link';
 
 import type {
   AbstractButtonAddonProps,
@@ -17,7 +18,7 @@ export type ButtonLinkSize = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
  */
 type Use = 'primary' | 'secondary';
 
-export type ButtonLinkProps = AbstractButtonProps<ButtonLinkSize, Use, never>;
+export type ButtonLinkProps = AbstractButtonProps<ButtonLinkSize, Use, never> & LinkProps;
 
 export type ButtonLinkTextProps = AbstractButtonTextProps<ButtonLinkSize>;
 
