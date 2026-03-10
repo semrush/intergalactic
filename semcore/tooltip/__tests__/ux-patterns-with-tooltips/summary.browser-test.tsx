@@ -32,7 +32,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify Default summary', {
-    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton', '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx', 'en');
 
@@ -64,13 +64,13 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify Summary with error', {
-    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton', '@base-components', '@hint', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-error.tsx', 'en');
 
     const button = locators.button(page);
     const descriptionTooltip = locators.dialog(page);
-    const image = locators.hint(page);
+    const image = page.locator('[data-ui-name="Warning"]');
 
     await test.step('Verify focus on tooltip trigger and link hover', async () => {
       await page.keyboard.press('Tab');
@@ -82,21 +82,19 @@ test.describe(TAG.VISUAL, () => {
     await test.step('Verify Description tooltip and Hint opened', async () => {
       await page.keyboard.press('Space');
       await descriptionTooltip.waitFor({ state: 'visible' });
-      await expect(image.first()).toHaveAttribute('aria-hidden', 'false');
-      await expect(image.first()).toHaveAttribute('data-name', 'Warning');
 
       const box = await image.nth(2).boundingBox();
 
       if (box) {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
       }
-      await page.getByText('Something went wrong').waitFor({ state: 'visible' });
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
 
   test('Verify Summary with minitrends', {
-    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@tooltip', '@skeleton', '@link', '@mini-chart'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx', 'en');
 

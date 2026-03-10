@@ -1,11 +1,25 @@
 import Info from '@semcore/icon/Info/m';
 import Warning from '@semcore/icon/Warning/m';
-import { Flex } from '@semcore/ui/base-components';
+import { Flex, Hint } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+
+const Reload = () => {
+  const ref = React.useRef(null);
+
+  return (
+    <Flex gap={2} mt={1} h={28} alignItems='center'>
+      <Warning color='icon-secondary-neutral' ref={ref} aria-hidden={false} />
+      <Hint triggerRef={ref}>
+        Something went wrong
+      </Hint>
+      <ButtonLink>Reload</ButtonLink>
+    </Flex>
+  );
+};
 
 const Demo = () => (
   <Flex gap={6}>
@@ -35,15 +49,7 @@ const Demo = () => (
       <Text size={100} color='text-secondary'>
         last 30 days
       </Text>
-      <Flex gap={2} mt={1} h={28} alignItems='center'>
-        <Hint
-          tag={Warning}
-          title='Something went wrong'
-          aria-hidden={false}
-          color='icon-secondary-neutral'
-        />
-        <ButtonLink>Reload</ButtonLink>
-      </Flex>
+      <Reload />
     </Flex>
     <Divider orientation='vertical' />
     <Flex direction='column'>
@@ -71,15 +77,7 @@ const Demo = () => (
       <Text size={100} color='text-secondary'>
         last 30 days
       </Text>
-      <Flex gap={2} mt={1} h={28} alignItems='center'>
-        <Hint
-          tag={Warning}
-          title='Something went wrong'
-          aria-hidden={false}
-          color='icon-secondary-neutral'
-        />
-        <ButtonLink>Reload</ButtonLink>
-      </Flex>
+      <Reload />
     </Flex>
     <Divider orientation='vertical' />
     <Flex direction='column'>
@@ -105,15 +103,7 @@ const Demo = () => (
       <Text size={100} color='text-secondary'>
         last 30 days
       </Text>
-      <Flex gap={2} mt={1} h={28} alignItems='center'>
-        <Hint
-          tag={Warning}
-          title='Something went wrong'
-          aria-hidden={false}
-          color='icon-secondary-neutral'
-        />
-        <ButtonLink>Reload</ButtonLink>
-      </Flex>
+      <Reload />
     </Flex>
   </Flex>
 );
