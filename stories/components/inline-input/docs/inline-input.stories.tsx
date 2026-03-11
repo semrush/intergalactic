@@ -11,7 +11,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const BasicUsage: StoryObj<typeof basicUsageDefaultProps> = {
+export const BasicUsage: Story = {
   render: BasicUsageExample,
   argTypes: {
     disabled: {
@@ -21,8 +21,7 @@ export const BasicUsage: StoryObj<typeof basicUsageDefaultProps> = {
       control: { type: 'boolean' },
     },
     autoFocus: {
-      control: { type: 'select' },
-      options: ['true', 'false', undefined],
+      control: { type: 'boolean' },
     },
     state: {
       control: { type: 'select' },
