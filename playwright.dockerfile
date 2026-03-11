@@ -8,4 +8,4 @@ COPY . .
 
 RUN npm install --global pnpm@10.11.1
 RUN pnpm install --ignore-scripts
-RUN npx playwright install
+RUN npx playwright install --with-deps

@@ -298,18 +298,19 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify focused and menu opened by click on label', async () => {
         await label.click();
-        await page.waitForSelector('text="LinkedIn"');
+        await locators.options(page).first().waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify menu item focused when entered data', async () => {
         await page.keyboard.press('Backspace');
-        await page.waitForSelector('text="TikTok"');
+        await page.keyboard.type('TikTok');
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify menu item can be selected by click', async () => {
         await locators.options(page).first().click();
+        await locators.options(page).nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
     });
@@ -324,9 +325,16 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify nothing found state', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.inputValue(page)).toBeFocused();
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
         await page.keyboard.press('Enter');
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
         await page.keyboard.press('Enter');
-        await page.keyboard.press('Space');
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+        await page.keyboard.press('1');
         await page.waitForSelector('text="Nothing found"');
         await expect(page).toHaveScreenshot();
       });

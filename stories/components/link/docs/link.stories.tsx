@@ -5,7 +5,7 @@ import ColorLinksExample from './examples/color_links';
 import LinkAddonExample from './examples/link_addon';
 import LinkAsButtonExample from './examples/link_as_button';
 import LinkDisabledExample from './examples/link_disabled';
-import LinkInsideTheContentExample from './examples/link_inside_the_content';
+import LinkInContentExample from './examples/link_in_content';
 import LinkWithoutTextExample from './examples/link_without_text';
 import LinkWithEllipsisExample from './examples/links_with_ellipsis';
 
@@ -33,8 +33,8 @@ export const LinkDisabled: Story = {
   render: LinkDisabledExample,
 };
 
-export const LinkInsideTheContent: Story = {
-  render: LinkInsideTheContentExample,
+export const LinkInContent: Story = {
+  render: LinkInContentExample,
 };
 
 export const LinkWithoutText: Story = {

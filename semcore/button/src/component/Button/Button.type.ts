@@ -25,7 +25,7 @@ export type ButtonProps = AbstractButtonProps<ButtonSize, Use, Theme>;
 
 export type ButtonTextProps = AbstractButtonTextProps<ButtonSize>;
 
-export type ButtonAddonProps = AbstractButtonAddonProps<ButtonSize>;
+export type ButtonAddonProps = AbstractButtonAddonProps;
 
 export type ButtonContext = AbstractButtonContext;
 
