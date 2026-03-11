@@ -106,6 +106,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
           size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
         });
         const activeClip = await getTextClip(page);
+        await page.waitForTimeout(200); // Finish for ellipsis apply
 
         await test.step('Verify underlined state + hover hint', async () => {
           await locators.link(page).first().hover();
@@ -146,6 +147,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       size: 400, noWrap: true, ellipsis: false, w: 200,
     });
     const clip = await getTextClip(page);
+    await page.waitForTimeout(200); // Finish for ellipsis apply
 
     await test.step('Verify focus on first link', async () => {
       await page.keyboard.press('Tab');
@@ -199,7 +201,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
           tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
         }, async ({ page }) => {
           await loadPage(page, storyPath, 'en', { ...vars, size, text });
-          await page.waitForTimeout(100);
+          await page.waitForTimeout(200); // Finish for ellipsis apply
           const clip = await getTextClip(page);
 
           await test.step('Focus and hover link - no hint should appear', async () => {
