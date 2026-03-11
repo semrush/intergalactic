@@ -7,7 +7,7 @@ import AxesExample from './examples/d3-chart/axes';
 import AxesTitlesExample from './examples/d3-chart/axes-titles';
 import AxesValuesExample from './examples/d3-chart/axis-values';
 import BaseExample from './examples/d3-chart/base';
-import ChartLegengExample from './examples/d3-chart/chart-legend';
+import ChartLegendExample from './examples/d3-chart/chart-legend';
 import CustomPatternsExample from './examples/d3-chart/custom-patterns';
 import EnforcingPatternsExample from './examples/d3-chart/enforcing-patterns';
 import ExportToImageExample from './examples/d3-chart/export-to-image';
@@ -57,8 +57,8 @@ export const Tooltip: StoryObj = {
   render: TooltipExample,
 };
 
-export const ChartLegeng: StoryObj = {
-  render: ChartLegengExample,
+export const ChartLegend: StoryObj = {
+  render: ChartLegendExample,
 };
 
 export const CustomPatterns: StoryObj = {
