@@ -7,7 +7,7 @@ const Demo = () => {
     <Text size={300}>
       <Link href='#'>
         <Link.Text w={100} ellipsis>
-          Normally words shouldn't break even when text wraps to the next line.
+          Normally words should not break even when text wraps to the next line.
         </Link.Text>
       </Link>
       <br />
