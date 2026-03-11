@@ -9,9 +9,11 @@ export class Middleware {
     return {
       name: 'verticalCursorAnchoring',
       fn(state: MiddlewareState) {
-        const { rects, x } = state;
+        const { rects, x, elements } = state;
+        const referenceLeft = elements.reference.getBoundingClientRect().left;
+
         return {
-          x: rects.floating.width > rects.reference.width ? x : mouseCursorPosition.x - rects.floating.width / 2,
+          x: rects.floating.width > rects.reference.width ? x : mouseCursorPosition.x - referenceLeft + x - rects.floating.width / 2,
         };
       },
     };

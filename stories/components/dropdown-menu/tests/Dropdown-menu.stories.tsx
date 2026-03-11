@@ -12,6 +12,7 @@ import WithContentOnPageExample from './examples/test-with-content-on-page';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
 import WithEllipsisExample, { defaultProps as defaultWithEllipsisProps } from './examples/with_ellipsis';
+import WithHintOnMovedReferenceExample from './examples/with_hint_on_moved_reference';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -155,4 +156,8 @@ export const NestedMenuProps: StoryObj<typeof defaultNestedMenuPropsExample> = {
     },
   },
   args: defaultNestedMenuPropsExample,
+};
+
+export const WithHintOnMovedReference: Story = {
+  render: WithHintOnMovedReferenceExample,
 };
