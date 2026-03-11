@@ -13,7 +13,7 @@ import React from 'react';
 export const THEMES = [
   { id: 'light', label: 'Light (current)', tokens: defaultThemeTokens },
   { id: 'new', label: 'New (product test)', tokens: newThemeTokens },
-  { id: 'new-adjusted', label: 'New Adjusted (product test)', tokens: newAdjustedThemeTokens },
+  { id: 'new-adjusted', label: 'New Adjusted from Lesha (product test)', tokens: newAdjustedThemeTokens },
   { id: 'aqua-green', label: 'Aqua Green (marketing)', tokens: aquaGreenThemeTokens },
   { id: 'lime-green', label: 'Lime Green (marketing)', tokens: limeGreenThemeTokens },
   { id: 'dark', label: 'Dark (current for website)', tokens: darkThemeTokens },
