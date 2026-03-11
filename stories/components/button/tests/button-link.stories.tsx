@@ -5,7 +5,6 @@ import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './exa
 import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
 import ButtonLinkSizesAddonsExample, { defaultButtonLinkSizesProps } from './examples/button-link/button-link-sizes-addons';
 import ButtonLinkSizesWrapExample from './examples/button-link/button-link-sizes-wrap';
-import ButtonLinkWithEllipsisExample, { defaultButtonLinkEllipsisProps } from './examples/button-link/button-link-with-ellipsis';
 
 const meta: Meta = {
   title: 'Components/Button/Tests/Button Link',
@@ -95,12 +94,6 @@ export const ButtonLinkIconOnly: StoryObj<typeof defaultButtonLinkIconOnlyProps>
   render: ButtonLinkIconOnlyExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkIconOnlyProps,
-};
-
-export const ButtonLinkWithEllipsis: StoryObj<typeof defaultButtonLinkEllipsisProps> = {
-  render: ButtonLinkWithEllipsisExample,
-  argTypes: commonArgTypes,
-  args: defaultButtonLinkEllipsisProps,
 };
 
 export const ButtonLinkSizesWrap: StoryObj = {
