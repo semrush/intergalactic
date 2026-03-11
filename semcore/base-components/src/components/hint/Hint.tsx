@@ -176,7 +176,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.hideHint();
   }
 
-  private showHint(node: HTMLElement, mouseEvent?: MouseEvent): void {
+  private showHint(node: Element, mouseEvent?: MouseEvent): void {
     const { placement, timeout } = this.asProps;
 
     const showTimeout = Array.isArray(timeout) ? timeout[0] : timeout;
@@ -240,34 +240,42 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 
   private handleFocus(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && lastInteraction.isKeyboard()) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e) && lastInteraction.isKeyboard()) {
       this.showHint(e.target);
     }
   }
 
   private handleBlur(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.hideHint();
     }
   }
 
   private handleKeyDown(e: KeyboardEvent): void {
-    if (e.key === 'Escape' && e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && this.state.innerVisible) {
+    if (e.key === 'Escape' && this.isCompatibleElement(e.target) && this.sameAsTrigger(e) && this.state.innerVisible) {
       e.stopPropagation();
       this.hideHint();
     }
   }
 
   private handleMouseEnter(e: MouseEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.showHint(e.target, e);
     }
   }
 
   private handleMouseLeave(e: MouseEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.hideHint();
     }
+  }
+
+  private isCompatibleElement(target: unknown): target is HTMLElement | SVGElement {
+    return target instanceof HTMLElement || target instanceof SVGElement;
+  }
+
+  private sameAsTrigger(e: MouseEvent | KeyboardEvent | FocusEvent): boolean {
+    return this.asProps.triggerRef.current === e.target;
   }
 
   private keyframesKey(placement?: Placement) {

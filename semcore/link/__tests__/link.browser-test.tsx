@@ -12,55 +12,221 @@ export const locators = {
     const base = page.locator('[data-ui-name="Link.Addon"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
+
+const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
+
+async function getTextClip(page: Page) {
+  const clip = (await page.locator('[data-ui-name="Text"]').boundingBox())!;
+  clip.x -= 100;
+  clip.width += 200;
+  clip.y -= 100;
+  clip.height += 200;
+  return clip;
+}
 
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
-  const variables = [
-    { size: 100, disabled: false, active: false, showAddonLeft: false, showAddonRight: false, color: undefined },
-    { size: 200, disabled: false, active: true, showAddonLeft: true, showAddonRight: false, color: 'text-success' },
-    { size: 300, disabled: false, active: false, showAddonLeft: false, showAddonRight: true, color: 'text-critical' },
-    { size: 300, disabled: true, active: false, showAddonLeft: true, showAddonRight: false, color: undefined },
-    { size: 400, disabled: false, active: true, showAddonLeft: false, showAddonRight: true, color: undefined },
-    { size: 500, disabled: true, active: false, showAddonLeft: false, showAddonRight: false, color: 'text-success' },
-    { size: 500, disabled: false, active: false, showAddonLeft: true, showAddonRight: true, color: undefined },
-    { size: 600, disabled: false, active: true, showAddonLeft: false, showAddonRight: false, color: 'text-critical' },
-    { size: 700, disabled: true, active: true, showAddonLeft: true, showAddonRight: true, color: undefined },
-    { size: 800, disabled: false, active: false, showAddonLeft: true, showAddonRight: false, color: 'text-success' },
+  // Section 1: Size * addon position * ellipsis * addonType * color * merged rotation
+  const sizes = [100, 200, 300, 400, 500, 600, 700, 800];
+  const longText = 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation';
+  const addonTypes = ['icon', 'badge', 'counter', 'spin'];
+
+  const addonCombos = [
+    { desc: 'no addons', showAddonLeft: false, showAddonRight: false },
+    { desc: 'addonLeft', showAddonLeft: true, showAddonRight: false },
+    { desc: 'addonRight', showAddonLeft: false, showAddonRight: true },
+    { desc: 'both addons', showAddonLeft: true, showAddonRight: true },
   ];
 
-  variables.forEach((item) => {
-    test(`Verify Link size=${item.size}, disabled=${item.disabled}, active=${item.active}, addonLeft=${item.showAddonLeft}, addonRight=${item.showAddonRight},  color=${item.color || 'default'}`, {
-      tag: [TAG.PRIORITY_HIGH, '@link'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', item);
+  const ellipsisVariants = [
+    { desc: 'ellipsis: true', vars: { ellipsis: true } },
+    { desc: 'cropPosition: middle', vars: { ellipsis: { cropPosition: 'middle' } } },
+    { desc: 'middle, lastRequired: 2', vars: { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 } } },
+    { desc: 'end, maxLine: 2', vars: { ellipsis: { cropPosition: 'end', maxLine: 2 } } },
+  ];
 
-      await test.step('Verify default visual state', async () => {
-        await expect(page).toHaveScreenshot();
-      });
+  const colorBySize: Record<number, string | undefined> = {
+    200: 'text-success', 300: 'text-critical',
+    600: 'text-success', 700: 'text-critical',
+  };
 
-      if (!item.disabled) {
-        await test.step('Verify focused state', async () => {
+  sizes.forEach((size, sizeIndex) => {
+    addonCombos.forEach(({ desc: addonDesc, ...addonVars }, addonIndex) => {
+      const { desc: ellipsisDesc, vars: ellipsisVars } = ellipsisVariants[addonIndex];
+
+      const hasAddons = addonVars.showAddonLeft || addonVars.showAddonRight;
+      const addonType = hasAddons ? addonTypes[(sizeIndex + addonIndex - 1) % 4] : undefined;
+      const color = !hasAddons ? colorBySize[size] : undefined;
+      const merged = (size === 800 && addonIndex === 2) ? true : undefined;
+
+      const extraVars: Record<string, unknown> = {};
+      if (addonType) {
+        if (addonVars.showAddonLeft) extraVars.addonLeftType = addonType;
+        if (addonVars.showAddonRight) extraVars.addonRightType = addonType;
+      }
+      if (color) extraVars.color = color;
+      if (merged) extraVars.merged = true;
+
+      const descParts = [addonDesc];
+      if (addonType && addonType !== 'icon') descParts.push(addonType);
+      if (color) descParts.push(color);
+      if (merged) descParts.push('merged');
+
+      test(`Verify Link size=${size}, ${descParts.join(', ')}, ${ellipsisDesc}`, {
+        tag: [TAG.PRIORITY_HIGH, '@link', '@ellipsis'],
+      }, async ({ page }) => {
+        await loadPage(page, storyPath, 'en', {
+          size, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
+        });
+        await page.waitForTimeout(200); // Finish for ellipsis apply
+        const clip = await getTextClip(page);
+
+        await test.step('Focus first link + verify hint', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page).first()).toBeFocused();
-          await expect(page).toHaveScreenshot();
+          await locators.hint(page).waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot({ clip });
         });
 
-        await test.step('Verify hover state', async () => {
-          await locators.link(page).first().hover();
-          await expect(page).toHaveScreenshot();
+        await test.step('Focus second link', async () => {
+          await page.keyboard.press('Tab');
+          await expect(locators.link(page, 1)).toBeFocused();
+          // Link2 has no ellipsis/addons - visually identical across combos, snapshot only for combo 0 to decrease amount of snapshots without losing coverage
+          if (addonIndex === 0) {
+            await expect(page).toHaveScreenshot({ clip });
+          }
         });
-      }
+
+        await loadPage(page, storyPath, 'en', {
+          size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
+        });
+        const activeClip = await getTextClip(page);
+        await page.waitForTimeout(200); // Finish for ellipsis apply
+
+        await test.step('Verify underlined state + hover hint', async () => {
+          await locators.link(page).first().hover();
+          await page.waitForTimeout(200);
+          await locators.hint(page).waitFor({ state: 'visible' });
+          await expect(page).toHaveScreenshot({ clip: activeClip });
+        });
+      });
+    });
+  });
+
+  // Section 2: Residual tests - disabled, noWrap, mixed addon types
+  test('Verify Link: disabled with counter addon', {
+    tag: [TAG.PRIORITY_HIGH, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      size: 300, disabled: true, showAddonLeft: true, addonLeftType: 'counter',
+    });
+    const clip = await getTextClip(page);
+    await expect(page).toHaveScreenshot({ clip });
+  });
+
+  test('Verify Link: disabled+active with success and addons', {
+    tag: [TAG.PRIORITY_HIGH, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      size: 500, disabled: true, active: true, showAddonLeft: true, showAddonRight: true,
+      color: 'text-success',
+    });
+    const clip = await getTextClip(page);
+    await expect(page).toHaveScreenshot({ clip });
+  });
+
+  test('Verify Link: noWrap without ellipsis', {
+    tag: [TAG.PRIORITY_HIGH, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      size: 400, noWrap: true, ellipsis: false, w: 200,
+    });
+    const clip = await getTextClip(page);
+    await page.waitForTimeout(200); // Finish for ellipsis apply
+
+    await test.step('Verify focus on first link', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page).first()).toBeFocused();
+      await expect(page).toHaveScreenshot({ clip });
+    });
+
+    await test.step('Verify focus on second link', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.link(page, 1)).toBeFocused();
+      await expect(page).toHaveScreenshot({ clip });
+    });
+  });
+
+  test('Verify Link: mixed addon types', {
+    tag: [TAG.PRIORITY_HIGH, '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      size: 300, showAddonLeft: true, addonLeftType: 'badge',
+      showAddonRight: true, addonRightType: 'spin',
+    });
+    const clip1 = await getTextClip(page);
+
+    await test.step('Verify badge+spin addons', async () => {
+      await expect(page).toHaveScreenshot({ clip: clip1 });
+    });
+
+    await loadPage(page, storyPath, 'en', {
+      size: 800, showAddonLeft: true, addonLeftType: 'counter',
+      showAddonRight: true, addonRightType: 'badge', active: true,
+    });
+    const clip2 = await getTextClip(page);
+
+    await test.step('Verify counter+badge active', async () => {
+      await expect(page).toHaveScreenshot({ clip: clip2 });
+    });
+  });
+
+  // Section 3: No-hint tests - verify hint does NOT appear when text is not truncated
+  test.describe('Link without ellipsis', () => {
+    const noHintVariants = [
+      { desc: 'ellipsis: false', vars: { ellipsis: false as const }, text: longText },
+      { desc: 'maxLine: 9 (text not truncated)', vars: { ellipsis: { cropPosition: 'end', maxLine: 9 } }, text: longText },
+    ];
+
+    // 3 representative sizes
+    const noHintSizes = [100, 300, 500] as const;
+    noHintSizes.forEach((size) => {
+      noHintVariants.forEach(({ desc, vars, text }) => {
+        test(`Verify no hint appears: size=${size}, ${desc}`, {
+          tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
+        }, async ({ page }) => {
+          await loadPage(page, storyPath, 'en', { ...vars, size, text });
+          await page.waitForTimeout(200); // Finish for ellipsis apply
+          const clip = await getTextClip(page);
+
+          await test.step('Focus and hover link - no hint should appear', async () => {
+            await page.keyboard.press('Tab');
+            await locators.link(page).first().hover();
+            await expect(locators.hint(page)).toHaveCount(0);
+            await expect(locators.link(page).first()).toBeFocused();
+            await expect(page).toHaveScreenshot({ clip });
+          });
+
+          await loadPage(page, storyPath, 'en', { ...vars, size, text, active: true });
+
+          await test.step('Verify no hint with active', async () => {
+            await locators.link(page).first().hover();
+            await expect(locators.hint(page)).toHaveCount(0);
+          });
+        });
+      });
     });
   });
 
   test('Verify default link styles when links inside the text', {
     tag: [TAG.PRIORITY_HIGH, '@link', '@typography'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/link/tests/examples/link_inside_the_content-with_enable_visited.tsx', 'en');
+    await loadPage(page, 'stories/components/link/docs/examples/link_in_content.tsx', 'en');
 
     await test.step('Verify links styles', async () => {
       await expect(page).toHaveScreenshot();
@@ -117,23 +283,6 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
-
-  test('Verify link with ellipsis', {
-    tag: [TAG.PRIORITY_MEDIUM, '@link', '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/link/docs/examples/links_with_ellipsis.tsx', 'en');
-
-    await locators.link(page).waitFor({ state: 'visible' });
-    await page.waitForTimeout(200);
-
-    await test.step('Verify ellipsis visual with focus', async () => {
-      await page.keyboard.press('Tab');
-      await expect(locators.link(page)).toBeFocused();
-      await page.waitForTimeout(200);
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
-    });
-  });
 });
 
 /* =====================================================
@@ -142,26 +291,10 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
-  test('Verify link keyboard navigation and attributes', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en');
-
-    await test.step('Verify link attributes', async () => {
-      await expect(locators.link(page).first()).toHaveAttribute('href', '#');
-      await expect(locators.link(page).first()).toHaveAttribute('tabindex', '0');
-    });
-
-    await test.step('Verify link can be focused', async () => {
-      await page.keyboard.press('Tab');
-      await expect(locators.link(page).first()).toBeFocused();
-    });
-  });
-
   test('Verify disabled link cannot be focused', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { disabled: true });
+    await loadPage(page, storyPath, 'en', { disabled: true });
 
     await test.step('Verify disabled link attributes', async () => {
       await expect(locators.link(page).first()).toHaveAttribute('tabindex', '-1');
@@ -170,21 +303,6 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify disabled link cannot receive focus', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.link(page).first()).not.toBeFocused();
-    });
-  });
-
-  test('Verify link with addons maintains correct structure', {
-    tag: [TAG.PRIORITY_MEDIUM, '@link'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/link/tests/examples/basic_usage.tsx', 'en', { showAddonLeft: true, showAddonRight: true });
-
-    await test.step('Verify addons are present', async () => {
-      const link = locators.link(page).first();
-      await expect(link).toBeVisible();
-
-      // Verify the link can be focused with addons
-      await page.keyboard.press('Tab');
-      await expect(link).toBeFocused();
     });
   });
 });

@@ -17,8 +17,10 @@ SButtonLink[use='secondary']:not([color]) {
   }
 
   SText {
-    text-decoration-style: dashed;
-    text-decoration-color: currentColor;
+    box-shadow: none;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: currentColor;
   }
 }
 
