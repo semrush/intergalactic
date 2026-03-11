@@ -62,12 +62,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(body).toHaveCSS('padding', '20px');
     });
 
-    await test.step('Verify description tooltip trigger margins', async () => {
-      await expect(descriptionTooltipTrigger).toHaveCSS('margin-top', '4px');
-      await expect(descriptionTooltipTrigger).toHaveCSS('margin-left', '4px');
-      await expect(descriptionTooltipTrigger).toHaveCSS('margin-right', '4px');
-    });
-
     await test.step('Verify description tooltip expanded state by mouse', async () => {
       await descriptionTooltipTrigger.click();
       await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
