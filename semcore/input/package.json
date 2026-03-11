@@ -28,6 +28,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
     "@semcore/icon": "workspace:*",
-    "@semcore/testing-utils": "workspace:*"
+    "@semcore/testing-utils": "workspace:*",
+    "@semcore/styled-system": "workspace:*"
   }
 }

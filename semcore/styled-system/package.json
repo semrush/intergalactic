@@ -1,0 +1,49 @@
+{
+  "name": "@semcore/styled-system",
+  "description": "Semrush Styled System",
+  "version": "17.0.0",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/styled-system"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^1.9.0",
+    "@semcore/panda-preset": "workspace:*"
+  },
+  "exports": {
+    "./css": {
+      "types": "./css/index.d.ts",
+      "require": "./css/index.mjs",
+      "import": "./css/index.mjs"
+    },
+    "./tokens": {
+      "types": "./tokens/index.d.ts",
+      "require": "./tokens/index.mjs",
+      "import": "./tokens/index.mjs"
+    },
+    "./types": {
+      "types": "./types/index.d.ts",
+      "require": "./types/index.mjs",
+      "import": "./types/index.mjs"
+    },
+    "./patterns": {
+      "types": "./patterns/index.d.ts",
+      "require": "./patterns/index.mjs",
+      "import": "./patterns/index.mjs"
+    },
+    "./jsx": {
+      "types": "./jsx/index.d.ts",
+      "require": "./jsx/index.mjs",
+      "import": "./jsx/index.mjs"
+    },
+    "./recipes": {
+      "types": "./recipes/index.d.ts",
+      "require": "./recipes/index.mjs",
+      "import": "./recipes/index.mjs"
+    }
+  }
+}

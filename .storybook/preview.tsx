@@ -2,8 +2,9 @@ import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
-import '@semcore/core/lib/theme/themes/default.css';
-import '@semcore/core/lib/theme/themes/highlights-light.css';
+import './index.css';
+// import '@semcore/core/lib/theme/themes/default.css';
+// import '@semcore/core/lib/theme/themes/highlights-light.css';
 
 const preview: Preview = {
   parameters: {

@@ -1,0 +1,24 @@
+{
+  "name": "@semcore/panda-preset",
+  "description": "Semrush Panda preset for Intergalactic",
+  "version": "17.0.0",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder && pnpm vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/panda-preset"
+  },
+  "exports": {
+    "types": "./lib/types/index.d.ts",
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.mjs"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^1.9.0"
+  }
+}

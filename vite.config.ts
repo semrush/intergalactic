@@ -31,6 +31,11 @@ export default defineConfig({
         )
           return null;
         if (id.endsWith('.md') || id.endsWith('.mdx') || id.includes('stories')) return null;
+
+        if (id.startsWith('/semcore/')) {
+          return resolvePath(process.cwd(), `.${id}`);
+        }
+
         return await resolveSemcoreSources(id);
       },
       loadInclude: (id) => {

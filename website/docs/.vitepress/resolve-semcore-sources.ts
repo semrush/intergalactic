@@ -57,7 +57,7 @@ const tryToResolveFile = async (path: string) => {
   }
 };
 
-const extensions = ['.js', '.jsx', '.ts', '.tsx', '.css'];
+const extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.mjs'];
 const tryToResolveFileExtention = async (path: string) => {
   for (const extension of extensions) {
     const resolved = await tryToResolveFile(path + extension);
@@ -70,7 +70,7 @@ const tryToResolveIndexFile = async (path: string) => {
 };
 
 const rootFiles = ['README.md', 'package.json'];
-const generatedComponents = ['icon', 'ui', 'illustration'];
+const generatedComponents = ['icon', 'ui', 'illustration', 'styled-system'];
 const outOfSourceDirs = ['style'];
 
 const rootPath = resolvePath(__dirname, '../../..');

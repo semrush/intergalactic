@@ -1,9 +1,7 @@
 import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
+import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import { input } from '@semcore/styled-system/recipes';
 import React from 'react';
-
-import style from './style/input.shadow.css';
-
 class Input extends Component {
   static displayName = 'Input';
 
@@ -11,8 +9,6 @@ class Input extends Component {
     size: 'm',
     state: 'normal',
   };
-
-  static style = style;
 
   inputRef = React.createRef();
 
@@ -75,32 +71,34 @@ class Input extends Component {
   render() {
     const SInput = Root;
     const SOutline = 'div';
-    const { Children, styles, neighborLocation, controlsLength, state } = this.asProps;
+    const { Children, neighborLocation, controlsLength, state } = this.asProps;
+    const [variantProps] = input.splitVariantProps(this.asProps);
+
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
-        {(neighborLocation) =>
-          sstyled(styles)(
-            <SInput
-              render={Box}
-              neighborLocation={neighborLocation}
-              __excludeProps={[
-                'role',
-                'aria-haspopup',
-                'aria-controls',
-                'aria-expanded',
-                'placeholder',
-                'aria-autocomplete',
-                'aria-owns',
-                'aria-activedescendant',
-                'tabIndex',
-              ]}
-            >
-              <NeighborLocation controlsLength={controlsLength}>
-                <Children />
-              </NeighborLocation>
-              <SOutline>{state === 'invalid' && <InvalidStateBox />}</SOutline>
-            </SInput>,
-          )}
+        {(neighborLocation) => (
+          <SInput
+            render={Box}
+            neighborLocation={neighborLocation}
+            __excludeProps={[
+              'role',
+              'aria-haspopup',
+              'aria-controls',
+              'aria-expanded',
+              'placeholder',
+              'aria-autocomplete',
+              'aria-owns',
+              'aria-activedescendant',
+              'tabIndex',
+            ]}
+            className={input({ ...variantProps, neighborLocation }).root}
+          >
+            <NeighborLocation controlsLength={controlsLength}>
+              <Children />
+            </NeighborLocation>
+            <SOutline className={input({ ...variantProps, neighborLocation }).outline}>{state === 'invalid' && <InvalidStateBox />}</SOutline>
+          </SInput>
+        )}
       </NeighborLocation.Detect>
     );
   }
@@ -119,21 +117,23 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const { styles, neighborLocation, state } = this.asProps;
+    const { neighborLocation, state } = this.asProps;
+
+    const [variantProps] = input.splitVariantProps(this.asProps);
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
-        {(neighborLocation) =>
-          sstyled(styles)(
-            <SValue
-              render={Box}
-              inAfterOutline
-              neighborLocation={neighborLocation}
-              tag='input'
-              type='text'
-              aria-invalid={state === 'invalid'}
-            />,
-          )}
+        {(neighborLocation) => (
+          <SValue
+            render={Box}
+            inAfterOutline
+            neighborLocation={neighborLocation}
+            tag='input'
+            type='text'
+            aria-invalid={state === 'invalid'}
+            className={input({ ...variantProps, neighborLocation }).value}
+          />
+        )}
       </NeighborLocation.Detect>
     );
   }
@@ -141,15 +141,17 @@ class Value extends Component {
 
 function Addon(props) {
   const SAddon = Root;
-  const { Children, styles, neighborLocation } = props;
+  const { Children, neighborLocation } = props;
+
+  const [variantProps] = input.splitVariantProps(props);
+
   return (
     <NeighborLocation.Detect neighborLocation={neighborLocation}>
-      {(neighborLocation) =>
-        sstyled(styles)(
-          <SAddon render={Box} neighborLocation={neighborLocation}>
-            <Children />
-          </SAddon>,
-        )}
+      {(neighborLocation) => (
+        <SAddon className={input({ ...variantProps, neighborLocation }).addon} render={Box} neighborLocation={neighborLocation}>
+          <Children />
+        </SAddon>
+      )}
     </NeighborLocation.Detect>
   );
 }
