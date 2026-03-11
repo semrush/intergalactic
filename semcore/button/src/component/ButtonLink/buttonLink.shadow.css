@@ -1,5 +1,5 @@
 SButton {
-  display: inline-flex;
+  display: inline;
   font-family: inherit;
   font-size: var(--intergalactic-fs-200, 14px);
   color: var(--intergalactic-text-link, #006dca);
@@ -15,11 +15,6 @@ SButton {
   background: none;
   transition: color 0.15s ease-in-out;
 
-  &:active,
-  &:hover {
-    text-decoration: none;
-  }
-
   &::-moz-focus-inner {
     border: none;
     padding: 0;
@@ -31,7 +26,7 @@ SButton {
     color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
-      box-shadow: 0 1px 0 0 currentColor;
+      text-decoration-color: currentColor;
     }
   }
 
@@ -41,8 +36,13 @@ SButton {
   }
 
   SText {
-    box-shadow: 0 1px 0 0 transparent;
-    transition: box-shadow 0.15s ease-in-out;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    text-underline-offset: 17%;
+
+    transition: text-decoration-color 0.15s ease-in-out;
   }
 }
 
@@ -63,28 +63,22 @@ SButton[use='secondary'] {
   }
 
   SText {
-    box-shadow: none;
-    border-bottom-width: 1px;
-    border-bottom-style: dashed;
-    border-color: currentColor;
+    text-decoration-style: dashed;
+    text-decoration-color: currentColor;
   }
 }
 
 SInner {
-  display: inline-flex;
   align-items: baseline;
-  justify-content: center;
   height: 100%;
   width: 100%;
 }
 
 SAddon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: baseline;
-  vertical-align: middle;
   pointer-events: none;
-  align-self: center;
+  vertical-align: middle;
+  display: inline-flex;
+  margin-top: -2px;
 }
 
 SButton SAddon {

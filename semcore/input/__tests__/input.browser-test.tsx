@@ -10,7 +10,7 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   input: (page: Page) => page.getByRole('textbox'),
-  hint: (page: Page, text: string) => page.getByText(text),
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
   addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
 };
@@ -140,7 +140,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.type('Hello world');
     await page.keyboard.press('Tab');
-    await locators.hint(page, 'Submit').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -154,7 +154,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     const hintTrigger = locators.addon(page).locator('button');
     await hintTrigger.click();
-    await locators.hint(page, 'Hide password').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
