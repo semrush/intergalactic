@@ -112,7 +112,9 @@ class DropdownMenuRoot extends AbstractDropdown {
 
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
+    const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
+    if (isFocusAlreadyInPopper) return;
     if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
