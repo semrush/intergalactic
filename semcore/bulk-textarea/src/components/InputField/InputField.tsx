@@ -282,6 +282,11 @@ class InputField<T extends string | string[]> extends Component<
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
 
+    const isActive = !props.disabled && !props.readonly;
+    if (props.autoFocus && isActive) {
+      textarea.setAttribute('autofocus', '');
+    }
+
     if (props.id) {
       textarea.setAttribute('id', props.id);
     }
