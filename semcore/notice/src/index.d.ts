@@ -60,6 +60,9 @@ export type NoticeSmartProps = NoticeProps & {
    * Custom action element
    */
   actions?: React.ReactNode;
+
+  /** A custom element for text */
+  text?: React.ReactNode;
   /**
    *  Adds a Close button
    */
