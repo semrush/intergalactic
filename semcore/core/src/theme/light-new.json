@@ -609,22 +609,22 @@
           "description": "Placeholder text only."
         },
         "success": {
-          "value": "{green.500}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Text associated with success states and data."
         },
         "success-hover-active": {
-          "value": "{green.600}",
+          "value": "{green.500}",
           "type": "color",
           "description": "Hover and active states for the text associated with success states and data."
         },
         "critical": {
-          "value": "{red.500}",
+          "value": "{red.400}",
           "type": "color",
           "description": "Text associated with critical states and data."
         },
         "critical-hover-active": {
-          "value": "{red.600}",
+          "value": "{red.500}",
           "type": "color",
           "description": "Hover and active states for the text associated with critical states and data."
         },
@@ -649,17 +649,17 @@
           "description": "Hover and active states for the link text."
         },
         "link-invert": {
-          "value": "{blue.200}",
+          "value": "{blue.100}",
           "type": "color",
           "description": "Inverted version of the link text. Use on dark background only."
         },
         "link-invert-hover": {
-          "value": "{blue.300}",
+          "value": "{blue.200}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the link text. Use on dark background only."
         },
         "link-visited": {
-          "value": "{violet.500}",
+          "value": "{violet.400}",
           "type": "color",
           "description": "Visited link text."
         },
@@ -674,12 +674,12 @@
           "description": "Hover and active states of the hint link text."
         },
         "hint-invert": {
-          "value": "{gray.200}",
+          "value": "{gray.100}",
           "type": "color",
           "description": "Inverted version of the hint link text."
         },
         "hint-invert-hover-active": {
-          "value": "{gray.300}",
+          "value": "{gray.200}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the hint link text."
         },
@@ -699,12 +699,12 @@
           "description": "Hover and active states of the link text with font-size ≥20px."
         },
         "large-success": {
-          "value": "{green.400}",
+          "value": "{green.300}",
           "type": "color",
           "description": "Text with font-size ≥20px associated with success states and data."
         },
         "large-success-hover-active": {
-          "value": "{green.500}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Hover and active states of the text with font-size ≥20px associated with success states and data."
         },
@@ -719,7 +719,7 @@
           "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data."
         },
         "advertising": {
-          "value": "{violet.700}",
+          "value": "{violet.500}",
           "type": "color",
           "description": "Advertising text."
         }
@@ -2286,7 +2286,7 @@
       "chart": {
         "palette-order": {
           "1": {
-            "value": "{blue.300}",
+            "value": "{blue.400}",
             "type": "color",
             "description": "1 color in the default list of colors for charts."
           },
@@ -2311,22 +2311,22 @@
             "description": "5 color in the default list of colors for charts."
           },
           "6": {
-            "value": "{violet.400}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "6 color in the default list of colors for charts."
           },
           "7": {
-            "value": "{red.300}",
+            "value": "{red.400}",
             "type": "color",
             "description": "7 color in the default list of colors for charts."
           },
           "8": {
-            "value": "{salad.200}",
+            "value": "{salad.300}",
             "type": "color",
             "description": "8 color in the default list of colors for charts."
           },
           "9": {
-            "value": "{blue.400}",
+            "value": "{blue.300}",
             "type": "color",
             "description": "9 color in the default list of colors for charts."
           },
@@ -2366,7 +2366,7 @@
             "description": "16 color in the default list of colors for charts."
           },
           "17": {
-            "value": "{blue.200}",
+            "value": "{blue.500}",
             "type": "color",
             "description": "17 color in the default list of colors for charts."
           },
@@ -2423,7 +2423,7 @@
         },
         "grid": {
           "line": {
-            "value": "{gray.100}",
+            "value": "{border.secondary}",
             "type": "color",
             "description": "Default chart grid line."
           },
@@ -2443,12 +2443,12 @@
             "description": "Text label on the chart grid."
           },
           "bar-chart-hover": {
-            "value": "rgba({gray.200}, 0.3)",
+            "value": "rgba({gray.200}, 0.2)",
             "type": "color",
             "description": "Background color for the hover state of a bar on the chart grid."
           },
           "bar-chart-base-bg": {
-            "value": "{gray.100}",
+            "value": "{gray.50}",
             "type": "color",
             "description": "Default background color of a bar in the BarChart."
           },
@@ -2470,7 +2470,7 @@
         },
         "x-axis-accent": {
           "period-active": {
-            "value": "{gray.500}",
+            "value": "{gray.400}",
             "type": "color",
             "description": "Background color for the clickable date on the X-axis of the chart grid."
           },

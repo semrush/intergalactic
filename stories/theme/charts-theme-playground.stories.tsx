@@ -16,6 +16,20 @@ import StackedAreaMockData from '../components/d3-chart/__mocks__/stacked-area';
 import VennMockData from '../components/d3-chart/__mocks__/venn';
 import './theme-playground-fonts.css';
 
+/** 5 data series for Scatterplot with chart-palette-order-1 … chart-palette-order-5 */
+const ScatterplotFiveSeriesData = [
+  { x: 0, y1: 2, y2: 5, y3: 7, y4: 1, y5: 9 },
+  { x: 1, y1: 4, y2: 7, y3: 3, y4: 6, y5: 2 },
+  { x: 2, y1: 6, y2: 3, y3: 9, y4: 4, y5: 8 },
+  { x: 3, y1: 8, y2: 1, y3: 2, y4: 9, y5: 5 },
+  { x: 4, y1: 5, y2: 9, y3: 6, y4: 3, y5: 10 },
+  { x: 5, y1: 7, y2: 2, y3: 4, y4: 8, y5: 1 },
+  { x: 6, y1: 3, y2: 6, y3: 8, y4: 2, y5: 7 },
+  { x: 7, y1: 9, y2: 4, y3: 1, y4: 10, y5: 4 },
+  { x: 8, y1: 1, y2: 8, y3: 10, y4: 5, y5: 6 },
+  { x: 9, y1: 10, y2: 0, y3: 5, y4: 7, y5: 3 },
+];
+
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
 
 const meta: Meta = {
@@ -177,6 +191,19 @@ function ChartsThemePlaygroundContent() {
                 plotWidth={400}
                 plotHeight={240}
                 aria-label='Scatterplot chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Scatterplot chart (5 series)
+              </Text>
+              <Chart.ScatterPlot
+                data={ScatterplotFiveSeriesData}
+                groupKey='x'
+                plotWidth={400}
+                plotHeight={240}
+                showLegend
+                aria-label='Scatterplot chart with 5 palette colors'
               />
             </Box>
           </Flex>
