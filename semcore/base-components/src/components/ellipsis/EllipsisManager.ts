@@ -219,10 +219,23 @@ class EllipsisManager {
         const lastSpan = ellipsisSpans[ellipsisSpans.length - 2];
         const fullSpan = ellipsisSpans[ellipsisSpans.length - 1];
 
-        const isCroppedSelected = (selection.anchorNode === croppedSpan?.childNodes[0] && selection.focusOffset === croppedSpan?.textContent?.length) ||
-          (selection.anchorNode === lastSpan?.childNodes[0] && selection.anchorOffset === lastSpan?.textContent?.length && selection.focusNode === croppedSpan?.childNodes[0] && selection.focusOffset === 0) ||
-          (selection.focusNode === lastSpan?.childNodes[0] && selection.focusOffset === lastSpan?.textContent?.length);
-        const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && selection.focusOffset === fullSpan?.textContent?.length;
+        const croppedLength = croppedSpan?.textContent?.length;
+        const lastLength = lastSpan?.textContent?.length;
+
+        const anchorInCropped = selection.anchorNode === croppedSpan?.childNodes[0];
+        const anchorInLast = selection.anchorNode === lastSpan?.childNodes[0];
+        const focusInCropped = selection.focusNode === croppedSpan?.childNodes[0];
+        const focusInLast = selection.focusNode === lastSpan?.childNodes[0];
+
+        const anchorOffset = selection.anchorOffset;
+        const focusOffset = selection.focusOffset;
+
+        const isCroppedSelected =
+          (anchorInCropped && focusOffset === croppedLength) ||
+          (anchorInLast && anchorOffset === lastLength && focusInCropped && focusOffset === 0) ||
+          (focusInLast && focusOffset === lastLength);
+
+        const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && focusOffset === fullSpan?.textContent?.length;
 
         if (fullSpan?.textContent && (!(selection.focusNode instanceof Text) || isCroppedSelected || isFullSelected)) {
           event.preventDefault();
