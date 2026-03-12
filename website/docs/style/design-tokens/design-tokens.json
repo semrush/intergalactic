@@ -496,7 +496,7 @@
   {
     "name": "--intergalactic-text-secondary-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.8",
+    "rawValue": "rgba({gray.white}, 0.8)",
     "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Inverted version of the secondary text.",
     "components": []
@@ -3561,7 +3561,7 @@
   {
     "name": "--intergalactic-tag-primary-white-normal",
     "type": "color",
-    "rawValue": "{gray.white}, 0.15",
+    "rawValue": "rgba({gray.white}, 0.15)",
     "computedValue": "rgba(255, 255, 255, 0.15)",
     "description": "Primary white tag.",
     "components": [
@@ -3571,7 +3571,7 @@
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
+    "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Hover and active (selected) state of the primary white tag.",
     "components": []

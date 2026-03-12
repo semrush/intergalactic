@@ -18,15 +18,17 @@ import {
   YAxis,
 } from '@semcore/ui/d3-chart';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
 import Divider from '@semcore/ui/divider';
 import Link from '@semcore/ui/link';
+import Pagination from '@semcore/ui/pagination';
 import Pills from '@semcore/ui/pills';
 import ProductHead, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import TabLine from '@semcore/ui/tab-line';
 import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
+import { Error, NoData } from '@semcore/ui/widget-empty';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
@@ -54,12 +56,35 @@ const dataTableData: DataTableData = [
 ];
 
 const rowThemeStyles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
-const primaryDataTableData: DataTableData = rowThemeStyles.map((theme, i) => ({
+const primaryDataTableThemedRows: DataTableData = rowThemeStyles.map((theme, i) => ({
   theme,
   metric: String(100 - i * 15),
   value: String(250 + i * 50),
   change: `${i % 2 === 0 ? '+' : ''}${(i - 2) * 5}%`,
 }));
+const primaryDataTablePlainRows: DataTableData = [
+  { theme: 'neutral', metric: '72', value: '520', change: '+3%' },
+  { theme: 'neutral', metric: '58', value: '410', change: '-1%' },
+  { theme: 'neutral', metric: '91', value: '680', change: '+7%' },
+  { theme: 'neutral', metric: '44', value: '290', change: '-2%' },
+  { theme: 'neutral', metric: '63', value: '395', change: '+5%' },
+];
+const primaryDataTableData: DataTableData = [...primaryDataTableThemedRows, ...primaryDataTablePlainRows];
+
+const vennChartData = {
+  'G': 200,
+  'F': 200,
+  'C': 500,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
+const vennChartLegendMap = {
+  G: { label: 'Good' },
+  F: { label: 'Fast' },
+  C: { label: 'Clean' },
+};
 
 const CHART_HEIGHT = 180;
 /** Height for charts that need extra space (axis labels, legend) so content isn't clipped */
@@ -246,8 +271,33 @@ function BarChartHorizontal({
   );
 }
 
+type PrimaryTableRow = (typeof primaryDataTableData)[number];
 function DashboardPlaygroundContent() {
   const [tabValue, setTabValue] = React.useState(1);
+  const [primaryTablePage, setPrimaryTablePage] = React.useState(1);
+  const [primaryTableSort, setPrimaryTableSort] = React.useState<
+    DataTableSort<keyof PrimaryTableRow>
+  >(['metric', 'asc']);
+  const primaryTableSortedData = React.useMemo(
+    () =>
+      [...primaryDataTableData].sort((a, b) => {
+        const [prop, direction] = primaryTableSort;
+        const aVal = a[prop];
+        const bVal = b[prop];
+        if (prop === 'metric' || prop === 'value') {
+          const diff = Number(aVal) - Number(bVal);
+          return direction === 'asc' ? diff : -diff;
+        }
+        if (prop === 'change') {
+          const parseChange = (s: string) => Number(String(s).replace(/[^-\d]/g, '')) || 0;
+          const diff = parseChange(String(aVal)) - parseChange(String(bVal));
+          return direction === 'asc' ? diff : -diff;
+        }
+        const cmp = String(aVal).localeCompare(String(bVal));
+        return direction === 'asc' ? cmp : -cmp;
+      }),
+    [primaryTableSort],
+  );
 
   return (
     <ThemePlaygroundLayout switcherVariant='inline'>
@@ -308,88 +358,174 @@ function DashboardPlaygroundContent() {
           </ProductHead.Row>
         </ProductHead>
 
-        <Box px={8} pb={8}>
+        <Box px={8} pb={30}>
           <TabLine value={tabValue} onChange={setTabValue} mb={6}>
             <TabLine.Item value={1}>Overview</TabLine.Item>
             <TabLine.Item value={2}>Analytics</TabLine.Item>
             <TabLine.Item value={3}>Reports</TabLine.Item>
           </TabLine>
 
-          <Card
-            tag='section'
-            mb={4}
-            style={{ width: '100%', boxSizing: 'border-box' }}
-          >
-            <Card.Body>
-              <Flex gap={6}>
-                <Flex direction='column'>
-                  <Flex gap={1} alignItems='center'>
-                    <Text size={200} noWrap>
-                      Visibility
-                    </Text>
+          <Flex gap={4} mb={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 360px)',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <Card.Body>
+                <Flex gap={6} w='100%'>
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Visibility
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        42
+                      </Link>
+                      <Text size={100} color='text-secondary' noWrap>
+                        no change
+                      </Text>
+                    </Flex>
                   </Flex>
-                  <Flex alignItems='baseline' gap={1} mt={1}>
-                    <Link
-                      size={500}
-                      color='text-large-info'
-                      fontWeight='bold'
-                      href='https://semrush.com'
-                      target='_blank'
-                    >
-                      42
-                    </Link>
-                    <Text size={100} color='text-secondary' noWrap>
-                      no change
-                    </Text>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Estimated traffic
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        24,765
+                      </Link>
+                      <Text size={100} color='text-critical' noWrap>
+                        &minus;4
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Average position
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        908
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +12
+                      </Text>
+                    </Flex>
                   </Flex>
                 </Flex>
-                <Divider orientation='vertical' />
-                <Flex direction='column'>
-                  <Flex gap={1} alignItems='center'>
-                    <Text size={200} noWrap>
-                      Estimated traffic
-                    </Text>
+              </Card.Body>
+            </Card>
+
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 360px)',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <Card.Body>
+                <Flex gap={6} w='100%'>
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Keywords
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        1,284
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +28
+                      </Text>
+                    </Flex>
                   </Flex>
-                  <Flex alignItems='baseline' gap={1} mt={1}>
-                    <Link
-                      size={500}
-                      color='text-large-info'
-                      fontWeight='bold'
-                      href='https://semrush.com'
-                      target='_blank'
-                    >
-                      24,765
-                    </Link>
-                    <Text size={100} color='text-critical' noWrap>
-                      &minus;4
-                    </Text>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Backlinks
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        4,521
+                      </Link>
+                      <Text size={100} color='text-secondary' noWrap>
+                        no change
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Domain health
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        94
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +2
+                      </Text>
+                    </Flex>
                   </Flex>
                 </Flex>
-                <Divider orientation='vertical' />
-                <Flex direction='column'>
-                  <Flex gap={1} alignItems='center'>
-                    <Text size={200} noWrap>
-                      Average position
-                    </Text>
-                  </Flex>
-                  <Flex alignItems='baseline' gap={1} mt={1}>
-                    <Link
-                      size={500}
-                      color='text-large-info'
-                      fontWeight='bold'
-                      href='https://semrush.com'
-                      target='_blank'
-                    >
-                      908
-                    </Link>
-                    <Text size={100} color='text-success' noWrap>
-                      +12
-                    </Text>
-                  </Flex>
-                </Flex>
-              </Flex>
-            </Card.Body>
-          </Card>
+              </Card.Body>
+            </Card>
+          </Flex>
 
           <Flex
             gap={4}
@@ -583,8 +719,8 @@ function DashboardPlaygroundContent() {
               <Card
                 tag='section'
                 style={{
-                  flex: '1 1 calc(50% - 8px)',
-                  minWidth: 'min(100%, 320px)',
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
                   maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -634,8 +770,8 @@ function DashboardPlaygroundContent() {
               <Card
                 tag='section'
                 style={{
-                  flex: '1 1 calc(50% - 8px)',
-                  minWidth: 'min(100%, 320px)',
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
                   maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -682,6 +818,52 @@ function DashboardPlaygroundContent() {
                   </Box>
                 </Card.Body>
               </Card>
+
+              <Card
+                tag='section'
+                style={{
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
+                  maxWidth: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <Card.Header>
+                  <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                    <Card.Title tag='h3'>Venn</Card.Title>
+                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                      Export
+                    </Button>
+                  </Flex>
+                </Card.Header>
+                <Card.Body
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: 0,
+                  }}
+                >
+                  <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
+                    {([width, height]) => {
+                      const size = Math.min(width, height);
+                      return (
+                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                          <Chart.Venn
+                            data={vennChartData}
+                            plotWidth={size}
+                            plotHeight={size}
+                            legendProps={{ legendMap: vennChartLegendMap }}
+                            showLegend
+                            aria-label='Venn chart'
+                          />
+                        </Box>
+                      );
+                    }}
+                  </ResponsiveChartWrapper>
+                </Card.Body>
+              </Card>
             </Flex>
 
             <Card
@@ -716,20 +898,89 @@ function DashboardPlaygroundContent() {
                   <DataTable
                     use='primary'
                     variant='card'
-                    data={primaryDataTableData}
+                    data={primaryTableSortedData}
+                    sort={primaryTableSort}
+                    onSortChange={setPrimaryTableSort}
                     aria-label='Primary table with themed rows'
                     w='100%'
                     columns={[
-                      { name: 'theme', children: 'Theme', gtcWidth: 'minmax(100px, 1fr)' },
-                      { name: 'metric', children: 'Metric', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
-                      { name: 'value', children: 'Value', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
-                      { name: 'change', children: 'Change', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                      {
+                        name: 'theme',
+                        children: 'Theme',
+                        gtcWidth: 'minmax(100px, 1fr)',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'metric',
+                        children: 'Metric',
+                        gtcWidth: 'min-content',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'value',
+                        children: 'Value',
+                        gtcWidth: 'minmax(80px, 1fr)',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'change',
+                        children: 'Change',
+                        gtcWidth: 'minmax(80px, 1fr)',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
                     ]}
-                    rowProps={(_, index) => ({
-                      theme: rowThemeStyles[index],
-                    })}
+                    rowProps={(row) =>
+                      rowThemeStyles.includes(row.theme as (typeof rowThemeStyles)[number])
+                        ? { theme: row.theme as (typeof rowThemeStyles)[number] }
+                        : {}}
                   />
                 </Box>
+                <Box pt={3} px={5} pb={4}>
+                  <Pagination
+                    totalPages={10}
+                    currentPage={primaryTablePage}
+                    onCurrentPageChange={setPrimaryTablePage}
+                    aria-label='Pagination'
+                  />
+                </Box>
+              </Card.Body>
+            </Card>
+
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 320px)',
+                maxWidth: '100%',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>WidgetEmpty</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <NoData />
+              </Card.Body>
+            </Card>
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 320px)',
+                maxWidth: '100%',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>WidgetEmpty</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Error />
               </Card.Body>
             </Card>
           </Flex>

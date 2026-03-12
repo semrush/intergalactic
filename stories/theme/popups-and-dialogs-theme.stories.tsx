@@ -7,6 +7,7 @@ import { FeedbackRating } from '@semcore/ui/feedback-form';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import Link from '@semcore/ui/link';
 import Modal from '@semcore/ui/modal';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import SidePanel from '@semcore/ui/side-panel';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';
@@ -40,6 +41,8 @@ const WIZARD_STEPS = [
   { title: 'Step 2' },
   { title: 'Step 3' },
 ];
+
+const noticeBubbleManager = new NoticeBubbleManager();
 
 function PopupsAndDialogsContent() {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -224,6 +227,39 @@ function PopupsAndDialogsContent() {
               Close
             </Button>
           </Modal>
+        </Flex>
+
+        <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+          NoticeBubble
+        </Text>
+        <Flex gap={4} flexWrap alignItems='center' mb={10}>
+          <Button
+            onClick={() =>
+              noticeBubbleManager.add({
+                type: 'info',
+                children: (
+                  <>
+                    Link was moved to
+                    {' '}
+                    <Link href='#'>Cats from outer space group</Link>
+                  </>
+                ),
+                duration: 2000,
+              })}
+          >
+            Show info notice
+          </Button>
+          <Button
+            onClick={() =>
+              noticeBubbleManager.add({
+                type: 'warning',
+                children: 'Something went wrong. Please try again.',
+                duration: 2000,
+              })}
+          >
+            Show warning notice
+          </Button>
+          <NoticeBubbleContainer manager={noticeBubbleManager} />
         </Flex>
 
         <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>

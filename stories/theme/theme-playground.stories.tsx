@@ -14,6 +14,8 @@ import Counter from '@semcore/ui/counter';
 import { DatePicker } from '@semcore/ui/date-picker';
 import Divider from '@semcore/ui/divider';
 import Dot from '@semcore/ui/dot';
+import DnD from '@semcore/ui/drag-and-drop';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Flag from '@semcore/ui/flags';
 import InlineInput from '@semcore/ui/inline-input';
 import Input from '@semcore/ui/input';
@@ -108,6 +110,7 @@ function ThemePlaygroundContent() {
   const [sliderValue, setSliderValue] = React.useState(50);
   const [dateValue, setDateValue] = React.useState<Date | undefined>(new Date());
   const [bulkTextareaValue, setBulkTextareaValue] = React.useState('');
+  const [bulkTextareaValueL, setBulkTextareaValueL] = React.useState('');
   const [colorValue, setColorValue] = React.useState('#2DAF00');
   const [inputRangeFrom, setInputRangeFrom] = React.useState('');
   const [inputRangeTo, setInputRangeTo] = React.useState('');
@@ -402,14 +405,42 @@ function ThemePlaygroundContent() {
           Divider
         </Text>
         <Flex gap={8} flexWrap alignItems='flex-start' mb={10}>
-          <Flex direction='column' w={200} gap={2}>
-            <Text size={200} color='text-secondary'>Horizontal</Text>
-            <Divider />
+          <Flex direction='column' w={60} gap={2}>
+            <Divider use='primary' />
           </Flex>
-          <Flex alignItems='center' h={40} gap={2}>
-            <Text size={200} color='text-secondary'>Vertical</Text>
-            <Divider orientation='vertical' />
+          <Flex direction='column' w={60} gap={2}>
+            <Divider use='secondary' />
           </Flex>
+          <Flex gap={8} flexWrap alignItems='flex-start' mb={10}>
+            <Flex alignItems='center' h={40} gap={2}>
+              <Divider orientation='vertical' use='primary' h={32} />
+            </Flex>
+            <Flex alignItems='center' h={40} gap={2}>
+              <Divider orientation='vertical' use='secondary' h={32} />
+            </Flex>
+          </Flex>
+          <Box
+            p={4}
+            style={{
+              background: 'var(--intergalactic-bg-primary-invert)',
+              borderRadius: 'var(--intergalactic-surface-rounded, 6px)',
+            }}
+          >
+            <Flex gap={8} flexWrap alignItems='flex-start'>
+              <Flex direction='column' w={60} gap={2}>
+                <Divider use='primary' theme='invert' />
+              </Flex>
+              <Flex direction='column' w={60} gap={2}>
+                <Divider use='secondary' theme='invert' />
+              </Flex>
+              <Flex alignItems='center' h={40} gap={2}>
+                <Divider orientation='vertical' use='primary' theme='invert' h={32} />
+              </Flex>
+              <Flex alignItems='center' h={40} gap={2}>
+                <Divider orientation='vertical' use='secondary' theme='invert' h={32} />
+              </Flex>
+            </Flex>
+          </Box>
         </Flex>
 
         <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -454,15 +485,26 @@ function ThemePlaygroundContent() {
             tag={Button}
             use='secondary'
           >
-            Hover me
+            Default
           </Tooltip>
           <Tooltip
-            title='Another tooltip with theme styles.'
+            theme='warning'
+            title='Warning tooltip — check this out.'
             tag={Button}
-            use='tertiary'
           >
-            Button with tooltip
+            Warning
           </Tooltip>
+          <Box
+            p={4}
+            style={{
+              background: 'var(--intergalactic-bg-primary-invert)',
+              borderRadius: 'var(--intergalactic-surface-rounded, 6px)',
+            }}
+          >
+            <Tooltip theme='invert' title='Invert tooltip on dark background.' tag={Button} use='secondary'>
+              Invert
+            </Tooltip>
+          </Box>
         </Flex>
 
         <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -476,6 +518,14 @@ function ThemePlaygroundContent() {
             <Input size='l' w={240}>
               <Input.Value placeholder='Placeholder' />
             </Input>
+            <Flex gap={6} flexWrap alignItems='center'>
+              <Input size='m' w={240} state='valid'>
+                <Input.Value placeholder='Placeholder' />
+              </Input>
+              <Input size='l' w={240} state='valid'>
+                <Input.Value placeholder='Placeholder' />
+              </Input>
+            </Flex>
           </Flex>
           <Flex gap={6} flexWrap alignItems='center'>
             <Input size='m' w={240} state='invalid'>
@@ -633,6 +683,23 @@ function ThemePlaygroundContent() {
               <BulkTextarea.ClearAll />
             </Flex>
           </BulkTextarea>
+          <BulkTextarea w={400} size='l' value={bulkTextareaValueL} onChange={setBulkTextareaValueL}>
+            <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
+              <Text tag='label' size={300} id='bulk-textarea-label-l'>
+                Keywords (L)
+              </Text>
+              <BulkTextarea.Counter />
+            </Flex>
+            <BulkTextarea.InputField
+              aria-labelledby='bulk-textarea-label-l'
+              commonErrorMessage=''
+              placeholder='Enter or paste lines'
+            />
+            <Flex alignItems='center' justifyContent='space-between' mt={2}>
+              <BulkTextarea.ErrorsNavigation />
+              <BulkTextarea.ClearAll />
+            </Flex>
+          </BulkTextarea>
         </Flex>
 
         <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -640,6 +707,7 @@ function ThemePlaygroundContent() {
         </Text>
         <Flex gap={6} flexWrap alignItems='flex-start' mb={10}>
           <Select options={SELECT_OPTIONS} placeholder='Select option' w={240} />
+          <Select options={SELECT_OPTIONS} placeholder='Select option L' w={240} size='l' />
           <Select options={SELECT_OPTIONS} placeholder='Disabled' w={240} disabled />
         </Flex>
 
@@ -679,6 +747,13 @@ function ThemePlaygroundContent() {
             <Switch.Addon>Disabled</Switch.Addon>
           </Switch>
         </Flex>
+
+        <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+          DnD (DropdownMenu with drag & drop)
+        </Text>
+        <Box mb={10}>
+          <DropdownMenuDnDExample />
+        </Box>
 
         <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
           Skeleton
@@ -953,6 +1028,119 @@ function ThemePlaygroundContent() {
         </Flex>
       </Box>
     </ThemePlaygroundLayout>
+  );
+}
+
+const defaultDnDColumns = [
+  { id: 'uniquePageviews', label: 'Unique Pageviews' },
+  { id: 'uniqueVisitors', label: 'Unique Visitors' },
+  { id: 'entranceSources', label: 'Entrance Sources' },
+  { id: 'desktop', label: 'Desktop' },
+  { id: 'mobile', label: 'Mobile' },
+];
+const defaultDnDSelectedColumns = ['uniquePageviews', 'entranceSources'];
+
+function DropdownMenuDnDExample() {
+  const menuListRef = React.useRef<HTMLElement | null>(null);
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
+  const [columns, setColumns] = React.useState(defaultDnDColumns);
+  const handleDnD = React.useCallback(
+    ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
+      setColumns((cols) => {
+        const newColumns = [...cols];
+        const shift = fromIndex < toIndex ? 1 : -1;
+        for (let i = fromIndex; i !== toIndex; i += shift) {
+          newColumns[i] = cols[i + shift];
+        }
+        newColumns[toIndex] = cols[fromIndex];
+        return newColumns;
+      });
+      setHighlightedIndex(toIndex);
+    },
+    [],
+  );
+  const [selectedColumns, setSelectedColumns] = React.useState<string[]>(defaultDnDSelectedColumns);
+
+  const resetToDefault = React.useCallback(() => {
+    setSelectedColumns(defaultDnDSelectedColumns);
+  }, []);
+  const toggleAll = React.useCallback(() => {
+    const allSelected = selectedColumns.length === columns.length;
+    const allColumns = columns.map((c) => c.id);
+    if (allSelected) {
+      setSelectedColumns([]);
+    } else {
+      setSelectedColumns(allColumns);
+    }
+  }, [selectedColumns, columns]);
+
+  const handleMenuListRef = (node: HTMLElement | null) => {
+    const scrollableContainer = node?.children.item(0);
+    if (scrollableContainer instanceof HTMLElement) {
+      menuListRef.current = scrollableContainer;
+    }
+  };
+
+  return (
+    <DropdownMenu
+      selectable
+      multiselect
+      highlightedIndex={highlightedIndex}
+      onHighlightedIndexChange={setHighlightedIndex}
+    >
+      <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-dnd-theme' tag={Button}>
+        <Button.Addon>
+          <SettingsM />
+        </Button.Addon>
+        <Button.Text>Manage columns</Button.Text>
+        <Button.Addon>
+          <Counter>
+            {selectedColumns.length}
+            /
+            {columns.length}
+          </Counter>
+        </Button.Addon>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Popper hMax={800} aria-labelledby='dropdown-menu-dnd-theme-label'>
+        <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
+          <Text bold id='dropdown-menu-dnd-theme-label'>
+            Show table columns
+          </Text>
+          <ButtonLink onClick={resetToDefault}>Reset to default</ButtonLink>
+          <ButtonLink onClick={toggleAll}>
+            {selectedColumns.length === columns.length ? 'Deselect' : 'Select'}
+            {' '}
+            all
+          </ButtonLink>
+        </Flex>
+        <DropdownMenu.List hMax={300} ref={handleMenuListRef}>
+          <DnD onDnD={handleDnD} aria-label='drag-and-drop container' scrollableContainerRef={menuListRef}>
+            {columns.map((column, index) => (
+              <DropdownMenu.Item
+                tag={DnD.Draggable}
+                isCustomFocus={true}
+                key={column.id}
+                selected={selectedColumns.includes(column.id)}
+                onClick={(e) => {
+                  if (
+                    e.target instanceof HTMLElement &&
+                    e.target.getAttribute('role') === 'menuitemcheckbox'
+                  ) {
+                    if (!selectedColumns.includes(column.id)) {
+                      setSelectedColumns([...selectedColumns, column.id]);
+                    } else {
+                      setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
+                    }
+                  }
+                }}
+              >
+                {column.label}
+              </DropdownMenu.Item>
+            ))}
+          </DnD>
+        </DropdownMenu.List>
+      </DropdownMenu.Popper>
+    </DropdownMenu>
   );
 }
 

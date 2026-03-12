@@ -634,7 +634,7 @@
         "description": "Inverted version of the primary text."
       },
       "secondary-invert": {
-        "value": "{gray.white}, 0.8",
+        "value": "rgba({gray.white}, 0.8)",
         "type": "color",
         "description": "Inverted version of the secondary text."
       },
@@ -2200,12 +2200,12 @@
           "description": "Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath."
         },
         "white-normal": {
-          "value": "{gray.white}, 0.15",
+          "value": "rgba({gray.white}, 0.15)",
           "type": "color",
           "description": "Primary white tag."
         },
         "white-hover-active": {
-          "value": "{gray.white}, 0.3",
+          "value": "rgba({gray.white}, 0.3)",
           "type": "color",
           "description": "Hover and active (selected) state of the primary white tag."
         },

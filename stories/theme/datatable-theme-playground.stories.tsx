@@ -1,6 +1,7 @@
 import { Box, Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
+import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
@@ -25,10 +26,94 @@ const dataTableData: DataTableData = [
   { keyword: 'ebay buy', kd: '75.89', cpc: '$0.00', vol: '21,644,290' },
 ];
 
+type FirstTableRow = (typeof dataTableData)[number];
+
+const rowThemeStyles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
+const primaryDataTableThemedRows: DataTableData = rowThemeStyles.map((theme, i) => ({
+  theme,
+  metric: String(100 - i * 15),
+  value: String(250 + i * 50),
+  change: `${i % 2 === 0 ? '+' : ''}${(i - 2) * 5}%`,
+}));
+const primaryDataTablePlainRows: DataTableData = [
+  { theme: 'neutral', metric: '72', value: '520', change: '+3%' },
+  { theme: 'neutral', metric: '58', value: '410', change: '-1%' },
+  { theme: 'neutral', metric: '91', value: '680', change: '+7%' },
+  { theme: 'neutral', metric: '44', value: '290', change: '-2%' },
+  { theme: 'neutral', metric: '63', value: '395', change: '+5%' },
+];
+const primaryDataTableData: DataTableData = [...primaryDataTableThemedRows, ...primaryDataTablePlainRows];
+
+type PrimaryTableRow = (typeof primaryDataTableData)[number];
+
 function DataTableThemePlaygroundContent() {
+  const [firstTablePage, setFirstTablePage] = React.useState(1);
+  const [primaryThemedTablePage, setPrimaryThemedTablePage] = React.useState(1);
+  const [firstTableSort, setFirstTableSort] = React.useState<
+    DataTableSort<keyof FirstTableRow>
+  >(['keyword', 'asc']);
+  const firstTableSortedData = React.useMemo(
+    () =>
+      [...dataTableData].sort((a, b) => {
+        const [prop, direction] = firstTableSort;
+        const aVal = a[prop];
+        const bVal = b[prop];
+        if (prop === 'kd') {
+          const diff = Number(aVal) - Number(bVal);
+          return direction === 'asc' ? diff : -diff;
+        }
+        if (prop === 'cpc') {
+          const parse = (s: string) => Number(String(s).replace(/[^.\d]/g, '')) || 0;
+          const diff = parse(String(aVal)) - parse(String(bVal));
+          return direction === 'asc' ? diff : -diff;
+        }
+        if (prop === 'vol') {
+          const parse = (s: string) => Number(String(s).replace(/,/g, '')) || 0;
+          const diff = parse(String(aVal)) - parse(String(bVal));
+          return direction === 'asc' ? diff : -diff;
+        }
+        const cmp = String(aVal).localeCompare(String(bVal));
+        return direction === 'asc' ? cmp : -cmp;
+      }),
+    [firstTableSort],
+  );
+
+  const secondaryTableSortedByVol = React.useMemo(
+    () =>
+      [...dataTableData].sort((a, b) => {
+        const parse = (s: string) => Number(String(s).replace(/,/g, '')) || 0;
+        return parse(String(b.vol)) - parse(String(a.vol));
+      }),
+    [],
+  );
+
+  const [primaryTableSort, setPrimaryTableSort] = React.useState<
+    DataTableSort<keyof PrimaryTableRow>
+  >(['theme', 'asc']);
+  const primaryTableSortedData = React.useMemo(
+    () =>
+      [...primaryDataTableData].sort((a, b) => {
+        const [prop, direction] = primaryTableSort;
+        const aVal = a[prop];
+        const bVal = b[prop];
+        if (prop === 'metric' || prop === 'value') {
+          const diff = Number(aVal) - Number(bVal);
+          return direction === 'asc' ? diff : -diff;
+        }
+        if (prop === 'change') {
+          const parseChange = (s: string) => Number(String(s).replace(/[^-\d]/g, '')) || 0;
+          const diff = parseChange(String(aVal)) - parseChange(String(bVal));
+          return direction === 'asc' ? diff : -diff;
+        }
+        const cmp = String(aVal).localeCompare(String(bVal));
+        return direction === 'asc' ? cmp : -cmp;
+      }),
+    [primaryTableSort],
+  );
+
   return (
     <ThemePlaygroundLayout switcherZIndex={10000}>
-      <Box p={6} style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
+      <Box px={6} pt={6} pb={30} style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
         <Flex justifyContent='space-between' alignItems='center' mb={10}>
           <Text tag='h1' semibold size={600} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
             DataTable theme playground
@@ -38,35 +123,133 @@ function DataTableThemePlaygroundContent() {
         <Flex direction='column' gap={10} alignItems='flex-start'>
           <Box wMin={500}>
             <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-              DataTable
+              DataTable (primary)
             </Text>
             <DataTable
-              data={dataTableData}
+              data={firstTableSortedData}
+              sort={firstTableSort}
+              onSortChange={setFirstTableSort}
               aria-label='Theme playground table'
-              wMax='600px'
+              w='600px'
               columns={[
-                { name: 'keyword', children: 'Keyword' },
-                { name: 'kd', children: 'KD %', justifyContent: 'end' },
-                { name: 'cpc', children: 'CPC', justifyContent: 'end' },
-                { name: 'vol', children: 'Vol.', justifyContent: 'end' },
+                {
+                  name: 'keyword',
+                  children: 'Keyword',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'kd',
+                  children: 'KD %',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'cpc',
+                  children: 'CPC',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'vol',
+                  children: 'Vol.',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
               ]}
             />
+            <Pagination
+              mt={3}
+              totalPages={10}
+              currentPage={firstTablePage}
+              onCurrentPageChange={setFirstTablePage}
+              aria-label='Pagination'
+            />
           </Box>
-          <Box wMin={500}>
+          <Box wMin={500} className='secondary-table-vol-desc'>
+            <style>{`.secondary-table-vol-desc [role="columnheader"][aria-sort], .secondary-table-vol-desc [role="columnheader"][aria-sort] a, .secondary-table-vol-desc [role="columnheader"][aria-sort] button { color: var(--intergalactic-icon-primary-neutral) !important; cursor: default !important; }`}</style>
             <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
               DataTable (secondary)
             </Text>
             <DataTable
               use='secondary'
-              data={dataTableData}
+              data={secondaryTableSortedByVol}
+              sort={['vol', 'desc']}
+              onSortChange={() => {}}
               aria-label='Theme playground table secondary'
-              wMax='600px'
+              w='600px'
               columns={[
                 { name: 'keyword', children: 'Keyword' },
                 { name: 'kd', children: 'KD %', justifyContent: 'end' },
                 { name: 'cpc', children: 'CPC', justifyContent: 'end' },
-                { name: 'vol', children: 'Vol.', justifyContent: 'end' },
+                {
+                  name: 'vol',
+                  children: 'Vol.',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
               ]}
+            />
+          </Box>
+          <Box wMin={500}>
+            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+              DataTable (primary, rows with different themes)
+            </Text>
+            <DataTable
+              use='primary'
+              data={primaryTableSortedData}
+              sort={primaryTableSort}
+              onSortChange={setPrimaryTableSort}
+              aria-label='Primary table with themed rows'
+              w='600px'
+              columns={[
+                {
+                  name: 'theme',
+                  children: 'Theme',
+                  gtcWidth: 'minmax(100px, 1fr)',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'metric',
+                  children: 'Metric',
+                  gtcWidth: 'minmax(80px, 1fr)',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'value',
+                  children: 'Value',
+                  gtcWidth: 'minmax(80px, 1fr)',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+                {
+                  name: 'change',
+                  children: 'Change',
+                  gtcWidth: 'minmax(80px, 1fr)',
+                  justifyContent: 'end',
+                  sortable: true,
+                  changeSortSize: true,
+                },
+              ]}
+              rowProps={(row) =>
+                rowThemeStyles.includes(row.theme as (typeof rowThemeStyles)[number])
+                  ? { theme: row.theme as (typeof rowThemeStyles)[number] }
+                  : {}}
+            />
+            <Pagination
+              mt={3}
+              totalPages={10}
+              currentPage={primaryThemedTablePage}
+              onCurrentPageChange={setPrimaryThemedTablePage}
+              aria-label='Pagination'
             />
           </Box>
         </Flex>

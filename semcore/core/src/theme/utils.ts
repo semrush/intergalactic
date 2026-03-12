@@ -106,11 +106,11 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
     if (color.startsWith('rgba(') && color.endsWith(')')) {
       const lastComa = color.lastIndexOf(',');
-      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1));
+      const alpha = Number.parseFloat(color.substring(lastComa + 1, color.length - 1).trim());
       if (Number.isNaN(alpha)) {
         throw new Error(`Unable to parse rgba of ${color}`);
       }
-      let resolvedColor = color.substring('rgba('.length, lastComa);
+      let resolvedColor = color.substring('rgba('.length, lastComa).trim();
       if (resolvedColor.startsWith('{')) resolvedColor = resolveColor(resolvedColor);
       if (resolvedColor.startsWith('$')) resolvedColor = resolveColor(resolvedColor);
       if (resolvedColor.startsWith('#')) {
@@ -151,19 +151,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
 
       return `rgba(${resolvedColor}, ${alpha})`;
     }
-    if (color.split(', ').length === 2) {
-      const baseColor = resolveColor(color.split(', ')[0]);
-      const [r, g, b] = (
-        baseColor.length === 4
-          ? [baseColor[1], baseColor[2], baseColor[3]]
-          : [baseColor.substring(1, 3), baseColor.substring(3, 5), baseColor.substring(5, 7)]
-      ).map((chunk) => Number.parseInt(chunk, 16));
-      const a = Number.parseFloat(color.split(', ')[1]);
-
-      return `rgba(${r}, ${g}, ${b}, ${a})`;
-    }
     if (color.startsWith('{') && color.split('.').length > 0 && color.endsWith('}')) {
-      const path = color.substring(1, color.length - 1);
+      const path = color.substring(1, color.length - 1).trim();
       const resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
@@ -172,7 +161,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       return resolveColor(resolvedColor);
     }
     if (color.startsWith('$') && color.split('.').length > 0) {
-      const path = color.substring(1);
+      const path = color.substring(1).trim();
       const resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
