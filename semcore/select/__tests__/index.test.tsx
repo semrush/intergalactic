@@ -4,9 +4,7 @@ import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-uti
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Select from '../src';
-// @ts-ignore
-import InputSearch from '../src/InputSearch';
+import Select, { InputSearch } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
