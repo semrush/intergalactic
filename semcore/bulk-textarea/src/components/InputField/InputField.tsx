@@ -105,6 +105,8 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   componentDidMount() {
+    const { autoFocus, disabled, readonly } = this.asProps;
+
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
@@ -117,6 +119,11 @@ class InputField<T extends string | string[]> extends Component<
 
     if (this.props.onImmediatelyChange) {
       this.observer.observe(this.textarea, config);
+    }
+
+    const isActive = !disabled && !readonly;
+    if (autoFocus && isActive) {
+      this.textarea.focus();
     }
   }
 
@@ -281,11 +288,6 @@ class InputField<T extends string | string[]> extends Component<
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
-
-    const isActive = !props.disabled && !props.readonly;
-    if (props.autoFocus && isActive) {
-      textarea.setAttribute('autofocus', '');
-    }
 
     if (props.id) {
       textarea.setAttribute('id', props.id);
