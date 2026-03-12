@@ -30,7 +30,6 @@ const Demo = (props: BasicButtonLinkProps) => {
     showAddonRight = false,
     disabled,
     active,
-    loading,
     size = 300,
     use = 'primary',
     w,
@@ -89,7 +88,6 @@ const Demo = (props: BasicButtonLinkProps) => {
         use={use}
         disabled={disabled}
         active={active}
-        loading={loading}
         color={props.color}
         display={displayValue}
         mr={4}
@@ -111,7 +109,6 @@ const Demo = (props: BasicButtonLinkProps) => {
         use={use}
         disabled={disabled}
         active={active}
-        loading={loading}
         color={props.color}
       >
         {renderAddon(showAddonLeft, addonLeftType)}

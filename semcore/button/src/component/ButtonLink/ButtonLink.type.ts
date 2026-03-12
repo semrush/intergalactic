@@ -10,7 +10,7 @@ export type ButtonLinkProps = LinkProps & {
    *  Button link type
    * @default primary
    */
-  use: 'primary' | 'secondary';
+  use?: 'primary' | 'secondary';
 };
 
 export type ButtonLinkTextProps = TextProps;
