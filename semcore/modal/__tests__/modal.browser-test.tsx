@@ -544,6 +544,39 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify modal with focusable input inside by mouse', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal', '@input'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
+
+    await test.step('Verify input focused', async () => {
+      await locators.button(page).click();
+      await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await expect(page.getByRole('textbox')).toBeFocused();
+    });
+  });
+
+  test('Verify modal with focusable input inside by keyboard', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@modal', '@input'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
+
+    await test.step('Verify input focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page)).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await expect(page.getByRole('textbox')).toBeFocused();
+    });
+
+    await test.step('Verify closed by escape', async () => {
+      await page.keyboard.press('Escape');
+      await page.getByRole('textbox').waitFor({ state: 'hidden' });
+      await expect(locators.button(page)).toBeFocused();
+    });
+  });
+
   test.describe('Modal outside click interaction', () => {
     test('Verify click near scrollbar closes modal', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
