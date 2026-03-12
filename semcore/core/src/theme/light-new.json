@@ -2,7 +2,7 @@
     "base": {
       "gray": {
         "50": {
-          "value": "oklch(0.958 0.002 247.84)",
+          "value": "oklch(0.966 0.001 277.6)",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
@@ -12,7 +12,7 @@
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.864 0.004 271.363)",
+          "value": "oklch(0.824 0.007 277.6)",
           "type": "color"
         },
         "300": {
@@ -32,11 +32,11 @@
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.009 277.6)",
+          "value": "oklch(0.31 0.009 277.6)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.226 0.019 135.279)",
+          "value": "oklch(0.19 0.005 277.6)",
           "type": "color"
         },
         "white": {
@@ -56,19 +56,19 @@
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.861 0.068 266.551)",
+          "value": "oklch(0.824 0.082 263.265)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.741 0.12 263.227)",
+          "value": "oklch(0.74 0.121 263.265)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.703 0.154 265.122)",
+          "value": "oklch(0.66 0.158 263.265)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.575 0.232 263.373)",
+          "value": "oklch(0.54 0.214 263.265)",
           "type": "color"
         },
         "600": {
@@ -76,11 +76,11 @@
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.116 263.265)",
+          "value": "oklch(0.31 0.116 263.265)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.088 263.265)",
+          "value": "oklch(0.22 0.073 263.265)",
           "type": "color"
         }
       },
@@ -91,36 +91,36 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.922 0.088 177.924)",
+          "value": "oklch(0.904 0.094 170.688)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.851 0.165 170.672)",
+          "value": "oklch(0.824 0.142 170.688)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.143 170.688)",
+          "value": "oklch(0.74 0.132 170.688)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.658 0.126 171.444)",
+          "value": "oklch(0.66 0.122 170.688)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.541 0.104 170.438)",
+          "value": "oklch(0.54 0.104 170.688)",
           "type": "color"
         },
         "600": {
-          "value": "oklch(0.41 0.079 170.688)",
+          "value": "oklch(0.41 0.078 170.688)",
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.056 170.688)",
+          "value": "oklch(0.29 0.055 170.688)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.043 170.688)",
+          "value": "oklch(0.19 0.034 170.688)",
           "type": "color"
         }
       },
@@ -131,7 +131,7 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.859 0.076 18.76)",
+          "value": "oklch(0.904 0.065 27.658)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
@@ -140,15 +140,15 @@
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.158 27.477)",
+          "value": "oklch(0.74 0.175 27.658)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.681 0.207 24.507)",
+          "value": "oklch(0.66 0.229 27.658)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.598 0.226 27.581)",
+          "value": "oklch(0.54 0.203 27.658)",
           "type": "color"
         },
         "600": {
@@ -160,7 +160,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.083 27.658)",
+          "value": "oklch(0.19 0.071 27.658)",
           "type": "color"
         }
       },
@@ -171,36 +171,36 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.049 39.457)",
+          "value": "oklch(0.904 0.052 39.457)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.09 39.457)",
+          "value": "oklch(0.824 0.096 39.457)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.134 39.457)",
+          "value": "oklch(0.74 0.139 39.457)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.172 39.457)",
+          "value": "oklch(0.66 0.18 39.457)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.141 39.457)",
+          "value": "oklch(0.54 0.151 39.457)",
           "type": "color"
         },
         "600": {
-          "value": "oklch(0.41 0.107 39.457)",
+          "value": "oklch(0.41 0.113 39.457)",
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.075 39.457)",
+          "value": "oklch(0.29 0.078 39.457)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.057 39.457)",
+          "value": "oklch(0.19 0.052 39.457)",
           "type": "color"
         }
       },
@@ -211,12 +211,12 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.917 0.091 85.811)",
+          "value": "oklch(0.904 0.094 80.292)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.863 0.145 83.727)",
+          "value": "oklch(0.824 0.161 80.292)",
           "type": "color"
         },
         "300": {
@@ -224,7 +224,7 @@
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.734 0.152 66.496)",
+          "value": "oklch(0.66 0.129 80.292)",
           "type": "color"
         },
         "500": {
@@ -240,7 +240,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.043 80.292)",
+          "value": "oklch(0.19 0.038 80.292)",
           "type": "color"
         }
       },
@@ -251,7 +251,7 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.869 0.081 305.081)",
+          "value": "oklch(0.904 0.058 295.99)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
@@ -260,7 +260,7 @@
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.744 0.162 303.047)",
+          "value": "oklch(0.74 0.156 295.962)",
           "type": "color"
         },
         "400": {
@@ -268,7 +268,7 @@
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.52 0.258 295.842)",
+          "value": "oklch(0.54 0.27 295.962)",
           "type": "color"
         },
         "600": {
@@ -280,7 +280,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.11 295.962)",
+          "value": "oklch(0.19 0.098 295.962)",
           "type": "color"
         },
         "dusty": {
@@ -290,7 +290,7 @@
             "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
           },
           "100": {
-            "value": "oklch(0.935 0.019 184.9)",
+            "value": "oklch(0.904 0.011 189.338)",
             "type": "color",
             "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
           },
@@ -319,7 +319,7 @@
             "type": "color"
           },
           "800": {
-            "value": "oklch(0.22 0.011 189.338)",
+            "value": "oklch(0.19 0.01 189.338)",
             "type": "color"
           }
         }
@@ -366,41 +366,41 @@
       },
       "salad": {
         "50": {
-          "value": "oklch(0.966 0.023 147.483)",
+          "value": "#e8fef9",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.943 0.109 140.962)",
+          "value": "#b7faeb",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.901 0.207 140.846)",
+          "value": "#95f8e2",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.719 0.178 147.099)",
+          "value": "#64f5d4",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.152 147.483)",
+          "value": "#46f3cc",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.124 147.483)",
+          "value": "#18f0bf",
           "type": "color"
         },
         "600": {
-          "value": "oklch(0.41 0.094 147.483)",
+          "value": "#16daae",
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.067 147.483)",
+          "value": "#11aa88",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.051 147.483)",
+          "value": "#0d8469",
           "type": "color"
         }
       }
@@ -419,17 +419,17 @@
             "description": "Hover state of the primary background of the interface which contains the main data and information."
           },
           "neutral-active": {
-            "value": "rgba({gray.100}, 0.8)",
+            "value": "rgba({gray.100}, 0.6)",
             "type": "color",
             "description": "Active (selected) state of the primary background of the interface which contains the main data and information."
           },
           "info": {
-            "value": "{blue.500}",
+            "value": "{blue.400}",
             "type": "color",
             "description": "Accent background of the message with regular information."
           },
           "success": {
-            "value": "{green.200}",
+            "value": "{green.400}",
             "type": "color",
             "description": "Accent background of the message or banner with information about the successful result."
           },
@@ -439,17 +439,17 @@
             "description": "Accent background of a message or a banner with a critical information."
           },
           "warning": {
-            "value": "{orange.300}",
+            "value": "{orange.400}",
             "type": "color",
             "description": "Accent background of a message or a banner with a warning information."
           },
           "highlight": {
-            "value": "{violet.100}",
+            "value": "{yellow.100}",
             "type": "color",
             "description": "Accent background of the information you want to highlight."
           },
           "advertising": {
-            "value": "{gray.800}",
+            "value": "{violet.700}",
             "type": "color",
             "description": "Accent background for the advertising banners and controls."
           },
@@ -481,57 +481,57 @@
             "description": "Secondary background of the interface which contains the main data and information."
           },
           "neutral-hover": {
-            "value": "rgba({gray.100}, 0.8)",
+            "value": "rgba({gray.100}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background of the interface which contains the main data and information."
           },
           "neutral-active": {
-            "value": "{gray.200}",
+            "value": "rgba({gray.200}, 0.6)",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the interface which contains the main data and information."
           },
           "info": {
-            "value": "rgba({blue.500}, 0.1)",
+            "value": "{blue.50}",
             "type": "color",
             "description": "Secondary background of a message with regular information."
           },
           "info-hover": {
-            "value": "rgba({blue.500}, 0.2)",
+            "value": "{blue.100}",
             "type": "color",
             "description": "Hover state of the secondary background of a message with regular information."
           },
           "info-active": {
-            "value": "rgba({blue.500}, 0.3)",
+            "value": "{blue.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of a message with regular information."
           },
           "success": {
-            "value": "rgba({green.200}, 0.2)",
+            "value": "{green.50}",
             "type": "color",
             "description": "Secondary background of the message with success information you want to accent."
           },
           "success-hover": {
-            "value": "rgba({green.200}, 0.4)",
+            "value": "{green.100}",
             "type": "color",
             "description": "Hover state of the secondary background of the message with success information you want to accent."
           },
           "success-active": {
-            "value": "rgba({green.200}, 0.6)",
+            "value": "{green.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with success information you want to accent."
           },
           "critical": {
-            "value": "rgba({red.400}, 0.2)",
+            "value": "{red.50}",
             "type": "color",
             "description": "Secondary background of the message with critical information you want to accent."
           },
           "critical-hover": {
-            "value": "rgba({red.400}, 0.4)",
+            "value": "{red.100}",
             "type": "color",
             "description": "Hover state of the secondary background of the message with critical information you want to accent."
           },
           "critical-active": {
-            "value": "rgba({red.400}, 0.6)",
+            "value": "{red.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with critical information you want to accent."
           },
@@ -541,48 +541,48 @@
             "description": "Secondary background of the message with warning information you want to accent."
           },
           "warning-hover": {
-            "value": "rgba({orange.100}, 0.6)",
+            "value": "{orange.100}",
             "type": "color",
             "description": "Hover state of the secondary background of the message with warning information you want to accent."
           },
           "warning-active": {
-            "value": "{orange.100}",
+            "value": "{orange.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with critical information you want to accent."
           },
           "highlight": {
-            "value": "{violet.50}",
+            "value": "{yellow.50}",
             "type": "color",
             "description": "Secondary background of the information you want to highlight."
           },
           "highlight-hover": {
-            "value": "rgba({violet.100}, 0.6)",
+            "value": "{yellow.100}",
             "type": "color",
             "description": "Hover state of the secondary background of the information you want to highlight."
           },
           "highlight-active": {
-            "value": "{violet.100}",
+            "value": "{yellow.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the information you want to highlight."
           },
           "advertising": {
-            "value": "{green.100}",
+            "value": "{violet.50}",
             "type": "color",
             "description": "Secondary background for the advertising message you want to accent."
           },
           "advertising-hover": {
-            "value": "rgba({green.200}, 0.6)",
+            "value": "{violet.100}",
             "type": "color",
             "description": "Hover state of the secondary background for the advertising message you want to accent."
           },
           "advertising-active": {
-            "value": "{green.200}",
+            "value": "{violet.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background for the advertising message you want to accent."
           }
         },
         "highlight-results": {
-          "value": "rgba({violet.100}, 0.4)",
+          "value": "rgba({yellow.300}, 0.4)",
           "type": "color",
           "description": "Highlighting the search results."
         },
@@ -609,22 +609,22 @@
           "description": "Placeholder text only."
         },
         "success": {
-          "value": "{green.400}",
+          "value": "{green.500}",
           "type": "color",
           "description": "Text associated with success states and data."
         },
         "success-hover-active": {
-          "value": "{green.500}",
+          "value": "{green.600}",
           "type": "color",
           "description": "Hover and active states for the text associated with success states and data."
         },
         "critical": {
-          "value": "{red.400}",
+          "value": "{red.500}",
           "type": "color",
           "description": "Text associated with critical states and data."
         },
         "critical-hover-active": {
-          "value": "{red.500}",
+          "value": "{red.600}",
           "type": "color",
           "description": "Hover and active states for the text associated with critical states and data."
         },
@@ -644,22 +644,22 @@
           "description": "Link text."
         },
         "link-hover-active": {
-          "value": "{blue.500}",
+          "value": "{blue.600}",
           "type": "color",
           "description": "Hover and active states for the link text."
         },
         "link-invert": {
-          "value": "{blue.100}",
+          "value": "{blue.200}",
           "type": "color",
           "description": "Inverted version of the link text. Use on dark background only."
         },
         "link-invert-hover": {
-          "value": "{blue.200}",
+          "value": "{blue.300}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the link text. Use on dark background only."
         },
         "link-visited": {
-          "value": "{violet.400}",
+          "value": "{violet.500}",
           "type": "color",
           "description": "Visited link text."
         },
@@ -674,12 +674,12 @@
           "description": "Hover and active states of the hint link text."
         },
         "hint-invert": {
-          "value": "{gray.100}",
+          "value": "{gray.200}",
           "type": "color",
           "description": "Inverted version of the hint link text."
         },
         "hint-invert-hover-active": {
-          "value": "{gray.200}",
+          "value": "{gray.300}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the hint link text."
         },
@@ -689,22 +689,22 @@
           "description": "Secondary text. Use with font-size ≥20px."
         },
         "large-info": {
-          "value": "{blue.500}",
+          "value": "{blue.400}",
           "type": "color",
           "description": "Link text with font-size ≥20px."
         },
         "large-info-hover-active": {
-          "value": "{blue.600}",
+          "value": "{blue.500}",
           "type": "color",
           "description": "Hover and active states of the link text with font-size ≥20px."
         },
         "large-success": {
-          "value": "{green.300}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Text with font-size ≥20px associated with success states and data."
         },
         "large-success-hover-active": {
-          "value": "{green.400}",
+          "value": "{green.500}",
           "type": "color",
           "description": "Hover and active states of the text with font-size ≥20px associated with success states and data."
         },
@@ -719,19 +719,19 @@
           "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data."
         },
         "advertising": {
-          "value": "{violet.500}",
+          "value": "{violet.700}",
           "type": "color",
           "description": "Advertising text."
         }
       },
       "border": {
         "primary": {
-          "value": "rgba({gray.100}, 0.9)",
+          "value": "rgba({gray.100}, 0.6)",
           "type": "color",
           "description": "Neutral primary border."
         },
         "secondary": {
-          "value": "rgba({gray.100}, 0.7)",
+          "value": "rgba({gray.100}, 0.4)",
           "type": "color",
           "description": "Subtle secondary border."
         },
@@ -741,7 +741,7 @@
           "description": "Subtle secondary border in the informational message."
         },
         "info-active": {
-          "value": "rgba({blue.500}, 0.5)",
+          "value": "{gray.800}",
           "type": "color",
           "description": "Active border in focused input filed."
         },
@@ -756,7 +756,7 @@
           "description": "Active border in the focused input field with valid state."
         },
         "critical": {
-          "value": "{red.300}",
+          "value": "{red.200}",
           "type": "color",
           "description": "Subtle secondary border in the critical message and invalid input field."
         },
@@ -801,7 +801,7 @@
           "description": "Border color of the second period for the comparison mode in the DatePicker."
         },
         "critical-pattern": {
-          "value": "repeating-linear-gradient(315deg, rgba({  border.critical-active}, 1) 0, rgba({border.critical-active}, 1) 2px, transparent 0, transparent 50%)",
+          "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
           "type": "color",
           "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
         }
@@ -819,27 +819,27 @@
             "description": "Background of the regular primary control."
           },
           "info-hover": {
-            "value": "{violet.400}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Hover state of the regular primary control."
           },
           "info-active": {
-            "value": "{violet.500}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Active (selected) state of the regular primary control."
           },
           "success": {
-            "value": "{green.300}",
+            "value": "{green.400}",
             "type": "color",
             "description": "Background of the primary control with successful theme."
           },
           "success-hover": {
-            "value": "{green.400}",
+            "value": "{green.500}",
             "type": "color",
             "description": "Hover state of the primary control with successful theme."
           },
           "success-active": {
-            "value": "{green.500}",
+            "value": "{green.600}",
             "type": "color",
             "description": "Active (selected) state of the primary control with successful theme."
           },
@@ -859,32 +859,32 @@
             "description": "Active (selected) state of the primary control with danger theme."
           },
           "brand": {
-            "value": "{violet.400}",
+            "value": "{orange.400}",
             "type": "color",
             "description": "Background of the primary brand colored control."
           },
           "brand-hover": {
-            "value": "{violet.500}",
+            "value": "{orange.500}",
             "type": "color",
             "description": "Hover state of the primary brand colored control."
           },
           "brand-active": {
-            "value": "{violet.600}",
+            "value": "{orange.600}",
             "type": "color",
             "description": "Active state of the primary brand colored control."
           },
           "advertising": {
-            "value": "{violet.300}",
+            "value": "{violet.600}",
             "type": "color",
             "description": "Background of the advertising primary control."
           },
           "advertising-hover": {
-            "value": "{gray.800}",
+            "value": "{violet.700}",
             "type": "color",
             "description": "Hover state of the advertising primary control."
           },
           "advertising-active": {
-            "value": "{gray.800}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "Active (selected) state of the advertising primary control."
           },
@@ -906,34 +906,34 @@
         },
         "secondary": {
           "neutral": {
-            "value": "rgba({violet.dusty.400}, 0.1)",
+            "value": "rgba({gray.400}, 0.1)",
             "type": "color",
             "description": "Background of the regular secondary control."
           },
           "neutral-hover": {
-            "value": "rgba({violet.dusty.400}, 0.2)",
+            "value": "rgba({gray.400}, 0.2)",
             "type": "color",
             "description": "Hover state of the regular secondary control."
           },
           "neutral-active": {
-            "value": "rgba({violet.dusty.400}, 0.3)",
+            "value": "rgba({gray.400}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the regular secondary control."
           },
           "info": {
-            "value": "color-mix(in srgb, {gray.white} 90%, {blue.500} 10%)",
+            "value": "rgba({blue.400}, 0.1)",
             "type": "color",
-            "description": "Background of the accent secondary control (white with 5% blue overlay)."
+            "description": "Background of the accent secondary control."
           },
           "info-hover": {
-            "value": "color-mix(in srgb, {gray.white} 85%, {blue.500} 15%)",
+            "value": "rgba({blue.400}, 0.2)",
             "type": "color",
-            "description": "Hover state of the accent secondary control (white with 20% blue overlay)."
+            "description": "Hover state of the accent secondary control."
           },
           "info-active": {
-            "value": "color-mix(in srgb, {gray.white} 80%, {blue.500} 20%)",
+            "value": "rgba({blue.400}, 0.3)",
             "type": "color",
-            "description": "Active (selected) state of the accent secondary control (white with 30% blue overlay)."
+            "description": "Active (selected) state of the accent secondary control."
           },
           "invert": {
             "value": "rgba({gray.white}, 0.05)",
@@ -946,24 +946,24 @@
             "description": "Hover state of the inverted version of the secondary control."
           },
           "invert-active": {
-            "value": "rgba({gray.white}, 0.2)",
+            "value": "rgba({gray.white}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the inverted version of the secondary control."
           }
         },
         "tertiary": {
           "neutral": {
-            "value": "rgba({violet.dusty.400}, 0)",
+            "value": "rgba({gray.400}, 0)",
             "type": "color",
             "description": "Background of the regular tertiary control."
           },
           "neutral-hover": {
-            "value": "rgba({violet.dusty.400}, 0.1)",
+            "value": "rgba({gray.400}, 0.2)",
             "type": "color",
             "description": "Hover state of the regular tertiary control."
           },
           "neutral-active": {
-            "value": "rgba({violet.dusty.400}, 0.2)",
+            "value": "rgba({gray.400}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the regular tertiary control."
           },
@@ -1002,22 +1002,22 @@
       "icon": {
         "primary": {
           "neutral": {
-            "value": "{gray.300}",
+            "value": "{gray.500}",
             "type": "color",
             "description": "Primary neutral icon."
           },
           "neutral-hover-active": {
-            "value": "{gray.400}",
+            "value": "#565861",
             "type": "color",
             "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color."
           },
           "info": {
-            "value": "{blue.400}",
+            "value": "{blue.500}",
             "type": "color",
             "description": "Primary link-lookalike icon."
           },
           "info-hover-active": {
-            "value": "{blue.500}",
+            "value": "#0358a1",
             "type": "color",
             "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color."
           },
@@ -1027,7 +1027,7 @@
             "description": "Primary success icon."
           },
           "success-hover-active": {
-            "value": "{green.500}",
+            "value": "#037e68",
             "type": "color",
             "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color."
           },
@@ -1037,7 +1037,7 @@
             "description": "Primary critical icon."
           },
           "critical-hover-active": {
-            "value": "{red.500}",
+            "value": "#cc3a42",
             "type": "color",
             "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color."
           },
@@ -1047,7 +1047,7 @@
             "description": "Primary warning icon."
           },
           "warning-hover-active": {
-            "value": "{orange.500}",
+            "value": "#cc5024",
             "type": "color",
             "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color."
           },
@@ -1069,7 +1069,7 @@
             "description": "Secondary neutral icon."
           },
           "neutral-hover-active": {
-            "value": "{gray.400}",
+            "value": "#878992",
             "type": "color",
             "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color."
           },
@@ -1079,7 +1079,7 @@
             "description": "Secondary link-lookalike icon."
           },
           "info-hover-active": {
-            "value": "{blue.400}",
+            "value": "#2290cc",
             "type": "color",
             "description": "Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color."
           },
@@ -1089,7 +1089,7 @@
             "description": "Secondary success icon."
           },
           "success-hover-active": {
-            "value": "{green.400}",
+            "value": "#049b75",
             "type": "color",
             "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color."
           },
@@ -1099,7 +1099,7 @@
             "description": "Secondary critical icon."
           },
           "critical-hover-active": {
-            "value": "{red.400}",
+            "value": "#cc6c6b",
             "type": "color",
             "description": "Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color."
           },
@@ -1109,7 +1109,7 @@
             "description": "Secondary warning icon."
           },
           "warning-hover-active": {
-            "value": "{orange.400}",
+            "value": "#cc7036",
             "type": "color",
             "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color."
           }
@@ -1122,42 +1122,42 @@
       },
       "illustration": {
         "red": {
-          "value": "{red.400}",
+          "value": "#ff788f",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "orange": {
-          "value": "{orange.300}",
+          "value": "#ff9400",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "yellow": {
-          "value": "{yellow.200}",
+          "value": "#ffe84d",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "salad": {
-          "value": "{salad.200}",
+          "value": "#c7fa73",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "green": {
-          "value": "{green.200}",
+          "value": "#45e0a8",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "blue": {
-          "value": "{blue.400}",
+          "value": "#6edbff",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "violet": {
-          "value": "{violet.300}",
+          "value": "#b880ff",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "pink": {
-          "value": "{pink.400}",
+          "value": "#ff7ad1",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         }
@@ -1169,32 +1169,32 @@
           "description": "Default date-picker cell background."
         },
         "cell-current": {
-          "value": "{gray.800}",
+          "value": "{gray.400}",
           "type": "color",
           "description": "Color for marking the cell with the current date, month or year in the date-picker."
         },
         "cell-hover": {
-          "value": "rgba({violet.dusty.400}, 0.1)",
+          "value": "{gray.100}",
           "type": "color",
           "description": "Hover state of the default date-picker cell background."
         },
         "cell-range": {
-          "value": "rgba({blue.500}, 0.2)",
+          "value": "{blue.100}",
           "type": "color",
           "description": "Background for the cell which is included in the date range in the date-picker."
         },
         "cell-range-hover": {
-          "value": "rgba({blue.500}, 0.3)",
+          "value": "{blue.200}",
           "type": "color",
           "description": "Hover state of the background for the cell which is included in the date range in the date-picker."
         },
         "cell-active": {
-          "value": "{blue.500}",
+          "value": "{blue.300}",
           "type": "color",
           "description": "Active (selected) date-picker cell background."
         },
         "cell-active-hover": {
-          "value": "{blue.600}",
+          "value": "{blue.400}",
           "type": "color",
           "description": "Hover for the active (selected) date-picker cell background."
         },
@@ -1204,12 +1204,12 @@
           "description": "Color for marking the active cell with the current date, month or year in the date-picker."
         },
         "cell-comparison-active": {
-          "value": "{violet.400}",
+          "value": "{violet.500}",
           "type": "color",
           "description": "Active (selected) date-picker cell background for comparison periods."
         },
         "cell-comparison-active-hover": {
-          "value": "{violet.500}",
+          "value": "{violet.600}",
           "type": "color",
           "description": "Hover for the active (selected) date-picker cell background for comparison periods."
         }
@@ -1221,17 +1221,17 @@
           "description": "Default background color for the list item in the dropdown-menu."
         },
         "item-hover": {
-          "value": "rgba({blue.500}, 0.1)",
+          "value": "{gray.50}",
           "type": "color",
           "description": "Hover state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected": {
-          "value": "rgba({blue.500}, 0.2)",
+          "value": "rgba({blue.100}, 0.7)",
           "type": "color",
           "description": "Active (selected) state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected-hover": {
-          "value": "rgba({blue.500}, 0.3)",
+          "value": "{blue.100}",
           "type": "color",
           "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu."
         }
@@ -1248,12 +1248,12 @@
           "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme."
         },
         "bg-neutral": {
-          "value": "{gray.800}",
+          "value": "{violet.dusty.800}",
           "type": "color",
           "description": "Color of the FeaturePopover background with neutral theme."
         },
         "dot-neutral": {
-          "value": "{violet.300}",
+          "value": "{green.300}",
           "type": "color",
           "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme."
         },
@@ -1285,17 +1285,17 @@
           "description": "Hover state for the inverted version of the background color of the ProgressBar."
         },
         "value": {
-          "value": "{violet.300}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Value color of the ProgressBar."
         },
         "value-gradient": {
-          "value": "linear-gradient(-45deg, rgba({violet.300}, 0.9) 25%, rgba({violet.300}, 1) 0%, rgba({violet.300}, 1) 50%, rgba({violet.300}, 0.9) 0%, rgba({violet.300}, 0.9) 75%, rgba({violet.300}, 1) 0%)",
+          "value": "linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%)",
           "type": "color",
           "description": "Value with gradient for the ProgressBar."
         },
         "pattern-gradient": {
-          "value": "linear-gradient(-45deg, rgba({gray.100}, 0.9) 25%, rgba({gray.100}, 1) 0%, rgba({gray.100}, 1) 50%, rgba({gray.100}, 0.9) 0%, rgba({gray.100}, 0.9) 75%, rgba({gray.100}, 1) 0%)",
+          "value": "linear-gradient(-45deg, rgba(234, 239, 241, 0.9) 25%, rgba(234, 239, 241, 1) 0%, rgba(234, 239, 241, 1) 50%, rgba(234, 239, 241, 0.9) 0%, rgba(234, 239, 241, 0.9) 75%, rgba(234, 239, 241, 1) 0%)",
           "type": "color",
           "description": "Null value gradient for the ProgressBar."
         },
@@ -1324,7 +1324,7 @@
           "description": "Icon color for the SliderRating component in its normal state."
         },
         "hover-active": {
-          "value": "{violet.300}",
+          "value": "{yellow.200}",
           "type": "color",
           "description": "Icon color for the SliderRating component in its hovered and active states."
         }
@@ -1333,17 +1333,17 @@
         "th": {
           "primary": {
             "cell": {
-              "value": "rgba({gray.100}, 0.2)",
+              "value": "{gray.50}",
               "type": "color",
               "description": "Background of the header cell in the primary Table."
             },
             "cell-hover": {
-              "value": "{gray.50}",
+              "value": "{gray.100}",
               "type": "color",
               "description": "Background of the hovered header cell in the primary Table."
             },
             "cell-active": {
-              "value": "{gray.50}",
+              "value": "{gray.100}",
               "type": "color",
               "description": "Background of the active header cell in the primary Table."
             }
@@ -1356,7 +1356,7 @@
             }
           },
           "gradient": {
-            "value": "linear-gradient(to right, rgba({gray.50}, 0) 0%, rgba({gray.50}, 1) 100%)",
+            "value": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
             "type": "color",
             "description": "Background gradient for sorting icon that absolute positioned in the table head."
           }
@@ -1375,7 +1375,7 @@
               "studio.tokens": {
                 "modify": {
                   "type": "lighten",
-                  "value": "0.8",
+                  "value": "0.5",
                   "space": "hsl"
                 }
               }
@@ -1389,79 +1389,79 @@
               "studio.tokens": {
                 "modify": {
                   "type": "lighten",
-                  "value": "0.5",
+                  "value": "0.2",
                   "space": "hsl"
                 }
               }
             }
           },
           "cell-unread": {
-            "value": "rgba({gray.100}, 0.2)",
+            "value": "{gray.50}",
             "type": "color",
             "description": "Background of the unread cell in the Table."
           },
           "cell-accordion": {
-            "value": "rgba({gray.100}, 0.2)",
+            "value": "{gray.50}",
             "type": "color",
             "description": "Background of the cell inside an Accordion in the Table."
           },
           "cell-selected": {
-            "value": "rgba({blue.500}, 0.1)",
+            "value": "{blue.50}",
             "type": "color",
             "description": "Background of the selected cell in the Table."
           },
           "cell-selected-hover": {
-            "value": "rgba({blue.500}, 0.2)",
+            "value": "{blue.100}",
             "type": "color",
             "description": "Background of the hovered selected cell in the Table."
           },
           "cell-selected-active": {
-            "value": "rgba({blue.500}, 0.3)",
+            "value": "{blue.100}",
             "type": "color",
             "description": "Background of the active selected cell in the Table."
           },
           "cell-new": {
-            "value": "rgba({green.200}, 0.1)",
+            "value": "{green.50}",
             "type": "color",
             "description": "Background of the cell with new information in the Table."
           },
           "cell-new-hover": {
-            "value": "rgba({green.200}, 0.2)",
+            "value": "{green.100}",
             "type": "color",
             "description": "Background of the hovered cell with new information in the Table."
           },
           "cell-new-active": {
-            "value": "rgba({green.200}, 0.3)",
+            "value": "{green.100}",
             "type": "color",
             "description": "Background of the active cell with new information in the Table."
           },
           "cell-critical": {
-            "value": "rgba({red.500}, 0.1)",
+            "value": "{red.50}",
             "type": "color",
             "description": "Background of the cell with critical information in the Table."
           },
           "cell-critical-hover": {
-            "value": "rgba({red.500}, 0.2)",
+            "value": "{red.100}",
             "type": "color",
             "description": "Background of the hovered cell with critical information in the Table."
           },
           "cell-critical-active": {
-            "value": "rgba({red.500}, 0.3)",
+            "value": "{red.100}",
             "type": "color",
             "description": "Background of the active cell with critical information in the Table."
           },
           "cell-warning": {
-            "value": "rgba({orange.300}, 0.1)",
+            "value": "{orange.50}",
             "type": "color",
             "description": "Background of the cell with warning information in the Table."
           },
           "cell-warning-hover": {
-            "value": "rgba({orange.300}, 0.2)",
+            "value": "{orange.100}",
             "type": "color",
             "description": "Background of the hovered cell with warning information in the Table."
           },
           "cell-warning-active": {
-            "value": "rgba({orange.300}, 0.3)",
+            "value": "{orange.100}",
             "type": "color",
             "description": "Background of the active cell with warning information in the Table."
           }
@@ -1469,12 +1469,12 @@
       },
       "brand": {
         "primary": {
-          "value": "{violet.300}",
+          "value": "{orange.400}",
           "type": "color",
           "description": "Primary brand color."
         },
         "secondary": {
-          "value": "{green.200}",
+          "value": "{violet.700}",
           "type": "color",
           "description": "Secondary brand color."
         },
@@ -1526,7 +1526,7 @@
       },
       "box-shadow": {
         "card": {
-          "value": "0 0 0 1px rgba({border.primary}, 0.5)",
+          "value": "0 0 0 1px {border.primary}",
           "type": "boxShadow",
           "description": "Default shadow of the Card."
         },
@@ -1600,7 +1600,7 @@
         "type": "boxShadow",
         "description": "Default keyboard focus box-shadow styles.",
         "outline": {
-          "value": "{blue.500}",
+          "value": "{gray.800}",
           "type": "color",
           "description": "Color for default keyboard focus outline styles."
         },
@@ -1906,7 +1906,7 @@
         "type": "borderRadius"
       },
       "rounded-medium": {
-        "value": "6px",
+        "value": "8px",
         "type": "borderRadius"
       },
       "rounded-large": {
@@ -1923,7 +1923,7 @@
         "description": "Use for rounding addons and small controls like Checkbox."
       },
       "badge-rounded": {
-        "value": "{rounded-large}",
+        "value": "{rounded-medium}",
         "type": "borderRadius",
         "description": "Use for rounding Badge."
       },
@@ -2009,7 +2009,7 @@
           "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs."
         },
         "limitation-primary": {
-          "value": "rgba({gray.50}, 0.6)",
+          "value": "{gray.50}",
           "type": "color",
           "description": "Use as a primary cover of the content under the messages about limitations."
         },
@@ -2080,42 +2080,42 @@
       },
       "scroll-area": {
         "shadow-left": {
-          "value": "linear-gradient(to right, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Left-to-right fade shadow for the ScrollArea."
         },
         "shadow-right": {
-          "value": "linear-gradient(to left, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Right-to-left fade shadow for the ScrollArea."
         },
         "shadow-top": {
-          "value": "linear-gradient(to bottom, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Top-to-bottom fade shadow for the ScrollArea."
         },
         "shadow-bottom": {
-          "value": "linear-gradient(to top, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Bottom-to-top fade shadow for the ScrollArea."
         },
         "dropdown-menu-left": {
-          "value": "linear-gradient(to right, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
+          "value": "linear-gradient(to right, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
           "type": "color",
           "description": "Left-to-right fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-right": {
-          "value": "linear-gradient(to left, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
+          "value": "linear-gradient(to left, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
           "type": "color",
           "description": "Right-to-left fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-bottom": {
-          "value": "linear-gradient(to top, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
+          "value": "linear-gradient(to top, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
           "type": "color",
           "description": "Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-top": {
-          "value": "linear-gradient(to bottom, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
+          "value": "linear-gradient(to bottom, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
           "type": "color",
           "description": "Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu."
         }
@@ -2286,7 +2286,7 @@
       "chart": {
         "palette-order": {
           "1": {
-            "value": "{blue.500}",
+            "value": "{blue.300}",
             "type": "color",
             "description": "1 color in the default list of colors for charts."
           },
@@ -2296,37 +2296,37 @@
             "description": "2 color in the default list of colors for charts."
           },
           "3": {
-            "value": "{violet.300}",
+            "value": "{orange.400}",
             "type": "color",
             "description": "3 color in the default list of colors for charts."
           },
           "4": {
-            "value": "{red.300}",
+            "value": "{pink.300}",
             "type": "color",
             "description": "4 color in the default list of colors for charts."
           },
           "5": {
-            "value": "{orange.400}",
+            "value": "{yellow.200}",
             "type": "color",
             "description": "5 color in the default list of colors for charts."
           },
           "6": {
-            "value": "{yellow.200}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "6 color in the default list of colors for charts."
           },
           "7": {
-            "value": "{salad.300}",
+            "value": "{red.300}",
             "type": "color",
             "description": "7 color in the default list of colors for charts."
           },
           "8": {
-            "value": "{pink.400}",
+            "value": "{salad.200}",
             "type": "color",
             "description": "8 color in the default list of colors for charts."
           },
           "9": {
-            "value": "{blue.200}",
+            "value": "{blue.400}",
             "type": "color",
             "description": "9 color in the default list of colors for charts."
           },
@@ -2336,37 +2336,37 @@
             "description": "10 color in the default list of colors for charts."
           },
           "11": {
-            "value": "{violet.200}",
+            "value": "{orange.200}",
             "type": "color",
             "description": "11 color in the default list of colors for charts."
           },
           "12": {
-            "value": "{red.400}",
+            "value": "{pink.400}",
             "type": "color",
             "description": "12 color in the default list of colors for charts."
           },
           "13": {
-            "value": "{orange.200}",
+            "value": "{yellow.300}",
             "type": "color",
             "description": "13 color in the default list of colors for charts."
           },
           "14": {
-            "value": "{yellow.400}",
+            "value": "{violet.200}",
             "type": "color",
             "description": "14 color in the default list of colors for charts."
           },
           "15": {
-            "value": "{salad.400}",
+            "value": "{red.400}",
             "type": "color",
             "description": "15 color in the default list of colors for charts."
           },
           "16": {
-            "value": "{pink.200}",
+            "value": "{salad.300}",
             "type": "color",
             "description": "16 color in the default list of colors for charts."
           },
           "17": {
-            "value": "{blue.300}",
+            "value": "{blue.200}",
             "type": "color",
             "description": "17 color in the default list of colors for charts."
           },
@@ -2376,32 +2376,32 @@
             "description": "18 color in the default list of colors for charts."
           },
           "19": {
-            "value": "{violet.300}",
+            "value": "{orange.300}",
             "type": "color",
             "description": "19 color in the default list of colors for charts."
           },
           "20": {
-            "value": "{red.200}",
+            "value": "{pink.200}",
             "type": "color",
             "description": "20 color in the default list of colors for charts."
           },
           "21": {
-            "value": "{orange.300}",
+            "value": "{yellow.400}",
             "type": "color",
             "description": "21 color in the default list of colors for charts."
           },
           "22": {
-            "value": "{yellow.300}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "22 color in the default list of colors for charts."
           },
           "23": {
-            "value": "{salad.200}",
+            "value": "{red.200}",
             "type": "color",
             "description": "23 color in the default list of colors for charts."
           },
           "24": {
-            "value": "{pink.300}",
+            "value": "{salad.400}",
             "type": "color",
             "description": "24 color in the default list of colors for charts."
           },
@@ -2423,7 +2423,7 @@
         },
         "grid": {
           "line": {
-            "value": "{border.secondary}",
+            "value": "{gray.100}",
             "type": "color",
             "description": "Default chart grid line."
           },
@@ -2443,12 +2443,12 @@
             "description": "Text label on the chart grid."
           },
           "bar-chart-hover": {
-            "value": "rgba({gray.200}, 0.2)",
+            "value": "rgba({gray.200}, 0.3)",
             "type": "color",
             "description": "Background color for the hover state of a bar on the chart grid."
           },
           "bar-chart-base-bg": {
-            "value": "{gray.50}",
+            "value": "{gray.100}",
             "type": "color",
             "description": "Default background color of a bar in the BarChart."
           },
@@ -2470,12 +2470,12 @@
         },
         "x-axis-accent": {
           "period-active": {
-            "value": "{gray.300}",
+            "value": "{gray.500}",
             "type": "color",
             "description": "Background color for the clickable date on the X-axis of the chart grid."
           },
           "data-start-tracking": {
-            "value": "rgba({green.300}, 0.2)",
+            "value": "rgba({green.400}, 0.2)",
             "type": "color",
             "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid."
           }
@@ -2499,47 +2499,47 @@
       },
       "header": {
         "bg": {
-          "value": "{bg.secondary.neutral}",
+          "value": "{violet.dusty.700}",
           "type": "color"
         },
         "border": {
           "primary": {
-            "value": "{border.primary}",
+            "value": "{violet.dusty.700}",
             "type": "color"
           },
           "secondary": {
-            "value": "{border.secondary}",
+            "value": "#ffffff26",
             "type": "color"
           }
         }
       },
       "sidebar-nav": {
         "control-hover": {
-          "value": "rgba({gray.100}, 0.3)",
+          "value": "rgba({gray.100}, 0.7)",
           "type": "color"
         },
         "control-active": {
-          "value": "{gray.100}",
+          "value": "{violet.dusty.100}",
           "type": "color"
         },
         "control": {
           "text": {
             "normal": {
-              "value": "{text.secondary}",
+              "value": "{violet.dusty.500}",
               "type": "color"
             },
             "active": {
-              "value": "{text.primary}",
+              "value": "{violet.dusty.600}",
               "type": "color"
             }
           },
           "icon": {
             "normal": {
-              "value": "{icon.secondary.neutral}",
+              "value": "{violet.dusty.400}",
               "type": "color"
             },
             "active": {
-              "value": "{icon.primary.neutral}",
+              "value": "{violet.dusty.600}",
               "type": "color"
             }
           }

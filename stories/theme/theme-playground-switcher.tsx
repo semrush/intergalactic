@@ -1,6 +1,7 @@
 import aquaGreenThemeTokens from '@semcore/core/lib/theme/themes/aqua-green';
 import darkThemeTokens from '@semcore/core/lib/theme/themes/dark';
 import defaultThemeTokens from '@semcore/core/lib/theme/themes/default';
+import lightNewThemeTokens from '@semcore/core/lib/theme/themes/light-new';
 import limeGreenThemeTokens from '@semcore/core/lib/theme/themes/lime-green';
 import newThemeTokens from '@semcore/core/lib/theme/themes/new';
 import newAdjustedThemeTokens from '@semcore/core/lib/theme/themes/new-adjusted';
@@ -11,12 +12,13 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 export const THEMES = [
-  { id: 'light', label: 'Light (current)', tokens: defaultThemeTokens },
-  { id: 'new', label: 'New (product test)', tokens: newThemeTokens },
-  { id: 'new-adjusted', label: 'New Adjusted (product test)', tokens: newAdjustedThemeTokens },
-  { id: 'aqua-green', label: 'Aqua Green (marketing)', tokens: aquaGreenThemeTokens },
-  { id: 'lime-green', label: 'Lime Green (marketing)', tokens: limeGreenThemeTokens },
-  { id: 'dark', label: 'Dark (current for website)', tokens: darkThemeTokens },
+  { id: 'light-new', label: '[new] light-new', tokens: lightNewThemeTokens },
+  { id: 'light', label: '[current] light', tokens: defaultThemeTokens },
+  { id: 'new-adjusted', label: '[new] light-new adjusted from Lesha', tokens: newAdjustedThemeTokens },
+  { id: 'new', label: '[new] product test', tokens: newThemeTokens },
+  { id: 'aqua-green', label: '[marketing] 🟦 aqua green', tokens: aquaGreenThemeTokens },
+  { id: 'lime-green', label: '[marketing] 🟩 lime green', tokens: limeGreenThemeTokens },
+  { id: 'dark', label: '[current] dark (for website)', tokens: darkThemeTokens },
 ] as const;
 
 export const BG_PRIMARY_TOKEN = '--intergalactic-bg-primary-neutral';

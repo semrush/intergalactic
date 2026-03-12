@@ -1,5 +1,7 @@
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
+import FileExportM from '@semcore/icon/FileExport/m';
+import InfoM from '@semcore/icon/Info/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
@@ -16,19 +18,26 @@ import {
   YAxis,
 } from '@semcore/ui/d3-chart';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
+import Divider from '@semcore/ui/divider';
 import Link from '@semcore/ui/link';
+import Pagination from '@semcore/ui/pagination';
 import Pills from '@semcore/ui/pills';
 import ProductHead, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import TabLine from '@semcore/ui/tab-line';
-import Tooltip from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
+import { Error, NoData } from '@semcore/ui/widget-empty';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import { ThemePlaygroundLayout, ThemeSwitcherDropdown } from './theme-playground-switcher';
+import BarMockData from '../components/d3-chart/__mocks__/bar';
+import DonutMockData from '../components/d3-chart/__mocks__/donut';
+import LineMockData from '../components/d3-chart/__mocks__/line';
+import ScatterplotMockData from '../components/d3-chart/__mocks__/scatterplot';
 import './theme-playground-fonts.css';
 
 const meta: Meta = {
@@ -39,55 +48,6 @@ export default meta;
 
 type Story = StoryObj;
 
-const lineChartData = [
-  { x: 0, line1: 2, line2: 3 },
-  { x: 1, line1: 4, line2: 2 },
-  { x: 2, line1: 3, line2: 5 },
-  { x: 3, line1: 6, line2: 4 },
-  { x: 4, line1: 5, line2: 6 },
-  { x: 5, line1: 7, line2: 5 },
-  { x: 6, line1: 6, line2: 7 },
-  { x: 7, line1: 8, line2: 6 },
-  { x: 8, line1: 9, line2: 8 },
-  { x: 9, line1: 10, line2: 9 },
-];
-
-const lineAreaChartData = [
-  { x: 0, y: 2, y0: 0, y1: 4 },
-  { x: 1, y: 4, y0: 0, y1: 6 },
-  { x: 2, y: 3, y0: 0, y1: 5 },
-  { x: 3, y: 6, y0: 0, y1: 8 },
-  { x: 4, y: 5, y0: 0, y1: 7 },
-  { x: 5, y: 7, y0: 0, y1: 9 },
-  { x: 6, y: 6, y0: 0, y1: 8 },
-  { x: 7, y: 8, y0: 0, y1: 10 },
-  { x: 8, y: 9, y0: 0, y1: 10 },
-  { x: 9, y: 10, y0: 0, y1: 12 },
-];
-
-const barChartData = [
-  { category: 'A', bar: 4 },
-  { category: 'B', bar: 8 },
-  { category: 'C', bar: 5 },
-  { category: 'D', bar: 7 },
-  { category: 'E', bar: 9 },
-];
-
-const donutChartData = { a: 3, b: 5, c: 2, d: 4 };
-
-const scatterplotChartData = [
-  { x: 0, y: 1 },
-  { x: 1, y: 3 },
-  { x: 2, y: 2 },
-  { x: 3, y: 5 },
-  { x: 4, y: 4 },
-  { x: 5, y: 2 },
-  { x: 6, y: 4 },
-  { x: 7, y: 3 },
-  { x: 8, y: 5 },
-  { x: 9, y: 1 },
-];
-
 const dataTableData: DataTableData = [
   { keyword: 'ebay buy', kd: '77.8', cpc: '$1.25', vol: '32,500,000' },
   { keyword: 'www.ebay.com', kd: '11.2', cpc: '$3.40', vol: '65,457,920' },
@@ -96,23 +56,35 @@ const dataTableData: DataTableData = [
 ];
 
 const rowThemeStyles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
-const primaryDataTableData: DataTableData = rowThemeStyles.map((theme, i) => ({
+const primaryDataTableThemedRows: DataTableData = rowThemeStyles.map((theme, i) => ({
   theme,
   metric: String(100 - i * 15),
   value: String(250 + i * 50),
   change: `${i % 2 === 0 ? '+' : ''}${(i - 2) * 5}%`,
 }));
-
-const internalLinkingData = [
-  { category: '0', value: 13 },
-  { category: '1', value: 18 },
-  { category: '2-5', value: 25 },
-  { category: '6-15', value: 22 },
-  { category: '16-50', value: 26 },
-  { category: '51-150', value: 17 },
-  { category: '151-500', value: 12 },
-  { category: '500+', value: 16 },
+const primaryDataTablePlainRows: DataTableData = [
+  { theme: 'neutral', metric: '72', value: '520', change: '+3%' },
+  { theme: 'neutral', metric: '58', value: '410', change: '-1%' },
+  { theme: 'neutral', metric: '91', value: '680', change: '+7%' },
+  { theme: 'neutral', metric: '44', value: '290', change: '-2%' },
+  { theme: 'neutral', metric: '63', value: '395', change: '+5%' },
 ];
+const primaryDataTableData: DataTableData = [...primaryDataTableThemedRows, ...primaryDataTablePlainRows];
+
+const vennChartData = {
+  'G': 200,
+  'F': 200,
+  'C': 500,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
+const vennChartLegendMap = {
+  G: { label: 'Good' },
+  F: { label: 'Fast' },
+  C: { label: 'Clean' },
+};
 
 const CHART_HEIGHT = 180;
 /** Height for charts that need extra space (axis labels, legend) so content isn't clipped */
@@ -121,9 +93,11 @@ const CHART_CONTAINER_HEIGHT = 240;
 const LEGEND_RESERVE_HEIGHT = 44;
 /** Fixed number of Y-axis ticks; scale domain is derived from data and .nice() so data always fits */
 const Y_TICKS_COUNT = 3;
+/** Reserve enough space on the left so long Y-axis (category) labels are not clipped */
+const HORIZONTAL_BAR_Y_AXIS_MARGIN = 80;
 
 const PLOT_PADDING = 6;
-const LINE_CHART_MARGIN_X = 30;
+const LINE_CHART_MARGIN_X = 24;
 const AREA_CHART_MARGIN_X = 24;
 
 /** Build Y scale from data so that .ticks(n) always fits the data range (no manual tick count tuning) */
@@ -175,11 +149,11 @@ function LineChartWithDataDrivenScale({
   height: number;
 }) {
   const plotHeight = height - LEGEND_RESERVE_HEIGHT;
-  const yScale = useLineChartYScale(lineChartData, 'x', plotHeight);
+  const yScale = useLineChartYScale(LineMockData.TwoLines, 'x', plotHeight);
   return (
     <Chart.Line
       groupKey='x'
-      data={lineChartData}
+      data={LineMockData.TwoLines}
       plotWidth={width}
       plotHeight={plotHeight}
       yScale={yScale}
@@ -198,11 +172,11 @@ function AreaChartWithDataDrivenScale({
   height: number;
 }) {
   const plotHeight = height - LEGEND_RESERVE_HEIGHT;
-  const yScale = useAreaChartYScale(areaChartData, 'x', plotHeight);
+  const yScale = useAreaChartYScale(LineMockData.ThreeLines, 'x', plotHeight);
   return (
     <Chart.Area
       groupKey='x'
-      data={areaChartData}
+      data={LineMockData.ThreeLines}
       plotWidth={width}
       plotHeight={plotHeight}
       yScale={yScale}
@@ -265,19 +239,6 @@ function FillHeightChartWrapper({
   );
 }
 
-const areaChartData = [
-  { x: 0, area1: 2, area2: 3, area3: 1 },
-  { x: 1, area1: 4, area2: 2, area3: 4 },
-  { x: 2, area1: 3, area2: 5, area3: 2 },
-  { x: 3, area1: 6, area2: 4, area3: 5 },
-  { x: 4, area1: 5, area2: 6, area3: 4 },
-  { x: 5, area1: 7, area2: 5, area3: 6 },
-  { x: 6, area1: 6, area2: 7, area3: 5 },
-  { x: 7, area1: 8, area2: 6, area3: 7 },
-  { x: 8, area1: 9, area2: 8, area3: 8 },
-  { x: 9, area1: 10, area2: 9, area3: 9 },
-];
-
 function BarChartHorizontal({
   data,
   width,
@@ -289,7 +250,7 @@ function BarChartHorizontal({
 }) {
   const MARGIN = 24;
   const xScale = scaleLinear()
-    .range([MARGIN * 2, width - MARGIN])
+    .range([HORIZONTAL_BAR_Y_AXIS_MARGIN, width - MARGIN])
     .domain([0, Math.max(...data.map((d) => d.bar), 10)]);
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
@@ -310,8 +271,33 @@ function BarChartHorizontal({
   );
 }
 
+type PrimaryTableRow = (typeof primaryDataTableData)[number];
 function DashboardPlaygroundContent() {
   const [tabValue, setTabValue] = React.useState(1);
+  const [primaryTablePage, setPrimaryTablePage] = React.useState(1);
+  const [primaryTableSort, setPrimaryTableSort] = React.useState<
+    DataTableSort<keyof PrimaryTableRow>
+  >(['metric', 'asc']);
+  const primaryTableSortedData = React.useMemo(
+    () =>
+      [...primaryDataTableData].sort((a, b) => {
+        const [prop, direction] = primaryTableSort;
+        const aVal = a[prop];
+        const bVal = b[prop];
+        if (prop === 'metric' || prop === 'value') {
+          const diff = Number(aVal) - Number(bVal);
+          return direction === 'asc' ? diff : -diff;
+        }
+        if (prop === 'change') {
+          const parseChange = (s: string) => Number(String(s).replace(/[^-\d]/g, '')) || 0;
+          const diff = parseChange(String(aVal)) - parseChange(String(bVal));
+          return direction === 'asc' ? diff : -diff;
+        }
+        const cmp = String(aVal).localeCompare(String(bVal));
+        return direction === 'asc' ? cmp : -cmp;
+      }),
+    [primaryTableSort],
+  );
 
   return (
     <ThemePlaygroundLayout switcherVariant='inline'>
@@ -372,12 +358,174 @@ function DashboardPlaygroundContent() {
           </ProductHead.Row>
         </ProductHead>
 
-        <Box px={8} pb={8}>
+        <Box px={8} pb={30}>
           <TabLine value={tabValue} onChange={setTabValue} mb={6}>
             <TabLine.Item value={1}>Overview</TabLine.Item>
             <TabLine.Item value={2}>Analytics</TabLine.Item>
             <TabLine.Item value={3}>Reports</TabLine.Item>
           </TabLine>
+
+          <Flex gap={4} mb={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 360px)',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <Card.Body>
+                <Flex gap={6} w='100%'>
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Visibility
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        42
+                      </Link>
+                      <Text size={100} color='text-secondary' noWrap>
+                        no change
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Estimated traffic
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        24,765
+                      </Link>
+                      <Text size={100} color='text-critical' noWrap>
+                        &minus;4
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Average position
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        908
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +12
+                      </Text>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </Card.Body>
+            </Card>
+
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 360px)',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <Card.Body>
+                <Flex gap={6} w='100%'>
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Keywords
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        1,284
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +28
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Backlinks
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        4,521
+                      </Link>
+                      <Text size={100} color='text-secondary' noWrap>
+                        no change
+                      </Text>
+                    </Flex>
+                  </Flex>
+                  <Divider orientation='vertical' />
+                  <Flex direction='column' style={{ flex: 1, minWidth: 0 }}>
+                    <Flex gap={1} alignItems='center'>
+                      <Text size={200} noWrap>
+                        Domain health
+                      </Text>
+                    </Flex>
+                    <Flex alignItems='baseline' gap={1} mt={1}>
+                      <Link
+                        size={500}
+                        color='text-large-info'
+                        fontWeight='bold'
+                        href='https://semrush.com'
+                        target='_blank'
+                      >
+                        94
+                      </Link>
+                      <Text size={100} color='text-success' noWrap>
+                        +2
+                      </Text>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </Card.Body>
+            </Card>
+          </Flex>
 
           <Flex
             gap={4}
@@ -396,8 +544,15 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Line</Card.Title>
-                <Card.Description>The line goes where it wants.</Card.Description>
+                <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
+                  <Box>
+                    <Card.Title tag='h3'>Line</Card.Title>
+                    <Card.Description>The line goes where it wants.</Card.Description>
+                  </Box>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
@@ -417,18 +572,25 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Area</Card.Title>
-                <Card.Description>Three layers — like a cake.</Card.Description>
+                <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
+                  <Box>
+                    <Card.Title tag='h3'>Area</Card.Title>
+                    <Card.Description>Three layers — like a cake.</Card.Description>
+                  </Box>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
                   {([width, height]) => (
                     <Chart.Area
                       groupKey='x'
-                      data={areaChartData}
+                      data={LineMockData.ThreeLines}
                       plotWidth={width}
                       plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      yTicksCount={10}
+                      yTicksCount={Y_TICKS_COUNT}
                       stacked
                       showDots
                       showLegend
@@ -448,13 +610,24 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Bar</Card.Title>
-                <Card.Description>Bars grow sideways.</Card.Description>
+                <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
+                  <Box>
+                    <Card.Title tag='h3'>Bar</Card.Title>
+                    <Card.Description>Bars grow sideways.</Card.Description>
+                  </Box>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
                   {([width, height]) => (
-                    <BarChartHorizontal data={barChartData} width={width} height={height} />
+                    <BarChartHorizontal
+                      data={BarMockData.Default.slice(0, 4).reverse()}
+                      width={width}
+                      height={height}
+                    />
                   )}
                 </ResponsiveChartWrapper>
               </Card.Body>
@@ -469,21 +642,30 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Donut</Card.Title>
-                <Card.Description>A donut hole put to good use.</Card.Description>
+                <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
+                  <Box>
+                    <Card.Title tag='h3'>Donut</Card.Title>
+                    <Card.Description>A donut hole put to good use.</Card.Description>
+                  </Box>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
                   {([width, height]) => {
                     const size = Math.min(width, height);
                     return (
-                      <Chart.Donut
-                        data={donutChartData}
-                        plotWidth={size}
-                        plotHeight={size}
-                        aria-label='Donut chart'
-                        innerRadius={Math.max(20, size * 0.23)}
-                      />
+                      <Box style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <Chart.Donut
+                          data={DonutMockData.Default}
+                          plotWidth={size}
+                          plotHeight={size}
+                          aria-label='Donut chart'
+                          innerRadius={Math.max(20, size * 0.23)}
+                        />
+                      </Box>
                     );
                   }}
                 </ResponsiveChartWrapper>
@@ -499,17 +681,25 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Scatterplot</Card.Title>
-                <Card.Description>Points scattered every which way.</Card.Description>
+                <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
+                  <Box>
+                    <Card.Title tag='h3'>Scatterplot</Card.Title>
+                    <Card.Description>Points scattered every which way.</Card.Description>
+                  </Box>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body>
                 <ResponsiveChartWrapper>
                   {([width, height]) => (
                     <Chart.ScatterPlot
-                      data={scatterplotChartData}
+                      data={ScatterplotMockData.Default}
                       groupKey='x'
                       plotWidth={width}
                       plotHeight={height}
+                      yTicksCount={Y_TICKS_COUNT}
                       aria-label='Scatterplot chart'
                     />
                   )}
@@ -529,15 +719,20 @@ function DashboardPlaygroundContent() {
               <Card
                 tag='section'
                 style={{
-                  flex: '1 1 calc(50% - 8px)',
-                  minWidth: 'min(100%, 320px)',
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
                   maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                 }}
               >
                 <Card.Header>
-                  <Card.Title tag='h3'>Table</Card.Title>
+                  <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                    <Card.Title tag='h3'>Secondary DataTable</Card.Title>
+                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                      Export
+                    </Button>
+                  </Flex>
                 </Card.Header>
                 <Card.Body
                   pt={0}
@@ -575,8 +770,8 @@ function DashboardPlaygroundContent() {
               <Card
                 tag='section'
                 style={{
-                  flex: '1 1 calc(50% - 8px)',
-                  minWidth: 'min(100%, 320px)',
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
                   maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -584,11 +779,16 @@ function DashboardPlaygroundContent() {
               >
                 <Card.Header>
                   <Flex justifyContent='space-between' alignItems='center' w='100%'>
-                    <Card.Title tag='h3'>Histogram</Card.Title>
-                    <Pills defaultValue='incoming' size='m'>
-                      <Pills.Item value='incoming'>Incoming links</Pills.Item>
-                      <Pills.Item value='outgoing'>Outgoing links</Pills.Item>
-                    </Pills>
+                    <Flex alignItems='center' gap={4}>
+                      <Card.Title tag='h3'>Histogram</Card.Title>
+                      <Pills defaultValue='incoming' size='m'>
+                        <Pills.Item value='incoming'>Incoming links</Pills.Item>
+                        <Pills.Item value='outgoing'>Outgoing links</Pills.Item>
+                      </Pills>
+                    </Flex>
+                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                      Export
+                    </Button>
                   </Flex>
                 </Card.Header>
                 <Card.Body
@@ -603,10 +803,10 @@ function DashboardPlaygroundContent() {
                     {([width, height]) => (
                       <Chart.Bar
                         groupKey='category'
-                        data={internalLinkingData}
+                        data={BarMockData.Default}
                         plotWidth={width}
                         plotHeight={height}
-                        yTicksCount={4}
+                        yTicksCount={Y_TICKS_COUNT}
                         aria-label='Internal linking bar chart'
                       />
                     )}
@@ -616,6 +816,52 @@ function DashboardPlaygroundContent() {
                       View full report
                     </Button>
                   </Box>
+                </Card.Body>
+              </Card>
+
+              <Card
+                tag='section'
+                style={{
+                  flex: '1 1 calc(33.333% - 11px)',
+                  minWidth: 'min(100%, 280px)',
+                  maxWidth: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <Card.Header>
+                  <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                    <Card.Title tag='h3'>Venn</Card.Title>
+                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                      Export
+                    </Button>
+                  </Flex>
+                </Card.Header>
+                <Card.Body
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: 0,
+                  }}
+                >
+                  <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
+                    {([width, height]) => {
+                      const size = Math.min(width, height);
+                      return (
+                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                          <Chart.Venn
+                            data={vennChartData}
+                            plotWidth={size}
+                            plotHeight={size}
+                            legendProps={{ legendMap: vennChartLegendMap }}
+                            showLegend
+                            aria-label='Venn chart'
+                          />
+                        </Box>
+                      );
+                    }}
+                  </ResponsiveChartWrapper>
                 </Card.Body>
               </Card>
             </Flex>
@@ -630,7 +876,12 @@ function DashboardPlaygroundContent() {
               }}
             >
               <Card.Header>
-                <Card.Title tag='h3'>Primary DataTable</Card.Title>
+                <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                  <Card.Title tag='h3'>Primary DataTable</Card.Title>
+                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    Export
+                  </Button>
+                </Flex>
               </Card.Header>
               <Card.Body
                 pt={0}
@@ -647,20 +898,89 @@ function DashboardPlaygroundContent() {
                   <DataTable
                     use='primary'
                     variant='card'
-                    data={primaryDataTableData}
+                    data={primaryTableSortedData}
+                    sort={primaryTableSort}
+                    onSortChange={setPrimaryTableSort}
                     aria-label='Primary table with themed rows'
                     w='100%'
                     columns={[
-                      { name: 'theme', children: 'Theme', gtcWidth: 'minmax(100px, 1fr)' },
-                      { name: 'metric', children: 'Metric', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
-                      { name: 'value', children: 'Value', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
-                      { name: 'change', children: 'Change', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                      {
+                        name: 'theme',
+                        children: 'Theme',
+                        gtcWidth: 'minmax(100px, 1fr)',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'metric',
+                        children: 'Metric',
+                        gtcWidth: 'min-content',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'value',
+                        children: 'Value',
+                        gtcWidth: 'minmax(80px, 1fr)',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
+                      {
+                        name: 'change',
+                        children: 'Change',
+                        gtcWidth: 'minmax(80px, 1fr)',
+                        justifyContent: 'end',
+                        sortable: true,
+                        changeSortSize: true,
+                      },
                     ]}
-                    rowProps={(_, index) => ({
-                      theme: rowThemeStyles[index],
-                    })}
+                    rowProps={(row) =>
+                      rowThemeStyles.includes(row.theme as (typeof rowThemeStyles)[number])
+                        ? { theme: row.theme as (typeof rowThemeStyles)[number] }
+                        : {}}
                   />
                 </Box>
+                <Box pt={3} px={5} pb={4}>
+                  <Pagination
+                    totalPages={10}
+                    currentPage={primaryTablePage}
+                    onCurrentPageChange={setPrimaryTablePage}
+                    aria-label='Pagination'
+                  />
+                </Box>
+              </Card.Body>
+            </Card>
+
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 320px)',
+                maxWidth: '100%',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>WidgetEmpty</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <NoData />
+              </Card.Body>
+            </Card>
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 320px)',
+                maxWidth: '100%',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>WidgetEmpty</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Error />
               </Card.Body>
             </Card>
           </Flex>
