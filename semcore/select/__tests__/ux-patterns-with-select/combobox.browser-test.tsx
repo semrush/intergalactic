@@ -47,6 +47,7 @@ test.describe(TAG.VISUAL, () => {
       await locators.trigger(page).click();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.type('01:00');
+      await expect(locators.options(page).nth(1)).toHaveClass(/selected/);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');

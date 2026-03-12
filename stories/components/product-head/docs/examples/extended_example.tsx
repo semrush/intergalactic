@@ -95,6 +95,7 @@ const Demo = () => {
                   addonLeft={InfoM}
                   display='inline-flex'
                   ml={1}
+                  mt='-2px'
                   color='icon-secondary-neutral'
                   aria-label='About update rate'
                 />

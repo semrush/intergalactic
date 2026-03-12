@@ -29,16 +29,15 @@ const Reload = () => {
 const Demo = () => (
   <Flex gap={6}>
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Visibility
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Visibility
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
             addonLeft={Info}
             aria-label='About visibility'
             color='icon-secondary-neutral'
+            mt='-2px'
           />
           <DescriptionTooltip.Popper aria-label='About visibility'>
             <Text size={200}>
@@ -58,16 +57,15 @@ const Demo = () => (
     </Flex>
     <Divider orientation='vertical' />
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Estimated traffic
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Estimated traffic
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
             addonLeft={Info}
             aria-label='About estimated traffic'
             color='icon-secondary-neutral'
+            mt='-2px'
           />
           <DescriptionTooltip.Popper aria-label='About estimated traffic'>
             <Text size={200}>
@@ -86,16 +84,15 @@ const Demo = () => (
     </Flex>
     <Divider orientation='vertical' />
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Average position
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Average position
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
             addonLeft={Info}
             aria-label='About Average position'
             color='icon-secondary-neutral'
+            mt='-2px'
           />
           <DescriptionTooltip.Popper aria-label='About Average position'>
             <Text size={200}>

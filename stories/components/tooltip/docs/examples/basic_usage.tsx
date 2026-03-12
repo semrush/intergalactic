@@ -1,15 +1,14 @@
-import CheckAltM from '@semcore/icon/CheckAlt/m';
 import FileExportM from '@semcore/icon/FileExport/m';
 import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Link from '@semcore/ui/link';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => (
-  <Flex gap={4} direction='column'>
+  <Flex gap={4} direction='column' tag={Text} size={300}>
     <Flex gap={4} alignItems='center'>
       Tooltip:
       <Tooltip
@@ -30,7 +29,7 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
+        <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary' size={300}>
           About fastest animals
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
