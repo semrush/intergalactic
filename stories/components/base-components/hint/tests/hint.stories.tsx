@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Link } from './__tests__/hoverlink.test';
 import HintExample, { defaultProps } from './examples/base-example-props';
 import CursorAnchoringExample from './examples/cursor_anchoring';
+import WordWrapExample from './examples/word-wrap';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {
@@ -14,6 +15,10 @@ export default meta;
 export const CursorAnchoring: StoryObj = {
   render: CursorAnchoringExample,
   play: playWrapper(Link),
+};
+
+export const WordWrap: StoryObj = {
+  render: WordWrapExample,
 };
 
 export const Hint: StoryObj<typeof defaultProps> = {
