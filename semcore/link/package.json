@@ -31,6 +31,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
     "@semcore/icon": "workspace:*",
-    "@semcore/testing-utils": "workspace:*"
+    "@semcore/testing-utils": "workspace:*",
+    "@floating-ui/dom": "1.7.2"
   }
 }

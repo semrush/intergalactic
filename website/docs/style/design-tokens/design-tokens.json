@@ -508,7 +508,6 @@
     "computedValue": "#006dca",
     "description": "Link text.",
     "components": [
-      "base-trigger",
       "button",
       "link",
       "pagination",
@@ -523,8 +522,6 @@
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
     "components": [
-      "base-trigger",
-      "button",
       "link",
       "tab-panel",
       "typography"
@@ -555,7 +552,6 @@
     "computedValue": "#8649e1",
     "description": "Visited link text.",
     "components": [
-      "button",
       "link"
     ]
   },
@@ -2707,7 +2703,6 @@
     "description": "2px",
     "components": [
       "accordion",
-      "base-trigger",
       "bulk-textarea",
       "checkbox",
       "counter",

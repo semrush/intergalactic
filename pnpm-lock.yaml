@@ -512,9 +512,6 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
-      '@floating-ui/dom':
-        specifier: 1.7.2
-        version: 1.7.2
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components
@@ -1412,6 +1409,9 @@ importers:
         specifier: 16.3.2
         version: link:../typography
     devDependencies:
+      '@floating-ui/dom':
+        specifier: 1.7.2
+        version: 1.7.2
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components
