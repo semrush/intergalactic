@@ -79,9 +79,11 @@ const unknownScope = allProvidedScopes.find((scope) => !allAllowedScopes.include
 if (unknownScope) {
   outputError(
     `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ${specialScopes
-      .map((scope) => pc.cyan(scope))
-      .join(', ')}, ${semcoreComponents
+      .map((scope) => pc.yellow(scope))
+      .join(', ')}, ${semcoreBaseComponents
       .map((scope) => pc.blue(scope))
-      .join(', ')}, ${toolsComponents.map((scope) => pc.magenta(scope)).join(', ')}`,
+      .join(', ')}, ${semcoreComponents
+      .map((scope) => pc.magenta(scope))
+      .join(', ')}, ${toolsComponents.map((scope) => pc.green(scope)).join(', ')}`,
   );
 }
