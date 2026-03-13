@@ -12,7 +12,7 @@ describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-HTMLElement.prototype.scrollIntoView = () => {};
+HTMLElement.prototype.scrollIntoView = () => { };
 
 describe('Select Trigger', () => {
   beforeEach(() => {
@@ -300,6 +300,7 @@ describe('InputSearch', () => {
     // Wait for autoFocus in Input.Value to complete
     await new Promise((resolve) => setTimeout(resolve, 100));
     await userEvent.keyboard('test');
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();
   });
