@@ -10,6 +10,7 @@ type LinkEllipsisProps = {
   active?: boolean;
   disabled?: boolean;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
 };
 
 const Demo = (props: LinkEllipsisProps) => {
@@ -18,6 +19,13 @@ const Demo = (props: LinkEllipsisProps) => {
   if (typeof props.ellipsis === 'object' && props.ellipsis.maxLine && props.ellipsis.maxLine > 1) {
     linkDisplayValue = 'inline-block';
   }
+
+  const resolvedHintProps = props.hintProps === false
+    ? false
+    : {
+        ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
+        ...(typeof props.hintProps === 'object' ? props.hintProps : {}),
+      };
 
   return (
     <Link
@@ -31,10 +39,7 @@ const Demo = (props: LinkEllipsisProps) => {
         w={props.w}
         color={props.color}
         size={props.size}
-        hintProps={{
-          ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-
-        }}
+        hintProps={resolvedHintProps}
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
       </Link.Text>
