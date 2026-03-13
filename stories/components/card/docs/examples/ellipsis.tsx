@@ -8,7 +8,7 @@ const tooltipContent = `Hey! Don't forget to place some useful information here.
 const Demo = () => (
   <Card w='50%'>
     <Card.Header>
-      <Flex alignItems='center' tag='h3' m={0}>
+      <Text size={300} tag='h3' m={0} display='flex'>
         <Card.Title
           ellipsis={true}
           hintAfter={tooltipContent}
@@ -16,7 +16,7 @@ const Demo = () => (
         >
           Long title which should show ellipsis when there isn't enough space.
         </Card.Title>
-      </Flex>
+      </Text>
       <Card.Description ellipsis={true}>
         Very long description which should show ellipsis when there isn't enough space.
       </Card.Description>
