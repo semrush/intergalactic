@@ -98,35 +98,35 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(locators.textbox(page)).toBeFocused();
       await page.keyboard.press('Shift+Tab');
+      await expect(locators.checkbox(page, 0)).toBeFocused();
       await page.keyboard.press('ArrowRight');
       await expect(locators.checkbox(page, 1)).toBeFocused();
       await page.keyboard.press('Shift+Tab');
+      await expect(locators.button(page, 'Clear all')).toBeFocused();
       await page.keyboard.press('Shift+Tab');
-
       await expect(locators.button(page, 'Apply')).toBeFocused();
     });
 
     await test.step('Verify counter in trigger not added when textbox filled and ESC pressed', async () => {
       await page.keyboard.press('Shift+Tab');
+      await expect(locators.textbox(page)).toBeFocused();
       await page.keyboard.type('test');
       await page.keyboard.press('Escape');
       await locators.popper(page).waitFor({ state: 'hidden' });
-
       await expect(locators.trigger(page)).toBeFocused();
-
       await expect(locators.triggerText(page)).toContainText('Include keywords');
     });
 
     await test.step('Verify counter in trigger  added when textbox filled and Apply pressed', async () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+      await expect(locators.textbox(page)).toBeFocused();
       await page.keyboard.type('test');
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Apply')).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
-
       await expect(locators.trigger(page)).toBeFocused();
-
       await expect(locators.triggerText(page)).toHaveText('Include: 1 keyword');
     });
 
@@ -142,9 +142,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify Clear all clears textbox', async () => {
       await page.keyboard.press('Space');
       await locators.popper(page).waitFor({ state: 'visible' });
+      await expect(locators.textbox(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Apply')).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Clear all')).toBeFocused();
 
       await page.keyboard.press('Enter');
       await expect(locators.triggerText(page)).toHaveText('Include: 1 keyword');
@@ -153,6 +157,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify trigger clears when pressing apply', async () => {
       await page.keyboard.press('Shift+Tab');
+      await expect(locators.button(page, 'Apply')).toBeFocused();
+
       await page.keyboard.press('Enter');
 
       await locators.popper(page).waitFor({ state: 'hidden' });

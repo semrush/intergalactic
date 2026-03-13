@@ -176,8 +176,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify add color styles', async () => {
       await expect(locators.addColor(page)).toHaveAttribute('aria-hidden', 'true');
       await expect(locators.addColor(page)).toBeHidden();
-      const confirmStyles = await getComputedStyles(locators.addColor(page), ['paddingRight']);
-      expect(confirmStyles.paddingRight).toBe('4px');
 
       const confirmIcon = locators.addColor(page).locator('[data-ui-name="Check"]');
       await expect(confirmIcon).toHaveAttribute('width', '16');
@@ -185,9 +183,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify clear color styles', async () => {
-      const clearStyles = await getComputedStyles(locators.clearColor(page), ['paddingLeft']);
-      expect(clearStyles.paddingLeft).toBe('4px');
-
       const clearIcon = locators.clearColor(page).locator('[data-ui-name="Close"]');
       await expect(clearIcon).toHaveAttribute('width', '16');
       await expect(clearIcon).toHaveAttribute('height', '16');

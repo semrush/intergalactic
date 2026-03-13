@@ -29,9 +29,7 @@ export type AbstractButtonProps<S, U, T> = BoxProps &
     theme?: T;
   };
 
-export type AbstractButtonAddonProps<S> = BoxProps & {
-  size?: S;
-};
+export type AbstractButtonAddonProps = BoxProps;
 
 export type AbstractButtonTextProps<S> = TextProps & {
   size?: S;
