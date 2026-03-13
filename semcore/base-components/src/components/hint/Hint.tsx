@@ -112,7 +112,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
     this.state = {
-      innerVisible: props.visible ?? null,
+      innerVisible: null,
       calculatedPlacement: props.placement,
     };
   }
@@ -212,7 +212,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
               left: `${x}px`,
               top: `${y}px`,
             });
-            popperElement.style.visibility = 'visible';
 
             this.setState({ innerVisible: true, calculatedPlacement: placement });
           });
@@ -233,7 +232,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.setState({ innerVisible: false });
 
     this.hideTimer = window.setTimeout(() => {
-      this.hintRef.current?.style.setProperty('visibility', 'hidden');
       this.handlers.visible(false);
       this.setState({ innerVisible: null });
     }, hideTimeout);
@@ -328,10 +326,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       this.setTriggerAriaLabel();
     }
 
-    if (!visible) {
-      return null;
-    }
-
     const duration = propToArray(Number(this.asProps.duration));
 
     /* `visible && innerVisible === null` - is a condition to start showing right after hover/focus  */
@@ -349,8 +343,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
           timingFunction={timingFunction}
-          keyframesInitialize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`]}
-          keyframesFinalize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`]}
+          keyframesInitialize={innerVisible === true ? keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`] : undefined}
+          keyframesFinalize={innerVisible === false ? keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`] : undefined}
           use:data-ui-name='Hint'
         >
           <Children />
