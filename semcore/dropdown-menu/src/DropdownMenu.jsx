@@ -529,6 +529,9 @@ function ItemContentText({ styles, ellipsis = false, hintProps = {} }) {
   if (menuItemCtxValue.ref) {
     hintProps.triggerRef = menuItemCtxValue.ref;
   }
+  if (!hintProps.placement) {
+    hintProps.placement = 'right';
+  }
 
   return sstyled(styles)(
     <>
