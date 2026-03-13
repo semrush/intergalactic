@@ -271,9 +271,9 @@
   /* Background of the regular primary control. */
   --intergalactic-control-primary-info: #181e15;
   /* Hover state of the regular primary control. */
-  --intergalactic-control-primary-info-hover: #a070fe;
+  --intergalactic-control-primary-info-hover: #c190ff;
   /* Active (selected) state of the regular primary control. */
-  --intergalactic-control-primary-info-active: #7d26e8;
+  --intergalactic-control-primary-info-active: #a070fe;
   /* Background of the primary control with successful theme. */
   --intergalactic-control-primary-success: #13c79e;
   /* Hover state of the primary control with successful theme. */
@@ -287,15 +287,15 @@
   /* Active (selected) state of the primary control with danger theme. */
   --intergalactic-control-primary-critical-active: #8b1312;
   /* Background of the primary brand colored control. */
-  --intergalactic-control-primary-brand: #a070fe;
+  --intergalactic-control-primary-brand: #c190ff;
   /* Hover state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-hover: #7d26e8;
+  --intergalactic-control-primary-brand-hover: #181e15;
   /* Active state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-active: #5a17a9;
+  --intergalactic-control-primary-brand-active: #181e15;
   /* Background of the advertising primary control. */
-  --intergalactic-control-primary-advertising: #a070fe;
+  --intergalactic-control-primary-advertising: #c190ff;
   /* Hover state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-hover: #7d26e8;
+  --intergalactic-control-primary-advertising-hover: #a070fe;
   /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #5a17a9;
   /* Inverted background of the primary control. */

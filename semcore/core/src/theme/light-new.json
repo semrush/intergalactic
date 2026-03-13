@@ -819,12 +819,12 @@
             "description": "Background of the regular primary control."
           },
           "info-hover": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Hover state of the regular primary control."
           },
           "info-active": {
-            "value": "{violet.500}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Active (selected) state of the regular primary control."
           },
@@ -859,27 +859,27 @@
             "description": "Active (selected) state of the primary control with danger theme."
           },
           "brand": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Background of the primary brand colored control."
           },
           "brand-hover": {
-            "value": "{violet.500}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Hover state of the primary brand colored control."
           },
           "brand-active": {
-            "value": "{violet.600}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Active state of the primary brand colored control."
           },
           "advertising": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Background of the advertising primary control."
           },
           "advertising-hover": {
-            "value": "{violet.500}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Hover state of the advertising primary control."
           },
