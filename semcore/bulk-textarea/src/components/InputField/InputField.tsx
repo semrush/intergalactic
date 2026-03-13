@@ -123,7 +123,7 @@ class InputField<T extends string | string[]> extends Component<
 
     const isActive = !disabled && !readonly;
     if (autoFocus && isActive) {
-      this.textarea.focus();
+      setTimeout(() => this.textarea.focus(), 1);
     }
   }
 
