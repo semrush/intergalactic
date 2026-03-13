@@ -297,8 +297,8 @@ describe('InputSearch', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    // Wait for autoFocus setTimeout(10ms) in Input.Value to complete
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    // Wait for autoFocus in Input.Value to complete
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await userEvent.keyboard('test');
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();

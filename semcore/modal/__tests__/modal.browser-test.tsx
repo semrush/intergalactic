@@ -552,6 +552,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify input focused', async () => {
       await locators.button(page).click();
       await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
       await expect(page.getByRole('textbox')).toBeFocused();
     });
   });
@@ -567,6 +568,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
 
       await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
       await expect(page.getByRole('textbox')).toBeFocused();
     });
 
