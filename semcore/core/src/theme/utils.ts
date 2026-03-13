@@ -190,30 +190,67 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
     throw new Error(`Unable to process color ${color}`);
   };
-  const resolveToken = (token: string): string => {
+  const resolveToken = (token: string, refStack: Set<string> = new Set()): string => {
     if (token.includes('*')) {
       const [value, factor] = token.split('*');
-      const resolvedValue = resolveToken(value);
+      const resolvedValue = resolveToken(value, refStack);
       if (!resolvedValue.endsWith('px')) {
         throw new Error(`Unsupported expression ${token}`);
       }
       return `${Number.parseFloat(resolvedValue) * Number.parseFloat(factor)}px`;
-    } else if (token.includes('{') && token.includes('}')) {
-      const reference = token
-        .substring(token.indexOf('{') + 1, token.indexOf('}'))
-        .replace(/\./g, '-');
-      const resolvedToken =
-        token.substring(0, token.indexOf('{')) +
-        values[reference] +
-        token.substring(token.indexOf('}') + 1);
-      if (!resolvedToken || resolvedToken.includes('{')) {
-        throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
-      }
-      return resolvedToken;
-    } else {
-      return token;
     }
+    let result = token;
+    while (result.includes('{') && result.includes('}')) {
+      const match = result.match(/\{([^}]+)\}/);
+      if (!match) break;
+      const reference = match[1].replace(/\./g, '-');
+      if (refStack.has(reference)) {
+        throw new Error(`Circular token reference detected: ${reference} in "${token}"`);
+      }
+      const rawRefValue = values[reference];
+      if (rawRefValue === undefined) {
+        throw new Error(`Token "${reference}" was not found when resolving "${token}"`);
+      }
+      refStack.add(reference);
+      const replacement = resolveToken(rawRefValue, refStack);
+      refStack.delete(reference);
+      result =
+        result.substring(0, match.index!) + replacement + result.substring(match.index! + match[0].length);
+    }
+    return result;
   };
+
+  /** Replaces simple calc() expressions with computed px values for final CSS/TS output. */
+  const evaluateSimpleCalc = (value: string): string => {
+    let result = value;
+    let prev: string;
+    const toPx = (n: number) => `${n % 1 === 0 ? n : Math.round(n * 100) / 100}px`;
+    do {
+      prev = result;
+      const addMatch = result.match(/calc\(\s*([\d.]+)px\s*\+\s*([\d.]+)px\s*\)/);
+      if (addMatch) {
+        result = result.replace(addMatch[0], toPx(Number.parseFloat(addMatch[1]) + Number.parseFloat(addMatch[2])));
+        continue;
+      }
+      const subMatch = result.match(/calc\(\s*([\d.]+)px\s*-\s*([\d.]+)px\s*\)/);
+      if (subMatch) {
+        result = result.replace(subMatch[0], toPx(Number.parseFloat(subMatch[1]) - Number.parseFloat(subMatch[2])));
+        continue;
+      }
+      const mulMatch = result.match(/calc\(\s*([\d.]+)px\s*\*\s*([\d.]+)\s*\)/);
+      if (mulMatch) {
+        result = result.replace(mulMatch[0], toPx(Number.parseFloat(mulMatch[1]) * Number.parseFloat(mulMatch[2])));
+        continue;
+      }
+      const divMatch = result.match(/calc\(\s*([\d.]+)px\s*\/\s*([\d.]+)\s*\)/);
+      if (divMatch) {
+        result = result.replace(divMatch[0], toPx(Number.parseFloat(divMatch[1]) / Number.parseFloat(divMatch[2])));
+        continue;
+      }
+    } while (prev !== result);
+    return result;
+  };
+
   const replaceColors = (str: string) => {
     let result = '';
     for (let i = 0; i < str.length; i++) {
@@ -256,7 +293,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       types[token] === 'borderRadius' ||
       types[token] === 'other'
     ) {
-      values[token] = resolveToken(values[token]);
+      values[token] = evaluateSimpleCalc(resolveToken(values[token]));
     }
     for (const modification of modifications[token] ?? []) {
       // refer to https://docs.tokens.studio/tokens/color-modifiers and https://github.com/tokens-studio/figma-plugin/tree/main/src/utils/color if extension is needed
