@@ -42,6 +42,7 @@ test.describe(TAG.VISUAL, () => {
       await page.keyboard.type('1');
       await page.keyboard.press('Tab');
       await expect(locators.apply(page)).toBeFocused();
+      await page.waitForTimeout(100);
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
