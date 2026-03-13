@@ -1,12 +1,36 @@
 import { Box, Flex } from '@semcore/ui/base-components';
-import { Chart, Plot, Line, XAxis, YAxis, minMax, HorizontalBar, HoverRect } from '@semcore/ui/d3-chart';
+import { Chart, Plot, Line, XAxis, YAxis, minMax, HorizontalBar } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import { ThemePlaygroundLayout } from './theme-playground-switcher';
+import ChartCategoricalOrderPalette from '../../website/src/docs-components/ChartCategoricalOrderPalette';
+import ChartSequentialOrderPalette from '../../website/src/docs-components/ChartSequentialOrderPalette';
+import BarMockData from '../components/d3-chart/__mocks__/bar';
+import BubbleMockData from '../components/d3-chart/__mocks__/bubble';
+import DonutMockData from '../components/d3-chart/__mocks__/donut';
+import LineMockData from '../components/d3-chart/__mocks__/line';
+import RadarMockData from '../components/d3-chart/__mocks__/radar';
+import ScatterplotMockData from '../components/d3-chart/__mocks__/scatterplot';
+import StackedAreaMockData from '../components/d3-chart/__mocks__/stacked-area';
+import VennMockData from '../components/d3-chart/__mocks__/venn';
 import './theme-playground-fonts.css';
+
+/** 5 data series for Scatterplot with chart-palette-order-1 … chart-palette-order-5 */
+const ScatterplotFiveSeriesData = [
+  { x: 0, y1: 2, y2: 5, y3: 7, y4: 1, y5: 9 },
+  { x: 1, y1: 4, y2: 7, y3: 3, y4: 6, y5: 2 },
+  { x: 2, y1: 6, y2: 3, y3: 9, y4: 4, y5: 8 },
+  { x: 3, y1: 8, y2: 1, y3: 2, y4: 9, y5: 5 },
+  { x: 4, y1: 5, y2: 9, y3: 6, y4: 3, y5: 10 },
+  { x: 5, y1: 7, y2: 2, y3: 4, y4: 8, y5: 1 },
+  { x: 6, y1: 3, y2: 6, y3: 8, y4: 2, y5: 7 },
+  { x: 7, y1: 9, y2: 4, y3: 1, y4: 10, y5: 4 },
+  { x: 8, y1: 1, y2: 8, y3: 10, y4: 5, y5: 6 },
+  { x: 9, y1: 10, y2: 0, y3: 5, y4: 7, y5: 3 },
+];
 
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
 
@@ -18,102 +42,11 @@ export default meta;
 
 type Story = StoryObj;
 
-const lineChartData = [
-  { x: 0, line1: 2, line2: 3 },
-  { x: 1, line1: 4, line2: 2 },
-  { x: 2, line1: 3, line2: 5 },
-  { x: 3, line1: 6, line2: 4 },
-  { x: 4, line1: 5, line2: 6 },
-  { x: 5, line1: 7, line2: 5 },
-  { x: 6, line1: 6, line2: 7 },
-  { x: 7, line1: 8, line2: 6 },
-  { x: 8, line1: 9, line2: 8 },
-  { x: 9, line1: 10, line2: 9 },
-];
-
-const lineAreaChartData = [
-  { x: 0, y: 2, y0: 0, y1: 4 },
-  { x: 1, y: 4, y0: 0, y1: 6 },
-  { x: 2, y: 3, y0: 0, y1: 5 },
-  { x: 3, y: 6, y0: 0, y1: 8 },
-  { x: 4, y: 5, y0: 0, y1: 7 },
-  { x: 5, y: 7, y0: 0, y1: 9 },
-  { x: 6, y: 6, y0: 0, y1: 8 },
-  { x: 7, y: 8, y0: 0, y1: 10 },
-  { x: 8, y: 9, y0: 0, y1: 10 },
-  { x: 9, y: 10, y0: 0, y1: 12 },
-];
-
-const areaChartDataStacked = [
-  { time: new Date('2024-01-01'), line1: 2, line2: 3 },
-  { time: new Date('2024-01-06'), line1: 4, line2: 2 },
-  { time: new Date('2024-01-11'), line1: 3, line2: 4 },
-  { time: new Date('2024-01-16'), line1: 6, line2: 3 },
-  { time: new Date('2024-01-21'), line1: 5, line2: 4 },
-  { time: new Date('2024-01-26'), line1: 7, line2: 5 },
-  { time: new Date('2024-01-31'), line1: 6, line2: 3 },
-  { time: new Date('2024-02-05'), line1: 8, line2: 5 },
-  { time: new Date('2024-02-10'), line1: 9, line2: 6 },
-  { time: new Date('2024-02-15'), line1: 10, line2: 8 },
-];
-
-const barChartData = [
-  { category: 'Cat 1', bar: 4 },
-  { category: 'Cat 2', bar: 8 },
-  { category: 'Cat 3', bar: 5 },
-  { category: 'Cat 4', bar: 7 },
-  { category: 'Cat 5', bar: 9 },
-];
-
-const donutChartData = {
-  a: 3,
-  b: 5,
-  c: 2,
-  d: 4,
-};
-
-const vennChartData = {
-  'G': 200,
-  'F': 200,
-  'C': 500,
-  'G/F': 100,
-  'G/C': 100,
-  'F/C': 100,
-  'G/F/C': 100,
-};
-
 const vennLegendMap = {
   G: { label: 'Good' },
   F: { label: 'Fast' },
   C: { label: 'Clean' },
 };
-
-const radarChartData = {
-  categories: ['Var 1', 'Var 2', 'Var 3', 'Var 4', 'Var 5', 'Var 6'],
-  data_1: [1, 3, 5, 5, 9, 2],
-  data_2: [5, 2, 1, 2, 7, 6],
-};
-
-const bubbleChartData = [
-  { x: 2, y: 3, value: 5040, label: 'A' },
-  { x: 1, y: 9, value: 40, label: 'B' },
-  { x: 6, y: 2, value: 45634, label: 'C' },
-  { x: 4, y: 7, value: 245, label: 'D' },
-  { x: 9, y: 5, value: 7462, label: 'E' },
-];
-
-const scatterplotChartData = [
-  { x: 0, y: 1 },
-  { x: 1, y: 3 },
-  { x: 2, y: 2 },
-  { x: 3, y: 5 },
-  { x: 4, y: 4 },
-  { x: 5, y: 2 },
-  { x: 6, y: 4 },
-  { x: 7, y: 3 },
-  { x: 8, y: 5 },
-  { x: 9, y: 1 },
-];
 
 function LineAreaChart({
   data,
@@ -147,6 +80,9 @@ function LineAreaChart({
   );
 }
 
+/** Reserve enough space on the left so long Y-axis (category) labels are not clipped */
+const HORIZONTAL_BAR_Y_AXIS_MARGIN = 80;
+
 function HorizontalBarChart({
   data,
   width,
@@ -158,7 +94,7 @@ function HorizontalBarChart({
 }) {
   const MARGIN = 40;
   const xScale = scaleLinear()
-    .range([MARGIN * 2, width - MARGIN])
+    .range([HORIZONTAL_BAR_Y_AXIS_MARGIN, width - MARGIN])
     .domain([0, Math.max(...data.map((d) => d.bar), 10)]);
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
@@ -197,7 +133,7 @@ function ChartsThemePlaygroundContent() {
               </Text>
               <Chart.Line
                 groupKey='x'
-                data={lineChartData}
+                data={LineMockData.TwoLines}
                 plotWidth={400}
                 plotHeight={240}
                 showDots
@@ -208,7 +144,7 @@ function ChartsThemePlaygroundContent() {
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
                 Line.Area chart
               </Text>
-              <LineAreaChart data={lineAreaChartData} width={400} height={240} />
+              <LineAreaChart data={LineMockData.Area} width={400} height={240} />
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -216,7 +152,7 @@ function ChartsThemePlaygroundContent() {
               </Text>
               <Chart.Area
                 groupKey='time'
-                data={areaChartDataStacked}
+                data={StackedAreaMockData.Default}
                 plotWidth={400}
                 plotHeight={240}
                 showDots
@@ -230,7 +166,7 @@ function ChartsThemePlaygroundContent() {
               </Text>
               <Chart.Bar
                 groupKey='category'
-                data={barChartData}
+                data={BarMockData.Default}
                 plotWidth={400}
                 plotHeight={240}
                 aria-label='Bar chart'
@@ -241,7 +177,7 @@ function ChartsThemePlaygroundContent() {
                 Bubble chart
               </Text>
               <Chart.Bubble
-                data={bubbleChartData}
+                data={BubbleMockData.Label}
                 plotWidth={400}
                 plotHeight={240}
                 aria-label='Bubble chart'
@@ -252,11 +188,24 @@ function ChartsThemePlaygroundContent() {
                 Scatterplot chart
               </Text>
               <Chart.ScatterPlot
-                data={scatterplotChartData}
+                data={ScatterplotMockData.Default}
                 groupKey='x'
                 plotWidth={400}
                 plotHeight={240}
                 aria-label='Scatterplot chart'
+              />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Scatterplot chart (5 series)
+              </Text>
+              <Chart.ScatterPlot
+                data={ScatterplotFiveSeriesData}
+                groupKey='x'
+                plotWidth={400}
+                plotHeight={240}
+                showLegend
+                aria-label='Scatterplot chart with 5 palette colors'
               />
             </Box>
           </Flex>
@@ -266,7 +215,7 @@ function ChartsThemePlaygroundContent() {
                 Donut chart
               </Text>
               <Chart.Donut
-                data={donutChartData}
+                data={DonutMockData.Default}
                 plotWidth={300}
                 plotHeight={240}
                 aria-label='Donut chart'
@@ -278,7 +227,7 @@ function ChartsThemePlaygroundContent() {
                 Donut chart (halfsize)
               </Text>
               <Chart.Donut
-                data={donutChartData}
+                data={DonutMockData.Default}
                 plotWidth={300}
                 plotHeight={240}
                 halfsize
@@ -291,7 +240,7 @@ function ChartsThemePlaygroundContent() {
                 Venn chart
               </Text>
               <Chart.Venn
-                data={vennChartData}
+                data={VennMockData.Default}
                 plotWidth={300}
                 plotHeight={300}
                 legendProps={{ legendMap: vennLegendMap }}
@@ -302,7 +251,7 @@ function ChartsThemePlaygroundContent() {
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
                 Horizontal bar chart
               </Text>
-              <HorizontalBarChart data={barChartData} width={400} height={240} />
+              <HorizontalBarChart data={BarMockData.Default} width={400} height={240} />
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -311,7 +260,7 @@ function ChartsThemePlaygroundContent() {
               <Chart.CompactHorizontalBar
                 y='category'
                 x='bar'
-                data={barChartData}
+                data={BarMockData.Default}
                 plotWidth={400}
                 plotHeight={320}
                 marginY={8}
@@ -323,7 +272,7 @@ function ChartsThemePlaygroundContent() {
                 Radar chart
               </Text>
               <Chart.Radar
-                data={radarChartData}
+                data={RadarMockData.Default}
                 groupKey='categories'
                 plotWidth={400}
                 plotHeight={400}
@@ -332,6 +281,20 @@ function ChartsThemePlaygroundContent() {
             </Box>
           </Flex>
         </Flex>
+
+        <Box mt={10}>
+          <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+            Categorical order (chart palette)
+          </Text>
+          <ChartCategoricalOrderPalette />
+        </Box>
+
+        <Box mt={10}>
+          <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+            Sequential order (base palette)
+          </Text>
+          <ChartSequentialOrderPalette />
+        </Box>
       </Box>
     </ThemePlaygroundLayout>
   );
