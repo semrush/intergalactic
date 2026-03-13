@@ -265,7 +265,12 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 
   private handleMouseLeave(e: MouseEvent): void {
-    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
+    if (
+      this.isCompatibleElement(e.target) &&
+      this.sameAsTrigger(e) &&
+      // this is for FF. For some reason, hover switches to hint when it appears. We prevent unnecessary hide logic with this check.
+      e.relatedTarget !== this.hintRef.current
+    ) {
       this.hideHint();
     }
   }
