@@ -1,0 +1,23 @@
+{
+  "name": "@semcore/design-system",
+  "description": "Semrush Design System package",
+  "version": "1.0.0",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node --experimental-transform-types src/processor.ts"
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/design-system"
+  },
+  "devDependencies": {
+    "colorjs.io": "0.4.3",
+    "postcss": "8.4.33",
+    "postcss-value-parser": "4.1.0"
+  }
+}

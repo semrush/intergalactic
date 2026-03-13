@@ -1,10 +1,10 @@
 {
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
   "scripts": {
     "dev": "pnpm storybook",
     "start": "pnpm storybook",
     "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/base-components run build && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/base-components --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/ui run build",
-    "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/core/src/theme/processor.ts",
+    "process-theme": "pnpm --filter @semcore/design-system build",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
     "install-n-test": "pnpm install && pnpm test",
     "install-n-browser-test": "pnpm install && pnpm browser-test",
