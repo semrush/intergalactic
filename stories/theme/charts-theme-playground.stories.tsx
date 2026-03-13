@@ -6,6 +6,8 @@ import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import { ThemePlaygroundLayout } from './theme-playground-switcher';
+import ChartCategoricalOrderPalette from '../../website/src/docs-components/ChartCategoricalOrderPalette';
+import ChartSequentialOrderPalette from '../../website/src/docs-components/ChartSequentialOrderPalette';
 import BarMockData from '../components/d3-chart/__mocks__/bar';
 import BubbleMockData from '../components/d3-chart/__mocks__/bubble';
 import DonutMockData from '../components/d3-chart/__mocks__/donut';
@@ -279,6 +281,20 @@ function ChartsThemePlaygroundContent() {
             </Box>
           </Flex>
         </Flex>
+
+        <Box mt={10}>
+          <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+            Categorical order (chart palette)
+          </Text>
+          <ChartCategoricalOrderPalette />
+        </Box>
+
+        <Box mt={10}>
+          <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+            Sequential order (base palette)
+          </Text>
+          <ChartSequentialOrderPalette />
+        </Box>
       </Box>
     </ThemePlaygroundLayout>
   );
