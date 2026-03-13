@@ -11,7 +11,7 @@ import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
 import Counter from '@semcore/ui/counter';
-import { DatePicker } from '@semcore/ui/date-picker';
+import { DatePicker, DateRangePicker, DateRangeComparator } from '@semcore/ui/date-picker';
 import Divider from '@semcore/ui/divider';
 import Dot from '@semcore/ui/dot';
 import DnD from '@semcore/ui/drag-and-drop';
@@ -109,6 +109,10 @@ function ThemePlaygroundContent() {
   const [tabValue, setTabValue] = React.useState(1);
   const [sliderValue, setSliderValue] = React.useState(50);
   const [dateValue, setDateValue] = React.useState<Date | undefined>(new Date());
+  const [dateRangeValue, setDateRangeValue] = React.useState<[Date, Date] | undefined>([
+    new Date(),
+    new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+  ]);
   const [bulkTextareaValue, setBulkTextareaValue] = React.useState('');
   const [bulkTextareaValueL, setBulkTextareaValueL] = React.useState('');
   const [colorValue, setColorValue] = React.useState('#2DAF00');
@@ -723,6 +727,27 @@ function ThemePlaygroundContent() {
               <DatePicker.Trigger id='theme-playground-date-picker' />
               <DatePicker.Popper />
             </DatePicker>
+          </Flex>
+          <Flex direction='column' gap={2} alignItems='flex-start'>
+            <Text tag='label' size={200} htmlFor='theme-playground-date-range-picker' color='text-primary'>
+              Select date range
+            </Text>
+            <DateRangePicker
+              value={dateRangeValue}
+              onChange={(v) => setDateRangeValue(v as [Date, Date] | undefined)}
+            >
+              <DateRangePicker.Trigger id='theme-playground-date-range-picker' />
+              <DateRangePicker.Popper />
+            </DateRangePicker>
+          </Flex>
+          <Flex direction='column' gap={2} alignItems='flex-start'>
+            <Text tag='label' size={200} htmlFor='theme-playground-date-comparator' color='text-primary'>
+              Compare periods
+            </Text>
+            <DateRangeComparator>
+              <DateRangeComparator.Trigger id='theme-playground-date-comparator' />
+              <DateRangeComparator.Popper />
+            </DateRangeComparator>
           </Flex>
         </Flex>
 

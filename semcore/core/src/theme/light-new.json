@@ -2,7 +2,7 @@
     "base": {
       "gray": {
         "50": {
-          "value": "oklch(0.966 0.001 277.6)",
+          "value": "oklch(0.958 0.002 247.84)",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
@@ -12,7 +12,7 @@
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.007 277.6)",
+          "value": "oklch(0.864 0.004 271.363)",
           "type": "color"
         },
         "300": {
@@ -32,11 +32,11 @@
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.31 0.009 277.6)",
+          "value": "oklch(0.29 0.009 277.6)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.005 277.6)",
+          "value": "oklch(0.226 0.019 135.279)",
           "type": "color"
         },
         "white": {
@@ -56,19 +56,19 @@
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.082 263.265)",
+          "value": "oklch(0.861 0.068 266.551)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.121 263.265)",
+          "value": "oklch(0.741 0.12 263.227)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.158 263.265)",
+          "value": "oklch(0.703 0.154 265.122)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.214 263.265)",
+          "value": "oklch(0.575 0.232 263.373)",
           "type": "color"
         },
         "600": {
@@ -76,11 +76,11 @@
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.31 0.116 263.265)",
+          "value": "oklch(0.29 0.116 263.265)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.22 0.073 263.265)",
+          "value": "oklch(0.22 0.088 263.265)",
           "type": "color"
         }
       },
@@ -91,36 +91,36 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.094 170.688)",
+          "value": "oklch(0.922 0.088 177.924)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.142 170.688)",
+          "value": "oklch(0.851 0.165 170.672)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.132 170.688)",
+          "value": "oklch(0.74 0.143 170.688)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.122 170.688)",
+          "value": "oklch(0.658 0.126 171.444)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.104 170.688)",
+          "value": "oklch(0.541 0.104 170.438)",
           "type": "color"
         },
         "600": {
-          "value": "oklch(0.41 0.078 170.688)",
+          "value": "oklch(0.41 0.079 170.688)",
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.055 170.688)",
+          "value": "oklch(0.29 0.056 170.688)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.034 170.688)",
+          "value": "oklch(0.22 0.043 170.688)",
           "type": "color"
         }
       },
@@ -131,7 +131,7 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.065 27.658)",
+          "value": "oklch(0.859 0.076 18.76)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
@@ -140,15 +140,15 @@
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.175 27.658)",
+          "value": "oklch(0.74 0.158 27.477)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.229 27.658)",
+          "value": "oklch(0.681 0.207 24.507)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.203 27.658)",
+          "value": "oklch(0.598 0.226 27.581)",
           "type": "color"
         },
         "600": {
@@ -160,7 +160,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.071 27.658)",
+          "value": "oklch(0.22 0.083 27.658)",
           "type": "color"
         }
       },
@@ -171,36 +171,36 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.052 39.457)",
+          "value": "oklch(0.904 0.049 39.457)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.096 39.457)",
+          "value": "oklch(0.824 0.09 39.457)",
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.139 39.457)",
+          "value": "oklch(0.74 0.134 39.457)",
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.18 39.457)",
+          "value": "oklch(0.66 0.172 39.457)",
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.151 39.457)",
+          "value": "oklch(0.54 0.141 39.457)",
           "type": "color"
         },
         "600": {
-          "value": "oklch(0.41 0.113 39.457)",
+          "value": "oklch(0.41 0.107 39.457)",
           "type": "color"
         },
         "700": {
-          "value": "oklch(0.29 0.078 39.457)",
+          "value": "oklch(0.29 0.075 39.457)",
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.052 39.457)",
+          "value": "oklch(0.22 0.057 39.457)",
           "type": "color"
         }
       },
@@ -211,12 +211,12 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.094 80.292)",
+          "value": "oklch(0.917 0.091 85.811)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "oklch(0.824 0.161 80.292)",
+          "value": "oklch(0.863 0.145 83.727)",
           "type": "color"
         },
         "300": {
@@ -224,7 +224,7 @@
           "type": "color"
         },
         "400": {
-          "value": "oklch(0.66 0.129 80.292)",
+          "value": "oklch(0.734 0.152 66.496)",
           "type": "color"
         },
         "500": {
@@ -240,7 +240,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.038 80.292)",
+          "value": "oklch(0.22 0.043 80.292)",
           "type": "color"
         }
       },
@@ -251,7 +251,7 @@
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "oklch(0.904 0.058 295.99)",
+          "value": "oklch(0.869 0.081 305.081)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
@@ -260,7 +260,7 @@
           "type": "color"
         },
         "300": {
-          "value": "oklch(0.74 0.156 295.962)",
+          "value": "oklch(0.744 0.162 303.047)",
           "type": "color"
         },
         "400": {
@@ -268,7 +268,7 @@
           "type": "color"
         },
         "500": {
-          "value": "oklch(0.54 0.27 295.962)",
+          "value": "oklch(0.52 0.258 295.842)",
           "type": "color"
         },
         "600": {
@@ -280,7 +280,7 @@
           "type": "color"
         },
         "800": {
-          "value": "oklch(0.19 0.098 295.962)",
+          "value": "oklch(0.22 0.11 295.962)",
           "type": "color"
         },
         "dusty": {
@@ -290,7 +290,7 @@
             "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
           },
           "100": {
-            "value": "oklch(0.904 0.011 189.338)",
+            "value": "oklch(0.935 0.019 184.9)",
             "type": "color",
             "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
           },
@@ -319,7 +319,7 @@
             "type": "color"
           },
           "800": {
-            "value": "oklch(0.19 0.01 189.338)",
+            "value": "oklch(0.22 0.011 189.338)",
             "type": "color"
           }
         }
@@ -366,41 +366,41 @@
       },
       "salad": {
         "50": {
-          "value": "#e8fef9",
+          "value": "oklch(0.966 0.023 147.483)",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
         "100": {
-          "value": "#b7faeb",
+          "value": "oklch(0.943 0.109 140.962)",
           "type": "color",
           "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
         },
         "200": {
-          "value": "#95f8e2",
+          "value": "oklch(0.901 0.207 140.846)",
           "type": "color"
         },
         "300": {
-          "value": "#64f5d4",
+          "value": "oklch(0.719 0.178 147.099)",
           "type": "color"
         },
         "400": {
-          "value": "#46f3cc",
+          "value": "oklch(0.66 0.152 147.483)",
           "type": "color"
         },
         "500": {
-          "value": "#18f0bf",
+          "value": "oklch(0.54 0.124 147.483)",
           "type": "color"
         },
         "600": {
-          "value": "#16daae",
+          "value": "oklch(0.41 0.094 147.483)",
           "type": "color"
         },
         "700": {
-          "value": "#11aa88",
+          "value": "oklch(0.29 0.067 147.483)",
           "type": "color"
         },
         "800": {
-          "value": "#0d8469",
+          "value": "oklch(0.22 0.051 147.483)",
           "type": "color"
         }
       }
@@ -419,17 +419,17 @@
             "description": "Hover state of the primary background of the interface which contains the main data and information."
           },
           "neutral-active": {
-            "value": "rgba({gray.100}, 0.6)",
+            "value": "rgba({gray.100}, 0.8)",
             "type": "color",
             "description": "Active (selected) state of the primary background of the interface which contains the main data and information."
           },
           "info": {
-            "value": "{blue.400}",
+            "value": "{blue.500}",
             "type": "color",
             "description": "Accent background of the message with regular information."
           },
           "success": {
-            "value": "{green.400}",
+            "value": "{green.200}",
             "type": "color",
             "description": "Accent background of the message or banner with information about the successful result."
           },
@@ -439,17 +439,17 @@
             "description": "Accent background of a message or a banner with a critical information."
           },
           "warning": {
-            "value": "{orange.400}",
+            "value": "{orange.300}",
             "type": "color",
             "description": "Accent background of a message or a banner with a warning information."
           },
           "highlight": {
-            "value": "{yellow.100}",
+            "value": "{violet.100}",
             "type": "color",
             "description": "Accent background of the information you want to highlight."
           },
           "advertising": {
-            "value": "{violet.700}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Accent background for the advertising banners and controls."
           },
@@ -481,12 +481,12 @@
             "description": "Secondary background of the interface which contains the main data and information."
           },
           "neutral-hover": {
-            "value": "rgba({gray.100}, 0.6)",
+            "value": "rgba({gray.100}, 0.8)",
             "type": "color",
             "description": "Hover state of the secondary background of the interface which contains the main data and information."
           },
           "neutral-active": {
-            "value": "rgba({gray.200}, 0.6)",
+            "value": "{gray.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the interface which contains the main data and information."
           },
@@ -511,12 +511,12 @@
             "description": "Secondary background of the message with success information you want to accent."
           },
           "success-hover": {
-            "value": "{green.100}",
+            "value": "rgba({green.100}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background of the message with success information you want to accent."
           },
           "success-active": {
-            "value": "{green.200}",
+            "value": "{green.100}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with success information you want to accent."
           },
@@ -526,12 +526,12 @@
             "description": "Secondary background of the message with critical information you want to accent."
           },
           "critical-hover": {
-            "value": "{red.100}",
+            "value": "rgba({red.100}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background of the message with critical information you want to accent."
           },
           "critical-active": {
-            "value": "{red.200}",
+            "value": "{red.100}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with critical information you want to accent."
           },
@@ -541,48 +541,48 @@
             "description": "Secondary background of the message with warning information you want to accent."
           },
           "warning-hover": {
-            "value": "{orange.100}",
+            "value": "rgba({orange.100}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background of the message with warning information you want to accent."
           },
           "warning-active": {
-            "value": "{orange.200}",
+            "value": "{orange.100}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with critical information you want to accent."
           },
           "highlight": {
-            "value": "{yellow.50}",
+            "value": "{violet.50}",
             "type": "color",
             "description": "Secondary background of the information you want to highlight."
           },
           "highlight-hover": {
-            "value": "{yellow.100}",
+            "value": "rgba({violet.100}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background of the information you want to highlight."
           },
           "highlight-active": {
-            "value": "{yellow.200}",
+            "value": "{violet.100}",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the information you want to highlight."
           },
           "advertising": {
-            "value": "{violet.50}",
+            "value": "{green.100}",
             "type": "color",
             "description": "Secondary background for the advertising message you want to accent."
           },
           "advertising-hover": {
-            "value": "{violet.100}",
+            "value": "rgba({green.200}, 0.6)",
             "type": "color",
             "description": "Hover state of the secondary background for the advertising message you want to accent."
           },
           "advertising-active": {
-            "value": "{violet.200}",
+            "value": "{green.200}",
             "type": "color",
             "description": "Active (selected) state of the secondary background for the advertising message you want to accent."
           }
         },
         "highlight-results": {
-          "value": "rgba({yellow.300}, 0.4)",
+          "value": "rgba({violet.100}, 0.4)",
           "type": "color",
           "description": "Highlighting the search results."
         },
@@ -689,12 +689,12 @@
           "description": "Secondary text. Use with font-size ≥20px."
         },
         "large-info": {
-          "value": "{blue.400}",
+          "value": "{blue.500}",
           "type": "color",
           "description": "Link text with font-size ≥20px."
         },
         "large-info-hover-active": {
-          "value": "{blue.500}",
+          "value": "{blue.600}",
           "type": "color",
           "description": "Hover and active states of the link text with font-size ≥20px."
         },
@@ -726,12 +726,12 @@
       },
       "border": {
         "primary": {
-          "value": "rgba({gray.100}, 0.6)",
+          "value": "rgba({gray.100}, 0.8)",
           "type": "color",
           "description": "Neutral primary border."
         },
         "secondary": {
-          "value": "rgba({gray.100}, 0.4)",
+          "value": "rgba({gray.100}, 0.5)",
           "type": "color",
           "description": "Subtle secondary border."
         },
@@ -756,7 +756,7 @@
           "description": "Active border in the focused input field with valid state."
         },
         "critical": {
-          "value": "{red.200}",
+          "value": "{red.300}",
           "type": "color",
           "description": "Subtle secondary border in the critical message and invalid input field."
         },
@@ -786,7 +786,7 @@
           "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background."
         },
         "tooltip-invert": {
-          "value": "{gray.500}",
+          "value": "{gray.600}",
           "type": "color",
           "description": "Border of the Tooltip with dark theme."
         },
@@ -801,7 +801,7 @@
           "description": "Border color of the second period for the comparison mode in the DatePicker."
         },
         "critical-pattern": {
-          "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
+          "value": "repeating-linear-gradient(315deg, rgba({  border.critical-active}, 1) 0, rgba({border.critical-active}, 1) 2px, transparent 0, transparent 50%)",
           "type": "color",
           "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
         }
@@ -819,27 +819,27 @@
             "description": "Background of the regular primary control."
           },
           "info-hover": {
-            "value": "{gray.800}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Hover state of the regular primary control."
           },
           "info-active": {
-            "value": "{gray.800}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "Active (selected) state of the regular primary control."
           },
           "success": {
-            "value": "{green.400}",
+            "value": "{green.300}",
             "type": "color",
             "description": "Background of the primary control with successful theme."
           },
           "success-hover": {
-            "value": "{green.500}",
+            "value": "{green.400}",
             "type": "color",
             "description": "Hover state of the primary control with successful theme."
           },
           "success-active": {
-            "value": "{green.600}",
+            "value": "{green.500}",
             "type": "color",
             "description": "Active (selected) state of the primary control with successful theme."
           },
@@ -859,32 +859,32 @@
             "description": "Active (selected) state of the primary control with danger theme."
           },
           "brand": {
-            "value": "{orange.400}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Background of the primary brand colored control."
           },
           "brand-hover": {
-            "value": "{orange.500}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "Hover state of the primary brand colored control."
           },
           "brand-active": {
-            "value": "{orange.600}",
+            "value": "{violet.600}",
             "type": "color",
             "description": "Active state of the primary brand colored control."
           },
           "advertising": {
-            "value": "{violet.600}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Background of the advertising primary control."
           },
           "advertising-hover": {
-            "value": "{violet.700}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "Hover state of the advertising primary control."
           },
           "advertising-active": {
-            "value": "{violet.500}",
+            "value": "{violet.600}",
             "type": "color",
             "description": "Active (selected) state of the advertising primary control."
           },
@@ -1906,7 +1906,7 @@
         "type": "borderRadius"
       },
       "rounded-medium": {
-        "value": "8px",
+        "value": "6px",
         "type": "borderRadius"
       },
       "rounded-large": {
@@ -1923,7 +1923,7 @@
         "description": "Use for rounding addons and small controls like Checkbox."
       },
       "badge-rounded": {
-        "value": "{rounded-medium}",
+        "value": "{rounded-large}",
         "type": "borderRadius",
         "description": "Use for rounding Badge."
       },
