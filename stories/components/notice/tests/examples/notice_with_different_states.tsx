@@ -1,12 +1,15 @@
 import AlertM from '@semcore/icon/Book/m';
 import InfoM from '@semcore/icon/Info/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import Notice from '@semcore/ui/notice';
+import Notice, { NoticeSmart } from '@semcore/ui/notice';
 import React from 'react';
 
 const NoticeSmokeDemo = () => {
+  const [hidden, setHidden] = React.useState(true);
+
   return (
     <Flex direction='column' gap={4}>
       {/* 1. Minimal Notice */}
@@ -77,13 +80,13 @@ const NoticeSmokeDemo = () => {
       </Notice>
 
       {/* 8. Aria-live announcement */}
-      <Notice theme='info' aria-live='polite'>
+      <Notice theme='info' aria-label='Live notice' aria-live='polite'>
         <Notice.Content>
           <Notice.Text>We'll notify you when it's ready.</Notice.Text>
         </Notice.Content>
       </Notice>
 
-      {/* 9. Custom style */}
+      {/* 9. Custom theme with color string */}
       <Notice style={{ backgroundColor: '#B388EB' }}>
         <Notice.Label>Purple</Notice.Label>
         <Notice.Content>
@@ -94,32 +97,43 @@ const NoticeSmokeDemo = () => {
         <Notice.Close />
       </Notice>
 
-      {/* 10. Custom style */}
+      {/* 10. Duration prop */}
       <Notice duration={500}>
         <Notice.Label>Duration</Notice.Label>
         <Notice.Content>
-          <Notice.Text>
-            Text Notice
-          </Notice.Text>
+          <Notice.Text>Text Notice</Notice.Text>
         </Notice.Content>
         <Notice.Close />
       </Notice>
 
-      {/* 11. Hidden Notice */}
-      <Notice theme='success' aria-label='hidden Notice' hidden>
-        <Notice.Label>
-          <ThumbUpM />
-        </Notice.Label>
-        <Notice.Content>
-          <Notice.Title>Success!</Notice.Title>
-          <Notice.Text>Everything worked just fine.</Notice.Text>
-          <Notice.Actions>
-            <Button use='primary' theme='success' mr={2}>Okay</Button>
-            <Button>Cancel</Button>
-          </Notice.Actions>
-        </Notice.Content>
-        <Notice.Close />
-      </Notice>
+      {/* 11. Hidden toggle */}
+      <div>
+        <Button data-testid='toggle-btn' onClick={() => setHidden((prev) => !prev)}>
+          Toggle Notice
+        </Button>
+        <Notice theme='info' aria-label='Toggleable notice' hidden={hidden} mt={2}>
+          <Notice.Content>
+            <Notice.Text>This notice can be toggled</Notice.Text>
+          </Notice.Content>
+        </Notice>
+      </div>
+
+      {/* 12. NoticeSmart muted + closable */}
+      <NoticeSmart
+        theme='muted'
+        label={<WarningM />}
+        text='Muted closable notice'
+        closable
+        data-testid='muted-closable'
+      />
+
+      {/* 13. NoticeSmart with actions only */}
+      <NoticeSmart
+        theme='info'
+        aria-label='Actions only notice'
+        actions={<Button use='primary'>Retry action</Button>}
+        data-testid='actions-only'
+      />
     </Flex>
   );
 };
