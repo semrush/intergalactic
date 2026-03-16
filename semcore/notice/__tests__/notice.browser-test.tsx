@@ -13,26 +13,6 @@ export const locators = {
 };
 
 /* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
-test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify Feedback notice closed by action button', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
-
-    await test.step('Verify notice visible and closes on button click', async () => {
-      const askMeLaterButton = page.getByRole('button', { name: 'Ask me later' });
-      await expect(locators.notice(page)).toBeVisible();
-      await askMeLaterButton.click();
-      await expect(locators.notice(page)).not.toBeVisible();
-    });
-  });
-});
-
-/* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
@@ -81,7 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
 
     await test.step('Verify all notice states render correctly', async () => {
-      await page.setViewportSize({ width: 1600, height: 1000 });
+      await page.setViewportSize({ width: 1600, height: 1200 });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -157,54 +137,108 @@ test.describe(`${TAG.VISUAL}`, () => {
 
 /* =====================================================
 @functional
-NoticeSmart specific functional tests.
+Keyboard and mouse interactions - no snapshots here.
+We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`NoticeSmart ${TAG.FUNCTIONAL}`, () => {
-  test('Verify NoticeSmart roles and attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify Feedback notice closed by action button', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
-    await test.step('Verify NoticeSmart accessibility attributes', async () => {
-      const notices = await locators.noticeSmart(page).all();
-      const closes = await locators.close(page).all();
-
-      for (const notice of notices) {
-        const classAttribute = await notice.getAttribute('class');
-        const roleAttribute = await notice.getAttribute('role');
-
-        if (classAttribute?.includes('mute')) {
-          expect(roleAttribute).toBeNull();
-          expect(notice).not.toHaveAttribute('aria-label');
-        } else {
-          expect(roleAttribute).toBe('region');
-        }
-      }
-
-      for (const close of closes) {
-        expect(close).toHaveAttribute('aria-label', 'Close notification');
-      }
+    await test.step('Verify notice visible and closes on button click', async () => {
+      const askMeLaterButton = page.getByRole('button', { name: 'Ask me later' });
+      await expect(locators.notice(page)).toBeVisible();
+      await askMeLaterButton.click();
+      await expect(locators.notice(page)).not.toBeVisible();
     });
   });
 
-  test('Verify NoticeSmart interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@notice'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+  test.describe(`Notice `, () => {
+    test('Verify hidden prop toggle shows and hides notice', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
 
-    await test.step('Verify keyboard navigation to close button', async () => {
-      const closes = locators.close(page);
-      await page.keyboard.press('Tab');
-      await expect(closes.first()).toBeFocused();
+      await test.step('Verify notice is initially hidden', async () => {
+        await expect(page.getByLabel('Toggleable notice')).not.toBeVisible();
+      });
+
+      await test.step('Verify notice becomes visible on toggle', async () => {
+        await page.getByTestId('toggle-btn').click();
+        await expect(page.getByLabel('Toggleable notice')).toBeVisible();
+      });
+
+      await test.step('Verify notice hides again on toggle', async () => {
+        await page.getByTestId('toggle-btn').click();
+        await expect(page.getByLabel('Toggleable notice')).not.toBeVisible();
+      });
     });
 
-    await test.step('Verify notices close on Enter and click', async () => {
-      await page.keyboard.press('Enter');
-      await expect(page.getByLabel('New tool announcement')).not.toBeVisible();
+    test('Verify aria-live attribute passthrough', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
 
-      await locators.close(page).first().click();
-      await expect(page.getByLabel('New feature announcement')).not.toBeVisible();
-      await expect(page.locator('[data-ui-name="Notice.Label"][color="muted"]')).not.toBeVisible();
+      await test.step('Verify aria-live is set on notice', async () => {
+        const liveNotice = page.getByLabel('Live notice');
+        await expect(liveNotice).toHaveAttribute('aria-live', 'polite');
+      });
+    });
+  });
+
+  test.describe(`NoticeSmart `, () => {
+    test('Verify NoticeSmart roles and attributes', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+
+      await test.step('Verify NoticeSmart accessibility attributes', async () => {
+        const notices = await locators.noticeSmart(page).all();
+        const closes = await locators.close(page).all();
+
+        for (const notice of notices) {
+          const classAttribute = await notice.getAttribute('class');
+          const roleAttribute = await notice.getAttribute('role');
+
+          if (classAttribute?.includes('mute')) {
+            expect(roleAttribute).toBeNull();
+            expect(notice).not.toHaveAttribute('aria-label');
+          } else {
+            expect(roleAttribute).toBe('region');
+          }
+        }
+
+        for (const close of closes) {
+          expect(close).toHaveAttribute('aria-label', 'Close notification');
+        }
+      });
+    });
+
+    test('Verify NoticeSmart interactions', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+
+      await test.step('Verify keyboard navigation to close button', async () => {
+        const closes = locators.close(page);
+        await page.keyboard.press('Tab');
+        await expect(closes.first()).toBeFocused();
+      });
+
+      await test.step('Verify notices close on Enter and click', async () => {
+        await page.keyboard.press('Enter');
+        await expect(page.getByLabel('New tool announcement')).not.toBeVisible();
+
+        await locators.close(page).first().click();
+        await expect(page.getByLabel('New feature announcement')).not.toBeVisible();
+        await expect(page.locator('[data-ui-name="Notice.Label"][color="muted"]')).not.toBeVisible();
+      });
     });
   });
 });
+
+/* =====================================================
+@functional
+Additional coverage — hidden toggle, custom theme, aria-live, muted+closable.
+===================================================== */
