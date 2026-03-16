@@ -8,8 +8,6 @@ import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 
 const mapTypes = {
-  ButtonProps: 'AbstractButtonProps',
-  ButtonLinkProps: 'AbstractButtonProps',
 };
 
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
