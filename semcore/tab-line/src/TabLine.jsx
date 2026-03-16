@@ -196,9 +196,9 @@ function TabLineItem(props) {
 }
 
 function Text(props) {
-  const { styles, ellipsis = true, size, buttonRefsList, index, hintProps = {} } = props;
+  const { styles, ellipsis = true, size, buttonRefsList, index } = props;
   const SText = Root;
-  return sstyled(styles)(<SText render={UikitText} ellipsis={ellipsis} size={size} use:hintProps={{ triggerRef: buttonRefsList[index], ...hintProps }} />);
+  return sstyled(styles)(<SText render={UikitText} ellipsis={ellipsis} size={size} hint:triggerRef={buttonRefsList[index]} />);
 }
 
 function Addon(props) {

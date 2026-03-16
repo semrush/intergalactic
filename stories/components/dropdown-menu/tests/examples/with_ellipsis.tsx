@@ -42,7 +42,7 @@ const Demo = (props: WithEllipsisProps) => {
         <DropdownMenu.Group title='We do not recommend' subTitle='Use ellipsis in menu items!'>
           <DropdownMenu.Item selected={isSelected(0)} onClick={() => handleItemClick(0)}>
             <DropdownMenu.Item.Content w='100%'>
-              <DropdownMenu.Item.Text w='100%' ellipsis hintProps={{ placement: 'right' }}>Menu item 1 with long long long text</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text w='100%' ellipsis hint:placement='right'>Menu item 1 with long long long text</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
           </DropdownMenu.Item>
           <DropdownMenu.Item size='l' selected={isSelected(1)} onClick={() => handleItemClick(1)}>
@@ -56,7 +56,7 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Addon>
                 <DesktopIconM />
               </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text ellipsis hint:placement='right'>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
             <DropdownMenu.Item.Hint
               w='100%'

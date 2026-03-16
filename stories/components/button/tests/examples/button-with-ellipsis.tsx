@@ -23,10 +23,7 @@ const Demo = (props: ButtonEllipsisProps) => {
         <Button.Text
           ellipsis={props.ellipsis}
           w={props.w}
-          hintProps={{
-            ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-
-          }}
+          hint:placement={props.hintPlacement}
         >
           Button with very long text that should be truncated with ellipsis
         </Button.Text>

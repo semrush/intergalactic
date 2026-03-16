@@ -1,4 +1,4 @@
-import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/ui/base-components';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -10,7 +10,7 @@ type LinkEllipsisProps = {
   active?: boolean;
   disabled?: boolean;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
-  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
+  hintProps?: false;
 };
 
 const Demo = (props: LinkEllipsisProps) => {
@@ -19,13 +19,6 @@ const Demo = (props: LinkEllipsisProps) => {
   if (typeof props.ellipsis === 'object' && props.ellipsis.maxLine && props.ellipsis.maxLine > 1) {
     linkDisplayValue = 'inline-block';
   }
-
-  const resolvedHintProps = props.hintProps === false
-    ? false
-    : {
-        ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-        ...(typeof props.hintProps === 'object' ? props.hintProps : {}),
-      };
 
   return (
     <Link
@@ -39,7 +32,8 @@ const Demo = (props: LinkEllipsisProps) => {
         w={props.w}
         color={props.color}
         size={props.size}
-        hintProps={resolvedHintProps}
+        hintProps={props.hintProps}
+        hint:placement={props.hintPlacement}
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
       </Link.Text>

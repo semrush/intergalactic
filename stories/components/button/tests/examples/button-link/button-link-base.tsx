@@ -98,7 +98,7 @@ const Demo = (props: BasicButtonLinkProps) => {
         <ButtonLink.Text
           w={ellipsisW}
           ellipsis={ellipsis || undefined}
-          hintProps={hintPlacement ? { placement: hintPlacement } : undefined}
+          hint:placement={hintPlacement}
         >
           {text}
         </ButtonLink.Text>

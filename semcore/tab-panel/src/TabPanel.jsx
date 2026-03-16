@@ -95,8 +95,8 @@ function TabPanelItem(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles, ellipsis = true, buttonRefsList, index, hintProps = {} } = props;
-  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium use:hintProps={{ triggerRef: buttonRefsList[index], ...hintProps }} />);
+  const { styles, ellipsis = true, buttonRefsList, index } = props;
+  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium hint:triggerRef={buttonRefsList[index]} />);
 }
 
 function Addon(props) {

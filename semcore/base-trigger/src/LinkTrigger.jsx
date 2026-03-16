@@ -57,7 +57,7 @@ class RootLinkTrigger extends Component {
 function Text(props) {
   const SText = Root;
   const textRef = React.useRef();
-  const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
+  const { children, styles, empty, placeholder, triggerRef, ellipsis = false } = props;
   const content = empty ? placeholder : children;
 
   return sstyled(styles)(
@@ -67,10 +67,7 @@ function Text(props) {
         display-placeholder={empty}
         ref={textRef}
         ellipsis={ellipsis}
-        hintProps={{
-          ...hintProps,
-          triggerRef,
-        }}
+        hint:triggerRef={triggerRef}
       >
         {content}
       </SText>

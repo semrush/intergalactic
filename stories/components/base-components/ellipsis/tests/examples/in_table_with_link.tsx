@@ -68,7 +68,7 @@ const Demo = () => {
               <Link.Text
                 wMin={0}
                 ellipsis={ellipsisSettings}
-                hintProps={{ triggerRef }}
+                hint:triggerRef={triggerRef}
               >
                 {removeProtocol(pageUrl)}
               </Link.Text>
