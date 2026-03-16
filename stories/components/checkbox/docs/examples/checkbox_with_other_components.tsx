@@ -13,25 +13,31 @@ function noop(e: React.SyntheticEvent) {
 const Demo = () => (
   <>
     <Flex mb={3}>
-      <Checkbox label='Option 1' />
-      <DescriptionTooltip placement='right'>
-        <DescriptionTooltip.Trigger
-          ml={1}
-          tag={ButtonLink}
-          addonLeft={InfoM}
-          color='icon-secondary-neutral'
-          aria-label='Additional info'
-        />
-        <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
-          Place an additional information here!
-        </DescriptionTooltip.Popper>
-      </DescriptionTooltip>
+      <Checkbox>
+        <Checkbox.Value />
+        <Checkbox.Text size={200} display='flex'>
+          Option 1
+          <DescriptionTooltip placement='right'>
+            <DescriptionTooltip.Trigger
+              ml={1}
+              mt='-2px'
+              tag={ButtonLink}
+              addonLeft={InfoM}
+              color='icon-secondary-neutral'
+              aria-label='Additional info'
+            />
+            <DescriptionTooltip.Popper aria-label='Additional info about checkbox item'>
+              Place an additional information here!
+            </DescriptionTooltip.Popper>
+          </DescriptionTooltip>
+        </Checkbox.Text>
+      </Checkbox>
     </Flex>
 
     <Flex mb={3}>
       <Checkbox>
         <Checkbox.Value />
-        <Checkbox.Text>
+        <Checkbox.Text size={200}>
           Option 2
           <Link ml={2} href='#' onClick={noop}>
             Learn more

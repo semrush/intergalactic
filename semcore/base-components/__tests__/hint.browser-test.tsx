@@ -88,6 +88,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify word wrapping', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/hint/tests/examples/word-wrap.tsx', 'en');
+
+    await test.step('Verify long word without space', async () => {
+      const link = page.getByRole('link').nth(1);
+      const box = await link.boundingBox();
+      await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================

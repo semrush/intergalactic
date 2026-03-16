@@ -248,6 +248,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await locators.addFilterMenuItem(page, 'Position').click();
     await locators.addFilterInput(page, 'Filter by position').fill('Test');
     await locators.clearInput(page).hover();
+    await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
     await expect(page).toHaveScreenshot();
   });
 

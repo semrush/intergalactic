@@ -107,6 +107,11 @@ class Textarea extends Component {
   componentDidMount() {
     this.calculateRows(true);
     this.addGlobalHandlers();
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.node?.focus();
+      });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -128,7 +133,7 @@ class Textarea extends Component {
     const STextarea = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} />);
+    return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} use:autoFocus={false} />);
   }
 }
 

@@ -21,7 +21,7 @@ export type ButtonLinkProps = AbstractButtonProps<ButtonLinkSize, Use, never>;
 
 export type ButtonLinkTextProps = AbstractButtonTextProps<ButtonLinkSize>;
 
-export type ButtonLinkAddonProps = AbstractButtonAddonProps<ButtonLinkSize>;
+export type ButtonLinkAddonProps = AbstractButtonAddonProps;
 
 export type ButtonLinkContext = AbstractButtonContext;
 

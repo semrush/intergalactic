@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@link ${TAG.ACCESSIBILITY}`, () => {
   test('Link inside the content', async ({ page }) => {
-    await loadPage(page, 'stories/components/link/docs/examples/link_inside_the_content.tsx', 'en');
+    await loadPage(page, 'stories/components/link/docs/examples/link_in_content.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);

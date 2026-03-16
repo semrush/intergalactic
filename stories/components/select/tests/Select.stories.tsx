@@ -7,6 +7,7 @@ import OnChangeInputSearchExample from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
 import OptionsExample, { defaultProps as OptionsProps } from './examples/options_checkbox_group_and_hint';
 import ProgrammaticallyFocusExample from './examples/programmatically_focus';
+import SelectWithEllipsisExample from './examples/select-with-ellipsis';
 import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
 
 const meta: Meta<typeof Select> = {
@@ -103,6 +104,10 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
 
 export const OnVisible: Story = {
   render: OnVisibleExample,
+};
+
+export const SelectWithEllipsis: Story = {
+  render: SelectWithEllipsisExample,
 };
 
 export const OnChangeInputSearch: Story = {

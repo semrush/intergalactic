@@ -41,12 +41,11 @@ const Demo = (props: TabLineFHAdvancedProps) => {
   return (
     <Flex direction='column' gap={4}>
       <TabLineFH
-        w={props.w}
         size={size}
         aria-label={ariaLabel}
         defaultValue={defaultValue}
       >
-        <TabLineFH.Item ref={firstRef} value={1} disabled={disabled}>
+        <TabLineFH.Item ref={firstRef} value={1} disabled={disabled} w={props.w}>
           <TabLineFH.Item.Text {...{ ellipsis, hintProps: { triggerRef: firstRef } }}>
             {firstTabText}
           </TabLineFH.Item.Text>
@@ -56,6 +55,7 @@ const Demo = (props: TabLineFHAdvancedProps) => {
           value={2}
           disabled={disabled}
           aria-describedby='tab-aria-desc'
+          w={props.w}
         >
           <TabLineFH.HighlightedItem.Addon animatedSparkleCount={animatedSparkleCount} />
           <TabLineFH.HighlightedItem.Text {...{ ellipsis, hintProps: { triggerRef: secondRef } }}>
@@ -67,7 +67,7 @@ const Demo = (props: TabLineFHAdvancedProps) => {
             </TabLineFH.HighlightedItem.Addon>
           )}
         </TabLineFH.HighlightedItem>
-        <TabLineFH.Item ref={thirdRef} value={3} disabled={disabled}>
+        <TabLineFH.Item ref={thirdRef} value={3} disabled={disabled} w={props.w}>
           <TabLineFH.Item.Text {...{ ellipsis, hintProps: { triggerRef: thirdRef } }}>
             {thirdTabText}
           </TabLineFH.Item.Text>

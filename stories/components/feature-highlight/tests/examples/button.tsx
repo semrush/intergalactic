@@ -1,4 +1,5 @@
 import SummaryAI from '@semcore/icon/SummaryAI/m';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import type { ButtonProps } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
@@ -16,6 +17,8 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   disabled?: boolean;
   loading?: boolean;
   active?: boolean;
+  ellipsis?: true | EllipsisSettings;
+  w?: number | string;
 };
 
 const Demo = (props: ButtonFHAdvancedProps) => {
@@ -30,6 +33,7 @@ const Demo = (props: ButtonFHAdvancedProps) => {
     disabled = false,
     loading = false,
     active = false,
+    ellipsis,
   } = props;
 
   return (
@@ -48,14 +52,14 @@ const Demo = (props: ButtonFHAdvancedProps) => {
             ? (
                 <>
                   <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
-                  <ButtonFH.Text>{buttonText}</ButtonFH.Text>
+                  <ButtonFH.Text ellipsis={ellipsis} w={props.w}>{buttonText}</ButtonFH.Text>
                   <ButtonFH.Addon>
                     <BadgeFH use={props.useBadge}>{badgeText}</BadgeFH>
                   </ButtonFH.Addon>
                 </>
               )
             : (
-                buttonText
+                <ButtonFH.Text ellipsis={ellipsis} w={props.w}>{buttonText}</ButtonFH.Text>
               )}
         </ButtonFH>
         <ScreenReaderOnly id='button-aria-desc'>Powered by AI</ScreenReaderOnly>
@@ -65,7 +69,7 @@ const Demo = (props: ButtonFHAdvancedProps) => {
 };
 
 export const defaultProps: ButtonFHAdvancedProps = {
-  buttonText: 'Primary Large',
+  buttonText: 'Button Feature',
   showBadge: false,
   badgeText: 'AI-powered',
   animatedSparkleCount: 5,
@@ -76,6 +80,8 @@ export const defaultProps: ButtonFHAdvancedProps = {
   loading: false,
   active: false,
   useBadge: 'accent',
+  ellipsis: true,
+  w: 200,
 };
 
 Demo.defaultProps = defaultProps;

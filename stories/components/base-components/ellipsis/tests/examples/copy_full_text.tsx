@@ -71,7 +71,7 @@ const Demo = () => {
           Example 3: Very long URL
         </Text>
         <Link
-
+          size={200}
           tag='code'
           style={{ fontFamily: 'monospace' }}
         >
