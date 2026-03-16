@@ -143,23 +143,23 @@
   /* Active (selected) state of the secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral-active: #d1d2d5;
   /* Secondary background of a message with regular information. */
-  --intergalactic-bg-secondary-info: #eef4ff;
+  --intergalactic-bg-secondary-info: rgba(41, 105, 255, 0.1);
   /* Hover state of the secondary background of a message with regular information. */
-  --intergalactic-bg-secondary-info-hover: #d0e0fe;
+  --intergalactic-bg-secondary-info-hover: rgba(41, 105, 255, 0.2);
   /* Active (selected) state of the secondary background of a message with regular information. */
-  --intergalactic-bg-secondary-info-active: #bdd1ff;
+  --intergalactic-bg-secondary-info-active: rgba(41, 105, 255, 0.3);
   /* Secondary background of the message with success information you want to accent. */
-  --intergalactic-bg-secondary-success: #dcfdf0;
+  --intergalactic-bg-secondary-success: rgba(22, 240, 191, 0.2);
   /* Hover state of the secondary background of the message with success information you want to accent. */
-  --intergalactic-bg-secondary-success-hover: rgba(163, 249, 229, 0.6);
+  --intergalactic-bg-secondary-success-hover: rgba(22, 240, 191, 0.4);
   /* Active (selected) state of the secondary background of the message with success information you want to accent. */
-  --intergalactic-bg-secondary-success-active: #a3f9e5;
+  --intergalactic-bg-secondary-success-active: rgba(22, 240, 191, 0.6);
   /* Secondary background of the message with critical information you want to accent. */
-  --intergalactic-bg-secondary-critical: #ffefec;
+  --intergalactic-bg-secondary-critical: rgba(255, 84, 84, 0.2);
   /* Hover state of the secondary background of the message with critical information you want to accent. */
-  --intergalactic-bg-secondary-critical-hover: rgba(255, 189, 189, 0.6);
+  --intergalactic-bg-secondary-critical-hover: rgba(255, 84, 84, 0.4);
   /* Active (selected) state of the secondary background of the message with critical information you want to accent. */
-  --intergalactic-bg-secondary-critical-active: #ffbdbd;
+  --intergalactic-bg-secondary-critical-active: rgba(255, 84, 84, 0.6);
   /* Secondary background of the message with warning information you want to accent. */
   --intergalactic-bg-secondary-warning: #ffefe9;
   /* Hover state of the secondary background of the message with warning information you want to accent. */
@@ -289,15 +289,15 @@
   /* Background of the primary brand colored control. */
   --intergalactic-control-primary-brand: #c190ff;
   /* Hover state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-hover: #181e15;
+  --intergalactic-control-primary-brand-hover: #a070fe;
   /* Active state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-active: #181e15;
+  --intergalactic-control-primary-brand-active: #7d26e8;
   /* Background of the advertising primary control. */
   --intergalactic-control-primary-advertising: #c190ff;
   /* Hover state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-hover: #a070fe;
+  --intergalactic-control-primary-advertising-hover: #181e15;
   /* Active (selected) state of the advertising primary control. */
-  --intergalactic-control-primary-advertising-active: #5a17a9;
+  --intergalactic-control-primary-advertising-active: #181e15;
   /* Inverted background of the primary control. */
   --intergalactic-control-primary-invert: #ffffff;
   /* Hover state of the inverted primary control. */
@@ -311,11 +311,11 @@
   /* Active (selected) state of the regular secondary control. */
   --intergalactic-control-secondary-neutral-active: rgba(123, 153, 150, 0.3);
   /* Background of the accent secondary control. */
-  --intergalactic-control-secondary-info: rgba(112, 155, 255, 0.1);
+  --intergalactic-control-secondary-info: rgba(41, 105, 255, 0.1);
   /* Hover state of the accent secondary control. */
-  --intergalactic-control-secondary-info-hover: rgba(112, 155, 255, 0.2);
+  --intergalactic-control-secondary-info-hover: rgba(41, 105, 255, 0.2);
   /* Active (selected) state of the accent secondary control. */
-  --intergalactic-control-secondary-info-active: rgba(112, 155, 255, 0.3);
+  --intergalactic-control-secondary-info-active: rgba(41, 105, 255, 0.3);
   /* Background of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert: rgba(255, 255, 255, 0.05);
   /* Hover state of the inverted version of the secondary control. */
@@ -323,11 +323,11 @@
   /* Active (selected) state of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.2);
   /* Background of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral: rgba(144, 146, 154, 0);
+  --intergalactic-control-tertiary-neutral: rgba(123, 153, 150, 0);
   /* Hover state of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral-hover: rgba(144, 146, 154, 0.1);
+  --intergalactic-control-tertiary-neutral-hover: rgba(123, 153, 150, 0.1);
   /* Active (selected) state of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral-active: rgba(144, 146, 154, 0.2);
+  --intergalactic-control-tertiary-neutral-active: rgba(123, 153, 150, 0.2);
   /* Background of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info: rgba(112, 155, 255, 0);
   /* Hover state of the accent and link-lookalike tertiary control. */
@@ -341,25 +341,25 @@
   /* Active (selected) state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
   /* Primary neutral icon. */
-  --intergalactic-icon-primary-neutral: #6c6e79;
+  --intergalactic-icon-primary-neutral: #90929a;
   /* Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color. */
-  --intergalactic-icon-primary-neutral-hover-active: #565861;
+  --intergalactic-icon-primary-neutral-hover-active: #6c6e79;
   /* Primary link-lookalike icon. */
-  --intergalactic-icon-primary-info: #2969ff;
+  --intergalactic-icon-primary-info: #709bff;
   /* Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color. */
-  --intergalactic-icon-primary-info-hover-active: #0358a1;
+  --intergalactic-icon-primary-info-hover-active: #2969ff;
   /* Primary success icon. */
   --intergalactic-icon-primary-success: #0faa88;
   /* Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color. */
-  --intergalactic-icon-primary-success-hover-active: #037e68;
+  --intergalactic-icon-primary-success-hover-active: #0c8266;
   /* Primary critical icon. */
   --intergalactic-icon-primary-critical: #ff5454;
   /* Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color. */
-  --intergalactic-icon-primary-critical-hover-active: #cc3a42;
+  --intergalactic-icon-primary-critical-hover-active: #e82525;
   /* Primary warning icon. */
   --intergalactic-icon-primary-warning: #e66536;
   /* Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color. */
-  --intergalactic-icon-primary-warning-hover-active: #cc5024;
+  --intergalactic-icon-primary-warning-hover-active: #b04b27;
   /* Inverted version of the primary icon. */
   --intergalactic-icon-primary-invert: #ffffff;
   /* Hover and active (selected) states of the inverted version of the primary icon. */
@@ -367,79 +367,79 @@
   /* Secondary neutral icon. */
   --intergalactic-icon-secondary-neutral: #a9aab1;
   /* Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color. */
-  --intergalactic-icon-secondary-neutral-hover-active: #878992;
+  --intergalactic-icon-secondary-neutral-hover-active: #90929a;
   /* Secondary link-lookalike icon. */
   --intergalactic-icon-secondary-info: #83aaf7;
   /* Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color. */
-  --intergalactic-icon-secondary-info-hover-active: #2290cc;
+  --intergalactic-icon-secondary-info-hover-active: #709bff;
   /* Secondary success icon. */
   --intergalactic-icon-secondary-success: #13c79e;
   /* Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color. */
-  --intergalactic-icon-secondary-success-hover-active: #049b75;
+  --intergalactic-icon-secondary-success-hover-active: #0faa88;
   /* Secondary critical icon. */
   --intergalactic-icon-secondary-critical: #ff7f72;
   /* Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color. */
-  --intergalactic-icon-secondary-critical-hover-active: #cc6c6b;
+  --intergalactic-icon-secondary-critical-hover-active: #ff5454;
   /* Secondary warning icon. */
   --intergalactic-icon-secondary-warning: #f28b68;
   /* Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color. */
-  --intergalactic-icon-secondary-warning-hover-active: #cc7036;
+  --intergalactic-icon-secondary-warning-hover-active: #e66536;
   /* Color for the default non-interactive icon. */
   --intergalactic-icon-non-interactive: #181e15;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-red: #ff788f;
+  --intergalactic-illustration-red: #ff5454;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-orange: #ff9400;
+  --intergalactic-illustration-orange: #f28b68;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-yellow: #ffe84d;
+  --intergalactic-illustration-yellow: #ffc954;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-salad: #c7fa73;
+  --intergalactic-illustration-salad: #89ff75;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-green: #45e0a8;
+  --intergalactic-illustration-green: #16f0bf;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-blue: #6edbff;
+  --intergalactic-illustration-blue: #2969ff;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-violet: #b880ff;
+  --intergalactic-illustration-violet: #c190ff;
   /* ⚠️ Use only for illustrations. */
-  --intergalactic-illustration-pink: #ff7ad1;
+  --intergalactic-illustration-pink: #e14adf;
   /* Default date-picker cell background. */
   --intergalactic-date-picker-cell: #ffffff;
   /* Color for marking the cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current: #90929a;
+  --intergalactic-date-picker-cell-current: #181e15;
   /* Hover state of the default date-picker cell background. */
-  --intergalactic-date-picker-cell-hover: #dedfe2;
+  --intergalactic-date-picker-cell-hover: rgba(123, 153, 150, 0.1);
   /* Background for the cell which is included in the date range in the date-picker. */
-  --intergalactic-date-picker-cell-range: #d0e0fe;
+  --intergalactic-date-picker-cell-range: rgba(41, 105, 255, 0.2);
   /* Hover state of the background for the cell which is included in the date range in the date-picker. */
-  --intergalactic-date-picker-cell-range-hover: #bdd1ff;
+  --intergalactic-date-picker-cell-range-hover: rgba(41, 105, 255, 0.3);
   /* Active (selected) date-picker cell background. */
-  --intergalactic-date-picker-cell-active: #83aaf7;
+  --intergalactic-date-picker-cell-active: #2969ff;
   /* Hover for the active (selected) date-picker cell background. */
-  --intergalactic-date-picker-cell-active-hover: #709bff;
+  --intergalactic-date-picker-cell-active-hover: #1640a1;
   /* Color for marking the active cell with the current date, month or year in the date-picker. */
   --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.5);
   /* Active (selected) date-picker cell background for comparison periods. */
-  --intergalactic-date-picker-cell-comparison-active: #7d26e8;
+  --intergalactic-date-picker-cell-comparison-active: #a070fe;
   /* Hover for the active (selected) date-picker cell background for comparison periods. */
-  --intergalactic-date-picker-cell-comparison-active-hover: #5a17a9;
+  --intergalactic-date-picker-cell-comparison-active-hover: #7d26e8;
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
   /* Hover state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-hover: #f0f1f2;
+  --intergalactic-dropdown-menu-item-hover: rgba(123, 153, 150, 0.1);
   /* Active (selected) state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected: rgba(208, 224, 254, 0.7);
+  --intergalactic-dropdown-menu-item-selected: rgba(41, 105, 255, 0.1);
   /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected-hover: #d0e0fe;
+  --intergalactic-dropdown-menu-item-selected-hover: rgba(41, 105, 255, 0.2);
   /* Color of the FeaturePopover background with accent theme. */
   --intergalactic-feature-popover-bg: #e0c7ff;
   /* Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme. */
   --intergalactic-feature-popover-dot-outer-border: #e0c7ff;
   /* Color of the FeaturePopover background with neutral theme. */
-  --intergalactic-feature-popover-bg-neutral: #151c1c;
+  --intergalactic-feature-popover-bg-neutral: #181e15;
   /* Color of the FeaturePopover.Spot for FeaturePopover with neutral theme. */
-  --intergalactic-feature-popover-dot-neutral: #13c79e;
+  --intergalactic-feature-popover-dot-neutral: #c190ff;
   /* Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme. */
-  --intergalactic-feature-popover-dot-neutral-outer-border: #13c79e;
+  --intergalactic-feature-popover-dot-neutral-outer-border: #c190ff;
   /* Background color of the ProgressBar. */
   --intergalactic-progress-bar-bg: #dedfe2;
   /* Hover state of the background color of the ProgressBar. */
@@ -449,9 +449,9 @@
   /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
   /* Value with gradient for the ProgressBar. */
-  --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%);
+  --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(193, 144, 255, 0.9) 25%, rgba(193, 144, 255, 1) 0%, rgba(193, 144, 255, 1) 50%, rgba(193, 144, 255, 0.9) 0%, rgba(193, 144, 255, 0.9) 75%, rgba(193, 144, 255, 1) 0%);
   /* Null value gradient for the ProgressBar. */
-  --intergalactic-progress-bar-pattern-gradient: linear-gradient(-45deg, rgba(234, 239, 241, 0.9) 25%, rgba(234, 239, 241, 1) 0%, rgba(234, 239, 241, 1) 50%, rgba(234, 239, 241, 0.9) 0%, rgba(234, 239, 241, 0.9) 75%, rgba(234, 239, 241, 1) 0%);
+  --intergalactic-progress-bar-pattern-gradient: linear-gradient(-45deg, rgba(222, 223, 226, 0.9) 25%, rgba(222, 223, 226, 1) 0%, rgba(222, 223, 226, 1) 50%, rgba(222, 223, 226, 0.9) 0%, rgba(222, 223, 226, 0.9) 75%, rgba(222, 223, 226, 1) 0%);
   /* Base value background for the ProgressBar. It is used to create gradients for the values. */
   --intergalactic-progress-bar-value-bg: #000000;
   /* Default color for the Skeleton. */
@@ -461,55 +461,55 @@
   /* Icon color for the SliderRating component in its normal state. */
   --intergalactic-slider-rating-normal: #a9aab1;
   /* Icon color for the SliderRating component in its hovered and active states. */
-  --intergalactic-slider-rating-hover-active: #ffc954;
+  --intergalactic-slider-rating-hover-active: #c190ff;
   /* Background of the header cell in the primary Table. */
-  --intergalactic-table-th-primary-cell: #f0f1f2;
+  --intergalactic-table-th-primary-cell: rgba(222, 223, 226, 0.2);
   /* Background of the hovered header cell in the primary Table. */
-  --intergalactic-table-th-primary-cell-hover: #dedfe2;
+  --intergalactic-table-th-primary-cell-hover: #f0f1f2;
   /* Background of the active header cell in the primary Table. */
-  --intergalactic-table-th-primary-cell-active: #dedfe2;
+  --intergalactic-table-th-primary-cell-active: #f0f1f2;
   /* Background of the header cell in the secondary Table. */
   --intergalactic-table-th-secondary-cell: #ffffff;
   /* Background gradient for sorting icon that absolute positioned in the table head. */
-  --intergalactic-table-th-gradient: linear-gradient(to right, rgba(222, 223, 226, 0) 0%, rgba(222, 223, 226, 1) 100%);
+  --intergalactic-table-th-gradient: linear-gradient(to right, rgba(240, 241, 242, 0) 0%, rgba(240, 241, 242, 1) 100%);
   /* Background of the default cell in the Table. */
   --intergalactic-table-td-cell: #ffffff;
   /* Background of the default hovered cell in the Table. */
-  --intergalactic-table-td-cell-hover: #efeff1;
+  --intergalactic-table-td-cell-hover: #f8f9f9;
   /* Background of the default active cell in the Table. */
-  --intergalactic-table-td-cell-active: #e5e5e8;
+  --intergalactic-table-td-cell-active: #efeff1;
   /* Background of the unread cell in the Table. */
-  --intergalactic-table-td-cell-unread: #f0f1f2;
+  --intergalactic-table-td-cell-unread: rgba(222, 223, 226, 0.2);
   /* Background of the cell inside an Accordion in the Table. */
-  --intergalactic-table-td-cell-accordion: #f0f1f2;
+  --intergalactic-table-td-cell-accordion: rgba(222, 223, 226, 0.2);
   /* Background of the selected cell in the Table. */
-  --intergalactic-table-td-cell-selected: #eef4ff;
+  --intergalactic-table-td-cell-selected: rgba(41, 105, 255, 0.1);
   /* Background of the hovered selected cell in the Table. */
-  --intergalactic-table-td-cell-selected-hover: #d0e0fe;
+  --intergalactic-table-td-cell-selected-hover: rgba(41, 105, 255, 0.2);
   /* Background of the active selected cell in the Table. */
-  --intergalactic-table-td-cell-selected-active: #d0e0fe;
+  --intergalactic-table-td-cell-selected-active: rgba(41, 105, 255, 0.3);
   /* Background of the cell with new information in the Table. */
-  --intergalactic-table-td-cell-new: #dcfdf0;
+  --intergalactic-table-td-cell-new: rgba(22, 240, 191, 0.1);
   /* Background of the hovered cell with new information in the Table. */
-  --intergalactic-table-td-cell-new-hover: #a3f9e5;
+  --intergalactic-table-td-cell-new-hover: rgba(22, 240, 191, 0.2);
   /* Background of the active cell with new information in the Table. */
-  --intergalactic-table-td-cell-new-active: #a3f9e5;
+  --intergalactic-table-td-cell-new-active: rgba(22, 240, 191, 0.3);
   /* Background of the cell with critical information in the Table. */
-  --intergalactic-table-td-cell-critical: #ffefec;
+  --intergalactic-table-td-cell-critical: rgba(232, 37, 37, 0.1);
   /* Background of the hovered cell with critical information in the Table. */
-  --intergalactic-table-td-cell-critical-hover: #ffbdbd;
+  --intergalactic-table-td-cell-critical-hover: rgba(232, 37, 37, 0.2);
   /* Background of the active cell with critical information in the Table. */
-  --intergalactic-table-td-cell-critical-active: #ffbdbd;
+  --intergalactic-table-td-cell-critical-active: rgba(232, 37, 37, 0.3);
   /* Background of the cell with warning information in the Table. */
-  --intergalactic-table-td-cell-warning: #ffefe9;
+  --intergalactic-table-td-cell-warning: rgba(242, 139, 104, 0.1);
   /* Background of the hovered cell with warning information in the Table. */
-  --intergalactic-table-td-cell-warning-hover: #fdd5c8;
+  --intergalactic-table-td-cell-warning-hover: rgba(242, 139, 104, 0.2);
   /* Background of the active cell with warning information in the Table. */
-  --intergalactic-table-td-cell-warning-active: #fdd5c8;
+  --intergalactic-table-td-cell-warning-active: rgba(242, 139, 104, 0.3);
   /* Primary brand color. */
-  --intergalactic-brand-primary: #e66536;
+  --intergalactic-brand-primary: #c190ff;
   /* Secondary brand color. */
-  --intergalactic-brand-secondary: #350a69;
+  --intergalactic-brand-secondary: #16f0bf;
   /* Pinterest brand color. */
   --intergalactic-brand-pinterest: #bd081c;
   /* Instagram brand color. */
@@ -669,7 +669,7 @@
   /* Use for the secondary modal dialogs that were opened upon the other modal dialogs. */
   --intergalactic-overlay-secondary: rgba(24, 30, 21, 0.25);
   /* Use as a primary cover of the content under the messages about limitations. */
-  --intergalactic-overlay-limitation-primary: #f0f1f2;
+  --intergalactic-overlay-limitation-primary: rgba(240, 241, 242, 0.6);
   /* Use as a secondary cover of the content under the messages about limitations. */
   --intergalactic-overlay-limitation-secondary: rgba(255, 255, 255, 0.85);
   --intergalactic-z-index-deep: -999;

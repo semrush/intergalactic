@@ -6,7 +6,11 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
-import Button, { ButtonLink } from '@semcore/ui/button';
+import Button, {
+  ButtonLink,
+  type ButtonProps,
+  type ButtonLinkProps,
+} from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
@@ -53,15 +57,9 @@ export default meta;
 
 type Story = StoryObj;
 
-function ButtonRow({
-  use,
-  theme,
-  size = 'm',
-}: {
-  use: 'primary' | 'secondary' | 'tertiary';
-  theme: 'info' | 'success' | 'danger' | 'brand' | 'muted' | 'invert';
-  size?: 'm' | 'l';
-}) {
+type ButtonRowProps = Pick<ButtonProps, 'use' | 'theme' | 'size'>;
+
+function ButtonRow({ use, theme, size = 'm' }: ButtonRowProps) {
   return (
     <Flex gap={1}>
       <Button use={use} theme={theme} size={size}>
@@ -75,13 +73,9 @@ function ButtonRow({
   );
 }
 
-function ButtonLinkRow({
-  use,
-  size = 300,
-}: {
-  use: 'primary' | 'secondary';
-  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
-}) {
+type ButtonLinkRowProps = Pick<ButtonLinkProps, 'use' | 'size'>;
+
+function ButtonLinkRow({ use, size = 300 }: ButtonLinkRowProps) {
   return (
     <Flex gap={2}>
       <ButtonLink use={use} size={size}>
@@ -244,6 +238,7 @@ function ThemePlaygroundContent() {
 
             <Flex gap={8} flexWrap alignItems='center'>
               <ButtonRow use='secondary' theme='muted' />
+              <ButtonRow use='secondary' theme='info' />
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
@@ -263,6 +258,7 @@ function ThemePlaygroundContent() {
 
             <Flex gap={8} flexWrap alignItems='center'>
               <ButtonRow use='secondary' theme='muted' size='l' />
+              <ButtonRow use='secondary' theme='info' size='l' />
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>

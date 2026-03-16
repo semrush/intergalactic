@@ -2,6 +2,8 @@ import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
 import FileExportM from '@semcore/icon/FileExport/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
+import Congrats from '@semcore/illustration/Congrats';
+import MailSent from '@semcore/illustration/MailSent';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
@@ -902,18 +904,19 @@ function DashboardPlaygroundContent() {
                     onSortChange={setPrimaryTableSort}
                     aria-label='Primary table with themed rows'
                     w='100%'
+                    defaultGridTemplateColumnWidth='minmax(80px, 1fr)'
                     columns={[
                       {
                         name: 'theme',
                         children: 'Theme',
-                        gtcWidth: 'minmax(100px, 1fr)',
+                        gtcWidth: 'minmax(120px, 1fr)',
                         sortable: true,
                         changeSortSize: true,
                       },
                       {
                         name: 'metric',
                         children: 'Metric',
-                        gtcWidth: 'min-content',
+                        gtcWidth: 'minmax(85px, 1fr)',
                         justifyContent: 'end',
                         sortable: true,
                         changeSortSize: true,
@@ -921,7 +924,7 @@ function DashboardPlaygroundContent() {
                       {
                         name: 'value',
                         children: 'Value',
-                        gtcWidth: 'minmax(80px, 1fr)',
+                        gtcWidth: 'minmax(85px, 1fr)',
                         justifyContent: 'end',
                         sortable: true,
                         changeSortSize: true,
@@ -929,7 +932,7 @@ function DashboardPlaygroundContent() {
                       {
                         name: 'change',
                         children: 'Change',
-                        gtcWidth: 'minmax(80px, 1fr)',
+                        gtcWidth: 'minmax(90px, 1fr)',
                         justifyContent: 'end',
                         sortable: true,
                         changeSortSize: true,
@@ -980,6 +983,30 @@ function DashboardPlaygroundContent() {
               </Card.Header>
               <Card.Body>
                 <Error />
+              </Card.Body>
+            </Card>
+            <Card
+              tag='section'
+              style={{
+                flex: '1 1 calc(50% - 8px)',
+                minWidth: 'min(100%, 320px)',
+                maxWidth: '100%',
+              }}
+            >
+              <Card.Header>
+                <Card.Title tag='h3'>Illustration</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Flex gap={4} direction='row'>
+                  <MailSent />
+                  <MailSent primaryColor='illustration-salad' />
+                  <MailSent primaryColor='illustration-blue' />
+                  <MailSent primaryColor='illustration-orange' />
+                  <Congrats primaryColor='illustration-red' secondaryColor='gray-800' />
+                  <Congrats primaryColor='illustration-pink' secondaryColor='gray-800' />
+                  <Congrats primaryColor='illustration-violet' secondaryColor='gray-800' />
+                  <Congrats primaryColor='illustration-yellow' secondaryColor='gray-800' />
+                </Flex>
               </Card.Body>
             </Card>
           </Flex>

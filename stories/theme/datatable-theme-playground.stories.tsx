@@ -7,6 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import { ThemePlaygroundLayout } from './theme-playground-switcher';
+import AccordionInTableExample from '../components/data-table/docs/examples/table-in-table';
 import './theme-playground-fonts.css';
 
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
@@ -131,18 +132,19 @@ function DataTableThemePlaygroundContent() {
               onSortChange={setFirstTableSort}
               aria-label='Theme playground table'
               w='600px'
+              defaultGridTemplateColumnWidth='minmax(80px, 1fr)'
               columns={[
                 {
                   name: 'keyword',
                   children: 'Keyword',
-                  gtcWidth: 'minmax(100px, 2fr)',
+                  gtcWidth: 'minmax(130px, 2fr)',
                   sortable: true,
                   changeSortSize: true,
                 },
                 {
                   name: 'kd',
                   children: 'KD %',
-                  gtcWidth: 'minmax(70px, 1fr)',
+                  gtcWidth: 'minmax(80px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -150,7 +152,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'cpc',
                   children: 'CPC',
-                  gtcWidth: 'minmax(70px, 1fr)',
+                  gtcWidth: 'minmax(80px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -158,7 +160,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'vol',
                   children: 'Vol.',
-                  gtcWidth: 'minmax(90px, 1fr)',
+                  gtcWidth: 'minmax(95px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -185,14 +187,15 @@ function DataTableThemePlaygroundContent() {
               onSortChange={() => {}}
               aria-label='Theme playground table secondary'
               w='600px'
+              defaultGridTemplateColumnWidth='minmax(80px, 1fr)'
               columns={[
-                { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(100px, 2fr)' },
-                { name: 'kd', children: 'KD %', gtcWidth: 'minmax(70px, 1fr)', justifyContent: 'end' },
-                { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, 1fr)', justifyContent: 'end' },
+                { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(130px, 2fr)' },
+                { name: 'kd', children: 'KD %', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
+                { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(80px, 1fr)', justifyContent: 'end' },
                 {
                   name: 'vol',
                   children: 'Vol.',
-                  gtcWidth: 'minmax(90px, 1fr)',
+                  gtcWidth: 'minmax(95px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -211,18 +214,19 @@ function DataTableThemePlaygroundContent() {
               onSortChange={setPrimaryTableSort}
               aria-label='Primary table with themed rows'
               w='600px'
+              defaultGridTemplateColumnWidth='minmax(80px, 1fr)'
               columns={[
                 {
                   name: 'theme',
                   children: 'Theme',
-                  gtcWidth: 'minmax(100px, 1fr)',
+                  gtcWidth: 'minmax(120px, 1fr)',
                   sortable: true,
                   changeSortSize: true,
                 },
                 {
                   name: 'metric',
                   children: 'Metric',
-                  gtcWidth: 'minmax(80px, 1fr)',
+                  gtcWidth: 'minmax(85px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -230,7 +234,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'value',
                   children: 'Value',
-                  gtcWidth: 'minmax(80px, 1fr)',
+                  gtcWidth: 'minmax(85px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -238,7 +242,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'change',
                   children: 'Change',
-                  gtcWidth: 'minmax(80px, 1fr)',
+                  gtcWidth: 'minmax(90px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -256,6 +260,12 @@ function DataTableThemePlaygroundContent() {
               onCurrentPageChange={setPrimaryThemedTablePage}
               aria-label='Pagination'
             />
+          </Box>
+          <Box wMin={500}>
+            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+              Accordion in table
+            </Text>
+            <AccordionInTableExample />
           </Box>
         </Flex>
       </Box>
