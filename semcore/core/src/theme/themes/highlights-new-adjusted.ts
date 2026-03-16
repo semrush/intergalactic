@@ -1,5 +1,5 @@
 export default {
-  '--intergalactic-bg-primary-feature-highlight': '#fff',
+  '--intergalactic-bg-primary-feature-highlight': '#ffffff',
   '--intergalactic-bg-primary-feature-highlight-hover-active': 'linear-gradient(90deg, #f5f1ff, #eef4ff)',
   '--intergalactic-bg-secondary-feature-highlight': 'linear-gradient(90deg, #f5f1ff, #eef4ff)',
   '--intergalactic-border-feature-highlight': 'linear-gradient(90deg, #b494ff, #83aaf7)',

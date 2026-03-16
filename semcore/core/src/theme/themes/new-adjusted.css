@@ -10,7 +10,7 @@
   --gray-600: #484a52;
   --gray-700: #2f3035;
   --gray-800: #131416;
-  --gray-white: #fff;
+  --gray-white: #ffffff;
   /* Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision. */
   --blue-50: #eef4ff;
   /* Use only for light strokes and active backgrounds. Suitable for minimally visible elements. */
@@ -111,7 +111,7 @@
   --salad-700: #11aa88;
   --salad-800: #0d8469;
   /* Primary background of the interface which contains the main data and information. */
-  --intergalactic-bg-primary-neutral: #fff;
+  --intergalactic-bg-primary-neutral: #ffffff;
   /* Hover state of the primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral-hover: #f3f4f4;
   /* Active (selected) state of the primary background of the interface which contains the main data and information. */
@@ -197,9 +197,9 @@
   /* Hover and active states for the text associated with critical states and data. */
   --intergalactic-text-critical-hover-active: #8b1312;
   /* Inverted version of the primary text. */
-  --intergalactic-text-primary-invert: #fff;
+  --intergalactic-text-primary-invert: #ffffff;
   /* Inverted version of the secondary text. */
-  --intergalactic-text-secondary-invert: rgba(15, 15, 15, 0.8);
+  --intergalactic-text-secondary-invert: rgba(255, 255, 255, 0.8);
   /* Link text. */
   --intergalactic-text-link: #2661e8;
   /* Hover and active states for the link text. */
@@ -255,9 +255,9 @@
   /* Active border in components with warning intention. */
   --intergalactic-border-warning-active: #b4481e;
   /* Inverted version of the neutral primary border. Use it for borders on the dark or color background. */
-  --intergalactic-border-primary-invert: #fff;
+  --intergalactic-border-primary-invert: #ffffff;
   /* Inverted version of the neutral secondary border. Use it for borders on the dark or color background. */
-  --intergalactic-border-secondary-invert: rgba(15, 15, 15, 0.3);
+  --intergalactic-border-secondary-invert: rgba(255, 255, 255, 0.3);
   /* Border of the Tooltip with dark theme. */
   --intergalactic-border-tooltip-invert: #6c6e79;
   /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
@@ -299,7 +299,7 @@
   /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #8426f5;
   /* Inverted background of the primary control. */
-  --intergalactic-control-primary-invert: #fff;
+  --intergalactic-control-primary-invert: #ffffff;
   /* Hover state of the inverted primary control. */
   --intergalactic-control-primary-invert-hover: #f3f4f4;
   /* Active (selected) state of the inverted primary control. */
@@ -317,11 +317,11 @@
   /* Active (selected) state of the accent secondary control. */
   --intergalactic-control-secondary-info-active: rgba(94, 142, 242, 0.3);
   /* Background of the inverted version of the secondary control. */
-  --intergalactic-control-secondary-invert: rgba(15, 15, 15, 0.05);
+  --intergalactic-control-secondary-invert: rgba(255, 255, 255, 0.05);
   /* Hover state of the inverted version of the secondary control. */
-  --intergalactic-control-secondary-invert-hover: rgba(15, 15, 15, 0.1);
+  --intergalactic-control-secondary-invert-hover: rgba(255, 255, 255, 0.1);
   /* Active (selected) state of the inverted version of the secondary control. */
-  --intergalactic-control-secondary-invert-active: rgba(15, 15, 15, 0.3);
+  --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.3);
   /* Background of the regular tertiary control. */
   --intergalactic-control-tertiary-neutral: rgba(144, 146, 154, 0);
   /* Hover state of the regular tertiary control. */
@@ -335,11 +335,11 @@
   /* Active (selected) state of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info-active: rgba(94, 142, 242, 0.3);
   /* Background of the inverted version of the tertiary control. */
-  --intergalactic-control-tertiary-invert: rgba(15, 15, 15, 0);
+  --intergalactic-control-tertiary-invert: rgba(255, 255, 255, 0);
   /* Hover state of the inverted version of the tertiary control. */
-  --intergalactic-control-tertiary-invert-hover: rgba(15, 15, 15, 0.1);
+  --intergalactic-control-tertiary-invert-hover: rgba(255, 255, 255, 0.1);
   /* Active (selected) state of the inverted version of the tertiary control. */
-  --intergalactic-control-tertiary-invert-active: rgba(15, 15, 15, 0.3);
+  --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
   /* Primary neutral icon. */
   --intergalactic-icon-primary-neutral: #6c6e79;
   /* Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color. */
@@ -361,7 +361,7 @@
   /* Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color. */
   --intergalactic-icon-primary-warning-hover-active: #cc5024;
   /* Inverted version of the primary icon. */
-  --intergalactic-icon-primary-invert: #fff;
+  --intergalactic-icon-primary-invert: #ffffff;
   /* Hover and active (selected) states of the inverted version of the primary icon. */
   --intergalactic-icon-primary-invert-hover-active: #dedfe2;
   /* Secondary neutral icon. */
@@ -403,7 +403,7 @@
   /* ⚠️ Use only for illustrations. */
   --intergalactic-illustration-pink: #ff7ad1;
   /* Default date-picker cell background. */
-  --intergalactic-date-picker-cell: #fff;
+  --intergalactic-date-picker-cell: #ffffff;
   /* Color for marking the cell with the current date, month or year in the date-picker. */
   --intergalactic-date-picker-cell-current: #90929a;
   /* Hover state of the default date-picker cell background. */
@@ -417,13 +417,13 @@
   /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #5e8ef2;
   /* Color for marking the active cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current-invert: rgba(15, 15, 15, 0.5);
+  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.5);
   /* Active (selected) date-picker cell background for comparison periods. */
   --intergalactic-date-picker-cell-comparison-active: #8426f5;
   /* Hover for the active (selected) date-picker cell background for comparison periods. */
   --intergalactic-date-picker-cell-comparison-active-hover: #5a17a9;
   /* Default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item: #fff;
+  --intergalactic-dropdown-menu-item: #ffffff;
   /* Hover state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-hover: #f3f4f4;
   /* Active (selected) state of the default background color for the list item in the dropdown-menu. */
@@ -445,9 +445,9 @@
   /* Hover state of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-hover: #c4c5ca;
   /* Inverted version of the background color of the ProgressBar. */
-  --intergalactic-progress-bar-bg-invert: rgba(15, 15, 15, 0.2);
+  --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
   /* Hover state for the inverted version of the background color of the ProgressBar. */
-  --intergalactic-progress-bar-bg-invert-hover: rgba(15, 15, 15, 0.4);
+  --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
   /* Value with gradient for the ProgressBar. */
   --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%);
   /* Null value gradient for the ProgressBar. */
@@ -457,7 +457,7 @@
   /* Default color for the Skeleton. */
   --intergalactic-skeleton-bg: rgba(222, 223, 226, 0.8);
   /* Inverted version of the default color for the Skeleton. */
-  --intergalactic-skeleton-bg-invert: rgba(15, 15, 15, 0.3);
+  --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
   /* Icon color for the SliderRating component in its normal state. */
   --intergalactic-slider-rating-normal: #a9aab1;
   /* Icon color for the SliderRating component in its hovered and active states. */
@@ -469,11 +469,11 @@
   /* Background of the active header cell in the primary Table. */
   --intergalactic-table-th-primary-cell-active: #dedfe2;
   /* Background of the header cell in the secondary Table. */
-  --intergalactic-table-th-secondary-cell: #fff;
+  --intergalactic-table-th-secondary-cell: #ffffff;
   /* Background gradient for sorting icon that absolute positioned in the table head. */
   --intergalactic-table-th-gradient: linear-gradient(to right, rgba(222, 223, 226, 0) 0%, rgba(222, 223, 226, 1) 100%);
   /* Background of the default cell in the Table. */
-  --intergalactic-table-td-cell: #fff;
+  --intergalactic-table-td-cell: #ffffff;
   /* Background of the default hovered cell in the Table. */
   --intergalactic-table-td-cell-hover: #efeff1;
   /* Background of the default active cell in the Table. */
@@ -549,9 +549,9 @@
   /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(2, 10, 8, 0.5);
   /* Color for keyboard focus outline styles to use on the dark and color background. */
-  --intergalactic-keyboard-focus-invert-outline: rgba(15, 15, 15, 0.8);
+  --intergalactic-keyboard-focus-invert-outline: rgba(255, 255, 255, 0.8);
   /* Keyboard focus styles for use on dark backgrounds. */
-  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(15, 15, 15, 0.8);
+  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.8);
   /* Default keyboard focus box-shadow styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(19, 20, 22, 0.5);
   /* Base font family. */
@@ -671,7 +671,7 @@
   /* Use as a primary cover of the content under the messages about limitations. */
   --intergalactic-overlay-limitation-primary: #f3f4f4;
   /* Use as a secondary cover of the content under the messages about limitations. */
-  --intergalactic-overlay-limitation-secondary: rgba(15, 15, 15, 0.85);
+  --intergalactic-overlay-limitation-secondary: rgba(255, 255, 255, 0.85);
   --intergalactic-z-index-deep: -999;
   --intergalactic-z-index-overlay: 500;
   --intergalactic-z-index-modal: 900;
@@ -680,7 +680,7 @@
   --intergalactic-z-index-tooltip: 800;
   --intergalactic-z-index-notice-bubble: 999;
   /* Default Tooltip background. */
-  --intergalactic-tooltip-default: #fff;
+  --intergalactic-tooltip-default: #ffffff;
   /* Warning Tooltip background. */
   --intergalactic-tooltip-warning: #ffd0c8;
   /* Inverted version of the default Tooltip background. */
@@ -690,21 +690,21 @@
   /* Inverted border of the components that are combined with neighbor-location property. */
   --intergalactic-neighbor-location-invert: #00000080;
   /* Left-to-right fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-left: linear-gradient(to right, rgba(19, 20, 22, 0.1) 20.55%, rgba(15, 15, 15, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-left: linear-gradient(to right, rgba(19, 20, 22, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
   /* Right-to-left fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-right: linear-gradient(to left, rgba(19, 20, 22, 0.1) 20.55%, rgba(15, 15, 15, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-right: linear-gradient(to left, rgba(19, 20, 22, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
   /* Top-to-bottom fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-top: linear-gradient(to bottom, rgba(19, 20, 22, 0.1) 20.55%, rgba(15, 15, 15, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-top: linear-gradient(to bottom, rgba(19, 20, 22, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
   /* Bottom-to-top fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-bottom: linear-gradient(to top, rgba(19, 20, 22, 0.1) 20.55%, rgba(15, 15, 15, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-bottom: linear-gradient(to top, rgba(19, 20, 22, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
   /* Left-to-right fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(to right, rgba(15, 15, 15, 1) 34.38%, rgba(15, 15, 15, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
   /* Right-to-left fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(to left, rgba(15, 15, 15, 1) 34.38%, rgba(15, 15, 15, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
   /* Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(to top, rgba(15, 15, 15, 1) 34.38%, rgba(15, 15, 15, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
   /* Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(to bottom, rgba(15, 15, 15, 1) 34.38%, rgba(15, 15, 15, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
   /* Background color for ScrollBar. */
   --intergalactic-scroll-bar-background: rgba(19, 20, 22, 0.3);
   /* Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath. */
@@ -736,9 +736,9 @@
   /* Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath. */
   --intergalactic-tag-primary-yellow-hover-active: #fedab9;
   /* Primary white tag. */
-  --intergalactic-tag-primary-white-normal: rgba(15, 15, 15, 0.15);
+  --intergalactic-tag-primary-white-normal: rgba(255, 255, 255, 0.15);
   /* Hover and active (selected) state of the primary white tag. */
-  --intergalactic-tag-primary-white-hover-active: rgba(15, 15, 15, 0.3);
+  --intergalactic-tag-primary-white-hover-active: rgba(255, 255, 255, 0.3);
   /* Gray text for the primary gray tag. */
   --intergalactic-tag-primary-gray-text: #6c6e79;
   /* Blue text for the primary blue tag. */
@@ -754,19 +754,19 @@
   /* Yellow text for the primary yellow tag. */
   --intergalactic-tag-primary-yellow-text: #8e6711;
   /* White text for the primary white tag. */
-  --intergalactic-tag-primary-white-text: #fff;
+  --intergalactic-tag-primary-white-text: #ffffff;
   /* Background color for the default secondary tag. */
-  --intergalactic-tag-secondary-normal: #fff;
+  --intergalactic-tag-secondary-normal: #ffffff;
   /* Hover and active (selected) states of the background color for the default secondary tag. */
   --intergalactic-tag-secondary-hover-active: #f3f4f4;
   /* White secondary tag. */
-  --intergalactic-tag-secondary-white-normal: rgba(15, 15, 15, 0);
+  --intergalactic-tag-secondary-white-normal: rgba(255, 255, 255, 0);
   /* Active state of the secondary white tag. */
-  --intergalactic-tag-secondary-white-hover-active: rgba(15, 15, 15, 0.1);
+  --intergalactic-tag-secondary-white-hover-active: rgba(255, 255, 255, 0.1);
   /* Gray text for the default secondary tag. */
   --intergalactic-tag-secondary-gray-text: #6c6e79;
   /* White text for the secondary white tag. */
-  --intergalactic-tag-secondary-white-text: #fff;
+  --intergalactic-tag-secondary-white-text: #ffffff;
   /* 1 color in the default list of colors for charts. */
   --intergalactic-chart-palette-order-1: #83aaf7;
   /* 2 color in the default list of colors for charts. */
@@ -838,7 +838,7 @@
   /* Stripe color for diagonal pattern background. */
   --intergalactic-chart-grid-period-pattern: rgba(19, 20, 22, 0.15);
   /* Border for distinguishing data sets and chart dots on the chart grid. */
-  --intergalactic-chart-grid-border: #fff;
+  --intergalactic-chart-grid-border: #ffffff;
   /* Background color for the clickable date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-period-active: #6c6e79;
   /* Background color for the "Start tracking" date on the X-axis of the chart grid. */

@@ -1,7 +1,6 @@
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
 import FileExportM from '@semcore/icon/FileExport/m';
-import InfoM from '@semcore/icon/Info/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
