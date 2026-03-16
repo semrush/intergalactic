@@ -21,7 +21,6 @@ class RootButtonLink extends Component<ButtonLinkProps> {
       <SButtonLink
         render={Link}
         tag='button'
-        role='button'
         type='button'
         use:disabled={disabled}
         use:tabIndex={0}

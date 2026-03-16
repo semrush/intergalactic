@@ -89,7 +89,6 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     return sstyled(styles)(
       <>
         <SLink
-          role='link'
           tabIndex={disabled ? -1 : 0}
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
