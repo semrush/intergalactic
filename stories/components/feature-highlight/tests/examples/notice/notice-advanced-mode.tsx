@@ -18,9 +18,8 @@ const Demo = () => {
           label={<SummaryAI />}
           title={<Text>New Feature Available</Text>}
           actions={<ButtonFH use='primary'>Try it now</ButtonFH>}
-        >
-          We've added AI-powered optimization to help you improve your domain performance.
-        </NoticeFH>
+          text="We've added AI-powered optimization to help you improve your domain performance."
+        />
       </Box>
 
       <Box>
