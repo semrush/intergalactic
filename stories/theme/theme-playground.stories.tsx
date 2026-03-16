@@ -99,7 +99,6 @@ const FILTER_TRIGGER_OPTIONS = ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red'
 
 function ThemePlaygroundContent() {
   const [radioValue, setRadioValue] = React.useState('1');
-  const [pillsValue, setPillsValue] = React.useState<string | null>(null);
   const [tabValue, setTabValue] = React.useState(1);
   const [sliderValue, setSliderValue] = React.useState(50);
   const [dateValue, setDateValue] = React.useState<Date | undefined>(new Date());
@@ -238,7 +237,7 @@ function ThemePlaygroundContent() {
 
             <Flex gap={8} flexWrap alignItems='center'>
               <ButtonRow use='secondary' theme='muted' />
-              <ButtonRow use='secondary' theme='info' />
+              {/* <ButtonRow use='secondary' theme='info' /> */}
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
@@ -258,7 +257,7 @@ function ThemePlaygroundContent() {
 
             <Flex gap={8} flexWrap alignItems='center'>
               <ButtonRow use='secondary' theme='muted' size='l' />
-              <ButtonRow use='secondary' theme='info' size='l' />
+              {/* <ButtonRow use='secondary' theme='info' size='l' /> */}
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
@@ -910,12 +909,12 @@ function ThemePlaygroundContent() {
           Pills
         </Text>
         <Flex gap={6} flexWrap alignItems='flex-start' mb={10}>
-          <Pills value={pillsValue} onChange={setPillsValue} size='m'>
+          <Pills defaultValue='1' size='m'>
             <Pills.Item value='1'>Option 1</Pills.Item>
             <Pills.Item value='2'>Option 2</Pills.Item>
             <Pills.Item value='3'>Option 3</Pills.Item>
           </Pills>
-          <Pills value={pillsValue} onChange={setPillsValue} size='l'>
+          <Pills defaultValue='1' size='l'>
             <Pills.Item value='1'>Option 1</Pills.Item>
             <Pills.Item value='2'>Option 2</Pills.Item>
           </Pills>
