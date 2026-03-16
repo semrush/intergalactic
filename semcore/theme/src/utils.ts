@@ -96,6 +96,32 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
   traverse(tokens);
   traverse(featureHighlight, [], highlightTokens);
 
+  const resolveOklch = (raw: string): string => {
+    const trimmed = raw.trim();
+    if (!trimmed.startsWith('oklch(') || !trimmed.endsWith(')')) return raw;
+    const inner = trimmed.slice(6, -1).trim();
+    const parts = inner.split(/[\s/]+/);
+    const L = parts[0];
+    const C = parts[1] ?? '0';
+    const hasAlpha = parts.length > 3;
+    const alpha = hasAlpha ? parseFloat(parts[parts.length - 1]) : 1;
+    const isWhite = (C === '0' || parseFloat(C) === 0) && (L === '1' || L === '100%' || parseFloat(L) === 1);
+    if (isWhite) {
+      return alpha < 1 ? `rgba(255, 255, 255, ${alpha})` : '#ffffff';
+    }
+    try {
+      const c = new Color(trimmed);
+      const srgb = c.to('sRGB');
+      const r = Math.round(srgb.r * 255);
+      const g = Math.round(srgb.g * 255);
+      const b = Math.round(srgb.b * 255);
+      const a = srgb.alpha ?? 1;
+      return a < 1 ? `rgba(${r}, ${g}, ${b}, ${a})` : srgb.toString({ format: 'hex' });
+    } catch {
+      return raw;
+    }
+  };
+
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
       if (color.includes('rgba')) {
@@ -113,6 +139,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       let resolvedColor = color.substring('rgba('.length, lastComa).trim();
       if (resolvedColor.startsWith('{')) resolvedColor = resolveColor(resolvedColor);
       if (resolvedColor.startsWith('$')) resolvedColor = resolveColor(resolvedColor);
+      resolvedColor = resolveOklch(resolvedColor);
       if (resolvedColor.startsWith('#')) {
         if (resolvedColor.length === 1 + 3) {
           resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
@@ -153,26 +180,30 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
     if (color.startsWith('{') && color.split('.').length > 0 && color.endsWith('}')) {
       const path = color.substring(1, color.length - 1).trim();
-      const resolvedColor =
+      let resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
+      resolvedColor = resolveOklch(resolvedColor);
       return resolveColor(resolvedColor);
     }
     if (color.startsWith('$') && color.split('.').length > 0) {
       const path = color.substring(1).trim();
-      const resolvedColor =
+      let resolvedColor =
         getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
+      resolvedColor = resolveOklch(resolvedColor);
       return resolveColor(resolvedColor);
     }
     if (color.startsWith('#')) {
       return color;
     }
     if (color.startsWith('oklch(') && color.endsWith(')')) {
+      const resolved = resolveOklch(color);
+      if (resolved !== color) return resolved;
       try {
         const c = new Color(color);
         const srgb = c.to('sRGB');

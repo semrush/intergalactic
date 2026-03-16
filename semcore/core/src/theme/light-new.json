@@ -906,17 +906,17 @@
         },
         "secondary": {
           "neutral": {
-            "value": "rgba({gray.400}, 0.1)",
+            "value": "rgba({violet.dusty.400}, 0.1)",
             "type": "color",
             "description": "Background of the regular secondary control."
           },
           "neutral-hover": {
-            "value": "rgba({gray.400}, 0.2)",
+            "value": "rgba({violet.dusty.400}, 0.2)",
             "type": "color",
             "description": "Hover state of the regular secondary control."
           },
           "neutral-active": {
-            "value": "rgba({gray.400}, 0.3)",
+            "value": "rgba({violet.dusty.400}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the regular secondary control."
           },
@@ -946,7 +946,7 @@
             "description": "Hover state of the inverted version of the secondary control."
           },
           "invert-active": {
-            "value": "rgba({gray.white}, 0.3)",
+            "value": "rgba({gray.white}, 0.2)",
             "type": "color",
             "description": "Active (selected) state of the inverted version of the secondary control."
           }
@@ -958,12 +958,12 @@
             "description": "Background of the regular tertiary control."
           },
           "neutral-hover": {
-            "value": "rgba({gray.400}, 0.2)",
+            "value": "rgba({gray.400}, 0.1)",
             "type": "color",
             "description": "Hover state of the regular tertiary control."
           },
           "neutral-active": {
-            "value": "rgba({gray.400}, 0.3)",
+            "value": "rgba({gray.400}, 0.2)",
             "type": "color",
             "description": "Active (selected) state of the regular tertiary control."
           },

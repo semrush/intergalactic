@@ -135,12 +135,14 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'keyword',
                   children: 'Keyword',
+                  gtcWidth: 'minmax(100px, 2fr)',
                   sortable: true,
                   changeSortSize: true,
                 },
                 {
                   name: 'kd',
                   children: 'KD %',
+                  gtcWidth: 'minmax(70px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -148,6 +150,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'cpc',
                   children: 'CPC',
+                  gtcWidth: 'minmax(70px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -155,6 +158,7 @@ function DataTableThemePlaygroundContent() {
                 {
                   name: 'vol',
                   children: 'Vol.',
+                  gtcWidth: 'minmax(90px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
@@ -182,12 +186,13 @@ function DataTableThemePlaygroundContent() {
               aria-label='Theme playground table secondary'
               w='600px'
               columns={[
-                { name: 'keyword', children: 'Keyword' },
-                { name: 'kd', children: 'KD %', justifyContent: 'end' },
-                { name: 'cpc', children: 'CPC', justifyContent: 'end' },
+                { name: 'keyword', children: 'Keyword', gtcWidth: 'minmax(100px, 2fr)' },
+                { name: 'kd', children: 'KD %', gtcWidth: 'minmax(70px, 1fr)', justifyContent: 'end' },
+                { name: 'cpc', children: 'CPC', gtcWidth: 'minmax(70px, 1fr)', justifyContent: 'end' },
                 {
                   name: 'vol',
                   children: 'Vol.',
+                  gtcWidth: 'minmax(90px, 1fr)',
                   justifyContent: 'end',
                   sortable: true,
                   changeSortSize: true,
