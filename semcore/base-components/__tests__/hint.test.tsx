@@ -1,5 +1,5 @@
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, act } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 import { Hint } from '../src';
@@ -59,17 +59,13 @@ describe('Hint', () => {
 
     fireEvent.mouseEnter(getByTestId('trigger'));
 
-    vi.advanceTimersByTime(60);
-    await waitFor(() => {
-      expect(handleChange).toHaveBeenCalledWith(true);
-    });
+    await act(() => vi.advanceTimersByTime(60));
+    expect(handleChange).toHaveBeenCalledWith(true);
 
     fireEvent.mouseLeave(getByTestId('trigger'));
 
-    vi.advanceTimersByTime(60);
-    await waitFor(() => {
-      expect(handleChange).toHaveBeenCalledWith(false);
-    });
+    await act(() => vi.advanceTimersByTime(60));
+    expect(handleChange).toHaveBeenCalledWith(false);
 
     vi.useRealTimers();
   });
