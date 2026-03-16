@@ -326,6 +326,10 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       this.setTriggerAriaLabel();
     }
 
+    if (!visible && innerVisible === null) {
+      return null;
+    }
+
     const duration = propToArray(Number(this.asProps.duration));
 
     /* `visible && innerVisible === null` - is a condition to start showing right after hover/focus  */
