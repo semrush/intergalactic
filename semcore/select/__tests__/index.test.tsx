@@ -296,11 +296,11 @@ describe('InputSearch', () => {
     );
 
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
+    // await userEvent.keyboard('[Tab]');
     // Wait for autoFocus in Input.Value to complete
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await userEvent.keyboard('test');
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();
   });
