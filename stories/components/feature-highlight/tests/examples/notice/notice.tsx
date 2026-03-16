@@ -41,9 +41,8 @@ const Demo = (props: NoticeFHAdvancedProps) => {
         label={icon}
         title={showTitle ? <Text>{titleText}</Text> : undefined}
         actions={showActions ? <ButtonFH use='primary'>{actionButtonText}</ButtonFH> : undefined}
-      >
-        {noticeText}
-      </NoticeFH>
+        text={noticeText}
+      />
     </Flex>
   );
 };
