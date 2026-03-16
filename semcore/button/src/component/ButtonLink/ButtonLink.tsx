@@ -15,6 +15,7 @@ class RootButtonLink extends Component<ButtonLinkProps> {
 
   render(): React.ReactNode {
     const SButtonLink = Root;
+    const { disabled } = this.asProps;
 
     return sstyled(style)(
       <SButtonLink
@@ -22,6 +23,8 @@ class RootButtonLink extends Component<ButtonLinkProps> {
         tag='button'
         role='button'
         type='button'
+        use:disabled={disabled}
+        use:tabIndex={0}
       />,
     );
   }
