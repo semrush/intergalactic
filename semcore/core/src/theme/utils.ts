@@ -273,7 +273,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
   const highlightsTokens: { name: string; value: string; description: string }[] = [];
 
   for (const token in values) {
-    const isBase = basicTokens.has(token);
+    const isBase = basicTokens.has(token) && types[token] === 'color';
     (highlightTokens.has(token) ? highlightsTokens : processedTokens).push({
       name: isBase ? `--${token}` : `--${prefix}-${token}`,
       description: descriptions[token],

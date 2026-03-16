@@ -239,28 +239,30 @@ for (const theme of themes) {
     }[] = [];
 
     for (const token in values) {
-      if (!basicTokens.has(token)) {
-        const components = [
-          ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
-        ];
-        components.sort((a, b) => a.localeCompare(b));
+      if (basicTokens.has(token) && types[token] === 'color') continue;
 
-        designTokensDocumentation.push({
-          name: `--${prefix}-${token}`,
-          type: types[token],
-          rawValue: rawValues[token],
-          computedValue: values[token],
-          description: descriptions[token],
-          components,
-        });
-      }
+      const components = [
+        ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
+      ];
+      components.sort((a, b) => a.localeCompare(b));
+
+      designTokensDocumentation.push({
+        name: `--${prefix}-${token}`,
+        type: types[token],
+        rawValue: rawValues[token],
+        computedValue: values[token],
+        description: descriptions[token],
+        components,
+      });
     }
 
     const baseTokensDocumentation: Token[] = [];
 
     const processGroup = (group: string, data: any) => {
+      if (data.type && data.type !== 'color') return;
+
       for (const key in data) {
-        if (data[key].value) {
+        if (data[key].value && data[key].type === 'color') {
           const token: Token = {
             name: `--${group}-${key}`,
             value: data[key].value,

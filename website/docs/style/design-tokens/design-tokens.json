@@ -1,5 +1,886 @@
 [
   {
+    "name": "--intergalactic-base",
+    "type": "fontFamilies",
+    "rawValue": "Inter",
+    "computedValue": "Inter",
+    "description": "Base font family.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-lh-800",
+    "type": "lineHeights",
+    "rawValue": "117%",
+    "computedValue": "117%",
+    "description": "Use with font-size-800.",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-700",
+    "type": "lineHeights",
+    "rawValue": "110%",
+    "computedValue": "110%",
+    "description": "Use with font-size-700.",
+    "components": [
+      "button",
+      "errors",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-600",
+    "type": "lineHeights",
+    "rawValue": "125%",
+    "computedValue": "125%",
+    "description": "Use with font-size-600.",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-500",
+    "type": "lineHeights",
+    "rawValue": "117%",
+    "computedValue": "117%",
+    "description": "Use with font-size-500.",
+    "components": [
+      "button",
+      "format-text",
+      "fullscreen-modal",
+      "modal",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-400",
+    "type": "lineHeights",
+    "rawValue": "120%",
+    "computedValue": "120%",
+    "description": "Use with font-size-400.",
+    "components": [
+      "button",
+      "format-text",
+      "product-head",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-300",
+    "type": "lineHeights",
+    "rawValue": "150%",
+    "computedValue": "150%",
+    "description": "Use with font-size-300.",
+    "components": [
+      "bulk-textarea",
+      "button",
+      "card",
+      "checkbox",
+      "d3-chart",
+      "dropdown",
+      "errors",
+      "feedback-form",
+      "format-text",
+      "pagination",
+      "radio",
+      "side-panel",
+      "switch",
+      "tab-line",
+      "tag",
+      "textarea",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-200",
+    "type": "lineHeights",
+    "rawValue": "142%",
+    "computedValue": "142%",
+    "description": "Use with font-size-200.",
+    "components": [
+      "base-trigger",
+      "breadcrumbs",
+      "bulk-textarea",
+      "button",
+      "checkbox",
+      "d3-chart",
+      "data-table",
+      "dropdown",
+      "format-text",
+      "fullscreen-modal",
+      "notice",
+      "notice-bubble",
+      "notice-global",
+      "pagination",
+      "product-head",
+      "radio",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "tooltip",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-100",
+    "type": "lineHeights",
+    "rawValue": "133%",
+    "computedValue": "133%",
+    "description": "Use with font-size-100.",
+    "components": [
+      "button",
+      "d3-chart",
+      "data-table",
+      "format-text",
+      "fullscreen-modal",
+      "switch",
+      "tag",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-semi-bold",
+    "type": "fontWeights",
+    "rawValue": "600",
+    "computedValue": "600",
+    "description": "Semi-bold font weight.",
+    "components": [
+      "errors",
+      "modal",
+      "product-head",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-bold",
+    "type": "fontWeights",
+    "rawValue": "700",
+    "computedValue": "700",
+    "description": "Bold font weight.",
+    "components": [
+      "card",
+      "color-picker",
+      "dropdown",
+      "feedback-form",
+      "flags",
+      "format-text",
+      "fullscreen-modal",
+      "side-panel",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-regular",
+    "type": "fontWeights",
+    "rawValue": "400",
+    "computedValue": "400",
+    "description": "Regular font weight.",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "date-picker",
+      "slider"
+    ]
+  },
+  {
+    "name": "--intergalactic-medium",
+    "type": "fontWeights",
+    "rawValue": "500",
+    "computedValue": "500",
+    "description": "Medium font weight.",
+    "components": [
+      "badge",
+      "button",
+      "counter",
+      "format-text",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "time-picker",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-50",
+    "type": "fontSizes",
+    "rawValue": "10px",
+    "computedValue": "10px",
+    "description": "Use only for text in Badge component.",
+    "components": [
+      "badge",
+      "counter",
+      "d3-chart",
+      "dot"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-100",
+    "type": "fontSizes",
+    "rawValue": "12px",
+    "computedValue": "12px",
+    "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
+    "components": [
+      "button",
+      "counter",
+      "d3-chart",
+      "data-table",
+      "format-text",
+      "fullscreen-modal",
+      "switch",
+      "tag",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-200",
+    "type": "fontSizes",
+    "rawValue": "14px",
+    "computedValue": "14px",
+    "components": [
+      "badge",
+      "base-trigger",
+      "breadcrumbs",
+      "bulk-textarea",
+      "button",
+      "card",
+      "checkbox",
+      "counter",
+      "d3-chart",
+      "data-table",
+      "date-picker",
+      "dropdown",
+      "format-text",
+      "fullscreen-modal",
+      "input",
+      "notice",
+      "notice-bubble",
+      "notice-global",
+      "pagination",
+      "pills",
+      "product-head",
+      "radio",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "time-picker",
+      "tooltip",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-300",
+    "type": "fontSizes",
+    "rawValue": "16px",
+    "computedValue": "16px",
+    "components": [
+      "base-trigger",
+      "bulk-textarea",
+      "button",
+      "card",
+      "checkbox",
+      "d3-chart",
+      "dropdown",
+      "errors",
+      "feedback-form",
+      "format-text",
+      "input",
+      "pagination",
+      "pills",
+      "radio",
+      "side-panel",
+      "switch",
+      "tab-line",
+      "tag",
+      "textarea",
+      "time-picker",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-400",
+    "type": "fontSizes",
+    "rawValue": "20px",
+    "computedValue": "20px",
+    "components": [
+      "button",
+      "format-text",
+      "product-head",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-500",
+    "type": "fontSizes",
+    "rawValue": "24px",
+    "computedValue": "24px",
+    "components": [
+      "button",
+      "format-text",
+      "fullscreen-modal",
+      "modal",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-600",
+    "type": "fontSizes",
+    "rawValue": "32px",
+    "computedValue": "32px",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-700",
+    "type": "fontSizes",
+    "rawValue": "36px",
+    "computedValue": "36px",
+    "components": [
+      "button",
+      "errors",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-fs-800",
+    "type": "fontSizes",
+    "rawValue": "48px",
+    "computedValue": "48px",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-compact",
+    "type": "letterSpacing",
+    "rawValue": "0.3",
+    "computedValue": "0.3",
+    "description": "Compact letter spacing.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-scale-indent",
+    "type": "spacing",
+    "rawValue": "4px",
+    "computedValue": "4px",
+    "description": "Base denominator of the design system.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-05x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*0.5",
+    "computedValue": "2px",
+    "description": "2px",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "bulk-textarea",
+      "checkbox",
+      "counter",
+      "data-table",
+      "dropdown",
+      "format-text",
+      "input-tags",
+      "link",
+      "notice",
+      "radio",
+      "select",
+      "slider",
+      "tag",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-1x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*1",
+    "computedValue": "4px",
+    "description": "4px",
+    "components": [
+      "badge",
+      "base-components",
+      "base-trigger",
+      "bulk-textarea",
+      "button",
+      "card",
+      "carousel",
+      "color-picker",
+      "counter",
+      "d3-chart",
+      "data-table",
+      "dropdown",
+      "dropdown-menu",
+      "feature-popover",
+      "format-text",
+      "fullscreen-modal",
+      "inline-input",
+      "input-tags",
+      "link",
+      "notice",
+      "notice-bubble",
+      "pagination",
+      "product-head",
+      "side-panel",
+      "tag",
+      "textarea",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-2x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*2",
+    "computedValue": "8px",
+    "description": "8px",
+    "components": [
+      "accordion",
+      "base-components",
+      "base-trigger",
+      "breadcrumbs",
+      "bulk-textarea",
+      "button",
+      "card",
+      "carousel",
+      "checkbox",
+      "d3-chart",
+      "data-table",
+      "date-picker",
+      "dropdown",
+      "feature-popover",
+      "feedback-form",
+      "format-text",
+      "fullscreen-modal",
+      "input",
+      "input-tags",
+      "modal",
+      "notice",
+      "notice-bubble",
+      "notice-global",
+      "pagination",
+      "pills",
+      "product-head",
+      "radio",
+      "select",
+      "side-panel",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "time-picker",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-3x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*3",
+    "computedValue": "12px",
+    "description": "12px",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "bulk-textarea",
+      "button",
+      "carousel",
+      "color-picker",
+      "d3-chart",
+      "data-table",
+      "date-picker",
+      "dropdown",
+      "errors",
+      "feedback-form",
+      "format-text",
+      "fullscreen-modal",
+      "input",
+      "modal",
+      "notice",
+      "notice-bubble",
+      "pagination",
+      "pills",
+      "side-panel",
+      "textarea",
+      "time-picker",
+      "tooltip",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-4x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*4",
+    "computedValue": "16px",
+    "description": "16px",
+    "components": [
+      "bulk-textarea",
+      "carousel",
+      "color-picker",
+      "data-table",
+      "date-picker",
+      "errors",
+      "feature-popover",
+      "feedback-form",
+      "format-text",
+      "modal",
+      "notice",
+      "notice-global",
+      "pagination",
+      "product-head",
+      "side-panel",
+      "tab-line",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-5x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*5",
+    "computedValue": "20px",
+    "description": "20px",
+    "components": [
+      "bulk-textarea",
+      "card",
+      "data-table",
+      "errors",
+      "format-text",
+      "notice-bubble",
+      "pagination",
+      "product-head",
+      "slider",
+      "typography",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-6x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*6",
+    "computedValue": "24px",
+    "description": "24px",
+    "components": [
+      "bulk-textarea",
+      "errors",
+      "format-text",
+      "fullscreen-modal",
+      "notice-bubble",
+      "product-head",
+      "side-panel",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-8x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*8",
+    "computedValue": "32px",
+    "description": "32px",
+    "components": [
+      "bulk-textarea",
+      "errors",
+      "format-text",
+      "fullscreen-modal",
+      "notice-bubble",
+      "notice-global",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-10x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*10",
+    "computedValue": "40px",
+    "description": "40px",
+    "components": [
+      "bulk-textarea",
+      "errors",
+      "feature-popover",
+      "feedback-form",
+      "fullscreen-modal",
+      "modal",
+      "side-panel",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-14x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*14",
+    "computedValue": "56px",
+    "description": "56px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-20x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*20",
+    "computedValue": "80px",
+    "description": "80px",
+    "components": [
+      "errors",
+      "fullscreen-modal"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-24x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*24",
+    "computedValue": "96px",
+    "description": "96px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-30x",
+    "type": "spacing",
+    "rawValue": "{scale-indent}*30",
+    "computedValue": "120px",
+    "description": "120px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-rounded-extra-small",
+    "type": "borderRadius",
+    "rawValue": "2px",
+    "computedValue": "2px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-rounded-small",
+    "type": "borderRadius",
+    "rawValue": "4px",
+    "computedValue": "4px",
+    "components": [
+      "checkbox"
+    ]
+  },
+  {
+    "name": "--intergalactic-rounded-medium",
+    "type": "borderRadius",
+    "rawValue": "6px",
+    "computedValue": "6px",
+    "components": [
+      "d3-chart",
+      "feedback-form"
+    ]
+  },
+  {
+    "name": "--intergalactic-rounded-large",
+    "type": "borderRadius",
+    "rawValue": "12px",
+    "computedValue": "12px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-rounded-extra-large",
+    "type": "borderRadius",
+    "rawValue": "24px",
+    "computedValue": "24px",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-disabled-opacity",
+    "type": "opacity",
+    "rawValue": "0.3",
+    "computedValue": "0.3",
+    "description": "Use for the disabled state of all kind of the controls and elements.",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "bulk-textarea",
+      "button",
+      "carousel",
+      "checkbox",
+      "date-picker",
+      "dropdown",
+      "inline-input",
+      "input",
+      "input-number",
+      "link",
+      "pills",
+      "radio",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "time-picker",
+      "typography",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-screen-extra-small",
+    "type": "sizing",
+    "rawValue": "320px",
+    "computedValue": "320px",
+    "description": "Extra small screens (small phones).",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-screen-small",
+    "type": "sizing",
+    "rawValue": "768px",
+    "computedValue": "768px",
+    "description": "Small screens (phones and small tablets).",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-screen-medium",
+    "type": "sizing",
+    "rawValue": "1200px",
+    "computedValue": "1200px",
+    "description": "Medium screens (tablets and small laptops).",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-screen-large",
+    "type": "sizing",
+    "rawValue": "1920px",
+    "computedValue": "1920px",
+    "description": "Large screens (tablets and laptops).",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-deep",
+    "type": "other",
+    "rawValue": "-999",
+    "computedValue": "-999",
+    "components": [
+      "date-picker"
+    ]
+  },
+  {
+    "name": "--intergalactic-z-index-overlay",
+    "type": "other",
+    "rawValue": "500",
+    "computedValue": "500",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-z-index-modal",
+    "type": "other",
+    "rawValue": "900",
+    "computedValue": "900",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-popper",
+    "type": "other",
+    "rawValue": "700",
+    "computedValue": "700",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-dropdown",
+    "type": "other",
+    "rawValue": "750",
+    "computedValue": "750",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-tooltip",
+    "type": "other",
+    "rawValue": "800",
+    "computedValue": "800",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-notice-bubble",
+    "type": "other",
+    "rawValue": "999",
+    "computedValue": "999",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-extra-slow",
+    "type": "other",
+    "rawValue": "500",
+    "computedValue": "500",
+    "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
+    "components": [
+      "mini-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-slow",
+    "type": "other",
+    "rawValue": "400",
+    "computedValue": "400",
+    "description": "Should be used for more larger scale animations (such as page transitions)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-medium",
+    "type": "other",
+    "rawValue": "300",
+    "computedValue": "300",
+    "description": "Should be used for more complex effects (such as Modal)",
+    "components": [
+      "date-picker"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-fast",
+    "type": "other",
+    "rawValue": "200",
+    "computedValue": "200",
+    "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
+    "components": [
+      "slider"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-extra-fast",
+    "type": "other",
+    "rawValue": "100",
+    "computedValue": "100",
+    "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
+    "components": [
+      "data-table",
+      "drag-and-drop",
+      "feature-highlight"
+    ]
+  },
+  {
     "name": "--intergalactic-bg-primary-neutral",
     "type": "color",
     "rawValue": "{gray.white}",
@@ -2304,400 +3185,6 @@
     ]
   },
   {
-    "name": "--intergalactic-base",
-    "type": "fontFamilies",
-    "rawValue": "Inter",
-    "computedValue": "Inter",
-    "description": "Base font family.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-lh-800",
-    "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
-    "description": "Use with font-size-800.",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-700",
-    "type": "lineHeights",
-    "rawValue": "110%",
-    "computedValue": "110%",
-    "description": "Use with font-size-700.",
-    "components": [
-      "button",
-      "errors",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-600",
-    "type": "lineHeights",
-    "rawValue": "125%",
-    "computedValue": "125%",
-    "description": "Use with font-size-600.",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-500",
-    "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
-    "description": "Use with font-size-500.",
-    "components": [
-      "button",
-      "format-text",
-      "fullscreen-modal",
-      "modal",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-400",
-    "type": "lineHeights",
-    "rawValue": "120%",
-    "computedValue": "120%",
-    "description": "Use with font-size-400.",
-    "components": [
-      "button",
-      "format-text",
-      "product-head",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-300",
-    "type": "lineHeights",
-    "rawValue": "150%",
-    "computedValue": "150%",
-    "description": "Use with font-size-300.",
-    "components": [
-      "bulk-textarea",
-      "button",
-      "card",
-      "checkbox",
-      "d3-chart",
-      "dropdown",
-      "errors",
-      "feedback-form",
-      "format-text",
-      "pagination",
-      "radio",
-      "side-panel",
-      "switch",
-      "tab-line",
-      "tag",
-      "textarea",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-200",
-    "type": "lineHeights",
-    "rawValue": "142%",
-    "computedValue": "142%",
-    "description": "Use with font-size-200.",
-    "components": [
-      "base-trigger",
-      "breadcrumbs",
-      "bulk-textarea",
-      "button",
-      "checkbox",
-      "d3-chart",
-      "data-table",
-      "dropdown",
-      "format-text",
-      "fullscreen-modal",
-      "notice",
-      "notice-bubble",
-      "notice-global",
-      "pagination",
-      "product-head",
-      "radio",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "tooltip",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-100",
-    "type": "lineHeights",
-    "rawValue": "133%",
-    "computedValue": "133%",
-    "description": "Use with font-size-100.",
-    "components": [
-      "button",
-      "d3-chart",
-      "data-table",
-      "format-text",
-      "fullscreen-modal",
-      "switch",
-      "tag",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-semi-bold",
-    "type": "fontWeights",
-    "rawValue": "600",
-    "computedValue": "600",
-    "description": "Semi-bold font weight.",
-    "components": [
-      "errors",
-      "modal",
-      "product-head",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-bold",
-    "type": "fontWeights",
-    "rawValue": "700",
-    "computedValue": "700",
-    "description": "Bold font weight.",
-    "components": [
-      "card",
-      "color-picker",
-      "dropdown",
-      "feedback-form",
-      "flags",
-      "format-text",
-      "fullscreen-modal",
-      "side-panel",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-regular",
-    "type": "fontWeights",
-    "rawValue": "400",
-    "computedValue": "400",
-    "description": "Regular font weight.",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "date-picker",
-      "slider"
-    ]
-  },
-  {
-    "name": "--intergalactic-medium",
-    "type": "fontWeights",
-    "rawValue": "500",
-    "computedValue": "500",
-    "description": "Medium font weight.",
-    "components": [
-      "badge",
-      "button",
-      "counter",
-      "format-text",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "time-picker",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-50",
-    "type": "fontSizes",
-    "rawValue": "10px",
-    "computedValue": "10px",
-    "description": "Use only for text in Badge component.",
-    "components": [
-      "badge",
-      "counter",
-      "d3-chart",
-      "dot"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-100",
-    "type": "fontSizes",
-    "rawValue": "12px",
-    "computedValue": "12px",
-    "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
-    "components": [
-      "button",
-      "counter",
-      "d3-chart",
-      "data-table",
-      "format-text",
-      "fullscreen-modal",
-      "switch",
-      "tag",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-200",
-    "type": "fontSizes",
-    "rawValue": "14px",
-    "computedValue": "14px",
-    "components": [
-      "badge",
-      "base-trigger",
-      "breadcrumbs",
-      "bulk-textarea",
-      "button",
-      "card",
-      "checkbox",
-      "counter",
-      "d3-chart",
-      "data-table",
-      "date-picker",
-      "dropdown",
-      "format-text",
-      "fullscreen-modal",
-      "input",
-      "notice",
-      "notice-bubble",
-      "notice-global",
-      "pagination",
-      "pills",
-      "product-head",
-      "radio",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "time-picker",
-      "tooltip",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-300",
-    "type": "fontSizes",
-    "rawValue": "16px",
-    "computedValue": "16px",
-    "components": [
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "card",
-      "checkbox",
-      "d3-chart",
-      "dropdown",
-      "errors",
-      "feedback-form",
-      "format-text",
-      "input",
-      "pagination",
-      "pills",
-      "radio",
-      "side-panel",
-      "switch",
-      "tab-line",
-      "tag",
-      "textarea",
-      "time-picker",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-400",
-    "type": "fontSizes",
-    "rawValue": "20px",
-    "computedValue": "20px",
-    "components": [
-      "button",
-      "format-text",
-      "product-head",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-500",
-    "type": "fontSizes",
-    "rawValue": "24px",
-    "computedValue": "24px",
-    "components": [
-      "button",
-      "format-text",
-      "fullscreen-modal",
-      "modal",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-600",
-    "type": "fontSizes",
-    "rawValue": "32px",
-    "computedValue": "32px",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-700",
-    "type": "fontSizes",
-    "rawValue": "36px",
-    "computedValue": "36px",
-    "components": [
-      "button",
-      "errors",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-fs-800",
-    "type": "fontSizes",
-    "rawValue": "48px",
-    "computedValue": "48px",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-compact",
-    "type": "letterSpacing",
-    "rawValue": "0.3",
-    "computedValue": "0.3",
-    "description": "Compact letter spacing.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-scale-indent",
-    "type": "spacing",
-    "rawValue": "4px",
-    "computedValue": "4px",
-    "description": "Base denominator of the design system.",
-    "components": []
-  },
-  {
     "name": "--intergalactic-form-control-s",
     "type": "sizing",
     "rawValue": "{scale-indent}*5",
@@ -2735,326 +3222,6 @@
       "pills",
       "time-picker"
     ]
-  },
-  {
-    "name": "--intergalactic-spacing-05x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*0.5",
-    "computedValue": "2px",
-    "description": "2px",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "bulk-textarea",
-      "checkbox",
-      "counter",
-      "data-table",
-      "dropdown",
-      "format-text",
-      "input-tags",
-      "link",
-      "notice",
-      "radio",
-      "select",
-      "slider",
-      "tag",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-1x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*1",
-    "computedValue": "4px",
-    "description": "4px",
-    "components": [
-      "badge",
-      "base-components",
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "card",
-      "carousel",
-      "color-picker",
-      "counter",
-      "d3-chart",
-      "data-table",
-      "dropdown",
-      "dropdown-menu",
-      "feature-popover",
-      "format-text",
-      "fullscreen-modal",
-      "inline-input",
-      "input-tags",
-      "link",
-      "notice",
-      "notice-bubble",
-      "pagination",
-      "product-head",
-      "side-panel",
-      "tag",
-      "textarea",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-2x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*2",
-    "computedValue": "8px",
-    "description": "8px",
-    "components": [
-      "accordion",
-      "base-components",
-      "base-trigger",
-      "breadcrumbs",
-      "bulk-textarea",
-      "button",
-      "card",
-      "carousel",
-      "checkbox",
-      "d3-chart",
-      "data-table",
-      "date-picker",
-      "dropdown",
-      "feature-popover",
-      "feedback-form",
-      "format-text",
-      "fullscreen-modal",
-      "input",
-      "input-tags",
-      "modal",
-      "notice",
-      "notice-bubble",
-      "notice-global",
-      "pagination",
-      "pills",
-      "product-head",
-      "radio",
-      "select",
-      "side-panel",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "time-picker",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-3x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*3",
-    "computedValue": "12px",
-    "description": "12px",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "carousel",
-      "color-picker",
-      "d3-chart",
-      "data-table",
-      "date-picker",
-      "dropdown",
-      "errors",
-      "feedback-form",
-      "format-text",
-      "fullscreen-modal",
-      "input",
-      "modal",
-      "notice",
-      "notice-bubble",
-      "pagination",
-      "pills",
-      "side-panel",
-      "textarea",
-      "time-picker",
-      "tooltip",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-4x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*4",
-    "computedValue": "16px",
-    "description": "16px",
-    "components": [
-      "bulk-textarea",
-      "carousel",
-      "color-picker",
-      "data-table",
-      "date-picker",
-      "errors",
-      "feature-popover",
-      "feedback-form",
-      "format-text",
-      "modal",
-      "notice",
-      "notice-global",
-      "pagination",
-      "product-head",
-      "side-panel",
-      "tab-line",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-5x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*5",
-    "computedValue": "20px",
-    "description": "20px",
-    "components": [
-      "bulk-textarea",
-      "card",
-      "data-table",
-      "errors",
-      "format-text",
-      "notice-bubble",
-      "pagination",
-      "product-head",
-      "slider",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-6x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*6",
-    "computedValue": "24px",
-    "description": "24px",
-    "components": [
-      "bulk-textarea",
-      "errors",
-      "format-text",
-      "fullscreen-modal",
-      "notice-bubble",
-      "product-head",
-      "side-panel",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-8x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*8",
-    "computedValue": "32px",
-    "description": "32px",
-    "components": [
-      "bulk-textarea",
-      "errors",
-      "format-text",
-      "fullscreen-modal",
-      "notice-bubble",
-      "notice-global",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-10x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*10",
-    "computedValue": "40px",
-    "description": "40px",
-    "components": [
-      "bulk-textarea",
-      "errors",
-      "feature-popover",
-      "feedback-form",
-      "fullscreen-modal",
-      "modal",
-      "side-panel",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-14x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*14",
-    "computedValue": "56px",
-    "description": "56px",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-spacing-20x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*20",
-    "computedValue": "80px",
-    "description": "80px",
-    "components": [
-      "errors",
-      "fullscreen-modal"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-24x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*24",
-    "computedValue": "96px",
-    "description": "96px",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-spacing-30x",
-    "type": "spacing",
-    "rawValue": "{scale-indent}*30",
-    "computedValue": "120px",
-    "description": "120px",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-rounded-extra-small",
-    "type": "borderRadius",
-    "rawValue": "2px",
-    "computedValue": "2px",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-rounded-small",
-    "type": "borderRadius",
-    "rawValue": "4px",
-    "computedValue": "4px",
-    "components": [
-      "checkbox"
-    ]
-  },
-  {
-    "name": "--intergalactic-rounded-medium",
-    "type": "borderRadius",
-    "rawValue": "6px",
-    "computedValue": "6px",
-    "components": [
-      "d3-chart",
-      "feedback-form"
-    ]
-  },
-  {
-    "name": "--intergalactic-rounded-large",
-    "type": "borderRadius",
-    "rawValue": "12px",
-    "computedValue": "12px",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-rounded-extra-large",
-    "type": "borderRadius",
-    "rawValue": "24px",
-    "computedValue": "24px",
-    "components": []
   },
   {
     "name": "--intergalactic-addon-rounded",
@@ -3198,70 +3365,6 @@
     ]
   },
   {
-    "name": "--intergalactic-disabled-opacity",
-    "type": "opacity",
-    "rawValue": "0.3",
-    "computedValue": "0.3",
-    "description": "Use for the disabled state of all kind of the controls and elements.",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "carousel",
-      "checkbox",
-      "date-picker",
-      "dropdown",
-      "inline-input",
-      "input",
-      "input-number",
-      "link",
-      "pills",
-      "radio",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "time-picker",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-screen-extra-small",
-    "type": "sizing",
-    "rawValue": "320px",
-    "computedValue": "320px",
-    "description": "Extra small screens (small phones).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-small",
-    "type": "sizing",
-    "rawValue": "768px",
-    "computedValue": "768px",
-    "description": "Small screens (phones and small tablets).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-medium",
-    "type": "sizing",
-    "rawValue": "1200px",
-    "computedValue": "1200px",
-    "description": "Medium screens (tablets and small laptops).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-large",
-    "type": "sizing",
-    "rawValue": "1920px",
-    "computedValue": "1920px",
-    "description": "Large screens (tablets and laptops).",
-    "components": []
-  },
-  {
     "name": "--intergalactic-overlay-primary",
     "type": "color",
     "rawValue": "rgba({gray.800}, 0.7)",
@@ -3301,59 +3404,6 @@
       "data-table",
       "spin-container"
     ]
-  },
-  {
-    "name": "--intergalactic-z-index-deep",
-    "type": "other",
-    "rawValue": "-999",
-    "computedValue": "-999",
-    "components": [
-      "date-picker"
-    ]
-  },
-  {
-    "name": "--intergalactic-z-index-overlay",
-    "type": "other",
-    "rawValue": "500",
-    "computedValue": "500",
-    "components": [
-      "d3-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-z-index-modal",
-    "type": "other",
-    "rawValue": "900",
-    "computedValue": "900",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-popper",
-    "type": "other",
-    "rawValue": "700",
-    "computedValue": "700",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-dropdown",
-    "type": "other",
-    "rawValue": "750",
-    "computedValue": "750",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-tooltip",
-    "type": "other",
-    "rawValue": "800",
-    "computedValue": "800",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-notice-bubble",
-    "type": "other",
-    "rawValue": "999",
-    "computedValue": "999",
-    "components": []
   },
   {
     "name": "--intergalactic-tooltip-default",
@@ -4130,56 +4180,6 @@
     "rawValue": "{violet.dusty.600}",
     "computedValue": "#4D407E",
     "components": []
-  },
-  {
-    "name": "--intergalactic-duration-extra-slow",
-    "type": "other",
-    "rawValue": "500",
-    "computedValue": "500",
-    "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
-    "components": [
-      "mini-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-duration-slow",
-    "type": "other",
-    "rawValue": "400",
-    "computedValue": "400",
-    "description": "Should be used for more larger scale animations (such as page transitions)",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-duration-medium",
-    "type": "other",
-    "rawValue": "300",
-    "computedValue": "300",
-    "description": "Should be used for more complex effects (such as Modal)",
-    "components": [
-      "date-picker"
-    ]
-  },
-  {
-    "name": "--intergalactic-duration-fast",
-    "type": "other",
-    "rawValue": "200",
-    "computedValue": "200",
-    "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
-    "components": [
-      "slider"
-    ]
-  },
-  {
-    "name": "--intergalactic-duration-extra-fast",
-    "type": "other",
-    "rawValue": "100",
-    "computedValue": "100",
-    "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": [
-      "data-table",
-      "drag-and-drop",
-      "feature-highlight"
-    ]
   },
   {
     "name": "--intergalactic-duration-switch",
