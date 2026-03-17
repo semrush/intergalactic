@@ -7,7 +7,8 @@ import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
+import { getPandaConfig, toPandaPreset } from './panda-processor';
+import { processTokens, tokensToCss, tokensToJs } from './utils';
 
 type Token = {
   name: string;
@@ -47,6 +48,13 @@ for (const theme of themes) {
   );
   const { values, types, rawValues, descriptions, basicTokens, highlightsTokens } = processed;
   const { processedTokens } = processed;
+
+  await writeIfChanged(
+    './semcore/core/src/theme/themes/panda-preset.ts',
+    toPandaPreset(getPandaConfig(values, basicTokens, types, descriptions)),
+  );
+
+  execSync('pnpm lint:es --fix "./semcore/core/src/theme/themes/panda-preset.ts"');
 
   await writeIfChanged(
     `./semcore/core/src/theme/themes/${theme}.css`,
