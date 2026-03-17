@@ -66,6 +66,8 @@ You can truncate paragraphs of text with ellipsis using the `maxLine` property.
 
 Note that `maxLine` can only be used with `cropPosition: end`, and the hint is automatically disabled in this case.
 
+To enable hint for cropped multiline text, set some `hintProps` or just enable it via `hintProps={true}`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -82,6 +84,24 @@ You can customize the hint that appears on hover/focus by using the `hintProps` 
 
 <script lang="tsx">
   export Demo from 'stories/components/base-components/ellipsis/docs/examples/hint-props.tsx';
+</script>
+
+:::
+
+## FilterTrigger (dynamic children)
+
+Due to performance considerations, we don't observe changes in the `Text` children property. So, if you have some dynamically changing children in the `Text` component, you should set `observerChildrenMutations={true}` in the ellipsis settings.
+
+Alternatively, you can set a unique `key` on the `Text`, depending on the children content.
+
+::: tip
+For some reason, only setting the `key` property works for `FilterTrigger.Text` right now.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/filter-trigger.tsx';
 </script>
 
 :::

@@ -134,14 +134,19 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Cancel onClick={onCancel}>Cancel</FeedbackForm.Cancel>
           </Flex>
         </Box>
-        <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to
-          {' '}
-          <Link>backlink.audit@semrush.com</Link>
+        <FeedbackForm.Notice
+          hidden={status === 'failed'}
+          text={(
+            <>
+              You can also send us an email to
+              {' '}
+              <Link>backlink.audit@semrush.com</Link>
+            </>
+          )}
+        >
+
         </FeedbackForm.Notice>
-        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
-          Your message has not been sent.
-        </FeedbackForm.Notice>
+        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger' text='Your message has not been sent.' />
       </FeedbackForm>
     );
   }
