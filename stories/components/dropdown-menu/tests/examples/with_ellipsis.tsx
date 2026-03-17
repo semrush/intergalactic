@@ -77,6 +77,7 @@ const Demo = (props: WithEllipsisProps) => {
               w='100%'
               tag={Text}
               ellipsis
+              // @ts-expect-error. We can't calculate correct types from intersections in tag prop.
               hintProps={props.hintProps}
               hint:placement={props.hintPlacement}
             >
