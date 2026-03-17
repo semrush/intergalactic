@@ -59,6 +59,9 @@ semcore/illustration/**/*.d.ts
 !semcore/illustration/src/**/*.js
 !semcore/illustration/src/**/*.d.ts
 
+# Panda-preset
+semcore/core/theme/themes/panda-preset.ts
+
 # Fix
 
 !semcore/icon/Stoller/**
