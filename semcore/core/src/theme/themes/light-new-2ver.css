@@ -271,9 +271,9 @@
   /* Background of the regular primary control. */
   --intergalactic-control-primary-info: #181e15;
   /* Hover state of the regular primary control. */
-  --intergalactic-control-primary-info-hover: #a070fe;
+  --intergalactic-control-primary-info-hover: #c190ff;
   /* Active (selected) state of the regular primary control. */
-  --intergalactic-control-primary-info-active: #7d26e8;
+  --intergalactic-control-primary-info-active: #a070fe;
   /* Background of the primary control with successful theme. */
   --intergalactic-control-primary-success: #13c79e;
   /* Hover state of the primary control with successful theme. */
@@ -287,11 +287,11 @@
   /* Active (selected) state of the primary control with danger theme. */
   --intergalactic-control-primary-critical-active: #8b1312;
   /* Background of the primary brand colored control. */
-  --intergalactic-control-primary-brand: #a070fe;
+  --intergalactic-control-primary-brand: #c190ff;
   /* Hover state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-hover: #7d26e8;
+  --intergalactic-control-primary-brand-hover: #a070fe;
   /* Active state of the primary brand colored control. */
-  --intergalactic-control-primary-brand-active: #5a17a9;
+  --intergalactic-control-primary-brand-active: #7d26e8;
   /* Background of the advertising primary control. */
   --intergalactic-control-primary-advertising: #c190ff;
   /* Hover state of the advertising primary control. */
@@ -427,9 +427,9 @@
   /* Hover state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-hover: rgba(123, 153, 150, 0.1);
   /* Active (selected) state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected: rgba(41, 105, 255, 0.1);
+  --intergalactic-dropdown-menu-item-selected: rgba(123, 153, 150, 0.2);
   /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected-hover: rgba(41, 105, 255, 0.2);
+  --intergalactic-dropdown-menu-item-selected-hover: rgba(123, 153, 150, 0.2);
   /* Color of the FeaturePopover background with accent theme. */
   --intergalactic-feature-popover-bg: #e0c7ff;
   /* Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme. */
@@ -627,33 +627,33 @@
   --intergalactic-spacing-24x: 96px;
   /* 120px */
   --intergalactic-spacing-30x: 120px;
-  --intergalactic-rounded-extra-small: 2px;
-  --intergalactic-rounded-small: 4px;
-  --intergalactic-rounded-medium: 6px;
-  --intergalactic-rounded-large: 16px;
-  --intergalactic-rounded-extra-large: 24px;
+  --intergalactic-rounded-extra-small: 1px;
+  --intergalactic-rounded-small: 2px;
+  --intergalactic-rounded-medium: 2px;
+  --intergalactic-rounded-large: 8px;
+  --intergalactic-rounded-extra-large: 12px;
   /* Use for rounding addons and small controls like Checkbox. */
-  --intergalactic-addon-rounded: 4px;
+  --intergalactic-addon-rounded: 2px;
   /* Use for rounding Badge. */
-  --intergalactic-badge-rounded: 16px;
+  --intergalactic-badge-rounded: 2px;
   /* Use for rounding big and small charts like bar, histogram and others. */
   --intergalactic-chart-rounded: 2px;
   /* Use for rounding Counter. */
-  --intergalactic-counter-rounded: 16px;
+  --intergalactic-counter-rounded: 2px;
   /* Use for rounding Tag. */
-  --intergalactic-tag-rounded: 24px;
+  --intergalactic-tag-rounded: 2px;
   /* Use for rounding Switch. */
-  --intergalactic-switch-rounded: 24px;
+  --intergalactic-switch-rounded: 12px;
   /* Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc. */
-  --intergalactic-control-rounded: 6px;
+  --intergalactic-control-rounded: 2px;
   /* Use for rounding bars: ProgressBar, SliderBar, etc. */
-  --intergalactic-progress-bar-rounded: 6px;
+  --intergalactic-progress-bar-rounded: 2px;
   /* Use for rounding surfaces like Card, blocks, widgets, Notice, etc. */
-  --intergalactic-surface-rounded: 6px;
+  --intergalactic-surface-rounded: 2px;
   /* Use for rounding all kinds of poppers and dropdowns. */
-  --intergalactic-popper-rounded: 6px;
+  --intergalactic-popper-rounded: 2px;
   /* Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard). */
-  --intergalactic-modal-rounded: 16px;
+  --intergalactic-modal-rounded: 2px;
   /* Use for the disabled state of all kind of the controls and elements. */
   --intergalactic-disabled-opacity: 0.5;
   /* Extra small screens (small phones). */
@@ -768,15 +768,15 @@
   /* White text for the secondary white tag. */
   --intergalactic-tag-secondary-white-text: #ffffff;
   /* 1 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-1: #2969ff;
+  --intergalactic-chart-palette-order-1: #181e15;
   /* 2 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-2: #16f0bf;
+  --intergalactic-chart-palette-order-2: #c190ff;
   /* 3 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-3: #c190ff;
+  --intergalactic-chart-palette-order-3: #16f0bf;
   /* 4 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-4: #c190ff;
+  --intergalactic-chart-palette-order-4: #96b1af;
   /* 5 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-5: #ffc954;
+  --intergalactic-chart-palette-order-5: #709bff;
   /* 6 color in the default list of colors for charts. */
   --intergalactic-chart-palette-order-6: #c190ff;
   /* 7 color in the default list of colors for charts. */

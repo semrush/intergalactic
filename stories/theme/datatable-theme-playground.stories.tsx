@@ -1,3 +1,4 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
@@ -47,6 +48,46 @@ const primaryDataTableData: DataTableData = [...primaryDataTableThemedRows, ...p
 
 type PrimaryTableRow = (typeof primaryDataTableData)[number];
 
+const featureHighlightTableData: DataTableData = [
+  { keyword: 'ebay buy', kd: '77.8', cpc: '$1.25' },
+  { keyword: 'ebay buy', kd: '77.8', cpc: '$1.25' },
+];
+
+type FeatureHighlightTableRow = (typeof featureHighlightTableData)[number];
+
+const featureHighlightColumnsPrimary = [
+  { name: 'keyword', children: 'Keyword' },
+  {
+    name: 'kd',
+    children: (
+      <>
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+        KD %
+      </>
+    ),
+    sortable: true,
+    style: { gap: '4px' },
+    justifyContent: 'end',
+  },
+  { name: 'cpc', children: 'CPC', sortable: true, justifyContent: 'end' },
+];
+
+const featureHighlightColumnsSecondary = [
+  { name: 'keyword', children: 'Keyword' },
+  {
+    name: 'kd',
+    children: (
+      <>
+        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+        KD %
+      </>
+    ),
+    style: { gap: '4px' },
+    justifyContent: 'end',
+  },
+  { name: 'cpc', children: 'CPC', justifyContent: 'end' },
+];
+
 function DataTableThemePlaygroundContent() {
   const [firstTablePage, setFirstTablePage] = React.useState(1);
   const [primaryThemedTablePage, setPrimaryThemedTablePage] = React.useState(1);
@@ -87,6 +128,13 @@ function DataTableThemePlaygroundContent() {
       }),
     [],
   );
+
+  const [featureHighlightTableSort, setFeatureHighlightTableSort] = React.useState<
+    DataTableSort<keyof FeatureHighlightTableRow>
+  >(['cpc', 'desc']);
+  const handleFeatureHighlightSortChange = (newSort: DataTableSort<string>) => {
+    setFeatureHighlightTableSort(newSort as DataTableSort<keyof FeatureHighlightTableRow>);
+  };
 
   const [primaryTableSort, setPrimaryTableSort] = React.useState<
     DataTableSort<keyof PrimaryTableRow>
@@ -259,6 +307,31 @@ function DataTableThemePlaygroundContent() {
               currentPage={primaryThemedTablePage}
               onCurrentPageChange={setPrimaryThemedTablePage}
               aria-label='Pagination'
+            />
+          </Box>
+          <Box wMin={500}>
+            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+              DataTable (primary, AI icon)
+            </Text>
+            <DataTable
+              data={featureHighlightTableData}
+              sort={featureHighlightTableSort}
+              onSortChange={handleFeatureHighlightSortChange}
+              aria-label='Primary table with AI column'
+              wMax='800px'
+              columns={featureHighlightColumnsPrimary}
+            />
+          </Box>
+          <Box wMin={300}>
+            <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+              DataTable (secondary, AI icon)
+            </Text>
+            <DataTable
+              use='secondary'
+              data={featureHighlightTableData}
+              aria-label='Secondary table with AI column'
+              wMax='300px'
+              columns={featureHighlightColumnsSecondary}
             />
           </Box>
           <Box wMin={500}>

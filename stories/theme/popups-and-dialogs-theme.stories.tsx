@@ -128,8 +128,26 @@ function PopupsAndDialogsContent() {
               <Text size={300} bold tag='h3' mb={1} mt={0}>
                 Popover title
               </Text>
-              <Text size={200} color='text-secondary'>
+              <Text size={200}>
                 Short description for theme playground.
+              </Text>
+            </FeaturePopover.Popper>
+          </FeaturePopover>
+          <FeaturePopover
+            theme='neutral'
+            {...({ interaction: 'click' } as Record<string, unknown>)}
+            disablePortal
+            placement='right-start'
+          >
+            <FeaturePopover.Trigger>
+              <Button>Open popover (neutral)</Button>
+            </FeaturePopover.Trigger>
+            <FeaturePopover.Popper closeIcon wMax={280} aria-label='Feature popover neutral'>
+              <Text size={300} bold tag='h3' mb={1} mt={0}>
+                Popover title
+              </Text>
+              <Text size={200}>
+                Neutral theme for theme playground.
               </Text>
             </FeaturePopover.Popper>
           </FeaturePopover>

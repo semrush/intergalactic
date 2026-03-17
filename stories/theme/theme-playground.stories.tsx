@@ -1,5 +1,6 @@
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import SettingsM from '@semcore/icon/Settings/m';
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Accordion from '@semcore/ui/accordion';
 import Badge from '@semcore/ui/badge';
 import { Box, Flex } from '@semcore/ui/base-components';
@@ -20,6 +21,18 @@ import Divider from '@semcore/ui/divider';
 import Dot from '@semcore/ui/dot';
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
+import {
+  BadgeFH,
+  ButtonFH,
+  CheckboxFH,
+  InputFH,
+  NoticeFH,
+  PillsFH,
+  RadioFH,
+  SelectFH,
+  SwitchFH,
+  TabLineFH,
+} from '@semcore/ui/feature-highlight';
 import Flag from '@semcore/ui/flags';
 import InlineInput from '@semcore/ui/inline-input';
 import Input from '@semcore/ui/input';
@@ -40,7 +53,7 @@ import TabLine from '@semcore/ui/tab-line';
 import Tag, { TagContainer } from '@semcore/ui/tag';
 import Textarea from '@semcore/ui/textarea';
 import Tooltip from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
+import { List, Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
@@ -48,6 +61,118 @@ import { ThemePlaygroundLayout } from './theme-playground-switcher';
 import './theme-playground-fonts.css';
 
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
+
+function FeatureHighlightDemo() {
+  const [selectValue, setSelectValue] = React.useState('');
+  return (
+    <Flex gap={4} direction='column'>
+      <Flex flexWrap gap={4}>
+        <Flex flexWrap gap={4} data-testid='buttons'>
+          <ButtonFH use='primary' addonLeft={SummaryAI}>
+            Primary
+          </ButtonFH>
+          <ButtonFH>
+            <ButtonFH.Addon />
+            <ButtonFH.Text>Secondary</ButtonFH.Text>
+            <ButtonFH.Addon>
+              <BadgeFH>AI powered</BadgeFH>
+            </ButtonFH.Addon>
+          </ButtonFH>
+        </Flex>
+        <Flex flexWrap gap={4} data-testid='pills'>
+          <PillsFH defaultValue={1} aria-label='Pills with AI accent'>
+            <PillsFH.Item value={1}>One</PillsFH.Item>
+            <PillsFH.HighlightedItem value={2}>
+              <PillsFH.HighlightedItem.Addon />
+              <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
+            </PillsFH.HighlightedItem>
+          </PillsFH>
+        </Flex>
+        <SelectFH onChange={setSelectValue}>
+          <SelectFH.Trigger aria-label='Select with AI theme' wMax={160} wMin={160}>
+            <SelectFH.Trigger.Addon />
+            <SelectFH.Trigger.Text>{selectValue}</SelectFH.Trigger.Text>
+          </SelectFH.Trigger>
+          <SelectFH.Menu>
+            <SelectFH.Option value='One'>One</SelectFH.Option>
+            <SelectFH.Option value='Two'>Two</SelectFH.Option>
+            <SelectFH.Option value='Three'>Three</SelectFH.Option>
+          </SelectFH.Menu>
+        </SelectFH>
+        <Flex flexWrap gap={4} data-testid='input'>
+          <InputFH w={250}>
+            <InputFH.Addon />
+            <InputFH.Value placeholder='Your domain' aria-label='Input with AI theme' />
+            <InputFH.Addon>
+              <BadgeFH>AI powered</BadgeFH>
+            </InputFH.Addon>
+          </InputFH>
+        </Flex>
+        <SwitchFH>
+          <SwitchFH.Value ml={0} />
+          <SwitchFH.Addon>Receive updates</SwitchFH.Addon>
+        </SwitchFH>
+      </Flex>
+      <Flex gap={12}>
+        <RadioGroup name='radio-fh' aria-labelledby='radioGroup'>
+          <Text id='radioGroup' size={200} mb={2}>
+            Radio button with AI accent
+          </Text>
+          <Flex gap={3} direction='column'>
+            <RadioFH value='1'>
+              <RadioFH.Value />
+              <RadioFH.Text>
+                First option
+                <Box
+                  tag={SummaryAI}
+                  color='--intergalactic-icon-primary-feature-highlight'
+                  ml={2}
+                  style={{ verticalAlign: -3 }}
+                />
+              </RadioFH.Text>
+            </RadioFH>
+            <Radio value='2' label='Second option' />
+          </Flex>
+        </RadioGroup>
+        <fieldset style={{ border: 'none' }}>
+          <Text tag='legend' size={200} mb={3}>
+            Checkbox with AI accent
+          </Text>
+          <List marker='' m={0} p={0}>
+            <List.Item p={0} mb={2}>
+              <CheckboxFH>
+                <CheckboxFH.Value />
+                <CheckboxFH.Text>
+                  First option
+                  <Box
+                    tag={SummaryAI}
+                    color='--intergalactic-icon-primary-feature-highlight'
+                    ml={2}
+                    style={{ verticalAlign: -3 }}
+                  />
+                </CheckboxFH.Text>
+              </CheckboxFH>
+            </List.Item>
+            <List.Item p={0}>
+              <Checkbox label='Second option' />
+            </List.Item>
+          </List>
+        </fieldset>
+      </Flex>
+      <TabLineFH aria-label='Tab with AI accent' defaultValue={1} wMax={400}>
+        <TabLineFH.Item value={1}>First option</TabLineFH.Item>
+        <TabLineFH.HighlightedItem value={2}>
+          <TabLineFH.HighlightedItem.Addon />
+          <TabLineFH.HighlightedItem.Text>Second option</TabLineFH.HighlightedItem.Text>
+        </TabLineFH.HighlightedItem>
+        <TabLineFH.Item value={3}>Third option</TabLineFH.Item>
+      </TabLineFH>
+      <NoticeFH closable aria-label='Notice with AI theme' wMax={400}>
+        How would you rate this update?
+      </NoticeFH>
+    </Flex>
+  );
+}
 
 const meta: Meta = {
   title: 'Theme/Theme Playground',
@@ -1046,6 +1171,13 @@ function ThemePlaygroundContent() {
             <Notice.Close />
           </Notice>
         </Flex>
+
+        <Text tag='h2' size={400} semibold mb={4} mt={10} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+          FeatureHighlight
+        </Text>
+        <Box mb={10}>
+          <FeatureHighlightDemo />
+        </Box>
       </Box>
     </ThemePlaygroundLayout>
   );

@@ -819,12 +819,12 @@
             "description": "Background of the regular primary control."
           },
           "info-hover": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Hover state of the regular primary control."
           },
           "info-active": {
-            "value": "{violet.500}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Active (selected) state of the regular primary control."
           },
@@ -859,17 +859,17 @@
             "description": "Active (selected) state of the primary control with danger theme."
           },
           "brand": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Background of the primary brand colored control."
           },
           "brand-hover": {
-            "value": "{violet.500}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "Hover state of the primary brand colored control."
           },
           "brand-active": {
-            "value": "{violet.600}",
+            "value": "{violet.500}",
             "type": "color",
             "description": "Active state of the primary brand colored control."
           },
@@ -1226,12 +1226,12 @@
           "description": "Hover state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected": {
-          "value": "rgba({blue.500}, 0.1)",
+          "value": "rgba({violet.dusty.400}, 0.2)",
           "type": "color",
           "description": "Active (selected) state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected-hover": {
-          "value": "rgba({blue.500}, 0.2)",
+          "value": "rgba({violet.dusty.400}, 0.2)",
           "type": "color",
           "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu."
         }
@@ -1898,23 +1898,23 @@
         "description": "120px"
       },
       "rounded-extra-small": {
-        "value": "2px",
+        "value": "1px",
         "type": "borderRadius"
       },
       "rounded-small": {
-        "value": "4px",
+        "value": "2px",
         "type": "borderRadius"
       },
       "rounded-medium": {
-        "value": "6px",
+        "value": "2px",
         "type": "borderRadius"
       },
       "rounded-large": {
-        "value": "16px",
+        "value": "8px",
         "type": "borderRadius"
       },
       "rounded-extra-large": {
-        "value": "24px",
+        "value": "12px",
         "type": "borderRadius"
       },
       "addon-rounded": {
@@ -1923,22 +1923,22 @@
         "description": "Use for rounding addons and small controls like Checkbox."
       },
       "badge-rounded": {
-        "value": "{rounded-large}",
+        "value": "{rounded-small}",
         "type": "borderRadius",
         "description": "Use for rounding Badge."
       },
       "chart-rounded": {
-        "value": "{rounded-extra-small}",
+        "value": "{rounded-small}",
         "type": "borderRadius",
         "description": "Use for rounding big and small charts like bar, histogram and others."
       },
       "counter-rounded": {
-        "value": "{rounded-large}",
+        "value": "{rounded-small}",
         "type": "borderRadius",
         "description": "Use for rounding Counter."
       },
       "tag-rounded": {
-        "value": "{rounded-extra-large}",
+        "value": "{rounded-small}",
         "type": "borderRadius",
         "description": "Use for rounding Tag."
       },
@@ -1968,7 +1968,7 @@
         "description": "Use for rounding all kinds of poppers and dropdowns."
       },
       "modal-rounded": {
-        "value": "{rounded-large}",
+        "value": "{rounded-medium}",
         "type": "borderRadius",
         "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard)."
       },
@@ -2286,27 +2286,27 @@
       "chart": {
         "palette-order": {
           "1": {
-            "value": "{blue.500}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "1 color in the default list of colors for charts."
           },
           "2": {
-            "value": "{green.200}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "2 color in the default list of colors for charts."
           },
           "3": {
-            "value": "{violet.300}",
+            "value": "{green.200}",
             "type": "color",
             "description": "3 color in the default list of colors for charts."
           },
           "4": {
-            "value": "{violet.300}",
+            "value": "{violet.dusty.300}",
             "type": "color",
             "description": "4 color in the default list of colors for charts."
           },
           "5": {
-            "value": "{yellow.200}",
+            "value": "{blue.400}",
             "type": "color",
             "description": "5 color in the default list of colors for charts."
           },
