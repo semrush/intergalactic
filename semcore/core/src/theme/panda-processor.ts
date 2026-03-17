@@ -37,7 +37,7 @@ const setToken = (
   to: Record<string, any>,
   description?: string,
 ): TokenType => {
-  const [part, ...parts] = [...from];
+  const [part, ...parts] = from;
 
   if (parts.length === 0) {
     if (to[part] && typeof to[part] === 'object') {
@@ -71,11 +71,11 @@ const getKeyParts = (key: string) => {
     return [parts[0]];
   }
 
-  if (key.startsWith('duration')) {
+  if (ifDuration(key)) {
     return parts.filter((p) => !p.startsWith('duration'));
   }
 
-  if (key.startsWith('z-index')) {
+  if (ifZIndex(key)) {
     return parts.filter((p) => !p.startsWith('z') && !p.startsWith('index'));
   }
 
@@ -130,7 +130,7 @@ export const getPandaConfig = (
 
 export const toPandaPreset = (config: PandaConfig) => {
   const preset = `
-    import { definePreset } from '@pandacss/dev'
+    import { definePreset } from '@pandacss/dev';
 
     export default definePreset({
       name: '@semcore/panda-preset',
@@ -138,7 +138,7 @@ export const toPandaPreset = (config: PandaConfig) => {
         tokens: ${JSON.stringify(config.tokens, undefined, 4)},
         semanticTokens: ${JSON.stringify(config.semanticTokens, undefined, 4)}
       },
-    })
+    });
     `;
 
   return preset;
