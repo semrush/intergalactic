@@ -67,7 +67,7 @@ const Demo = (props: ButtonTriggerEllipsisProps) => {
   );
 };
 
-export const defaultProps: FilterTriggerEllipsisProps = {
+export const defaultProps: ButtonTriggerEllipsisProps = {
 };
 
 export default Demo;
