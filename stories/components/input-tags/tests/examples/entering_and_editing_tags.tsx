@@ -4,7 +4,10 @@ import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps;
+type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps & {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
 
 const Demo = (props: ExampleInputTagsProps) => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
@@ -86,7 +89,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={props.active}
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'end' }}>{tag}</InputTags.Tag.Text.Content>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'end' }} hintProps={props.hintProps} hint:placement={props.hintPlacement}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag(idx)} />
           </InputTags.Tag>

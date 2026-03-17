@@ -207,7 +207,6 @@ const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_MESSAGES = {};
 
 const Demo = (demoProps: AccordionInTableProps) => {
-  const resolvedHintProps = demoProps.hintProps === false ? false : undefined;
   const cropPos = demoProps.cropPosition ?? 'middle';
 
   return (
@@ -238,7 +237,7 @@ const Demo = (demoProps: AccordionInTableProps) => {
               children: (
                 <Text
                   ellipsis={{ cropPosition: cropPos } as EllipsisSettings}
-                  {...(resolvedHintProps !== undefined ? { hintProps: resolvedHintProps } : {})}
+                  hintProps={demoProps.hintProps}
                 >
                   {String(props.row.payment_description)}
                 </Text>
@@ -250,7 +249,7 @@ const Demo = (demoProps: AccordionInTableProps) => {
           const Component = componentsMap[props.columnName];
           if (Component) {
             return {
-              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} cropPosition={cropPos} hintProps={resolvedHintProps} />,
+              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} cropPosition={cropPos} hintProps={demoProps.hintProps} />,
             };
           }
 

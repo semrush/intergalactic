@@ -282,4 +282,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
+
+  const noEllipsisVariants = [
+    { ellipsis: { cropPosition: 'middle' }, hintProps: false, description: 'hint false when cropPosition: middle' },
+    { ellipsis: { cropPosition: 'end' }, hintProps: false, description: 'hint false when cropPosition: end' },
+  ];
+
+  noEllipsisVariants.forEach((variant) => {
+    test(`Verify no hint appears when: ${variant.description}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
+      await page.waitForTimeout(100);
+
+      await test.step('Hover text - no hint should appear', async () => {
+        await locators.text(page).hover();
+        await expect(locators.hint(page)).toHaveCount(0);
+      });
+    });
+  });
 });

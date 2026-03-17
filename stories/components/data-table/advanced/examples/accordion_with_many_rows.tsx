@@ -30,9 +30,7 @@ const Demo = (props: TableInTableProps) => {
   }, []);
 
   const cropPos = props.cropPosition ?? 'middle';
-  const resolvedHintProps = props.hintProps === false ? false : undefined;
 
-  const expectsJsCalc = resolvedHintProps !== false || cropPos === 'middle';
   const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (cellProps) => {
     const ellipsisSettingsVol: EllipsisSettings = React.useMemo(() => {
       return {
@@ -51,16 +49,16 @@ const Demo = (props: TableInTableProps) => {
 
     if (cellProps.dataKey === 'keyword' && keywordElement) {
       return (
-        <Text ellipsis={ellipsisSettingsKeyword} {...(resolvedHintProps !== undefined ? { hintProps: resolvedHintProps } : {})}>{cellProps.value}</Text>
+        <Text ellipsis={ellipsisSettingsKeyword} hintProps={props.hintProps}>{cellProps.value}</Text>
       );
     }
     if (cellProps.dataKey === 'vol' && volElement) {
       return (
-        <Text ellipsis={ellipsisSettingsVol} {...(resolvedHintProps !== undefined ? { hintProps: resolvedHintProps } : {})}>{cellProps.value}</Text>
+        <Text ellipsis={ellipsisSettingsVol} hintProps={props.hintProps}>{cellProps.value}</Text>
       );
     }
     return cellProps.defaultRender();
-  }, [keywordElement, volElement, cropPos, resolvedHintProps]);
+  }, [keywordElement, volElement, cropPos, props.hintProps]);
 
   return (
     <DataTable
