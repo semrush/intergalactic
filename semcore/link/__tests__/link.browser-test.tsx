@@ -89,6 +89,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await test.step('Focus first link + verify hint', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page).first()).toBeFocused();
+          await page.waitForTimeout(200);
           await locators.hint(page).waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot({ clip });
         });
@@ -111,7 +112,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await test.step('Verify underlined state + hover hint', async () => {
           await locators.link(page).first().hover();
           await page.waitForTimeout(200);
-          await locators.hint(page).waitFor({ state: 'visible' });
+          await locators.hint(page).waitFor({ state: 'visible', timeout: 5000 });
           await expect(page).toHaveScreenshot({ clip: activeClip });
         });
       });
