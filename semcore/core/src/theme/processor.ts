@@ -54,8 +54,6 @@ for (const theme of themes) {
     toPandaPreset(getPandaConfig(values, basicTokens, types, descriptions)),
   );
 
-  execSync('pnpm lint:es --fix "./semcore/core/src/theme/themes/panda-preset.ts"');
-
   await writeIfChanged(
     `./semcore/core/src/theme/themes/${theme}.css`,
     tokensToCss(processedTokens),
