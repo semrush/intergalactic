@@ -15,11 +15,11 @@ SButtonLink[use='secondary']:not([color]) {
   &:hover {
     color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
+}
 
-  SText {
-    text-decoration-style: dashed;
-    text-decoration-color: currentColor;
-  }
+SButtonLink[use='secondary'] SText {
+  text-decoration-style: dashed;
+  text-decoration-color: currentColor;
 }
 
 SButtonLink[size='100'] {
