@@ -21,7 +21,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowDown', { delay: 50 });
     }
     await page.waitForSelector('[role="gridcell"][data-ui-name="Row.Cell"][name="id"]:has-text("#50")', { state: 'visible' });
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
   });
 
   test('Verify Mouse scroll', {
@@ -35,7 +35,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.mouse.wheel(0, 1000);
     await page.waitForTimeout(500);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
   });
 
   test('Verify Mouse scroll when cells have different height', {

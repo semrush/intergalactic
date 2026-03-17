@@ -188,14 +188,15 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-      const hint = page.locator('[data-ui-name="Hint"]');
+      const hint = page.locator('div[data-ui-name="Hint"]');
       await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
+          await page.waitForTimeout(200);
           await expect(locators.button(page).first()).toBeFocused();
           await hint.waitFor({ state: 'visible' });
-
           await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -204,6 +205,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
+          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -364,13 +366,17 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-
-      const count = await locators.button(page).count();
+      const hint = page.locator('div[data-ui-name="Hint"]');
+      await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
 
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await page.waitForTimeout(200);
+          await expect(locators.button(page).first()).toBeFocused();
+          await hint.waitFor({ state: 'visible' });
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -378,6 +384,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
+          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -538,13 +545,17 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-
-      const count = await locators.button(page).count();
+      const hint = page.locator('div[data-ui-name="Hint"]');
+      await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
 
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await page.waitForTimeout(200);
+          await expect(locators.button(page).first()).toBeFocused();
+          await hint.waitFor({ state: 'visible' });
+          await page.getByText('Addon only').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
       }
@@ -552,6 +563,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
+          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
