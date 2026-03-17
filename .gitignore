@@ -60,7 +60,7 @@ semcore/illustration/**/*.d.ts
 !semcore/illustration/src/**/*.d.ts
 
 # Panda-preset
-semcore/core/theme/themes/panda-preset.ts
+semcore/core/src/theme/themes/panda-preset.ts
 
 # Fix
 
