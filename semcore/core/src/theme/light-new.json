@@ -491,47 +491,47 @@
             "description": "Active (selected) state of the secondary background of the interface which contains the main data and information."
           },
           "info": {
-            "value": "{blue.50}",
+            "value": "rgba({blue.500}, 0.1)",
             "type": "color",
             "description": "Secondary background of a message with regular information."
           },
           "info-hover": {
-            "value": "{blue.100}",
+            "value": "rgba({blue.500}, 0.2)",
             "type": "color",
             "description": "Hover state of the secondary background of a message with regular information."
           },
           "info-active": {
-            "value": "{blue.200}",
+            "value": "rgba({blue.500}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the secondary background of a message with regular information."
           },
           "success": {
-            "value": "{green.50}",
+            "value": "rgba({green.200}, 0.2)",
             "type": "color",
             "description": "Secondary background of the message with success information you want to accent."
           },
           "success-hover": {
-            "value": "rgba({green.100}, 0.6)",
+            "value": "rgba({green.200}, 0.4)",
             "type": "color",
             "description": "Hover state of the secondary background of the message with success information you want to accent."
           },
           "success-active": {
-            "value": "{green.100}",
+            "value": "rgba({green.200}, 0.6)",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with success information you want to accent."
           },
           "critical": {
-            "value": "{red.50}",
+            "value": "rgba({red.400}, 0.2)",
             "type": "color",
             "description": "Secondary background of the message with critical information you want to accent."
           },
           "critical-hover": {
-            "value": "rgba({red.100}, 0.6)",
+            "value": "rgba({red.400}, 0.4)",
             "type": "color",
             "description": "Hover state of the secondary background of the message with critical information you want to accent."
           },
           "critical-active": {
-            "value": "{red.100}",
+            "value": "rgba({red.400}, 0.6)",
             "type": "color",
             "description": "Active (selected) state of the secondary background of the message with critical information you want to accent."
           },
@@ -609,22 +609,22 @@
           "description": "Placeholder text only."
         },
         "success": {
-          "value": "{green.500}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Text associated with success states and data."
         },
         "success-hover-active": {
-          "value": "{green.600}",
+          "value": "{green.500}",
           "type": "color",
           "description": "Hover and active states for the text associated with success states and data."
         },
         "critical": {
-          "value": "{red.500}",
+          "value": "{red.400}",
           "type": "color",
           "description": "Text associated with critical states and data."
         },
         "critical-hover-active": {
-          "value": "{red.600}",
+          "value": "{red.500}",
           "type": "color",
           "description": "Hover and active states for the text associated with critical states and data."
         },
@@ -649,17 +649,17 @@
           "description": "Hover and active states for the link text."
         },
         "link-invert": {
-          "value": "{blue.200}",
+          "value": "{blue.100}",
           "type": "color",
           "description": "Inverted version of the link text. Use on dark background only."
         },
         "link-invert-hover": {
-          "value": "{blue.300}",
+          "value": "{blue.200}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the link text. Use on dark background only."
         },
         "link-visited": {
-          "value": "{violet.500}",
+          "value": "{violet.400}",
           "type": "color",
           "description": "Visited link text."
         },
@@ -674,12 +674,12 @@
           "description": "Hover and active states of the hint link text."
         },
         "hint-invert": {
-          "value": "{gray.200}",
+          "value": "{gray.100}",
           "type": "color",
           "description": "Inverted version of the hint link text."
         },
         "hint-invert-hover-active": {
-          "value": "{gray.300}",
+          "value": "{gray.200}",
           "type": "color",
           "description": "Hover and active states of the inverted version of the hint link text."
         },
@@ -699,12 +699,12 @@
           "description": "Hover and active states of the link text with font-size ≥20px."
         },
         "large-success": {
-          "value": "{green.400}",
+          "value": "{green.300}",
           "type": "color",
           "description": "Text with font-size ≥20px associated with success states and data."
         },
         "large-success-hover-active": {
-          "value": "{green.500}",
+          "value": "{green.400}",
           "type": "color",
           "description": "Hover and active states of the text with font-size ≥20px associated with success states and data."
         },
@@ -719,14 +719,14 @@
           "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data."
         },
         "advertising": {
-          "value": "{violet.700}",
+          "value": "{violet.500}",
           "type": "color",
           "description": "Advertising text."
         }
       },
       "border": {
         "primary": {
-          "value": "rgba({gray.100}, 0.8)",
+          "value": "rgba({gray.100}, 0.7)",
           "type": "color",
           "description": "Neutral primary border."
         },
@@ -786,7 +786,7 @@
           "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background."
         },
         "tooltip-invert": {
-          "value": "{gray.600}",
+          "value": "{gray.500}",
           "type": "color",
           "description": "Border of the Tooltip with dark theme."
         },
@@ -874,17 +874,17 @@
             "description": "Active state of the primary brand colored control."
           },
           "advertising": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "Background of the advertising primary control."
           },
           "advertising-hover": {
-            "value": "{violet.500}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Hover state of the advertising primary control."
           },
           "advertising-active": {
-            "value": "{violet.600}",
+            "value": "{gray.800}",
             "type": "color",
             "description": "Active (selected) state of the advertising primary control."
           },
@@ -921,17 +921,17 @@
             "description": "Active (selected) state of the regular secondary control."
           },
           "info": {
-            "value": "rgba({blue.400}, 0.1)",
+            "value": "rgba({violet.dusty.400}, 0.1)",
             "type": "color",
             "description": "Background of the accent secondary control."
           },
           "info-hover": {
-            "value": "rgba({blue.400}, 0.2)",
+            "value": "rgba({violet.dusty.400}, 0.2)",
             "type": "color",
             "description": "Hover state of the accent secondary control."
           },
           "info-active": {
-            "value": "rgba({blue.400}, 0.3)",
+            "value": "rgba({violet.dusty.400}, 0.3)",
             "type": "color",
             "description": "Active (selected) state of the accent secondary control."
           },
@@ -953,17 +953,17 @@
         },
         "tertiary": {
           "neutral": {
-            "value": "rgba({gray.400}, 0)",
+            "value": "rgba({violet.dusty.400}, 0)",
             "type": "color",
             "description": "Background of the regular tertiary control."
           },
           "neutral-hover": {
-            "value": "rgba({gray.400}, 0.1)",
+            "value": "rgba({violet.dusty.400}, 0.1)",
             "type": "color",
             "description": "Hover state of the regular tertiary control."
           },
           "neutral-active": {
-            "value": "rgba({gray.400}, 0.2)",
+            "value": "rgba({violet.dusty.400}, 0.2)",
             "type": "color",
             "description": "Active (selected) state of the regular tertiary control."
           },
@@ -1002,22 +1002,22 @@
       "icon": {
         "primary": {
           "neutral": {
-            "value": "{gray.500}",
+            "value": "{gray.400}",
             "type": "color",
             "description": "Primary neutral icon."
           },
           "neutral-hover-active": {
-            "value": "#565861",
+            "value": "{gray.500}",
             "type": "color",
             "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color."
           },
           "info": {
-            "value": "{blue.500}",
+            "value": "{blue.400}",
             "type": "color",
             "description": "Primary link-lookalike icon."
           },
           "info-hover-active": {
-            "value": "#0358a1",
+            "value": "{blue.500}",
             "type": "color",
             "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color."
           },
@@ -1027,7 +1027,7 @@
             "description": "Primary success icon."
           },
           "success-hover-active": {
-            "value": "#037e68",
+            "value": "{green.500}",
             "type": "color",
             "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color."
           },
@@ -1037,7 +1037,7 @@
             "description": "Primary critical icon."
           },
           "critical-hover-active": {
-            "value": "#cc3a42",
+            "value": "{red.500}",
             "type": "color",
             "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color."
           },
@@ -1047,7 +1047,7 @@
             "description": "Primary warning icon."
           },
           "warning-hover-active": {
-            "value": "#cc5024",
+            "value": "{orange.500}",
             "type": "color",
             "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color."
           },
@@ -1069,7 +1069,7 @@
             "description": "Secondary neutral icon."
           },
           "neutral-hover-active": {
-            "value": "#878992",
+            "value": "{gray.400}",
             "type": "color",
             "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color."
           },
@@ -1079,7 +1079,7 @@
             "description": "Secondary link-lookalike icon."
           },
           "info-hover-active": {
-            "value": "#2290cc",
+            "value": "{blue.400}",
             "type": "color",
             "description": "Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color."
           },
@@ -1089,7 +1089,7 @@
             "description": "Secondary success icon."
           },
           "success-hover-active": {
-            "value": "#049b75",
+            "value": "{green.400}",
             "type": "color",
             "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color."
           },
@@ -1099,7 +1099,7 @@
             "description": "Secondary critical icon."
           },
           "critical-hover-active": {
-            "value": "#cc6c6b",
+            "value": "{red.400}",
             "type": "color",
             "description": "Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color."
           },
@@ -1109,7 +1109,7 @@
             "description": "Secondary warning icon."
           },
           "warning-hover-active": {
-            "value": "#cc7036",
+            "value": "{orange.400}",
             "type": "color",
             "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color."
           }
@@ -1122,42 +1122,42 @@
       },
       "illustration": {
         "red": {
-          "value": "#ff788f",
+          "value": "{red.400}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "orange": {
-          "value": "#ff9400",
+          "value": "{orange.300}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "yellow": {
-          "value": "#ffe84d",
+          "value": "{yellow.200}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "salad": {
-          "value": "#c7fa73",
+          "value": "{salad.200}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "green": {
-          "value": "#45e0a8",
+          "value": "{green.200}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "blue": {
-          "value": "#6edbff",
+          "value": "{blue.400}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "violet": {
-          "value": "#b880ff",
+          "value": "{violet.300}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         },
         "pink": {
-          "value": "#ff7ad1",
+          "value": "{pink.400}",
           "type": "color",
           "description": "⚠️ Use only for illustrations."
         }
@@ -1169,32 +1169,32 @@
           "description": "Default date-picker cell background."
         },
         "cell-current": {
-          "value": "{gray.400}",
+          "value": "{gray.800}",
           "type": "color",
           "description": "Color for marking the cell with the current date, month or year in the date-picker."
         },
         "cell-hover": {
-          "value": "{gray.100}",
+          "value": "rgba({violet.dusty.400}, 0.1)",
           "type": "color",
           "description": "Hover state of the default date-picker cell background."
         },
         "cell-range": {
-          "value": "{blue.100}",
+          "value": "rgba({blue.500}, 0.2)",
           "type": "color",
           "description": "Background for the cell which is included in the date range in the date-picker."
         },
         "cell-range-hover": {
-          "value": "{blue.200}",
+          "value": "rgba({blue.500}, 0.3)",
           "type": "color",
           "description": "Hover state of the background for the cell which is included in the date range in the date-picker."
         },
         "cell-active": {
-          "value": "{blue.300}",
+          "value": "{blue.500}",
           "type": "color",
           "description": "Active (selected) date-picker cell background."
         },
         "cell-active-hover": {
-          "value": "{blue.400}",
+          "value": "{blue.600}",
           "type": "color",
           "description": "Hover for the active (selected) date-picker cell background."
         },
@@ -1204,12 +1204,12 @@
           "description": "Color for marking the active cell with the current date, month or year in the date-picker."
         },
         "cell-comparison-active": {
-          "value": "{violet.500}",
+          "value": "{violet.400}",
           "type": "color",
           "description": "Active (selected) date-picker cell background for comparison periods."
         },
         "cell-comparison-active-hover": {
-          "value": "{violet.600}",
+          "value": "{violet.500}",
           "type": "color",
           "description": "Hover for the active (selected) date-picker cell background for comparison periods."
         }
@@ -1221,17 +1221,17 @@
           "description": "Default background color for the list item in the dropdown-menu."
         },
         "item-hover": {
-          "value": "{gray.50}",
+          "value": "rgba({violet.dusty.400}, 0.1)",
           "type": "color",
           "description": "Hover state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected": {
-          "value": "rgba({blue.100}, 0.7)",
+          "value": "rgba({blue.500}, 0.1)",
           "type": "color",
           "description": "Active (selected) state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected-hover": {
-          "value": "{blue.100}",
+          "value": "rgba({blue.500}, 0.2)",
           "type": "color",
           "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu."
         }
@@ -1248,12 +1248,12 @@
           "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme."
         },
         "bg-neutral": {
-          "value": "{violet.dusty.800}",
+          "value": "{gray.800}",
           "type": "color",
           "description": "Color of the FeaturePopover background with neutral theme."
         },
         "dot-neutral": {
-          "value": "{green.300}",
+          "value": "{violet.300}",
           "type": "color",
           "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme."
         },
@@ -1285,17 +1285,17 @@
           "description": "Hover state for the inverted version of the background color of the ProgressBar."
         },
         "value": {
-          "value": "{green.400}",
+          "value": "{violet.300}",
           "type": "color",
           "description": "Value color of the ProgressBar."
         },
         "value-gradient": {
-          "value": "linear-gradient(-45deg, rgba(68, 193, 93, 0.9) 25%, rgba(68, 193, 93, 1) 0%, rgba(68, 193, 93, 1) 50%, rgba(68, 193, 93, 0.9) 0%, rgba(68, 193, 93, 0.9) 75%, rgba(68, 193, 93, 1) 0%)",
+          "value": "linear-gradient(-45deg, rgba({violet.300}, 0.9) 25%, rgba({violet.300}, 1) 0%, rgba({violet.300}, 1) 50%, rgba({violet.300}, 0.9) 0%, rgba({violet.300}, 0.9) 75%, rgba({violet.300}, 1) 0%)",
           "type": "color",
           "description": "Value with gradient for the ProgressBar."
         },
         "pattern-gradient": {
-          "value": "linear-gradient(-45deg, rgba(234, 239, 241, 0.9) 25%, rgba(234, 239, 241, 1) 0%, rgba(234, 239, 241, 1) 50%, rgba(234, 239, 241, 0.9) 0%, rgba(234, 239, 241, 0.9) 75%, rgba(234, 239, 241, 1) 0%)",
+          "value": "linear-gradient(-45deg, rgba({gray.100}, 0.9) 25%, rgba({gray.100}, 1) 0%, rgba({gray.100}, 1) 50%, rgba({gray.100}, 0.9) 0%, rgba({gray.100}, 0.9) 75%, rgba({gray.100}, 1) 0%)",
           "type": "color",
           "description": "Null value gradient for the ProgressBar."
         },
@@ -1324,7 +1324,7 @@
           "description": "Icon color for the SliderRating component in its normal state."
         },
         "hover-active": {
-          "value": "{yellow.200}",
+          "value": "{violet.300}",
           "type": "color",
           "description": "Icon color for the SliderRating component in its hovered and active states."
         }
@@ -1333,17 +1333,17 @@
         "th": {
           "primary": {
             "cell": {
-              "value": "{gray.50}",
+              "value": "rgba({gray.100}, 0.2)",
               "type": "color",
               "description": "Background of the header cell in the primary Table."
             },
             "cell-hover": {
-              "value": "{gray.100}",
+              "value": "{gray.50}",
               "type": "color",
               "description": "Background of the hovered header cell in the primary Table."
             },
             "cell-active": {
-              "value": "{gray.100}",
+              "value": "{gray.50}",
               "type": "color",
               "description": "Background of the active header cell in the primary Table."
             }
@@ -1356,7 +1356,7 @@
             }
           },
           "gradient": {
-            "value": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
+            "value": "linear-gradient(to right, rgba({gray.50}, 0) 0%, rgba({gray.50}, 1) 100%)",
             "type": "color",
             "description": "Background gradient for sorting icon that absolute positioned in the table head."
           }
@@ -1375,7 +1375,7 @@
               "studio.tokens": {
                 "modify": {
                   "type": "lighten",
-                  "value": "0.5",
+                  "value": "0.8",
                   "space": "hsl"
                 }
               }
@@ -1389,79 +1389,79 @@
               "studio.tokens": {
                 "modify": {
                   "type": "lighten",
-                  "value": "0.2",
+                  "value": "0.5",
                   "space": "hsl"
                 }
               }
             }
           },
           "cell-unread": {
-            "value": "{gray.50}",
+            "value": "rgba({gray.100}, 0.2)",
             "type": "color",
             "description": "Background of the unread cell in the Table."
           },
           "cell-accordion": {
-            "value": "{gray.50}",
+            "value": "rgba({gray.100}, 0.2)",
             "type": "color",
             "description": "Background of the cell inside an Accordion in the Table."
           },
           "cell-selected": {
-            "value": "{blue.50}",
+            "value": "rgba({blue.500}, 0.1)",
             "type": "color",
             "description": "Background of the selected cell in the Table."
           },
           "cell-selected-hover": {
-            "value": "{blue.100}",
+            "value": "rgba({blue.500}, 0.2)",
             "type": "color",
             "description": "Background of the hovered selected cell in the Table."
           },
           "cell-selected-active": {
-            "value": "{blue.100}",
+            "value": "rgba({blue.500}, 0.3)",
             "type": "color",
             "description": "Background of the active selected cell in the Table."
           },
           "cell-new": {
-            "value": "{green.50}",
+            "value": "rgba({green.200}, 0.1)",
             "type": "color",
             "description": "Background of the cell with new information in the Table."
           },
           "cell-new-hover": {
-            "value": "{green.100}",
+            "value": "rgba({green.200}, 0.2)",
             "type": "color",
             "description": "Background of the hovered cell with new information in the Table."
           },
           "cell-new-active": {
-            "value": "{green.100}",
+            "value": "rgba({green.200}, 0.3)",
             "type": "color",
             "description": "Background of the active cell with new information in the Table."
           },
           "cell-critical": {
-            "value": "{red.50}",
+            "value": "rgba({red.500}, 0.1)",
             "type": "color",
             "description": "Background of the cell with critical information in the Table."
           },
           "cell-critical-hover": {
-            "value": "{red.100}",
+            "value": "rgba({red.500}, 0.2)",
             "type": "color",
             "description": "Background of the hovered cell with critical information in the Table."
           },
           "cell-critical-active": {
-            "value": "{red.100}",
+            "value": "rgba({red.500}, 0.3)",
             "type": "color",
             "description": "Background of the active cell with critical information in the Table."
           },
           "cell-warning": {
-            "value": "{orange.50}",
+            "value": "rgba({orange.300}, 0.1)",
             "type": "color",
             "description": "Background of the cell with warning information in the Table."
           },
           "cell-warning-hover": {
-            "value": "{orange.100}",
+            "value": "rgba({orange.300}, 0.2)",
             "type": "color",
             "description": "Background of the hovered cell with warning information in the Table."
           },
           "cell-warning-active": {
-            "value": "{orange.100}",
+            "value": "rgba({orange.300}, 0.3)",
             "type": "color",
             "description": "Background of the active cell with warning information in the Table."
           }
@@ -1469,12 +1469,12 @@
       },
       "brand": {
         "primary": {
-          "value": "{orange.400}",
+          "value": "{violet.300}",
           "type": "color",
           "description": "Primary brand color."
         },
         "secondary": {
-          "value": "{violet.700}",
+          "value": "{green.200}",
           "type": "color",
           "description": "Secondary brand color."
         },
@@ -1526,7 +1526,7 @@
       },
       "box-shadow": {
         "card": {
-          "value": "0 0 0 1px {border.primary}",
+          "value": "0 0 0 1px rgba({border.primary}, 0.5)",
           "type": "boxShadow",
           "description": "Default shadow of the Card."
         },
@@ -2009,7 +2009,7 @@
           "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs."
         },
         "limitation-primary": {
-          "value": "{gray.50}",
+          "value": "rgba({gray.50}, 0.6)",
           "type": "color",
           "description": "Use as a primary cover of the content under the messages about limitations."
         },
@@ -2080,42 +2080,42 @@
       },
       "scroll-area": {
         "shadow-left": {
-          "value": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to right, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Left-to-right fade shadow for the ScrollArea."
         },
         "shadow-right": {
-          "value": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to left, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Right-to-left fade shadow for the ScrollArea."
         },
         "shadow-top": {
-          "value": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to bottom, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Top-to-bottom fade shadow for the ScrollArea."
         },
         "shadow-bottom": {
-          "value": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
+          "value": "linear-gradient(to top, rgba({gray.800}, 0.1) 20.55%, rgba({gray.white}, 0.0001) 100%)",
           "type": "color",
           "description": "Bottom-to-top fade shadow for the ScrollArea."
         },
         "dropdown-menu-left": {
-          "value": "linear-gradient(to right, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
+          "value": "linear-gradient(to right, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
           "type": "color",
           "description": "Left-to-right fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-right": {
-          "value": "linear-gradient(to left, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
+          "value": "linear-gradient(to left, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
           "type": "color",
           "description": "Right-to-left fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-bottom": {
-          "value": "linear-gradient(to top, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
+          "value": "linear-gradient(to top, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
           "type": "color",
           "description": "Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu."
         },
         "dropdown-menu-top": {
-          "value": "linear-gradient(to bottom, rgba(#ffffff, 1) 34.38%, rgba(#ffffff, 0) 100%)",
+          "value": "linear-gradient(to bottom, rgba({gray.white}, 1) 34.38%, rgba({gray.white}, 0) 100%)",
           "type": "color",
           "description": "Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu."
         }
@@ -2286,7 +2286,7 @@
       "chart": {
         "palette-order": {
           "1": {
-            "value": "{blue.300}",
+            "value": "{blue.500}",
             "type": "color",
             "description": "1 color in the default list of colors for charts."
           },
@@ -2296,12 +2296,12 @@
             "description": "2 color in the default list of colors for charts."
           },
           "3": {
-            "value": "{orange.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "3 color in the default list of colors for charts."
           },
           "4": {
-            "value": "{pink.300}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "4 color in the default list of colors for charts."
           },
@@ -2311,12 +2311,12 @@
             "description": "5 color in the default list of colors for charts."
           },
           "6": {
-            "value": "{violet.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "6 color in the default list of colors for charts."
           },
           "7": {
-            "value": "{red.300}",
+            "value": "{red.400}",
             "type": "color",
             "description": "7 color in the default list of colors for charts."
           },
@@ -2326,12 +2326,12 @@
             "description": "8 color in the default list of colors for charts."
           },
           "9": {
-            "value": "{blue.400}",
+            "value": "{blue.300}",
             "type": "color",
             "description": "9 color in the default list of colors for charts."
           },
           "10": {
-            "value": "{green.300}",
+            "value": "{green.400}",
             "type": "color",
             "description": "10 color in the default list of colors for charts."
           },
@@ -2341,12 +2341,12 @@
             "description": "11 color in the default list of colors for charts."
           },
           "12": {
-            "value": "{pink.400}",
+            "value": "{pink.300}",
             "type": "color",
             "description": "12 color in the default list of colors for charts."
           },
           "13": {
-            "value": "{yellow.300}",
+            "value": "{yellow.400}",
             "type": "color",
             "description": "13 color in the default list of colors for charts."
           },
@@ -2356,12 +2356,12 @@
             "description": "14 color in the default list of colors for charts."
           },
           "15": {
-            "value": "{red.400}",
+            "value": "{red.300}",
             "type": "color",
             "description": "15 color in the default list of colors for charts."
           },
           "16": {
-            "value": "{salad.300}",
+            "value": "{salad.400}",
             "type": "color",
             "description": "16 color in the default list of colors for charts."
           },
@@ -2371,12 +2371,12 @@
             "description": "17 color in the default list of colors for charts."
           },
           "18": {
-            "value": "{green.400}",
+            "value": "{green.300}",
             "type": "color",
             "description": "18 color in the default list of colors for charts."
           },
           "19": {
-            "value": "{orange.300}",
+            "value": "{orange.400}",
             "type": "color",
             "description": "19 color in the default list of colors for charts."
           },
@@ -2386,12 +2386,12 @@
             "description": "20 color in the default list of colors for charts."
           },
           "21": {
-            "value": "{yellow.400}",
+            "value": "{yellow.300}",
             "type": "color",
             "description": "21 color in the default list of colors for charts."
           },
           "22": {
-            "value": "{violet.300}",
+            "value": "{violet.400}",
             "type": "color",
             "description": "22 color in the default list of colors for charts."
           },
@@ -2401,7 +2401,7 @@
             "description": "23 color in the default list of colors for charts."
           },
           "24": {
-            "value": "{salad.400}",
+            "value": "{salad.300}",
             "type": "color",
             "description": "24 color in the default list of colors for charts."
           },
@@ -2423,7 +2423,7 @@
         },
         "grid": {
           "line": {
-            "value": "{gray.100}",
+            "value": "{border.secondary}",
             "type": "color",
             "description": "Default chart grid line."
           },
@@ -2443,12 +2443,12 @@
             "description": "Text label on the chart grid."
           },
           "bar-chart-hover": {
-            "value": "rgba({gray.200}, 0.3)",
+            "value": "rgba({gray.200}, 0.2)",
             "type": "color",
             "description": "Background color for the hover state of a bar on the chart grid."
           },
           "bar-chart-base-bg": {
-            "value": "{gray.100}",
+            "value": "{gray.50}",
             "type": "color",
             "description": "Default background color of a bar in the BarChart."
           },
@@ -2470,12 +2470,12 @@
         },
         "x-axis-accent": {
           "period-active": {
-            "value": "{gray.500}",
+            "value": "{gray.300}",
             "type": "color",
             "description": "Background color for the clickable date on the X-axis of the chart grid."
           },
           "data-start-tracking": {
-            "value": "rgba({green.400}, 0.2)",
+            "value": "rgba({green.300}, 0.2)",
             "type": "color",
             "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid."
           }
@@ -2499,47 +2499,47 @@
       },
       "header": {
         "bg": {
-          "value": "{violet.dusty.700}",
+          "value": "{bg.secondary.neutral}",
           "type": "color"
         },
         "border": {
           "primary": {
-            "value": "{violet.dusty.700}",
+            "value": "{border.primary}",
             "type": "color"
           },
           "secondary": {
-            "value": "#ffffff26",
+            "value": "{border.secondary}",
             "type": "color"
           }
         }
       },
       "sidebar-nav": {
         "control-hover": {
-          "value": "rgba({gray.100}, 0.7)",
+          "value": "rgba({gray.100}, 0.3)",
           "type": "color"
         },
         "control-active": {
-          "value": "{violet.dusty.100}",
+          "value": "{gray.100}",
           "type": "color"
         },
         "control": {
           "text": {
             "normal": {
-              "value": "{violet.dusty.500}",
+              "value": "{text.secondary}",
               "type": "color"
             },
             "active": {
-              "value": "{violet.dusty.600}",
+              "value": "{text.primary}",
               "type": "color"
             }
           },
           "icon": {
             "normal": {
-              "value": "{violet.dusty.400}",
+              "value": "{icon.secondary.neutral}",
               "type": "color"
             },
             "active": {
-              "value": "{violet.dusty.600}",
+              "value": "{icon.primary.neutral}",
               "type": "color"
             }
           }

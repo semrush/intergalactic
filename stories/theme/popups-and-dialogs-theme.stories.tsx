@@ -123,7 +123,6 @@ function PopupsAndDialogsContent() {
           <FeaturePopover {...({ interaction: 'click' } as Record<string, unknown>)} disablePortal placement='right-start'>
             <FeaturePopover.Trigger>
               <Button>Open popover</Button>
-              <FeaturePopover.Spot />
             </FeaturePopover.Trigger>
             <FeaturePopover.Popper closeIcon wMax={280} aria-label='Feature popover'>
               <Text size={300} bold tag='h3' mb={1} mt={0}>
@@ -142,7 +141,6 @@ function PopupsAndDialogsContent() {
           >
             <FeaturePopover.Trigger>
               <Button>Open popover (neutral)</Button>
-              <FeaturePopover.Spot />
             </FeaturePopover.Trigger>
             <FeaturePopover.Popper closeIcon wMax={280} aria-label='Feature popover neutral'>
               <Text size={300} bold tag='h3' mb={1} mt={0}>
