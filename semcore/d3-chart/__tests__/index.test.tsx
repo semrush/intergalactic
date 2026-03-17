@@ -759,6 +759,46 @@ describe('Chart.Venn', () => {
   });
 });
 
+describe('Chart.Cigarette', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call percentFormatter and return correct formatted percent', async () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+
+    const percentFormatter = vi.fn((value: number) => value.toFixed(2));
+
+    const { getByLabelText } = render(
+      <Chart.Cigarette
+        data={{
+          Cats: 5,
+          Capybaras: 11,
+          Birds: 5,
+        }}
+        plotWidth={400}
+        plotHeight={28}
+        showPercentValueInTooltip={true}
+        percentFormatter={percentFormatter}
+        duration={200}
+        aria-label='Cigarette chart'
+      />,
+    );
+
+    const svg = getByLabelText('Chart');
+    fireEvent.mouseMove(svg, {
+      clientX: 200,
+      clientY: 14,
+    });
+
+    expect(percentFormatter).toHaveBeenNthCalledWith(1, (5 * 100) / 21);
+    expect(percentFormatter).toHaveBeenNthCalledWith(2, (11 * 100) / 21);
+    expect(percentFormatter).toHaveBeenNthCalledWith(3, (5 * 100) / 21);
+
+    expect(percentFormatter).toHaveNthReturnedWith(1, '23.81');
+    expect(percentFormatter).toHaveNthReturnedWith(2, '52.38');
+    expect(percentFormatter).toHaveNthReturnedWith(3, '23.81');
+  });
+});
+
 describe('ChartLegend', () => {
   beforeEach(cleanup);
   afterEach(cleanup);
