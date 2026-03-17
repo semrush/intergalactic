@@ -32,7 +32,7 @@ const commonArgTypes = {
   w: {
     control: { type: 'number' },
   },
-  // UIK-4923: hintProps=false skips ellipsis calculation for cropPosition=end (CSS-only),
+  // UIK-4923: hint=false skips ellipsis calculation for cropPosition=end (CSS-only),
   // but still calculates for cropPosition=middle (needs JS). No hint shown in either case.
   hintProps: {
     control: 'select',

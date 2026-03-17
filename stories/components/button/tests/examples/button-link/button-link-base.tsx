@@ -16,6 +16,7 @@ type BasicButtonLinkProps = ButtonLinkProps & {
   showAddonRight?: boolean;
   ellipsis?: false | true | { cropPosition: 'middle'; lastRequiredSymbols?: number } | { cropPosition?: 'end'; maxLine?: number };
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
   merged?: boolean;
@@ -31,6 +32,7 @@ const Demo = (props: BasicButtonLinkProps) => {
     disabled,
     active,
     loading,
+    hintProps,
     size = 300,
     use = 'primary',
     w,
@@ -99,6 +101,7 @@ const Demo = (props: BasicButtonLinkProps) => {
           w={ellipsisW}
           ellipsis={ellipsis || undefined}
           hint:placement={hintPlacement}
+          hintProps={hintProps}
         >
           {text}
         </ButtonLink.Text>

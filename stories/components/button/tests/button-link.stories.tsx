@@ -69,6 +69,14 @@ export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
     w: {
       control: { type: 'number' },
     },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
     ellipsis: {
       control: { type: 'select' },
       options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],

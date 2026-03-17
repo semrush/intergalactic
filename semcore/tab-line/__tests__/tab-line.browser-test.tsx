@@ -125,11 +125,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 100, size: 'l', behavior: 'auto', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'auto', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-    { w: 100, size: 'l', behavior: 'manual', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'manual', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-
+    { w: 100, size: 'l', behavior: 'auto', hintPlacement: 'right', desc: 'default' },
+    { w: 100, size: 'm', behavior: 'auto', ellipsis: { cropPosition: 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 100, size: 'l', behavior: 'manual', hintPlacement: 'right', desc: 'default' },
+    { w: 100, size: 'm', behavior: 'manual', ellipsis: { cropPosition: 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
   ];
   variablesEllipsis.forEach((item) => {
     test(`Verify ellipsis in Tab lines behavior = ${item.behavior} size = ${item.size} ellipsis = ${item.desc} styles`, {
