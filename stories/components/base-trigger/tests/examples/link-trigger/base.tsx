@@ -1,13 +1,11 @@
-import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
 import React from 'react';
 
 type LinkTriggerBaseExample = LinkTriggerProps & BaseTriggerProps;
 const Demo = (props: LinkTriggerBaseExample) => (
-  <Flex direction='column' gap={3}>
+  <>
     <LinkTrigger
-      w={150}
       size={props.size}
       state={props.state}
       active={props.active}
@@ -20,8 +18,7 @@ const Demo = (props: LinkTriggerBaseExample) => (
     >
       Link Trigger
     </LinkTrigger>
-
-  </Flex>
+  </>
 );
 
 export const linkTriggerBaseExampleProps: LinkTriggerBaseExample = {

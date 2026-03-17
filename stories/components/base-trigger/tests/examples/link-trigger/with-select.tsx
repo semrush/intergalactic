@@ -18,9 +18,8 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   };
 
   return (
-    <Flex gap={2} justifyContent='flex-start' direction='column'>
+    <Flex gap={2} alignItems='start' direction='column'>
       <Select
-        w={100}
         tag={LinkTrigger}
         options={devices}
         data-test-id='base-trigger-as-tag-in-select'
@@ -64,7 +63,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                     (getTriggerProps().placeholder as string)}
                 </LinkTrigger.Text>
               </Select.Trigger>
-              <Select.Popper w={280} aria-label='Projects'>
+              <Select.Popper aria-label='Projects'>
                 {projects.map((project) => (
                   <Select.Option key={project.id} value={project.id}>
                     {project.name}
