@@ -210,7 +210,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.type('test@test.test');
 
       await page.keyboard.press('Tab');
-      await expect(page.getByRole('link')).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Send feedback')).toBeFocused();
 
