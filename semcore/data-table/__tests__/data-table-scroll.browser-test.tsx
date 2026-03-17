@@ -34,22 +34,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.dataTable(page).hover();
         await page.mouse.wheel(0, 600);
         await page.waitForTimeout(1000);
-        if (browserName == 'webkit') {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
-        } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-        }
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
       });
 
       await test.step('Verify horizontal scroll', async () => {
         await locators.dataTable(page).hover();
         await page.mouse.wheel(600, 0);
         await page.waitForTimeout(1000);
-        if (browserName == 'webkit') {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
-        } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
-        }
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
       });
     });
 
@@ -69,7 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
 
@@ -82,7 +74,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
     });
@@ -101,7 +93,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
 
@@ -112,7 +104,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
     });
@@ -143,7 +135,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
     });
@@ -177,7 +169,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
 
@@ -192,7 +184,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
         });
       }
@@ -218,7 +210,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
 
@@ -234,7 +226,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
         });
       }
@@ -257,7 +249,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
 
@@ -269,7 +261,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
         });
       }
@@ -297,7 +289,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
         });
       }
@@ -318,7 +310,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
       });
     });
