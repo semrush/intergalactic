@@ -112,6 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.addFilterMenuItem(page, 'Color').waitFor({ state: 'visible' });
+      await expect(locators.addFilterMenuItem(page, 'Color')).toBeFocused();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Enter');
