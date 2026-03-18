@@ -914,6 +914,7 @@ class DataTableRoot<
           >
             <ScrollArea.Container
               tabIndex={-1}
+              role='grid'
               // @ts-ignore
               scrollDirection={this.scrollDirection}
               // @ts-ignore
@@ -1032,7 +1033,7 @@ class DataTableRoot<
   }
 
   private hasSeparateStickyHeader() {
-    return this.scrollDirection === 'horizontal' && this.asProps.headerProps?.sticky;
+    return this.scrollDirection === 'horizontal' && this.asProps.headerProps?.sticky && !this.isDataEmpty;
   }
 
   private getScrollOffsetValue = () => {
