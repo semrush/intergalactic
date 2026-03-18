@@ -42,7 +42,7 @@ export const defaultBulkTextareaProps: ExampleProps = {
   maxRows: 10,
   showErrors: undefined,
   validateOn: ['blur'],
-  autoFocus: undefined,
+  autoFocus: false,
 };
 
 const Demo = (props: Partial<ExampleProps>) => {
