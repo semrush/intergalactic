@@ -125,6 +125,7 @@ class InputColorRoot extends Component<InputColorAsProps, [], { value: string; s
               <SConfirmColor
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldConfirm')}
+                // @ts-expect-error our runtime can override props via `use:`, but its not available in types
                 use:tabIndex={-1}
                 tag={ButtonLink}
                 onClick={this.handlerAdd}
@@ -139,6 +140,7 @@ class InputColorRoot extends Component<InputColorAsProps, [], { value: string; s
               <SClearConfirm
                 aria-hidden='true'
                 aria-label={getI18nText('colorFieldClear')}
+                // @ts-expect-error our runtime can override props via `use:`, but its not available in types
                 use:tabIndex={-1}
                 tag={ButtonLink}
                 onClick={this.handlerCancel}

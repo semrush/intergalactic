@@ -46,9 +46,20 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   chevron?: boolean;
 };
 
-export type LinkTriggerProps = LinkProps & {
+export type LinkTriggerProps = Omit<LinkProps, 'size'> & {
+  /**
+   * Trigger size
+   * @default m
+   */
+  size?: 'm' | 'l';
+  /** Trigger state */
+  state?: 'normal' | 'valid' | 'invalid';
   /** Sets the loading state */
   loading?: boolean;
+  /** Placeholder text */
+  placeholder?: React.ReactNode;
+  /** Responsible for placeholder displaying */
+  empty?: boolean;
 };
 
 export type FilterTriggerProps = BaseTriggerProps & {

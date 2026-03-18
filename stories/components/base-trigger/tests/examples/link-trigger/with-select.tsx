@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
+import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -9,7 +9,7 @@ interface Project {
   name: string;
 }
 
-type LinkTriggerSelectDDMenuExample = LinkTriggerProps & BaseTriggerProps;
+type LinkTriggerSelectDDMenuExample = LinkTriggerProps;
 const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const [selectedProject, setSelectedProject] = React.useState<Project | undefined>();
 

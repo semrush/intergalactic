@@ -1,8 +1,8 @@
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
+import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import React from 'react';
 
-type LinkTriggerBaseExample = LinkTriggerProps & BaseTriggerProps;
+type LinkTriggerBaseExample = LinkTriggerProps;
 const Demo = (props: LinkTriggerBaseExample) => (
   <>
     <LinkTrigger
