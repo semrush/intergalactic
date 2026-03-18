@@ -1,9 +1,8 @@
-import type { SimpleHintPopperProps } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
-import type { TextProps } from '@semcore/typography';
+import type { BoxProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { BaseTextProps } from '@semcore/typography';
 import type React from 'react';
 
-export type LinkProps = Intergalactic.InternalTypings.EfficientOmit<TextProps, 'ellipsis' | 'hintProps'> & {
+export type LinkProps = BoxProps & BaseTextProps & {
   /**
    * CSS property of the display link (inline|inline-block)
    * @default false

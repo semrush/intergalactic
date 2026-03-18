@@ -10,7 +10,7 @@ export type TextHintProps = {
   hintProps?: false;
 };
 
-export type TextProps = BoxProps & {
+export type BaseTextProps = {
   /** Font size and line-heights */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
   /**
@@ -52,7 +52,9 @@ export type TextProps = BoxProps & {
   use?: 'primary' | 'secondary';
   /** Makes text semi-transparent to indicate disabled state */
   disabled?: boolean;
-} & (
+};
+
+export type TextProps = BoxProps & BaseTextProps & (
   {
     /** Enable formatting/styling for all nested HTML tags with our default styles for them */
     formatTags?: boolean;
