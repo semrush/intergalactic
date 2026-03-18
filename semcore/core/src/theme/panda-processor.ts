@@ -9,7 +9,7 @@ const INTERGALACTIC_TYPE_TO_PANDA: Record<string, string> = {
   color: 'colors',
   sizing: 'sizes',
   spacing: 'spacing',
-  fonts: 'fontFamilies',
+  fontFamilies: 'fonts',
   fontSizes: 'fontSizes',
   fontWeights: 'fontWeights',
   letterSpacing: 'letterSpacings',
