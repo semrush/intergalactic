@@ -34,7 +34,7 @@ const preview: Preview = {
         <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
           <div tabIndex={0} />
           <PortalProvider value={rootRef}>
-            <div ref={rootRef}>
+            <div ref={rootRef} style={{ minWidth: 0 }}>
               <Story />
             </div>
           </PortalProvider>

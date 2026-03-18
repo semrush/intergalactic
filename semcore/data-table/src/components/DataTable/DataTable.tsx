@@ -106,6 +106,8 @@ class DataTableRoot<
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
+  private headerScrollContainerRef = React.createRef<HTMLDivElement>();
+  private bodyScrollContainerRef = React.createRef<HTMLDivElement>();
   private spinnerRef = React.createRef<HTMLDivElement>();
   private containerResizeEndTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -159,8 +161,10 @@ class DataTableRoot<
       });
     }
 
-    if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
-      document.addEventListener('scroll', this.handleDocumentScroll);
+    if (this.hasSeparateStickyHeader()) {
+      requestAnimationFrame(() => {
+        this.calculateColumnsWidth();
+      });
     }
   }
 
@@ -201,10 +205,6 @@ class DataTableRoot<
   }
 
   componentWillUnmount() {
-    if (canUseDOM()) {
-      document.removeEventListener('scroll', this.handleDocumentScroll);
-    }
-
     this.state.expandedRows?.clear();
   }
 
@@ -383,43 +383,6 @@ class DataTableRoot<
       totalRows,
     };
   }
-
-  handleDocumentScroll = trottle(() => {
-    const tableContainer = this.tableContainerRef.current;
-    if (!tableContainer) return;
-
-    const tableContainerTop = tableContainer.getBoundingClientRect().top;
-    const { headerProps } = this.asProps;
-    const headerContainer = this.headerRef.current;
-    const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
-    const top = tableContainerTop - (headerProps?.top ?? 0);
-    const headerScrollBar = headerProps?.withScrollBar
-      ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
-      : undefined;
-
-    if (top && top < 0) {
-      const translate = `translateY(${Math.abs(top)}px)`;
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.setProperty('transform', translate);
-        }
-      });
-
-      if (headerScrollBar instanceof HTMLElement) {
-        headerScrollBar.style.setProperty('transform', translate);
-      }
-    } else {
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.removeProperty('transform');
-        }
-      });
-
-      if (headerScrollBar instanceof HTMLElement) {
-        headerScrollBar.style.removeProperty('transform');
-      }
-    }
-  });
 
   handleCellClick = (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => {
     if (lastInteraction.isMouse()) {
@@ -746,6 +709,20 @@ class DataTableRoot<
     if (this.hasFixedColumn) {
       this.calculateVerticalShadow();
     }
+
+    if (this.headerScrollContainerRef.current) {
+      this.headerScrollContainerRef.current.scrollLeft = e.target.scrollLeft;
+    }
+  });
+
+  handleHeaderScroll = trottle((e) => {
+    if (this.hasFixedColumn) {
+      this.calculateVerticalShadow();
+    }
+
+    if (this.bodyScrollContainerRef.current) {
+      this.bodyScrollContainerRef.current.scrollLeft = e.target.scrollLeft;
+    }
   });
 
   calculateVerticalShadow = () => {
@@ -863,15 +840,19 @@ class DataTableRoot<
     this.changeFocusCell(-1, cellIndex === -1 ? 0 : cellIndex, 'up');
   };
 
-  handleContainerResizeEnd = (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+  handleContainerResizeEnd = trottle((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     if (this.containerResizeEndTimeoutId) {
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
     this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
 
+    if (this.hasSeparateStickyHeader()) {
+      this.calculateColumnsWidth();
+    }
+
     this.asProps.onResize?.(entries, observer);
-  };
+  });
 
   render() {
     const SDataTable = Root;
@@ -913,94 +894,137 @@ class DataTableRoot<
     }
 
     return sstyled(styles)(
-      <ScrollArea
-        leftOffset={offsetLeftSum}
-        rightOffset={offsetRightSum}
-        topOffset={topOffset}
-        w={width}
-        wMax={wMax}
-        wMin={wMin}
-        h={h}
-        hMax={hMax}
-        hMin={hMin}
-        shadow={true}
-        ref={this.scrollAreaRef}
-        container={this.tableContainerRef}
-        styles={scrollStyles}
-        onScroll={this.handleScroll}
-        disableAutofocusToContent={true}
-        onResize={this.handleContainerResizeEnd}
-      >
-        <ScrollArea.Container
-          tabIndex={-1}
-          // @ts-ignore
-          scrollDirection={this.scrollDirection}
-          // @ts-ignore
-          loading={loading}
-          headerHeight={`${headerHeight}px`}
-          leftScrollPadding={`${offsetLeftSum}px`}
-          rightScrollPadding={`${offsetRightSum}px`}
-        >
-          <SDataTable
-            render={Box}
-            ref={forkRef(this.tableRef, this.tableContainerRef)}
-            role='grid'
-            onKeyDown={this.handleKeyDown}
-            onKeyUp={this.handleKeyUp}
-            onMouseMove={this.handleMouseMove}
-            tabIndex={0}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            isDataEmpty={this.isDataEmpty}
-            aria-rowcount={this.totalRows}
-            aria-colcount={this.columns.length}
-            gridTemplateColumns={gridTemplateColumns.join(' ')}
-            gridTemplateAreas={gridTemplateAreas.join(' ')}
-            gridTemplateRows={gridTemplateRows}
-            w='100%'
-            use:data={undefined}
-            use:w={undefined}
-            use:wMax={undefined}
-            use:wMin={undefined}
-            use:h={undefined}
-            use:hMax={undefined}
-            use:hMin={undefined}
+      <>
+        {this.hasSeparateStickyHeader() && (
+          <ScrollArea
+            leftOffset={offsetLeftSum}
+            rightOffset={offsetRightSum}
+            topOffset={topOffset}
+            w={width}
+            wMax={wMax}
+            wMin={wMin}
+            h={headerHeight}
+            shadow={true}
+            styles={scrollStyles}
+            onScroll={this.handleHeaderScroll}
+            disableAutofocusToContent={true}
+            position='sticky'
+            top={headerPropsToCheck?.top ?? 0}
+            zIndex={18}
           >
-            {children
-              ? (
-                  <Children />
-                )
-              : (
-                  <>
-                    <DataTable.Head />
-                    <DataTable.Body />
-                  </>
-                )}
-          </SDataTable>
-        </ScrollArea.Container>
+            <ScrollArea.Container
+              tabIndex={-1}
+              // @ts-ignore
+              scrollDirection={this.scrollDirection}
+              // @ts-ignore
+              loading={loading}
+              headerHeight={`${headerHeight}px`}
+              leftScrollPadding={`${offsetLeftSum}px`}
+              rightScrollPadding={`${offsetRightSum}px`}
+              ref={this.headerScrollContainerRef}
+            >
+              <DataTable.Head
+                sticky={true}
+                // @ts-ignore
+                gridTemplateRows={gridTemplateRows}
+              />
+            </ScrollArea.Container>
 
-        {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
-          <ScrollArea.Bar
-            orientation='horizontal'
-            top={topOffset - SCROLL_BAR_HEIGHT}
-            zIndex={20}
-          />
+            {headerPropsToCheck?.withScrollBar && !loading && (
+              <ScrollArea.Bar
+                orientation='horizontal'
+                top={headerHeight - SCROLL_BAR_HEIGHT}
+                zIndex={20}
+              />
+            )}
+          </ScrollArea>
         )}
+        <ScrollArea
+          leftOffset={offsetLeftSum}
+          rightOffset={offsetRightSum}
+          topOffset={topOffset}
+          w={width}
+          wMax={wMax}
+          wMin={wMin}
+          h={h}
+          hMax={hMax}
+          hMin={hMin}
+          shadow={true}
+          ref={this.scrollAreaRef}
+          container={this.tableContainerRef}
+          styles={scrollStyles}
+          onScroll={this.handleScroll}
+          disableAutofocusToContent={true}
+          onResize={this.handleContainerResizeEnd}
+        >
+          <ScrollArea.Container
+            tabIndex={-1}
+            // @ts-ignore
+            scrollDirection={this.scrollDirection}
+            // @ts-ignore
+            loading={loading}
+            headerHeight={`${headerHeight}px`}
+            leftScrollPadding={`${offsetLeftSum}px`}
+            rightScrollPadding={`${offsetRightSum}px`}
+            ref={this.bodyScrollContainerRef}
+          >
+            <SDataTable
+              render={Box}
+              ref={forkRef(this.tableRef, this.tableContainerRef)}
+              role='grid'
+              onKeyDown={this.handleKeyDown}
+              onKeyUp={this.handleKeyUp}
+              onMouseMove={this.handleMouseMove}
+              tabIndex={0}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              isDataEmpty={this.isDataEmpty}
+              aria-rowcount={this.totalRows}
+              aria-colcount={this.columns.length}
+              gridTemplateColumns={gridTemplateColumns.join(' ')}
+              gridTemplateAreas={gridTemplateAreas.join(' ')}
+              gridTemplateRows={gridTemplateRows}
+              w='100%'
+              use:data={undefined}
+              use:w={undefined}
+              use:wMax={undefined}
+              use:wMin={undefined}
+              use:h={undefined}
+              use:hMax={undefined}
+              use:hMin={undefined}
+            >
+              {children
+                ? (
+                    <Children />
+                  )
+                : (
+                    <>
+                      {!this.hasSeparateStickyHeader() && (<DataTable.Head />)}
+                      <DataTable.Body />
+                    </>
+                  )}
+            </SDataTable>
+          </ScrollArea.Container>
 
-        {!loading && (
-          <>
-            <ScrollArea.Bar orientation='horizontal' zIndex={20} />
-            <ScrollArea.Bar orientation='vertical' zIndex={20} />
-          </>
-        )}
+          {!loading && (
+            <>
+              <ScrollArea.Bar orientation='horizontal' zIndex={20} />
+              <ScrollArea.Bar orientation='vertical' zIndex={20} />
+            </>
+          )}
 
-        {selectedRows !== undefined && (
-          <ScreenReaderOnly aria-live='polite' role='status'>
-            {this.state.selectAllMessage}
-          </ScreenReaderOnly>
-        )}
-      </ScrollArea>,
+          {selectedRows !== undefined && (
+            <ScreenReaderOnly aria-live='polite' role='status'>
+              {this.state.selectAllMessage}
+            </ScreenReaderOnly>
+          )}
+        </ScrollArea>
+      </>,
     );
+  }
+
+  private hasSeparateStickyHeader() {
+    return this.scrollDirection === 'horizontal' && this.asProps.headerProps?.sticky;
   }
 
   private getScrollOffsetValue = () => {
@@ -1226,6 +1250,30 @@ class DataTableRoot<
     };
 
     return [calculatedColumns, treeColumns];
+  }
+
+  private calculateColumnsWidth() {
+    const headerGrid = this.headerRef.current;
+    const tableGrid = this.tableRef.current;
+
+    if (canUseDOM() && tableGrid && headerGrid) {
+      const body = tableGrid.children.item(0);
+      const row = body?.children.item(0);
+      const cells = row?.children ?? [];
+
+      const widths: string[] = [];
+
+      // @ts-expect-error For some reason, TS doesn't allow to iterate through the HTMLCollection
+      for (const cell of cells) {
+        const width = cell.getBoundingClientRect().width;
+
+        widths.push(`${width}px`);
+      }
+
+      const gridTemplateColumns = widths.join(' ');
+
+      headerGrid.style.setProperty('grid-template-columns', gridTemplateColumns);
+    }
   }
 
   private getFlatRows(): DTRow<UniqKeyType>[] {

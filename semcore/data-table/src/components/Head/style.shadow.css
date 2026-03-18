@@ -2,6 +2,21 @@ SHead, SGroupContainer {
   display: contents;
 }
 
+SHead[sticky] {
+  display: grid;
+  &[gridTemplateColumns] {
+    grid-template-columns: var(--gridTemplateColumns);
+  }
+
+  &[gridTemplateAreas] {
+    grid-template-areas: var(--gridTemplateAreas);
+  }
+
+  &[gridTemplateRows] {
+    grid-template-rows: var(--gridTemplateRows);
+  }
+}
+
 SHead[isDataEmpty][gridTemplateColumns] {
   display: grid;
   grid-template-columns: var(--gridTemplateColumns);
