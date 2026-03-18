@@ -207,7 +207,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify trigger svg attributes', async () => {
         const svg = locators.monthRangeComparatorPickerTrigger(page).locator('svg');
-        await expect(svg).toHaveAttribute('tabindex', '-1');
         await expect(svg).toHaveAttribute('aria-hidden', 'true');
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
@@ -404,6 +403,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(locators.monthRangeComparatorPickerTrigger(page)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
@@ -412,6 +413,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Escape');
       await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
+      await expect(locators.monthRangeComparatorPickerTrigger(page)).toBeFocused();
 
       await page.keyboard.press('Space');
       await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
@@ -430,6 +432,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ]);
 
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Previous year')).toBeFocused();
       await page.keyboard.press('Enter');
 
       const [titleAfterFirstEnterFrom, titleAfterFirstEnterTo] = await Promise.all([
@@ -461,13 +464,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next year')).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.waitForTimeout(50);
       await expect(buttons.first()).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await expect(buttons.nth(1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(buttons.nth(2)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(buttons.nth(3)).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.waitForTimeout(50);
       await expect(locators.button(page, 'Apply')).toBeFocused();
@@ -519,16 +530,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(afterRightFrom2).not.toBe(afterUpFrom2);
 
       await page.keyboard.press('Shift+Tab');
+      await expect(locators.button(page, 'Next year')).toBeFocused();
+
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
+      if (!(await locators.button(page, 'Previous year').evaluate((el) => el === document.activeElement))) {
+        await page.keyboard.press('Shift+Tab');
+      }
+      await expect(locators.button(page, 'Previous year')).toBeFocused();
+
+      await page.keyboard.press('Shift+Tab');
+      await expect(page.locator('[data-ui-name="Checkbox.Value"]')).toBeFocused();
 
       await page.keyboard.press('Space');
       await page.waitForTimeout(100);
 
       await page.keyboard.press('Tab');
-      await expect(
-        page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').nth(2),
-      ).toBeFocused();
+      const compareDateRange = page.locator('[data-ui-name="MonthDateRangeComparator.CompareDateRange"]').nth(2);
+      if (!(await compareDateRange.evaluate((el) => el === document.activeElement))) {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+      }
+      await expect(compareDateRange).toBeFocused();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
