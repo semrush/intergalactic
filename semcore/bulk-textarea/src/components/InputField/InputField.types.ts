@@ -46,9 +46,9 @@ export type InputFieldProps<T extends string | string[]> =
     onShowErrorsChange: (showErrors: boolean) => void;
     onErrorIndexChange: (errorIndex: number) => void;
     /**
-   * Return lines from textarea immediately they changed (uses mutation observer on textarea node under the hood)
-   * Throttling may be required during processing this cb
-   */
+     * Return lines from textarea immediately they changed (uses mutation observer on textarea node under the hood)
+     * Throttling may be required during processing this cb
+     */
     onImmediatelyChange?: (lines: string[], value: string) => void;
   }
   & { 'aria-describedby'?: string };

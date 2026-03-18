@@ -138,6 +138,8 @@ export type BulkTextareaInputFieldProps<T extends string | string[] = string | s
    * Function for process line after it was blurred
    */
   lineProcessing?: (line: string, lines: string[]) => string;
+  /** Defines whether the input should receive focus on initial render */
+  autoFocus?: boolean;
 };
 
 export type BulkTextareaType<T extends string | string[]> = BulkTextareaComponent & {
