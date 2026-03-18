@@ -229,12 +229,14 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       clearTimeout(this.showTimer);
     }
 
-    this.setState({ innerVisible: false });
+    if (this.state.innerVisible) {
+      this.setState({ innerVisible: false });
 
-    this.hideTimer = window.setTimeout(() => {
-      this.handlers.visible(false);
-      this.setState({ innerVisible: null });
-    }, hideTimeout);
+      this.hideTimer = window.setTimeout(() => {
+        this.handlers.visible(false);
+        this.setState({ innerVisible: null });
+      }, hideTimeout);
+    }
   }
 
   private handleFocus(e: FocusEvent): void {
