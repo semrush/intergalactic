@@ -5,7 +5,7 @@ import type { TextProps } from '@semcore/typography';
 
 import type { ButtonContext } from '../Button/Button.type';
 
-export type ButtonLinkProps = LinkProps & {
+export type ButtonLinkProps = Intergalactic.InternalTypings.EfficientOmit<LinkProps, 'enableVisited'> & {
   /**
    *  Button link type
    * @default primary
