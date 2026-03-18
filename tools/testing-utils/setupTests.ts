@@ -38,5 +38,3 @@ class ResizeObserverMock {
   disconnect() {}
 }
 (window as any).ResizeObserver = ResizeObserverMock;
-
-(window as any).requestAnimationFrame = vi.fn().mockImplementation((cb) => (cb as any)());

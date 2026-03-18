@@ -763,6 +763,8 @@ describe('Chart.Cigarette', () => {
   beforeEach(cleanup);
 
   test.concurrent('should call percentFormatter and return correct formatted percent', async () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+
     const percentFormatter = vi.fn((value: number) => value.toFixed(2));
 
     const { getByLabelText } = render(
@@ -794,6 +796,8 @@ describe('Chart.Cigarette', () => {
     expect(percentFormatter).toHaveNthReturnedWith(1, '23.81');
     expect(percentFormatter).toHaveNthReturnedWith(2, '52.38');
     expect(percentFormatter).toHaveNthReturnedWith(3, '23.81');
+
+    (window.requestAnimationFrame as any).mockRestore();
   });
 });
 
