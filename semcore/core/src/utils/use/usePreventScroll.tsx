@@ -46,10 +46,11 @@ export default function usePreventScroll(visible = true, disabled = false) {
     scrollPreventers.add(id);
     if (scrollPreventers.size > 1) return;
 
-    const { overflow, paddingRight, boxSizing } = window.getComputedStyle(document.body);
-    lockedBodyStyles.paddingRight = paddingRight;
-    lockedBodyStyles.overflow = overflow;
-    lockedBodyStyles.boxSizing = boxSizing;
+    const { paddingRight } = window.getComputedStyle(document.body);
+
+    lockedBodyStyles.paddingRight = document.body.style.paddingRight;
+    lockedBodyStyles.overflow = document.body.style.overflow;
+    lockedBodyStyles.boxSizing = document.body.style.boxSizing;
 
     const intPaddingRight = getIntValueFromCss(paddingRight);
     let intPaddingRightFromStyle = getIntValueFromCss(document.body.style.paddingRight);
