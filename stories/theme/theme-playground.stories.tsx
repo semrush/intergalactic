@@ -361,7 +361,7 @@ function ThemePlaygroundContent() {
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
-              <ButtonRow use='secondary' theme='muted' />
+              <ButtonRow />
               {/* <ButtonRow use='secondary' theme='info' /> */}
             </Flex>
 
@@ -381,7 +381,7 @@ function ThemePlaygroundContent() {
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
-              <ButtonRow use='secondary' theme='muted' size='l' />
+              <ButtonRow size='l' />
               {/* <ButtonRow use='secondary' theme='info' size='l' /> */}
             </Flex>
 

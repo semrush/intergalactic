@@ -297,11 +297,24 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     return result;
   };
 
+  /** Converts color-mix(..., {gray.white} 95%, {blue.500} 5%) to CSS with var() references. */
+  const resolveColorMix = (value: string): string => {
+    return value.replace(/\{([^}]+)\}/g, (_match, ref) => {
+      const varName = ref.replace(/\./g, '-');
+      return `var(--${varName})`;
+    });
+  };
+
   const rawValues = { ...values };
 
   for (const token in values) {
     if (types[token] === 'color') {
-      values[token] = resolveColor(values[token]);
+      const rawValue = values[token].trim();
+      if (rawValue.startsWith('color-mix(')) {
+        values[token] = resolveColorMix(values[token]);
+      } else {
+        values[token] = resolveColor(values[token]);
+      }
       if (typeof values[token] === 'string' && values[token].trim().startsWith('oklch(')) {
         try {
           const c = new Color(values[token].trim());

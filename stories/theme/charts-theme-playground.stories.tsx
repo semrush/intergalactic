@@ -1,8 +1,8 @@
 import { Box, Flex } from '@semcore/ui/base-components';
-import { Chart, Plot, Line, XAxis, YAxis, minMax, HorizontalBar } from '@semcore/ui/d3-chart';
+import { Chart, ChartLegend, Plot, Line, XAxis, YAxis, minMax, HorizontalBar, HoverLine } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { scaleBand, scaleLinear } from 'd3-scale';
+import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 import { ThemePlaygroundLayout } from './theme-playground-switcher';
@@ -17,6 +17,36 @@ import ScatterplotMockData from '../components/d3-chart/__mocks__/scatterplot';
 import StackedAreaMockData from '../components/d3-chart/__mocks__/stacked-area';
 import VennMockData from '../components/d3-chart/__mocks__/venn';
 import './theme-playground-fonts.css';
+
+/** Line chart (2 series), временная ось X — при каждой перезагрузке страницы генерируются заново */
+const LineChartTwoLinesData = Array.from({ length: 20 }, (_, i) => ({
+  date: new Date(2026, 0, 1 + i),
+  line1: Math.round(Math.random() * 10 * 10) / 10,
+  line2: Math.round(Math.random() * 10 * 10) / 10,
+}));
+
+/** Line.Area chart, временная ось X — при каждой перезагрузке страницы генерируются заново */
+const LineAreaChartData = Array.from({ length: 20 }, (_, i) => {
+  const y = Math.round(Math.random() * 8 * 10) / 10;
+  const spread = Math.round(Math.random() * 4 * 10) / 10;
+  return {
+    date: new Date(2026, 0, 1 + i),
+    y,
+    y0: Math.max(0, y - spread),
+    y1: y + spread,
+  };
+});
+
+/** 10 data series for Line chart (временная ось X) — при каждой перезагрузке страницы генерируются заново */
+const LineChartTenSeriesData = Array.from({ length: 20 }, (_, i) => {
+  const row: Record<string, Date | number> = {
+    date: new Date(2026, 0, 1 + i),
+  };
+  for (let s = 1; s <= 10; s++) {
+    row[`line${s}`] = Math.round(Math.random() * 3 * 10) / 10;
+  }
+  return row;
+});
 
 /** 5 data series for Scatterplot with chart-palette-order-1 … chart-palette-order-5 */
 const ScatterplotFiveSeriesData = [
@@ -34,6 +64,17 @@ const ScatterplotFiveSeriesData = [
 
 const LAZZER_FONT = '\'Lazzer\', sans-serif';
 
+/** Stacked bar: 5 months, 3 series (для графика над Horizontal bar) */
+const stackedBarChartData = [
+  { month: 'Jan', a: 4, b: 3, c: 2 },
+  { month: 'Feb', a: 5, b: 4, c: 1 },
+  { month: 'Mar', a: 3, b: 5, c: 3 },
+  { month: 'Apr', a: 6, b: 2, c: 4 },
+  { month: 'May', a: 4, b: 4, c: 5 },
+];
+const stackedBarLegendIds = ['a', 'b', 'c'] as const;
+const stackedBarColorMap = { a: 'blue-500', b: 'blue-300', c: 'blue-100' } as const;
+
 const meta: Meta = {
   title: 'Theme/Charts Theme Playground',
 };
@@ -48,32 +89,53 @@ const vennLegendMap = {
   C: { label: 'Clean' },
 };
 
+const formatXDate = (value: Date) => `${value.toLocaleDateString('en-US', { month: 'short' })} ${value.getDate()}`;
+
 function LineAreaChart({
   data,
   width,
   height,
 }: {
-  data: Array<{ x: number; y: number; y0: number; y1: number }>;
+  data: Array<{ date: Date; y: number; y0: number; y1: number }>;
   width: number;
   height: number;
 }) {
   const MARGIN = 40;
-  const xScale = scaleLinear()
+  const xScale = scaleTime()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain(minMax(data, 'date') as [Date, Date]);
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
     .domain([0, Math.max(...data.map((d) => d.y1))]);
+  const yTicks = yScale.ticks(3);
+  const xTicks = xScale.ticks(10);
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
+        <YAxis.Ticks ticks={yTicks} />
+        <YAxis.Grid ticks={yTicks} />
       </YAxis>
       <XAxis>
-        <XAxis.Ticks />
+        <XAxis.Ticks ticks={xTicks}>{(p: { value: Date }) => ({ children: formatXDate(p.value) })}</XAxis.Ticks>
       </XAxis>
-      <Line x='x' y='y'>
+      <HoverLine.Tooltip x='date' wMin={100}>
+        {({ xIndex }: { xIndex: number | null }) => {
+          if (xIndex == null) return { children: null };
+          const d = data[xIndex];
+          return {
+            children: (
+              <>
+                <HoverLine.Tooltip.Title>{formatXDate(d.date)}</HoverLine.Tooltip.Title>
+                <Flex justifyContent='space-between'>
+                  <HoverLine.Tooltip.Dot mr={4}>y</HoverLine.Tooltip.Dot>
+                  <Text bold>{d.y}</Text>
+                </Flex>
+              </>
+            ),
+          };
+        }}
+      </HoverLine.Tooltip>
+      <Line x='date' y='y'>
         <Line.Area y0='y0' y1='y1' />
       </Line>
     </Plot>
@@ -116,6 +178,31 @@ function HorizontalBarChart({
 }
 
 function ChartsThemePlaygroundContent() {
+  const [stackedBarVisible, setStackedBarVisible] = React.useState<
+    Record<(typeof stackedBarLegendIds)[number], boolean>
+  >({ a: true, b: true, c: true });
+  const stackedBarLegendItems = React.useMemo(
+    () =>
+      stackedBarLegendIds.map((id) => ({
+        id,
+        label: id,
+        checked: stackedBarVisible[id],
+        color: stackedBarColorMap[id],
+      })),
+    [stackedBarVisible],
+  );
+  const stackedBarDataFiltered = React.useMemo(
+    () =>
+      stackedBarChartData.map((row) => {
+        const out: Record<string, string | number> = { month: row.month };
+        stackedBarLegendIds.forEach((key) => {
+          if (stackedBarVisible[key]) out[key] = row[key];
+        });
+        return out;
+      }),
+    [stackedBarVisible],
+  );
+
   return (
     <ThemePlaygroundLayout switcherZIndex={10000}>
       <Box p={6} style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
@@ -132,10 +219,12 @@ function ChartsThemePlaygroundContent() {
                 Line chart
               </Text>
               <Chart.Line
-                groupKey='x'
-                data={LineMockData.TwoLines}
-                plotWidth={400}
-                plotHeight={240}
+                groupKey='date'
+                data={LineChartTwoLinesData}
+                plotWidth={500}
+                plotHeight={200}
+                yTicksCount={3}
+                axisXValueFormatter={(value: Date) => `${value.toLocaleDateString('en-US', { month: 'short' })} ${value.getDate()}`}
                 showDots
                 aria-label='Line chart'
               />
@@ -144,7 +233,7 @@ function ChartsThemePlaygroundContent() {
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
                 Line.Area chart
               </Text>
-              <LineAreaChart data={LineMockData.Area} width={400} height={240} />
+              <LineAreaChart data={LineAreaChartData} width={500} height={200} />
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -153,8 +242,11 @@ function ChartsThemePlaygroundContent() {
               <Chart.Area
                 groupKey='time'
                 data={StackedAreaMockData.Default}
-                plotWidth={400}
-                plotHeight={240}
+                plotWidth={500}
+                plotHeight={200}
+                xTicksCount={10}
+                yTicksCount={6}
+                axisXValueFormatter={(value: Date) => `${value.toLocaleDateString('en-US', { month: 'short' })} ${value.getDate()}`}
                 showDots
                 stacked
                 aria-label='Area chart stacked'
@@ -162,15 +254,21 @@ function ChartsThemePlaygroundContent() {
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-                Bar chart
+                Histogram
               </Text>
               <Chart.Bar
                 groupKey='category'
                 data={BarMockData.Default}
-                plotWidth={400}
+                plotWidth={500}
                 plotHeight={240}
                 aria-label='Bar chart'
               />
+            </Box>
+            <Box>
+              <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+                Horizontal bar chart
+              </Text>
+              <HorizontalBarChart data={BarMockData.Default} width={500} height={240} />
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -178,7 +276,7 @@ function ChartsThemePlaygroundContent() {
               </Text>
               <Chart.Bubble
                 data={BubbleMockData.Label}
-                plotWidth={400}
+                plotWidth={500}
                 plotHeight={240}
                 aria-label='Bubble chart'
               />
@@ -190,7 +288,7 @@ function ChartsThemePlaygroundContent() {
               <Chart.ScatterPlot
                 data={ScatterplotMockData.Default}
                 groupKey='x'
-                plotWidth={400}
+                plotWidth={500}
                 plotHeight={240}
                 aria-label='Scatterplot chart'
               />
@@ -202,7 +300,7 @@ function ChartsThemePlaygroundContent() {
               <Chart.ScatterPlot
                 data={ScatterplotFiveSeriesData}
                 groupKey='x'
-                plotWidth={400}
+                plotWidth={500}
                 plotHeight={240}
                 showLegend
                 aria-label='Scatterplot chart with 5 palette colors'
@@ -249,9 +347,26 @@ function ChartsThemePlaygroundContent() {
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
-                Horizontal bar chart
+                Bar
               </Text>
-              <HorizontalBarChart data={BarMockData.Default} width={400} height={240} />
+              <Flex direction='column' alignItems='flex-start' mb={2}>
+                <ChartLegend
+                  items={stackedBarLegendItems}
+                  aria-label='Stacked bar legend'
+                  onChangeVisibleItem={(key, checked) => setStackedBarVisible((prev) => ({ ...prev, [key]: checked }))}
+                />
+              </Flex>
+              <Chart.Bar
+                groupKey='month'
+                data={stackedBarDataFiltered}
+                plotWidth={400}
+                plotHeight={200}
+                type='stack'
+                showLegend={false}
+                yTicksCount={3}
+                colorMap={stackedBarColorMap}
+                aria-label='Stacked bar chart'
+              />
             </Box>
             <Box>
               <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
@@ -281,6 +396,24 @@ function ChartsThemePlaygroundContent() {
             </Box>
           </Flex>
         </Flex>
+
+        <Box mt={10} w={600}>
+          <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>
+            Line chart
+          </Text>
+          <Chart.Line
+            groupKey='date'
+            data={LineChartTenSeriesData}
+            plotWidth={600}
+            plotHeight={240}
+            marginY={48}
+            yTicksCount={3}
+            axisXValueFormatter={(value: Date) => `${value.toLocaleDateString('en-US', { month: 'short' })} ${value.getDate()}`}
+            showDots
+            legendProps={{ flexWrap: 'wrap' }}
+            aria-label='Line chart with 10 datasets'
+          />
+        </Box>
 
         <Box mt={10}>
           <Text tag='h2' size={400} semibold mb={4} color='text-primary' style={{ fontFamily: LAZZER_FONT }}>

@@ -203,7 +203,7 @@
   /* Link text. */
   --intergalactic-text-link: #2969ff;
   /* Hover and active states for the link text. */
-  --intergalactic-text-link-hover-active: #1640a1;
+  --intergalactic-text-link-hover-active: #2969ff;
   /* Inverted version of the link text. Use on dark background only. */
   --intergalactic-text-link-invert: #d0e0fe;
   /* Hover and active states of the inverted version of the link text. Use on dark background only. */
@@ -235,13 +235,13 @@
   /* Advertising text. */
   --intergalactic-text-advertising: #7d26e8;
   /* Neutral primary border. */
-  --intergalactic-border-primary: rgba(222, 223, 226, 0.7);
+  --intergalactic-border-primary: rgba(222, 223, 226, 0.9);
   /* Subtle secondary border. */
-  --intergalactic-border-secondary: rgba(222, 223, 226, 0.5);
+  --intergalactic-border-secondary: rgba(222, 223, 226, 0.7);
   /* Subtle secondary border in the informational message. */
   --intergalactic-border-info: #bdd1ff;
   /* Active border in focused input filed. */
-  --intergalactic-border-info-active: #181e15;
+  --intergalactic-border-info-active: rgba(41, 105, 255, 0.5);
   /* Subtle secondary border in the successful message and input field. */
   --intergalactic-border-success: #13c79e;
   /* Active border in the focused input field with valid state. */
@@ -261,7 +261,7 @@
   /* Border of the Tooltip with dark theme. */
   --intergalactic-border-tooltip-invert: #6c6e79;
   /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
-  --intergalactic-border-table-accent: rgba(222, 223, 226, 0.7);
+  --intergalactic-border-table-accent: rgba(222, 223, 226, 0.9);
   /* Border color of the second period for the comparison mode in the DatePicker. */
   --intergalactic-border-date-picker-range-comparison: #a070fe;
   /* Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states. */
@@ -310,12 +310,12 @@
   --intergalactic-control-secondary-neutral-hover: rgba(123, 153, 150, 0.2);
   /* Active (selected) state of the regular secondary control. */
   --intergalactic-control-secondary-neutral-active: rgba(123, 153, 150, 0.3);
-  /* Background of the accent secondary control. */
-  --intergalactic-control-secondary-info: rgba(123, 153, 150, 0.1);
-  /* Hover state of the accent secondary control. */
-  --intergalactic-control-secondary-info-hover: rgba(123, 153, 150, 0.2);
-  /* Active (selected) state of the accent secondary control. */
-  --intergalactic-control-secondary-info-active: rgba(123, 153, 150, 0.3);
+  /* Background of the accent secondary control (white with 5% blue overlay). */
+  --intergalactic-control-secondary-info: color-mix(in srgb, var(--gray-white) 90%, var(--blue-500) 10%);
+  /* Hover state of the accent secondary control (white with 20% blue overlay). */
+  --intergalactic-control-secondary-info-hover: color-mix(in srgb, var(--gray-white) 85%, var(--blue-500) 15%);
+  /* Active (selected) state of the accent secondary control (white with 30% blue overlay). */
+  --intergalactic-control-secondary-info-active: color-mix(in srgb, var(--gray-white) 80%, var(--blue-500) 20%);
   /* Background of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert: rgba(255, 255, 255, 0.05);
   /* Hover state of the inverted version of the secondary control. */
@@ -341,9 +341,9 @@
   /* Active (selected) state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
   /* Primary neutral icon. */
-  --intergalactic-icon-primary-neutral: #90929a;
+  --intergalactic-icon-primary-neutral: #a9aab1;
   /* Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color. */
-  --intergalactic-icon-primary-neutral-hover-active: #6c6e79;
+  --intergalactic-icon-primary-neutral-hover-active: #90929a;
   /* Primary link-lookalike icon. */
   --intergalactic-icon-primary-info: #709bff;
   /* Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color. */
@@ -425,11 +425,11 @@
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
   /* Hover state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-hover: rgba(123, 153, 150, 0.1);
+  --intergalactic-dropdown-menu-item-hover: rgba(41, 105, 255, 0.1);
   /* Active (selected) state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected: rgba(41, 105, 255, 0.1);
+  --intergalactic-dropdown-menu-item-selected: rgba(41, 105, 255, 0.2);
   /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
-  --intergalactic-dropdown-menu-item-selected-hover: rgba(41, 105, 255, 0.2);
+  --intergalactic-dropdown-menu-item-selected-hover: rgba(41, 105, 255, 0.3);
   /* Color of the FeaturePopover background with accent theme. */
   --intergalactic-feature-popover-bg: #e0c7ff;
   /* Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme. */
@@ -539,7 +539,7 @@
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(24, 30, 21, 0.15);
   /* Color for default keyboard focus outline styles. */
-  --intergalactic-keyboard-focus-outline: #181e15;
+  --intergalactic-keyboard-focus-outline: #2969ff;
   /* Color for keyboard focus outline styles for elements with invalid state. */
   --intergalactic-keyboard-focus-invalid-outline: #ff5454;
   /* Keyboard focus styles for elements with invalid state. */
@@ -553,7 +553,7 @@
   /* Keyboard focus styles for use on dark backgrounds. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.8);
   /* Default keyboard focus box-shadow styles. */
-  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(24, 30, 21, 0.5);
+  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(41, 105, 255, 0.5);
   /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
@@ -774,47 +774,47 @@
   /* 3 color in the default list of colors for charts. */
   --intergalactic-chart-palette-order-3: #c190ff;
   /* 4 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-4: #c190ff;
+  --intergalactic-chart-palette-order-4: #ff7f72;
   /* 5 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-5: #ffc954;
+  --intergalactic-chart-palette-order-5: #e66536;
   /* 6 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-6: #c190ff;
+  --intergalactic-chart-palette-order-6: #ffc954;
   /* 7 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-7: #ff5454;
+  --intergalactic-chart-palette-order-7: #44c15d;
   /* 8 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-8: #89ff75;
+  --intergalactic-chart-palette-order-8: #e14adf;
   /* 9 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-9: #83aaf7;
+  --intergalactic-chart-palette-order-9: #bdd1ff;
   /* 10 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-10: #0faa88;
+  --intergalactic-chart-palette-order-10: #13c79e;
   /* 11 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-11: #f9b29a;
+  --intergalactic-chart-palette-order-11: #cbb7ff;
   /* 12 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-12: #ff87eb;
+  --intergalactic-chart-palette-order-12: #ff5454;
   /* 13 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-13: #e89325;
+  --intergalactic-chart-palette-order-13: #f9b29a;
   /* 14 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-14: #cbb7ff;
+  --intergalactic-chart-palette-order-14: #e89325;
   /* 15 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-15: #ff7f72;
+  --intergalactic-chart-palette-order-15: #44ab58;
   /* 16 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-16: #44ab58;
+  --intergalactic-chart-palette-order-16: #ffa9fa;
   /* 17 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-17: #bdd1ff;
+  --intergalactic-chart-palette-order-17: #83aaf7;
   /* 18 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-18: #13c79e;
+  --intergalactic-chart-palette-order-18: #0faa88;
   /* 19 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-19: #e66536;
+  --intergalactic-chart-palette-order-19: #c190ff;
   /* 20 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-20: #ffa9fa;
+  --intergalactic-chart-palette-order-20: #ffa79a;
   /* 21 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-21: #da9f21;
+  --intergalactic-chart-palette-order-21: #f28b68;
   /* 22 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-22: #a070fe;
+  --intergalactic-chart-palette-order-22: #da9f21;
   /* 23 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-23: #ffa79a;
+  --intergalactic-chart-palette-order-23: #89ff75;
   /* 24 color in the default list of colors for charts. */
-  --intergalactic-chart-palette-order-24: #44c15d;
+  --intergalactic-chart-palette-order-24: #ff87eb;
   /* Use it to show total value. */
   --intergalactic-chart-palette-order-total-amount: #90929a;
   /* Use it to indicate voids, missing or some other data. */
@@ -822,9 +822,9 @@
   /* Use it to show null value. */
   --intergalactic-chart-palette-order-null: #dedfe2;
   /* Default chart grid line. */
-  --intergalactic-chart-grid-line: rgba(222, 223, 226, 0.5);
+  --intergalactic-chart-grid-line: rgba(222, 223, 226, 0.7);
   /* X-axis line on the chart grid. */
-  --intergalactic-chart-grid-x-axis: rgba(222, 223, 226, 0.7);
+  --intergalactic-chart-grid-x-axis: rgba(222, 223, 226, 0.9);
   /* Accent line for the hover state on the chart grid. */
   --intergalactic-chart-grid-y-accent-hover-line: #d1d2d5;
   /* Text label on the chart grid. */
@@ -844,14 +844,14 @@
   /* Background color for the "Start tracking" date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(19, 199, 158, 0.2);
   --intergalactic-header-bg: rgba(240, 241, 242, 0.6);
-  --intergalactic-header-border-primary: rgba(222, 223, 226, 0.7);
-  --intergalactic-header-border-secondary: rgba(222, 223, 226, 0.5);
+  --intergalactic-header-border-primary: rgba(222, 223, 226, 0.9);
+  --intergalactic-header-border-secondary: rgba(222, 223, 226, 0.7);
   --intergalactic-sidebar-nav-control-hover: rgba(222, 223, 226, 0.3);
   --intergalactic-sidebar-nav-control-active: #dedfe2;
   --intergalactic-sidebar-nav-control-text-normal: #6c6e79;
   --intergalactic-sidebar-nav-control-text-active: #181e15;
   --intergalactic-sidebar-nav-control-icon-normal: #a9aab1;
-  --intergalactic-sidebar-nav-control-icon-active: #90929a;
+  --intergalactic-sidebar-nav-control-icon-active: #a9aab1;
   /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
   --intergalactic-duration-extra-slow: 500;
   /* Should be used for more larger scale animations (such as page transitions) */

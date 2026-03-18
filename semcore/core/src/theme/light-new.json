@@ -644,7 +644,7 @@
           "description": "Link text."
         },
         "link-hover-active": {
-          "value": "{blue.600}",
+          "value": "{blue.500}",
           "type": "color",
           "description": "Hover and active states for the link text."
         },
@@ -726,12 +726,12 @@
       },
       "border": {
         "primary": {
-          "value": "rgba({gray.100}, 0.7)",
+          "value": "rgba({gray.100}, 0.9)",
           "type": "color",
           "description": "Neutral primary border."
         },
         "secondary": {
-          "value": "rgba({gray.100}, 0.5)",
+          "value": "rgba({gray.100}, 0.7)",
           "type": "color",
           "description": "Subtle secondary border."
         },
@@ -741,7 +741,7 @@
           "description": "Subtle secondary border in the informational message."
         },
         "info-active": {
-          "value": "{gray.800}",
+          "value": "rgba({blue.500}, 0.5)",
           "type": "color",
           "description": "Active border in focused input filed."
         },
@@ -921,19 +921,19 @@
             "description": "Active (selected) state of the regular secondary control."
           },
           "info": {
-            "value": "rgba({violet.dusty.400}, 0.1)",
+            "value": "color-mix(in srgb, {gray.white} 90%, {blue.500} 10%)",
             "type": "color",
-            "description": "Background of the accent secondary control."
+            "description": "Background of the accent secondary control (white with 5% blue overlay)."
           },
           "info-hover": {
-            "value": "rgba({violet.dusty.400}, 0.2)",
+            "value": "color-mix(in srgb, {gray.white} 85%, {blue.500} 15%)",
             "type": "color",
-            "description": "Hover state of the accent secondary control."
+            "description": "Hover state of the accent secondary control (white with 20% blue overlay)."
           },
           "info-active": {
-            "value": "rgba({violet.dusty.400}, 0.3)",
+            "value": "color-mix(in srgb, {gray.white} 80%, {blue.500} 20%)",
             "type": "color",
-            "description": "Active (selected) state of the accent secondary control."
+            "description": "Active (selected) state of the accent secondary control (white with 30% blue overlay)."
           },
           "invert": {
             "value": "rgba({gray.white}, 0.05)",
@@ -1002,12 +1002,12 @@
       "icon": {
         "primary": {
           "neutral": {
-            "value": "{gray.400}",
+            "value": "{gray.300}",
             "type": "color",
             "description": "Primary neutral icon."
           },
           "neutral-hover-active": {
-            "value": "{gray.500}",
+            "value": "{gray.400}",
             "type": "color",
             "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color."
           },
@@ -1221,17 +1221,17 @@
           "description": "Default background color for the list item in the dropdown-menu."
         },
         "item-hover": {
-          "value": "rgba({violet.dusty.400}, 0.1)",
+          "value": "rgba({blue.500}, 0.1)",
           "type": "color",
           "description": "Hover state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected": {
-          "value": "rgba({blue.500}, 0.1)",
+          "value": "rgba({blue.500}, 0.2)",
           "type": "color",
           "description": "Active (selected) state of the default background color for the list item in the dropdown-menu."
         },
         "item-selected-hover": {
-          "value": "rgba({blue.500}, 0.2)",
+          "value": "rgba({blue.500}, 0.3)",
           "type": "color",
           "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu."
         }
@@ -1600,7 +1600,7 @@
         "type": "boxShadow",
         "description": "Default keyboard focus box-shadow styles.",
         "outline": {
-          "value": "{gray.800}",
+          "value": "{blue.500}",
           "type": "color",
           "description": "Color for default keyboard focus outline styles."
         },
@@ -2301,107 +2301,107 @@
             "description": "3 color in the default list of colors for charts."
           },
           "4": {
-            "value": "{violet.300}",
+            "value": "{red.300}",
             "type": "color",
             "description": "4 color in the default list of colors for charts."
           },
           "5": {
-            "value": "{yellow.200}",
+            "value": "{orange.400}",
             "type": "color",
             "description": "5 color in the default list of colors for charts."
           },
           "6": {
-            "value": "{violet.300}",
+            "value": "{yellow.200}",
             "type": "color",
             "description": "6 color in the default list of colors for charts."
           },
           "7": {
-            "value": "{red.400}",
+            "value": "{salad.300}",
             "type": "color",
             "description": "7 color in the default list of colors for charts."
           },
           "8": {
-            "value": "{salad.200}",
+            "value": "{pink.400}",
             "type": "color",
             "description": "8 color in the default list of colors for charts."
           },
           "9": {
-            "value": "{blue.300}",
+            "value": "{blue.200}",
             "type": "color",
             "description": "9 color in the default list of colors for charts."
           },
           "10": {
-            "value": "{green.400}",
+            "value": "{green.300}",
             "type": "color",
             "description": "10 color in the default list of colors for charts."
           },
           "11": {
-            "value": "{orange.200}",
+            "value": "{violet.200}",
             "type": "color",
             "description": "11 color in the default list of colors for charts."
           },
           "12": {
-            "value": "{pink.300}",
+            "value": "{red.400}",
             "type": "color",
             "description": "12 color in the default list of colors for charts."
           },
           "13": {
-            "value": "{yellow.400}",
+            "value": "{orange.200}",
             "type": "color",
             "description": "13 color in the default list of colors for charts."
           },
           "14": {
-            "value": "{violet.200}",
+            "value": "{yellow.400}",
             "type": "color",
             "description": "14 color in the default list of colors for charts."
           },
           "15": {
-            "value": "{red.300}",
+            "value": "{salad.400}",
             "type": "color",
             "description": "15 color in the default list of colors for charts."
           },
           "16": {
-            "value": "{salad.400}",
+            "value": "{pink.200}",
             "type": "color",
             "description": "16 color in the default list of colors for charts."
           },
           "17": {
-            "value": "{blue.200}",
+            "value": "{blue.300}",
             "type": "color",
             "description": "17 color in the default list of colors for charts."
           },
           "18": {
-            "value": "{green.300}",
+            "value": "{green.400}",
             "type": "color",
             "description": "18 color in the default list of colors for charts."
           },
           "19": {
-            "value": "{orange.400}",
+            "value": "{violet.300}",
             "type": "color",
             "description": "19 color in the default list of colors for charts."
           },
           "20": {
-            "value": "{pink.200}",
+            "value": "{red.200}",
             "type": "color",
             "description": "20 color in the default list of colors for charts."
           },
           "21": {
-            "value": "{yellow.300}",
+            "value": "{orange.300}",
             "type": "color",
             "description": "21 color in the default list of colors for charts."
           },
           "22": {
-            "value": "{violet.400}",
+            "value": "{yellow.300}",
             "type": "color",
             "description": "22 color in the default list of colors for charts."
           },
           "23": {
-            "value": "{red.200}",
+            "value": "{salad.200}",
             "type": "color",
             "description": "23 color in the default list of colors for charts."
           },
           "24": {
-            "value": "{salad.300}",
+            "value": "{pink.300}",
             "type": "color",
             "description": "24 color in the default list of colors for charts."
           },
