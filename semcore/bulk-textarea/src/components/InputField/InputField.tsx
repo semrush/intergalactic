@@ -121,8 +121,7 @@ class InputField<T extends string | string[]> extends Component<
       this.observer.observe(this.textarea, config);
     }
 
-    const isActive = !disabled && !readonly;
-    if (autoFocus && isActive) {
+    if (autoFocus && !disabled) {
       setTimeout(() => this.textarea.focus(), 1);
     }
   }
