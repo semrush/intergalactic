@@ -63,14 +63,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(locators.triggerBth(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Focus on Link', async () => {
-      await page.waitForTimeout(100);
       await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
       await expect(locators.triggerLink(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
+      await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
