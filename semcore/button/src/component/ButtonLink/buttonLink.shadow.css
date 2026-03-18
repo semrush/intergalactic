@@ -5,6 +5,12 @@ SButtonLink {
 
 SButtonLink[use='primary']:not([color]) {
   color: var(--intergalactic-text-link, #006dca);
+
+  &[active],
+  &:active,
+  &:hover {
+    color: var(--intergalactic-text-link-hover-active, #044792);
+  }
 }
 
 SButtonLink[use='secondary']:not([color]) {
