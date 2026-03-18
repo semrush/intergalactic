@@ -924,7 +924,7 @@ class DataTableRoot<
               ref={this.headerScrollContainerRef}
             >
               <DataTable.Head
-                sticky={true}
+                use='sticky'
                 // @ts-ignore
                 gridTemplateRows={gridTemplateRows}
               />

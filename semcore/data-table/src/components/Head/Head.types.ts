@@ -7,6 +7,11 @@ import type { DataTableData, DataTableProps, DTUse } from '../DataTable/DataTabl
 
 export type DataTableHeadProps = {
   /**
+   * Use Head as separate sticky container with display grid and calculation widths form body columns.
+   * @default undefined
+   */
+  use?: 'sticky';
+  /**
    * Sticky header
    * @default false
    */

@@ -172,8 +172,8 @@
       "vue-demi"
     ],
     "onlyBuiltDependencies": [
-      "pngquant-bin",
-      "esbuild"
+      "esbuild",
+      "pngquant-bin"
     ]
   }
 }

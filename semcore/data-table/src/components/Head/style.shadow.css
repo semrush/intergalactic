@@ -2,7 +2,7 @@ SHead, SGroupContainer {
   display: contents;
 }
 
-SHead[sticky] {
+SHead[use='sticky'] {
   display: grid;
   &[gridTemplateColumns] {
     grid-template-columns: var(--gridTemplateColumns);
