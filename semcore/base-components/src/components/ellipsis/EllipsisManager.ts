@@ -207,17 +207,38 @@ class EllipsisManager {
   private handleCopy(event: ClipboardEvent) {
     if (event instanceof ClipboardEvent && event.target instanceof HTMLElement && event.target.parentElement instanceof HTMLElement) {
       const selection = window.getSelection();
-      const ellipsis = this.ellipsisEntities.get(event.target.parentElement);
+      let ellipsis = this.ellipsisEntities.get(event.target);
+
+      if (event.target.getAttribute('aria-hidden') === 'true') {
+        ellipsis = this.ellipsisEntities.get(event.target.parentElement);
+      }
 
       if (selection && ellipsis) {
         const ellipsisSpans = ellipsis.element.childNodes;
         const croppedSpan = ellipsisSpans[0];
+        const lastSpan = ellipsisSpans[ellipsisSpans.length - 2];
         const fullSpan = ellipsisSpans[ellipsisSpans.length - 1];
 
-        const isCroppedSelected = (selection.anchorNode === croppedSpan?.childNodes[0] && selection.focusOffset === croppedSpan?.textContent?.length) || (selection.focusNode === croppedSpan?.childNodes[0] && selection.focusOffset === 0);
-        const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && selection.focusOffset === fullSpan?.textContent?.length;
+        const croppedLength = croppedSpan?.textContent?.length;
+        const lastLength = lastSpan?.textContent?.length;
+
+        const anchorInCropped = selection.anchorNode === croppedSpan?.childNodes[0];
+        const anchorInLast = selection.anchorNode === lastSpan?.childNodes[0];
+        const focusInCropped = selection.focusNode === croppedSpan?.childNodes[0];
+        const focusInLast = selection.focusNode === lastSpan?.childNodes[0];
+
+        const anchorOffset = selection.anchorOffset;
+        const focusOffset = selection.focusOffset;
+
+        const isCroppedSelected =
+          (anchorInCropped && focusOffset === croppedLength) ||
+          (anchorInLast && anchorOffset === lastLength && focusInCropped && focusOffset === 0) ||
+          (focusInLast && focusOffset === lastLength);
+
+        const isFullSelected = selection.focusNode === fullSpan?.childNodes[0] && focusOffset === fullSpan?.textContent?.length;
 
         if (fullSpan?.textContent && (!(selection.focusNode instanceof Text) || isCroppedSelected || isFullSelected)) {
+          event.preventDefault();
           navigator.clipboard.writeText(fullSpan.textContent);
         }
       }
