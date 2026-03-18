@@ -1268,13 +1268,14 @@ class DataTableRoot<
     if (canUseDOM() && tableGrid && headerGrid) {
       const body = tableGrid.children.item(0);
       const row = body?.children.item(0);
-      const cells = row?.children ?? [];
+      const cells = row?.children;
+
+      if (!cells) return;
 
       const widths: string[] = [];
 
-      // @ts-expect-error For some reason, TS doesn't allow to iterate through the HTMLCollection
-      for (const cell of cells) {
-        const width = cell.getBoundingClientRect().width;
+      for (let i = 0; i < cells.length; i++) {
+        const width = cells[i].getBoundingClientRect().width;
 
         widths.push(`${width}px`);
       }
