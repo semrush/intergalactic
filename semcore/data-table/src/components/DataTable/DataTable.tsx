@@ -1006,6 +1006,14 @@ class DataTableRoot<
             </SDataTable>
           </ScrollArea.Container>
 
+          {!this.hasSeparateStickyHeader() && headerPropsToCheck?.withScrollBar && topOffset && !loading && (
+            <ScrollArea.Bar
+              orientation='horizontal'
+              top={topOffset - SCROLL_BAR_HEIGHT}
+              zIndex={20}
+            />
+          )}
+
           {!loading && (
             <>
               <ScrollArea.Bar orientation='horizontal' zIndex={20} />
