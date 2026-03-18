@@ -32,9 +32,9 @@ function getIntValueFromCss(value: any) {
 
 const scrollPreventers = new Set<string>();
 const lockedBodyStyles = {
-  paddingRight: null as string | null,
-  overflow: null as string | null,
-  boxSizing: null as string | null,
+  paddingRight: '',
+  overflow: '',
+  boxSizing: '',
 };
 export default function usePreventScroll(visible = true, disabled = false) {
   const scrollbarWidth = React.useMemo(getScrollbarWidth, [getScrollbarWidth]);
@@ -71,9 +71,9 @@ export default function usePreventScroll(visible = true, disabled = false) {
     return () => {
       scrollPreventers.delete(id);
       if (scrollPreventers.size !== 0) return;
-      document.body.style.overflow = lockedBodyStyles.overflow!;
-      document.body.style.paddingRight = lockedBodyStyles.paddingRight!;
-      document.body.style.boxSizing = lockedBodyStyles.boxSizing!;
+      document.body.style.overflow = lockedBodyStyles.overflow;
+      document.body.style.paddingRight = lockedBodyStyles.paddingRight;
+      document.body.style.boxSizing = lockedBodyStyles.boxSizing;
     };
   }, [visible, id, disabled]);
 }
