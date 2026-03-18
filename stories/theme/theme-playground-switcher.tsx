@@ -21,10 +21,10 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 export const THEMES = [
-  { id: 'light-new', label: '[new] light-new', tokens: lightNewThemeTokens },
-  { id: 'light-new-2ver', label: '[new] light-new-crazy', tokens: lightNew2verThemeTokens },
   { id: 'light', label: '[current] light', tokens: defaultThemeTokens },
   { id: 'new-adjusted', label: '[new] light-new adjusted from Lesha', tokens: newAdjustedThemeTokens },
+  { id: 'light-new', label: '[new] light-new', tokens: lightNewThemeTokens },
+  { id: 'light-new-2ver', label: '[new] light-new-crazy', tokens: lightNew2verThemeTokens },
   { id: 'new', label: '[new] product test', tokens: newThemeTokens },
   { id: 'aqua-green', label: '[marketing] 🟦 aqua green', tokens: aquaGreenThemeTokens },
   { id: 'lime-green', label: '[marketing] 🟩 lime green', tokens: limeGreenThemeTokens },
@@ -33,10 +33,10 @@ export const THEMES = [
 
 /** Feature Highlight tokens per theme (border, bg, control, etc. for NoticeFH, ButtonFH, etc.) */
 const HIGHLIGHTS_BY_THEME_ID: Record<(typeof THEMES)[number]['id'], Record<string, string>> = {
-  'light-new': highlightsLightNew,
-  'light-new-2ver': highlightsLightNew2ver,
   'light': highlightsLight,
   'new-adjusted': highlightsNewAdjusted,
+  'light-new': highlightsLightNew,
+  'light-new-2ver': highlightsLightNew2ver,
   'new': highlightsNew,
   'aqua-green': highlightsAquaGreen,
   'lime-green': highlightsLimeGreen,

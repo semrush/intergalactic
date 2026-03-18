@@ -9,6 +9,7 @@ import Button, { ButtonLink } from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import {
   Chart,
+  ChartLegend,
   HorizontalBar,
   minMax,
   Plot,
@@ -84,6 +85,18 @@ const vennChartLegendMap = {
   F: { label: 'Fast' },
   C: { label: 'Clean' },
 };
+
+/** Stacked bar: 5 months (scaleBand = отдельные столбцы), 3 series */
+const barChartData = [
+  { month: 'Jan', a: 4, b: 3, c: 2 },
+  { month: 'Feb', a: 5, b: 4, c: 1 },
+  { month: 'Mar', a: 3, b: 5, c: 3 },
+  { month: 'Apr', a: 6, b: 2, c: 4 },
+  { month: 'May', a: 4, b: 4, c: 5 },
+];
+
+const barChartLegendItemIds = ['a', 'b', 'c'] as const;
+const barChartColorMap = { a: 'blue-500', b: 'blue-300', c: 'blue-100' } as const;
 
 const CHART_HEIGHT = 180;
 /** Height for charts that need extra space (axis labels, legend) so content isn't clipped */
@@ -277,6 +290,30 @@ function DashboardPlaygroundContent() {
   const [primaryTableSort, setPrimaryTableSort] = React.useState<
     DataTableSort<keyof PrimaryTableRow>
   >(['metric', 'asc']);
+  const [barChartVisibleKeys, setBarChartVisibleKeys] = React.useState<
+    Record<(typeof barChartLegendItemIds)[number], boolean>
+  >({ a: true, b: true, c: true });
+  const barChartLegendItems = React.useMemo(
+    () =>
+      barChartLegendItemIds.map((id) => ({
+        id,
+        label: id,
+        checked: barChartVisibleKeys[id],
+        color: barChartColorMap[id],
+      })),
+    [barChartVisibleKeys],
+  );
+  const barChartDataFiltered = React.useMemo(
+    () =>
+      barChartData.map((row) => {
+        const out: Record<string, string | number> = { month: row.month };
+        barChartLegendItemIds.forEach((key) => {
+          if (barChartVisibleKeys[key]) out[key] = row[key];
+        });
+        return out;
+      }),
+    [barChartVisibleKeys],
+  );
   const primaryTableSortedData = React.useMemo(
     () =>
       [...primaryDataTableData].sort((a, b) => {
@@ -548,7 +585,7 @@ function DashboardPlaygroundContent() {
                     <Card.Title tag='h3'>Line</Card.Title>
                     <Card.Description>The line goes where it wants.</Card.Description>
                   </Box>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>
@@ -576,7 +613,7 @@ function DashboardPlaygroundContent() {
                     <Card.Title tag='h3'>Area</Card.Title>
                     <Card.Description>Three layers — like a cake.</Card.Description>
                   </Box>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>
@@ -614,7 +651,7 @@ function DashboardPlaygroundContent() {
                     <Card.Title tag='h3'>Bar</Card.Title>
                     <Card.Description>Bars grow sideways.</Card.Description>
                   </Box>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>
@@ -646,7 +683,7 @@ function DashboardPlaygroundContent() {
                     <Card.Title tag='h3'>Donut</Card.Title>
                     <Card.Description>A donut hole put to good use.</Card.Description>
                   </Box>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>
@@ -685,7 +722,7 @@ function DashboardPlaygroundContent() {
                     <Card.Title tag='h3'>Scatterplot</Card.Title>
                     <Card.Description>Points scattered every which way.</Card.Description>
                   </Box>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>
@@ -728,7 +765,7 @@ function DashboardPlaygroundContent() {
                 <Card.Header>
                   <Flex justifyContent='space-between' alignItems='center' w='100%'>
                     <Card.Title tag='h3'>Secondary DataTable</Card.Title>
-                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                       Export
                     </Button>
                   </Flex>
@@ -759,7 +796,7 @@ function DashboardPlaygroundContent() {
                     />
                   </Box>
                   <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
-                    <Button use='secondary' size='m'>
+                    <Button size='m'>
                       View full report
                     </Button>
                   </Box>
@@ -778,14 +815,8 @@ function DashboardPlaygroundContent() {
               >
                 <Card.Header>
                   <Flex justifyContent='space-between' alignItems='center' w='100%'>
-                    <Flex alignItems='center' gap={4}>
-                      <Card.Title tag='h3'>Histogram</Card.Title>
-                      <Pills defaultValue='incoming' size='m'>
-                        <Pills.Item value='incoming'>Incoming links</Pills.Item>
-                        <Pills.Item value='outgoing'>Outgoing links</Pills.Item>
-                      </Pills>
-                    </Flex>
-                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    <Card.Title tag='h3'>Bar</Card.Title>
+                    <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                       Export
                     </Button>
                   </Flex>
@@ -798,20 +829,36 @@ function DashboardPlaygroundContent() {
                     minHeight: 0,
                   }}
                 >
-                  <FillHeightChartWrapper>
-                    {([width, height]) => (
-                      <Chart.Bar
-                        groupKey='category'
-                        data={BarMockData.Default}
-                        plotWidth={width}
-                        plotHeight={height}
-                        yTicksCount={Y_TICKS_COUNT}
-                        aria-label='Internal linking bar chart'
+                  <Flex direction='column' w='100%'>
+                    <Flex justifyContent='space-between' alignItems='center' w='100%' mb={2}>
+                      <ChartLegend
+                        items={barChartLegendItems}
+                        aria-label='Bar chart legend'
+                        onChangeVisibleItem={(key, checked) => setBarChartVisibleKeys((prev) => ({ ...prev, [key]: checked }))}
                       />
-                    )}
-                  </FillHeightChartWrapper>
+                      <Pills defaultValue='incoming' size='m'>
+                        <Pills.Item value='incoming'>Incoming links</Pills.Item>
+                        <Pills.Item value='outgoing'>Outgoing links</Pills.Item>
+                      </Pills>
+                    </Flex>
+                    <ResponsiveChartWrapper containerHeight={CHART_CONTAINER_HEIGHT}>
+                      {([width, height]) => (
+                        <Chart.Bar
+                          groupKey='month'
+                          data={barChartDataFiltered}
+                          plotWidth={width}
+                          plotHeight={height}
+                          type='stack'
+                          showLegend={false}
+                          yTicksCount={Y_TICKS_COUNT}
+                          colorMap={barChartColorMap}
+                          aria-label='Bar chart'
+                        />
+                      )}
+                    </ResponsiveChartWrapper>
+                  </Flex>
                   <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
-                    <Button use='secondary' size='m'>
+                    <Button size='m'>
                       View full report
                     </Button>
                   </Box>
@@ -831,7 +878,7 @@ function DashboardPlaygroundContent() {
                 <Card.Header>
                   <Flex justifyContent='space-between' alignItems='center' w='100%'>
                     <Card.Title tag='h3'>Venn</Card.Title>
-                    <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                    <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                       Export
                     </Button>
                   </Flex>
@@ -877,7 +924,7 @@ function DashboardPlaygroundContent() {
               <Card.Header>
                 <Flex justifyContent='space-between' alignItems='center' w='100%'>
                   <Card.Title tag='h3'>Primary DataTable</Card.Title>
-                  <Button addonLeft={FileExportM} use='secondary' theme='muted' size='m' aria-label='Export'>
+                  <Button addonLeft={FileExportM} size='m' aria-label='Export'>
                     Export
                   </Button>
                 </Flex>

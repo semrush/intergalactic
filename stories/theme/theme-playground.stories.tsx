@@ -7,7 +7,11 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
-import Button, { ButtonLink } from '@semcore/ui/button';
+import Button, {
+  ButtonLink,
+  type ButtonProps,
+  type ButtonLinkProps,
+} from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
@@ -178,15 +182,9 @@ export default meta;
 
 type Story = StoryObj;
 
-function ButtonRow({
-  use,
-  theme,
-  size = 'm',
-}: {
-  use: 'primary' | 'secondary' | 'tertiary';
-  theme: 'info' | 'success' | 'danger' | 'brand' | 'muted' | 'invert';
-  size?: 'm' | 'l';
-}) {
+type ButtonRowProps = Pick<ButtonProps, 'use' | 'theme' | 'size'>;
+
+function ButtonRow({ use, theme, size = 'm' }: ButtonRowProps) {
   return (
     <Flex gap={1}>
       <Button use={use} theme={theme} size={size}>
@@ -200,13 +198,9 @@ function ButtonRow({
   );
 }
 
-function ButtonLinkRow({
-  use,
-  size = 300,
-}: {
-  use: 'primary' | 'secondary';
-  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
-}) {
+type ButtonLinkRowProps = Pick<ButtonLinkProps, 'use' | 'size'>;
+
+function ButtonLinkRow({ use, size = 300 }: ButtonLinkRowProps) {
   return (
     <Flex gap={2}>
       <ButtonLink use={use} size={size}>
@@ -230,7 +224,6 @@ const FILTER_TRIGGER_OPTIONS = ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red'
 
 function ThemePlaygroundContent() {
   const [radioValue, setRadioValue] = React.useState('1');
-  const [pillsValue, setPillsValue] = React.useState<string | null>(null);
   const [tabValue, setTabValue] = React.useState(1);
   const [sliderValue, setSliderValue] = React.useState(50);
   const [dateValue, setDateValue] = React.useState<Date | undefined>(new Date());
@@ -368,7 +361,8 @@ function ThemePlaygroundContent() {
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
-              <ButtonRow use='secondary' theme='muted' />
+              <ButtonRow />
+              {/* <ButtonRow use='secondary' theme='info' /> */}
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
@@ -387,7 +381,8 @@ function ThemePlaygroundContent() {
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
-              <ButtonRow use='secondary' theme='muted' size='l' />
+              <ButtonRow size='l' />
+              {/* <ButtonRow use='secondary' theme='info' size='l' /> */}
             </Flex>
 
             <Flex gap={8} flexWrap alignItems='center'>
@@ -1039,12 +1034,12 @@ function ThemePlaygroundContent() {
           Pills
         </Text>
         <Flex gap={6} flexWrap alignItems='flex-start' mb={10}>
-          <Pills value={pillsValue} onChange={setPillsValue} size='m'>
+          <Pills defaultValue='1' size='m'>
             <Pills.Item value='1'>Option 1</Pills.Item>
             <Pills.Item value='2'>Option 2</Pills.Item>
             <Pills.Item value='3'>Option 3</Pills.Item>
           </Pills>
-          <Pills value={pillsValue} onChange={setPillsValue} size='l'>
+          <Pills defaultValue='1' size='l'>
             <Pills.Item value='1'>Option 1</Pills.Item>
             <Pills.Item value='2'>Option 2</Pills.Item>
           </Pills>
