@@ -522,6 +522,7 @@
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
     "components": [
+      "button",
       "link",
       "tab-panel",
       "typography"
