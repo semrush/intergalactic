@@ -108,9 +108,7 @@ describe('InputFH', () => {
 describe('NoticeFH', () => {
   test('Verify render closable notice with data-test-id', () => {
     const { container } = render(
-      <NoticeFH closable aria-label='Highlighted notice' data-test-id='test1'>
-        We have a new feature!
-      </NoticeFH>,
+      <NoticeFH closable aria-label='Highlighted notice' data-test-id='test1' text='We have a new feature!' />,
     );
 
     verifyDataTestIds(container, ['test1']);
@@ -124,9 +122,8 @@ describe('NoticeFH', () => {
         label={<span data-testid='label-icon'>Icon</span>}
         title={<span>Test Title</span>}
         actions={<button>Action</button>}
-      >
-        Test content
-      </NoticeFH>,
+        text='Test content'
+      />,
     );
 
     expect(getByText('Test Title')).toBeTruthy();

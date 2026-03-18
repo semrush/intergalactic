@@ -141,9 +141,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
         <TabLineFH.Item value={3} disabled={props.disabled}>Third option</TabLineFH.Item>
       </TabLineFH>
 
-      <NoticeFH closable aria-label='Notice with AI theme'>
-        How would you rate this update?
-      </NoticeFH>
+      <NoticeFH closable aria-label='Notice with AI theme' text='How would you rate this update?' />
 
       <DataTable
         data={data}
