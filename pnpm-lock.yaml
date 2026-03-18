@@ -428,9 +428,6 @@ importers:
       '@semcore/counter':
         specifier: 16.0.11
         version: link:../counter
-      '@semcore/link':
-        specifier: 16.0.11
-        version: link:../link
       '@semcore/spin':
         specifier: 16.0.11
         version: link:../spin

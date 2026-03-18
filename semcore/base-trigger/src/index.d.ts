@@ -1,8 +1,8 @@
 import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
+import type { ButtonLinkProps, ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
 import type { CounterProps } from '@semcore/counter';
-import type { LinkProps, Link } from '@semcore/link';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
@@ -46,7 +46,7 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   chevron?: boolean;
 };
 
-export type LinkTriggerProps = Omit<LinkProps, 'size'> & {
+export type LinkTriggerProps = Omit<ButtonLinkProps, 'size'> & {
   /**
    * Trigger size
    * @default m
@@ -89,8 +89,8 @@ declare const ButtonTrigger: Intergalactic.Component<'div', ButtonTriggerProps> 
 };
 
 declare const LinkTrigger: Intergalactic.Component<'div', LinkTriggerProps> & {
-  Text: typeof Link.Text;
-  Addon: typeof Link.Addon;
+  Text: typeof ButtonLink.Text;
+  Addon: typeof ButtonLink.Addon;
 };
 
 declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> & {
