@@ -1,5 +1,5 @@
 {
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "pnpm storybook",
     "start": "pnpm storybook",
