@@ -117,7 +117,7 @@ class Value extends Component {
     if (this.asProps.autoFocus) {
       setTimeout(() => {
         this.inputRef.current?.focus();
-      });
+      }, 10); // in autoFocusEnhance it was boolean `true`. In FF and Safari was floating bug with focus, so, I set 10.
     }
   }
 
