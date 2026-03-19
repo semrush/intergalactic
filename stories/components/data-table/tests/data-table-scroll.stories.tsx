@@ -10,6 +10,10 @@ import type { OneLevelScrollIntableProps } from './examples/scroll-tests/one-lev
 import OneLevelWithFixedColumnExample, { fixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
 import type { FixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
 import ScrollWithStickyAndTopTopHeaderPropsExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-with-sticky-and-top-props-header';
+import StickyHeaderAccordionExample from './examples/scroll-tests/sticky-header-accordion';
+import StickyHeaderAsyncDataExample from './examples/scroll-tests/sticky-header-async-data';
+import StickyHeaderScrollSyncExample, { defaultProps as StickyHeaderScrollSyncProps } from './examples/scroll-tests/sticky-header-scroll-sync';
+import StickyHeaderSortingExample from './examples/scroll-tests/sticky-header-sorting';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 
 const meta: Meta<typeof DataTable> = {
@@ -58,4 +62,21 @@ export const MultiLevelWithFixedColumn: StoryObj<FixedColumnMultiLevelScrollExam
 
 export const CaseWithW100: Story = {
   render: CaseWithW100Example,
+};
+
+export const StickyHeaderScrollSync: StoryObj<typeof StickyHeaderScrollSyncProps> = {
+  render: StickyHeaderScrollSyncExample,
+  args: StickyHeaderScrollSyncProps,
+};
+
+export const StickyHeaderAsyncData: Story = {
+  render: StickyHeaderAsyncDataExample,
+};
+
+export const StickyHeaderAccordion: Story = {
+  render: StickyHeaderAccordionExample,
+};
+
+export const StickyHeaderSorting: Story = {
+  render: StickyHeaderSortingExample,
 };
