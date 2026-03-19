@@ -459,7 +459,10 @@ function OptionText(providedProps) {
       selected: optionProps?.selected,
       disabled: optionProps?.disabled,
       size: optionProps?.size,
-      hintProps: optionProps?.hintProps ?? {},
+      hintProps: {
+        placement: 'right',
+        ...optionProps?.hintProps ?? {},
+      },
       ...(providedProps || {}),
     }),
     [providedProps, optionProps],

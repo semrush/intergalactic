@@ -89,8 +89,13 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await test.step('Focus first link + verify hint', async () => {
           await page.keyboard.press('Tab');
           await expect(locators.link(page).first()).toBeFocused();
-          await page.waitForTimeout(200);
           await locators.hint(page).waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot({ clip });
         });
 
@@ -111,8 +116,13 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
         await test.step('Verify underlined state + hover hint', async () => {
           await locators.link(page).first().hover();
-          await page.waitForTimeout(200);
           await locators.hint(page).waitFor({ state: 'visible', timeout: 5000 });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot({ clip: activeClip });
         });
       });
@@ -245,7 +255,13 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Verify first link hover with hint', async () => {
       await locators.link(page).first().hover();
-      await page.waitForSelector('text="Home page"');
+      // await page.waitForSelector('text="Home page"');
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       if (browserName !== 'firefox') {
         await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(4, 71, 146)');
         await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
@@ -270,7 +286,13 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Verify first link focus with hint', async () => {
       await page.keyboard.press('Tab');
-      await page.waitForSelector('text="Home page"');
+      // await page.waitForSelector('text="Home page"');
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
       await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
     });

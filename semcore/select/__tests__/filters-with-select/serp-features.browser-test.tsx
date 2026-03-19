@@ -65,6 +65,13 @@ test.describe(TAG.VISUAL, () => {
       await locators.optionByName(page, 'Shopping Ads (Product Listing Ads Block)').hover();
       const hint = page.locator('[data-ui-name="Hint"]');
       await hint.waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
+
       await expect(page).toHaveScreenshot();
     });
 
@@ -108,6 +115,12 @@ test.describe(TAG.VISUAL, () => {
       await page.keyboard.press('ArrowDown');
       const hint = page.locator('[data-ui-name="Hint"]');
       await hint.waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
 

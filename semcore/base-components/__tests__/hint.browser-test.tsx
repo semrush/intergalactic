@@ -48,6 +48,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Hover trigger and verify hint appears', async () => {
         await locators.triggerBth(page).hover();
         await locators.hint(page).waitFor({ state: 'visible' });
+        await page.waitForFunction(
+          () => {
+            const el = document.querySelector('[data-ui-name="Hint"]');
+            return el && getComputedStyle(el).opacity === '1';
+          },
+        );
         await expect(page).toHaveScreenshot();
       });
     });
@@ -64,6 +70,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.triggerBth(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
 
@@ -73,6 +85,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.triggerLink(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
@@ -87,6 +105,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       const box = await link.boundingBox();
       await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
@@ -101,6 +125,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       const box = await link.boundingBox();
       await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });

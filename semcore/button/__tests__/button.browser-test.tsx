@@ -194,10 +194,14 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.waitForTimeout(200);
           await expect(locators.button(page).first()).toBeFocused();
           await hint.waitFor({ state: 'visible' });
-          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -205,8 +209,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
-          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -373,10 +382,14 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.waitForTimeout(200);
           await expect(locators.button(page).first()).toBeFocused();
           await hint.waitFor({ state: 'visible' });
-          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -384,8 +397,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
-          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -552,10 +570,14 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.waitForTimeout(200);
           await expect(locators.button(page).first()).toBeFocused();
           await hint.waitFor({ state: 'visible' });
-          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -563,8 +585,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.active && !item.disabled) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
-          await page.waitForTimeout(100);
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -597,6 +624,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(locators.hint(page)).toHaveCount(1);
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });

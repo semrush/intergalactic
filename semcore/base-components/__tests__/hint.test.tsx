@@ -1,6 +1,7 @@
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor, cleanup, act } from '@testing-library/react';
 import React, { useRef } from 'react';
+import { userEvent } from 'storybook/test';
 
 import { Hint } from '../src';
 
@@ -40,7 +41,6 @@ describe('Hint', () => {
   });
 
   test('Should call onVisibleChange callback', async () => {
-    vi.useFakeTimers();
     const handleChange = vi.fn();
 
     const TestComponent = () => {
@@ -57,17 +57,15 @@ describe('Hint', () => {
 
     const { getByTestId } = render(<TestComponent />);
 
-    fireEvent.mouseEnter(getByTestId('trigger'));
+    await userEvent.hover(getByTestId('trigger'));
 
-    await act(() => vi.advanceTimersByTime(60));
+    await new Promise((resolve) => setTimeout(resolve, 70));
     expect(handleChange).toHaveBeenCalledWith(true);
 
-    fireEvent.mouseLeave(getByTestId('trigger'));
+    await userEvent.unhover(getByTestId('trigger'));
 
-    await act(() => vi.advanceTimersByTime(60));
+    await new Promise((resolve) => setTimeout(resolve, 70));
     expect(handleChange).toHaveBeenCalledWith(false);
-
-    vi.useRealTimers();
   });
 
   test('Should use defaultVisible for initial state', () => {
