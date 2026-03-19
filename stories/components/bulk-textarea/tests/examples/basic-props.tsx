@@ -28,7 +28,7 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-type ExampleProps = BulkTextareaProps<string> & BoxProps;
+type ExampleProps = BulkTextareaProps<string> & BoxProps & { autoFocus?: boolean };
 
 export const defaultBulkTextareaProps: ExampleProps = {
   w: 400,
@@ -42,10 +42,11 @@ export const defaultBulkTextareaProps: ExampleProps = {
   maxRows: 10,
   showErrors: undefined,
   validateOn: ['blur'],
+  autoFocus: false,
 };
 
 const Demo = (props: Partial<ExampleProps>) => {
-  const mergedProps = { ...defaultBulkTextareaProps, ...props };
+  const { autoFocus, ...mergedProps } = { ...defaultBulkTextareaProps, ...props };
 
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<ErrorItem[]>([]);
@@ -96,6 +97,7 @@ const Demo = (props: Partial<ExampleProps>) => {
         <BulkTextarea.InputField
           aria-labelledby='keywords-label'
           commonErrorMessage='Please enter correct movie names.'
+          autoFocus={autoFocus}
         />
 
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
