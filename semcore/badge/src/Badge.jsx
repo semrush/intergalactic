@@ -17,6 +17,8 @@ class RootBadge extends Component {
   render() {
     const SBadge = Root;
     const { styles, color, bg, resolveColor } = this.asProps;
+    // eslint-disable-next-line no-console
+    console.log('test');
 
     return sstyled(styles)(
       <SBadge render={Box} tag='span' use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,
