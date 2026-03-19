@@ -527,6 +527,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await locators.menuitem(page, 0).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
 
@@ -542,6 +548,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.hint(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('ArrowDown');
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });

@@ -42,13 +42,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
 
         await locators.text(page).waitFor({ state: 'visible' });
-
         await page.waitForTimeout(200);
 
         await test.step('Hover text and verify hint appears', async () => {
           await locators.text(page).hover();
 
           await locators.hint(page).waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       });
@@ -86,6 +91,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Hover text and verify hint appears', async () => {
       await page.locator('[data-ui-name="Tag.Text"]').hover();
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
