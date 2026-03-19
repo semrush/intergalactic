@@ -94,6 +94,7 @@ class BubbleRoot extends Component {
       transparent,
       resolveColor,
       patterns,
+      onClick,
     } = this.asProps;
 
     return {
@@ -114,6 +115,7 @@ class BubbleRoot extends Component {
       resolveColor,
       patterns,
       bindHandlerTooltip: this.bindHandlerTooltip,
+      clickable: Boolean(onClick),
       onClickCircleRoot: this.handlerOnClick.bind(this),
     };
   }
@@ -176,6 +178,7 @@ function BubbleCircle(props) {
     bindHandlerTooltip,
     Element,
     visible = true,
+    clickable,
     onClick,
     onClickCircleRoot,
   } = props;
@@ -237,6 +240,7 @@ function BubbleCircle(props) {
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
         transparent={transparent}
+        clickable={clickable || Boolean(onClick)}
       />
       {patterns && (
         <PatternFill
