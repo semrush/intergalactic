@@ -293,4 +293,115 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
+
+  test.describe(` Clipboard copy`, () => {
+    const fullText =
+      'Intergalactic is a constantly developing system of UI components, guidelines and UX patterns for building exceptional web experiences.';
+    const longUrl = 'https://example.com/very/long/path/to/resource/with/many/segments/file.pdf';
+
+    const storyPath = 'stories/components/base-components/ellipsis/tests/examples/copy_full_text.tsx';
+
+    async function setupClipboardMock(page: Page) {
+      await page.evaluate(() => {
+        (window as any).__clipboardWritten = '';
+        if (!navigator.clipboard) {
+          Object.defineProperty(navigator, 'clipboard', {
+            value: {},
+            writable: true,
+            configurable: true,
+          });
+        }
+        (navigator.clipboard as any).writeText = (text: string) => {
+          (window as any).__clipboardWritten = text;
+          return Promise.resolve();
+        };
+      });
+    }
+
+    async function selectAllAndCopy(page: Page, element: ReturnType<typeof page.locator>) {
+      await element.click({ clickCount: 3 });
+      const modifier = process.platform === 'darwin' ? 'Meta' : 'Control';
+      await page.keyboard.press(`${modifier}+c`);
+      await page.waitForTimeout(100);
+    }
+
+    async function getClipboardText(page: Page): Promise<string> {
+      return page.evaluate(() => (window as any).__clipboardWritten);
+    }
+
+    test('Verify full text is copied from end-crop ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName == 'webkit') test.skip(); // doesnt work properly for webkit in headless mode
+
+      const textElements = locators.text(page);
+      await textElements.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select end-crop text and copy', async () => {
+        const endCropText = page.locator('[data-ui-name="Text"]').nth(3);
+        await selectAllAndCopy(page, endCropText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(fullText);
+      });
+    });
+
+    test('Verify full text is copied from middle-crop ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName == 'webkit') test.skip(); // doesnt work properly in headless mode
+
+      const textElements = locators.text(page);
+      await textElements.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop text and copy', async () => {
+        const middleCropText = page.locator('[data-ui-name="Text"]').nth(6);
+        await selectAllAndCopy(page, middleCropText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(fullText);
+      });
+    });
+
+    test('Verify full link is copied from middle-crop link ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName != 'chromium') test.skip();
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop link text and copy', async () => {
+        const linkText = page.locator('[data-ui-name="Link.Text"]').first();
+        await selectAllAndCopy(page, linkText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(longUrl);
+      });
+    });
+
+    test('Verify full link is copied from end-crop link ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName != 'chromium') test.skip(); // doesnt work properly  in headless mode
+
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop link text and copy', async () => {
+        const linkText = page.locator('[data-ui-name="Link.Text"]').nth(1);
+        await selectAllAndCopy(page, linkText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(longUrl);
+      });
+    });
+  });
 });
