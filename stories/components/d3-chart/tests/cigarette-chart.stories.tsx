@@ -36,14 +36,14 @@ export const BasicUsage = {
     minimalBarWidth: { control: { type: 'number' } },
     percentFormatter: {
       control: { type: 'select' },
-      options: ['none', 'round', 'floor', 'ceil', 'toFixed1', 'toFixed2'],
+      options: ['none', 'round', 'floor', 'ceil', 'oneDecimal', 'twoDecimal'],
       mapping: {
         none: undefined,
         round: (v: number) => Math.round(v),
         floor: (v: number) => Math.floor(v),
         ceil: (v: number) => Math.ceil(v),
-        toFixed1: (v: number) => Number(v.toFixed(1)),
-        toFixed2: (v: number) => Number(v.toFixed(2)),
+        oneDecimal: (v: number) => Number(v.toFixed(1)),
+        twoDecimal: (v: number) => Number(v.toFixed(2)),
       },
     },
     duration: { control: { type: 'number' } },
