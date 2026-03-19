@@ -184,6 +184,7 @@ export type DataTableProps<
   } & ({
     /**
      * List of selected rows (uniqIds from a data array)
+     * @deprecated use ISelectedRows for this property instead of an array.
      */
     selectedRows?: UniqKeyType[];
 
