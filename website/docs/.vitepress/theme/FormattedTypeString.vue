@@ -1,5 +1,5 @@
 <template>
-  <span v-for="token in type" v-if="!(type.length === 1 && type[0] === '{...}')">
+  <span v-for="token in type" v-if="!(type.length === 1 && type[0] === '{...}') && type.every((t) => !t.properties)">
     <button class="anchor-like-button types-view-reference" v-if="typeof token === 'object'"
       @click.prevent="handleDialogOpen(token.referenceTo, token.displayText)">
       {{ token.displayText }}
