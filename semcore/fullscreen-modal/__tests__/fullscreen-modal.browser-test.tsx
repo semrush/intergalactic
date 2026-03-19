@@ -392,4 +392,37 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     expect(await modalClose.count()).toBe(0);
     expect(await fullScreenModalClose.count()).toBe(0);
   });
+
+  test('Verify body scroll is restored after modal close (no inline style pollution)', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@fullscreen-modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/scroll-test.tsx', 'en');
+
+    await test.step('Open and close modal', async () => {
+      await locators.button(page, 'Open FullscreenModal').click();
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Close').click();
+      await locators.modal(page).waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify no inline overflow left and page is scrollable', async () => {
+      const inlineOverflow = await page.evaluate(() => document.body.style.overflow);
+      expect(inlineOverflow).toBe('');
+
+      const bottomMarker = page.getByTestId('bottom-marker');
+      await bottomMarker.scrollIntoViewIfNeeded();
+      await expect(bottomMarker).toBeVisible();
+    });
+
+    await test.step('Verify CSS-based scroll lock still works after modal close', async () => {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.locator('input[type="checkbox"]').check();
+
+      const overflowAfterCheck = await page.evaluate(() =>
+        window.getComputedStyle(document.body).overflow,
+      );
+      expect(overflowAfterCheck).toBe('hidden');
+    });
+  });
 });
