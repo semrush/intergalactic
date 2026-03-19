@@ -4,6 +4,7 @@ import type Tooltip from '@semcore/tooltip';
 import type * as React from 'react';
 
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
+import type { ISelectedRows } from '../../store/SelectableRows';
 import type { DataTableBodyProps } from '../Body/Body.types';
 import type { DTRow, RowPropsInner } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
@@ -116,22 +117,6 @@ export type DataTableProps<
     uniqueRowKey?: UniqKey;
 
     /**
-     * List of selected rows (uniqIds from a data array)
-     */
-    selectedRows?: UniqKeyType[];
-
-    /** Callback when row selection changes */
-    onSelectedRowsChange?: (
-      selectedRows: UniqKeyType[],
-      event?: React.SyntheticEvent<HTMLElement>,
-      opts?: {
-        selectedRowIndex: number;
-        isSelected: boolean;
-        row: DTRow<UniqKeyType>;
-      }
-    ) => void;
-
-    /**
      * For custom empty data widget.
      */
     renderEmptyData?: () => React.ReactNode;
@@ -196,7 +181,29 @@ export type DataTableProps<
    * Handling table container resizing.
    */
     onResize?: ResizeObserverCallback;
-  };
+  } & ({
+    /**
+     * List of selected rows (uniqIds from a data array)
+     */
+    selectedRows?: UniqKeyType[];
+
+    /** Callback when row selection changes */
+    onSelectedRowsChange?: (
+      selectedRows: UniqKeyType[],
+      event?: React.SyntheticEvent<HTMLElement>,
+      opts?: {
+        selectedRowIndex: number;
+        isSelected: boolean;
+        row: DTRow<UniqKeyType>;
+      }
+    ) => void;
+  } | {
+    /**
+     * Entity of selected rows (uniq id from them)
+     * This is mutable! variable because of table performance. Don't change the link on it.
+     */
+    selectedRows?: ISelectedRows<UniqKeyType>;
+  });
 
 export type ColumnItemConfig = Intergalactic.InternalTypings.EfficientOmit<
   Intergalactic.InternalTypings.ComponentProps<

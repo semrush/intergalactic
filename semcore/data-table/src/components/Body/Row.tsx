@@ -13,6 +13,7 @@ import { LimitOverlay } from './LimitOverlay';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
+import { SelectableRows } from '../../store/SelectableRows';
 import { AccordionRows } from '../AccordionRows/AccordionRows';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
@@ -35,6 +36,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
 
+  private unsubscribeSelectAll: undefined | (() => void) = undefined;
+  private unsubscribeToggle: undefined | (() => void) = undefined;
+
   rowElementRef = React.createRef<HTMLDivElement>();
 
   state: State<UniqKeyType> = {
@@ -50,9 +54,21 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    this.asProps.componentRef?.(this);
+    const { componentRef, selectedRows, row } = this.asProps;
+    componentRef?.(this);
 
     this.setAccordion();
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      this.unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
+        this.forceUpdate();
+      });
+      this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
+        if (row[UNIQ_ROW_KEY] === key) {
+          this.forceUpdate();
+        }
+      });
+    }
   }
 
   componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
@@ -65,6 +81,9 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
+
+    this.unsubscribeSelectAll?.();
+    this.unsubscribeToggle?.();
   }
 
   setAccordion() {
@@ -109,17 +128,25 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
-    const { row, rowIndex, onSelectRow } = this.asProps;
+    const { row, rowIndex, onSelectRow, selectedRows } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      selectedRows.toggle(value, row);
+    }
   };
 
   handleClickCheckbox = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
     event?.preventDefault();
     event?.stopPropagation();
-    const { row, rowIndex, onSelectRow } = this.asProps;
+    const { row, rowIndex, onSelectRow, selectedRows } = this.asProps;
 
     onSelectRow?.(value, rowIndex, row, event);
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      selectedRows.toggle(value, row);
+    }
   };
 
   handleBackFromAccordion = (e: React.KeyboardEvent) => {
@@ -275,7 +302,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
-      theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -317,7 +343,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
-      theme,
     };
 
     if (renderCell) {
@@ -453,7 +478,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       scrollAreaRef,
       accordionAnimationRows,
       onCellClick,
-      theme,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -473,6 +497,11 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
     const rowUniqKey = row[UNIQ_ROW_KEY];
     const accordionId = `${uid}_${rowUniqKey}`;
+
+    let theme = this.asProps.theme;
+    if (selectedRows && (Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.has(rowUniqKey))) {
+      theme = 'info';
+    }
 
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
@@ -500,6 +529,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
           data-filled-columns={filledColumns}
+          theme={theme}
         >
           {columns.map((column, i) => {
             const index = i;
@@ -522,7 +552,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             }
 
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
-              const checked = selectedRows.includes(rowUniqKey);
+              const checked = Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.has(rowUniqKey);
 
               const nextColumnName = columns[i + 1].name;
 
@@ -588,6 +618,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 aria-hidden={isCellHidden}
                 style={style}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
+                theme={theme}
               />
             );
           })}

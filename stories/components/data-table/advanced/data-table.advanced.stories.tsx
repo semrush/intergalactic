@@ -10,6 +10,7 @@ import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
 import CheckboxInBigTableExample from './examples/checkbox_in_big_table';
+import CheckboxInBigTableReactiveExample from './examples/checkbox_in_big_table_reactive';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
@@ -75,6 +76,10 @@ export const BigTableWithStickyHeader: Story = {
 
 export const CheckboxInBigTable: Story = {
   render: CheckboxInBigTableExample,
+};
+
+export const CheckboxInBigTableReactive: Story = {
+  render: CheckboxInBigTableReactiveExample,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {

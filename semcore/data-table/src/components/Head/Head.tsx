@@ -10,6 +10,7 @@ import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
 import style from './style.shadow.css';
+import { SelectableRows } from '../../store/SelectableRows';
 import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
@@ -27,6 +28,22 @@ class HeadRoot<
   > {
   static displayName = 'Head';
   static style = style;
+
+  private unsubscribeSelectAll: undefined | (() => void) = undefined;
+
+  componentDidMount() {
+    const { selectedRows } = this.asProps;
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      this.unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
+        this.forceUpdate();
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeSelectAll?.();
+  }
 
   sortableColumnDescribeId() {
     const { uid } = this.asProps;
@@ -129,20 +146,29 @@ class HeadRoot<
   }
 
   handleSelectAll = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
-    const { selectedRows = [] } = this.asProps;
-    const idsSet = new Set<UniqKeyType>(selectedRows);
+    const { selectedRows } = this.asProps;
 
-    if (value) {
-      this.selectableRows.forEach((row) => {
-        idsSet.add(row[UNIQ_ROW_KEY]);
-      });
-    } else {
-      this.selectableRows.forEach((row) => {
-        idsSet.delete(row[UNIQ_ROW_KEY]);
-      });
+    if (Array.isArray(selectedRows)) {
+      const idsSet = new Set<UniqKeyType>(selectedRows);
+
+      if (value) {
+        this.selectableRows.forEach((row) => {
+          idsSet.add(row[UNIQ_ROW_KEY]);
+        });
+      } else {
+        this.selectableRows.forEach((row) => {
+          idsSet.delete(row[UNIQ_ROW_KEY]);
+        });
+      }
+
+      this.asProps.onChangeSelectAll?.(Array.from(idsSet), event);
+    } else if (selectedRows) {
+      if (value) {
+        selectedRows.selectAll();
+      } else {
+        selectedRows.clearAll();
+      }
     }
-
-    this.asProps.onChangeSelectAll?.(Array.from(idsSet), event);
   };
 
   handleClickSelectAll = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
@@ -153,15 +179,23 @@ class HeadRoot<
   };
 
   get areAllRowsSelected() {
-    const { selectedRows = [] } = this.asProps;
+    const { selectedRows } = this.asProps;
 
-    return selectedRows.length > 0 && this.selectableRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    if (Array.isArray(selectedRows)) {
+      return selectedRows.length > 0 && this.selectableRows.every((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    } else if (selectedRows) {
+      return selectedRows.isAllSelected();
+    }
   }
 
   get isIndeterminate() {
     const { selectedRows } = this.asProps;
 
-    return this.selectableRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    if (Array.isArray(selectedRows)) {
+      return this.selectableRows.some((row) => selectedRows?.includes(row[UNIQ_ROW_KEY]));
+    } else if (selectedRows) {
+      return selectedRows.isIndeterminate();
+    }
   }
 
   get selectableRows(): DTRow<UniqKeyType>[] {

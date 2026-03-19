@@ -178,7 +178,7 @@ class DataTableRoot<
         this.calculateVerticalShadow();
       }
     }
-    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
+    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && Array.isArray(selectedRows)) {
       const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
 
       const allChecked: UniqKeyType[] = [];
@@ -276,7 +276,6 @@ class DataTableRoot<
       getI18nText,
       uid,
       headerProps,
-      onSelectedRowsChange,
       selectedRows,
       sideIndents,
       variant,
@@ -305,7 +304,7 @@ class DataTableRoot<
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),
-      onChangeSelectAll: onSelectedRowsChange,
+      onChangeSelectAll: Array.isArray(selectedRows) ? this.handleSelectAllRows : undefined,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
@@ -372,7 +371,7 @@ class DataTableRoot<
       renderEmptyData,
       sideIndents,
       selectedRows,
-      onSelectRow: this.handleSelectRow,
+      onSelectRow: Array.isArray(selectedRows) ? this.handleSelectRow : undefined,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
@@ -427,15 +426,23 @@ class DataTableRoot<
     }
   };
 
+  handleSelectAllRows = (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => {
+    if (!('onSelectedRowsChange' in this.asProps) || !this.asProps.onSelectedRowsChange || !Array.isArray(selectedRows)) return;
+
+    this.asProps.onSelectedRowsChange(selectedRows, event);
+  };
+
   handleSelectRow = (
     isSelected: boolean,
     selectedRowIndex: number,
     row: DTRow<UniqKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => {
-    const { selectedRows, onSelectedRowsChange } = this.asProps;
+    const { selectedRows } = this.asProps;
 
-    if (!selectedRows || !onSelectedRowsChange) return;
+    if (!selectedRows || !('onSelectedRowsChange' in this.asProps) || !this.asProps.onSelectedRowsChange || !Array.isArray(selectedRows)) return;
+
+    const { onSelectedRowsChange } = this.asProps;
 
     const selectedRowsSet = new Set(selectedRows);
 
@@ -1243,13 +1250,15 @@ class DataTableRoot<
   private getRows(): Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> {
     const columns = this.columns;
     // @ts-ignore
-    const { data, uid, uniqueRowKey } = this.props;
+    const { data, uid, uniqueRowKey, selectedRows } = this.props;
 
     if (this.tmpData === data) {
       return this.calculatedRows;
     }
 
     this.tmpData = data;
+
+    const availableRowKeys: UniqKeyType[] = [];
 
     const rows: Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1340,6 +1349,8 @@ class DataTableRoot<
         });
       }
 
+      availableRowKeys.push(dtRow[UNIQ_ROW_KEY]);
+
       return dtRow;
     };
 
@@ -1414,6 +1425,11 @@ class DataTableRoot<
     });
 
     this.calculatedRows = rows;
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      selectedRows.setAvailableKeys(availableRowKeys);
+    }
+
     return rows;
   }
 

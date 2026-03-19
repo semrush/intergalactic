@@ -150,7 +150,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const calculatedRowProps = rowProps?.(row, index) ?? {};
 
     const rowUniqKey = row[UNIQ_ROW_KEY];
-    if (selectedRows?.includes(rowUniqKey)) {
+    if (Array.isArray(selectedRows) && selectedRows.includes(rowUniqKey)) {
       calculatedRowProps.theme = 'info';
     }
 
@@ -395,7 +395,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                     componentRef: this.handleComponentRef(item),
                   };
 
-                  if ((isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey))) {
+                  if ((isFirstCellAreMergedRows && Array.isArray(selectedRows) && selectedRows.includes(groupUniqKey))) {
                     rowProps.theme = 'info';
                   }
 
