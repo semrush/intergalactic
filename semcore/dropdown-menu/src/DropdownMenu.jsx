@@ -534,6 +534,7 @@ function ItemContentText({ styles, ellipsis = false }) {
         render={Text}
         ellipsis={ellipsis}
         hint:triggerRef={menuItemCtxValue.ref}
+        hint:placement='right'
       />
     </>,
   );

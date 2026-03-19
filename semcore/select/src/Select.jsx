@@ -469,6 +469,7 @@ function OptionText(providedProps) {
       {...props}
       hint:triggerRef={optionProps.itemRef}
       hint:visible={selectedIndex === optionProps.index}
+      hint:placement='right'
     />,
   );
 }
