@@ -286,24 +286,6 @@ export abstract class AbstractChart<
     return total;
   }
 
-  protected percentValue(data: ObjectData, key: string): string {
-    const total = this.totalValue(data);
-
-    const value = data[key];
-
-    if (typeof value === 'number' && total !== 0) {
-      const percent = Math.round((100 * value) / total);
-
-      return `${percent}%`;
-    }
-
-    if (value === null) {
-      return `0%`;
-    }
-
-    return NOT_A_VALUE;
-  }
-
   protected getValueScale(values: number[]): number {
     const max = Math.max(...values);
     const min = Math.min(...values);
