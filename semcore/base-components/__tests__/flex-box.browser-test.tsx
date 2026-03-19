@@ -214,7 +214,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@base-components',
       '@flex-box'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
+    /*
+     Firefox doesn't retain the :hover pseudo-state when getComputedStyle
+     is evaluated via Playwright — by the time the JS executes, the browser
+     has already dropped the synthetic hover, so cursor falls back to 'auto'.
+    */
+    if (browserName === 'firefox') return;
+
     const hoverCursor = 'zoom-in';
 
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', { hoverCursor });
