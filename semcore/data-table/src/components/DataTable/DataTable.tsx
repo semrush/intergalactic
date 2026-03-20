@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -102,6 +102,8 @@ class DataTableRoot<
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private scrollAreaRef = React.createRef<HTMLDivElement>();
+
+  private gridContainerRef = React.createRef<HTMLDivElement>();
 
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
@@ -360,6 +362,7 @@ class DataTableRoot<
       spinnerRef: this.spinnerRef,
       scrollTop: this.state.scrollTop,
       scrollDirection: this.state.scrollDirection,
+      gridContainerRef: this.gridContainerRef,
       tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
       scrollAreaRef: this.scrollAreaRef,
@@ -464,7 +467,7 @@ class DataTableRoot<
   };
 
   setInert(value: boolean) {
-    const cells = this.tableRef.current?.querySelectorAll<HTMLDivElement>(
+    const cells = this.gridContainerRef.current?.querySelectorAll<HTMLDivElement>(
       '[role=gridcell], [role=columnheader]',
     );
 
@@ -478,8 +481,8 @@ class DataTableRoot<
   }
 
   getRow = (index: number) => {
-    return this.tableRef.current?.querySelector(
-      `:scope [aria-rowindex="${index + 1}"]:not([aria-hidden="true"]):not(:scope [data-ui-name="DataTable"] [aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+    return this.gridContainerRef.current?.querySelector(
+      `:scope [aria-rowindex="${index + 1}"]:not([aria-hidden="true"]):not(:scope [data-ui-name="DataTableGridContainer"] [aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
     );
   };
 
@@ -814,16 +817,16 @@ class DataTableRoot<
 
   handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     const relatedTarget = e.relatedTarget;
-    const tableElement = this.tableRef.current;
+    const gridContainerElement = this.gridContainerRef.current;
 
     if (
-      tableElement &&
+      gridContainerElement &&
       (!relatedTarget ||
-        !isFocusInside(tableElement, relatedTarget) ||
+        !isFocusInside(gridContainerElement, relatedTarget) ||
         !lastInteraction.isKeyboard())
     ) {
       this.setInert(false);
-      tableElement.setAttribute('tabIndex', '0');
+      gridContainerElement.setAttribute('tabIndex', '0');
 
       if (this.isDataEmpty) {
         this.headerRef.current?.setAttribute('tabIndex', '0');
@@ -894,8 +897,69 @@ class DataTableRoot<
     }
 
     return sstyled(styles)(
-      <>
-        {this.hasSeparateStickyHeader() && (
+      <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+        <Box
+          role='grid'
+          onKeyDown={this.handleKeyDown}
+          onKeyUp={this.handleKeyUp}
+          onMouseMove={this.handleMouseMove}
+          tabIndex={0}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          ref={this.gridContainerRef}
+          data-ui-name='DataTableGridContainer'
+          aria-rowcount={this.totalRows}
+          aria-colcount={this.columns.length}
+          aria-label={this.asProps['aria-label']}
+          aria-labelledby={this.asProps['aria-labelledby']}
+          w={width}
+          wMax={wMax}
+          wMin={wMin}
+        >
+          {this.hasSeparateStickyHeader() && (
+            <ScrollArea
+              leftOffset={offsetLeftSum}
+              rightOffset={offsetRightSum}
+              topOffset={topOffset}
+              w={width}
+              wMax={wMax}
+              wMin={wMin}
+              h={headerHeight}
+              shadow={true}
+              styles={scrollStyles}
+              onScroll={this.handleHeaderScroll}
+              disableAutofocusToContent={true}
+              position='sticky'
+              top={headerPropsToCheck?.top ?? 0}
+              zIndex={18}
+            >
+              <ScrollArea.Container
+                tabIndex={-1}
+                // @ts-ignore
+                scrollDirection={this.scrollDirection}
+                // @ts-ignore
+                loading={loading}
+                headerHeight={`${headerHeight}px`}
+                leftScrollPadding={`${offsetLeftSum}px`}
+                rightScrollPadding={`${offsetRightSum}px`}
+                ref={this.headerScrollContainerRef}
+              >
+                <DataTable.Head
+                  mode='sticky'
+                  // @ts-ignore
+                  gridTemplateRows={gridTemplateRows}
+                />
+              </ScrollArea.Container>
+
+              {headerPropsToCheck?.withScrollBar && !loading && (
+                <ScrollArea.Bar
+                  orientation='horizontal'
+                  top={headerHeight - SCROLL_BAR_HEIGHT}
+                  zIndex={20}
+                />
+              )}
+            </ScrollArea>
+          )}
           <ScrollArea
             leftOffset={offsetLeftSum}
             rightOffset={offsetRightSum}
@@ -903,18 +967,19 @@ class DataTableRoot<
             w={width}
             wMax={wMax}
             wMin={wMin}
-            h={headerHeight}
+            h={h}
+            hMax={hMax}
+            hMin={hMin}
             shadow={true}
+            ref={this.scrollAreaRef}
+            container={this.tableContainerRef}
             styles={scrollStyles}
-            onScroll={this.handleHeaderScroll}
+            onScroll={this.handleScroll}
             disableAutofocusToContent={true}
-            position='sticky'
-            top={headerPropsToCheck?.top ?? 0}
-            zIndex={18}
+            onResize={this.handleContainerResizeEnd}
           >
             <ScrollArea.Container
               tabIndex={-1}
-              role='grid'
               // @ts-ignore
               scrollDirection={this.scrollDirection}
               // @ts-ignore
@@ -922,113 +987,61 @@ class DataTableRoot<
               headerHeight={`${headerHeight}px`}
               leftScrollPadding={`${offsetLeftSum}px`}
               rightScrollPadding={`${offsetRightSum}px`}
-              ref={this.headerScrollContainerRef}
+              ref={this.bodyScrollContainerRef}
             >
-              <DataTable.Head
-                mode='sticky'
-                // @ts-ignore
+              <SDataTable
+                render={Box}
+                ref={forkRef(this.tableRef, this.tableContainerRef)}
+                isDataEmpty={this.isDataEmpty}
+                gridTemplateColumns={gridTemplateColumns.join(' ')}
+                gridTemplateAreas={gridTemplateAreas.join(' ')}
                 gridTemplateRows={gridTemplateRows}
-              />
+                w='100%'
+                use:data={undefined}
+                use:w={undefined}
+                use:wMax={undefined}
+                use:wMin={undefined}
+                use:h={undefined}
+                use:hMax={undefined}
+                use:hMin={undefined}
+                __excludeProps={['aria-label', 'aria-labelledby']}
+              >
+                {children
+                  ? (
+                      <Children />
+                    )
+                  : (
+                      <>
+                        {!this.hasSeparateStickyHeader() && (<DataTable.Head />)}
+                        <DataTable.Body />
+                      </>
+                    )}
+              </SDataTable>
             </ScrollArea.Container>
 
-            {headerPropsToCheck?.withScrollBar && !loading && (
+            {!this.hasSeparateStickyHeader() && headerPropsToCheck?.withScrollBar && topOffset && !loading && (
               <ScrollArea.Bar
                 orientation='horizontal'
-                top={headerHeight - SCROLL_BAR_HEIGHT}
+                top={topOffset - SCROLL_BAR_HEIGHT}
                 zIndex={20}
               />
             )}
+
+            {!loading && (
+              <>
+                <ScrollArea.Bar orientation='horizontal' zIndex={20} />
+                <ScrollArea.Bar orientation='vertical' zIndex={20} />
+              </>
+            )}
+
+            {selectedRows !== undefined && (
+              <ScreenReaderOnly aria-live='polite' role='status'>
+                {this.state.selectAllMessage}
+              </ScreenReaderOnly>
+            )}
           </ScrollArea>
-        )}
-        <ScrollArea
-          leftOffset={offsetLeftSum}
-          rightOffset={offsetRightSum}
-          topOffset={topOffset}
-          w={width}
-          wMax={wMax}
-          wMin={wMin}
-          h={h}
-          hMax={hMax}
-          hMin={hMin}
-          shadow={true}
-          ref={this.scrollAreaRef}
-          container={this.tableContainerRef}
-          styles={scrollStyles}
-          onScroll={this.handleScroll}
-          disableAutofocusToContent={true}
-          onResize={this.handleContainerResizeEnd}
-        >
-          <ScrollArea.Container
-            tabIndex={-1}
-            // @ts-ignore
-            scrollDirection={this.scrollDirection}
-            // @ts-ignore
-            loading={loading}
-            headerHeight={`${headerHeight}px`}
-            leftScrollPadding={`${offsetLeftSum}px`}
-            rightScrollPadding={`${offsetRightSum}px`}
-            ref={this.bodyScrollContainerRef}
-          >
-            <SDataTable
-              render={Box}
-              ref={forkRef(this.tableRef, this.tableContainerRef)}
-              role='grid'
-              onKeyDown={this.handleKeyDown}
-              onKeyUp={this.handleKeyUp}
-              onMouseMove={this.handleMouseMove}
-              tabIndex={0}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              isDataEmpty={this.isDataEmpty}
-              aria-rowcount={this.totalRows}
-              aria-colcount={this.columns.length}
-              gridTemplateColumns={gridTemplateColumns.join(' ')}
-              gridTemplateAreas={gridTemplateAreas.join(' ')}
-              gridTemplateRows={gridTemplateRows}
-              w='100%'
-              use:data={undefined}
-              use:w={undefined}
-              use:wMax={undefined}
-              use:wMin={undefined}
-              use:h={undefined}
-              use:hMax={undefined}
-              use:hMin={undefined}
-            >
-              {children
-                ? (
-                    <Children />
-                  )
-                : (
-                    <>
-                      {!this.hasSeparateStickyHeader() && (<DataTable.Head />)}
-                      <DataTable.Body />
-                    </>
-                  )}
-            </SDataTable>
-          </ScrollArea.Container>
-
-          {!this.hasSeparateStickyHeader() && headerPropsToCheck?.withScrollBar && topOffset && !loading && (
-            <ScrollArea.Bar
-              orientation='horizontal'
-              top={topOffset - SCROLL_BAR_HEIGHT}
-              zIndex={20}
-            />
-          )}
-
-          {!loading && (
-            <>
-              <ScrollArea.Bar orientation='horizontal' zIndex={20} />
-              <ScrollArea.Bar orientation='vertical' zIndex={20} />
-            </>
-          )}
-
-          {selectedRows !== undefined && (
-            <ScreenReaderOnly aria-live='polite' role='status'>
-              {this.state.selectAllMessage}
-            </ScreenReaderOnly>
-          )}
-        </ScrollArea>
-      </>,
+        </Box>
+      </hideScrollBarsFromScreenReadersContext.Provider>,
     );
   }
 
