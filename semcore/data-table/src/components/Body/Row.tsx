@@ -340,6 +340,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      theme: this.theme,
     };
 
     if (renderCell) {
@@ -441,6 +442,17 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       : undefined;
   }
 
+  get theme() {
+    const { selectedRows, theme, row } = this.asProps;
+
+    if (!selectedRows || Array.isArray(selectedRows)) {
+      return theme;
+    }
+
+    const rowUniqKey = row[UNIQ_ROW_KEY];
+    return selectedRows.isChecked(rowUniqKey) ? 'info' : theme;
+  }
+
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
@@ -495,11 +507,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const rowUniqKey = row[UNIQ_ROW_KEY];
     const accordionId = `${uid}_${rowUniqKey}`;
 
-    let theme = this.asProps.theme;
-    if (selectedRows && (Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.isChecked(rowUniqKey))) {
-      theme = 'info';
-    }
-
     const rowsLimit = limit?.fromRow;
     const columnsLimit = limit?.fromColumn;
 
@@ -526,7 +533,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
           data-filled-columns={filledColumns}
-          theme={theme}
+          theme={this.theme}
         >
           {columns.map((column, i) => {
             const index = i;
@@ -571,7 +578,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   isAccordionRow={isAccordionRow}
                   aria-hidden={isCellHidden}
                   withAccordion={withAccordion}
-                  theme={theme}
+                  theme={this.theme}
                 >
                   <Checkbox
                     checked={checked}
