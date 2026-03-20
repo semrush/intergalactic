@@ -1,5 +1,4 @@
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { MergedRowsCell } from '@semcore/ui/data-table';
 
 import type { DTRow } from '../components/Body/Row.types';
 import { UNIQ_ROW_KEY } from '../components/DataTable/DataTable';
@@ -27,6 +26,9 @@ export interface ISelectedRows<UniqKeyType> {
 
   /** Clear all handler */
   clearAll(): void;
+
+  /** Clear all available values (rows on current page) handler */
+  clearAllAvailable(): void;
 
   /** Toggle selection of row */
   toggle(selected: boolean, row: DTRow<UniqKeyType>): void;
@@ -125,6 +127,16 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
   }
 
   public clearAll(): void {
+    const keys = Array.from(this.values.values());
+    this.values.clear();
+    for (const key of keys) {
+      this.emit(SelectableRows.TOGGLE_EVENT, key);
+    }
+
+    this.emit(SelectableRows.SELECT_ALL_EVENT);
+  }
+
+  public clearAllAvailable(): void {
     for (const key of this.availableKeys.values()) {
       this.values.delete(key);
       this.emit(SelectableRows.TOGGLE_EVENT, key);

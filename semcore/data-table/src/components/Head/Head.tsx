@@ -166,7 +166,7 @@ class HeadRoot<
       if (value) {
         selectedRows.selectAll();
       } else {
-        selectedRows.clearAll();
+        selectedRows.clearAllAvailable();
       }
     }
   };
