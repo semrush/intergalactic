@@ -79,6 +79,7 @@ const Demo = (props: CheckboxExampleProps) => {
         <Table
           selectedRows={selectedRows}
           handleChangeSelectedRows={handleChangeSelectedRows}
+          tableRef={tableRef}
           loading={props.loading}
           compact={props.compact}
           sideIndents={props.sideIndents}

@@ -31,9 +31,6 @@ const meta: Meta<typeof DataTable> = {
 };
 
 const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigTableDefaultProps>> = {
-  animationDuration: {
-    control: { type: 'number' },
-  },
   loading: { control: 'boolean' },
   sideIndents: {
     control: 'select',

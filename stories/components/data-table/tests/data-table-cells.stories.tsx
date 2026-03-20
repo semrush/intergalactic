@@ -3,10 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
-import CheckBoxExample from './examples/cells-tests/checkbox';
+import CheckBoxExample, { defaultProps as checkboxProps } from './examples/cells-tests/checkbox';
+import type { DemoProps as CheckboxProps } from './examples/cells-tests/checkbox';
 import CheckboxInTableWithNoDataExample, { defaultProps as checkboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
 import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
-import CheckboxReactiveExample from './examples/cells-tests/checkbox-reactive';
+import CheckboxReactiveExample, { defaultProps as checkboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
+import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
 import CheckboxReactiveWithPaginationExample, { defaultProps as checkboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
 import type { DemoProps as CheckboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
@@ -54,8 +56,15 @@ export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
 };
 
-export const CheckBox: Story = {
-  render: CheckBoxExample,
+export const CheckBox: StoryObj<CheckboxProps> = {
+  render: CheckBoxExample as any,
+  argTypes: {
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed left/right columns with horizontal scroll',
+    },
+  },
+  args: checkboxProps,
 };
 
 export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
@@ -69,8 +78,15 @@ export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   args: checkboxNoDataProps,
 };
 
-export const CheckboxReactive: Story = {
-  render: CheckboxReactiveExample,
+export const CheckboxReactive: StoryObj<CheckboxReactiveProps> = {
+  render: CheckboxReactiveExample as any,
+  argTypes: {
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed left/right columns with horizontal scroll',
+    },
+  },
+  args: checkboxReactiveProps,
 };
 
 export const CheckboxReactiveWithPagination: StoryObj<CheckboxReactivePaginationProps> = {

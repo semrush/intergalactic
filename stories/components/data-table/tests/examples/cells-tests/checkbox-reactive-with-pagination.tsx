@@ -17,7 +17,7 @@ export type DemoProps = {
 
 const selectedRows = new SelectableRows<string>();
 
-const columns = [
+const columns: { name: string; children: string }[] = [
   { name: 'keyword', children: 'Keyword' },
   { name: 'kd', children: 'KD %' },
   { name: 'cpc', children: 'CPC' },
