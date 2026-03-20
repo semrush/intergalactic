@@ -4,6 +4,8 @@ SHead, SGroupContainer {
 
 SHead[mode='sticky'] {
   display: grid;
+  overflow: hidden;
+
   &[gridTemplateColumns] {
     grid-template-columns: var(--gridTemplateColumns);
   }
@@ -14,6 +16,13 @@ SHead[mode='sticky'] {
 
   &[gridTemplateRows] {
     grid-template-rows: var(--gridTemplateRows);
+  }
+
+  SColumn[fixed='right'][shadowVertical='median'],
+  SColumn[fixed='right'][shadowVertical='end'],
+  SGroup[fixed='right'][shadowVertical='median'],
+  SGroup[fixed='right'][shadowVertical='end'] {
+    margin-left: 0;
   }
 }
 
