@@ -125,14 +125,12 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
   }
 
   public clearAll(): void {
-    const keys = Array.from(this.values.keys());
-
-    this.values.clear();
-    this.emit(SelectableRows.SELECT_ALL_EVENT);
-
-    keys.forEach((key) => {
+    for (const key of this.availableKeys.values()) {
+      this.values.delete(key);
       this.emit(SelectableRows.TOGGLE_EVENT, key);
-    });
+    }
+
+    this.emit(SelectableRows.SELECT_ALL_EVENT);
   }
 
   public toggle(selected: boolean, row: DTRow<UniqRowKeyType>): void {
