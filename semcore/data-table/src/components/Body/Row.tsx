@@ -36,7 +36,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
 
-  private unsubscribeSelectAll: undefined | (() => void) = undefined;
   private unsubscribeToggle: undefined | (() => void) = undefined;
 
   rowElementRef = React.createRef<HTMLDivElement>();
@@ -79,7 +78,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
 
-    this.unsubscribeSelectAll?.();
     this.unsubscribeToggle?.();
   }
 
