@@ -154,9 +154,9 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
       }
     } else {
       this.toggleOneRow(selected, row[UNIQ_ROW_KEY]);
-
-      this.lastSelectedRow = row[UNIQ_ROW_KEY];
     }
+
+    this.lastSelectedRow = row[UNIQ_ROW_KEY];
   }
 
   private toggleOneRow(isSelected: boolean, key: UniqRowKeyType): void {
