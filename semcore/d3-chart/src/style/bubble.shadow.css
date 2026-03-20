@@ -18,6 +18,10 @@ g[visible='false'] {
   display: none;
 }
 
+SBubble[clickable] {
+  cursor: pointer;
+}
+
 SBubble[color] {
   fill: var(--color);
 }
