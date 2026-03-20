@@ -1,22 +1,6 @@
-import {
-  Box,
-  Flex,
-  Collapse,
-  ScreenReaderOnly,
-} from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
 import type { SelectableRows } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import Pagination from '@semcore/ui/pagination';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
-
-type CheckboxExampleProps = {
-  animationDuration: number;
-  loading: boolean;
-  sideIndents?: 'wide';
-  compact?: boolean;
-};
 
 const columns = [
   { name: 'keyword', children: 'Keyword' },
@@ -37,8 +21,6 @@ const columns = [
 
 type TableProps = {
   selectedRows: SelectableRows<string>;
-  hasSelectedRows: boolean;
-  animationDuration: number;
   tableRef: React.Ref<HTMLDivElement>;
 
   sideIndents?: 'wide';
@@ -46,15 +28,12 @@ type TableProps = {
   compact?: boolean;
 };
 
-export const Table = (props: TableProps) => {
-  const headerProps = React.useMemo(() => {
-    return {
-      sticky: true,
-      top: props.hasSelectedRows ? 44 : 0,
-      animationDuration: props.animationDuration,
-    };
-  }, [props.hasSelectedRows, props.animationDuration]);
+const headerProps = {
+  sticky: true,
+  top: 44,
+};
 
+export const Table = (props: TableProps) => {
   return (
     <>
       <DataTable

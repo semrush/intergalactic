@@ -60,9 +60,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     this.setAccordion();
 
     if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
-        this.forceUpdate();
-      });
       this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
         if (row[UNIQ_ROW_KEY] === key) {
           this.forceUpdate();
@@ -499,7 +496,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const accordionId = `${uid}_${rowUniqKey}`;
 
     let theme = this.asProps.theme;
-    if (selectedRows && (Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.has(rowUniqKey))) {
+    if (selectedRows && (Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.isChecked(rowUniqKey))) {
       theme = 'info';
     }
 
@@ -552,7 +549,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             }
 
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
-              const checked = Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.has(rowUniqKey);
+              const checked = Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.isChecked(rowUniqKey);
 
               const nextColumnName = columns[i + 1].name;
 

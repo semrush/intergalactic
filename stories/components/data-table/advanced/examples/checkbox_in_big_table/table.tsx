@@ -1,21 +1,5 @@
-import {
-  Box,
-  Flex,
-  Collapse,
-  ScreenReaderOnly,
-} from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import Pagination from '@semcore/ui/pagination';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
-
-type CheckboxExampleProps = {
-  animationDuration: number;
-  loading: boolean;
-  sideIndents?: 'wide';
-  compact?: boolean;
-};
 
 const columns = [
   { name: 'keyword', children: 'Keyword' },
@@ -36,50 +20,28 @@ const columns = [
 
 type TableProps = {
   selectedRows: string[];
-  hasSelectedRows: boolean;
   handleChangeSelectedRows: (value: string[]) => void;
-  animationDuration: number;
-
+  tableRef: React.Ref<HTMLDivElement>;
   sideIndents?: 'wide';
   loading: boolean;
   compact?: boolean;
 };
 
+const headerProps = {
+  sticky: true,
+  top: 44,
+};
+
 export const Table = (props: TableProps) => {
-  const [currentPage, setCurrentPage] = React.useState(0);
-
-  const tableRef = React.useRef<HTMLDivElement>(null);
-
-  const handleDeselectAll = () => {
-    props.handleChangeSelectedRows([]);
-    tableRef.current?.focus();
-  };
-
-  const limit = 100;
-  const tableData = React.useMemo(() => {
-    return data.slice(
-      currentPage * limit,
-      currentPage * limit + limit,
-    );
-  }, [currentPage, limit]);
-
-  const headerProps = React.useMemo(() => {
-    return {
-      sticky: true,
-      top: props.hasSelectedRows ? 44 : 0,
-      animationDuration: props.animationDuration,
-    };
-  }, [props.hasSelectedRows, props.animationDuration]);
-
   return (
     <>
       <DataTable
-        data={tableData}
+        data={data}
         aria-label='Table example with selectable rows'
         defaultGridTemplateColumnWidth='auto'
         selectedRows={props.selectedRows}
         onSelectedRowsChange={props.handleChangeSelectedRows}
-        ref={tableRef}
+        ref={props.tableRef}
         sideIndents={props.sideIndents}
         loading={props.loading}
         compact={props.compact}
