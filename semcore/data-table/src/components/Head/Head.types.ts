@@ -9,6 +9,7 @@ export type DataTableHeadProps = {
   /**
    * Use Head as separate sticky container with display grid and calculation widths form body columns.
    * @default undefined
+   * @Internal
    */
   mode?: 'sticky';
   /**
