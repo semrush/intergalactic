@@ -23,6 +23,8 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
+import type { ISelectedRows } from '../../store/SelectableRows';
+import { SelectableRows } from '../../store/SelectableRows';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import { Body } from '../Body/Body';
@@ -127,7 +129,7 @@ class DataTableRoot<
 
   private headerNodesMap = new Map();
 
-  private isPressedShift = false;
+  private selectedRowsContainer: ISelectedRows<UniqKeyType>;
   private lastSelectedRowKey: UniqKeyType | undefined;
 
   constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
@@ -140,6 +142,12 @@ class DataTableRoot<
     this.calculatedRows = this.getRows();
     this.flatRows = this.calculatedRows.flat();
     this.tmpData = props.data;
+
+    if (Array.isArray(props.selectedRows) || !props.selectedRows) {
+      this.selectedRowsContainer = new SelectableRows<UniqKeyType>();
+    } else {
+      this.selectedRowsContainer = props.selectedRows;
+    }
   }
 
   state: State<Data, UniqKey, UniqKeyType> = {
@@ -197,6 +205,9 @@ class DataTableRoot<
       } else if (allUnchecked.length === data.length) {
         this.setSelectAllMessage(false);
       }
+    }
+    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && !Array.isArray(selectedRows)) {
+      this.selectedRowsContainer = selectedRows;
     }
   }
 
@@ -446,7 +457,7 @@ class DataTableRoot<
 
     const selectedRowsSet = new Set(selectedRows);
 
-    if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
+    if (this.selectedRowsContainer.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
       let select = false;
       const firstColumnKey = this.columns[0].name;
       const isMerged = this.flatRows.some((item) => item[firstColumnKey] instanceof MergedRowsCell);
@@ -717,14 +728,14 @@ class DataTableRoot<
         break;
       }
       case 'Shift': {
-        this.isPressedShift = true;
+        this.selectedRowsContainer.isPressedShift = true;
       }
     }
   };
 
   handleKeyUp = (e: React.KeyboardEvent) => {
     if (e.key === 'Shift') {
-      this.isPressedShift = false;
+      this.selectedRowsContainer.isPressedShift = false;
     }
   };
 
@@ -1349,7 +1360,9 @@ class DataTableRoot<
         });
       }
 
-      availableRowKeys.push(dtRow[UNIQ_ROW_KEY]);
+      if (!excludeColumns) { // we should add only the main row in mergedRows or default rows
+        availableRowKeys.push(dtRow[UNIQ_ROW_KEY]);
+      }
 
       return dtRow;
     };

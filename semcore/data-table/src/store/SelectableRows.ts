@@ -1,9 +1,12 @@
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
+import { MergedRowsCell } from '@semcore/ui/data-table';
 
 import type { DTRow } from '../components/Body/Row.types';
 import { UNIQ_ROW_KEY } from '../components/DataTable/DataTable';
 
 export interface ISelectedRows<UniqKeyType> {
+  /** Flag for multiple rows selection */
+  isPressedShift: boolean;
   /** Method for set keys from data. Call it in DataTable, on data changes */
   setAvailableKeys(keys: UniqKeyType[]): void;
 
@@ -43,8 +46,12 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
 
   private availableKeys = new Set<UniqRowKeyType>();
 
+  private lastSelectedRow: UniqRowKeyType | null = null;
+
   public static TOGGLE_EVENT = 'toggle_selected_row';
   public static SELECT_ALL_EVENT = 'select_all_selected_rows';
+
+  public isPressedShift: boolean = false;
 
   constructor(initValues: UniqRowKeyType[] = []) {
     super();
@@ -129,12 +136,38 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
   }
 
   public toggle(selected: boolean, row: DTRow<UniqRowKeyType>): void {
-    if (selected) {
+    if (this.isPressedShift && this.values.size > 0 && this.lastSelectedRow && (selected ? this.values.has(this.lastSelectedRow) : true)) {
+      let select = false;
+
+      for (const item of this.availableKeys.values()) {
+        if (!select && (item === row[UNIQ_ROW_KEY] || item === this.lastSelectedRow)) {
+          select = true;
+          this.toggleOneRow(selected, item);
+          continue;
+        }
+
+        if (select) {
+          this.toggleOneRow(selected, item);
+        }
+
+        if (select && (item === row[UNIQ_ROW_KEY] || item === this.lastSelectedRow)) {
+          break;
+        }
+      }
+    } else {
+      this.toggleOneRow(selected, row[UNIQ_ROW_KEY]);
+
+      this.lastSelectedRow = row[UNIQ_ROW_KEY];
+    }
+  }
+
+  private toggleOneRow(isSelected: boolean, key: UniqRowKeyType): void {
+    if (isSelected) {
       if (this.values.size === 0) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);
       }
 
-      this.values.add(row[UNIQ_ROW_KEY]);
+      this.values.add(key);
 
       if (this.values.size === this.availableKeys.size) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);
@@ -144,13 +177,13 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISel
         this.emit(SelectableRows.SELECT_ALL_EVENT);
       }
 
-      this.values.delete(row[UNIQ_ROW_KEY]);
+      this.values.delete(key);
 
       if (this.values.size === 0) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);
       }
     }
 
-    this.emit(SelectableRows.TOGGLE_EVENT, row[UNIQ_ROW_KEY]);
+    this.emit(SelectableRows.TOGGLE_EVENT, key);
   }
 }
