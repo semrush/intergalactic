@@ -46,6 +46,7 @@ const Demo = (props: LinkTriggerSizesProps) => {
               disabled={props.disabled}
               loading={props.loading}
               color={props.color}
+              size={size}
             >
               {props.addonLeft === 'icon' && (
                 <LinkTrigger.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</LinkTrigger.Addon>
@@ -70,7 +71,7 @@ const Demo = (props: LinkTriggerSizesProps) => {
               <LinkTrigger.Text
                 w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
                 ellipsis={props.ellipsis ? true : undefined}
-                size={size}
+
               >
                 The quick brown fox jumps over the lazy dog
               </LinkTrigger.Text>
