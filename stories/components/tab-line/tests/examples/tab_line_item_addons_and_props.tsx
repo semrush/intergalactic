@@ -11,6 +11,8 @@ import React from 'react';
 
 type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps & {
   ellipsis?: true | EllipsisSettings;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: TabLineDefProps) => {
@@ -34,7 +36,13 @@ const Demo = (props: TabLineDefProps) => {
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
           id='tab-label-fb'
         >
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { placement: 'right' } }}>Facebook</TabLine.Item.Text>
+          <TabLine.Item.Text
+            ellipsis={props.ellipsis}
+            hintProps={props.hintProps}
+            {...{ 'hint:placement': props.hintPlacement }}
+          >
+            Facebook
+          </TabLine.Item.Text>
           <TabLine.Item.Addon>
             <FacebookM />
           </TabLine.Item.Addon>
@@ -49,7 +57,7 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <InstagramM />
           </TabLine.Item.Addon>
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Instagram Instagram</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: props.hintProps }}>Instagram Instagram</TabLine.Item.Text>
           <TabLine.Item.Addon>
             <Badge type='new'>new</Badge>
           </TabLine.Item.Addon>
@@ -64,7 +72,7 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <TwitterM />
           </TabLine.Item.Addon>
-          <TabLine.Item.Text w={props.w} {...{ ellipsis: props.ellipsis }}>Twitter Twitter</TabLine.Item.Text>
+          <TabLine.Item.Text w={props.w} {...{ ellipsis: props.ellipsis, hintProps: props.hintProps }}>Twitter Twitter</TabLine.Item.Text>
           <TabLine.Item.Addon>
             <Text>1</Text>
           </TabLine.Item.Addon>
@@ -78,7 +86,7 @@ const Demo = (props: TabLineDefProps) => {
           id='tab-label-tw3'
           addonRight={TwitterM}
         >
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter3</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: props.hintProps }}>Twitter3</TabLine.Item.Text>
         </TabLine.Item>
 
         <TabLine.Item
@@ -91,7 +99,7 @@ const Demo = (props: TabLineDefProps) => {
           <TabLine.Item.Addon>
             <Counter>32</Counter>
           </TabLine.Item.Addon>
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter2</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: props.hintProps }}>Twitter2</TabLine.Item.Text>
 
         </TabLine.Item>
 
@@ -102,7 +110,7 @@ const Demo = (props: TabLineDefProps) => {
           aria-controls={value === true ? 'tab-panel-tw2' : undefined}
           id='tab-label-tw2'
         >
-          <TabLine.Item.Text {...{ ellipsis: props.ellipsis }}>Twitter4 Twitter4</TabLine.Item.Text>
+          <TabLine.Item.Text {...{ ellipsis: props.ellipsis, hintProps: props.hintProps }}>Twitter4 Twitter4</TabLine.Item.Text>
         </TabLine.Item>
       </TabLine>
 

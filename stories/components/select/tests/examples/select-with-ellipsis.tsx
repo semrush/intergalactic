@@ -5,10 +5,15 @@ import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+type SelectWithEllipsisProps = {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
+
 const formatName = (name?: string) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 const flags = Object.keys(iso2Name) as FlagsIso2[];
 
-const Demo = () => {
+const Demo = (props: SelectWithEllipsisProps) => {
   const [value, setValue] = React.useState<FlagsIso2 | undefined>(undefined);
 
   return (
@@ -23,7 +28,12 @@ const Demo = () => {
         <Select.Menu hMax={180}>
           {flags.map((value) => (
             <Select.Option key={value} value={value}>
-              <Select.Option.Text ellipsis wMax={150}>
+              <Select.Option.Text
+                ellipsis
+                wMax={150}
+                hintProps={props.hintProps}
+                hint:placement={props.hintPlacement}
+              >
                 {formatName(iso2Name[value])}
               </Select.Option.Text>
             </Select.Option>
@@ -33,5 +43,9 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: SelectWithEllipsisProps = {};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

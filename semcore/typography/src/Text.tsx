@@ -89,8 +89,10 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   }
 
   private initEllipsis() {
-    const ellipsis = this.asProps.ellipsis;
-    if (ellipsis && this.innerRef.current) {
+    const { ellipsis, hintProps } = this.asProps;
+    const shouldInit = hintProps !== false || (typeof ellipsis === 'object' && ellipsis.cropPosition === 'middle');
+
+    if (shouldInit && ellipsis && this.innerRef.current) {
       this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsis === true ? {} : ellipsis);
 
       this.ellipsis.on('isEllipsized', this.handleEllipsized);

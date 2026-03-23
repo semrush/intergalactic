@@ -20,7 +20,8 @@ import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
 import SelectableWithMergedRowsExample from './examples/selectable_with_merged_rows';
 import SideIndentsExample from './examples/side-indents';
-import TablePerfExample from './examples/table_perf/table_perf';
+import type { AccordionInTableProps } from './examples/table_perf/table_perf';
+import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
 import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
@@ -48,6 +49,22 @@ export const AccordionWithCheckbox: StoryObj<AccordionWithCheckboxProps> = {
 
 export const AccordionWithManyRows: StoryObj<typeof accordionTableInTableDefaultProps> = {
   render: AccordionWithManyRowsExample,
+  argTypes: {
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis calculation for cropPosition=end (CSS-only),
+    // but still calculates for cropPosition=middle (needs JS). No hint shown in either case.
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+  },
   args: {
     ...accordionTableInTableDefaultProps,
   },
@@ -120,10 +137,23 @@ export const FixedColumnsWidthWithShadows: Story = {
   render: FixedColumnsWidthWithShadowsExample,
 };
 
-export const TablePerf: StoryObj<{ loading: boolean }> = {
+export const TablePerf: StoryObj<AccordionInTableProps> = {
   render: TablePerfExample,
   argTypes: {
     loading: { control: 'boolean' },
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis JS calculation for cropPosition=end
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
   },
-  args: accordionMergedProps,
+  args: accordionInsideTableDefaultProps,
 };

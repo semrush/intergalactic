@@ -2,7 +2,12 @@ import BaseTrigger from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
-const Demo = () => {
+type BaseTriggerEllipsisProps = {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
+
+const Demo = (props: BaseTriggerEllipsisProps) => {
   return (
     <>
       <DropdownMenu>
@@ -14,14 +19,26 @@ const Demo = () => {
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} size={400} ellipsis={{ cropPosition: 'middle' }}>
+          <BaseTrigger.Text
+            w={150}
+            size={400}
+            ellipsis={{ cropPosition: 'middle' }}
+            hintProps={props.hintProps}
+            hint:placement={props.hintPlacement}
+          >
             This is first trigger with a very very long text!
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
-          <BaseTrigger.Text w={150} size={400} ellipsis={true}>
+          <BaseTrigger.Text
+            w={150}
+            size={400}
+            ellipsis={true}
+            hintProps={props.hintProps}
+            hint:placement={props.hintPlacement}
+          >
             This is second trigger with a very very long text!
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
@@ -36,12 +53,18 @@ const Demo = () => {
       <br />
       <br />
       <BaseTrigger w={100} data-test-id='active-trigger'>
-        <BaseTrigger.Text ellipsis={true}>
+        <BaseTrigger.Text
+          ellipsis={true}
+          hintProps={props.hintProps}
+          hint:placement={props.hintPlacement}
+        >
           This is third trigger with a very very long text!
         </BaseTrigger.Text>
       </BaseTrigger>
     </>
   );
+};
+export const defaultProps: BaseTriggerEllipsisProps = {
 };
 
 export default Demo;

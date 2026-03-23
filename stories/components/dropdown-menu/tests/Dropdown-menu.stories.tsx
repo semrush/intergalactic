@@ -136,6 +136,18 @@ export const WithEllipsis: StoryObj<typeof defaultWithEllipsisProps> = {
       control: { type: 'boolean' },
       description: 'Enable multiselect mode (requires selectable to be true)',
     },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: defaultWithEllipsisProps,
 };

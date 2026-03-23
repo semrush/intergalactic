@@ -8,6 +8,8 @@ type WithEllipsisProps = {
   addExtraItems?: boolean;
   selectable?: boolean;
   multiselect?: boolean;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: WithEllipsisProps) => {
@@ -42,7 +44,14 @@ const Demo = (props: WithEllipsisProps) => {
         <DropdownMenu.Group title='We do not recommend' subTitle='Use ellipsis in menu items!'>
           <DropdownMenu.Item selected={isSelected(0)} onClick={() => handleItemClick(0)}>
             <DropdownMenu.Item.Content w='100%'>
-              <DropdownMenu.Item.Text w='100%' ellipsis>Menu item 1 with long long long text</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text
+                w='100%'
+                ellipsis
+                hintProps={props.hintProps}
+                hint:placement={props.hintPlacement}
+              >
+                Menu item 1 with long long long text
+              </DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
           </DropdownMenu.Item>
           <DropdownMenu.Item size='l' selected={isSelected(1)} onClick={() => handleItemClick(1)}>
@@ -56,12 +65,21 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Addon>
                 <DesktopIconM />
               </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text ellipsis>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text
+                ellipsis
+                hintProps={props.hintProps}
+                hint:placement={props.hintPlacement}
+              >
+                Menu item hint shown on hover and focus
+              </DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
             <DropdownMenu.Item.Hint
               w='100%'
               tag={Text}
               ellipsis
+              // @ts-expect-error. We can't calculate correct types from intersections in tag prop.
+              hintProps={props.hintProps}
+              hint:placement={props.hintPlacement}
             >
               Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!
             </DropdownMenu.Item.Hint>

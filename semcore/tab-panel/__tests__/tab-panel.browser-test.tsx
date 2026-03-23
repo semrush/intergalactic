@@ -88,10 +88,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 100, behavior: 'auto', desc: 'default' },
-    { w: 100, behavior: 'auto', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-    { w: 100, behavior: 'manual', desc: 'default' },
-    { w: 100, behavior: 'manual', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'auto', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'auto', ellipsis: { cropPosition: 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'manual', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'manual', ellipsis: { cropPosition: 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
 
   ];
   variablesEllipsis.forEach((item) => {
