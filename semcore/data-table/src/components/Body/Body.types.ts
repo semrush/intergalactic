@@ -62,7 +62,6 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   onExpandRow: (row: DTRow<UniqKeyType>) => void;
   spinnerRef: React.RefObject<HTMLDivElement>;
   gridContainerRef: React.RefObject<HTMLDivElement>;
-  tableContainerRef: React.RefObject<HTMLDivElement>;
   tableRef: React.RefObject<HTMLDivElement>;
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   scrollTop: number;

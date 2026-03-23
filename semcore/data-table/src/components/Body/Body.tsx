@@ -197,7 +197,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   getSpinnerTopOffset = () => {
-    const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
+    const { headerHeight: propsHeaderHeight, tableRef, stickyHeader } = this.asProps;
 
     let headerHeight = propsHeaderHeight;
 
@@ -205,11 +205,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       return headerHeight;
     }
 
-    if (tableContainerRef.current) {
-      if (tableContainerRef.current.scrollTop > headerHeight) {
+    if (tableRef.current) {
+      if (tableRef.current.scrollTop > headerHeight) {
         headerHeight = 0;
       } else {
-        headerHeight = headerHeight - tableContainerRef.current.scrollTop;
+        headerHeight = headerHeight - tableRef.current.scrollTop;
       }
     }
 
@@ -234,7 +234,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       spinnerRef,
       virtualScroll,
       scrollDirection,
-      tableContainerRef,
+      tableRef,
       scrollTop,
       renderEmptyData,
       columns,
@@ -254,7 +254,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
           ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
           : ROWS_BUFFER;
-      const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
+      const offsetHeight = tableRef.current?.offsetHeight ?? 0;
       const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 

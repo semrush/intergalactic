@@ -363,7 +363,6 @@ class DataTableRoot<
       scrollTop: this.state.scrollTop,
       scrollDirection: this.state.scrollDirection,
       gridContainerRef: this.gridContainerRef,
-      tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
       scrollAreaRef: this.scrollAreaRef,
       onBackFromAccordion: this.handleBackFromAccordion,
@@ -522,11 +521,11 @@ class DataTableRoot<
     const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows || 1;
 
-    const currentRow = this.tableRef.current?.querySelector(
+    const currentRow = this.gridContainerRef.current?.querySelector(
       `[aria-rowindex="${this.focusedCell[0] + 1}"]`,
     );
 
-    const headerCells = this.tableRef.current?.querySelectorAll('[role=columnheader]');
+    const headerCells = this.gridContainerRef.current?.querySelectorAll('[role=columnheader]');
     const currentCell = currentRow?.querySelector(
       `[role=gridcell][aria-colindex='${this.focusedCell[1] + 1}']`,
     );
@@ -729,10 +728,9 @@ class DataTableRoot<
   });
 
   calculateVerticalShadow = () => {
-    if (!this.tableContainerRef.current) return;
+    if (!this.tableRef.current) return;
 
-    const { scrollWidth, clientWidth, scrollLeft } =
-            this.tableContainerRef.current;
+    const { scrollWidth, clientWidth, scrollLeft } = this.tableRef.current;
     const maxScrollRight = scrollWidth - clientWidth;
 
     const roundedScroll = Math.round(scrollLeft);
@@ -858,7 +856,8 @@ class DataTableRoot<
   });
 
   render() {
-    const SDataTable = Root;
+    const SDataGrid = Root;
+    const SDataTable = Box;
     const {
       Children,
       styles,
@@ -898,7 +897,8 @@ class DataTableRoot<
 
     return sstyled(styles)(
       <hideScrollBarsFromScreenReadersContext.Provider value={true}>
-        <Box
+        <SDataGrid
+          render={Box}
           role='grid'
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
@@ -915,6 +915,7 @@ class DataTableRoot<
           w={width}
           wMax={wMax}
           wMin={wMin}
+          use:data={undefined}
         >
           {this.hasSeparateStickyHeader() && (
             <ScrollArea
@@ -996,14 +997,6 @@ class DataTableRoot<
                 gridTemplateAreas={gridTemplateAreas.join(' ')}
                 gridTemplateRows={gridTemplateRows}
                 w='100%'
-                use:data={undefined}
-                use:w={undefined}
-                use:wMax={undefined}
-                use:wMin={undefined}
-                use:h={undefined}
-                use:hMax={undefined}
-                use:hMin={undefined}
-                __excludeProps={['aria-label', 'aria-labelledby']}
               >
                 {children
                   ? (
@@ -1039,7 +1032,7 @@ class DataTableRoot<
               </ScreenReaderOnly>
             )}
           </ScrollArea>
-        </Box>
+        </SDataGrid>
       </hideScrollBarsFromScreenReadersContext.Provider>,
     );
   }

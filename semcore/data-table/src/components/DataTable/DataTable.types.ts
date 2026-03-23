@@ -41,7 +41,7 @@ export type DataTableData = DataRowItem[];
 
 export type DTUse = 'primary' | 'secondary';
 
-export type Sizes = Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>;
+export type Sizes = Partial<Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>>;
 
 export type DataTableProps<
   Data extends DataTableData,
