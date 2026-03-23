@@ -63,6 +63,7 @@ const Demo = (props: CheckboxExampleProps) => {
           px={3}
           style={{
             position: 'sticky',
+            boxSizing: 'border-box',
             top: 0,
             zIndex: 50,
             backgroundColor:
