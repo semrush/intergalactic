@@ -106,7 +106,7 @@ export const fixedColumnScrollExampleProps: FixedColumnScrollExampleProps = {
   defaultGridTemplateColumnWidth: 'auto',
   loading: undefined,
   sticky: true,
-  withScrollBar: undefined,
+  withScrollBar: false,
 };
 
 Demo.defaultProps = fixedColumnScrollExampleProps;

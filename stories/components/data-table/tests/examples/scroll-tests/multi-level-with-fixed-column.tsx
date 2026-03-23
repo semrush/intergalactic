@@ -124,7 +124,7 @@ export const fixedColumnMultiLevelScrollExampleProps: FixedColumnMultiLevelScrol
   defaultGridTemplateColumnWidth: 'auto',
   loading: undefined,
   sticky: true,
-  withScrollBar: undefined,
+  withScrollBar: false,
 };
 
 Demo.defaultProps = fixedColumnMultiLevelScrollExampleProps;

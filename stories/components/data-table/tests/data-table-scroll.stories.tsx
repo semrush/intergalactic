@@ -34,6 +34,7 @@ export const ScrollWithStickyAndTopTopHeaderProps: StoryObj<typeof ScrollTopHead
 
 export const OneLevelScrollInTable: StoryObj<OneLevelScrollIntableProps> = {
   render: OneLevelScrollInTableExample,
+
   args: {
     ...oneLevelScrollIntableProps,
   },
@@ -48,6 +49,9 @@ export const MultiLevelScrollInTable: StoryObj<MultiLevelScrollIntableProps> = {
 
 export const OneLevelWithFixedColumn: StoryObj<FixedColumnScrollExampleProps> = {
   render: OneLevelWithFixedColumnExample,
+  argTypes: {
+    withScrollBar: { control: 'boolean' },
+  },
   args: {
     ...fixedColumnScrollExampleProps,
   },
