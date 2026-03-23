@@ -46,12 +46,7 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   chevron?: boolean;
 };
 
-export type LinkTriggerProps = Omit<ButtonLinkProps, 'size'> & {
-  /**
-   * Trigger size
-   * @default m
-   */
-  size?: 'm' | 'l';
+export type LinkTriggerProps = ButtonLinkProps & {
   /** Trigger state */
   state?: 'normal' | 'valid' | 'invalid';
   /** Sets the loading state */

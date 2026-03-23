@@ -40,7 +40,7 @@ const Demo = (props: LinkTriggerWithAddonExample) => (
 );
 
 export const linkTriggerWithAddonExampleProps: LinkTriggerWithAddonExample = {
-  size: 'm',
+  size: 300,
   state: undefined,
   active: undefined,
   empty: undefined,

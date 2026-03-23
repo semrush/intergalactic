@@ -22,7 +22,7 @@ const Demo = (props: LinkTriggerBaseExample) => (
 );
 
 export const linkTriggerBaseExampleProps: LinkTriggerBaseExample = {
-  size: 'm',
+  size: 300,
   state: undefined,
   active: undefined,
   empty: undefined,

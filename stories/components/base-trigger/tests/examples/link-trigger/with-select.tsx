@@ -93,7 +93,7 @@ const projects: Project[] = [
 ];
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
-  size: 'm',
+  size: 300,
   state: undefined,
   active: undefined,
   empty: undefined,
