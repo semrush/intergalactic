@@ -24,12 +24,12 @@ class RootLinkTrigger extends Component {
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, empty } = this.asProps;
+    const { Children, loading, empty, disabled } = this.asProps;
 
     return (
       <SLinkTrigger
         render={ButtonLink}
-        tabIndex={loading ? -1 : 0}
+        disabled={disabled || loading}
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>

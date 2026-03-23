@@ -44,10 +44,10 @@ class RootButtonTrigger extends Component {
   render() {
     const SButtonAddon = ButtonTrigger.Addon;
     const SButtonTriggerSpin = Spin;
-    const { Children, styles, loading, chevron, empty } = this.asProps;
+    const { Children, styles, loading, disabled, chevron, empty } = this.asProps;
 
     return sstyled(styles)(
-      <Root render={BaseTrigger} tabIndex={loading ? -1 : 0}>
+      <Root render={BaseTrigger} disabled={disabled || loading}>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         {(chevron || loading) && (
           <SButtonAddon>
