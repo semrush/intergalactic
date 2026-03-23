@@ -29,7 +29,7 @@ class RootLinkTrigger extends Component {
     return (
       <SLinkTrigger
         render={ButtonLink}
-        disabled={disabled || loading}
+        use:disabled={disabled || loading}
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
