@@ -31,6 +31,7 @@ const Demo = (props: BasicLinktriggerProps) => {
     showAddonRight = false,
     disabled,
     loading,
+    hintProps,
     active,
     size = 300,
     w,
@@ -97,7 +98,8 @@ const Demo = (props: BasicLinktriggerProps) => {
         <LinkTrigger.Text
           w={ellipsisW}
           ellipsis={ellipsis || undefined}
-          hintProps={hintPlacement ? { placement: hintPlacement } : undefined}
+          hint:placement={hintPlacement}
+          hintProps={hintProps}
         >
           {text}
         </LinkTrigger.Text>
