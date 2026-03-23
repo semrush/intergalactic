@@ -98,7 +98,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
             <Box ref={containerRef} display='inline-flex' wMin={0}>
               <Text
                 ellipsis={true}
-                hintProps={headerCell ? { placement: 'bottom', triggerRef: { current: headerCell } } : undefined}
+                hint:placement='bottom'
+                hint:triggerRef={{ current: headerCell }}
                 wMin={0}
               >
                 Vol.Vol.Vol.Vol.Vol.

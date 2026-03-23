@@ -6,7 +6,7 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import type { TextProps } from '@semcore/typography';
+import type { TextProps, TextHintProps } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -47,15 +47,9 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     }
   }
 
-  getTextProps(props: TextProps) {
-    if ('hintProps' in props) {
-      return {
-        'use:hintProps': { triggerRef: this.containerRef, ...props.hintProps },
-      };
-    }
-
+  getTextProps(): TextHintProps {
     return {
-      'use:hintProps': { triggerRef: this.containerRef },
+      'hint:triggerRef': this.containerRef,
     };
   }
 

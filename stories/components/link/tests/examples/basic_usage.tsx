@@ -106,7 +106,7 @@ const Demo = (props: BasicLinkProps) => {
           size={size}
           w={ellipsisW}
           ellipsis={ellipsis || undefined}
-          hintProps={hintPlacement ? { placement: hintPlacement } : undefined}
+          hint:placement={hintPlacement}
         >
           {text}
         </Link.Text>

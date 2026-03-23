@@ -527,6 +527,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await locators.menuitem(page, 0).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
 
@@ -542,6 +548,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.hint(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('ArrowDown');
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
@@ -1316,6 +1328,35 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Enter');
     await locators.menuitemradio(page, 'project 10').waitFor({ state: 'visible' });
     await expect(page.getByText('project 10').first()).toBeVisible();
+  });
+
+  test('Verify Focus on input search when menu opened by keyboard ', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.menuitem(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(200); // this timeout needed for the test to make sure that focus does not move
+
+    await expect(page.getByRole('textbox')).toBeFocused();
+  });
+
+  test('Verify Focus on input search when menu opened by mouse ', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
+
+    await page.getByRole('combobox').first().click();
+    await locators.menuitem(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(200); // this timeout needed for the test to make sure that focus does not move
+
+    await expect(page.getByRole('textbox')).toBeFocused();
   });
 
   test.describe('DD menu with input tags as trigger', () => {
