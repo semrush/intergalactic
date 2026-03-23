@@ -34,7 +34,6 @@ const Demo = () => {
         wMax='400px'
         headerProps={{
           sticky: true,
-          withScrollBar: true,
         }}
         columns={columns}
       />

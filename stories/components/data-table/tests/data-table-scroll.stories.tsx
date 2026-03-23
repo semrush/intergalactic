@@ -12,8 +12,9 @@ import type { FixedColumnScrollExampleProps } from './examples/scroll-tests/one-
 import ScrollWithStickyAndTopTopHeaderPropsExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-with-sticky-and-top-props-header';
 import StickyHeaderAccordionExample from './examples/scroll-tests/sticky-header-accordion';
 import StickyHeaderAsyncDataExample from './examples/scroll-tests/sticky-header-async-data';
+import StickyHeaderDataChangeExample from './examples/scroll-tests/sticky-header-data-change';
 import StickyHeaderScrollSyncExample, { defaultProps as StickyHeaderScrollSyncProps } from './examples/scroll-tests/sticky-header-scroll-sync';
-import StickyHeaderSortingExample from './examples/scroll-tests/sticky-header-sorting';
+import StickyHeaderSortingExample, { defaultProps as StickyHeaderSortingProps } from './examples/scroll-tests/sticky-header-sorting';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 
 const meta: Meta<typeof DataTable> = {
@@ -77,10 +78,15 @@ export const StickyHeaderAsyncData: Story = {
   render: StickyHeaderAsyncDataExample,
 };
 
+export const StickyHeaderDataChange: Story = {
+  render: StickyHeaderDataChangeExample,
+};
+
 export const StickyHeaderAccordion: Story = {
   render: StickyHeaderAccordionExample,
 };
 
 export const StickyHeaderSorting: Story = {
   render: StickyHeaderSortingExample,
+  args: StickyHeaderSortingProps,
 };

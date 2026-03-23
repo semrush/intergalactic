@@ -187,6 +187,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.wMax === '300px') {
         await test.step('Verify horizontal scroll', async () => {
           const nowNumberInitial = await checkAriaMaxValue(scrollBar.nth(1));
+          await locators.dataTable(page).nth(0).hover();
+          await page.mouse.wheel(600, 0);
+          await page.waitForTimeout(1000);
           await locators.dataTable(page).nth(1).hover();
           await page.mouse.wheel(600, 0);
           await page.waitForTimeout(1000);
@@ -266,6 +269,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.wMax == '300px') {
         await test.step('Verify horizontal scroll', async () => {
+          await locators.dataTable(page).nth(0).hover();
+          await page.mouse.wheel(600, 0);
+          await page.waitForTimeout(1000);
           await locators.dataTable(page).nth(1).hover();
           await page.mouse.wheel(600, 0);
           await page.waitForTimeout(1000);
