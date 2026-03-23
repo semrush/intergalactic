@@ -31,22 +31,13 @@ export abstract class AbstractButton extends Component<Props, [], never, {}, Sta
 
   protected abstract getTextColor(): string | undefined;
 
-  getTextProps(props: AbstractButtonTextProps<any>) {
+  getTextProps() {
     const { size } = this.asProps;
 
-    // `any` because we don't have typings for `use:PROPS`.
-    const textProps: any = {
+    return {
       size,
-      'use:hintProps': {
-        triggerRef: this.containerRef,
-      },
+      'hint:triggerRef': this.containerRef,
     };
-
-    if ('hintProps' in props) {
-      textProps['use:hintProps'] = { triggerRef: this.containerRef, ...props.hintProps };
-    }
-
-    return textProps;
   }
 
   getAddonProps() {

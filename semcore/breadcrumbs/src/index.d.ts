@@ -1,5 +1,6 @@
 import type { EllipsisSettings, SimpleHintPopperProps, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { TextHintProps } from '@semcore/typography';
 
 export type BreadcrumbsProps = BoxProps & {
   /**
@@ -21,8 +22,7 @@ export type BreadcrumbsItemProps = BoxProps & {
    * @default false
    */
   ellipsis?: true | EllipsisSettings;
-  hintProps?: SimpleHintPopperProps;
-};
+} & TextHintProps;
 
 export type BreadcrumbsContext = BreadcrumbsProps & {
   getItemProps: PropGetterFn;

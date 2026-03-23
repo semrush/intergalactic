@@ -1,6 +1,5 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Hint } from '@semcore/ui/base-components';
-import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {
@@ -8,9 +7,9 @@ const Demo = () => {
 
   return (
     <>
-      <Link href='https://semrush.com' ref={ref}>
-        <Link.Addon tag={LinkExternalM} />
-      </Link>
+      <a href='https://www.semrush.com/' ref={ref}>
+        <LinkExternalM />
+      </a>
       <Hint triggerRef={ref} timeout={[200, 150]}>
         Hint with custom animation timeouts
       </Hint>

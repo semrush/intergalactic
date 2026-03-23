@@ -17,10 +17,22 @@ You can set the Hint's position using the `hintPlacement` property.
 
 :::
 
+## Hint properties
+
+In components based on [Text](../../style/typography/typography-api#text), hint properties can be accessed using the `hint:` prefix.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/hint/docs/examples/hint-props.tsx';
+</script>
+
+:::
+
 
 ## Advanced usage
 
-To use Hint with other components, or to customize its behavior, use the `Hint` component explicitly with `triggerRef` property.
+To use Hint with other components, or for deeper customization, use the `Hint` component explicitly with `triggerRef` property.
 
 ::: sandbox
 

@@ -243,7 +243,7 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Select.Option.Text flex={1} ellipsis>{option.label} </Select.Option.Text>
+                            <Select.Option.Text flex={1} ellipsis hint:placement='right'>{option.label} </Select.Option.Text>
                           </Select.Option>
                         );
                       })}

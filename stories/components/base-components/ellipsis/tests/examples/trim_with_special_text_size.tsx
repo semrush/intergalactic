@@ -1,4 +1,4 @@
-import type { EllipsisSettings, BoxProps } from '@semcore/ui/base-components';
+import type { EllipsisSettings, BoxProps, SimpleHintPopperProps } from '@semcore/ui/base-components';
 import type { TextProps } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -7,9 +7,18 @@ type TextExampleProps = {
   ellipsis?: true | EllipsisSettings;
   size: TextProps['size'];
   w: BoxProps['w'];
+  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
 };
 
 const Demo = (props: TextExampleProps) => {
+  const resolvedHintProps = props.hintProps === false
+    ? false
+    : {
+        ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
+        ...(typeof props.hintProps === 'object' ? props.hintProps : {}),
+      };
+
   return (
     <Text
       w={props.w}
@@ -19,6 +28,7 @@ const Demo = (props: TextExampleProps) => {
       mt={0}
       style={{ outline: '1px solid red' }}
       ellipsis={props.ellipsis}
+      {...(resolvedHintProps !== undefined ? { hintProps: resolvedHintProps } : {})}
     >
       WordWord WordWord
     </Text>

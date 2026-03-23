@@ -13,6 +13,8 @@ export type TableInTableProps = {
   >['onAccordionToggle'];
   accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
   accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
+  cropPosition?: EllipsisSettings['cropPosition'];
+  hintProps?: false;
 };
 
 const Demo = (props: TableInTableProps) => {
@@ -27,34 +29,36 @@ const Demo = (props: TableInTableProps) => {
     setVolElement(volRef.current);
   }, []);
 
-  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (props) => {
+  const cropPos = props.cropPosition ?? 'middle';
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (cellProps) => {
     const ellipsisSettingsVol: EllipsisSettings = React.useMemo(() => {
       return {
-        cropPosition: 'middle',
+        cropPosition: cropPos,
         containerElement: volElement ?? undefined,
       } as const;
     }, [volElement]);
 
     const ellipsisSettingsKeyword: EllipsisSettings = React.useMemo(() => {
       return {
-        cropPosition: 'middle',
+        cropPosition: cropPos,
         containerElement: keywordElement ?? undefined,
-        recalculateContainerWidth: (props.isAccordionRow || props.row[ACCORDION]) ? (width: number) => width - 26 : undefined,
+        recalculateContainerWidth: (cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? (width: number) => width - 26 : undefined,
       } as const;
-    }, [keywordElement, props.isAccordionRow]);
+    }, [keywordElement, cellProps.isAccordionRow]);
 
-    if (props.dataKey === 'keyword' && keywordElement) {
+    if (cellProps.dataKey === 'keyword' && keywordElement) {
       return (
-        <Text ellipsis={ellipsisSettingsKeyword}>{props.value}</Text>
+        <Text ellipsis={ellipsisSettingsKeyword} hintProps={props.hintProps}>{cellProps.value}</Text>
       );
     }
-    if (props.dataKey === 'vol' && volElement) {
+    if (cellProps.dataKey === 'vol' && volElement) {
       return (
-        <Text ellipsis={ellipsisSettingsVol}>{props.value}</Text>
+        <Text ellipsis={ellipsisSettingsVol} hintProps={props.hintProps}>{cellProps.value}</Text>
       );
     }
-    return props.defaultRender();
-  }, [keywordElement, volElement]);
+    return cellProps.defaultRender();
+  }, [keywordElement, volElement, cropPos, props.hintProps]);
 
   return (
     <DataTable
@@ -91,6 +95,8 @@ export const accordionTableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
   accordionAnimationRows: undefined,
   accordionDuration: undefined,
+  cropPosition: 'middle',
+  hintProps: undefined,
 };
 
 Demo.defaultProps = accordionTableInTableDefaultProps;

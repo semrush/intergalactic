@@ -2,12 +2,24 @@ import { LinkTrigger } from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
-const Demo = () => {
+type LinkTriggerEllipsisProps = {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
+
+const Demo = (props: LinkTriggerEllipsisProps) => {
   return (
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} size={400} display='inline-flex' ellipsis={{ cropPosition: 'middle' }}>
+          <LinkTrigger.Text
+            w={150}
+            size={400}
+            display='inline-flex'
+            hintProps={props.hintProps}
+            hint:placement={props.hintPlacement}
+            ellipsis={{ cropPosition: 'middle' }}
+          >
             Few Tags Tags Tags
           </LinkTrigger.Text>
         </DropdownMenu.Trigger>
@@ -15,7 +27,14 @@ const Demo = () => {
         <br />
         <br />
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} size={400} ellipsis={{ cropPosition: 'middle' }} data-test-id='ellipsis-middle'>
+          <LinkTrigger.Text
+            w={150}
+            size={400}
+            ellipsis={{ cropPosition: 'middle' }}
+            hintProps={props.hintProps}
+            hint:placement={props.hintPlacement}
+            data-test-id='ellipsis-middle'
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
             commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
             tempore voluptas. Aliquam eos expedita illo quasi unde!
@@ -25,7 +44,13 @@ const Demo = () => {
         <br />
         <br />
         <DropdownMenu.Trigger tag={LinkTrigger}>
-          <LinkTrigger.Text w={150} size={400} ellipsis={true}>
+          <LinkTrigger.Text
+            w={150}
+            size={400}
+            ellipsis={true}
+            hintProps={props.hintProps}
+            hint:placement={props.hintPlacement}
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem
             commodi, doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum
             tempore voluptas. Aliquam eos expedita illo quasi unde!
@@ -43,6 +68,7 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export const defaultProps: LinkTriggerEllipsisProps = {
+};
 
-export const App = () => <Demo />;
+export default Demo;

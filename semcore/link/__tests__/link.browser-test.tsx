@@ -25,6 +25,7 @@ async function getTextClip(page: Page) {
   clip.height += 200;
   return clip;
 }
+const longText = 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation';
 
 /* =====================================================
 @visual
@@ -33,7 +34,6 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(` ${TAG.VISUAL}`, () => {
   // Section 1: Size * addon position * ellipsis * addonType * color * merged rotation
   const sizes = [100, 200, 300, 400, 500, 600, 700, 800];
-  const longText = 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation';
   const addonTypes = ['icon', 'badge', 'counter', 'spin'];
 
   const addonCombos = [
@@ -200,11 +200,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
   // Section 3: No-hint tests - verify hint does NOT appear when text is not truncated
   test.describe('Link without ellipsis', () => {
     const noHintVariants = [
-      { desc: 'ellipsis: false', vars: { ellipsis: false as const }, text: longText },
+      { desc: 'ellipsis: false', vars: { ellipsis: false }, text: longText },
       { desc: 'maxLine: 9 (text not truncated)', vars: { ellipsis: { cropPosition: 'end', maxLine: 9 } }, text: longText },
     ];
 
-    // 3 representative sizes
+    // 3 sizes
     const noHintSizes = [100, 300, 500] as const;
     noHintSizes.forEach((size) => {
       noHintVariants.forEach(({ desc, vars, text }) => {
@@ -313,7 +313,7 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
-  test('Verify disabled link cannot be focused', {
+  test('Verify disabled link', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', { disabled: true });
@@ -325,6 +325,26 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify disabled link cannot receive focus', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.link(page).first()).not.toBeFocused();
+    });
+  });
+
+  const noHintVariants = [
+    { desc: 'ellipsis: end and hint disabled', vars: { ellipsis: { cropPosition: 'end' }, hintProps: false }, text: longText },
+    { desc: 'ellipsis: middle and hint disabled', vars: { ellipsis: { cropPosition: 'middle' }, hintProps: false }, text: longText },
+  ];
+
+  noHintVariants.forEach(({ desc, vars, text }) => {
+    test(`Verify no hint appears: ${desc}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, storyPath, 'en', { ...vars, text });
+      await page.waitForTimeout(200);
+
+      await test.step('Focus and hover link - no hint should appear', async () => {
+        await page.keyboard.press('Tab');
+        await locators.link(page).first().hover();
+        await expect(locators.hint(page)).toHaveCount(0);
+      });
     });
   });
 });

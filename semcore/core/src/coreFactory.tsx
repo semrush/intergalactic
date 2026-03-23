@@ -136,10 +136,28 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
       }
       if (!this[CORE_AS_PROPS]) {
         // PROPS
-        this[CORE_AS_PROPS] = props.reduce(
-          (acc: any, enhancement: any) => enhancement.call(this, acc, WrapperComponent, false),
-          this.props,
-        );
+        this[CORE_AS_PROPS] = props.reduce((acc: any, enhancement: any) => {
+          return enhancement.call(this, acc, WrapperComponent, false);
+        }, this.props);
+
+        if (this[CORE_AS_PROPS] !== null) {
+          const prefixesMap = new Map<string, Record<string, unknown>>();
+          Object.entries(this[CORE_AS_PROPS]).forEach(([key, value]) => {
+            const [prefix, propertyKey] = key.split(':');
+            if (prefix !== 'use' && propertyKey) {
+              const obj = prefixesMap.get(prefix) ?? {};
+              obj[propertyKey] = value;
+
+              prefixesMap.set(prefix, obj);
+            }
+          });
+
+          for (const [key, value] of prefixesMap.entries()) {
+            if (!Object.hasOwn(this[CORE_AS_PROPS], `${key}Props`) || this[CORE_AS_PROPS][`${key}Props`] === undefined) {
+              Object.defineProperty(this[CORE_AS_PROPS], `${key}Props`, { value });
+            }
+          }
+        }
       }
       return this[CORE_AS_PROPS];
     }

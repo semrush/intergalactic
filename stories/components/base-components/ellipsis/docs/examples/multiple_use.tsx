@@ -27,7 +27,8 @@ const Demo = () => {
           children: (
             <Text
               ellipsis={{ cropPosition: 'middle' }}
-              hintProps={{ placement: 'right', triggerRef: cellRef }}
+              hint:triggerRef={cellRef}
+              hint:placement='right'
               flex={1}
             >
               {props.value}

@@ -4,16 +4,6 @@ import { InputSearch } from '@semcore/ui/select';
 import React from 'react';
 
 const Demo = () => {
-  const [visible, setVisible] = React.useState(false);
-
-  const handleVisiblity = (next: any) => {
-    if (next) {
-      alert('boom');
-    }
-
-    setVisible(next);
-  };
-
   return (
     <>
       <DropdownMenu>

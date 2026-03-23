@@ -1,4 +1,4 @@
-import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/ui/base-components';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -10,6 +10,7 @@ type LinkEllipsisProps = {
   active?: boolean;
   disabled?: boolean;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: LinkEllipsisProps) => {
@@ -31,10 +32,8 @@ const Demo = (props: LinkEllipsisProps) => {
         w={props.w}
         color={props.color}
         size={props.size}
-        hintProps={{
-          ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-
-        }}
+        hintProps={props.hintProps}
+        hint:placement={props.hintPlacement}
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
       </Link.Text>

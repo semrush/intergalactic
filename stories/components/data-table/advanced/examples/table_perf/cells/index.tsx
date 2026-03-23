@@ -34,9 +34,10 @@ type CopyProps = {
   handle?: boolean;
   cellProps: any;
   headerRef: HTMLElement | null;
+  hintProps?: false;
 };
 
-const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cellProps, headerRef }) => {
+const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cellProps, headerRef, hintProps }) => {
   const timeourRef = useRef<Timeout>();
   const [copied, setCopied] = useState(false);
   const intl = useIntl();
@@ -59,7 +60,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
 
   const ellipsisProps = React.useMemo<EllipsisSettings>(() => {
     return {
-      cropPosition: 'middle',
+      cropPosition: cropPosition === 'none' ? 'end' : cropPosition,
       containerElement: headerRef ?? undefined,
       // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
       recalculateContainerWidth: (width: number) => (width - 28),
@@ -81,7 +82,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
             <Box inline>{value}</Box>
           )
         : (
-            <Text ellipsis={ellipsisProps} hintProps={false}>
+            <Text ellipsis={ellipsisProps} {...(hintProps !== undefined ? { hintProps } : { hintProps: false })}>
               {value}
             </Text>
           )}
@@ -94,7 +95,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
   );
 };
 
-const CopyCell = ({ value, cellProps, headerRef }: any) => <Copy value={value} cropPosition='middle' cellProps={cellProps} headerRef={headerRef} />;
+const CopyCell = ({ value, cellProps, headerRef, cropPosition = 'middle', hintProps }: any) => <Copy value={value} cropPosition={cropPosition} cellProps={cellProps} headerRef={headerRef} hintProps={hintProps} />;
 
 const StatusCell = ({ value }: any) => <PaymentStatus status={value} />;
 
