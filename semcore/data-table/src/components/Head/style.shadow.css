@@ -4,7 +4,7 @@ SHead, SGroupContainer {
 
 SHead[mode='sticky'] {
   display: grid;
-  overflow: hidden;
+  min-width: fit-content;
 
   &[gridTemplateColumns] {
     grid-template-columns: var(--gridTemplateColumns);
