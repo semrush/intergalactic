@@ -16,6 +16,7 @@ type BasicLinktriggerProps = LinkTriggerProps & {
   showAddonRight?: boolean;
   ellipsis?: false | true | { cropPosition: 'middle'; lastRequiredSymbols?: number } | { cropPosition?: 'end'; maxLine?: number };
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
   merged?: boolean;
