@@ -48,18 +48,18 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   componentDidUpdate(prevProps: DataTableBodyProps<Data, UniqKeyType> & BodyPropsInner<Data, UniqKeyType>) {
-    const { loading, tableRef } = this.asProps;
+    const { loading, gridContainerRef } = this.asProps;
     if (prevProps.loading !== loading) {
       if (loading) {
         const activeElement = document.activeElement; // need to define it here because of FF
         setTimeout(() => {
-          if ((tableRef.current && hasParent(activeElement, tableRef.current))) {
-            tableRef.current?.focus();
+          if ((gridContainerRef.current && hasParent(activeElement, gridContainerRef.current))) {
+            gridContainerRef.current?.focus();
           }
         });
       } else if (!loading && this.spinContainerIsFocused) {
         setTimeout(() => {
-          tableRef.current?.focus();
+          gridContainerRef.current?.focus();
         });
         this.spinContainerIsFocused = false;
       }
