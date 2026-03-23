@@ -354,7 +354,7 @@ class DataTableRoot<
       gridTemplateColumns,
       gridTemplateAreas,
       loading,
-      headerHeight: this.getHeaderHeight(),
+      headerHeight: this.hasSeparateStickyHeader() ? 0 : this.getHeaderHeight(),
       stickyHeader: headerProps?.sticky,
       getI18nText,
       expandedRows: this.state.expandedRows,
@@ -984,7 +984,6 @@ class DataTableRoot<
               scrollDirection={this.scrollDirection}
               // @ts-ignore
               loading={loading}
-              headerHeight={`${headerHeight}px`}
               leftScrollPadding={`${offsetLeftSum}px`}
               rightScrollPadding={`${offsetRightSum}px`}
               ref={this.bodyScrollContainerRef}
