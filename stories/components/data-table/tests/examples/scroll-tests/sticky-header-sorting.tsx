@@ -1,12 +1,17 @@
+import type { BoxProps } from '@semcore/ui/base-components';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 type SortableColumn = 'kd' | 'cpc' | 'vol';
+export type StickyHeaderSortingProps = {
+  sticky: boolean;
+  withScrollBar?: boolean;
+} & BoxProps;
 
 type ColumnName = keyof (typeof data)[0];
 
-const Demo = () => {
+const Demo = (props: StickyHeaderSortingProps) => {
   const [sort, setSort] = React.useState<DataTableSort<ColumnName>>(['kd', 'desc']);
 
   const sortedData = React.useMemo(
@@ -30,10 +35,10 @@ const Demo = () => {
         sort={sort}
         onSortChange={setSort}
         aria-label='Sorting with sticky header'
-        wMax='400px'
+        wMax={props.wMax}
         headerProps={{
-          sticky: true,
-          withScrollBar: true,
+          sticky: props.sticky,
+          withScrollBar: props.withScrollBar,
         }}
         columns={[
           { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
@@ -55,5 +60,11 @@ const data = [
   { keyword: 'ebay buy', kd: 75.89, cpc: 0, vol: 21644290 },
   { keyword: 'www.ebay.com', kd: 10, cpc: 0.65, vol: 47354640 },
 ];
+
+export const defaultProps: StickyHeaderSortingProps = {
+  sticky: true,
+  withScrollBar: true,
+  wMax: '400px',
+};
 
 export default Demo;
