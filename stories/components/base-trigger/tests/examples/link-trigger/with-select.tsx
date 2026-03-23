@@ -44,7 +44,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
             <>
               <Select.Trigger
                 tag={LinkTrigger}
-                size={props.size}
                 state={props.state}
                 active={props.active}
                 empty={props.empty}
@@ -54,7 +53,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                 color={props.color}
               >
                 <LinkTrigger.Text
-                  size={400}
+                  size={props.size}
                   tag={Text}
                   fontWeight={400}
                   noWrap

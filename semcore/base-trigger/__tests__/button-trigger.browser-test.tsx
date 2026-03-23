@@ -47,7 +47,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.loading) {
         await test.step('Check loading state', async () => {
-          await expect(locators.button(page)).toHaveAttribute('tabindex', '-1');
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
           const svg = locators.button(page).locator('svg');
           await expect(svg).toBeVisible();
           await expect(svg).toHaveAttribute('role', 'img');
@@ -60,7 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
-          await expect(locators.button(page)).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
           if (item.empty && item.placeholder !== undefined) {
             const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
             await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
@@ -128,8 +128,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           for (const button of buttons) {
             const svg = button.locator('svg');
 
-            await expect(button).toHaveAttribute('tabindex', '-1');
-
+            await expect(button).toHaveAttribute('tabindex', '0');
             await expect(svg.nth(1)).toHaveAttribute('role', 'img');
             await expect(svg.nth(1)).toHaveAttribute('aria-label', 'Loading…');
 
@@ -142,7 +141,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
-            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
               const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
@@ -215,7 +214,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.loading) {
         await test.step('Check loading state', async () => {
           for (const button of buttons) {
-            await expect(button).toHaveAttribute('tabindex', '-1');
+            await expect(button).toHaveAttribute('tabindex', '0');
             const svg = button.locator('svg');
             await expect(svg).toBeVisible();
             await expect(svg).toHaveAttribute('role', 'img');
@@ -227,7 +226,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
-            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
               const placeholderElement = button.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
@@ -298,7 +297,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.loading) {
         await test.step('Check loading state', async () => {
           for (const button of triggers) {
-            await expect(button).toHaveAttribute('tabindex', '-1');
+            await expect(button).toHaveAttribute('tabindex', '0');
             const svg = button.locator('svg');
             await expect(svg).toBeVisible();
             await expect(svg).toHaveAttribute('role', 'img');
@@ -313,7 +312,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'normal' && !item.disabled) {
         await test.step('Normal/Active styles', async () => {
           for (const button of triggers) {
-            await expect(button).toHaveAttribute('tabindex', item.loading ? '-1' : '0');
+            await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
               const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
