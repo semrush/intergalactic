@@ -10,7 +10,10 @@ interface Project {
   name: string;
 }
 
-type LinkTriggerSelectDDMenuExample = LinkTriggerProps & SelectProps;
+type LinkTriggerSelectDDMenuExample = LinkTriggerProps & {
+  sizeSelect?: 'm' | 'l';
+  sizeText?: LinkTriggerProps['size'];
+};
 const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const [selectedProject, setSelectedProject] = React.useState<Project | undefined>();
 
@@ -58,7 +61,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                   tag={Text}
                   fontWeight={400}
                   noWrap
-                  size={props.size}
+                  size={props.sizeText}
                 >
                   {selectedProject?.name ??
                     (getTriggerProps().placeholder as string)}
@@ -94,7 +97,7 @@ const projects: Project[] = [
 ];
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
-  size: 300,
+  sizeText: 300,
   sizeSelect: 'm',
   state: undefined,
   active: undefined,

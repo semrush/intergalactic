@@ -102,6 +102,10 @@ export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
       control: { type: 'select' },
       options: ['m', 'l', undefined],
     },
+    sizeText: {
+      control: { type: 'select' },
+      options: [100, 200, 300, 400, 500, 600, 700, 800, undefined],
+    },
   },
   args: linkTriggerSelectExampleProps,
 };
