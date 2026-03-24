@@ -1,3 +1,4 @@
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
@@ -16,6 +17,8 @@ import {
 
 export type AccordionInTableProps = {
   loading: boolean;
+  hintProps?: false;
+  cropPosition?: 'end' | 'middle';
 };
 
 const refsMap: Record<string | symbol, HTMLElement | null> = {};
@@ -131,6 +134,11 @@ const COLUMNS_CONFIG = [
     Component: CopyCell,
   },
   {
+    id: 'description_ellipsis',
+    defaultActive: true,
+    wMin: 150,
+  },
+  {
     id: 'merchant',
     defaultActive: true,
     wMin: 100,
@@ -198,7 +206,9 @@ const componentsMap = Object.fromEntries(
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_MESSAGES = {};
 
-const Demo = (props: AccordionInTableProps) => {
+const Demo = (demoProps: AccordionInTableProps) => {
+  const cropPos = demoProps.cropPosition ?? 'middle';
+
   return (
     <IntlProvider
       locale={DEFAULT_LOCALE}
@@ -206,7 +216,7 @@ const Demo = (props: AccordionInTableProps) => {
       messages={DEFAULT_MESSAGES}
     >
       <DataTable
-        loading={props.loading}
+        loading={demoProps.loading}
         data={data}
         aria-label='Accordion inside table'
         h='100%'
@@ -222,11 +232,24 @@ const Demo = (props: AccordionInTableProps) => {
             };
           }
 
+          if (props.dataKey === 'description_ellipsis') {
+            return {
+              children: (
+                <Text
+                  ellipsis={{ cropPosition: cropPos } as EllipsisSettings}
+                  hintProps={demoProps.hintProps}
+                >
+                  {String(props.row.payment_description)}
+                </Text>
+              ),
+            };
+          }
+
           // @ts-ignore
           const Component = componentsMap[props.columnName];
           if (Component) {
             return {
-              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} />,
+              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} cropPosition={cropPos} hintProps={demoProps.hintProps} />,
             };
           }
 
@@ -239,8 +262,10 @@ const Demo = (props: AccordionInTableProps) => {
   );
 };
 
-export const accordionInsideTableDefaultProps = {
+export const accordionInsideTableDefaultProps: AccordionInTableProps = {
   loading: false,
+  hintProps: undefined,
+  cropPosition: 'middle',
 };
 
 Demo.defaultProps = accordionInsideTableDefaultProps;

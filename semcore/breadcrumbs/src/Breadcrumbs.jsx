@@ -43,7 +43,7 @@ class Breadcrumbs extends Component {
 
 function Item(props) {
   const SBreadcrumbsItem = Root;
-  const { styles, separator, active, disabled, href, tabIndex, tag, ellipsis = true, hintProps } = props;
+  const { styles, separator, active, disabled, href, tabIndex, tag, ellipsis = true } = props;
   const SSeparator = 'div';
   const SListItem = 'li';
 
@@ -57,7 +57,6 @@ function Item(props) {
           aria-current={active ? 'page' : undefined}
           use:tag={active ? 'span' : tag}
           ellipsis={ellipsis}
-          hintProps={hintProps}
         />
       </SListItem>
       <SSeparator aria-hidden='true'>{separator}</SSeparator>

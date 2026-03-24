@@ -19,6 +19,8 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   active?: boolean;
   ellipsis?: true | EllipsisSettings;
   w?: number | string;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: ButtonFHAdvancedProps) => {
@@ -28,6 +30,8 @@ const Demo = (props: ButtonFHAdvancedProps) => {
     badgeText = 'AI-powered',
     animatedSparkleCount = 5,
     showIcon = true,
+    hintPlacement,
+    hintProps,
     use = 'primary',
     size = 'l',
     disabled = false,
@@ -52,14 +56,28 @@ const Demo = (props: ButtonFHAdvancedProps) => {
             ? (
                 <>
                   <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
-                  <ButtonFH.Text ellipsis={ellipsis} w={props.w}>{buttonText}</ButtonFH.Text>
+                  <ButtonFH.Text
+                    ellipsis={ellipsis}
+                    hintProps={props.hintProps}
+                    hint:placement={props.hintPlacement}
+                    w={props.w}
+                  >
+                    {buttonText}
+                  </ButtonFH.Text>
                   <ButtonFH.Addon>
                     <BadgeFH use={props.useBadge}>{badgeText}</BadgeFH>
                   </ButtonFH.Addon>
                 </>
               )
             : (
-                <ButtonFH.Text ellipsis={ellipsis} w={props.w}>{buttonText}</ButtonFH.Text>
+                <ButtonFH.Text
+                  ellipsis={ellipsis}
+                  hintProps={props.hintProps}
+                  hint:placement={props.hintPlacement}
+                  w={props.w}
+                >
+                  {buttonText}
+                </ButtonFH.Text>
               )}
         </ButtonFH>
         <ScreenReaderOnly id='button-aria-desc'>Powered by AI</ScreenReaderOnly>

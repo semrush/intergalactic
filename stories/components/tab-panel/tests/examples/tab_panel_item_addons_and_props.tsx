@@ -11,6 +11,8 @@ import React from 'react';
 
 type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps & {
   ellipsis?: true | EllipsisSettings;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: TabPanelDefProps) => {
@@ -32,7 +34,13 @@ const Demo = (props: TabPanelDefProps) => {
           aria-controls={value === 'facebook' ? 'tab-panel-fb' : undefined}
           id='tab-label-fb'
         >
-          <TabPanel.Item.Text {...{ ellipsis: props.ellipsis, hintProps: { placement: 'bottom' } }}>Facebook</TabPanel.Item.Text>
+          <TabPanel.Item.Text
+            ellipsis={props.ellipsis}
+            hintProps={props.hintProps}
+            {...{ 'hint:placement': props.hintPlacement }}
+          >
+            Facebook
+          </TabPanel.Item.Text>
           <TabPanel.Item.Addon>
             <FacebookM />
           </TabPanel.Item.Addon>

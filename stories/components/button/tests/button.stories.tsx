@@ -32,10 +32,6 @@ const commonArgTypes = {
   loading: {
     control: { type: 'boolean' },
   },
-  hintPlacement: {
-    control: { type: 'select' },
-    options: ['top', 'bottom', 'left', 'right'],
-  },
   style: {
     control: { type: 'select' },
     options: [undefined, { backgroundColor: '#191B23' }],
@@ -61,7 +57,7 @@ export const ButtonNeighborLocation: StoryObj<typeof defaultButtonNeighborProps>
   args: defaultButtonNeighborProps,
 };
 
-const ellipsisArgTypes = {
+const ellipsisHintArgTypes = {
   ...commonArgTypes,
   ellipsis: {
     control: 'select',
@@ -81,10 +77,22 @@ const ellipsisArgTypes = {
     control: { type: 'number' },
     description: 'Width of the button text',
   },
+  hintPlacement: {
+    control: { type: 'select' },
+    options: ['top', 'bottom', 'left', 'right'],
+  },
+  hintProps: {
+    control: 'select',
+    options: ['default', 'false'],
+    mapping: {
+      default: undefined,
+      false: false,
+    },
+  },
 } as const;
 
 export const ButtonWithEllipsis: StoryObj<typeof defaultButtonEllipsisProps> = {
   render: ButtonWithEllipsisExample,
-  argTypes: ellipsisArgTypes,
+  argTypes: ellipsisHintArgTypes,
   args: defaultButtonEllipsisProps,
 };

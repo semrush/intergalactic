@@ -7,6 +7,7 @@ import OnChangeInputSearchExample from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
 import OptionsExample, { defaultProps as OptionsProps } from './examples/options_checkbox_group_and_hint';
 import ProgrammaticallyFocusExample from './examples/programmatically_focus';
+import type { defaultProps as SelectWithEllipsisProps } from './examples/select-with-ellipsis';
 import SelectWithEllipsisExample from './examples/select-with-ellipsis';
 import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
 
@@ -106,8 +107,22 @@ export const OnVisible: Story = {
   render: OnVisibleExample,
 };
 
-export const SelectWithEllipsis: Story = {
+export const SelectWithEllipsis: StoryObj<typeof SelectWithEllipsisProps> = {
   render: SelectWithEllipsisExample,
+  argTypes: {
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
+  },
 };
 
 export const OnChangeInputSearch: Story = {

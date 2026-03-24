@@ -37,6 +37,18 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
         'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
       },
     },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: TabPanelItemAddonsProps,
 };

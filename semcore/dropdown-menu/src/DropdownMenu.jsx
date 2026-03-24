@@ -524,23 +524,17 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles, ellipsis = false, hintProps = {} }) {
+function ItemContentText({ styles, ellipsis = false }) {
   const SItemContentText = Root;
   const menuItemCtxValue = React.useContext(menuItemContext);
-
-  if (menuItemCtxValue.ref) {
-    hintProps.triggerRef = menuItemCtxValue.ref;
-  }
-  if (!hintProps.placement) {
-    hintProps.placement = 'right';
-  }
 
   return sstyled(styles)(
     <>
       <SItemContentText
         render={Text}
         ellipsis={ellipsis}
-        hintProps={hintProps}
+        hint:triggerRef={menuItemCtxValue.ref}
+        hint:placement='right'
       />
     </>,
   );
