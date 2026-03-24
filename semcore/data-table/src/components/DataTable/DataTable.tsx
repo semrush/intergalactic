@@ -747,7 +747,7 @@ class DataTableRoot<
       // median scroll
     } else if (roundedScroll > 0) {
       shadow = 'median';
-    };
+    }
 
     this.setState({ shadowVertical: shadow });
   };
