@@ -3,27 +3,27 @@ import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
+import type { AccessDeniedComponent, AccessDeniedProps } from './AccessDenied.type';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootPageNotFound extends Component {
-  static displayName = 'Maintenance';
-  static enhance = [i18nEnhance(localizedMessages)];
+class RootAccessDenied extends Component<AccessDeniedProps, typeof RootAccessDenied.enhance> {
+  static displayName = 'AccessDenied';
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
-    icon: getIconPath('page_not_found'),
     homeLink: '/',
+    icon: getIconPath('access_denied'),
     titleTag: 'h2',
   };
 
   render() {
     const { Children, getI18nText, homeLink, titleTag } = this.asProps;
-
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description>{getI18nText('text')}</Error.Description>
+        <Error.Description wMax='640px'>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
           <Button tag='a' type='none' size='l' use='primary' theme='info' href={homeLink}>
@@ -35,4 +35,4 @@ class RootPageNotFound extends Component {
   }
 }
 
-export default createComponent(RootPageNotFound);
+export default createComponent(RootAccessDenied) as AccessDeniedComponent;

@@ -4,25 +4,26 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
+import type { PageNotFoundComponent, PageNotFoundProps } from './PageNotFound.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootMaintenance extends Component {
-  static displayName = 'Maintenance';
-  static enhance = [i18nEnhance(localizedMessages)];
+class RootPageNotFound extends Component<PageNotFoundProps, typeof RootPageNotFound.enhance> {
+  static displayName = 'PageNotFound';
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
+    icon: getIconPath('page_not_found'),
     homeLink: '/',
-    icon: getIconPath('maintenance'),
     titleTag: 'h2',
   };
 
   render() {
-    const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
+    const { Children, getI18nText, homeLink, titleTag } = this.asProps;
 
     return (
       <Root render={Error}>
-        <Error.Title tag={titleTag}>{`${toolName} ${getI18nText('title')}`}</Error.Title>
+        <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
@@ -35,4 +36,4 @@ class RootMaintenance extends Component {
   }
 }
 
-export default createComponent(RootMaintenance);
+export default createComponent(RootPageNotFound) as PageNotFoundComponent; ;
