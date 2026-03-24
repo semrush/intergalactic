@@ -728,9 +728,9 @@ class DataTableRoot<
   });
 
   calculateVerticalShadow = () => {
-    if (!this.tableRef.current) return;
+    if (!this.tableContainerRef.current) return;
 
-    const { scrollWidth, clientWidth, scrollLeft } = this.tableRef.current;
+    const { scrollWidth, clientWidth, scrollLeft } = this.tableContainerRef.current;
     const maxScrollRight = scrollWidth - clientWidth;
 
     const roundedScroll = Math.round(scrollLeft);
@@ -747,7 +747,7 @@ class DataTableRoot<
       // median scroll
     } else if (roundedScroll > 0) {
       shadow = 'median';
-    }
+    };
 
     this.setState({ shadowVertical: shadow });
   };
