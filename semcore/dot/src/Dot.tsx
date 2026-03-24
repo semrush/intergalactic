@@ -1,42 +1,26 @@
-import { Animation } from '@semcore/animation';
+import { Animation, Box, Portal } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import logger from '@semcore/core/lib/utils/logger';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box } from '@semcore/flex-box';
-import Portal from '@semcore/portal';
 import React from 'react';
 
+import type { DotComponent, DotProps } from './Dot.type';
 import style from './style/dot.shadow.css';
 
-const styleDot = sstyled.css`
-  @keyframes enter {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes exit {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(0);
-    }
-  }
-`;
-
-class Dot extends Component {
+class DotRoot extends Component<
+  DotProps,
+  {},
+  {},
+  typeof DotRoot.enhance
+> {
   static displayName = 'Dot';
   static style = style;
   static defaultProps = {
     size: 'm',
-    keyframes: [styleDot['@enter'], styleDot['@exit']],
+    keyframes: [style['@enter'], style['@exit']],
   };
 
   static enhance = [
@@ -44,22 +28,21 @@ class Dot extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-counter',
       fallback: '200',
-      map: Number.parseInt,
+      map: (value: string) => `${Number.parseInt(value)}`,
       prop: 'duration',
     }),
-    contextThemeEnhance((props) => !props.hidden),
-  ];
+    contextThemeEnhance(({ hidden }: DotProps) => !hidden),
+  ] as const;
 
   ref = React.createRef();
 
   render() {
     const SDot = Root;
-    const SA11yAlert = 'div';
+    const SA11yAlert = Box;
 
-    let {
+    const {
       Children,
       styles,
-      size,
       hidden,
       duration,
       keyframes,
@@ -67,8 +50,9 @@ class Dot extends Component {
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
     } = this.asProps;
+    const { size } = this.asProps;
+
     const hasChildren = React.Children.toArray(getOriginChildren(Children)).length !== 0;
-    size = hasChildren ? 'xl' : size;
 
     const hasLabel = Boolean(ariaLabel || ariaLabelledBy);
 
@@ -87,12 +71,12 @@ class Dot extends Component {
         duration={duration}
         keyframes={keyframes}
         id={`igc-${uid}-dot`}
+        hasChildren={hasChildren}
       >
         <Children />
         {!hidden && (
           <Portal>
             <SA11yAlert
-              render={Box}
               role={hasLabel && !hidden ? 'alert' : undefined}
               aria-live={hasLabel && !hidden ? 'polite' : undefined}
               aria-label={ariaLabel}
@@ -107,4 +91,6 @@ class Dot extends Component {
   }
 }
 
-export default createComponent(Dot);
+const Dot = createComponent(DotRoot) as DotComponent;
+
+export default Dot;

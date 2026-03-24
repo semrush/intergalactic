@@ -972,18 +972,9 @@ importers:
 
   semcore/dot:
     dependencies:
-      '@semcore/animation':
-        specifier: 16.0.7
-        version: link:../animation
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: link:../flex-box
-      '@semcore/portal':
-        specifier: 16.0.11
-        version: link:../portal
     devDependencies:
       '@semcore/button':
         specifier: workspace:*
