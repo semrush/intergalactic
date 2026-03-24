@@ -32,8 +32,8 @@
     </tbody>
   </table>
 
-  <div v-if="typeof unionProperties === 'object' && unionProperties.properties && unionProperties.properties.length > 0">
-    <h3>OR</h3>
+  <div class="types-union-properties" v-if="typeof unionProperties === 'object' && unionProperties.properties && unionProperties.properties.length > 0">
+    <b>OR</b>
     <table>
       <thead>
       <tr>

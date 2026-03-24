@@ -168,7 +168,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('tab_examples:open_sandbox:click', { pathname });
     }
   }
-  if (node.classList.contains('types-view-reference')) {
+  if (node.classList.contains('types-reference-button')) {
     return logEvent('tab_examples:open_sandbox:click', { pathname, type: node.textContent });
   }
 
