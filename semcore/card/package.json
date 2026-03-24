@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
     "require": "./lib/cjs/index.js",
@@ -20,8 +20,7 @@
     "@semcore/typography": "16.3.2",
     "@semcore/tooltip": "16.0.11",
     "@semcore/button": "16.0.12",
-    "@semcore/icon": "16.7.3",
-    "@semcore/flex-box": "16.0.11"
+    "@semcore/icon": "16.7.3"
   },
   "peerDependencies": {
     "@semcore/base-components": "^16.0.0"

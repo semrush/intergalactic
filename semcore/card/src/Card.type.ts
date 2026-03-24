@@ -1,10 +1,10 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { Box, BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type { Text, TextProps } from '@semcore/typography';
 import type React from 'react';
 
-/** @deprecated */
-export interface ITitleProps extends TitleProps, UnknownProperties {}
+export type CardProps = BoxProps;
+
 export type TitleProps = TextProps & {
   /**
    * Content of the Informer that's displayed in the end of the title. Use it if you don't need Title with Ellipsis.
@@ -25,11 +25,9 @@ export type TitleProps = TextProps & {
   hintAfterAriaLabel?: string;
 };
 
-declare const Card: Intergalactic.Component<'div', BoxProps> & {
+export type CardComponent = Intergalactic.Component<'div', CardProps> & {
   Title: Intergalactic.Component<'div', TitleProps>;
   Description: typeof Text;
   Header: typeof Box;
   Body: typeof Box;
 };
-
-export default Card;
