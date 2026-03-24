@@ -855,6 +855,13 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/divider:
+<<<<<<< HEAD
+=======
+    dependencies:
+      '@semcore/base-components':
+        specifier: ^16.0.0
+        version: link:../base-components
+>>>>>>> 071d8c3032 ([UIK-5009][divider] rewrite component to TS)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
