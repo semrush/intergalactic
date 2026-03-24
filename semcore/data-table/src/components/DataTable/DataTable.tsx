@@ -363,6 +363,7 @@ class DataTableRoot<
       scrollTop: this.state.scrollTop,
       scrollDirection: this.state.scrollDirection,
       gridContainerRef: this.gridContainerRef,
+      tableContainerRef: this.tableContainerRef,
       tableRef: this.tableRef,
       scrollAreaRef: this.scrollAreaRef,
       onBackFromAccordion: this.handleBackFromAccordion,

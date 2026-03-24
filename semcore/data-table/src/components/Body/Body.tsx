@@ -43,10 +43,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     this.setRowHeight = this.setRowHeight.bind(this);
   }
 
-  componentDidMount() {
-    this.calculateAriaRowIndex();
-  }
-
   componentDidUpdate(prevProps: DataTableBodyProps<Data, UniqKeyType> & BodyPropsInner<Data, UniqKeyType>) {
     const { loading, gridContainerRef } = this.asProps;
     if (prevProps.loading !== loading) {
@@ -68,7 +64,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   calculateAriaRowIndex = () => {
     requestAnimationFrame(() => {
-      const collapsedElements = this.bodyRef.current?.querySelectorAll('[role=row][data-ui-name="Collapse"]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+      const collapsedElements = this.bodyRef.current?.querySelectorAll('[role=row][data-ui-name="Collapse"]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTableGridContainer"] [role=row]:not([aria-hidden=true]))');
 
       collapsedElements?.forEach((collapsedElement) => {
         const parent = collapsedElement.parentElement;
@@ -77,7 +73,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         }
       });
 
-      const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+      const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTableGridContainer"] [role=row]:not([aria-hidden=true]))');
 
       visibleRows?.forEach((row, index) => {
         if (row instanceof HTMLElement) {
@@ -234,7 +230,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       spinnerRef,
       virtualScroll,
       scrollDirection,
-      tableRef,
+      tableContainerRef,
       scrollTop,
       renderEmptyData,
       columns,
@@ -254,7 +250,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         typeof virtualScroll !== 'boolean' && 'rowsBuffer' in virtualScroll
           ? virtualScroll.rowsBuffer ?? ROWS_BUFFER
           : ROWS_BUFFER;
-      const offsetHeight = tableRef.current?.offsetHeight ?? 0;
+      const offsetHeight = tableContainerRef.current?.offsetHeight ?? 0;
       const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
