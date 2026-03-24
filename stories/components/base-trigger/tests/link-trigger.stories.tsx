@@ -96,17 +96,7 @@ export const Addon: StoryObj<typeof linkTriggerWithAddonExampleProps> = {
 
 export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
   render: SelectExample,
-  argTypes: {
-    ...sharedArgTypes,
-    sizeSelect: {
-      control: { type: 'select' },
-      options: ['m', 'l', undefined],
-    },
-    sizeText: {
-      control: { type: 'select' },
-      options: [100, 200, 300, 400, 500, 600, 700, 800, undefined],
-    },
-  },
+  argTypes: sharedArgTypes,
   args: linkTriggerSelectExampleProps,
 };
 
