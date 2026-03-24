@@ -34,22 +34,13 @@ export class RootButton extends Component<ButtonProps, [], never, {}, State> {
     ariaLabelledByContent: null,
   };
 
-  getTextProps(props: ButtonTextProps) {
+  getTextProps() {
     const { size } = this.asProps;
 
-    // `any` because we don't have typings for `use:PROPS`.
-    const textProps: any = {
+    return {
       size,
-      'use:hintProps': {
-        triggerRef: this.containerRef,
-      },
+      'hint:triggerRef': this.containerRef,
     };
-
-    if ('hintProps' in props) {
-      textProps['use:hintProps'] = { triggerRef: this.containerRef, ...props.hintProps };
-    }
-
-    return textProps;
   }
 
   getAddonProps() {
