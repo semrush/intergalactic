@@ -12,8 +12,6 @@ import style from './style/dot.shadow.css';
 
 class DotRoot extends Component<
   DotProps,
-  {},
-  {},
   typeof DotRoot.enhance
 > {
   static displayName = 'Dot';
