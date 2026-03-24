@@ -1,6 +1,5 @@
 import { Box, Collapse } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
@@ -13,10 +12,10 @@ import { LimitOverlay } from './LimitOverlay';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
-import { SelectableRows } from '../../store/SelectableRows';
 import { AccordionRows } from '../AccordionRows/AccordionRows';
-import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
+import { RowSelector } from '../RowSelector/RowsSelector';
 
 type State<UniqKeyType> = {
   expandedForAnimation: boolean;
@@ -36,8 +35,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
 
-  private unsubscribeToggle: undefined | (() => void) = undefined;
-
   rowElementRef = React.createRef<HTMLDivElement>();
 
   state: State<UniqKeyType> = {
@@ -53,18 +50,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    const { componentRef, selectedRows, row } = this.asProps;
+    const { componentRef } = this.asProps;
     componentRef?.(this);
 
     this.setAccordion();
-
-    if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
-        if (row[UNIQ_ROW_KEY] === key) {
-          this.forceUpdate();
-        }
-      });
-    }
   }
 
   componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
@@ -77,8 +66,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
-
-    this.unsubscribeToggle?.();
   }
 
   setAccordion() {
@@ -121,28 +108,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       Boolean(cellValue?.[ACCORDION])
     );
   }
-
-  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
-    const { row, rowIndex, onSelectRow, selectedRows } = this.asProps;
-
-    onSelectRow?.(value, rowIndex, row, event);
-
-    if (selectedRows && !Array.isArray(selectedRows)) {
-      selectedRows.toggle(value, row);
-    }
-  };
-
-  handleClickCheckbox = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
-    event?.preventDefault();
-    event?.stopPropagation();
-    const { row, rowIndex, onSelectRow, selectedRows } = this.asProps;
-
-    onSelectRow?.(value, rowIndex, row, event);
-
-    if (selectedRows && !Array.isArray(selectedRows)) {
-      selectedRows.toggle(value, row);
-    }
-  };
 
   handleBackFromAccordion = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -297,6 +262,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
+      theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -338,7 +304,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
-      theme: this.theme,
+      theme,
     };
 
     if (renderCell) {
@@ -440,22 +406,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       : undefined;
   }
 
-  get theme() {
-    const { selectedRows, theme, row } = this.asProps;
-
-    if (!selectedRows || Array.isArray(selectedRows)) {
-      return theme;
-    }
-
-    const rowUniqKey = row[UNIQ_ROW_KEY];
-    return selectedRows.isChecked(rowUniqKey) ? 'info' : theme;
-  }
-
   render() {
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Row.Cell;
-    const SCheckboxCell = Row.Cell;
     const {
       columns,
       row,
@@ -485,6 +439,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       scrollAreaRef,
       accordionAnimationRows,
       onCellClick,
+      onSelectRow,
+      theme,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -531,7 +487,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
           data-filled-columns={filledColumns}
-          theme={this.theme}
         >
           {columns.map((column, i) => {
             const index = i;
@@ -554,38 +509,27 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             }
 
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
-              const checked = Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : selectedRows.isChecked(rowUniqKey);
-
               const nextColumnName = columns[i + 1].name;
 
-              if (!(nextColumnName in row)) {
+              if (!(nextColumnName in row) || Array.isArray(row)) {
                 return null;
               }
 
               return (
-                <SCheckboxCell
+                <RowSelector
                   key={i}
                   row={row}
                   rowIndex={rowIndex}
-                  // @ts-ignore
-                  column={{ name: SELECT_ALL.toString() }}
-                  columnIndex={0}
                   gridRowIndex={gridRowIndex}
-                  onClick={this.handleClickCheckbox(!checked)}
                   expanded={expanded}
                   isAccordionRow={isAccordionRow}
-                  aria-hidden={isCellHidden}
+                  isCellHidden={isCellHidden}
                   withAccordion={withAccordion}
-                  theme={this.theme}
-                >
-                  <Checkbox
-                    checked={checked}
-                    aria-labelledby={`${uid}_${rowUniqKey}_1`}
-                    onChange={this.handleSelectRow}
-                  >
-                    <Checkbox.Value />
-                  </Checkbox>
-                </SCheckboxCell>
+                  theme={theme}
+                  uid={uid}
+                  selectedRows={selectedRows}
+                  onSelectRow={onSelectRow}
+                />
               );
             }
 

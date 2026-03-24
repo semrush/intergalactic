@@ -150,11 +150,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     const calculatedRowProps = rowProps?.(row, index) ?? {};
 
-    const rowUniqKey = row[UNIQ_ROW_KEY];
-    if (Array.isArray(selectedRows) && selectedRows.includes(rowUniqKey)) {
-      calculatedRowProps.theme = 'info';
-    }
-
     return {
       ...calculatedRowProps,
       use,

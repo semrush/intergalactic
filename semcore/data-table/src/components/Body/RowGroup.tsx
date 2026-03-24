@@ -25,23 +25,23 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
-  private unsubscribeToggle: undefined | (() => void) = undefined;
-
-  componentDidMount() {
-    const { selectedRows, rows } = this.props;
-
-    if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
-        if (rows[0][UNIQ_ROW_KEY] === key) {
-          this.forceUpdate();
-        }
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeToggle?.();
-  }
+  // private unsubscribeToggle: undefined | (() => void) = undefined;
+  //
+  // componentDidMount() {
+  //   const { selectedRows, rows } = this.props;
+  //
+  //   if (selectedRows && !Array.isArray(selectedRows)) {
+  //     this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
+  //       if (rows[0][UNIQ_ROW_KEY] === key) {
+  //         this.forceUpdate();
+  //       }
+  //     });
+  //   }
+  // }
+  //
+  // componentWillUnmount() {
+  //   this.unsubscribeToggle?.();
+  // }
 
   render() {
     const SRowGroup = Box;
@@ -50,7 +50,7 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
     const groupUniqKey = rows[0][UNIQ_ROW_KEY];
 
     let isFirstCellAreMergedRows = false;
-    const theme: 'info' | undefined = undefined;
+    // const theme: 'info' | undefined = undefined;
 
     if (selectedRows) {
       const nextColumnName = columns[1].name;
@@ -76,9 +76,9 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
             componentRef: this.props.handleComponentRef(item),
           };
 
-          if (isFirstCellAreMergedRows && (Array.isArray(selectedRows) ? selectedRows.includes(groupUniqKey) : selectedRows?.isChecked(groupUniqKey))) {
-            rowProps.theme = 'info';
-          }
+          // if (isFirstCellAreMergedRows && (Array.isArray(selectedRows) ? selectedRows.includes(groupUniqKey) : selectedRows?.isChecked(groupUniqKey))) {
+          //   rowProps.theme = 'info';
+          // }
 
           return (
             <Body.Row
