@@ -6,7 +6,7 @@ import React from 'react';
 import type { DividerComponent, DividerProps } from './Divider.type';
 import style from './style/divider.shadow.css';
 
-class DividerRoot extends Component<DividerProps, {}, {}, typeof DividerRoot.enhance> {
+class DividerRoot extends Component<DividerProps, typeof DividerRoot.enhance> {
   static displayName = 'Divider';
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
