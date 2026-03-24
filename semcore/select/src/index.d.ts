@@ -1,5 +1,5 @@
 import type { BoxProps, Flex } from '@semcore/base-components';
-import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
+import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps, LinkTriggerProps } from '@semcore/base-trigger';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Divider from '@semcore/divider';
 import type Dropdown from '@semcore/dropdown';
@@ -27,8 +27,8 @@ export type SelectOption = {
   label?: React.ReactNode;
 };
 
-export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps &
-  BaseTriggerProps & {
+export type SelectProps<T extends SelectValue = SelectValue> = Intergalactic.InternalTypings.EfficientOmit<DropdownMenuProps, 'size'> &
+  Intergalactic.InternalTypings.EfficientOmit<BaseTriggerProps, 'size'> & {
     /**
      * Options array
      */
@@ -73,6 +73,12 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      * @default true
      */
     scrollToSelected?: boolean;
+  } & {
+    tag?: never;
+    /**
+     * Default type for size from BaseTriggerProps if there is no customization via `tag`.
+     */
+    size?: BaseTriggerProps['size'];
   };
 
 export type SelectOptionProps = DropdownMenuItemProps & {
@@ -127,7 +133,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
     typeof Dropdown.Trigger,
-    DropdownMenuTriggerProps & ButtonTriggerProps,
+    DropdownMenuTriggerProps & (ButtonTriggerProps | LinkTriggerProps),
     {},
     [handlers: SelectHandlers]
   > & {

@@ -7,9 +7,6 @@ import React from 'react';
 
 class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
-  static defaultProps = {
-    size: 'm',
-  };
 
   getTextProps(props) {
     const { placeholder, empty } = this.asProps;
