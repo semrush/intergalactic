@@ -2,6 +2,7 @@ import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Select from '@semcore/ui/select';
+import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 interface Project {
@@ -9,7 +10,7 @@ interface Project {
   name: string;
 }
 
-type LinkTriggerSelectDDMenuExample = LinkTriggerProps;
+type LinkTriggerSelectDDMenuExample = LinkTriggerProps & SelectProps;
 const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const [selectedProject, setSelectedProject] = React.useState<Project | undefined>();
 
@@ -24,7 +25,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         options={devices}
         data-test-id='base-trigger-as-tag-in-select'
         aria-label='base addon'
-        size={props.size}
+        size={props.sizeSelect}
         state={props.state}
         active={props.active}
         empty={props.empty}
@@ -51,12 +52,13 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                 disabled={props.disabled}
                 loading={props.loading}
                 color={props.color}
+                size={props.sizeSelect}
               >
                 <LinkTrigger.Text
-                  size={props.size}
                   tag={Text}
                   fontWeight={400}
                   noWrap
+                  size={props.size}
                 >
                   {selectedProject?.name ??
                     (getTriggerProps().placeholder as string)}
@@ -93,6 +95,7 @@ const projects: Project[] = [
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
   size: 300,
+  sizeSelect: 'm',
   state: undefined,
   active: undefined,
   empty: undefined,
