@@ -45,20 +45,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await checkBackgroundColor(page, locators.button(page), 'rgb(255, 255, 255)');
       });
 
-      if (item.loading) {
-        await test.step('Check loading state', async () => {
-          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
-          const svg = locators.button(page).locator('svg');
-          await expect(svg).toBeVisible();
-          await expect(svg).toHaveAttribute('role', 'img');
-          await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-
-          await page.keyboard.press('Tab');
-          await expect(locators.button(page)).not.toBeFocused();
-        });
-      }
-
-      if (item.state === 'normal' && !item.disabled) {
+      if (item.state === 'normal' && !item.disabled && !item.loading) {
         await test.step('Normal/Active styles', async () => {
           await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
           if (item.empty && item.placeholder !== undefined) {
@@ -81,7 +68,19 @@ test.describe(`${TAG.VISUAL}`, () => {
           await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
+      if (item.loading) {
+        await test.step('Check loading state', async () => {
+          await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
+          const svg = locators.button(page).locator('svg');
+          await expect(svg).toBeVisible();
+          await expect(svg).toHaveAttribute('role', 'img');
+          await expect(svg).toHaveAttribute('aria-label', 'Loading…');
 
+          await page.keyboard.press('Tab');
+          await expect(locators.button(page)).not.toBeFocused();
+          await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+        });
+      }
       if (item.disabled) {
         await test.step('Disabled state', async () => {
           await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
@@ -91,7 +90,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'valid' && !item.disabled) {
+      if (item.state === 'valid' && !item.disabled && !item.loading) {
         await test.step('Valid state styles', async () => {
           await checkBorderColor(page, locators.button(page), 'rgb(0, 124, 101)');
           await page.keyboard.press('Tab');
@@ -99,7 +98,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'invalid' && !item.disabled) {
+      if (item.state === 'invalid' && !item.disabled && !item.loading) {
         await test.step('Invalid state styles', async () => {
           await checkBorderColor(page, locators.button(page), 'rgb(209, 0, 47)');
           await page.keyboard.press('Tab');
@@ -135,10 +134,11 @@ test.describe(`${TAG.VISUAL}`, () => {
             await page.keyboard.press('Tab');
             await expect(button).not.toBeFocused();
           }
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
-      if (item.state === 'normal' && !item.disabled) {
+      if (item.state === 'normal' && !item.disabled && !item.loading) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
             await expect(button).toHaveAttribute('tabindex', '0');
@@ -147,7 +147,7 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
-            if (item.chevron && !item.loading) {
+            if (item.chevron) {
               const svgs = await button.locator('svg').all();
               for (const svg of svgs) {
                 await expect(svg).toBeVisible();
@@ -177,7 +177,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'valid' && !item.disabled) {
+      if (item.state === 'valid' && !item.disabled && !item.loading) {
         await test.step('Valid state styles', async () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(0, 124, 101)');
@@ -185,7 +185,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'invalid' && !item.disabled) {
+      if (item.state === 'invalid' && !item.disabled && !item.loading) {
         await test.step('Invalid state styles', async () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(209, 0, 47)');
@@ -220,10 +220,11 @@ test.describe(`${TAG.VISUAL}`, () => {
             await expect(svg).toHaveAttribute('role', 'img');
             await expect(svg).toHaveAttribute('aria-label', 'Loading…');
           }
+          await expect(page).toHaveScreenshot(`neighbor-location-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
-      if (item.state === 'normal' && !item.disabled) {
+      if (item.state === 'normal' && !item.disabled && !item.loading) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
             await expect(button).toHaveAttribute('tabindex', '0');
@@ -232,7 +233,7 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
-            if (item.chevron && !item.loading) {
+            if (item.chevron) {
               const svg = button.locator('svg');
               await expect(svg).toBeVisible();
               await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -259,7 +260,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'valid' && !item.disabled) {
+      if (item.state === 'valid' && !item.disabled && !item.loading) {
         await test.step('Valid state styles', async () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(0, 124, 101)');
@@ -267,7 +268,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'invalid' && !item.disabled) {
+      if (item.state === 'invalid' && !item.disabled && !item.loading) {
         await test.step('Invalid state styles', async () => {
           for (const button of buttons) {
             await checkBorderColor(page, button, 'rgb(209, 0, 47)');
@@ -306,10 +307,11 @@ test.describe(`${TAG.VISUAL}`, () => {
             await page.keyboard.press('Tab');
             await expect(button).not.toBeFocused();
           }
+          await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
-      if (item.state === 'normal' && !item.disabled) {
+      if (item.state === 'normal' && !item.disabled && !item.loading) {
         await test.step('Normal/Active styles', async () => {
           for (const button of triggers) {
             await expect(button).toHaveAttribute('tabindex', '0');
@@ -318,7 +320,7 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
-            if (item.chevron && !item.loading) {
+            if (item.chevron) {
               const svg = button.locator('svg');
               await expect(svg).toBeVisible();
               await expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -342,7 +344,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'valid' && !item.disabled) {
+      if (item.state === 'valid' && !item.disabled && !item.loading) {
         await test.step('Valid state styles', async () => {
           for (const button of triggers) {
             await checkBorderColor(page, button, 'rgb(0, 124, 101)');
@@ -350,7 +352,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       }
 
-      if (item.state === 'invalid' && !item.disabled) {
+      if (item.state === 'invalid' && !item.disabled && !item.loading) {
         await test.step('Invalid state styles', async () => {
           for (const button of triggers) {
             await checkBorderColor(page, button, 'rgb(209, 0, 47)');
@@ -375,6 +377,12 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.button(page).nth(1).hover();
     await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 });

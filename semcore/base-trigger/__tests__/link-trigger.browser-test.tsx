@@ -77,8 +77,15 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
         await test.step('Focus first Link trigger + verify hint', async () => {
           await page.keyboard.press('Tab');
+          await page.waitForTimeout(100);
           await expect(locators.button(page).first()).toBeFocused();
           await locators.hint(page).waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot({ clip });
         });
 
@@ -97,8 +104,14 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await page.waitForTimeout(100);
         await test.step('Verify active state + hover hint', async () => {
           await locators.button(page).first().hover();
-          await page.waitForTimeout(200);
+          await page.waitForTimeout(100);
           await locators.hint(page).waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot({ clip: activeClip });
         });
       });
