@@ -73,13 +73,13 @@ export type SelectProps<T extends SelectValue = SelectValue> = Intergalactic.Int
      * @default true
      */
     scrollToSelected?: boolean;
-  } & {
+  } & ({
     tag?: never;
     /**
      * Default type for size from BaseTriggerProps if there is no customization via `tag`.
      */
     size?: BaseTriggerProps['size'];
-  };
+  } | {});
 
 export type SelectOptionProps = DropdownMenuItemProps & {
   /**
