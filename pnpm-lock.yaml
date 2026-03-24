@@ -959,9 +959,6 @@ importers:
       '@semcore/base-components':
         specifier: ^16.0.0
         version: link:../base-components
-      '@semcore/flex-box':
-        specifier: 16.0.11
-        version: link:../flex-box
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
