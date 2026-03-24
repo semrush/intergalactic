@@ -15,6 +15,106 @@ type WithTableLinkProps = ModalProps & {
 };
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
+const ModalContent = ({ title, content, text, showCloseButton, handleClose }: any) => {
+  const urlRef = React.useRef(null);
+  const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (urlRef.current) {
+      console.log('mount table');
+      setColumnElement(urlRef.current);
+    }
+  }, []);
+
+  const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+    return {
+      cropPosition: 'end',
+      containerElement: columnElement,
+      recalculateContainerWidth: (width: number) => width - 28,
+    };
+  }, [columnElement]);
+
+  return (
+    <>
+      <Modal.Title>{title}</Modal.Title>
+      <Text size={200} mb={4} tag='p'>
+        {content}
+      </Text>
+      <Text
+        ellipsis={{
+          cropPosition: 'middle',
+          lastRequiredSymbols: 5,
+        }}
+        size={300}
+        w='300px'
+      >
+        {text}
+      </Text>
+      <DataTable
+        data={data}
+        aria-label='Table title'
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          {
+            name: 'kd',
+            children: 'KD, %',
+            gtcWidth: 'minmax(70px, auto)',
+            justifyContent: 'flex-end',
+          },
+          {
+            name: 'cpc',
+            children: 'CPC',
+            gtcWidth: 'minmax(70px, auto)',
+            justifyContent: 'flex-end',
+          },
+          {
+            name: 'url',
+            children: 'URL',
+            gtcWidth: 'minmax(auto, 200px)',
+            ref: urlRef,
+          },
+        ]}
+        renderCell={(props) => {
+          const triggerRef = React.useRef<HTMLAnchorElement | null>(null);
+
+          if (props.columnName === 'url') {
+            const pageUrl = props.value?.toString?.() || '';
+
+            return (
+              <Link
+                href={pageUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                color='text-primary'
+                wMin={0}
+                style={{ display: 'inline-flex', alignItems: 'center' }}
+                ref={triggerRef}
+              >
+                <Link.Text
+                  wMin={0}
+                  wMax='calc(100% - 20px)'
+                  ellipsis={ellipsisSettings}
+                  hint:triggerRef={triggerRef}
+                >
+                  {removeProtocol(pageUrl)}
+                </Link.Text>
+                <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
+              </Link>
+            );
+          }
+
+          return props.defaultRender();
+        }}
+      />
+      {showCloseButton && (
+        <Button use='primary' theme='success' size='l' onClick={handleClose}>
+          Close
+        </Button>
+      )}
+    </>
+  );
+};
+
 const Demo = (props: WithTableLinkProps) => {
   const {
     title = 'Modal Title',
@@ -28,22 +128,22 @@ const Demo = (props: WithTableLinkProps) => {
     locale,
     ...restProps
   } = props;
-  const urlRef = React.useRef(null);
-  const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
-
-  React.useEffect(() => {
-    if (urlRef.current) {
-      setColumnElement(urlRef.current);
-    }
-  }, []);
-
-  const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-    return {
-      cropPosition: 'end',
-      containerElement: columnElement,
-      recalculateContainerWidth: (width: number) => width - 28,
-    };
-  }, [columnElement]);
+  // const urlRef = React.useRef(null);
+  // const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
+  //
+  // React.useEffect(() => {
+  //   if (urlRef.current) {
+  //     setColumnElement(urlRef.current);
+  //   }
+  // }, []);
+  //
+  // const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+  //   return {
+  //     cropPosition: 'end',
+  //     containerElement: columnElement,
+  //     recalculateContainerWidth: (width: number) => width - 28,
+  //   };
+  // }, [columnElement]);
   const [visible, setVisible] = React.useState(false);
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);
@@ -63,80 +163,13 @@ const Demo = (props: WithTableLinkProps) => {
         locale={locale}
         {...restProps}
       >
-        <Modal.Title>{title}</Modal.Title>
-        <Text size={200} mb={4} tag='p'>
-          {content}
-        </Text>
-        <Text
-          ellipsis={{
-            cropPosition: 'middle',
-            lastRequiredSymbols: 5,
-          }}
-          size={300}
-          w='300px'
-        >
-          {text}
-        </Text>
-        <DataTable
-          data={data}
-          aria-label='Table title'
-          columns={[
-            { name: 'keyword', children: 'Keyword' },
-            {
-              name: 'kd',
-              children: 'KD, %',
-              gtcWidth: 'minmax(70px, auto)',
-              justifyContent: 'flex-end',
-            },
-            {
-              name: 'cpc',
-              children: 'CPC',
-              gtcWidth: 'minmax(70px, auto)',
-              justifyContent: 'flex-end',
-            },
-            {
-              name: 'url',
-              children: 'URL',
-              gtcWidth: 'minmax(auto, 200px)',
-              ref: urlRef,
-            },
-          ]}
-          renderCell={(props) => {
-            const triggerRef = React.useRef<HTMLAnchorElement | null>(null);
-
-            if (props.columnName === 'url') {
-              const pageUrl = props.value?.toString?.() || '';
-
-              return (
-                <Link
-                  href={pageUrl}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  color='text-primary'
-                  wMin={0}
-                  style={{ display: 'inline-flex', alignItems: 'center' }}
-                  ref={triggerRef}
-                >
-                  <Link.Text
-                    wMin={0}
-                    ellipsis={ellipsisSettings}
-                    hint:triggerRef={triggerRef}
-                  >
-                    {removeProtocol(pageUrl)}
-                  </Link.Text>
-                  <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
-                </Link>
-              );
-            }
-
-            return props.defaultRender();
-          }}
+        <ModalContent
+          title={title}
+          content={content}
+          text={text}
+          showCloseButton={showCloseButton}
+          handleClose={handleClose}
         />
-        {showCloseButton && (
-          <Button use='primary' theme='success' size='l' onClick={handleClose}>
-            Close
-          </Button>
-        )}
       </Modal>
       <h2>Start editing to see some magic happen!</h2>
       <h2>Start editing to see some magic happen!</h2>
