@@ -482,7 +482,7 @@ class DataTableRoot<
 
   getRow = (index: number) => {
     return this.gridContainerRef.current?.querySelector(
-      `:scope [aria-rowindex="${index + 1}"]:not([aria-hidden="true"]):not(:scope [data-ui-name="DataTableGridContainer"] [aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
+      `:scope [aria-rowindex="${index + 1}"]:not([aria-hidden="true"]):not(:scope [data-ui-name="DataTable"] [aria-rowindex="${index + 1}"]:not([aria-hidden="true"])`,
     );
   };
 
@@ -908,7 +908,6 @@ class DataTableRoot<
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           ref={this.gridContainerRef}
-          data-ui-name='DataTableGridContainer'
           aria-rowcount={this.totalRows}
           aria-colcount={this.columns.length}
           aria-label={this.asProps['aria-label']}
