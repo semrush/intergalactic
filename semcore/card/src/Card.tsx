@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import type { StyledProps } from '@semcore/core';
+import type { IStyledProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import InfoM from '@semcore/icon/Info/m';
@@ -40,7 +40,7 @@ class CardRoot extends Component<CardProps> {
 
 function Title(props: TitleProps) {
   const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, children } = props;
-  const hintAfter = props.hintAfter || props.hint;
+  const hintAfter = props.hintAfter;
   const STitle = Root;
   const SInfo = DescriptionTooltip;
   const SInfoTrigger = SInfo.Trigger;
@@ -85,19 +85,19 @@ function Title(props: TitleProps) {
   );
 }
 
-function Description(props: StyledProps) {
+function Description(props: IStyledProps) {
   const { styles } = props;
   const SDescription = Root;
   return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
-function Header(props: StyledProps) {
+function Header(props: IStyledProps) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(<SHeader render={Box} {...props} />);
 }
 
-function Body(props: StyledProps) {
+function Body(props: IStyledProps) {
   const { styles } = props;
   const SBody = Root;
   return sstyled(styles)(<SBody render={Box} {...props} />);
