@@ -153,10 +153,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify hint shows on link focus and hides when enableHintTriggerRef', {
+  test('Verify hint shows and hide via keyboard interaction', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: true, enableHintTriggerRef: true });
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en');
     await locators.link(page).waitFor({ state: 'visible' });
     await page.waitForTimeout(200);
 
