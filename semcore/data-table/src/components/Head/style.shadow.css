@@ -17,13 +17,6 @@ SHead[mode='sticky'] {
   &[gridTemplateRows] {
     grid-template-rows: var(--gridTemplateRows);
   }
-
-  SColumn[fixed='right'][shadowVertical='median'],
-  SColumn[fixed='right'][shadowVertical='end'],
-  SGroup[fixed='right'][shadowVertical='median'],
-  SGroup[fixed='right'][shadowVertical='end'] {
-    margin-left: 0;
-  }
 }
 
 SHead[isDataEmpty][gridTemplateColumns] {

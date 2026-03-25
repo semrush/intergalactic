@@ -178,6 +178,12 @@ class DataTableRoot<
       this.treeColumns = cols[1];
 
       this.forceUpdate();
+
+      if (this.hasSeparateStickyHeader()) {
+        requestAnimationFrame(() => {
+          this.calculateColumnsWidth();
+        });
+      }
     }
     if (prevProps.data !== data || prevProps.columns !== columns) {
       if (this.hasFixedColumn) {
@@ -1280,7 +1286,15 @@ class DataTableRoot<
       const widths: string[] = [];
 
       for (let i = 0; i < cells.length; i++) {
-        const width = cells[i].getBoundingClientRect().width;
+        const rowCell = cells[i].children.item(0);
+
+        let width: number;
+
+        if (rowCell?.getAttribute('data-ui-name') === 'Row.Cell') {
+          width = rowCell.getBoundingClientRect().width;
+        } else {
+          width = cells[i].getBoundingClientRect().width;
+        }
 
         widths.push(`${width}px`);
       }
