@@ -43,6 +43,8 @@ import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
 
+<TypesView type="TextProps" :types={...types} />
+
 ## Tag.Circle
 
 A special addon for round elements inside a tag (most often a picture) places the correct indents depending on the size.

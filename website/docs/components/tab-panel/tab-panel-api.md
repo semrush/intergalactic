@@ -53,4 +53,6 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
 
+<TypesView type="TextProps" :types={...types} />
+
 <script setup>import { data as types } from '@types.data.ts';</script>
