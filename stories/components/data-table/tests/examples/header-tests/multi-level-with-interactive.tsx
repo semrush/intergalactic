@@ -45,6 +45,7 @@ const CustomSelect = () => {
       data-test-id='select-header'
       id='basic-select'
       tag={LinkTrigger}
+      size={100}
       onKeyDown={(e: any) => {
         if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
           return false;
@@ -71,25 +72,28 @@ const columns = [
         name: 'kd',
         gtcWidth: 'minmax(100px, max-content)',
         children: (
-          <DescriptionTooltip placement='right'>
+          <>
             Cpc 1
-            <DescriptionTooltip.Trigger
-              ml={1}
-              tag={ButtonLink}
-              addonLeft={InfoM}
-              color='icon-secondary-neutral'
-              aria-label='Additional info 1'
-              data-test-id='tooltip-with-interactive-el'
-            />
-            <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
-              Jesus Christ, Joe,
-              {' '}
-              <Link>fucking forget</Link>
-              {' '}
-              about it. I'm Mr.
-              Pink. Let's move on.
-            </DescriptionTooltip.Popper>
-          </DescriptionTooltip>
+            <DescriptionTooltip placement='right'>
+              <DescriptionTooltip.Trigger
+                ml={1}
+                tag={ButtonLink}
+                addonLeft={InfoM}
+                size={100}
+                color='icon-secondary-neutral'
+                aria-label='Additional info 1'
+                data-test-id='tooltip-with-interactive-el'
+              />
+              <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
+                Jesus Christ, Joe,
+                {' '}
+                <Link>fucking forget</Link>
+                {' '}
+                about it. I'm Mr.
+                Pink. Let's move on.
+              </DescriptionTooltip.Popper>
+            </DescriptionTooltip>
+          </>
         ),
       },
       {
@@ -98,12 +102,13 @@ const columns = [
         children: (
           <>
             <Checkbox data-test-id='header-checkbox' />
+            Hello
             <DescriptionTooltip placement='right'>
-              Hello
               <DescriptionTooltip.Trigger
                 ml={1}
                 tag={ButtonLink}
                 addonLeft={InfoM}
+                size={100}
                 color='icon-secondary-neutral'
                 aria-label='Additional info'
                 data-test-id='tooltip-without-interactive-el'

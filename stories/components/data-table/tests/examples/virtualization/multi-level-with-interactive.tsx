@@ -30,6 +30,7 @@ const CustomSelect = () => {
       data-test-id='select-header'
       id='basic-select'
       tag={LinkTrigger}
+      size={100}
       onKeyDown={(e) => {
         if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
           return false;

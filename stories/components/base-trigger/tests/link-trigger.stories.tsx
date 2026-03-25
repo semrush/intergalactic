@@ -110,7 +110,7 @@ export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {
     },
     addonRight: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin', 'none'],
     },
     ellipsis: { control: { type: 'boolean' } },
   },

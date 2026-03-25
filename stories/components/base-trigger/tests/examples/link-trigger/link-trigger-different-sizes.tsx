@@ -19,6 +19,7 @@ const Demo = (props: LinkTriggerSizesProps) => {
     200,
     100,
   ] as const;
+  const text = 'The quick brown fox jumps over the lazy dog';
 
   return (
     <>
@@ -73,7 +74,7 @@ const Demo = (props: LinkTriggerSizesProps) => {
                 ellipsis={props.ellipsis ? true : undefined}
 
               >
-                The quick brown fox jumps over the lazy dog
+                {text}
               </LinkTrigger.Text>
               {props.addonRight === 'icon' && (
                 <LinkTrigger.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</LinkTrigger.Addon>
@@ -105,7 +106,7 @@ const Demo = (props: LinkTriggerSizesProps) => {
 
 type LinkTriggerSizesProps = {
   addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
-  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
+  addonRight: 'icon' | 'badge' | 'counter' | 'spin' | 'none';
   ellipsis: boolean;
   active: boolean;
   disabled: boolean;
