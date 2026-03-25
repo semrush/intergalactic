@@ -22,9 +22,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.setViewportSize({ width: 1280, height: 2500 });
 
     await expectScreenshotOf(page, page.locator('[data-ui-name="AccessDenied"]'), 'AccessDenied');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(0), 'Maintenance');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(1), 'PageNotFound');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(2), 'ProjectNotFound');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]'), 'Maintenance');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="PageNotFound"]'), 'PageNotFound');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="ProjectNotFound"]'), 'ProjectNotFound');
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError');
   });
 
@@ -37,9 +37,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.setViewportSize({ width: 648, height: 2700 });
 
     await expectScreenshotOf(page, page.locator('[data-ui-name="AccessDenied"]'), 'AccessDenied648px');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(0), 'Maintenance648px');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(1), 'PageNotFound648px');
-    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]').nth(2), 'ProjectNotFound648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="Maintenance"]'), 'Maintenance648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="PageNotFound"]'), 'PageNotFound648px');
+    await expectScreenshotOf(page, page.locator('[data-ui-name="ProjectNotFound"]'), 'ProjectNotFound648px');
     await expectScreenshotOf(page, page.locator('[data-ui-name="PageError"]'), 'PageError648px');
   });
 
@@ -85,9 +85,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       const errorBlocks = [
         page.locator('[data-ui-name="AccessDenied"]'),
-        page.locator('[data-ui-name="Maintenance"]').nth(0),
-        page.locator('[data-ui-name="Maintenance"]').nth(1),
-        page.locator('[data-ui-name="Maintenance"]').nth(2),
+        page.locator('[data-ui-name="Maintenance"]'),
+        page.locator('[data-ui-name="PageNotFound"]'),
+        page.locator('[data-ui-name="ProjectNotFound"]'),
         page.locator('[data-ui-name="PageError"]'),
       ];
 
@@ -162,7 +162,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en', item);
 
-      const projectNotFoundBlock = page.locator('[data-ui-name="Maintenance"]').nth(2);
+      const projectNotFoundBlock = page.locator('[data-ui-name="ProjectNotFound"]');
       const controls = projectNotFoundBlock.locator('[data-ui-name="Error.Controls"]');
       const description = projectNotFoundBlock.locator('[data-ui-name="Error.Description"]');
 

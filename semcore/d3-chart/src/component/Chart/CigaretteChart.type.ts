@@ -18,6 +18,8 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   tooltipViewType?: 'all' | 'single';
   /** Show percent value in tooltip */
   showPercentValueInTooltip?: boolean;
+  /** Custom percent formatter. */
+  percentFormatter?: (value: number) => number;
   /** Header content for the chart */
   header?: React.ReactNode;
   /** Animation duration in milliseconds */
