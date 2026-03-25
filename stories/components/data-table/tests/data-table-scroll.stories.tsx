@@ -71,7 +71,9 @@ export const CaseWithW100: Story = {
 
 export const StickyHeaderScrollSync: StoryObj<typeof StickyHeaderScrollSyncProps> = {
   render: StickyHeaderScrollSyncExample,
-  args: StickyHeaderScrollSyncProps,
+  args: {
+    ...StickyHeaderScrollSyncProps,
+  },
 };
 
 export const StickyHeaderAsyncData: Story = {
@@ -86,7 +88,9 @@ export const StickyHeaderAccordion: Story = {
   render: StickyHeaderAccordionExample,
 };
 
-export const StickyHeaderSorting: Story = {
+export const StickyHeaderSorting: StoryObj<typeof StickyHeaderSortingProps> = {
   render: StickyHeaderSortingExample,
-  args: StickyHeaderSortingProps,
+  args: {
+    ...StickyHeaderSortingProps,
+  },
 };
