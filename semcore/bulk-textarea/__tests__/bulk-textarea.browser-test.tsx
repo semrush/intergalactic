@@ -33,30 +33,32 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     // active
-    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: undefined, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10 },
-    { size: 'm', placeholder: undefined, disabled: undefined, readOnly: false, minRows: 1, maxRows: 5, maxLines: 3 },
-    { size: 'l', placeholder: 'Enter or paste a list using comma or Enter', disabled: undefined, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10, w: 300 },
-    { size: 'l', placeholder: undefined, disabled: undefined, readOnly: false, minRows: 1, maxRows: 1, maxLines: 5 },
+    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: undefined, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10, autoFocus: true },
+    { size: 'm', placeholder: undefined, disabled: undefined, readOnly: false, minRows: 1, maxRows: 5, maxLines: 3, autoFocus: true },
+    { size: 'l', placeholder: 'Enter or paste a list using comma or Enter', disabled: undefined, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10, w: 300, autoFocus: false },
+    { size: 'l', placeholder: undefined, disabled: undefined, readOnly: false, minRows: 1, maxRows: 1, maxLines: 5, autoFocus: false },
 
     // disabled
-    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: true, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10 },
-    { size: 'l', placeholder: undefined, disabled: true, readOnly: false, minRows: 1, maxRows: 1, maxLines: 5 },
+    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: true, readOnly: false, minRows: 2, maxRows: 10, maxLines: 10, autoFocus: true },
+    { size: 'l', placeholder: undefined, disabled: true, readOnly: false, minRows: 1, maxRows: 1, maxLines: 5, autoFocus: false },
 
     // readOnly
-    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: false, readOnly: true, minRows: 2, maxRows: 10, maxLines: 10 },
-    { size: 'l', placeholder: undefined, disabled: false, readOnly: true, minRows: 1, maxRows: 1, maxLines: 5 },
+    { size: 'm', placeholder: 'Enter or paste a list using comma or Enter', disabled: false, readOnly: true, minRows: 2, maxRows: 10, maxLines: 10, autoFocus: true },
+    { size: 'l', placeholder: undefined, disabled: false, readOnly: true, minRows: 1, maxRows: 1, maxLines: 5, autoFocus: false },
 
   ];
   variables.forEach((item) => {
-    test(`Verify size=${item.size} placeholder=${item.placeholder}  w=${item.w} disabled=${item.disabled} readOnly=${item.readOnly} minRows=${item.minRows} maxRows=${item.maxRows} maxLines=${item.maxLines}`, {
+    test(`Verify size=${item.size} placeholder=${item.placeholder}  w=${item.w} disabled=${item.disabled} readOnly=${item.readOnly} minRows=${item.minRows} maxRows=${item.maxRows} maxLines=${item.maxLines} autoFocus=${item.autoFocus}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@bulk-textarea'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', item);
       await test.step('Verify initial state', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
+        if (!item.autoFocus) {
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+        }
 
         await expect(page).toHaveScreenshot();
       });

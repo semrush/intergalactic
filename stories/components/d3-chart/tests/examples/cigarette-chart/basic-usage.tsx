@@ -76,6 +76,7 @@ export const defaultProps = getChartProps<CigaretteChartProps>({
   invertAxis: true,
   showPercentValueInTooltip: true,
   minimalBarWidth: 2,
+  percentFormatter: undefined,
   tooltipTitle: '',
   tooltipViewType: 'all',
   duration: 200,
