@@ -5,11 +5,12 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
+import type { ProjectNotFoundComponent, ProjectNotFoundProps } from './ProjectNotFound.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootProjectNotFound extends Component {
-  static displayName = 'Maintenance';
-  static enhance = [i18nEnhance(localizedMessages)];
+class RootProjectNotFound extends Component<ProjectNotFoundProps, typeof RootProjectNotFound.enhance> {
+  static displayName = 'ProjectNotFound';
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
@@ -23,15 +24,15 @@ class RootProjectNotFound extends Component {
   render() {
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } = this.asProps;
     const text = getI18nText('text', {
-      p: (chunk) => <p>{chunk}</p>,
-      ul: (chunk) => <ul>{chunk}</ul>,
-      li: (chunk) => <li>{chunk}</li>,
-      supportLink: (chunk) => <a href={supportTeamLink}>{chunk}</a>,
+      p: (chunk: string) => <p>{chunk}</p>,
+      ul: (chunk: string) => <ul>{chunk}</ul>,
+      li: (chunk: string) => <li>{chunk}</li>,
+      supportLink: (chunk: string) => <a href={supportTeamLink}>{chunk}</a>,
     });
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description tag={Text} formatTags={true} size='300'>
+        <Error.Description tag={Text} formatTags={true} size={300}>
           {text}
         </Error.Description>
         <Children />
@@ -48,4 +49,4 @@ class RootProjectNotFound extends Component {
   }
 }
 
-export default createComponent(RootProjectNotFound);
+export default createComponent(RootProjectNotFound) as ProjectNotFoundComponent;

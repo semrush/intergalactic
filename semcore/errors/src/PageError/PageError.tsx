@@ -6,11 +6,12 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
+import type { PageErrorComponent, PageErrorProps } from './PageError.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootPageError extends Component {
+class RootPageError extends Component<PageErrorProps, typeof RootPageError.enhance> {
   static displayName = 'PageError';
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
@@ -47,4 +48,4 @@ class RootPageError extends Component {
   }
 }
 
-export default createComponent(RootPageError);
+export default createComponent(RootPageError) as PageErrorComponent;

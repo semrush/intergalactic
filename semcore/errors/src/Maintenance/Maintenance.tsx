@@ -4,25 +4,27 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
+import type { MaintenanceComponent, MaintenanceProps } from './Maintenance.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootAccessDenied extends Component {
-  static displayName = 'AccessDenied';
-  static enhance = [i18nEnhance(localizedMessages)];
+class RootMaintenance extends Component<MaintenanceProps, typeof RootMaintenance.enhance> {
+  static displayName = 'Maintenance';
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
     homeLink: '/',
-    icon: getIconPath('access_denied'),
+    icon: getIconPath('maintenance'),
     titleTag: 'h2',
   };
 
   render() {
-    const { Children, getI18nText, homeLink, titleTag } = this.asProps;
+    const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
+
     return (
       <Root render={Error}>
-        <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        <Error.Description wMax='640px'>{getI18nText('text')}</Error.Description>
+        <Error.Title tag={titleTag}>{`${toolName} ${getI18nText('title')}`}</Error.Title>
+        <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
           <Button tag='a' type='none' size='l' use='primary' theme='info' href={homeLink}>
@@ -34,4 +36,4 @@ class RootAccessDenied extends Component {
   }
 }
 
-export default createComponent(RootAccessDenied);
+export default createComponent(RootMaintenance) as MaintenanceComponent;
