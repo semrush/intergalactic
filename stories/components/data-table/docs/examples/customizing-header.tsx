@@ -40,26 +40,26 @@ const Demo = () => {
                 onVisibleChange={setIsVisible}
                 value={selectedColumn}
                 onChange={setSelectedColumn}
-                onKeyDown={(e) => {
-                  if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
-                    return false;
-                  }
-                  if (
-                    (e.key === 'ArrowLeft' ||
-                      e.key === 'ArrowRight' ||
-                      e.key === 'ArrowDown' ||
-                      e.key === 'ArrowUp') &&
-                      isVisible
-                  ) {
-                    e.stopPropagation();
-                  }
-                }}
               >
                 <Select.Trigger
                   tag={LinkTrigger}
                   aria-label='Column'
                   color='text-primary'
                   size={100}
+                  onKeyDown={(e) => {
+                    if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+                      return false;
+                    }
+                    if (
+                      (e.key === 'ArrowLeft' ||
+                        e.key === 'ArrowRight' ||
+                        e.key === 'ArrowDown' ||
+                        e.key === 'ArrowUp') &&
+                        isVisible
+                    ) {
+                      e.stopPropagation();
+                    }
+                  }}
                 >
                   {selectOptions.filter((option) => option.value === selectedColumn)[0].label}
                 </Select.Trigger>
