@@ -1,4 +1,5 @@
 import { Collapse as CollapseAnimate, Flex } from '@semcore/base-components';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -7,9 +8,25 @@ import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type {
+  AccordionCollapsePropsInternal,
+  AccordionItemPropsInternal,
+  AccordionItemTogglePropsInternal,
+} from './Accordion.internal.type';
+import type {
+  AccordionCollapseProps,
+  AccordionComponent,
+  AccordionHandlers,
+  AccordionItemComponent,
+  AccordionItemProps,
+  AccordionItemToggleProps,
+  AccordionProps,
+  ChevronItemProps,
+  IntergalacticAccordionComponent,
+} from './Accordion.type';
 import style from './style/accordion.shadow.css';
 
-class RootAccordion extends Component {
+class RootAccordion extends Component<AccordionProps, typeof RootAccordion.enhance, AccordionHandlers> {
   static displayName = 'Accordion';
   static style = style;
   static defaultProps = {
@@ -21,10 +38,10 @@ class RootAccordion extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-accordion',
       fallback: '200',
-      map: Number.parseInt,
+      map: (value: string) => `${Number.parseInt(value)}`,
       prop: 'duration',
     }),
-  ];
+  ] as const;
 
   uncontrolledProps() {
     return {
@@ -32,7 +49,7 @@ class RootAccordion extends Component {
     };
   }
 
-  handleToggleInteraction = (newValue) => {
+  handleToggleInteraction = (newValue: AccordionItemProps['value']) => {
     const { value } = this.asProps;
 
     if (Array.isArray(value)) {
@@ -46,11 +63,12 @@ class RootAccordion extends Component {
     }
   };
 
-  getItemProps({ value }) {
+  getItemProps({ value }: AccordionItemProps) {
     const { value: selectedValue, duration, use } = this.asProps;
     const selected = Array.isArray(selectedValue)
       ? selectedValue.includes(value)
       : selectedValue === value;
+
     return {
       selected,
       duration,
@@ -65,10 +83,10 @@ class RootAccordion extends Component {
   }
 }
 
-export class RootItem extends Component {
+export class RootItem extends Component<AccordionItemProps, typeof RootItem.enhance, {}, AccordionItemPropsInternal> {
   static displayName = 'Item';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement()] as const;
 
   handleClick = () => {
     const { value, $handleInteraction } = this.asProps;
@@ -124,10 +142,10 @@ export class RootItem extends Component {
   }
 }
 
-class Toggle extends Component {
+class Toggle extends Component<AccordionItemToggleProps, never, {}, AccordionItemTogglePropsInternal> {
   toggleRef = React.createRef();
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
     if (event.key === 'Enter') {
       if (this.toggleRef.current === event.target) {
         event.currentTarget.click();
@@ -156,14 +174,14 @@ class Toggle extends Component {
   }
 }
 
-function Chevron(props) {
+function Chevron(props: ChevronItemProps) {
   const { styles, size } = props;
 
   const SItemChevron = Root;
   return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
-function ToggleButton(props) {
+function ToggleButton(props: IRootComponentProps) {
   const { styles } = props;
 
   const SToggleButton = Root;
@@ -172,7 +190,7 @@ function ToggleButton(props) {
   );
 }
 
-function Collapse(props) {
+function Collapse(props: AccordionCollapseProps & AccordionCollapsePropsInternal) {
   const { selected } = props;
   const visible = selected;
 
@@ -192,12 +210,19 @@ const Item = createComponent(RootItem, {
   Chevron,
   ToggleButton,
   Collapse,
-});
+}) as AccordionItemComponent;
 
 const Accordion = createComponent(RootAccordion, {
   Item,
-});
+}) as unknown as AccordionComponent;
 
-export const wrapAccordion = (wrapper) => wrapper;
+export const wrapAccordion = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticAccordionComponent>
+    > &
+    PropsExtending,
+  ) => React.ReactNode,
+) => wrapper as IntergalacticAccordionComponent<PropsExtending>;
 
 export default Accordion;
