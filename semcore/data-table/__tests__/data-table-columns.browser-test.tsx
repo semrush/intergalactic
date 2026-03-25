@@ -106,6 +106,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(isShadowExist).toBe(false);
 
     await page.setViewportSize({ width: 400, height: 700 });
+    await page.waitForTimeout(100);
 
     isShadowExist = await lastColumn.evaluate((node) => {
       return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';

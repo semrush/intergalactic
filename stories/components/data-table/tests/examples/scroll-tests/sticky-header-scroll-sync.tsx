@@ -1,12 +1,41 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
+import type { DataTableData } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type StickyHeaderScrollSyncProps = {
   sticky: boolean;
   withScrollBar?: boolean;
+  multiLevel?: boolean;
 } & BoxProps;
+
+const flatColumns = [
+  { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
+  { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
+  { name: 'cpc', children: 'CPC', gtcWidth: '200px' },
+  { name: 'vol', children: 'Vol.', gtcWidth: '200px' },
+  { name: 'extra', children: 'Extra', gtcWidth: '200px' },
+];
+
+const multiLevelColumns = [
+  { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
+  {
+    name: 'group1',
+    children: 'Group 1',
+    columns: [
+      { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
+      { name: 'cpc', children: 'CPC', gtcWidth: '200px' },
+    ],
+  },
+  {
+    name: 'group2',
+    children: 'Group 2',
+    columns: [
+      { name: 'vol', children: 'Vol.', gtcWidth: '200px' },
+      { name: 'extra', children: 'Extra', gtcWidth: '200px' },
+    ],
+  },
+];
 
 const Demo = (props: StickyHeaderScrollSyncProps) => {
   return (
@@ -20,13 +49,7 @@ const Demo = (props: StickyHeaderScrollSyncProps) => {
           sticky: props.sticky,
           withScrollBar: props.withScrollBar,
         }}
-        columns={[
-          { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
-          { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
-          { name: 'cpc', children: 'CPC', gtcWidth: '200px' },
-          { name: 'vol', children: 'Vol.', gtcWidth: '200px' },
-          { name: 'extra', children: 'Extra', gtcWidth: '200px' },
-        ]}
+        columns={props.multiLevel ? multiLevelColumns : flatColumns}
       />
       <div style={{ height: '400px', background: '#f0f0f0' }}>Spacer below</div>
     </>
@@ -45,6 +68,7 @@ const data: DataTableData = [
 export const defaultProps: StickyHeaderScrollSyncProps = {
   sticky: true,
   withScrollBar: true,
+  multiLevel: false,
   wMax: '400px',
 };
 
