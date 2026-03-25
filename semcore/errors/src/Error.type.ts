@@ -8,6 +8,7 @@ export type IconNamesErrors = TIllustrationNamesErrors;
 export type ErrorsProps = FlexProps & {
   /**
    * Error icon
+   * Icon as a string is a URL to an image.
    */
   icon?: string | React.ReactNode;
 };
