@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import DisablePortalVisibleExample from './examples/disable-portal-visible';
 import ConfigurableHeaderExample, { defaultProps as headerDefaultProps } from './examples/header/configurable-header';
+import ScrollTestExample from './examples/scroll-test';
 import WithSpinContainerExample from './examples/with-spin-container';
 
 const meta: Meta = {
@@ -10,6 +11,10 @@ const meta: Meta = {
 
 export const DisablePortalVisible: StoryObj = {
   render: DisablePortalVisibleExample,
+};
+
+export const ScrollTest: StoryObj = {
+  render: ScrollTestExample,
 };
 
 export const WithSpinContainer: StoryObj = {

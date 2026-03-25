@@ -49,7 +49,7 @@ const Demo = (props: TextProps) => (
   </div>
 );
 
-export const defaultProps: TextProps = {
+export const defaultProps: Omit<TextProps, 'formatTags'> = {
   size: undefined,
   noWrap: false,
   bold: false,

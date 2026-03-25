@@ -369,6 +369,27 @@ class CigaretteChartComponent extends AbstractChart<
     );
   }
 
+  protected percentValue(data: ObjectData, key: string): string {
+    const { percentFormatter } = this.asProps;
+
+    const total = this.totalValue();
+
+    const value = data[key];
+
+    if (typeof value === 'number' && total !== 0) {
+      const rawPercent = (100 * value) / total;
+      const formattedPercent = percentFormatter ? percentFormatter(rawPercent) : Math.round(rawPercent);
+
+      return `${formattedPercent}%`;
+    }
+
+    if (value === null) {
+      return `0%`;
+    }
+
+    return NOT_A_VALUE;
+  }
+
   protected override renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
     const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
 
