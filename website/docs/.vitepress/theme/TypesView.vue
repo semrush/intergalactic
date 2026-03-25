@@ -64,8 +64,8 @@ import FormattedTypeString from './FormattedTypeString.vue';
 
 const { type, types } = defineProps({ type: String, types: Object });
 
-const filteredProperties = types[type].declaration.properties.filter((property) => {
-  return !property.params.internal && !property.description.startsWith('Internal');
+const filteredProperties = types[type].declaration.properties.flat(1).filter((property) => {
+  return !property.params?.internal && !property.description?.startsWith('Internal');
 });
 
 const unionProperties = Array.isArray(types[type].declaration.type) ? types[type].declaration.type[types[type].declaration.type.length - 1] : undefined;
