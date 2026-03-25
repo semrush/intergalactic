@@ -605,9 +605,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const ellipsisVariants = [
-    { ellipsis: { cropPosition: 'middle' }, size: 'l', description: 'cropPosition: middle size: l' },
-    { ellipsis: { cropPosition: 'end' }, description: 'cropPosition: end' },
-    { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
+    { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 'l', description: 'cropPosition: middle size: l' },
+    { ellipsis: { 'ellipsis:cropPosition': 'end' }, description: 'cropPosition: end' },
+    { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
   ];
 
   ellipsisVariants.forEach((variant) => {
