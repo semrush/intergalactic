@@ -996,8 +996,8 @@ class DataTableRoot<
               ref={this.bodyScrollContainerRef}
             >
               <SDataTable
-                render={Box}
                 ref={forkRef(this.tableRef, this.tableContainerRef)}
+                // @ts-ignore
                 isDataEmpty={this.isDataEmpty}
                 gridTemplateColumns={gridTemplateColumns.join(' ')}
                 gridTemplateAreas={gridTemplateAreas.join(' ')}
