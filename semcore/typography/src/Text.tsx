@@ -96,7 +96,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
     const shouldInit = hint !== false || ellipsisProps?.cropPosition === 'middle';
 
     if (shouldInit && ellipsis && this.innerRef.current) {
-      this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsisProps);
+      this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsisProps ?? {});
 
       this.ellipsis.on('isEllipsized', this.handleEllipsized);
     }
