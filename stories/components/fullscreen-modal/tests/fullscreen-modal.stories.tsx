@@ -8,6 +8,7 @@ import CloseInHeaderExample from './examples/header/close-in-header';
 import CloseTitleDescriptionExample from './examples/header/close-title-description';
 import TitleDescriptionExample from './examples/header/title-description';
 import ModalPropsExample, { defaultProps } from './examples/modal-props';
+import ScrollTestExample from './examples/scroll-test';
 import WithSpinContainerExample from './examples/with-spin-container';
 
 const meta: Meta = {
@@ -16,6 +17,10 @@ const meta: Meta = {
 
 export const DisablePortalVisible: StoryObj = {
   render: DisablePortalVisibleExample,
+};
+
+export const ScrollTest: StoryObj = {
+  render: ScrollTestExample,
 };
 
 export const WithSpinContainer: StoryObj = {
