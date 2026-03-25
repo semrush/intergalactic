@@ -45,10 +45,17 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
+type UncontrolledPropValue<V> =
+  | V
+  | null
+  | ((value: V, e?: any) => void | boolean | V)
+  | ((value: V, e?: any) => void | boolean | V)[]
+  | ((e?: any) => void | boolean | V);
+
 export abstract class Component<
   Props = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
-  Uncontrolled extends Readonly<{ [key in keyof Props]?: Props[key] | null | ((value: Props[key], e?: any) => void | boolean | Props[key]) | ((value: Props[key], e?: any) => void | boolean | Props[key])[] }> = never,
+  Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
   State = {},
 > extends PureComponent<Props, State> {

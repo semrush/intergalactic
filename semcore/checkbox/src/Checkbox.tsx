@@ -1,4 +1,5 @@
 import { Box, Flex, InvalidStateBox } from '@semcore/base-components';
+import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -8,9 +9,15 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
+import type { CheckboxTextPropsInternal, CheckboxValueCheckMarkPropsInternal, CheckboxValueControlPropsInternal, CheckboxValuePropsInternal } from './Checkbox.internal.type';
+import type { CheckboxComponent, CheckboxProps, CheckboxTextProps, CheckboxValueCheckMarkProps, CheckboxValueComponent, CheckboxValueControlProps, CheckboxValueProps } from './Checkbox.type';
 import style from './style/checkbox.shadow.css';
 
-class CheckboxRoot extends Component {
+type State = {
+  hoistedDisabled?: boolean;
+};
+
+class CheckboxRoot extends Component<CheckboxProps, never, {}, State> {
   static displayName = 'Checkbox';
   static style = style;
 
@@ -24,7 +31,7 @@ class CheckboxRoot extends Component {
     hoistedDisabled: undefined,
   };
 
-  hoistDisabled = (disabled) => {
+  hoistDisabled = (disabled: CheckboxProps['disabled']) => {
     logger.warn(
       true,
       `Don't set disabled on Checkbox.Value or Checkbox.Text, set it on Checkbox instead. Otherwise it will produce wrong SSR output.`,
@@ -100,31 +107,29 @@ class CheckboxRoot extends Component {
   }
 }
 
-class ValueRoot extends Component {
-  static defaultProps = (props) => {
+class ValueRoot extends Component<
+  CheckboxValueProps & CheckboxValuePropsInternal,
+  typeof ValueRoot.enhance,
+  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
+> {
+  static defaultProps = () => {
     return {
-      includeInputProps: [
-        ...inputProps,
-        ...(props.includeInputProps ?? []),
-        'aria-label',
-        'aria-labelledby',
-        'aria-describedby',
-      ],
+      includeInputProps: [...inputProps, 'aria-label', 'aria-labelledby', 'aria-describedby'],
     };
   };
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()] as const;
   static displayName = 'Value';
   static style = style;
 
-  handleClick(e) {
+  handleClick(e: React.MouseEvent) {
     // idk for what it exists, leaving just in case it saves us from some bugs
     e.stopPropagation();
   }
 
   uncontrolledProps() {
     return {
-      checked: (e) => e.target.checked,
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => e.target.checked,
     };
   }
 
@@ -151,19 +156,21 @@ class ValueRoot extends Component {
       indeterminate,
       includeInputProps,
       resolveColor,
+      children,
+      Children,
       ...other
     } = this.asProps;
     const [, checkMarkProps] = getInputProps(other, includeInputProps);
-    const { children: _children, Children: _Children, ...propsWithoutChildren } = checkMarkProps;
+
     return {
-      theme,
+      theme: resolveColor(theme),
       size,
       state,
       // keyboardFocused,
       checked,
       indeterminate,
       resolveColor,
-      ...propsWithoutChildren,
+      ...checkMarkProps,
     };
   }
 
@@ -195,13 +202,15 @@ class ValueRoot extends Component {
   }
 }
 
-function Control(props) {
+function Control(props: CheckboxValueControlProps & CheckboxValueControlPropsInternal) {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
-  const checkboxRef = React.useRef(null);
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     if (checkboxRef.current) {
+      if (indeterminate === undefined) return;
+
       checkboxRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate, checkboxRef]);
@@ -218,24 +227,26 @@ function Control(props) {
 }
 Control.displayName = 'Control';
 
-function CheckMark(props) {
+function CheckMark(props: CheckboxValueCheckMarkProps & CheckboxValueCheckMarkPropsInternal) {
   const SCheckbox = Root;
   const SInvalidPattern = InvalidStateBox;
-  const { theme, styles, resolveColor, state, checked, indeterminate } = props;
+  const { styles, state, checked, indeterminate } = props;
   return sstyled(styles)(
-    <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>
+    <SCheckbox render={Flex} tag='span'>
       {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
     </SCheckbox>,
   );
 }
 CheckMark.displayName = 'CheckMark';
 
-function Text(props) {
+function Text(props: CheckboxTextProps & CheckboxTextPropsInternal) {
   const SText = Root;
   const { styles, color } = props;
 
   React.useEffect(() => {
     if (props.rootDisabled !== props.disabled) {
+      if (props.disabled === undefined) return;
+
       props.hoistDisabled(props.disabled);
     }
   }, [props.rootDisabled, props.disabled, props.hoistDisabled]);
@@ -251,11 +262,11 @@ Text.displayName = 'Text';
 const Value = createComponent(ValueRoot, {
   Control,
   CheckMark,
-});
+}) as CheckboxValueComponent;
 
 const Checkbox = createComponent(CheckboxRoot, {
   Text,
   Value,
-});
-export { inputProps };
+}) as CheckboxComponent;
+
 export default Checkbox;
