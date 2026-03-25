@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import type { IStyledProps } from '@semcore/core';
+import type { IRootComponentProps, IStyledProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import InfoM from '@semcore/icon/Info/m';
@@ -38,7 +38,7 @@ class CardRoot extends Component<CardProps> {
   }
 }
 
-function Title(props: TitleProps & { Children: React.FC }) {
+function Title(props: IRootComponentProps & TitleProps) {
   const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, Children } = props;
   const hintAfter = props.hintAfter;
   const STitle = Root;
