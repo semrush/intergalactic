@@ -15,6 +15,4 @@ export type DotProps = BoxProps &
     hidden?: boolean;
   };
 
-declare const Dot: Intergalactic.Component<'div', DotProps>;
-
-export default Dot;
+export type DotComponent = Intergalactic.Component<'div', DotProps>;
