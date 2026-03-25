@@ -111,28 +111,4 @@ import Select from '@semcore/ui/select';
 
 <TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
-## Deprecated
-
-### Select.OptionHint
-
-::: warning
-The `Select.OptionHint` is deprecated, use `Select.Option.Hint` or `Select.Group` with `subTitle` prop instead.
-:::
-
-```jsx
-import Select from '@semcore/ui/select';
-<Select.OptionHint />;
-```
-
-### Select.OptionTitle
-
-::: warning
-The `Select.OptionTitle` is deprecated, use `Select.Group` with `title` prop instead.
-:::
-
-```jsx
-import Select from '@semcore/ui/select';
-<Select.OptionTitle />;
-```
-
 <script setup>import { data as types } from '@types.data.ts';</script>
