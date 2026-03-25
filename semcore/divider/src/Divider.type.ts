@@ -18,6 +18,4 @@ export type DividerProps = BoxProps & {
   orientation?: 'horizontal' | 'vertical';
 };
 
-declare const Divider: Intergalactic.Component<'div', DividerProps>;
-
-export default Divider;
+export type DividerComponent = Intergalactic.Component<'div', DividerProps>;
