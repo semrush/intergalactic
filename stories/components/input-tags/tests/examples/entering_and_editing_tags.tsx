@@ -89,7 +89,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={props.active}
           >
             <InputTags.Tag.Text>
-              <InputTags.Tag.Text.Content wMax={100} ellipsis={{ cropPosition: 'end' }} hintProps={props.hintProps} hint:placement={props.hintPlacement}>{tag}</InputTags.Tag.Text.Content>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis:cropPosition='end' hint={props.hintProps} hint:placement={props.hintPlacement}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag(idx)} />
           </InputTags.Tag>

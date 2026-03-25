@@ -153,9 +153,7 @@ function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
           });
 
           for (const [key, value] of prefixesMap.entries()) {
-            if (!Object.hasOwn(this[CORE_AS_PROPS], `${key}Props`) || this[CORE_AS_PROPS][`${key}Props`] === undefined) {
-              Object.defineProperty(this[CORE_AS_PROPS], `${key}Props`, { value });
-            }
+            Object.defineProperty(this[CORE_AS_PROPS], `${key}Props`, { value });
           }
         }
       }

@@ -16,9 +16,9 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
             w={150}
             size={400}
             display='inline-flex'
-            hintProps={props.hintProps}
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
-            ellipsis={{ cropPosition: 'middle' }}
+            ellipsis:cropPosition='middle'
           >
             Few Tags Tags Tags
           </LinkTrigger.Text>
@@ -30,8 +30,8 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
           <LinkTrigger.Text
             w={150}
             size={400}
-            ellipsis={{ cropPosition: 'middle' }}
-            hintProps={props.hintProps}
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
             data-test-id='ellipsis-middle'
           >
@@ -48,7 +48,7 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
             w={150}
             size={400}
             ellipsis={true}
-            hintProps={props.hintProps}
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem

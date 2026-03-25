@@ -43,9 +43,11 @@ type EndCroppedEllipsisSettings = {
    * @default 1
    */
   maxLine?: number;
+
+  lastRequiredSymbols?: never;
 };
 
-export type EllipsisSettings = Readonly<(EndCroppedEllipsisSettings | MiddleCroppedEllipsisSettings) & CommonEllipsisSettings>;
+export type EllipsisSettings = (EndCroppedEllipsisSettings | MiddleCroppedEllipsisSettings) & CommonEllipsisSettings;
 
 export type Events = {
   isEllipsized: (isEllipsized: boolean) => void;

@@ -32,29 +32,27 @@ const Demo = (props: TableInTableProps) => {
   const cropPos = props.cropPosition ?? 'middle';
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (cellProps) => {
-    const ellipsisSettingsVol: EllipsisSettings = React.useMemo(() => {
-      return {
-        cropPosition: cropPos,
-        containerElement: volElement ?? undefined,
-      } as const;
-    }, [volElement]);
-
-    const ellipsisSettingsKeyword: EllipsisSettings = React.useMemo(() => {
-      return {
-        cropPosition: cropPos,
-        containerElement: keywordElement ?? undefined,
-        recalculateContainerWidth: (cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? (width: number) => width - 26 : undefined,
-      } as const;
-    }, [keywordElement, cellProps.isAccordionRow]);
-
     if (cellProps.dataKey === 'keyword' && keywordElement) {
       return (
-        <Text ellipsis={ellipsisSettingsKeyword} hintProps={props.hintProps}>{cellProps.value}</Text>
+        <Text
+          ellipsis:cropPosition={cropPos}
+          ellipsis:containerElement={keywordElement}
+          ellipsis:recalculateContainerWidth={(cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? (width: number) => width - 26 : undefined}
+          hint={props.hintProps}
+        >
+          {cellProps.value}
+        </Text>
       );
     }
     if (cellProps.dataKey === 'vol' && volElement) {
       return (
-        <Text ellipsis={ellipsisSettingsVol} hintProps={props.hintProps}>{cellProps.value}</Text>
+        <Text
+          ellipsis:cropPosition={cropPos}
+          ellipsis:containerElement={volElement}
+          hint={props.hintProps}
+        >
+          {cellProps.value}
+        </Text>
       );
     }
     return cellProps.defaultRender();

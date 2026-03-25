@@ -47,7 +47,7 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Text
                 w='100%'
                 ellipsis
-                hintProps={props.hintProps}
+                hint={props.hintProps}
                 hint:placement={props.hintPlacement}
               >
                 Menu item 1 with long long long text
@@ -67,7 +67,7 @@ const Demo = (props: WithEllipsisProps) => {
               </DropdownMenu.Item.Addon>
               <DropdownMenu.Item.Text
                 ellipsis
-                hintProps={props.hintProps}
+                hint={props.hintProps}
                 hint:placement={props.hintPlacement}
               >
                 Menu item hint shown on hover and focus
@@ -77,8 +77,8 @@ const Demo = (props: WithEllipsisProps) => {
               w='100%'
               tag={Text}
               ellipsis
+              hint={props.hintProps}
               // @ts-expect-error. We can't calculate correct types from intersections in tag prop.
-              hintProps={props.hintProps}
               hint:placement={props.hintPlacement}
             >
               Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!

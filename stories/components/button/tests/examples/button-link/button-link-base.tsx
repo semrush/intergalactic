@@ -5,6 +5,7 @@ import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Spin, { type SpinSize } from '@semcore/ui/spin';
+import type { TextEllipsisProps } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -14,7 +15,7 @@ type BasicButtonLinkProps = ButtonLinkProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  ellipsis?: false | true | { cropPosition: 'middle'; lastRequiredSymbols?: number } | { cropPosition?: 'end'; maxLine?: number };
+  ellipsis?: TextEllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
   addonLeftType?: AddonType;
@@ -36,7 +37,7 @@ const Demo = (props: BasicButtonLinkProps) => {
     size = 300,
     use = 'primary',
     w,
-    ellipsis = true,
+    ellipsis,
     hintPlacement,
     addonLeftType = 'icon',
     addonRightType = 'icon',
@@ -80,7 +81,7 @@ const Demo = (props: BasicButtonLinkProps) => {
   const ellipsisW = ellipsis ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
   let displayValue: 'inline-block' | undefined;
-  if (typeof ellipsis === 'object' && 'maxLine' in ellipsis && ellipsis.maxLine && ellipsis.maxLine > 1) {
+  if (ellipsis?.['ellipsis:maxLine'] && ellipsis['ellipsis:maxLine'] > 1) {
     displayValue = 'inline-block';
   }
 
@@ -99,9 +100,9 @@ const Demo = (props: BasicButtonLinkProps) => {
         {renderAddon(showAddonLeft, addonLeftType)}
         <ButtonLink.Text
           w={ellipsisW}
-          ellipsis={ellipsis || undefined}
+          {...ellipsis}
           hint:placement={hintPlacement}
-          hintProps={hintProps}
+          hint={hintProps}
         >
           {text}
         </ButtonLink.Text>
@@ -136,7 +137,7 @@ export const defaultButtonLinkProps: BasicButtonLinkProps = {
   addonLeftType: 'icon',
   addonRightType: 'icon',
   merged: false,
-  ellipsis: true,
+  ellipsis: { ellipsis: true },
   w: 120,
 };
 

@@ -1,10 +1,7 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
-
-const ellipsisSettings: EllipsisSettings = { cropPosition: 'middle', observeChildrenMutations: true };
 
 const Demo = () => {
   const divRef = React.useRef<HTMLDivElement>(null);
@@ -25,7 +22,7 @@ const Demo = () => {
 
   return (
     <Box ref={divRef}>
-      <Text ellipsis={ellipsisSettings} w={200} mb={3}>
+      <Text ellipsis:cropPosition='middle' ellipsis:observeChildrenMutations w={200} mb={3}>
         {text}
       </Text>
 

@@ -3,11 +3,11 @@ import { Root, sstyled, Component, createComponent } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { TextProps } from './index';
+import type { TextEllipsisProps, TextProps } from './index';
 import styles from './style/text.shadow.css';
 
 type DefaultProps = {
-  ellipsis: TextProps['ellipsis'] | false;
+  ellipsis: TextEllipsisProps['ellipsis'];
 };
 
 type State = {
@@ -41,7 +41,10 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   }
 
   componentDidUpdate(prevProps: TextProps) {
-    if (prevProps.ellipsis !== this.asProps.ellipsis) {
+    if (
+      ('ellipsis' in prevProps && prevProps.ellipsis !== this.asProps.ellipsis) ||
+      ('ellipsisProps' in prevProps && prevProps.ellipsisProps !== this.asProps.ellipsisProps)
+    ) {
       this.cleanUpEllipsis();
 
       this.initEllipsis();
@@ -54,14 +57,14 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
 
   render(): React.ReactNode {
     const SText = Root;
-    const { color, underline, lineThrough, hintProps, children, ellipsis, resolveColor } = this.asProps;
+    const { color, underline, lineThrough, hint, hintProps, children, ellipsis, ellipsisProps, resolveColor } = this.asProps;
     const { isEllipsized } = this.state;
 
-    const cropPosition = typeof ellipsis === 'object' ? (ellipsis.cropPosition ?? 'end') : (ellipsis === true ? 'end' : undefined);
-    let withHint = hintProps !== false;
+    const cropPosition = ellipsisProps?.cropPosition ?? 'end';
+    let withHint = hint !== false;
 
-    const maxLineValue = typeof ellipsis === 'object' && ellipsis.maxLine !== undefined ? ellipsis.maxLine : undefined;
-    if (hintProps === undefined && maxLineValue !== undefined && maxLineValue > 1) {
+    const maxLineValue = ellipsisProps?.maxLine;
+    if (hint !== true && hintProps === undefined && maxLineValue !== undefined && maxLineValue > 1) {
       withHint = false;
     }
 
@@ -74,7 +77,7 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
           ref={this.innerRef}
           use:decoration={this.getTextDecoration(underline, lineThrough)}
           use:color={resolveColor(color)}
-          use:ellipsis={Boolean(ellipsis)}
+          use:ellipsis={ellipsis !== undefined ? ellipsis : Boolean(ellipsisProps)}
           isEllipsized={isEllipsized}
           maxLine={maxLineValue}
           trim={cropPosition}
@@ -89,11 +92,11 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, Default
   }
 
   private initEllipsis() {
-    const { ellipsis, hintProps } = this.asProps;
-    const shouldInit = hintProps !== false || (typeof ellipsis === 'object' && ellipsis.cropPosition === 'middle');
+    const { ellipsis, ellipsisProps, hint } = this.asProps;
+    const shouldInit = hint !== false || ellipsisProps?.cropPosition === 'middle';
 
     if (shouldInit && ellipsis && this.innerRef.current) {
-      this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsis === true ? {} : ellipsis);
+      this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsisProps);
 
       this.ellipsis.on('isEllipsized', this.handleEllipsized);
     }

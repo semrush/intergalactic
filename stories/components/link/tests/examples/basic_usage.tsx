@@ -4,6 +4,7 @@ import Badge from '@semcore/ui/badge';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Link, { type LinkProps } from '@semcore/ui/link';
 import Spin, { type SpinSize } from '@semcore/ui/spin';
+import type { TextEllipsisProps } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -15,7 +16,7 @@ type BasicLinkProps = LinkProps & {
   showAddonRight?: boolean;
   href?: string;
   title?: string;
-  ellipsis?: false | true | { cropPosition: 'middle'; lastRequiredSymbols?: number } | { cropPosition?: 'end'; maxLine?: number };
+  ellipsis?: TextEllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
@@ -37,7 +38,7 @@ const Demo = (props: BasicLinkProps) => {
     color,
     w,
     title,
-    ellipsis = true,
+    ellipsis,
     hintPlacement,
     addonLeftType = 'icon',
     addonRightType = 'icon',
@@ -81,7 +82,7 @@ const Demo = (props: BasicLinkProps) => {
   const ellipsisW = ellipsis ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
   let linkDisplayValue: 'inline-block' | undefined;
-  if (typeof ellipsis === 'object' && 'maxLine' in ellipsis && ellipsis.maxLine && ellipsis.maxLine > 1) {
+  if (ellipsis?.['ellipsis:maxLine'] && ellipsis?.['ellipsis:maxLine'] > 1) {
     linkDisplayValue = 'inline-block';
   }
 
@@ -103,7 +104,7 @@ const Demo = (props: BasicLinkProps) => {
         <Link.Text
           size={size}
           w={ellipsisW}
-          ellipsis={ellipsis || undefined}
+          {...ellipsis}
           hint:placement={hintPlacement}
         >
           {text}
@@ -142,7 +143,9 @@ export const defaultProps: BasicLinkProps = {
   addonLeftType: 'icon',
   addonRightType: 'icon',
   merged: false,
-  ellipsis: true,
+  ellipsis: {
+    ellipsis: true,
+  },
   w: 120,
 };
 

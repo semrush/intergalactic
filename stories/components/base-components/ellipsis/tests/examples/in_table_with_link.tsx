@@ -67,7 +67,9 @@ const Demo = () => {
             >
               <Link.Text
                 wMin={0}
-                ellipsis={ellipsisSettings}
+                ellipsis:cropPosition='middle'
+                ellipsis:containerElement={columnElement}
+                ellipsis:recalculateContainerWidth={(width: number) => width - 28}
                 hint:triggerRef={triggerRef}
               >
                 {removeProtocol(pageUrl)}
