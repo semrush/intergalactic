@@ -1,7 +1,9 @@
 import type { Box, BoxProps } from '@semcore/base-components';
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { Text, TextProps } from '@semcore/typography';
 import type React from 'react';
+
+export type CardProps = BoxProps;
 
 export type TitleProps = TextProps & {
   /**
@@ -18,11 +20,9 @@ export type TitleProps = TextProps & {
   hintAfterAriaLabel?: string;
 };
 
-declare const Card: Intergalactic.Component<'div', BoxProps> & {
+export type CardComponent = Intergalactic.Component<'div', CardProps> & {
   Title: Intergalactic.Component<'div', TitleProps>;
   Description: typeof Text;
   Header: typeof Box;
   Body: typeof Box;
 };
-
-export default Card;
