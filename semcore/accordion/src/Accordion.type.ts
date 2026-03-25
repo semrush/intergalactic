@@ -41,7 +41,7 @@ export type AccordionContext = {
 };
 
 export type AccordionHandlers = {
-  value: (value: AccordionValue) => void;
+  value: AccordionProps['value'];
 };
 
 export type AccordionItemProps = {
@@ -58,7 +58,7 @@ export type AccordionItemContext = {
   getToggleProps?: PropGetterFn;
   getCollapseProps?: PropGetterFn;
   getChevronProps?: PropGetterFn;
-  selected?: boolean;
+//   selected?: boolean;
 };
 
 export type AccordionItemToggleProps = BoxProps & {
@@ -108,7 +108,7 @@ export type AccordionCollapseProps = BoxProps & CollapseAnimationProps & {
   defaultHeight?: 'auto' | '100%';
 };
 
-type IntergalacticAccordionComponent<PropsExtending = {}> = (<
+export type IntergalacticAccordionComponent<PropsExtending = {}> = (<
   Value extends AccordionValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -123,28 +123,17 @@ type IntergalacticAccordionComponent<PropsExtending = {}> = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', AccordionProps>;
 
-declare const Accordion: IntergalacticAccordionComponent & {
-  Item: Intergalactic.Component<
-    'div',
-    AccordionItemProps,
-    AccordionItemContext,
-    [handlers: AccordionHandlers]
-  > & {
+export type AccordionItemComponent = Intergalactic.Component<
+  'div',
+  AccordionItemProps,
+  AccordionItemContext
+>;
+
+export type AccordionComponent = IntergalacticAccordionComponent & {
+  Item: AccordionItemComponent & {
     Toggle: Intergalactic.Component<typeof Text, AccordionItemToggleProps>;
     ToggleButton: Intergalactic.Component<typeof Flex, {}>;
     Chevron: Intergalactic.Component<'div', ChevronItemProps>;
     Collapse: Intergalactic.Component<'div', AccordionCollapseProps>;
   };
 };
-
-declare const wrapAccordion: <PropsExtending extends {}>(
-  wrapper: (
-    props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticAccordionComponent>
-    > &
-    PropsExtending,
-  ) => React.ReactNode,
-) => IntergalacticAccordionComponent<PropsExtending>;
-export { wrapAccordion };
-
-export default Accordion;
