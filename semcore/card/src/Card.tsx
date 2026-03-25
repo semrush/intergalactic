@@ -38,8 +38,8 @@ class CardRoot extends Component<CardProps> {
   }
 }
 
-function Title(props: TitleProps) {
-  const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, children } = props;
+function Title(props: TitleProps & { Children: React.FC }) {
+  const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, Children } = props;
   const hintAfter = props.hintAfter;
   const STitle = Root;
   const SInfo = DescriptionTooltip;
@@ -48,7 +48,7 @@ function Title(props: TitleProps) {
   return sstyled(styles)(
     <>
       <STitle render={Text}>
-        { children }
+        <Children />
         {innerHint && (
           <SInfo>
             <SInfoTrigger
