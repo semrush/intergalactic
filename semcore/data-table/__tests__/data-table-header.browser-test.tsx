@@ -389,7 +389,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
-      const selectTrigger = page.locator('[data-ui-name="Select"]');
+      const selectTrigger = page.locator('[data-ui-name="Select.Trigger"]');
       const menuItem = page.getByRole('option');
       const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
@@ -438,7 +438,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
-      const selectTrigger = page.locator('[data-ui-name="Select"]');
+      const selectTrigger = page.locator('[data-ui-name="Select.Trigger"]');
       const menuItem = page.getByRole('option').first();
       const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
