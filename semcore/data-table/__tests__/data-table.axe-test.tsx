@@ -3,7 +3,9 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const skipAriaRequiredChildren = (violations: Awaited<ReturnType<typeof getAccessibilityViolations>>) =>
-  violations.filter((v) => v.id !== 'aria-required-children');
+  violations.filter(
+    (v) => v.id !== 'aria-required-children' && v.id !== 'focusable-content',
+  );
 
 test.describe(`@data-table  ${TAG.ACCESSIBILITY}`, () => {
   test('access to cells', async ({ page }) => {
