@@ -28,7 +28,7 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   style?: CSSProperties;
 
   virtualScroll: boolean;
-  tableRef: React.RefObject<HTMLDivElement>;
+  gridContainerRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
   onClick: (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
   flatRows: DTRow<UniqKeyType>[];

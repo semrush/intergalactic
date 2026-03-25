@@ -21,9 +21,9 @@ class CellRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   cellRef = React.createRef<HTMLDivElement>();
 
   componentWillUnmount() {
-    const { virtualScroll, tableRef } = this.asProps;
+    const { virtualScroll, gridContainerRef } = this.asProps;
     if (virtualScroll && this.cellRef.current && isFocusInside(this.cellRef.current)) {
-      tableRef.current?.setAttribute('tabIndex', '0');
+      gridContainerRef.current?.setAttribute('tabIndex', '0');
     }
   }
 

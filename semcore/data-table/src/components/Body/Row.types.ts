@@ -93,6 +93,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   getI18nText: (key: string) => string;
   virtualScroll?: VirtualScroll;
   tableRef: React.RefObject<HTMLDivElement>;
+  gridContainerRef: React.RefObject<HTMLDivElement>;
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   shadowVertical?: '' | 'end' | 'start' | 'median';

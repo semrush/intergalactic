@@ -266,7 +266,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       styles,
       getI18nText,
       virtualScroll,
-      tableRef,
+      gridContainerRef,
       onCellClick,
       rawData,
       shadowVertical,
@@ -311,7 +311,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const extraProps: Record<string, any> = {
       use,
       virtualScroll: Boolean(virtualScroll),
-      tableRef,
+      gridContainerRef,
       children: props?.children ?? defaultRender(),
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
