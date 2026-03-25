@@ -16,26 +16,26 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Text with ellipsis', () => {
     const textVariants = [
-      { ellipsis: true, size: 100 },
-      { ellipsis: { cropPosition: 'end' }, size: 200 },
-      { ellipsis: true, size: 200 },
-      { ellipsis: { cropPosition: 'end' }, size: 400 },
-      { ellipsis: true, size: 500 },
-      { ellipsis: { cropPosition: 'end' }, size: 600 },
-      { ellipsis: true, size: 700 },
-      { ellipsis: { cropPosition: 'end' }, size: 800 },
-      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, size: 100 },
-      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 7 }, size: 200 },
-      { ellipsis: { cropPosition: 'middle' }, size: 300 },
-      { ellipsis: { cropPosition: 'middle' }, size: 400 },
-      { ellipsis: { cropPosition: 'middle' }, size: 500 },
-      { ellipsis: { cropPosition: 'middle' }, size: 600 },
-      { ellipsis: { cropPosition: 'middle' }, size: 700 },
-      { ellipsis: { cropPosition: 'middle' }, size: 800 },
+      { ellipsis: { ellipsis: true }, size: 100 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 200 },
+      { ellipsis: { ellipsis: true }, size: 200 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 400 },
+      { ellipsis: { ellipsis: true }, size: 500 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 600 },
+      { ellipsis: { ellipsis: true }, size: 700 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 800 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, size: 100 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 7 }, size: 200 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 400 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 500 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 600 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 700 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 800 },
     ];
 
     textVariants.forEach((variant) => {
-      const ellipsisDesc = variant.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
+      const ellipsisDesc = variant.ellipsis.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
       test(`Verify ellipsis on text with ellipsis: ${ellipsisDesc}, size: ${variant.size}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
       }, async ({ page }) => {
