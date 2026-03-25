@@ -237,7 +237,6 @@ SRow[theme='danger'][active] > SCellWrapper > SCell:not([theme]) {
 
 SCell {
   display: flex;
-  align-items: start;
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
