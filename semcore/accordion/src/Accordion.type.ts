@@ -58,7 +58,7 @@ export type AccordionItemContext = {
   getToggleProps?: PropGetterFn;
   getCollapseProps?: PropGetterFn;
   getChevronProps?: PropGetterFn;
-//   selected?: boolean;
+  selected?: boolean;
 };
 
 export type AccordionItemToggleProps = BoxProps & {
