@@ -1,5 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
+import type { IRootComponentProps, IStyledProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import InfoM from '@semcore/icon/Info/m';
@@ -7,20 +8,19 @@ import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { CardProps, CardComponent, TitleProps } from './Card.type';
 import style from './style/card.shadow.css';
 
-class CardRoot extends Component {
+class CardRoot extends Component<CardProps> {
   static displayName = 'Card';
 
   static style = style;
 
   render() {
     const SCard = Root;
-    const { Children, styles, forcedAdvancedMode } = this.asProps;
+    const { Children, styles } = this.asProps;
 
-    const advancedMode =
-      forcedAdvancedMode ||
-      isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
+    const advancedMode = isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
 
     return sstyled(styles)(
       <SCard render={Box}>
@@ -38,9 +38,9 @@ class CardRoot extends Component {
   }
 }
 
-function Title(props) {
-  const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
-  const hintAfter = props.hintAfter || props.hint;
+function Title(props: IRootComponentProps & TitleProps) {
+  const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, Children } = props;
+  const hintAfter = props.hintAfter;
   const STitle = Root;
   const SInfo = DescriptionTooltip;
   const SInfoTrigger = SInfo.Trigger;
@@ -62,7 +62,7 @@ function Title(props) {
                 <InfoM />
               </ButtonLink.Addon>
             </SInfoTrigger>
-            <SInfo.Popper>{innerHint}</SInfo.Popper>
+            <SInfo.Popper aria-label={innerHintAriaLabel as string}>{innerHint}</SInfo.Popper>
           </SInfo>
         )}
       </STitle>
@@ -78,26 +78,26 @@ function Title(props) {
               <InfoM />
             </ButtonLink.Addon>
           </SInfoTrigger>
-          <SInfo.Popper>{hintAfter}</SInfo.Popper>
+          <SInfo.Popper aria-label={hintAfterAriaLabel as string}>{hintAfter}</SInfo.Popper>
         </SInfo>
       )}
     </>,
   );
 }
 
-function Description(props) {
+function Description(props: IStyledProps) {
   const { styles } = props;
   const SDescription = Root;
   return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
-function Header(props) {
+function Header(props: IStyledProps) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(<SHeader render={Box} {...props} />);
 }
 
-function Body(props) {
+function Body(props: IStyledProps) {
   const { styles } = props;
   const SBody = Root;
   return sstyled(styles)(<SBody render={Box} {...props} />);
@@ -108,6 +108,6 @@ const Card = createComponent(CardRoot, {
   Description,
   Header,
   Body,
-});
+}) as CardComponent;
 
 export default Card;
