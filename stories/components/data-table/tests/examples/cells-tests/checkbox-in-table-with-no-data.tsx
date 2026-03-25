@@ -5,7 +5,7 @@ export type DemoProps = {
   reactive?: boolean;
 };
 
-const selectableRows = new SelectableRows<string>();
+const selectableRows = new SelectableRows<never>();
 
 const columns = [
   { name: 'keyword', children: 'Keyword' },

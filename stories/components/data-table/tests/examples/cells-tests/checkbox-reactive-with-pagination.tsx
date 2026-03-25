@@ -145,6 +145,7 @@ const flatData = [
 
 const mergedData = [
   {
+    id: '.1',
     keyword: 'ebay buy',
     [ROW_GROUP]: [
       { id: '1', kd: '31.2', cpc: '$1.15', vol: '22,000' },
@@ -152,6 +153,7 @@ const mergedData = [
     ],
   },
   {
+    id: '.2',
     keyword: 'amazon shoes',
     [ROW_GROUP]: [
       { id: '3', kd: '47', cpc: '$2.95', vol: '48,000' },
@@ -159,6 +161,7 @@ const mergedData = [
     ],
   },
   {
+    id: '.3',
     keyword: 'www.nike.com',
     [ROW_GROUP]: [
       { id: '5', kd: '66.4', cpc: '$3.80', vol: 'n/a' },
@@ -166,6 +169,7 @@ const mergedData = [
     ],
   },
   {
+    id: '.4',
     keyword: 'buy iphone 13',
     [ROW_GROUP]: [
       { id: '7', kd: '59', cpc: '$5.20', vol: '71,000' },
@@ -173,36 +177,42 @@ const mergedData = [
     ],
   },
   {
+    id: '.5',
     keyword: 'adidas sale',
     [ROW_GROUP]: [
       { id: '9', kd: '40.2', cpc: '$1.85', vol: '19,500' },
     ],
   },
   {
+    id: '.6',
     keyword: 'cheap flights expedia',
     [ROW_GROUP]: [
       { id: '10', kd: '52', cpc: '$4.10', vol: '35,800' },
     ],
   },
   {
+    id: '.7',
     keyword: 'booking.com hotels',
     [ROW_GROUP]: [
       { id: '11', kd: '73', cpc: '$6.45', vol: 'n/a' },
     ],
   },
   {
+    id: '.8',
     keyword: 'ubereats promo code',
     [ROW_GROUP]: [
       { id: '12', kd: '38', cpc: '$2.10', vol: '11,700' },
     ],
   },
   {
+    id: '.9',
     keyword: 'buy ps5 online',
     [ROW_GROUP]: [
       { id: '13', kd: '64', cpc: '$5.95', vol: '44,200' },
     ],
   },
   {
+    id: '.10',
     keyword: 'shopify login',
     [ROW_GROUP]: [
       { id: '14', kd: '25.8', cpc: '$0.65', vol: '13,600' },

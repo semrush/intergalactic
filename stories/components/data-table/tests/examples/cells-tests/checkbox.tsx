@@ -33,7 +33,7 @@ const fixedColumns = [
 
 const Demo = ({ fixedColumns: useFixedColumns = false }: DemoProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
-  const [sort, setSort] = React.useState<DataTableSort<'id' | 'name' | 'kd' | 'cpc' | 'vol'>>();
+  const [sort, setSort] = React.useState<DataTableSort<'id' | 'name'>>();
 
   return (
     <div className='App'>
