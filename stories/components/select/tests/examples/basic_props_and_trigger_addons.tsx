@@ -26,6 +26,7 @@ export type SelectBasicProps = SelectProps & {
 
   showTriggerText?: boolean;
   triggerText?: string;
+  size?: 'm' | 'l';
 };
 
 const Demo = (props: SelectBasicProps) => {

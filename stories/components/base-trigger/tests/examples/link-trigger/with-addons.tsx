@@ -1,10 +1,10 @@
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
+import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import React from 'react';
 
-type LinkTriggerWithAddonExample = LinkTriggerProps & BaseTriggerProps;
+type LinkTriggerWithAddonExample = LinkTriggerProps;
 const Demo = (props: LinkTriggerWithAddonExample) => (
   <Flex gap={2} justifyContent='flex-start'>
     <LinkTrigger
@@ -40,7 +40,7 @@ const Demo = (props: LinkTriggerWithAddonExample) => (
 );
 
 export const linkTriggerWithAddonExampleProps: LinkTriggerWithAddonExample = {
-  size: 'm',
+  size: 300,
   state: undefined,
   active: undefined,
   empty: undefined,

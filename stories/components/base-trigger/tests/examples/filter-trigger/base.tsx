@@ -1,7 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import type { FilterTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 type FilterTriggerBaseExample = FilterTriggerProps & BaseTriggerProps;
@@ -30,9 +29,7 @@ const Demo = (props: FilterTriggerBaseExample) => (
       disabled={props.disabled}
     >
       <FilterTrigger.TriggerButton>Clear Text</FilterTrigger.TriggerButton>
-      <Tooltip title='Clear tooltip'>
-        <FilterTrigger.ClearButton data-test-id='tooltip-hint-text' />
-      </Tooltip>
+      <FilterTrigger.ClearButton data-test-id='tooltip-hint-text' title='Clear text' />
     </FilterTrigger>
 
   </Flex>

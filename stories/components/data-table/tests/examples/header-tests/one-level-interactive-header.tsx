@@ -1,12 +1,13 @@
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -29,63 +30,69 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
   {
     name: 'cpc',
     children: (
-      <DescriptionTooltip placement='right'>
-        Cpc 1
-        <DescriptionTooltip.Trigger
-          ml={1}
-          tag={ButtonLink}
-          addonLeft={InfoM}
-          color='icon-secondary-neutral'
-          aria-label='Additional info 1'
-          data-test-id='tooltip-without-interactive-el'
-        />
-        <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
-          Jesus Christ, Joe,
-          Pink. Let's move on.
-        </DescriptionTooltip.Popper>
-      </DescriptionTooltip>
+      <Flex alignItems='center'>
+        <DescriptionTooltip placement='right'>
+          Cpc 1
+          <DescriptionTooltip.Trigger
+            ml={1}
+            tag={ButtonLink}
+            addonLeft={InfoM}
+            color='icon-secondary-neutral'
+            aria-label='Additional info 1'
+            data-test-id='tooltip-without-interactive-el'
+          />
+          <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
+            Jesus Christ, Joe,
+            Pink. Let's move on.
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
     ),
   },
   {
     name: 'cpc',
     children: (
-      <DescriptionTooltip placement='right'>
-        Cpc 2
-        <DescriptionTooltip.Trigger
-          ml={1}
-          tag={ButtonLink}
-          addonLeft={InfoM}
-          color='icon-secondary-neutral'
-          aria-label='Additional info 2'
-          data-test-id='tooltip-with-interactive-el'
-        />
-        <DescriptionTooltip.Popper aria-label='Additional info about item 2'>
-          Jesus Christ, Joe,
-          {' '}
-          <Link>fucking forget</Link>
-          {' '}
-          about it. I'm Mr. Pink. Let's move on.
-        </DescriptionTooltip.Popper>
-      </DescriptionTooltip>
+      <Flex alignItems='center'>
+        <DescriptionTooltip placement='right'>
+          Cpc 2
+          <DescriptionTooltip.Trigger
+            ml={1}
+            tag={ButtonLink}
+            addonLeft={InfoM}
+            color='icon-secondary-neutral'
+            aria-label='Additional info 2'
+            data-test-id='tooltip-with-interactive-el'
+          />
+          <DescriptionTooltip.Popper aria-label='Additional info about item 2'>
+            Jesus Christ, Joe,
+            {' '}
+            <Link>fucking forget</Link>
+            {' '}
+            about it. I'm Mr. Pink. Let's move on.
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
     ),
   },
   {
     name: 'cpc',
     children: (
-      <Tooltip
-        tag={Link}
-        title='Default tooltip contains short text explaining something about the trigger.'
-        data-test-id='tooltip-with-tag-link'
-      >
-        Keywords
-      </Tooltip>
+      <Flex alignItems='center'>
+        <Tooltip
+          tag={Link}
+          title='Default tooltip contains short text explaining something about the trigger.'
+          data-test-id='tooltip-with-tag-link'
+        >
+          Keywords
+        </Tooltip>
+      </Flex>
     ),
   },
   {
     name: 'kd',
     sortable: 'asc',
     children: (
-      <>
+      <Flex alignItems='center'>
         <Text noWrap>
           Keyword
           {' '}
@@ -98,13 +105,13 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           data-test-id='interactive-icon'
           color='icon-secondary-neutral'
         />
-      </>
+      </Flex>
     ),
   },
   {
     name: 'keyword',
     children: (
-      <>
+      <Flex alignItems='center'>
         <Checkbox data-test-id='header-checkbox' />
         <DescriptionTooltip placement='right'>
           Hello
@@ -120,7 +127,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
             Place an additional information here!
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>
-      </>
+      </Flex>
     ),
   },
   {

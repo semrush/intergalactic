@@ -553,8 +553,9 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify input focused', async () => {
       await locators.button(page).click();
       await page.getByRole('textbox').waitFor({ state: 'visible' });
-      await page.waitForTimeout(300); // focus first moves to the close button and then to the input; test browsers handle this more slowly
-      await expect(page.getByRole('textbox')).toBeFocused();
+      await expect(async () => {
+        await expect(page.getByRole('textbox')).toBeFocused();
+      }).toPass({ timeout: 5000 }); // focus first moves to the close button and then to the input
     });
   });
 
@@ -570,8 +571,9 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
 
       await page.getByRole('textbox').waitFor({ state: 'visible' });
-      await page.waitForTimeout(300); // focus first moves to the close button and then to the input; test browsers handle this more slowly
-      await expect(page.getByRole('textbox')).toBeFocused();
+      await expect(async () => {
+        await expect(page.getByRole('textbox')).toBeFocused();
+      }).toPass({ timeout: 5000 }); // focus first moves to the close button and then to the input
     });
 
     await test.step('Verify closed by escape', async () => {

@@ -19,6 +19,7 @@ const Demo = (props: LinkSizesProps) => {
     200,
     100,
   ] as const;
+  const text = 'The quick brown fox jumps over the lazy dog';
 
   return (
     <>
@@ -69,7 +70,7 @@ const Demo = (props: LinkSizesProps) => {
                 w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
                 ellipsis={props.ellipsis ? true : undefined}
               >
-                The quick brown fox jumps over the lazy dog
+                {text}
               </Link.Text>
               {props.addonRight === 'icon' && (
                 <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>

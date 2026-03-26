@@ -12,21 +12,21 @@ SInlineInput {
 
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
-  SConfirmIcon {
+  SConfirmIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-success, #00c192);
     cursor: pointer;
   }
 
-  SConfirmIcon:hover {
+  SConfirmIcon:not([color]):hover {
     color: var(--intergalactic-icon-secondary-success-hover-active, #049B75);
   }
 
-  SCancelIcon {
+  SCancelIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
     cursor: pointer;
   }
 
-  SCancelIcon:hover {
+  SCancelIcon:not([color]):hover {
     color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   }
 
