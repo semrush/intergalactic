@@ -36,6 +36,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           <DescriptionTooltip.Trigger
             ml={1}
             tag={ButtonLink}
+            size={100}
             addonLeft={InfoM}
             color='icon-secondary-neutral'
             aria-label='Additional info 1'
@@ -58,6 +59,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           <DescriptionTooltip.Trigger
             ml={1}
             tag={ButtonLink}
+            size={100}
             addonLeft={InfoM}
             color='icon-secondary-neutral'
             aria-label='Additional info 2'
@@ -101,6 +103,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         <ButtonLink
           ml={1}
           addonLeft={LinkExternalM}
+          size={100}
           title='Go to our awesome article'
           data-test-id='interactive-icon'
           color='icon-secondary-neutral'
@@ -118,6 +121,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
           <DescriptionTooltip.Trigger
             ml={1}
             tag={ButtonLink}
+            size={100}
             addonLeft={InfoM}
             color='icon-secondary-neutral'
             aria-label='Additional info'
