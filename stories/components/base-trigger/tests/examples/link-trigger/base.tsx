@@ -78,7 +78,7 @@ const Demo = (props: BasicLinktriggerProps) => {
     }
   };
 
-  const hasEllipsis = ellipsis?.ellipsis;
+  const hasEllipsis = ellipsis !== undefined && ellipsis.ellipsis !== false;
   const ellipsisW = hasEllipsis ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
   let displayValue: 'inline-block' | undefined;
