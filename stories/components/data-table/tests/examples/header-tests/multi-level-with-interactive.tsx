@@ -1,4 +1,5 @@
 import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
@@ -38,23 +39,38 @@ const CustomSelect = () => {
     <Select
       visible={isVisible}
       onVisibleChange={setIsVisible}
-      mt={2}
-      mr='auto'
-      options={options}
-      placeholder='Select option'
       data-test-id='select-header'
       id='basic-select'
-      tag={LinkTrigger}
-      size={100}
-      onKeyDown={(e: any) => {
-        if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
-          return false;
-        }
-        if (e.key.startsWith('Arrow') && isVisible) {
-          e.stopPropagation();
-        }
-      }}
-    />
+    >
+      <Select.Trigger
+        tag={LinkTrigger}
+        aria-label='Select option'
+        color='text-primary'
+        size={100}
+        placeholder='Select option'
+        onKeyDown={(e: any) => {
+          if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+            return false;
+          }
+          if (
+            (e.key === 'ArrowLeft' ||
+              e.key === 'ArrowRight' ||
+              e.key === 'ArrowDown' ||
+              e.key === 'ArrowUp') &&
+              isVisible
+          ) {
+            e.stopPropagation();
+          }
+        }}
+      />
+      <Select.Menu>
+        {options.map((option) => (
+          <Select.Option key={option.value} value={option.value}>
+            {option.children}
+          </Select.Option>
+        ))}
+      </Select.Menu>
+    </Select>
   );
 };
 
@@ -72,7 +88,7 @@ const columns = [
         name: 'kd',
         gtcWidth: 'minmax(100px, max-content)',
         children: (
-          <>
+          <Flex alignItems='center'>
             Cpc 1
             <DescriptionTooltip placement='right'>
               <DescriptionTooltip.Trigger
@@ -93,14 +109,14 @@ const columns = [
                 Pink. Let's move on.
               </DescriptionTooltip.Popper>
             </DescriptionTooltip>
-          </>
+          </Flex>
         ),
       },
       {
         name: 'cpc',
         gtcWidth: 'minmax(300px, max-content)',
         children: (
-          <>
+          <Flex alignItems='center'>
             <Checkbox data-test-id='header-checkbox' />
             Hello
             <DescriptionTooltip placement='right'>
@@ -118,7 +134,7 @@ const columns = [
                 Pink. Let's move on.
               </DescriptionTooltip.Popper>
             </DescriptionTooltip>
-          </>
+          </Flex>
         ),
       },
       {
