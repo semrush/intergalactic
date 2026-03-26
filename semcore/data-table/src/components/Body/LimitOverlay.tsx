@@ -17,7 +17,7 @@ type LimitOverlayProps<UniqKeyType> = {
   limit: Exclude<DataTableProps<any, any, any>['limit'], undefined>;
   flatRows: DTRow<UniqKeyType>[];
   hasGroups: boolean;
-  tableRef: React.RefObject<HTMLDivElement>;
+  gridContainerRef: React.RefObject<HTMLDivElement>;
   scrollAreaRef: React.RefObject<HTMLDivElement>;
 };
 
@@ -86,7 +86,7 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
   };
 
   handleFocusableCellFocus = (e: React.FocusEvent) => {
-    const tableElement = this.asProps.tableRef.current;
+    const tableElement = this.asProps.gridContainerRef.current;
     if (tableElement && !hasParent(e.relatedTarget, tableElement)) {
       if (e.target instanceof HTMLElement) {
         e.target.dataset.skipTargetFocus = 'true';

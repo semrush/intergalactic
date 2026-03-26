@@ -1,6 +1,5 @@
 import { Box } from '@semcore/base-components';
 import { sstyled } from '@semcore/core';
-import trottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
 import type { CellRenderProps } from '../Body/Body.types';
@@ -15,8 +14,6 @@ type AccordionRowsProps<Data extends DataTableData, UniqKeyType> = {
   accordionId: string;
   expanded: boolean;
   expandedForAnimation: boolean;
-
-  tableRef: React.RefObject<HTMLDivElement>;
 
   use: DTUse;
   columns: DTColumn[];

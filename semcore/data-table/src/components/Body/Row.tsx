@@ -449,7 +449,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       rawData,
       limit,
       hasGroups,
-      tableRef,
+      gridContainerRef,
       scrollAreaRef,
       accordionAnimationRows,
       onCellClick,
@@ -598,7 +598,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               limit={limit}
               flatRows={flatRows}
               hasGroups={hasGroups}
-              tableRef={tableRef}
+              gridContainerRef={gridContainerRef}
               scrollAreaRef={scrollAreaRef}
             />
           )}
@@ -655,7 +655,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             getFixedStyle={getFixedStyle}
             rawData={rawData}
             aria-level={ariaLevel}
-            tableRef={tableRef}
             shadowVertical={shadowVertical}
             variant={variant}
             limit={limit}

@@ -92,7 +92,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   getI18nText: (key: string) => string;
   virtualScroll?: VirtualScroll;
-  tableRef: React.RefObject<HTMLDivElement>;
   gridContainerRef: React.RefObject<HTMLDivElement>;
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
