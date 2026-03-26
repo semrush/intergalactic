@@ -25,7 +25,7 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
     w: {
       control: { type: 'number' },
     },
-    textEllipsis: {
+    ellipsis: {
       control: 'select',
       options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
       mapping: {
