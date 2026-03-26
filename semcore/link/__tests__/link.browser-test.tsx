@@ -219,6 +219,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
             await page.keyboard.press('Tab');
             await locators.link(page).first().hover();
             await expect(locators.hint(page)).toHaveCount(0);
+            await expect(locators.link(page).first()).toBeFocused();
             await expect(page).toHaveScreenshot({ clip });
           });
 

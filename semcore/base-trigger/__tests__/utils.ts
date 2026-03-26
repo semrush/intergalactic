@@ -13,7 +13,10 @@ export const selectOption = async (page: Page): Promise<void> => {
 };
 
 export const locators = {
-  button: (page: Page): Locator => page.getByRole('button'),
+  button: (page: Page, index?: number) => {
+    const base = page.getByRole('button');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   trigger: (page: Page): Locator => page.getByRole('combobox'),
   options: (page: Page, name?: string, index?: number): Locator => {
     const base = page.getByRole('option', { name });
@@ -23,7 +26,7 @@ export const locators = {
     'button[data-ui-name="FilterTrigger.ClearButton"]',
   ),
   dialog: (page: Page): Locator => page.getByRole('dialog'),
-
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
 
 export async function checkBackgroundColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {

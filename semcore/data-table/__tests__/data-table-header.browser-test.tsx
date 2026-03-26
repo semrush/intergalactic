@@ -389,7 +389,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
-      const selectTrigger = page.locator('[data-ui-name="Select"]');
+      const selectTrigger = page.locator('[data-ui-name="Select.Trigger"]');
       const menuItem = page.getByRole('option');
       const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
@@ -438,7 +438,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
-      const selectTrigger = page.locator('[data-ui-name="Select"]');
+      const selectTrigger = page.locator('[data-ui-name="Select.Trigger"]');
       const menuItem = page.getByRole('option').first();
       const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
@@ -811,7 +811,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Escape');
         await page.keyboard.press('ArrowRight');
 
-        const selectTrigger = page.locator('[data-ui-name="Select"]');
+        const selectTrigger = page.getByRole('combobox', { name: 'Select option' });
         await expect(selectTrigger).toBeFocused();
 
         await page.keyboard.press('Enter');
@@ -826,7 +826,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectTrigger).toBeFocused();
         await expect(selectTrigger).toHaveAttribute('value', '2');
 
-        // await page.keyboard.press('ArrowDown'); ----BUG
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.getCell(page, 2, 4)).toBeFocused();
       });
     });
 
@@ -893,7 +894,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify Select interaction', async () => {
-        const selectTrigger = page.locator('[data-ui-name="Select"]');
+        const selectTrigger = page.getByRole('combobox', { name: 'Select option' });
         await selectTrigger.hover();
         await selectTrigger.click();
 

@@ -508,7 +508,6 @@
     "computedValue": "#006dca",
     "description": "Link text.",
     "components": [
-      "base-trigger",
       "button",
       "link",
       "pagination",
@@ -523,7 +522,6 @@
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
     "components": [
-      "base-trigger",
       "button",
       "link",
       "tab-panel",
@@ -555,7 +553,6 @@
     "computedValue": "#8649e1",
     "description": "Visited link text.",
     "components": [
-      "button",
       "link"
     ]
   },
@@ -2306,7 +2303,6 @@
     "computedValue": "117%",
     "description": "Use with font-size-800.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2317,7 +2313,6 @@
     "computedValue": "110%",
     "description": "Use with font-size-700.",
     "components": [
-      "button",
       "errors",
       "typography"
     ]
@@ -2329,7 +2324,6 @@
     "computedValue": "125%",
     "description": "Use with font-size-600.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2340,7 +2334,6 @@
     "computedValue": "117%",
     "description": "Use with font-size-500.",
     "components": [
-      "button",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2353,7 +2346,6 @@
     "computedValue": "120%",
     "description": "Use with font-size-400.",
     "components": [
-      "button",
       "product-head",
       "typography"
     ]
@@ -2395,6 +2387,7 @@
       "breadcrumbs",
       "bulk-textarea",
       "button",
+      "card",
       "checkbox",
       "d3-chart",
       "data-table",
@@ -2423,7 +2416,6 @@
     "description": "Use with font-size-100.",
     "components": [
       "base-components",
-      "button",
       "d3-chart",
       "data-table",
       "fullscreen-modal",
@@ -2514,7 +2506,6 @@
     "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
     "components": [
       "base-components",
-      "button",
       "counter",
       "d3-chart",
       "data-table",
@@ -2596,7 +2587,6 @@
     "rawValue": "20px",
     "computedValue": "20px",
     "components": [
-      "button",
       "product-head",
       "typography"
     ]
@@ -2607,7 +2597,6 @@
     "rawValue": "24px",
     "computedValue": "24px",
     "components": [
-      "button",
       "fullscreen-modal",
       "modal",
       "typography"
@@ -2619,7 +2608,6 @@
     "rawValue": "32px",
     "computedValue": "32px",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2629,7 +2617,6 @@
     "rawValue": "36px",
     "computedValue": "36px",
     "components": [
-      "button",
       "errors",
       "typography"
     ]
@@ -2640,7 +2627,6 @@
     "rawValue": "48px",
     "computedValue": "48px",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2707,7 +2693,6 @@
     "description": "2px",
     "components": [
       "accordion",
-      "base-trigger",
       "bulk-textarea",
       "checkbox",
       "counter",

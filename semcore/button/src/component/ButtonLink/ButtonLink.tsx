@@ -1,42 +1,37 @@
-import { Box } from '@semcore/base-components';
-import { createComponent, sstyled, Root } from '@semcore/core';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Text } from '@semcore/typography';
+import { createComponent, sstyled, Root, Component } from '@semcore/core';
+import Link from '@semcore/link';
 import React from 'react';
 
 import style from './buttonLink.shadow.css';
-import type { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
-import { AbstractButton } from '../AbstractButton/AbstractButton';
+import type { ButtonLinkComponent, ButtonLinkProps } from './ButtonLink.type';
 
-const enhance = {
-  resolveColor: resolveColorEnhance(),
-};
-
-class RootButtonLink extends AbstractButton {
+class RootButtonLink extends Component<ButtonLinkProps> {
   static displayName = 'ButtonLink';
-  static enhance = Object.values(enhance);
   static style = style;
   static defaultProps = {
     use: 'primary',
+    size: 200,
   };
 
-  protected getTextColor(): string | undefined {
-    const { color, resolveColor } = this.asProps as any;
-    return resolveColor(color);
+  render(): React.ReactNode {
+    const SButtonLink = Root;
+    const { disabled } = this.asProps;
+
+    return sstyled(style)(
+      <SButtonLink
+        render={Link}
+        tag='button'
+        type='button'
+        use:disabled={disabled}
+        use:tabIndex={0}
+      />,
+    );
   }
 }
 
-function LinkText(props: ButtonLinkTextProps) {
-  const SText = Root;
-  return sstyled(props.styles)(<SText render={Text} />);
-}
-
-function Addon(props: ButtonLinkAddonProps) {
-  const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
-}
-
 export const ButtonLink = createComponent(RootButtonLink, {
-  Text: LinkText,
-  Addon,
+  Text: Link.Text,
+  Addon: Link.Addon,
+}, {
+  parent: Link,
 }) as ButtonLinkComponent;
