@@ -1,35 +1,39 @@
 import { NeighborLocation, Box, useNeighborLocationDetect } from '@semcore/base-components';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
 
+import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsProps } from './Pills.type';
 import style from './style/pills.shadow.css';
 
-const optionsA11yEnhance = {
-  onNeighborChange: (neighborElement, props) => {
-    if (neighborElement) {
-      neighborElement.focus();
-      if (props.behavior === 'auto') {
-        neighborElement.click();
-      }
-    }
-  },
-  childSelector: (props) =>
-    props.behavior === 'auto' ? ['role', 'radio'] : ['role', 'tab'],
-};
-
-class RootPills extends Component {
+class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHandlers> {
   static displayName = 'Pills';
   static style = style;
-  static defaultProps = ({ behavior }) => ({
+  static defaultProps = ({ behavior }: PillsProps) => ({
     size: 'm',
     defaultValue: null,
     behavior: behavior ?? 'auto',
   });
 
-  itemValues = [];
-  static enhance = [a11yEnhance(optionsA11yEnhance)];
+  itemValues: Array<PillProps['value']> = [];
+
+  static enhance = [a11yEnhance({
+    onNeighborChange: (neighborElement, props) => {
+      if (neighborElement) {
+        neighborElement.focus();
+        if (props.behavior === 'auto') {
+          neighborElement.click();
+        }
+      }
+    },
+    childSelector: (props) => {
+      const selector = props.behavior === 'auto' ? ['role', 'radio'] : ['role', 'tab'];
+
+      return selector as [string, string];
+    },
+  })] as const;
 
   uncontrolledProps() {
     return {
@@ -37,22 +41,23 @@ class RootPills extends Component {
     };
   }
 
-  bindHandlerClick = (value) => (e) => {
+  bindHandlerClick = (value: PillProps['value']) => (e: React.MouseEvent) => {
     this.handlers.value(value, e);
   };
 
-  bindHandleKeyDown = (value) => (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      this.handlers.value(value, event);
+  bindHandleKeyDown = (value: PillProps['value']) => (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.handlers.value(value, e);
     }
   };
 
-  getItemProps(props, index) {
+  getItemProps(props: PillProps, index: number) {
     const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
 
     this.itemValues[index] = props.value;
+
     return {
       index: index,
       size,
@@ -64,23 +69,6 @@ class RootPills extends Component {
       onKeyDown: this.bindHandleKeyDown(props.value),
     };
   }
-
-  changeIndex = (startIndex, type) => {
-    let selectable = false;
-
-    while (!selectable && startIndex >= 0 && startIndex < this.itemValues.length) {
-      if (type === 'increment') startIndex++;
-      if (type === 'decrement') startIndex--;
-
-      const element = this.itemRefs[startIndex];
-
-      if (element?.disabled === false) {
-        selectable = true;
-      }
-    }
-
-    return startIndex >= 0 && startIndex < this.itemValues.length ? startIndex : undefined;
-  };
 
   render() {
     const SPills = Root;
@@ -101,18 +89,19 @@ class RootPills extends Component {
   }
 }
 
-function Pill(props) {
+type PillPropsFromRoot = ReturnType<InstanceType<typeof RootPills>['getItemProps']>;
+
+function Pill(props: PillPropsFromRoot & PillProps & IRootComponentProps) {
   const SPill = Root;
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
-  const roleAreaProps = {};
-  if (behavior === 'auto') {
-    roleAreaProps.role = 'radio';
-    roleAreaProps['aria-checked'] = selected;
-  } else {
-    roleAreaProps.role = 'tab';
-    roleAreaProps['aria-selected'] = selected;
-  }
+
+  const roleAreaProps = {
+    'role': behavior === 'auto' ? 'radio' : 'tab',
+    'aria-checked': behavior === 'auto' ? selected : undefined,
+    'aria-selected': behavior !== 'auto' ? selected : undefined,
+  };
+
   return sstyled(styles)(
     <SPill
       render={Box}
@@ -130,20 +119,25 @@ function Pill(props) {
   );
 }
 
-function Text(props) {
+function Text(props: IRootComponentProps) {
   const SText = Root;
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
-function Addon(props) {
+function Addon(props: IRootComponentProps) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
+export const wrapPills = <PropsExtending extends {}>(wrapper: (
+  props: Intergalactic.InternalTypings.UntypeRefAndTag<
+    Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticPillsComponent>
+  > &
+  PropsExtending,
+) => React.ReactNode) => wrapper as IntergalacticPillsComponent<PropsExtending>;
+
 const Pills = createComponent(RootPills, {
   Item: [Pill, { Text, Addon }],
-});
-
-export const wrapPills = (wrapper) => wrapper;
+}) as unknown as PillsComponent;
 
 export default Pills;
