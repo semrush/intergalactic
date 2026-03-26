@@ -18,6 +18,7 @@ const Demo = (props: BaseTriggerEllipsisProps) => {
         </DropdownMenu.Trigger>
         <br />
         <br />
+        <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
           <BaseTrigger.Text
             w={150}

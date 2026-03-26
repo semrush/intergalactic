@@ -625,12 +625,6 @@ video {
   margin-top: 24px;
 }
 
-/* First heading in modals on API pages */
-
-.vp-doc dialog :is(h1, h2, h3, h4, h5, h6):not(* ~ :is(h1, h2, h3, h4, h5, h6)):not([class]) {
-  margin-top: unset;
-}
-
 /* Styles for changelogs */
 .vp-doc .custom-block.details {
   margin: 0;
@@ -1166,6 +1160,21 @@ h6[class] {
   padding: 0px 8px;
   display: inline-block;
   margin-right: 10px;
+}
+
+.vp-doc .types-union-properties {
+  margin-top: -24px;
+}
+
+.vp-doc .types-reference,
+.vp-doc .types-reference button {
+  font-size: var(--intergalactic-fs-200, 14px);
+}
+
+/* First heading in modals on API pages */
+
+.vp-doc dialog :is(h1, h2, h3, h4, h5, h6):not(* ~ :is(h1, h2, h3, h4, h5, h6)):not([class]) {
+  margin-top: unset;
 }
 
 .vp-doc [class*='language-'] pre {

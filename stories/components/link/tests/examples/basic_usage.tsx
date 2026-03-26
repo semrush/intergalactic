@@ -14,6 +14,8 @@ type BasicLinkProps = LinkProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
+  showAddonLeftLink2?: boolean;
+  showAddonRightLink2?: boolean;
   href?: string;
   title?: string;
   ellipsis?: TextEllipsisProps;

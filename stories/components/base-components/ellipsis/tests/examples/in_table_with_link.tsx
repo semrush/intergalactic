@@ -74,7 +74,9 @@ const Demo = () => {
               >
                 {removeProtocol(pageUrl)}
               </Link.Text>
-              <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
+              <Link.Addon>
+                <LinkExternalM color='icon-secondary-neutral' />
+              </Link.Addon>
             </Link>
           );
         }

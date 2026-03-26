@@ -6,7 +6,7 @@ const meta: Meta = {
   title: 'Patterns/UX Patterns/FeedbackYesNo',
 };
 
-export const FeedbackRatingForm: StoryObj = {
+export const FeedbackYesNo: StoryObj = {
   render: FeedbackYesNoExample,
 };
 

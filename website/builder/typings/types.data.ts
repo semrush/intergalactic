@@ -7,11 +7,6 @@ import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 
-const mapTypes = {
-  ButtonProps: 'AbstractButtonProps',
-  ButtonLinkProps: 'AbstractButtonProps',
-};
-
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
@@ -60,12 +55,12 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
 
 export default {
   watch: [
-    resolvePath(__dirname, '../../../semcore/**/*.d.ts'),
-    resolvePath(__dirname, '../../../semcore/**/*.ts'),
-    resolvePath(__dirname, '../../../semcore/**/*.tsx'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.d.ts'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.ts'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.tsx'),
   ],
   async load(watchedFiles) {
-    watchedFiles = watchedFiles.filter((path) => !path.includes('/lib/'));
+    watchedFiles = watchedFiles.filter((path) => !path.includes('/lib/') && !path.includes('/__tests__/'));
     const sourceFiles = await Promise.all(
       watchedFiles.map(async (path) =>
         ts.createSourceFile(
@@ -92,6 +87,41 @@ export default {
           }
           const { dependencies, ...declaration } = typing;
           const uniqueDependencies = [...new Set(dependencies)];
+
+          if ('type' in declaration && declaration.type.length > 0) {
+            if (typeof declaration.type[0] === 'string' && declaration.type[0]?.includes('keyof') && declaration.type[1]?.referenceTo) {
+              if (declaration.type[2]?.includes('as `')) {
+                let nestedType: undefined | typeof serialized[number]['types'][number];
+
+                for (const s of serialized) {
+                  for (const sType of s.types) {
+                    if (sType.name === declaration.type[1].referenceTo) {
+                      nestedType = sType;
+                      break;
+                    }
+                  }
+
+                  if (nestedType) {
+                    break;
+                  }
+                }
+
+                if (nestedType && nestedType.properties) {
+                  const prefix = declaration.type[2].match(/as `(\w+):/);
+
+                  declaration.type.push({
+                    properties: nestedType.properties.map((prop: any) => {
+                      return {
+                        ...prop,
+                        name: `${prefix[1]}:${prop.name}`,
+                      };
+                    }),
+                  });
+                }
+              }
+            }
+          }
+
           typings[typing.name] = {
             filepath: file.filepath,
             dependencies: uniqueDependencies,
@@ -99,10 +129,6 @@ export default {
             declaration,
           };
         }
-      }
-      for (const originalKey in mapTypes) {
-        const mappedKey = mapTypes[originalKey];
-        typings[originalKey] = typings[mappedKey];
       }
       for (const typing in typings) {
         const dependencies = typings[typing].dependencies;

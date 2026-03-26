@@ -46,9 +46,6 @@ export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
       control: { type: 'select' },
       options: [100, 200, 300, 400, 500, 600, 700, 800],
     },
-    loading: {
-      control: { type: 'boolean' },
-    },
     showAddonLeft: {
       control: { type: 'boolean' },
     },

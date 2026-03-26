@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
+import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -9,7 +9,7 @@ interface Project {
   name: string;
 }
 
-type LinkTriggerSelectDDMenuExample = LinkTriggerProps & BaseTriggerProps;
+type LinkTriggerSelectDDMenuExample = LinkTriggerProps;
 const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const [selectedProject, setSelectedProject] = React.useState<Project | undefined>();
 
@@ -18,9 +18,8 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   };
 
   return (
-    <Flex gap={2} justifyContent='flex-start' direction='column'>
+    <Flex gap={2} alignItems='start' direction='column'>
       <Select
-        w={100}
         tag={LinkTrigger}
         options={devices}
         data-test-id='base-trigger-as-tag-in-select'
@@ -45,7 +44,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
             <>
               <Select.Trigger
                 tag={LinkTrigger}
-                size={props.size}
                 state={props.state}
                 active={props.active}
                 empty={props.empty}
@@ -53,9 +51,9 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                 disabled={props.disabled}
                 loading={props.loading}
                 color={props.color}
+                size={props.size}
               >
                 <LinkTrigger.Text
-                  size={400}
                   tag={Text}
                   fontWeight={400}
                   noWrap
@@ -64,7 +62,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
                     (getTriggerProps().placeholder as string)}
                 </LinkTrigger.Text>
               </Select.Trigger>
-              <Select.Popper w={280} aria-label='Projects'>
+              <Select.Popper aria-label='Projects'>
                 {projects.map((project) => (
                   <Select.Option key={project.id} value={project.id}>
                     {project.name}
@@ -94,7 +92,7 @@ const projects: Project[] = [
 ];
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
-  size: 'm',
+  size: 300,
   state: undefined,
   active: undefined,
   empty: undefined,
