@@ -181,7 +181,7 @@ SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
 
 /* INFO THEME */
 
-SRow[theme='info'] SCell:not([theme]) {
+SRow[theme='info'] SCell:not([theme]), SRow:has([data-row-selector="true"] input:checked) SCell:not([theme]) {
   &:not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
   }
