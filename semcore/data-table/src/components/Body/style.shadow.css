@@ -103,9 +103,9 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
-  SRowGroup:has(SCell:hover):not(:has(SRow:first-child(:has([data-row-selector="true"] input:checked)))) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
+  :not(SRowGroup:has([data-row-selector="true"] input:checked)) > SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
