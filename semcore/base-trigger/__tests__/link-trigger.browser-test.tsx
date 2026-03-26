@@ -35,8 +35,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   const ellipsisVariants = [
     { desc: 'ellipsis: true', vars: { ellipsis: true } },
-    { desc: 'cropPosition: middle', vars: { ellipsis: { cropPosition: 'middle' } } },
-    { desc: 'middle, lastRequired: 2', vars: { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 } } },
+    { desc: 'cropPosition: middle', vars: { ellipsis: { 'ellipsis:cropPosition': 'middle' } } },
+    { desc: 'middle, lastRequired: 2', vars: { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 } } },
   ];
 
   const colorBySize: Record<number, string | undefined> = {
