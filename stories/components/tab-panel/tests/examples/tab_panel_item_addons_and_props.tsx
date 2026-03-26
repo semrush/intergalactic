@@ -56,7 +56,7 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <InstagramM />
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text w={props.w} ellipsis {...props.ellipsis}>Instagram Instagram</TabPanel.Item.Text>
+          <TabPanel.Item.Text w={props.w} {...props.ellipsis}>Instagram Instagram</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
             <Badge type='new'>new</Badge>
           </TabPanel.Item.Addon>
@@ -71,7 +71,7 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <TwitterM />
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text ellipsis {...props.ellipsis}>Twitter</TabPanel.Item.Text>
+          <TabPanel.Item.Text {...props.ellipsis}>Twitter</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
             <Text>1</Text>
           </TabPanel.Item.Addon>
@@ -86,7 +86,7 @@ const Demo = (props: TabPanelDefProps) => {
           addonRight={TwitterM}
         >
 
-          <TabPanel.Item.Text ellipsis {...props.ellipsis}>Twitter3</TabPanel.Item.Text>
+          <TabPanel.Item.Text {...props.ellipsis}>Twitter3</TabPanel.Item.Text>
 
         </TabPanel.Item>
 
@@ -100,7 +100,7 @@ const Demo = (props: TabPanelDefProps) => {
           <TabPanel.Item.Addon>
             <Counter>32</Counter>
           </TabPanel.Item.Addon>
-          <TabPanel.Item.Text ellipsis {...props.ellipsis}>Twitter2</TabPanel.Item.Text>
+          <TabPanel.Item.Text {...props.ellipsis}>Twitter2</TabPanel.Item.Text>
 
         </TabPanel.Item>
 
@@ -112,7 +112,7 @@ const Demo = (props: TabPanelDefProps) => {
           id='tab-label-tw2'
         >
 
-          <TabPanel.Item.Text ellipsis {...props.ellipsis}>Twitter4</TabPanel.Item.Text>
+          <TabPanel.Item.Text {...props.ellipsis}>Twitter4</TabPanel.Item.Text>
 
         </TabPanel.Item>
       </TabPanel>

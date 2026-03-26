@@ -1,9 +1,9 @@
-import { Ellipsis, Hint, Box } from '@semcore/base-components';
+import { Ellipsis, Hint, Box, type EllipsisSettings } from '@semcore/base-components';
 import { Root, sstyled, Component, createComponent } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { TextProps } from './index';
+import type { TextEllipsisProps, TextProps } from './index';
 import styles from './style/text.shadow.css';
 
 type State = {
@@ -32,11 +32,21 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, Sta
     this.initEllipsis();
   }
 
-  componentDidUpdate(prevProps: TextProps) {
-    if (
-      ('ellipsis' in prevProps && prevProps.ellipsis !== this.asProps.ellipsis) ||
-      ('ellipsisProps' in prevProps && prevProps.ellipsisProps !== this.asProps.ellipsisProps)
-    ) {
+  componentDidUpdate(prevProps: TextEllipsisProps) {
+    const ellipsisKeys: Array<keyof EllipsisSettings> = [
+      'cropPosition',
+      'maxLine',
+      'lastRequiredSymbols',
+      'containerElement',
+      'recalculateContainerWidth',
+      'observeChildrenMutations',
+    ];
+
+    const hasChanges = ellipsisKeys.some((key) => {
+      return prevProps[`ellipsis:${key}`] !== this.asProps[`ellipsis:${key}`];
+    });
+
+    if (prevProps.ellipsis !== this.asProps.ellipsis || hasChanges) {
       this.cleanUpEllipsis();
 
       this.initEllipsis();
