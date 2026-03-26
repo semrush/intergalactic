@@ -193,7 +193,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 
   getSpinnerTopOffset = () => {
-    const { headerHeight: propsHeaderHeight, tableRef, stickyHeader } = this.asProps;
+    const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
 
     let headerHeight = propsHeaderHeight;
 
@@ -201,11 +201,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       return headerHeight;
     }
 
-    if (tableRef.current) {
-      if (tableRef.current.scrollTop > headerHeight) {
+    if (tableContainerRef.current) {
+      if (tableContainerRef.current.scrollTop > headerHeight) {
         headerHeight = 0;
       } else {
-        headerHeight = headerHeight - tableRef.current.scrollTop;
+        headerHeight = headerHeight - tableContainerRef.current.scrollTop;
       }
     }
 
