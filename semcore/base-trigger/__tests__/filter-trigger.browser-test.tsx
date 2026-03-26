@@ -121,6 +121,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
+    await page.waitForTimeout(200);
 
     await locators.trigger(page).nth(1).hover();
     await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
