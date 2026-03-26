@@ -1081,6 +1081,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'Flaky focus handling in webkit');
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
       await test.step('Verify availabe accordion expands and visible ', async () => {

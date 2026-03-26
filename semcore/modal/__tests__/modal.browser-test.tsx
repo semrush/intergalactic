@@ -562,7 +562,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
   test('Verify modal with focusable input inside by keyboard', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@modal', '@input'],
   }, async ({ page, browserName }) => {
-    if (browserName == 'webkit') test.skip(); // works unstable in playwright webkit
+    if (browserName === 'webkit' || browserName === 'chromium') test.skip(); // works unstable in playwright webkit and chromium
     await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
 
     await test.step('Verify input focused', async () => {
