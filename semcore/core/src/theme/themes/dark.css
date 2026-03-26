@@ -112,30 +112,6 @@
   --salad-800: #002203;
   /* Base font family. */
   --intergalactic-base: Inter;
-  /* Use with font-size-800. */
-  --intergalactic-lh-800: 117%;
-  /* Use with font-size-700. */
-  --intergalactic-lh-700: 110%;
-  /* Use with font-size-600. */
-  --intergalactic-lh-600: 125%;
-  /* Use with font-size-500. */
-  --intergalactic-lh-500: 117%;
-  /* Use with font-size-400. */
-  --intergalactic-lh-400: 120%;
-  /* Use with font-size-300. */
-  --intergalactic-lh-300: 150%;
-  /* Use with font-size-200. */
-  --intergalactic-lh-200: 142%;
-  /* Use with font-size-100. */
-  --intergalactic-lh-100: 133%;
-  /* Semi-bold font weight. */
-  --intergalactic-semi-bold: 600;
-  /* Bold font weight. */
-  --intergalactic-bold: 700;
-  /* Regular font weight. */
-  --intergalactic-regular: 400;
-  /* Medium font weight. */
-  --intergalactic-medium: 500;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
   /* Use this font-size with caution for text in some additional messages. Always check its contrast and readability. */
@@ -147,6 +123,30 @@
   --intergalactic-fs-600: 32px;
   --intergalactic-fs-700: 36px;
   --intergalactic-fs-800: 48px;
+  /* Use with font-size-100. */
+  --intergalactic-lh-100: 133%;
+  /* Use with font-size-200. */
+  --intergalactic-lh-200: 142%;
+  /* Use with font-size-300. */
+  --intergalactic-lh-300: 150%;
+  /* Use with font-size-400. */
+  --intergalactic-lh-400: 120%;
+  /* Use with font-size-500. */
+  --intergalactic-lh-500: 117%;
+  /* Use with font-size-600. */
+  --intergalactic-lh-600: 125%;
+  /* Use with font-size-700. */
+  --intergalactic-lh-700: 110%;
+  /* Use with font-size-800. */
+  --intergalactic-lh-800: 117%;
+  /* Semi-bold font weight. */
+  --intergalactic-semi-bold: 600;
+  /* Bold font weight. */
+  --intergalactic-bold: 700;
+  /* Regular font weight. */
+  --intergalactic-regular: 400;
+  /* Medium font weight. */
+  --intergalactic-medium: 500;
   /* Compact letter spacing. */
   --intergalactic-compact: 0.3;
   /* Base denominator of the design system. */

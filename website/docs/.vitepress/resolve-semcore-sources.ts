@@ -24,9 +24,19 @@ const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
     readdir(resolvePath(rootPath, 'semcore')),
     readdir(resolvePath(rootPath, 'tools')),
   ]);
-  const workspaces: string[] = [];
-  for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
-  for (const item of toolsDirItems) workspaces.push(`tools/${item}`);
+  const maybeWorkspaces = [
+    ...semcoreDirItems.map((item) => `semcore/${item}`),
+    ...toolsDirItems.map((item) => `tools/${item}`),
+  ];
+  const workspaces = (
+    await Promise.all(
+      maybeWorkspaces.map(async (workspacePath) => {
+        const packageJsonPath = resolvePath(rootPath, workspacePath, 'package.json');
+        if (await isFile(packageJsonPath)) return workspacePath;
+        return null;
+      }),
+    )
+  ).filter((workspacePath): workspacePath is string => workspacePath !== null);
   {
     const destinationDirs = workspaces.map((workspacePath) => workspacePath.split('/').pop());
     if (destinationDirs.length !== [...new Set(destinationDirs)].length) {

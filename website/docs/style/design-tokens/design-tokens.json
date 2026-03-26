@@ -8,214 +8,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-lh-800",
-    "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
-    "description": "Use with font-size-800.",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-700",
-    "type": "lineHeights",
-    "rawValue": "110%",
-    "computedValue": "110%",
-    "description": "Use with font-size-700.",
-    "components": [
-      "button",
-      "errors",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-600",
-    "type": "lineHeights",
-    "rawValue": "125%",
-    "computedValue": "125%",
-    "description": "Use with font-size-600.",
-    "components": [
-      "button",
-      "format-text",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-500",
-    "type": "lineHeights",
-    "rawValue": "117%",
-    "computedValue": "117%",
-    "description": "Use with font-size-500.",
-    "components": [
-      "button",
-      "format-text",
-      "fullscreen-modal",
-      "modal",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-400",
-    "type": "lineHeights",
-    "rawValue": "120%",
-    "computedValue": "120%",
-    "description": "Use with font-size-400.",
-    "components": [
-      "button",
-      "format-text",
-      "product-head",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-300",
-    "type": "lineHeights",
-    "rawValue": "150%",
-    "computedValue": "150%",
-    "description": "Use with font-size-300.",
-    "components": [
-      "bulk-textarea",
-      "button",
-      "card",
-      "checkbox",
-      "d3-chart",
-      "dropdown",
-      "errors",
-      "feedback-form",
-      "format-text",
-      "pagination",
-      "radio",
-      "side-panel",
-      "switch",
-      "tab-line",
-      "tag",
-      "textarea",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-200",
-    "type": "lineHeights",
-    "rawValue": "142%",
-    "computedValue": "142%",
-    "description": "Use with font-size-200.",
-    "components": [
-      "base-trigger",
-      "breadcrumbs",
-      "bulk-textarea",
-      "button",
-      "checkbox",
-      "d3-chart",
-      "data-table",
-      "dropdown",
-      "format-text",
-      "fullscreen-modal",
-      "notice",
-      "notice-bubble",
-      "notice-global",
-      "pagination",
-      "product-head",
-      "radio",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "tooltip",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-lh-100",
-    "type": "lineHeights",
-    "rawValue": "133%",
-    "computedValue": "133%",
-    "description": "Use with font-size-100.",
-    "components": [
-      "button",
-      "d3-chart",
-      "data-table",
-      "format-text",
-      "fullscreen-modal",
-      "switch",
-      "tag",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-semi-bold",
-    "type": "fontWeights",
-    "rawValue": "600",
-    "computedValue": "600",
-    "description": "Semi-bold font weight.",
-    "components": [
-      "errors",
-      "modal",
-      "product-head",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-bold",
-    "type": "fontWeights",
-    "rawValue": "700",
-    "computedValue": "700",
-    "description": "Bold font weight.",
-    "components": [
-      "card",
-      "color-picker",
-      "dropdown",
-      "feedback-form",
-      "flags",
-      "format-text",
-      "fullscreen-modal",
-      "side-panel",
-      "typography",
-      "widget-empty",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-regular",
-    "type": "fontWeights",
-    "rawValue": "400",
-    "computedValue": "400",
-    "description": "Regular font weight.",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "date-picker",
-      "slider"
-    ]
-  },
-  {
-    "name": "--intergalactic-medium",
-    "type": "fontWeights",
-    "rawValue": "500",
-    "computedValue": "500",
-    "description": "Medium font weight.",
-    "components": [
-      "badge",
-      "button",
-      "counter",
-      "format-text",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "time-picker",
-      "typography"
-    ]
-  },
-  {
     "name": "--intergalactic-fs-50",
     "type": "fontSizes",
     "rawValue": "10px",
@@ -374,6 +166,214 @@
     "components": [
       "button",
       "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-100",
+    "type": "lineHeights",
+    "rawValue": "133%",
+    "computedValue": "133%",
+    "description": "Use with font-size-100.",
+    "components": [
+      "button",
+      "d3-chart",
+      "data-table",
+      "format-text",
+      "fullscreen-modal",
+      "switch",
+      "tag",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-200",
+    "type": "lineHeights",
+    "rawValue": "142%",
+    "computedValue": "142%",
+    "description": "Use with font-size-200.",
+    "components": [
+      "base-trigger",
+      "breadcrumbs",
+      "bulk-textarea",
+      "button",
+      "checkbox",
+      "d3-chart",
+      "data-table",
+      "dropdown",
+      "format-text",
+      "fullscreen-modal",
+      "notice",
+      "notice-bubble",
+      "notice-global",
+      "pagination",
+      "product-head",
+      "radio",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "tooltip",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-300",
+    "type": "lineHeights",
+    "rawValue": "150%",
+    "computedValue": "150%",
+    "description": "Use with font-size-300.",
+    "components": [
+      "bulk-textarea",
+      "button",
+      "card",
+      "checkbox",
+      "d3-chart",
+      "dropdown",
+      "errors",
+      "feedback-form",
+      "format-text",
+      "pagination",
+      "radio",
+      "side-panel",
+      "switch",
+      "tab-line",
+      "tag",
+      "textarea",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-400",
+    "type": "lineHeights",
+    "rawValue": "120%",
+    "computedValue": "120%",
+    "description": "Use with font-size-400.",
+    "components": [
+      "button",
+      "format-text",
+      "product-head",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-500",
+    "type": "lineHeights",
+    "rawValue": "117%",
+    "computedValue": "117%",
+    "description": "Use with font-size-500.",
+    "components": [
+      "button",
+      "format-text",
+      "fullscreen-modal",
+      "modal",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-600",
+    "type": "lineHeights",
+    "rawValue": "125%",
+    "computedValue": "125%",
+    "description": "Use with font-size-600.",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-700",
+    "type": "lineHeights",
+    "rawValue": "110%",
+    "computedValue": "110%",
+    "description": "Use with font-size-700.",
+    "components": [
+      "button",
+      "errors",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-lh-800",
+    "type": "lineHeights",
+    "rawValue": "117%",
+    "computedValue": "117%",
+    "description": "Use with font-size-800.",
+    "components": [
+      "button",
+      "format-text",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-semi-bold",
+    "type": "fontWeights",
+    "rawValue": "600",
+    "computedValue": "600",
+    "description": "Semi-bold font weight.",
+    "components": [
+      "errors",
+      "modal",
+      "product-head",
+      "typography"
+    ]
+  },
+  {
+    "name": "--intergalactic-bold",
+    "type": "fontWeights",
+    "rawValue": "700",
+    "computedValue": "700",
+    "description": "Bold font weight.",
+    "components": [
+      "card",
+      "color-picker",
+      "dropdown",
+      "feedback-form",
+      "flags",
+      "format-text",
+      "fullscreen-modal",
+      "side-panel",
+      "typography",
+      "widget-empty",
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-regular",
+    "type": "fontWeights",
+    "rawValue": "400",
+    "computedValue": "400",
+    "description": "Regular font weight.",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "date-picker",
+      "slider"
+    ]
+  },
+  {
+    "name": "--intergalactic-medium",
+    "type": "fontWeights",
+    "rawValue": "500",
+    "computedValue": "500",
+    "description": "Medium font weight.",
+    "components": [
+      "badge",
+      "button",
+      "counter",
+      "format-text",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "time-picker",
       "typography"
     ]
   },

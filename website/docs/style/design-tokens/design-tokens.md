@@ -45,9 +45,20 @@ The stylelint plugin helps developers to avoid mistakes in the design token name
 - `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
-## Base tokens (palette)
+## Base tokens
 
-The list of base tokens represents our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
+Base tokens include:
+
+- our product palette;
+- font size, line height, font weight, and letter spacing values;
+- the base spacing and sizing scale;
+- sizing;
+- spacing;
+- the base border radius scale;
+- breakpoints;
+- z-index.
+
+The palette was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
 
 Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
 
@@ -69,14 +80,13 @@ const App = BaseTokens;
 
 It's a list of tokens for components and charts for the default Intergalactic theme.
 
-Semantic tokens include tokens for:
+Semantic tokens include:
 
 - colors;
-- typography;
-- sizing;
-- spacings;
-- box-shadows;
-- border-radius.
+- box shadows;
+- border radius;
+- form control heights;
+- animation durations.
 
 To learn more about the tokens names, see [Token naming structure section](/style/design-tokens/design-tokens-usage#token-naming-structure).
 

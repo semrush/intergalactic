@@ -409,66 +409,6 @@
       "type": "fontFamilies",
       "description": "Base font family."
     },
-    "lh-800": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-800."
-    },
-    "lh-700": {
-      "value": "110%",
-      "type": "lineHeights",
-      "description": "Use with font-size-700."
-    },
-    "lh-600": {
-      "value": "125%",
-      "type": "lineHeights",
-      "description": "Use with font-size-600."
-    },
-    "lh-500": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-500."
-    },
-    "lh-400": {
-      "value": "120%",
-      "type": "lineHeights",
-      "description": "Use with font-size-400."
-    },
-    "lh-300": {
-      "value": "150%",
-      "type": "lineHeights",
-      "description": "Use with font-size-300."
-    },
-    "lh-200": {
-      "value": "142%",
-      "type": "lineHeights",
-      "description": "Use with font-size-200."
-    },
-    "lh-100": {
-      "value": "133%",
-      "type": "lineHeights",
-      "description": "Use with font-size-100."
-    },
-    "semi-bold": {
-      "value": "600",
-      "type": "fontWeights",
-      "description": "Semi-bold font weight."
-    },
-    "bold": {
-      "value": "700",
-      "type": "fontWeights",
-      "description": "Bold font weight."
-    },
-    "regular": {
-      "value": "400",
-      "type": "fontWeights",
-      "description": "Regular font weight."
-    },
-    "medium": {
-      "value": "500",
-      "type": "fontWeights",
-      "description": "Medium font weight."
-    },
     "fs-50": {
       "value": "10px",
       "type": "fontSizes",
@@ -506,6 +446,66 @@
     "fs-800": {
       "value": "48px",
       "type": "fontSizes"
+    },
+    "lh-100": {
+      "value": "133%",
+      "type": "lineHeights",
+      "description": "Use with font-size-100."
+    },
+    "lh-200": {
+      "value": "142%",
+      "type": "lineHeights",
+      "description": "Use with font-size-200."
+    },
+    "lh-300": {
+      "value": "150%",
+      "type": "lineHeights",
+      "description": "Use with font-size-300."
+    },
+    "lh-400": {
+      "value": "120%",
+      "type": "lineHeights",
+      "description": "Use with font-size-400."
+    },
+    "lh-500": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-500."
+    },
+    "lh-600": {
+      "value": "125%",
+      "type": "lineHeights",
+      "description": "Use with font-size-600."
+    },
+    "lh-700": {
+      "value": "110%",
+      "type": "lineHeights",
+      "description": "Use with font-size-700."
+    },
+    "lh-800": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-800."
+    },
+    "semi-bold": {
+      "value": "600",
+      "type": "fontWeights",
+      "description": "Semi-bold font weight."
+    },
+    "bold": {
+      "value": "700",
+      "type": "fontWeights",
+      "description": "Bold font weight."
+    },
+    "regular": {
+      "value": "400",
+      "type": "fontWeights",
+      "description": "Regular font weight."
+    },
+    "medium": {
+      "value": "500",
+      "type": "fontWeights",
+      "description": "Medium font weight."
     },
     "compact": {
       "value": "0.3",
@@ -601,11 +601,6 @@
     "rounded-extra-large": {
       "value": "24px",
       "type": "borderRadius"
-    },
-    "disabled-opacity": {
-      "value": "0.3",
-      "type": "opacity",
-      "description": "Use for the disabled state of all kind of the controls and elements."
     },
     "screen-extra-small": {
       "value": "320px",
@@ -1803,6 +1798,11 @@
         "type": "color",
         "description": "Google My Business brand color."
       }
+    },
+    "disabled-opacity": {
+      "value": "0.3",
+      "type": "opacity",
+      "description": "Use for the disabled state of all kind of the controls and elements."
     },
     "box-shadow": {
       "card": {
