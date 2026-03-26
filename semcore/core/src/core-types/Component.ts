@@ -20,6 +20,11 @@ export interface IRootComponentProps<Props = {}, Ctx = {}, H = {}> {
   'data-ui-name'?: string;
 }
 
+export type RootProps<Root extends new (...args: any) => any, Child extends string> =
+  InstanceType<Root>[`get${Child}Props`] extends (...args: any[]) => infer R
+    ? R
+    : Record<string, unknown>;
+
 export interface IRootNodeProps {
   render: React.ElementType | string;
   tag?: React.ElementType | string;
