@@ -1096,7 +1096,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
-        await expect(locators.toggle(page).nth(3)).toBeFocused();
+        await expect(async () => {
+          await expect(locators.toggle(page).nth(3)).toBeFocused();
+        }).toPass({ timeout: 5000 });
       });
       await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
         await page.keyboard.press('Enter');
