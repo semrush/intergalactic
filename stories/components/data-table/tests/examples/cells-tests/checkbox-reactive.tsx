@@ -1,8 +1,13 @@
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import { DataTable, SelectableRows } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
-
 export type DemoProps = {
   fixedColumns?: boolean;
+  limitMode?: boolean;
+  rowsLimit?: number;
+  columnsLimit?: number;
 };
 
 const data = Array.from({ length: 50 }).map((_, index) => ({
@@ -15,7 +20,9 @@ const data = Array.from({ length: 50 }).map((_, index) => ({
 
 const selectedRows = new SelectableRows<string>();
 
-const Demo = ({ fixedColumns = false }: DemoProps) => {
+const Demo = (props: DemoProps) => {
+  const { rowsLimit, columnsLimit, fixedColumns, limitMode } = props;
+
   const columns = fixedColumns
     ? [
         { name: 'id', children: 'ID', fixed: 'left' as const, gtcWidth: '100px' },
@@ -29,9 +36,35 @@ const Demo = ({ fixedColumns = false }: DemoProps) => {
         { name: 'name', children: 'Name' },
       ];
 
+  const limit = limitMode
+    ? {
+        fromRow: rowsLimit,
+        fromColumn: columnsLimit,
+        renderOverlay() {
+          return (
+            <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+              <Text size={300} fontWeight='bold' textAlign='center'>
+                You've reached your report limit for today
+              </Text>
+              <Text size={200} textAlign='center'>
+                To increase your daily report limit, upgrade to a Guru plan.
+              </Text>
+              <Button theme='success' use='primary'>
+                Upgrade to Guru
+              </Button>
+              <Button theme='success' use='primary'>
+                Upgrade to Guru
+              </Button>
+            </Flex>
+          );
+        },
+      }
+    : undefined;
+
   return (
     <div className='App'>
       <DataTable
+        limit={limit}
         aria-label='Table'
         columns={columns}
         data={data}
@@ -47,6 +80,9 @@ const Demo = ({ fixedColumns = false }: DemoProps) => {
 
 export const defaultProps: DemoProps = {
   fixedColumns: false,
+  limitMode: false,
+  columnsLimit: 1,
+  rowsLimit: 1,
 };
 
 Demo.defaultProps = defaultProps;
