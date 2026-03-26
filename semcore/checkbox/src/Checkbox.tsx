@@ -9,7 +9,6 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
-import type { CheckboxTextPropsInternal, CheckboxValueCheckMarkPropsInternal, CheckboxValueControlPropsInternal, CheckboxValuePropsInternal } from './Checkbox.internal.type';
 import type { CheckboxComponent, CheckboxProps, CheckboxTextProps, CheckboxValueCheckMarkProps, CheckboxValueComponent, CheckboxValueControlProps, CheckboxValueProps } from './Checkbox.type';
 import style from './style/checkbox.shadow.css';
 
@@ -107,8 +106,9 @@ class CheckboxRoot extends Component<CheckboxProps, never, {}, State> {
   }
 }
 
+type ValuePropsFromRoot = ReturnType<InstanceType<typeof CheckboxRoot>['getValueProps']>;
 class ValueRoot extends Component<
-  CheckboxValueProps & CheckboxValuePropsInternal,
+  ValuePropsFromRoot & CheckboxValueProps,
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -202,7 +202,8 @@ class ValueRoot extends Component<
   }
 }
 
-function Control(props: CheckboxValueControlProps & CheckboxValueControlPropsInternal) {
+type ControlPropsFromRoot = ReturnType<InstanceType<typeof ValueRoot>['getControlProps']>;
+function Control(props: IRootComponentProps & ControlPropsFromRoot & CheckboxValueControlProps) {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
   const checkboxRef = React.useRef<HTMLInputElement>(null);
@@ -227,7 +228,8 @@ function Control(props: CheckboxValueControlProps & CheckboxValueControlPropsInt
 }
 Control.displayName = 'Control';
 
-function CheckMark(props: CheckboxValueCheckMarkProps & CheckboxValueCheckMarkPropsInternal) {
+type CheckMarkPropsFromRoot = ReturnType<InstanceType<typeof ValueRoot>['getCheckMarkProps']>;
+function CheckMark(props: IRootComponentProps & CheckMarkPropsFromRoot & CheckboxValueCheckMarkProps) {
   const SCheckbox = Root;
   const SInvalidPattern = InvalidStateBox;
   const { styles, state, checked, indeterminate } = props;
@@ -239,7 +241,8 @@ function CheckMark(props: CheckboxValueCheckMarkProps & CheckboxValueCheckMarkPr
 }
 CheckMark.displayName = 'CheckMark';
 
-function Text(props: CheckboxTextProps & CheckboxTextPropsInternal) {
+type TextPropsFromRoot = ReturnType<InstanceType<typeof CheckboxRoot>['getTextProps']>;
+function Text(props: IRootComponentProps & TextPropsFromRoot & CheckboxTextProps) {
   const SText = Root;
   const { styles, color } = props;
 
