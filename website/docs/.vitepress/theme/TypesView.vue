@@ -32,6 +32,12 @@
     </tbody>
   </table>
 
+  <div class="types-union-properties" v-if="Array.isArray(lastType)">
+    <b>OR</b>
+    <br/>
+    <FormattedTypeString :type="lastType" :types="types" />
+  </div>
+
   <div class="types-union-properties" v-if="typeof unionProperties === 'object' && unionProperties.properties && unionProperties.properties.length > 0">
     <b>OR</b>
     <table>
@@ -68,6 +74,7 @@ const filteredProperties = types[type].declaration.properties.flat(1).filter((pr
   return !property.params?.internal && !property.description?.startsWith('Internal');
 });
 
+const lastType = types[type].declaration.type[types[type].declaration.type.length - 1];
 const unionProperties = Array.isArray(types[type].declaration.type) ? types[type].declaration.type[types[type].declaration.type.length - 1] : undefined;
 
 if (!types[type]) {
