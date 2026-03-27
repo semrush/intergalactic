@@ -9,11 +9,6 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import type {
-  AccordionCollapsePropsInternal,
-  AccordionItemPropsInternal,
-  AccordionItemTogglePropsInternal,
-} from './Accordion.internal.type';
-import type {
   AccordionCollapseProps,
   AccordionComponent,
   AccordionHandlers,
@@ -82,8 +77,12 @@ class RootAccordion extends Component<AccordionProps, typeof RootAccordion.enhan
     return <Children />;
   }
 }
-
-export class RootItem extends Component<AccordionItemProps, typeof RootItem.enhance, {}, AccordionItemPropsInternal> {
+export class RootItem extends Component<
+  AccordionItemProps,
+  typeof RootItem.enhance,
+  {},
+  Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootAccordion, 'Item'>
+> {
   static displayName = 'Item';
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
@@ -142,7 +141,12 @@ export class RootItem extends Component<AccordionItemProps, typeof RootItem.enha
   }
 }
 
-class Toggle extends Component<AccordionItemToggleProps, never, {}, AccordionItemTogglePropsInternal> {
+class Toggle extends Component<
+  AccordionItemToggleProps,
+  never,
+  {},
+  Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Toggle'>
+> {
   toggleRef = React.createRef();
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
@@ -163,13 +167,7 @@ class Toggle extends Component<AccordionItemToggleProps, never, {}, AccordionIte
     const SItemToggle = Root;
 
     return sstyled(styles)(
-      <SItemToggle
-        use={use}
-        ref={this.toggleRef}
-        render={Text}
-        innerOutline
-        onKeyDown={this.handleKeyDown}
-      />,
+      <SItemToggle use={use} ref={this.toggleRef} render={Text} innerOutline onKeyDown={this.handleKeyDown} />,
     );
   }
 }
@@ -190,7 +188,7 @@ function ToggleButton(props: IRootComponentProps) {
   );
 }
 
-function Collapse(props: AccordionCollapseProps & AccordionCollapsePropsInternal) {
+function Collapse(props: AccordionCollapseProps & Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Collapse'>) {
   const { selected } = props;
   const visible = selected;
 
