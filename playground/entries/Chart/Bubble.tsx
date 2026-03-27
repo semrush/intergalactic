@@ -22,15 +22,21 @@ const data = [
 ];
 
 function getJSX(props: BubbleChartJSXProps) {
+  const isRow = props.commonChartProps.direction === 'row' || props.commonChartProps.direction === 'row-reverse';
+  const plotWidth = isRow ? 280 : 320;
+
   return (
     <Chart.Bubble
-      plotWidth={300}
+      plotWidth={plotWidth}
       plotHeight={200}
       data={data}
       aria-label='Bubble chart'
       {...props.commonChartProps}
       {...(props.legendProps && {
-        legendProps: props.legendProps,
+        legendProps: {
+          ...props.legendProps,
+          w: isRow ? '72px' : '100%',
+        },
         showLegend: props.commonChartProps.showLegend as true,
       })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
