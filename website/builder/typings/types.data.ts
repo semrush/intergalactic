@@ -118,6 +118,9 @@ export default {
                     }),
                   });
                 }
+                if (nestedType && nestedType.type) {
+                  declaration.type.push(nestedType.type);
+                }
               }
             }
           }

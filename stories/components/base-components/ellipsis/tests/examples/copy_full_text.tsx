@@ -44,7 +44,7 @@ const Demo = () => {
         <Text size={200} mb={1} mr={2} bold>
           Example 1: End crop
         </Text>
-        <Text w={300} ellipsis={{ cropPosition: 'end' }}>
+        <Text w={300} ellipsis:cropPosition='end'>
           {longText}
         </Text>
         <Text size={100} color='text-secondary' mt={1}>
@@ -57,7 +57,7 @@ const Demo = () => {
         <Text size={200} mb={1} mr={2} bold>
           Example 2: Middle crop
         </Text>
-        <Text w={300} ellipsis={{ cropPosition: 'middle' }}>
+        <Text w={300} ellipsis:cropPosition='middle'>
           {longText}
         </Text>
         <Text size={100} color='text-secondary' mt={1}>
@@ -71,7 +71,7 @@ const Demo = () => {
           Example 3: Very long URL
         </Text>
         <Link>
-          <Link.Text w={250} ellipsis={{ cropPosition: 'middle' }}>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
+          <Link.Text w={250} ellipsis:cropPosition='middle'>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
 
         </Link>
         <Text size={100} color='text-secondary' mt={1}>
@@ -85,7 +85,7 @@ const Demo = () => {
           Example 3: Very long URL
         </Text>
         <Link>
-          <Link.Text w={250} ellipsis={{ cropPosition: 'end' }}>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
+          <Link.Text w={250} ellipsis:cropPosition='end'>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
 
         </Link>
         <Text size={100} color='text-secondary' mt={1}>
