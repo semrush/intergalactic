@@ -6,7 +6,7 @@ import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { Text } from '@semcore/typography';
-import type { RootProps } from '@semcore/ui/core/lib/core-types/Component';
+import type { InferPropsFromRoot } from '@semcore/ui/core/lib/core-types/Component';
 import React from 'react';
 
 import type {
@@ -78,7 +78,7 @@ class RootAccordion extends Component<AccordionProps, typeof RootAccordion.enhan
     return <Children />;
   }
 }
-export class RootItem extends Component<AccordionItemProps, typeof RootItem.enhance, {}, RootProps<typeof RootAccordion, 'Item'>> {
+export class RootItem extends Component<AccordionItemProps, typeof RootItem.enhance, {}, InferPropsFromRoot<typeof RootAccordion, 'Item'>> {
   static displayName = 'Item';
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
@@ -137,7 +137,7 @@ export class RootItem extends Component<AccordionItemProps, typeof RootItem.enha
   }
 }
 
-class Toggle extends Component<AccordionItemToggleProps, never, {}, RootProps<typeof RootItem, 'Toggle'>> {
+class Toggle extends Component<AccordionItemToggleProps, never, {}, Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Toggle'>> {
   toggleRef = React.createRef();
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
@@ -185,7 +185,7 @@ function ToggleButton(props: IRootComponentProps) {
   );
 }
 
-function Collapse(props: AccordionCollapseProps & RootProps<typeof RootItem, 'Collapse'>) {
+function Collapse(props: AccordionCollapseProps & InferPropsFromRoot<typeof RootItem, 'Collapse'>) {
   const { selected } = props;
   const visible = selected;
 
