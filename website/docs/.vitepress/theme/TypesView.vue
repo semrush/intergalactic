@@ -74,8 +74,13 @@ const filteredProperties = types[type].declaration.properties.flat(1).filter((pr
   return !property.params?.internal && !property.description?.startsWith('Internal');
 });
 
-const lastType = types[type].declaration.type[types[type].declaration.type.length - 1];
-const unionProperties = Array.isArray(types[type].declaration.type) ? types[type].declaration.type[types[type].declaration.type.length - 1] : undefined;
+let lastType = undefined;
+let unionProperties = undefined;
+
+if (Array.isArray(types[type].declaration.type)) {
+  lastType = types[type].declaration.type[types[type].declaration.type.length - 1];
+  unionProperties = types[type].declaration.type.find((t) => Boolean(t.properties));
+}
 
 if (!types[type]) {
   throw new Error(`Unable to render type ${type} view. Probably you forgot to add
