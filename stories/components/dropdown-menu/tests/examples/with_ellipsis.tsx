@@ -76,7 +76,6 @@ const Demo = (props: WithEllipsisProps) => {
               tag={Text}
               ellipsis
               {...(props.hintProps === false ? { hint: false } : {})}
-              // @ts-expect-error. We can't calculate correct types from intersections in tag prop.
               {...(props.hintPlacement ? { 'hint:placement': props.hintPlacement } : {})}
             >
               Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!(With hint props)
