@@ -20,11 +20,6 @@ export interface IRootComponentProps<Props = {}, Ctx = {}, H = {}> {
   'data-ui-name'?: string;
 }
 
-export type InferPropsFromRoot<Root extends new (...args: any) => any, Child extends string> =
-  InstanceType<Root>[`get${Child}Props`] extends (...args: any[]) => infer R
-    ? R
-    : Record<string, unknown>;
-
 export interface IRootNodeProps {
   render: React.ElementType | string;
   tag?: React.ElementType | string;
@@ -117,6 +112,10 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
+    export type InferPropsFromRoot<
+      Root extends new (...args: any) => any,
+      Child extends string,
+    > = InstanceType<Root>[`get${Child}Props`] extends (...args: any[]) => infer R ? R : Record<string, unknown>;
     export type PartialRequired<T, K extends keyof T> = Omit<T, K> & {
       [key in K]-?: T[key];
     };
